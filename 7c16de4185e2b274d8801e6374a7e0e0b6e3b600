@@ -35,6 +35,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4c5e733_a09e5d01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-01-25T09:33:05Z",
+      "side": 1,
+      "message": "LGTM % nits\nPlease reply to David Stevens comment before submitting.",
+      "revId": "7c16de4185e2b274d8801e6374a7e0e0b6e3b600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62335e6e_1f856e27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_uncompress_obb_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-01-25T09:33:05Z",
+      "side": 1,
+      "message": "nit: move to line 106 to have it right before tconn is used.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "7c16de4185e2b274d8801e6374a7e0e0b6e3b600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4597659_f1c48744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_uncompress_obb_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-01-25T09:33:05Z",
+      "side": 1,
+      "message": "nit: line overflow",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 99
+      },
+      "revId": "7c16de4185e2b274d8801e6374a7e0e0b6e3b600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9943e573_f21149af",
