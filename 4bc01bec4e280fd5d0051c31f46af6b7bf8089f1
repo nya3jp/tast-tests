@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4c2821b_f3186885",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-01-25T16:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd988a54_7a003fd9",
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03460ea6_272974ec",
@@ -98,6 +116,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56035bfd_94027e6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-01-25T16:17:32Z",
+      "side": 1,
+      "message": "There\u0027s nothing stopping clients from sending invalid data.",
+      "parentUuid": "780d6e98_8f884834",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db826c96_bff126d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-01-25T16:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03460ea6_272974ec",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9afeea1c_d5faa521",
@@ -111,6 +177,30 @@
       "writtenOn": "2021-01-25T13:30:02Z",
       "side": 1,
       "message": "Same here, keep err scoped to the if conditional.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 3
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e6159b_93b523d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-01-25T16:17:32Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "9afeea1c_d5faa521",
       "range": {
         "startLine": 49,
         "startChar": 1,
@@ -144,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eabda9dd_6dbe50d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-01-25T16:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbf97f96_99cb1793",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 7
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eefb320_6d884a81",
@@ -167,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc9d4fa_2f598152",
+        "filename": "src/chromiumos/tast/services/cros/network/proxy_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-01-25T16:17:32Z",
+      "side": 1,
+      "message": "True, and 0 shouldn\u0027t be here since it\u0027s not really a valid port.\n\nWe can make this field optional and have a default value of 3128. WDYT?\n\nWe need to set a port in the tinyproxy config file before starting it. Since we\u0027ve just setup the network namespace, I expect all ports to be available for listening.",
+      "parentUuid": "9eefb320_6d884a81",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "614305eb_44ffd164",
@@ -180,6 +318,30 @@
       "writtenOn": "2021-01-25T13:30:02Z",
       "side": 1,
       "message": "missing space",
+      "range": {
+        "startLine": 35,
+        "startChar": 35,
+        "endLine": 35,
+        "endChar": 37
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b2f8157_13a8cafa",
+        "filename": "src/chromiumos/tast/services/cros/network/proxy_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-01-25T16:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "614305eb_44ffd164",
       "range": {
         "startLine": 35,
         "startChar": 35,
