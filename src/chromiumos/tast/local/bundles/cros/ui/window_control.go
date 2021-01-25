@@ -49,6 +49,9 @@ func WindowControl(ctx context.Context, s *testing.State) {
 	// When custom expectation value needs to be set, modify expects here.
 	// Ash.WindowCycleView.AnimationSmoothness.Show is known bad: https://crbug.com/1111130
 	expects["Ash.WindowCycleView.AnimationSmoothness.Show"] = 20
+	// DragMaximize/Unmaximize is known bad: https://crbug.com/1170544
+	expects["Ash.Window.AnimationSmoothness.CrossFade.DragMaximize"] = 20
+	expects["Ash.Window.AnimationSmoothness.CrossFade.DragUnmaximize"] = 20
 
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
@@ -73,7 +76,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 	}
 
 	r := perfutil.NewRunner(cr)
-	r.Runs = 3
+	r.Runs = 5
 	r.RunTracing = false
 
 	s.Log("Step 1: window state transition")
