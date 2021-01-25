@@ -33,18 +33,12 @@ type testExtension struct {
 	id  string
 }
 
-// prepareTestExtension prepares a test extension. key is a private key for the
-// extension. id is an expected ID of the extension.
-func prepareTestExtension(key, id string) (ext *testExtension, retErr error) {
-	dir, err := ioutil.TempDir("", "tast_test_api_extension.")
-	if err != nil {
+// prepareTestExtension prepares a test extension at dir. key is a private key
+// for the extension. id is an expected ID of the extension.
+func prepareTestExtension(dir, key, id string) (*testExtension, error) {
+	if err := os.MkdirAll(dir, 0755); err != nil {
 		return nil, err
 	}
-	defer func() {
-		if retErr != nil {
-			os.RemoveAll(dir)
-		}
-	}()
 
 	actualID, err := writeTestExtension(dir, key)
 	if err != nil {
@@ -74,11 +68,6 @@ func (e *testExtension) ID() string {
 // Dir returns a directory path where the extension is located.
 func (e *testExtension) Dir() string {
 	return e.dir
-}
-
-// RemoveAll removes files for the test extension.
-func (e *testExtension) RemoveAll() error {
-	return os.RemoveAll(e.dir)
 }
 
 // writeTestExtension writes an empty extension with access to different

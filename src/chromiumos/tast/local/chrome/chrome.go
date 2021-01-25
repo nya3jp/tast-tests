@@ -8,6 +8,7 @@ package chrome
 import (
 	"context"
 	"fmt"
+	"os"
 	"path/filepath"
 	"time"
 
@@ -47,6 +48,12 @@ const (
 
 	// Virtual keyboard background page url.
 	vkBackgroundPageURL = "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background.html"
+
+	// persistentDir is a directory to save files that should persist even
+	// after Tast finishes. For instance, we save test extensions here so
+	// that Chrome does not malfunction on post-test manual inspection.
+	// This directory is cleared at the beginning of chrome.New.
+	persistentDir = "/usr/local/tmp/tast/chrome_session"
 )
 
 // locked is set to true while a precondition is active to prevent tests from calling New or Chrome.Close.
@@ -142,15 +149,15 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		return nil, err
 	}
 
-	exts, err := extension.PrepareExtensions(cfg.ExtraExtDirs, cfg.SigninExtKey)
+	if err := os.RemoveAll(persistentDir); err != nil {
+		return nil, err
+	}
+
+	extsDir := filepath.Join(persistentDir, "extensions")
+	exts, err := extension.PrepareExtensions(extsDir, cfg.ExtraExtDirs, cfg.SigninExtKey)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to prepare extensions")
 	}
-	defer func() {
-		if retErr != nil {
-			exts.RemoveAll()
-		}
-	}()
 
 	if err := setup.RestartChromeForTesting(ctx, cfg, exts); err != nil {
 		return nil, errors.Wrap(err, "failed to restart chrome for testing")
@@ -234,10 +241,6 @@ func (c *Chrome) Close(ctx context.Context) error {
 	var firstErr error
 	if c.sess != nil {
 		firstErr = c.sess.Close(ctx)
-	}
-
-	if c.exts != nil {
-		c.exts.RemoveAll()
 	}
 
 	if dir, ok := testing.ContextOutDir(ctx); ok {
