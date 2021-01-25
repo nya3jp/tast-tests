@@ -16,6 +16,24 @@
       "message": "Ryo, can you please test this change locally to see if it works for you? Thanks!\n",
       "revId": "912b51aee2d84d953fc2aaf12626271a745739eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b13267fb_4d02f614",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-01-25T11:33:38Z",
+      "side": 1,
+      "message": "Thank you for uploading these CLs!\nAfter applying all CLs incl. CL:2644592, I could run a test which triggers a chrome crash after login without going back to the login screen (CL:2646968).",
+      "parentUuid": "475d6367_342d846d",
+      "revId": "912b51aee2d84d953fc2aaf12626271a745739eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
