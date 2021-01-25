@@ -36,7 +36,7 @@ func DeprecatedPrepareExtensions() (extDirs []string, err error) {
 	if err != nil {
 		return nil, err
 	}
-	exts, err := extension.PrepareExtensions(filepath.Join(dir, "extensions"), nil, "")
+	exts, err := extension.PrepareExtensions(filepath.Join(dir, "extensions"), nil, "", false)
 	if err != nil {
 		return nil, err
 	}
