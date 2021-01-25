@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac034ed7_f8889250",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-25T21:22:02Z",
+      "side": 1,
+      "message": "Nice!",
+      "revId": "f3f7477045bc9a6bad260a76992f60ca01327579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d1ce629_6550f703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/connectivity_diagnostics_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-25T21:22:02Z",
+      "side": 1,
+      "message": "Until / unless we use this for multiple tests, we should be able to make this a local in the test function.",
+      "revId": "f3f7477045bc9a6bad260a76992f60ca01327579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
