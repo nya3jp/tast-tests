@@ -16,6 +16,24 @@
       "message": "nit: write down why this is done instead of key.LeftClick. CL description is pretty good.",
       "revId": "8c6fe7c1ceb89a1a618430f81544756b2efd891b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d591f4df_605591a9",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-25T08:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52e6ae7b_00ce06a8",
+      "revId": "8c6fe7c1ceb89a1a618430f81544756b2efd891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
