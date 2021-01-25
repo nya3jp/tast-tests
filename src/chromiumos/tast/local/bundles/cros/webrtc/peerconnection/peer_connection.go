@@ -7,7 +7,6 @@ package peerconnection
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -75,6 +74,31 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 	return nil
 }
 
+type peerConnectionType bool
+
+const (
+	localPeerConnection  peerConnectionType = false
+	remotePeerConnection peerConnectionType = true
+)
+
+// readRTCReport reads an RTCStat report of the given typ from the specified peer connection.
+// The out can be an arbitrary struct whose members are 'json' tagged, so that they will be filled.
+func readRTCReport(ctx context.Context, conn *chrome.Conn, pc peerConnectionType, typ string, out interface{}) error {
+	return conn.Call(ctx, out, `async(isRemote, type) => {
+	  const peerConnection = isRemote ? remotePeerConnection : localPeerConnection;
+	  const stats = await peerConnection.getStats(null);
+	  if (stats == null) {
+	    throw new Error("getStats() failed");
+	  }
+	  for (const [_, report] of stats) {
+	    if (report['type'] === type) {
+	      return report;
+	    }
+	  }
+	  throw new Error("Stat not found");
+	}`, pc, typ)
+}
+
 // checkForCodecImplementation parses the RTCPeerConnection and verifies that it
 // is using hardware acceleration for verifyMode. This method uses the
 // RTCPeerConnection getStats() API [1].
@@ -90,67 +114,61 @@ func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, verifyM
 	//
 	// [1] https://w3c.github.io/webrtc-stats/#dom-rtcinboundrtpstreamstats-decoderimplementation
 	// [2] https://w3c.github.io/webrtc-stats/#dom-rtcoutboundrtpstreamstats-encoderimplementation
-	statName := "encoderImplementation"
-	peerConnectionName := "localPeerConnection"
-	expectedImplementation := "EncodeAccelerator"
-
-	if verifyMode == VerifyHWDecoderUsed {
-		statName = "decoderImplementation"
-		peerConnectionName = "remotePeerConnection"
-		expectedImplementation = "ExternalDecoder"
+	expectedImpl := "EncodeAccelerator"
+	readImpl := func(ctx context.Context) (string, error) {
+		var out struct {
+			Encoder string `json:"encoderImplementation"`
+		}
+		if err := readRTCReport(ctx, conn, localPeerConnection, "outbound-rtp", &out); err != nil {
+			return "", err
+		}
+		return out.Encoder, nil
 	}
 
-	parseStatsJS :=
-		fmt.Sprintf(`new Promise(function(resolve, reject) {
-			%s.getStats(null).then(stats => {
-				if (stats == null) {
-					reject("getStats() failed");
-					return;
-				}
-				stats.forEach(report => {
-					Object.keys(report).forEach(statName => {
-						if (statName === '%s') {
-							resolve(report[statName]);
-							return;
-						}
-					})
-				})
-				reject("%s not found");
-			});
-		})`, peerConnectionName, statName, statName)
+	if verifyMode == VerifyHWDecoderUsed {
+		expectedImpl = "ExternalDecoder"
+		readImpl = func(ctx context.Context) (string, error) {
+			var out struct {
+				Decoder string `json:"decoderImplementation"`
+			}
+			if err := readRTCReport(ctx, conn, remotePeerConnection, "inbound-rtp", &out); err != nil {
+				return "", err
+			}
+			return out.Decoder, nil
+		}
+	}
 
 	// Poll getStats() to wait until {decoder,encoder}Implementation gets filled in:
 	// RTCPeerConnection needs a few frames to start up encoding/decoding; in the
 	// meantime it returns "unknown".
 	const pollInterval = 100 * time.Millisecond
 	const pollTimeout = 200 * pollInterval
-	var implementation string
-	err := testing.Poll(ctx,
-		func(ctx context.Context) error {
-			if err := conn.EvalPromise(ctx, parseStatsJS, &implementation); err != nil {
-				return errors.Wrap(err, "failed to retrieve and/or parse RTCStatsReport")
-			}
-			if implementation == "unknown" {
-				return errors.New("getStats() didn't fill in the codec implementation (yet)")
-			}
-			// "ExternalEncoder" is the default value for encoder implementations
-			// before filling the actual one, see b/162764016.
-			if verifyMode == VerifyHWEncoderUsed && implementation == "ExternalEncoder" {
-				return errors.New("getStats() didn't fill in the encoder implementation (yet)")
-			}
-			return nil
-		}, &testing.PollOptions{Interval: pollInterval, Timeout: pollTimeout})
-
-	if err != nil {
+	var impl string
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		impl, err = readImpl(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to retrieve and/or parse RTCStatsReport")
+		}
+		if impl == "unknown" {
+			return errors.New("getStats() didn't fill in the codec implementation (yet)")
+		}
+		// "ExternalEncoder" is the default value for encoder implementations
+		// before filling the actual one, see b/162764016.
+		if verifyMode == VerifyHWEncoderUsed && impl == "ExternalEncoder" {
+			return errors.New("getStats() didn't fill in the encoder implementation (yet)")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: pollInterval, Timeout: pollTimeout}); err != nil {
 		return err
 	}
-	testing.ContextLogf(ctx, "%s: %s", statName, implementation)
+	testing.ContextLog(ctx, "Implementation: ", impl)
 
-	if !strings.Contains(implementation, expectedImplementation) {
-		return errors.Errorf("expected implementation not found, got %v, looking for %v", implementation, expectedImplementation)
+	if !strings.Contains(impl, expectedImpl) {
+		return errors.Errorf("expected implementation not found, got %v, looking for %v", impl, expectedImpl)
 	}
-	if verifyMode == VerifyHWEncoderUsed && isSimulcast && !strings.HasPrefix(implementation, SimulcastAdapterName) {
-		return errors.Errorf("simulcast adapter not found, got %v, looking for %v", implementation, SimulcastAdapterName)
+	if verifyMode == VerifyHWEncoderUsed && isSimulcast && !strings.HasPrefix(impl, SimulcastAdapterName) {
+		return errors.Errorf("simulcast adapter not found, got %v, looking for %v", impl, SimulcastAdapterName)
 	}
 
 	return nil
