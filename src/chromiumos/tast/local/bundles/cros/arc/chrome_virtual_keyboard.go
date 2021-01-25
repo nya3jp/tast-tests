@@ -162,33 +162,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	}
 	defer act.Stop(ctx, tconn)
 
-	// Make sure that the virtual keyboard is hidden now. It is the precondition of this test.
-	if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
-		s.Fatal("Failed to request to hide the virtual keyboard: ", err)
-	}
-	if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
-		s.Fatal("Failed to hide the virtual keyboard: ", err)
-	}
-
-	// Focusing on the text field programmatically should not show the virtual keyboard.
-	button := d.Object(ui.ID(buttonID1))
-	if err := button.WaitForExists(ctx, 30*time.Second); err != nil {
-		s.Fatal("Failed to find the button: ", err)
-	}
-	if err := button.Click(ctx); err != nil {
-		s.Fatal("Failed to click the button: ", err)
-	}
-	if err := d.Object(ui.ID(fieldID1), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
-		s.Fatal("Pressing the button didn't cause focusing on the field: ", err)
-	}
-	shown, err := vkb.IsShown(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the virtual keyboard visibility: ", err)
-	}
-	if shown {
-		s.Fatal("The virtual keyboard is shown without any user action")
-	}
-
+	// Make sure that the focus is on the first field.
 	// Clicking on the text field should show the virtual keyboard.
 	field1 := d.Object(ui.ID(fieldID1))
 	if err := field1.WaitForExists(ctx, 30*time.Second); err != nil {
@@ -197,7 +171,9 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := field1.Click(ctx); err != nil {
 		s.Fatal("Failed to click the field: ", err)
 	}
-
+	if err := d.Object(ui.ID(fieldID1), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to focus the field: ", err)
+	}
 	s.Log("Waiting for the virtual keyboard to be ready")
 	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
@@ -205,13 +181,17 @@ func chromeVirtualKeyboardFocusChangeTest(
 
 	// The virtual keyboard should keep showing when the focus is moved between the text fields programmatically.
 	s.Log("Clicking the button to switch the focus")
-	if err := button.Click(ctx); err != nil {
+	focusSwitchButton := d.Object(ui.ID(buttonID1))
+	if err := focusSwitchButton.WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to find the button: ", err)
+	}
+	if err := focusSwitchButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click the button: ", err)
 	}
 	if err := d.Object(ui.ID(fieldID2), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Clicking the button didn't cause the focus move: ", err)
 	}
-	shown, err = vkb.IsShown(ctx, tconn)
+	shown, err := vkb.IsShown(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the virtual keyboard visibility: ", err)
 	}
@@ -219,16 +199,27 @@ func chromeVirtualKeyboardFocusChangeTest(
 		s.Fatal("The focus move makes the virtual keyboard to be hidden")
 	}
 
-	s.Log("Clicking the button to hide the virtual keyboard and switch the focus")
-	button2 := d.Object(ui.ID(buttonID2))
-	if err := button2.Click(ctx); err != nil {
+	// Hide the virtual keyboard.
+	if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
+		s.Fatal("Failed to request to hide the virtual keyboard: ", err)
+	}
+	if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
+		s.Fatal("Failed to hide the virtual keyboard: ", err)
+	}
+
+	// Moving focus to the other text field programmatically should not show the virtual keyboard.
+	if err := focusSwitchButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click the button: ", err)
 	}
 	if err := d.Object(ui.ID(fieldID1), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
-		s.Fatal("Clicking the button didn't cause the focus move: ", err)
+		s.Fatal("Pressing the button didn't cause focusing on the field: ", err)
 	}
-	if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
-		s.Fatal("The virtual keyboard doesn't hide")
+	shown, err = vkb.IsShown(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the virtual keyboard visibility: ", err)
+	}
+	if shown {
+		s.Fatal("The virtual keyboard is shown without any user action")
 	}
 
 	// Make sure that hideSoftInputFromWindow() works.
