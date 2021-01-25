@@ -18,6 +18,7 @@ type Files struct {
 	user         *testExtension
 	signin       *testExtension
 	extraExtDirs []string
+	guest        bool
 }
 
 // PrepareExtensions writes test extensions to the local disk.
@@ -25,7 +26,7 @@ type Files struct {
 // non-empty string, the sign-in profile test extension is also created using
 // the key. extraExtDirs specifies directories of extra extensions to be
 // installed.
-func PrepareExtensions(extraExtDirs []string, signinExtensionKey string) (files *Files, retErr error) {
+func PrepareExtensions(extraExtDirs []string, signinExtensionKey string, guestMode bool) (files *Files, retErr error) {
 	// Prepare the user test extension.
 	user, err := prepareTestExtension(testExtensionKey, TestExtensionID)
 	if err != nil {
@@ -66,6 +67,7 @@ func PrepareExtensions(extraExtDirs []string, signinExtensionKey string) (files 
 		user:         user,
 		signin:       signin,
 		extraExtDirs: extraExtDirs,
+		guest:        guestMode,
 	}, nil
 }
 
@@ -88,6 +90,9 @@ func (f *Files) ChromeArgs() []string {
 		args = append(args,
 			"--load-signin-profile-test-extension="+f.signin.Dir(),
 			"--whitelisted-extension-id="+f.signin.ID())
+	} else if f.guest {
+		args = append(args, "--log-level=0")
+		args = append(args, "--load-guest-mode-test-extension="+strings.Join(extDirs, ","))
 	} else {
 		args = append(args, "--whitelisted-extension-id="+f.user.ID())
 	}
