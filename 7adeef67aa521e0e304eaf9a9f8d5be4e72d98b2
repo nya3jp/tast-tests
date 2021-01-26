@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d20ba0_9fbab7de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T07:52:11Z",
+      "side": 1,
+      "message": "Checking software deps of the current test is very indirect check.\n\nI recommend either:\n\n1. calling arc.VMEnabled()\n2. setting expectations to parameterized test values\n\n2 would look like:\n\n func init() {\n   testing.AddTest(\u0026testing.Test{\n     ...\n     Params: []testing.Param{{\n       ExtraSoftwarDeps: ...,\n       Val: androidFileContextsP,\n     }, {\n       Name: \"vm\",\n       ExtraSoftwarDeps: ...,\n       Val: androidFileContextsVM,\n     }},\n   })\n }\n\n ...\n\n func SELinuxFilesDataDir(...) {\n   androidFileContexts :\u003d s.Param().(string)\n   ...\n }",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "7adeef67aa521e0e304eaf9a9f8d5be4e72d98b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
