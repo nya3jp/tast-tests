@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3305886d_7661725b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-26T00:21:48Z",
+      "side": 1,
+      "message": "Thanks. Looks I also need a bug for the NewLoggedInFixture() callback.",
+      "parentUuid": "07c41c25_3a8baf81",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "4c99e734d9e06c5abfb7e2c4c7c51cde3055d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2de24adf_86651ac0",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2eccd68_7127bdee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-26T00:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2de24adf_86651ac0",
+      "revId": "4c99e734d9e06c5abfb7e2c4c7c51cde3055d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80f07937_4dc569da",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-01-25T05:01:06Z",
       "side": 1,
       "message": "Please make the naming and description clear that:\n\n- We will reuse a Chrome session only when parameters passed to chrome.New are compatible\n- When we can\u0027t reuse a Chrome session, we will restart Chrome as usual",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 28
+      },
+      "revId": "4c99e734d9e06c5abfb7e2c4c7c51cde3055d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c83159c5_b5c54522",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-26T00:21:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "80f07937_4dc569da",
       "range": {
         "startLine": 362,
         "startChar": 0,
