@@ -81,6 +81,7 @@ func Autocad(ctx context.Context, s *testing.State) {
 // verify Autocad reached main activity page of the app.
 func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
+		laterText        = "Later"
 		signInText       = "Sign in"
 		enterEmailID     = "userName"
 		nextText         = "Next button"
@@ -92,6 +93,15 @@ func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.Te
 		notNowID         = "com.autodesk.autocadws:id/tpf_not_now"
 		titleText        = "ree"
 	)
+
+	// Skip later dialog.
+	laterButton := d.Object(ui.Text(laterText))
+	if err := laterButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0)
+		d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0)
+	} else if err := laterButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on later button: ", err)
+	}
 
 	// Click on sign in button.
 	signInButton := d.Object(ui.Text(signInText))
