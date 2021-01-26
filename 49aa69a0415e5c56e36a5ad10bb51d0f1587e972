@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60f0c0c8_49d7c6c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-26T06:02:18Z",
+      "side": 1,
+      "message": "could you add a bit more information into the body of the commit message? \n\n\"CL:2528515 added state description. This CL updates the respective tast-tests to cater for the added property. State description was added in ARC R, so this CL adds state description to vm tests.\"",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "49aa69a0415e5c56e36a5ad10bb51d0f1587e972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b88d30e4_d56d615b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-26T06:02:18Z",
+      "side": 1,
+      "message": "can you also specify vm test here?\nI\u0027m with shortening it to:\n\"arc.A11y*.vm\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "49aa69a0415e5c56e36a5ad10bb51d0f1587e972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6849175f_0daf53a1",
         "filename": "android/ArcAccessibilityTest/res/layout/main_accessibility.xml",
         "patchSetId": 7
