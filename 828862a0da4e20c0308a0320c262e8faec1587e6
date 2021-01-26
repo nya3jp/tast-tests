@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9e4f0d_57567c90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T19:19:43Z",
+      "side": 1,
+      "message": "super nit: merge lines",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 18
+      },
+      "revId": "828862a0da4e20c0308a0320c262e8faec1587e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05855bfe_4f3a57ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T19:19:43Z",
+      "side": 1,
+      "message": "super nit: merge lines",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "828862a0da4e20c0308a0320c262e8faec1587e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8c6cbb7_8a5ea5f9",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T19:19:43Z",
+      "side": 1,
+      "message": "What happens if this is called mutliple times? should it be getting enabled over and over again?",
+      "range": {
+        "startLine": 369,
+        "startChar": 15,
+        "endLine": 369,
+        "endChar": 48
+      },
+      "revId": "828862a0da4e20c0308a0320c262e8faec1587e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1818e536_48036b6e",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T19:19:43Z",
+      "side": 1,
+      "message": "does return c.cl.Media.PlayerPropertiesChanged(ctx) work?",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 378,
+        "endChar": 21
+      },
+      "revId": "828862a0da4e20c0308a0320c262e8faec1587e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
