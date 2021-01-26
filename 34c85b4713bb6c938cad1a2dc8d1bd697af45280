@@ -133,6 +133,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a505bf7c_e1046a72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-26T22:17:18Z",
+      "side": 1,
+      "message": "Thanks Shuhei-san.\n\n+2 (see nits).",
+      "revId": "34c85b4713bb6c938cad1a2dc8d1bd697af45280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d007403a_b0c8a772",
