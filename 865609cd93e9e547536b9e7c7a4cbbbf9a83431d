@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "419cb7fe_7d842be9",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T09:34:44Z",
+      "side": 1,
+      "message": "I believe you don\u0027t need this function; see my another comment.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 53
+      },
+      "revId": "865609cd93e9e547536b9e7c7a4cbbbf9a83431d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2038a671_8139b105",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T09:34:44Z",
+      "side": 1,
+      "message": "Below this line, there are operations that should be always done, and others that should be done only when newChromeSession\u003dtrue. And those operations are completely interleavd. I\u0027d like to avoid this because it complicates code flow.\n\nCan you introduce a function that handles whole session reuse (e.g. tryReuseSession), and do an early return if it succeeds?\n\n if cr, ok :\u003d tryReuseSession(ctx, cfg); ok {\n   return cr, nil\n }",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 20
+      },
+      "revId": "865609cd93e9e547536b9e7c7a4cbbbf9a83431d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33cd9e38_470eedf7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T09:34:44Z",
+      "side": 1,
+      "message": "I believe this can be done only once for new session as well.",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 71
+      },
+      "revId": "865609cd93e9e547536b9e7c7a4cbbbf9a83431d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef3df98_93e343f1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T09:34:44Z",
+      "side": 1,
+      "message": "Can you create a new file named reuse.go and move new functions there?",
+      "revId": "865609cd93e9e547536b9e7c7a4cbbbf9a83431d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9a218a_45f6c488",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T09:34:44Z",
+      "side": 1,
+      "message": "It\u0027s naive to assume that two Config are compatible when their JSON representations are same. Please define mechanics that decides reusability with finer-grained control. Please also see my next comment.",
+      "range": {
+        "startLine": 637,
+        "startChar": 12,
+        "endLine": 637,
+        "endChar": 29
+      },
+      "revId": "865609cd93e9e547536b9e7c7a4cbbbf9a83431d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80613f02_33f62469",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T09:34:44Z",
+      "side": 1,
+      "message": "Here we have special logic to refuse reusing a session for certain options. This is a very fragile approach for two reasons.\n\nFirst, in future, when someone adds a new option to option.go, it\u0027s very likely that they forget to update this logic, because code location is too far. Instead we should make each Option to declare if it\u0027s a reusable options.\n\nSecond, this approach assumes that session are reusable by default, and checks certain conditions for un-reusable cases (i.e. default-allow, exceptionally-deny). This makes it easy to wrongly reuse a session when we should not. Rather we should assume that sessions are unreusable by default, and check certain conditions for reusable cases (i.e. default-deny, exceptionally-allow).",
+      "range": {
+        "startLine": 647,
+        "startChar": 0,
+        "endLine": 650,
+        "endChar": 2
+      },
+      "revId": "865609cd93e9e547536b9e7c7a4cbbbf9a83431d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db7baa7_6f4c1482",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T09:34:44Z",
+      "side": 1,
+      "message": "I believe it\u0027s enough to call driver.NewSession with cdputil.NoWaitPort below. Then we can avoid adding DetectDebuggingPort.",
+      "range": {
+        "startLine": 657,
+        "startChar": 1,
+        "endLine": 660,
+        "endChar": 2
+      },
+      "revId": "865609cd93e9e547536b9e7c7a4cbbbf9a83431d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33781371_1ab86e07",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T09:34:44Z",
+      "side": 1,
+      "message": "Please try to defer constructing Chrome instance until it\u0027s really ready. You can instead pass *driver.Session.",
+      "range": {
+        "startLine": 669,
+        "startChar": 1,
+        "endLine": 669,
+        "endChar": 15
+      },
+      "revId": "865609cd93e9e547536b9e7c7a4cbbbf9a83431d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf92fbb_29441dc1",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T09:34:44Z",
+      "side": 1,
+      "message": "By accepting arbitrary JS, code readers can\u0027t tell what kind of JS is passed without reading up to the callers. Also it can be easily abused when adding new feature to the chrome package.\n\nPlease pass an argument specific to config.Config option matching.",
+      "range": {
+        "startLine": 35,
+        "startChar": 82,
+        "endLine": 35,
+        "endChar": 91
+      },
+      "revId": "865609cd93e9e547536b9e7c7a4cbbbf9a83431d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f1bb01_03a451ca",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T09:34:44Z",
+      "side": 1,
+      "message": "We don\u0027t want to duplicate similar logic as PrepareExtensions here.\n\nActually, *extension.Files returned from PrepareExtensions is used only in two places: setup.RestartChromeForTesting and Chrome.DeprecatedExtDirs. When reusing a session we don\u0027t need to call the former. The latter method is deprecated and has only one caller. So, you can just omit constructing *extension.Files on reusing a session, and instead update the documentation of DeprecatedExtDirs to state that the method does not work for reused sessions.\n\nWe may still want to check that extensions for the current session and extensions for a requested session are exactly equal. To check it, we can call PrepareExtensions here with a temporary directory, and compare contents of the two directories.",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "865609cd93e9e547536b9e7c7a4cbbbf9a83431d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4d05e5d_c564be50",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T09:34:44Z",
+      "side": 1,
+      "message": "I want the name to reflect that we may restart a session without reusing an existing one if parameters do not match. It\u0027s particularly because I guess I want to introduce another option to reconnect to a current session unconditionally (e.g. to connect to Chrome for faillog screenshot).\n\nFor example, how about TryReuseSession, or ReuseSessionIfOptionsMatch? It can be long since I expect this option to be used fairly rarely...",
+      "range": {
+        "startLine": 216,
+        "startChar": 5,
+        "endLine": 216,
+        "endChar": 17
+      },
+      "revId": "865609cd93e9e547536b9e7c7a4cbbbf9a83431d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "febd2fc4_d0417816",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T09:34:44Z",
+      "side": 1,
+      "message": "Please also rename the config field name accordingly.",
+      "range": {
+        "startLine": 217,
+        "startChar": 39,
+        "endLine": 217,
+        "endChar": 51
+      },
+      "revId": "865609cd93e9e547536b9e7c7a4cbbbf9a83431d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
