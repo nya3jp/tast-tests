@@ -21,10 +21,10 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/media/devtools"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -86,43 +86,55 @@ func loadPage(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn,
 // playVideo invokes loadVideo(), plays a normal video in video.html, and checks if it has progress.
 // videoFile is the file name which is played there.
 // url is the URL of the video playback testing webpage.
-func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) error {
+func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) (bool, error) {
 	ctx, st := timing.Start(ctx, "play_video")
 	defer st.End()
 
 	conn, err := loadPage(ctx, cr, url)
 	if err != nil {
-		return err
+		return false, err
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("playUntilEnd(%q)", videoFile), nil); err != nil {
-		return err
+	observer, err := conn.GetMediaPropertiesChangedObserver(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to retrieve a media DevTools observer")
 	}
 
-	return nil
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("playUntilEnd(%q)", videoFile), nil); err != nil {
+		return false, err
+	}
+
+	isPlatform, _, err := devtools.GetVideoDecoder(ctx, observer, url)
+	return isPlatform, err
 }
 
 // playMSEVideo plays an MSE video stream via Shaka player, and checks its play progress.
 // mpdFile is the name of MPD file for the video stream.
 // url is the URL of the shaka player webpage.
-func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, url string) error {
+func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, url string) (bool, error) {
 	ctx, st := timing.Start(ctx, "play_mse_video")
 	defer st.End()
 
 	conn, err := loadPage(ctx, cr, url)
 	if err != nil {
-		return err
+		return false, err
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("play_shaka(%q)", mpdFile), nil); err != nil {
-		return err
+	observer, err := conn.GetMediaPropertiesChangedObserver(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to retrieve a media DevTools observer")
 	}
 
-	return nil
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("play_shaka(%q)", mpdFile), nil); err != nil {
+		return false, err
+	}
+
+	isPlatform, _, err := devtools.GetVideoDecoder(ctx, observer, url)
+	return isPlatform, err
 }
 
 // seekVideoRepeatedly seeks video numSeeks times.
@@ -232,43 +244,28 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 	defer crastestclient.Unmute(ctx)
 
-	var chromeMediaInternalsConn *chrome.Conn
-	if mode != NoVerifyHWAcceleratorUsed {
-		chromeMediaInternalsConn, err = decode.OpenChromeMediaInternalsPageAndInjectJS(ctx, cr, s.DataPath("chrome_media_internals_utils.js"))
-		if err != nil {
-			return errors.Wrap(err, "failed to open chrome://media-internals")
-		}
-		defer chromeMediaInternalsConn.Close()
-		defer chromeMediaInternalsConn.CloseTarget(ctx)
-	}
-
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
 	var playErr error
+	var usesPlatformVideoDecoder bool
 	var url string
 	switch videotype {
 	case NormalVideo:
 		url = server.URL + "/video.html"
-		playErr = playVideo(ctx, cr, filename, url)
+		usesPlatformVideoDecoder, playErr = playVideo(ctx, cr, filename, url)
 	case MSEVideo:
 		url = server.URL + "/shaka.html"
-		playErr = playMSEVideo(ctx, cr, filename, url)
+		usesPlatformVideoDecoder, playErr = playMSEVideo(ctx, cr, filename, url)
 	}
 	if playErr != nil {
 		return errors.Wrapf(err, "failed to play %v (%v): %v", filename, url, playErr)
 	}
 
 	if mode == NoVerifyHWAcceleratorUsed {
-		// Early return ig no verification is needed.
+		// Early return when no verification is needed.
 		return nil
 	}
-
-	usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, server.URL)
-	if err != nil {
-		return errors.Wrap(err, "failed to parse chrome:media-internals")
-	}
-	s.Log("usesPlatformVideoDecoder? ", usesPlatformVideoDecoder)
 
 	if mode == VerifyHWAcceleratorUsed && !usesPlatformVideoDecoder {
 		return errors.New("video decode acceleration was not used when it was expected to")

@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/graphics"
@@ -33,7 +32,6 @@ func init() {
 		},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 		SoftwareDeps: []string{"chrome", "graphics_debugfs"},
-		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		Params: []testing.Param{{
 			Name:              "av1_hw",
 			Val:               memCheckParams{fileName: "720_av1.mp4", sizes: []graphics.Size{{Width: 1280, Height: 720}}, videoType: play.NormalVideo},
