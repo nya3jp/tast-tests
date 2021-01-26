@@ -35,6 +35,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d680b5f_2b6ee956",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-26T00:15:36Z",
+      "side": 1,
+      "message": "Yeah. Looks like they should rather be c2e2test. [1]\nThe same option is reused for the different binary.\nI would like to clean up those in a follow-up CL.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/c2e2etest/c2e2etest.go",
+      "parentUuid": "2556fe99_31cac26c",
+      "revId": "bf9b62852f14ab1b0df186a57f2bdb5b18b97485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b08cfad_fce0833c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-26T00:15:36Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "revId": "bf9b62852f14ab1b0df186a57f2bdb5b18b97485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4277ce58_f4f7f8be",
@@ -48,6 +83,30 @@
       "writtenOn": "2021-01-25T18:00:53Z",
       "side": 1,
       "message": "nit: the name looks like video_encode_accelerator_perf_tests?",
+      "range": {
+        "startLine": 12,
+        "startChar": 38,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "bf9b62852f14ab1b0df186a57f2bdb5b18b97485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd29842_2b6f69cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/test_cases.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-26T00:15:36Z",
+      "side": 1,
+      "message": "This is correct. The new binaries are two ones. One is video_encode_accelerator_tests and the other one is video_encode_accelerator_perf_tests.",
+      "parentUuid": "4277ce58_f4f7f8be",
       "range": {
         "startLine": 12,
         "startChar": 38,
