@@ -124,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "502af569_95d5e463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-26T03:41:57Z",
+      "side": 1,
+      "message": "We may call DropResetLockPermission in both local tast and remote tast, but StopTPMDaemons only work on local tast.",
+      "parentUuid": "3ea11063_e2f48864",
+      "revId": "f0e50ae5ed79a9f6ce10facfd488c053aec90933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7258ba5e_48bb0634",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
         "patchSetId": 18
