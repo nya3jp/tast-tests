@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a383accb_ce37cbd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T20:29:19Z",
+      "side": 1,
+      "message": "ah, instead of using grep, can you do the search for versionName in go?\nSomething like:\n \n for _, line :\u003d strings.Split(string(output), \"\\n\"){\n   if strings.Contains(line, \"versionName\") {\n     ...\n     break\n   }\n }",
+      "parentUuid": "1593a5a5_25176c88",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 122
+      },
+      "revId": "0546813c3bed2571331731c5db85ff0856542571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b059638_0ab1d118",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 1
