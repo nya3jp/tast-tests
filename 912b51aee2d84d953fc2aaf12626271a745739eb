@@ -69,6 +69,41 @@
       "parentUuid": "c2a11854_1e998770",
       "revId": "912b51aee2d84d953fc2aaf12626271a745739eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b61149_9f370d41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T02:21:38Z",
+      "side": 1,
+      "message": "Actually I\u0027m about to abandon this CL because, after discussing with Ryo, we found that we don\u0027t need the reconnect feature in his test. What he needs is crrev.com/c/2644592 actually.\n",
+      "revId": "912b51aee2d84d953fc2aaf12626271a745739eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b066f55_ec0699db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T02:21:38Z",
+      "side": 1,
+      "message": "I assume you cc\u0027ed Derek for crbug.com/1168360. I\u0027m more interested in why CDP connections on machine-local sockets are closed when a device enters suspend. I thought machine-local sockets are not aborted even on suspend/resume...",
+      "parentUuid": "92e09727_c324e1c4",
+      "revId": "912b51aee2d84d953fc2aaf12626271a745739eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
