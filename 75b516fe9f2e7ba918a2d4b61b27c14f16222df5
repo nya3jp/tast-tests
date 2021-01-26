@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9c7f355_06348160",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T22:14:41Z",
+      "side": 1,
+      "message": "I agree, I just think that is should be part of a separate CL.",
+      "parentUuid": "94e3f53a_c9854ef8",
+      "range": {
+        "startLine": 223,
+        "startChar": 12,
+        "endLine": 223,
+        "endChar": 25
+      },
+      "revId": "75b516fe9f2e7ba918a2d4b61b27c14f16222df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3d15276_955d1e59",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-26T21:59:04Z",
       "side": 1,
       "message": "Why is this inside the action rather than at the top level in the function?  top level will give a better error stack trace.",
+      "range": {
+        "startLine": 265,
+        "startChar": 2,
+        "endLine": 267,
+        "endChar": 3
+      },
+      "revId": "75b516fe9f2e7ba918a2d4b61b27c14f16222df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f050a5d_3120517d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T22:14:41Z",
+      "side": 1,
+      "message": "I just changed the function signiture to remove this altogether.",
+      "parentUuid": "f3d15276_955d1e59",
       "range": {
         "startLine": 265,
         "startChar": 2,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-26T21:59:04Z",
       "side": 1,
       "message": "I\u0027m not clear on what some of these attributes are.  Is there a reference, or can you include a brief description here?",
+      "range": {
+        "startLine": 429,
+        "startChar": 35,
+        "endLine": 429,
+        "endChar": 44
+      },
+      "revId": "75b516fe9f2e7ba918a2d4b61b27c14f16222df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa069ba_fc0f18af",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T22:14:41Z",
+      "side": 1,
+      "message": "I actually don\u0027t know what many of these attributes are myself. I just added them because they are part of chrome.automation. I was looking around for definitions, but have not found any. The docs and idl file don\u0027t give any information:\nhttps://developer.chrome.com/docs/extensions/reference/automation/#type-StateType",
+      "parentUuid": "116a4088_7495b398",
       "range": {
         "startLine": 429,
         "startChar": 35,
