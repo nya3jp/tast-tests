@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5557c6d_d81035d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-26T18:40:04Z",
+      "side": 1,
+      "message": "The problem was an upstream bug in godbus:\nhttps://github.com/godbus/dbus/issues/223\n\nI will upload another patch set with a fix and cleanup.",
+      "revId": "627aaae6aef0d81992bf2e3b1acf368348cbdfbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e744be9f_a1e0b212",
