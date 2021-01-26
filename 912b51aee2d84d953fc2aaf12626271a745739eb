@@ -34,6 +34,24 @@
       "parentUuid": "2e7b888b_420f8700",
       "revId": "912b51aee2d84d953fc2aaf12626271a745739eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02501990_67f887d6",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T04:26:50Z",
+      "side": 0,
+      "message": "Hmm, I intentionally \"leaked\" those files with explicit doc comment: \"Callers are responsible for deleting destDir after they\u0027re done with it. This function may save some files under destDir even if it returns an error.\" But I assume that you want to avoid this contract and always remove files on errors. I\u0027m okay with the approach so let me update the code.\n\nRegarding the directory, destDir is in fact /usr/local/tmp/tast/chrome_session/extensions, so we don\u0027t need to create its subdirectory named \"extensions\".",
+      "parentUuid": "abd1bd7d_248a045c",
+      "revId": "912b51aee2d84d953fc2aaf12626271a745739eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

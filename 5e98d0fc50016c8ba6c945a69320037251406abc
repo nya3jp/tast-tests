@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9eb32d8e_d97a2abc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T04:26:50Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not sure if it\u0027s very useful. Even if we try hard to keep a session when PrepareExtensions fails, we still corrupt a session when RestartChromeForTesting fails for example, so we can\u0027t add any more assumption useful for callers.\n\nSo I think it\u0027s more realistic to say that a chrome.New call is no point of return --- that is, when a chrome.New ends up with an error, we can\u0027t assume anything about the state of Chrome.",
+      "parentUuid": "ee25126f_2872b870",
+      "revId": "5e98d0fc50016c8ba6c945a69320037251406abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "933eef8e_dfa87427",
         "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
         "patchSetId": 3
