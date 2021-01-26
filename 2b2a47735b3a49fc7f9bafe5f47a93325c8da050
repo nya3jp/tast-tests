@@ -24,6 +24,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "338b8ace_22eb0086",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-26T23:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eac0abb_e4ff1625",
+      "range": {
+        "startLine": 746,
+        "startChar": 19,
+        "endLine": 746,
+        "endChar": 35
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe801997_75bacf03",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-26T23:27:58Z",
+      "side": 1,
+      "message": "This is specifically testing the Share button in the Action bar (not the context menu flow).\nAdded Share to constants",
+      "parentUuid": "9eac0abb_e4ff1625",
+      "range": {
+        "startLine": 746,
+        "startChar": 19,
+        "endLine": 746,
+        "endChar": 35
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d056b20_e3d2fbd9",
@@ -37,6 +85,54 @@
       "writtenOn": "2021-01-25T15:01:50Z",
       "side": 1,
       "message": "Can\u0027t we use default interval which is 100ms?",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0f8621_4053271a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-26T23:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d056b20_e3d2fbd9",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91378d6a_c6ec4dc0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-26T23:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d056b20_e3d2fbd9",
       "range": {
         "startLine": 21,
         "startChar": 33,
@@ -93,6 +189,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96073a39_35b4c988",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-26T23:27:58Z",
+      "side": 1,
+      "message": "Went with `ui.StableFindAndClick`, drastically reduces verbose code. Cheers",
+      "parentUuid": "ab0fc3dd_2fb2be54",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f13070d6_b8e84f6a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-26T23:27:58Z",
+      "side": 1,
+      "message": "Removed this in favour of `ui.StableFindAndClick`",
+      "parentUuid": "008dfae3_b3c74433",
+      "range": {
+        "startLine": 33,
+        "startChar": 95,
+        "endLine": 33,
+        "endChar": 103
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20ec67ac_7175e380",
@@ -106,6 +250,30 @@
       "writtenOn": "2021-01-25T15:01:50Z",
       "side": 1,
       "message": "nit: to get",
+      "range": {
+        "startLine": 48,
+        "startChar": 39,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3f4f4e_fe17763e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-26T23:27:58Z",
+      "side": 1,
+      "message": "Removed code.",
+      "parentUuid": "20ec67ac_7175e380",
       "range": {
         "startLine": 48,
         "startChar": 39,
@@ -162,6 +330,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46ba693_4d57e770",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-26T23:27:58Z",
+      "side": 1,
+      "message": "Removed code.",
+      "parentUuid": "cb58725a_568a6f7e",
+      "range": {
+        "startLine": 52,
+        "startChar": 86,
+        "endLine": 52,
+        "endChar": 87
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97c0f2f_344e2eb3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-26T23:27:58Z",
+      "side": 1,
+      "message": "Removed code.",
+      "parentUuid": "77cf985f_bab4ff63",
+      "range": {
+        "startLine": 52,
+        "startChar": 40,
+        "endLine": 52,
+        "endChar": 63
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61d8fff0_880acbfd",
@@ -185,6 +401,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ef8d4b_27c0a071",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-26T23:27:58Z",
+      "side": 1,
+      "message": "Removed code.",
+      "parentUuid": "61d8fff0_880acbfd",
+      "range": {
+        "startLine": 53,
+        "startChar": 51,
+        "endLine": 53,
+        "endChar": 54
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7edb45c6_939e5cf2",
@@ -198,6 +438,30 @@
       "writtenOn": "2021-01-25T15:01:50Z",
       "side": 1,
       "message": "same: to wait",
+      "range": {
+        "startLine": 57,
+        "startChar": 40,
+        "endLine": 57,
+        "endChar": 47
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6025d930_34a23fc3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-26T23:27:58Z",
+      "side": 1,
+      "message": "Removed code.",
+      "parentUuid": "7edb45c6_939e5cf2",
       "range": {
         "startLine": 57,
         "startChar": 40,
