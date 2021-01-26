@@ -9,11 +9,11 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/testing"
 )
 
@@ -69,28 +69,18 @@ func EnableArc(ctx context.Context, s *testing.State) {
 
 func turnOnPlayStore(ctx context.Context, tconn *chrome.TestConn) error {
 
-	// Navigate to Android Settings.
-	if err := apps.Launch(ctx, tconn, apps.Settings.ID); err != nil {
-		return errors.Wrap(err, "failed to launch the Settings app")
-	}
-
-	appParams := ui.FindParams{
+	// Launch Chrome OS Settings Apps Page.
+	appsParam := ui.FindParams{
 		Role: ui.RoleTypeHeading,
 		Name: "Apps",
 	}
-	appsbutton, err := ui.FindWithTimeout(ctx, tconn, appParams, 30*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find Apps heading")
-	}
-	defer appsbutton.Release(ctx)
 
-	condition := func(ctx context.Context) (bool, error) {
-		return ui.Exists(ctx, tconn, appParams)
-	}
-
-	opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 2 * time.Second}
-	if err := appsbutton.LeftClickUntil(ctx, condition, &opts); err != nil {
-		return errors.Wrap(err, "failed to click the Apps heading")
+	if err := ossettings.LaunchAtPage(
+		ctx,
+		tconn,
+		appsParam,
+	); err != nil {
+		return errors.Wrap(err, "failed to Open Apps Settings Page")
 	}
 
 	// Find the "Turn on" button and click.
