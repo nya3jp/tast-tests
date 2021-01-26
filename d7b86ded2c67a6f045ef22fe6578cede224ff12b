@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d062ec2_663a8045",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-26T17:32:38Z",
+      "side": 1,
+      "message": "Yep, my comments on this was lost. Similar thing for ZramInfoTracker.\n\nIf we want to use the prefix, we should replace \"TPS.\" with the prefix in the Record method.",
+      "parentUuid": "3eaeceac_07f7bda6",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "d7b86ded2c67a6f045ef22fe6578cede224ff12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c9473f2_9d1e1be6",
         "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
         "patchSetId": 14
