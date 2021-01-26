@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6849175f_0daf53a1",
+        "filename": "android/ArcAccessibilityTest/res/layout/main_accessibility.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-26T05:49:10Z",
+      "side": 1,
+      "message": "maybe we don\u0027t need this.",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 46
+      },
+      "revId": "49aa69a0415e5c56e36a5ad10bb51d0f1587e972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b38c550_6bd9d9fe",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/MainActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-26T05:49:10Z",
+      "side": 1,
+      "message": "Can we use Build.VERSION_CODES.R? (and I think it\u0027s from R, not 29, whcih is Q)",
+      "range": {
+        "startLine": 40,
+        "startChar": 37,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "49aa69a0415e5c56e36a5ad10bb51d0f1587e972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d7406fd_f3566f90",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/MainActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-26T05:49:10Z",
+      "side": 1,
+      "message": "can we get this value dynamically? Probably seekBar.getProgress() returns the value we can use here.",
+      "range": {
+        "startLine": 56,
+        "startChar": 63,
+        "endLine": 56,
+        "endChar": 65
+      },
+      "revId": "49aa69a0415e5c56e36a5ad10bb51d0f1587e972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
