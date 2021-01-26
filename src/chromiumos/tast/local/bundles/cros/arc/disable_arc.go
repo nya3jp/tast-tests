@@ -14,7 +14,9 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -59,7 +61,17 @@ func DisableArc(ctx context.Context, s *testing.State) {
 	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for Play Store: ", err)
 	}
-	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+	// TODO(b/178232263): This is a temporary work around to ensure Play Store closes.
+	// Look into why apps.Close is failing with Play Store on occasion.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if visible, err := ash.AppShown(ctx, tconn, apps.PlayStore.ID); err != nil {
+			return testing.PollBreak(err)
+		} else if visible {
+			apps.Close(ctx, tconn, apps.PlayStore.ID)
+			return errors.New("app is not closed yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
 		s.Fatal("Failed to close Play Store: ", err)
 	}
 
@@ -69,7 +81,7 @@ func DisableArc(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Verify Play Store is Off")
-	testing.Poll(ctx, func(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		playStoreState, err := optin.GetPlayStoreState(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to get some playstore state")
@@ -78,87 +90,25 @@ func DisableArc(ctx context.Context, s *testing.State) {
 			return errors.New("Playstore is On Still")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second})
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		s.Fatal("Failed to verify Play Store is off: ", err)
+	}
 
 }
 
 func turnOffPlayStore(ctx context.Context, tconn *chrome.TestConn) error {
-
 	// Navigate to Android Settings.
 	if err := apps.Launch(ctx, tconn, apps.Settings.ID); err != nil {
 		return errors.Wrap(err, "failed to launch the Settings app")
 	}
 
-	appParams := ui.FindParams{
-		Role: ui.RoleTypeHeading,
-		Name: "Apps",
-	}
-
-	appsbutton, err := ui.FindWithTimeout(ctx, tconn, appParams, 30*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find Apps heading")
-	}
-	defer appsbutton.Release(ctx)
-
-	if err := appsbutton.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the Apps heading")
-	}
-
-	// Find the "Google Play Store" button and click.
-	playStoreParams := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "Google Play Store",
-	}
-
-	playstore, err := ui.FindWithTimeout(ctx, tconn, playStoreParams, 30*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find GooglePlayStore button")
-	}
-	defer playstore.Release(ctx)
-
-	if err := playstore.FocusAndWait(ctx, 30*time.Second); err != nil {
-		return errors.Wrap(err, "failed to call focus() on GooglePlayStore")
-	}
-
-	if err := playstore.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the GooglePlayStore button")
-	}
-
-	// Find the "Remove Google Play Store" button and click.
-	removePlayStoreParams := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "Remove Google Play Store",
-	}
-
-	rmplaystore, err := ui.FindWithTimeout(ctx, tconn, removePlayStoreParams, 30*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find Google Play Store")
-	}
-	defer rmplaystore.Release(ctx)
-
-	if err := rmplaystore.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Remove Google Play Store")
-	}
-
-	// Find the "Remove Android Apps" button and click.
-	removeAndroidAppParams := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "Remove Android apps",
-	}
-
-	rmAndroidApps, err := ui.FindWithTimeout(ctx, tconn, removeAndroidAppParams, 30*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find Remove Android Apps")
-	}
-	defer rmAndroidApps.Release(ctx)
-
-	if err := rmAndroidApps.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Remove Android Apps")
-	}
-
-	if err = ash.WaitForAppClosed(ctx, tconn, apps.PlayStore.ID); err != nil {
-		return errors.Wrap(err, "failed to Close Play Store")
-	}
-	return nil
-
+	ui := uiauto.New(tconn)
+	playStoreButton := nodewith.Name("Google Play Store").Role(role.Button)
+	return uiauto.Run(ctx,
+		ui.LeftClickUntil(nodewith.Name("Apps").Role(role.Heading), ui.Exists(playStoreButton)),
+		ui.FocusAndWait(playStoreButton),
+		ui.LeftClick(playStoreButton),
+		ui.LeftClick(nodewith.Name("Remove Google Play Store").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("Remove Android apps").Role(role.Button)),
+	)
 }
