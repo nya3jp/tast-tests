@@ -33,6 +33,24 @@
       "message": "This is always returning 0 and 1 which doesn\u0027t seem right to me. This results in a collision with stdin and stdout which appears to be used by tast. The test fails with the error:\n2021/01/25 16:52:50 Got global error: unable to decode message: invalid character \u0027u\u0027 looking for beginning of value\n2021/01/25 16:52:50 Test runner failed: unable to decode message: invalid character \u0027u\u0027 looking for beginning of value\n\nThis appears to be the start of the message sent \"uname -a\"",
       "revId": "627aaae6aef0d81992bf2e3b1acf368348cbdfbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e18694a8_88a01890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-26T00:08:18Z",
+      "side": 1,
+      "message": "I added some code to get the list of file descriptors before and after the D-Bus function call. 10 and 12 are added during the call.",
+      "parentUuid": "e744be9f_a1e0b212",
+      "revId": "627aaae6aef0d81992bf2e3b1acf368348cbdfbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
