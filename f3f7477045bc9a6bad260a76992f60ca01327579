@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20f3453_92f1f0fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T08:29:51Z",
+      "side": 1,
+      "message": "LGTM with minor comments.\n",
+      "revId": "f3f7477045bc9a6bad260a76992f60ca01327579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d1ce629_6550f703",
@@ -49,6 +66,47 @@
       "side": 1,
       "message": "I believe it is common practice to put constants or things of that nature outside of the function body. They are not exported outside of the test. I\u0027ll defer to nya@ here",
       "parentUuid": "1d1ce629_6550f703",
+      "revId": "f3f7477045bc9a6bad260a76992f60ca01327579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bfad1a2_3423f2be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/connectivity_diagnostics_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T08:29:51Z",
+      "side": 1,
+      "message": "I think it\u0027s common to define semi-constants as global symbols. Please just be careful about name conflicts as Go doesn\u0027t have file-local symbols :(",
+      "parentUuid": "b435b54f_aec4eb22",
+      "revId": "f3f7477045bc9a6bad260a76992f60ca01327579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b080107_06d2e794",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/connectivity_diagnostics_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T08:29:51Z",
+      "side": 1,
+      "message": "This assigns to \"err\" in the outer scope. In general I don\u0027t recommend doing so in inline functions unless that\u0027s exactly you want. So simply:\n\n if _, err :\u003d appRoot.DescendantWithTimeout(..); err !\u003d nil {\n   ...\n }",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 11
+      },
       "revId": "f3f7477045bc9a6bad260a76992f60ca01327579",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
