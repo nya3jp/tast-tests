@@ -210,6 +210,30 @@
       },
       "revId": "74889f0e921d21b2db588126f697ae736d53542f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4956fc84_d735868e",
+        "filename": "android/ArcPerAppDensityTest/src/org/chromium/arc/testapp/perappdensitytest/ViewActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-26T01:03:29Z",
+      "side": 1,
+      "message": "Got it. Thanks.",
+      "parentUuid": "7119d0f7_a4b97aba",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "74889f0e921d21b2db588126f697ae736d53542f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
