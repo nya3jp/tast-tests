@@ -146,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8ba3881_edd905c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-26T15:00:10Z",
+      "side": 1,
+      "message": "Yes, I just missed the\n\u003e  if !errors.As(err, \u0026notMoved) {\nline.",
+      "parentUuid": "5ca64502_f0af3eb6",
+      "range": {
+        "startLine": 762,
+        "startChar": 4,
+        "endLine": 789,
+        "endChar": 0
+      },
+      "revId": "edd8266757f1b761190fe3de3d744146d0eacf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e9fb1e8_56c77315",
