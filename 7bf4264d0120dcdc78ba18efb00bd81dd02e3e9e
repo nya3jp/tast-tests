@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa53d5f8_a0386799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T17:57:29Z",
+      "side": 1,
+      "message": "Sorry I\u0027ve overseen your reply.\n\n\u003e we should not create our own go routine.\n\nThere\u0027s no such rule in Tast IIRC. Why not?\nI mean it is a bit tricky and you need to be careful when using it, but when that makes sense, do that.\n\n\"timeline\" is for recording multiple data points to \"perf.Values\".  This is not.",
+      "parentUuid": "d4809494_af3c267d",
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cb9505f_6f53ce43",
