@@ -34,6 +34,24 @@
       "parentUuid": "ff03f4f0_29077b21",
       "revId": "f6966871a2d794a710ad6b1d612e94869dc3900e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "014a4106_484a5ae3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T17:49:27Z",
+      "side": 1,
+      "message": "Sure. Maybe I will create another CL by myself when I got some idea.",
+      "parentUuid": "684f9cfd_a6506c38",
+      "revId": "f6966871a2d794a710ad6b1d612e94869dc3900e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
