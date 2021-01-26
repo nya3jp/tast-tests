@@ -66,8 +66,8 @@ const (
 	// These values represent the allowable SAR limits in units of 1 dBm.
 	sarHardMax = 22.0
 	sarSoftMax = 20.0
-	sarHardMin = 6.0
-	sarSoftMin = 8.0
+	sarHardMin = 4.0
+	sarSoftMin = 6.0
 )
 
 // Information about dynamic SAR tables and the relevant acronyms can be found on
