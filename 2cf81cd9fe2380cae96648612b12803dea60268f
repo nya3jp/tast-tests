@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a095f2f9_afdac7b9",
+        "filename": "android/ArcPerAppDensityTest/res/layout/second_activity.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-26T01:03:29Z",
+      "side": 1,
+      "message": "It seems a bug to me. I think we want to investigate why.",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 79
+      },
+      "revId": "2cf81cd9fe2380cae96648612b12803dea60268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e09c0df_0977ad71",
+        "filename": "android/ArcPerAppDensityTest/src/org/chromium/arc/testapp/perappdensitytest/ViewActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-26T01:03:29Z",
+      "side": 1,
+      "message": "no longer used?",
+      "revId": "2cf81cd9fe2380cae96648612b12803dea60268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f637bb_70a1d88f",
+        "filename": "android/ArcPerAppDensityTest/src/org/chromium/arc/testapp/perappdensitytest/ViewActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-26T01:03:29Z",
+      "side": 1,
+      "message": "4 spaces indent and 2 spaces are mixed. please run google-java-format.",
+      "revId": "2cf81cd9fe2380cae96648612b12803dea60268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fab1852_b88b4e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-26T01:03:29Z",
+      "side": 1,
+      "message": "can you simplify this by doing \"red :\u003d color.RGBA{255, 0, 0, 255}\"?",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 17
+      },
+      "revId": "2cf81cd9fe2380cae96648612b12803dea60268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da536f9_4b45eb78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-26T01:03:29Z",
+      "side": 1,
+      "message": "This function does \"toggle settings value\", \"shorten ctx\", \"start activity\" and \"close activity\". Doing this twice doesn\u0027t seem what we want to do.\n\nAlso, it means we\u0027re clicking a view on an activity that is closing.",
+      "range": {
+        "startLine": 94,
+        "startChar": 25,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "2cf81cd9fe2380cae96648612b12803dea60268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
