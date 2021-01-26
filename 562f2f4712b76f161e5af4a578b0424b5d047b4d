@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d998dbb8_218e84c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-26T17:38:26Z",
+      "side": 1,
+      "message": "nya@ PTAL\n\n (I still have a pesky go vet error in the capabilities\n map, some pesky \"Composite literal uses unkeyed fields\",\n apologies for the noise!)",
+      "revId": "562f2f4712b76f161e5af4a578b0424b5d047b4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

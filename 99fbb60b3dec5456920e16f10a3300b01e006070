@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d64917d2_b3d2d5db",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-26T17:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "506eb720_70371936",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 16
+      },
+      "revId": "99fbb60b3dec5456920e16f10a3300b01e006070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdd6a4f2_c4fbc4c5",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-26T08:18:07Z",
       "side": 1,
       "message": "huge nit: detectedLabelRegexp :\u003d ... is more common.",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 26
+      },
+      "revId": "99fbb60b3dec5456920e16f10a3300b01e006070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea9c1175_c5f2c3d3",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-26T17:38:26Z",
+      "side": 1,
+      "message": "Done, it was just taken verbatim.",
+      "parentUuid": "bdd6a4f2_c4fbc4c5",
       "range": {
         "startLine": 128,
         "startChar": 1,
@@ -105,6 +153,54 @@
         "startChar": 28,
         "endLine": 144,
         "endChar": 34
+      },
+      "revId": "99fbb60b3dec5456920e16f10a3300b01e006070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c936f3a0_3ed5dcf6",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-26T17:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57c307cb_19d9da45",
+      "range": {
+        "startLine": 144,
+        "startChar": 28,
+        "endLine": 144,
+        "endChar": 34
+      },
+      "revId": "99fbb60b3dec5456920e16f10a3300b01e006070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b087d756_39483db3",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-26T17:38:26Z",
+      "side": 1,
+      "message": "Ok, I tried following this pattern, so now we \"accumulate\" the errors in\nthis |e| variable, using the \"return err\" path only for actual execution\nerrors. Let me know if I got close to the solution!",
+      "parentUuid": "78c6155a_9eed647b",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 144,
+        "endChar": 6
       },
       "revId": "99fbb60b3dec5456920e16f10a3300b01e006070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
