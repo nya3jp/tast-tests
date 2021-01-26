@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f3b1f91_675c48c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture_keep_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T17:40:41Z",
+      "side": 1,
+      "message": "Can you move this to package \"arc\"? (i.e. src/chromiumos/tast/local/arc)\n\nThe function name would be \u0027IsProvisioned\u0027.",
+      "revId": "b04308df3741bde2f19f0aa5ffaeee541032ef1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92f35db1_5ba44775",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture_keep_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T17:40:41Z",
+      "side": 1,
+      "message": "This structure and methods are mostly identical to the existing loggedInToCUJUserFixture. The addition is mostly for a couple of flags (e.g. chrome.KeepState()).  Rather than defining a different type and methods, I strongly recommend to merge the implementation.  Please add the necessary fields (e.g. loginTime) to loggedInToCUJUserFixture.\n\nThen add a boolean flag, say \u0027keepState bool\u0027 to loggedInToCUJUserFixture, and add what you want there when this flag is set.",
+      "revId": "b04308df3741bde2f19f0aa5ffaeee541032ef1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd4d059_22fd1f79",
+        "filename": "src/chromiumos/tast/local/wpr/pre_keep_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T17:40:41Z",
+      "side": 1,
+      "message": "This is also mostly identical to existing preImpl.  Please do not define yet another struct, but modify the existing one, so that you can optionally define your required behaviors.",
+      "revId": "b04308df3741bde2f19f0aa5ffaeee541032ef1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95bcc818_9c80f5ee",
+        "filename": "src/chromiumos/tast/local/wpr/pre_keep_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T17:40:41Z",
+      "side": 1,
+      "message": "This section is duplicated with wpr.go.  Please reuse the same one.",
+      "revId": "b04308df3741bde2f19f0aa5ffaeee541032ef1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
