@@ -16,6 +16,98 @@
       "message": "Sorry about the noise, the bots were failing because of \na series of :\n\n\u003e chromiumos/tast/local/media/caps.Capability composite literal uses unkeyed fields\n\nerrors, let\u0027s see now.",
       "revId": "99fbb60b3dec5456920e16f10a3300b01e006070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "506eb720_70371936",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T08:18:07Z",
+      "side": 1,
+      "message": "Need return.",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 16
+      },
+      "revId": "99fbb60b3dec5456920e16f10a3300b01e006070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdd6a4f2_c4fbc4c5",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T08:18:07Z",
+      "side": 1,
+      "message": "huge nit: detectedLabelRegexp :\u003d ... is more common.",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 26
+      },
+      "revId": "99fbb60b3dec5456920e16f10a3300b01e006070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c6155a_9eed647b",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T08:18:07Z",
+      "side": 1,
+      "message": "Hmm, this would construct a strange error message like:\n\n Something failed: error1: error2: error3\n\nYou can report multiple errors by passing testing.State and receiving it by an interface, e.g.\n\n type ErrorReporter interface {\n   Error(args ...interface{})\n }\n\n func VerifyCapabilities(ctx context.Context, e ErrorReporter, avtestLabelToCapability map[string]Capability) error\n\nEven if you want to return an error value, let us avoid using the name \"err\" to decide the final value to return. \"err\" is super popular variable name in Go, so it\u0027s easy to accidentally assign to it when we add more code later.",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 144,
+        "endChar": 6
+      },
+      "revId": "99fbb60b3dec5456920e16f10a3300b01e006070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57c307cb_19d9da45",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T08:18:07Z",
+      "side": 1,
+      "message": "style: \"static ...\"\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 144,
+        "startChar": 28,
+        "endLine": 144,
+        "endChar": 34
+      },
+      "revId": "99fbb60b3dec5456920e16f10a3300b01e006070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
