@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08503c2c_11a2f1ed",
+        "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-26T04:08:05Z",
+      "side": 1,
+      "message": "Yeah, seems we should put all of these functions into utility_tpm_manager_binary.go",
+      "parentUuid": "1e2159da_c4f2726e",
+      "revId": "094c7deccabb0de8b2640302ab9785aa7f244f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85e36917_39900a73",
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cbcc246_5cb7f7b7",
+        "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-26T04:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85e36917_39900a73",
+      "range": {
+        "startLine": 101,
+        "startChar": 41,
+        "endLine": 101,
+        "endChar": 64
+      },
+      "revId": "094c7deccabb0de8b2640302ab9785aa7f244f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e5ca112_02e5a8e5",
@@ -88,6 +130,30 @@
       "writtenOn": "2021-01-25T17:57:26Z",
       "side": 1,
       "message": "so, shutil.Escape cannot handle the case if it includes unprintable chars? Could you fix it instead?",
+      "range": {
+        "startLine": 124,
+        "startChar": 52,
+        "endLine": 124,
+        "endChar": 76
+      },
+      "revId": "094c7deccabb0de8b2640302ab9785aa7f244f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba77935b_ed741694",
+        "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-26T04:08:05Z",
+      "side": 1,
+      "message": "IIUC, a string must be printable after we base64 encode it, so we didn\u0027t passing unprintable chars into shutil.Escape.",
+      "parentUuid": "0e5ca112_02e5a8e5",
       "range": {
         "startLine": 124,
         "startChar": 52,
