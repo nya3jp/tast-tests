@@ -256,6 +256,24 @@
       "parentUuid": "211f54f2_c9c45006",
       "revId": "7e293d20decbda2a3071759fd739507e266246ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "697d31a0_be252a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-26T21:03:42Z",
+      "side": 1,
+      "message": "I understand why we have a separate context, I just don\u0027t like the potential edge case. I realize this is unlikely to come up, but any flakiness in tests is bad. It seems that expanding the outer context might be a better approach in general. *shrug*.",
+      "parentUuid": "3d9fad74_93f9e74c",
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
