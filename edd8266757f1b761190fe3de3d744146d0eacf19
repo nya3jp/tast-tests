@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5750a52_b68c1d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2021-01-26T13:35:39Z",
+      "side": 1,
+      "message": "Done. Thanks.",
+      "parentUuid": "0bae2b1c_5d42c2d8",
+      "range": {
+        "startLine": 645,
+        "startChar": 1,
+        "endLine": 650,
+        "endChar": 2
+      },
+      "revId": "edd8266757f1b761190fe3de3d744146d0eacf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6124c8f_d811db18",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-01-07T10:00:35Z",
       "side": 1,
       "message": "Unrelated to this CL:\nIf the error is form the arc.findWindow() call, the error should still be handled according to the value of param.shouldMove?",
+      "range": {
+        "startLine": 762,
+        "startChar": 4,
+        "endLine": 789,
+        "endChar": 0
+      },
+      "revId": "edd8266757f1b761190fe3de3d744146d0eacf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ca64502_f0af3eb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2021-01-26T13:35:39Z",
+      "side": 1,
+      "message": "I guess you mean act.findWindow(). It returns the ash window of testActivity. So if it returns any error, the test cannot continue.",
+      "parentUuid": "a6124c8f_d811db18",
       "range": {
         "startLine": 762,
         "startChar": 4,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a58e2915_23080ee9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2021-01-26T13:35:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e9fb1e8_56c77315",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 796,
+        "endChar": 5
+      },
+      "revId": "edd8266757f1b761190fe3de3d744146d0eacf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5a44a4d_f344260e",
@@ -134,6 +206,30 @@
       "writtenOn": "2021-01-07T10:00:35Z",
       "side": 1,
       "message": "nit: by this time, you can assume that len(lhs) equals to len(rhs), so this part can be skipped.",
+      "range": {
+        "startLine": 1516,
+        "startChar": 44,
+        "endLine": 1516,
+        "endChar": 56
+      },
+      "revId": "edd8266757f1b761190fe3de3d744146d0eacf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4126bf2_7c227ef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2021-01-26T13:35:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5a44a4d_f344260e",
       "range": {
         "startLine": 1516,
         "startChar": 44,
