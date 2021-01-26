@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/storage"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/drivefs"
 	"chromiumos/tast/testing"
 )
@@ -77,15 +76,7 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	}
 	drivefsRoot := path.Join(mountPath, "root")
 
-	// Drive FS directory banner.
-	// We want to wait for it to appear before performing any action. Otherwise, UI attributes may not be
-	// fully populated.
-	banner := ui.FindParams{
-		ClassName: "drive-welcome-message",
-		Role:      ui.RoleTypeGenericContainer,
-	}
-	dir := storage.Directory{Path: drivefsRoot, Name: "Google Drive", Title: "Files - My Drive",
-		Banner: &banner, CheckFileType: true}
+	dir := storage.Directory{Path: drivefsRoot, Name: "Google Drive", Title: "Files - My Drive", CheckFileType: true}
 
 	storage.TestOpenWithAndroidApp(ctx, s, a, cr, dir, expectations)
 }
