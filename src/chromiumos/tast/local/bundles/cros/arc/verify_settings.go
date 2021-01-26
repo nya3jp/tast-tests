@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/testing"
 )
 
@@ -77,29 +78,18 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 		s.Log("Failed to close Play Store: ", err)
 	}
 
-	// Navigate to Android Settings.
-	if err := apps.Launch(ctx, tconn, apps.Settings.ID); err != nil {
-		s.Fatal("Failed to launch the Settings app: ", err)
-	}
-
+	// Launch Chrome OS Settings Apps Page.
 	appsParam := chromeui.FindParams{
 		Role: chromeui.RoleTypeHeading,
 		Name: "Apps",
 	}
 
-	apps, err := chromeui.FindWithTimeout(ctx, tconn, appsParam, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find Apps Heading: ", err)
-	}
-	defer apps.Release(ctx)
-
-	condition := func(ctx context.Context) (bool, error) {
-		return chromeui.Exists(ctx, tconn, appsParam)
-	}
-
-	opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 2 * time.Second}
-	if err := apps.LeftClickUntil(ctx, condition, &opts); err != nil {
-		s.Fatal("Failed to click the Apps Heading: ", err)
+	if err := ossettings.LaunchAtPage(
+		ctx,
+		tconn,
+		appsParam,
+	); err != nil {
+		s.Fatal("Failed to Open Apps Settings Page: ", err)
 	}
 
 	// Find the "Google Play Store" heading and associated button.
