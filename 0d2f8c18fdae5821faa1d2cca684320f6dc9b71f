@@ -16,6 +16,40 @@
       "message": "Thanks for reviewing. ",
       "revId": "0d2f8c18fdae5821faa1d2cca684320f6dc9b71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d38af6cd_061eb4b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-26T02:17:13Z",
+      "side": 1,
+      "message": "LGTM % one minor nit.",
+      "revId": "0d2f8c18fdae5821faa1d2cca684320f6dc9b71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2f83498_11cad4df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-26T02:17:13Z",
+      "side": 1,
+      "message": "minor nit: Do you think it might be better to restore the orientation after the test? although I think if other tests may fail in landscape mode, they probably should ensure the orientation by themselves.",
+      "revId": "0d2f8c18fdae5821faa1d2cca684320f6dc9b71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
