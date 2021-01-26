@@ -247,6 +247,16 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 
 // ClamshellResizeWindow Test "resize and restore back to original state of the app" and verifies app launch successfully without crash or ANR.
 func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	deviceMode := "clamshell"
+	if tabletModeEnabled {
+		deviceMode = "tablet"
+		s.Log("Device is in ", deviceMode, " mode. Skipping test")
+		return
+	}
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 	if err != nil {
 		s.Error("Failed to get window info: ", err)
