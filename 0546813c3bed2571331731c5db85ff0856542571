@@ -16,6 +16,52 @@
       "message": "Hi Brendan,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "0546813c3bed2571331731c5db85ff0856542571",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92daad16_d6102b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T16:35:49Z",
+      "side": 1,
+      "message": "can this use a.Command(\"dumpsys\", ...)",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 122
+      },
+      "revId": "0546813c3bed2571331731c5db85ff0856542571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b059638_0ab1d118",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T16:35:49Z",
+      "side": 1,
+      "message": "nothing is happening with this error. I assume you meant to use s.Log",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 48
+      },
+      "revId": "0546813c3bed2571331731c5db85ff0856542571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
