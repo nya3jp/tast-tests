@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2260cec6_53b27d6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_maximized_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T17:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b732379_2f63ea6a",
+      "range": {
+        "startLine": 76,
+        "startChar": 21,
+        "endLine": 76,
+        "endChar": 27
+      },
+      "revId": "52bb4523b6d9102b8f9bc5d1ad6136b6af471b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9f6e17c_5914ca8c",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-25T23:17:20Z",
       "side": 1,
       "message": "nit: obtain the duplicated",
+      "range": {
+        "startLine": 84,
+        "startChar": 21,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "52bb4523b6d9102b8f9bc5d1ad6136b6af471b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60b1513e_35cc649e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_maximized_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T17:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9f6e17c_5914ca8c",
       "range": {
         "startLine": 84,
         "startChar": 21,
