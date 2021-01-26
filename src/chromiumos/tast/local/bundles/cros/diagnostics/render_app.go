@@ -61,12 +61,11 @@ func RenderApp(ctx context.Context, s *testing.State) {
 	// Verify test routine buttons are rendered
 	buttons, err := dxRootnode.Descendants(ctx, diagnosticsapp.DxActionButtons)
 	if err != nil {
-		s.Fatal("Failed to find test routine buttons: ", err)
+		s.Fatal("Failed to find test routine button: ", err)
 	}
 	defer buttons.Release(ctx)
 
 	if len(buttons) != 3 {
 		s.Fatalf("Could not find all test routine buttons. got %d, want 3", len(buttons))
 	}
-
 }
