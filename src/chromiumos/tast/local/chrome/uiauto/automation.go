@@ -26,6 +26,7 @@ import (
 )
 
 // Context is the context used when interacting with chrome.automation.
+// Each individual UI interaction is limited by the pollOpts such that it will return an error when the pollOpts timeout.
 type Context struct {
 	tconn    *chrome.TestConn
 	pollOpts testing.PollOptions
