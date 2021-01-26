@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d5fdec_e69991c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/edjing_mix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T16:32:55Z",
+      "side": 1,
+      "message": "can this get a more descriptive name. flag could really mean anything",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "ac1c5110e59d8e7ab78fd27971d8f2b93872d320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cac4f93_159e9ab5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/edjing_mix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T16:32:55Z",
+      "side": 1,
+      "message": "this can just end the if and then call pressAllowKeysEdjingMix(ctx, s, d) without the else\n }\n pressAllowKeysEdjingMix(ctx, s, d)",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "ac1c5110e59d8e7ab78fd27971d8f2b93872d320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
