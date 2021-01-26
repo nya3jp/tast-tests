@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4809494_af3c267d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-26T04:05:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a1115b8_3882770f",
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cb9505f_6f53ce43",
@@ -572,6 +590,24 @@
       "side": 1,
       "message": "How about a (h *Histogram)Concat(other *Histogram)? We are simply concatenating the buckets in to one slice, instead of merging them. Merge is not needed at this time because the external process just process each bucket.",
       "parentUuid": "4973e2a7_cd5a818c",
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b36583e_81fe7782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-26T04:05:05Z",
+      "side": 1,
+      "message": "We changed based on Xibin\u0027s proposal. Also,we can submit another patch for this if you still have concerns for this, thanks.",
+      "parentUuid": "56bbfbe3_a0283df5",
       "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
