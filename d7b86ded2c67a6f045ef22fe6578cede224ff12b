@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe4917f2_1382a4bc",
+        "filename": "src/chromiumos/tast/common/perf/perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T17:28:14Z",
+      "side": 1,
+      "message": "With eliminating timeline from the battery tracker, you can remove this method.",
+      "revId": "d7b86ded2c67a6f045ef22fe6578cede224ff12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b32fa0f_1bc60c58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T17:28:14Z",
+      "side": 1,
+      "message": "I believe I commented previously, but please stop using timeline here. The point here is to invoke ReadSystemPower.  You can do that by dispatching a goroutine with time.Ticker.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "d7b86ded2c67a6f045ef22fe6578cede224ff12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eaeceac_07f7bda6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T17:28:14Z",
+      "side": 1,
+      "message": "prefix is added but never used?   I thought it is used when building perf.Metric.\n\nIf this is not important, can you remove this field?",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "d7b86ded2c67a6f045ef22fe6578cede224ff12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c9473f2_9d1e1be6",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T17:28:14Z",
+      "side": 1,
+      "message": "Looks like this can be implemented by ReadBatteryPropetry.  Can you rewrite this?",
+      "revId": "d7b86ded2c67a6f045ef22fe6578cede224ff12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
