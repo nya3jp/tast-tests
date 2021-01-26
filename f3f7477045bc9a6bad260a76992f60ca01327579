@@ -33,6 +33,24 @@
       "message": "Until / unless we use this for multiple tests, we should be able to make this a local in the test function.",
       "revId": "f3f7477045bc9a6bad260a76992f60ca01327579",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b435b54f_aec4eb22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/connectivity_diagnostics_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-26T01:22:51Z",
+      "side": 1,
+      "message": "I believe it is common practice to put constants or things of that nature outside of the function body. They are not exported outside of the test. I\u0027ll defer to nya@ here",
+      "parentUuid": "1d1ce629_6550f703",
+      "revId": "f3f7477045bc9a6bad260a76992f60ca01327579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
