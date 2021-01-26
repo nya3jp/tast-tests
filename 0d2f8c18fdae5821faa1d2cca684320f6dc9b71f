@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd23e96f_598591d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-26T02:34:01Z",
+      "side": 1,
+      "message": "Thanks for reviewing.",
+      "revId": "0d2f8c18fdae5821faa1d2cca684320f6dc9b71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2f83498_11cad4df",
@@ -48,6 +65,24 @@
       "writtenOn": "2021-01-26T02:17:13Z",
       "side": 1,
       "message": "minor nit: Do you think it might be better to restore the orientation after the test? although I think if other tests may fail in landscape mode, they probably should ensure the orientation by themselves.",
+      "revId": "0d2f8c18fdae5821faa1d2cca684320f6dc9b71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff0e5ba8_193160df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-26T02:34:01Z",
+      "side": 1,
+      "message": "Good point.\nLet me submit this as-is and I will create a follow-up CL to restore the original orientation. It is because this CL keeps the test behavior of play.go.",
+      "parentUuid": "b2f83498_11cad4df",
       "revId": "0d2f8c18fdae5821faa1d2cca684320f6dc9b71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
