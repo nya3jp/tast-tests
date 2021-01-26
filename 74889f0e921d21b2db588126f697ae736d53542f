@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c261921_d38ea9bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-26T00:25:03Z",
+      "side": 1,
+      "message": "It seems that this change adds a regression test of b/173959674. If so, does this test fail without ag/13352646?\n\u003e yes, I ran this test without the patch\n\nIs a new test a superset of `UniformScaleFactor` test? Or are there any difference between initial part of the new test and `UniformScaleFactor`?\n\u003e good point, I have now moved it as part of the existing test",
+      "parentUuid": "cbf215fd_8b17e312",
+      "revId": "74889f0e921d21b2db588126f697ae736d53542f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25d83b0c_ba1591b0",
@@ -66,6 +84,30 @@
       "writtenOn": "2021-01-21T05:27:23Z",
       "side": 1,
       "message": "nit: do we need to expose this?",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "74889f0e921d21b2db588126f697ae736d53542f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b27ed94_7cb0e67b",
+        "filename": "android/ArcPerAppDensityTest/AndroidManifest.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-26T00:25:03Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "25d83b0c_ba1591b0",
       "range": {
         "startLine": 24,
         "startChar": 12,
@@ -99,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f20db1a_67ebbf74",
+        "filename": "android/ArcPerAppDensityTest/res/layout/view_activity.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-26T00:25:03Z",
+      "side": 1,
+      "message": "good idea, thanks",
+      "parentUuid": "b512af70_80333488",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "74889f0e921d21b2db588126f697ae736d53542f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "330d87b4_58c0c950",
@@ -112,6 +178,30 @@
       "writtenOn": "2021-01-21T05:27:23Z",
       "side": 1,
       "message": "nit: you can just use `this`",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "74889f0e921d21b2db588126f697ae736d53542f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7119d0f7_a4b97aba",
+        "filename": "android/ArcPerAppDensityTest/src/org/chromium/arc/testapp/perappdensitytest/ViewActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-26T00:25:03Z",
+      "side": 1,
+      "message": "hmm using \"this\" returns following error:\n\nerror: no suitable constructor found for Intent(\u003canonymous OnClickListener\u003e,Class\u003cSecondActivity\u003e)\n            startActivity(new Intent(this, SecondActivity.class));",
+      "parentUuid": "330d87b4_58c0c950",
       "range": {
         "startLine": 31,
         "startChar": 37,
