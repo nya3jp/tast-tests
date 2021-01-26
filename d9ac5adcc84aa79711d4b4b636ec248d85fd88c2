@@ -94,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ea1b55_28e58776",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-26T06:49:52Z",
+      "side": 1,
+      "message": "After switching to fixture, we removed this section.",
+      "parentUuid": "24155d7b_d1cb7732",
+      "range": {
+        "startLine": 60,
+        "startChar": 45,
+        "endLine": 60,
+        "endChar": 46
+      },
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8eb43b0_3a8a5b91",
@@ -165,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f10d2651_61b2ca1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-26T06:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d41abd_145d8b8b",
+      "range": {
+        "startLine": 78,
+        "startChar": 27,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bfa52a0_fc9ad0eb",
@@ -184,6 +232,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3bc7374_ba6d4a71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-26T06:49:52Z",
+      "side": 1,
+      "message": "At first, we\u0027re trying to measure the elapsed time from the chrome OS to the first nonempty paint of the first contents. We did consider put the measurement in chrome.New(), but that\u0027s impact too much things and may change some methods interface. Also, we didn\u0027t think current implementation is best way to measure. Could you give us some advise ?",
+      "parentUuid": "0bfa52a0_fc9ad0eb",
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dccb0524_896ef831",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
         "patchSetId": 1
@@ -195,6 +261,30 @@
       "writtenOn": "2021-01-13T16:57:10Z",
       "side": 1,
       "message": "This now exists as a package function. You don\u0027t need to define this by yourself.",
+      "range": {
+        "startLine": 144,
+        "startChar": 29,
+        "endLine": 144,
+        "endChar": 44
+      },
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb200dd8_87771975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-26T06:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dccb0524_896ef831",
       "range": {
         "startLine": 144,
         "startChar": 29,
