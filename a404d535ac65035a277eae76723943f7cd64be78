@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5ef25cd_42d34302",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-01-26T07:10:25Z",
+      "side": 1,
+      "message": "In the next few months this process will be deprecated as we will be able to use lacros in the ChromeOS image, IIUC.\n\nGiven that it might be nice to mention the specifics. WDYT?\n\nHappy to remove if you still think it should be.",
+      "parentUuid": "b705b42b_7ef662a2",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "a404d535ac65035a277eae76723943f7cd64be78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ccdf9697_dd9006cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
         "patchSetId": 1
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "Probably not mentioning it, this is to be fixed soon, fix is already under review, so probably just in a matter of a few days. (crbug.com/1139107)",
       "parentUuid": "ccdf9697_dd9006cb",
+      "range": {
+        "startLine": 17,
+        "startChar": 58,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "a404d535ac65035a277eae76723943f7cd64be78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b224c21a_d822ec26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-01-26T07:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c52c577_effc8334",
       "range": {
         "startLine": 17,
         "startChar": 58,
