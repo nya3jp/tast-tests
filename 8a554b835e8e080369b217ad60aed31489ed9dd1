@@ -190,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e8ccf5_817157c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-26T22:27:49Z",
+      "side": 1,
+      "message": "Removed sender.js and replaced with direct calls to nearby-discovery-page and nearby-confirmation-page fields",
+      "parentUuid": "d6f85e23_00087add",
+      "range": {
+        "startLine": 34,
+        "startChar": 48,
+        "endLine": 34,
+        "endChar": 59
+      },
+      "revId": "8a554b835e8e080369b217ad60aed31489ed9dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcfbabd5_96b43ad1",
