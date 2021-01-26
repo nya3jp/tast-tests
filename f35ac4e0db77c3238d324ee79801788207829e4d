@@ -16,6 +16,46 @@
       "message": "Hi mukai@ could you please take another look at this? Thank you.",
       "revId": "f35ac4e0db77c3238d324ee79801788207829e4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05926e1d_b28faf2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T18:59:06Z",
+      "side": 1,
+      "message": "LGTM with a nit",
+      "revId": "f35ac4e0db77c3238d324ee79801788207829e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a00da77_725e9174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-26T18:59:06Z",
+      "side": 1,
+      "message": "Sorry, this might be contradicting with other comments, but I think it is better to split this defer into 2; it is more understandable that SetBetterOnboardingEnabled(false) is called after it is enabled.\n\nThat means:\n  if err :\u003d assistant.EnableAndWaitForReady(ctx, tconn); err !\u003d nil {\n    ...\n  }\n  defer func() {\n    if err :\u003d assistant.Cleanup(ctx, s.HasError, cr, tconn); err !\u003d nil {\n      ...\n    }\n  }()\n  if err :\u003d assistant.SetBetterOnboardingEnabled(ctx, tconn, true); err !\u003d nil {\n    ...\n  }\n  defer func() {\n    if err :\u003d assistant.SetBetterOnboardingEnabled(ctx, tconn, false); err !\u003d nil {\n      ...\n    }\n  }()\n  ...",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 4
+      },
+      "revId": "f35ac4e0db77c3238d324ee79801788207829e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
