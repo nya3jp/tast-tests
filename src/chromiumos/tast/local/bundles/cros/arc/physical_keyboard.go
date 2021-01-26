@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
 
@@ -94,13 +93,6 @@ func testTextField(ctx context.Context, st pkTestState, s *testing.State, activi
 		return errors.Wrapf(err, "failed to start the activity %q", activity)
 	}
 	defer act.Stop(ctx, tconn)
-
-	// Wait system becomes idle after installing and starting the new activity.
-	// GC and dex2oat may run now that could cause instability on low-performance devices.
-	// TODO(b/168184423): Further investigation needed.
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait CPU is idle")
-	}
 
 	if err := d.Object(ui.ID(fieldID), ui.Text(initText)).WaitForExists(ctx, 30*time.Second); err != nil {
 		return errors.Wrap(err, "failed to find field")
