@@ -188,6 +188,22 @@ func SetUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	if err := playstore.InstallApp(ctx, a, d, appPkgName, 3); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
+	// To get app version name.
+	out, err := a.Command(ctx, "dumpsys", "package", appPkgName).Output()
+	if err != nil {
+		s.Log(err, "could not get dumpsys package")
+	} else {
+		versionNamePrefix := "versionName="
+		output := string(out)
+		splitOutput := strings.Split(output, "\n")
+		for splitLine := range splitOutput {
+			if strings.Contains(splitOutput[splitLine], versionNamePrefix) {
+				versionNameAfterSplit := strings.Split(splitOutput[splitLine], "=")[1]
+				s.Log("Version name of ", appPkgName, " is: ", versionNameAfterSplit)
+				break
+			}
+		}
+	}
 	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Log("Failed to close Play Store: ", err)
 	}
