@@ -15,10 +15,10 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/media/devtools"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/testing"
 )
@@ -64,27 +64,19 @@ func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome, videoName
 	defer crastestclient.Unmute(ctx)
 
 	testing.ContextLog(ctx, "Measuring performance")
-	if err = measurePerformance(ctx, cr, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, decoderType, s.OutDir()); err != nil {
+	if err = measurePerformance(ctx, cr, s.DataFileSystem(), videoName, decoderType, s.OutDir()); err != nil {
 		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
 	}
 }
 
 // measurePerformance collects video playback performance playing a video with
-// either SW or HW decoder. utilsJSPath is a path of
-// chrome_media_internals_utils.js
-func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, utilsJSPath, videoName string,
+// either SW or HW decoder.
+func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, videoName string,
 	decoderType DecoderType, outDir string) error {
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return err
 	}
-
-	chromeMediaInternalsConn, err := decode.OpenChromeMediaInternalsPageAndInjectJS(ctx, cr, utilsJSPath)
-	if err != nil {
-		return errors.Wrap(err, "failed to open chrome://media-internals")
-	}
-	defer chromeMediaInternalsConn.Close()
-	defer chromeMediaInternalsConn.CloseTarget(ctx)
 
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
@@ -96,6 +88,11 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
+
+	observer, err := conn.GetMediaPropertiesChangedObserver(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to retrieve DevTools Media messages")
+	}
 
 	// Wait until video element is loaded.
 	if err := conn.WaitForExpr(ctx, "document.getElementsByTagName('video').length > 0"); err != nil {
@@ -112,23 +109,18 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 		return errors.Wrap(err, "failed waiting for video to advance playback")
 	}
 
-	usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, url)
+	isPlatform, decoderName, err := devtools.GetVideoDecoder(ctx, observer, url)
 	if err != nil {
-		return errors.Wrap(err, "failed to parse chrome:media-internals: ")
+		return errors.Wrap(err, "failed to parse Media DevTools: ")
 	}
 	if decoderType == Hardware {
-		if !usesPlatformVideoDecoder {
+		if !isPlatform {
 			return errors.New("hardware decoding accelerator was expected but wasn't used")
 		}
 	} else {
-		if usesPlatformVideoDecoder {
+		if isPlatform {
 			return errors.New("software decoding was expected but wasn't used")
 		}
-	}
-
-	decoderName, err := decode.URLVideoDecoderName(ctx, chromeMediaInternalsConn, url)
-	if err != nil {
-		return errors.Wrap(err, "failed to parse chrome:media-internals: ")
 	}
 	testing.ContextLog(ctx, "decoderName: ", decoderName)
 	if decoderType == LibGAV1 && decoderName != "Gav1VideoDecoder" {

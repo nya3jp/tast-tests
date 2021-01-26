@@ -13,6 +13,7 @@ import (
 	"github.com/mafredri/cdp"
 	"github.com/mafredri/cdp/protocol/dom"
 	"github.com/mafredri/cdp/protocol/input"
+	"github.com/mafredri/cdp/protocol/media"
 	"github.com/mafredri/cdp/protocol/page"
 	"github.com/mafredri/cdp/protocol/profiler"
 	"github.com/mafredri/cdp/protocol/runtime"
@@ -361,4 +362,18 @@ func (c *Conn) StopProfiling(ctx context.Context) (*profiler.TakePreciseCoverage
 	}
 
 	return reply, nil
+}
+
+// GetMediaPropertiesChangedObserver enables media logging for the current
+// connection and retrieves a properties change observer.
+func (c *Conn) GetMediaPropertiesChangedObserver(ctx context.Context) (observer media.PlayerPropertiesChangedClient, err error) {
+	if err := c.cl.Media.Enable(ctx); err != nil {
+		return nil, err
+	}
+
+	observer, err = c.cl.Media.PlayerPropertiesChanged(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return observer, nil
 }
