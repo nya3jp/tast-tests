@@ -16,6 +16,24 @@
       "message": "Hmm... In general, I prefer keeping things in named files, rather than moving many stuff to util,\nbecause util can contain whatever conveniently, so it can quickly turn into kitchen sink.\n\nMore details:\n- conn.go: this is on border to me. I think we can keep the file, but I do not have strong opinion to merge it into chrome.go.\n- extensions.go: I\u0027d recommend to keep it. And, instead, move ExtensionBackgroundPageURL to the file.\n- I\u0027d prefer keeping SaveTraceToFile closer to {Start,Stop}Tracing. I would introduce trace.go, or another package.\n\nWDYT?",
       "revId": "f6966871a2d794a710ad6b1d612e94869dc3900e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "684f9cfd_a6506c38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T04:25:41Z",
+      "side": 1,
+      "message": "OK. Actually I\u0027m fine with most of your recommendations, so let me do so.\n\nBut move of SafveTraceToFile was requested by Jun:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2639194/1..7/src/chromiumos/tast/local/chrome/chrome.go#b1461\n\nJun, if you still want to move it elsewhere please discuss with Hidehiko. I\u0027m fine with either way.",
+      "parentUuid": "ff03f4f0_29077b21",
+      "revId": "f6966871a2d794a710ad6b1d612e94869dc3900e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
