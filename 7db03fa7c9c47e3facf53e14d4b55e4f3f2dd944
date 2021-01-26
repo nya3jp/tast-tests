@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "112e5961_5da686a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-26T03:58:06Z",
+      "side": 1,
+      "message": "Add \n// Returns false without error when Service.AutoConnect is already set to |autoConnect|.",
+      "revId": "7db03fa7c9c47e3facf53e14d4b55e4f3f2dd944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
