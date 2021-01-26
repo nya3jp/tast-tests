@@ -50,6 +50,23 @@
       "message": "Pavol, other concerns?\n\nCan I go ahead and ask the tast owners for review?",
       "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6372e388_68ebc639",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1374257
+      },
+      "writtenOn": "2021-01-26T19:03:31Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
