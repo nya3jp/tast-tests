@@ -16,6 +16,24 @@
       "message": "Not necessary to be done in this CL, but:\n- I guess the reason why re-exposing these functions and constants because they have external users\n- why not moving this into non-internal package (e.g. chrome/proc package) -- and then the external users can refer to that package instead of chrome\n\nwdyt?",
       "revId": "1fd480d68704de8b1074860c8ed1128317a3ce13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2f6fb6_7d51a949",
+        "filename": "src/chromiumos/tast/local/chrome/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T04:25:25Z",
+      "side": 1,
+      "message": "IIUC it\u0027s common in Go to have a package with many exported symbols (e.g. net/http contains both HTTP clients and servers), rather than providing many smaller packages. And in this case, I think it makes sense for callers to call\n\n chrome.GetRootPID()\n\ninstead of\n\n chromeproc.GetRootPID()\n\nwith another extra import.\n\nSo, while I\u0027m splitting the chrome package to several internal packages for its internal maintainability, I want to keep public APIs in one place (chromiumos/tast/local/chrome), rather than introducing many subpackages.\n\nI\u0027m going forward with this change as you gave me CR+2, but I\u0027m happy to continue this discussion if you still want to introduce subpackages.",
+      "parentUuid": "530e1039_d02775c9",
+      "revId": "1fd480d68704de8b1074860c8ed1128317a3ce13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
