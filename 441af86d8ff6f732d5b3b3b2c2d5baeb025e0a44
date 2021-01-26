@@ -39,6 +39,30 @@
       },
       "revId": "441af86d8ff6f732d5b3b3b2c2d5baeb025e0a44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c19166_3a1f5dea",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T04:25:13Z",
+      "side": 1,
+      "message": "It\u0027s impossible due to circular import between config and driver.",
+      "parentUuid": "3212925b_50ccef0d",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "441af86d8ff6f732d5b3b3b2c2d5baeb025e0a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

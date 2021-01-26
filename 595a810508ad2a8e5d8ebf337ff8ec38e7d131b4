@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b99630_68ad34b2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T04:25:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6ed8cb4_47230f30",
+      "revId": "595a810508ad2a8e5d8ebf337ff8ec38e7d131b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d3a9671_5b1540cb",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a275c285_6aca5987",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T04:25:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d3a9671_5b1540cb",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 37
+      },
+      "revId": "595a810508ad2a8e5d8ebf337ff8ec38e7d131b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17c09349_50dcbc61",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-01-25T17:21:54Z",
       "side": 1,
       "message": "ditto for style.",
+      "range": {
+        "startLine": 779,
+        "startChar": 0,
+        "endLine": 781,
+        "endChar": 36
+      },
+      "revId": "595a810508ad2a8e5d8ebf337ff8ec38e7d131b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a5a28c1_489bb841",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T04:25:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17c09349_50dcbc61",
       "range": {
         "startLine": 779,
         "startChar": 0,
