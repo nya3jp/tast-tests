@@ -52,6 +52,24 @@
       "parentUuid": "5d7c4d37_e910ce5f",
       "revId": "39bade7337ff8ebdb31f13475f2c161239682af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b81d0e_112206ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-26T00:21:36Z",
+      "side": 1,
+      "message": "The correct caps is HWDecodeAV1_4K10BPP.\nI remember I have to name so as a name style in golang. The pre-submit complains if I name HWDecodeAV1_4K_10BPP.",
+      "parentUuid": "eaaec873_06cea142",
+      "revId": "39bade7337ff8ebdb31f13475f2c161239682af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
