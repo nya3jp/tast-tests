@@ -39,6 +39,30 @@
       },
       "revId": "0bfcb597510fca6d5b66ce6736d4cf4ee0135cd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ad1f162_e616961b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/artflow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-01-26T20:04:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "375e8386_ecec9eaa",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 31
+      },
+      "revId": "0bfcb597510fca6d5b66ce6736d4cf4ee0135cd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
