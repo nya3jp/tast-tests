@@ -127,8 +127,11 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 
 	s.Logf("Checking status of %d processes", len(infos))
 	numChecked := 0
-	numFlowingIn := 0
-	numShared := 0
+	var haveMountsFlowingIn []string
+	var haveSharedMounts []string
+	var rootProcsInInitMountNS []string
+	var rootProcsWithMountsFlowingIn []string
+
 	for pid, info := range infos {
 		if pid == initPID {
 			continue
@@ -140,6 +143,14 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 			continue
 		}
 		if skip, err := sandboxing.ProcHasAncestor(pid, ignoredAncestorPIDs, infos); err == nil && skip {
+			continue
+		}
+
+		if info.Euid == 0 && info.MntNS == initInfo.MntNS {
+			// Root processes running in the root mount namespace are exposed
+			// to mounts created by other processes.
+			rootProcsInInitMountNS = append(rootProcsInInitMountNS, info.Name)
+			numChecked++
 			continue
 		}
 
@@ -159,15 +170,28 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 		}
 
 		if hasMountFlowingIn {
-			numFlowingIn++
+			haveMountsFlowingIn = append(haveMountsFlowingIn, info.Name)
 		}
 		if hasSharedMount {
-			numShared++
+			haveSharedMounts = append(haveSharedMounts, info.Name)
 		}
+
+		if (hasMountFlowingIn || hasSharedMount) && info.Euid == 0 {
+			rootProcsWithMountsFlowingIn = append(rootProcsWithMountsFlowingIn, info.Name)
+		}
+
 		numChecked++
 	}
 
 	s.Logf("Checked %d processes after exclusions", numChecked)
-	s.Logf("%d processes have mounts flowing in", numFlowingIn)
-	s.Logf("%d processes have shared mounts", numShared)
+	s.Logf("%d processes have mounts flowing in", len(haveMountsFlowingIn))
+	s.Logf("%d processes have shared mounts", len(haveSharedMounts))
+	s.Logf("%d root processes are running in the root mount NS:", len(rootProcsInInitMountNS))
+	for _, proc := range rootProcsInInitMountNS {
+		s.Log(proc)
+	}
+	s.Logf("%d root processes have mounts flowing in:", len(rootProcsWithMountsFlowingIn))
+	for _, proc := range rootProcsWithMountsFlowingIn {
+		s.Log(proc)
+	}
 }
