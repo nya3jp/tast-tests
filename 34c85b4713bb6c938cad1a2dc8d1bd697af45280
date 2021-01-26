@@ -115,6 +115,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b933e857_046da9d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-26T08:20:37Z",
+      "side": 1,
+      "message": "There\u0027s no formal guideline about images in docs. But actually in go/tast-docs we place an image file next to .md files (Tast logo :))\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/\n\nSo I think this is fine. We can revisit it later when we get more images.",
+      "parentUuid": "dcd3fe33_f800ceed",
+      "revId": "34c85b4713bb6c938cad1a2dc8d1bd697af45280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d007403a_b0c8a772",
