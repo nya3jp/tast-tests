@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0c4a15_39317e46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-01-26T08:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60f0c0c8_49d7c6c0",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "49aa69a0415e5c56e36a5ad10bb51d0f1587e972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b88d30e4_d56d615b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-26T06:02:18Z",
       "side": 1,
       "message": "can you also specify vm test here?\nI\u0027m with shortening it to:\n\"arc.A11y*.vm\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "49aa69a0415e5c56e36a5ad10bb51d0f1587e972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19b2172_30edfed3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-01-26T08:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b88d30e4_d56d615b",
       "range": {
         "startLine": 10,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca1a9ad7_8fec4db7",
+        "filename": "android/ArcAccessibilityTest/res/layout/main_accessibility.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-01-26T08:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6849175f_0daf53a1",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 46
+      },
+      "revId": "49aa69a0415e5c56e36a5ad10bb51d0f1587e972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b38c550_6bd9d9fe",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "837c88b8_6288cc7c",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/MainActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-01-26T08:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b38c550_6bd9d9fe",
+      "range": {
+        "startLine": 40,
+        "startChar": 37,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "49aa69a0415e5c56e36a5ad10bb51d0f1587e972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d7406fd_f3566f90",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-01-26T05:49:10Z",
       "side": 1,
       "message": "can we get this value dynamically? Probably seekBar.getProgress() returns the value we can use here.",
+      "range": {
+        "startLine": 56,
+        "startChar": 63,
+        "endLine": 56,
+        "endChar": 65
+      },
+      "revId": "49aa69a0415e5c56e36a5ad10bb51d0f1587e972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b6d0e7_3526967a",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/MainActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-01-26T08:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d7406fd_f3566f90",
       "range": {
         "startLine": 56,
         "startChar": 63,

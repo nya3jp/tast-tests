@@ -39,6 +39,30 @@
       },
       "revId": "a95d432748303d238e3dcab6bde7f7589473be01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1245785_828301fe",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/MainActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-01-26T08:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bf3dc26_f4d2bd51",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "a95d432748303d238e3dcab6bde7f7589473be01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
