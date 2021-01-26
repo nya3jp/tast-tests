@@ -53,7 +53,7 @@ var WindowFinder *nodewith.Finder = nodewith.NameContaining("Files").ClassName("
 
 // FilesApp represents an instance of the Files App.
 type FilesApp struct {
-	ui    *uiauto.Context
+	UI    *uiauto.Context
 	tconn *chrome.TestConn
 }
 
@@ -75,7 +75,7 @@ func Launch(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context) (*F
 		return nil, err
 	}
 
-	return &FilesApp{tconn: tconn, ui: ui}, nil
+	return &FilesApp{tconn: tconn, UI: ui}, nil
 }
 
 // Close closes the Files App.
@@ -87,7 +87,7 @@ func (f *FilesApp) Close(ctx context.Context) error {
 	}
 
 	// Wait for window to close.
-	return f.ui.WithTimeout(time.Minute).WaitUntilGone(WindowFinder)(ctx)
+	return f.UI.WithTimeout(time.Minute).WaitUntilGone(WindowFinder)(ctx)
 }
 
 // OpenDir returns a function that opens one of the directories shown in the navigation tree.
@@ -95,8 +95,8 @@ func (f *FilesApp) Close(ctx context.Context) error {
 func (f *FilesApp) OpenDir(dirName, expectedTitle string) uiauto.Action {
 	dir := nodewith.Name(dirName).Role(role.TreeItem).Ancestor(WindowFinder)
 	return uiauto.Combine("OpenDir",
-		f.ui.LeftClick(nodewith.Name(dirName).Role(role.StaticText).Ancestor(dir)),
-		f.ui.WaitUntilExists(nodewith.Name(expectedTitle).Role(role.RootWebArea).Ancestor(WindowFinder)),
+		f.UI.LeftClick(nodewith.Name(dirName).Role(role.StaticText).Ancestor(dir)),
+		f.UI.WaitUntilExists(nodewith.Name(expectedTitle).Role(role.RootWebArea).Ancestor(WindowFinder)),
 	)
 }
 
@@ -126,22 +126,22 @@ func file(fileName string) *nodewith.Finder {
 
 // WaitForFile returns a function that waits for a file to be visible.
 func (f *FilesApp) WaitForFile(fileName string) uiauto.Action {
-	return f.ui.WaitUntilExists(file(fileName))
+	return f.UI.WaitUntilExists(file(fileName))
 }
 
 // WaitUntilFileGone returns a function that waits for a file to no longer be visible.
 func (f *FilesApp) WaitUntilFileGone(fileName string) uiauto.Action {
-	return f.ui.WaitUntilGone(file(fileName))
+	return f.UI.WaitUntilGone(file(fileName))
 }
 
 // SelectFile returns a function that selects a file by clicking on it.
 func (f *FilesApp) SelectFile(fileName string) uiauto.Action {
-	return f.ui.LeftClick(file(fileName))
+	return f.UI.LeftClick(file(fileName))
 }
 
 // OpenFile returns a function that executes double click on a file to open it with default app.
 func (f *FilesApp) OpenFile(fileName string) uiauto.Action {
-	return f.ui.DoubleClick(file(fileName))
+	return f.UI.DoubleClick(file(fileName))
 }
 
 // OpenQuickView returns a function that opens the QuickView menu for a file.
@@ -153,10 +153,10 @@ func (f *FilesApp) OpenQuickView(fileName string) uiauto.Action {
 func (f *FilesApp) ClickMoreMenuItem(menuItems ...string) uiauto.Action {
 	var steps []uiauto.Action
 	// Open More menu.
-	steps = append(steps, f.ui.LeftClick(nodewith.Name("More…").Role(role.PopUpButton).Ancestor(WindowFinder)))
+	steps = append(steps, f.UI.LeftClick(nodewith.Name("More…").Role(role.PopUpButton).Ancestor(WindowFinder)))
 	// Iterate over the menu items and click them.
 	for _, menuItem := range menuItems {
-		steps = append(steps, f.ui.LeftClick(nodewith.Name(menuItem).Role(role.MenuItem).Ancestor(WindowFinder)))
+		steps = append(steps, f.UI.LeftClick(nodewith.Name(menuItem).Role(role.MenuItem).Ancestor(WindowFinder)))
 	}
 	return uiauto.Combine(fmt.Sprintf("ClickMoreMenu(%s)", menuItems), steps...)
 }
@@ -166,10 +166,10 @@ func (f *FilesApp) ClickMoreMenuItem(menuItems ...string) uiauto.Action {
 func (f *FilesApp) ClickContextMenuItem(fileName string, menuItems ...string) uiauto.Action {
 	var steps []uiauto.Action
 	// Open Context menu.
-	steps = append(steps, f.ui.RightClick(file(fileName)))
+	steps = append(steps, f.UI.RightClick(file(fileName)))
 	// Iterate over the menu items and click them.
 	for _, menuItem := range menuItems {
-		steps = append(steps, f.ui.LeftClick(nodewith.Name(menuItem).Role(role.MenuItem).Ancestor(WindowFinder)))
+		steps = append(steps, f.UI.LeftClick(nodewith.Name(menuItem).Role(role.MenuItem).Ancestor(WindowFinder)))
 	}
 	return uiauto.Combine(fmt.Sprintf("ClickContextMenuItem(%s, %s)", fileName, menuItems), steps...)
 }
@@ -180,10 +180,10 @@ func (f *FilesApp) ClickDirectoryContextMenuItem(dirName string, menuItems ...st
 	var steps []uiauto.Action
 	// Open Context menu.
 	dir := nodewith.Name(dirName).Role(role.TreeItem).Ancestor(WindowFinder)
-	steps = append(steps, f.ui.RightClick(nodewith.Name(dirName).Role(role.StaticText).Ancestor(dir)))
+	steps = append(steps, f.UI.RightClick(nodewith.Name(dirName).Role(role.StaticText).Ancestor(dir)))
 	// Iterate over the menu items and click them.
 	for _, menuItem := range menuItems {
-		steps = append(steps, f.ui.LeftClick(nodewith.Name(menuItem).Role(role.MenuItem).Ancestor(WindowFinder)))
+		steps = append(steps, f.UI.LeftClick(nodewith.Name(menuItem).Role(role.MenuItem).Ancestor(WindowFinder)))
 	}
 	return uiauto.Combine(fmt.Sprintf("ClickContextMenuItem(%s, %s)", dirName, menuItems), steps...)
 }
@@ -204,20 +204,20 @@ func (f *FilesApp) SelectMultipleFiles(kb *input.KeyboardEventWriter, fileList .
 		}
 		// Ensure the correct number of items are selected.
 		var selectionLabelRE = regexp.MustCompile(fmt.Sprintf("%d (files|items|folders) selected", len(fileList)))
-		return f.ui.WaitUntilExists(nodewith.Role(role.StaticText).NameRegex(selectionLabelRE))(ctx)
+		return f.UI.WaitUntilExists(nodewith.Role(role.StaticText).NameRegex(selectionLabelRE))(ctx)
 	}
 }
 
 // CreateFolder returns a function that creates a new folder named dirName in the current directory.
 func (f *FilesApp) CreateFolder(kb *input.KeyboardEventWriter, dirName string) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("CreateFolder(%s)", dirName),
-		f.ui.FocusAndWait(nodewith.Role(role.ListBox).Ancestor(WindowFinder)),
+		f.UI.FocusAndWait(nodewith.Role(role.ListBox).Ancestor(WindowFinder)),
 		func(ctx context.Context) error {
 			// Press Ctrl+E to create a new folder.
 			return kb.Accel(ctx, "Ctrl+E")
 		},
 		// Wait for rename text field.
-		f.ui.WaitUntilExists(nodewith.Role(role.TextField).Editable().Focusable().Focused()),
+		f.UI.WaitUntilExists(nodewith.Role(role.TextField).Editable().Focusable().Focused()),
 		func(ctx context.Context) error {
 			return kb.Type(ctx, dirName)
 		},
@@ -253,7 +253,7 @@ func (f *FilesApp) DeleteFileOrFolder(kb *input.KeyboardEventWriter, fileName st
 		func(ctx context.Context) error {
 			return kb.Accel(ctx, "Alt+Backspace")
 		},
-		f.ui.LeftClick(nodewith.Name(Delete).ClassName("cr-dialog-ok").Role(role.Button).Ancestor(WindowFinder)),
+		f.UI.LeftClick(nodewith.Name(Delete).ClassName("cr-dialog-ok").Role(role.Button).Ancestor(WindowFinder)),
 		f.WaitUntilFileGone(fileName),
 	)
 }
@@ -285,8 +285,8 @@ func (f *FilesApp) RenameFile(kb *input.KeyboardEventWriter, oldName, newName st
 // The search occurs within the currently visible directory root e.g. Downloads.
 func (f *FilesApp) Search(kb *input.KeyboardEventWriter, searchTerms string) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("Search(%s)", searchTerms),
-		f.ui.LeftClick(nodewith.Name("Search").Role(role.Button)),
-		f.ui.WaitUntilExists(nodewith.Name("Search").Role(role.SearchBox)),
+		f.UI.LeftClick(nodewith.Name("Search").Role(role.Button)),
+		f.UI.WaitUntilExists(nodewith.Name("Search").Role(role.SearchBox)),
 		func(ctx context.Context) error {
 			return kb.Type(ctx, searchTerms)
 		},
