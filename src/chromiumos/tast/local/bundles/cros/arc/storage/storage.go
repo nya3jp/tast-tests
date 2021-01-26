@@ -15,8 +15,10 @@ import (
 	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -52,9 +54,6 @@ type Directory struct {
 	Path  string
 	Name  string
 	Title string
-	// Optional: If Banner is not nil, openWithReaderApp() will wait for the banner to appear after
-	// navigating to this directory, to make sure that all UI attributes are fully populated.
-	Banner *ui.FindParams
 	// Optional: If CheckFileType is true, wait for file type to appear before opening the file.
 	CheckFileType bool
 }
@@ -84,7 +83,6 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 	if err != nil {
 		s.Fatal("Failed to open Files App: ", err)
 	}
-	defer files.Release(ctx)
 
 	if err := openWithReaderApp(ctx, files, dir); err != nil {
 		s.Fatal("Could not open file with ArcFileReaderTest: ", err)
@@ -106,7 +104,8 @@ func openFilesApp(ctx context.Context, cr *chrome.Chrome) (*filesapp.FilesApp, e
 	}
 
 	// Open the Files App.
-	files, err := filesapp.Launch(ctx, tconn)
+	ui := uiauto.New(tconn).WithTimeout(uiTimeout)
+	files, err := filesapp.Launch(ctx, tconn, ui)
 	if err != nil {
 		return nil, errors.Wrap(err, "launching the Files App failed")
 	}
@@ -118,70 +117,25 @@ func openFilesApp(ctx context.Context, cr *chrome.Chrome) (*filesapp.FilesApp, e
 func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, dir Directory) error {
 	testing.ContextLog(ctx, "Opening the test file with ArcFileReaderTest")
 
-	// Open the directory under testing.
-	if err := files.OpenDir(ctx, dir.Name, dir.Title); err != nil {
-		return errors.Wrapf(err, "could not open %s folder", dir.Name)
-	}
-
-	// Wait for directory banner.
-	if dir.Banner != nil {
-		if err := files.Root.WaitUntilDescendantExists(ctx, *dir.Banner, uiTimeout); err != nil {
-			return errors.Wrap(err, "waiting for directory banner failed")
-		}
-	}
-
-	// Wait for and click the test file.
-	if err := files.WaitForFile(ctx, testFile, uiTimeout); err != nil {
-		return errors.Wrapf(err, "waiting for the test file %s failed", testFile)
-	}
-	if err := files.SelectFile(ctx, testFile); err != nil {
-		return errors.Wrapf(err, "selecting the test file %s failed", testFile)
-	}
-
-	// Check the file type and click the test file again.
-	// Note: Need to click on the file again to populate 'Open with ArcFileReaderTest'.
-	if dir.CheckFileType {
-		if err := waitForFileType(ctx, files); err != nil {
-			return errors.Wrap(err, "waiting for file type failed")
-		}
-		if err := files.SelectFile(ctx, testFile); err != nil {
-			return errors.Wrapf(err, "selecting the test file %s failed", testFile)
-		}
-	}
-
-	// Wait for the Open menu button in the top bar.
-	params := ui.FindParams{
-		Name: "Open",
-		Role: ui.RoleTypeButton,
-	}
-	open, err := files.Root.DescendantWithTimeout(ctx, params, uiTimeout)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the Open menu button")
-	}
-	defer open.Release(ctx)
-
-	// Click the Open menu button.
-	if err := open.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "clicking the Open menu button failed")
-	}
-
-	// Wait for 'Open with ArcFileReaderTest' to appear.
-	params = ui.FindParams{
-		Name: "ARC File Reader Test",
-		Role: ui.RoleTypeStaticText,
-	}
-	app, err := files.Root.DescendantWithTimeout(ctx, params, uiTimeout)
-	if err != nil {
-		return errors.Wrap(err, "waiting for 'Open with ArcFileReaderTest' failed")
-	}
-	defer app.Release(ctx)
-
-	// Click 'Open with ArcFileReaderTest'.
-	if err := app.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "clicking 'Open with ArcFileReaderTest' failed")
-	}
-
-	return nil
+	return uiauto.Run(ctx,
+		files.OpenDir(dir.Name, dir.Title),
+		// Note: due to the banner loading, this may still be flaky.
+		// If that is the case, we may want to increase the interval and timeout for this next call.
+		files.SelectFile(testFile),
+		func(ctx context.Context) error {
+			if dir.CheckFileType {
+				if err := waitForFileType(ctx, files); err != nil {
+					return errors.Wrap(err, "waiting for file type failed")
+				}
+				if err := files.SelectFile(testFile)(ctx); err != nil {
+					return errors.Wrapf(err, "selecting the test file %s failed", testFile)
+				}
+			}
+			return nil
+		},
+		files.UI.LeftClick(nodewith.Name("Open").Role(role.Button).Ancestor(filesapp.WindowFinder)),
+		files.UI.LeftClick(nodewith.Name("ARC File Reader Test").Role(role.StaticText).Ancestor(filesapp.WindowFinder)),
+	)
 }
 
 // waitForFileType waits for file type (mime type) to be populated. This is an
@@ -209,12 +163,7 @@ func waitForFileType(ctx context.Context, files *filesapp.FilesApp) error {
 			}
 		}()
 
-		// Check the file type.
-		params := ui.FindParams{
-			Name: "text/plain",
-			Role: ui.RoleTypeStaticText,
-		}
-		if err := files.Root.WaitUntilDescendantExists(ctx, params, uiTimeout); err != nil {
+		if err := files.UI.WaitUntilExists(nodewith.Name("text/plain").Role(role.StaticText).Ancestor(filesapp.WindowFinder))(ctx); err != nil {
 			return errors.Wrap(err, "file type was not found")
 		}
 		return nil
