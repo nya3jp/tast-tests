@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0c1ce95_d46cd747",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-26T00:18:31Z",
+      "side": 1,
+      "message": "Updated another caller of chrome.NewLoggedInFixture().",
+      "revId": "f5b54618c0398a09684c580d7ef74151a3f1d9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
