@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a84af60_c16c9120",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-26T16:37:07Z",
+      "side": 1,
+      "message": "this will always say tablet mode. No need for the deviceMode variable.",
+      "range": {
+        "startLine": 257,
+        "startChar": 22,
+        "endLine": 257,
+        "endChar": 38
+      },
+      "revId": "3fd572f4a8ca386a078caec40f9a16be5e4964ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
