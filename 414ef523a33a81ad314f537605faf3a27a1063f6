@@ -16,6 +16,23 @@
       "message": "I removed the separate JS here after chatting with James and David. cros_send.go now makes simpler JS calls directly to the nearby-discovery-page and nearby-confirmation-page elements.",
       "revId": "414ef523a33a81ad314f537605faf3a27a1063f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c937f5e_df6ba71e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-26T23:45:38Z",
+      "side": 1,
+      "message": "Much better. Thanks for following up on the suggestions. \n\nLet\u0027s get it checked in :) ",
+      "revId": "414ef523a33a81ad314f537605faf3a27a1063f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
