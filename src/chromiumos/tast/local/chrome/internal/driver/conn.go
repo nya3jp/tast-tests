@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/mafredri/cdp/protocol/input"
+	"github.com/mafredri/cdp/protocol/media"
 	"github.com/mafredri/cdp/protocol/profiler"
 	"github.com/mafredri/cdp/protocol/target"
 
@@ -272,6 +273,12 @@ func (c *Conn) StartProfiling(ctx context.Context) error {
 // StopProfiling disables the profiling of current connection and returns the profiling result.
 func (c *Conn) StopProfiling(ctx context.Context) (*profiler.TakePreciseCoverageReply, error) {
 	return c.co.StopProfiling(ctx)
+}
+
+// GetMediaPropertiesChangedObserver enables media logging for the current
+// connection and retrieves a properties change observer.
+func (c *Conn) GetMediaPropertiesChangedObserver(ctx context.Context) (observer media.PlayerPropertiesChangedClient, err error) {
+	return c.co.GetMediaPropertiesChangedObserver(ctx)
 }
 
 // TestConn is a connection to the Tast test extension's background page.
