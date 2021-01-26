@@ -33,6 +33,23 @@
       "message": "Hi Omar,\n\nCan you review the file proxy_service.go?\n\nproxy_service.pb.go is auto-generated from the proto file.\n\nI followed the steps at https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#Defining-gRPC-services.\n\nThanks,\nAndreea",
       "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2f30b3_fdccf79d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-01-26T16:03:06Z",
+      "side": 1,
+      "message": "Pavol, other concerns?\n\nCan I go ahead and ask the tast owners for review?",
+      "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
