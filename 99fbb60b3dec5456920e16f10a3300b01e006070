@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d53cbc_7c15c817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-26T02:23:45Z",
+      "side": 1,
+      "message": "Sorry about the noise, the bots were failing because of \na series of :\n\n\u003e chromiumos/tast/local/media/caps.Capability composite literal uses unkeyed fields\n\nerrors, let\u0027s see now.",
+      "revId": "99fbb60b3dec5456920e16f10a3300b01e006070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
