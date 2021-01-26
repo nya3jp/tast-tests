@@ -8,6 +8,7 @@ package testutil
 import (
 	"context"
 	"fmt"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"time"
@@ -187,6 +188,15 @@ func SetUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	}
 	if err := playstore.InstallApp(ctx, a, d, appPkgName, 3); err != nil {
 		s.Fatal("Failed to install app: ", err)
+	}
+	// To get app version name.
+	out, err := exec.Command("adb", "shell", "dumpsys", "package", appPkgName, "\t|\t", "grep", "\t", "versionName").Output()
+	if err != nil {
+		errors.Wrap(err, "could not get version name")
+	} else {
+		output := string(out)
+		versionNameAfterSplit := strings.Split(output, "=")[1]
+		s.Log("Version name of ", appPkgName, " is: ", versionNameAfterSplit)
 	}
 	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Log("Failed to close Play Store: ", err)
