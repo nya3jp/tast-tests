@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ec6ed8_84cae748",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-26T00:13:28Z",
+      "side": 1,
+      "message": "Thanks for cleaning this up! LGTM % question/suggestion.",
+      "revId": "72a062570c21d332f4d3a90eb8da8f320df9f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ee9986c_6e157883",
@@ -116,6 +133,29 @@
         "startChar": 58,
         "endLine": 5,
         "endChar": 62
+      },
+      "revId": "72a062570c21d332f4d3a90eb8da8f320df9f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68982bf_961cf117",
+        "filename": "src/chromiumos/tast/local/media/screen/screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-26T00:13:28Z",
+      "side": 1,
+      "message": "Question: does it make sense to land this on local/graphics instead? It\ndoes not seem restricted to video/webrtc, and the overlays test (currently\nin autotest) would benefit from this code as well.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 14
       },
       "revId": "72a062570c21d332f4d3a90eb8da8f320df9f651",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
