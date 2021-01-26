@@ -33,6 +33,24 @@ var DxActionButtons = ui.FindParams{
 	Role:      ui.RoleTypeButton,
 }
 
+// DxCPUTestButton export is used to find routine test button
+var DxCPUTestButton = ui.FindParams{
+	Name: "Run CPU test",
+	Role: ui.RoleTypeButton,
+}
+
+// DxViewReportButton export is used to find the see report button
+var DxViewReportButton = ui.FindParams{
+	Name: "See Report",
+	Role: ui.RoleTypeButton,
+}
+
+// DxCancelTestButton export is used to find routine test cancel button
+var DxCancelTestButton = ui.FindParams{
+	Name: "Stop test",
+	Role: ui.RoleTypeButton,
+}
+
 // DxCPUChart export is used to find the realtime cpu chart
 var DxCPUChart = ui.FindParams{
 	ClassName: "legend-group",
@@ -42,6 +60,12 @@ var DxCPUChart = ui.FindParams{
 // DxSuccessBadge export is used to find success badge notification
 var DxSuccessBadge = ui.FindParams{
 	Name: "SUCCESS",
+	Role: ui.RoleTypeStaticText,
+}
+
+// DxCancelledBadge export is used to find cancelled badge
+var DxCancelledBadge = ui.FindParams{
+	Name: "STOPPED",
 	Role: ui.RoleTypeStaticText,
 }
 
