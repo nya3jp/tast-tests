@@ -326,9 +326,11 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	defer tconn.Close()
 
 	// For consistency across test runs, ensure that the device is in landscape-primary orientation.
-	if err = graphics.RotateDisplayToLandscapePrimary(ctx, tconn); err != nil {
+	display, err := graphics.RotateDisplayToLandscapePrimary(ctx, tconn)
+	if err != nil {
 		return errors.Wrap(err, "failed to set display to landscape-primary orientation")
 	}
+	defer display.RestoreDisplayOrientation(ctx, tconn)
 
 	// Make the video go to full screen mode by pressing 'f': requestFullScreen() needs a user gesture.
 	ew, err := input.Keyboard(ctx)
