@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b98da63_3ff39e97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-01-27T09:58:03Z",
+      "side": 1,
+      "message": "Thanks for the revamp!",
+      "revId": "52e8319763c92a364e40c924a3f358c21a8c6e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7f3cdd_c24f3b44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-01-27T09:58:03Z",
+      "side": 1,
+      "message": "With this chain of UI actions, is it going to evaluate all of them once within uiTimeout (10 sec)?\nWhat happens if it fails? Will the uiauto framework retry?\nThanks.",
+      "revId": "52e8319763c92a364e40c924a3f358c21a8c6e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
