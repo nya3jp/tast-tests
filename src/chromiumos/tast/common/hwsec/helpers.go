@@ -12,6 +12,7 @@ import (
 	"context"
 	"time"
 
+	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -89,11 +90,11 @@ func (h *Helper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration) er
 func (h *Helper) EnsureIsPreparedForEnrollment(ctx context.Context, timeout time.Duration) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		// intentionally ignores error; retry the operation until timeout.
-		isPrepared, err := h.CryptohomeUtil.IsPreparedForEnrollment(ctx)
+		status, err := h.AttestationClient.GetStatus(ctx, &apb.GetStatusRequest{})
 		if err != nil {
 			return err
 		}
-		if !isPrepared {
+		if !status.GetPreparedForEnrollment() {
 			return errors.New("not prepared yet")
 		}
 		return nil
