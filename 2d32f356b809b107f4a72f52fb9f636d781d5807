@@ -34,6 +34,24 @@
       "parentUuid": "a2ed7c03_b358c8bc",
       "revId": "2d32f356b809b107f4a72f52fb9f636d781d5807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f362308f_0b2ebd14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/scan.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-01-27T19:34:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cf6cbc80_3007502a",
+      "revId": "2d32f356b809b107f4a72f52fb9f636d781d5807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
