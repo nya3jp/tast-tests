@@ -305,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db85a6df_3171d4b2",
+        "filename": "src/chromiumos/tast/services/cros/network/proxy_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-01-27T05:29:48Z",
+      "side": 1,
+      "message": "Ack if this is in its own namespace it\u0027s a good idea to have a default IMO.",
+      "parentUuid": "9dc9d4fa_2f598152",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "614305eb_44ffd164",
