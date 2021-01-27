@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/local/bundles/cros/hwsec/dictattack"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -71,7 +70,7 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	}
 
 	// Check that the counter is 0 right after resetting.
-	info, err := dictattack.DAInfo(ctx, cryptohomeUtil, tpmManagerUtil)
+	info, err := tpmManagerUtil.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}
@@ -114,7 +113,7 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	}
 
 	// Check counter again, should be 1 because we tried to write NVRAM space with an incorrect password.
-	info, err = dictattack.DAInfo(ctx, cryptohomeUtil, tpmManagerUtil)
+	info, err = tpmManagerUtil.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}
@@ -128,7 +127,7 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	}
 
 	// Check counter again, should be 0, and lockout shouldn't be in effect.
-	info, err = dictattack.DAInfo(ctx, cryptohomeUtil, tpmManagerUtil)
+	info, err = tpmManagerUtil.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}
