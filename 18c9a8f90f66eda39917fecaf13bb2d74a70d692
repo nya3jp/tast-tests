@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86b638da_b60cccb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2021-01-27T23:34:50Z",
+      "side": 1,
+      "message": "Add a TODO comment here to update this once we begin expanding the report section automatically.",
+      "revId": "18c9a8f90f66eda39917fecaf13bb2d74a70d692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcc17854_eb985e50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2021-01-27T23:34:50Z",
+      "side": 1,
+      "message": "Verify that the first routine still shows the success badge.",
+      "revId": "18c9a8f90f66eda39917fecaf13bb2d74a70d692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e370a509_95ec8d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2021-01-27T23:34:50Z",
+      "side": 1,
+      "message": "We should also verify that:\n- The CPU button shows \"Run again\".\n- The status text shows that a routine was cancelled.",
+      "revId": "18c9a8f90f66eda39917fecaf13bb2d74a70d692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
