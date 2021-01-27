@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac960028_ce3c1f48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-27T16:34:40Z",
+      "side": 1,
+      "message": "The content of this CL is not enough included in the commit message.\nPlease find David\u0027s comments, too.",
+      "revId": "f51746e45e1fb846e8cda45acb8aaf45dcb4b4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d6d4bb_0ddf332a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-27T16:34:40Z",
+      "side": 1,
+      "message": "Added a few comments. I\u0027ll revisit this later, since I think addressing David\u0027s comments needs to change the CL a lot.",
+      "revId": "f51746e45e1fb846e8cda45acb8aaf45dcb4b4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b9a0734_aa4526b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/render_app.go",
         "patchSetId": 2
@@ -66,6 +100,23 @@
         "endLine": 73,
         "endChar": 2
       },
+      "revId": "f51746e45e1fb846e8cda45acb8aaf45dcb4b4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc05abc8_6f776595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-27T16:34:40Z",
+      "side": 1,
+      "message": "maybe WaitUntilDescendantExists?\n\nDitto for below.",
       "revId": "f51746e45e1fb846e8cda45acb8aaf45dcb4b4ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
