@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d486f67d_80fc4760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-01-27T01:10:19Z",
+      "side": 1,
+      "message": "Let\u0027s continue to discuss this as we get more info, then.",
+      "parentUuid": "409431d5_a13afe5b",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "a404d535ac65035a277eae76723943f7cd64be78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccdf9697_dd9006cb",
