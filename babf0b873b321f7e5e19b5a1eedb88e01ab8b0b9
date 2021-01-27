@@ -16,6 +16,52 @@
       "message": "PTAL.\nNote: another CL for webrtc to clean up remaining deprecated API calls will come separately.\n",
       "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0746de53_69add38e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-27T18:51:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure this code does the same as the LHS. If you look at \nhttps://screenshot.googleplex.com/37rAVG2TuaSoXMU\nthe report[\u0027type\u0027] is a bunch of entries of which we\u0027re only\ninterested in the e.g. \"encoderImplementation\" etc, whereas\non the RHS we\u0027ll be returning the whole e.g. \"outbound-rtp\".\nWe\u0027d need to still parse the report to look for that \"statName\".",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 6
+      },
+      "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12b7511a_5931862f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-27T18:51:17Z",
+      "side": 1,
+      "message": "It\u0027s a bit confusing here that we use |localPeerConnection| (and\n|remotePeerConnection| in l.134) as booleans (l.80-81) because \nthey usually refer to JS objects by name. I\u0027d recommend using an\n|isRemotePC| or similar boolean variable here, in l.134 and in l.86,\nso l.88 doesn\u0027t need the mental jump between |pc| and |isRemote|.",
+      "range": {
+        "startLine": 122,
+        "startChar": 37,
+        "endLine": 122,
+        "endChar": 56
+      },
+      "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
