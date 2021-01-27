@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14cbb2dd_335a6a49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/connectivity_diagnostics_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-27T16:17:33Z",
+      "side": 1,
+      "message": "My understanding (and this is all still a bit new to me) is:\nOnly functions and variables that start with a Capital letter are exported outside the package, but within the package (and \u0027network\u0027 is a large one), all declared functions and variables are available.",
+      "parentUuid": "bb3381ff_b1b35c77",
+      "revId": "f3f7477045bc9a6bad260a76992f60ca01327579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b080107_06d2e794",
