@@ -136,10 +136,10 @@ func (h *CmdHelper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration)
 
 // EnsureIsPreparedForEnrollment ensures the DUT is prepareed for enrollment
 // when the function returns |nil|. Otherwise, returns any encountered error.
-func (h *CmdHelper) EnsureIsPreparedForEnrollment(ctx context.Context, timeout time.Duration) error {
+func (h *AttestationHelper) EnsureIsPreparedForEnrollment(ctx context.Context, timeout time.Duration) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		// intentionally ignores error; retry the operation until timeout.
-		isPrepared, err := h.cryptohome.IsPreparedForEnrollment(ctx)
+		isPrepared, err := h.attestation.IsPreparedForEnrollment(ctx)
 		if err != nil {
 			return err
 		}
