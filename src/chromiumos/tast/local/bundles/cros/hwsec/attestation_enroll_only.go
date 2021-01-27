@@ -30,7 +30,7 @@ func AttestationEnrollOnly(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("CmdRunner creation error: ", err)
 	}
-	helper, err := hwseclocal.NewHelper(r)
+	helper, err := hwseclocal.NewHelperWithAttestationClient(ctx, r)
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
