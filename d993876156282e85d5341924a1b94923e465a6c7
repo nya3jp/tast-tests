@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b63bafe_fdaedc26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-01-27T22:51:03Z",
+      "side": 1,
+      "message": "PS4 is the same as PS1.  Rebased to get rid of the accidental intermediate patchsets.",
+      "revId": "d993876156282e85d5341924a1b94923e465a6c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
