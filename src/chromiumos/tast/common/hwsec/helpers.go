@@ -118,7 +118,7 @@ func (h *Helper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration) er
 func (h *Helper) EnsureIsPreparedForEnrollment(ctx context.Context, timeout time.Duration) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		// intentionally ignores error; retry the operation until timeout.
-		isPrepared, err := h.cryptohomeUtil.IsPreparedForEnrollment(ctx)
+		isPrepared, err := h.attestationUtil.IsPreparedForEnrollment(ctx)
 		if err != nil {
 			return err
 		}
