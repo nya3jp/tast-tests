@@ -44,23 +44,51 @@ func NewLoglessCmdRunner(d *dut.DUT) (*CmdRunnerRemote, error) {
 	return &CmdRunnerRemote{d: d, printLog: false}, nil
 }
 
-// HelperRemote extends the function set from hwsec.Helper for remote test.
-type HelperRemote struct {
+// CmdHelperRemote extends the function set of hwsec.CmdHelper
+type CmdHelperRemote interface {
+	hwsec.CmdHelper
+	Reboot(ctx context.Context) error
+	EnsureTPMIsReset(ctx context.Context) error
+	EnsureTPMIsResetAndPowerwash(ctx context.Context) error
+}
+
+// FullHelperRemote extends the function set of hwsec.FullCmdHelper
+type FullHelperRemote interface {
+	hwsec.FullHelper
+	CmdHelperRemote
+}
+
+type cmdHelperRemoteImpl struct {
 	hwsec.CmdHelper
 	d *dut.DUT
 }
 
+type fullHelperRemoteImpl struct {
+	hwsec.FullHelper
+	cmdHelperRemoteImpl
+}
+
 // NewHelper creates a new hwsec.Helper instance that make use of the functions
 // implemented by CmdRunnerRemote.
-func NewHelper(r hwsec.CmdRunner, d *dut.DUT) (*HelperRemote, error) {
+func NewHelper(r hwsec.CmdRunner, d *dut.DUT) (CmdHelperRemote, error) {
 	helper := hwsec.NewCmdHelper(r)
-	return &HelperRemote{helper, d}, nil
+	return &cmdHelperRemoteImpl{helper, d}, nil
+}
+
+// NewFullHelper creates a new hwsec.FullHelper with a remote AttestationClient.
+func NewFullHelper(r hwsec.CmdRunner, d *dut.DUT, h *testing.RPCHint) (FullHelperRemote, error) {
+	ac, err := NewAttestationDBus(d, h)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create attestation client")
+	}
+	helper := hwsec.NewFullHelper(r, ac)
+	return &fullHelperRemoteImpl{helper, cmdHelperRemoteImpl{helper, d}}, nil
 }
 
 // ensureTPMIsReset ensures the TPM is reset when the function returns nil.
 // Otherwise, returns any encountered error.
 // Optionally removes files from the DUT to simulate a powerwash.
-func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
+func (h *cmdHelperRemoteImpl) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
 	// TODO(crbug.com/879797): Remove polling.
 	// Currently cryptohome is a bit slow on the first boot, so this polling here is necessary to avoid flakiness.
 	isReady := false
@@ -139,7 +167,7 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 }
 
 // Reboot reboots the DUT
-func (h *HelperRemote) Reboot(ctx context.Context) error {
+func (h *cmdHelperRemoteImpl) Reboot(ctx context.Context) error {
 	if err := h.d.Reboot(ctx); err != nil {
 		return err
 	}
@@ -153,11 +181,11 @@ func (h *HelperRemote) Reboot(ctx context.Context) error {
 
 // EnsureTPMIsReset ensures the TPM is reset when the function returns nil.
 // Otherwise, returns any encountered error.
-func (h *HelperRemote) EnsureTPMIsReset(ctx context.Context) error {
+func (h *cmdHelperRemoteImpl) EnsureTPMIsReset(ctx context.Context) error {
 	return h.ensureTPMIsReset(ctx, false)
 }
 
 // EnsureTPMIsResetAndPowerwash ensures the TPM is reset and simulates a Powerwash.
-func (h *HelperRemote) EnsureTPMIsResetAndPowerwash(ctx context.Context) error {
+func (h *cmdHelperRemoteImpl) EnsureTPMIsResetAndPowerwash(ctx context.Context) error {
 	return h.ensureTPMIsReset(ctx, true)
 }
