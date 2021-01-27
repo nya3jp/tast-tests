@@ -16,6 +16,24 @@
       "message": "Now that we\u0027re sending an explicit list, the backend might not rely on the default.  Does this need to also contain \"image/png\"?",
       "revId": "2d32f356b809b107f4a72f52fb9f636d781d5807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6cbc80_3007502a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/scan.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-01-27T19:22:55Z",
+      "side": 1,
+      "message": "The modifications on the Chrome side make it so that it only matters if one of the two are passed! \nSee: https://chromium-review.googlesource.com/c/chromium/src/+/2643196",
+      "parentUuid": "a2ed7c03_b358c8bc",
+      "revId": "2d32f356b809b107f4a72f52fb9f636d781d5807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
