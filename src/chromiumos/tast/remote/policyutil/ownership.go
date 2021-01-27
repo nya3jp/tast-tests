@@ -7,7 +7,6 @@ package policyutil
 import (
 	"context"
 
-	chwsec "chromiumos/tast/common/hwsec"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/hwsec"
@@ -19,12 +18,8 @@ func EnsureTPMIsResetAndPowerwash(ctx context.Context, d *dut.DUT) error {
 	if err != nil {
 		return errors.Wrap(err, "CmdRunner creation error")
 	}
-	utility, err := chwsec.NewUtilityCryptohomeBinary(r)
-	if err != nil {
-		return errors.Wrap(err, "utility creation error")
-	}
 
-	helper, err := hwsec.NewHelper(utility, r, d)
+	helper, err := hwsec.NewHelper(r, d)
 	if err != nil {
 		return errors.Wrap(err, "helper creation error")
 	}
