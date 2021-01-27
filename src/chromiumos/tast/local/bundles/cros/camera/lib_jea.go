@@ -24,7 +24,7 @@ func init() {
 			"wtlee@chromium.org",
 			"chromeos-camera-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"arc_camera3", "chrome", caps.HWEncodeJPEG},
 		Data:         []string{"bali_640x368_P420.yuv", "lake_4096x3072_P420.yuv"},
 	})

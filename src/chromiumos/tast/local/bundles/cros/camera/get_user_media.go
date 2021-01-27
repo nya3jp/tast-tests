@@ -30,7 +30,7 @@ func init() {
 		Func:         GetUserMedia,
 		Desc:         "Verifies that getUserMedia captures video",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(webrtc.DataFiles(), launcher.DataArtifact, "getusermedia.html"),
 		Vars:         []string{"lacrosDeployedBinary"},
@@ -38,14 +38,14 @@ func init() {
 			{
 				Name:              "real",
 				Pre:               pre.ChromeVideo(),
-				ExtraAttr:         []string{"informational"},
+				ExtraAttr:         []string{"informational", "group:camera-libcamera"},
 				ExtraSoftwareDeps: []string{caps.BuiltinCamera, "camera_720p"},
 				Val:               ashChrome,
 			},
 			{
 				Name:              "vivid",
 				Pre:               pre.ChromeVideo(),
-				ExtraAttr:         []string{"informational"},
+				ExtraAttr:         []string{"informational", "group:camera-libcamera"},
 				ExtraSoftwareDeps: []string{caps.VividCamera},
 				Val:               ashChrome,
 			},
@@ -57,7 +57,7 @@ func init() {
 			{
 				Name:      "lacros",
 				Pre:       launcher.StartedByData(),
-				ExtraAttr: []string{"informational"},
+				ExtraAttr: []string{"informational", "group:camera-libcamera"},
 				// TODO(b/175168296): Change the capability to |caps.BuiltinCamera| to test MIPI
 				// cameras as well once they are supported on Lacros.
 				ExtraSoftwareDeps: []string{caps.BuiltinUSBCamera, "camera_720p", "lacros"},

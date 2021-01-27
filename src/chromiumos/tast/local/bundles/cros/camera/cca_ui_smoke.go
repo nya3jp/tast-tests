@@ -20,14 +20,14 @@ func init() {
 		Func:         CCAUISmoke,
 		Desc:         "Smoke test for Chrome Camera App",
 		Contacts:     []string{"inker@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"cca_ui.js"},
 		Params: []testing.Param{{
 			Name:              "real",
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
 			Pre:               chrome.LoggedIn(),
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"informational", "group:camera-libcamera"},
 		}, {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},

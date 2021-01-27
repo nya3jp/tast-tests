@@ -24,7 +24,7 @@ func init() {
 		Params: []testing.Param{{
 			Name:      "",
 			Val:       false, // generatePerfLog
-			ExtraAttr: []string{"group:mainline", "informational"},
+			ExtraAttr: []string{"group:mainline", "informational", "group:camera-libcamera"},
 		}, {
 			Name:      "perf",
 			Val:       true, // generatePerfLog

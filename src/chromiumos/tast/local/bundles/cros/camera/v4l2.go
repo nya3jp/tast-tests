@@ -31,7 +31,7 @@ func init() {
 			"henryhsu@chromium.org",
 			"chromeos-camera-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{caps.BuiltinUSBCamera},
 	})
 }

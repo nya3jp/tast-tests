@@ -19,7 +19,7 @@ func init() {
 		Func:         CCAUILauncher,
 		Desc:         "Checks the behaviors of launching camera app via launcher",
 		Contacts:     []string{"wtlee@google.com", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),
