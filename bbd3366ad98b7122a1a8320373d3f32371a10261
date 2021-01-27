@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad11e31e_6a13c337",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-27T13:07:25Z",
+      "side": 1,
+      "message": "Chumped because the dedede failures are showing up for other CLs as well and this CL just adds an informational test, so it is unrelated.",
+      "revId": "bbd3366ad98b7122a1a8320373d3f32371a10261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
