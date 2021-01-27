@@ -86,8 +86,10 @@ func launchAppForBandlab(ctx context.Context, s *testing.State, tconn *chrome.Te
 		enterPasswordID  = "com.bandlab.bandlab:id/login_password"
 		logInText        = "Log In"
 		logInButtonID    = "com.bandlab.bandlab:id/login_btn"
+		neverButtonText  = "NEVER"
 		noThanksButtonID = "android:id/autofill_save_no"
 		createIconID     = "com.bandlab.bandlab:id/add"
+		notNowText       = "Not Now"
 		createIconDesc   = "Create"
 	)
 
@@ -129,10 +131,12 @@ func launchAppForBandlab(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on LogIn button: ", err)
 	}
 
-	// Click no thanks button
+	// Click on no thanks or never button
 	noThanksButton := d.Object(ui.ID(noThanksButtonID))
+	neverButton := d.Object(ui.Text(neverButtonText))
 	if err := noThanksButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("noThanks button doesn't exist: ", err)
+		neverButton.Click(ctx)
 	} else if err := noThanksButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on noThanks button: ", err)
 	}
