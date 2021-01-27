@@ -49,8 +49,8 @@ type HelperLocal struct {
 
 // NewHelper creates a new hwsec.Helper instance that make use of the functions
 // implemented by CmdRunnerLocal.
-func NewHelper(ti hwsec.TPMInitializer) (*HelperLocal, error) {
-	return &HelperLocal{*hwsec.NewHelper(ti)}, nil
+func NewHelper(r CmdRunner) (*HelperLocal, error) {
+	return &HelperLocal{*hwsec.NewHelper(r)}, nil
 }
 
 // EnsureTPMIsReadyAndBackupSecrets ensures TPM readiness and then backs up tpm manager local data so we can restore important secrets  if needed.

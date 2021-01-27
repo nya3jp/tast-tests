@@ -24,12 +24,26 @@ type CmdRunner interface {
 // Helper provides various helper functions that could be shared across all
 // hwsec integration test regardless of run-type, i.e., remote or local.
 type Helper struct {
-	ti TPMInitializer
+	cmdRunner CmdRunner
+	CryptohomeUtil *UtilityCryptohomeBinary
+	TPMManagerUtil *UtilityTpmManagerBinary
 }
 
 // NewHelper creates a new Helper, with ti responsible for TPM initialization.
-func NewHelper(ti TPMInitializer) *Helper {
-	return &Helper{ti}
+func NewHelper(r CmdRunner) (*Helper, error) {
+	cryptohomeUtil, err := NewUtilityCryptohomeBinary(r)
+	if err != nil {
+		return nil, err
+	}
+	tpmManagerUtil, err := NewUtilityTpmManagerBinary(r)
+	if err != nil {
+		return nil, err
+	}
+	return &Helper{
+		cmdRunner: r,
+		CryptohomeUtil: cryptohomeUtil,
+		TPMManagerUtil: tpmManagerUtil,
+	}, nil
 }
 
 // TPMInitializer is a collection of TPM-initialiaztion-related functions.

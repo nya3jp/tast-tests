@@ -47,15 +47,13 @@ func NewLoglessCmdRunner(d *dut.DUT) (*CmdRunnerRemote, error) {
 // HelperRemote extends the function set from hwsec.Helper for remote test.
 type HelperRemote struct {
 	hwsec.Helper
-	ti hwsec.TPMInitializer
-	r  hwsec.CmdRunner
 	d  *dut.DUT
 }
 
 // NewHelper creates a new hwsec.Helper instance that make use of the functions
 // implemented by CmdRunnerRemote.
-func NewHelper(ti hwsec.TPMInitializer, r hwsec.CmdRunner, d *dut.DUT) (*HelperRemote, error) {
-	return &HelperRemote{*hwsec.NewHelper(ti), ti, r, d}, nil
+func NewHelper(r hwsec.CmdRunner, d *dut.DUT) (*HelperRemote, error) {
+	return &HelperRemote{*hwsec.NewHelper(r), d}, nil
 }
 
 // ensureTPMIsReset ensures the TPM is reset when the function returns nil.
@@ -67,7 +65,7 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 	isReady := false
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		isReady, err = h.ti.IsTPMReady(ctx)
+		isReady, err = h.CryptohomeUtil.IsTPMReady(ctx)
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for cryptohome")
@@ -123,13 +121,13 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 	testing.ContextLog(ctx, "Waiting for system to be ready after reboot ")
 	// TODO(crbug.com/879797): Remove polling.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := h.ti.IsTPMReady(ctx)
+		_, err := h.CryptohomeUtil.IsTPMReady(ctx)
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for cryptohome")
 	}
 
-	isReady, err := h.ti.IsTPMReady(ctx)
+	isReady, err := h.CryptohomeUtil.IsTPMReady(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to check whether TPM was reset")
 	} else if isReady {

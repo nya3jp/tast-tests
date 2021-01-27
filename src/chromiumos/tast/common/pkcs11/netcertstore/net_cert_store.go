@@ -99,7 +99,7 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 	// For local tests, Tast will try to take ownership before the test runs, but that is not
 	// a guarantee for remote tests. Therefore, we take the ownership here anyway in order to
 	// ensure that NetCertStore works well for both local and remote tests.
-	helper := hwsec.NewHelper(cryptohome)
+	helper := hwsec.NewHelper(runner)
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		return nil, errors.Wrap(err, "failed to ensure TPM is ready for NetCertStore")
 	}
