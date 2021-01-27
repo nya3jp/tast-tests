@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ddb08f9_c54e1954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-01-27T01:03:30Z",
+      "side": 1,
+      "message": "This is not a perfect way to require an internal touch screen, but I cannot easily do better. See email communication with subject \"Does an external touch screen satisfy hwdep.TouchScreen()?\"",
+      "range": {
+        "startLine": 33,
+        "startChar": 54,
+        "endLine": 33,
+        "endChar": 98
+      },
+      "revId": "307ae9e6c16878d60363329446b13025c05185d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
