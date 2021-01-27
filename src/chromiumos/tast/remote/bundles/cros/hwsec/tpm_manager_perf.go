@@ -71,10 +71,7 @@ func TpmManagerPerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(r)
-	if err != nil {
-		s.Fatal("Failed to create UtilityTpmManagerBinary: ", err)
-	}
+	tpmManagerUtil := helper.TPMManagerUtil
 
 	err = waitUntilTpmManagerReady(ctx, tpmManagerUtil)
 	if err != nil {
