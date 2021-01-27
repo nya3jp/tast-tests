@@ -42,20 +42,46 @@ func (r *CmdRunnerLocal) Run(ctx context.Context, cmd string, args ...string) ([
 	return testexec.CommandContext(ctx, cmd, args...).Output()
 }
 
-// HelperLocal extends the function set of hwsec.Helper; thoguh, for now we don't have any that kind of function,
-type HelperLocal struct {
+// CmdHelperLocal extends the function set of hwsec.CmdHelper
+type CmdHelperLocal interface {
+	hwsec.CmdHelper
+	EnsureTPMIsReadyAndBackupSecrets(ctx context.Context, timeout time.Duration) error
+}
+
+// FullHelperLocal extends the function set of hwsec.FullCmdHelper
+type FullHelperLocal interface {
+	hwsec.FullHelper
+	CmdHelperLocal
+}
+
+type cmdHelperLocalImpl struct {
 	hwsec.CmdHelper
 }
 
-// NewHelper creates a new hwsec.Helper instance that make use of the functions
+type fullHelperLocalImpl struct {
+	hwsec.FullHelper
+	cmdHelperLocalImpl
+}
+
+// NewHelper creates a new hwsec.CmdHelper instance that make use of the functions
 // implemented by CmdRunnerLocal.
-func NewHelper(r hwsec.CmdRunner) (*HelperLocal, error) {
+func NewHelper(r hwsec.CmdRunner) (CmdHelperLocal, error) {
 	helper := hwsec.NewCmdHelper(r)
-	return &HelperLocal{helper}, nil
+	return &cmdHelperLocalImpl{helper}, nil
+}
+
+// NewFullHelper creates a new hwsec.FullHelper with a local AttestationClient.
+func NewFullHelper(ctx context.Context, r hwsec.CmdRunner) (FullHelperLocal, error) {
+	ac, err := NewAttestationClient(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create attestation client")
+	}
+	helper := hwsec.NewFullHelper(r, ac)
+	return &fullHelperLocalImpl{helper, cmdHelperLocalImpl{helper}}, nil
 }
 
 // EnsureTPMIsReadyAndBackupSecrets ensures TPM readiness and then backs up tpm manager local data so we can restore important secrets  if needed.
-func (h *HelperLocal) EnsureTPMIsReadyAndBackupSecrets(ctx context.Context, timeout time.Duration) error {
+func (h *cmdHelperLocalImpl) EnsureTPMIsReadyAndBackupSecrets(ctx context.Context, timeout time.Duration) error {
 	if err := h.EnsureTPMIsReady(ctx, timeout); err != nil {
 		return errors.Wrap(err, "failed to ensure TPM readiness")
 	}
