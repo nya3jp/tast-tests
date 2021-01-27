@@ -98,6 +98,18 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 			}
 		}
 
+		// Maximize all windows to ensure a consistent state.
+		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+			return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
+		}); err != nil {
+			s.Fatal("Failed to maximize windows: ", err)
+		}
+
+		// TODO(crbug.com/1171056): Lacros may consume the Alt from Alt-tab after being maximized, without this sleep.
+		if err := testing.Sleep(ctx, 1000*time.Millisecond); err != nil {
+			s.Fatal("Failed to wait: ", err)
+		}
+
 		numExistingWindows = numWindows
 
 		suffix := fmt.Sprintf("%dwindows", numWindows)
