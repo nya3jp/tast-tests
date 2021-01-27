@@ -27,6 +27,12 @@ func EnsurePrinterIdle(ctx context.Context, devInfo usbprinter.DevInfo) error {
 	}
 	testing.ContextLog(ctx, "Printer configured with name: ", foundPrinterName)
 
+	return RestartPrintingSystem(ctx, devInfo)
+}
+
+// RestartPrintingSystem restarts all of the printing-related processes, leaving the
+// system in an idle state.
+func RestartPrintingSystem(ctx context.Context, devInfo usbprinter.DevInfo) error {
 	if err := ippusbbridge.Kill(ctx, devInfo); err != nil {
 		return errors.Wrap(err, "failed to kill ippusb_bridge")
 	}

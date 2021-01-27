@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/printing/ippusbbridge"
+	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -31,7 +31,7 @@ func init() {
 		Desc:         "Tests that a scan can be performed using the Document Scan API",
 		Contacts:     []string{"kmoed@google.com", "project-bolton@google.com"},
 		Data:         []string{"manifest.json", "background.js", "scan.css", "scan.html", "scan.js", "scan_escl_ipp_source.jpg", "scan_escl_ipp_golden.png"},
-		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
+		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
 		Attr:         []string{"group:mainline", "informational"},
 	})
 }
@@ -49,6 +49,24 @@ func Scan(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
+
+	// Set up Chrome instance before CUPS check.
+	extDir, err := ioutil.TempDir("", "tast.documentscanapi.Scan.")
+	if err != nil {
+		s.Fatal("Failed to create temp extension dir: ", err)
+	}
+	defer os.RemoveAll(extDir)
+
+	scanTargetExtID, err := setUpDocumentScanExtension(ctx, s, extDir)
+	if err != nil {
+		s.Fatal("Failed setup of Document Scan extension: ", err)
+	}
+
+	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir))
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
 
 	// Set up the virtual USB printer.
 	if err := usbprinter.InstallModules(ctx); err != nil {
@@ -74,25 +92,11 @@ func Scan(ctx context.Context, s *testing.State) {
 			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
 		}
 	}()
-	defer ippusbbridge.Kill(cleanupCtx, devInfo)
-
-	extDir, err := ioutil.TempDir("", "tast.documentscanapi.Scan.")
-	if err != nil {
-		s.Fatal("Failed to create temp extension dir: ", err)
-	}
-	defer os.RemoveAll(extDir)
-
-	scanTargetExtID, err := setUpDocumentScanExtension(ctx, s, extDir)
-	if err != nil {
-		s.Fatal("Failed setup of Document Scan extension: ", err)
+	if err := cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
+		s.Fatal("Failed to wait for CUPS configuration: ", err)
 	}
 
-	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
-
+	// Wait for printer to load before trying to load the extension.
 	extURL := "chrome-extension://" + scanTargetExtID + "/scan.html"
 	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
 	if err != nil {
