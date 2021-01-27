@@ -25,8 +25,13 @@ func init() {
 		Contacts:     []string{"afakhry@chromium.org", "sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
+		HardwareDeps: hwdep.D(
+			hwdep.InternalDisplay(),
+			// Due to the varying sizes of touchpads on different models, it is hard to have one good swipe
+			// motion reliably pass all models. Since samus is a older model, just skip running it.
+			hwdep.SkipOnModel("samus"),
+		),
+		Fixture: "chromeLoggedIn",
 	})
 }
 
