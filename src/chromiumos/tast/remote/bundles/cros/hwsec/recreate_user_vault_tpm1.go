@@ -47,7 +47,7 @@ func RecreateUserVaultTPM1(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create UtilityCryptohomeBinary: ", err)
 	}
 
-	helper, err := hwsecremote.NewHelper(utility, cmdRunner, s.DUT())
+	helper, err := hwsecremote.NewHelper(cmdRunner, s.DUT())
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}

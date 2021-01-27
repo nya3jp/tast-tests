@@ -31,7 +31,7 @@ func AttestationEID(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Utility creation error: ", err)
 	}
-	helper, err := hwseclocal.NewHelper(utility)
+	helper, err := hwseclocal.NewHelper(r)
 	if err != nil {
 		s.Fatal("Local hwsec helper creation error: ", err)
 	}
