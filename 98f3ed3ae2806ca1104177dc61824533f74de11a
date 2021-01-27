@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57928f05_0b46cb25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-01-27T15:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "193f249f_b5228697",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "98f3ed3ae2806ca1104177dc61824533f74de11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a459c072_7adf09a1",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7848f566_2402fd34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-01-27T15:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a459c072_7adf09a1",
+      "range": {
+        "startLine": 55,
+        "startChar": 36,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "98f3ed3ae2806ca1104177dc61824533f74de11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "142d6d83_e1397349",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-01-27T08:13:35Z",
       "side": 1,
       "message": "style: Let\u0027s try to reduce nesting levels for readability.\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\n if crosconfig.IsNotFound(err) {\n   break\n }\n if err !\u003d nil {\n   return false, errors.Wrap(err, ...)\n }",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "98f3ed3ae2806ca1104177dc61824533f74de11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a8b7d0_a9c8fcdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-01-27T15:19:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "142d6d83_e1397349",
       "range": {
         "startLine": 71,
         "startChar": 2,
