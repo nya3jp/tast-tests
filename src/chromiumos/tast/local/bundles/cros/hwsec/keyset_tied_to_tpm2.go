@@ -35,7 +35,7 @@ func init() {
 // It'll reset the TPM, login and logout to create a vault. Then, it'll optionally
 // reboot. After that, it'll take ownership, login again, and check that the keyset
 // is tied to the TPM.
-func loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx context.Context, s *testing.State, utility *hwsec.UtilityCryptohomeBinary, helper *hwseclocal.HelperLocal, reboot bool) {
+func loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx context.Context, s *testing.State, utility *hwsec.UtilityCryptohomeBinary, helper hwseclocal.CmdHelperLocal, reboot bool) {
 	// Reset TPM.
 	if err := hwseclocal.ResetTPMAndSystemStates(ctx); err != nil {
 		s.Fatal("Failed to reset TPM or system states: ", err)
