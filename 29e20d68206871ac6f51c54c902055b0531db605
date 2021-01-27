@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2af992fc_ed92e75b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-27T02:00:26Z",
+      "side": 1,
+      "message": "LGTM, thanks Ben!",
+      "revId": "29e20d68206871ac6f51c54c902055b0531db605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85de48b1_a20cc983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-27T02:00:26Z",
+      "side": 1,
+      "message": "nit: update this message.\n\nperhaps \"failed to retrieve allowCrostini boolean\"?",
+      "range": {
+        "startLine": 158,
+        "startChar": 53,
+        "endLine": 158,
+        "endChar": 92
+      },
+      "revId": "29e20d68206871ac6f51c54c902055b0531db605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
