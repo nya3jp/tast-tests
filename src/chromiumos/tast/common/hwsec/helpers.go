@@ -24,9 +24,10 @@ type CmdRunner interface {
 // Helper provides various helper functions that could be shared across all
 // hwsec integration test regardless of run-type, i.e., remote or local.
 type Helper struct {
-	CmdRunner      CmdRunner
-	CryptohomeUtil *UtilityCryptohomeBinary
-	TPMManagerUtil *UtilityTpmManagerBinary
+	CmdRunner       CmdRunner
+	CryptohomeUtil  *UtilityCryptohomeBinary
+	TPMManagerUtil  *UtilityTpmManagerBinary
+	AttestationUtil *UtilityAttestationClient
 }
 
 // NewHelper creates a new Helper, with r responsible for CmdRunner.
@@ -44,6 +45,20 @@ func NewHelper(r CmdRunner) (*Helper, error) {
 		CryptohomeUtil: cryptohomeUtil,
 		TPMManagerUtil: tpmManagerUtil,
 	}, nil
+}
+
+// NewHelperWithAttestationClient creates a new Helper, with ac responsible for AttestationClient.
+func NewHelperWithAttestationClient(r CmdRunner, ac AttestationClient) (*Helper, error) {
+	helper, err := NewHelper(r)
+	if err != nil {
+		return nil, err
+	}
+	attestationUtil, err := NewUtilityAttestationClient(ac)
+	if err != nil {
+		return nil, err
+	}
+	helper.AttestationUtil = attestationUtil
+	return helper, nil
 }
 
 // EnsureTPMIsReady ensures the TPM is ready when the function returns |nil|.
