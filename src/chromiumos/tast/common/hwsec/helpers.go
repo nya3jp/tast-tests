@@ -35,6 +35,7 @@ type Helper struct {
 	cryptohomeUtil   *UtilityCryptohomeBinary
 	tpmManagerUtil   *UtilityTpmManagerBinary
 	daemonController *DaemonController
+	attestationUtil  *UtilityAttestationClient
 }
 
 // NewHelper creates a new Helper, with r responsible for CmdRunner.
@@ -56,6 +57,20 @@ func NewHelper(r CmdRunner) (*Helper, error) {
 	}, nil
 }
 
+// NewHelperWithAttestationClient creates a new Helper, with ac responsible for AttestationClient.
+func NewHelperWithAttestationClient(r CmdRunner, ac AttestationClient) (*Helper, error) {
+	helper, err := NewHelper(r)
+	if err != nil {
+		return nil, err
+	}
+	attestationUtil, err := NewUtilityAttestationClient(ac)
+	if err != nil {
+		return nil, err
+	}
+	helper.attestationUtil = attestationUtil
+	return helper, nil
+}
+
 // CmdRunner exposes the cmdRunner of helper
 func (h *Helper) CmdRunner() CmdRunner { return h.cmdRunner }
 
@@ -67,6 +82,9 @@ func (h *Helper) TPMManagerUtil() *UtilityTpmManagerBinary { return h.tpmManager
 
 // DaemonController exposes the daemonController of helper
 func (h *Helper) DaemonController() *DaemonController { return h.daemonController }
+
+// AttestationUtil exposes the attestationUtil of helper
+func (h *Helper) AttestationUtil() *UtilityAttestationClient { return h.attestationUtil }
 
 // EnsureTPMIsReady ensures the TPM is ready when the function returns |nil|.
 // Otherwise, returns any encountered error.
