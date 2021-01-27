@@ -103,8 +103,8 @@ func FPS(ctx context.Context, s *testing.State) {
 		// Collect statistics for 5 seconds.
 		collectTime = 5 * time.Second
 
-		// Trim 5% outliers of measurements.
-		trimPercent = 5
+		// Trim 10% outliers of measurements.
+		trimPercent = 10
 		// Target fps (always 60 fps for now).
 		targetFPS = 60.0
 		// Accept up to 0.3 fps margin over the reference 60 fps.
