@@ -33,6 +33,24 @@
       "message": "With this chain of UI actions, is it going to evaluate all of them once within uiTimeout (10 sec)?\nWhat happens if it fails? Will the uiauto framework retry?\nThanks.",
       "revId": "52e8319763c92a364e40c924a3f358c21a8c6e3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e1f6b7_5e941822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-27T16:20:51Z",
+      "side": 1,
+      "message": "Each ui operation that does polling has a 10 second timeout. Some filesapp methods may do multiple ui operations. This means that they will have multiple 10 second timeouts.\n\nIf this fails, it will return an error like:\nfailed execution on step 2: failed to select file ...\n\nThe framework will not retry any actions. This will only run once and will stop on the first error. Things like selecting a file will poll until it has stably found the file, and then it will send out a click.",
+      "parentUuid": "3d7f3cdd_c24f3b44",
+      "revId": "52e8319763c92a364e40c924a3f358c21a8c6e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
