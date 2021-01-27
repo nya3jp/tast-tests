@@ -30,14 +30,11 @@ func AttestationEnrollOnly(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("CmdRunner creation error: ", err)
 	}
-	utility, err := hwsec.NewUtilityCryptohomeBinary(r)
-	if err != nil {
-		s.Fatal("Utilty creation error: ", err)
-	}
 	helper, err := hwseclocal.NewHelper(r)
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
+	utility := helper.CryptohomeUtil
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to ensure tpm readiness: ", err)
 	}

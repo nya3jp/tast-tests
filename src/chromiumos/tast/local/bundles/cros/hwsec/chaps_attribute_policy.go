@@ -9,7 +9,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/pkcs11"
 	"chromiumos/tast/common/pkcs11/pkcs11test"
 	"chromiumos/tast/ctxutil"
@@ -121,10 +120,11 @@ func ChapsAttributePolicy(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("CmdRunner creation error: ", err)
 	}
-	utility, err := hwsec.NewUtilityCryptohomeBinary(r)
+	helper, err := libhwseclocal.NewHelper(r)
 	if err != nil {
-		s.Fatal("Utilty creation error: ", err)
+		s.Fatal("Failed to create hwsec helper: ", err)
 	}
+	utility := helper.CryptohomeUtil
 	pkcs11Util, err := pkcs11.NewChaps(ctx, r, utility)
 	if err != nil {
 		s.Fatal("Failed to create PKCS#11 Utility: ", err)
