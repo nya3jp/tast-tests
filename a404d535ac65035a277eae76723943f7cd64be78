@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "409431d5_a13afe5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-27T01:01:07Z",
+      "side": 1,
+      "message": "\u003e In the next few months this process will be deprecated as we will be able to use lacros in the ChromeOS image, IIUC.\n\nNote: I hope so, too, but I found there will be small room that this may be kept, or we need to come up with some alternatives, specifically if it has an impact on Lacros performance.",
+      "parentUuid": "e4d88347_3ae41909",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "a404d535ac65035a277eae76723943f7cd64be78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccdf9697_dd9006cb",
