@@ -88,6 +88,24 @@
       "parentUuid": "cb1caab6_b8559ea9",
       "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d1b2ef_8a7d8cbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-01-27T22:46:33Z",
+      "side": 1,
+      "message": "Imageloader fails to be brought up by DBus at a rare occurrence.\nAll the tast runs are green atm.\n\nAlso, tests constantly restart the ui, which isn\u0027t the normal flow.\nWhich might also be causing the imageloader shutdown to conflict with the startup.\nThere hasn\u0027t been an occurrence that I know/filed against this on live devices.\n\ndlcservice has a hard dependency to imageloader, so if imageloader doesn\u0027t work, dlcservice cannot produce the end result it needs to.\n\nBut if we were to dig in deeper, an example error output is:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1160494#c27\n\nHitting this portion of dbus:\nhttps://source.corp.google.com/eureka_internal/external/dbus/bus/activation.c;l\u003d1460?q\u003d%22Failed%20to%20activate%20service%22%20dbus",
+      "parentUuid": "4af44601_34ef469e",
+      "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
