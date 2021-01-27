@@ -196,6 +196,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e41f34e4_387b1fc4",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-27T05:33:10Z",
+      "side": 1,
+      "message": "I guess you\u0027re syncing to stable instead of main? It may take a while for stable to pick up changes.",
+      "parentUuid": "56e00989_da343af2",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "52784fdeba94de87c2b2049d7f67ed20eeda6671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c58de9e_3a700c4e",
         "filename": "src/chromiumos/tast/local/a11y/a11y.go",
         "patchSetId": 4
