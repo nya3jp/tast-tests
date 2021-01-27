@@ -31,13 +31,13 @@ func AttestationEID(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Utility creation error: ", err)
 	}
-	helper, err := hwseclocal.NewHelper(utility)
+	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(r)
 	if err != nil {
-		s.Fatal("Local hwsec helper creation error: ", err)
+		s.Fatal("Failed to create UtilityTpmManagerBinary: ", err)
 	}
 
 	// Enrollment ID depends on endorsement key, which can only be read when TPM is ready on TPMv1.2.
-	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+	if err := tpmManagerUtil.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to ensure TPM readiness: ", err)
 	}
 
