@@ -21,7 +21,7 @@ func init() {
 			"kamesan@chromium.org",
 			"chromeos-camera-eng@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline", "informational", "group:camera-libcamera"},
 	})
 }
 

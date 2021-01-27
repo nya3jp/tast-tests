@@ -24,7 +24,7 @@ func init() {
 		Func:         EncodeAccelJPEG,
 		Desc:         "Run Chrome jpeg_encode_accelerator_unittest",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeJPEG},
 		Data:         []string{"bali_640x368_P420.yuv"},
 		Params: []testing.Param{{

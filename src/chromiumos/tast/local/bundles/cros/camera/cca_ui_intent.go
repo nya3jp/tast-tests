@@ -90,7 +90,7 @@ func init() {
 		Func:         CCAUIIntent,
 		Desc:         "Verifies if the camera intents fired from Android apps could be delivered and handled by CCA",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "ArcCameraIntentTest.apk"},
 		Timeout:      4 * time.Minute,

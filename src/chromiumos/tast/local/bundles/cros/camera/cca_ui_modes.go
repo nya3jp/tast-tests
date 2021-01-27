@@ -21,7 +21,7 @@ func init() {
 		Func:         CCAUIModes,
 		Desc:         "Opens CCA and verifies the use cases of mode selector and portrait, square modes",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Pre:          testutil.ChromeWithFakeCamera(),

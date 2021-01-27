@@ -29,7 +29,7 @@ func init() {
 			"shik@chromium.org",
 			"chromeos-camera-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"arc_camera3", "chrome", caps.BuiltinOrVividCamera},
 	})
 }

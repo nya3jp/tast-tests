@@ -20,7 +20,7 @@ func init() {
 		Func:         CCAUIQRCode,
 		Desc:         "Checks QR code detection in CCA",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{"cca_ui.js", "qrcode_1280x960.y4m", "qrcode_text_1280x960.y4m"},
 	})
