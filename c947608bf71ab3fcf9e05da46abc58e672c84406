@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04eece27_2be0bcbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-27T03:27:44Z",
+      "side": 1,
+      "message": "Yes, please feel free to send an email to tast-owners@ directly.\n\nHere\u0027s a guide to onboard new reviewers:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#how-can-i-become-a-tast-reviewer",
+      "parentUuid": "6e0eda14_48a8cc5b",
+      "revId": "c947608bf71ab3fcf9e05da46abc58e672c84406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc645ded_45a30da2",
