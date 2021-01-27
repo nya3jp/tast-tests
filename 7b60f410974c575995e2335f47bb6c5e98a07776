@@ -39,6 +39,30 @@
       },
       "revId": "7b60f410974c575995e2335f47bb6c5e98a07776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73631ef0_ff16dade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_trackpad_swipe_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-01-27T22:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "889560f6_1627790a",
+      "range": {
+        "startLine": 31,
+        "startChar": 54,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "7b60f410974c575995e2335f47bb6c5e98a07776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
