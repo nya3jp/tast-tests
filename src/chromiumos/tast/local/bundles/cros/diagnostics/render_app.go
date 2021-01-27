@@ -48,25 +48,22 @@ func RenderApp(ctx context.Context, s *testing.State) {
 	defer dxRootnode.Release(ctx)
 
 	// Verify cpu chart is drawn
-	if _, err := dxRootnode.DescendantWithTimeout(
+	if err := dxRootnode.WaitUntilDescendantExists(
 		ctx, diagnosticsapp.DxCPUChart, 20*time.Second); err != nil {
 		s.Fatal("Failed to find CPU chart: ", err)
 	}
 
 	// Verify session log button is rendered
-	if _, err := dxRootnode.DescendantWithTimeout(ctx, diagnosticsapp.DxLogButton, 20*time.Second); err != nil {
-		s.Fatal("Failed to render Diagnostics app: ", err)
+	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxLogButton, 20*time.Second); err != nil {
+		s.Fatal("Failed to render log button: ", err)
 	}
 
-	// Verify test routine buttons are rendered
-	buttons, err := dxRootnode.Descendants(ctx, diagnosticsapp.DxActionButtons)
-	if err != nil {
-		s.Fatal("Failed to find test routine buttons: ", err)
-	}
-	defer buttons.Release(ctx)
-
-	if len(buttons) != 3 {
-		s.Fatalf("Could not find all test routine buttons. got %d, want 3", len(buttons))
+	// Verify test routine button is rendered
+	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxCPUTestButton, 20*time.Second); err != nil {
+		s.Fatal("Failed to find cpu routine button: ", err)
 	}
 
+	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxMemoryTestButton, 20*time.Second); err != nil {
+		s.Fatal("Failed to find memory routine buttons: ", err)
+	}
 }
