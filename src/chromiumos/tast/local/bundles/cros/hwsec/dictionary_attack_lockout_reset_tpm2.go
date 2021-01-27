@@ -41,14 +41,11 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create CmdRunner: ", err)
 	}
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
-	if err != nil {
-		s.Fatal("Failed to create UtilityTpmManagerBinary: ", err)
-	}
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
+	tpmManagerUtil := helper.TPMManagerUtil
 
 	// In this test, we want to check if DA counter increases, and then reset it to see if everything is correct.
 	// Reset/Clear TPM => Check DA Counter => Create NVRAM Index => Write NVRAM Index => Check DA Counter => Reset DA Lockout => Check DA Counter
