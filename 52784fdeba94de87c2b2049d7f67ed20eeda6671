@@ -172,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56e00989_da343af2",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-27T05:21:31Z",
+      "side": 1,
+      "message": "Understood, thanks so much for the helpful CL. I tried to use the above code snippet, but I got an error when I tried to build and run my test. When I run \u0027repo sync\u0027, your changes do not appear in chrome.go. Do you have an idea for why this is happening?",
+      "parentUuid": "1c217eb3_5fad2a4a",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "52784fdeba94de87c2b2049d7f67ed20eeda6671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c58de9e_3a700c4e",
         "filename": "src/chromiumos/tast/local/a11y/a11y.go",
         "patchSetId": 4
@@ -468,6 +492,30 @@
       "writtenOn": "2021-01-27T02:03:47Z",
       "side": 1,
       "message": "Let\u0027s set aside the public or not question as injecting js into an extension\u0027s background page is by no means public though it\u0027s quite useful to drive tests.\n\nThe goal of this test is to have an end to end way of checking whether ChromeVox works down to the level of the specific tts engine.\n\nIn that light, I think it\u0027s appropriate to use\nchrome.ttsEngine.onSpeak here.",
+      "parentUuid": "8c058a50_e38c14aa",
+      "range": {
+        "startLine": 184,
+        "startChar": 26,
+        "endLine": 184,
+        "endChar": 38
+      },
+      "revId": "52784fdeba94de87c2b2049d7f67ed20eeda6671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "332cba2f_92c9796e",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-27T05:21:31Z",
+      "side": 1,
+      "message": "Sorry for the delay on this, I had difficulties with my chromiumos checkout. Thanks David and Shuhei for helping to work this out! I\u0027ve uploaded a new patchset that utilizes the ttsEngine API, so please let me know what you think. Thank you!",
       "parentUuid": "8c058a50_e38c14aa",
       "range": {
         "startLine": 184,
