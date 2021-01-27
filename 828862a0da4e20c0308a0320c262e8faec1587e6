@@ -211,6 +211,30 @@
       },
       "revId": "828862a0da4e20c0308a0320c262e8faec1587e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e455d56_379c2c83",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-27T17:22:58Z",
+      "side": 1,
+      "message": "Added a comment to clarify.",
+      "parentUuid": "a76653af_88c1a86b",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 378,
+        "endChar": 21
+      },
+      "revId": "828862a0da4e20c0308a0320c262e8faec1587e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
