@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4451d517_b755430d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-01-27T22:49:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6224e348_46d7d89f",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "5b7cdf155edb8b187f53e09297ff7b60b53f789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61031767_08e59f8c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-27T12:39:51Z",
       "side": 1,
       "message": "Could you change this into a for loop iterating over the 3 cases normal, maximized and fullscreen:\n\nfor _, param :\u003d range []struct {\n\tname          string\n\twindowState   ash.WMEventType\n\tsetupWindow   bool\n}{\n\t{\n\t\tname:     \"Normal\",\n\t\twindowState:   ash.WMEventNormal,\n\t\tsetupWindow: true,\n\t},\n\t{\n\t\tname:     \"Maximized\",\n\t\tpolicy:   ash.WMEventMaximize,\n\t\tsetupWindow: false,\n\t},\n\t{\n\t\tname:     \"Fullscreen\",\n\t\tpolicy:   ash.WMEventFullscreen,\n\t\tsetupWindow: false,\n\t},\n} {\n\ts.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {\n\t\tif _, err :\u003d ash.SetWindowState(ctx, tconn, wID, param.windowState); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to set window state to Fullscreen: \", err)\n\t\t}\n\n                if param.setupWindow {\n\t\t\tinternalInfo, err :\u003d display.GetInternalInfo(ctx, tconn)\n\t\t\tif err !\u003d nil {\n\t\t\t\ts.Fatal(\"Failed to get the internal display info: \", err)\n\t\t\t}\n\n\t\t\t// Make the window reasonably large, with no part behind the shelf.\n\t\t\tdesiredBounds :\u003d internalInfo.WorkArea.WithInset(10, 10)\n\t\t\tbounds, displayID, err :\u003d ash.SetWindowBounds(ctx, tconn, wID, desiredBounds, internalInfo.ID)\n\t\t\tif err !\u003d nil {\n\t\t\t\ts.Fatal(\"Failed to set the window bounds: \", err)\n\t\t\t}\n\t\t\tif displayID !\u003d internalInfo.ID {\n\t\t\t\tinfo, err :\u003d display.FindInfo(ctx, tconn, func(info *display.Info) bool { return info.ID \u003d\u003d displayID })\n\t\t\t\tif err !\u003d nil {\n\t\t\t\t\ts.Fatal(\"Window not on internal display after setting bounds (also failed to get info on the display where it is)\")\n\t\t\t\t}\n\t\t\t\ts.Fatalf(\"Window on %s; tried to put it on %s\", info.Name, internalInfo.Name)\n\t\t\t}\n\t\t\tif bounds !\u003d desiredBounds {\n\t\t\t\ts.Fatalf(\"Window bounds are %v; tried to set them to %v\", bounds, desiredBounds)\n\t\t\t}\n                }\n\n\t\tif err :\u003d expectOverlay(ctx, tconn, wID); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to verify that an overlay is used: \", err)\n\t\t}\n        })\n}",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 4
+      },
+      "revId": "5b7cdf155edb8b187f53e09297ff7b60b53f789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36cbd73_729c54d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-01-27T22:49:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61031767_08e59f8c",
       "range": {
         "startLine": 157,
         "startChar": 0,
