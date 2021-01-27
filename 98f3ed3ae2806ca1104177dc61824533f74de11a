@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae9d05b5_e099f93c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-27T08:13:35Z",
+      "side": 1,
+      "message": "Hi, sorry for delay. I think Katherine is busy recently... I can help as a Tast reviewer.",
+      "revId": "98f3ed3ae2806ca1104177dc61824533f74de11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de7bcc3_4058cd95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-27T08:13:35Z",
+      "side": 1,
+      "message": "Can you update hasPrivacySwitchControl and hasPrivacySwitchHardware to return (bool, error) and not take *testing.State as a parameter? It\u0027s quite common in Go to return (T, error) when a function may encounter runtime errors.\n\nYou can replace:\n\n s.Log(...) -\u003e testing.ContextLog(ctx, ...)\n s.Fatal(...) -\u003e return false, errors.Wrap(err, \"...\")\n\nOf course, in callers, we have to check an returned error and call s.Fatal as needed.\n\n hasControl, err :\u003d hasPrivacySwitchControl(ctx)\n if err !\u003d nil {\n   s.Fatal(\"Failed to get privacy switch control: \", err)\n }",
+      "revId": "98f3ed3ae2806ca1104177dc61824533f74de11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "193f249f_b5228697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-27T08:13:35Z",
+      "side": 1,
+      "message": "We ignore errors other than exit code 255. Is it really okay? If so, please add an inline comment describing why, so as not to surprise future readers.",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "98f3ed3ae2806ca1104177dc61824533f74de11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a459c072_7adf09a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-27T08:13:35Z",
+      "side": 1,
+      "message": "nit:\n\n if cmd.ProcessState.ExitCode() \u003d\u003d 255 \u0026\u0026 ctrlBusy.Match(out) { ... }",
+      "range": {
+        "startLine": 55,
+        "startChar": 36,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "98f3ed3ae2806ca1104177dc61824533f74de11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142d6d83_e1397349",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-27T08:13:35Z",
+      "side": 1,
+      "message": "style: Let\u0027s try to reduce nesting levels for readability.\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\n if crosconfig.IsNotFound(err) {\n   break\n }\n if err !\u003d nil {\n   return false, errors.Wrap(err, ...)\n }",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "98f3ed3ae2806ca1104177dc61824533f74de11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
