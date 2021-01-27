@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee198df_0143b2f9",
+        "filename": "src/chromiumos/tast/common/perf/perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-27T15:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe4917f2_1382a4bc",
+      "revId": "d7b86ded2c67a6f045ef22fe6578cede224ff12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b32fa0f_1bc60c58",
@@ -136,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1434b737_e6da8641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-27T15:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d062ec2_663a8045",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "d7b86ded2c67a6f045ef22fe6578cede224ff12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c9473f2_9d1e1be6",
@@ -149,6 +191,24 @@
       "writtenOn": "2021-01-26T17:28:14Z",
       "side": 1,
       "message": "Looks like this can be implemented by ReadBatteryPropetry.  Can you rewrite this?",
+      "revId": "d7b86ded2c67a6f045ef22fe6578cede224ff12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e08702e8_9032823d",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-27T15:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c9473f2_9d1e1be6",
       "revId": "d7b86ded2c67a6f045ef22fe6578cede224ff12b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
