@@ -56,6 +56,30 @@
       },
       "revId": "5af86fc5718740a99988a8c0dab56cddd6a3117d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37681b78_72fb57d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-27T02:06:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de48b563_92d9ccf4",
+      "range": {
+        "startLine": 314,
+        "startChar": 40,
+        "endLine": 314,
+        "endChar": 50
+      },
+      "revId": "5af86fc5718740a99988a8c0dab56cddd6a3117d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
