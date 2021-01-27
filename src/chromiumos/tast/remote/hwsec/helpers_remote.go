@@ -46,18 +46,15 @@ func NewLoglessCmdRunner(d *dut.DUT) (*CmdRunnerRemote, error) {
 
 // HelperRemote extends the function set from hwsec.Helper for remote test.
 type HelperRemote struct {
-	hwsec.Helper
+	hwsec.CmdHelper
 	d *dut.DUT
 }
 
 // NewHelper creates a new hwsec.Helper instance that make use of the functions
 // implemented by CmdRunnerRemote.
 func NewHelper(r hwsec.CmdRunner, d *dut.DUT) (*HelperRemote, error) {
-	helper, err := hwsec.NewHelper(r)
-	if err != nil {
-		return nil, err
-	}
-	return &HelperRemote{*helper, d}, nil
+	helper := hwsec.NewCmdHelper(r)
+	return &HelperRemote{helper, d}, nil
 }
 
 // ensureTPMIsReset ensures the TPM is reset when the function returns nil.
