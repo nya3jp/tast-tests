@@ -44,28 +44,68 @@ func NewLoglessCmdRunner(d *dut.DUT) (*CmdRunnerRemote, error) {
 	return &CmdRunnerRemote{d: d, printLog: false}, nil
 }
 
-// HelperRemote extends the function set from hwsec.Helper for remote test.
-type HelperRemote struct {
-	hwsec.CmdHelper
+// CmdHelperRemoteImpl implements the helper functions for CmdHelperRemote
+type CmdHelperRemoteImpl struct {
+	h hwsec.CmdHelperIF
 	d *dut.DUT
+}
+
+// CmdHelperRemote extends the function set of hwsec.CmdHelper
+type CmdHelperRemote struct {
+	hwsec.CmdHelper
+	CmdHelperRemoteImpl
+}
+
+// AttestationHelperRemote extends the function set of hwsec.AttestationHelper
+type AttestationHelperRemote struct {
+	hwsec.AttestationHelper
+}
+
+// FullHelperRemote extends the function set of hwsec.FullHelper
+type FullHelperRemote struct {
+	hwsec.FullHelper
+	CmdHelperRemoteImpl
 }
 
 // NewHelper creates a new hwsec.Helper instance that make use of the functions
 // implemented by CmdRunnerRemote.
-func NewHelper(r hwsec.CmdRunner, d *dut.DUT) (*HelperRemote, error) {
+func NewHelper(r hwsec.CmdRunner, d *dut.DUT) (*CmdHelperRemote, error) {
 	helper := hwsec.NewCmdHelper(r)
-	return &HelperRemote{*helper, d}, nil
+	return &CmdHelperRemote{*helper, CmdHelperRemoteImpl{helper, d}}, nil
+}
+
+// NewAttestationHelper creates a new hwsec.AttestationHelper instance that make use of the functions
+// implemented by AttestationHelperRemote.
+func NewAttestationHelper(d *dut.DUT, h *testing.RPCHint) (*AttestationHelperRemote, error) {
+	ac, err := NewAttestationDBus(d, h)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create attestation client")
+	}
+	helper := hwsec.NewAttestationHelper(ac)
+	return &AttestationHelperRemote{*helper}, nil
+}
+
+// NewFullHelper creates a new hwsec.FullHelper with a remote AttestationClient.
+func NewFullHelper(r hwsec.CmdRunner, d *dut.DUT, h *testing.RPCHint) (*FullHelperRemote, error) {
+	ac, err := NewAttestationDBus(d, h)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create attestation client")
+	}
+	cmdHelper := hwsec.NewCmdHelper(r)
+	attestationHelper := hwsec.NewAttestationHelper(ac)
+	helper := hwsec.NewFullHelper(cmdHelper, attestationHelper)
+	return &FullHelperRemote{*helper, CmdHelperRemoteImpl{helper, d}}, nil
 }
 
 // ensureTPMIsReset ensures the TPM is reset when the function returns nil.
 // Otherwise, returns any encountered error.
 // Optionally removes files from the DUT to simulate a powerwash.
-func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
+func (h *CmdHelperRemoteImpl) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
 	// TODO(crbug.com/879797): Remove polling.
 	// Currently cryptohome is a bit slow on the first boot, so this polling here is necessary to avoid flakiness.
 	isReady := false
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := h.TPMManagerClient().GetNonsensitiveStatus(ctx)
+		info, err := h.h.TPMManagerClient().GetNonsensitiveStatus(ctx)
 		isReady = info.IsOwned
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
@@ -85,18 +125,18 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 		}
 	}
 
-	if _, err := h.CmdRunner().Run(ctx, "stop", "ui"); err != nil {
+	if _, err := h.h.CmdRunner().Run(ctx, "stop", "ui"); err != nil {
 		// ui might not be running because there's no guarantee that it's running when we start the test.
 		// If we actually failed to stop ui and something ends up being wrong, then we can use the logging
 		// below to let whoever that's debugging this problem find out.
 		testing.ContextLog(ctx, "Failed to stop ui, this is normal if ui was not running")
 	}
 
-	if _, err := h.CmdRunner().Run(ctx, "cryptohome", "--action=unmount"); err != nil {
+	if _, err := h.h.CmdRunner().Run(ctx, "cryptohome", "--action=unmount"); err != nil {
 		return errors.Wrap(err, "failed to unmount users")
 	}
 
-	if _, err := h.CmdRunner().Run(ctx, "crossystem", "clear_tpm_owner_request=1"); err != nil {
+	if _, err := h.h.CmdRunner().Run(ctx, "crossystem", "clear_tpm_owner_request=1"); err != nil {
 		return errors.Wrap(err, "failed to file clear_tpm_owner_request")
 	}
 
@@ -123,7 +163,7 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 	// TODO(crbug.com/879797): Remove polling.
 	isOwned := false
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := h.TPMManagerClient().GetNonsensitiveStatus(ctx)
+		info, err := h.h.TPMManagerClient().GetNonsensitiveStatus(ctx)
 		isOwned = info.IsOwned
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
@@ -139,11 +179,11 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 }
 
 // Reboot reboots the DUT
-func (h *HelperRemote) Reboot(ctx context.Context) error {
+func (h *CmdHelperRemoteImpl) Reboot(ctx context.Context) error {
 	if err := h.d.Reboot(ctx); err != nil {
 		return err
 	}
-	dCtrl := h.DaemonController()
+	dCtrl := h.h.DaemonController()
 	// Waits for all the daemons of interest to be ready because the asynchronous initialization of dbus service could complete "after" the booting process.
 	if err := dCtrl.WaitForAllDBusServices(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
@@ -153,11 +193,11 @@ func (h *HelperRemote) Reboot(ctx context.Context) error {
 
 // EnsureTPMIsReset ensures the TPM is reset when the function returns nil.
 // Otherwise, returns any encountered error.
-func (h *HelperRemote) EnsureTPMIsReset(ctx context.Context) error {
+func (h *CmdHelperRemoteImpl) EnsureTPMIsReset(ctx context.Context) error {
 	return h.ensureTPMIsReset(ctx, false)
 }
 
 // EnsureTPMIsResetAndPowerwash ensures the TPM is reset and simulates a Powerwash.
-func (h *HelperRemote) EnsureTPMIsResetAndPowerwash(ctx context.Context) error {
+func (h *CmdHelperRemoteImpl) EnsureTPMIsResetAndPowerwash(ctx context.Context) error {
 	return h.ensureTPMIsReset(ctx, true)
 }
