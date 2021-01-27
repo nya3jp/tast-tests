@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f61a498_be021d60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1367012
+      },
+      "writtenOn": "2021-01-27T18:33:36Z",
+      "side": 1,
+      "message": "I am working on a ProcessFetcher tast test, but wanted to break up the CLs.",
+      "parentUuid": "846e7365_b4e94751",
+      "revId": "9b315021bd33c4add529f25d9122eb2a73710a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "474cb8d3_de079928",
@@ -58,6 +76,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba0e73f_56b9559e",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1367012
+      },
+      "writtenOn": "2021-01-27T18:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "474cb8d3_de079928",
+      "revId": "9b315021bd33c4add529f25d9122eb2a73710a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d56ffd6_178ee12e",
@@ -71,6 +107,30 @@
       "writtenOn": "2021-01-27T01:58:01Z",
       "side": 1,
       "message": "Should this be process?",
+      "range": {
+        "startLine": 65,
+        "startChar": 37,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "9b315021bd33c4add529f25d9122eb2a73710a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b3a0eb_8bcb4089",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1367012
+      },
+      "writtenOn": "2021-01-27T18:33:36Z",
+      "side": 1,
+      "message": "Yes. Yes it should.",
+      "parentUuid": "1d56ffd6_178ee12e",
       "range": {
         "startLine": 65,
         "startChar": 37,
