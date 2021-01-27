@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4e31a4_385ebbc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-27T19:19:28Z",
+      "side": 1,
+      "message": "please remove. it isn\u0027t used",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 26
+      },
+      "revId": "6f5324dc6aeb92f2ad32cdc22e496383092ed9f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d5bda9_f67b0696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-27T19:19:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 23
+      },
+      "revId": "6f5324dc6aeb92f2ad32cdc22e496383092ed9f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
