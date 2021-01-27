@@ -57,6 +57,19 @@ func NewHelper(r hwsec.CmdRunner) (*HelperLocal, error) {
 	return &HelperLocal{*helper}, nil
 }
 
+// NewHelperWithAttestationClient creates a new hwsec.Helper with a local AttestationClient.
+func NewHelperWithAttestationClient(ctx context.Context, r hwsec.CmdRunner) (*HelperLocal, error) {
+	ac, err := NewAttestationClient(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create attestation client")
+	}
+	helper, err := hwsec.NewHelperWithAttestationClient(r, ac)
+	if err != nil {
+		return nil, err
+	}
+	return &HelperLocal{*helper}, nil
+}
+
 // EnsureTPMIsReadyAndBackupSecrets ensures TPM readiness and then backs up tpm manager local data so we can restore important secrets  if needed.
 func (h *HelperLocal) EnsureTPMIsReadyAndBackupSecrets(ctx context.Context, timeout time.Duration) error {
 	if err := h.EnsureTPMIsReady(ctx, timeout); err != nil {
