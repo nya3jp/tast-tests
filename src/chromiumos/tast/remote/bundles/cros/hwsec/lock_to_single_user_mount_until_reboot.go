@@ -154,14 +154,11 @@ func LockToSingleUserMountUntilReboot(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("CmdRunner creation error: ", err)
 	}
-	utility, err := hwsec.NewUtilityCryptohomeBinary(r)
-	if err != nil {
-		s.Fatal("Utilty creation error: ", err)
-	}
 	helper, err := hwsecremote.NewHelper(r, s.DUT())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
+	utility := helper.CryptohomeUtil
 
 	// Create the vaults for testing.
 	if err := create2VaultsForTesting(ctx, utility); err != nil {
