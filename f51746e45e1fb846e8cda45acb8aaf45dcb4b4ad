@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "06d8f506_25c79445",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-27T19:47:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac960028_ce3c1f48",
+      "revId": "f51746e45e1fb846e8cda45acb8aaf45dcb4b4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "76d6d4bb_0ddf332a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e767fa_944c32f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/render_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-27T19:47:33Z",
+      "side": 1,
+      "message": "Will split this out",
+      "parentUuid": "4b9a0734_aa4526b4",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 76
+      },
+      "revId": "f51746e45e1fb846e8cda45acb8aaf45dcb4b4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1bea736_1f110d5c",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-01-27T00:29:52Z",
       "side": 1,
       "message": "Does this need to be released?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 10
+      },
+      "revId": "f51746e45e1fb846e8cda45acb8aaf45dcb4b4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d6e2a81_5ba51a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-27T19:47:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1bea736_1f110d5c",
       "range": {
         "startLine": 63,
         "startChar": 1,
@@ -121,6 +187,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df2cd805_89954bbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-27T19:47:33Z",
+      "side": 1,
+      "message": "Went with WaitUntilDescendantExists as we don\u0027t need the object.",
+      "parentUuid": "2f362d0a_09398636",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "f51746e45e1fb846e8cda45acb8aaf45dcb4b4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a77a02e_b649c71f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-27T19:47:33Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Done.",
+      "parentUuid": "dc05abc8_6f776595",
+      "revId": "f51746e45e1fb846e8cda45acb8aaf45dcb4b4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be398ab5_ce5a7188",
@@ -134,6 +242,30 @@
       "writtenOn": "2021-01-27T00:29:52Z",
       "side": 1,
       "message": "There\u0027s another release for button on line 54. Is this supposed to be cancelBtn?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "f51746e45e1fb846e8cda45acb8aaf45dcb4b4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "362a694e_a71c4283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-27T19:47:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be398ab5_ce5a7188",
       "range": {
         "startLine": 82,
         "startChar": 1,
