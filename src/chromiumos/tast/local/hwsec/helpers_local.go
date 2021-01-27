@@ -42,20 +42,55 @@ func (r *CmdRunnerLocal) Run(ctx context.Context, cmd string, args ...string) ([
 	return testexec.CommandContext(ctx, cmd, args...).Output()
 }
 
-// HelperLocal extends the function set of hwsec.Helper; thoguh, for now we don't have any that kind of function,
-type HelperLocal struct {
+// CmdHelperLocal extends the function set of hwsec.CmdHelper
+type CmdHelperLocal struct {
 	hwsec.CmdHelper
 }
 
-// NewHelper creates a new hwsec.Helper instance that make use of the functions
+// AttestationHelperLocal extends the function set of hwsec.AttestationHelper
+type AttestationHelperLocal struct {
+	hwsec.AttestationHelper
+}
+
+// FullHelperLocal is the full version of all kinds of helper
+type FullHelperLocal struct {
+	CmdHelperLocal
+	AttestationHelperLocal
+}
+
+// NewHelper creates a new hwsec.CmdHelper instance that make use of the functions
 // implemented by CmdRunnerLocal.
-func NewHelper(r hwsec.CmdRunner) (*HelperLocal, error) {
+func NewHelper(r hwsec.CmdRunner) (*CmdHelperLocal, error) {
 	helper := hwsec.NewCmdHelper(r)
-	return &HelperLocal{*helper}, nil
+	return &CmdHelperLocal{*helper}, nil
+}
+
+// NewAttestationHelper creates a new hwsec.AttestationHelper instance that make use of the functions
+// implemented by AttestationHelperLocal.
+func NewAttestationHelper(ctx context.Context) (*AttestationHelperLocal, error) {
+	ac, err := NewAttestationDBus(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create attestation client")
+	}
+	helper := hwsec.NewAttestationHelper(ac)
+	return &AttestationHelperLocal{*helper}, nil
+}
+
+// NewFullHelper creates a new hwsec.FullHelper with a local AttestationClient.
+func NewFullHelper(ctx context.Context, r hwsec.CmdRunner) (*FullHelperLocal, error) {
+	cmdHelperLocal, err := NewHelper(r)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create CmdHelperLocal")
+	}
+	attestationHelperLocal, err := NewAttestationHelper(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create AttestationLocal")
+	}
+	return &FullHelperLocal{*cmdHelperLocal, *attestationHelperLocal}, nil
 }
 
 // EnsureTPMIsReadyAndBackupSecrets ensures TPM readiness and then backs up tpm manager local data so we can restore important secrets  if needed.
-func (h *HelperLocal) EnsureTPMIsReadyAndBackupSecrets(ctx context.Context, timeout time.Duration) error {
+func (h *CmdHelperLocal) EnsureTPMIsReadyAndBackupSecrets(ctx context.Context, timeout time.Duration) error {
 	if err := h.EnsureTPMIsReady(ctx, timeout); err != nil {
 		return errors.Wrap(err, "failed to ensure TPM readiness")
 	}
