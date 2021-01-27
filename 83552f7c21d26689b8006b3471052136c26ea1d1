@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44920a7e_0283735d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-27T02:08:26Z",
+      "side": 1,
+      "message": "I am forcing a rebuild of the dedede image since the unrelated tast failures are consistent.",
+      "revId": "83552f7c21d26689b8006b3471052136c26ea1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
