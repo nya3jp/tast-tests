@@ -16,6 +16,23 @@
       "message": "lgtm",
       "revId": "5086802710194614692eaf70c42a2e3551f615fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "272b56b7_84802460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-27T07:05:55Z",
+      "side": 1,
+      "message": "Let me use your CL to try CQ. It should pick up chrome 4400.",
+      "revId": "5086802710194614692eaf70c42a2e3551f615fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
