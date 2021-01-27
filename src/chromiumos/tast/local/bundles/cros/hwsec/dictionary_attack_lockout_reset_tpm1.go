@@ -11,7 +11,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -45,10 +44,11 @@ func DictionaryAttackLockoutResetTPM1(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create CmdRunner: ", err)
 	}
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
-		s.Fatal("Failed to create UtilityTpmManagerBinary: ", err)
+		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
+	tpmManagerUtil := helper.TPMManagerUtil
 
 	// In this test, we want to check if DA counter increases, and then reset it to see if everything is correct.
 	// Reset DA Lockout => Check DA Counter => Read NVRAM Index with incorrect password =>

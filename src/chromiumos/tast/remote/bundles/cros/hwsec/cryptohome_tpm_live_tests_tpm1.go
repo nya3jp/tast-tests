@@ -10,7 +10,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/testing"
@@ -42,10 +41,7 @@ func CryptohomeTPMLiveTestsTPM1(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
-	if err != nil {
-		s.Fatal("Failed to create UtilityTpmManagerBinary: ", err)
-	}
+	tpmManagerUtil := helper.TPMManagerUtil
 
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
