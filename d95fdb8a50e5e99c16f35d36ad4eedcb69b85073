@@ -33,6 +33,23 @@
       "message": "Shadow tast reviewer +1",
       "revId": "d95fdb8a50e5e99c16f35d36ad4eedcb69b85073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd650a9a_8359e191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-27T05:22:25Z",
+      "side": 1,
+      "message": "+2 for Tast Owners Review",
+      "revId": "d95fdb8a50e5e99c16f35d36ad4eedcb69b85073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
