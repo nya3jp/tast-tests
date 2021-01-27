@@ -36,7 +36,9 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
-	utility := helper.CryptohomeClient()
+
+	cryptohome := helper.CryptohomeClient()
+	attestation := helper.AttestationClient()
 
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsReset(ctx); err != nil {
@@ -44,13 +46,13 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
-	if result, err := utility.IsPreparedForEnrollment(ctx); err != nil {
+	if result, err := attestation.IsPreparedForEnrollment(ctx); err != nil {
 		s.Fatal("Cannot check if enrollment preparation is reset: ", err)
 	} else if result {
 		s.Fatal("Enrollment preparation is not reset after clearing ownership")
 	}
 	s.Log("Enrolling with TPM not ready")
-	if _, err := utility.CreateEnrollRequest(ctx, hwsec.DefaultPCA); err == nil {
+	if _, err := attestation.CreateEnrollRequest(ctx, hwsec.DefaultPCA); err == nil {
 		s.Fatal("Enrollment should not happen w/o getting prepared")
 	}
 
@@ -65,7 +67,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to prepare for enrollment: ", err)
 	}
 	s.Log("Attestation prepared")
-	passwd, err := utility.GetOwnerPassword(ctx)
+	passwd, err := cryptohome.GetOwnerPassword(ctx)
 	if err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	}
@@ -86,7 +88,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 	} else if !bytes.Equal(checksumOutput, checksumOutput2) {
 		s.Fatal("Inconsistent checksum after reboot")
 	}
-	if passwd2, err := utility.GetOwnerPassword(ctx); err != nil {
+	if passwd2, err := cryptohome.GetOwnerPassword(ctx); err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	} else if passwd != passwd2 {
 		s.Fatal("Inconsistent owner password after reboot")
@@ -101,7 +103,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 		// This hacky logic watches the file modification of the persistent tpm status for both
 		// monolithic and distributed models.
 		// Ignores error here; if it's because file doesn't exist we assume the local data has changed.
-		if err := utility.ClearOwnerPassword(ctx); err != nil {
+		if err := cryptohome.ClearOwnerPassword(ctx); err != nil {
 			return err
 		}
 		newTime, err := r.Run(ctx, "stat", "-c", "%y", "/var/lib/tpm_manager/local_tpm_data")
@@ -114,7 +116,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 		if err := dCtrl.RestartCryptohome(ctx); err != nil {
 			return err
 		}
-		if passwd, err := utility.GetOwnerPassword(ctx); err != nil {
+		if passwd, err := cryptohome.GetOwnerPassword(ctx); err != nil {
 			return err
 		} else if len(passwd) != 0 {
 			return errors.New("Still have password")
