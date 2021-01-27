@@ -44,17 +44,14 @@ func (r *CmdRunnerLocal) Run(ctx context.Context, cmd string, args ...string) ([
 
 // HelperLocal extends the function set of hwsec.Helper; thoguh, for now we don't have any that kind of function,
 type HelperLocal struct {
-	hwsec.Helper
+	hwsec.CmdHelper
 }
 
 // NewHelper creates a new hwsec.Helper instance that make use of the functions
 // implemented by CmdRunnerLocal.
 func NewHelper(r hwsec.CmdRunner) (*HelperLocal, error) {
-	helper, err := hwsec.NewHelper(r)
-	if err != nil {
-		return nil, err
-	}
-	return &HelperLocal{*helper}, nil
+	helper := hwsec.NewCmdHelper(r)
+	return &HelperLocal{helper}, nil
 }
 
 // EnsureTPMIsReadyAndBackupSecrets ensures TPM readiness and then backs up tpm manager local data so we can restore important secrets  if needed.
