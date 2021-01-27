@@ -50,6 +50,23 @@
       "message": "+2 for Tast Owners Review",
       "revId": "d95fdb8a50e5e99c16f35d36ad4eedcb69b85073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb17926_1ed71446",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-27T05:40:59Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "revId": "d95fdb8a50e5e99c16f35d36ad4eedcb69b85073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
