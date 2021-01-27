@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42958ee4_d51352d8",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-27T01:49:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7415171c_00ff4f4f",
+      "range": {
+        "startLine": 26,
+        "startChar": 72,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "c354d92d383a0755b492aa9c3c346df955462abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e34c696_f75c1993",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-27T01:23:52Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 36,
+        "startChar": 58,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "c354d92d383a0755b492aa9c3c346df955462abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a889f05_2b1116e1",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/test_extension.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-27T01:49:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e34c696_f75c1993",
       "range": {
         "startLine": 36,
         "startChar": 58,
