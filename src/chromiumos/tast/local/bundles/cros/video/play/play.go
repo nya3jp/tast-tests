@@ -320,7 +320,7 @@ func TestSeek(ctx context.Context, httpHandler http.Handler, cr *chrome.Chrome, 
 // not hold in the future in case we decide to apply night light at
 // compositing time if the hardware does not support the color
 // transform matrix.
-func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename, refFilename string) error {
+func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename, refFilename string) (deferErr error) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 	url := path.Join(server.URL, "video.html")
@@ -337,9 +337,13 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	defer tconn.Close()
 
 	// For consistency across test runs, ensure that the device is in landscape-primary orientation.
-	if err = graphics.RotateDisplayToLandscapePrimary(ctx, tconn); err != nil {
+	display, err := graphics.RotateDisplayToLandscapePrimary(ctx, tconn)
+	if err != nil {
 		return errors.Wrap(err, "failed to set display to landscape-primary orientation")
 	}
+	defer func() {
+		deferErr = display.RestoreDisplayOrientation(ctx, tconn)
+	}()
 
 	// Make the video go to full screen mode by pressing 'f': requestFullScreen() needs a user gesture.
 	ew, err := input.Keyboard(ctx)

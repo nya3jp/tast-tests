@@ -44,7 +44,7 @@ const (
 
 // RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
 // VerifyHWAcceleratorMode codec is hardware accelerated if profile is not NoVerifyHWAcceleratorUsed.
-func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyMode VerifyHWAcceleratorMode, profile string, simulcast bool) error {
+func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyMode VerifyHWAcceleratorMode, profile string, simulcast bool) (deferErr error) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return errors.Wrap(err, "failed to set values for verbose logging")
@@ -60,11 +60,16 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 	if _, err := display.GetInternalInfo(ctx, tconn); err == nil {
 		// The device has an internal display.
 		// For consistency across test runs, ensure that the device is in landscape-primary orientation.
-		if err = graphics.RotateDisplayToLandscapePrimary(ctx, tconn); err != nil {
+		display, err := graphics.RotateDisplayToLandscapePrimary(ctx, tconn)
+		if err != nil {
 			return errors.Wrap(err, "failed to set display to landscape-primary orientation")
 		}
+		defer func() {
+			testing.ContextLog(ctx, "restore rotation")
+			deferErr = display.RestoreDisplayOrientation(ctx, tconn)
+		}()
 	}
-
+	testing.ContextLog(ctx, "did rotation")
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
 
@@ -88,6 +93,7 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 			return errors.Wrap(err, "checkForCodecImplementation() failed")
 		}
 	}
+
 	return nil
 }
 
