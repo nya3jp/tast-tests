@@ -16,6 +16,29 @@
       "message": "PTAL~!",
       "revId": "0d4afedfd8d9039432699435bbc72d11a9861d20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b01fd557_f56c8596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-27T17:13:11Z",
+      "side": 1,
+      "message": "nit: time.Second",
+      "range": {
+        "startLine": 109,
+        "startChar": 31,
+        "endLine": 109,
+        "endChar": 52
+      },
+      "revId": "0d4afedfd8d9039432699435bbc72d11a9861d20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
