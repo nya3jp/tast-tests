@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option optimize_for = LITE_RUNTIME;
+
+package tast.cros.hwsec;
+
+import "interface.proto";
+
+option go_package = "chromiumos/tast/services/cros/hwsec";
+
+// AttestationDBusService allows remote tests to call attestation dbus client.
+service AttestationDBusService {
+  // GetStatus returns the attestation status.
+  rpc GetStatus (attestation.GetStatusRequest) returns (attestation.GetStatusReply) {}
+
+  // CreateEnrollRequest creates enroll request.
+  rpc CreateEnrollRequest (attestation.CreateEnrollRequestRequest) returns (attestation.CreateEnrollRequestReply) {}
+
+  // FinishEnroll finish enroll request.
+  rpc FinishEnroll (attestation.FinishEnrollRequest) returns (attestation.FinishEnrollReply) {}
+
+  // CreateCertificateRequest create certificate request.
+  rpc CreateCertificateRequest (attestation.CreateCertificateRequestRequest) returns (attestation.CreateCertificateRequestReply) {}
+
+  // FinishCertificateRequest finish certificate request.
+  rpc FinishCertificateRequest (attestation.FinishCertificateRequestRequest) returns (attestation.FinishCertificateRequestReply) {}
+
+  // SignEnterpriseChallenge sign enterprise challenge.
+  rpc SignEnterpriseChallenge (attestation.SignEnterpriseChallengeRequest) returns (attestation.SignEnterpriseChallengeReply) {}
+
+  // SignSimpleChallenge sign simple challenge.
+  rpc SignSimpleChallenge (attestation.SignSimpleChallengeRequest) returns (attestation.SignSimpleChallengeReply) {}
+
+  // GetKeyInfo returns the key info.
+  rpc GetKeyInfo (attestation.GetKeyInfoRequest) returns (attestation.GetKeyInfoReply) {}
+
+  // GetEnrollmentID returns  the enrollment id.
+  rpc GetEnrollmentID (attestation.GetEnrollmentIdRequest) returns (attestation.GetEnrollmentIdReply) {}
+}
