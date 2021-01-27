@@ -145,9 +145,17 @@ func supportCrostini(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 	}
 	defer conn.Close()
 
+	if err := conn.WaitForExpr(ctx, "window.loadTimedata !== null"); err != nil {
+		return false, errors.Wrap(err, "failed to wait for window.loadTimeData to be available")
+	}
+
+	if err := conn.WaitForExpr(ctx, "window.loadTimeData.valueExists('allowCrostini')"); err != nil {
+		return false, errors.Wrap(err, "failed to wait for allowCrostini value to be available")
+	}
+
 	var allowCrostini bool
-	if err := conn.Eval(ctx, "window.loadTimeData.data_.allowCrostini", &allowCrostini); err != nil {
-		return false, errors.Wrap(err, "failed to evaluate window.loadTimeData.data_.allowCrostini")
+	if err := conn.Eval(ctx, "window.loadTimeData.getBoolean('allowCrostini')", &allowCrostini); err != nil {
+		return false, errors.Wrap(err, "failed to evaluate window.loadTimeData.getBoolean('allowCrostini')")
 	}
 
 	return allowCrostini, nil
