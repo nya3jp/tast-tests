@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option optimize_for = LITE_RUNTIME;
+
+package tast.cros.hwsec;
+
+import "interface.proto";
+
+option go_package = "chromiumos/tast/services/cros/hwsec";
+
+// AttestationClientService allows remote tests to call attestation client.
+service AttestationClientService {
+  // GetStatus returns the attestation status.
+  rpc GetStatus (attestation.GetStatusRequest) returns (attestation.GetStatusReply) {}
+  // CreateEnrollRequest creates enroll request.
+  rpc CreateEnrollRequest (attestation.CreateEnrollRequestRequest) returns (attestation.CreateEnrollRequestReply) {}
+}
