@@ -49,25 +49,21 @@ func NewHelper(r CmdRunner) (*Helper, error) {
 // EnsureTPMIsReady ensures the TPM is ready when the function returns |nil|.
 // Otherwise, returns any encountered error.
 func (h *Helper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration) error {
-	isReady, err := h.CryptohomeUtil.IsTPMReady(ctx)
+	info, err := h.TPMManagerUtil.GetNonsensitiveStatus(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to ensure ownership due to error in |IsTPMReady|")
+		return errors.Wrap(err, "failed to ensure ownership due to error in |GetNonsensitiveStatus|")
 	}
-	if !isReady {
-		result, err := h.CryptohomeUtil.EnsureOwnership(ctx)
-		if err != nil {
+	if !info.IsOwned {
+		if _, err := h.TPMManagerUtil.TakeOwnership(ctx); err != nil {
 			return errors.Wrap(err, "failed to ensure ownership due to error in |TakeOwnership|")
-		}
-		if !result {
-			return errors.New("failed to take ownership")
 		}
 	}
 	return testing.Poll(ctx, func(context.Context) error {
-		isReady, err := h.CryptohomeUtil.IsTPMReady(ctx)
+		info, err := h.TPMManagerUtil.GetNonsensitiveStatus(ctx)
 		if err != nil {
 			return errors.New("error during checking TPM readiness")
 		}
-		if isReady {
+		if info.IsOwned {
 			return nil
 		}
 		return errors.New("haven't confirmed to be owned")
