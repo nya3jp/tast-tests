@@ -67,6 +67,23 @@
       "message": "LGTM",
       "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ce9f11_a3a41d8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-01-27T12:42:46Z",
+      "side": 1,
+      "message": "Hi Tast experts,\n\nCan you please take a look at this CL?\n\nIn order to test device policies with proxy configurations, we need a service that can run a proxy instance on the DUT remotely.\n\nThank you!",
+      "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
