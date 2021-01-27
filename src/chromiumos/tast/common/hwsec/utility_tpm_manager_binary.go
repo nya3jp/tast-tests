@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -221,6 +222,33 @@ func (u *UtilityTpmManagerBinary) GetNonsensitiveStatus(ctx context.Context) (in
 
 	// Now try to parse everything.
 	return parseNonsensitiveStatusInfo(ctx, true, msg)
+}
+
+// EnsureTPMIsOwned ensures the TPM is owned when the function returns |nil|.
+// Otherwise, returns any encountered error.
+func (u *UtilityTpmManagerBinary) EnsureTPMIsOwned(ctx context.Context, timeout time.Duration) error {
+	info, err := u.GetNonsensitiveStatus(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to ensure ownership due to error in |GetNonsensitiveStatus|")
+	}
+	if !info.IsOwned {
+		if _, err := u.TakeOwnership(ctx); err != nil {
+			return errors.Wrap(err, "failed to ensure ownership due to error in |TakeOwnership|")
+		}
+	}
+	return testing.Poll(ctx, func(context.Context) error {
+		info, err := u.GetNonsensitiveStatus(ctx)
+		if err != nil {
+			return errors.New("error during checking TPM readiness")
+		}
+		if info.IsOwned {
+			return nil
+		}
+		return errors.New("haven't confirmed to be owned")
+	}, &testing.PollOptions{
+		Timeout:  timeout,
+		Interval: PollingInterval,
+	})
 }
 
 // DAInfo contains the dictionary attack related information.

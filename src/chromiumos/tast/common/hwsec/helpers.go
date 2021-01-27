@@ -56,37 +56,6 @@ type TPMInitializer interface {
 	IsPreparedForEnrollment(ctx context.Context) (bool, error)
 }
 
-// EnsureTPMIsReady ensures the TPM is ready when the function returns |nil|.
-// Otherwise, returns any encountered error.
-func (h *Helper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration) error {
-	isReady, err := h.ti.IsTPMReady(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to ensure ownership due to error in |IsTPMReady|")
-	}
-	if !isReady {
-		result, err := h.ti.EnsureOwnership(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to ensure ownership due to error in |TakeOwnership|")
-		}
-		if !result {
-			return errors.New("failed to take ownership")
-		}
-	}
-	return testing.Poll(ctx, func(context.Context) error {
-		isReady, err := h.ti.IsTPMReady(ctx)
-		if err != nil {
-			return errors.New("error during checking TPM readiness")
-		}
-		if isReady {
-			return nil
-		}
-		return errors.New("haven't confirmed to be owned")
-	}, &testing.PollOptions{
-		Timeout:  timeout,
-		Interval: PollingInterval,
-	})
-}
-
 // EnsureIsPreparedForEnrollment ensures the DUT is prepareed for enrollment
 // when the function returns |nil|. Otherwise, returns any encountered error.
 func (h *Helper) EnsureIsPreparedForEnrollment(ctx context.Context, timeout time.Duration) error {
