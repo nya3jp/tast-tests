@@ -60,6 +60,19 @@ func NewHelper(r hwsec.CmdRunner, d *dut.DUT) (*HelperRemote, error) {
 	return &HelperRemote{*helper, d}, nil
 }
 
+// NewHelperWithAttestationClient creates a new hwsec.Helper with a remote AttestationClient.
+func NewHelperWithAttestationClient(r hwsec.CmdRunner, d *dut.DUT, h *testing.RPCHint) (*HelperRemote, error) {
+	ac, err := NewAttestationClient(d, h)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create attestation client")
+	}
+	helper, err := hwsec.NewHelperWithAttestationClient(r, ac)
+	if err != nil {
+		return nil, err
+	}
+	return &HelperRemote{*helper, d}, nil
+}
+
 // ensureTPMIsReset ensures the TPM is reset when the function returns nil.
 // Otherwise, returns any encountered error.
 // Optionally removes files from the DUT to simulate a powerwash.
