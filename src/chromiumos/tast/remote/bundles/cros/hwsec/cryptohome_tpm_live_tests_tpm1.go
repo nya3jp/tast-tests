@@ -37,12 +37,7 @@ func CryptohomeTPMLiveTestsTPM1(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create CmdRunner: ", err)
 	}
 
-	utility, err := hwsec.NewUtilityCryptohomeBinary(cmdRunner)
-	if err != nil {
-		s.Fatal("Utilty creation error: ", err)
-	}
-
-	helper, err := hwsecremote.NewHelper(utility, cmdRunner, s.DUT())
+	helper, err := hwsecremote.NewHelper(cmdRunner, s.DUT())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
