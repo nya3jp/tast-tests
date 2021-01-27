@@ -187,6 +187,30 @@
       },
       "revId": "828862a0da4e20c0308a0320c262e8faec1587e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a76653af_88c1a86b",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-27T16:34:26Z",
+      "side": 1,
+      "message": "ahh, I guess I assumed that c.cl.Media.PlayerPropertiesChanged returns nil on an error as well. If that isn\u0027t this case, this is probably the better api to ensure no one ignores the error.",
+      "parentUuid": "1651ef76_e7e85ddb",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 378,
+        "endChar": 21
+      },
+      "revId": "828862a0da4e20c0308a0320c262e8faec1587e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
