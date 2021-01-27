@@ -27,10 +27,10 @@ var DxLogButton = ui.FindParams{
 	Role:      ui.RoleTypeButton,
 }
 
-// DxActionButtons export is used to find routine section buttons
-var DxActionButtons = ui.FindParams{
-	ClassName: "action-button",
-	Role:      ui.RoleTypeButton,
+// DxMemoryTestButton export is used to find routine test button
+var DxMemoryTestButton = ui.FindParams{
+	Name: "Run Memory test",
+	Role: ui.RoleTypeButton,
 }
 
 // DxCPUTestButton export is used to find routine test button
