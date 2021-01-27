@@ -33,6 +33,24 @@
       "message": "Please append the comment:\n\n// Returns nil if dynamic SAR table is missing as it is a valid case.",
       "revId": "fa71d8ec6d21d4e5b30c2dc4abaa2ca46e10bfc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c87dc33_8b907829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-01-27T19:52:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35e28065_b2e37692",
+      "revId": "fa71d8ec6d21d4e5b30c2dc4abaa2ca46e10bfc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
