@@ -11,10 +11,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/chrome/trace"
 	"chromiumos/tast/testing"
 )
 
@@ -150,39 +150,22 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 		return true
 	}
 
-	const traceCleanupDuration = 2 * time.Second
-	if deadline, ok := ctx.Deadline(); ok && deadline.Sub(time.Now()) < traceCleanupDuration {
+	if deadline, ok := ctx.Deadline(); ok && deadline.Sub(time.Now()) < trace.CleanupDuration {
 		testing.ContextLog(ctx, "There are no time to conduct a tracing run. Skipping")
 		return true
 	}
 
 	defer r.cr.StopTracing(ctx)
 	return s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
-		sctx, cancel := ctxutil.Shorten(ctx, traceCleanupDuration)
-		defer cancel()
-		if err := r.cr.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}); err != nil {
-			s.Log("Failed to start tracing: ", err)
-			return
-		}
-		if _, err := scenario(sctx); err != nil {
-			s.Error("Failed to run the test scenario: ", err)
-		}
-		tr, err := r.cr.StopTracing(ctx)
-		if err != nil {
-			s.Log("Failed to stop tracing: ", err)
-			return
-		}
-		if tr == nil || len(tr.Packet) == 0 {
-			s.Log("No trace data is collected")
-			return
-		}
 		filename := "trace.data.gz"
 		if name != "" {
 			filename = name + "-" + filename
 		}
-		if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(s.OutDir(), filename)); err != nil {
-			s.Log("Failed to save trace to file: ", err)
-			return
+		if err := trace.Run(ctx, r.cr, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}, filepath.Join(s.OutDir(), filename), func(ctx context.Context) error {
+			_, err := scenario(ctx)
+			return err
+		}); err != nil {
+			s.Error("Failed to run the scenario with traces: ", err)
 		}
 	})
 }

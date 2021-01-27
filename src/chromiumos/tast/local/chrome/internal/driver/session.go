@@ -225,12 +225,7 @@ func (s *Session) testAPIConnFor(ctx context.Context, extConn **Conn, extID stri
 	return &TestConn{*extConn}, nil
 }
 
-// StartTracing starts trace events collection for the selected categories. Android
-// categories must be prefixed with "disabled-by-default-android ", e.g. for the
-// gfx category, use "disabled-by-default-android gfx", including the space.
-// Note: StopTracing should be called even if StartTracing returns an error.
-// Sometimes, the request to start tracing reaches the browser process, but there
-// is a timeout while waiting for the reply.
+// StartTracing implements trace.Traceable.
 func (s *Session) StartTracing(ctx context.Context, categories []string) error {
 	// Note: even when StartTracing fails, it might be due to the case that the
 	// StartTracing request is successfully sent to the browser and tracing
@@ -240,7 +235,7 @@ func (s *Session) StartTracing(ctx context.Context, categories []string) error {
 	return s.devsess.StartTracing(ctx, categories)
 }
 
-// StopTracing stops trace collection and returns the collected trace events.
+// StopTracing implements trace.Traceable.
 func (s *Session) StopTracing(ctx context.Context) (*trace.Trace, error) {
 	traces, err := s.devsess.StopTracing(ctx)
 	if err != nil {

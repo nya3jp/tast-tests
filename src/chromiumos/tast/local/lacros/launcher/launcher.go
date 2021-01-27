@@ -55,14 +55,12 @@ func ConnectToLacrosChrome(ctx context.Context, lacrosPath, userDataDir string) 
 	return l, nil
 }
 
-// StartTracing starts trace events collection for the selected categories. Android
-// categories must be prefixed with "disabled-by-default-android ", e.g. for the
-// gfx category, use "disabled-by-default-android gfx", including the space.
+// StartTracing implements trace.Traceable.
 func (l *LacrosChrome) StartTracing(ctx context.Context, categories []string) error {
 	return l.Devsess.StartTracing(ctx, categories)
 }
 
-// StopTracing stops trace collection and returns the collected trace events.
+// StopTracing implements trace.Traceable.
 func (l *LacrosChrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
 	return l.Devsess.StopTracing(ctx)
 }

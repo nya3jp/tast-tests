@@ -6,7 +6,6 @@
 package chrome
 
 import (
-	"compress/gzip"
 	"context"
 	"fmt"
 	"os"
@@ -14,7 +13,6 @@ import (
 	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
-	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
@@ -515,53 +513,12 @@ func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool,
 	return len(targets) != 0, nil
 }
 
-// StartTracing starts trace events collection for the selected categories. Android
-// categories must be prefixed with "disabled-by-default-android ", e.g. for the
-// gfx category, use "disabled-by-default-android gfx", including the space.
-// Note: StopTracing should be called even if StartTracing returns an error.
-// Sometimes, the request to start tracing reaches the browser process, but there
-// is a timeout while waiting for the reply.
+// StartTracing implements trace.Traceable.
 func (c *Chrome) StartTracing(ctx context.Context, categories []string) error {
 	return c.sess.StartTracing(ctx, categories)
 }
 
-// StopTracing stops trace collection and returns the collected trace events.
+// StopTracing implements trace.Traceable.
 func (c *Chrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
 	return c.sess.StopTracing(ctx)
-}
-
-// SaveTraceToFile marshals the given trace into a binary protobuf and saves it
-// to a gzip archive at the specified path.
-func SaveTraceToFile(ctx context.Context, trace *trace.Trace, path string) error {
-	data, err := proto.Marshal(trace)
-	if err != nil {
-		return errors.Wrap(err, "could not marshal trace to binary")
-	}
-
-	file, err := os.OpenFile(path, os.O_CREATE|os.O_RDWR, 0644)
-	if err != nil {
-		return errors.Wrap(err, "could not open file")
-	}
-	defer func() {
-		if err := file.Close(); err != nil {
-			testing.ContextLog(ctx, "Failed to close file: ", err)
-		}
-	}()
-
-	writer := gzip.NewWriter(file)
-	defer func() {
-		if err := writer.Close(); err != nil {
-			testing.ContextLog(ctx, "Failed to close gzip writer: ", err)
-		}
-	}()
-
-	if _, err := writer.Write(data); err != nil {
-		return errors.Wrap(err, "could not write the data")
-	}
-
-	if err := writer.Flush(); err != nil {
-		return errors.Wrap(err, "could not flush the gzip writer")
-	}
-
-	return nil
 }

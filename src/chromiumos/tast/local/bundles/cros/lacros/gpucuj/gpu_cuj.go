@@ -11,14 +11,13 @@ import (
 	"path/filepath"
 	"time"
 
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
-
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/trace"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
@@ -165,14 +164,9 @@ type testInvocation struct {
 	traceDir string
 }
 
-type traceable interface {
-	StartTracing(ctx context.Context, categories []string) error
-	StopTracing(ctx context.Context) (*trace.Trace, error)
-}
-
 // runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and lacros chrome.
 // tconn is a test connection to the current browser being used (either ChromeOS or lacros chrome).
-func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, tracer traceable, invoc *testInvocation) error {
+func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, tracer trace.Traceable, invoc *testInvocation) error {
 	w, err := lacros.FindFirstNonBlankWindow(ctx, pd.TestAPIConn)
 	if err != nil {
 		return err
@@ -274,25 +268,9 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, t
 
 	if invoc.traceDir != "" {
 		oldPerfFn := perfFn
+		filename := filepath.Join(invoc.traceDir, string(invoc.crt)+"-"+invoc.page.name+"-trace.data")
 		perfFn = func(ctx context.Context) error {
-			if err := tracer.StartTracing(ctx, tracingCategories); err != nil {
-				return err
-			}
-			if err := oldPerfFn(ctx); err != nil {
-				if _, err := tracer.StopTracing(ctx); err != nil {
-					testing.ContextLog(ctx, "Failed to stop tracing after encountering other error: ", err)
-				}
-				return err
-			}
-			tr, err := tracer.StopTracing(ctx)
-			if err != nil {
-				return err
-			}
-			filename := filepath.Join(invoc.traceDir, string(invoc.crt)+"-"+invoc.page.name+"-trace.data")
-			if err := chrome.SaveTraceToFile(ctx, tr, filename); err != nil {
-				return err
-			}
-			return nil
+			return trace.Run(ctx, tracer, tracingCategories, filename, oldPerfFn)
 		}
 	}
 

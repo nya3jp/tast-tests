@@ -14,9 +14,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/trace"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/webutil"
@@ -222,44 +222,32 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 			s.Error("Failed to stop tracing viz.triangles in cleanup phase: ", err)
 		}
 	}()
-	if err := cr.StartTracing(ctx, []string{"disabled-by-default-viz.triangles"}); err != nil {
-		s.Fatal("Failed to start tracing viz.triangles: ", err)
-	}
+	filename := filepath.Join(s.OutDir(), "trace.data.gz")
+	var pv *perf.Values
+	if err := trace.Run(ctx, cr, []string{"disabled-by-default-viz.triangles"}, filename, func(ctx context.Context) error {
+		if err := timeline.Start(ctx); err != nil {
+			return errors.Wrap(err, "failed to start metrics")
+		}
 
-	if err := timeline.Start(ctx); err != nil {
-		s.Fatal("Failed to start metrics: ", err)
-	}
+		if err := timeline.StartRecording(ctx); err != nil {
+			return errors.Wrap(err, "failed to start recording")
+		}
 
-	if err := timeline.StartRecording(ctx); err != nil {
-		s.Fatal("Failed to start recording: ", err)
-	}
+		const timelineDuration = time.Minute
+		if err := testing.Sleep(ctx, timelineDuration); err != nil {
+			return errors.Wrapf(err, "failed to wait %v", timelineDuration)
+		}
 
-	const timelineDuration = time.Minute
-	if err := testing.Sleep(ctx, timelineDuration); err != nil {
-		s.Fatalf("Failed to wait %v: %v", timelineDuration, err)
+		var err error
+		pv, err = timeline.StopRecording()
+		if err != nil {
+			return errors.Wrap(err, "failed while recording metrics")
+		}
+		return nil
+	}); err != nil {
+		s.Fatal("Failed to run with tracing: ", err)
 	}
-
-	pv, err := timeline.StopRecording()
-	if err != nil {
-		s.Fatal("Error while recording metrics: ", err)
-	}
-
-	// As we still have to save results to files, we are not yet
-	// focusing on cleanup, but we can safely pass cleanupCtx
-	// (borrowing from the time reserved for cleanup) because
-	// StopTracing was deferred to cleanup and we are now getting
-	// it done ahead of time (see comment on triedToStopTracing).
-	triedToStopTracing = true
-	tr, err := cr.StopTracing(cleanupCtx)
-	if err != nil {
-		s.Fatal("Failed to stop tracing viz.triangles: ", err)
-	}
-
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save perf data: ", err)
-	}
-
-	if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(s.OutDir(), "trace.data.gz")); err != nil {
-		s.Error("Failed to save trace data: ", err)
 	}
 }
