@@ -64,7 +64,7 @@ func UnmountAll(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create UtilityCryptohomeBinary: ", err)
 	}
 
-	helper, err := hwseclocal.NewHelper(utility)
+	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
