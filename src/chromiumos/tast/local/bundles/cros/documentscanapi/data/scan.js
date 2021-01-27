@@ -31,7 +31,7 @@ var onScanCompleted = function(scan_results) {
 };
 
 scanButton.addEventListener('click', function() {
-  var scanProperties = {};
+  var scanProperties = {"mimeTypes": ["testing"]};
   waitAnimation.style.display = 'block';
   chrome.documentScan.scan(scanProperties, onScanCompleted);
 });
