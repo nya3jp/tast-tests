@@ -22,6 +22,7 @@ func init() {
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		SoftwareDeps: []string{"reboot", "tpm"},
 		Attr:         []string{"group:hwsec_destructive_func"},
+		ServiceDeps:  []string{"tast.cros.hwsec.AttestationClientService"},
 	})
 }
 
@@ -31,7 +32,7 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 		s.Fatal("CmdRunner creation error: ", err)
 	}
 
-	helper, err := hwsecremote.NewHelper(r, s.DUT())
+	helper, err := hwsecremote.NewHelperWithAttestationClient(r, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
