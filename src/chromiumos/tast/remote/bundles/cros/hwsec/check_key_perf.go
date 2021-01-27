@@ -40,7 +40,7 @@ func CheckKeyPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Utilty creation error: ", err)
 	}
-	helper, err := hwsecremote.NewHelper(utility, r, s.DUT())
+	helper, err := hwsecremote.NewHelper(r, s.DUT())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}

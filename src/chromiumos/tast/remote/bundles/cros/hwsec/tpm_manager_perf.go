@@ -60,12 +60,7 @@ func TpmManagerPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create new command runner: ", err)
 	}
 
-	utility, err := hwsec.NewUtilityCryptohomeBinary(r)
-	if err != nil {
-		s.Fatal("Utilty creation error: ", err)
-	}
-
-	helper, err := hwsecremote.NewHelper(utility, r, s.DUT())
+	helper, err := hwsecremote.NewHelper(r, s.DUT())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
