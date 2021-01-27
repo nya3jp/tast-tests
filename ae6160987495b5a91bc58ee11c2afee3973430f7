@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ebc3ed5_50d1ccef",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-27T16:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc943d17_0d757bd4",
+      "range": {
+        "startLine": 386,
+        "startChar": 26,
+        "endLine": 386,
+        "endChar": 34
+      },
+      "revId": "ae6160987495b5a91bc58ee11c2afee3973430f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a3eb65e_ae1c774a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-27T01:23:42Z",
       "side": 1,
       "message": "The parent folder must have been opened.",
+      "range": {
+        "startLine": 272,
+        "startChar": 64,
+        "endLine": 272,
+        "endChar": 70
+      },
+      "revId": "ae6160987495b5a91bc58ee11c2afee3973430f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a6a67e7_38e27774",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-27T16:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a3eb65e_ae1c774a",
       "range": {
         "startLine": 272,
         "startChar": 64,
