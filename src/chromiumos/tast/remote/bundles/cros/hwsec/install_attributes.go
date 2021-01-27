@@ -148,7 +148,7 @@ func waitForInstallAttributes(ctx context.Context, utility *hwsec.UtilityCryptoh
 }
 
 // takeOwnershipAndWaitForInstallAttributes takes ownership and wait for install attributes to be ready.
-func takeOwnershipAndWaitForInstallAttributes(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary, helper *hwsecremote.HelperRemote) error {
+func takeOwnershipAndWaitForInstallAttributes(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary, helper hwsecremote.CmdHelperRemote) error {
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		return errors.Wrap(err, "time out waiting for TPM to be ready")
 	}
