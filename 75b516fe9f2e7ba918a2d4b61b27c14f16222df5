@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "addab12f_6330e966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-01-27T09:58:03Z",
+      "side": 0,
+      "message": "Why are we removing this?",
+      "revId": "75b516fe9f2e7ba918a2d4b61b27c14f16222df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
