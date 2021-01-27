@@ -22,7 +22,7 @@ func init() {
 		Func:         CCAUISettings,
 		Desc:         "Opens CCA and verifies the settings menu behavior",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),

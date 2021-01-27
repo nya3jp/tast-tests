@@ -30,7 +30,7 @@ func init() {
 		Func:         GetUserMedia,
 		Desc:         "Verifies that getUserMedia captures video",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(webrtc.DataFiles(), launcher.DataArtifact, "getusermedia.html"),
 		Vars:         []string{"lacrosDeployedBinary"},

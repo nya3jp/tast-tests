@@ -17,7 +17,7 @@ func init() {
 		Func:         CCAAPI,
 		Desc:         "Verifies that the private JavaScript APIs CCA relies on work as expected",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Pre:          chrome.LoggedIn(),
 	})

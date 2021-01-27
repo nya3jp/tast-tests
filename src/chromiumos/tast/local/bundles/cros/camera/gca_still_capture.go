@@ -20,7 +20,7 @@ func init() {
 		Func:         GCAStillCapture,
 		Desc:         "Tests still capture with GoogleCameraArc (GCA)",
 		Contacts:     []string{"lnishan@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{gca.Apk},
 		Pre:          arc.Booted(),
