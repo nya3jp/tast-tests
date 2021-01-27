@@ -94,10 +94,11 @@ func SanitizedUsernameAndSalt(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create CmdRunner: ", err)
 	}
-	cryptohomeUtil, err := hwsec.NewUtilityCryptohomeBinary(cmdRunner)
+	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
-		s.Fatal("Failed to create UtilityCryptohomeBinary: ", err)
+		s.Fatal("Failed to create hwsec helper: ", err)
 	}
+	cryptohomeUtil := helper.CryptohomeUtil
 
 	// Check the sanitized username.
 	firstSanitized, err := getSanitizedUsernameAndCompare(ctx, cryptohomeUtil, util.FirstUsername)
