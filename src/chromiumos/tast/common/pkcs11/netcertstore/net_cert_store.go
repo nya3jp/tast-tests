@@ -90,19 +90,16 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 		return singletonStore, nil
 	}
 
-	cryptohome, err := hwsec.NewUtilityCryptohomeBinary(runner)
+	helper, err := hwsec.NewHelper(runner)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create cryptohome utility")
+		return nil, errors.Wrap(err, "failed to create hwsec helper")
 	}
+	cryptohome := helper.CryptohomeUtil
 
 	// Take ownership first. We need the ownership for chaps keystore to be available after mount.
 	// For local tests, Tast will try to take ownership before the test runs, but that is not
 	// a guarantee for remote tests. Therefore, we take the ownership here anyway in order to
 	// ensure that NetCertStore works well for both local and remote tests.
-	helper, err := hwsec.NewHelper(runner)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create hwsec helper")
-	}
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		return nil, errors.Wrap(err, "failed to ensure TPM is ready for NetCertStore")
 	}
