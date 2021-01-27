@@ -39,6 +39,30 @@
       },
       "revId": "18945feeefb34e94e68110a4fdf32a2d67756c8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d3cfa9_c1cb9f53",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-27T05:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c253d95_98550f0d",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 2
+      },
+      "revId": "18945feeefb34e94e68110a4fdf32a2d67756c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
