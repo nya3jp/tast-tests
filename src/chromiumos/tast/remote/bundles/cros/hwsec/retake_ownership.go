@@ -31,15 +31,11 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 		s.Fatal("CmdRunner creation error: ", err)
 	}
 
-	utility, err := hwsec.NewUtilityCryptohomeBinary(r)
-	if err != nil {
-		s.Fatal("Utilty creation error: ", err)
-	}
-
 	helper, err := hwsecremote.NewHelper(r, s.DUT())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
+	utility := helper.CryptohomeUtil
 
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsReset(ctx); err != nil {
