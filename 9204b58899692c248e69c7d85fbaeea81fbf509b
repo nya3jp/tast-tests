@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24268f92_889060b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-27T07:50:26Z",
+      "side": 1,
+      "message": "I guess Eric is busy now. +2 as a Tast reviewer.\n",
+      "revId": "9204b58899692c248e69c7d85fbaeea81fbf509b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
