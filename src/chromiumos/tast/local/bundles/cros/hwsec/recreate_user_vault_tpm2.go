@@ -45,15 +45,12 @@ func RecreateUserVaultTPM2(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create CmdRunner: ", err)
 	}
 
-	utility, err := hwsec.NewUtilityCryptohomeBinary(cmdRunner)
-	if err != nil {
-		s.Fatal("Failed to create UtilityCryptohomeBinary: ", err)
-	}
-
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
+
+	utility := helper.CryptohomeUtil
 
 	// Resets the TPM, system, and user states before running the tests.
 	if err := hwseclocal.ResetTPMAndSystemStates(ctx); err != nil {

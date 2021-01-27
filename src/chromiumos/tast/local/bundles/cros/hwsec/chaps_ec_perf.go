@@ -55,10 +55,11 @@ func ChapsECPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("CmdRunner creation error: ", err)
 	}
 
-	utility, err := hwsec.NewUtilityCryptohomeBinary(r)
+	helper, err := hwseclocal.NewHelper(r)
 	if err != nil {
-		s.Fatal("Cryptohome Utilty creation error: ", err)
+		s.Fatal("Failed to create hwsec helper: ", err)
 	}
+	utility := helper.CryptohomeUtil
 
 	pkcs11Util, err := pkcs11.NewChaps(ctx, r, utility)
 	if err != nil {
