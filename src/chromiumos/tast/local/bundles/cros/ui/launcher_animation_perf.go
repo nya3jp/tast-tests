@@ -162,7 +162,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 			}
 			// Maximize all windows to ensure a consistent state.
 			if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-				return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal)
+				return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
 			}); err != nil {
 				s.Fatal("Failed to maximize windows: ", err)
 			}
