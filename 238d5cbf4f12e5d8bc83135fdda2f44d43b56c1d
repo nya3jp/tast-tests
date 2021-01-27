@@ -33,6 +33,24 @@
       "message": "I believe the suggestion / convention is to use :\u003d here so that this \u0027err\u0027 is scoped to this if and does not \u0027leak\u0027 to the outer scope.\n\nAnother neat trick I recently learned is that a variable scoped to an \u0027if\u0027 statement can be used in the else also. That doesn\u0027t apply here, but e.g.:\n\nif x, err :\u003d foo(); err !\u003d nil {\n  return err;\n} else {\n  // do something with |x|\n}\n\nThat doesn\u0027t work with \u0027appRoot\u0027 since we use it below the if (and the pattern is not worth making a giant else block for), but if e.g. we just wanted to log the result of appRoot.Descendant or test its value (i.e. \u0027else if d !\u003d expected\u0027) it\u0027s a nice pattern.",
       "revId": "238d5cbf4f12e5d8bc83135fdda2f44d43b56c1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd56b24f_c0268c89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/connectivity_diagnostics_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-27T18:15:03Z",
+      "side": 1,
+      "message": "Good catch, I missed adding the colon!",
+      "parentUuid": "4482e4a0_9dba1dac",
+      "revId": "238d5cbf4f12e5d8bc83135fdda2f44d43b56c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
