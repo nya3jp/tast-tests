@@ -679,6 +679,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf8f264_f9f996a0",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-27T08:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "face5452_868a7262",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2f15abc_bcbd3087",
@@ -692,6 +710,24 @@
       "writtenOn": "2020-12-04T23:41:46Z",
       "side": 1,
       "message": "ditto",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4080092_4f1b2540",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-27T08:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2f15abc_bcbd3087",
       "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
