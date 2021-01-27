@@ -70,6 +70,24 @@
       "parentUuid": "c2b1c644_6165e1a6",
       "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af44601_34ef469e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-27T16:26:16Z",
+      "side": 1,
+      "message": "It is important to understand the cause of the failure.\nDo you mean imageloader restarting is flaky? If so, do you know why?\nIs it specific issue to the image loader? Or the issue of the D-Bus basic?\nIt sounds to me that it\u0027s not testing specific situation at this moment, and users can see the unexpected behavior, right?\n\nFlakiness issue on testing may be ignored if, e.g., it is known that happens independently from the testing. E.g., TPM chip failure causing Chrome login failure, etc, which is difficult to avoid.\nHowever, in this case, imageloader timeout sounds like related to this test, so I\u0027m concerning.",
+      "parentUuid": "cb1caab6_b8559ea9",
+      "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
