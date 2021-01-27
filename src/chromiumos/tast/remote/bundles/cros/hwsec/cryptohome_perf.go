@@ -37,6 +37,7 @@ func init() {
 			"cros-hwsec@chromium.org",
 		},
 		SoftwareDeps: []string{"reboot", "tpm"},
+		ServiceDeps:  []string{"tast.cros.hwsec.AttestationClientService"},
 	})
 }
 
@@ -98,12 +99,12 @@ func clearOwnership(ctx context.Context, s *testing.State) {
 		s.Fatal("CmdRunner creation error: ", err)
 	}
 
-	helper, err := hwsecremote.NewHelper(r, s.DUT())
+	helper, err := hwsecremote.NewFullHelper(r, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
 
-	utility := helper.CryptohomeClient()
+	attestation := helper.AttestationClient()
 
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
@@ -111,13 +112,13 @@ func clearOwnership(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
-	if result, err := utility.IsPreparedForEnrollment(ctx); err != nil {
+	if result, err := attestation.IsPreparedForEnrollment(ctx); err != nil {
 		s.Fatal("Cannot check if enrollment preparation is reset: ", err)
 	} else if result {
 		s.Fatal("Enrollment preparation is not reset after clearing ownership")
 	}
 	s.Log("Enrolling with TPM not ready")
-	if _, err := utility.CreateEnrollRequest(ctx, hwsec.DefaultPCA); err == nil {
+	if _, err := attestation.CreateEnrollRequest(ctx, hwsec.DefaultPCA); err == nil {
 		s.Fatal("Enrollment should not happen w/o getting prepared")
 	}
 }

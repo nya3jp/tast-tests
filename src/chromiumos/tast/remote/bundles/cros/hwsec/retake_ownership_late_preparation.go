@@ -37,7 +37,8 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 
-	utility := helper.CryptohomeClient()
+	cryptohome := helper.CryptohomeClient()
+	attestation := helper.AttestationClient()
 
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsReset(ctx); err != nil {
@@ -45,7 +46,7 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
-	if result, err := utility.IsPreparedForEnrollment(ctx); err != nil {
+	if result, err := attestation.IsPreparedForEnrollment(ctx); err != nil {
 		s.Fatal("Cannot check if enrollment preparation is reset: ", err)
 	} else if result {
 		s.Fatal("Enrollment preparation is not reset after clearing ownership")
@@ -59,7 +60,7 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Ownership is taken")
 
-	if passwd, err := utility.GetOwnerPassword(ctx); err != nil {
+	if passwd, err := cryptohome.GetOwnerPassword(ctx); err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	} else if len(passwd) != hwsec.OwnerPasswordLength {
 		s.Fatal("Ill-formed owner password")
@@ -82,7 +83,7 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 		// This hacky logic watches the file modification of the persistent tpm status for both
 		// monolithic and distributed models.
 		// Ignores error here; if it's because file doesn't exist we assume the local data has changed.
-		if err := utility.ClearOwnerPassword(ctx); err != nil {
+		if err := cryptohome.ClearOwnerPassword(ctx); err != nil {
 			return err
 		}
 		newTime, err := r.Run(ctx, "stat", "-c", "%y", "/var/lib/tpm_manager/local_tpm_data")
@@ -94,7 +95,7 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 		if err := dCtrl.RestartCryptohome(ctx); err != nil {
 			return err
 		}
-		if passwd, err := utility.GetOwnerPassword(ctx); err != nil {
+		if passwd, err := cryptohome.GetOwnerPassword(ctx); err != nil {
 			return err
 		} else if len(passwd) != 0 {
 			return errors.New("Still have password")
