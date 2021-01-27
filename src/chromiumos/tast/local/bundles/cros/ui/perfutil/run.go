@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/traceutil"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -180,7 +181,7 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 		if name != "" {
 			filename = name + "-" + filename
 		}
-		if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(s.OutDir(), filename)); err != nil {
+		if err := traceutil.SaveTraceToFile(ctx, tr, filepath.Join(s.OutDir(), filename)); err != nil {
 			s.Log("Failed to save trace to file: ", err)
 			return
 		}

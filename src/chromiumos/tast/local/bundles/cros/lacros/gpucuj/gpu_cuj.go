@@ -14,6 +14,7 @@ import (
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/traceutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -289,7 +290,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, t
 				return err
 			}
 			filename := filepath.Join(invoc.traceDir, string(invoc.crt)+"-"+invoc.page.name+"-trace.data")
-			if err := chrome.SaveTraceToFile(ctx, tr, filename); err != nil {
+			if err := traceutil.SaveTraceToFile(ctx, tr, filename); err != nil {
 				return err
 			}
 			return nil
