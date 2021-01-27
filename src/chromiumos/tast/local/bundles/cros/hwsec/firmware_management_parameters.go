@@ -112,10 +112,11 @@ func FirmwareManagementParameters(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create CmdRunner: ", err)
 	}
 
-	utility, err := hwsec.NewUtilityCryptohomeBinary(cmdRunner)
+	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
-		s.Fatal("Failed to create UtilityCryptohomeBinary: ", err)
+		s.Fatal("Failed to create hwsec helper: ", err)
 	}
+	utility := helper.CryptohomeUtil
 
 	// First backup the current FWMP so the test doesn't affect what's on DUT.
 	fwmp, err := utility.BackupFWMP(ctx)
