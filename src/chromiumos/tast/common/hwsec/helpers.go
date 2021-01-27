@@ -24,33 +24,37 @@ type CmdRunner interface {
 // Helper provides various helper functions that could be shared across all
 // hwsec integration test regardless of run-type, i.e., remote or local.
 type Helper struct {
-	ti TPMInitializer
+	CmdRunner      CmdRunner
+	CryptohomeUtil *UtilityCryptohomeBinary
+	TPMManagerUtil *UtilityTpmManagerBinary
 }
 
-// NewHelper creates a new Helper, with ti responsible for TPM initialization.
-func NewHelper(ti TPMInitializer) *Helper {
-	return &Helper{ti}
-}
-
-// TPMInitializer is a collection of TPM-initialiaztion-related functions.
-type TPMInitializer interface {
-	// IsTPMReady checks if currently TPM is owned.
-	IsTPMReady(ctx context.Context) (bool, error)
-	// EnsureOwnership() owns TPM when it's not owned yet.
-	EnsureOwnership(ctx context.Context) (bool, error)
-	// IsPreparedForEnrollment checks is currently attestation is prepared for enrollment.
-	IsPreparedForEnrollment(ctx context.Context) (bool, error)
+// NewHelper creates a new Helper, with r responsible for CmdRunner.
+func NewHelper(r CmdRunner) (*Helper, error) {
+	cryptohomeUtil, err := NewUtilityCryptohomeBinary(r)
+	if err != nil {
+		return nil, err
+	}
+	tpmManagerUtil, err := NewUtilityTpmManagerBinary(r)
+	if err != nil {
+		return nil, err
+	}
+	return &Helper{
+		CmdRunner:      r,
+		CryptohomeUtil: cryptohomeUtil,
+		TPMManagerUtil: tpmManagerUtil,
+	}, nil
 }
 
 // EnsureTPMIsReady ensures the TPM is ready when the function returns |nil|.
 // Otherwise, returns any encountered error.
 func (h *Helper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration) error {
-	isReady, err := h.ti.IsTPMReady(ctx)
+	isReady, err := h.CryptohomeUtil.IsTPMReady(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to ensure ownership due to error in |IsTPMReady|")
 	}
 	if !isReady {
-		result, err := h.ti.EnsureOwnership(ctx)
+		result, err := h.CryptohomeUtil.EnsureOwnership(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to ensure ownership due to error in |TakeOwnership|")
 		}
@@ -59,7 +63,7 @@ func (h *Helper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration) er
 		}
 	}
 	return testing.Poll(ctx, func(context.Context) error {
-		isReady, err := h.ti.IsTPMReady(ctx)
+		isReady, err := h.CryptohomeUtil.IsTPMReady(ctx)
 		if err != nil {
 			return errors.New("error during checking TPM readiness")
 		}
@@ -78,7 +82,7 @@ func (h *Helper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration) er
 func (h *Helper) EnsureIsPreparedForEnrollment(ctx context.Context, timeout time.Duration) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		// intentionally ignores error; retry the operation until timeout.
-		isPrepared, err := h.ti.IsPreparedForEnrollment(ctx)
+		isPrepared, err := h.CryptohomeUtil.IsPreparedForEnrollment(ctx)
 		if err != nil {
 			return err
 		}

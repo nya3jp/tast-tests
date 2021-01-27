@@ -47,15 +47,17 @@ func NewLoglessCmdRunner(d *dut.DUT) (*CmdRunnerRemote, error) {
 // HelperRemote extends the function set from hwsec.Helper for remote test.
 type HelperRemote struct {
 	hwsec.Helper
-	ti hwsec.TPMInitializer
-	r  hwsec.CmdRunner
-	d  *dut.DUT
+	d *dut.DUT
 }
 
 // NewHelper creates a new hwsec.Helper instance that make use of the functions
 // implemented by CmdRunnerRemote.
-func NewHelper(ti hwsec.TPMInitializer, r hwsec.CmdRunner, d *dut.DUT) (*HelperRemote, error) {
-	return &HelperRemote{*hwsec.NewHelper(ti), ti, r, d}, nil
+func NewHelper(r hwsec.CmdRunner, d *dut.DUT) (*HelperRemote, error) {
+	helper, err := hwsec.NewHelper(r)
+	if err != nil {
+		return nil, err
+	}
+	return &HelperRemote{*helper, d}, nil
 }
 
 // ensureTPMIsReset ensures the TPM is reset when the function returns nil.
@@ -67,7 +69,7 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 	isReady := false
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		isReady, err = h.ti.IsTPMReady(ctx)
+		isReady, err = h.CryptohomeUtil.IsTPMReady(ctx)
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for cryptohome")
@@ -86,18 +88,18 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 		}
 	}
 
-	if _, err := h.r.Run(ctx, "stop", "ui"); err != nil {
+	if _, err := h.CmdRunner.Run(ctx, "stop", "ui"); err != nil {
 		// ui might not be running because there's no guarantee that it's running when we start the test.
 		// If we actually failed to stop ui and something ends up being wrong, then we can use the logging
 		// below to let whoever that's debugging this problem find out.
 		testing.ContextLog(ctx, "Failed to stop ui, this is normal if ui was not running")
 	}
 
-	if _, err := h.r.Run(ctx, "cryptohome", "--action=unmount"); err != nil {
+	if _, err := h.CmdRunner.Run(ctx, "cryptohome", "--action=unmount"); err != nil {
 		return errors.Wrap(err, "failed to unmount users")
 	}
 
-	if _, err := h.r.Run(ctx, "crossystem", "clear_tpm_owner_request=1"); err != nil {
+	if _, err := h.CmdRunner.Run(ctx, "crossystem", "clear_tpm_owner_request=1"); err != nil {
 		return errors.Wrap(err, "failed to file clear_tpm_owner_request")
 	}
 
@@ -123,13 +125,13 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 	testing.ContextLog(ctx, "Waiting for system to be ready after reboot ")
 	// TODO(crbug.com/879797): Remove polling.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := h.ti.IsTPMReady(ctx)
+		_, err := h.CryptohomeUtil.IsTPMReady(ctx)
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for cryptohome")
 	}
 
-	isReady, err := h.ti.IsTPMReady(ctx)
+	isReady, err := h.CryptohomeUtil.IsTPMReady(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to check whether TPM was reset")
 	} else if isReady {
@@ -145,7 +147,7 @@ func (h *HelperRemote) Reboot(ctx context.Context) error {
 	if err := h.d.Reboot(ctx); err != nil {
 		return err
 	}
-	dCtrl := hwsec.NewDaemonController(h.r)
+	dCtrl := hwsec.NewDaemonController(h.CmdRunner)
 	// Waits for all the daemons of interest to be ready because the asynchronous initialization of dbus service could complete "after" the booting process.
 	if err := dCtrl.WaitForAllDBusServices(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
