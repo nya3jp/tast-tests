@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1450f30d_9c7a5d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-27T08:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e84cd456_f2bf5785",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 18
+      },
+      "revId": "2f11e393a482b9e0acc7cc112dcb79c30958e45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2716b755_c21b0429",
@@ -119,6 +143,30 @@
       "writtenOn": "2021-01-14T16:46:19Z",
       "side": 1,
       "message": "ditto, `t.prefix` since we have it now.",
+      "range": {
+        "startLine": 125,
+        "startChar": 14,
+        "endLine": 125,
+        "endChar": 18
+      },
+      "revId": "2f11e393a482b9e0acc7cc112dcb79c30958e45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f8d3a75_cc273a06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-27T08:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfd5a4c8_9c4a1538",
       "range": {
         "startLine": 125,
         "startChar": 14,
