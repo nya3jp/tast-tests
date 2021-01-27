@@ -17,9 +17,9 @@ import (
 	lpb "chromiumos/system_api/lorgnette_proto"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/scanner/cups"
 	"chromiumos/tast/local/bundles/cros/scanner/lorgnette"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/local/testexec"
@@ -107,6 +107,10 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
 	if err != nil {
 		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
+	}
+
+	if err := cups.RestartPrintingSystem(ctx, devInfo); err != nil {
+		s.Fatal("Failed to restart printing system: ", err)
 	}
 
 	printer, err := usbprinter.StartScanner(ctx, devInfo, descriptors, attributes, esclCapabilities, s.DataPath(sourceImage))
