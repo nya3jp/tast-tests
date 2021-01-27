@@ -36,7 +36,6 @@ type CmdHelper interface {
 	TPMManagerClient() *TPMManagerClient
 	DaemonController() *DaemonController
 	EnsureTPMIsReady(ctx context.Context, timeout time.Duration) error
-	EnsureIsPreparedForEnrollment(ctx context.Context, timeout time.Duration) error
 	DropResetLockPermissions(ctx context.Context) (restoreFunc func(ctx context.Context) error, retErr error)
 	GetTPMVersion(ctx context.Context) (string, error)
 }
@@ -45,6 +44,7 @@ type CmdHelper interface {
 // hwsec integration test base on AttestationClient.
 type AttestationHelper interface {
 	AttestationClient() *AttestationClient
+	EnsureIsPreparedForEnrollment(ctx context.Context, timeout time.Duration) error
 }
 
 // FullHelper is the full version of all kinds of helper that could be shared across all
@@ -138,7 +138,7 @@ func (h *helperImpl) EnsureTPMIsReady(ctx context.Context, timeout time.Duration
 func (h *helperImpl) EnsureIsPreparedForEnrollment(ctx context.Context, timeout time.Duration) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		// intentionally ignores error; retry the operation until timeout.
-		isPrepared, err := h.cryptohome.IsPreparedForEnrollment(ctx)
+		isPrepared, err := h.attestation.IsPreparedForEnrollment(ctx)
 		if err != nil {
 			return err
 		}
