@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a23c46de_4f414591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-27T01:23:52Z",
+      "side": 1,
+      "message": "existing code almost LG, but may I request one additional stuff?",
+      "revId": "c354d92d383a0755b492aa9c3c346df955462abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7415171c_00ff4f4f",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-27T01:23:52Z",
+      "side": 1,
+      "message": "Can this be checked at the beginning of the function explicitly?\nMkdirAll does not report an error in a dir-existing case.\n\nhttps://golang.org/pkg/os/#MkdirAll",
+      "range": {
+        "startLine": 26,
+        "startChar": 72,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "c354d92d383a0755b492aa9c3c346df955462abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e34c696_f75c1993",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/test_extension.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-27T01:23:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 36,
+        "startChar": 58,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "c354d92d383a0755b492aa9c3c346df955462abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
