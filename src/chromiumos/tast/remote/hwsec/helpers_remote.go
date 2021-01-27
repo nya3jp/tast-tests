@@ -68,8 +68,8 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 	// Currently cryptohome is a bit slow on the first boot, so this polling here is necessary to avoid flakiness.
 	isReady := false
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		isReady, err = h.CryptohomeUtil.IsTPMReady(ctx)
+		info, err := h.TPMManagerUtil.GetNonsensitiveStatus(ctx)
+		isReady = info.IsOwned
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for cryptohome")
@@ -125,16 +125,16 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 	testing.ContextLog(ctx, "Waiting for system to be ready after reboot ")
 	// TODO(crbug.com/879797): Remove polling.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := h.CryptohomeUtil.IsTPMReady(ctx)
+		_, err := h.TPMManagerUtil.GetNonsensitiveStatus(ctx)
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for cryptohome")
 	}
 
-	isReady, err := h.CryptohomeUtil.IsTPMReady(ctx)
+	info, err := h.TPMManagerUtil.GetNonsensitiveStatus(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to check whether TPM was reset")
-	} else if isReady {
+	} else if info.IsOwned {
 		// If the TPM is ready, the reset was not successful
 		return errors.New("ineffective reset of TPM")
 	}
