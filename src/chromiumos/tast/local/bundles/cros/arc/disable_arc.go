@@ -26,25 +26,52 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
+			Name:              "normal",
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               "normal",
 		}, {
-			Name:              "vm",
+			Name:              "unicorn",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               "unicorn",
+		}, {
+			Name:              "normal_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               "normal",
+		}, {
+			Name:              "unicorn_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               "unicorn",
 		}},
 		Timeout: chrome.LoginTimeout + arc.BootTimeout + 120*time.Second,
-		Vars:    []string{"arc.username", "arc.password"},
+		Vars:    []string{"arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword"},
 	})
 }
 
 func DisableArc(ctx context.Context, s *testing.State) {
 
-	username := s.RequiredVar("arc.username")
-	password := s.RequiredVar("arc.password")
+	parentUser := s.RequiredVar("arc.parentUser")
+	parentPass := s.RequiredVar("arc.parentPassword")
+	childUser := s.RequiredVar("arc.childUser")
+	childPass := s.RequiredVar("arc.childPassword")
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	var cr *chrome.Chrome
+	var err error
+
+	accountType := s.Param().(string)
+	if accountType == "normal" {
+		cr, err = chrome.New(ctx, chrome.GAIALogin(),
+			chrome.Auth(parentUser, parentPass, "gaia-id"), chrome.ARCSupported(),
+			chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	} else {
+		cr, err = chrome.New(ctx, chrome.GAIALogin(),
+			chrome.Auth(childUser, childPass, "gaia-id"),
+			chrome.ParentAuth(parentUser, parentPass), chrome.ARCSupported())
+	}
+
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
+
 	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
