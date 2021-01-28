@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef7f8d9f_f989fdbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-28T17:08:41Z",
+      "side": 1,
+      "message": "I address Jun\u0027s comments and also added more submit info to the CL to explain the purpose of the changes.",
+      "revId": "b0c4baec1d9af00baa1cdd5551f6f699a32823ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
