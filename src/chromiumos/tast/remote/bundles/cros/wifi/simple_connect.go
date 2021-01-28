@@ -517,8 +517,7 @@ func init() {
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for WPA-EAP encryption.
-				Name:      "8021xwpa",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xwpa",
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wpaeap.NewConfigFactory(
@@ -574,8 +573,7 @@ func init() {
 				// Verifies that DUT CANNOT connect to a PEAP network with wrong settings.
 				// We do these tests for only one inner authentication protocol because we
 				// presume that supplicant reuses this code between inner authentication types.
-				Name:      "8021xpeap_fail",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xpeap_fail",
 				Val: []simpleConnectTestcase{{
 					// Failure due to bad password.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -709,8 +707,7 @@ func init() {
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for PEAP authentication with tunneled GTC.
-				Name:      "8021xpeap_gtc",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xpeap_gtc",
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -758,8 +755,7 @@ func init() {
 				// Verifies that DUT CANNOT connect to a TTLS network with wrong settings.
 				// We do these tests for only one inner authentication protocol because we
 				// presume that supplicant reuses this code between inner authentication types.
-				Name:      "8021xttls_fail",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xttls_fail",
 				Val: []simpleConnectTestcase{{
 					// Failure due to bad password.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -893,8 +889,7 @@ func init() {
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled GTC.
-				Name:      "8021xttls_gtc",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xttls_gtc",
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
