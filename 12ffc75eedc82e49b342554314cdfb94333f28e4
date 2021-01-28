@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10701205_204f0456",
+        "filename": "src/chromiumos/tast/common/traceutil/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-28T07:24:16Z",
+      "side": 1,
+      "message": "traceutil sounds a bit generic - it\u0027s not obvious what is a trace here.\n\nHow about including \"perfetto\" in the package name?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 17
+      },
+      "revId": "12ffc75eedc82e49b342554314cdfb94333f28e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8042e9d6_92310dbc",
+        "filename": "src/chromiumos/tast/common/traceutil/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-28T07:24:16Z",
+      "side": 1,
+      "message": "FYI (Not related to this change):\n\nI\u0027m not very sure about the intention of this Flush call. IIUC we don\u0027t need to call Flush unless the output is interactively consumed. And, even if Flush succeeds here, Close might still fail later (both gzip.Writer.Close and os.File.Close).",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "12ffc75eedc82e49b342554314cdfb94333f28e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
