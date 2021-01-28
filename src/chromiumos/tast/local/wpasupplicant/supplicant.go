@@ -30,6 +30,8 @@ const (
 	DisconnReasonLGDeauthSTALeaving = -3
 	// DisconnReasonLGDisassociatedInactivity (locally generated) disassociated due to inactivity.
 	DisconnReasonLGDisassociatedInactivity = -4
+	// DisconnReasonUnknown.
+	DisconnReasonUnknown = 0
 )
 
 // Supplicant is the object to interact with wpa_supplicant's
