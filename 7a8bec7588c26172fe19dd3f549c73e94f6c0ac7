@@ -37,6 +37,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1980af7e_fa8041ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-28T08:50:02Z",
+      "side": 1,
+      "message": "Please pick a single reviewer for this change and the one using the new API. It\u0027s easier to follow.",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6f9cb509_f792b5e9",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 2
@@ -48,6 +65,121 @@
       "writtenOn": "2021-01-28T06:56:43Z",
       "side": 1,
       "message": "This change is required to allow hardware deps for different VMs to be combined. (Tast only allows hardware conditions to be readily combined, not the hwdeps constructed from them.)",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3568ff7c_2c03f301",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-28T08:50:02Z",
+      "side": 1,
+      "message": "Is this needed anywhere else? If not move this change to a different CL.",
+      "parentUuid": "6f9cb509_f792b5e9",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa57c73e_6bd482c4",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-28T08:50:02Z",
+      "side": 1,
+      "message": "Why was this made public? Move to a different CL if not needed for this iteration.",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd6e3b2_93011c96",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-28T08:50:02Z",
+      "side": 1,
+      "message": "I don\u0027t see why this split between VMOptions and VMActivation is required. Add a comment or use a single interface for VMs.",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3036e85_6c9ba596",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-28T08:50:02Z",
+      "side": 1,
+      "message": "Why not return an actual interface?",
+      "range": {
+        "startLine": 116,
+        "startChar": 40,
+        "endLine": 116,
+        "endChar": 49
+      },
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b21d1d_7ea0c6ab",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-28T08:50:02Z",
+      "side": 1,
+      "message": "nit: This is not extensible. Save the required ExtraArgs and chrome options as part of vmOptions.",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c5339d_9269e100",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-28T08:50:02Z",
+      "side": 1,
+      "message": "nit: use the for inside a single defer, it\u0027s easier to reason about.",
       "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
