@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36e0a876_a843df14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-28T17:03:36Z",
+      "side": 1,
+      "message": "Thank you for review!",
+      "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0746de53_69add38e",
@@ -43,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "414913e3_38fdd893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-28T17:03:36Z",
+      "side": 1,
+      "message": "My understanding, encodeImplementation is contained in an object with type \"outbound-rtp\", and decodeImplementation is in one with type \"inbound-rtp\".\n# Let me know, if my understanding is wrong.\n\nThe new code returns \"an entire object with a specified type\", rather than the type itself.\nThe object is returned in JSON, and it will be parsed and then stored to |out|.\nFollowing the Go\u0027s standard JSON library, it can accept any struct, and its members can be annotated with \"json\", like L119 and L131. That handles what \"statName\" etc did.\n\nSo, except filtering by type with above my understanding, old code and new code should do the same thing, specifically attribute name handling.",
+      "parentUuid": "0746de53_69add38e",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 6
+      },
+      "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12b7511a_5931862f",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
         "patchSetId": 1
@@ -54,6 +95,30 @@
       "writtenOn": "2021-01-27T18:51:17Z",
       "side": 1,
       "message": "It\u0027s a bit confusing here that we use |localPeerConnection| (and\n|remotePeerConnection| in l.134) as booleans (l.80-81) because \nthey usually refer to JS objects by name. I\u0027d recommend using an\n|isRemotePC| or similar boolean variable here, in l.134 and in l.86,\nso l.88 doesn\u0027t need the mental jump between |pc| and |isRemote|.",
+      "range": {
+        "startLine": 122,
+        "startChar": 37,
+        "endLine": 122,
+        "endChar": 56
+      },
+      "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a32387c8_64b0fff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-28T17:03:36Z",
+      "side": 1,
+      "message": "localPeerConnection and remotePeerConnection is peerConnectionType, rather than bool. I.e., it\u0027s a new type and the underlying type (bool) should be hidden from callers.\n\nWhat we should pass to the parameter is the type of the peer connection.\nPassing a boolean from go to JS is just an implementation details.\nAlso, if we change it to \"isRemote\", what \"not isRemote\" means is less clearer than \"local\" directly, IMO.\nSo in this specific case, I think a new type is still preferred for parameter.\n\nI\u0027m open to change the underlying type. I thought a bool is the simplest, but it can be anything other. Like string \"localPeerConnection\" or even an int.\nThough, anyways it is necessary to covert somehow to an object in JS, and\nthe conversion will need more code if we choose another type. That\u0027s the reason why I chose bool as its underlying type.\n\nWDYT?",
+      "parentUuid": "12b7511a_5931862f",
       "range": {
         "startLine": 122,
         "startChar": 37,
