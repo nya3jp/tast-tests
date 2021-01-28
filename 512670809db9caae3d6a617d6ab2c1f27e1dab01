@@ -1,0 +1,327 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33894c96_98ec3da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d41134_9ebd7b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5ba03fa_65707319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d31595a2_ed8665c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a17bc167_9feaf6d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1865bc_1dbd9f65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94fe2ef4_411fff80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75220e19_6766f25b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d6a01d6_04c21171",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cccb9580_38b32424",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c2d50c_bc3bf340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbcdd60b_be09886e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4d05820_125d6fc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a677507_98ff4728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcfa4aed_5a9aea8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "It is better to have two separate functions one for NC01 and one for NC01a, this way we follow the existing convention of having one test case per go/arc-wm-r slide.",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119bf529_f1aa7826",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "These comments are taken form go/arc-wm-r slides, if the name of test case must be changed it must first happen in the spec.",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8009f16e_3fbf5ea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "This function doesn\u0027t seem to cover NC05a explained in specs, see go/arc-wm-r.",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4742f7e6_f6142d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "Please try to use return testing.PollBreak().",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3fe3781_1ec56c3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_nonresizable_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-01-28T18:38:19Z",
+      "side": 1,
+      "message": "Now that you are touching this, please fix the got/want format too. It must be as follow:\n\u0027...tablet mode: got %q; want %q\", ...\u0027",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
