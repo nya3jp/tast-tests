@@ -22,6 +22,30 @@
       },
       "revId": "eee4ad0be3a534ca98664904d46c14b4f514e8a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd206e9_1387451a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slots.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-28T21:36:05Z",
+      "side": 1,
+      "message": "Sorry, I missed this comment. I will plan to do this in a follow-up when I add some more mm tests.",
+      "parentUuid": "d150a856_1bf6f214",
+      "range": {
+        "startLine": 33,
+        "startChar": 40,
+        "endLine": 33,
+        "endChar": 48
+      },
+      "revId": "eee4ad0be3a534ca98664904d46c14b4f514e8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
