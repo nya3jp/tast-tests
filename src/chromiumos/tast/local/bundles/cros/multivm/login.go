@@ -52,9 +52,10 @@ func Login(ctx context.Context, s *testing.State) {
 		s.Fatal("Chrome did not respond: ", err)
 	}
 
-	if pre.ARC != nil {
+	arc := multivm.ARCFromPre(pre)
+	if arc != nil {
 		// Ensures package manager service is running by checking the existence of the "android" package.
-		pkgs, err := pre.ARC.InstalledPackages(ctx)
+		pkgs, err := arc.InstalledPackages(ctx)
 		if err != nil {
 			s.Fatal("Getting installed packages failed: ", err)
 		}
@@ -64,8 +65,9 @@ func Login(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if pre.Crostini != nil {
-		if err := crostini.BasicCommandWorks(ctx, pre.Crostini); err != nil {
+	crostiniVM := multivm.CrostiniFromPre(pre)
+	if crostiniVM != nil {
+		if err := crostini.BasicCommandWorks(ctx, crostiniVM); err != nil {
 			s.Fatal("Crostini basic commands don't work: ", err)
 		}
 	}
