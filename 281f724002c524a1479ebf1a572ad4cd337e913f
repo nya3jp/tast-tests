@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11ee7fb9_7ac63d37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/2d.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-28T18:31:07Z",
+      "side": 1,
+      "message": "Please use \u0027let\u0027 instead of \u0027var\u0027.  Applied to all variables in the JS code in this CL.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d41cef6e_be02e642",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/main.html",
         "patchSetId": 5
@@ -66,6 +89,235 @@
       "side": 1,
       "message": "There are many HTML files already in Tast code, but I do not see any copyright notices in them. Particularly, look in: src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/data/",
       "parentUuid": "d41cef6e_be02e642",
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dec6305_4dfb7cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/main.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-28T18:31:07Z",
+      "side": 1,
+      "message": "Do we have texts outside of ascii?  This is nice but I guess not quite necessary.",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d12babbf_4a0426d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/main.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-28T18:31:07Z",
+      "side": 1,
+      "message": "I don\u0027t think this has manifests (and I don\u0027t think it is necessary).",
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3668338b_c2f61714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/main.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-28T18:31:07Z",
+      "side": 1,
+      "message": "window.addEventListener(\u0027load\u0027, init2D) might be better.",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceb2037d_324264cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/main.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-28T18:31:07Z",
+      "side": 1,
+      "message": "Do we need a service worker?  Why?  This page shall be served from a local http server, it shouldn\u0027t be offline.\n\nAlso, in test cases, it will be always the very first visit.  It registers the service worker but there are no further visits, so the service workers won\u0027t be used.",
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4521858d_e2c05459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-28T18:31:07Z",
+      "side": 1,
+      "message": "Why there\u0027s only a single parameter for \"clamshell\"?  Can you remove this for now?\nI was hesitant to rename performance tests / group:crosbolt as Crosbolt dashboard will lose its trajectory, but that\u0027s not the case of mainline. You can add \"clamshell\" name whenever necessary, but now it seems unnecessary at all.",
+      "range": {
+        "startLine": 37,
+        "startChar": 10,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a674bbd_d03fc4ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-28T18:31:07Z",
+      "side": 1,
+      "message": "nit: we now remove all notifications through test API upon login (and reset, cf. https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/chrome/chrome.go#1027).  This might not be necessary.",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a08b4fdb_f7c4c171",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-28T18:31:07Z",
+      "side": 1,
+      "message": "You could write as:\n  if info, err :\u003d display.GetInternalInfo(ctx, tconn); err \u003d\u003d nil {\n    internalDisplayID \u003d info.ID\n  } else {\n    s.Fatal(\"Failed to get the internal display info: \", err)\n  }\n\nthat way you don\u0027t need the outer braces, as \"info\"\u0027s scope is limited to the if-sentence.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9fd0202_04cdaa6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-28T18:31:07Z",
+      "side": 1,
+      "message": "I prefer use of \u0027var\u0027 in this case. Also Go will initialize with zero values, you can write as:\n  var framesWithoutOverlay int64",
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efbc97d6_d858c8b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-28T18:31:07Z",
+      "side": 1,
+      "message": "seems you don\u0027t need this.  histogram has a method TotalCount which can compute this.",
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "963660f9_bb87b435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-28T18:31:07Z",
+      "side": 1,
+      "message": "constants and literals are untyped numerics. You don\u0027t need casts here (if bucket.Min \u003d\u003d 1 should pass the compilation. see https://blog.golang.org/constants#TOC_10.)",
+      "range": {
+        "startLine": 176,
+        "startChar": 23,
+        "endLine": 176,
+        "endChar": 31
+      },
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a49a5d6_81b07eed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-28T18:31:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 181,
+        "startChar": 32,
+        "endLine": 181,
+        "endChar": 37
+      },
       "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
