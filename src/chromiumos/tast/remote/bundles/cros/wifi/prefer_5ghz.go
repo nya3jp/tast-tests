@@ -24,7 +24,7 @@ func init() {
 		Func:        Prefer5Ghz,
 		Desc:        "Verifies that DUT can see two APs in the same network and prefer 5Ghz one",
 		Contacts:    []string{"deanliao@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
