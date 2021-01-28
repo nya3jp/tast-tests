@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62225eb3_16377b8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-28T05:21:12Z",
+      "side": 1,
+      "message": "Thanks Hiro!",
+      "revId": "492cd0586599430239c3f0dfa841f1e7948498f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "369fe5f9_0931d9bd",
+        "filename": "src/chromiumos/tast/local/graphics/screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-28T05:21:12Z",
+      "side": 1,
+      "message": "used",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "492cd0586599430239c3f0dfa841f1e7948498f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f971cc_89467caa",
+        "filename": "src/chromiumos/tast/local/graphics/screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-28T05:21:12Z",
+      "side": 1,
+      "message": "IIUC, you intend |restoreRotationAngle| to represent how much we must rotate by (in the counterclockwise direction) to get back to a rotation of 0 degrees. However, I\u0027m not convinced this is what it\u0027s doing.\n\nThe documentation says:\n\n  SetDisplayRotationSync rotates the display to a certain angle...\n\nSo it seems as if the angle we pass to SetDisplayRotationSync() is not an angle relative to the current angle, but it\u0027s an \"absolute\" angle instead. This seems to be supported by the documentation of the \u0027rotation\u0027 field in [1]:\n\n  The rotation is set clockwise, relative to the display\u0027s vertical position.\n\nIf that\u0027s correct, then restoring to the original angle would involve saving the current angle from the |dispInfo| structure and using that in RestoreDisplayOrientation(). As a matter of fact, you may also want to save |orient|. That way, in RestoreDisplayOrientation() you can assert that after calling SetDisplayRotationSync(), the new orientation is equal to |orient|.\n\n[1] https://developer.chrome.com/docs/extensions/reference/system_display/#type-DisplayProperties",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "492cd0586599430239c3f0dfa841f1e7948498f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
