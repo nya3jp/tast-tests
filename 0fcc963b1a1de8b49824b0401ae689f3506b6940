@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0efc2759_236e7963",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-28T11:52:43Z",
+      "side": 1,
+      "message": "LGTM % naming",
+      "revId": "0fcc963b1a1de8b49824b0401ae689f3506b6940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e6eeffe_f570be7f",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-28T11:52:43Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be a part of the name, every test either uses gaia always or never",
+      "range": {
+        "startLine": 257,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 4
+      },
+      "revId": "0fcc963b1a1de8b49824b0401ae689f3506b6940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
