@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c92e0fc_73c17993",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-28T07:33:04Z",
+      "side": 1,
+      "message": "scenarios",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "6449c3eb8ee3d251be75869ea0da1bcd3f943c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd5ad244_b0b6ce20",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -68,6 +91,69 @@
         "startChar": 61,
         "endLine": 16,
         "endChar": 69
+      },
+      "revId": "6449c3eb8ee3d251be75869ea0da1bcd3f943c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "364ad97a_75720864",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-28T07:33:04Z",
+      "side": 1,
+      "message": "full-MAC",
+      "range": {
+        "startLine": 51,
+        "startChar": 48,
+        "endLine": 51,
+        "endChar": 56
+      },
+      "revId": "6449c3eb8ee3d251be75869ea0da1bcd3f943c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297b18f9_2d9c0b20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-28T07:33:04Z",
+      "side": 1,
+      "message": "Prefer handling error case inside if-statement:\n\nif err !\u003d nil {\n  if trigger.dt !\u003d dtDisableClientWiFi {\n    s.Fatal(\"Failed to wait for the disconnect reason: \", err)\n  }\n  s.Log(\"Failed to wait for the disconnect reason: \", err)\n  return\n}\n\nfor _, expCode :\u003d range trigger.expectedCodes {\n  ...\n}\ns.Fatalf(\"Unexpected disconnect reason; got %d, want any of %v\", reason, trigger.expectedCodes)",
+      "revId": "6449c3eb8ee3d251be75869ea0da1bcd3f943c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da6b585a_16369c65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-28T07:33:04Z",
+      "side": 1,
+      "message": "received expected IEEE802.11 disconnect reason code: %d",
+      "range": {
+        "startLine": 251,
+        "startChar": 17,
+        "endLine": 251,
+        "endChar": 54
       },
       "revId": "6449c3eb8ee3d251be75869ea0da1bcd3f943c5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
