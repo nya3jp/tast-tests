@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac30779a_04d8eec3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-28T07:18:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8de7bcc3_4058cd95",
+      "revId": "98f3ed3ae2806ca1104177dc61824533f74de11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "193f249f_b5228697",
