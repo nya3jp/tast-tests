@@ -36,14 +36,14 @@ func init() {
 func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 	wm.SetupAndRunTestCases(ctx, s, false, []wm.TestCase{
 		wm.TestCase{
-			// non-resizable/clamshell: default launch behavior
+			// non-resizable/clamshell: default launch behavior (with unresizable multi-window mode on)
 			Name: "NC_default_launch_behavior",
-			Func: wmNC01,
+			Func: wmNC01a,
 		},
 		wm.TestCase{
 			// non-resizable/clamshell: user immerse portrait app (pillarbox)
 			Name: "NC_user_immerse_portrait",
-			Func: wmNC04,
+			Func: wmNC04a,
 		},
 		wm.TestCase{
 			// non-resizable/clamshell: user immerse non-portrait app
@@ -83,15 +83,51 @@ func WMNonresizableClamshell(ctx context.Context, s *testing.State) {
 	})
 }
 
-// wmNC01 covers non-resizable/clamshell default launch behavior.
+// wmNC01 covers non-resizable/clamshell default launch behavior (with unresizable multi-window mode off).
 // Expected behavior is defined in: go/arc-wm-r NC01: non-resizable/clamshell: default launch behavior.
 func wmNC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	for _, activityName := range []string{
-		wm.NonResizablePortraitActivity,
-		wm.NonResizableLandscapeActivity,
-	} {
+	launchActivityTestCases := []wm.CheckCase{
+		wm.CheckCase{
+			Name: wm.NonResizablePortraitActivity,
+			Func: wm.CheckMaximizeNonResizable,
+		},
+		wm.CheckCase{
+			Name: wm.NonResizableUnspecifiedActivity,
+			Func: wm.CheckMaximizeNonResizable,
+		},
+		wm.CheckCase{
+			Name: wm.NonResizableLandscapeActivity,
+			Func: wm.CheckMaximizeNonResizable,
+		},
+	}
+	return wmNC01Inner(ctx, tconn, a, d, launchActivityTestCases)
+}
+
+// wmNC01a covers non-resizable/clamshell default launch behavior (with unresizable multi-window mode on).
+// Expected behavior is defined in: go/arc-wm-r NC01a: non-resizable/clamshell: default launch behavior.
+func wmNC01a(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	launchActivityTestCases := []wm.CheckCase{
+		wm.CheckCase{
+			Name: wm.NonResizablePortraitActivity,
+			Func: wm.CheckRestoreNonResizable,
+		},
+		wm.CheckCase{
+			Name: wm.NonResizableUnspecifiedActivity,
+			Func: wm.CheckMaximizeNonResizable,
+		},
+		wm.CheckCase{
+			Name: wm.NonResizableLandscapeActivity,
+			Func: wm.CheckMaximizeNonResizable,
+		},
+	}
+	return wmNC01Inner(ctx, tconn, a, d, launchActivityTestCases)
+}
+
+// wmNC01Inner takes a set of test cases for non-resizable/clamshell default launch behavior and runs the tests.
+func wmNC01Inner(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, launchActivityTestCases []wm.CheckCase) error {
+	for _, info := range launchActivityTestCases {
 		if err := func() error {
-			act, err := arc.NewActivity(a, wm.Pkg24, activityName)
+			act, err := arc.NewActivity(a, wm.Pkg24, info.Name)
 			if err != nil {
 				return err
 			}
@@ -106,9 +142,9 @@ func wmNC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 				return err
 			}
 
-			return wm.CheckMaximizeNonResizable(ctx, tconn, act, d)
+			return info.Func(ctx, tconn, act, d)
 		}(); err != nil {
-			return errors.Wrapf(err, "%q test failed", activityName)
+			return errors.Wrapf(err, "%q test failed", info.Name)
 		}
 	}
 	return nil
@@ -118,6 +154,13 @@ func wmNC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r NC04: non-resizable/clamshell: user immerse portrait app (pillarbox).
 func wmNC04(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	return checkMaxActivityToFullscreen(ctx, tconn, a, d, wm.NonResizablePortraitActivity)
+}
+
+// wmNC04a covers non-resizable/clamshell: user immerse portrait app (pillarbox) behavior.
+// Expected behavior is defined in: go/arc-wm-r NC04a: non-resizable/clamshell: immersive key shouldn't respond.
+func wmNC04a(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// This function is intentionally left blank for now.
+	return nil
 }
 
 // wmNC05 covers non-resizable/clamshell: user immerse non-portrait app behavior.
@@ -138,7 +181,7 @@ func wmNC05(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r NC07: non-resizable/clamshell: immerse via API from maximized.
 func wmNC07(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizablePortraitActivity)
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableLandscapeActivity)
 	if err != nil {
 		return err
 	}
@@ -308,7 +351,7 @@ func wmNC10(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // wmNC12 covers non-resizable/clamshell: hide shelf when app maximized.
 // Expected behavior is defined in: go/arc-wm-r NC12: non-resizable/clamshell: hide shelf when app maximized.
 func wmNC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableLandscapeActivity)
 	if err != nil {
 		return err
 	}
