@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff65945f_d012a73f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture_keep_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-28T10:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5588aa15_20d30cdb",
+      "range": {
+        "startLine": 23,
+        "startChar": 20,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "b04308df3741bde2f19f0aa5ffaeee541032ef1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f3b1f91_675c48c6",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-01-26T17:40:41Z",
       "side": 1,
       "message": "Can you move this to package \"arc\"? (i.e. src/chromiumos/tast/local/arc)\n\nThe function name would be \u0027IsProvisioned\u0027.",
+      "revId": "b04308df3741bde2f19f0aa5ffaeee541032ef1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ab5545_19e7d06d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture_keep_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-28T10:18:10Z",
+      "side": 1,
+      "message": "Sure, moved.",
+      "parentUuid": "1f3b1f91_675c48c6",
       "revId": "b04308df3741bde2f19f0aa5ffaeee541032ef1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +136,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7687ac07_b0074820",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture_keep_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-28T10:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89616085_d13917be",
+      "revId": "b04308df3741bde2f19f0aa5ffaeee541032ef1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acd4d059_22fd1f79",
@@ -111,6 +171,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e62727_190d665a",
+        "filename": "src/chromiumos/tast/local/wpr/pre_keep_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-28T10:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd4d059_22fd1f79",
+      "revId": "b04308df3741bde2f19f0aa5ffaeee541032ef1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95bcc818_9c80f5ee",
@@ -124,6 +202,24 @@
       "writtenOn": "2021-01-26T17:40:41Z",
       "side": 1,
       "message": "This section is duplicated with wpr.go.  Please reuse the same one.",
+      "revId": "b04308df3741bde2f19f0aa5ffaeee541032ef1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12f1682_4cacc7fb",
+        "filename": "src/chromiumos/tast/local/wpr/pre_keep_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-28T10:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95bcc818_9c80f5ee",
       "revId": "b04308df3741bde2f19f0aa5ffaeee541032ef1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
