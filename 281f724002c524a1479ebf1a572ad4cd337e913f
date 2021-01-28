@@ -16,6 +16,40 @@
       "message": "LGTM",
       "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17e1956f_5b462bea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-01-28T16:17:58Z",
+      "side": 1,
+      "message": "mukai-san, can you review this too?\n\n",
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d41cef6e_be02e642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/main.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-01-28T16:17:58Z",
+      "side": 1,
+      "message": "nit: copyright",
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
