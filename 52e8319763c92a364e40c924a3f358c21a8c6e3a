@@ -51,6 +51,24 @@
       "parentUuid": "3d7f3cdd_c24f3b44",
       "revId": "52e8319763c92a364e40c924a3f358c21a8c6e3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062c6097_37896cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-01-28T15:23:09Z",
+      "side": 1,
+      "message": "Thanks for the explanation.\n\nI wonder if we could document this behavior (regarding timeout and polling) somewhere, as a code comment or by pointing to a doc, so that the users can understand more on how to use this new functionality and what the expectation is.",
+      "parentUuid": "a0e1f6b7_5e941822",
+      "revId": "52e8319763c92a364e40c924a3f358c21a8c6e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
