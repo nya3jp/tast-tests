@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d711c5_e9e07f81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-28T06:56:43Z",
+      "side": 1,
+      "message": "Ready for review.\n\n@mwarton FYI on the change to the one crostini file, and the refactoring of the crostini part of the multi-VM precondition.",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9cb509_f792b5e9",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-28T06:56:43Z",
+      "side": 1,
+      "message": "This change is required to allow hardware deps for different VMs to be combined. (Tast only allows hardware conditions to be readily combined, not the hwdeps constructed from them.)",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
