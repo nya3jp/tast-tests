@@ -105,7 +105,6 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) (b
 	if err := conn.EvalPromise(ctx, fmt.Sprintf("playUntilEnd(%q)", videoFile), nil); err != nil {
 		return false, err
 	}
-
 	isPlatform, _, err := devtools.GetVideoDecoder(ctx, observer, url)
 	return isPlatform, err
 }
