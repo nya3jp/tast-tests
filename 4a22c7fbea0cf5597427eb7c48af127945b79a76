@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1a518ae_d847b34d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "If we use apps.Close(...) instead, it would cause package dependency issue (apps -\u003e ash, and ash -\u003e apps)\nThe following path are dependency files:\nsrc/chromiumos/tast/local/apps/apps.go\nsrc/chromiumos/tast/local/chrome/ash/shelf.go",
+      "parentUuid": "3f5e5437_40494c6a",
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90191a1a_74641361",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
         "patchSetId": 14
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9477e779_69bfa8d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "We have moved it to src/chromiumos/tast/local/chrome/ash/clipboard.go",
+      "parentUuid": "90191a1a_74641361",
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e03927ab_b72e0447",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
         "patchSetId": 14
@@ -48,6 +84,24 @@
       "writtenOn": "2021-01-23T05:16:22Z",
       "side": 1,
       "message": "The fix (https://chromium-review.googlesource.com/c/chromium/src/+/2634121) should be ready from 13744.0.0. So I think this can be removed now.\nCan you remove this?",
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b21f1be_de6cac4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "We have removed it.",
+      "parentUuid": "e03927ab_b72e0447",
       "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ff6810b_5b2c1e33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Ok, I got it. Thank you for your suggestion.",
+      "parentUuid": "3edfa71e_bfcaba72",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 78
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2dea3ab8_84baf6e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
         "patchSetId": 14
@@ -88,6 +166,30 @@
       "writtenOn": "2021-01-23T05:16:22Z",
       "side": 1,
       "message": "\"initial\" isn\u0027t a verb.  Please use a standard English sentence for the comment.",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "588e5ec7_e04b1a04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dea3ab8_84baf6e3",
       "range": {
         "startLine": 30,
         "startChar": 7,
@@ -123,6 +225,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fbecd5d_cdc4a488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "I got it. I have removed it.",
+      "parentUuid": "421c382a_712335ea",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d36ceaa0_ac288476",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
         "patchSetId": 14
@@ -134,6 +260,30 @@
       "writtenOn": "2021-01-23T05:16:22Z",
       "side": 1,
       "message": "I don\u0027t think this is a correct doc comment for this type.  Please provide the comment for what it does.\n\nAn example would be:\n// Netflix provides the control of netflix website.",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 51
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dd674ab_0770a724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d36ceaa0_ac288476",
       "range": {
         "startLine": 20,
         "startChar": 11,
@@ -167,6 +317,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba672796_7ca4945e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7245b60_46453346",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f6e2f35_4535252c",
@@ -180,6 +354,30 @@
       "writtenOn": "2021-01-23T05:16:22Z",
       "side": 1,
       "message": "Please use ui.WaitUntilExists if you don\u0027t need the node.",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99289e4e_25bc89ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f6e2f35_4535252c",
       "range": {
         "startLine": 44,
         "startChar": 4,
@@ -215,6 +413,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4420530d_608f7265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Thank you for your suggestion.",
+      "parentUuid": "8afc18af_32802892",
+      "range": {
+        "startLine": 45,
+        "startChar": 27,
+        "endLine": 45,
+        "endChar": 64
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "081b0338_0ca33be6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
         "patchSetId": 14
@@ -226,6 +448,24 @@
       "writtenOn": "2021-01-23T05:16:22Z",
       "side": 1,
       "message": "You should close conn here.",
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6af350a_3913283a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "081b0338_0ca33be6",
       "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -270,6 +510,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a386b69_c8804b76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecd44672_c431222f",
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae95f2cd_59145e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c21b9a8_153b405e",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a1c71e7_570b5f16",
@@ -295,6 +577,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "535e335c_3a57686e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "We have changed to click \"signIn\" button instead of navigating to url.",
+      "parentUuid": "3a1c71e7_570b5f16",
+      "range": {
+        "startLine": 61,
+        "startChar": 30,
+        "endLine": 61,
+        "endChar": 39
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "185d5eb8_d1973ed1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
         "patchSetId": 14
@@ -306,6 +612,30 @@
       "writtenOn": "2021-01-23T05:16:22Z",
       "side": 1,
       "message": "Please use ui.WaitUntilExists",
+      "range": {
+        "startLine": 93,
+        "startChar": 17,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42208691_a69af7c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "185d5eb8_d1973ed1",
       "range": {
         "startLine": 93,
         "startChar": 17,
@@ -341,6 +671,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c32f9a7a_b79fdbf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "I have removed it.",
+      "parentUuid": "368d71e0_e019696c",
+      "range": {
+        "startLine": 110,
+        "startChar": 18,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b68b784a_e99f64a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
         "patchSetId": 14
@@ -352,6 +706,30 @@
       "writtenOn": "2021-01-23T05:16:22Z",
       "side": 1,
       "message": "ditto: use ui.WaitUntilExists",
+      "range": {
+        "startLine": 126,
+        "startChar": 17,
+        "endLine": 126,
+        "endChar": 32
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec57a0f7_7521c6da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b68b784a_e99f64a7",
       "range": {
         "startLine": 126,
         "startChar": 17,
@@ -387,6 +765,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a763271c_37e4c012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Thank you, I have refined it.",
+      "parentUuid": "0c077628_28575f2d",
+      "range": {
+        "startLine": 132,
+        "startChar": 24,
+        "endLine": 132,
+        "endChar": 34
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "688b9dd2_f16fdf64",
         "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
         "patchSetId": 14
@@ -398,6 +800,30 @@
       "writtenOn": "2021-01-23T05:16:22Z",
       "side": 1,
       "message": "seems not used at all.  Please remove.",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c838dd4a_ecd859be",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "688b9dd2_f16fdf64",
       "range": {
         "startLine": 22,
         "startChar": 6,
@@ -433,6 +859,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "339c87d1_993f35b4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "I think it\u0027s good. I have refined it.",
+      "parentUuid": "9e6924c3_8c0397b4",
+      "range": {
+        "startLine": 50,
+        "startChar": 27,
+        "endLine": 50,
+        "endChar": 36
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2867dd54_cb43870f",
         "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
         "patchSetId": 14
@@ -444,6 +894,30 @@
       "writtenOn": "2021-01-23T05:16:22Z",
       "side": 1,
       "message": "For a similar reason I wrote in the \"netflix\" package, I guess it is better NOT to close the settings window on erroneous situation, as the screenshot can reveal more detailed information.\n\nPlease move this line right before \"return nil\", and remove \"defer\".  That way, it closes the app-window in normal operation as expected, while the developer can see the screenshot when it fails.",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca62725_c0631e08",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "I got it. We will pay attention about close function.",
+      "parentUuid": "2867dd54_cb43870f",
       "range": {
         "startLine": 55,
         "startChar": 12,
@@ -477,6 +951,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcdd5f73_3c72694d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29aafbe8_8884cad7",
+      "range": {
+        "startLine": 85,
+        "startChar": 27,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "660c9f08_a691c7af",
@@ -490,6 +988,30 @@
       "writtenOn": "2021-01-23T05:16:22Z",
       "side": 1,
       "message": "For the same reason, I guess it\u0027s better to not close the settings window as a defer.",
+      "range": {
+        "startLine": 90,
+        "startChar": 12,
+        "endLine": 90,
+        "endChar": 17
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b57f61c9_a221b898",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "660c9f08_a691c7af",
       "range": {
         "startLine": 90,
         "startChar": 12,
