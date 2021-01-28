@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcd4bc5e_0c1d11a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-28T01:27:39Z",
+      "side": 1,
+      "message": "ok with me as long as the team is happy with it",
+      "revId": "5643c2e6db77a58bfdcd737131a2653f473a8445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
