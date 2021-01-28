@@ -50,7 +50,9 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
-	utility := helper.CryptohomeClient()
+
+	attestation := helper.AttestationClient()
+	cryptohome := helper.CryptohomeClient()
 
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to ensure tpm readiness: ", err)
@@ -71,7 +73,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to prepare for enrollment: ", err)
 	}
 
-	at := hwsec.NewAttestationTestWith(utility, hwsec.DefaultPCA, hwseclocal.NewPCAAgentClient(), hwseclocal.NewLocalVA())
+	at := hwsec.NewAttestationTestWith(attestation, hwsec.DefaultPCA, hwseclocal.NewPCAAgentClient(), hwseclocal.NewLocalVA())
 
 	ac, err := hwseclocal.NewAttestationDBus(ctx)
 	if err != nil {
@@ -89,10 +91,10 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	const username = "test@crashwsec.bigr.name"
 
 	resetVault := func() {
-		if _, err := utility.Unmount(ctx, username); err != nil {
+		if _, err := cryptohome.Unmount(ctx, username); err != nil {
 			s.Fatal("Failed to remove user vault: ", err)
 		}
-		if _, err := utility.RemoveVault(ctx, username); err != nil {
+		if _, err := cryptohome.RemoveVault(ctx, username); err != nil {
 			s.Fatal("Failed to remove user vault: ", err)
 		}
 	}
@@ -101,7 +103,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	// Okay to call it even if the vault doesn't exist.
 	resetVault()
 
-	if err := utility.MountVault(ctx, username, "testpass", "fake_label", true /* create */, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, username, "testpass", "fake_label", true /* create */, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 
@@ -158,12 +160,12 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 			s.Log("Start key payload closed-loop testing")
 			s.Log("Setting key payload")
 			expectedPayload := hwsec.DefaultKeyPayload
-			_, err = utility.SetKeyPayload(ctx, username, hwsec.DefaultCertLabel, expectedPayload)
+			_, err = cryptohome.SetKeyPayload(ctx, username, hwsec.DefaultCertLabel, expectedPayload)
 			if err != nil {
 				s.Fatal("Failed to set key payload: ", err)
 			}
 			s.Log("Getting key payload")
-			resultPayload, err := utility.GetKeyPayload(ctx, username, hwsec.DefaultCertLabel)
+			resultPayload, err := cryptohome.GetKeyPayload(ctx, username, hwsec.DefaultCertLabel)
 			if err != nil {
 				s.Fatal("Failed to get key payload: ", err)
 			}
@@ -173,7 +175,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 			s.Log("Start key payload closed-loop done")
 
 			s.Log("Start verifying key registration")
-			isSuccessful, err := utility.RegisterKeyWithChapsToken(ctx, username, hwsec.DefaultCertLabel)
+			isSuccessful, err := cryptohome.RegisterKeyWithChapsToken(ctx, username, hwsec.DefaultCertLabel)
 			if err != nil {
 				s.Fatal("Failed to register key with chaps token due to error: ", err)
 			}
@@ -181,7 +183,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to register key with chaps token")
 			}
 			// Now the key has been registered and remove from the key store
-			_, err = utility.GetPublicKey(ctx, username, hwsec.DefaultCertLabel)
+			_, err = attestation.GetPublicKey(ctx, username, hwsec.DefaultCertLabel)
 			if err == nil {
 				s.Fatal("unsidered successful operation -- key should be removed after registration")
 			}
@@ -197,17 +199,17 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 				if *certReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
 					s.Fatalf("Faild to get certificate for label %q: %v", label, certReply.Status.String())
 				}
-				_, err = utility.GetPublicKey(ctx, username, label)
+				_, err = attestation.GetPublicKey(ctx, username, label)
 				if err != nil {
 					s.Fatalf("Failed to get public key for label %q: %v", label, err)
 				}
 			}
 			s.Log("Deleting keys just created")
-			if err := utility.DeleteKeys(ctx, username, "label"); err != nil {
+			if err := cryptohome.DeleteKeys(ctx, username, "label"); err != nil {
 				s.Fatal("Failed to remove the key group: ", err)
 			}
 			for _, label := range []string{"label1", "label2", "label3"} {
-				if _, err := utility.GetPublicKey(ctx, username, label); err == nil {
+				if _, err := attestation.GetPublicKey(ctx, username, label); err == nil {
 					s.Fatalf("key with label %q still found: %v", label, err)
 				}
 			}
