@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
@@ -19,6 +20,7 @@ import (
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -28,8 +30,9 @@ import (
 const (
 	AndroidButtonClassName = "android.widget.Button"
 
-	DefaultUITimeout = 20 * time.Second
-	LongUITimeout    = 5 * time.Minute
+	defaultTestCaseTimeout = 2 * time.Minute
+	DefaultUITimeout       = 20 * time.Second
+	LongUITimeout          = 90 * time.Second
 )
 
 // TestFunc represents the "test" function.
@@ -37,8 +40,9 @@ type TestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 
 // TestCase represents the  name of test, and the function to call.
 type TestCase struct {
-	Name string
-	Fn   TestFunc
+	Name    string
+	Fn      TestFunc
+	Timeout time.Duration
 }
 
 // RunTestCases setups the device and runs all app compat test cases.
@@ -53,27 +57,61 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 		s.Fatal("Failed to create new app activity: ", err)
 	}
 	defer act.Close()
+	// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Log("Failed to ensure the display is on: ", err)
+	}
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app before test cases: ", err)
+	}
+	if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
+		s.Fatal("Failed to get window info: ", err)
+	} else if err := window.CloseWindow(ctx, tconn); err != nil {
+		s.Fatal("Failed to close app window before test cases: ", err)
 	}
 	if err := act.Stop(ctx, tconn); err != nil {
 		s.Fatal("Failed to stop app before test cases: ", err)
 	}
+	s.Log("Successfully tested launching and closing the app")
 
 	// Run the different test cases.
 	for idx, test := range testCases {
-		// Run subtests.
-		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
+		// If a timeout is not specified, limited individual test cases to the default.
+		// This makes sure that one test case doesn't use all of the time when it fails.
+		timeout := defaultTestCaseTimeout
+		if test.Timeout != 0 {
+			timeout = test.Timeout
+		}
+		testCaseCtx, cancel := ctxutil.Shorten(ctx, timeout)
+		defer cancel()
+		s.Run(testCaseCtx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
+			// Save time for cleanup and screenshot.
+			ctx, cancel := ctxutil.Shorten(cleanupCtx, 20*time.Second)
+			defer cancel()
+			// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
+			if err := power.TurnOnDisplay(ctx); err != nil {
+				s.Log("Failed to ensure the display is on: ", err)
+			}
 			// Launch the app.
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed to start app: ", err)
 			}
 			s.Log("App launched successfully")
 
-			defer act.Stop(ctx, tconn)
+			// Close the app between iterations.
+			defer func(ctx context.Context) {
+				if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
+					s.Fatal("Failed to get window info: ", err)
+				} else if err := window.CloseWindow(ctx, tconn); err != nil {
+					s.Fatal("Failed to close app window: ", err)
+				}
+				if err := act.Stop(ctx, tconn); err != nil {
+					s.Fatal("Failed to stop app: ", err)
+				}
+			}(cleanupCtx)
 
 			// Take screenshot on failure.
-			defer func() {
+			defer func(ctx context.Context) {
 				if s.HasError() {
 					filename := fmt.Sprintf("screenshot-arcappcompat-failed-test-%d.png", idx)
 					path := filepath.Join(s.OutDir(), filename)
@@ -81,17 +119,20 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 						s.Log("Failed to capture screenshot: ", err)
 					}
 				}
-			}()
+			}(cleanupCtx)
 
 			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 
+			// It is ok if the package is currently equal the the installer package.
+			// This happens when you need to accept permissions.
 			if currentAppPkg, err := CurrentAppPackage(ctx, d); err != nil {
 				s.Fatal("Failed to get current app package: ", err)
-			} else if currentAppPkg != appPkgName {
+			} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" {
 				s.Fatalf("Failed to launch app: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
 			}
 			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
 		})
+		cancel()
 	}
 }
 
@@ -124,6 +165,10 @@ func SetUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	}
 
 	s.Log("Installing app")
+	// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Log("Failed to ensure the display is on: ", err)
+	}
 	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Fatal("Failed to launch Play Store: ", err)
 	}
@@ -169,6 +214,10 @@ func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome
 // MinimizeRestoreApp Test "minimize and relaunch the app" and verifies app relaunch successfully without crash or ANR.
 func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	s.Log("Minimizing the window")
+	defaultState, err := ash.GetARCAppWindowState(ctx, tconn, appPkgName)
+	if err != nil {
+		s.Error("Failed to get the default window state: ", err)
+	}
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMinimize); err != nil {
 		s.Error("Failed to minimize the window: ", err)
 	}
@@ -178,17 +227,21 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 
 	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 
-	// Create an activity handle.
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
-	if err != nil {
-		s.Fatal("Failed to create new app activity: ", err)
+	s.Log("Restoring the window")
+	var restoreEvent ash.WMEventType
+	switch defaultState {
+	case ash.WindowStateFullscreen:
+		restoreEvent = ash.WMEventFullscreen
+	case ash.WindowStateMaximized:
+		restoreEvent = ash.WMEventMaximize
+	default:
+		restoreEvent = ash.WMEventNormal
 	}
-	defer act.Close()
-
-	// Launch the activity.
-	s.Log("Relaunching the app to restore from minimize")
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to restart app: ", err)
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, restoreEvent); err != nil {
+		s.Error("Failed to restore the window: ", err)
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, defaultState); err != nil {
+		s.Error("The window is not restored: ", err)
 	}
 }
 
@@ -243,7 +296,7 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 
 			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 
-			s.Log("Setting window back to maximzied")
+			s.Log("Setting window back to maximized")
 			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
 				s.Log("Failed to set window to maximized: ", err)
 			}
@@ -283,9 +336,15 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 
 	// Close the app.
 	s.Log("Closing the app")
+	if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
+		s.Fatal("Failed to get window info: ", err)
+	} else if err := window.CloseWindow(ctx, tconn); err != nil {
+		s.Fatal("Failed to close app window: ", err)
+	}
 	if err := act.Stop(ctx, tconn); err != nil {
 		s.Fatal("Failed to stop app: ", err)
 	}
+
 	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 
 	// Relaunch the app.

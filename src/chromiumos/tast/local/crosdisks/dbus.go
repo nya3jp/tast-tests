@@ -75,6 +75,16 @@ func (c *CrosDisks) Unmount(ctx context.Context, devicePath string, options []st
 	return status, nil
 }
 
+// AddDeviceToAllowlist calls CrosDisks.AddDeviceToAllowlist D-Bus method.
+func (c *CrosDisks) AddDeviceToAllowlist(ctx context.Context, devicePath string) error {
+	return c.call(ctx, "AddDeviceToAllowlist", devicePath).Err
+}
+
+// RemoveDeviceFromAllowlist calls CrosDisks.RemoveDeviceFromAllowlist D-Bus method.
+func (c *CrosDisks) RemoveDeviceFromAllowlist(ctx context.Context, devicePath string) error {
+	return c.call(ctx, "RemoveDeviceFromAllowlist", devicePath).Err
+}
+
 // MountCompletedWatcher is a thin wrapper of dbusutil.SignalWatcher to return
 // signal content as mountCompleted.
 type MountCompletedWatcher struct {

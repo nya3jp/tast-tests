@@ -122,7 +122,12 @@ func requiredFields(ctx context.Context, dut *dut.DUT) (requiredFieldSet, error)
 	}
 
 	for _, allowlist := range message.GenericComponentValueAllowlists {
-		category := strings.Title(allowlist.ComponentCategory.String())
+		categorySplit := strings.Split(allowlist.ComponentCategory.String(), "_")
+		for i, sp := range categorySplit {
+			categorySplit[i] = strings.Title(sp)
+		}
+		category := strings.Join(categorySplit, "")
+
 		for _, field := range allowlist.FieldNames {
 			if m, ok := fieldsMapping[category]; ok {
 				m.Add(field)
