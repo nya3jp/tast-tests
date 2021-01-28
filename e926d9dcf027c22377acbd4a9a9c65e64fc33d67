@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede1e901_92fa3ae8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-01-28T13:46:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec806b6f_4371ed27",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "e926d9dcf027c22377acbd4a9a9c65e64fc33d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cd0ae8d_9a4b700e",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-01-28T09:39:51Z",
       "side": 1,
       "message": "How about using ioutil.ReadFile()?\nhttps://golang.org/pkg/io/ioutil/#ReadFile",
+      "revId": "e926d9dcf027c22377acbd4a9a9c65e64fc33d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9889a0ff_2c38d158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-01-28T13:46:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cd0ae8d_9a4b700e",
       "revId": "e926d9dcf027c22377acbd4a9a9c65e64fc33d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
