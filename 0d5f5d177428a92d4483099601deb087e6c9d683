@@ -16,6 +16,24 @@
       "message": "Dryrun failuer on PS8, and PS9 does not have the actual update of the code, so it will be reproduced.\nCould you fix it?",
       "revId": "0d5f5d177428a92d4483099601deb087e6c9d683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7aa3141_e7f828fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-28T16:01:20Z",
+      "side": 1,
+      "message": "I\u0027m actually unsure what caused the dryrun failures on PS8.\n\nIn the logs, it errors out with the following message\n\ntast-remote-tests-cros-0.0.1-r4986: src/chromiumos/tast/local/chrome/ui/diagnosticsapp/diagnosticsapp.go:55:5: DxCPUTestButton redeclared in this block\ntast-remote-tests-cros-0.0.1-r4986: \tprevious declaration at src/chromiumos/tast/local/chrome/ui/diagnosticsapp/diagnosticsapp.go:37:5\n\nwhich isn\u0027t reflective of what I have in that PS or the current PS.\n\nI\u0027m going to rebase and try to run it again, let me know if you have any ideas.",
+      "parentUuid": "9ee4caca_ae546d0d",
+      "revId": "0d5f5d177428a92d4483099601deb087e6c9d683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
