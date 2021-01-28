@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7f0718f_c18e2539",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-28T08:35:04Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-structure\n\nIf the size of the created user is not large, it should be fine to leave it as is. If it\u0027s more than say 100MB you need to remove user at the end of the test.",
+      "parentUuid": "6644956b_812643ab",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8b6976f_10e2862b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
         "patchSetId": 2
