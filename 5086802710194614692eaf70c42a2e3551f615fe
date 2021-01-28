@@ -33,6 +33,23 @@
       "message": "Let me use your CL to try CQ. It should pick up chrome 4400.",
       "revId": "5086802710194614692eaf70c42a2e3551f615fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "261785a3_7e02ee56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-28T20:44:33Z",
+      "side": 1,
+      "message": "arc.PhysicalKeyboard is b/168184423 and WaitForCPUIdle code is reverted yesterday.",
+      "revId": "5086802710194614692eaf70c42a2e3551f615fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
