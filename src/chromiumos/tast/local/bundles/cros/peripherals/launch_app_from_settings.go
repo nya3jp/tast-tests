@@ -16,15 +16,17 @@ import (
 	"chromiumos/tast/local/chrome/ui/diagnosticsapp"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/ossettings"
+	"chromiumos/tast/local/chrome/ui/scanapp"
 	"chromiumos/tast/testing"
 )
 
 // settingsTestParams contains all the data needed to run a single test iteration.
 type settingsTestParams struct {
-	appName      string
+	appLabel     string
 	featureFlag  string
 	waitForApp   peripheraltypes.WaitForAppFn
 	settingsPage string
+	subLabel     string
 }
 
 func init() {
@@ -40,10 +42,19 @@ func init() {
 			{
 				Name: "diagnostics",
 				Val: settingsTestParams{
-					appName:      apps.Diagnostics.Name,
+					appLabel:     apps.Diagnostics.Name,
 					featureFlag:  "DiagnosticsApp",
 					waitForApp:   diagnosticsapp.WaitForApp,
 					settingsPage: "help", // URL for About ChromeOS page
+				},
+			},
+			{
+				Name: "scan",
+				Val: settingsTestParams{
+					appLabel:     apps.Scan.Name + " Scan documents and images",
+					featureFlag:  "ScanningUI",
+					waitForApp:   scanapp.WaitForApp,
+					settingsPage: "osPrinting", // URL for Print and page
 				},
 			},
 		},
@@ -62,7 +73,7 @@ func LaunchAppFromSettings(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	defer cr.Close(cleanupCtx) // Close our own chrome instance
+	defer cr.Close(cleanupCtx) // Close our own chrome instance.
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -71,11 +82,11 @@ func LaunchAppFromSettings(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	entryParams := ui.FindParams{
-		Name: params.appName,
+		Name: params.appLabel,
 		Role: ui.RoleTypeLink,
 	}
 
-	// Condition to satisfy verification of LaunchAtPageURL
+	// Condition to satisfy verification of LaunchAtPageURL.
 	condition := func(ctx context.Context) (bool, error) {
 		return ossettings.DescendantNodeExists(ctx, tconn, entryParams)
 	}
