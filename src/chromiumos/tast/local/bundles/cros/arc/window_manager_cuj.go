@@ -24,9 +24,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// wmTestStateFunc represents a function that tests if the window is in a certain state.
-type wmTestStateFunc func(context.Context, *chrome.TestConn, *arc.Activity, *ui.Device) error
-
 // uiClickFunc represents a function that "clicks" on a certain widget using UI Automator.
 type uiClickFunc func(context.Context, *arc.Activity, *ui.Device) error
 
@@ -163,7 +160,7 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.TestConn, a *
 	for _, test := range []struct {
 		name        string
 		act         string
-		wantedState wmTestStateFunc
+		wantedState wm.CheckFunc
 	}{
 		// The are four possible default states (windows #A to #D) from six possible different activities.
 		// Window #A.
@@ -211,7 +208,7 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.TestConn, a *
 	for _, test := range []struct {
 		name        string
 		act         string
-		wantedState wmTestStateFunc
+		wantedState wm.CheckFunc
 	}{
 		// The are two possible default states (windows #A to #B) from three possible different activities.
 		// Window #A.
@@ -253,9 +250,9 @@ func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.TestConn, a
 		name         string
 		act          string
 		stateA       ash.WMEventType
-		wantedStateA wmTestStateFunc
+		wantedStateA wm.CheckFunc
 		stateB       ash.WMEventType
-		wantedStateB wmTestStateFunc
+		wantedStateB wm.CheckFunc
 	}{
 		{"Unspecified", wm.ResizableUnspecifiedActivity,
 			ash.WMEventMaximize, wm.CheckMaximizeResizable, ash.WMEventNormal, wm.CheckRestoreResizable},
@@ -308,7 +305,7 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.TestConn, a
 	for _, test := range []struct {
 		name           string
 		act            string
-		maximizedState wmTestStateFunc
+		maximizedState wm.CheckFunc
 	}{
 		{"Landscape", wm.LandscapeActivity, wm.CheckMaximizeResizable},
 		{"Unspecified", wm.UnspecifiedActivity, wm.CheckMaximizeResizable},

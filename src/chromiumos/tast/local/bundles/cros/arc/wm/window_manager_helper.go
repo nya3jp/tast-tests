@@ -116,6 +116,15 @@ func CheckRestoreResizable(ctx context.Context, tconn *chrome.TestConn, act *arc
 	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
+// CheckRestoreNonResizable checks that the window is both in restore mode and is not resizable.
+func CheckRestoreNonResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+		return err
+	}
+	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonClose
+	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
+}
+
 // CheckPillarboxResizable checks that the window is both in pillar-box mode and is resizable.
 func CheckPillarboxResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := CheckPillarbox(ctx, tconn, act, d); err != nil {
@@ -182,27 +191,33 @@ func CheckMaximizeToFullscreenToggle(ctx context.Context, tconn *chrome.TestConn
 }
 
 // CheckMaximizeWindowInTabletMode checks the activtiy covers display's work area in maximize mode.
-func CheckMaximizeWindowInTabletMode(ctx context.Context, tconn *chrome.TestConn, maximizeWindow ash.Window) error {
-	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return errors.New("failed to get display info")
-	}
-	if primaryDisplayInfo == nil {
-		return errors.New("no primary display info found")
-	}
+func CheckMaximizeWindowInTabletMode(ctx context.Context, tconn *chrome.TestConn, pkgName string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// Store activity's window info when tablet mode is enabled to make sure it is in Maximized state.
+		maximizeWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+		if err != nil {
+			return err
+		}
+		primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+		if err != nil {
+			return errors.New("failed to get display info")
+		}
+		if primaryDisplayInfo == nil {
+			return errors.New("no primary display info found")
+		}
 
-	if maximizeWindow.IsFrameVisible {
-		return errors.Errorf("invalid frame visibility, got: %t, want: false", maximizeWindow.IsFrameVisible)
-	}
+		if maximizeWindow.IsFrameVisible {
+			return errors.Errorf("invalid frame visibility, got: %t, want: false", maximizeWindow.IsFrameVisible)
+		}
 
-	if primaryDisplayInfo.WorkArea.Left != maximizeWindow.TargetBounds.Left ||
-		primaryDisplayInfo.WorkArea.Top != maximizeWindow.TargetBounds.Top ||
-		primaryDisplayInfo.WorkArea.Width != maximizeWindow.TargetBounds.Width ||
-		primaryDisplayInfo.WorkArea.Height != maximizeWindow.TargetBounds.Height {
-		return errors.Errorf("invalid maximize window bounds compared to display work area, got: %s, want: %s", maximizeWindow.TargetBounds, primaryDisplayInfo.WorkArea)
-	}
-
-	return nil
+		if primaryDisplayInfo.WorkArea.Left != maximizeWindow.TargetBounds.Left ||
+			primaryDisplayInfo.WorkArea.Top != maximizeWindow.TargetBounds.Top ||
+			primaryDisplayInfo.WorkArea.Width != maximizeWindow.TargetBounds.Width ||
+			primaryDisplayInfo.WorkArea.Height != maximizeWindow.TargetBounds.Height {
+			return errors.Errorf("invalid maximize window bounds compared to display work area, got: %s, want: %s", maximizeWindow.TargetBounds, primaryDisplayInfo.WorkArea)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // WaitForShelfAnimationComplete waits for 5 seconds to shelf animation complete.
