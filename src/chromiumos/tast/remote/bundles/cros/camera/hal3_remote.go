@@ -203,6 +203,10 @@ func logTestScene(ctx context.Context, d *dut.DUT, facing pb.Facing, outdir stri
 		}()
 	}
 
+	// Timeout for capturing scene image.
+	captureCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+
 	// Take a picture of test scene.
 	facingArg := "back"
 	if facing == pb.Facing_FACING_FRONT {
@@ -214,7 +218,7 @@ func logTestScene(ctx context.Context, d *dut.DUT, facing pb.Facing, outdir stri
 		"--gtest_filter=Camera3StillCaptureTest/Camera3DumpSimpleStillCaptureTest.DumpCaptureResult/0",
 		"--camera_facing="+facingArg,
 		"--dump_still_capture_path="+sceneLog,
-	).Run(ctx); err != nil {
+	).Run(captureCtx); err != nil {
 		return errors.Wrap(err, "failed to run cros_camera_test to take a scene photo")
 	}
 
