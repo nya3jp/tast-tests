@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b71c6b13_4576e00f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture_keep_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-28T00:26:27Z",
+      "side": 1,
+      "message": "We may have a problem that even we put `keepState bool` in loggedInToCUJUserFixture, there\u0027s no way could pass parameter to fixture then set the flag. We did have `FixitState`, but it didn\u0027t provide set capability. So you mean we should add one ?",
+      "parentUuid": "92f35db1_5ba44775",
+      "revId": "b04308df3741bde2f19f0aa5ffaeee541032ef1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acd4d059_22fd1f79",
         "filename": "src/chromiumos/tast/local/wpr/pre_keep_state.go",
         "patchSetId": 3
