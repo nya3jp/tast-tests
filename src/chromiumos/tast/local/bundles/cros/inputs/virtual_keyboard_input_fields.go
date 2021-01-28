@@ -77,6 +77,7 @@ func init() {
 				Name:              "zh_pinyin_exp",
 				Pre:               pre.VKEnabledTabletExp,
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
+				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			},
 		},
