@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f37b75_1451183d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-01-28T22:19:59Z",
+      "side": 1,
+      "message": "Chumping as this test passes and actually relaxes the failure condition on the CQ.",
+      "revId": "eb0d4b81c7596bd9f35a70e8cfbe9fffa0c52921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
