@@ -36,6 +36,10 @@ func init() {
 			Name:              "vm_mock_consent",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val:               crash.MockConsent,
+		}, {
+			Name:              "vm_real_consent",
+			ExtraSoftwareDeps: []string{"android_vm", "metrics_consent"},
+			Val:               crash.RealConsent,
 		}},
 	})
 }
