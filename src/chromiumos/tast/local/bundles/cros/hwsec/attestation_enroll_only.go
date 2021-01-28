@@ -34,7 +34,9 @@ func AttestationEnrollOnly(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
-	utility := helper.CryptohomeClient()
+
+	attestation := helper.AttestationClient()
+
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to ensure tpm readiness: ", err)
 	}
@@ -43,26 +45,9 @@ func AttestationEnrollOnly(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to prepare for enrollment: ", err)
 	}
 
-	at := hwsec.NewAttestationTest(utility, hwsec.DefaultPCA)
-	for _, param := range []struct {
-		name  string
-		async bool
-	}{
-		{
-			name:  "async_enroll",
-			async: true,
-		}, {
-			name:  "sync_enroll",
-			async: false,
-		},
-	} {
-		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := utility.SetAttestationAsyncMode(ctx, param.async); err != nil {
-				s.Fatal("Failed to switch to sync mode: ", err)
-			}
-			if err := at.Enroll(ctx); err != nil {
-				s.Fatal("Failed to enroll device: ", err)
-			}
-		})
+	at := hwsec.NewAttestationTest(attestation, hwsec.DefaultPCA)
+
+	if err := at.Enroll(ctx); err != nil {
+		s.Fatal("Failed to enroll device: ", err)
 	}
 }
