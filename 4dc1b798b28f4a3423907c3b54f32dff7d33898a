@@ -208,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfd98d61_40420992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-01-28T09:01:11Z",
+      "side": 1,
+      "message": "\u003e Do you happen to know which file it is?\n\nFWIW, preferences like kArcSignedIn, kArcTermsAccepted seem to be written to /home/user/\u003chash\u003e/Preferences (\u003d /home/.shadow/\u003chash\u003e/mount/user/Preferences). For example, some of these arc-related preferences are set to false when ARC is disabled [1,2].\nI\u0027m not sure whether this is why ARC is disabled when only android-data is overwritten, nor just copying the Preferences file is sufficient/appropriate for the purpose.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/chromeos/arc/session/arc_session_manager.cc;l\u003d1102;drc\u003dba1aa6e7963059601cd4cce4b820d55b4f2387e5\n[2] https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/chromeos/arc/session/arc_session_manager.cc;l\u003d1424;drc\u003dba1aa6e7963059601cd4cce4b820d55b4f2387e5",
+      "parentUuid": "7811a3a9_ad495e62",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f75ad4b3_28418312",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
         "patchSetId": 2
