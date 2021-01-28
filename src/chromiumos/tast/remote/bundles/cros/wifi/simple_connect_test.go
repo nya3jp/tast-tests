@@ -457,9 +457,8 @@ func simpleConnect8021xWEP() simpleConnectParams {
 
 func simpleConnect8021xWPA() simpleConnectParams {
 	return simpleConnectParams{
-		Name:      "8021xwpa",
-		Doc:       simpleConnectDocPref("a protected network supporting for WPA-EAP encryption."),
-		ExtraAttr: []string{"wificell_unstable"},
+		Name: "8021xwpa",
+		Doc:  simpleConnectDocPref("a protected network supporting for WPA-EAP encryption."),
 		Val: []simpleConnectParamsVal{{
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `wpaeap.NewConfigFactory(
@@ -603,14 +602,14 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 		return ret
 	}
 	return []simpleConnectParams{
-		mkPFail("PEAP", "MSCHAPV2", []string{"wificell_unstable"}),
+		mkPFail("PEAP", "MSCHAPV2", nil),
 		mkP("PEAP", "MSCHAPV2", nil),
 		mkP("PEAP", "MD5", nil),
-		mkP("PEAP", "GTC", []string{"wificell_unstable"}),
-		mkPFail("TTLS", "MD5", []string{"wificell_unstable"}),
+		mkP("PEAP", "GTC", nil),
+		mkPFail("TTLS", "MD5", nil),
 		mkP("TTLS", "MSCHAPV2", nil),
 		mkP("TTLS", "MD5", nil),
-		mkP("TTLS", "GTC", []string{"wificell_unstable"}),
+		mkP("TTLS", "GTC", nil),
 		mkP("TTLS", "TTLSMSCHAPV2", nil),
 		mkP("TTLS", "TTLSMSCHAP", nil),
 		mkP("TTLS", "TTLSPAP", nil),
