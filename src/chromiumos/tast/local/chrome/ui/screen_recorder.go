@@ -14,6 +14,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -83,38 +86,13 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 	}
 
 	// Choose to record the entire desktop/screen with no audio.
-	mediaview, err := FindWithTimeout(ctx, tconn, FindParams{Name: "Share your screen", ClassName: "DesktopMediaPickerDialogView"}, timeout)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find media picker view")
-	}
-	defer mediaview.Release(ctx)
+	ui := uiauto.New(tconn)
+	shareScreenDialog := nodewith.Name("Share your screen").ClassName("DesktopMediaPickerDialogView")
+	entireDesktopButton := nodewith.ClassName("DesktopMediaSourceView").Role(role.Button).Ancestor(shareScreenDialog)
+	shareButton := nodewith.Name("Share").Role(role.Button).Ancestor(shareScreenDialog)
 
-	if err := WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for animation finished")
-	}
-
-	desktopView, err := mediaview.DescendantWithTimeout(ctx, FindParams{ClassName: "DesktopMediaSourceView", Role: RoleTypeButton}, 30*time.Second)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find the desktop view")
-	}
-	defer desktopView.Release(ctx)
-	if err := desktopView.FocusAndWait(ctx, timeout); err != nil {
-		return nil, errors.Wrap(err, "failed to focus on the desktop view")
-	}
-	if err := desktopView.LeftClick(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to click the desktop view")
-	}
-
-	shareButton, err := mediaview.DescendantWithTimeout(ctx, FindParams{Name: "Share", Role: RoleTypeButton}, timeout)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find the share button")
-	}
-	defer shareButton.Release(ctx)
-	if err := shareButton.FocusAndWait(ctx, timeout); err != nil {
-		return nil, errors.Wrap(err, "failed to focus on the share button")
-	}
-	if err := shareButton.LeftClick(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to click the share button")
+	if err := uiauto.Run(ctx, ui.LeftClick(entireDesktopButton), ui.LeftClick(shareButton)); err != nil {
+		return nil, errors.Wrap(err, "failed to start screeen recording through ui")
 	}
 
 	return sr, nil
