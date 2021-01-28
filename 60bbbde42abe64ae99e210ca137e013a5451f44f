@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27821530_aa359a43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-28T02:29:50Z",
+      "side": 1,
+      "message": "\u003e \"similiar\" is a possible misspelling of \"similar\".\n\nFixed",
+      "parentUuid": "bb86b3e4_2aeca63e",
+      "range": {
+        "startLine": 9,
+        "startChar": 50,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "60bbbde42abe64ae99e210ca137e013a5451f44f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
