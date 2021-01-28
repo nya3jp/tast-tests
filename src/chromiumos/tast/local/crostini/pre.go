@@ -120,13 +120,21 @@ var UnstableModels = []string{
 	"tidus", // crbug.com/1072877
 }
 
+// CrostiniStableCond is a hardware condition that only runs a test on models that can run Crostini tests without
+// known flakiness issues.
+var CrostiniStableCond = hwdep.SkipOnModel(UnstableModels...)
+
 // CrostiniStable is a hardware dependency that only runs a test on models that can run Crostini tests without
 // known flakiness issues.
-var CrostiniStable = hwdep.D(hwdep.SkipOnModel(UnstableModels...))
+var CrostiniStable = hwdep.D(CrostiniStableCond)
+
+// CrostiniUnstableCond is a hardware condition that is the inverse of CrostiniStableCond. It only runs a test on
+// models that are known to be flaky when running Crostini tests.
+var CrostiniUnstableCond = hwdep.Model(UnstableModels...)
 
 // CrostiniUnstable is a hardware dependency that is the inverse of CrostiniStable. It only runs a test on
 // models that are known to be flaky when running Crostini tests.
-var CrostiniUnstable = hwdep.D(hwdep.Model(UnstableModels...))
+var CrostiniUnstable = hwdep.D(CrostiniUnstableCond)
 
 // CrostiniAppTest is a hardware dependency limiting the boards on which app testing is run.
 // App testing uses a large container which needs large space. Many DUTs in the lab do not have enough space.
