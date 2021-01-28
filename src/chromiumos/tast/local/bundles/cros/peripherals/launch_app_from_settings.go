@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/diagnosticsapp"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/ossettings"
+	"chromiumos/tast/local/chrome/ui/scanapp"
 	"chromiumos/tast/testing"
 )
 
@@ -25,6 +26,7 @@ type settingsTestParams struct {
 	featureFlag  string
 	waitForApp   peripheraltypes.WaitForAppFn
 	settingsPage string
+	subLabel     string
 }
 
 func init() {
@@ -44,6 +46,17 @@ func init() {
 					featureFlag:  "DiagnosticsApp",
 					waitForApp:   diagnosticsapp.WaitForApp,
 					settingsPage: "help", // URL for About ChromeOS page
+					subLabel:     "",
+				},
+			},
+			{
+				Name: "scan",
+				Val: settingsTestParams{
+					appName:      apps.Scan.Name,
+					featureFlag:  "ScanningUI",
+					waitForApp:   scanapp.WaitForApp,
+					settingsPage: "osPrinting", // URL for Print and page
+					subLabel:     " Scan documents and images",
 				},
 			},
 		},
@@ -71,7 +84,7 @@ func LaunchAppFromSettings(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	entryParams := ui.FindParams{
-		Name: params.appName,
+		Name: params.appName + params.subLabel,
 		Role: ui.RoleTypeLink,
 	}
 
