@@ -68,6 +68,23 @@
       "parentUuid": "c2e24fa8_0d149b92",
       "revId": "414ef523a33a81ad314f537605faf3a27a1063f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df9b589a_3d829844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-01-28T13:20:01Z",
+      "side": 1,
+      "message": "I run this test more than one time and found the CB shows previous Android phone name so the test fail.",
+      "revId": "414ef523a33a81ad314f537605faf3a27a1063f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
