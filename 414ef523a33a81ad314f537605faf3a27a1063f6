@@ -33,6 +33,23 @@
       "message": "Much better. Thanks for following up on the suggestions. \n\nLet\u0027s get it checked in :) ",
       "revId": "414ef523a33a81ad314f537605faf3a27a1063f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e24fa8_0d149b92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-01-28T12:57:09Z",
+      "side": 1,
+      "message": "The test target name seems should be:\nnearbyshare.CrosSenderAndroidReceiver.small_jpg\nnearbyshare.CrosSenderAndroidReceiver.small_png",
+      "revId": "414ef523a33a81ad314f537605faf3a27a1063f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
