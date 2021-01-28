@@ -180,25 +180,25 @@ func LockToSingleUserMountUntilReboot(ctx context.Context, s *testing.State) {
 
 	// Now mount the first user's vault and lock to single user mount.
 	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPin, util.PinLabel, false, hwsec.NewVaultConfig()); err != nil {
-		s.Fatal("Failed to mount the user for lock to single user mount")
+		s.Fatal("Failed to mount the user for lock to single user mount: ", err)
 	}
 	if err := utility.LockToSingleUserMountUntilReboot(ctx, util.FirstUsername); err != nil {
-		s.Fatal("Failed to lock to single user mount")
+		s.Fatal("Failed to lock to single user mount: ", err)
 	}
 
 	// Check that the other user is blocked.
 	if err := checkOthersAreBlocked(ctx, utility); err != nil {
-		s.Fatal("Other users are not blocked")
+		s.Fatal("Other users are not blocked: ", err)
 	}
 
 	// Unmount the first user's vault.
 	if _, err := utility.Unmount(ctx, util.FirstUsername); err != nil {
-		s.Fatal("Failed to unmount first user's vault after locking")
+		s.Fatal("Failed to unmount first user's vault after locking: ", err)
 	}
 
 	// The first user's vault should still work (CheckKeyEx and MountEx).
 	if err := checkVaultWorks(ctx, utility, util.FirstUsername, util.FirstPassword, util.FirstPin); err != nil {
-		s.Fatal("The first user's vault doesn't work after locking")
+		s.Fatal("The first user's vault doesn't work after locking: ", err)
 	}
 
 	// Now reboot and check that the effects wear off.
