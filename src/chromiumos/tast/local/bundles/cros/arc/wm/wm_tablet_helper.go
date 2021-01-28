@@ -72,12 +72,7 @@ func TabletDefaultLaunchHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 				return err
 			}
 
-			windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
-			if err != nil {
-				return err
-			}
-
-			if err := CheckMaximizeWindowInTabletMode(ctx, tconn, *windowInfo); err != nil {
+			if err := CheckMaximizeWindowInTabletMode(ctx, tconn, Pkg24); err != nil {
 				return err
 			}
 
@@ -437,9 +432,12 @@ func displaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc
 		return errors.New("failed to find primary display info")
 	}
 
-	if dispInfoAfterZoom.WorkArea != appWindowInfoAfterZoom.BoundsInRoot {
-		return errors.Errorf("invalid activity bounds, the activity must cover the display work area: got %q; want %q", appWindowInfoAfterZoom.BoundsInRoot, dispInfoAfterZoom.WorkArea)
-	}
+	testing.Poll(ctx, func(ctx context.Context) error {
+		if dispInfoAfterZoom.WorkArea != appWindowInfoAfterZoom.BoundsInRoot {
+			return errors.Errorf("invalid activity bounds, the activity must cover the display work area: got %q; want %q", appWindowInfoAfterZoom.BoundsInRoot, dispInfoAfterZoom.WorkArea)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
 
 	// DPI before zoom divided by DPI after zoom should be equal to zoom coefficient. Because of possible roundings, the difference is calculated that should be less than 0.01 to have up to 2 decimal points of precision.
 	if math.Abs(newZoom-dispInfoBeforeZoom.DPIX/dispInfoAfterZoom.DPIX) > roundingError {
