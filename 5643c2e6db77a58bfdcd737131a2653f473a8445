@@ -33,6 +33,24 @@
       "message": "This may not be needed with CL:2654866 + the tast team says they\u0027ll investigate the cause of the increase",
       "revId": "5643c2e6db77a58bfdcd737131a2653f473a8445",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "083f17c6_3b23b1e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-01-28T04:48:53Z",
+      "side": 1,
+      "message": "I think we still need it. I takes a test case 7 minutes to throw out the failure if installation fails, e.g:\n2021/01/20 19:17:30 [19:17:30.042] Starting LXD image server on 100.115.160.101:8889\n2021/01/20 19:24:42 [19:24:42.427] Error at pre.go:505: [Precondition failure] Failed to install Crostini: failed to install Crostini from UI: error in installer dialog: Error installing Linux: Error starting the virtual machine. Please try again.\n2021/01/20 19:24:42 [19:24:42.427] Stack trace:\n[Precondition failure] Failed to install Crostini\n\tat chromiumos/tast/local/crostini.(*preImpl).Prepare (pre.go:505)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func2 (run.go:753)\n\tat chromiumos/tast/internal/planner.safeCall.func2 (safe.go:92)\n\tat runtime.goexit (asm_amd64.s:1357)\nfailed to install Crostini from UI\n\tat chromiumos/tast/local/crostini/ui.InstallCrostini (installer.go:282)\n\tat chromiumos/tast/local/crostini.(*preImpl).Prepare (pre.go:504)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func2 (run.go:753)\n\tat chromiumos/tast/internal/planner.safeCall.func2 (safe.go:92)\n\tat runtime.goexit (asm_amd64.s:1357)\nerror in installer dialog: Error installing Linux: Error starting the virtual machine. Please try again.\n\tat chromiumos/tast/local/crostini/ui.(*Installer).Install (installer.go:190)\n\tat chromiumos/tast/local/crostini/ui.InstallCrostini (installer.go:281)\n\tat chromiumos/tast/local/crostini.(*preImpl).Prepare (pre.go:504)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func2 (run.go:753)\n\tat chromiumos/tast/internal/planner.safeCall.func2 (safe.go:92)\n\tat runtime.goexit (asm_amd64.s:1357)\n2021/01/20 19:24:42 [19:24:42.445] Test failed. Dumping the automation node tree into ui_tree.txt",
+      "parentUuid": "95e29a77_955461c1",
+      "revId": "5643c2e6db77a58bfdcd737131a2653f473a8445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
