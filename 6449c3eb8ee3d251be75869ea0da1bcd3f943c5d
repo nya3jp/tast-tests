@@ -1,0 +1,76 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd5ad244_b0b6ce20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-28T07:15:34Z",
+      "side": 1,
+      "message": "\u003e \"Disconect\" is a possible misspelling of \"Disconnect\".\n\nPlease fix.",
+      "parentUuid": "083f48ee_571cbce5",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "6449c3eb8ee3d251be75869ea0da1bcd3f943c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9fbbb03_7d16e9d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-28T07:15:34Z",
+      "side": 1,
+      "message": "\u003e \"senario\" is a possible misspelling of \"scenario\".\n\nPlease fix.",
+      "parentUuid": "e8eed19f_99873d8e",
+      "range": {
+        "startLine": 11,
+        "startChar": 63,
+        "endLine": 11,
+        "endChar": 70
+      },
+      "revId": "6449c3eb8ee3d251be75869ea0da1bcd3f943c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f5ac76_cbd96c69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-28T07:15:34Z",
+      "side": 1,
+      "message": "\u003e \"senarios\" is a possible misspelling of \"scenarios\".\n\nPlease fix.",
+      "parentUuid": "b53fad09_d3a2a360",
+      "range": {
+        "startLine": 16,
+        "startChar": 61,
+        "endLine": 16,
+        "endChar": 69
+      },
+      "revId": "6449c3eb8ee3d251be75869ea0da1bcd3f943c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
