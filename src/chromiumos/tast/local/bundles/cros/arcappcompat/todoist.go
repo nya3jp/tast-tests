@@ -71,7 +71,7 @@ func init() {
 func Todoist(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.todoist"
-		appActivity = ".activity.HomeActivity"
+		appActivity = ".alias.HomeActivityDefault"
 	)
 	testCases := s.Param().([]testutil.TestCase)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
