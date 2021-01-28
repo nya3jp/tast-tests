@@ -38,6 +38,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
+	atUtility := helper.AttestationUtil()
 	utility := helper.CryptohomeUtil()
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to ensure tpm readiness: ", err)
@@ -47,7 +48,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to prepare for enrollment: ", err)
 	}
 
-	at := hwsec.NewAttestationTest(utility, hwsec.DefaultPCA)
+	at := hwsec.NewAttestationTest(atUtility, hwsec.DefaultPCA)
 
 	ac, err := hwseclocal.NewAttestationDBus(ctx)
 	if err != nil {
@@ -146,7 +147,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to register key with chaps token")
 			}
 			// Now the key has been registered and remove from the key store
-			_, err = utility.GetPublicKey(ctx, username, hwsec.DefaultCertLabel)
+			_, err = atUtility.GetPublicKey(ctx, username, hwsec.DefaultCertLabel)
 			if err == nil {
 				s.Fatal("unsidered successful operation -- key should be removed after registration")
 			}
@@ -162,7 +163,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 				if *certReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
 					s.Fatalf("Faild to get certificate for label %q: %v", label, certReply.Status.String())
 				}
-				_, err = utility.GetPublicKey(ctx, username, label)
+				_, err = atUtility.GetPublicKey(ctx, username, label)
 				if err != nil {
 					s.Fatalf("Failed to get public key for label %q: %v", label, err)
 				}
@@ -172,7 +173,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to remove the key group: ", err)
 			}
 			for _, label := range []string{"label1", "label2", "label3"} {
-				if _, err := utility.GetPublicKey(ctx, username, label); err == nil {
+				if _, err := atUtility.GetPublicKey(ctx, username, label); err == nil {
 					s.Fatalf("key with label %q still found: %v", label, err)
 				}
 			}
