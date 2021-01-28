@@ -50,6 +50,24 @@
       "message": "nit: copyright",
       "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c233c1_fb32ad0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/main.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-01-28T18:01:14Z",
+      "side": 1,
+      "message": "There are many HTML files already in Tast code, but I do not see any copyright notices in them. Particularly, look in: src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/data/",
+      "parentUuid": "d41cef6e_be02e642",
+      "revId": "281f724002c524a1479ebf1a572ad4cd337e913f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
