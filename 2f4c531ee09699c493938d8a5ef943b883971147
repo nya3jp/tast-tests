@@ -244,6 +244,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74e657b4_717765fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-28T11:31:45Z",
+      "side": 1,
+      "message": "We opened multiple tabs by keyboard event (with Alt+Tab). So, we couldn\u0027t use WaitForQuiescence without tab connection handler. But yes, you\u0027re right, the WaitForQuiescence is better way. We\u0027re going to the other implementation for our cases now. It would take a little time.",
+      "parentUuid": "6f25a92f_a2cdebc5",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57682f5a_f9d5b6e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
         "patchSetId": 13
