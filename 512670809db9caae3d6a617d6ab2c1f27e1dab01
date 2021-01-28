@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81fa355f_1a75d8d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-28T18:44:26Z",
+      "side": 1,
+      "message": "tast-wise LGTM % nit\n\ndeferring to Armen.",
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d5c94c0_a7632120",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-28T18:44:26Z",
+      "side": 1,
+      "message": "no dialog in R? or is it because pre-24 apps are no longer supported on R?\n\nperhaps adding a comment why this is not needed on R",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 76
+      },
+      "revId": "512670809db9caae3d6a617d6ab2c1f27e1dab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33894c96_98ec3da9",
