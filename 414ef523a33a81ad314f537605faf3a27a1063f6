@@ -50,6 +50,24 @@
       "message": "The test target name seems should be:\nnearbyshare.CrosSenderAndroidReceiver.small_jpg\nnearbyshare.CrosSenderAndroidReceiver.small_png",
       "revId": "414ef523a33a81ad314f537605faf3a27a1063f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7628049c_d6f8fd48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-01-28T13:00:07Z",
+      "side": 1,
+      "message": "and \"-var\" seems should before \u003cdut\u003e:\ntast run -var\u003drooted\u003dfalse \u003cdut\u003e nearbyshare.CrosSenderAndroidReceiver.small_jpg",
+      "parentUuid": "c2e24fa8_0d149b92",
+      "revId": "414ef523a33a81ad314f537605faf3a27a1063f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
