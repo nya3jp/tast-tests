@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2adade7e_802938c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-28T21:42:00Z",
+      "side": 1,
+      "message": "I think, I have to rebase it https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2650487 as it has ui migration. Will resend it later again.",
+      "revId": "7002f519922aaa56a5a86ccba7cd105ae142039e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
