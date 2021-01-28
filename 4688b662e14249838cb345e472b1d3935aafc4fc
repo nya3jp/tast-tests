@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8961b2b7_a3958c51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-28T17:08:41Z",
+      "side": 1,
+      "message": "You are right capacity for this channel is not needed. In stead, for the new added error channel, I created the buffered channel so the go routine is able to send error at any time.",
+      "parentUuid": "649fdc0f_1508c7ff",
+      "range": {
+        "startLine": 67,
+        "startChar": 32,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "4688b662e14249838cb345e472b1d3935aafc4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae4e1e13_fa60bb22",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d139df69_851fcd8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-28T17:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae4e1e13_fa60bb22",
+      "range": {
+        "startLine": 88,
+        "startChar": 23,
+        "endLine": 88,
+        "endChar": 70
+      },
+      "revId": "4688b662e14249838cb345e472b1d3935aafc4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83ef834f_52edcd58",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-01-28T00:53:42Z",
       "side": 1,
       "message": "I am afraid that this is a proper way to wait for the collection.  When t.collecting is closed, the goroutine may be running on other code paths, and so collectingErr may be updated.  You should rather wait for the end of the goroutine.\n\nOne idea is to have a channel for an error, instead of \"collectingErr\" field, i.e.\nin Start:\n  t.errc \u003d make(chan error)\n  ...\n  go func() {\n    ...\n    select {\n    case \u003c-t.collecting:\n      close(t.errc)\n      return\n    case \u003c-ticker.C:\n      ...\n     if err !\u003d nil {\n       t.errc \u003c- errors.Wrap(err, ...)\n       return\n     }\n     ...\n    case \u003c-ctx.Done():\n      t.errc \u003c- ctx.Err()\n      return\n    ...\n    }\n  }()\n\nin Stop:\n  close(t.collecting)\n  if err :\u003d \u003c- t.errc; err !\u003d nil {\n    return err\n  }\n  ...\n\nThis way, you can ensure the end of the ongoing goroutine.",
+      "revId": "4688b662e14249838cb345e472b1d3935aafc4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62dc5a3e_bb058034",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-28T17:08:41Z",
+      "side": 1,
+      "message": "The intention was to ignore the errors happen after the point of Stop() is called. But as you indicated there is a chance that t.energy will be updated after Stop() returns. I just added the waiting logic. Also add ctx.Done() select to avoid blocking on the go routine side.",
+      "parentUuid": "83ef834f_52edcd58",
       "revId": "4688b662e14249838cb345e472b1d3935aafc4fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
