@@ -106,6 +106,41 @@
       "parentUuid": "4af44601_34ef469e",
       "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1eba2df_98ec0e2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-28T14:32:38Z",
+      "side": 1,
+      "message": "\u003e Imageloader fails to be brought up by DBus at a rare occurrence.\n\u003e All the tast runs are green atm.\n\u003e \n\nNote that failing on 0.5% or so is high enough.\nWith a simple math, we would hit the issue for every week, if it runs in CQ.\nWe have a lot of CQ tests, and all must pass, so pile of the flakiness will make our development experience significantly worse. And actually, that has been one of the issues we are tackling against. I\u0027d appreciate your understanding and cooperation, too.\nConsidering the # of users, the issue would be hit more often in the world,\nif the issue is not caused by the testing special set up.\n\nStepping back, in general, whether the test failure looks flaky or not should not be the reason to ignore failures. It could be the reason of priority, though.\n\n\u003e Also, tests constantly restart the ui, which isn\u0027t the normal flow.\n\u003e Which might also be causing the imageloader shutdown to conflict with the startup.\n\u003e There hasn\u0027t been an occurrence that I know/filed against this on live devices.\n\nGood to know that our users didn\u0027t seem to see this.\n\n\u003e \n\u003e dlcservice has a hard dependency to imageloader, so if imageloader doesn\u0027t work, dlcservice cannot produce the end result it needs to.\n\u003e \n\u003e But if we were to dig in deeper, an example error output is:\n\u003e https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1160494#c27\n\u003e \n\u003e Hitting this portion of dbus:\n\u003e https://source.corp.google.com/eureka_internal/external/dbus/bus/activation.c;l\u003d1460?q\u003d%22Failed%20to%20activate%20service%22%20dbus\n\nok, so the D-Bus reports the error.\nWhere is the imageloader stuck at? Is it during the bootstrap? Or, the process does not send/receive any messages? Or ... something else?\n\nMaybe a bug should be filed to collect more info?",
+      "parentUuid": "17d1b2ef_8a7d8cbf",
+      "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d647d6a_18015cbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-28T14:32:38Z",
+      "side": 1,
+      "message": "Marking CR+2 following the guide line, but I think the flakiness issue should be investigated at least for triage.\n",
+      "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
