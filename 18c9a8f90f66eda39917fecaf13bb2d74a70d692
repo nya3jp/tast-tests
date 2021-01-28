@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8edb67ab_34248458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-28T14:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86b638da_b60cccb5",
+      "revId": "18c9a8f90f66eda39917fecaf13bb2d74a70d692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcc17854_eb985e50",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "230b9871_e372ccd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-28T14:27:19Z",
+      "side": 1,
+      "message": "As mentioned below, we should have this covered in the browser test.",
+      "parentUuid": "bcc17854_eb985e50",
+      "revId": "18c9a8f90f66eda39917fecaf13bb2d74a70d692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e370a509_95ec8d17",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-01-27T23:34:50Z",
       "side": 1,
       "message": "We should also verify that:\n- The CPU button shows \"Run again\".\n- The status text shows that a routine was cancelled.",
+      "revId": "18c9a8f90f66eda39917fecaf13bb2d74a70d692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7400d7_b0d5c2f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-28T14:27:19Z",
+      "side": 1,
+      "message": "AFAIK the purpose of integration tests is to verify CUJs as crafted from different tested components (in this case backend and frontend). Since those components have unit tests and browser tests respectively, it\u0027s not necessary to verify individual UI components here as it will be redundant and be costly to maintain.",
+      "parentUuid": "e370a509_95ec8d17",
       "revId": "18c9a8f90f66eda39917fecaf13bb2d74a70d692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
