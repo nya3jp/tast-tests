@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/memoryuser"
@@ -108,19 +109,20 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		task := memoryuser.NewMinStillAliveMetricTask(tabsAliveMetrics, "tabs_alive_min")
 		tasks = append(tasks, task)
 	}
+	arc, _ := pre.VMs[multivm.ARCName].(*arc.ARC)
 	if param.inARC {
 		task := memoryuser.NewMinStillAliveMetricTask(appsAliveMetrics, "apps_alive_min")
 		tasks = append(tasks, task)
-		if err := memoryuser.InstallArcLifecycleTestApps(ctx, pre.ARC, len(appsAliveTasks)); err != nil {
+		if err := memoryuser.InstallArcLifecycleTestApps(ctx, arc, len(appsAliveTasks)); err != nil {
 			s.Fatal("Failed to install ArcLifecycleTestApps: ", err)
 		}
 	}
 
 	// Run all the tasks.
 	rp := &memoryuser.RunParameters{
-		UseARC:         pre.ARC != nil,
+		UseARC:         arc != nil,
 		ExistingChrome: pre.Chrome,
-		ExistingARC:    pre.ARC,
+		ExistingARC:    arc,
 	}
 	if err := memoryuser.RunTest(ctx, s.OutDir(), tasks, rp); err != nil {
 		s.Fatal("RunTest failed: ", err)

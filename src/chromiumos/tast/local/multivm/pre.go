@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/input"
@@ -16,16 +15,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
-var noVMStartedPre = &preImpl{
+var noVMStartedPre = NewMultiVMPrecondition(
 	"multivm_no_vm",
 	NewStateManager(
 		ChromeOptions{
-			timeout: chrome.LoginTimeout,
+			Timeout: chrome.LoginTimeout,
 		},
-		nil,
-		nil,
-	),
-}
+	))
 
 // NoVMStarted returns a Precondition that logs into Chrome without starting any
 // VMs.
@@ -33,23 +29,19 @@ func NoVMStarted() testing.Precondition {
 	return noVMStartedPre
 }
 
-var arcCrostiniStartedPre = &preImpl{
+var arcCrostiniStartedPre = NewMultiVMPrecondition(
 	"multivm_arc_crostini",
 	NewStateManager(
 		ChromeOptions{
-			timeout: chrome.LoginTimeout,
+			Timeout: chrome.LoginTimeout,
 		},
-		&ARCOptions{
-			timeout: arc.BootTimeout,
-		},
+		&ARCOptions{},
 		&CrostiniOptions{
-			mode:           cui.Component,
-			largeContainer: false,
-			debianVersion:  vm.DebianBuster,
-			timeout:        7 * time.Minute,
+			Mode:           cui.Component,
+			LargeContainer: false,
+			DebianVersion:  vm.DebianBuster,
 		},
-	),
-}
+	))
 
 // ArcCrostiniStarted returns a Precondition that logs into Chrome and starts
 // ARCVM an Crostini.
@@ -57,39 +49,32 @@ func ArcCrostiniStarted() testing.Precondition {
 	return arcCrostiniStartedPre
 }
 
-var arcStartedPre = &preImpl{
+var arcStartedPre = NewMultiVMPrecondition(
 	"multivm_arc",
 	NewStateManager(
 		ChromeOptions{
-			timeout: chrome.LoginTimeout,
+			Timeout: chrome.LoginTimeout,
 		},
-		&ARCOptions{
-			timeout: arc.BootTimeout,
-		},
-		nil,
-	),
-}
+		&ARCOptions{},
+	))
 
 // ArcStarted returns a Precondition that logs into Chrome and starts ARCVM.
 func ArcStarted() testing.Precondition {
 	return arcStartedPre
 }
 
-var crostiniStartedPre = &preImpl{
+var crostiniStartedPre = NewMultiVMPrecondition(
 	"multivm_crostini",
 	NewStateManager(
 		ChromeOptions{
-			timeout: chrome.LoginTimeout,
+			Timeout: chrome.LoginTimeout,
 		},
-		nil,
 		&CrostiniOptions{
-			mode:           cui.Component,
-			largeContainer: false,
-			debianVersion:  vm.DebianBuster,
-			timeout:        7 * time.Minute,
+			Mode:           cui.Component,
+			LargeContainer: false,
+			DebianVersion:  vm.DebianBuster,
 		},
-	),
-}
+	))
 
 // CrostiniStarted returns a Precondition that logs into Chrome and starts
 // Crostini.
@@ -110,22 +95,22 @@ type PreData struct {
 	Chrome      *chrome.Chrome
 	TestAPIConn *chrome.TestConn
 	Keyboard    *input.KeyboardEventWriter
-	// Available if useARC provided to preImpl.
-	ARC *arc.ARC
-	// Available if useCrostini provided to preImpl
-	Crostini *vm.Container
+	VMs         map[string]interface{}
+}
+
+// NewMultiVMPrecondition returns a new precondition that can be used be
+// used by tests that expect multiple VMs to be started at the start of the
+// test.
+func NewMultiVMPrecondition(name string, vmState StateManager) testing.Precondition {
+	return &preImpl{
+		name:    name,
+		vmState: vmState,
+	}
 }
 
 func (p *preImpl) String() string { return p.name }
 func (p *preImpl) Timeout() time.Duration {
-	timeout := p.vmState.crOptions.timeout
-	if p.vmState.useARC != nil {
-		timeout += p.vmState.useARC.timeout
-	}
-	if p.vmState.useCrostini != nil {
-		timeout += p.vmState.useCrostini.timeout
-	}
-	return timeout
+	return p.vmState.Timeout()
 }
 
 func (p *preImpl) preData() *PreData {
@@ -133,8 +118,7 @@ func (p *preImpl) preData() *PreData {
 		Chrome:      p.vmState.Chrome(),
 		TestAPIConn: p.vmState.TestAPIConn(),
 		Keyboard:    p.vmState.Keyboard(),
-		ARC:         p.vmState.ARC(),
-		Crostini:    p.vmState.Crostini(),
+		VMs:         p.vmState.VMs(),
 	}
 }
 
