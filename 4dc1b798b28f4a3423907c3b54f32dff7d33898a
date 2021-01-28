@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6644956b_812643ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-01-28T04:31:16Z",
+      "side": 1,
+      "message": "I added \"defer RemoveVault\" inside mountVaultWithArchivedHomeData() so it gets called only when the preparation-before-login fails.\n\nThis tast test can be used as a quick way to set up post P-\u003eR upgrade state, and I want to allow developers to keep debugging upgrade-related issues after executing this test.",
+      "parentUuid": "e081ad64_f3be6edf",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8b6976f_10e2862b",
@@ -148,6 +166,24 @@
       "writtenOn": "2021-01-25T10:26:20Z",
       "side": 1,
       "message": "Is it OK to overwrite the entire vault?\nNewer version chrome may not work well with the current version data.\n\nHow about only overwriting android-data?",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7811a3a9_ad495e62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-01-28T04:31:16Z",
+      "side": 1,
+      "message": "If I overwrite only android-data, ARC is disabled (not opted-in) after the test user signs in even though android-data exists. Looks like ARC-opt-in state is saved outside of android-data.\n\nDo you happen to know which file it is?\n\n\u003e Is it OK to overwrite the entire vault?\n\u003e Newer version chrome may not work well with the current version data.\nFYI, DataMigration autotest also overwrites the entire vault and it never failed for this reason in the last 3 years.",
+      "parentUuid": "61b5354d_e0be44f9",
       "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -217,6 +253,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3c97a0_8bec7f72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-01-28T04:31:16Z",
+      "side": 1,
+      "message": "Done. Updated to get SDK versions from packages.xml",
+      "parentUuid": "6f119a89_b8aeb140",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "337732a7_cc49e556",
@@ -234,6 +288,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c987395_eab5df69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-01-28T04:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "337732a7_cc49e556",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cb26fa2_70ce53d4",
@@ -247,6 +319,24 @@
       "writtenOn": "2021-01-25T10:24:53Z",
       "side": 1,
       "message": "nit: move this into the error case below.",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ffe4041_d1041b51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-01-28T04:31:16Z",
+      "side": 1,
+      "message": "Personally I want to see this output even when the check succeeds.",
+      "parentUuid": "2cb26fa2_70ce53d4",
       "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
