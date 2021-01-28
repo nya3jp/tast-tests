@@ -226,6 +226,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2907e87d_f39158c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-01-28T09:39:51Z",
+      "side": 1,
+      "message": "Hmm, if it has been working well for years, then it might not be a problem.\nAfter all, the migration code needs to work well with an old version user data.",
+      "parentUuid": "bfd98d61_40420992",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f75ad4b3_28418312",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
         "patchSetId": 2
