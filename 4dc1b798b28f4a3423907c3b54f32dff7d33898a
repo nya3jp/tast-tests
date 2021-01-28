@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c9dd39_ccfb131f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-01-28T13:46:21Z",
+      "side": 1,
+      "message": "The created user data is more than 100MB, so I added \"defer RemoveVault\" here",
+      "parentUuid": "e7f0718f_c18e2539",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8b6976f_10e2862b",
@@ -238,6 +256,24 @@
       "side": 1,
       "message": "Hmm, if it has been working well for years, then it might not be a problem.\nAfter all, the migration code needs to work well with an old version user data.",
       "parentUuid": "bfd98d61_40420992",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0ec485_a73f5093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-01-28T13:46:21Z",
+      "side": 1,
+      "message": "Thanks Youkichi for the pointers!\n\nI\u0027ll keep the code as is for now, since I\u0027d prefer managing a single archive file (mount/) to managing 2 files (root/android-data and user/Preferences)",
+      "parentUuid": "2907e87d_f39158c2",
       "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
