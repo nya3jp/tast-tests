@@ -16,6 +16,24 @@
       "message": "just a nit: I\u0027d prefer that we call it ModemManagerSlots, etc.",
       "revId": "f20f2bfd62b844290a02ac6b49abe7e04c0a5cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd88c009_718866e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-28T21:36:05Z",
+      "side": 1,
+      "message": "I went back and forth on that, but decided that even though \"Modem Manager\" is more sensical, the process is \u0027modemmanager\u0027 which is what we are testing here.",
+      "parentUuid": "5e0f7a25_11d929de",
+      "revId": "f20f2bfd62b844290a02ac6b49abe7e04c0a5cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
