@@ -16,6 +16,23 @@
       "message": "PS4 is the same as PS1.  Rebased to get rid of the accidental intermediate patchsets.",
       "revId": "d993876156282e85d5341924a1b94923e465a6c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22a041f0_a857cd7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-28T09:25:36Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "d993876156282e85d5341924a1b94923e465a6c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
