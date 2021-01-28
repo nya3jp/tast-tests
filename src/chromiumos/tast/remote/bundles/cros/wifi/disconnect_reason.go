@@ -19,8 +19,8 @@ import (
 type disconnectTrigger int
 
 type disReasonParam struct {
-	dt           disconnectTrigger
-	expectedCode int32
+	dt            disconnectTrigger
+	expectedCodes []int32
 }
 
 const (
@@ -44,32 +44,42 @@ func init() {
 			{
 				Name: "ap_gone",
 				Val: disReasonParam{
-					dt:           dtAPGone,
-					expectedCode: wpasupplicant.DisconnReasonDeauthSTALeaving,
+					dt: dtAPGone,
+					// In this case, the supplicant receives one of the following CMDs:
+					// 1- NL80211_CMD_DEAUTHENTICATE due STA leaving.
+					// 2- NL80211_CMD_DEAUTHENTICATE due to inactivity.
+					// 3- NL80211_CMD_DISCONNECT: happens with full mac drivers such as mwifiex.
+					expectedCodes: []int32{wpasupplicant.DisconnReasonDeauthSTALeaving,
+						wpasupplicant.DisconnReasonLGDisassociatedInactivity,
+						wpasupplicant.DisconnReasonUnknown},
 				},
 			}, {
 				Name: "ap_send_chan_switch",
 				Val: disReasonParam{
-					dt:           dtAPSendChannelSwitch,
-					expectedCode: wpasupplicant.DisconnReasonLGDisassociatedInactivity,
+					dt: dtAPSendChannelSwitch,
+					// In this case, the supplicant receives one of the following CMDs:
+					// 1- NL80211_CMD_DEAUTHENTICATE due to inactivity.
+					// 2- NL80211_CMD_DISCONNECT: happens with full mac drivers such as mwifiex.
+					expectedCodes: []int32{wpasupplicant.DisconnReasonLGDisassociatedInactivity,
+						wpasupplicant.DisconnReasonUnknown},
 				},
 			}, {
 				Name: "deauth_client",
 				Val: disReasonParam{
-					dt:           dtDeauthClient,
-					expectedCode: wpasupplicant.DisconnReasonPreviousAuthenticationInvalid,
+					dt:            dtDeauthClient,
+					expectedCodes: []int32{wpasupplicant.DisconnReasonPreviousAuthenticationInvalid},
 				},
 			}, {
 				Name: "disable_client_wifi",
 				Val: disReasonParam{
-					dt:           dtDisableClientWiFi,
-					expectedCode: wpasupplicant.DisconnReasonLGDeauthSTALeaving,
+					dt:            dtDisableClientWiFi,
+					expectedCodes: []int32{wpasupplicant.DisconnReasonLGDeauthSTALeaving},
 				},
 			}, {
 				Name: "switch_ap",
 				Val: disReasonParam{
-					dt:           dtSwitchAP,
-					expectedCode: wpasupplicant.DisconnReasonLGDeauthSTALeaving,
+					dt:            dtSwitchAP,
+					expectedCodes: []int32{wpasupplicant.DisconnReasonLGDeauthSTALeaving},
 				},
 			},
 		},
@@ -234,14 +244,24 @@ func DisconnectReason(ctx context.Context, s *testing.State) {
 
 	// Wait for a disconnect reason code from wpa_supplicant.
 	reason, err := reasonRecv()
-	if err != nil {
+	if err == nil {
+		// Verify the disconnect reason code.
+		for _, expCode := range trigger.expectedCodes {
+			if reason == expCode {
+				s.Logf("DUT: IEEE802.11 reason code for disconnect: %d", reason)
+				return
+			}
+		}
+
+		s.Fatalf("Unexpected disconnect reason; got %d, want any of %v", reason, trigger.expectedCodes)
+	}
+
+	// Due to full MAC drivers not send a DEAUTH command to wpa supplicant,
+	// a disconnection reason is not reported by supplicant.
+	if trigger.dt != dtDisableClientWiFi {
 		s.Fatal("Failed to wait for the disconnect reason: ", err)
 	}
 
-	// Verify the disconnect reason code.
-	if reason != trigger.expectedCode {
-		s.Fatalf("Unexpected disconnect reason; got %d, want %d", reason, trigger.expectedCode)
-	}
+	s.Log("Failed to wait for the disconnect reason: ", err)
 
-	s.Logf("DUT: IEEE802.11 reason code for disconnect: %d", reason)
 }
