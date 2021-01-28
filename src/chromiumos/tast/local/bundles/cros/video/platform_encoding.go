@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -35,6 +36,9 @@ var regExpFPSVP9 = regexp.MustCompile(`encode \d+ frames in \d+.\d+ secondes, FP
 
 // regExpFPSH264 is the regexp to find the FPS output from the H.264 binary log.
 var regExpFPSH264 = regexp.MustCompile(`PERFORMANCE:\s+Frame Rate\s+: (\d+.\d+)`)
+
+// regExpFPSVpxenc is the regexp to find the FPS output from vpxenc's log.
+var regExpFPSVpxenc = regexp.MustCompile(`\((\d+\.\d+) fps\)`)
 
 // regExpSSIM is the regexp to find the SSIM output in the tiny_ssim log.
 var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
@@ -67,115 +71,147 @@ func init() {
 		// Guado, buddy and rikku have a companion video acceleration chip
 		// (called Kepler), skip this test in these models.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("guado", "buddy", "rikku")),
-		SoftwareDeps: []string{"vaapi"},
 		Params: []testing.Param{{
-			Name: "vp8_180",
+			Name: "vaapi_vp8_180",
 			Val: testParam{
 				command:        "vp8enc",
 				filename:       "tulip2-320x180.vp9.webm",
 				size:           coords.NewSize(320, 180),
-				commandBuilder: vp8args,
+				commandBuilder: vp8argsVAAPI,
 				regExpFPS:      regExpFPSVP8,
 				decoder:        "vpxdec",
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
 		}, {
-			Name: "vp8_360",
+			Name: "vaapi_vp8_360",
 			Val: testParam{
 				command:        "vp8enc",
 				filename:       "tulip2-640x360.vp9.webm",
 				size:           coords.NewSize(640, 360),
-				commandBuilder: vp8args,
+				commandBuilder: vp8argsVAAPI,
 				regExpFPS:      regExpFPSVP8,
 				decoder:        "vpxdec",
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
 		}, {
-			Name: "vp8_720",
+			Name: "vaapi_vp8_720",
 			Val: testParam{
 				command:        "vp8enc",
 				filename:       "tulip2-1280x720.vp9.webm",
 				size:           coords.NewSize(1280, 720),
-				commandBuilder: vp8args,
+				commandBuilder: vp8argsVAAPI,
 				regExpFPS:      regExpFPSVP8,
 				decoder:        "vpxdec",
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
 		}, {
-			Name: "vp9_180",
+			Name: "vaapi_vp9_180",
 			Val: testParam{
 				command:        "vp9enc",
 				filename:       "tulip2-320x180.vp9.webm",
 				size:           coords.NewSize(320, 180),
-				commandBuilder: vp9args,
+				commandBuilder: vp9argsVAAPI,
 				regExpFPS:      regExpFPSVP9,
 				decoder:        "vpxdec",
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
 		}, {
-			Name: "vp9_360",
+			Name: "vaapi_vp9_360",
 			Val: testParam{
 				command:        "vp9enc",
 				filename:       "tulip2-640x360.vp9.webm",
 				size:           coords.NewSize(640, 360),
-				commandBuilder: vp9args,
+				commandBuilder: vp9argsVAAPI,
 				regExpFPS:      regExpFPSVP9,
 				decoder:        "vpxdec",
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
 		}, {
-			Name: "vp9_720",
+			Name: "vaapi_vp9_720",
 			Val: testParam{
 				command:        "vp9enc",
 				filename:       "tulip2-1280x720.vp9.webm",
 				size:           coords.NewSize(1280, 720),
-				commandBuilder: vp9args,
+				commandBuilder: vp9argsVAAPI,
 				regExpFPS:      regExpFPSVP9,
 				decoder:        "vpxdec",
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
 		}, {
-			Name: "h264_180",
+			Name: "vaapi_h264_180",
 			Val: testParam{
 				command:        "h264encode",
 				filename:       "tulip2-320x180.vp9.webm",
 				size:           coords.NewSize(320, 180),
-				commandBuilder: h264args,
+				commandBuilder: h264argsVAAPI,
 				regExpFPS:      regExpFPSH264,
 				decoder:        "openh264dec",
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
+			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
 		}, {
-			Name: "h264_360",
+			Name: "vaapi_h264_360",
 			Val: testParam{
 				command:        "h264encode",
 				filename:       "tulip2-640x360.vp9.webm",
 				size:           coords.NewSize(640, 360),
-				commandBuilder: h264args,
+				commandBuilder: h264argsVAAPI,
 				regExpFPS:      regExpFPSH264,
 				decoder:        "openh264dec",
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
+			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
 		}, {
-			Name: "h264_720",
+			Name: "vaapi_h264_720",
 			Val: testParam{
 				command:        "h264encode",
 				filename:       "tulip2-1280x720.vp9.webm",
 				size:           coords.NewSize(1280, 720),
-				commandBuilder: h264args,
+				commandBuilder: h264argsVAAPI,
 				regExpFPS:      regExpFPSH264,
 				decoder:        "openh264dec",
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
+			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
+		}, {
+			Name: "vpxenc_vp8_180",
+			Val: testParam{
+				command:        "vpxenc",
+				filename:       "tulip2-320x180.vp9.webm",
+				size:           coords.NewSize(320, 180),
+				commandBuilder: vp8argsVpxenc,
+				regExpFPS:      regExpFPSVpxenc,
+				decoder:        "vpxdec",
+			},
+			ExtraData: []string{"tulip2-320x180.vp9.webm"},
+		}, {
+			Name: "vpxenc_vp8_360",
+			Val: testParam{
+				command:        "vpxenc",
+				filename:       "tulip2-640x360.vp9.webm",
+				size:           coords.NewSize(640, 360),
+				commandBuilder: vp8argsVpxenc,
+				regExpFPS:      regExpFPSVpxenc,
+				decoder:        "vpxdec",
+			},
+			ExtraData: []string{"tulip2-640x360.vp9.webm"},
+		}, {
+			Name: "vpxenc_vp8_720",
+			Val: testParam{
+				command:        "vpxenc",
+				filename:       "tulip2-1280x720.vp9.webm",
+				size:           coords.NewSize(1280, 720),
+				commandBuilder: vp8argsVpxenc,
+				regExpFPS:      regExpFPSVpxenc,
+				decoder:        "vpxdec",
+			},
+			ExtraData: []string{"tulip2-1280x720.vp9.webm"},
 		}},
 		Timeout: 20 * time.Minute,
 	})
@@ -345,8 +381,8 @@ func compareFiles(ctx context.Context, decoder, yuvFile, encodedFile, outDir str
 	return logFile, nil
 }
 
-// vp8args constructs the command line for the VP8 encoding binary exe.
-func vp8args(exe, yuvFile string, size coords.Size) (command []string, ivfFile string) {
+// vp8argsVAAPI constructs the command line for the VP8 encoding binary exe.
+func vp8argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, ivfFile string) {
 	command = append(command, exe, strconv.Itoa(size.Width), strconv.Itoa(size.Height), yuvFile)
 
 	ivfFile = yuvFile + ".ivf"
@@ -366,8 +402,8 @@ func vp8args(exe, yuvFile string, size coords.Size) (command []string, ivfFile s
 	return
 }
 
-// vp9args constructs the command line for the VP9 encoding binary exe.
-func vp9args(exe, yuvFile string, size coords.Size) (command []string, ivfFile string) {
+// vp9argsVAAPI constructs the command line for the VP9 encoding binary exe.
+func vp9argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, ivfFile string) {
 	command = append(command, exe, strconv.Itoa(size.Width), strconv.Itoa(size.Height), yuvFile)
 
 	ivfFile = yuvFile + ".ivf"
@@ -390,8 +426,8 @@ func vp9args(exe, yuvFile string, size coords.Size) (command []string, ivfFile s
 	return
 }
 
-// h264args constructs the command line for the H.264 encoding binary exe.
-func h264args(exe, yuvFile string, size coords.Size) (command []string, h264File string) {
+// h264argsVAAPI constructs the command line for the H.264 encoding binary exe.
+func h264argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, h264File string) {
 	command = append(command, exe, "-w", strconv.Itoa(size.Width), "-h", strconv.Itoa(size.Height))
 	command = append(command, "--srcyuv", yuvFile, "--fourcc", "YV12")
 	command = append(command, "-n", "0" /* Read number of frames from yuvFile*/)
@@ -408,5 +444,39 @@ func h264args(exe, yuvFile string, size coords.Size) (command []string, h264File
 	command = append(command, "--rcmode", "CBR" /* Constant BitRate */)
 	bitrate := int(0.1 /* BPP */ * 30 * float64(size.Width) * float64(size.Height))
 	command = append(command, "--bitrate", strconv.Itoa(bitrate) /* bps */)
+	return
+}
+
+// vp8argsVpxenc constructs the command line for vpxenc.
+func vp8argsVpxenc(exe, yuvFile string, size coords.Size) (command []string, ivfFile string) {
+	command = append(command, exe, "-w", strconv.Itoa(size.Width), "-h", strconv.Itoa(size.Height))
+
+	command = append(command, "--passes=1" /* 1 encoding pass */)
+	command = append(command, "--codec=vp8")
+
+	// WebRTC uses Constant BitRate (CBR) with a very large intra-frame period and
+	// a certain quality parameter and target bitrate. See WebRTC libvpx wrapper
+	// (LibvpxVP8Encoder at the time of writing) and also
+	// https://www.webmproject.org/docs/encoder-parameters/#3-rate-control.
+	command = append(command, "--kf-min-dist=0", "--kf-max-dist=3000")
+	command = append(command, "--min-q=2", "--max-q=63" /* Quality Parameter */)
+	command = append(command, "--end-usage=cbr" /* Constant BitRate */)
+	command = append(command, "--error-resilient=0" /* Off. */)
+	command = append(command, "--undershoot-pct=100", "--overshoot-pct=15")
+	command = append(command, "--buf-sz=1000", "--buf-initial-sz=500", "--buf-optimal-sz=600")
+	command = append(command, "--cpu-used=-6")
+	if size.Width*size.Height > 640*480 {
+		command = append(command, "--threads=2" /* This assumes 3 or more CPU cores */)
+	}
+
+	// From Chromecast, corresponds to a little more than 0.1 BPP.
+	bitrate := 256 * size.Width * size.Height / (320.0 * 240.0)
+	command = append(command, fmt.Sprintf("--target-bitrate=%d", bitrate) /* Kbps */)
+
+	ivfFile = yuvFile + ".ivf"
+	command = append(command, "--ivf", "-o", ivfFile)
+
+	// Source file goes at the end without any flag.
+	command = append(command, yuvFile)
 	return
 }
