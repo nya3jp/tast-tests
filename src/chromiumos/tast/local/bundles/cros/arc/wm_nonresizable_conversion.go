@@ -109,14 +109,8 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	}
 
-	// Get activity's window info in landscape tablet mode to make sure it is in Maximized state.
-	windowInfoLandscapeTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return err
-	}
-
 	// Compare activity bounds to make sure it covers the primary display work area.
-	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *windowInfoLandscapeTabletMode); err != nil {
+	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, wm.Pkg24); err != nil {
 		return err
 	}
 
@@ -140,15 +134,21 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	}
 
-	// Get activity's window info after switching back from tablet mode.
-	windowInfoAfterLandscapeTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return err
-	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Get activity's window info after switching back from tablet mode.
+		windowInfoAfterLandscapeTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return err
+		}
 
-	// 3-1- Activity bounds should be equal to the original bounds.
-	if originalWindowInfo.BoundsInRoot != windowInfoAfterLandscapeTabletMode.BoundsInRoot {
-		return errors.Errorf("invalid window bounds after switching back from landscape tablet mode, got: %q, want: %q", windowInfoAfterLandscapeTabletMode.BoundsInRoot, originalWindowInfo.BoundsInRoot)
+		// 3-1- Activity bounds should be equal to the original bounds.
+		if originalWindowInfo.BoundsInRoot != windowInfoAfterLandscapeTabletMode.BoundsInRoot {
+			return errors.Errorf("invalid window bounds after switching back from landscape tablet mode, got: %q, want: %q", windowInfoAfterLandscapeTabletMode.BoundsInRoot, originalWindowInfo.BoundsInRoot)
+		}
+		return nil
+
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to locate shelf icons")
 	}
 
 	// 4- Enable tablet mode.
@@ -175,14 +175,8 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	}
 
-	// Get activity's window info in portrait tablet mode to make sure it is in Maximized state.
-	windowInfoPortraitTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return err
-	}
-
 	// Compare activity bounds to make sure it covers the primary display work area.
-	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *windowInfoPortraitTabletMode); err != nil {
+	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, wm.Pkg24); err != nil {
 		return err
 	}
 
@@ -200,14 +194,9 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	if err := wm.WaitForDisplayOrientation(ctx, tconn, display.OrientationLandscapePrimary); err != nil {
 		return err
 	}
-
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
+	if err := wm.CheckRestoreNonResizable(ctx, tconn, act, d); err != nil {
 		return err
 	}
-	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowID); err != nil {
-		return err
-	}
-
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		// Get activity's window info after switching back from tablet mode.
 		windowInfoAfterPortraitTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
@@ -252,8 +241,14 @@ func runNVConversionByOrientation(ctx context.Context, tconn *chrome.TestConn, a
 		return nil
 	}
 
-	if err := wm.CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
-		return err
+	if desiredOrientationInTabletMode == display.OrientationLandscapePrimary {
+		if err := wm.CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
+			return err
+		}
+	} else {
+		if err := wm.CheckRestoreNonResizable(ctx, tconn, act, d); err != nil {
+			return err
+		}
 	}
 
 	// windowID will be used to wait on certain conditions.
@@ -278,14 +273,8 @@ func runNVConversionByOrientation(ctx context.Context, tconn *chrome.TestConn, a
 		return errors.Wrap(err, "failed to wait for frame to get hidden")
 	}
 
-	// Store activity's window info when tablet mode is enabled to make sure it is in Maximized state.
-	windowInfoInTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return err
-	}
-
 	// Compare activity's window TargetBounds to primary display work area.
-	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *windowInfoInTabletMode); err != nil {
+	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, wm.Pkg24); err != nil {
 		return err
 	}
 
@@ -328,8 +317,14 @@ func runNVConversionByOrientation(ctx context.Context, tconn *chrome.TestConn, a
 		if err != nil {
 			return testing.PollBreak(err)
 		}
-		if err := wm.CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
-			return testing.PollBreak(err)
+		if desiredOrientationInTabletMode == display.OrientationLandscapePrimary {
+			if err := wm.CheckMaximizeNonResizable(ctx, tconn, act, d); err != nil {
+				return err
+			}
+		} else {
+			if err := wm.CheckRestoreNonResizable(ctx, tconn, act, d); err != nil {
+				return err
+			}
 		}
 		// Activity should have same TargetBounds that it had before enabling tablet mode.
 		if windowInfoBeforeTabletMode.TargetBounds != windowInfoAfterTabletMode.TargetBounds {

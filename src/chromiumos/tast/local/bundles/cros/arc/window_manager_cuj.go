@@ -24,9 +24,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// wmTestStateFunc represents a function that tests if the window is in a certain state.
-type wmTestStateFunc func(context.Context, *chrome.TestConn, *arc.Activity, *ui.Device) error
-
 // uiClickFunc represents a function that "clicks" on a certain widget using UI Automator.
 type uiClickFunc func(context.Context, *arc.Activity, *ui.Device) error
 
@@ -160,24 +157,37 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 // and resize conditions. And it verifies that their default launch state is the expected one, as defined in:
 // go/arc-wm-p "Clamshell: default launch behavior - Android NYC or above" (slide #6).
 func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	// There are some differences in default launch behavior between P and R.
+	resizableLandscapeCheckFunc := wm.CheckRestoreResizable
+	resizableUnspecifiedCheckFunc := wm.CheckRestoreResizable
+	unresizableUnspecifiedCheckFunc := wm.CheckRestoreNonResizable
+	unresizablePortraitCheckFunc := wm.CheckRestoreNonResizable
+	if sdkVer, err := arc.SDKVersion(); err != nil {
+		return err
+	} else if sdkVer < arc.SDKR {
+		resizableLandscapeCheckFunc = wm.CheckMaximizeResizable
+		resizableUnspecifiedCheckFunc = wm.CheckMaximizeResizable
+		unresizableUnspecifiedCheckFunc = wm.CheckMaximizeNonResizable
+		unresizablePortraitCheckFunc = wm.CheckPillarboxNonResizable
+	}
 	for _, test := range []struct {
 		name        string
 		act         string
-		wantedState wmTestStateFunc
+		wantedState wm.CheckFunc
 	}{
 		// The are four possible default states (windows #A to #D) from six possible different activities.
 		// Window #A.
-		{"Landscape + Resize enabled", wm.ResizableLandscapeActivity, wm.CheckMaximizeResizable},
+		{"Landscape + Resize enabled", wm.ResizableLandscapeActivity, resizableLandscapeCheckFunc},
 		// Window #B.
 		{"Landscape + Resize disabled", wm.NonResizableLandscapeActivity, wm.CheckMaximizeNonResizable},
 		// Window #A.
-		{"Unspecified + Resize enabled", wm.ResizableUnspecifiedActivity, wm.CheckMaximizeResizable},
+		{"Unspecified + Resize enabled", wm.ResizableUnspecifiedActivity, resizableUnspecifiedCheckFunc},
 		// Window #B.
-		{"Unspecified + Resize disabled", wm.NonResizableUnspecifiedActivity, wm.CheckMaximizeNonResizable},
+		{"Unspecified + Resize disabled", wm.NonResizableUnspecifiedActivity, unresizableUnspecifiedCheckFunc},
 		// Window #C.
 		{"Portrait + Resized enabled", wm.ResizablePortraitActivity, wm.CheckRestoreResizable},
 		// Window #D.
-		{"Portrait + Resize disabled", wm.NonResizablePortraitActivity, wm.CheckPillarboxNonResizable},
+		{"Portrait + Resize disabled", wm.NonResizablePortraitActivity, unresizablePortraitCheckFunc},
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
@@ -211,7 +221,7 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.TestConn, a *
 	for _, test := range []struct {
 		name        string
 		act         string
-		wantedState wmTestStateFunc
+		wantedState wm.CheckFunc
 	}{
 		// The are two possible default states (windows #A to #B) from three possible different activities.
 		// Window #A.
@@ -249,23 +259,39 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.TestConn, a *
 // wmMaximizeRestoreClamshell24 verifies that switching to maximize state from restore state, and vice-versa, works as defined in:
 // go/arc-wm-p "Clamshell: maximize/restore" (slides #8 - #10).
 func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	for _, test := range []struct {
+	type testCase struct {
 		name         string
 		act          string
 		stateA       ash.WMEventType
-		wantedStateA wmTestStateFunc
+		wantedStateA wm.CheckFunc
 		stateB       ash.WMEventType
-		wantedStateB wmTestStateFunc
-	}{
+		wantedStateB wm.CheckFunc
+	}
+	// There are some differences in default launch behavior between P and R.
+	testCases := []testCase{
 		{"Unspecified", wm.ResizableUnspecifiedActivity,
-			ash.WMEventMaximize, wm.CheckMaximizeResizable, ash.WMEventNormal, wm.CheckRestoreResizable},
+			ash.WMEventNormal, wm.CheckRestoreResizable, ash.WMEventMaximize, wm.CheckMaximizeResizable},
 		{"Portrait", wm.ResizablePortraitActivity,
 			ash.WMEventNormal, wm.CheckRestoreResizable, ash.WMEventMaximize, wm.CheckPillarboxResizable},
 		{"Landscape", wm.ResizableLandscapeActivity,
-			ash.WMEventMaximize, wm.CheckMaximizeResizable, ash.WMEventNormal, wm.CheckRestoreResizable},
-	} {
+			ash.WMEventNormal, wm.CheckRestoreResizable, ash.WMEventMaximize, wm.CheckMaximizeResizable},
+	}
+	if sdkVer, err := arc.SDKVersion(); err != nil {
+		return err
+	} else if sdkVer < arc.SDKR {
+		testCases = []testCase{
+			{"Unspecified", wm.ResizableUnspecifiedActivity,
+				ash.WMEventMaximize, wm.CheckMaximizeResizable, ash.WMEventNormal, wm.CheckRestoreResizable},
+			{"Portrait", wm.ResizablePortraitActivity,
+				ash.WMEventNormal, wm.CheckRestoreResizable, ash.WMEventMaximize, wm.CheckPillarboxResizable},
+			{"Landscape", wm.ResizableLandscapeActivity,
+				ash.WMEventMaximize, wm.CheckMaximizeResizable, ash.WMEventNormal, wm.CheckRestoreResizable},
+		}
+	}
+	for _, test := range testCases {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
+
 			act, err := arc.NewActivity(a, wm.Pkg24, test.act)
 			if err != nil {
 				return err
@@ -305,10 +331,14 @@ func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.TestConn, a
 // wmMaximizeRestoreClamshell23 verifies that switching to maximize state from restore state, and vice-versa, works as defined in:
 // go/arc-wm-p "Clamshell: maximize/restore" (slides #11 - #13).
 func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+	sdkVer, err := arc.SDKVersion()
+	if err != nil {
+		return err
+	}
 	for _, test := range []struct {
 		name           string
 		act            string
-		maximizedState wmTestStateFunc
+		maximizedState wm.CheckFunc
 	}{
 		{"Landscape", wm.LandscapeActivity, wm.CheckMaximizeResizable},
 		{"Unspecified", wm.UnspecifiedActivity, wm.CheckMaximizeResizable},
@@ -342,9 +372,11 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.TestConn, a
 				return err
 			}
 
-			// Wait for the "Application needs to restart to resize" dialog that appears on all Pre-N apks.
-			if err := wm.UIWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
-				return err
+			if sdkVer < arc.SDKR {
+				// Wait for the "Application needs to restart to resize" dialog that appears on all Pre-N apks.
+				if err := wm.UIWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
+					return err
+				}
 			}
 
 			// Could be either maximized or pillarbox states.
@@ -356,9 +388,11 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.TestConn, a
 				return err
 			}
 
-			// Wait for the "Application needs to restart to resize" dialog that appears on all Pre-N apks.
-			if err := wm.UIWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
-				return err
+			if sdkVer < arc.SDKR {
+				// Wait for the "Application needs to restart to resize" dialog that appears on all Pre-N apks.
+				if err := wm.UIWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
+					return err
+				}
 			}
 
 			return wm.CheckRestoreResizable(ctx, tconn, act, d)
@@ -589,6 +623,10 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *u
 				return err
 			}
 
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventMaximize); err != nil {
+				return err
+			}
+
 			// Initial state: maximized with visible caption.
 			if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 				return err
@@ -712,7 +750,7 @@ func wmPIP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device
 
 	// 2) Launch a maximized application to make sure that it occludes the previous activity.
 	testing.ContextLog(ctx, "Launching maximized activity")
-	actOther, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
+	actOther, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableLandscapeActivity)
 	if err != nil {
 		return err
 	}
