@@ -40,6 +40,7 @@ func GetVideoDecoder(ctx context.Context, observer media.PlayerPropertiesChanged
 			testing.ContextLogf(ctx, "%s: %s", s.Name, *s.Value)
 		}
 	}
+
 	if !hasName && !hasPlatform {
 		return false, "", errors.New("failed to find kIsPlatformVideoDecoder and kVideoDecoderName in media DevTools Properties")
 	}
