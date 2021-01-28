@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e0f7a25_11d929de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-01-28T18:47:45Z",
+      "side": 1,
+      "message": "just a nit: I\u0027d prefer that we call it ModemManagerSlots, etc.",
+      "revId": "f20f2bfd62b844290a02ac6b49abe7e04c0a5cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
