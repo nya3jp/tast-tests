@@ -16,6 +16,23 @@
       "message": "Friendly ping Yamaguchi-san.",
       "revId": "0c2be14fe0f082401b0591e0c72fa81e5d350efb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded2a754_d23a3dc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-01-28T06:21:48Z",
+      "side": 1,
+      "message": "LGTM with a request: Please add a single TODO comment line to describe the follow-up CL uses the 2 string arrays which are currently just referred by len().",
+      "revId": "0c2be14fe0f082401b0591e0c72fa81e5d350efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
