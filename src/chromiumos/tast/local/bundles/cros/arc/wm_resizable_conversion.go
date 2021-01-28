@@ -107,14 +107,8 @@ func wmRV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to wait for frame to get hidden")
 	}
 
-	// Store activity's window info when tablet mode is enabled to make sure it is in Maximized state.
-	windowInfoAtTabletMode, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return err
-	}
-
 	// Compare activity's window TargetBounds to primary display work area.
-	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *windowInfoAtTabletMode); err != nil {
+	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, wm.Pkg24); err != nil {
 		return err
 	}
 
@@ -209,14 +203,8 @@ func wmRV20(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to wait for frame to get hidden")
 	}
 
-	// Store activity's window info when tablet mode is enabled to make sure it is in Maximized state.
-	wt, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return err
-	}
-
 	// Compare activity's window TargetBounds to primary display work area.
-	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *wt); err != nil {
+	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, wm.Pkg24); err != nil {
 		return err
 	}
 
@@ -313,19 +301,8 @@ func wmRV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to wait for ARC app window state to change to maximized 1")
 	}
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Get activity's window info in landscape tablet mode to make sure it is in Maximized state.
-		lwInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		// Compare activity bounds to make sure it covers the primary display work area.
-		if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *lwInfo); err != nil {
-			return errors.Wrap(err, "failed to check maximize window in tablet mode")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		return err
+	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, wm.Pkg24); err != nil {
+		return errors.Wrap(err, "failed to check maximize window in tablet mode")
 	}
 
 	// Get display orientation in tablet mode.
@@ -388,19 +365,8 @@ func wmRV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to wait for display orientation")
 	}
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Get activity's window info in portrait tablet mode to make sure it is in Maximized state.
-		pwInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		// Compare activity bounds to make sure it covers the primary display work area.
-		if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, *pwInfo); err != nil {
-			return errors.Wrap(err, "failed to check maximize window in tablet mode")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		return err
+	if err := wm.CheckMaximizeWindowInTabletMode(ctx, tconn, wm.Pkg24); err != nil {
+		return errors.Wrap(err, "failed to check maximize window in tablet mode")
 	}
 
 	// Disable tablet mode.

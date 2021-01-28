@@ -89,120 +89,157 @@ type TestCase struct {
 	Func TestFunc
 }
 
+// CheckCase represents a struct for activtiy names and their assert func.
+type CheckCase struct {
+	Name string
+	Func CheckFunc
+}
+
 // CheckMaximizeResizable checks that the window is both maximized and resizable.
 func CheckMaximizeResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
-		return err
-	}
-	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
-	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
+			return testing.PollBreak(err)
+		}
+		wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
+		return CompareCaption(ctx, tconn, act.PackageName(), wanted)
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // CheckMaximizeNonResizable checks that the window is both maximized and not resizable.
 func CheckMaximizeNonResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
-		return err
-	}
-	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonClose
-	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
+			return testing.PollBreak(err)
+		}
+		wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonClose
+		return CompareCaption(ctx, tconn, act.PackageName(), wanted)
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // CheckRestoreResizable checks that the window is both in restore mode and is resizable.
 func CheckRestoreResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
-		return err
-	}
-	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
-	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+			return testing.PollBreak(err)
+		}
+		wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
+		return CompareCaption(ctx, tconn, act.PackageName(), wanted)
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
+// CheckRestoreNonResizable checks that the window is both in restore mode and is not resizable.
+func CheckRestoreNonResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+			return testing.PollBreak(err)
+		}
+		wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonClose
+		return CompareCaption(ctx, tconn, act.PackageName(), wanted)
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // CheckPillarboxResizable checks that the window is both in pillar-box mode and is resizable.
 func CheckPillarboxResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
-	if err := CheckPillarbox(ctx, tconn, act, d); err != nil {
-		return err
-	}
-	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
-	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := CheckPillarbox(ctx, tconn, act, d); err != nil {
+			return testing.PollBreak(err)
+		}
+		wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
+		return CompareCaption(ctx, tconn, act.PackageName(), wanted)
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // CheckPillarboxNonResizable checks that the window is both in pillar-box mode and is not resizable.
 func CheckPillarboxNonResizable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
-	if err := CheckPillarbox(ctx, tconn, act, d); err != nil {
-		return err
-	}
-	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonClose
-	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := CheckPillarbox(ctx, tconn, act, d); err != nil {
+			return testing.PollBreak(err)
+		}
+		wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonClose
+		return CompareCaption(ctx, tconn, act.PackageName(), wanted)
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // CheckPillarbox checks that the window is in pillar-box mode.
 func CheckPillarbox(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
-		return err
-	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
+			return testing.PollBreak(err)
+		}
 
-	const wanted = Portrait
-	o, err := UIOrientation(ctx, act, d)
-	if err != nil {
-		return err
-	}
-	if o != wanted {
-		return errors.Errorf("invalid orientation %v; want %v", o, wanted)
-	}
+		const wanted = Portrait
+		o, err := UIOrientation(ctx, act, d)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if o != wanted {
+			return errors.Errorf("invalid orientation %v; want %v", o, wanted)
+		}
 
-	return nil
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // CheckMaximizeToFullscreenToggle checks window's bounds transisionning from max to fullscreen.
 func CheckMaximizeToFullscreenToggle(ctx context.Context, tconn *chrome.TestConn, maxWindowCoords coords.Rect, fullscreenWindow ash.Window) error {
-	if maxWindowCoords.Left != fullscreenWindow.TargetBounds.Left ||
-		maxWindowCoords.Top != fullscreenWindow.TargetBounds.Top ||
-		maxWindowCoords.Width != fullscreenWindow.TargetBounds.Width ||
-		maxWindowCoords.Height >= fullscreenWindow.TargetBounds.Height {
-		return errors.Errorf("invalid fullscreen window bounds compared to maximize window bounds, got: %s, want bigger than: %s", fullscreenWindow.TargetBounds, maxWindowCoords)
-	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if maxWindowCoords.Left != fullscreenWindow.TargetBounds.Left ||
+			maxWindowCoords.Top != fullscreenWindow.TargetBounds.Top ||
+			maxWindowCoords.Width != fullscreenWindow.TargetBounds.Width ||
+			maxWindowCoords.Height >= fullscreenWindow.TargetBounds.Height {
+			return errors.Errorf("invalid fullscreen window bounds compared to maximize window bounds, got: %s, want bigger than: %s", fullscreenWindow.TargetBounds, maxWindowCoords)
+		}
 
-	if fullscreenWindow.IsFrameVisible {
-		return errors.Errorf("invalid frame visibility, got: %t, want: false", fullscreenWindow.IsFrameVisible)
-	}
+		if fullscreenWindow.IsFrameVisible {
+			return errors.Errorf("invalid frame visibility, got: %t, want: false", fullscreenWindow.IsFrameVisible)
+		}
 
-	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return errors.New("failed to get display info")
-	}
-	if primaryDisplayInfo == nil {
-		return errors.New("no primary display info found")
-	}
+		primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if primaryDisplayInfo == nil {
+			return testing.PollBreak(errors.New("no primary display info found"))
+		}
 
-	if primaryDisplayInfo.WorkArea.Top != fullscreenWindow.TargetBounds.Top ||
-		primaryDisplayInfo.WorkArea.Height != fullscreenWindow.TargetBounds.Height {
-		return errors.Errorf("invalid fullscreen window bounds compared to display work area, got: Top=%d, Height=%d, want: Top=%d, Height=%d", fullscreenWindow.TargetBounds.Top, fullscreenWindow.TargetBounds.Height, primaryDisplayInfo.WorkArea.Top, primaryDisplayInfo.WorkArea.Height)
-	}
+		if primaryDisplayInfo.WorkArea.Top != fullscreenWindow.TargetBounds.Top ||
+			primaryDisplayInfo.WorkArea.Height != fullscreenWindow.TargetBounds.Height {
+			return errors.Errorf("invalid fullscreen window bounds compared to display work area, got: Top=%d, Height=%d, want: Top=%d, Height=%d", fullscreenWindow.TargetBounds.Top, fullscreenWindow.TargetBounds.Height, primaryDisplayInfo.WorkArea.Top, primaryDisplayInfo.WorkArea.Height)
+		}
 
-	return nil
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // CheckMaximizeWindowInTabletMode checks the activtiy covers display's work area in maximize mode.
-func CheckMaximizeWindowInTabletMode(ctx context.Context, tconn *chrome.TestConn, maximizeWindow ash.Window) error {
-	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return errors.New("failed to get display info")
-	}
-	if primaryDisplayInfo == nil {
-		return errors.New("no primary display info found")
-	}
+func CheckMaximizeWindowInTabletMode(ctx context.Context, tconn *chrome.TestConn, pkgName string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// Store activity's window info when tablet mode is enabled to make sure it is in Maximized state.
+		maximizeWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.New("failed to get display info"))
+		}
+		if primaryDisplayInfo == nil {
+			return testing.PollBreak(errors.New("no primary display info found"))
+		}
 
-	if maximizeWindow.IsFrameVisible {
-		return errors.Errorf("invalid frame visibility, got: %t, want: false", maximizeWindow.IsFrameVisible)
-	}
+		if maximizeWindow.IsFrameVisible {
+			return errors.Errorf("invalid frame visibility, got: %t, want: false", maximizeWindow.IsFrameVisible)
+		}
 
-	if primaryDisplayInfo.WorkArea.Left != maximizeWindow.TargetBounds.Left ||
-		primaryDisplayInfo.WorkArea.Top != maximizeWindow.TargetBounds.Top ||
-		primaryDisplayInfo.WorkArea.Width != maximizeWindow.TargetBounds.Width ||
-		primaryDisplayInfo.WorkArea.Height != maximizeWindow.TargetBounds.Height {
-		return errors.Errorf("invalid maximize window bounds compared to display work area, got: %s, want: %s", maximizeWindow.TargetBounds, primaryDisplayInfo.WorkArea)
-	}
-
-	return nil
+		if primaryDisplayInfo.WorkArea.Left != maximizeWindow.TargetBounds.Left ||
+			primaryDisplayInfo.WorkArea.Top != maximizeWindow.TargetBounds.Top ||
+			primaryDisplayInfo.WorkArea.Width != maximizeWindow.TargetBounds.Width ||
+			primaryDisplayInfo.WorkArea.Height != maximizeWindow.TargetBounds.Height {
+			return errors.Errorf("invalid maximize window bounds compared to display work area, got: %s, want: %s", maximizeWindow.TargetBounds, primaryDisplayInfo.WorkArea)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // WaitForShelfAnimationComplete waits for 5 seconds to shelf animation complete.
