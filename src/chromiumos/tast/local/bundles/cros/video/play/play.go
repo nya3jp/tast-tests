@@ -107,6 +107,13 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) (b
 	}
 
 	isPlatform, _, err := devtools.GetVideoDecoder(ctx, observer, url)
+	if err != nil {
+		// Sometimes observer doesn't supply the whole Media Player Properties set,
+		// especially when running Chrome on Guest mode. Experimentally, requesting
+		// the Properties again works fine.
+		testing.ContextLog(ctx, "DevTools might have not filled in the response correctly, trying again")
+		isPlatform, _, err = devtools.GetVideoDecoder(ctx, observer, url)
+	}
 	return isPlatform, err
 }
 
