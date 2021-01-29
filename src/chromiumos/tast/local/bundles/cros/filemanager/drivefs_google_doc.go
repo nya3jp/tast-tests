@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/filemanager/pre"
-	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/drivefs"
 	"chromiumos/tast/testing"
 )
