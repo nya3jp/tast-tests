@@ -9,11 +9,16 @@ import (
 	"context"
 	"fmt"
 	"math"
+	"os"
+	"path/filepath"
 	"sort"
+
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/power"
@@ -297,7 +302,17 @@ func (m *metricsRecorder) computeStatistics(ctx context.Context, pv *perf.Values
 	return nil
 }
 
-func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvocation, perfFn func(ctx context.Context) error) error {
+type traceable interface {
+	StartTracing(ctx context.Context, categories []string, opts ...cdputil.TraceOption) error
+	StopTracing(ctx context.Context) (*trace.Trace, error)
+}
+
+func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
+	invoc *testInvocation, perfFn func(ctx context.Context) error) error {
+	if s, err := os.Stat(invoc.traceDir); err != nil || !s.IsDir() {
+		return errors.Wrap(err, "given trace directory does not appear to be a directory")
+	}
+
 	var keys []string
 	for k, v := range metricMap {
 		if v.uma {
@@ -311,8 +326,16 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvoca
 		return errors.Wrap(err, "failed to get RAPL snapshot")
 	}
 
+	// TODO(https://crbug.com/1162385, b/177636800): Enable systrace again
+	if err := tracer.StartTracing(ctx, tracingCategories, cdputil.DisableSystrace()); err != nil {
+		return err
+	}
+
 	histograms, err := metrics.Run(ctx, tconn, perfFn, keys...)
 	if err != nil {
+		if _, err := tracer.StopTracing(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
+		}
 		return errors.Wrap(err, "failed to get histograms")
 	}
 
@@ -321,9 +344,23 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvoca
 	if rapl != nil {
 		rd, err := rapl.DiffWithCurrentRAPL()
 		if err != nil {
+			if _, err := tracer.StopTracing(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to stop tracing: ", err)
+			}
 			return errors.Wrap(err, "failed to compute RAPL diffs")
 		}
 		raplv = rd
+	}
+
+	tr, err := tracer.StopTracing(ctx)
+	if err != nil {
+		return err
+	}
+
+	filename := fmt.Sprintf("%s-%s-trace.data.gz", string(invoc.crt), invoc.page.name)
+	filename = filepath.Join(invoc.traceDir, filename)
+	if err := chrome.SaveTraceToFile(ctx, tr, filename); err != nil {
+		return err
 	}
 
 	// Store metrics in the form: Scenario.PageSet.UMA metric name.statistic.{chromeos, lacros}.
