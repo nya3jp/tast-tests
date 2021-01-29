@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4f85d24_7ae5f58f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-29T03:39:32Z",
+      "side": 1,
+      "message": "FTR this is supposed to reflect\nhttps://source.chromium.org/chromium/chromium/src/+/master:third_party/webrtc/modules/video_coding/codecs/vp8/libvpx_vp8_encoder.cc;l\u003d725-732\n\nAFAIK we don\u0027t have devices with 2 cores, only 4 or more (like ARM),\nso we should not have such an issue. I guess if we were to have a\nmachine with 2 cores, 2 threads would just map nicely. Let me expand\nthe comment.",
+      "parentUuid": "c8284f2c_a4814723",
+      "range": {
+        "startLine": 469,
+        "startChar": 45,
+        "endLine": 469,
+        "endChar": 77
+      },
+      "revId": "72206fa9844361b974b2570a39303874e87c6949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0560365f_8aa5e64c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-29T02:10:50Z",
       "side": 1,
       "message": "I\u0027m a bit surprised this works, since it looks like bitrate should be a float64. Would %f work, to be safe?\n(Tried `fmt.Printf(\"%d\", 2 * 2 / 2.0)` in golang playground and it failed, whereas it works fine with %f)",
+      "range": {
+        "startLine": 474,
+        "startChar": 57,
+        "endLine": 474,
+        "endChar": 59
+      },
+      "revId": "72206fa9844361b974b2570a39303874e87c6949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b641863_47e835b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-29T03:39:32Z",
+      "side": 1,
+      "message": "Oh, you\u0027re right, good catch. But I think vpxenc expects and integer, so\nlet\u0027s force it to be so.",
+      "parentUuid": "0560365f_8aa5e64c",
       "range": {
         "startLine": 474,
         "startChar": 57,
