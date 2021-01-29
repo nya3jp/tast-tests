@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573b8274_b718828f",
+        "filename": "src/chromiumos/tast/local/graphics/screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-29T05:32:56Z",
+      "side": 1,
+      "message": "I\u0027d prefer if this was handled at the webrtc.RTCPeerConnection test level. The reason is that for video.Contents.*, I do want it to fail if GetInternalInfo() fails because I added an internal display to the hwdeps.",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "d1c0d7ea71e4a716ab989391a43ac51972e93060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
