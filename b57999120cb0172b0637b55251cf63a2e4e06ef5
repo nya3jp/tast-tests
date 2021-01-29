@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4190343f_6e7b0a22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-29T20:14:51Z",
+      "side": 1,
+      "message": "CC: swapnilgupta@ due to tast lint changes on their files. Make sure to run preupload checks so that files are formated correctly.",
+      "revId": "b57999120cb0172b0637b55251cf63a2e4e06ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
