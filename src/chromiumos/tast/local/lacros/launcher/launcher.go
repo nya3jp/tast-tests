@@ -151,9 +151,32 @@ func extensionArgs(extID, extList string) []string {
 	}
 }
 
+// EnsureLacrosChrome ensures that the lacros binary is extracted.
+// Currently, callers need to call this if they do not call LaunchLacrosChrome, but otherwise
+// try to run lacros chrome.
+func EnsureLacrosChrome(ctx context.Context, f FixtData, artifactPath string) error {
+	// TODO(crbug.com/1127165): Move this to the fixture when we can use Data in fixtures.
+	if _, err := os.Stat(f.LacrosPath); os.IsNotExist(err) && f.Mode == preExist {
+		testing.ContextLog(ctx, "Extracting lacros binary")
+		tarCmd := testexec.CommandContext(ctx, "tar", "-xvf", artifactPath, "-C", lacrosTestPath)
+		if err := tarCmd.Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "failed to untar test artifacts")
+		}
+		if err := os.Chmod(binaryPath, 0777); err != nil {
+			return errors.Wrap(err, "failed to change permissions of binary dir path")
+		}
+	}
+	return nil
+}
+
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
-func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
-	if err := killLacrosChrome(ctx, p.LacrosPath); err != nil {
+// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*LacrosChrome, error) {
+	if err := EnsureLacrosChrome(ctx, f, artifactPath); err != nil {
+		return nil, err
+	}
+
+	if err := killLacrosChrome(ctx, f.LacrosPath); err != nil {
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}
 
@@ -162,20 +185,20 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	// path, which is cleared by pre.go. We need to use a new temporary
 	// directory for each invocation so that successive calls to
 	// LaunchLacrosChrome don't interfere with each other.
-	userDataDir, err := ioutil.TempDir(p.LacrosPath, "")
+	userDataDir, err := ioutil.TempDir(f.LacrosPath, "")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create temp dir")
 	}
 
-	l := &LacrosChrome{lacrosPath: p.LacrosPath}
-	extList := strings.Join(p.Chrome.DeprecatedExtDirs(), ",")
+	l := &LacrosChrome{lacrosPath: f.LacrosPath}
+	extList := strings.Join(f.Chrome.DeprecatedExtDirs(), ",")
 	args := []string{
 		"--ozone-platform=wayland",                 // Use wayland to connect to exo wayland server.
 		"--no-sandbox",                             // Disable sandbox for now
 		"--no-first-run",                           // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--user-data-dir=" + userDataDir,           // Specify a --user-data-dir, which holds on-disk state for Chrome.
 		"--lang=en-US",                             // Language
-		"--breakpad-dump-location=" + p.LacrosPath, // Specify location for breakpad dump files.
+		"--breakpad-dump-location=" + f.LacrosPath, // Specify location for breakpad dump files.
 		"--window-size=800,600",
 		"--log-file=" + filepath.Join(userDataDir, "logfile"), // Specify log file location for debugging.
 		"--enable-logging",                                    // This flag is necessary to ensure the log file is written.
@@ -189,7 +212,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	args = append(args, extensionArgs(chrome.TestExtensionID, extList)...)
 
 	l.cmd = testexec.CommandContext(ctx, "/usr/local/bin/python3", append([]string{"/usr/local/bin/mojo_connection_lacros_launcher.py",
-		"-s", mojoSocketPath, filepath.Join(p.LacrosPath, "chrome")}, args...)...)
+		"-s", mojoSocketPath, filepath.Join(f.LacrosPath, "chrome")}, args...)...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
@@ -198,7 +221,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	}
 
 	// Wait for a window that matches what a lacros window looks like.
-	if err := WaitForLacrosWindow(ctx, p.TestAPIConn, "about:blank"); err != nil {
+	if err := WaitForLacrosWindow(ctx, f.TestAPIConn, "about:blank"); err != nil {
 		return nil, err
 	}
 

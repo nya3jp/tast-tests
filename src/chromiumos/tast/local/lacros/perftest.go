@@ -76,12 +76,12 @@ func waitForStableEnvironment(ctx context.Context) error {
 }
 
 // SetupCrosTestWithPage opens a cros-chrome page after waiting for a stable environment (CPU temperature, etc).
-func SetupCrosTestWithPage(ctx context.Context, pd launcher.PreData, url string) (*chrome.Conn, CleanupCallback, error) {
+func SetupCrosTestWithPage(ctx context.Context, f launcher.FixtData, url string) (*chrome.Conn, CleanupCallback, error) {
 	if err := waitForStableEnvironment(ctx); err != nil {
 		return nil, nil, err
 	}
 
-	conn, err := pd.Chrome.NewConn(ctx, url)
+	conn, err := f.Chrome.NewConn(ctx, url)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to open new tab")
 	}
@@ -93,10 +93,11 @@ func SetupCrosTestWithPage(ctx context.Context, pd launcher.PreData, url string)
 }
 
 // SetupLacrosTestWithPage opens a lacros-chrome page after waiting for a stable environment (CPU temperature, etc).
-func SetupLacrosTestWithPage(ctx context.Context, pd launcher.PreData, url string) (
+// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtData, artifactPath, url string) (
 	retConn *chrome.Conn, retTConn *chrome.TestConn, retL *launcher.LacrosChrome, retCleanup CleanupCallback, retErr error) {
 	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
-	l, err := launcher.LaunchLacrosChrome(ctx, pd)
+	l, err := launcher.LaunchLacrosChrome(ctx, f, artifactPath)
 	if err != nil {
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 	}
@@ -130,7 +131,7 @@ func SetupLacrosTestWithPage(ctx context.Context, pd launcher.PreData, url strin
 	}, "")
 
 	// Close the initial "about:blank" tab present at startup.
-	if err := CloseAboutBlank(ctx, pd.TestAPIConn, l.Devsess, 0); err != nil {
+	if err := CloseAboutBlank(ctx, f.TestAPIConn, l.Devsess, 0); err != nil {
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to close about:blank tab")
 	}
 

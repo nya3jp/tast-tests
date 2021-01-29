@@ -33,7 +33,6 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(webrtc.DataFiles(), launcher.DataArtifact, "getusermedia.html"),
-		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{
 			{
 				Name:              "real",
@@ -56,7 +55,7 @@ func init() {
 			},
 			{
 				Name:      "lacros",
-				Pre:       launcher.StartedByData(),
+				Fixture:   "lacrosStartedByData",
 				ExtraAttr: []string{"informational"},
 				// TODO(b/175168296): Change the capability to |caps.BuiltinCamera| to test MIPI
 				// cameras as well once they are supported on Lacros.
@@ -86,7 +85,7 @@ func GetUserMedia(ctx context.Context, s *testing.State) {
 	var cr getusermedia.ChromeInterface
 	var err error
 	if s.Param().(chromeType) == lacrosChrome {
-		cr, err = launcher.LaunchLacrosChrome(ctx, s.PreValue().(launcher.PreData))
+		cr, err = launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact))
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
