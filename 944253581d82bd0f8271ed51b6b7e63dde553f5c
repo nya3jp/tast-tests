@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9baec871_1c781d1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-29T01:19:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e41904a_3dc192fc",
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "631aa19f_14802d25",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b381e2a1_7c163809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-29T01:19:38Z",
+      "side": 1,
+      "message": "I\u0027m not pretty sure you want this. In our testing scenario, we wanted to keep the downloaded files and user setting, so that we don\u0027t need to do the same thing when running the same cases.\nBut if sure, we could make this change.",
+      "parentUuid": "631aa19f_14802d25",
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46729583_abbbb536",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-01-29T00:02:46Z",
       "side": 1,
       "message": "I believe this should be \"opts...\"",
+      "range": {
+        "startLine": 99,
+        "startChar": 28,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4928f85d_f9844f0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-29T01:19:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46729583_abbbb536",
       "range": {
         "startLine": 99,
         "startChar": 28,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b9a61a_5207078f",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-29T01:19:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5f844df_6b6dfbe4",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 6
+      },
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5ac2a67_756245e7",
@@ -94,6 +178,24 @@
       "writtenOn": "2021-01-29T00:02:46Z",
       "side": 1,
       "message": "This can be an error, right?\n  s.Fatal(\"RemoveReplay should prepare with prepareRemote\")",
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cfcfccc_d17dd094",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-29T01:19:38Z",
+      "side": 1,
+      "message": "Yes, I didn\u0027t notice this one in local scenario.",
+      "parentUuid": "b5ac2a67_756245e7",
       "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f46f061_31c89585",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-29T01:19:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8e74848_20ec71a0",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 2
+      },
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb51dda6_2bc92edd",
@@ -134,6 +260,30 @@
       "writtenOn": "2021-01-29T00:02:46Z",
       "side": 1,
       "message": "Out of curiosity: is that really a WPR instance?  Any particular reason you want to put it remotely?",
+      "range": {
+        "startLine": 249,
+        "startChar": 55,
+        "endLine": 249,
+        "endChar": 58
+      },
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66bdb73_eed90200",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-29T01:19:38Z",
+      "side": 1,
+      "message": "We wanted to build a real environment to simulate user\u0027s scenario. For replay mode, the WPR instance just like proxy server. But user wouldn\u0027t setup a proxy server in their own chromebook. And also, running a WPR instance on chromebook would impact CUJ performance testing.",
+      "parentUuid": "eb51dda6_2bc92edd",
       "range": {
         "startLine": 249,
         "startChar": 55,
