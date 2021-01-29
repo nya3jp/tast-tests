@@ -23,8 +23,8 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:            "chromeLoggedInWith100DummyApps",
-		Desc:            "Logged into a user session with 100 dummy apps",
+		Name:            "chromeLoggedInWith100FakeApps",
+		Desc:            "Logged into a user session with 100 fake apps",
 		Contacts:        []string{"mukai@chromium.org"},
 		Impl:            NewLoggedInFixture(),
 		Parent:          "install100Apps",
@@ -34,8 +34,8 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:            "chromeLoggedInWith100DummyAppsSkiaRenderer",
-		Desc:            "Logged into a user session with 100 dummy apps",
+		Name:            "chromeLoggedInWith100FakeAppsSkiaRenderer",
+		Desc:            "Logged into a user session with 100 fake apps",
 		Contacts:        []string{"mukai@chromium.org"},
 		Impl:            NewLoggedInFixture(EnableFeatures("UseSkiaRenderer")),
 		Parent:          "install100Apps",
