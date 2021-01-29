@@ -38,7 +38,7 @@ func init() {
 		}, {
 			Name:    "skia_renderer",
 			Val:     lacros.ChromeTypeChromeOS,
-			Fixture: "chromeLoggedInWith100DummyAppsSkiaRenderer",
+			Fixture: "chromeLoggedInWith100FakeAppsSkiaRenderer",
 		}, {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,

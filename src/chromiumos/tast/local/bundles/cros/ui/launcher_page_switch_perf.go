@@ -34,7 +34,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedInWith100DummyApps",
+		Fixture:      "chromeLoggedInWith100FakeApps",
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",

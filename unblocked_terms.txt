@@ -17,9 +17,6 @@ black.?list
 # crazy                 - clean
 # cripple               - clean
 
-dummy
-#    - see crbug/1135039
-
 # first.?class.?citizen - clean
 
 grandfathered
@@ -76,4 +73,3 @@ white.?list
 #    - see crbug/1113099
 
 # \bwtf                 - clean
-

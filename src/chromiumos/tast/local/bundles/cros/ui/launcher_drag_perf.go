@@ -38,10 +38,10 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Fixture: "chromeLoggedInWith100DummyApps",
+			Fixture: "chromeLoggedInWith100FakeApps",
 		}, {
 			Name:    "skia_renderer",
-			Fixture: "chromeLoggedInWith100DummyAppsSkiaRenderer",
+			Fixture: "chromeLoggedInWith100FakeAppsSkiaRenderer",
 		}},
 	})
 }
