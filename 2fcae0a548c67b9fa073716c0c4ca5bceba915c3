@@ -16,6 +16,24 @@
       "message": "Was able to test everything except lacros.ShelfLaunch.omaha which seems hardcoded to lacros-fishfood, but lacros-dogfood-dev is what is currently pulled down.",
       "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2d18c18_3a972636",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-29T21:22:41Z",
+      "side": 1,
+      "message": "I have a CL to fix that:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2659877",
+      "parentUuid": "14f3fd85_869580ed",
+      "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
