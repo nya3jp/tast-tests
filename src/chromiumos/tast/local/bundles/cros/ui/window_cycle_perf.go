@@ -33,14 +33,13 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
-		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{{
 			Val:     lacros.ChromeTypeChromeOS,
 			Fixture: "chromeLoggedIn",
 		}, {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
-			Pre:               launcher.StartedByData(),
+			Fixture:           "lacrosStartedByData",
 			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
@@ -53,11 +52,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	pv := s.FixtValue()
-	if pv == nil {
-		pv = s.PreValue()
-	}
-	cr, l, cs, err := lacros.Setup(ctx, pv, s.Param().(lacros.ChromeType))
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.DataPath(launcher.DataArtifact), s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
