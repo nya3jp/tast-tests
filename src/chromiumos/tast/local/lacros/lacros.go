@@ -35,31 +35,32 @@ var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 // Setup runs lacros-chrome if indicated by the given ChromeType and returns some objects and interfaces
 // useful in tests. If the ChromeType is ChromeTypeLacros, it will return a non-nil LacrosChrome instance or an error.
 // If the ChromeType is ChromeTypeChromeOS it will return a nil LacrosChrome instance.
-func Setup(ctx context.Context, pd interface{}, crt ChromeType) (*chrome.Chrome, *launcher.LacrosChrome, ash.ConnSource, error) {
+// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+func Setup(ctx context.Context, f interface{}, artifactPath string, crt ChromeType) (*chrome.Chrome, *launcher.LacrosChrome, ash.ConnSource, error) {
 	switch crt {
 	case ChromeTypeChromeOS:
-		return pd.(*chrome.Chrome), nil, pd.(*chrome.Chrome), nil
+		return f.(*chrome.Chrome), nil, f.(*chrome.Chrome), nil
 	case ChromeTypeLacros:
-		pd := pd.(launcher.PreData)
-		l, err := launcher.LaunchLacrosChrome(ctx, pd)
+		f := f.(launcher.FixtData)
+		l, err := launcher.LaunchLacrosChrome(ctx, f, artifactPath)
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
-		return pd.Chrome, l, l, nil
+		return f.Chrome, l, l, nil
 	default:
 		return nil, nil, nil, errors.Errorf("unrecognized Chrome type %s", string(crt))
 	}
 }
 
-// GetChrome gets the *chrome.Chrome object given some PreData, which may be lacros launcher.PreData.
-func GetChrome(ctx context.Context, pd interface{}) (*chrome.Chrome, error) {
-	switch pd.(type) {
+// GetChrome gets the *chrome.Chrome object given some FixtData, which may be lacros launcher.FixtData.
+func GetChrome(ctx context.Context, f interface{}) (*chrome.Chrome, error) {
+	switch f.(type) {
 	case *chrome.Chrome:
-		return pd.(*chrome.Chrome), nil
-	case launcher.PreData:
-		return pd.(launcher.PreData).Chrome, nil
+		return f.(*chrome.Chrome), nil
+	case launcher.FixtData:
+		return f.(launcher.FixtData).Chrome, nil
 	default:
-		return nil, errors.New("unrecognized PreData type. Couldn't find a chrome object")
+		return nil, errors.New("unrecognized FixtValue type. Couldn't find a chrome object")
 	}
 }
 
