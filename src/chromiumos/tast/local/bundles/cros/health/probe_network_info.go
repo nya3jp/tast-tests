@@ -54,7 +54,7 @@ func ProbeNetworkInfo(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify the header keys are correct.
-	header := []string{"type", "state", "guid", "name", "signal_strength", "mac_address"}
+	header := []string{"type", "state", "guid", "name", "signal_strength", "mac_address", "ip_address"}
 	got := strings.Split(lines[0], ",")
 	if !reflect.DeepEqual(got, header) {
 		writeResultToFile()
