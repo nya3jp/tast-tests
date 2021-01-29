@@ -31,7 +31,7 @@ func init() {
 			{
 				Name:              "omaha",
 				Pre:               launcher.StartedByOmaha(),
-				ExtraHardwareDeps: hwdep.D(hwdep.Model("enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
 			}},
 	})
 }
@@ -109,12 +109,10 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open new tab: ", err)
 	}
 	defer l.Devsess.CloseTarget(ctx, tab)
-	s.Log("Closing lacros-chrome browser")
-
 	if err := launcher.WaitForLacrosWindow(ctx, tconn, "about:blank"); err != nil {
 		s.Fatal("Failed waiting for Lacros to navigate to about:blank page: ", err)
 	}
-
+	s.Log("Closing lacros-chrome browser")
 	if err := l.Close(ctx); err != nil {
 		s.Fatal("Failed to close lacros-chrome: ", err)
 	}
