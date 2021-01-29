@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "034ddccb_4946408a",
+        "filename": "android/ArcPerAppDensityTest/res/layout/second_activity.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-29T04:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a095f2f9_afdac7b9",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 79
+      },
+      "revId": "2cf81cd9fe2380cae96648612b12803dea60268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e09c0df_0977ad71",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4784a86d_0eeed55a",
+        "filename": "android/ArcPerAppDensityTest/src/org/chromium/arc/testapp/perappdensitytest/ViewActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-29T04:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e09c0df_0977ad71",
+      "revId": "2cf81cd9fe2380cae96648612b12803dea60268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3f637bb_70a1d88f",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-01-26T01:03:29Z",
       "side": 1,
       "message": "4 spaces indent and 2 spaces are mixed. please run google-java-format.",
+      "revId": "2cf81cd9fe2380cae96648612b12803dea60268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23faff68_ccd6d9d9",
+        "filename": "android/ArcPerAppDensityTest/src/org/chromium/arc/testapp/perappdensitytest/ViewActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-29T04:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f637bb_70a1d88f",
       "revId": "2cf81cd9fe2380cae96648612b12803dea60268f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da1f109c_d50385a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-29T04:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fab1852_b88b4e98",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 17
+      },
+      "revId": "2cf81cd9fe2380cae96648612b12803dea60268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8da536f9_4b45eb78",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-01-26T01:03:29Z",
       "side": 1,
       "message": "This function does \"toggle settings value\", \"shorten ctx\", \"start activity\" and \"close activity\". Doing this twice doesn\u0027t seem what we want to do.\n\nAlso, it means we\u0027re clicking a view on an activity that is closing.",
+      "range": {
+        "startLine": 94,
+        "startChar": 25,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "2cf81cd9fe2380cae96648612b12803dea60268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee97db53_6078c631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-29T04:00:14Z",
+      "side": 1,
+      "message": "removed call to this function",
+      "parentUuid": "8da536f9_4b45eb78",
       "range": {
         "startLine": 94,
         "startChar": 25,

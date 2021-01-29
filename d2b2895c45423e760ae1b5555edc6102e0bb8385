@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b36e84ec_31a5f9b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-29T04:00:14Z",
+      "side": 1,
+      "message": "ptal.\nHad difficulty finding how to make the caption disappear on the second activity.",
+      "revId": "d2b2895c45423e760ae1b5555edc6102e0bb8385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
