@@ -308,13 +308,15 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, t
 	return runHistogram(ctx, tconn, invoc, perfFn)
 }
 
-func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation) error {
-	_, ltconn, l, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, pd, invoc.page.url)
+func runLacrosTest(ctx context.Context, s *testing.State, invoc *testInvocation) error {
+	// TODO(crbug.com/1127165): Remove the testing.State argument when we can use Data in fixtures.
+	_, ltconn, l, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, s, invoc.page.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
 	defer cleanup(ctx)
 
+	pd := s.FixtValue().(launcher.PreData)
 	// Setup extra window for multi-window tests.
 	if invoc.scenario == TestTypeMoveOcclusion {
 		connBlank, err := l.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
@@ -357,8 +359,10 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation
 }
 
 // RunGpuCUJ runs a GpuCUJ test according to the given parameters.
-func RunGpuCUJ(ctx context.Context, pd launcher.PreData, params TestParams, serverURL string) (
+// TODO(crbug.com/1127165): Remove the testing.State argument when we can use Data in fixtures.
+func RunGpuCUJ(ctx context.Context, s *testing.State, params TestParams, serverURL string) (
 	retPV *perf.Values, retCleanup lacros.CleanupCallback, retErr error) {
+	pd := s.FixtValue().(launcher.PreData)
 	cleanup, err := lacros.SetupPerfTest(ctx, pd.TestAPIConn, "lacros.GpuCUJ")
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to setup GpuCUJ test")
@@ -396,7 +400,7 @@ func RunGpuCUJ(ctx context.Context, pd launcher.PreData, params TestParams, serv
 			page.url = serverURL + page.url
 		}
 
-		if err := runLacrosTest(ctx, pd, &testInvocation{
+		if err := runLacrosTest(ctx, s, &testInvocation{
 			pv:       pv,
 			scenario: params.TestType,
 			page:     page,

@@ -151,8 +151,35 @@ func extensionArgs(extID, extList string) []string {
 	}
 }
 
+// EnsureLacrosChrome ensures that the lacros binary is extracted.
+// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
+func EnsureLacrosChrome(ctx context.Context, s *testing.State) error {
+	p := s.FixtValue().(PreData)
+	artifactPath := s.DataPath(DataArtifact)
+	// TODO(crbug.com/1127165): Move this to the fixture when we can use Data in fixtures. Then we can remove
+	// all of the *testing.State arguments from functions that call LaunchLacrosChrome.
+	if _, err := os.Stat(p.LacrosPath); os.IsNotExist(err) && p.Mode == preExist {
+		testing.ContextLog(ctx, "Extracting lacros binary")
+		tarCmd := testexec.CommandContext(ctx, "tar", "-xvf", artifactPath, "-C", lacrosTestPath)
+		if err := tarCmd.Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "failed to untar test artifacts")
+		}
+		if err := os.Chmod(binaryPath, 0777); err != nil {
+			return errors.Wrap(err, "failed to change permissions of binary dir path")
+		}
+	}
+	return nil
+}
+
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
-func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
+// TODO(crbug.com/1127165): Remove the testing.State argument when we can use Data in fixtures.
+func LaunchLacrosChrome(ctx context.Context, s *testing.State) (*LacrosChrome, error) {
+	p := s.FixtValue().(PreData)
+
+	if err := EnsureLacrosChrome(ctx, s); err != nil {
+		return nil, err
+	}
+
 	if err := killLacrosChrome(ctx, p.LacrosPath); err != nil {
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}

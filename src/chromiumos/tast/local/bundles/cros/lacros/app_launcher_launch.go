@@ -21,14 +21,18 @@ func init() {
 		Contacts:     []string{"liaoyuke@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Pre:          launcher.StartedByDataUI(),
+		Fixture:      "lacrosStartedByDataUI",
 		Data:         []string{launcher.DataArtifact},
-		Vars:         []string{"lacrosDeployedBinary"},
 	})
 }
 
 func AppLauncherLaunch(ctx context.Context, s *testing.State) {
-	tconn, err := s.PreValue().(launcher.PreData).Chrome.TestAPIConn(ctx)
+	// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
+	if err := launcher.EnsureLacrosChrome(ctx, s); err != nil {
+		s.Fatal("Failed to extract lacros binary: ", err)
+	}
+
+	tconn, err := s.FixtValue().(launcher.PreData).Chrome.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
@@ -44,7 +48,7 @@ func AppLauncherLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 
-	p := s.PreValue().(launcher.PreData)
+	p := s.FixtValue().(launcher.PreData)
 	l, err := launcher.ConnectToLacrosChrome(ctx, p.LacrosPath, launcher.LacrosUserDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
