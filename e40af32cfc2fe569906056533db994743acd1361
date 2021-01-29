@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "406491e7_759d08d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-29T08:32:24Z",
+      "side": 1,
+      "message": "I found that we can no longer compute extension ID of keyless extensions because we copy directories. I\u0027ve sent crrev.com/c/2658786 to add public keys to all test extensions.\n",
+      "revId": "e40af32cfc2fe569906056533db994743acd1361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
