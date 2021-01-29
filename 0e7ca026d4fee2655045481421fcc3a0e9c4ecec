@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5da3f7ea_a5ce0247",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-29T06:37:17Z",
+      "side": 1,
+      "message": "style: googleTTSExtensionID",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ac4f92_b5cc7e33",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-29T06:37:17Z",
+      "side": 1,
+      "message": "Having \"Expected\" field in GoogleTTSConn is a bit strange. IIUC we initially introduced this type just to distinguish it from other usual *chrome.Conn (thus its name \"GoogleTTSConn\"), but it\u0027s now doing more things.\n\nLet us revisit the abstraction. My recommendation is to introduce a type responsible for recording and comparing utterances, but not accumulating expectations. Suggested API signatures (but names are not well thought out):\n\n type TTSRecorder struct {\n   conn *chrome.Conn // connection to the TTS extension; it\u0027s NOT embedded because TTSRecorder is an abstraction of chrome.Conn\n }\n\n // NewTTSRecorder connects to the TTS extension and starts recording utterances.\n // Once it starts, TTSRecorder accumulates utterances made by the extension\n // to its internal buffer. Call Consume to compare them to expectations.\n func NewTTSRecorder(ctx context.Context, c *chrome.Chrome) (*TTSRecorder, error)\n\n // Consume waits for the TTS engine to speak the given utterances.\n // This method consumes utterances accumulated in TTSRecorder\u0027s internal buffer.\n func (r *TTSRecorder) Consume(ctx context.Context, timeout time.Duration, utterances []string) error\n\n // Close stops TTS recording and closes a connection.\n func (r *TTSRecorder) Close() error\n\n\nThen, usage would be like:\n\n r, err :\u003d NewTTSRecorder(ctx, c)\n if err !\u003d nil { ... }\n defer r.Close()\n\n // Do something...\n\n if err :\u003d r.Consume(ctx, 10*time.Second, []string{\"something\", \"is\", \"done\"}); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 9
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f8b02c_775a47ff",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-29T06:37:17Z",
+      "side": 1,
+      "message": "nit: This assigns to \"err\" in the outer scope. Unless we definitely need to do so, let\u0027s avoid it.\n\n var err error\n extConn, err \u003d ...",
+      "range": {
+        "startLine": 171,
+        "startChar": 11,
+        "endLine": 171,
+        "endChar": 15
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65f37be3_34ab6794",
         "filename": "src/chromiumos/tast/local/a11y/a11y.go",
         "patchSetId": 8
@@ -74,6 +143,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d42e7e5a_99b72506",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-29T06:37:17Z",
+      "side": 1,
+      "message": "I guess this is no longer applicable?",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df5c19b_92924ffd",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-29T06:37:17Z",
+      "side": 1,
+      "message": "This matching algorithm looks nice. I recommend briefly documenting the algorithm in the method comment.",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 35
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33b63662_fcb7f094",
         "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
         "patchSetId": 8
@@ -108,6 +223,30 @@
       "writtenOn": "2021-01-29T03:59:23Z",
       "side": 1,
       "message": "Just curious, why not verifying the utterances after each commands?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f7369d_f9b49a24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-29T06:37:17Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "9068c38e_1efa4f65",
       "range": {
         "startLine": 70,
         "startChar": 1,
