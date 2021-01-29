@@ -39,6 +39,30 @@
       },
       "revId": "d8bd5752fe42c0913547cd5cd337bd2271cd8e81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ba81d5_c51a361e",
+        "filename": "src/chromiumos/tast/local/graphics/screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-29T05:26:53Z",
+      "side": 1,
+      "message": "Thanks. I report the error as error..\nThen I noticed some bug in this restore function...\nI will fix it next week.",
+      "parentUuid": "f4bb1fb5_4b2f304f",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "d8bd5752fe42c0913547cd5cd337bd2271cd8e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
