@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2211a47_6770e7ab",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-29T22:45:57Z",
+      "side": 1,
+      "message": "Question: is this parameter actually useful? It looks like it only matters the very first time anyone calls trySaveVMLogs, in which case we should probably just make it always use vm.DefaultVMName.",
+      "range": {
+        "startLine": 78,
+        "startChar": 43,
+        "endLine": 78,
+        "endChar": 58
+      },
+      "revId": "54f2ef104221842018c847581969b2c04ddea617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
