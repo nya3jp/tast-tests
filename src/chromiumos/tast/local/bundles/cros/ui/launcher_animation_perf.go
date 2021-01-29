@@ -35,7 +35,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
-		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{{
 			Val:     lacros.ChromeTypeChromeOS,
 			Fixture: "chromeLoggedInWith100FakeApps",
@@ -46,7 +45,7 @@ func init() {
 		}, {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
-			Pre:               lacroslauncher.StartedByDataWith100FakeApps(),
+			Fixture:           "lacrosStartedByDataWith100FakeApps",
 			ExtraData:         []string{lacroslauncher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
@@ -113,11 +112,8 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	preValue := s.PreValue()
-	if preValue == nil {
-		preValue = s.FixtValue()
-	}
-	cr, err := lacros.GetChrome(ctx, preValue)
+	f := s.FixtValue()
+	cr, err := lacros.GetChrome(ctx, f)
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
@@ -150,7 +146,12 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
 	for _, windows := range []int{0, 2} {
 		func() {
-			_, l, cs, err := lacros.Setup(ctx, preValue, s.Param().(lacros.ChromeType))
+			// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+			var artifactPath string
+			if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+				artifactPath = s.DataPath(lacroslauncher.DataArtifact)
+			}
+			_, l, cs, err := lacros.Setup(ctx, f, artifactPath, s.Param().(lacros.ChromeType))
 			if err != nil {
 				s.Fatal("Failed to setup lacrostest: ", err)
 			}

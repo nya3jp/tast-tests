@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/input"
@@ -27,16 +26,15 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{
 			{
-				Pre: chrome.LoggedIn(),
-				Val: apps.Settings,
+				Val:     apps.Settings,
+				Fixture: "chromeLoggedIn",
 			},
 			{
 				Name:              "lacros",
 				Val:               apps.Lacros,
-				Pre:               lacroslauncher.StartedByDataUI(),
+				Fixture:           "lacrosStartedByDataUI",
 				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{lacroslauncher.DataArtifact},
 				ExtraSoftwareDeps: []string{"lacros"},
@@ -46,7 +44,14 @@ func init() {
 
 // SearchBuiltInApps searches for the Settings app in the Launcher.
 func SearchBuiltInApps(ctx context.Context, s *testing.State) {
-	cr, err := lacros.GetChrome(ctx, s.PreValue())
+	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+	if s.Param().(apps.App) == apps.Lacros {
+		if err := lacroslauncher.EnsureLacrosChrome(ctx, s.FixtValue().(lacroslauncher.FixtData), s.DataPath(lacroslauncher.DataArtifact)); err != nil {
+			s.Fatal("Failed to extract lacros binary: ", err)
+		}
+	}
+
+	cr, err := lacros.GetChrome(ctx, s.FixtValue())
 	if err != nil {
 		s.Fatal("Failed to get a Chrome instance: ", err)
 	}
