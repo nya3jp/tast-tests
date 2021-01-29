@@ -177,6 +177,12 @@ func VirtualTouchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 		return nil, err
 	}
 
+	// After initializing the virtual device a pause is needed to be able to detect the device.
+	// TODO(crbug.com/1015264): Remove the hard-coded sleep.
+	if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+		return nil, err
+	}
+
 	device, err := Device(ctx, dev)
 	if err != nil {
 		return nil, err
