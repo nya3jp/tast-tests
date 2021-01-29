@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a65f228_c13558ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:11:22Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa73ef47_6e2e462c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:11:22Z",
+      "side": 1,
+      "message": "nit: also unmount the vault before removal.",
+      "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec5d26e_beb40eb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:11:22Z",
+      "side": 1,
+      "message": "minor nit: reflow to make it fit",
+      "range": {
+        "startLine": 78,
+        "startChar": 23,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7d15ea4_3cfdaade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:11:22Z",
+      "side": 1,
+      "message": "nit: include tested versions in the error message",
+      "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb952fa6_5ed41a0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:11:22Z",
+      "side": 1,
+      "message": "minor nit: errors usually start with a lowercase letter. In this case are System/Data always capitalized?",
+      "range": {
+        "startLine": 186,
+        "startChar": 27,
+        "endLine": 186,
+        "endChar": 28
+      },
+      "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "371df2ab_feac0b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:11:22Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
