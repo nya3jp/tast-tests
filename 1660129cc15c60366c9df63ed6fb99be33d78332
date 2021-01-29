@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73870e59_90238c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-29T17:16:19Z",
+      "side": 1,
+      "message": "will crash, if StopTPMDeamons fails. Ditto for all the other parts in this CL.",
+      "revId": "1660129cc15c60366c9df63ed6fb99be33d78332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c677a1ee_454c3dde",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-29T17:16:19Z",
+      "side": 1,
+      "message": "it\u0027s hard to maintain the boolean flags.\nAt a first glance, it is unclear what \"true\", \"ture\" means, for example.\n\nAlso, sematically, those params look too ad-hoc as a generic support library, I think.\nMaybe inlining the names in the caller?",
+      "range": {
+        "startLine": 80,
+        "startChar": 41,
+        "endLine": 80,
+        "endChar": 68
+      },
+      "revId": "1660129cc15c60366c9df63ed6fb99be33d78332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b929697a_de3cfe44",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-29T17:16:19Z",
+      "side": 1,
+      "message": "There are other callers of this method. Now, with this CL, tcsd is restarted.\nIs it intentional change?",
+      "revId": "1660129cc15c60366c9df63ed6fb99be33d78332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
