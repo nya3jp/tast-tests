@@ -10,7 +10,7 @@ import (
 	"net/http/httptest"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
@@ -52,29 +52,29 @@ func NotificationsBlockedForUrls(ctx context.Context, s *testing.State) {
 	}
 
 	for _, param := range []struct {
-		name                 string
-		notification_blocked bool            // notification_blocked determines whether notifications are blocked in the test case or not.
-		policies             []policy.Policy // list of policies to be set.
+		name                string
+		notificationBlocked bool            // notification_blocked determines whether notifications are blocked in the test case or not.
+		policies            []policy.Policy // list of policies to be set.
 	}{
 		{
-			name:                 "site_blocked_block",
-			notification_blocked: true,
+			name:                "site_blocked_block",
+			notificationBlocked: true,
 			policies: []policy.Policy{
 				&policy.NotificationsBlockedForUrls{Val: includesBlockedURL},
 				&policy.DefaultNotificationsSetting{Val: 1},
 			},
 		},
 		{
-			name:                 "site_allowed_show",
-			notification_blocked: false,
+			name:                "site_allowed_show",
+			notificationBlocked: false,
 			policies: []policy.Policy{
 				&policy.NotificationsBlockedForUrls{Val: excludesBlockedURL},
 				&policy.DefaultNotificationsSetting{Val: 1},
 			},
 		},
 		{
-			name:                 "not_set_show",
-			notification_blocked: false,
+			name:                "not_set_show",
+			notificationBlocked: false,
 			policies: []policy.Policy{
 				&policy.NotificationsBlockedForUrls{Stat: policy.StatusUnset},
 				&policy.DefaultNotificationsSetting{Val: 1},
@@ -101,18 +101,18 @@ func NotificationsBlockedForUrls(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			var notification_permission string
-			if err := conn.Eval(ctx, `Notification.permission`, &notification_permission); err != nil {
+			var notificationPermission string
+			if err := conn.Eval(ctx, `Notification.permission`, &notificationPermission); err != nil {
 				s.Fatal("Could not read notification permission: ", err)
 			}
 
-			if notification_permission != "granted" && notification_permission != "denied" && notification_permission != "default" {
-				s.Fatal("Unable to capture Notification Setting.")
+			if notificationPermission != "granted" && notificationPermission != "denied" && notificationPermission != "default" {
+				s.Fatal("Unable to capture Notification Setting")
 			}
-			notification_blocked := notification_permission == "denied"
+			notificationBlocked := notificationPermission == "denied"
 			// Check if the notification permission is inline with the expected permission.
-			if notification_blocked != param.notification_blocked {
-				s.Errorf("Unexpected permission for notifications: got %v; want %v", notification_blocked, param.notification_blocked)
+			if notificationBlocked != param.notificationBlocked {
+				s.Errorf("Unexpected permission for notifications: got %v; want %v", notificationBlocked, param.notificationBlocked)
 			}
 		})
 	}
