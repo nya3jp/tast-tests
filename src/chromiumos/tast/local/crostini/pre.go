@@ -21,7 +21,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uig"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/settings"

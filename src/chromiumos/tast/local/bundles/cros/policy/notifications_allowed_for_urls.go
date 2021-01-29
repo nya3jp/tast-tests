@@ -10,7 +10,7 @@ import (
 	"net/http/httptest"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
@@ -107,7 +107,7 @@ func NotificationsAllowedForUrls(ctx context.Context, s *testing.State) {
 			}
 
 			if notification_permission != "granted" && notification_permission != "denied" && notification_permission != "default" {
-				s.Fatal("Unable to capture Notification Setting.")
+				s.Fatal("Unable to capture Notification Setting")
 			}
 			notification_allowed := notification_permission == "granted"
 			// Check if the notification permission is inline with the expected permission.
