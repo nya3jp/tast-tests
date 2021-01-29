@@ -82,6 +82,7 @@ func launchAppForWordPress(ctx context.Context, s *testing.State, tconn *chrome.
 	const (
 		continueWithWordPressID = "org.wordpress.android:id/first_button"
 		continueWithGoogleID    = "org.wordpress.android:id/continue_with_google"
+		accountID               = "com.google.android.gms:id/account_display_name"
 		notNowText              = "NOT RIGHT NOW"
 		readerText              = "Reader"
 	)
@@ -102,12 +103,18 @@ func launchAppForWordPress(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Fatal("Failed to click on google button: ", err)
 	}
 
-	// Click on not now button.
+	// Click on account button.
+	accountButton := d.Object(ui.ID(accountID))
 	notNowButton := d.Object(ui.Text(notNowText))
-	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("Not now button doesn't exist: ", err)
-	} else if err := notNowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on not now button: ", err)
+	if err := accountButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		// Click on not now button.
+		if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+			s.Error("Not now button doesn't exist: ", err)
+		} else if err := notNowButton.Click(ctx); err != nil {
+			s.Fatal("Failed to click on not now button: ", err)
+		}
+	} else if err := accountButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on account button: ", err)
 	}
 
 	// Check for reader label.
