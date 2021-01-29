@@ -54,6 +54,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0810c0b5_d14f1f6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-29T04:27:23Z",
+      "side": 1,
+      "message": "Done. I\u0027ve added you as reviewer to the corresponding CL on the internal side.",
+      "parentUuid": "1980af7e_fa8041ba",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6f9cb509_f792b5e9",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 2
@@ -87,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ecab34_83c4406d",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-29T04:27:23Z",
+      "side": 1,
+      "message": "Yes, it is needed in the corresponding CL on the internal side, which this CL is setting up for: crrev.com/i/3566830.",
+      "parentUuid": "3568ff7c_2c03f301",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa57c73e_6bd482c4",
@@ -110,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "820847d8_0ee6d876",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-29T04:27:23Z",
+      "side": 1,
+      "message": "We need to be able to create these ChromeOptions in the internal bundle, so that we can define additional multi-vm preconditions with private VMs. See the corresponding CL on the internal side here: crrev.com/i/3566830.",
+      "parentUuid": "fa57c73e_6bd482c4",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bd6e3b2_93011c96",
@@ -123,6 +183,24 @@
       "writtenOn": "2021-01-28T08:50:02Z",
       "side": 1,
       "message": "I don\u0027t see why this split between VMOptions and VMActivation is required. Add a comment or use a single interface for VMs.",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e76fdafb_cd8dc304",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-29T04:27:23Z",
+      "side": 1,
+      "message": "Comment added. It\u0027s mostly a design choice: the API structure forces correct usage of the API (i.e. must call Activate before Deactivate, Deactivate can only be called if Activate succeeds.) It also maintains a separation of the VM state from the (caller-provided) activation parameters, as was already true in the original state manager.",
+      "parentUuid": "8bd6e3b2_93011c96",
       "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -152,6 +230,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "043e25d6_4b551a29",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-29T04:27:23Z",
+      "side": 1,
+      "message": "That would be nice. Unfortunately, as far as I\u0027m aware, there is no real consistency between arc, crostini and pita VM objects.",
+      "parentUuid": "b3036e85_6c9ba596",
+      "range": {
+        "startLine": 116,
+        "startChar": 40,
+        "endLine": 116,
+        "endChar": 49
+      },
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9b21d1d_7ea0c6ab",
         "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
         "patchSetId": 2
@@ -163,6 +265,24 @@
       "writtenOn": "2021-01-28T08:50:02Z",
       "side": 1,
       "message": "nit: This is not extensible. Save the required ExtraArgs and chrome options as part of vmOptions.",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23771653_a55c14f4",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-29T04:27:23Z",
+      "side": 1,
+      "message": "Done. Originally, I was not sure how to fix this -- the logic here required certain options when ARC is _not_ present (i.e. chrome.ARCDisabled()), which is not something that could be fixed by simply asking all present VMs for their desired options. Looking at the implementation, disabled is already the default, so I can clean it up quite nicely.",
+      "parentUuid": "a9b21d1d_7ea0c6ab",
       "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -180,6 +300,24 @@
       "writtenOn": "2021-01-28T08:50:02Z",
       "side": 1,
       "message": "nit: use the for inside a single defer, it\u0027s easier to reason about.",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a0dad5_f2bfeb55",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-29T04:27:23Z",
+      "side": 1,
+      "message": "I think this would change the semantics of the Deactivate implementation. Under the old approach, even if the cleanup of one VM panicked, the others would still be attempted. If I switch the for loop and the defer around, a panic in one cleanup would stop the other cleanups from running.\n\nSee comment on line 244:\n\t// NB: We deactivate in reverse order using defer so that if any one part\n\t// panics, the rest will still complete.",
+      "parentUuid": "25c5339d_9269e100",
       "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
