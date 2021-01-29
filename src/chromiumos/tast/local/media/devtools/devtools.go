@@ -7,6 +7,7 @@ package devtools
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/mafredri/cdp/protocol/media"
 
@@ -40,8 +41,14 @@ func GetVideoDecoder(ctx context.Context, observer media.PlayerPropertiesChanged
 			testing.ContextLogf(ctx, "%s: %s", s.Name, *s.Value)
 		}
 	}
+
 	if !hasName && !hasPlatform {
-		return false, "", errors.New("failed to find kIsPlatformVideoDecoder and kVideoDecoderName in media DevTools Properties")
+		// Marshall reply.Properties to add it to the error log for debugging.
+		var log string
+		for _, s := range reply.Properties {
+			log = fmt.Sprintf("%s, %s: %s", log, s.Name, *s.Value)
+		}
+		return false, "", errors.Errorf("failed to find kIsPlatformVideoDecoder and kVideoDecoderName in media DevTools Properties. Observed: %s", log)
 	}
 	if !hasName {
 		return false, "", errors.New("failed to find kVideoDecoderName in media DevTools Properties")
