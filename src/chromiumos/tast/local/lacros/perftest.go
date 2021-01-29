@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
+	"chromiumos/tast/testing"
 )
 
 // CleanupCallback is a callback that should be deferred to clean up test resources.
@@ -93,10 +94,10 @@ func SetupCrosTestWithPage(ctx context.Context, pd launcher.PreData, url string)
 }
 
 // SetupLacrosTestWithPage opens a lacros-chrome page after waiting for a stable environment (CPU temperature, etc).
-func SetupLacrosTestWithPage(ctx context.Context, pd launcher.PreData, url string) (
+func SetupLacrosTestWithPage(ctx context.Context, s *testing.State, url string) (
 	retConn *chrome.Conn, retTConn *chrome.TestConn, retL *launcher.LacrosChrome, retCleanup CleanupCallback, retErr error) {
 	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
-	l, err := launcher.LaunchLacrosChrome(ctx, pd)
+	l, err := launcher.LaunchLacrosChrome(ctx, s)
 	if err != nil {
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 	}
@@ -129,6 +130,7 @@ func SetupLacrosTestWithPage(ctx context.Context, pd launcher.PreData, url strin
 		return nil
 	}, "")
 
+	pd := s.FixtValue().(launcher.PreData)
 	// Close the initial "about:blank" tab present at startup.
 	if err := CloseAboutBlank(ctx, pd.TestAPIConn, l.Devsess, 0); err != nil {
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to close about:blank tab")
