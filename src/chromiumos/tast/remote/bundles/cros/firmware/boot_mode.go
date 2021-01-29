@@ -41,7 +41,7 @@ func init() {
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeNormal,
 			},
-			ExtraAttr: []string{"group:mainline", "informational", "group:firmware", "firmware_smoke"},
+			ExtraAttr: []string{"group:firmware", "firmware_smoke"},
 		}, {
 			Name: "normal_warm",
 			Val: bootModeTestParams{
@@ -49,7 +49,7 @@ func init() {
 				resetAfterBoot: true,
 				resetType:      firmware.WarmReset,
 			},
-			ExtraAttr: []string{"group:mainline", "informational", "group:firmware", "firmware_smoke"},
+			ExtraAttr: []string{"group:firmware", "firmware_smoke"},
 		}, {
 			Name: "normal_cold",
 			Val: bootModeTestParams{
@@ -57,7 +57,7 @@ func init() {
 				resetAfterBoot: true,
 				resetType:      firmware.ColdReset,
 			},
-			ExtraAttr: []string{"group:mainline", "informational", "group:firmware", "firmware_smoke"},
+			ExtraAttr: []string{"group:firmware", "firmware_smoke"},
 		}, {
 			Name: "rec",
 			Val: bootModeTestParams{

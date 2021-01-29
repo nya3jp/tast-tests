@@ -23,7 +23,7 @@ func init() {
 			"gredelston@google.com", // Test author
 			"cros-fw-engprod@google.com",
 		},
-		Attr: []string{"group:mainline", "informational", "group:firmware", "firmware_smoke"},
+		Attr: []string{"group:firmware", "firmware_smoke"},
 		Data: []string{firmware.ConfigFile},
 		HardwareDeps: hwdep.D(
 			// Eventlog is broken/wontfix on veyron devices.
