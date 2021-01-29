@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/testing"
@@ -56,9 +57,12 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 	}
 	defer tconn.Close()
 
-	// For consistency across test runs, ensure that the device is in landscape-primary orientation.
-	if err = graphics.RotateDisplayToLandscapePrimary(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to set display to landscape-primary orientation")
+	if _, err := display.GetInternalInfo(ctx, tconn); err == nil {
+		// The device has an internal display.
+		// For consistency across test runs, ensure that the device is in landscape-primary orientation.
+		if err = graphics.RotateDisplayToLandscapePrimary(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to set display to landscape-primary orientation")
+		}
 	}
 
 	server := httptest.NewServer(http.FileServer(fileSystem))
