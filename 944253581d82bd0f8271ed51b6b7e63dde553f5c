@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e41904a_3dc192fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T00:02:46Z",
+      "side": 1,
+      "message": "Can you add Xibin to the contact too?",
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "631aa19f_14802d25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T00:02:46Z",
+      "side": 1,
+      "message": "I think this is okay to be in common opts.",
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46729583_abbbb536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T00:02:46Z",
+      "side": 1,
+      "message": "I believe this should be \"opts...\"",
+      "range": {
+        "startLine": 99,
+        "startChar": 28,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f844df_6b6dfbe4",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T00:02:46Z",
+      "side": 1,
+      "message": "tab characters?",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 6
+      },
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ac2a67_756245e7",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T00:02:46Z",
+      "side": 1,
+      "message": "This can be an error, right?\n  s.Fatal(\"RemoveReplay should prepare with prepareRemote\")",
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e74848_20ec71a0",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T00:02:46Z",
+      "side": 1,
+      "message": "nit: typically var is not used in this style, also args can be defined through :\u003d.\n  args :\u003d chrome.RuntimeArgs(httpAddr, httpsAddr)\n  var err error",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 2
+      },
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb51dda6_2bc92edd",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T00:02:46Z",
+      "side": 1,
+      "message": "Out of curiosity: is that really a WPR instance?  Any particular reason you want to put it remotely?",
+      "range": {
+        "startLine": 249,
+        "startChar": 55,
+        "endLine": 249,
+        "endChar": 58
+      },
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
