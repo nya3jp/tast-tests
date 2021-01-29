@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2aa2b8a_3cc2ee30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-01-29T01:43:03Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "6ac23be93693ad24dd563af105f21b41142e708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfdb8371_f966705c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-01-29T01:43:03Z",
+      "side": 1,
+      "message": "This is the main change. Others are just for moving code around.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 149
+      },
+      "revId": "6ac23be93693ad24dd563af105f21b41142e708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
