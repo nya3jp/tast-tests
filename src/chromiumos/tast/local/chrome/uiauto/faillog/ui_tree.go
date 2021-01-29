@@ -11,7 +11,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/testing"
 )
 
@@ -41,7 +41,7 @@ func DumpUITreeOnErrorToFile(ctx context.Context, outDir string, hasError func()
 
 	filePath := filepath.Join(dir, fileName)
 	testing.ContextLog(ctx, "Test failed. Dumping the automation node tree into ", fileName)
-	if err := ui.LogRootDebugInfo(ctx, tconn, filePath); err != nil {
+	if err := uiauto.LogRootDebugInfo(ctx, tconn, filePath); err != nil {
 		testing.ContextLog(ctx, "Failed to dump: ", err)
 	}
 }
