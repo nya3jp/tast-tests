@@ -83,6 +83,12 @@ var MicGainSliderParams ui.FindParams = ui.FindParams{
 	Role:      ui.RoleTypeSlider,
 }
 
+// ManagedInfoViewParams are the UI params for the Quick Settings management information display.
+var ManagedInfoViewParams ui.FindParams = ui.FindParams{
+	Role:      ui.RoleTypeButton,
+	ClassName: "UnifiedManagedDeviceView",
+}
+
 // BatteryViewParams are the UI params for the Quick Settings date/time display.
 var BatteryViewParams ui.FindParams = ui.FindParams{
 	Role:      ui.RoleTypeLabelText,
