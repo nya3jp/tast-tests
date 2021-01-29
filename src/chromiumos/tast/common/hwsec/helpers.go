@@ -10,9 +10,16 @@ This file implements miscellaneous and unsorted helpers.
 
 import (
 	"context"
+	"encoding/base64"
+	"fmt"
+	"strings"
 	"time"
 
+	"github.com/golang/protobuf/proto"
+
+	tmpb "chromiumos/system_api/tpm_manager_proto"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -24,9 +31,10 @@ type CmdRunner interface {
 // Helper provides various helper functions that could be shared across all
 // hwsec integration test regardless of run-type, i.e., remote or local.
 type Helper struct {
-	CmdRunner      CmdRunner
-	CryptohomeUtil *UtilityCryptohomeBinary
-	TPMManagerUtil *UtilityTpmManagerBinary
+	CmdRunner        CmdRunner
+	CryptohomeUtil   *UtilityCryptohomeBinary
+	TPMManagerUtil   *UtilityTpmManagerBinary
+	DaemonController *DaemonController
 }
 
 // NewHelper creates a new Helper, with r responsible for CmdRunner.
@@ -39,10 +47,12 @@ func NewHelper(r CmdRunner) (*Helper, error) {
 	if err != nil {
 		return nil, err
 	}
+	daemonController := NewDaemonController(r)
 	return &Helper{
-		CmdRunner:      r,
-		CryptohomeUtil: cryptohomeUtil,
-		TPMManagerUtil: tpmManagerUtil,
+		CmdRunner:        r,
+		CryptohomeUtil:   cryptohomeUtil,
+		TPMManagerUtil:   tpmManagerUtil,
+		DaemonController: daemonController,
 	}, nil
 }
 
@@ -90,4 +100,94 @@ func (h *Helper) EnsureIsPreparedForEnrollment(ctx context.Context, timeout time
 		Timeout:  timeout,
 		Interval: PollingInterval,
 	})
+}
+
+// TempFile would create a temp file
+func (h *Helper) TempFile(ctx context.Context, prefix string) (string, error) {
+	out, err := h.CmdRunner.Run(ctx, "mktemp", fmt.Sprintf("/tmp/%s.XXXXX", prefix))
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSpace(string(out)), err
+}
+
+// RemoveFile would delete the file
+func (h *Helper) RemoveFile(ctx context.Context, filename string) error {
+	_, err := h.CmdRunner.Run(ctx, "rm", "-f", "--", filename)
+	return err
+}
+
+// ReadFile would read data from the file
+func (h *Helper) ReadFile(ctx context.Context, filename string) ([]byte, error) {
+	return h.CmdRunner.Run(ctx, "cat", "--", filename)
+}
+
+// WriteFile would write data into the file
+func (h *Helper) WriteFile(ctx context.Context, filename string, data []byte) error {
+	tmpFile, err := h.TempFile(ctx, "tast_hwsec_write")
+	if err != nil {
+		return errors.Wrap(err, "failed to create temp file")
+	}
+	defer h.RemoveFile(ctx, tmpFile)
+	b64String := base64.StdEncoding.EncodeToString(data)
+	if _, err := h.CmdRunner.Run(ctx, "sh", "-c", "echo "+shutil.Escape(b64String)+">"+tmpFile); err != nil {
+		return errors.Wrap(err, "failed to echo string")
+	}
+	_, err = h.CmdRunner.Run(ctx, "sh", "-c", "base64 -d "+tmpFile+">"+filename)
+	return err
+}
+
+// GetTPMManagerLocalData would read the tpm_manager local_tpm_data.
+func (h *Helper) GetTPMManagerLocalData(ctx context.Context) ([]byte, error) {
+	return h.ReadFile(ctx, "/var/lib/tpm_manager/local_tpm_data")
+}
+
+// SetTPMManagerLocalData would write the local_tpm_data.
+func (h *Helper) SetTPMManagerLocalData(ctx context.Context, data []byte) error {
+	return h.WriteFile(ctx, "/var/lib/tpm_manager/local_tpm_data", data)
+}
+
+// DropResetLockPermissions drops the reset lock permissions and return a callback to restore the permissions.
+func (h *Helper) DropResetLockPermissions(ctx context.Context) (func(ctx context.Context) error, error) {
+	rawData, err := h.GetTPMManagerLocalData(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get local TPM data")
+	}
+
+	var data tmpb.LocalData
+	if err := proto.Unmarshal(rawData, &data); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal local TPM data")
+	}
+
+	data.OwnerPassword = []byte{}
+	data.LockoutPassword = []byte{}
+	data.OwnerDelegate = &tmpb.AuthDelegate{}
+
+	newData, err := proto.Marshal(&data)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to marshal local TPM data")
+	}
+
+	if err := h.DaemonController.StopTpmManager(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to stop TPM Manager")
+	}
+	if err := h.SetTPMManagerLocalData(ctx, newData); err != nil {
+		return nil, errors.Wrap(err, "failed to set local TPM data")
+	}
+	if err := h.DaemonController.StartTpmManager(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start TPM Manager")
+	}
+
+	return func(ctx context.Context) error {
+		if err := h.DaemonController.StopTpmManager(ctx); err != nil {
+			return errors.Wrap(err, "failed to stop TPM Manager")
+		}
+		if err := h.SetTPMManagerLocalData(ctx, rawData); err != nil {
+			return errors.Wrap(err, "failed to restore local TPM data")
+		}
+		if err := h.DaemonController.StartTpmManager(ctx); err != nil {
+			return errors.Wrap(err, "failed to start TPM Manager")
+		}
+		return nil
+	}, nil
 }
