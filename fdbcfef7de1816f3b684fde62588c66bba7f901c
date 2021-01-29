@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f55743_0bc12d1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-29T09:40:04Z",
+      "side": 1,
+      "message": "Typo I hope? :)",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "fdbcfef7de1816f3b684fde62588c66bba7f901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9a5244ea_dd7067ff",
@@ -20,6 +43,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4eb8172f_30c06dcb",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-29T09:40:04Z",
+      "side": 1,
+      "message": "You should save the returning connection to a variable (e.g. conn), and defer a conn.Close() after the error checking. For this, the NewConn() call should be outside of the \"if\".",
+      "revId": "fdbcfef7de1816f3b684fde62588c66bba7f901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b0ad9e_3aa32082",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-29T09:40:04Z",
+      "side": 1,
+      "message": "For Find(), the returned node should be released after it is not needed anymore. You can use WaitUntilExists() if you don\u0027t need to interact with the node, as this call does not return with a node.",
+      "range": {
+        "startLine": 328,
+        "startChar": 17,
+        "endLine": 328,
+        "endChar": 27
+      },
+      "revId": "fdbcfef7de1816f3b684fde62588c66bba7f901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71312f84_7c452eb7",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/sharesheet_index.html",
         "patchSetId": 10
@@ -31,6 +94,23 @@
       "writtenOn": "2021-01-29T03:03:35Z",
       "side": 1,
       "message": "Everything from this line on could be un-indented 2 spaces.",
+      "revId": "fdbcfef7de1816f3b684fde62588c66bba7f901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46e08fa_2fdaad5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-29T09:40:04Z",
+      "side": 1,
+      "message": "nit: this part can be moved into the \"if\".",
       "revId": "fdbcfef7de1816f3b684fde62588c66bba7f901c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
