@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d84272f_6be30c2e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "Sure. I changed this definition and the DeprecatedExtDirs() method.",
+      "parentUuid": "35b4bfa8_f8b4c150",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 22
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d92ba16_23f34df7",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-29T09:57:35Z",
       "side": 1,
       "message": "It is not really an error that we can\u0027t reuse an existing session. So can you please update the message not to scare users? For example:\n\n Current session is not reusable: %v; restarting a new session",
+      "range": {
+        "startLine": 163,
+        "startChar": 27,
+        "endLine": 163,
+        "endChar": 50
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f965af1e_7077fca1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d92ba16_23f34df7",
       "range": {
         "startLine": 163,
         "startChar": 27,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89871479_be04d6a8",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "Sure. I changed the default field reuse strategy to be exact match.",
+      "parentUuid": "5fec7496_e4219015",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 49
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6583b47f_c9a0b97f",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-01-29T09:57:35Z",
       "side": 1,
       "message": "typo: explicit\n\nPlease add a unit test to catch typo.",
+      "range": {
+        "startLine": 72,
+        "startChar": 53,
+        "endLine": 72,
+        "endChar": 60
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "676ddd27_7defe46a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "Changed the typo. Actually I changed the value to be \"customized\" to be more clear. I cannot do unit test for the typo because I cannot change the Config definition with a new definition with a wrong tag in the unit test. Any typo of the tag value will go through the exact match logic and the developer of the new field should find the issue from its own test.",
+      "parentUuid": "6583b47f_c9a0b97f",
       "range": {
         "startLine": 72,
         "startChar": 53,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee5d5f15_35455c7e",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8a11f3e_9d47633a",
+      "range": {
+        "startLine": 74,
+        "startChar": 55,
+        "endLine": 74,
+        "endChar": 62
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "032b01ff_81681e2a",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-01-29T09:57:35Z",
       "side": 1,
       "message": "new is a built-in function... can you pick another name?",
+      "range": {
+        "startLine": 147,
+        "startChar": 35,
+        "endLine": 147,
+        "endChar": 38
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d37c59ed_d5cd0958",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "Good catch. Changed to \"other\".",
+      "parentUuid": "032b01ff_81681e2a",
       "range": {
         "startLine": 147,
         "startChar": 35,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c857a345_16c9dd0d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "Yes, let\u0027s be safer. Removed match() definition.",
+      "parentUuid": "137b2d84_9f04200f",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 38
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2919cfc4_41a18f77",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-01-29T09:57:35Z",
       "side": 1,
       "message": "typo: Options",
+      "range": {
+        "startLine": 22,
+        "startChar": 34,
+        "endLine": 22,
+        "endChar": 53
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e07da9e_b2a00cc1",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "2919cfc4_41a18f77",
       "range": {
         "startLine": 22,
         "startChar": 34,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a6e0973_16aeb485",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f84db0d_c723365d",
+      "range": {
+        "startLine": 115,
+        "startChar": 9,
+        "endLine": 116,
+        "endChar": 26
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92bec71b_b3818b2a",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-01-29T09:57:35Z",
       "side": 1,
       "message": "nit: MD5 is deprecated. Can you use SHA256+?",
+      "range": {
+        "startLine": 119,
+        "startChar": 14,
+        "endLine": 119,
+        "endChar": 17
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d337671_9660dccc",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "MD5 is deprecated for cryptographic hash but probably is more suitable here as a checksum because its performance is better than SHA256?",
+      "parentUuid": "92bec71b_b3818b2a",
       "range": {
         "startLine": 119,
         "startChar": 14,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d73a7517_0e5a90dc",
+        "filename": "src/chromiumos/tast/local/chrome/reuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "I like the idea of making it a constant. Changed.",
+      "parentUuid": "10f216de_5f8c5762",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 54
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "400580a0_15895386",
@@ -284,6 +548,30 @@
       "writtenOn": "2021-01-29T09:57:35Z",
       "side": 1,
       "message": "Please leave the first parameter empty. By default another directory (/usr/local/tmp/tast/run_tmp) is used.",
+      "range": {
+        "startLine": 79,
+        "startChar": 32,
+        "endLine": 79,
+        "endChar": 38
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a32e69d8_d43346b2",
+        "filename": "src/chromiumos/tast/local/chrome/reuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "400580a0_15895386",
       "range": {
         "startLine": 79,
         "startChar": 32,
@@ -317,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db5b1fb9_35a83551",
+        "filename": "src/chromiumos/tast/local/chrome/reuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "I need to pass a non-existent dir because of the PrepareExtensions() check. I added some explanation in the code.\n\nYOu are right, the extension.Checksums() parameter has to be the same. I fixed the bug.",
+      "parentUuid": "e3338353_aa483bd4",
+      "range": {
+        "startLine": 84,
+        "startChar": 38,
+        "endLine": 84,
+        "endChar": 74
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b38a6114_c23b2548",
@@ -330,6 +642,30 @@
       "writtenOn": "2021-01-29T09:57:35Z",
       "side": 1,
       "message": "Please remove this check. I believe it\u0027s not necessary as long as the logic below is correct. With fewer early returns we can reduce the number of possible code paths, making it easier to reason about correctness.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "292db226_5b952555",
+        "filename": "src/chromiumos/tast/local/chrome/reuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b38a6114_c23b2548",
       "range": {
         "startLine": 94,
         "startChar": 0,
@@ -363,6 +699,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0309f12_c291958a",
+        "filename": "src/chromiumos/tast/local/chrome/reuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "I left only the login and screenlock checking part. The user name checking was removed.",
+      "parentUuid": "784cb36a_7da8cdbd",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19c51cd2_385c912b",
@@ -376,6 +736,30 @@
       "writtenOn": "2021-01-29T09:57:35Z",
       "side": 1,
       "message": "I like to make Config responsible for marshalling method. Can you add two methods Marshal and Unmarshal to Config, which in turn call json.Marshal/Unmarshal?",
+      "range": {
+        "startLine": 161,
+        "startChar": 16,
+        "endLine": 161,
+        "endChar": 25
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f281b2c_b1078448",
+        "filename": "src/chromiumos/tast/local/chrome/reuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T20:50:36Z",
+      "side": 1,
+      "message": "Good comment to make Marshal and Unmarshal in a single place so they can match each other. I like it!",
+      "parentUuid": "19c51cd2_385c912b",
       "range": {
         "startLine": 161,
         "startChar": 16,
