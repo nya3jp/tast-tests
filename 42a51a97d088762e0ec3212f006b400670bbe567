@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90f3ef4f_33b6a1e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-01-29T12:05:34Z",
+      "side": 1,
+      "message": "Done.\n\nWhy didn\u0027t we add this one to camera-postsubmit?",
+      "parentUuid": "02d36e79_c19de0ab",
+      "revId": "42a51a97d088762e0ec3212f006b400670bbe567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6817a59_1ec14805",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-29T11:04:32Z",
       "side": 1,
       "message": "Do we need to specify this again in ExtraAttr given that it\u0027s already in Attr?",
+      "revId": "42a51a97d088762e0ec3212f006b400670bbe567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb67557a_bf3b4c2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-01-29T12:05:34Z",
+      "side": 1,
+      "message": "Ah, these are search and replace failures...",
+      "parentUuid": "d6817a59_1ec14805",
       "revId": "42a51a97d088762e0ec3212f006b400670bbe567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
