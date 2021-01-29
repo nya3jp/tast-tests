@@ -52,9 +52,9 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 		measureDuration = 30 * time.Second
 		// Filename of the video that will be decoded.
 		decodeFilename = "1080p_30fps_300frames.vp8.ivf"
+		// Filename of the video that will be encoded
+		encodeFileName = "crowd-1920x1080.vp9.webm"
 	)
-	// Properties of the video that will be encoded.
-	encodeParams := encode.Crowd1080P
 
 	// Only a single process can have access to the GPU, so we are required to
 	// call "stop ui" at the start of the test. This will shut down the chrome
@@ -76,13 +76,13 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Create a raw YUV video and JSON for it to encode for the video encoder tests.
-	yuvPath, err := encoding.PrepareYUV(ctx, s.DataPath(encodeParams.Name),
+	yuvPath, err := encoding.PrepareYUV(ctx, s.DataPath(encodeFileName),
 		videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
 	if err != nil {
 		s.Fatal("Failed to create a yuv file: ", err)
 	}
 	yuvJSONPath, err := encoding.PrepareYUVJSON(ctx, yuvPath,
-		s.DataPath(encode.YUVJSONFileNameFor(encodeParams.Name)))
+		s.DataPath(encode.YUVJSONFileNameFor(encodeFileName)))
 	if err != nil {
 		os.Remove(yuvPath)
 		s.Fatal("Failed to create a yuv json file: ", err)
