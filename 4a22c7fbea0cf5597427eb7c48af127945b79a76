@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "899d0edb_643c3d15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-29T08:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9477e779_69bfa8d3",
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e03927ab_b72e0447",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "We have removed it.",
       "parentUuid": "e03927ab_b72e0447",
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d372d26_d039b57a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-29T08:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b21f1be_de6cac4f",
       "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +179,30 @@
       "side": 1,
       "message": "Ok, I got it. Thank you for your suggestion.",
       "parentUuid": "3edfa71e_bfcaba72",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 78
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32f3101_e2bd473b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-29T08:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ff6810b_5b2c1e33",
       "range": {
         "startLine": 19,
         "startChar": 2,
@@ -237,6 +297,30 @@
       "side": 1,
       "message": "I got it. I have removed it.",
       "parentUuid": "421c382a_712335ea",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a7fc2cb_61c13e61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-29T08:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fbecd5d_cdc4a488",
       "range": {
         "startLine": 42,
         "startChar": 9,
@@ -435,6 +519,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4162a9e5_eab85472",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-29T08:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4420530d_608f7265",
+      "range": {
+        "startLine": 45,
+        "startChar": 27,
+        "endLine": 45,
+        "endChar": 64
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "081b0338_0ca33be6",
@@ -599,6 +707,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e6d24eb_5152f081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-29T08:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "535e335c_3a57686e",
+      "range": {
+        "startLine": 61,
+        "startChar": 30,
+        "endLine": 61,
+        "endChar": 39
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "185d5eb8_d1973ed1",
@@ -683,6 +815,30 @@
       "side": 1,
       "message": "I have removed it.",
       "parentUuid": "368d71e0_e019696c",
+      "range": {
+        "startLine": 110,
+        "startChar": 18,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be7afa5c_48d46cb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-29T08:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c32f9a7a_b79fdbf1",
       "range": {
         "startLine": 110,
         "startChar": 18,
@@ -787,6 +943,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b3bd85_e593caf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-29T08:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a763271c_37e4c012",
+      "range": {
+        "startLine": 132,
+        "startChar": 24,
+        "endLine": 132,
+        "endChar": 34
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "688b9dd2_f16fdf64",
@@ -881,6 +1061,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9e0837_c4437986",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-29T08:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339c87d1_993f35b4",
+      "range": {
+        "startLine": 50,
+        "startChar": 27,
+        "endLine": 50,
+        "endChar": 36
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2867dd54_cb43870f",
@@ -918,6 +1122,30 @@
       "side": 1,
       "message": "I got it. We will pay attention about close function.",
       "parentUuid": "2867dd54_cb43870f",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a48b0089_9d4e73c1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-29T08:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ca62725_c0631e08",
       "range": {
         "startLine": 55,
         "startChar": 12,

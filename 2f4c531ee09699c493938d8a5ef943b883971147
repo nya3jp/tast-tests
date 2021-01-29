@@ -260,6 +260,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c5607c_d33ab376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-29T08:51:08Z",
+      "side": 1,
+      "message": "I have removed WaitUntilAllTabsLoaded from misc.go now.",
+      "parentUuid": "74e657b4_717765fc",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57682f5a_f9d5b6e5",
@@ -1328,6 +1346,30 @@
       "side": 1,
       "message": "New() will enable the bluetooth when it is disabled.  Right?\nIf it is already enabled, the test using this package will forcibly disable the bluetooth at the end.  I don\u0027t think that\u0027s wanted.\n\nRegarding disconnecting of bluetooth device, I think that is a great idea.",
       "parentUuid": "7296dc47_ec90326b",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 27
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af44b74_6c4f9aa8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-29T08:51:08Z",
+      "side": 1,
+      "message": "I have removed New() from bluetooth. I think it\u0027s better to call bluetooth.Connect \u0026 bluetooth.Disable directly.",
+      "parentUuid": "034394ec_d1c3e124",
       "range": {
         "startLine": 38,
         "startChar": 3,
