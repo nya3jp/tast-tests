@@ -27,7 +27,6 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{
 			{
 				Pre: chrome.LoggedIn(),
@@ -36,7 +35,7 @@ func init() {
 			{
 				Name:              "lacros",
 				Val:               apps.Lacros,
-				Pre:               lacroslauncher.StartedByDataUI(),
+				Fixture:           "lacrosStartedByDataUI",
 				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{lacroslauncher.DataArtifact},
 				ExtraSoftwareDeps: []string{"lacros"},
@@ -46,7 +45,7 @@ func init() {
 
 // SearchBuiltInApps searches for the Settings app in the Launcher.
 func SearchBuiltInApps(ctx context.Context, s *testing.State) {
-	cr, err := lacros.GetChrome(ctx, s.PreValue())
+	cr, err := lacros.GetChrome(ctx, s)
 	if err != nil {
 		s.Fatal("Failed to get a Chrome instance: ", err)
 	}
