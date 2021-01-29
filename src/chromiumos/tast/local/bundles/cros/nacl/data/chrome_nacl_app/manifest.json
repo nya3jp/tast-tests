@@ -1,4 +1,5 @@
 {
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoPXiqqbEpnSP30GjHNH0MrmtSTR97Hfp8oh9sMMEZekBvqyAGUvfQN7bRkZ24/msT1e8liC1wYO6tF0ynkuJbywSzkM+0CmO2pHp6+eijjrlX9HT/4LnIZPhjNqwG4DGXfWCWYmEZifSRjmMym9oZAmx8NWqK3fxcmnhLCV7DfZ2Q5pFHKvAV/HRlVw3FwPQZJqT8k01go1/IuyplnE+3Vv//VchkeO2VqBizhSxd1qX6afitTxRJ28G0NtMkf0LV+sUPsfUpvx1nb8qeLarOJtHvmeXotLywnBArIJo55jDukQpljeo/BLVdwIdyx8xhpf4PDbcHUx7ewcSRedWQIDAQAB",
   "app": {
     "background": {
       "scripts": ["background.js"]
