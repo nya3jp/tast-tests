@@ -23,31 +23,18 @@ import (
 // the precondition closes (if it's going to) e.g. collecting logs from the
 // container.
 func RunCrostiniPostTest(ctx context.Context, p PreData) {
-	dir, ok := testing.ContextOutDir(ctx)
-	if !ok || dir == "" {
-		testing.ContextLog(ctx, "Failed to get name of directory")
-		return
-	}
-
-	if p.ScreenRecorder != nil {
-		if err := p.ScreenRecorder.Stop(ctx); err != nil {
-			testing.ContextLogf(ctx, "Failed to stop recording: %s", err)
-		} else {
-			// TODO (jinrongwu): only save the record if the test case fails when porting to fixture.
-			testing.ContextLogf(ctx, "Saving screen record to %s", dir)
-			if err := p.ScreenRecorder.SaveInBytes(ctx, filepath.Join(dir, "screenRecord.webm")); err != nil {
-				testing.ContextLogf(ctx, "Failed to save screen record in bytes: %s", err)
-			}
-		}
-		p.ScreenRecorder.Release(ctx)
-	}
-
 	if p.Container == nil {
 		testing.ContextLog(ctx, "No active container")
 		return
 	}
 	if err := p.Container.Cleanup(ctx, "."); err != nil {
 		testing.ContextLog(ctx, "Failed to remove all files in home directory in the container: ", err)
+	}
+
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok || dir == "" {
+		testing.ContextLog(ctx, "Failed to get name of directory")
+		return
 	}
 
 	TrySaveVMLogs(ctx, p.Container.VM)

@@ -207,11 +207,10 @@ func GaiaLoginAvailable(s varState) bool {
 //		...
 //	}
 type PreData struct {
-	Chrome         *chrome.Chrome
-	TestAPIConn    *chrome.TestConn
-	Container      *vm.Container
-	Keyboard       *input.KeyboardEventWriter
-	ScreenRecorder *ui.ScreenRecorder
+	Chrome      *chrome.Chrome
+	TestAPIConn *chrome.TestConn
+	Container   *vm.Container
+	Keyboard    *input.KeyboardEventWriter
 }
 
 // StartedByComponentStretch ensures that a VM running stretch has
@@ -453,19 +452,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			if err := p.cr.ResetState(ctx); err != nil {
 				s.Fatal("Failed to reset chrome's state: ", err)
 			}
-			screenRecorder, err := ui.NewScreenRecorder(ctx, p.tconn)
-			if err != nil {
-				s.Log("Failed to create ScreenRecorder: ", err)
-			}
-
-			if screenRecorder != nil {
-				if err := screenRecorder.Start(ctx, p.tconn); err != nil {
-					s.Log("Failed to start screen record: ", err)
-				} else {
-					s.Log("Start screen recording")
-				}
-			}
-			return PreData{p.cr, p.tconn, p.cont, p.keyboard, screenRecorder}
+			return PreData{p.cr, p.tconn, p.cont, p.keyboard}
 		}
 	}
 
@@ -532,23 +519,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Fatal("Failed to create keyboard device: ", err)
 	}
 
-	if err := p.cr.ResetState(ctx); err != nil {
-		s.Fatal("Failed to reset chrome's state: ", err)
-	}
-
-	screenRecorder, err := ui.NewScreenRecorder(ctx, p.tconn)
-	if err != nil {
-		s.Log("Failed to create ScreenRecorder: ", err)
-	}
-
-	if screenRecorder != nil {
-		if err := screenRecorder.Start(ctx, p.tconn); err != nil {
-			s.Log("Failed to start screen record: ", err)
-		} else {
-			s.Log("Start screen recording")
-		}
-	}
-
 	if useLocalImage {
 		s.Log("keepState attempting to start the existing VM and container by launching Terminal")
 		terminalApp, err := terminalapp.Launch(ctx, p.tconn)
@@ -581,7 +551,10 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	chrome.Lock()
 	vm.Lock()
 	shouldClose = false
-	return PreData{p.cr, p.tconn, p.cont, p.keyboard, screenRecorder}
+	if err := p.cr.ResetState(ctx); err != nil {
+		s.Fatal("Failed to reset chrome's state: ", err)
+	}
+	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
 }
 
 // keepState returns whether the precondition should keep state from the
