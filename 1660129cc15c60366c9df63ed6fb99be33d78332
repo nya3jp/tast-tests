@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "248df3b7_5cfb8d86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-29T19:08:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73870e59_90238c07",
+      "revId": "1660129cc15c60366c9df63ed6fb99be33d78332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c677a1ee_454c3dde",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "832d4370_f4e2c2d6",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-29T19:08:07Z",
+      "side": 1,
+      "message": "Not applicable, using the daemon_control.go instead.",
+      "parentUuid": "c677a1ee_454c3dde",
+      "range": {
+        "startLine": 80,
+        "startChar": 41,
+        "endLine": 80,
+        "endChar": 68
+      },
+      "revId": "1660129cc15c60366c9df63ed6fb99be33d78332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b929697a_de3cfe44",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-01-29T17:16:19Z",
       "side": 1,
       "message": "There are other callers of this method. Now, with this CL, tcsd is restarted.\nIs it intentional change?",
+      "revId": "1660129cc15c60366c9df63ed6fb99be33d78332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d81ed80_45707287",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-29T19:08:07Z",
+      "side": 1,
+      "message": "Not applicable.\nBTW, we only running tcsd on TPM1.2 device.",
+      "parentUuid": "b929697a_de3cfe44",
       "revId": "1660129cc15c60366c9df63ed6fb99be33d78332",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
