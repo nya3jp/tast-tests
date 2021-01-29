@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/testutil"
 )
 
-func TestComputeExtensionIDFromPublicKey(t *testing.T) {
+func TestComputeExtensionID(t *testing.T) {
 	dir := testutil.TempDir(t)
 	defer os.RemoveAll(dir)
 
@@ -29,19 +29,5 @@ func TestComputeExtensionIDFromPublicKey(t *testing.T) {
 	exp := "melddjfinppjdikinhbgehiennejpfhp"
 	if id != exp {
 		t.Errorf("ComputeExtensionID(%q) = %q; want %q", dir, id, exp)
-	}
-}
-
-func TestComputeExtensionIDFromDirName(t *testing.T) {
-	// Taken from Chrome's components/crx_file/id_util_unittest.cc.
-	for _, tc := range []struct{ dir, exp string }{
-		{"test", "jpignaibiiemhngfjkcpokkamffknabf"},
-		{"_", "ncocknphbhhlhkikpnnlmbcnbgdempcd"},
-	} {
-		if id, err := ComputeExtensionID(tc.dir); err != nil {
-			t.Errorf("ComputeExtensionID(%q) failed with %v", tc.dir, err)
-		} else if id != tc.exp {
-			t.Errorf("ComputeExtensionID(%q) = %q; want %q", tc.dir, id, tc.exp)
-		}
 	}
 }
