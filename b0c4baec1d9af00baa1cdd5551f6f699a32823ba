@@ -39,6 +39,30 @@
       },
       "revId": "b0c4baec1d9af00baa1cdd5551f6f699a32823ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f36cde_71d056dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T01:45:33Z",
+      "side": 1,
+      "message": "Hi Jun,\n\ncharge_full_design unit is microAh\nvoltage_min_desing unit is microV\n\nt.chargeFullDesign * t.voltageMinDesign * 1e-12 will have unit V*Ah (watt*hour)\n\nto convert it to Joules (watt*second), we need multiply 3600. This way it has same unit with the collected CUJ energy (t.energy) in Joules and a percentage can be calculated.",
+      "parentUuid": "7d1cb9c3_98a33724",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 76
+      },
+      "revId": "b0c4baec1d9af00baa1cdd5551f6f699a32823ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
