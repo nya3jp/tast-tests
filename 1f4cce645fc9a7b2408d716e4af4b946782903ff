@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "785f2edc_39b1c93b",
+        "filename": "src/chromiumos/tast/local/multivm/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:37:13Z",
+      "side": 1,
+      "message": "nit: maybe Returns nil if not available?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 18
+      },
+      "revId": "1f4cce645fc9a7b2408d716e4af4b946782903ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c8daa5_a3bcd412",
+        "filename": "src/chromiumos/tast/local/multivm/crostini.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:37:13Z",
+      "side": 1,
+      "message": "C",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "1f4cce645fc9a7b2408d716e4af4b946782903ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca35b550_7ec1530b",
+        "filename": "src/chromiumos/tast/local/multivm/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:37:13Z",
+      "side": 1,
+      "message": "These options seem to be the default. Can they be automatically filled in if they are unset?\n\nfalse is already the value of LargeContainer if not set.",
+      "revId": "1f4cce645fc9a7b2408d716e4af4b946782903ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86492f01_4f4f1585",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:37:13Z",
+      "side": 1,
+      "message": "Maybe Activate here?",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "1f4cce645fc9a7b2408d716e4af4b946782903ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b436f94e_07d66205",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:37:13Z",
+      "side": 1,
+      "message": "Add helpers for the existing VM types.",
+      "revId": "1f4cce645fc9a7b2408d716e4af4b946782903ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d73ccb4d_d6c99ece",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:37:13Z",
+      "side": 1,
+      "message": "failed activating",
+      "range": {
+        "startLine": 202,
+        "startChar": 29,
+        "endLine": 202,
+        "endChar": 39
+      },
+      "revId": "1f4cce645fc9a7b2408d716e4af4b946782903ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954fa0b3_4a820ebb",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:37:13Z",
+      "side": 1,
+      "message": "failed checking",
+      "range": {
+        "startLine": 230,
+        "startChar": 29,
+        "endLine": 230,
+        "endChar": 37
+      },
+      "revId": "1f4cce645fc9a7b2408d716e4af4b946782903ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

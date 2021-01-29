@@ -205,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c73a645_013a4fc7",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:37:13Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "e76fdafb_cd8dc304",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3036e85_6c9ba596",
@@ -242,6 +260,30 @@
       "side": 1,
       "message": "That would be nice. Unfortunately, as far as I\u0027m aware, there is no real consistency between arc, crostini and pita VM objects.",
       "parentUuid": "b3036e85_6c9ba596",
+      "range": {
+        "startLine": 116,
+        "startChar": 40,
+        "endLine": 116,
+        "endChar": 49
+      },
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103e493f_18a4f0dd",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:37:13Z",
+      "side": 1,
+      "message": "Can you add helpers to get the current VMs?",
+      "parentUuid": "043e25d6_4b551a29",
       "range": {
         "startLine": 116,
         "startChar": 40,
@@ -318,6 +360,24 @@
       "side": 1,
       "message": "I think this would change the semantics of the Deactivate implementation. Under the old approach, even if the cleanup of one VM panicked, the others would still be attempted. If I switch the for loop and the defer around, a panic in one cleanup would stop the other cleanups from running.\n\nSee comment on line 244:\n\t// NB: We deactivate in reverse order using defer so that if any one part\n\t// panics, the rest will still complete.",
       "parentUuid": "25c5339d_9269e100",
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6270410f_23738d6c",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:37:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "12a0dad5_f2bfeb55",
       "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
