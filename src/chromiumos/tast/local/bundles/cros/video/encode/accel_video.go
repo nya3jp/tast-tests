@@ -31,18 +31,18 @@ import (
 // Duration of the interval during which CPU usage will be measured in the performance test.
 const measureInterval = 20 * time.Second
 
-// TestOptionsNew is the options for runNewAccelVideoTest.
-type TestOptionsNew struct {
+// TestOptions is the options for runAccelVideoTest.
+type TestOptions struct {
 	WebMName string
 	Profile  videotype.CodecProfile
 }
 
-// TestData returns the files used in video.EncodeAccelNew(Perf), the webm file and the json file returned by encode.YUVJSONFileNameFor().
+// TestData returns the files used in video.EncodeAccel(Perf), the webm file and the json file returned by encode.YUVJSONFileNameFor().
 func TestData(webmFileName string) []string {
 	return []string{webmFileName, YUVJSONFileNameFor(webmFileName)}
 }
 
-// YUVJSONFileNameFor returns the json file name used in video.EncodeAccelNew with |webmMFileName|.
+// YUVJSONFileNameFor returns the json file name used in video.EncodeAccel with |webmMFileName|.
 // For example, if |webMFileName| is bear-320x192.vp9.webm, then bear-320x192.yuv.json is returned.
 func YUVJSONFileNameFor(webMFileName string) string {
 	const webMSuffix = ".vp9.webm"
@@ -66,8 +66,8 @@ func codecProfileToEncodeCodecOption(profile videotype.CodecProfile) (string, er
 	}
 }
 
-// RunNewAccelVideoTest runs all tests in video_encode_accelerator_tests.
-func RunNewAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestOptionsNew) {
+// RunAccelVideoTest runs all tests in video_encode_accelerator_tests.
+func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestOptions) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -122,15 +122,14 @@ func RunNewAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts Te
 	}
 }
 
-// RunNewAccelVideoPerfTest runs video_encode_accelerator_perf_tests with the specified
+// RunAccelVideoPerfTest runs video_encode_accelerator_perf_tests with the specified
 // video file.
 // - Uncapped performance: the specified test video is encoded for 300 frames by the hardware encoder as fast as possible.
 // This provides an estimate of the decoder's max performance (e.g. the maximum FPS).
 // - Capped performance: the specified test video is encoded for 300 frames by the hardware encoder at 30fps.
 // This is used to measure cpu usage and power consumption in the practical case.
 // - Quality performance: the specified test video is encoded for 300 frames and computes the SSIM and PSNR metrics of the encoded stream.
-// TODO(hiroh): Remove New once video.EncodeAccelNewPerf becomes video.EncodeAccelPerf.
-func RunNewAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts TestOptionsNew) error {
+func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts TestOptions) error {
 	const (
 		// Name of the uncapped performance test.
 		uncappedTestname = "MeasureUncappedPerformance"
