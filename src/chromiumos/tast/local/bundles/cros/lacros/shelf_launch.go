@@ -22,22 +22,26 @@ func init() {
 		Contacts:     []string{"lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Vars:         []string{"lacrosDeployedBinary"}, // Isn't applicable to omaha. TODO: stop applying to omaha once switched to fixture.
 		Params: []testing.Param{
 			{
-				Pre:       launcher.StartedByDataUI(),
+				Fixture:   "lacrosStartedByDataUI",
 				ExtraData: []string{launcher.DataArtifact},
 			},
 			{
 				Name:              "omaha",
-				Pre:               launcher.StartedByOmaha(),
+				Fixture:           "lacrosStartedByOmaha",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
 			}},
 	})
 }
 
 func ShelfLaunch(ctx context.Context, s *testing.State) {
-	tconn, err := s.PreValue().(launcher.PreData).Chrome.TestAPIConn(ctx)
+	// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
+	if err := launcher.EnsureLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact)); err != nil {
+		s.Fatal("Failed to extract lacros binary: ", err)
+	}
+
+	tconn, err := s.FixtValue().(launcher.FixtData).Chrome.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
@@ -96,7 +100,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Connecting to the lacros-chrome browser")
-	p := s.PreValue().(launcher.PreData)
+	p := s.FixtValue().(launcher.FixtData)
 	l, err := launcher.ConnectToLacrosChrome(ctx, p.LacrosPath, launcher.LacrosUserDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
