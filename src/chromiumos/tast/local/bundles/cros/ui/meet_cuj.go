@@ -286,7 +286,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
 		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-		"percent", perf.SmallerIsBetter, []int64{50, 80})}
+		"percent", perf.SmallerIsBetter, []int64{5, 10})}
 	for _, suffix := range []string{"Capturer", "Encoder", "EncoderQueue", "RateLimiter"} {
 		configs = append(configs, cuj.NewCustomMetricConfig(
 			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
@@ -295,7 +295,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if meet.docs {
 		configs = append(configs, cuj.NewCustomMetricConfig(
 			"Event.Latency.EndToEnd.KeyPress", "microsecond", perf.SmallerIsBetter,
-			[]int64{80000, 160000}))
+			[]int64{80000, 400000}))
 	}
 
 	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
