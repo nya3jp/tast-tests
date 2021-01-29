@@ -60,6 +60,54 @@ func (dc *DaemonController) waitForDBusService(ctx context.Context, name string)
 	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 15 * time.Second})
 }
 
+// StartTrunks starts trunksd and waits until the D-Bus interface is responsive.
+func (dc *DaemonController) StartTrunks(ctx context.Context) error {
+	if _, err := dc.r.Run(ctx, "start", "trunksd"); err != nil {
+		return errors.Wrap(err, "failed to start trunks")
+	}
+	return dc.waitForDBusService(ctx, "org.chromium.Trunks")
+}
+
+// StopTrunks stops trunksd.
+func (dc *DaemonController) StopTrunks(ctx context.Context) error {
+	if _, err := dc.r.Run(ctx, "stop", "trunksd"); err != nil {
+		return errors.Wrap(err, "failed to stop trunks")
+	}
+	return nil
+}
+
+// RestartTrunks restarts trunksd and waits until the D-Bus interface is responsive.
+func (dc *DaemonController) RestartTrunks(ctx context.Context) error {
+	if _, err := dc.r.Run(ctx, "restart", "trunksd"); err != nil {
+		return errors.Wrap(err, "failed to restart trunksd")
+	}
+	return dc.waitForDBusService(ctx, "org.chromium.Trunks")
+}
+
+// StartTcsd starts tcsd.
+func (dc *DaemonController) StartTcsd(ctx context.Context) error {
+	if _, err := dc.r.Run(ctx, "start", "tcsd"); err != nil {
+		return errors.Wrap(err, "failed to start tcsd")
+	}
+	return nil
+}
+
+// StopTcsd stops tcsd.
+func (dc *DaemonController) StopTcsd(ctx context.Context) error {
+	if _, err := dc.r.Run(ctx, "stop", "trunksd"); err != nil {
+		return errors.Wrap(err, "failed to stop tcsd")
+	}
+	return nil
+}
+
+// RestartTcsd restarts tcsd.
+func (dc *DaemonController) RestartTcsd(ctx context.Context) error {
+	if _, err := dc.r.Run(ctx, "restart", "tcsd"); err != nil {
+		return errors.Wrap(err, "failed to restart tcsd")
+	}
+	return nil
+}
+
 // StartCryptohome starts cryptohomed and waits until the D-Bus interface is responsive.
 func (dc *DaemonController) StartCryptohome(ctx context.Context) error {
 	if _, err := dc.r.Run(ctx, "start", "cryptohomed"); err != nil {
