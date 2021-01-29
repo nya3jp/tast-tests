@@ -8,16 +8,19 @@ package a11y
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
 const (
 	chromeVoxExtensionURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/chromevox/background/background.html"
+	googleTTSExtensionID  = "gjjabgpgjpampikjhjpfhneeoapjbjaf"
 )
 
 // Feature represents an accessibility feature in Chrome OS.
@@ -36,8 +39,8 @@ const (
 // SetFeatureEnabled sets the specified accessibility feature enabled/disabled using the provided connection to the extension.
 func SetFeatureEnabled(ctx context.Context, tconn *chrome.TestConn, feature Feature, enable bool) error {
 	if err := tconn.Call(ctx, nil, `(feature, enable) => {
-		  return tast.promisify(tast.bind(chrome.accessibilityFeatures[feature], "set"))({value: enable});
-		}`, feature, enable); err != nil {
+      return tast.promisify(tast.bind(chrome.accessibilityFeatures[feature], "set"))({value: enable});
+    }`, feature, enable); err != nil {
 		return errors.Wrapf(err, "failed to toggle %v to %t", feature, enable)
 	}
 	return nil
@@ -111,5 +114,148 @@ func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.T
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
 		return errors.Wrap(err, "failed to get current focus")
 	}
+	return nil
+}
+
+// SpeechMonitor represents a connection to the Google TTS extension background
+// page and is used to verify spoken utterances.
+type SpeechMonitor struct {
+	conn *chrome.Conn
+}
+
+// NewSpeechMonitor connects to the Google TTS extension and starts accumulating
+// utterances. Call Consume to compare expected and actual utterances.
+// If the extension is not ready, the connection will be closed before returning.
+// Otherwise the calling function will close the connection.
+func NewSpeechMonitor(ctx context.Context, c *chrome.Chrome) (sm *SpeechMonitor, retErr error) {
+	bgURL := chrome.ExtensionBackgroundPageURL(googleTTSExtensionID)
+	targets, err := c.FindTargets(ctx, chrome.MatchTargetURL(bgURL))
+	if err != nil {
+		return nil, err
+	}
+	if len(targets) > 1 {
+		for _, t := range targets[1:] {
+			// Close all but one instance of the Google TTS engine background page.
+			// We must do this because because trying to connect when there are multiple
+			// instances triggers the following error:
+			// Error: X targets matched while unique match was expected.
+			c.CloseTarget(ctx, t.TargetID)
+		}
+	}
+
+	var extConn *chrome.Conn
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		extConn, err = c.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+		return err
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return nil, errors.Wrap(err, "failed to create a connection to the Google TTS background page")
+	}
+
+	defer func() {
+		if retErr != nil {
+			extConn.Close()
+		}
+	}()
+
+	if err := extConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		return nil, errors.Wrap(err, "timed out waiting for the Google TTS engine background page to load")
+	}
+
+	if err := extConn.Eval(ctx, `
+    window.testUtterances = [];
+    chrome.ttsEngine.onSpeak.addListener(utterance =>testUtterances.push(utterance));
+`, nil); err != nil {
+		return nil, errors.Wrap(err, "failed to inject code to accumulate utterances")
+	}
+
+	return &SpeechMonitor{extConn}, nil
+}
+
+// Close closes the connection to the Google TTS extension's background page.
+func (sm *SpeechMonitor) Close() {
+	sm.conn.Close()
+}
+
+// waitForUtterance is used for synchronization purposes. It takes the last
+// utterance that should be spoken as a result of an action and waits for it,
+// ensuring that all utterances are spoken before we start consuming utterances.
+// We need to wait for the last utterance since waiting for an intermediate
+// utterance could cause flakes.
+func (sm *SpeechMonitor) waitForUtterance(ctx context.Context, utterance string) error {
+	expr := fmt.Sprintf(`testUtterances.length > 0 && testUtterances[testUtterances.length - 1] === "%s"`, utterance)
+	if err := sm.conn.WaitForExpr(ctx, expr); err != nil {
+		return errors.Wrapf(err, "timed out waiting for utterance: %s", utterance)
+	}
+
+	return nil
+}
+
+// consume ensures that the expected utterances were spoken by the
+// TTS engine. It also consumes all utterances accumulated in TTS extension's
+// background page.
+// The algorithm works as follows:
+// 1. Retrieve a list of utterances spoken by the TTS engine. This is our list
+// of actual utterances.
+// 2. For each expected utterance, we check for a match in the list of actual
+// utterances.
+// 3. After an utterance is matched, we remove all utterances that came before
+// it from the actual list. This ensures we never match against stale
+// utterances.
+// 4. After all utterances have been matched, we reset the utterances list in
+// the TTS background page to ensure we never use stale utterances during
+// consumption.
+func (sm *SpeechMonitor) consume(ctx context.Context, expected []string) error {
+	// Wait for the last utterance before we start consuming utterances.
+	sm.waitForUtterance(ctx, expected[len(expected)-1])
+
+	var actual []string
+	if err := sm.conn.Eval(ctx, "testUtterances", &actual); err != nil {
+		return errors.Wrap(err, "failed to retrieve actual utterances")
+	}
+
+	for _, exp := range expected {
+		found := -1
+		for i, act := range actual {
+			if exp == act {
+				found = i
+				break
+			}
+		}
+
+		if found == -1 {
+			return errors.Errorf("Utterance expected but not spoken: %s", exp)
+		}
+
+		actual = actual[found+1:]
+	}
+
+	if err := sm.conn.Eval(ctx, "testUtterances = [];", nil); err != nil {
+		return errors.Wrap(err, "failed to reset testUtterances")
+	}
+
+	return nil
+}
+
+// PressKeysAndConsumeUtterances presses keys and ensures that the utterances
+// were spoken by the TTS engine.
+func PressKeysAndConsumeUtterances(ctx context.Context, sm *SpeechMonitor, keySequence, utterances []string) error {
+	// Open a connection to the keyboard.
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "error with creating EventWriter from keyboard")
+	}
+	defer ew.Close()
+
+	for _, keys := range keySequence {
+		if err := ew.Accel(ctx, keys); err != nil {
+			return errors.Wrapf(err, "error when pressing the keys: %s", keys)
+		}
+	}
+
+	if err := sm.consume(ctx, utterances); err != nil {
+		return errors.Wrap(err, "error when consuming utterances")
+	}
+
 	return nil
 }
