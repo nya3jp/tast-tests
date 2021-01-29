@@ -142,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91226806_78a48c13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-29T17:16:19Z",
+      "side": 1,
+      "message": "Could you explain more reason? Why it is necessary on local, and why not in remote?",
+      "parentUuid": "502af569_95d5e463",
+      "revId": "f0e50ae5ed79a9f6ce10facfd488c053aec90933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7258ba5e_48bb0634",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
         "patchSetId": 18
@@ -177,6 +195,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "7258ba5e_48bb0634",
+      "range": {
+        "startLine": 125,
+        "startChar": 34,
+        "endLine": 125,
+        "endChar": 37
+      },
+      "revId": "f0e50ae5ed79a9f6ce10facfd488c053aec90933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86b28a5_7970bf51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-29T17:16:19Z",
+      "side": 1,
+      "message": "It\u0027s unclear the reason. Could you describe more background? What can cause the counter increase, and why it needs to be small (and maybe why 2 is a good threshold)?",
+      "parentUuid": "8a067d1c_7bfcd44b",
       "range": {
         "startLine": 125,
         "startChar": 34,
