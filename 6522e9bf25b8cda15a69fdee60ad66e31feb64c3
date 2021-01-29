@@ -16,6 +16,52 @@
       "message": "bhansknecht@ PTAL since you reviewed the previous CL yesterday.\n\nOthers FYI.",
       "revId": "6522e9bf25b8cda15a69fdee60ad66e31feb64c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b67b7b5_814164ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-29T22:23:46Z",
+      "side": 1,
+      "message": "You might want to poll for a set amount of time instead of retrying exactly 2 times.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 16
+      },
+      "revId": "6522e9bf25b8cda15a69fdee60ad66e31feb64c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "700fe891_199fdf5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-29T22:23:46Z",
+      "side": 1,
+      "message": "I would consider logging the error so that you can collect context around it and maybe eventually fix it.",
+      "range": {
+        "startLine": 114,
+        "startChar": 98,
+        "endLine": 114,
+        "endChar": 99
+      },
+      "revId": "6522e9bf25b8cda15a69fdee60ad66e31feb64c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
