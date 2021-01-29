@@ -292,6 +292,30 @@
       },
       "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e5ce97_78f43f57",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-29T01:27:00Z",
+      "side": 1,
+      "message": "A little more background for this. We have found on some low end DUTs that the WPR process will consume much system resources, especially the memory, and impact the case execution. After discussing with Aings we agreed to run this WPR process outside of the DUT, which make more sense to benchmark a DUT performance.",
+      "parentUuid": "d66bdb73_eed90200",
+      "range": {
+        "startLine": 249,
+        "startChar": 55,
+        "endLine": 249,
+        "endChar": 58
+      },
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
