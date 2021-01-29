@@ -16,6 +16,29 @@
       "message": "I address Jun\u0027s comments and also added more submit info to the CL to explain the purpose of the changes.",
       "revId": "b0c4baec1d9af00baa1cdd5551f6f699a32823ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d1cb9c3_98a33724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T01:37:31Z",
+      "side": 1,
+      "message": "Sorry, I\u0027ve completely overseen this from the beginning... what is this?\n\nt.chargeFullDesign * t.voltageMinDesign * 1e-12 would be in the unit of watt value for the full-charged battery, I guess. But why 3600?  t.energy joule is accumulated to a certain duration. Why not using the same duration?",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 76
+      },
+      "revId": "b0c4baec1d9af00baa1cdd5551f6f699a32823ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
