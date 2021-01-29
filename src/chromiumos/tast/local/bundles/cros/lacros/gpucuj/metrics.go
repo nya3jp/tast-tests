@@ -180,6 +180,21 @@ var metricMap = map[string]struct {
 		direction: perf.SmallerIsBetter,
 		uma:       false,
 	},
+	"trace_percent_dropped": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       false,
+	},
+	"trace_fps": {
+		unit:      "count",
+		direction: perf.BiggerIsBetter,
+		uma:       false,
+	},
+	"trace_num_frames": {
+		unit:      "count",
+		direction: perf.BiggerIsBetter,
+		uma:       false,
+	},
 }
 
 // These are the default categories for 'UI Rendering' in chrome://tracing plus 'exo' and 'wayland'.
@@ -317,6 +332,18 @@ type traceable interface {
 	StopTracing(ctx context.Context) (*trace.Trace, error)
 }
 
+func computeTraceStats(tr *trace.Trace) (*results, error) {
+	fs, err := newFrameStats(tr)
+	if err != nil {
+		return nil, err
+	}
+	res, err := fs.computeProportionDroppedFrames()
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}
+
 func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 	invoc *testInvocation, perfFn func(ctx context.Context) error) error {
 	if s, err := os.Stat(invoc.traceDir); err != nil || !s.IsDir() {
@@ -370,6 +397,20 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 	filename := fmt.Sprintf("%s-%s-trace.data.gz", string(invoc.crt), invoc.page.name)
 	filename = filepath.Join(invoc.traceDir, filename)
 	if err := chrome.SaveTraceToFile(ctx, tr, filename); err != nil {
+		return err
+	}
+
+	res, err := computeTraceStats(tr)
+	if err != nil {
+		return err
+	}
+	if err := invoc.metrics.recordValue(ctx, invoc, "trace_percent_dropped", res.proportionDropped*100.0); err != nil {
+		return err
+	}
+	if err := invoc.metrics.recordValue(ctx, invoc, "trace_fps", res.fps); err != nil {
+		return err
+	}
+	if err := invoc.metrics.recordValue(ctx, invoc, "trace_num_frames", float64(res.numFrames)); err != nil {
 		return err
 	}
 
