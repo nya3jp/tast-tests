@@ -12,6 +12,7 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/proto"
@@ -207,4 +208,11 @@ func (h *Helper) DropResetLockPermissions(ctx context.Context) (restoreFunc func
 		}
 		return nil
 	}, nil
+}
+
+// GetTPMVersion would rteurn the TPM version, for example: "1.2", "2.0"
+func (h *Helper) GetTPMVersion(ctx context.Context) (string, error) {
+	out, err := h.CmdRunner.Run(ctx, "tpmc", "tpmver")
+	// Trailing newline char is trimmed.
+	return strings.TrimSpace(string(out)), err
 }
