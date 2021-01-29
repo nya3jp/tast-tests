@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f583d7f0_b432d524",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-29T22:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5da3f7ea_a5ce0247",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2ac4f92_b5cc7e33",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-29T06:37:17Z",
       "side": 1,
       "message": "Having \"Expected\" field in GoogleTTSConn is a bit strange. IIUC we initially introduced this type just to distinguish it from other usual *chrome.Conn (thus its name \"GoogleTTSConn\"), but it\u0027s now doing more things.\n\nLet us revisit the abstraction. My recommendation is to introduce a type responsible for recording and comparing utterances, but not accumulating expectations. Suggested API signatures (but names are not well thought out):\n\n type TTSRecorder struct {\n   conn *chrome.Conn // connection to the TTS extension; it\u0027s NOT embedded because TTSRecorder is an abstraction of chrome.Conn\n }\n\n // NewTTSRecorder connects to the TTS extension and starts recording utterances.\n // Once it starts, TTSRecorder accumulates utterances made by the extension\n // to its internal buffer. Call Consume to compare them to expectations.\n func NewTTSRecorder(ctx context.Context, c *chrome.Chrome) (*TTSRecorder, error)\n\n // Consume waits for the TTS engine to speak the given utterances.\n // This method consumes utterances accumulated in TTSRecorder\u0027s internal buffer.\n func (r *TTSRecorder) Consume(ctx context.Context, timeout time.Duration, utterances []string) error\n\n // Close stops TTS recording and closes a connection.\n func (r *TTSRecorder) Close() error\n\n\nThen, usage would be like:\n\n r, err :\u003d NewTTSRecorder(ctx, c)\n if err !\u003d nil { ... }\n defer r.Close()\n\n // Do something...\n\n if err :\u003d r.Consume(ctx, 10*time.Second, []string{\"something\", \"is\", \"done\"}); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 9
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86bee2db_91f68a44",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-29T22:21:22Z",
+      "side": 1,
+      "message": "I agree that we should rethink the abstraction now that we\u0027re doing more with the TTS background page. I implemented most of your suggestions with some slight changes. For example, I named the new type SpeechMonitor, since a similar class already exists in the Chrome codebase [1]. Thank you for helping to iron this out and let me know what you think 😊\n\n[1] https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/ash/accessibility/speech_monitor.h",
+      "parentUuid": "a2ac4f92_b5cc7e33",
       "range": {
         "startLine": 147,
         "startChar": 1,
@@ -66,6 +114,47 @@
         "endLine": 171,
         "endChar": 15
       },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90352bf0_b0548398",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-29T22:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7f8b02c_775a47ff",
+      "range": {
+        "startLine": 171,
+        "startChar": 11,
+        "endLine": 171,
+        "endChar": 15
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f362d678_8a47c1e5",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-29T22:21:22Z",
+      "side": 1,
+      "message": "Note: I removed this in an attempt to minimize dependency on implementation details. Tests still pass when I run locally.",
       "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -166,6 +255,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d6dd165_f3d70ede",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-29T22:21:22Z",
+      "side": 1,
+      "message": "We still need this because we can\u0027t start consuming utterances until all have been spoken. Without this, we will try to consume utterances, but testUtterances might be either partially-populated or empty.",
+      "parentUuid": "d42e7e5a_99b72506",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0df5c19b_92924ffd",
         "filename": "src/chromiumos/tast/local/a11y/a11y.go",
         "patchSetId": 8
@@ -177,6 +290,30 @@
       "writtenOn": "2021-01-29T06:37:17Z",
       "side": 1,
       "message": "This matching algorithm looks nice. I recommend briefly documenting the algorithm in the method comment.",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 35
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f19664ef_f9ace977",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-29T22:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0df5c19b_92924ffd",
       "range": {
         "startLine": 230,
         "startChar": 0,
@@ -200,6 +337,30 @@
       "writtenOn": "2021-01-29T00:56:54Z",
       "side": 1,
       "message": "`DoCommand` is also an internal representation of ChromeVox, I think.\nCan we inject keyboard shortcut instead?",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 71
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e436f658_1af9fa3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-29T22:21:22Z",
+      "side": 1,
+      "message": "Sure, I removed this method and now all actions are performed by pressing on the keyboard.",
+      "parentUuid": "33b63662_fcb7f094",
       "range": {
         "startLine": 59,
         "startChar": 11,
@@ -247,6 +408,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "9068c38e_1efa4f65",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50db3ca1_b6126993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-29T22:21:22Z",
+      "side": 1,
+      "message": "I think there are two possible approaches here:\n1. Verify utterances after each action.\n2. Verify all utterances at the very end after all actions have been performed.\n\nI think either way can work, but might be easier to track down errors if we verify after each action. The only thing I\u0027ll mention is that the above approach will require us to constantly clear the accumulated list of utterances to ensure we\u0027re not comparing against stale utterances.\n\nI used this implementation in my latest patch set, so let me know what you think!",
+      "parentUuid": "88f7369d_f9b49a24",
       "range": {
         "startLine": 70,
         "startChar": 1,
