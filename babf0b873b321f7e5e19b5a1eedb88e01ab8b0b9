@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "225d3877_3ea190ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-29T03:06:02Z",
+      "side": 1,
+      "message": "Looking good modulo question which I suspect derive from\nmy lack of proficiency in Go.",
+      "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0746de53_69add38e",
@@ -72,6 +89,30 @@
       "side": 1,
       "message": "My understanding, encodeImplementation is contained in an object with type \"outbound-rtp\", and decodeImplementation is in one with type \"inbound-rtp\".\n# Let me know, if my understanding is wrong.\n\nThe new code returns \"an entire object with a specified type\", rather than the type itself.\nThe object is returned in JSON, and it will be parsed and then stored to |out|.\nFollowing the Go\u0027s standard JSON library, it can accept any struct, and its members can be annotated with \"json\", like L119 and L131. That handles what \"statName\" etc did.\n\nSo, except filtering by type with above my understanding, old code and new code should do the same thing, specifically attribute name handling.",
       "parentUuid": "0746de53_69add38e",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 6
+      },
+      "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de8ae939_e76c287b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-29T03:06:02Z",
+      "side": 1,
+      "message": "OIC, my bad: e.g. l.131-133 \"picks out\" the (de|en)coderImplementation\nout of the whole (in|out)bound-rtp. Understood, thanks for the \nexplanation.",
+      "parentUuid": "414913e3_38fdd893",
       "range": {
         "startLine": 94,
         "startChar": 5,
@@ -124,6 +165,29 @@
         "startChar": 37,
         "endLine": 122,
         "endChar": 56
+      },
+      "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec06d27b_419613b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-29T03:06:02Z",
+      "side": 1,
+      "message": "So, just to make sure, txMeasurement.FramesPerSecond here is going to\nretrieve the \"outbound-rtp\" stat report and cherry pick the \n|framesPerSecond| entry? If yes, this is indeed a much more concise\nsyntax! Sad I didn\u0027t know it could be done this way...\n\nOTOH on the other file l.131-137 we have\n\tvar out struct {\n\t\tDecoder string `json:\"decoderImplementation\"`\n\t}\n\t//...\n\treturn out.Decoder, nil\n\nCould we just have used\n\treturn out.DecoderImplementation, nil\n\n?",
+      "range": {
+        "startLine": 181,
+        "startChar": 28,
+        "endLine": 181,
+        "endChar": 57
       },
       "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
