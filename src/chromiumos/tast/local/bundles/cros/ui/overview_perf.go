@@ -31,7 +31,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      8 * time.Minute,
-		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{{
 			Val:     lacros.ChromeTypeChromeOS,
 			Fixture: "chromeLoggedIn",
@@ -42,7 +41,7 @@ func init() {
 		}, {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
-			Pre:               launcher.StartedByData(),
+			Fixture:           "lacrosStartedByData",
 			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
@@ -56,11 +55,12 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	pv := s.FixtValue()
-	if pv == nil {
-		pv = s.PreValue()
+	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+	var artifactPath string
+	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+		artifactPath = s.DataPath(launcher.DataArtifact)
 	}
-	cr, l, cs, err := lacros.Setup(ctx, pv, s.Param().(lacros.ChromeType))
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
