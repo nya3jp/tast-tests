@@ -22,6 +22,30 @@
       },
       "revId": "382ac207beccd1fb997e03eb3c1ffb978c0c90ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b0d388_15669809",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-29T18:57:29Z",
+      "side": 1,
+      "message": "Yeah, seems we should moving these helper functions into hwsec helper.",
+      "parentUuid": "4a08ac1c_ba492b3e",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "382ac207beccd1fb997e03eb3c1ffb978c0c90ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
