@@ -218,6 +218,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1e3b83a_91358401",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-29T00:08:00Z",
+      "side": 1,
+      "message": "Just synced again and your changes showed up. So I was able to update this to use the new Find/CloseTargets methods.",
+      "parentUuid": "e41f34e4_387b1fc4",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "52784fdeba94de87c2b2049d7f67ed20eeda6671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c58de9e_3a700c4e",
