@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
