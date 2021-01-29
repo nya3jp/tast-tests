@@ -330,46 +330,6 @@ type preImpl struct {
 func (p *preImpl) String() string         { return p.name }
 func (p *preImpl) Timeout() time.Duration { return p.timeout }
 
-func (p *preImpl) writeLXCLogs(ctx context.Context) {
-	vm, err := vm.GetRunningVM(ctx, p.cr.User())
-	if err != nil {
-		testing.ContextLog(ctx, "No running VM, possibly we failed before staring the VM")
-		return
-	}
-	dir, ok := testing.ContextOutDir(ctx)
-	if !ok || dir == "" {
-		testing.ContextLog(ctx, "Failed to get name of directory")
-		return
-	}
-
-	testing.ContextLog(ctx, "Creating file")
-	path := filepath.Join(dir, "crostini_logs.txt")
-	f, err := os.Create(path)
-	if err != nil {
-		testing.ContextLog(ctx, "Error creating file: ", err)
-		return
-	}
-	defer f.Close()
-
-	f.WriteString("lxc info and lxc.log:\n")
-	cmd := vm.Command(ctx, "sh", "-c", "LXD_DIR=/mnt/stateful/lxd LXD_CONF=/mnt/stateful/lxd_conf lxc info penguin --show-log")
-	cmd.Stdout = f
-	cmd.Stderr = f
-	err = cmd.Run()
-	if err != nil {
-		testing.ContextLog(ctx, "Error getting lxc logs: ", err)
-	}
-
-	f.WriteString("\n\nconsole.log:\n")
-	cmd = vm.Command(ctx, "sh", "-c", "LXD_DIR=/mnt/stateful/lxd  LXD_CONF=/mnt/stateful/lxd_conf lxc console penguin --show-log")
-	cmd.Stdout = f
-	cmd.Stderr = f
-	err = cmd.Run()
-	if err != nil {
-		testing.ContextLog(ctx, "Error getting boot logs: ", err)
-	}
-}
-
 // Called by tast before each test is run. We use this method to initialize
 // the precondition data, or return early if the precondition is already
 // active.
@@ -413,12 +373,10 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	// and copies over lxc + container boot logs.
 	// Stolen verbatim from arc/pre.go
 	shouldClose := true
+	var screenRecorder *ui.ScreenRecorder
 	defer func() {
 		if shouldClose {
-			p.writeLXCLogs(ctx)
-			if p.cont != nil {
-				TrySaveVMLogs(ctx, p.cont.VM)
-			}
+			RunCrostiniPostTest(ctx, PreData{p.cr, p.tconn, p.cont, p.keyboard, screenRecorder})
 			p.cleanUp(ctx, s)
 		}
 	}()
@@ -476,7 +434,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 
-	screenRecorder, err := ui.NewScreenRecorder(ctx, p.tconn)
+	screenRecorder, err = ui.NewScreenRecorder(ctx, p.tconn)
 	if err != nil {
 		s.Log("Failed to create ScreenRecorder: ", err)
 	}
