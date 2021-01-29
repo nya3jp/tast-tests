@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4d6e7e1_44d450e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-01-29T03:20:23Z",
+      "side": 1,
+      "message": "Do not need to call CancelReceivingFile when AwaitSharingStopped return.    \nBecause when onStop event happened, it would be timeoutShutdown() or normalShutdown().\nhttp://google3/javatests/com/google/android/gmscore/integ/modules/nearby/mobly/snippets/src/com/google/android/gmscore/integ/modules/nearby/mobly/snippets/SharingSender.java?l\u003d106\u0026rcl\u003d342821697",
+      "revId": "205c238f1473ac563ffc3aca1b8bdb6ca1c5701a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
