@@ -238,13 +238,14 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		// It is ready when the image loader path is created with the chrome executable.
 		testing.ContextLog(ctx, "Waiting for Lacros to initialize")
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			matches, err := filepath.Glob("/run/imageloader/lacros-fishfood/*/chrome")
+			matches, err := filepath.Glob("/run/imageloader/lacros-dogfood*/*/chrome")
 			if err != nil {
 				return errors.Wrap(err, "binary path does not exist yet")
 			}
 			if len(matches) == 0 {
 				return errors.New("binary path does not exist yet")
 			}
+			p.lacrosPath = matches[0]
 			return nil
 		}, &testing.PollOptions{Interval: 5 * time.Second}); err != nil {
 			s.Fatal("Failed to find lacros binary: ", err)
