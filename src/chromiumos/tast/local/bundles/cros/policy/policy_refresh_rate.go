@@ -8,7 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
@@ -40,34 +40,34 @@ func PolicyRefreshRate(ctx context.Context, s *testing.State) {
 	}
 
 	for _, param := range []struct {
-		name           string
+		name          string
 		expectedValue string                    // expectedValue is the value that should be set.
-		value          *policy.PolicyRefreshRate // value is the value of the policy.
+		value         *policy.PolicyRefreshRate // value is the value of the policy.
 	}{
 		{
-			name:           "min_allowed_value",
+			name:          "min_allowed_value",
 			expectedValue: " 30 mins",
-			value:          &policy.PolicyRefreshRate{Val: 1800000},
+			value:         &policy.PolicyRefreshRate{Val: 1800000},
 		},
 		{
-			name:           "max_allowed_value",
+			name:          "max_allowed_value",
 			expectedValue: " 1 day",
-			value:          &policy.PolicyRefreshRate{Val: 86400000},
+			value:         &policy.PolicyRefreshRate{Val: 86400000},
 		},
 		{
-			name:           "below_min_allowed_value",
+			name:          "below_min_allowed_value",
 			expectedValue: " 30 mins",
-			value:          &policy.PolicyRefreshRate{Val: 100},
+			value:         &policy.PolicyRefreshRate{Val: 100},
 		},
 		{
-			name:           "above_max_allowed_value",
+			name:          "above_max_allowed_value",
 			expectedValue: " 1 day",
-			value:          &policy.PolicyRefreshRate{Val: 186400000},
+			value:         &policy.PolicyRefreshRate{Val: 186400000},
 		},
 		{
-			name:           "unset",
+			name:          "unset",
 			expectedValue: " 3 hours",
-			value:          &policy.PolicyRefreshRate{Stat: policy.StatusUnset},
+			value:         &policy.PolicyRefreshRate{Stat: policy.StatusUnset},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {

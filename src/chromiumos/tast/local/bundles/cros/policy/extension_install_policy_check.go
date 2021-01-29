@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
@@ -25,8 +25,8 @@ type extensionInstallPolicyTestTable struct {
 }
 
 // Google keep chrome extension.
-const extensionId = "lpcaedmchfhocbbapmcbpinfpgnhiddi"
-const url = "https://chrome.google.com/webstore/detail/" + extensionId
+const extensionID = "lpcaedmchfhocbbapmcbpinfpgnhiddi"
+const url = "https://chrome.google.com/webstore/detail/" + extensionID
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -49,7 +49,7 @@ func init() {
 						allowInstall: true,
 						policies: []policy.Policy{
 							// Test API extension should be specified in allow list, otherwise it would get disabled automatically.
-							&policy.ExtensionInstallAllowlist{Val: []string{extensionId, chrome.TestExtensionID}},
+							&policy.ExtensionInstallAllowlist{Val: []string{extensionID, chrome.TestExtensionID}},
 							&policy.ExtensionInstallBlocklist{Val: []string{"*"}},
 						},
 					},
@@ -70,7 +70,7 @@ func init() {
 						name:         "allowlist_set",
 						allowInstall: true,
 						policies: []policy.Policy{
-							&policy.ExtensionInstallAllowlist{Val: []string{extensionId}},
+							&policy.ExtensionInstallAllowlist{Val: []string{extensionID}},
 						},
 					},
 					{
@@ -87,15 +87,15 @@ func init() {
 						name:         "allowlist_set",
 						allowInstall: false,
 						policies: []policy.Policy{
-							&policy.ExtensionInstallAllowlist{Val: []string{extensionId}},
-							&policy.ExtensionInstallBlocklist{Val: []string{extensionId}},
+							&policy.ExtensionInstallAllowlist{Val: []string{extensionID}},
+							&policy.ExtensionInstallBlocklist{Val: []string{extensionID}},
 						},
 					},
 					{
 						name:         "allowlist_unset",
 						allowInstall: false,
 						policies: []policy.Policy{
-							&policy.ExtensionInstallBlocklist{Val: []string{extensionId}},
+							&policy.ExtensionInstallBlocklist{Val: []string{extensionID}},
 						},
 					},
 				},
@@ -145,7 +145,7 @@ func ExtensionInstallPolicyCheck(ctx context.Context, s *testing.State) {
 
 }
 
-// Verifies whether the extension should be allowed to install or not.
+// isInstallationAllowed verifies whether the extension should be allowed to install or not.
 func isInstallationAllowed(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (bool, error) {
 	addParam := ui.FindParams{
 		Role: ui.RoleTypeButton,
