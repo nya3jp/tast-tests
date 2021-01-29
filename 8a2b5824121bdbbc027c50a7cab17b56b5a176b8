@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a58edf_19dc6eb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-29T22:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21278069_0fccd1c3",
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "971868f0_bfbc2c50",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae5ec99_e1c950aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-29T22:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "971868f0_bfbc2c50",
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad6bf046_fee9b9a3",
@@ -65,6 +101,30 @@
       "writtenOn": "2021-01-29T18:03:38Z",
       "side": 1,
       "message": "Should this be here?",
+      "range": {
+        "startLine": 281,
+        "startChar": 40,
+        "endLine": 281,
+        "endChar": 41
+      },
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e62673_00447211",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-29T22:14:29Z",
+      "side": 1,
+      "message": "Yes, it was added to make it easier/possible to host different versions of the D-Bus interface.",
+      "parentUuid": "ad6bf046_fee9b9a3",
       "range": {
         "startLine": 281,
         "startChar": 40,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cae506d_884d338e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-29T22:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bba9c5f4_510ed3f9",
+      "range": {
+        "startLine": 284,
+        "startChar": 35,
+        "endLine": 284,
+        "endChar": 36
+      },
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ccd8a39_9e31ad24",
@@ -111,6 +195,30 @@
       "writtenOn": "2021-01-29T18:03:38Z",
       "side": 1,
       "message": "nit: build using expectedCmdResult",
+      "range": {
+        "startLine": 286,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 9
+      },
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "764bf712_cc4ea998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-29T22:14:29Z",
+      "side": 1,
+      "message": "Done.\nI thought about using fmt with %q, but a few considerations kept me from going that route:\n1) The resulting string is obvious.\n2) You don\u0027t have to know the escaping behavior of %q and how it might interact with the shell.\n3) I wasn\u0027t sure if golang evaluates const / literal concatenation at compile time or not.\n\nAlso, I had to get rid of the end of line because it isn\u0027t treated properly in shell.",
+      "parentUuid": "7ccd8a39_9e31ad24",
       "range": {
         "startLine": 286,
         "startChar": 2,
@@ -138,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e0cf43_6d4f9611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-29T22:14:29Z",
+      "side": 1,
+      "message": "I am used to the behavior of scoped file descriptors in C++ and Rust. On double checking, it does make sense for me to call defer close after defining fileIn and fileOut below.",
+      "parentUuid": "ca3dd095_86c74d1f",
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35e90f3c_c62fa291",
@@ -155,6 +281,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16bf7af_2bd51a3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-29T22:14:29Z",
+      "side": 1,
+      "message": "Most of this extra longing was useful when I was tracking down a bug in godbus related to file descriptors in structs, but now that is resolved I am fine with removing them.",
+      "parentUuid": "35e90f3c_c62fa291",
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd3a0b3c_18d7bb3b",
@@ -168,6 +312,24 @@
       "writtenOn": "2021-01-29T18:03:38Z",
       "side": 1,
       "message": "Can\u0027t you write and read until EOF? This will make sure no other extra output is present.",
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9369a6_9eb8622a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-29T22:14:29Z",
+      "side": 1,
+      "message": "This is a bit complicated because closing the write side doesn\u0027t actually notify the other side (the read and write descriptors point to one socket for now). I added the exit shell command to get the intended behavior.",
+      "parentUuid": "bd3a0b3c_18d7bb3b",
       "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
