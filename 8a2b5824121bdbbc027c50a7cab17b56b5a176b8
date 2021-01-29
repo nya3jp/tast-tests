@@ -16,6 +16,160 @@
       "message": "This is ready for review.",
       "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21278069_0fccd1c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T18:03:38Z",
+      "side": 1,
+      "message": "nit: log not really useful, the test name will contain the parameter name",
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "971868f0_bfbc2c50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T18:03:38Z",
+      "side": 1,
+      "message": "nit: same",
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad6bf046_fee9b9a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T18:03:38Z",
+      "side": 1,
+      "message": "Should this be here?",
+      "range": {
+        "startLine": 281,
+        "startChar": 40,
+        "endLine": 281,
+        "endChar": 41
+      },
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba9c5f4_510ed3f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T18:03:38Z",
+      "side": 1,
+      "message": "minor nit: hardcode the . below and only keep the name here to have the name be consistent.",
+      "range": {
+        "startLine": 284,
+        "startChar": 35,
+        "endLine": 284,
+        "endChar": 36
+      },
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ccd8a39_9e31ad24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T18:03:38Z",
+      "side": 1,
+      "message": "nit: build using expectedCmdResult",
+      "range": {
+        "startLine": 286,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 9
+      },
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca3dd095_86c74d1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T18:03:38Z",
+      "side": 1,
+      "message": "Who is expected to close the file descriptors?",
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e90f3c_c62fa291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T18:03:38Z",
+      "side": 1,
+      "message": "nit: not sure that logging file descriptors is helpful.",
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3a0b3c_18d7bb3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T18:03:38Z",
+      "side": 1,
+      "message": "Can\u0027t you write and read until EOF? This will make sure no other extra output is present.",
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
