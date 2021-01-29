@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a2477e_4447af61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-01-29T00:34:50Z",
+      "side": 1,
+      "message": "I\u0027m out sick today, but I glanced at the structural changes to StateManager, and they make sense.\n\nThis will allow us to specify the order of VM startups as well, if we need to.\n\nI\u0027ll try to look in detail on Monday.",
+      "revId": "51b338b9ea761d35b9f9f6f886190eaad304755b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
