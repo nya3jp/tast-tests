@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f38893_f359c918",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-29T17:37:46Z",
+      "side": 1,
+      "message": "Defer to Jun.",
+      "revId": "d4ec06b64024cb861b71faf5ca2e8360a76410a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c6720b_2fc2f392",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-29T17:37:46Z",
+      "side": 1,
+      "message": "Could you add document how to calculate the key field, or add a reference to some (possibly external) document, so if developers hit the missing key issue, they can be unblocked.",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 80
+      },
+      "revId": "d4ec06b64024cb861b71faf5ca2e8360a76410a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
