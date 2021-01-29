@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "379b35d6_4101ba88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-29T05:57:38Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "f6b74f05f6f4b333c2afdf1c7fb59a2ce91b73b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131915ce_0e9daa0d",
+        "filename": "src/chromiumos/tast/local/graphics/screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-29T05:57:38Z",
+      "side": 1,
+      "message": "nit: Rename to DeviceHasInternalDisplay()",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "f6b74f05f6f4b333c2afdf1c7fb59a2ce91b73b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
