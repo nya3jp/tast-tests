@@ -1000,6 +1000,34 @@ func (tf *TestFixture) ClientInterface(ctx context.Context) (string, error) {
 	return netIf.Name, nil
 }
 
+// ClientPhy returns the phy name of client WiFi interface.
+func (tf *TestFixture) ClientPhy(ctx context.Context) (string, error) {
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		return "", err
+	}
+	iwr := iw.NewRemoteRunner(tf.dut.Conn())
+	nds, err := iwr.ListInterfaces(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get netdev list on DUT")
+	}
+	phyNum := -1
+	for _, nd := range nds {
+		if nd.IfName == iface {
+			phyNum = nd.PhyNum
+			break
+		}
+	}
+	if phyNum < 0 {
+		return "", errors.New("failed to get phy number")
+	}
+	phy, err := iwr.PhyByID(ctx, phyNum)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get phy info")
+	}
+	return phy.Name, nil
+}
+
 // VerifyConnection verifies that the AP is reachable by pinging, and we have the same frequency and subnet as AP's.
 func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error {
 	iface, err := tf.ClientInterface(ctx)
