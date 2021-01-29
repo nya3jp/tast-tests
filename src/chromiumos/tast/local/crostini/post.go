@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -23,22 +24,44 @@ import (
 // the precondition closes (if it's going to) e.g. collecting logs from the
 // container.
 func RunCrostiniPostTest(ctx context.Context, p PreData) {
-	if p.Container == nil {
-		testing.ContextLog(ctx, "No active container")
-		return
-	}
-	if err := p.Container.Cleanup(ctx, "."); err != nil {
-		testing.ContextLog(ctx, "Failed to remove all files in home directory in the container: ", err)
-	}
-
 	dir, ok := testing.ContextOutDir(ctx)
 	if !ok || dir == "" {
 		testing.ContextLog(ctx, "Failed to get name of directory")
 		return
 	}
 
-	TrySaveVMLogs(ctx, p.Container.VM)
-	trySaveContainerLogs(ctx, dir, p.Container)
+	// Container logs require a running VM and container. If one
+	// hasn't been set, we can't fetch them.
+	if p.Container != nil {
+		trySaveContainerLogs(ctx, dir, p.Container)
+
+		if err := p.Container.Cleanup(ctx, "."); err != nil {
+			testing.ContextLog(ctx, "Failed to remove all files in home directory in the container: ", err)
+		}
+	} else {
+		testing.ContextLog(ctx, "No active container, can't get journalctl logs")
+	}
+
+	// LXC logs only require a running VM, so even if the
+	// container hasn't been set we can try to get a running VM
+	// and use that.
+	var machine *vm.VM
+	if p.Container != nil {
+		machine = p.Container.VM
+	} else {
+		machine2, err := vm.GetRunningVM(ctx, p.Chrome.User())
+		machine = machine2
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to get running VM, won't get LXC logs: ", err)
+		}
+	}
+	if machine != nil {
+		writeLXCLogs(ctx, dir, machine)
+	}
+
+	// VM logs are stored on the host, so we don't need the VM to
+	// be running at all to get them.
+	trySaveVMLogs(ctx, dir, p.Chrome.User())
 }
 
 // When we run trySaveContainerLogs we only want to capture logs since we last
@@ -89,8 +112,12 @@ func trySaveContainerLogs(ctx context.Context, dir string, cont *vm.Container) {
 // never explicitly close it.
 var logReader *syslog.LineReader
 
-func newLogReader(ctx context.Context, machine *vm.VM) (*syslog.LineReader, error) {
-	path := "/run/daemon-store/crosvm/" + machine.Concierge.GetOwnerID() + "/log/" + vm.GetEncodedName(machine.Name()) + ".log"
+func newLogReader(ctx context.Context, user string) (*syslog.LineReader, error) {
+	ownerID, err := cryptohome.UserHash(ctx, user)
+	if err != nil {
+		return nil, err
+	}
+	path := "/run/daemon-store/crosvm/" + ownerID + "/log/" + vm.GetEncodedName(vm.DefaultVMName) + ".log"
 
 	// Only wait 1 second for the log file to exist, don't want to hang until
 	// timeout if it doesn't exist, instead we continue.
@@ -98,22 +125,16 @@ func newLogReader(ctx context.Context, machine *vm.VM) (*syslog.LineReader, erro
 		&testing.PollOptions{Timeout: 1 * time.Second})
 }
 
-// TrySaveVMLogs writes logs since the last call to the
+// trySaveVMLogs writes logs since the last call to the
 // current test's output folder.
-func TrySaveVMLogs(ctx context.Context, machine *vm.VM) {
+func trySaveVMLogs(ctx context.Context, dir, user string) {
 	if logReader == nil {
 		var err error
-		logReader, err = newLogReader(ctx, machine)
+		logReader, err = newLogReader(ctx, user)
 		if err != nil {
 			testing.ContextLog(ctx, "Error creating log reader: ", err)
 			return
 		}
-	}
-
-	dir, ok := testing.ContextOutDir(ctx)
-	if !ok || dir == "" {
-		testing.ContextLog(ctx, "Failed to get name of directory")
-		return
 	}
 
 	path := filepath.Join(dir, "termina_logs.txt")
@@ -136,5 +157,34 @@ func TrySaveVMLogs(ctx context.Context, machine *vm.VM) {
 		if err != nil {
 			testing.ContextLog(ctx, fmt.Sprintf("Error writing %s to file: ", line), err)
 		}
+	}
+}
+
+func writeLXCLogs(ctx context.Context, dir string, machine *vm.VM) {
+	testing.ContextLog(ctx, "Creating file")
+	path := filepath.Join(dir, "crostini_logs.txt")
+	f, err := os.Create(path)
+	if err != nil {
+		testing.ContextLog(ctx, "Error creating file: ", err)
+		return
+	}
+	defer f.Close()
+
+	f.WriteString("lxc info and lxc.log:\n")
+	cmd := machine.Command(ctx, "sh", "-c", "LXD_DIR=/mnt/stateful/lxd LXD_CONF=/mnt/stateful/lxd_conf lxc info penguin --show-log")
+	cmd.Stdout = f
+	cmd.Stderr = f
+	err = cmd.Run()
+	if err != nil {
+		testing.ContextLog(ctx, "Error getting lxc logs: ", err)
+	}
+
+	f.WriteString("\n\nconsole.log:\n")
+	cmd = machine.Command(ctx, "sh", "-c", "LXD_DIR=/mnt/stateful/lxd  LXD_CONF=/mnt/stateful/lxd_conf lxc console penguin --show-log")
+	cmd.Stdout = f
+	cmd.Stderr = f
+	err = cmd.Run()
+	if err != nil {
+		testing.ContextLog(ctx, "Error getting boot logs: ", err)
 	}
 }
