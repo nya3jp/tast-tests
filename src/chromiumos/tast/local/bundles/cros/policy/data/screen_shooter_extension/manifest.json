@@ -1,4 +1,5 @@
 {
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwXphlS5qUWDyLVXDyRVG4SX66KxT/NfyI807txz/wyGRiJswqsBmiuEKoCywocRCMYiq91LQuc5pcB3tGO+rmgMW+9MCMGyew7GTvaseXGnAATk5Chgkk9YFOmVglWAMLnoNnN21ijE8kwh9LMXr2Qaqni22yB0+fzX4x1vxG86uyMRTFd7r9v/hM/3JHDktnIXkVHWJ4vpjO/LTfOigQal85e4+MSauznWBLX5RhWkVVe7tp7tcc78+bqPtCjOldChWFFQsSgdFFyLXW1v+arJm3mFLjhGmvCzuQzi+SKn2K4EwwinMQ/tMOu2SpGMonwdh+Y3aox4A7Cy7zYrXrQIDAQAB",
     "manifest_version": 2,
     "name": "Screenshooter",
     "description": "Take screenshots with ALL the APIs",
