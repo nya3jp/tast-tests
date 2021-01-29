@@ -50,17 +50,11 @@ func chownContents(dir, username string) error {
 }
 
 // ComputeExtensionID computes the 32-character ID that Chrome will use for an unpacked
-// extension in dir. If the extension's manifest file contains a public key, it is hashed
-// into the ID; otherwise the directory name is hashed.
+// extension in dir. The extension's manifest file must contain the "key" field.
 func ComputeExtensionID(dir string) (string, error) {
-	key := []byte(dir)
-	mp := filepath.Join(dir, "manifest.json")
-	if _, err := os.Stat(mp); !os.IsNotExist(err) {
-		if k, err := readKeyFromExtensionManifest(mp); err != nil {
-			return "", err
-		} else if k != nil {
-			key = k
-		}
+	key, err := readKeyFromExtensionManifest(filepath.Join(dir, "manifest.json"))
+	if err != nil {
+		return "", err
 	}
 
 	// Chrome computes an extension's ID by creating a SHA-256 digest of the extension's public key
