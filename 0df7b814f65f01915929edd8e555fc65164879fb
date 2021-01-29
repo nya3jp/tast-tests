@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e722756_d1704b99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-29T00:01:47Z",
+      "side": 1,
+      "message": "nit: End with period.",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "0df7b814f65f01915929edd8e555fc65164879fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65a8e470_bc165f7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-29T00:01:47Z",
+      "side": 1,
+      "message": "LGTM % a couple comments.",
+      "revId": "0df7b814f65f01915929edd8e555fc65164879fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30d9fa2d_d76abf66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-29T00:01:47Z",
+      "side": 1,
+      "message": "I guess we can leave this blank since the feature is on by default now?",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "0df7b814f65f01915929edd8e555fc65164879fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
