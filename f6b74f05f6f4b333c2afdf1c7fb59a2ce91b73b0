@@ -39,6 +39,30 @@
       },
       "revId": "f6b74f05f6f4b333c2afdf1c7fb59a2ce91b73b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45bb57ce_99eff47f",
+        "filename": "src/chromiumos/tast/local/graphics/screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-29T15:03:48Z",
+      "side": 1,
+      "message": "+1\n\nnit:\nAlthough it seems that \"DeviceHasDisplay\" should not belong the \"graphics\" module, in any case it should be moved to \"display\".\n\n\nBut for this particular case I\u0027d just inline it. e.g:\n\n  if _, err :\u003d display.GetInternalInfo(ctx, tconn); err !\u003d nil {\n    if err \u003d graphics.RotateDisplayTo....(); err !\u003d nil {\n      ...\n    }\n  }",
+      "parentUuid": "131915ce_0e9daa0d",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "f6b74f05f6f4b333c2afdf1c7fb59a2ce91b73b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
