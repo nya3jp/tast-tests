@@ -49,10 +49,17 @@ func Kill(ctx context.Context, devInfo usbprinter.DevInfo) error {
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			// We need a fresh process.Process since it caches attributes.
 			// TODO(crbug.com/1131511): Clean up error handling here when gpsutil has been upreved.
-			if _, err := process.NewProcess(p.Pid); err == nil {
-				return errors.Errorf("pid %d is still running", p.Pid)
+			p, err := process.NewProcess(p.Pid)
+			if err != nil {
+				// Process has exited.
+				return nil
 			}
-			return nil
+			status, err := p.StatusWithContext(ctx)
+			if err != nil || status == "Z" {
+				// Process has exited but not been reaped.
+				return nil
+			}
+			return errors.Errorf("pid %d is still running with status %s", p.Pid, status)
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrap(err, "failed to wait for ippusb_bridge to exit")
 		}
