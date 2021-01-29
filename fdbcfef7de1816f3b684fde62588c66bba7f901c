@@ -113,6 +113,40 @@
       "message": "nit: this part can be moved into the \"if\".",
       "revId": "fdbcfef7de1816f3b684fde62588c66bba7f901c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ff0892_7e40bb5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:50:05Z",
+      "side": 1,
+      "message": "The server needs to be stopped at the end of the test.\n\nhttps://golang.org/pkg/net/http/#Server.Shutdown",
+      "revId": "fdbcfef7de1816f3b684fde62588c66bba7f901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d06fff_2efc7904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-29T09:50:05Z",
+      "side": 1,
+      "message": "Only fail if the server was not explicitly stopped.",
+      "revId": "fdbcfef7de1816f3b684fde62588c66bba7f901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
