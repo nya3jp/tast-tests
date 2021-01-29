@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b39b89fc_83501ecd",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-01-29T03:18:03Z",
+      "side": 1,
+      "message": "No, it\u0027s not true.\n\nThe extension still needs to be routed the tts engine messages correctly and that\u0027s the whole point of writing the tests here and not just in Chrome.",
+      "parentUuid": "65f37be3_34ab6794",
+      "range": {
+        "startLine": 193,
+        "startChar": 4,
+        "endLine": 193,
+        "endChar": 85
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33b63662_fcb7f094",
         "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
         "patchSetId": 8
