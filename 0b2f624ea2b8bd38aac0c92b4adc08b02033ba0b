@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9cfd7cc_9799947a",
+        "filename": "src/chromiumos/tast/common/storage/storage.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-29T05:59:09Z",
+      "side": 1,
+      "message": "nit\u0026optional: err contains the parsed value, so you can write this as:\n\n errors.Wrap(err, \"failed to parse available spare\")\n\nhttps://play.golang.org/p/Q3Q5LnGFhax",
+      "range": {
+        "startLine": 274,
+        "startChar": 13,
+        "endLine": 274,
+        "endChar": 74
+      },
+      "revId": "0b2f624ea2b8bd38aac0c92b4adc08b02033ba0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
