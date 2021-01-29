@@ -14,6 +14,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// DeviceHasDisplay returns if the device has a display.
+func DeviceHasDisplay(ctx context.Context, tconn *chrome.TestConn) bool {
+	_, err := display.GetInternalInfo(ctx, tconn)
+	return err == nil
+}
+
 // RotateDisplayToLandscapePrimary rotates the display to landscape-primary defined
 // in https://w3c.github.io/screen-orientation/#screenorientation-interface.
 func RotateDisplayToLandscapePrimary(ctx context.Context, tconn *chrome.TestConn) error {

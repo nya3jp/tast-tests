@@ -57,8 +57,10 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 	defer tconn.Close()
 
 	// For consistency across test runs, ensure that the device is in landscape-primary orientation.
-	if err = graphics.RotateDisplayToLandscapePrimary(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to set display to landscape-primary orientation")
+	if graphics.DeviceHasDisplay(ctx, tconn) {
+		if err = graphics.RotateDisplayToLandscapePrimary(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to set display to landscape-primary orientation")
+		}
 	}
 
 	server := httptest.NewServer(http.FileServer(fileSystem))
