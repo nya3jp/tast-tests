@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a08ac1c_ba492b3e",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-29T17:21:22Z",
+      "side": 1,
+      "message": "I do not think this matches the new methods either.\nCould you move out from here, too?\n\nCould you come up with a good conceptual group of what you\u0027re trying to do?\nIt is difficult for me to make some recommendation here, because I cannot find any concrete use cases.\nIt may be a new wrapper object. Or it may be a new package. Or the new methods may need to belong to something else.",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "382ac207beccd1fb997e03eb3c1ffb978c0c90ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
