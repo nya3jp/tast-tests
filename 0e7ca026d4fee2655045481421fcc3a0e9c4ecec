@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "737000e2_53d246bf",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-29T03:59:23Z",
+      "side": 1,
+      "message": "Thank you, I got it. This test can verify Google tts\u0027s core functionalities as well. (initializing extension, interaction with Chrome, etc.)",
+      "parentUuid": "b39b89fc_83501ecd",
+      "range": {
+        "startLine": 193,
+        "startChar": 4,
+        "endLine": 193,
+        "endChar": 85
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33b63662_fcb7f094",
@@ -66,6 +90,29 @@
         "startChar": 11,
         "endLine": 59,
         "endChar": 71
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9068c38e_1efa4f65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-29T03:59:23Z",
+      "side": 1,
+      "message": "Just curious, why not verifying the utterances after each commands?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
       },
       "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
