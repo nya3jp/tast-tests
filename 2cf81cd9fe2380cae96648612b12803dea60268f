@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d7b38b7_56b839b0",
+        "filename": "android/ArcPerAppDensityTest/src/org/chromium/arc/testapp/perappdensitytest/ViewActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-29T05:00:52Z",
+      "side": 1,
+      "message": "Did you specify `-a` (AOSP style) option? Most files under tast-tests/android are formatted with this opttion.",
+      "parentUuid": "23faff68_ccd6d9d9",
+      "revId": "2cf81cd9fe2380cae96648612b12803dea60268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fab1852_b88b4e98",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
         "patchSetId": 6
