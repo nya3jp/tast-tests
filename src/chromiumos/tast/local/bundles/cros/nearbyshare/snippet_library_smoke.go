@@ -26,7 +26,7 @@ func init() {
 		Data:         []string{nearbysnippet.ZipName},
 		// This var can be used when running locally on non-rooted devices which
 		// have already overridden the GMS Core flags by other means.
-		Vars: []string{"overrideGMS"},
+		Vars: []string{"rooted"},
 	})
 }
 
@@ -43,12 +43,12 @@ func SnippetLibrarySmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to list adb devices: ", err)
 	}
 
-	// Launch and start the Snippet. Don't override GMS Core flags if specified in the runtime vars.
+	// Launch and start the Snippet. Don't override GMS Core flags on a non-rooted device.
 	override := true
-	if val, ok := s.Var("overrideGMS"); ok {
+	if val, ok := s.Var("rooted"); ok {
 		b, err := strconv.ParseBool(val)
 		if err != nil {
-			s.Fatal("Unable to convert overrideGMS var to bool: ", err)
+			s.Fatal("Unable to convert rooted var to bool: ", err)
 		}
 		override = b
 	}
