@@ -19,7 +19,8 @@ import (
 func RotateDisplayToLandscapePrimary(ctx context.Context, tconn *chrome.TestConn) error {
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to get internal display info")
+		testing.ContextLog(ctx, "Failed to get internal display info (this failure can be ignored if the device doesn't have a display e.g. chromebox)")
+		return nil
 	}
 
 	orient, err := display.GetOrientation(ctx, tconn)
