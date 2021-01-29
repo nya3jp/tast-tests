@@ -35,13 +35,15 @@ var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 // Setup runs lacros-chrome if indicated by the given ChromeType and returns some objects and interfaces
 // useful in tests. If the ChromeType is ChromeTypeLacros, it will return a non-nil LacrosChrome instance or an error.
 // If the ChromeType is ChromeTypeChromeOS it will return a nil LacrosChrome instance.
-func Setup(ctx context.Context, pd interface{}, crt ChromeType) (*chrome.Chrome, *launcher.LacrosChrome, ash.ConnSource, error) {
+// TODO(crbug.com/1127165): Remove the testing.State argument when we can use Data in fixtures.
+func Setup(ctx context.Context, s *testing.State, crt ChromeType) (*chrome.Chrome, *launcher.LacrosChrome, ash.ConnSource, error) {
+	pd := s.FixtValue()
 	switch crt {
 	case ChromeTypeChromeOS:
 		return pd.(*chrome.Chrome), nil, pd.(*chrome.Chrome), nil
 	case ChromeTypeLacros:
 		pd := pd.(launcher.PreData)
-		l, err := launcher.LaunchLacrosChrome(ctx, pd)
+		l, err := launcher.LaunchLacrosChrome(ctx, s)
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}

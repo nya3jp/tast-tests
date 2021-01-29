@@ -27,8 +27,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      60 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
-		Pre:          launcher.StartedByData(),
-		Vars:         []string{"lacrosDeployedBinary"},
+		Fixture:      "lacrosStartedByData",
 	})
 }
 
@@ -67,14 +66,15 @@ func runSpeedometerTest(ctx context.Context, pd launcher.PreData, conn *chrome.C
 	return score, nil
 }
 
-func runLacrosSpeedometerTest(ctx context.Context, pd launcher.PreData) (float64, error) {
-	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, pd, speedometerURL)
+func runLacrosSpeedometerTest(ctx context.Context, s *testing.State) (float64, error) {
+	// TODO(crbug.com/1127165): Remove the testing.State argument when we can use Data in fixtures.
+	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, s, speedometerURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup lacros-chrome test page")
 	}
 	defer cleanup(ctx)
 
-	return runSpeedometerTest(ctx, pd, conn)
+	return runSpeedometerTest(ctx, s.FixtValue().(launcher.PreData), conn)
 }
 
 func runCrosSpeedometerTest(ctx context.Context, pd launcher.PreData) (float64, error) {
@@ -88,7 +88,7 @@ func runCrosSpeedometerTest(ctx context.Context, pd launcher.PreData) (float64, 
 }
 
 func Speedometer(ctx context.Context, s *testing.State) {
-	tconn, err := s.PreValue().(launcher.PreData).Chrome.TestAPIConn(ctx)
+	tconn, err := s.FixtValue().(launcher.PreData).Chrome.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
@@ -105,7 +105,7 @@ func Speedometer(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	lscore, err := runLacrosSpeedometerTest(ctx, s.PreValue().(launcher.PreData))
+	lscore, err := runLacrosSpeedometerTest(ctx, s)
 	if err != nil {
 		s.Fatal("Failed to run lacros Speedometer test: ", err)
 	}
@@ -116,7 +116,7 @@ func Speedometer(ctx context.Context, s *testing.State) {
 		Direction: perf.BiggerIsBetter,
 	}, lscore)
 
-	cscore, err := runCrosSpeedometerTest(ctx, s.PreValue().(launcher.PreData))
+	cscore, err := runCrosSpeedometerTest(ctx, s.FixtValue().(launcher.PreData))
 	if err != nil {
 		s.Fatal("Failed to run cros Speedometer test: ", err)
 	}

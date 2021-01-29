@@ -20,15 +20,14 @@ func init() {
 		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Pre:          launcher.StartedByData(),
+		Fixture:      "lacrosStartedByData",
 		Timeout:      7 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
-		Vars:         []string{"lacrosDeployedBinary"},
 	})
 }
 
 func Basic(ctx context.Context, s *testing.State) {
-	l, err := launcher.LaunchLacrosChrome(ctx, s.PreValue().(launcher.PreData))
+	l, err := launcher.LaunchLacrosChrome(ctx, s)
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}
