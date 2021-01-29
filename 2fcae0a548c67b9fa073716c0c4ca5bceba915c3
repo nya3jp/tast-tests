@@ -34,6 +34,69 @@
       "parentUuid": "14f3fd85_869580ed",
       "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943b6871_06784079",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T23:36:56Z",
+      "side": 1,
+      "message": "My understanding is using testing.State in support library is prohibited.  Does this really pass the tast-lint checker?",
+      "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c998baa8_369f88ae",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T23:36:56Z",
+      "side": 1,
+      "message": "nit: fixture",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a20a760_db4e4115",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T23:36:56Z",
+      "side": 1,
+      "message": "nit: TODO should have the link to a bug (TODO(crbug/....))",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 8
+      },
+      "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
