@@ -39,6 +39,30 @@
       },
       "revId": "d4ec06b64024cb861b71faf5ca2e8360a76410a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "509e0721_77ccd3d3",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T19:07:15Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "68c6720b_2fc2f392",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 80
+      },
+      "revId": "d4ec06b64024cb861b71faf5ca2e8360a76410a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
