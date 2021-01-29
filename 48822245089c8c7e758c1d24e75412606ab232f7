@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a375f12_dcb69012",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T01:17:34Z",
+      "side": 1,
+      "message": "can you remove this? It can be obtained through ash.GetTabletModeEnabled.",
+      "range": {
+        "startLine": 249,
+        "startChar": 93,
+        "endLine": 249,
+        "endChar": 109
+      },
+      "revId": "48822245089c8c7e758c1d24e75412606ab232f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98003b74_7caf0bd4",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T01:17:34Z",
+      "side": 1,
+      "message": "It now makes me unsure if this \"apps\" package is the right place for this function.  I guess maybe chrome/ui/launcher package may be better.\n\nAlso, there are a lot of similar functions in it, SearchAndLaunchWithQuery, for example.  I think they don\u0027t fully substitute this, but by moving there, I think you can reuse some of the existing functions like Search.",
+      "range": {
+        "startLine": 249,
+        "startChar": 5,
+        "endLine": 249,
+        "endChar": 19
+      },
+      "revId": "48822245089c8c7e758c1d24e75412606ab232f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cc9256a_b1c5580c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T01:17:34Z",
+      "side": 1,
+      "message": "Maybe it is better to check if there\u0027s no browser windows (or the \"app\" is not open yet).\n  shown, err :\u003d ash.AppShown(ctx, tconn, chromeApp.ID)\n  if err !\u003d nil {\n    return 0, errors.Wrap(...)\n  }\n  if shown {\n    return 0, errors.New(\"no browser should be shown to measure browser start time\")\n  }",
+      "revId": "48822245089c8c7e758c1d24e75412606ab232f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453f6094_28dc64dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T01:17:34Z",
+      "side": 1,
+      "message": "Isn\u0027t this too short?  If you assume that the descendant exists already, can you  pass 0?",
+      "range": {
+        "startLine": 36,
+        "startChar": 52,
+        "endLine": 36,
+        "endChar": 63
+      },
+      "revId": "48822245089c8c7e758c1d24e75412606ab232f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b4721a_b940af93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T01:17:34Z",
+      "side": 1,
+      "message": "Please end with a period.  Doc comment should be a normal English sentence.\n\"Gmail provides controls of Gmail application.\"",
+      "revId": "48822245089c8c7e758c1d24e75412606ab232f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b22ec38_4042a6b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T01:17:34Z",
+      "side": 1,
+      "message": "\"the specified receiver.\"",
+      "range": {
+        "startLine": 102,
+        "startChar": 52,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "48822245089c8c7e758c1d24e75412606ab232f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5557fbe_29af2205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T01:17:34Z",
+      "side": 1,
+      "message": "Now this is not necessary.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "48822245089c8c7e758c1d24e75412606ab232f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c44ac6a_53882530",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T01:17:34Z",
+      "side": 1,
+      "message": "Do we need this query parameter?  What will happen if we drop this?",
+      "range": {
+        "startLine": 28,
+        "startChar": 46,
+        "endLine": 28,
+        "endChar": 56
+      },
+      "revId": "48822245089c8c7e758c1d24e75412606ab232f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c6d7de_bf41b1cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T01:17:34Z",
+      "side": 1,
+      "message": "nit: This should be \"Netflix\" as it is the name of the type.",
+      "range": {
+        "startLine": 32,
+        "startChar": 17,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "48822245089c8c7e758c1d24e75412606ab232f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5e0ce7f_8dd09a73",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T01:17:34Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we check if the device is already connected?",
+      "revId": "48822245089c8c7e758c1d24e75412606ab232f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
