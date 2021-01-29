@@ -316,6 +316,30 @@
       },
       "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "832b1a3e_56208be1",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-29T01:45:07Z",
+      "side": 1,
+      "message": "Okay.  I would like to know if you really uses the WPR software we have, or some proxy on your side to provide web contents (WPR is a proper name of a product, that\u0027s not a generic term). If that\u0027s WPR, that\u0027s fine.\n\nThough, I guess you may also consider switching to remote tests rather than modifying here -- that way your test scenario can start a remote WPR test and make Chrome to use that.  Not sure how feasible it is though.  Have you considered that?",
+      "parentUuid": "e9e5ce97_78f43f57",
+      "range": {
+        "startLine": 249,
+        "startChar": 55,
+        "endLine": 249,
+        "endChar": 58
+      },
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
