@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29426aae_64f2316d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-29T04:11:07Z",
+      "side": 1,
+      "message": "LGTM % question",
+      "revId": "d8bd5752fe42c0913547cd5cd337bd2271cd8e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4bb1fb5_4b2f304f",
+        "filename": "src/chromiumos/tast/local/graphics/screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-29T04:11:07Z",
+      "side": 1,
+      "message": "Have you tried to see what happens if an error does happen in RestoreDisplayOrientation()? Does it get ignored or does it get propagated up? If it gets ignored, maybe it\u0027s better to use panic inside this function instead of returning an error.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "d8bd5752fe42c0913547cd5cd337bd2271cd8e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
