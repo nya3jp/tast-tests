@@ -49,7 +49,7 @@ func init() {
 				Name:              "jp_us_stable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraAttr:         []string{"group:mainline", "informational"},
+				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "jp_us_unstable",
