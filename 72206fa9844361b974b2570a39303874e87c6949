@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8284f2c_a4814723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-29T02:10:50Z",
+      "side": 1,
+      "message": "Just for my own understanding, would you please elaborate on this? It seems that `--threads` specifies a max number of threads to use; if there are fewer than 3 CPU cores (i.e. this assumption is violated) is a problem expected?",
+      "range": {
+        "startLine": 469,
+        "startChar": 45,
+        "endLine": 469,
+        "endChar": 77
+      },
+      "revId": "72206fa9844361b974b2570a39303874e87c6949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0560365f_8aa5e64c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-29T02:10:50Z",
+      "side": 1,
+      "message": "I\u0027m a bit surprised this works, since it looks like bitrate should be a float64. Would %f work, to be safe?\n(Tried `fmt.Printf(\"%d\", 2 * 2 / 2.0)` in golang playground and it failed, whereas it works fine with %f)",
+      "range": {
+        "startLine": 474,
+        "startChar": 57,
+        "endLine": 474,
+        "endChar": 59
+      },
+      "revId": "72206fa9844361b974b2570a39303874e87c6949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
