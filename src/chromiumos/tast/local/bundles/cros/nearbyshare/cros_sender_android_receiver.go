@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
-	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )

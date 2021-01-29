@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -80,7 +80,7 @@ func EnabledAndroidAccessibilityServices(ctx context.Context, a *arc.ARC) ([]str
 // closed by the calling function.
 func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) (*a11y.ChromeVoxConn, error) {
 	// Wait until spoken feedback is enabled in Android side. It takes longer time for Android
- 	// a11y to be ready, and thus time out here is longer than others.
+	// a11y to be ready, and thus time out here is longer than others.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if res, err := IsEnabledAndroid(ctx, a); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to check whether accessibility is enabled in Android"))
