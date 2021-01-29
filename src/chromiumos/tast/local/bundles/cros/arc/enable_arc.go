@@ -17,6 +17,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type accountTypeTestParam struct {
+	unicorn bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EnableArc,
@@ -26,21 +30,54 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val: accountTypeTestParam{
+				unicorn: false,
+			},
+		}, {
+			Name:              "unicorn",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val: accountTypeTestParam{
+				unicorn: true,
+			},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: accountTypeTestParam{
+				unicorn: false,
+			},
+		}, {
+			Name:              "unicorn_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: accountTypeTestParam{
+				unicorn: true,
+			},
 		}},
 		Timeout: chrome.LoginTimeout + arc.BootTimeout + 120*time.Second,
-		Vars:    []string{"arc.username", "arc.password"},
+		Vars:    []string{"arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword"},
 	})
 }
 
 func EnableArc(ctx context.Context, s *testing.State) {
 
-	username := s.RequiredVar("arc.username")
-	password := s.RequiredVar("arc.password")
+	parentUser := s.RequiredVar("arc.parentUser")
+	parentPass := s.RequiredVar("arc.parentPassword")
+	childUser := s.RequiredVar("arc.childUser")
+	childPass := s.RequiredVar("arc.childPassword")
+	var cr *chrome.Chrome
+	var err error
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	accountType := s.Param().(accountTypeTestParam)
+	if accountType.unicorn {
+		cr, err = chrome.New(ctx, chrome.GAIALogin(),
+			chrome.Auth(childUser, childPass, "gaia-id"),
+			chrome.ParentAuth(parentUser, parentPass), chrome.ARCSupported())
+	} else {
+		cr, err = chrome.New(ctx, chrome.GAIALogin(),
+			chrome.Auth(parentUser, parentPass, "gaia-id"),
+			chrome.ARCSupported(),
+			chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	}
+
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
