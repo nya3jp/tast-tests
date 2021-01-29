@@ -16,6 +16,24 @@
       "message": "Do not need to call CancelReceivingFile when AwaitSharingStopped return.    \nBecause when onStop event happened, it would be timeoutShutdown() or normalShutdown().\nhttp://google3/javatests/com/google/android/gmscore/integ/modules/nearby/mobly/snippets/src/com/google/android/gmscore/integ/modules/nearby/mobly/snippets/SharingSender.java?l\u003d106\u0026rcl\u003d342821697",
       "revId": "205c238f1473ac563ffc3aca1b8bdb6ca1c5701a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fab77fc_4864e10d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-29T07:34:49Z",
+      "side": 1,
+      "message": "It\u0027s just deferred in case of failure before we await onStop. Will change it in a follow-up CL to not run it if sharing is successful. It shouldn\u0027t matter for now since CancelReceivingFile is ignored if a transfer is not in progress.",
+      "parentUuid": "f4d6e7e1_44d450e4",
+      "revId": "205c238f1473ac563ffc3aca1b8bdb6ca1c5701a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
