@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbefffc2_893b5541",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-30T10:24:15Z",
+      "side": 1,
+      "message": "Upmerged on top your changes which modifies the same test waiting for submission.",
+      "parentUuid": "bdee5b01_7df40d13",
+      "revId": "f2e985551f0b20a7f50c99aff2b9dda3e3f00453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dc95b10_bfa1403c",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-29T15:25:37Z",
       "side": 1,
       "message": "nit: I generally think for the normal it is better to just leave this blank. So your test names would be none, unicorn, vm, and unicorn_vm.\n\notherwise, I would name it gaia instead of normal.",
+      "range": {
+        "startLine": 31,
+        "startChar": 23,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "f2e985551f0b20a7f50c99aff2b9dda3e3f00453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42774ea_6d9e2c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/disable_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-30T10:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc95b10_bfa1403c",
       "range": {
         "startLine": 31,
         "startChar": 23,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed8b298e_d1b5bf30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/disable_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-30T10:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6802bf7_0e86f09f",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "f2e985551f0b20a7f50c99aff2b9dda3e3f00453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09d796cd_4e647f4a",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-01-29T15:25:37Z",
       "side": 1,
       "message": "ditto for these",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "f2e985551f0b20a7f50c99aff2b9dda3e3f00453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c83bd0a5_3ab40afc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-30T10:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09d796cd_4e647f4a",
       "range": {
         "startLine": 34,
         "startChar": 23,
