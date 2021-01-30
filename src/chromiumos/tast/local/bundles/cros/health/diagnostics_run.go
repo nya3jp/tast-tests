@@ -75,7 +75,7 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"nvme"},
 			// TODO(http://b/175305207): some zork nvme controllers lock up
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("dalboz", "morphius"),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("morphius"),
 				hwdep.Nvme()),
 		}, {
 			Name:      "nvme_wear_level",
