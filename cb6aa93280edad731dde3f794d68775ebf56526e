@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c44b46_3bfa2d66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-30T17:01:20Z",
+      "side": 1,
+      "message": "Based on the bug, will the dalboz devices be put back into lab after they have been reworked? ",
+      "revId": "cb6aa93280edad731dde3f794d68775ebf56526e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
