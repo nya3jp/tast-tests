@@ -59,6 +59,48 @@ func init() {
 				exe: "kms_plane",
 			},
 			Timeout: 5 * time.Minute,
+		}, {
+			Name: "testdisplay",
+			Val: igtTest{
+				exe: "testdisplay",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "sw_sync",
+			Val: igtTest{
+				exe: "sw_sync",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "drm_import_export",
+			Val: igtTest{
+				exe: "drm_import_export",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "drm_mm",
+			Val: igtTest{
+				exe: "drm_mm",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "drm_read",
+			Val: igtTest{
+				exe: "drm_read",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "vgem_basic",
+			Val: igtTest{
+				exe: "vgem_basic",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "vgem_slow",
+			Val: igtTest{
+				exe: "vgem_slow",
+			},
+			Timeout: 5 * time.Minute,
 		}},
 		Attr:    []string{"group:graphics", "graphics_perbuild"},
 		Fixture: "gpuWatchDog",
