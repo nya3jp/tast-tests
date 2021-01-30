@@ -364,6 +364,30 @@
       },
       "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06a36335_7b9d6f4c",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-30T06:30:17Z",
+      "side": 1,
+      "message": "Do we want to do the multi-DUTs on the tests which uses WPR?",
+      "parentUuid": "367432ec_dced7b78",
+      "range": {
+        "startLine": 249,
+        "startChar": 55,
+        "endLine": 249,
+        "endChar": 58
+      },
+      "revId": "944253581d82bd0f8271ed51b6b7e63dde553f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
