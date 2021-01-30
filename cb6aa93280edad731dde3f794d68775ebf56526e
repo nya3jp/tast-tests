@@ -16,6 +16,24 @@
       "message": "Based on the bug, will the dalboz devices be put back into lab after they have been reworked? ",
       "revId": "cb6aa93280edad731dde3f794d68775ebf56526e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb714a8c_a529576a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-01-30T21:20:51Z",
+      "side": 1,
+      "message": "No, they\u0027re EOL and we\u0027re decommissioning them, see http://issuetracker.google.com/162439321#comment17",
+      "parentUuid": "86c44b46_3bfa2d66",
+      "revId": "cb6aa93280edad731dde3f794d68775ebf56526e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
