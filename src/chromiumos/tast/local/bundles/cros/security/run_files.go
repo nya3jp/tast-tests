@@ -21,7 +21,7 @@ func init() {
 			"yusukes@chromium.org", // Initial author
 			"chromeos-security@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
