@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3f590cd_b281ffae",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-01-30T19:40:10Z",
+      "side": 1,
+      "message": "why not just machine, err :\u003d?",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 20
+      },
+      "revId": "54f2ef104221842018c847581969b2c04ddea617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2211a47_6770e7ab",
         "filename": "src/chromiumos/tast/local/crostini/post.go",
         "patchSetId": 2
@@ -19,6 +42,29 @@
         "startChar": 43,
         "endLine": 78,
         "endChar": 58
+      },
+      "revId": "54f2ef104221842018c847581969b2c04ddea617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa1755ec_4a2541a5",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-01-30T19:40:10Z",
+      "side": 1,
+      "message": "There is a writeLXCLogs in pre.go, any chance to reuse that code?",
+      "range": {
+        "startLine": 180,
+        "startChar": 5,
+        "endLine": 180,
+        "endChar": 17
       },
       "revId": "54f2ef104221842018c847581969b2c04ddea617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
