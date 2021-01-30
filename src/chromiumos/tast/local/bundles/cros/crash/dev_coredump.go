@@ -31,11 +31,11 @@ func init() {
 		// Instead, use the Intel WiFi dependency when wifi hardware
 		// dependencies are implemented.
 		// NB: These exclusions are somewhat overly broad; some
-		// (but not all) blooglet, ezkinil, and trembyle devices have
-		// WiFi chips that would work for this test. However, for now
-		// there is no better way to specify the exact hardware
-		// parameters needed for this test. (See linked bug.)
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("blooglet", "dalboz", "dirinboz", "ezkinil", "trembyle", "vilboz")),
+		// (but not all) blooglet devices have WiFi chips that would
+		// work for this test. However, for now there is no better way
+		// to specify the exact hardware parameters needed for this
+		// test. (See linked bug.)
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("blooglet", "dirinboz", "ezkinil", "vilboz")),
 	})
 }
 
