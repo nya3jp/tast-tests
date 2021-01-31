@@ -5,10 +5,10 @@
 package vkb
 
 import (
-	"bufio"
 	"context"
+	"encoding/xml"
 	"fmt"
-	"io"
+	"io/ioutil"
 	"math"
 	"os"
 	"strings"
@@ -21,6 +21,19 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
+
+// Structs required to unmarshal the SVG file.
+type svg struct {
+	Defs defs `xml:"defs"`
+}
+
+type defs struct {
+	Paths []path `xml:"path"`
+}
+
+type path struct {
+	D string `xml:"d,attr"`
+}
 
 // point is a single coordinate on the canvas.
 type point struct {
@@ -45,44 +58,68 @@ type strokeGroup struct {
 	strokes []stroke
 }
 
-// newStrokeGroup scans the handwriting file and returns a strokeGroup with the populated data.
-func newStrokeGroup(filePath string) (*strokeGroup, error) {
+// newStrokeGroup unmarshals the svg file and returns a strokeGroup with the populated data.
+// n is the number of desired points per stroke.
+// Detailed explanation of the algorithm can be found in go/tast-handwriting-svg-parsing.
+func newStrokeGroup(filePath string, n int) (*strokeGroup, error) {
 	// Open the file that needs to be read.
 	file, err := os.Open(filePath)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to read handwriting file")
+		return nil, errors.Wrapf(err, "failed to open SVG file at %s", filePath)
 	}
 	defer file.Close()
+
+	// Populate the svg struct with the data in the SVG file.
+	byteValue, err := ioutil.ReadAll(file)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read SVG file")
+
+	}
+	svgFile := &svg{}
+	if err := xml.Unmarshal(byteValue, svgFile); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal SVG file")
+	}
 
 	// Create an instance of strokeGroup.
 	sg := &strokeGroup{}
 
-	// Create a scanner to scan through each line of the input file.
-	scanner := bufio.NewScanner(file)
-
-	// Read in the width and height located in the first line of the input file.
-	scanner.Scan()
-	if err := scanner.Err(); err != nil {
-		return nil, errors.Wrap(err, "failed to scan file")
-	}
-	lineReader := strings.NewReader(scanner.Text())
-	if _, err := fmt.Fscanf(lineReader, "%f %f", &sg.width, &sg.height); err != nil {
-		return nil, errors.Wrap(err, "failed to read canvas width and height from handwriting file")
-	}
-
-	// Process the rest of the lines to populate the points into strokes.
-	for scanner.Scan() {
+	// Populate the strokeGroup struct with the strokes in the svg struct.
+	paths := svgFile.Defs.Paths
+	for _, path := range paths {
 		var s stroke
-		// Read in the current line and populate a single stroke.
-		lineReader := strings.NewReader(scanner.Text())
-		for {
+		// Convert the path string into an array of points by removing first character which will always
+		// be 'M' and splitting the string using 'L'.
+		coords := strings.Split(path.D[1:], "L")
+
+		// Quotient and remainder are used to calculate the number of points required in between the original points.
+		length := len(coords)
+		quotient, remainder := (n-length)/(length-1), (n-length)%(length-1)
+
+		for i, coord := range coords {
 			var p point
-			if _, err := fmt.Fscanf(lineReader, "%f %f", &p.x, &p.y); err != nil {
-				// If the error is EOF, it means that the scanner reached the end of the line and isn't an actual error.
-				if err == io.EOF {
-					break
+			// Populate a single point into the point struct and append to the current stroke.
+			fmt.Sscanf(coord, "%f %f", &p.x, &p.y)
+
+			if i != 0 {
+				// Get the previous points to calculate the change in x and y values between two points.
+				prev := s.points[len(s.points)-1]
+
+				// Define the number of points required in between two points using quotient and remainder.
+				pointsInBetween := quotient
+				if remainder > 0 {
+					pointsInBetween++
+					remainder--
 				}
-				return nil, errors.Wrap(err, "failed to read points from handwriting file")
+
+				// Define the required change in x and y for each new point in between the two original points.
+				dx, dy := (p.x-prev.x)/(float64(pointsInBetween+1)), (p.y-prev.y)/(float64(pointsInBetween+1))
+
+				// Append the newly calculated points into points.
+				for j := 1; j < pointsInBetween+1; j++ {
+					var newP point
+					newP.x, newP.y = prev.x+dx*float64(j), prev.y+dy*float64(j)
+					s.points = append(s.points, newP)
+				}
 			}
 			s.points = append(s.points, p)
 		}
@@ -90,15 +127,40 @@ func newStrokeGroup(filePath string) (*strokeGroup, error) {
 			sg.strokes = append(sg.strokes, s)
 		}
 	}
-	if err := scanner.Err(); err != nil {
-		return nil, errors.Wrap(err, "failed to scan file")
-	}
 
 	return sg, nil
 }
 
+// getMinMax returns the min x, max x, min y, max y values found within strokeGroup to calculate the
+// width and height of the handwriting text.
+func getMinMax(sg *strokeGroup) (*point, *point) {
+	// Initialise the min points to infinity, and the max points to 0. Max points will never be smaller than 0
+	// as negative coordinates are not used when creating SVG files.
+	minPoint, maxPoint := &point{math.Inf(1), math.Inf(1)}, &point{0, 0}
+	for _, s := range sg.strokes {
+		for _, p := range s.points {
+			minPoint.x, minPoint.y = math.Min(minPoint.x, p.x), math.Min(minPoint.y, p.y)
+			maxPoint.x, maxPoint.y = math.Max(maxPoint.x, p.x), math.Max(maxPoint.y, p.y)
+		}
+	}
+	return minPoint, maxPoint
+}
+
 // scale scales the data in the structs to fit into the handwriting input.
 func (sg *strokeGroup) scale(canvasLoc coords.Rect) {
+	// Get the min and max of x and y points to identify the size of the handwriting.
+	minPoint, maxPoint := getMinMax(sg)
+	minX, minY := minPoint.x, minPoint.y
+	maxX, maxY := maxPoint.x, maxPoint.y
+
+	// Define the SVG file's width and height.
+	width := math.Floor(maxX - minX)
+	height := math.Ceil(maxY - minY)
+
+	// Initialise the width and height of strokeGroup which will be scaled.
+	sg.width = 1.0
+	sg.height = height / width
+
 	// A multiplier that scales the points to make the handwriting smaller than the canvas.
 	const multiplier = 0.6
 
@@ -115,8 +177,8 @@ func (sg *strokeGroup) scale(canvasLoc coords.Rect) {
 	for i := 0; i < len(sg.strokes); i++ {
 		for j := 0; j < len(sg.strokes[i].points); j++ {
 			// The coordinates are overwritten by the scaled coordinates.
-			sg.strokes[i].points[j].x = sg.strokes[i].points[j].x*scale + widthOffset
-			sg.strokes[i].points[j].y = sg.strokes[i].points[j].y*scale + heightOffset
+			sg.strokes[i].points[j].x = (sg.strokes[i].points[j].x-minX)/width*scale + widthOffset
+			sg.strokes[i].points[j].y = (sg.strokes[i].points[j].y-minY)/width*scale + heightOffset
 		}
 	}
 }
@@ -161,8 +223,11 @@ func drawHandwriting(ctx context.Context, tconn *chrome.TestConn, sg *strokeGrou
 // DrawHandwritingFromFile reads the handwriting file, transforms the points into the correct scale,
 // populates the data into the struct, and draws the strokes into the handwriting input.
 func DrawHandwritingFromFile(ctx context.Context, tconn *chrome.TestConn, filePath string) error {
+	// Number of desired points per stroke.
+	const n = 100
+
 	// Scan the handwriting file and return a strokeGroup with the populated data.
-	sg, err := newStrokeGroup(filePath)
+	sg, err := newStrokeGroup(filePath, n)
 	if err != nil {
 		return errors.Wrap(err, "failed to read data from file")
 	}
