@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16746386_e1974bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-31T20:35:25Z",
+      "side": 1,
+      "message": "Removed this \"histograms\" fields from the Recorder struct so this line is no longer needed.",
+      "parentUuid": "2872eaa8_c78e2960",
+      "range": {
+        "startLine": 160,
+        "startChar": 22,
+        "endLine": 160,
+        "endChar": 57
+      },
+      "revId": "b0c4baec1d9af00baa1cdd5551f6f699a32823ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6c223b0_1c4e4975",
@@ -125,6 +149,30 @@
       "writtenOn": "2021-01-30T06:28:53Z",
       "side": 1,
       "message": "By the way, what is the reason why you want to concatenate rather than merging them?  Have you seen the problem of merging?",
+      "range": {
+        "startLine": 238,
+        "startChar": 37,
+        "endLine": 238,
+        "endChar": 43
+      },
+      "revId": "b0c4baec1d9af00baa1cdd5551f6f699a32823ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2836fb38_b628e583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-31T20:35:25Z",
+      "side": 1,
+      "message": "There are just too many cases to handle for \"merge\" especially when two buckets are overlapped (although I don\u0027t know if bucket overlapping is possible or not). Also if we merge two overlapped buckets we lose the original granularity from the sample data. So we prefer not merging them here but just provide all individual buckets by concatenate them and the post processing logic will handle them properly.\n\nBut your comment made me check the Histogram implementation again and found buckets should be in ascending ordered. Given the Contact() will not guarantee the order, I decided to removed Concat().\n\nIn stead, we can just reuse the CUJs \"record\" struct to record the histogram buckets. Existing Histogram behavior will not be impacted. See the added \"Buckets\" field in \"record\" struct.",
+      "parentUuid": "b6c223b0_1c4e4975",
       "range": {
         "startLine": 238,
         "startChar": 37,
@@ -158,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d263e4_e4c07a24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-31T20:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25e141e8_97568bb2",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 43
+      },
+      "revId": "b0c4baec1d9af00baa1cdd5551f6f699a32823ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77e23c6e_988176ce",
@@ -181,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23960258_4ba9072d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-31T20:35:25Z",
+      "side": 1,
+      "message": "\"hisgograms.json\" is just too common and I was afraid the file name could conflict with other usage. With the \"recorder_\" prefix we know it is for CUJ recorder and will have less chance to conflict.",
+      "parentUuid": "77e23c6e_988176ce",
+      "range": {
+        "startLine": 340,
+        "startChar": 32,
+        "endLine": 340,
+        "endChar": 51
+      },
+      "revId": "b0c4baec1d9af00baa1cdd5551f6f699a32823ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf4dac1a_aed619ae",
@@ -194,6 +290,24 @@
       "writtenOn": "2021-01-30T06:28:53Z",
       "side": 1,
       "message": "By the way, any reason why this is saved only on tab_switch_cuj?  Don\u0027t want to save on other tests?",
+      "revId": "b0c4baec1d9af00baa1cdd5551f6f699a32823ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2f138e9_a99e4eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-31T20:35:25Z",
+      "side": 1,
+      "message": "We will add this to other CUJs as well. But let me take this out temporarily from tab_switch_cuj and we will add this back when submitting changes for each individual CUJ.",
+      "parentUuid": "cf4dac1a_aed619ae",
       "revId": "b0c4baec1d9af00baa1cdd5551f6f699a32823ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
