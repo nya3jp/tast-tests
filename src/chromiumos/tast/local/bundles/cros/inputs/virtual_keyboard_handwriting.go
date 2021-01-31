@@ -19,9 +19,9 @@ import (
 
 // TODO(crbug/1164089): Create documentation for handwriting file format.
 const (
-	handwritingFileEN = "handwriting_en_hello_20210108.hw"
-	handwritingFileCN = "handwriting_cn_hello_20210108.hw"
-	handwritingFileJP = "handwriting_jp_hello_20210108.hw"
+	handwritingFileEN = "handwriting_en_hello_20210129.svg"
+	handwritingFileCN = "handwriting_cn_hello_20210129.svg"
+	handwritingFileJP = "handwriting_jp_hello_20210129.svg"
 )
 
 // Struct to contain the virtual keyboard handwriting test parameters.
