@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d8f5f6_aa03b08b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-01-31T11:00:21Z",
+      "side": 1,
+      "message": "nit: add a period to the end of the comment.",
+      "range": {
+        "startLine": 78,
+        "startChar": 28,
+        "endLine": 78,
+        "endChar": 60
+      },
+      "revId": "9ad8f9b5bbb4239d9b5822ed1835b0cb496cdc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc088066_2900301d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-01-31T11:00:21Z",
+      "side": 1,
+      "message": "nit: add a period to the end of the comment.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 56
+      },
+      "revId": "9ad8f9b5bbb4239d9b5822ed1835b0cb496cdc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
