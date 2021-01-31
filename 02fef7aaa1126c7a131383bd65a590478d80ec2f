@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66822ed9_663b5781",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-31T22:28:48Z",
+      "side": 1,
+      "message": "Hi Jun, It would be great if you could review my CL. Thank you!",
+      "revId": "02fef7aaa1126c7a131383bd65a590478d80ec2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
