@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ca6903_88362704",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-31T20:35:25Z",
+      "side": 1,
+      "message": "Jun, thanks for the comments. Main change is that I removed the Contact() method from histogram. Please see the reply embedded.",
+      "revId": "f54069d20f2f5453e30b00ea390427c24e264370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
