@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a131481_d85ff84a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-31T22:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "779ffb35_a00f7820",
+      "range": {
+        "startLine": 31,
+        "startChar": 57,
+        "endLine": 31,
+        "endChar": 66
+      },
+      "revId": "07379d0f92c12734af669b2a7107b1d21c668196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0ae8389_0c27506f",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-01-29T17:41:52Z",
       "side": 1,
       "message": "Would you mind s/graphics_nightly/graphics_perbuild/ ? Nightly runs a bit too seldom.\nThanks!",
+      "range": {
+        "startLine": 35,
+        "startChar": 57,
+        "endLine": 35,
+        "endChar": 73
+      },
+      "revId": "07379d0f92c12734af669b2a7107b1d21c668196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4b3f67_f51047d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-31T22:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0ae8389_0c27506f",
       "range": {
         "startLine": 35,
         "startChar": 57,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5671de62_83920430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-31T22:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "093c1f6c_a9373ed5",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 64
+      },
+      "revId": "07379d0f92c12734af669b2a7107b1d21c668196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c8541f2_9edcb8b1",
@@ -144,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6e5986c_8d290a86",
+        "filename": "src/chromiumos/tast/local/media/encoding/perf_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-31T22:58:14Z",
+      "side": 1,
+      "message": "Agree.\nSince I didn\u0027t contribute implementing the arc++ test code, I would rather the test authors do the moving. I already filed the issue. b/178568468",
+      "parentUuid": "5c8541f2_9edcb8b1",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "07379d0f92c12734af669b2a7107b1d21c668196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d786aaf4_31122534",
@@ -157,6 +253,30 @@
       "writtenOn": "2021-01-29T17:41:52Z",
       "side": 1,
       "message": "micronit: video_encode_accelerator_perf_tests ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 93,
+        "endLine": 21,
+        "endChar": 126
+      },
+      "revId": "07379d0f92c12734af669b2a7107b1d21c668196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e9c40a0_177334a1",
+        "filename": "src/chromiumos/tast/local/media/encoding/perf_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-31T22:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d786aaf4_31122534",
       "range": {
         "startLine": 21,
         "startChar": 93,
