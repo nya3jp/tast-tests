@@ -15,26 +15,30 @@ import (
 
 func TestNewStrokeGroup(t *testing.T) {
 	want := &strokeGroup{
-		width:  100.0,
-		height: 200.0,
+		width:  0.0,
+		height: 0.0,
 		strokes: []stroke{
 			{
 				points: []point{
 					{
-						x: 5.0,
-						y: 10.5,
+						x: 10.0,
+						y: 10.0,
 					},
 					point{
-						x: 6.0,
-						y: 11.7,
+						x: 15.0,
+						y: 15.0,
 					},
-				},
-			},
-			{
-				points: []point{
-					{
-						x: 2.0,
-						y: 3.4,
+					point{
+						x: 20.0,
+						y: 20.0,
+					},
+					point{
+						x: 25.0,
+						y: 25.0,
+					},
+					point{
+						x: 30.0,
+						y: 30.0,
 					},
 				},
 			},
@@ -48,11 +52,11 @@ func TestNewStrokeGroup(t *testing.T) {
 	defer os.Remove(file.Name())
 	defer file.Close()
 
-	if _, err := file.Write([]byte("100.0 200.0\n5.0 10.5 6.0 11.7\n 2.0 3.4")); err != nil {
+	if _, err := file.Write([]byte(`<svg><defs><path d="M10 10L20 20L30 30"></path></defs></svg>`)); err != nil {
 		t.Fatal("Write() failed: ", err)
 	}
 
-	got, err := newStrokeGroup(file.Name())
+	got, err := newStrokeGroup(file.Name(), 5)
 	if err != nil {
 		t.Fatal("newStrokeGroup() failed: ", err)
 	}
@@ -64,14 +68,18 @@ func TestNewStrokeGroup(t *testing.T) {
 
 func TestScale(t *testing.T) {
 	want := &strokeGroup{
-		width:  105.75,
+		width:  141.0,
 		height: 141.0,
 		strokes: []stroke{
 			{
 				points: []point{
 					{
-						x: 811.625,
-						y: 1252.25,
+						x: 441.5,
+						y: 512.0,
+					},
+					{
+						x: 586.025,
+						y: 649.475,
 					},
 				},
 			},
@@ -86,14 +94,18 @@ func TestScale(t *testing.T) {
 	}
 
 	sg := &strokeGroup{
-		width:  1.5,
-		height: 2.0,
+		width:  0.0,
+		height: 0.0,
 		strokes: []stroke{
 			{
 				points: []point{
 					{
-						x: 5.0,
-						y: 10.5,
+						x: 100.0,
+						y: 110.5,
+					},
+					{
+						x: 120.5,
+						y: 130.0,
 					},
 				},
 			},
