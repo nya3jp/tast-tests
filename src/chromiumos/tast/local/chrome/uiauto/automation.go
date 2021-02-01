@@ -142,6 +142,40 @@ func (ac *Context) Info(ctx context.Context, finder *nodewith.Finder) (*NodeInfo
 	return &out, err
 }
 
+// NodesInfo returns an array of the information for the nodes found by the input finder.
+// Note that the returning array might not contain any node.
+func (ac *Context) NodesInfo(ctx context.Context, finder *nodewith.Finder) ([]NodeInfo, error) {
+	q, err := finder.GenerateQueryForMultipleNodes()
+	if err != nil {
+		return nil, err
+	}
+	query := fmt.Sprintf(`
+		(async () => {
+			%s
+			var result = [];
+			nodes.forEach(function(nd) {
+				result.push({
+					checked: nd.checked,
+				    	className: nd.className,
+				    	htmlAttributes: nd.htmlAttributes,
+				    	location: nd.location,
+				    	name: nd.name,
+				    	restriction: nd.restriction,
+				    	role: nd.role,
+				    	state: nd.state,
+				    	value: nd.value,
+				});
+			});
+			return result
+		})()
+	`, q)
+	var out []NodeInfo
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		return ac.tconn.Eval(ctx, query, &out)
+	}, &ac.pollOpts)
+	return out, err
+}
+
 // Location returns the location of the node found by the input finder.
 // It will wait until the location is the same for a two iterations of polling.
 func (ac *Context) Location(ctx context.Context, finder *nodewith.Finder) (*coords.Rect, error) {
@@ -413,6 +447,29 @@ func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
 
 		if _, err := ew.WaitForEvent(ctx, ac.pollOpts.Timeout); err != nil {
 			return errors.Wrap(err, "failed to wait for the focus event on the specified node")
+		}
+		return nil
+	}
+}
+
+// IfSuccessThen returns a function that runs action only if the first function succeeds.
+// The function returns an error only if the preFunc succeeds but action fails,
+// It returns nil in all other situations.
+// Example:
+//   dialog := nodewith.Name("Dialog").Role(role.Dialog)
+//   button := nodewith.Name("Ok").Role(role.Button).Ancestor(dialog)
+//   ui := uiauto.New(tconn)
+//   if err := ui.IfSuccessThen(ui.WaitUntilExists(dialog), ui.LeftClick(button))(ctx); err != nil {
+//	    ...
+//   }
+func (ac *Context) IfSuccessThen(preFunc func(context.Context) error, action Action) Action {
+	return func(ctx context.Context) error {
+		if err := preFunc(ctx); err == nil {
+			if err := action(ctx); err != nil {
+				return err
+			}
+		} else {
+			testing.ContextLog(ctx, "The prefunc failed, the action is not executed")
 		}
 		return nil
 	}
