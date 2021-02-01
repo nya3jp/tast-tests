@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15399759_da19a04d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000246
+      },
+      "writtenOn": "2021-02-01T16:04:45Z",
+      "side": 1,
+      "message": "Is this intended to be the same as the existing GPU metrics? And if it is: is there some way to have a test to show that it is? Or tests in general?",
+      "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dea53cc_52c8a307",
@@ -31,6 +48,23 @@
       "writtenOn": "2021-02-01T05:02:03Z",
       "side": 1,
       "message": "Could you add unit tests, too?",
+      "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c47411c9_6728f890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000246
+      },
+      "writtenOn": "2021-02-01T16:04:45Z",
+      "side": 1,
+      "message": "ultra-nit: Lacros Chrome",
       "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -72,6 +106,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9c37077_ff3c6fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000246
+      },
+      "writtenOn": "2021-02-01T16:04:45Z",
+      "side": 1,
+      "message": "Yes. I\u0027d like sadrul@ to make sure that this aligns with how the existing metrics are computed.",
+      "parentUuid": "18be1e94_eb62e5d3",
+      "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "039a0ad1_14c68514",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
         "patchSetId": 1
@@ -83,6 +135,23 @@
       "writtenOn": "2021-02-01T05:02:03Z",
       "side": 1,
       "message": "Can be time.Time? Ditto for below.",
+      "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3988d2cc_313da14d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000246
+      },
+      "writtenOn": "2021-02-01T16:04:45Z",
+      "side": 1,
+      "message": "general comment: function comments would make this easier to understand later.",
       "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
