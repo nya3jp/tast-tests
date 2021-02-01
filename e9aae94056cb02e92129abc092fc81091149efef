@@ -16,6 +16,46 @@
       "message": "PS #2: ToT rebase and fix conflicts",
       "revId": "e9aae94056cb02e92129abc092fc81091149efef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa1c2414_10a58fc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-01T02:42:23Z",
+      "side": 1,
+      "message": "Only a nit. Thanks for cleaning them up.",
+      "revId": "e9aae94056cb02e92129abc092fc81091149efef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7770c54e_46ed351a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-01T02:42:23Z",
+      "side": 1,
+      "message": "Remove the redundant whitespace.",
+      "range": {
+        "startLine": 48,
+        "startChar": 35,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "e9aae94056cb02e92129abc092fc81091149efef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
