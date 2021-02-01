@@ -16,6 +16,46 @@
       "message": "PTAL~",
       "revId": "ef7041ada0e642d6f8826da8c978184405c1b606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "255b8cf8_e087507c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T03:01:20Z",
+      "side": 1,
+      "message": "Do you need to StopTracing here, too?",
+      "revId": "ef7041ada0e642d6f8826da8c978184405c1b606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3935e95_cc2c50d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T03:01:20Z",
+      "side": 1,
+      "message": "nit: could you use fmt.Sprintf()?",
+      "range": {
+        "startLine": 353,
+        "startChar": 44,
+        "endLine": 353,
+        "endChar": 98
+      },
+      "revId": "ef7041ada0e642d6f8826da8c978184405c1b606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
