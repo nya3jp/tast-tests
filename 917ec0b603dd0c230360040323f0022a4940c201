@@ -22,6 +22,30 @@
       },
       "revId": "917ec0b603dd0c230360040323f0022a4940c201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b514c247_27c9b8a7",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-02-01T18:54:36Z",
+      "side": 1,
+      "message": "I agree, but I couldn\u0027t find any proper solution even after talking to platform. I was able to find following examples that use sleep:\nhttps://lwn.net/Articles/717761/\nhttps://www.kernel.org/doc/html/v4.12/input/uinput.html\nhttps://gist.github.com/toinsson/7e9fdd3c908b3c3d3cd635321d19d44d",
+      "parentUuid": "052a4ff5_6779a41d",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 34
+      },
+      "revId": "917ec0b603dd0c230360040323f0022a4940c201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
