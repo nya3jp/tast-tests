@@ -184,8 +184,7 @@ func measureRTCStats(ctx context.Context, conn *chrome.Conn, p *perf.Values) err
 		}
 
 		var isBlackFrame bool
-		isBlackVideoFrameJS := fmt.Sprintf("isBlackVideoFrame(%d,%d)", streamWidth/8, streamHeight/8)
-		if err := conn.Eval(ctx, isBlackVideoFrameJS, &isBlackFrame); err != nil {
+		if err := conn.Call(ctx, &isBlackFrame, "isBlackVideoFrame", streamWidth/8, streamHeight/8); err != nil {
 			return errors.Wrap(err, "isBlackVideoFrame() JS failed")
 		}
 		if isBlackFrame {
@@ -193,8 +192,7 @@ func measureRTCStats(ctx context.Context, conn *chrome.Conn, p *perf.Values) err
 		}
 
 		var isFrozenFrame bool
-		isFrozenVideoFrameJS := fmt.Sprintf("isFrozenVideoFrame(%d,%d)", streamWidth/8, streamHeight/8)
-		if err := conn.Eval(ctx, isFrozenVideoFrameJS, &isFrozenFrame); err != nil {
+		if err := conn.Call(ctx, &isFrozenFrame, "isFrozenVideoFrame", streamWidth/8, streamHeight/8); err != nil {
 			return errors.Wrap(err, "isFrozenVideoFrameJS() JS failed")
 		}
 		if isFrozenFrame {
@@ -286,7 +284,7 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 		}
 	}
 
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("start(%q, false, %d, %d)", profile, streamWidth, streamHeight), nil); err != nil {
+	if err := conn.Call(ctx, nil, "start", profile, false, streamWidth, streamHeight); err != nil {
 		return errors.Wrap(err, "establishing connection")
 	}
 

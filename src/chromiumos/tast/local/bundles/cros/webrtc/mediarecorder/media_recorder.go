@@ -8,7 +8,6 @@ package mediarecorder
 import (
 	"context"
 	"encoding/base64"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
@@ -304,9 +303,8 @@ func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, cr *chrome.Ch
 	// racy. Insert a sleep() temporarily until Blink code is fixed: b/158858449.
 	testing.Sleep(ctx, 2*time.Second)
 
-	startRecordJS := fmt.Sprintf("startRecordingForResult(%q, %d)", codec, recordTime.Milliseconds())
-	if err := conn.EvalPromise(ctx, startRecordJS, nil); err != nil {
-		return errors.Wrapf(err, "failed to evaluate %v", startRecordJS)
+	if err := conn.Call(ctx, nil, "startRecordingForResult", codec, recordTime.Milliseconds()); err != nil {
+		return errors.Wrapf(err, "failed to evaluate startRecordingForResult(%q, %d)", codec, recordTime.Milliseconds())
 	}
 
 	if hwUsed, err := histogram.WasHWAccelUsed(ctx, tconn, initHistogram, constants.MediaRecorderVEAUsed, int64(constants.MediaRecorderVEAUsedSuccess)); err != nil {
