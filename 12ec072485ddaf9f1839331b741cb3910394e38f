@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0470c960_fdb2af36",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-01T22:14:46Z",
+      "side": 1,
+      "message": "Could you explain why this would misbehave if we run two speech monitors sequentially? Is it because we might reuse the same background page that already contains injected code?\n\nIf that\u0027s the case, I added a check before we inject code into the background page:\n\nif (!window.testUtterances) {\n    window.testUtterances \u003d [];\n    chrome.ttsEngine.onSpeak.addListener(...);\n}",
+      "parentUuid": "c69b4d46_3ab15732",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 31
+      },
+      "revId": "12ec072485ddaf9f1839331b741cb3910394e38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9cfac5d8_e46edccd",
         "filename": "src/chromiumos/tast/local/a11y/a11y.go",
         "patchSetId": 9
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-01T09:56:21Z",
       "side": 1,
       "message": "nit: one space after an arrow",
+      "range": {
+        "startLine": 167,
+        "startChar": 52,
+        "endLine": 167,
+        "endChar": 53
+      },
+      "revId": "12ec072485ddaf9f1839331b741cb3910394e38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "314b3880_5afaddee",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-01T22:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cfac5d8_e46edccd",
       "range": {
         "startLine": 167,
         "startChar": 52,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93a1bcd6_6182f2c3",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-01T22:14:46Z",
+      "side": 1,
+      "message": "Thanks, that\u0027s much cleaner than waiting for the last utterance. I updated this function to consume one utterance at a time, using a 10 second poll to give it a chance to be spoken.",
+      "parentUuid": "77b222e1_30f1870b",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 52
+      },
+      "revId": "12ec072485ddaf9f1839331b741cb3910394e38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcc7afc6_d9d3bfa8",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02442e04_a4b90d86",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-01T22:14:46Z",
+      "side": 1,
+      "message": "Understood, removed this block. I introduced a startIndex member that tells us which utterances are valid. All utterances that come before testUtterances[startIndex] are considered stale.",
+      "parentUuid": "bcc7afc6_d9d3bfa8",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 2
+      },
+      "revId": "12ec072485ddaf9f1839331b741cb3910394e38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14294187_038baa60",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-02-01T00:48:26Z",
       "side": 1,
       "message": "IIUC, each steps is independent. i.e. even when opening chromeVox fails, we want to test other senarios.\nHow about using s.Error here and below so that the test continues even when one stps fails?\n\nTable-driven test with testing.State.Run is another approach: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests\n\nAlso, if we do this, please move cleanup of stale utterances before each actions.",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "12ec072485ddaf9f1839331b741cb3910394e38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fe17955_2789d97a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-01T22:14:46Z",
+      "side": 1,
+      "message": "Done, using s.Error instead of s.Fatal. Clean up of stale utterances occurs when sm.consume(...) is called so no need to worry about it in this file.",
+      "parentUuid": "14294187_038baa60",
       "range": {
         "startLine": 60,
         "startChar": 2,
