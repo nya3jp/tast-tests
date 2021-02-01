@@ -7,7 +7,6 @@ package play
 
 import (
 	"context"
-	"fmt"
 	"image"
 	"image/color"
 	"image/png"
@@ -102,7 +101,7 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) (b
 		return false, errors.Wrap(err, "failed to retrieve a media DevTools observer")
 	}
 
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("playUntilEnd(%q)", videoFile), nil); err != nil {
+	if err := conn.Call(ctx, nil, "playUntilEnd", videoFile); err != nil {
 		return false, err
 	}
 
@@ -143,7 +142,7 @@ func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, url string) (
 		return false, errors.Wrap(err, "failed to retrieve a media DevTools observer")
 	}
 
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("play_shaka(%q)", mpdFile), nil); err != nil {
+	if err := conn.Call(ctx, nil, "play_shaka", mpdFile); err != nil {
 		return false, err
 	}
 
@@ -158,8 +157,8 @@ func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks int) e
 	prevFinishedSeeks := 0
 	for i := 0; i < numSeeks; i++ {
 		finishedSeeks := 0
-		if err := conn.EvalPromise(ctx, "randomSeek()", &finishedSeeks); err != nil {
-			// If the test times out, EvalPromise() might be interrupted and return
+		if err := conn.Call(ctx, &finishedSeeks, "randomSeek"); err != nil {
+			// If the test times out, Call() might be interrupted and return
 			// zero finishedSeeks, in that case used the last known good amount.
 			if finishedSeeks == 0 {
 				finishedSeeks = prevFinishedSeeks
@@ -192,7 +191,7 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("playRepeatedly(%q)", videoFile), nil); err != nil {
+	if err := conn.Call(ctx, nil, "playRepeatedly", videoFile); err != nil {
 		return err
 	}
 	if err := seekVideoRepeatedly(ctx, conn, numSeeks); err != nil {
@@ -351,7 +350,7 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	}
 
 	// Start playing the video indefinitely.
-	if err := conn.Eval(ctx, fmt.Sprintf("playRepeatedly(%q)", filename), nil); err != nil {
+	if err := conn.Call(ctx, nil, "playRepeatedly", filename); err != nil {
 		return errors.Wrapf(err, "failed to play %v", filename)
 	}
 
