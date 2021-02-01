@@ -23,6 +23,11 @@ const (
 	dbusManagerInterface = "org.chromium.flimflam.Manager"
 )
 
+// Exported constants
+const (
+	EnableWaitTime = 500 * time.Millisecond
+)
+
 // Manager wraps a Manager D-Bus object in shill.
 type Manager struct {
 	*dbusutil.PropertyHolder
@@ -263,6 +268,42 @@ func (m *Manager) IsAvailable(ctx context.Context, technology Technology) (bool,
 // IsEnabled returns true if a technology is enabled.
 func (m *Manager) IsEnabled(ctx context.Context, technology Technology) (bool, error) {
 	return m.hasTechnology(ctx, shillconst.ManagerPropertyEnabledTechnologies, technology)
+}
+
+// DisableTechnologyForTesting first checks whether |technology| is enabled.
+// If it is enabled, it disables the technology and defers re-enabling the technology,
+// returning the shortened context. Otherwise the original context is returned.
+func (m *Manager) DisableTechnologyForTesting(ctx context.Context, technology Technology) (func(ctx context.Context), error) {
+	enabled, err := m.IsEnabled(ctx, technology)
+	if err != nil {
+		return nil, errors.Wrapf(err, "Unable to determine enabled state for %v: ", technology)
+	}
+	if !enabled {
+		return nil, nil
+	}
+	if err := m.DisableTechnology(ctx, technology); err != nil {
+		return nil, errors.Wrapf(err, "unable to disable technology: %s: ", string(technology))
+	}
+	return func(ctx context.Context) {
+		m.EnableTechnology(ctx, technology)
+		// Ensure the Enable completes before the test ends so that cleanup will succeed.
+		const interval = 100 * time.Millisecond
+		testing.Poll(ctx, func(ctx context.Context) error {
+			enabled, err := m.IsEnabled(ctx, technology)
+			if err != nil {
+				return errors.Wrap(err, "failed to get enabled state")
+			}
+			if !enabled {
+				return errors.New("not enabled")
+			}
+			return nil
+		}, &testing.PollOptions{
+			Timeout:  EnableWaitTime - interval,
+			Interval: interval,
+		})
+		// Additional delay for primary connection to complete.
+		testing.Sleep(ctx, interval)
+	}, nil
 }
 
 // DevicesByTechnology returns list of Devices and their Properties snapshots of the specified technology.
