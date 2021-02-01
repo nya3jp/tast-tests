@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d9d5b2d_e546d018",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-01T18:54:00Z",
+      "side": 1,
+      "message": "This was remarkably straightforward and has the huge advantage over the Python version of running locally on the DUT so it does not need to use the flimflam/test/backchannel script and can be run on a local device over Ethernet or WiFi.\n\n\n",
+      "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
