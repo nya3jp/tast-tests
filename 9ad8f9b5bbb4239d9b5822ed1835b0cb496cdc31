@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57db56ea_81ca1da3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-01T03:16:43Z",
+      "side": 1,
+      "message": "+2 for Tast Owners % nit",
+      "revId": "9ad8f9b5bbb4239d9b5822ed1835b0cb496cdc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "580b1de6_6f4d7040",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-01T03:16:43Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s a bit ugly to require a space be prepended here, can you concatenate this yourself in the logic below? (or combine appName with subLabel?)",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "9ad8f9b5bbb4239d9b5822ed1835b0cb496cdc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5d8f5f6_aa03b08b",
@@ -19,6 +59,29 @@
         "startChar": 28,
         "endLine": 78,
         "endChar": 60
+      },
+      "revId": "9ad8f9b5bbb4239d9b5822ed1835b0cb496cdc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef779a8_1ae9f945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-01T03:16:43Z",
+      "side": 1,
+      "message": "optional: appName only appears to be used here. Why not include subLabel as part of appName? (and rename the combined variable \"label\" or something like that?)",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 40
       },
       "revId": "9ad8f9b5bbb4239d9b5822ed1835b0cb496cdc31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
