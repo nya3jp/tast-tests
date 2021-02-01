@@ -113,6 +113,7 @@ func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
 	}
 
 	// Start sending the file on the CrOS side.
+	s.Log("Starting sending on the CrOS device")
 	sender, err := nearbyshare.StartSendFiles(ctx, cr, testFiles)
 	if err != nil {
 		s.Fatal("Failed to set up control over the send surface: ", err)
@@ -121,22 +122,36 @@ func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Start receiving on the Android device.
+	var shareCompleted bool
+	s.Log("Starting receiving on the Android device")
 	transferTimeout := s.Param().(nearbytestutils.TestData).Timeout
 	if err := androidDevice.ReceiveFile(ctx, crosDisplayName, androidDisplayName, transferTimeout); err != nil {
 		s.Fatal("Failed to start receiving on Android: ", err)
 	}
-	// Defer cancelling the share in case it fails.
-	defer androidDevice.CancelReceivingFile(ctx)
-	// Defer taking a screenshot so we can see what receivers were available in the UI.
-	// Sharing will be cancelled and Chrome will be closed before the built-in failure screenshot is taken.
-	defer screenshot.CaptureChrome(ctx, cr, filepath.Join(s.OutDir(), "after_sharing.png"))
+	// Defer cancelling receiving if something goes wrong.
+	defer func() {
+		if !shareCompleted {
+			s.Log("Cancelling receiving")
+			if err := screenshot.CaptureChrome(ctx, cr, filepath.Join(s.OutDir(), "after_sharing.png")); err != nil {
+				s.Log("Failed to capture a screenshot before cancelling receiving")
+			}
+			if err := androidDevice.CancelReceivingFile(ctx); err != nil {
+				s.Fatal("Failed to cancel receiving after the share failed: ", err)
+			}
+			if err := androidDevice.AwaitSharingStopped(ctx, transferTimeout); err != nil {
+				s.Fatal("Failed waiting for the Android device to signal that sharing has finished: ", err)
+			}
+		}
+	}()
 
 	// Wait until the Android device is detected, then select it as a receiver.
+	s.Log("Waiting for CrOS sender to detect Android receiver")
 	if err := sender.SelectShareTarget(ctx, androidDisplayName, nearbyshare.CrosDetectReceiverTimeout); err != nil {
 		s.Fatal("CrOS device failed to select Android device as a receiver and start the transfer: ", err)
 	}
 
 	// Wait for Android to detect the share and start awaiting confirmation.
+	s.Log("Waiting for Android receiver to detect the incoming share from CrOS sender")
 	if err := androidDevice.AwaitReceiverConfirmation(ctx, transferTimeout); err != nil {
 		s.Fatal("Failed waiting for the Android device to detect the share: ", err)
 	}
@@ -148,17 +163,21 @@ func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
 	}
 
 	// Confirm the share.
+	s.Log("Accepting the share on the Android receiver")
 	if err := androidDevice.AcceptTheSharing(ctx, token); err != nil {
 		s.Fatal("Failed to accept the share on the Android device: ", err)
 	}
 
 	// Wait for Android to signal the sharing has completed.
+	s.Log("Waiting for the Android receiver to signal that sharing has completed")
 	if err := androidDevice.AwaitSharingStopped(ctx, transferTimeout); err != nil {
 		s.Fatal("Failed waiting for the Android device to signal that sharing has finished: ", err)
 	}
+	shareCompleted = true
 
 	// Hash the file on both sides and confirm they match. Android receives shares in its default downloads directory.
 	if err := nearbytestutils.FileHashComparison(ctx, filenames, nearbyshare.SendDir, android.DownloadDir, androidDevice); err != nil {
 		s.Fatal("Failed file hash comparison: ", err)
 	}
+	s.Log("Share completed and file hashes match on both sides")
 }
