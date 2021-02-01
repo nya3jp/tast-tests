@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "033a4afa_6c7f1794",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T08:45:01Z",
+      "side": 1,
+      "message": "This should be changed once https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2648034 is merged. The same as following.",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "fcab951fe31b1dd3b41afb7a2b727f59c3716863",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6023cc97_6e275f66",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T08:45:01Z",
+      "side": 1,
+      "message": "This should be renamed to ui once porting finishes.",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 4
+      },
+      "revId": "fcab951fe31b1dd3b41afb7a2b727f59c3716863",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
