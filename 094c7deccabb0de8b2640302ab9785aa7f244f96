@@ -162,6 +162,30 @@
       },
       "revId": "094c7deccabb0de8b2640302ab9785aa7f244f96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a3c8e1_966e7cda",
+        "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T05:08:03Z",
+      "side": 1,
+      "message": "(Sorry, I overlooked the reply).\nI meant:\nwhy do you need base64 encoding here?\nIf it is just because shutil.Escape does not handle it correctly now, could you please fix the shutil.Escape, rather than workaround by introducing base64 here?",
+      "parentUuid": "ba77935b_ed741694",
+      "range": {
+        "startLine": 124,
+        "startChar": 52,
+        "endLine": 124,
+        "endChar": 76
+      },
+      "revId": "094c7deccabb0de8b2640302ab9785aa7f244f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

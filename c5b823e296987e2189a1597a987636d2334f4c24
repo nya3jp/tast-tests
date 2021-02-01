@@ -16,6 +16,80 @@
       "message": "question: do we want to add a dev tool in C++, so the developer can also use that? then we can call the binary in tast.\n\nWDYT?",
       "revId": "c5b823e296987e2189a1597a987636d2334f4c24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e817571d_6b02b29f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T05:08:03Z",
+      "side": 1,
+      "message": "Again, when you update your CL, could you run tryjob?",
+      "revId": "c5b823e296987e2189a1597a987636d2334f4c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d151f68_9ceb0d4f",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T05:08:03Z",
+      "side": 1,
+      "message": "Clarification, is it necessary to stop TPM manager on this call? If so, could you document?",
+      "revId": "c5b823e296987e2189a1597a987636d2334f4c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8178d02c_1627e11a",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T05:08:03Z",
+      "side": 1,
+      "message": "Could you document this needs to be called while TPM manager is not running?",
+      "revId": "c5b823e296987e2189a1597a987636d2334f4c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3261e256_02aefd44",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T05:08:03Z",
+      "side": 1,
+      "message": "should this be defer stmt, at L173 (before SetTPMManagerLocalData).\nDitto for below.\n\nOr, rather, it may be worth trying to encapsulate it in SetTPMManagerLocalData.",
+      "range": {
+        "startLine": 177,
+        "startChar": 11,
+        "endLine": 177,
+        "endChar": 50
+      },
+      "revId": "c5b823e296987e2189a1597a987636d2334f4c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
