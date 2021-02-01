@@ -60,6 +60,11 @@ func (a *ARC) InstalledPackages(ctx context.Context) (map[string]struct{}, error
 	return a.device.InstalledPackages(ctx)
 }
 
+// PackageInstalled returns true if the given package has been installed.
+func (a *ARC) PackageInstalled(ctx context.Context, pkg string) (bool, error) {
+	return a.device.PackageInstalled(ctx, pkg)
+}
+
 // Uninstall uninstalls a package from the Android system.
 func (a *ARC) Uninstall(ctx context.Context, pkg string) error {
 	return a.device.Uninstall(ctx, pkg)
