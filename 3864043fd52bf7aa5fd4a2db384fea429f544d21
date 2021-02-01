@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4191ace_56fb3fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-01T01:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa73ef47_6e2e462c",
+      "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bec5d26e_beb40eb3",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c997ba_b8ceff83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-01T01:38:53Z",
+      "side": 1,
+      "message": "Made it fin within 80col.",
+      "parentUuid": "bec5d26e_beb40eb3",
+      "range": {
+        "startLine": 78,
+        "startChar": 23,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7d15ea4_3cfdaade",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-01-29T09:11:22Z",
       "side": 1,
       "message": "nit: include tested versions in the error message",
+      "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5ae3e93_967e3637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-01T01:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7d15ea4_3cfdaade",
       "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +171,48 @@
       "writtenOn": "2021-01-29T09:11:22Z",
       "side": 1,
       "message": "Same",
+      "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3db041a_0f6fce45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-01T01:38:53Z",
+      "side": 1,
+      "message": "Changed to lowercase letter.",
+      "parentUuid": "bb952fa6_5ed41a0a",
+      "range": {
+        "startLine": 186,
+        "startChar": 27,
+        "endLine": 186,
+        "endChar": 28
+      },
+      "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d07f75b7_85ad0081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-01T01:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "371df2ab_feac0b3a",
       "revId": "3864043fd52bf7aa5fd4a2db384fea429f544d21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
