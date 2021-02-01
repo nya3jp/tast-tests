@@ -14,6 +14,7 @@ import android.hardware.camera2.TotalCaptureResult;
 import android.os.SystemClock;
 
 import java.util.Arrays;
+import java.util.concurrent.CountDownLatch;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +50,8 @@ class CaptureCallbackHistogram extends CaptureCallback {
     private long mLastSnapshotTime = -1;
     // Histogram of pipeline latency (ns).
     private Map<Long, Integer> mPipelineLatencyHistogram = new HashMap<Long, Integer>();
+    // Will be decremented when a frame arrives.
+    private CountDownLatch mFrameSignal = new CountDownLatch(1);
 
     private String buildHistogramString(int[] histogram) {
         String result;
@@ -166,6 +169,7 @@ class CaptureCallbackHistogram extends CaptureCallback {
     @Override
     public void onCaptureCompleted(
             CameraCaptureSession session, CaptureRequest request, TotalCaptureResult result) {
+        mFrameSignal.countDown();
         mNumFrames++;
 
         // Record Java callback timestamp.
@@ -202,9 +206,14 @@ class CaptureCallbackHistogram extends CaptureCallback {
         mNumSnapshots = 0;
         mLastSnapshotTime = -1;
         mPipelineLatencyHistogram = new HashMap<Long, Integer>();
+        mFrameSignal = new CountDownLatch(1);
     }
 
     public void setTargetFrameDuration(int duration) {
         mTargetFrameDuration = duration;
+    }
+
+    public void waitForFirstFrame() throws InterruptedException {
+        mFrameSignal.await();
     }
 }
