@@ -129,6 +129,40 @@ func (ac *Context) Info(ctx context.Context, finder *nodewith.Finder) (*NodeInfo
 	return &out, err
 }
 
+// NodesInfo returns an array of the information for the nodes found by the input finder.
+// Note that the returning array might not contain any node.
+func (ac *Context) NodesInfo(ctx context.Context, finder *nodewith.Finder) ([]NodeInfo, error) {
+	q, err := finder.GenerateQueryForMultipleNodes()
+	if err != nil {
+		return nil, err
+	}
+	query := fmt.Sprintf(`
+		(async () => {
+			%s
+			var result = [];
+			nodes.forEach(function(nd) {
+				result.push({
+					checked: nd.checked,
+				    	className: nd.className,
+				    	htmlAttributes: nd.htmlAttributes,
+				    	location: nd.location,
+				    	name: nd.name,
+				    	restriction: nd.restriction,
+				    	role: nd.role,
+				    	state: nd.state,
+				    	value: nd.value,
+				});
+			});
+			return result
+		})()
+	`, q)
+	var out []NodeInfo
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		return ac.tconn.Eval(ctx, query, &out)
+	}, &ac.pollOpts)
+	return out, err
+}
+
 // Location returns the location of the node found by the input finder.
 // It will wait until the location is the same for a two iterations of polling.
 func (ac *Context) Location(ctx context.Context, finder *nodewith.Finder) (*coords.Rect, error) {
@@ -368,5 +402,19 @@ func (ac *Context) LeftClickUntil(finder *nodewith.Finder, condition func(contex
 			}
 			return nil
 		}, &ac.pollOpts)
+	}
+}
+
+// ActionOnCondition returns a function that runs action only if condition succeeds.
+// The function returns an error only if the condition succeeds but action fails,
+// It returns nil in all other situations.
+func (ac *Context) ActionOnCondition(action, condition func(context.Context) error) func(context.Context) error {
+	return func(ctx context.Context) error {
+		if err := condition(ctx); err == nil {
+			if err := action(ctx); err != nil {
+				return err
+			}
+		}
+		return nil
 	}
 }
