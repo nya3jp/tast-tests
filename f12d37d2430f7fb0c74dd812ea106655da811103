@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "780d2884_dbab910d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpu_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T07:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58a7b12d_06de9101",
+      "revId": "f12d37d2430f7fb0c74dd812ea106655da811103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e10f3df_035f6983",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08907a36_034bc917",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T07:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e10f3df_035f6983",
+      "revId": "f12d37d2430f7fb0c74dd812ea106655da811103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6817dc38_9f686adb",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-02-01T04:46:01Z",
       "side": 1,
       "message": "Could you document the transition state of prepareLacrosChromeBinary?\nCurrently, callers have responsibility to extract files from the archive.",
+      "revId": "f12d37d2430f7fb0c74dd812ea106655da811103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2a3b9a_5c6b02b0",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T07:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6817dc38_9f686adb",
       "revId": "f12d37d2430f7fb0c74dd812ea106655da811103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2166525a_75798019",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T07:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bd7ed4c_43a978e3",
+      "range": {
+        "startLine": 156,
+        "startChar": 45,
+        "endLine": 156,
+        "endChar": 61
+      },
+      "revId": "f12d37d2430f7fb0c74dd812ea106655da811103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e8a7416_a58721d8",
@@ -88,6 +166,24 @@
       "writtenOn": "2021-02-01T04:46:01Z",
       "side": 1,
       "message": "Could you return err, if it is non-nil but does not satisfy the condition?",
+      "revId": "f12d37d2430f7fb0c74dd812ea106655da811103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "accb8936_16176bc5",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T07:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e8a7416_a58721d8",
       "revId": "f12d37d2430f7fb0c74dd812ea106655da811103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
