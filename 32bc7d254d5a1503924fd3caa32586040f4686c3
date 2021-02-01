@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e448b13_cf1abf11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-01T21:11:00Z",
+      "side": 1,
+      "message": "Changed the defer so that we won\u0027t call CancelReceivingFile if the share succeeds. How about the other RPC stuff I\u0027m logging? Want me to indent them or something so they\u0027re easier to separate from the other logs?",
+      "parentUuid": "0830904c_a41fbb3c",
+      "revId": "32bc7d254d5a1503924fd3caa32586040f4686c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f543c53_f87a95e1",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-01T20:18:50Z",
       "side": 1,
       "message": "Add a line that the file was received and hashes matched to end the test.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 1
+      },
+      "revId": "32bc7d254d5a1503924fd3caa32586040f4686c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd6a429_1191e800",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-01T21:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f543c53_f87a95e1",
       "range": {
         "startLine": 169,
         "startChar": 0,
