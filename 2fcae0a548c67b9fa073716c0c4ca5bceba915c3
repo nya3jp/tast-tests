@@ -181,6 +181,30 @@
       },
       "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f97e230_69d5a186",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-01T17:55:14Z",
+      "side": 1,
+      "message": "If not, could you file a new one?\nAnother option is to assign with the ID (i.e. TODO(edcourtney): ...), but I prefer having an issue is better as it clarifies when the TODO task can be addressed.",
+      "parentUuid": "4edbd4f8_bd00e71e",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 8
+      },
+      "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
