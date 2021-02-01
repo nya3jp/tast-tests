@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbbf71b8_7b634295",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-01T21:04:56Z",
+      "side": 1,
+      "message": "I think an array of pointers may be a kinda strange pattern because one of these being nil would be very odd. Maybe just an array of NodeInfo?",
+      "range": {
+        "startLine": 133,
+        "startChar": 78,
+        "endLine": 133,
+        "endChar": 79
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22cca5f1_5472e47d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-01T21:04:56Z",
+      "side": 1,
+      "message": "Tabbing is inconsistent here",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 24
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef77ad1_26bba8d2",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-01T21:04:56Z",
+      "side": 1,
+      "message": "Is it possible to get rid of this dependency to help with naming and such?",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee35bdb_bf5e288b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-01T21:04:56Z",
+      "side": 1,
+      "message": "I have a partial port of this, will hopefully be putting it up for review soon. Just FYI.",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beaad061_0f5c33a3",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-01T21:04:56Z",
+      "side": 1,
+      "message": "NameStartingWith",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f9083e_73b37450",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-01T21:04:56Z",
+      "side": 1,
+      "message": "NameRegex",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 43
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f021f72e_306c903a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-01T21:04:56Z",
+      "side": 1,
+      "message": "nit: Since this is only one action, I wouldn\u0027t use run, just:\nuiauto.New(tconn).LeftClick(developersButton)(ctx)\n\nsame for the many other single uses of uiauto.Run.",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 74
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "220b2e7e_7d30ad71",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-01T21:04:56Z",
+      "side": 1,
+      "message": "Is this intentionally different from the old version? You don\u0027t specify role at all or use a regex.",
+      "range": {
+        "startLine": 116,
+        "startChar": 70,
+        "endLine": 116,
+        "endChar": 74
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
