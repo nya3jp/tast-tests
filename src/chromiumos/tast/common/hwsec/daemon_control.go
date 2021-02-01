@@ -13,11 +13,9 @@ instead of only (re)starting them.
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/testing"
 )
 
 // DaemonInfo represents the information for a daemon.
@@ -108,23 +106,15 @@ func (dc *DaemonController) WaitForAllDBusServices(ctx context.Context) error {
 }
 
 func (dc *DaemonController) waitForDBusService(ctx context.Context, info *DaemonInfo) error {
-	// Without quote, we might find something prefixed by name.
-	name := "\"" + info.DBusName + "\""
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		if out, err := dc.r.Run(
-			ctx,
-			"dbus-send",
-			"--system",
-			"--dest=org.freedesktop.DBus",
-			"--print-reply",
-			"/org/freedesktop/DBus",
-			"org.freedesktop.DBus.ListNames"); err != nil {
-			return err
-		} else if strings.Contains(string(out), name) {
-			return nil
-		}
-		return errors.New("daemon not up")
-	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 15 * time.Second})
+	// Create a 30 seconds timeout to wait for D-Bus service
+	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+
+	name := info.DBusName
+	if _, err := dc.r.Run(ctx, "gdbus", "wait", "--system", name); err != nil {
+		return errors.Wrapf(err, "failed to wait for D-Bus service %s", name)
+	}
+	return nil
 }
 
 // Start starts a daemon and waits until the D-Bus interface is responsive if it has D-Bus interface.
