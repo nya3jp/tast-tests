@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "052a4ff5_6779a41d",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-02-01T00:25:30Z",
+      "side": 1,
+      "message": "Delaying with sleep should be avoided. It will either be too short, leading to wasted time, or too long, leading to flakes. Is there something specific that we can wait on here?",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 34
+      },
+      "revId": "917ec0b603dd0c230360040323f0022a4940c201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
