@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f09f479b_237752fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-01T20:59:29Z",
+      "side": 1,
+      "message": "Thanks for the quick review, PTAL\n",
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

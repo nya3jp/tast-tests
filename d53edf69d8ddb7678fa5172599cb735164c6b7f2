@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bfb9abb_7f3e1caa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-01T20:59:29Z",
+      "side": 1,
+      "message": "Are those keyvals monitored anywhere?\n\nFrankly, if we want to maintain and monitor some performance tests, I would prefer to do so separately, rather than combine it with a stability test.\n\nAlso, for multiple file sizes, that also sounds better suited to a performance test, unless we have cause to suspect that larger or smaller transfers are more likely to fail.",
+      "parentUuid": "f1dc5f63_317cd3ec",
+      "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "874a10de_f114ee2a",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-02-01T19:24:19Z",
       "side": 1,
       "message": "Maybe not something to worry about for now but do we need to e.g. disable Bluetooth here too? (In case there\u0027s a device set up for tethering, for example?)",
+      "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "911b6728_b366a410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-01T20:59:29Z",
+      "side": 1,
+      "message": "Disabling WiFi will disable any tether networks. We don\u0027t support network connections over Bluetooth to the best of my knowledge.",
+      "parentUuid": "874a10de_f114ee2a",
       "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +113,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a21ce1e_16aa16b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-01T20:59:29Z",
+      "side": 1,
+      "message": "The DBus commands return immediately (i.e. they do not wait for the enable to complete), so that should be plenty.",
+      "parentUuid": "776c8634_70e12a8a",
+      "range": {
+        "startLine": 51,
+        "startChar": 37,
+        "endLine": 51,
+        "endChar": 50
+      },
+      "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "347eea82_59e28544",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-01T20:59:29Z",
+      "side": 1,
+      "message": "This turns out to be flaky, so I also addressed that.",
+      "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5a4b75d_f4226a8d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
         "patchSetId": 1
@@ -88,6 +165,24 @@
       "writtenOn": "2021-02-01T19:24:19Z",
       "side": 1,
       "message": "If it\u0027s not much trouble can we put an example line here so we can see where this 4 comes from?",
+      "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c32d27e_60c0032d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-01T20:59:29Z",
+      "side": 1,
+      "message": "Yeah, I realized this test could use some documentation, so I\u0027m adding some, I\u0027ll make sure to document this too.",
+      "parentUuid": "c5a4b75d_f4226a8d",
       "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +200,30 @@
       "writtenOn": "2021-02-01T19:24:19Z",
       "side": 1,
       "message": "\"Wrong route interface: got %s, want %s\", routeIface, deviceIface",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0352b037_ffd746ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-01T20:59:29Z",
+      "side": 1,
+      "message": "I don\u0027t think that \"got\" and \"want\" make it entirely clear which is which, but I will clarify.",
+      "parentUuid": "3175c25a_6954738a",
       "range": {
         "startLine": 88,
         "startChar": 12,
@@ -138,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "211b2d61_05b32b8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-01T20:59:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6affe597_8d352cce",
+      "range": {
+        "startLine": 97,
+        "startChar": 40,
+        "endLine": 97,
+        "endChar": 44
+      },
+      "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0074d08_63b816ea",
@@ -151,6 +294,30 @@
       "writtenOn": "2021-02-01T19:24:19Z",
       "side": 1,
       "message": "seems like you expected to have an error appended to the end of this string?\n\nEither way, it should be \"Read wrong number of bytes: got %s, want %s\"",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 40
+      },
+      "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce9f329_1e79e451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-01T20:59:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0074d08_63b816ea",
       "range": {
         "startLine": 106,
         "startChar": 12,
