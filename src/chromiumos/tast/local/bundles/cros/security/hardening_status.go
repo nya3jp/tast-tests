@@ -6,6 +6,7 @@ package security
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -127,11 +128,10 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 
 	s.Logf("Checking status of %d processes", len(infos))
 	numChecked := 0
-	// TODO(crbug.com/1165788): Print the below arrays as JSON.
-	var haveMountsFlowingIn []string
+	var haveOnlyMountsFlowingIn []string
 	var haveSharedMounts []string
-	var rootProcsInInitMountNS []string
-	var rootProcsWithMountsFlowingIn []string
+	var privProcsInInitMountNS []string
+	var privProcsWithMountsFlowingIn []string
 
 	for pid, info := range infos {
 		if pid == initPID {
@@ -147,10 +147,10 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 			continue
 		}
 
-		if info.Euid == 0 && info.MntNS == initInfo.MntNS {
-			// Root processes running in the root mount namespace are exposed
+		if privileged(info) && info.MntNS == initInfo.MntNS {
+			// Privileged processes running in the init mount namespace are exposed
 			// to mounts created by other processes.
-			rootProcsInInitMountNS = append(rootProcsInInitMountNS, info.Name)
+			privProcsInInitMountNS = append(privProcsInInitMountNS, info.Name)
 			numChecked++
 			continue
 		}
@@ -171,28 +171,57 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 		}
 
 		if hasMountFlowingIn {
-			haveMountsFlowingIn = append(haveMountsFlowingIn, info.Name)
+			haveOnlyMountsFlowingIn = append(haveOnlyMountsFlowingIn, info.Name)
 		}
 		if hasSharedMount {
 			haveSharedMounts = append(haveSharedMounts, info.Name)
 		}
 
-		if (hasMountFlowingIn || hasSharedMount) && info.Euid == 0 {
-			rootProcsWithMountsFlowingIn = append(rootProcsWithMountsFlowingIn, info.Name)
+		if (hasMountFlowingIn || hasSharedMount) && privileged(info) {
+			privProcsWithMountsFlowingIn = append(privProcsWithMountsFlowingIn, info.Name)
 		}
 
 		numChecked++
 	}
 
 	s.Logf("Checked %d processes after exclusions", numChecked)
-	s.Logf("%d processes have mounts flowing in", len(haveMountsFlowingIn))
+	s.Logf("%d processes have mounts flowing in", len(haveOnlyMountsFlowingIn))
 	s.Logf("%d processes have shared mounts", len(haveSharedMounts))
-	s.Logf("%d root processes are running in the root mount NS:", len(rootProcsInInitMountNS))
-	for _, proc := range rootProcsInInitMountNS {
+	s.Logf("%d privileged processes are running in the init mount NS:", len(privProcsInInitMountNS))
+	for _, proc := range privProcsInInitMountNS {
 		s.Log(proc)
 	}
-	s.Logf("%d root processes have mounts flowing in:", len(rootProcsWithMountsFlowingIn))
-	for _, proc := range rootProcsWithMountsFlowingIn {
+	s.Logf("%d privileged processes are exposed to mount events:", len(privProcsWithMountsFlowingIn))
+	for _, proc := range privProcsWithMountsFlowingIn {
 		s.Log(proc)
 	}
+
+	const relevantProcessesLogName = "relevant_processes.txt"
+	s.Log("Writing relevant processes to ", relevantProcessesLogName)
+	relevantProcesses, err := os.Create(filepath.Join(s.OutDir(), relevantProcessesLogName))
+	if err != nil {
+		s.Fatal("Failed to open file: ", err)
+	}
+	defer relevantProcesses.Close()
+
+	for _, l := range [][]string{haveOnlyMountsFlowingIn, haveSharedMounts} {
+		b, err := json.Marshal(l)
+		if err != nil {
+			s.Error("Failed to marshal process list: ", err)
+			continue
+		}
+		relevantProcesses.Write(b)
+		relevantProcesses.WriteString("\n")
+	}
+}
+
+func privileged(info *sandboxing.ProcSandboxInfo) bool {
+	var privilegedCapIdxs = [...]int{
+		21, // CAP_SYS_ADMIN
+	}
+	var privilegedCapMask uint64
+	for _, idx := range privilegedCapIdxs {
+		privilegedCapMask |= (1 << idx)
+	}
+	return info.Euid == 0 || (info.Ecaps&privilegedCapMask) > 0
 }
