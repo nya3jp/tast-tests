@@ -6,6 +6,8 @@ package arc
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"regexp"
 	"time"
 
@@ -15,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -83,6 +86,13 @@ func testTextField(ctx context.Context, st pkTestState, s *testing.State, activi
 	d := st.d
 	kb := st.kb
 
+	// Prepare the dump dir
+	dir, _ := testing.ContextOutDir(ctx)
+	dir = filepath.Join(dir, "faillog")
+	if err := os.MkdirAll(dir, 0755); err != nil {
+		s.Log("Failed to create faillog/")
+	}
+
 	act, err := arc.NewActivity(a, pkg, activity)
 	if err != nil {
 		return errors.Wrapf(err, "failed to create a new activity %q", activity)
@@ -95,6 +105,21 @@ func testTextField(ctx context.Context, st pkTestState, s *testing.State, activi
 	defer act.Stop(ctx, tconn)
 
 	if err := d.Object(ui.ID(fieldID), ui.Text(initText)).WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Log("Failed to find field, collect cpuinfo")
+		out, err := a.Command(ctx, "dumpsys", "cpuinfo").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return errors.Wrap(err, "failed to collect cpuinfo")
+		}
+		path := filepath.Join(dir, "cpuinfo.txt")
+		f, err := os.Create(path)
+		if err != nil {
+			return errors.Wrap(err, "failed to create txt")
+		}
+		defer f.Close()
+		if _, err := f.Write(out); err != nil {
+			return errors.Wrap(err, "failed to write to a file")
+		}
+
 		return errors.Wrap(err, "failed to find field")
 	}
 
