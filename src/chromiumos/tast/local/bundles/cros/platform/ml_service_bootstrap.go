@@ -39,16 +39,7 @@ func MLServiceBootstrap(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for Chrome to complete a basic call to ML Service")
-	if err = tconn.EvalPromise(ctx,
-		`new Promise((resolve, reject) => {
-		   chrome.autotestPrivate.bootstrapMachineLearningService(() => {
-		     if (chrome.runtime.lastError === undefined) {
-		       resolve();
-		     } else {
-		       reject(chrome.runtime.lastError.message);
-		     }
-		   });
-		 })`, nil); err != nil {
+	if err = tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.bootstrapMachineLearningService)`); err != nil {
 		s.Fatal("Running autotestPrivate.bootstrapMachineLearningService failed: ", err)
 	}
 

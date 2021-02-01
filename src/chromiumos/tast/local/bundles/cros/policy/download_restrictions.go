@@ -92,7 +92,7 @@ func DownloadRestrictions(ctx context.Context, s *testing.State) {
 			}
 			defer dconn.Close()
 
-			err = dconn.Exec(ctx, `document.getElementById('dlink').click()`)
+			err = dconn.Eval(ctx, `document.getElementById('dlink').click()`, nil)
 			if err != nil {
 				s.Fatal("Failed to execute JS expression: ", err)
 			}
