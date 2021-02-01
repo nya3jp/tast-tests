@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a074d2b0_21a4c608",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-02-01T04:12:55Z",
+      "side": 1,
+      "message": "this is not clear if Help is going to need all the functions declared in the interface, right?",
+      "revId": "46a178e0bf2b79b32b43780af17c73ee0b462e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
