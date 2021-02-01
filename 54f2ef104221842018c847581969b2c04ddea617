@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "759c32eb_236e7f8b",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-02-01T01:11:06Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "a2211a47_6770e7ab",
+      "range": {
+        "startLine": 78,
+        "startChar": 43,
+        "endLine": 78,
+        "endChar": 58
+      },
+      "revId": "54f2ef104221842018c847581969b2c04ddea617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa1755ec_4a2541a5",
