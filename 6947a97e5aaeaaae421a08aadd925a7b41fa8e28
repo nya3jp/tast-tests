@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96b1622f_09f63b9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:39:23Z",
+      "side": 1,
+      "message": "LGTM % remaining questions",
+      "revId": "6947a97e5aaeaaae421a08aadd925a7b41fa8e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a83c21e9_08ac30e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:39:23Z",
+      "side": 1,
+      "message": "Why not echo and expect the extra newline at the end of the test?",
+      "range": {
+        "startLine": 285,
+        "startChar": 35,
+        "endLine": 285,
+        "endChar": 46
+      },
+      "revId": "6947a97e5aaeaaae421a08aadd925a7b41fa8e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9add18_a43efd94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:39:23Z",
+      "side": 1,
+      "message": "Can the test continue if this failed?",
+      "range": {
+        "startLine": 306,
+        "startChar": 4,
+        "endLine": 306,
+        "endChar": 10
+      },
+      "revId": "6947a97e5aaeaaae421a08aadd925a7b41fa8e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a247767_5fde7632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:39:23Z",
+      "side": 1,
+      "message": "Is this required here? It makes closeFileOut overly complicated.",
+      "revId": "6947a97e5aaeaaae421a08aadd925a7b41fa8e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
