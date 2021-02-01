@@ -6,6 +6,7 @@ package chrome
 
 import (
 	"context"
+	"io/ioutil"
 	"path/filepath"
 
 	"github.com/mafredri/cdp/protocol/target"
@@ -31,7 +32,11 @@ func DeprecatedNewConn(ctx context.Context, s *cdputil.Session, id target.ID, la
 // DEPRECATED: Do not call this function. It's available only for compatibility
 // with old code.
 func DeprecatedPrepareExtensions() (extDirs []string, err error) {
-	exts, err := extension.PrepareExtensions(filepath.Join(persistentDir, "extensions"), nil, "")
+	dir, err := ioutil.TempDir("", "tast_test_api_extension.")
+	if err != nil {
+		return nil, err
+	}
+	exts, err := extension.PrepareExtensions(filepath.Join(dir, "extensions"), nil, "")
 	if err != nil {
 		return nil, err
 	}
