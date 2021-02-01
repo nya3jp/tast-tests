@@ -81,6 +81,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a839bd8_2c1a4a39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-02-01T22:22:41Z",
+      "side": 1,
+      "message": "LGTM % nits. I guess this needs to wait until the Chrome CLs land?",
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2bae230_f4fe7073",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-02-01T22:22:41Z",
+      "side": 1,
+      "message": "nit: End with period.",
+      "range": {
+        "startLine": 48,
+        "startChar": 70,
+        "endLine": 48,
+        "endChar": 100
+      },
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50682def_b9e0ebf0",
@@ -94,6 +134,30 @@
       "writtenOn": "2021-02-01T17:49:43Z",
       "side": 1,
       "message": "I think this comment pertains to l.67, \"av1_film_grain\", right?\nSince this entry \"av1_ssim\" applies to all test vectors.\n\nAlso s/we validates by visually not md5/validate visually and not by MD5/",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 60
+      },
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16798ff8_86cf7bf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-02-01T22:22:41Z",
+      "side": 1,
+      "message": "I think this comment would fit better right before ln. 69 to explain why volteer is excluded:\n\n  // Different decoders may use different film grain synthesis methods while producing\n  // a visually correct output. Thus, for volteer, we don\u0027t validate the decoding of\n  // film-grain streams using MD5. Instead, we validate them using SSIM (see the\n  // av1_ssim test).",
+      "parentUuid": "50682def_b9e0ebf0",
       "range": {
         "startLine": 81,
         "startChar": 4,
