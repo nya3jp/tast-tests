@@ -101,6 +101,69 @@
       "message": "Friendly ping! :) ",
       "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0df90df_44bb466e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-01T17:25:06Z",
+      "side": 1,
+      "message": "LGTM % some comment nit.",
+      "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e02363_5ef0ba5d",
+        "filename": "src/chromiumos/tast/services/cros/network/proxy_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-01T17:25:06Z",
+      "side": 1,
+      "message": "StartServer",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3e6293_2b80f039",
+        "filename": "src/chromiumos/tast/services/cros/network/proxy_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-01T17:25:06Z",
+      "side": 1,
+      "message": "StopServer",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
