@@ -113,6 +113,7 @@ func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
 	}
 
 	// Start sending the file on the CrOS side.
+	s.Log("Starting sending on the CrOS device")
 	sender, err := nearbyshare.StartSendFiles(ctx, cr, testFiles)
 	if err != nil {
 		s.Fatal("Failed to set up control over the send surface: ", err)
@@ -121,6 +122,7 @@ func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Start receiving on the Android device.
+	s.Log("Starting receiving on the Android device")
 	transferTimeout := s.Param().(nearbytestutils.TestData).Timeout
 	if err := androidDevice.ReceiveFile(ctx, crosDisplayName, androidDisplayName, transferTimeout); err != nil {
 		s.Fatal("Failed to start receiving on Android: ", err)
@@ -132,11 +134,13 @@ func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
 	defer screenshot.CaptureChrome(ctx, cr, filepath.Join(s.OutDir(), "after_sharing.png"))
 
 	// Wait until the Android device is detected, then select it as a receiver.
+	s.Log("Waiting for CrOS sender to detect Android receiver")
 	if err := sender.SelectShareTarget(ctx, androidDisplayName, nearbyshare.CrosDetectReceiverTimeout); err != nil {
 		s.Fatal("CrOS device failed to select Android device as a receiver and start the transfer: ", err)
 	}
 
 	// Wait for Android to detect the share and start awaiting confirmation.
+	s.Log("Waiting for Android receiver to detect the incoming share from CrOS sender")
 	if err := androidDevice.AwaitReceiverConfirmation(ctx, transferTimeout); err != nil {
 		s.Fatal("Failed waiting for the Android device to detect the share: ", err)
 	}
@@ -148,11 +152,13 @@ func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
 	}
 
 	// Confirm the share.
+	s.Log("Accepting the share on the Android receiver")
 	if err := androidDevice.AcceptTheSharing(ctx, token); err != nil {
 		s.Fatal("Failed to accept the share on the Android device: ", err)
 	}
 
 	// Wait for Android to signal the sharing has completed.
+	s.Log("Waiting for the Android receiver to signal that sharing has completed")
 	if err := androidDevice.AwaitSharingStopped(ctx, transferTimeout); err != nil {
 		s.Fatal("Failed waiting for the Android device to signal that sharing has finished: ", err)
 	}
