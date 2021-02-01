@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e88d8e3f_84766233",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-01T08:35:56Z",
+      "side": 1,
+      "message": "Can we simply execute \"kmsvnc\" and let PATH decide?",
+      "revId": "8987f2b751491f5b87bd136f4874990dff1db40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd21e0e_a89dd8be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-01T08:35:56Z",
+      "side": 1,
+      "message": "We can turn this into two subtests using testing.Param, and use ExtraSoftwareDeps to only run the egl variant on supported devices (however I didn\u0027t find existing deps on go/tast-deps that works for us, we may need to write our own.)",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "8987f2b751491f5b87bd136f4874990dff1db40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b2ea51_bb6093c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-01T08:35:56Z",
+      "side": 1,
+      "message": "Go prefers short variable names, I guess it\u0027s fine to shadow the outer |ctx| here, although I didn\u0027t find the style guide mentioning this.",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "8987f2b751491f5b87bd136f4874990dff1db40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "517d180a_621e96ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-01T08:35:56Z",
+      "side": 1,
+      "message": "Default should be -1 according to `set_power_policy --help`",
+      "range": {
+        "startLine": 77,
+        "startChar": 70,
+        "endLine": 77,
+        "endChar": 71
+      },
+      "revId": "8987f2b751491f5b87bd136f4874990dff1db40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
