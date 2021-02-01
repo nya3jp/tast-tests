@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f8a6d58_948984ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-02-01T04:51:59Z",
+      "side": 1,
+      "message": "It was listed as Tier 2 target for camera-postsubmit. I think we can add it once http://b/178987691 is resolved.",
+      "parentUuid": "90f3ef4f_33b6a1e2",
+      "revId": "42a51a97d088762e0ec3212f006b400670bbe567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6817a59_1ec14805",
