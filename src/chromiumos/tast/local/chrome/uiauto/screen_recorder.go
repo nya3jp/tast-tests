@@ -1,8 +1,8 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package uiauto
 
 import (
 	"bytes"
@@ -14,10 +14,8 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/testing"
 )
 
 const (
@@ -86,12 +84,12 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 	}
 
 	// Choose to record the entire desktop/screen with no audio.
-	ui := uiauto.New(tconn)
+	ui := New(tconn)
 	shareScreenDialog := nodewith.Name("Share your screen").ClassName("DesktopMediaPickerDialogView")
 	entireDesktopButton := nodewith.ClassName("DesktopMediaSourceView").Role(role.Button).Ancestor(shareScreenDialog)
 	shareButton := nodewith.Name("Share").Role(role.Button).Ancestor(shareScreenDialog)
 
-	if err := uiauto.Run(ctx, ui.LeftClick(entireDesktopButton), ui.LeftClick(shareButton)); err != nil {
+	if err := Run(ctx, ui.LeftClick(entireDesktopButton), ui.LeftClick(shareButton)); err != nil {
 		return nil, errors.Wrap(err, "failed to start screeen recording through ui")
 	}
 
@@ -110,23 +108,12 @@ func (r *ScreenRecorder) Start(ctx context.Context, tconn *chrome.TestConn) erro
 	}
 	r.isRecording = true
 
-	params := FindParams{Name: "Notification close", Role: RoleTypeButton}
-	closeButton, err := FindWithTimeout(ctx, tconn, params, 15*time.Second)
-	if err != nil {
-		testing.ContextLog(ctx, "Failed to find the screen sharing alert dialog, might have disappeared already")
-		return nil
+	ui := New(tconn)
+	closeNotificationButton := nodewith.Name("Notification close").Role(role.Button)
+	messagePopupAlert := nodewith.ClassName("MessagePopupView").Role(role.AlertDialog)
+	if err := Run(ctx, ui.WithInterval(1*time.Second).LeftClick(closeNotificationButton), ui.WaitUntilGone(messagePopupAlert)); err != nil {
+		return errors.Wrap(err, "failed to close notification and wait for it to be gone")
 	}
-	defer closeButton.Release(ctx)
-
-	if err := closeButton.StableLeftClick(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to click the close button on the alert dialog")
-	}
-
-	params = FindParams{ClassName: "MessagePopupView", Role: "alertDialog"}
-	if err := WaitUntilGone(ctx, tconn, params, 30*time.Second); err != nil {
-		return errors.Wrap(err, "the alert dialog failed to disappear")
-	}
-
 	return nil
 }
 
