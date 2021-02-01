@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee74a21d_2dfb3bdc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T23:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbbf71b8_7b634295",
+      "range": {
+        "startLine": 133,
+        "startChar": 78,
+        "endLine": 133,
+        "endChar": 79
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22cca5f1_5472e47d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d355efa_e4ca2640",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T23:26:10Z",
+      "side": 1,
+      "message": "This is weird since it looked well in my local workspace. Now it looks crooked in my local workspace.",
+      "parentUuid": "22cca5f1_5472e47d",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 24
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eef77ad1_26bba8d2",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-01T21:04:56Z",
       "side": 1,
       "message": "Is it possible to get rid of this dependency to help with naming and such?",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ca0081_bfa75b7b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T23:26:10Z",
+      "side": 1,
+      "message": "Sorry, did not understand the comment. Could you please explain more?",
+      "parentUuid": "eef77ad1_26bba8d2",
       "range": {
         "startLine": 19,
         "startChar": 1,
@@ -118,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42b06fe6_0f0c443b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T23:26:10Z",
+      "side": 1,
+      "message": "Will change once this is merged: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2648034",
+      "parentUuid": "beaad061_0f5c33a3",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f9083e_73b37450",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 3
@@ -129,6 +225,30 @@
       "writtenOn": "2021-02-01T21:04:56Z",
       "side": 1,
       "message": "NameRegex",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 43
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efff8a8a_59d223a6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T23:26:10Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "59f9083e_73b37450",
       "range": {
         "startLine": 58,
         "startChar": 34,
@@ -162,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa6a1b11_ab644e1d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T23:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f021f72e_306c903a",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 74
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "220b2e7e_7d30ad71",
@@ -175,6 +319,30 @@
       "writtenOn": "2021-02-01T21:04:56Z",
       "side": 1,
       "message": "Is this intentionally different from the old version? You don\u0027t specify role at all or use a regex.",
+      "range": {
+        "startLine": 116,
+        "startChar": 70,
+        "endLine": 116,
+        "endChar": 74
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a753960f_7b7309dc",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T23:26:10Z",
+      "side": 1,
+      "message": "It is. The old version always return the first node and the version returns an error if multiple nodes are found and First is false. In this case, name and first are enough to find. There is no need to use a regex in fact.",
+      "parentUuid": "220b2e7e_7d30ad71",
       "range": {
         "startLine": 116,
         "startChar": 70,
