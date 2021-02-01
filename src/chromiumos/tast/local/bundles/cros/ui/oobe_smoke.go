@@ -40,14 +40,14 @@ func OOBESmoke(ctx context.Context, s *testing.State) {
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.WelcomeScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the welcome screen to be visible: ", err)
 	}
-	if err := oobeConn.Exec(ctx, "OobeAPI.screens.WelcomeScreen.clickNext()"); err != nil {
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.WelcomeScreen.clickNext()", nil); err != nil {
 		s.Fatal("Failed to click welcome page next button: ", err)
 	}
 
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.NetworkScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the network screen to be visible: ", err)
 	}
-	if err := oobeConn.Exec(ctx, "OobeAPI.screens.NetworkScreen.clickNext()"); err != nil {
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.NetworkScreen.clickNext()", nil); err != nil {
 		s.Fatal("Failed to click network page next button: ", err)
 	}
 
@@ -63,7 +63,7 @@ func OOBESmoke(ctx context.Context, s *testing.State) {
 		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EulaScreen.nextButton.isEnabled()"); err != nil {
 			s.Fatal("Failed to wait for the accept eula button to be enabled: ", err)
 		}
-		if err := oobeConn.Exec(ctx, "OobeAPI.screens.EulaScreen.clickNext()"); err != nil {
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.EulaScreen.clickNext()", nil); err != nil {
 			s.Fatal("Failed to click accept eula button: ", err)
 		}
 	}
@@ -71,7 +71,7 @@ func OOBESmoke(ctx context.Context, s *testing.State) {
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.UserCreationScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the user creation screen to be visible: ", err)
 	}
-	if err := oobeConn.Exec(ctx, "OobeAPI.screens.UserCreationScreen.clickNext()"); err != nil {
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.UserCreationScreen.clickNext()", nil); err != nil {
 		s.Fatal("Failed to click user creation screen next button: ", err)
 	}
 

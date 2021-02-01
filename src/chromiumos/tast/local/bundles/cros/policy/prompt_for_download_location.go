@@ -133,7 +133,7 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to start download: ", err)
 			}
 
-			if err := conn.Exec(ctx, `document.getElementById('dlink').click()`); err != nil {
+			if err := conn.Eval(ctx, `document.getElementById('dlink').click()`, nil); err != nil {
 				s.Fatal("Failed to execute JS expression: ", err)
 			}
 

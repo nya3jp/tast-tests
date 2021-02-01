@@ -212,14 +212,10 @@ func Memory(ctx context.Context, s *testing.State) {
 		}
 
 		// Set the window to 800x600 in size.
-		err = s.PreValue().(launcher.PreData).TestAPIConn.EvalPromise(ctx,
-			`new Promise((resolve, reject) => {
-			  chrome.windows.getLastFocused({}, (window) => {
-				  chrome.windows.update(window.id, {width: 800, height:600, state:"normal"}, resolve);
-			  });
-			})
-			`, nil)
-		if err != nil {
+		if err := s.PreValue().(launcher.PreData).TestAPIConn.Call(ctx, nil, `async () => {
+			const window = await tast.promisify(chrome.windows.getLastFocused)();
+			await tast.promisify(chrome.windows.update)(window.id, {width: 800, height:600, state:"normal"});
+		}`); err != nil {
 			s.Fatal("Setting window size failed: ", err)
 		}
 

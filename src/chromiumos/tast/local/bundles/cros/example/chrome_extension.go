@@ -78,7 +78,7 @@ func ChromeExtension(ctx context.Context, s *testing.State) {
 		Capacity          float64 `json:"capacity"`
 		AvailableCapacity float64 `json:"availableCapacity"`
 	}
-	if err := conn.EvalPromise(ctx,
+	if err := conn.Eval(ctx,
 		`new Promise((resolve, reject) => {
 			chrome.system.memory.getInfo((info) => { resolve(info); });
 		})`, &info); err != nil {
