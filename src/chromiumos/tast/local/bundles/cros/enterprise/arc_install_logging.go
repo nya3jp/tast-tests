@@ -10,6 +10,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/policy"
@@ -19,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -55,13 +58,14 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar("enterprise.ARCInstallLogging.password")
 
 	// Login to Chrome and allow to launch ARC if allowed by user policy. Flag --install-log-fast-upload-for-tests reduces delay of uploading chrome log.
+	// Flag --arc-install-event-chrome-log-for-tests logs ARC install events to chrome log.
 	cr, err := chrome.New(
 		ctx,
 		chrome.Auth(user, password, "gaia-id"),
 		chrome.GAIALogin(),
 		chrome.ARCSupported(),
 		chrome.ProdPolicy(),
-		chrome.ExtraArgs("--install-log-fast-upload-for-tests"))
+		chrome.ExtraArgs("--install-log-fast-upload-for-tests", "--arc-install-event-chrome-log-for-tests"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -147,6 +151,12 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to upload app log: ", err)
 	}
 
+	// Check if requred sequence appears in chrome log.
+	s.Log("Checking if required events are logged")
+	if err := waitForLoggedEvents(ctx, cr, testPackage); err != nil {
+		s.Fatal("Required events not logged: ", err)
+	}
+
 	// Wait for chrome to upload logs to enterprise management server.
 	s.Log("Checking for chrome log upload status")
 	if err := waitForChromeLogUpload(ctx, cr, testPackage); err != nil {
@@ -171,6 +181,89 @@ func waitForAppLogUpload(ctx context.Context, d *ui.Device, uploadStatusLabelID 
 			return nil
 		}
 		return testing.PollBreak(errors.Wrap(err, "unknown log upload status: "+text))
+	}, nil)
+}
+
+// statusCodeToString converts status code to human-readable string. Should be in sync with device_management_backend.proto in chrome.
+func statusCodeToString(code string) string {
+	switch code {
+	case "1":
+		return "SERVER_REQUEST"
+	case "2":
+		return "CLOUDDPC_REQUEST"
+	case "3":
+		return "CLOUDDPS_REQUEST"
+	case "4":
+		return "CLOUDDPS_RESPONSE"
+	case "5":
+		return "PHONESKY_LOG"
+	case "6":
+		return "SUCCESS"
+	case "7":
+		return "CANCELED"
+	case "8":
+		return "CONNECTIVITY_CHANGE"
+	case "9":
+		return "SESSION_STATE_CHANGE"
+	case "10":
+		return "INSTALLATION_STARTED"
+	case "11":
+		return "INSTALLATION_FINISHED"
+	case "12":
+		return "INSTALLATION_FAILED"
+	case "13":
+		return "DIRECT_INSTALL"
+	case "14":
+		return "CLOUDDPC_MAIN_LOOP_FAILED"
+	default:
+		return "UNKNOWN"
+	}
+}
+
+// readLoggedEvents reads logged events from /var/log/chrome/chrome file.
+func readLoggedEvents(packageName string) ([]string, error) {
+	logContent, err := ioutil.ReadFile(syslog.ChromeLogFile)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read "+syslog.ChromeLogFile)
+	}
+
+	r := regexp.MustCompile(`Add ARC install event for package ` + packageName + `, (.*)`)
+	matches := r.FindAllStringSubmatch(string(logContent), -1)
+	if matches == nil {
+		return nil, errors.New("no event logged yet")
+	}
+
+	var events []string
+	for _, m := range matches {
+		events = append(events, statusCodeToString(m[1]))
+	}
+	return events, nil
+}
+
+// waitForLoggedEvents waits for desired sequence to appear in chrome log.
+func waitForLoggedEvents(ctx context.Context, cr *chrome.Chrome, packageName string) error {
+	var expectedEvents = []string{"SERVER_REQUEST", "INSTALLATION_STARTED", "INSTALLATION_FINISHED", "SUCCESS"}
+
+	ctx, st := timing.Start(ctx, "wait_logged_events")
+	defer st.End()
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		loggedEvents, err := readLoggedEvents(packageName)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to read chrome log"))
+		}
+
+		eventsMap := make(map[string]bool)
+		for _, e := range loggedEvents {
+			eventsMap[e] = true
+		}
+
+		for _, expected := range expectedEvents {
+			if !eventsMap[expected] {
+				return errors.New("incomplete sequence: " + strings.Join(loggedEvents[:], ","))
+			}
+		}
+		return nil
 	}, nil)
 }
 
