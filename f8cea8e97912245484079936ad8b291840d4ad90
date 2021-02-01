@@ -16,6 +16,52 @@
       "message": "Thanks Jorge. tast-owners, owner review please.\n",
       "revId": "f8cea8e97912245484079936ad8b291840d4ad90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0bb996e_3847cdce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-01T03:50:16Z",
+      "side": 1,
+      "message": "Prefer not passing *testing.State to functions:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#state\n\nYou have some different options here:\n1. Normally we might  simply return an error if the user could not be found. I appreciate that may generate additional complexity for the caller here and break your nice API design.\n2. In this case, you could also consider introducing the notion of an \u0027invalid pattern\u0027 (i.e. returning an option which sets the pattern into an erroneous state, which is then reported when the pattern is used). This would defer reporting the error until the Pattern is used. This seems most desirable at the moment. You could do this by adding an \u0027error\u0027 field on the Pattern which is checked before the pattern is used.\n3. I don\u0027t recommend it in this case, but if you did have a situation that warranted passing the State, you could define an interface that exposes just the members you need (in this case, .Fatal()). This would allow the method to also be called in preconditions (which have *testing.PreState, for example).",
+      "range": {
+        "startLine": 113,
+        "startChar": 11,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "f8cea8e97912245484079936ad8b291840d4ad90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e01013_2b913a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-01T03:50:16Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 127,
+        "startChar": 12,
+        "endLine": 127,
+        "endChar": 29
+      },
+      "revId": "f8cea8e97912245484079936ad8b291840d4ad90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
