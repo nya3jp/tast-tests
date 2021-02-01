@@ -18,11 +18,16 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const resetTimeout = 30 * time.Second
+const (
+	// LoggedInToCUJUserFixture is the fixture name.
+	LoggedInToCUJUserFixture = "loggedInToCUJUser"
+
+	resetTimeout = 30 * time.Second
+)
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            "loggedInToCUJUser",
+		Name:            LoggedInToCUJUserFixture,
 		Desc:            "The main fixture used for UI CUJ tests",
 		Contacts:        []string{"mukai@chromium.org"},
 		Impl:            &loggedInToCUJUserFixture{},
