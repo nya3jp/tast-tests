@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ffd761_e7ee9ca2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-02-01T04:09:56Z",
+      "side": 1,
+      "message": "question: do we want to add a dev tool in C++, so the developer can also use that? then we can call the binary in tast.\n\nWDYT?",
+      "revId": "c5b823e296987e2189a1597a987636d2334f4c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
