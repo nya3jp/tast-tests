@@ -18,6 +18,9 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/ossettings"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -51,15 +54,14 @@ const (
 
 // find params for fixed items.
 var (
-	developersButton      = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Developers|Linux.*`)}, Role: ui.RoleTypeButton}
-	nextButton            = ui.FindParams{Name: "Next", Role: ui.RoleTypeButton}
-	settingsHeading       = ui.FindParams{Name: "Settings", Role: ui.RoleTypeHeading}
-	settingsWindow        = ui.FindParams{Name: "Settings", Role: ui.RoleTypeWindow}
-	linuxSettings         = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(PageNameLinux + ".*")}, Role: ui.RoleTypeRootWebArea}
-	emptySharedFoldersMsg = ui.FindParams{Name: "Shared folders will appear here", Role: ui.RoleTypeStaticText}
-	sharedFoldersList     = ui.FindParams{Name: "Shared folders", Role: ui.RoleTypeList}
-	unshareFailDlg        = ui.FindParams{Name: "Unshare failed", Role: ui.RoleTypeDialog}
-	okButton              = ui.FindParams{Name: "OK", Role: ui.RoleTypeButton}
+	settingsWindow        = nodewith.Attribute("name", regexp.MustCompile("Settings.*")).Role(role.Window).First()
+	developersButton      = nodewith.Attribute("name", regexp.MustCompile("Developers|Linux.*")).Role(role.Button).Ancestor(settingsWindow)
+	nextButton            = nodewith.Name("Next").Role(role.Button)
+	settingsHead          = nodewith.Name("Settings").Role(role.Heading)
+	emptySharedFoldersMsg = nodewith.Name("Shared folders will appear here").Role(role.StaticText)
+	sharedFoldersList     = nodewith.Name("Shared folders").Role(role.List)
+	unshareFailDlg        = nodewith.Name("Unshare failed").Role(role.Dialog)
+	okButton              = nodewith.Name("OK").Role(role.Button)
 	removeLinuxButton     = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Remove.*`)}, Role: ui.RoleTypeButton}
 	resizeButton          = ui.FindParams{Name: "Change disk size", Role: ui.RoleTypeButton}
 )
@@ -78,22 +80,16 @@ func OpenLinuxSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Ch
 
 	// Condition to satisfy verification of LaunchAtPageURL
 	condition := func(ctx context.Context) (bool, error) {
-		return ossettings.DescendantNodeExists(ctx, tconn, developersButton)
+		if err := uiauto.New(tconn).LeftClick(developersButton)(ctx); err != nil {
+			return false, errors.Wrap(err, "failed to click button Developer")
+		}
+		return true, nil
 	}
 	if err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", condition); err != nil {
 		return nil, errors.Wrap(err, "failed to launch Settings page and go to Crostini subpage")
 	}
-	s := &Settings{tconn}
 
-	// Navigate to Developers page or Linux settings page.
-	if err := uig.Do(ctx, tconn, uig.Retry(2,
-		uig.FindWithTimeout(settingsWindow, uiTimeout).
-			FindWithTimeout(developersButton, uiTimeout).
-			FocusAndWait(uiTimeout).
-			LeftClick())); err != nil {
-		return nil, errors.Wrap(err, "failed to click button Developer")
-	}
-	return s, nil
+	return &Settings{tconn}, nil
 }
 
 // OpenLinuxSettings opens Settings app and navigate to Linux Settings and its sub settings if any.
@@ -104,9 +100,9 @@ func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.C
 		return nil, errors.Wrap(err, "failed to open linux subpage on Settings app")
 	}
 
-	// Find the sub Settings.
+	// Open the sub Settings.
 	for _, setting := range subSettings {
-		if err := uig.Do(ctx, tconn, uig.FindWithTimeout(ui.FindParams{Name: setting, Role: ui.RoleTypeLink}, uiTimeout).LeftClick()); err != nil {
+		if err := uiauto.New(tconn).LeftClick(nodewith.Name(setting).Role(role.Link).Ancestor(settingsWindow))(ctx); err != nil {
 			return nil, errors.Wrapf(err, "failed to open sub setting %s", setting)
 		}
 	}
@@ -117,11 +113,7 @@ func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.C
 // FindSettingsPage finds a pre-opened Settings page with a window name.
 func FindSettingsPage(ctx context.Context, tconn *chrome.TestConn, windowName string) (s *Settings, err error) {
 	// Check Settings app is opened to the specific page.
-	param := ui.FindParams{
-		Attributes: map[string]interface{}{"name": regexp.MustCompile(".*" + windowName + ".*")},
-		Role:       ui.RoleTypeWindow,
-	}
-	if _, err := ui.FindWithTimeout(ctx, tconn, param, uiTimeout); err != nil {
+	if err := uiauto.New(tconn).WaitUntilExists(nodewith.Name(windowName).First())(ctx); err != nil {
 		return nil, errors.Wrapf(err, "failed to find window %s", windowName)
 	}
 
@@ -138,8 +130,7 @@ func OpenInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrom
 		return errors.Wrap(err, "failed to open linux subpage on Settings app")
 	}
 	defer s.Close(ctx)
-	return uig.Do(ctx, tconn,
-		uig.Steps(uig.FindWithTimeout(nextButton, uiTimeout).LeftClick()).WithNamef("OpenInstaller()"))
+	return uiauto.New(tconn).WithTimeout(5 * time.Second).LeftClick(nextButton)(ctx)
 }
 
 // Close closes the Settings App.
@@ -150,31 +141,24 @@ func (s *Settings) Close(ctx context.Context) error {
 	}
 
 	// Wait for the window to close.
-	return ui.WaitUntilGone(ctx, s.tconn, settingsHeading, time.Minute)
+	return uiauto.New(s.tconn).WaitUntilGone(settingsHead)(ctx)
 }
 
 // GetSharedFolders returns a list of shared folders.
 // Settings must be open at the Linux Manage Shared Folders page.
 func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string, err error) {
-	if err := ui.WaitForLocationChangeCompleted(ctx, s.tconn); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for location on Settings app")
-	}
+	ui2 := uiauto.New(s.tconn)
 
 	// Find "Shared folders will appear here". It will be displayed if no folder is shared.
-	msg, textErr := ui.FindWithTimeout(ctx, s.tconn, emptySharedFoldersMsg, 1*time.Second)
-	if msg != nil {
-		defer msg.Release(ctx)
-	}
+	textErr := ui2.WithTimeout(2 * time.Second).WaitUntilExists(emptySharedFoldersMsg)(ctx)
 
 	// Find "Shared folders" list. It will be displayed if any folder is shared.
-	list, listErr := ui.FindWithTimeout(ctx, s.tconn, sharedFoldersList, 1*time.Second)
-	if list != nil {
-		defer list.Release(ctx)
-	}
+	listErr := ui2.WithTimeout(2 * time.Second).WaitUntilExists(sharedFoldersList)(ctx)
 
 	// Method to get shared folders list.
 	getList := func() ([]string, error) {
-		sharedFolders, err := list.Descendants(ctx, ui.FindParams{Role: ui.RoleTypeButton})
+		var listOffolders []string
+		sharedFolders, err := ui2.NodesInfo(ctx, nodewith.Role(role.Button).Ancestor(sharedFoldersList))
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to find list of shared folders")
 		}
@@ -187,13 +171,22 @@ func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string
 	if textErr != nil && listErr != nil {
 		// Did not find "Shared folders will appear here" or "Shared folders" list.
 		return nil, errors.Wrap(err, "failed to find list of 'Shared folders' or 'Shared folders will appear here'")
-	} else if textErr != nil && listErr == nil {
-		// Found "Shared folders".
-		return getList()
 	} else if listErr == nil {
-		// Unexpectedly found shared folder list.
-		listOffolders, err = getList()
-		return nil, errors.Wrap(err, "unexpectedly found Shared folders list")
+		// Found "Shared folders".
+		// It sometimes takes a bit time for the UI to display the shared folders.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			folders, err := getList()
+			if err != nil {
+				return err
+			}
+			if len(folders) == 0 {
+				return errors.New("Shared folders have not been displayed yet")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			return nil, err
+		}
+		return getList()
 	}
 
 	// No shared folder.
@@ -203,27 +196,22 @@ func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string
 // UnshareFolder deletes a shared folder from Settings app.
 // Settings must be open at the Linux Manage Shared Folders page.
 func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
-	list := uig.FindWithTimeout(sharedFoldersList, 2*time.Second)
-	folderParam := ui.FindParams{Role: ui.RoleTypeButton, Name: folder}
-	if err := uig.Do(ctx, s.tconn, list); err != nil {
-		return errors.Wrap(err, "failed to find shared folder list")
-	}
+	ui2 := uiauto.New(s.tconn)
+	folderButton := nodewith.Name(folder).Role(role.Button).Ancestor(sharedFoldersList)
 
-	// Click X button on the target folder.
-	if err := uig.Do(ctx, s.tconn, list.FindWithTimeout(folderParam, uiTimeout).LeftClick()); err != nil {
+	if err := ui2.LeftClick(folderButton)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to click X button on %s", folder)
 	}
 
 	// There might be an unshare dialog. Click OK on it.
-	unshareDialog := uig.FindWithTimeout(unshareFailDlg, 2*time.Second)
-	if err := uig.Do(ctx, s.tconn, unshareDialog); err == nil {
-		if err := uig.Do(ctx, s.tconn, unshareDialog.FindWithTimeout(okButton, uiTimeout).LeftClick()); err != nil {
+	if err := ui2.WithTimeout(5 * time.Second).WaitUntilExists(unshareFailDlg)(ctx); err == nil {
+		if err := ui2.LeftClick(okButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click OK on Unshare failed dialog")
 		}
 	}
 
-	if err := uig.Do(ctx, s.tconn, list); err == nil {
-		if err := uig.Do(ctx, s.tconn, list.WaitUntilDescendantGone(folderParam, uiTimeout)); err != nil {
+	if err := ui2.Exists(sharedFoldersList)(ctx); err == nil {
+		if err := ui2.WaitUntilGone(folderButton)(ctx); err != nil {
 			return errors.Wrapf(err, "%s failed to disappear after deleting", folder)
 		}
 	}
