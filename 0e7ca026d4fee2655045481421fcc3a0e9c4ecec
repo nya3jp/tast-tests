@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "addf4d39_b65e7055",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-01T09:56:21Z",
+      "side": 1,
+      "message": "Thanks, SpeechMonitor sounds nice.",
+      "parentUuid": "86bee2db_91f68a44",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 9
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7f8b02c_775a47ff",
@@ -155,6 +179,24 @@
       "writtenOn": "2021-01-29T22:21:22Z",
       "side": 1,
       "message": "Note: I removed this in an attempt to minimize dependency on implementation details. Tests still pass when I run locally.",
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4a44cd0_1affe537",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-01T09:56:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f362d678_8a47c1e5",
       "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -267,6 +309,30 @@
       "side": 1,
       "message": "We still need this because we can\u0027t start consuming utterances until all have been spoken. Without this, we will try to consume utterances, but testUtterances might be either partially-populated or empty.",
       "parentUuid": "d42e7e5a_99b72506",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f35af08_30601ce3",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-01T09:56:21Z",
+      "side": 1,
+      "message": "I think it\u0027s better not to depend on the last utterance. Please see my another comment.",
+      "parentUuid": "5d6dd165_f3d70ede",
       "range": {
         "startLine": 211,
         "startChar": 0,
@@ -456,6 +522,30 @@
       "side": 1,
       "message": "I prefer this approach as each step is independent (for now, at least). Thanks!",
       "parentUuid": "50db3ca1_b6126993",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda0aa47_3f1407ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-01T09:56:21Z",
+      "side": 1,
+      "message": "I like the new approach as well. Thank you!",
+      "parentUuid": "a0bada66_8b250c15",
       "range": {
         "startLine": 70,
         "startChar": 1,
