@@ -327,7 +327,7 @@ func (a *AndroidNearbyDevice) clientRPCRequest(ctx context.Context, method strin
 	if err != nil {
 		return reqID, errors.Wrap(err, "failed to marshal request to json")
 	}
-	testing.ContextLog(ctx, "RPC request: ", string(requestBytes))
+	testing.ContextLog(ctx, "\tRPC request: ", string(requestBytes))
 
 	if err := a.clientSend(requestBytes); err != nil {
 		return reqID, err
@@ -340,7 +340,7 @@ func (a *AndroidNearbyDevice) clientRPCRequest(ctx context.Context, method strin
 func (a *AndroidNearbyDevice) clientRPCResponse(ctx context.Context, lastReqID int) (jsonRPCResponse, error) {
 	var res jsonRPCResponse
 	b, err := a.clientReceive()
-	testing.ContextLog(ctx, "RPC response: ", string(b))
+	testing.ContextLog(ctx, "\tRPC response: ", string(b))
 	if err != nil {
 		return res, err
 	}
