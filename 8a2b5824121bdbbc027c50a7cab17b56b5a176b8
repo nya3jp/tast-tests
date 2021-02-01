@@ -137,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02c1609e_f616b094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:39:23Z",
+      "side": 1,
+      "message": "I was referring to the 1 specifically. Is that expected?",
+      "parentUuid": "51e62673_00447211",
+      "range": {
+        "startLine": 281,
+        "startChar": 40,
+        "endLine": 281,
+        "endChar": 41
+      },
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bba9c5f4_510ed3f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
         "patchSetId": 4
@@ -219,6 +243,30 @@
       "side": 1,
       "message": "Done.\nI thought about using fmt with %q, but a few considerations kept me from going that route:\n1) The resulting string is obvious.\n2) You don\u0027t have to know the escaping behavior of %q and how it might interact with the shell.\n3) I wasn\u0027t sure if golang evaluates const / literal concatenation at compile time or not.\n\nAlso, I had to get rid of the end of line because it isn\u0027t treated properly in shell.",
       "parentUuid": "7ccd8a39_9e31ad24",
+      "range": {
+        "startLine": 286,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 9
+      },
+      "revId": "8a2b5824121bdbbc027c50a7cab17b56b5a176b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2155b99_482e683f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:39:23Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "764bf712_cc4ea998",
       "range": {
         "startLine": 286,
         "startChar": 2,
