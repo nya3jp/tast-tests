@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb836a8c_40e48875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-02-01T18:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "580b1de6_6f4d7040",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "9ad8f9b5bbb4239d9b5822ed1835b0cb496cdc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5d8f5f6_aa03b08b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-31T11:00:21Z",
       "side": 1,
       "message": "nit: add a period to the end of the comment.",
+      "range": {
+        "startLine": 78,
+        "startChar": 28,
+        "endLine": 78,
+        "endChar": 60
+      },
+      "revId": "9ad8f9b5bbb4239d9b5822ed1835b0cb496cdc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce69e7ee_cfb93e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-02-01T18:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5d8f5f6_aa03b08b",
       "range": {
         "startLine": 78,
         "startChar": 28,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e26b0b54_5ee2c614",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-02-01T18:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ef779a8_1ae9f945",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "9ad8f9b5bbb4239d9b5822ed1835b0cb496cdc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc088066_2900301d",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-01-31T11:00:21Z",
       "side": 1,
       "message": "nit: add a period to the end of the comment.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 56
+      },
+      "revId": "9ad8f9b5bbb4239d9b5822ed1835b0cb496cdc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77795397_164894f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-02-01T18:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc088066_2900301d",
       "range": {
         "startLine": 91,
         "startChar": 0,
