@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa75a72e_930a0363",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-01T09:56:38Z",
+      "side": 1,
+      "message": "If would fail when there is something like \"%s\" in it.",
+      "range": {
+        "startLine": 117,
+        "startChar": 43,
+        "endLine": 117,
+        "endChar": 68
+      },
+      "revId": "df62be10accae91e578c355ae7d92a22bc7333bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
