@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff9503c_6509afa3",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:49:34Z",
+      "side": 1,
+      "message": "Please use Eval instead\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/conn.go;l\u003d133",
+      "range": {
+        "startLine": 336,
+        "startChar": 17,
+        "endLine": 336,
+        "endChar": 28
+      },
+      "revId": "e520cc59f195607cc0c1e050be9e6a4e4351bd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fdcca25_8a0e92ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/sharesheet_icon.png",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:49:34Z",
+      "side": 1,
+      "message": "Can you use a smaller image?",
+      "revId": "e520cc59f195607cc0c1e050be9e6a4e4351bd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d1131ed_6f6dfbfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:49:34Z",
+      "side": 1,
+      "message": "You can get stuck waiting here forever (until tast forcefully stops the test). Cleanup may not run in that case.\n\nUse a select together with ctx.Done() to respect the timeouts imposed on the test. You can also send a tuple of (string, string) to not need to wait twice.",
+      "revId": "e520cc59f195607cc0c1e050be9e6a4e4351bd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "783da8d8_5b0a343c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:49:34Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 10
+      },
+      "revId": "e520cc59f195607cc0c1e050be9e6a4e4351bd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e26386b_96293a1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:49:34Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 10
+      },
+      "revId": "e520cc59f195607cc0c1e050be9e6a4e4351bd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
