@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a7b12d_06de9101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpu_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T04:46:01Z",
+      "side": 1,
+      "message": "to minimize the dependency, could you keep using PreData? Ditto for below.",
+      "revId": "f12d37d2430f7fb0c74dd812ea106655da811103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e10f3df_035f6983",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T04:46:01Z",
+      "side": 1,
+      "message": "nit/optional: \"FixtData\" now?",
+      "revId": "f12d37d2430f7fb0c74dd812ea106655da811103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6817dc38_9f686adb",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T04:46:01Z",
+      "side": 1,
+      "message": "Could you document the transition state of prepareLacrosChromeBinary?\nCurrently, callers have responsibility to extract files from the archive.",
+      "revId": "f12d37d2430f7fb0c74dd812ea106655da811103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd7ed4c_43a978e3",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T04:46:01Z",
+      "side": 1,
+      "message": "Instead, could you take PreData and datapath?",
+      "range": {
+        "startLine": 156,
+        "startChar": 45,
+        "endLine": 156,
+        "endChar": 61
+      },
+      "revId": "f12d37d2430f7fb0c74dd812ea106655da811103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e8a7416_a58721d8",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T04:46:01Z",
+      "side": 1,
+      "message": "Could you return err, if it is non-nil but does not satisfy the condition?",
+      "revId": "f12d37d2430f7fb0c74dd812ea106655da811103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
