@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab013939_84fbbc88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-02-01T16:52:36Z",
+      "side": 1,
+      "message": "CQ test failures are unrelated to this CL. The CQ dry-run passsed on PS #2 which was functionally identical to PS #3 -\u003e chump to avoid wasting lab resources.",
+      "revId": "848e7ce52bdb915e81dfb7c547eb61b2bcf5c894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
