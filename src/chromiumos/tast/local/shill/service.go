@@ -54,6 +54,19 @@ func (s *Service) GetDevice(ctx context.Context) (*Device, error) {
 	return device, nil
 }
 
+// IsConnected returns true if the the service is connected.
+func (s *Service) IsConnected(ctx context.Context) (bool, error) {
+	properties, err := s.GetShillProperties(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "unable to get properties")
+	}
+	connected, err := properties.GetBool(shillconst.ServicePropertyIsConnected)
+	if err != nil {
+		return false, errors.Wrap(err, "unable to get IsConnected from properties")
+	}
+	return connected, nil
+}
+
 // Connect calls the Connect method on the service.
 func (s *Service) Connect(ctx context.Context) error {
 	return s.Call(ctx, "Connect").Err
