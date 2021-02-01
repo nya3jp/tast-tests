@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9318079c_5c5a70f6",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-02-01T01:01:04Z",
+      "side": 1,
+      "message": "My understanding of golang\u0027s shadowing rules is that if you do\n    a :\u003d 1\n    if (condition) {\n        a :\u003d 2\n    }\nThen the a inside the if is a new variable, it doesn\u0027t assign to an existing one.\n\nI\u0027m not sure what happens if the seconds statement defines two variables, but I wanted to be clear that this is assigning to an existing variable, not creating a new one.",
+      "parentUuid": "d3f590cd_b281ffae",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 20
+      },
+      "revId": "54f2ef104221842018c847581969b2c04ddea617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2211a47_6770e7ab",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-01-30T19:40:10Z",
       "side": 1,
       "message": "There is a writeLXCLogs in pre.go, any chance to reuse that code?",
+      "range": {
+        "startLine": 180,
+        "startChar": 5,
+        "endLine": 180,
+        "endChar": 17
+      },
+      "revId": "54f2ef104221842018c847581969b2c04ddea617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb172139_711392eb",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-02-01T01:01:04Z",
+      "side": 1,
+      "message": "I moved that function out of pre.go, because it\u0027s not only used in post.go",
+      "parentUuid": "aa1755ec_4a2541a5",
       "range": {
         "startLine": 180,
         "startChar": 5,
