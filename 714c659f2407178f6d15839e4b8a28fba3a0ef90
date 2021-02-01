@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "301f32cd_6da20040",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-02-01T04:13:42Z",
+      "side": 1,
+      "message": "thanks for implementing this. HWSEC-wise LGTM.",
+      "revId": "714c659f2407178f6d15839e4b8a28fba3a0ef90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
