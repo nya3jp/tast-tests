@@ -301,6 +301,23 @@ func (d *Device) InstalledPackages(ctx context.Context) (map[string]struct{}, er
 	return pkgs, nil
 }
 
+// PackageInstalled returns true if the given package has been installed.
+func (d *Device) PackageInstalled(ctx context.Context, pkg string) (bool, error) {
+	ctx, st := timing.Start(ctx, "verify_package_installed")
+	defer st.End()
+
+	// Send "pm list packages <filter>" command with the given package name as filter.
+	out, err := d.ShellCommand(ctx, "pm", "list", "packages", pkg).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return false, errors.Wrap(err, "listing packages failed")
+	}
+
+	// Check the output contains the exact package name.
+	// Note that "pm list packages <filter>" returns all packages containing the given filter string.
+	// It also prepends "package:" to installed package names.
+	return strings.Contains(string(out), "package:"+pkg+"\n"), nil
+}
+
 // Uninstall uninstalls a package from the Android system.
 func (d *Device) Uninstall(ctx context.Context, pkg string) error {
 	out, err := d.Command(ctx, "uninstall", pkg).Output(testexec.DumpLogOnError)
