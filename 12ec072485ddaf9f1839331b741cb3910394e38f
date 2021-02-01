@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14294187_038baa60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-01T00:48:26Z",
+      "side": 1,
+      "message": "IIUC, each steps is independent. i.e. even when opening chromeVox fails, we want to test other senarios.\nHow about using s.Error here and below so that the test continues even when one stps fails?\n\nTable-driven test with testing.State.Run is another approach: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests\n\nAlso, if we do this, please move cleanup of stale utterances before each actions.",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "12ec072485ddaf9f1839331b741cb3910394e38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

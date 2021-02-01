@@ -440,6 +440,30 @@
       },
       "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0bada66_8b250c15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-01T00:48:26Z",
+      "side": 1,
+      "message": "I prefer this approach as each step is independent (for now, at least). Thanks!",
+      "parentUuid": "50db3ca1_b6126993",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "0e7ca026d4fee2655045481421fcc3a0e9c4ecec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
