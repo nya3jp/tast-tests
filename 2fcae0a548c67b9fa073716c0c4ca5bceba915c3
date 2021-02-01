@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ec61d73_e9ce5fbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T03:46:13Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ve made sure that\u0027s included in the new patchset.",
+      "parentUuid": "b2d18c18_3a972636",
+      "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "943b6871_06784079",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-01-29T23:36:56Z",
       "side": 1,
       "message": "My understanding is using testing.State in support library is prohibited.  Does this really pass the tast-lint checker?",
+      "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3065b51_9bdcd3da",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T03:46:13Z",
+      "side": 1,
+      "message": "It does since I added it to the exceptions lol: https://crrev.com/c/2658662\n\nThis is a temporary change until we can have Data in fixtures. I added the TODO comment here as well. The reason why I\u0027m migrating lacros to use fixtures now rather than later is that it\u0027s blocking some work, so I want to put in this temporary hack.",
+      "parentUuid": "943b6871_06784079",
       "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -76,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75f58596_b076854c",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T03:46:13Z",
+      "side": 1,
+      "message": "Fixed this and other occurrences.",
+      "parentUuid": "c998baa8_369f88ae",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a20a760_db4e4115",
@@ -89,6 +149,30 @@
       "writtenOn": "2021-01-29T23:36:56Z",
       "side": 1,
       "message": "nit: TODO should have the link to a bug (TODO(crbug/....))",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 8
+      },
+      "revId": "2fcae0a548c67b9fa073716c0c4ca5bceba915c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4edbd4f8_bd00e71e",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T03:46:13Z",
+      "side": 1,
+      "message": "Not sure if this has a bug. Erik, do you know?\n\nThanks~",
+      "parentUuid": "4a20a760_db4e4115",
       "range": {
         "startLine": 158,
         "startChar": 4,
