@@ -286,8 +286,26 @@ func (d *Device) InstallMultiple(ctx context.Context, apks []string, installOpti
 func (d *Device) InstalledPackages(ctx context.Context) (map[string]struct{}, error) {
 	ctx, st := timing.Start(ctx, "installed_packages")
 	defer st.End()
+	return d.listPackages(ctx, "") // Return all packages with an empty filter.
+}
 
-	out, err := d.ShellCommand(ctx, "pm", "list", "packages").Output(testexec.DumpLogOnError)
+// VerifyPackageInstalled verifies if a package has been installed.
+func (d *Device) VerifyPackageInstalled(ctx context.Context, pkg string) (bool, error) {
+	ctx, st := timing.Start(ctx, "verify_package_installed")
+	defer st.End()
+
+	pkgs, err := d.listPackages(ctx, pkg)
+	if err != nil {
+		return false, err
+	}
+	if _, ok := pkgs[pkg]; !ok {
+		return false, nil
+	}
+	return true, nil
+}
+
+func (d *Device) listPackages(ctx context.Context, filter string) (map[string]struct{}, error) {
+	out, err := d.ShellCommand(ctx, "pm", "list", "packages", filter).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return nil, errors.Wrap(err, "listing packages failed")
 	}

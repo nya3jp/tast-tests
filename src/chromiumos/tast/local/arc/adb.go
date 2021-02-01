@@ -60,6 +60,11 @@ func (a *ARC) InstalledPackages(ctx context.Context) (map[string]struct{}, error
 	return a.device.InstalledPackages(ctx)
 }
 
+// VerifyPackageInstalled verifies if a package has been installed.
+func (a *ARC) VerifyPackageInstalled(ctx context.Context, pkg string) (bool, error) {
+	return a.device.VerifyPackageInstalled(ctx, pkg)
+}
+
 // Uninstall uninstalls a package from the Android system.
 func (a *ARC) Uninstall(ctx context.Context, pkg string) error {
 	return a.device.Uninstall(ctx, pkg)
