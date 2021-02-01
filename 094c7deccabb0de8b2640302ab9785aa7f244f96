@@ -258,6 +258,30 @@
       },
       "revId": "094c7deccabb0de8b2640302ab9785aa7f244f96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "371cc15f_e7696021",
+        "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-01T16:43:21Z",
+      "side": 1,
+      "message": "IMO, \"strconv.QuoteToASCII(string(data))\" wouldn\u0027t work in this case, because it would output something like \"Hello \\u4e16\\u754c\\uff01\".\n\n\"echo\"(both builtin version or /bin/echo) couldn\u0027t decode an escape character which is beginning with \u0027\\u\u0027. It only supports \"\\0NN\" \u0026 \"\\xHH\".\n\nPlus, strconv.QuoteToASCII(string(data)) would escape \u0027\"\u0027 to \u0027\\\"\u0027, and \"echo\" couldn\u0027t decode that correctly either.\n\n\"printf\"(both builtin version or /usr/bin/printf) could decode an escape character which is beginning with \u0027\\u\u0027. But we would also need to escape \"%\" to \"%%\".\n\nBTW,\nIf we want to use \"echo\", we would need to use this:\n```\nfmtStr :\u003d fmt.Sprintf(\"%q\",data)\nsubFmt :\u003d fmtStr[1:len(fmtStr)-1]\nescaped :\u003d strings.ReplaceAll(subFmt,\"\\\\\\\"\",\"\\\"\")\nSprintf(\"echo -ne %s \u003e %s\", shutil.Escape(escaped), shutil.Escape(filename))\n```\n\nIf we want to use \"printf\", we would need to use this:\n```\nqutStr :\u003d strconv.QuoteToASCII(string(data))\nsubQut :\u003d qutStr[1:len(qutStr)-1]\nescaped :\u003d strings.ReplaceAll(subQut,\"%\",\"%%\")\nSprintf(\"printf %s \u003e %s\", shutil.Escape(escaped), shutil.Escape(filename))\n```",
+      "parentUuid": "8de676db_61b15edb",
+      "range": {
+        "startLine": 124,
+        "startChar": 52,
+        "endLine": 124,
+        "endChar": 76
+      },
+      "revId": "094c7deccabb0de8b2640302ab9785aa7f244f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
