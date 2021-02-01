@@ -183,6 +183,7 @@ public class CameraActivity extends Activity {
                                 mCameraFragment.onPause();
                                 mCameraFragment.onResume();
                                 mHistogram.resetHistogram();
+                                mHistogram.waitForFirstFrame();
                                 break;
                             case ACTION_SET_CAMERA_ID:
                                 int id = intent.getIntExtra(KEY_CAMERA_ID, DEFAULT_CAMERA_ID);
