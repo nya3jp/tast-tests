@@ -10,6 +10,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/policy"
@@ -19,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -41,6 +44,26 @@ func init() {
 	})
 }
 
+type eventType string
+
+const (
+	serverRequest          eventType = "SERVER_REQUEST"
+	cloudDpcRequest                  = "CLOUDDPC_REQUEST"
+	cloudDpsRequest                  = "CLOUDDPS_REQUEST"
+	cloudDpsResponse                 = "CLOUDDPS_RESPONSE"
+	phoneskyLog                      = "PHONESKY_LOG"
+	success                          = "SUCCESS"
+	cancelled                        = "CANCELED"
+	connectivityChange               = "CONNECTIVITY_CHANGE"
+	sessionStateChange               = "SESSION_STATE_CHANGE"
+	installationStarted              = "INSTALLATION_STARTED"
+	installationFinished             = "INSTALLATION_FINISHED"
+	installationFailed               = "INSTALLATION_FAILED"
+	directInstall                    = "DIRECT_INSTALL"
+	cloudDpcMainLoopFailed           = "CLOUDDPC_MAIN_LOOP_FAILED"
+	unknown                          = "UNKNOWN"
+)
+
 // ARCInstallLogging runs the install event logging test:
 // - login with managed account,
 // - check that ARC is launched by user policy,
@@ -55,13 +78,14 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar("enterprise.ARCInstallLogging.password")
 
 	// Login to Chrome and allow to launch ARC if allowed by user policy. Flag --install-log-fast-upload-for-tests reduces delay of uploading chrome log.
+	// Flag --arc-install-event-chrome-log-for-tests logs ARC install events to chrome log.
 	cr, err := chrome.New(
 		ctx,
 		chrome.Auth(user, password, "gaia-id"),
 		chrome.GAIALogin(),
 		chrome.ARCSupported(),
 		chrome.ProdPolicy(),
-		chrome.ExtraArgs("--install-log-fast-upload-for-tests"))
+		chrome.ExtraArgs("--install-log-fast-upload-for-tests", "--arc-install-event-chrome-log-for-tests"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -147,6 +171,11 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to upload app log: ", err)
 	}
 
+	// Check if required sequence appears in chrome log.
+	if err := waitForLoggedEvents(ctx, cr, testPackage); err != nil {
+		s.Fatal("Required events not logged: ", err)
+	}
+
 	// Wait for chrome to upload logs to enterprise management server.
 	s.Log("Checking for chrome log upload status")
 	if err := waitForChromeLogUpload(ctx, cr, testPackage); err != nil {
@@ -172,6 +201,78 @@ func waitForAppLogUpload(ctx context.Context, d *ui.Device, uploadStatusLabelID 
 		}
 		return testing.PollBreak(errors.Wrap(err, "unknown log upload status: "+text))
 	}, nil)
+}
+
+// statusCodeToString converts status code to human-readable string. Should be in sync with device_management_backend.proto in chrome.
+func statusCodeToString(code string) string {
+	statusCodeMap := map[string]eventType{
+		"1":  serverRequest,
+		"2":  cloudDpcRequest,
+		"3":  cloudDpsRequest,
+		"4":  cloudDpsResponse,
+		"5":  phoneskyLog,
+		"6":  success,
+		"7":  cancelled,
+		"8":  connectivityChange,
+		"9":  sessionStateChange,
+		"10": installationStarted,
+		"11": installationFinished,
+		"12": installationFailed,
+		"13": directInstall,
+		"14": cloudDpcMainLoopFailed,
+	}
+	event, ok := statusCodeMap[code]
+	if !ok {
+		event = unknown
+	}
+	return string(event)
+}
+
+// readLoggedEvents reads logged events from /var/log/chrome/chrome file.
+func readLoggedEvents(packageName string) ([]string, error) {
+	logContent, err := ioutil.ReadFile(syslog.ChromeLogFile)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read "+syslog.ChromeLogFile)
+	}
+
+	r := regexp.MustCompile(fmt.Sprintf(`Add ARC install event for package %s, (.*)`, packageName))
+	matches := r.FindAllStringSubmatch(string(logContent), -1)
+	if matches == nil {
+		return nil, errors.New("no event logged yet")
+	}
+
+	var events []string
+	for _, m := range matches {
+		events = append(events, statusCodeToString(m[1]))
+	}
+	return events, nil
+}
+
+// waitForLoggedEvents waits for desired sequence to appear in chrome log.
+func waitForLoggedEvents(ctx context.Context, cr *chrome.Chrome, packageName string) error {
+	var expectedEvents = []string{string(serverRequest), installationStarted, installationFinished, success}
+
+	ctx, st := timing.Start(ctx, "wait_logged_events")
+	defer st.End()
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		loggedEvents, err := readLoggedEvents(packageName)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to read chrome log"))
+		}
+
+		eventsMap := make(map[string]bool)
+		for _, e := range loggedEvents {
+			eventsMap[e] = true
+		}
+
+		for _, expected := range expectedEvents {
+			if !eventsMap[expected] {
+				return errors.New("incomplete sequence: " + strings.Join(loggedEvents[:], ","))
+			}
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 60 * time.Second})
 }
 
 // readChromeLogFile reads content of serialized installation events log file.
