@@ -16,6 +16,46 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "b565ab2c5511e4904381f3c5b85e03c25c6c1a6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "541473a0_c503152a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-01T03:32:49Z",
+      "side": 1,
+      "message": "+2 for Tast Owners % nit",
+      "revId": "b565ab2c5511e4904381f3c5b85e03c25c6c1a6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66b572f3_29d6a097",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-01T03:32:49Z",
+      "side": 1,
+      "message": "nit: why not cache the GetNonsensitiveStatus result you got in the polling above? (as you do for isReady on line 72?) This would also remove the need to handle the error on line 135.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 57
+      },
+      "revId": "b565ab2c5511e4904381f3c5b85e03c25c6c1a6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
