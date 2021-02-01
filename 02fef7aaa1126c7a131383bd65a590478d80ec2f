@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f3b93c98_b7fd4696",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-01T02:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9156ad2_4e21ddbe",
+      "revId": "02fef7aaa1126c7a131383bd65a590478d80ec2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "66822ed9_663b5781",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef142f45_685e6a8d",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-01T02:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b183863_790ad149",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 101
+      },
+      "revId": "02fef7aaa1126c7a131383bd65a590478d80ec2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab122e63_b1baf581",
@@ -88,6 +130,30 @@
       "writtenOn": "2021-02-01T00:46:17Z",
       "side": 1,
       "message": "optional: nice to output the file path here: \"failed to read SVG file at %s\"",
+      "range": {
+        "startLine": 68,
+        "startChar": 32,
+        "endLine": 68,
+        "endChar": 55
+      },
+      "revId": "02fef7aaa1126c7a131383bd65a590478d80ec2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5df78a4_b748b7c5",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-01T02:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab122e63_b1baf581",
       "range": {
         "startLine": 68,
         "startChar": 32,
@@ -121,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed2993bb_f3c7e191",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-01T02:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c00d730_6a2d292b",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 13
+      },
+      "revId": "02fef7aaa1126c7a131383bd65a590478d80ec2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92dd2128_4e5c314c",
@@ -144,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "470b8970_ac5d86b0",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-01T02:12:54Z",
+      "side": 1,
+      "message": "I tried adding the spaces but they get removed due to gofmt.",
+      "parentUuid": "92dd2128_4e5c314c",
+      "range": {
+        "startLine": 176,
+        "startChar": 63,
+        "endLine": 176,
+        "endChar": 64
+      },
+      "revId": "02fef7aaa1126c7a131383bd65a590478d80ec2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "866485ee_c4d0360e",
@@ -157,6 +271,30 @@
       "writtenOn": "2021-02-01T00:46:17Z",
       "side": 1,
       "message": "nit: space surround /",
+      "range": {
+        "startLine": 177,
+        "startChar": 63,
+        "endLine": 177,
+        "endChar": 64
+      },
+      "revId": "02fef7aaa1126c7a131383bd65a590478d80ec2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bc9e706_aaa737d5",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-01T02:12:54Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "866485ee_c4d0360e",
       "range": {
         "startLine": 177,
         "startChar": 63,
