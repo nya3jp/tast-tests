@@ -89,19 +89,19 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	// Perform MakeCredential on the test website.
 
 	// Choose webauthn
-	err = conn.Exec(ctx, `document.getElementById('regWebauthn').click()`)
+	err = conn.Eval(ctx, `document.getElementById('regWebauthn').click()`, nil)
 	if err != nil {
 		s.Fatal("Failed to execute JS expression: ", err)
 	}
 
 	// Choose none attestation
-	err = conn.Exec(ctx, `document.getElementById('attNone').click()`)
+	err = conn.Eval(ctx, `document.getElementById('attNone').click()`, nil)
 	if err != nil {
 		s.Fatal("Failed to execute JS expression: ", err)
 	}
 
 	// Press "Register" button
-	err = conn.Exec(ctx, `document.getElementById('submit').click()`)
+	err = conn.Eval(ctx, `document.getElementById('submit').click()`, nil)
 	if err != nil {
 		s.Fatal("Failed to execute JS expression: ", err)
 	}
@@ -135,7 +135,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	// Perform GetAssertion on the test website.
 
 	// Press "Authenticate" button. There should be only 1 button in registration-list.
-	err = conn.Exec(ctx, `document.getElementById('registration-list').querySelector("button").click()`)
+	err = conn.Eval(ctx, `document.getElementById('registration-list').querySelector("button").click()`, nil)
 	if err != nil {
 		s.Fatal("Failed to execute JS expression: ", err)
 	}

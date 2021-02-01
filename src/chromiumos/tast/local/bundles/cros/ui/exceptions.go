@@ -42,12 +42,11 @@ func Exceptions(ctx context.Context, s *testing.State) {
 	}
 
 	var i int
-	checkError("Exec", conn.Exec(ctx, fmt.Sprintf("throw new Error(%q)", msg)))
 	checkError("Eval", conn.Eval(ctx, fmt.Sprintf("throw new Error(%q)", msg), &i))
-	checkError("EvalPromise (reject string)",
-		conn.EvalPromise(ctx, fmt.Sprintf("new Promise(function(resolve, reject) { reject(%q); })", msg), &i))
-	checkError("EvalPromise (reject Error)",
-		conn.EvalPromise(ctx, fmt.Sprintf("new Promise(function(resolve, reject) { reject(new Error(%q)); })", msg), &i))
-	checkError("EvalPromise (throw)",
-		conn.EvalPromise(ctx, fmt.Sprintf("new Promise(function(resolve, reject) { throw new Error(%q); })", msg), &i))
+	checkError("Eval (reject string)",
+		conn.Eval(ctx, fmt.Sprintf("new Promise(function(resolve, reject) { reject(%q); })", msg), &i))
+	checkError("Eval (reject Error)",
+		conn.Eval(ctx, fmt.Sprintf("new Promise(function(resolve, reject) { reject(new Error(%q)); })", msg), &i))
+	checkError("Eval (throw from Promise)",
+		conn.Eval(ctx, fmt.Sprintf("new Promise(function(resolve, reject) { throw new Error(%q); })", msg), &i))
 }
