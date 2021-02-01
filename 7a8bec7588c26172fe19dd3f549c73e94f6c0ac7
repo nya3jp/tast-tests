@@ -294,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5363b4e1_2caffebe",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-01T04:47:26Z",
+      "side": 1,
+      "message": "StateManager is not directly used from tests, but PreData (from pre.go) is and I\u0027ve added helper methods for it (see CrostiniFromPre, ARCFromPre).",
+      "parentUuid": "103e493f_18a4f0dd",
+      "range": {
+        "startLine": 116,
+        "startChar": 40,
+        "endLine": 116,
+        "endChar": 49
+      },
+      "revId": "7a8bec7588c26172fe19dd3f549c73e94f6c0ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9b21d1d_7ea0c6ab",
