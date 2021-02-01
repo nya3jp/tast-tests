@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0693acda_9f4c4cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-02-01T00:32:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd1baee9_9cfceab3",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 28
+      },
+      "revId": "74b5dd5829396aeafc7f841ff586cc97f0154e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95aca0ef_a0a6fe74",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-30T06:30:17Z",
       "side": 1,
       "message": "Maybe it is great to have a log message in case it is already provisioned.\n  } else if provisioned {\n    s.Log(\"ARC is already provisioned. Skipping the setup\")\n  } else {\n    ...",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "74b5dd5829396aeafc7f841ff586cc97f0154e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644eaf40_dc1bacea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-02-01T00:32:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95aca0ef_a0a6fe74",
       "range": {
         "startLine": 124,
         "startChar": 1,
