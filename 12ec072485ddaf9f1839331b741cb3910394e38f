@@ -1,6 +1,115 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55436c0_df36bb39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-01T09:56:21Z",
+      "side": 1,
+      "message": "Looks a lot nicer :) ",
+      "revId": "12ec072485ddaf9f1839331b741cb3910394e38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c69b4d46_3ab15732",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-01T09:56:21Z",
+      "side": 1,
+      "message": "I\u0027m afraid that this hook will misbehave if we:\n\n- run two or more speech monitors in parallel, or\n- run two or more speech monitors sequentially\n\nThe first case sounds okay; I think it\u0027s a reasonable contract that only one monitor can be active at a time. But the second case might be problematic, especially when we reuse the same Chrome session across tests by preconditions/fixtures.",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 31
+      },
+      "revId": "12ec072485ddaf9f1839331b741cb3910394e38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cfac5d8_e46edccd",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-01T09:56:21Z",
+      "side": 1,
+      "message": "nit: one space after an arrow",
+      "range": {
+        "startLine": 167,
+        "startChar": 52,
+        "endLine": 167,
+        "endChar": 53
+      },
+      "revId": "12ec072485ddaf9f1839331b741cb3910394e38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b222e1_30f1870b",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-01T09:56:21Z",
+      "side": 1,
+      "message": "This approach may go wrong if `expected` contains a pair of the same utterance, e.g. {\"button\", \"text box\", \"button\"}.\n\nI would instead let this method consume utterances one by one. For example: first consume utterances until we see \"button\"; second repeat it until we see \"text box\"; finally repeat it until we see \"button\". Then we don\u0027t need to specially treat the last utterance.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 52
+      },
+      "revId": "12ec072485ddaf9f1839331b741cb3910394e38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcc7afc6_d9d3bfa8",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-01T09:56:21Z",
+      "side": 1,
+      "message": "I would not clear the buffer on finish. Your algorithm is already designed nicely to handle unexpected utterances from previous/next/parallel operations. Rather clearing the buffer introduces a race behavior; for example, when we expect utterances {\"foo\", \"bar\"} and the actual utterances are {\"foo\", \"bar\", \"baz\"}, whether \"baz\" is left in the buffer after consume depends on timing. If we don\u0027t clear the buffer, next consume will always see \"baz\".",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 2
+      },
+      "revId": "12ec072485ddaf9f1839331b741cb3910394e38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14294187_038baa60",
