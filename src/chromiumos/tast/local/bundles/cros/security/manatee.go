@@ -27,6 +27,8 @@ import (
 )
 
 const (
+	cronistaName   = "cronista"
+	cronistaUser   = "cronista"
 	trichechusName = "trichechus"
 	dugongName     = "dugong"
 	dugongUser     = "dugong"
@@ -88,6 +90,8 @@ func stopCmd(cmd testexec.Cmd) error {
 // sireniaServices provides an interface to ManaTEE through Sirenia. It also handles bring-up and tear-down of a test
 // sirenia environment on non-ManaTEE images.
 type sireniaServices struct {
+	cronista         *testexec.Cmd
+	cronistaStderr   *bufio.Reader
 	trichechus       *testexec.Cmd
 	trichechusStderr *bufio.Reader
 	dugong           *testexec.Cmd
@@ -101,8 +105,13 @@ func newSireniaServices() *sireniaServices {
 
 // Start brings up a test environment. This is needed on non-ManaTEE images with sirenia.
 func (z *sireniaServices) Start(ctx context.Context) (err error) {
-	if z.trichechus != nil || z.dugong != nil {
+	if z.cronista != nil || z.trichechus != nil || z.dugong != nil {
 		return errors.New("already initialized; only call start once")
+	}
+
+	cronistaPath, err := exec.LookPath(cronistaName)
+	if err != nil {
+		return errors.Wrap(err, "cannot find cronista")
 	}
 
 	trichechusPath, err := exec.LookPath(trichechusName)
@@ -115,8 +124,50 @@ func (z *sireniaServices) Start(ctx context.Context) (err error) {
 		return errors.Wrap(err, "cannot find dugong")
 	}
 
-	z.trichechus = testexec.CommandContext(ctx, trichechusPath, "-U", "ip://127.0.0.1:0")
-	stderr, err := z.trichechus.StderrPipe()
+	z.cronista = testexec.CommandContext(ctx, minijailPath, "-u", cronistaUser, "--", cronistaPath, "-U", "ip://127.0.0.1:0")
+	stderr, err := z.cronista.StderrPipe()
+	if err != nil {
+		return errors.Wrap(err, "failed to get cronista stderr")
+	}
+	z.cronistaStderr = bufio.NewReader(stderr)
+
+	err = z.cronista.Start()
+	if err != nil {
+		return errors.Wrap(err, "failed to start cronista")
+	}
+	defer func() {
+		if err == nil {
+			return
+		}
+
+		if err2 := z.stopCronista(); err2 != nil {
+			testing.ContextLog(ctx, "Failed to stop cronista: ", err2)
+		}
+	}()
+
+	line, err := z.cronistaStderr.ReadString('\n')
+	if err != nil {
+		return errors.Wrap(err, "failed initial read from cronista stderr")
+	}
+
+	if strings.HasSuffix(line, "starting cronista\n") {
+		if line, err = z.cronistaStderr.ReadString('\n'); err != nil {
+			return errors.Wrapf(err, "failed to read from cronista stderr; last line: %q", strings.TrimSpace(line))
+		}
+	}
+	// Do not fail here since it is ok if the lines to skip aren't printed.
+
+	if !strings.Contains(line, "waiting for connection at: ip://127.0.0.1:") {
+		return errors.Errorf("failed to locate listening URI; last line: %q", line)
+	}
+
+	cronistaPort, err := strconv.Atoi(line[strings.LastIndexByte(line, ':')+1 : len(line)-1])
+	if err != nil {
+		return errors.Wrapf(err, "failed to parse trichechusPort from line: %q", line)
+	}
+
+	z.trichechus = testexec.CommandContext(ctx, trichechusPath, "-U", "ip://127.0.0.1:0", "-C", fmt.Sprintf("ip://127.0.0.1:%d", cronistaPort))
+	stderr, err = z.trichechus.StderrPipe()
 	if err != nil {
 		return errors.Wrap(err, "failed to get trichechus stderr")
 	}
@@ -136,7 +187,7 @@ func (z *sireniaServices) Start(ctx context.Context) (err error) {
 		}
 	}()
 
-	line, err := z.trichechusStderr.ReadString('\n')
+	line, err = z.trichechusStderr.ReadString('\n')
 	if err != nil {
 		return errors.Wrap(err, "failed initial read from trichechus stderr")
 	}
@@ -165,12 +216,12 @@ func (z *sireniaServices) Start(ctx context.Context) (err error) {
 		return errors.Errorf("failed to locate listening URI; last line: %q", line)
 	}
 
-	port, err := strconv.Atoi(line[strings.LastIndexByte(line, ':')+1 : len(line)-1])
+	trichechusPort, err := strconv.Atoi(line[strings.LastIndexByte(line, ':')+1 : len(line)-1])
 	if err != nil {
-		return errors.Wrapf(err, "failed to parse port from line: %q", line)
+		return errors.Wrapf(err, "failed to parse trichechusPort from line: %q", line)
 	}
 
-	z.dugong = testexec.CommandContext(ctx, minijailPath, "-u", dugongUser, "--", dugongPath, "-U", fmt.Sprintf("ip://127.0.0.1:%d", port))
+	z.dugong = testexec.CommandContext(ctx, minijailPath, "-u", dugongUser, "--", dugongPath, "-U", fmt.Sprintf("ip://127.0.0.1:%d", trichechusPort))
 	stderr, err = z.dugong.StderrPipe()
 	if err != nil {
 		return errors.Wrap(err, "failed to get dugong stderr")
@@ -221,6 +272,14 @@ func (z *sireniaServices) Start(ctx context.Context) (err error) {
 	}
 
 	return nil
+}
+
+func (z *sireniaServices) stopCronista() error {
+	if z.cronista == nil {
+		return errors.New("cronista not initialized; call start before stop")
+	}
+
+	return stopCmd(*z.cronista)
 }
 
 func (z *sireniaServices) stopTrichechus() error {
