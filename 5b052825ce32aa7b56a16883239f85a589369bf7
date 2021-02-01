@@ -39,6 +39,30 @@
       },
       "revId": "5b052825ce32aa7b56a16883239f85a589369bf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dd2e33f_cf00f377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-02-01T23:29:09Z",
+      "side": 1,
+      "message": "Please have another look and tell me if you still approve of the CL. This code checks only the first bucket, because I mistakenly thought that 1 is the lowest possible value and therefore would only ever be the first bucket. Now I see that 0 is a possible value, and so I have updated my code to check every bucket.",
+      "parentUuid": "01c0f623_bcbe38a6",
+      "range": {
+        "startLine": 161,
+        "startChar": 40,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "5b052825ce32aa7b56a16883239f85a589369bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
