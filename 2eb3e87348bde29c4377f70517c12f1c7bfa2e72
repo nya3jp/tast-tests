@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18be1e94_eb62e5d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T07:40:32Z",
+      "side": 1,
+      "message": "It might also be useful for Sadrul to review this strategy.",
+      "parentUuid": "27bb5ab9_63415921",
+      "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "039a0ad1_14c68514",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
         "patchSetId": 1
