@@ -49,7 +49,7 @@ func MediaRecorderAPI(ctx context.Context, s *testing.State) {
 
 	runTest := func(js string) error {
 		s.Logf("Running %s", js)
-		if err := conn.EvalPromise(ctx, js, nil); err != nil {
+		if err := conn.Eval(ctx, js, nil); err != nil {
 			return errors.Wrap(err, "failed to evaluate test function")
 		}
 		return nil

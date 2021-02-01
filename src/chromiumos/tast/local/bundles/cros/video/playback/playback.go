@@ -99,7 +99,7 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 		return errors.Wrap(err, "failed to wait for video element loading")
 	}
 
-	if err := conn.Exec(ctx, videoElement+".loop=true"); err != nil {
+	if err := conn.Eval(ctx, videoElement+".loop=true", nil); err != nil {
 		return errors.Wrap(err, "failed to set video loop")
 	}
 
@@ -149,7 +149,7 @@ func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.
 		return errors.Wrap(err, "failed to get dropped frames and percentage")
 	}
 
-	if err := conn.Exec(ctx, videoElement+".pause()"); err != nil {
+	if err := conn.Eval(ctx, videoElement+".pause()", nil); err != nil {
 		return errors.Wrap(err, "failed to stop video")
 	}
 

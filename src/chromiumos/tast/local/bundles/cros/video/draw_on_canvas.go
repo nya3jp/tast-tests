@@ -6,7 +6,6 @@ package video
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"path"
@@ -77,7 +76,7 @@ func DrawOnCanvas(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to open %v: %v", url, err)
 	}
 	defer conn.Close()
-	if err := conn.Eval(ctx, fmt.Sprintf("playAndDrawOnCanvas(%q)", s.Param().(string)), nil); err != nil {
+	if err := conn.Call(ctx, nil, "playAndDrawOnCanvas", s.Param().(string)); err != nil {
 		s.Fatal("playAndDrawOnCanvas() failed: ", err)
 	}
 }
