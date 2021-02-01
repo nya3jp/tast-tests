@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
@@ -220,7 +221,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	if _, ok := s.Var("record"); ok {
-		screenRecorder, err := ui.NewScreenRecorder(ctx, tconn)
+		screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to create ScreenRecorder: ", err)
 		}
