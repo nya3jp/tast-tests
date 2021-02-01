@@ -121,7 +121,23 @@ func (f *Finder) GenerateQuery() (string, error) {
 		let node = await tast.promisify(chrome.automation.getDesktop)();
 		let nodes = [];
 	`
-	subQuery, err := f.generateSubQuery()
+	subQuery, err := f.generateSubQuery(false)
+	if err != nil {
+		return "", err
+	}
+	return out + subQuery, nil
+}
+
+// GenerateQueryForMultipleNodes generates the JS query to find one or more nodes.
+// It must be called in an async function because it starts by awaiting the chrome.automation Desktop node.
+// The final node will be in the variable node.
+func (f *Finder) GenerateQueryForMultipleNodes() (string, error) {
+	// Both node and nodes need to be generated now so they can be used in the subqueries.
+	out := `
+		let node = await tast.promisify(chrome.automation.getDesktop)();
+		let nodes = [];
+	`
+	subQuery, err := f.generateSubQuery(true)
 	if err != nil {
 		return "", err
 	}
@@ -130,10 +146,10 @@ func (f *Finder) GenerateQuery() (string, error) {
 
 // generateSubQuery is a helper function for GenerateQuery.
 // It creates the JS query to find a node without awaiting the Desktop node.
-func (f *Finder) generateSubQuery() (string, error) {
+func (f *Finder) generateSubQuery(multipleNodes bool) (string, error) {
 	var out string
 	if f.ancestor != nil {
-		q, err := f.ancestor.generateSubQuery()
+		q, err := f.ancestor.generateSubQuery(false)
 		if err != nil {
 			return "", errors.Wrap(err, "failed to convert ancestor query")
 		}
@@ -153,6 +169,9 @@ func (f *Finder) generateSubQuery() (string, error) {
 	} else {
 		out += fmt.Sprintf(`
 			nodes = node.findAll(%[1]s);
+		`, bytes)
+		if !multipleNodes {
+			out += fmt.Sprintf(`
 			if (nodes.length == 0) {
 				throw '%[2]s: %[1]s';
 			} else if (nodes.length > 1) {
@@ -160,6 +179,7 @@ func (f *Finder) generateSubQuery() (string, error) {
 			}
 			node = nodes[0];
 		`, bytes, ErrNotFound, ErrTooGeneric)
+		}
 	}
 	return out, nil
 }
