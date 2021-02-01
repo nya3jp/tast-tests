@@ -234,6 +234,30 @@
       },
       "revId": "094c7deccabb0de8b2640302ab9785aa7f244f96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de676db_61b15edb",
+        "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T15:51:21Z",
+      "side": 1,
+      "message": "Thank you for sharing the null-byte issue, and also thank you for investigation of solutions!\nHmm, I have different opinion, but at the same time, I don\u0027t think we should block the CL just by this.\nI found a bug in the latest PS, so anyways we need another turn. Let me use the turn to share from our point of view.\n\n\u003e Here\u0027s the analysis on pros and cons.\n\nInterestingly, I have some different view.\n\n\u003e Pros to using base64:\n\u003e Virtually no need for maintenance.\n\u003e No need for new code for \"escaping\".\n\nThen, I thought\n\nSprintf(\"echo -ne %s \u003e %s\", shutil.Escape(strconv.QuoteToASCII(string(data)), shutil.Escape(filename))\n\nis what you need? Or, does that approach has some another issue?\nAlso, what\u0027s the extra maintenance cost, if we use this?\n\n\u003e Simple in terms of parsing/escaping and a proven, long track record for working with binary data.\n\nI have counter opinion. You constructed a complicated command line. Actually you had an escape mistake there (commented inline).\nPlease, please, be aware that commandline execution, specifically shell work, is complicated.\n\n\u003e Cons to using base64:\n\n\u003e Extra dependency pulled in. This is not an issue because base64 is almost always available.\n\u003e Larger data. This method is designed to work with small data, and we are passing them through the ssh as commands, so this is not an issue.\n\u003e Not human readable. The data that this method is designed to work with is binary in nature and is not human readable to begin with, so this is not an issue.\n\nAgreed on those points. Though, as mentioned above, complexity introduced by the command construction was missing here, IMO.",
+      "parentUuid": "c960e3b6_ff4e470c",
+      "range": {
+        "startLine": 124,
+        "startChar": 52,
+        "endLine": 124,
+        "endChar": 76
+      },
+      "revId": "094c7deccabb0de8b2640302ab9785aa7f244f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
