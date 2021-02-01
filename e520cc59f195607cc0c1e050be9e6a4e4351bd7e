@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2c8603d_b56143a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/sharesheet_icon.png",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003011
+      },
+      "writtenOn": "2021-02-01T23:32:50Z",
+      "side": 1,
+      "message": "192x192 is sufficient",
+      "parentUuid": "0fdcca25_8a0e92ae",
+      "revId": "e520cc59f195607cc0c1e050be9e6a4e4351bd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d1131ed_6f6dfbfd",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
         "patchSetId": 12
