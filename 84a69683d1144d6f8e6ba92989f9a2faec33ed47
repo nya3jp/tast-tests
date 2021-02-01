@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e084aaf_1f17c0ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2021-02-01T14:18:27Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "80d937bf_ff5c8695",
+      "revId": "84a69683d1144d6f8e6ba92989f9a2faec33ed47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77f02d24_a577705c",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-01-22T04:59:34Z",
       "side": 1,
       "message": "This logic may make many tests failing since we don\u0027t know the default lowBatteryMargin is sufficient for all the tests.\nHow about introducing this in a later CL after we ensured that the margin is sufficient?",
+      "revId": "84a69683d1144d6f8e6ba92989f9a2faec33ed47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e533d6_d81c3d54",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2021-02-01T14:18:27Z",
+      "side": 1,
+      "message": "Ack, removed this code for now.",
+      "parentUuid": "77f02d24_a577705c",
       "revId": "84a69683d1144d6f8e6ba92989f9a2faec33ed47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -70,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0803ab0_ef2628e6",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2021-02-01T14:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ef0a19_32a20fce",
+      "revId": "84a69683d1144d6f8e6ba92989f9a2faec33ed47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62c47a86_0e69e133",
@@ -83,6 +137,24 @@
       "writtenOn": "2021-01-22T04:59:34Z",
       "side": 1,
       "message": "How about adding a metric like `battery_usage` here instead of logging? (It can make easier to collect the battery usage using SQL)\nYou can use `values.Set(metric, values)` to set the value in Snapshot()\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/perf/perf.go;l\u003d172\nand capture the initial capacity in Start().",
+      "revId": "84a69683d1144d6f8e6ba92989f9a2faec33ed47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d6922b_e5c4a22d",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2021-02-01T14:18:27Z",
+      "side": 1,
+      "message": "I\u0027ve added a Stop() method to ensure that we\u0027re not averaging out the discharge. Please tell me what you think.",
+      "parentUuid": "62c47a86_0e69e133",
       "revId": "84a69683d1144d6f8e6ba92989f9a2faec33ed47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
