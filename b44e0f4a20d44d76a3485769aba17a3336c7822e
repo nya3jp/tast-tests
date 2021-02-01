@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf588c7_501153f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T22:19:05Z",
+      "side": 1,
+      "message": "Please get your team review first.",
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ef9322_2d5deee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T22:19:05Z",
+      "side": 1,
+      "message": "No need to use both comment and log unless the following step takes a long time.",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 48
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41b53552_4cbd6852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T22:19:05Z",
+      "side": 1,
+      "message": "Recommend to use fmt.",
+      "range": {
+        "startLine": 230,
+        "startChar": 25,
+        "endLine": 230,
+        "endChar": 86
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5ea7ff_a0721c04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T22:19:05Z",
+      "side": 1,
+      "message": "What about create and return a eventsMap in readLoggedEvents?",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 11
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6571f0b1_3ad39d84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-01T22:19:05Z",
+      "side": 1,
+      "message": "Recommend to set an opts here. With the opts as nil, the timeout is ctxutil.MaxTimeout, which is about 290 years.",
+      "range": {
+        "startLine": 267,
+        "startChar": 4,
+        "endLine": 267,
+        "endChar": 7
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
