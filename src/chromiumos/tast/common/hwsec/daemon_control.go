@@ -17,11 +17,8 @@ into the helper class properly.
 
 import (
 	"context"
-	"strings"
-	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/testing"
 )
 
 // DaemonController controls the daemons via upstart commands.
@@ -41,23 +38,10 @@ func (dc *DaemonController) WaitForAllDBusServices(ctx context.Context) error {
 }
 
 func (dc *DaemonController) waitForDBusService(ctx context.Context, name string) error {
-	// Without quote, we might find something prefixed by name.
-	name = "\"" + name + "\""
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		if out, err := dc.r.Run(
-			ctx,
-			"dbus-send",
-			"--system",
-			"--dest=org.freedesktop.DBus",
-			"--print-reply",
-			"/org/freedesktop/DBus",
-			"org.freedesktop.DBus.ListNames"); err != nil {
-			return err
-		} else if strings.Contains(string(out), name) {
-			return nil
-		}
-		return errors.New("daemon not up")
-	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 15 * time.Second})
+	if _, err := dc.r.Run(ctx, "/usr/bin/gdbus", "wait", "--system", name); err != nil {
+		return errors.Wrapf(err, "failed to wait for D-Bus service %s", name)
+	}
+	return nil
 }
 
 // StartTrunks starts trunksd and waits until the D-Bus interface is responsive.
