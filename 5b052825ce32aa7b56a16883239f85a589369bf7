@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8573f401_700483e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-01T22:33:10Z",
+      "side": 1,
+      "message": "LGTM with a nit. CR+2 in advance.",
+      "revId": "5b052825ce32aa7b56a16883239f85a589369bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c0f623_bcbe38a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-01T22:33:10Z",
+      "side": 1,
+      "message": "nit: could you add a comment for why comparing with \u00271\u0027?\n\nI searched the chromium code base and found that 1 means \u0027no overlay\u0027.  Still, mentioning these things -- those values are enum, defined as OverlayStrategies in tools/metrics/histograms/enums.xml in chromium code base -- would be helpful as that is not always obvious to future readers of this file.",
+      "range": {
+        "startLine": 161,
+        "startChar": 40,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "5b052825ce32aa7b56a16883239f85a589369bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
