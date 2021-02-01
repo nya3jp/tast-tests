@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/memory"
+	arcMemory "chromiumos/tast/local/memory/arc"
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/memoryuser"
 	"chromiumos/tast/local/multivm"
@@ -66,6 +67,7 @@ func init() {
 func Lifecycle(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(*multivm.PreData)
 	param := s.Param().(*lifecycleParam)
+	arc := multivm.ARCFromPre(pre)
 
 	info, err := kernelmeter.MemInfo()
 	if err != nil {
@@ -115,7 +117,6 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 		task := memoryuser.NewStillAliveMetricTask(tabsAliveTasks, "tabs_alive")
 		tasks = append(tasks, task)
 	}
-	arc := multivm.ARCFromPre(pre)
 	if param.inARC {
 		task := memoryuser.NewStillAliveMetricTask(appsAliveTasks, "apps_alive")
 		tasks = append(tasks, task)
@@ -140,7 +141,11 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	if err := memory.SmapsMetrics(ctx, p, s.OutDir(), ""); err != nil {
 		s.Error("Failed to log smaps_rollup metrics: ", err)
 	}
-
+	if arc != nil {
+		if err := arcMemory.DumpsysMeminfoMetrics(ctx, arc, p, s.OutDir(), ""); err != nil {
+			s.Error("Failed to log dumpsys meminfo metrics: ", err)
+		}
+	}
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save perf.Values: ", err)
 	}
