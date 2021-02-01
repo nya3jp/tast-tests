@@ -84,6 +84,23 @@
       "message": "Hi Tast experts,\n\nCan you please take a look at this CL?\n\nIn order to test device policies with proxy configurations, we need a service that can run a proxy instance on the DUT remotely.\n\nThank you!",
       "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e0d4a1_3c3ebace",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-01T10:39:19Z",
+      "side": 1,
+      "message": "Friendly ping! :) ",
+      "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
