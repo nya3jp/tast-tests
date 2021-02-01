@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc9e03b1_54cd97ac",
+        "filename": "src/chromiumos/tast/common/traceutil/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-01T18:15:11Z",
+      "side": 1,
+      "message": "I can remove them. I just wanted to ensure that the file really exists and no errors, for reporting crbug.com/1140286 -- with them I can safely say that the file is really generated but does not exist in stainless, so there is some troubles around uploading files.",
+      "parentUuid": "8042e9d6_92310dbc",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "12ffc75eedc82e49b342554314cdfb94333f28e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b55b5166_5ea2a109",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2021-01-28T14:09:26Z",
       "side": 1,
       "message": "We expect to use SaveTraceToFile with these?\nCan these be put closer?",
+      "range": {
+        "startLine": 1396,
+        "startChar": 0,
+        "endLine": 1408,
+        "endChar": 31
+      },
+      "revId": "12ffc75eedc82e49b342554314cdfb94333f28e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0efda1b_fadf414f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-01T18:15:11Z",
+      "side": 1,
+      "message": "My original point of this CL is -- SaveTraceToFile is nothing about Chrome, so moving out.  Start/Stop traces are about Chrome -- to start or stop traces in it, so they need to stay here.\n\nIn reality, I guess there\u0027s no other code which needs to store trace data into file (there would be perfetto service in ChromeOS, but perfetto CLI will store it into file already).  Maybe this could be too generic?\n\nI would like to hear your thoughts -- wdyt?  My current thinking is:\n- create a new package, say chrome/trace\n- move SaveTraceToFile in it\n- define a new interface in chrome/trace package, say Traceable, which defines StartTracing and StopTracing.\n- Chrome\u0027s Start/Stop tracing stay in Chrome, but they are reformed as implementations of the new Traceable interface.\n\nOr, all of them stay within chrome package but just move them into another file in it (e.g. trace.go).",
+      "parentUuid": "b55b5166_5ea2a109",
       "range": {
         "startLine": 1396,
         "startChar": 0,
