@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85cae24f_1d771128",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-01T07:19:46Z",
+      "side": 1,
+      "message": "I\u0027m not sure what\u0027s the benefit to add a dev tool in C++ to operate tpm_manager local data...\nWe still need to stop the tpm_managerd before operate the local data.",
+      "parentUuid": "96ffd761_e7ee9ca2",
+      "revId": "c5b823e296987e2189a1597a987636d2334f4c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d151f68_9ceb0d4f",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-02-01T05:08:03Z",
       "side": 1,
       "message": "Clarification, is it necessary to stop TPM manager on this call? If so, could you document?",
+      "revId": "c5b823e296987e2189a1597a987636d2334f4c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4c03b3_eb62ee42",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-01T07:19:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d151f68_9ceb0d4f",
       "revId": "c5b823e296987e2189a1597a987636d2334f4c24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82c40424_69cf2315",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-01T07:19:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8178d02c_1627e11a",
+      "revId": "c5b823e296987e2189a1597a987636d2334f4c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3261e256_02aefd44",
@@ -82,6 +136,30 @@
       "writtenOn": "2021-02-01T05:08:03Z",
       "side": 1,
       "message": "should this be defer stmt, at L173 (before SetTPMManagerLocalData).\nDitto for below.\n\nOr, rather, it may be worth trying to encapsulate it in SetTPMManagerLocalData.",
+      "range": {
+        "startLine": 177,
+        "startChar": 11,
+        "endLine": 177,
+        "endChar": 50
+      },
+      "revId": "c5b823e296987e2189a1597a987636d2334f4c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda8203a_89823b49",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-01T07:19:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3261e256_02aefd44",
       "range": {
         "startLine": 177,
         "startChar": 11,
