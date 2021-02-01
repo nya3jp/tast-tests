@@ -197,7 +197,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
 	extDirs, err := chrome.DeprecatedPrepareExtensions()
 	if err != nil {
-		return err
+		s.Fatal("Failed to prepare extensions: ", err)
 	}
 	extList := strings.Join(extDirs, ",")
 	extensionArgs := extensionArgs(chrome.TestExtensionID, extList)
