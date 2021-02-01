@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "819dcbf2_c02d1990",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-01T18:27:31Z",
+      "side": 1,
+      "message": "Hi, this change revives a past CL [1], since ChromeVox will be migrating to ES6 imports and exports. Thank you for taking a look when you have the chance!\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2275388",
+      "revId": "29ceb879d1b6ffdb57843bef6f4c8ea5640a3987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
