@@ -16,6 +16,441 @@
       "message": "PTAL~",
       "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d88366c_9d998164",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "My initial scan.\nAlso, this is complicated. So, could you add unittests?",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "055a3f3f_209ff0fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "In general, it is considered not mandatory to add documents for internal stuff, but could you add for this struct and some of below, for make it easier for readers?\n\nCould you add some references where this definition comes from?",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8ba458_fad3886b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "Maybe nice to introduce a new type to make it different from others?",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10cde169_f352c3e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "can this be time.Time?",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "745a751a_7bf18241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "Where this definition comes from? Could you add reference?",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f772d4e1_69e7276a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "Could you add comments these are clockIDs? Or use new type as recommended above?",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476d9455_f0f85228",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "\"data\" sounds an ambiguous word to me here. In this case, this is not the data held by clocks. Could you describe what this is in the document? Or possibly rename if this does not come from some proper noun used in tracing?",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97351557_a6da0b51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "Could you describe what is the key?",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a34b2b5_3834c538",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "Could you add brief comment? Specifically:\n- cd1 and cd2 won\u0027t be updated.\n- clocks and offsetGraphs in cd1 and cd2 should not contain the same keys.\n\nwhich look not trivial.",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d06a40d4_fecaebfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "nit: looks not ID in the code?",
+      "range": {
+        "startLine": 112,
+        "startChar": 92,
+        "endLine": 112,
+        "endChar": 95
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebcab46e_e914fc6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "nit: unnecessary",
+      "range": {
+        "startLine": 117,
+        "startChar": 56,
+        "endLine": 117,
+        "endChar": 61
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4836cbeb_58210f11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "Can be time.Time?\nDitto for below.",
+      "range": {
+        "startLine": 123,
+        "startChar": 79,
+        "endLine": 123,
+        "endChar": 85
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c113e948_0fb921d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "Could you add document?\n\ncould you drop \"get\"?\nIn standard go, we don\u0027t use common prefixes, like \"get\", \"is\", \"has\" etc.\nMaybe timeInDomain.",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 28
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc688dcb_7544f762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "ditto: clockID. Ditto for below.",
+      "range": {
+        "startLine": 160,
+        "startChar": 25,
+        "endLine": 160,
+        "endChar": 35
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c41f31f_4ccc4995",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "Could you document this interface and the methods?\nInterface is an API surface so it\u0027s contract with callers.",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e84d4b4_eae066cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "nit: IID (all capitals for acronyms).",
+      "range": {
+        "startLine": 173,
+        "startChar": 8,
+        "endLine": 173,
+        "endChar": 11
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aedc2cff_18c1aa1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "nit: s/Get//g in this members.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 4
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105e584a_019e4f29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "document?",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2da68035_aae35399",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "- If both ThreadName and Name are set, Name wins. Is it intentional? Or, shouldn\u0027t both of them be set at once? If latter, could you check the condition?\n- This merges ThreadName and Name. Do they have a same scope? Or, isolated thanks to the naming conventions? Or, would they be conflicted? If the latter, could you document with reference?",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 3
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0730eeff_3089efdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "style:\nc, ok :\u003d cd.clocks[ClockID]\nif !ok {\n  return ... errors.Errorf(...)\n}\nif c.incremental {\n  ...\n} else {\n  ...\n}",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 2
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86b23fd_41ee94dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-01T02:58:45Z",
+      "side": 1,
+      "message": "document?",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
