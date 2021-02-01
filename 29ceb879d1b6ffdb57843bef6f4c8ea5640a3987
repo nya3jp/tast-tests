@@ -16,6 +16,23 @@
       "message": "Hi, this change revives a past CL [1], since ChromeVox will be migrating to ES6 imports and exports. Thank you for taking a look when you have the chance!\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2275388",
       "revId": "29ceb879d1b6ffdb57843bef6f4c8ea5640a3987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bbe51ab_fb4f3bcf",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-01T22:16:35Z",
+      "side": 1,
+      "message": "Nit: Should we also add ChromeVoxState to the list above?",
+      "revId": "29ceb879d1b6ffdb57843bef6f4c8ea5640a3987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
