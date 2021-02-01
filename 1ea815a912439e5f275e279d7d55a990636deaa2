@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "169539bd_e91c5509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "055a3f3f_209ff0fd",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad8ba458_fad3886b",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-02-01T02:58:45Z",
       "side": 1,
       "message": "Maybe nice to introduce a new type to make it different from others?",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5141c2a7_9141e397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad8ba458_fad3886b",
       "range": {
         "startLine": 15,
         "startChar": 13,
@@ -100,6 +142,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "484b48b0_3c4debd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it makes sense, since these can all be in different clock domains. If so, you would have lots of time.Time\u0027s that mean completely different things. IIUC golang time.Time  has an expectation that time.Time\u0027s can be compared.\n\nWDYT?",
+      "parentUuid": "10cde169_f352c3e7",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "745a751a_7bf18241",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
         "patchSetId": 1
@@ -111,6 +177,24 @@
       "writtenOn": "2021-02-01T02:58:45Z",
       "side": 1,
       "message": "Where this definition comes from? Could you add reference?",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f42e769_09503bb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "745a751a_7bf18241",
       "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -128,6 +212,30 @@
       "writtenOn": "2021-02-01T02:58:45Z",
       "side": 1,
       "message": "Could you add comments these are clockIDs? Or use new type as recommended above?",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be71d73_4fe75421",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f772d4e1_69e7276a",
       "range": {
         "startLine": 39,
         "startChar": 4,
@@ -161,6 +269,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a40617_f1ef3014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "476d9455_f0f85228",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97351557_a6da0b51",
@@ -178,6 +310,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc045e55_b1d3358b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97351557_a6da0b51",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a34b2b5_3834c538",
@@ -191,6 +341,24 @@
       "writtenOn": "2021-02-01T02:58:45Z",
       "side": 1,
       "message": "Could you add brief comment? Specifically:\n- cd1 and cd2 won\u0027t be updated.\n- clocks and offsetGraphs in cd1 and cd2 should not contain the same keys.\n\nwhich look not trivial.",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1504978d_03e8eab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a34b2b5_3834c538",
       "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -218,6 +386,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "188d854f_b1ceccec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d06a40d4_fecaebfc",
+      "range": {
+        "startLine": 112,
+        "startChar": 92,
+        "endLine": 112,
+        "endChar": 95
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebcab46e_e914fc6b",
@@ -231,6 +423,30 @@
       "writtenOn": "2021-02-01T02:58:45Z",
       "side": 1,
       "message": "nit: unnecessary",
+      "range": {
+        "startLine": 117,
+        "startChar": 56,
+        "endLine": 117,
+        "endChar": 61
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c054feae_78a1c93e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebcab46e_e914fc6b",
       "range": {
         "startLine": 117,
         "startChar": 56,
@@ -287,6 +503,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d6c6525_3cdb7303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "See my other comment w.r.t time.",
+      "parentUuid": "4836cbeb_58210f11",
+      "range": {
+        "startLine": 123,
+        "startChar": 79,
+        "endLine": 123,
+        "endChar": 85
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ced4ba3_e5c243d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c113e948_0fb921d3",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 28
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc688dcb_7544f762",
@@ -310,6 +574,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5655c32d_ba774c6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc688dcb_7544f762",
+      "range": {
+        "startLine": 160,
+        "startChar": 25,
+        "endLine": 160,
+        "endChar": 35
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c41f31f_4ccc4995",
@@ -323,6 +611,24 @@
       "writtenOn": "2021-02-01T02:58:45Z",
       "side": 1,
       "message": "Could you document this interface and the methods?\nInterface is an API surface so it\u0027s contract with callers.",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef9918a_71bf5078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c41f31f_4ccc4995",
       "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -373,6 +679,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "401096f8_f358354f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "In a future CL, trace objects are used as namers, which have these function names (generated code), so I can\u0027t rename these.",
+      "parentUuid": "aedc2cff_18c1aa1e",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 4
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d2f5693_cf803afb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "In a future CL, trace objects are used as namers, which have these function names (generated code), so I can\u0027t rename these.",
+      "parentUuid": "2e84d4b4_eae066cf",
+      "range": {
+        "startLine": 173,
+        "startChar": 8,
+        "endLine": 173,
+        "endChar": 11
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "105e584a_019e4f29",
@@ -390,6 +744,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d9b632_a035316c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105e584a_019e4f29",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2da68035_aae35399",
@@ -403,6 +775,30 @@
       "writtenOn": "2021-02-01T02:58:45Z",
       "side": 1,
       "message": "- If both ThreadName and Name are set, Name wins. Is it intentional? Or, shouldn\u0027t both of them be set at once? If latter, could you check the condition?\n- This merges ThreadName and Name. Do they have a same scope? Or, isolated thanks to the naming conventions? Or, would they be conflicted? If the latter, could you document with reference?",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 3
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b154748_0feba98d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "\u003e If both ThreadName and Name are set, Name wins. Is it intentional? \n\nYes it\u0027s intentional.\n\n\u003e This merges ThreadName and Name\n\nYes, Name should be used if it exists. Otherwise, ThreadName\n\nSee https://source.chromium.org/chromium/chromium/src/+/master:third_party/perfetto/protos/perfetto/trace/track_event/track_descriptor.proto\n\nUltimately it doesn\u0027t matter, though, since it doesn\u0027t affect any of the other parsing code.",
+      "parentUuid": "2da68035_aae35399",
       "range": {
         "startLine": 257,
         "startChar": 2,
@@ -436,6 +832,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46227140_d3d8486d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "thanks this is better",
+      "parentUuid": "0730eeff_3089efdb",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 2
+      },
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c86b23fd_41ee94dc",
@@ -449,6 +869,24 @@
       "writtenOn": "2021-02-01T02:58:45Z",
       "side": 1,
       "message": "document?",
+      "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7600c202_fc91a4b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-01T06:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c86b23fd_41ee94dc",
       "revId": "1ea815a912439e5f275e279d7d55a990636deaa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
