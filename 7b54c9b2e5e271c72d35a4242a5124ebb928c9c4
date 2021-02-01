@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "315e4318_32fa8eb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-01T17:49:43Z",
+      "side": 1,
+      "message": "nit: s/validate by md5/MD5-validated/ ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c72aec6f_585adc9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-01T17:49:43Z",
+      "side": 1,
+      "message": "nit: s/DecodeCompliace/DecodeCompliance/",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2bfbd035_9da86362",
@@ -14,6 +60,46 @@
       "writtenOn": "2021-02-01T05:40:10Z",
       "side": 1,
       "message": "PTAL!",
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58315d5e_bccd037f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-01T17:49:43Z",
+      "side": 1,
+      "message": "LGTM modulo some comments below.",
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50682def_b9e0ebf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-01T17:49:43Z",
+      "side": 1,
+      "message": "I think this comment pertains to l.67, \"av1_film_grain\", right?\nSince this entry \"av1_ssim\" applies to all test vectors.\n\nAlso s/we validates by visually not md5/validate visually and not by MD5/",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 60
+      },
       "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
