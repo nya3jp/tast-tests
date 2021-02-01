@@ -38,6 +38,14 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		skipButtonText     = "skip"
 	)
 
+	installed, err := a.PackageInstalled(ctx, pkgName)
+	if err != nil {
+		return err
+	}
+	if installed {
+		return nil
+	}
+
 	testing.ContextLog(ctx, "Opening Play Store with Intent")
 	if err := a.WaitIntentHelper(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for ArcIntentHelper")
@@ -145,12 +153,11 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 	}
 
 	// Ensure that the correct package is installed, just in case the Play Store ui changes again.
-	pkgs, err := a.InstalledPackages(ctx)
+	installed, err = a.PackageInstalled(ctx, pkgName)
 	if err != nil {
-		return errors.Wrap(err, "failed to list packages")
+		return err
 	}
-
-	if _, ok := pkgs[pkgName]; !ok {
+	if !installed {
 		return errors.Errorf("failed to install %s", pkgName)
 	}
 	return nil
