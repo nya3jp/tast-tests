@@ -86,6 +86,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a18d68b_7a65fc32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-01T17:54:30Z",
+      "side": 1,
+      "message": "Sorry about the slow review! LGTM, thanks for\ncleaning up the code!",
+      "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0746de53_69add38e",
@@ -241,6 +258,30 @@
       "side": 1,
       "message": "\u003e So, just to make sure, txMeasurement.FramesPerSecond here is going to\n\u003e retrieve the \"outbound-rtp\" stat report and cherry pick the \n\u003e |framesPerSecond| entry?\n\nyes, exactly.\n\nFor the latter half, may I clarify your request?\n\ndo you want to change the field name to drop the JSON annotation? If so, it looks not possible, because the field name needs to match in case-sensitive way, but at the same time the field needs to be public so needs to start with an upper case letter.\n\nOr, do you just want to rename the field from Decoder to DecoerImplementation? I chose the shorter name, just because Go prefers shorter in general with surrounding context, but in this specific case, I do not have strong opinion.",
       "parentUuid": "ec06d27b_419613b6",
+      "range": {
+        "startLine": 181,
+        "startChar": 28,
+        "endLine": 181,
+        "endChar": 57
+      },
+      "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fae9d43_04a09a21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-01T17:54:30Z",
+      "side": 1,
+      "message": "\u003e \u003e So, just to make sure, txMeasurement.FramesPerSecond here is going to\n\u003e \u003e retrieve the \"outbound-rtp\" stat report and cherry pick the \n\u003e \u003e |framesPerSecond| entry?\n\u003e \n\u003e yes, exactly.\n\u003e \n\u003e For the latter half, may I clarify your request?\n\u003e \n\u003e do you want to change the field name to drop the JSON annotation? If so, it looks not possible, because the field name needs to match in case-sensitive way, but at the same time the field needs to be public so needs to start with an upper case letter.\n\nOIC, didn\u0027t notice, this Go-ism always gets me. Then I think it\u0027s\njust fine to have to define a \"var out struct\" to extract Decoder.\n\n\u003e \n\u003e Or, do you just want to rename the field from Decoder to DecoerImplementation? I chose the shorter name, just because Go prefers shorter in general with surrounding context, but in this specific case, I do not have strong opinion.",
+      "parentUuid": "e2e7144b_51588c37",
       "range": {
         "startLine": 181,
         "startChar": 28,
