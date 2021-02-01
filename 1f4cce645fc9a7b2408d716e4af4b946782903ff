@@ -130,6 +130,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ee69f6_29ff0467",
+        "filename": "src/chromiumos/tast/local/multivm/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:57:02Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "05b106ed_520bbf71",
+      "revId": "1f4cce645fc9a7b2408d716e4af4b946782903ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86492f01_4f4f1585",
@@ -208,6 +226,24 @@
       "side": 1,
       "message": "StateManager is internal to the precondition implementation (consumers of the precondition use the VMs property on PreData), so helpers don\u0027t seem useful for this type. However, if the intent of this comment was to ask for them to be added as instance methods to PreData instead:\n\nI somewhat disagree with adding special methods for ARC() and Crostini() on PreData as we won\u0027t be able to add such methods for additional VMs (e.g. Parallels), and I would rather avoid the inconsistency it creates (having access for ARC and Crostini via an instance method on PreData, whereas Parallels needs a static method along the lines of ARCFromPre / CrostiniFromPre).\n\nWhat I have done in response to this comment is to add a comment on PreData\u0027s VMs field to indicate access should occur via VM-specific helper methods such as ARCFromPre and CrostiniFromPre. This should help make clear to users exploring the PreData type how they should access the VMs collection.",
       "parentUuid": "b436f94e_07d66205",
+      "revId": "1f4cce645fc9a7b2408d716e4af4b946782903ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e58c040a_6442f431",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:57:02Z",
+      "side": 1,
+      "message": "Thanks for the explanation. Can you add a comment to the method as well?",
+      "parentUuid": "e593d626_69362047",
       "revId": "1f4cce645fc9a7b2408d716e4af4b946782903ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

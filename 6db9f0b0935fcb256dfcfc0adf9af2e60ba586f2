@@ -16,6 +16,23 @@
       "message": "LGTM\n\nI like all the red lines.",
       "revId": "6db9f0b0935fcb256dfcfc0adf9af2e60ba586f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40472514_be3fa52a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-01T08:57:02Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "6db9f0b0935fcb256dfcfc0adf9af2e60ba586f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
