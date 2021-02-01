@@ -16,6 +16,29 @@
       "message": "removing autosubmit cause I am actually gonna group this with other cls above.",
       "revId": "0210a5a2ffe270d2b7c1b29c7a648722b547a0ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b17e131_fe7a2b7a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-01T23:03:59Z",
+      "side": 1,
+      "message": "Optional: I think this can be nodewith.Role(role.Button).Ancestor(messagePopupAlert) which might be more robust if the name changes at some point.",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "0210a5a2ffe270d2b7c1b29c7a648722b547a0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
