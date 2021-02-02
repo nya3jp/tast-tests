@@ -16,6 +16,92 @@
       "message": "PTAL.",
       "revId": "9977e38434581837657959fac3d518c25970d528",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f115cd_2d25f578",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-02T01:23:07Z",
+      "side": 1,
+      "message": "LGTM with nits, thanks for cleanup.\n",
+      "revId": "9977e38434581837657959fac3d518c25970d528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d1c2f3d_a9e51720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-02T01:23:07Z",
+      "side": 1,
+      "message": "nit: Now we can use double quotes.",
+      "range": {
+        "startLine": 147,
+        "startChar": 32,
+        "endLine": 147,
+        "endChar": 34
+      },
+      "revId": "9977e38434581837657959fac3d518c25970d528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaf6aa7f_1d5839f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-02T01:23:07Z",
+      "side": 1,
+      "message": "It\u0027s nice to see we can reduce a lot of lines :)",
+      "range": {
+        "startLine": 147,
+        "startChar": 33,
+        "endLine": 147,
+        "endChar": 47
+      },
+      "revId": "9977e38434581837657959fac3d518c25970d528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b451d63_821c0677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-02T01:23:07Z",
+      "side": 1,
+      "message": "It\u0027s nice to avoid \"window\" since it\u0027s the global object name.",
+      "range": {
+        "startLine": 216,
+        "startChar": 9,
+        "endLine": 216,
+        "endChar": 15
+      },
+      "revId": "9977e38434581837657959fac3d518c25970d528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
