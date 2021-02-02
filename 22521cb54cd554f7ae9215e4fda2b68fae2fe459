@@ -39,6 +39,30 @@
       },
       "revId": "22521cb54cd554f7ae9215e4fda2b68fae2fe459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d32eaf_fa0420e0",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-02T19:07:47Z",
+      "side": 1,
+      "message": "Ah, you\u0027re right again, thanks for catching this. And I appreciate the simple code snippet above, we really don\u0027t need to track startIndex if we use shift(). Makes everything much cleaner 😊",
+      "parentUuid": "6bf26b7c_5580bef4",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 11
+      },
+      "revId": "22521cb54cd554f7ae9215e4fda2b68fae2fe459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
