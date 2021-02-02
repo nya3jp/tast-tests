@@ -586,6 +586,30 @@
       },
       "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6385f052_fc9ee133",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T10:51:30Z",
+      "side": 1,
+      "message": "I added one method ActionOnCondition. Now these three steps could be combined once Combine is available.",
+      "parentUuid": "51b5f6d0_10e2c9c1",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 11
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -400,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b578bbac_c2097d66",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T10:51:30Z",
+      "side": 1,
+      "message": "Added ActionOnCondition, PTAL!",
+      "parentUuid": "e1a58a74_5f04052d",
+      "range": {
+        "startLine": 207,
+        "startChar": 44,
+        "endLine": 207,
+        "endChar": 59
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bdf1967_b7d815f8",
