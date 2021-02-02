@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e99886e_c0e4e62c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T17:36:58Z",
+      "side": 1,
+      "message": "eventType? ditto all the way down.",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "2bf89055cf139c2333b53f28e211a1f688cfb35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "397963fa_80b91eae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T17:36:58Z",
+      "side": 1,
+      "message": "return an eventType?",
+      "range": {
+        "startLine": 207,
+        "startChar": 37,
+        "endLine": 207,
+        "endChar": 43
+      },
+      "revId": "2bf89055cf139c2333b53f28e211a1f688cfb35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f691fc_cb68b6de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T17:36:58Z",
+      "side": 1,
+      "message": "make this an array of eventTypes?",
+      "range": {
+        "startLine": 253,
+        "startChar": 24,
+        "endLine": 253,
+        "endChar": 30
+      },
+      "revId": "2bf89055cf139c2333b53f28e211a1f688cfb35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
