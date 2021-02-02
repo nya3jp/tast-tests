@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "481032d0_5a2e6f0c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T05:53:43Z",
+      "side": 1,
+      "message": "This function may return zero nodes as well.  Either make it clear in the documentation, or put the error on zero nodes back in.",
+      "range": {
+        "startLine": 131,
+        "startChar": 64,
+        "endLine": 131,
+        "endChar": 81
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb397645_84f3fc36",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T05:53:43Z",
+      "side": 1,
+      "message": "Make a NameRegex function instead.",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 85
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e55f71_337e6d3c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T05:53:43Z",
+      "side": 1,
+      "message": "Are there multiple settings windows?",
+      "range": {
+        "startLine": 57,
+        "startChar": 104,
+        "endLine": 57,
+        "endChar": 111
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf046cc8_148f57a0",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T05:53:43Z",
+      "side": 1,
+      "message": "Add a NameRegex function?",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 43
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc4cb40_66eb664e",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T05:53:43Z",
+      "side": 1,
+      "message": "Not for this cl, but it would be nice to make this method (or another similar one) take a ui.Action as the condition:\n\nossettings.LaunchAtPageURL(ctx, tconn, cr, \"crostini\", ui.LeftClick(developersButton))",
+      "range": {
+        "startLine": 88,
+        "startChar": 22,
+        "endLine": 88,
+        "endChar": 37
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4389e652_0a7fa118",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T05:53:43Z",
+      "side": 1,
+      "message": "Not a problem, but why the shorter timeout?",
+      "range": {
+        "startLine": 133,
+        "startChar": 38,
+        "endLine": 133,
+        "endChar": 53
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19563b3_d8b5a999",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T05:53:43Z",
+      "side": 1,
+      "message": "Not for this CL, but wonder if we should have nodewith.OneOf(Finder1, Finder2,...)\n\nMight not help with this case since we need to know which one.",
+      "range": {
+        "startLine": 153,
+        "startChar": 45,
+        "endLine": 153,
+        "endChar": 60
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa4a819_529ca9e5",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T05:53:43Z",
+      "side": 1,
+      "message": "This poll could be removed:\n\n                sharedFolderButtons \u003d nodewith,Role(role.Button).Ancestor(sharedFolderList)\n                if err :\u003d uiauto.Run(ui2.WaitUntilExists(sharedFolderButtons.First()))(ctx); err !\u003d \nnil {\n                    ...\n                }\n                sharedFolders, err :\u003d ui2.NodesInfo(ctx,sharedFolderButtons)\n\t\tif err !\u003d nil {\n\t\t\treturn nil, errors.Wrap(err, \"failed to find list of shared folders\")\n\t\t}\n\t\tfor _, folder :\u003d range sharedFolders {\n\t\t\tlistOffolders \u003d append(listOffolders, folder.Name)\n\t\t}\n\t\treturn listOffolders, nil",
+      "range": {
+        "startLine": 177,
+        "startChar": 20,
+        "endLine": 177,
+        "endChar": 24
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ae8ef3_e5ce38b9",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T05:53:43Z",
+      "side": 1,
+      "message": "Not for this CL, but what about a ui2.IfExists(Finder).LeftClick(Finder)?\n\nThen this sequence would be:\n\nuiauto.Run(ctx,\n  ui2.LeftClick(folderButton),\n  ui2.IfExists(unshareFailDlg).LeftClick(okButton),\n  ui2.WaitUntilGone(folderButton))",
+      "range": {
+        "startLine": 207,
+        "startChar": 44,
+        "endLine": 207,
+        "endChar": 59
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bdf1967_b7d815f8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T05:53:43Z",
+      "side": 1,
+      "message": "This seems redundant? There is no need to wait, the list should already be there or be gone\n\nthe only thing we need to wait for is the disappearance of the button one way or the other.",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 79
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
