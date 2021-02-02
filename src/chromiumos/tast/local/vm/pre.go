@@ -14,10 +14,19 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// TargetArch returns the name of the VM architecture that should be used
+func TargetArch() string {
+	if runtime.GOARCH == "arm64" {
+		// For now, we ship the same VM image to arm64 as for arm devices
+		return "arm"
+	}
+	return runtime.GOARCH
+}
+
 // ArtifactData returns the name of the data file that must be specified
 // for tests using the Artifact() precondition.
 func ArtifactData() string {
-	return fmt.Sprintf("crostini_vm_%s.zip", runtime.GOARCH)
+	return fmt.Sprintf("crostini_vm_%s.zip", TargetArch())
 }
 
 // The PreData object is made available to users of this precondition via:
