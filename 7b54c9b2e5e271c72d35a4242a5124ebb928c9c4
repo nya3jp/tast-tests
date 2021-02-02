@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a70957_63eb726d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-02T01:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "315e4318_32fa8eb0",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c72aec6f_585adc9a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-01T17:49:43Z",
       "side": 1,
       "message": "nit: s/DecodeCompliace/DecodeCompliance/",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "975c8c22_8a6260a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-02T01:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c72aec6f_585adc9a",
       "range": {
         "startLine": 12,
         "startChar": 6,
@@ -121,6 +169,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72573ace_f4ac9bd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-02T01:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2bae230_f4fe7073",
+      "range": {
+        "startLine": 48,
+        "startChar": 70,
+        "endLine": 48,
+        "endChar": 100
+      },
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5cafad1_e8d92965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-02T01:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2bae230_f4fe7073",
+      "range": {
+        "startLine": 48,
+        "startChar": 70,
+        "endLine": 48,
+        "endChar": 100
+      },
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50682def_b9e0ebf0",
@@ -158,6 +254,54 @@
       "side": 1,
       "message": "I think this comment would fit better right before ln. 69 to explain why volteer is excluded:\n\n  // Different decoders may use different film grain synthesis methods while producing\n  // a visually correct output. Thus, for volteer, we don\u0027t validate the decoding of\n  // film-grain streams using MD5. Instead, we validate them using SSIM (see the\n  // av1_ssim test).",
       "parentUuid": "50682def_b9e0ebf0",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 60
+      },
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7146cb8a_c8e5c16e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-02T01:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16798ff8_86cf7bf0",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 60
+      },
+      "revId": "7b54c9b2e5e271c72d35a4242a5124ebb928c9c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2620d7_13d6fcd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-02T01:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16798ff8_86cf7bf0",
       "range": {
         "startLine": 81,
         "startChar": 4,
