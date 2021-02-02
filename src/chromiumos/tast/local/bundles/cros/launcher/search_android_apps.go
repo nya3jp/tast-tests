@@ -12,9 +12,9 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/ui/launcher"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -78,11 +78,12 @@ func SearchAndroidApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
 
-	if err := launcher.SearchAndLaunch(ctx, tconn, apps.PlayStore.Name); err != nil {
-		s.Fatal("Failed to launch Play Store: ", err)
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
 	}
-
-	if err := ash.WaitForApp(ctx, tconn, apps.PlayStore.ID); err != nil {
-		s.Fatal("Failed to wait for Play Store: ", err)
+	defer kb.Close()
+	if err := launcher.SearchAndWaitForAppOpen(tconn, kb, apps.PlayStore)(ctx); err != nil {
+		s.Fatal("Failed to launch Play Store: ", err)
 	}
 }
