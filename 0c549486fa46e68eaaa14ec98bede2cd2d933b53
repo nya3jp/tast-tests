@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c470586_dbc4d8d5",
+        "filename": "src/chromiumos/tast/services/cros/network/proxy_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-02T13:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88e02363_5ef0ba5d",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e3e6293_2b80f039",
@@ -156,6 +180,30 @@
       "writtenOn": "2021-02-01T17:25:06Z",
       "side": 1,
       "message": "StopServer",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "0c549486fa46e68eaaa14ec98bede2cd2d933b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "137d2909_9016cb14",
+        "filename": "src/chromiumos/tast/services/cros/network/proxy_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-02T13:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e3e6293_2b80f039",
       "range": {
         "startLine": 19,
         "startChar": 5,
