@@ -18,6 +18,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8023a078_ef3021c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-02T00:02:55Z",
+      "side": 1,
+      "message": "Thanks for the quik fix!",
+      "revId": "29ceb879d1b6ffdb57843bef6f4c8ea5640a3987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b551ae9_6031c2b3",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-02T00:02:55Z",
+      "side": 1,
+      "message": "optional: Would you mind adding a line like below?\n// TODO(b/178978967): Migrate to use public APIs rather than internal classes.",
+      "revId": "29ceb879d1b6ffdb57843bef6f4c8ea5640a3987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bbe51ab_fb4f3bcf",
@@ -31,6 +65,24 @@
       "writtenOn": "2021-02-01T22:16:35Z",
       "side": 1,
       "message": "Nit: Should we also add ChromeVoxState to the list above?",
+      "revId": "29ceb879d1b6ffdb57843bef6f4c8ea5640a3987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d17c4e00_a13aea16",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-02T00:02:55Z",
+      "side": 1,
+      "message": "Reading David\u0027s comment here https://chromium-review.googlesource.com/c/chromium/src/+/2657992?tab\u003dcomments, I think it\u0027s okay as it is for now.",
+      "parentUuid": "1bbe51ab_fb4f3bcf",
       "revId": "29ceb879d1b6ffdb57843bef6f4c8ea5640a3987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
