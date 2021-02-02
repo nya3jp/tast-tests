@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "276e2f71_5eee4234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-02-02T01:35:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33bc3da7_0a32381d",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 17
+      },
+      "revId": "148fe317d24f41f0009fbc7011d1d59d28f941bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "749bf5c8_475e2cb9",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-01T23:12:31Z",
       "side": 1,
       "message": "Remove this comment.",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 69
+      },
+      "revId": "148fe317d24f41f0009fbc7011d1d59d28f941bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f46ef2_9382a3b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-02-02T01:35:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "749bf5c8_475e2cb9",
       "range": {
         "startLine": 210,
         "startChar": 3,
