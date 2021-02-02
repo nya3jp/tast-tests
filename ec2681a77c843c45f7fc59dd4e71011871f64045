@@ -33,6 +33,24 @@
       "message": "Can you give an example / use case advertising multiple BSSIDs/interfaces on the same channel? ",
       "revId": "ec2681a77c843c45f7fc59dd4e71011871f64045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f2e99b6_093b1daf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-02-02T18:13:42Z",
+      "side": 1,
+      "message": "Sure, I currently have two use cases in mind, but there are definitely many more:\n\n1. Some Agile Multiband certification tests require having e.g. 6 SSIDs, and we currently don\u0027t have a way to do that.\n2. We currently limit scan SSIDs to 3 (b/172212323), and since we can only have a maximum of 2 in our tests, we never exercise this limit. That being said, I currently don\u0027t have an option for hidden SSID, so I\u0027ll probably just add that as well while I\u0027m here anyway.",
+      "parentUuid": "e7e4764c_3666275a",
+      "revId": "ec2681a77c843c45f7fc59dd4e71011871f64045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
