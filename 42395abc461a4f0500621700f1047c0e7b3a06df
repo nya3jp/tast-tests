@@ -16,6 +16,23 @@
       "message": "tast shadow reviewer +1",
       "revId": "42395abc461a4f0500621700f1047c0e7b3a06df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60ec0bd8_10f655d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-02T01:04:43Z",
+      "side": 1,
+      "message": "Thank you for writing stable tests :) ",
+      "revId": "42395abc461a4f0500621700f1047c0e7b3a06df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
