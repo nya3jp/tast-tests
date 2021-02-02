@@ -65,9 +65,9 @@ var locked = false
 // prePackages lists packages containing preconditions that are allowed to call Lock and Unlock.
 var prePackages = []string{
 	"chromiumos/tast/local/arc",
-	"chromiumos/tast/local/bundles/cros/camera/testutil",
-	"chromiumos/tast/local/bundles/cros/inputs/pre",
+	"chromiumos/tast/local/policyutil/pre",
 	"chromiumos/tast/local/bundles/cros/ui/cuj",
+	"chromiumos/tast/local/bundles/cros/inputs/pre",
 	"chromiumos/tast/local/bundles/crosint/pita/pre",
 	"chromiumos/tast/local/bundles/pita/pita/pre",
 	"chromiumos/tast/local/chrome",
