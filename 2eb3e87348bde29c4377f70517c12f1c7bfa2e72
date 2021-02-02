@@ -124,6 +124,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae5573f8_df4c5fb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000111
+      },
+      "writtenOn": "2021-02-02T14:36:55Z",
+      "side": 1,
+      "message": "I would recommend using PipelineReporter instead. It contains all these stages (with even more breakdowns) of a particular frame, and includes information like whether the frame was dropped or not. It also makes it much easier to know precisely when a particular frame submitted by a client (browser, renderer) was drawn (in DrawAndSwap()). So a lot of the following logic/heuristics should not be required.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "039a0ad1_14c68514",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
         "patchSetId": 1
