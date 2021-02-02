@@ -16,7 +16,7 @@ func init() {
 		Name:            "chromeLoggedIn",
 		Desc:            "Logged into a user session",
 		Contacts:        []string{"nya@chromium.org", "oka@chromium.org"},
-		Impl:            NewLoggedInFixture(),
+		Impl:            NewFixture(),
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
@@ -26,7 +26,7 @@ func init() {
 		Name:            "chromeLoggedInWith100FakeApps",
 		Desc:            "Logged into a user session with 100 fake apps",
 		Contacts:        []string{"mukai@chromium.org"},
-		Impl:            NewLoggedInFixture(),
+		Impl:            NewFixture(),
 		Parent:          "install100Apps",
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
@@ -37,28 +37,40 @@ func init() {
 		Name:            "chromeLoggedInWith100FakeAppsSkiaRenderer",
 		Desc:            "Logged into a user session with 100 fake apps",
 		Contacts:        []string{"mukai@chromium.org"},
-		Impl:            NewLoggedInFixture(EnableFeatures("UseSkiaRenderer")),
+		Impl:            NewFixture(EnableFeatures("UseSkiaRenderer")),
 		Parent:          "install100Apps",
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "chromeLoggedOut",
+		Desc:            "There is a Chrome process running, but no user session",
+		Contacts:        []string{"nya@chromium.org", "oka@chromium.org"},
+		Impl:            NewFixture(NoLogin()),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
 }
 
-// loggedInFixture is a fixture to start Chrome with the given options.
-// If the parent is specified, and the parent returns a value of []Option, it
-// will also add those options when starting Chrome.
-type loggedInFixture struct {
+// fixture is a fixture to start Chrome with the given options. If the parent is
+// specified, and the parent returns a value of []Option, it will also add those
+// options when starting Chrome.
+type fixture struct {
 	cr   *Chrome
 	opts []Option
 }
 
-// NewLoggedInFixture returns a FixtureImpl of creating a Chrome instance with the given options.
-func NewLoggedInFixture(opts ...Option) testing.FixtureImpl {
-	return &loggedInFixture{opts: opts}
+// NewFixture returns a FixtureImpl of creating a Chrome instance with
+// the given options. By default, this Chrome instance has a user session.
+func NewFixture(opts ...Option) testing.FixtureImpl {
+	return &fixture{opts: opts}
 }
 
-func (f *loggedInFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	opts := f.opts
 	// If there's a parent fixture and the fixture supplies extra options, use them.
 	if extraOpts, ok := s.ParentValue().([]Option); ok {
@@ -73,7 +85,7 @@ func (f *loggedInFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	return cr
 }
 
-func (f *loggedInFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	Unlock()
 	if err := f.cr.Close(ctx); err != nil {
 		s.Log("Failed to close Chrome connection: ", err)
@@ -81,7 +93,7 @@ func (f *loggedInFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	f.cr = nil
 }
 
-func (f *loggedInFixture) Reset(ctx context.Context) error {
+func (f *fixture) Reset(ctx context.Context) error {
 	if err := f.cr.Responded(ctx); err != nil {
 		return errors.Wrap(err, "existing Chrome connection is unusable")
 	}
@@ -91,6 +103,6 @@ func (f *loggedInFixture) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (f *loggedInFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *fixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 
-func (f *loggedInFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}

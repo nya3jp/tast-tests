@@ -15,7 +15,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideo",
 		Desc: "Logged into a user session with logging enabled",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeUseHWCodecsForSmallResolutions,
 			chromeBypassPermissionsArgs,
@@ -31,7 +31,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeAlternateVideoDecoder",
 		Desc: "Logged into a user session with alternate hardware accelerated video decoder.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeUseHWCodecsForSmallResolutions,
 			chromeSuppressNotificationsArgs,
@@ -46,7 +46,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithGuestLogin",
 		Desc: "Similar to chromeVideo fixture but forcing login as a guest.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeUseHWCodecsForSmallResolutions,
 			chromeSuppressNotificationsArgs,
@@ -62,7 +62,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithHDRScreen",
 		Desc: "Similar to chromeVideo fixture but enabling the HDR screen if present.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeUseHWCodecsForSmallResolutions,
 			chromeSuppressNotificationsArgs,
@@ -77,7 +77,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeCompositedVideo",
 		Desc: "Similar to chromeVideo fixture but disabling hardware overlays entirely to force video to be composited.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeUseHWCodecsForSmallResolutions,
 			chromeSuppressNotificationsArgs,
@@ -92,7 +92,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithFakeWebcam",
 		Desc: "Similar to chromeVideo fixture but supplementing it with the use of a fake video/audio capture device (a.k.a. 'fake webcam'), see https://webrtc.org/testing/.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeUseHWCodecsForSmallResolutions,
 			chromeSuppressNotificationsArgs,
@@ -107,7 +107,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithFakeWebcamAndAlternateVideoDecoder",
 		Desc: "Similar to chromeVideoWithFakeWebcam fixture but using the alternative video decoder.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeUseHWCodecsForSmallResolutions,
 			chromeSuppressNotificationsArgs,
@@ -123,7 +123,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers",
 		Desc: "Similar to chromeVideoWithFakeWebcam fixture but forcing webrtc vp9 stream to be three temporal layers..",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeSuppressNotificationsArgs,
 			chromeFakeWebcamArgs,
@@ -138,7 +138,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithFakeWebcamAndSWDecoding",
 		Desc: "Similar to chromeVideoWithFakeWebcam fixture but hardware decoding disabled.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeSuppressNotificationsArgs,
 			chromeFakeWebcamArgs,
@@ -153,7 +153,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithFakeWebcamAndSWEncoding",
 		Desc: "Similar to chromeVideoWithFakeWebcam fixture but hardware encoding disabled.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeSuppressNotificationsArgs,
 			chromeFakeWebcamArgs,
@@ -168,7 +168,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeScreenCapture",
 		Desc: "Logged into a user session with flag so that Chrome always picks the entire screen for getDisplayMedia(), bypassing the picker UI.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeSuppressNotificationsArgs,
 			chrome.ExtraArgs(`--auto-select-desktop-capture-source=display`),
 		),
@@ -181,7 +181,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeWindowCapture",
 		Desc: "Logged into a user session with flag so that Chrome always picks the Chromium window for getDisplayMedia(), bypassing the picker UI.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeSuppressNotificationsArgs,
 			chrome.ExtraArgs(`--auto-select-desktop-capture-source=Chrome`),
 		),
@@ -194,7 +194,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithSWDecoding",
 		Desc: "Similar to chromeVideo fixture but making sure Chrome does not use any potential hardware accelerated decoding.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeSuppressNotificationsArgs,
 			chrome.ExtraArgs("--disable-accelerated-video-decode"),
 		),
@@ -207,7 +207,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithSWDecodingAndLibGAV1",
 		Desc: "Similar to chromeVideoWithSWDecoding fixture but enabling the use of LibGAV1 for AV1 decoding.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeSuppressNotificationsArgs,
 			chrome.ExtraArgs("--disable-accelerated-video-decode", "--enable-features=Gav1VideoDecoder"),
@@ -222,7 +222,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithHWAV1Decoding",
 		Desc: "Similar to chromeVideo fixture but also enables hardware accelerated av1 decoding.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeUseHWCodecsForSmallResolutions,
 			chromeSuppressNotificationsArgs,
@@ -237,7 +237,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithGuestLoginAndHWAV1Decoding",
 		Desc: "Similar to chromeVideoWithGuestLogin fixture but also enables hardware accelerated av1 decoding.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeUseHWCodecsForSmallResolutions,
 			chromeSuppressNotificationsArgs,
@@ -254,7 +254,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithSWDecodingAndHDRScreen",
 		Desc: "Similar to chromeVideoWithSWDecoding but also enalbing the HDR screen if present.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeVModuleArgs,
 			chromeSuppressNotificationsArgs,
 			chrome.ExtraArgs("--disable-accelerated-video-decode"),
@@ -269,7 +269,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeCameraPerf",
 		Desc: "Logged into a user session with camera tests-specific setting and without verbose logging that can affect the performance. This fixture should be used only for performance tests.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeBypassPermissionsArgs,
 			chromeSuppressNotificationsArgs,
 		),
@@ -282,7 +282,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeFakeCameraPerf",
 		Desc: "Logged into a user session with fake video/audio capture device (a.k.a. 'fake webcam', see https://webrtc.org/testing), without asking for user permission, and without verboselogging that can affect the performance. This fixture should be used only used for performance tests.",
-		Impl: chrome.NewLoggedInFixture(
+		Impl: chrome.NewFixture(
 			chromeFakeWebcamArgs,
 			chromeSuppressNotificationsArgs,
 		),

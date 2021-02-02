@@ -31,7 +31,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "chromeGraphics",
 		Desc:            "Logged into a user session for graphics testing.",
-		Impl:            chrome.NewLoggedInFixture(),
+		Impl:            chrome.NewFixture(),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
