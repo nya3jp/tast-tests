@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d2c392_35fa3bc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-02T09:02:50Z",
+      "side": 1,
+      "message": "nit: move this inside the if",
+      "revId": "e9f45d687bbe43765b08847d3c51330e2f79f5cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cef5710_bb910281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-02T09:02:50Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "e9f45d687bbe43765b08847d3c51330e2f79f5cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a280284_6e583090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-02T09:02:50Z",
+      "side": 1,
+      "message": "cronista",
+      "range": {
+        "startLine": 166,
+        "startChar": 44,
+        "endLine": 166,
+        "endChar": 58
+      },
+      "revId": "e9f45d687bbe43765b08847d3c51330e2f79f5cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0cec67c_80ec3f62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-02T09:02:50Z",
+      "side": 1,
+      "message": "You also need to call stopCronista here",
+      "revId": "e9f45d687bbe43765b08847d3c51330e2f79f5cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
