@@ -75,6 +75,10 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 	defer files.Release(ctx)
 
+	// The Files App may show a welcome banner on launch to introduce the user to new features.
+	// Increase polling options to give UI more time to stabilize in the event that a banner is shown.
+	files.SetStablePollOpts(&testing.PollOptions{Interval: 1 * time.Second, Timeout: 5 * time.Second})
+
 	// Get connection to foreground extension to verify changes.
 	dropTargetURL := "chrome-extension://" + dropTargetExtID + "/window.html"
 	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(dropTargetURL))

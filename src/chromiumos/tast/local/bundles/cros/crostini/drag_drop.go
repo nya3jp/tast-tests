@@ -145,6 +145,10 @@ func DragDrop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set Files App left-snapped: ", err)
 	}
 
+	// The Files App may show a welcome banner on launch to introduce the user to new features.
+	// Increase polling options to give UI more time to stabilize in the event that a banner is shown.
+	files.SetStablePollOpts(&testing.PollOptions{Interval: 1 * time.Second, Timeout: 5 * time.Second})
+
 	// Open drop_applet.py right-snapped.
 	s.Logf("Starting %s", dropAppletTitle)
 	cmdArgs := []string{"python3", dropApplet}
