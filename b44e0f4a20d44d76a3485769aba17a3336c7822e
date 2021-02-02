@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2dafd4a_f22622bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2021-02-02T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2ef9322_2d5deee6",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 48
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24f722c6_73cd3dab",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-02T00:32:58Z",
       "side": 1,
       "message": "These may be better as constants than as strings. Potentially even with a wrapper type for type checking.\n\nAlso, instead of a switch you could just define a map, but either is fine.",
+      "range": {
+        "startLine": 191,
+        "startChar": 9,
+        "endLine": 191,
+        "endChar": 25
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41f8339c_de61794c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2021-02-02T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24f722c6_73cd3dab",
       "range": {
         "startLine": 191,
         "startChar": 9,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7711408_f56b5ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2021-02-02T14:51:33Z",
+      "side": 1,
+      "message": "Wrap doesn\u0027t take multiple things to print. Using \",\" results in \"too many arguments in call to \"chromiumos/tast/errors\".Wrap\" error.",
+      "parentUuid": "c3b57d59_b9a06607",
+      "range": {
+        "startLine": 227,
+        "startChar": 48,
+        "endLine": 227,
+        "endChar": 49
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41b53552_4cbd6852",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-02-01T22:19:05Z",
       "side": 1,
       "message": "Recommend to use fmt.",
+      "range": {
+        "startLine": 230,
+        "startChar": 25,
+        "endLine": 230,
+        "endChar": 86
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd93fc78_191ce392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2021-02-02T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41b53552_4cbd6852",
       "range": {
         "startLine": 230,
         "startChar": 25,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ad57750_f0b17ba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2021-02-02T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f1a08f1_c70b7782",
+      "range": {
+        "startLine": 245,
+        "startChar": 31,
+        "endLine": 245,
+        "endChar": 47
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a5ea7ff_a0721c04",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e448bfdb_3b97c99c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2021-02-02T14:51:33Z",
+      "side": 1,
+      "message": "If some events are missing, the whole sequence will be printed for debugging purpose. The order of events matters here.",
+      "parentUuid": "7a5ea7ff_a0721c04",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 11
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6571f0b1_3ad39d84",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-02-01T22:19:05Z",
       "side": 1,
       "message": "Recommend to set an opts here. With the opts as nil, the timeout is ctxutil.MaxTimeout, which is about 290 years.",
+      "range": {
+        "startLine": 267,
+        "startChar": 4,
+        "endLine": 267,
+        "endChar": 7
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b70fd7_516dd93e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2021-02-02T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6571f0b1_3ad39d84",
       "range": {
         "startLine": 267,
         "startChar": 4,
