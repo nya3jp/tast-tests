@@ -32,3 +32,8 @@ func (c *CryptohomePathBinary) call(ctx context.Context, args ...string) ([]byte
 func (c *CryptohomePathBinary) userPath(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "user", username)
 }
+
+// systemPath calls "cryptohome-path system <username>" to retrieve the user root for the user.
+func (c *CryptohomePathBinary) systemPath(ctx context.Context, username string) ([]byte, error) {
+	return c.call(ctx, "system", username)
+}
