@@ -43,6 +43,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24f722c6_73cd3dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:32:58Z",
+      "side": 1,
+      "message": "These may be better as constants than as strings. Potentially even with a wrapper type for type checking.\n\nAlso, instead of a switch you could just define a map, but either is fine.",
+      "range": {
+        "startLine": 191,
+        "startChar": 9,
+        "endLine": 191,
+        "endChar": 25
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b57d59_b9a06607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:32:58Z",
+      "side": 1,
+      "message": "should work to just put \", \" Wrap takes multiple things to print.",
+      "range": {
+        "startLine": 227,
+        "startChar": 48,
+        "endLine": 227,
+        "endChar": 49
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41b53552_4cbd6852",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
         "patchSetId": 2
@@ -59,6 +105,29 @@
         "startChar": 25,
         "endLine": 230,
         "endChar": 86
+      },
+      "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1a08f1_c70b7782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:32:58Z",
+      "side": 1,
+      "message": "Yeah, these should almost certainly be constants since they are used here as well.",
+      "range": {
+        "startLine": 245,
+        "startChar": 31,
+        "endLine": 245,
+        "endChar": 47
       },
       "revId": "b44e0f4a20d44d76a3485769aba17a3336c7822e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
