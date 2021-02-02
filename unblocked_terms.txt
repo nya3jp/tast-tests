@@ -7,6 +7,8 @@
 # empty.
 #
 # See repohooks/README.md for more details.
+#
+# When updating this file, make sure to update go/tast-coil-status.
 
 # black.?hat            - clean
 
@@ -16,15 +18,9 @@ black.?list
 # build.?cop            - clean
 # crazy                 - clean
 # cripple               - clean
-
-dummy
-#    - see crbug/1135039
-
+# dummy                 - clean
 # first.?class.?citizen - clean
-
-grandfathered
-#    - see crbug/1152062
-
+# grandfathered         - clean
 # gr[ae]y.?hat          - clean
 # gr[ae]y.?list         - clean
 # insane                - clean
@@ -51,15 +47,9 @@ master
 #    - see crbug/1135046
 
 # \bred.?line           - clean
-
-rtfm
-#    - see crbug/1152068
-
-\b(in)?sane(\b|\d)
-#    - see crbug/1135047
-
-sanity
-#    - see crbug/1135049
+# rtfm                  - clean
+# \b(in)?sane(\b|\d)    - clean
+# sanity                - clean
 
 slave
 #    - see crbug/1126921
