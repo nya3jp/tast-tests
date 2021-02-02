@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f5f747e_1aea052e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T23:39:06Z",
+      "side": 1,
+      "message": "You need to note that \"condition\" is considered success if the returned error is nil.\n\nI think an example would really help the documentation here too...",
+      "range": {
+        "startLine": 410,
+        "startChar": 31,
+        "endLine": 410,
+        "endChar": 41
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef665bf3_392a586a",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
         "patchSetId": 10
@@ -42,6 +65,52 @@
         "startChar": 84,
         "endLine": 411,
         "endChar": 111
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70460b0b_f940d037",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T23:39:06Z",
+      "side": 1,
+      "message": "I prefer it to be named so that the arguments can be the other way around, also \"Condition\" implies a bool, which is not the case here.\n\nI would prefer IfThen(Action, Action), IfSuccessThen(Action, Action) or IfNoErrorThen(Action, Action)",
+      "range": {
+        "startLine": 411,
+        "startChar": 19,
+        "endLine": 411,
+        "endChar": 36
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d40e0fe9_b91f42d8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-02T23:39:06Z",
+      "side": 1,
+      "message": "Probably should log the error if it is not nil for debugging.",
+      "range": {
+        "startLine": 413,
+        "startChar": 5,
+        "endLine": 413,
+        "endChar": 8
       },
       "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
