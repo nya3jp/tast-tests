@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93d1ebfc_cbe8cba8",
+        "filename": "src/chromiumos/tast/common/traceutil/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-02T01:33:21Z",
+      "side": 1,
+      "message": "IIUC we need to check the return value of gzip.Writer.Close and os.File.Close to safely assume that files are completely written.\n\nFor example gzip.Writer.Close writes a gzip footer, which is not written by Flush.\nhttps://pkg.go.dev/compress/gzip#Writer.Close",
+      "parentUuid": "fc9e03b1_54cd97ac",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "12ffc75eedc82e49b342554314cdfb94333f28e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b55b5166_5ea2a109",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "My original point of this CL is -- SaveTraceToFile is nothing about Chrome, so moving out.  Start/Stop traces are about Chrome -- to start or stop traces in it, so they need to stay here.\n\nIn reality, I guess there\u0027s no other code which needs to store trace data into file (there would be perfetto service in ChromeOS, but perfetto CLI will store it into file already).  Maybe this could be too generic?\n\nI would like to hear your thoughts -- wdyt?  My current thinking is:\n- create a new package, say chrome/trace\n- move SaveTraceToFile in it\n- define a new interface in chrome/trace package, say Traceable, which defines StartTracing and StopTracing.\n- Chrome\u0027s Start/Stop tracing stay in Chrome, but they are reformed as implementations of the new Traceable interface.\n\nOr, all of them stay within chrome package but just move them into another file in it (e.g. trace.go).",
       "parentUuid": "b55b5166_5ea2a109",
+      "range": {
+        "startLine": 1396,
+        "startChar": 0,
+        "endLine": 1408,
+        "endChar": 31
+      },
+      "revId": "12ffc75eedc82e49b342554314cdfb94333f28e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2db12b85_57115912",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-02T01:33:21Z",
+      "side": 1,
+      "message": "Hmm, I didn\u0027t understand the part of Traceable. Are you planning to add more functions there that interact with chrome.Chrome?",
+      "parentUuid": "a0efda1b_fadf414f",
       "range": {
         "startLine": 1396,
         "startChar": 0,
