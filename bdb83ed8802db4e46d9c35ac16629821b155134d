@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c123f9e_3047dde4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-02T01:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4582282_a5bea326",
+      "revId": "bdb83ed8802db4e46d9c35ac16629821b155134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "747c1908_726c85a7",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "518fd44c_bdba826b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-02T01:15:50Z",
+      "side": 1,
+      "message": "I would keep this. It sometimes takes 8 minutes.",
+      "parentUuid": "747c1908_726c85a7",
+      "revId": "bdb83ed8802db4e46d9c35ac16629821b155134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "542f8f56_1bfe947c",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-02-01T09:22:01Z",
       "side": 1,
       "message": "Note this change in the commit message as well.",
+      "revId": "bdb83ed8802db4e46d9c35ac16629821b155134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "537e06d7_54b3184d",
+        "filename": "src/chromiumos/tast/local/media/encoding/perf_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-02T01:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "542f8f56_1bfe947c",
       "revId": "bdb83ed8802db4e46d9c35ac16629821b155134d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
