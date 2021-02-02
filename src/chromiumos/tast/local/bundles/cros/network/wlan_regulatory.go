@@ -23,7 +23,7 @@ func init() {
 		Func: WlanRegulatory,
 		// Test notes: We don't verify that the system truly respects the regulatory database rules, but only that it does not
 		// reject them. Note that some WiFi drivers "self manage" their domain detection and so this test can't apply everywhere.
-		Desc:     "Ensure the regulatory database is sane and that we can switch domains using the 'iw' utility",
+		Desc:     "Ensure the regulatory database is coherent and that we can switch domains using the 'iw' utility",
 		Contacts: []string{"briannorris@chromium.org", "chromeos-kernel-wifi@google.com"},
 		// This test doesn't technically require the wificell fixture, but it's best if non-default regulatory settings are used
 		// only in RF chambers.
