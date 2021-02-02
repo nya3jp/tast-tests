@@ -960,3 +960,14 @@ func (u *UtilityCryptohomeClient) GetHomeUserPath(ctx context.Context, username 
 	}
 	return strings.TrimSpace(msg), nil
 }
+
+// GetRootUserPath retrieves the user specified by username's user root path.
+func (u *UtilityCryptohomeClient) GetRootUserPath(ctx context.Context, username string) (string, error) {
+	binaryMsg, err := u.cryptohomePathBinary.systemPath(ctx, username)
+	msg := string(binaryMsg)
+	if err != nil {
+		testing.ContextLogf(ctx, "Failure to call cryptohome-path user, got %q", msg)
+		return "", errors.Wrap(err, "failure to call cryptohome-path user")
+	}
+	return strings.TrimSpace(msg), nil
+}
