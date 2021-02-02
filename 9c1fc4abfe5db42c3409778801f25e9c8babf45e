@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0a22197_a3c95579",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-02T22:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "051aa3d7_926866d8",
+      "revId": "9c1fc4abfe5db42c3409778801f25e9c8babf45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "604101ae_e9ab9b40",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a04b70_ebbddb32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-02T22:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "604101ae_e9ab9b40",
+      "range": {
+        "startLine": 134,
+        "startChar": 18,
+        "endLine": 134,
+        "endChar": 22
+      },
+      "revId": "9c1fc4abfe5db42c3409778801f25e9c8babf45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90b061b9_0bcb6f00",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-02-02T12:50:14Z",
       "side": 1,
       "message": "minor nit: Move this code after the select to make it more readable.",
+      "revId": "9c1fc4abfe5db42c3409778801f25e9c8babf45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f66475e_1a1030c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-02T22:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90b061b9_0bcb6f00",
       "revId": "9c1fc4abfe5db42c3409778801f25e9c8babf45e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
