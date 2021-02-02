@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13b20c0_a93f0de7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-02T01:32:12Z",
+      "side": 1,
+      "message": "Similar change for ArcBooted fixture to allow run time variables in options.",
+      "revId": "82f7852f930bb8c76d7bf09980478087c5dfe33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
