@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920f30d0_84898fdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:37:56Z",
+      "side": 1,
+      "message": "nit, remove duplicate comment since you are now logging",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "c157da8ae51a6db1d01fa36adfc5ad23e3bad33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf5e436_aeeec1a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:37:56Z",
+      "side": 1,
+      "message": "nit, remove duplicate comment since you are now logging",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 42
+      },
+      "revId": "c157da8ae51a6db1d01fa36adfc5ad23e3bad33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac626e9_dd398921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:37:56Z",
+      "side": 1,
+      "message": "can we move this down to L131",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 24
+      },
+      "revId": "c157da8ae51a6db1d01fa36adfc5ad23e3bad33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f8bb81_741ba528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:37:56Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 139,
+        "startChar": 6,
+        "endLine": 139,
+        "endChar": 11
+      },
+      "revId": "c157da8ae51a6db1d01fa36adfc5ad23e3bad33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b23553_eeef9831",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:37:56Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 142,
+        "endChar": 11
+      },
+      "revId": "c157da8ae51a6db1d01fa36adfc5ad23e3bad33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82c62272_8a23aebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:37:56Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 76
+      },
+      "revId": "c157da8ae51a6db1d01fa36adfc5ad23e3bad33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4005b1a5_453ea12d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:37:56Z",
+      "side": 1,
+      "message": "ditto, same for locations below",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 73
+      },
+      "revId": "c157da8ae51a6db1d01fa36adfc5ad23e3bad33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
