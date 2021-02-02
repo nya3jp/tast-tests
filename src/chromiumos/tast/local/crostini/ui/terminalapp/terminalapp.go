@@ -15,8 +15,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
@@ -129,7 +129,11 @@ func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemNameRegexp st
 func LaunchThroughIcon(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	// TODO(jinrongwu): type the whole name of Terminal instead of t when the following problem fixed.
 	// The problem is: the launcher exits if typing more than one letter. This problem does not exists in other tests.
-	if err := launcher.SearchAndLaunchWithQuery(ctx, tconn, "t", "Terminal"); err != nil {
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find keyboard")
+	}
+	if err := launcher.SearchAndLaunchWithQuery(tconn, kb, "t", "Terminal")(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to launch Terminal app")
 	}
 

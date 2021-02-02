@@ -12,11 +12,13 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/launcher"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -131,7 +133,12 @@ func testBlockCameraFeature(ctx context.Context, fdms *fakedms.FakeDMS, cr *chro
 	if err != nil {
 		return errors.Wrap(err, "failed to get test extension connection")
 	}
-	if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to find keyboard")
+	}
+	defer kb.Close()
+	if err := launcher.SearchAndLaunch(tconn, kb, apps.Camera.Name)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find camera app in the launcher")
 	}
 	dialogView, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "BubbleDialogDelegateView", Name: "Camera is blocked"}, 5*time.Second)
