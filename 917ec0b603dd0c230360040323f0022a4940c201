@@ -46,6 +46,30 @@
       },
       "revId": "917ec0b603dd0c230360040323f0022a4940c201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2393f15_1b584ab5",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-02-02T01:29:00Z",
+      "side": 1,
+      "message": "Without this sleep, what is failing? Can we use testing.Poll to wait until it succeeds?\n\nAlso, I see a handful of other places that call createVirtual. Do those sites have the same problem?",
+      "parentUuid": "b514c247_27c9b8a7",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 34
+      },
+      "revId": "917ec0b603dd0c230360040323f0022a4940c201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
