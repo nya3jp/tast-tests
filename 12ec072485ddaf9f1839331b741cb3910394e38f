@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3475baab_5893b5b8",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-02T01:44:15Z",
+      "side": 1,
+      "message": "Yes, that\u0027s exactly what I meant. Wrapping the hook with if (!window.testUtterances) sounds good to me.",
+      "parentUuid": "0470c960_fdb2af36",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 31
+      },
+      "revId": "12ec072485ddaf9f1839331b741cb3910394e38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cfac5d8_e46edccd",

@@ -16,6 +16,29 @@
       "message": "Responded to feedback, thanks!",
       "revId": "22521cb54cd554f7ae9215e4fda2b68fae2fe459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bf26b7c_5580bef4",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-02T01:44:15Z",
+      "side": 1,
+      "message": "By introducing startIndex as a field of SpeechMonitor, we again get troubles when we run two or more speech monitors sequentially. That is, when we construct a second SpeechMonitor, its startIndex is zero, so it will observe all utterances that were already observed by previous SpeechMonitors.\n\nThis means that we can\u0027t store state in SpeechMonitor. Instead we should store state in JS. For example, the following code can treat testUtterances as a queue:\n\n var actual string\n if err :\u003d sm.conn.Eval(ctx, \"testUtterances.shift()\", \u0026actual); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 11
+      },
+      "revId": "22521cb54cd554f7ae9215e4fda2b68fae2fe459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
