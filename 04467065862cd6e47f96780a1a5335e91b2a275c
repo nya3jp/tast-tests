@@ -16,6 +16,23 @@
       "message": "+benreich as Test owner\n+tast as Tast reviewer\n\nBen, this CL should allow reland of recently reverted Chromium CL:\nhttps://chromium-review.googlesource.com/c/chromium/src/+/2649110\n\nThanks!\nDavid",
       "revId": "04467065862cd6e47f96780a1a5335e91b2a275c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb53293_e63e0e8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-02T22:16:30Z",
+      "side": 1,
+      "message": "LGTM. Thanks for the fix! 😊",
+      "revId": "04467065862cd6e47f96780a1a5335e91b2a275c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
