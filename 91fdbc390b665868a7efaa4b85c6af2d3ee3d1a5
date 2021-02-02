@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f91e58a0_61791fa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-02T22:46:44Z",
+      "side": 1,
+      "message": "Now that subLabel is unused, this can probably be deleted.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "91fdbc390b665868a7efaa4b85c6af2d3ee3d1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
