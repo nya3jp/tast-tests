@@ -16,6 +16,46 @@
       "message": "Please take another look.\n",
       "revId": "f7f4e2b7fcf3913463bf6d179262d5e3ef17cf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dd381db_fd1fd236",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-02T22:41:37Z",
+      "side": 1,
+      "message": "+2 for Tast Owners Review. One optional item.",
+      "revId": "f7f4e2b7fcf3913463bf6d179262d5e3ef17cf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69c4b6c_5b778776",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-02T22:41:37Z",
+      "side": 1,
+      "message": "optional: Now you have introduced the notion of an invalid option, it might be nice to also eliminate the propensity of this method to panic. See: https://github.com/golang/go/wiki/CodeReviewComments#dont-panic.",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "f7f4e2b7fcf3913463bf6d179262d5e3ef17cf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
