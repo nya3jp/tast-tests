@@ -12,7 +12,8 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/launcher"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
@@ -60,11 +61,16 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get TestConn: ", err)
 	}
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
 
 	// Wait until the PWA is installed.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		const name = "Test PWA"
-		if err := launcher.SearchAndLaunch(ctx, tconn, name); err != nil {
+		if err := launcher.SearchAndLaunch(tconn, kb, name)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to launch %s", name)
 		}
 

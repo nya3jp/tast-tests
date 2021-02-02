@@ -13,7 +13,8 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/launcher"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -53,9 +54,14 @@ func DefaultAppLaunchWhenArcIsOff(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
 
 	// Launch Play Games App.
-	if err := launcher.LaunchApp(ctx, tconn, apps.PlayGames); err != nil {
+	if err := launcher.SearchAndWaitForAppOpen(tconn, kb, apps.PlayGames)(ctx); err != nil {
 		s.Log("Failed to Launch the Play Games: ", err)
 	}
 
