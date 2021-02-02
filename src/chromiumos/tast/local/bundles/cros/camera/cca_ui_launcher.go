@@ -6,10 +6,12 @@ package camera
 
 import (
 	"context"
-	"time"
 
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/launcher"
+	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -32,12 +34,14 @@ func CCAUILauncher(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := launcher.OpenLauncher(ctx, tconn); err != nil {
-		s.Fatal("Failed to open launcher: ", err)
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
 	}
-
-	if _, err := launcher.SearchAndWaitForApp(ctx, tconn, "Camera", "Camera", 15*time.Second); err != nil {
+	defer kb.Close()
+	if err := launcher.SearchAndWaitForAppOpen(tconn, kb, apps.Camera)(ctx); err != nil {
 		s.Fatal("Failed to launch camera app: ", err)
 	}
 }

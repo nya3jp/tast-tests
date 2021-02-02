@@ -14,7 +14,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/ui/launcher"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -56,28 +57,17 @@ func LaunchHelpAppFromLauncher(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	if err := launcher.OpenLauncher(ctx, tconn); err != nil {
-		s.Fatal("Failed to open launcher: ", err)
-	}
-
-	// Search for "Get help".
-	if err := launcher.Search(ctx, tconn, "Get help"); err != nil {
-		s.Fatal("Failed to search for get help: ", err)
-	}
-
-	// Help app should be one of the search results.
-	appNode, err := launcher.WaitForAppResult(ctx, tconn, apps.Help.Name, 15*time.Second)
+	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		s.Fatal("Help app does not exist in search result: ", err)
+		s.Fatal("Failed to find keyboard: ", err)
 	}
-
-	// Clicking that result should open the help app.
-	if err := appNode.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to launch app from search result: ", err)
+	defer kb.Close()
+	if err := launcher.SearchAndWaitForAppOpen(tconn, kb, apps.Help)(ctx); err != nil {
+		s.Fatal("Failed to launch help app: ", err)
 	}
 
 	// App should be launched at the overview page.
 	if err := helpapp.WaitForApp(ctx, tconn); err != nil {
-		s.Fatal("Failed to launch help app: ", err)
+		s.Fatal("Failed to wait for help app: ", err)
 	}
 }

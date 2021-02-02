@@ -13,8 +13,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
@@ -68,7 +68,7 @@ func RestartApp(ctx context.Context, s *testing.State) {
 }
 
 func launchGedit(ctx context.Context, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn) error {
-	if err := launcher.SearchAndLaunchWithQuery(ctx, tconn, "t", "Text Editor"); err != nil {
+	if err := launcher.SearchAndLaunchWithQuery(tconn, keyboard, "t", "Text Editor")(ctx); err != nil {
 		return errors.Wrap(err, "failed to launch gedit")
 	}
 

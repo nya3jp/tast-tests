@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/launcher"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -83,7 +83,7 @@ func LauncherApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the newly downloaded app in Launcher.
-	if err := launcher.LaunchApp(ctx, tconn, apps.Maps); err != nil {
+	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Maps)(ctx); err != nil {
 		s.Fatal("Failed to launch: ", err)
 	}
 
@@ -105,9 +105,8 @@ func LauncherApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Playstore Still Enabled")
 	}
 
-	// Verify the app icon is not visible in Launcher.
-	icon, err := launcher.FindAppFromItemView(ctx, tconn, apps.Maps)
-	if icon != nil {
-		s.Fatal("Installed app remained in launcher after play store disabled: ", icon)
+	// Verify the app icon is not visible in Launcher and the app fails to launch.
+	if err := launcher.LaunchApp(tconn, apps.Maps.Name)(ctx); err == nil {
+		s.Fatal("Installed app remained in launcher after play store disabled")
 	}
 }
