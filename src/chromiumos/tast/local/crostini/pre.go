@@ -10,7 +10,6 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
-	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -145,9 +144,9 @@ type testingState interface {
 // different values on different architectures.
 func GetContainerMetadataArtifact(debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
 	if largeContainer {
-		return fmt.Sprintf("crostini_app_test_container_metadata_%s_%s.tar.xz", debianVersion, runtime.GOARCH)
+		return fmt.Sprintf("crostini_app_test_container_metadata_%s_%s.tar.xz", debianVersion, vm.TargetArch())
 	}
-	return fmt.Sprintf("crostini_test_container_metadata_%s_%s.tar.xz", debianVersion, runtime.GOARCH)
+	return fmt.Sprintf("crostini_test_container_metadata_%s_%s.tar.xz", debianVersion, vm.TargetArch())
 }
 
 // GetContainerRootfsArtifact gets the container rootfs artifact
@@ -155,9 +154,9 @@ func GetContainerMetadataArtifact(debianVersion vm.ContainerDebianVersion, large
 // different values on different architectures.
 func GetContainerRootfsArtifact(debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
 	if largeContainer {
-		return fmt.Sprintf("crostini_app_test_container_rootfs_%s_%s.tar.xz", debianVersion, runtime.GOARCH)
+		return fmt.Sprintf("crostini_app_test_container_rootfs_%s_%s.tar.xz", debianVersion, vm.TargetArch())
 	}
-	return fmt.Sprintf("crostini_test_container_rootfs_%s_%s.tar.xz", debianVersion, runtime.GOARCH)
+	return fmt.Sprintf("crostini_test_container_rootfs_%s_%s.tar.xz", debianVersion, vm.TargetArch())
 }
 
 // GetInstallerOptions returns an InstallationOptions struct with data
