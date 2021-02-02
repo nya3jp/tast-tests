@@ -16,6 +16,23 @@
       "message": "lmkwyt",
       "revId": "ec2681a77c843c45f7fc59dd4e71011871f64045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7e4764c_3666275a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-02T07:10:35Z",
+      "side": 1,
+      "message": "Can you give an example / use case advertising multiple BSSIDs/interfaces on the same channel? ",
+      "revId": "ec2681a77c843c45f7fc59dd4e71011871f64045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
