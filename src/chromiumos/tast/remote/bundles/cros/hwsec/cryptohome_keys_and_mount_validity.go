@@ -8,6 +8,7 @@ import (
 	"context"
 	"reflect"
 	"sort"
+	"time"
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
@@ -26,6 +27,7 @@ func init() {
 		},
 		Attr:         []string{"group:hwsec_destructive_func"},
 		SoftwareDeps: []string{"tpm", "reboot"},
+		Timeout:      15 * time.Minute,
 	})
 }
 
