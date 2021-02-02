@@ -16,6 +16,29 @@
       "message": "Thanks for reviewing!",
       "revId": "e202af2b4c093c3b626e8905330d762762ee22c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff418aee_0f0fb2b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-02T15:55:36Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually seem volteer-specific -- is there a reason why volteer is the only one that would require a more abstract equality check than the other platforms? Do we generally expect this kind of agreement on other platforms and volteer has some quirk in its hardware decoder that we otherwise consider a bug?\n\nI\u0027m wondering in part because it seems like SSIM will work for all of these, but that MD5 might not, and in that case adding new platforms to the lab may cause this test to spuriously start failing av1_film_grain even if there\u0027s no real issue. This poses a risk to moving this test out of informational in the future.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "e202af2b4c093c3b626e8905330d762762ee22c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
