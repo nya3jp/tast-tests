@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84923a59_0be81a9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-02T01:16:46Z",
+      "side": 1,
+      "message": "Done. I manually set you the reviewer of the CLs.",
+      "parentUuid": "2d4467fd_62da8d4e",
+      "revId": "bdb83ed8802db4e46d9c35ac16629821b155134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4582282_a5bea326",
