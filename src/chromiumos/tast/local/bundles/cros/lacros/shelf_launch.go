@@ -7,9 +7,11 @@ package lacros
 import (
 	"context"
 	"os"
+	"time"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -31,7 +33,7 @@ func init() {
 			{
 				Name:              "omaha",
 				Pre:               launcher.StartedByOmaha(),
-				ExtraHardwareDeps: hwdep.D(hwdep.Model("enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
 			}},
 	})
 }
@@ -109,12 +111,30 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open new tab: ", err)
 	}
 	defer l.Devsess.CloseTarget(ctx, tab)
-	s.Log("Closing lacros-chrome browser")
-
 	if err := launcher.WaitForLacrosWindow(ctx, tconn, "about:blank"); err != nil {
 		s.Fatal("Failed waiting for Lacros to navigate to about:blank page: ", err)
 	}
 
+	// Get connection to the lacros-chrome browser.
+	lconn, err := l.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal(err, "failed to get a test connection to lacros-chrome")
+	}
+	defer lconn.Close()
+
+	// Find the maximize button.
+	icon, err := ui.StableFind(ctx, lconn, ui.FindParams{Role: ui.RoleTypeButton, ClassName: "FrameCaptionButton", Name: "Maximize"}, &testing.PollOptions{Timeout: 10 * time.Second})
+	if err != nil {
+		s.Fatal("Failed to find lacros-chrome maximize button: ", err)
+	}
+	defer icon.Release(ctx)
+
+	s.Log("Maximizing lacros-chrome browser")
+	// TODO(crbug/1173588): Replace with mouse clicks when available in lacros.
+	if err := icon.DoDefault(ctx); err != nil {
+		s.Fatal("Failed to click maximize button on lacros-chrome browser: ", err)
+	}
+	s.Log("Closing lacros-chrome browser")
 	if err := l.Close(ctx); err != nil {
 		s.Fatal("Failed to close lacros-chrome: ", err)
 	}

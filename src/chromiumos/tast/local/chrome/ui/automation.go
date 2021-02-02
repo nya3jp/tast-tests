@@ -378,6 +378,16 @@ func (n *Node) MakeVisible(ctx context.Context) error {
 	return nil
 }
 
+// DoDefault calls doDefault() Javascript method of the AutomationNode to make
+// target node perform its default action.
+// TODO(crbug/1173588): Remove after mouse clicks work with Lacros browser.
+func (n *Node) DoDefault(ctx context.Context) error {
+	if err := n.object.Call(ctx, nil, "function(){return this.doDefault()}"); err != nil {
+		return errors.Wrap(err, "failed to call doDefault() on the specified node")
+	}
+	return nil
+}
+
 // Descendant finds the first descendant of this node matching the params and returns it.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) Descendant(ctx context.Context, params FindParams) (*Node, error) {
