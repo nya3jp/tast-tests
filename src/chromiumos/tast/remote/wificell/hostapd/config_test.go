@@ -458,19 +458,36 @@ func TestNewConfig(t *testing.T) {
 	}
 }
 
-func parseConfigString(s string) (map[string]string, error) {
-	ret := make(map[string]string)
+func parseConfigString(s string) (map[string]string, []map[string]string, error) {
+	var ret map[string]string
+	var additionalBSSs []map[string]string
+	bss := make(map[string]string)
+	multipleBSSs := false
 	for _, line := range strings.Split(s, "\n") {
 		if line == "" {
 			continue
 		}
 		tokens := strings.SplitN(line, "=", 2)
 		if len(tokens) != 2 {
-			return nil, errors.Errorf("invalid config line: %q", line)
+			return nil, nil, errors.Errorf("invalid config line: %q", line)
 		}
-		ret[strings.TrimSpace(tokens[0])] = strings.TrimSpace(tokens[1])
+		if tokens[0] == "bss" {
+			if multipleBSSs {
+				additionalBSSs = append(additionalBSSs, bss)
+			} else {
+				ret = bss
+				multipleBSSs = true
+			}
+			bss = make(map[string]string)
+		}
+		bss[strings.TrimSpace(tokens[0])] = strings.TrimSpace(tokens[1])
 	}
-	return ret, nil
+	if multipleBSSs {
+		additionalBSSs = append(additionalBSSs, bss)
+	} else {
+		ret = bss
+	}
+	return ret, additionalBSSs, nil
 }
 
 func TestConfigFormat(t *testing.T) {
@@ -483,6 +500,7 @@ func TestConfigFormat(t *testing.T) {
 	testcases := []struct {
 		conf   *Config
 		verify map[string]string // fields to verify
+		bsss   []map[string]string
 	}{
 		// Check basic fields.
 		{
@@ -754,6 +772,29 @@ func TestConfigFormat(t *testing.T) {
 				"obss_interval": "", // Let hostapd have its default when not specified.
 			},
 		},
+		// Check AdditionalBSSs
+		{
+			conf: &Config{
+				SSID:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+				AdditionalBSSs: []AdditionalBSS{
+					AdditionalBSS{"iface1", "ssid1"},
+					AdditionalBSS{"iface2", "ssid2"},
+				},
+			},
+			bsss: []map[string]string{
+				{
+					"bss":  "iface1",
+					"ssid": "ssid1",
+				},
+				{
+					"bss":  "iface2",
+					"ssid": "ssid2",
+				},
+			},
+		},
 	}
 
 	for i, tc := range testcases {
@@ -762,7 +803,7 @@ func TestConfigFormat(t *testing.T) {
 			t.Errorf("testcase %d failed with err=%s", i, err.Error())
 			continue
 		}
-		m, err := parseConfigString(cs)
+		m, bsss, err := parseConfigString(cs)
 		if err != nil {
 			t.Errorf("testcase %d failed when parsing config string, err=%s", i, err.Error())
 			continue
@@ -772,6 +813,9 @@ func TestConfigFormat(t *testing.T) {
 			if v != m[k] {
 				t.Errorf("testcase %d has %q=%q, expect %q", i, k, m[k], v)
 			}
+		}
+		if !reflect.DeepEqual(bsss, tc.bsss) {
+			t.Errorf("testcase %d has AdditionalBSSs=%v, expected %v", i, bsss, tc.bsss)
 		}
 	}
 }
