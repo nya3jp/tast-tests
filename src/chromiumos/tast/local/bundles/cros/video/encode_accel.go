@@ -26,17 +26,15 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		// TODO(crbug.com/1045825): Rename to EncodeAccel once the existing EncodeAccel is deprecated.
-		Func:         EncodeAccelNew,
+		Func:         EncodeAccel,
 		Desc:         "Verifies hardware encode acceleration by running the video_encode_accelerator_tests binary",
-		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"hiroh@chromium.org", "chromeos-gfx-video@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		// TODO(crbug.com/979497): Reduce to appropriate timeout after checking the exact execution time of h264_2160p.
-		Timeout: 10 * time.Minute,
-		Attr:    []string{"group:graphics", "graphics_video", "graphics_nightly"},
+		Timeout:      10 * time.Minute,
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Params: []testing.Param{{
 			Name: "h264_180p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: tulip180P,
 				Profile:  videotype.H264Prof,
 			},
@@ -44,7 +42,7 @@ func init() {
 			ExtraData:         encode.TestData(tulip180P),
 		}, {
 			Name: "h264_192p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: bear192P,
 				Profile:  videotype.H264Prof,
 			},
@@ -52,7 +50,7 @@ func init() {
 			ExtraData:         encode.TestData(bear192P),
 		}, {
 			Name: "h264_360p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: tulip360P,
 				Profile:  videotype.H264Prof,
 			},
@@ -60,7 +58,7 @@ func init() {
 			ExtraData:         encode.TestData(tulip360P),
 		}, {
 			Name: "h264_720p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: tulip720P,
 				Profile:  videotype.H264Prof,
 			},
@@ -68,7 +66,7 @@ func init() {
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
 			Name: "h264_1080p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd1080P,
 				Profile:  videotype.H264Prof,
 			},
@@ -76,7 +74,7 @@ func init() {
 			ExtraData:         encode.TestData(crowd1080P),
 		}, {
 			Name: "h264_2160p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd2160P,
 				Profile:  videotype.H264Prof,
 			},
@@ -84,7 +82,7 @@ func init() {
 			ExtraData:         encode.TestData(crowd2160P),
 		}, {
 			Name: "vp8_180p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: tulip180P,
 				Profile:  videotype.VP8Prof,
 			},
@@ -92,7 +90,7 @@ func init() {
 			ExtraData:         encode.TestData(tulip180P),
 		}, {
 			Name: "vp8_192p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: bear192P,
 				Profile:  videotype.VP8Prof,
 			},
@@ -100,7 +98,7 @@ func init() {
 			ExtraData:         encode.TestData(bear192P),
 		}, {
 			Name: "vp8_360p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: tulip360P,
 				Profile:  videotype.VP8Prof,
 			},
@@ -108,7 +106,7 @@ func init() {
 			ExtraData:         encode.TestData(tulip360P),
 		}, {
 			Name: "vp8_720p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: tulip720P,
 				Profile:  videotype.VP8Prof,
 			},
@@ -116,7 +114,7 @@ func init() {
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
 			Name: "vp8_1080p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd1080P,
 				Profile:  videotype.VP8Prof,
 			},
@@ -124,7 +122,7 @@ func init() {
 			ExtraData:         encode.TestData(crowd1080P),
 		}, {
 			Name: "vp8_2160p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd2160P,
 				Profile:  videotype.VP8Prof,
 			},
@@ -132,7 +130,7 @@ func init() {
 			ExtraData:         encode.TestData(crowd2160P),
 		}, {
 			Name: "vp9_180p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: tulip180P,
 				Profile:  videotype.VP9Prof,
 			},
@@ -140,7 +138,7 @@ func init() {
 			ExtraData:         encode.TestData(tulip180P),
 		}, {
 			Name: "vp9_192p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: bear192P,
 				Profile:  videotype.VP9Prof,
 			},
@@ -148,7 +146,7 @@ func init() {
 			ExtraData:         encode.TestData(bear192P),
 		}, {
 			Name: "vp9_360p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: tulip360P,
 				Profile:  videotype.VP9Prof,
 			},
@@ -156,7 +154,7 @@ func init() {
 			ExtraData:         encode.TestData(tulip360P),
 		}, {
 			Name: "vp9_720p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: tulip720P,
 				Profile:  videotype.VP9Prof,
 			},
@@ -164,7 +162,7 @@ func init() {
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
 			Name: "vp9_1080p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd1080P,
 				Profile:  videotype.VP9Prof,
 			},
@@ -172,7 +170,7 @@ func init() {
 			ExtraData:         encode.TestData(crowd1080P),
 		}, {
 			Name: "vp9_2160p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd2160P,
 				Profile:  videotype.VP9Prof,
 			},
@@ -182,6 +180,6 @@ func init() {
 	})
 }
 
-func EncodeAccelNew(ctx context.Context, s *testing.State) {
-	encode.RunNewAccelVideoTest(ctx, s, s.Param().(encode.TestOptionsNew))
+func EncodeAccel(ctx context.Context, s *testing.State) {
+	encode.RunAccelVideoTest(ctx, s, s.Param().(encode.TestOptions))
 }

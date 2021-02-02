@@ -24,16 +24,16 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         EncodeAccelNewPerf,
+		Func:         EncodeAccelPerf,
 		Desc:         "Measures hardware video encode performance by running the video_encode_accelerator_perf_tests binary",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-gfx-video@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 10 * time.Minute,
 		Params: []testing.Param{{
 			Name: "h264_180p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd180p,
 				Profile:  videotype.H264Prof,
 			},
@@ -41,7 +41,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 		}, {
 			Name: "h264_360p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd360p,
 				Profile:  videotype.H264Prof,
 			},
@@ -49,7 +49,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 		}, {
 			Name: "h264_720p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd720p,
 				Profile:  videotype.H264Prof,
 			},
@@ -57,7 +57,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 		}, {
 			Name: "h264_1080p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd1080p,
 				Profile:  videotype.H264Prof,
 			},
@@ -65,7 +65,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 		}, {
 			Name: "h264_2160p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd2160p,
 				Profile:  videotype.H264Prof,
 			},
@@ -73,7 +73,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
 		}, {
 			Name: "vp8_180p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd180p,
 				Profile:  videotype.VP8Prof,
 			},
@@ -81,7 +81,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 		}, {
 			Name: "vp8_360p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd360p,
 				Profile:  videotype.VP8Prof,
 			},
@@ -89,7 +89,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 		}, {
 			Name: "vp8_720p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd720p,
 				Profile:  videotype.VP8Prof,
 			},
@@ -97,7 +97,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 		}, {
 			Name: "vp8_1080p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd1080p,
 				Profile:  videotype.VP8Prof,
 			},
@@ -105,7 +105,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 		}, {
 			Name: "vp8_2160p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd2160p,
 				Profile:  videotype.VP8Prof,
 			},
@@ -113,7 +113,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8_4K},
 		}, {
 			Name: "vp9_180p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd180p,
 				Profile:  videotype.VP9Prof,
 			},
@@ -121,7 +121,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}, {
 			Name: "vp9_360p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd360p,
 				Profile:  videotype.VP9Prof,
 			},
@@ -129,7 +129,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}, {
 			Name: "vp9_720p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd720p,
 				Profile:  videotype.VP9Prof,
 			},
@@ -137,7 +137,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}, {
 			Name: "vp9_1080p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd1080p,
 				Profile:  videotype.VP9Prof,
 			},
@@ -145,7 +145,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}, {
 			Name: "vp9_2160p",
-			Val: encode.TestOptionsNew{
+			Val: encode.TestOptions{
 				WebMName: crowd2160p,
 				Profile:  videotype.VP9Prof,
 			},
@@ -155,8 +155,8 @@ func init() {
 	})
 }
 
-func EncodeAccelNewPerf(ctx context.Context, s *testing.State) {
-	if err := encode.RunNewAccelVideoPerfTest(ctx, s, s.Param().(encode.TestOptionsNew)); err != nil {
+func EncodeAccelPerf(ctx context.Context, s *testing.State) {
+	if err := encode.RunAccelVideoPerfTest(ctx, s, s.Param().(encode.TestOptions)); err != nil {
 		s.Fatal("test failed: ", err)
 	}
 }
