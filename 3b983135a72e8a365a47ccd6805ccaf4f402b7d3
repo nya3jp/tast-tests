@@ -16,6 +16,23 @@
       "message": "PTAL.",
       "revId": "3b983135a72e8a365a47ccd6805ccaf4f402b7d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d614fd71_b1ec560c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-02T01:08:12Z",
+      "side": 1,
+      "message": "Oops, sorry for breakage.",
+      "revId": "3b983135a72e8a365a47ccd6805ccaf4f402b7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
