@@ -12,7 +12,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
-	"chromiumos/tast/local/bundles/cros/camera/testutil"
+	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/shutil"
