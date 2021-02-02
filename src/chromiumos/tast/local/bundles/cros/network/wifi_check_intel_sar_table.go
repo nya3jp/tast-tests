@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -30,6 +31,16 @@ func init() {
 		},
 		SoftwareDeps: []string{"wifi", "shill-wifi", "intel_wifi_chip"},
 		Attr:         []string{"group:mainline", "informational"},
+		// TODO(crbug.com/1070299): Remove the below hard-coded devices
+		// and the the software dependency "intel_wifi_chip" above.
+		// Instead, use the Intel WiFi dependency when wifi hardware
+		// dependencies are implemented.
+		// NB: These exclusions are somewhat overly broad; some
+		// (but not all) blooglet devices have WiFi chips that would
+		// work for this test. However, for now there is no better way
+		// to specify the exact hardware parameters needed for this
+		// test. (See linked bug.)
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("blooglet", "dirinboz", "ezkinil", "vilboz")),
 	})
 }
 
