@@ -70,6 +70,30 @@
       },
       "revId": "917ec0b603dd0c230360040323f0022a4940c201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "899d22ba_fe0deaba",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-02-02T19:45:07Z",
+      "side": 1,
+      "message": "The test case is simulating a touch event on the maximize/restore button. If VirtualTouchDevice is not ready, that event doesn\u0027t happen and the test will fail. So polling is not going to help, because the event is missed and the changes in the state of the activity won’t happen ever. \nI found this old bug that is marked as won\u0027t fix (crbug.com/1015264) that addresses same issue. In the tast-test project there are other places that use the same trick (sleep) to deal with this issue. I changed the way I implemented sleep() to comply with those.",
+      "parentUuid": "e2393f15_1b584ab5",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 34
+      },
+      "revId": "917ec0b603dd0c230360040323f0022a4940c201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
