@@ -159,13 +159,17 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 		scrollLayout.ScrollTo(ctx, system)
 	}
 
-	// Verify System settings in ARC++.
-	if err := system.WaitForExists(ctx, timeoutUI); err != nil {
-		return errors.Wrap(err, "failed finding System Text View")
-	}
+	t, _ := arc.Type()
+	// If ARC-P, check for About Device in System.
+	if t != arc.VM {
+		// Verify System settings in ARC++.
+		if err := system.WaitForExists(ctx, timeoutUI); err != nil {
+			return errors.Wrap(err, "failed finding System Text View")
+		}
 
-	if err := system.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click on System")
+		if err := system.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click on System")
+		}
 	}
 
 	aboutDevice := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)about device"), androidui.Enabled(true))
@@ -191,6 +195,17 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 
 	if err := backButton.Click(ctx); err != nil {
 		return errors.Wrap(err, "failed to click Back Button")
+	}
+
+	// If ARCVM, navigate back into System.
+	if t == arc.VM {
+		if err := system.WaitForExists(ctx, timeoutUI); err != nil {
+			return errors.Wrap(err, "failed finding System Text View")
+		}
+
+		if err := system.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click on System")
+		}
 	}
 
 	developerOptions := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)developer options"), androidui.Enabled(true))
@@ -257,15 +272,18 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 		}
 	}
 
-	testing.ContextLog(ctx, "Toggle Location Settings")
-	security := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)security & location"), androidui.Enabled(true))
-	testing.ContextLog(ctx, "Toggle Location Settings")
-	if err := security.WaitForExists(ctx, timeoutUI); err != nil {
-		return errors.Wrap(err, "failed finding Security & location TextView")
-	}
+	// If ARC-P, navigate to Security & Location.
+	if t != arc.VM {
+		testing.ContextLog(ctx, "Toggle Location Settings")
+		security := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)security & location"), androidui.Enabled(true))
+		testing.ContextLog(ctx, "Toggle Location Settings")
+		if err := security.WaitForExists(ctx, timeoutUI); err != nil {
+			return errors.Wrap(err, "failed finding Security & location TextView")
+		}
 
-	if err := security.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Security & Location")
+		if err := security.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click Security & Location")
+		}
 	}
 
 	location := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)location"), androidui.Enabled(true))
@@ -277,37 +295,28 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 		return errors.Wrap(err, "failed to click Location")
 	}
 
+	// locationStatus will check for toggle On/Off
 	const locationID = "com.android.settings:id/switch_widget"
-	locationStatus, err := arcDevice.Object(androidui.ID(locationID)).GetText(ctx)
+	locChecked, err := arcDevice.Object(androidui.ID(locationID)).IsChecked(ctx)
 	if err != nil {
 		return err
 	}
+	loc := arcDevice.Object(androidui.ID(locationID))
 
-	testing.ContextLog(ctx, "Default location status: "+locationStatus)
-	locationToggleOff := arcDevice.Object(androidui.ClassName("android.widget.Switch"), androidui.TextMatches("(?i)off"), androidui.Enabled(true))
-	locationToggleOn := arcDevice.Object(androidui.ClassName("android.widget.Switch"), androidui.TextMatches("(?i)on"), androidui.Enabled(true))
-
-	if locationStatus == "ON" {
-		// Turn Location OFF.
-		if err := locationToggleOn.Click(ctx); err != nil {
+	if locChecked == true {
+		// Turn Location Off.
+		if err := loc.Click(ctx); err != nil {
 			return errors.Wrap(err, "failed to click Location toggle")
 		}
-
-		if err := locationToggleOff.WaitForExists(ctx, timeoutUI); err != nil {
-			return errors.Wrap(err, "failed to switch Location OFF")
-		}
-	}
-	// Turn Location ON.
-	if err := locationToggleOff.WaitForExists(ctx, timeoutUI); err != nil {
-		return errors.Wrap(err, "failed finding Location Off toggle")
 	}
 
-	if err := locationToggleOff.Click(ctx); err != nil {
+	// Turn Location On.
+	if err := loc.Click(ctx); err != nil {
 		return errors.Wrap(err, "failed to click Location toggle")
 	}
 
-	if err := locationToggleOn.WaitForExists(ctx, timeoutUI); err != nil {
-		return errors.Wrap(err, "failed to switch Location ON")
+	if locChecked == false {
+		return errors.New("Unable to Turn Location ON")
 	}
 
 	return nil
