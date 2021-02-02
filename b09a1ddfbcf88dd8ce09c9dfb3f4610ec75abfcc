@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc1cd832_fc1dc612",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-02T00:34:50Z",
+      "side": 1,
+      "message": "Keeping CR+2, you can move forward with this CL.",
+      "revId": "b09a1ddfbcf88dd8ce09c9dfb3f4610ec75abfcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

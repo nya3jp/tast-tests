@@ -63,6 +63,30 @@
       },
       "revId": "5b052825ce32aa7b56a16883239f85a589369bf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61fcdaaa_1989c2e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-02T00:34:50Z",
+      "side": 1,
+      "message": "This looks good to me, but it may make sense if this fails with \u00270\u0027 (\"unknown\").  Does this happen really?",
+      "parentUuid": "4dd2e33f_cf00f377",
+      "range": {
+        "startLine": 161,
+        "startChar": 40,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "5b052825ce32aa7b56a16883239f85a589369bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
