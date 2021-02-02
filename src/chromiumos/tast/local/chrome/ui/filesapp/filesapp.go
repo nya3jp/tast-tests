@@ -705,7 +705,7 @@ func (f *FilesApp) tickCheckboxForFile(ctx context.Context, fileName string) (co
 	}
 	defer file.Release(ctx)
 
-	if err := file.LeftClick(ctx); err != nil {
+	if err := file.StableLeftClick(ctx, f.stablePollOpts); err != nil {
 		return coords.Point{}, errors.Wrap(err, "failed to left click file")
 	}
 
