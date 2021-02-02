@@ -38,7 +38,7 @@ var Chromium = App{
 
 // Camera has details about the Camera app.
 var Camera = App{
-	ID:   "hfhhnacclhffhdffklopdkcgdhifgngh",
+	ID:   "njfbnohfdkmbmnjapinfcopialeghnmh",
 	Name: "Camera",
 }
 

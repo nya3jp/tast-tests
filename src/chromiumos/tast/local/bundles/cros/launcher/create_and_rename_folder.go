@@ -13,8 +13,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -60,6 +60,11 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard: ", err)
+	}
+	defer kb.Close()
 
 	originallyEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
@@ -85,7 +90,7 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 	}
 
 	// Open the Launcher and go to Apps list page.
-	if err := launcher.OpenExpandedView(ctx, tconn); err != nil {
+	if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
 		s.Fatal("Failed to open Expanded Application list view: ", err)
 	}
 
@@ -109,13 +114,7 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to Drag app %q: %v", icons[0].Name, err)
 	}
 
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to get keyboard: ", err)
-	}
-	defer kb.Close()
-
-	if err := launcher.RenameFolder(ctx, tconn, "Unnamed", "NewName", kb); err != nil {
+	if err := launcher.RenameFolder(tconn, kb, "Unnamed", "NewName")(ctx); err != nil {
 		s.Fatal("Failed to rename folder to NewName: ", err)
 	}
 

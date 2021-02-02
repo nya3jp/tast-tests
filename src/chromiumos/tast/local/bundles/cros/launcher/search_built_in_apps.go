@@ -9,9 +9,9 @@ import (
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/ui/launcher"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/lacros"
 	lacroslauncher "chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
@@ -57,11 +57,12 @@ func SearchBuiltInApps(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := launcher.SearchAndLaunch(ctx, tconn, app.Name); err != nil {
-		s.Fatal("Failed to launch app: ", err)
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
 	}
-
-	if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
-		s.Fatal("Failed to wait for app: ", err)
+	defer kb.Close()
+	if err := launcher.SearchAndWaitForAppOpen(tconn, kb, app)(ctx); err != nil {
+		s.Fatal("Failed to launch app: ", err)
 	}
 }

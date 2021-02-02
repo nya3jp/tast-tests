@@ -14,9 +14,10 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/diagnosticsapp"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/local/chrome/ui/printmanagementapp"
 	"chromiumos/tast/local/chrome/ui/scanapp"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -95,8 +96,12 @@ func LaunchAppFromLauncher(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	err = launcher.SearchAndLaunchWithQuery(ctx, tconn, s.Param().(testParams).query, s.Param().(testParams).appName)
+	kb, err := input.Keyboard(ctx)
 	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
+	if err := launcher.SearchAndLaunchWithQuery(tconn, kb, s.Param().(testParams).query, s.Param().(testParams).appName)(ctx); err != nil {
 		s.Fatal("Failed to search and launch app: ", err)
 	}
 
