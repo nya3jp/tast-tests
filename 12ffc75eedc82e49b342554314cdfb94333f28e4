@@ -164,6 +164,30 @@
       },
       "revId": "12ffc75eedc82e49b342554314cdfb94333f28e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9fcf63_2ca05c64",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-02T02:48:12Z",
+      "side": 1,
+      "message": "Uploaded a new patchset for what I\u0027m thinking. Please take a look.\nThe intention of Traceable was primarily for consolidating the docstring, but I also added another utility \"Run\" which also utilizes the Traceable interface.",
+      "parentUuid": "2db12b85_57115912",
+      "range": {
+        "startLine": 1396,
+        "startChar": 0,
+        "endLine": 1408,
+        "endChar": 31
+      },
+      "revId": "12ffc75eedc82e49b342554314cdfb94333f28e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
