@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef665bf3_392a586a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T22:51:46Z",
+      "side": 1,
+      "message": "nit: action Action, condition func(context.Context) error\n\nThis is to distinguish the different uses even though they are the same underlying type.",
+      "range": {
+        "startLine": 411,
+        "startChar": 37,
+        "endLine": 411,
+        "endChar": 43
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3f6dab5_e9056d1c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T22:51:46Z",
+      "side": 1,
+      "message": "Action",
+      "range": {
+        "startLine": 411,
+        "startChar": 84,
+        "endLine": 411,
+        "endChar": 111
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea30e5a8_51d5c60a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T22:51:46Z",
+      "side": 1,
+      "message": "nit: return action(ctx)",
+      "range": {
+        "startLine": 414,
+        "startChar": 3,
+        "endLine": 416,
+        "endChar": 4
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c512d6d5_7c12a93f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T22:51:46Z",
+      "side": 1,
+      "message": "These can be updated now",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 84
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98b94249_144eb97b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T22:51:46Z",
+      "side": 1,
+      "message": "combine should be available now",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 27
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
