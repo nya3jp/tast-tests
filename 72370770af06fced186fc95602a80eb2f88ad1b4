@@ -22,6 +22,30 @@
       },
       "revId": "72370770af06fced186fc95602a80eb2f88ad1b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c6962af_4b9bb6a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-02-02T01:40:15Z",
+      "side": 1,
+      "message": "We haven\u0027t seen any reports from users about the symptoms that are caused by this.  I\u0027m not 100% certain, but I think it\u0027s happening because the test is killing ippusb_manager instead of waiting for it to time out and exit on its own.  In that sense, there is a bug here, but we\u0027re fairly sure it\u0027s not affecting end users.\n\nSeparately, we\u0027re working on a more robust design to replace ippusb_manager.  I expect this whole cleanup section to go away once that\u0027s done in about a quarter, but there\u0027s still value in trying to get these tests into the CQ in the meantime.",
+      "parentUuid": "2c0ab0f9_b966bcab",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "72370770af06fced186fc95602a80eb2f88ad1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
