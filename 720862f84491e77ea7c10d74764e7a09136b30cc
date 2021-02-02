@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e117f8f_fc8922db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-02-02T08:05:42Z",
+      "side": 1,
+      "message": "+Hsin-chen Chuang and +Brian Norris to notify them of the internal change on netcertstore. There\u0027s no visible change as seen from the users of netcertstore\u0027s side.",
+      "revId": "720862f84491e77ea7c10d74764e7a09136b30cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
