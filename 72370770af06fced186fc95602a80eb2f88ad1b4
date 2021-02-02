@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c0ab0f9_b966bcab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-02-02T01:10:30Z",
+      "side": 1,
+      "message": "This sounds like it might be a bug in the actual code, rather than a quirk that tests need to work around. Are we 100% certain that this issue doesn\u0027t manifest during normal operation of CrOS?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "72370770af06fced186fc95602a80eb2f88ad1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
