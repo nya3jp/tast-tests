@@ -16,6 +16,24 @@
       "message": "nit: mention the ordering of all 3 services.",
       "revId": "069d094fc45541e66cc25c5a432eef4e530a48a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e0eed15_76d21902",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-02-02T18:18:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcbd0656_6a988a99",
+      "revId": "069d094fc45541e66cc25c5a432eef4e530a48a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
