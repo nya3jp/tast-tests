@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5151e84_5d79d5bf",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T01:40:11Z",
+      "side": 1,
+      "message": "I\u0027m porting them one by one, so keep the api for now.",
+      "parentUuid": "2f3a9c0f_96d6f865",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 18
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "433ad3ba_bf422696",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-02-02T00:49:42Z",
       "side": 1,
       "message": "nit: single use uiauto.Run",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 19
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "320ab5cf_bb63d060",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T01:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "433ad3ba_bf422696",
       "range": {
         "startLine": 144,
         "startChar": 8,
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "234fc7f4_db6b5599",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T01:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee5d12b_bbfbf0a0",
+      "range": {
+        "startLine": 153,
+        "startChar": 12,
+        "endLine": 153,
+        "endChar": 98
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ba8f9b7_c5c16f6b",
@@ -116,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1a23f9f_050e8822",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T01:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba8f9b7_c5c16f6b",
+      "range": {
+        "startLine": 156,
+        "startChar": 12,
+        "endLine": 156,
+        "endChar": 94
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f795efab_1a27a48b",
@@ -129,6 +225,30 @@
       "writtenOn": "2021-02-02T00:49:42Z",
       "side": 1,
       "message": "nit: single use uiauto.Run",
+      "range": {
+        "startLine": 202,
+        "startChar": 11,
+        "endLine": 202,
+        "endChar": 22
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "631564de_e86f1412",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T01:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f795efab_1a27a48b",
       "range": {
         "startLine": 202,
         "startChar": 11,
@@ -185,6 +305,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d898215f_94c04d62",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T01:40:11Z",
+      "side": 1,
+      "message": "No, it takes sometime for the ui to change and test codes runs faster, so there is a code race.",
+      "parentUuid": "160c9bb3_98dbe0ac",
+      "range": {
+        "startLine": 207,
+        "startChar": 58,
+        "endLine": 207,
+        "endChar": 73
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "411030ed_26bfd248",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T01:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff390c85_e1a186c3",
+      "range": {
+        "startLine": 207,
+        "startChar": 11,
+        "endLine": 207,
+        "endChar": 22
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e9f6e45_3f2fd543",
@@ -198,6 +366,30 @@
       "writtenOn": "2021-02-02T00:49:42Z",
       "side": 1,
       "message": "nit: single use uiauto.Run",
+      "range": {
+        "startLine": 208,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 23
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c661862b_6a7f9226",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T01:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e9f6e45_3f2fd543",
       "range": {
         "startLine": 208,
         "startChar": 12,
@@ -254,6 +446,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c1fd73_013def8a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T01:40:11Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "ad99c405_6e3211ef",
+      "range": {
+        "startLine": 213,
+        "startChar": 56,
+        "endLine": 213,
+        "endChar": 71
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e870bc50_47f30250",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T01:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "965d3659_1f937f60",
+      "range": {
+        "startLine": 213,
+        "startChar": 11,
+        "endLine": 213,
+        "endChar": 22
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2010987e_d8ce2f5f",
@@ -277,6 +517,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce828dae_deb55122",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T01:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2010987e_d8ce2f5f",
+      "range": {
+        "startLine": 214,
+        "startChar": 12,
+        "endLine": 214,
+        "endChar": 23
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e6e3e5e_9c1d5833",
@@ -290,6 +554,30 @@
       "writtenOn": "2021-02-02T00:49:42Z",
       "side": 1,
       "message": "why not merge these with uiauto.Combine? and then return a uiauto.Action",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 11
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b5f6d0_10e2c9c1",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T01:40:11Z",
+      "side": 1,
+      "message": "Combine in this cl https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2648034 is not merged yet.\n\nIn addition, it might not be able to combine them because line 214 will be ran only if the result of line 213 is nil, the same for the following step.",
+      "parentUuid": "9e6e3e5e_9c1d5833",
       "range": {
         "startLine": 202,
         "startChar": 1,
