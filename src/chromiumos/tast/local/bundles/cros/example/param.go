@@ -18,7 +18,7 @@ type animal struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     Param,
-		Desc:     "Parameterized test example",
+		Desc:     "Parameterized test example test change.",
 		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Params: []testing.Param{{

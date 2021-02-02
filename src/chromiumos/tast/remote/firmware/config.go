@@ -18,6 +18,7 @@ import (
 )
 
 // ModeSwitcherType represents which methods the platform uses for switching between DUT boot modes.
+// Another test.
 type ModeSwitcherType string
 
 // Currently, there are exactly four possible values for ModeSwitcherType.
