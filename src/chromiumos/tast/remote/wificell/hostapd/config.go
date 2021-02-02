@@ -108,6 +108,13 @@ const (
 	PMFRequired
 )
 
+// AdditionalBSSID is the type for specifying parameters of additional BSSIDs to be advertised on the same phy.
+type AdditionalBSSID struct {
+	IfaceName string
+	SSID      string
+	BSSID     string
+}
+
 // Option is the function signature used to specify options of Config.
 type Option func(*Config)
 
@@ -265,6 +272,14 @@ func R1KHs(r1KHs ...string) Option {
 	}
 }
 
+// AdditionalBSSIDs returns an Option which sets AdditionalBSSIDs in hostapd config.
+// Each AdditionalBSSID should have a unique interface name and SSID.
+func AdditionalBSSIDs(bssids ...AdditionalBSSID) Option {
+	return func(c *Config) {
+		c.AdditionalBSSIDs = append([]AdditionalBSSID(nil), bssids...)
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -318,6 +333,7 @@ type Config struct {
 	R1KeyHolder        string
 	R0KHs              []string
 	R1KHs              []string
+	AdditionalBSSIDs   []AdditionalBSSID
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -428,6 +444,15 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 		for _, r := range c.R1KHs {
 			configure("r1kh", r)
 		}
+	}
+
+	for _, bssid := range c.AdditionalBSSIDs {
+		if bssid.IfaceName == iface {
+			return "", errors.Errorf("found a duplicate interface name: %s", iface)
+		}
+		configure("bss", bssid.IfaceName)
+		configure("ssid", bssid.SSID)
+		configure("bssid", bssid.BSSID)
 	}
 
 	return builder.String(), nil
@@ -577,6 +602,24 @@ func (c *Config) validate() error {
 		} else if len(b) != 32 {
 			return errors.Errorf("the third field of key holders should be a 256-bits hex string, got len=%d", len(b))
 		}
+	}
+
+	ifaces := map[string]struct{}{}
+	ssids := map[string]struct{}{c.SSID: {}}
+	bssids := map[string]struct{}{c.BSSID: {}}
+	for _, bssid := range c.AdditionalBSSIDs {
+		if _, ok := ifaces[bssid.IfaceName]; ok {
+			return errors.Errorf("duplicate interface name %s in additional BSSIDs", bssid.IfaceName)
+		}
+		ifaces[bssid.IfaceName] = struct{}{}
+		if _, ok := ssids[bssid.SSID]; ok {
+			return errors.Errorf("duplicate SSID %s in additional BSSIDs", bssid.SSID)
+		}
+		ssids[bssid.SSID] = struct{}{}
+		if _, ok := ssids[bssid.BSSID]; ok {
+			return errors.Errorf("duplicate BSSID %s in additional BSSIDs", bssid.BSSID)
+		}
+		bssids[bssid.BSSID] = struct{}{}
 	}
 
 	return nil
