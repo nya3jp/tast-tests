@@ -8,8 +8,8 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/camera/cca"
-	"chromiumos/tast/local/bundles/cros/camera/testutil"
+	"chromiumos/tast/local/camera/cca"
+	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/vm"
