@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da24f2f1_0339c30e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-02T22:25:30Z",
+      "side": 1,
+      "message": "PTAL. I\u0027m still waiting on crrev.com/c/2646390 to uprev into ChromeOS so can\u0027t submit this just yet but wanted to get your feedback early!",
+      "revId": "5c484b43b47afb9d36b211147a9221ae9b938b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
