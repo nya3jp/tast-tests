@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90669b86_a7300a5b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "nvm. I missed that this is being done in multiple CLs.\nI just wanted to remove the need to write `ui2 :\u003d uiauto.New(tconn)` and just say `ui :\u003d uiauto.New(tconn)` instead",
+      "parentUuid": "01ca0081_bfa75b7b",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aee35bdb_bf5e288b",
@@ -212,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "becbeb74_037b48cc",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "42b06fe6_0f0c443b",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59f9083e_73b37450",
@@ -249,6 +297,30 @@
       "side": 1,
       "message": "Same as above.",
       "parentUuid": "59f9083e_73b37450",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 43
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "106144c8_e3b9bc10",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "efff8a8a_59d223a6",
       "range": {
         "startLine": 58,
         "startChar": 34,

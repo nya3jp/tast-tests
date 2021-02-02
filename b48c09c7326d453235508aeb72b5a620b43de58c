@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da7858b0_6536a534",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "There are still some random spaces in here, but I guess it doesn\u0027t really matter",
+      "range": {
+        "startLine": 145,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 8
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f3a9c0f_96d6f865",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "You may want to consider changing the api of a lot of these functions to return an uiauto.Action, that way they will be chainable.",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 18
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "433ad3ba_bf422696",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "nit: single use uiauto.Run",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 19
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee5d12b_bbfbf0a0",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "nit: single use uiauto.Run",
+      "range": {
+        "startLine": 153,
+        "startChar": 12,
+        "endLine": 153,
+        "endChar": 98
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba8f9b7_c5c16f6b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "nit: single use uiauto.Run",
+      "range": {
+        "startLine": 156,
+        "startChar": 12,
+        "endLine": 156,
+        "endChar": 94
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f795efab_1a27a48b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "nit: single use uiauto.Run",
+      "range": {
+        "startLine": 202,
+        "startChar": 11,
+        "endLine": 202,
+        "endChar": 22
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff390c85_e1a186c3",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "nit: single use uiauto.Run",
+      "range": {
+        "startLine": 207,
+        "startChar": 11,
+        "endLine": 207,
+        "endChar": 22
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160c9bb3_98dbe0ac",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "can this just be Exists?",
+      "range": {
+        "startLine": 207,
+        "startChar": 58,
+        "endLine": 207,
+        "endChar": 73
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e9f6e45_3f2fd543",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "nit: single use uiauto.Run",
+      "range": {
+        "startLine": 208,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 23
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965d3659_1f937f60",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "nit: single use uiauto.Run",
+      "range": {
+        "startLine": 213,
+        "startChar": 11,
+        "endLine": 213,
+        "endChar": 22
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad99c405_6e3211ef",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "can this just be Exists?",
+      "range": {
+        "startLine": 213,
+        "startChar": 56,
+        "endLine": 213,
+        "endChar": 71
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2010987e_d8ce2f5f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "nit: single use uiauto.Run",
+      "range": {
+        "startLine": 214,
+        "startChar": 12,
+        "endLine": 214,
+        "endChar": 23
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e6e3e5e_9c1d5833",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-02T00:49:42Z",
+      "side": 1,
+      "message": "why not merge these with uiauto.Combine? and then return a uiauto.Action",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 11
+      },
+      "revId": "b48c09c7326d453235508aeb72b5a620b43de58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
