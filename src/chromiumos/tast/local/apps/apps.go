@@ -201,6 +201,12 @@ var Youtube = App{
 	Name: "Youtube",
 }
 
+// FamilyLink has details about the Family Link app.
+var FamilyLink = App{
+	ID:   "mljomdcpdfpfdplmgghfeoofmbbianlf",
+	Name: "Family Link",
+}
+
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
