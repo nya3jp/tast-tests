@@ -19,20 +19,20 @@ const fixtureTimeout = 3 * time.Second
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "install100Apps",
-		Desc:            "Install 100 dummy apps in a temporary directory",
+		Desc:            "Install 100 fake apps in a temporary directory",
 		Contacts:        []string{"mukai@chromium.org"},
-		Impl:            &dummyAppsFixture{numApps: 100},
+		Impl:            &fakeAppsFixture{numApps: 100},
 		SetUpTimeout:    fixtureTimeout,
 		TearDownTimeout: fixtureTimeout,
 	})
 }
 
-type dummyAppsFixture struct {
+type fakeAppsFixture struct {
 	extDirBase string
 	numApps    int
 }
 
-func (f *dummyAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+func (f *fakeAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	extDirBase, err := ioutil.TempDir("", "")
 	if err != nil {
 		s.Fatal("Failed to create a tempdir: ", err)
@@ -50,16 +50,16 @@ func (f *dummyAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) inte
 	return opts
 }
 
-func (f *dummyAppsFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+func (f *fakeAppsFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	if err := os.RemoveAll(f.extDirBase); err != nil {
 		s.Error("Failed to remove ", f.extDirBase, ": ", err)
 	}
 }
 
-func (f *dummyAppsFixture) Reset(ctx context.Context) error {
+func (f *fakeAppsFixture) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (f *dummyAppsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *fakeAppsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 
-func (f *dummyAppsFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *fakeAppsFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
