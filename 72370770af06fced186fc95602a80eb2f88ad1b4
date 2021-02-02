@@ -46,6 +46,47 @@
       },
       "revId": "72370770af06fced186fc95602a80eb2f88ad1b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb4fef6_e7552fc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-02-02T01:43:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8c6962af_4b9bb6a2",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "72370770af06fced186fc95602a80eb2f88ad1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "873de220_c4ebae7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-02-02T01:43:32Z",
+      "side": 1,
+      "message": "Shadow tast reviewer +1",
+      "revId": "72370770af06fced186fc95602a80eb2f88ad1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
