@@ -9,7 +9,8 @@ import (
 	"os"
 
 	"chromiumos/tast/local/apps"
-	applauncher "chromiumos/tast/local/chrome/ui/launcher"
+	applauncher "chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
@@ -35,7 +36,12 @@ func AppLauncherLaunch(ctx context.Context, s *testing.State) {
 
 	// Clean up user data dir to ensure a clean start.
 	os.RemoveAll(launcher.LacrosUserDataDir)
-	if err := applauncher.SearchAndLaunchWithQuery(ctx, tconn, "lacros", apps.Lacros.Name); err != nil {
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
+	if err := applauncher.SearchAndLaunchWithQuery(tconn, kb, "lacros", apps.Lacros.Name)(ctx); err != nil {
 		s.Fatal("Failed to search and launch Lacros app: ", err)
 	}
 

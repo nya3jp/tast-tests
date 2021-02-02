@@ -13,8 +13,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -78,7 +78,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 			return errors.New("focused notification does not exist")
 		}
 		s.Log("Notification had focus. Opening launcher to change focus")
-		if err := launcher.OpenLauncher(ctx, tconn); err != nil {
+		if err := launcher.Open(tconn)(ctx); err != nil {
 			s.Fatal("Failed to open launcher: ", err)
 		}
 		return errors.New("notification exists and was focused")

@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/ui/launcher"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -85,7 +85,7 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	app5 := apps.Help
 
 	// Open the Launcher and go to Apps list page.
-	if err := launcher.OpenExpandedView(ctx, tconn); err != nil {
+	if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
 		// Open the Launcher and go to Apps list page again for clamshell mode.
 		s.Fatal("Failed to open Expanded Application list view: ", err)
 	}
@@ -97,7 +97,7 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	}
 
 	// Launch another app that is not pinned.
-	if err := launcher.LaunchApp(ctx, tconn, app4); err != nil {
+	if err := launcher.LaunchApp(tconn, app4.Name)(ctx); err != nil {
 		s.Fatalf("Failed to run application %v from application list view: %v", app4.Name, err)
 	}
 
@@ -108,7 +108,7 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	}
 
 	// Launch another app that is not pinned.
-	if err := launcher.LaunchApp(ctx, tconn, app5); err != nil {
+	if err := launcher.LaunchApp(tconn, app5.Name)(ctx); err != nil {
 		s.Fatalf("Failed to run application %v from application list view: %v", app5.Name, err)
 	}
 
@@ -161,7 +161,7 @@ func pinApps(ctx context.Context, tconn *chrome.TestConn, apps []apps.App) error
 		return errors.Wrap(err, "cannot get location for buttons")
 	}
 	for _, app := range apps {
-		if err := launcher.PinAppToShelf(ctx, tconn, app); err != nil {
+		if err := launcher.PinAppToShelf(tconn, app)(ctx); err != nil {
 			return errors.Wrapf(err, "fail to pin app %q to shelf", app.Name)
 		}
 
@@ -169,6 +169,9 @@ func pinApps(ctx context.Context, tconn *chrome.TestConn, apps []apps.App) error
 		params := ui.FindParams{Name: app.Name, ClassName: shelfAppButton}
 		if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
 			return errors.Wrapf(err, "failed to find app %v on shelf", app.Name)
+		}
+		if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+			errors.Wrap(err, "failed to wait for location changes")
 		}
 
 		//  Verify that existing pinned apps go to the left after a new app is pinned.
