@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f66999e4_e2043395",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T08:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "481032d0_5a2e6f0c",
+      "range": {
+        "startLine": 131,
+        "startChar": 64,
+        "endLine": 131,
+        "endChar": 81
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb397645_84f3fc36",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b1c2ddb_c8bd111c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T08:00:40Z",
+      "side": 1,
+      "message": "Will change it once the cl (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2648034) is merged.",
+      "parentUuid": "fb397645_84f3fc36",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 85
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81936239_c412c659",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T08:00:40Z",
+      "side": 1,
+      "message": "Yes and no. On the UI, we can manually see one settings window, in the accessibility tree, there are multiple items matching this finder.",
+      "parentUuid": "d0e55f71_337e6d3c",
+      "range": {
+        "startLine": 57,
+        "startChar": 104,
+        "endLine": 57,
+        "endChar": 111
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf046cc8_148f57a0",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-02T05:53:43Z",
       "side": 1,
       "message": "Add a NameRegex function?",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 43
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dbd0f03_e60ab80a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T08:00:40Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "cf046cc8_148f57a0",
       "range": {
         "startLine": 58,
         "startChar": 34,
@@ -118,6 +214,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fab9bca4_05b1f092",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T08:00:40Z",
+      "side": 1,
+      "message": "Brendan said he is porting ossettings.",
+      "parentUuid": "3cc4cb40_66eb664e",
+      "range": {
+        "startLine": 88,
+        "startChar": 22,
+        "endLine": 88,
+        "endChar": 37
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4389e652_0a7fa118",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 8
@@ -129,6 +249,30 @@
       "writtenOn": "2021-02-02T05:53:43Z",
       "side": 1,
       "message": "Not a problem, but why the shorter timeout?",
+      "range": {
+        "startLine": 133,
+        "startChar": 38,
+        "endLine": 133,
+        "endChar": 53
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d91bfd_1f9a5077",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T08:00:40Z",
+      "side": 1,
+      "message": "I met a weird thing: with uiauto.New(tconn).LeftClick(nextButton)(ctx), it could not click the next button.",
+      "parentUuid": "4389e652_0a7fa118",
       "range": {
         "startLine": 133,
         "startChar": 38,
@@ -185,6 +329,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff6123e2_181da01d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T08:00:40Z",
+      "side": 1,
+      "message": "What to do if it does not find the first button?",
+      "parentUuid": "dfa4a819_529ca9e5",
+      "range": {
+        "startLine": 177,
+        "startChar": 20,
+        "endLine": 177,
+        "endChar": 24
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c1ae8ef3_e5ce38b9",
@@ -208,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1a58a74_5f04052d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T08:00:40Z",
+      "side": 1,
+      "message": "What about LeftClickOnCondition(finder, Action)?",
+      "parentUuid": "c1ae8ef3_e5ce38b9",
+      "range": {
+        "startLine": 207,
+        "startChar": 44,
+        "endLine": 207,
+        "endChar": 59
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bdf1967_b7d815f8",
@@ -221,6 +413,30 @@
       "writtenOn": "2021-02-02T05:53:43Z",
       "side": 1,
       "message": "This seems redundant? There is no need to wait, the list should already be there or be gone\n\nthe only thing we need to wait for is the disappearance of the button one way or the other.",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 79
+      },
+      "revId": "7e055b599b5e1843395b47a2b81195dbb300cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6b91a60_32ed994e",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-02T08:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bdf1967_b7d815f8",
       "range": {
         "startLine": 213,
         "startChar": 12,
