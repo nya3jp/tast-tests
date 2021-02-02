@@ -108,6 +108,13 @@ const (
 	PMFRequired
 )
 
+// AdditionalBSSID is the type for specifying parameters of additional BSSIDs to be advertised on the same phy.
+// Both fields are required, and must be distinct from the corresponding fields of the primary network.
+type AdditionalBSSID struct {
+	IfaceName string
+	SSID      string
+}
+
 // Option is the function signature used to specify options of Config.
 type Option func(*Config)
 
@@ -265,6 +272,16 @@ func R1KHs(r1KHs ...string) Option {
 	}
 }
 
+// AdditionalBSSIDs returns an Option which sets AdditionalBSSIDs in hostapd config.
+// Each AdditionalBSSID should have a unique interface name and SSID. The number of
+// AdditionalBSSIDs is limited by the phy. See the 'valid interface combinations'
+// section of `iw phy` for more.
+func AdditionalBSSIDs(bssids ...AdditionalBSSID) Option {
+	return func(c *Config) {
+		c.AdditionalBSSIDs = append([]AdditionalBSSID(nil), bssids...)
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -286,6 +303,15 @@ func NewConfig(ops ...Option) (*Config, error) {
 			return nil, err
 		}
 		conf.BSSID = randBSSID.String()
+	}
+	// hostapd specifies that if secondary BSSIDs are configured,
+	// it requires the primary BSSID be chosen such that it can
+	// generate a valid bitmask where dev_addr & mask == dev_addr.
+	// Clear the last byte to allow this. Note that this will allow
+	// for up to 255 additional BSSIDs, but in reality, APs usually
+	// support much fewer.
+	if len(conf.AdditionalBSSIDs) != 0 {
+		conf.BSSID = conf.BSSID[:len(conf.BSSID)-2] + "00"
 	}
 
 	if err := conf.validate(); err != nil {
@@ -318,6 +344,7 @@ type Config struct {
 	R1KeyHolder        string
 	R0KHs              []string
 	R1KHs              []string
+	AdditionalBSSIDs   []AdditionalBSSID
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -428,6 +455,14 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 		for _, r := range c.R1KHs {
 			configure("r1kh", r)
 		}
+	}
+
+	for _, bssid := range c.AdditionalBSSIDs {
+		if bssid.IfaceName == iface {
+			return "", errors.Errorf("found a duplicate interface name: %s", iface)
+		}
+		configure("bss", bssid.IfaceName)
+		configure("ssid", bssid.SSID)
 	}
 
 	return builder.String(), nil
@@ -577,6 +612,19 @@ func (c *Config) validate() error {
 		} else if len(b) != 32 {
 			return errors.Errorf("the third field of key holders should be a 256-bits hex string, got len=%d", len(b))
 		}
+	}
+
+	ifaces := map[string]struct{}{}
+	ssids := map[string]struct{}{c.SSID: {}}
+	for _, bssid := range c.AdditionalBSSIDs {
+		if _, ok := ifaces[bssid.IfaceName]; ok {
+			return errors.Errorf("duplicate interface name %s in additional BSSIDs", bssid.IfaceName)
+		}
+		ifaces[bssid.IfaceName] = struct{}{}
+		if _, ok := ssids[bssid.SSID]; ok {
+			return errors.Errorf("duplicate SSID %s in additional BSSIDs", bssid.SSID)
+		}
+		ssids[bssid.SSID] = struct{}{}
 	}
 
 	return nil
