@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5283cc_a1f842c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-02-02T06:30:32Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! Did #2.",
+      "parentUuid": "a0bb996e_3847cdce",
+      "range": {
+        "startLine": 113,
+        "startChar": 11,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "f8cea8e97912245484079936ad8b291840d4ad90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0e01013_2b913a4b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-01T03:50:16Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 127,
+        "startChar": 12,
+        "endLine": 127,
+        "endChar": 29
+      },
+      "revId": "f8cea8e97912245484079936ad8b291840d4ad90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "779c5c41_90dc81fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-02-02T06:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0e01013_2b913a4b",
       "range": {
         "startLine": 127,
         "startChar": 12,
