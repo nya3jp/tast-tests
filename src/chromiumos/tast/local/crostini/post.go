@@ -30,6 +30,15 @@ func RunCrostiniPostTest(ctx context.Context, p PreData) {
 		return
 	}
 
+	// If we haven't connected to chrome successfully, then the
+	// test didn't get to do anything with the VM that could
+	// possibly have generated logs, and even if it did we
+	// couldn't access them, so bail out here.
+	if p.Chrome == nil {
+		testing.ContextLog(ctx, "Failed before connecting to chrome, no logs generated")
+		return
+	}
+
 	// Container logs require a running VM and container. If one
 	// hasn't been set, we can't fetch them.
 	if p.Container != nil {
