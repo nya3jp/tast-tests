@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b7fd5d0_eaab6348",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-02T23:19:40Z",
+      "side": 1,
+      "message": "Looks good! Just a few comments to rearrange the code structure.",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1219cce7_c5589d03",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-02T23:19:40Z",
+      "side": 1,
+      "message": "nit: SVG",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ecf8316_00c8a569",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-02T23:19:40Z",
+      "side": 1,
+      "message": "super nit: SVG",
+      "range": {
+        "startLine": 61,
+        "startChar": 33,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5add5b1d_e6aeff58",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-02T23:19:40Z",
+      "side": 1,
+      "message": "nit: could this file reading and unmartialing part be factored into a separate function, so that this function is smaller? e.g. readSvg(filePath string) (svg) or something?",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dd9ab67_0fda5bd0",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-02T23:19:40Z",
+      "side": 1,
+      "message": "nit: could some of this code be factored into a separate function, so that this function is smaller? e.g. maybe a separate function for building the stroke?",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eaf7a0c_f3196d09",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-02T23:19:40Z",
+      "side": 1,
+      "message": "nit: how performance sensitive is this function? If you\u0027re okay with a slight performance cost, maybe you can create a function that converts a string path into a list of points (moving the Sscanf in there).",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e44f7a_e6878e5c",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-02T23:19:40Z",
+      "side": 1,
+      "message": "super nit: instead of returning two points, maybe a Rect (which has left,top,right,bottom). Then you can call this function, getBoundingRect or something.",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53486887_db2a0cbd",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-02T23:19:40Z",
+      "side": 1,
+      "message": "nit: instead of having the comment above, maybe call this variable numPointsPerStroke or targetNumPointsPerStroke, so that the code is self-documenting?",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
