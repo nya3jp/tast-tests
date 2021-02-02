@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61071dc9_8c9ee89a",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-02T19:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b551ae9_6031c2b3",
+      "revId": "29ceb879d1b6ffdb57843bef6f4c8ea5640a3987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bbe51ab_fb4f3bcf",
@@ -83,6 +101,24 @@
       "side": 1,
       "message": "Reading David\u0027s comment here https://chromium-review.googlesource.com/c/chromium/src/+/2657992?tab\u003dcomments, I think it\u0027s okay as it is for now.",
       "parentUuid": "1bbe51ab_fb4f3bcf",
+      "revId": "29ceb879d1b6ffdb57843bef6f4c8ea5640a3987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d2cf8d0_9ad505c6",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-02T19:14:38Z",
+      "side": 1,
+      "message": "Got it, thanks for confirming.",
+      "parentUuid": "d17c4e00_a13aea16",
       "revId": "29ceb879d1b6ffdb57843bef6f4c8ea5640a3987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
