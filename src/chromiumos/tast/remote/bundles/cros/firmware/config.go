@@ -14,7 +14,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Config,
-		Desc:         "Verifies that remote tests can load fw-testing-configs properly",
+		Desc:         "Verifies that remote tests can load fw-testing-configs properly tesrt.",
 		Contacts:     []string{"cros-fw-engprod@google.com"},
 		Data:         []string{firmware.ConfigFile},
 		Attr:         []string{"group:mainline", "group:firmware", "firmware_smoke"},

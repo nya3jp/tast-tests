@@ -15,7 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Smoke,
-		Desc: "Tests that writing system logs succeeds",
+		Desc: "Tests that writing system logs succeeds another tes another testt",
 		Contacts: []string{
 			"cros-networking@chromium.org", // Team alias
 			"stevenjb@chromium.org",        // Test author
