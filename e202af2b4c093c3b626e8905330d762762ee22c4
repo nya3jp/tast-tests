@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef461d18_d7dba46c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-02T23:46:46Z",
+      "side": 1,
+      "message": "Thanks Eric for reviewing. \nI am asking for a official clarification note that TGL has an optional process before the film grain synthesis.",
+      "revId": "e202af2b4c093c3b626e8905330d762762ee22c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff418aee_0f0fb2b4",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-02-02T15:55:36Z",
       "side": 1,
       "message": "This doesn\u0027t actually seem volteer-specific -- is there a reason why volteer is the only one that would require a more abstract equality check than the other platforms? Do we generally expect this kind of agreement on other platforms and volteer has some quirk in its hardware decoder that we otherwise consider a bug?\n\nI\u0027m wondering in part because it seems like SSIM will work for all of these, but that MD5 might not, and in that case adding new platforms to the lab may cause this test to spuriously start failing av1_film_grain even if there\u0027s no real issue. This poses a risk to moving this test out of informational in the future.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "e202af2b4c093c3b626e8905330d762762ee22c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "876b7f6a_42aed1a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-02T23:46:46Z",
+      "side": 1,
+      "message": "\u003e This doesn\u0027t actually seem volteer-specific -- is there a reason why volteer is the only one that would require a more abstract equality check than the other platforms? Do we generally expect this kind of agreement on other platforms and volteer has some quirk in its hardware decoder that we otherwise consider a bug?\n\u003e \n\nThere are two facts here. An av1 stream with a codec feature called film grain is fine to decode differently among decoders as far as the decoded frames are same visually. This is stated at the AV1 codec specification 7.2 [1] as \n\"a conformant decoder shall produce output frames that ... do not have perceptually significant differences with the frames...\"\n\nIn fact, the Intel decoder has an optional process before film grain synthesis. It makes the output frames are different from a libaom av1 decoder.\n\nThis can happen on other platforms.\nToday TGL (volteer) has only a platform that has av1 hardware decoder. \nFor future Intel platforms, the optional process is possibly emitted, so I don\u0027t specify as skipping on Intel.\n\nThat is, SkipOnPlatform(\"volteer\") means this test doesn\u0027t run on any platform today. \n\n[1] https://aomediacodec.github.io/av1-spec/#general-decoding-process\n\n\u003e I\u0027m wondering in part because it seems like SSIM will work for all of these, but that MD5 might not, and in that case adding new platforms to the lab may cause this test to spuriously start failing av1_film_grain even if there\u0027s no real issue. This poses a risk to moving this test out of informational in the future.\n\nThanks I get the point. IMO, if we put this test in CQ, I would put av1_common and av1_ssim only.",
+      "parentUuid": "ff418aee_0f0fb2b4",
       "range": {
         "startLine": 69,
         "startChar": 0,
