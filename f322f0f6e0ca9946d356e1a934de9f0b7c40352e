@@ -16,6 +16,23 @@
       "message": "I added Stop() to the perf.TimelineDatasource so we could add a single datapoint at the moment the test ends.\n\nDoing the same in Snapshot() is not possible:\n- We could add multiple datapoints to the perf.Metric, but Crosbolt will average them out\n- perf.Timeline only snapshots data at the multiples of perf.Interval, so the Snapshot() isn\u0027t being run at all for very fast tests",
       "revId": "f322f0f6e0ca9946d356e1a934de9f0b7c40352e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0d2d14_9c9c60dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-02-03T03:24:51Z",
+      "side": 1,
+      "message": "CR+1 for power logics.\n\n+oka, +tast-owners please see the unresolved comment about adding TimelineDatasource.Stop().",
+      "revId": "f322f0f6e0ca9946d356e1a934de9f0b7c40352e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
