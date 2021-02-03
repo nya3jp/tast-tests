@@ -175,6 +175,24 @@
       "parentUuid": "d7d6922b_e5c4a22d",
       "revId": "84a69683d1144d6f8e6ba92989f9a2faec33ed47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8863a9ab_ba816615",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-03T04:39:22Z",
+      "side": 1,
+      "message": "It sounds Stop makes the logic of the test code more straightforward. I think it\u0027s acceptable.\n+1 to split the change.",
+      "parentUuid": "837dbfe9_a98a1a2c",
+      "revId": "84a69683d1144d6f8e6ba92989f9a2faec33ed47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
