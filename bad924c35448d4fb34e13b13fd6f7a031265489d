@@ -16,6 +16,23 @@
       "message": "I just noticed this CL. Thanks for looking into this.  I wrote the crostini.DragDrop test, and I\u0027ve been noticing that it gets unexpected failures - I hope this fixes it.",
       "revId": "bad924c35448d4fb34e13b13fd6f7a031265489d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f072c4c8_6fa868cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-03T00:26:59Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "bad924c35448d4fb34e13b13fd6f7a031265489d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
