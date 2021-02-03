@@ -85,14 +85,19 @@ func verifyDirSELinuxContext(ctx context.Context, directoryPath, outDir string) 
 	matchPathConStr := string(matchPathConOutput)
 	linesCount := strings.Count(matchPathConStr, "\n")
 	verifiedCount := strings.Count(matchPathConStr, "verified.\n")
+	// Counts any files or dirs which are not found during the race between
+	// find and matchpathcon command.
+	filesAndDirMissingCount := strings.Count(matchPathConStr, "error: No such file or directory\n")
+
 	// Write the output of matchpathcon command.
 	matchPathConFileLocation := filepath.Join(outDir, matchPathConFileName)
 	if err := ioutil.WriteFile(matchPathConFileLocation,
 		[]byte(matchPathConOutput), 0644); err != nil {
 		return errors.Wrap(err, "failed to write matchpathcon output")
 	}
-	// Every line pointing to a file in matchpathcon output should be verified.
-	if linesCount != verifiedCount {
+	// Every line pointing to a file in matchpathcon output should either be verified,
+	// or the file isn't found due to race between find and matchpathcon command.
+	if linesCount != verifiedCount+filesAndDirMissingCount {
 		err := errors.Errorf("SELinux context verification failed for %v", directoryPath)
 		return err
 	}
