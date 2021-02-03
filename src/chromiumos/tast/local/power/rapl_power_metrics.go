@@ -81,3 +81,8 @@ func (r *RAPLPowerMetrics) Snapshot(_ context.Context, values *perf.Values) erro
 	}
 	return nil
 }
+
+// Stop does nothing.
+func (r *RAPLPowerMetrics) Stop(_ context.Context, values *perf.Values) error {
+	return nil
+}
