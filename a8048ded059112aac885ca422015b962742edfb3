@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ddae9c7_539a84e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-03T03:08:20Z",
+      "side": 1,
+      "message": "This is pretty gross but hopefully will be resolved with access to test functions from crbug/1173190. Open to suggestions for improvement, though :)",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 2
+      },
+      "revId": "a8048ded059112aac885ca422015b962742edfb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c609c9_687b0085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-03T03:08:20Z",
+      "side": 1,
+      "message": "ericth@ can you review these MimeTypes for the snippet? Are these the only things we can share using the snippet?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "a8048ded059112aac885ca422015b962742edfb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4516eee8_3ab88806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-03T03:08:20Z",
+      "side": 1,
+      "message": "ericth@ does this seem valid for granting external storage permissions? I tested it and it works fine, but just want to make sure with you.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "a8048ded059112aac885ca422015b962742edfb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9679bc37_6ac9c9ac",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-03T03:08:20Z",
+      "side": 1,
+      "message": "vecore@ I\u0027m using JS from the \u003csettings-nearby-share-subpage\u003e and \u003cnearby-share-receive-dialog\u003e to control high-vis receiving, does this seem fine to you for now?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 1
+      },
+      "revId": "a8048ded059112aac885ca422015b962742edfb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
