@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d165f5b7_9406d8d4",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-03T15:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1219cce7_c5589d03",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ecf8316_00c8a569",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-02T23:19:40Z",
       "side": 1,
       "message": "super nit: SVG",
+      "range": {
+        "startLine": 61,
+        "startChar": 33,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e7045e3_ee7d2f6f",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-03T15:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ecf8316_00c8a569",
       "range": {
         "startLine": 61,
         "startChar": 33,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcbdbd96_13aa23d3",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-03T15:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5add5b1d_e6aeff58",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dd9ab67_0fda5bd0",
@@ -100,6 +166,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b18a252_59dd5bf4",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-03T15:33:46Z",
+      "side": 1,
+      "message": "I\u0027ve factored reading the SVG file into a separate function. The rest of the function builds the strokes so I don\u0027t think I can make this function smaller. Do you have any suggestions on which bits I could separate?",
+      "parentUuid": "8dd9ab67_0fda5bd0",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2eaf7a0c_f3196d09",
         "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
         "patchSetId": 2
@@ -111,6 +195,24 @@
       "writtenOn": "2021-02-02T23:19:40Z",
       "side": 1,
       "message": "nit: how performance sensitive is this function? If you\u0027re okay with a slight performance cost, maybe you can create a function that converts a string path into a list of points (moving the Sscanf in there).",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e0f0db_4b6ce5f9",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-03T15:33:46Z",
+      "side": 1,
+      "message": "I\u0027ve added a new function that converts the string path into a list of extracted points which will be used by the newStrokeGroup function. I agree that sacrificing a very slight performance cost to make the function more maintainable is a good choice. Thank you.",
+      "parentUuid": "2eaf7a0c_f3196d09",
       "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -134,6 +236,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ae40430_419580c5",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-03T15:33:46Z",
+      "side": 1,
+      "message": "I was thinking about this before but coords.Rect uses {Left, Top, Width, Height} instead of {Left, Top, Right, Bottom} which makes it more complex to calculate the maximum points (since they\u0027re relative to the minimum point).\n\nI\u0027ve kept this one as two points, but please feel free to let me know if you still prefer coords.Rect.",
+      "parentUuid": "61e44f7a_e6878e5c",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53486887_db2a0cbd",
         "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
         "patchSetId": 2
@@ -145,6 +265,24 @@
       "writtenOn": "2021-02-02T23:19:40Z",
       "side": 1,
       "message": "nit: instead of having the comment above, maybe call this variable numPointsPerStroke or targetNumPointsPerStroke, so that the code is self-documenting?",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd5fc8b5_74782614",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-03T15:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53486887_db2a0cbd",
       "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
