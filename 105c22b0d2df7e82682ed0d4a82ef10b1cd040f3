@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "900fd8b9_5df18d7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T07:57:25Z",
+      "side": 1,
+      "message": "It\u0027s doing more than that now :)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "105c22b0d2df7e82682ed0d4a82ef10b1cd040f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eab64222_686bc606",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
         "patchSetId": 2
@@ -54,6 +77,30 @@
       "writtenOn": "2021-02-03T00:40:55Z",
       "side": 1,
       "message": "Do you need driver.Session to implement trace.Traceable?\nLooks like there\u0027s no use?",
+      "range": {
+        "startLine": 228,
+        "startChar": 16,
+        "endLine": 228,
+        "endChar": 42
+      },
+      "revId": "105c22b0d2df7e82682ed0d4a82ef10b1cd040f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50828cf4_9bdea0c3",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T07:57:25Z",
+      "side": 1,
+      "message": "+1. That is, all trace.Traceable interface usages today actually point to *chrome.Chrome, so there\u0027s no merit in using interfaces.",
+      "parentUuid": "704526e5_ed76c8c7",
       "range": {
         "startLine": 228,
         "startChar": 16,

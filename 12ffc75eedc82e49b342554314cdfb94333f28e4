@@ -188,6 +188,30 @@
       },
       "revId": "12ffc75eedc82e49b342554314cdfb94333f28e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3abbbb0_a54a6c36",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T07:57:25Z",
+      "side": 1,
+      "message": "I agree with your sentiment to reduce docstring duplication. But I\u0027m not sure if interfaces are good way to reduce duplications.\n\nWe might be able to embed driver.Session to chrome.Chrome with unexported alias technique, i.e.\n\n type sess \u003d driver.Session\n\n type Chrome struct {\n   *sess\n   ...\n }\n\nBut there are several downsides: it\u0027s unclear that new methods added to driver.Session are automatically exported as Chrome methods; godoc.org does not show methods of embedded fields.\n\nAlternatively we might be able to do code generation emulating embedded fields.",
+      "parentUuid": "6b9fcf63_2ca05c64",
+      "range": {
+        "startLine": 1396,
+        "startChar": 0,
+        "endLine": 1408,
+        "endChar": 31
+      },
+      "revId": "12ffc75eedc82e49b342554314cdfb94333f28e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
