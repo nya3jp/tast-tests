@@ -63,6 +63,30 @@
       },
       "revId": "c5a5a810a72a4c312fbb3f8fef34be1a8e2790f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d70228_7205eaf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-03T08:45:22Z",
+      "side": 1,
+      "message": "I tried again and realized findDisplayWidthHeight() actually spent no time, so without the sleep it failed simply due to kmsvnc not being ready. I was seeing 2 secs between \"Started test\" message and the connection failure, and assumed findDisplayWidthHeight() took 2 secs...\n\nLet me parse stderr and wait until the \"Listening for VNC connections\" message.",
+      "parentUuid": "9ec8a796_c003de6b",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 46
+      },
+      "revId": "c5a5a810a72a4c312fbb3f8fef34be1a8e2790f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
