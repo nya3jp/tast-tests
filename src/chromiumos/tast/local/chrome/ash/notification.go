@@ -34,8 +34,7 @@ type Notification struct {
 // getVisibleNotifications under the hood.
 func Notifications(ctx context.Context, tconn *chrome.TestConn) ([]*Notification, error) {
 	var ret []*Notification
-	if err := tconn.EvalPromise(ctx,
-		`tast.promisify(chrome.autotestPrivate.getVisibleNotifications)()`, &ret); err != nil {
+	if err := tconn.Call(ctx, &ret, "tast.promisify(chrome.autotestPrivate.getVisibleNotifications)"); err != nil {
 		return nil, errors.Wrap(err, "failed to call getVisibleNotifications")
 	}
 	return ret, nil

@@ -6,7 +6,6 @@ package ash
 
 import (
 	"context"
-	"fmt"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -15,9 +14,8 @@ import (
 // SetOverviewModeAndWait requests Ash to set the overview mode state and waits
 // for its animation to complete.
 func SetOverviewModeAndWait(ctx context.Context, tconn *chrome.TestConn, inOverview bool) error {
-	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setOverviewModeState)(%v)`, inOverview)
 	finished := false
-	if err := tconn.EvalPromise(ctx, expr, &finished); err != nil {
+	if err := tconn.Call(ctx, &finished, "tast.promisify(chrome.autotestPrivate.setOverviewModeState)", inOverview); err != nil {
 		return err
 	}
 	if !finished {
