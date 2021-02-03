@@ -208,6 +208,10 @@ func (b *SysfsBatteryMetrics) Start(ctx context.Context) error {
 // If there are no batteries can be used to report the metrics,
 // Snapshot does nothing and returns without error.
 func (b *SysfsBatteryMetrics) Snapshot(ctx context.Context, values *perf.Values) error {
+	if len(b.batteryPath) == 0 {
+		return nil
+	}
+
 	power, err := ReadSystemPower(b.batteryPath)
 	if err != nil {
 		return err
