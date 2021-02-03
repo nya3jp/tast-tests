@@ -330,6 +330,30 @@
       },
       "revId": "094c7deccabb0de8b2640302ab9785aa7f244f96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a37954e_d8b8ceea",
+        "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-03T05:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2acdbac3_99ed2ab6",
+      "range": {
+        "startLine": 124,
+        "startChar": 52,
+        "endLine": 124,
+        "endChar": 76
+      },
+      "revId": "094c7deccabb0de8b2640302ab9785aa7f244f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
