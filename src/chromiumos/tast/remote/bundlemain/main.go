@@ -113,6 +113,13 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 	}
 
 	return func(ctx context.Context, s *testing.TestHookState) {
+		// Ensure that the DUT is connected.
+		dut := s.DUT()
+		if !dut.Connected(ctx) {
+			if err := dut.Connect(ctx); err != nil {
+				s.Error("Failed to connect to the DUT: ", err)
+			}
+		}
 
 		// Ensure the TPM is in the expect status after tast finish.
 		if err := hwsecCheckTPMStatus(ctx, s, hwsecTpmStatus); err != nil {
@@ -129,8 +136,6 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 			return
 		}
 
-		// Connect to the DUT.
-		dut := s.DUT()
 		cl, err := rpc.Dial(ctx, dut, s.RPCHint(), "cros")
 		if err != nil {
 			s.Log("Failed to connect to the RPC service on the DUT: ", err)
