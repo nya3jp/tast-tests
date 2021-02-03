@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a7fc23_e52ceb7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-03T08:19:36Z",
+      "side": 1,
+      "message": "LGTM % final nits",
+      "revId": "2c44f56378884ac35717e1e36d316da1e0866098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59a76e43_e0217bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-03T08:19:36Z",
+      "side": 1,
+      "message": "nit: can omit",
+      "range": {
+        "startLine": 136,
+        "startChar": 18,
+        "endLine": 136,
+        "endChar": 21
+      },
+      "revId": "2c44f56378884ac35717e1e36d316da1e0866098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e6369b_9a71415e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-03T08:19:36Z",
+      "side": 1,
+      "message": "minor nit: Timeout waiting to receive",
+      "range": {
+        "startLine": 138,
+        "startChar": 11,
+        "endLine": 138,
+        "endChar": 17
+      },
+      "revId": "2c44f56378884ac35717e1e36d316da1e0866098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
