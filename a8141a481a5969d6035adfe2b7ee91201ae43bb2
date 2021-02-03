@@ -16,6 +16,63 @@
       "message": "Added the BSSID option in PS2 since hostapd attempts to assign a MAC address itself without it, and this can fail depending on the randomly generated MAC of the primary interface managed0. See https://wiki.gentoo.org/wiki/Hostapd#Invalid_BSSID_mask for more details.",
       "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb9fea5_7ab1c4dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-03T06:18:29Z",
+      "side": 1,
+      "message": "Sorry for the delay, as I want to try the option myself to know if we need corresponding change in Router.\n\nIt looks like hostapd will create/cleanup the additional interfaces, so it works by properly adding the new options.",
+      "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23636efa_12c458a8",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-03T06:18:29Z",
+      "side": 1,
+      "message": "nit: not sure if it might be clearer to note that the three fields are all \"required\", as we have some default setting for the primary BSSID and SSID.",
+      "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a4cf3d_e826c51e",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-03T06:18:29Z",
+      "side": 1,
+      "message": "should be bssids? (this also reminds me that adding unit test might help, but it\u0027s awkward that current TestConfigFormat() cannot check the ordering and duplicated keys)",
+      "range": {
+        "startLine": 619,
+        "startChar": 14,
+        "endLine": 619,
+        "endChar": 19
+      },
+      "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
