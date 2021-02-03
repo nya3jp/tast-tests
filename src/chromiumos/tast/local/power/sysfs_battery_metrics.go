@@ -215,3 +215,8 @@ func (b *SysfsBatteryMetrics) Snapshot(ctx context.Context, values *perf.Values)
 	values.Append(b.powerMetric, power)
 	return nil
 }
+
+// Stop does nothing.
+func (b *SysfsBatteryMetrics) Stop(_ context.Context, values *perf.Values) error {
+	return nil
+}

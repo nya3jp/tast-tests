@@ -276,7 +276,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to start recording the power metrics: ", err)
 		}
 		tweakPerfValues = func(pv *perf.Values) error {
-			values, err := timeline.StopRecording()
+			values, err := timeline.StopRecording(ctx)
 			if err != nil {
 				return err
 			}
