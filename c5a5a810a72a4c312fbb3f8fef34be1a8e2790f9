@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "c5a5a810a72a4c312fbb3f8fef34be1a8e2790f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d98888_608b2725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-02-03T08:02:57Z",
+      "side": 1,
+      "message": "1 second seems like a very long time, can we wait until some specific log output comes, or when  the service starts listening to network?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 46
+      },
+      "revId": "c5a5a810a72a4c312fbb3f8fef34be1a8e2790f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
