@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f24034b3_a6574ced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-03T01:37:21Z",
+      "side": 1,
+      "message": "Can we switch this to something like:\n acceptAndContinue :\u003d nodewith.Name(\"Accept and continue\").Role(role.Button)\n if err :\u003d ui.WithTimeout(some reasonable shorter timeout).WaitUntilExists(acceptAndContinue); err !\u003d nil {\n   if err :\u003d ui.LeftClick(acceptAndContinue)...\n } else {\n   if err :\u003d ui.LeftClick(gotItButton)...\n }",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "f11e558765ef492c76aaa6f4fe36b50e2f2a9b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
