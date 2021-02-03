@@ -16,6 +16,23 @@
       "message": "rebased due to recent change crrev.com/c/2645886",
       "revId": "594d310ee94f5268e4e4f3a541e2a22ff15e8e2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c0940b_a4cb90e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-03T17:16:02Z",
+      "side": 1,
+      "message": "doesn\u0027t seem relevant error. \n\n2021/02/02 23:44:13 Started test apps.LaunchGallery.clamshell_stable\n2021/02/02 23:44:13 [23:44:12.117] Error at run.go:721: Required data file gear_wheels_4000*3000_20200624.jpg missing: failed to download gs://chromiumos-test-assets-public/tast/cros/apps/gear_wheels_4000*3000_20200624.jpg: failed to stage on http://127.0.0.1:28082: got status 500: gsutil -m cp gs://chromiumos-test-assets-public/tast/cros/apps/gear_wheels_4000*3000_20200624.jpg /tmp/tast/devserver/static/.download.713675822 failed: exit status 1\n2021/02/02 23:44:13 [23:44:12.117] Stack trace:\nRequired data file gear_wheels_4000*3000_20200624.jpg missing: failed to download gs://chromiumos-test-assets-public/tast/cros/apps/gear_wheels_4000*3000_20200624.jpg: failed to stage on http://127.0.0.1:28082: got status 500: gsutil -m cp gs://chromiumos-test-assets-public/tast/cros/apps/gear_wheels_4000*3000_20200624.jpg /tmp/tast/devserver/static/.download.713675822 failed: exit status 1\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func1 (run.go:721)\n\tat chromiumos/tast/internal/planner.safeCall.func2 (safe.go:92)\n\tat runtime.goexit (asm_amd64.s:1374)\n2021/02/02 23:44:13 Completed test apps.LaunchGallery.clamshell_stable in 1ms with 1 error(s)\n\nhttps://00f74ba44b93244fcbb183bb3b2afd6847d930c034-apidata.googleusercontent.com/download/storage/v1/b/chromeos-vmtest-archive/o/betty-pi-arc-direct-tast-vm%2F8856334992331301408%2Ffirst_results%2Ftests%2Fapps.LaunchGallery.clamshell_stable%2Flog.txt?jk\u003dAFshE3WQixMMx0ZB6mtKy5Mr3ggbAQ9EPyiTYug8pRgo4AErsBA_y6BsKPs_VYDoUFxMxmb6QAjNXFW4zCB_m8q6Px99Xj7MboZagMOAs4NDhL0ryeTC4IP27-QBw5aqhiuqR5_1yuq95G6pGvNp098KT9IYgaSGBB4pU57D6HQDtoUdHfntnPcx7I1qiMDTd3IrPLPrBhGeccLJd2kBQCFyTu5de0eW0sf7JccYVJ6tcy0hC2wa2LrisID6wmIcFEWT1gXld9YEmDxBOxU2YhvtX9_htrjA3NDJ_W7j73mzZW-wEj1sj1WMwjPMJXZSXthKOOkFyPa7R_Mp2q8hKKl6wNDx1VUrJjI10LlYiNal7ke0jHFo-KSlzwn_V4-RX62-FBUFjKwfPpVRIEp5Dd_V3qmXbApKiXwZo6vG1Orqu6KYzZe1n7TF3HldrJVS2jWewrpFB-8FkYpbU9O4FHk020HJ4jj16CxKBrZ0K3qfPcIkJSi70Q3yiC22Gto92C0o2f5K7Hn4oddgkojTkMUdmNjoFFFYESsmoxMARlUGbwqZ_6eRDmi-PMBm0zAeP9PvMcMAYYRF-O-b1I-H3pNEVyruEh-0Mhf3F0pfV7MCTwGI7KNz5T8HuEjMptai07G6OLtX0It8M1JyhiMxmAQERXASpXTxwhbb_jGmev09VwyZbZFajVT60wAbUH_DI-qDT7hmdeg19ia0lB484Sk-6jK6nAPYfNzQ5-AgaeyAZyhQ8xQfGDS0jhoGTPe7iPGEDCGPe7yj86ZT05XDD4lis6QkexgXyCJ3SGB35TTGYByZ6Yr-ZVUAb5lB2Y05liyp8bO1KwPL5-d4h_jxwEybPQwyMCpbH7yPDsCw4En9b3kzAKbWniWbOaJlhUiobjHTR1jtTrKUn67pQl7PywwzQSQma-ZHQGvJrWIXS6iGQ94TdCkVcT4ULbae1KqoWBwCA4LU7xYTKN-HZUyfjoF1-xK_prwyA4PHzsCrXVPEt9QpNXQoAs_jJ7XZdhJ7nVN1Jnxsb8Bvym-c3f2ZtoAkeL0SifI74Q9kVCv8F_FotuAUMZyZIJJdv98\u0026isca\u003d1",
+      "revId": "594d310ee94f5268e4e4f3a541e2a22ff15e8e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
