@@ -94,6 +94,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1eda49c_4e55f76c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-02-03T22:01:30Z",
+      "side": 1,
+      "message": "Yeah I think you\u0027re right - we probably don\u0027t need to let tests specify this. Re the first bullet in the docs, I see this in the paragraph before:\n\n# hostapd will generate BSSID mask based on the BSSIDs that are\n# configured. hostapd will verify that dev_addr \u0026 MASK \u003d\u003d dev_addr. If this is\n# not the case, the MAC address of the radio must be changed before starting\n# hostapd (ifconfig wlan0 hw ether \u003cMAC addr\u003e). If a BSSID is configured for\n# every secondary BSS, this limitation is not applied at hostapd and other\n# masks may be used if the driver supports them (e.g., swap the locally\n# administered bit)\n\nIn particular, it says that if we configure a BSSID for every secondary BSS, we don\u0027t need the first bullet (see the auto_addr flag here: https://source.corp.google.com/chromeos_public/src/third_party/wpa_supplicant-2.9/src/ap/hostapd.c;l\u003d627). So I think we can just un-export the BSSID field and assign it to a random MAC instead of enforcing certain things on the dev_addr. Does that sound reasonable?",
+      "parentUuid": "7e78e40b_4808f613",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9a4cf3d_e826c51e",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 2
