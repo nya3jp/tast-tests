@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15787702_b58d0865",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-03T21:42:15Z",
+      "side": 1,
+      "message": "After thinking a bit, I think it is great to have a method of checking instead of getting all installed packages.\n\nInstalledPackages is basically a wrapper of \"adb pm list packages\" (https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/local/android/adb/device.go#290), but \"list packages\" can accept a filter to limit the response (https://developer.android.com/studio/command-line/adb#pm).\n\nCombining that, \"adb pm list packages \u003cpkg-name\u003e\" will reduce the load and the communication with Android runtime, which is slightly better.",
+      "range": {
+        "startLine": 163,
+        "startChar": 16,
+        "endLine": 163,
+        "endChar": 33
+      },
+      "revId": "9d807425ac5402b4562e517eabd0b4ef2d7d56b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
