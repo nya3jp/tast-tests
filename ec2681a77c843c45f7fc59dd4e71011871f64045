@@ -69,6 +69,24 @@
       "parentUuid": "2f2e99b6_093b1daf",
       "revId": "ec2681a77c843c45f7fc59dd4e71011871f64045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b747d78f_eaf73207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-02-03T04:59:16Z",
+      "side": 1,
+      "message": "I realized that we don\u0027t actually need this for the second use case - we can just use ConfigureServiceForProfile to create a Service with a hidden SSID. This change is still necessary for MBO tests though.",
+      "parentUuid": "38e201d7_250fbc64",
+      "revId": "ec2681a77c843c45f7fc59dd4e71011871f64045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
