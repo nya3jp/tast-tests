@@ -141,3 +141,8 @@ func (s *CPUUsageSource) Snapshot(ctx context.Context, values *perf.Values) erro
 
 	return nil
 }
+
+// Stop does nothing.
+func (s *CPUUsageSource) Stop(_ context.Context, values *perf.Values) error {
+	return nil
+}

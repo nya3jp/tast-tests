@@ -185,7 +185,7 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	p, err := powerMetrics.StopRecording()
+	p, err := powerMetrics.StopRecording(ctx)
 	if err != nil {
 		s.Fatal("Error while recording power metrics: ", err)
 	}

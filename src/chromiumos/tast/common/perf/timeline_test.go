@@ -14,11 +14,13 @@ import (
 )
 
 type testTimelineDatasource struct {
-	setUp, started, errSetup, errStart, errSnapshot bool
-	snapshotCount                                   int
-	snapshotChannel                                 chan int
-	snapshotDuration                                time.Duration
-	clock                                           *fakeClock
+	setUp, started                           bool
+	errSetup, errStart, errSnapshot, errStop *errors.E
+	snapshotCount                            int
+	snapshotChannel                          chan int
+	snapshotDuration                         time.Duration
+	stopCount                                int
+	clock                                    *fakeClock
 }
 
 func newDatasource() *testTimelineDatasource {
@@ -28,27 +30,21 @@ func newDatasource() *testTimelineDatasource {
 	return ds
 }
 
-var errSetup = errors.New("setup should fail")
-
 func (d *testTimelineDatasource) Setup(_ context.Context, _ string) error {
-	if d.errSetup {
-		return errSetup
+	if d.errSetup != nil {
+		return d.errSetup
 	}
 	d.setUp = true
 	return nil
 }
 
-var errStart = errors.New("start should fail")
-
 func (d *testTimelineDatasource) Start(_ context.Context) error {
-	if d.errStart {
-		return errStart
+	if d.errStart != nil {
+		return d.errStart
 	}
 	d.started = true
 	return nil
 }
-
-var errSnapshot = errors.New("snapshot should fail")
 
 func (d *testTimelineDatasource) Snapshot(ctx context.Context, v *Values) error {
 	if d.clock != nil {
@@ -56,8 +52,8 @@ func (d *testTimelineDatasource) Snapshot(ctx context.Context, v *Values) error 
 		d.clock.Advance(d.snapshotDuration)
 	}
 
-	if d.errSnapshot {
-		return errSnapshot
+	if d.errSnapshot != nil {
+		return d.errSnapshot
 	}
 
 	d.snapshotCount++
@@ -66,6 +62,16 @@ func (d *testTimelineDatasource) Snapshot(ctx context.Context, v *Values) error 
 	case d.snapshotChannel <- d.snapshotCount - 1:
 	default:
 	}
+
+	return nil
+}
+
+func (d *testTimelineDatasource) Stop(ctx context.Context, v *Values) error {
+	if d.errStop != nil {
+		return d.errStop
+	}
+
+	d.stopCount++
 
 	return nil
 }
@@ -242,14 +248,18 @@ func TestTimeline(t *testing.T) {
 		clock.WaitForSleep()
 	}
 
-	if v, err := tl.StopRecording(); err != nil {
+	if v, err := tl.StopRecording(ctx); err != nil {
 		t.Error("Error while recording: ", err)
 	} else {
 		p.Merge(v)
 	}
 
 	if d1.snapshotCount != 2 || d2.snapshotCount != 2 {
-		t.Errorf("Wrong number of snapshots collected: got (%d, %d), expected (2, 2)", d1.snapshotCount, d2.snapshotCount)
+		t.Errorf("Wrong number of snapshots collected: got (%d, %d), want (2, 2)", d1.snapshotCount, d2.snapshotCount)
+	}
+
+	if d1.stopCount != 1 || d2.stopCount != 1 {
+		t.Errorf("Wrong number of stops collected: got (%d, %d), want (1, 1)", d1.stopCount, d2.stopCount)
 	}
 
 	// Second round of recording.
@@ -265,14 +275,18 @@ func TestTimeline(t *testing.T) {
 		clock.WaitForSleep()
 	}
 
-	if v, err := tl.StopRecording(); err != nil {
+	if v, err := tl.StopRecording(ctx); err != nil {
 		t.Error("Error while recording: ", err)
 	} else {
 		p.Merge(v)
 	}
 
 	if d1.snapshotCount != 5 || d2.snapshotCount != 5 {
-		t.Errorf("Wrong number of snapshots collected: got (%d, %d), expected (5, 5)", d1.snapshotCount, d2.snapshotCount)
+		t.Errorf("Wrong number of snapshots collected: got (%d, %d), want (5, 5)", d1.snapshotCount, d2.snapshotCount)
+	}
+
+	if d1.stopCount != 2 || d2.stopCount != 2 {
+		t.Errorf("Wrong number of stops collected: got (%d, %d), want (2, 2)", d1.stopCount, d2.stopCount)
 	}
 
 	var timestamps []float64
@@ -285,11 +299,11 @@ func TestTimeline(t *testing.T) {
 		t.Fatal("Could not find timestamps metric")
 	}
 	if len(timestamps) != 5 {
-		t.Fatalf("Wrong number of timestamps logged, got %d, expected 5", len(timestamps))
+		t.Fatalf("Wrong number of timestamps logged, got %d, want 5", len(timestamps))
 	}
 	for i := 0; i < len(timestamps)-1; i++ {
 		if timestamps[i] > timestamps[i+1] {
-			t.Errorf("Timestamps logged in wrong order, expected %f < %f", timestamps[i], timestamps[i+1])
+			t.Errorf("Timestamps logged in wrong order, want %f < %f", timestamps[i], timestamps[i+1])
 		}
 	}
 }
@@ -345,7 +359,7 @@ func TestTimelineSlowSnapshot(t *testing.T) {
 	clock.Advance(210 * time.Millisecond)
 	tl.WaitForSnapshottingDone()
 
-	if _, err := tl.StopRecording(); err == nil {
+	if _, err := tl.StopRecording(ctx); err == nil {
 		t.Error("StopRecording should have failed")
 	}
 }
@@ -371,7 +385,7 @@ func TestTimelineNoStart(t *testing.T) {
 	clock.Advance(1100 * time.Millisecond)
 	tl.WaitForSnapshottingDone()
 
-	if _, err := tl.StopRecording(); err == nil {
+	if _, err := tl.StopRecording(ctx); err == nil {
 		t.Error("Snapshot should have failed without calling Start first")
 	}
 }
@@ -381,7 +395,7 @@ func TestTimelineSetupFail(t *testing.T) {
 	defer cancel()
 
 	d := newDatasource()
-	d.errSetup = true
+	d.errSetup = errors.New("setup should fail")
 
 	if _, err := NewTimeline(ctx, []TimelineDatasource{d}); err == nil {
 		t.Error("NewTimeline should have failed because of setup failure")
@@ -393,7 +407,7 @@ func TestTimelineStartFail(t *testing.T) {
 	defer cancel()
 
 	d := newDatasource()
-	d.errStart = true
+	d.errStart = errors.New("start should fail")
 
 	tl, err := NewTimeline(ctx, []TimelineDatasource{d})
 	if err != nil {
@@ -411,7 +425,8 @@ func TestTimelineSnapshotFail(t *testing.T) {
 
 	clock := NewFakeClock()
 	d := newDatasource()
-	d.errSnapshot = true
+	d.errSnapshot = errors.New("snapshot should fail")
+
 
 	tl, err := NewTimeline(ctx, []TimelineDatasource{d}, Interval(1*time.Second), WithClock(clock))
 	if err != nil {
@@ -431,7 +446,35 @@ func TestTimelineSnapshotFail(t *testing.T) {
 	clock.Advance(1100 * time.Millisecond)
 	tl.WaitForSnapshottingDone()
 
-	if _, err := tl.StopRecording(); err == nil {
+	if _, err := tl.StopRecording(ctx); err == nil || err != d.errSnapshot {
 		t.Error("Snapshot should have failed")
+	}
+}
+
+func TestTimelineStopFail(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	clock := NewFakeClock()
+	d := newDatasource()
+	d.errStop = errors.New("stop should fail")
+
+	tl, err := NewTimeline(ctx, []TimelineDatasource{d}, Interval(1*time.Second), WithClock(clock))
+	if err != nil {
+		t.Error("Failed to create Timeline: ", err)
+	}
+
+	if err := tl.Start(ctx); err != nil {
+		t.Error("Failed to start timeline: ", err)
+	}
+
+	if err := tl.StartRecording(ctx); err != nil {
+		t.Error("Failed to start recording: ", err)
+	}
+
+	// We don't need any samples to test Stop().
+
+	if _, err := tl.StopRecording(ctx); err == nil || err != d.errStop {
+		t.Error("Stop should have failed")
 	}
 }

@@ -212,7 +212,7 @@ func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	p, err := metrics.StopRecording()
+	p, err := metrics.StopRecording(ctx)
 	if err != nil {
 		s.Fatal("Error while recording power metrics: ", err)
 	}

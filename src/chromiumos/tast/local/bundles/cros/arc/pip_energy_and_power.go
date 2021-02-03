@@ -239,7 +239,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to wait %v: %v", timelineDuration, err)
 	}
 
-	pv, err := timeline.StopRecording()
+	pv, err := timeline.StopRecording(ctx)
 	if err != nil {
 		s.Fatal("Error while recording metrics: ", err)
 	}

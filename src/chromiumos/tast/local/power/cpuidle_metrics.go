@@ -168,3 +168,8 @@ func (cs *CpuidleStateMetrics) Snapshot(ctx context.Context, values *perf.Values
 	cs.lastTime = statTime
 	return nil
 }
+
+// Stop does nothing.
+func (cs *CpuidleStateMetrics) Stop(ctx context.Context, values *perf.Values) error {
+	return nil
+}

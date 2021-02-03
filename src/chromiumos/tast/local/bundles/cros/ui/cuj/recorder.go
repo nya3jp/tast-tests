@@ -196,7 +196,7 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 
 // Close clears states for all trackers.
 func (r *Recorder) Close(ctx context.Context) error {
-	r.gpuDataSource.Stop()
+	r.gpuDataSource.Close()
 	return r.frameDataTracker.Close(ctx, r.tconn)
 }
 
@@ -249,7 +249,7 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		}
 	}
 
-	vs, err := r.timeline.StopRecording()
+	vs, err := r.timeline.StopRecording(ctx)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to stop timeline: ", err)
 		if stopErr == nil {
