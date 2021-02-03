@@ -227,7 +227,10 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 		done <- true
 	}()
 	for scancode := input.EventCode(0x01); scancode < 0x220; scancode++ {
-		if scancode >= 0x80 && scancode < 0x160 {
+		// Skip KEY_SYSRQ (0x63) to avoid launching the screenshot tool. The
+		// screenshot tool can cause subsequent tests to fail by intercepting
+		// mouse clicks.
+		if (scancode >= 0x80 && scancode < 0x160) || scancode == 0x63 {
 			continue
 		}
 		// Check whether the mojo connection is already broken or not.
