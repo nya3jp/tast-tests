@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5e1c334_8cafdf0a",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-03T00:55:55Z",
+      "side": 1,
+      "message": "I imagine this should be a fatal error. If you can\u0027t list the packages to start with, should we not fail immediately?",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 53
+      },
+      "revId": "b9e064e0b198e643fe397a45a4451c6f54785e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d9ec32_25518d01",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-03T00:55:55Z",
+      "side": 1,
+      "message": "You could just return the result of `isPkgInstalled`",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 2
+      },
+      "revId": "b9e064e0b198e643fe397a45a4451c6f54785e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
