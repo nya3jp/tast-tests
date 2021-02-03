@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca1845ec_14781b53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-03T17:29:06Z",
+      "side": 1,
+      "message": "Can you verify with actually running some tests using them?\ne.g. tast run \u003cDUT\u003e \"ui.*Perf\"\n\nThe users of those functions are mostly perftests, failures are unlikely to be caught by CQ bots if some typos are made.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "b5f307d88143f01a3220588feb7eaee66b007f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "35c0b0db_22cbb115",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-02-03T17:21:45Z",
       "side": 1,
       "message": "PTAL, mukai-san from context.",
+      "revId": "b5f307d88143f01a3220588feb7eaee66b007f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b78853_e61d6740",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-03T17:29:06Z",
+      "side": 1,
+      "message": "LGTM",
       "revId": "b5f307d88143f01a3220588feb7eaee66b007f07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
