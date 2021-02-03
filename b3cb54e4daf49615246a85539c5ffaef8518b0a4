@@ -423,6 +423,30 @@
       },
       "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02856f8d_a3d0f35a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-03T11:07:15Z",
+      "side": 1,
+      "message": "You are right, it needs to be regex otherwise it fails another case which I did not recall. Thanks.",
+      "parentUuid": "a753960f_7b7309dc",
+      "range": {
+        "startLine": 116,
+        "startChar": 70,
+        "endLine": 116,
+        "endChar": 74
+      },
+      "revId": "b3cb54e4daf49615246a85539c5ffaef8518b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
