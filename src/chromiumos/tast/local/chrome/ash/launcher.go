@@ -31,12 +31,18 @@ const (
 )
 
 // Accelerator represents the accelerator key to trigger certain actions.
-type Accelerator string
+type Accelerator struct {
+	KeyCode string `json:"keyCode"`
+	Shift   bool   `json:"shift"`
+	Control bool   `json:"control"`
+	Alt     bool   `json:"alt"`
+	Search  bool   `json:"search"`
+}
 
 // Accelerator key used to trigger launcher state change.
-const (
-	AccelSearch      Accelerator = "{keyCode: 'search', shift: false, control: false, alt: false, search: false, pressed: true}"
-	AccelShiftSearch Accelerator = "{keyCode: 'search', shift: true, control: false, alt: false, search: false, pressed: true}"
+var (
+	AccelSearch      = Accelerator{KeyCode: "search", Shift: false, Control: false, Alt: false, Search: false}
+	AccelShiftSearch = Accelerator{KeyCode: "search", Shift: true, Control: false, Alt: false, Search: false}
 )
 
 // WaitForLauncherState waits until the launcher state becomes state. It waits
@@ -44,9 +50,7 @@ const (
 func WaitForLauncherState(ctx context.Context, tconn *chrome.TestConn, state LauncherState) error {
 	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
-	expr := fmt.Sprintf(
-		`tast.promisify(chrome.autotestPrivate.waitForLauncherState)('%s')`, state)
-	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.waitForLauncherState)", state); err != nil {
 		return errors.Wrap(err, "failed to wait for launcher state")
 	}
 	return nil
@@ -54,16 +58,13 @@ func WaitForLauncherState(ctx context.Context, tconn *chrome.TestConn, state Lau
 
 // TriggerLauncherStateChange will cause the launcher state change via accelerator.
 func TriggerLauncherStateChange(ctx context.Context, tconn *chrome.TestConn, accel Accelerator) error {
-	expr := fmt.Sprintf(
-		`(async () => {
-                   var acceleratorKey=%s;
-                   // Send the press event to store it in the history. It'll not be handled, so ignore the result.
-                   chrome.autotestPrivate.activateAccelerator(acceleratorKey, () => {});
-                   acceleratorKey.pressed = false;
-                   await tast.promisify(chrome.autotestPrivate.activateAccelerator)(acceleratorKey);
-                 })()`, accel)
-
-	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
+	// Send the press event to store it in the history. It'll not be handled, so ignore the result.
+	if err := tconn.Call(ctx, nil, `async (acceleratorKey) => {
+	  acceleratorKey.pressed = true;
+	  chrome.autotestPrivate.activateAccelerator(acceleratorKey, () => {});
+	  acceleratorKey.pressed = false;
+	  await tast.promisify(chrome.autotestPrivate.activateAccelerator)(acceleratorKey);
+	}`, accel); err != nil {
 		return errors.Wrap(err, "failed to execute accelerator")
 	}
 	return nil
