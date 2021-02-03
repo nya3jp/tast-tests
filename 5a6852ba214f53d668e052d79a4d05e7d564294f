@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6159b9a1_50628262",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-03T02:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f5f747e_1aea052e",
+      "range": {
+        "startLine": 410,
+        "startChar": 31,
+        "endLine": 410,
+        "endChar": 41
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef665bf3_392a586a",
@@ -93,6 +117,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60cbf22f_66744bb9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-03T02:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3f6dab5_e9056d1c",
+      "range": {
+        "startLine": 411,
+        "startChar": 84,
+        "endLine": 411,
+        "endChar": 111
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f63d424_fedd4196",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-03T02:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef665bf3_392a586a",
+      "range": {
+        "startLine": 411,
+        "startChar": 37,
+        "endLine": 411,
+        "endChar": 43
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db1a9d5a_49c69c78",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-03T02:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70460b0b_f940d037",
+      "range": {
+        "startLine": 411,
+        "startChar": 19,
+        "endLine": 411,
+        "endChar": 36
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d40e0fe9_b91f42d8",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-02-02T23:39:06Z",
       "side": 1,
       "message": "Probably should log the error if it is not nil for debugging.",
+      "range": {
+        "startLine": 413,
+        "startChar": 5,
+        "endLine": 413,
+        "endChar": 8
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba93106_3a5119d2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-03T02:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d40e0fe9_b91f42d8",
       "range": {
         "startLine": 413,
         "startChar": 5,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "698c748c_284e3d22",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-03T02:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea30e5a8_51d5c60a",
+      "range": {
+        "startLine": 414,
+        "startChar": 3,
+        "endLine": 416,
+        "endChar": 4
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c512d6d5_7c12a93f",
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98c97077_7d4b2a47",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-03T02:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c512d6d5_7c12a93f",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 84
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98b94249_144eb97b",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-02-02T22:51:46Z",
       "side": 1,
       "message": "combine should be available now",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 27
+      },
+      "revId": "5a6852ba214f53d668e052d79a4d05e7d564294f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3533bffb_de0e227f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-03T02:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98b94249_144eb97b",
       "range": {
         "startLine": 199,
         "startChar": 1,
