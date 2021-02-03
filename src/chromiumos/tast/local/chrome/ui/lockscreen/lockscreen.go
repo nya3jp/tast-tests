@@ -38,7 +38,7 @@ type State struct {
 // GetState returns the login status information from chrome.autotestPrivate.loginStatus
 func GetState(ctx context.Context, tconn *chrome.TestConn) (State, error) {
 	var st State
-	if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.loginStatus)()`, &st); err != nil {
+	if err := tconn.Call(ctx, &st, `tast.promisify(chrome.autotestPrivate.loginStatus)`); err != nil {
 		return st, errors.Wrap(err, "failed calling chrome.autotestPrivate.loginStatus")
 	}
 	return st, nil
