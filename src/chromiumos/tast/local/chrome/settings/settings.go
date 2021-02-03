@@ -8,7 +8,6 @@ package settings
 
 import (
 	"context"
-	"fmt"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -19,16 +18,7 @@ import (
 // https://cs.chromium.org/chromium/src/components/zoom/page_zoom_constants.cc
 func DefaultZoom(ctx context.Context, tconn *chrome.TestConn) (float64, error) {
 	var zoom float64
-	if err := tconn.EvalPromise(ctx,
-		`new Promise(function(resolve, reject) {
-		  chrome.settingsPrivate.getDefaultZoom(function(zoom) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		      return;
-		    }
-		    resolve(zoom);
-		  })
-		})`, &zoom); err != nil {
+	if err := tconn.Call(ctx, &zoom, "tast.promisify(chrome.settingsPrivate.getDefaultZoom)"); err != nil {
 		return 0, err
 	}
 	return zoom, nil
@@ -38,21 +28,10 @@ func DefaultZoom(ctx context.Context, tconn *chrome.TestConn) (float64, error) {
 // in zoom::kPresetZoomFactors. See:
 // https://cs.chromium.org/chromium/src/components/zoom/page_zoom_constants.cc
 func SetDefaultZoom(ctx context.Context, tconn *chrome.TestConn, zoom float64) error {
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.settingsPrivate.setDefaultZoom(%f, function(success) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		      return;
-		    }
-		    if (!success) {
-		      reject(new Error("setDefaultZoom() failed"));
-		      return;
-		    }
-		    resolve();
-		  })
-		})`, zoom)
-	return tconn.EvalPromise(ctx, expr, nil)
+	return tconn.Call(ctx, nil, `async (zoom) => {
+	  if (!await tast.promisify(chrome.settingsPrivate.setDefaultZoom)(zoom))
+	    throw new Error("setDefaultZoom() failed");
+	}`, zoom)
 }
 
 // NightLightScheduleValue provides available values for the Night Light

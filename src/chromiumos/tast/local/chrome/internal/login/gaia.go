@@ -25,7 +25,7 @@ const localPassword = "test0000"
 // This function is heavily based on NavigateGaiaLogin() in Catapult's
 // telemetry/telemetry/internal/backends/chrome/oobe.py.
 func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Session, oobeConn *driver.Conn) error {
-	if err := oobeConn.Exec(ctx, "Oobe.skipToLoginForTesting()"); err != nil {
+	if err := oobeConn.Call(ctx, nil, "Oobe.skipToLoginForTesting"); err != nil {
 		return err
 	}
 
@@ -39,7 +39,7 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 		// of the accounts.google.com webview. Use Oobe.showAddUserForTesting() to open that
 		// webview so we can reuse the same login logic below.
 		testing.ContextLogf(ctx, "Found %s, force opening GAIA webview", url)
-		if err := oobeConn.Exec(ctx, "Oobe.showAddUserForTesting()"); err != nil {
+		if err := oobeConn.Call(ctx, nil, "Oobe.showAddUserForTesting"); err != nil {
 			return err
 		}
 	}
@@ -75,7 +75,7 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 	if err := insertGAIAField(ctx, gaiaConn, "#identifierId", cfg.User); err != nil {
 		return errors.Wrap(err, "failed to fill username field")
 	}
-	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
+	if err := oobeConn.Call(ctx, nil, "Oobe.clickGaiaPrimaryButtonForTesting"); err != nil {
 		return errors.Wrap(err, "failed to click on the primary action button")
 	}
 
@@ -103,7 +103,7 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 	} else {
 		return errors.Errorf("got an invalid authentication type (%q) for this account", authType)
 	}
-	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
+	if err := oobeConn.Call(ctx, nil, "Oobe.clickGaiaPrimaryButtonForTesting"); err != nil {
 		return errors.Wrap(err, "failed to click on the primary action button")
 	}
 
@@ -179,12 +179,10 @@ func insertGAIAField(ctx context.Context, gaiaConn *driver.Conn, selector, value
 	}
 
 	// Fill the field with value.
-	script := fmt.Sprintf(`
-		(function() {
-			const field = document.querySelector(%q);
-			field.value = %q;
-		})()`, selector, value)
-	if err := gaiaConn.Exec(ctx, script); err != nil {
+	if err := gaiaConn.Call(ctx, nil, `(selector, value) => {
+	  const field = document.querySelector(selector);
+	  field.value = value;
+	}`, selector, value); err != nil {
 		return errors.Wrapf(err, "failed to use %q element", selector)
 	}
 	return nil
@@ -200,32 +198,36 @@ func performUnicornParentLogin(ctx context.Context, cfg *config.Config, sess *dr
 	}
 
 	testing.ContextLogf(ctx, "Clicking button that matches parent email: %q", normalizedParentUser)
-	buttonTextQuery := `
-		(function() {
-			const buttons = document.querySelectorAll('%[1]s');
-			if (buttons === null){
-				throw new Error('no buttons found on screen');
-			}
-			return [...buttons].map(button=>button.textContent);
-		})();`
+	findButtonText := func(ctx context.Context, selector string) ([]string, error) {
+		var ret []string
+		err := gaiaConn.Call(ctx, &ret, `(selector) => {
+		  const buttons = document.querySelectorAll(selector);
+		  if (buttons === null){
+		    throw new Error('no buttons found on screen');
+		  }
+		  return [...buttons].map(button=>button.textContent);
+		}`, selector)
+		return ret, err
+	}
 
-	clickButtonQuery := `
-                (function() {
-                        const buttons = document.querySelectorAll('%[1]s');
-                        if (buttons === null){
-                                throw new Error('no buttons found on screen');
-                        }
-                        for (const button of buttons) {
-                                if (button.textContent.indexOf(%[2]q) !== -1) {
-                                        button.click();
-                                        return;
-                                }
-                        }
-                        throw new Error(%[2]q + ' button not found');
-                })();`
+	clickButton := func(ctx context.Context, selector, text string) error {
+		return gaiaConn.Call(ctx, nil, `(selector, text) => {
+		  const buttons = document.querySelectorAll(selector);
+		  if (buttons === null){
+		    throw new Error('no buttons found on screen');
+		  }
+		  for (const button of buttons) {
+		    if (button.textContent.indexOf(text) !== -1) {
+		      button.click();
+		      return;
+		    }
+		  }
+		  throw new Error(text + ' button not found');
+		}`, selector, text)
+	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var buttons []string
-		if err := gaiaConn.Eval(ctx, fmt.Sprintf(buttonTextQuery, "[data-email]"), &buttons); err != nil {
+		buttons, err := findButtonText(ctx, "[data-email]")
+		if err != nil {
 			return err
 		}
 	NextButton:
@@ -249,7 +251,7 @@ func performUnicornParentLogin(ctx context.Context, cfg *config.Config, sess *dr
 			}
 
 			// Button matches. Click it.
-			return gaiaConn.Exec(ctx, fmt.Sprintf(clickButtonQuery, "[data-email]", button))
+			return clickButton(ctx, "[data-email]", button)
 		}
 		return errors.New("no button matches email")
 	}, pollOpts); err != nil {
@@ -260,14 +262,13 @@ func performUnicornParentLogin(ctx context.Context, cfg *config.Config, sess *dr
 	if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", cfg.ParentPass); err != nil {
 		return err
 	}
-	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
+	if err := oobeConn.Call(ctx, nil, "Oobe.clickGaiaPrimaryButtonForTesting"); err != nil {
 		return errors.Wrap(err, "failed to click on the primary action button")
 	}
 
 	testing.ContextLog(ctx, "Accepting Unicorn permissions")
-	clickAgreeQuery := fmt.Sprintf(clickButtonQuery, "button", "agree")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return gaiaConn.Exec(ctx, clickAgreeQuery)
+		return clickButton(ctx, "button", "agree")
 	}, pollOpts); err != nil {
 		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to accept Unicorn permissions")
 	}
