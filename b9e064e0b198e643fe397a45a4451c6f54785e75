@@ -41,6 +41,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ff11ce_48e549b9",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-03T19:23:55Z",
+      "side": 1,
+      "message": "Sure. I changed the function to verifyPkgInstalled.",
+      "parentUuid": "173b56d6_3f9e37bf",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "b9e064e0b198e643fe397a45a4451c6f54785e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "828c8125_10ec8da0",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-03T19:23:55Z",
+      "side": 1,
+      "message": "Sure. I move it out and defined it as verifyPkgInstalled()",
+      "parentUuid": "02e3159c_ad2104b9",
+      "revId": "b9e064e0b198e643fe397a45a4451c6f54785e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5e1c334_8cafdf0a",
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc5cabe6_ef0a0b44",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-03T19:23:55Z",
+      "side": 1,
+      "message": "I changed the return value of the check function and just do early return for error.",
+      "parentUuid": "a5e1c334_8cafdf0a",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 53
+      },
+      "revId": "b9e064e0b198e643fe397a45a4451c6f54785e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5d9ec32_25518d01",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-02-03T00:55:55Z",
       "side": 1,
       "message": "You could just return the result of `isPkgInstalled`",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 2
+      },
+      "revId": "b9e064e0b198e643fe397a45a4451c6f54785e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65530de5_cec7d9f0",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-03T19:23:55Z",
+      "side": 1,
+      "message": "Thanks - that is neat! The function is now changed to return two values and I changed the handling accordingly.",
+      "parentUuid": "f5d9ec32_25518d01",
       "range": {
         "startLine": 164,
         "startChar": 1,
