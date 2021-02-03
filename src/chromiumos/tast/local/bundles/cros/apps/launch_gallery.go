@@ -21,7 +21,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const testFile = "gear_wheels_4000*3000_20200624.jpg"
+const testFile = "gear_wheels_4000x3000_20200624.jpg"
 
 func init() {
 	testing.AddTest(&testing.Test{
