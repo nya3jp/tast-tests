@@ -10,22 +10,18 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/peripherals/peripheraltypes"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/diagnosticsapp"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/launcher"
-	"chromiumos/tast/local/chrome/ui/printmanagementapp"
-	"chromiumos/tast/local/chrome/ui/scanapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
 
 // testParams contains all the data needed to run a single test iteration.
 type testParams struct {
-	appName     string
+	app         apps.App
 	query       string
 	featureFlag string
-	waitForApp  peripheraltypes.WaitForAppFn
 }
 
 func init() {
@@ -44,29 +40,26 @@ func init() {
 			{
 				Name: "diagnostics",
 				Val: testParams{
-					appName:     apps.Diagnostics.Name,
+					app:         apps.Diagnostics,
 					query:       "diagnostic",
 					featureFlag: "DiagnosticsApp",
-					waitForApp:  diagnosticsapp.WaitForApp,
 				},
 			},
 			{
 				Name: "print_management",
 				Val: testParams{
-					appName:     apps.PrintManagement.Name,
+					app:         apps.PrintManagement,
 					query:       apps.PrintManagement.Name,
 					featureFlag: "",
-					waitForApp:  printmanagementapp.WaitForApp,
 				},
 				Pre: chrome.LoggedIn(),
 			},
 			{
 				Name: "scan",
 				Val: testParams{
-					appName:     apps.Scan.Name,
+					app:         apps.Scan,
 					query:       apps.Scan.Name,
 					featureFlag: "ScanningUI",
-					waitForApp:  scanapp.WaitForApp,
 				},
 			},
 		},
@@ -95,13 +88,13 @@ func LaunchAppFromLauncher(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	err = launcher.SearchAndLaunchWithQuery(ctx, tconn, s.Param().(testParams).query, s.Param().(testParams).appName)
+	err = launcher.SearchAndLaunchWithQuery(ctx, tconn, s.Param().(testParams).query, s.Param().(testParams).app.Name)
 	if err != nil {
 		s.Fatal("Failed to search and launch app: ", err)
 	}
 
-	// App should be launched.
-	if err := s.Param().(testParams).waitForApp(ctx, tconn); err != nil {
-		s.Fatal("Failed to launch app: ", err)
+	err = ash.WaitForApp(ctx, tconn, s.Param().(testParams).app.ID)
+	if err != nil {
+		s.Fatal("Could not find app in shelf after launch: ", err)
 	}
 }
