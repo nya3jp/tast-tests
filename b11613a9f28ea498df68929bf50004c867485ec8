@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d3f921_aa55521f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-03T13:21:27Z",
+      "side": 1,
+      "message": "This will always download both files. Is it possible to filter the boards based on architecture and have separate subtests for x86 and arm?",
+      "revId": "b11613a9f28ea498df68929bf50004c867485ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
