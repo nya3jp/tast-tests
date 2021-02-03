@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c10d5bea_00c919e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-03T17:29:17Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2605495/2\n\nI pushed a CL (everyday multi tasking CUJ) with tests reside under UI but also want to invoke camera testing. The .../ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go imports camera packages.\n\nAlso, that CL copies the cca_ui.js files from .../camera/data/ to .../ui/data/. We need find a way to reuse the cca_ui.js. Do you have any recommendations?",
+      "parentUuid": "b5bb078d_a3a01373",
+      "revId": "bbf39a9b36ad8cc6e08fa5823976e63b53c05069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9eb11635_b9bb1497",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-03T02:18:13Z",
       "side": 1,
       "message": "This should be notified to camera test owners.  shik \u0026 inker -- looks like you\u0027re the active author of those files.  Can you take a look?",
+      "revId": "bbf39a9b36ad8cc6e08fa5823976e63b53c05069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "540190fb_c83f9f14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-03T17:29:17Z",
+      "side": 1,
+      "message": "Thanks Jun for inviting Shik and Inker!",
+      "parentUuid": "9eb11635_b9bb1497",
       "revId": "bbf39a9b36ad8cc6e08fa5823976e63b53c05069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "816a338b_967ed702",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-03T17:29:17Z",
+      "side": 1,
+      "message": "Sure. I changed the year back to its original value in all files.",
+      "parentUuid": "bc10d2df_d10560ac",
+      "revId": "bbf39a9b36ad8cc6e08fa5823976e63b53c05069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99d11068_1fc057f2",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-02-03T02:18:13Z",
       "side": 1,
       "message": "Looks like this package does not call Lock/Unlock anymore?  Is this line still necessary?",
+      "revId": "bbf39a9b36ad8cc6e08fa5823976e63b53c05069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f639c6_8b32219b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-03T17:29:17Z",
+      "side": 1,
+      "message": "I did a search and the Lock/Unlock don\u0027t appear in the package. I removed it.",
+      "parentUuid": "99d11068_1fc057f2",
       "revId": "bbf39a9b36ad8cc6e08fa5823976e63b53c05069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
