@@ -22,6 +22,30 @@
       },
       "revId": "f11e558765ef492c76aaa6f4fe36b50e2f2a9b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18a07d85_d9c69fa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-03T02:34:55Z",
+      "side": 1,
+      "message": "Tried and it fails for both cases (Accept and continue and Got it)\n\tacceptAndContinueButton :\u003d nodewith.Name(\"Accept and continue\").Role(role.Button)\n\tgotItButton :\u003d nodewith.Name(\"Got it\").Role(role.Button)\n\tif err :\u003d ui.WithTimeout(10 * time.Second).WaitUntilExists(acceptAndContinueButton)(ctx); err !\u003d nil {\n\t\tif err :\u003d ui.LeftClick(acceptAndContinueButton)(ctx); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to click Accept and continue : \", err)\n\t\t}\n\t} else {\n\t\tif err :\u003d ui.LeftClick(gotItButton)(ctx); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to click Got it : \", err)\n\t\t}\n\t}",
+      "parentUuid": "f24034b3_a6574ced",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "f11e558765ef492c76aaa6f4fe36b50e2f2a9b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
