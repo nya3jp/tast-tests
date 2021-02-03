@@ -7,8 +7,6 @@ package mouse
 
 import (
 	"context"
-	"encoding/json"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -34,8 +32,7 @@ func Click(ctx context.Context, tconn *chrome.TestConn, location coords.Point, b
 	if err := Move(ctx, tconn, location, 0); err != nil {
 		return errors.Wrap(err, "failed to move to the target location")
 	}
-	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.mouseClick)(%q)`, button)
-	return tconn.EvalPromise(ctx, expr, nil)
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.mouseClick)", button)
 }
 
 // DoubleClick causes 2 mouse click events with an given interval. The location is relative to the top-left of
@@ -44,26 +41,25 @@ func DoubleClick(ctx context.Context, tconn *chrome.TestConn, location coords.Po
 	if err := Move(ctx, tconn, location, 0); err != nil {
 		return errors.Wrap(err, "failed to move to the target location")
 	}
-	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.mouseClick)(%q)`, LeftButton)
-	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.mouseClick)", LeftButton); err != nil {
 		return err
 	}
 	if err := testing.Sleep(ctx, doubleClickInterval); err != nil {
 		return errors.Wrap(err, "failed to wait for the gap between the double click")
 	}
-	return tconn.EvalPromise(ctx, expr, nil)
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.mouseClick)", LeftButton)
 }
 
 // Press requests a mouse press event on the current location of the mouse cursor.
 // Ash will consider the button stays pressed, until release is requested.
 func Press(ctx context.Context, tconn *chrome.TestConn, button Button) error {
-	return tconn.EvalPromise(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.mousePress)(%q)`, button), nil)
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.mousePress)", button)
 }
 
 // Release requests a release event of a mouse button. It will do nothing
 // when the button is not pressed.
 func Release(ctx context.Context, tconn *chrome.TestConn, button Button) error {
-	return tconn.EvalPromise(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.mouseRelease)(%q)`, button), nil)
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.mouseRelease)", button)
 }
 
 // Move requests to move the mouse cursor to a certain location. The
@@ -72,12 +68,7 @@ func Release(ctx context.Context, tconn *chrome.TestConn, button Button) error {
 // specified location. Otherwise, the cursor should move linearly during the
 // period. Returns after the move event is handled by Ash.
 func Move(ctx context.Context, tconn *chrome.TestConn, location coords.Point, duration time.Duration) error {
-	locationData, err := json.Marshal(location)
-	if err != nil {
-		return err
-	}
-	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.mouseMove)(%s, %d)`, string(locationData), duration/time.Millisecond)
-	return tconn.EvalPromise(ctx, expr, nil)
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.mouseMove)", location, duration/time.Millisecond)
 }
 
 // Drag is a helper function to cause a drag of the left button from start

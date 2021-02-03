@@ -15,7 +15,7 @@ import (
 // If the JavaScript fails to execute, an error is returned.
 func RootDebugInfo(ctx context.Context, tconn *chrome.TestConn) (string, error) {
 	var out string
-	err := tconn.EvalPromise(ctx, "tast.promisify(chrome.automation.getDesktop)().then(root => root+'');", &out)
+	err := tconn.Eval(ctx, "tast.promisify(chrome.automation.getDesktop)().then(root => root+'')", &out)
 	return out, err
 }
 
