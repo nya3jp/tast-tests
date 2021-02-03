@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "173b56d6_3f9e37bf",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-03T01:02:56Z",
+      "side": 1,
+      "message": "we often avoid is/get/has prefixes etc in Go.\n\nMaybe, verifyPkgInstalled?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "b9e064e0b198e643fe397a45a4451c6f54785e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5e1c334_8cafdf0a",
         "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
         "patchSetId": 2
