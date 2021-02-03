@@ -7,6 +7,7 @@ package chrome
 import (
 	"context"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 
 	"github.com/mafredri/cdp/protocol/target"
@@ -36,6 +37,10 @@ func DeprecatedPrepareExtensions() (extDirs []string, err error) {
 	if err != nil {
 		return nil, err
 	}
+	if err := os.Chmod(dir, 0755); err != nil {
+		return nil, err
+	}
+
 	exts, err := extension.PrepareExtensions(filepath.Join(dir, "extensions"), nil, "")
 	if err != nil {
 		return nil, err
