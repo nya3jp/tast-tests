@@ -33,6 +33,24 @@
       "message": "nit: Can you name it extensionsDir? (because it contains multiple extensions)",
       "revId": "fbfef2df43f000043c75682d01b846987685cdbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ad4a37_e610749a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-03T21:10:48Z",
+      "side": 1,
+      "message": "Done. Also added comments.",
+      "parentUuid": "826142f1_d9972a42",
+      "revId": "fbfef2df43f000043c75682d01b846987685cdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
