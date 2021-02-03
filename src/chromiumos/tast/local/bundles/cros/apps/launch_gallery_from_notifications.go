@@ -34,7 +34,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"gear_wheels_4000*3000_20200624.jpg", "download_link.html"},
+		Data:         []string{"gear_wheels_4000x3000_20200624.jpg", "download_link.html"},
 		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{
 			{
@@ -63,7 +63,7 @@ func LaunchGalleryFromNotifications(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
 	const (
-		testImageFileName    = "gear_wheels_4000_3000_20200624.jpg" // Chrome changes asterisk to underscore.
+		testImageFileName    = "gear_wheels_4000x3000_20200624.jpg"
 		uiTimeout            = 20 * time.Second
 		downloadCompleteText = "Download complete"
 	)
