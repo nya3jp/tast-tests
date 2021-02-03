@@ -118,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd9fa0ce_acfa9576",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-03T22:35:39Z",
+      "side": 1,
+      "message": "\u003e So I think we can just un-export the BSSID field and assign it to a random MAC instead of enforcing certain things on the dev_addr. Does that sound reasonable?\n\nSure, if that works.\n\nOr if you can avoid specifying BSSIDs altogether (and let hostapd figure it out), that works for me too.",
+      "parentUuid": "a1eda49c_4e55f76c",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9a4cf3d_e826c51e",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 2
