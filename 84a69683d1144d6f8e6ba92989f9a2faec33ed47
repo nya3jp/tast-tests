@@ -157,6 +157,24 @@
       "parentUuid": "62c47a86_0e69e133",
       "revId": "84a69683d1144d6f8e6ba92989f9a2faec33ed47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "837dbfe9_a98a1a2c",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-02-03T03:24:51Z",
+      "side": 1,
+      "message": "Thanks! Adding Stop() is exactly what I thought initially, but I think we can do the same thing with values.Set() in Start() and Snapshot() since values.Set() replaces the data points completely so we don\u0027t need to care about those values are averaged out.\n\nHowever, if we can add Stop() to Timeline, it is cleaner way to do that so I think both ways are acceptable. (+oka, +tast-owners any thoughts?)\n\nIf you go in this way, it is a good idea that separating this into 2 CLs: implement Stop() and add the battery logging. Also, we need to add some tests in timeline_test.go to ensure Stop() behaves as expected.",
+      "parentUuid": "d7d6922b_e5c4a22d",
+      "revId": "84a69683d1144d6f8e6ba92989f9a2faec33ed47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
