@@ -209,6 +209,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93169ac5_5c26fd30",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-03T21:10:48Z",
+      "side": 1,
+      "message": "We need more discussion for this, Shuhei. If two configuration fields match each other exactly, isn\u0027t it safe to assume they can be re-used? Do you have a use case in mind that we cannot reuse the field?\n\nI realized you want to \"always refuse to reuse when it is set, no matter it is same or not\". So do you propose to change the Config struct to have a flag for each field to indicate if it is being used or not? (because by default we have no idea if a field is set or not just by checking its value). IMHO this approach will make it unnecessarily complicated.",
+      "parentUuid": "cd9682cd_8085a7c0",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 49
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6583b47f_c9a0b97f",
         "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
         "patchSetId": 6
