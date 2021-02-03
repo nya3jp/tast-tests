@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e615004_6cc6c732",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-02-03T09:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "227ed214_0c8dfe36",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "05110d9e088fbe9632ab1eb0730259dffd06f331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "896132ed_7141dfb4",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-26T08:38:19Z",
       "side": 1,
       "message": "another small optional nit: I think arc.Accessibility* already includes arc.Accessibility*.vm. (e.g. if you run `tast run arc.Accessibility*`, then it includes vm prefixed ones.) I would instead say, for example,  \"arc.Accessibility* on eve and hatch-arc-r\".",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "05110d9e088fbe9632ab1eb0730259dffd06f331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b68694_87ba8a4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-02-03T09:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "896132ed_7141dfb4",
       "range": {
         "startLine": 15,
         "startChar": 6,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "648b9c03_c12dd6be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-02-03T09:00:38Z",
+      "side": 1,
+      "message": "It seems to be too complicated to do that",
+      "parentUuid": "7204fceb_bf59306c",
+      "range": {
+        "startLine": 217,
+        "startChar": 3,
+        "endLine": 217,
+        "endChar": 4
+      },
+      "revId": "05110d9e088fbe9632ab1eb0730259dffd06f331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e63fbfd_2574dc9b",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-26T08:38:19Z",
       "side": 1,
       "message": "Similar here, can we check attribute related to state description here and below?",
+      "range": {
+        "startLine": 118,
+        "startChar": 30,
+        "endLine": 118,
+        "endChar": 32
+      },
+      "revId": "05110d9e088fbe9632ab1eb0730259dffd06f331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffb59926_b93e9e16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1412928
+      },
+      "writtenOn": "2021-02-03T09:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e63fbfd_2574dc9b",
       "range": {
         "startLine": 118,
         "startChar": 30,
