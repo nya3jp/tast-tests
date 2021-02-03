@@ -145,19 +145,22 @@ func Groups(gs ...string) Option {
 	return GID(gids...)
 }
 
-// checkMode panics if m contains any non-permission-related bits.
-func checkMode(m os.FileMode) {
+// checkMode returns false if m contains any non-permission-related bits.
+func checkMode(m os.FileMode, p *Pattern) bool {
 	if invalid := m & ^modeMask; invalid != 0 {
-		panic(fmt.Sprintf("invalid bit(s) %04o", m))
+		p.errors = append(p.errors, fmt.Sprintf("invalid bit(s) %04o", m))
+		return false
 	}
+	return true
 }
 
 // Mode requires that permission-related bits in the path's mode exactly match m.
 // Only 0777, setuid, setgid, and the sticky bit may be supplied.
 func Mode(m os.FileMode) Option {
 	return func(p *Pattern) {
-		checkMode(m)
-		p.mode = &m
+		if checkMode(m, p) {
+			p.mode = &m
+		}
 	}
 }
 
@@ -165,8 +168,9 @@ func Mode(m os.FileMode) Option {
 // Only 0777, setuid, setgid, and the sticky bit may be supplied.
 func NotMode(nm os.FileMode) Option {
 	return func(p *Pattern) {
-		checkMode(nm)
-		p.notMode = &nm
+		if checkMode(nm, p) {
+			p.notMode = &nm
+		}
 	}
 }
 
