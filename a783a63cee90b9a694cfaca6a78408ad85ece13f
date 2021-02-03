@@ -34,6 +34,24 @@
       "parentUuid": "da05922c_660bb3a6",
       "revId": "a783a63cee90b9a694cfaca6a78408ad85ece13f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7267135_8aac8e1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-02-03T02:18:19Z",
+      "side": 1,
+      "message": "Thanks, I understood it now.\nAs I am not familiar with the SDK, I would write like\n\"Note that the folder name in P and R SDKs are \"Q\" and \"S\" respectively.\"\nHowever it may be too much for actual readers. I think PS6 is OK as long as developers who touch SDKs can understand and know that this is not mistake.",
+      "parentUuid": "86e7b954_0dbae141",
+      "revId": "a783a63cee90b9a694cfaca6a78408ad85ece13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

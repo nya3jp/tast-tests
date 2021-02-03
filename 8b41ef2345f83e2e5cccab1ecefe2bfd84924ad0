@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "235dd556_6f344191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-02-03T02:18:19Z",
+      "side": 1,
+      "message": "LGTM.\nI\u0027ve left one suggestion, but since I am not very familiar with Android SDK, I\u0027d defer it to you.",
+      "revId": "8b41ef2345f83e2e5cccab1ecefe2bfd84924ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
