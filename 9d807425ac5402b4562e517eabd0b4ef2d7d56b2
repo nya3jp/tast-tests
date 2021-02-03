@@ -22,6 +22,30 @@
       },
       "revId": "9d807425ac5402b4562e517eabd0b4ef2d7d56b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a43fa4b0_3a61291f",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-03T23:05:55Z",
+      "side": 1,
+      "message": "Agreed! I\u0027m more than happen to modify the code further down to the android packages. Please check.",
+      "parentUuid": "15787702_b58d0865",
+      "range": {
+        "startLine": 163,
+        "startChar": 16,
+        "endLine": 163,
+        "endChar": 33
+      },
+      "revId": "9d807425ac5402b4562e517eabd0b4ef2d7d56b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
