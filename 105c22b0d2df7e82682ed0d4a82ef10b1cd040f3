@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab64222_686bc606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-03T00:40:55Z",
+      "side": 1,
+      "message": "now, trace.Run should ensure this?",
+      "revId": "105c22b0d2df7e82682ed0d4a82ef10b1cd040f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d38c24_cb6bde7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-03T00:40:55Z",
+      "side": 1,
+      "message": "(optional,offtopic, but as you\u0027re here):\n\nrunPrefix + \"-tracing\" is simpler.",
+      "range": {
+        "startLine": 159,
+        "startChar": 19,
+        "endLine": 159,
+        "endChar": 55
+      },
+      "revId": "105c22b0d2df7e82682ed0d4a82ef10b1cd040f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704526e5_ed76c8c7",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-03T00:40:55Z",
+      "side": 1,
+      "message": "Do you need driver.Session to implement trace.Traceable?\nLooks like there\u0027s no use?",
+      "range": {
+        "startLine": 228,
+        "startChar": 16,
+        "endLine": 228,
+        "endChar": 42
+      },
+      "revId": "105c22b0d2df7e82682ed0d4a82ef10b1cd040f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
