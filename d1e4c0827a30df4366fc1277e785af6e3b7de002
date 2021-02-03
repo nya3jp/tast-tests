@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0e69f29_d783029c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-03T01:31:52Z",
+      "side": 1,
+      "message": "Not sure this will actually fix pkg.go.dev, but it is at least a start and a definite complaint.",
+      "revId": "d1e4c0827a30df4366fc1277e785af6e3b7de002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
