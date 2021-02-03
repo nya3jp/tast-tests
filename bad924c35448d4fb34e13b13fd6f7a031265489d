@@ -33,6 +33,41 @@
       "message": "LGTM.",
       "revId": "bad924c35448d4fb34e13b13fd6f7a031265489d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdcc3b6a_a6b81f89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-02-03T17:07:11Z",
+      "side": 1,
+      "message": "No problem, fingers crossed! :)",
+      "parentUuid": "4f9596bd_730caef3",
+      "revId": "bad924c35448d4fb34e13b13fd6f7a031265489d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "120446d4_4a2a411c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-02-03T17:07:11Z",
+      "side": 1,
+      "message": "Thanks for reviewing! :)",
+      "revId": "bad924c35448d4fb34e13b13fd6f7a031265489d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
