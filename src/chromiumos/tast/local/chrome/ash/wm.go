@@ -6,8 +6,6 @@ package ash
 
 import (
 	"context"
-	"encoding/json"
-	"fmt"
 	"math"
 	"sync"
 	"time"
@@ -208,14 +206,8 @@ func WMEventTypeForState(state WindowStateType) WMEventType {
 // SetWindowState requests changing the state of the window to the requested
 // event type and returns the updated state.
 func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEventType) (WindowStateType, error) {
-	change, err := json.Marshal(&windowStateChange{EventType: et})
-	if err != nil {
-		return WindowStateNormal, err
-	}
-
-	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setAppWindowState)(%d, %s)`, id, string(change))
 	var state WindowStateType
-	if err = tconn.EvalPromise(ctx, expr, &state); err != nil {
+	if err := tconn.Call(ctx, &state, "tast.promisify(chrome.autotestPrivate.setAppWindowState)", id, &windowStateChange{EventType: et}); err != nil {
 		return WindowStateNormal, err
 	}
 	return state, nil
@@ -255,7 +247,7 @@ func SetWindowBounds(ctx context.Context, tconn *chrome.TestConn, id int, b coor
 
 // CloseWindow requests to close this window.
 func (w *Window) CloseWindow(ctx context.Context, tconn *chrome.TestConn) error {
-	return tconn.EvalPromise(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.closeAppWindow)(%d)`, w.ID), nil)
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.closeAppWindow)", w.ID)
 }
 
 // SetARCAppWindowState sends WM event to ARC app window to change its window state, and returns the expected new state type.
@@ -374,16 +366,7 @@ func WaitForCondition(ctx context.Context, tconn *chrome.TestConn, predicate fun
 
 // SwapWindowsInSplitView swaps the positions of snapped windows in split view.
 func SwapWindowsInSplitView(ctx context.Context, tconn *chrome.TestConn) error {
-	expr := `new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.swapWindowsInSplitView(function() {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve();
-		    }
-		  });
-		})`
-	return tconn.EvalPromise(ctx, expr, nil)
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.swapWindowsInSplitView)")
 }
 
 // OverviewState represents the animation state of overview mode.
@@ -399,9 +382,7 @@ const (
 func WaitForOverviewState(ctx context.Context, tconn *chrome.TestConn, state OverviewState, timeout time.Duration) error {
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
-	expr := fmt.Sprintf(
-		`tast.promisify(chrome.autotestPrivate.waitForOverviewState)('%s')`, state)
-	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.waitForOverviewState)", state); err != nil {
 		return errors.Wrap(err, "failed to wait for overview state")
 	}
 	return nil
@@ -425,7 +406,7 @@ func InternalDisplayMode(ctx context.Context, tconn *chrome.TestConn) (*display.
 // system.
 func GetAllWindows(ctx context.Context, tconn *chrome.TestConn) ([]*Window, error) {
 	var windows []*Window
-	if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.getAppWindowList)()`, &windows); err != nil {
+	if err := tconn.Call(ctx, &windows, "tast.promisify(chrome.autotestPrivate.getAppWindowList)"); err != nil {
 		return nil, err
 	}
 	return windows, nil

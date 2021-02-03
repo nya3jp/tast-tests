@@ -7,7 +7,6 @@ package ash
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -40,34 +39,14 @@ const (
 // SetShelfBehavior sets the shelf visibility behavior.
 // displayID is the display that contains the shelf.
 func SetShelfBehavior(ctx context.Context, tconn *chrome.TestConn, displayID string, b ShelfBehavior) error {
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.setShelfAutoHideBehavior(%q, %q, function() {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve();
-		    }
-		  });
-		})`, displayID, b)
-	return tconn.EvalPromise(ctx, expr, nil)
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setShelfAutoHideBehavior)", displayID, b)
 }
 
 // GetShelfBehavior returns the shelf visibility behavior.
 // displayID is the display that contains the shelf.
 func GetShelfBehavior(ctx context.Context, tconn *chrome.TestConn, displayID string) (ShelfBehavior, error) {
 	var b ShelfBehavior
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.getShelfAutoHideBehavior(%q, function(behavior) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve(behavior);
-		    }
-		  });
-		})`, displayID)
-	if err := tconn.EvalPromise(ctx, expr, &b); err != nil {
+	if err := tconn.Call(ctx, &b, "tast.promisify(chrome.autotestPrivate.getShelfAutoHideBehavior)", displayID); err != nil {
 		return ShelfBehaviorInvalid, err
 	}
 	switch b {
@@ -89,8 +68,7 @@ func WaitForShelf(ctx context.Context, tconn *chrome.TestConn, timeout time.Dura
 
 // PinApp pins the shelf icon for the app specified by appID.
 func PinApp(ctx context.Context, tconn *chrome.TestConn, appID string) error {
-	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.pinShelfIcon)(%q)", appID)
-	return tconn.EvalPromise(ctx, query, nil)
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.pinShelfIcon)", appID)
 }
 
 // ShelfAlignment represents the different Chrome OS shelf alignments.
@@ -109,34 +87,14 @@ const (
 // SetShelfAlignment sets the shelf alignment.
 // displayID is the display that contains the shelf.
 func SetShelfAlignment(ctx context.Context, tconn *chrome.TestConn, displayID string, a ShelfAlignment) error {
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.setShelfAlignment(%q, %q, function() {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve();
-		    }
-		  });
-		})`, displayID, a)
-	return tconn.EvalPromise(ctx, expr, nil)
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setShelfAlignment)", displayID, a)
 }
 
 // GetShelfAlignment returns the shelf alignment.
 // displayID is the display that contains the shelf.
 func GetShelfAlignment(ctx context.Context, tconn *chrome.TestConn, displayID string) (ShelfAlignment, error) {
 	var a ShelfAlignment
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.getShelfAlignment(%q, function(alignment) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve(alignment);
-		    }
-		  });
-		})`, displayID)
-	if err := tconn.EvalPromise(ctx, expr, &a); err != nil {
+	if err := tconn.Call(ctx, &a, "tast.promisify(chrome.autotestPrivate.getShelfAlignment)", displayID); err != nil {
 		return ShelfAlignmentInvalid, err
 	}
 	switch a {
@@ -289,8 +247,7 @@ type ChromeApp struct {
 // ChromeApps returns all of the installed apps.
 func ChromeApps(ctx context.Context, tconn *chrome.TestConn) ([]*ChromeApp, error) {
 	var s []*ChromeApp
-	chromeQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getAllInstalledApps)()")
-	if err := tconn.EvalPromise(ctx, chromeQuery, &s); err != nil {
+	if err := tconn.Call(ctx, &s, "tast.promisify(chrome.autotestPrivate.getAllInstalledApps)"); err != nil {
 		return nil, errors.Wrap(err, "failed to call getAllInstalledApps")
 	}
 	return s, nil
@@ -326,8 +283,7 @@ func WaitForChromeAppInstalled(ctx context.Context, tconn *chrome.TestConn, appI
 // ShelfItems returns the list of apps in the shelf.
 func ShelfItems(ctx context.Context, tconn *chrome.TestConn) ([]*ShelfItem, error) {
 	var s []*ShelfItem
-	shelfQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getShelfItems)()")
-	if err := tconn.EvalPromise(ctx, shelfQuery, &s); err != nil {
+	if err := tconn.Call(ctx, &s, "tast.promisify(chrome.autotestPrivate.getShelfItems)"); err != nil {
 		return nil, errors.Wrap(err, "failed to call getShelfItems")
 	}
 	return s, nil
@@ -404,8 +360,7 @@ func ScrollShelfAndWaitUntilFinish(ctx context.Context, tconn *chrome.TestConn, 
 // AppShown checks if an app specified by appID is shown in the shelf.
 func AppShown(ctx context.Context, tconn *chrome.TestConn, appID string) (bool, error) {
 	var appShown bool
-	shownQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.isAppShown)(%q)", appID)
-	if err := tconn.EvalPromise(ctx, shownQuery, &appShown); err != nil {
+	if err := tconn.Call(ctx, &appShown, "tast.promisify(chrome.autotestPrivate.isAppShown)", appID); err != nil {
 		errors.Errorf("Running autotestPrivate.isAppShown failed for %v", appID)
 		return false, err
 	}

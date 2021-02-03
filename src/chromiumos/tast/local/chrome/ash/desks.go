@@ -6,7 +6,6 @@ package ash
 
 import (
 	"context"
-	"fmt"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -15,9 +14,8 @@ import (
 // CreateNewDesk requests Ash to create a new Virtual Desk which would fail if
 // the maximum number of desks have been reached.
 func CreateNewDesk(ctx context.Context, tconn *chrome.TestConn) error {
-	expr := `tast.promisify(chrome.autotestPrivate.createNewDesk)()`
 	success := false
-	if err := tconn.EvalPromise(ctx, expr, &success); err != nil {
+	if err := tconn.Call(ctx, &success, "tast.promisify(chrome.autotestPrivate.createNewDesk)"); err != nil {
 		return err
 	}
 	if !success {
@@ -30,9 +28,8 @@ func CreateNewDesk(ctx context.Context, tconn *chrome.TestConn) error {
 // It waits for the desk-switch animation to complete. This call will fail if index is
 // invalid, or its the index of the already active desk.
 func ActivateDeskAtIndex(ctx context.Context, tconn *chrome.TestConn, index int) error {
-	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.activateDeskAtIndex)(%v)`, index)
 	success := false
-	if err := tconn.EvalPromise(ctx, expr, &success); err != nil {
+	if err := tconn.Call(ctx, &success, "tast.promisify(chrome.autotestPrivate.activateDeskAtIndex)", index); err != nil {
 		return err
 	}
 	if !success {
@@ -45,9 +42,8 @@ func ActivateDeskAtIndex(ctx context.Context, tconn *chrome.TestConn, index int)
 // desk-removal animation to complete. This call will fail if the currently active desk
 // is the last available desk which cannot be removed.
 func RemoveActiveDesk(ctx context.Context, tconn *chrome.TestConn) error {
-	expr := `tast.promisify(chrome.autotestPrivate.removeActiveDesk)()`
 	success := false
-	if err := tconn.EvalPromise(ctx, expr, &success); err != nil {
+	if err := tconn.Call(ctx, &success, "tast.promisify(chrome.autotestPrivate.removeActiveDesk)"); err != nil {
 		return err
 	}
 	if !success {
