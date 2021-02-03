@@ -227,7 +227,7 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 		done <- true
 	}()
 	for scancode := input.EventCode(0x01); scancode < 0x220; scancode++ {
-		if scancode >= 0x80 && scancode < 0x160 {
+		if (scancode >= 0x80 && scancode < 0x160) || scancode == 0x63 {
 			continue
 		}
 		// Check whether the mojo connection is already broken or not.
