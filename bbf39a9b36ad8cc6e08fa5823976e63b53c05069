@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5bb078d_a3a01373",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-02-03T03:08:08Z",
+      "side": 1,
+      "message": "Could you help point me what (camera cuj?) will depend on this? It would great if there are some WIP CLs that I can take a look. Thanks.",
+      "revId": "bbf39a9b36ad8cc6e08fa5823976e63b53c05069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9eb11635_b9bb1497",
@@ -14,6 +31,23 @@
       "writtenOn": "2021-02-03T02:18:13Z",
       "side": 1,
       "message": "This should be notified to camera test owners.  shik \u0026 inker -- looks like you\u0027re the active author of those files.  Can you take a look?",
+      "revId": "bbf39a9b36ad8cc6e08fa5823976e63b53c05069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc10d2df_d10560ac",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-02-03T03:08:08Z",
+      "side": 1,
+      "message": "Hmm I think we usually don\u0027t change this when renaming files.",
       "revId": "bbf39a9b36ad8cc6e08fa5823976e63b53c05069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
