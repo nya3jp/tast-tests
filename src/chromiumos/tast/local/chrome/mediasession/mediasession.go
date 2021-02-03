@@ -40,7 +40,7 @@ func LoadTestPage(ctx context.Context, cr *chrome.Chrome, url string) (*Conn, er
 
 // Play starts to play the audio and checks that it has successfully started playing.
 func (c *Conn) Play(ctx context.Context) error {
-	if err := c.Conn.Exec(ctx, "audio.play()"); err != nil {
+	if err := c.Conn.Eval(ctx, "audio.play()", nil); err != nil {
 		return err
 	}
 

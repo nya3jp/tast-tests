@@ -6,7 +6,6 @@ package crash
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -91,8 +90,7 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 
 	testing.ContextLogf(ctx, "Setting metrics consent to %t", consent)
 
-	code := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.setMetricsEnabled)(%t)", consent)
-	if err := tconn.EvalPromise(ctx, code, nil); err != nil {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setMetricsEnabled)", consent); err != nil {
 		return errors.Wrap(err, "running autotestPrivate.setMetricsEnabled failed")
 	}
 
