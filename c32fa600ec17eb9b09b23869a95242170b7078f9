@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a9253a_abe0732e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T08:06:39Z",
+      "side": 1,
+      "message": "LGTM, but please get approval from mukai@ who owns the fixture.",
+      "revId": "c32fa600ec17eb9b09b23869a95242170b7078f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
