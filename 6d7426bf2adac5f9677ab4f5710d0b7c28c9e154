@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a244517_4347353f",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-03T22:16:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f6b9ea3_7fdf21dd",
+      "range": {
+        "startLine": 199,
+        "startChar": 26,
+        "endLine": 199,
+        "endChar": 35
+      },
+      "revId": "6d7426bf2adac5f9677ab4f5710d0b7c28c9e154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97342ae9_8897f5ae",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-03T06:05:25Z",
       "side": 1,
       "message": "Since we call testing.Poll for each expected utterance, we allow 10*N seconds for N utterances. I assume this is intended, since each spoken feedback takes a few seconds for sure.",
+      "range": {
+        "startLine": 203,
+        "startChar": 26,
+        "endLine": 203,
+        "endChar": 51
+      },
+      "revId": "6d7426bf2adac5f9677ab4f5710d0b7c28c9e154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82ce5c3d_45bb3aff",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-03T22:16:45Z",
+      "side": 1,
+      "message": "Yes it\u0027s intended, we need to give each utterance time to be spoken. It shouldn\u0027t take longer than 10 seconds, especially once ChromeVox and the TTS engine have both booted up.",
+      "parentUuid": "97342ae9_8897f5ae",
       "range": {
         "startLine": 203,
         "startChar": 26,
@@ -100,6 +148,54 @@
       "writtenOn": "2021-02-03T06:05:25Z",
       "side": 1,
       "message": "style: utterance",
+      "range": {
+        "startLine": 204,
+        "startChar": 25,
+        "endLine": 204,
+        "endChar": 34
+      },
+      "revId": "6d7426bf2adac5f9677ab4f5710d0b7c28c9e154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d5f4e7_a789000f",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-03T22:16:45Z",
+      "side": 1,
+      "message": "Done, to solve the issue I put the actual utterances into a slice. On error, we print both the expected and actual utterances.",
+      "parentUuid": "d7c73e11_d040cbad",
+      "range": {
+        "startLine": 204,
+        "startChar": 17,
+        "endLine": 204,
+        "endChar": 23
+      },
+      "revId": "6d7426bf2adac5f9677ab4f5710d0b7c28c9e154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93556656_fab2b8fd",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-03T22:16:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec87a9e4_e76e8546",
       "range": {
         "startLine": 204,
         "startChar": 25,
