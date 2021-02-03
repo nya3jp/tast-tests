@@ -74,21 +74,6 @@ func DiagnosticsRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node,
 	return ui.FindWithTimeout(ctx, tconn, diagnosticsRootNodeParams, 20*time.Second)
 }
 
-// WaitForApp waits for the app to be shown and rendered.
-func WaitForApp(ctx context.Context, tconn *chrome.TestConn) error {
-	dxRootnode, err := DiagnosticsRootNode(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find diagnostics app")
-	}
-	defer dxRootnode.Release(ctx)
-
-	// Find the session log button to verify app is rendering.
-	if _, err := dxRootnode.DescendantWithTimeout(ctx, DxLogButton, 3*time.Minute); err != nil {
-		return errors.Wrap(err, "failed to render diagnostics app")
-	}
-	return nil
-}
-
 // Launch diagnostics via default method and return root node.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
 	err := apps.Launch(ctx, tconn, apps.Diagnostics.ID)
