@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae3689f_6048d9f3",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2021-02-03T13:58:52Z",
+      "side": 1,
+      "message": "Tried to be a little more explicit now.",
+      "parentUuid": "6cde3d8c_c4493dda",
+      "revId": "183f830186bc19941f6b1f426cfa5665692adbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b9cfb02_78843ac1",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-03T13:31:08Z",
       "side": 1,
       "message": "Why not return here?",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 7
+      },
+      "revId": "183f830186bc19941f6b1f426cfa5665692adbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a87bf5_0f6f8797",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2021-02-03T13:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b9cfb02_78843ac1",
       "range": {
         "startLine": 82,
         "startChar": 2,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0272bc35_c07e52b9",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2021-02-03T13:58:52Z",
+      "side": 1,
+      "message": "No, but it\u0027s not used in Start/Snapshot either. Replaced them all with \u0027_\u0027.",
+      "parentUuid": "00a9c837_2607d639",
+      "range": {
+        "startLine": 254,
+        "startChar": 35,
+        "endLine": 254,
+        "endChar": 38
+      },
+      "revId": "183f830186bc19941f6b1f426cfa5665692adbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c3101e7_42610640",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-02-03T13:31:08Z",
       "side": 1,
       "message": "Why do you have the . here?",
+      "range": {
+        "startLine": 259,
+        "startChar": 35,
+        "endLine": 259,
+        "endChar": 36
+      },
+      "revId": "183f830186bc19941f6b1f426cfa5665692adbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "413decab_fb0d49a0",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2021-02-03T13:58:52Z",
+      "side": 1,
+      "message": "It seems to be occasionally used in Go, and \"0.\" is mentioned twice in this file: http://shortn/_APSO86N0Wd\n\nRemoved.",
+      "parentUuid": "0c3101e7_42610640",
       "range": {
         "startLine": 259,
         "startChar": 35,
