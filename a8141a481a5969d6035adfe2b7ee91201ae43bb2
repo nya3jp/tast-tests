@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f498f440_8f6c29af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-03T20:55:28Z",
+      "side": 1,
+      "message": "nice, thanks for this\n\nI\u0027ll defer to Yen-lin, apart from my one question.",
+      "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23636efa_12c458a8",
@@ -48,6 +65,29 @@
       "writtenOn": "2021-02-03T06:18:29Z",
       "side": 1,
       "message": "nit: not sure if it might be clearer to note that the three fields are all \"required\", as we have some default setting for the primary BSSID and SSID.",
+      "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e78e40b_4808f613",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-03T20:55:28Z",
+      "side": 1,
+      "message": "do we actually need to let tests specify this? It would be kind of nice if we didn\u0027t have to, because otherwise we tend to use fixed BSSIDs in tests, which then may have problems if they get reused quickly back-to-back. (Technically, that\u0027s probably a device bug, but still.) IOW, it would be best if we can base this off the randomized BSSID as much as possible, either by letting hostapd pick the BSSID, or generating them around ~line 299.\n\nIf we only generate BSSIDs within this class, then it\u0027d be easier to enforce the first bullet from the hostapd docs:\n\n# If an explicit BSSID is specified, it must be chosen such that it:\n# - results in a valid MASK that covers it and the dev_addr\n# - is not the same as the MAC address of the radio\n# - is not the same as any other explicitly specified BSSID",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 17
+      },
       "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
