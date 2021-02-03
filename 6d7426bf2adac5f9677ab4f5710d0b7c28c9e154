@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d7058b9_9a43179d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T06:05:25Z",
+      "side": 1,
+      "message": "Thanks, looks mostly done. I have only a few non-major comments.\n",
+      "revId": "6d7426bf2adac5f9677ab4f5710d0b7c28c9e154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f6b9ea3_7fdf21dd",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T06:05:25Z",
+      "side": 1,
+      "message": "style: utterance\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 199,
+        "startChar": 26,
+        "endLine": 199,
+        "endChar": 35
+      },
+      "revId": "6d7426bf2adac5f9677ab4f5710d0b7c28c9e154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97342ae9_8897f5ae",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T06:05:25Z",
+      "side": 1,
+      "message": "Since we call testing.Poll for each expected utterance, we allow 10*N seconds for N utterances. I assume this is intended, since each spoken feedback takes a few seconds for sure.",
+      "range": {
+        "startLine": 203,
+        "startChar": 26,
+        "endLine": 203,
+        "endChar": 51
+      },
+      "revId": "6d7426bf2adac5f9677ab4f5710d0b7c28c9e154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c73e11_d040cbad",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T06:05:25Z",
+      "side": 1,
+      "message": "I recommend trying to construct helpful messages.\n\nLet\u0027s say we call this method to wait for [\"foo\", \"bar\"], but actual utterances were [\"boo\", \"bar\"]. With the current code, the error message would be:\n\n utterance expected but not spoken: foo: context deadline exceeded; last error follows: error when running testUtterances.shift(). testUtterances is likely empty: ...\n\nThis error message says it waited for \"foo\", but does not mention actual utterances it got, so it is difficult to debug. It would be easier to debug if the message was like:\n\n utterance mismatch: got [\"boo\", \"bar\"], want [\"foo\", \"bar\"]: context deadline exceeded; last error follows: ...",
+      "range": {
+        "startLine": 204,
+        "startChar": 17,
+        "endLine": 204,
+        "endChar": 23
+      },
+      "revId": "6d7426bf2adac5f9677ab4f5710d0b7c28c9e154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec87a9e4_e76e8546",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T06:05:25Z",
+      "side": 1,
+      "message": "style: utterance",
+      "range": {
+        "startLine": 204,
+        "startChar": 25,
+        "endLine": 204,
+        "endChar": 34
+      },
+      "revId": "6d7426bf2adac5f9677ab4f5710d0b7c28c9e154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
