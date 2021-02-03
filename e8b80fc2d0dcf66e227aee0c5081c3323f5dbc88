@@ -182,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "978836f9_e7f737e0",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-03T22:26:54Z",
+      "side": 1,
+      "message": "Looking really good. I\u0027ve added another suggestion.",
+      "parentUuid": "4b18a252_59dd5bf4",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eaf7a0c_f3196d09",
@@ -248,6 +266,24 @@
       "side": 1,
       "message": "I was thinking about this before but coords.Rect uses {Left, Top, Width, Height} instead of {Left, Top, Right, Bottom} which makes it more complex to calculate the maximum points (since they\u0027re relative to the minimum point).\n\nI\u0027ve kept this one as two points, but please feel free to let me know if you still prefer coords.Rect.",
       "parentUuid": "61e44f7a_e6878e5c",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d389ce14_00076c2f",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-03T22:26:54Z",
+      "side": 1,
+      "message": "Ah, I was thinking you could create your Rect type with {Left,Top,Right,Bottom}. If it\u0027s too much work then don\u0027t worry about it.",
+      "parentUuid": "7ae40430_419580c5",
       "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
