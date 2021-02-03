@@ -37,6 +37,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90cbf7b8_c0bf6495",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-03T03:17:11Z",
+      "side": 1,
+      "message": "If we disable Ethernet in shill, could it affect control network?",
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d7b40f8_8af1501e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-03T03:17:11Z",
+      "side": 1,
+      "message": "We shall defer the resume work right after the action to avoid the case that Ethernet is disabled but WiFi fails to disable (though unlikely):\n\nIn line 49:\nif ethernetEnabled {\n  if err :\u003d helper.Manager.DisableTechnology(ctx, shill.TechnologyEthernet); err !\u003d nil {\n    s.Fatal(\"Unable to disable Ethernet: \", err)\n  }\n  ctxForEnable :\u003d ctx\n  ctx, cancel :\u003d ctxutil.Shorten(ctx, 1*time.Second)\n  defer cancel()\n  defer func(ctx context.Context) {\n    if err :\u003d helper.Manager.EnableTechnology(ctx, shill.TechnologyEthernet); err !\u003d nil {\n      s.Fatal(\"Unable to enable Ethernet: \", err)\n    }\n  }\n}",
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b550154_ebef65e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
         "patchSetId": 2
@@ -53,6 +87,63 @@
         "startChar": 0,
         "endLine": 99,
         "endChar": 47
+      },
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58930237_5d77ea51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-03T03:17:11Z",
+      "side": 1,
+      "message": "Curious why LookupHost periodically fails?",
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba474e9_0e10e999",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-03T03:17:11Z",
+      "side": 1,
+      "message": "We use polling pattern instead:\n\nerr :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n  addrs, err \u003d net.LookupHost(hostName)\n  if err \u003d\u003d nil \u0026\u0026 len(addrs) \u003e\u003d 1 {\n    return nil\n  }\n  return errors.Wrapf(err, \"Unable to lookup address for host: %s\", hostName)\n}, \u0026testing.PollOptions{Timeout: time.Second, Interval: 100 * time.Millisecond})",
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b79510d4_774b5c0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-03T03:17:11Z",
+      "side": 1,
+      "message": "want",
+      "range": {
+        "startLine": 136,
+        "startChar": 43,
+        "endLine": 136,
+        "endChar": 59
       },
       "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
