@@ -27,6 +27,7 @@ import (
 
 const (
 	homeDataNamePiX86 = "data_migration_pi_x86_64"
+	homeDataNamePiArm = "data_migration_pi_arm64"
 )
 
 func init() {
@@ -39,11 +40,17 @@ func init() {
 		Timeout:      10 * time.Minute,
 		Vars:         []string{"arc.DataMigration.username", "arc.DataMigration.password"},
 		Params: []testing.Param{{
-			// Launch ARC R with /data created on ARC P.
-			Name: "p_to_r",
-			// TODO(b/155123165): Add ARM support.
+			// Launch ARC R with /data created on ARC P (for x86).
+			Name:              "p_to_r_x86",
+			Val:               homeDataNamePiX86,
 			ExtraData:         []string{homeDataNamePiX86},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", "amd64"},
+		}, {
+			// Launch ARC R with /data created on ARC P (for arm).
+			Name:              "p_to_r_arm",
+			Val:               homeDataNamePiArm,
+			ExtraData:         []string{homeDataNamePiArm},
+			ExtraSoftwareDeps: []string{"android_vm", "arm"},
 		}},
 	})
 }
@@ -55,9 +62,9 @@ func DataMigration(ctx context.Context, s *testing.State) {
 		appToInstall = "com.roblox.client"
 	)
 
-	homeDataPath := s.DataPath(homeDataNamePiX86)
 	username := s.RequiredVar("arc.DataMigration.username")
 	password := s.RequiredVar("arc.DataMigration.password")
+	homeDataPath := s.DataPath(s.Param().(string))
 
 	// Ensure to sign out before executing mountVaultWithArchivedHomeData().
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
