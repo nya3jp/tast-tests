@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae3f241_868d1b2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-03T03:22:05Z",
+      "side": 1,
+      "message": "+2 on Tast perspective. \n+Shik to confirm that the test is okay to remove.",
+      "revId": "747c563f57dc8d5c3821db3184163a39c26955f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
