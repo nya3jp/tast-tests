@@ -16,6 +16,29 @@
       "message": "Hi Pavol,\n\nPTAL! \n\nThanks :)",
       "revId": "97bd2ea53e3e1b8ac6738e1d25a6ebfb87a88f8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0aee28_08fe4d6f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-03T23:00:56Z",
+      "side": 1,
+      "message": "Does this mean that this test always takes \u003e20s to run because the timeout 20 /usr/bin/tlsdated  step alone will always take 20s ?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 133
+      },
+      "revId": "97bd2ea53e3e1b8ac6738e1d25a6ebfb87a88f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
