@@ -39,6 +39,30 @@
       },
       "revId": "82f7852f930bb8c76d7bf09980478087c5dfe33e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ad4ab89_4579bbc0",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-03T21:15:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ba702af_44e65907",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "82f7852f930bb8c76d7bf09980478087c5dfe33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
