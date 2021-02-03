@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4494e88e_45a4749f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-03T18:20:15Z",
+      "side": 1,
+      "message": "nit: was",
+      "range": {
+        "startLine": 472,
+        "startChar": 59,
+        "endLine": 472,
+        "endChar": 61
+      },
+      "revId": "46dcae8e1a987ec8d099023e3a4865db49e5f14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
