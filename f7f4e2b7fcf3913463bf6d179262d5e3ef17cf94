@@ -80,6 +80,30 @@
       },
       "revId": "f7f4e2b7fcf3913463bf6d179262d5e3ef17cf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c5958bb_314fd267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-02-03T07:29:58Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2671140",
+      "parentUuid": "890da8a0_31cfe00a",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "f7f4e2b7fcf3913463bf6d179262d5e3ef17cf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
