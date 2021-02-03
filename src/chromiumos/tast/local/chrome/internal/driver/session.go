@@ -220,7 +220,7 @@ func (s *Session) testAPIConnFor(ctx context.Context, extConn **Conn, extID stri
 		return nil, errors.Wrap(err, "tast API is unavailable")
 	}
 
-	if err := (*extConn).Exec(ctx, "chrome.autotestPrivate.initializeEvents()"); err != nil {
+	if err := (*extConn).Eval(ctx, "chrome.autotestPrivate.initializeEvents()", nil); err != nil {
 		return nil, errors.Wrap(err, "failed to initialize test API events")
 	}
 

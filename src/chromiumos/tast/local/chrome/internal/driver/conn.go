@@ -310,7 +310,7 @@ func (tconn *TestConn) ResetAutomation(ctx context.Context) error {
 		return errors.Wrap(err, "tast API is unavailable")
 	}
 
-	if err := tconn.Exec(ctx, "chrome.autotestPrivate.initializeEvents()"); err != nil {
+	if err := tconn.Eval(ctx, "chrome.autotestPrivate.initializeEvents()", nil); err != nil {
 		return errors.Wrap(err, "failed to initialize test API events")
 	}
 	return nil

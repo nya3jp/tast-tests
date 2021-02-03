@@ -40,7 +40,7 @@ func logInAsGuest(ctx context.Context, cfg *config.Config, sess *driver.Session)
 	// recreated after the port gets ready.
 	os.Remove(cdputil.DebuggingPortPath)
 
-	if err := oobeConn.Exec(ctx, "Oobe.guestLoginForTesting()"); err != nil {
+	if err := oobeConn.Call(ctx, nil, "Oobe.guestLoginForTesting"); err != nil {
 		return err
 	}
 
