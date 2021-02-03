@@ -10,8 +10,6 @@ package display
 
 import (
 	"context"
-	"encoding/json"
-	"fmt"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -90,7 +88,7 @@ func (info *Info) GetEffectiveDeviceScaleFactor() (float64, error) {
 // See https://developer.chrome.com/apps/system_display#method-getInfo.
 func GetInfo(ctx context.Context, tconn *chrome.TestConn) ([]Info, error) {
 	var infos []Info
-	if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.system.display.getInfo)()`, &infos); err != nil {
+	if err := tconn.Call(ctx, &infos, `tast.promisify(chrome.system.display.getInfo)`); err != nil {
 		return nil, errors.Wrap(err, "failed to get display info")
 	}
 	if len(infos) == 0 {
@@ -149,25 +147,7 @@ type DisplayProperties struct { // NOLINT
 // Some properties, like rotation, will be performed in an async way. For rotation in particular,
 // you should call display.WaitForDisplayRotation() to know when the rotation animation finishes.
 func SetDisplayProperties(ctx context.Context, tconn *chrome.TestConn, id string, dp DisplayProperties) error {
-	b, err := json.Marshal(&dp)
-	if err != nil {
-		return err
-	}
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.system.display.setDisplayProperties(
-		      %q, %s, function() {
-		    resolve(chrome.runtime.lastError ? chrome.runtime.lastError.message : "");
-		  });
-		})`, id, string(b))
-
-	msg := ""
-	if err = tconn.EvalPromise(ctx, expr, &msg); err != nil {
-		return err
-	} else if msg != "" {
-		return errors.New(msg)
-	}
-	return nil
+	return tconn.Call(ctx, nil, "tast.promisify(chrome.system.display.setDisplayProperties)", id, dp)
 }
 
 // RotationAngle represents the supported rotation angles by SetDisplayRotationSync.
@@ -193,12 +173,10 @@ const (
 // are passed, or the display rotation ends up with a different rotation from
 // the specified one.
 func WaitForDisplayRotation(ctx context.Context, tconn *chrome.TestConn, dispID string, rot RotationAngle) error {
-	expr := fmt.Sprintf(
-		`tast.promisify(chrome.autotestPrivate.waitForDisplayRotation)(%q, %q).then((success) => {
-		    if (!success)
-		      throw new Error("failed to wait for display rotation");
-		})`, dispID, rot)
-	return tconn.EvalPromise(ctx, expr, nil)
+	return tconn.Call(ctx, nil, `async (displayId, rotation) => {
+	  if (!await tast.promisify(chrome.autotestPrivate.waitForDisplayRotation)(displayId, rotation))
+	    throw new Error("failed to wait for display rotation");
+	}`, dispID, rot)
 }
 
 // SetDisplayRotationSync rotates the display to a certain angle and waits until the rotation animation finished.
