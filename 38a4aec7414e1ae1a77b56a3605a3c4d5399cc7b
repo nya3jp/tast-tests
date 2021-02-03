@@ -33,6 +33,29 @@
       "message": "Friendly ping",
       "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b550154_ebef65e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-02-03T01:10:54Z",
+      "side": 1,
+      "message": "Found some documentation here:\nhttps://groups.google.com/a/google.com/g/chamberofsecrets/c/gUQzoUZ7jYY/m/wzINm2-V7vMJ\n\nLooks like it was built for testing 3G on ChromiumOS back in 2011",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 47
+      },
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
