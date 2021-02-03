@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc8ef471_e4169368",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-03T00:31:07Z",
+      "side": 1,
+      "message": "Good enough, I guess. I think somewhere in here, we\u0027re sort of burying the reason that we get a lot of Unknown disconnection reports from Shill -- because some drivers just don\u0027t fill these reasons out correctly. But we\u0027re not going to fix that right now.",
+      "revId": "fad9dee17471108dd76e0f39f82f04e030a3ca72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
