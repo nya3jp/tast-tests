@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9497a566_f4869216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-03T09:25:07Z",
+      "side": 1,
+      "message": "For now it will be limited to USB4 systems, and that too on Thunderbolt docks only. USB4/USB3 docks will remain in the initially selected mode.",
+      "parentUuid": "16645c8c_014ba90c",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 67
+      },
+      "revId": "d7df942d989cc99e804ec655fbfff8cd531b661b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23017399_261d9c8b",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ab32a18_fa7b6dee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-03T09:25:07Z",
+      "side": 1,
+      "message": "Done\nNice! Thanks for the suggestion :)",
+      "parentUuid": "82a556ce_729a4388",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "d7df942d989cc99e804ec655fbfff8cd531b661b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d6a9f38_4c09895b",
@@ -83,6 +131,30 @@
       "writtenOn": "2021-02-03T08:18:18Z",
       "side": 1,
       "message": "style: foundConnected :\u003d false is more common.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 27
+      },
+      "revId": "d7df942d989cc99e804ec655fbfff8cd531b661b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe72bc2e_fea05f62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-03T09:25:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d6a9f38_4c09895b",
       "range": {
         "startLine": 134,
         "startChar": 1,
