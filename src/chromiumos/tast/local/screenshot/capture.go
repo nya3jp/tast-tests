@@ -7,7 +7,6 @@ package screenshot
 import (
 	"context"
 	"encoding/base64"
-	"fmt"
 	"image"
 	_ "image/png" // PNG decoder
 	"io"
@@ -38,11 +37,13 @@ func CaptureChrome(ctx context.Context, cr *chrome.Chrome, path string) error {
 		return err
 	}
 	return captureInternal(ctx, path, func(code string, out interface{}) error {
-		return tconn.EvalPromise(ctx, code, out)
+		return tconn.Eval(ctx, code, out)
 	})
 }
 
 const (
+	// Do not use tast.promisify(), because this may be evaluated on the connection
+	// other than TestAPIConn.
 	takeScreenshot = `new Promise(function(resolve, reject) {
 		chrome.autotestPrivate.takeScreenshot(function(base64PNG) {
 		  if (chrome.runtime.lastError === undefined) {
@@ -62,7 +63,7 @@ func CaptureChromeImage(ctx context.Context, cr *chrome.Chrome) (image.Image, er
 		return nil, err
 	}
 	var base64PNG string
-	if err := tconn.EvalPromise(ctx, takeScreenshot, &base64PNG); err != nil {
+	if err := tconn.Eval(ctx, takeScreenshot, &base64PNG); err != nil {
 		return nil, err
 	}
 	sr := strings.NewReader(base64PNG)
@@ -108,19 +109,8 @@ func CaptureChromeForDisplay(ctx context.Context, cr *chrome.Chrome, displayID, 
 	if err != nil {
 		return err
 	}
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.takeScreenshotForDisplay(%q, function(base64PNG) {
-		    if (chrome.runtime.lastError === undefined) {
-		      resolve(base64PNG);
-		    } else {
-		      reject(chrome.runtime.lastError.message);
-		    }
-		  });
-		})`, displayID)
-
 	var base64PNG string
-	if err := tconn.EvalPromise(ctx, expr, &base64PNG); err != nil {
+	if err := tconn.Call(ctx, &base64PNG, "tast.promisify(chrome.autotestPrivate.takeScreenshotForDisplay)", displayID); err != nil {
 		return err
 	}
 
