@@ -39,6 +39,30 @@
       },
       "revId": "c5a5a810a72a4c312fbb3f8fef34be1a8e2790f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ec8a796_c003de6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-03T08:22:56Z",
+      "side": 1,
+      "message": "In fact when I tried locally, without this sleep the kmsvnc process won\u0027t get launched at all, even after a few secs spent by findDisplayWidthHeight() connecting to chrome test API.\n\nI initially thought it was due to the main goroutine not yielding itself, but the test API connection following should have caused context switches. I\u0027m still not sure why...",
+      "parentUuid": "e9d98888_608b2725",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 46
+      },
+      "revId": "c5a5a810a72a4c312fbb3f8fef34be1a8e2790f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
