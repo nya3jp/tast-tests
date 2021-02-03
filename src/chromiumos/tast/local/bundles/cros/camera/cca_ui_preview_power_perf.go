@@ -166,7 +166,7 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	values, err := metrics.StopRecording()
+	values, err := metrics.StopRecording(ctx)
 	if err != nil {
 		s.Fatal("Error while recording power metrics: ", err)
 	}

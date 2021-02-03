@@ -14,11 +14,12 @@ import (
 )
 
 type testTimelineDatasource struct {
-	setUp, started, errSetup, errStart, errSnapshot bool
-	snapshotCount                                   int
-	snapshotChannel                                 chan int
-	snapshotDuration                                time.Duration
-	clock                                           *fakeClock
+	setUp, started, errSetup, errStart, errSnapshot, errStop bool
+	snapshotCount                                            int
+	snapshotChannel                                          chan int
+	snapshotDuration                                         time.Duration
+	stopCount                                                int
+	clock                                                    *fakeClock
 }
 
 func newDatasource() *testTimelineDatasource {
@@ -66,6 +67,18 @@ func (d *testTimelineDatasource) Snapshot(ctx context.Context, v *Values) error 
 	case d.snapshotChannel <- d.snapshotCount - 1:
 	default:
 	}
+
+	return nil
+}
+
+var errStop = errors.New("stop should fail")
+
+func (d *testTimelineDatasource) Stop(ctx context.Context, v *Values) error {
+	if d.errStop {
+		return errStop
+	}
+
+	d.stopCount++
 
 	return nil
 }
@@ -242,7 +255,7 @@ func TestTimeline(t *testing.T) {
 		clock.WaitForSleep()
 	}
 
-	if v, err := tl.StopRecording(); err != nil {
+	if v, err := tl.StopRecording(ctx); err != nil {
 		t.Error("Error while recording: ", err)
 	} else {
 		p.Merge(v)
@@ -250,6 +263,10 @@ func TestTimeline(t *testing.T) {
 
 	if d1.snapshotCount != 2 || d2.snapshotCount != 2 {
 		t.Errorf("Wrong number of snapshots collected: got (%d, %d), expected (2, 2)", d1.snapshotCount, d2.snapshotCount)
+	}
+
+	if d1.stopCount != 1 || d2.stopCount != 1 {
+		t.Errorf("Wrong number of stops collected: got (%d, %d), expected (1, 1)", d1.stopCount, d2.stopCount)
 	}
 
 	// Second round of recording.
@@ -265,7 +282,7 @@ func TestTimeline(t *testing.T) {
 		clock.WaitForSleep()
 	}
 
-	if v, err := tl.StopRecording(); err != nil {
+	if v, err := tl.StopRecording(ctx); err != nil {
 		t.Error("Error while recording: ", err)
 	} else {
 		p.Merge(v)
@@ -273,6 +290,10 @@ func TestTimeline(t *testing.T) {
 
 	if d1.snapshotCount != 5 || d2.snapshotCount != 5 {
 		t.Errorf("Wrong number of snapshots collected: got (%d, %d), expected (5, 5)", d1.snapshotCount, d2.snapshotCount)
+	}
+
+	if d1.stopCount != 2 || d2.stopCount != 2 {
+		t.Errorf("Wrong number of stops collected: got (%d, %d), expected (2, 2)", d1.stopCount, d2.stopCount)
 	}
 
 	var timestamps []float64
@@ -345,7 +366,7 @@ func TestTimelineSlowSnapshot(t *testing.T) {
 	clock.Advance(210 * time.Millisecond)
 	tl.WaitForSnapshottingDone()
 
-	if _, err := tl.StopRecording(); err == nil {
+	if _, err := tl.StopRecording(ctx); err == nil {
 		t.Error("StopRecording should have failed")
 	}
 }
@@ -371,7 +392,7 @@ func TestTimelineNoStart(t *testing.T) {
 	clock.Advance(1100 * time.Millisecond)
 	tl.WaitForSnapshottingDone()
 
-	if _, err := tl.StopRecording(); err == nil {
+	if _, err := tl.StopRecording(ctx); err == nil {
 		t.Error("Snapshot should have failed without calling Start first")
 	}
 }
@@ -431,7 +452,35 @@ func TestTimelineSnapshotFail(t *testing.T) {
 	clock.Advance(1100 * time.Millisecond)
 	tl.WaitForSnapshottingDone()
 
-	if _, err := tl.StopRecording(); err == nil {
+	if _, err := tl.StopRecording(ctx); err != errSnapshot {
 		t.Error("Snapshot should have failed")
+	}
+}
+
+func TestTimelineStopFail(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	clock := NewFakeClock()
+	d := newDatasource()
+	d.errStop = true
+
+	tl, err := NewTimeline(ctx, []TimelineDatasource{d}, Interval(1*time.Second), WithClock(clock))
+	if err != nil {
+		t.Error("Failed to create Timeline: ", err)
+	}
+
+	if err := tl.Start(ctx); err != nil {
+		t.Error("Failed to start timeline: ", err)
+	}
+
+	if err := tl.StartRecording(ctx); err != nil {
+		t.Error("Failed to start recording: ", err)
+	}
+
+	// We don't need any samples to test Stop().
+
+	if _, err := tl.StopRecording(ctx); err != errStop {
+		t.Error("Stop should have failed")
 	}
 }

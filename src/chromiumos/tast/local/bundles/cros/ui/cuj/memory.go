@@ -77,3 +77,8 @@ func (s *memoryDataSource) Snapshot(ctx context.Context, values *perf.Values) er
 
 	return nil
 }
+
+// Stop does nothing.
+func (s *memoryDataSource) Stop(_ context.Context, values *perf.Values) error {
+	return nil
+}
