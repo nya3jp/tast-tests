@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2bf12d_63436c5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/backup_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-03T16:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d1c2f3d_a9e51720",
+      "range": {
+        "startLine": 147,
+        "startChar": 32,
+        "endLine": 147,
+        "endChar": 34
+      },
+      "revId": "9977e38434581837657959fac3d518c25970d528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b451d63_821c0677",
@@ -94,6 +118,30 @@
       "writtenOn": "2021-02-02T01:23:07Z",
       "side": 1,
       "message": "It\u0027s nice to avoid \"window\" since it\u0027s the global object name.",
+      "range": {
+        "startLine": 216,
+        "startChar": 9,
+        "endLine": 216,
+        "endChar": 15
+      },
+      "revId": "9977e38434581837657959fac3d518c25970d528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b9ddb9_786cf237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-03T16:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b451d63_821c0677",
       "range": {
         "startLine": 216,
         "startChar": 9,
