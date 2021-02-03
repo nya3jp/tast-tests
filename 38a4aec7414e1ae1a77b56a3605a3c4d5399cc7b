@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c74b415c_52e77307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-03T14:24:27Z",
+      "side": 1,
+      "message": "I imagine we\u0027ll want to factor this out since it might occur in a bunch of different tests. If I remember right, WiFi tests have a helper struct which does some test setup and returns a function that you defer to clean up later.",
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90cbf7b8_c0bf6495",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
         "patchSetId": 2
@@ -48,6 +65,24 @@
       "writtenOn": "2021-02-03T03:17:11Z",
       "side": 1,
       "message": "If we disable Ethernet in shill, could it affect control network?",
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331bdb57_8ed3f0fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-03T14:24:27Z",
+      "side": 1,
+      "message": "If this is a client test, is the control network necessary?",
+      "parentUuid": "90cbf7b8_c0bf6495",
       "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +157,29 @@
       "writtenOn": "2021-02-03T03:17:11Z",
       "side": 1,
       "message": "We use polling pattern instead:\n\nerr :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n  addrs, err \u003d net.LookupHost(hostName)\n  if err \u003d\u003d nil \u0026\u0026 len(addrs) \u003e\u003d 1 {\n    return nil\n  }\n  return errors.Wrapf(err, \"Unable to lookup address for host: %s\", hostName)\n}, \u0026testing.PollOptions{Timeout: time.Second, Interval: 100 * time.Millisecond})",
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe0cba8_7e9beb2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-03T14:24:27Z",
+      "side": 1,
+      "message": "nit: just %q is fine",
+      "range": {
+        "startLine": 115,
+        "startChar": 45,
+        "endLine": 115,
+        "endChar": 50
+      },
       "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
