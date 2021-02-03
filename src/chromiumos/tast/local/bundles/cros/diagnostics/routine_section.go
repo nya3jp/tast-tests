@@ -54,17 +54,28 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 	}
 	defer cpuButton.Release(ctx)
 
+	// If needed, scroll down to make the cpu button visible
+	if err := cpuButton.MakeVisible(ctx); err != nil {
+		s.Fatal("Failed to locate cpu button within the screen bounds")
+	}
+
 	// Test on power routine
-	if err := cpuButton.LeftClick(ctx); err != nil {
+	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second}
+	if err := cpuButton.StableLeftClick(ctx, &pollOpts); err != nil {
 		s.Fatal("Could not click the CPU test button: ", err)
 	}
-	s.Log("Started CPU test routine")
+	s.Log("Starting CPU test routine")
+
+	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxProgressBadge, time.Minute); err != nil {
+		s.Fatal("Could not verify test routine has started: ", err)
+	}
 
 	reportBtn, err := dxRootnode.DescendantWithTimeout(ctx, diagnosticsapp.DxViewReportButton, 20*time.Second)
 	if err != nil {
-		s.Fatal("Failed to find the view report button")
+		s.Fatal("Failed to find the view report button: ", err)
 	}
 	defer reportBtn.Release(ctx)
+	s.Log("Started CPU test routine")
 
 	// Expand the view report button to see progress
 	// TODO(joonbug): Adapt to report page being open by default when UX change is finalized
@@ -78,7 +89,7 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 
 	cancelBtn, err := dxRootnode.DescendantWithTimeout(ctx, diagnosticsapp.DxCancelTestButton, 20*time.Second)
 	if err != nil {
-		s.Fatal("Failed to find a cancel button")
+		s.Fatal("Could not verify Failed to find a cancel button: ", err)
 	}
 	defer cancelBtn.Release(ctx)
 
