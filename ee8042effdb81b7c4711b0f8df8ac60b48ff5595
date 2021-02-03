@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "addef00d_dc96b599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-02-03T07:30:44Z",
+      "side": 1,
+      "message": "Patrick, could you have a look? This addresses your comment at https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2657959 . Thanks.\n",
+      "revId": "ee8042effdb81b7c4711b0f8df8ac60b48ff5595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
