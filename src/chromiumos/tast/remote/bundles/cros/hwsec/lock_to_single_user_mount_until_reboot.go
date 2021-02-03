@@ -163,6 +163,11 @@ func LockToSingleUserMountUntilReboot(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 
+	// LockToSingleUserMountUntilReboot would only available when the TPM is ready.
+	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+		s.Fatal("Failed to wait for TPM to be owned: ", err)
+	}
+
 	// Create the vaults for testing.
 	if err := create2VaultsForTesting(ctx, utility); err != nil {
 		s.Fatal("Failed to initialize vaults for testing: ", err)
