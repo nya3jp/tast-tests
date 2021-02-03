@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25826c7a_911dcf16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-03T22:16:51Z",
+      "side": 1,
+      "message": "I\u0027m still kinda wondering if this login time measurement really makes much sense.  I asked Aings but didn\u0027t get clear answers.\n\nTo be clear, this is measuring the time of chrome.New() -- which includes:\n* the entire Chrome process startup time\n* the time of setting username / password\n* transition animations within login screen pane switching\n* cryptohome setting-up time -- only when it is not ready\n\nDo you think this measurement is a good idea?  Why?\n\nTo me, if the duration for the login should be collected, it would be the time from hitting the login button to the completion of the login.",
+      "revId": "1590ff5a9c85001495b33514a92b36c222858b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
