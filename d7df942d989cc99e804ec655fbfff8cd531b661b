@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16645c8c_014ba90c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T08:18:18Z",
+      "side": 1,
+      "message": "It\u0027s interesting to know that type-C mode changes on login.",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 67
+      },
+      "revId": "d7df942d989cc99e804ec655fbfff8cd531b661b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23017399_261d9c8b",
@@ -19,6 +42,52 @@
         "startChar": 2,
         "endLine": 25,
         "endChar": 60
+      },
+      "revId": "d7df942d989cc99e804ec655fbfff8cd531b661b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a556ce_729a4388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T08:18:18Z",
+      "side": 1,
+      "message": "Let us avoid global variables!\n\nYou can just use anonymous functions to pass extra arguments to findConnectedDPMonitor.\n\n if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n   return findConnectedDPMonitor(ctx, testConn)\n }, ...); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "d7df942d989cc99e804ec655fbfff8cd531b661b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d6a9f38_4c09895b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T08:18:18Z",
+      "side": 1,
+      "message": "style: foundConnected :\u003d false is more common.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 27
       },
       "revId": "d7df942d989cc99e804ec655fbfff8cd531b661b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
