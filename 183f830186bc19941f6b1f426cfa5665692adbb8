@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c236e5_934be0ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-03T13:31:08Z",
+      "side": 1,
+      "message": "LGTM % questions",
+      "revId": "183f830186bc19941f6b1f426cfa5665692adbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cde3d8c_c4493dda",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-03T13:31:08Z",
+      "side": 1,
+      "message": "Can you include this change in the commit message?",
+      "revId": "183f830186bc19941f6b1f426cfa5665692adbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b9cfb02_78843ac1",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-03T13:31:08Z",
+      "side": 1,
+      "message": "Why not return here?",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 7
+      },
+      "revId": "183f830186bc19941f6b1f426cfa5665692adbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a9c837_2607d639",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-03T13:31:08Z",
+      "side": 1,
+      "message": "Is this used?",
+      "range": {
+        "startLine": 254,
+        "startChar": 35,
+        "endLine": 254,
+        "endChar": 38
+      },
+      "revId": "183f830186bc19941f6b1f426cfa5665692adbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c3101e7_42610640",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-03T13:31:08Z",
+      "side": 1,
+      "message": "Why do you have the . here?",
+      "range": {
+        "startLine": 259,
+        "startChar": 35,
+        "endLine": 259,
+        "endChar": 36
+      },
+      "revId": "183f830186bc19941f6b1f426cfa5665692adbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
