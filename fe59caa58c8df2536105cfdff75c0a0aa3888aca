@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "820bc8f8_25b44b9f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T05:30:05Z",
+      "side": 1,
+      "message": "Thanks for writing a nice comment :)",
+      "parentUuid": "1d84272f_6be30c2e",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 22
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d92ba16_23f34df7",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Sure. I changed the default field reuse strategy to be exact match.",
       "parentUuid": "5fec7496_e4219015",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 49
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd9682cd_8085a7c0",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T05:30:05Z",
+      "side": 1,
+      "message": "Hmm. This is still not \"always refuse to reuse\", it\u0027s \"reuse when values match\".\n\nMy point is: let\u0027s say another person adds a new option in the future. Unless they explicitly declare that it\u0027s reusable option, a Chrome session created with that option should not be considered reusable.",
+      "parentUuid": "89871479_be04d6a8",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -488,6 +536,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f53cb27_9cfda0c9",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T05:30:05Z",
+      "side": 1,
+      "message": "I see, I don\u0027t have a strong opinion here.",
+      "parentUuid": "5d337671_9660dccc",
+      "range": {
+        "startLine": 119,
+        "startChar": 14,
+        "endLine": 119,
+        "endChar": 17
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10f216de_5f8c5762",
@@ -619,6 +691,30 @@
       "side": 1,
       "message": "I need to pass a non-existent dir because of the PrepareExtensions() check. I added some explanation in the code.\n\nYOu are right, the extension.Checksums() parameter has to be the same. I fixed the bug.",
       "parentUuid": "e3338353_aa483bd4",
+      "range": {
+        "startLine": 84,
+        "startChar": 38,
+        "endLine": 84,
+        "endChar": 74
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e7bf108_8686eaad",
+        "filename": "src/chromiumos/tast/local/chrome/reuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T05:30:05Z",
+      "side": 1,
+      "message": "Ah you\u0027re right!",
+      "parentUuid": "db5b1fb9_35a83551",
       "range": {
         "startLine": 84,
         "startChar": 38,

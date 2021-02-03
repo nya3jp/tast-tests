@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a25d2e15_0e76b0fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T05:30:05Z",
+      "side": 1,
+      "message": "Sorry for delay...\n",
+      "revId": "fbfef2df43f000043c75682d01b846987685cdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "826142f1_d9972a42",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T05:30:05Z",
+      "side": 1,
+      "message": "nit: Can you name it extensionsDir? (because it contains multiple extensions)",
+      "revId": "fbfef2df43f000043c75682d01b846987685cdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
