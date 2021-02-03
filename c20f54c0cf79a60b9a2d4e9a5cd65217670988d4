@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f5d584_a8cce497",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-03T22:20:16Z",
+      "side": 1,
+      "message": "Style LGTM, but it\u0027s better to wait for the reviews from camera team",
+      "revId": "c20f54c0cf79a60b9a2d4e9a5cd65217670988d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
