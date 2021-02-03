@@ -118,6 +118,30 @@
       },
       "revId": "917ec0b603dd0c230360040323f0022a4940c201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e845cc7b_5db3130d",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-02-03T01:02:20Z",
+      "side": 1,
+      "message": "I totally agree with you, the good thing is this won\u0027t affect any real physical devices test.",
+      "parentUuid": "207eadd2_42a33b84",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 34
+      },
+      "revId": "917ec0b603dd0c230360040323f0022a4940c201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
