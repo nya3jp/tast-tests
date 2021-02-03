@@ -16,6 +16,93 @@
       "message": "I went ahead and created a new fixture that doesn\u0027t log into a user session. Please let me know if this is the right direction of if anything should be changed.",
       "revId": "0e199a0ed3e4207a89c4bddf91ad40e6986bde99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6be6b45e_2fd52b8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T08:11:20Z",
+      "side": 1,
+      "message": "Looks like a right direction :)",
+      "parentUuid": "8c9fa480_7982221b",
+      "revId": "0e199a0ed3e4207a89c4bddf91ad40e6986bde99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52cf7c4c_6ae46a3f",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T08:11:20Z",
+      "side": 1,
+      "message": "This fixture actually ensures that we\u0027re logged out from sessions.\n\nHow about naming it chromeLoggedOut?",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "0e199a0ed3e4207a89c4bddf91ad40e6986bde99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03f1def_a92cfd0d",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T08:11:20Z",
+      "side": 1,
+      "message": "This package is already \"chrome\", so it\u0027s redundant to name it chromeFixture.\nhttps://golang.org/doc/effective_go.html#names\n\nCan you name it just \"fixture\"?",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 18
+      },
+      "revId": "0e199a0ed3e4207a89c4bddf91ad40e6986bde99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27059a82_0468cb8d",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-03T08:11:20Z",
+      "side": 1,
+      "message": "These functions are almost the same.\n\nLet us rename NewLoggedInFixture to NewFixture. We can create a no-login fixture by just calling it with NoLogin().",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 1
+      },
+      "revId": "0e199a0ed3e4207a89c4bddf91ad40e6986bde99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
