@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b46e85_8ba96119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-03T09:32:40Z",
+      "side": 1,
+      "message": "One open question I had: I don\u0027t want this to run on CQ, and only run manually. What should be the attributes I can use to ensure that?\n\n(Eventually we will hopefully have a special high touch lab so can have a separate group for these types of tests, but that is still a bit far off).",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 60
+      },
+      "revId": "a5d68b8d914394f794837df940aabcae54ca59e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
