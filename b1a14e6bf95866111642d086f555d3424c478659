@@ -22,6 +22,30 @@
       },
       "revId": "b1a14e6bf95866111642d086f555d3424c478659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ef0f51_196d5ecf",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-03T18:42:52Z",
+      "side": 0,
+      "message": "That is correct. It seems stable without these in my testing.",
+      "parentUuid": "689756c3_e6a8d4aa",
+      "range": {
+        "startLine": 251,
+        "startChar": 14,
+        "endLine": 251,
+        "endChar": 44
+      },
+      "revId": "b1a14e6bf95866111642d086f555d3424c478659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
