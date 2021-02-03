@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c3e620f_4e24319c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-03T02:33:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0487d5c_fdd3df7f",
+      "range": {
+        "startLine": 5,
+        "startChar": 26,
+        "endLine": 5,
+        "endChar": 30
+      },
+      "revId": "4981229cee688d27beb6841f053ec9d5f65635e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b8c258b_d04a4526",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-02T01:57:28Z",
       "side": 1,
       "message": "Not needed since log print does the same job.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "4981229cee688d27beb6841f053ec9d5f65635e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e89c05_32a801bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-03T02:33:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b8c258b_d04a4526",
       "range": {
         "startLine": 71,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f166088b_e874b94c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-03T02:33:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "773a143e_7c5d3f09",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 12
+      },
+      "revId": "4981229cee688d27beb6841f053ec9d5f65635e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6271f50_7f707708",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-02T01:57:28Z",
       "side": 1,
       "message": "f",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 12
+      },
+      "revId": "4981229cee688d27beb6841f053ec9d5f65635e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d56f88_78e7ccf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-03T02:33:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6271f50_7f707708",
       "range": {
         "startLine": 79,
         "startChar": 11,
