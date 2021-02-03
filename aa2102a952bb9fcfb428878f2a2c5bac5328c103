@@ -22,6 +22,30 @@
       },
       "revId": "aa2102a952bb9fcfb428878f2a2c5bac5328c103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60eca7c0_72625627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-03T14:51:43Z",
+      "side": 1,
+      "message": "Here I need a Chrome browser handle to connect to test API and get display dimensions. We won\u0027t need this fixture if we can obtain display info from somewhere else.",
+      "parentUuid": "99e4f722_305aa175",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "aa2102a952bb9fcfb428878f2a2c5bac5328c103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
