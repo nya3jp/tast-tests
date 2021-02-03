@@ -27,6 +27,7 @@ import (
 
 const (
 	homeDataNamePiX86 = "data_migration_pi_x86_64"
+	homeDataNamePiArm = "data_migration_pi_arm64"
 )
 
 func init() {
@@ -40,9 +41,8 @@ func init() {
 		Vars:         []string{"arc.DataMigration.username", "arc.DataMigration.password"},
 		Params: []testing.Param{{
 			// Launch ARC R with /data created on ARC P.
-			Name: "p_to_r",
-			// TODO(b/155123165): Add ARM support.
-			ExtraData:         []string{homeDataNamePiX86},
+			Name:              "p_to_r",
+			ExtraData:         []string{homeDataNamePiX86, homeDataNamePiArm},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -55,9 +55,23 @@ func DataMigration(ctx context.Context, s *testing.State) {
 		appToInstall = "com.roblox.client"
 	)
 
-	homeDataPath := s.DataPath(homeDataNamePiX86)
 	username := s.RequiredVar("arc.DataMigration.username")
 	password := s.RequiredVar("arc.DataMigration.password")
+
+	// Determine path to the archived home data (x86_64 data or arm64 data).
+	homeDataPath := ""
+	output, err := testexec.CommandContext(ctx, "uname", "-m").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatal("Failed to determine architecture: ", err)
+	}
+	arch := strings.TrimSpace(string(output))
+	if arch == "x86_64" {
+		homeDataPath = s.DataPath(homeDataNamePiX86)
+	} else if arch == "aarch64" {
+		homeDataPath = s.DataPath(homeDataNamePiArm)
+	} else {
+		s.Fatal("Unsupported architecture: " + arch)
+	}
 
 	// Ensure to sign out before executing mountVaultWithArchivedHomeData().
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {

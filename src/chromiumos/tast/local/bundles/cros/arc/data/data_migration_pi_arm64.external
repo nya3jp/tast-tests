@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromeos-test-assets-private/tast/crosint/arc/data_migration_pi_arm64_R89_13678_20210203.tbz2",
+  "size": 54000412,
+  "sha256sum": "664fd8fc1448103d036c0ede9edccd6d204050e2d690e216e42733d1a12d55f3"
+}
