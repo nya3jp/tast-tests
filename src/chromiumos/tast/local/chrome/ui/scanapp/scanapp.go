@@ -300,20 +300,3 @@ func (s *ScanApp) ClickDone(ctx context.Context) error {
 
 	return nil
 }
-
-// WaitForApp waits for the Scan app to be shown and rendered. Launch can be
-// used instead if the goal is to launch the app and obtain a pointer to it.
-func WaitForApp(ctx context.Context, tconn *chrome.TestConn) error {
-	appRoot, err := ui.FindWithTimeout(ctx, tconn, appRootParams, time.Minute)
-	if err != nil {
-		return errors.Wrap(err, "failed to find Scan app")
-	}
-	defer appRoot.Release(ctx)
-
-	// Find the scan button to verify the app is rendering.
-	if err := appRoot.WaitUntilDescendantExists(ctx, scanButtonParams, uiTimeout); err != nil {
-		return errors.Wrap(err, "failed to render Scan app")
-	}
-
-	return nil
-}

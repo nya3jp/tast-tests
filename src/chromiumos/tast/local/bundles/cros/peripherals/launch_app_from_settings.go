@@ -10,10 +10,8 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/peripherals/peripheraltypes"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/diagnosticsapp"
-	"chromiumos/tast/local/chrome/ui/scanapp"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -24,11 +22,10 @@ import (
 
 // settingsTestParams contains all the data needed to run a single test iteration.
 type settingsTestParams struct {
+	appID        string
 	appLabel     string
 	featureFlag  string
-	waitForApp   peripheraltypes.WaitForAppFn
 	settingsPage string
-	subLabel     string
 }
 
 func init() {
@@ -44,18 +41,18 @@ func init() {
 			{
 				Name: "diagnostics",
 				Val: settingsTestParams{
+					appID:        apps.Diagnostics.ID,
 					appLabel:     apps.Diagnostics.Name,
 					featureFlag:  "DiagnosticsApp",
-					waitForApp:   diagnosticsapp.WaitForApp,
 					settingsPage: "help", // URL for About ChromeOS page
 				},
 			},
 			{
 				Name: "scan",
 				Val: settingsTestParams{
+					appID:        apps.Scan.ID,
 					appLabel:     apps.Scan.Name + " Scan documents and images",
 					featureFlag:  "ScanningUI",
-					waitForApp:   scanapp.WaitForApp,
 					settingsPage: "osPrinting", // URL for Print and page
 				},
 			},
@@ -93,8 +90,8 @@ func LaunchAppFromSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click entry: ", err)
 	}
 
-	// App should be launched.
-	if err := params.waitForApp(ctx, tconn); err != nil {
-		s.Fatal("Failed to launch app: ", err)
+	err = ash.WaitForApp(ctx, tconn, params.appID)
+	if err != nil {
+		s.Fatal("Could not find app in shelf after launch: ", err)
 	}
 }
