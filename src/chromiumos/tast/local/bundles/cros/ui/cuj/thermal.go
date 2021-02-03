@@ -105,3 +105,8 @@ func (ds *thermalDataSource) Snapshot(ctx context.Context, values *perf.Values) 
 	}
 	return nil
 }
+
+// Stop does nothing.
+func (ds *thermalDataSource) Stop(_ context.Context, values *perf.Values) error {
+	return nil
+}

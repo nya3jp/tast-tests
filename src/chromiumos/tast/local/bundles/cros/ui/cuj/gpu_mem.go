@@ -34,8 +34,8 @@ func newGPUDataSource(tconn *chrome.TestConn) *gpuDataSource {
 	}
 }
 
-// Stop stops the background goroutine in this data source.
-func (ds *gpuDataSource) Stop() {
+// Close stops the background goroutine in this data source.
+func (ds *gpuDataSource) Close() {
 	close(ds.stopc)
 }
 
@@ -156,5 +156,10 @@ func (ds *gpuDataSource) Snapshot(ctx context.Context, values *perf.Values) erro
 		Direction: perf.SmallerIsBetter,
 		Multiple:  true,
 	}, exceeds)
+	return nil
+}
+
+// Stop does nothing.
+func (ds *gpuDataSource) Stop(_ context.Context, values *perf.Values) error {
 	return nil
 }

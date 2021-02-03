@@ -182,7 +182,7 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 		return 0, errors.Errorf("test is not completed successfully, see: %s", outputFile)
 	}
 
-	powerPerfValues, err := metrics.StopRecording()
+	powerPerfValues, err := metrics.StopRecording(ctx)
 	if err != nil {
 		return 0, errors.Wrap(err, "error while recording power metrics")
 	}
