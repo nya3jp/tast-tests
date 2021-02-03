@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b4dddd_f32bea60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-02-03T04:59:16Z",
+      "side": 1,
+      "message": "Added the BSSID option in PS2 since hostapd attempts to assign a MAC address itself without it, and this can fail depending on the randomly generated MAC of the primary interface managed0. See https://wiki.gentoo.org/wiki/Hostapd#Invalid_BSSID_mask for more details.",
+      "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
