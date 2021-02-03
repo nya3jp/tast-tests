@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec19a7e7_8fc04be3",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-03T18:39:27Z",
+      "side": 1,
+      "message": "Was this outdated? Seems out of place with the rest of the CL haha",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "6a0fc4b403a14e0c63eca514c0c96724d14574a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
