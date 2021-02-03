@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8767306_4b269712",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2021-02-03T05:08:30Z",
+      "side": 1,
+      "message": "Hi, just a friendly note that some of the public benchmarking apps relay information. Though I\u0027m not fully aware of how potentially sensitive information (future SoC names, device variant name, etc) appear in ARC.",
+      "revId": "9fab6468423c692033237643cfaa375c71c747db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
