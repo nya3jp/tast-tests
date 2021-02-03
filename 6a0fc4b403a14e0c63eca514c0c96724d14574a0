@@ -22,6 +22,30 @@
       },
       "revId": "6a0fc4b403a14e0c63eca514c0c96724d14574a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b85fb1_418cfe00",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-03T18:42:52Z",
+      "side": 1,
+      "message": "maybe it was for the arc camera app, I am not sure, but it wasn\u0027t used anywhere and camera.CCAUILauncher needs it in order to properly wait for the app to be open.",
+      "parentUuid": "ec19a7e7_8fc04be3",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "6a0fc4b403a14e0c63eca514c0c96724d14574a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
