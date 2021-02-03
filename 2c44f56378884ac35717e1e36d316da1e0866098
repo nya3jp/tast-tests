@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce1345e_477edd40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-03T22:49:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59a76e43_e0217bfe",
+      "range": {
+        "startLine": 136,
+        "startChar": 18,
+        "endLine": 136,
+        "endChar": 21
+      },
+      "revId": "2c44f56378884ac35717e1e36d316da1e0866098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74e6369b_9a71415e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-03T08:19:36Z",
       "side": 1,
       "message": "minor nit: Timeout waiting to receive",
+      "range": {
+        "startLine": 138,
+        "startChar": 11,
+        "endLine": 138,
+        "endChar": 17
+      },
+      "revId": "2c44f56378884ac35717e1e36d316da1e0866098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b67bdb9_2e09b49a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-03T22:49:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74e6369b_9a71415e",
       "range": {
         "startLine": 138,
         "startChar": 11,
