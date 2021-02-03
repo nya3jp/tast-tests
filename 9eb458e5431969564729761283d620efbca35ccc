@@ -16,6 +16,97 @@
       "message": "Thank you for your comments Darren, I\u0027ve had a look at them and made changes as required.",
       "revId": "9eb458e5431969564729761283d620efbca35ccc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63939a52_65d109a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-03T22:26:54Z",
+      "side": 1,
+      "message": "Thanks for refactoring! LGTM with some more nits.",
+      "revId": "9eb458e5431969564729761283d620efbca35ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cb4e4aa_5b6c3ce6",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-03T22:26:54Z",
+      "side": 1,
+      "message": "super super nit: maybe parseStroke? (parse usually involves string manip)",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 18
+      },
+      "revId": "9eb458e5431969564729761283d620efbca35ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c3eb00a_ee7243b2",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-03T22:26:54Z",
+      "side": 1,
+      "message": "nit: could this be a separate function that converts a path into a stroke?",
+      "revId": "9eb458e5431969564729761283d620efbca35ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "752bf11a_0c0afe5f",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-03T22:26:54Z",
+      "side": 1,
+      "message": "nit: I\u0027m not too familiar with Go, so I\u0027ll let you decide whether this makes sense: would the code be cleaner if you started to loop from i\u003d1? I\u0027m not sure what the syntax would look like and whether it\u0027ll actually improve it, so up to you :)",
+      "revId": "9eb458e5431969564729761283d620efbca35ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982c1750_d84ab62e",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-03T22:26:54Z",
+      "side": 1,
+      "message": "nit: if I understand correctly, this function is doing a linear interpolation between two points right? https://en.wikipedia.org/wiki/Linear_interpolation\n\nIt seems like a somewhat standard operation e.g https://numpy.org/doc/stable/reference/generated/numpy.interp.html\n\nCould we factor this into a separate function, either:\n\n// returns an array of points evenly spaced  between p1 and p2\nlinearInterpolate(p1 point, p2 point, numPoints int) *point\n\nor\n\n// return the y-coord of the line between p1 and p2 at x\nlinearInterpolate(p1 point, p2 point, x float64) float64",
+      "revId": "9eb458e5431969564729761283d620efbca35ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
