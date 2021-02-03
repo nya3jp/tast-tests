@@ -63,6 +63,12 @@ var DxSuccessBadge = ui.FindParams{
 	Role: ui.RoleTypeStaticText,
 }
 
+// DxProgressBadge export is used to find successful launch of a routine
+var DxProgressBadge = ui.FindParams{
+	Name: "TEST RUNNING",
+	Role: ui.RoleTypeStaticText,
+}
+
 // DxCancelledBadge export is used to find cancelled badge
 var DxCancelledBadge = ui.FindParams{
 	Name: "STOPPED",
