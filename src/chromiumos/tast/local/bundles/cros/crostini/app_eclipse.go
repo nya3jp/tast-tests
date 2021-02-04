@@ -11,7 +11,9 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/testexec"
@@ -82,11 +84,9 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 	}
 
 	// Find eclipse window.
-	param := ui.FindParams{
-		Name: fmt.Sprintf("%s - /home/%s/%s/%s - Eclipse IDE ", workspace, strings.Split(cr.User(), "@")[0], workspace, testFile),
-		Role: ui.RoleTypeWindow,
-	}
-	if _, err := ui.FindWithTimeout(ctx, tconn, param, 90*time.Second); err != nil {
+	name := fmt.Sprintf("%s - /home/%s/%s/%s - Eclipse IDE ", workspace, strings.Split(cr.User(), "@")[0], workspace, testFile)
+	eclipseWindow := nodewith.Name(name).Role(role.Window)
+	if err := uiauto.New(tconn).WaitUntilExists(eclipseWindow)(ctx); err != nil {
 		s.Fatal("Failed to find eclipse window: ", err)
 	}
 

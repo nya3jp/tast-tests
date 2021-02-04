@@ -12,8 +12,10 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
@@ -92,18 +94,14 @@ func createFileWithEmacs(ctx context.Context, keyboard *input.KeyboardEventWrite
 		return errors.Wrap(err, "failed to run command 'emacs' in Terminal window")
 	}
 
-	// Find app window.
-	param := ui.FindParams{
-		Name: "emacs@penguin",
-		Role: ui.RoleTypeWindow,
-	}
-	appWindow, err := ui.FindWithTimeout(ctx, tconn, param, 15*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find emacs window")
-	}
-
+	ui := uiauto.New(tconn)
+	window := nodewith.Name("emacs@penguin").Role(role.Window)
 	// Left click left-top of the emacs window.
-	if err = mouse.Click(ctx, tconn, coords.Point{X: appWindow.Location.Left, Y: appWindow.Location.Top}, mouse.LeftButton); err != nil {
+	location, err := ui.Location(ctx, window)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the location of Emacs window")
+	}
+	if err = mouse.Click(ctx, tconn, coords.Point{X: location.Left, Y: location.Top}, mouse.LeftButton); err != nil {
 		return errors.Wrap(err, "failed left click on emacs window")
 	}
 
@@ -130,7 +128,7 @@ func createFileWithEmacs(ctx context.Context, keyboard *input.KeyboardEventWrite
 		return errors.Wrap(err, "failed to press ctrl+C in emacs window")
 	}
 
-	if err = ui.WaitUntilGone(ctx, tconn, param, 15*time.Second); err != nil {
+	if err = ui.WaitUntilGone(window)(ctx); err != nil {
 		return errors.Wrap(err, "failed to close emacs window")
 	}
 

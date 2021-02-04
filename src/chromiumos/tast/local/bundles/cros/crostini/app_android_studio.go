@@ -9,7 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/vm"
@@ -66,11 +68,8 @@ func AppAndroidStudio(ctx context.Context, s *testing.State) {
 	}
 
 	// Find window.
-	param := ui.FindParams{
-		Name: "Import Android Studio Settings From...",
-		Role: ui.RoleTypeWindow,
-	}
-	if _, err := ui.FindWithTimeout(ctx, tconn, param, 30*time.Second); err != nil {
+	androidWindow := nodewith.Name("Import Android Studio Settings From...").Role(role.Window)
+	if err := uiauto.New(tconn).WaitUntilExists(androidWindow)(ctx); err != nil {
 		s.Fatal("Failed to find android studio window: ", err)
 	}
 	crostini.TakeAppScreenshot(ctx, "android_studio")

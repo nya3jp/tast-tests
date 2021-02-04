@@ -11,8 +11,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
@@ -89,20 +90,12 @@ func testCreateFileWithGedit(ctx context.Context, terminalApp *terminalapp.Termi
 	if err := terminalApp.RunCommand(ctx, keyboard, "gedit "+testFile); err != nil {
 		return errors.Wrapf(err, "failed to run command %q in Terminal window", "gedit "+testFile)
 	}
+
+	ui := uiauto.New(tconn)
 	// Find the app window.
-	appWindow, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: uiString, Role: ui.RoleTypeWindow}, 15*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the app window")
-	}
-	defer appWindow.Release(ctx)
-
-	// Sometimes left click could not focus on the new window. Moving the mouse first to make sure the cursor goes to the app window.
-	if err := mouse.Move(ctx, tconn, appWindow.Location.CenterPoint(), 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed to move to the center of the app window")
-	}
-
+	appWindow := nodewith.Name(uiString).Role(role.Window)
 	// Left click the app window.
-	if err := appWindow.LeftClick(ctx); err != nil {
+	if err := ui.LeftClick(appWindow)(ctx); err != nil {
 		return errors.Wrap(err, "failed left click on the app window")
 	}
 
@@ -119,14 +112,14 @@ func testCreateFileWithGedit(ctx context.Context, terminalApp *terminalapp.Termi
 	crostini.TakeAppScreenshot(ctx, "gedit")
 
 	// Press ctrl+W twice to exit window.
-	if err = keyboard.Accel(ctx, "ctrl+W"); err != nil {
+	if err := keyboard.Accel(ctx, "ctrl+W"); err != nil {
 		return errors.Wrap(err, "failed to press ctrl+W on the app window")
 	}
-	if err = keyboard.Accel(ctx, "ctrl+W"); err != nil {
+	if err := keyboard.Accel(ctx, "ctrl+W"); err != nil {
 		return errors.Wrap(err, "failed to press ctrl+W on the app window")
 	}
 
-	if err = ui.WaitUntilGone(ctx, tconn, ui.FindParams{Name: uiString, Role: ui.RoleTypeWindow}, 15*time.Second); err != nil {
+	if err := ui.WaitUntilGone(appWindow)(ctx); err != nil {
 		return errors.Wrap(err, "failed to close Gedit window")
 	}
 
