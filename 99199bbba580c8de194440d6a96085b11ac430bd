@@ -16,6 +16,57 @@
       "message": "Thank you again, I\u0027ve made changes to reflect your comments.",
       "revId": "99199bbba580c8de194440d6a96085b11ac430bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0774071_578c2795",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-04T00:43:31Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "99199bbba580c8de194440d6a96085b11ac430bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f977c9b_c7df7bbb",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-04T00:43:31Z",
+      "side": 1,
+      "message": "nit: I think usually interpolate will return the actual point, not the change.\n\nIf your interpolate function just interpolates a single point, then your caller code will look like:\n\nfor j :\u003d 0; j \u003c pointsInBetween; j++ {\n  var newP point \u003d linearInterpolate(prev, p, pointsInBetween, j + 1)\n  s.points \u003d append(s.points, newP)\n}\n\nIf your interpolate function interpolates multiple points, then it might look like:\n\npoints \u003d linearInterpolate(prev, p, pointsInBetween)\ns.points \u003d append(s.points, ...points) // or whatever syntax is needed to extend a list",
+      "revId": "99199bbba580c8de194440d6a96085b11ac430bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89142f25_37970a34",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-04T00:43:31Z",
+      "side": 1,
+      "message": "nit: do we still need this?",
+      "revId": "99199bbba580c8de194440d6a96085b11ac430bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
