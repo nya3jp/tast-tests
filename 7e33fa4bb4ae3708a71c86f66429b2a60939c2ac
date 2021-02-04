@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290cb7ad_fa487025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_android_studio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T22:23:32Z",
+      "side": 1,
+      "message": "this should maybe be built on top of your terminalApp changes so that this can be chained with uiauto.Action",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "7e33fa4bb4ae3708a71c86f66429b2a60939c2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "083bc53d_77fd81c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_eclipse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T22:23:32Z",
+      "side": 1,
+      "message": "this should maybe be built on top of your terminalApp changes so that this can be chained with uiauto.Action",
+      "range": {
+        "startLine": 82,
+        "startChar": 11,
+        "endLine": 82,
+        "endChar": 33
+      },
+      "revId": "7e33fa4bb4ae3708a71c86f66429b2a60939c2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b586309_03bf7c7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T22:23:32Z",
+      "side": 1,
+      "message": "this should maybe be built on top of your terminalApp changes so that this can be chained with uiauto.Action",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "7e33fa4bb4ae3708a71c86f66429b2a60939c2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "998416ef_f250e1d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T22:23:32Z",
+      "side": 1,
+      "message": "why not:\nui.LeftClick(window)",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "7e33fa4bb4ae3708a71c86f66429b2a60939c2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f8a3fe5_177384e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T22:23:32Z",
+      "side": 1,
+      "message": "probably should put these together in a uiauto.Run.\n\nAlso the keyboard api will be ported with ossettings changes, so should probably wait for those to get in or rebase.\n\nsome with other files with chains of actions.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "7e33fa4bb4ae3708a71c86f66429b2a60939c2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
