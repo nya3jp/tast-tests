@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d883a3c2_9490233a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-04T13:44:39Z",
+      "side": 1,
+      "message": "Include this in the commit description.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 57
+      },
+      "revId": "36c7d13e08ab89e4d7e57daf225641ec81696307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
