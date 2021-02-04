@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0823afce_6e303a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2021-02-04T23:51:34Z",
+      "side": 1,
+      "message": "Okay, Lemme see how checked\u003d\"true\" and checkable\u003d\"true\" differentiates in P and R.\nThanks for the feedback.",
+      "parentUuid": "3eaa75b0_aae422ca",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 25
+      },
+      "revId": "c1fd3be7083e711b298ca649f207a589ca96072d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d9f5aef_00a489f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
         "patchSetId": 1
