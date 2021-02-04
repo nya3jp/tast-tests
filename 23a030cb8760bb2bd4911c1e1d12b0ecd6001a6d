@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb3543f5_7927942f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-04T09:02:52Z",
+      "side": 1,
+      "message": "@nya: any suggestions for the right Attrs here? we don\u0027t want this to run on CQ, but only manually for now (might add a special group for a typec-specific lab in the future).",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "23a030cb8760bb2bd4911c1e1d12b0ecd6001a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
