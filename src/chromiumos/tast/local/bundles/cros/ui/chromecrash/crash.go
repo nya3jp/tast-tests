@@ -361,7 +361,7 @@ func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (process.Proces
 // in one of the directories.
 // Return nil if the file is found.
 func waitForMetaFile(ctx context.Context, pid int, dirs []string) error {
-	ending := fmt.Sprintf(`.*\.%d\.meta`, pid)
+	ending := fmt.Sprintf(`chrome\.\d{8}\.\d{6}\.\d+\.%d\.meta`, pid)
 	results, err := crash.WaitForCrashFiles(ctx, dirs, []string{ending})
 	if err != nil {
 		return errors.Wrap(err, "error waiting for .meta file")
@@ -597,15 +597,15 @@ func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, erro
 		// directory not being present, so this should be OK)
 		regexes = []string{`chromium-.*-minidump-.*\.dmp`}
 	case MetaFile:
-		meta := fmt.Sprintf(`.*\.%d\.meta`, ct.killedPID)
-		dmp := fmt.Sprintf(`.*\.%d\.dmp`, ct.killedPID)
+		meta := fmt.Sprintf(`chrome\.\d{8}\.\d{6}\.\d+\.%d\.meta`, ct.killedPID)
+		dmp := fmt.Sprintf(`chrome\.\d{8}\.\d{6}\.\d+\.%d\.dmp`, ct.killedPID)
 		regexes = []string{meta, dmp}
 		// Logs and i915_error_state may be skipped if the dmp file is too large,
 		// and we don't have control of the dmp file size, so leave them as
 		// optional. Also, some platforms don't have an i915_error_state, so we
 		// can't block on that.
-		logs := fmt.Sprintf(`.*\.%d\.chrome.txt.gz`, ct.killedPID)
-		i915 := fmt.Sprintf(`.*\.%d\.i915_error_state.log.xz`, ct.killedPID)
+		logs := fmt.Sprintf(`chrome\.\d{8}\.\d{6}\.\d+\.%d\.chrome.txt.gz`, ct.killedPID)
+		i915 := fmt.Sprintf(`chrome\.\d{8}\.\d{6}\.\d+\.%d\.i915_error_state.log.xz`, ct.killedPID)
 		optionalRegexes = []string{logs, i915}
 	}
 
