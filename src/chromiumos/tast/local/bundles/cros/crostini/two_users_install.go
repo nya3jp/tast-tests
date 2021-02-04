@@ -149,7 +149,7 @@ func installAndShutDown(ctx context.Context, tconn *chrome.TestConn, cr *chrome.
 	if err != nil {
 		return errors.Wrapf(err, "failed to lauch terminal after installing Crostini for user %s", iOptions.UserName)
 	}
-	defer terminalApp.Close(ctx)
+	defer terminalApp.Close()(ctx)
 
 	// Get the container.
 	cont, err := vm.DefaultContainer(ctx, iOptions.UserName)
@@ -158,7 +158,7 @@ func installAndShutDown(ctx context.Context, tconn *chrome.TestConn, cr *chrome.
 	}
 
 	// Shutdown Crostini.
-	if err := terminalApp.ShutdownCrostini(ctx, cont); err != nil {
+	if err := terminalApp.ShutdownCrostini(cont)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to shutdown Crostini after installing it for user %s", iOptions.UserName)
 	}
 

@@ -11,8 +11,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
@@ -64,7 +65,7 @@ func AppGedit(ctx context.Context, s *testing.State) {
 		// Restart crostini in the end in case any error in the middle and gedit is not closed.
 		// This also closes the Terminal window.
 		if restartIfError {
-			if err := terminalApp.RestartCrostini(cleanupCtx, keyboard, cont, cr.User()); err != nil {
+			if err := terminalApp.RestartCrostini(keyboard, cont, cr.User())(cleanupCtx); err != nil {
 				s.Log("Failed to restart crostini: ", err)
 			}
 		}
@@ -86,49 +87,24 @@ func testCreateFileWithGedit(ctx context.Context, terminalApp *terminalapp.Termi
 		uiString   = testFile + " (~/) - gedit"
 	)
 
-	// Launch Gedit.
-	if err := terminalApp.RunCommand(ctx, keyboard, "gedit "+testFile); err != nil {
-		return errors.Wrapf(err, "failed to run command %q in Terminal window", "gedit "+testFile)
-	}
-	// Find the app window.
-	appWindow, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: uiString, Role: ui.RoleTypeWindow}, 15*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the app window")
-	}
-	defer appWindow.Release(ctx)
-
-	// Sometimes left click could not focus on the new window. Moving the mouse first to make sure the cursor goes to the app window.
-	if err := mouse.Move(ctx, tconn, appWindow.Location.CenterPoint(), 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed to move to the center of the app window")
-	}
-
-	// Left click the app window.
-	if err := appWindow.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed left click on the app window")
-	}
-
-	// Type test string into the new file.
-	if err := keyboard.Type(ctx, testString); err != nil {
-		return errors.Wrapf(err, "failed to type %q into the app window", testString)
-	}
-
-	// Press ctrl+S to save the file.
-	if err := keyboard.Accel(ctx, "ctrl+S"); err != nil {
-		return errors.Wrap(err, "failed to press ctrl+S on the app window")
-	}
-
-	crostini.TakeAppScreenshot(ctx, "gedit")
-
-	// Press ctrl+W twice to exit window.
-	if err = keyboard.Accel(ctx, "ctrl+W"); err != nil {
-		return errors.Wrap(err, "failed to press ctrl+W on the app window")
-	}
-	if err = keyboard.Accel(ctx, "ctrl+W"); err != nil {
-		return errors.Wrap(err, "failed to press ctrl+W on the app window")
-	}
-
-	if err = ui.WaitUntilGone(ctx, tconn, ui.FindParams{Name: uiString, Role: ui.RoleTypeWindow}, 15*time.Second); err != nil {
-		return errors.Wrap(err, "failed to close Gedit window")
+	ui := uiauto.New(tconn)
+	appWindow := nodewith.Name(uiString).Role(role.Window).First()
+	if err := uiauto.Combine("Create file with Gedit",
+		// Launch Gedit.
+		terminalApp.RunCommand(keyboard, "gedit "+testFile),
+		// Focus on the Gedit window and input string.
+		ui.LeftClick(appWindow),
+		keyboard.TypeAction(testString),
+		// Press ctrl+S to save the file.
+		keyboard.AccelAction("ctrl+S"),
+		// Take screenshot.
+		crostini.TakeAppScreenshot("gedit"),
+		// Press ctrl+W twice to exit window.
+		keyboard.AccelAction("ctrl+W"),
+		keyboard.AccelAction("ctrl+W"),
+		// Check window close.
+		ui.WaitUntilGone(appWindow))(ctx); err != nil {
+		return err
 	}
 
 	// Check the content of the test file.

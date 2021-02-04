@@ -11,7 +11,9 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/testexec"
@@ -59,7 +61,7 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 	defer func() {
 		// Restart Crostini in the end because it is not possible to control the Crostini app.
 		// TODO(jinrongwu): modify this once it is possible to control Eclipse.
-		if err := terminalApp.RestartCrostini(cleanupCtx, keyboard, cont, cr.User()); err != nil {
+		if err := terminalApp.RestartCrostini(keyboard, cont, cr.User())(cleanupCtx); err != nil {
 			s.Log("Failed to restart Crostini: ", err)
 		}
 	}()
@@ -76,21 +78,15 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test file in the Container: ", err)
 	}
 
-	// Open eclipse.
-	if err := terminalApp.RunCommand(ctx, keyboard, fmt.Sprintf("eclipse -data %s --launcher.openFile %s/%s --noSplash", workspace, workspace, testFile)); err != nil {
-		s.Fatal("Failed to start eclipse in Terminal: ", err)
-	}
-
 	// Find eclipse window.
-	param := ui.FindParams{
-		Name: fmt.Sprintf("%s - /home/%s/%s/%s - Eclipse IDE ", workspace, strings.Split(cr.User(), "@")[0], workspace, testFile),
-		Role: ui.RoleTypeWindow,
+	name := fmt.Sprintf("%s - /home/%s/%s/%s - Eclipse IDE ", workspace, strings.Split(cr.User(), "@")[0], workspace, testFile)
+	eclipseWindow := nodewith.Name(name).Role(role.Window).First()
+	if err := uiauto.Run(ctx,
+		terminalApp.RunCommand(keyboard, fmt.Sprintf("eclipse -data %s --launcher.openFile %s/%s --noSplash", workspace, workspace, testFile)),
+		uiauto.New(tconn).WaitUntilExists(eclipseWindow),
+		crostini.TakeAppScreenshot("eclipse")); err != nil {
+		s.Fatal("Failed to start android studio in Terminal: ", err)
 	}
-	if _, err := ui.FindWithTimeout(ctx, tconn, param, 90*time.Second); err != nil {
-		s.Fatal("Failed to find eclipse window: ", err)
-	}
-
-	crostini.TakeAppScreenshot(ctx, "eclipse")
 
 	//TODO(jinrongwu): UI test on eclipse.
 }

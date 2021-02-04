@@ -12,8 +12,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
@@ -66,11 +67,11 @@ func AppEmacs(ctx context.Context, s *testing.State) {
 		// Restart Crostini in the end in case any error in the middle and Emacs is not closed.
 		// This also closes the Terminal window.
 		if restartIfError {
-			if err := terminalApp.RestartCrostini(cleanupCtx, keyboard, cont, cr.User()); err != nil {
+			if err := terminalApp.RestartCrostini(keyboard, cont, cr.User())(cleanupCtx); err != nil {
 				s.Log("Failed to restart Crostini: ", err)
 			}
 		} else {
-			terminalApp.Exit(cleanupCtx, keyboard)
+			terminalApp.Exit(keyboard)(cleanupCtx)
 		}
 	}()
 
@@ -89,50 +90,34 @@ func createFileWithEmacs(ctx context.Context, keyboard *input.KeyboardEventWrite
 	)
 
 	// Open emacs in Terminal.
-	if err := terminalApp.RunCommand(ctx, keyboard, fmt.Sprintf("emacs %s", testFile)); err != nil {
+	if err := terminalApp.RunCommand(keyboard, fmt.Sprintf("emacs %s", testFile))(ctx); err != nil {
 		return errors.Wrap(err, "failed to run command 'emacs' in Terminal window")
 	}
 
-	// Find app window.
-	param := ui.FindParams{
-		Name: "emacs@penguin",
-		Role: ui.RoleTypeWindow,
-	}
-	appWindow, err := ui.FindWithTimeout(ctx, tconn, param, 15*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find emacs window")
-	}
-
+	ui := uiauto.New(tconn)
+	window := nodewith.Name("emacs@penguin").Role(role.Window).First()
 	// Left click left-top of the emacs window.
-	if err = mouse.Click(ctx, tconn, coords.Point{X: appWindow.Location.Left, Y: appWindow.Location.Top}, mouse.LeftButton); err != nil {
-		return errors.Wrap(err, "failed left click on emacs window")
+	loc, err := ui.Location(ctx, window)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the location of Emacs window")
 	}
 
-	// Type test string into the new file.
-	if err = keyboard.Type(ctx, testString); err != nil {
-		return errors.Wrapf(err, "failed to type %s in emacs window", testString)
-	}
-
-	// Press ctrl+x and ctrl+s to save.
-	if err = keyboard.Accel(ctx, "ctrl+X"); err != nil {
-		return errors.Wrap(err, "failed to press ctrl+X in emacs window")
-	}
-	if err = keyboard.Accel(ctx, "ctrl+S"); err != nil {
-		return errors.Wrap(err, "failed to press ctrl+C in emacs window")
-	}
-
-	crostini.TakeAppScreenshot(ctx, "emacs")
-
-	// Press ctrl+x and ctrl+c to and quit.
-	if err = keyboard.Accel(ctx, "ctrl+X"); err != nil {
-		return errors.Wrap(err, "failed to press ctrl+X in emacs window")
-	}
-	if err = keyboard.Accel(ctx, "ctrl+C"); err != nil {
-		return errors.Wrap(err, "failed to press ctrl+C in emacs window")
-	}
-
-	if err = ui.WaitUntilGone(ctx, tconn, param, 15*time.Second); err != nil {
-		return errors.Wrap(err, "failed to close emacs window")
+	if err := uiauto.Combine("Click, input, save and exit Emacs",
+		// Click left top to focus on the input area.
+		ui.MouseClickAtLocation(0, coords.Point{X: loc.Left, Y: loc.Top}),
+		// Type string.
+		keyboard.TypeAction(testString),
+		// Press ctrl+x and ctrl+s to save.
+		keyboard.AccelAction("ctrl+X"),
+		keyboard.AccelAction("ctrl+S"),
+		// Take screenshot.
+		crostini.TakeAppScreenshot("emacs"),
+		// Press ctrl+x and ctrl+c to and quit.
+		keyboard.AccelAction("ctrl+X"),
+		keyboard.AccelAction("ctrl+C"),
+		// Check window closed.
+		ui.WaitUntilGone(window))(ctx); err != nil {
+		return err
 	}
 
 	// Check the content of the test file.

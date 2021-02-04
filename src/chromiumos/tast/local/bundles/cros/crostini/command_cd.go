@@ -12,9 +12,9 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -112,25 +112,18 @@ func CommandCd(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Terminal app: ", err)
 	}
 
-	defer terminalApp.Exit(cleanupCtx, keyboard)
+	defer terminalApp.Exit(keyboard)(cleanupCtx)
 
-	// Create a test folder.
-	folderName := "testFolder"
-	if err = terminalApp.RunCommand(ctx, keyboard, fmt.Sprintf("mkdir %s", folderName)); err != nil {
-		s.Fatal("Failed to run command mkdir in Terminal window: ", err)
-	}
-
-	defer cont.Command(cleanupCtx, "rm", "-rf", folderName).Run(testexec.DumpLogOnError)
-
-	// Cd to the newly created folder.
-	if err = terminalApp.RunCommand(ctx, keyboard, fmt.Sprintf("cd %s", folderName)); err != nil {
-		s.Fatal("Failed to run command in Terminal window: ", err)
-	}
-
-	// Run pwd to check the path has changed.
 	outputFile := "test.txt"
-	if err = terminalApp.RunCommand(ctx, keyboard, fmt.Sprintf("pwd > %s", outputFile)); err != nil {
-		s.Fatal("Failed to run command in Terminal window: ", err)
+	folderName := "testFolder"
+	if err := uiauto.Run(ctx,
+		// Create a test folder.
+		terminalApp.RunCommand(keyboard, fmt.Sprintf("mkdir %s", folderName)),
+		// Cd to the newly created folder.
+		terminalApp.RunCommand(keyboard, fmt.Sprintf("cd %s", folderName)),
+		// Run pwd to check the path has changed.
+		terminalApp.RunCommand(keyboard, fmt.Sprintf("pwd > %s", outputFile))); err != nil {
+		s.Fatal("Failed to test command cd: ", err)
 	}
 
 	// Check the content of the test file.

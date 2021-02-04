@@ -349,6 +349,23 @@ func (ac *Context) mouseClick(ct clickType, finder *nodewith.Finder) Action {
 	}
 }
 
+// MouseClickAtLocation returns a function that clicks on the specified location.
+// This returns a function to make it chainable in ui.Run.
+func (ac *Context) MouseClickAtLocation(ct clickType, loc coords.Point) Action {
+	return func(ctx context.Context) error {
+		switch ct {
+		case leftClick:
+			return mouse.Click(ctx, ac.tconn, loc, mouse.LeftButton)
+		case rightClick:
+			return mouse.Click(ctx, ac.tconn, loc, mouse.RightButton)
+		case doubleClick:
+			return mouse.DoubleClick(ctx, ac.tconn, loc, 100*time.Millisecond)
+		default:
+			return errors.New("invalid click type")
+		}
+	}
+}
+
 // immediateMouseClick returns a function that clicks on the location of the node found by the input finder.
 // It will not wait until the location is stable before clicking.
 // This returns a function to make it chainable in ui.Run.
