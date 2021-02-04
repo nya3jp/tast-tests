@@ -22,6 +22,30 @@
       },
       "revId": "0a0f2956f90334d2ce9653b9668b4df829ebd5c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc2e2b8_21380ffe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-04T19:41:05Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "83842f6c_d85a2296",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 24
+      },
+      "revId": "0a0f2956f90334d2ce9653b9668b4df829ebd5c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
