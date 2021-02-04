@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d759e07f_9d5a4810",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-04T09:42:47Z",
+      "side": 1,
+      "message": "Ran tests, and found a few issues actually...\nI didn\u0027t find it\u0027s not used in CQ. Thank you for advice.\n\nPTAL.",
+      "revId": "75a517eee74a39f388dd30070282a833d41f977a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45563a75_583ef402",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-04T09:42:47Z",
+      "side": 1,
+      "message": "I overlooked this was intended to be stringified json object, not just a string literal...",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "75a517eee74a39f388dd30070282a833d41f977a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
