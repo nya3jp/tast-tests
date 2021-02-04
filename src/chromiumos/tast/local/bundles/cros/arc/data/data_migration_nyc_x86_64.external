@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromeos-test-assets-private/tast/crosint/arc/data_migration_nyc_x86_64_R71_11151_20210204.tbz2",
+  "size": 317352466,
+  "sha256sum": "7ea7b6971c0c13c75f03e63c013b0698f9fc03d5b9818edf92ce450479cc9fef"
+}
