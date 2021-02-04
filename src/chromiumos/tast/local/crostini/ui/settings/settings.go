@@ -17,9 +17,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/input"
@@ -54,8 +54,7 @@ const (
 
 // find params for fixed items.
 var (
-	settingsWindow        = nodewith.NameStartingWith("Settings").Role(role.Window).First()
-	developersButton      = nodewith.NameRegex(regexp.MustCompile("Developers|Linux.*")).Role(role.Button).Ancestor(settingsWindow)
+	developersButton      = nodewith.NameRegex(regexp.MustCompile("Developers|Linux.*")).Role(role.Button).Ancestor(ossettings.WindowFinder)
 	nextButton            = nodewith.Name("Next").Role(role.Button)
 	settingsHead          = nodewith.Name("Settings").Role(role.Heading)
 	emptySharedFoldersMsg = nodewith.Name("Shared folders will appear here").Role(role.StaticText)
@@ -78,15 +77,12 @@ func OpenLinuxSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Ch
 		return nil, errors.Wrap(err, "failed to hide all notifications in OpenLinuxSubpage()")
 	}
 
-	// Condition to satisfy verification of LaunchAtPageURL
-	condition := func(ctx context.Context) (bool, error) {
-		if err := uiauto.New(tconn).LeftClick(developersButton)(ctx); err != nil {
-			return false, errors.Wrap(err, "failed to click button Developer")
-		}
-		return true, nil
+	ui := uiauto.New(tconn)
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.Exists(developersButton)); err != nil {
+		return nil, errors.Wrap(err, "failed to launch settings app")
 	}
-	if err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", condition); err != nil {
-		return nil, errors.Wrap(err, "failed to launch Settings page and go to Crostini subpage")
+	if err := ui.LeftClick(developersButton)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to go to linux subpage")
 	}
 
 	return &Settings{tconn}, nil
@@ -102,7 +98,7 @@ func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.C
 
 	// Open the sub Settings.
 	for _, setting := range subSettings {
-		if err := uiauto.New(tconn).LeftClick(nodewith.Name(setting).Role(role.Link).Ancestor(settingsWindow))(ctx); err != nil {
+		if err := uiauto.New(tconn).LeftClick(nodewith.Name(setting).Role(role.Link).Ancestor(ossettings.WindowFinder))(ctx); err != nil {
 			return nil, errors.Wrapf(err, "failed to open sub setting %s", setting)
 		}
 	}

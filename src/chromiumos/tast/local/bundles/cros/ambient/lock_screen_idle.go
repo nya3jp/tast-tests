@@ -14,8 +14,10 @@ import (
 	"chromiumos/tast/local/ambient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
@@ -99,10 +101,10 @@ func prepareAmbientMode(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to set ambient mode pref to false")
 	}
 
-	if err := ossettings.LaunchAtPage(
+	if _, err := ossettings.LaunchAtPage(
 		ctx,
 		tconn,
-		ui.FindParams{Name: "Personalization", Role: ui.RoleTypeLink},
+		nodewith.Name("Personalization").Role(role.Link),
 	); err != nil {
 		return errors.Wrap(err, "opening settings page failed")
 	}

@@ -9,9 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
 )
 
@@ -49,7 +50,7 @@ func UbertrayOpenSettings(ctx context.Context, s *testing.State) {
 	}
 
 	// Confirm that the Settings app is open by checking for the search box.
-	if err := ossettings.WaitForSearchBox(ctx, tconn, 30*time.Second); err != nil {
+	if err := uiauto.New(tconn).WaitUntilExists(ossettings.SearchBoxFinder)(ctx); err != nil {
 		s.Fatal("Waiting for Settings app search box failed: ", err)
 	}
 }
