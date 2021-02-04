@@ -158,11 +158,19 @@ func (f *Finder) generateSubQuery(multipleNodes bool) (string, error) {
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to convert finder(%+v) to bytes", f)
 	}
+	errNotFoundBytes, err := json.Marshal(ErrNotFound + ": " + string(bytes))
+	if err != nil {
+		return "", errors.Wrap(err, "failed to marshal not found error")
+	}
+	errTooGenericBytes, err := json.Marshal(ErrTooGeneric + ": " + string(bytes))
+	if err != nil {
+		return "", errors.Wrap(err, "failed to marshal too generic error")
+	}
 	if f.first {
 		out += fmt.Sprintf(`
 			node = node.find(%[1]s);
 			if (!node) {
-				throw '%[2]s: %[1]s';
+				throw %[2]q;
 			}
 		`, bytes, ErrNotFound)
 	} else {
@@ -172,12 +180,12 @@ func (f *Finder) generateSubQuery(multipleNodes bool) (string, error) {
 		if !multipleNodes {
 			out += fmt.Sprintf(`
 			if (nodes.length == 0) {
-				throw '%[2]s: %[1]s';
+				throw %[2]q;
 			} else if (nodes.length > 1) {
-				throw '%[3]s: %[1]s';
+				throw %[3]q;
 			}
 			node = nodes[0];
-		`, bytes, ErrNotFound, ErrTooGeneric)
+		`, bytes, errNotFoundBytes, errTooGenericBytes)
 		}
 	}
 	return out, nil
@@ -468,6 +476,16 @@ func Offscreen() *Finder {
 // Offscreen creates a copy of the input Finder with Offscreen set to true.
 func (f *Finder) Offscreen() *Finder {
 	return f.State(state.Offscreen, true)
+}
+
+// Onscreen creates a Finder with Offscreen set to false.
+func Onscreen() *Finder {
+	return State(state.Offscreen, false)
+}
+
+// Onscreen creates a copy of the input Finder with Offscreen set to false.
+func (f *Finder) Onscreen() *Finder {
+	return f.State(state.Offscreen, false)
 }
 
 // Protected creates a Finder with Protected set to true.

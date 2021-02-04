@@ -12,8 +12,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
-	"chromiumos/tast/local/chrome/ui/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -56,18 +56,17 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch Chrome: ", err)
 	}
 
-	if err := ossettings.Launch(ctx, tconn); err != nil {
+	settings, err := ossettings.Launch(ctx, tconn)
+	if err != nil {
 		s.Fatal("Failed to launch Settings: ", err)
 	}
-	if err := ossettings.WaitForSearchBox(ctx, tconn, 30*time.Second); err != nil {
+	if err := settings.WaitForSearchBox()(ctx); err != nil {
 		s.Fatal("Failed waiting for Settings to load: ", err)
 	}
 
-	f, err := filesapp.Launch(ctx, tconn)
-	if err != nil {
+	if _, err := filesapp.Launch(ctx, tconn); err != nil {
 		s.Fatal("Failed to launch Files app: ", err)
 	}
-	defer f.Release(ctx)
 
 	// GetAllWindows returns windows in the order of most recent, matching the order they will appear in the cycle window.
 	// We'll use this slice to find the expected window that should be brought to the top after each Alt+Tab cycle,

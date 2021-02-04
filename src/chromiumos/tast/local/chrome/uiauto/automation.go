@@ -96,6 +96,22 @@ func Combine(name string, steps ...Action) Action {
 	}
 }
 
+// Retry retries a given action if it returns error.
+// The action will be executed up to n times, including the first attempt.
+// The last error will be returned.  Any other errors will be silently logged.
+func Retry(n int, action Action) Action {
+	return func(ctx context.Context) error {
+		var err error
+		for i := 0; i < n; i++ {
+			if err = action(ctx); err == nil {
+				return nil
+			}
+			testing.ContextLogf(ctx, "Retry failed attempt %d: %v", i+1, err)
+		}
+		return err
+	}
+}
+
 // NodeInfo is a mapping of chrome.automation API AutomationNode.
 // It is used to get information about a specific node from JS to Go.
 // NodeInfo intentionally leaves out many properties. If they become needed, add them to the Node struct.
@@ -447,6 +463,27 @@ func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
 
 		if _, err := ew.WaitForEvent(ctx, ac.pollOpts.Timeout); err != nil {
 			return errors.Wrap(err, "failed to wait for the focus event on the specified node")
+		}
+		return nil
+	}
+}
+
+// MakeVisible returns a function that calls makeVisible() JS method to make found node visible.
+func (ac *Context) MakeVisible(finder *nodewith.Finder) Action {
+	return func(ctx context.Context) error {
+		q, err := finder.GenerateQuery()
+		if err != nil {
+			return err
+		}
+		query := fmt.Sprintf(`
+		(async () => {
+			%s
+			node.makeVisible();
+		})()
+	`, q)
+
+		if err := ac.tconn.Eval(ctx, query, nil); err != nil {
+			return errors.Wrap(err, "failed to call focus() on the node")
 		}
 		return nil
 	}

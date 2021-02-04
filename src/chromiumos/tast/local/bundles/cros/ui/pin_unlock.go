@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
-	"chromiumos/tast/local/chrome/ui/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
 )
 
@@ -55,16 +55,12 @@ func PINUnlock(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Set up PIN through a connection to the Settings page.
-	if err := ossettings.Launch(ctx, tconn); err != nil {
+	settings, err := ossettings.Launch(ctx, tconn)
+	if err != nil {
 		s.Fatal("Failed to launch Settings app: ", err)
 	}
-	settingsConn, err := ossettings.ChromeConn(ctx, cr)
-	if err != nil {
-		s.Fatal("Failed to get Chrome connection to Settings app: ", err)
-	}
-	defer settingsConn.Close()
 
-	if err := ossettings.EnablePINUnlock(ctx, settingsConn, password, PIN, autosubmit); err != nil {
+	if err := settings.EnablePINUnlock(cr, password, PIN, autosubmit)(ctx); err != nil {
 		s.Fatal("Failed to enable PIN unlock: ", err)
 	}
 

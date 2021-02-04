@@ -13,7 +13,9 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -105,17 +107,10 @@ func EnableArc(ctx context.Context, s *testing.State) {
 }
 
 func turnOnPlayStore(ctx context.Context, tconn *chrome.TestConn) error {
-
-	// Launch Chrome OS Settings Apps Page.
-	appsParam := ui.FindParams{
-		Role: ui.RoleTypeHeading,
-		Name: "Apps",
-	}
-
-	if err := ossettings.LaunchAtPage(
+	if _, err := ossettings.LaunchAtPage(
 		ctx,
 		tconn,
-		appsParam,
+		nodewith.Name("Apps").Role(role.Heading),
 	); err != nil {
 		return errors.Wrap(err, "failed to Open Apps Settings Page")
 	}

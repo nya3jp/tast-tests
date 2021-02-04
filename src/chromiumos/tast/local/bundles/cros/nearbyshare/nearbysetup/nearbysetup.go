@@ -18,7 +18,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
-	"chromiumos/tast/local/chrome/ui/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
 )
 
@@ -30,15 +30,15 @@ const DefaultScreenTimeout = 10 * time.Minute
 // CrOSSetup enables Chrome OS Nearby Share and configures its settings through OS Settings. This allows tests to bypass onboarding.
 // If deviceName is empty, the device display name will not be set and the default will be used.
 func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, dataUsage nearbyshare.DataUsage, visibility nearbyshare.Visibility, deviceName string) error {
-	if err := ossettings.Launch(ctx, tconn); err != nil {
+	settings, err := ossettings.Launch(ctx, tconn)
+	if err != nil {
 		return errors.Wrap(err, "failed to launch OS Settings")
 	}
-	settingsConn, err := ossettings.ChromeConn(ctx, cr)
+	settingsConn, err := settings.ChromeConn(ctx, cr)
 	if err != nil {
 		return errors.Wrap(err, "failed to establish connection to OS Settings Chrome session")
 	}
 	defer settingsConn.Close()
-	defer ossettings.Close(ctx, tconn)
 
 	if err := settingsConn.WaitForExpr(ctx, `nearby_share !== undefined`); err != nil {
 		return errors.Wrap(err, "failed waiting for nearby_share to load")

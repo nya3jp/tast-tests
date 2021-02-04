@@ -11,7 +11,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/ui/imesettings"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/imesettings"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -31,7 +32,7 @@ func InputMethodManagement(ctx context.Context, s *testing.State) {
 	const (
 		searchKeyword   = "japanese"                                           // Keyword used to search input method.
 		inputMethodName = "Japanese with US keyboard"                          // Input method should be displayed after search.
-		inputMethdCode  = ime.IMEPrefix + string(ime.INPUTMETHOD_NACL_MOZC_US) // Input method code of the input method.
+		inputMethodCode = ime.IMEPrefix + string(ime.INPUTMETHOD_NACL_MOZC_US) // Input method code of the input method.
 	)
 
 	// New language settings UI is behind --enable-features=LanguageSettingsUpdate flag.
@@ -46,46 +47,30 @@ func InputMethodManagement(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
-
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	if err := imesettings.LaunchAtInputsSettingsPage(ctx, tconn, cr); err != nil {
-		s.Fatal("Failed to launch OS settings and land at inputs setting page: ", err)
-	}
-
-	if err := imesettings.ClickAddInputMethodButton(ctx, tconn); err != nil {
-		s.Fatal("Failed to click add input method button: ", err)
-	}
-
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)
 	}
 	defer keyboard.Close()
 
-	if err := imesettings.SearchInputMethod(ctx, tconn, keyboard, searchKeyword, inputMethodName); err != nil {
-		s.Fatal("Failed to search input method: ", err)
+	settings, err := imesettings.LaunchAtInputsSettingsPage(ctx, tconn, cr)
+	if err != nil {
+		s.Fatal("Failed to launch OS settings and land at inputs setting page: ", err)
 	}
-
-	if err := imesettings.SelectInputMethod(ctx, tconn, inputMethodName); err != nil {
-		s.Fatal("Failed to select input method: ", err)
-	}
-
-	if err := imesettings.ClickAddButtonToConfirm(ctx, tconn); err != nil {
-		s.Fatal("Failed to click add button to confirm: ", err)
-	}
-
-	// Check IME installed through Chrome API.
-	if err := ime.WaitForInputMethodInstalled(ctx, tconn, inputMethdCode, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for input method installed: ", err)
-	}
-
-	// Remove input method naturally validates that the newly installed input method is shown on UI.
-	if err := imesettings.RemoveInputMethod(ctx, tconn, inputMethodName); err != nil {
-		s.Fatal("Failed to remove input method from os settings: ", err)
-	}
-
-	if err := ime.WaitForInputMethodRemoved(ctx, tconn, inputMethdCode, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for input method removed: ", err)
+	if err := uiauto.Run(ctx,
+		settings.ClickAddInputMethodButton(),
+		settings.SearchInputMethod(keyboard, searchKeyword, inputMethodName),
+		settings.SelectInputMethod(inputMethodName),
+		settings.ClickAddButtonToConfirm(),
+		func(ctx context.Context) error {
+			return ime.WaitForInputMethodInstalled(ctx, tconn, inputMethodCode, 10*time.Second)
+		},
+		settings.RemoveInputMethod(inputMethodName),
+		func(ctx context.Context) error {
+			return ime.WaitForInputMethodRemoved(ctx, tconn, inputMethodCode, 10*time.Second)
+		},
+	); err != nil {
+		s.Fatal("Failed to test input method management: ", err)
 	}
 }
