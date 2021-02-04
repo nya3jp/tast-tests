@@ -91,3 +91,8 @@ func (c *TpmManagerBinary) Status(ctx context.Context) ([]byte, error) {
 func (c *TpmManagerBinary) NonsensitiveStatus(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "status", "--nonsensitive")
 }
+
+// NonsensitiveStatusIgnoreCache calls "tpm_manager_client status --nonsensitive --ignore_cache".
+func (c *TpmManagerBinary) NonsensitiveStatusIgnoreCache(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "status", "--nonsensitive", "--ignore_cache")
+}
