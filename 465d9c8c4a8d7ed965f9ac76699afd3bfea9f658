@@ -63,6 +63,75 @@
       },
       "revId": "465d9c8c4a8d7ed965f9ac76699afd3bfea9f658",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48001106_74a192b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-04T02:52:46Z",
+      "side": 1,
+      "message": "Try avoid passing testing.State across all the methods. You can pass the *chrome.Conn instance and return an error and check it in KmsvncConnect",
+      "range": {
+        "startLine": 55,
+        "startChar": 49,
+        "endLine": 55,
+        "endChar": 65
+      },
+      "revId": "465d9c8c4a8d7ed965f9ac76699afd3bfea9f658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75b09603_d3b272ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-04T02:52:46Z",
+      "side": 1,
+      "message": "You don\u0027t have to close the tconn, this happens when the fixture runs cr.Close\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d444-451;drc\u003df84a5803a316daee750330c8fac918215f4f65be",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 20
+      },
+      "revId": "465d9c8c4a8d7ed965f9ac76699afd3bfea9f658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae4452f_85685014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-04T02:52:46Z",
+      "side": 1,
+      "message": "Maybe associate this with a crbug as well to track implementation.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 44
+      },
+      "revId": "465d9c8c4a8d7ed965f9ac76699afd3bfea9f658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
