@@ -16,6 +16,24 @@
       "message": "This will always download both files. Is it possible to filter the boards based on architecture and have separate subtests for x86 and arm?",
       "revId": "b11613a9f28ea498df68929bf50004c867485ec8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "131c2988_393f17f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-04T02:08:52Z",
+      "side": 1,
+      "message": "Updated to use separate Params for x86 and arm.\n\nThere are only \"arm\" and \"amd64\" dep tags (no amd32 or x86), but it is not a big problem because ARCVM only runs on 64bit devices.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "parentUuid": "58d3f921_aa55521f",
+      "revId": "b11613a9f28ea498df68929bf50004c867485ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
