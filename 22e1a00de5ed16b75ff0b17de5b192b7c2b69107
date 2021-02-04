@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a6e4d4a_d767fe2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-04T05:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e52fefd7_d2cc4c7f",
+      "range": {
+        "startLine": 83,
+        "startChar": 16,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "22e1a00de5ed16b75ff0b17de5b192b7c2b69107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0cad0de_98275259",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-04T02:52:46Z",
       "side": 1,
       "message": "Might be worth implementing a ctx.WithTimeout on this method to be more explicit about how long starting up kmsvnc takes.",
+      "range": {
+        "startLine": 54,
+        "startChar": 36,
+        "endLine": 54,
+        "endChar": 51
+      },
+      "revId": "22e1a00de5ed16b75ff0b17de5b192b7c2b69107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27505d76_abd1bc9d",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-04T05:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0cad0de_98275259",
       "range": {
         "startLine": 54,
         "startChar": 36,
