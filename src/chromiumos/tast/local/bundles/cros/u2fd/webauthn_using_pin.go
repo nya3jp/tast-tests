@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/ui/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/syslog"
@@ -170,16 +170,12 @@ func setUpUserPIN(ctx context.Context, cr *chrome.Chrome, PIN, password string, 
 	}
 
 	// Set up PIN through a connection to the Settings page.
-	if err := ossettings.Launch(ctx, tconn); err != nil {
+	settings, err := ossettings.Launch(ctx, tconn)
+	if err != nil {
 		return nil, errors.Wrap(err, "failed to launch Settings app")
 	}
-	settingsConn, err := ossettings.ChromeConn(ctx, cr)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get Chrome connection to Settings app")
-	}
-	defer settingsConn.Close()
 
-	if err := ossettings.EnablePINUnlock(ctx, settingsConn, password, PIN, autosubmit); err != nil {
+	if err := settings.EnablePINUnlock(cr, password, PIN, autosubmit)(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to enable PIN unlock")
 	}
 

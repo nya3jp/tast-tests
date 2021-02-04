@@ -15,7 +15,9 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -78,16 +80,10 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 		s.Log("Failed to close Play Store: ", err)
 	}
 
-	// Launch Chrome OS Settings Apps Page.
-	appsParam := chromeui.FindParams{
-		Role: chromeui.RoleTypeHeading,
-		Name: "Apps",
-	}
-
-	if err := ossettings.LaunchAtPage(
+	if _, err := ossettings.LaunchAtPage(
 		ctx,
 		tconn,
-		appsParam,
+		nodewith.Name("Apps").Role(role.Heading),
 	); err != nil {
 		s.Fatal("Failed to Open Apps Settings Page: ", err)
 	}

@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/ui/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
 )
 
@@ -55,16 +55,17 @@ func LaunchHelpAppFromSettings(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	if err := ossettings.LaunchAtPage(ctx, tconn, ossettings.AboutChromeOS); err != nil {
+	settings, err := ossettings.LaunchAtPage(ctx, tconn, ossettings.AboutChromeOS)
+	if err != nil {
 		s.Fatal("Failed to launch Settings: ", err)
 	}
 
-	if err := ossettings.LaunchHelpApp(ctx, tconn); err != nil {
-		s.Fatal("Failed to launch Help App: ", err)
+	if err := settings.LaunchHelpApp()(ctx); err != nil {
+		s.Fatal("Failed to launch help App: ", err)
 	}
 
 	// App should be launched at the overview page.
 	if err := helpapp.WaitForApp(ctx, tconn); err != nil {
-		s.Fatal("Failed to launch help app: ", err)
+		s.Fatal("Failed to wait for help app: ", err)
 	}
 }
