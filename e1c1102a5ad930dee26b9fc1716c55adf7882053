@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16848e91_2d32536c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-04T07:27:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21ebd01d_99fa1459",
+      "range": {
+        "startLine": 462,
+        "startChar": 32,
+        "endLine": 462,
+        "endChar": 51
+      },
+      "revId": "e1c1102a5ad930dee26b9fc1716c55adf7882053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9fd25c1_503f07e8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4041edf6_4eed1fd4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-04T07:27:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9fd25c1_503f07e8",
+      "range": {
+        "startLine": 472,
+        "startChar": 75,
+        "endLine": 472,
+        "endChar": 76
+      },
+      "revId": "e1c1102a5ad930dee26b9fc1716c55adf7882053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1538cbe_22a9763d",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-04T00:36:02Z",
       "side": 1,
       "message": "Are these .* necessary?  Is the regex a full match by default?",
+      "range": {
+        "startLine": 116,
+        "startChar": 104,
+        "endLine": 116,
+        "endChar": 106
+      },
+      "revId": "e1c1102a5ad930dee26b9fc1716c55adf7882053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2cabf3f_e2ba5ba4",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-04T07:27:35Z",
+      "side": 1,
+      "message": "Yes, it is necessary for now. NameRegex only takes a regexp and set it to name attribute. I was going to suggest to change NameRegex to take a string directly.",
+      "parentUuid": "e1538cbe_22a9763d",
       "range": {
         "startLine": 116,
         "startChar": 104,
