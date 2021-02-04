@@ -16,6 +16,52 @@
       "message": "Trying to make stainless more green.",
       "revId": "685817956348645374dbda808a66f0f8d93d27d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb73573_119b694e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-04T10:18:41Z",
+      "side": 1,
+      "message": "Please log error for size \u003c\u003d 0",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "685817956348645374dbda808a66f0f8d93d27d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff308c8_a1721842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-04T10:18:41Z",
+      "side": 1,
+      "message": "It is preferred to say \"failed to ...\"",
+      "range": {
+        "startLine": 66,
+        "startChar": 29,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "685817956348645374dbda808a66f0f8d93d27d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
