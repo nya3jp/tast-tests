@@ -308,7 +308,7 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, offsets
 	if terminal, _ := terminalapp.Launch(ctx, tconn); terminal != nil {
 		// If we got a terminal object from Launch, we need to
 		// call Close to free its internal UI node.
-		if err := terminal.Close(ctx); err != nil {
+		if err := terminal.Close()(ctx); err != nil {
 			return err
 		}
 		vmRunning = true
@@ -341,7 +341,7 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, offsets
 func launchAndReleaseTerminal(ctx context.Context, tconn *chrome.TestConn) error {
 	terminal, err := terminalapp.Launch(ctx, tconn)
 	if terminal != nil {
-		err = terminal.Close(ctx)
+		err = terminal.Close()(ctx)
 	}
 	return err
 }

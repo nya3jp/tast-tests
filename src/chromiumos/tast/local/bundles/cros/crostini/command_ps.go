@@ -108,13 +108,13 @@ func CommandPs(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Terminal app: ", err)
 	}
-	defer terminalApp.Exit(cleanupCtx, keyboard)
+	defer terminalApp.Exit(keyboard)(cleanupCtx)
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	outputFile := "test.txt"
 	// Run command ps in Terminal window, redirect the output to a file for check.
-	if err = terminalApp.RunCommand(ctx, keyboard, fmt.Sprintf("ps > %s", outputFile)); err != nil {
+	if err = terminalApp.RunCommand(keyboard, fmt.Sprintf("ps > %s", outputFile))(ctx); err != nil {
 		s.Fatal("Failed to run command in Terminal window: ", err)
 	}
 

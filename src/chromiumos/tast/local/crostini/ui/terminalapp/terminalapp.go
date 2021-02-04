@@ -14,10 +14,11 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
-	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -25,10 +26,14 @@ import (
 
 const uiTimeout = 15 * time.Second
 
+var (
+	rootWindow = nodewith.NameRegex(regexp.MustCompile(`\@penguin\: `)).Role(role.Window).ClassName("BrowserFrame")
+)
+
 // TerminalApp represents an instance of the Terminal App.
 type TerminalApp struct {
 	tconn *chrome.TestConn
-	Root  *ui.Node
+	ui    *uiauto.Context
 }
 
 // Launch launches the Terminal App and returns it.
@@ -50,27 +55,18 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 
 // Find finds an open Terminal App. An error is returned if terminal cannot be found.
 func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
-	rootFindParams := ui.FindParams{
-		Attributes: map[string]interface{}{"name": regexp.MustCompile(`\@penguin\: `)},
-		Role:       ui.RoleTypeWindow,
-		ClassName:  "BrowserFrame",
-	}
-
-	opts := testing.PollOptions{Timeout: 2 * time.Minute, Interval: 500 * time.Millisecond}
-	app, err := ui.StableFind(ctx, tconn, rootFindParams, &opts)
-	if err != nil {
+	ui := uiauto.New(tconn)
+	if err := ui.WaitUntilExists(rootWindow)(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to find the Terminal App window")
 	}
 
 	// Check Terminal is on shelf.
 	if err := ash.WaitForApp(ctx, tconn, apps.Terminal.ID); err != nil {
-		app.Release(ctx)
 		return nil, errors.Wrap(err, "failed to find Terminal icon on shelf")
 	}
 
-	terminalApp := &TerminalApp{tconn: tconn, Root: app}
-	if err := terminalApp.WaitForPrompt(ctx); err != nil {
-		app.Release(ctx)
+	terminalApp := &TerminalApp{tconn: tconn, ui: ui}
+	if err := terminalApp.WaitForPrompt()(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for terminal prompt")
 	}
 
@@ -80,49 +76,35 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 // WaitForPrompt waits until the terminal window shows a shell
 // prompt. Useful for either waiting for the startup process to finish
 // or for a terminal application to exit.
-func (ta *TerminalApp) WaitForPrompt(ctx context.Context) error {
-	parentParams := ui.FindParams{
-		Role:       ui.RoleTypeRootWebArea,
-		Attributes: map[string]interface{}{"name": regexp.MustCompile(`\@penguin\: `)},
-	}
-	waitForPrompt := uig.FindWithTimeout(parentParams, uiTimeout).
-		FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "$ "}, 3*time.Minute).
-		WithNamef("Terminal.waitForPrompt()")
-	return uig.Do(ctx, ta.tconn, uig.WaitForLocationChangeCompleted(), waitForPrompt)
+func (ta *TerminalApp) WaitForPrompt() uiauto.Action {
+	webArea := nodewith.NameRegex(regexp.MustCompile(`\@penguin\: `)).Role(role.RootWebArea)
+	prompt := nodewith.Name("$ ").Role(role.StaticText).Ancestor(webArea)
+	return ta.ui.WithTimeout(3 * time.Minute).WaitUntilExists(prompt)
 }
 
 // clickShelfMenuItem right clicks the terminal app icon on the shelf and left click the specified menu item.
-func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemNameRegexp string) (retErr error) {
-	revert, err := ash.EnsureTabletModeEnabled(ctx, ta.tconn, false)
-	if err != nil {
-		testing.ContextLog(ctx, "Unable to switch out of tablet mode, try to swipe up the hot seat")
-		tc, err := pointer.NewTouchController(ctx, ta.tconn)
+func (ta *TerminalApp) clickShelfMenuItem(itemNameRegexp string) uiauto.Action {
+	return func(ctx context.Context) error {
+		revert, err := ash.EnsureTabletModeEnabled(ctx, ta.tconn, false)
 		if err != nil {
-			return errors.Wrap(err, "failed to create the touch controller")
-		}
-		defer tc.Close()
-		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, ta.tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
-			return errors.Wrap(err, "failed to swipe up the hotseat")
-		}
-	}
-	defer func() {
-		if revert != nil {
-			revert(ctx)
-			if err := ui.WaitForLocationChangeCompleted(ctx, ta.tconn); err != nil {
-				retErr = errors.Wrap(err, "error waiting for tablet mode reversion transition to complete")
+			testing.ContextLog(ctx, "Unable to switch out of tablet mode, try to swipe up the hot seat")
+			tc, err := pointer.NewTouchController(ctx, ta.tconn)
+			if err != nil {
+				return errors.Wrap(err, "failed to create the touch controller")
+			}
+			defer tc.Close()
+			if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, ta.tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
+				return errors.Wrap(err, "failed to swipe up the hotseat")
 			}
 		}
-	}()
+		if revert != nil {
+			defer revert(ctx)
+		}
 
-	if err := ui.WaitForLocationChangeCompleted(ctx, ta.tconn); err != nil {
-		return errors.Wrap(err, "error waiting for transition out of tablet mode to complete")
+		return uiauto.Combine("Click menu item on the Shelf",
+			ta.ui.RightClick(nodewith.Name("Terminal").Role(role.Button).First()),
+			ta.ui.LeftClick(nodewith.NameRegex(regexp.MustCompile(itemNameRegexp)).Role(role.MenuItem)))(ctx)
 	}
-
-	shutdown := uig.Steps(
-		uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Terminal"}, uiTimeout).RightClick(),
-		uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeMenuItem, Attributes: map[string]interface{}{"name": regexp.MustCompile(itemNameRegexp)}}, uiTimeout).LeftClick(),
-	).WithNamef("TerminalApp.clickShelfMenuItem()")
-	return uig.Do(ctx, ta.tconn, shutdown)
 }
 
 // LaunchThroughIcon launches Crostini by clicking the terminal app icon in launcher.
@@ -145,100 +127,73 @@ func LaunchThroughIcon(ctx context.Context, tconn *chrome.TestConn) (*TerminalAp
 }
 
 // RestartCrostini shuts down Crostini and launch and exit the Terminal window.
-func (ta *TerminalApp) RestartCrostini(ctx context.Context, keyboard *input.KeyboardEventWriter, cont *vm.Container, userName string) error {
-	if err := ta.ShutdownCrostini(ctx, cont); err != nil {
-		return errors.Wrap(err, "failed to shutdown crostini")
-	}
+func (ta *TerminalApp) RestartCrostini(keyboard *input.KeyboardEventWriter, cont *vm.Container, userName string) uiauto.Action {
+	return func(ctx context.Context) error {
+		if err := ta.ShutdownCrostini(cont)(ctx); err != nil {
+			return errors.Wrap(err, "failed to shutdown crostini")
+		}
 
-	// Start the VM and container.
-	ta, err := Launch(ctx, ta.tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to lauch terminal")
-	}
+		// Start the VM and container.
+		ta, err := Launch(ctx, ta.tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to lauch terminal")
+		}
 
-	if err := cont.Connect(ctx, userName); err != nil {
-		return errors.Wrap(err, "failed to connect to restarted container")
-	}
+		if err := cont.Connect(ctx, userName); err != nil {
+			return errors.Wrap(err, "failed to connect to restarted container")
+		}
 
-	if err := ta.clickShelfMenuItem(ctx, "Close"); err != nil {
-		return errors.Wrap(err, "failed to close Terminal app")
-	}
+		if err := ta.clickShelfMenuItem("Close")(ctx); err != nil {
+			return errors.Wrap(err, "failed to close Terminal app")
+		}
 
-	return nil
+		return nil
+	}
 }
 
 // ShutdownCrostini shuts down Crostini.
-func (ta *TerminalApp) ShutdownCrostini(ctx context.Context, cont *vm.Container) error {
-	if err := ta.clickShelfMenuItem(ctx, "Shut down Linux"); err != nil {
-		return errors.Wrap(err, "failed to shutdown crostini")
-	}
-
-	err := testing.Poll(ctx, func(ctx context.Context) error {
-		// While the VM is down, this command is expected to fail.
-		if out, err := cont.Command(ctx, "pwd").Output(); err == nil {
-			return errors.Errorf("expected command to fail while the container was shut down, but got: %q", string(out))
+func (ta *TerminalApp) ShutdownCrostini(cont *vm.Container) uiauto.Action {
+	return func(ctx context.Context) error {
+		if err := ta.clickShelfMenuItem("Shut down Linux")(ctx); err != nil {
+			return errors.Wrap(err, "failed to shutdown crostini")
 		}
+
+		err := testing.Poll(ctx, func(ctx context.Context) error {
+			// While the VM is down, this command is expected to fail.
+			if out, err := cont.Command(ctx, "pwd").Output(); err == nil {
+				return errors.Errorf("expected command to fail while the container was shut down, but got: %q", string(out))
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second})
+		if err != nil {
+			return errors.Wrap(err, "VM failed to stop: ")
+		}
+
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
-	if err != nil {
-		return errors.Wrap(err, "VM failed to stop: ")
 	}
-
-	return nil
-}
-
-// FocusMouseOnTerminalWindow gets focus on the Terminal window.
-func (ta *TerminalApp) FocusMouseOnTerminalWindow(ctx context.Context) error {
-	// Update node Root.
-	if err := ta.Root.Update(ctx); err != nil {
-		return errors.Wrap(err, "failed to update Rood node of Terminal app")
-	}
-
-	// Left click Terminal window to focus.
-	if err := ta.Root.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to focus in Terminal app")
-	}
-	return nil
 }
 
 // RunCommand runs command in Terminal windows.
-func (ta *TerminalApp) RunCommand(ctx context.Context, keyboard *input.KeyboardEventWriter, cmd string) error {
-	if err := ta.FocusMouseOnTerminalWindow(ctx); err != nil {
-		return errors.Wrap(err, "failed to focus on Terminal window")
-	}
-
-	// Type command.
-	if err := keyboard.Type(ctx, cmd); err != nil {
-		return errors.Wrapf(err, "failed to type %s in Terminal", cmd)
-	}
-
-	// Press Enter.
-	if err := keyboard.Accel(ctx, "Enter"); err != nil {
-		return errors.Wrap(err, "failed to press Enter in Terminal")
-	}
-	return nil
+func (ta *TerminalApp) RunCommand(keyboard *input.KeyboardEventWriter, cmd string) uiauto.Action {
+	return uiauto.Combine("Run Command "+cmd,
+		// Focus on the Terminal window.
+		ta.ui.LeftClick(rootWindow),
+		// Type command.
+		keyboard.TypeAction(cmd),
+		// Press Enter.
+		keyboard.AccelAction("Enter"))
 }
 
 // Exit closes the Terminal App through entering exit in the Terminal window.
-func (ta *TerminalApp) Exit(ctx context.Context, keyboard *input.KeyboardEventWriter) error {
-	defer ta.Root.Release(ctx)
-
-	if err := ta.RunCommand(ctx, keyboard, "exit"); err != nil {
-		return errors.Wrap(err, "failed to exit Terminal window")
-	}
-
-	// Wait for window to close.
-	return ui.WaitUntilGone(ctx, ta.tconn, ui.FindParams{Name: ta.Root.Name, Role: ta.Root.Role, ClassName: ta.Root.ClassName}, time.Minute)
+func (ta *TerminalApp) Exit(keyboard *input.KeyboardEventWriter) uiauto.Action {
+	return uiauto.Combine("Exit Terminal window",
+		ta.RunCommand(keyboard, "exit"),
+		ta.ui.WithTimeout(time.Minute).WaitUntilGone(rootWindow))
 }
 
 // Close closes the Terminal App through clicking Close on shelf context menu.
-func (ta *TerminalApp) Close(ctx context.Context) error {
-	defer ta.Root.Release(ctx)
-
-	if err := ta.clickShelfMenuItem(ctx, "Close"); err != nil {
-		return errors.Wrap(err, "failed to close Crostini")
-	}
-
-	// Wait for window to close.
-	return ui.WaitUntilGone(ctx, ta.tconn, ui.FindParams{Name: ta.Root.Name, Role: ta.Root.Role, ClassName: ta.Root.ClassName}, time.Minute)
+func (ta *TerminalApp) Close() uiauto.Action {
+	return uiauto.Combine("Close Terminal window",
+		ta.clickShelfMenuItem("Close"),
+		ta.ui.WithTimeout(time.Minute).WaitUntilGone(rootWindow))
 }

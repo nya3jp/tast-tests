@@ -57,7 +57,7 @@ func RestartApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to lauch terminal: ", err)
 	}
 
-	if err := terminalApp.ShutdownCrostini(ctx, cont); err != nil {
+	if err := terminalApp.ShutdownCrostini(cont)(ctx); err != nil {
 		s.Fatal("Failed to shutdown crostini: ", err)
 	}
 
