@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "273a02af_08f58283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-04T05:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48001106_74a192b1",
+      "range": {
+        "startLine": 55,
+        "startChar": 49,
+        "endLine": 55,
+        "endChar": 65
+      },
+      "revId": "465d9c8c4a8d7ed965f9ac76699afd3bfea9f658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75b09603_d3b272ba",
@@ -111,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "399c60c6_7aa001ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-04T05:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75b09603_d3b272ba",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 20
+      },
+      "revId": "465d9c8c4a8d7ed965f9ac76699afd3bfea9f658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cae4452f_85685014",
@@ -124,6 +172,30 @@
       "writtenOn": "2021-02-04T02:52:46Z",
       "side": 1,
       "message": "Maybe associate this with a crbug as well to track implementation.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 44
+      },
+      "revId": "465d9c8c4a8d7ed965f9ac76699afd3bfea9f658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7a08b9d_9cef68c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-04T05:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cae4452f_85685014",
       "range": {
         "startLine": 73,
         "startChar": 1,

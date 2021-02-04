@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78921329_335d21f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-04T05:29:59Z",
+      "side": 1,
+      "message": "Move most protocol details out of the test.",
+      "revId": "775b9be8f86a1dde3b1cf323b4691ce8b27c1a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
