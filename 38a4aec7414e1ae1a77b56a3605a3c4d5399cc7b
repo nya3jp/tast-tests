@@ -181,6 +181,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1604aa5b_33a1612f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-04T19:19:48Z",
+      "side": 1,
+      "message": "+1, testing.Poll is the right thing to use here",
+      "parentUuid": "eba474e9_0e10e999",
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cfe0cba8_7e9beb2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
         "patchSetId": 2
