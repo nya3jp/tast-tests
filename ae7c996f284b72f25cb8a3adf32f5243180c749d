@@ -16,6 +16,24 @@
       "message": "Note: Unused. Also there are copies in ui/automation.go, which are used. So, dropped.",
       "revId": "ae7c996f284b72f25cb8a3adf32f5243180c749d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518967b8_7802b9ca",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/debug.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T22:09:05Z",
+      "side": 0,
+      "message": "This should be used now, and ui/* is going away, just in a weird migration process from ui to uiauto. So please keep.",
+      "parentUuid": "b95c3504_34a5bd8c",
+      "revId": "ae7c996f284b72f25cb8a3adf32f5243180c749d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
