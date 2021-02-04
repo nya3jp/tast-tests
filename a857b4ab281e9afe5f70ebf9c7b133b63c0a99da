@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c92451f0_843c5b65",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T20:43:30Z",
+      "side": 1,
+      "message": "If ending early is wanted, other methods could be passed in that deal with the condition rather than doing it with retry. For example, using uiauto.Retry(3, ui.IfSuccessThen(condition, action)) or uiauto.Retry(3, ui.IfFailThen(condition, action)). I don\u0027t think that should be built into retry.\n\nAs for the delay, I am gonna put this on uiauto.Context and use its delay.",
+      "parentUuid": "96e86cb4_c293f43b",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "a857b4ab281e9afe5f70ebf9c7b133b63c0a99da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6aad1bf_0c0c669a",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-02-04T01:53:56Z",
       "side": 1,
       "message": "makeVisible?",
+      "range": {
+        "startLine": 486,
+        "startChar": 43,
+        "endLine": 486,
+        "endChar": 48
+      },
+      "revId": "a857b4ab281e9afe5f70ebf9c7b133b63c0a99da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "679266a4_1fd5c13a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T20:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6aad1bf_0c0c669a",
       "range": {
         "startLine": 486,
         "startChar": 43,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "041a39f0_600ed492",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T20:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad6aba76_c84c82d8",
+      "range": {
+        "startLine": 56,
+        "startChar": 13,
+        "endLine": 56,
+        "endChar": 17
+      },
+      "revId": "a857b4ab281e9afe5f70ebf9c7b133b63c0a99da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb5b5437_a3ee8e84",
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac45e025_35c7b6ff",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T20:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb5b5437_a3ee8e84",
+      "range": {
+        "startLine": 206,
+        "startChar": 22,
+        "endLine": 206,
+        "endChar": 40
+      },
+      "revId": "a857b4ab281e9afe5f70ebf9c7b133b63c0a99da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a244167_b49624b9",
@@ -130,6 +226,24 @@
       "writtenOn": "2021-02-04T01:53:56Z",
       "side": 1,
       "message": "Why do you want to expose these methods?  It becomes confusing, should I ui.LeftClick or settings.LeftClick? should you just expose settings.UI?\n\nAlso rather than ad-hoc adding them here, is it possible to use struct embedding? (I don\u0027t think so due to the copying, but worth checking.)",
+      "revId": "a857b4ab281e9afe5f70ebf9c7b133b63c0a99da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2e49b5_725c5d8c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/uiwrapper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T20:43:30Z",
+      "side": 1,
+      "message": "So I added this because often you just want to pass around one object and use it without thinking about. I think this enables easy use of the settings app alone and ensures all of its queries are scoped to the settings app.\n\nExposing settings.UI means that a user has to remember to specify they want to scope to the settings app. Not necessarily an issue, but extra work for every call in a test. I think this also helps to encapsulate use in a more readable way:\n\n uiauto.Run(ctx,\n   settings.EnablePinUnlock(...),\n   settings.LeftClick(...),\n   settings.WaitUntilExists(...),\n   files.LeftClick(...),\n   files.WaitUntilGone(...),\n   ui.WaitUntilExist(...),\n )\n\nvs:\n\n uiauto.Run(ctx,\n   settings.EnablePinUnlock(...),\n   ui.LeftClick(...Ancestor(ossettings.WindowFinder)),\n   ui.WaitUntilExists(...Ancestor(ossettings.WindowFinder)),\n   ui.LeftClick(...Ancestor(filesapp.WindowFinder)),\n   ui.WaitUntilGone(...Ancestor(filesapp.WindowFinder)),\n   ui.WaitUntilExist(...),\n )\n\nAnd struct embedding wouldn\u0027t work due to the FinalAncestor call.",
+      "parentUuid": "1a244167_b49624b9",
       "revId": "a857b4ab281e9afe5f70ebf9c7b133b63c0a99da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
