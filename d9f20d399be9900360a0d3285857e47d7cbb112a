@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06243d23_0a332969",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-04T08:10:43Z",
+      "side": 1,
+      "message": "LGTM with minor requests.",
+      "revId": "d9f20d399be9900360a0d3285857e47d7cbb112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8106e83_e5e1bc02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-04T08:10:43Z",
+      "side": 1,
+      "message": "(off topic here, but as you touch this file): could you include err here, too?",
+      "revId": "d9f20d399be9900360a0d3285857e47d7cbb112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5dfb0d0_0635dcdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-04T08:10:43Z",
+      "side": 1,
+      "message": "Could you include err in the error message?",
+      "revId": "d9f20d399be9900360a0d3285857e47d7cbb112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42861a22_3b2bc05d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-04T08:10:43Z",
+      "side": 1,
+      "message": "Do you have solution already?\nIf what to do was not fully decided yet, could you file a tracking issue, and use the bug id here, instead of your account?",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "d9f20d399be9900360a0d3285857e47d7cbb112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e2d1bfa_53f428af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-04T08:10:43Z",
+      "side": 1,
+      "message": "Could you include this change into commit message, too?",
+      "revId": "d9f20d399be9900360a0d3285857e47d7cbb112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
