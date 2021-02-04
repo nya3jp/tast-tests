@@ -158,7 +158,7 @@ func hwsecGetTPMStatus(ctx context.Context) (*hwsec.NonsensitiveStatusInfo, erro
 	}
 
 	// Get the TPM nonsensitive status info
-	status, err := tpmManagerUtil.GetNonsensitiveStatus(ctx)
+	status, err := tpmManagerUtil.GetNonsensitiveStatusIgnoreCache(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the TPM nonsensitive status info")
 	}
