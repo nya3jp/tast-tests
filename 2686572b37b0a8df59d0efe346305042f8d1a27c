@@ -16,6 +16,98 @@
       "message": "Please review the patch 2 as I used has the nodewith.NameRegex for the OOBE flow.",
       "revId": "2686572b37b0a8df59d0efe346305042f8d1a27c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4698f278_906d3d7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc_app_open.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T20:37:55Z",
+      "side": 1,
+      "message": "This is gonna need to rebase on master and change to uiauto",
+      "range": {
+        "startLine": 15,
+        "startChar": 31,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "2686572b37b0a8df59d0efe346305042f8d1a27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025fb701_f052368c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc_app_open.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T20:37:55Z",
+      "side": 1,
+      "message": "Please add this into the uiauto.Run below.",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "2686572b37b0a8df59d0efe346305042f8d1a27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6fb2802_30377215",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc_app_open.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T20:37:55Z",
+      "side": 1,
+      "message": "This is an extremely long amount of time to wait, is there anything else we can check sooner.",
+      "range": {
+        "startLine": 90,
+        "startChar": 46,
+        "endLine": 90,
+        "endChar": 49
+      },
+      "revId": "2686572b37b0a8df59d0efe346305042f8d1a27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "900661bf_0501bb31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc_app_open.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T20:37:55Z",
+      "side": 1,
+      "message": "Why is this necessary after already sleeping for the notification.",
+      "range": {
+        "startLine": 96,
+        "startChar": 19,
+        "endLine": 96,
+        "endChar": 24
+      },
+      "revId": "2686572b37b0a8df59d0efe346305042f8d1a27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
