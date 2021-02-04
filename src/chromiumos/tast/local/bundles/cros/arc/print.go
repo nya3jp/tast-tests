@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/printpreview"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/printing/usbprinter"
@@ -146,6 +147,7 @@ func Print(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Install virtual USB printer.
 	s.Log("Installing printer")
