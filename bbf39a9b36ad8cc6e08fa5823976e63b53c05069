@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1a28bd8f_d5709b1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-02-04T04:33:59Z",
+      "side": 1,
+      "message": "Thanks for sharing the CL!\n\nWill a symbolic link work here? We might need some insight from Tast owners.",
+      "parentUuid": "c10d5bea_00c919e0",
+      "revId": "bbf39a9b36ad8cc6e08fa5823976e63b53c05069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9eb11635_b9bb1497",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
