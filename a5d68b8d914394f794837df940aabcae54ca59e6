@@ -18,6 +18,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab382b70_f410cbd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-04T09:01:29Z",
+      "side": 1,
+      "message": "\u003e I observed the test passing when giving the delay to the DP alt exit sequence:\n\nThat lines up with what I\u0027m seeing.\nWe need to cut down on the delay (hopefully through the resolution of b/178631277)\n\nCould you try running this on a loop for a lot of iterations? I\u0027d like to establish a healthy baseline for what we consider stable behavior (let\u0027s start with 100 iterations)",
+      "parentUuid": "e159d77d_c860c00a",
+      "revId": "a5d68b8d914394f794837df940aabcae54ca59e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5137272b_e57147a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-04T09:01:29Z",
+      "side": 1,
+      "message": "sdf",
+      "revId": "a5d68b8d914394f794837df940aabcae54ca59e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05b46e85_8ba96119",
@@ -54,6 +89,30 @@
       "writtenOn": "2021-02-04T07:31:48Z",
       "side": 1,
       "message": "\u0027\u003d\u0027 --\u003e \u0027:\u003d\u0027 for declaring \u0026 initializing the variable, otherwise you\u0027ll hit a build error.",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "a5d68b8d914394f794837df940aabcae54ca59e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b09a271f_ad5afb3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-04T09:01:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d34ecff5_a740a2f4",
       "range": {
         "startLine": 53,
         "startChar": 15,
