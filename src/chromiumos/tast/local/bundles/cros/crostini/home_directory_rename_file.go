@@ -6,17 +6,16 @@ package crostini
 
 import (
 	"context"
-	"fmt"
 	"os"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/crostini/ui/linuxfiles"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -99,6 +98,7 @@ func HomeDirectoryRenameFile(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
 	cr := s.PreValue().(crostini.PreData).Chrome
+	kb := s.PreValue().(crostini.PreData).Keyboard
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Use a shortened context for test operations to reserve time for cleanup.
@@ -124,7 +124,7 @@ func HomeDirectoryRenameFile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a file in the container: ", err)
 	}
 
-	if err := testRenameFileFromLinuxFiles(ctx, filesApp, cont, fileName, newFileName); err != nil {
+	if err := testRenameFileFromLinuxFiles(ctx, filesApp, cont, kb, fileName, newFileName); err != nil {
 		s.Fatal("Failed to test Renaming files in Linux files: ", err)
 	}
 
@@ -134,30 +134,25 @@ func HomeDirectoryRenameFile(ctx context.Context, s *testing.State) {
 	}
 	folderPath := "/media/fuse/crostini_" + ownerID + "_termina_penguin/"
 
-	if err := testRenameFileFromContainer(ctx, cont, folderPath, newFileName+".txt", lastFileName); err != nil {
+	if err := testRenameFileFromContainer(ctx, cont, folderPath, newFileName, lastFileName); err != nil {
 		s.Fatal("Failed to test Renaming files in container: ", err)
 	}
 }
 
 // testRenameFileFromLinuxFiles first renames a file in Linux file then checks it is also renamed in container.
-func testRenameFileFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesApp, cont *vm.Container, fileName, newFileName string) error {
+func testRenameFileFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesApp, cont *vm.Container, kb *input.KeyboardEventWriter, fileName, newFileName string) error {
 	// Rename a file in Linux files.
-	if err := filesApp.RenameFile(ctx, linuxfiles.Title, fileName, newFileName, linuxfiles.DirName); err != nil {
-		return errors.Wrapf(err, "failed to rename file %s", fileName)
+	if err := uiauto.Combine("Rename file", filesApp.OpenLinuxFiles(), filesApp.RenameFile(kb, fileName, newFileName))(ctx); err != nil {
+		return errors.Wrapf(err, "failed to rename file %s in Linux files", fileName)
 	}
 
 	// Check the old file does not exist in container.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return cont.CheckFileDoesNotExistInDir(ctx, ".", fileName)
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		return err
-	}
-
-	// Check the new file exists in container.
-	if err := cont.CheckFilesExistInDir(ctx, ".", fmt.Sprintf("%s.%s", newFileName, strings.Split(fileName, ".")[1])); err != nil {
-		return err
-	}
-	return nil
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := cont.CheckFileDoesNotExistInDir(ctx, ".", fileName); err != nil {
+			return err
+		}
+		return cont.CheckFilesExistInDir(ctx, ".", newFileName)
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
 
 // testRenameFileFromContainer first renames a file in container then checks it is also renamed in Linux files.
