@@ -246,6 +246,24 @@
       "parentUuid": "1a244167_b49624b9",
       "revId": "a857b4ab281e9afe5f70ebf9c7b133b63c0a99da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1ac1224_c83521e0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/uiwrapper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-04T23:21:48Z",
+      "side": 1,
+      "message": "It seems a bit like multiple ways to do the same thing, + a lot of work to set this up for each \"page object\"\n\nnevertheless, I don\u0027t feel strongly, feel free to keep it if it makes sense for you.",
+      "parentUuid": "ce2e49b5_725c5d8c",
+      "revId": "a857b4ab281e9afe5f70ebf9c7b133b63c0a99da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
