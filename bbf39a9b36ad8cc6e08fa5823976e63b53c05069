@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "384e3e01_070a645d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-04T17:36:44Z",
+      "side": 1,
+      "message": "yup, symbolic link should work, actually symbolic links are already used for data files (see https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/crostini/data/ for example).\n\nFor the use of symlinks, let\u0027s discuss on the other CL.",
+      "parentUuid": "1a28bd8f_d5709b1f",
+      "revId": "bbf39a9b36ad8cc6e08fa5823976e63b53c05069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9eb11635_b9bb1497",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
