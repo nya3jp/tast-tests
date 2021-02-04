@@ -26,8 +26,9 @@ import (
 )
 
 const (
-	homeDataNamePiX86 = "data_migration_pi_x86_64"
-	homeDataNamePiArm = "data_migration_pi_arm64"
+	homeDataNameNycX86 = "data_migration_nyc_x86_64"
+	homeDataNamePiX86  = "data_migration_pi_x86_64"
+	homeDataNamePiArm  = "data_migration_pi_arm64"
 )
 
 func init() {
@@ -40,6 +41,12 @@ func init() {
 		Timeout:      10 * time.Minute,
 		Vars:         []string{"arc.DataMigration.username", "arc.DataMigration.password"},
 		Params: []testing.Param{{
+			// Launch ARC P with /data created on ARC N (for x86).
+			Name:              "n_to_p_x86",
+			Val:               homeDataNameNycX86,
+			ExtraData:         []string{homeDataNameNycX86},
+			ExtraSoftwareDeps: []string{"android_p", "amd64"},
+		}, {
 			// Launch ARC R with /data created on ARC P (for x86).
 			Name:              "p_to_r_x86",
 			Val:               homeDataNamePiX86,
