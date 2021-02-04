@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d7e0a8_894a6fd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-04T21:32:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c84093e2_ca8a3ed2",
+      "range": {
+        "startLine": 16,
+        "startChar": 31,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "9480fac40d0df2726b8fc0c3603a73724ca1d14d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e24e03cc_23b22aa9",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-04T20:33:45Z",
       "side": 1,
       "message": "please add this into the uiauto.Run below",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "9480fac40d0df2726b8fc0c3603a73724ca1d14d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e43c7829_4e186cf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-04T21:32:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e24e03cc_23b22aa9",
       "range": {
         "startLine": 60,
         "startChar": 1,
