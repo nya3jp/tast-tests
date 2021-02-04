@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a2a86c_bd8ce1b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-02-04T21:01:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8106e83_e5e1bc02",
+      "revId": "d9f20d399be9900360a0d3285857e47d7cbb112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5dfb0d0_0635dcdd",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-02-04T08:10:43Z",
       "side": 1,
       "message": "Could you include err in the error message?",
+      "revId": "d9f20d399be9900360a0d3285857e47d7cbb112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f453c549_ed735a01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-02-04T21:01:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5dfb0d0_0635dcdd",
       "revId": "d9f20d399be9900360a0d3285857e47d7cbb112a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f19788e5_b88309f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-02-04T21:01:33Z",
+      "side": 1,
+      "message": "Created crbug/1174688.",
+      "parentUuid": "42861a22_3b2bc05d",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "d9f20d399be9900360a0d3285857e47d7cbb112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e2d1bfa_53f428af",
@@ -88,6 +148,24 @@
       "writtenOn": "2021-02-04T08:10:43Z",
       "side": 1,
       "message": "Could you include this change into commit message, too?",
+      "revId": "d9f20d399be9900360a0d3285857e47d7cbb112a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "678711cd_1983be1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-02-04T21:01:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e2d1bfa_53f428af",
       "revId": "d9f20d399be9900360a0d3285857e47d7cbb112a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
