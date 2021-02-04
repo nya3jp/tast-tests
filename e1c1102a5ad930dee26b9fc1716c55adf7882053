@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ebd01d_99fa1459",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-04T00:36:02Z",
+      "side": 1,
+      "message": "maybe ui.Withtimeout(5*duration.Second).WaitUntilExists(dialog)\n\nWe don\u0027t want copy pasted code waiting for 30 seconds for a dialog to show up.",
+      "range": {
+        "startLine": 462,
+        "startChar": 32,
+        "endLine": 462,
+        "endChar": 51
+      },
+      "revId": "e1c1102a5ad930dee26b9fc1716c55adf7882053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9fd25c1_503f07e8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-04T00:36:02Z",
+      "side": 1,
+      "message": "error was: err",
+      "range": {
+        "startLine": 472,
+        "startChar": 75,
+        "endLine": 472,
+        "endChar": 76
+      },
+      "revId": "e1c1102a5ad930dee26b9fc1716c55adf7882053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1538cbe_22a9763d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-04T00:36:02Z",
+      "side": 1,
+      "message": "Are these .* necessary?  Is the regex a full match by default?",
+      "range": {
+        "startLine": 116,
+        "startChar": 104,
+        "endLine": 116,
+        "endChar": 106
+      },
+      "revId": "e1c1102a5ad930dee26b9fc1716c55adf7882053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
