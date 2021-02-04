@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd33f312_3cf4e549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2021-02-04T19:10:15Z",
+      "side": 1,
+      "message": "ARC-P has text field which changes from ON to OFF. \n\n\u003cnode index\u003d\"1\" text\u003d\"ON\" resource-id\u003d\"com.android.settings:id/switch_widget\" class\u003d\"android.widget.Switch\" package\u003d\"com.\nandroid.settings\" content-desc\u003d\"\" checkable\u003d\"true\" checked\u003d\"true\" clickable\u003d\"true\" enabled\u003d\"true\" focusable\u003d\"true\" focused\u003d\"false\" scrollable\u003d\"false\" long-clickable\u003d\"false\" password\u003d\"false\" selected\u003d\"false\" bounds\u003d\"[1746,72][1792,120]\" /\u003e\n\nHowever for ARC-R, the text field is null:\n\n\u003cnode index\u003d\"1\" text\u003d\"\" resource-id\u003d\"com.android.settings:id/switch_widget\" class\u003d\"android.widget.Switch\" package\u003d\"com.android.settings\n\" content-desc\u003d\"\" checkable\u003d\"true\" checked\u003d\"true\" clickable\u003d\"false\" enabled\u003d\"true\" focusable\u003d\"false\" focused\u003d\"false\" scrollable\u003d\"false\" long-clickable\u003d\"false\" password\u003d\"false\" selected\u003d\"false\" bounds\u003d\"[1258,225][1318,285]\" /\u003e\n\nSo in ARC-R I don\u0027t see a proper way to verify if Location settings is ON or OFF.",
+      "parentUuid": "f25d7324_d0ee4f42",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 25
+      },
+      "revId": "c1fd3be7083e711b298ca649f207a589ca96072d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d9f5aef_00a489f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-03T19:26:27Z",
       "side": 1,
       "message": "Can we use arc.Type() instead of this function?",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 1
+      },
+      "revId": "c1fd3be7083e711b298ca649f207a589ca96072d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25534d73_e99269b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2021-02-04T19:10:15Z",
+      "side": 1,
+      "message": "This function simply checks for ARCVM and returns TRUE or FALSE. But I will investigate more into arc.Type()",
+      "parentUuid": "7d9f5aef_00a489f1",
       "range": {
         "startLine": 332,
         "startChar": 0,
