@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8ced9d_3eeef838",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-02-04T20:36:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23636efa_12c458a8",
+      "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e78e40b_4808f613",
@@ -164,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1df5b574_95c76e26",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-02-04T20:36:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fc3c2bf_fe535232",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9a4cf3d_e826c51e",
@@ -177,6 +219,30 @@
       "writtenOn": "2021-02-03T06:18:29Z",
       "side": 1,
       "message": "should be bssids? (this also reminds me that adding unit test might help, but it\u0027s awkward that current TestConfigFormat() cannot check the ordering and duplicated keys)",
+      "range": {
+        "startLine": 619,
+        "startChar": 14,
+        "endLine": 619,
+        "endChar": 19
+      },
+      "revId": "a8141a481a5969d6035adfe2b7ee91201ae43bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f1e1530_3ec47018",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-02-04T20:36:47Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "a9a4cf3d_e826c51e",
       "range": {
         "startLine": 619,
         "startChar": 14,
