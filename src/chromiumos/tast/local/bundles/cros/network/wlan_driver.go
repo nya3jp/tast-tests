@@ -145,6 +145,9 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.14": "wireless/realtek/rtw88/rtw88_8822ce.ko",
 		"5.4":  "wireless/realtek/rtw88/rtw88_8822ce.ko",
 	},
+	wlan.MediaTekMT7921PCIE: {
+		"5.4": "wireless/mediatek/mt76/mt7921/mt7921e.ko",
+	},
 }
 
 func WLANDriver(ctx context.Context, s *testing.State) {
