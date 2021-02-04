@@ -223,6 +223,21 @@ func (u *UtilityTpmManagerBinary) GetNonsensitiveStatus(ctx context.Context) (in
 	return parseNonsensitiveStatusInfo(ctx, true, msg)
 }
 
+// GetNonsensitiveStatusIgnoreCache retrieves the NonsensitiveStatusInfo and ignore the cache.
+func (u *UtilityTpmManagerBinary) GetNonsensitiveStatusIgnoreCache(ctx context.Context) (info *NonsensitiveStatusInfo, returnedError error) {
+	binaryMsg, err := u.binary.NonsensitiveStatusIgnoreCache(ctx)
+
+	// Convert msg first because it's still used when there's an error.
+	msg := string(binaryMsg)
+
+	if err != nil {
+		return nil, errors.Wrapf(err, "calling NonsensitiveStatusIgnoreCache failed with message %q", msg)
+	}
+
+	// Now try to parse everything.
+	return parseNonsensitiveStatusInfo(ctx, true, msg)
+}
+
 // DAInfo contains the dictionary attack related information.
 type DAInfo struct {
 	// Counter is the dictionary attack lockout counter.
