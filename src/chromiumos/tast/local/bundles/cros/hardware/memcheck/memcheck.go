@@ -8,7 +8,6 @@ package memcheck
 import (
 	"context"
 	"io/ioutil"
-	"regexp"
 	"runtime"
 	"strconv"
 	"strings"
@@ -121,39 +120,7 @@ func testMemInfo(ctx context.Context, s *testing.State) {
 	}
 }
 
-func testRAMSpeed(ctx context.Context, s *testing.State) {
-	s.Log("Running testRAMSpeed")
-	const speedRef = 1333
-
-	out, err := testexec.CommandContext(ctx, "mosys", "memory", "spd", "print", "timings", "-s", "speeds").Output(testexec.DumpLogOnError)
-	if err != nil {
-		s.Error("Failed to read timings from spd: ", err)
-		return
-	}
-
-	// Result example: DDR-800, DDR3-1066, DDR3-1333, DDR3-1600
-	pattern := regexp.MustCompile(`^[A-Z]*DDR(?:[3-9]|[1-9]\d+)[A-Z]*-(\d+)$`)
-	for dimm, line := range strings.Split(strings.TrimSpace(string(out)), "\n") {
-		words := strings.Split(line, ", ")
-		maxTiming := words[len(words)-1]
-		match := pattern.FindStringSubmatch(maxTiming)
-		if match == nil {
-			s.Errorf("Failed to parse timings for dimm #%d: got %q", dimm, maxTiming)
-			continue
-		}
-
-		if speed, err := strconv.ParseInt(match[1], 10, 64); err != nil {
-			s.Errorf("Failed to parse speed %q: %v", match[1], err)
-			continue
-		} else if speed < speedRef {
-			s.Errorf("Unexpected speed: got %d; want >= %d", speed, speedRef)
-			continue
-		}
-	}
-}
-
 // RunTest runs subtests of the MemCheck test.
 func RunTest(ctx context.Context, s *testing.State) {
 	testMemInfo(ctx, s)
-	testRAMSpeed(ctx, s)
 }
