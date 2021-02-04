@@ -111,13 +111,13 @@ func (f *FilesApp) OpenDownloads() uiauto.Action {
 
 // OpenDrive returns a function that opens the Google Drive folder in the Files App.
 // An error is returned if Drive is not found or does not open.
-func (f *FilesApp) OpenDrive(ctx context.Context) uiauto.Action {
+func (f *FilesApp) OpenDrive() uiauto.Action {
 	return f.OpenDir(GoogleDrive, "Files - "+MyDrive)
 }
 
 // OpenLinuxFiles returns a function that opens the Linux files folder in the Files App.
 // An error is returned if Linux files is not found or does not open.
-func (f *FilesApp) OpenLinuxFiles(ctx context.Context) uiauto.Action {
+func (f *FilesApp) OpenLinuxFiles() uiauto.Action {
 	return f.OpenDir("Linux files", "Files - Linux files")
 }
 
@@ -135,6 +135,11 @@ func (f *FilesApp) WaitForFile(fileName string) uiauto.Action {
 // WaitUntilFileGone returns a function that waits for a file to no longer exist.
 func (f *FilesApp) WaitUntilFileGone(fileName string) uiauto.Action {
 	return f.WaitUntilGone(file(fileName))
+}
+
+// FileExists calls ui.Exists to check whether a folder or a file exists in the Files App.
+func (f *FilesApp) FileExists(fileName string) uiauto.Action {
+	return f.ui.Exists(file(fileName))
 }
 
 // SelectFile returns a function that selects a file by clicking on it.
