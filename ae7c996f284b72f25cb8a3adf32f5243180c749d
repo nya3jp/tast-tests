@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b95c3504_34a5bd8c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/debug.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-04T09:16:32Z",
+      "side": 0,
+      "message": "Note: Unused. Also there are copies in ui/automation.go, which are used. So, dropped.",
+      "revId": "ae7c996f284b72f25cb8a3adf32f5243180c749d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
