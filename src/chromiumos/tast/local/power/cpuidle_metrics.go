@@ -13,13 +13,14 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 const c0State = "C0"
 
 // computeCpuidleStateFiles returns a mapping from cpuidle states to files
 // containing the corresponding residency information.
-func computeCpuidleStateFiles() (map[string][]string, int, error) {
+func computeCpuidleStateFiles(ctx context.Context) (map[string][]string, int, error) {
 	ret := make(map[string][]string)
 	numCpus := 0
 
@@ -41,7 +42,8 @@ func computeCpuidleStateFiles() (map[string][]string, int, error) {
 		cpuDir := path.Join(cpusDir, cpuInfo.Name(), "cpuidle")
 		cpuidles, err := ioutil.ReadDir(cpuDir)
 		if err != nil {
-			return nil, 0, errors.Wrap(err, "failed to find cpuidle directory")
+			testing.ContextLogf(ctx, "System does not expose %v, skipping CPU", cpuDir)
+			continue
 		}
 
 		for _, cpuidle := range cpuidles {
@@ -100,7 +102,7 @@ func NewCpuidleStateMetrics() *CpuidleStateMetrics {
 
 // Setup determines what C-states are supported and which CPUs should be queried.
 func (cs *CpuidleStateMetrics) Setup(ctx context.Context, prefix string) error {
-	cpuidleFiles, numCpus, err := computeCpuidleStateFiles()
+	cpuidleFiles, numCpus, err := computeCpuidleStateFiles(ctx)
 	if err != nil {
 		return errors.Wrap(err, "error finding cpuidles")
 	}
@@ -128,6 +130,10 @@ func readCpuidleStateTimes(cpuidleFiles map[string][]string) (map[string]int64, 
 // Start collects initial cpuidle numbers which we can use to
 // compute the residency between now and the first Snapshot.
 func (cs *CpuidleStateMetrics) Start(ctx context.Context) error {
+	if cs.numCpus == 0 {
+		return nil
+	}
+
 	stats, statTime, err := readCpuidleStateTimes(cs.cpuidleFiles)
 	if err != nil {
 		return errors.Wrap(err, "failed to collect initial metrics")
@@ -146,6 +152,10 @@ func (cs *CpuidleStateMetrics) Start(ctx context.Context) error {
 // Snapshot computes the cpuidle residency between this and
 // the previous snapshot, and reports them as metrics.
 func (cs *CpuidleStateMetrics) Snapshot(ctx context.Context, values *perf.Values) error {
+	if cs.numCpus == 0 {
+		return nil
+	}
+
 	stats, statTime, err := readCpuidleStateTimes(cs.cpuidleFiles)
 	if err != nil {
 		return errors.Wrap(err, "failed to collect metrics")
