@@ -39,6 +39,30 @@
       },
       "revId": "465d9c8c4a8d7ed965f9ac76699afd3bfea9f658",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf95462_30591da7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-04T01:37:12Z",
+      "side": 1,
+      "message": "Added the other owner of kmsvnc. We are the only ones working on it.",
+      "parentUuid": "cf37f3e9_5c825867",
+      "range": {
+        "startLine": 24,
+        "startChar": 48,
+        "endLine": 24,
+        "endChar": 49
+      },
+      "revId": "465d9c8c4a8d7ed965f9ac76699afd3bfea9f658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
