@@ -27,6 +27,7 @@ type Feature string
 
 // List of accessibility features.
 const (
+	Autoclick       Feature = "autoclick"
 	DockedMagnifier Feature = "dockedMagnifier"
 	FocusHighlight  Feature = "focusHighlight"
 	ScreenMagnifier Feature = "screenMagnifier"
