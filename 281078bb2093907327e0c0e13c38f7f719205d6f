@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6cb4ab2_be9858c4",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-04T22:52:06Z",
+      "side": 1,
+      "message": "nit/optional: might be beneficial to include a comment about how the filter can be used.",
+      "range": {
+        "startLine": 307,
+        "startChar": 51,
+        "endLine": 307,
+        "endChar": 64
+      },
+      "revId": "281078bb2093907327e0c0e13c38f7f719205d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03dfaea_077bbb50",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-04T22:52:06Z",
+      "side": 1,
+      "message": "style: can you split this into two if conditions? Makes it easier to read\n```\ninstalled, err :\u003d a.VerifyPackageInstalled(ctx, pkgName);\nif err !\u003d nil {\n  return nil\n}\nif installed {\n  return nil\n}\n```",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "281078bb2093907327e0c0e13c38f7f719205d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5efa9f4b_87396637",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-04T22:52:06Z",
+      "side": 1,
+      "message": "style: Same as above",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 23
+      },
+      "revId": "281078bb2093907327e0c0e13c38f7f719205d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
