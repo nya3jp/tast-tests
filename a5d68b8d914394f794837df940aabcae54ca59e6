@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e159d77d_c860c00a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1155964
+      },
+      "writtenOn": "2021-02-04T07:31:48Z",
+      "side": 1,
+      "message": "After fixing the small build issue, I observed the test passing when giving the delay to the DP alt exit sequence:\n```\n~/trunk/src/scripts $ tast run 192.168.1.105 typec.ModeSwitch\n2021/02/03 23:26:21 Command line: tast run 192.168.1.105 typec.ModeSwitch\n2021/02/03 23:26:21 Writing results to /tmp/tast/results/20210203-232621\n2021/02/03 23:26:21 Connecting to 192.168.1.105\n2021/02/03 23:26:21 Building local_test_runner, cros, remote_test_runner, cros\n2021/02/03 23:26:22 Built in 547ms\n2021/02/03 23:26:22 Pushing executables to target\n2021/02/03 23:26:22 Pushed executables in 112ms (sent 0 B)\n2021/02/03 23:26:22 Target version: volteer-release/R90-13750.0.0\n2021/02/03 23:26:23 [23:26:22.808] Waiting 4.191s for cryptohomed to stabilize\n2021/02/03 23:26:27 [23:26:27.165] Devserver status: [[http://127.0.0.1:28082 UP]]\n2021/02/03 23:26:27 [23:26:27.165] Found 0 external linked data file(s), need to download 0\n2021/02/03 23:26:27 Started test typec.ModeSwitch\n2021/02/03 23:26:27 [23:26:27.210] Restarting ui job\n2021/02/03 23:26:28 [23:26:27.718] Clearing device owner info\n2021/02/03 23:26:28 [23:26:27.770] Asking session_manager to enable Chrome testing\n2021/02/03 23:26:28 [23:26:27.900] Waiting for Chrome to write its debugging port to /home/chronos/DevToolsActivePort\n2021/02/03 23:26:28 [23:26:28.156] Connecting to browser at ws://127.0.0.1:36917/devtools/browser/48b44d82-d720-4b7d-acee-cbf14ff6660a\n2021/02/03 23:26:28 [23:26:28.168] Removing cryptohome for testuser@gmail.com\n2021/02/03 23:26:28 [23:26:28.180] Waiting for test API extension at chrome-extension://mecfefiddjlmabpeilblgegnbioikfmp/_generated_background_page.html\n2021/02/03 23:26:28 [23:26:28.186] Connecting to Chrome target 089675C935A2D9AFB5AD44E558F3C326\n2021/02/03 23:26:28 [23:26:28.234] Test API extension is ready\n2021/02/03 23:26:28 [23:26:28.234] Verifying that no TBT devices enumerated\n2021/02/03 23:26:28 [23:26:28.234] Verifying that DP monitor enumerated correctly\n2021/02/03 23:26:28 [23:26:28.261] Finding OOBE DevTools target\n2021/02/03 23:26:28 [23:26:28.262] Connecting to Chrome target FC8D32F86FE32F9FDAE3653AD4D3E66F\n2021/02/03 23:26:28 [23:26:28.268] Waiting for OOBE\n2021/02/03 23:26:29 [23:26:28.925] Logging in as user \"testuser@gmail.com\"\n2021/02/03 23:26:29 [23:26:28.952] Waiting for cryptohome for user \"testuser@gmail.com\" with timeout 1m0s\n2021/02/03 23:26:33 [23:26:33.146] Waiting for OOBE to be dismissed\n2021/02/03 23:26:34 [23:26:33.638] Waiting for test API extension at chrome-extension://behllobkkfkfnphdnhnkndlbkcpglgmj/_generated_background_page.html\n2021/02/03 23:26:34 [23:26:33.659] Connecting to Chrome target 1BFD6537B33B1BE6FC9FDCF66BA08C35\n2021/02/03 23:26:34 [23:26:33.778] Test API extension is ready\n2021/02/03 23:26:34 [23:26:33.788] Verifying that TBT device enumerated correctly\n2021/02/03 23:26:42 [23:26:41.703] Verifying that DP monitor enumerated correctly\n2021/02/03 23:26:45 Completed test typec.ModeSwitch in 18.126s with 0 error(s)\n2021/02/03 23:26:45 Ran 1 local test(s) in 22.791s\n2021/02/03 23:26:45 Starting /tmp/tast/build/host/remote_test_runner locally\n2021/02/03 23:26:45 Ran 0 remote test(s) in 19ms\n2021/02/03 23:26:47 --------------------------------------------------------------------------------\n2021/02/03 23:26:47 typec.ModeSwitch  [ PASS ]\n2021/02/03 23:26:47 --------------------------------------------------------------------------------\n2021/02/03 23:26:47 Results saved to /tmp/tast/results/20210203-232621\n```",
+      "revId": "a5d68b8d914394f794837df940aabcae54ca59e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05b46e85_8ba96119",
@@ -19,6 +36,29 @@
         "startChar": 2,
         "endLine": 25,
         "endChar": 60
+      },
+      "revId": "a5d68b8d914394f794837df940aabcae54ca59e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d34ecff5_a740a2f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1155964
+      },
+      "writtenOn": "2021-02-04T07:31:48Z",
+      "side": 1,
+      "message": "\u0027\u003d\u0027 --\u003e \u0027:\u003d\u0027 for declaring \u0026 initializing the variable, otherwise you\u0027ll hit a build error.",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 16
       },
       "revId": "a5d68b8d914394f794837df940aabcae54ca59e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
