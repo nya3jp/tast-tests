@@ -6,6 +6,7 @@ package cuj
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -14,6 +15,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/log"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -58,6 +60,7 @@ type loggedInToCUJUserFixture struct {
 	cr              *chrome.Chrome
 	arc             *arc.ARC
 	origRunningPkgs map[string]struct{}
+	s               *log.Splitter
 }
 
 func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -141,6 +144,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 	}()
 	f.cr = cr
 	f.arc = a
+	f.s = log.NewSplitter()
 	cr = nil
 	return FixtureData{Chrome: f.cr, ARC: f.arc}
 }
@@ -194,6 +198,14 @@ func (f *loggedInToCUJUserFixture) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (f *loggedInToCUJUserFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *loggedInToCUJUserFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	if err := f.s.Start(ctx); err != nil {
+		s.Error("Failed to check the chrome log: ", err)
+	}
+}
 
-func (f *loggedInToCUJUserFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *loggedInToCUJUserFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if err := f.s.SaveLogIntoFile(ctx, filepath.Join(s.OutDir(), "chrome.log")); err != nil {
+		s.Error("Failed to save the chrome log for the test: ", err)
+	}
+}

@@ -6,8 +6,10 @@ package chrome
 
 import (
 	"context"
+	"path/filepath"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/log"
 	"chromiumos/tast/testing"
 )
 
@@ -51,6 +53,7 @@ func init() {
 type loggedInFixture struct {
 	cr   *Chrome
 	opts []Option
+	s    *log.Splitter
 }
 
 // NewLoggedInFixture returns a FixtureImpl of creating a Chrome instance with the given options.
@@ -70,6 +73,7 @@ func (f *loggedInFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 	Lock()
 	f.cr = cr
+	f.s = log.NewSplitter()
 	return cr
 }
 
@@ -91,6 +95,14 @@ func (f *loggedInFixture) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (f *loggedInFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *loggedInFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	if err := f.s.Start(ctx); err != nil {
+		s.Error("Failed to check the chrome log: ", err)
+	}
+}
 
-func (f *loggedInFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *loggedInFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if err := f.s.SaveLogIntoFile(ctx, filepath.Join(s.OutDir(), "chrome.log")); err != nil {
+		s.Error("Failed to save the chrome log for the test: ", err)
+	}
+}
