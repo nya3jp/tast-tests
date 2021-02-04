@@ -11,6 +11,7 @@ package memory
 import (
 	"container/list"
 	"context"
+	"runtime"
 	"strings"
 	"syscall"
 	"time"
@@ -46,23 +47,33 @@ func (c *ChromeOSAllocator) Size() uint {
 // Allocated memory is filled with random data so that page compression can't
 // shrink it.
 func (c *ChromeOSAllocator) Allocate(size int) error {
-	buffer, err := syscall.Mmap(
-		-1,
-		0,
-		size,
-		syscall.PROT_READ|syscall.PROT_WRITE,
-		syscall.MAP_PRIVATE|syscall.MAP_ANONYMOUS,
-	)
-	if err != nil {
-		return errors.Wrapf(err, "unable to allocate %d byte chunk", size)
+	for size > 0 {
+		mmapSize := size
+		if mmapSize > memory.MiB {
+			mmapSize = memory.MiB
+		}
+		size -= mmapSize
+		buffer, err := syscall.Mmap(
+			-1,
+			0,
+			mmapSize,
+			syscall.PROT_READ|syscall.PROT_WRITE,
+			syscall.MAP_PRIVATE|syscall.MAP_ANONYMOUS,
+		)
+		if err != nil {
+			var stats runtime.MemStats
+			runtime.ReadMemStats(&stats)
+			return errors.Wrapf(err, "unable to allocate %d byte chunk after allocating %d bytes, total Sys %d", mmapSize, c.size, stats.Sys)
+		}
+		// Fill each page with random bytes so that page compression can't reduce
+		// the size.
+		for i := 0; i < mmapSize; i += len(randomPage) {
+			copy(buffer[i:], randomPage[:])
+		}
+		c.allocated.PushBack(buffer)
+		c.size += uint(len(buffer))
 	}
-	// Fill each page with random bytes so that page compression can't reduce
-	// the size.
-	for i := 0; i < size; i += len(randomPage) {
-		copy(buffer[i:], randomPage[:])
-	}
-	c.allocated.PushBack(buffer)
-	c.size += uint(len(buffer))
+
 	return nil
 }
 
