@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96e86cb4_c293f43b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-04T02:18:27Z",
+      "side": 1,
+      "message": "Is it possible to end earlier with a condition?",
+      "parentUuid": "0468158c_d4e4bc48",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "a857b4ab281e9afe5f70ebf9c7b133b63c0a99da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6aad1bf_0c0c669a",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
         "patchSetId": 2
