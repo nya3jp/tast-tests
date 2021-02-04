@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43b1c9ab_856c0df4",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-04T00:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cb4e4aa_5b6c3ce6",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 18
+      },
+      "revId": "9eb458e5431969564729761283d620efbca35ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c3eb00a_ee7243b2",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-02-03T22:26:54Z",
       "side": 1,
       "message": "nit: could this be a separate function that converts a path into a stroke?",
+      "revId": "9eb458e5431969564729761283d620efbca35ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e09e6a_75df4ba0",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-04T00:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c3eb00a_ee7243b2",
       "revId": "9eb458e5431969564729761283d620efbca35ccc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe600d9_df5281a8",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-04T00:00:40Z",
+      "side": 1,
+      "message": "I guess it\u0027s a choice between having to add a duplicate s.points \u003d append(s.points, newP) outside of the for loop or adding that i !\u003d 0 there. I think it might be better to reduce duplicate code which is why I used this.",
+      "parentUuid": "752bf11a_0c0afe5f",
+      "revId": "9eb458e5431969564729761283d620efbca35ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "982c1750_d84ab62e",
@@ -105,6 +165,24 @@
       "writtenOn": "2021-02-03T22:26:54Z",
       "side": 1,
       "message": "nit: if I understand correctly, this function is doing a linear interpolation between two points right? https://en.wikipedia.org/wiki/Linear_interpolation\n\nIt seems like a somewhat standard operation e.g https://numpy.org/doc/stable/reference/generated/numpy.interp.html\n\nCould we factor this into a separate function, either:\n\n// returns an array of points evenly spaced  between p1 and p2\nlinearInterpolate(p1 point, p2 point, numPoints int) *point\n\nor\n\n// return the y-coord of the line between p1 and p2 at x\nlinearInterpolate(p1 point, p2 point, x float64) float64",
+      "revId": "9eb458e5431969564729761283d620efbca35ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01fc868e_3689bf15",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-04T00:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "982c1750_d84ab62e",
       "revId": "9eb458e5431969564729761283d620efbca35ccc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
