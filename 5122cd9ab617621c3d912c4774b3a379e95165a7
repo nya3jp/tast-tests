@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e4002c_908fe907",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-02-04T07:24:39Z",
+      "side": 1,
+      "message": "I\u0027ve been experimenting with adding a NV12 ARCVM test that uses this function, so please don\u0027t remove this yet: crrev/c/2631818 and ag/13352216",
+      "revId": "5122cd9ab617621c3d912c4774b3a379e95165a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
