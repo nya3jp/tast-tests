@@ -350,6 +350,15 @@ func isNApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *ar
 	return nApp
 }
 
+// TouchAndTextInputs func verify touch and text inputs in the app are working properly without crash or ANR.
+func TouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	errorMessage := performTouchAndTextInputs(ctx, s, tconn, a, d, appPkgName)
+	if errorMessage != "" {
+		s.Error("Touch and text inputs are not working properly in the app")
+	}
+	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
@@ -467,4 +476,48 @@ func handleCrashOrANRDialog(ctx context.Context, s *testing.State, d *ui.Device)
 	} else if err := okButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on OkButton: ", err)
 	}
+}
+
+// performTouchAndTextInputs func perform touch and text inputs using monkey test.
+func performTouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string) string {
+	var errorMessage string
+
+	// Press enter key twice.
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	}
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	}
+	// To perform touch and text inputs.
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "30", "--pct-nav", "10", "--pct-touch", "40", "--pct-nav", "10", "--pct-anyevent", "10", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Log("Failed to perform monkey test touch and text inputs: ", err)
+	}
+	output := string(out)
+	errorMessage = processOutput(ctx, s, tconn, a, d, appPkgName, output)
+	return errorMessage
+}
+
+// processOutput func parse the output logs of monkey test.
+func processOutput(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, output string) string {
+	applicationNotRespondingErrorMsg := "Application is not responding:"
+	anrErrorMessage := "ANR"
+	monkeyTestAbortedErrorMessage := "Monkey aborted due to error."
+	monkeyTestAbortedErrorMsg := "monkey aborted."
+	NotRespondingErrorMessage := "NOT RESPONDING:"
+	var errorMessage string
+
+	splitOutput := strings.Split(output, "\n")
+	for splitLine := range splitOutput {
+		if strings.Contains(splitOutput[splitLine], monkeyTestAbortedErrorMessage) ||
+			strings.Contains(splitOutput[splitLine], monkeyTestAbortedErrorMsg) ||
+			strings.Contains(splitOutput[splitLine], applicationNotRespondingErrorMsg) ||
+			strings.Contains(splitOutput[splitLine], anrErrorMessage) ||
+			strings.Contains(splitOutput[splitLine], NotRespondingErrorMessage) {
+			errormessage := splitOutput[splitLine]
+			s.Error("Monkey test aborted due to error: ", errormessage)
+		}
+	}
+	return errorMessage
 }
