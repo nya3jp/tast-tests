@@ -288,6 +288,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b5c6c5_870375ca",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-04T00:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d389ce14_00076c2f",
+      "revId": "e8b80fc2d0dcf66e227aee0c5081c3323f5dbc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53486887_db2a0cbd",
