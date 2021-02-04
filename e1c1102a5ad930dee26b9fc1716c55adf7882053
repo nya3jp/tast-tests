@@ -140,6 +140,30 @@
       },
       "revId": "e1c1102a5ad930dee26b9fc1716c55adf7882053",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5243f20_393160c1",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T18:10:53Z",
+      "side": 1,
+      "message": "I debated making it take a string directly, but then it would be required to either return an error or use regexp.MustCompile. Returning an error would make it have a different api from everything else and not be chain-able. Using regexp.MustCompile means that it could panic depending on the input string(which may be dynamically built). So I think it is best to leave it as taking a regexp.",
+      "parentUuid": "e2cabf3f_e2ba5ba4",
+      "range": {
+        "startLine": 116,
+        "startChar": 104,
+        "endLine": 116,
+        "endChar": 106
+      },
+      "revId": "e1c1102a5ad930dee26b9fc1716c55adf7882053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
