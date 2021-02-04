@@ -16,6 +16,24 @@
       "message": "Hi, just a friendly note that some of the public benchmarking apps relay information. Though I\u0027m not fully aware of how potentially sensitive information (future SoC names, device variant name, etc) appear in ARC.",
       "revId": "9fab6468423c692033237643cfaa375c71c747db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0768ce76_897cedf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-04T00:32:54Z",
+      "side": 1,
+      "message": "Edward, thanks for the reminder. We have discussed this before we started to design the case and the general guideline is to run it on old models. I just submitted a new patch to include hardware dependencies:\n\nhwdep.Model(\"barla\", \"bluebird\", \"eve\", \"liara\", \"maple\", \"pyke\")\n\nThis serves as a white list to run this case.",
+      "parentUuid": "a8767306_4b269712",
+      "revId": "9fab6468423c692033237643cfaa375c71c747db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
