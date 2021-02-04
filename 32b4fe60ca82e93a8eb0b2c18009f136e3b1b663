@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c336ffc_ec7f9879",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T22:18:22Z",
+      "side": 1,
+      "message": "please move this file to uiauto/terminalapp with these changes.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "32b4fe60ca82e93a8eb0b2c18009f136e3b1b663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "099f0e52_a0c167fc",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-04T22:18:22Z",
+      "side": 1,
+      "message": "Please change these functions to return ui.Action. Same with every func here that only returns an error. That will create a better chainable api.\n\nAlso consider putting uiauto.Context into Terminal app so that you don\u0027t have to create a new one all the time. That way timeouts and interval can be changed by the user or set to a reasonable default for all ui actions. This way the user has no control over the timeouts at all.\n\nI would look at the filesapp api for an example.",
+      "range": {
+        "startLine": 85,
+        "startChar": 94,
+        "endLine": 85,
+        "endChar": 99
+      },
+      "revId": "32b4fe60ca82e93a8eb0b2c18009f136e3b1b663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
