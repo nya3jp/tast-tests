@@ -129,7 +129,7 @@ func BackupRestore(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Error restarting container: ", err)
 		}
-		if err := terminalApp.Exit(ctx, pre.Keyboard); err != nil {
+		if err := terminalApp.Exit(pre.Keyboard)(ctx); err != nil {
 			s.Fatal("Failed to exit Terminal window: ", err)
 		}
 	}(ctx)

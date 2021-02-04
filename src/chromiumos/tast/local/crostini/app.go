@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -83,14 +84,17 @@ func LaunchGUIApp(ctx context.Context, tconn *chrome.TestConn, cmd *testexec.Cmd
 
 // TakeAppScreenshot takes a screenshot and saves it to the test context output
 // directory. On error will print a message and continue.
-func TakeAppScreenshot(ctx context.Context, appName string) {
-	dir, ok := testing.ContextOutDir(ctx)
-	if !ok || dir == "" {
-		testing.ContextLog(ctx, "Failed to get name of directory for screenshot")
-		return
-	}
-	path := filepath.Join(dir, "crostini_app_"+appName+".png")
-	if err := screenshot.Capture(ctx, path); err != nil {
-		testing.ContextLog(ctx, "Failed to take screenshot: ", err)
+func TakeAppScreenshot(appName string) uiauto.Action {
+	return func(ctx context.Context) error {
+		dir, ok := testing.ContextOutDir(ctx)
+		if !ok || dir == "" {
+			testing.ContextLog(ctx, "Failed to get name of directory for screenshot")
+		} else {
+			path := filepath.Join(dir, "crostini_app_"+appName+".png")
+			if err := screenshot.Capture(ctx, path); err != nil {
+				testing.ContextLog(ctx, "Failed to take screenshot: ", err)
+			}
+		}
+		return nil
 	}
 }

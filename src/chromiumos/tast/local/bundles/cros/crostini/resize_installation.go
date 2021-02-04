@@ -90,7 +90,7 @@ func ResizeInstallation(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to lauch terminal after installing Crostini: ", err)
 	}
-	defer terminalApp.Close(ctx)
+	defer terminalApp.Close()(ctx)
 
 	// Get the container.
 	cont, err := vm.DefaultContainer(ctx, iOptions.UserName)

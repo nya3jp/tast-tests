@@ -128,5 +128,5 @@ func RemoveCancel(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to lauch terminal after cancel remove: ", err)
 	}
-	terminalApp.Close(ctx)
+	terminalApp.Close()(ctx)
 }

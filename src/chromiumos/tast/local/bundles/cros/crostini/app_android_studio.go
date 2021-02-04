@@ -9,7 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/vm"
@@ -55,25 +57,18 @@ func AppAndroidStudio(ctx context.Context, s *testing.State) {
 	defer func() {
 		// Restart crostini in the end to close all Android Studio related windows.
 		// This could be skipped once UI test is implemented against Crostini apps.
-		if err := terminalApp.RestartCrostini(cleanupCtx, keyboard, cont, cr.User()); err != nil {
+		if err := terminalApp.RestartCrostini(keyboard, cont, cr.User())(cleanupCtx); err != nil {
 			s.Log("Failed to restart crostini: ", err)
 		}
 	}()
 
-	// Open android studio.
-	if err := terminalApp.RunCommand(ctx, keyboard, "/android-studio/bin/studio.sh &"); err != nil {
+	androidWindow := nodewith.Name("Import Android Studio Settings From...").Role(role.Window).First()
+	if err := uiauto.Combine("Open android studio",
+		terminalApp.RunCommand(keyboard, "/android-studio/bin/studio.sh &"),
+		uiauto.New(tconn).WaitUntilExists(androidWindow),
+		crostini.TakeAppScreenshot("android_studio"))(ctx); err != nil {
 		s.Fatal("Failed to start android studio in Terminal: ", err)
 	}
-
-	// Find window.
-	param := ui.FindParams{
-		Name: "Import Android Studio Settings From...",
-		Role: ui.RoleTypeWindow,
-	}
-	if _, err := ui.FindWithTimeout(ctx, tconn, param, 30*time.Second); err != nil {
-		s.Fatal("Failed to find android studio window: ", err)
-	}
-	crostini.TakeAppScreenshot(ctx, "android_studio")
 
 	//TODO(jinrongwu): UI test on android studio code.
 }

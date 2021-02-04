@@ -11,9 +11,9 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -108,7 +108,7 @@ func CommandVim(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Terminal app: ", err)
 	}
-	defer terminalApp.Exit(cleanupCtx, keyboard)
+	defer terminalApp.Exit(keyboard)(cleanupCtx)
 
 	// Install vim in container.
 	if err := installVimInContainer(ctx, cont); err != nil {
@@ -120,8 +120,21 @@ func CommandVim(ctx context.Context, s *testing.State) {
 		testString = "This is a test string."
 	)
 
-	// Create a file using vim in Terminal.
-	if err := createFileWithVim(ctx, keyboard, terminalApp, testFile, testString); err != nil {
+	if err := uiauto.Combine("Create a file using vim in Terminal",
+		// Open file through running command vim filename in Terminal.
+		terminalApp.RunCommand(keyboard, fmt.Sprintf("vim %s", testFile)),
+		// Type i to enter edit mode.
+		keyboard.TypeAction("i"),
+		// Type test string into the new file.
+		keyboard.TypeAction(testString),
+		// Press ESC to exit edit mode.
+		keyboard.TypeAction(string('\x1b')),
+		// Type :x to save.
+		keyboard.TypeAction(":x"),
+		// Press Enter.
+		keyboard.AccelAction("Enter"),
+		// Wait for vim to exit
+		terminalApp.WaitForPrompt())(ctx); err != nil {
 		s.Fatal("Failed to create file with vim in Terminal: ", err)
 	}
 
@@ -129,47 +142,6 @@ func CommandVim(ctx context.Context, s *testing.State) {
 	if err := cont.CheckFileContent(ctx, testFile, testString+"\n"); err != nil {
 		s.Fatal("The content of the file is wrong: ", err)
 	}
-}
-
-// createFileWithVim creates a file with vim and types a string into it and save it in container.
-func createFileWithVim(ctx context.Context, keyboard *input.KeyboardEventWriter, terminalApp *terminalapp.TerminalApp, testFile, testString string) error {
-	// Open file through running command vim filename in Terminal.
-	if err := terminalApp.RunCommand(ctx, keyboard, fmt.Sprintf("vim %s", testFile)); err != nil {
-		return errors.Wrapf(err, "failed to run command vim %s in Terminal window", testFile)
-	}
-
-	// TODO: verify vim has opened successfully.
-
-	// Type i to enter edit mode.
-	if err := keyboard.Type(ctx, "i"); err != nil {
-		return errors.Wrap(err, "failed to enter edit mode of vim in Terminal")
-	}
-
-	// Type test string into the new file.
-	if err := keyboard.Type(ctx, testString); err != nil {
-		return errors.Wrapf(err, "failed to type %s in Terminal", testString)
-	}
-
-	// Press ESC to exit edit mode.
-	if err := keyboard.Type(ctx, string('\x1b')); err != nil {
-		return errors.Wrap(err, "failed to exit edit mode of vim in Terminal")
-	}
-
-	// Type :x to save.
-	if err := keyboard.Type(ctx, ":x"); err != nil {
-		return errors.Wrap(err, "failed to type :x to save vim in Terminal")
-	}
-
-	// Press Enter.
-	if err := keyboard.Accel(ctx, "Enter"); err != nil {
-		return errors.Wrap(err, "failed to press Enter in Terminal")
-	}
-
-	// Wait for vim to exit
-	if err := terminalApp.WaitForPrompt(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait for vim to exit")
-	}
-	return nil
 }
 
 // installVimInContainer installs vim in container.

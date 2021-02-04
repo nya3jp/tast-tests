@@ -12,8 +12,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
@@ -64,11 +65,11 @@ func AppVscode(ctx context.Context, s *testing.State) {
 		// Restart Crostini in the end in case any error in the middle and Visual Studio Code is not closed.
 		// This also closes the Terminal window.
 		if restartIfError {
-			if err := terminalApp.RestartCrostini(cleanupCtx, keyboard, cont, cr.User()); err != nil {
+			if err := terminalApp.RestartCrostini(keyboard, cont, cr.User())(cleanupCtx); err != nil {
 				s.Log("Failed to restart Crostini: ", err)
 			}
 		} else {
-			terminalApp.Exit(cleanupCtx, keyboard)
+			terminalApp.Exit(keyboard)(cleanupCtx)
 		}
 	}()
 
@@ -85,55 +86,24 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 		testString = "//This is a test string."
 	)
 
-	// Launch Visual Studio Code.
-	cmd := fmt.Sprintf("code %s", testFile)
-	if err := terminalApp.RunCommand(ctx, keyboard, cmd); err != nil {
-		return errors.Wrapf(err, "failed to run command '%q' in Terminal window", cmd)
-	}
+	ui := uiauto.New(tconn)
+	appWindow := nodewith.Name(fmt.Sprintf("● %s - Visual Studio Code", testFile)).Role(role.Window).First()
 
-	param := ui.FindParams{
-		Name: fmt.Sprintf("● %s - Visual Studio Code", testFile),
-		Role: ui.RoleTypeWindow,
-	}
-
-	// Find the app window.
-	appWindow, err := ui.FindWithTimeout(ctx, tconn, param, 15*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the Visual Studio Code window")
-	}
-
-	// Sometimes left click could not focus on the new window. Moving the mouse first to make sure the cursor goes to the new window.
-	if err = mouse.Move(ctx, tconn, appWindow.Location.CenterPoint(), 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed to move to the center of the Visual Studio Code window")
-	}
-
-	// Left click the app window.
-	if err = appWindow.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed left click on Visual Studio Code window")
-	}
-
-	// Type test string into the new file.
-	if err = keyboard.Type(ctx, testString); err != nil {
-		return errors.Wrapf(err, "failed to type %q in Visual Studio Code window", testString)
-	}
-
-	// Press ctrl+S to save the file.
-	if err = keyboard.Accel(ctx, "ctrl+S"); err != nil {
-		return errors.Wrap(err, "failed to press ctrl+S in Visual Studio Code window")
-	}
-
-	crostini.TakeAppScreenshot(ctx, "vscode")
-
-	// Press ctrl+W twice to exit window.
-	if err = keyboard.Accel(ctx, "ctrl+W"); err != nil {
-		return errors.Wrap(err, "failed to press ctrl+W in Visual Studio Code window")
-	}
-	if err = keyboard.Accel(ctx, "ctrl+W"); err != nil {
-		return errors.Wrap(err, "failed to press ctrl+W in Visual Studio Code window")
-	}
-
-	if err = ui.WaitUntilGone(ctx, tconn, param, 15*time.Second); err != nil {
-		return errors.Wrap(err, "failed to close Visual Studio Code window")
+	if err := uiauto.Combine("Create file with VSCode",
+		// Launch Visual Studio Code.
+		terminalApp.RunCommand(keyboard, fmt.Sprintf("code %s", testFile)),
+		// Left click the app window and type string.
+		ui.LeftClick(appWindow),
+		keyboard.TypeAction(testString),
+		// Press ctrl+S to save the file.
+		keyboard.AccelAction("ctrl+S"),
+		// Take screenshot.
+		crostini.TakeAppScreenshot("vscode"),
+		// Press ctrl+W twice to exit window.
+		keyboard.AccelAction("ctrl+W"),
+		keyboard.AccelAction("ctrl+W"),
+		ui.WaitUntilGone(appWindow))(ctx); err != nil {
+		return err
 	}
 
 	// Check the content of the test file.
