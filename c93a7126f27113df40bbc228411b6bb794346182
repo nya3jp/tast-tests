@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6041df7a_8d25bd45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-04T19:41:05Z",
+      "side": 1,
+      "message": "sorry for slow response.\nptal, changed implementation slightly to invoke click from Chrome rather than using ui automator.",
+      "revId": "c93a7126f27113df40bbc228411b6bb794346182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
