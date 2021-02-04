@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0460a298_ce8cdd9b",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-04T03:21:15Z",
+      "side": 1,
+      "message": "Thank you for your clarification, I\u0027ve done some more research on linear interpolation to create multiple points in between two points and added the functionality into this patch.",
+      "parentUuid": "6f977c9b_c7df7bbb",
+      "revId": "99199bbba580c8de194440d6a96085b11ac430bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89142f25_37970a34",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-02-04T00:43:31Z",
       "side": 1,
       "message": "nit: do we still need this?",
+      "revId": "99199bbba580c8de194440d6a96085b11ac430bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "781bfb55_3736ee93",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-04T03:21:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89142f25_37970a34",
       "revId": "99199bbba580c8de194440d6a96085b11ac430bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
