@@ -22,6 +22,30 @@
       },
       "revId": "23a030cb8760bb2bd4911c1e1d12b0ecd6001a6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2464e42_f64062ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-04T11:01:30Z",
+      "side": 1,
+      "message": "Never mind, I found the answer after looking at the docs:\nFrom https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/test_attributes.md#manually_added-attributes\n\n\"\nZero or more group:* attributes can be set to a test to assign it to groups. A group is a collection of tests having similar purposes or characteristics, often (but not necessarily) scheduled together. In automated testing, tests to run are usually selected by groups. This means that a test will not run in automated testing if it belongs to no group.\n\"\n\nSo I\u0027m going to get rid of the Attr line for now. Please LMK if there are any concerns with this approach.",
+      "parentUuid": "bb3543f5_7927942f",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "23a030cb8760bb2bd4911c1e1d12b0ecd6001a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
