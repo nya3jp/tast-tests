@@ -124,7 +124,7 @@ func testNoPolicy(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome,
 // testBlockCameraFeature tries to block camera feature and expects a message
 // box "Camera is blocked" will show when launching CCA through the launcher.
 func testBlockCameraFeature(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, tb *testutil.TestBridge) error {
-	if err := servePolicy(ctx, fdms, cr, []policy.Policy{&policy.SystemFeaturesDisableList{Val: []string{"camera"}}}, tb, true); err != nil {
+	if err := servePolicy(ctx, fdms, cr, []policy.Policy{&policy.SystemFeaturesDisableList{Val: []string{"camera"}}}, tb, false); err != nil {
 		return errors.Wrap(err, "failed to serve policy")
 	}
 	tconn, err := cr.TestAPIConn(ctx)
@@ -134,7 +134,8 @@ func testBlockCameraFeature(ctx context.Context, fdms *fakedms.FakeDMS, cr *chro
 	if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
 		return errors.Wrap(err, "failed to find camera app in the launcher")
 	}
-	dialogView, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "BubbleDialogDelegateView", Name: "Camera is blocked"}, 5*time.Second)
+
+	dialogView, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Camera is blocked"}, 5*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to get blocked dialog")
 	}
