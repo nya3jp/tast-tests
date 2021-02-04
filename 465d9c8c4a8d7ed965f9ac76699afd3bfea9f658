@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82aeaed8_c4181fdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-04T01:02:39Z",
+      "side": 1,
+      "message": "waiting for team member review",
+      "revId": "465d9c8c4a8d7ed965f9ac76699afd3bfea9f658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf37f3e9_5c825867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-04T01:02:39Z",
+      "side": 1,
+      "message": "Please add a team contact address in case you are OOO",
+      "range": {
+        "startLine": 24,
+        "startChar": 48,
+        "endLine": 24,
+        "endChar": 49
+      },
+      "revId": "465d9c8c4a8d7ed965f9ac76699afd3bfea9f658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
