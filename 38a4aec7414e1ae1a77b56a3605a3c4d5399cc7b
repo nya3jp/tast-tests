@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cf56cf2_1b6251df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-04T04:13:42Z",
+      "side": 1,
+      "message": "Yes, you are right. As long as the test recovers the Ethernet, this should be fine.",
+      "parentUuid": "331bdb57_8ed3f0fa",
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d7b40f8_8af1501e",
