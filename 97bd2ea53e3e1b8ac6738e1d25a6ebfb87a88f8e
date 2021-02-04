@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5334d5c7_69ecfa08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-04T09:28:09Z",
+      "side": 1,
+      "message": "Thanks a lot for reviewing this CL!",
+      "revId": "97bd2ea53e3e1b8ac6738e1d25a6ebfb87a88f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc0aee28_08fe4d6f",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-02-03T23:00:56Z",
       "side": 1,
       "message": "Does this mean that this test always takes \u003e20s to run because the timeout 20 /usr/bin/tlsdated  step alone will always take 20s ?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 133
+      },
+      "revId": "97bd2ea53e3e1b8ac6738e1d25a6ebfb87a88f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfcdd374_da8912ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-04T09:28:09Z",
+      "side": 1,
+      "message": "Yes. I choose 20s arbitrarily, to be on the safe side. 10s would be enough. \n\nShould I decrease the time and keep an eye out on this test?",
+      "parentUuid": "fc0aee28_08fe4d6f",
       "range": {
         "startLine": 50,
         "startChar": 0,
