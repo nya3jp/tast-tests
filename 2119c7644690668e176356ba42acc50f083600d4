@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f55992b_c4b55d2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-04T23:49:08Z",
+      "side": 1,
+      "message": "I believe the failures relating to apps.LaunchGallery are fixed and you might be using recycled builds. Append  to your commit message and run again.",
+      "revId": "2119c7644690668e176356ba42acc50f083600d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
