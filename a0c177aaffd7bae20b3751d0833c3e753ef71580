@@ -22,6 +22,30 @@
       },
       "revId": "a0c177aaffd7bae20b3751d0833c3e753ef71580",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "082fe019_3dc70979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-02-04T03:32:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dcbc77c_440d376b",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "a0c177aaffd7bae20b3751d0833c3e753ef71580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
