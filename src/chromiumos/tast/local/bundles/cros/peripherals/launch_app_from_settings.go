@@ -12,11 +12,13 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/peripherals/peripheraltypes"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/diagnosticsapp"
-	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/local/chrome/ui/scanapp"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -81,21 +83,14 @@ func LaunchAppFromSettings(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	entryParams := ui.FindParams{
-		Name: params.appLabel,
-		Role: ui.RoleTypeLink,
-	}
-
-	// Condition to satisfy verification of LaunchAtPageURL.
-	condition := func(ctx context.Context) (bool, error) {
-		return ossettings.DescendantNodeExists(ctx, tconn, entryParams)
-	}
-	if err := ossettings.LaunchAtPageURL(ctx, tconn, cr, params.settingsPage, condition); err != nil {
+	ui := uiauto.New(tconn)
+	entryFinder := nodewith.Name(params.appLabel).Role(role.Link).Ancestor(ossettings.WindowFinder)
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, params.settingsPage, ui.Exists(entryFinder)); err != nil {
 		s.Fatal("Failed to launch Settings page: ", err)
 	}
 
-	if err := ui.StableFindAndClick(ctx, tconn, entryParams, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
-		s.Fatal("Failed to find and click entry: ", err)
+	if err := ui.LeftClick(entryFinder)(ctx); err != nil {
+		s.Fatal("Failed to click entry: ", err)
 	}
 
 	// App should be launched.

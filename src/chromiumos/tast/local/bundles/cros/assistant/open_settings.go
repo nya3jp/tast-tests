@@ -6,13 +6,13 @@ package assistant
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/ossettings"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
 )
 
@@ -59,7 +59,7 @@ func OpenSettings(ctx context.Context, s *testing.State) {
 	}
 
 	// Confirm that the Settings app is open by checking for the search box.
-	if err := ossettings.WaitForSearchBox(ctx, tconn, 30*time.Second); err != nil {
+	if err := uiauto.New(tconn).WaitUntilExists(ossettings.SearchBoxFinder)(ctx); err != nil {
 		s.Fatal("Waiting for Settings app search box failed: ", err)
 	}
 }

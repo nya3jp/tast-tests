@@ -452,6 +452,27 @@ func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
 	}
 }
 
+// MakeVisible returns a function that calls makeVisible() JS method to make found node visible.
+func (ac *Context) MakeVisible(finder *nodewith.Finder) Action {
+	return func(ctx context.Context) error {
+		q, err := finder.GenerateQuery()
+		if err != nil {
+			return err
+		}
+		query := fmt.Sprintf(`
+		(async () => {
+			%s
+			node.makeVisible();
+		})()
+	`, q)
+
+		if err := ac.tconn.Eval(ctx, query, nil); err != nil {
+			return errors.Wrap(err, "failed to call makeVisible() on the node")
+		}
+		return nil
+	}
+}
+
 // IfSuccessThen returns a function that runs action only if the first function succeeds.
 // The function returns an error only if the preFunc succeeds but action fails,
 // It returns nil in all other situations.
@@ -472,5 +493,28 @@ func (ac *Context) IfSuccessThen(preFunc func(context.Context) error, action Act
 			testing.ContextLogf(ctx, "The prefunc failed, the action was not executed, the error was: %s", err)
 		}
 		return nil
+	}
+}
+
+// Retry returns a function that retries a given action if it returns error.
+// The action will be executed up to n times, including the first attempt.
+// The last error will be returned.  Any other errors will be silently logged.
+// Between each run of the loop, it will sleep according the the uiauto.Context pollOpts.
+func (ac *Context) Retry(n int, action Action) Action {
+	return func(ctx context.Context) error {
+		var err error
+		for i := 0; i < n; i++ {
+			if err = action(ctx); err == nil {
+				return nil
+			}
+			testing.ContextLogf(ctx, "Retry failed attempt %d: %v", i+1, err)
+			// Sleep between all iterations.
+			if i < n-1 {
+				if err := testing.Sleep(ctx, ac.pollOpts.Interval); err != nil {
+					testing.ContextLog(ctx, "Failed to sleep between retry iterations: ", err)
+				}
+			}
+		}
+		return err
 	}
 }

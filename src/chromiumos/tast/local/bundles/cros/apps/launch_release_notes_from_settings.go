@@ -12,8 +12,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
 )
 
@@ -54,11 +54,12 @@ func LaunchReleaseNotesFromSettings(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	if err := ossettings.LaunchAtPage(ctx, tconn, ossettings.AboutChromeOS); err != nil {
+	settings, err := ossettings.LaunchAtPage(ctx, tconn, ossettings.AboutChromeOS)
+	if err != nil {
 		s.Fatal("Failed to launch Settings: ", err)
 	}
 
-	if err := ossettings.LaunchWhatsNew(ctx, tconn); err != nil {
+	if err := settings.LaunchWhatsNew()(ctx); err != nil {
 		s.Fatal("Failed to launch WhatsNew: ", err)
 	}
 
