@@ -15,8 +15,11 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
@@ -99,6 +102,7 @@ func init() {
 func CopyFilesToLinuxFiles(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	keyboard := s.PreValue().(crostini.PreData).Keyboard
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Use a shortened context for test operations to reserve time for cleanup.
@@ -117,13 +121,6 @@ func CopyFilesToLinuxFiles(ctx context.Context, s *testing.State) {
 	}
 	defer filesApp.Close(cleanupCtx)
 
-	// Define keyboard to perform keyboard shortcuts.
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Error creating keyboard: ", err)
-	}
-	defer keyboard.Close()
-
 	testFiles := []string{"testfile1.txt", "testfile2.txt", "testfile3.txt"}
 	s.Log("Test copying files to Linux files")
 
@@ -137,7 +134,7 @@ func CopyFilesToLinuxFiles(ctx context.Context, s *testing.State) {
 	}
 
 	// Copy files from Downloads to Linux files.
-	if err := copyFilesToLinuxfiles(ctx, filesApp, keyboard, testFiles); err != nil {
+	if err := copyFilesToLinuxfiles(ctx, tconn, filesApp, keyboard, testFiles); err != nil {
 		s.Fatal("Failed to copy test files to Linux files: ", err)
 	}
 
@@ -152,17 +149,15 @@ func CopyFilesToLinuxFiles(ctx context.Context, s *testing.State) {
 }
 
 // copyFilesToLinuxfiles copies all files in Downloads to Linux files.
-func copyFilesToLinuxfiles(ctx context.Context, filesApp *filesapp.FilesApp, keyboard *input.KeyboardEventWriter, testFiles []string) error {
-	// Open Downloads.
-	if err := filesApp.OpenDownloads(ctx); err != nil {
-		return errors.Wrap(err, "failed to open Downloads in Files app")
-	}
+func copyFilesToLinuxfiles(ctx context.Context, tconn *chrome.TestConn, filesApp *filesapp.FilesApp, keyboard *input.KeyboardEventWriter, testFiles []string) error {
+	steps := []uiauto.Action{filesApp.OpenDownloads()}
 
-	// Wait all files to display.
+	// Steps to wait all files to display.
 	for _, file := range testFiles {
-		if err := filesApp.SelectFile(ctx, file); err != nil {
-			return errors.Wrapf(err, "failed to find the file %s", file)
-		}
+		steps = append(steps, filesApp.WaitForFile(file))
+	}
+	if err := uiauto.Combine("Wait for test files to display", steps...)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for test files to display")
 	}
 
 	// Select all files.
@@ -175,10 +170,8 @@ func copyFilesToLinuxfiles(ctx context.Context, filesApp *filesapp.FilesApp, key
 		return errors.Wrap(err, "failed to press ctrl+C in Downloads")
 	}
 
-	const linuxFilesFolder = "Linux files"
-
 	// Open "Linux files" to paste.
-	if err := filesApp.OpenDir(ctx, linuxFilesFolder, "Files - "+linuxFilesFolder); err != nil {
+	if err := filesApp.OpenLinuxFiles()(ctx); err != nil {
 		return errors.Wrap(err, "failed to open Linux files in Files app")
 	}
 
@@ -187,17 +180,13 @@ func copyFilesToLinuxfiles(ctx context.Context, filesApp *filesapp.FilesApp, key
 		return errors.Wrap(err, "failed to press ctrl+V in Linux files")
 	}
 
-	// Wait for the copy operation to finish.
-	params := ui.FindParams{
-		Name: fmt.Sprintf("Copying %d items to %s", len(testFiles), linuxFilesFolder),
-		Role: ui.RoleTypeStaticText,
-	}
-
-	if err := filesApp.Root.WaitUntilDescendantExists(ctx, params, 10*time.Second); err != nil {
+	copyMsg := nodewith.Name(fmt.Sprintf("Copying %d items to %s", len(testFiles), "Linux files")).Role(role.StaticText).Ancestor(filesapp.WindowFinder)
+	ui := uiauto.New(tconn)
+	if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(copyMsg)(ctx); err != nil {
 		testing.ContextLog(ctx, "Copying message was not found")
 	}
 
-	if err := filesApp.Root.WaitUntilDescendantGone(ctx, params, time.Minute); err != nil {
+	if err := ui.WithTimeout(time.Minute).WaitUntilGone(copyMsg)(ctx); err != nil {
 		return errors.Wrap(err, "failed to copy files to Linux files in 1 minute")
 	}
 	return nil

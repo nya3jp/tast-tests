@@ -117,7 +117,7 @@ func (f *FilesApp) OpenDrive(ctx context.Context) uiauto.Action {
 
 // OpenLinuxFiles returns a function that opens the Linux files folder in the Files App.
 // An error is returned if Linux files is not found or does not open.
-func (f *FilesApp) OpenLinuxFiles(ctx context.Context) uiauto.Action {
+func (f *FilesApp) OpenLinuxFiles() uiauto.Action {
 	return f.OpenDir("Linux files", "Files - Linux files")
 }
 

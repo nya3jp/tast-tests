@@ -10,9 +10,13 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -94,6 +98,7 @@ func init() {
 func HomeDirectoryCreateFile(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	kb := s.PreValue().(crostini.PreData).Keyboard
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Use a shortened context for test operations to reserve time for cleanup.
@@ -108,38 +113,36 @@ func HomeDirectoryCreateFile(ctx context.Context, s *testing.State) {
 	}
 	defer filesApp.Close(cleanupCtx)
 
-	if err := filesApp.OpenLinuxFiles(ctx); err != nil {
+	if err := filesApp.OpenLinuxFiles()(ctx); err != nil {
 		s.Fatal("Failed to open Linux files: ", err)
 	}
 
-	if err := testCreateFolderFromLinuxFiles(ctx, filesApp, cont); err != nil {
+	if err := testCreateFolderFromLinuxFiles(ctx, filesApp, cont, kb); err != nil {
 		s.Fatal("Failed to test creating files in Linux files: ", err)
 	}
 
-	if err := testCreateFileFromContainer(ctx, filesApp, cont); err != nil {
+	if err := testCreateFileFromContainer(ctx, tconn, filesApp, cont); err != nil {
 		s.Fatal("Failed to test creating files in container: ", err)
 	}
 }
 
-func testCreateFolderFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesApp, cont *vm.Container) error {
+func testCreateFolderFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesApp, cont *vm.Container, kb *input.KeyboardEventWriter) error {
 	const dirName = "test_folder"
 
 	// Files app doesn't have a way to directly create a file, but
 	// we can create a folder, which is just as good.
-	if err := filesApp.CreateFolder(ctx, dirName); err != nil {
+	if err := filesApp.CreateFolder(kb, dirName)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to create new folder %q", dirName)
 	}
 
 	// Check that the file now exists in the container.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return cont.CheckFilesExistInDir(ctx, ".", dirName)
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	if err := filesApp.WaitForFile(dirName)(ctx); err != nil {
 		return errors.Wrapf(err, "creation of folder %q did not propagate to container", dirName)
 	}
 	return nil
 }
 
-func testCreateFileFromContainer(ctx context.Context, filesApp *filesapp.FilesApp, cont *vm.Container) error {
+func testCreateFileFromContainer(ctx context.Context, tconn *chrome.TestConn, filesApp *filesapp.FilesApp, cont *vm.Container) error {
 	const fileName = "testfile.txt"
 
 	// Create file in container.
@@ -149,15 +152,16 @@ func testCreateFileFromContainer(ctx context.Context, filesApp *filesapp.FilesAp
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Click Refresh.
-		if err := filesApp.LeftClickItem(ctx, "Refresh", ui.RoleTypeButton); err != nil {
+		refresh := nodewith.Name("Refresh").Role(role.Button).Ancestor(filesapp.WindowFinder)
+		if err := uiauto.New(tconn).LeftClick(refresh)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click button Refresh on Files app")
 		}
 		// Check that the file now exists in the Files app.
-		if err := filesApp.WaitForFile(ctx, fileName, 10*time.Second); err != nil {
+		if err := filesApp.WithTimeout(time.Second).WaitForFile(fileName)(ctx); err != nil {
 			return errors.Wrap(err, "file creation did not propogare to Files app")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 2 * time.Second}); err != nil {
 		return err
 	}
 	return nil

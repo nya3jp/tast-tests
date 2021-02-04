@@ -11,10 +11,12 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/crostini/ui/linuxfiles"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
@@ -129,7 +131,7 @@ func HomeDirectoryDeleteFile(ctx context.Context, s *testing.State) {
 
 	s.Run(ctx, "delete_from_container", func(ctx context.Context, s *testing.State) {
 		// Delete a file from container and check it get deleted in Linux files.
-		if err := testDeleteFileFromContainer(ctx, filesApp, cont, fileName); err != nil {
+		if err := testDeleteFileFromContainer(ctx, tconn, filesApp, cont, fileName); err != nil {
 			s.Error("Failed to test deleting files in container: ", err)
 		}
 	})
@@ -168,29 +170,29 @@ func testDeleteFileFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesA
 }
 
 // testDeleteFileFromContainer first deletes a file in the container then checks it is also deleted in Linux files.
-func testDeleteFileFromContainer(ctx context.Context, filesApp *filesapp.FilesApp, cont *vm.Container, fileName string) error {
+func testDeleteFileFromContainer(ctx context.Context, tconn *chrome.TestConn, filesApp *filesapp.FilesApp, cont *vm.Container, fileName string) error {
 	// Create a file in the container.
 	if err := cont.Command(ctx, "touch", fileName).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to create a file in the container")
 	}
 
 	// Open "Linux files".
-	if err := filesApp.OpenDir(ctx, linuxfiles.DirName, linuxfiles.Title); err != nil {
+	if err := filesApp.OpenLinuxFiles()(ctx); err != nil {
 		return errors.Wrap(err, "failed to open Linux files after creating files in the container")
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Click Refresh.
-		if err := filesApp.LeftClickItem(ctx, "Refresh", ui.RoleTypeButton); err != nil {
+		refresh := nodewith.Name("Refresh").Role(role.Button).Ancestor(filesapp.WindowFinder)
+		if err := uiauto.New(tconn).LeftClick(refresh)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click button Refresh on Files app")
 		}
-
-		// Check the newly created file is listed in Linux files.
-		if err := filesApp.WaitForFile(ctx, fileName, 10*time.Second); err != nil {
-			return errors.Wrap(err, "failed to list the file created from crostini in Files app: ")
+		// Check that the file now exists in the Files app.
+		if err := filesApp.WithTimeout(time.Second).WaitForFile(fileName)(ctx); err != nil {
+			return errors.Wrap(err, "file creation did not propogare to Files app")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 2 * time.Second}); err != nil {
 		return err
 	}
 
@@ -199,11 +201,19 @@ func testDeleteFileFromContainer(ctx context.Context, filesApp *filesapp.FilesAp
 		return errors.Wrapf(err, "failed to delete file %s in container", fileName)
 	}
 
-	// Check the file does not exist in Linux files.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return filesApp.CheckFileDoesNotExist(ctx, linuxfiles.Title, fileName, linuxfiles.DirName)
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		return errors.Wrapf(err, "failed to delete file %s in Linux files through deleting it from container", fileName)
+		// Click Refresh.
+		refresh := nodewith.Name("Refresh").Role(role.Button).Ancestor(filesapp.WindowFinder)
+		if err := uiauto.New(tconn).LeftClick(refresh)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click button Refresh on Files app")
+		}
+		// Check that the file now exists in the Files app.
+		if err := filesApp.WithTimeout(time.Second).WaitUntilFileGone(fileName)(ctx); err != nil {
+			return errors.Wrap(err, "file creation did not propogare to Files app")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 2 * time.Second}); err != nil {
+		return err
 	}
 
 	return nil
