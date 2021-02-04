@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4935787_c342d8a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-02-04T01:02:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b209a7a_5747f6af",
+      "range": {
+        "startLine": 50,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 45
+      },
+      "revId": "8e6efe50a7252e107d1a51c4e22156b84725c172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dc9926b_c9d49b80",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-02T21:28:16Z",
       "side": 1,
       "message": "Only one space needed.",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 22
+      },
+      "revId": "8e6efe50a7252e107d1a51c4e22156b84725c172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37da77fc_fe0888c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-02-04T01:02:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2dc9926b_c9d49b80",
       "range": {
         "startLine": 52,
         "startChar": 8,
