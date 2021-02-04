@@ -108,5 +108,5 @@ func OpenWithTerminal(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to find terminal window: ", err)
 	}
-	terminalApp.Exit(ctx, pre.Keyboard)
+	terminalApp.Exit(pre.Keyboard)(ctx)
 }
