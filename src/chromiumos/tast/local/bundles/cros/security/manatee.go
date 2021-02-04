@@ -47,12 +47,13 @@ func init() {
 			"allenwebb@chromium.org",
 			"cros-manatee@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Params: []testing.Param{
 			{
 				Name:              "real",
 				Val:               manateeTestCase{useSystemServices: true},
 				ExtraSoftwareDeps: []string{"manatee"},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "fake",
