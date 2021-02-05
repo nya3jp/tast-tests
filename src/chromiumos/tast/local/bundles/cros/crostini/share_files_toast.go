@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/crostini/listset"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
@@ -100,7 +101,7 @@ func ShareFilesToast(ctx context.Context, s *testing.State) {
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
 	// Open Files app.
@@ -109,6 +110,8 @@ func ShareFilesToast(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Files app: ", err)
 	}
 	defer filesApp.Close(cleanupCtx)
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	sharedFolders := sharedfolders.NewSharedFolders()
 	// Clean up shared folders in the end.
