@@ -33,6 +33,41 @@
       "message": "lgtm, although this is also discussed in b/177297502 and I\u0027m trying to investigate slowness a bit (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2676189).\n",
       "revId": "c0438b38bbf7a86f9fbc6d40017a59eedb0d6a49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d24ac84_3d72268a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-05T17:19:25Z",
+      "side": 1,
+      "message": "Part of the slowness is likely from http://crbug/1174627 that the chrome test instance started by tast would have a keep alive held by devtools code until Browser.close in devtools protocol is called. As a result, chrome test instance would always be SIABRT killed after 3s and then crash_reporter kicks in to process the coredump.\n\nThe keep alive is added for automation test but seems not needed by chromeos. I will create a CL to remove it.\n\nOTOH, chrome.New is using chrome.LoginTimeout insternally, which is 80s. So the default 1m is a bit too short.",
+      "parentUuid": "a6fd86ec_43d200fe",
+      "revId": "c0438b38bbf7a86f9fbc6d40017a59eedb0d6a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44de0c2_a61a0867",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-05T17:19:25Z",
+      "side": 1,
+      "message": "Thanks for the review.",
+      "revId": "c0438b38bbf7a86f9fbc6d40017a59eedb0d6a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
