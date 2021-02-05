@@ -152,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb94949_5aa723d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-05T18:05:50Z",
+      "side": 1,
+      "message": "This wasn\u0027t actually flaky, but we were not waiting for a connected network which made it seem flakey.",
+      "parentUuid": "347eea82_59e28544",
+      "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5a4b75d_f4226a8d",
