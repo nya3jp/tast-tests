@@ -22,6 +22,30 @@
       },
       "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3523c421_d227226d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-05T20:30:52Z",
+      "side": 0,
+      "message": "It\u0027s omitted because we now run the two tests one after another. The tab is created in the first test, but is reused in the second test. In the second test, we never speak \"tab created\" because the tab already exists.",
+      "parentUuid": "21b9e620_d0888db0",
+      "range": {
+        "startLine": 59,
+        "startChar": 92,
+        "endLine": 59,
+        "endChar": 103
+      },
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
