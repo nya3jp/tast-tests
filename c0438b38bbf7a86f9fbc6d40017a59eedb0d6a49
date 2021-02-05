@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5b9d7a_599c9f46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-05T00:54:08Z",
+      "side": 1,
+      "message": "According to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#summary, can we also invite a team member to approve the change?",
+      "revId": "c0438b38bbf7a86f9fbc6d40017a59eedb0d6a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
