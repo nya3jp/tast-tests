@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9980574b_08af093b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-05T20:28:37Z",
+      "side": 1,
+      "message": "I wasn\u0027t aware that performing extra logic in a defer block could affect other tests. I moved the logic out of the defer block in my latest patch.",
+      "parentUuid": "c977cce3_890052e4",
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fc789ad_aa14978b",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e72142b_37049ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-05T20:28:37Z",
+      "side": 1,
+      "message": "Thanks for the reference.\n\nHowever, I think this is something we should test. We should be verifying that the confirmation dialog shows up and that it\u0027s possible to deactivate autoclick through the UI.",
+      "parentUuid": "7fc789ad_aa14978b",
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e92f6fcc_0c3e04f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
         "patchSetId": 1
@@ -65,6 +101,30 @@
       "writtenOn": "2021-02-05T02:03:13Z",
       "side": 1,
       "message": "nit: better variable name. \"yesButton\" or \"button\"",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "448c665c_1be4263a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-05T20:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e92f6fcc_0c3e04f8",
       "range": {
         "startLine": 59,
         "startChar": 2,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77effc08_3b9e4e3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-05T20:28:37Z",
+      "side": 1,
+      "message": "Yes, since autoclick is turned on, all we need to do is move the mouse over the scroll button (done on line 101).",
+      "parentUuid": "4d6294bb_44190389",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc63b3b1_90dda371",
@@ -111,6 +195,30 @@
       "writtenOn": "2021-02-05T02:03:13Z",
       "side": 1,
       "message": "nit: remove \u0027s\u0027",
+      "range": {
+        "startLine": 124,
+        "startChar": 13,
+        "endLine": 124,
+        "endChar": 14
+      },
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87e129aa_3cae8edb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-05T20:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc63b3b1_90dda371",
       "range": {
         "startLine": 124,
         "startChar": 13,
