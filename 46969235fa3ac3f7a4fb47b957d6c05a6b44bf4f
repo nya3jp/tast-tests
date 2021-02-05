@@ -56,6 +56,30 @@
       },
       "revId": "46969235fa3ac3f7a4fb47b957d6c05a6b44bf4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68e6040_ec776a0e",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2021-02-05T01:15:45Z",
+      "side": 1,
+      "message": "ack.\nreplaced by\n  s.Log(\"...\", err)\n  return\n\nto match the code that was @ line 140, error when failing to connect to the DUT.",
+      "parentUuid": "8cf6190f_f086294a",
+      "range": {
+        "startLine": 120,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 11
+      },
+      "revId": "46969235fa3ac3f7a4fb47b957d6c05a6b44bf4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
