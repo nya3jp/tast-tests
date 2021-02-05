@@ -88,7 +88,7 @@ func testChromeLogin(ctx context.Context, s *testing.State, sm *session.SessionM
 		}
 		defer sw.Close(ctx)
 
-		cr, err := chrome.New(ctx)
+		cr, err := chrome.New(ctx, chrome.ExtraArgs("--vmodule=login_display_host*=4,oobe_ui=4"))
 		if err != nil {
 			s.Fatal("Chrome login failed: ", err)
 		}
