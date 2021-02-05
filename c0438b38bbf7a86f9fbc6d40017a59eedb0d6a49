@@ -16,6 +16,23 @@
       "message": "According to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#summary, can we also invite a team member to approve the change?",
       "revId": "c0438b38bbf7a86f9fbc6d40017a59eedb0d6a49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6fd86ec_43d200fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-02-05T10:12:37Z",
+      "side": 1,
+      "message": "lgtm, although this is also discussed in b/177297502 and I\u0027m trying to investigate slowness a bit (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2676189).\n",
+      "revId": "c0438b38bbf7a86f9fbc6d40017a59eedb0d6a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
