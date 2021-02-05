@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7325eae_4f28e15e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-05T23:35:17Z",
+      "side": 1,
+      "message": "Might be good to make a bug and add a todo, since it\u0027s pretty weird how you have to open and close ash-chrome first",
+      "revId": "5f96037b9f16998686a66ef5e9e8e7a71dd55cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "186429e4_968ac4ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-05T23:35:17Z",
+      "side": 1,
+      "message": "looks like this trick is needed most of the time based on the latest results, maybe best to just always do it instead of waiting for an error?",
+      "revId": "5f96037b9f16998686a66ef5e9e8e7a71dd55cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce803c6b_d31f98d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-05T23:35:17Z",
+      "side": 1,
+      "message": "don\u0027t think you need this, since it\u0027ll get deferred down below anyways",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 142,
+        "endChar": 25
+      },
+      "revId": "5f96037b9f16998686a66ef5e9e8e7a71dd55cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
