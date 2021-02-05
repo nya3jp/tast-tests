@@ -70,7 +70,7 @@ func init() {
 func AdobeLightroom(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.adobe.lrmobile"
-		appActivity = ".lrimport.ptpimport.PtpActivity"
+		appActivity = ".StorageCheckActivity"
 	)
 	testCases := s.Param().([]testutil.TestCase)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
@@ -89,23 +89,32 @@ func launchAppForAdobeLightroom(ctx context.Context, s *testing.State, tconn *ch
 
 	// Click on skip button.
 	skipButton := d.Object(ui.ID(skipID))
-	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := skipButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("skip button doesn't exist: ", err)
 	} else if err := skipButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on skip in button: ", err)
 	}
 
-	// Click on google button.
+	// Check for google button.
 	googleButton := d.Object(ui.ID(googleID))
-	if err := googleButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := googleButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("Google button doesn't exist: ", err)
-	} else if err := googleButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on google button: ", err)
+	}
+
+	// Click on Google button until email address exists.
+	emailAddress := d.Object(ui.ID(emailAddressID), ui.Index(loginWithGoogleIndex))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := emailAddress.Exists(ctx); err != nil {
+			googleButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
+		s.Log("emailAddress doesn't exists: ", err)
 	}
 
 	// Click on email address.
-	emailAddress := d.Object(ui.ID(emailAddressID), ui.Index(loginWithGoogleIndex))
-	if err := emailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := emailAddress.exists(ctx); err != nil {
 		s.Log("EmailAddress doesn't exist: ", err)
 	} else if err := emailAddress.Click(ctx); err != nil {
 		s.Fatal("Failed to click on EmailAddress: ", err)
