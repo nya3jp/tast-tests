@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fa226c_74b0b2f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-05T03:14:25Z",
+      "side": 1,
+      "message": "Hi Jun and Darren,\n\nIt would be great if you could review this small change.\n\nThank you!",
+      "revId": "3b7f04081e0df73376f9543b349eae9ccd3b5352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
