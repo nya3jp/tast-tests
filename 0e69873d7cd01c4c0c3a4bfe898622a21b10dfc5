@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed401899_0765489e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "\u003e Please get review from your team member too.\n\nUnfortunately I don\u0027t think any other team member has enough context on this at the moment.",
+      "parentUuid": "bd79b3b0_2a2d0dde",
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87cff5ca_6d676ec8",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-05T20:19:19Z",
       "side": 1,
       "message": "Please also add your team email address here too.",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaeb78d3_57d9c384",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87cff5ca_6d676ec8",
       "range": {
         "startLine": 25,
         "startChar": 2,
@@ -88,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd739cc4_43a8f98f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62557f69_16132eef",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "961dba6b_277e934f",
@@ -111,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b235249_8cbbcbb8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "961dba6b_277e934f",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 1
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8abc1e47_f00771da",
@@ -124,6 +214,30 @@
       "writtenOn": "2021-02-05T20:19:19Z",
       "side": 1,
       "message": "Failed to check TBT ...",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 14
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be93064b_669c62c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8abc1e47_f00771da",
       "range": {
         "startLine": 66,
         "startChar": 11,
@@ -181,6 +295,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02234d4_221cfcd5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c6786d5_6d65a466",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6234010a_a724e1d5",
@@ -194,6 +332,30 @@
       "writtenOn": "2021-02-05T20:19:19Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 6
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14a3b0bf_788a9c17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6234010a_a724e1d5",
       "range": {
         "startLine": 74,
         "startChar": 3,
@@ -227,6 +389,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee526707_f7d0e819",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47649fcb_f685fdbb",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 6
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f549f2bd_9ee513aa",
@@ -240,6 +426,30 @@
       "writtenOn": "2021-02-05T20:19:19Z",
       "side": 1,
       "message": "Failed to ...",
+      "range": {
+        "startLine": 82,
+        "startChar": 11,
+        "endLine": 82,
+        "endChar": 19
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bbb36c3_aab85a90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f549f2bd_9ee513aa",
       "range": {
         "startLine": 82,
         "startChar": 11,
@@ -273,6 +483,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d00b9a7_21cf0d2f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8decbe40_d4a62f63",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 85,
+        "endChar": 6
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3dd462c_90676478",
@@ -286,6 +520,30 @@
       "writtenOn": "2021-02-05T20:19:19Z",
       "side": 1,
       "message": "if err :\u003d ...; err !\u003d nil {}",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75aa2a21_6c5ce9fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3dd462c_90676478",
       "range": {
         "startLine": 86,
         "startChar": 1,
@@ -319,6 +577,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fdea41a_40949c32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb18ed80_346fe25f",
+      "range": {
+        "startLine": 99,
+        "startChar": 53,
+        "endLine": 99,
+        "endChar": 61
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9d564c7_86c16f16",
@@ -332,6 +614,30 @@
       "writtenOn": "2021-02-05T20:19:19Z",
       "side": 1,
       "message": "what about:\nif presence \u0026\u0026 ! found {\n    return errors.New(\"failed to find any TBT device\")\n} else  if !presence \u0026\u0026 found {\n    return errors.New(\"failed to verify the absence of TBT device, unexpectedly found\")\n}\nreturn nil",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 12
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d5299da_c1be79d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9d564c7_86c16f16",
       "range": {
         "startLine": 117,
         "startChar": 4,
