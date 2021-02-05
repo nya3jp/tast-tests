@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81a614d2_36d1036b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T02:35:30Z",
+      "side": 1,
+      "message": "trailing period is missing.",
+      "range": {
+        "startLine": 32,
+        "startChar": 19,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "5591aa05e09e8c485c40dd31438aa37c221cf6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d67900d4_5b7483b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T02:35:30Z",
+      "side": 1,
+      "message": "Verifying",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "5591aa05e09e8c485c40dd31438aa37c221cf6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f96265_42b0a1c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T02:35:30Z",
+      "side": 1,
+      "message": "login",
+      "range": {
+        "startLine": 70,
+        "startChar": 33,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "5591aa05e09e8c485c40dd31438aa37c221cf6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
