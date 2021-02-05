@@ -132,9 +132,7 @@ func init() {
 func RunTests(ctx context.Context, s *testing.State) {
 	param := s.Param().(runTestsParam)
 	resultsDir := filepath.Join(s.OutDir(), "subtest_results")
-	// TODO(crbug.com/1106601): Remove -build=false once ensuring that Tast CLI has been upgraded for all users.
 	flags := []string{
-		"-build=false",
 		"-resultsdir=" + resultsDir,
 		"-var=meta.LocalVars.var=" + localVarValue,
 		"-var=meta.RemoteVars.var=" + remoteVarValue,
