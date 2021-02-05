@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21b9e620_d0888db0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-05T02:12:15Z",
+      "side": 0,
+      "message": "why this is omitted?",
+      "range": {
+        "startLine": 59,
+        "startChar": 92,
+        "endLine": 59,
+        "endChar": 103
+      },
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
