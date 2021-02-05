@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f70a6e9_5c7723e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/guest_mode_extension.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-05T05:36:45Z",
+      "side": 1,
+      "message": "Ok silly me, it was happening with or without a fixture (the defer was silently failing). Same behaviour.",
+      "parentUuid": "9dcbef3b_1bb4d99c",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 48
+      },
+      "revId": "5c484b43b47afb9d36b211147a9221ae9b938b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1620d4fc_6fbe9155",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/guest_mode_extension.go",
         "patchSetId": 9
