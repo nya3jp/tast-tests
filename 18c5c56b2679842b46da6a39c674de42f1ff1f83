@@ -16,6 +16,24 @@
       "message": "Hi Yi,\n\nThis test is expected to only umount the rootfs and it will restore the state after reboot. We don\u0027t expect this test to clobber the stateful partition. I think it is better to investigate the root cause.\n\nCould you share more information for the issue? Is it possible that some test clobbered the stateful partition and then display the error on this test?",
       "revId": "18c5c56b2679842b46da6a39c674de42f1ff1f83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b48766_60dfcf9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-05T15:29:28Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s possible that the other test clobbered the stateful partition and then display the error on this test, so I marked this CL to WIP now.\n\nFor more information: b/178332041#comment2",
+      "parentUuid": "69d167da_9bcf8ce1",
+      "revId": "18c5c56b2679842b46da6a39c674de42f1ff1f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
