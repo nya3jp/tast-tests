@@ -14,10 +14,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type voiceData struct {
+	extID  string
+	locale string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: SpokenFeedback,
-		Desc: "A spoken feedback test that executes ChromeVox commands and keyboard shortcuts, and verifies that correct speech is given by the Google TTS engine",
+		Desc: "A spoken feedback test that executes ChromeVox commands and keyboard shortcuts, and verifies that correct speech is given by the Google and eSpeak TTS engines",
 		Contacts: []string{
 			"akihiroota@chromium.org",      // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list
@@ -25,6 +30,22 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Name: "google_tts",
+			Val: voiceData{
+				extID:  a11y.GoogleTTSExtensionID,
+				locale: "en-US",
+			},
+		}, {
+			Name: "espeak",
+			Val: voiceData{
+				// eSpeak does not come with an English voice built-in, so we need to
+				// use another language. We use Greek here since the voice is built-in
+				// and capable of speaking English words.
+				extID:  a11y.ESpeakExtensionID,
+				locale: "el",
+			},
+		}},
 	})
 }
 
@@ -50,13 +71,19 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 	}
 	defer cvconn.Close()
 
-	sm, err := a11y.NewSpeechMonitor(ctx, cr)
+	extID := s.Param().(voiceData).extID
+	locale := s.Param().(voiceData).locale
+	if err := cvconn.SetVoice(ctx, extID, locale); err != nil {
+		s.Fatal("Failed to set the ChromeVox voice: ", err)
+	}
+
+	sm, err := a11y.NewSpeechMonitor(ctx, cr, extID)
 	if err != nil {
-		s.Fatal("Failed to connect to the Google TTS background page: ", err)
+		s.Fatal("Failed to connect to the TTS background page: ", err)
 	}
 	defer sm.Close()
 
-	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+O", "O"}, []string{"tab created", "ChromeVox Options"}); err != nil {
+	if err := a11y.PressKeysAndConsumeUtterances(ctx, sm, []string{"Search+O", "O"}, []string{"ChromeVox Options"}); err != nil {
 		s.Error("Error when pressing keys and expecting speech: ", err)
 	}
 
