@@ -16,14 +16,11 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/testing"
 )
 
 const (
@@ -54,19 +51,23 @@ const (
 
 // find params for fixed items.
 var (
-	developersButton      = nodewith.NameRegex(regexp.MustCompile("Developers|Linux.*")).Role(role.Button).Ancestor(ossettings.WindowFinder)
+	PageLinux             = nodewith.NameStartingWith(PageNameLinux).First()
+	DevelopersButton      = nodewith.NameRegex(regexp.MustCompile("Developers|Linux.*")).Role(role.Button).Ancestor(ossettings.WindowFinder)
 	nextButton            = nodewith.Name("Next").Role(role.Button)
 	settingsHead          = nodewith.Name("Settings").Role(role.Heading)
 	emptySharedFoldersMsg = nodewith.Name("Shared folders will appear here").Role(role.StaticText)
 	sharedFoldersList     = nodewith.Name("Shared folders").Role(role.List)
 	unshareFailDlg        = nodewith.Name("Unshare failed").Role(role.Dialog)
 	okButton              = nodewith.Name("OK").Role(role.Button)
-	removeLinuxButton     = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Remove.*`)}, Role: ui.RoleTypeButton}
-	resizeButton          = ui.FindParams{Name: "Change disk size", Role: ui.RoleTypeButton}
+	removeLinuxButton     = nodewith.NameRegex(regexp.MustCompile(`Remove.*`)).Role(role.Button)
+	removeLinuxDialog     = nodewith.NameRegex(regexp.MustCompile("Remove|Delete")).Role(role.Dialog).First()
+	resizeButton          = nodewith.Name("Change disk size").Role(role.Button)
+	RemoveLinuxAlert      = nodewith.Name("Remove Linux development environment").Role(role.AlertDialog).ClassName("Widget")
 )
 
 // Settings represents an instance of the Linux settings in Settings App.
 type Settings struct {
+	ui    *uiauto.Context
 	tconn *chrome.TestConn
 }
 
@@ -78,14 +79,14 @@ func OpenLinuxSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Ch
 	}
 
 	ui := uiauto.New(tconn)
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.Exists(developersButton)); err != nil {
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.Exists(DevelopersButton)); err != nil {
 		return nil, errors.Wrap(err, "failed to launch settings app")
 	}
-	if err := ui.LeftClick(developersButton)(ctx); err != nil {
+	if err := ui.LeftClick(DevelopersButton)(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to go to linux subpage")
 	}
 
-	return &Settings{tconn}, nil
+	return &Settings{tconn: tconn, ui: ui}, nil
 }
 
 // OpenLinuxSettings opens Settings app and navigate to Linux Settings and its sub settings if any.
@@ -108,12 +109,15 @@ func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.C
 
 // FindSettingsPage finds a pre-opened Settings page with a window name.
 func FindSettingsPage(ctx context.Context, tconn *chrome.TestConn, windowName string) (s *Settings, err error) {
+	// Create a uiauto.Context with default timeout.
+	ui := uiauto.New(tconn)
+
 	// Check Settings app is opened to the specific page.
-	if err := uiauto.New(tconn).WaitUntilExists(nodewith.NameRegex(regexp.MustCompile(".*" + windowName + ".*")).First())(ctx); err != nil {
+	if err := ui.WaitUntilExists(nodewith.NameRegex(regexp.MustCompile(".*" + windowName + ".*")).First())(ctx); err != nil {
 		return nil, errors.Wrapf(err, "failed to find window %s", windowName)
 	}
 
-	return &Settings{tconn: tconn}, nil
+	return &Settings{tconn: tconn, ui: ui}, nil
 }
 
 // OpenInstaller clicks the "Turn on" Linux button to open the Crostini installer.
@@ -126,7 +130,7 @@ func OpenInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrom
 		return errors.Wrap(err, "failed to open linux subpage on Settings app")
 	}
 	defer s.Close(ctx)
-	return uiauto.New(tconn).LeftClick(nextButton)(ctx)
+	return s.ui.LeftClick(nextButton)(ctx)
 }
 
 // Close closes the Settings App.
@@ -137,19 +141,18 @@ func (s *Settings) Close(ctx context.Context) error {
 	}
 
 	// Wait for the window to close.
-	return uiauto.New(s.tconn).WaitUntilGone(settingsHead)(ctx)
+	return s.ui.WaitUntilGone(settingsHead)(ctx)
 }
 
 // GetSharedFolders returns a list of shared folders.
 // Settings must be open at the Linux Manage Shared Folders page.
 func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string, err error) {
-	ui2 := uiauto.New(s.tconn)
 
 	// Find "Shared folders will appear here". It will be displayed if no folder is shared.
-	textErr := ui2.WithTimeout(2 * time.Second).WaitUntilExists(emptySharedFoldersMsg)(ctx)
+	textErr := s.ui.WithTimeout(2 * time.Second).WaitUntilExists(emptySharedFoldersMsg)(ctx)
 
 	// Find "Shared folders" list. It will be displayed if any folder is shared.
-	listErr := ui2.WithTimeout(2 * time.Second).WaitUntilExists(sharedFoldersList)(ctx)
+	listErr := s.ui.WithTimeout(2 * time.Second).WaitUntilExists(sharedFoldersList)(ctx)
 
 	if textErr != nil && listErr != nil {
 		// Did not find "Shared folders will appear here" or "Shared folders" list.
@@ -158,10 +161,10 @@ func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string
 		// Found "Shared folders".
 		// It sometimes takes a bit time for the UI to display the shared folders.
 		sharedFolderButtons := nodewith.Role(role.Button).Ancestor(sharedFoldersList)
-		if err := ui2.WaitUntilExists(sharedFolderButtons.First())(ctx); err != nil {
+		if err := s.ui.WaitUntilExists(sharedFolderButtons.First())(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to find any shared folder")
 		}
-		sharedFolders, err := ui2.NodesInfo(ctx, sharedFolderButtons)
+		sharedFolders, err := s.ui.NodesInfo(ctx, sharedFolderButtons)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to find list of shared folders")
 		}
@@ -179,113 +182,93 @@ func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string
 // UnshareFolder deletes a shared folder from Settings app.
 // Settings must be open at the Linux Manage Shared Folders page.
 func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
-	ui2 := uiauto.New(s.tconn)
 	folderButton := nodewith.Name(folder).Role(role.Button).Ancestor(sharedFoldersList)
 
 	return uiauto.Combine("Unshare folder "+folder,
-		ui2.LeftClick(folderButton),
-		ui2.IfSuccessThen(ui2.WithTimeout(5*time.Second).WaitUntilExists(unshareFailDlg), ui2.LeftClick(okButton)),
-		ui2.IfSuccessThen(ui2.Exists(sharedFoldersList), ui2.WaitUntilGone(folderButton)),
+		s.ui.LeftClick(folderButton),
+		s.ui.IfSuccessThen(s.ui.WithTimeout(5*time.Second).WaitUntilExists(unshareFailDlg), s.ui.LeftClick(okButton)),
+		s.ui.IfSuccessThen(s.ui.Exists(sharedFoldersList), s.ui.WaitUntilGone(folderButton)),
 	)(ctx)
 }
 
-// RemoveConfirmDialog represents the confirm dialog of removing Crostini.
-type RemoveConfirmDialog struct {
-	Self   *uig.Action `nameRegex:"Remove|Delete" role:"dialog"`
-	Delete *uig.Action `name:"Delete" role:"button"`
-	Cancel *uig.Action `name:"Cancel" role:"button"`
+// RemoveConfirmDialogStruct represents the struct of the confirm dialog of removing Crostini.
+type RemoveConfirmDialogStruct struct {
+	Self   *nodewith.Finder
+	Delete *nodewith.Finder
+	Cancel *nodewith.Finder
 }
 
-// ClickRemove clicks Remove to delete Linux and returns an instance of RemoveConfirmDialog.
-func (s *Settings) ClickRemove(ctx context.Context, tconn *chrome.TestConn) (*RemoveConfirmDialog, error) {
-	dialog := &RemoveConfirmDialog{}
-	uig.PageObject(dialog)
-
-	if err := uig.Do(ctx, tconn,
-		uig.FindWithTimeout(removeLinuxButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),
-		dialog.Self); err != nil {
-		return nil, errors.Wrap(err, "failed to find the delete dialog")
-	}
-
-	return dialog, nil
+// RemoveConfirmDialog represents an instance of the confirm dialog of removing Crostini.
+var RemoveConfirmDialog = RemoveConfirmDialogStruct{
+	Self:   removeLinuxDialog,
+	Delete: nodewith.Name("Delete").Role(role.Button).Ancestor(removeLinuxDialog),
+	Cancel: nodewith.Name("Cancel").Role(role.Button).Ancestor(removeLinuxDialog),
 }
 
-// ResizeDiskDialog represents the Resize Linux disk dialog.
-type ResizeDiskDialog struct {
-	Self   *uig.Action `name:"Resize Linux disk" role:"genericContainer"`
-	Slider *uig.Action `role:"slider"`
-	Resize *uig.Action `name:"Resize" role:"button"`
-	Cancel *uig.Action `name:"Cancel" role:"button" className:"cancel-button"`
+// ClickRemove clicks Remove to launch the delete.
+func (s *Settings) ClickRemove() uiauto.Action {
+	return uiauto.Combine("to click button Remove to launch delete dialog",
+		s.ui.LeftClick(removeLinuxButton),
+		s.ui.WaitUntilExists(RemoveConfirmDialog.Self))
 }
 
-// ClickChange clicks Change to resize disk and returns an instance of ResizeDiskDialog.
-func (s *Settings) ClickChange(ctx context.Context) (*ResizeDiskDialog, error) {
-	dialog := &ResizeDiskDialog{}
-	uig.PageObject(dialog)
+// ResizeDiskDialogStruct represents the struct of the Resize Linux disk dialog.
+type ResizeDiskDialogStruct struct {
+	Self   *nodewith.Finder
+	Slider *nodewith.Finder
+	Resize *nodewith.Finder
+	Cancel *nodewith.Finder
+}
 
-	if err := uig.Do(ctx, s.tconn,
-		uig.FindWithTimeout(resizeButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),
-		dialog.Self); err != nil {
-		return nil, errors.Wrap(err, "failed to find the resize dialog")
-	}
+// ResizeDiskDialog represents an instance of the Resize Linux disk dialog.
+var ResizeDiskDialog = ResizeDiskDialogStruct{
+	Self:   nodewith.Name("Resize Linux disk").Role(role.GenericContainer),
+	Slider: nodewith.Role(role.Slider),
+	Resize: nodewith.Name("Resize").Role(role.Button),
+	Cancel: nodewith.Name("Cancel").Role(role.Button).ClassName("cancel-button"),
+}
 
-	// It takes some time for the data to load on the slider, especially when Crostini is shutdown.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return uig.Do(ctx, s.tconn, dialog.Slider)
-	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
-		return nil, errors.Wrap(err, "failed to find slider in resize dialog")
-	}
-	return dialog, nil
+// ClickChange clicks Change to launch the resize dialog.
+func (s *Settings) ClickChange() uiauto.Action {
+	return uiauto.Combine("Click button resize and wait for resize dialog and slider",
+		s.ui.LeftClick(resizeButton),
+		s.ui.WaitUntilExists(ResizeDiskDialog.Self),
+		s.ui.WithTimeout(time.Minute).WaitUntilExists(ResizeDiskDialog.Slider))
 }
 
 // GetDiskSize returns the disk size on the Settings app.
 func (s *Settings) GetDiskSize(ctx context.Context) (string, error) {
-	diskSizeFindParams := ui.FindParams{
-		Role:       ui.RoleTypeStaticText,
-		Attributes: map[string]interface{}{"name": regexp.MustCompile(`[0-9]+.[0-9]+ GB`)},
-	}
-
-	node, err := ui.FindWithTimeout(ctx, s.tconn, diskSizeFindParams, uiTimeout)
+	nodeInfo, err := s.ui.Info(ctx, nodewith.NameRegex(regexp.MustCompile(`[0-9]+.[0-9]+ GB`)).Role(role.StaticText))
 	if err != nil {
 		return "", errors.Wrap(err, "failed to find disk size information on the Settings app")
 	}
-	defer node.Release(ctx)
-	return node.Name, nil
+	return nodeInfo.Name, nil
 }
 
 // ResizeDisk resizes the VM disk to approximately targetSize via the settings app.
 // If growing the VM disk, set increase to true, otherwise set it to false.
 func (s *Settings) ResizeDisk(ctx context.Context, kb *input.KeyboardEventWriter, targetSize uint64, increase bool) error {
-	dialog := &ResizeDiskDialog{}
-	uig.PageObject(dialog)
-
-	if err := uig.Do(ctx, s.tconn,
-		uig.FindWithTimeout(resizeButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),
-		dialog.Slider.FocusAndWait(15*time.Second)); err != nil {
+	if err := uiauto.Run(ctx, s.ui.LeftClick(resizeButton), s.ui.FocusAndWait(ResizeDiskDialog.Slider)); err != nil {
 		return errors.Wrap(err, "failed to open resize slider")
 	}
 
-	if _, err := ChangeDiskSize(ctx, s.tconn, kb, dialog.Slider, increase, targetSize); err != nil {
+	if _, err := ChangeDiskSize(ctx, s.tconn, kb, ResizeDiskDialog.Slider, increase, targetSize); err != nil {
 		return errors.Wrap(err, "failed to resize disk")
 	}
 
-	if err := uig.Do(ctx, s.tconn,
-		dialog.Resize.LeftClick(),
-		uig.WaitUntilDescendantGone(ui.FindParams{Name: "Resize Linux disk", Role: "genericContainer"}, uiTimeout)); err != nil {
-		return errors.Wrap(err, "failed to click \"Resize\"")
-	}
-
-	return nil
+	return uiauto.Combine("Click button Resize and wait resize dialog gone",
+		s.ui.LeftClick(ResizeDiskDialog.Resize),
+		s.ui.WaitUntilGone(ResizeDiskDialog.Self),
+	)(ctx)
 }
 
 // GetDiskSize returns the current size based on the disk size slider text.
-func GetDiskSize(ctx context.Context, tconn *chrome.TestConn, slider *uig.Action) (uint64, error) {
-	node, err := uig.GetNode(ctx, tconn, slider.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText}, uiTimeout))
+func GetDiskSize(ctx context.Context, tconn *chrome.TestConn, slider *nodewith.Finder) (uint64, error) {
+	nodeInfo, err := uiauto.New(tconn).Info(ctx, nodewith.Role(role.StaticText).Ancestor(slider))
 	if err != nil {
 		return 0, errors.Wrap(err, "error getting disk size setting")
 	}
-	defer node.Release(ctx)
-	return ParseDiskSize(node.Name)
+	return ParseDiskSize(nodeInfo.Name)
 }
 
 // ParseDiskSize parses disk size from a string like "xx.x GB" to a uint64 value in bytes.
@@ -316,8 +299,8 @@ func ParseDiskSize(sizeString string) (uint64, error) {
 // If the target disk size is bigger, set increase to true, otherwise set it to false.
 // The method will return if it reaches the target or the end of the slider.
 // The real size might not be exactly equal to the target because the increment changes depending on the range.
-// slider.FocusAndWait(uiTimeout) should be called before calling this method.
-func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slider *uig.Action, increase bool, targetDiskSize uint64) (uint64, error) {
+// FocusAndWait(slider) should be called before calling this method.
+func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slider *nodewith.Finder, increase bool, targetDiskSize uint64) (uint64, error) {
 	direction := "right"
 	if !increase {
 		direction = "left"
@@ -351,30 +334,25 @@ func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 
 // GetCurAndTargetDiskSize gets the current disk size and calculates a target disk size to resize.
 func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.KeyboardEventWriter) (curSize, targetSize uint64, err error) {
-	resizeDlg, dialog, err := s.getResizeDialog(ctx)
-	if err != nil {
-		return 0, 0, errors.Wrap(err, "failed to launch Resize Linux disk dialog")
-	}
-	defer dialog.Release(ctx)
-
-	// Focus on the slider.
-	if err := uig.Do(ctx, s.tconn, uig.WaitForLocationChangeCompleted(), resizeDlg.Slider.FocusAndWait(15*time.Second)); err != nil {
-		return 0, 0, errors.Wrap(err, "failed to focus on the slider on the Resize Linux disk dialog")
+	if err := uiauto.Combine("Launch resize dialog and focus on the slider",
+		s.ClickChange(),
+		s.ui.FocusAndWait(ResizeDiskDialog.Slider))(ctx); err != nil {
+		return 0, 0, err
 	}
 
 	// Get current size.
-	curSize, err = GetDiskSize(ctx, s.tconn, resizeDlg.Slider)
+	curSize, err = GetDiskSize(ctx, s.tconn, ResizeDiskDialog.Slider)
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to get initial disk size")
 	}
 
 	// Get the minimum size.
-	minSize, err := ChangeDiskSize(ctx, s.tconn, keyboard, resizeDlg.Slider, false, 0)
+	minSize, err := ChangeDiskSize(ctx, s.tconn, keyboard, ResizeDiskDialog.Slider, false, 0)
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to resize to the minimum disk size")
 	}
 	// Get the maximum size.
-	maxSize, err := ChangeDiskSize(ctx, s.tconn, keyboard, resizeDlg.Slider, true, 500*SizeGB)
+	maxSize, err := ChangeDiskSize(ctx, s.tconn, keyboard, ResizeDiskDialog.Slider, true, 500*SizeGB)
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to resize to the maximum disk size")
 	}
@@ -384,69 +362,40 @@ func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.
 		targetSize = minSize + (maxSize-minSize)/3
 	}
 
-	if err := uig.Do(ctx, s.tconn, uig.WaitForLocationChangeCompleted(), resizeDlg.Cancel.LeftClick()); err != nil {
-		return 0, 0, errors.Wrap(err, "failed to click button Cancel on Resize Linux disk dialog")
+	if err := uiauto.Combine("Click button Cancel and wait resize dialog gone",
+		s.ui.LeftClick(ResizeDiskDialog.Cancel),
+		s.ui.WaitUntilGone(ResizeDiskDialog.Self))(ctx); err != nil {
+		return 0, 0, err
 	}
 
-	// Wait the resize dialog gone.
-	if err := ui.WaitUntilGone(ctx, s.tconn, ui.FindParams{Role: dialog.Role, Name: dialog.Name}, 15*time.Second); err != nil {
-		return 0, 0, errors.Wrap(err, "failed to close the Resize Linux disk dialog")
-	}
 	return curSize, targetSize, nil
 }
 
 // Resize changes the disk size to the target size.
 // It returns the size on the slider as string and the result size as uint64.
 func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWriter, curSize, targetSize uint64) (string, uint64, error) {
-	resizeDlg, dialog, err := s.getResizeDialog(ctx)
-	if err != nil {
-		return "", 0, errors.Wrap(err, "failed to launch Resize Linux disk dialog")
-	}
-	defer dialog.Release(ctx)
-
-	// Focus on the slider.
-	if err := uig.Do(ctx, s.tconn, uig.WaitForLocationChangeCompleted(), resizeDlg.Slider.FocusAndWait(15*time.Second)); err != nil {
-		return "", 0, errors.Wrap(err, "failed to focus on the slider on the Resize Linux disk dialog")
+	if err := uiauto.Combine("Launch resize dialog and focus on the slider",
+		s.ClickChange(),
+		s.ui.FocusAndWait(ResizeDiskDialog.Slider))(ctx); err != nil {
+		return "", 0, err
 	}
 
 	// Resize to the target size.
-	size, err := ChangeDiskSize(ctx, s.tconn, keyboard, resizeDlg.Slider, targetSize > curSize, targetSize)
+	size, err := ChangeDiskSize(ctx, s.tconn, keyboard, ResizeDiskDialog.Slider, targetSize > curSize, targetSize)
 	if err != nil {
 		return "", 0, errors.Wrapf(err, "failed to resize to %d: ", targetSize)
 	}
 
 	// Record the new size on the slider.
-	node, err := uig.GetNode(ctx, s.tconn, resizeDlg.Slider.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText}, 15*time.Second))
+	nodeInfo, err := s.ui.Info(ctx, nodewith.Role(role.StaticText).Ancestor(ResizeDiskDialog.Slider))
 	if err != nil {
 		return "", 0, errors.Wrap(err, "failed to read the disk size from slider after resizing")
 	}
-	defer node.Release(ctx)
-	sizeOnSlider := node.Name
+	sizeOnSlider := nodeInfo.Name
 
-	if err := uig.Do(ctx, s.tconn, uig.WaitForLocationChangeCompleted(), resizeDlg.Resize.LeftClick()); err != nil {
+	if err := uiauto.Run(ctx, s.ui.LeftClick(ResizeDiskDialog.Resize), s.ui.WaitUntilGone(ResizeDiskDialog.Self)); err != nil {
 		return "", 0, errors.Wrap(err, "failed to click button Resize on Resize Linux disk dialog")
 	}
 
-	// Wait the resize dialog gone.
-	if err := ui.WaitUntilGone(ctx, s.tconn, ui.FindParams{Role: dialog.Role, Name: dialog.Name}, 15*time.Second); err != nil {
-		return "", 0, errors.Wrap(err, "failed to close the Resize Linux disk dialog")
-	}
-
 	return sizeOnSlider, size, nil
-}
-
-func (s *Settings) getResizeDialog(ctx context.Context) (*ResizeDiskDialog, *ui.Node, error) {
-	// Click Change on Linux settings page.
-	resizeDlg, err := s.ClickChange(ctx)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to click button Change on Linux settings page")
-	}
-
-	// Get the dialog node and params.
-	dialog, err := uig.GetNode(ctx, s.tconn, resizeDlg.Self)
-	if err != nil {
-		return nil, nil, errors.New("failed to get the node of the Resize Linux disk dialog")
-	}
-
-	return resizeDlg, dialog, nil
 }
