@@ -34,6 +34,24 @@
       "parentUuid": "b95c3504_34a5bd8c",
       "revId": "ae7c996f284b72f25cb8a3adf32f5243180c749d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167704a8_8b71e9f6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/debug.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T10:58:50Z",
+      "side": 0,
+      "message": "ok, removed ui\u0027s in other CLs. (Sent two CLs for review to you).\nPTAL.",
+      "parentUuid": "518967b8_7802b9ca",
+      "revId": "ae7c996f284b72f25cb8a3adf32f5243180c749d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
