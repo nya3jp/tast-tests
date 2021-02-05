@@ -37,7 +37,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
-		Fixture:      "arcBooted",
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Val:               "arc_print_ippusb_golden.pdf",
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(unstableModels...)),
@@ -140,8 +140,17 @@ func Print(ctx context.Context, s *testing.State) {
 		attributes   = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 	)
 
-	a := s.FixtValue().(*arc.PreData).ARC
-	cr := s.FixtValue().(*arc.PreData).Chrome
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	if err != nil {
+		s.Fatal("Failed to restart and log into Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
