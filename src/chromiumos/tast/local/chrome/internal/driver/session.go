@@ -231,13 +231,13 @@ func (s *Session) testAPIConnFor(ctx context.Context, extConn **Conn, extID stri
 // Note: StopTracing should be called even if StartTracing returns an error.
 // Sometimes, the request to start tracing reaches the browser process, but there
 // is a timeout while waiting for the reply.
-func (s *Session) StartTracing(ctx context.Context, categories []string) error {
+func (s *Session) StartTracing(ctx context.Context, categories []string, opts ...cdputil.TraceOption) error {
 	// Note: even when StartTracing fails, it might be due to the case that the
 	// StartTracing request is successfully sent to the browser and tracing
 	// collection has started, but the context deadline is exceeded before Tast
 	// receives the reply.  Therefore, tracingStarted flag is marked beforehand.
 	s.tracingStarted = true
-	return s.devsess.StartTracing(ctx, categories)
+	return s.devsess.StartTracing(ctx, categories, opts...)
 }
 
 // StopTracing stops trace collection and returns the collected trace events.

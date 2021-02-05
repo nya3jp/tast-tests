@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
@@ -222,7 +223,11 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 			s.Error("Failed to stop tracing viz.triangles in cleanup phase: ", err)
 		}
 	}()
-	if err := cr.StartTracing(ctx, []string{"disabled-by-default-viz.triangles"}); err != nil {
+	// At this time, systrace causes kernel crash on dedede devices. Because of
+	// that and data points from systrace isn't actually helpful to most of
+	// UI tests, disable systraces for the time being.
+	// TODO(https://crbug.com/1162385, b/177636800): enable it.
+	if err := cr.StartTracing(ctx, []string{"disabled-by-default-viz.triangles"}, cdputil.DisableSystrace()); err != nil {
 		s.Fatal("Failed to start tracing viz.triangles: ", err)
 	}
 

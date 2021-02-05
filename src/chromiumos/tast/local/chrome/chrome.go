@@ -521,8 +521,8 @@ func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool,
 // Note: StopTracing should be called even if StartTracing returns an error.
 // Sometimes, the request to start tracing reaches the browser process, but there
 // is a timeout while waiting for the reply.
-func (c *Chrome) StartTracing(ctx context.Context, categories []string) error {
-	return c.sess.StartTracing(ctx, categories)
+func (c *Chrome) StartTracing(ctx context.Context, categories []string, opts ...cdputil.TraceOption) error {
+	return c.sess.StartTracing(ctx, categories, opts...)
 }
 
 // StopTracing stops trace collection and returns the collected trace events.
