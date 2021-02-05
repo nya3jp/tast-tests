@@ -22,6 +22,30 @@
       },
       "revId": "21c8d2420fddaf0312e73e92e7dc2cd02486cddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f457daed_e37ca4d2",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-02-05T19:51:54Z",
+      "side": 1,
+      "message": "Ugh, thanks.",
+      "parentUuid": "23e50f7c_adae72ca",
+      "range": {
+        "startLine": 485,
+        "startChar": 4,
+        "endLine": 485,
+        "endChar": 18
+      },
+      "revId": "21c8d2420fddaf0312e73e92e7dc2cd02486cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
