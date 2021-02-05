@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e50f7c_adae72ca",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-05T19:10:36Z",
+      "side": 1,
+      "message": "tast-remote-tests-cros-0.0.1-r5091: vet: src/chromiumos/tast/remote/wificell/hostapd/config_test.go:485:5: undeclared name: multipleBSSIDs",
+      "range": {
+        "startLine": 485,
+        "startChar": 4,
+        "endLine": 485,
+        "endChar": 18
+      },
+      "revId": "21c8d2420fddaf0312e73e92e7dc2cd02486cddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
