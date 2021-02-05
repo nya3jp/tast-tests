@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1208d0d5_af293ed2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-05T09:09:43Z",
+      "side": 1,
+      "message": "Seems that you forgot to upload new patchset. Please check.",
+      "parentUuid": "6af5c8f8_17cb7d19",
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c74b415c_52e77307",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
         "patchSetId": 2
