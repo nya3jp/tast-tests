@@ -61,7 +61,6 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
 		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
-		"--no-startup-window",                        // Do not start up chrome://newtab by default to avoid unexpected patterns(doodle etc.)
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--cros-region=" + cfg.Region,                // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
