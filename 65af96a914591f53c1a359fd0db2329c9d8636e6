@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5e00f94_e9bd86f2",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-05T02:44:41Z",
+      "side": 1,
+      "message": "nit: maybe just \"BSS\"? Especially now that we\u0027re explicitly avoiding specifying the BSSID.",
+      "range": {
+        "startLine": 113,
+        "startChar": 15,
+        "endLine": 113,
+        "endChar": 20
+      },
+      "revId": "65af96a914591f53c1a359fd0db2329c9d8636e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37305c98_1ad33da8",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 3
@@ -14,6 +37,30 @@
       "writtenOn": "2021-02-04T20:36:47Z",
       "side": 1,
       "message": "wdyt about this? I felt that it was overkill to clear exactly the number of bits we need, so I just conservatively cleared the last byte.\n\nAn alternative is to just assign a random MAC to every additional BSSID.",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 2
+      },
+      "revId": "65af96a914591f53c1a359fd0db2329c9d8636e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a3b580_6968181f",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-05T02:44:41Z",
+      "side": 1,
+      "message": "Seems OK to me.",
+      "parentUuid": "37305c98_1ad33da8",
       "range": {
         "startLine": 313,
         "startChar": 0,
