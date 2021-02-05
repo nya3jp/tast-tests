@@ -9,15 +9,15 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
 
-// TODO(crbug/1164089): Create documentation for handwriting file format.
+// Documentation on file format can be found in go/tast-handwriting-svg-parsing.
 const (
 	handwritingFileEN = "handwriting_en_hello_20210129.svg"
 	handwritingFileCN = "handwriting_cn_hello_20210129.svg"
@@ -37,8 +37,7 @@ func init() {
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Attr:         []string{"group:input-tools"},
-		Pre:          pre.VKEnabledTablet,
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		Params: []testing.Param{
 			{
 				Name:      "hello_jp",
@@ -75,8 +74,11 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr := s.PreValue().(pre.PreData).Chrome
-	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	// TODO(crbug/1173252): Clean up states within Chrome using preconditions.
+	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	defer cr.Close(cleanupCtx)
+
+	tconn, err := cr.TestAPIConn(ctx)
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
