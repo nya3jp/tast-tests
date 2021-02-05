@@ -223,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c775c5e_6ade8592",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-05T23:54:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b49fac39_2bd2bf34",
+      "range": {
+        "startLine": 84,
+        "startChar": 31,
+        "endLine": 84,
+        "endChar": 32
+      },
+      "revId": "a8048ded059112aac885ca422015b962742edfb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4516eee8_3ab88806",
