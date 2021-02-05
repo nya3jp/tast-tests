@@ -176,6 +176,53 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af3641c_e6d177da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-05T21:14:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "389fbdda_3d98cf4f",
+      "range": {
+        "startLine": 78,
+        "startChar": 98,
+        "endLine": 78,
+        "endChar": 109
+      },
+      "revId": "a8048ded059112aac885ca422015b962742edfb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b49fac39_2bd2bf34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-05T21:14:21Z",
+      "side": 1,
+      "message": "Nit: may want to add what is it, testexec.DumpOnError I think",
+      "range": {
+        "startLine": 84,
+        "startChar": 31,
+        "endLine": 84,
+        "endChar": 32
+      },
+      "revId": "a8048ded059112aac885ca422015b962742edfb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4516eee8_3ab88806",
