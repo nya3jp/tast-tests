@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a3294c8_abde9b04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-05T00:28:07Z",
+      "side": 1,
+      "message": "These can all use keyboard actions",
+      "range": {
+        "startLine": 164,
+        "startChar": 20,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "b226a828272ffe5f4d073c0a6c423ffab2013ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f60e5098_90041a81",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
         "patchSetId": 2
