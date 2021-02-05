@@ -123,9 +123,23 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	defer lconn.Close()
 
 	// Find the maximize button.
-	icon, err := ui.StableFind(ctx, lconn, ui.FindParams{Role: ui.RoleTypeButton, ClassName: "FrameCaptionButton", Name: "Maximize"}, &testing.PollOptions{Timeout: 10 * time.Second})
+	params := ui.FindParams{Role: ui.RoleTypeButton, ClassName: "FrameCaptionButton", Name: "Maximize"}
+	icon, err := ui.StableFind(ctx, lconn, params, &testing.PollOptions{Timeout: 10 * time.Second})
 	if err != nil {
-		s.Fatal("Failed to find lacros-chrome maximize button: ", err)
+		s.Log("Sometimes lacros doesn't load a11y tree until ash-chrome is opened. Retrying.")
+		conn, err := s.PreValue().(launcher.PreData).Chrome.NewConn(ctx, "")
+		if err != nil {
+			s.Fatal("Failed to open ash-chrome: ", err)
+		}
+		if err := conn.CloseTarget(ctx); err != nil {
+			s.Fatal("Failed to close ash-chrome: ", err)
+		}
+		// Try again.
+		icon, err = ui.Find(ctx, lconn, params)
+		if err != nil {
+			s.Fatal("Failed to find lacros-chrome maximize button: ", err)
+		}
+		defer icon.Release(ctx)
 	}
 	defer icon.Release(ctx)
 
