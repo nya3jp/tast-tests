@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2f3f558_1773bac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc_app_open.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-05T02:24:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4698f278_906d3d7c",
+      "range": {
+        "startLine": 15,
+        "startChar": 31,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "2686572b37b0a8df59d0efe346305042f8d1a27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "025fb701_f052368c",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-04T20:37:55Z",
       "side": 1,
       "message": "Please add this into the uiauto.Run below.",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "2686572b37b0a8df59d0efe346305042f8d1a27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a26260b6_42c93dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc_app_open.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-05T02:24:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "025fb701_f052368c",
       "range": {
         "startLine": 65,
         "startChar": 9,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7836a68_d85e4732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc_app_open.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-05T02:24:36Z",
+      "side": 1,
+      "message": "Reduced it to some optimal time.",
+      "parentUuid": "e6fb2802_30377215",
+      "range": {
+        "startLine": 90,
+        "startChar": 46,
+        "endLine": 90,
+        "endChar": 49
+      },
+      "revId": "2686572b37b0a8df59d0efe346305042f8d1a27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "900661bf_0501bb31",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-02-04T20:37:55Z",
       "side": 1,
       "message": "Why is this necessary after already sleeping for the notification.",
+      "range": {
+        "startLine": 96,
+        "startChar": 19,
+        "endLine": 96,
+        "endChar": 24
+      },
+      "revId": "2686572b37b0a8df59d0efe346305042f8d1a27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1995df33_855c5bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc_app_open.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-05T02:24:36Z",
+      "side": 1,
+      "message": "Replaced this sleep to wait for app install.",
+      "parentUuid": "900661bf_0501bb31",
       "range": {
         "startLine": 96,
         "startChar": 19,
