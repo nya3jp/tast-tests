@@ -50,6 +50,75 @@
       "message": "Previously for SwtichAccess, Sara-san added an autotest private api to disable a confirmation dialog http://crrev/c/2225997.\n\nDo you think we can do the same for this?",
       "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e92f6fcc_0c3e04f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-05T02:03:13Z",
+      "side": 1,
+      "message": "nit: better variable name. \"yesButton\" or \"button\"",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6294bb_44190389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-05T02:03:13Z",
+      "side": 1,
+      "message": "are we clicking here?\nseems like we are just wanting scroll view to appear.",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc63b3b1_90dda371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-05T02:03:13Z",
+      "side": 1,
+      "message": "nit: remove \u0027s\u0027",
+      "range": {
+        "startLine": 124,
+        "startChar": 13,
+        "endLine": 124,
+        "endChar": 14
+      },
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
