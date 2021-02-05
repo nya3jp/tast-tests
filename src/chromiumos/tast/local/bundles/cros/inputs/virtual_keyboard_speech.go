@@ -12,8 +12,8 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -42,7 +42,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		// This test is a technical experiment. It is very flaky at the moment.
 		// Attr:         []string{"group:mainline", "informational", "group:essential-inputs"}
-		Pre: pre.VKEnabledTablet,
 		Params: []testing.Param{
 			{
 				Name:      "hello_en",
@@ -71,8 +70,9 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	ctx, shortCancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer shortCancel()
 
-	cr := s.PreValue().(pre.PreData).Chrome
-	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	// TODO(crbug/1173252): Clean up states within Chrome using preconditions
+	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	tconn, err := cr.TestAPIConn(ctx)
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
