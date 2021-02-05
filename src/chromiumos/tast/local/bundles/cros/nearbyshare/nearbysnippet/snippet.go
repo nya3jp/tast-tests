@@ -311,8 +311,8 @@ func (a *AndroidNearbyDevice) clientSend(body []byte) error {
 }
 
 // clientReceive reads the RPC server's response.
-func (a *AndroidNearbyDevice) clientReceive() ([]byte, error) {
-	a.conn.SetReadDeadline(time.Now().Add(10 * time.Second))
+func (a *AndroidNearbyDevice) clientReceive(timeout time.Duration) ([]byte, error) {
+	a.conn.SetReadDeadline(time.Now().Add(timeout))
 	bufReader := bufio.NewReader(a.conn)
 	res, err := bufReader.ReadBytes('\n')
 	if err != nil {
@@ -345,9 +345,9 @@ func (a *AndroidNearbyDevice) clientRPCRequest(ctx context.Context, method strin
 }
 
 // clientRPCResponse returns the server's response.
-func (a *AndroidNearbyDevice) clientRPCResponse(ctx context.Context, lastReqID int) (jsonRPCResponse, error) {
+func (a *AndroidNearbyDevice) clientRPCResponse(ctx context.Context, lastReqID int, timeout time.Duration) (jsonRPCResponse, error) {
 	var res jsonRPCResponse
-	b, err := a.clientReceive()
+	b, err := a.clientReceive(timeout)
 	testing.ContextLog(ctx, "\tRPC response: ", string(b))
 	if err != nil {
 		return res, err
@@ -364,6 +364,11 @@ func (a *AndroidNearbyDevice) clientRPCResponse(ctx context.Context, lastReqID i
 	return res, nil
 }
 
+// defaultRPCResponseTimeout is the default timeout for receiving an RPC response from the Nearby Snippet.
+// Most RPCs should return a response within a short amount of time. Some RPCs such as eventWaitAndGet
+// and the setting getters may not respond until their specified timeouts are reached.
+const defaultRPCResponseTimeout = 10 * time.Second
+
 // Initialize initializes the Nearby Snippet.
 func (a *AndroidNearbyDevice) Initialize(ctx context.Context) error {
 	// Initialize the Nearby Snippet. Running the 'initiate' command with uid -1 is necessary to create a new session to the server.
@@ -376,7 +381,7 @@ func (a *AndroidNearbyDevice) Initialize(ctx context.Context) error {
 	if err := a.clientSend(reqCmdBody); err != nil {
 		return errors.Wrap(err, "failed to send initialize command")
 	}
-	b, err := a.clientReceive()
+	b, err := a.clientReceive(defaultRPCResponseTimeout)
 	testing.ContextLog(ctx, "Initialize command response: ", string(b))
 	if err != nil {
 		return errors.Wrap(err, "failed to read response to initialize command")
@@ -400,7 +405,7 @@ func (a *AndroidNearbyDevice) GetNearbySharingVersion(ctx context.Context) (stri
 		return "", err
 	}
 	// Read response.
-	res, err := a.clientRPCResponse(ctx, id)
+	res, err := a.clientRPCResponse(ctx, id, defaultRPCResponseTimeout)
 	if err != nil {
 		return "", err
 	}
@@ -423,7 +428,7 @@ func (a *AndroidNearbyDevice) GetDeviceName(ctx context.Context) (string, error)
 		return "", err
 	}
 	// Read response.
-	res, err := a.clientRPCResponse(ctx, id)
+	res, err := a.clientRPCResponse(ctx, id, settingTimeoutSeconds*time.Second)
 	if err != nil {
 		return "", err
 	}
@@ -443,7 +448,7 @@ func (a *AndroidNearbyDevice) GetDataUsage(ctx context.Context) (DataUsage, erro
 		return data, err
 	}
 	// Read response.
-	res, err := a.clientRPCResponse(ctx, id)
+	res, err := a.clientRPCResponse(ctx, id, settingTimeoutSeconds*time.Second)
 	if err != nil {
 		return data, err
 	}
@@ -462,7 +467,7 @@ func (a *AndroidNearbyDevice) GetVisibility(ctx context.Context) (Visibility, er
 		return vis, err
 	}
 	// Read response.
-	res, err := a.clientRPCResponse(ctx, id)
+	res, err := a.clientRPCResponse(ctx, id, settingTimeoutSeconds*time.Second)
 	if err != nil {
 		return vis, err
 	}
@@ -479,7 +484,7 @@ func (a *AndroidNearbyDevice) SetupDevice(ctx context.Context, dataUsage DataUsa
 	if err != nil {
 		return err
 	}
-	_, err = a.clientRPCResponse(ctx, id)
+	_, err = a.clientRPCResponse(ctx, id, defaultRPCResponseTimeout)
 	return err
 }
 
@@ -490,7 +495,7 @@ func (a *AndroidNearbyDevice) eventWaitAndGet(ctx context.Context, callbackID st
 		return err
 	}
 	// Read response.
-	_, err = a.clientRPCResponse(ctx, id)
+	_, err = a.clientRPCResponse(ctx, id, timeout)
 	return err
 }
 
@@ -503,7 +508,7 @@ func (a *AndroidNearbyDevice) ReceiveFile(ctx context.Context, senderName, recei
 	if err != nil {
 		return err
 	}
-	res, err := a.clientRPCResponse(ctx, id)
+	res, err := a.clientRPCResponse(ctx, id, defaultRPCResponseTimeout)
 	if err != nil {
 		return err
 	}
@@ -541,7 +546,7 @@ func (a *AndroidNearbyDevice) AcceptTheSharing(ctx context.Context, token string
 	if err != nil {
 		return err
 	}
-	_, err = a.clientRPCResponse(ctx, id)
+	_, err = a.clientRPCResponse(ctx, id, defaultRPCResponseTimeout)
 	return err
 }
 
@@ -552,6 +557,6 @@ func (a *AndroidNearbyDevice) CancelReceivingFile(ctx context.Context) error {
 		return err
 	}
 	// Read response.
-	_, err = a.clientRPCResponse(ctx, id)
+	_, err = a.clientRPCResponse(ctx, id, defaultRPCResponseTimeout)
 	return err
 }
