@@ -1,6 +1,69 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec1a9b60_bda0a567",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-05T02:13:55Z",
+      "side": 1,
+      "message": "mostly lgtm",
+      "revId": "e7fac7d2db0a4c0d2875083b801afc6825d0760d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04def713_fd3d90d1",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-05T02:13:55Z",
+      "side": 1,
+      "message": "the provided extID",
+      "range": {
+        "startLine": 157,
+        "startChar": 32,
+        "endLine": 157,
+        "endChar": 63
+      },
+      "revId": "e7fac7d2db0a4c0d2875083b801afc6825d0760d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5507e501_ba9e99db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-05T02:13:55Z",
+      "side": 1,
+      "message": "nit: make this onto one line.\n\nif engine :\u003d ....; engine \u003d\u003d \"google_tts\" {\n...\n} else if engine \u003d\u003d \"espeak\" {\n...\n} else {\n...\n}",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "e7fac7d2db0a4c0d2875083b801afc6825d0760d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "702e186d_1fc50ee0",
@@ -19,6 +82,29 @@
         "startChar": 1,
         "endLine": 68,
         "endChar": 26
+      },
+      "revId": "e7fac7d2db0a4c0d2875083b801afc6825d0760d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7619bb68_b9f68b32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-05T02:13:55Z",
+      "side": 1,
+      "message": "nit: specify which language we are using?",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 25
       },
       "revId": "e7fac7d2db0a4c0d2875083b801afc6825d0760d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
