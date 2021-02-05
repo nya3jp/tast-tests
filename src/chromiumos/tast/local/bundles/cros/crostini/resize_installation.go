@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/settings"
@@ -55,6 +56,8 @@ func ResizeInstallation(ctx context.Context, s *testing.State) {
 	iOptions := crostini.GetInstallerOptions(s, true /*isComponent*/, vm.DebianBuster, false /*largeContainer*/, cr.User())
 	iOptions.MinDiskSize = 16 * settings.SizeGB
 	iOptions.IsSoftMinimum = true
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Cleanup.
 	defer func() {
