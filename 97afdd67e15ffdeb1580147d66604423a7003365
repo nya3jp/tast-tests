@@ -16,6 +16,29 @@
       "message": "hidehiko, can you take a look?",
       "revId": "97afdd67e15ffdeb1580147d66604423a7003365",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc0776f3_e0b1b55b",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T05:55:53Z",
+      "side": 1,
+      "message": "hugenit/optional: maybe \"DisableSystrace\" according to the config name?",
+      "range": {
+        "startLine": 263,
+        "startChar": 5,
+        "endLine": 263,
+        "endChar": 12
+      },
+      "revId": "97afdd67e15ffdeb1580147d66604423a7003365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
