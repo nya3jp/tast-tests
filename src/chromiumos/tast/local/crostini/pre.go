@@ -9,7 +9,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -19,9 +18,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uig"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
@@ -609,18 +607,14 @@ func uninstallLinuxFromUI(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 		return errors.Wrap(err, "failed to click Remove button on Linux settings page")
 	}
 
-	// Click Delete on the confirm dialog.
-	if err := uig.Do(ctx, tconn, uig.WaitForLocationChangeCompleted(), removeDlg.Delete.LeftClick()); err != nil {
-		return errors.Wrap(err, "failed to click Delete button on remove Linux dialog")
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("Remove Linux",
+		ui.LeftClick(removeDlg.Delete),
+		ui.WaitUntilExists(settings.RemoveLinuxAlert),
+		ui.WaitUntilGone(settings.RemoveLinuxAlert),
+		ui.WaitUntilExists(settings.DevelopersButton))(ctx); err != nil {
+		return err
 	}
-
-	var developersButton = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Developers|Linux \(Beta\)`)}, Role: ui.RoleTypeButton}
-	turnOn, err := ui.FindWithTimeout(ctx, tconn, developersButton, 30*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find turn on button after removing Linux")
-	}
-
-	turnOn.Release(ctx)
 
 	if err := st.Close(ctx); err != nil {
 		return errors.Wrap(err, "failed to close settings window after uninstalling Linux")

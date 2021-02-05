@@ -17,8 +17,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/local/crostini/lxd"
 	"chromiumos/tast/local/crostini/ui/settings"
@@ -31,10 +32,7 @@ import (
 
 const uiTimeout = 30 * time.Second
 
-var installWindowFindParams = ui.FindParams{
-	Role:       ui.RoleTypeRootWebArea,
-	Attributes: map[string]interface{}{"name": regexp.MustCompile(`^Set up Linux`)},
-}
+var installWindow = nodewith.NameRegex(regexp.MustCompile(`^Set up Linux`)).Role(role.RootWebArea)
 
 // Image setup mode.
 const (
@@ -68,9 +66,9 @@ func New(tconn *chrome.TestConn) *Installer {
 // size to the smallest slider increment larger than the specified disk size.
 // If minDiskSize is smaller than the possible minimum disk size, disk size will be the smallest size.
 func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftMinimum bool) (uint64, error) {
-	window := uig.FindWithTimeout(installWindowFindParams, uiTimeout)
-	radioGroup := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRadioGroup}, uiTimeout)
-	slider := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeSlider}, uiTimeout)
+	radioGroup := nodewith.Role(role.RadioGroup).Ancestor(installWindow)
+	custom := nodewith.Name("Custom").Role(role.StaticText).Ancestor(radioGroup)
+	slider := nodewith.Role(role.Slider).Ancestor(installWindow)
 
 	// Check whether the virtual keyboard is shown.
 	virtualkb, err := vkb.IsShown(ctx, p.tconn)
@@ -83,11 +81,9 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 		}
 	}
 
-	if err := uig.Do(ctx, p.tconn, uig.Steps(
-		radioGroup.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "Custom"}, uiTimeout).LeftClick(),
-		slider.FocusAndWait(uiTimeout),
-	)); err != nil {
-		return 0, errors.Wrap(err, "error in SetDiskSize()")
+	ui := uiauto.New(p.tconn)
+	if err := uiauto.Run(ctx, ui.LeftClick(custom), ui.WithTimeout(uiTimeout).FocusAndWait(slider)); err != nil {
+		return 0, errors.Wrap(err, "failed to click radio custom and display slider")
 	}
 
 	// Use keyboard to manipulate the slider rather than writing
@@ -137,19 +133,15 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 // checkErrorMessage checks to see if an error message is currently displayed in the
 // installer dialog, and returns it if one is present.
 func (p *Installer) checkErrorMessage(ctx context.Context) (string, error) {
-	status, err := ui.Find(ctx, p.tconn, ui.FindParams{Role: ui.RoleTypeStatus})
-	if err != nil {
-		return "", err
-	}
-	defer status.Release(ctx)
-	nodes, err := status.Descendants(ctx, ui.FindParams{Role: ui.RoleTypeStaticText})
+	ui := uiauto.New(p.tconn)
+	statusFinder := nodewith.Role(role.Status)
+	nodes, err := ui.NodesInfo(ctx, nodewith.Role(role.StaticText).Ancestor(statusFinder))
 	if err != nil {
 		return "", err
 	}
 	var messages []string
 	for _, node := range nodes {
 		messages = append(messages, node.Name)
-		node.Release(ctx)
 	}
 	message := strings.Join(messages, ": ")
 	if !strings.HasPrefix(message, "Error") {
@@ -173,13 +165,9 @@ func (p *Installer) Install(ctx context.Context) error {
 
 	// Focus on the install button to ensure virtual keyboard does not get in the
 	// way and prevent the button from being clicked.
-	install := uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: "Install"}, uiTimeout)
-	err := uig.Do(ctx, p.tconn,
-		uig.Steps(
-			install.FocusAndWait(uiTimeout),
-			install.LeftClick(),
-			uig.WaitUntilDescendantGone(installWindowFindParams, 8*time.Minute)).WithNamef("Install()"))
-	if err != nil {
+	ui := uiauto.New(p.tconn)
+	install := nodewith.Name("Install").Role(role.Button)
+	if err := uiauto.Run(ctx, ui.LeftClick(install), ui.WithTimeout(8*time.Minute).WaitUntilGone(installWindow)); err != nil {
 		// If the install fails, return any error message from the installer rather than a timeout error.
 		message, messageErr := p.checkErrorMessage(cleanupCtx)
 		if messageErr != nil {

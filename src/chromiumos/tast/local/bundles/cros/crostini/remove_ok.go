@@ -6,13 +6,11 @@ package crostini
 
 import (
 	"context"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/crostini/vmc"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/vm"
@@ -115,18 +113,14 @@ func RemoveOk(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click Remove button on Linux settings page: ", err)
 	}
 
-	// Click Delete on the confirm dialog.
-	if err := uig.Do(ctx, tconn, uig.WaitForLocationChangeCompleted(), removeDlg.Delete.LeftClick()); err != nil {
-		s.Fatal("Failed to click Delete button on remove Linux dialog: ", err)
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("Remove Linux",
+		ui.LeftClick(removeDlg.Delete),
+		ui.WaitUntilExists(settings.RemoveLinuxAlert),
+		ui.WaitUntilGone(settings.RemoveLinuxAlert),
+		ui.WaitUntilExists(settings.DevelopersButton))(ctx); err != nil {
+		s.Fatal("Failed to remove Linux: ", err)
 	}
-
-	var developersButton = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Developers|Linux \(Beta\)`)}, Role: ui.RoleTypeButton}
-	turnOn, err := ui.FindWithTimeout(ctx, tconn, developersButton, 30*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find turn on button after removing Linux: ", err)
-	}
-
-	turnOn.Release(ctx)
 
 	// Verify "vmc list" outputs 0.
 	hash, err := vmc.UserIDHash(ctx)
