@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/testing"
 )
@@ -160,7 +161,11 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 	return s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
 		sctx, cancel := ctxutil.Shorten(ctx, traceCleanupDuration)
 		defer cancel()
-		if err := r.cr.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}); err != nil {
+		// At this time, systrace causes kernel crash on dedede devices. Because of
+		// that and data points from systrace isn't actually helpful to most of
+		// UI tests, disable systraces for the time being.
+		// TODO(https://crbug.com/1162385, b/177636800): enable it.
+		if err := r.cr.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}, cdputil.DisableSystrace()); err != nil {
 			s.Log("Failed to start tracing: ", err)
 			return
 		}

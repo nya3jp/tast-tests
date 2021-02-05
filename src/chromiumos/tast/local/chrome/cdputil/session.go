@@ -256,10 +256,20 @@ func (s *Session) FindTargets(ctx context.Context, tm TargetMatcher) ([]*target.
 	return matches, nil
 }
 
+// TraceOption is the option to cusotmize the tracing behaviors.
+type TraceOption func(*tracing.TraceConfig)
+
+// DisableSystrace is a TraceOption. When specified, it disables the systrace.
+func DisableSystrace() TraceOption {
+	return func(cfg *tracing.TraceConfig) {
+		cfg.EnableSystrace = proto.Bool(false)
+	}
+}
+
 // StartTracing starts trace events collection for the selected categories. Android
 // categories must be prefixed with "disabled-by-default-android ", e.g. for the
 // gfx category, use "disabled-by-default-android gfx", including the space.
-func (s *Session) StartTracing(ctx context.Context, categories []string) error {
+func (s *Session) StartTracing(ctx context.Context, categories []string, opts ...TraceOption) error {
 	dc := tracing.NewClient(s.wsConn)
 	args := tracing.NewStartArgs()
 	cfg := tracing.TraceConfig{
@@ -267,6 +277,9 @@ func (s *Session) StartTracing(ctx context.Context, categories []string) error {
 		EnableSystrace:     proto.Bool(true),
 		IncludedCategories: categories,
 		ExcludedCategories: []string{},
+	}
+	for _, opt := range opts {
+		opt(&cfg)
 	}
 	args.SetTraceConfig(cfg)
 	args.SetTransferMode("ReturnAsStream")
