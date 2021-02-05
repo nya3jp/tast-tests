@@ -16,6 +16,109 @@
       "message": "hidehiko, can you take a look?",
       "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e998b90_563e63a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-05T07:26:31Z",
+      "side": 1,
+      "message": "Drive-by comments. I really like this feature :) ",
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee9280b0_2c9b973d",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-05T07:26:31Z",
+      "side": 1,
+      "message": "I think this feature is useful for Chrome tests in general. How about adding this to chrome.Chrome, instead of fixtures?",
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e77fbdd8_e8ff42e6",
+        "filename": "src/chromiumos/tast/local/chrome/log/log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-05T07:26:31Z",
+      "side": 1,
+      "message": "If you decide to add the feature to chrome.Chrome:\n\nCan you move this to an internal package until it\u0027s needed by packages outside of the chrome package?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c28c232_610c6698",
+        "filename": "src/chromiumos/tast/local/chrome/log/log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-05T07:26:31Z",
+      "side": 1,
+      "message": "Did you intend to leave this logging?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 50
+      },
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fab0b64_9e308a9d",
+        "filename": "src/chromiumos/tast/local/chrome/log/log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-05T07:26:31Z",
+      "side": 1,
+      "message": "I think it\u0027s nicer to copy logs as far as possible even if a crash happens.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 111
+      },
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
