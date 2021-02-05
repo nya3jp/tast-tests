@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3f771d_b6fa0348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_eclipse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-05T21:03:03Z",
+      "side": 1,
+      "message": "uiauto.Run since your context string is already in the s.Fatal anyway",
+      "range": {
+        "startLine": 84,
+        "startChar": 18,
+        "endLine": 84,
+        "endChar": 25
+      },
+      "revId": "f8cbd7f891a452398ec4d8d2aa80b2c49b8c9305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd83293_d16bca25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-05T21:03:03Z",
+      "side": 1,
+      "message": "nit: if you want you could just return the combine above and through this into it with a wrapper\n func(ctx context.Context) error {\n   ...\n }",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "f8cbd7f891a452398ec4d8d2aa80b2c49b8c9305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa42cee_c3779537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_cd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-05T21:03:03Z",
+      "side": 1,
+      "message": "uiauto.Run since your context string is already in the s.Fatal anyway",
+      "range": {
+        "startLine": 119,
+        "startChar": 18,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "f8cbd7f891a452398ec4d8d2aa80b2c49b8c9305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8cd02b9_3ed8a750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-05T21:03:03Z",
+      "side": 1,
+      "message": "uiauto.Run since your context string is already in the s.Fatal anyway",
+      "range": {
+        "startLine": 123,
+        "startChar": 18,
+        "endLine": 123,
+        "endChar": 25
+      },
+      "revId": "f8cbd7f891a452398ec4d8d2aa80b2c49b8c9305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0bcb988_5114314c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-05T21:03:03Z",
+      "side": 1,
+      "message": "I think you should probably just use the mouse library directly in tests that would import this. Probably make a mouse.ClickAction or similar methods. Though I guess I don\u0027t feel too strongly about this.",
+      "range": {
+        "startLine": 338,
+        "startChar": 19,
+        "endLine": 338,
+        "endChar": 39
+      },
+      "revId": "f8cbd7f891a452398ec4d8d2aa80b2c49b8c9305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "720446b5_93da419c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-05T21:03:03Z",
+      "side": 1,
+      "message": "Is there any bug tracking this? I feel like ensure tablet mode should deal with things like this.",
+      "range": {
+        "startLine": 90,
+        "startChar": 28,
+        "endLine": 90,
+        "endChar": 93
+      },
+      "revId": "f8cbd7f891a452398ec4d8d2aa80b2c49b8c9305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97459355_a5f3a265",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-05T21:03:03Z",
+      "side": 1,
+      "message": "nit:\n if revert !\u003d nil {\n   defer revert(ctx)\n }",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 5
+      },
+      "revId": "f8cbd7f891a452398ec4d8d2aa80b2c49b8c9305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f66222_cfbd9052",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-05T21:03:03Z",
+      "side": 1,
+      "message": "keyboard.TypeAction and AccelAction.\nThen you should be able to use uiauto.Run",
+      "range": {
+        "startLine": 182,
+        "startChar": 21,
+        "endLine": 182,
+        "endChar": 25
+      },
+      "revId": "f8cbd7f891a452398ec4d8d2aa80b2c49b8c9305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
