@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui"
-	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -169,7 +169,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 				if captureErr := screenshot.CaptureChrome(closeCtx, cr, filepath.Join(s.OutDir(), "hotseat-failure.png")); captureErr != nil {
 					testing.ContextLog(ctx, "Failed to take the screenshot: ", captureErr)
 				}
-				if logErr := ui.LogRootDebugInfo(closeCtx, tconn, filepath.Join(s.OutDir(), "ui-tree.txt")); logErr != nil {
+				if logErr := uiauto.LogRootDebugInfo(closeCtx, tconn, filepath.Join(s.OutDir(), "ui-tree.txt")); logErr != nil {
 					testing.ContextLog(ctx, "Failed to dump the UI tree: ", logErr)
 				}
 			}
@@ -185,13 +185,13 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "hotseat is in an unexpected state")
 		}
 		// Tap the chrome icon in the app-list to re-activate the browser window.
-		findParams := chromeui.FindParams{
+		findParams := ui.FindParams{
 			ClassName: "AppListItemView",
 			Attributes: map[string]interface{}{
 				"name": regexp.MustCompile("(Chrome|Chromium)"),
 			},
 		}
-		button, err := chromeui.FindWithTimeout(ctx, tconn, findParams, 10*time.Second)
+		button, err := ui.FindWithTimeout(ctx, tconn, findParams, 10*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "failed to find the Chrome icon")
 		}
