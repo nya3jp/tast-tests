@@ -135,11 +135,24 @@ func WindowControl(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to move the mouse")
 			}
 		}
+		// Needs to wait a bit before releasing the mouse, otherwise the window
+		// may not get back to be maximized.  See https://crbug.com/1158548.
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait")
+		}
 		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
 			return errors.Wrap(err, "failed to release the button")
 		}
 		if err := ash.WaitWindowFinishAnimating(ctx, tconn, w.ID); err != nil {
 			return errors.Wrap(err, "failed to wait for the top window animation")
+		}
+		// Validity check to ensure the window is maximized at the end.
+		window, err := ash.GetWindow(ctx, tconn, w.ID)
+		if err != nil {
+			return errors.Wrapf(err, "failed to obtain the window info for %d", w.ID)
+		}
+		if window.State != ash.WindowStateMaximized {
+			return errors.New("window is not maximized")
 		}
 		return nil
 	},

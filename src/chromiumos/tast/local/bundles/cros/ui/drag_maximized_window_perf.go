@@ -121,6 +121,12 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 			}
 		}
 
+		// Needs to wait a bit before releasing the mouse, otherwise the window
+		// may not get back to be maximized.  See https://crbug.com/1158548.
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait")
+		}
+
 		// Release the window. It is near the top of the screen so it should snap to maximize.
 		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
 			return errors.Wrap(err, "failed to release the button")
