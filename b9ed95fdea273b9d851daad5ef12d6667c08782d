@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a95883_04eb9ada",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-05T00:57:02Z",
+      "side": 1,
+      "message": "nit: it is the reason, maybe removed from the action description.",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "b9ed95fdea273b9d851daad5ef12d6667c08782d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58c88321_6a9e6b26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-05T00:57:02Z",
+      "side": 1,
+      "message": "nit: sentense should finish with full stop.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "b9ed95fdea273b9d851daad5ef12d6667c08782d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd69210_93da4f04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-05T00:57:02Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b9ed95fdea273b9d851daad5ef12d6667c08782d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
