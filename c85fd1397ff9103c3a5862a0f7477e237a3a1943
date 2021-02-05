@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d844d0dd_a58357da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T11:21:28Z",
+      "side": 1,
+      "message": "Thank you for working on this!\nMy initial scan.",
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee9280b0_2c9b973d",
@@ -48,6 +65,41 @@
       "writtenOn": "2021-02-05T07:26:31Z",
       "side": 1,
       "message": "I think this feature is useful for Chrome tests in general. How about adding this to chrome.Chrome, instead of fixtures?",
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4abd519_d69d79e7",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T11:21:28Z",
+      "side": 1,
+      "message": "Do you mean to add some methods to chrome.Chrome?\nI\u0027m wondering if we\u0027d like to introduce more states into chrome.Chrome.",
+      "parentUuid": "ee9280b0_2c9b973d",
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee0637ac_e101f67e",
+        "filename": "src/chromiumos/tast/local/chrome/log/log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T11:21:28Z",
+      "side": 1,
+      "message": "nit: Maybe splitter.go describes the content of this file, more.",
       "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -70,6 +122,114 @@
         "startChar": 8,
         "endLine": 6,
         "endChar": 11
+      },
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ae7698_47c08314",
+        "filename": "src/chromiumos/tast/local/chrome/log/log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T11:21:28Z",
+      "side": 1,
+      "message": "Could you describe more how this should be used?\nSpecifically, could you explain your design of details, such as:\n- What happens if Start() is called multiple times, without saving.\n- What happens if log is being saved multiple times.\n- What happens if Chrome crashes/rebooted (as nya-san pointed below).\n  - Optionally, you may want to track symlink updates, in order to catch up with Chrome reboot.",
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f07fb878_ab05d4e8",
+        "filename": "src/chromiumos/tast/local/chrome/log/log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T11:21:28Z",
+      "side": 1,
+      "message": "optional: splitter sounds like splitting a log file into some pieces?\nMaybe extractor or (partial) reader? WDYT?",
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4091151_44fcb159",
+        "filename": "src/chromiumos/tast/local/chrome/log/log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T11:21:28Z",
+      "side": 1,
+      "message": "Could you make this private, as this file is only its user?",
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39e769d_36df054b",
+        "filename": "src/chromiumos/tast/local/chrome/log/log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T11:21:28Z",
+      "side": 1,
+      "message": "Could you check if splitter is not yet started, and return error if necessary?",
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f652b4f2_a04fca75",
+        "filename": "src/chromiumos/tast/local/chrome/log/log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T11:21:28Z",
+      "side": 1,
+      "message": "Could you add brief implementation note that this assumes that log file will always appended.",
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90934b6a_e5bca8cc",
+        "filename": "src/chromiumos/tast/local/chrome/log/log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T11:21:28Z",
+      "side": 1,
+      "message": "optional: This is log splitter, so \"Log\" is probably trivial. In case of save, we expect saving to File.\nSo, as long as there\u0027s no variation, \"Save\" looks meaningful enough?",
+      "range": {
+        "startLine": 58,
+        "startChar": 19,
+        "endLine": 58,
+        "endChar": 34
       },
       "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -116,6 +276,53 @@
         "startChar": 2,
         "endLine": 65,
         "endChar": 111
+      },
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea7ddff_98e382eb",
+        "filename": "src/chromiumos/tast/local/chrome/log/log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T11:21:28Z",
+      "side": 1,
+      "message": "+1.",
+      "parentUuid": "4fab0b64_9e308a9d",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 111
+      },
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15788dda_fec108b2",
+        "filename": "src/chromiumos/tast/local/chrome/log/log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-05T11:21:28Z",
+      "side": 1,
+      "message": "Should we consider the case that log file gets longer?\nIf so, could you use Seek not to read unnecessary part?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 38
       },
       "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
