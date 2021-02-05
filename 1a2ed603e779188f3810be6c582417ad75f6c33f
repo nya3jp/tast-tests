@@ -3,6 +3,57 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7c76e473_b52c1e47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-05T18:22:20Z",
+      "side": 1,
+      "message": "Nice. Dean, what do you think about DisableTechnologyForTesting? Would it be useful for WiFi tests? (Should the WiFi test fixture disable cellular by default?)",
+      "revId": "1a2ed603e779188f3810be6c582417ad75f6c33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e4a32c_a8df109e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-05T18:22:20Z",
+      "side": 1,
+      "message": "Do we need to defer cancel() here? This should run after enableFunc so I don\u0027t think we need to do this.",
+      "revId": "1a2ed603e779188f3810be6c582417ad75f6c33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d7d237_357d2a98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-05T18:22:20Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "1a2ed603e779188f3810be6c582417ad75f6c33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "59e8bb73_a7fee71e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
         "patchSetId": 3
@@ -14,6 +65,29 @@
       "writtenOn": "2021-02-05T18:05:50Z",
       "side": 1,
       "message": "helper.Connect also calls waitForConnected() which fixes the apparent flakiness below.",
+      "revId": "1a2ed603e779188f3810be6c582417ad75f6c33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401fe4ca_b9e35e22",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-05T18:22:20Z",
+      "side": 1,
+      "message": "this seems wrong, it gives you back a callback that you should defer to re-enable the technology, and also you have to shorten the context yourself",
+      "range": {
+        "startLine": 274,
+        "startChar": 52,
+        "endLine": 275,
+        "endChar": 79
+      },
       "revId": "1a2ed603e779188f3810be6c582417ad75f6c33f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
