@@ -166,7 +166,7 @@ type testInvocation struct {
 }
 
 type traceable interface {
-	StartTracing(ctx context.Context, categories []string) error
+	StartTracing(ctx context.Context, categories []string, opts ...cdputil.TraceOption) error
 	StopTracing(ctx context.Context) (*trace.Trace, error)
 }
 
