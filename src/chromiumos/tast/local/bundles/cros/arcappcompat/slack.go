@@ -71,7 +71,7 @@ func init() {
 func Slack(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.Slack"
-		appActivity = ".ui.HomeActivity"
+		appActivity = "slack.app.ui.HomeActivity"
 	)
 	testCases := s.Param().([]testutil.TestCase)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
@@ -86,6 +86,8 @@ func launchAppForSlack(ctx context.Context, s *testing.State, tconn *chrome.Test
 		signInManuallyID = "com.Slack:id/sign_in_manually_button"
 		workSpaceURLID   = "com.Slack:id/team_url_edit_text"
 		nextText         = "Next"
+		notNowID         = "android:id/autofill_save_no"
+		neverButtonID    = "com.google.android.gms:id/credential_save_reject"
 		enterEmailID     = "com.Slack:id/email_edit_text"
 		enterPasswordID  = "com.Slack:id/password_edit_text"
 		homeIconID       = "com.Slack:id/title"
@@ -168,6 +170,22 @@ func launchAppForSlack(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Error("Next Button doesn't exist: ", err)
 	} else if err := nextButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on nextButton: ", err)
+	}
+
+	// Click on never button.
+	neverButton := d.Object(ui.ID(neverButtonID))
+	if err := neverButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Never Button doesn't exist: ", err)
+	} else if err := neverButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on neverButton: ", err)
+	}
+
+	// Click on no thanks button.
+	clickOnNoThanksButton := d.Object(ui.ID(notNowID))
+	if err := clickOnNoThanksButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnNoThanksButton doesn't exist: ", err)
+	} else if err := clickOnNoThanksButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnNoThanksButton: ", err)
 	}
 
 	// Check for home icon.
