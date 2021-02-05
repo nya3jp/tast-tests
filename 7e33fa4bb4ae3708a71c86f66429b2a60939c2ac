@@ -95,6 +95,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddea572c_ec9c388d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-05T00:20:56Z",
+      "side": 1,
+      "message": "can use the keyboard actions in the other cl",
+      "range": {
+        "startLine": 124,
+        "startChar": 19,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "7e33fa4bb4ae3708a71c86f66429b2a60939c2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6003121c_76e84941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-05T00:20:56Z",
+      "side": 1,
+      "message": "We should modify this function to be a ui.Action",
+      "range": {
+        "startLine": 112,
+        "startChar": 10,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "7e33fa4bb4ae3708a71c86f66429b2a60939c2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f8a3fe5_177384e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
         "patchSetId": 2
