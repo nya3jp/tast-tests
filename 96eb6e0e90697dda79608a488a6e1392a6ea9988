@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c9b157f_25fc3306",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-05T03:31:10Z",
+      "side": 1,
+      "message": "Hi, sorry I could not reply yesterday, I was offline sick.\n\nThanks for your patience on this review! LGTM with minor style nits, please feel free to submit without waiting for my another review (but I recommend getting + from your team mate).\n",
+      "revId": "96eb6e0e90697dda79608a488a6e1392a6ea9988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86949209_34b10025",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-05T03:31:10Z",
+      "side": 1,
+      "message": "style: An error message in `error` type is supposed to be single sentence, e.g.\n\n a failed: could not do b: c is unavailable\n\nSo I\u0027d recommend formatting this message like:\n\n error when running testUtterances.shift(); testUtterances is likely empty\n\nor\n\n error when running testUtterances.shift() (testUtterances is likely empty)",
+      "range": {
+        "startLine": 196,
+        "startChar": 68,
+        "endLine": 196,
+        "endChar": 76
+      },
+      "revId": "96eb6e0e90697dda79608a488a6e1392a6ea9988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4fa7232_e3941fe7",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-05T03:31:10Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 206,
+        "startChar": 49,
+        "endLine": 206,
+        "endChar": 59
+      },
+      "revId": "96eb6e0e90697dda79608a488a6e1392a6ea9988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
