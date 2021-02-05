@@ -80,6 +80,30 @@
       },
       "revId": "97bd2ea53e3e1b8ac6738e1d25a6ebfb87a88f8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08340828_6de4e5ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-05T09:31:47Z",
+      "side": 1,
+      "message": "I think what we should do (in a follow-up) is to add a mode to tlsdated where it \"exits after a first result\". Or be able to watch tlsdated success/failure notifications and exit it then. tlsdated already has the \"TimeUpdated\" signal[0] so maybe adding a TimeUpdateFailed would already help us here?\n\nUnconditionally waiting 20s is OK for tests executed manually but \"if everyone was doing this\" could long-term harm performance of the automatic test suites.\n\nBut as mentioned, I think it\u0027s perfectly fine for a follow-up!\n\n[0] https://chromium.googlesource.com/chromiumos/platform2/+/d055c04b179d3265be2525a5edba3f317c79308d/system_api/dbus/service_constants.h#365",
+      "parentUuid": "dfcdd374_da8912ff",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 133
+      },
+      "revId": "97bd2ea53e3e1b8ac6738e1d25a6ebfb87a88f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
