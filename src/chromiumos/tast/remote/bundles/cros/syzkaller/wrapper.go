@@ -7,6 +7,7 @@ package syzkaller
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -15,7 +16,9 @@ import (
 	"time"
 
 	"chromiumos/tast/dut"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -33,6 +36,14 @@ dmesg --clear
 ln -s /dev/dri/card0 /dev/i915
 if [ -f /dev/mali0 ]; then ln -s /dev/mali0 /dev/bifrost; fi
 `
+
+var boardArchMapping = map[string]string{
+	"octopus":  "amd64",
+	"dedede":   "amd64",
+	"nautilus": "amd64",
+	// syzkaller binaries built for trogdor are 32 bit.
+	"trogdor": "arm",
+}
 
 // dutConfig represents information related to the DUT configuration;
 // commands that need to be executed before each fuzzing
@@ -80,6 +91,11 @@ func init() {
 func Wrapper(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 
+	syzArch, err := findSyzkallerArch(ctx, d)
+	if err != nil {
+		s.Fatalf("Unable to find syzkaller arch: %v", err)
+	}
+
 	syzkallerTastDir, err := ioutil.TempDir("", "tast-syzkaller")
 	if err != nil {
 		s.Fatalf("Unable to create tast temporary directory: %v", err)
@@ -92,7 +108,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	}
 
 	// Fetch syz-* binaries. Run syzkaller without vmlinux.
-	if err := fetchFuzzArtifacts(ctx, d, artifactsDir); err != nil {
+	if err := fetchFuzzArtifacts(ctx, d, artifactsDir, syzArch); err != nil {
 		s.Fatalf("Encountered error fetching fuzz artifacts: %v", err)
 	}
 
@@ -133,7 +149,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	// Hence, set Reproduce:false.
 	config := syzkallerConfig{
 		Name:      "syzkaller_tast",
-		Target:    "linux/amd64",
+		Target:    fmt.Sprintf("linux/%v", syzArch),
 		Reproduce: false,
 		HTTP:      "localhost:56700",
 		Workdir:   syzkallerWorkdir,
@@ -212,8 +228,20 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	s.Log("Done fuzzing, exiting.")
 }
 
-func fetchFuzzArtifacts(ctx context.Context, d *dut.DUT, artifactsDir string) error {
-	if err := os.MkdirAll(filepath.Join(artifactsDir, "bin/linux_amd64"), 0755); err != nil {
+func findSyzkallerArch(ctx context.Context, d *dut.DUT) (string, error) {
+	board, err := reporters.New(d).Board(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "unable to find board")
+	}
+	if _, ok := boardArchMapping[board]; !ok {
+		return "", errors.Wrap(err, "unexpected board")
+	}
+	return boardArchMapping[board], nil
+}
+
+func fetchFuzzArtifacts(ctx context.Context, d *dut.DUT, artifactsDir, syzArch string) error {
+	binDir := fmt.Sprintf("bin/linux_%v", syzArch)
+	if err := os.MkdirAll(filepath.Join(artifactsDir, binDir), 0755); err != nil {
 		return err
 	}
 
@@ -225,7 +253,7 @@ func fetchFuzzArtifacts(ctx context.Context, d *dut.DUT, artifactsDir string) er
 	// syz-manager expects (syz-executor,syz-fuzzer,syz-execprog) to be at <artifactsDir>/linux_<arch>/syz-*.
 	artifacts := []string{"syz-fuzzer", "syz-executor", "syz-execprog"}
 	for _, artifact := range artifacts {
-		if err := linuxssh.GetFile(ctx, d.Conn(), filepath.Join("/usr/local/bin", artifact), filepath.Join(artifactsDir, "bin/linux_amd64", artifact)); err != nil {
+		if err := linuxssh.GetFile(ctx, d.Conn(), filepath.Join("/usr/local/bin", artifact), filepath.Join(artifactsDir, binDir, artifact)); err != nil {
 			return err
 		}
 	}
