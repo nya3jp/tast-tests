@@ -233,6 +233,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f51972c_787df9fc",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-05T08:15:40Z",
+      "side": 1,
+      "message": "\u003e We need more discussion for this, Shuhei. If two configuration fields match each other exactly, isn\u0027t it safe to assume they can be re-used? Do you have a use case in mind that we cannot reuse the field?\n\nAs you see in the current code, DeferLogin is a concrete counterexample.\n\nI guess that the difference of our approaches is: you think that it\u0027s *generally safe* to reuse session as long as config values match, *with some exceptions* like DeferLogin; I think that it\u0027s *generally unsafe* to reuse sessions just by config value comparison, as exceptions like DeferLogin indicates.\n\nThe two approaches make difference when adding a new config/option. When someone adds a config/option that makes Chrome session unreusable, the former optimistic approach goes wrong, while the latter pessimistic approach preserves correctness.\n\n\n\u003e I realized you want to \"always refuse to reuse when it is set, no matter it is same or not\". So do you propose to change the Config struct to have a flag for each field to indicate if it is being used or not? (because by default we have no idea if a field is set or not just by checking its value). IMHO this approach will make it unnecessarily complicated.\n\nI haven\u0027t suggested any particular approach, but I can suggest a possible one.\n\nWe can make the reuse_match struct tag mandatory, not optional. We write a unit test that checks that all fields in Config have the struct tag, and its value is one of the three allowed values, \"false\", \"true\" or \"customized\". Then when adding a new option/config, an author is forced to think what is an appropriate value for the field.",
+      "parentUuid": "93169ac5_5c26fd30",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 49
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6583b47f_c9a0b97f",
         "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
         "patchSetId": 6
@@ -268,6 +292,30 @@
       "side": 1,
       "message": "Changed the typo. Actually I changed the value to be \"customized\" to be more clear. I cannot do unit test for the typo because I cannot change the Config definition with a new definition with a wrong tag in the unit test. Any typo of the tag value will go through the exact match logic and the developer of the new field should find the issue from its own test.",
       "parentUuid": "6583b47f_c9a0b97f",
+      "range": {
+        "startLine": 72,
+        "startChar": 53,
+        "endLine": 72,
+        "endChar": 60
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d32193a_6fac91a5",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-05T08:15:40Z",
+      "side": 1,
+      "message": "A unit test that fails on tag typo is enough; we don\u0027t need to auto-fix issues.\n\nIn general, it\u0027s better if we can catch issues earlier. Typically the order of preference is:\n\n1. Build-time checks (e.g. type checks)\n2. Non-build-time static checks (e.g. lint checks)\n3. Test-time checks (e.g. unit tests)\n4. Run-time checks (e.g. error checks in actual code)\n\n(The order of 2 and 3 is controversial as lint checks can be bypassed)\n\nI suggested 3 because it seemed difficult in 1 or 2. But if you can, please go ahead with them.\n\nPlease add a check to catch typos. Currently we don\u0027t have checks in any of the four, it\u0027s fragile.",
+      "parentUuid": "676ddd27_7defe46a",
       "range": {
         "startLine": 72,
         "startChar": 53,
