@@ -83,6 +83,7 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 	const (
 		allowDes               = "Allow"
 		allowText              = "ALLOW"
+		cancelID               = "com.google.android.gms:id/cancel"
 		dismissButtonText      = "Dismiss"
 		loginPageClassName     = "android.view.ViewGroup"
 		loginPageDes           = "•"
@@ -104,6 +105,14 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 		s.Log("checkForloginButtonPage in web view does exist")
 		return
 	}
+	// Click on cancel button to sign in with google.
+	clickOnCancelButton := d.Object(ui.ID(cancelID))
+	if err := clickOnCancelButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("clickOnCancelButton doesn't exist: ", err)
+	} else if err := clickOnCancelButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnCancelButton: ", err)
+	}
+
 	// Enter email address.
 	FacebookEmailID := s.RequiredVar("arcappcompat.Facebook.emailid")
 	enterEmailAddress := d.Object(ui.ClassName(textClassName), ui.Description(userNameDes))
