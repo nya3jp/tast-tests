@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62557f69_16132eef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T20:28:16Z",
+      "side": 1,
+      "message": "I apologize, I couldn\u0027t understand this comment.\nDo you mean:\nchange the log message to \"Failed to check connection to DUT at the beginning\" ?\n\nI would propose this:\n\"Failed to connect to DUT at the beginning\"?\nsince\n- we *did* do the check, just that it came back with an error",
+      "parentUuid": "287221cc_6c9c3b74",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "961dba6b_277e934f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
         "patchSetId": 3
@@ -123,6 +147,30 @@
       "writtenOn": "2021-02-05T20:19:19Z",
       "side": 1,
       "message": "If the following step does not take too long, no need to log here.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6786d5_6d65a466",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T20:28:16Z",
+      "side": 1,
+      "message": "Unfortunately it does (few seconds)",
+      "parentUuid": "f54659c1_3e626665",
       "range": {
         "startLine": 69,
         "startChar": 1,
