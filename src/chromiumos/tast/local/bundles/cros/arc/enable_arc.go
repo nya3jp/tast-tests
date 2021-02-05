@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -115,57 +115,19 @@ func turnOnPlayStore(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to Open Apps Settings Page")
 	}
 
-	// Find the "Turn on" button and click.
-	playStoreParams := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "Google Play Store",
+	ui := uiauto.New(tconn)
+	playStoreButton := nodewith.Name("Google Play Store").Role(role.Button)
+	if err := uiauto.Run(ctx,
+		ui.LeftClickUntil(nodewith.Name("Apps").Role(role.Heading), ui.Exists(playStoreButton)),
+		ui.FocusAndWait(playStoreButton),
+		ui.LeftClick(playStoreButton),
+		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
+	); err != nil {
+		return errors.Wrap(err, "failed to enable playstore on")
 	}
 
-	turnOnArc, err := ui.FindWithTimeout(ctx, tconn, playStoreParams, 30*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find Turn On")
-	}
-	defer turnOnArc.Release(ctx)
-
-	if err := turnOnArc.FocusAndWait(ctx, 30*time.Second); err != nil {
-		return errors.Wrap(err, "failed to call focus() on Turn on")
-	}
-
-	if err := turnOnArc.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Turn On")
-	}
-
-	// Find the "More" button and click.
-	moreParams := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "More",
-	}
-	more, err := ui.FindWithTimeout(ctx, tconn, moreParams, 30*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find More button")
-	}
-	defer more.Release(ctx)
-
-	if err := more.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click More button")
-	}
-
-	// Find the "Accept" button and click.
-	acceptParams := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "Accept",
-	}
-	accept, err := ui.FindWithTimeout(ctx, tconn, acceptParams, 30*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find Accept button")
-	}
-	defer accept.Release(ctx)
-
-	if err := accept.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to Click Accept button")
-	}
-
-	if err = optin.WaitForPlayStoreReady(ctx, tconn); err != nil {
+	if err := optin.WaitForPlayStoreReady(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to wait for Play Store to be ready")
 	}
 
