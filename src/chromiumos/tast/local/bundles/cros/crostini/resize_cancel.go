@@ -9,8 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/vm"
@@ -120,29 +119,12 @@ func ResizeCancel(ctx context.Context, s *testing.State) {
 	}
 
 	// Click Resize on Linux settings page.
-	resizeDlg, err := st.ClickChange(ctx)
-	if err != nil {
-		s.Fatal("Failed to click button Change on Linux settings page: ", err)
-	}
-
-	// Get the dialog node and params.
-	dialog, err := uig.GetNode(ctx, tconn, resizeDlg.Self)
-	if err != nil {
-		s.Fatal("Failed to get the node of the Resize Linux disk dialog")
-	}
-	dialogParams := ui.FindParams{
-		Role: dialog.Role,
-		Name: dialog.Name,
-	}
-
-	// Click cancel on the resize dialog.
-	if err := uig.Do(ctx, tconn, uig.WaitForLocationChangeCompleted(), resizeDlg.Cancel.LeftClick()); err != nil {
-		s.Fatal("Failed to click button Cancel on Resize Linux disk dialog: ", err)
-	}
-
-	// Wait the resize dialog gone.
-	if err := ui.WaitUntilGone(ctx, tconn, dialogParams, 15*time.Second); err != nil {
-		s.Fatal("Failed to close the Resize Linux disk dialog: ", err)
+	ui := uiauto.New(tconn)
+	if err := uiauto.Run(ctx,
+		st.ClickChange(),
+		ui.LeftClick(settings.ResizeDiskDialog.Cancel),
+		ui.WaitUntilGone(settings.ResizeDiskDialog.Self)); err != nil {
+		s.Fatal("Failed to cancel resize: ", err)
 	}
 
 	newDSOnSettings, err := st.GetDiskSize(ctx)

@@ -457,14 +457,16 @@ func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
 		})()
 	`, q)
 
-		if err := ac.tconn.Eval(ctx, query, nil); err != nil {
-			return errors.Wrap(err, "failed to call focus() on the node")
-		}
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := ac.tconn.Eval(ctx, query, nil); err != nil {
+				return errors.Wrap(err, "failed to call focus() on the node")
+			}
 
-		if _, err := ew.WaitForEvent(ctx, ac.pollOpts.Timeout); err != nil {
-			return errors.Wrap(err, "failed to wait for the focus event on the specified node")
-		}
-		return nil
+			if _, err := ew.WaitForEvent(ctx, ac.pollOpts.Timeout); err != nil {
+				return errors.Wrap(err, "failed to wait for the focus event on the specified node")
+			}
+			return nil
+		}, &ac.pollOpts)
 	}
 }
 
