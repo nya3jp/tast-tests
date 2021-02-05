@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8a2b07f_b68e772e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-05T18:01:36Z",
+      "side": 1,
+      "message": "Oops, sorry about that, the upload failed. PTAL for real.",
+      "parentUuid": "1208d0d5_af293ed2",
+      "revId": "38a4aec7414e1ae1a77b56a3605a3c4d5399cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c74b415c_52e77307",
