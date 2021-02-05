@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "702e186d_1fc50ee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-05T02:12:15Z",
+      "side": 1,
+      "message": "I would put all of necessary parameters to the params so that we don\u0027t have if block here.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "e7fac7d2db0a4c0d2875083b801afc6825d0760d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
