@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd79b3b0_2a2d0dde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "Please get review from your team member too.",
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87cff5ca_6d676ec8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "Please also add your team email address here too.",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287221cc_6c9c3b74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "Failed to check connection to DUT at the beginning",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961dba6b_277e934f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "if err :\u003d ...; err !\u003d nil {}",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 1
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8abc1e47_f00771da",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "Failed to check TBT ...",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 14
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f54659c1_3e626665",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "If the following step does not take too long, no need to log here.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6234010a_a724e1d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 6
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47649fcb_f685fdbb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 6
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f549f2bd_9ee513aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "Failed to ...",
+      "range": {
+        "startLine": 82,
+        "startChar": 11,
+        "endLine": 82,
+        "endChar": 19
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8decbe40_d4a62f63",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 85,
+        "endChar": 6
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3dd462c_90676478",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "if err :\u003d ...; err !\u003d nil {}",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb18ed80_346fe25f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "nit: maybe expected?",
+      "range": {
+        "startLine": 99,
+        "startChar": 53,
+        "endLine": 99,
+        "endChar": 61
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9d564c7_86c16f16",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-05T20:19:19Z",
+      "side": 1,
+      "message": "what about:\nif presence \u0026\u0026 ! found {\n    return errors.New(\"failed to find any TBT device\")\n} else  if !presence \u0026\u0026 found {\n    return errors.New(\"failed to verify the absence of TBT device, unexpectedly found\")\n}\nreturn nil",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 12
+      },
+      "revId": "0e69873d7cd01c4c0c3a4bfe898622a21b10dfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
