@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -113,6 +114,28 @@ func DisableArc(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
 		s.Fatal("Failed to close Play Store: ", err)
 	}
+
+	// Setup screen recording and saving on error.
+	// TODO(b/178232263): remove this once the test is fixed.
+	s.Log("Starting screen recording")
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to create ScreenRecorder: ", err)
+	}
+	defer func() {
+		screenRecorder.Stop(ctx)
+		if s.HasError() {
+			s.Log(ctx, "Saving screen record to %s", s.OutDir())
+			if err := screenRecorder.SaveInString(ctx, filepath.Join(s.OutDir(), "screen_record.txt")); err != nil {
+				s.Fatal("Failed to save screen record in string: ", err)
+			}
+			if err := screenRecorder.SaveInBytes(ctx, filepath.Join(s.OutDir(), "screen_record.webm")); err != nil {
+				s.Fatal("Failed to save screen record in bytes: ", err)
+			}
+		}
+		screenRecorder.Release(ctx)
+	}()
+	screenRecorder.Start(ctx, tconn)
 
 	s.Log("Turn Play Store Off from Settings")
 	if err := turnOffPlayStore(ctx, tconn); err != nil {
