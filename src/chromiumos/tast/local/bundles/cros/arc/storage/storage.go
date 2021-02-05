@@ -148,26 +148,16 @@ func waitForFileType(ctx context.Context, files *filesapp.FilesApp) error {
 	defer keyboard.Close()
 
 	// Press 'Space' to open/close the QuickView and check the file type. Repeat this
-	// until 'text/plain' is shown.
-	const pollTimeout = 30 * time.Second
-	if err := testing.Poll(ctx, func(ctx context.Context) (e error) {
-		// Open QuickView.
-		if err := keyboard.Accel(ctx, "Space"); err != nil {
-			return errors.Wrap(err, "failed to press Space")
-		}
-		defer func() {
-			// Close QuickView.
-			if err := keyboard.Accel(ctx, "Space"); err != nil {
-				e = errors.Wrap(err, "failed to press Space")
-			}
-		}()
-
-		if err := files.WaitUntilExists(nodewith.Name("text/plain").Role(role.StaticText))(ctx); err != nil {
-			return errors.Wrap(err, "file type was not found")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: pollTimeout}); err != nil {
-		return errors.Wrapf(err, "timeout after %s", pollTimeout)
+	// until 'text/plain' is shown. Retries up to 6 times (~ 30 seconds).
+	times := 6
+	if err := uiauto.Retry(times,
+		uiauto.Combine("Checking file type",
+			keyboard.AccelAction("Space"),
+			files.WithTimeout(5*time.Second).WaitUntilExists(nodewith.Name("text/plain").Role(role.StaticText)),
+			keyboard.AccelAction("Space"),
+		),
+	)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to wait for file type after %d retries", times)
 	}
 	return nil
 }
