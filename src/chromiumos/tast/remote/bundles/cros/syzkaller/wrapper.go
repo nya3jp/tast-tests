@@ -31,6 +31,7 @@ mount -o remount,rw -o exec /tmp
 sysctl -w kernel.panic_on_warn=1
 dmesg --clear
 ln -s /dev/dri/card0 /dev/i915
+if [ -f /dev/mali0 ]; then ln -s /dev/mali0 /dev/bifrost; fi
 `
 
 // dutConfig represents information related to the DUT configuration;
