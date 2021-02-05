@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb2acb9_b58c45b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-02-05T21:34:39Z",
+      "side": 1,
+      "message": "nit: ChromeVox (spoken feedback)",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6081ba87_d2ee5ed7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-02-05T21:34:39Z",
+      "side": 1,
+      "message": "commentary: it\u0027ll be useful to think about this not tied to Google tts but for any extension-based engine.",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e246e075_4ca93071",
@@ -14,6 +48,74 @@
       "writtenOn": "2021-02-05T20:32:51Z",
       "side": 1,
       "message": "Thank you for your help reviewing this, I greatly appreciate it.\n\nDavid, would you mind taking a quick pass just in case we missed anything? Thanks!",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adef574d_39ea86e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-02-05T21:34:39Z",
+      "side": 1,
+      "message": "lgtm; some comments; nothing blocking.",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fed3aaef_90d7e2e7",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-02-05T21:34:39Z",
+      "side": 1,
+      "message": "This is somewhat concerning. You are likely seeing multiple background pages from different profiles. Only one extension background page really gets dispatched tts engine messages though, so this could very well lead to weird and unexplainable failures.\n\nI\u0027m fine with this for now I guess but it could cause problems....",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee631069_bb52eb5a",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-02-05T21:34:39Z",
+      "side": 1,
+      "message": "Are you sure an empty array shift causes an error? Would be nice to print the error if it doesn\u0027t already from the tts engine.",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097a0816_50d59b98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-02-05T21:34:39Z",
+      "side": 1,
+      "message": "It would be nice to have these match against a pattern/regexp to make them less brittle.",
       "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
