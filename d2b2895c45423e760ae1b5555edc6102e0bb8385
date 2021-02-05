@@ -208,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8aa6ed53_9c58891a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-05T03:17:58Z",
+      "side": 1,
+      "message": "takeScreenshotAndCountPixels sounds like that only does take screenshot and count. From the function name, it\u0027s surprising to me that it also verifying the picel count in the screenshot.\n\nI don\u0027t think current function names match with its purpose and just wanted to make the func name clear. IMO, \"take\" or \"count\" sounds like it returns some result of doing these actions, but actually what it does is verifying the scaling by using the results of these actions.",
+      "parentUuid": "e3ba9a0e_9609b866",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 21
+      },
+      "revId": "d2b2895c45423e760ae1b5555edc6102e0bb8385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "289b9511_b39bc6d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
         "patchSetId": 12
