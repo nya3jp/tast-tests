@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5525ad9_5b78614b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-05T00:07:59Z",
+      "side": 1,
+      "message": "Actually nevermind, I misread the path. I thought this was chrome/ui/terminalapp.\nSince this is crostini specific please feel free to leave it here.",
+      "parentUuid": "bc0fba62_a5562f66",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "32b4fe60ca82e93a8eb0b2c18009f136e3b1b663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "469948ef_a848fe26",
