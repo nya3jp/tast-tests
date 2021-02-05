@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd3b685f_e5c97b46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-05T04:56:46Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "971d1205e990eba79b2022a616a8dea547d533d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3663bce_d25d037c",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "I think we don\u0027t need a separate context here. Actually the operations performed by Stop don\u0027t require a context, however cmd.Wait can block indefinitely so I run Wait in a separate goroutine and use the context just to respect timeouts.\n\nWhen |ctx| timeouts the subprocesses gets killed automatically [1], and Stop should either\n- return failure at cmd.Signal if the process is already killed\n- launch cmd.Wait in a separate goroutine and return immediately due to timeout\nwhich are both fine.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go;rcl\u003d15445026be437e24b76710892a06d8c511f27c1a;l\u003d202",
       "parentUuid": "f3663bce_d25d037c",
+      "range": {
+        "startLine": 38,
+        "startChar": 14,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "971d1205e990eba79b2022a616a8dea547d533d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe3cce7_75cd2ae0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/kmsvnc_connect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-05T04:56:46Z",
+      "side": 1,
+      "message": "Ack. Thanks for the clarification 😊",
+      "parentUuid": "a8d44ceb_0a03d0f9",
       "range": {
         "startLine": 38,
         "startChar": 14,
