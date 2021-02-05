@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ec6780e5_0b65d475",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-05T17:13:57Z",
+      "side": 1,
+      "message": "lgtm++",
+      "revId": "75a517eee74a39f388dd30070282a833d41f977a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "45563a75_583ef402",
         "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
         "patchSetId": 2
@@ -31,6 +48,30 @@
       "writtenOn": "2021-02-04T09:42:47Z",
       "side": 1,
       "message": "I overlooked this was intended to be stringified json object, not just a string literal...",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "75a517eee74a39f388dd30070282a833d41f977a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be2cccb4_c4b06f1d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-05T17:13:57Z",
+      "side": 1,
+      "message": "Wow I\u0027ve forgotten about this.  Thanks for catching.",
+      "parentUuid": "45563a75_583ef402",
       "range": {
         "startLine": 67,
         "startChar": 5,
