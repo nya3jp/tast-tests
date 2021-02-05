@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d34aafe_d885ceb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-05T23:23:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d28f198_a95e6458",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 5
+      },
+      "revId": "87f2fb3b04e61cb0078bb1f31c5d73c79801abb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a99efbfa_5c0fc737",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-05T17:33:43Z",
       "side": 1,
       "message": "Why is this needed? ossettings is launched at the apps page.",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 90
+      },
+      "revId": "87f2fb3b04e61cb0078bb1f31c5d73c79801abb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d50e9476_5d5ba076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/enable_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-05T23:23:59Z",
+      "side": 1,
+      "message": "Missed removing when merging conflicts.",
+      "parentUuid": "a99efbfa_5c0fc737",
       "range": {
         "startLine": 121,
         "startChar": 2,
