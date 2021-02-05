@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "090c76c9_4ea4d640",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-05T03:32:51Z",
+      "side": 1,
+      "message": "nit: Call",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "4374fd13065c5608bc90e86dc9d38b30fe5b56da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2dd64ffe_993eada2",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-02-04T04:08:12Z",
       "side": 1,
       "message": "PTAL.\nFailure looks falkiness independent from this CL.",
+      "revId": "4374fd13065c5608bc90e86dc9d38b30fe5b56da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb8c94c_e3b91c0a",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-05T03:32:51Z",
+      "side": 1,
+      "message": "Thanks for adding this informative comment.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 27
+      },
       "revId": "4374fd13065c5608bc90e86dc9d38b30fe5b56da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
