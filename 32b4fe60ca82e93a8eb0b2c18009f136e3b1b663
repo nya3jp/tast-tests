@@ -26,6 +26,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc0fba62_a5562f66",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-05T00:04:40Z",
+      "side": 1,
+      "message": "If you do this, please make clear in the comments that it is the Crostini terminal app",
+      "parentUuid": "7c336ffc_ec7f9879",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "32b4fe60ca82e93a8eb0b2c18009f136e3b1b663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "469948ef_a848fe26",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-05T00:04:40Z",
+      "side": 1,
+      "message": "I know it was in the old code, but this is a _long_ timeout.  Do you think we should allow specifying the timeout, and default to something shorter?",
+      "range": {
+        "startLine": 81,
+        "startChar": 41,
+        "endLine": 81,
+        "endChar": 56
+      },
+      "revId": "32b4fe60ca82e93a8eb0b2c18009f136e3b1b663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "099f0e52_a0c167fc",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
         "patchSetId": 2
@@ -42,6 +89,29 @@
         "startChar": 94,
         "endLine": 85,
         "endChar": 99
+      },
+      "revId": "32b4fe60ca82e93a8eb0b2c18009f136e3b1b663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca52ca5_92cfc74d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-05T00:04:40Z",
+      "side": 1,
+      "message": "You can use TypeAction/etc from Brendans other cl once it is merged",
+      "range": {
+        "startLine": 177,
+        "startChar": 20,
+        "endLine": 177,
+        "endChar": 24
       },
       "revId": "32b4fe60ca82e93a8eb0b2c18009f136e3b1b663",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
