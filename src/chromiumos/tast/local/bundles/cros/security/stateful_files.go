@@ -158,6 +158,12 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 			chk.NewPattern(chk.Path("encrypted/var/lib/tpm_manager/local_tpm_data"), chk.Users("root"), chk.Groups("root"), chk.NotMode(077)))
 	}
 
+	if _, err := user.Lookup("tpm2-simulator"); err == nil {
+		prependPatterns(
+			chk.NewPattern(chk.Path("unencrypted/tpm2-simulator"), chk.Users("tpm2-simulator"), chk.Groups("tpm2-simulator"), chk.NotMode(022)),
+			chk.NewPattern(chk.Path("unencrypted/tpm2-simulator/NVChip"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)))
+	}
+
 	if _, err := user.Lookup("trunks"); err == nil {
 		prependPatterns(
 			chk.NewPattern(chk.Path("encrypted/var/lib/trunks"), chk.Users("trunks"), chk.Groups("trunks"), chk.NotMode(022)))
