@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9dcbef3b_1bb4d99c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/guest_mode_extension.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-05T05:32:09Z",
+      "side": 1,
+      "message": "Interestingly when I introduce a precondition or fixture. I end up with the error message:\n```\nFailed to close Chrome connection: browser process 2074 exited; Chrome probably crashed: open /proc/2074: no such file or directory\n```\nI don\u0027t see this when I simply run chrome.New() and defer the close. The uprev still hasn\u0027t happened to I\u0027m going to investigate why that\u0027s the case.\n\nAny ideas?",
+      "parentUuid": "ee512320_c0317d2a",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 48
+      },
+      "revId": "5c484b43b47afb9d36b211147a9221ae9b938b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1620d4fc_6fbe9155",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/guest_mode_extension.go",
         "patchSetId": 9
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-03T16:27:59Z",
       "side": 1,
       "message": "nit/style:\n\nif _, err :\u003d cr.TestAPIConn(ctx); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "5c484b43b47afb9d36b211147a9221ae9b938b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f7b7be_49eedf58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/guest_mode_extension.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-05T05:32:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1620d4fc_6fbe9155",
       "range": {
         "startLine": 32,
         "startChar": 1,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5010ef_26f1a9cf",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-05T05:32:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e90bd29a_ebcd6d92",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "5c484b43b47afb9d36b211147a9221ae9b938b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c70a5cfe_ddc00c4a",
@@ -117,6 +189,24 @@
       "writtenOn": "2021-02-03T16:27:59Z",
       "side": 1,
       "message": "Could you update the document, too?",
+      "revId": "5c484b43b47afb9d36b211147a9221ae9b938b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "823bc4c8_3517f474",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-05T05:32:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c70a5cfe_ddc00c4a",
       "revId": "5c484b43b47afb9d36b211147a9221ae9b938b6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
