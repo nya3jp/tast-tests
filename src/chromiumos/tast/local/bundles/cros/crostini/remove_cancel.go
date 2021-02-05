@@ -9,7 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
@@ -113,14 +114,10 @@ func RemoveCancel(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click button Remove on Linux settings page: ", err)
 	}
 
+	ui := uiauto.New(tconn)
 	// Click cancel on the confirm dialog.
-	if err := uig.Do(ctx, tconn, uig.WaitForLocationChangeCompleted(), removeDlg.Cancel.LeftClick()); err != nil {
+	if err := uiauto.Run(ctx, ui.LeftClick(removeDlg.Cancel), ui.WaitUntilExists(nodewith.NameStartingWith(settings.PageNameLinux).First())); err != nil {
 		s.Fatal("Failed to click button Cancel on remove Linux dialog: ", err)
-	}
-
-	// After cancel remove, settings should stay at Linux.
-	if _, err := settings.FindSettingsPage(ctx, tconn, settings.PageNameLinux); err != nil {
-		s.Fatal("Failed to find Linux settings page after clicking button Cancel on remove Linux dialog: ", err)
 	}
 
 	// Launch Terminal to verify that Crostini still works.

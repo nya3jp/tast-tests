@@ -9,6 +9,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"reflect"
 	"regexp"
 
 	"chromiumos/tast/errors"
@@ -536,4 +537,72 @@ func Visited() *Finder {
 // Visited creates a copy of the input Finder with Visited set to true.
 func (f *Finder) Visited() *Finder {
 	return f.State(state.Visited, true)
+}
+
+// PageObject creates a Finder for each field from the tags in the structure.
+// For example, a struct of a dialog page with msg, cancel and ok button could be defined as:
+//
+// 		type Dialog struct {
+// 			Self   *nodewith.Finder `name:"name" role:"dialog"`
+// 			Msg    *nodewith.Finder `name:"msg" role:"staticText"`
+// 			OK     *nodewith.Finder `name:"OK" role:"button"`
+// 			Cancel *nodewith.Finder `name:"Cancel" role:"button"`
+// 		}
+//
+// Where Self is the dialog itself and the rest are the content on the page.
+// To create a variable of the dialog page, do this:
+//
+// 		dialog := &Dialog{}
+// 		uiauto.PageObject(dialog)
+//
+// After this, the variable dialog is like this:
+//
+// 		{
+// 			Self   = nodewith.Finder{Name: "name", Role: "dialog"}
+// 			Msg    = nodewith.Finder{Name: "msg", Role: "staticText"}
+// 			OK     = nodewith.Finder{Name: "OK", Role: "button"}
+// 			Cancel = nodewith.Finder{Name: "Cancel", Role: "button"}
+// 		}
+//
+// Then the following code will find/click the item on the dialog:
+//		uiauto.Run(ctx, uiauto.New(tconn).WaitUntilExists(dialog.self))
+//      uiauto.Run(ctx, uiauto.New(tconn).LeftClick(OK))
+func PageObject(pg interface{}) {
+	v := reflect.ValueOf(pg).Elem()
+	for i := 0; i < v.NumField(); i++ {
+		fieldStruct := v.Type().Field(i)
+		fieldValue := v.FieldByName(fieldStruct.Name)
+		if fieldValue.IsValid() && fieldValue.CanSet() && fieldStruct.Type == reflect.TypeOf(&Finder{}) {
+			finder := newFinder()
+			hasParams := false
+
+			// Find tag name.
+			if name, ok := fieldStruct.Tag.Lookup("name"); ok && name != "" {
+				finder = finder.Name(name)
+				hasParams = true
+			} else if nameRegex, ok := fieldStruct.Tag.Lookup("nameRegex"); ok && nameRegex != "" {
+				finder = finder.NameRegex(regexp.MustCompile(nameRegex))
+				hasParams = true
+			}
+
+			// Find tag role.
+			if r, ok := fieldStruct.Tag.Lookup("role"); ok && r != "" {
+				finder = finder.Role(role.Role(r))
+				hasParams = true
+			}
+
+			// Find tag className.
+			if cName, ok := fieldStruct.Tag.Lookup("className"); ok && cName != "" {
+				finder = finder.ClassName(cName)
+				hasParams = true
+			}
+
+			// TODO(jinrongwu): handle Attributes and State when necessary
+
+			// Set the field value.
+			if hasParams {
+				fieldValue.Set(reflect.ValueOf(finder))
+			}
+		}
+	}
 }
