@@ -117,4 +117,10 @@ func cleanup(ctx context.Context, s *testing.State) {
 	if err := d.GetFile(ctx, "/var/log/upstart.log", filepath.Join(s.OutDir(), "upstart.log")); err != nil {
 		s.Error("Dump upstart.log fail: ", err)
 	}
+
+	// Because this tast may clobber the stateful partition without clearing TPM.
+	// Resetting the TPM to ensure the TPM become expected state.
+	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
+		s.Fatal("Failed to ensure resetting TPM: ", err)
+	}
 }
