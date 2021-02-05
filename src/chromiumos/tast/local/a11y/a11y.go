@@ -8,6 +8,7 @@ package a11y
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -17,9 +18,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// List of extension IDs and URLs.
 const (
 	chromeVoxExtensionURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/chromevox/background/background.html"
-	googleTTSExtensionID  = "gjjabgpgjpampikjhjpfhneeoapjbjaf"
+	ESpeakExtensionID     = "dakbfdmgjiabojdgbiljlhgjbokobjpg"
+	GoogleTTSExtensionID  = "gjjabgpgjpampikjhjpfhneeoapjbjaf"
 )
 
 // Feature represents an accessibility feature in Chrome OS.
@@ -132,25 +135,38 @@ func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.T
 	return nil
 }
 
-// SpeechMonitor represents a connection to the Google TTS extension background
+// SetVoice sets ChromeVox's voice, which is specified by using an extension ID
+// and a locale.
+func (cv *ChromeVoxConn) SetVoice(ctx context.Context, extID, locale string) error {
+	expr := fmt.Sprintf(`tast.promisify(chrome.tts.getVoices)().then((voices) => {
+    for (voice of voices) {
+        if (voice.extensionId === '%s' && voice.lang === '%s') {
+          chrome.storage.local.set({'voiceName': voice.voiceName});
+        }
+    }
+  });`, extID, locale)
+	return cv.Eval(ctx, expr, nil)
+}
+
+// SpeechMonitor represents a connection to a TTS extension background
 // page and is used to verify spoken utterances.
 type SpeechMonitor struct {
 	conn *chrome.Conn
 }
 
-// NewSpeechMonitor connects to the Google TTS extension and starts accumulating
-// utterances. Call Consume to compare expected and actual utterances.
-// If the extension is not ready, the connection will be closed before returning.
-// Otherwise the calling function will close the connection.
-func NewSpeechMonitor(ctx context.Context, c *chrome.Chrome) (sm *SpeechMonitor, retErr error) {
-	bgURL := chrome.ExtensionBackgroundPageURL(googleTTSExtensionID)
+// NewSpeechMonitor connects to either the Google TTS or eSpeak extension and
+// starts accumulating utterances. Call Consume to compare expected and actual
+// utterances. If the extension is not ready, the connection will be closed
+// before returning. Otherwise the calling function will close the connection.
+func NewSpeechMonitor(ctx context.Context, c *chrome.Chrome, extID string) (sm *SpeechMonitor, retErr error) {
+	bgURL := chrome.ExtensionBackgroundPageURL(extID)
 	targets, err := c.FindTargets(ctx, chrome.MatchTargetURL(bgURL))
 	if err != nil {
 		return nil, err
 	}
 	if len(targets) > 1 {
 		for _, t := range targets[1:] {
-			// Close all but one instance of the Google TTS engine background page.
+			// Close all but one instance of the matching background page.
 			// We must do this because because trying to connect when there are multiple
 			// instances triggers the following error:
 			// Error: X targets matched while unique match was expected.
@@ -164,7 +180,7 @@ func NewSpeechMonitor(ctx context.Context, c *chrome.Chrome) (sm *SpeechMonitor,
 		extConn, err = c.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return nil, errors.Wrap(err, "failed to create a connection to the Google TTS background page")
+		return nil, errors.Wrap(err, "failed to create a connection to the TTS background page")
 	}
 
 	defer func() {
@@ -174,7 +190,7 @@ func NewSpeechMonitor(ctx context.Context, c *chrome.Chrome) (sm *SpeechMonitor,
 	}()
 
 	if err := extConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
-		return nil, errors.Wrap(err, "timed out waiting for the Google TTS engine background page to load")
+		return nil, errors.Wrap(err, "timed out waiting for the TTS engine background page to load")
 	}
 
 	if err := extConn.Eval(ctx, `
@@ -189,7 +205,7 @@ func NewSpeechMonitor(ctx context.Context, c *chrome.Chrome) (sm *SpeechMonitor,
 	return &SpeechMonitor{extConn}, nil
 }
 
-// Close closes the connection to the Google TTS extension's background page.
+// Close closes the connection to the TTS extension's background page.
 func (sm *SpeechMonitor) Close() {
 	sm.conn.Close()
 }
