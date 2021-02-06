@@ -6,8 +6,12 @@ package dbusutil
 
 import (
 	"context"
+	"time"
 
 	"github.com/godbus/dbus"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // PropertyHolder provides methods to access properties of a DBus object.
@@ -39,4 +43,25 @@ func (h *PropertyHolder) GetShillProperties(ctx context.Context) (*Properties, e
 // SetProperty calls SetProperty on the interface to set property to the given value.
 func (h *PropertyHolder) SetProperty(ctx context.Context, prop string, value interface{}) error {
 	return h.Call(ctx, "SetProperty", prop, value).Err
+}
+
+// WaitForShillProperty polls for the specified Shill property state to match |expected|
+func (h *PropertyHolder) WaitForShillProperty(ctx context.Context, property string, expected interface{}, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		deviceProperties, err := h.GetShillProperties(ctx)
+		if err != nil {
+			return err
+		}
+		value, err := deviceProperties.Get(property)
+		if err != nil {
+			return err
+		}
+		if value != expected {
+			return errors.Errorf("unexpected property state for %q, got %v, expected %v", property, value, expected)
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  timeout,
+		Interval: 100 * time.Millisecond,
+	})
 }
