@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a750de4c_fe073ce5",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-06T07:16:35Z",
+      "side": 1,
+      "message": "The function is nice! Thanks for composing this.",
+      "revId": "300e6e9c61afe06b516d4fb73474fb4e16593f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dabb942c_dc096d47",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-06T07:16:35Z",
+      "side": 1,
+      "message": "Don\u0027t capitalize on error message (but it should be capitalized on s.Log()).\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#log_error_fatal-vs_logf_errorf_fatalf",
+      "range": {
+        "startLine": 281,
+        "startChar": 33,
+        "endLine": 281,
+        "endChar": 34
+      },
+      "revId": "300e6e9c61afe06b516d4fb73474fb4e16593f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4288b37b_bf4ec34b",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-06T07:16:35Z",
+      "side": 1,
+      "message": "Don\u0027t need to append \":\" in message in errors.Wrap()",
+      "range": {
+        "startLine": 281,
+        "startChar": 73,
+        "endLine": 281,
+        "endChar": 75
+      },
+      "revId": "300e6e9c61afe06b516d4fb73474fb4e16593f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e492bf4_98252401",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-06T07:16:35Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 287,
+        "startChar": 65,
+        "endLine": 287,
+        "endChar": 67
+      },
+      "revId": "300e6e9c61afe06b516d4fb73474fb4e16593f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c04140b0_b0fee5dd",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-06T07:16:35Z",
+      "side": 1,
+      "message": "// Reserve interval seconds to wait for primary connection to complete.",
+      "range": {
+        "startLine": 303,
+        "startChar": 13,
+        "endLine": 303,
+        "endChar": 38
+      },
+      "revId": "300e6e9c61afe06b516d4fb73474fb4e16593f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232dd8aa_100a5f84",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-06T07:16:35Z",
+      "side": 1,
+      "message": "Poll for IsConnected()? In Tast we avoid using Sleep unless it is the last resort.",
+      "revId": "300e6e9c61afe06b516d4fb73474fb4e16593f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
