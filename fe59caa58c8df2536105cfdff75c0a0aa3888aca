@@ -257,6 +257,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5fec92c_ea8e8541",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-06T02:02:31Z",
+      "side": 1,
+      "message": "Hi Shuhei, thanks for your patience to explain it. My logic behind the implementation is, when a new field is added, the existing tests using the TryReuseSession can still work - because they are not using any new fields. The new field will always match with its default value and it should not break the existing testing. On the other hand, if a new test wants to use the new field along with TryReuseSession, in most cases, exact match would also be a right choice. And if it doesn\u0027t, the new test will fail to reuse and the developer can then customize the new field\u0027s comparison logic.\n\nAlso thanks for providing a solution requiring all developers to consider the reuse strategy when adding a new config field. I was thinking developers don\u0027t have to consider it in most cases with default exact match. Probably I\u0027m too optimistic here.\n\nCould you quickly check and let me know if my consideration makes sense. I will be happy to implement what you are suggesting to do if you still think pessimistic approach is desired. I respect the design principle of the team :-), and sorry for another round of discussion.",
+      "parentUuid": "9f51972c_787df9fc",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 49
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6583b47f_c9a0b97f",
         "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
         "patchSetId": 6
@@ -316,6 +340,30 @@
       "side": 1,
       "message": "A unit test that fails on tag typo is enough; we don\u0027t need to auto-fix issues.\n\nIn general, it\u0027s better if we can catch issues earlier. Typically the order of preference is:\n\n1. Build-time checks (e.g. type checks)\n2. Non-build-time static checks (e.g. lint checks)\n3. Test-time checks (e.g. unit tests)\n4. Run-time checks (e.g. error checks in actual code)\n\n(The order of 2 and 3 is controversial as lint checks can be bypassed)\n\nI suggested 3 because it seemed difficult in 1 or 2. But if you can, please go ahead with them.\n\nPlease add a check to catch typos. Currently we don\u0027t have checks in any of the four, it\u0027s fragile.",
       "parentUuid": "676ddd27_7defe46a",
+      "range": {
+        "startLine": 72,
+        "startChar": 53,
+        "endLine": 72,
+        "endChar": 60
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "861a3555_a56abf8e",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-06T02:02:31Z",
+      "side": 1,
+      "message": "Thanks again for your detailed reply and it\u0027s good to learn! I under your point and will use reflection in the unit test to check the given tags and report any typos.",
+      "parentUuid": "3d32193a_6fac91a5",
       "range": {
         "startLine": 72,
         "startChar": 53,
