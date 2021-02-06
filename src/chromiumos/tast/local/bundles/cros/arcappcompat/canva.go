@@ -82,6 +82,7 @@ func Canva(ctx context.Context, s *testing.State) {
 func launchAppForCanva(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		googleSignInText = "Continue with Google"
+		designText       = "What will you be using"
 		emailAddressID   = "com.google.android.gms:id/container"
 		homeIconText     = "Create a design"
 	)
@@ -95,6 +96,14 @@ func launchAppForCanva(ctx context.Context, s *testing.State, tconn *chrome.Test
 		d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0)
 	} else if err := googleSignInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on sign in button: ", err)
+	}
+
+	// Choose first recommend design by hitting enter key
+	designTextButton := d.Object(ui.TextContains(designText))
+	if err := designTextButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("designTextButton doesn't exist: ", err)
+	} else if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Fatal("Failed to press ENTER key: ", err)
 	}
 
 	// Click on email address.
