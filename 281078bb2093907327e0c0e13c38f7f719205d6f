@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0e1d4af_c03e8b43",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-06T00:05:42Z",
+      "side": 1,
+      "message": "Strictly speaking, I guess there\u0027s a chance that pm returns another packages, when their package names contain the query (e.g. \"com.example.com.google.vending\" for query \"com.google.vending\"). My suggestion of checking the output was to address such cases.\n\nApparently this is exceptional and would be extremely rare on Tast, so if we don\u0027t care about such exceptional cases, the checking code can be simplified significantly as you said. But either way it is worth mentioning as a comment for why this check is sufficient.",
+      "parentUuid": "86ccd100_cd7bf149",
+      "range": {
+        "startLine": 297,
+        "startChar": 16,
+        "endLine": 297,
+        "endChar": 28
+      },
+      "revId": "281078bb2093907327e0c0e13c38f7f719205d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a97fb609_e8c296d7",
         "filename": "src/chromiumos/tast/local/android/adb/device.go",
         "patchSetId": 7
