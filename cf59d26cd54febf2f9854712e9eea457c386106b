@@ -16,6 +16,98 @@
       "message": "Preferably someone else should give you a review for some of nearby stuff, but looks good to me from the tast side.",
       "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b89ce4a_e48ab19e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-06T22:27:14Z",
+      "side": 1,
+      "message": "Why you passing this twice?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcb6b7b0_b1a23777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-06T22:27:14Z",
+      "side": 1,
+      "message": "Does this get it at the point of failure or after everything is closed down?",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 68
+      },
+      "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41009209_d17c3c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-06T22:27:14Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 48
+      },
+      "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3279f578_f45bd9e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-06T22:27:14Z",
+      "side": 1,
+      "message": "Can you make this a var",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
