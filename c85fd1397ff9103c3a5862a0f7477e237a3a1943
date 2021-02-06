@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0dda204_42324711",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-06T02:39:00Z",
+      "side": 1,
+      "message": "Thanks for the comments!  Looks like I should have written a design doc -- let me write that and discuss there.  I\u0027ll keep this CL for the time being.",
+      "revId": "c85fd1397ff9103c3a5862a0f7477e237a3a1943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee9280b0_2c9b973d",
