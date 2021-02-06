@@ -66,27 +66,6 @@ func (h *Helper) waitForEnabled(ctx context.Context, expected bool) error {
 	})
 }
 
-// waitForPowered polls for the specified power state for cellular.
-func (h *Helper) waitForPowered(ctx context.Context, expected bool) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		deviceProperties, err := h.Device.GetShillProperties(ctx)
-		if err != nil {
-			return err
-		}
-		powered, err := deviceProperties.GetBool(shillconst.DevicePropertyPowered)
-		if err != nil {
-			return err
-		}
-		if powered != expected {
-			return errors.Errorf("unexpected powered state, got %t, expected %t", powered, expected)
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  3 * time.Second,
-		Interval: 100 * time.Millisecond,
-	})
-}
-
 // Enable calls Manager.EnableTechnology(cellular) and returns true if the enable succeeded, or an error otherwise.
 func (h *Helper) Enable(ctx context.Context) error {
 	h.Manager.EnableTechnology(ctx, shill.TechnologyCellular)
@@ -94,7 +73,11 @@ func (h *Helper) Enable(ctx context.Context) error {
 	if err := h.waitForEnabled(ctx, true); err != nil {
 		return err
 	}
-	return h.waitForPowered(ctx, true)
+	if err := h.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyPowered, true, 3*time.Second); err != nil {
+		return err
+	}
+	// Cellular scanning can take up to 30 seconds to complete.
+	return h.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyScanning, false, 30*time.Second)
 }
 
 // Disable calls Manager.DisableTechnology(cellular) and returns true if the disable succeeded, or an error otherwise.
@@ -104,10 +87,10 @@ func (h *Helper) Disable(ctx context.Context) error {
 	if err := h.waitForEnabled(ctx, false); err != nil {
 		return err
 	}
-	err := h.waitForPowered(ctx, false)
+	err := h.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyPowered, false, 3*time.Second)
 	// Operations (i.e. Enable) called immediately after disabling can fail.
 	// TODO(b/177588333): Fix instead of sleeping here.
-	testing.Sleep(ctx, 200*time.Millisecond)
+	testing.Sleep(ctx, 1000*time.Millisecond)
 	return err
 }
 
@@ -179,27 +162,6 @@ func (h *Helper) SetServiceAutoConnect(ctx context.Context, autoConnect bool) (b
 	return true, nil
 }
 
-// waitForConnected polls for the IsConnected state for |service| to be true.
-func (h *Helper) waitForConnected(ctx context.Context, service *shill.Service, expected bool) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		properties, err := service.GetShillProperties(ctx)
-		if err != nil {
-			return errors.Wrap(err, "unable to get properties")
-		}
-		connected, err := properties.GetBool(shillconst.ServicePropertyIsConnected)
-		if err != nil {
-			return errors.Wrap(err, "unable to get IsConnected from properties")
-		}
-		if connected != expected {
-			return errors.Errorf("unexpected Service.IsConnected state, got %t, expected %t", connected, expected)
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  6 * time.Second,
-		Interval: 100 * time.Millisecond,
-	})
-}
-
 // Connect to the Cellular Service and ensure that the connect succeeded, otherwise return an error.
 func (h *Helper) Connect(ctx context.Context) error {
 	service, err := h.FindServiceForDevice(ctx)
@@ -209,7 +171,7 @@ func (h *Helper) Connect(ctx context.Context) error {
 	if err := service.Connect(ctx); err != nil {
 		return err
 	}
-	return h.waitForConnected(ctx, service, true)
+	return service.WaitForShillProperty(ctx, shillconst.ServicePropertyIsConnected, true, 6*time.Second)
 }
 
 // Disconnect from the Cellular Service and ensure that the disconnect succeeded, otherwise return an error.
@@ -221,5 +183,5 @@ func (h *Helper) Disconnect(ctx context.Context) error {
 	if err := service.Disconnect(ctx); err != nil {
 		return err
 	}
-	return h.waitForConnected(ctx, service, false)
+	return service.WaitForShillProperty(ctx, shillconst.ServicePropertyIsConnected, false, 6*time.Second)
 }
