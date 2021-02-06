@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a8c6327_fe122aa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-06T01:38:58Z",
+      "side": 1,
+      "message": "Thanks for the comment.  Indeed it looks like the same issue.  However, I am afraid that it\u0027s not a good idea to put that issue number to the BUG line of this CL because:\n* this CL temporarily disables the systrace feature for the specific list of test cases. This helps my situation as those tests are not failing anymore.\n* on the other hand, your situation looks like the actual user operations causing kernel panic. My CL doesn\u0027t help this bug -- rather it may be obscured, sadly.\n\nI\u0027ve added the link to the issue (b/177636800) to the TODO line in the code.",
+      "parentUuid": "8598f5ad_1f047588",
+      "revId": "97afdd67e15ffdeb1580147d66604423a7003365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc0776f3_e0b1b55b",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-05T05:55:53Z",
       "side": 1,
       "message": "hugenit/optional: maybe \"DisableSystrace\" according to the config name?",
+      "range": {
+        "startLine": 263,
+        "startChar": 5,
+        "endLine": 263,
+        "endChar": 12
+      },
+      "revId": "97afdd67e15ffdeb1580147d66604423a7003365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aef38ed_c24b8cff",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-06T01:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc0776f3_e0b1b55b",
       "range": {
         "startLine": 263,
         "startChar": 5,
