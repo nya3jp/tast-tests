@@ -36,13 +36,17 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		okButtonText       = "ok"
 		retryButtonText    = "retry"
 		skipButtonText     = "skip"
+
+		intentActionView = "android.intent.action.VIEW"
 	)
 
 	testing.ContextLog(ctx, "Opening Play Store with Intent")
 	if err := a.WaitIntentHelper(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for ArcIntentHelper")
 	}
-	if err := a.SendIntentCommand(ctx, "android.intent.action.VIEW", "market://details?id="+pkgName).Run(testexec.DumpLogOnError); err != nil {
+
+	playStoreAppPageURI := "market://details?id=" + pkgName
+	if err := a.SendIntentCommand(ctx, intentActionView, playStoreAppPageURI).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to send intent to open the Play Store")
 	}
 
@@ -83,10 +87,18 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 			return testing.PollBreak(errors.New("app not compatible with this device"))
 		}
 
-		// If retry button appears, clicking it tends not to fix the issue.
-		// Simply notify the user of this for better error messages.
+		// If retry button appears, reopen the Play Store page by sending the same intent again.
+		// (It tends to work better than clicking the retry button.)
 		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+retryButtonText)).Exists(ctx); err == nil {
-			return testing.PollBreak(errors.New("Play Store failed to load, retry button showing"))
+			if tryLimit == -1 || tries < tryLimit {
+				tries++
+				testing.ContextLogf(ctx, "Retry button is shown. Trying to reopen the Play Store. Total attempts so far: %d", tries)
+				if err := a.SendIntentCommand(ctx, intentActionView, playStoreAppPageURI).Run(testexec.DumpLogOnError); err != nil {
+					return errors.Wrap(err, "failed to send intent to reopen the Play Store")
+				}
+			} else {
+				return testing.PollBreak(errors.Errorf("reopen Play Store attempt limit of %d times", tryLimit))
+			}
 		}
 
 		// If the install button is enabled, click it.

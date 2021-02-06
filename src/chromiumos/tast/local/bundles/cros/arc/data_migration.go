@@ -45,7 +45,7 @@ func init() {
 			Name:              "n_to_p_x86",
 			Val:               homeDataNameNycX86,
 			ExtraData:         []string{homeDataNameNycX86},
-			ExtraSoftwareDeps: []string{"android_p", "amd64"},
+			ExtraSoftwareDeps: []string{"android_vm", "amd64"},
 		}, {
 			// Launch ARC R with /data created on ARC P (for x86).
 			Name:              "p_to_r_x86",
