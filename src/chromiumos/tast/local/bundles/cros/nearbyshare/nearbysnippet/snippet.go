@@ -259,6 +259,15 @@ func overrideGMSCoreFlags(ctx context.Context, device *adb.Device) error {
 	return nil
 }
 
+// DumpLogs saves the Android device's logcat output to a file.
+func (a *AndroidNearbyDevice) DumpLogs(ctx context.Context, outDir string) {
+	filePath := filepath.Join(outDir, "logcat.txt")
+	if err := a.device.DumpLogcat(ctx, filePath); err != nil {
+		testing.ContextLog(ctx, "Failed to dump Android logs: ", err)
+	}
+	return
+}
+
 // SHA256Sum computes the sha256sum of the specified file on the Android device.
 func (a *AndroidNearbyDevice) SHA256Sum(ctx context.Context, filename string) (string, error) {
 	return a.device.SHA256Sum(ctx, filename)
