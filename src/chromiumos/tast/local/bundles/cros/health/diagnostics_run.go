@@ -8,7 +8,6 @@ package health
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
@@ -59,12 +58,10 @@ func init() {
 			Name:      "cpu_cache",
 			Val:       newRoutineParams(croshealthd.RoutineCPUCache),
 			ExtraAttr: []string{"informational"},
-			Timeout:   5 * time.Minute,
 		}, {
 			Name:      "cpu_stress",
 			Val:       newRoutineParams(croshealthd.RoutineCPUStress),
 			ExtraAttr: []string{"informational"},
-			Timeout:   5 * time.Minute,
 		}, {
 			Name:      "floating_point_accuracy",
 			Val:       newRoutineParams(croshealthd.RoutineFloatingPointAccurary),
@@ -75,8 +72,7 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"nvme"},
 			// TODO(http://b/175305207): some zork nvme controllers lock up
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("morphius"),
-				hwdep.Nvme()),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("dalboz", "morphius")),
 		}, {
 			Name:      "nvme_wear_level",
 			Val:       newRoutineParams(croshealthd.RoutineNVMEWearLevel),
@@ -84,7 +80,6 @@ func init() {
 			// nvme_wear_level requires specific offsets in the nvme log that
 			// are only currently defined for wilco devices.
 			ExtraSoftwareDeps: []string{"nvme", "wilco"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Nvme()),
 		}, {
 			Name:      "prime_search",
 			Val:       newRoutineParams(croshealthd.RoutinePrimeSearch),
