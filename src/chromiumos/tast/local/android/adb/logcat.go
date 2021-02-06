@@ -7,9 +7,12 @@ package adb
 import (
 	"bufio"
 	"context"
+	"fmt"
+	"os"
 	"regexp"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -98,4 +101,38 @@ func (d *Device) WaitForLogcat(ctx context.Context, pred func(string) bool, quit
 		close(breakChan)
 		return errors.Wrap(ctx.Err(), "context was done while waiting match of pred in logcat")
 	}
+}
+
+// ClearLogcat clears all logcat buffers.
+func (d *Device) ClearLogcat(ctx context.Context) error {
+	if err := d.ShellCommand(ctx, "logcat", "-b", "all", "-c").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to clear logcat logs")
+	}
+	return nil
+}
+
+// EnableVerboseLoggingForTag enables verbose logging for the specified tag.
+func (d *Device) EnableVerboseLoggingForTag(ctx context.Context, tag string) error {
+	if err := d.ShellCommand(ctx, "setprop", fmt.Sprintf("log.tag.%v", tag), "VERBOSE").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to enable verbose logging for tag %v", tag)
+	}
+	return nil
+}
+
+// DumpLogcat dumps logcat's output to the specified file.
+func (d *Device) DumpLogcat(ctx context.Context, filePath string) error {
+	out, err := os.Create(filePath)
+	if err != nil {
+		return errors.Wrap(err, "failed to create logcat output file")
+	}
+	defer out.Close()
+
+	cmd := d.Command(ctx, "logcat", "-d")
+	cmd.Stdout = out
+	cmd.Stderr = out
+
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to dump logcat")
+	}
+	return nil
 }
