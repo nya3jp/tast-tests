@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5e5d0f34_53c9b92c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-06T23:17:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e6ff073_91272e9d",
+      "range": {
+        "startLine": 11,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "5f96037b9f16998686a66ef5e9e8e7a71dd55cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c7325eae_4f28e15e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -59,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78385113_0569ffde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-06T23:17:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7325eae_4f28e15e",
+      "revId": "5f96037b9f16998686a66ef5e9e8e7a71dd55cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "186429e4_968ac4ac",
@@ -76,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc609c3_67f44af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-06T23:17:14Z",
+      "side": 1,
+      "message": "It is kind of fiddley honestly. You need to try it first then open chrome. Opening chrome first doesn\u0027t work :D",
+      "parentUuid": "186429e4_968ac4ac",
+      "revId": "5f96037b9f16998686a66ef5e9e8e7a71dd55cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce803c6b_d31f98d9",
@@ -89,6 +149,30 @@
       "writtenOn": "2021-02-05T23:35:17Z",
       "side": 1,
       "message": "don\u0027t think you need this, since it\u0027ll get deferred down below anyways",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 142,
+        "endChar": 25
+      },
+      "revId": "5f96037b9f16998686a66ef5e9e8e7a71dd55cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fbbc7d5_8578f2a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-06T23:17:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce803c6b_d31f98d9",
       "range": {
         "startLine": 142,
         "startChar": 2,
