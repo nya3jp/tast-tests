@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/syslog"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -36,6 +37,43 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "graphicsNoChrome",
+		Desc:            "Stop UI before tests, start UI after.",
+		Impl:            &graphicsNoChromeFixture{},
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PreTestTimeout:  5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+	})
+}
+
+type graphicsNoChromeFixture struct {
+}
+
+func (f *graphicsNoChromeFixture) Reset(ctx context.Context) error {
+	return nil
+}
+
+func (f *graphicsNoChromeFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+}
+
+func (f *graphicsNoChromeFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+}
+
+func (f *graphicsNoChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to stop ui job: ", err)
+	}
+	s.Log("Setup: Stop Chrome UI")
+	return nil
+}
+
+func (f *graphicsNoChromeFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	defer upstart.EnsureJobRunning(ctx, "ui")
+	s.Log("Setup: Start Chrome UI")
 }
 
 type gpuWatchDogFixture struct {
