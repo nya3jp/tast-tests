@@ -903,9 +903,23 @@ func (s *WifiService) Reassociate(ctx context.Context, req *network.ReassociateR
 		return nil, errors.Wrap(err, "failed to call Reattach method")
 	}
 
-	// Watch the PropertiesChanged signals looking for a state transition from
-	// not-associated to associated, until we hit the reassociate timeout.
-	awaitingDisconnect := true
+	// Watch the PropertiesChanged signals looking for state transitions which
+	// indicate reassociation taking place. Most of the time on most platforms
+	// this looks like:
+	//
+	//    State="associating"
+	//    State="associated" or State="completed"
+	//
+	// But sometimes on specific platforms this can instead look like:
+	//
+	//    Scanning=true
+	//    Scanning=false
+	//    State="completed"
+	//
+	// So the detection logic here will accept either Scanning=true or
+	// (State!="associated" && State!="completed") as indicating that we have
+	// begun reassociation.
+	associating := false
 	ctx, cancel := context.WithTimeout(ctx, time.Duration(req.Timeout))
 	defer cancel()
 	for {
@@ -914,13 +928,20 @@ func (s *WifiService) Reassociate(ctx context.Context, req *network.ReassociateR
 			return nil, errors.Wrap(ctx.Err(), "did not reassociate in time")
 		case sig := <-sw.Signals:
 			props := sig.Body[0].(map[string]dbus.Variant)
+			testing.ContextLogf(ctx, "PropertiesChanged: %v", props)
+			if val, ok := props["Scanning"]; ok {
+				scanning := val.Value().(bool)
+				if !associating && scanning {
+					associating = true
+				}
+			}
 			if val, ok := props["State"]; ok {
 				state := val.Value().(string)
-				assoc := state == wpasupplicant.DBusInterfaceStateAssociated || state == wpasupplicant.DBusInterfaceStateCompleted
-				if awaitingDisconnect && !assoc {
-					awaitingDisconnect = false
+				associated := state == wpasupplicant.DBusInterfaceStateAssociated || state == wpasupplicant.DBusInterfaceStateCompleted
+				if !associating && !associated {
+					associating = true
 				}
-				if !awaitingDisconnect && assoc {
+				if associating && associated {
 					return &empty.Empty{}, nil
 				}
 			}
