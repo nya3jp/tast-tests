@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/syslog"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -36,6 +37,58 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "stopUI",
+		Desc:            "Stop UI before tests, start UI after.",
+		Impl:            &stopUIFixture{},
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PreTestTimeout:  5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+	})
+}
+
+type stopUIFixture struct {
+}
+
+func (f *stopUIFixture) Reset(ctx context.Context) error {
+	return nil
+}
+
+// getGPUCrash returns gpu related crash files found in system.
+func (f *stopUIFixture) getGPUCrash() ([]string, error) {
+	return nil, nil
+}
+
+// checkNewCrashes checks the difference between the oldCrashes and the current crashes. Return error if failed to retrieve current crashes or the list is mismatch.
+func (f *stopUIFixture) checkNewCrashes(ctx context.Context, oldCrashes []string) error {
+	return nil
+}
+
+// checkHangs checks gpu hangs from the reader. It returns error if failed to read the file or gpu hang patterns are detected.
+func (f *stopUIFixture) checkHangs(ctx context.Context, reader *syslog.Reader) error {
+	return nil
+}
+
+func (f *stopUIFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+}
+
+func (f *stopUIFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+}
+
+func (f *stopUIFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to stop ui job: ", err)
+	}
+	s.Log("Setup: Stop Chrome UI")
+	return nil
+}
+
+func (f *stopUIFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	defer upstart.EnsureJobRunning(ctx, "ui")
+	s.Log("Setup: Start Chrome UI")
 }
 
 type gpuWatchDogFixture struct {
