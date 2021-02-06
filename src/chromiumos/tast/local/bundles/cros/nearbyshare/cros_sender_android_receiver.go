@@ -96,6 +96,7 @@ func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to prepare connected Android device for Nearby Share testing: ", err)
 	}
+	defer androidDevice.DumpLogs(ctx, s.OutDir())
 	defer androidDevice.StopSnippet(ctx)
 
 	// Extract the test file(s) to nearbyshare.SendDir.

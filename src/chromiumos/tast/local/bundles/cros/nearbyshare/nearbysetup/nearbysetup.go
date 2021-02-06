@@ -93,6 +93,11 @@ func AndroidSetup(ctx context.Context, apkZipPath string, rooted bool, screenOff
 		return nil, errors.Wrap(err, "failed to list adb devices")
 	}
 
+	// Clear logcat logs and enable verbose logging for Nearby-related tags.
+	if err := ConfigureNearbyLogging(ctx, testDevice); err != nil {
+		testing.ContextLog(ctx, "Failed to fully configure logs: ", err)
+	}
+
 	// Clear the Android's default directory for receiving shares.
 	if err := testDevice.RemoveAll(ctx, android.DownloadDir); err != nil {
 		return nil, errors.Wrap(err, "failed to clear Android downloads directory")
@@ -155,4 +160,32 @@ func AndroidSetup(ctx context.Context, apkZipPath string, rooted bool, screenOff
 	}
 
 	return androidNearby, nil
+}
+
+// ConfigureNearbyLogging clears existing logcat logs and enables verbose logging for Nearby modules.
+func ConfigureNearbyLogging(ctx context.Context, d *adb.Device) error {
+	success := true
+	if err := d.ClearLogcat(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to clear previous logcat logs: ", err)
+		success = false
+	}
+	tags := []string{
+		"Nearby",
+		"NearbyMessages",
+		"NearbyDiscovery",
+		"NearbyConnections",
+		"NearbyMediums",
+		"NearbySetup",
+		"NearbySharing",
+	}
+	for _, tag := range tags {
+		if err := d.EnableVerboseLoggingForTag(ctx, tag); err != nil {
+			testing.ContextLogf(ctx, "Failed to enable verbose logging for tag %v: %v", tag, err)
+			success = false
+		}
+	}
+	if !success {
+		return errors.New("logging was not successfully configured")
+	}
+	return nil
 }
