@@ -14,7 +14,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -195,7 +194,7 @@ func init() {
 			Timeout: 5 * time.Minute,
 		}},
 		Attr:    []string{"group:graphics", "graphics_perbuild"},
-		Fixture: "gpuWatchHangs",
+		Fixture: "graphicsNoChrome",
 	})
 }
 
@@ -218,10 +217,6 @@ func summarizeLog(f *os.File) resultSummary {
 }
 
 func IGT(ctx context.Context, s *testing.State) {
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to stop ui job: ", err)
-	}
-
 	testOpt := s.Param().(igtTest)
 
 	f, err := os.Create(filepath.Join(s.OutDir(), filepath.Base(testOpt.exe)+".txt"))
