@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78ab7f30_a40858f8",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-06T01:09:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "458d1ba5_cf8d8783",
+      "range": {
+        "startLine": 292,
+        "startChar": 26,
+        "endLine": 292,
+        "endChar": 67
+      },
+      "revId": "281078bb2093907327e0c0e13c38f7f719205d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5e197bc_d438385a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-05T06:13:57Z",
       "side": 1,
       "message": "nit: I was suggesting \"verify\" because it used to return an error.\nNow, with more refactoring, it starts to return a bool, which represents \"installed or not\". So, maybe this can be just \"PackageInstalled\" following the common practices in go and tast.",
+      "range": {
+        "startLine": 293,
+        "startChar": 17,
+        "endLine": 293,
+        "endChar": 23
+      },
+      "revId": "281078bb2093907327e0c0e13c38f7f719205d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cea5a2b_7af03549",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-06T01:09:01Z",
+      "side": 1,
+      "message": "Thanks. I changed the name.",
+      "parentUuid": "c5e197bc_d438385a",
       "range": {
         "startLine": 293,
         "startChar": 17,
@@ -118,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41221e25_6ecd62a2",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-06T01:09:01Z",
+      "side": 1,
+      "message": "Thanks Jun. You are right the for loop could be early terminated if exact matched package is found. My intention was to reuse the newly added listPackages() function and we don\u0027t have to duplicate the package list command code. Weighing the code reuse against a very trivial performance overhead, I tend to keep this implementation.\n\nBut comments were added to explain the reason of checking exact package name from the returned list.",
+      "parentUuid": "d0e1d4af_c03e8b43",
+      "range": {
+        "startLine": 297,
+        "startChar": 16,
+        "endLine": 297,
+        "endChar": 28
+      },
+      "revId": "281078bb2093907327e0c0e13c38f7f719205d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a97fb609_e8c296d7",
@@ -131,6 +203,30 @@
       "writtenOn": "2021-02-04T23:14:59Z",
       "side": 1,
       "message": "nit: this will not be used if you accept my comment above, but if you want to keep this structure, this code looks redundant. You could simply write as:\n  _, ok :\u003d pkgs[pkg]\n  return ok, nil",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 17
+      },
+      "revId": "281078bb2093907327e0c0e13c38f7f719205d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6171a7f3_ef5ee2e2",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-06T01:09:01Z",
+      "side": 1,
+      "message": "Neat! Done. I didn\u0027t change the returned value of listPackages. Please check above  response.",
+      "parentUuid": "a97fb609_e8c296d7",
       "range": {
         "startLine": 301,
         "startChar": 0,
@@ -164,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d9d3e32_dba7be44",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-06T01:09:01Z",
+      "side": 1,
+      "message": "Thanks. Comments added.",
+      "parentUuid": "f6cb4ab2_be9858c4",
+      "range": {
+        "startLine": 307,
+        "startChar": 51,
+        "endLine": 307,
+        "endChar": 64
+      },
+      "revId": "281078bb2093907327e0c0e13c38f7f719205d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d1f290d_e6e97879",
@@ -177,6 +297,30 @@
       "writtenOn": "2021-02-04T23:14:59Z",
       "side": 1,
       "message": "Same as I commented on device.go",
+      "range": {
+        "startLine": 63,
+        "startChar": 26,
+        "endLine": 63,
+        "endChar": 34
+      },
+      "revId": "281078bb2093907327e0c0e13c38f7f719205d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97204519_5b529da0",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-06T01:09:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d1f290d_e6e97879",
       "range": {
         "startLine": 63,
         "startChar": 26,
@@ -210,6 +354,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91c50c55_8bb47e38",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-06T01:09:01Z",
+      "side": 1,
+      "message": "Sure. Changed.",
+      "parentUuid": "f03dfaea_077bbb50",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "281078bb2093907327e0c0e13c38f7f719205d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5efa9f4b_87396637",
@@ -223,6 +391,30 @@
       "writtenOn": "2021-02-04T22:52:06Z",
       "side": 1,
       "message": "style: Same as above",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 23
+      },
+      "revId": "281078bb2093907327e0c0e13c38f7f719205d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "635f3091_07166625",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-06T01:09:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5efa9f4b_87396637",
       "range": {
         "startLine": 154,
         "startChar": 1,
