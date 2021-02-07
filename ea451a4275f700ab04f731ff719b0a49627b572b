@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6153c280_87ddd601",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-07T21:32:19Z",
+      "side": 1,
+      "message": "Are these stubs really needed?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 1
+      },
+      "revId": "ea451a4275f700ab04f731ff719b0a49627b572b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
