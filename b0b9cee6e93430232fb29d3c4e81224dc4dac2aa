@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb4b887_6a678ebb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-07T17:00:10Z",
+      "side": 1,
+      "message": "How about:\nthis change adds a signal, property change of `Scanning:true`, that indicates the DUT begins reassociation starts,",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "b0b9cee6e93430232fb29d3c4e81224dc4dac2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f323b3f_f48feccb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-07T17:00:10Z",
+      "side": 1,
+      "message": "Awesome the root cause of veyron failures is found.",
+      "revId": "b0b9cee6e93430232fb29d3c4e81224dc4dac2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db7a2916_18f0e0a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-07T17:00:10Z",
+      "side": 1,
+      "message": "How about:\nassociating :\u003d false\n\nSo that when it is true, it means the interface is associating.",
+      "range": {
+        "startLine": 922,
+        "startChar": 1,
+        "endLine": 922,
+        "endChar": 22
+      },
+      "revId": "b0b9cee6e93430232fb29d3c4e81224dc4dac2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
