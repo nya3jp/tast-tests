@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2423dc61_1405238e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-07T21:33:56Z",
+      "side": 1,
+      "message": "Looks good, just wondering about all the boilerplate.",
+      "revId": "ea451a4275f700ab04f731ff719b0a49627b572b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6153c280_87ddd601",
