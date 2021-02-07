@@ -230,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c00fe44e_1bcf54cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-07T23:24:38Z",
+      "side": 1,
+      "message": "thanks for explaining.",
+      "parentUuid": "8aa6ed53_9c58891a",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 21
+      },
+      "revId": "d2b2895c45423e760ae1b5555edc6102e0bb8385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "289b9511_b39bc6d5",
@@ -314,6 +338,30 @@
       "side": 1,
       "message": "I think \"windowstate\" types has changed since original implementeation.",
       "parentUuid": "fb7ac79f_792ea51d",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "d2b2895c45423e760ae1b5555edc6102e0bb8385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec75d697_e8d9874c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-07T23:24:38Z",
+      "side": 1,
+      "message": "sorry to bring this up again, we need to convert the windowstate in this func, as it is being passed as a parameter and it is called with different windowstates (windowstatenonmaximized test, does this)",
+      "parentUuid": "b511e4b6_94832a9e",
       "range": {
         "startLine": 94,
         "startChar": 1,
