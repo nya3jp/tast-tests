@@ -398,7 +398,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to find the container")
 		}
 		defer container.Release(closeCtx)
-		bubble, err := container.DescendantWithTimeout(ctx, ui.FindParams{ClassName: "BubbleDialogDelegateView"}, 20*time.Second)
+		bubble, err := container.DescendantWithTimeout(ctx, ui.FindParams{ClassName: "PermissionPromptBubbleView"}, 20*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "failed to find permission bubble")
 		}
