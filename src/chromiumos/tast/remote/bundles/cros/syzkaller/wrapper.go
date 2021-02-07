@@ -33,8 +33,6 @@ const startupScriptContents = `
 mount -o remount,rw -o exec /tmp
 sysctl -w kernel.panic_on_warn=1
 dmesg --clear
-ln -s /dev/dri/card0 /dev/i915
-if [ -f /dev/mali0 ]; then ln -s /dev/mali0 /dev/bifrost; fi
 `
 
 var boardArchMapping = map[string]string{
@@ -70,6 +68,17 @@ type syzkallerConfig struct {
 	EnableSyscalls []string  `json:"enable_syscalls"`
 }
 
+type FuzzEnvConfig struct {
+	// Driver or subsystem.
+	Driver string `json:"driver"`
+	// If `archs` is not specified, run on all archs.
+	Archs []string `json:"archs"`
+	// Startup commands specific to this subsystem.
+	StartupCmds []string `json:"startup_cmds"`
+	// Syscalls belonging to the driver or subsystem.
+	Syscalls []string `json:"syscalls"`
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Wrapper,
@@ -83,7 +92,7 @@ func init() {
 		// stopping. The overall test duration is 32 minutes.
 		Timeout: syzkallerRunDuration + 2*time.Minute,
 		Attr:    []string{"group:syzkaller"},
-		Data:    []string{"testing_rsa", "enabled_syscalls.txt", "corpus.db"},
+		Data:    []string{"testing_rsa", "enabled_syscalls.json", "corpus.db"},
 	})
 }
 
@@ -95,6 +104,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("Unable to find syzkaller arch: %v", err)
 	}
+	s.Logf("syzArch found to be: %v", syzArch)
 
 	syzkallerTastDir, err := ioutil.TempDir("", "tast-syzkaller")
 	if err != nil {
@@ -122,12 +132,6 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to copy seed corpus to workdir: %v", err)
 	}
 
-	// Create startup script.
-	startupScript := filepath.Join(syzkallerTastDir, "startup_script")
-	if err := ioutil.WriteFile(startupScript, []byte(startupScriptContents), 0755); err != nil {
-		s.Fatalf("Unable to create temp configfile: %v", err)
-	}
-
 	// Chmod the keyfile so that ssh connections do not fail due to
 	// open permissions.
 	sshKey := s.DataPath("testing_rsa")
@@ -136,11 +140,18 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	}
 
 	// Read enabled_syscalls.
-	enabledSyscalls, err := loadEnabledSyscalls(s.DataPath("enabled_syscalls.txt"))
+	drivers, enabledSyscalls, scriptContents, err := loadEnabledSyscalls(s.DataPath("enabled_syscalls.json"), syzArch)
 	if err != nil {
 		s.Fatalf("Unable to load enabled syscalls: %v", err)
 	}
+	s.Logf("Drivers: %v", drivers)
 	s.Logf("Enabled syscalls: %v", enabledSyscalls)
+
+	// Create startup script.
+	startupScript := filepath.Join(syzkallerTastDir, "startup_script")
+	if err := ioutil.WriteFile(startupScript, []byte(scriptContents), 0755); err != nil {
+		s.Fatalf("Unable to create temp configfile: %v", err)
+	}
 
 	// Create syzkaller configuration file.
 	// Generating reproducers is unlikely to work as :
@@ -261,18 +272,35 @@ func fetchFuzzArtifacts(ctx context.Context, d *dut.DUT, artifactsDir, syzArch s
 	return nil
 }
 
-func loadEnabledSyscalls(fpath string) ([]string, error) {
+func loadEnabledSyscalls(fpath, syzArch string) (drivers, enabledSyscalls []string, scriptContents string, err error) {
+	contains := func(aList []string, item string) bool {
+		for _, each := range aList {
+			if each == item {
+				return true
+			}
+		}
+		return false
+	}
+
 	contents, err := ioutil.ReadFile(fpath)
 	if err != nil {
-		return nil, err
+		return nil, nil, "", err
 	}
-	var enabledSyscalls []string
-	for _, line := range strings.Split(string(contents), "\n") {
-		// Ignore comments and empty lines.
-		if line == "" || strings.HasPrefix(line, "#") {
-			continue
+
+	var feconfig []FuzzEnvConfig
+	err = json.Unmarshal([]byte(contents), &feconfig)
+	if err != nil {
+		return nil, nil, "", err
+	}
+
+	scriptContents = startupScriptContents
+	for _, config := range feconfig {
+		if len(config.Archs) == 0 || contains(config.Archs, syzArch) {
+			enabledSyscalls = append(enabledSyscalls, config.Syscalls...)
+			drivers = append(drivers, config.Driver)
+			scriptContents = scriptContents + strings.Join(config.StartupCmds, "\n")
 		}
-		enabledSyscalls = append(enabledSyscalls, line)
 	}
-	return enabledSyscalls, nil
+
+	return drivers, enabledSyscalls, scriptContents, nil
 }
