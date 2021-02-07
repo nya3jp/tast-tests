@@ -27,12 +27,10 @@ const (
 	syzkallerRunDuration = 30 * time.Minute
 )
 
-const startupScriptContents = `
+var startupScriptContents = `
 mount -o remount,rw -o exec /tmp
 sysctl -w kernel.panic_on_warn=1
 dmesg --clear
-ln -s /dev/dri/card0 /dev/i915
-if [ -f /dev/mali0 ]; then ln -s /dev/mali0 /dev/bifrost; fi
 `
 
 var archMapping = map[string]string{
@@ -66,6 +64,17 @@ type syzkallerConfig struct {
 	EnableSyscalls []string  `json:"enable_syscalls"`
 }
 
+type FuzzEnvConfig struct {
+	// Driver or subsystem.
+	Driver string `json:"driver"`
+	// If `archs` is not specified, run on all archs.
+	Archs []string `json:"archs"`
+	// Startup commands specific to this subsystem.
+	StartupCmds []string `json:"startup_cmds"`
+	// Syscalls belonging to the driver or subsystem.
+	Syscalls []string `json:"syscalls"`
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Wrapper,
@@ -79,7 +88,7 @@ func init() {
 		// stopping. The overall test duration is 32 minutes.
 		Timeout: syzkallerRunDuration + 2*time.Minute,
 		Attr:    []string{"group:syzkaller"},
-		Data:    []string{"testing_rsa", "enabled_syscalls.txt", "corpus.db"},
+		Data:    []string{"testing_rsa", "enabled_syscalls.json", "corpus.db"},
 	})
 }
 
@@ -91,6 +100,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("Unable to find syzkaller arch: %v", err)
 	}
+	s.Logf("syzArch found to be: %v", syzArch)
 
 	syzkallerTastDir, err := ioutil.TempDir("", "tast-syzkaller")
 	if err != nil {
@@ -132,10 +142,11 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	}
 
 	// Read enabled_syscalls.
-	enabledSyscalls, err := loadEnabledSyscalls(s.DataPath("enabled_syscalls.txt"))
+	drivers, enabledSyscalls, err := loadEnabledSyscalls(s.DataPath("enabled_syscalls.json"), syzArch)
 	if err != nil {
 		s.Fatalf("Unable to load enabled syscalls: %v", err)
 	}
+	s.Logf("Drivers: %v", drivers)
 	s.Logf("Enabled syscalls: %v", enabledSyscalls)
 
 	// Create syzkaller configuration file.
@@ -258,18 +269,35 @@ func fetchFuzzArtifacts(ctx context.Context, d *dut.DUT, artifactsDir, syzArch s
 	return nil
 }
 
-func loadEnabledSyscalls(fpath string) ([]string, error) {
+func loadEnabledSyscalls(fpath, syzArch string) ([]string, []string, error) {
+	contains := func(a_list []string, item string) bool {
+		for _, each := range a_list {
+			if each == item {
+				return true
+			}
+		}
+		return false
+	}
+
 	contents, err := ioutil.ReadFile(fpath)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	var enabledSyscalls []string
-	for _, line := range strings.Split(string(contents), "\n") {
-		// Ignore comments and empty lines.
-		if line == "" || strings.HasPrefix(line, "#") {
-			continue
+
+	var feconfig []FuzzEnvConfig
+	err = json.Unmarshal([]byte(contents), &feconfig)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	var drivers, enabledSyscalls []string
+	for _, config := range feconfig {
+		if len(config.Archs) == 0 || contains(config.Archs, syzArch) {
+			enabledSyscalls = append(enabledSyscalls, config.Syscalls...)
+			drivers = append(drivers, config.Driver)
+			startupScriptContents = startupScriptContents + strings.Join(config.StartupCmds, "\n")
 		}
-		enabledSyscalls = append(enabledSyscalls, line)
 	}
-	return enabledSyscalls, nil
+
+	return drivers, enabledSyscalls, nil
 }
