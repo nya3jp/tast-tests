@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0282302f_82d2c28f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-08T21:33:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cb2acb9_b58c45b7",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6081ba87_d2ee5ed7",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-05T21:34:39Z",
       "side": 1,
       "message": "commentary: it\u0027ll be useful to think about this not tied to Google tts but for any extension-based engine.",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a1afa2_d8515b1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-08T21:33:15Z",
+      "side": 1,
+      "message": "Yes, thanks for pointing that out. Follow-up changes will generalize the speech monitor to connect to any tts engine. But for this change, it connects solely to Google TTS.",
+      "parentUuid": "6081ba87_d2ee5ed7",
       "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "273de0da_d310b667",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-08T21:33:15Z",
+      "side": 1,
+      "message": "Yes I understand that it\u0027s concerning, which is why we close all but one instance before starting the test. I haven\u0027t experienced any failures related to this when testing locally, but let\u0027s monitor it for potential problems.",
+      "parentUuid": "fed3aaef_90d7e2e7",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee631069_bb52eb5a",
@@ -103,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34defe0e_9d3835ed",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-08T21:33:15Z",
+      "side": 1,
+      "message": "It triggers an error because utterance can\u0027t be assigned to the value of testUtterances.shift(). This is what\u0027s described in the documentation for this function:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/conn.go;l\u003d88?q\u003dfile:tast%20file:.go%20eval\u0026ss\u003dchromiumos",
+      "parentUuid": "ee631069_bb52eb5a",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "097a0816_50d59b98",
@@ -116,6 +188,24 @@
       "writtenOn": "2021-02-05T21:34:39Z",
       "side": 1,
       "message": "It would be nice to have these match against a pattern/regexp to make them less brittle.",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df6e752_74a3e32b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-08T21:33:15Z",
+      "side": 1,
+      "message": "Acknowledged, can address this in a follow-up.",
+      "parentUuid": "097a0816_50d59b98",
       "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
