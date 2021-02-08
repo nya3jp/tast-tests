@@ -107,7 +107,7 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 			"/home/chronos/Local State",
 			"/var/cache/shill/default.profile",
 			"/home/.shadow/",
-			"/var/lib/whitelist/",
+			"/var/lib/allowlist/",
 			"/var/cache/app_pack",
 			"/var/lib/tpm",
 		).CombinedOutput(ctx); err != nil {
