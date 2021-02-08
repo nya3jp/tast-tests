@@ -22,6 +22,9 @@ const (
 	// BenchmarkARCFixture is a fixture name that will be registered to tast.
 	// The fxture brings up Chrome and ARC with PlayStore.
 	BenchmarkARCFixture = "benchmarkARCFixture"
+	// BenchmarkChromeFixture is a fixture name that will be registered to tast.
+	// It brings up Chrome.
+	BenchmarkChromeFixture = "benchmarkChromeFixture"
 )
 
 func benchmarkARCFixtureOptions(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
@@ -52,6 +55,18 @@ func init() {
 		// Provide a longer enough PostTestTimeout value to fixture when ARC will try to dump ARCVM message.
 		// Or there might be error of "context deadline exceeded".
 		PostTestTimeout: 5 * time.Second,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{userVar, passwdVar},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     BenchmarkChromeFixture,
+		Desc:     "The fixture starts chrome with GAIA login and ARC Supported",
+		Contacts: []string{"xliu@cienet.com"},
+		// Although ARCSupported is provided as an option to bring up the ARC on DUT, we will not
+		// use ARC in the test so we don't need set up ARC/ADB. Use LoggedIn Fixture.
+		Impl:            chrome.NewLoggedInFixture(benchmarkARCFixtureOptions),
+		SetUpTimeout:    chrome.GAIALoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars:            []string{userVar, passwdVar},
 	})
