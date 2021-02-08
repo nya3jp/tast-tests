@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "923bb582_95ac9cce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T00:11:54Z",
+      "side": 1,
+      "message": "The error msg of Combine is like this \"failed %s on step %d\", and I changed the name of the steps to \"to copy files from Downloads to Linux files\". Therefore, if it fails, the msg would like \"failed to to copy files from Downloads to Linux files on step ...\"",
+      "parentUuid": "df177554_5ae1f7aa",
+      "range": {
+        "startLine": 159,
+        "startChar": 11,
+        "endLine": 159,
+        "endChar": 25
+      },
+      "revId": "b226a828272ffe5f4d073c0a6c423ffab2013ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a3294c8_abde9b04",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-05T00:28:07Z",
       "side": 1,
       "message": "These can all use keyboard actions",
+      "range": {
+        "startLine": 164,
+        "startChar": 20,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "b226a828272ffe5f4d073c0a6c423ffab2013ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35dd1b4e_3bc16c0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T00:11:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3294c8_abde9b04",
       "range": {
         "startLine": 164,
         "startChar": 20,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "093c6a60_f6faa202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T00:11:54Z",
+      "side": 1,
+      "message": "Done. The weird thing is that the spinning thing never happens on this case.",
+      "parentUuid": "f60e5098_90041a81",
+      "range": {
+        "startLine": 156,
+        "startChar": 30,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "b226a828272ffe5f4d073c0a6c423ffab2013ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "006b7fe3_17bfacc1",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-04T22:55:52Z",
       "side": 1,
       "message": "There is a LeftClickUntil method. This entire poll can be:\n LeftClickUntil(refresh, ui.Gone(fileName))",
+      "range": {
+        "startLine": 187,
+        "startChar": 30,
+        "endLine": 187,
+        "endChar": 39
+      },
+      "revId": "b226a828272ffe5f4d073c0a6c423ffab2013ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f037c78e_70fa544c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T00:11:54Z",
+      "side": 1,
+      "message": "I noticed that there is a problem about clicking refresh, the ui keeps spinning and does not display the content. This might be a product problem however I could reproduce it manually. I\u0027ll talk to the dev about this. For this case specific, I changed the check from ui to api.",
+      "parentUuid": "006b7fe3_17bfacc1",
       "range": {
         "startLine": 187,
         "startChar": 30,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd41d38_3f13e3cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T00:11:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcc41b3d_57fd8cc0",
+      "range": {
+        "startLine": 207,
+        "startChar": 30,
+        "endLine": 207,
+        "endChar": 39
+      },
+      "revId": "b226a828272ffe5f4d073c0a6c423ffab2013ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5553e891_dd6b5d5e",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-02-04T22:55:52Z",
       "side": 1,
       "message": "my bad, can you delete this one too?",
+      "range": {
+        "startLine": 114,
+        "startChar": 29,
+        "endLine": 114,
+        "endChar": 48
+      },
+      "revId": "b226a828272ffe5f4d073c0a6c423ffab2013ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a67a2a_f830d95b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T00:11:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5553e891_dd6b5d5e",
       "range": {
         "startLine": 114,
         "startChar": 29,
