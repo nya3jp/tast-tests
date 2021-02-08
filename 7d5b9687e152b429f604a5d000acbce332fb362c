@@ -140,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7045f2c4_33b60f40",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-02-08T22:36:03Z",
+      "side": 1,
+      "message": "How do you know it\u0027s the right instance though?\n\nI would at least explain it doesn\u0027t appear to cause issues in practice, but we should only close instances that are not tied to the current profile.\n(as a TODO).\n\nThis will become more important as you try to run these on the login screen, guest mode, etc.",
+      "parentUuid": "273de0da_d310b667",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee631069_bb52eb5a",
