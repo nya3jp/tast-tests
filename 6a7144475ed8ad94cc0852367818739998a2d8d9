@@ -218,6 +218,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90dbf869_1d34d930",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-08T02:32:38Z",
+      "side": 1,
+      "message": "i see, thanks",
+      "parentUuid": "77effc08_3b9e4e3d",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc63b3b1_90dda371",
