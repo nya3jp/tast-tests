@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69bffddd_253178bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-08T20:44:37Z",
+      "side": 1,
+      "message": "What you did looks good, my thought was that combine can be returned directly while Run should be used with errors.Wrap or s.Fatal",
+      "parentUuid": "8e7ccb8f_cbb47933",
+      "range": {
+        "startLine": 159,
+        "startChar": 11,
+        "endLine": 159,
+        "endChar": 25
+      },
+      "revId": "b226a828272ffe5f4d073c0a6c423ffab2013ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a3294c8_abde9b04",
