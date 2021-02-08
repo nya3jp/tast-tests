@@ -39,6 +39,30 @@
       },
       "revId": "9aec987d2dd87fa016a2ca34a24642ccee8e4ad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "786005a8_5a2ab5b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-08T23:33:59Z",
+      "side": 1,
+      "message": "Done.\nI think a \"constructor\" function is often named with \"New\"-prefix in golang.\nI don\u0027t have a strong opinion.",
+      "parentUuid": "85a785a5_5f954461",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "9aec987d2dd87fa016a2ca34a24642ccee8e4ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
