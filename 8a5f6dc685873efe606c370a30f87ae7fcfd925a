@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ac8a74_3ef692ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T05:52:54Z",
+      "side": 1,
+      "message": "Thanks for addressing comments. Mostly looks good to me.",
+      "revId": "8a5f6dc685873efe606c370a30f87ae7fcfd925a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c6fa489_c39a6531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T05:52:54Z",
+      "side": 1,
+      "message": "The current implimentation looks pointing the center of the bottom edge.\nCan you use Rect.CenterPoint() and then apply scaling?\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/coords/coords.go?l\u003d131\u0026rcl\u003dd1cbfaa6d3eaf3b3e732c3d988251b11555310cb",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 127,
+        "endChar": 111
+      },
+      "revId": "8a5f6dc685873efe606c370a30f87ae7fcfd925a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95097e5e_37e4194e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T05:52:54Z",
+      "side": 1,
+      "message": "I guess we should defer both stop and close the `act`?",
+      "revId": "8a5f6dc685873efe606c370a30f87ae7fcfd925a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d0391c0_36d194ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T05:52:54Z",
+      "side": 1,
+      "message": "I guess we should defer act.Close()",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 4
+      },
+      "revId": "8a5f6dc685873efe606c370a30f87ae7fcfd925a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
