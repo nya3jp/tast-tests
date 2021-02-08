@@ -16,6 +16,57 @@
       "message": "frkoenig / stevecho PTAL\n\nOthers FYI",
       "revId": "5959d55708c4461c408c1dad8b212a4ed50fc86a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf36186_504de584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2021-02-08T23:21:38Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the bitrate of the yuvfile, but the encoded file.",
+      "revId": "5959d55708c4461c408c1dad8b212a4ed50fc86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e82c7c8_4aceccfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2021-02-08T23:21:38Z",
+      "side": 1,
+      "message": "it seems that the target bitrate is not computed the same everywhere and there doesn\u0027t seem to be any comments on why they were chosen that way.  Not that it matters for this CL.",
+      "revId": "5959d55708c4461c408c1dad8b212a4ed50fc86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f3e6977_112a4cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2021-02-08T23:21:38Z",
+      "side": 1,
+      "message": "why despace this?",
+      "revId": "5959d55708c4461c408c1dad8b212a4ed50fc86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
