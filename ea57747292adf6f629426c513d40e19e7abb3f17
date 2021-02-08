@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d79de72_8ef1b947",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-02-08T19:08:11Z",
+      "side": 1,
+      "message": "\u003e \"becasue\" is a possible misspelling of \"because\".\n\nPlease fix.",
+      "parentUuid": "36dc93a0_e30f212a",
+      "range": {
+        "startLine": 11,
+        "startChar": 48,
+        "endLine": 11,
+        "endChar": 55
+      },
+      "revId": "ea57747292adf6f629426c513d40e19e7abb3f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
