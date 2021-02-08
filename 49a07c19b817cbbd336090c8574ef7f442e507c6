@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f24976_cea0f32b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2021-02-08T05:40:42Z",
+      "side": 1,
+      "message": "+cc (FYI) glider@, who created the upstream change.",
+      "revId": "49a07c19b817cbbd336090c8574ef7f442e507c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
