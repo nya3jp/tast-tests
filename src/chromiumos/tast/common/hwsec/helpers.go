@@ -252,6 +252,10 @@ func (h *Helper) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
 		return errors.Wrap(err, "")
 	}
 
+	if err := h.tpmClearer.ClearTPMStep1(ctx); err != nil {
+		return errors.Wrap(err, "")
+	}
+
 	if removeFiles {
 		if out, err := h.cmdRunner.Run(ctx, "rm", "-rf", "--",
 			"/home/.shadow/",
@@ -280,7 +284,7 @@ func (h *Helper) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
 		}
 	}
 
-	if err := h.tpmClearer.ClearTPM(ctx); err != nil {
+	if err := h.tpmClearer.ClearTPMStep2(ctx); err != nil {
 		return errors.Wrap(err, "")
 	}
 

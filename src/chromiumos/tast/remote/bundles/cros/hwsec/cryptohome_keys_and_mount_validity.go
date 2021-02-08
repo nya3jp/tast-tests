@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/remote/bundles/cros/hwsec/util"
 	hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,6 +28,8 @@ func init() {
 		},
 		Attr:         []string{"group:hwsec_destructive_func"},
 		SoftwareDeps: []string{"tpm", "reboot"},
+		// Skip "enguarde" due to the reboot issue when removing the key.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("enguarde")),
 		Timeout:      15 * time.Minute,
 	})
 }

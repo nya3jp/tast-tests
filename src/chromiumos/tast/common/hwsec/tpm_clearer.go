@@ -10,6 +10,9 @@ import (
 
 // TPMClearer is an interface of to clear the TPM.
 type TPMClearer interface {
-	// ClearTPM clears the TPM.
-	ClearTPM(ctx context.Context) error
+	// ClearTPMStep1 should be called before clean the data on device
+	ClearTPMStep1(ctx context.Context) error
+
+	// ClearTPMStep1 should be called after clean the data on device
+	ClearTPMStep2(ctx context.Context) error
 }

@@ -31,8 +31,8 @@ func NewTPMClearer(cmdRunner hwsec.CmdRunner, daemonController *hwsec.DaemonCont
 	return &TPMClearer{cmdRunner, daemonController, dut}
 }
 
-// ClearTPM would clear the TPM, reboot and ensure every TPM daemon is up.
-func (tc *TPMClearer) ClearTPM(ctx context.Context) error {
+// ClearTPMStep1 clears the TPM and backup the logs
+func (tc *TPMClearer) ClearTPMStep1(ctx context.Context) error {
 	// Copy logs before TPM reset. Ignore errors on failure.
 	if outDir, ok := testing.ContextOutDir(ctx); ok {
 		dateString := time.Now().Format(time.RFC3339)
@@ -46,9 +46,18 @@ func (tc *TPMClearer) ClearTPM(ctx context.Context) error {
 		return errors.Wrap(err, "failed to file clear_tpm_owner_request")
 	}
 
-	// Reboot every the DUT.
+	return nil
+}
+
+// ClearTPMStep2 reboots and ensure every TPM daemon is up.
+func (tc *TPMClearer) ClearTPMStep2(ctx context.Context) error {
 	if err := tc.dut.Reboot(ctx); err != nil {
 		return errors.Wrap(err, "failed to reboot")
+	}
+
+	// Wait for services.
+	if err := tc.daemonController.WaitForAllDBusServices(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
 	}
 
 	return nil
