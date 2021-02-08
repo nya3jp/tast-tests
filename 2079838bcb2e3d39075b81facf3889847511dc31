@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68de1563_c938ad47",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-08T02:59:55Z",
+      "side": 1,
+      "message": "You can keep it in a struct if you like, as long as it just follows the same pattern as the rest of the code.\n\nAn alternative would be methods on a type alias too:\n\ntype RemoveDialog nodewith.Finder\n\nfunc RemoveDialog() RemoveDialog{\n  return nodewith.Name(\"name\").Role(role.Dialog)\n}\n\nfunc (rd RemoveDialog) Message() nodewith.Finder {\n  return nodewith.Name(\"msg\").Role(role.StaticText).Ancestor(rd)\n}\n\n(not saying to change to this, just another option)",
+      "parentUuid": "0ae4da1c_26ef00c1",
+      "range": {
+        "startLine": 546,
+        "startChar": 6,
+        "endLine": 549,
+        "endChar": 59
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c3d99f8_5666cc16",
