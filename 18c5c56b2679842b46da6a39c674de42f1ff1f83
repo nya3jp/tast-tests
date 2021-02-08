@@ -34,6 +34,23 @@
       "parentUuid": "69d167da_9bcf8ce1",
       "revId": "18c5c56b2679842b46da6a39c674de42f1ff1f83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be54f06d_6f386712",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2021-02-08T07:48:08Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we are or if we should assume anything about TPM state.\nAs menghuan said, \"factory.Finalize\" tast test *must not* call clobber-state (otherwise it\u0027s a bug in our code).\nBut it will try to unmount the stateful partition. If there are any processes using stateful partition, they will be killed by this test.",
+      "revId": "18c5c56b2679842b46da6a39c674de42f1ff1f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
