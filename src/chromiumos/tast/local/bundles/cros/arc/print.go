@@ -264,6 +264,12 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to hide all notifications: ", err)
 	}
 
+	// Wait for print preview to load before starting the print job.
+	s.Log("Waiting for print preview to load")
+	if err := waitForPrintPreview(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for print preview to load: ", err)
+	}
+
 	// Click the print button to start the print job.
 	s.Log("Clicking print button")
 	if err = printpreview.Print(ctx, tconn); err != nil {
