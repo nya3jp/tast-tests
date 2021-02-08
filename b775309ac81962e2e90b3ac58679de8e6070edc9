@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22c0d0d6_39f99993",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-08T16:54:19Z",
+      "side": 1,
+      "message": "Rebased and resubmitting. The failure looks independent.",
+      "revId": "b775309ac81962e2e90b3ac58679de8e6070edc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
