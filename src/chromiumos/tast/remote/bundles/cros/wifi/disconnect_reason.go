@@ -61,6 +61,7 @@ func init() {
 					// 1- NL80211_CMD_DEAUTHENTICATE due to inactivity.
 					// 2- NL80211_CMD_DISCONNECT: happens with full-MAC drivers such as mwifiex.
 					expectedCodes: []int32{wpasupplicant.DisconnReasonLGDisassociatedInactivity,
+						wpasupplicant.DisconnReasonLGDeauthSTALeaving,
 						wpasupplicant.DisconnReasonUnknown},
 				},
 			}, {
