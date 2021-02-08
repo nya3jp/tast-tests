@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87c2fed6_6a135b25",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-02-08T20:32:09Z",
+      "side": 1,
+      "message": "This seems like something that might be good to have as a utility, but the only other places I see anything like it being used are:\nsrc/platform/tast/src/chromiumos/tast/cmd/tast/internal/build/build.go Line 30\nsrc/platform/tremplin/src/chromiumos/tremplin/audit.go Line 203\nso, I think this is fine as is.",
+      "revId": "1e2e1e5760043a3cd27308e1631e995aac0a32a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c42a047_d931e253",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-02-08T20:32:09Z",
+      "side": 1,
+      "message": "You may want this to be set up in a way you can support fuzzing both the 32-bit system call interface as well as the 64-bit (for amd64 as well as aarch64) interface whenever both are supported. I don\u0027t know if that warrants any changes at this point, but it is something to keep in mind in case you think there might be a better way of doing this.\n\nWe may only use one over the other; however, if the kernel is built with support for both interfaces then an attacker could potentially leverage which ever they want.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 52
+      },
+      "revId": "1e2e1e5760043a3cd27308e1631e995aac0a32a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
