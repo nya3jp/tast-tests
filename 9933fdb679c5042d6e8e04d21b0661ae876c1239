@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1850370b_cd12c58a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-02-08T20:35:03Z",
+      "side": 1,
+      "message": "Is this supposed to make it easier to fuzz the EC in a generic way?",
+      "range": {
+        "startLine": 34,
+        "startChar": 27,
+        "endLine": 34,
+        "endChar": 56
+      },
+      "revId": "9933fdb679c5042d6e8e04d21b0661ae876c1239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
