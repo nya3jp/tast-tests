@@ -193,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15aa464b_504711cb",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-02-08T22:41:28Z",
+      "side": 1,
+      "message": "If you do:[].shift()\nyou get undefined, which I think is different than an error.\nIf what you\u0027re saying is unmarhsaling an undefined value in go throws an error, then I suppose this is fine, but the comment still seems wrong.\n\nIf testUtterances were itself undefined, then testUtterances.shift() would throw a js error, which would be an actual error.\n\nIt\u0027s a nit :).",
+      "parentUuid": "34defe0e_9d3835ed",
+      "revId": "7d5b9687e152b429f604a5d000acbce332fb362c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "097a0816_50d59b98",
