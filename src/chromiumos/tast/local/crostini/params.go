@@ -261,7 +261,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			// _unstable tests can never be CQ critical.
 			// dlc tests are temporarily informational while under development.
 			var extraAttr []string
-			if (!i.stable || i.vmMode == "dlc") && canBeCritical {
+			if !i.stable && canBeCritical {
 				extraAttr = append(extraAttr, "informational")
 			}
 

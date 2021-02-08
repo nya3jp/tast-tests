@@ -57,7 +57,6 @@ func init() {
 				},
 			}, {
 				Name:              "local_wayland_dlc_stretch_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false), "launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -114,7 +113,6 @@ func init() {
 				},
 			}, {
 				Name:              "local_wayland_dlc_buster_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false), "launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -171,7 +169,6 @@ func init() {
 				},
 			}, {
 				Name:              "local_x11_dlc_stretch_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false), "launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -228,7 +225,6 @@ func init() {
 				},
 			}, {
 				Name:              "local_x11_dlc_buster_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false), "launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -285,7 +281,6 @@ func init() {
 				},
 			}, {
 				Name:              "system_wayland_dlc_stretch_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false), "launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -342,7 +337,6 @@ func init() {
 				},
 			}, {
 				Name:              "system_wayland_dlc_buster_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false), "launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -399,7 +393,6 @@ func init() {
 				},
 			}, {
 				Name:              "system_x11_dlc_stretch_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false), "launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -456,7 +449,6 @@ func init() {
 				},
 			}, {
 				Name:              "system_x11_dlc_buster_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false), "launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,

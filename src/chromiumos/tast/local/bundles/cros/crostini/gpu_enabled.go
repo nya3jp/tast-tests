@@ -36,7 +36,6 @@ func init() {
 				Val:               "llvmpipe",
 			}, {
 				Name:              "sw_dlc_stretch_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false)},
 				ExtraSoftwareDeps: []string{"crosvm_no_gpu", "dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -71,7 +70,6 @@ func init() {
 				Val:               "llvmpipe",
 			}, {
 				Name:              "sw_dlc_buster_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
 				ExtraSoftwareDeps: []string{"crosvm_no_gpu", "dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -106,7 +104,6 @@ func init() {
 				Val:               "virgl",
 			}, {
 				Name:              "gpu_dlc_stretch_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false)},
 				ExtraSoftwareDeps: []string{"crosvm_gpu", "dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -141,7 +138,6 @@ func init() {
 				Val:               "virgl",
 			}, {
 				Name:              "gpu_dlc_buster_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
 				ExtraSoftwareDeps: []string{"crosvm_gpu", "dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,

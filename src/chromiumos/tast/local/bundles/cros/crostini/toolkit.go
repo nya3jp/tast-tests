@@ -50,7 +50,6 @@ func init() {
 				},
 			}, {
 				Name:              "gtk3_wayland_dlc_stretch_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false), "toolkit_gtk3_demo.py"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -103,7 +102,6 @@ func init() {
 				},
 			}, {
 				Name:              "gtk3_wayland_dlc_buster_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false), "toolkit_gtk3_demo.py"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -156,7 +154,6 @@ func init() {
 				},
 			}, {
 				Name:              "gtk3_x11_dlc_stretch_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false), "toolkit_gtk3_demo.py"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -209,7 +206,6 @@ func init() {
 				},
 			}, {
 				Name:              "gtk3_x11_dlc_buster_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false), "toolkit_gtk3_demo.py"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -262,7 +258,6 @@ func init() {
 				},
 			}, {
 				Name:              "qt5_dlc_stretch_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false), "toolkit_qt5_demo.py"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -315,7 +310,6 @@ func init() {
 				},
 			}, {
 				Name:              "qt5_dlc_buster_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false), "toolkit_qt5_demo.py"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -368,7 +362,6 @@ func init() {
 				},
 			}, {
 				Name:              "tkinter_dlc_stretch_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("stretch", false), crostini.GetContainerRootfsArtifact("stretch", false), "toolkit_tkinter_demo.py"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -421,7 +414,6 @@ func init() {
 				},
 			}, {
 				Name:              "tkinter_dlc_buster_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false), "toolkit_tkinter_demo.py"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
