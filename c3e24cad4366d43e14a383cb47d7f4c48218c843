@@ -16,6 +16,23 @@
       "message": "Thanks for the review, responded to feedback. Adding tast-owners for official +2",
       "revId": "c3e24cad4366d43e14a383cb47d7f4c48218c843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4825d1d_0fca1c3c",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T01:09:38Z",
+      "side": 1,
+      "message": "optional:\nI prefer doing as many things in Golang rather than injected js as possible because it\u0027s auto formatted and statically type checked.\n\nI would make `voiceData` type structure compatible with TtsVoice, get an array of voiceData here, and do the rest of stuff in Golang.",
+      "revId": "c3e24cad4366d43e14a383cb47d7f4c48218c843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
