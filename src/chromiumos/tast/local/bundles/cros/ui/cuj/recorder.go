@@ -99,6 +99,7 @@ type Recorder struct {
 	frameDataTracker   *FrameDataTracker
 	zramInfoTracker    *ZramInfoTracker
 	batteryInfoTracker *BatteryInfoTracker
+	loginTimeTracker   *LoginTimeTracker
 }
 
 func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
@@ -158,6 +159,11 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 		return nil, errors.Wrap(err, "failed to create BatteryInfoTracker")
 	}
 
+	loginTimeTracker, err := NewLoginTimeTracker(ctx, metricPrefix)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create LoginTimeTracker")
+	}
+
 	r := &Recorder{
 		tconn:              tconn,
 		names:              make([]string, 0, len(configs)),
@@ -167,6 +173,7 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 		frameDataTracker:   frameDataTracker,
 		zramInfoTracker:    zramInfoTracker,
 		batteryInfoTracker: batteryInfoTracker,
+		loginTimeTracker:   loginTimeTracker,
 	}
 	for _, config := range configs {
 		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
@@ -206,6 +213,10 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 
 	if err := r.batteryInfoTracker.Start(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start BatteryInfoTracker")
+	}
+
+	if err := r.loginTimeTracker.Start(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start LoginTimeTracker")
 	}
 
 	if err := r.timeline.StartRecording(ctx); err != nil {
@@ -283,6 +294,13 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		}
 	}
 
+	if err := r.loginTimeTracker.Stop(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to stop LoginTimeTracker: ", err)
+		if stopErr == nil {
+			stopErr = errors.Wrap(err, "failed to stop LoginTimeTracker")
+		}
+	}
+
 	vs, err := r.timeline.StopRecording(ctx)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to stop timeline: ", err)
@@ -328,6 +346,7 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 	r.frameDataTracker.Record(pv)
 	r.zramInfoTracker.Record(pv)
 	r.batteryInfoTracker.Record(pv)
+	r.loginTimeTracker.Record(pv)
 
 	return nil
 }
