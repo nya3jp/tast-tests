@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d921e3_8aef20a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T00:57:22Z",
+      "side": 1,
+      "message": "I\u0027m sorry my wording was not accurate.\n\nWhat I wanted to say here was, for example, if an error happens while finding or clicking the \"Yes\" button in the dialog, then there is a chance that this test leaves the dialog and next tests would be affected by it.\n\nBut on the other hand, I don\u0027t have a good idea to clean it up correctly here. I guess doing something in precondition would work, but I\u0027m not strong familiar with it.\nFor this CL, I slightly prefer to go back to use defer so that \u0027autoClick\u0027 should be disabled, though the dialog may remain.\n\nThanks!",
+      "parentUuid": "9980574b_08af093b",
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fc789ad_aa14978b",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Thanks for the reference.\n\nHowever, I think this is something we should test. We should be verifying that the confirmation dialog shows up and that it\u0027s possible to deactivate autoclick through the UI.",
       "parentUuid": "7fc789ad_aa14978b",
+      "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "415cd9ce_9dd3d216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T00:57:22Z",
+      "side": 1,
+      "message": "Got it. Thank you for explaining!",
+      "parentUuid": "8e72142b_37049ebf",
       "revId": "6a7144475ed8ad94cc0852367818739998a2d8d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
