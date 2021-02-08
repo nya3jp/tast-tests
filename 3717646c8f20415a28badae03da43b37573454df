@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8178238b_809638ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-08T23:42:54Z",
+      "side": 1,
+      "message": "I don\u0027t think this will be a problem for us since basically this equates to when `timeout \u003d\u003d MAX_TIMEOUT` here: http://google3/third_party/py/mobly/controllers/android_device_lib/callback_handler.py?l\u003d89\u0026rcl\u003d356174346\n\nThere\u0027s no default socket read deadline AFAICT for Go\u0027s TCP conn, and we\u0027ll always be setting it explicitly here anyways. WDYT?",
+      "parentUuid": "337b3816_dda101c8",
+      "range": {
+        "startLine": 307,
+        "startChar": 39,
+        "endLine": 307,
+        "endChar": 46
+      },
+      "revId": "3717646c8f20415a28badae03da43b37573454df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "870ffe91_1e168e95",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-06T11:19:09Z",
       "side": 1,
       "message": "nit: How about \u0027defaultRpcResponseTimeout\u0027, is this more descriptive name?",
+      "range": {
+        "startLine": 362,
+        "startChar": 6,
+        "endLine": 362,
+        "endChar": 28
+      },
+      "revId": "3717646c8f20415a28badae03da43b37573454df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00319b44_ebc82006",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-08T23:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "870ffe91_1e168e95",
       "range": {
         "startLine": 362,
         "startChar": 6,
