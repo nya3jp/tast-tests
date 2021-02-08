@@ -68,6 +68,24 @@
       "message": "cc: yulunwu (shadow gardener)",
       "revId": "bb5537370079dfc644b268c3f8d339e2f7316876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "673085ce_384aba8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-02-08T23:29:48Z",
+      "side": 1,
+      "message": "The test main scenario is to check the ownership of some files and directories in a Guest session. Logging Chrome in is clearly a precondition.\n\nThe test also hasn\u0027t changed in months, so if it started failing recently, something else must have changed.\n\nI won\u0027t make the job of the sheriff harder but clearly something is failing that\u0027s independent of this test. Marking it informational will just hide (but not fix) the underlying problem.\n\nTast infra flake should be addressed by Tast owners.",
+      "parentUuid": "7c2fd5a6_3ae735c6",
+      "revId": "bb5537370079dfc644b268c3f8d339e2f7316876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
