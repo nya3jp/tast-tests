@@ -98,6 +98,9 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 	}
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
 		s.Fatal("Failed to click on KEYCODE_ENTER button: ", err)
+	} else {
+		s.Log("Entered KEYCODE_ENTER")
+		d.WaitForIdle(ctx, 10*time.Second)
 	}
 
 	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText), ui.Enabled(true))
