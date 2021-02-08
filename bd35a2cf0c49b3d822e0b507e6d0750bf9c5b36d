@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ecf97f6_a589b771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_accelerator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-08T13:45:31Z",
+      "side": 1,
+      "message": "ui package is slowing deprecating. Can you consider using uiauto library here?\ngo/tast-ui2",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "bd35a2cf0c49b3d822e0b507e6d0750bf9c5b36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "714358af_5c96154b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_accelerator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-08T13:45:31Z",
+      "side": 1,
+      "message": "I can\u0027t find the call site of this variable. Am I missing something?",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "bd35a2cf0c49b3d822e0b507e6d0750bf9c5b36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "811bb973_4cef7786",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_accelerator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-08T13:45:31Z",
+      "side": 1,
+      "message": "Sleep is often the source of flakiness. Can you do a poll here to check the device is past oobe here?",
+      "revId": "bd35a2cf0c49b3d822e0b507e6d0750bf9c5b36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
