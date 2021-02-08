@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99136d21_9189f7fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2021-02-08T06:59:38Z",
+      "side": 1,
+      "message": "I forgot to handle one case in the previous commit (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2670482).",
+      "revId": "7c4ef8bdd204d6c80a02e13ec3ee1cfd334f2acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
