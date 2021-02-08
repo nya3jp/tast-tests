@@ -47,7 +47,7 @@ var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
 var regExpPSNR = regexp.MustCompile(`\nGlbPSNR: (\d+\.\d+)`)
 
 // commandBuilderFn is the function type to generate the command line with arguments.
-type commandBuilderFn func(exe, yuvFile string, size coords.Size) (command []string, ivfFile string)
+type commandBuilderFn func(exe, yuvFile string, size coords.Size) (command []string, ivfFile string, bitrate int)
 
 // testParam is used to describe the config used to run each test.
 type testParam struct {
@@ -237,7 +237,7 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	}
 	defer os.Remove(yuvFile)
 
-	command, encodedFile := testOpt.commandBuilder(testOpt.command, yuvFile, testOpt.size)
+	command, encodedFile, targetBitrate := testOpt.commandBuilder(testOpt.command, yuvFile, testOpt.size)
 
 	energy, raplErr := power.NewRAPLSnapshot()
 	if raplErr != nil || energy == nil {
@@ -300,6 +300,16 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		energyDiff.ReportWattPerfMetrics(p, "", timeDelta)
 	}
 
+	actualBitrate, err := calculateBitrate(encodedFile, 30.0, 500)
+	if err != nil {
+		s.Fatal("Failed to calculate the resulting bitrate: ", err)
+	}
+	p.Set(perf.Metric{
+		Name:      "bitrate_deviation",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, (100.0*actualBitrate/float64(targetBitrate))-100.0)
+
 	s.Log(p)
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save perf results: ", err)
@@ -343,6 +353,15 @@ func extractValue(logFile string, r *regexp.Regexp) (value float64, err error) {
 	return
 }
 
+// calculateBitrate calculates the bitrate of yuvfile.
+func calculateBitrate(encodedFile string, fileFPS float64, numFrames int) (value float64, err error) {
+	s, err := os.Stat(encodedFile)
+	if err != nil {
+		return 0.0, errors.Wrapf(err, "failed to get stats for file %s", encodedFile)
+	}
+	return float64(s.Size()) * 8 /* bits per byte */ * fileFPS / float64(numFrames), nil
+}
+
 // compareFiles decodes encodedFile using decoder and compares it with yuvFile using tiny_ssim.
 func compareFiles(ctx context.Context, decoder, yuvFile, encodedFile, outDir string, size coords.Size) (logFile string, err error) {
 	yuvFile2 := yuvFile + ".2"
@@ -382,7 +401,7 @@ func compareFiles(ctx context.Context, decoder, yuvFile, encodedFile, outDir str
 }
 
 // vp8argsVAAPI constructs the command line for the VP8 encoding binary exe.
-func vp8argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, ivfFile string) {
+func vp8argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, ivfFile string, bitrate int) {
 	command = append(command, exe, strconv.Itoa(size.Width), strconv.Itoa(size.Height), yuvFile)
 
 	ivfFile = yuvFile + ".ivf"
@@ -397,13 +416,13 @@ func vp8argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, ivfF
 	command = append(command, "--error_resilient" /* Off by default, enable. */)
 
 	// From Chromecast, corresponds to a little more than 0.1 BPP.
-	bitrate := 256 * size.Width * size.Height / (320.0 * 240.0)
+	bitrate = 256 * size.Width * size.Height / (320.0 * 240.0)
 	command = append(command, "--fb", strconv.Itoa(bitrate) /* Kbps */)
 	return
 }
 
 // vp9argsVAAPI constructs the command line for the VP9 encoding binary exe.
-func vp9argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, ivfFile string) {
+func vp9argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, ivfFile string, bitrate int) {
 	command = append(command, exe, strconv.Itoa(size.Width), strconv.Itoa(size.Height), yuvFile)
 
 	ivfFile = yuvFile + ".ivf"
@@ -421,13 +440,13 @@ func vp9argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, ivfF
 	// encoding. Let exe decide which one to use (auto mode).
 	command = append(command, "--low_power", "-1")
 
-	bitrate := int(1.3 * float64(size.Width) * float64(size.Height) / 1000.0)
-	command = append(command, "--fb", strconv.Itoa(bitrate) /* Kbps */)
+	bitrate = int(1.3 * float64(size.Width) * float64(size.Height))
+	command = append(command, "--fb", strconv.Itoa(bitrate/1000.0) /* in Kbps */)
 	return
 }
 
 // h264argsVAAPI constructs the command line for the H.264 encoding binary exe.
-func h264argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, h264File string) {
+func h264argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, h264File string, bitrate int) {
 	command = append(command, exe, "-w", strconv.Itoa(size.Width), "-h", strconv.Itoa(size.Height))
 	command = append(command, "--srcyuv", yuvFile, "--fourcc", "YV12")
 	command = append(command, "-n", "0" /* Read number of frames from yuvFile*/)
@@ -442,13 +461,13 @@ func h264argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, h26
 	command = append(command, "--profile", "BP" /* (Constrained) Base Profile. */)
 
 	command = append(command, "--rcmode", "CBR" /* Constant BitRate */)
-	bitrate := int(0.1 /* BPP */ * 30 * float64(size.Width) * float64(size.Height))
+	bitrate = int(0.1 /* BPP */ * 30 * float64(size.Width) * float64(size.Height))
 	command = append(command, "--bitrate", strconv.Itoa(bitrate) /* bps */)
 	return
 }
 
 // vp8argsVpxenc constructs the command line for vpxenc.
-func vp8argsVpxenc(exe, yuvFile string, size coords.Size) (command []string, ivfFile string) {
+func vp8argsVpxenc(exe, yuvFile string, size coords.Size) (command []string, ivfFile string, bitrate int) {
 	command = append(command, exe, "-w", strconv.Itoa(size.Width), "-h", strconv.Itoa(size.Height))
 
 	command = append(command, "--passes=1" /* 1 encoding pass */)
@@ -472,8 +491,8 @@ func vp8argsVpxenc(exe, yuvFile string, size coords.Size) (command []string, ivf
 	}
 
 	// From Chromecast, corresponds to a little more than 0.1 BPP.
-	bitrate := int(256 * size.Width * size.Height / (320.0 * 240.0))
-	command = append(command, fmt.Sprintf("--target-bitrate=%d", bitrate) /* Kbps */)
+	bitrate = 1000 * int(256*size.Width*size.Height/(320.0*240.0))
+	command = append(command, fmt.Sprintf("--target-bitrate=%d", bitrate/1000) /* Kbps */)
 
 	ivfFile = yuvFile + ".ivf"
 	command = append(command, "--ivf", "-o", ivfFile)
