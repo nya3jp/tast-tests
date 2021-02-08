@@ -33,6 +33,23 @@
       "message": "Not sure if I need to add cwd@ as test owner too.",
       "revId": "75e856f9630c30023e87229327c4189c391c490b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff5ec30_7d3f4650",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-02-08T21:42:12Z",
+      "side": 1,
+      "message": "+2 (adding owner into the loop)",
+      "revId": "75e856f9630c30023e87229327c4189c391c490b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
