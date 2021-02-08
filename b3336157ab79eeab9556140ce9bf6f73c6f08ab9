@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4faacc5f_32ff4907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-08T16:24:28Z",
+      "side": 1,
+      "message": "Looks very similar to arc.ChromeCrash. Can these be consolited?\n\n// Wait for Chrome.\nif loggedIn {\n  func () {\n    cr, err :\u003d chrome.New(...)\n    if err !\u003d nil {\n      ...\n　　 }\n    defer cr.Close(...)\n    a, err :\u003d arc.New(...)\n    if err !\u003d nil {\n      ...\n    }\n    defer a.Close()\n  }()\n} else {\n  ... testing.Poll(... {\n    ... arc.InitPID()\n  })\n}\n\nL64 and later except L69-L73 can be identical.\n\nYou may be able to use parameterized tests.\nOr, you may want to introduce a small subpackage to share the common code.",
+      "revId": "b3336157ab79eeab9556140ce9bf6f73c6f08ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
