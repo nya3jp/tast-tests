@@ -122,6 +122,16 @@ func init() {
 			Val:               encode.MakeTestOptions(crowd2160P, videotype.VP9Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9_4K},
 			ExtraData:         encode.TestData(crowd2160P),
+		}, {
+			Name:              "vp9_720p_two_temporal_layers",
+			Val:               encode.MakeTestOptionsWithTemporalLayers(tulip720P, videotype.VP9Prof, 2),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			ExtraData:         encode.TestData(tulip720P),
+		}, {
+			Name:              "vp9_720p_three_temporal_layers",
+			Val:               encode.MakeTestOptionsWithTemporalLayers(tulip720P, videotype.VP9Prof, 3),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			ExtraData:         encode.TestData(tulip720P),
 		}},
 	})
 }
