@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95cce8be_f8c3d702",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-08T17:36:52Z",
+      "side": 1,
+      "message": "Does this test really need to install an app through play store? I would advise doing any sort of local test you can instead of interacting with play store.\n\nPlay Store is a known source of flakiness and has rate limiting that will cause problems. Having arc.DataMigration and arc.PlayStore tests both using the same account will likely increase the number of times rate limiting is hit.\n\nIf you have to install through play store, switching accounts will likely help some with flakiness.",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "54b0d8c8b328fdadfb9d1aeb88d04ab4c956932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b513c484_e0cfae63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-08T17:36:52Z",
+      "side": 1,
+      "message": "LGTM, just some minor concerns around potential play store rate limiting.",
+      "revId": "54b0d8c8b328fdadfb9d1aeb88d04ab4c956932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ea30a02_137446b9",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-08T17:36:52Z",
+      "side": 1,
+      "message": "I am a little concerned about this change because I think it might lead to more regularly hitting play store rate limiting. IIRC, the retry button generally(though not always) showed up when play store was rate limiting us.\n\nIf you continue with this change, can you also change the account that arc.DataMigration uses to decouple it from the arc.PlayStore test?",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 3
+      },
+      "revId": "54b0d8c8b328fdadfb9d1aeb88d04ab4c956932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
