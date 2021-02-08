@@ -123,6 +123,12 @@ func (h *Helper) RemoveFile(ctx context.Context, filename string) error {
 	return err
 }
 
+// RemoveDir would delete the directory
+func (h *Helper) RemoveDir(ctx context.Context, filename string) error {
+	_, err := h.CmdRunner.Run(ctx, "rm", "-rf", "--", filename)
+	return err
+}
+
 // ReadFile would read data from the file
 func (h *Helper) ReadFile(ctx context.Context, filename string) ([]byte, error) {
 	return h.CmdRunner.Run(ctx, "cat", "--", filename)
@@ -138,6 +144,25 @@ func (h *Helper) WriteFile(ctx context.Context, filename string, data []byte) er
 	cmd := fmt.Sprintf("%s | %s", echoStrCmd, b64DecCmd)
 	if _, err := h.CmdRunner.Run(ctx, "sh", "-c", cmd); err != nil {
 		return errors.Wrap(err, "failed to echo string")
+	}
+	return nil
+}
+
+// CleanupUserPaths would clean up user root and home paths.
+func (h *Helper) CleanupUserPaths(ctx context.Context, user string) error {
+	userPath, err := h.CryptohomeUtil.GetHomeUserPath(ctx, user)
+	if err != nil {
+		return errors.Wrap(err, "failed to get user home path")
+	}
+	systemPath, err := h.CryptohomeUtil.GetRootUserPath(ctx, user)
+	if err != nil {
+		return errors.Wrap(err, "failed to get user root path")
+	}
+	if err := h.RemoveDir(ctx, userPath); err != nil {
+		return errors.Wrap(err, "failed to remove user home path")
+	}
+	if err := h.RemoveDir(ctx, systemPath); err != nil {
+		return errors.Wrap(err, "failed to remove user root path")
 	}
 	return nil
 }
