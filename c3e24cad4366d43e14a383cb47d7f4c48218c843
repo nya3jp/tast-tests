@@ -33,6 +33,24 @@
       "message": "optional:\nI prefer doing as many things in Golang rather than injected js as possible because it\u0027s auto formatted and statically type checked.\n\nI would make `voiceData` type structure compatible with TtsVoice, get an array of voiceData here, and do the rest of stuff in Golang.",
       "revId": "c3e24cad4366d43e14a383cb47d7f4c48218c843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e1ef424_11665a2f",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T01:41:55Z",
+      "side": 1,
+      "message": "(just to make clear what I mean) I would make voiceData like below:\n\ntype VoiceData struct {\n\tExtID  string `json:\"extensionId\"`\n\tLocale string `json:\"lang\"`\n\tname   string `json:\"voiceName\"`\n}\n\nand in SetVoice:\n\nvar voices []VoiceData\nif err :\u003d cv.Eval(ctx, \"tast.promisify(chrome.tts.getVoices)()\", \u0026voices); err !\u003d nil .....",
+      "parentUuid": "b4825d1d_0fca1c3c",
+      "revId": "c3e24cad4366d43e14a383cb47d7f4c48218c843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
