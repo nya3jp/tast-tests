@@ -34,6 +34,24 @@
       "parentUuid": "ac39bccd_e34fda78",
       "revId": "e1e96f8b9515c6e30e615dccae61cb05050a9b0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19301853_8800654f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-02-08T00:28:06Z",
+      "side": 1,
+      "message": "Can we swap the component tests to informational? My plan is to turn on DLC by default in chrome after landing this, so if we really can\u0027t have both then having just DLC seems preferable.",
+      "parentUuid": "251b2d7c_6877cbae",
+      "revId": "e1e96f8b9515c6e30e615dccae61cb05050a9b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
