@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/remote/bundles/cros/hwsec/util"
 	hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -26,6 +27,8 @@ func init() {
 		},
 		Attr:         []string{"group:hwsec_destructive_func"},
 		SoftwareDeps: []string{"tpm", "reboot"},
+		// Skip "enguarde" due to the reboot issue when removing the key.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("enguarde")),
 	})
 }
 
@@ -267,6 +270,10 @@ func CryptohomeKeysAndMountValidity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
 	}
 	s.Log("TPM is confirmed to be reset")
+
+	if helper.CleanupUserPaths(ctx, util.FirstUsername); err != nil {
+		s.Fatal("Failed to cleanup user paths: ", err)
+	}
 
 	// Create the user and check it is correctly mounted and can be unmounted.
 	func() {
