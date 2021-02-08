@@ -311,7 +311,11 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		builtin = append(builtin, "SLAB_FREELIST_HARDENED")
 		// Security; initialize uninitialized local variables, variable fields, and padding.
 		// (Clang only).
-		builtin = append(builtin, "INIT_STACK_ALL")
+		if ver.IsOrLater(5, 9) {
+			builtin = append(builtin, "INIT_STACK_ALL_PATTERN")
+		} else {
+			builtin = append(builtin, "INIT_STACK_ALL")
+		}
 		if arch != "armv7l" {
 			// Security; randomizes the virtual address at which the kernel image is loaded.
 			builtin = append(builtin, "RANDOMIZE_BASE")
