@@ -81,7 +81,7 @@ func ColorNote(ctx context.Context, s *testing.State) {
 func launchAppForColorNote(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		allowText = "ALLOW"
-		iconNavID = "com.socialnmobile.dictapps.notepad.color.note:id/icon_nav"
+		iconNavID = "com.socialnmobile.dictapps.notepad.color.note:id/bottom_fab"
 	)
 
 	// Click on allow button to access your photos, media and files.
