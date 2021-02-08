@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac39bccd_e34fda78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-08T00:15:06Z",
+      "side": 1,
+      "message": "The Crostini tests are already quite flaky, doubling the number that are critical will double the flakiness, even if the underlying flakiness is unrelated to DLC.\n\nI see 2 options here:\n1. Promote a single DLC test to get functional coverage without introducing too much extra flakiness\n2. Fix the flakiness in the Crostini tests generally",
+      "revId": "e1e96f8b9515c6e30e615dccae61cb05050a9b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
