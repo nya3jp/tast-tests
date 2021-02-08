@@ -101,7 +101,7 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 	}
 
 	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText), ui.Enabled(true))
-	if err := installButton.Exists(ctx); err != nil {
+	if err := installButton.WaitForExists(ctx, 10*time.Second); err != nil {
 		s.Fatal("Install Button Exisits: ", err)
 	}
 	if err := installButton.Click(ctx); err != nil {
