@@ -6,6 +6,9 @@ package arc
 
 import (
 	"context"
+	"os"
+	"os/exec"
+	"path/filepath"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -101,4 +104,28 @@ func (f *bootedFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 func (f *bootedFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
 	// hooks in fixtures.
+
+	if s.HasError() {
+		faillogDir := filepath.Join(s.OutDir(), "faillog")
+		if err := os.MkdirAll(faillogDir, 0755); err != nil {
+			s.Error("Failed to make faillog/ directory: ", err)
+			return
+		}
+		if err := saveProcessList(ctx, faillogDir); err != nil {
+			s.Error("Failed to save the process list in ARCVM: ", err)
+		}
+	}
+}
+
+func saveProcessList(ctx context.Context, outDir string) error {
+	path := filepath.Join(outDir, "arcvm-ps.txt")
+	file, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	cmd := exec.Command("adb", "shell", "ps -AfZ")
+	cmd.Stdout = file
+	return cmd.Run()
 }
