@@ -43,6 +43,18 @@ executable("kernel.PerfCallgraph.graph") {
   ]
 }
 
+executable("multivm.Lifecycle.crostini") {
+  cflags = [
+    "-g",
+  ]
+  ldflags = [
+    "-static",  # So we can run inside Crostini without worrying about libraries.
+  ]
+  sources = [
+    "multivm.Lifecycle.crostini.c",
+  ]
+}
+
 executable("platform.UserCrash.crasher") {
   sources = [
     "platform.UserCrash.crasher.bomb.cc",
@@ -160,6 +172,9 @@ group("all") {
   ]
   # Sanitizer builds do not support static linking.
   if (!(use.asan || use.msan || use.ubsan)) {
-    deps += [":security.Minijail.staticbashexec"]
+    deps += [
+      ":multivm.Lifecycle.crostini",
+      ":security.Minijail.staticbashexec",
+    ]
   }
 }
