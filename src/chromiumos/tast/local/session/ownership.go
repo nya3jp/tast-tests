@@ -26,7 +26,7 @@ import (
 
 const (
 	// PolicyPath is a directory containing policy files.
-	PolicyPath = "/var/lib/whitelist"
+	PolicyPath = "/var/lib/policydata"
 
 	// localStatePath is a file containing local state JSON.
 	localStatePath = "/home/chronos/Local State"

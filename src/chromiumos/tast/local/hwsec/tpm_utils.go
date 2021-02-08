@@ -291,6 +291,6 @@ func resetDaemonsAndSystemStates(ctx context.Context) error {
 		}
 	}
 
-	// Clears /var/lib/whitelist and /home/chronos/Local States.
+	// Clears /var/lib/policydata and /home/chronos/Local States.
 	return session.ClearDeviceOwnership(ctx)
 }

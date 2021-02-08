@@ -341,9 +341,9 @@ func errorLogAppendError(path, msg string) error {
 // Tests that do not work with policies might still be affected by them, so this brings the device back to the default state.
 // It is possible that device is already enrolled, but to unenroll the device we need a reboot, so we can do nothing here.
 func clearPolicies(ctx context.Context) {
-	// /var/lib/whitelist is a directory containing device policies.
+	// /var/lib/policydata is a directory containing device policies.
 	// /home/chronos/Local State is a file containing local state JSON including user policy data.
-	policyFiles := []string{"/var/lib/whitelist", "/home/chronos/Local State"}
+	policyFiles := []string{"/var/lib/policydata", "/home/chronos/Local State"}
 
 	// Clear error log for this function.
 	if err := os.RemoveAll(ClearPoliciesLogLocation); err != nil {

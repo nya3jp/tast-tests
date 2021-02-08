@@ -76,7 +76,7 @@ func deviceSetUp(ctx context.Context, user, pass, p12Path string, key *rsa.Publi
 
 // createOwnerKey creates ownership data of the DUT. Specifically, this
 // pushes PKCS #12 certification data into NSS database, and creates
-// /var/lib/whitelist/owner.key file.
+// /var/lib/policydata/owner.key file.
 func createOwnerKey(ctx context.Context, user, p12Path string, pubkey *rsa.PublicKey) error {
 	testing.ContextLog(ctx, "Creating owner.key file")
 
@@ -114,10 +114,10 @@ func pushToNSS(ctx context.Context, user, p12Path string) error {
 	return nil
 }
 
-// setupOwnerKey creates /var/lib/whitelist/owner.key file with given DER.
+// setupOwnerKey creates /var/lib/policydata/owner.key file with given DER.
 func setupOwnerKey(der []byte) error {
 	// Ensure parent dir exists.
-	const allowlistDir = "/var/lib/whitelist"
+	const allowlistDir = "/var/lib/policydata"
 	if _, err := os.Stat(allowlistDir); err != nil {
 		if !os.IsNotExist(err) {
 			return errors.Wrapf(err, "failed to stat %s", allowlistDir)
