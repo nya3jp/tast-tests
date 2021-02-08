@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5099d69_f47670fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-08T17:48:45Z",
+      "side": 1,
+      "message": "LGTM modulo comments (spec. naming).",
+      "revId": "5d841ba35aa20830f8eee70f15b1f1f15e24dc58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd11af71_1ca28a3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-08T17:48:45Z",
+      "side": 1,
+      "message": "I found out that not many devs know about what layers mean, so perhaps\nwe could leave here a link to e.g. https://www.w3.org/TR/webrtc-svc/, WDYT?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "5d841ba35aa20830f8eee70f15b1f1f15e24dc58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3470824c_66533858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-08T17:48:45Z",
+      "side": 1,
+      "message": "nit: Same as in previous CL, s/New/Make/ or s/New/Get/?",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "5d841ba35aa20830f8eee70f15b1f1f15e24dc58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
