@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63facd4_a1945561",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-08T23:37:32Z",
+      "side": 1,
+      "message": "The root cause seems to be beyond our scope. Disabling the power tests on kukui for now.",
+      "revId": "35664e5194cf6fed3099aa6d4c9582ce00a1952b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
