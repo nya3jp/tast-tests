@@ -22,13 +22,14 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Data:         []string{"capybara.jpg"},
-		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraAttr:         []string{"informational"},
+			// TODO(b/179499110): Reenable when the test is fixed.
+			// ExtraAttr:         []string{"group:mainline", "informational"},
 		}},
 	})
 }
