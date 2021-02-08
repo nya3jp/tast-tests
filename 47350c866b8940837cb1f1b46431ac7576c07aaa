@@ -41,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d5c9aef_68578177",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-08T06:47:04Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "47350c866b8940837cb1f1b46431ac7576c07aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "042f5db5_57ebb61f",
@@ -54,6 +71,24 @@
       "writtenOn": "2021-02-08T06:37:34Z",
       "side": 1,
       "message": "how about 5 second for setup/teardown?",
+      "revId": "47350c866b8940837cb1f1b46431ac7576c07aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6667df36_32c2fc97",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-08T06:47:04Z",
+      "side": 1,
+      "message": "That seems very short, how about ResetTimeout (\u003d15s). Starting/Stopping Chrome can take a few seconds. It should not be as slow as Login though.",
+      "parentUuid": "042f5db5_57ebb61f",
       "revId": "47350c866b8940837cb1f1b46431ac7576c07aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
