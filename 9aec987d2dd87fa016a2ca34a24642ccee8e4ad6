@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56221a30_92744934",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-08T17:43:15Z",
+      "side": 1,
+      "message": "+1 % the naming argument",
+      "revId": "9aec987d2dd87fa016a2ca34a24642ccee8e4ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a785a5_5f954461",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-08T17:43:15Z",
+      "side": 1,
+      "message": "nit: since the tests are not called \"New\" anymore, what about \ns/NewTestOptions/MakeTestOptions/ ? (Go might have a different\nfactory-like naming syntax, like \"GetTestOptions\").",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "9aec987d2dd87fa016a2ca34a24642ccee8e4ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
