@@ -116,6 +116,8 @@ func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.Te
 	enterEmailAddress := d.Object(ui.ID(enterEmailID))
 	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("EnterEmailAddress doesn't exist: ", err)
+	} else if err := enterEmailAddress.Click(ctx); err != nil {
+		s.Fatal("Failed to click on enterEmailAddress: ", err)
 	} else if err := enterEmailAddress.SetText(ctx, AutocadEmailID); err != nil {
 		s.Fatal("Failed to enterEmailAddress: ", err)
 	}
