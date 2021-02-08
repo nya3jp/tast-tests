@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d230a68d_c7fe6c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_ok.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T02:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aec8f168_02c1d5e8",
+      "range": {
+        "startLine": 117,
+        "startChar": 18,
+        "endLine": 117,
+        "endChar": 25
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69516b30_3d3e509d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2ee2be_5eb17a53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_cancel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T02:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69516b30_3d3e509d",
+      "range": {
+        "startLine": 128,
+        "startChar": 18,
+        "endLine": 128,
+        "endChar": 25
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fef56d0_e37eaa10",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-05T21:13:14Z",
       "side": 1,
       "message": "I\u0027m surprised this is needed, it wasn\u0027t in the old ui lib.",
+      "range": {
+        "startLine": 444,
+        "startChar": 9,
+        "endLine": 444,
+        "endChar": 21
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea53dafb_dc92b85c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T02:05:42Z",
+      "side": 1,
+      "message": "The new code does not find the object in advance which might takes a bit time and it takes some time for some items (e.g, the slider on crostini installer) to show.",
+      "parentUuid": "2fef56d0_e37eaa10",
       "range": {
         "startLine": 444,
         "startChar": 9,
@@ -119,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ae4da1c_26ef00c1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T02:05:42Z",
+      "side": 1,
+      "message": "I think it would be clearer if it is a struct instead of just constant. Used an instance of a struct.\nPTAL!",
+      "parentUuid": "b3b8765a_e93d46d7",
+      "range": {
+        "startLine": 546,
+        "startChar": 6,
+        "endLine": 549,
+        "endChar": 59
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c3d99f8_5666cc16",
         "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
         "patchSetId": 4
@@ -130,6 +226,30 @@
       "writtenOn": "2021-02-08T00:07:25Z",
       "side": 1,
       "message": "customText or customStaticText?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 7
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b23de37_b1e529ac",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T02:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c3d99f8_5666cc16",
       "range": {
         "startLine": 70,
         "startChar": 1,
@@ -163,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a444640e_513ac8b5",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T02:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc89556f_9ffc8fac",
+      "range": {
+        "startLine": 85,
+        "startChar": 64,
+        "endLine": 85,
+        "endChar": 73
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "632a10f1_48aafe76",
@@ -176,6 +320,30 @@
       "writtenOn": "2021-02-08T00:07:25Z",
       "side": 1,
       "message": "As a matter of style, what do you think of always declaring the finders as variables on preceding lines rather than writing them inline?  I find it much more readable.",
+      "range": {
+        "startLine": 138,
+        "startChar": 33,
+        "endLine": 138,
+        "endChar": 86
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddfc7344_23f071f6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T02:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "632a10f1_48aafe76",
       "range": {
         "startLine": 138,
         "startChar": 33,
@@ -209,6 +377,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91190dd4_24eff8df",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T02:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21646b85_c5842d75",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 8
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff2ba280_db646f7e",
@@ -222,6 +414,30 @@
       "writtenOn": "2021-02-05T21:13:14Z",
       "side": 1,
       "message": "this is ossettings.WindowFinder, so you shouldn\u0027t need to define it again locally.",
+      "range": {
+        "startLine": 55,
+        "startChar": 113,
+        "endLine": 55,
+        "endChar": 127
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1bb7ce5_481abff3",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T02:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff2ba280_db646f7e",
       "range": {
         "startLine": 55,
         "startChar": 113,
@@ -257,6 +473,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40f43b75_4fbdc845",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T02:05:42Z",
+      "side": 1,
+      "message": "Currently the code calling UnshareFolder does not have any chain-able method. I\u0027d prefer to leave it as it is for now.",
+      "parentUuid": "ea8bbc9c_56583479",
+      "range": {
+        "startLine": 183,
+        "startChar": 69,
+        "endLine": 183,
+        "endChar": 74
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b2f8a92_af0d5cb1",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 4
@@ -268,6 +508,30 @@
       "writtenOn": "2021-02-05T21:13:14Z",
       "side": 1,
       "message": "I\u0027m not sure this makes sense in the new library, why not just define these as constants?",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 1
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c853d6_9aa013b6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T02:05:42Z",
+      "side": 1,
+      "message": "Defined a instance of the struct.",
+      "parentUuid": "2b2f8a92_af0d5cb1",
       "range": {
         "startLine": 194,
         "startChar": 5,
