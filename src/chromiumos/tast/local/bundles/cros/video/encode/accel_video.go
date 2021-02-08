@@ -37,6 +37,14 @@ type TestOptions struct {
 	Profile  videotype.CodecProfile
 }
 
+// NewTestOptions creates TestOptions from webMName and profile.
+func NewTestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
+	return TestOptions{
+		WebMName: webMName,
+		Profile:  profile,
+	}
+}
+
 // TestData returns the files used in video.EncodeAccel(Perf), the webm file and the json file returned by encode.YUVJSONFileNameFor().
 func TestData(webmFileName string) []string {
 	return []string{webmFileName, YUVJSONFileNameFor(webmFileName)}

@@ -33,147 +33,93 @@ func init() {
 		Timeout:      10 * time.Minute,
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Params: []testing.Param{{
-			Name: "h264_180p",
-			Val: encode.TestOptions{
-				WebMName: tulip180P,
-				Profile:  videotype.H264Prof,
-			},
+			Name:              "h264_180p",
+			Val:               encode.NewTestOptions(tulip180P, videotype.H264Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(tulip180P),
 		}, {
-			Name: "h264_192p",
-			Val: encode.TestOptions{
-				WebMName: bear192P,
-				Profile:  videotype.H264Prof,
-			},
+			Name:              "h264_192p",
+			Val:               encode.NewTestOptions(bear192P, videotype.H264Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(bear192P),
 		}, {
-			Name: "h264_360p",
-			Val: encode.TestOptions{
-				WebMName: tulip360P,
-				Profile:  videotype.H264Prof,
-			},
+			Name:              "h264_360p",
+			Val:               encode.NewTestOptions(tulip360P, videotype.H264Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(tulip360P),
 		}, {
-			Name: "h264_720p",
-			Val: encode.TestOptions{
-				WebMName: tulip720P,
-				Profile:  videotype.H264Prof,
-			},
+			Name:              "h264_720p",
+			Val:               encode.NewTestOptions(tulip720P, videotype.H264Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
-			Name: "h264_1080p",
-			Val: encode.TestOptions{
-				WebMName: crowd1080P,
-				Profile:  videotype.H264Prof,
-			},
+			Name:              "h264_1080p",
+			Val:               encode.NewTestOptions(crowd1080P, videotype.H264Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(crowd1080P),
 		}, {
-			Name: "h264_2160p",
-			Val: encode.TestOptions{
-				WebMName: crowd2160P,
-				Profile:  videotype.H264Prof,
-			},
+			Name:              "h264_2160p",
+			Val:               encode.NewTestOptions(crowd2160P, videotype.H264Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
 			ExtraData:         encode.TestData(crowd2160P),
 		}, {
-			Name: "vp8_180p",
-			Val: encode.TestOptions{
-				WebMName: tulip180P,
-				Profile:  videotype.VP8Prof,
-			},
+			Name:              "vp8_180p",
+			Val:               encode.NewTestOptions(tulip180P, videotype.VP8Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         encode.TestData(tulip180P),
 		}, {
-			Name: "vp8_192p",
-			Val: encode.TestOptions{
-				WebMName: bear192P,
-				Profile:  videotype.VP8Prof,
-			},
+			Name:              "vp8_192p",
+			Val:               encode.NewTestOptions(bear192P, videotype.VP8Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         encode.TestData(bear192P),
 		}, {
-			Name: "vp8_360p",
-			Val: encode.TestOptions{
-				WebMName: tulip360P,
-				Profile:  videotype.VP8Prof,
-			},
+			Name:              "vp8_360p",
+			Val:               encode.NewTestOptions(tulip360P, videotype.VP8Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         encode.TestData(tulip360P),
 		}, {
-			Name: "vp8_720p",
-			Val: encode.TestOptions{
-				WebMName: tulip720P,
-				Profile:  videotype.VP8Prof,
-			},
+			Name:              "vp8_720p",
+			Val:               encode.NewTestOptions(tulip720P, videotype.VP8Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
-			Name: "vp8_1080p",
-			Val: encode.TestOptions{
-				WebMName: crowd1080P,
-				Profile:  videotype.VP8Prof,
-			},
+			Name:              "vp8_1080p",
+			Val:               encode.NewTestOptions(crowd1080P, videotype.VP8Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         encode.TestData(crowd1080P),
 		}, {
-			Name: "vp8_2160p",
-			Val: encode.TestOptions{
-				WebMName: crowd2160P,
-				Profile:  videotype.VP8Prof,
-			},
+			Name:              "vp8_2160p",
+			Val:               encode.NewTestOptions(crowd2160P, videotype.VP8Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8_4K},
 			ExtraData:         encode.TestData(crowd2160P),
 		}, {
-			Name: "vp9_180p",
-			Val: encode.TestOptions{
-				WebMName: tulip180P,
-				Profile:  videotype.VP9Prof,
-			},
+			Name:              "vp9_180p",
+			Val:               encode.NewTestOptions(tulip180P, videotype.VP9Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			ExtraData:         encode.TestData(tulip180P),
 		}, {
-			Name: "vp9_192p",
-			Val: encode.TestOptions{
-				WebMName: bear192P,
-				Profile:  videotype.VP9Prof,
-			},
+			Name:              "vp9_192p",
+			Val:               encode.NewTestOptions(bear192P, videotype.VP9Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			ExtraData:         encode.TestData(bear192P),
 		}, {
-			Name: "vp9_360p",
-			Val: encode.TestOptions{
-				WebMName: tulip360P,
-				Profile:  videotype.VP9Prof,
-			},
+			Name:              "vp9_360p",
+			Val:               encode.NewTestOptions(tulip360P, videotype.VP9Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			ExtraData:         encode.TestData(tulip360P),
 		}, {
-			Name: "vp9_720p",
-			Val: encode.TestOptions{
-				WebMName: tulip720P,
-				Profile:  videotype.VP9Prof,
-			},
+			Name:              "vp9_720p",
+			Val:               encode.NewTestOptions(tulip720P, videotype.VP9Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
-			Name: "vp9_1080p",
-			Val: encode.TestOptions{
-				WebMName: crowd1080P,
-				Profile:  videotype.VP9Prof,
-			},
+			Name:              "vp9_1080p",
+			Val:               encode.NewTestOptions(crowd1080P, videotype.VP9Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			ExtraData:         encode.TestData(crowd1080P),
 		}, {
-			Name: "vp9_2160p",
-			Val: encode.TestOptions{
-				WebMName: crowd2160P,
-				Profile:  videotype.VP9Prof,
-			},
+			Name:              "vp9_2160p",
+			Val:               encode.NewTestOptions(crowd2160P, videotype.VP9Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9_4K},
 			ExtraData:         encode.TestData(crowd2160P),
 		}},
