@@ -16,6 +16,24 @@
       "message": "Could you also update meta/list_tests.go?",
       "revId": "f7d41ddd6543245d763369d031f7171bbe67fade",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2a0e35_69fb6554",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-02-08T04:29:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "401a4621_a4800eb8",
+      "revId": "f7d41ddd6543245d763369d031f7171bbe67fade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
