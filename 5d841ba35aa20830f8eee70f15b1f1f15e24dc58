@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b888b6d_064bbb5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-08T23:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd11af71_1ca28a3d",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "5d841ba35aa20830f8eee70f15b1f1f15e24dc58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3470824c_66533858",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-08T17:48:45Z",
       "side": 1,
       "message": "nit: Same as in previous CL, s/New/Make/ or s/New/Get/?",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "5d841ba35aa20830f8eee70f15b1f1f15e24dc58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29a3ab34_217a8b5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-08T23:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3470824c_66533858",
       "range": {
         "startLine": 50,
         "startChar": 3,
