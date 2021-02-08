@@ -120,8 +120,9 @@ func init() {
 			},
 		}, {
 			// 4p power test.
-			Name:              "power_4p",
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Name: "power_4p",
+			// TODO(b/176514670): Restore on 'kukui' when fixed.
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge(), hwdep.SkipOnPlatform("kukui")),
 			Val: meetTest{
 				num:     4,
 				layout:  meetLayoutTiled,
@@ -133,8 +134,9 @@ func init() {
 			},
 		}, {
 			// 16p power test.
-			Name:              "power_16p",
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Name: "power_16p",
+			// TODO(b/176514670): Restore on 'kukui' when fixed.
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge(), hwdep.SkipOnPlatform("kukui")),
 			Val: meetTest{
 				num:     16,
 				layout:  meetLayoutTiled,
