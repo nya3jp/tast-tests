@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38eb3aeb_465c398d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T00:43:47Z",
+      "side": 1,
+      "message": "sorry my previous suggestion was not good. This looks like \"confirmPicelCountInScreenshot\"?",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 39
+      },
+      "revId": "b0497ab357b38d6da3833911772477a8e7c26295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb17d3f_3924521d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T00:43:47Z",
+      "side": 1,
+      "message": "Same here, I\u0027m sorry I was not clear. I think this is ConfirmPixelCountInActivitySurface.",
+      "range": {
+        "startLine": 150,
+        "startChar": 5,
+        "endLine": 150,
+        "endChar": 30
+      },
+      "revId": "b0497ab357b38d6da3833911772477a8e7c26295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f651f53_a2dbcf35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T00:43:47Z",
+      "side": 1,
+      "message": "I\u0027m sorry I get confused what this point is. Can you add a comment what it is? (and I guess it\u0027s not `bounds` but `point`)",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 111
+      },
+      "revId": "b0497ab357b38d6da3833911772477a8e7c26295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e97db20_33a5ee31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T00:43:47Z",
+      "side": 1,
+      "message": "Two questions:\n- I think this is a part of setup of the test. How about moving this before getting the baseline count?\n- This test says \"non maximized\". But in tablet mode, windows won\u0027t be normal (freeform) state. Isn\u0027t it to be set `false`?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "b0497ab357b38d6da3833911772477a8e7c26295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
