@@ -16,6 +16,23 @@
       "message": "The flake is clearly unrelated to the test:\n\n[Precondition failure] Failed to start Chrome: cdp.Runtime: ReleaseObject: rpcc: the connection is closing\n\nYou need to figure out why Chrome is not starting, not disable a test that is not failing because of any failures in actual test code.",
       "revId": "bb5537370079dfc644b268c3f8d339e2f7316876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea5989e5_81fffa83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-02-08T23:12:57Z",
+      "side": 1,
+      "message": "Are ytou going to mark as informational every test that tries to log Chrome in? The bug lists a bunch of other tests. What\u0027s the probability that all those tests are flaky vs logging Chrome in is flaky?",
+      "revId": "bb5537370079dfc644b268c3f8d339e2f7316876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
