@@ -235,7 +235,7 @@ func readLoggedEvents(packageName string) ([]eventType, error) {
 		return nil, errors.Wrap(err, "failed to read "+syslog.ChromeLogFile)
 	}
 
-	r := regexp.MustCompile(fmt.Sprintf(`Add ARC install event for package %s, (.*)`, packageName))
+	r := regexp.MustCompile(fmt.Sprintf(`Add ARC install event: %s, (.*)`, packageName))
 	matches := r.FindAllStringSubmatch(string(logContent), -1)
 	if matches == nil {
 		return nil, errors.New("no event logged yet")
