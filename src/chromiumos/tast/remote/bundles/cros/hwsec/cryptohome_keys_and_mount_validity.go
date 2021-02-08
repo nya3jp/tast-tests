@@ -268,6 +268,10 @@ func CryptohomeKeysAndMountValidity(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
+	if helper.CleanupUserPaths(ctx, util.FirstUsername); err != nil {
+		s.Fatal("Failed to cleanup user paths: ", err)
+	}
+
 	// Create the user and check it is correctly mounted and can be unmounted.
 	func() {
 		if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
