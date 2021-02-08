@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68933ea8_c75924ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_accelerator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-02-08T17:00:36Z",
+      "side": 1,
+      "message": "Seems like a remnant from a test run. Removed.",
+      "parentUuid": "714358af_5c96154b",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "bd35a2cf0c49b3d822e0b507e6d0750bf9c5b36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e73bc3e_64feb9a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_accelerator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-02-08T17:00:36Z",
+      "side": 1,
+      "message": "Thanks for the pointer, will keep in mind. n/a with removal.",
+      "parentUuid": "7ecf97f6_a589b771",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "bd35a2cf0c49b3d822e0b507e6d0750bf9c5b36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "811bb973_4cef7786",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-02-08T13:45:31Z",
       "side": 1,
       "message": "Sleep is often the source of flakiness. Can you do a poll here to check the device is past oobe here?",
+      "revId": "bd35a2cf0c49b3d822e0b507e6d0750bf9c5b36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd85188c_a1148acf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_accelerator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-02-08T17:00:36Z",
+      "side": 1,
+      "message": "Do you have a recommended polling target? I\u0027m not necessarily waiting for oobe/ash to finish but waiting until device can react to the keystroke. Tried using ash.WaitForShelf or ash.WaitForStableShelfBounds but they all seem to pass before the device is ready react to the keystroke.",
+      "parentUuid": "811bb973_4cef7786",
       "revId": "bd35a2cf0c49b3d822e0b507e6d0750bf9c5b36d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
