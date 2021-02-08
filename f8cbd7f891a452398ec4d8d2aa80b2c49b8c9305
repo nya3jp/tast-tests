@@ -286,6 +286,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18542036_d541bc34",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-08T22:20:50Z",
+      "side": 1,
+      "message": "I saw mouseClick above so thought you might prefer to have it here. I\u0027d suggest move this method when porting ui/mouse.",
+      "parentUuid": "9158112f_9f4a0dc6",
+      "range": {
+        "startLine": 338,
+        "startChar": 19,
+        "endLine": 338,
+        "endChar": 39
+      },
+      "revId": "f8cbd7f891a452398ec4d8d2aa80b2c49b8c9305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "720446b5_93da419c",
         "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
         "patchSetId": 3
