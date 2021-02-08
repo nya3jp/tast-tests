@@ -59,8 +59,8 @@ func ensureJobsStopped(ctx context.Context) error {
 // collectTraceData collect a system-wide trace using the perfetto command line
 // too.
 func collectTraceData(ctx context.Context, s *testing.State) error {
-	// Trace config specifies a 5-sec duration. Use a 10 sec
-	wctx, wcancel := context.WithTimeout(ctx, 10*time.Second)
+	// Trace config specifies a 5 sec duration. Use 20 sec to avoid premature timeout on slow devices.
+	wctx, wcancel := context.WithTimeout(ctx, 20*time.Second)
 	defer wcancel()
 
 	// Start a trace session using the perfetto command line tool.
