@@ -50,6 +50,29 @@
       "message": "Thanks!",
       "revId": "c327971cd0142d0ccc6bcb3a34ed08434a7789e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a60e968_c8e638e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-08T05:51:52Z",
+      "side": 1,
+      "message": "The feature is kept being set if the test fails before the L95 // Turn off autoclick.\nis reached.\nI guess it can affect other tests.\n\nHow about making SetFeatureEnable returns a function that reverts the change?\nI think we can use it like this (assuming restore is idempotent):\n\nrestore, err :\u003d a11y.SetFeatureEnabled(...)\nif err !\u003d nil {\n ...\n}\ndefer restore()\n\n...\n\n// Turn off autoclick\nif err :\u003d restore(); err !\u003d nil {\n  \n}",
+      "range": {
+        "startLine": 41,
+        "startChar": 16,
+        "endLine": 41,
+        "endChar": 33
+      },
+      "revId": "c327971cd0142d0ccc6bcb3a34ed08434a7789e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
