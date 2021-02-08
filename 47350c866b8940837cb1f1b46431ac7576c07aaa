@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "df096c42_2daf4373",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1209654
+      },
+      "writtenOn": "2021-02-08T06:37:34Z",
+      "side": 1,
+      "message": "tast",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "47350c866b8940837cb1f1b46431ac7576c07aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9878dab1_8b91026e",
@@ -14,6 +37,74 @@
       "writtenOn": "2021-02-08T05:54:30Z",
       "side": 1,
       "message": "Po-Hsien, what do you think?",
+      "revId": "47350c866b8940837cb1f1b46431ac7576c07aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042f5db5_57ebb61f",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1209654
+      },
+      "writtenOn": "2021-02-08T06:37:34Z",
+      "side": 1,
+      "message": "how about 5 second for setup/teardown?",
+      "revId": "47350c866b8940837cb1f1b46431ac7576c07aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf0c68ac_2eed964e",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1209654
+      },
+      "writtenOn": "2021-02-08T06:37:34Z",
+      "side": 1,
+      "message": "pretesttimeout/posttesttimeout is not needed.",
+      "revId": "47350c866b8940837cb1f1b46431ac7576c07aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e9a764_cb990ada",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1209654
+      },
+      "writtenOn": "2021-02-08T06:37:34Z",
+      "side": 1,
+      "message": "Can you check if ui is running here",
+      "revId": "47350c866b8940837cb1f1b46431ac7576c07aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c739aeb0_12e26791",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1209654
+      },
+      "writtenOn": "2021-02-08T06:37:34Z",
+      "side": 1,
+      "message": "you don\u0027t need defer here.",
       "revId": "47350c866b8940837cb1f1b46431ac7576c07aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
