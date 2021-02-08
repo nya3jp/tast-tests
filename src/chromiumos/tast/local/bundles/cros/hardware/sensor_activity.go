@@ -7,6 +7,7 @@ package hardware
 import (
 	"bufio"
 	"context"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -29,6 +30,9 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		Params: []testing.Param{{
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("coachz")),
+		}},
 	})
 }
 
@@ -48,7 +52,23 @@ func SensorActivity(ctx context.Context, s *testing.State) {
 		s.Log("No activity sensor is found")
 		return
 	}
+	activities, err := listActivities(ctx, s)
+	if err != nil {
+		s.Fatal("Error listing activities: ", err)
+	}
+	for _, x := range activities {
+		switch x {
+		case iio.OnBodyDetectionID:
+			s.Log("Testing on-body detection:")
+			testOnBodyDetection(ctx, s, sensor)
+		default:
+			s.Logf("Testing activity %d is not implemented", int(x))
+		}
+	}
+}
 
+// testOnBodyDetection tests whether the on-body detection works properly on the DUT.
+func testOnBodyDetection(ctx context.Context, s *testing.State, sensor *iio.Sensor) {
 	// Query and save the original status of spoofing on-body detection: {spoofEnable, spoofState}
 	// spoofEnable: whether the spoofing is enable
 	// spoofState: while the spoofing is enabled, what the activity state is.
@@ -101,16 +121,15 @@ func SensorActivity(ctx context.Context, s *testing.State) {
 	}
 
 	// Test if on-body detection can detect on-body and off-body.
-	s.Log("[Testing on-body detection]: ")
-	if err := testOnBodyDetection(ctx, sensor, reader, 1); err != nil {
+	if err := testOnBodyDetectionStateChange(ctx, sensor, reader, 1); err != nil {
 		s.Fatal("Failed to switch to on-body: ", err)
 	}
-	if err := testOnBodyDetection(ctx, sensor, reader, 0); err != nil {
+	if err := testOnBodyDetectionStateChange(ctx, sensor, reader, 0); err != nil {
 		s.Fatal("Failed to switch to off-body: ", err)
 	}
 }
 
-// spoofActivity is helper function for command line: ectool motionsense spoof sensorID activity activityID [enable/disable] [state]
+// spoofActivity is a helper function for command line: ectool motionsense spoof sensorID activity activityID [enable/disable] [state]
 // If the |args| is empty, it queries the spoofing enable status.
 // See https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/util/ectool.c for more details.
 func spoofActivity(ctx context.Context, sensor *iio.Sensor, act iio.ActivityID, args ...int) (output []byte, err error) {
@@ -123,9 +142,31 @@ func spoofActivity(ctx context.Context, sensor *iio.Sensor, act iio.ActivityID, 
 	return testexec.CommandContext(ctx, "ectool", strArgs...).Output()
 }
 
-// testOnBodyDetection tests whether the DUT can handle the event when on-body detection change status to the given state.
+// listActivities is a helper function for command line: ectool motionsense list_activities
+// It will return the ID of all available activities on the DUT.
+// See https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/util/ectool.c for more details.
+func listActivities(ctx context.Context, s *testing.State) (activities []iio.ActivityID, err error) {
+	rawOutput, err := testexec.CommandContext(ctx, "ectool", "motionsense", "list_activities").Output()
+	if err != nil {
+		return nil, errors.Wrap(err, "ectool failed to list the activities")
+	}
+	for _, line := range strings.Split(string(rawOutput), "\n") {
+		re := regexp.MustCompile("^[0-9]+")
+		idData := re.Find([]byte(line))
+		if idData != nil {
+			id, err := strconv.Atoi(string(idData))
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to convert activity id")
+			}
+			activities = append(activities, iio.ActivityID(id))
+		}
+	}
+	return
+}
+
+// testOnBodyDetectionStateChange tests whether the DUT can handle the event when on-body detection change status to the given state.
 // Note that this function changes the spoofing status of on-body detection.
-func testOnBodyDetection(ctx context.Context, sensor *iio.Sensor, scanner *bufio.Scanner, state int) error {
+func testOnBodyDetectionStateChange(ctx context.Context, sensor *iio.Sensor, scanner *bufio.Scanner, state int) error {
 	// Spoof the on-body detection to given state.
 	_, err := spoofActivity(ctx, sensor, iio.OnBodyDetectionID, 1, state)
 	if err != nil {
