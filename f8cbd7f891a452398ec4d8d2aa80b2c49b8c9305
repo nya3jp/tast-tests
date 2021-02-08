@@ -308,6 +308,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75db392d_37115916",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-08T22:22:38Z",
+      "side": 1,
+      "message": "sounds good",
+      "parentUuid": "18542036_d541bc34",
+      "range": {
+        "startLine": 338,
+        "startChar": 19,
+        "endLine": 338,
+        "endChar": 39
+      },
+      "revId": "f8cbd7f891a452398ec4d8d2aa80b2c49b8c9305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "720446b5_93da419c",
