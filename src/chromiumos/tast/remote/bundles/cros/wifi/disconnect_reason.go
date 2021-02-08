@@ -58,9 +58,14 @@ func init() {
 				Val: disReasonParam{
 					dt: dtAPSendChannelSwitch,
 					// In this case, the supplicant receives one of the following CMDs:
-					// 1- NL80211_CMD_DEAUTHENTICATE due to inactivity.
+					// 1- NL80211_CMD_DEAUTHENTICATE:
+					//    Disconnect reason: reason 4 (DISASSOC_DUE_TO_INACTIVITY) locally_generated=1.
 					// 2- NL80211_CMD_DISCONNECT: happens with full-MAC drivers such as mwifiex.
+					//    In this case, the disconnect reason is:
+					//      a) reason 3 (DEAUTH_LEAVING) locally_generated=1.
+					//      b) reason 0 (UNKNOWN) locally_generated=1.
 					expectedCodes: []int32{wpasupplicant.DisconnReasonLGDisassociatedInactivity,
+						wpasupplicant.DisconnReasonLGDeauthSTALeaving,
 						wpasupplicant.DisconnReasonUnknown},
 				},
 			}, {
