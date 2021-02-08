@@ -235,6 +235,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2d306b8_a90ac6b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-08T23:46:45Z",
+      "side": 1,
+      "message": "done now.\nSorry I missed this comment in the previous patchset.",
+      "parentUuid": "6de871b2_56c4715d",
+      "revId": "c93a7126f27113df40bbc228411b6bb794346182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f3f2332_a02cb8d7",
