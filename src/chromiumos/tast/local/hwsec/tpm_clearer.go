@@ -27,15 +27,16 @@ const (
 type TPMClearer struct {
 	cmdRunner        hwsec.CmdRunner
 	daemonController *hwsec.DaemonController
+	hasSysKey        bool
 }
 
 // NewTPMClearer creates a new TPMClearer object, where r is used to run the command internally.
 func NewTPMClearer(cmdRunner hwsec.CmdRunner, daemonController *hwsec.DaemonController) *TPMClearer {
-	return &TPMClearer{cmdRunner, daemonController}
+	return &TPMClearer{cmdRunner, daemonController, false}
 }
 
-// ClearTPM would clear the TPM, reboot and ensure every TPM daemon is up.
-func (tc *TPMClearer) ClearTPM(ctx context.Context) error {
+// ClearTPMStep1 backup the system key.
+func (tc *TPMClearer) ClearTPMStep1(ctx context.Context) error {
 	// Makes sure this is a TPM 2.0 device.
 	version, err := tc.getTPMVersion(ctx)
 	if err != nil {
@@ -49,9 +50,10 @@ func (tc *TPMClearer) ClearTPM(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to check system key in NVRAM")
 	}
+	tc.hasSysKey = hasSysKey
 
 	// If system key exists, checks if we also have the system key backup.
-	if hasSysKey {
+	if tc.hasSysKey {
 		if hasSysKeyBackup, err := tc.hasSystemKeyBackup(); err != nil {
 			return errors.Wrap(err, "failed to check the system key backup file")
 		} else if !hasSysKeyBackup {
@@ -59,23 +61,33 @@ func (tc *TPMClearer) ClearTPM(ctx context.Context) error {
 		}
 	}
 
+	return nil
+}
+
+// ClearTPMStep2 soft clears the TPM.
+func (tc *TPMClearer) ClearTPMStep2(ctx context.Context) error {
 	// Using soft clear to clear the TPM
-	if _, err = tc.cmdRunner.Run(ctx, "tpm_softclear"); err != nil {
+	if _, err := tc.cmdRunner.Run(ctx, "tpm_softclear"); err != nil {
 		return errors.Wrap(err, "failed to soft clear the TPM")
 	}
 
+	return nil
+}
+
+// ClearTPMStep3 restores the system key and ensures TPM daemon is up.
+func (tc *TPMClearer) ClearTPMStep3(ctx context.Context) error {
 	// Stop the TPM daemon
-	if err = tc.daemonController.TryStop(ctx, hwsec.TrunksDaemonInfo); err != nil {
+	if err := tc.daemonController.TryStop(ctx, hwsec.TrunksDaemonInfo); err != nil {
 		return errors.Wrap(err, "failed to try to stop TPM daemon")
 	}
 	defer func() {
-		if err = tc.daemonController.Ensure(ctx, hwsec.TrunksDaemonInfo); err != nil {
+		if err := tc.daemonController.Ensure(ctx, hwsec.TrunksDaemonInfo); err != nil {
 			testing.ContextLog(ctx, "Failed to ensure TPM daemon: ", err)
 		}
 	}()
 
-	if hasSysKey {
-		if err = tc.restoreSystemKey(ctx); err != nil {
+	if tc.hasSysKey {
+		if err := tc.restoreSystemKey(ctx); err != nil {
 			testing.ContextLog(ctx, "Failed to restore system key: ", err)
 			// Continues to reset daemons and system states even if we failed to restore system key,
 			// since the TPM is already cleared.

@@ -244,11 +244,19 @@ func (h *Helper) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
 		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
 	}
 
+	if err := h.tpmClearer.ClearTPMStep1(ctx); err != nil {
+		return errors.Wrap(err, "")
+	}
+
 	if err := h.daemonController.TryStop(ctx, UIDaemonInfo); err != nil {
 		return errors.Wrap(err, "")
 	}
 
 	if err := h.daemonController.TryStopDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "")
+	}
+
+	if err := h.tpmClearer.ClearTPMStep2(ctx); err != nil {
 		return errors.Wrap(err, "")
 	}
 
@@ -280,7 +288,7 @@ func (h *Helper) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
 		}
 	}
 
-	if err := h.tpmClearer.ClearTPM(ctx); err != nil {
+	if err := h.tpmClearer.ClearTPMStep3(ctx); err != nil {
 		return errors.Wrap(err, "")
 	}
 
