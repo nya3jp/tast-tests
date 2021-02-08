@@ -5,7 +5,7 @@
 // Package health tests the system daemon cros_healthd to ensure that telemetry
 // and diagnostics calls can be completed successfully.
 package health
-
+/*
 import (
 	"context"
 	"time"
@@ -167,3 +167,4 @@ func DiagnosticsRun(ctx context.Context, s *testing.State) {
 			routine, result.Status, result.Progress)
 	}
 }
+*/
