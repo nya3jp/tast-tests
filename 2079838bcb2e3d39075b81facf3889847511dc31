@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d1a6a8_65ccee76",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-08T20:48:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea53dafb_dc92b85c",
+      "range": {
+        "startLine": 444,
+        "startChar": 9,
+        "endLine": 444,
+        "endChar": 21
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e673d048_7cdeb569",
@@ -519,6 +543,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc599eaa_09c4fb4f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-08T20:48:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "40f43b75_4fbdc845",
+      "range": {
+        "startLine": 183,
+        "startChar": 69,
+        "endLine": 183,
+        "endChar": 74
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b2f8a92_af0d5cb1",
@@ -556,6 +604,30 @@
       "side": 1,
       "message": "Defined a instance of the struct.",
       "parentUuid": "2b2f8a92_af0d5cb1",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 1
+      },
+      "revId": "2079838bcb2e3d39075b81facf3889847511dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb6b260a_fef353b7",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-08T20:48:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "19c853d6_9aa013b6",
       "range": {
         "startLine": 194,
         "startChar": 5,
