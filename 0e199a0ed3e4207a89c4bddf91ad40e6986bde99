@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb521a4e_f8b149d8",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-08T21:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52cf7c4c_6ae46a3f",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "0e199a0ed3e4207a89c4bddf91ad40e6986bde99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f03f1def_a92cfd0d",
@@ -82,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fa6b2f9_f14dbecf",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-08T21:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f03f1def_a92cfd0d",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 18
+      },
+      "revId": "0e199a0ed3e4207a89c4bddf91ad40e6986bde99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27059a82_0468cb8d",
@@ -95,6 +143,30 @@
       "writtenOn": "2021-02-03T08:11:20Z",
       "side": 1,
       "message": "These functions are almost the same.\n\nLet us rename NewLoggedInFixture to NewFixture. We can create a no-login fixture by just calling it with NoLogin().",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 1
+      },
+      "revId": "0e199a0ed3e4207a89c4bddf91ad40e6986bde99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ed7714_6b957b61",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-08T21:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27059a82_0468cb8d",
       "range": {
         "startLine": 67,
         "startChar": 0,

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b14d3863_a3f59460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-08T21:11:25Z",
+      "side": 1,
+      "message": "I\u0027m updating this CL just to save the work in case it\u0027s needed. Based on the conversation in https://groups.google.com/a/chromium.org/g/tast-users/c/4uVick5DE_E, I\u0027m going to abandon this change and manually create a chrome instance with no user session. ",
+      "revId": "f601d7614df4b9ed3a7e7cecc5602e4640d3150c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
