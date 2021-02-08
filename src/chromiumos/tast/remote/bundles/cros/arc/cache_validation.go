@@ -32,18 +32,20 @@ func init() {
 			"khmel@google.com",
 			"arc-performance@google.com",
 		},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.arc.GmsCoreCacheService"},
 		Params: []testing.Param{{
 			Name:              "pi_container",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: []string{
 				"/usr/share/arc/properties/build.prop",
 				"git_pi-arc-linux-apps",
 			},
 		}, {
-			Name:              "r",
+			Name: "r",
+			// TODO(b/179496907): Reenable the test when it is working.
+			// ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: []string{
 				"/usr/share/arcvm/properties/build.prop",
