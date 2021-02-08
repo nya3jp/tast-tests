@@ -87,16 +87,18 @@ func init() {
 		Func:         PIP,
 		Desc:         "Checks that ARC++ Picture-in-Picture works as expected",
 		Contacts:     []string{"edcourtney@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Val:               pipTests,
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "vm",
-			Val:               pipTests,
+			Name: "vm",
+			Val:  pipTests,
+			// TODO(b/179503195): Reenable after test is fixed
+			// ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
