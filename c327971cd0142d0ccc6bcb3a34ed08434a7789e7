@@ -73,6 +73,30 @@
       },
       "revId": "c327971cd0142d0ccc6bcb3a34ed08434a7789e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1355808_1cbae111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-08T21:54:59Z",
+      "side": 1,
+      "message": "Yes, thanks for pointing it out. How about simply turning off the feature in a defer block?\n\n// Turn on autoclick.\n...\n\ndefer func() {\n    // Turn off autoclick.\n}()\n\n...\n\nThis is actually the approach I used in patchset 1.",
+      "parentUuid": "0a60e968_c8e638e0",
+      "range": {
+        "startLine": 41,
+        "startChar": 16,
+        "endLine": 41,
+        "endChar": 33
+      },
+      "revId": "c327971cd0142d0ccc6bcb3a34ed08434a7789e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
