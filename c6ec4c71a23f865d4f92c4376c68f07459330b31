@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf79d46_9770e233",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-08T02:58:20Z",
+      "side": 1,
+      "message": "PTAL. Also ptal at crrev.com/i/3594204, too?",
+      "revId": "c6ec4c71a23f865d4f92c4376c68f07459330b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
