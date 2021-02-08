@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "392467c1_fe2e93f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108729
+      },
+      "writtenOn": "2021-02-08T23:07:37Z",
+      "side": 1,
+      "message": "I think this is what I needed to disable *.managed while leaving *.unmanaged configured to run.",
+      "revId": "56b6147363ad474341e65e34457e0f4df075cc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
