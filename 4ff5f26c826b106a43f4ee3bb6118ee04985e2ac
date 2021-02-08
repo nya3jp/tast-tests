@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12661d48_8930a6ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-08T20:30:03Z",
+      "side": 1,
+      "message": "Hi Shuhei, I modified the code based on our discussion about the default reuse strategy, as well as two other changes:\n- I use a short context for tryReuseSession() in Chrome.New to make sure it returns early so a normal login can be performed.\n- Return detailed errors for config.VerifySessionReuse() so the user knows which field is prevent the session reuse.\nThanks!",
+      "revId": "4ff5f26c826b106a43f4ee3bb6118ee04985e2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
