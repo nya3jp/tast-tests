@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d26d1bb7_c16203b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-08T22:45:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c6fa489_c39a6531",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 127,
+        "endChar": 111
+      },
+      "revId": "8a5f6dc685873efe606c370a30f87ae7fcfd925a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95097e5e_37e4194e",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbf99818_ccae2489",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-08T22:45:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95097e5e_37e4194e",
+      "revId": "8a5f6dc685873efe606c370a30f87ae7fcfd925a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d0391c0_36d194ef",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-02-08T05:52:54Z",
       "side": 1,
       "message": "I guess we should defer act.Close()",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 4
+      },
+      "revId": "8a5f6dc685873efe606c370a30f87ae7fcfd925a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f0e9a4e_73fa67a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-08T22:45:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d0391c0_36d194ef",
       "range": {
         "startLine": 119,
         "startChar": 1,
