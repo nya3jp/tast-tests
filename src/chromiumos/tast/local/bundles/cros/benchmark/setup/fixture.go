@@ -22,6 +22,9 @@ const (
 	// BenchmarkARCFixture is a fixture name that will be registered to tast.
 	// The fxture brings up Chrome and ARC with PlayStore.
 	BenchmarkARCFixture = "benchmarkARCFixture"
+	// BenchmarkChromeFixture is a fixture name that will be registered to tast.
+	// It brings up Chrome.
+	BenchmarkChromeFixture = "benchmarkChromeFixture"
 )
 
 func benchmarkARCFixtureOptions(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
@@ -48,6 +51,17 @@ func init() {
 		Impl:     arc.NewArcBootedWithPlayStoreFixture(benchmarkARCFixtureOptions),
 		// Add two minutes to setup time to allow extra Play Store UI operations.
 		SetUpTimeout:    chrome.LoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{userVar, passwdVar},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     BenchmarkChromeFixture,
+		Desc:     "The fixture starts chrome with GAIA login and ARC Supported",
+		Contacts: []string{"xliu@cienet.com"},
+		Impl:     chrome.NewLoggedInFixture(benchmarkARCFixtureOptions),
+		// Add two minutes to setup time to allow extra Play Store UI operations.
+		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars:            []string{userVar, passwdVar},
