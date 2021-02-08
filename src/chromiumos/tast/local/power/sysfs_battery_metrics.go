@@ -252,6 +252,10 @@ func (b *SysfsBatteryMetrics) Snapshot(_ context.Context, values *perf.Values) e
 
 // Stop reports the total amount of energy used during the test.
 func (b *SysfsBatteryMetrics) Stop(_ context.Context, values *perf.Values) error {
+	if len(b.batteryPath) == 0 {
+		return nil
+	}
+
 	energy, err := ReadBatteryEnergy(b.batteryPath)
 	if err != nil {
 		return err
