@@ -281,6 +281,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01261d1d_3ae88e23",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-08T08:47:48Z",
+      "side": 1,
+      "message": "Hi Xibin, thanks for your comments. I\u0027d also like to appreciate your patience on this code review --- you\u0027re already blocked for weeks! But this feature really needs care, as you\u0027re aware.\n\nI think I\u0027m indeed more pessimistic than you. It\u0027s likely that most fields are marked as reuse_match:\"true\". But I still think explicit is better than implicit.",
+      "parentUuid": "b5fec92c_ea8e8541",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 49
+      },
+      "revId": "fe59caa58c8df2536105cfdff75c0a0aa3888aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6583b47f_c9a0b97f",
         "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
         "patchSetId": 6
