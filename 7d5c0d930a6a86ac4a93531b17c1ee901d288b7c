@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8cc609_2e43c1a8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-08T02:59:55Z",
+      "side": 1,
+      "message": "Does this need to be exported?  Same with the struct?",
+      "range": {
+        "startLine": 224,
+        "startChar": 4,
+        "endLine": 224,
+        "endChar": 20
+      },
+      "revId": "7d5c0d930a6a86ac4a93531b17c1ee901d288b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49cfa014_62cfaa6e",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-08T02:59:55Z",
+      "side": 1,
+      "message": "Should you put ancestor on here?",
+      "range": {
+        "startLine": 226,
+        "startChar": 33,
+        "endLine": 226,
+        "endChar": 35
+      },
+      "revId": "7d5c0d930a6a86ac4a93531b17c1ee901d288b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
