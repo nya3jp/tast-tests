@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
-	"chromiumos/tast/local/vm"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -70,27 +69,27 @@ func init() {
 			}, {
 				Name:              "crostini",
 				ExtraAttr:         []string{"group:graphics", "graphics_weekly"},
-				ExtraData:         []string{vm.ArtifactData(), crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
-				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
-				Pre:               crostini.StartedByComponentBuster(),
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "dlc"},
+				Pre:               crostini.StartedByDlcBuster(),
 				Timeout:           1 * time.Hour,
 				Val:               glbenchConfig{environment: envDebian},
 			}, {
 				Name:              "crostini_hasty_stable",
 				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
-				ExtraData:         []string{vm.ArtifactData(), crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
-				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByComponentBuster(),
+				Pre:               crostini.StartedByDlcBuster(),
 				Timeout:           5 * time.Minute,
 				Val:               glbenchConfig{hasty: true, environment: envDebian},
 			}, {
 				Name:              "crostini_hasty_unstable",
 				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
-				ExtraData:         []string{vm.ArtifactData(), crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
-				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
+				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "dlc"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByComponentBuster(),
+				Pre:               crostini.StartedByDlcBuster(),
 				Timeout:           5 * time.Minute,
 				Val:               glbenchConfig{hasty: true, environment: envDebian},
 			},

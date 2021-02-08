@@ -232,8 +232,8 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				continue
 			}
 
-			if testCase.MinimalSet && (i.debianVersion != vm.DebianBuster || i.vmMode != "component") {
-				// The minimal set is currently buster/component
+			if testCase.MinimalSet && (i.debianVersion != vm.DebianBuster || i.vmMode != "dlc") {
+				// The minimal set is currently buster/dlc
 				continue
 			}
 
@@ -259,9 +259,9 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 
 			// _unstable tests can never be CQ critical.
-			// dlc tests are temporarily informational while under development.
+			// component tests are informational while they are phased out.
 			var extraAttr []string
-			if (!i.stable || i.vmMode == "dlc") && canBeCritical {
+			if (!i.stable || i.vmMode == "component") && canBeCritical {
 				extraAttr = append(extraAttr, "informational")
 			}
 
