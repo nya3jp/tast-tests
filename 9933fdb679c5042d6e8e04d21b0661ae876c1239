@@ -22,6 +22,30 @@
       },
       "revId": "9933fdb679c5042d6e8e04d21b0661ae876c1239",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e87cbb4d_3527b2f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-02-08T21:09:56Z",
+      "side": 1,
+      "message": "The device node is \"/dev/mali0\", but the syzkaller descriptions are written to open \"/dev/bifrost\"; so we\u0027d have to create this symlink. For i915, the symlink creation is to avoid these syzkaller descriptions from being used in the VM(as the driver would not be exercised, but the device node would be present).\nI\u0027m not sure if this is the case for \"/dev/mali0\", cc\u0027ing pihsun@ who wrote the descriptions to clarify.",
+      "parentUuid": "1850370b_cd12c58a",
+      "range": {
+        "startLine": 34,
+        "startChar": 27,
+        "endLine": 34,
+        "endChar": 56
+      },
+      "revId": "9933fdb679c5042d6e8e04d21b0661ae876c1239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
