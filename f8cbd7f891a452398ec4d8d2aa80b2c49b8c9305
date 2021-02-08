@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1bf4c17_eaaa7317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-08T20:11:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "573c779a_fbc82db9",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "f8cbd7f891a452398ec4d8d2aa80b2c49b8c9305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fa42cee_c3779537",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "Sorry I did not get it.",
       "parentUuid": "f0bcb988_5114314c",
+      "range": {
+        "startLine": 338,
+        "startChar": 19,
+        "endLine": 338,
+        "endChar": 39
+      },
+      "revId": "f8cbd7f891a452398ec4d8d2aa80b2c49b8c9305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9158112f_9f4a0dc6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-08T20:11:01Z",
+      "side": 1,
+      "message": "I think this method should be part of uiauto/mouse library. Since it is not ported yet, it should go in ui/mouse. I think it would be a MouseAction method, just like how with keyboard I added keyboard.TypeAction(\"\").\n\nThen in a test, you would import ui/mouse and call\n uiauto.Run(ctx,\n   mouse.ClickAction(...),\n )",
+      "parentUuid": "22cabc76_a0f4fa92",
       "range": {
         "startLine": 338,
         "startChar": 19,

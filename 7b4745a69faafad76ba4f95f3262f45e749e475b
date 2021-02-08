@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de161c27_d2e08ea6",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-08T20:11:01Z",
+      "side": 1,
+      "message": "Just a note cause I saw this, I would in general advise passing keyboard into a test instead of making one here cause I know it can be really slow on some devices, so it is best to make it once in a test and pass it around.",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "7b4745a69faafad76ba4f95f3262f45e749e475b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
