@@ -33,15 +33,26 @@ const measureInterval = 20 * time.Second
 
 // TestOptions is the options for runAccelVideoTest.
 type TestOptions struct {
-	WebMName string
-	Profile  videotype.CodecProfile
+	WebMName       string
+	Profile        videotype.CodecProfile
+	TemporalLayers int
 }
 
-// NewTestOptions creates TestOptions from webMName and profile.
+// NewTestOptions creates TestOptions from webMName and profile. TemporalLayers is set to 1.
 func NewTestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
 	return TestOptions{
-		WebMName: webMName,
-		Profile:  profile,
+		WebMName:       webMName,
+		Profile:        profile,
+		TemporalLayers: 1,
+	}
+}
+
+// NewTestOptionsWithTemporalLayers creates TestOptions from webMName, profile and temporalLayers.
+func NewTestOptionsWithTemporalLayers(webMName string, profile videotype.CodecProfile, temporalLayers int) TestOptions {
+	return TestOptions{
+		WebMName:       webMName,
+		Profile:        profile,
+		TemporalLayers: temporalLayers,
 	}
 }
 
@@ -112,6 +123,10 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 		fmt.Sprintf("--codec=%s", codec),
 		yuvPath,
 		yuvJSONPath,
+	}
+
+	if opts.TemporalLayers > 1 {
+		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.TemporalLayers))
 	}
 
 	exec := filepath.Join(chrome.BinTestDir, "video_encode_accelerator_tests")
