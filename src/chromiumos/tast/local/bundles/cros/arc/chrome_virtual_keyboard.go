@@ -38,6 +38,7 @@ var unstableVkTests = []vkTestParams{
 	{"Floating mode", chromeVirtualKeyboardFloatingTest},
 	{"Rotation", chromeVirtualKeyboardRotationTest},
 	{"Password editing", chromeVirtualKeyboardPasswordEditingTest},
+	{"Number input", chromeVirtualKeyboardNumberInputTest},
 }
 
 const virtualKeyboardTestAppPkg = "org.chromium.arc.testapp.keyboard"
@@ -61,10 +62,12 @@ func init() {
 			Name:              "unstable",
 			Val:               unstableVkTests,
 			ExtraSoftwareDeps: []string{"android_p"},
+			Timeout:           8 * time.Minute,
 		}, {
 			Name:              "unstable_vm",
 			Val:               unstableVkTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Timeout:           8 * time.Minute,
 		}},
 	})
 }
@@ -552,6 +555,78 @@ func chromeVirtualKeyboardPasswordEditingTest(
 
 		// Check the input field after each keystroke to avoid flakiness. https://crbug.com/945729
 		// In order to use GetText() after timeout, we should have shorter timeout than ctx.
+		if err := field.WaitForText(ctx, expected, 30*time.Second); err != nil {
+			if actual, err := field.GetText(ctx); err != nil {
+				s.Fatal("Failed to get text: ", err)
+			} else {
+				s.Fatalf("Got %q from text field; want %q", actual, expected)
+			}
+		}
+	}
+}
+
+func chromeVirtualKeyboardNumberInputTest(
+	ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, s *testing.State) {
+	const (
+		activityName = ".MainActivity"
+		fieldID      = virtualKeyboardTestAppPkg + ":id/text"
+	)
+	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	if err != nil {
+		s.Fatalf("Failed to create a new activity %q", activityName)
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatalf("Failed to start the activity %q", activityName)
+	}
+	defer act.Stop(ctx, tconn)
+
+	field := d.Object(ui.ID(fieldID))
+	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to find field: ", err)
+	}
+	if err := field.Click(ctx); err != nil {
+		s.Fatal("Failed to click field: ", err)
+	}
+	if err := field.SetText(ctx, ""); err != nil {
+		s.Fatal("Failed to empty field: ", err)
+	}
+
+	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to focus a text field: ", err)
+	}
+
+	s.Log("Waiting for vitual keyboard to be ready")
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
+	}
+
+	s.Log("Switching to the symbol/number keyboard")
+	kconn, err := vkb.UIConn(ctx, cr)
+	if err != nil {
+		s.Fatal("Failed to get the UIConn: ", err)
+	}
+	defer kconn.Close()
+	if err := vkb.TapKeyJS(ctx, kconn, `"switch to symbols"`); err != nil {
+		s.Fatal("Failed to tap 'switch to symbols': ", err)
+	}
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
+	}
+
+	keys := []string{"1", "2", "#"}
+	expected := ""
+	for _, key := range keys {
+		if err := vkb.TapKey(ctx, tconn, key); err != nil {
+			s.Fatalf("Failed to tap %q: %v", key, err)
+		}
+
+		expected += key
+
+		// Check the input field after each keystroke to avoid flakiness.
 		if err := field.WaitForText(ctx, expected, 30*time.Second); err != nil {
 			if actual, err := field.GetText(ctx); err != nil {
 				s.Fatal("Failed to get text: ", err)
