@@ -16,6 +16,23 @@
       "message": "lgtm",
       "revId": "bef7572a9a7a91c3c6af677e76020032cdbaa00a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b2cbc4_453f105f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-08T23:46:41Z",
+      "side": 1,
+      "message": "\"autoserv crashed\" probably is unrelated. Retring.",
+      "revId": "bef7572a9a7a91c3c6af677e76020032cdbaa00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
