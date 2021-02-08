@@ -33,6 +33,23 @@
       "message": "How cool! Thanks Aki for adding this test.",
       "revId": "c327971cd0142d0ccc6bcb3a34ed08434a7789e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b58eed51_caa7cc52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-08T00:57:22Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "c327971cd0142d0ccc6bcb3a34ed08434a7789e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
