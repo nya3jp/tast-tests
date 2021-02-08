@@ -31,8 +31,9 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/146081124): Reenable the test when this test stops hanging ARC++ devices.
 		}, {
-			Name:              "vm",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			Name: "vm",
+			// TODO(b:176944540): Re-enable the test once it is fixed, otherwise, delete it.
+			//ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: 20 * time.Minute,
