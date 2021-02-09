@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff96af9d_13e4911e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_cancel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-09T02:11:43Z",
+      "side": 1,
+      "message": "Oops, my bad.\nI mis-read the code... Pls ignore this.",
+      "parentUuid": "3008426a_5db8db90",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "e3af4a9e490e7ec8eec1457f45bc60405c971f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3e8568f_04108438",
