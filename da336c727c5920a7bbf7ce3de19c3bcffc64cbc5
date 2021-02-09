@@ -20,6 +20,115 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "620c839b_7189e840",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-09T06:16:16Z",
+      "side": 1,
+      "message": "It seems like this is used in a multi-threaded way, can you add some notes on what is safe/unsafe to call from multiple threads?",
+      "revId": "da336c727c5920a7bbf7ce3de19c3bcffc64cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654ed13c_6a51107b",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-09T06:16:16Z",
+      "side": 1,
+      "message": "This function isn\u0027t used?",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "da336c727c5920a7bbf7ce3de19c3bcffc64cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d2ed2e7_d5d6ac03",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-09T06:16:16Z",
+      "side": 1,
+      "message": "Maybe mention that this is needed for StillAlive",
+      "range": {
+        "startLine": 71,
+        "startChar": 62,
+        "endLine": 71,
+        "endChar": 72
+      },
+      "revId": "da336c727c5920a7bbf7ce3de19c3bcffc64cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c3d264_119a3bba",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-09T06:16:16Z",
+      "side": 1,
+      "message": "I assume this is running in a goroutine so the process dying during this blocking call isn\u0027t an issue?",
+      "range": {
+        "startLine": 84,
+        "startChar": 30,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "da336c727c5920a7bbf7ce3de19c3bcffc64cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "157e3733_af3adc2a",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-09T06:16:16Z",
+      "side": 1,
+      "message": "missing the rest of the comment?",
+      "range": {
+        "startLine": 102,
+        "startChar": 29,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "da336c727c5920a7bbf7ce3de19c3bcffc64cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15e09a80_d76f5172",
         "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
         "patchSetId": 4
