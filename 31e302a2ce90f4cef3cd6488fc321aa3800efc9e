@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b7dd4a2_b4e027c8",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-09T00:42:09Z",
+      "side": 1,
+      "message": "As you have Reset method now. Please add ResetTimeout here as well.",
+      "revId": "31e302a2ce90f4cef3cd6488fc321aa3800efc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e318688e_c7a688f4",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-09T00:42:09Z",
+      "side": 1,
+      "message": "remove.",
+      "revId": "31e302a2ce90f4cef3cd6488fc321aa3800efc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
