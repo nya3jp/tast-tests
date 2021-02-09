@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4615ca7b_cf3e139d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-02-09T21:52:08Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "ebae74d2_e4a16700",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "ee90743ad5ad144a0aeccceefe2023f9176da32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fb12f77_336ed902",
@@ -84,6 +108,30 @@
       "writtenOn": "2021-02-09T21:22:39Z",
       "side": 1,
       "message": "it would be kind of nice if the comments reflected each reason you\u0027re listing. So do you need a new entry between #1 and #2 above? Or just list #2 and #3 as the same (mwifiex)?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 52
+      },
+      "revId": "ee90743ad5ad144a0aeccceefe2023f9176da32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf3ae240_b01ad91b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-02-09T21:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ad0ca8b_6f0d35ee",
       "range": {
         "startLine": 64,
         "startChar": 0,
