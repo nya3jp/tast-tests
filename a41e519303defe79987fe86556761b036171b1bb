@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d058d2_1738aaad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-09T16:06:37Z",
+      "side": 1,
+      "message": "Almost LG. Thank you for offline chat. That helped me a lot about this code.",
+      "revId": "a41e519303defe79987fe86556761b036171b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b69d94f5_7f4fac12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/clock.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-09T16:06:37Z",
+      "side": 1,
+      "message": "Could you document that the graph needs to be \"valid\"? E.g.\n\nFrom node a to b, regardless of paths, the total cost must be same conceptually. It may contain some errors practically, but this code ignores it.",
+      "revId": "a41e519303defe79987fe86556761b036171b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e50b9c6a_d7da548c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/clock.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-09T16:06:37Z",
+      "side": 1,
+      "message": "Could you document why curNS are ignored, except the first one? (as we chatted offline)?",
+      "revId": "a41e519303defe79987fe86556761b036171b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2235848_d98168b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-09T16:06:37Z",
+      "side": 1,
+      "message": "style:\n\nif p.TimestampClockId !\u003d nil {\n  return clockID(...)\n}\nif p.GetChromeEvents() !\u003d nil || p.GetChromeMetadat() !\u003d nil {\n  return clockID(...)\n}\nreturn ta.seqMap[...]...",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "a41e519303defe79987fe86556761b036171b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "917609f9_6a4c9203",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-09T16:06:37Z",
+      "side": 1,
+      "message": "cs can be nil, so possibly crashed. Could you return an error?",
+      "range": {
+        "startLine": 191,
+        "startChar": 10,
+        "endLine": 191,
+        "endChar": 12
+      },
+      "revId": "a41e519303defe79987fe86556761b036171b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
