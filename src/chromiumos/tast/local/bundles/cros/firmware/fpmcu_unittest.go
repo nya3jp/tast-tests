@@ -8,9 +8,11 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
+	"syscall"
 
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -138,11 +140,11 @@ func setupServo(ctx context.Context, s *testing.State) *testexec.Cmd {
 }
 
 // extractBinaryToFlash extracts the chosen binary to flash to the FPMCU.
-func extractBinaryToFlash(ctx context.Context, s *testing.State, tarballPath string) string {
+func extractBinaryToFlash(ctx context.Context, s *testing.State, tempDir, tarballPath string) string {
 	// The specific binary is "Val" in the test params.
-	cmdUntar := testexec.CommandContext(ctx, "tar", "-xjf", tarballPath, s.Param().(string))
+	cmdUntar := testexec.CommandContext(ctx, "tar", "-C", tempDir, "-xvjf", tarballPath, s.Param().(string))
 	s.Logf("Running command: %q", shutil.EscapeSlice(cmdUntar.Args))
-	if err := cmdUntar.Run(); err != nil {
+	if err := cmdUntar.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatalf("%q failed: %v", shutil.EscapeSlice(cmdUntar.Args), err)
 	}
 
@@ -151,8 +153,15 @@ func extractBinaryToFlash(ctx context.Context, s *testing.State, tarballPath str
 
 // flashUnittestBinary flashes the unittest binary to the FPMCU connected to the target.
 func flashUnittestBinary(ctx context.Context, s *testing.State) {
-	binaryToFlash := extractBinaryToFlash(ctx, s, s.DataPath("fpmcu_unittests.tar.bz2"))
-	imageOption := fmt.Sprintf("--image=%s", binaryToFlash)
+	// The default working directory is /root, which isn't writable.
+	dir, err := ioutil.TempDir("", "tast.firmware.FpmcuUnittest.")
+	if err != nil {
+		s.Fatal("Failed to create temp directory: ", err)
+	}
+	defer os.RemoveAll(dir)
+
+	binaryToFlash := extractBinaryToFlash(ctx, s, dir, s.DataPath("fpmcu_unittests.tar.bz2"))
+	imageOption := fmt.Sprintf("--image=%s", filepath.Join(dir, binaryToFlash))
 	cmdFlash := testexec.CommandContext(ctx, "flash_ec", "--board="+getFpmcuBoardName(s), imageOption)
 	s.Logf("Running command: %q", shutil.EscapeSlice(cmdFlash.Args))
 	if err := cmdFlash.Run(); err != nil {
@@ -174,10 +183,12 @@ func getFpmcuConsolePath(ctx context.Context, s *testing.State) string {
 
 func FpmcuUnittest(ctx context.Context, s *testing.State) {
 	cmdServod := setupServo(ctx, s)
+	defer cmdServod.Wait(testexec.DumpLogOnError)
 	defer cmdServod.Kill()
+
 	consolePath := getFpmcuConsolePath(ctx, s)
 
-	console, err := os.OpenFile(consolePath, os.O_APPEND|os.O_RDWR, 0644)
+	console, err := os.OpenFile(consolePath, os.O_APPEND|os.O_RDWR|syscall.O_NOCTTY, 0644)
 	if err != nil {
 		s.Fatal("Failed to open FPMCU console: ", err)
 	}
