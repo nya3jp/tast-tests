@@ -85,6 +85,7 @@ func TestMemCheck(t *testing.T) {
 		fileName: {{ .FileName | fmt }},
 		sizes: {{ .Sizes }},
 		videoType: {{ .VideoType }},
+		chromeType: lacros.ChromeTypeChromeOS,
 	},
 	{{ if .ExtraAttr }}
 	ExtraAttr: {{ .ExtraAttr | fmt }},
@@ -94,10 +95,26 @@ func TestMemCheck(t *testing.T) {
 	{{ else }}
 	ExtraData: {{ .ExtraData | fmt }},
   {{ end }}
-	{{ if .ExtraSoftwareDeps }}
 	ExtraSoftwareDeps: []string{ {{ range .ExtraSoftwareDeps }} {{ . }}, {{ end }} },
-	{{ end }}
 	Fixture: {{ .Fixture | fmt }},
+}, {
+	Name: {{ .Name | printf "\"%s_lacros\"" }},
+	Val: memCheckParams{
+		fileName: {{ .FileName | fmt }},
+		sizes: {{ .Sizes }},
+		videoType: {{ .VideoType }},
+		chromeType: lacros.ChromeTypeLacros,
+	},
+	{{ if .ExtraAttr }}
+	ExtraAttr: {{ .ExtraAttr | fmt }},
+	{{ end }}
+	{{ if .MSEDataFiles }}
+	ExtraData: append(play.MSEDataFiles(), {{ range .ExtraData }} {{ . | fmt }}, {{ end }} launcher.DataArtifact),
+	{{ else }}
+	ExtraData: []string{ {{ if .ExtraData }} {{ range .ExtraData }} {{ . | fmt }}, {{ end }} {{ end }} launcher.DataArtifact },
+  {{ end }}
+	ExtraSoftwareDeps: []string{ {{ range .ExtraSoftwareDeps }} {{ . }}, {{ end }} "lacros" },
+	Fixture: {{ .Fixture | printf "\"%sLacros\"" }},
 }, {{ end }}`, memCheckTestParams)
 	genparams.Ensure(t, "mem_check.go", code)
 }
