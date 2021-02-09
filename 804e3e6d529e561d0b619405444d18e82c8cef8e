@@ -16,6 +16,24 @@
       "message": "So when we say, iw event parse, its basically parsing the string ? If its string based parsing, then it can break again in future. Probably for future, we might thinking of removing this dependency.",
       "revId": "804e3e6d529e561d0b619405444d18e82c8cef8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9102185_11e53dfb",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-09T01:44:51Z",
+      "side": 1,
+      "message": "Yes. We have b/154879577 filed for other reasons, but this is another.",
+      "parentUuid": "f935e5ea_df7ad394",
+      "revId": "804e3e6d529e561d0b619405444d18e82c8cef8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
