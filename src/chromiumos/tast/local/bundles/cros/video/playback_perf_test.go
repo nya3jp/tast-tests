@@ -10,7 +10,7 @@ import (
 	"chromiumos/tast/common/genparams"
 )
 
-var params = []struct {
+var playbackPerfTestParams = []struct {
 	Name              string
 	FileName          string
 	DecoderType       string
@@ -489,6 +489,6 @@ func TestPlaybackPerf(t *testing.T) {
 	{{ end }}
 	ExtraData: []string{ {{ if .ExtraData }} {{ range .ExtraData }} {{ . | fmt }}, {{ end }} {{ end }} launcher.DataArtifact },
 	Fixture: {{ .Fixture | printf "\"%sLacros\"" }},
-}, {{ end }}`, params)
+}, {{ end }}`, playbackPerfTestParams)
 	genparams.Ensure(t, "playback_perf.go", code)
 }
