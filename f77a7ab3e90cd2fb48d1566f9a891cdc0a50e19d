@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc68d79b_c8bc774d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T06:56:45Z",
+      "side": 1,
+      "message": "Please use errors.Wrap(err, \"unable to find board\") instead. It gives you better stack traces :)",
+      "range": {
+        "startLine": 233,
+        "startChar": 13,
+        "endLine": 233,
+        "endChar": 56
+      },
+      "revId": "f77a7ab3e90cd2fb48d1566f9a891cdc0a50e19d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
