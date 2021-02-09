@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee7b8111_e31f20c7",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-02-09T01:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b7dd4a2_b4e027c8",
+      "revId": "31e302a2ce90f4cef3cd6488fc321aa3800efc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e318688e_c7a688f4",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-09T00:42:09Z",
       "side": 1,
       "message": "remove.",
+      "revId": "31e302a2ce90f4cef3cd6488fc321aa3800efc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c1a5366_1979aad3",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-02-09T01:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e318688e_c7a688f4",
       "revId": "31e302a2ce90f4cef3cd6488fc321aa3800efc9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
