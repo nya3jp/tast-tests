@@ -37,13 +37,27 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
+	// Generate BSSIDs for the two APs.
+	mac0, err := hostapd.RandomMAC()
+	if err != nil {
+		s.Fatal("Failed to generate BSSID: ", err)
+	}
+	mac1, err := hostapd.RandomMAC()
+	if err != nil {
+		s.Fatal("Failed to generate BSSID: ", err)
+	}
+	ap0BSSID := mac0.String()
+	ap1BSSID := mac1.String()
+	s.Log("AP 0 BSSID: ", ap0BSSID)
+	s.Log("AP 1 BSSID: ", ap1BSSID)
+
 	const (
 		testSSID      = "BSS_TM"
 		roamTimeout   = 30 * time.Second
 		verifyTimeout = 20 * time.Second
 	)
-	apOpts0 := []hostapd.Option{hostapd.SSID(testSSID), hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(1)}
-	apOpts1 := []hostapd.Option{hostapd.SSID(testSSID), hostapd.Mode(hostapd.Mode80211a), hostapd.Channel(48)}
+	apOpts0 := []hostapd.Option{hostapd.SSID(testSSID), hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(1), hostapd.BSSID(ap0BSSID)}
+	apOpts1 := []hostapd.Option{hostapd.SSID(testSSID), hostapd.Mode(hostapd.Mode80211a), hostapd.Channel(48), hostapd.BSSID(ap1BSSID)}
 
 	runTest := func(ctx context.Context, s *testing.State, waitForScan bool) {
 		// Configure the first AP.
@@ -80,6 +94,33 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to verify connection: ", err)
 		}
 
+		// Set up a watcher for the Shill WiFi BSSID property.
+		monitorProps := []string{shillconst.ServicePropertyIsConnected}
+		props := []*wificell.ShillProperty{{
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateConfiguration},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateReady},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateIdle},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
+			Property:       shillconst.ServicePropertyWiFiBSSID,
+			ExpectedValues: []interface{}{ap1BSSID},
+			Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
+		}}
+
+		waitCtx, cancel := context.WithTimeout(ctx, roamTimeout)
+		defer cancel()
+		waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
+		if err != nil {
+			s.Fatal("Failed to create Shill property watcher: ", err)
+		}
+
 		// Set up a second AP with the same SSID.
 		s.Log("Configuring AP 1")
 		ap1, err := tf.ConfigureAP(ctx, apOpts1, nil)
@@ -93,12 +134,6 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 		}(ctx)
 		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
 		defer cancel()
-
-		// Get the BSSIDs of the two APs.
-		fromBSSID := ap0.Config().BSSID
-		roamBSSID := ap1.Config().BSSID
-		s.Log("AP 0 BSSID: ", fromBSSID)
-		s.Log("AP 1 BSSID: ", roamBSSID)
 
 		// Get the name and MAC address of the DUT WiFi interface.
 		clientIface, err := tf.ClientInterface(ctx)
@@ -116,44 +151,17 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to flush BSS list: ", err)
 		}
 
-		// Wait for roamBSSID to be discovered if waitForScan is set.
+		// Wait for ap1BSSID to be discovered if waitForScan is set.
 		if waitForScan {
-			s.Logf("Waiting for roamBSSID: %s", roamBSSID)
-			if err := tf.DiscoverBSSID(ctx, roamBSSID, clientIface, []byte(testSSID)); err != nil {
+			s.Logf("Waiting for ap1BSSID: %s", ap1BSSID)
+			if err := tf.DiscoverBSSID(ctx, ap1BSSID, clientIface, []byte(testSSID)); err != nil {
 				s.Fatal("Unable to discover roam BSSID: ", err)
 			}
 		}
 
-		// Set up a watcher for the Shill WiFi BSSID property.
-		monitorProps := []string{shillconst.ServicePropertyIsConnected}
-		props := []*wificell.ShillProperty{{
-			Property:       shillconst.ServicePropertyWiFiRoamState,
-			ExpectedValues: []interface{}{shillconst.RoamStateConfiguration},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-		}, {
-			Property:       shillconst.ServicePropertyWiFiRoamState,
-			ExpectedValues: []interface{}{shillconst.RoamStateReady},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-		}, {
-			Property:       shillconst.ServicePropertyWiFiRoamState,
-			ExpectedValues: []interface{}{shillconst.RoamStateIdle},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-		}, {
-			Property:       shillconst.ServicePropertyWiFiBSSID,
-			ExpectedValues: []interface{}{roamBSSID},
-			Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
-		}}
-
-		waitCtx, cancel := context.WithTimeout(ctx, roamTimeout)
-		defer cancel()
-		waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
-		if err != nil {
-			s.Fatal("Failed to create Shill property watcher: ", err)
-		}
-
 		// Send BSS Transition Management Request to client.
-		s.Logf("Sending BSS Transition Management Request from AP %s to DUT %s", fromBSSID, clientMAC)
-		if err := ap0.SendBSSTMRequest(ctx, clientMAC, roamBSSID); err != nil {
+		s.Logf("Sending BSS Transition Management Request from AP %s to DUT %s", ap0BSSID, clientMAC)
+		if err := ap0.SendBSSTMRequest(ctx, clientMAC, ap1BSSID); err != nil {
 			s.Fatal("Failed to send BSS TM Request: ", err)
 		}
 
