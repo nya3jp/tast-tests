@@ -178,6 +178,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "554ae4a8_6c9ae39a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/guest_mode_extension.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-09T16:19:39Z",
+      "side": 1,
+      "message": "The link points to this CL.\nCould you share the correct one?",
+      "parentUuid": "cdf0b2f2_96d2467e",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 48
+      },
+      "revId": "5c484b43b47afb9d36b211147a9221ae9b938b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1620d4fc_6fbe9155",

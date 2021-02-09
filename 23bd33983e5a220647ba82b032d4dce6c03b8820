@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11331b52_234d2456",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-09T16:19:39Z",
+      "side": 1,
+      "message": "Thank you for investigation and working on the fix.\nLGTM. At this moment, there\u0027s no users of new API blocking CQ, so small flakiness addressed separately should be fine.",
+      "revId": "23bd33983e5a220647ba82b032d4dce6c03b8820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
