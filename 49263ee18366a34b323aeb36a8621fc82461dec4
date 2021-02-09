@@ -16,6 +16,24 @@
       "message": "Mhh, I tried this and it keeps starting/stopping Chrome between tests? I need to take a closer look later.",
       "revId": "49263ee18366a34b323aeb36a8621fc82461dec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b58548_b14b18fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-09T00:42:09Z",
+      "side": 1,
+      "message": "I ran it locally and observed that Reset method fails with the error message: \"Fixture failed to reset: failed to get ui job status: context deadline exceeded; recovering\".\n\nAnother issue I noticed is that tast framework is trying to start ui service for every local tast tests. I presume we need to pass some flag down?\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundlemain/main.go?l\u003d198\u0026rcl\u003dad57676563c5d5c33b42b685d3c8b18a739a4bb7",
+      "parentUuid": "b8a11982_9c19e4fc",
+      "revId": "49263ee18366a34b323aeb36a8621fc82461dec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
