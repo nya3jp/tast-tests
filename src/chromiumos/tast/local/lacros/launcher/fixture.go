@@ -16,7 +16,9 @@ import (
 	"chromiumos/tast/timing"
 )
 
-func newStartedByData(mode setupMode, opts ...chrome.Option) *fixtureImpl {
+// NewStartedByData creates a new fixture that can launch Lacros chrome with the given setup mode and
+// Chrome options.
+func NewStartedByData(mode SetupMode, opts ...chrome.Option) testing.FixtureImpl {
 	return &fixtureImpl{
 		mode: mode,
 		opts: append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+mojoSocketPath)),
@@ -31,7 +33,7 @@ func init() {
 		Name:            "lacrosStartedByData",
 		Desc:            "Lacros Chrome from a pre-built image",
 		Contacts:        []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl:            newStartedByData(preExist),
+		Impl:            NewStartedByData(PreExist),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -44,7 +46,7 @@ func init() {
 		Name:            "lacrosStartedByDataWith100FakeApps",
 		Desc:            "Lacros Chrome from a pre-built image with 100 fake apps installed",
 		Contacts:        []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl:            newStartedByData(preExist),
+		Impl:            NewStartedByData(PreExist),
 		Parent:          "install100Apps",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -58,7 +60,7 @@ func init() {
 		Name:            "lacrosStartedByDataForceComposition",
 		Desc:            "Lacros Chrome from a pre-built image with composition forced on",
 		Contacts:        []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl:            newStartedByData(preExist, chrome.ExtraArgs("--enable-hardware-overlays=\"\"")),
+		Impl:            NewStartedByData(PreExist, chrome.ExtraArgs("--enable-hardware-overlays=\"\"")),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -73,7 +75,7 @@ func init() {
 		Name:            "lacrosStartedByDataUI",
 		Desc:            "Lacros Chrome from a pre-built image using the UI",
 		Contacts:        []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl:            newStartedByData(preExist, chrome.EnableFeatures("LacrosSupport")),
+		Impl:            NewStartedByData(PreExist, chrome.EnableFeatures("LacrosSupport")),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -87,7 +89,7 @@ func init() {
 		Name:            "lacrosStartedByOmaha",
 		Desc:            "Lacros Chrome from omaha",
 		Contacts:        []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl:            newStartedByData(omaha, chrome.EnableFeatures("LacrosSupport")),
+		Impl:            NewStartedByData(Omaha, chrome.EnableFeatures("LacrosSupport")),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -122,13 +124,13 @@ const (
 type FixtData struct {
 	Chrome      *chrome.Chrome   // The CrOS-chrome instance.
 	TestAPIConn *chrome.TestConn // The CrOS-chrome connection.
-	Mode        setupMode        // Mode used to get the lacros binary.
+	Mode        SetupMode        // Mode used to get the lacros binary.
 	LacrosPath  string           // Root directory for lacros-chrome.
 }
 
-// Implementation of lacros's fixture.
+// fixtureImpl is a fixture that allows Lacros chrome to be launched.
 type fixtureImpl struct {
-	mode       setupMode        // How (pre exist/to be downloaded/) the container image is obtained.
+	mode       SetupMode        // How (pre exist/to be downloaded/) the container image is obtained.
 	lacrosPath string           // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
 	cr         *chrome.Chrome   // Connection to CrOS-chrome.
 	tconn      *chrome.TestConn // Test-connection for CrOS-chrome.
@@ -136,17 +138,18 @@ type fixtureImpl struct {
 	opts       []chrome.Option  // Options to be run for CrOS-chrome.
 }
 
-type setupMode int
+// SetupMode describes how lacros-chrome should be set-up during the test. See the SetupMode constants for more explanation.
+type SetupMode int
 
 const (
-	// Lacros-chrome already exists during the fixture. It can be already downloaded per the
+	// PreExist denotes that Lacros-chrome already exists during the fixture. It can be already downloaded per the
 	// external data dependency or pre-deployed by the caller site that invokes the tests.
-	preExist setupMode = iota
+	PreExist SetupMode = iota
 	// Omaha is used to get the lacros binary.
-	omaha
+	Omaha
 )
 
-// Called by tast before each test is run. We use this method to initialize
+// SetUp is called by tast before each test is run. We use this method to initialize
 // the fixture data, or return early if the fixture is already active.
 // TODO(crbug.com/1127165): Until this bug is resolved, tests must call EnsureLacrosChrome
 // at the beginning of their test.
@@ -190,7 +193,7 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 		f.lacrosPath = binaryPath
 	}
 
-	if f.mode == preExist {
+	if f.mode == PreExist {
 		f.opts = append(f.opts, chrome.ExtraArgs("--lacros-chrome-path="+f.lacrosPath))
 	}
 
@@ -207,13 +210,13 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 	}
 
 	switch f.mode {
-	case preExist:
+	case PreExist:
 		if !deployed {
 			if err := prepareLacrosChromeBinary(ctx, s); err != nil {
 				s.Fatal("Failed to prepare lacros-chrome, err")
 			}
 		}
-	case omaha:
+	case Omaha:
 		// When launched by Omaha we need to wait several seconds for lacros to be launchable.
 		// It is ready when the image loader path is created with the chrome executable.
 		testing.ContextLog(ctx, "Waiting for Lacros to initialize")
@@ -241,7 +244,7 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 	return ret
 }
 
-// Close is called after all tests involving this fixture have been run,
+// TearDown is called after all tests involving this fixture have been run,
 // (or failed to be run if the fixture itself fails). Unlocks Chrome's and
 // the container's constructors.
 func (f *fixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
