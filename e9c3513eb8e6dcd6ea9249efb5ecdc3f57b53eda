@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7982e55_c30c3cac",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-09T16:25:04Z",
+      "side": 1,
+      "message": "I do not think this is a layer to handle tab closing.\nMemoryStressServer is, as documented above, http server to server webpages for the tests.\n\nAlso, it\u0027s recommended to set up proper state, rather than trying to teardown correctly for better stability and debuggability.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#startup-and-shutdown\n\nIn this case, instead, is it possible to close all tabs in ResetState?",
+      "revId": "e9c3513eb8e6dcd6ea9249efb5ecdc3f57b53eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
