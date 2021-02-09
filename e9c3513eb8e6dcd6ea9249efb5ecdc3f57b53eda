@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a6dd448_5e878f96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/lifecycle_chromeos_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-09T17:51:14Z",
+      "side": 1,
+      "message": "In general I would advise using a type switch for this.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "e9c3513eb8e6dcd6ea9249efb5ecdc3f57b53eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7982e55_c30c3cac",
         "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
         "patchSetId": 4
