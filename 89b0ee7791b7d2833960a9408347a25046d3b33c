@@ -16,6 +16,23 @@
       "message": "I ran the wifi.RoamDbus and I can see the net.log size has reduced by half.",
       "revId": "89b0ee7791b7d2833960a9408347a25046d3b33c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94a61279_481bf7bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-09T03:01:21Z",
+      "side": 1,
+      "message": "I would +plus in folks who looked at the original design [1] (I was only on CC, so I didn\u0027t look too closely), but much of their continent is on holiday. Seems like there\u0027s a bit of unnecessary code now, but I guess it\u0027s not too bad.\n\nAnyway, makes sense to me, obviously :) Feel free to solicit other opinions.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2592307",
+      "revId": "89b0ee7791b7d2833960a9408347a25046d3b33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
