@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3e50d62_cb47ac1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-09T17:33:10Z",
+      "side": 1,
+      "message": "I need to be able to access the timeout in the test to pass into the RPCs (AwaitSharingStopped function). This particular Timeout field actually sets the test\u0027s context deadline, but is not accessible from the *testing.State, so I need to include it in the Val as well.",
+      "parentUuid": "3b89ce4a_e48ab19e",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcb6b7b0_b1a23777",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver.go",
         "patchSetId": 3
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-06T22:27:14Z",
       "side": 1,
       "message": "Does this get it at the point of failure or after everything is closed down?",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 68
+      },
+      "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8789b1f8_75ff5836",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-09T17:33:10Z",
+      "side": 1,
+      "message": "This will be before the receive window is closed, but after everything else is cleaned up (i.e. the Android will have stopped sending at this point). In the big defer block below, we\u0027ll get a screenshot at the time of failure, before we perform any cleanup on the CrOS or Android sides. This one will give us a screenshot in case anything goes wrong after a successful share, though.",
+      "parentUuid": "dcb6b7b0_b1a23777",
       "range": {
         "startLine": 115,
         "startChar": 1,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa4cc7e5_f8883c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-09T17:33:10Z",
+      "side": 1,
+      "message": "This is doing the cleanup on the Android side. We need to stop things there if the transfer fails early. Updated the comment to be a bit more specific.",
+      "parentUuid": "41009209_d17c3c9c",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 48
+      },
+      "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3279f578_f45bd9e8",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19025081_ee8877fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-09T17:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3279f578_f45bd9e8",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bf3eb78_a48a091a",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-02-09T00:36:46Z",
       "side": 1,
       "message": "You could replace this with just showHighVisibilityPage_() or use the raw api nearby_share.getReceiveManager().registerForegroundReceiveSurface(). I left a comment in https://crbug.com/1173190 if you want add your own observer let me know and I can help with that.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 87
+      },
+      "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fcfbc60_f43dc589",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-09T17:33:10Z",
+      "side": 1,
+      "message": "Replaced with showHighVisibilityPage_ for now and responded in the bug. I\u0027ll come back and update the test with an API-only approach once we figure out the details!",
+      "parentUuid": "6bf3eb78_a48a091a",
       "range": {
         "startLine": 43,
         "startChar": 0,
