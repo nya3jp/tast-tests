@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3008426a_5db8db90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_cancel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-09T02:02:03Z",
+      "side": 1,
+      "message": "I didn\u0027t see the fields to declare SoftwareDeps in the fixture, and this makes it seem like it\u0027s not possible: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/fixt.go;l\u003d102?q\u003dfixt.go\n\nIs there a way to do it that I\u0027m not seeing?",
+      "parentUuid": "1890c427_d095db8a",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "e3af4a9e490e7ec8eec1457f45bc60405c971f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3e8568f_04108438",
         "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
         "patchSetId": 10
@@ -71,6 +95,24 @@
       "writtenOn": "2021-02-09T01:06:23Z",
       "side": 1,
       "message": "My understanding is of the email thread is:\n\nWhat you need is running chrome. And, the tests do not need to talk to Chrome directly, while cros_healthd does over Mojo.\n\nIn the case, WDYT about using upstart.RestartJob(ctx, \"ui\") here, (as nya@ also recommended in the thread)?\nIt ensures ui job to start, i.e. Chrome should running?\n\nIf chrome.Chrome instance is needed, could you share/comment what is needed in addition to restart ui?",
+      "revId": "e3af4a9e490e7ec8eec1457f45bc60405c971f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aa37a24_0435c176",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-09T02:02:03Z",
+      "side": 1,
+      "message": "Originally I didn\u0027t use this solution, because Chrome did not have time to bootstrap cros_healthd before the test started. But adding a wait condition on the dbus service MojoConnectionService does ensure that cros_healthd has been boostrapped. \n\nI\u0027ve modified the CL to use the RestartJob solution.",
+      "parentUuid": "a3e8568f_04108438",
       "revId": "e3af4a9e490e7ec8eec1457f45bc60405c971f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
