@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f0739af_f9aecca6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-09T11:58:08Z",
+      "side": 1,
+      "message": "Hi Pavol, \n\nPlease take a look at this CL!\n\nIt\u0027s super verbose because of the UI automation code.\n\nThanks!",
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
