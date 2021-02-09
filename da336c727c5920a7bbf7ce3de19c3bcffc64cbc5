@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db40783_b828e936",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-09T02:38:10Z",
+      "side": 1,
+      "message": "Add some memory tests to make sure Crostini interacts with the virtio_balloon non-catastrophically.\n\nWe can extend them later to add tests for resourced/game-mode.",
+      "revId": "da336c727c5920a7bbf7ce3de19c3bcffc64cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e09a80_d76f5172",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-09T02:38:10Z",
+      "side": 1,
+      "message": "It seems on the test device, binaries are in both places, but deploying tast helpers only updates `/usr/libexec/tast/helpers/local/cros/...`",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 93
+      },
+      "revId": "da336c727c5920a7bbf7ce3de19c3bcffc64cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
