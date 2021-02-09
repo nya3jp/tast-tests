@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25ef5a06_d18f8922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-09T22:32:01Z",
+      "side": 1,
+      "message": "Can\u0027t seem to find this one in stainless nor tastboard (security.Manatee.real). The fake variant LGTM to promote to critical, can you post a link to 20+ successful run criteria for the real variant?",
+      "range": {
+        "startLine": 53,
+        "startChar": 23,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "03184846523d2fd16934512eb4fb4d7076ab5f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
