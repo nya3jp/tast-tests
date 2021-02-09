@@ -90,6 +90,7 @@ type Config struct {
 	// dumps directly to a hardcoded directory.
 	BreakpadTestMode bool     `reuse_match:"true"`
 	ExtraArgs        []string `reuse_match:"true"`
+	LacrosExtraArgs  []string `reuse_match:"true"`
 	EnableFeatures   []string `reuse_match:"true"`
 	DisableFeatures  []string `reuse_match:"true"`
 

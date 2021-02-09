@@ -217,6 +217,7 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 		chrome.BlankURL,                                       // Specify first tab to load.
 	}
 	args = append(args, extensionArgs(chrome.TestExtensionID, extList)...)
+	args = append(args, f.Chrome.LacrosExtraArgs()...)
 
 	l.cmd = testexec.CommandContext(ctx, "/usr/local/bin/python3", append([]string{"/usr/local/bin/mojo_connection_lacros_launcher.py",
 		"-s", mojoSocketPath, filepath.Join(f.LacrosPath, "chrome")}, args...)...)
