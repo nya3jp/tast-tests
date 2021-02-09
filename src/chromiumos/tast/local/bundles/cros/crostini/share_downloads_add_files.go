@@ -15,7 +15,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/listset"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
 	"chromiumos/tast/local/testexec"
@@ -107,10 +108,10 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
-	sharedFolders := sharedfolders.NewSharedFolders()
+	sharedFolders := sharedfolders.NewSharedFolders(tconn)
 	// Clean up in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont, cr); err != nil {
+		if err := sharedFolders.UnshareAll(cont, cr)(cleanupCtx); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 		if err := removeAllFilesInDirectory(filesapp.DownloadPath); err != nil {
@@ -132,10 +133,11 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 	defer filesApp.Close(cleanupCtx)
 
 	// Right click My files and select Share with Linux.
-	if err = filesApp.SelectDirectoryContextMenuItem(ctx, filesapp.Downloads, sharedfolders.ShareWithLinux); err != nil {
+	if err = uiauto.Run(ctx,
+		filesApp.ClickDirectoryContextMenuItem(filesapp.Downloads, sharedfolders.ShareWithLinux),
+		sharedFolders.AddFolder(sharedfolders.SharedDownloads)); err != nil {
 		s.Fatal("Failed to share Downloads with Crostini: ", err)
 	}
-	sharedFolders.AddFolder(sharedfolders.SharedDownloads)
 
 	// Check the file list in the container. It takes sometime for the container to mount the shared folder.
 	// This step is necessary, without this step,
@@ -221,15 +223,11 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to push test file to the container: ", err)
 		}
 
-		if err := filesApp.OpenDownloads(ctx); err != nil {
-			s.Fatal("Failed to open Downloads: ", err)
-		}
-		// Check the newly created file is listed in Linux files.
-		if err = filesApp.WaitForFile(ctx, testFile, 10*time.Second); err != nil {
-			s.Fatal("Failed to find the test file in Files app: ", err)
-		}
-		if err = filesApp.WaitForFile(ctx, testFolder, 10*time.Second); err != nil {
-			s.Fatal("Failed to find the test folder in Files app: ", err)
+		if err := uiauto.Run(ctx,
+			filesApp.OpenDownloads(),
+			filesApp.WaitForFile(testFile),
+			filesApp.WaitForFile(testFolder)); err != nil {
+			s.Fatal("Failed to find the newly created files in Downloads: ", err)
 		}
 
 		// Check the content of the test file in Chrome OS.

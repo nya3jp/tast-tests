@@ -9,7 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
 	"chromiumos/tast/local/vm"
@@ -106,27 +107,22 @@ func ShareFilesCancel(ctx context.Context, s *testing.State) {
 	}
 	defer filesApp.Close(cleanupCtx)
 
-	sharedFolders := sharedfolders.NewSharedFolders()
+	sharedFolders := sharedfolders.NewSharedFolders(tconn)
 
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont, cr); err != nil {
+		if err := sharedFolders.UnshareAll(cont, cr)(cleanupCtx); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
 
+	ui := uiauto.New(tconn)
 	// Share My files.
-	scd, err := sharedFolders.ShareMyFiles(ctx, tconn, filesApp)
-	if err != nil {
-		s.Fatal("Failed to share My files: ", err)
-	}
-	defer scd.Release(ctx)
-
-	if err := scd.ClickCancel(ctx, tconn); err != nil {
-		s.Fatal("Failed to click Cancel on the share confirm dialog: ", err)
-	}
-
-	if err := sharedFolders.CheckNoSharedFolders(ctx, tconn, cont, cr); err != nil {
-		s.Fatal("Failed to check shared folders list by default: ", err)
+	if err := uiauto.Run(ctx,
+		sharedFolders.ShareMyFiles(ctx, filesApp),
+		ui.LeftClick(sharedfolders.ShareConfirmDialog.CancelButton),
+		ui.NotExists(sharedfolders.ShareToastNotification.Self),
+		sharedFolders.CheckNoSharedFolders(cont, cr)); err != nil {
+		s.Fatal("Failed to test cancel share My files: ", err)
 	}
 }
