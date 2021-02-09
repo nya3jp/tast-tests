@@ -73,7 +73,9 @@ func init() {
 // another indicator of HW DRM). This will use the Shaka player to playback a
 // Widevine DRM protected MPD video via MSE/EME.
 func PlayDRM(ctx context.Context, s *testing.State) {
-	if err := play.TestPlay(ctx, s, s.FixtValue().(*chrome.Chrome), s.Param().(string), play.DRMVideo, play.VerifyHWDRMUsed); err != nil {
+	cr := s.FixtValue().(*chrome.Chrome)
+
+	if err := play.TestPlay(ctx, s, cr, cr, s.Param().(string), play.DRMVideo, play.VerifyHWDRMUsed); err != nil {
 		s.Fatal("TestPlay failed: ", err)
 	}
 }
