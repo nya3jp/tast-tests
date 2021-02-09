@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7fc505_fdd05ed6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-09T00:11:15Z",
+      "side": 1,
+      "message": "Good catch! Done.",
+      "parentUuid": "ddf36186_504de584",
+      "revId": "5959d55708c4461c408c1dad8b212a4ed50fc86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e82c7c8_4aceccfb",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78625ac0_321ceed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-09T00:11:15Z",
+      "side": 1,
+      "message": "Correct - this is because I landed the bits and pieces before writing the\ndocument, and I haven\u0027t found the time to homogenise them into 0.1bpp\nfor VP8/H.264 and 0.7 that amount for VP9. Coming soon.",
+      "parentUuid": "0e82c7c8_4aceccfb",
+      "revId": "5959d55708c4461c408c1dad8b212a4ed50fc86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f3e6977_112a4cbe",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-02-08T23:21:38Z",
       "side": 1,
       "message": "why despace this?",
+      "revId": "5959d55708c4461c408c1dad8b212a4ed50fc86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34ea1f8_9c576c20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-09T00:11:15Z",
+      "side": 1,
+      "message": "I was also surprised, but `gofmt -w` did it. Let me undo it.\n\nReverted it and indeed presubmit complained.",
+      "parentUuid": "6f3e6977_112a4cbe",
       "revId": "5959d55708c4461c408c1dad8b212a4ed50fc86a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
