@@ -7,6 +7,7 @@
 package browserwatcher
 
 import (
+	"context"
 	"sync"
 	"time"
 
@@ -14,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/chromeproc"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -33,13 +35,38 @@ type Watcher struct {
 }
 
 // NewWatcher creates a new Watcher and starts it.
-func NewWatcher() *Watcher {
+// Returns only when the chrome PID it's watching has been identified.
+func NewWatcher(ctx context.Context) (*Watcher, error) {
 	bw := &Watcher{
 		done:              make(chan bool, 1),
 		closed:            make(chan error, 1),
 		initialPID:        -1,
 		sessionManagerPID: -1,
 	}
+
+	// Wait for the browser process to start.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		pid, err := chromeproc.GetRootPID()
+		if err != nil {
+			return errors.Wrap(err, "browser process not started yet")
+		}
+
+		proc, err := process.NewProcess(int32(pid))
+		if err != nil {
+			return testing.PollBreak(errors.Wrapf(err, "browser process %d exited; Chrome probably crashed", pid))
+		}
+		ppid, err := proc.Ppid()
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to find the PID of the session manager"))
+		}
+		bw.initialPID = int32(pid)
+		bw.sessionManagerPID = ppid
+
+		return nil
+	}, &testing.PollOptions{Interval: checkBrowserInterval}); err != nil {
+		return nil, err
+	}
+
 	go func() {
 		defer func() {
 			bw.closed <- bw.Err()
@@ -56,7 +83,8 @@ func NewWatcher() *Watcher {
 			}
 		}
 	}()
-	return bw
+
+	return bw, nil
 }
 
 // Close synchronously stops the watch goroutine.
@@ -81,57 +109,39 @@ func (bw *Watcher) ReplaceErr(err error) error {
 	return err
 }
 
+// WaitExit polls until the *Watcher's initialPID is no longer running.
+func (bw *Watcher) WaitExit(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := process.NewProcess(bw.initialPID); err == nil {
+			return errors.New("chrome PID is still running")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: checkBrowserInterval})
+}
+
 // check is an internal method that checks the browser process, updating initialPID and browserErr as needed.
 // Returns false after an error has been encountered, indicating that no further calls are needed.
 func (bw *Watcher) check() bool {
-	// Once the browser process ID is known, just check if the process ID is valid
-	// (i.e. the browser process is still running).
-	if bw.initialPID != -1 {
-		// Creating an instance of process.Process to check if the PID is still
-		// valid or not. Note that Process.IsRunning() can't be used since it is not
-		// yet implemented for Linux.
-		// TODO(mukai): update gopsutil package and replace this by IsRunning.
-		if _, err := process.NewProcess(bw.initialPID); err != nil {
-			bw.mutex.Lock()
-			defer bw.mutex.Unlock()
-			bw.browserErr = errors.Wrapf(err, "browser process %d exited; Chrome probably crashed", bw.initialPID)
-			return false
-		}
-		// Next, check the existence of the session manager process by creating an
-		// instance of process.Process.
-		if _, err := process.NewProcess(bw.sessionManagerPID); err != nil {
-			bw.mutex.Lock()
-			defer bw.mutex.Unlock()
-			bw.browserErr = errors.Wrapf(err, "session manager process %d exited; session manager probably crashed", bw.sessionManagerPID)
-			return false
-		}
-		// Theoretically, there's a chance that both browser process and session
-		// manager have finished and new processes come up with the same PID, though
-		// it would be rare.
-		return true
-	}
-
-	pid, err := chromeproc.GetRootPID()
-	if err != nil {
-		// The browser process might not have started yet. Just keep checking.
-		return true
-	}
-
-	proc, err := process.NewProcess(int32(pid))
-	if err != nil {
+	// Creating an instance of process.Process to check if the PID is still
+	// valid or not. Note that Process.IsRunning() can't be used since it is not
+	// yet implemented for Linux.
+	// TODO(mukai): update gopsutil package and replace this by IsRunning.
+	if _, err := process.NewProcess(bw.initialPID); err != nil {
 		bw.mutex.Lock()
 		defer bw.mutex.Unlock()
-		bw.browserErr = errors.Wrapf(err, "browser process %d exited; Chrome probably crashed", pid)
+		bw.browserErr = errors.Wrapf(err, "browser process %d exited; Chrome probably crashed", bw.initialPID)
 		return false
 	}
-	ppid, err := proc.Ppid()
-	if err != nil {
+	// Next, check the existence of the session manager process by creating an
+	// instance of process.Process.
+	if _, err := process.NewProcess(bw.sessionManagerPID); err != nil {
 		bw.mutex.Lock()
 		defer bw.mutex.Unlock()
-		bw.browserErr = errors.Wrap(err, "failed to find the PID of the session manager")
+		bw.browserErr = errors.Wrapf(err, "session manager process %d exited; session manager probably crashed", bw.sessionManagerPID)
+		return false
 	}
-	bw.initialPID = int32(pid)
-	bw.sessionManagerPID = ppid
-
+	// Theoretically, there's a chance that both browser process and session
+	// manager have finished and new processes come up with the same PID, though
+	// it would be rare.
 	return true
 }
