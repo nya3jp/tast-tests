@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc11afb7_0ea9b2f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-09T18:43:53Z",
+      "side": 1,
+      "message": "nit: remove this blank line.",
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3257ac92_0b41f468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-09T18:43:53Z",
+      "side": 1,
+      "message": "can you wait a little bit?  edcourtney is working on lacros-fixture, and that is about to be merged (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2658788).  With that these lines will be simplified significantly.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 71
+      },
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b5d80f_5e799961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-09T18:43:53Z",
+      "side": 1,
+      "message": "I actually think this is not quite necessary.  Could you compare the result numbers with and without this sleep?\n\nOr, you may want to have other mechanism of waiting, e.g.\n  if err \u003d ash.ForAllWindow(ctx, tconn, func(w *ash.Window) error {\n    return ash.WaitWindowFinishAnimating(ctx, tconn, w.ID)\n  }); err !\u003d nil {\n    s.Fatal(\"Failed to wait: \", err)\n  }",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 4
+      },
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9da101_354caecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-09T18:43:53Z",
+      "side": 1,
+      "message": "nit: this might not be necessary, as this will wait for a new data point for Ash.UnlockAnimation.Smoothness metric, which happens only after the animation.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca61af52_fcf2201f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-09T18:43:53Z",
+      "side": 1,
+      "message": "just curious: we don\u0027t have the animation smoothness for locking?",
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
