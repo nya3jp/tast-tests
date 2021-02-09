@@ -16,6 +16,23 @@
       "message": "PTAL~!",
       "revId": "5eb86d6adf0ea3caeb9defd885380c9ca6dbe12f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0ec23c_b9d99b63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-09T09:46:34Z",
+      "side": 1,
+      "message": "If we are happy with this approach for supporting lacros, I\u0027ll also do this to the video.Play.*, video.MemCheck.*, and video.Seek.* tests, as recommended by Honda-san.",
+      "revId": "5eb86d6adf0ea3caeb9defd885380c9ca6dbe12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
