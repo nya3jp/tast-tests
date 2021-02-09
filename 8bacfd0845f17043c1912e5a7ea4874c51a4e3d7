@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0343b6_849385c4",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-02-09T08:46:45Z",
+      "side": 1,
+      "message": "As you said, this works only for tests using \"arcBooted\" fixture. I write this fact to the commit message.",
+      "parentUuid": "6bd5ca11_aba7ee41",
+      "range": {
+        "startLine": 104,
+        "startChar": 24,
+        "endLine": 104,
+        "endChar": 32
+      },
+      "revId": "8bacfd0845f17043c1912e5a7ea4874c51a4e3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65fc0e1d_2cab84df",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a34558e_af93fdca",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-02-09T08:46:45Z",
+      "side": 1,
+      "message": "I have no strong opinion about this, so I renamed this to ps-arcvm.txt",
+      "parentUuid": "65fc0e1d_2cab84df",
+      "range": {
+        "startLine": 121,
+        "startChar": 32,
+        "endLine": 121,
+        "endChar": 44
+      },
+      "revId": "8bacfd0845f17043c1912e5a7ea4874c51a4e3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d37e0679_aa1f2cb5",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-09T06:55:02Z",
       "side": 1,
       "message": "Can you use arc.ARC.Command instead?\n\nPlease note that ARC.Command does more things than mere \"adb shell\", e.g. setting up ADB_VENDOR_KEYS.",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 47
+      },
+      "revId": "8bacfd0845f17043c1912e5a7ea4874c51a4e3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ad3c5d_e342dd12",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-02-09T08:46:45Z",
+      "side": 1,
+      "message": "I updated to use f.arc.Command.",
+      "parentUuid": "d37e0679_aa1f2cb5",
       "range": {
         "startLine": 128,
         "startChar": 1,
