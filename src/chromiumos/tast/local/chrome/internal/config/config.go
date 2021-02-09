@@ -77,6 +77,7 @@ type Config struct {
 	// dumps directly to a hardcoded directory.
 	BreakpadTestMode bool
 	ExtraArgs        []string
+	LacrosExtraArgs  []string
 	EnableFeatures   []string
 	DisableFeatures  []string
 
