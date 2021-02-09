@@ -16,6 +16,115 @@
       "message": "Hi Shuhei, I modified the code based on our discussion about the default reuse strategy, as well as two other changes:\n- I use a short context for tryReuseSession() in Chrome.New to make sure it returns early so a normal login can be performed.\n- Return detailed errors for config.VerifySessionReuse() so the user knows which field is prevent the session reuse.\nThanks!",
       "revId": "4ff5f26c826b106a43f4ee3bb6118ee04985e2ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b9a65af_7786f97a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T07:48:36Z",
+      "side": 1,
+      "message": "Thanks for update! I know have very minor comments only.\n",
+      "revId": "4ff5f26c826b106a43f4ee3bb6118ee04985e2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14e3ec34_e973bce2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T07:48:36Z",
+      "side": 1,
+      "message": "Thank you for setting up timeout! This is really nice.",
+      "range": {
+        "startLine": 168,
+        "startChar": 52,
+        "endLine": 168,
+        "endChar": 74
+      },
+      "revId": "4ff5f26c826b106a43f4ee3bb6118ee04985e2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5dc0d5d_66e4528a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T07:48:36Z",
+      "side": 1,
+      "message": "Would you mind adding a short comment describing why we can\u0027t reuse sessions for NoLogin?",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 1
+      },
+      "revId": "4ff5f26c826b106a43f4ee3bb6118ee04985e2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "090665ba_c4f14187",
+        "filename": "src/chromiumos/tast/local/chrome/reuse.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T07:48:36Z",
+      "side": 1,
+      "message": "I believe cfg.DeferLogin is always false?",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 31
+      },
+      "revId": "4ff5f26c826b106a43f4ee3bb6118ee04985e2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a768ec94_03b45ec0",
+        "filename": "src/chromiumos/tast/local/chrome/reuse.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T07:48:36Z",
+      "side": 1,
+      "message": "typo: existing",
+      "range": {
+        "startLine": 67,
+        "startChar": 80,
+        "endLine": 67,
+        "endChar": 87
+      },
+      "revId": "4ff5f26c826b106a43f4ee3bb6118ee04985e2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
