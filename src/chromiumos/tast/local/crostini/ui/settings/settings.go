@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/crostini/faillog"
 	"chromiumos/tast/local/input"
 )
 
@@ -124,12 +125,13 @@ func FindSettingsPage(ctx context.Context, tconn *chrome.TestConn, windowName st
 //
 // It also clicks next to skip the information screen.  An ui.Installer
 // page object can be constructed after calling OpenInstaller to adjust the settings and to complete the installation.
-func OpenInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
+func OpenInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (retErr error) {
 	s, err := OpenLinuxSubpage(ctx, tconn, cr)
 	if err != nil {
 		return errors.Wrap(err, "failed to open linux subpage on Settings app")
 	}
 	defer s.Close(ctx)
+	defer func() { faillog.DumpUITreeAndScreenshot(ctx, tconn, "crostini_installer", retErr) }()
 	return s.ui.LeftClick(nextButton)(ctx)
 }
 
