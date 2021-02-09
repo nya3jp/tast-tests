@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/setup"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -144,8 +145,20 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	if cfg.LoginMode == config.GAIALogin {
 		timeout = gaiaLoginTimeout
 	}
-	ctx, cancel := context.WithTimeout(ctx, timeout)
+	origCtx := ctx
+	ctx, cancel := context.WithTimeout(origCtx, timeout)
 	defer cancel()
+
+	// In case chrome.New fails for a deadline error, which might be caused
+	// by a browser hang, take minidump snapshots for diagnosis.
+	defer func() {
+		if retErr != nil && ctx.Err() != nil && origCtx.Err() == nil {
+			testing.ContextLog(ctx, "Taking minidump snapshots to diagnose possible browser hang")
+			if err := saveMinidumpsWithoutCrash(origCtx); err != nil {
+				testing.ContextLog(ctx, "Failed to take minidump snapshots: ", err)
+			}
+		}
+	}()
 
 	if err := setup.PreflightCheck(ctx, cfg); err != nil {
 		return nil, errors.Wrap(err, "pre-flight check failed")
@@ -568,5 +581,34 @@ func SaveTraceToFile(ctx context.Context, trace *trace.Trace, path string) error
 		return errors.Wrap(err, "could not flush the gzip writer")
 	}
 
+	return nil
+}
+
+// saveMinidumpsWithoutCrash saves minidump snapshots of the browser and its
+// related processes to the output directory.
+// Minidump snapshots are useful on debugging Chrome hang issues for example.
+func saveMinidumpsWithoutCrash(ctx context.Context) error {
+	ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
+	defer cancel()
+
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("output directory unavailable in context")
+	}
+
+	dir := filepath.Join(outDir, "chrome_diagnosis")
+	if err := os.MkdirAll(dir, 0755); err != nil {
+		return err
+	}
+
+	matchers := []minidump.Matcher{
+		// Login timeout is often caused by TPM slowness.
+		minidump.MatchByName("chapsd", "cryptohome", "cryptohomed", "session_manager", "tcsd"),
+	}
+	if pid, err := GetRootPID(); err == nil {
+		matchers = append(matchers, minidump.MatchByPID(int32(pid)))
+	}
+
+	minidump.SaveWithoutCrash(ctx, dir, matchers...)
 	return nil
 }
