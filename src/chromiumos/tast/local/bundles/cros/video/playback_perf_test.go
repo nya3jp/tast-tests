@@ -466,6 +466,7 @@ func TestPlaybackPerf(t *testing.T) {
 	Val: playbackPerfParams{
 		fileName: {{ .FileName | fmt }},
 		decoderType: {{ .DecoderType }},
+		chromeType: lacros.ChromeTypeChromeOS,
 	},
 	{{ if .ExtraSoftwareDeps }}
 	ExtraSoftwareDeps: []string{ {{ range .ExtraSoftwareDeps }} {{ . }}, {{ end }} },
@@ -475,6 +476,19 @@ func TestPlaybackPerf(t *testing.T) {
 	{{ end }}
 	ExtraData: {{ .ExtraData | fmt }},
 	Fixture: {{ .Fixture | fmt }},
+}, {
+	Name: {{ .Name | printf "\"%s_lacros\"" }},
+	Val: playbackPerfParams{
+		fileName: {{ .FileName | fmt }},
+		decoderType: {{ .DecoderType }},
+		chromeType: lacros.ChromeTypeLacros,
+	},
+	ExtraSoftwareDeps: []string{ {{ if .ExtraSoftwareDeps }} {{ range .ExtraSoftwareDeps }} {{ . }}, {{ end }} {{ end }} "lacros" },
+	{{ if .ExtraAttr }}
+	ExtraAttr: {{ .ExtraAttr | fmt }},
+	{{ end }}
+	ExtraData: []string{ {{ if .ExtraData }} {{ range .ExtraData }} {{ . | fmt }}, {{ end }} {{ end }} launcher.DataArtifact },
+	Fixture: {{ .Fixture | printf "\"%sLacros\"" }},
 }, {{ end }}`, params)
 	genparams.Ensure(t, "playback_perf.go", code)
 }
