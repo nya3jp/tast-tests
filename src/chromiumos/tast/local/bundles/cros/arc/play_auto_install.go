@@ -27,11 +27,13 @@ func init() {
 			"arc-core@google.com",
 			"khmel@chromium.org", // author.
 		},
-		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 		}, {
-			Name:              "vm",
+			Name: "vm",
+			// TODO(b/179504661): Reenable when the test consistently passes.
+			// ExtraAttr: []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
 		}},
 		Timeout: 5 * time.Minute,
