@@ -150,6 +150,10 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		args = append(args, "--disable-features="+strings.Join(cfg.DisableFeatures, ","))
 	}
 
+	if len(cfg.LacrosExtraArgs) != 0 {
+		args = append(args, "--lacros-chrome-additional-args="+strings.Join(cfg.LacrosExtraArgs, "####"))
+	}
+
 	args = append(args, cfg.ExtraArgs...)
 	var envVars []string
 	if cfg.BreakpadTestMode {
