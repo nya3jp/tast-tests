@@ -145,6 +145,30 @@
       },
       "revId": "c327971cd0142d0ccc6bcb3a34ed08434a7789e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbcd7b5d_cbf6245d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-09T19:07:39Z",
+      "side": 1,
+      "message": "That\u0027s a great idea, I used it in my latest patch. Thanks for the quick review!",
+      "parentUuid": "d72f3b1d_3800e3b1",
+      "range": {
+        "startLine": 41,
+        "startChar": 16,
+        "endLine": 41,
+        "endChar": 33
+      },
+      "revId": "c327971cd0142d0ccc6bcb3a34ed08434a7789e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
