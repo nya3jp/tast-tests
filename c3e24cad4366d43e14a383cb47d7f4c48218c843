@@ -51,6 +51,24 @@
       "parentUuid": "b4825d1d_0fca1c3c",
       "revId": "c3e24cad4366d43e14a383cb47d7f4c48218c843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ef2342_9cecaf7b",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-02-09T20:01:10Z",
+      "side": 1,
+      "message": "Sounds good to me, thanks for the helpful recommendation.",
+      "parentUuid": "0e1ef424_11665a2f",
+      "revId": "c3e24cad4366d43e14a383cb47d7f4c48218c843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
