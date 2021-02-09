@@ -44,8 +44,21 @@ func logInAsGuest(ctx context.Context, cfg *config.Config, sess *driver.Session)
 		return err
 	}
 
+	// We no longer need the underlying CDP connection.
+	if err := sess.Close(ctx); err != nil {
+		return err
+	}
+
 	if err := cryptohome.WaitForUserMount(ctx, cfg.User); err != nil {
 		return err
 	}
+
+	// Ensure that the previous chrome renderer has successfully shutdown.
+	// A new Watcher needs to be setup, so we ensure the previous PID
+	// that was being watched has been shutdown successfully.
+	if err := sess.Watcher().WaitExit(ctx); err != nil {
+		return err
+	}
+
 	return nil
 }
