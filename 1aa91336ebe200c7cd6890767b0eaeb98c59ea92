@@ -16,6 +16,23 @@
       "message": "PTAL.",
       "revId": "1aa91336ebe200c7cd6890767b0eaeb98c59ea92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff64cc03_2bfc905e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-02-09T00:23:46Z",
+      "side": 1,
+      "message": "Moving Tetsui from CC to Reviewer.\n\ntast-wise: +2\n\nAlthough it seems that SystemUI is crashing... is it possible that the test is crashing system ui?\nPerhaps it is ARCVM issue and not a test issue?\n\nBefore landing please wait for Tetsui +1.\nTetsui, please confirm whether this is a test issue or an ARCVM issue. Thanks.\n\n\n",
+      "revId": "1aa91336ebe200c7cd6890767b0eaeb98c59ea92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
