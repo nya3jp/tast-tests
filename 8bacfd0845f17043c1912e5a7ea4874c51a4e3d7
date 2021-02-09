@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bd5ca11_aba7ee41",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T06:55:02Z",
+      "side": 1,
+      "message": "This means that we don\u0027t save ps for tests not using fixtures. I guess it\u0027s okay for the immediate purpose.",
+      "range": {
+        "startLine": 104,
+        "startChar": 24,
+        "endLine": 104,
+        "endChar": 32
+      },
+      "revId": "8bacfd0845f17043c1912e5a7ea4874c51a4e3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65fc0e1d_2cab84df",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T06:55:02Z",
+      "side": 1,
+      "message": "nit\u0026optional: You might want to start the file name with \"ps\" so that it comes next to ps.txt (e.g. ps-arcvm.txt, ps.arcvm.txt)",
+      "range": {
+        "startLine": 121,
+        "startChar": 32,
+        "endLine": 121,
+        "endChar": 44
+      },
+      "revId": "8bacfd0845f17043c1912e5a7ea4874c51a4e3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d37e0679_aa1f2cb5",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T06:55:02Z",
+      "side": 1,
+      "message": "Can you use arc.ARC.Command instead?\n\nPlease note that ARC.Command does more things than mere \"adb shell\", e.g. setting up ADB_VENDOR_KEYS.",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 47
+      },
+      "revId": "8bacfd0845f17043c1912e5a7ea4874c51a4e3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
