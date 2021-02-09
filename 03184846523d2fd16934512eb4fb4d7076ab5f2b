@@ -22,6 +22,30 @@
       },
       "revId": "03184846523d2fd16934512eb4fb4d7076ab5f2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f15be0_3d5fa7ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-02-09T22:35:53Z",
+      "side": 1,
+      "message": "There aren\u0027t any lab devices for the real variant yet. We are working through blockers for it to be worth enabling some (probably hatch and or volteer).\n\nWe would want this to to be enabled from the start for real devices even if it is failing because it tests core functionality for manatee images/boards.",
+      "parentUuid": "25ef5a06_d18f8922",
+      "range": {
+        "startLine": 53,
+        "startChar": 23,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "03184846523d2fd16934512eb4fb4d7076ab5f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
