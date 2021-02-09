@@ -37,13 +37,27 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
+	// Generate BSSIDs for the two APs.
+	mac0, err := hostapd.RandomMAC()
+	if err != nil {
+		s.Fatal("Failed to generate BSSID: ", err)
+	}
+	mac1, err := hostapd.RandomMAC()
+	if err != nil {
+		s.Fatal("Failed to generate BSSID: ", err)
+	}
+	fromBSSID := mac0.String()
+	roamBSSID := mac1.String()
+	s.Log("AP 0 BSSID: ", fromBSSID)
+	s.Log("AP 1 BSSID: ", roamBSSID)
+
 	const (
 		testSSID      = "BSS_TM"
 		roamTimeout   = 30 * time.Second
 		verifyTimeout = 20 * time.Second
 	)
-	apOpts0 := []hostapd.Option{hostapd.SSID(testSSID), hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(1)}
-	apOpts1 := []hostapd.Option{hostapd.SSID(testSSID), hostapd.Mode(hostapd.Mode80211a), hostapd.Channel(48)}
+	apOpts0 := []hostapd.Option{hostapd.SSID(testSSID), hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(1), hostapd.BSSID(fromBSSID)}
+	apOpts1 := []hostapd.Option{hostapd.SSID(testSSID), hostapd.Mode(hostapd.Mode80211a), hostapd.Channel(48), hostapd.BSSID(roamBSSID)}
 
 	runTest := func(ctx context.Context, s *testing.State, waitForScan bool) {
 		// Configure the first AP.
@@ -80,50 +94,6 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to verify connection: ", err)
 		}
 
-		// Set up a second AP with the same SSID.
-		s.Log("Configuring AP 1")
-		ap1, err := tf.ConfigureAP(ctx, apOpts1, nil)
-		if err != nil {
-			s.Fatal("Failed to configure AP 1: ", err)
-		}
-		defer func(ctx context.Context) {
-			if err := tf.DeconfigAP(ctx, ap1); err != nil {
-				s.Error("Failed to deconfig AP 1: ", err)
-			}
-		}(ctx)
-		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
-		defer cancel()
-
-		// Get the BSSIDs of the two APs.
-		fromBSSID := ap0.Config().BSSID
-		roamBSSID := ap1.Config().BSSID
-		s.Log("AP 0 BSSID: ", fromBSSID)
-		s.Log("AP 1 BSSID: ", roamBSSID)
-
-		// Get the name and MAC address of the DUT WiFi interface.
-		clientIface, err := tf.ClientInterface(ctx)
-		if err != nil {
-			s.Fatal("Unable to get DUT interface name: ", err)
-		}
-		clientMAC, err := tf.ClientHardwareAddr(ctx)
-		if err != nil {
-			s.Fatal("Unable to get DUT MAC address: ", err)
-		}
-
-		// Flush all scanned BSS from wpa_supplicant so that test behavior is consistent.
-		s.Log("Flushing BSS cache")
-		if err := tf.FlushBSS(ctx, clientIface, 0); err != nil {
-			s.Fatal("Failed to flush BSS list: ", err)
-		}
-
-		// Wait for roamBSSID to be discovered if waitForScan is set.
-		if waitForScan {
-			s.Logf("Waiting for roamBSSID: %s", roamBSSID)
-			if err := tf.DiscoverBSSID(ctx, roamBSSID, clientIface, []byte(testSSID)); err != nil {
-				s.Fatal("Unable to discover roam BSSID: ", err)
-			}
-		}
-
 		// Set up a watcher for the Shill WiFi BSSID property.
 		monitorProps := []string{shillconst.ServicePropertyIsConnected}
 		props := []*wificell.ShillProperty{{
@@ -149,6 +119,44 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 		waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 		if err != nil {
 			s.Fatal("Failed to create Shill property watcher: ", err)
+		}
+
+		// Set up a second AP with the same SSID.
+		s.Log("Configuring AP 1")
+		ap1, err := tf.ConfigureAP(ctx, apOpts1, nil)
+		if err != nil {
+			s.Fatal("Failed to configure AP 1: ", err)
+		}
+		defer func(ctx context.Context) {
+			if err := tf.DeconfigAP(ctx, ap1); err != nil {
+				s.Error("Failed to deconfig AP 1: ", err)
+			}
+		}(ctx)
+		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
+		defer cancel()
+
+		// Get the name and MAC address of the DUT WiFi interface.
+		clientIface, err := tf.ClientInterface(ctx)
+		if err != nil {
+			s.Fatal("Unable to get DUT interface name: ", err)
+		}
+		clientMAC, err := tf.ClientHardwareAddr(ctx)
+		if err != nil {
+			s.Fatal("Unable to get DUT MAC address: ", err)
+		}
+
+		// Flush all scanned BSS from wpa_supplicant so that test behavior is consistent.
+		s.Log("Flushing BSS cache")
+		if err := tf.FlushBSS(ctx, clientIface, 0); err != nil {
+			s.Fatal("Failed to flush BSS list: ", err)
+		}
+
+		// Wait for roamBSSID to be discovered if waitForScan is set.
+		if waitForScan {
+			s.Logf("Waiting for roamBSSID: %s", roamBSSID)
+			if err := tf.DiscoverBSSID(ctx, roamBSSID, clientIface, []byte(testSSID)); err != nil {
+				s.Fatal("Unable to discover roam BSSID: ", err)
+			}
 		}
 
 		// Send BSS Transition Management Request to client.
