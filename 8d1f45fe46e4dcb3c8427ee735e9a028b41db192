@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c600c9d_d65d007d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-09T23:15:37Z",
+      "side": 1,
+      "message": "a few more nits",
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7be6d79d_e4df8b83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-09T23:15:37Z",
+      "side": 1,
+      "message": "Do we really need 8 minutes for this test?  I am guessing it wouldn\u0027t be that long. It doesn\u0027t have to be too short but please consider reducing it slightly (like 4 minutes?).",
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc11afb7_0ea9b2f6",
@@ -37,6 +71,23 @@
         "endLine": 77,
         "endChar": 71
       },
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8cd79e3_61d06f11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-09T23:15:37Z",
+      "side": 1,
+      "message": "we actually don\u0027t need those connections anymore.  Just skip defer, i.e.\n  if err \u003d conns.Close(); err !\u003d nil {\n    s.Fatal(\"Failed to close connections: \", err)\n  }",
       "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
