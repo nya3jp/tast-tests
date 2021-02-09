@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8151d80_b89ffe92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-09T16:08:25Z",
+      "side": 1,
+      "message": "FWIW, we only need this (so far) for the Smoke test which verifies that data can be fetched over Cellular. We shouldn\u0027t need to use this generally.\n\nThat said, I do think that a similar \u0027WiFi Smoke\u0027 test might make sense.",
+      "parentUuid": "7c76e473_b52c1e47",
+      "revId": "1a2ed603e779188f3810be6c582417ad75f6c33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34e4a32c_a8df109e",
@@ -55,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9cc8bd74_badccdef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-09T16:08:25Z",
+      "side": 1,
+      "message": "My understanding is that any new context needs to be canceled. The \"outer\" context gets passed to enableFunc() and will be cancelled by the test harness, but the shortened context should still be canceled separately. At least. that seems to be the established pattern anyway.\n\n\"Canceling this context releases resources associated with it, so code should call cancel as soon as the operations running in this Context complete\"",
+      "parentUuid": "34e4a32c_a8df109e",
+      "revId": "1a2ed603e779188f3810be6c582417ad75f6c33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39d7d237_357d2a98",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
         "patchSetId": 3
@@ -66,6 +102,24 @@
       "writtenOn": "2021-02-05T18:22:20Z",
       "side": 1,
       "message": "ditto",
+      "revId": "1a2ed603e779188f3810be6c582417ad75f6c33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6e31820_bb2aff69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-09T16:08:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39d7d237_357d2a98",
       "revId": "1a2ed603e779188f3810be6c582417ad75f6c33f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +154,30 @@
       "writtenOn": "2021-02-05T18:22:20Z",
       "side": 1,
       "message": "this seems wrong, it gives you back a callback that you should defer to re-enable the technology, and also you have to shorten the context yourself",
+      "range": {
+        "startLine": 274,
+        "startChar": 52,
+        "endLine": 275,
+        "endChar": 79
+      },
+      "revId": "1a2ed603e779188f3810be6c582417ad75f6c33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa8d0f70_4db5430c",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-09T16:08:25Z",
+      "side": 1,
+      "message": "Oops. I originally tried to do the shorten here, but that didn\u0027t work as I intended and was less clear anyway. Fixed.",
+      "parentUuid": "401fe4ca_b9e35e22",
       "range": {
         "startLine": 274,
         "startChar": 52,
