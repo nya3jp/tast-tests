@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/devtools"
@@ -71,11 +72,11 @@ func MSEDataFiles() []string {
 
 // loadPage opens a new tab to load the specified webpage.
 // Note that if err != nil, conn is nil.
-func loadPage(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn, error) {
+func loadPage(ctx context.Context, tconn *chrome.TestConn, cs ash.ConnSource, url string) (*chrome.Conn, error) {
 	ctx, st := timing.Start(ctx, "load_page")
 	defer st.End()
 
-	conn, err := cr.NewConn(ctx, url)
+	conn, err := cs.NewConn(ctx, url)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to open %v", url)
 	}
@@ -85,11 +86,11 @@ func loadPage(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn,
 // playVideo invokes loadVideo(), plays a normal video in video.html, and checks if it has progress.
 // videoFile is the file name which is played there.
 // url is the URL of the video playback testing webpage.
-func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) (bool, error) {
+func playVideo(ctx context.Context, tconn *chrome.TestConn, cs ash.ConnSource, videoFile, url string) (bool, error) {
 	ctx, st := timing.Start(ctx, "play_video")
 	defer st.End()
 
-	conn, err := loadPage(ctx, cr, url)
+	conn, err := loadPage(ctx, tconn, cs, url)
 	if err != nil {
 		return false, err
 	}
@@ -126,11 +127,11 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) (b
 // playMSEVideo plays an MSE video stream via Shaka player, and checks its play progress.
 // mpdFile is the name of MPD file for the video stream.
 // url is the URL of the shaka player webpage.
-func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, url string) (bool, error) {
+func playMSEVideo(ctx context.Context, tconn *chrome.TestConn, cs ash.ConnSource, mpdFile, url string) (bool, error) {
 	ctx, st := timing.Start(ctx, "play_mse_video")
 	defer st.End()
 
-	conn, err := loadPage(ctx, cr, url)
+	conn, err := loadPage(ctx, tconn, cs, url)
 	if err != nil {
 		return false, err
 	}
@@ -179,12 +180,12 @@ func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks int) e
 // seeking did not succeed for some reason.
 // videoFile is the file name which is played and seeked there.
 // baseURL is the base URL which serves video playback testing webpage.
-func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL string, numSeeks int) error {
+func playSeekVideo(ctx context.Context, tconn *chrome.TestConn, cs ash.ConnSource, videoFile, baseURL string, numSeeks int) error {
 	ctx, st := timing.Start(ctx, "play_seek_video")
 	defer st.End()
 
 	// Establish a connection to a video play page
-	conn, err := loadPage(ctx, cr, baseURL+"/video.html")
+	conn, err := loadPage(ctx, tconn, cs, baseURL+"/video.html")
 	if err != nil {
 		return err
 	}
@@ -244,7 +245,7 @@ func isVideoPadding(c color.Color) bool {
 // videotype represents a type of a given video. If it is MSEVideo, filename is a name
 // of MPD file.
 // If mode is VerifyHWAcceleratorUsed, this function also checks if hardware accelerator was used.
-func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+func TestPlay(ctx context.Context, s *testing.State, tconn *chrome.TestConn, cs ash.ConnSource,
 	filename string, videotype VideoType, mode VerifyHWAcceleratorMode) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
@@ -266,10 +267,10 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	switch videotype {
 	case NormalVideo:
 		url = server.URL + "/video.html"
-		usesPlatformVideoDecoder, playErr = playVideo(ctx, cr, filename, url)
+		usesPlatformVideoDecoder, playErr = playVideo(ctx, tconn, cs, filename, url)
 	case MSEVideo:
 		url = server.URL + "/shaka.html"
-		usesPlatformVideoDecoder, playErr = playMSEVideo(ctx, cr, filename, url)
+		usesPlatformVideoDecoder, playErr = playMSEVideo(ctx, tconn, cs, filename, url)
 	}
 	if playErr != nil {
 		return errors.Wrapf(err, "failed to play %v (%v): %v", filename, url, playErr)
@@ -291,7 +292,7 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 
 // TestSeek checks that the video file named filename can be seeked around.
 // It will play the video and seek randomly into it numSeeks times.
-func TestSeek(ctx context.Context, httpHandler http.Handler, cr *chrome.Chrome, filename string, numSeeks int) error {
+func TestSeek(ctx context.Context, httpHandler http.Handler, tconn *chrome.TestConn, cs ash.ConnSource, filename string, numSeeks int) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return err
@@ -301,7 +302,7 @@ func TestSeek(ctx context.Context, httpHandler http.Handler, cr *chrome.Chrome, 
 	server := httptest.NewServer(httpHandler)
 	defer server.Close()
 
-	if err := playSeekVideo(ctx, cr, filename, server.URL, numSeeks); err != nil {
+	if err := playSeekVideo(ctx, tconn, cs, filename, server.URL, numSeeks); err != nil {
 		return errors.Wrapf(err, "failed to play %v (%v): %v", filename, server.URL, err)
 	}
 	return nil
@@ -319,21 +320,15 @@ func TestSeek(ctx context.Context, httpHandler http.Handler, cr *chrome.Chrome, 
 // not hold in the future in case we decide to apply night light at
 // compositing time if the hardware does not support the color
 // transform matrix.
-func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename, refFilename string) error {
+func TestPlayAndScreenshot(ctx context.Context, s *testing.State, tconn *chrome.TestConn, cs ash.ConnSource, filename, refFilename string) error {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 	url := path.Join(server.URL, "video.html")
-	conn, err := cr.NewConn(ctx, url)
+	conn, err := cs.NewConn(ctx, url)
 	if err != nil {
 		return errors.Wrapf(err, "failed to open %v", url)
 	}
 	defer conn.Close()
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to connect to test API")
-	}
-	defer tconn.Close()
 
 	// For consistency across test runs, ensure that the device is in landscape-primary orientation.
 	if err = graphics.RotateDisplayToLandscapePrimary(ctx, tconn); err != nil {
