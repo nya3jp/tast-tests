@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca04cc73_c600ae34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-02-09T19:01:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91bdee4e_2b0dd84d",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "89b0ee7791b7d2833960a9408347a25046d3b33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d7c98bd_13800984",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb026620_e6aeed92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-02-09T19:01:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d7c98bd_13800984",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "89b0ee7791b7d2833960a9408347a25046d3b33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6618fc8d_0b54357f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-02-09T19:01:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de576fbc_176897e1",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "89b0ee7791b7d2833960a9408347a25046d3b33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e71a6064_67eefcef",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-09T15:50:48Z",
       "side": 1,
       "message": "Can you create an issue about how to adjust logging verbosity?",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "89b0ee7791b7d2833960a9408347a25046d3b33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d553ed8_1d85c277",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-02-09T19:01:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e71a6064_67eefcef",
       "range": {
         "startLine": 15,
         "startChar": 4,
