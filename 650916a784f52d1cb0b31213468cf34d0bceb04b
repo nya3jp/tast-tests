@@ -90,6 +90,24 @@
       "message": "I just realized that the Start/Stop inside cuj/Recorder might not always do the right thing. \n\nThe login-times file is only updated during login. However, cuj/Recorder could be used with Pre/Fixture, which does not always go through login. In such case, we are repeating the the login time of the Pre/Fixture. That is probably not what we want.\n\nSo I am not sure whether we should make this part of cuj/Recorder because it would easily use it wrong. The LoginTimeTracker should somewhat be more closer to where login happen, e.g. chrome.New().",
       "revId": "650916a784f52d1cb0b31213468cf34d0bceb04b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f36d01_4a9406d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-09T23:16:35Z",
+      "side": 1,
+      "message": "Thanks Xiyuan for bringup a good point. How about we check the existing login-times file in the Start() function, and check again in Stop() to make sure they are different files (with different timestamp)? We will not record if the login-files doesn\u0027t change between Start() and Stop(). This way we will be confident that we are not recording login time from pass login procedures.\n\nThere are cases that chrome could be restarted multiple times between Start() and Stop(), but we can add comments to indicate the time tracker only records the the time of the last login.\n\nHow do you think of this approach?",
+      "parentUuid": "c571a826_06414b2d",
+      "revId": "650916a784f52d1cb0b31213468cf34d0bceb04b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
