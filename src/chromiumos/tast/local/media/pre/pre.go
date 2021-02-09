@@ -14,10 +14,10 @@ import (
 func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
 var chromeVideoPre = chrome.NewPrecondition("video",
-	chromeVModuleArgs,
-	chromeUseHWCodecsForSmallResolutions,
-	chromeBypassPermissionsArgs,
-	chromeSuppressNotificationsArgs)
+	chrome.ExtraArgs(chromeVModuleArgs...),
+	chrome.ExtraArgs(chromeUseHWCodecsForSmallResolutions...),
+	chrome.ExtraArgs(chromeBypassPermissionsArgs...),
+	chrome.ExtraArgs(chromeSuppressNotificationsArgs...))
 
 // ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
 // supplementing it with the use of a fake video/audio capture device (a.k.a.
@@ -25,14 +25,16 @@ var chromeVideoPre = chrome.NewPrecondition("video",
 func ChromeVideoWithFakeWebcam() testing.Precondition { return chromeVideoWithFakeWebcamPre }
 
 var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("videoWithFakeWebcam",
-	chromeVModuleArgs,
-	chromeUseHWCodecsForSmallResolutions,
-	chromeSuppressNotificationsArgs,
-	chromeFakeWebcamArgs)
+	chrome.ExtraArgs(chromeVModuleArgs...),
+	chrome.ExtraArgs(chromeUseHWCodecsForSmallResolutions...),
+	chrome.ExtraArgs(chromeSuppressNotificationsArgs...),
+	chrome.ExtraArgs(chromeFakeWebcamArgs...))
 
 // ChromeCameraPerf returns a precondition that Chrome is started with camera
 // tests-specific setting and without verbose logging that can affect the
 // performance. This precondition should be used only for performance tests.
 func ChromeCameraPerf() testing.Precondition { return chromeCameraPerfPre }
 
-var chromeCameraPerfPre = chrome.NewPrecondition("cameraPerf", chromeBypassPermissionsArgs, chromeSuppressNotificationsArgs)
+var chromeCameraPerfPre = chrome.NewPrecondition("cameraPerf",
+	chrome.ExtraArgs(chromeBypassPermissionsArgs...),
+	chrome.ExtraArgs(chromeSuppressNotificationsArgs...))
