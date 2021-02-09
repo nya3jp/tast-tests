@@ -147,6 +147,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49e2bfb4_15f3f0e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-09T05:35:23Z",
+      "side": 1,
+      "message": "The reason I didn\u0027t do this is because ideally I would like to measure both lacros chrome and chromeos chrome from inside chromeos-chrome. Unfortunately this doesn\u0027t work, currently, since when exo returns a DidNotProduceFrame, it could be because a frame was dropped AFAICT.\n\nBut yeah, I think it\u0027s worth investigating using the PipelineReporter stuff. Does it work for video / webgl / other things that are submitting compositor frames on their own?\n\nThanks~",
+      "parentUuid": "ae5573f8_df4c5fb6",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "039a0ad1_14c68514",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
         "patchSetId": 1
