@@ -7,6 +7,7 @@ package settings
 
 import (
 	"context"
+	"path"
 	"regexp"
 	"strconv"
 	"strings"
@@ -18,10 +19,12 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
+	uifaillog "chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -120,12 +123,19 @@ func FindSettingsPage(ctx context.Context, tconn *chrome.TestConn, windowName st
 //
 // It also clicks next to skip the information screen.  An ui.Installer
 // page object can be constructed after calling OpenInstaller to adjust the settings and to complete the installation.
-func OpenInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
+func OpenInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (err error) {
 	s, err := OpenLinuxSubpage(ctx, tconn, cr)
 	if err != nil {
 		return errors.Wrap(err, "failed to open linux subpage on Settings app")
 	}
 	defer s.Close(ctx)
+	defer func() {
+		if err != nil {
+			outDir, _ := testing.ContextOutDir(ctx)
+			uifaillog.DumpUITreeOnErrorToFile(ctx, outDir, func() bool { return true }, tconn, "crostini_installer_ui_tree.txt")
+			faillog.SaveToDir(ctx, path.Join(outDir, "crostini_installer_faillog"))
+		}
+	}()
 	return uiauto.New(tconn).LeftClick(nextButton)(ctx)
 }
 
