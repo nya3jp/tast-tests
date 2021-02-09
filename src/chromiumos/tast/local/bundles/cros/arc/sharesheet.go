@@ -30,13 +30,15 @@ func init() {
 			"melzhang@chromium.org",
 			"chromeos-apps-foundation-team@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      7 * time.Minute,
 		Params: []testing.Param{{
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "vm",
+			Name: "vm",
+			// TODO(b/179510073): Reenable when the test is passing.
+			// ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Vars: []string{
