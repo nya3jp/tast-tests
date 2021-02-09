@@ -152,7 +152,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	// In case chrome.New fails for a deadline error, which might be caused
 	// by a browser hang, take minidump snapshots for diagnosis.
 	defer func() {
-		if retErr != nil && errors.Is(ctx.Err(), context.DeadlineExceeded) && origCtx.Err() == nil {
+		if retErr != nil && ctx.Err() != nil && origCtx.Err() == nil {
 			testing.ContextLog(ctx, "Taking minidump snapshots to diagnose possible browser hang")
 			if err := saveMinidumpsWithoutCrash(origCtx); err != nil {
 				testing.ContextLog(ctx, "Failed to take minidump snapshots: ", err)
