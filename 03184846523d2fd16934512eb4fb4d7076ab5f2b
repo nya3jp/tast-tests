@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a22ac377_803b14e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-09T22:45:05Z",
+      "side": 1,
+      "message": "+1 to Ben\u0027s comment. Otherwise lgtm",
+      "revId": "03184846523d2fd16934512eb4fb4d7076ab5f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25ef5a06_d18f8922",
