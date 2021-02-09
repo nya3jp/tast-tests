@@ -16,6 +16,46 @@
       "message": "This CL implements a login time tracker to read login time from system login-times file and record it in performance metric output file.",
       "revId": "650916a784f52d1cb0b31213468cf34d0bceb04b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e518e177_1633af23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-09T21:52:07Z",
+      "side": 1,
+      "message": "lgtm % one nit\n\nPlease wait for mukai@.",
+      "revId": "650916a784f52d1cb0b31213468cf34d0bceb04b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa8a2e0_77090821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_time_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-09T21:52:07Z",
+      "side": 1,
+      "message": "nit: Document the time unit, and maybe define login time more clearly.\n\ne.g.\n\n  // Login time from starting auth to showing user desktop in seconds.",
+      "range": {
+        "startLine": 28,
+        "startChar": 22,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "650916a784f52d1cb0b31213468cf34d0bceb04b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
