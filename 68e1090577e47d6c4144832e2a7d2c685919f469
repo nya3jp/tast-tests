@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c034ab3f_92462f26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-09T04:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3f38562_4f467d46",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 34
+      },
+      "revId": "68e1090577e47d6c4144832e2a7d2c685919f469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "828a2e74_fc28a36c",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b3ee876_013502bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-09T04:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "828a2e74_fc28a36c",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 135
+      },
+      "revId": "68e1090577e47d6c4144832e2a7d2c685919f469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04f83537_de059d60",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-02-08T23:55:09Z",
       "side": 1,
       "message": "It\u0027d be great if we can add some comment why UIAutomation\u0027s click isn\u0027t used here.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 52
+      },
+      "revId": "68e1090577e47d6c4144832e2a7d2c685919f469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02854db4_f053eca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-09T04:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04f83537_de059d60",
       "range": {
         "startLine": 123,
         "startChar": 0,
