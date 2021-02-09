@@ -194,7 +194,14 @@ func init() {
 // Seek plays a file with Chrome and checks that it can safely be seeked into.
 func Seek(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(seekTest)
-	if err := play.TestSeek(ctx, http.FileServer(s.DataFileSystem()), s.FixtValue().(*chrome.Chrome), testOpt.filename, testOpt.numSeeks); err != nil {
+	cr := s.FixtValue().(*chrome.Chrome)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+	defer tconn.Close()
+
+	if err := play.TestSeek(ctx, http.FileServer(s.DataFileSystem()), tconn, cr, testOpt.filename, testOpt.numSeeks); err != nil {
 		s.Fatal("TestSeek failed: ", err)
 	}
 }

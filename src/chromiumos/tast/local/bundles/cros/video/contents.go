@@ -146,7 +146,14 @@ func init() {
 // Contents starts playing a video, takes a screenshot, and checks a few interesting pixels.
 func Contents(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(contentsParams)
-	if err := play.TestPlayAndScreenshot(ctx, s, s.FixtValue().(*chrome.Chrome), testOpt.fileName, testOpt.refFileName); err != nil {
+	cr := s.FixtValue().(*chrome.Chrome)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+	defer tconn.Close()
+
+	if err := play.TestPlayAndScreenshot(ctx, s, tconn, cr, testOpt.fileName, testOpt.refFileName); err != nil {
 		s.Fatal("TestPlayAndScreenshot failed: ", err)
 	}
 }
