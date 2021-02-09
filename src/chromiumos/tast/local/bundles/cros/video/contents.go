@@ -27,7 +27,8 @@ func init() {
 			"andrescj@chromium.org",
 			"chromeos-gfx-video@google.com",
 		},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		// TODO(b/162437142): reenable on Zork when it does not hang forever.
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()), hwdep.SkipOnPlatform("zork"),
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "h264_360p_hw",
