@@ -16,6 +16,29 @@
       "message": "Thanks Andres for reviewing!",
       "revId": "d9123ffde163d19386cb308222af564309748d70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb71bc38_f4a160b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-02-09T17:57:55Z",
+      "side": 1,
+      "message": "Cleaner to write this as a relative link:\n\n    [AOM license]: ../licenses/AOM-LICENSE\n\nThat way, if ever our chromium.googlesource.com URL changes, the link will still point to the right location. And, if ever we modify this README or the AOM-LICENSE, the link in Gitiles will point to the same patchset\u0027s location.",
+      "range": {
+        "startLine": 50,
+        "startChar": 15,
+        "endLine": 50,
+        "endChar": 157
+      },
+      "revId": "d9123ffde163d19386cb308222af564309748d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
