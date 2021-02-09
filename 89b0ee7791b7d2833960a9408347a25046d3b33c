@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "774646ba_41ce07d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-02-09T02:35:40Z",
+      "side": 1,
+      "message": "I ran the wifi.RoamDbus and I can see the net.log size has reduced by half.",
+      "revId": "89b0ee7791b7d2833960a9408347a25046d3b33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
