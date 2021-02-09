@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/listset"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
@@ -112,10 +112,10 @@ func ShareDrive(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
-	sharedFolders := sharedfolders.NewSharedFolders()
+	sharedFolders := sharedfolders.NewSharedFolders(tconn)
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont, cr); err != nil {
+		if err := sharedFolders.UnshareAll(tconn, cont, cr)(cleanupCtx); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
@@ -133,7 +133,7 @@ func ShareDrive(ctx context.Context, s *testing.State) {
 	}()
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := sharedFolders.ShareDriveOK(ctx, filesApp, tconn); err != nil {
+		if err := sharedFolders.ShareDriveOK(ctx, filesApp)(ctx); err != nil {
 			if errClose := filesApp.Close(cleanupCtx); errClose != nil {
 				return errors.Wrap(errClose, "failed to close Files app")
 			}

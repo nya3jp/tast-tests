@@ -10,7 +10,8 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc/optin"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
@@ -107,10 +108,10 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for Play Store: ", err)
 	}
 
-	sharedFolders := sharedfolders.NewSharedFolders()
+	sharedFolders := sharedfolders.NewSharedFolders(tconn)
 	// Unshare shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(ctx, tconn, cont, cr); err != nil {
+		if err := sharedFolders.UnshareAll(tconn, cont, cr)(ctx); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
@@ -122,17 +123,13 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 	}
 	defer filesApp.Close(ctx)
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return filesApp.OpenDir(ctx, filesapp.Playfiles, "Files - "+filesapp.Playfiles)
-	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
-		s.Fatal("Failed to open Play files: ", err)
-	}
-
 	const Movies = "Movies"
-	if err = filesApp.SelectContextMenu(ctx, Movies, sharedfolders.ShareWithLinux); err != nil {
+	if err := uiauto.Run(ctx,
+		filesApp.OpenDir(filesapp.Playfiles, "Files - "+filesapp.Playfiles),
+		filesApp.ClickContextMenuItem(Movies, sharedfolders.ShareWithLinux),
+		sharedFolders.AddFolder(filesapp.Playfiles+" › "+Movies)); err != nil {
 		s.Fatal("Failed to share Movies with Crostini: ", err)
 	}
-	sharedFolders.AddFolder(filesapp.Playfiles + " › " + Movies)
 
 	// Verify on Settings.
 	st, err := settings.OpenLinuxSettings(ctx, tconn, cr, settings.ManageSharedFolders)

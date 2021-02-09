@@ -12,7 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
@@ -108,15 +108,15 @@ func ShareFilesRestart(ctx context.Context, s *testing.State) {
 	}
 	defer filesApp.Close(ctx)
 
-	sharedFolders := sharedfolders.NewSharedFolders()
+	sharedFolders := sharedfolders.NewSharedFolders(tconn)
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(ctx, tconn, cont, cr); err != nil {
+		if err := sharedFolders.UnshareAll(tconn, cont, cr)(ctx); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
 
-	if err := sharedFolders.ShareMyFilesOK(ctx, tconn, filesApp); err != nil {
+	if err := sharedFolders.ShareMyFilesOK(ctx, filesApp)(ctx); err != nil {
 		s.Fatal("Failed to share My files: ", err)
 	}
 

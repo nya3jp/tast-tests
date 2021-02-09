@@ -12,7 +12,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/listset"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
@@ -110,15 +111,17 @@ func ShareFilesToast(ctx context.Context, s *testing.State) {
 	}
 	defer filesApp.Close(cleanupCtx)
 
-	sharedFolders := sharedfolders.NewSharedFolders()
+	sharedFolders := sharedfolders.NewSharedFolders(tconn)
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont, cr); err != nil {
+		if err := sharedFolders.UnshareAll(tconn, cont, cr)(cleanupCtx); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
 
-	if err := shareMyFilesOKManage(ctx, sharedFolders, filesApp, tconn); err != nil {
+	if err := uiauto.Run(ctx,
+		sharedFolders.ShareMyFilesOK(ctx, filesApp),
+		uiauto.New(tconn).LeftClick(sharedfolders.ShareToastNotification.ManageButton)); err != nil {
 		s.Fatal("Failed to share My files: ", err)
 	}
 
@@ -127,28 +130,11 @@ func ShareFilesToast(ctx context.Context, s *testing.State) {
 	}
 
 	// Unshare My files. This is part of the test, different from clean up in line 72.
-	if err := unshareMyFiles(ctx, tconn, cont, cr, sharedFolders); err != nil {
+	if err := uiauto.Run(ctx,
+		sharedFolders.Unshare(tconn, cr, sharedfolders.MyFiles),
+		sharedFolders.CheckNoSharedFolders(tconn, cont, cr)); err != nil {
 		s.Fatal("Failed to unshare My files: ", err)
 	}
-}
-
-func shareMyFilesOKManage(ctx context.Context, sharedFolders *sharedfolders.SharedFolders, filesApp *filesapp.FilesApp, tconn *chrome.TestConn) error {
-	// Share My files, click OK on the confirm dialog.
-	if err := sharedFolders.ShareMyFilesOK(ctx, tconn, filesApp); err != nil {
-		return errors.Wrap(err, "failed to share My files")
-	}
-	toast, err := sharedfolders.FindToast(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find toast after sharing My files")
-	}
-	defer toast.Release(ctx)
-
-	// Click button Manage.
-	if err := toast.ClickManage(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to click button Manage on toast notification")
-	}
-
-	return nil
 }
 
 func checkShareResults(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container) error {
@@ -179,18 +165,6 @@ func checkShareResults(ctx context.Context, tconn *chrome.TestConn, cont *vm.Con
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to verify file list in container")
-	}
-
-	return nil
-}
-
-func unshareMyFiles(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, cr *chrome.Chrome, sharedFolders *sharedfolders.SharedFolders) error {
-	if err := sharedFolders.Unshare(ctx, tconn, cr, sharedfolders.MyFiles); err != nil {
-		return errors.Wrap(err, "failed to delete shared folder My files")
-	}
-
-	if err := sharedFolders.CheckNoSharedFolders(ctx, tconn, cont, cr); err != nil {
-		return errors.Wrap(err, "failed to verify shared folder list after unshare My files")
 	}
 
 	return nil

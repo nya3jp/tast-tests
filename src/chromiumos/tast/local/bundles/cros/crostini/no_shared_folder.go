@@ -98,8 +98,8 @@ func NoSharedFolder(ctx context.Context, s *testing.State) {
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Check list of shared folders in Settings app.
-	sharedFolders := sharedfolders.NewSharedFolders()
-	if err := sharedFolders.CheckNoSharedFolders(ctx, tconn, cont, cr); err != nil {
+	sharedFolders := sharedfolders.NewSharedFolders(tconn)
+	if err := sharedFolders.CheckNoSharedFolders(tconn, cont, cr)(ctx); err != nil {
 		s.Fatal("Failed to check shared folders list by default: ", err)
 	}
 }
