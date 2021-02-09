@@ -25,15 +25,17 @@ func init() {
 		Func:         ShelfIcons,
 		Desc:         "Tests that ARC++ windows are represented in the shelf correctly, including grouping of windows and custom icons",
 		Contacts:     []string{"phweiss@chromium.org", "giovax@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Data:         []string{"ArcShelfIconTest.apk"},
 		Timeout:      30 * time.Second,
 		Params: []testing.Param{{
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "vm",
+			Name: "vm",
+			// TODO(b/179510458): Reenable when the test passes.
+			// ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
