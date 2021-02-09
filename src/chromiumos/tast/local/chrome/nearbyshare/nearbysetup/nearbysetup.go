@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/android"
 	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/android/ui"
+	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -76,6 +77,12 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 			return errors.Errorf(baseError, res, "unexpected value")
 		}
 	}
+
+	// Enable verbose bluetooth logging.
+	if err := bluetooth.SetDebugLogLevels(ctx, 1, 1, 1, 1); err != nil {
+		return errors.Wrap(err, "failed to enable verbose bluetooth logging")
+	}
+
 	return nil
 }
 
