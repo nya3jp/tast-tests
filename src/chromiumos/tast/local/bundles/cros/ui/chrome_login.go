@@ -76,8 +76,7 @@ func ChromeLogin(ctx context.Context, s *testing.State) {
 }
 
 func testChromeLogin(ctx context.Context, s *testing.State, sm *session.SessionManager, url, expected string) {
-	const timeoutPerRun = time.Minute
-	ctx, cancel := context.WithTimeout(ctx, timeoutPerRun)
+	ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
 	defer cancel()
 
 	func() {
