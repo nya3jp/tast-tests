@@ -34,6 +34,24 @@
       "parentUuid": "4faacc5f_32ff4907",
       "revId": "b3336157ab79eeab9556140ce9bf6f73c6f08ab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24bc405a_cdf59495",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-09T16:15:09Z",
+      "side": 1,
+      "message": "Naming LG.",
+      "parentUuid": "be20850b_67843af3",
+      "revId": "b3336157ab79eeab9556140ce9bf6f73c6f08ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
