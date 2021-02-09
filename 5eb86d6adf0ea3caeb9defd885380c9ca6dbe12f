@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1bc97ef_46fb9b05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-09T16:34:39Z",
+      "side": 1,
+      "message": "Eliot, thanks for working on this. As a general rule, in \n(graphics|video|webrtc) we don\u0027t like bulk duplicating test \ncases to verify unreleased features, but instead prefer \nto add specific variations by hand, targeting the use\ncases that area affected \n\nThat was our plan for example in b/178486134: add a new Fixture\nfor \"standard\" LaCrOS [1] and cherry-pick new variations \n(e.g. if video.Play.h264_hw then add video.Play.h264_hw_lacros\nbut we don\u0027t need video.Play.h264_hw_alt_lacros), that \nwill by definition be ephemeral, since lacros will\neventually launch and become the \"normal\". Again, this is\nthe process for e.g. direct VideoDecoder (see the _alt\nvariants).\n\npmolinalopez@ will be starting work on this soon, you two\nshould talk :-)\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/media/pre/fixture.go",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "5eb86d6adf0ea3caeb9defd885380c9ca6dbe12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d784a75_f3b20598",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-09T16:34:39Z",
+      "side": 1,
+      "message": "I thought we moved entirely to buganizer to track CrOs Platform work.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "5eb86d6adf0ea3caeb9defd885380c9ca6dbe12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "209c1e7b_f676ddfb",
