@@ -71,19 +71,6 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not verify test routine has started: ", err)
 	}
 
-	reportBtn, err := dxRootnode.DescendantWithTimeout(ctx, diagnosticsapp.DxViewReportButton, 20*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find the view report button: ", err)
-	}
-	defer reportBtn.Release(ctx)
-	s.Log("Started CPU test routine")
-
-	// Expand the view report button to see progress
-	// TODO(joonbug): Adapt to report page being open by default when UX change is finalized
-	if err := reportBtn.LeftClick(ctx); err != nil {
-		s.Fatal("Could not expand the test report view: ", err)
-	}
-
 	if err := dxRootnode.WaitUntilDescendantExists(ctx, diagnosticsapp.DxSuccessBadge, 5*time.Minute); err != nil {
 		s.Fatal("Could not verify successful run of at least one CPU routine: ", err)
 	}
