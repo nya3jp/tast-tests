@@ -11,10 +11,12 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/crostini/faillog"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -173,6 +175,7 @@ func (sf *SharedFolders) Unshare(cr *chrome.Chrome, folders ...string) uiauto.Ac
 			return errors.Wrap(err, "failed to find Manage shared folders")
 		}
 		defer s.Close(ctx)
+		defer func() { faillog.DumpUITreeAndScreenshot(ctx, tconn, "unshare", retErr) }()
 
 		for _, folder := range folders {
 			if _, ok := sf.Folders[folder]; !ok {
@@ -196,6 +199,8 @@ func (sf *SharedFolders) CheckNoSharedFolders(cont *vm.Container, cr *chrome.Chr
 			return errors.Wrap(err, "failed to find Manage shared folders")
 		}
 		defer s.Close(ctx)
+		defer func() { faillog.DumpUITreeAndScreenshot(ctx, tconn, "check_no_shared", retErr) }()
+
 		sharedFoldersList, err := s.GetSharedFolders(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to find the shared folders list")
@@ -229,6 +234,7 @@ func (sf *SharedFolders) UnshareAll(cont *vm.Container, cr *chrome.Chrome) uiaut
 			return errors.Wrap(err, "failed to open Manage shared folders")
 		}
 		defer s.Close(ctx)
+		defer func() { faillog.DumpUITreeAndScreenshot(ctx, tconn, "unshare_all", retErr) }()
 
 		sharedFoldersList, err := s.GetSharedFolders(ctx)
 		if err != nil {
