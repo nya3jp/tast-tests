@@ -280,6 +280,15 @@ func (ac *Context) WaitUntilExists(finder *nodewith.Finder) Action {
 	}
 }
 
+// EnsureGoneFor returns a function that check the specified node does not exist for the timeout period.
+func (ac *Context) EnsureGoneFor(finder *nodewith.Finder, duration time.Duration) Action {
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			return ac.Gone(finder)(ctx)
+		}, &testing.PollOptions{Timeout: duration})
+	}
+}
+
 // Gone returns a function that returns nil if a node does not exist.
 // If any node in the chain is not found, it will return nil.
 func (ac *Context) Gone(finder *nodewith.Finder) Action {
