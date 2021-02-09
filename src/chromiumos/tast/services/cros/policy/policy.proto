@@ -35,6 +35,12 @@ service PolicyService {
   // Creates a new connection to the Chrome URL in the request and evaluates the expression in the request on it.
   rpc EvalExpressionInChromeURL(EvalExpressionInChromeUrlRequest)
       returns (google.protobuf.Empty) {}
+
+  rpc CreateArcInstance(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+  // Installs an ARC++ test app to verify network connectivity via the system-proxy Chrome OS daemon.
+  rpc VerifyArcAppConnectivity(VerifyArcAppConnectivityRequest)
+      returns (VerifyArcAppConnectivityResponse) {}
 }
 
 message EnrollUsingChromeRequest {
@@ -83,4 +89,23 @@ message VerifyVisibleNotificationRequest {
 message EvalExpressionInChromeUrlRequest {
   string url = 1;
   string expression = 2;
+}
+
+message VerifyArcAppConnectivityRequest {
+  // URL for testing network connectivity. The ARC++ app will connect to this
+  // URL and return the HTTP status code if the request was successful or an
+  // error message, in case of failure.
+  string url = 1;
+  // Username to authenticate to the HTTP proxy via the system-proxy dialog.
+  string proxy_username = 2;
+  // Password to authenticate to the HTTP proxy via the system-proxy dialog.
+  string proxy_password = 3;
+}
+
+message VerifyArcAppConnectivityResponse {
+  // The HTTP reponse code or an error.
+  string response = 1;
+  // The HTTP proxy used by the ARC app as host:port (should be the global
+  // proxy).
+  string proxy = 2;
 }
