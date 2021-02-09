@@ -34,6 +34,24 @@
       "parentUuid": "f935e5ea_df7ad394",
       "revId": "804e3e6d529e561d0b619405444d18e82c8cef8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fddb4f6c_c243edbb",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-09T01:45:50Z",
+      "side": 1,
+      "message": "Sorry, that should be b/172972948.",
+      "parentUuid": "e9102185_11e53dfb",
+      "revId": "804e3e6d529e561d0b619405444d18e82c8cef8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
