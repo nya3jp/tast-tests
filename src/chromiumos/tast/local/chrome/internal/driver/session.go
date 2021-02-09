@@ -45,7 +45,10 @@ type Session struct {
 
 // NewSession connects to a local Chrome process and creates a new Session.
 func NewSession(ctx context.Context, debuggingPortPath string, portWait cdputil.PortWaitOption, agg *jslog.Aggregator) (cr *Session, retErr error) {
-	watcher := browserwatcher.NewWatcher()
+	watcher, err := browserwatcher.NewWatcher(ctx)
+	if err != nil {
+		return nil, err
+	}
 	defer func() {
 		if retErr != nil {
 			watcher.Close()
@@ -54,7 +57,7 @@ func NewSession(ctx context.Context, debuggingPortPath string, portWait cdputil.
 
 	devsess, err := cdputil.NewSession(ctx, debuggingPortPath, portWait)
 	if err != nil {
-		return nil, errors.Wrapf(watcher.ReplaceErr(err), "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
+		return nil, errors.Wrapf(watcher.ReplaceErr(err), "failed to establish connection to Chrome Debugging Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
 	}
 	defer func() {
 		if retErr != nil {
