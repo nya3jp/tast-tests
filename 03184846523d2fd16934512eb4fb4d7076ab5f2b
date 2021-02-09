@@ -111,6 +111,30 @@
       },
       "revId": "03184846523d2fd16934512eb4fb4d7076ab5f2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5297c580_96e95790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-09T23:32:37Z",
+      "side": 1,
+      "message": "I still think it\u0027s necessary.",
+      "parentUuid": "fddcc159_677bdd3f",
+      "range": {
+        "startLine": 53,
+        "startChar": 23,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "03184846523d2fd16934512eb4fb4d7076ab5f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
