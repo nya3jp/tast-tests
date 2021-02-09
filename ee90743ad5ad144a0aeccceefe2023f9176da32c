@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebae74d2_e4a16700",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-09T21:22:39Z",
+      "side": 1,
+      "message": "Note: this kind of a weird test case. It might be OK to make sure we exercise the behavior, but it\u0027s hard to expect anything in particular, because most clients would find this to be \"unexpected\".\n\nJust noting this as FYI, in case we want to make future changes (or removals) of test cases.",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "ee90743ad5ad144a0aeccceefe2023f9176da32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fb12f77_336ed902",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-09T21:22:39Z",
+      "side": 1,
+      "message": "nit: disconnect",
+      "range": {
+        "startLine": 14,
+        "startChar": 57,
+        "endLine": 14,
+        "endChar": 68
+      },
+      "revId": "ee90743ad5ad144a0aeccceefe2023f9176da32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ad0ca8b_6f0d35ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-09T21:22:39Z",
+      "side": 1,
+      "message": "it would be kind of nice if the comments reflected each reason you\u0027re listing. So do you need a new entry between #1 and #2 above? Or just list #2 and #3 as the same (mwifiex)?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 52
+      },
+      "revId": "ee90743ad5ad144a0aeccceefe2023f9176da32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
