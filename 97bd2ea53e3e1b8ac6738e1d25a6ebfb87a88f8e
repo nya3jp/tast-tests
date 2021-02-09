@@ -104,6 +104,30 @@
       },
       "revId": "97bd2ea53e3e1b8ac6738e1d25a6ebfb87a88f8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8e670ab_1eef0e25",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-09T11:53:39Z",
+      "side": 1,
+      "message": "I\u0027ve added a TODO(b\\179762130) in the code so we can have a test mode for tlsdate. First on my bugbash todo list.\n\nThe other option, to wait on the D-Bus signal, would be helpful but we would fail to verify if tlsdate actually used system-proxy (or any proxy at all).",
+      "parentUuid": "08340828_6de4e5ca",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 133
+      },
+      "revId": "97bd2ea53e3e1b8ac6738e1d25a6ebfb87a88f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
