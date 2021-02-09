@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ee66e3b_dbff02cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-09T06:34:08Z",
+      "side": 1,
+      "message": "Is it My files?  the code seems to share Downloads",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 135,
+        "endChar": 24
+      },
+      "revId": "18bdd4dd3106e407f7dca564f3c58d1e8617dbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b5d9cf_cb86146e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_cancel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-09T06:34:08Z",
+      "side": 1,
+      "message": "Maybe name this Notification or Dialog?",
+      "range": {
+        "startLine": 124,
+        "startChar": 52,
+        "endLine": 124,
+        "endChar": 56
+      },
+      "revId": "18bdd4dd3106e407f7dca564f3c58d1e8617dbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa93ec71_817493f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_toast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-09T06:34:08Z",
+      "side": 1,
+      "message": "Not important, but might be nice to split this into multiple actions now for readability.",
+      "range": {
+        "startLine": 123,
+        "startChar": 16,
+        "endLine": 123,
+        "endChar": 30
+      },
+      "revId": "18bdd4dd3106e407f7dca564f3c58d1e8617dbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36250edd_e669c51d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-09T06:34:08Z",
+      "side": 1,
+      "message": "What this function does is not clear from the name.  I\u0027m also not sure it should use the ui timeout rather than taking a timeout argument explicitly.\n\nMaybe StaysGoneFor(Finder, Duration)?\n\nAn alternative (that seems worse) would be some sort of inversion function, like: uiauto.InvertError(ui.WaitUntilExists(), \"node found when expected not to\")\n\nWould like Brendans opinion here.",
+      "range": {
+        "startLine": 284,
+        "startChar": 19,
+        "endLine": 284,
+        "endChar": 28
+      },
+      "revId": "18bdd4dd3106e407f7dca564f3c58d1e8617dbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
