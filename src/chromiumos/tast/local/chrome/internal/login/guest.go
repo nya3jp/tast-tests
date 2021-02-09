@@ -8,7 +8,9 @@ import (
 	"context"
 	"os"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/internal/chromeproc"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/cryptohome"
@@ -47,5 +49,24 @@ func logInAsGuest(ctx context.Context, cfg *config.Config, sess *driver.Session)
 	if err := cryptohome.WaitForUserMount(ctx, cfg.User); err != nil {
 		return err
 	}
+
+	if err := waitForGuestChrome(ctx); err != nil {
+		return err
+	}
 	return nil
+}
+
+// waitForGuestChrome waits until a running chrome process
+// has the flag --login-user=$guest.
+func waitForGuestChrome(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		procs, err := chromeproc.GetGuestProcesses()
+		if err != nil {
+			return err
+		} else if len(procs) == 0 {
+			return errors.New("no guest chrome process")
+		}
+		return nil
+	}, pollOpts)
 }
