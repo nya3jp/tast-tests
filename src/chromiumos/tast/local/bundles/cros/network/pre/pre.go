@@ -16,11 +16,11 @@ import (
 )
 
 const (
-	defaultLogLevel = -4
+	defaultLogLevel = -2
 	// Default log tags used in all connectivity tests.
 	// Use string instead of []string as slice cannot be const.
 	// https://golang.org/doc/effective_go.html#constants
-	defaultLogTags = "connection+dbus+device+link+manager+portal+service"
+	defaultLogTags = ""
 )
 
 // The LogConfig object is made available to users of this precondition via:
