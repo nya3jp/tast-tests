@@ -146,6 +146,7 @@ func init() {
 // Contents starts playing a video, takes a screenshot, and checks a few interesting pixels.
 func Contents(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(contentsParams)
+
 	if err := play.TestPlayAndScreenshot(ctx, s, s.FixtValue().(*chrome.Chrome), testOpt.fileName, testOpt.refFileName); err != nil {
 		s.Fatal("TestPlayAndScreenshot failed: ", err)
 	}
