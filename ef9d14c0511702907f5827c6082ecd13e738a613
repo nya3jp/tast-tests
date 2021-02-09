@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c6c6494_d58ba2a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-09T15:51:10Z",
+      "side": 1,
+      "message": "Could we link crbug/1174587 instead? 1172863 is more about chrome hangs on start up.",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "ef9d14c0511702907f5827c6082ecd13e738a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "242f51c4_a6767297",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-09T15:51:10Z",
+      "side": 1,
+      "message": "lgtm\n\nOops, I did not notice that part when creating CL:2676004. Thanks.",
+      "revId": "ef9d14c0511702907f5827c6082ecd13e738a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
