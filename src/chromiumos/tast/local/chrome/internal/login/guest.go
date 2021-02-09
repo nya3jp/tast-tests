@@ -8,6 +8,7 @@ import (
 	"context"
 	"os"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
@@ -44,8 +45,21 @@ func logInAsGuest(ctx context.Context, cfg *config.Config, sess *driver.Session)
 		return err
 	}
 
+	// Ensure the session associated with the OOBE window is closed.
+	if err := sess.Close(ctx); err != nil {
+		return errors.Wrap(err, "failed closing the session")
+	}
+
 	if err := cryptohome.WaitForUserMount(ctx, cfg.User); err != nil {
 		return err
 	}
+
+	// Ensure that the previous chrome renderer has successfully shutdown.
+	// A new Watcher needs to be setup, so we ensure the previous PID
+	// that was being watched has been shutdown successfully.
+	if err := sess.Watcher().WaitExit(ctx); err != nil {
+		return err
+	}
+
 	return nil
 }

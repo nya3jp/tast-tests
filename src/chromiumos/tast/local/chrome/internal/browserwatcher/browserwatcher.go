@@ -7,6 +7,7 @@
 package browserwatcher
 
 import (
+	"context"
 	"sync"
 	"time"
 
@@ -14,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/chromeproc"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -33,7 +35,8 @@ type Watcher struct {
 }
 
 // NewWatcher creates a new Watcher and starts it.
-func NewWatcher() *Watcher {
+// Returns only when the chrome PID it's watching has been identified.
+func NewWatcher(ctx context.Context) (*Watcher, error) {
 	bw := &Watcher{
 		done:              make(chan bool, 1),
 		closed:            make(chan error, 1),
@@ -56,7 +59,18 @@ func NewWatcher() *Watcher {
 			}
 		}
 	}()
-	return bw
+
+	// Ensure the chrome root PID has been identified before returning.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if bw.initialPID == -1 {
+			return errors.New("chrome PID has not been identified")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: checkBrowserInterval}); err != nil {
+		return nil, err
+	}
+
+	return bw, nil
 }
 
 // Close synchronously stops the watch goroutine.
@@ -79,6 +93,16 @@ func (bw *Watcher) ReplaceErr(err error) error {
 		return werr
 	}
 	return err
+}
+
+// WaitExit polls until the *Watcher's initialPID is no longer running.
+func (bw *Watcher) WaitExit(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := process.NewProcess(bw.initialPID); err == nil {
+			return errors.New("chrome PID is still running")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: checkBrowserInterval})
 }
 
 // check is an internal method that checks the browser process, updating initialPID and browserErr as needed.
