@@ -101,7 +101,7 @@ var playTestParams = []struct {
 	VideoType:  "play.NormalVideo",
 	VerifyMode: "play.VerifyNoHWAcceleratorUsed",
 	ExtraAttr:  []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-	ExtraData:  []string{"video.html", `"bear-320x240.vp9.2.webm"`},
+	ExtraData:  []string{"video.html", "bear-320x240.vp9.2.webm"},
 	Fixture:    "chromeVideoWithSWDecoding",
 }, {
 	Name:       "vp9_sw_hdr",
@@ -153,7 +153,7 @@ var playTestParams = []struct {
 	VideoType:  "play.NormalVideo",
 	VerifyMode: "play.VerifyHWAcceleratorUsed",
 	ExtraAttr:  []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-	ExtraData:  []string{"video.html", `"bear-320x240.vp9.2.webm"`},
+	ExtraData:  []string{"video.html", "bear-320x240.vp9.2.webm"},
 	// VP9 Profile 2 is only supported by the direct Video Decoder.
 	ExtraSoftwareDeps: []string{`"video_decoder_direct"`, "caps.HWDecodeVP9_2"},
 	Fixture:           "chromeVideo",
@@ -280,6 +280,7 @@ func TestPlayPerf(t *testing.T) {
 		fileName: {{ .FileName | fmt }},
 		videoType: {{ .VideoType }},
 		verifyMode: {{ .VerifyMode }},
+		chromeType: lacros.ChromeTypeChromeOS,
 	},
 	{{ if .ExtraAttr }}
 	ExtraAttr: {{ .ExtraAttr | fmt }},
@@ -296,6 +297,27 @@ func TestPlayPerf(t *testing.T) {
 	ExtraSoftwareDeps: []string{ {{ range .ExtraSoftwareDeps }} {{ . }}, {{ end }} },
 	{{ end }}
 	Fixture: {{ .Fixture | fmt }},
+}, {
+	Name: {{ .Name | printf "\"%s_lacros\"" }},
+	Val: playParams{
+		fileName: {{ .FileName | fmt }},
+		videoType: {{ .VideoType }},
+		verifyMode: {{ .VerifyMode }},
+		chromeType: lacros.ChromeTypeLacros,
+	},
+	{{ if .ExtraAttr }}
+	ExtraAttr: {{ .ExtraAttr | fmt }},
+	{{ end }}
+	{{ if .MSEDataFiles }}
+	ExtraData: append(play.MSEDataFiles(), {{ range .ExtraData }} {{ . | fmt }}, {{ end }} launcher.DataArtifact),
+	{{ else }}
+	ExtraData: []string{ {{ if .ExtraData }} {{ range .ExtraData }} {{ . | fmt }}, {{ end }} {{ end }} launcher.DataArtifact },
+  {{ end }}
+	{{ if .ExtraHardwareDeps }}
+	ExtraHardwareDeps: {{ .ExtraHardwareDeps }},
+	{{ end }}
+	ExtraSoftwareDeps: []string{ {{ range .ExtraSoftwareDeps }} {{ . }}, {{ end }} "lacros" },
+	Fixture: {{ .Fixture | printf "\"%sLacros\"" }},
 }, {{ end }}`, playTestParams)
 	genparams.Ensure(t, "play.go", code)
 }
