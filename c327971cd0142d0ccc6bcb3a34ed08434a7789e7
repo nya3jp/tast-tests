@@ -121,6 +121,30 @@
       },
       "revId": "c327971cd0142d0ccc6bcb3a34ed08434a7789e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d72f3b1d_3800e3b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-09T08:41:42Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t notice you already made such a change.\n\noptional: if you feel the defer statemet is long, you can only defer the function to disable autoclick. It make the sentence duplicated though, so I marked it as optional. Choose whichever you prefer.\n\n.. a11y.SetFeatureEnabled(..., true)\n...\nenabled :\u003d true\ndefer func() {\n  if enabled {\n    a11y.SetFeatureEnabled(..., false)\n  }\n}\n\n... a11y.SetFeatureEnabled(..., false)\nenabled \u003d false",
+      "parentUuid": "e0c3e06b_a9aad77c",
+      "range": {
+        "startLine": 41,
+        "startChar": 16,
+        "endLine": 41,
+        "endChar": 33
+      },
+      "revId": "c327971cd0142d0ccc6bcb3a34ed08434a7789e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
