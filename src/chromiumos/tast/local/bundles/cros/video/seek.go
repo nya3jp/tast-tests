@@ -10,15 +10,17 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
 
 // seekTest is used to describe the config used to run each Seek test.
 type seekTest struct {
-	filename string // File name to play back.
-	numSeeks int    // Amount of times to seek into the <video>.
+	filename   string // File name to play back.
+	numSeeks   int    // Amount of times to seek into the <video>.
+	chromeType lacros.ChromeType
 }
 
 func init() {
@@ -38,88 +40,185 @@ func init() {
 			{
 				Name: "av1",
 				Val: seekTest{
-					filename: "720_av1.mp4",
-					numSeeks: 25,
+					filename:   "720_av1.mp4",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"720_av1.mp4"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 				Fixture:           "chromeVideoWithHWAV1Decoding",
 			}, {
+				Name: "av1_lacros",
+				Val: seekTest{
+					filename:   "720_av1.mp4",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"720_av1.mp4", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeAV1, "lacros"},
+				Fixture:           "chromeVideoWithHWAV1DecodingLacros",
+			}, {
 				Name: "h264",
 				Val: seekTest{
-					filename: "720_h264.mp4",
-					numSeeks: 25,
+					filename:   "720_h264.mp4",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"720_h264.mp4"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 				Fixture:           "chromeVideo",
 			}, {
+				Name: "h264_lacros",
+				Val: seekTest{
+					filename:   "720_h264.mp4",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"720_h264.mp4", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
+				Fixture:           "chromeVideoLacros",
+			}, {
 				Name: "vp8",
 				Val: seekTest{
-					filename: "720_vp8.webm",
-					numSeeks: 25,
+					filename:   "720_vp8.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"720_vp8.webm"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 				Fixture:           "chromeVideo",
 			}, {
+				Name: "vp8_lacros",
+				Val: seekTest{
+					filename:   "720_vp8.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"720_vp8.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "lacros"},
+				Fixture:           "chromeVideoLacros",
+			}, {
 				Name: "vp9",
 				Val: seekTest{
-					filename: "720_vp9.webm",
-					numSeeks: 25,
+					filename:   "720_vp9.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"720_vp9.webm"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 				Fixture:           "chromeVideo",
 			}, {
+				Name: "vp9_lacros",
+				Val: seekTest{
+					filename:   "720_vp9.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"720_vp9.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "lacros"},
+				Fixture:           "chromeVideoLacros",
+			}, {
 				Name: "switch_av1",
 				Val: seekTest{
-					filename: "smpte_bars_resolution_ladder.av1.webm",
-					numSeeks: 25,
+					filename:   "smpte_bars_resolution_ladder.av1.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"smpte_bars_resolution_ladder.av1.webm"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 				Fixture:           "chromeVideoWithHWAV1Decoding",
 			}, {
+				Name: "switch_av1_lacros",
+				Val: seekTest{
+					filename:   "smpte_bars_resolution_ladder.av1.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"smpte_bars_resolution_ladder.av1.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeAV1, "lacros"},
+				Fixture:           "chromeVideoWithHWAV1DecodingLacros",
+			}, {
 				Name: "switch_h264",
 				Val: seekTest{
-					filename: "smpte_bars_resolution_ladder.h264.mp4",
-					numSeeks: 25,
+					filename:   "smpte_bars_resolution_ladder.h264.mp4",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 				Fixture:           "chromeVideo",
 			}, {
+				Name: "switch_h264_lacros",
+				Val: seekTest{
+					filename:   "smpte_bars_resolution_ladder.h264.mp4",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
+				Fixture:           "chromeVideoLacros",
+			}, {
 				Name: "switch_vp8",
 				Val: seekTest{
-					filename: "smpte_bars_resolution_ladder.vp8.webm",
-					numSeeks: 25,
+					filename:   "smpte_bars_resolution_ladder.vp8.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"smpte_bars_resolution_ladder.vp8.webm"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 				Fixture:           "chromeVideo",
 			}, {
+				Name: "switch_vp8_lacros",
+				Val: seekTest{
+					filename:   "smpte_bars_resolution_ladder.vp8.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"smpte_bars_resolution_ladder.vp8.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "lacros"},
+				Fixture:           "chromeVideoLacros",
+			}, {
 				Name: "switch_vp9",
 				Val: seekTest{
-					filename: "smpte_bars_resolution_ladder.vp9.webm",
-					numSeeks: 25,
+					filename:   "smpte_bars_resolution_ladder.vp9.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"smpte_bars_resolution_ladder.vp9.webm"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 				Fixture:           "chromeVideo",
 			}, {
+				Name: "switch_vp9_lacros",
+				Val: seekTest{
+					filename:   "smpte_bars_resolution_ladder.vp9.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"smpte_bars_resolution_ladder.vp9.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "lacros"},
+				Fixture:           "chromeVideoLacros",
+			}, {
 				Name: "stress_av1",
 				Val: seekTest{
-					filename: "720_av1.mp4",
-					numSeeks: 1000,
+					filename:   "720_av1.mp4",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 				ExtraData:         []string{"720_av1.mp4"},
@@ -127,10 +226,23 @@ func init() {
 				Timeout:           20 * time.Minute,
 				Fixture:           "chromeVideoWithHWAV1Decoding",
 			}, {
+				Name: "stress_av1_lacros",
+				Val: seekTest{
+					filename:   "720_av1.mp4",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+				ExtraData:         []string{"720_av1.mp4", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeAV1, "lacros"},
+				Timeout:           20 * time.Minute,
+				Fixture:           "chromeVideoWithHWAV1DecodingLacros",
+			}, {
 				Name: "stress_vp8",
 				Val: seekTest{
-					filename: "720_vp8.webm",
-					numSeeks: 1000,
+					filename:   "720_vp8.webm",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 				ExtraData:         []string{"720_vp8.webm"},
@@ -138,10 +250,23 @@ func init() {
 				Timeout:           20 * time.Minute,
 				Fixture:           "chromeVideo",
 			}, {
+				Name: "stress_vp8_lacros",
+				Val: seekTest{
+					filename:   "720_vp8.webm",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+				ExtraData:         []string{"720_vp8.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "lacros"},
+				Timeout:           20 * time.Minute,
+				Fixture:           "chromeVideoLacros",
+			}, {
 				Name: "stress_vp9",
 				Val: seekTest{
-					filename: "720_vp9.webm",
-					numSeeks: 1000,
+					filename:   "720_vp9.webm",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 				ExtraData:         []string{"720_vp9.webm"},
@@ -149,10 +274,23 @@ func init() {
 				Timeout:           20 * time.Minute,
 				Fixture:           "chromeVideo",
 			}, {
+				Name: "stress_vp9_lacros",
+				Val: seekTest{
+					filename:   "720_vp9.webm",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+				ExtraData:         []string{"720_vp9.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "lacros"},
+				Timeout:           20 * time.Minute,
+				Fixture:           "chromeVideoLacros",
+			}, {
 				Name: "stress_h264",
 				Val: seekTest{
-					filename: "720_h264.mp4",
-					numSeeks: 1000,
+					filename:   "720_h264.mp4",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 				ExtraData:         []string{"720_h264.mp4"},
@@ -160,70 +298,155 @@ func init() {
 				Timeout:           20 * time.Minute,
 				Fixture:           "chromeVideo",
 			}, {
+				Name: "stress_h264_lacros",
+				Val: seekTest{
+					filename:   "720_h264.mp4",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+				ExtraData:         []string{"720_h264.mp4", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
+				Timeout:           20 * time.Minute,
+				Fixture:           "chromeVideoLacros",
+			}, {
 				Name: "h264_alt",
 				Val: seekTest{
-					filename: "720_h264.mp4",
-					numSeeks: 25,
+					filename:   "720_h264.mp4",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"720_h264.mp4"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs"},
 				Fixture:           "chromeAlternateVideoDecoder",
 			}, {
+				Name: "h264_alt_lacros",
+				Val: seekTest{
+					filename:   "720_h264.mp4",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"720_h264.mp4", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs", "lacros"},
+				Fixture:           "chromeAlternateVideoDecoderLacros",
+			}, {
 				Name: "vp8_alt",
 				Val: seekTest{
-					filename: "720_vp8.webm",
-					numSeeks: 25,
+					filename:   "720_vp8.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"720_vp8.webm"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported"},
 				Fixture:           "chromeAlternateVideoDecoder",
 			}, {
+				Name: "vp8_alt_lacros",
+				Val: seekTest{
+					filename:   "720_vp8.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"720_vp8.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported", "lacros"},
+				Fixture:           "chromeAlternateVideoDecoderLacros",
+			}, {
 				Name: "vp9_alt",
 				Val: seekTest{
-					filename: "720_vp9.webm",
-					numSeeks: 25,
+					filename:   "720_vp9.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"720_vp9.webm"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
 				Fixture:           "chromeAlternateVideoDecoder",
 			}, {
+				Name: "vp9_alt_lacros",
+				Val: seekTest{
+					filename:   "720_vp9.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"720_vp9.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported", "lacros"},
+				Fixture:           "chromeAlternateVideoDecoderLacros",
+			}, {
 				Name: "switch_h264_alt",
 				Val: seekTest{
-					filename: "smpte_bars_resolution_ladder.h264.mp4",
-					numSeeks: 25,
+					filename:   "smpte_bars_resolution_ladder.h264.mp4",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs"},
 				Fixture:           "chromeAlternateVideoDecoder",
 			}, {
+				Name: "switch_h264_alt_lacros",
+				Val: seekTest{
+					filename:   "smpte_bars_resolution_ladder.h264.mp4",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs", "lacros"},
+				Fixture:           "chromeAlternateVideoDecoderLacros",
+			}, {
 				Name: "switch_vp8_alt",
 				Val: seekTest{
-					filename: "smpte_bars_resolution_ladder.vp8.webm",
-					numSeeks: 25,
+					filename:   "smpte_bars_resolution_ladder.vp8.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"smpte_bars_resolution_ladder.vp8.webm"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported"},
 				Fixture:           "chromeAlternateVideoDecoder",
 			}, {
+				Name: "switch_vp8_alt_lacros",
+				Val: seekTest{
+					filename:   "smpte_bars_resolution_ladder.vp8.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"smpte_bars_resolution_ladder.vp8.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported", "lacros"},
+				Fixture:           "chromeAlternateVideoDecoderLacros",
+			}, {
 				Name: "switch_vp9_alt",
 				Val: seekTest{
-					filename: "smpte_bars_resolution_ladder.vp9.webm",
-					numSeeks: 25,
+					filename:   "smpte_bars_resolution_ladder.vp9.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 				ExtraData:         []string{"smpte_bars_resolution_ladder.vp9.webm"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
 				Fixture:           "chromeAlternateVideoDecoder",
 			}, {
+				Name: "switch_vp9_alt_lacros",
+				Val: seekTest{
+					filename:   "smpte_bars_resolution_ladder.vp9.webm",
+					numSeeks:   25,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+				ExtraData:         []string{"smpte_bars_resolution_ladder.vp9.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported", "lacros"},
+				Fixture:           "chromeAlternateVideoDecoderLacros",
+			}, {
 				Name: "stress_vp8_alt",
 				Val: seekTest{
-					filename: "720_vp8.webm",
-					numSeeks: 1000,
+					filename:   "720_vp8.webm",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 				ExtraData:         []string{"720_vp8.webm"},
@@ -231,10 +454,23 @@ func init() {
 				Timeout:           20 * time.Minute,
 				Fixture:           "chromeAlternateVideoDecoder",
 			}, {
+				Name: "stress_vp8_alt_lacros",
+				Val: seekTest{
+					filename:   "720_vp8.webm",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+				ExtraData:         []string{"720_vp8.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported", "lacros"},
+				Timeout:           20 * time.Minute,
+				Fixture:           "chromeAlternateVideoDecoderLacros",
+			}, {
 				Name: "stress_vp9_alt",
 				Val: seekTest{
-					filename: "720_vp9.webm",
-					numSeeks: 1000,
+					filename:   "720_vp9.webm",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 				ExtraData:         []string{"720_vp9.webm"},
@@ -242,16 +478,41 @@ func init() {
 				Timeout:           20 * time.Minute,
 				Fixture:           "chromeAlternateVideoDecoder",
 			}, {
+				Name: "stress_vp9_alt_lacros",
+				Val: seekTest{
+					filename:   "720_vp9.webm",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+				ExtraData:         []string{"720_vp9.webm", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported", "lacros"},
+				Timeout:           20 * time.Minute,
+				Fixture:           "chromeAlternateVideoDecoderLacros",
+			}, {
 				Name: "stress_h264_alt",
 				Val: seekTest{
-					filename: "720_h264.mp4",
-					numSeeks: 1000,
+					filename:   "720_h264.mp4",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeChromeOS,
 				},
 				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 				ExtraData:         []string{"720_h264.mp4"},
 				ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs"},
 				Timeout:           20 * time.Minute,
 				Fixture:           "chromeAlternateVideoDecoder",
+			}, {
+				Name: "stress_h264_alt_lacros",
+				Val: seekTest{
+					filename:   "720_h264.mp4",
+					numSeeks:   1000,
+					chromeType: lacros.ChromeTypeLacros,
+				},
+				ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+				ExtraData:         []string{"720_h264.mp4", launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs", "lacros"},
+				Timeout:           20 * time.Minute,
+				Fixture:           "chromeAlternateVideoDecoderLacros",
 			},
 		},
 	})
@@ -260,14 +521,25 @@ func init() {
 // Seek plays a file with Chrome and checks that it can safely be seeked into.
 func Seek(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(seekTest)
-	cr := s.FixtValue().(*chrome.Chrome)
+
+	// TODO(crbug.com/1127165): Remove the artifactPath argument when we can use Data in fixtures.
+	var artifactPath string
+	if testOpt.chromeType == lacros.ChromeTypeLacros {
+		artifactPath = s.DataPath(launcher.DataArtifact)
+	}
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), artifactPath, testOpt.chromeType)
+	if err != nil {
+		s.Fatal("Failed to initialize test: ", err)
+	}
+	defer lacros.CloseLacrosChrome(ctx, l)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 	defer tconn.Close()
 
-	if err := play.TestSeek(ctx, http.FileServer(s.DataFileSystem()), tconn, cr, testOpt.filename, testOpt.numSeeks); err != nil {
+	if err := play.TestSeek(ctx, http.FileServer(s.DataFileSystem()), tconn, cs, testOpt.filename, testOpt.numSeeks); err != nil {
 		s.Fatal("TestSeek failed: ", err)
 	}
 }

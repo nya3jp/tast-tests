@@ -181,6 +181,7 @@ func TestSeek(t *testing.T) {
 	Val: seekTest{
 		filename: {{ .FileName | fmt }},
 		numSeeks: {{ .NumSeeks }},
+		chromeType: lacros.ChromeTypeChromeOS,
 	},
 	{{ if .ExtraAttr }}
 	ExtraAttr: {{ .ExtraAttr | fmt }},
@@ -193,6 +194,22 @@ func TestSeek(t *testing.T) {
 	Timeout: {{ .Timeout }},
 	{{ end }}
 	Fixture: {{ .Fixture | fmt }},
+}, {
+	Name: {{ .Name | printf "\"%s_lacros\"" }},
+	Val: seekTest{
+		filename: {{ .FileName | fmt }},
+		numSeeks: {{ .NumSeeks }},
+		chromeType: lacros.ChromeTypeLacros,
+	},
+	{{ if .ExtraAttr }}
+	ExtraAttr: {{ .ExtraAttr | fmt }},
+	{{ end }}
+	ExtraData: []string{ {{ if .ExtraData }} {{ range .ExtraData }} {{ . | fmt }}, {{ end }} {{ end }} launcher.DataArtifact },
+	ExtraSoftwareDeps: []string{ {{ range .ExtraSoftwareDeps }} {{ . }}, {{ end }} "lacros" },
+	{{ if .Timeout }}
+	Timeout: {{ .Timeout }},
+	{{ end }}
+	Fixture: {{ .Fixture | printf "\"%sLacros\"" }},
 }, {{ end }}`, seekTestParams)
 	genparams.Ensure(t, "seek.go", code)
 }
