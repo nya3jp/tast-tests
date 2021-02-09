@@ -53,8 +53,6 @@ func MatchByPID(pids ...int32) Matcher {
 
 // SaveWithoutCrash saves minidumps of processes matched by matchers.
 // Minidumps are saved in dir as "<process name>.<PID>.dmp".
-// ctx is used only for logging. Its deadline is intentionally ignored because
-// it is very typical that we want to call this function after ctx timeout is hit.
 func SaveWithoutCrash(ctx context.Context, dir string, matchers ...Matcher) {
 	procs := freeze(ctx, matchers...)
 	defer unfreeze(ctx, procs)
