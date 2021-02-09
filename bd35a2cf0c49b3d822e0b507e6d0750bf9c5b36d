@@ -128,6 +128,24 @@
       "parentUuid": "811bb973_4cef7786",
       "revId": "bd35a2cf0c49b3d822e0b507e6d0750bf9c5b36d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff81db8_17f7b7a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_accelerator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-09T01:04:34Z",
+      "side": 1,
+      "message": "I don\u0027t have a candidate in mind actually. How about adding a TODO here or keep pressing some known good keystroke and check if that is working?",
+      "parentUuid": "bd85188c_a1148acf",
+      "revId": "bd35a2cf0c49b3d822e0b507e6d0750bf9c5b36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
