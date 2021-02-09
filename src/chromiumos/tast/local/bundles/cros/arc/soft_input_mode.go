@@ -22,13 +22,15 @@ func init() {
 		Func:         SoftInputMode,
 		Desc:         "Verifies that Ash split view works properly with softInputMode=adjustPan|adjustResize activity flags",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"informational", "group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.BootedInTabletMode(),
 		Params: []testing.Param{{
+			ExtraAttr:         []string{"informational", "group:mainline"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "vm",
+			Name: "vm",
+			// TODO(b/179520931): Reenable when the test is passing.
+			// ExtraAttr:         []string{"informational", "group:mainline"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
