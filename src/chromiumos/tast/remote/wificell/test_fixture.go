@@ -219,10 +219,10 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		// Set the debug values on the DUT by default.
 		setLogging: true,
 		// Default log level used in WiFi tests.
-		logLevel: -4,
-		// Default log tags used in WiFi tests. The tags (connection + dbus + device + link + manager + portal + service)
-		// are default for all connectivity tests.
-		logTags: []string{"connection", "dbus", "device", "link", "manager", "portal", "service", "wifi"},
+		logLevel: -2,
+		// Default log tags used in WiFi tests. Example of other tags that can be added.
+		// (connection + dbus + device + link + manager + portal + service)
+		logTags: []string{"wifi"},
 	}
 
 	for _, op := range ops {
