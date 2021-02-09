@@ -366,7 +366,7 @@ func TestPlay(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chro
 
 // TestSeek checks that the video file named filename can be seeked around.
 // It will play the video and seek randomly into it numSeeks times.
-func TestSeek(ctx context.Context, httpHandler http.Handler, cr *chrome.Chrome, filename string, numSeeks int) error {
+func TestSeek(ctx context.Context, httpHandler http.Handler, cs ash.ConnSource, filename string, numSeeks int) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return err
@@ -376,7 +376,7 @@ func TestSeek(ctx context.Context, httpHandler http.Handler, cr *chrome.Chrome, 
 	server := httptest.NewServer(httpHandler)
 	defer server.Close()
 
-	if err := playSeekVideo(ctx, cr, filename, server.URL, numSeeks); err != nil {
+	if err := playSeekVideo(ctx, cs, filename, server.URL, numSeeks); err != nil {
 		return errors.Wrapf(err, "failed to play %v (%v): %v", filename, server.URL, err)
 	}
 	return nil
