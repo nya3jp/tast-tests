@@ -134,7 +134,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 
 	cfg, err := config.NewConfig(opts)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed to process options")
 	}
 
 	// Cap the timeout to be certain length depending on the login mode. Sometimes
@@ -148,7 +148,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	defer cancel()
 
 	if err := setup.PreflightCheck(ctx, cfg); err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "pre-flight check failed")
 	}
 
 	if err := os.RemoveAll(persistentDir); err != nil {
@@ -196,12 +196,12 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 			// Restart session.
 			newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
 			if err != nil {
-				return nil, err
+				return nil, errors.Wrap(err, "failed to reconnect to restarted session")
 			}
 			sess.Close(ctx)
 			sess = newSess
 		} else if err != nil {
-			return nil, err
+			return nil, errors.Wrap(err, "login failed")
 		}
 	}
 
