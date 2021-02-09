@@ -44,6 +44,14 @@ func init() {
 }
 
 func LifecycleChromeOSPerf(ctx context.Context, s *testing.State) {
+	var a *arc.ARC
+	cr, ok := s.PreValue().(*chrome.Chrome)
+	if !ok {
+		pre := s.FixtValue().(*arc.PreData)
+		cr = pre.Chrome
+		a = pre.ARC
+	}
+
 	// Construct memory.Limit that will throttle tab creation.
 	nearOOM := memory.NewPageReclaimLimit()
 	crosCrit, err := memory.NewAvailableCriticalLimit()
@@ -64,7 +72,13 @@ func LifecycleChromeOSPerf(ctx context.Context, s *testing.State) {
 	var tasks []memoryuser.MemoryTask
 	var tabsAliveTasks []memoryuser.KillableTask
 	server := memoryuser.NewMemoryStressServer(s.DataFileSystem())
-	defer server.Close()
+	defer func() {
+		if tconn, err := cr.TestAPIConn(ctx); err != nil {
+			s.Error("Failed to get Chrome test API connection: ", err)
+		} else if err := server.Close(ctx, tconn); err != nil {
+			s.Error("Failed to close MemoryStressServer: ", err)
+		}
+	}()
 	for i := 0; i < numTabs; i++ {
 		task := server.NewMemoryStressTask(tabAllocMiB, 0.67, limit)
 		tasks = append(tasks, task)
@@ -75,13 +89,6 @@ func LifecycleChromeOSPerf(ctx context.Context, s *testing.State) {
 	// Add a task to collect metrics on which tabs are still alive.
 	tasks = append(tasks, memoryuser.NewStillAliveMetricTask(tabsAliveTasks, "tabs_alive"))
 
-	var a *arc.ARC
-	cr, ok := s.PreValue().(*chrome.Chrome)
-	if !ok {
-		pre := s.FixtValue().(*arc.PreData)
-		cr = pre.Chrome
-		a = pre.ARC
-	}
 	rp := &memoryuser.RunParameters{
 		ExistingChrome: cr,
 		ExistingARC:    a,

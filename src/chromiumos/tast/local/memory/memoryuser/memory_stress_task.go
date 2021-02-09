@@ -118,7 +118,23 @@ func (s *MemoryStressServer) NewMemoryStressTask(allocMiB int, ratio float32, li
 	}
 }
 
-// Close shuts down the http server.
-func (s *MemoryStressServer) Close() {
+// Close shuts down the http server, and close any tabs that were opened by it.
+func (s *MemoryStressServer) Close(ctx context.Context, tconn *chrome.TestConn) error {
 	s.server.Close()
+
+	// Close all tabs that match the server URL.
+	js := fmt.Sprintf(`async () => {
+		const query = tast.promisify(chrome.tabs.query);
+		const remove = tast.promisify(chrome.tabs.remove);
+		const tabs = await query({
+			url: "%s/%s*"
+		});
+		for (const tab of tabs) {
+			await remove(tab.id);
+		}
+	}`, s.server.URL, AllocPageFilename)
+	if err := tconn.Call(ctx, nil, js); err != nil {
+		return errors.Wrap(err, "failed to close tabs opened by MemoryStressServer")
+	}
+	return nil
 }

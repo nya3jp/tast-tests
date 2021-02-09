@@ -92,7 +92,11 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	numTypes := 0
 	if param.inHost {
 		server = memoryuser.NewMemoryStressServer(s.DataFileSystem())
-		defer server.Close()
+		defer func() {
+			if err := server.Close(ctx, pre.TestAPIConn); err != nil {
+				s.Error("Failed to close MemoryStressServer: ", err)
+			}
+		}()
 		numTypes++
 	}
 	if param.inARC {
