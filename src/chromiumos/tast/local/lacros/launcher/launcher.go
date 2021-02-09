@@ -155,7 +155,7 @@ func extensionArgs(extID, extList string) []string {
 // Currently, callers need to call this if they do not call LaunchLacrosChrome, but otherwise
 // try to run lacros chrome.
 func EnsureLacrosChrome(ctx context.Context, f FixtData, artifactPath string) error {
-	if f.Mode != preExist {
+	if f.Mode != PreExist {
 		return nil
 	}
 
