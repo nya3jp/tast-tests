@@ -91,6 +91,53 @@
       },
       "revId": "18bdd4dd3106e407f7dca564f3c58d1e8617dbb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28db1404_6b5fee1b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-09T18:06:43Z",
+      "side": 1,
+      "message": "Yeah, these kind of functions are always interesting. Most of the time I would call them the wrong option. Generally waiting for nothing to happen is wrong. If you can it is better to wait for something different that lets you know you can then check if something is still gone.\n\nAnyway, for this function, I would probably call it EnsureGoneFor(Finder, Duration), and I would explicitly take a duration as to avoid wasting lots of dut time due to people not thinking about timeout length.",
+      "parentUuid": "36250edd_e669c51d",
+      "range": {
+        "startLine": 284,
+        "startChar": 19,
+        "endLine": 284,
+        "endChar": 28
+      },
+      "revId": "18bdd4dd3106e407f7dca564f3c58d1e8617dbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d6d520_4fca7e25",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-09T18:06:43Z",
+      "side": 1,
+      "message": "I would write this in terms of gone instead of exists.\n\nThey have slightly different semantics when it comes to NodeTooGeneric errors.\nExists says a node does not exist if it gets a NodeTooGeneric error because it can not find an exact match.\nGone says that a node might still exist if it gets a NodeTooGeneric error.",
+      "range": {
+        "startLine": 287,
+        "startChar": 16,
+        "endLine": 287,
+        "endChar": 22
+      },
+      "revId": "18bdd4dd3106e407f7dca564f3c58d1e8617dbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
