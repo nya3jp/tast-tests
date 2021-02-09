@@ -138,6 +138,24 @@
       "message": "For the record, a revert CL for a chrome package refactoring change is in CQ: crrev.com/c/2682087\n\nJorge, sorry for the false alarm!\n",
       "revId": "bb5537370079dfc644b268c3f8d339e2f7316876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65a7fb40_faa0575c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-02-09T16:58:43Z",
+      "side": 1,
+      "message": "Thanks everyone for the quick turnaround in helping find the root cause without needing to land this!",
+      "parentUuid": "ef10b20d_91a3e5cf",
+      "revId": "bb5537370079dfc644b268c3f8d339e2f7316876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
