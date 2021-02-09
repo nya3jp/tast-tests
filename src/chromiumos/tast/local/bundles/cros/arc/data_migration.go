@@ -35,7 +35,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DataMigration,
 		Desc:         "Boots ARC with /data created on the previous version of ARC and verifies Play Store can install an app",
-		Contacts:     []string{"niwa@google.com", "arc-storage@google.com", "cros-arc-te@google.com"},
+		Contacts:     []string{"niwa@google.com", "arc-storage@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
