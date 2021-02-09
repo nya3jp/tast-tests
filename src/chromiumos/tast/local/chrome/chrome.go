@@ -193,12 +193,13 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		loginPending = true
 	} else {
 		if err := login.LogIn(ctx, cfg, sess); err == login.ErrNeedNewSession {
-			// Restart session.
+			// Chrome has been terminated so we need to setup a new session.
+			// The old session was closed when chrome was terminated.
+			sess = nil
 			newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
 			if err != nil {
 				return nil, err
 			}
-			sess.Close(ctx)
 			sess = newSess
 		} else if err != nil {
 			return nil, err
@@ -493,12 +494,13 @@ func (c *Chrome) ContinueLogin(ctx context.Context) error {
 	c.loginPending = false
 
 	if err := login.LogIn(ctx, &c.cfg, c.sess); err == login.ErrNeedNewSession {
-		// Restart session.
-		newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, c.agg)
+		// Chrome has been terminated so we need to setup a new session.
+		// The old session was closed when chrome was terminated.
+		c.sess = nil
+		newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
 		if err != nil {
 			return err
 		}
-		c.sess.Close(ctx)
 		c.sess = newSess
 	} else if err != nil {
 		return err
