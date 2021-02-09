@@ -87,6 +87,30 @@
       },
       "revId": "03184846523d2fd16934512eb4fb4d7076ab5f2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fddcc159_677bdd3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-02-09T22:48:55Z",
+      "side": 1,
+      "message": "I can make that change, but I doubt we would introduce those boards as critical. I am guessing the plan is to start with post-submit only and after it is reliably green only block a subset of manatee related projects just like what was done with eve-manatee-cq. Especially, since there will likely be a bunch of random failures and flakes we will have to chase down related to the specific environment. I would guess there won\u0027t be cq critical manatee boards that cover all the projects until a device has a chance of shipping with manatee.\n\nLet me know if you still think it is necessary.",
+      "parentUuid": "0f412d82_effcea90",
+      "range": {
+        "startLine": 53,
+        "startChar": 23,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "03184846523d2fd16934512eb4fb4d7076ab5f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
