@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.chromium.arc.testapp.connectivity">
+    <application
+        android:allowBackup="false"
+        android:label="ARC Connectivity Test">
+        <activity android:name="org.chromium.arc.testapp.connectivity.ConnectivityActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+</manifest>
