@@ -16,6 +16,23 @@
       "message": "PTAL.",
       "revId": "4801a003a0e9067d342e59f8dca760da60d51fbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59c0b14_79ad2bfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-02-09T00:31:13Z",
+      "side": 1,
+      "message": "It provides vital information about missing boards on server.\nI want let Josh decide",
+      "revId": "4801a003a0e9067d342e59f8dca760da60d51fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
