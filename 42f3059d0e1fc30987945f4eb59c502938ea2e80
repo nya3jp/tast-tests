@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "42f3059d0e1fc30987945f4eb59c502938ea2e80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b1a4a5_489f3b98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-09T16:15:09Z",
+      "side": 1,
+      "message": "this can be simplified by anonymous function.\n\nif loggedIn {\n  func() {\n    cr, err :\u003d chrome.New(...)\n    if err !\u003d nil {\n      s.Fatal(...)\n    }\n    defer func() {\n      if err :\u003d cr.Close(...); err !\u003d nil {\n        s.Fatal(...)\n      }\n    }()\n    a, err :\u003d arc.New(...)\n    if err !\u003d nil {\n      ...\n    }\n    a.Close()  // Do you want to check error for this close, too?\n  }()\n} ...",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "42f3059d0e1fc30987945f4eb59c502938ea2e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
