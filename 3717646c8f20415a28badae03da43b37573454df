@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2315dc08_d256eade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-09T07:15:22Z",
+      "side": 1,
+      "message": "Just noticed you\u0027re OOO until end of next week, going to go ahead with this for now, but let me know if you see any issues and we can address them in a follow-up. We\u0027ll monitor the results on our end as well and keep an eye out for any issues.",
+      "parentUuid": "8178238b_809638ec",
+      "range": {
+        "startLine": 307,
+        "startChar": 39,
+        "endLine": 307,
+        "endChar": 46
+      },
+      "revId": "3717646c8f20415a28badae03da43b37573454df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "870ffe91_1e168e95",
