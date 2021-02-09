@@ -139,6 +139,24 @@
       "parentUuid": "a3e8568f_04108438",
       "revId": "e3af4a9e490e7ec8eec1457f45bc60405c971f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e212c1e0_c3fbbeed",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-09T19:04:55Z",
+      "side": 1,
+      "message": "So I don\u0027t think I was testing the right patch 😞. The service I should be waiting for is org.chromium.MojoConnectionService. When I test waiting on this dbus service, Chrome does not have time to send cros_healthd the mojo remotes. I think this leaves me with a few options:\n\n1. Add a sleep in the SetUp of the fixture to give Chrome time to bootstrap cros_healthd. (Not ideal, but this would work)\n\n2. Add a polling mechanism to wait until cros_healthd has been bootstrapped before continuing. \n\n3. Use the chrome.New() mechanism even though it is not needed in the fixture. This seems to give enough time for the bootstrap indirectly.\n\n#2 Would probably be the cleanest solution, but do you have a preference?",
+      "parentUuid": "2aa37a24_0435c176",
+      "revId": "e3af4a9e490e7ec8eec1457f45bc60405c971f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
