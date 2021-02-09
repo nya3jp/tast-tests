@@ -152,7 +152,7 @@ func (e *EventWatcher) parse(ctx context.Context, r io.Reader) {
 		line := scanner.Text()
 		ev, err := parseEvent(line)
 		if err != nil {
-			testing.ContextLogf(ctx, "error parsing event, err=%s", err.Error())
+			testing.ContextLogf(ctx, "Error parsing event, err=%s", err.Error())
 			continue
 		}
 		select {
@@ -203,7 +203,7 @@ func detectEventType(ev *Event) EventType {
 	if ev.Message == "Previous authentication no longer valid" {
 		return EventTypeDisconnect
 	}
-	if strings.Contains(ev.Message, "ch_switch_started_notify") {
+	if strings.Contains(ev.Message, "channel switch started") || strings.Contains(ev.Message, "ch_switch_started_notify") {
 		return EventTypeChanSwitch
 	}
 	if strings.HasPrefix(ev.Message, "scan started") {
