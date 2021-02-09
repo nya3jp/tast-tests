@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a8ebf15_ad3af434",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-09T11:09:37Z",
+      "side": 1,
+      "message": "The implementation uses multiple threads/goroutines, but nothing should be accessing CrostiniLifecycleTask from different threads.",
+      "parentUuid": "620c839b_7189e840",
+      "revId": "da336c727c5920a7bbf7ce3de19c3bcffc64cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "654ed13c_6a51107b",
         "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
         "patchSetId": 4
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-09T06:16:16Z",
       "side": 1,
       "message": "This function isn\u0027t used?",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "da336c727c5920a7bbf7ce3de19c3bcffc64cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bca4fbf_6182ab15",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-09T11:09:37Z",
+      "side": 1,
+      "message": "Yep, it\u0027s dead\n\nDone",
+      "parentUuid": "654ed13c_6a51107b",
       "range": {
         "startLine": 37,
         "startChar": 5,
@@ -71,6 +113,30 @@
       "writtenOn": "2021-02-09T06:16:16Z",
       "side": 1,
       "message": "Maybe mention that this is needed for StillAlive",
+      "range": {
+        "startLine": 71,
+        "startChar": 62,
+        "endLine": 71,
+        "endChar": 72
+      },
+      "revId": "da336c727c5920a7bbf7ce3de19c3bcffc64cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0beb774d_49b49764",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-09T11:09:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d2ed2e7_d5d6ac03",
       "range": {
         "startLine": 71,
         "startChar": 62,
@@ -106,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe8993ce_fd710c00",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-09T11:09:37Z",
+      "side": 1,
+      "message": "The innards of Cmd use goroutines to update stdout, I think, but this just runs on the main test thread.\n\nIf t.cmd terminates before writing \"done\" we want to fail the test since we didn\u0027t finish allocating. But if the process terminates after writing \"done\" but before we finish this read, we want the test to continue, because it did successfully allocate its memory.\n\nI just tested this by making the test program exit right after it prints \"done\", and having Run sleep enough for allocations to complete before checking any of stdout, and the test still passes (but reports no processes are alive).",
+      "parentUuid": "b0c3d264_119a3bba",
+      "range": {
+        "startLine": 84,
+        "startChar": 30,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "da336c727c5920a7bbf7ce3de19c3bcffc64cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "157e3733_af3adc2a",
         "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
         "patchSetId": 4
@@ -117,6 +207,30 @@
       "writtenOn": "2021-02-09T06:16:16Z",
       "side": 1,
       "message": "missing the rest of the comment?",
+      "range": {
+        "startLine": 102,
+        "startChar": 29,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "da336c727c5920a7bbf7ce3de19c3bcffc64cbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "193219b8_249b51fd",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/crostini_lifecycle_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-09T11:09:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "157e3733_af3adc2a",
       "range": {
         "startLine": 102,
         "startChar": 29,
