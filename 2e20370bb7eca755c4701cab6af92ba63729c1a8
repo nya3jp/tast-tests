@@ -16,6 +16,29 @@
       "message": "PTAL~!",
       "revId": "2e20370bb7eca755c4701cab6af92ba63729c1a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06cb0814_58d4dbb4",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-09T16:34:12Z",
+      "side": 1,
+      "message": "nit: could you add a brief comment referring browser_manager.cc?",
+      "range": {
+        "startLine": 154,
+        "startChar": 91,
+        "endLine": 154,
+        "endChar": 97
+      },
+      "revId": "2e20370bb7eca755c4701cab6af92ba63729c1a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
