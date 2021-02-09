@@ -178,8 +178,7 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 		s.Fatal("Failed to prepare extensions: ", err)
 	}
 	extList := strings.Join(extDirs, ",")
-	extensionArgs := extensionArgs(chrome.TestExtensionID, extList)
-	f.opts = append(f.opts, chrome.ExtraArgs("--lacros-chrome-additional-args="+strings.Join(extensionArgs, "####")))
+	f.opts = append(f.opts, chrome.LacrosExtraArgs(extensionArgs(chrome.TestExtensionID, extList)...))
 
 	// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
 	// lacros-chrome instead of always downloading from a gcs location.

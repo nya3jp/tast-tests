@@ -184,6 +184,11 @@ func ExtraArgs(args ...string) Option {
 	return func(cfg *config.Config) { cfg.ExtraArgs = append(cfg.ExtraArgs, args...) }
 }
 
+// LacrosExtraArgs returns an Option that can be passed to New to append additional arguments to Lacros Chrome's command line.
+func LacrosExtraArgs(args ...string) Option {
+	return func(cfg *config.Config) { cfg.LacrosExtraArgs = append(cfg.LacrosExtraArgs, args...) }
+}
+
 // EnableFeatures returns an Option that can be passed to New to enable specific features in Chrome.
 func EnableFeatures(features ...string) Option {
 	return func(cfg *config.Config) { cfg.EnableFeatures = append(cfg.EnableFeatures, features...) }
