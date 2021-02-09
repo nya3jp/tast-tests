@@ -35,13 +35,13 @@ func init() {
 		SoftwareDeps: []string{"crossystem"},
 		// TODO(b/155425293): return group:mainline and informational attributes
 		// when the test is fixed.
-		Attr: []string{},
+		Attr: []string{"group:firmware"},
 		Params: []testing.Param{{
 			Name: "normal",
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeNormal,
 			},
-			ExtraAttr: []string{"group:firmware", "firmware_smoke"},
+			ExtraAttr: []string{"firmware_smoke"},
 		}, {
 			Name: "normal_warm",
 			Val: bootModeTestParams{
@@ -49,7 +49,7 @@ func init() {
 				resetAfterBoot: true,
 				resetType:      firmware.WarmReset,
 			},
-			ExtraAttr: []string{"group:firmware", "firmware_smoke"},
+			ExtraAttr: []string{"firmware_smoke"},
 		}, {
 			Name: "normal_cold",
 			Val: bootModeTestParams{
@@ -57,12 +57,13 @@ func init() {
 				resetAfterBoot: true,
 				resetType:      firmware.ColdReset,
 			},
-			ExtraAttr: []string{"group:firmware", "firmware_smoke"},
+			ExtraAttr: []string{"firmware_smoke"},
 		}, {
 			Name: "rec",
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeRecovery,
 			},
+			ExtraAttr: []string{"firmware_experimental"},
 		}, {
 			Name: "rec_warm",
 			Val: bootModeTestParams{
@@ -82,6 +83,7 @@ func init() {
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeDev,
 			},
+			ExtraAttr: []string{"firmware_experimental"},
 		}, {
 			Name: "dev_warm",
 			Val: bootModeTestParams{
