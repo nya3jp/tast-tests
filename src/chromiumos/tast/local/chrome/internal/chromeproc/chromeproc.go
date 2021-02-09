@@ -92,17 +92,18 @@ func GetRootPID() (int, error) {
 	return -1, errors.New("root not found")
 }
 
-// getProcesses returns Chrome processes with the --type=${t} flag.
-func getProcesses(t string) ([]process.Process, error) {
+// getProcesses returns a list of Chrome processes with
+// the |flag| passed to them.
+func getProcesses(flag string) ([]process.Process, error) {
 	ps, err := process.Processes()
 	if err != nil {
 		return nil, err
 	}
 
 	// Wrap by whitespaces. Please see the comment below.
-	flg := " --type=" + t + " "
-	// Or accept the --type= flag on the end of the command line.
-	endFlg := " --type=" + t
+	flg := " " + flag + " "
+	// Or accept the flag on the end of the command line.
+	endFlg := " " + flag
 	var ret []process.Process
 	for _, proc := range ps {
 		if exe, err := proc.Exe(); err != nil || exe != ExecPath {
@@ -129,22 +130,32 @@ func getProcesses(t string) ([]process.Process, error) {
 	return ret, nil
 }
 
+// getProcessesWithType returns Chrome processes with the --type=${t} flag.
+func getProcessesWithType(t string) ([]process.Process, error) {
+	return getProcesses("--type=" + t)
+}
+
 // GetPluginProcesses returns Chrome plugin processes.
 func GetPluginProcesses() ([]process.Process, error) {
-	return getProcesses("plugin")
+	return getProcessesWithType("plugin")
 }
 
 // GetRendererProcesses returns Chrome renderer processes.
 func GetRendererProcesses() ([]process.Process, error) {
-	return getProcesses("renderer")
+	return getProcessesWithType("renderer")
 }
 
 // GetGPUProcesses returns Chrome gpu-process processes.
 func GetGPUProcesses() ([]process.Process, error) {
-	return getProcesses("gpu-process")
+	return getProcessesWithType("gpu-process")
 }
 
 // GetBrokerProcesses returns Chrome broker processes.
 func GetBrokerProcesses() ([]process.Process, error) {
-	return getProcesses("broker")
+	return getProcessesWithType("broker")
+}
+
+// GetGuestProcesses returns Chrome guest sessions.
+func GetGuestProcesses() ([]process.Process, error) {
+	return getProcesses("--login-user=$guest")
 }
