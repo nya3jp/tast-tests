@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef5e0dc_50bc72a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_downloads_add_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-09T23:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ee66e3b_dbff02cd",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 135,
+        "endChar": 24
+      },
+      "revId": "18bdd4dd3106e407f7dca564f3c58d1e8617dbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62b5d9cf_cb86146e",
@@ -49,6 +73,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b63253f3_e2aae3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_cancel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-09T23:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62b5d9cf_cb86146e",
+      "range": {
+        "startLine": 124,
+        "startChar": 52,
+        "endLine": 124,
+        "endChar": 56
+      },
+      "revId": "18bdd4dd3106e407f7dca564f3c58d1e8617dbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "aa93ec71_817493f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_toast.go",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-09T06:34:08Z",
       "side": 1,
       "message": "Not important, but might be nice to split this into multiple actions now for readability.",
+      "range": {
+        "startLine": 123,
+        "startChar": 16,
+        "endLine": 123,
+        "endChar": 30
+      },
+      "revId": "18bdd4dd3106e407f7dca564f3c58d1e8617dbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ae4a13_65b296d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_files_toast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-09T23:28:43Z",
+      "side": 1,
+      "message": "ShareMyFilesOK() was here before.",
+      "parentUuid": "aa93ec71_817493f9",
       "range": {
         "startLine": 123,
         "startChar": 16,
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab69c82_59f35f1d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-09T23:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28db1404_6b5fee1b",
+      "range": {
+        "startLine": 284,
+        "startChar": 19,
+        "endLine": 284,
+        "endChar": 28
+      },
+      "revId": "18bdd4dd3106e407f7dca564f3c58d1e8617dbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08d6d520_4fca7e25",
@@ -130,6 +226,30 @@
       "writtenOn": "2021-02-09T18:06:43Z",
       "side": 1,
       "message": "I would write this in terms of gone instead of exists.\n\nThey have slightly different semantics when it comes to NodeTooGeneric errors.\nExists says a node does not exist if it gets a NodeTooGeneric error because it can not find an exact match.\nGone says that a node might still exist if it gets a NodeTooGeneric error.",
+      "range": {
+        "startLine": 287,
+        "startChar": 16,
+        "endLine": 287,
+        "endChar": 22
+      },
+      "revId": "18bdd4dd3106e407f7dca564f3c58d1e8617dbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f4769e3_20329762",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-09T23:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08d6d520_4fca7e25",
       "range": {
         "startLine": 287,
         "startChar": 16,
