@@ -86,6 +86,24 @@
       "parentUuid": "7c2fd5a6_3ae735c6",
       "revId": "bb5537370079dfc644b268c3f8d339e2f7316876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "919883d8_2efbd926",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T01:31:54Z",
+      "side": 1,
+      "message": "The test just calls chrome.New(GuestLogin). So I agree with Jorge that this test scenario itself is not directly related to the failures. I guess either the chrome support library or Chrome itself got a bug. Let us discuss in crbug.com/1175989.",
+      "parentUuid": "673085ce_384aba8b",
+      "revId": "bb5537370079dfc644b268c3f8d339e2f7316876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
