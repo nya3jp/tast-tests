@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/android"
 	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/android/ui"
+	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
@@ -28,7 +29,7 @@ import (
 const DefaultScreenTimeout = 10 * time.Minute
 
 // CrOSSetup enables Chrome OS Nearby Share and configures its settings through OS Settings. This allows tests to bypass onboarding.
-// If deviceName is empty, the device display name will not be set and the default will be used.
+// If deviceName is empty, the device display name will not be set and the default will be used. Also enables verbose bluetooth logging.
 func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, dataUsage nearbyshare.DataUsage, visibility nearbyshare.Visibility, deviceName string) error {
 	settings, err := ossettings.Launch(ctx, tconn)
 	if err != nil {
@@ -77,6 +78,12 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 			return errors.Errorf(baseError, res, "unexpected value")
 		}
 	}
+
+	// Enable verbose bluetooth logging.
+	if err := bluetooth.SetDebugLogLevels(ctx, 1, 1, 1, 1); err != nil {
+		return errors.Wrap(err, "failed to enable verbose bluetooth logging")
+	}
+
 	return nil
 }
 
