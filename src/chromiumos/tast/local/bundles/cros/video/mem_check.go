@@ -104,9 +104,10 @@ func init() {
 // memory leaks by comparing its usage before, during and after.
 func MemCheck(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(memCheckParams)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	testPlay := func() error {
-		return play.TestPlay(ctx, s, s.FixtValue().(*chrome.Chrome), testOpt.fileName, testOpt.videoType, play.VerifyHWAcceleratorUsed)
+		return play.TestPlay(ctx, s, cr, cr, testOpt.fileName, testOpt.videoType, play.VerifyHWAcceleratorUsed)
 	}
 
 	backend, err := graphics.GetBackend()

@@ -87,11 +87,11 @@ func DRMDataFiles() []string {
 
 // loadPage opens a new tab to load the specified webpage.
 // Note that if err != nil, conn is nil.
-func loadPage(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn, error) {
+func loadPage(ctx context.Context, cs ash.ConnSource, url string) (*chrome.Conn, error) {
 	ctx, st := timing.Start(ctx, "load_page")
 	defer st.End()
 
-	conn, err := cr.NewConn(ctx, url)
+	conn, err := cs.NewConn(ctx, url)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to open %v", url)
 	}
@@ -101,11 +101,11 @@ func loadPage(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn,
 // playVideo invokes loadVideo(), plays a normal video in video.html, and checks if it has progress.
 // videoFile is the file name which is played there.
 // url is the URL of the video playback testing webpage.
-func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) (bool, error) {
+func playVideo(ctx context.Context, cs ash.ConnSource, videoFile, url string) (bool, error) {
 	ctx, st := timing.Start(ctx, "play_video")
 	defer st.End()
 
-	conn, err := loadPage(ctx, cr, url)
+	conn, err := loadPage(ctx, cs, url)
 	if err != nil {
 		return false, err
 	}
@@ -128,11 +128,11 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) (b
 // playMSEVideo plays an MSE video stream via Shaka player, and checks its play progress.
 // mpdFile is the name of MPD file for the video stream.
 // url is the URL of the shaka player webpage.
-func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, url string) (bool, error) {
+func playMSEVideo(ctx context.Context, cs ash.ConnSource, mpdFile, url string) (bool, error) {
 	ctx, st := timing.Start(ctx, "play_mse_video")
 	defer st.End()
 
-	conn, err := loadPage(ctx, cr, url)
+	conn, err := loadPage(ctx, cs, url)
 	if err != nil {
 		return false, err
 	}
@@ -155,13 +155,13 @@ func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, url string) (
 // playDRMVideo plays a DRM-protected MSE video stream via Shaka player, and
 // checks its play progress. After it's done, it goes full screen and takes a
 // screenshot and verifies the contents are all black.
-// mpdFile is the name of MPD file for the video stream.
+// mpdFile is the name of MPD file for the video stream.cs ash.ConnSource,
 // url is the URL of the shaka player webpage.
-func playDRMVideo(ctx context.Context, s *testing.State, cr *chrome.Chrome, mpdFile, url string) (bool, error) {
+func playDRMVideo(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrome.Chrome, mpdFile, url string) (bool, error) {
 	ctx, st := timing.Start(ctx, "play_drm_video")
 	defer st.End()
 
-	conn, err := loadPage(ctx, cr, url)
+	conn, err := loadPage(ctx, cs, url)
 	if err != nil {
 		return false, err
 	}
@@ -248,12 +248,12 @@ func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks int) e
 // seeking did not succeed for some reason.
 // videoFile is the file name which is played and seeked there.
 // baseURL is the base URL which serves video playback testing webpage.
-func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL string, numSeeks int) error {
+func playSeekVideo(ctx context.Context, cs ash.ConnSource, videoFile, baseURL string, numSeeks int) error {
 	ctx, st := timing.Start(ctx, "play_seek_video")
 	defer st.End()
 
 	// Establish a connection to a video play page
-	conn, err := loadPage(ctx, cr, baseURL+"/video.html")
+	conn, err := loadPage(ctx, cs, baseURL+"/video.html")
 	if err != nil {
 		return err
 	}
@@ -313,7 +313,7 @@ func isVideoPadding(c color.Color) bool {
 // videotype represents a type of a given video. If it is MSEVideo, filename is a name
 // of MPD file.
 // If mode is VerifyHWAcceleratorUsed, this function also checks if hardware accelerator was used.
-func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+func TestPlay(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrome.Chrome,
 	filename string, videotype VideoType, mode VerifyHWAcceleratorMode) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
@@ -335,13 +335,13 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	switch videotype {
 	case NormalVideo:
 		url = server.URL + "/video.html"
-		usesPlatformVideoDecoder, playErr = playVideo(ctx, cr, filename, url)
+		usesPlatformVideoDecoder, playErr = playVideo(ctx, cs, filename, url)
 	case MSEVideo:
 		url = server.URL + "/shaka.html"
-		usesPlatformVideoDecoder, playErr = playMSEVideo(ctx, cr, filename, url)
+		usesPlatformVideoDecoder, playErr = playMSEVideo(ctx, cs, filename, url)
 	case DRMVideo:
 		url = server.URL + "/shaka_drm.html"
-		isHwDrmPipeline, playErr = playDRMVideo(ctx, s, cr, filename, url)
+		isHwDrmPipeline, playErr = playDRMVideo(ctx, s, cs, cr, filename, url)
 	}
 	if playErr != nil {
 		return errors.Wrapf(err, "failed to play %v (%v): %v", filename, url, playErr)
