@@ -71,6 +71,15 @@ func TestParseEvent(t *testing.T) {
 				Message:   "connected to 3c:28:6d:c4:79:fc",
 			},
 		},
+		{
+			input: "1612833375.472617: wlan0: channel switch started (count=5) freq=5180 width=\"20 MHz\" type=\"HT20\" freq1=5180",
+			expected: &Event{
+				Type:      EventTypeChanSwitch,
+				Timestamp: time.Unix(1612833375, 472617000),
+				Interface: "wlan0",
+				Message:   "channel switch started (count=5) freq=5180 width=\"20 MHz\" type=\"HT20\" freq1=5180",
+			},
+		},
 	}
 
 	// We may have float parsing error, so construct our own compare.
