@@ -1261,16 +1261,18 @@ func rcMaxRestoreTestHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.
 		return err
 	}
 
-	// Get window info after restoring, this should be equal to winInfoBeforeMax.
-	winInfoAfterMax, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return err
-	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// Get window info after restoring, this should be equal to winInfoBeforeMax.
+		winInfoAfterMax, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
 
-	// Compare BoundsInRoot of the activity before and after switching to maximize and restore button on caption bar.
-	if winInfoBeforeMax.BoundsInRoot != winInfoAfterMax.BoundsInRoot {
-		return errors.Errorf("failed to validate window bounds after restoring from maximize state, got: %q, want: %q", winInfoAfterMax.BoundsInRoot, winInfoBeforeMax.BoundsInRoot)
-	}
+		// Compare BoundsInRoot of the activity before and after switching to maximize and restore button on caption bar.
+		if winInfoBeforeMax.BoundsInRoot != winInfoAfterMax.BoundsInRoot {
+			return errors.Errorf("failed to validate window bounds after restoring from maximize state: got %q; want %q", winInfoAfterMax.BoundsInRoot, winInfoBeforeMax.BoundsInRoot)
+		}
 
-	return nil
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
