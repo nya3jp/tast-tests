@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d8bb1af_92adf8bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-02-09T00:36:46Z",
+      "side": 1,
+      "message": "Nearby JS LGTM, left a comment in https://crbug.com/1173190 if you want to pursue an api only solution.",
+      "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b89ce4a_e48ab19e",
@@ -105,6 +122,29 @@
         "startChar": 25,
         "endLine": 82,
         "endChar": 27
+      },
+      "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bf3eb78_a48a091a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-02-09T00:36:46Z",
+      "side": 1,
+      "message": "You could replace this with just showHighVisibilityPage_() or use the raw api nearby_share.getReceiveManager().registerForegroundReceiveSurface(). I left a comment in https://crbug.com/1173190 if you want add your own observer let me know and I can help with that.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 87
       },
       "revId": "cf59d26cd54febf2f9854712e9eea457c386106b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
