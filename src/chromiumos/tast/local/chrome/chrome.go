@@ -217,7 +217,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 
 	sess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
+		return nil, errors.Wrapf(err, "failed to establish connection to Chrome Debugging Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
 	}
 	defer func() {
 		if retErr != nil {
