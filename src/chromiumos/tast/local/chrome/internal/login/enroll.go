@@ -152,7 +152,8 @@ func enterpriseOOBELogin(ctx context.Context, cfg *config.Config, sess *driver.S
 
 	testing.ContextLog(ctx, "Performing login after enrollment")
 	// Now login like "normal".
-	if err := conn.Call(ctx, nil, "Oobe.loginForTesting", cfg.User, cfg.Pass, cfg.GAIAID, false); err != nil {
+	if err := conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', false)",
+		cfg.User, cfg.Pass, cfg.GAIAID)); err != nil {
 		return err
 	}
 
