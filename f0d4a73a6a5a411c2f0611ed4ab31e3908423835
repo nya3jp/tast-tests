@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58885cc1_07187d3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-09T01:38:46Z",
+      "side": 1,
+      "message": "Sounds good, in general they shouldn\u0027t fail. I haven\u0027t observed any case of flakiness so far, so I\u0027ll go ahead and return the errors/fail the test if something goes wrong. That should be better in the long run, since otherwise we won\u0027t spot problems with logging until we\u0027re actually interested in checking them.",
+      "parentUuid": "2b12c178_5561a330",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 17
+      },
+      "revId": "f0d4a73a6a5a411c2f0611ed4ab31e3908423835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bedbade_fa236e3a",
