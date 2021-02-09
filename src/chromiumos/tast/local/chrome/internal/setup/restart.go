@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/internal/chromeproc"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/extension"
-	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -37,11 +36,6 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	defer st.End()
 
 	if err := restartSession(ctx, cfg); err != nil {
-		// Timeout is often caused by TPM slowness. Save minidumps of related processes.
-		if dir, ok := testing.ContextOutDir(ctx); ok {
-			minidump.SaveWithoutCrash(ctx, dir,
-				minidump.MatchByName("chapsd", "cryptohome", "cryptohomed", "session_manager", "tcsd"))
-		}
 		return err
 	}
 
