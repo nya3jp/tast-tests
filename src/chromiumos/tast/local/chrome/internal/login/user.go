@@ -6,6 +6,7 @@ package login
 
 import (
 	"context"
+	"fmt"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/config"
@@ -31,7 +32,8 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 
 	switch cfg.LoginMode {
 	case config.FakeLogin:
-		if err := conn.Call(ctx, nil, "Oobe.loginForTesting", cfg.User, cfg.Pass, cfg.GAIAID, cfg.Enroll); err != nil {
+		if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', %t)",
+			cfg.User, cfg.Pass, cfg.GAIAID, cfg.Enroll)); err != nil {
 			return err
 		}
 	case config.GAIALogin:
