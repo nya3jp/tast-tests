@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2eb23c46_e465d895",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-09T02:56:30Z",
+      "side": 1,
+      "message": "The ultimate goal of arc.DataMigration test is to verify (all) apps are working with real gaia account after P-\u003eR upgrade. Instead of having it test multiple different apps, we are currently having it test the most important app, which is PlayStore.\n\nI\u0027ll try making a separate CL for switching accounts and see if it makes things better.",
+      "parentUuid": "95cce8be_f8c3d702",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "54b0d8c8b328fdadfb9d1aeb88d04ab4c956932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b513c484_e0cfae63",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2021-02-08T17:36:52Z",
       "side": 1,
       "message": "LGTM, just some minor concerns around potential play store rate limiting.",
+      "revId": "54b0d8c8b328fdadfb9d1aeb88d04ab4c956932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79a52dfe_06d15680",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-09T02:56:30Z",
+      "side": 1,
+      "message": "Thanks for the comment!",
+      "parentUuid": "b513c484_e0cfae63",
       "revId": "54b0d8c8b328fdadfb9d1aeb88d04ab4c956932a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2021-02-08T17:36:52Z",
       "side": 1,
       "message": "I am a little concerned about this change because I think it might lead to more regularly hitting play store rate limiting. IIRC, the retry button generally(though not always) showed up when play store was rate limiting us.\n\nIf you continue with this change, can you also change the account that arc.DataMigration uses to decouple it from the arc.PlayStore test?",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 3
+      },
+      "revId": "54b0d8c8b328fdadfb9d1aeb88d04ab4c956932a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b723623_90f76689",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-09T02:56:30Z",
+      "side": 1,
+      "message": "ok, I\u0027ll try making a separate CL for switching accounts and see if it makes things better.\n\nI\u0027ll also monitor PlayStore test and revert this CL if the test becomes more flaky by this change.",
+      "parentUuid": "3ea30a02_137446b9",
       "range": {
         "startLine": 92,
         "startChar": 2,
