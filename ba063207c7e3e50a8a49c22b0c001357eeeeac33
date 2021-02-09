@@ -16,6 +16,23 @@
       "message": "Thanks again, Pavol!",
       "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a72da6_8a7d91e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-09T11:54:51Z",
+      "side": 1,
+      "message": "Hi tast-owners,\n\nPlease take a look at the CL. Happy to provide additional details about the CrOS daemons tlsdate and system-proxy. \n\nThanks!",
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
