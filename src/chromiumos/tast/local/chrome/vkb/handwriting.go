@@ -69,7 +69,7 @@ func (p point) toCoordsPoint() coords.Point {
 }
 
 // linearInterpolation calculates the new point's x and y values using linear interpolation.
-func linearInterpolation(p1 point, p2 point, pointsInBetween int, i int) point {
+func linearInterpolation(p1, p2 point, pointsInBetween, i int) point {
 	t := float64(i) / float64(pointsInBetween+1)
 	return point{x: (1-t)*p1.x + t*p2.x, y: (1-t)*p1.y + t*p2.y}
 }
@@ -79,7 +79,7 @@ type stroke struct {
 	points []point
 }
 
-// toStroke creates a stroke from the path data.
+// newStroke creates a stroke from the path data.
 func newStroke(path *path, n int) *stroke {
 	s := &stroke{}
 
@@ -224,9 +224,9 @@ func drawHandwriting(ctx context.Context, tconn *chrome.TestConn, sg *strokeGrou
 	for _, s := range sg.strokes {
 		for i, p := range s.points {
 			// Mouse will be moved to each of the points to draw the stroke.
-			// A stroke can have up to 100 points, if a stroke is long enough and uses all 100 points to represent
-			// the stroke, it will take 3 seconds (30ms * 100) to draw that stroke.
-			if err := mouse.Move(ctx, tconn, p.toCoordsPoint(), 30*time.Millisecond); err != nil {
+			// A stroke can have up to 50 points, if a stroke is long enough and uses all 50 points to represent
+			// the stroke, it will take 2 seconds (40ms * 50) to draw that stroke.
+			if err := mouse.Move(ctx, tconn, p.toCoordsPoint(), 40*time.Millisecond); err != nil {
 				return errors.Wrap(err, "failed to move mouse")
 			}
 			// Left mouse button should be pressed on only the first point of every stroke to start the stroke.
@@ -249,7 +249,7 @@ func drawHandwriting(ctx context.Context, tconn *chrome.TestConn, sg *strokeGrou
 // populates the data into the struct, and draws the strokes into the handwriting input.
 func DrawHandwritingFromFile(ctx context.Context, tconn *chrome.TestConn, filePath string) error {
 	// Number of points we would like per stroke.
-	const n = 100
+	const n = 50
 
 	// Read and unmarshal the SVG file into the corresponding structs.
 	svgFile, err := readSvg(filePath)
@@ -264,6 +264,12 @@ func DrawHandwritingFromFile(ctx context.Context, tconn *chrome.TestConn, filePa
 	canvas, err := findHandwritingCanvas(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to find handwriting canvas")
+	}
+
+	// TODO(crbug/1175982): Stabilize handwriting input test.
+	// Sleep to wait for the engine to become ready as some slower boards take a longer time.
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to sleep")
 	}
 
 	// Scale the handwriting data in the structs to fit the handwriting input.
