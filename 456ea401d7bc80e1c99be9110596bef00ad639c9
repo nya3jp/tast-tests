@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e5baea_22c7c88e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T07:07:23Z",
+      "side": 1,
+      "message": "Please keep it a constant; see my another comment below.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "456ea401d7bc80e1c99be9110596bef00ad639c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2f6d26_7960572a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T07:07:23Z",
+      "side": 1,
+      "message": "Can you name those return values? It\u0027s difficult to tell which is which, especially when there are values with the same type.",
+      "range": {
+        "startLine": 274,
+        "startChar": 49,
+        "endLine": 274,
+        "endChar": 67
+      },
+      "revId": "456ea401d7bc80e1c99be9110596bef00ad639c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8408ca92_bb4ae508",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T07:07:23Z",
+      "side": 1,
+      "message": "style: aList",
+      "range": {
+        "startLine": 275,
+        "startChar": 18,
+        "endLine": 275,
+        "endChar": 24
+      },
+      "revId": "456ea401d7bc80e1c99be9110596bef00ad639c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65774c87_6346fff1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-09T07:07:23Z",
+      "side": 1,
+      "message": "It\u0027s very confusing to modify global variables!\n\nInstead let us return a script content from this function.",
+      "range": {
+        "startLine": 300,
+        "startChar": 3,
+        "endLine": 300,
+        "endChar": 48
+      },
+      "revId": "456ea401d7bc80e1c99be9110596bef00ad639c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
