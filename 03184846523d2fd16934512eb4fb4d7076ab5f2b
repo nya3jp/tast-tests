@@ -46,6 +46,30 @@
       },
       "revId": "03184846523d2fd16934512eb4fb4d7076ab5f2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f412d82_effcea90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-09T22:40:56Z",
+      "side": 1,
+      "message": "Ah thanks for clarifying. Probably better to individually classify the fake variant as critical and the real variant as informational until you have sufficient data to promote. i.e.\n```\nParams: []testing.Param{\n    {\n        Name:              \"real\",\n        Val:               manateeTestCase{useSystemServices: true},\n        ExtraSoftwareDeps: []string{\"manatee\"},\n        ExtraAttr:         []string{\"informational\"},\n    },\n    {\n        Name:              \"fake\",\n        Val:               manateeTestCase{useSystemServices: false},\n        ExtraSoftwareDeps: []string{\"sirenia\"},\n    },\n},\n```\nThey will still run from the start they just won\u0027t be critical. If they are critical from the start and they are failing they will block CQ.",
+      "parentUuid": "25f15be0_3d5fa7ea",
+      "range": {
+        "startLine": 53,
+        "startChar": 23,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "03184846523d2fd16934512eb4fb4d7076ab5f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
