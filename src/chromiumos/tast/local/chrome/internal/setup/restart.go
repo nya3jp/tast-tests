@@ -144,6 +144,11 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		args = append(args, "--disable-features="+strings.Join(cfg.DisableFeatures, ","))
 	}
 
+	// Lacros Chrome additional arguments are delimited by '####'. See browser_manager.cc in Chrome source.
+	if len(cfg.LacrosExtraArgs) != 0 {
+		args = append(args, "--lacros-chrome-additional-args="+strings.Join(cfg.LacrosExtraArgs, "####"))
+	}
+
 	args = append(args, cfg.ExtraArgs...)
 	var envVars []string
 	if cfg.BreakpadTestMode {

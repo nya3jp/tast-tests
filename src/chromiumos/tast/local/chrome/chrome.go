@@ -122,6 +122,9 @@ type Chrome struct {
 // User returns the username that was used to log in to Chrome.
 func (c *Chrome) User() string { return c.cfg.User }
 
+// LacrosExtraArgs returns the extra arguments that should be added to the Lacros command line.
+func (c *Chrome) LacrosExtraArgs() []string { return c.cfg.LacrosExtraArgs }
+
 // DeprecatedExtDirs returns the directories holding the test extensions.
 // For reused Chrome session, deprecatedExtDirs is not set and this method will return nil.
 //
