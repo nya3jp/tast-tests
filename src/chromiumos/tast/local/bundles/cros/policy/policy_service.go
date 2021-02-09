@@ -18,8 +18,11 @@ import (
 
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/network"
+	"chromiumos/tast/local/network/systemproxy"
 	"chromiumos/tast/local/policyutil/externaldata"
 	ppb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
@@ -40,6 +43,7 @@ func init() {
 type PolicyService struct { // NOLINT
 	s *testing.ServiceState
 
+	arc            *arc.ARC
 	chrome         *chrome.Chrome
 	extensionConns map[string]*chrome.Conn
 	extensionDirs  []string
@@ -127,6 +131,7 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 	opts = append(opts, chrome.Auth(user, "test0000", "gaia-id"))
 	opts = append(opts, chrome.DMSPolicy(fdms.URL))
 	opts = append(opts, chrome.EnterpriseEnroll())
+	opts = append(opts, chrome.ARCEnabled())
 	opts = append(opts, chrome.ExtraArgs(req.ExtraArgs))
 
 	cr, err := chrome.New(ctx, opts...)
@@ -383,4 +388,62 @@ func (c *PolicyService) EvalExpressionInChromeURL(ctx context.Context, req *ppb.
 	}
 
 	return &empty.Empty{}, nil
+}
+
+// CreateArcInstance creates an arc.Arc instance for testing.
+// TODO(acostinas, b/180302242) Move UI automation methods and ARC instance out of the policy service when device policies can be tested in local tast tests.
+func (c *PolicyService) CreateArcInstance(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if c.arc != nil {
+		return nil, errors.New("an ARC instance was already created")
+	}
+
+	td, _ := testing.ContextOutDir(ctx)
+	a, err := arc.New(ctx, td)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start ARC")
+	}
+	c.arc = a
+	return &empty.Empty{}, nil
+}
+
+func (c *PolicyService) VerifyArcAppConnectivity(ctx context.Context, request *ppb.VerifyArcAppConnectivityRequest) (*ppb.VerifyArcAppConnectivityResponse, error) {
+	if c.chrome == nil {
+		return nil, errors.New("Chrome is not available")
+	}
+
+	if c.arc == nil {
+		return nil, errors.New("ARC is not available")
+	}
+	tconn, err := c.chrome.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create test API connection")
+	}
+
+	// Install the app and start the network request.
+	proxy, act, err := network.RunArcConnectivityApp(ctx, c.arc, tconn, request.Url)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed run the app connectivity test")
+	}
+
+	// Authenticate to system-proxy if required.
+	if request.UseSystemProxy {
+		err := systemproxy.DoSystemProxyAuthentication(ctx, tconn, request.ProxyUsername, request.ProxyPassword)
+		if err != nil {
+			// Close the ARC app.
+			act.Close()
+			act.Stop(ctx, tconn)
+			return nil, errors.Wrapf(err, "failed to authenticate to system proxy with username: %s and password %s ", request.ProxyUsername, request.ProxyPassword)
+		}
+	}
+
+	// Get the result of the network connectivity test. Will close the ARC app.
+	result, err := network.GetArcConnectivityAppResult(ctx, c.arc, tconn, act)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the result from the app connectivity test")
+	}
+
+	return &ppb.VerifyArcAppConnectivityResponse{
+		Response: result,
+		Proxy:    proxy,
+	}, nil
 }
