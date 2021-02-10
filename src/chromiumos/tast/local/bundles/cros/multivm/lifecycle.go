@@ -6,14 +6,17 @@ package multivm
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/memoryuser"
 	"chromiumos/tast/local/multivm"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -76,6 +79,64 @@ func init() {
 	})
 }
 
+type suspendArcvmTask struct {
+}
+
+func arcvmCommand(ctx context.Context, command string) error {
+	arcvmSockets, err := filepath.Glob("/run/vm/*/arcvm.sock")
+	if err != nil {
+		return errors.Wrap(err, "failed to find arcvm sockets")
+	}
+	if len(arcvmSockets) != 1 {
+		return errors.Errorf("expected 1 arcvm socket, got %d", len(arcvmSockets))
+	}
+	arcvmSocket := arcvmSockets[0]
+	if err := testexec.CommandContext(ctx, "crosvm", command, arcvmSocket).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to suspend crosvm at socket %s", arcvmSocket)
+	}
+	return nil
+}
+
+func suspendArcvm(ctx context.Context) error {
+	testing.ContextLog(ctx, "Suspending ARCVM")
+	if err := arcvmCommand(ctx, "suspend"); err != nil {
+		return err
+	}
+	if err := testing.Sleep(ctx, time.Second*10); err != nil {
+		return errors.Wrap(err, "failed to sleep")
+	}
+	return nil
+}
+
+func resumeArcvm(ctx context.Context) error {
+	testing.ContextLog(ctx, "Resuming ARCVM")
+	if err := arcvmCommand(ctx, "resume"); err != nil {
+		return err
+	}
+	if err := testing.Sleep(ctx, time.Second*10); err != nil {
+		return errors.Wrap(err, "failed to sleep")
+	}
+	return nil
+}
+
+func (t *suspendArcvmTask) Run(ctx context.Context, _ *memoryuser.TestEnv) error {
+	return suspendArcvm(ctx)
+}
+
+// Close does nothing.
+func (t *suspendArcvmTask) Close(_ context.Context, _ *memoryuser.TestEnv) {
+}
+
+// String gives MemoryUser a friendly string for logging.
+func (t *suspendArcvmTask) String() string {
+	return "Suspend ARCVM"
+}
+
+// NeedVM is false because we do not need a new Crostini VM spun up.
+func (t *suspendArcvmTask) NeedVM() bool {
+	return false
+}
+
 func Lifecycle(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(*multivm.PreData)
 	param := s.Param().(*lifecycleParam)
@@ -135,6 +196,9 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 			procsAliveTasks = append(procsAliveTasks, task)
 			tasks = append(tasks, task)
 		}
+		if preARC != nil && len(tasks) == 30 {
+			tasks = append(tasks, &suspendArcvmTask{})
+		}
 		if len(tasks) == 0 {
 			s.Fatal("No MemoryTasks created")
 		}
@@ -175,6 +239,12 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	}
 	if err := memoryuser.RunTest(ctx, s.OutDir(), tasks, rp); err != nil {
 		s.Fatal("RunTest failed: ", err)
+	}
+
+	if preARC != nil {
+		if err := resumeArcvm(ctx); err != nil {
+			s.Fatal("Failed to resume arcvm: ", err)
+		}
 	}
 
 	if err := multivm.MemoryMetrics(ctx, pre, p, s.OutDir(), ""); err != nil {
