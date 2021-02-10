@@ -63,6 +63,30 @@
       },
       "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bde59ac_add4b0cb",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-02-10T04:52:20Z",
+      "side": 1,
+      "message": "It seems like code obfuscation is enabled for the IME extension. The method name is randomized and I\u0027m not sure there is a reliable way to get the correct name.",
+      "parentUuid": "0e4f5d4a_9ddeec20",
+      "range": {
+        "startLine": 222,
+        "startChar": 5,
+        "endLine": 222,
+        "endChar": 20
+      },
+      "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
