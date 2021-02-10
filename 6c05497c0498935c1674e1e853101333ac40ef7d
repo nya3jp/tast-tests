@@ -16,6 +16,23 @@
       "message": "Green stainless told me about another test that\u0027s failing because we removed that sysfs path when moving to \n\nmultivm.Lifecycle.arc_host should get us coverage until we figure out we need a replacement.",
       "revId": "6c05497c0498935c1674e1e853101333ac40ef7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90459794_976a4bbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-02-10T04:22:18Z",
+      "side": 1,
+      "message": "Super nit:\n// ExtraAttr\n  ^ Insert space here?",
+      "revId": "6c05497c0498935c1674e1e853101333ac40ef7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
