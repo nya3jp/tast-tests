@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f43dd2d_050a44f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-10T01:27:19Z",
+      "side": 1,
+      "message": "Instead of making my test close the tabs it created, just update Chrome.ResetState to close all windows instead of debug targets, so that it includes discarded tabs.",
+      "revId": "e0ef89cdf8095fbe2181a0bb19baa29cdef4fb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
