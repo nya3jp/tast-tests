@@ -305,49 +305,6 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "reset_chrome")
 	defer st.End()
 
-	// Try to close all "normal" pages and apps.
-	targetFilter := func(t *Target) bool {
-		return t.Type == "page" || t.Type == "app"
-	}
-	targets, err := c.FindTargets(ctx, targetFilter)
-	if err != nil {
-		return errors.Wrap(err, "failed to get targets")
-	}
-	var closingTargets []*Target
-	if len(targets) > 0 {
-		testing.ContextLogf(ctx, "Closing %d target(s)", len(targets))
-		for _, t := range targets {
-			if err := c.CloseTarget(ctx, t.TargetID); err != nil {
-				testing.ContextLogf(ctx, "Failed to close %v: %v", t.URL, err)
-			} else {
-				// Record all targets that have promised to close
-				closingTargets = append(closingTargets, t)
-			}
-		}
-	}
-	// Wait for the targets to finish closing
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		targets, err := c.FindTargets(ctx, targetFilter)
-		if err != nil {
-			return errors.Wrap(err, "failed to get targets")
-		}
-		var stillClosingCount int
-		for _, ct := range closingTargets {
-			for _, t := range targets {
-				if ct.TargetID == t.TargetID {
-					stillClosingCount++
-					break
-				}
-			}
-		}
-		if stillClosingCount > 0 {
-			return errors.Errorf("%d target(s) still open", stillClosingCount)
-		}
-		return nil
-	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: time.Minute}); err != nil {
-		testing.ContextLog(ctx, "Not all targets finished closing: ", err)
-	}
-
 	// If the test case started the tracing but somehow StopTracing isn't called,
 	// the tracing should be stopped in ResetState.
 	if c.sess.TracingStarted() {
@@ -366,6 +323,15 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	tconn, err := c.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get test API connection")
+	}
+
+	// Close all windows.
+	if err := tconn.Call(ctx, nil, `async () => {
+		const getAll = tast.promisify(chrome.windows.getAll);
+		const remove = tast.promisify(chrome.windows.remove);
+		await Promise.all((await getAll()).map(w => remove(w.id)));
+	}`); err != nil {
+		return errors.Wrap(err, "failed to close all windows")
 	}
 
 	// Free all remote JS objects in the test extension.
