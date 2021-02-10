@@ -8,10 +8,13 @@ import (
 	"context"
 	"time"
 
+	"github.com/godbus/dbus"
+
 	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/cellular"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
 )
@@ -49,11 +52,21 @@ func ShillCellularSimSlots(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create cellular.Helper")
 	}
 
-	// Ensure that a Cellular Service is created for each Modem.SimSlots entry.
-	var foundErr error
+	// Gather Properties for each Modem.SimSlots entry.
+	var simProperties []*dbusutil.Properties
 	for i := 0; i < 2; i++ {
 		simPath := simSlots[i]
-		simProps, err := modem.GetSimProperties(ctx, simPath)
+		p, err := modem.GetSimProperties(ctx, simPath)
+		if err != nil {
+			s.Fatal("Failed to call Sim.GetProperties: ", err)
+		}
+		simProperties = append(simProperties, p)
+	}
+
+	// Ensure that a Cellular Service is created for each SIM.
+	var foundErr error
+	for i := 0; i < 2; i++ {
+		simProps := simProperties[i]
 		if err != nil {
 			s.Fatal("Failed to call Sim.GetProperties: ", err)
 		}
@@ -74,4 +87,42 @@ func ShillCellularSimSlots(ctx context.Context, s *testing.State) {
 	if foundErr != nil {
 		s.Fatal("Error(s) finding Cellular Services: ", foundErr)
 	}
+
+	// Gather Shill Device properties
+	deviceProps, err := helper.Device.GetShillProperties(ctx)
+	if err != nil {
+		s.Fatal("Failed to get Device properties: ", err)
+	}
+
+	// Verify Device.SimSlots.
+	info, err := deviceProps.Get(shillconst.DevicePropertyCellularSIMSlotInfo)
+	if err != nil {
+		s.Fatal("Failed to get Device.CellularSIMSlotInfo property: ", err)
+	}
+	simSlotInfo := info.([]map[string]dbus.Variant)
+	if len(simSlotInfo) != numSlots {
+		s.Fatalf("Incorrect Device.CellularSIMSlotInfo size, got %d, want %d", len(simSlotInfo), numSlots)
+	}
+	for i := 0; i < 2; i++ {
+		simProps := simProperties[i]
+		slotInfo := simSlotInfo[i]
+		if err := compareSimProps(simProps, "SimIdentifier", slotInfo, "ICCID"); err != nil {
+			s.Fatal("ICCID mismatch, err: ", err)
+		}
+		if err := compareSimProps(simProps, "Eid", slotInfo, "EID"); err != nil {
+			s.Fatal("EID mismatch, err: ", err)
+		}
+	}
+}
+
+func compareSimProps(simProps *dbusutil.Properties, simKey string, slotInfo map[string]dbus.Variant, slotKey string) error {
+	simp, err := simProps.GetString(simKey)
+	if err != nil {
+		return errors.Wrapf(err, "missing property: %v", simKey)
+	}
+	slotp := slotInfo[slotKey].Value()
+	if simp != slotp {
+		return errors.Errorf("property mismatch, got: %s, want: %s", slotp, simp)
+	}
+	return nil
 }
