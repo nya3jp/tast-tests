@@ -31,20 +31,25 @@ func ModemmanagerSlots(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to call GetProperties on Modem: ", err)
 	}
+	sim, err := props.GetObjectPath(mmconst.ModemPropertySim)
+	if err != nil {
+		s.Fatal("Missing Sim property: ", err)
+	}
 	simSlots, err := props.GetObjectPaths(mmconst.ModemPropertySimSlots)
 	if err != nil {
-		s.Fatal("Missing SimSlots property: ", err)
+		s.Fatal("Failed to get SimSlots property: ", err)
+	}
+	if len(simSlots) == 0 {
+		s.Log("No SimSlots for device, ending test")
+		return
 	}
 	primary, err := props.GetUint32(mmconst.ModemPropertyPrimarySimSlot)
 	if err != nil {
 		s.Fatal("Missing PrimarySimSlot property: ", err)
 	}
+	s.Log("Primary SIM slot: ", primary)
 	if int(primary) > len(simSlots) {
-		s.Fatalf("Invalid PrimarySimSlot: %d", primary)
-	}
-	sim, err := props.GetObjectPath(mmconst.ModemPropertySim)
-	if err != nil {
-		s.Fatal("Missing Sim property: ", err)
+		s.Fatal("Invalid PrimarySimSlot: ", primary)
 	}
 	if sim != simSlots[primary-1] {
 		s.Fatalf("Sim property mismatch: %s", sim)
