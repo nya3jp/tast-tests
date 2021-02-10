@@ -23,7 +23,7 @@ import (
 const (
 	kmsvncHostPort     = "localhost:5900"
 	kmsvncReadyMessage = "Listening for VNC connections"
-	kmsvncReadyTimeout = 1 * time.Second
+	kmsvncReadyTimeout = 3 * time.Second
 	kmsvncStopTimeout  = 3 * time.Second
 
 	rfbProtocolVersion = "RFB 003.008\n"
@@ -51,19 +51,32 @@ func NewKmsvnc(ctx context.Context) (*Kmsvnc, error) {
 	}
 
 	// Launch a separate goroutine to listen stderr and print as logs.
-	// Also detects when kmsvnc is ready to accept connections.
-	ready := make(chan struct{})
-	go func() {
+	// Once kmsvnc is ready to accept connections, `true` is sent to the |ready| channel.
+	// OTOH, if the scanner receives an EOF before ready i.e. the process exits, `false` is sent to the channel.
+	// TODO(b/177965296): Save logs to separate file.
+	ready := make(chan bool)
+	go func(ready chan<- bool) {
 		scanner := bufio.NewScanner(stderr)
 		for scanner.Scan() {
 			t := scanner.Text()
 			testing.ContextLog(ctx, "kmsvnc: ", t)
 			if ready != nil && strings.Contains(t, kmsvncReadyMessage) {
+				ready <- true
 				close(ready)
 				ready = nil
 			}
 		}
-	}()
+		if err := scanner.Err(); err != nil {
+			testing.ContextLog(ctx, "Error reading kmsvnc stderr: ", scanner.Err())
+			if err := cmd.Kill(); err != nil {
+				testing.ContextLog(ctx, "Failed to kill kmsvnc process: ", err)
+			}
+		}
+		if ready != nil {
+			ready <- false
+			close(ready)
+		}
+	}(ready)
 
 	// Block until kmsvnc is ready, or fail if context timed out / startup took too long.
 	// Make a child context so existing timeouts are taken into account.
@@ -74,13 +87,15 @@ func NewKmsvnc(ctx context.Context) (*Kmsvnc, error) {
 	case <-tctx.Done():
 		if err := cmd.Kill(); err != nil {
 			testing.ContextLog(ctx, "Failed to kill kmsvnc process: ", err)
-		} else {
-			// Cleanup the process without blocking.
-			go cmd.Wait()
 		}
+		go cmd.Wait()
 		return nil, tctx.Err()
-	case <-ready:
-		return &Kmsvnc{cmd, nil}, nil
+	case ok := <-ready:
+		if !ok {
+			go cmd.Wait()
+			return nil, errors.New("kmsvnc process exited unexpectedly, check logs for details")
+		}
+		return &Kmsvnc{cmd: cmd}, nil
 	}
 }
 
