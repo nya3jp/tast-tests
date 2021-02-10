@@ -379,7 +379,7 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	// Switching the VK to floating mode.
-	if err := vkb.SetFloatingMode(ctx, cr, true); err != nil {
+	if err := vkb.SetFloatingMode(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to switch to floating mode: ", err)
 	}
 	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
@@ -388,9 +388,12 @@ func chromeVirtualKeyboardFloatingTest(
 	if err := waitForRelayout(initialBounds); err != nil {
 		s.Fatal("Failed to move back the field by switching to floating mode: ", err)
 	}
+	if err := field.Click(ctx); err != nil {
+		s.Fatal("Failed to click field: ", err)
+	}
 
 	// Switching back to the normal mode
-	if err := vkb.SetFloatingMode(ctx, cr, false); err != nil {
+	if err := vkb.SetFloatingMode(ctx, tconn, false); err != nil {
 		s.Fatal("Failed to switch to dock mode: ", err)
 	}
 	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {

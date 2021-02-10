@@ -7,7 +7,6 @@ package vkb
 
 import (
 	"context"
-	"fmt"
 	"strings"
 	"time"
 
@@ -220,20 +219,18 @@ func TapKeyJS(ctx context.Context, kconn *chrome.Conn, key string) error {
 }
 
 // SetFloatingMode changes the virtual keyboard to floating/dock layout via private javascript function.
-func SetFloatingMode(ctx context.Context, cr *chrome.Chrome, enable bool) error {
-	bconn, err := BackgroundConn(ctx, cr)
-	if err != nil {
-		return errors.Wrap(err, "failed to create IME background connection")
+func SetFloatingMode(ctx context.Context, tconn *chrome.TestConn, enable bool) error {
+	var flipButtonName = "make virtual keyboard movable"
+	if !enable {
+		flipButtonName = "dock virtual keyboard"
 	}
-	defer bconn.Close()
-
-	if err := bconn.WaitForExpr(ctx, fmt.Sprintf("background.inputviewLoader.module$exports$google3$i18n$input$javascript$chos$loader_Loader_prototype$controller.maybeSetFloatingModeEnabled(%t)", enable)); err != nil {
-		if enable {
-			return errors.Wrap(err, "failed to wait for virtual keyboard to be floating mode")
-		}
-		return errors.Wrap(err, "failed to wait for virtual keyboard to be dock mode")
+	params := ui.FindParams{
+		Role:      ui.RoleTypeButton,
+		Name:      flipButtonName,
+		ClassName: "sk icon-key",
 	}
-	return nil
+	opts := testing.PollOptions{Timeout: 2 * time.Second}
+	return ui.StableFindAndClick(ctx, tconn, params, &opts)
 }
 
 // TapKeys simulates tap events in the middle of the specified sequence of keys via touch event.
