@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c14091a_589b37dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-10T21:43:09Z",
+      "side": 1,
+      "message": "Yeah. If the next test starts a new Chrome session it wouldn\u0027t matter. The test it was interfering with was a security test that ran after. That test (security.SELinuxProcesses) doesn\u0027t log in, but also doesn\u0027t expect the combination of logged in + lock screen which caused it to fail. It\u0027s a pretty unlikely corner case but we managed to run into it haha",
+      "parentUuid": "d3402546_6538bece",
+      "range": {
+        "startLine": 88,
+        "startChar": 22,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "9cb3308dcbedd57e1dfea9343ce017206707bf88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef648980_073472ff",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-10T21:29:11Z",
       "side": 1,
       "message": "I would advise returning *ui.FindParams from this function and making it nil here.",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 15
+      },
+      "revId": "9cb3308dcbedd57e1dfea9343ce017206707bf88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de686d2_71d4cf53",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-10T21:43:09Z",
+      "side": 1,
+      "message": "I\u0027ll leave it for now, otherwise the return value doesn\u0027t mesh with the other UI functions and it looks kind of weird compared to the other UI code. I\u0027m also gonna migrate this to uiauto soon too so it\u0027ll be cleaner then",
+      "parentUuid": "ef648980_073472ff",
       "range": {
         "startLine": 75,
         "startChar": 9,
