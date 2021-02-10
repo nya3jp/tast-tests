@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e37556ae_d8f542d7",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-10T01:59:44Z",
+      "side": 1,
+      "message": "I still don\u0027t get the reason why you share listPackages.  This function and InstalledPackages are doing 2 different things. It is natural to diverse the code itself, I don\u0027t see any benefits of sharing the code.",
+      "revId": "c16eadb43e4fbcac2a5062182770d75402e2e6a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
