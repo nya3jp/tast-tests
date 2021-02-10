@@ -115,7 +115,7 @@ func DisableScreenshotsHotkey(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to press Ctrl+F5 to take screenshot: ", err)
 			}
 
-			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("screenshot"), ash.WaitTitle(tc.wantNotification)); err != nil {
+			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("capture_mode_notification"), ash.WaitTitle(tc.wantNotification)); err != nil {
 				s.Fatalf("Failed to wait notification with title %q: %v", tc.wantNotification, err)
 			}
 
