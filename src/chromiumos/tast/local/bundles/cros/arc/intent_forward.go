@@ -86,11 +86,5 @@ func IntentForward(ctx context.Context, s *testing.State) {
 
 	checkIntent(viewAction, localWebURL, localWebURL)
 	checkIntent(setWallpaperAction, "", wallpaperPickerURL)
-	if enabled, err := arc.VMEnabled(); err != nil {
-		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
-	} else if !enabled {
-		// ARCVM P does not support launching Files.app from Android.
-		// TODO(yusukes): Enable this on ARCVM R.
-		checkIntent(viewDownloadsAction, "", filesAppURL)
-	}
+	checkIntent(viewDownloadsAction, "", filesAppURL)
 }
