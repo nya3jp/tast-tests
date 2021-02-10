@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5f7d2d_a366ca3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-02-10T14:36:09Z",
+      "side": 1,
+      "message": "Thanks a lot! I\u0027m going to land this as it seems working well enough for now. I\u0027ll file a bug if I saw another regression.",
+      "parentUuid": "0991c594_b3f69065",
+      "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75d39987_664d3e5c",
@@ -202,6 +220,30 @@
       "side": 1,
       "message": "At this moment. I would see internal API is the best option. For long term, we need to ensure that the user experience is stable enough. For example, we should not enable then disable zero state suggestions frequently. Currently it performs very different on different input fields, UIL / non-UIL extension such of factors. That makes the UI interaction fragile.",
       "parentUuid": "48758fd5_75194ac3",
+      "range": {
+        "startLine": 222,
+        "startChar": 5,
+        "endLine": 222,
+        "endChar": 20
+      },
+      "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fac2122_205b1cc8",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-02-10T14:36:09Z",
+      "side": 1,
+      "message": "I agree that it\u0027s hard to write reliable UI automation on VK. Even in this CL, I have to add one extra click on the field to make sure that the floating-mode button is available.",
+      "parentUuid": "2fdf17a4_d6c3b309",
       "range": {
         "startLine": 222,
         "startChar": 5,
