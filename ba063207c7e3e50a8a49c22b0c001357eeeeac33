@@ -33,6 +33,121 @@
       "message": "Hi tast-owners,\n\nPlease take a look at the CL. Happy to provide additional details about the CrOS daemons tlsdate and system-proxy. \n\nThanks!",
       "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d884a27_8df4b4e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-10T00:28:58Z",
+      "side": 1,
+      "message": "Is there a team alias you can add here instead of individual ldaps?",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "089db2e6_251146d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-10T00:28:58Z",
+      "side": 1,
+      "message": "For readability might be worth extracting this out into a separate function and just pass the s.Dut().Conn.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b96b8bea_cd8bbc56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-10T00:28:58Z",
+      "side": 1,
+      "message": "Can you just use `out` here? Avoid going from []byte to string then back to []byte?",
+      "range": {
+        "startLine": 68,
+        "startChar": 21,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8128b817_8fec03f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-10T00:28:58Z",
+      "side": 1,
+      "message": "Please keep your error construction consistent, line 69 and 73 do the same thing but are constructed using errors.Errorf and errors.New.",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 66
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ac36921_6167ffcd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-10T00:28:58Z",
+      "side": 1,
+      "message": "Make this and the password a const at the start of the test",
+      "range": {
+        "startLine": 105,
+        "startChar": 56,
+        "endLine": 105,
+        "endChar": 64
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
