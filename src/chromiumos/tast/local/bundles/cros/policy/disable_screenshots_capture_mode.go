@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/capturemode"
@@ -70,7 +71,12 @@ func DisableScreenshotsCaptureMode(ctx context.Context, s *testing.State) {
 		wantAllowed      bool
 		wantNotification string
 	}{
-		// TODO(crbug.com/1150585): add missing test case when policy value is `True` once CaptureMode will handle DisableScreenshots.
+		{
+			name:             "true",
+			value:            []policy.Policy{&policy.DisableScreenshots{Val: true}},
+			wantAllowed:      false,
+			wantNotification: "Can't capture content",
+		},
 		{
 			name:             "false",
 			value:            []policy.Policy{&policy.DisableScreenshots{Val: false}},
@@ -106,7 +112,12 @@ func DisableScreenshotsCaptureMode(ctx context.Context, s *testing.State) {
 			}
 
 			if err := capturemode.TakeAreaScreenshot(ctx, tconn); err != nil {
-				s.Fatal("Failed to open system tray: ", err)
+				// Don't fail if screenshots are not allowed by policy and capture mode was not found.
+				if errors.Is(err, capturemode.ErrCaptureModeNotFound) && tc.wantAllowed {
+					s.Fatal("Capture mode is not shown, but allowed by policy")
+				} else if !errors.Is(err, capturemode.ErrCaptureModeNotFound) {
+					s.Fatal("Failed to take screenshot: ", err)
+				}
 			}
 
 			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("capture_mode_notification"), ash.WaitTitle(tc.wantNotification)); err != nil {
