@@ -23,7 +23,7 @@ import (
 const (
 	kmsvncHostPort     = "localhost:5900"
 	kmsvncReadyMessage = "Listening for VNC connections"
-	kmsvncReadyTimeout = 1 * time.Second
+	kmsvncReadyTimeout = 3 * time.Second
 	kmsvncStopTimeout  = 3 * time.Second
 
 	rfbProtocolVersion = "RFB 003.008\n"
@@ -51,8 +51,10 @@ func NewKmsvnc(ctx context.Context) (*Kmsvnc, error) {
 	}
 
 	// Launch a separate goroutine to listen stderr and print as logs.
-	// Also detects when kmsvnc is ready to accept connections.
+	// Also detects when kmsvnc is ready to accept connections, and when EOF is sent on stderr i.e. the process exits.
+	// TODO(b/177965296): Save logs to separate file.
 	ready := make(chan struct{})
+	exited := make(chan struct{})
 	go func() {
 		scanner := bufio.NewScanner(stderr)
 		for scanner.Scan() {
@@ -63,6 +65,13 @@ func NewKmsvnc(ctx context.Context) (*Kmsvnc, error) {
 				ready = nil
 			}
 		}
+		if err := scanner.Err(); err != nil {
+			testing.ContextLog(ctx, "Error reading kmsvnc stderr: ", scanner.Err())
+			if err := cmd.Kill(); err != nil {
+				testing.ContextLog(ctx, "Failed to kill kmsvnc process: ", err)
+			}
+		}
+		close(exited)
 	}()
 
 	// Block until kmsvnc is ready, or fail if context timed out / startup took too long.
@@ -79,8 +88,11 @@ func NewKmsvnc(ctx context.Context) (*Kmsvnc, error) {
 			go cmd.Wait()
 		}
 		return nil, tctx.Err()
+	case <-exited:
+		go cmd.Wait()
+		return nil, errors.New("kmsvnc process exited unexpectedly, check logs for details")
 	case <-ready:
-		return &Kmsvnc{cmd, nil}, nil
+		return &Kmsvnc{cmd: cmd}, nil
 	}
 }
 
