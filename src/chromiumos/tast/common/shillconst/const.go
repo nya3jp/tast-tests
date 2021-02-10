@@ -40,8 +40,9 @@ const (
 	DevicePropertySelectedService = "SelectedService"
 
 	// Cellular device property names.
-	DevicePropertyCellularICCID      = "Cellular.ICCID"
-	DevicePropertyCellularSIMPresent = "Cellular.SIMPresent"
+	DevicePropertyCellularICCID       = "Cellular.ICCID"
+	DevicePropertyCellularSIMPresent  = "Cellular.SIMPresent"
+	DevicePropertyCellularSIMSlotInfo = "Cellular.SIMSlotInfo"
 
 	// Ethernet device property names.
 	DevicePropertyEthernetBusType   = "Ethernet.DeviceBusType"
