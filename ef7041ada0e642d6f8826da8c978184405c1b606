@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e2bb91c_266efb47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-10T08:01:40Z",
+      "side": 1,
+      "message": "Yes ty",
+      "parentUuid": "255b8cf8_e087507c",
+      "revId": "ef7041ada0e642d6f8826da8c978184405c1b606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3935e95_cc2c50d1",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-01T03:01:20Z",
       "side": 1,
       "message": "nit: could you use fmt.Sprintf()?",
+      "range": {
+        "startLine": 353,
+        "startChar": 44,
+        "endLine": 353,
+        "endChar": 98
+      },
+      "revId": "ef7041ada0e642d6f8826da8c978184405c1b606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bdb3710_b9217c8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-10T08:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3935e95_cc2c50d1",
       "range": {
         "startLine": 353,
         "startChar": 44,
