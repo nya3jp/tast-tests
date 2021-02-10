@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bb49a7f_ff0d9211",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-10T20:07:38Z",
+      "side": 1,
+      "message": "I think I have an idea of what your issue is. WindowState doesn\u0027t always map as expected. You could say maximize and get a fullscreen window for example, or a window may only let you fullscreen and not let you maximize. I remember hitting stuff like this in appcompat testing.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go?q\u003dclamshellresizewindow",
+      "revId": "e329546f3690df36469671b4a4bbf270c1c8686f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
