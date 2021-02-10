@@ -16,6 +16,125 @@
       "message": "PTAL, thanks",
       "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a78459b_abc62368",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-10T10:09:11Z",
+      "side": 1,
+      "message": "c",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1198c1e8_b56cfb20",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-10T10:09:11Z",
+      "side": 1,
+      "message": "optional:\nhow about check err, and output to log if it fails?",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c8fbb4_ad1e7ec1",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-10T10:09:11Z",
+      "side": 1,
+      "message": "off-topic/optional: stderr needs to be closed after the use?",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1788f00f_e60e7219",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-10T10:09:11Z",
+      "side": 1,
+      "message": "off-topic\\optional: it is recommended to avoid just dump the subcommand\u0027s output to the log.\nInstead, it\u0027s nice to output it into a dedicated log file.",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6926ee_3ddd9c9f",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-10T10:09:11Z",
+      "side": 1,
+      "message": "off-topic/optional: maybe scanner.Err() check after the loop.",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c4bae45_729dd0ad",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-10T10:09:11Z",
+      "side": 1,
+      "message": "new race condition. command may be already waited here.",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce27c45_a0092dbd",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-10T10:09:11Z",
+      "side": 1,
+      "message": "ditto for race.",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
