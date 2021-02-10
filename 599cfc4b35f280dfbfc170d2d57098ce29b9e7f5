@@ -33,6 +33,23 @@
       "message": "Asking Matthew to help review since I\u0027m not familiar with C.",
       "revId": "599cfc4b35f280dfbfc170d2d57098ce29b9e7f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7aa51d_e3894286",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-02-10T16:23:16Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective -- I don\u0027t know of any Tast style guidelines for non-go code",
+      "revId": "599cfc4b35f280dfbfc170d2d57098ce29b9e7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
