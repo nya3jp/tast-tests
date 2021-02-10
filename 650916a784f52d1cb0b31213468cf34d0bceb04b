@@ -77,6 +77,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "364af900_31ca689a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_time_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-10T01:57:09Z",
+      "side": 1,
+      "message": "I believe this Start/Stop/Record mechanism doesn\u0027t fit well with this type.\n\nIn my understanding, only one test will produce the data point for login.  You can simply write the code of reading login-time file as a part of that test case.",
+      "revId": "650916a784f52d1cb0b31213468cf34d0bceb04b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c571a826_06414b2d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 2
