@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75810db3_0b5e386f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-02-10T08:38:22Z",
+      "side": 1,
+      "message": "Actually looking at these now, I feel they might be better off as build-time checks. I don\u0027t see an escape hatch covering uprev in progress/recently completed for 5.4+ and disabled. On failure (wherever it ends up being checked), the error should point to instructions for the right migration path - pit of success and all that.",
+      "revId": "14ddfe0ac96e71681ab13a17eb167628b1b9fd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
