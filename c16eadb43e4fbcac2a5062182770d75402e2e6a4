@@ -16,6 +16,24 @@
       "message": "I still don\u0027t get the reason why you share listPackages.  This function and InstalledPackages are doing 2 different things. It is natural to diverse the code itself, I don\u0027t see any benefits of sharing the code.",
       "revId": "c16eadb43e4fbcac2a5062182770d75402e2e6a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e079b9de_ff025b35",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-10T02:54:28Z",
+      "side": 1,
+      "message": "Hi Jun, would you mind we quickly discussing another round before I make change. We can implement the PackageInstalled() function with the following logic as you suggested:\n\n```\n\tout, err :\u003d d.ShellCommand(ctx, \"pm\", \"list\", \"packages\", pkgName).Output(testexec.DumpLogOnError)\n\tif err !\u003d nil {\n\t\treturn false, errors.Wrap(err, \"listing packages failed\")\n\t}\n\n\tfor _, pkg :\u003d range strings.Split(strings.TrimSpace(string(out)), \"\\n\") {\n\t\tn :\u003d strings.TrimPrefix(pkg, \"package:\")\n\t\tif n \u003d\u003d pkgName {\n                  return true, nil\n                }\n\t}\n\n\treturn false, nil\n\n```\n\nThis logic duplicates with InstalledPackages() at (1) issue the \"pm list\" command to android, (2) process the output string which has its special format. The benefit of reuse would be that any changes in the future for the \"pm list\" command and its output format will just need to be handled once in listPackages().\n\nI will follow your comments to change if you think the reuse is not a big deal here. Thanks for your input.",
+      "parentUuid": "e37556ae_d8f542d7",
+      "revId": "c16eadb43e4fbcac2a5062182770d75402e2e6a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
