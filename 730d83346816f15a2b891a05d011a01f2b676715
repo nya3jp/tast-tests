@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8266181_0182fb52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-10T15:14:44Z",
+      "side": 1,
+      "message": "# Sorry, I overlooked this in the previous reply but...\n\ntracer.StopTracing() should be called only when StartTracing is called?\nIf so, could you add the condition here and below?\n\nOr, maybe it can be refactored as follows:\n\nvar histograms ...\nvar raplv ...\nrun :\u003d func() error {  // or some good function name :-)\n  var err error\n  histograms, err \u003d metrics.Run(...)\n  if err !\u003d nil {\n    return err\n  }\n  if rapl !\u003d nil {\n    raplv, err \u003d rapl.DiffWithCurrentRAPL()\n    if err !\u003d nil {\n      return err\n    }\n  }\n  return nil\n}\n\nif invoc.traceDir !\u003d \"\" {\n  if err :\u003d withTracing(ctx, tracer, run); err !\u003d nil {\n    return ...\n  }\n  if err :\u003d chrome.SaveTraceToFile(...); err !\u003d nil {\n    ...\n  }\n} else {\n  if err :\u003d run(); err !\u003d nil {\n    return ...\n  }\n}\n\n\nthen\n\nfunc withTracing(ctx, tracer, run) (retErr error) {\n  if err :\u003d tracer.StartTracing(ctx); err !\u003d nil {\n    return ...\n  }\n  defer func() {\n    if err :\u003d tracer.StopTracing(ctx); err !\u003d nil \u0026\u0026 retErr \u003d\u003d nil {\n      retErr \u003d err\n    }\n  }()\n  return run()\n}\n\nWDYT?",
+      "revId": "730d83346816f15a2b891a05d011a01f2b676715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
