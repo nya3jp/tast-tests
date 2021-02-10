@@ -120,6 +120,30 @@
       },
       "revId": "3d9b76e193f82a23bd0594e5b06da2f315efe1f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a781fc_aa60cfbf",
+        "filename": "src/chromiumos/tast/services/cros/nearbyshare/nearby_share_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-10T20:22:57Z",
+      "side": 1,
+      "message": "Kyle: in my remote test, I have to cast them the other way. (saw another remote test do this) \n\n\nreq :\u003d \u0026nearbyshare.CrOSSetupRequest{\n    DataUsage: int32(nearbylocal.DataUsageOnline),\n    Visibility: int32(nearbylocal.VisibilityAllContacts),\n    DeviceName: deviceName\n}\nif _, err :\u003d ns.CrOSSetup(ctx, req); err !\u003d nil {\n    s.Fatal(\"Failed to setup Nearby Share: \", err)\n}",
+      "parentUuid": "e9cf465c_9730d8f7",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "3d9b76e193f82a23bd0594e5b06da2f315efe1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
