@@ -16,6 +16,64 @@
       "message": "Hi Ben, just want you to know that I am willing to be the first user of tconn guest mode 😊 Please let me know whether I use it correctly or not.",
       "revId": "ec3343b21b0423dbeae57bb4e2f0464133612e89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0448750f_9fba2d5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-10T04:17:17Z",
+      "side": 1,
+      "message": "It shouldn\u0027t change from the previous way you\u0027ve been doing things and given I see no changes to the TestAPIConn, this LGTM! Thanks for preparing it early 😊",
+      "parentUuid": "79f777e0_8d39689f",
+      "revId": "ec3343b21b0423dbeae57bb4e2f0464133612e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1393bf59_d2334679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-10T04:17:17Z",
+      "side": 1,
+      "message": "The Tast changes (crrev.com/c/2649916) and the chrome changes (crrev.com/c/2646390) have no successfully been merged and uprevved. This should be good to set active and be reviewed! Left a couple of comments, one thing to note is some follow up work being done at crbug.com/1174939 which you may encounter when trying to close the Chrome guest renderer.\n\nYou have the option of waiting until the corresponding CL (crrev.com/c/2682086) is merged or you should be good to go. Please just resync to ToT and verify all your tests relying on these preconditions are working fine.",
+      "revId": "ec3343b21b0423dbeae57bb4e2f0464133612e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c211d09_437a51d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-10T04:17:17Z",
+      "side": 1,
+      "message": "Does this need to be us_eng_stable_guest? Also is there anything about these stable models that might need to be validated again when running in guest mode?",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "ec3343b21b0423dbeae57bb4e2f0464133612e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
