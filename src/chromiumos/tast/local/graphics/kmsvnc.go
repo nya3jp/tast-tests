@@ -23,7 +23,7 @@ import (
 const (
 	kmsvncHostPort     = "localhost:5900"
 	kmsvncReadyMessage = "Listening for VNC connections"
-	kmsvncReadyTimeout = 1 * time.Second
+	kmsvncReadyTimeout = 3 * time.Second
 	kmsvncStopTimeout  = 3 * time.Second
 
 	rfbProtocolVersion = "RFB 003.008\n"
@@ -31,8 +31,9 @@ const (
 
 // Kmsvnc wraps a kmsvnc process used in tests.
 type Kmsvnc struct {
-	cmd  *testexec.Cmd
-	conn net.Conn
+	cmd    *testexec.Cmd
+	exited chan struct{}
+	conn   net.Conn
 }
 
 // NewKmsvnc launches kmsvnc as a subprocess and returns a handle.
@@ -49,6 +50,13 @@ func NewKmsvnc(ctx context.Context) (*Kmsvnc, error) {
 	if err := cmd.Start(); err != nil {
 		return nil, err
 	}
+
+	// Launch a goroutine to ensure the process is being cleaned up, and to detect when the process exits.
+	exited := make(chan struct{})
+	go func() {
+		cmd.Wait()
+		close(exited)
+	}()
 
 	// Launch a separate goroutine to listen stderr and print as logs.
 	// Also detects when kmsvnc is ready to accept connections.
@@ -74,13 +82,12 @@ func NewKmsvnc(ctx context.Context) (*Kmsvnc, error) {
 	case <-tctx.Done():
 		if err := cmd.Kill(); err != nil {
 			testing.ContextLog(ctx, "Failed to kill kmsvnc process: ", err)
-		} else {
-			// Cleanup the process without blocking.
-			go cmd.Wait()
 		}
 		return nil, tctx.Err()
+	case <-exited:
+		return nil, errors.New("kmsvnc process exited unexpectedly, check logs for details")
 	case <-ready:
-		return &Kmsvnc{cmd, nil}, nil
+		return &Kmsvnc{cmd: cmd, exited: exited}, nil
 	}
 }
 
@@ -95,18 +102,13 @@ func (k *Kmsvnc) Stop(ctx context.Context) error {
 		return err
 	}
 
-	// Attempt to cleanup the process, or timeout if that takes too long.
-	done := make(chan struct{})
-	go func() {
-		k.cmd.Wait()
-		close(done)
-	}()
+	// Wait until the process is cleaned up, or timeout if that takes too long.
 	tctx, cancel := context.WithTimeout(ctx, kmsvncStopTimeout)
 	defer cancel()
 	select {
 	case <-tctx.Done():
 		return tctx.Err()
-	case <-done:
+	case <-k.exited:
 		return nil
 	}
 }
