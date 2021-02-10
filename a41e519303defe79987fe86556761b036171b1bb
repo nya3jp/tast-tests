@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe237a9_980a51fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/clock.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-10T02:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b69d94f5_7f4fac12",
+      "revId": "a41e519303defe79987fe86556761b036171b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e50b9c6a_d7da548c",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-02-09T16:06:37Z",
       "side": 1,
       "message": "Could you document why curNS are ignored, except the first one? (as we chatted offline)?",
+      "revId": "a41e519303defe79987fe86556761b036171b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "287c5138_a38502e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/clock.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-10T02:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e50b9c6a_d7da548c",
       "revId": "a41e519303defe79987fe86556761b036171b1bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5aa433a_585cccc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-10T02:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2235848_d98168b2",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "a41e519303defe79987fe86556761b036171b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "917609f9_6a4c9203",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-02-09T16:06:37Z",
       "side": 1,
       "message": "cs can be nil, so possibly crashed. Could you return an error?",
+      "range": {
+        "startLine": 191,
+        "startChar": 10,
+        "endLine": 191,
+        "endChar": 12
+      },
+      "revId": "a41e519303defe79987fe86556761b036171b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "668cb3cd_6bde8b53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/parsing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-10T02:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "917609f9_6a4c9203",
       "range": {
         "startLine": 191,
         "startChar": 10,
