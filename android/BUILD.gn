@@ -12,6 +12,7 @@ group("all") {
     "ArcCameraFpsTest:ArcCameraFpsTest",
     "ArcChromeIntentPickerTest:ArcChromeIntentPickerTest",
     "ArcClipboardTest:ArcClipboardTest",
+    "ArcDownloadTest:ArcDownloadTest",
     "ArcConfigChangesTest:ArcConfigChangesTest",
     "ArcChromeSharesheetTest:ArcChromeSharesheetTest",
     "ArcConnectivityTest:ArcConnectivityTest",
