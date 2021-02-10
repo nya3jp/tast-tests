@@ -16,6 +16,63 @@
       "message": "Instead of making my test close the tabs it created, just update Chrome.ResetState to close all windows instead of debug targets, so that it includes discarded tabs.",
       "revId": "e0ef89cdf8095fbe2181a0bb19baa29cdef4fb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "872f8eca_a7cdf5ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-10T09:54:47Z",
+      "side": 1,
+      "message": "Could you take a look into bot failures?\nThey can be actually caused by this CL.",
+      "revId": "e0ef89cdf8095fbe2181a0bb19baa29cdef4fb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74a9fda3_ce9843ae",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-10T09:54:47Z",
+      "side": 1,
+      "message": "let\u0027s avoid \"window\" which conflicts very famous global variable \"window\".",
+      "range": {
+        "startLine": 292,
+        "startChar": 13,
+        "endLine": 292,
+        "endChar": 19
+      },
+      "revId": "e0ef89cdf8095fbe2181a0bb19baa29cdef4fb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4db1e610_6caa4e9e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-10T09:54:47Z",
+      "side": 1,
+      "message": "Maybe\n\nawait Promise.all((await getAll()).map(w \u003d\u003e remove(w.id));\n\nto run them in parallel?",
+      "revId": "e0ef89cdf8095fbe2181a0bb19baa29cdef4fb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
