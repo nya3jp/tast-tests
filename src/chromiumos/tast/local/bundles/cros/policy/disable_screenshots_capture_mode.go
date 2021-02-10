@@ -75,13 +75,13 @@ func DisableScreenshotsCaptureMode(ctx context.Context, s *testing.State) {
 			name:             "false",
 			value:            []policy.Policy{&policy.DisableScreenshots{Val: false}},
 			wantAllowed:      true,
-			wantNotification: "Screenshot taken and saved to clipboard",
+			wantNotification: "Screenshot taken",
 		},
 		{
 			name:             "unset",
 			value:            []policy.Policy{},
 			wantAllowed:      true,
-			wantNotification: "Screenshot taken and saved to clipboard",
+			wantNotification: "Screenshot taken",
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
