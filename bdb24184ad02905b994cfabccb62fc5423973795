@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "405f2087_62165e65",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-02-10T03:11:28Z",
+      "side": 1,
+      "message": "The name of the output file is updated to make it comes next to \"messages\" file for Chrome OS.\nSee the suggestion of nya-san in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2682319",
+      "revId": "bdb24184ad02905b994cfabccb62fc5423973795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
