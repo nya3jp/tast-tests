@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6438a96_c70d36dc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-10T04:38:26Z",
+      "side": 1,
+      "message": "Ack. Updated to close it in the `logInAsGuest` method right after `Oobe.guestLoginForTesting`",
+      "parentUuid": "f13f9667_bf0e777f",
+      "range": {
+        "startLine": 198,
+        "startChar": 3,
+        "endLine": 198,
+        "endChar": 13
+      },
+      "revId": "bc4b94b0afac90c36c1f9fc0f87dcb312992076d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa9aaac4_c42dcfa1",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e59102f6_28642476",
+        "filename": "src/chromiumos/tast/local/chrome/internal/chromeproc/chromeproc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-10T04:38:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aa9aaac4_c42dcfa1",
+      "range": {
+        "startLine": 160,
+        "startChar": 20,
+        "endLine": 160,
+        "endChar": 43
+      },
+      "revId": "bc4b94b0afac90c36c1f9fc0f87dcb312992076d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20ad509c_3c4a3af3",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-02-09T08:09:33Z",
       "side": 1,
       "message": "Rather than waiting for new Chrome to appear, we can wait for old Chrome to disappear. Then the next driver.NewSession call reliably tracks the next Chrome process.\n\nI would do it in the following way.\n\n1. Update the browserwatcher to wait for a browser process before returning from browserwatcher.NewWatcher. Then we can always assume that browserwatcher.Watcher knows the Chrome PID. The new signature of NewWatcher would be:\n\n func NewWatcher(ctx context.Context) (*Watcher, error)\n\n2. Update the browserwathcer to support waiting for process exit. The new method signature would be:\n\n func (w *Watcher) WaitExit(ctx context.Context) error\n\n3. Call sess.Watcher().WaitExit() here.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "bc4b94b0afac90c36c1f9fc0f87dcb312992076d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a975846d_252b3cc4",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/guest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-10T04:38:26Z",
+      "side": 1,
+      "message": "Overhauled the code to follow this approach.",
+      "parentUuid": "20ad509c_3c4a3af3",
       "range": {
         "startLine": 53,
         "startChar": 0,
