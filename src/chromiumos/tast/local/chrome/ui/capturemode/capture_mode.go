@@ -18,6 +18,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// ErrCaptureModeNotFound is returned by TakeAreaScreenshot if capture mode was not
+// found in the UI.
+//
+// For example, capture mode might be not allowed by admin policy.
+var ErrCaptureModeNotFound = errors.New("capture mode not found in the UI")
+
 func enterCaptureMode(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := quicksettings.Show(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to show system tray")
@@ -48,7 +54,12 @@ func TakeAreaScreenshot(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to drag mouse")
 	}
 
-	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{Name: "Capture"}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	params := ui.FindParams{Name: "Capture"}
+	if err := ui.StableFindAndClick(ctx, tconn, params, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		// Return ErrCaptureModeNotFound if capture mode UI does not exist, so caller can handle this case separately.
+		if exists, errExist := ui.Exists(ctx, tconn, params); errExist == nil && !exists {
+			return ErrCaptureModeNotFound
+		}
 		return errors.Wrap(err, "failed to find and click capture button")
 	}
 
