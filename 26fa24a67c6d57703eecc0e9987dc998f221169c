@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfadca68_1a05aba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-10T21:21:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed38241f_d0665688",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 2
+      },
+      "revId": "26fa24a67c6d57703eecc0e9987dc998f221169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9643d748_a0f5c5d6",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c825d6d_00f279cb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-10T21:21:43Z",
+      "side": 1,
+      "message": "Actually this isn\u0027t needed in this test so I removed it. Another test is using it though (ui.ExistingUserLogin) since it doesn\u0027t click the field before it types the PW.",
+      "parentUuid": "9643d748_a0f5c5d6",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "26fa24a67c6d57703eecc0e9987dc998f221169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e514795_db6c6157",
@@ -60,6 +108,24 @@
       "writtenOn": "2020-12-10T02:19:37Z",
       "side": 1,
       "message": "Do we need to wait for focus or anything here?",
+      "revId": "26fa24a67c6d57703eecc0e9987dc998f221169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d848389a_c2f0fb4a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-10T21:21:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e514795_db6c6157",
       "revId": "26fa24a67c6d57703eecc0e9987dc998f221169c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
