@@ -351,18 +351,16 @@ func WaitForVKReady(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chro
 }
 
 // SwitchToVoiceInput changes virtual keyboard to voice input layout.
-func SwitchToVoiceInput(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := TapKey(ctx, tconn, "Voice"); err != nil {
-		return errors.Wrap(err, "failed to tap voice input button")
+func SwitchToVoiceInput(ctx context.Context, cr *chrome.Chrome) error {
+	bconn, err := BackgroundConn(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to create background connection")
+	}
+	if err := bconn.Eval(ctx, `background.getTestOnlyApi().switchToVoiceInput()`, nil); err != nil {
+		return errors.Wrap(err, "failed to call switchToVoiceInput()")
 	}
 
-	params := ui.FindParams{
-		Role:      ui.RoleTypeButton,
-		Name:      "Got it",
-		ClassName: "voice-got-it",
-	}
-	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
-	return ui.StableFindAndClick(ctx, tconn, params, &opts)
+	return nil
 }
 
 // TapKeyboardInput changes virtual keyboard to keyboard input layout.
