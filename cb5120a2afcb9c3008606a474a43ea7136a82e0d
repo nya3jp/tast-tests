@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53769dc8_9101a900",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-10T04:56:06Z",
+      "side": 1,
+      "message": "PTAL. \n\nQuick overview of my plan in 3 CLs\n\n1. This cl to extract functionality \n2. Add remote service that has CrOSSetup and StartHighVisibilityMode functions\n3. Add remote test that will enable High vis mode on two chromebooks at once",
+      "revId": "cb5120a2afcb9c3008606a474a43ea7136a82e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e17d50e_7c38ba45",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-10T04:56:06Z",
+      "side": 1,
+      "message": "Kyle: what do you think about cros_receive.go and cros_receive_ui.go for API vs UI stuff?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "cb5120a2afcb9c3008606a474a43ea7136a82e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

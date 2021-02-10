@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e07b6425_ae433abe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-10T04:56:06Z",
+      "side": 0,
+      "message": "I didn\u0027t wanna pass testing.state to the local package so I dropped this faillog in the other function. Let me know if we definitely need it and how best to do it without passing the testing.state arg",
+      "range": {
+        "startLine": 59,
+        "startChar": 38,
+        "endLine": 59,
+        "endChar": 60
+      },
+      "revId": "b6be95fd64852e7a5181963e450046893cabfb96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
