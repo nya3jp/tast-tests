@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b99a07_7ae7a184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-10T08:01:25Z",
+      "side": 1,
+      "message": "There is some overlap. The intention is to help work out why we are seeing so much noise in the data. I want to eliminate explanations other than there is just a lot of inherent noise in the system. In particular, I want to eliminate these explanations:\n\n1. Histogram quantisation somehow causes noise - maybe possible if there are very few samples\n2. Some error in the histograms - may be possible since IIRC I\u0027ve seen significantly different values between number of 100 - page flips / 60fps and percent dropped frames\n\nIf we ever see a high metrics percentdropppedframes value but different for these custom metrics then we know there will be a problem there. If these metrics change over time in the same way as the histogram metrics, then I\u0027m much more convinced it\u0027s /only/ inherent noise (albeit a lot of inherent noise).",
+      "parentUuid": "15399759_da19a04d",
+      "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dea53cc_52c8a307",
@@ -118,6 +136,24 @@
       "side": 1,
       "message": "Yes. I\u0027d like sadrul@ to make sure that this aligns with how the existing metrics are computed.",
       "parentUuid": "18be1e94_eb62e5d3",
+      "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c55ba186_75c2cb48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-10T08:01:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f9c37077_ff3c6fe1",
       "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
