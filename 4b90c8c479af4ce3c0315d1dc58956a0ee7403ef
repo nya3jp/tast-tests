@@ -39,6 +39,30 @@
       },
       "revId": "4b90c8c479af4ce3c0315d1dc58956a0ee7403ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e97661a8_2ae1d1fc",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-10T04:58:09Z",
+      "side": 1,
+      "message": "Thank you for pointing this out, I\u0027ve made the changes.",
+      "parentUuid": "53b7f20e_c57b4dbd",
+      "range": {
+        "startLine": 359,
+        "startChar": 17,
+        "endLine": 359,
+        "endChar": 28
+      },
+      "revId": "4b90c8c479af4ce3c0315d1dc58956a0ee7403ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
