@@ -39,6 +39,30 @@
       },
       "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e4f5d4a_9ddeec20",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-10T04:48:17Z",
+      "side": 1,
+      "message": "btw, in https://crrev.com/c/2684007 we asked for an internal api to switch voice input panel, because it has the reason in inconsistent behavior -- First time user sees an privacy alert to collect user voice data, and existing users would not see that.",
+      "parentUuid": "75d39987_664d3e5c",
+      "range": {
+        "startLine": 222,
+        "startChar": 5,
+        "endLine": 222,
+        "endChar": 20
+      },
+      "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
