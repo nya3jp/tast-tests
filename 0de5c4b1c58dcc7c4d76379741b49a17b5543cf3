@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83985b44_01f2ab43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-02-10T04:03:06Z",
+      "side": 1,
+      "message": "Hasn\u0027t tested yet, but posting for review anyway for the evaluation of the idea",
+      "revId": "0de5c4b1c58dcc7c4d76379741b49a17b5543cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
