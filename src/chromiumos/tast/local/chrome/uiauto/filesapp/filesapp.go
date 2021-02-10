@@ -14,9 +14,11 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 )
 
@@ -212,6 +214,9 @@ func (f *FilesApp) SelectMultipleFiles(kb *input.KeyboardEventWriter, fileList .
 		}
 		// Ensure the correct number of items are selected.
 		var selectionLabelRE = regexp.MustCompile(fmt.Sprintf("%d (files|items|folders) selected", len(fileList)))
+		if len(fileList) == 1 {
+			selectionLabelRE = regexp.MustCompile("1 (file|item|folder) selected")
+		}
 		return f.WaitUntilExists(nodewith.Role(role.StaticText).NameRegex(selectionLabelRE))(ctx)
 	}
 }
@@ -303,6 +308,22 @@ func (f *FilesApp) Search(kb *input.KeyboardEventWriter, searchTerms string) uia
 	)
 }
 
-// TODO(b/178020071): Implement DrapAndDropFile. With the new library it may be possible to do so with less waiting.
 // DragAndDropFile selects the specified file and does a drag and drop to the specified point.
-// func (f *FilesApp) DragAndDropFile(ctx context.Context, fileName string, dropPoint coords.Point) error {
+func (f *FilesApp) DragAndDropFile(fileName string, dropPoint coords.Point, kb *input.KeyboardEventWriter) uiauto.Action {
+	return func(ctx context.Context) error {
+		// Clicking on a file is not enough as the clicks can be too quick for FileInfo
+		// to be added to the drop event, this leads to an empty event. Clicking the
+		// file and checking the Action Bar we can guarantee FileInfo exists on the
+		// drop event.
+		if err := f.SelectMultipleFiles(kb, fileName)(ctx); err != nil {
+			return errors.Wrap(err, "failed to select the file for drag and drop")
+		}
+
+		srcPoint, err := f.ui.Location(ctx, file(fileName))
+		if err != nil {
+			return errors.Wrap(err, "failed to find the location for the file")
+		}
+
+		return mouse.Drag(ctx, f.tconn, srcPoint.CenterPoint(), dropPoint, time.Second)
+	}
+}
