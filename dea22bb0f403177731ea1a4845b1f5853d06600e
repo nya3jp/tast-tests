@@ -33,6 +33,24 @@
       "message": "Rather than doing Chdir here, please use -C flag (--directory flag) of tar command (https://man7.org/linux/man-pages/man1/tar.1.html)\n\nAlternatively, you could combine compress/bzip2 and archive/tar to make the extraction without tar command -- though that might be a bit too complicated.\nhttps://golang.org/pkg/compress/bzip2/\nhttps://golang.org/pkg/archive/tar/",
       "revId": "dea22bb0f403177731ea1a4845b1f5853d06600e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18fa603e_4b5833b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-10T01:07:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adeed50f_d331fb38",
+      "revId": "dea22bb0f403177731ea1a4845b1f5853d06600e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
