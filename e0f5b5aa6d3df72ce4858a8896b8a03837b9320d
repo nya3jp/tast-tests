@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78fc85f3_fdedb0cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-10T07:08:05Z",
+      "side": 1,
+      "message": "Jao-ke, just FYI that Platform tests should use the gpuWatchHangs and not gpuWatchDog.",
+      "revId": "e0f5b5aa6d3df72ce4858a8896b8a03837b9320d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65728bde_2d42bb81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-10T07:08:05Z",
+      "side": 1,
+      "message": "Femi, this shouldn\u0027t affect your change except for the rename.",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 25
+      },
+      "revId": "e0f5b5aa6d3df72ce4858a8896b8a03837b9320d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
