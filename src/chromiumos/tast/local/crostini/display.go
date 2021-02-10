@@ -16,7 +16,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -78,23 +79,22 @@ func PollWindowSize(ctx context.Context, tconn *chrome.TestConn, name string, ti
 
 // windowSize returns the the width and the height of the window in pixels.
 func windowSize(ctx context.Context, tconn *chrome.TestConn, name string) (sz coords.Size, err error) {
-	appWindow, err := ui.Find(ctx, tconn, ui.FindParams{Name: name})
-	if err != nil {
+	ui := uiauto.New(tconn)
+	appWindow := nodewith.Name(name).First()
+	if err := ui.WaitUntilExists(appWindow)(ctx); err != nil {
 		return coords.Size{}, errors.Wrap(err, "failed to locate the app window")
 	}
-	defer appWindow.Release(ctx)
 
-	opts := testing.PollOptions{Timeout: 15 * time.Second, Interval: 500 * time.Millisecond}
-	view, err := ui.StableFind(ctx, tconn, ui.FindParams{ClassName: "ClientView"}, &opts)
+	view := nodewith.ClassName("ClientView")
+	loc, err := ui.WithTimeout(15*time.Second).Location(ctx, view)
 	if err != nil {
 		return coords.Size{}, errors.Wrap(err, "failed to find client view")
 	}
-	defer view.Release(ctx)
-	if view.Location.Empty() {
+	if loc.Empty() {
 		return coords.Size{}, errors.New("client view does not have a location")
 	}
 
-	return view.Location.Size(), nil
+	return loc.Size(), nil
 }
 
 // PrimaryDisplayScaleFactor returns the primary display's scale factor.
