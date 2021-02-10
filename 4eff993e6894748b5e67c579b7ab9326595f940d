@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a79ceb_8bf813e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-10T01:55:32Z",
+      "side": 1,
+      "message": "Per Miguel\u0027s comments + Talked to Pilar, I\u0027ve updated this CL to only add a subset of variations for lacros. I\u0027ve taken the set of {codecs}x{hw,sw} but let me know if I should choose a different subset. Thanks~!",
+      "revId": "4eff993e6894748b5e67c579b7ab9326595f940d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
