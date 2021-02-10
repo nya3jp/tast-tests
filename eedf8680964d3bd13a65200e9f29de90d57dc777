@@ -16,6 +16,75 @@
       "message": "Last of the initial 3 CLs. I\u0027ll submit this after the other 2 are in.\n\nPTAL ",
       "revId": "eedf8680964d3bd13a65200e9f29de90d57dc777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cb5f491_4a352948",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/multi_dut_ui_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-10T21:33:04Z",
+      "side": 1,
+      "message": "is there something stopping both duts from trying to run the test at the same time?",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 92
+      },
+      "revId": "eedf8680964d3bd13a65200e9f29de90d57dc777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de3ce87a_1a5eb10a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/multi_dut_ui_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-10T21:33:04Z",
+      "side": 1,
+      "message": "nit: var secondaryDut string",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "eedf8680964d3bd13a65200e9f29de90d57dc777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c54adb07_0bead588",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/multi_dut_ui_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-10T21:33:04Z",
+      "side": 1,
+      "message": "Does this actually cause the two duts to interact or just run something local on both of them? It looks to have no interaction to me.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "eedf8680964d3bd13a65200e9f29de90d57dc777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
