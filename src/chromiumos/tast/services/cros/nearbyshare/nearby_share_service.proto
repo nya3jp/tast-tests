@@ -1,0 +1,40 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.nearbyshare;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/nearbyshare";
+
+// NearbyShareService allows basic remote operations of the Nearby Share feature.
+service NearbyShareService {
+  // NewChromeLogin logs into a Chrome session as a fake user with the Nearby
+  // Share flags enabled. Close must be called later to clean up the associated resources.
+  rpc NewChromeLogin (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // CrOSSetup configures Nearby Share on a ChromeOS device.
+  rpc CrOSSetup (CrOSSetupRequest) returns (google.protobuf.Empty) {}
+
+  // StartHighVisibilityMode enables the Nearby Share High Visibility mode from
+  // quick settings.
+  rpc StartHighVisibilityMode (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+// CrOSSetupRequest is a request to setup and configure Nearby Share on a
+// ChromeOS device.
+message CrOSSetupRequest {
+  int32 data_usage = 1;
+  int32 visibility = 2;
+  string device_name = 3;
+}
+
+
+
+
