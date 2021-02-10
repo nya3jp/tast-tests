@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35628e5c_3f30b13c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/multi_dut_ui_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-10T21:46:40Z",
+      "side": 1,
+      "message": "Good idea. I will do that to be extra sure",
+      "parentUuid": "e174bc21_33df886b",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 92
+      },
+      "revId": "eedf8680964d3bd13a65200e9f29de90d57dc777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de3ce87a_1a5eb10a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/multi_dut_ui_smoke.go",
         "patchSetId": 2
