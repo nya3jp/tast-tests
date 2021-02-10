@@ -108,6 +108,24 @@
       "parentUuid": "c571a826_06414b2d",
       "revId": "650916a784f52d1cb0b31213468cf34d0bceb04b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d286a827_bba3f1b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-10T00:20:20Z",
+      "side": 1,
+      "message": "Login is a somewhat heavy operation (taking seconds to finish). Pre/Fixture is added to reduce that overhead so that we don\u0027t do it for every tests.\n\nCUJ test scenarios probably are not really related to login. So it feels strange to do this inside cuj/Recorder and do it for all cuj tests.\n\nThe suggested way could work but it somewhat makes the test data tricky to read. That only one cuj test would have the login-times data and the rest would not. And this one cuj test depends on which one gets picked by tast as the first to run the Fixture.\n\nWhat do we plan to use with the login times data? If we want to cover the login performance, I think we should create dedicated test cases for that purpose and the LoginTimeTracker could be used there.",
+      "parentUuid": "e0f36d01_4a9406d5",
+      "revId": "650916a784f52d1cb0b31213468cf34d0bceb04b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
