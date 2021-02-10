@@ -16,6 +16,29 @@
       "message": "PTAL. Thanks!",
       "revId": "09ae50f32133b1336c647aa5ac6520d729d72682",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5539e703_d5c9e531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-10T02:25:15Z",
+      "side": 1,
+      "message": "Considere using raw string for readability here.\n\n          `\"Switch to symbols\"`",
+      "range": {
+        "startLine": 610,
+        "startChar": 36,
+        "endLine": 610,
+        "endChar": 59
+      },
+      "revId": "09ae50f32133b1336c647aa5ac6520d729d72682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
