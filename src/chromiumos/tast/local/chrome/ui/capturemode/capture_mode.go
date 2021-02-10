@@ -23,9 +23,7 @@ func enterCaptureMode(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to show system tray")
 	}
 
-	// TODO(crbug.com/1140597): use non-empty Name once CaptureMode will fully
-	// support accessibility.
-	params := ui.FindParams{Attributes: map[string]interface{}{"name": ""}, ClassName: "FeaturePodIconButton"}
+	params := ui.FindParams{Name: "Screen capture", ClassName: "FeaturePodIconButton"}
 
 	if err := ui.StableFindAndClick(ctx, tconn, params, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to find and click capture mode button")
