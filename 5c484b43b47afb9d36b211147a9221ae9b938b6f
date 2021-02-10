@@ -202,6 +202,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef956e15_c975952e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/guest_mode_extension.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-10T00:21:28Z",
+      "side": 1,
+      "message": "Ah sorry. crrev.com/c/2682086",
+      "parentUuid": "554ae4a8_6c9ae39a",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 48
+      },
+      "revId": "5c484b43b47afb9d36b211147a9221ae9b938b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1620d4fc_6fbe9155",
