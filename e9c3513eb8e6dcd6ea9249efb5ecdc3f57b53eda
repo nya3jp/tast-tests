@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac436b9f_dcc286d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-10T01:27:22Z",
+      "side": 1,
+      "message": "Abandoning in favour of https://crrev.com/c/2684001",
+      "revId": "e9c3513eb8e6dcd6ea9249efb5ecdc3f57b53eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a6dd448_5e878f96",
@@ -26,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8753a353_547e993c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/lifecycle_chromeos_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-10T01:27:22Z",
+      "side": 1,
+      "message": "Oh, didn\u0027t know about that, yes that would be much better.",
+      "parentUuid": "5a6dd448_5e878f96",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "e9c3513eb8e6dcd6ea9249efb5ecdc3f57b53eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7982e55_c30c3cac",
         "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
         "patchSetId": 4
@@ -37,6 +78,24 @@
       "writtenOn": "2021-02-09T16:25:04Z",
       "side": 1,
       "message": "I do not think this is a layer to handle tab closing.\nMemoryStressServer is, as documented above, http server to server webpages for the tests.\n\nAlso, it\u0027s recommended to set up proper state, rather than trying to teardown correctly for better stability and debuggability.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#startup-and-shutdown\n\nIn this case, instead, is it possible to close all tabs in ResetState?",
+      "revId": "e9c3513eb8e6dcd6ea9249efb5ecdc3f57b53eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62e663dd_3815ba8c",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-10T01:27:22Z",
+      "side": 1,
+      "message": "Yes, it\u0027s much easier to close all windows in Chrome.ResetState, I\u0027ll put out a new commit.",
+      "parentUuid": "f7982e55_c30c3cac",
       "revId": "e9c3513eb8e6dcd6ea9249efb5ecdc3f57b53eda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
