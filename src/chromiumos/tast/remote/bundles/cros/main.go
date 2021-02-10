@@ -20,6 +20,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/hardware"
 	_ "chromiumos/tast/remote/bundles/cros/hwsec"
 	_ "chromiumos/tast/remote/bundles/cros/meta"
+	_ "chromiumos/tast/remote/bundles/cros/nearbyshare"
 	_ "chromiumos/tast/remote/bundles/cros/network"
 	_ "chromiumos/tast/remote/bundles/cros/platform"
 	_ "chromiumos/tast/remote/bundles/cros/policy"
