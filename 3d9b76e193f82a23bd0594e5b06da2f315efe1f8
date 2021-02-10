@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec0298a_a034ad75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-10T20:21:27Z",
+      "side": 1,
+      "message": "I don\u0027t really review service code too often, but this looks fine to me.",
+      "revId": "3d9b76e193f82a23bd0594e5b06da2f315efe1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf927f9_78ac1dd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-10T20:21:27Z",
+      "side": 1,
+      "message": "depending on your use case, I have seen a number of groups just wrap essentially the entire test instead of individual methods like this. So every method logs into chrome and does whatever it needs to and then close chrome instead of keeping state.",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "3d9b76e193f82a23bd0594e5b06da2f315efe1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9cf465c_9730d8f7",
@@ -48,6 +88,30 @@
       "writtenOn": "2021-02-10T20:15:48Z",
       "side": 1,
       "message": "I guess in the remote tests, we\u0027ll need to just hard-code the int values rather than use the local types? Or redefine the types in the remote tests or something",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "3d9b76e193f82a23bd0594e5b06da2f315efe1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcbebdc8_808dcbbb",
+        "filename": "src/chromiumos/tast/services/cros/nearbyshare/nearby_share_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-10T20:21:27Z",
+      "side": 1,
+      "message": "There is also a common lib location for both remote and local import, but you might need to define things in the proto.",
+      "parentUuid": "e9cf465c_9730d8f7",
       "range": {
         "startLine": 33,
         "startChar": 2,
