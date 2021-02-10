@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03da11d7_721abd4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-10T20:27:15Z",
+      "side": 1,
+      "message": "I think we will need to do it in steps like this though because the test will kind of go like this\n\nDUT1: Start receiving\nDUT2: Start sending\nDUT1: Accept share\nDUT2: Monitor transfer\n...\n\nBut good to know I can group a bunch of steps together if it makes sense. Thanks",
+      "parentUuid": "8cf927f9_78ac1dd5",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "3d9b76e193f82a23bd0594e5b06da2f315efe1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9cf465c_9730d8f7",
