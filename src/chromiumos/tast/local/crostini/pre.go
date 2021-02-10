@@ -456,6 +456,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 	if p.vmMode == dlc {
 		opts = append(opts, chrome.EnableFeatures("CrostiniUseDlc"))
+	} else {
+		opts = append(opts, chrome.DisableFeatures("CrostiniUseDlc"))
 	}
 	if useLocalImage {
 		// Retain the user's cryptohome directory and previously installed VM.
