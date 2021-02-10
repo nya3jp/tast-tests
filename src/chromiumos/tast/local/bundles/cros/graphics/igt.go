@@ -62,21 +62,111 @@ func init() {
 			},
 			Timeout: 5 * time.Minute,
 		}, {
-			Name: "kms_atomic",
-			Val: igtTest{
-				exe: "kms_atomic",
-			},
-			Timeout: 5 * time.Minute,
-		}, {
 			Name: "kms_addfb_basic",
 			Val: igtTest{
 				exe: "kms_addfb_basic",
 			},
 			Timeout: 5 * time.Minute,
 		}, {
+			Name: "kms_atomic",
+			Val: igtTest{
+				exe: "kms_atomic",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_atomic_interruptible",
+			Val: igtTest{
+				exe: "kms_atomic_interruptible",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_atomic_transition",
+			Val: igtTest{
+				exe: "kms_atomic_transition",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_big_fb",
+			Val: igtTest{
+				exe: "kms_big_fb",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_concurrent",
+			Val: igtTest{
+				exe: "kms_concurrent",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_draw_crc",
+			Val: igtTest{
+				exe: "kms_draw_crc",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_getfb",
+			Val: igtTest{
+				exe: "kms_getfb",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_hdmi_inject",
+			Val: igtTest{
+				exe: "kms_hdmi_inject",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_hdr",
+			Val: igtTest{
+				exe: "kms_hdr",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
 			Name: "kms_plane",
 			Val: igtTest{
 				exe: "kms_plane",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_plane_cursor",
+			Val: igtTest{
+				exe: "kms_plane_cursor",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_plane_lowres",
+			Val: igtTest{
+				exe: "kms_plane_lowres",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_prime",
+			Val: igtTest{
+				exe: "kms_prime",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_prop_blob",
+			Val: igtTest{
+				exe: "kms_prop_blob",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_properties",
+			Val: igtTest{
+				exe: "kms_properties",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_rmfb",
+			Val: igtTest{
+				exe: "kms_rmfb",
+			},
+			Timeout: 5 * time.Minute,
+		}, {
+			Name: "kms_universal_plane",
+			Val: igtTest{
+				exe: "kms_universal_plane",
 			},
 			Timeout: 5 * time.Minute,
 		}, {
