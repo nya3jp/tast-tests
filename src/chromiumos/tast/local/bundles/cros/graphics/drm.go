@@ -70,7 +70,7 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 		}},
 		Attr:    []string{"group:mainline"},
-		Fixture: "gpuWatchDog",
+		Fixture: "gpuWatchHangs",
 	})
 }
 

@@ -38,7 +38,7 @@ func init() {
 		Attr: []string{"group:mainline"},
 		// TODO(pwang): Remove display_backlight once crbug.com/950346 support hardware dependency.
 		SoftwareDeps: []string{"display_backlight", "no_qemu"},
-		Fixture:      "gpuWatchDog",
+		Fixture:      "gpuWatchHangs",
 		Params: []testing.Param{{
 			Name:              "chrome",
 			ExtraSoftwareDeps: []string{"chrome"},

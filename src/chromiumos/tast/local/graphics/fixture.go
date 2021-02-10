@@ -21,8 +21,17 @@ import (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
+		Name:            "gpuWatchHangs",
+		Desc:            "Check if there any gpu related hangs during a test.",
+		Impl:            &gpuWatchHangsFixture{},
+		PreTestTimeout:  5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:            "gpuWatchDog",
-		Desc:            "Check if there any gpu related problems observed during a test.",
+		Desc:            "Check if there any gpu related problems(hangs+crashes) observed during a test.",
+		Parent:          "gpuWatchHangs",
 		Impl:            &gpuWatchDogFixture{},
 		PreTestTimeout:  5 * time.Second,
 		PostTestTimeout: 5 * time.Second,
@@ -31,6 +40,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "chromeGraphics",
 		Desc:            "Logged into a user session for graphics testing.",
+		Parent:          "gpuWatchDog",
 		Impl:            chrome.NewLoggedInFixture(),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -38,12 +48,12 @@ func init() {
 	})
 }
 
-type gpuWatchDogFixture struct {
+type gpuWatchHangsFixture struct {
 	regexp   *regexp.Regexp
 	postFunc []func(ctx context.Context) error
 }
 
-func (f *gpuWatchDogFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+func (f *gpuWatchHangsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	// TODO: This needs to be kept in sync for new drivers, especially ARM.
 	hangRegexStrs := []string{
 		`drm:i915_hangcheck_elapsed`,
@@ -56,6 +66,76 @@ func (f *gpuWatchDogFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	// TODO(pwang): add regex for memory faults.
 	f.regexp = regexp.MustCompile(strings.Join(hangRegexStrs, "|"))
 	s.Log("Setup regex to detect GPU hang: ", f.regexp)
+	return nil
+}
+
+func (f *gpuWatchHangsFixture) TearDown(ctx context.Context, s *testing.FixtState) {}
+
+func (f *gpuWatchHangsFixture) Reset(ctx context.Context) error {
+	return nil
+}
+
+// checkHangs checks gpu hangs from the reader. It returns error if failed to read the file or gpu hang patterns are detected.
+func (f *gpuWatchHangsFixture) checkHangs(ctx context.Context, reader *syslog.Reader) error {
+	for {
+		e, err := reader.Read()
+		if err == io.EOF {
+			break
+		} else if err != nil {
+			return errors.Wrap(err, "failed to read syslog")
+		}
+
+		matches := f.regexp.FindAllStringSubmatch(e.Line, -1)
+		if len(matches) > 0 {
+			return errors.Errorf("GPU hang: %s", e.Line)
+		}
+	}
+	return nil
+}
+
+func (f *gpuWatchHangsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	f.postFunc = nil
+	// Attempt flushing system logs every second instead of every 10 minutes.
+	dirtyWritebackDuration, err := GetDirtyWritebackDuration()
+	if err != nil {
+		s.Log("Failed to set get dirty writeback duration: ", err)
+	} else {
+		if err := SetDirtyWritebackDuration(ctx, 1*time.Second); err != nil {
+			f.postFunc = append(f.postFunc, func(ctx context.Context) error {
+				s.Log("set back dirty writeback")
+				return SetDirtyWritebackDuration(ctx, dirtyWritebackDuration)
+			})
+		}
+	}
+	// syslog.NewReader reports syslog message written after it is started for GPU hang detection.
+	sysLogReader, err := syslog.NewReader(ctx)
+	if err != nil {
+		s.Log("Failed to get syslog reader: ", err)
+	} else {
+		f.postFunc = append(f.postFunc, func(ctx context.Context) error {
+			defer sysLogReader.Close()
+			return f.checkHangs(ctx, sysLogReader)
+		})
+	}
+}
+
+func (f *gpuWatchHangsFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	var postErr error
+	for i := len(f.postFunc) - 1; i >= 0; i-- {
+		if err := f.postFunc[i](ctx); err != nil {
+			postErr = errors.Wrap(postErr, err.Error())
+		}
+	}
+	if postErr != nil {
+		s.Error("PostTest failed: ", postErr)
+	}
+}
+
+type gpuWatchDogFixture struct {
+	postFunc []func(ctx context.Context) error
+}
+
+func (f *gpuWatchDogFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	return nil
 }
 
@@ -104,39 +184,8 @@ func (f *gpuWatchDogFixture) checkNewCrashes(ctx context.Context, oldCrashes []s
 	return nil
 }
 
-// checkHangs checks gpu hangs from the reader. It returns error if failed to read the file or gpu hang patterns are detected.
-func (f *gpuWatchDogFixture) checkHangs(ctx context.Context, reader *syslog.Reader) error {
-	for {
-		e, err := reader.Read()
-		if err == io.EOF {
-			break
-		} else if err != nil {
-			return errors.Wrap(err, "failed to read syslog")
-		}
-
-		matches := f.regexp.FindAllStringSubmatch(e.Line, -1)
-		if len(matches) > 0 {
-			return errors.Errorf("GPU hang: %s", e.Line)
-		}
-	}
-	return nil
-}
-
 func (f *gpuWatchDogFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	f.postFunc = nil
-	// Attempt flushing system logs every second instead of every 10 minutes.
-	dirtyWritebackDuration, err := GetDirtyWritebackDuration()
-	if err != nil {
-		s.Log("Failed to set get dirty writeback duration: ", err)
-	} else {
-		if err := SetDirtyWritebackDuration(ctx, 1*time.Second); err != nil {
-			f.postFunc = append(f.postFunc, func(ctx context.Context) error {
-				s.Log("set back dirty writeback")
-				return SetDirtyWritebackDuration(ctx, dirtyWritebackDuration)
-			})
-		}
-	}
-
 	// Record PreTest crashes.
 	crashes, err := f.getGPUCrash()
 	if err != nil {
@@ -144,17 +193,6 @@ func (f *gpuWatchDogFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 	} else {
 		f.postFunc = append(f.postFunc, func(ctx context.Context) error {
 			return f.checkNewCrashes(ctx, crashes)
-		})
-	}
-
-	// syslog.NewReader reports syslog message written after it is started for GPU hang detection.
-	sysLogReader, err := syslog.NewReader(ctx)
-	if err != nil {
-		s.Log("Failed to get syslog reader: ", err)
-	} else {
-		f.postFunc = append(f.postFunc, func(ctx context.Context) error {
-			defer sysLogReader.Close()
-			return f.checkHangs(ctx, sysLogReader)
 		})
 	}
 }

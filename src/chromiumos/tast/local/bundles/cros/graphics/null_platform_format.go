@@ -36,6 +36,7 @@ func init() {
 			Val:               []string{"AR30", "AB30", "XR30", "XB30"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Supports30bppFramebuffer()),
 		}},
+		Fixture: "gpuWatchHangs",
 	})
 }
 
