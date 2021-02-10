@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1b75b3_88bdc848",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-10T10:37:17Z",
+      "side": 1,
+      "message": "I was considering that but I think looking at stderr should be sufficient for debugging.",
+      "parentUuid": "1198c1e8_b56cfb20",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67c8fbb4_ad1e7ec1",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-02-10T10:09:11Z",
       "side": 1,
       "message": "off-topic/optional: stderr needs to be closed after the use?",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09fd085e_69d0bb0c",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-10T10:37:17Z",
+      "side": 1,
+      "message": "http://godoc/pkg/os/exec#Cmd.StderrPipe\n\n\u003e Wait will close the pipe after seeing the command exit, so most callers need not close the pipe themselves.",
+      "parentUuid": "67c8fbb4_ad1e7ec1",
       "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
