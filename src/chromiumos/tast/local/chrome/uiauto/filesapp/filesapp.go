@@ -14,9 +14,12 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 )
 
@@ -303,6 +306,50 @@ func (f *FilesApp) Search(kb *input.KeyboardEventWriter, searchTerms string) uia
 	)
 }
 
-// TODO(b/178020071): Implement DrapAndDropFile. With the new library it may be possible to do so with less waiting.
+// tickCheckboxForFile clicks the checkbox on a file and waits for selected label.
+func (f *FilesApp) tickCheckboxForFile(ctx context.Context, fileName string, kb *input.KeyboardEventWriter) (coords.Point, error) {
+	if err := kb.AccelPress(ctx, "Ctrl"); err != nil {
+		return coords.Point{}, errors.Wrap(err, "failed to press Ctrl")
+	}
+	defer kb.AccelRelease(ctx, "Ctrl")
+
+	selectedText := nodewith.Name("1 file selected").Role(role.StaticText)
+	if err := uiauto.Run(ctx,
+		// Select the file.
+		f.LeftClick(file(fileName)),
+
+		// Check file selected.
+		f.WaitUntilExists(selectedText),
+	); err != nil {
+		return coords.Point{}, errors.Wrap(err, "failed to select click file")
+	}
+
+	loc, err := f.ui.Location(ctx, file(fileName))
+	if err != nil {
+		return coords.Point{}, errors.Wrap(err, "failed to find the location for the file")
+	}
+
+	return loc.CenterPoint(), nil
+}
+
 // DragAndDropFile selects the specified file and does a drag and drop to the specified point.
-// func (f *FilesApp) DragAndDropFile(ctx context.Context, fileName string, dropPoint coords.Point) error {
+func (f *FilesApp) DragAndDropFile(ctx context.Context, fileName string, dropPoint coords.Point, kb *input.KeyboardEventWriter) error {
+	// Clicking on a file is not enough as the clicks can be too quick for FileInfo
+	// to be added to the drop event, this leads to an empty event. Clicking the
+	// file and checking the Action Bar we can guarantee FileInfo exists on the
+	// drop event.
+	srcPoint, err := f.tickCheckboxForFile(ctx, fileName, kb)
+	if err != nil {
+		return errors.Wrap(err, "failed selecting file for drag and drop")
+	}
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for no event")
+	}
+
+	if err := mouse.Drag(ctx, f.tconn, srcPoint, dropPoint, time.Second); err != nil {
+		return errors.Wrap(err, "failed mouse drag")
+	}
+
+	return ui.WaitForLocationChangeCompleted(ctx, f.tconn)
+}
