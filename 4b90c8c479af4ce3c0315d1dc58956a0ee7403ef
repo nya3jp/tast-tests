@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "4b90c8c479af4ce3c0315d1dc58956a0ee7403ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53b7f20e_c57b4dbd",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-10T04:46:23Z",
+      "side": 1,
+      "message": "According to src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/conn.go, EvalPromise is deprecated and Eval should be used. If the expression is evaluated into a Promise instance, Eval will be awaited until it is settled. In the impl, Eval is doing the exactly same thing as EvalPromise. return c.doEval(ctx, expr, true, out)",
+      "range": {
+        "startLine": 359,
+        "startChar": 17,
+        "endLine": 359,
+        "endChar": 28
+      },
+      "revId": "4b90c8c479af4ce3c0315d1dc58956a0ee7403ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
