@@ -16,6 +16,29 @@
       "message": "PTAL. Thanks!",
       "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75d39987_664d3e5c",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-10T04:39:38Z",
+      "side": 1,
+      "message": "Using UI interaction is definitely the right user experience to switch VK mode. However, the layout icon on the VK is using the same location as suggestion bar. Because of zero state suggestion which I proposed to disable in http://b/159178907, it hides the layout function row sometimes. So this function only works when the float vk switch button is shown on the top. Which is not always reliable. Is there any reason why this api does not work? I can try reach out inputs Eng team to find out a better solution on it.",
+      "range": {
+        "startLine": 222,
+        "startChar": 5,
+        "endLine": 222,
+        "endChar": 20
+      },
+      "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
