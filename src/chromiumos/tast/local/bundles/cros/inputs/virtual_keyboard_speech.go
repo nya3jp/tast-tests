@@ -40,8 +40,7 @@ func init() {
 		Desc:         "Test voice input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		// This test is a technical experiment. It is very flaky at the moment.
-		// Attr:         []string{"group:mainline", "informational", "group:essential-inputs"}
+		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
 		Params: []testing.Param{
 			{
 				Name:      "hello_en",
@@ -75,6 +74,9 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
@@ -118,7 +120,7 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	}
 
 	// Activate voice input.
-	if err := vkb.SwitchToVoiceInput(ctx, tconn); err != nil {
+	if err := vkb.SwitchToVoiceInput(ctx, cr); err != nil {
 		s.Fatal("Failed to switch on voice input: ", err)
 	}
 
