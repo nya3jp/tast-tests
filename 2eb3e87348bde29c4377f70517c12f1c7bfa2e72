@@ -195,6 +195,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07bd3349_8b7941c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-10T00:32:01Z",
+      "side": 1,
+      "message": "\u003eIt\u0027s not clear to me what process(es) these traces are collected from. \n\nCurrently I have it so these traces are collected from ChromeOS chrome for chromeos chrome tests, and lacros chrome for lacros chrome tests. i.e. we are relying on gpu backpressure from chromeos-chrome in lacros chrome to get relatively accurate results (to include any additional overhead from processing + compositing in chromeos chrome).\n\n\u003e Have you considered collecting UMA metrics, instead of developing trace-based metrics?\n\nYes, we also do this. The reason I am writing custom traces code is because we observed a significant amount of noise in the UMA metric histograms, and I want to rule out a few things (like testing methodology, metrics, etc) before concluding that the noise is inherent to chrome.\n\n\u003e Can you share some example traces this script is expected to process?\n\nSure, what are you going to be looking for?",
+      "parentUuid": "ad0ee4e1_00257807",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "2eb3e87348bde29c4377f70517c12f1c7bfa2e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "039a0ad1_14c68514",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/analyze.go",
         "patchSetId": 1
