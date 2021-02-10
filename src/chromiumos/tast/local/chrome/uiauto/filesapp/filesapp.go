@@ -14,10 +14,14 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 // DownloadPath is the location of Downloads for the user.
@@ -303,6 +307,76 @@ func (f *FilesApp) Search(kb *input.KeyboardEventWriter, searchTerms string) uia
 	)
 }
 
-// TODO(b/178020071): Implement DrapAndDropFile. With the new library it may be possible to do so with less waiting.
+// waitForNoEvent waits for the desktop to stabilize.
+// TODO(jinrongwu): may need to rewrite this after watcher is fully migrated.
+func (f *FilesApp) waitForNoEvent(ctx context.Context) error {
+	// Setup a watcher to wait for list box to stabilize.
+	ew, err := uiauto.NewRootWatcher(ctx, f.tconn, event.ActiveDescendantChanged)
+	if err != nil {
+		return errors.Wrap(err, "failed getting a watcher for the files listbox")
+	}
+	defer ew.Release(ctx)
+
+	// Check the listbox for any Activedescendantchanged events occurring in a 2 second interval.
+	// If any events are found continue polling until uiTimeout is reached.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return ew.EnsureNoEvents(ctx, 2*time.Second)
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return errors.Wrapf(err, "failed waiting %v for listbox to stabilize", 30)
+	}
+
+	return nil
+}
+
+// tickCheckboxForFile clicks the checkbox on a file and waits for selected label.
+func (f *FilesApp) tickCheckboxForFile(ctx context.Context, fileName string) (coords.Point, error) {
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		return coords.Point{}, errors.Wrap(err, "failed to create keyboard")
+	}
+	defer ew.Close()
+
+	if err := ew.AccelPress(ctx, "Ctrl"); err != nil {
+		return coords.Point{}, errors.Wrap(err, "failed to press Ctrl")
+	}
+	defer ew.AccelRelease(ctx, "Ctrl")
+
+	selectedText := nodewith.Name("1 file selected").Role(role.StaticText)
+	if err := uiauto.Run(ctx,
+		// Select the file.
+		f.LeftClick(file(fileName)),
+
+		// Check file selected.
+		f.WaitUntilExists(selectedText)); err != nil {
+		return coords.Point{}, errors.Wrap(err, "failed to select click file")
+	}
+
+	loc, err := f.ui.Location(ctx, file(fileName))
+	if err != nil {
+		return coords.Point{}, errors.Wrap(err, "failed to find the location for the file")
+	}
+
+	return loc.CenterPoint(), nil
+}
+
 // DragAndDropFile selects the specified file and does a drag and drop to the specified point.
-// func (f *FilesApp) DragAndDropFile(ctx context.Context, fileName string, dropPoint coords.Point) error {
+func (f *FilesApp) DragAndDropFile(ctx context.Context, fileName string, dropPoint coords.Point) error {
+	// Clicking on a file is not enough as the clicks can be too quick for FileInfo
+	// to be added to the drop event, this leads to an empty event. Clicking the
+	// file and checking the Action Bar we can guarantee FileInfo exists on the
+	// drop event.
+	srcPoint, err := f.tickCheckboxForFile(ctx, fileName)
+	if err != nil {
+		return errors.Wrap(err, "failed selecting file for drag and drop")
+	}
+
+	if err := f.waitForNoEvent(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for no event")
+	}
+
+	if err := mouse.Drag(ctx, f.tconn, srcPoint, dropPoint, time.Second); err != nil {
+		return errors.Wrap(err, "failed mouse drag")
+	}
+
+	return f.waitForNoEvent(ctx)
+}

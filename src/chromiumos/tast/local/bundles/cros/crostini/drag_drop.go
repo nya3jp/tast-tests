@@ -15,8 +15,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
@@ -139,15 +139,11 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	defer files.Release(ctx)
+	defer files.Close(ctx)
 	_, err = setWindowState(ctx, tconn, "Files - My files", ash.WindowStateLeftSnapped)
 	if err != nil {
 		s.Fatal("Failed to set Files App left-snapped: ", err)
 	}
-
-	// The Files App may show a welcome banner on launch to introduce the user to new features.
-	// Increase polling options to give UI more time to stabilize in the event that a banner is shown.
-	files.SetStablePollOpts(&testing.PollOptions{Interval: 1 * time.Second, Timeout: 5 * time.Second})
 
 	// Open drop_applet.py right-snapped.
 	s.Logf("Starting %s", dropAppletTitle)
@@ -209,7 +205,7 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 
 	// Validate file is copied to FilesApp MyFiles.
-	if err = files.WaitForFile(ctx, fileDragFromCrostini, 10*time.Second); err != nil {
+	if err = files.WaitForFile(fileDragFromCrostini)(ctx); err != nil {
 		s.Fatal("Failed to find the test file in Files app: ", err)
 	}
 	path = filepath.Join(filesapp.MyFilesPath, fileDragFromCrostini)
