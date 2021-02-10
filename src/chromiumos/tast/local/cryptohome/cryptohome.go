@@ -64,7 +64,7 @@ func init() {
 	hashRegexp = regexp.MustCompile("^/home/user/([[:xdigit:]]+)$")
 
 	shadowRegexp = regexp.MustCompile(`^/home/\.shadow/[^/]*/vault$`)
-	devRegexp = regexp.MustCompile(`^/dev/[^/]*$`)
+	devRegexp = regexp.MustCompile(`^/dev(/[^/]*){1,2}$`)
 	devLoopRegexp = regexp.MustCompile(`^/dev/loop[0-9]+$`)
 }
 

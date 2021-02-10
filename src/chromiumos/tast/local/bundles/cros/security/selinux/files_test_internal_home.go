@@ -78,8 +78,10 @@ func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 		{`/home/\.shadow/[0-9a-f]*/mount/user/(Downloads|MyFiles)(/.*)?`, mediaRWFileContextPattern},
 		// We cannot distinguish Downloads or MyFiles for users not logged in but created by other tests.
 		{`/home/\.shadow/[0-9a-f]*/mount/user(/.*)?`, `(cros_home_shadow_uid_user|media_rw_data_file|cros_downloads_file)`},
+		{`/home/\.shadow/[0-9a-f]*/cache/user(/.*)?`, `cros_home_shadow_uid_user`},
 		// Not logged in users are not decrypted. Skip it.
 		{`/home/\.shadow/[0-9a-f]*/mount/.*`, skipTest},
+		{`/home/\.shadow/[0-9a-f]*/cache/.*`, skipTest},
 	}
 	filepath.Walk("/home", func(path string, info os.FileInfo, err error) error {
 		if err != nil {
