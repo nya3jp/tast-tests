@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "426afec2_f17b7633",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-10T06:45:36Z",
+      "side": 1,
+      "message": "hi Yuichiro, I provided cr+2 anyway if you think the current solution works for you and you want to move forward. Also feel free to raise a crbug on OS\u003eInputs components to ask for the internal API. Inputs team is pretty supportive and quick response.",
+      "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75d39987_664d3e5c",
