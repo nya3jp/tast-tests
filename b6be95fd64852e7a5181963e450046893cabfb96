@@ -22,6 +22,30 @@
       },
       "revId": "b6be95fd64852e7a5181963e450046893cabfb96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a21247ae_fa0166b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-10T18:19:56Z",
+      "side": 0,
+      "message": "Should be OK without it in the local package, but I\u0027d leave it in this test anyways in case we need to look into failures down the road. It should still be useful outside of the quick settings interaction",
+      "parentUuid": "e07b6425_ae433abe",
+      "range": {
+        "startLine": 59,
+        "startChar": 38,
+        "endLine": 59,
+        "endChar": 60
+      },
+      "revId": "b6be95fd64852e7a5181963e450046893cabfb96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
