@@ -59,13 +59,13 @@ func init() {
 				Val:       glbenchConfig{environment: envCros},
 				Timeout:   3 * time.Hour,
 				ExtraAttr: []string{"group:graphics", "graphics_nightly"},
-				Fixture:   "gpuWatchDog",
+				Fixture:   "gpuWatchHangs",
 			}, {
 				Name:      "hasty",
 				Val:       glbenchConfig{hasty: true, environment: envCros},
 				ExtraAttr: []string{"group:mainline"},
 				Timeout:   5 * time.Minute,
-				Fixture:   "gpuWatchDog",
+				Fixture:   "gpuWatchHangs",
 			}, {
 				Name:              "crostini",
 				ExtraAttr:         []string{"group:graphics", "graphics_weekly"},

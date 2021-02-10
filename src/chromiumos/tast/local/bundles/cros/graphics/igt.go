@@ -103,7 +103,7 @@ func init() {
 			Timeout: 5 * time.Minute,
 		}},
 		Attr:    []string{"group:graphics", "graphics_perbuild"},
-		Fixture: "gpuWatchDog",
+		Fixture: "gpuWatchHangs",
 	})
 }
 

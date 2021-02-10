@@ -60,7 +60,7 @@ func init() {
 			ExtraAttr: []string{"group:mainline", "informational"},
 			Timeout:   5 * time.Minute,
 		}},
-		Fixture: "gpuWatchDog",
+		Fixture: "gpuWatchHangs",
 	})
 }
 
