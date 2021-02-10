@@ -152,6 +152,30 @@
       },
       "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fdf17a4_d6c3b309",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-10T06:43:31Z",
+      "side": 1,
+      "message": "At this moment. I would see internal API is the best option. For long term, we need to ensure that the user experience is stable enough. For example, we should not enable then disable zero state suggestions frequently. Currently it performs very different on different input fields, UIL / non-UIL extension such of factors. That makes the UI interaction fragile.",
+      "parentUuid": "48758fd5_75194ac3",
+      "range": {
+        "startLine": 222,
+        "startChar": 5,
+        "endLine": 222,
+        "endChar": 20
+      },
+      "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
