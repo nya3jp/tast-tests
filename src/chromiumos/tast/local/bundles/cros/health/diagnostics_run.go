@@ -39,21 +39,17 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "battery_capacity",
 			Val:               newRoutineParams(croshealthd.RoutineBatteryCapacity),
-			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Battery()),
 		}, {
 			Name:              "battery_health",
 			Val:               newRoutineParams(croshealthd.RoutineBatteryHealth),
-			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Battery()),
 		}, {
-			Name:      "urandom",
-			Val:       newRoutineParams(croshealthd.RoutineURandom),
-			ExtraAttr: []string{"informational"},
+			Name: "urandom",
+			Val:  newRoutineParams(croshealthd.RoutineURandom),
 		}, {
 			Name:              "smartctl_check",
 			Val:               newRoutineParams(croshealthd.RoutineSmartctlCheck),
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"smartctl"},
 		}, {
 			Name:      "cpu_cache",
@@ -66,13 +62,11 @@ func init() {
 			ExtraAttr: []string{"informational"},
 			Timeout:   5 * time.Minute,
 		}, {
-			Name:      "floating_point_accuracy",
-			Val:       newRoutineParams(croshealthd.RoutineFloatingPointAccurary),
-			ExtraAttr: []string{"informational"},
+			Name: "floating_point_accuracy",
+			Val:  newRoutineParams(croshealthd.RoutineFloatingPointAccurary),
 		}, {
 			Name:              "nvme_self_test",
 			Val:               newRoutineParams(croshealthd.RoutineNVMESelfTest),
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"nvme"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Nvme(),
 				// TODO(http://b/175305207): some zork nvme controllers lock up
@@ -80,61 +74,48 @@ func init() {
 				// eve uses Samsung nvme drives which do not support self-test
 				hwdep.SkipOnModel("eve")),
 		}, {
-			Name:      "nvme_wear_level",
-			Val:       newRoutineParams(croshealthd.RoutineNVMEWearLevel),
-			ExtraAttr: []string{"informational"},
+			Name: "nvme_wear_level",
+			Val:  newRoutineParams(croshealthd.RoutineNVMEWearLevel),
 			// nvme_wear_level requires specific offsets in the nvme log that
 			// are only currently defined for wilco devices.
 			ExtraSoftwareDeps: []string{"nvme", "wilco"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Nvme()),
 		}, {
-			Name:      "prime_search",
-			Val:       newRoutineParams(croshealthd.RoutinePrimeSearch),
-			ExtraAttr: []string{"informational"},
+			Name: "prime_search",
+			Val:  newRoutineParams(croshealthd.RoutinePrimeSearch),
 		}, {
-			Name:      "lan_connectivity",
-			Val:       newRoutineParams(croshealthd.RoutineLanConnectivity),
-			ExtraAttr: []string{"informational"},
+			Name: "lan_connectivity",
+			Val:  newRoutineParams(croshealthd.RoutineLanConnectivity),
 		}, {
-			Name:      "signal_strength",
-			Val:       newRoutineParams(croshealthd.RoutineSignalStrength),
-			ExtraAttr: []string{"informational"},
+			Name: "signal_strength",
+			Val:  newRoutineParams(croshealthd.RoutineSignalStrength),
 		}, {
-			Name:      "gateway_can_be_pinged",
-			Val:       newRoutineParams(croshealthd.RoutineGatewayCanBePinged),
-			ExtraAttr: []string{"informational"},
+			Name: "gateway_can_be_pinged",
+			Val:  newRoutineParams(croshealthd.RoutineGatewayCanBePinged),
 		}, {
-			Name:      "has_secure_wifi_connection",
-			Val:       newRoutineParams(croshealthd.RoutineHasSecureWifiConnection),
-			ExtraAttr: []string{"informational"},
+			Name: "has_secure_wifi_connection",
+			Val:  newRoutineParams(croshealthd.RoutineHasSecureWifiConnection),
 		}, {
-			Name:      "dns_resolver_present",
-			Val:       newRoutineParams(croshealthd.RoutineDNSResolverPresent),
-			ExtraAttr: []string{"informational"},
+			Name: "dns_resolver_present",
+			Val:  newRoutineParams(croshealthd.RoutineDNSResolverPresent),
 		}, {
-			Name:      "dns_latency",
-			Val:       newRoutineParams(croshealthd.RoutineDNSLatency),
-			ExtraAttr: []string{"informational"},
+			Name: "dns_latency",
+			Val:  newRoutineParams(croshealthd.RoutineDNSLatency),
 		}, {
-			Name:      "dns_resolution",
-			Val:       newRoutineParams(croshealthd.RoutineDNSResolverPresent),
-			ExtraAttr: []string{"informational"},
+			Name: "dns_resolution",
+			Val:  newRoutineParams(croshealthd.RoutineDNSResolverPresent),
 		}, {
-			Name:      "captive_portal",
-			Val:       newRoutineParams(croshealthd.RoutineCaptivePortal),
-			ExtraAttr: []string{"informational"},
+			Name: "captive_portal",
+			Val:  newRoutineParams(croshealthd.RoutineCaptivePortal),
 		}, {
-			Name:      "http_firewall",
-			Val:       newRoutineParams(croshealthd.RoutineHTTPFirewall),
-			ExtraAttr: []string{"informational"},
+			Name: "http_firewall",
+			Val:  newRoutineParams(croshealthd.RoutineHTTPFirewall),
 		}, {
-			Name:      "https_firewall",
-			Val:       newRoutineParams(croshealthd.RoutineHTTPSFirewall),
-			ExtraAttr: []string{"informational"},
+			Name: "https_firewall",
+			Val:  newRoutineParams(croshealthd.RoutineHTTPSFirewall),
 		}, {
-			Name:      "https_latency",
-			Val:       newRoutineParams(croshealthd.RoutineHTTPSLatency),
-			ExtraAttr: []string{"informational"},
+			Name: "https_latency",
+			Val:  newRoutineParams(croshealthd.RoutineHTTPSLatency),
 		}},
 	})
 }

@@ -23,7 +23,7 @@ func init() {
 			"cros-tdm@google.com", // team mailing list
 		},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Fixture:      "crosHealthdRunning",
 	})
 }
