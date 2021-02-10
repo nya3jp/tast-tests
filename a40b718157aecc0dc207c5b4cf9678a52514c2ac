@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2a791f_750cea4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/share_files_to_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-10T20:55:48Z",
+      "side": 1,
+      "message": "This tests seems to do a lot for such a simple goal. I think it should be written with a custom app that just saves a file. No gaia, playstore, or complex app interactions. That should back it much less flaky and even able to go in cq. In general gaia and playstore should be avoided if possible.\n\nAn example similar app can be found here: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/android/ArcFileReaderTest/?q\u003dArcFileReaderTest\u0026ct\u003dos",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "a40b718157aecc0dc207c5b4cf9678a52514c2ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
