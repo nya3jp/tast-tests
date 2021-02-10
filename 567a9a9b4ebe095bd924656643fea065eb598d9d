@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85da408a_5dafa9ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-10T05:47:31Z",
+      "side": 1,
+      "message": "Hi Darren, can we provide an api to switch vk layout between float and dock mode?",
+      "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75d39987_664d3e5c",
@@ -79,6 +96,30 @@
       "side": 1,
       "message": "It seems like code obfuscation is enabled for the IME extension. The method name is randomized and I\u0027m not sure there is a reliable way to get the correct name.",
       "parentUuid": "0e4f5d4a_9ddeec20",
+      "range": {
+        "startLine": 222,
+        "startChar": 5,
+        "endLine": 222,
+        "endChar": 20
+      },
+      "revId": "567a9a9b4ebe095bd924656643fea065eb598d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1484647b_51438556",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-10T05:47:31Z",
+      "side": 1,
+      "message": "Fair enough. That\u0027s why Inputs team create a test interface to fix the method name. I belive Inputs can do the similar thing to provide switching float VK api as well. Added Drren from Inputs team for any suggestions here.",
+      "parentUuid": "2bde59ac_add4b0cb",
       "range": {
         "startLine": 222,
         "startChar": 5,
