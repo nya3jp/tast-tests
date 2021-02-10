@@ -83,6 +83,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "610fc0c5_c93290b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-10T21:47:56Z",
+      "side": 1,
+      "message": "this \u0027ctx\u0027 refers to the original context (not the shortened one created below).  I guess this function runTLSDate() should accept ctx as a parameter.",
+      "range": {
+        "startLine": 57,
+        "startChar": 169,
+        "endLine": 57,
+        "endChar": 172
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9939b13_cdbfea77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-10T21:47:56Z",
+      "side": 1,
+      "message": "Rather than using shell and handling redirections there, I guess it\u0027s better to handle Go code for the communication.\n  out, err :\u003d s.DUT().Conn().Command(\"timeout\", \"20\", \"/usr/bin/tlsdated\", ...).Output(ctx, ssh.DumpLogOnError)",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 163
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b96b8bea_cd8bbc56",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
         "patchSetId": 3
