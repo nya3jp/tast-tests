@@ -16,6 +16,29 @@
       "message": "Ben, Jun, thanks a lot for the review! PTAL",
       "revId": "f413f358aaa9713722a19d43fb70140fcdbe0596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ac7841_77fa78ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-11T23:41:23Z",
+      "side": 1,
+      "message": "just curious: can\u0027t use CombinedOutput()?\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git@v0.0.0-20210120003151-81f51f243e55/src/chromiumos/tast/ssh#Cmd.CombinedOutput",
+      "range": {
+        "startLine": 123,
+        "startChar": 142,
+        "endLine": 123,
+        "endChar": 146
+      },
+      "revId": "f413f358aaa9713722a19d43fb70140fcdbe0596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
