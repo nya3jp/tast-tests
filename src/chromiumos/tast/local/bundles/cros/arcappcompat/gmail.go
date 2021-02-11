@@ -21,6 +21,7 @@ import (
 var clamshellTestsForGmail = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForGmail},
 	{Name: "Clamshell: Physical Keyboard", Fn: testutil.TouchAndTextInputs},
+	{Name: "Clamshell : Keyboard Critical Path", Fn: testutil.KeyboardNavigations},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
