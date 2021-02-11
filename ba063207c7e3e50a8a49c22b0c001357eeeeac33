@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acd0b6ca_9e8f2b53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-11T17:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d884a27_8df4b4e2",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "089db2e6_251146d3",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-10T00:28:58Z",
       "side": 1,
       "message": "For readability might be worth extracting this out into a separate function and just pass the s.Dut().Conn.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda26ee1_4a25a7c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-11T17:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "089db2e6_251146d3",
       "range": {
         "startLine": 48,
         "startChar": 1,
@@ -127,6 +175,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88709f40_1acb5e62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-11T17:41:33Z",
+      "side": 1,
+      "message": "With ssh.DumpLogOnError, the tlsdate daemon\u0027s output will go to ssh.log (\"uncaptured output\") and it can\u0027t be parsed for validation. \n\nHowever, in trying ssh.DumpLogOnError I\u0027ve realised there\u0027s no need to write the tlsdate command output in a temp file.",
+      "parentUuid": "b9939b13_cdbfea77",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 163
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea48b21_b7ff458e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-11T17:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610fc0c5_c93290b1",
+      "range": {
+        "startLine": 57,
+        "startChar": 169,
+        "endLine": 57,
+        "endChar": 172
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b96b8bea_cd8bbc56",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-02-10T00:28:58Z",
       "side": 1,
       "message": "Can you just use `out` here? Avoid going from []byte to string then back to []byte?",
+      "range": {
+        "startLine": 68,
+        "startChar": 21,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1acf91_a9102db6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-11T17:41:33Z",
+      "side": 1,
+      "message": "Good point, thanks!",
+      "parentUuid": "b96b8bea_cd8bbc56",
       "range": {
         "startLine": 68,
         "startChar": 21,
@@ -173,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8540237a_8e6fc249",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-11T17:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8128b817_8fec03f7",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 66
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ac36921_6167ffcd",
@@ -186,6 +330,30 @@
       "writtenOn": "2021-02-10T00:28:58Z",
       "side": 1,
       "message": "Make this and the password a const at the start of the test",
+      "range": {
+        "startLine": 105,
+        "startChar": 56,
+        "endLine": 105,
+        "endChar": 64
+      },
+      "revId": "ba063207c7e3e50a8a49c22b0c001357eeeeac33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc5765f4_7b7b6c72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_system_services.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-11T17:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ac36921_6167ffcd",
       "range": {
         "startLine": 105,
         "startChar": 56,
