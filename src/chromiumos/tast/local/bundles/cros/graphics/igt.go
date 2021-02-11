@@ -39,6 +39,8 @@ func init() {
 		Contacts: []string{
 			"ddavenport@chromium.org",
 			"chromeos-gfx@google.com",
+			"chromeos-gfx-display@google.com",
+			"markyacoub@google.com",
 		},
 		SoftwareDeps: []string{"drm_atomic", "igt"},
 		Params: []testing.Param{{
