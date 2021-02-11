@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2e982c_943743a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-11T00:27:05Z",
+      "side": 1,
+      "message": "Hi Shuhei, Jun, I realized we need this CL for the DUT suspend/resume testing. I created a bug and proposed this CL, which worked in our private branch. I published this for your review to see if this is the right approach to tackle the issue. Thank you in advance! The test using this change is: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2605493",
+      "revId": "73c95276223ac0f26679545916c7e175b1997057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
