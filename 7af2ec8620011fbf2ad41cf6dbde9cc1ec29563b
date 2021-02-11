@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64a283fe_b067795b",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-11T01:27:04Z",
+      "side": 1,
+      "message": "gpuWatchHangs",
+      "range": {
+        "startLine": 45,
+        "startChar": 20,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "7af2ec8620011fbf2ad41cf6dbde9cc1ec29563b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
