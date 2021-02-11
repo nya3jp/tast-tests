@@ -46,6 +46,30 @@
       },
       "revId": "27e0837ce6233e83bd2786f0e746bbc6d0cf853c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f782981_732543df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000015
+      },
+      "writtenOn": "2021-02-11T21:42:04Z",
+      "side": 1,
+      "message": "whoa, cool go link!\n\nLGTM assuming you\u0027ve validated on zork/TGL/JSL.",
+      "parentUuid": "76bc8af9_added695",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "27e0837ce6233e83bd2786f0e746bbc6d0cf853c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
