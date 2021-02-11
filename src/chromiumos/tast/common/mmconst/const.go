@@ -13,3 +13,8 @@ const (
 	ModemPropertySimSlots       = "SimSlots"
 	ModemPropertyPrimarySimSlot = "PrimarySimSlot"
 )
+
+// ModemManager1.Sim properties
+const (
+	SimPropertySimIdentifier = "SimIdentifier"
+)
