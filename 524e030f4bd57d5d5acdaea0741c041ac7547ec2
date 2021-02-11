@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd1b04b_47a71ff8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-11T00:55:45Z",
+      "side": 1,
+      "message": "verified the verbose nearby logs appear in the chrome logs",
+      "revId": "524e030f4bd57d5d5acdaea0741c041ac7547ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
