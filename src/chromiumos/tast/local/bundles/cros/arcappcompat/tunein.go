@@ -81,6 +81,7 @@ func Tunein(ctx context.Context, s *testing.State) {
 func launchAppForTuneIn(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		closeButtonText = "Close Button"
+		continueText    = "Continue with"
 		allowText       = "ALLOW"
 		homeIconID      = "tunein.player:id/menu_navigation_home"
 		homeIconDes     = "Home"
@@ -92,6 +93,16 @@ func launchAppForTuneIn(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Log("closeButton doesn't exist: ", err)
 	} else if err := closeButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on closeButton: ", err)
+	}
+
+	// Continue with an account.
+	ContinueButton := d.Object(ui.Text(continueText))
+	if err := ContinueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Continue Button doesn't exist: ", err)
+	} else if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
+		s.Fatal("Failed to press KEYCODE_TAB : ", err)
+	} else if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Fatal("Failed to press ENTER key: ", err)
 	}
 
 	// Click on allow button.
