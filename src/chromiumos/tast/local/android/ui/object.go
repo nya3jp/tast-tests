@@ -108,6 +108,14 @@ func (o *Object) Click(ctx context.Context) error {
 	return o.callSimple(ctx, "click", o.s)
 }
 
+// ScrollForward performs a forward scroll action with n number of scroll steps.
+//
+// This method corresponds to UiScrollable.scrollForward().
+// https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollforward
+func (o *Object) ScrollForward(ctx context.Context, n int) error {
+	return o.callSimple(ctx, "scrollForward", o.s, true, n)
+}
+
 // ScrollTo performs a forward scroll action to move through the scrollable layout element until a view matching the target selector is found.
 //
 // This method corresponds to UiScrollable.scrollintoview().
