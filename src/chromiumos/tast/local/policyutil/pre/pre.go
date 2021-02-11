@@ -57,7 +57,12 @@ func (p *preImpl) Timeout() time.Duration { return chrome.LoginTimeout + 15*time
 // It returns a PreData containing the current state that can be used by the test.
 func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	if p.fdms != nil && p.cr != nil {
-		if err := policyutil.ResetChrome(ctx, p.fdms, p.cr); err == nil {
+		resetCtx, cancel := context.WithTimeout(ctx, chrome.ResetTimeout)
+		defer cancel()
+		resetCtx, st := timing.Start(resetCtx, "user_policy_precondition_reset")
+		defer st.End()
+
+		if err := policyutil.ResetChrome(resetCtx, p.fdms, p.cr); err == nil {
 			return &PreData{p.fdms, p.cr}
 		}
 
