@@ -359,6 +359,15 @@ func TouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 }
 
+// MouseScrollAction func verify mouse scroll action in the app is working properly without crash or ANR.
+func MouseScrollAction(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	errorMessage := performMouseScrollAction(ctx, s, tconn, a, d, appPkgName)
+	if errorMessage != "" {
+		s.Error("Mouse scroll is not working properly in the app")
+	}
+	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
@@ -493,6 +502,20 @@ func performTouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chr
 	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "30", "--pct-nav", "10", "--pct-touch", "40", "--pct-nav", "10", "--pct-anyevent", "10", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Log("Failed to perform monkey test touch and text inputs: ", err)
+	}
+	output := string(out)
+	errorMessage = processOutput(ctx, s, tconn, a, d, appPkgName, output)
+	return errorMessage
+}
+
+// performMouseScrollAction func perform mouse scroll using monkey test.
+func performMouseScrollAction(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string) string {
+	var errorMessage string
+
+	// To perform mouse scroll.
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--throttle", "100", "--pct-touch", "30", "--pct-trackball", "50", "-v", "1000").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Log("Failed to perform monkey test mouse scroll: ", err)
 	}
 	output := string(out)
 	errorMessage = processOutput(ctx, s, tconn, a, d, appPkgName, output)
