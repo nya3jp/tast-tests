@@ -11,11 +11,10 @@ import (
 	"strconv"
 
 	"chromiumos/tast/local/android"
-	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbysetup"
-	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet"
-	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbytestutils"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -33,7 +32,8 @@ func init() {
 		Data:         []string{nearbysnippet.ZipName},
 		// This var can be used when running locally on non-rooted devices. For non-rooted devices, you need to
 		// have already enabled bluetooth, extended the screen timeout, and overridden the GMS Core flags.
-		Vars: []string{"rooted"},
+		Vars:    []string{"rooted"},
+		Fixture: "nearbyShareEnabledDataOfflineAllContacts",
 		Params: []testing.Param{
 			{
 				Name:      "small_png",
@@ -53,28 +53,9 @@ func init() {
 
 // CrosSenderAndroidReceiver tests file sharing with a CrOS device as sender and Android device as receiver.
 func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
-	// TODO(crbug/1159975): Remove flags (or use precondition) once the feature is enabled by default.
-	cr, err := chrome.New(
-		ctx,
-		chrome.EnableFeatures("IntentHandlingSharing", "NearbySharing", "Sharesheet"),
-		chrome.ExtraArgs("--nearby-share-verbose-logging"),
-	)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
-
-	// Set up Nearby Share on the CrOS device.
-	const crosBaseName = "cros_test"
-	crosDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
-	if err := nearbysetup.CrOSSetup(ctx, tconn, cr, nearbyshare.DataUsageOffline, nearbyshare.VisibilityAllContacts, crosDisplayName); err != nil {
-		s.Fatal("Failed to set up Nearby Share: ", err)
-	}
+	cr := s.FixtValue().(*nearbyshare.FixtData).Chrome
+	tconn := s.FixtValue().(*nearbyshare.FixtData).TestConn
+	crosDisplayName := s.FixtValue().(*nearbyshare.FixtData).DeviceName
 
 	// Set up Nearby Share on the Android device. Don't override GMS Core flags or perform settings changes that require root access if specified in the runtime vars.
 	rooted := true
@@ -106,12 +87,12 @@ func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to extract test data files: ", err)
 	}
-	defer os.RemoveAll(nearbyshare.SendDir)
+	defer os.RemoveAll(nearbytestutils.SendDir)
 
 	// Get the full paths of the test files to pass to chrome://nearby.
 	var testFiles []string
 	for _, f := range filenames {
-		testFiles = append(testFiles, filepath.Join(nearbyshare.SendDir, f))
+		testFiles = append(testFiles, filepath.Join(nearbytestutils.SendDir, f))
 	}
 
 	s.Log("Starting sending on the CrOS device")
@@ -172,7 +153,7 @@ func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
 	shareCompleted = true
 
 	// Hash the file on both sides and confirm they match. Android receives shares in its default downloads directory.
-	if err := nearbytestutils.FileHashComparison(ctx, filenames, nearbyshare.SendDir, android.DownloadDir, androidDevice); err != nil {
+	if err := nearbytestutils.FileHashComparison(ctx, filenames, nearbytestutils.SendDir, android.DownloadDir, androidDevice); err != nil {
 		s.Fatal("Failed file hash comparison: ", err)
 	}
 	s.Log("Share completed and file hashes match on both sides")

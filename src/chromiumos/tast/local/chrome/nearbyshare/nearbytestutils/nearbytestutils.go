@@ -20,8 +20,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet"
-	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/testexec"
 )
 
@@ -34,6 +33,9 @@ type TestData struct {
 	Timeout  time.Duration
 	MimeType nearbysnippet.MimeType
 }
+
+// SendDir is the staging directory for test files when sending from CrOS.
+const SendDir = "/home/chronos/user/Downloads/nearby_test_files"
 
 // UnzipTestFiles extracts test data files to a temporary directory. Returns an array of base filenames and the name of the temporary dir.
 // The extracted files can then be pushed to the Android device or copied to a user-accessible directory on CrOS, depending on which device is the sender.
@@ -57,7 +59,7 @@ func UnzipTestFiles(ctx context.Context, zipPath string) (filenames []string, te
 	return filenames, tempDir, nil
 }
 
-// ExtractCrosTestFiles prepares test files to send from a CrOS device. The test files will be staged in nearbyshare.SendDir,
+// ExtractCrosTestFiles prepares test files to send from a CrOS device. The test files will be staged in SendDir,
 // which is a subdirectory of the current user's download directory. Callers should defer removing the test files to clean up after tests.
 func ExtractCrosTestFiles(ctx context.Context, zipPath string) ([]string, error) {
 	filenames, tempDir, err := UnzipTestFiles(ctx, zipPath)
@@ -66,7 +68,7 @@ func ExtractCrosTestFiles(ctx context.Context, zipPath string) ([]string, error)
 	}
 	defer os.RemoveAll(tempDir)
 
-	targetPath := nearbyshare.SendDir
+	targetPath := SendDir
 
 	// Delete and remake the target directory to ensure there are no existing files.
 	if err := os.RemoveAll(targetPath); err != nil {

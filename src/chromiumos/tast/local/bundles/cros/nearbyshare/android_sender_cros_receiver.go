@@ -12,11 +12,10 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android"
-	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbysetup"
-	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet"
-	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbytestutils"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/screenshot"
@@ -35,7 +34,8 @@ func init() {
 		Data:         []string{nearbysnippet.ZipName},
 		// This var can be used when running locally on non-rooted devices. For non-rooted devices, you need to
 		// have already enabled bluetooth, extended the screen timeout, and overridden the GMS Core flags.
-		Vars: []string{"rooted"},
+		Vars:    []string{"rooted"},
+		Fixture: "nearbyShareEnabledDataOfflineAllContacts",
 		Params: []testing.Param{
 			{
 				Name: "small_jpg",
@@ -53,28 +53,9 @@ func init() {
 
 // AndroidSenderCrosReceiver tests file sharing with an Android device as sender and CrOS device as receiver.
 func AndroidSenderCrosReceiver(ctx context.Context, s *testing.State) {
-	// TODO(crbug/1159975): Remove flags (or use precondition) once the feature is enabled by default.
-	cr, err := chrome.New(
-		ctx,
-		chrome.EnableFeatures("IntentHandlingSharing", "NearbySharing", "Sharesheet"),
-		chrome.ExtraArgs("--nearby-share-verbose-logging"),
-	)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
-
-	// Set up Nearby Share on the CrOS device.
-	const crosBaseName = "cros_test"
-	crosDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
-	if err := nearbysetup.CrOSSetup(ctx, tconn, cr, nearbyshare.DataUsageOffline, nearbyshare.VisibilityAllContacts, crosDisplayName); err != nil {
-		s.Fatal("Failed to set up Nearby Share: ", err)
-	}
+	cr := s.FixtValue().(*nearbyshare.FixtData).Chrome
+	tconn := s.FixtValue().(*nearbyshare.FixtData).TestConn
+	crosDisplayName := s.FixtValue().(*nearbyshare.FixtData).DeviceName
 
 	// Set up Nearby Share on the Android device. Don't override GMS Core flags or perform settings changes that require root access if specified in the runtime vars.
 	rooted := true

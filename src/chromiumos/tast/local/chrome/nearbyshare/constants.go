@@ -17,42 +17,6 @@ var ReceiveUIParams ui.FindParams = ui.FindParams{
 	Name: "Settings - Nearby Share",
 }
 
-// DataUsage represents Nearby Share data usage setting values.
-type DataUsage int
-
-// As defined in https://chromium.googlesource.com/chromium/src/+/master/chrome/browser/ui/webui/nearby_share/public/mojom/nearby_share_settings.mojom
-const (
-	DataUsageUnknown DataUsage = iota
-	DataUsageOffline
-	DataUsageOnline
-	DataUsageWifiOnly
-)
-
-// Visibility represents Nearby Share visibility setting values.
-type Visibility int
-
-// As defined in https://chromium.googlesource.com/chromium/src/+/master/chrome/browser/ui/webui/nearby_share/public/mojom/nearby_share_settings.mojom
-const (
-	VisibilityUnknown Visibility = iota
-	VisibilityNoOne
-	VisibilityAllContacts
-	VisibilitySelectedContacts
-)
-
-// DeviceNameValidationResult represents device name validation results that are returned after setting the device name programmatically.
-type DeviceNameValidationResult int
-
-// As defined in https://chromium.googlesource.com/chromium/src/+/master/chrome/browser/ui/webui/nearby_share/public/mojom/nearby_share_settings.mojom
-const (
-	DeviceNameValidationResultValid DeviceNameValidationResult = iota
-	DeviceNameValidationResultErrorEmpty
-	DeviceNameValidationResultErrorTooLong
-	DeviceNameValidationResultErrorNotValidUtf8
-)
-
-// SendDir is the staging directory for test files when sending from CrOS.
-const SendDir = "/home/chronos/user/Downloads/nearby_test_files"
-
 // CrosDetectReceiverTimeout is the timeout for a CrOS sender to detect a receiver.
 const CrosDetectReceiverTimeout = time.Minute
 
