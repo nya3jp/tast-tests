@@ -9,7 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -94,6 +95,11 @@ func FilesAppWatch(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	const (
 		testFileName1   = "FilesAppWatch1.txt"
 		testFileName2   = "FilesAppWatch2.txt"
@@ -103,33 +109,26 @@ func FilesAppWatch(ctx context.Context, s *testing.State) {
 	if err := cont.WriteFile(ctx, testFileName1, testFileContent); err != nil {
 		s.Fatal("Create file failed: ", err)
 	}
-	defer cont.RemoveAll(ctx, testFileName1)
+	defer cont.RemoveAll(cleanupCtx, testFileName1)
 
 	// Launch the files application
 	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	defer func(ctx context.Context) {
-		files.Release(ctx)
-	}(ctx)
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
 
 	// Validate file1.txt is shown in 'Linux files'.
-	if err := files.OpenDir(ctx, "Linux files", "Files - Linux files"); err != nil {
-		s.Fatal("Opening Linux files folder failed: ", err)
+	if err := uiauto.Run(ctx,
+		files.OpenDir("Linux files", "Files - Linux files"),
+		files.WithTimeout(10*time.Second).WaitForFile(testFileName1)); err != nil {
+		s.Fatal("Failed to find file1.txt created in the container in Linux files: ", err)
 	}
-	if err := files.WaitForFile(ctx, testFileName1, 10*time.Second); err != nil {
-		s.Fatal("Waiting for file1.txt failed: ", err)
-	}
-
 	// Create file2.txt in container and check that FilesApp refreshes.
 	if err := cont.WriteFile(ctx, testFileName2, testFileContent); err != nil {
 		s.Fatal("Create file failed: ", err)
 	}
-	defer cont.RemoveAll(ctx, testFileName2)
-	if err := files.WaitForFile(ctx, testFileName2, 10*time.Second); err != nil {
+	defer cont.RemoveAll(cleanupCtx, testFileName2)
+	if err := files.WithTimeout(10 * time.Second).WaitForFile(testFileName2)(ctx); err != nil {
 		s.Fatal("Waiting for file2.txt failed: ", err)
 	}
 }

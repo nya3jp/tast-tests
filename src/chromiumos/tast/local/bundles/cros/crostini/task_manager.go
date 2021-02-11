@@ -6,13 +6,12 @@ package crostini
 
 import (
 	"context"
-	"path/filepath"
 	"time"
 
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -97,32 +96,21 @@ func TaskManager(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// \x1b == Escape
-	if err := keyboard.Accel(ctx, "Search+\x1b"); err != nil {
-		s.Fatal("Couldn't open task manager: ", err)
-	}
+	tastkManager := nodewith.Name("Task Manager").ClassName("TaskManagerView").First()
+	crostiniEntry := nodewith.Name("Linux Virtual Machine: termina").Ancestor(tastkManager)
+	ui := uiauto.New(tconn)
+	if err := uiauto.Run(ctx,
+		// Press Search + Esc to launch task manager
+		keyboard.AccelAction("Search+Esc"),
 
-	s.Log("Find row in task manager")
-	taskManagerRootNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-		Name:      "Task Manager",
-		ClassName: "TaskManagerView",
-	}, time.Second*10)
-	if err != nil {
-		s.Fatal("Couldn't find Task Manager node: ", err)
-	}
-	defer taskManagerRootNode.Release(ctx)
+		// Click the task manager.
+		ui.LeftClick(tastkManager),
 
-	entry, err := taskManagerRootNode.DescendantWithTimeout(ctx,
-		ui.FindParams{Name: "Linux Virtual Machine: termina"}, time.Second*30)
-	if err != nil {
-		if err := screenshot.Capture(ctx, filepath.Join(s.OutDir(), "scTaskManager.png")); err != nil {
-			s.Fatal("Failed to take screenshot: ", err)
-		}
-		s.Fatal("Couldn't find node for Crostini: ", err)
-	}
-	entry.Release(ctx)
+		// Focus on Crostini entry.
+		ui.WaitUntilExists(crostiniEntry),
 
-	if err := keyboard.Accel(ctx, "Ctrl+w"); err != nil {
-		s.Fatal("Couldn't close task manager: ", err)
+		// Exit task manager.
+		keyboard.AccelAction("Ctrl+W")); err != nil {
+		s.Fatal("Failed to test Crostini in Task Manager: ", err)
 	}
 }
