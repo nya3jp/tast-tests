@@ -17,9 +17,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ClamshellTests are placed here.
+/// ClamshellTests are placed here.
 var clamshellTestsForInfinitePainter = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForInfinitePainter},
+	{Name: "Clamshell: Mouse Scroll", Fn: testutil.MouseScrollAction},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
@@ -29,6 +30,7 @@ var clamshellTestsForInfinitePainter = []testutil.TestCase{
 // TouchviewTests are placed here.
 var touchviewTestsForInfinitePainter = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForInfinitePainter},
+	{Name: "Touchview: Mouse Scroll", Fn: testutil.MouseScrollAction},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
