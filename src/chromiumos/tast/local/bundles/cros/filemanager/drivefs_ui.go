@@ -7,11 +7,12 @@ package filemanager
 import (
 	"context"
 	"os"
-	"path"
-	"time"
+	"path/filepath"
 
-	"chromiumos/tast/local/bundles/cros/filemanager/pre"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/drivefs"
 	"chromiumos/tast/testing"
 )
@@ -34,48 +35,58 @@ func init() {
 			"group:mainline",
 			"informational",
 		},
-		Pre: pre.DriveFsStarted,
 		Vars: []string{
 			"filemanager.user",
 			"filemanager.password",
-			"filemanager.drive_credentials",
 		},
 	})
 }
 
 func DrivefsUI(ctx context.Context, s *testing.State) {
-	mountPath := s.PreValue().(drivefs.PreData).MountPath
-	tconn := s.PreValue().(drivefs.PreData).TestAPIConn
+	const testFileName = "drivefs"
+	username := s.RequiredVar("filemanager.user")
+	password := s.RequiredVar("filemanager.password")
 
-	const (
-		filesAppUITimeout = 15 * time.Second
-		testFileName      = "drivefs"
-	)
+	// Start up Chrome.
+	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, ""))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	mountPath, err := drivefs.WaitForDriveFs(ctx, username)
+	if err != nil {
+		s.Fatal("Failed to wait for DriveFS to be mounted: ", err)
+	}
+
+	// Open the test API.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API Connection: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Create a test file inside Drive.
-	drivefsRoot := path.Join(mountPath, "root")
-	testFile, err := os.Create(path.Join(drivefsRoot, testFileName))
+	drivefsRoot := filepath.Join(mountPath, "root")
+	testFile, err := os.Create(filepath.Join(drivefsRoot, testFileName))
 	if err != nil {
-		s.Fatal("Could not create the test file inside ", drivefsRoot, ": ", err)
+		s.Fatalf("Failed to create test file inside %q: %v", drivefsRoot, err)
 	}
 	testFile.Close()
 	// Don't delete the test file after the test as there may not be enough time
 	// after the test for the deletion to be synced to Drive.
 
-	// Launch Files App and check that Drive is accessible.
-	filesApp, err := filesapp.Launch(ctx, tconn)
+	// Launch Files App.
+	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
-		s.Fatal("Could not launch the Files App: ", err)
-	}
-	defer filesApp.Release(ctx)
-
-	// Navigate to Google Drive via the Files App ui.
-	if err := filesApp.OpenDrive(ctx); err != nil {
-		s.Fatal("Could not open Google Drive folder: ", err)
+		s.Fatal("Failed to launch Files app: ", err)
 	}
 
-	// Check for the test file created earlier.
-	if err := filesApp.WaitForFile(ctx, testFileName, filesAppUITimeout); err != nil {
-		s.Fatalf("Could not find test file %q in Drive: %v", testFileName, err)
+	if err := uiauto.Run(ctx,
+		// Open the Google Drive folder and check for the test file.
+		files.OpenDrive(),
+		files.WaitForFile(testFileName),
+	); err != nil {
+		s.Fatal("Failed to wait for the test file in Drive: ", err)
 	}
 }
