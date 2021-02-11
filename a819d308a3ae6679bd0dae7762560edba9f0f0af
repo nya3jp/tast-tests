@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9672492a_4b68a6ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-11T08:54:20Z",
+      "side": 1,
+      "message": "nit: previously unsupported",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "a819d308a3ae6679bd0dae7762560edba9f0f0af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c863c59a_bc3cf71f",
@@ -14,6 +37,57 @@
       "writtenOn": "2021-02-10T19:47:05Z",
       "side": 1,
       "message": "Hi Victor,\n\nPTAL :) \n\nThanks!",
+      "revId": "a819d308a3ae6679bd0dae7762560edba9f0f0af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f7b735c_96f2a271",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-11T08:54:20Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "a819d308a3ae6679bd0dae7762560edba9f0f0af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5648d919_ddc515b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots_capture_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-11T08:54:20Z",
+      "side": 1,
+      "message": "nit: split into 2 checks with different error messages",
+      "revId": "a819d308a3ae6679bd0dae7762560edba9f0f0af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208e2fb8_8f169797",
+        "filename": "src/chromiumos/tast/local/chrome/ui/capturemode/capture_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-11T08:54:20Z",
+      "side": 1,
+      "message": "nit: Add a comment explaining why this is done.",
       "revId": "a819d308a3ae6679bd0dae7762560edba9f0f0af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
