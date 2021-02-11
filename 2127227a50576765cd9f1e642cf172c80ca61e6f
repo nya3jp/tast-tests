@@ -39,6 +39,30 @@
       },
       "revId": "2127227a50576765cd9f1e642cf172c80ca61e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf685f8b_ff074c85",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-02-11T20:30:46Z",
+      "side": 1,
+      "message": "The device spec can now be /dev/(nvme*|mmc*) or /dev/mapper/\u003cidentifier\u003e. It\u0027s probably more accurate to replace \u0027+\u0027 with {1,2}, done in this patchset.",
+      "parentUuid": "2608c6f7_73395184",
+      "range": {
+        "startLine": 62,
+        "startChar": 46,
+        "endLine": 62,
+        "endChar": 47
+      },
+      "revId": "2127227a50576765cd9f1e642cf172c80ca61e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
