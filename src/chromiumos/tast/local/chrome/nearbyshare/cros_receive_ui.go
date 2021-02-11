@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
 )
@@ -46,6 +47,31 @@ func StartHighVisibilityMode(ctx context.Context, tconn *chrome.TestConn, device
 	}
 	if err := receiveWindow.WaitUntilDescendantExists(ctx, textParams, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to find text with device name and visibility indication")
+	}
+	return nil
+}
+
+// AcceptIncomingShareNotification waits for the incoming share notification from an in-contacts device and then accepts the share.
+func AcceptIncomingShareNotification(ctx context.Context, tconn *chrome.TestConn, senderName string, timeout time.Duration) error {
+	if _, err := ash.WaitForNotification(ctx, tconn, timeout,
+		ash.WaitTitleContains("Nearby Share"),
+		ash.WaitMessageContains(senderName),
+	); err != nil {
+		return errors.Wrap(err, "failed to wait for incoming share notification")
+	}
+	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{Name: "RECEIVE", ClassName: "NotificationMdTextButton"}, nil); err != nil {
+		return errors.Wrap(err, "failed to click sharing notification's receive button")
+	}
+	return nil
+}
+
+// WaitForReceivingCompleteNotification waits for the notification indicating that the incoming share has completed.
+func WaitForReceivingCompleteNotification(ctx context.Context, tconn *chrome.TestConn, senderName string, timeout time.Duration) error {
+	if _, err := ash.WaitForNotification(ctx, tconn, timeout,
+		ash.WaitTitleContains("received"),
+		ash.WaitTitleContains(senderName),
+	); err != nil {
+		return errors.Wrap(err, "failed to wait for receiving complete notification")
 	}
 	return nil
 }
