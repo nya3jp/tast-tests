@@ -13,7 +13,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
 	"chromiumos/tast/local/cryptohome"
@@ -137,7 +137,7 @@ func NoAccessToDownloads(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to open Files app: ", err)
 				}
 				defer filesApp.Close(ctx)
-				if err := filesApp.OpenDownloads(ctx); err != nil {
+				if err := filesApp.OpenDownloads()(ctx); err != nil {
 					s.Fatal("Failed to open Downloads: ", err)
 				}
 				break

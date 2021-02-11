@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/vm"
@@ -99,7 +99,7 @@ func OpenWithTerminal(ctx context.Context, s *testing.State) {
 	}
 	defer filesApp.Close(ctx)
 
-	if err := filesApp.SelectContextMenu(ctx, "Downloads", "Open with Terminal"); err != nil {
+	if err := filesApp.ClickContextMenuItem("Downloads", "Open with Terminal")(ctx); err != nil {
 		s.Fatal("Open with Terminal failed: ", err)
 	}
 
