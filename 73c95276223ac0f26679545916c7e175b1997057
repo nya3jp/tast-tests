@@ -16,6 +16,46 @@
       "message": "Hi Shuhei, Jun, I realized we need this CL for the DUT suspend/resume testing. I created a bug and proposed this CL, which worked in our private branch. I published this for your review to see if this is the right approach to tackle the issue. Thank you in advance! The test using this change is: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2605493",
       "revId": "73c95276223ac0f26679545916c7e175b1997057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa49a828_3996b216",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-11T01:05:47Z",
+      "side": 1,
+      "message": "I am wondering how suspend/resume is related to the local packages like here, also I\u0027m interested in how is it implemented.  Isn\u0027t it a remote test?  By looking with a usage, we may be able to provide more suggestions.",
+      "revId": "73c95276223ac0f26679545916c7e175b1997057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af3a6d1_44f93086",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-11T01:05:47Z",
+      "side": 1,
+      "message": "Not only the TestAPIConn but any other Conns should also be regenerated, and also there would be tricky corner cases.  For example, when tracing is enabled (StartTracing is called) and then ResetSession is called, the tracing state within the browser process and c.sess.TracingStarted() will mismatch.\n\nCould you clarify what is needed? My guess is, when DUT is suspended and then resumed, the connection will be lost.  If so I guess cdputil or internal/driver will have to take care of reconnection automatically, rather than having a method here.",
+      "range": {
+        "startLine": 235,
+        "startChar": 10,
+        "endLine": 235,
+        "endChar": 21
+      },
+      "revId": "73c95276223ac0f26679545916c7e175b1997057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
