@@ -388,7 +388,7 @@ func TapHandwritingInputAndWaitForEngine(ctx context.Context, tconn *chrome.Test
 	// TODO(crbug/1165424): Check if handwriting input engine is ready.
 	// Wait for the handwriting input to become ready to take in the handwriting.
 	// If a stroke is completed before the handwriting input is ready, the stroke will not be recognized.
-	defer testing.Sleep(ctx, 1*time.Second)
+	defer testing.Sleep(ctx, 5*time.Second)
 
 	params := ui.FindParams{
 		Role:      ui.RoleTypeButton,

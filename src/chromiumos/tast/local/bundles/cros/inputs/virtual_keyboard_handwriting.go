@@ -39,6 +39,7 @@ type handwritingTestParams struct {
 	handwritingFile string
 	expectedText    string
 	imeID           ime.InputMethodCode
+	testFloat       bool
 }
 
 func init() {
@@ -59,6 +60,15 @@ func init() {
 					imeID:           ime.INPUTMETHOD_NACL_MOZC_JP,
 				},
 			}, {
+				Name:      "hello_jp_float",
+				ExtraData: []string{handwritingFileJP},
+				Val: handwritingTestParams{
+					handwritingFile: handwritingFileJP,
+					expectedText:    "こんにちは",
+					imeID:           ime.INPUTMETHOD_NACL_MOZC_JP,
+					testFloat:       true,
+				},
+			}, {
 				Name:      "hello_cn",
 				ExtraData: []string{handwritingFileCN},
 				Val: handwritingTestParams{
@@ -67,12 +77,30 @@ func init() {
 					imeID:           ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
 				},
 			}, {
+				Name:      "hello_cn_float",
+				ExtraData: []string{handwritingFileCN},
+				Val: handwritingTestParams{
+					handwritingFile: handwritingFileCN,
+					expectedText:    "你好",
+					imeID:           ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
+					testFloat:       true,
+				},
+			}, {
 				Name:      "hello_en",
 				ExtraData: []string{handwritingFileEN},
 				Val: handwritingTestParams{
 					handwritingFile: handwritingFileEN,
 					expectedText:    "hello",
 					imeID:           ime.INPUTMETHOD_XKB_US_ENG,
+				},
+			}, {
+				Name:      "hello_en_float",
+				ExtraData: []string{handwritingFileEN},
+				Val: handwritingTestParams{
+					handwritingFile: handwritingFileEN,
+					expectedText:    "hello",
+					imeID:           ime.INPUTMETHOD_XKB_US_ENG,
+					testFloat:       true,
 				},
 			},
 		},
@@ -85,16 +113,34 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	// Variable to contain the test parameters that are specific to the current test case.
+	params := s.Param().(handwritingTestParams)
+
+	// Options containing preconditions.
+	opts := []chrome.Option{
+		chrome.VKEnabled(),
+		chrome.ExtraArgs("--force-tablet-mode=touch_view"),
+	}
+
+	// Add precondition of requiring a floating keyboard if testing for floating handwriting input.
+	if params.testFloat {
+		opts = append(opts, chrome.EnableFeatures("VirtualKeyboardFloatingDefault"))
+	}
+
 	// TODO(crbug/1173252): Clean up states within Chrome using preconditions.
-	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		s.Fatal("Failed to connect to new Chrome instance: ", err)
+	}
+
 	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
-	// Variable to contain the test parameters that are specific to the current test case.
-	params := s.Param().(handwritingTestParams)
 
 	// IME code of the language currently being tested.
 	testIME := ime.IMEPrefix + string(params.imeID)
