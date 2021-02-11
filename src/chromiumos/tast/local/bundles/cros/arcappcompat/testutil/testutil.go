@@ -359,6 +359,15 @@ func TouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 }
 
+// TouchAndPlayVideo func verify touch and play video in the app is working properly without crash or ANR.
+func TouchAndPlayVideo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	errorMessage := performTouchAndPlayVideoContent(ctx, s, tconn, a, d, appPkgName)
+	if errorMessage != "" {
+		s.Error("Touch and play video is not working properly in the app")
+	}
+	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
@@ -493,6 +502,27 @@ func performTouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chr
 	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "30", "--pct-nav", "10", "--pct-touch", "40", "--pct-nav", "10", "--pct-anyevent", "10", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Log("Failed to perform monkey test touch and text inputs: ", err)
+	}
+	output := string(out)
+	errorMessage = processOutput(ctx, s, tconn, a, d, appPkgName, output)
+	return errorMessage
+}
+
+// performTouchAndPlayVideoContent func perform touch and play video content using monkey test.
+func performTouchAndPlayVideoContent(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string) string {
+	var errorMessage string
+
+	// Press enter key twice.
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	}
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	}
+	// To perform touch and play video.
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "60", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Log("Failed to perform monkey test touch and play video content: ", err)
 	}
 	output := string(out)
 	errorMessage = processOutput(ctx, s, tconn, a, d, appPkgName, output)
