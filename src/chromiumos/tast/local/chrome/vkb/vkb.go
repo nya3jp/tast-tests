@@ -385,18 +385,20 @@ func TapAccessPoints(ctx context.Context, tconn *chrome.TestConn) error {
 // TapHandwritingInputAndWaitForEngine changes virtual keyboard to handwriting input layout and waits for the handwriting
 // engine to become ready.
 func TapHandwritingInputAndWaitForEngine(ctx context.Context, tconn *chrome.TestConn) error {
-	// TODO(crbug/1165424): Check if handwriting input engine is ready.
-	// Wait for the handwriting input to become ready to take in the handwriting.
-	// If a stroke is completed before the handwriting input is ready, the stroke will not be recognized.
-	defer testing.Sleep(ctx, 1*time.Second)
-
 	params := ui.FindParams{
 		Role:      ui.RoleTypeButton,
 		Name:      "switch to handwriting, not compatible with ChromeVox",
 		ClassName: "sk icon-key",
 	}
 	opts := testing.PollOptions{Timeout: 2 * time.Second}
-	return ui.StableFindAndClick(ctx, tconn, params, &opts)
+	if err := ui.StableFindAndClick(ctx, tconn, params, &opts); err != nil {
+		return err
+	}
+
+	// TODO(crbug/1165424): Check if handwriting input engine is ready.
+	// Wait for the handwriting input to become ready to take in the handwriting.
+	// If a stroke is completed before the handwriting input is ready, the stroke will not be recognized.
+	return testing.Sleep(ctx, 5*time.Second)
 }
 
 // EnableA11yVirtualKeyboard enables or disables accessibility mode of the
