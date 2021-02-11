@@ -25,7 +25,6 @@ import (
 type testParameters struct {
 	batteryMode       setup.BatteryDischargeMode
 	binaryTranslation bool
-	chromeArgs        []string
 }
 
 var (
@@ -37,14 +36,10 @@ var (
 	// arcAppLoadingBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
 	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--arc-disable-media-store-maintenance")...)
-	// arcAppLoadingHighmemBooted additionally adds feature to boot ARC with high-memory profile enabled
-	arcAppLoadingHighmemBooted = arc.NewPrecondition("arcapploading_highmem_booted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--arc-disable-media-store-maintenance", "--enable-features=ArcUseHighMemoryDalvikProfile")...)
 
 	// arcAppLoadingVMBooted is a precondition similar to arc.VMBooted(). The only difference from arc.VMBooted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
 	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf", "--arc-disable-media-store-maintenance")...)
-	// arcAppLoadingHighmemVMBooted additionally adds feature to boot ARC with high-memory profile enabled
-	arcAppLoadingHighmemVMBooted = arc.NewPrecondition("arcapploading_highmem_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf", "--arc-disable-media-store-maintenance", "--enable-features=ArcUseHighMemoryDalvikProfile")...)
 )
 
 func init() {
@@ -69,15 +64,6 @@ func init() {
 			},
 			Pre: arcAppLoadingBooted,
 		}, {
-			Name:              "highmem",
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingHighmemBooted,
-		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
@@ -86,15 +72,6 @@ func init() {
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingVMBooted,
-		}, {
-			Name:              "highmem_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingHighmemVMBooted,
 		}, {
 			Name:              "binarytranslation",
 			ExtraSoftwareDeps: []string{"android_p"},
