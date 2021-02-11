@@ -34,6 +34,24 @@
       "parentUuid": "e37556ae_d8f542d7",
       "revId": "c16eadb43e4fbcac2a5062182770d75402e2e6a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a9b218_20bab37e",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-11T01:03:28Z",
+      "side": 1,
+      "message": "To me it\u0027s doing a slightly different thing and so it\u0027s simply okay to be duplicated.\n\nOr, as hidehiko pointed out, PackageInstalled() could be implemented like:\n  out, err :\u003d d.ShellCommand(ctx, \"pm\", \"list\", \"packages\", pkg)\n  if err !\u003d nil {\n    return false, errors.Wrap(err, \"...\")\n  }\n  return len(out) \u003e 0, nil\n\nThis indeed does not handle the case that a package can be a substring of another, though I believe that is extremely rare on Tast.",
+      "parentUuid": "e079b9de_ff025b35",
+      "revId": "c16eadb43e4fbcac2a5062182770d75402e2e6a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
