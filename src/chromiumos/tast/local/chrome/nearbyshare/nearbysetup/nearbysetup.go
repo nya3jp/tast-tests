@@ -15,9 +15,9 @@ import (
 	"chromiumos/tast/local/android"
 	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/android/ui"
-	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
 )
