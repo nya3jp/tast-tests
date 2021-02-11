@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/android/adb"
-	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
 
@@ -21,9 +21,8 @@ func init() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:nearby-share"},
-		SoftwareDeps: []string{"chrome"},
-		Data:         []string{nearbysnippet.ZipName},
+		Attr: []string{"group:nearby-share"},
+		Data: []string{nearbysnippet.ZipName},
 		// This var can be used when running locally on non-rooted devices which
 		// have already overridden the GMS Core flags by other means.
 		Vars: []string{"rooted"},

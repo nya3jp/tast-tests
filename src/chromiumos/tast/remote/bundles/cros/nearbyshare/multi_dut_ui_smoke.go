@@ -12,7 +12,7 @@ import (
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	localnearby "chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/nearbyshare"
 	"chromiumos/tast/testing"
@@ -89,7 +89,7 @@ func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT) e
 
 	// Setup Nearby Share on the DUT.
 	const deviceName = "MultiDut_HighVisibilityUISmoke"
-	req := &nearbyshare.CrOSSetupRequest{DataUsage: int32(localnearby.DataUsageOnline), Visibility: int32(localnearby.VisibilityAllContacts), DeviceName: deviceName}
+	req := &nearbyshare.CrOSSetupRequest{DataUsage: int32(nearbysetup.DataUsageOnline), Visibility: int32(nearbysetup.VisibilityAllContacts), DeviceName: deviceName}
 	if _, err := ns.CrOSSetup(ctx, req); err != nil {
 		s.Fatal("Failed to setup Nearby Share: ", err)
 	}

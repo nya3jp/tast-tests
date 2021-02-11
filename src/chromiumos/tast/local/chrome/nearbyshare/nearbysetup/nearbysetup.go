@@ -15,9 +15,8 @@ import (
 	"chromiumos/tast/local/android"
 	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/android/ui"
-	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
 )
@@ -29,7 +28,7 @@ const DefaultScreenTimeout = 10 * time.Minute
 
 // CrOSSetup enables Chrome OS Nearby Share and configures its settings through OS Settings. This allows tests to bypass onboarding.
 // If deviceName is empty, the device display name will not be set and the default will be used.
-func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, dataUsage nearbyshare.DataUsage, visibility nearbyshare.Visibility, deviceName string) error {
+func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, dataUsage DataUsage, visibility Visibility, deviceName string) error {
 	settings, err := ossettings.Launch(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to launch OS Settings")
@@ -57,7 +56,7 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 	}
 
 	if deviceName != "" {
-		var res nearbyshare.DeviceNameValidationResult
+		var res DeviceNameValidationResult
 		if err := settingsConn.Call(ctx, &res, `async function(name) {
 			r = await nearby_share.getNearbyShareSettings().setDeviceName(name);
 			return r.result;
@@ -66,12 +65,12 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 		}
 		const baseError = "failed to set device name; validation result %v(%v)"
 		switch res {
-		case nearbyshare.DeviceNameValidationResultValid:
-		case nearbyshare.DeviceNameValidationResultErrorEmpty:
+		case DeviceNameValidationResultValid:
+		case DeviceNameValidationResultErrorEmpty:
 			return errors.Errorf(baseError, res, "empty")
-		case nearbyshare.DeviceNameValidationResultErrorTooLong:
+		case DeviceNameValidationResultErrorTooLong:
 			return errors.Errorf(baseError, res, "too long")
-		case nearbyshare.DeviceNameValidationResultErrorNotValidUtf8:
+		case DeviceNameValidationResultErrorNotValidUtf8:
 			return errors.Errorf(baseError, res, "not valid UTF-8")
 		default:
 			return errors.Errorf(baseError, res, "unexpected value")
