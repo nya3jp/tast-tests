@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0861e9b5_15c96714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-11T23:25:14Z",
+      "side": 1,
+      "message": "are you able to just override this on the command line instead of adding more vars?",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da7633c0_9de64ca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-11T23:25:14Z",
+      "side": 1,
+      "message": "I just noticed this, why is this a different lib than like nearbyshare or nearbysetup?",
+      "range": {
+        "startLine": 110,
+        "startChar": 23,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da90593f_70b109e6",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-11T23:25:14Z",
+      "side": 1,
+      "message": "I really wish these Waits could be removed, but it looks like that is the standard, so I guess this is ok.",
+      "range": {
+        "startLine": 139,
+        "startChar": 5,
+        "endLine": 139,
+        "endChar": 9
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ed4e8e_b7195189",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-11T23:25:14Z",
+      "side": 1,
+      "message": "nit: maybe WaitForReceivingCompleteNotification. Await feels like a weird weird to add into function names.",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd12c8fc_da5e397e",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-11T23:25:14Z",
+      "side": 1,
+      "message": "Should this be Message like in the function above?",
+      "range": {
+        "startLine": 72,
+        "startChar": 10,
+        "endLine": 72,
+        "endChar": 15
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
