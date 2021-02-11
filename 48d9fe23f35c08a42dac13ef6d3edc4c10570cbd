@@ -16,6 +16,24 @@
       "message": "nit: could you change it \"Failed to perform monkey test mouse scroll\".Thanks",
       "revId": "48d9fe23f35c08a42dac13ef6d3edc4c10570cbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4738624_1a54ecf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2021-02-11T19:12:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a6b9037_652197c9",
+      "revId": "48d9fe23f35c08a42dac13ef6d3edc4c10570cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
