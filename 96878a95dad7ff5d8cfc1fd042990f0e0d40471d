@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333a91bb_b67debdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app_watch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-11T23:15:43Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary if you want the files app to be in screenshots",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 30
+      },
+      "revId": "96878a95dad7ff5d8cfc1fd042990f0e0d40471d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37ffdcfd_e5ff20e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-11T23:15:43Z",
+      "side": 1,
+      "message": "extra char",
+      "range": {
+        "startLine": 103,
+        "startChar": 25,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "96878a95dad7ff5d8cfc1fd042990f0e0d40471d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a217fd_5fa02590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-11T23:15:43Z",
+      "side": 1,
+      "message": "Does writing Search+Esc os Search+Escape not work?",
+      "range": {
+        "startLine": 104,
+        "startChar": 24,
+        "endLine": 104,
+        "endChar": 35
+      },
+      "revId": "96878a95dad7ff5d8cfc1fd042990f0e0d40471d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db9dff7_910a8810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-11T23:15:43Z",
+      "side": 1,
+      "message": "Just curious, is there any difference between Ctrl+w here and Ctrl+W in the file above?",
+      "range": {
+        "startLine": 113,
+        "startChar": 29,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "96878a95dad7ff5d8cfc1fd042990f0e0d40471d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
