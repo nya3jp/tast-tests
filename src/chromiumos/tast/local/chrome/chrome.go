@@ -426,6 +426,22 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	return nil
 }
 
+// Reconnect reconnects to the current browser session.
+// Call this method when you know you have to re-establish a connection to the browser session, e.g. after suspend/resume.
+// After the session is reconnected, all existing connections associated with this chrome.Chrome instance also needs to be
+// re-established. For example, you should call chrome.TestAPIConn(), chrome.NewConn(), or chrome.NewConnForTarget() to
+// get the new connections for your test.
+func (c *Chrome) Reconnect(ctx context.Context) error {
+	// Create a new session.
+	newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, c.agg)
+	if err != nil {
+		return err
+	}
+	c.sess.Close(ctx)
+	c.sess = newSess
+	return nil
+}
+
 // Conn represents a connection to a web content view, e.g. a tab.
 type Conn = driver.Conn
 
@@ -538,12 +554,9 @@ func (c *Chrome) ContinueLogin(ctx context.Context) error {
 
 	if err := login.LogIn(ctx, &c.cfg, c.sess); err == login.ErrNeedNewSession {
 		// Restart session.
-		newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, c.agg)
-		if err != nil {
+		if err := c.Reconnect(ctx); err != nil {
 			return err
 		}
-		c.sess.Close(ctx)
-		c.sess = newSess
 	} else if err != nil {
 		return err
 	}
