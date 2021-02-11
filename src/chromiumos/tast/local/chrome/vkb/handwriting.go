@@ -210,6 +210,7 @@ func (sg *strokeGroup) scale(canvasLoc coords.Rect) {
 
 // findHandwritingCanvas finds the canvas for the handwriting input which will be used to draw the handwriting.
 func findHandwritingCanvas(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
+	// TODO(crbug/1175982): Need to check if keyboard is using the new longform layout.
 	params := ui.FindParams{
 		Role:      ui.RoleTypeCanvas,
 		ClassName: "ita-hwt-canvas",
@@ -264,12 +265,6 @@ func DrawHandwritingFromFile(ctx context.Context, tconn *chrome.TestConn, filePa
 	canvas, err := findHandwritingCanvas(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to find handwriting canvas")
-	}
-
-	// TODO(crbug/1175982): Stabilize handwriting input test.
-	// Sleep to wait for the engine to become ready as some slower boards take a longer time.
-	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed to sleep")
 	}
 
 	// Scale the handwriting data in the structs to fit the handwriting input.
