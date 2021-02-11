@@ -61,8 +61,15 @@ func ServeBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.
 
 // ResetChrome resets chrome and removes all policies previously served by the FakeDMS.
 func ResetChrome(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) error {
+	ctx, cancel := context.WithTimeout(ctx, chrome.ResetTimeout)
+	defer cancel()
+
+	if err := cr.Responded(ctx); err != nil {
+		return errors.Wrap(err, "failed to communicate with Chrome")
+	}
+
 	if err := cr.ResetState(ctx); err != nil {
-		return errors.Wrap(err, "failed to reset chrome")
+		return errors.Wrap(err, "failed to reset Chrome")
 	}
 
 	if err := ServeBlobAndRefresh(ctx, fdms, cr, fakedms.NewPolicyBlob()); err != nil {
