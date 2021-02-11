@@ -10,9 +10,9 @@ import (
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome"
 	localnearby "chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/services/cros/nearbyshare"
 	"chromiumos/tast/testing"
 )
@@ -71,7 +71,7 @@ func (n *NearbyService) CrOSSetup(ctx context.Context, req *nearbyshare.CrOSSetu
 		return nil, errors.New("Chrome not available")
 	}
 	n.deviceName = req.DeviceName
-	return &empty.Empty{}, nearbysetup.CrOSSetup(ctx, n.tconn, n.cr, localnearby.DataUsage(req.DataUsage), localnearby.Visibility(req.Visibility), req.DeviceName)
+	return &empty.Empty{}, nearbysetup.CrOSSetup(ctx, n.tconn, n.cr, nearbysetup.DataUsage(req.DataUsage), nearbysetup.Visibility(req.Visibility), req.DeviceName)
 }
 
 func (n *NearbyService) StartHighVisibilityMode(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
