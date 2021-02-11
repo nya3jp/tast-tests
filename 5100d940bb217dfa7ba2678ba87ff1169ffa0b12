@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2c775c0_8191d876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-11T16:28:18Z",
+      "side": 1,
+      "message": "Most failures are \"autoserv crash\". Think unrelated. Retry.",
+      "revId": "5100d940bb217dfa7ba2678ba87ff1169ffa0b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
