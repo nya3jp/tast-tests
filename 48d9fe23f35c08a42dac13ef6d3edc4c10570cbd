@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a6b9037_652197c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-11T03:50:31Z",
+      "side": 1,
+      "message": "nit: could you change it \"Failed to perform monkey test mouse scroll\".Thanks",
+      "revId": "48d9fe23f35c08a42dac13ef6d3edc4c10570cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
