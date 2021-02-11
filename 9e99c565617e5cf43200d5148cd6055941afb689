@@ -16,6 +16,52 @@
       "message": "Hi Brendan,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "9e99c565617e5cf43200d5148cd6055941afb689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c43ea2_f5fb6bda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-11T23:09:48Z",
+      "side": 1,
+      "message": "why are you returning a string? you have s, so you can call s.Fatal in this function.",
+      "range": {
+        "startLine": 520,
+        "startChar": 140,
+        "endLine": 520,
+        "endChar": 146
+      },
+      "revId": "9e99c565617e5cf43200d5148cd6055941afb689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "173846df_8e86c230",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-11T23:09:48Z",
+      "side": 1,
+      "message": "Should this be an actual failure? If this happens, the test has failed to run at all.",
+      "range": {
+        "startLine": 533,
+        "startChar": 4,
+        "endLine": 533,
+        "endChar": 7
+      },
+      "revId": "9e99c565617e5cf43200d5148cd6055941afb689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
