@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/gipsrestat-640x360_20210211.vp9.webm",
+  "size": 81455373,
+  "sha256sum": "a6be3ab1c7dcf53b884c7ae0d3730708c64cc19a3e635cb62605ea3b9e5d175e"
+}

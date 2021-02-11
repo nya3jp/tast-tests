@@ -23,13 +23,16 @@ import (
 )
 
 // md5OfYUV is the MD5 value of the YUV file decoded by vpxdec.
-// Since decoding algorithm is deterministic and the encoding is lossless, MD5 value of video raw data decoded by each webM should always be the same.
+// Since the decoding algorithm is deterministic, the raw data MD5 value should always be the same.
 // These values are listed for the safety check to ensure we are always testing the same raw streams for result consistency.
 var md5OfYUV = map[string]string{
 	"bear-320x192.i420.yuv":             "14c9ac6f98573ab27a7ed28da8a909c0",
 	"bear-320x192.nv12.yuv":             "8aedc0da37b7e6f15255375f57eb3241",
 	"crowd-1920x1080.i420.yuv":          "96f60dd6ff87ba8b129301a0f36efc58",
 	"crowd-1920x1080.nv12.yuv":          "0d1933e69f932519794586f81b133bb8",
+	"gipsrestat-1280x720.i420.yuv":      "acc6bb983c198c8db5ffc5d5699cb235",
+	"gipsrestat-640x360.i420.yuv":       "a92466c51d8626f263771ba16f7d5d02",
+	"gipsrestat-320x180.i420.yuv":       "556d908527aea47e0e02440bf6c35861",
 	"tulip2-1280x720.i420.yuv":          "1b95123232922fe0067869c74e19cd09",
 	"tulip2-1280x720.nv12.yuv":          "898a3e1bb3b8d2bdd137f92067d42106",
 	"tulip2-640x360.i420.yuv":           "094bd827de18ca196a83cc6442b7b02f",
