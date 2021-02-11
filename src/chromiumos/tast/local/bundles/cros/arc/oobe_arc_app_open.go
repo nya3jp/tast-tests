@@ -22,10 +22,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         OobeArcAppOpen,
-		Desc:         "Launch ARC App post the OOBE Flow Setup Complete",
-		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     OobeArcAppOpen,
+		Desc:     "Launch ARC App post the OOBE Flow Setup Complete",
+		Contacts: []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
+		//TODO(b/179637267): Enable once the bug is fixed.
+		//Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
