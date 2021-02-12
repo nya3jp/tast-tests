@@ -94,6 +94,30 @@
       },
       "revId": "27e0837ce6233e83bd2786f0e746bbc6d0cf853c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b87627_f70cc358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000015
+      },
+      "writtenOn": "2021-02-12T15:19:36Z",
+      "side": 1,
+      "message": "Sounds good, thanks Ilja!",
+      "parentUuid": "8d9805fd_2b3a85b3",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "27e0837ce6233e83bd2786f0e746bbc6d0cf853c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
