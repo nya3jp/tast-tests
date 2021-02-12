@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff94754b_692f2303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-02-12T18:58:47Z",
+      "side": 1,
+      "message": "I think the MAX_TIMEOUT is to limit the max waiting time of eventWaitAndGet to make sure Android device is still in a right state. Not just for TCP socket read timeout.\nThis comment may more suitable to move to \n```\nfunc (a *AndroidNearbyDevice) eventWaitAndGet(...\n```",
+      "parentUuid": "2315dc08_d256eade",
+      "range": {
+        "startLine": 307,
+        "startChar": 39,
+        "endLine": 307,
+        "endChar": 46
+      },
+      "revId": "3717646c8f20415a28badae03da43b37573454df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "870ffe91_1e168e95",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
         "patchSetId": 1
