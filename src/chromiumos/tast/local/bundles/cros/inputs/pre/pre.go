@@ -77,6 +77,9 @@ var VKEnabledClamshell = inputsPreCondition("virtual_keyboard_enabled_clamshell_
 // VKEnabledExp creates same precondition as VKEnabled with extra Chrome options.
 var VKEnabledExp = inputsPreCondition("virtual_keyboard_enabled_exp_pre", notForced, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"))
 
+// SystemEmojiPicker creates a precondition to enable the system emoji picker.
+var SystemEmojiPicker = inputsPreCondition("virtual_keyboard_system_emoji_pre", clamshellMode, chrome.ExtraArgs("--enable-features=SystemEmojiPicker"))
+
 // VKEnabledTabletExp creates same precondition as VKEnabledTablet with extra Chrome options.
 var VKEnabledTabletExp = inputsPreCondition("virtual_keyboard_enabled_tablet_exp_pre", tabletMode, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"))
 
