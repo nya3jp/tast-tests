@@ -121,16 +121,21 @@ func launchAppForSolidExplorer(ctx context.Context, s *testing.State, tconn *chr
 		s.Fatal("Failed to click on done button: ", err)
 	}
 
-	// Click on allow button to access your photos, media and files.
+	// Click on Allow button until OK button exist.
 	allowButton := d.Object(ui.Text(allowText))
-	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log(" allow button doesn't exists: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allow button: ", err)
+	OKButton := d.Object(ui.Text(OkText))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := OKButton.Exists(ctx); err != nil {
+			s.Log(" Click on allow button until OK button exist")
+			allowButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
+		s.Error("OK button doesn't exist: ", err)
 	}
 
 	// Click on OK button.
-	OKButton := d.Object(ui.Text(OkText))
 	if err := OKButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("Ok button doesn't exist: ", err)
 	} else if err := OKButton.Click(ctx); err != nil {
