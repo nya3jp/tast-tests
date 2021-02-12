@@ -107,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3e99cae_24259885",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-12T19:17:30Z",
+      "side": 1,
+      "message": "There are 9 combinations total (3 data usage settings x 3 contacts settings) so we\u0027ll probably want it. I wonder if it\u0027s better to have 9 fixtures, or a single fixture and instead control the settings through test parameters (i.e. adding some fields to nearbytestutils.TestData)?",
+      "parentUuid": "275eff99_7ac6dc95",
+      "range": {
+        "startLine": 24,
+        "startChar": 20,
+        "endLine": 24,
+        "endChar": 60
+      },
+      "revId": "4769048ce44a367f15e0f022915bd2282c051afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "612b0ef0_f1586dac",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture/fixture.go",
         "patchSetId": 2
