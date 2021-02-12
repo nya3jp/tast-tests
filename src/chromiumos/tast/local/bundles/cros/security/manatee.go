@@ -346,9 +346,8 @@ func Manatee(ctx context.Context, s *testing.State) {
 		dbusInterface = "org.chromium.ManaTEEInterface"
 
 		dbusMethodStartTEEApplication = "StartTEEApplication"
-		testTEEAppID                  = "shell"
-		expectedResponse              = "check that shell works"
-		testCmd                       = "printf '%s' '" + expectedResponse + "'\nexit\n"
+		testTEEAppID                  = "demo_app"
+		expectedResponse              = "Store Test Value\n"
 	)
 
 	// Set up and validate D-Bus connection.
@@ -386,7 +385,8 @@ func Manatee(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if _, err := fileOut.WriteString(testCmd); err != nil {
+	s.Log("Writing string to app")
+	if _, err := fileOut.WriteString(expectedResponse); err != nil {
 		s.Error("Failed to send data to TEE App: ", err)
 	}
 
