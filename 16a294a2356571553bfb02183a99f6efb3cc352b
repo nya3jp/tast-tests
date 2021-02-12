@@ -62,6 +62,54 @@
       },
       "revId": "16a294a2356571553bfb02183a99f6efb3cc352b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "365143b1_a42bf66d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-02-12T16:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a0a72c0_e86b0ad1",
+      "range": {
+        "startLine": 142,
+        "startChar": 82,
+        "endLine": 142,
+        "endChar": 84
+      },
+      "revId": "16a294a2356571553bfb02183a99f6efb3cc352b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ac1454c_3eff0801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-02-12T16:46:02Z",
+      "side": 1,
+      "message": "Nice, thanks for the tip.",
+      "parentUuid": "483e6183_4787a451",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 142,
+        "endChar": 22
+      },
+      "revId": "16a294a2356571553bfb02183a99f6efb3cc352b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
