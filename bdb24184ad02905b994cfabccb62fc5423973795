@@ -79,6 +79,30 @@
       },
       "revId": "bdb24184ad02905b994cfabccb62fc5423973795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c454f0fd_0aed820d",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-02-12T07:54:47Z",
+      "side": 1,
+      "message": "I added a log. This file may not exist for other reasons (e.g. the test dosn\u0027t use the fixture), so printing this log is helpful.",
+      "parentUuid": "01980702_6e2c1cbd",
+      "range": {
+        "startLine": 149,
+        "startChar": 8,
+        "endLine": 149,
+        "endChar": 62
+      },
+      "revId": "bdb24184ad02905b994cfabccb62fc5423973795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
