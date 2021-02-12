@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad03127_3d81d987",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-12T19:17:41Z",
+      "side": 1,
+      "message": "I noticed some issues with how processOutput and the new test functions are setup in:\nhttp://crrev.com/c/2689401 and http://crrev.com/c/2690924\n\nThis CL dose some cleanup of the testutil file. PTAL\n\nAlso, before submitting the other 2 CLs, lets rebase them off of this and make them follow the same convention as TouchAndTextInputs does in this CL.",
+      "revId": "b4c3ff4ec61e63c8756d97ebd0aeab79376703ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
