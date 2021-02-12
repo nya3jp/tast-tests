@@ -16,6 +16,24 @@
       "message": "50 fps seems a bit high for vc content, is this correct?",
       "revId": "d8194751576e98bdd3b0862cd1ee68d5cc0d9faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba94ea54_ba15efa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-12T17:40:33Z",
+      "side": 1,
+      "message": "Yes, triple checked via mediainfo, ffprobe and mkvinfo. It\u0027s how it\ncame from the WebM downloads page and thought it\u0027d be a good extra\ntesting to flush out hardcoded 30fps around. Note that the previous\nCL modified the target bitrate to take fps into account.",
+      "parentUuid": "b1bb6d47_ff29f28f",
+      "revId": "d8194751576e98bdd3b0862cd1ee68d5cc0d9faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
