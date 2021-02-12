@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "990b4b26_b63b6c81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-12T19:56:41Z",
+      "side": 1,
+      "message": "I can, I just wasn\u0027t sure if that was preferred over having separate vars. I was thinking it would be more user-friendly to have plain old \u0027username\u0027 and \u0027password\u0027 vars for doing local runs on different accounts. I can get rid of them if it\u0027s preferred to just override the existing vars though.",
+      "parentUuid": "0861e9b5_15c96714",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da7633c0_9de64ca6",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver_in_contacts.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-11T23:25:14Z",
       "side": 1,
       "message": "I just noticed this, why is this a different lib than like nearbyshare or nearbysetup?",
+      "range": {
+        "startLine": 110,
+        "startChar": 23,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6483b88d_d8814e85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-12T19:56:41Z",
+      "side": 1,
+      "message": "I didn\u0027t feel like the things here really belonged in either. It\u0027s just random small functions that don\u0027t really relate directly to controlling nearby share (random device name, move test files around, file hash comparison, etc.).",
+      "parentUuid": "da7633c0_9de64ca6",
       "range": {
         "startLine": 110,
         "startChar": 23,
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e08a78da_d03ac045",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-12T19:56:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5ed4e8e_b7195189",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd12c8fc_da5e397e",
@@ -106,6 +178,30 @@
       "writtenOn": "2021-02-11T23:25:14Z",
       "side": 1,
       "message": "Should this be Message like in the function above?",
+      "range": {
+        "startLine": 72,
+        "startChar": 10,
+        "endLine": 72,
+        "endChar": 15
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a31557c_d8aa96b0",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-12T19:56:41Z",
+      "side": 1,
+      "message": "If only the UI were so consistent :) this particular notification has an empty Message and all of the text is in the Title (even though visually, this text is in the body of the notification).",
+      "parentUuid": "fd12c8fc_da5e397e",
       "range": {
         "startLine": 72,
         "startChar": 10,
