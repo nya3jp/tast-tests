@@ -16,6 +16,29 @@
       "message": "All good now ",
       "revId": "1b95f1ad4410abda0f485b5ed5203b48460bd5b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "377dd2b5_56e9dcd7",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-12T22:05:07Z",
+      "side": 1,
+      "message": "When you end up adding other fixtures that just take different args here, you should look at how the chrome fixture does it. Might simplify making many fixtures.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 53
+      },
+      "revId": "1b95f1ad4410abda0f485b5ed5203b48460bd5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
