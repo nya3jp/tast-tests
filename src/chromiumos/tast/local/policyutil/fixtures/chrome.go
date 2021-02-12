@@ -40,6 +40,49 @@ type FixtData struct {
 	FakeDMS *fakedms.FakeDMS
 	// Chrome is a connection to an already-started Chrome instance that loads policies from FakeDMS.
 	Chrome *chrome.Chrome
+
+	fixture *policyChromeFixture
+}
+
+// ResetChrome will attempt to reset Chrome. If it fails it will be restarted.
+func (f *FixtData) ResetChrome(ctx context.Context) error {
+	// Clear policy blob.
+	if err := f.FakeDMS.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+		return errors.Wrap(err, "failed to clear policies in FakeDMS")
+	}
+
+	resetCtx, cancel := context.WithTimeout(ctx, chrome.ResetTimeout)
+	defer cancel()
+
+	// Reset Chrome with a timeout to ensure restart has enough time to complete.
+	if err := f.fixture.Reset(resetCtx); err != nil {
+		testing.ContextLog(ctx, "Chrome reset failed, restarting: ", err)
+
+		chrome.Unlock()
+		defer chrome.Lock()
+
+		if err := f.Chrome.Close(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to close existing Chrome session: ", err)
+		}
+
+		// Don't leave a broken Chrome behind.
+		f.fixture.cr = nil
+		f.Chrome = nil
+
+		// Restart Chrome.
+		cr, err := chrome.New(ctx,
+			chrome.Auth(Username, Password, GaiaID),
+			chrome.DMSPolicy(f.FakeDMS.URL))
+		if err != nil {
+			return errors.Wrap(err, "failed to restart Chrome")
+		}
+
+		// Switch to new Chrome instance.
+		f.fixture.cr = cr
+		f.Chrome = cr
+	}
+
+	return nil
 }
 
 // Credentials used for authenticating the test user.
@@ -69,14 +112,15 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 
 	chrome.Lock()
 
-	return &FixtData{p.fdms, p.cr}
+	return &FixtData{p.fdms, p.cr, p}
 }
 
 func (p *policyChromeFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	chrome.Unlock()
 
 	if p.cr == nil {
-		s.Fatal("Chrome not yet started")
+		s.Log("Chrome not started before TearDown")
+		return
 	}
 
 	if err := p.cr.Close(ctx); err != nil {
@@ -87,6 +131,10 @@ func (p *policyChromeFixture) TearDown(ctx context.Context, s *testing.FixtState
 }
 
 func (p *policyChromeFixture) Reset(ctx context.Context) error {
+	if p.cr == nil {
+		return errors.New("Chrome not started")
+	}
+
 	// Check the connection to Chrome.
 	if err := p.cr.Responded(ctx); err != nil {
 		return errors.Wrap(err, "existing Chrome connection is unusable")
