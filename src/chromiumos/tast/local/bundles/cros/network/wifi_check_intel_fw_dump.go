@@ -26,17 +26,11 @@ func init() {
 		Desc:         "Verifies that device coredumps are not empty",
 		Contacts:     []string{"arowa@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"wifi", "intel_wifi_chip"},
-		// TODO(crbug.com/1070299): Remove the below hard-coded devices
-		// and the the software dependency "intel_wifi_chip" above.
-		// Instead, use the Intel WiFi dependency when wifi hardware
-		// dependencies are implemented.
-		// NB: These exclusions are somewhat overly broad; some
-		// (but not all) blooglet devices have WiFi chips that would
-		// work for this test. However, for now there is no better way
-		// to specify the exact hardware parameters needed for this
-		// test. (See linked bug.)
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("blooglet", "dirinboz", "ezkinil", "vilboz")),
+		SoftwareDeps: []string{"wifi"},
+		// NB: The WifiIntel dependency tracks a manually maintained list of devices.
+		// If the test is skipping when it should run or vice versa, check the hwdep
+		// to see if your board is incorrectly included/excluded.
+		HardwareDeps: hwdep.D(hwdep.WifiIntel()),
 	})
 }
 
