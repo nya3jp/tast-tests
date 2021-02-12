@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "806b4983_1ef0accf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-02-12T09:48:44Z",
+      "side": 1,
+      "message": "Hi Caroline,\n\nCan you please check if this satisfies the new requirements ?\n\nThanks",
+      "revId": "0428d66e6636c9d98a3896d070a5ed6a53c048d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
