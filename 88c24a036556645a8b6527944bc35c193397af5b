@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1766d364_c1e5dd3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-12T13:54:31Z",
+      "side": 1,
+      "message": "Updated the comment.",
+      "parentUuid": "5da350d0_9c472d91",
+      "range": {
+        "startLine": 40,
+        "startChar": 31,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "88c24a036556645a8b6527944bc35c193397af5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c8a5e60_36f57546",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-12T08:54:24Z",
       "side": 1,
       "message": "Why did you choose this dependency? Add a comment to explain.",
+      "range": {
+        "startLine": 41,
+        "startChar": 36,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "88c24a036556645a8b6527944bc35c193397af5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78686f1d_b0c3eb08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-12T13:54:31Z",
+      "side": 1,
+      "message": "Updated the comment.",
+      "parentUuid": "6c8a5e60_36f57546",
       "range": {
         "startLine": 41,
         "startChar": 36,
