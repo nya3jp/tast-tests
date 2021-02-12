@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91e6635_e0887dd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-12T20:47:59Z",
+      "side": 1,
+      "message": "Nit: Can you add a comment about how the in contacts setup is achieved at the moment",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "7ecd1a3580546c55a456b2ee814e597af3483aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc625cd2_799ea9fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-12T20:47:59Z",
+      "side": 1,
+      "message": "Nice",
+      "revId": "7ecd1a3580546c55a456b2ee814e597af3483aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
