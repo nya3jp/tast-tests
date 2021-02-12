@@ -16,6 +16,23 @@
       "message": "lgtm\n\nIt is a good step forward to get the dumps more directly. The biggest problem is that many bots (CQ bots) do not stored symbols in artifacts. We have http://crbug/1031380 to track the symbols work and the dumps would be useful when we have it.",
       "revId": "11b9f7da5bc2c26eabd1389f97b70c869d8d53d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00996767_9a86144d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T01:40:34Z",
+      "side": 1,
+      "message": "Jun: friendly ping.\n",
+      "revId": "11b9f7da5bc2c26eabd1389f97b70c869d8d53d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
