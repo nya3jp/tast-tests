@@ -10,10 +10,8 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -24,8 +22,8 @@ func init() {
 		Desc:         "Checks that right click input field and select emoji will trigger virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          chrome.LoggedIn(),
+		SoftwareDeps: []string{"chrome"},
+		Pre:          pre.SystemEmojiPicker,
 		Params: []testing.Param{{
 			Name:              "stable",
 			ExtraAttr:         []string{"group:input-tools-upstream"},
@@ -37,7 +35,7 @@ func init() {
 }
 
 func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.PreValue().(pre.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -74,17 +72,17 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click the input element: ", err)
 	}
 
-	if _, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "emoji keyboard shown"}, 20*time.Second); err != nil {
+	if _, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Emoji Picker"}, 10*time.Second); err != nil {
 		s.Fatal("Failed to wait for emoji panel shown: ", err)
 	}
 
-	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard shown: ", err)
-	}
-
 	const emojiChar = "😂"
-	if err := vkb.TapKey(ctx, tconn, emojiChar); err != nil {
-		s.Fatalf("Failed to tap key %s: %v", emojiChar, err)
+	emojiButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: emojiChar}, 5*time.Second)
+	if err != nil {
+		s.Fatalf("Failed to find emoji button %s: %v", emojiChar, err)
+	}
+	if err := emojiButton.LeftClick(ctx); err != nil {
+		s.Fatal("Failed to click on the emoji button")
 	}
 
 	if err := inputField.WaitForValueToBe(ctx, tconn, emojiChar); err != nil {
