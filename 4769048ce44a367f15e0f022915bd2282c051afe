@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09ce44ab_104417f0",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-12T21:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21950835_5c05d1e5",
+      "range": {
+        "startLine": 24,
+        "startChar": 20,
+        "endLine": 24,
+        "endChar": 60
+      },
+      "revId": "4769048ce44a367f15e0f022915bd2282c051afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "612b0ef0_f1586dac",
@@ -297,6 +321,30 @@
       "side": 1,
       "message": "Added but it is not working locally. I\u0027ll look into it more now",
       "parentUuid": "3bf63366_8c69c9df",
+      "range": {
+        "startLine": 87,
+        "startChar": 75,
+        "endLine": 87,
+        "endChar": 85
+      },
+      "revId": "4769048ce44a367f15e0f022915bd2282c051afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc7d316_a0f13088",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-12T21:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84e257a7_13cddfcc",
       "range": {
         "startLine": 87,
         "startChar": 75,
