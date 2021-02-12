@@ -56,6 +56,30 @@
       },
       "revId": "73c95276223ac0f26679545916c7e175b1997057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67788b4e_bd56e0fc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T07:42:58Z",
+      "side": 1,
+      "message": "As I commented in crbug.com/1168360, we should first figure out why the connection is dropped after suspend at all. Usually local TCP connections are not disrupted by suspend/resume. My wild guess is that it\u0027s due to websocket keepalive. If that\u0027s the case we can see if we can disable it temporarily.",
+      "parentUuid": "1af3a6d1_44f93086",
+      "range": {
+        "startLine": 235,
+        "startChar": 10,
+        "endLine": 235,
+        "endChar": 21
+      },
+      "revId": "73c95276223ac0f26679545916c7e175b1997057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
