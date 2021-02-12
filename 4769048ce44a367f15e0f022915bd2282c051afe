@@ -39,6 +39,116 @@
       },
       "revId": "4769048ce44a367f15e0f022915bd2282c051afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f0d578_224a7362",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-12T00:41:30Z",
+      "side": 1,
+      "message": "Yeah, doesn\u0027t look like it needs chrome.",
+      "parentUuid": "8778b04a_3a061869",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "4769048ce44a367f15e0f022915bd2282c051afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "744657c5_ed9863b8",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-12T00:41:30Z",
+      "side": 1,
+      "message": "I would put this file directly in the nearbyshare package.\n\nThen it is used as nearbyshare.FixtData etc as opposed to fixture.FixtData which is too generic and will conflict if you want multiple fixtures.",
+      "revId": "4769048ce44a367f15e0f022915bd2282c051afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "275eff99_7ac6dc95",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-12T00:41:30Z",
+      "side": 1,
+      "message": "This is so long. Are we gonna have enough versions that we actually want this amount of detail?",
+      "range": {
+        "startLine": 24,
+        "startChar": 20,
+        "endLine": 24,
+        "endChar": 60
+      },
+      "revId": "4769048ce44a367f15e0f022915bd2282c051afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "612b0ef0_f1586dac",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-12T00:41:30Z",
+      "side": 1,
+      "message": "Usage",
+      "range": {
+        "startLine": 25,
+        "startChar": 67,
+        "endLine": 25,
+        "endChar": 71
+      },
+      "revId": "4769048ce44a367f15e0f022915bd2282c051afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bf63366_8c69c9df",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-12T00:41:30Z",
+      "side": 1,
+      "message": "f.cr.ResetState? to close any open apps, release keys, and do other between test cleanup.",
+      "range": {
+        "startLine": 87,
+        "startChar": 75,
+        "endLine": 87,
+        "endChar": 85
+      },
+      "revId": "4769048ce44a367f15e0f022915bd2282c051afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
