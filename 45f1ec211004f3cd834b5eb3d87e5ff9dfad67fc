@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da2905f2_225dde9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-12T22:34:01Z",
+      "side": 1,
+      "message": "I think I sent an email for the design questions for this CL. I am still waiting for these things to be addressed. Specifically:\n* It is actually not essential to use OS settings window to control bluetooth. Please use the dbus interface.\n* Aings told me that gmail website should be used for CUJs. Please rewrite the code around gmail control.",
+      "revId": "45f1ec211004f3cd834b5eb3d87e5ff9dfad67fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
