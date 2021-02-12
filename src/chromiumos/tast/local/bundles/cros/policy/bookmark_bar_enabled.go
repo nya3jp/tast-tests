@@ -26,7 +26,7 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Pre:          pre.User,
 	})
 }
@@ -53,15 +53,19 @@ func BookmarkBarEnabled(ctx context.Context, s *testing.State) {
 		}
 		defer conn.Close()
 
-		// Bookmark the current URL by clicking on the star button.
-		if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-			Role: ui.RoleTypeButton,
-			Name: "Bookmark this tab",
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			s.Fatal("Failed to find and click star button: ", err)
+		// Set up keyboard.
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			s.Fatal("Failed to get keyboard: ", err)
+		}
+		defer kb.Close()
+
+		// Bookmark the current URL using keyboard shortcut.
+		if err := kb.Accel(ctx, "Ctrl+d"); err != nil {
+			s.Fatal("Failed to open bookmark added popup: ", err)
 		}
 
-		// Star button clicked. Adding bookmark dialog should be shown.
+		// Adding bookmark dialog should be shown.
 		// Find and click the Name field in the dialog to specify a name for the bookmark.
 		if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
 			Role: ui.RoleTypeTextField,
@@ -69,13 +73,6 @@ func BookmarkBarEnabled(ctx context.Context, s *testing.State) {
 		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 			s.Fatal("Failed to click address bar: ", err)
 		}
-
-		// Set up keyboard.
-		kb, err := input.Keyboard(ctx)
-		if err != nil {
-			s.Fatal("Failed to get keyboard: ", err)
-		}
-		defer kb.Close()
 
 		// Select the existing text in the Name field so that it can be deleted by pressing backspace in the next step.
 		if err := kb.Accel(ctx, "Ctrl+a"); err != nil {
