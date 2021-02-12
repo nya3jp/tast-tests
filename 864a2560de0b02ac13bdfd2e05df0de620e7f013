@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1c7be8_542432d5",
+        "filename": "android/ArcPerAppDensityTest/res/values/dimens.xml",
+        "patchSetId": 28
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-12T00:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a7aef5d_835be0ec",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 38
+      },
+      "revId": "864a2560de0b02ac13bdfd2e05df0de620e7f013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d9cf38f_1c881b14",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-09T10:39:54Z",
       "side": 1,
       "message": "If the plan is to leave some time for the cleanup steps, the usual way is to introduce\n\u003e  cleanupCtx :\u003d ctx\nbefore Shorten(), and use cleanupCtx in the defer calls.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 15
+      },
+      "revId": "864a2560de0b02ac13bdfd2e05df0de620e7f013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6be575c3_71b8eaf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-12T00:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d9cf38f_1c881b14",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dde77ee6_0b4866c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-12T00:38:47Z",
+      "side": 1,
+      "message": "it is the second case.\n\nThis test is meant to be a simulation of how the user would use this feature, ie. click to open new activity, and ensure that 1.25 scale factor is applied to new activity. So I think it\u0027s best to keep the click (also simpler). Let me know if you feel strongly about having the broadcast receiver setup.\n\nSo I\u0027ve updated the comment to reflect this.",
+      "parentUuid": "7071cdf5_6d6dbef1",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 31
+      },
+      "revId": "864a2560de0b02ac13bdfd2e05df0de620e7f013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9048348_1d472335",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
         "patchSetId": 28
@@ -100,6 +172,30 @@
       "writtenOn": "2021-02-09T10:39:54Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "864a2560de0b02ac13bdfd2e05df0de620e7f013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66da9558_860c434d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-12T00:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9048348_1d472335",
       "range": {
         "startLine": 117,
         "startChar": 0,
