@@ -17,6 +17,12 @@ func (a *ARC) Command(ctx context.Context, name string, args ...string) *testexe
 	return a.device.ShellCommand(ctx, name, args...)
 }
 
+// ADBCommand returns an adb command (not a shell command in Android). It can
+// be used to run commands like "adb forward", "adb reverse".
+func (a *ARC) ADBCommand(ctx context.Context, args ...string) *testexec.Cmd {
+	return a.device.Command(ctx, args...)
+}
+
 // BootstrapCommand runs a command with android-sh.
 //
 // It is very rare you want to call this function from your test; call Command
