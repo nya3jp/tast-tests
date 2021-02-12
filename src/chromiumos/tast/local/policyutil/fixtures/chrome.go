@@ -6,6 +6,9 @@ package fixtures
 
 import (
 	"context"
+	"encoding/json"
+	"io/ioutil"
+	"path/filepath"
 
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
@@ -48,6 +51,9 @@ const (
 	Password = "test0000"
 	GaiaID   = "gaia-id"
 )
+
+// PolicyFileDump is the filename where the state of policies is dumped after the test ends.
+const PolicyFileDump = "policies.json"
 
 func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	fdms, ok := s.ParentValue().(*fakedms.FakeDMS)
@@ -107,5 +113,27 @@ func (p *policyChromeFixture) Reset(ctx context.Context) error {
 
 func (p *policyChromeFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 func (p *policyChromeFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-	// TODO(crbug.com/1049532): Copy policy.json after each test finishes.
+	if ctx.Err() != nil {
+		s.Fatal("Context already expired: ", ctx.Err())
+	}
+
+	tconn, err := p.cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create TestAPI connection: ", err)
+	}
+
+	policies, err := policyutil.PoliciesFromDUT(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain policies from Chrome: ", err)
+	}
+
+	b, err := json.MarshalIndent(policies, "", "  ")
+	if err != nil {
+		s.Fatal("Failed to marshal policies: ", err)
+	}
+
+	// Dump all policies as seen by Chrome to the tests OutDir.
+	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), PolicyFileDump), b, 0644); err != nil {
+		s.Error("Failed to dump policies to file: ", err)
+	}
 }
