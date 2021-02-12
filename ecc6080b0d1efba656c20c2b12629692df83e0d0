@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6472eb1e_23aad485",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_remote_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-12T11:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be7818a8_87eb6362",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 19
+      },
+      "revId": "ecc6080b0d1efba656c20c2b12629692df83e0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad55a9dd_ad40c83c",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "284ab3da_48d18a3a",
+        "filename": "src/chromiumos/tast/remote/fixture/meta_remote.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-12T11:04:13Z",
+      "side": 1,
+      "message": "Thank you. I moved the fixture in the meta package instead of creating subpackage and importing it from main.go.",
+      "parentUuid": "ad55a9dd_ad40c83c",
+      "revId": "ecc6080b0d1efba656c20c2b12629692df83e0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd445413_184297f3",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-02-12T10:04:21Z",
       "side": 1,
       "message": "nit: All timeouts can be omitted theoretically as there\u0027s no time-consuming methods.",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "ecc6080b0d1efba656c20c2b12629692df83e0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9ebe96d_2101592a",
+        "filename": "src/chromiumos/tast/remote/fixture/meta_remote.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-12T11:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd445413_184297f3",
       "range": {
         "startLine": 17,
         "startChar": 2,
