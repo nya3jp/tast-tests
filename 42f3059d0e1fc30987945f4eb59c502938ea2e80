@@ -39,6 +39,30 @@
       },
       "revId": "42f3059d0e1fc30987945f4eb59c502938ea2e80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a96e722_da5b4591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-02-12T07:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7b1a4a5_489f3b98",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "42f3059d0e1fc30987945f4eb59c502938ea2e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
