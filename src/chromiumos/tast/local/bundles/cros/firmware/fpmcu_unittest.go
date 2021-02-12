@@ -36,6 +36,10 @@ func init() {
 			Val:       "bloonchipper/test-aes.bin",
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_cec",
+			Val:       "bloonchipper/test-cec.bin",
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_compile_time_macros",
 			Val:       "bloonchipper/test-compile_time_macros.bin",
 		}, {
@@ -68,6 +72,14 @@ func init() {
 			Val:       "bloonchipper/test-pingpong.bin",
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_printf",
+			Val:       "bloonchipper/test-printf.bin",
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_queue",
+			Val:       "bloonchipper/test-queue.bin",
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_rollback",
 			Val:       "bloonchipper/test-rollback.bin",
 		}, {
@@ -96,12 +108,24 @@ func init() {
 			Val:       "bloonchipper/test-sha256_unrolled.bin",
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_static_if",
+			Val:       "bloonchipper/test-static_if.bin",
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_stm32f_rtc",
 			Val:       "bloonchipper/test-stm32f_rtc.bin",
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_timer_dos",
+			Val:       "bloonchipper/test-timer_dos.bin",
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_utils",
 			Val:       "bloonchipper/test-utils.bin",
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_utils_str",
+			Val:       "bloonchipper/test-utils_str.bin",
 		}},
 	})
 }
