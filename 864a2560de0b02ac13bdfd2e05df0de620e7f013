@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5e4664_d496860c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-02-12T00:45:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dde77ee6_0b4866c7",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 31
+      },
+      "revId": "864a2560de0b02ac13bdfd2e05df0de620e7f013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9048348_1d472335",
