@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a10a15fb_a008c0c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-02-12T02:10:43Z",
+      "side": 1,
+      "message": "Same as the other CLs, a different bug would be nice",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "b3c28d25135ce075f1fd6027d95a5970aae309f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
