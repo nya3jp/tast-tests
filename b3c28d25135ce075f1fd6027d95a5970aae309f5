@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f277d9f_cd9941b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-02-12T21:45:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a10a15fb_a008c0c5",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "b3c28d25135ce075f1fd6027d95a5970aae309f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52978266_60d9c8ea",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-12T16:39:55Z",
       "side": 1,
       "message": "Rather than note that it needs to be reimplemented here, we should probably make it clear that if we see failures, users should check the hwdep to see if their board is incorrectly included. The comment about reimplementation belongs in the hwdep implementation itself if it\u0027s not already there.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 51
+      },
+      "revId": "b3c28d25135ce075f1fd6027d95a5970aae309f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8058aa0_01ed740c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-02-12T21:45:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52978266_60d9c8ea",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e498bf63_284fa194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-02-12T21:45:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cfb6623_84640e27",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "b3c28d25135ce075f1fd6027d95a5970aae309f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "142b4850_1ed3e00f",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-12T16:39:55Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 51
+      },
+      "revId": "b3c28d25135ce075f1fd6027d95a5970aae309f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "370c563e_411613c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-02-12T21:45:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142b4850_1ed3e00f",
       "range": {
         "startLine": 34,
         "startChar": 0,
