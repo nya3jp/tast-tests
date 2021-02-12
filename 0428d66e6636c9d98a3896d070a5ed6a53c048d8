@@ -16,6 +16,23 @@
       "message": "Hi Caroline,\n\nCan you please check if this satisfies the new requirements ?\n\nThanks",
       "revId": "0428d66e6636c9d98a3896d070a5ed6a53c048d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f2b07a_7bdc3883",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296277
+      },
+      "writtenOn": "2021-02-12T17:33:24Z",
+      "side": 1,
+      "message": "This looks great, thank you!",
+      "revId": "0428d66e6636c9d98a3896d070a5ed6a53c048d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
