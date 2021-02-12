@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android"
 	"chromiumos/tast/local/android/adb"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -38,6 +39,7 @@ type AndroidNearbyDevice struct {
 	hostPort         int
 	requestID        int
 	transferCallback string
+	uiDevice         *ui.Device
 }
 
 // New initializes the specified Android device for Nearby Sharing.
@@ -608,4 +610,41 @@ func (a *AndroidNearbyDevice) CancelSendingFile(ctx context.Context) error {
 	// Read response.
 	_, err = a.clientRPCResponse(ctx, id, defaultRPCResponseTimeout)
 	return err
+}
+
+// InitUI initializes a UI automator connection to the Android device. Callers should defer CloseUI to free the associated resources.
+func (a *AndroidNearbyDevice) InitUI(ctx context.Context) error {
+	d, err := ui.NewDevice(ctx, a.device)
+	if err != nil {
+		return errors.Wrap(err, "failed initializing UI automator")
+	}
+	a.uiDevice = d
+	return nil
+}
+
+// CloseUI closes the UI automator connection.
+func (a *AndroidNearbyDevice) CloseUI(ctx context.Context) error {
+	return a.uiDevice.Close(ctx)
+}
+
+// WaitForInContactSenderUI waits for the sharing UI that appears when there is an incoming share from a contact.
+func (a *AndroidNearbyDevice) WaitForInContactSenderUI(ctx context.Context, sender string, timeout time.Duration) error {
+	senderText := a.uiDevice.Object(ui.ID("com.google.android.gms:id/title"))
+	return senderText.WaitForText(ctx, sender, timeout)
+}
+
+// AcceptUI accepts the incoming contacts share through the UI and waits for the share to finish by waiting for the receiving UI to be gone.
+func (a *AndroidNearbyDevice) AcceptUI(ctx context.Context, timeout time.Duration) error {
+	acceptBtn := a.uiDevice.Object(ui.ID("com.google.android.gms:id/accept_btn"))
+	if err := acceptBtn.WaitForExists(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed waiting for Accept button to exist")
+	}
+	if err := acceptBtn.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click Accept button")
+	}
+	receiveCard := a.uiDevice.Object(ui.ID("com.google.android.gms:id/card"))
+	if err := receiveCard.WaitUntilGone(ctx, timeout); err != nil {
+		return errors.Wrap(err, "failed waiting for receive UI to be gone")
+	}
+	return nil
 }
