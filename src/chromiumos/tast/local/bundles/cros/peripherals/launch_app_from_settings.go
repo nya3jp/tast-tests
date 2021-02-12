@@ -23,7 +23,7 @@ import (
 // settingsTestParams contains all the data needed to run a single test iteration.
 type settingsTestParams struct {
 	appID        string
-	appLabel     string
+	menuLabel    string
 	featureFlag  string
 	settingsPage string
 }
@@ -43,7 +43,7 @@ func init() {
 				Name: "diagnostics",
 				Val: settingsTestParams{
 					appID:        apps.Diagnostics.ID,
-					appLabel:     apps.Diagnostics.Name,
+					menuLabel:    apps.Diagnostics.Name,
 					featureFlag:  "DiagnosticsApp",
 					settingsPage: "help", // URL for About ChromeOS page
 				},
@@ -52,9 +52,17 @@ func init() {
 				Name: "scan",
 				Val: settingsTestParams{
 					appID:        apps.Scan.ID,
-					appLabel:     apps.Scan.Name + " Scan documents and images",
+					menuLabel:    apps.Scan.Name + " Scan documents and images",
 					featureFlag:  "ScanningUI",
-					settingsPage: "osPrinting", // URL for Print and page
+					settingsPage: "osPrinting", // URL for Print and scan page
+				},
+			},
+			{
+				Name: "print_management",
+				Val: settingsTestParams{
+					appID:        apps.PrintManagement.ID,
+					menuLabel:    apps.PrintManagement.Name + " View and manage print jobs",
+					settingsPage: "osPrinting", // URL for Print and scan page
 				},
 			},
 		},
@@ -82,7 +90,7 @@ func LaunchAppFromSettings(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	ui := uiauto.New(tconn)
-	entryFinder := nodewith.Name(params.appLabel).Role(role.Link).Ancestor(ossettings.WindowFinder)
+	entryFinder := nodewith.Name(params.menuLabel).Role(role.Link).Ancestor(ossettings.WindowFinder)
 	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, params.settingsPage, ui.Exists(entryFinder)); err != nil {
 		s.Fatal("Failed to launch Settings page: ", err)
 	}
