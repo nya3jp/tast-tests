@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff0d4b0_a1224e96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-12T22:33:51Z",
+      "side": 1,
+      "message": "now this CL is not only for keepstate, but also wpr. Please update the commit message.",
+      "revId": "184fb6da2833600faedc734dc76c4b3e1ad2870a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b8079f_8ca07062",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-12T22:33:51Z",
+      "side": 1,
+      "message": "In the newest patchset, maybe always having chrome.KeepState() is good enough.  It won\u0027t hurt the existing fixture when running Google\u0027s testing lab.",
+      "revId": "184fb6da2833600faedc734dc76c4b3e1ad2870a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
