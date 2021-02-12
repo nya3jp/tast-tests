@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7dcc175e_a6a11c19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T07:43:24Z",
+      "side": 1,
+      "message": "I deduped this bug to crbug.com/1168360, can you update this line?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "15f05515fa88aa1145e0e70df131edbed977ea3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1a3f7f9_3495d5a1",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
