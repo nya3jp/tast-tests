@@ -55,6 +55,12 @@ func BetterOnboardingAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable better onboarding: ", err)
 	}
 	defer func() {
+		// Send a text query to clear "stickiness" of better onboarding for this
+		// session. This prevents other Assistant tests from hitting better
+		// onboarding if they run after this one.
+		if _, err := assistant.SendTextQuery(ctx, tconn, "test query"); err != nil {
+			s.Error("Failed to run text query to clear better onboarding: ", err)
+		}
 		if err := assistant.SetBetterOnboardingEnabled(ctx, tconn, false); err != nil {
 			s.Error("Failed to disable better onboarding: ", err)
 		}

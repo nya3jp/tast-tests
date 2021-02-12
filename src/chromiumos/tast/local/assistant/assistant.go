@@ -89,9 +89,11 @@ func SetVoiceInteractionConsentValue(ctx context.Context, tconn *chrome.TestConn
 // SetBetterOnboardingEnabled enables/disables the Assistant onboarding feature
 // by controlling the number of sessions where onboarding screen has shown.
 // Note that true pref value will *not* be restored later, so tests that need
-// this feature must explicitly enable it during setup. It is recommended to
-// disable Better Onboarding for Assistant performance tests that are not
-// explicitly testing the Better Onboarding feature.
+// this feature must explicitly enable it during setup. Also note that once
+// better onboarding has been activated for a session, it will remain enabled
+// for the duration of that session until an Assistant interaction happens.
+//  It is recommended to disable Better Onboarding for Assistant performance
+// tests that are not explicitly testing the Better Onboarding feature.
 func SetBetterOnboardingEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
 	// The maximum number of user sessions in which to show Assistant onboarding.
 	// Please keep it synced to |kOnboardingMaxSessionsShown| stored in
