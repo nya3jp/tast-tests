@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2bb50a8_8c4201b8",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-12T14:10:42Z",
+      "side": 1,
+      "message": "p.cr could not have become nil in the previous CL. It can after a call to ResetChrome now.",
+      "parentUuid": "b15fe28a_7651d1c9",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 8
+      },
+      "revId": "832f1277cc30218b432ec916b30d3f4bf09e0302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8beddd8a_a363b8ac",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-12T14:07:19Z",
       "side": 1,
       "message": "This should be in the previous CL.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 2
+      },
+      "revId": "832f1277cc30218b432ec916b30d3f4bf09e0302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff71ea91_470b3e71",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-12T14:10:42Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "8beddd8a_a363b8ac",
       "range": {
         "startLine": 135,
         "startChar": 0,
