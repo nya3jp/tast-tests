@@ -7,14 +7,9 @@ package cmd
 
 import (
 	"context"
-	"io/ioutil"
-	"path/filepath"
 
 	"chromiumos/tast/common/network/cmd"
-	"chromiumos/tast/errors"
-	"chromiumos/tast/shutil"
 	"chromiumos/tast/ssh"
-	"chromiumos/tast/testing"
 )
 
 const logName = "cmdOutput.txt"
@@ -35,20 +30,9 @@ func (r *RemoteCmdRunner) Run(ctx context.Context, cmd string, args ...string) e
 
 // Output runs a command, waits for its completion and returns stdout output of the command.
 func (r *RemoteCmdRunner) Output(ctx context.Context, cmd string, args ...string) ([]byte, error) {
-	out, err := r.Host.Command(cmd, args...).Output(ctx)
-	// NB: the 'local' variant uses DumpLogOnError, which is not provided by Commander.
-	if err != nil && !r.NoLogOnError {
-		testing.ContextLogf(ctx, "Failed to run command: %s %s", shutil.Escape(cmd), shutil.EscapeSlice(args))
-		dir, ok := testing.ContextOutDir(ctx)
-		if !ok {
-			testing.ContextLog(ctx, "Failed to open OutDir to dump command output")
-			return nil, errors.Wrap(err, "failed to open OutDir")
-		}
-		logPath := filepath.Join(dir, logName)
-		if err := ioutil.WriteFile(logPath, out, 0644); err != nil {
-			testing.ContextLog(ctx, "Failed to write command output: ", err)
-		}
-		testing.ContextLog(ctx, "Command output stored in ", logPath)
+	cc := r.Host.Command(cmd, args...)
+	if r.NoLogOnError {
+		return cc.Output(ctx)
 	}
-	return out, err
+	return cc.Output(ctx, ssh.DumpLogOnError)
 }
