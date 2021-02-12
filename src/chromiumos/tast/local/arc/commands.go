@@ -65,3 +65,13 @@ func (a *ARC) BroadcastIntentGetData(ctx context.Context, action string, params 
 func (a *ARC) BugReport(ctx context.Context, path string) error {
 	return a.device.BugReport(ctx, path)
 }
+
+// ReverseTCP forwards the host port to an ADB device local port and returns that ADB device port.
+func (a *ARC) ReverseTCP(ctx context.Context, hostPort int) (int, error) {
+	return a.device.ReverseTCP(ctx, hostPort)
+}
+
+// RemoveReverseTCP removes the forwarding from a host port to the specified ADB device local port.
+func (a *ARC) RemoveReverseTCP(ctx context.Context, androidPort int) error {
+	return a.device.RemoveReverseTCP(ctx, androidPort)
+}
