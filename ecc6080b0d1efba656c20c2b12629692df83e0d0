@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be7818a8_87eb6362",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_remote_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T10:04:21Z",
+      "side": 1,
+      "message": "We can remove -build\u003dfalse now: crrev.com/c/2678381",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 19
+      },
+      "revId": "ecc6080b0d1efba656c20c2b12629692df83e0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad55a9dd_ad40c83c",
+        "filename": "src/chromiumos/tast/remote/fixture/meta_remote.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T10:04:21Z",
+      "side": 1,
+      "message": "We can introduce a subpackage at chromiumos/tast/remote/bundles/cros/meta to avoid a new support library useful only for meta tests.",
+      "revId": "ecc6080b0d1efba656c20c2b12629692df83e0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd445413_184297f3",
+        "filename": "src/chromiumos/tast/remote/fixture/meta_remote.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T10:04:21Z",
+      "side": 1,
+      "message": "nit: All timeouts can be omitted theoretically as there\u0027s no time-consuming methods.",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "ecc6080b0d1efba656c20c2b12629692df83e0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
