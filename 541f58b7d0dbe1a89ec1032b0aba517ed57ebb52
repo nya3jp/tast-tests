@@ -16,6 +16,24 @@
       "message": "Looks like there are some recent failures. Is this test still flaky?",
       "revId": "541f58b7d0dbe1a89ec1032b0aba517ed57ebb52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22577bd8_59d01e88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2021-02-12T21:05:21Z",
+      "side": 1,
+      "message": "The test in itself is not flaky. In particular, connecting to the DUT after reboot is flaky. As this test reboots the DUT many times, reboot flakiness shows up indirectly in this test as well. Filed bug for reboot flakiness - https://crbug.com/1161392",
+      "parentUuid": "730600dd_db8bd3a8",
+      "revId": "541f58b7d0dbe1a89ec1032b0aba517ed57ebb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
