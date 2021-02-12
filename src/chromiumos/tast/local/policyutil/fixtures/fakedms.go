@@ -7,10 +7,12 @@ package fixtures
 import (
 	"context"
 	"io/ioutil"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -24,12 +26,15 @@ func init() {
 		SetUpTimeout:    15 * time.Second,
 		ResetTimeout:    5 * time.Second,
 		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
 	})
 }
 
 type fakeDMSFixture struct {
 	// FakeDMS is the currently running fake DM server.
 	fakeDMS *fakedms.FakeDMS
+	// tmpdir is the directory where FakeDMS is currently running
+	tmpdir string
 }
 
 func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -41,9 +46,10 @@ func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interf
 	if err != nil {
 		s.Fatal("Failed to create fdms temp dir: ", err)
 	}
+	f.tmpdir = tmpdir
 
 	// Start FakeDMS.
-	fdms, err := fakedms.New(s.FixtContext(), tmpdir)
+	fdms, err := fakedms.New(s.FixtContext(), f.tmpdir)
 	if err != nil {
 		s.Fatal("Failed to start FakeDMS: ", err)
 	}
@@ -87,5 +93,22 @@ func (f *fakeDMSFixture) Reset(ctx context.Context) error {
 
 func (f *fakeDMSFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 func (f *fakeDMSFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-	// TODO(crbug.com/1049532): Copy logs after each test finishes.
+	if ctx.Err() != nil {
+		s.Fatal("Context already expired: ", ctx.Err())
+	}
+
+	// Copy FakeDMS log to the current tests OutDir.
+	src := filepath.Join(f.tmpdir, fakedms.LogFile)
+	dst := filepath.Join(s.OutDir(), fakedms.LogFile)
+	if err := fsutil.CopyFile(src, dst); err != nil {
+		s.Error("Failed to copy FakeDMS logs: ", err)
+	}
+
+	// Copy FakeDMS policies to the current tests OutDir.
+	// Add prefix to avoid conflic with the Chrome fixture.
+	src = filepath.Join(f.tmpdir, fakedms.PolicyFile)
+	dst = filepath.Join(s.OutDir(), "fakedms_"+fakedms.PolicyFile)
+	if err := fsutil.CopyFile(src, dst); err != nil {
+		s.Error("Failed to copy FakeDMS policies: ", err)
+	}
 }

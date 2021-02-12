@@ -26,6 +26,12 @@ import (
 // Necessary dependencies (as defined in policy-testserver ebuild).
 const depsDir = "/usr/local/share/policy_testserver/"
 
+// LogFile is the name of the log file for FakeDMS.
+const LogFile = "fakedms.log"
+
+// PolicyFile is the name of the log file for FakeDMS.
+const PolicyFile = "policy.json"
+
 var testserverPath = filepath.Join(depsDir, "policy_testserver.py")
 var testserverPythonImports = []string{
 	depsDir,
@@ -51,8 +57,8 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 		return nil, errors.Wrap(err, "cannot find necessary dependencies folder: "+depsDir)
 	}
 
-	policyPath := filepath.Join(outDir, "policy.json")
-	logPath := filepath.Join(outDir, "fakedms.log")
+	policyPath := filepath.Join(outDir, PolicyFile)
+	logPath := filepath.Join(outDir, LogFile)
 
 	fr, fw, err := os.Pipe()
 	if err != nil {
