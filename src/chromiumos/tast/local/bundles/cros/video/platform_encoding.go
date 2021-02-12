@@ -47,13 +47,15 @@ var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
 var regExpPSNR = regexp.MustCompile(`\nGlbPSNR: (\d+\.\d+)`)
 
 // commandBuilderFn is the function type to generate the command line with arguments.
-type commandBuilderFn func(exe, yuvFile string, size coords.Size) (command []string, ivfFile string, bitrate int)
+type commandBuilderFn func(exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int)
 
 // testParam is used to describe the config used to run each test.
 type testParam struct {
 	command        string           // The command path to be run. This should be relative to /usr/local/bin.
 	filename       string           // Input file name. This will be decoded to produce the uncompressed input to the encoder binary, so it can come in any format/container.
 	size           coords.Size      // Width x Height in pixels of the input file.
+	numFrames      int              // Number of frames of the input file.
+	fps            float64          // FPS of the input file.
 	commandBuilder commandBuilderFn // Function to create the command line arguments.
 	regExpFPS      *regexp.Regexp   // Regexp to find the FPS from output.
 	decoder        string           // Command line decoder binary.
@@ -76,6 +78,8 @@ func init() {
 			Val: testParam{
 				command:        "vp8enc",
 				filename:       "tulip2-320x180.vp9.webm",
+				numFrames:      500,
+				fps:            30,
 				size:           coords.NewSize(320, 180),
 				commandBuilder: vp8argsVAAPI,
 				regExpFPS:      regExpFPSVP8,
@@ -88,6 +92,8 @@ func init() {
 			Val: testParam{
 				command:        "vp8enc",
 				filename:       "tulip2-640x360.vp9.webm",
+				numFrames:      500,
+				fps:            30,
 				size:           coords.NewSize(640, 360),
 				commandBuilder: vp8argsVAAPI,
 				regExpFPS:      regExpFPSVP8,
@@ -100,6 +106,8 @@ func init() {
 			Val: testParam{
 				command:        "vp8enc",
 				filename:       "tulip2-1280x720.vp9.webm",
+				numFrames:      500,
+				fps:            30,
 				size:           coords.NewSize(1280, 720),
 				commandBuilder: vp8argsVAAPI,
 				regExpFPS:      regExpFPSVP8,
@@ -112,6 +120,8 @@ func init() {
 			Val: testParam{
 				command:        "vp9enc",
 				filename:       "tulip2-320x180.vp9.webm",
+				numFrames:      500,
+				fps:            30,
 				size:           coords.NewSize(320, 180),
 				commandBuilder: vp9argsVAAPI,
 				regExpFPS:      regExpFPSVP9,
@@ -124,6 +134,8 @@ func init() {
 			Val: testParam{
 				command:        "vp9enc",
 				filename:       "tulip2-640x360.vp9.webm",
+				numFrames:      500,
+				fps:            30,
 				size:           coords.NewSize(640, 360),
 				commandBuilder: vp9argsVAAPI,
 				regExpFPS:      regExpFPSVP9,
@@ -136,6 +148,8 @@ func init() {
 			Val: testParam{
 				command:        "vp9enc",
 				filename:       "tulip2-1280x720.vp9.webm",
+				numFrames:      500,
+				fps:            30,
 				size:           coords.NewSize(1280, 720),
 				commandBuilder: vp9argsVAAPI,
 				regExpFPS:      regExpFPSVP9,
@@ -148,6 +162,8 @@ func init() {
 			Val: testParam{
 				command:        "h264encode",
 				filename:       "tulip2-320x180.vp9.webm",
+				numFrames:      500,
+				fps:            30,
 				size:           coords.NewSize(320, 180),
 				commandBuilder: h264argsVAAPI,
 				regExpFPS:      regExpFPSH264,
@@ -160,6 +176,8 @@ func init() {
 			Val: testParam{
 				command:        "h264encode",
 				filename:       "tulip2-640x360.vp9.webm",
+				numFrames:      500,
+				fps:            30,
 				size:           coords.NewSize(640, 360),
 				commandBuilder: h264argsVAAPI,
 				regExpFPS:      regExpFPSH264,
@@ -172,6 +190,8 @@ func init() {
 			Val: testParam{
 				command:        "h264encode",
 				filename:       "tulip2-1280x720.vp9.webm",
+				numFrames:      500,
+				fps:            30,
 				size:           coords.NewSize(1280, 720),
 				commandBuilder: h264argsVAAPI,
 				regExpFPS:      regExpFPSH264,
@@ -184,6 +204,8 @@ func init() {
 			Val: testParam{
 				command:        "vpxenc",
 				filename:       "tulip2-320x180.vp9.webm",
+				numFrames:      500,
+				fps:            30,
 				size:           coords.NewSize(320, 180),
 				commandBuilder: vp8argsVpxenc,
 				regExpFPS:      regExpFPSVpxenc,
@@ -195,6 +217,8 @@ func init() {
 			Val: testParam{
 				command:        "vpxenc",
 				filename:       "tulip2-640x360.vp9.webm",
+				numFrames:      500,
+				fps:            30,
 				size:           coords.NewSize(640, 360),
 				commandBuilder: vp8argsVpxenc,
 				regExpFPS:      regExpFPSVpxenc,
@@ -206,6 +230,8 @@ func init() {
 			Val: testParam{
 				command:        "vpxenc",
 				filename:       "tulip2-1280x720.vp9.webm",
+				numFrames:      500,
+				fps:            30,
 				size:           coords.NewSize(1280, 720),
 				commandBuilder: vp8argsVpxenc,
 				regExpFPS:      regExpFPSVpxenc,
@@ -237,7 +263,7 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	}
 	defer os.Remove(yuvFile)
 
-	command, encodedFile, targetBitrate := testOpt.commandBuilder(testOpt.command, yuvFile, testOpt.size)
+	command, encodedFile, targetBitrate := testOpt.commandBuilder(testOpt.command, yuvFile, testOpt.size, int(testOpt.fps))
 
 	energy, raplErr := power.NewRAPLSnapshot()
 	if raplErr != nil || energy == nil {
@@ -300,7 +326,7 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		energyDiff.ReportWattPerfMetrics(p, "", timeDelta)
 	}
 
-	actualBitrate, err := calculateBitrate(encodedFile, 30.0, 500)
+	actualBitrate, err := calculateBitrate(encodedFile, testOpt.fps, testOpt.numFrames)
 	if err != nil {
 		s.Fatal("Failed to calculate the resulting bitrate: ", err)
 	}
@@ -401,7 +427,7 @@ func compareFiles(ctx context.Context, decoder, yuvFile, encodedFile, outDir str
 }
 
 // vp8argsVAAPI constructs the command line for the VP8 encoding binary exe.
-func vp8argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, ivfFile string, bitrate int) {
+func vp8argsVAAPI(exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int) {
 	command = append(command, exe, strconv.Itoa(size.Width), strconv.Itoa(size.Height), yuvFile)
 
 	ivfFile = yuvFile + ".ivf"
@@ -415,14 +441,15 @@ func vp8argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, ivfF
 	command = append(command, "--rcmode", "1" /* For Constant BitRate (CBR) */)
 	command = append(command, "--error_resilient" /* Off by default, enable. */)
 
-	// From Chromecast, corresponds to a little more than 0.1 BPP.
-	bitrate = 256 * size.Width * size.Height / (320.0 * 240.0)
+	command = append(command, "-f", strconv.Itoa(fps))
+
+	bitrate = int(0.1 /* BPP */ * float64(fps) * float64(size.Width) * float64(size.Height))
 	command = append(command, "--fb", strconv.Itoa(bitrate) /* Kbps */)
 	return
 }
 
 // vp9argsVAAPI constructs the command line for the VP9 encoding binary exe.
-func vp9argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, ivfFile string, bitrate int) {
+func vp9argsVAAPI(exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int) {
 	command = append(command, exe, strconv.Itoa(size.Width), strconv.Itoa(size.Height), yuvFile)
 
 	ivfFile = yuvFile + ".ivf"
@@ -440,13 +467,15 @@ func vp9argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, ivfF
 	// encoding. Let exe decide which one to use (auto mode).
 	command = append(command, "--low_power", "-1")
 
-	bitrate = int(1.3 * float64(size.Width) * float64(size.Height))
+	command = append(command, "-f", strconv.Itoa(fps))
+
+	bitrate = int(0.07 /* BPP */ * float64(fps) * float64(size.Width) * float64(size.Height))
 	command = append(command, "--fb", strconv.Itoa(bitrate/1000.0) /* in Kbps */)
 	return
 }
 
 // h264argsVAAPI constructs the command line for the H.264 encoding binary exe.
-func h264argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, h264File string, bitrate int) {
+func h264argsVAAPI(exe, yuvFile string, size coords.Size, fps int) (command []string, h264File string, bitrate int) {
 	command = append(command, exe, "-w", strconv.Itoa(size.Width), "-h", strconv.Itoa(size.Height))
 	command = append(command, "--srcyuv", yuvFile, "--fourcc", "YV12")
 	command = append(command, "-n", "0" /* Read number of frames from yuvFile*/)
@@ -460,14 +489,16 @@ func h264argsVAAPI(exe, yuvFile string, size coords.Size) (command []string, h26
 	command = append(command, "--minqp", "24", "--initialqp", "26" /* Quality Parameter */)
 	command = append(command, "--profile", "BP" /* (Constrained) Base Profile. */)
 
+	command = append(command, "-f", strconv.Itoa(fps))
+
 	command = append(command, "--rcmode", "CBR" /* Constant BitRate */)
-	bitrate = int(0.1 /* BPP */ * 30 * float64(size.Width) * float64(size.Height))
+	bitrate = int(0.1 /* BPP */ * float64(fps) * float64(size.Width) * float64(size.Height))
 	command = append(command, "--bitrate", strconv.Itoa(bitrate) /* bps */)
 	return
 }
 
 // vp8argsVpxenc constructs the command line for vpxenc.
-func vp8argsVpxenc(exe, yuvFile string, size coords.Size) (command []string, ivfFile string, bitrate int) {
+func vp8argsVpxenc(exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int) {
 	command = append(command, exe, "-w", strconv.Itoa(size.Width), "-h", strconv.Itoa(size.Height))
 
 	command = append(command, "--passes=1" /* 1 encoding pass */)
@@ -490,9 +521,10 @@ func vp8argsVpxenc(exe, yuvFile string, size coords.Size) (command []string, ivf
 		command = append(command, "--threads=2")
 	}
 
-	// From Chromecast, corresponds to a little more than 0.1 BPP.
-	bitrate = 1000 * int(256*size.Width*size.Height/(320.0*240.0))
+	bitrate = int(0.1 /* BPP */ * float64(fps) * float64(size.Width) * float64(size.Height))
 	command = append(command, fmt.Sprintf("--target-bitrate=%d", bitrate/1000) /* Kbps */)
+
+	command = append(command, fmt.Sprintf("--fps=%d/1", fps))
 
 	ivfFile = yuvFile + ".ivf"
 	command = append(command, "--ivf", "-o", ivfFile)
