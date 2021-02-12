@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee35d65_04007cd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-12T02:40:16Z",
+      "side": 1,
+      "message": "Dunno why I left this only in my local tree... this has been fixed for a while.",
+      "revId": "4fd26195d85204f6210792c82065e2f4db4ff0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
