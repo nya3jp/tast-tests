@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f041f731_a974bbf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-12T22:59:21Z",
+      "side": 1,
+      "message": "mostly lgtm.  Please address the case of FixtValue/PreValue as lacros fixture CL was landed.",
+      "revId": "807922642a0c808378b1fb8eb8d8169869003660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
