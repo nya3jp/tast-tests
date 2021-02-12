@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db3fa886_5a259050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-12T00:03:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d4c43ea2_f5fb6bda",
+      "range": {
+        "startLine": 520,
+        "startChar": 140,
+        "endLine": 520,
+        "endChar": 146
+      },
+      "revId": "9e99c565617e5cf43200d5148cd6055941afb689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "173846df_8e86c230",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "932c1080_2f6daa15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-12T00:03:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "173846df_8e86c230",
+      "range": {
+        "startLine": 533,
+        "startChar": 4,
+        "endLine": 533,
+        "endChar": 7
+      },
+      "revId": "9e99c565617e5cf43200d5148cd6055941afb689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03e49ce6_28c0699c",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-02-11T23:11:35Z",
       "side": 1,
       "message": "I just notice, this has no need to return a string either.",
+      "range": {
+        "startLine": 541,
+        "startChar": 135,
+        "endLine": 541,
+        "endChar": 141
+      },
+      "revId": "9e99c565617e5cf43200d5148cd6055941afb689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9594de1_7fb8ea2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-12T00:03:45Z",
+      "side": 1,
+      "message": "Hi, I am using the return string in \"performKeyBoardNavigations\" func. So it is needed. Thanks.",
+      "parentUuid": "03e49ce6_28c0699c",
       "range": {
         "startLine": 541,
         "startChar": 135,
