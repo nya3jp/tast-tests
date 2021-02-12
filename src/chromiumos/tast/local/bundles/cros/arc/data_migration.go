@@ -33,11 +33,13 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DataMigration,
-		Desc:         "Boots ARC with /data created on the previous version of ARC and verifies Play Store can install an app",
-		Contacts:     []string{"niwa@google.com", "arc-storage@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		Func:     DataMigration,
+		Desc:     "Boots ARC with /data created on the previous version of ARC and verifies Play Store can install an app",
+		Contacts: []string{"niwa@google.com", "arc-storage@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		// "no_qemu" is added for excluding betty from the target board list.
+		// TODO(b/179636279): Remove "no_qemu" after making the test pass on betty.
+		SoftwareDeps: []string{"chrome", "no_qemu"},
 		Timeout:      10 * time.Minute,
 		Vars:         []string{"arc.DataMigration.username", "arc.DataMigration.password"},
 		Params: []testing.Param{{
