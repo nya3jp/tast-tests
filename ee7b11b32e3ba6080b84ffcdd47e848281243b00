@@ -16,6 +16,231 @@
       "message": "Hi Pavol, \n\nPlease take a look at this CL!\n\nIt\u0027s super verbose because of the UI automation code.\n\nThanks!",
       "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f284c92e_bdc258a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-12T14:27:59Z",
+      "side": 1,
+      "message": "Thanks Andreea, it\u0027s amazing to see this test happen! :-)\n\nMy only high-level question would be if it makes sense to keep the \"ARC app connectivity check tool\" useful for non-proxy use cases. \n\n+Hugo",
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5844f110_f2c8781a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-12T14:27:59Z",
+      "side": 1,
+      "message": "I would be happy if we could call this arc assuming tast owners agree. \"a\" is just super opaque and usage of this is spread across many lines/segments in this file.\n( e.g. go/go-style/decisions#v )\n\nUnless I guess it is standard practice to call arc.ARC an \"a\" in other tast parts..",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb91cba_63c26ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-12T14:27:59Z",
+      "side": 1,
+      "message": "nit: Would it be possible to file a crbug/b for this and also have that in the .proto file ?",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 144
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "834a719e_716af6a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-12T14:27:59Z",
+      "side": 1,
+      "message": "What should happen if this gets called multiple times?",
+      "range": {
+        "startLine": 394,
+        "startChar": 24,
+        "endLine": 394,
+        "endChar": 41
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257d77f7_30cc4638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-12T14:27:59Z",
+      "side": 1,
+      "message": "Should we hint to run CreateArcInstance?\n\nOr, should CreateArcInstance be done implicitly in VerifyArcAppConenctivity so the caller doesn\u0027t have to care?",
+      "range": {
+        "startLine": 410,
+        "startChar": 26,
+        "endLine": 410,
+        "endChar": 46
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef0e5639_0573af6d",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-12T14:27:59Z",
+      "side": 1,
+      "message": "Could this live in some more generic package like tast/local/network/connectivitycheck ?\n\nI think we could make the DoSystemProxyAuthentication optional and then this could be reusable for non-proxy use cases. WDYT?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ebdb911_8d945533",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-12T14:27:59Z",
+      "side": 1,
+      "message": "nit: I\u0027d suggest:\n\nRead the global proxy which is displayed on the test app\u0027s UI.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b6fb05_de6fcbb4",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-12T14:27:59Z",
+      "side": 1,
+      "message": "nit: \"and uses it to verify...\" ?",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b00ab143_c336fae9",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-12T14:27:59Z",
+      "side": 1,
+      "message": "Could we split this off into an \"This is intended to be verify connectivity via the system-proxy Chrome OS daemon\", so it is clear what the original intention was, but this api would remain reusable for other tests that want to e.g. verify arc++ connectivity in some VPN use cases without proxy ?",
+      "range": {
+        "startLine": 41,
+        "startChar": 63,
+        "endLine": 41,
+        "endChar": 100
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bf35af5_e57282b0",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-12T14:27:59Z",
+      "side": 1,
+      "message": "\u003e \"reponse\" is a possible misspelling of \"response\".\n\nPlease fix.",
+      "parentUuid": "2ba774cf_874e4933",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 21
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
