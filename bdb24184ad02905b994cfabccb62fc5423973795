@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b52ba6e8_004a495b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T07:23:14Z",
+      "side": 1,
+      "message": "Thank you, looks nice.\n",
+      "revId": "bdb24184ad02905b994cfabccb62fc5423973795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "405f2087_62165e65",
         "filename": "src/chromiumos/tast/local/arc/fixture.go",
         "patchSetId": 3
@@ -14,6 +31,52 @@
       "writtenOn": "2021-02-10T03:11:28Z",
       "side": 1,
       "message": "The name of the output file is updated to make it comes next to \"messages\" file for Chrome OS.\nSee the suggestion of nya-san in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2682319",
+      "revId": "bdb24184ad02905b994cfabccb62fc5423973795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d5e49c9_96655fe9",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T07:23:14Z",
+      "side": 1,
+      "message": "Do you want to keep this comment?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 104
+      },
+      "revId": "bdb24184ad02905b994cfabccb62fc5423973795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01980702_6e2c1cbd",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T07:23:14Z",
+      "side": 1,
+      "message": "nit\u0026optional: It might be worth leaving a log that we\u0027ve skipped saving messages-arcvm because vm_pstore_dump was not found.",
+      "range": {
+        "startLine": 149,
+        "startChar": 8,
+        "endLine": 149,
+        "endChar": 62
+      },
       "revId": "bdb24184ad02905b994cfabccb62fc5423973795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
