@@ -351,6 +351,20 @@ func (d *Device) RemoveForwardTCP(ctx context.Context, hostPort int) error {
 	return d.Command(ctx, "forward", "--remove", fmt.Sprintf("tcp:%d", hostPort)).Run(testexec.DumpLogOnError)
 }
 
+// ReverseTCP forwards the host port to an ADB device local port and returns that ADB device port.
+func (d *Device) ReverseTCP(ctx context.Context, hostPort int) (int, error) {
+	out, err := d.Command(ctx, "reverse", "tcp:0", fmt.Sprintf("tcp:%d", hostPort)).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return -1, err
+	}
+	return strconv.Atoi(strings.TrimSpace(string(out)))
+}
+
+// RemoveReverseTCP removes the forwarding from a host port to the specified ADB device local port.
+func (d *Device) RemoveReverseTCP(ctx context.Context, androidPort int) error {
+	return d.Command(ctx, "reverse", "--remove", fmt.Sprintf("tcp:%d", androidPort)).Run(testexec.DumpLogOnError)
+}
+
 // PressKeyCode sends a key event with the specified key code.
 func (d *Device) PressKeyCode(ctx context.Context, keycode string) error {
 	return d.ShellCommand(ctx, "input", "keyevent", keycode).Run(testexec.DumpLogOnError)
