@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "275e5496_f2d9dfd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-12T16:49:58Z",
+      "side": 1,
+      "message": "nit: s/runs/run/",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 37
+      },
+      "revId": "e6a09747abde4a371d98602fc624a2f290a1d5e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d93f36b7_0d9e226d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-12T16:49:58Z",
+      "side": 1,
+      "message": "Q: don\u0027t we want to keep running both i420 and nv12 test cases? Or\ndo we have no situations at all of I420 encoding? Line [1] seems\nto say so, but only for DmaBuf backed VideoFrames, so the question\nwould be if we still support ShMem-backed video frame encoding on\nCrOS.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/master:media/gpu/vaapi/vaapi_video_encode_accelerator.cc;l\u003d676-679\n[2] https://source.chromium.org/chromium/chromium/src/+/master:media/gpu/vaapi/vaapi_video_encode_accelerator.cc;l\u003d293-294",
+      "range": {
+        "startLine": 44,
+        "startChar": 54,
+        "endLine": 44,
+        "endChar": 64
+      },
+      "revId": "e6a09747abde4a371d98602fc624a2f290a1d5e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
