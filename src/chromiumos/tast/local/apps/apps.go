@@ -156,7 +156,7 @@ var Contacts = App{
 // PrintManagement has details about the Print Management app.
 var PrintManagement = App{
 	ID:   "fglkccnmnaankjodgccmiodmlkpaiodc",
-	Name: "Print Jobs",
+	Name: "Print jobs",
 }
 
 // Scan has details about the Scan SWA.

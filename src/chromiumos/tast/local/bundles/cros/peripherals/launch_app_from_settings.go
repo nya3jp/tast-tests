@@ -54,7 +54,15 @@ func init() {
 					appID:        apps.Scan.ID,
 					appLabel:     apps.Scan.Name + " Scan documents and images",
 					featureFlag:  "ScanningUI",
-					settingsPage: "osPrinting", // URL for Print and page
+					settingsPage: "osPrinting", // URL for Print and scan page
+				},
+			},
+			{
+				Name: "print_management",
+				Val: settingsTestParams{
+					appID:        apps.PrintManagement.ID,
+					appLabel:     apps.PrintManagement.Name + " View and manage print jobs",
+					settingsPage: "osPrinting", // URL for Print and scan page
 				},
 			},
 		},
