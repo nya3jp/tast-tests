@@ -81,7 +81,6 @@ func init() {
 			},
 			ExtraAttr: []string{"group:mainline", "group:meta"},
 		}, {
-			// TODO(crbug.com/1111251): Merge with the local test case after stabilization.
 			Name: "files_remote",
 			Val: runTestsParam{
 				tests: []string{
@@ -95,8 +94,7 @@ func init() {
 					"meta.RemoteFiles/remote_files_external.txt": "This is an external data file for remote tests.\n",
 				},
 			},
-			// TODO(https://crbug.com/1111251): Test is disabled until it can be fixed
-			// ExtraAttr: []string{"group:mainline", "informational"},
+			ExtraAttr: []string{"group:mainline", "group:meta", "informational"},
 		}, {
 			Name: "panic",
 			Val: runTestsParam{
