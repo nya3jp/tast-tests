@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa4c9359_f6cb6837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-12T20:09:52Z",
+      "side": 1,
+      "message": "It probably is fine to stick with the more user friendly way, I guess I really haven\u0027t seen much of it, but this is a valid use case.",
+      "parentUuid": "990b4b26_b63b6c81",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da7633c0_9de64ca6",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I didn\u0027t feel like the things here really belonged in either. It\u0027s just random small functions that don\u0027t really relate directly to controlling nearby share (random device name, move test files around, file hash comparison, etc.).",
       "parentUuid": "da7633c0_9de64ca6",
+      "range": {
+        "startLine": 110,
+        "startChar": 23,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f6a85a_983816ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-12T20:09:52Z",
+      "side": 1,
+      "message": "Generally it is best to avoid util packages specifically because they can pick up a lot of random unrelated functions. If possible it is best to put them where they would be used most or fit the most. It is fine to leave it, but I think it would be best to move things out.\n\nDifferent CL of course.",
+      "parentUuid": "6483b88d_d8814e85",
       "range": {
         "startLine": 110,
         "startChar": 23,
@@ -202,6 +250,30 @@
       "side": 1,
       "message": "If only the UI were so consistent :) this particular notification has an empty Message and all of the text is in the Title (even though visually, this text is in the body of the notification).",
       "parentUuid": "fd12c8fc_da5e397e",
+      "range": {
+        "startLine": 72,
+        "startChar": 10,
+        "endLine": 72,
+        "endChar": 15
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2940cfb1_1549eaa4",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-12T20:09:52Z",
+      "side": 1,
+      "message": "lol",
+      "parentUuid": "8a31557c_d8aa96b0",
       "range": {
         "startLine": 72,
         "startChar": 10,
