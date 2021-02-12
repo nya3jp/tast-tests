@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99cb8324_58daedc6",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-12T20:31:20Z",
+      "side": 1,
+      "message": "Even with this commented out (and so basically this is a copy of chromeLoggedIn) it cannot reuse the fixture between tests\n\n2021/02/12 12:24:42 [12:24:42.666] Fixture failed to reset: existing Chrome connection is unusable: cdp.Runtime: Evaluate: context deadline exceeded; recovering\n2021/02/12 12:24:42 Completed fixture nearbyShareEnabledDataOfflineAllContacts in 11.63s with 0 error(s)\n2021/02/12 12:24:42 Started fixture nearbyShareEnabledDataOfflineAllContacts\n\nLooking into it",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "b7e10da54521d75362e797596ca6f7105b28cb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
