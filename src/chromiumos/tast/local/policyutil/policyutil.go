@@ -46,6 +46,15 @@ func ServeBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.
 		return errors.Wrap(err, "failed to write policies to FakeDMS")
 	}
 
+	if err := RefreshChromePolicies(ctx, cr); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// RefreshChromePolicies forces an immediate refresh of policies in Chrome.
+func RefreshChromePolicies(ctx context.Context, cr *chrome.Chrome) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create Test API connection")
