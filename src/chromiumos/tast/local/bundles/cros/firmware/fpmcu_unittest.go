@@ -67,6 +67,10 @@ func init() {
 			Val:       testMetadata{name: "bloonchipper/test-aes.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_cec",
+			Val:       testMetadata{name: "bloonchipper/test-cec.bin"},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_compile_time_macros",
 			Val:       testMetadata{name: "bloonchipper/test-compile_time_macros.bin"},
 		}, {
@@ -119,6 +123,14 @@ func init() {
 			Val:       testMetadata{name: "bloonchipper/test-pingpong.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_printf",
+			Val:       testMetadata{name: "bloonchipper/test-printf.bin"},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_queue",
+			Val:       testMetadata{name: "bloonchipper/test-queue.bin"},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_rollback_region0",
 			Val:       testMetadata{name: "bloonchipper/test-rollback.bin", testArgs: []string{"region0"}, finishRegexes: []*regexp.Regexp{dataAccessViolation8020000Regex}},
 		}, {
@@ -151,12 +163,24 @@ func init() {
 			Val:       testMetadata{name: "bloonchipper/test-sha256_unrolled.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_static_if",
+			Val:       testMetadata{name: "bloonchipper/test-static_if.bin"},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_stm32f_rtc",
 			Val:       testMetadata{name: "bloonchipper/test-stm32f_rtc.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_timer_dos",
+			Val:       testMetadata{name: "bloonchipper/test-timer_dos.bin"},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_utils",
 			Val:       testMetadata{name: "bloonchipper/test-utils.bin"},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_utils_str",
+			Val:       testMetadata{name: "bloonchipper/test-utils_str.bin"},
 		}},
 	})
 }
