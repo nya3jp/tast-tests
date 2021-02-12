@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3947f667_c0bc1027",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-12T10:32:06Z",
+      "side": 1,
+      "message": "\u003e \"precondtion\" is a possible misspelling of \"precondition\".\n\nDone",
+      "parentUuid": "528626ed_e0831f0b",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "c4da41353831d65abf00307d9209a321e9bd5770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cd01db5_c0d1e1f4",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-12T10:32:06Z",
+      "side": 1,
+      "message": "\u003e \"overrite\" is a possible misspelling of \"overwrite\", \"override\", or \"overrate\".\n\nDone",
+      "parentUuid": "90b07606_07529da3",
+      "range": {
+        "startLine": 39,
+        "startChar": 51,
+        "endLine": 39,
+        "endChar": 59
+      },
+      "revId": "c4da41353831d65abf00307d9209a321e9bd5770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
