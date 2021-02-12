@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3be0b5_529ae05b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-12T22:59:21Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "91e1d36b_ea624a07",
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc11afb7_0ea9b2f6",
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "Looks like the submit was failed.",
       "parentUuid": "3257ac92_0b41f468",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 71
+      },
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5f1f98_09568ee5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-12T22:59:21Z",
+      "side": 1,
+      "message": "That CL was failed due to a flake. Now it\u0027s landed. Sorry for the delay.",
+      "parentUuid": "1ab3d94c_56b4948e",
       "range": {
         "startLine": 72,
         "startChar": 0,
@@ -242,6 +284,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4979c54e_84f6486a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-12T22:59:21Z",
+      "side": 1,
+      "message": "yes. the \u0027RunAndWaitAll\u0027 is doing like that. In pseudo code, it is like\n  hists \u003d GetHistograms(...(specified ones))\n  doTask()\n  waitFor {\n    newHists \u003d GetHistGrams(...(the same sets))\n    break when all of histgrams have the new data points\n  }\n\nLooks like this histogram happens only after the animation finishes. If that\u0027s the case, this waiting mechanism can wait for the animation finishes effectively.",
+      "parentUuid": "fa0a463f_93c8b67c",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca61af52_fcf2201f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
         "patchSetId": 6
@@ -271,6 +337,24 @@
       "side": 1,
       "message": "Entering isn\u0027t issue as animation is simple and won\u0027t change the eviction state during animation.",
       "parentUuid": "ca61af52_fcf2201f",
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef9449d_c80c632d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-12T22:59:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4a2c4544_60828922",
       "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
