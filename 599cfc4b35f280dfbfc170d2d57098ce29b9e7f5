@@ -50,6 +50,24 @@
       "message": "LGTM from a Tast perspective -- I don\u0027t know of any Tast style guidelines for non-go code",
       "revId": "599cfc4b35f280dfbfc170d2d57098ce29b9e7f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d58283_bd58dd5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-12T02:56:34Z",
+      "side": 1,
+      "message": "Neither do I, but I did run it through default `clang-format` after `repo upload` complained about long lines.",
+      "parentUuid": "2c7aa51d_e3894286",
+      "revId": "599cfc4b35f280dfbfc170d2d57098ce29b9e7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
