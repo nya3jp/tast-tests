@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a3f7f9_3495d5a1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T07:42:58Z",
+      "side": 1,
+      "message": "\"Reset\" is an overloaded term (see ResetState), let\u0027s avoid it. Maybe \"Reconnect\" better clarifies what it does.",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 238,
+        "endChar": 15
+      },
+      "revId": "15f05515fa88aa1145e0e70df131edbed977ea3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "687560b3_c948f676",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T07:42:58Z",
+      "side": 1,
+      "message": "An important invariant of the Chrome struct is that sess is valid (non-nil and non-closed) until Chrome is closed. In this case this variable is not kept.\n\nPlease refer ContinueLogin for how to do it properly. Also you can call this method from ContinueLogin to avoid duplication.",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 70
+      },
+      "revId": "15f05515fa88aa1145e0e70df131edbed977ea3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
