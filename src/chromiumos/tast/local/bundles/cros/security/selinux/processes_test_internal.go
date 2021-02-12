@@ -185,7 +185,8 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notString, "minijailed", zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/init", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
 				// coreutils and ping are excluded for recover_duts scripts.
-				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/bin/ping|brcm_patchram_plus)", notString, "cros_init_scripts", zeroProcs, domainIsolationErrorMessage},
+				// logger is common to redirect output widely used from init conf scripts.
+				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/usr/bin/logger|/bin/ping|brcm_patchram_plus)", notString, "cros_init_scripts", zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/minijail0", notString, "minijail", zeroProcs, domainIsolationErrorMessage},
 			}...)
 		case Unstable:
