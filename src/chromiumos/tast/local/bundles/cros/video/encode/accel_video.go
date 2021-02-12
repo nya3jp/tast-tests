@@ -39,23 +39,43 @@ type TestOptions struct {
 	// The number of temporal layers of the produced bitstream.
 	// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes* about temporal layers.
 	TemporalLayers int
+
+	// NV12 test cases runs (e.g. FlushAtEndOfStream_NV12DmabufScaling) if and only if this is true.
+	// TODO(hiroh): Remove this and run both I420 and NV12 test cases in the regular video.EncodeAccel tests
+	// once the dashboard is green.
+	RunNV12Test bool
 }
 
-// MakeTestOptions creates TestOptions from webMName and profile. TemporalLayers is set to 1.
+// MakeTestOptions creates TestOptions from webMName and profile.
+// TemporalLayers is set to 1 and RunNV12Test is set to false.
 func MakeTestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
 	return TestOptions{
 		WebMName:       webMName,
 		Profile:        profile,
 		TemporalLayers: 1,
+		RunNV12Test:    false,
+	}
+}
+
+// MakeNV12TestOptions creates TestOptions from webMName and profile.
+// TemporalLayers is set to 1 and RunNV12Test is set to true.
+func MakeNV12TestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
+	return TestOptions{
+		WebMName:       webMName,
+		Profile:        profile,
+		TemporalLayers: 1,
+		RunNV12Test:    true,
 	}
 }
 
 // MakeTestOptionsWithTemporalLayers creates TestOptions from webMName, profile and temporalLayers.
+// RunNV12Test is set to false.
 func MakeTestOptionsWithTemporalLayers(webMName string, profile videotype.CodecProfile, temporalLayers int) TestOptions {
 	return TestOptions{
 		WebMName:       webMName,
 		Profile:        profile,
 		TemporalLayers: temporalLayers,
+		RunNV12Test:    false,
 	}
 }
 
@@ -132,9 +152,15 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.TemporalLayers))
 	}
 
+	gtestFilter := gtest.Filter("-*NV12Dmabuf*")
+	if opts.RunNV12Test {
+		gtestFilter = gtest.Filter("*NV12Dmabuf*")
+	}
+
 	exec := filepath.Join(chrome.BinTestDir, "video_encode_accelerator_tests")
 	logfile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%d.txt", filepath.Base(exec), time.Now().Unix()))
 	t := gtest.New(exec, gtest.Logfile(logfile),
+		gtestFilter,
 		gtest.ExtraArgs(testArgs...),
 		gtest.UID(int(sysutil.ChronosUID)))
 
