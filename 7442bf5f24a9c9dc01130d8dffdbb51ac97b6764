@@ -16,6 +16,69 @@
       "message": "PTAL.",
       "revId": "7442bf5f24a9c9dc01130d8dffdbb51ac97b6764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6dd3f90_0a6c70a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T07:34:47Z",
+      "side": 1,
+      "message": "Hi, sorry for delay, I was on vacation for two days.\n",
+      "revId": "7442bf5f24a9c9dc01130d8dffdbb51ac97b6764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e65ff88_85d9eb5a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T07:34:47Z",
+      "side": 1,
+      "message": "In general, the less mutable variables we have, the easier it\u0027s to reason about correctness of the program. In this case, initialPID and sessionManagerPID are still mutable, which we can avoid with the new design.\n\nCurrently Watcher.check has two logic, one for initialPID \u003d\u003d -1 and the other for initialPID !\u003d -1. Please inline the former logic at the top of NewWatcher. Then we can decide these values on initialization of Watcher.\n\nCode will be like:\n\n func NewWatcher(ctx context.Context) (*Watcher, error) {\n   var initialPID, sessionManagerPID int32\n   if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n     // Decide initialPID and sessionManagerPID...\n   }, nil); err !\u003d nil {\n     return nil, err\n   }\n\n   bw :\u003d \u0026Watcher{...}\n   go func() { ... }\n   return bw, nil\n }",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "7442bf5f24a9c9dc01130d8dffdbb51ac97b6764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7219d2b_5ad223ba",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/guest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-12T07:34:47Z",
+      "side": 1,
+      "message": "We don\u0027t need to close the session here; callers are responsible for closing it.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "7442bf5f24a9c9dc01130d8dffdbb51ac97b6764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
