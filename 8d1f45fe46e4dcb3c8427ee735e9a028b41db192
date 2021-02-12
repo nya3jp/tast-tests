@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91e1d36b_ea624a07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-02-12T03:39:44Z",
+      "side": 1,
+      "message": "I took this from overview_perf.go. Looks like this take ~3min, so I changed to 4min.",
+      "parentUuid": "7be6d79d_e4df8b83",
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc11afb7_0ea9b2f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
         "patchSetId": 6
@@ -48,6 +66,24 @@
       "writtenOn": "2021-02-09T18:43:53Z",
       "side": 1,
       "message": "nit: remove this blank line.",
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "647a4824_2e2a9c99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-02-12T03:39:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc11afb7_0ea9b2f6",
       "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ab3d94c_56b4948e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-02-12T03:39:44Z",
+      "side": 1,
+      "message": "Looks like the submit was failed.",
+      "parentUuid": "3257ac92_0b41f468",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 71
+      },
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8cd79e3_61d06f11",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
         "patchSetId": 6
@@ -88,6 +148,24 @@
       "writtenOn": "2021-02-09T23:15:37Z",
       "side": 1,
       "message": "we actually don\u0027t need those connections anymore.  Just skip defer, i.e.\n  if err \u003d conns.Close(); err !\u003d nil {\n    s.Fatal(\"Failed to close connections: \", err)\n  }",
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec0203f_b5ab272a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-02-12T03:39:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8cd79e3_61d06f11",
       "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -140,6 +218,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa0a463f_93c8b67c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-02-12T03:39:44Z",
+      "side": 1,
+      "message": "Just want to double check. Does it wait for additional data, (compared to previous loop)?",
+      "parentUuid": "bd9da101_354caecb",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca61af52_fcf2201f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
         "patchSetId": 6
@@ -151,6 +253,24 @@
       "writtenOn": "2021-02-09T18:43:53Z",
       "side": 1,
       "message": "just curious: we don\u0027t have the animation smoothness for locking?",
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a2c4544_60828922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-02-12T03:39:44Z",
+      "side": 1,
+      "message": "Entering isn\u0027t issue as animation is simple and won\u0027t change the eviction state during animation.",
+      "parentUuid": "ca61af52_fcf2201f",
       "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
