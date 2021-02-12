@@ -29,8 +29,9 @@ func init() {
 }
 
 func Disable3DAPIsFixture(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	f := s.FixtValue().(*fixtures.FixtData)
+	cr := f.Chrome
+	fdms := f.FakeDMS
 
 	for _, param := range []struct {
 		// name is the subtest name.
@@ -53,7 +54,7 @@ func Disable3DAPIsFixture(ctx context.Context, s *testing.State) {
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			// Perform cleanup
-			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
+			if err := f.ResetChrome(ctx); err != nil {
 				s.Fatal("Failed to clean up: ", err)
 			}
 
