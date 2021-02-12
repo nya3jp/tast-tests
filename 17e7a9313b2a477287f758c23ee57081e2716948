@@ -50,6 +50,24 @@
       "message": "there seems to be a lot of copy pasta here.  for tulip all the fps/frames are the same.  as this a a vaapi and vp8, the regex and command builder are the same.  the size can be derived from the filename.\n\nplus ExtraData and ExtraSoftwareDeps can be derived from the test name.\n\nthis is a bit orthogonal to the cl, but adding a parameter like this and making sure that it is set correctly in all the places is getting harder.",
       "revId": "17e7a9313b2a477287f758c23ee57081e2716948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca3246f_dd8693b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-12T17:45:26Z",
+      "side": 1,
+      "message": "Agree. Follow up cleanup CL is good?",
+      "parentUuid": "db2d066d_dc84d625",
+      "revId": "17e7a9313b2a477287f758c23ee57081e2716948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
