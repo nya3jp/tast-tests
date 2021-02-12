@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d807cd_a65e9c81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-12T09:09:30Z",
+      "side": 1,
+      "message": "Thanks again for the review! Your feedback improved a lot the readability of the code.",
+      "revId": "48a3f81abf438b879820f9da068632a66acf6f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
