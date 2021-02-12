@@ -198,7 +198,7 @@ func launchAppForTiktok(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	// Check for home icon.
 	homeIcon := d.Object(ui.TextMatches("(?i)" + homeText))
 	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 		s.Error("homeIcon doesn't exist: ", err)
 	}
 }

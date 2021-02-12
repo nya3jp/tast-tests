@@ -49,7 +49,7 @@ type TestCase struct {
 // RunTestCases setups the device and runs all app compat test cases.
 func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity string, testCases []TestCase) {
 	// Step up chrome on Chromebook.
-	cr, tconn, a := SetUpDevice(ctx, s, appPkgName, appActivity)
+	cr, tconn, a := setUpDevice(ctx, s, appPkgName, appActivity)
 
 	// Ensure app launches before test cases.
 	act, err := arc.NewActivity(a, appPkgName, appActivity)
@@ -141,13 +141,13 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			}
 			defer d.Close(ctx)
 
-			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+			DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 
 			// It is ok if the package is currently equal the installer package.
 			// It is also ok if the package is currently equal the play service package.
 			// It is also ok if the package is currently equal the android permission controller package
 			// This happens when you need to accept permissions.
-			if currentAppPkg, err := CurrentAppPackage(ctx, d); err != nil {
+			if currentAppPkg, err := currentAppPackage(ctx, d); err != nil {
 				s.Fatal("Failed to get current app package: ", err)
 			} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
 				s.Fatalf("Failed to launch app: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
@@ -158,8 +158,8 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	}
 }
 
-// SetUpDevice func setup Chrome on Chromebook.
-func SetUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity string) (*chrome.Chrome, *chrome.TestConn, *arc.ARC) {
+// setUpDevice func setup Chrome on Chromebook.
+func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity string) (*chrome.Chrome, *chrome.TestConn, *arc.ARC) {
 	// Setup Chrome.
 	cr := s.PreValue().(arc.PreData).Chrome
 	a := s.PreValue().(arc.PreData).ARC
@@ -225,11 +225,13 @@ func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome
 		s.Fatal("The window is not in fullscreen: ", err)
 	}
 
-	if !isNApp(ctx, s, tconn, a, d, appPkgName) {
-		restartApp(ctx, s, tconn, a, d, appPkgName)
+	if !isNApp(ctx, d) {
+		if err := restartApp(ctx, d, appPkgName); err != nil {
+			s.Fatal("Failed to restart app: ", err)
+		}
 	}
 
-	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
 // MinimizeRestoreApp Test "minimize and relaunch the app" and verifies app relaunch successfully without crash or ANR.
@@ -246,7 +248,7 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Error("The window is not minimized: ", err)
 	}
 
-	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 
 	s.Log("Restoring the window")
 	var restoreEvent ash.WMEventType
@@ -290,7 +292,7 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 		goalState = ash.WindowStateFullscreen
 	}
 
-	if isNApp(ctx, s, tconn, a, d, appPkgName) {
+	if isNApp(ctx, d) {
 		s.Log("N-apps start maximized. Reseting window to normal size")
 		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
 			s.Error("Failed to reset window to normal size: ", err)
@@ -299,7 +301,7 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 			s.Error("The window is not normalized: ", err)
 		}
 
-		DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+		DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 	}
 
 	s.Log("Maximizing the window")
@@ -310,53 +312,33 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Log("The window is not maximized: ", err)
 	}
 
-	if !isNApp(ctx, s, tconn, a, d, appPkgName) {
-		restartApp(ctx, s, tconn, a, d, appPkgName)
+	if !isNApp(ctx, d) {
+		if err := restartApp(ctx, d, appPkgName); err != nil {
+			s.Fatal("Failed to restart app: ", err)
+		}
 	}
 
-	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-}
-
-func restartApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string) {
-	const restartButtonResourceID = "android:id/button1"
-
-	// Click on restart button.
-	s.Log("It's a pre N-app; Attempting restart")
-	restartButton := d.Object(ui.ResourceID(restartButtonResourceID))
-	if err := restartButton.WaitForExists(ctx, LongUITimeout); err != nil {
-		s.Fatal("Restart button does not exist: ", err)
-	}
-	if err := restartButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on restart button: ", err)
-	}
-	if _, err := d.WaitForWindowUpdate(ctx, appPkgName, LongUITimeout); err != nil {
-		s.Fatal("Failed to wait for window updated: ", err)
-	}
-}
-
-// isNApp func to check if it is an N or pre-N app
-func isNApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string) bool {
-	var nApp bool
-
-	info, err := d.GetInfo(ctx)
-	if err != nil {
-		s.Log("Failed to get app sdk version: ", err)
-		return false
-	}
-	s.Logf("App sdk version %+v", info.SDKInt)
-	if info.SDKInt >= 24 {
-		nApp = true
-	}
-	return nApp
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
 // TouchAndTextInputs func verify touch and text inputs in the app are working properly without crash or ANR.
 func TouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	errorMessage := performTouchAndTextInputs(ctx, s, tconn, a, d, appPkgName)
-	if errorMessage != "" {
-		s.Error("Touch and text inputs are not working properly in the app")
+	// Press enter key twice.
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
 	}
-	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	}
+	// To perform touch and text inputs.
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "30", "--pct-nav", "10", "--pct-touch", "40", "--pct-nav", "10", "--pct-anyevent", "10", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Error("Failed to perform monkey test touch and text inputs: ", err)
+	}
+	if err := processMonkeyOutput(string(out)); err != nil {
+		s.Error("Touch and text inputs are not working properly in the app: ", err)
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
@@ -379,7 +361,7 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 		s.Fatal("Failed to stop app: ", err)
 	}
 
-	DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 
 	// Relaunch the app.
 	s.Log("Relaunching the app")
@@ -388,20 +370,8 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 	}
 }
 
-// CurrentAppPackage func to get info on current package name
-func CurrentAppPackage(ctx context.Context, d *ui.Device) (string, error) {
-
-	// Wait for app to launch.
-	d.WaitForIdle(ctx, ShortUITimeout)
-	info, err := d.GetInfo(ctx)
-	if err != nil {
-		return "", err
-	}
-	return info.CurrentPackagename, nil
-}
-
-// DetectAndCloseCrashOrAppNotResponding func to handle Crash or ANR.
-func DetectAndCloseCrashOrAppNotResponding(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string) {
+// DetectAndHandleCloseCrashOrAppNotResponding func to handle Crash or ANR.
+func DetectAndHandleCloseCrashOrAppNotResponding(ctx context.Context, s *testing.State, d *ui.Device) {
 	const (
 		alertTitleCanNotDownloadText = "Can't download app"
 		alertTitleHasStoppedText     = "has stopped"
@@ -478,46 +448,62 @@ func handleCrashOrANRDialog(ctx context.Context, s *testing.State, d *ui.Device)
 	}
 }
 
-// performTouchAndTextInputs func perform touch and text inputs using monkey test.
-func performTouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string) string {
-	var errorMessage string
+func restartApp(ctx context.Context, d *ui.Device, appPkgName string) error {
+	const restartButtonResourceID = "android:id/button1"
 
-	// Press enter key twice.
-	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	// Click on restart button.
+	testing.ContextLog(ctx, "Attempting restart")
+	restartButton := d.Object(ui.ResourceID(restartButtonResourceID))
+	if err := restartButton.WaitForExists(ctx, LongUITimeout); err != nil {
+		return errors.Wrap(err, "restart button does not exist")
 	}
-	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	if err := restartButton.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click on restart button")
 	}
-	// To perform touch and text inputs.
-	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "30", "--pct-nav", "10", "--pct-touch", "40", "--pct-nav", "10", "--pct-anyevent", "10", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
-	if err != nil {
-		s.Log("Failed to perform monkey test touch and text inputs: ", err)
+	if _, err := d.WaitForWindowUpdate(ctx, appPkgName, LongUITimeout); err != nil {
+		return errors.Wrap(err, "failed to wait for window to update")
 	}
-	output := string(out)
-	errorMessage = processOutput(ctx, s, tconn, a, d, appPkgName, output)
-	return errorMessage
+	return nil
 }
 
-// processOutput func parse the output logs of monkey test.
-func processOutput(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, output string) string {
+// isNApp func to check if it is an N or pre-N app
+func isNApp(ctx context.Context, d *ui.Device) bool {
+	info, err := d.GetInfo(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get app sdk version: ", err)
+		return false
+	}
+	testing.ContextLogf(ctx, "App sdk version %+v", info.SDKInt)
+	return info.SDKInt >= 24
+}
+
+// currentAppPackage func to get info on current package name
+func currentAppPackage(ctx context.Context, d *ui.Device) (string, error) {
+	// Wait for app to launch.
+	d.WaitForIdle(ctx, ShortUITimeout)
+	info, err := d.GetInfo(ctx)
+	if err != nil {
+		return "", err
+	}
+	return info.CurrentPackagename, nil
+}
+
+// processMonkeyOutput func parse the output logs of monkey test.
+func processMonkeyOutput(output string) error {
 	applicationNotRespondingErrorMsg := "Application is not responding:"
 	anrErrorMessage := "ANR"
 	monkeyTestAbortedErrorMessage := "Monkey aborted due to error."
 	monkeyTestAbortedErrorMsg := "monkey aborted."
 	NotRespondingErrorMessage := "NOT RESPONDING:"
-	var errorMessage string
 
-	splitOutput := strings.Split(output, "\n")
-	for splitLine := range splitOutput {
-		if strings.Contains(splitOutput[splitLine], monkeyTestAbortedErrorMessage) ||
-			strings.Contains(splitOutput[splitLine], monkeyTestAbortedErrorMsg) ||
-			strings.Contains(splitOutput[splitLine], applicationNotRespondingErrorMsg) ||
-			strings.Contains(splitOutput[splitLine], anrErrorMessage) ||
-			strings.Contains(splitOutput[splitLine], NotRespondingErrorMessage) {
-			errormessage := splitOutput[splitLine]
-			s.Error("Monkey test aborted due to error: ", errormessage)
+	for _, line := range strings.Split(output, "\n") {
+		if strings.Contains(line, monkeyTestAbortedErrorMessage) ||
+			strings.Contains(line, monkeyTestAbortedErrorMsg) ||
+			strings.Contains(line, applicationNotRespondingErrorMsg) ||
+			strings.Contains(line, anrErrorMessage) ||
+			strings.Contains(line, NotRespondingErrorMessage) {
+			return errors.New("monkey test aborted: " + line)
 		}
 	}
-	return errorMessage
+	return nil
 }
