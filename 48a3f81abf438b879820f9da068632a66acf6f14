@@ -16,6 +16,23 @@
       "message": "Thanks again for the review! Your feedback improved a lot the readability of the code.",
       "revId": "48a3f81abf438b879820f9da068632a66acf6f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd559c5a_8fb20520",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-12T23:01:29Z",
+      "side": 1,
+      "message": "LGTM -- giving CR+2 in advance, but please wait for benreich\u0027s reply too.",
+      "revId": "48a3f81abf438b879820f9da068632a66acf6f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
