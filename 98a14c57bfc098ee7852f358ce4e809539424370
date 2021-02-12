@@ -145,6 +145,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "caef6f10_c3a28b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-12T22:10:12Z",
+      "side": 1,
+      "message": "SG, I\u0027ll move them to nearbyshare after David moves things around.",
+      "parentUuid": "39f6a85a_983816ab",
+      "range": {
+        "startLine": 110,
+        "startChar": 23,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "98a14c57bfc098ee7852f358ce4e809539424370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "da90593f_70b109e6",
         "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
         "patchSetId": 2
