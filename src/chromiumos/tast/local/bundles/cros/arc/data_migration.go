@@ -33,11 +33,12 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DataMigration,
-		Desc:         "Boots ARC with /data created on the previous version of ARC and verifies Play Store can install an app",
-		Contacts:     []string{"niwa@google.com", "arc-storage@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		Func:     DataMigration,
+		Desc:     "Boots ARC with /data created on the previous version of ARC and verifies Play Store can install an app",
+		Contacts: []string{"niwa@google.com", "arc-storage@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		// Disabled for betty (VM). (b/179636279)
+		SoftwareDeps: []string{"chrome", "endorsement"},
 		Timeout:      10 * time.Minute,
 		Vars:         []string{"arc.DataMigration.username", "arc.DataMigration.password"},
 		Params: []testing.Param{{
