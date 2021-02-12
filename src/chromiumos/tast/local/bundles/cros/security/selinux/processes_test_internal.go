@@ -101,6 +101,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 		case Stable:
 			testCases = append(testCases, []testCaseType{
 				{cmdline, ".*logger.*-t arc-kmsg-logger.*", matchRegexp, "cros_arc_kmsg_logger", zeroProcs, ""},
+				{cmdline, "logger -t *", matchRegexp, "cros_init_scripts", zeroProcs, ""},
 				{cmdline, ".*/usr/share/cros/init/activate_date.sh.*", matchRegexp, "cros_activate_date", zeroProcs, ""},
 				{cmdline, "/system/bin/sdcard.*", matchRegexp, "cros_arc_sdcardd", zeroProcs, ""},
 				{exe, "/opt/google/chrome/chrome", matchRegexp, "cros_browser", zeroProcs, ""}, // Only when browser exists
@@ -185,7 +186,8 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notString, "minijailed", zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/init", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
 				// coreutils and ping are excluded for recover_duts scripts.
-				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/bin/ping|brcm_patchram_plus)", notString, "cros_init_scripts", zeroProcs, domainIsolationErrorMessage},
+				// logger is common to redirect output widely used from init conf scripts.
+				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/usr/bin/logger|/bin/ping|brcm_patchram_plus)", notString, "cros_init_scripts", zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/minijail0", notString, "minijail", zeroProcs, domainIsolationErrorMessage},
 			}...)
 		case Unstable:
