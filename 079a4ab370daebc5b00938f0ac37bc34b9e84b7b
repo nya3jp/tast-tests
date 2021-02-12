@@ -16,6 +16,23 @@
       "message": "PTAL\nThanks",
       "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c514262b_992cd9ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-02-12T04:14:54Z",
+      "side": 1,
+      "message": "+niwa",
+      "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
