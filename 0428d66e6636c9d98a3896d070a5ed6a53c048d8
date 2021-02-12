@@ -33,6 +33,46 @@
       "message": "This looks great, thank you!",
       "revId": "0428d66e6636c9d98a3896d070a5ed6a53c048d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "417e6e26_e77eb2d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-02-12T17:58:38Z",
+      "side": 1,
+      "message": "Hi Victor,\n\nCan you please have a look at this CL and my comment if we should mark it as informational again ?\n\nThanks",
+      "revId": "0428d66e6636c9d98a3896d070a5ed6a53c048d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3dfdae6_d49b2f84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-02-12T17:58:38Z",
+      "side": 1,
+      "message": "Should we mark it as informational again ?",
+      "range": {
+        "startLine": 29,
+        "startChar": 20,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "0428d66e6636c9d98a3896d070a5ed6a53c048d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
