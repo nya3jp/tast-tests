@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/remote/wificell/log"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -207,7 +208,7 @@ func (r *Router) configureRNG(ctx context.Context) error {
 	}
 
 	testing.ContextLogf(ctx, "Switching RNGs: %s -> %s", current, wantRng)
-	if err := fileutil.WriteToHostDirect(ctx, r.host, rngCurrentPath, []byte(wantRng)); err != nil {
+	if err := linuxssh.WriteFile(ctx, r.host, rngCurrentPath, []byte(wantRng), 0644); err != nil {
 		return err
 	}
 	return nil
