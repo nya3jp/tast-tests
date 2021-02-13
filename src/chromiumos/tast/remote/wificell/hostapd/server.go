@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -123,7 +124,7 @@ func (s *Server) initConfig(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-	if err := fileutil.WriteToHost(ctx, s.host, s.confPath(), []byte(conf)); err != nil {
+	if err := linuxssh.WriteFile(ctx, s.host, s.confPath(), []byte(conf), 0644); err != nil {
 		return errors.Wrap(err, "failed to write config")
 	}
 	return nil

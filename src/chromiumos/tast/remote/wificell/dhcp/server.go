@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -115,7 +116,7 @@ func (d *Server) start(fullCtx context.Context) (err error) {
 		"interface=%s",
 		"dhcp-leasefile=%s",
 	}, "\n"), d.ipStart.String(), d.ipEnd.String(), d.iface, d.leasePath())
-	if err := fileutil.WriteToHost(ctx, d.host, d.confPath(), []byte(conf)); err != nil {
+	if err := linuxssh.WriteFile(ctx, d.host, d.confPath(), []byte(conf), 0644); err != nil {
 		return errors.Wrap(err, "failed to write config")
 	}
 
