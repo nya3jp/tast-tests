@@ -16,6 +16,29 @@
       "message": "LGTM, but please wait for Joon review.",
       "revId": "12b58f0fe828140f88db9d53406a9d2b344afff9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c8c2b4_f732d1e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-02-13T00:26:18Z",
+      "side": 1,
+      "message": "optional suggestion: now we could probably rename this to something like \"menuLabel\" to be more in line with what this actually represents",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "12b58f0fe828140f88db9d53406a9d2b344afff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
