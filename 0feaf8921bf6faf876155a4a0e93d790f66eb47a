@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb4376d_f6428bcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-02-13T06:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46e71200_66da3478",
+      "revId": "0feaf8921bf6faf876155a4a0e93d790f66eb47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2edb501_5791ca16",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-13T02:23:02Z",
       "side": 1,
       "message": "Oops, I\u0027ve overseen this, but it can be simply input.Keyboard().\n\nNote that \"VirtualKeyboard\" doesen\u0027t mean the virtual-keyboard it will be seen by the user. The \"virtual\" means a \"virtual\" device file in case that a device file for the keyboard does not exist in /dev (i.e. pure-tablet device). And actually, input.Keyboard can fall back into that (it first scans /dev file, and use the keyboard device if it exists. Otherwise invokes VirtualKeyboard internally, which create a virtual device file in /dev and use it).  Unless you explicitly want to avoid using hardware keyboard (and I believe this is not the case), just use input.Keyboard().\n\nIf you want to use virtual keyboards (the UI pops up at the bottom of the screen), there is chrome/vkb package, though I\u0027m not very familiar with its use case (see https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git@v0.0.0-20210212235214-2b02692a2130/src/chromiumos/tast/local/chrome/vkb).",
+      "range": {
+        "startLine": 64,
+        "startChar": 18,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "0feaf8921bf6faf876155a4a0e93d790f66eb47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4451ea8e_c78b4b98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-02-13T06:54:35Z",
+      "side": 1,
+      "message": "Done. Yes, I know it\u0027s not SoftwareKeyboard. I just took it from screen lock tast code.",
+      "parentUuid": "b2edb501_5791ca16",
       "range": {
         "startLine": 64,
         "startChar": 18,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "114b3d5b_4754662b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-02-13T06:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6093493_d986992c",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "0feaf8921bf6faf876155a4a0e93d790f66eb47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a45be0e_71143c7b",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1068d1da_3880d9bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-02-13T06:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a45be0e_71143c7b",
+      "range": {
+        "startLine": 75,
+        "startChar": 52,
+        "endLine": 75,
+        "endChar": 64
+      },
+      "revId": "0feaf8921bf6faf876155a4a0e93d790f66eb47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de2b6685_65d9c41b",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-02-13T02:23:02Z",
       "side": 1,
       "message": "I just got to notice that the \"name\" of test starts with a dot (like \".ClamshellMode-2windows\").  This is not a problem by itself, but I feel it\u0027s slightly better to be avoided, as this name can be used for the trace file name (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go#186).\n\nUsing window number earlier might be good enough, i.e. fmt.Sprintf(\"%dwindows%s\", currentWindows, suffix)",
+      "range": {
+        "startLine": 139,
+        "startChar": 25,
+        "endLine": 139,
+        "endChar": 75
+      },
+      "revId": "0feaf8921bf6faf876155a4a0e93d790f66eb47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a6a4513_de49bc0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-02-13T06:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de2b6685_65d9c41b",
       "range": {
         "startLine": 139,
         "startChar": 25,

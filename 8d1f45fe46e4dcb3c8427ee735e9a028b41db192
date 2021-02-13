@@ -308,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24cdf6aa_88a3566c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-02-13T06:54:35Z",
+      "side": 1,
+      "message": "Thanks. Removed.",
+      "parentUuid": "4979c54e_84f6486a",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "8d1f45fe46e4dcb3c8427ee735e9a028b41db192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca61af52_fcf2201f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/unlock_perf.go",
         "patchSetId": 6
