@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "407ef326_305887ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-13T03:06:24Z",
+      "side": 1,
+      "message": "Just added a simple function to collect BT logs based on go/more-bt-logs. I\u0027m not really familiar with dbus so not sure if there\u0027s a better way to do this with the dbusutil package or something, but this seems to work fine.",
+      "revId": "cf791988e06fda784a640f2202293023f890b3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
