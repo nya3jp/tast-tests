@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1387db3d_b52c05d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-02-13T22:24:53Z",
+      "side": 1,
+      "message": "Test has passed while running inside a drone. \n\nShuhei, please let me know if I should change this test to informational. Thanks.\n",
+      "revId": "2811b7ca961fed29746b2624abe63a4b9a77bee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
