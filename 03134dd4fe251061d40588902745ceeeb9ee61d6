@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e35896_e802fbfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-14T23:26:21Z",
+      "side": 1,
+      "message": "Thanks Shuhei and Jun for looking into this. I made some changes following the comments while we continue to debug why connect is closed after suspend/resume.",
+      "revId": "03134dd4fe251061d40588902745ceeeb9ee61d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
