@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad07f92_39a0824b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-14T22:23:03Z",
+      "side": 1,
+      "message": "was accidental, fixed",
+      "parentUuid": "9317f117_8d824f35",
+      "range": {
+        "startLine": 103,
+        "startChar": 37,
+        "endLine": 103,
+        "endChar": 39
+      },
+      "revId": "d7b9f1e5b3c3060ec824d3edce19ded78afa782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "212bb095_e60c5587",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-12T08:20:06Z",
       "side": 1,
       "message": "At the other place, the activity is stopped as well. I had a look at activity.go, but couldn\u0027t decide whether it needs to be stopped. Is it enough to close it?",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 4
+      },
+      "revId": "d7b9f1e5b3c3060ec824d3edce19ded78afa782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a111ed_90a4d0ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-02-14T22:23:03Z",
+      "side": 1,
+      "message": "added close",
+      "parentUuid": "212bb095_e60c5587",
       "range": {
         "startLine": 122,
         "startChar": 1,
