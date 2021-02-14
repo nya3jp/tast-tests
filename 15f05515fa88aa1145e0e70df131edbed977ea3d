@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d3fd36c_6f1a418a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-14T23:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dcc175e_a6a11c19",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "15f05515fa88aa1145e0e70df131edbed977ea3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1a3f7f9_3495d5a1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "171afd62_c9cb8aec",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-14T23:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1a3f7f9_3495d5a1",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 238,
+        "endChar": 15
+      },
+      "revId": "15f05515fa88aa1145e0e70df131edbed977ea3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "687560b3_c948f676",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-12T07:42:58Z",
       "side": 1,
       "message": "An important invariant of the Chrome struct is that sess is valid (non-nil and non-closed) until Chrome is closed. In this case this variable is not kept.\n\nPlease refer ContinueLogin for how to do it properly. Also you can call this method from ContinueLogin to avoid duplication.",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 70
+      },
+      "revId": "15f05515fa88aa1145e0e70df131edbed977ea3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2066ab58_b8b0f46d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-14T23:26:21Z",
+      "side": 1,
+      "message": "changed the Reconnect() logic, and changed ContinueLogin() to call c.Reconnect()",
+      "parentUuid": "687560b3_c948f676",
       "range": {
         "startLine": 249,
         "startChar": 2,
