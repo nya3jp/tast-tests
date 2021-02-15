@@ -22,6 +22,30 @@
       },
       "revId": "c53666af00d0eda8b50323c3d61389a3d8c94943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36e9fade_f95e0f6c",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-02-15T02:03:39Z",
+      "side": 1,
+      "message": "I avoided changing the StableClickAndFind function itself and modified the TapHandwritingInputAndWaitForEngine function to only wait if the StableClickAndFind doesn\u0027t return an error.",
+      "parentUuid": "4350337d_456bfc03",
+      "range": {
+        "startLine": 391,
+        "startChar": 1,
+        "endLine": 391,
+        "endChar": 40
+      },
+      "revId": "c53666af00d0eda8b50323c3d61389a3d8c94943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
