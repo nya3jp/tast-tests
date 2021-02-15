@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0b6eb96_d42942c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-02-15T15:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab095589_df3aaaf0",
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e56f2cf0_330fc394",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-15T09:18:21Z",
       "side": 1,
       "message": "Defer a Close() after the Open().",
+      "range": {
+        "startLine": 47,
+        "startChar": 14,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58d2b392_bd9d41c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-02-15T15:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e56f2cf0_330fc394",
       "range": {
         "startLine": 47,
         "startChar": 14,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c96c2bf_b649afb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-02-15T15:43:33Z",
+      "side": 1,
+      "message": "Will be refactored later: crbug/1178509",
+      "parentUuid": "5b6b849f_19e96587",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "042ca790_bbdb556e",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-02-15T09:18:21Z",
       "side": 1,
       "message": "This function seems the same as https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go;l\u003d93?q\u003dGrabScreenshot\nIf there are no modification, please use that function.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 1
+      },
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880125ee_2bee4870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-02-15T15:43:33Z",
+      "side": 1,
+      "message": "Will be refactored later: crbug/1178509",
+      "parentUuid": "042ca790_bbdb556e",
       "range": {
         "startLine": 75,
         "startChar": 0,
@@ -121,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bcc2bda_34d92ae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-02-15T15:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36daa2ec_528e2151",
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "122a5b5a_e6c723b2",
@@ -134,6 +242,30 @@
       "writtenOn": "2021-02-15T09:18:21Z",
       "side": 1,
       "message": "\"at least\"",
+      "range": {
+        "startLine": 164,
+        "startChar": 77,
+        "endLine": 164,
+        "endChar": 86
+      },
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a57be35_9a07de46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-02-15T15:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "122a5b5a_e6c723b2",
       "range": {
         "startLine": 164,
         "startChar": 77,
@@ -161,6 +293,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ab47de3_97db2964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-02-15T15:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d9c1127_f88ffb88",
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85887e13_582cb272",
@@ -174,6 +324,24 @@
       "writtenOn": "2021-02-15T09:18:21Z",
       "side": 1,
       "message": "Can you check the restriction state with the new UI library.",
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b87c7c1a_d371258d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-02-15T15:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85887e13_582cb272",
       "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
