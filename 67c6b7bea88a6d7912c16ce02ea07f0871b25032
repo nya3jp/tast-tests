@@ -34,6 +34,24 @@
       "parentUuid": "b34fc970_89f20764",
       "revId": "67c6b7bea88a6d7912c16ce02ea07f0871b25032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ec7355_371edfc1",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-15T10:08:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4cdcda6f_6ce84a26",
+      "revId": "67c6b7bea88a6d7912c16ce02ea07f0871b25032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
