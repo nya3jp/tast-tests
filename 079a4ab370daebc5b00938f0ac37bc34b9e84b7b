@@ -158,6 +158,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6d97815_b5df6787",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2021-02-15T11:56:06Z",
+      "side": 1,
+      "message": "nit:\ncould you please remove this.\n\nthis may break all other logger started by other program.\n(e.g. logger can be started by shill too. currently the flag doesn\u0027t match logger -t, but this could happen in the future that other program launch logger -t)\n\nadding /usr/bin/logger to L190 should be enough (just tested locally)\n\n\nAlso nit 2:\nthis is regular expression\n\" *\" means any counts of space, not \u003cspace\u003e\u003cany string\u003e",
+      "parentUuid": "02c32d74_15358b71",
+      "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "111e5954_ac4a281e",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
         "patchSetId": 1
@@ -193,6 +211,30 @@
       "side": 1,
       "message": "generally this line is to exclude\nshell coreutils logger ping\nfrom being checked for \"isolation test\"\nbased on the executable file path\n\n\"isolation test\": check all processes has defined its own domain.",
       "parentUuid": "111e5954_ac4a281e",
+      "range": {
+        "startLine": 190,
+        "startChar": 5,
+        "endLine": 190,
+        "endChar": 11
+      },
+      "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eefb212a_c68a5e10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2021-02-15T11:56:06Z",
+      "side": 1,
+      "message": "sorry. i read the wrong diff...\nthis is adding /usr/bin/logger to the list..",
+      "parentUuid": "1e333beb_1d798973",
       "range": {
         "startLine": 190,
         "startChar": 5,
