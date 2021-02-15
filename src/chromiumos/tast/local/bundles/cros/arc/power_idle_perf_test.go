@@ -31,7 +31,6 @@ func TestPowerIdlePerfParamsAreGenerated(t *testing.T) {
 		Name         string
 		SoftwareDeps []string
 		HardwareDeps []string
-		Pre          string
 		Fixture      string
 		Val          []valMember
 	}
@@ -52,26 +51,25 @@ func TestPowerIdlePerfParamsAreGenerated(t *testing.T) {
 			[]valMember{{"setupOption", "setup.NoBatteryDischarge"}},
 		},
 	} {
-		const arcBooted = "arc.Booted()"
 		for _, arcType := range []struct {
-			name  string
-			swdep string
-			pre   string
+			name    string
+			swdep   string
+			fixture string
 		}{
 			{
 				"noarc",
 				"arc", // to prevent _noarc tests from running on non-ARC boards
-				"chrome.LoggedIn()",
+				"chromeLoggedIn",
 			},
 			{
 				"",
 				"android_p",
-				arcBooted,
+				"arcBooted",
 			},
 			{
 				"vm",
 				"android_vm",
-				arcBooted,
+				"arcBooted",
 			},
 		} {
 			name := genTestName([]string{arcType.name, batteryMode.name})
@@ -79,13 +77,8 @@ func TestPowerIdlePerfParamsAreGenerated(t *testing.T) {
 				Name:         string(name),
 				SoftwareDeps: []string{arcType.swdep},
 				HardwareDeps: []string{batteryMode.hwdep},
-				Pre:          arcType.pre,
-				Fixture:      "",
+				Fixture:      arcType.fixture,
 				Val:          batteryMode.val,
-			}
-			if p.Pre == arcBooted {
-				p.Pre = ""
-				p.Fixture = "arcBooted"
 			}
 			params = append(params, p)
 		}
@@ -101,12 +94,7 @@ func TestPowerIdlePerfParamsAreGenerated(t *testing.T) {
 			{{ range .Val }}{{ .Key }}: {{ .Value }},
 			{{ end }}
 		},
-		{{ if .Pre }}
-		Pre: {{ .Pre }},
-		{{ end }}
-		{{ if .Fixture }}
 		Fixture: "{{ .Fixture }}",
-		{{ end }}
 	},
 	{{ end }}`, params)
 	genparams.Ensure(t, "power_idle_perf.go", code)

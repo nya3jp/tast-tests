@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/common/perf"
 	arcMemory "chromiumos/tast/local/bundles/cros/arc/memory"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/testing"
 )
@@ -29,7 +28,7 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "noarc",
 			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
-			Pre:               chrome.LoggedIn(),
+			Fixture:           "chromeLoggedIn",
 		}, {
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",
