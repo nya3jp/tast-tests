@@ -32,7 +32,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Data:         []string{"com.roblox.client-886.zip"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -76,7 +76,7 @@ func RobloxUncompressOBBPerf(ctx context.Context, s *testing.State) {
 		path.Join(tempDir, "com.roblox.client_886_002.apk"),
 	}
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	s.Log("Installing split APK")
 	if err := a.InstallMultiple(ctx, apks); err != nil {
 		s.Fatal("Failed installing split APK: ", err)
@@ -97,7 +97,7 @@ func RobloxUncompressOBBPerf(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := s.FixtValue().(*arc.PreData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
