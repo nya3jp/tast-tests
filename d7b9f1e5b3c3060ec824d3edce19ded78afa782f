@@ -134,6 +134,30 @@
       },
       "revId": "d7b9f1e5b3c3060ec824d3edce19ded78afa782f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42103161_74c68281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-15T08:22:04Z",
+      "side": 1,
+      "message": "Thanks for the info!",
+      "parentUuid": "3f79efda_b08f16ca",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 4
+      },
+      "revId": "d7b9f1e5b3c3060ec824d3edce19ded78afa782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
