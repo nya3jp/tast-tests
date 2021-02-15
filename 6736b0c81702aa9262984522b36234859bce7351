@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90204d56_f375e375",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T08:57:35Z",
+      "side": 1,
+      "message": "Nice that all depending changes landed! Let\u0027s get back to this change.\n",
+      "revId": "6736b0c81702aa9262984522b36234859bce7351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07490c36_d8c364f0",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T08:57:35Z",
+      "side": 1,
+      "message": "nit: You can just use :\u003d to avoid these var decls.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 12
+      },
+      "revId": "6736b0c81702aa9262984522b36234859bce7351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cccef8b_fb5469a9",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T08:57:35Z",
+      "side": 1,
+      "message": "style: Please start Error/Fatal with capital letters.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\nAlso an error message typically consists of one sentence. For example:\n\n Creating new Chrome: %s not provided; please specify it in your test vars configuration",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "6736b0c81702aa9262984522b36234859bce7351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86fc3b2_217a7909",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T08:57:35Z",
+      "side": 1,
+      "message": "style: chromeOpts :\u003d ...",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "6736b0c81702aa9262984522b36234859bce7351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da38deb1_73529705",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T08:57:35Z",
+      "side": 1,
+      "message": "It would be nice to add a short comment why we disable this feature.",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "6736b0c81702aa9262984522b36234859bce7351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c9dcaf6_28e805d6",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T08:57:35Z",
+      "side": 1,
+      "message": "Do you really need KeepState? This means that, even if we decide not to reuse a session, we\u0027ll still leave existing user configurations, which might have been initialized by totally unrelated previous tests.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "6736b0c81702aa9262984522b36234859bce7351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
