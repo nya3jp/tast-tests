@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fced0281_4564db62",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-15T23:01:03Z",
+      "side": 0,
+      "message": "The problem is that the |sess| connection has closed, so when it tries to close it we get:\n```\nFailed to close wsConn: rpcc: the connection is closing: websocket: close 1006 (abnormal closure): unexpected EOF\n```\nOnce logInAsGuest has completed the renderer that was watched has shutdown, so the underlying CDP has closed as well. My understanding was the error emitted (login.ErrNeedNewSession [1]) was specific to the guest login flow, hence if we close the CDP session in logInAsGuest and emit that error it can be assumed the underlying renderer and CDP connection has been shutdown gracefully.\n\n[1] Maybe this error needs to be renamed to ErrNeedNewGuestSession or something more specific to the Guest session as that\u0027s the only emitter thus far?",
+      "parentUuid": "aa8b3e33_92371d3a",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 18
+      },
+      "revId": "453cc8ce36103bf13b6ab7be0c341b17e47062ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbbff1d1_2318566f",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 7

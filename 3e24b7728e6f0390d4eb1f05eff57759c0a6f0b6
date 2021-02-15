@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed44fcf_16d209c0",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-15T23:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1862fff5_c362ca8a",
+      "range": {
+        "startLine": 30,
+        "startChar": 60,
+        "endLine": 31,
+        "endChar": 79
+      },
+      "revId": "3e24b7728e6f0390d4eb1f05eff57759c0a6f0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7820757_a06cfcc4",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-15T06:40:24Z",
       "side": 1,
       "message": "Please avoid half-initialized objects. In this case, by moving the struct initialization to after testing.Poll, we can set initialPID/sessionManagerPID on initialization. Until then, you can store initialPID/sessionManagerPID in local variables.\n\n func NewWatcher(ctx context.Context) (*Watcher, error) {\n   var initialPID, sessionManagerPID int32\n   if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n     // Decide initialPID and sessionManagerPID...\n   }, nil); err !\u003d nil {\n     return nil, err\n   }\n\n   bw :\u003d \u0026Watcher{...} // At this point all fields can be initialized\n   go func() { ... }\n   return bw, nil\n }\n\nIn general I recommend avoiding half-initialized objects as it makes it difficult to reason about program correctness.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "3e24b7728e6f0390d4eb1f05eff57759c0a6f0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "744c569f_05152019",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-15T23:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7820757_a06cfcc4",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5f3fb9_1ec51a0f",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-15T23:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "822d584b_688f2928",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 12
+      },
+      "revId": "3e24b7728e6f0390d4eb1f05eff57759c0a6f0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f437a5f1_501e9313",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-15T06:40:24Z",
       "side": 1,
       "message": "We will no longer update initialPID. Would you mind updating the comment accordingly?",
+      "range": {
+        "startLine": 122,
+        "startChar": 64,
+        "endLine": 122,
+        "endChar": 108
+      },
+      "revId": "3e24b7728e6f0390d4eb1f05eff57759c0a6f0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eefa6ab_98644b00",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-15T23:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f437a5f1_501e9313",
       "range": {
         "startLine": 122,
         "startChar": 64,
