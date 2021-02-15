@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b30f4ef_e1b4a375",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-15T09:18:21Z",
+      "side": 1,
+      "message": "s ",
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab095589_df3aaaf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-15T09:18:21Z",
+      "side": 1,
+      "message": "Add a little more info on what does the test do.",
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e56f2cf0_330fc394",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-15T09:18:21Z",
+      "side": 1,
+      "message": "Defer a Close() after the Open().",
+      "range": {
+        "startLine": 47,
+        "startChar": 14,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b6b849f_19e96587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-15T09:18:21Z",
+      "side": 1,
+      "message": "This is really similar to screenshot.CountPixels().\nIt might be better to introduce CountPixelsWithDiff() there, and call it from the original CountPixels() with 0 diff (and call it from here).",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042ca790_bbdb556e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-15T09:18:21Z",
+      "side": 1,
+      "message": "This function seems the same as https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go;l\u003d93?q\u003dGrabScreenshot\nIf there are no modification, please use that function.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 1
+      },
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36daa2ec_528e2151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-15T09:18:21Z",
+      "side": 1,
+      "message": "As you don\u0027t need the image, only imgBytes, can you do all of these in a getImgBytesFromFilePath() function?",
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "122a5b5a_e6c723b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-15T09:18:21Z",
+      "side": 1,
+      "message": "\"at least\"",
+      "range": {
+        "startLine": 164,
+        "startChar": 77,
+        "endLine": 164,
+        "endChar": 86
+      },
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d9c1127_f88ffb88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-15T09:18:21Z",
+      "side": 1,
+      "message": "Use apps.LaunchOSSettings() instead.",
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85887e13_582cb272",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-15T09:18:21Z",
+      "side": 1,
+      "message": "Can you check the restriction state with the new UI library.",
+      "revId": "8cad1675c166ac7715451ae28c4050615aa62f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
