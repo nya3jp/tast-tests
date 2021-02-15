@@ -16,6 +16,23 @@
       "message": "Thanks a lot for the review, Pavol!",
       "revId": "659c3d1ee55d4021a563239a26333af245594518",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16af52a3_101f5962",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T16:19:31Z",
+      "side": 1,
+      "message": "Hi Tetsui,\n\nCan you please do an OWNER review for this CL?\n\nWe need a test app to verify that system-proxy, a Chrome OS daemon which performs proxy authentication to a remote HTTP proxy on behalf of ARC apps, works as expected.\n\nYou can find the system-proxy DD here: go/cros-authproxy-dd.\n\nThank you!\n\nPS: We\u0027ll probably reuse this app to test that Lacros changes don\u0027t break proxy resolution for the PlayStore.\n\n",
+      "revId": "659c3d1ee55d4021a563239a26333af245594518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
