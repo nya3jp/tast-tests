@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd18194_07b57eff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Thanks a lot for the feedback!!\n\nIt seems like we may want to improve the test ARC app with other network details (maybe add the proxy bypass list for Lacros integration tests) so I\u0027ve separated the app UI automation code from the System-proxy test.\n\nI\u0027ve moved the app relatedcode one level up, under /network and left the system-proxy UI code under /network/systemproxy. As soon an device policies are testable in local tests, I\u0027ll move all the system-proxy tests here. ",
+      "revId": "2c55e4a44add9b3926395ee6bc42ac5dd30ff802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "964819ce_229ba4a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "\u003e \"conectivity\" is a possible misspelling of \"connectivity\".\n\nPlease fix.",
+      "parentUuid": "ffae6aaa_faf18bb3",
+      "range": {
+        "startLine": 439,
+        "startChar": 34,
+        "endLine": 439,
+        "endChar": 45
+      },
+      "revId": "2c55e4a44add9b3926395ee6bc42ac5dd30ff802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43894c25_7e920018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "I\u0027ve seen both `a` and `arc` in test. Agree to change this to `arc`.",
+      "parentUuid": "5844f110_f2c8781a",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbb91cba_63c26ce9",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-02-12T14:27:59Z",
       "side": 1,
       "message": "nit: Would it be possible to file a crbug/b for this and also have that in the .proto file ?",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 144
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff5c4e1b_71a2ef51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Thanks, I intended to do this and then forgot :)",
+      "parentUuid": "fbb91cba_63c26ce9",
       "range": {
         "startLine": 393,
         "startChar": 0,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c22dbc49_cb14a13a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Good point. I\u0027ll return an error since there\u0027s no reason to do this unless the caller has made a mistake.",
+      "parentUuid": "834a719e_716af6a6",
+      "range": {
+        "startLine": 394,
+        "startChar": 24,
+        "endLine": 394,
+        "endChar": 41
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2206bb53_f7bc0dd9",
@@ -134,6 +206,30 @@
       "writtenOn": "2021-02-15T01:41:07Z",
       "side": 1,
       "message": "nit: ARC",
+      "range": {
+        "startLine": 398,
+        "startChar": 48,
+        "endLine": 398,
+        "endChar": 51
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc15ad7_33e732b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2206bb53_f7bc0dd9",
       "range": {
         "startLine": 398,
         "startChar": 48,
@@ -167,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99505ffa_1f184fec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Yes, otherwise the code will not compile. It outputs an error like: \n\n2021-02-15T12:19:13.604095Z     have (nil)\n2021-02-15T12:19:13.604112Z     want (*empty.Empty, error)",
+      "parentUuid": "a1efab04_8cbab89e",
+      "range": {
+        "startLine": 401,
+        "startChar": 8,
+        "endLine": 401,
+        "endChar": 22
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68245fe2_0ef558e3",
@@ -180,6 +300,30 @@
       "writtenOn": "2021-02-15T01:41:07Z",
       "side": 1,
       "message": "nit: Chrome",
+      "range": {
+        "startLine": 406,
+        "startChar": 26,
+        "endLine": 406,
+        "endChar": 32
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19725257_b76ca2dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Done But it\u0027s now inconsistent with the rest of the file where \"chrome is not available\" appears in lowercase another two times.",
+      "parentUuid": "68245fe2_0ef558e3",
       "range": {
         "startLine": 406,
         "startChar": 26,
@@ -260,6 +404,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47080455_0866457f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbc6b305_90c300fb",
+      "range": {
+        "startLine": 410,
+        "startChar": 26,
+        "endLine": 410,
+        "endChar": 29
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fed2f62_ce768e42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Agree to leave as it is.\n\nI expect `CreateArcInstance` to be used in future tests without `VerifyArcAppConenctivity`.",
+      "parentUuid": "383af3eb_7c303afe",
+      "range": {
+        "startLine": 410,
+        "startChar": 26,
+        "endLine": 410,
+        "endChar": 46
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef0e5639_0573af6d",
@@ -307,6 +499,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e4d271e_653ba772",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "I\u0027ve moved the ARC app related functionality a level up, under /network.\n\nThis way, we can improve the app and use the code to test other network related configurations.",
+      "parentUuid": "3dd24a3e_4932337c",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ebdb911_8d945533",
@@ -320,6 +536,30 @@
       "writtenOn": "2021-02-12T14:27:59Z",
       "side": 1,
       "message": "nit: I\u0027d suggest:\n\nRead the global proxy which is displayed on the test app\u0027s UI.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bbd5f79_d34f9069",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ebdb911_8d945533",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -353,6 +593,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3aaec38_a7070c5d",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "It\u0027s already specified in err like this:\n\nrpc error: code \u003d Unknown desc \u003d failed to test app connectivity: failed to find field: waitForExists (selector\u003d{ResourceId:org.chromium.arc.testapp.connectivity:id/global_proxy}) failed: timeout\n\n\nNotice the *id/global_proxy* in the selector query.",
+      "parentUuid": "70a5cb15_849ff896",
+      "range": {
+        "startLine": 67,
+        "startChar": 35,
+        "endLine": 67,
+        "endChar": 55
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bba5fc2_09dc97a8",
@@ -366,6 +630,30 @@
       "writtenOn": "2021-02-15T01:41:07Z",
       "side": 1,
       "message": "just curious: does the timeout really need to be so long for simulated UI interactions ?",
+      "range": {
+        "startLine": 125,
+        "startChar": 22,
+        "endLine": 125,
+        "endChar": 38
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed650da_0ce51f2d",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "No, I copied this from another test. 10s are more than enough.\n\nI\u0027ll monitor this test and increase the time if needed.",
+      "parentUuid": "7bba5fc2_09dc97a8",
       "range": {
         "startLine": 125,
         "startChar": 22,
@@ -399,6 +687,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e7949cf_ccf980df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Good point!",
+      "parentUuid": "6a893737_24ce2745",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "779f2e2d_78f765bc",
@@ -412,6 +724,30 @@
       "writtenOn": "2021-02-15T01:41:07Z",
       "side": 1,
       "message": "google.com",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8a2328_7ce5dd15",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "779f2e2d_78f765bc",
       "range": {
         "startLine": 32,
         "startChar": 16,
@@ -440,6 +776,54 @@
         "startChar": 0,
         "endLine": 44,
         "endChar": 45
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caefb39f_e32f3fdf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "How do I test this? :)",
+      "parentUuid": "957f911f_dc911e53",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d14bca34_83547066",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "\u003e \"reponse\" is a possible misspelling of \"response\".\n\nPlease fix.",
+      "parentUuid": "a433a6c1_269d4d7a",
+      "range": {
+        "startLine": 543,
+        "startChar": 13,
+        "endLine": 543,
+        "endChar": 20
       },
       "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -491,6 +875,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34039e7f_b24a2b5c",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1b6fb05_de6fcbb4",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae9f488_d0ca7167",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "I\u0027ve made the function more generic by making system-proxy optional.",
+      "parentUuid": "b00ab143_c336fae9",
+      "range": {
+        "startLine": 41,
+        "startChar": 63,
+        "endLine": 41,
+        "endChar": 100
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bf35af5_e57282b0",
@@ -505,6 +937,30 @@
       "side": 1,
       "message": "\u003e \"reponse\" is a possible misspelling of \"response\".\n\nPlease fix.",
       "parentUuid": "2ba774cf_874e4933",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 21
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23e5ee1_ec75b499",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T14:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bf35af5_e57282b0",
       "range": {
         "startLine": 106,
         "startChar": 14,
