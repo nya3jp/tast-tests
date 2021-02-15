@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/memory/kernelmeter"
@@ -167,13 +168,22 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		}()
 	}
 
+	p := perf.NewValues()
+
 	// Run all the tasks.
 	rp := &memoryuser.RunParameters{
-		UseARC:         preARC != nil,
-		ExistingChrome: pre.Chrome,
-		ExistingARC:    preARC,
+		UseARC:             preARC != nil,
+		ExistingChrome:     pre.Chrome,
+		ExistingARC:        preARC,
+		ExistingPerfValues: p,
 	}
 	if err := memoryuser.RunTest(ctx, s.OutDir(), tasks, rp); err != nil {
 		s.Fatal("RunTest failed: ", err)
+	}
+	if err := memory.SmapsMetrics(ctx, p, s.OutDir(), ""); err != nil {
+		s.Error("Failed to log smaps_rollup metrics: ", err)
+	}
+	if err := p.Save(s.OutDir()); err != nil {
+		s.Error("Failed to save perf.Values: ", err)
 	}
 }
