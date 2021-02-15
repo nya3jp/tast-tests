@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39570f57_51cd5a4d",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-15T04:24:28Z",
+      "side": 1,
+      "message": "nit: fmt.Sprintf(\"package:%s\\n\", pkg)",
+      "range": {
+        "startLine": 318,
+        "startChar": 38,
+        "endLine": 318,
+        "endChar": 58
+      },
+      "revId": "c439b22a969c71e13a9b2d77ca8cbe33e2dacc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
