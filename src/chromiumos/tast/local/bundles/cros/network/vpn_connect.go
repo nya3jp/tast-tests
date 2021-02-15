@@ -175,8 +175,8 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to ping %s: no response received", vpn.Xl2tpdServerIPAddress)
 	}
 
-	// IPv6 should be blackholed, so ping returns
-	// "other error"
+	// IPv6 should be blackholed. Note that we cannot get the exit code from pr.Ping() if we parse the output of ping successfully, so we
+	// also need to check |res.Received| to make sure ping failed.
 	isExitCode := func(err error, code int) bool {
 		var exitErr *exec.ExitError
 		if ok := errors.As(err, &exitErr); ok {
@@ -184,8 +184,8 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		}
 		return false
 	}
-	if _, err := pr.Ping(ctx, "2001:db8::1", ping.Count(1), ping.User("chronos")); !isExitCode(err, 2) {
-		s.Fatal("Failed IPv6 ping should have aborted: ", err)
+	if res, err := pr.Ping(ctx, "2001:db8::1", ping.Count(1), ping.User("chronos")); isExitCode(err, 0) || res.Received != 0 {
+		s.Fatal("IPv6 ping should fail: ", err)
 	}
 
 }
