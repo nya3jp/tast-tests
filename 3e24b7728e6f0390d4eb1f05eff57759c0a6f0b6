@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1862fff5_c362ca8a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T06:40:24Z",
+      "side": 1,
+      "message": "Please drop \"intially -1\" from these comments. See also my next comment.",
+      "range": {
+        "startLine": 30,
+        "startChar": 60,
+        "endLine": 31,
+        "endChar": 79
+      },
+      "revId": "3e24b7728e6f0390d4eb1f05eff57759c0a6f0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7820757_a06cfcc4",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T06:40:24Z",
+      "side": 1,
+      "message": "Please avoid half-initialized objects. In this case, by moving the struct initialization to after testing.Poll, we can set initialPID/sessionManagerPID on initialization. Until then, you can store initialPID/sessionManagerPID in local variables.\n\n func NewWatcher(ctx context.Context) (*Watcher, error) {\n   var initialPID, sessionManagerPID int32\n   if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n     // Decide initialPID and sessionManagerPID...\n   }, nil); err !\u003d nil {\n     return nil, err\n   }\n\n   bw :\u003d \u0026Watcher{...} // At this point all fields can be initialized\n   go func() { ... }\n   return bw, nil\n }\n\nIn general I recommend avoiding half-initialized objects as it makes it difficult to reason about program correctness.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "3e24b7728e6f0390d4eb1f05eff57759c0a6f0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "822d584b_688f2928",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T06:40:24Z",
+      "side": 1,
+      "message": "We can drop this check call now. Formerly we had this call hoping the we can set initialPID as early as possible, but with this change we already have one at this moment.",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 12
+      },
+      "revId": "3e24b7728e6f0390d4eb1f05eff57759c0a6f0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f437a5f1_501e9313",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T06:40:24Z",
+      "side": 1,
+      "message": "We will no longer update initialPID. Would you mind updating the comment accordingly?",
+      "range": {
+        "startLine": 122,
+        "startChar": 64,
+        "endLine": 122,
+        "endChar": 108
+      },
+      "revId": "3e24b7728e6f0390d4eb1f05eff57759c0a6f0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
