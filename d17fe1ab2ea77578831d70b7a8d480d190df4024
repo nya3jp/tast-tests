@@ -139,6 +139,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a03fa1_644fbe5e",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-15T07:07:05Z",
+      "side": 1,
+      "message": "Ack, I\u0027ll try that in another CL. Ditto for the following comment.",
+      "parentUuid": "1788f00f_e60e7219",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c6926ee_3ddd9c9f",
@@ -152,6 +170,24 @@
       "writtenOn": "2021-02-10T10:09:11Z",
       "side": 1,
       "message": "off-topic/optional: maybe scanner.Err() check after the loop.",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73f96d9b_de94d5b6",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-15T07:07:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c6926ee_3ddd9c9f",
       "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -173,6 +209,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d9c584_0ae2dd2b",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-15T07:07:05Z",
+      "side": 1,
+      "message": "Done, I hope this is the right fix.",
+      "parentUuid": "6c4bae45_729dd0ad",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bce27c45_a0092dbd",
@@ -186,6 +240,24 @@
       "writtenOn": "2021-02-10T10:09:11Z",
       "side": 1,
       "message": "ditto for race.",
+      "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "708ae952_5e0a4b76",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-15T07:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bce27c45_a0092dbd",
       "revId": "d17fe1ab2ea77578831d70b7a8d480d190df4024",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
