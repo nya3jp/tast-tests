@@ -16,6 +16,24 @@
       "message": "About the file name: is it possible that this file will be imported in a test?",
       "revId": "67c6b7bea88a6d7912c16ce02ea07f0871b25032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cdcda6f_6ce84a26",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-15T09:37:05Z",
+      "side": 1,
+      "message": "Only the package will be imported for FixtData. See AllowDinosaurEasterEggFixture for an example",
+      "parentUuid": "b34fc970_89f20764",
+      "revId": "67c6b7bea88a6d7912c16ce02ea07f0871b25032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
