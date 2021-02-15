@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d3e6476_903d776a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/files_app_watch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-15T02:54:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "333a91bb_b67debdf",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 30
+      },
+      "revId": "96878a95dad7ff5d8cfc1fd042990f0e0d40471d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37ffdcfd_e5ff20e3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-11T23:15:43Z",
       "side": 1,
       "message": "extra char",
+      "range": {
+        "startLine": 103,
+        "startChar": 25,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "96878a95dad7ff5d8cfc1fd042990f0e0d40471d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "901ac20d_a3ed5c41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-15T02:54:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37ffdcfd_e5ff20e3",
       "range": {
         "startLine": 103,
         "startChar": 25,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "511a185f_37a5ae0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-15T02:54:41Z",
+      "side": 1,
+      "message": "Actually it works. Thanks!",
+      "parentUuid": "29a217fd_5fa02590",
+      "range": {
+        "startLine": 104,
+        "startChar": 24,
+        "endLine": 104,
+        "endChar": 35
+      },
+      "revId": "96878a95dad7ff5d8cfc1fd042990f0e0d40471d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6db9dff7_910a8810",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-11T23:15:43Z",
       "side": 1,
       "message": "Just curious, is there any difference between Ctrl+w here and Ctrl+W in the file above?",
+      "range": {
+        "startLine": 113,
+        "startChar": 29,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "96878a95dad7ff5d8cfc1fd042990f0e0d40471d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fba5d47_cf7aa6fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-15T02:54:41Z",
+      "side": 1,
+      "message": "They are the same.",
+      "parentUuid": "6db9dff7_910a8810",
       "range": {
         "startLine": 113,
         "startChar": 29,
