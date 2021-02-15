@@ -28,6 +28,23 @@ func init() {
 		PostTestTimeout: resetTimeout,
 		TearDownTimeout: resetTimeout,
 	})
+
+	// arcBootedWithDisableSyncFlags is a fixture similar to arcBooted. The only difference from arcBooted is that ARC content sync is disabled to avoid noise during power/performance measurements.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithDisableSyncFlags",
+		Desc: "ARC is booted with disabling sync flags",
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			var opts = []chrome.Option{chrome.ARCEnabled()}
+			for _, extraArg := range DisableSyncFlags() {
+				opts = append(opts, chrome.ExtraArgs(extraArg))
+			}
+			return opts, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
 }
 
 type bootedFixture struct {
