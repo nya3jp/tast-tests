@@ -50,7 +50,7 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.BootedInTabletMode(),
+		Fixture:      "arcBootedInTabletMode",
 		Params: []testing.Param{{
 			Val:               stableVkTests,
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -638,7 +638,7 @@ func chromeVirtualKeyboardNumberInputTest(
 }
 
 func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
-	p := s.PreValue().(arc.PreData)
+	p := s.FixtValue().(*arc.PreData)
 	a := p.ARC
 	cr := p.Chrome
 
