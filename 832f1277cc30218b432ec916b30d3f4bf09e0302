@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92ed7757_8d4279c0",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-15T09:58:53Z",
+      "side": 1,
+      "message": "Need 2 functions, but it does provide more isolation.",
+      "parentUuid": "5ef46858_f0090373",
+      "revId": "832f1277cc30218b432ec916b30d3f4bf09e0302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b15fe28a_7651d1c9",
