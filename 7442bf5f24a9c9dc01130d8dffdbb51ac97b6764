@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad40828_13797f93",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-15T01:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e65ff88_85d9eb5a",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "7442bf5f24a9c9dc01130d8dffdbb51ac97b6764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7219d2b_5ad223ba",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-12T07:34:47Z",
       "side": 1,
       "message": "We don\u0027t need to close the session here; callers are responsible for closing it.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "7442bf5f24a9c9dc01130d8dffdbb51ac97b6764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f4c8c2_a3d444ac",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/guest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-15T01:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7219d2b_5ad223ba",
       "range": {
         "startLine": 48,
         "startChar": 1,
