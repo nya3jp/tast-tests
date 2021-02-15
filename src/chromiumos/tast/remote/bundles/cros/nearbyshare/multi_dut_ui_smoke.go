@@ -34,11 +34,11 @@ func init() {
 func MultiDUTUISmoke(ctx context.Context, s *testing.State) {
 	// TODO(b/175889133) Remove hardcoded hostnames when multi dut skylab support is available.
 	const (
-		HatchHostname   = "chromeos15-row6a-rack12-host2a.cros"
-		OctopusHostname = "chromeos15-row6a-rack12-host2b.cros"
+		HatchHostname   = "chromeos15-row6a-rack12-host2a"
+		OctopusHostname = "chromeos15-row6a-rack12-host2b"
 	)
 	d1 := s.DUT()
-
+	s.Log("Hostname is ", s.DUT().HostName())
 	// Figure out which DUT is primary and which is secondary.
 	// Switch on the DUTs in our lab setup first, then fall back to user supplied var.
 	var secondaryDUT string
