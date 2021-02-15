@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac18788_a10de53a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-15T02:54:41Z",
+      "side": 1,
+      "message": "Do not know why, but FocusAndWait does not work anymore.",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "b0fcedf6bc799895360bfc7e8aa1bcf334191928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
