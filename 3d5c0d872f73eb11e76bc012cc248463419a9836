@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4701b4e_172dd940",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-15T03:00:41Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "3d5c0d872f73eb11e76bc012cc248463419a9836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d447d59_fc19c01d",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-15T03:00:41Z",
+      "side": 1,
+      "message": "nit: maybe leave out \u0027longform\u0027 as it\u0027s a codename. Maybe just \u0027new handwriting layout\u0027.",
+      "range": {
+        "startLine": 213,
+        "startChar": 68,
+        "endLine": 213,
+        "endChar": 76
+      },
+      "revId": "3d5c0d872f73eb11e76bc012cc248463419a9836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
