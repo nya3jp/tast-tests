@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75136131_82dcd6fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-02-15T09:12:07Z",
+      "side": 1,
+      "message": "I was thinking about polling specific iptables rules instead of Sleep here, and decided to use sleep for now, because:\n1) This is much simpler, checking rules need to know the ifindex of the VPN service;\n2) Don\u0027t want to bind the test to the specific implementation;\n3) If there is flakiness with this timeout, it may indicate that users are able to see this issue.\nAny thoughts here?",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 41
+      },
+      "revId": "ef817c8e6ae8162dc7342c70f2a21745a68b2b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
