@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34557422_9f7d5e6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-15T05:47:02Z",
+      "side": 1,
+      "message": "This is just a test file to test the installation code.",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 23
+      },
+      "revId": "7b1b606022e92190b5a00bc38f502c33e4101743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
