@@ -7,7 +7,6 @@ package arc
 import (
 	"context"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -53,44 +52,6 @@ func Booted() testing.Precondition { return bootedPre }
 var bootedPre = &preImpl{
 	name:    "arc_booted",
 	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
-}
-
-// BootedWithDisableSyncFlags returns a precondition similar to Booted(). The only difference from
-// Booted() is that ARC content sync is disabled to avoid noise during power/performance
-// measurements.
-func BootedWithDisableSyncFlags() testing.Precondition { return bootedWithDisableSyncFlagsPre }
-
-// bootedWithDisableSyncFlagsPre is returned by BootedWithDisableSyncFlags.
-var bootedWithDisableSyncFlagsPre = &preImpl{
-	name:      "arc_booted_disable_sync",
-	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
-	extraArgs: DisableSyncFlags(),
-}
-
-// BootedInTabletMode returns a precondition similar to Booted(). The only difference from Booted() is
-// that Chrome is launched in tablet mode in this precondition.
-func BootedInTabletMode() testing.Precondition { return bootedInTabletModePre }
-
-// bootedInTabletModePre is returned by BootedInTabletMode.
-var bootedInTabletModePre = &preImpl{
-	name:      "arc_booted_in_tablet_mode",
-	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
-	extraArgs: []string{"--force-tablet-mode=touch_view", "--enable-virtual-keyboard"},
-}
-
-// BootedWithVideoLogging returns a precondition similar to Booted(), but with additional Chrome video logging enabled.
-func BootedWithVideoLogging() testing.Precondition { return bootedWithVideoLoggingPre }
-
-// bootedWithVideoLoggingPre is returned by BootedWithVideoLogging.
-var bootedWithVideoLoggingPre = &preImpl{
-	name:    "arc_booted_with_video_logging",
-	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
-	extraArgs: []string{
-		"--vmodule=" + strings.Join([]string{
-			"*/media/gpu/chromeos/*=2",
-			"*/media/gpu/vaapi/*=2",
-			"*/media/gpu/v4l2/*=2",
-			"*/components/arc/video_accelerator/*=2"}, ",")},
 }
 
 // NewPrecondition creates a new arc precondition for tests that need different args.
