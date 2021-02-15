@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f9194e2e_59926234",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-02-15T09:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52059629_43837831",
+      "revId": "0428d66e6636c9d98a3896d070a5ed6a53c048d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "806b4983_1ef0accf",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -106,6 +124,30 @@
       "side": 1,
       "message": "Yes, unless you are certain the new implementation works with both the old and the new code.",
       "parentUuid": "e3dfdae6_d49b2f84",
+      "range": {
+        "startLine": 29,
+        "startChar": 20,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "0428d66e6636c9d98a3896d070a5ed6a53c048d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e96a5b_fe465c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-02-15T09:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c390aaa_a3e2dfad",
       "range": {
         "startLine": 29,
         "startChar": 20,
