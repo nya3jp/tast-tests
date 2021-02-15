@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c3f807_956972cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-15T06:52:46Z",
+      "side": 1,
+      "message": "...fact that /usr/bin/logger... ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4809d2a4_693b7b73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-15T06:52:46Z",
+      "side": 1,
+      "message": "nit: with",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e96550f5_e60968ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-15T06:52:46Z",
+      "side": 1,
+      "message": "nit: standardize",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "80d11cd7_1c5cd62a",
@@ -31,6 +100,23 @@
       "writtenOn": "2021-02-12T04:14:54Z",
       "side": 1,
       "message": "+niwa",
+      "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "545279d8_f942e093",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-15T06:52:46Z",
+      "side": 1,
+      "message": "+2 for Tast Owners % nits",
       "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
