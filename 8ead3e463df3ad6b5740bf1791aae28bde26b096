@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5260adfb_6d6eb292",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-15T10:08:15Z",
+      "side": 1,
+      "message": "Would it make sense to store fakedms.New() in this from the start?\nThe same question for p.fdms in chrome.go.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 10
+      },
+      "revId": "8ead3e463df3ad6b5740bf1791aae28bde26b096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
