@@ -254,7 +254,11 @@ func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv,
 	te := &TestEnv{
 		vm:     false,
 		outDir: outDir,
-		p:      perf.NewValues(),
+		p:      p.ExistingPerfValues,
+	}
+
+	if te.p == nil {
+		te.p = perf.NewValues()
 	}
 
 	// Schedule closure of partially-initialized struct.
@@ -332,6 +336,10 @@ type RunParameters struct {
 	// ExistingARC indicates that we should use this ARC instance instead of
 	// creating a new one. ExistingChrome and UseARC must be set.
 	ExistingARC *arc.ARC
+	// ExistingPerfValues indicates that we should use this perf.Values instead
+	// of creating a new one. The caller is responsible calling
+	// perf.Values.Save().
+	ExistingPerfValues *perf.Values
 }
 
 // Close closes the Chrome, ARC, and WPR instances used in the TestEnv.
@@ -424,8 +432,10 @@ func RunTest(ctx context.Context, outDir string, tasks []MemoryTask, p *RunParam
 
 	setPerfValues(testMeter, testEnv.p, "full_test")
 	resetAndLogStats(ctx, testMeter, "full test")
-	if err = testEnv.p.Save(outDir); err != nil {
-		return errors.Wrap(err, "cannot save perf data")
+	if p.ExistingPerfValues == nil {
+		if err = testEnv.p.Save(outDir); err != nil {
+			return errors.Wrap(err, "cannot save perf data")
+		}
 	}
 	// NB: errRet can be set by goroutines above, so don't override it if they
 	// had an error. Those errors are also logged, so if we have an early return
