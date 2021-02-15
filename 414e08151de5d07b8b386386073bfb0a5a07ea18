@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "177aac9d_d8ce132f",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-15T09:42:44Z",
+      "side": 1,
+      "message": "I don\u0027t see the point. It\u0027s easy to obtain from the Chrome instance.",
+      "parentUuid": "379d2eaa_1177e482",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "414e08151de5d07b8b386386073bfb0a5a07ea18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e83d2cc_fe258cad",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
         "patchSetId": 2
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-15T09:29:44Z",
       "side": 1,
       "message": "You only have it here, but not in the other PostTest(). Is it just a leftover form development?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "414e08151de5d07b8b386386073bfb0a5a07ea18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a74f5a8d_20e54ece",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-15T09:42:44Z",
+      "side": 1,
+      "message": "The functions below don\u0027t check for context expiry. I kept it only here for that reason.",
+      "parentUuid": "9e83d2cc_fe258cad",
       "range": {
         "startLine": 96,
         "startChar": 0,
