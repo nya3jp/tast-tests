@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6659350b_bd042e00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-15T01:41:07Z",
+      "side": 1,
+      "message": "Looks really nice !",
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5844f110_f2c8781a",
@@ -106,6 +123,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2206bb53_f7bc0dd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-15T01:41:07Z",
+      "side": 1,
+      "message": "nit: ARC",
+      "range": {
+        "startLine": 398,
+        "startChar": 48,
+        "endLine": 398,
+        "endChar": 51
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1efab04_8cbab89e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-15T01:41:07Z",
+      "side": 1,
+      "message": "It looks like there is no meaningful return value.\n\nAre you forced to return some sort of argument to match some function signature somewhere ? It looks like this function could just return an error.",
+      "range": {
+        "startLine": 401,
+        "startChar": 8,
+        "endLine": 401,
+        "endChar": 22
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68245fe2_0ef558e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-15T01:41:07Z",
+      "side": 1,
+      "message": "nit: Chrome",
+      "range": {
+        "startLine": 406,
+        "startChar": 26,
+        "endLine": 406,
+        "endChar": 32
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "257d77f7_30cc4638",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
         "patchSetId": 1
@@ -117,6 +203,53 @@
       "writtenOn": "2021-02-12T14:27:59Z",
       "side": 1,
       "message": "Should we hint to run CreateArcInstance?\n\nOr, should CreateArcInstance be done implicitly in VerifyArcAppConenctivity so the caller doesn\u0027t have to care?",
+      "range": {
+        "startLine": 410,
+        "startChar": 26,
+        "endLine": 410,
+        "endChar": 46
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbc6b305_90c300fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-15T01:41:07Z",
+      "side": 1,
+      "message": "nit: ARC",
+      "range": {
+        "startLine": 410,
+        "startChar": 26,
+        "endLine": 410,
+        "endChar": 29
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "383af3eb_7c303afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-15T01:41:07Z",
+      "side": 1,
+      "message": "I think this is fine honestly, most future tests will just copy the template here and won\u0027t forget to call CreateArcInstance first.",
+      "parentUuid": "257d77f7_30cc4638",
       "range": {
         "startLine": 410,
         "startChar": 26,
@@ -152,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3dd24a3e_4932337c",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-15T01:41:07Z",
+      "side": 1,
+      "message": "I am not against breaking down the method in smaller reusable sections, but this particular UI flow seems to be very specific to the proxy though.",
+      "parentUuid": "ef0e5639_0573af6d",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9ebdb911_8d945533",
         "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
         "patchSetId": 1
@@ -168,6 +325,121 @@
         "startChar": 0,
         "endLine": 64,
         "endChar": 25
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70a5cb15_849ff896",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-15T01:41:07Z",
+      "side": 1,
+      "message": "nit: could you say which field was not found ?",
+      "range": {
+        "startLine": 67,
+        "startChar": 35,
+        "endLine": 67,
+        "endChar": 55
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bba5fc2_09dc97a8",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-15T01:41:07Z",
+      "side": 1,
+      "message": "just curious: does the timeout really need to be so long for simulated UI interactions ?",
+      "range": {
+        "startLine": 125,
+        "startChar": 22,
+        "endLine": 125,
+        "endChar": 38
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a893737_24ce2745",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-15T01:41:07Z",
+      "side": 1,
+      "message": "could you add a non ldap PoC like cros-networking@ or some other mailing list.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "779f2e2d_78f765bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-15T01:41:07Z",
+      "side": 1,
+      "message": "google.com",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "957f911f_dc911e53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-15T01:41:07Z",
+      "side": 1,
+      "message": "Just curious: have you checked it works on ARCVM ?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 45
       },
       "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
