@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eaac5cf_78b8ebb7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-15T23:54:50Z",
+      "side": 1,
+      "message": "How is the checkbox involved?  It looks like it just clicks the file",
+      "range": {
+        "startLine": 310,
+        "startChar": 19,
+        "endLine": 310,
+        "endChar": 38
+      },
+      "revId": "e5b9d07364c66dfd4100d607e9a06a4cfc7664dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23910691_93bdb795",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-15T23:54:50Z",
+      "side": 1,
+      "message": "It seems weird to put this in this function, it is unrelated to the other functionality and not mentioned in the name.  It also prevents this from being a uiauto.action.\n\nCan you split the coords/location into a separate function and make tickCheckboxForFile an Action?",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 2
+      },
+      "revId": "e5b9d07364c66dfd4100d607e9a06a4cfc7664dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9073619_cf7a987e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-15T23:54:50Z",
+      "side": 1,
+      "message": "Can you make this an action?",
+      "range": {
+        "startLine": 336,
+        "startChar": 128,
+        "endLine": 336,
+        "endChar": 133
+      },
+      "revId": "e5b9d07364c66dfd4100d607e9a06a4cfc7664dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0584b5dd_d4d3ef44",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-15T23:54:50Z",
+      "side": 1,
+      "message": "I wonder if we should take in/create keyboard in FilesApp.Launch instead of passing it into so many methods?",
+      "range": {
+        "startLine": 341,
+        "startChar": 55,
+        "endLine": 341,
+        "endChar": 57
+      },
+      "revId": "e5b9d07364c66dfd4100d607e9a06a4cfc7664dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a4c3898_422d0da3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-15T23:54:50Z",
+      "side": 1,
+      "message": "do we really need this?",
+      "range": {
+        "startLine": 346,
+        "startChar": 14,
+        "endLine": 346,
+        "endChar": 44
+      },
+      "revId": "e5b9d07364c66dfd4100d607e9a06a4cfc7664dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
