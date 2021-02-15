@@ -28,7 +28,7 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.BootedInTabletMode(),
+		Fixture:      "arcBootedInTabletMode",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -58,7 +58,7 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 		settingsPkg = "com.android.settings"
 	)
 
-	p := s.PreValue().(arc.PreData)
+	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
 
