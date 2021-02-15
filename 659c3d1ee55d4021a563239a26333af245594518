@@ -56,6 +56,30 @@
       },
       "revId": "659c3d1ee55d4021a563239a26333af245594518",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc8ad33_0722a1e4",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T16:42:11Z",
+      "side": 1,
+      "message": "You\u0027re right, thanks for catching this!!",
+      "parentUuid": "570d80ce_a32b1b7b",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "659c3d1ee55d4021a563239a26333af245594518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
