@@ -45,7 +45,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
-		Pre:          arc.BootedWithDisableSyncFlags(),
+		Fixture:      "arcBootedWithDisableSyncFlags",
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      powerTestDuration,
 		Params: []testing.Param{{
@@ -119,14 +119,14 @@ func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	opts := s.Param().(video.DecodeTestOptions)
 
 	// Parse JSON metadata.
