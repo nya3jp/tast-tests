@@ -33,6 +33,29 @@
       "message": "+niwa",
       "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "111e5954_ac4a281e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2021-02-15T03:21:34Z",
+      "side": 1,
+      "message": "this is notExe, not exe.\nMeans only checking all processes not /usr/bin/logger.\n\nDoes logger on kevin64 exist on a different path?",
+      "range": {
+        "startLine": 190,
+        "startChar": 5,
+        "endLine": 190,
+        "endChar": 11
+      },
+      "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
