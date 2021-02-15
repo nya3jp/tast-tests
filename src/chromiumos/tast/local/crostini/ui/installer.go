@@ -170,8 +170,9 @@ func (p *Installer) Install(ctx context.Context) error {
 	// way and prevent the button from being clicked.
 	ui := uiauto.New(p.tconn)
 	installButton := nodewith.Name("Install").Role(role.Button)
+	installCancel := nodewith.Name("Cancel").Role(role.Button)
 	if err := uiauto.Combine("click install and wait it to finish",
-		ui.LeftClick(installButton),
+		ui.LeftClickUntil(installButton, ui.WithTimeout(2*time.Second).WaitUntilExists(installCancel)),
 		ui.WithTimeout(8*time.Minute).WaitUntilGone(installWindow))(ctx); err != nil {
 		// If the install fails, return any error message from the installer rather than a timeout error.
 		message, messageErr := p.checkErrorMessage(cleanupCtx)
