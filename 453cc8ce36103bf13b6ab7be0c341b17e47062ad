@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa8b3e33_92371d3a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T06:40:24Z",
+      "side": 0,
+      "message": "We need this Close call.",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 18
+      },
+      "revId": "453cc8ce36103bf13b6ab7be0c341b17e47062ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbbff1d1_2318566f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T06:40:24Z",
+      "side": 0,
+      "message": "Same here.",
+      "range": {
+        "startLine": 520,
+        "startChar": 2,
+        "endLine": 520,
+        "endChar": 19
+      },
+      "revId": "453cc8ce36103bf13b6ab7be0c341b17e47062ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
