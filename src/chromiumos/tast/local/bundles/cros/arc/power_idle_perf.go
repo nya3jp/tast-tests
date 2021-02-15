@@ -46,7 +46,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.ForceBatteryDischarge,
 				},
-				Pre: chrome.LoggedIn(),
+				Fixture: "chromeLoggedIn",
 			},
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
@@ -72,7 +72,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.NoBatteryDischarge,
 				},
-				Pre: chrome.LoggedIn(),
+				Fixture: "chromeLoggedIn",
 			},
 			{
 				Name:              "nobatterymetrics",
@@ -109,7 +109,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	cr, ok := s.PreValue().(*chrome.Chrome)
+	cr, ok := s.FixtValue().(*chrome.Chrome)
 	if !ok {
 		cr = s.FixtValue().(*arc.PreData).Chrome
 	}

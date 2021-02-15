@@ -33,7 +33,7 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "noarc",
 			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
-			Pre:               chrome.LoggedIn(),
+			Fixture:           "chromeLoggedIn",
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -76,7 +76,7 @@ func LifecycleChromeOSPerf(ctx context.Context, s *testing.State) {
 	tasks = append(tasks, memoryuser.NewStillAliveMetricTask(tabsAliveTasks, "tabs_alive"))
 
 	var a *arc.ARC
-	cr, ok := s.PreValue().(*chrome.Chrome)
+	cr, ok := s.FixtValue().(*chrome.Chrome)
 	if !ok {
 		pre := s.FixtValue().(*arc.PreData)
 		cr = pre.Chrome
