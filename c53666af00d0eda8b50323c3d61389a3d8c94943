@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4350337d_456bfc03",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-15T01:22:39Z",
+      "side": 1,
+      "message": "This is not a good practice to use defer. Because this function will always be executed even following steps failed. It should be moved to the end of the function without defer.",
+      "range": {
+        "startLine": 391,
+        "startChar": 1,
+        "endLine": 391,
+        "endChar": 40
+      },
+      "revId": "c53666af00d0eda8b50323c3d61389a3d8c94943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
