@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12a3f8b_4302db0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-15T02:06:06Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "578901e91115743a9dd30264a53e6e54d94753bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55892dc4_9cde4d90",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-15T02:06:06Z",
+      "side": 1,
+      "message": "nit: you can return testing.Sleep",
+      "range": {
+        "startLine": 401,
+        "startChar": 1,
+        "endLine": 401,
+        "endChar": 34
+      },
+      "revId": "578901e91115743a9dd30264a53e6e54d94753bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
