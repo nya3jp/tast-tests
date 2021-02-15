@@ -33,6 +33,23 @@
       "message": "LGTM -- giving CR+2 in advance, but please wait for benreich\u0027s reply too.",
       "revId": "48a3f81abf438b879820f9da068632a66acf6f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95c44fc1_a2eed097",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-15T09:13:59Z",
+      "side": 1,
+      "message": "Thanks a lot for the review!!",
+      "revId": "48a3f81abf438b879820f9da068632a66acf6f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
