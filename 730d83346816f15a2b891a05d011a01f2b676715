@@ -34,6 +34,24 @@
       "parentUuid": "b8266181_0182fb52",
       "revId": "730d83346816f15a2b891a05d011a01f2b676715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "487a680f_65398967",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-15T08:45:30Z",
+      "side": 1,
+      "message": "that works for me, but then I\u0027d recommend to check its validity at the beginning of this function.\n\nif ... traceDir is not valid ... {\n  return errors.New(...)\n}\n\nat beginning.",
+      "parentUuid": "17a0e6f9_7c0269af",
+      "revId": "730d83346816f15a2b891a05d011a01f2b676715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
