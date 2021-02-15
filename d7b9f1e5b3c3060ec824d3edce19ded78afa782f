@@ -110,6 +110,30 @@
       },
       "revId": "d7b9f1e5b3c3060ec824d3edce19ded78afa782f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f79efda_b08f16ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/uniform_scale_factor_non_maximized.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-02-15T00:21:47Z",
+      "side": 1,
+      "message": "Just FYI, calling Close is necessary but calling Stop is not necessary as it\u0027s performed in ARC precondition / fixture:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/snapshot.go?l\u003d94\u0026rcl\u003d7d0f130639c980a341fe1c8c77acf9b1a55d0714",
+      "parentUuid": "27a111ed_90a4d0ed",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 4
+      },
+      "revId": "d7b9f1e5b3c3060ec824d3edce19ded78afa782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
