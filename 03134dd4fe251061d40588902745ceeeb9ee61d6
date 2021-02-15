@@ -16,6 +16,92 @@
       "message": "Thanks Shuhei and Jun for looking into this. I made some changes following the comments while we continue to debug why connect is closed after suspend/resume.",
       "revId": "03134dd4fe251061d40588902745ceeeb9ee61d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85077c27_c069d80e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T09:47:28Z",
+      "side": 1,
+      "message": "Mostly LGTM, thanks for looking into the reason of disconnection.\n",
+      "revId": "03134dd4fe251061d40588902745ceeeb9ee61d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "742b5d57_2ea39d58",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T09:47:28Z",
+      "side": 1,
+      "message": "This sounds a bit weird, how about something like:\n\n // Reconnect reconnects to the current browser session.\n\nAlso it\u0027s nice to elaborate on when we want this method, since it\u0027s actually rarely needed. For example:\n\n // Call this method when you know you have to re-establish a connection to the browser session, e.g. after suspend/resume.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 58
+      },
+      "revId": "03134dd4fe251061d40588902745ceeeb9ee61d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff8a861c_bad58bde",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T09:47:28Z",
+      "side": 1,
+      "message": "I like this warning comments. :)\n\nWould you mind mentioning that all connections associated with this chrome.Chrome instance have to be re-established? For example, a normal connection created by NewConn also has to be taken care.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 24
+      },
+      "revId": "03134dd4fe251061d40588902745ceeeb9ee61d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a07c5b_de03baf3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-15T09:47:28Z",
+      "side": 1,
+      "message": "c.sess is always non-nil, so you can drop this conditional.",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 19
+      },
+      "revId": "03134dd4fe251061d40588902745ceeeb9ee61d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
