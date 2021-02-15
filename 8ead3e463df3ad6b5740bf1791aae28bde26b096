@@ -22,6 +22,30 @@
       },
       "revId": "8ead3e463df3ad6b5740bf1791aae28bde26b096",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "127e0eea_050485cb",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-15T10:42:24Z",
+      "side": 1,
+      "message": "I want to keep it nil unless it\u0027s ready.\n\nOn the Chrome side you can\u0027t assign in this statement since err is also being defined.\nfdms, ok :\u003d s.ParentValue().(*fakedms.FakeDMS)",
+      "parentUuid": "5260adfb_6d6eb292",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 10
+      },
+      "revId": "8ead3e463df3ad6b5740bf1791aae28bde26b096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
