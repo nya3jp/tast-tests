@@ -126,13 +126,21 @@ func FindSettingsPage(ctx context.Context, tconn *chrome.TestConn, windowName st
 // It also clicks next to skip the information screen.  An ui.Installer
 // page object can be constructed after calling OpenInstaller to adjust the settings and to complete the installation.
 func OpenInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (retErr error) {
-	s, err := OpenLinuxSubpage(ctx, tconn, cr)
-	if err != nil {
-		return errors.Wrap(err, "failed to open linux subpage on Settings app")
+	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to hide all notifications in OpenLinuxSubpage()")
 	}
-	defer s.Close(ctx)
+
+	ui := uiauto.New(tconn)
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.Exists(DevelopersButton)); err != nil {
+		return errors.Wrap(err, "failed to launch settings app")
+	}
+
 	defer func() { faillog.DumpUITreeAndScreenshot(ctx, tconn, "crostini_installer", retErr) }()
-	return s.ui.LeftClick(nextButton)(ctx)
+
+	installButton := nodewith.Name("Install").Role(role.Button)
+	return uiauto.Run(ctx,
+		ui.LeftClickUntil(DevelopersButton, ui.WithTimeout(2*time.Second).WaitUntilExists(nextButton)),
+		ui.LeftClickUntil(nextButton, ui.WithTimeout(2*time.Second).WaitUntilExists(installButton)))
 }
 
 // Close closes the Settings App.
