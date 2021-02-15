@@ -22,6 +22,30 @@
       },
       "revId": "b9ee9c25f989b7c0b7885f00e3749d13ee4d2518",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce5c8871_80c801ac",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-15T00:11:55Z",
+      "side": 1,
+      "message": "Not very sure, but usually, the first item with the name of a window is the role of window in the accessibility.",
+      "parentUuid": "4e9658db_8d218599",
+      "range": {
+        "startLine": 83,
+        "startChar": 23,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "b9ee9c25f989b7c0b7885f00e3749d13ee4d2518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
