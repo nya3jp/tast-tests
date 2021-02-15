@@ -9,6 +9,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -52,6 +53,24 @@ func init() {
 		Desc: "ARC is booted in tablet mode",
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"), chrome.ExtraArgs("--enable-virtual-keyboard")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
+	// arcBootedWithVideoLogging is a fixture similar to arcBooted, but with additional Chrome video logging enabled.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithVideoLogging",
+		Desc: "ARC is booted with additional Chrome video logging",
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs(
+				"--vmodule=" + strings.Join([]string{
+					"*/media/gpu/chromeos/*=2",
+					"*/media/gpu/vaapi/*=2",
+					"*/media/gpu/v4l2/*=2",
+					"*/components/arc/video_accelerator/*=2"}, ","))}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,

@@ -33,7 +33,7 @@ func init() {
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklist...)),
-		Pre:          arc.BootedWithVideoLogging(),
+		Fixture:      "arcBootedWithVideoLogging",
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
 		Params: []testing.Param{{
@@ -107,6 +107,6 @@ func init() {
 }
 
 func VideoEncodeAccel(ctx context.Context, s *testing.State) {
-	video.RunARCVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC,
+	video.RunARCVideoTest(ctx, s, s.FixtValue().(*arc.PreData).ARC,
 		s.Param().(video.EncodeTestOptions), veaPullEncodedVideo, veaCacheExtractedVideo)
 }
