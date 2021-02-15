@@ -45,6 +45,54 @@
       },
       "revId": "e6a09747abde4a371d98602fc624a2f290a1d5e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b169b390_e1752b2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-15T02:28:33Z",
+      "side": 1,
+      "message": "Sorry for the confusion.\nWe don\u0027t have a plan of dropping the I420 SHMEM support as it is necessary for casting/mirroring.\n\nI meant the nv12 test cases shall run in the \"regular\" tests e.g. video.EncodeAccel.h264_720p as well as i420 test cases in the future. I added video.EncodeAccel.*_nv12 to not break the existing tests and see particularly the nv12 test results. They will be removed eventually.",
+      "parentUuid": "d93f36b7_0d9e226d",
+      "range": {
+        "startLine": 44,
+        "startChar": 54,
+        "endLine": 44,
+        "endChar": 64
+      },
+      "revId": "e6a09747abde4a371d98602fc624a2f290a1d5e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a669658d_b9d432fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-15T02:28:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "275e5496_f2d9dfd3",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 37
+      },
+      "revId": "e6a09747abde4a371d98602fc624a2f290a1d5e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
