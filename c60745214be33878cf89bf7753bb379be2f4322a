@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aede467a_807eb71d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/title_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-16T21:50:46Z",
+      "side": 1,
+      "message": "This should use arc.BootTimeout + test timeout.",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "c60745214be33878cf89bf7753bb379be2f4322a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8954278d_3a8c6f34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/title_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-16T21:50:46Z",
+      "side": 1,
+      "message": "defer act.Stop()?",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "c60745214be33878cf89bf7753bb379be2f4322a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66467e9d_3c08ce6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/title_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-16T21:50:46Z",
+      "side": 1,
+      "message": "I would suggest using a type switch with the default case calling s.Fatal()\nhttps://tour.golang.org/methods/16",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "c60745214be33878cf89bf7753bb379be2f4322a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979c8271_06513e83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/title_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-16T21:50:46Z",
+      "side": 1,
+      "message": "s",
+      "range": {
+        "startLine": 108,
+        "startChar": 10,
+        "endLine": 108,
+        "endChar": 11
+      },
+      "revId": "c60745214be33878cf89bf7753bb379be2f4322a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
