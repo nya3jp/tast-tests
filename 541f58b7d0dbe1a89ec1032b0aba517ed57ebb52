@@ -34,6 +34,23 @@
       "parentUuid": "730600dd_db8bd3a8",
       "revId": "541f58b7d0dbe1a89ec1032b0aba517ed57ebb52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "170638b2_5b0d4319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-16T16:04:04Z",
+      "side": 1,
+      "message": "A lot of these failures are probably reboot flakes, but some aren\u0027t clear to me:\n\n* Failing to change ADB sideloading through the UI: rpc error: code \u003d Unknown desc \u003d context deadline exceeded; last error follows: no targets matched\n* Failing to set the Enable ADB Sideloading flag in Local State: rpc error: code \u003d Unavailable desc \u003d transport is closing\n\nand at least one looks potentially real:\n\n* Failing to change ADB sideloading through the UI: rpc error: code \u003d Unknown desc \u003d context deadline exceeded; last error follows: clicking on the Confirm/Cancel button failed: TypeError: Cannot read property \u0027getElementById\u0027 of null",
+      "revId": "541f58b7d0dbe1a89ec1032b0aba517ed57ebb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
