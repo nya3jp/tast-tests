@@ -34,6 +34,24 @@
       "parentUuid": "b1bb6d47_ff29f28f",
       "revId": "d8194751576e98bdd3b0862cd1ee68d5cc0d9faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd5cb83_781e32df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-16T03:46:07Z",
+      "side": 1,
+      "message": "Could you leave what you have stated to the code comment?",
+      "parentUuid": "ba94ea54_ba15efa1",
+      "revId": "d8194751576e98bdd3b0862cd1ee68d5cc0d9faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
