@@ -16,8 +16,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// OptinTimeout is the maximum amount of time that Optin is expected to take.
-const OptinTimeout = 5 * time.Minute
+const (
+	// OptinTimeout is the maximum amount of time that Optin is expected to take.
+	OptinTimeout = 5 * time.Minute
+
+	// PlayStoreCloseTimeout is the timeout value waiting for Play Store window to show up
+	// and then close it after optin.
+	PlayStoreCloseTimeout = 1 * time.Minute
+)
 
 // arcApp maps ArcAppDict definition
 // https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
@@ -88,6 +94,31 @@ func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) err
 	}
 
 	// TODO(niwa): Check if we still need to handle non-tos_needed case.
+	return nil
+}
+
+// PerformAndClose performs opt-in, and then close the play store window.
+func PerformAndClose(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
+	ctx, cancel := context.WithTimeout(ctx, OptinTimeout+PlayStoreCloseTimeout)
+	defer cancel()
+
+	if err := Perform(ctx, cr, tconn); err != nil {
+		return errors.Wrap(err, "failed to perform Play Store optin")
+	}
+	if err := WaitForPlayStoreShown(ctx, tconn); err != nil {
+		// When we get here, play store is probably not shown, or it failed to be detected.
+		// Just log the message and continue.
+		testing.ContextLogf(ctx, "Play store window is not detected: %v; continue to try to close it", err)
+	}
+
+	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+		// Log the message and continue.
+		testing.ContextLogf(ctx, "Failed to close Play Store window: %v; continue to check if it has been closed", err)
+	}
+
+	if err := ash.WaitForAppClosed(ctx, tconn, apps.PlayStore.ID); err != nil {
+		return errors.Wrap(err, "failed to wait for the Play Store to be closed")
+	}
 	return nil
 }
 
