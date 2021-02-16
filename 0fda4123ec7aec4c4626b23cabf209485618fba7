@@ -37,6 +37,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1cc5cb9a_048da63b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-16T23:31:22Z",
+      "side": 1,
+      "message": "shend@",
+      "range": {
+        "startLine": 24,
+        "startChar": 26,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "0fda4123ec7aec4c4626b23cabf209485618fba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c701c9f_7280cc30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-16T23:31:22Z",
+      "side": 1,
+      "message": "The rule to pick up tests is as below:\nChromiumOS CQ: \"group: mainline\" \u0026\u0026 !informational\nChromiumOS release: \"group: mainline\"\nAll E14s tests: \"group:input-tools\"\nE14s tests to run in Google3 (designed similiarly at CQ level): \"group:input-tools-upstream\"\n\nI will put these information in an E14s doc. For this case, I suppose you want to do []string{\"group:mainline\", \"informational\", \"group:input-tools\", \"group:input-tools-upstream\"},",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 42
+      },
+      "revId": "0fda4123ec7aec4c4626b23cabf209485618fba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77e5ae9e_531b306f",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
         "patchSetId": 1
@@ -53,6 +99,53 @@
         "startChar": 33,
         "endLine": 70,
         "endChar": 36
+      },
+      "revId": "0fda4123ec7aec4c4626b23cabf209485618fba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70fe3f4f_51440e97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-16T23:31:22Z",
+      "side": 1,
+      "message": "Is this one redundant. It already has one dump above.",
+      "parentUuid": "77e5ae9e_531b306f",
+      "range": {
+        "startLine": 70,
+        "startChar": 33,
+        "endLine": 70,
+        "endChar": 36
+      },
+      "revId": "0fda4123ec7aec4c4626b23cabf209485618fba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "609aad95_ae0d43dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-16T23:31:22Z",
+      "side": 1,
+      "message": "FYI: I am working with Tast core team to produce a new UI library named uiauto, which groups a set of test steps together to reduce code size, e.g. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/imesettings/imesettings.go?l\u003d52\n\nI will refactor inputs relavant code in a separate cl.",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 5
       },
       "revId": "0fda4123ec7aec4c4626b23cabf209485618fba7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
