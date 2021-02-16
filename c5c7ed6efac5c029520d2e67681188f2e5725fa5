@@ -16,6 +16,178 @@
       "message": "Thanks again, Pavol!",
       "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb739cc_2f7b22dc",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-02-16T02:23:37Z",
+      "side": 1,
+      "message": "nit: please use 4 space indentation for files under tast-tests/android",
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6954cf5_a4eabc3f",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-02-16T02:23:37Z",
+      "side": 1,
+      "message": "nit: final",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a17b4ea0_effff5b1",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-02-16T02:23:37Z",
+      "side": 1,
+      "message": "nit: can this be replaced with a lambda expression?\n\n    () -\u003e {",
+      "range": {
+        "startLine": 41,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574bde99_ce8b4b85",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-02-16T02:23:37Z",
+      "side": 1,
+      "message": "nit: Integer.toString(urlConnection.getResponseCode())",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 53
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a6857a_8663c9a4",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-02-16T02:23:37Z",
+      "side": 1,
+      "message": "We don\u0027t have to handle exception here because Future can handle them. If we want the exception name, ExecutionException.getCause() can be used.",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf05f83_4bf1c1f2",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-02-16T02:23:37Z",
+      "side": 1,
+      "message": "nit: can be replaced by lambda expression?\n\n\n    (View view) -\u003e {",
+      "range": {
+        "startLine": 70,
+        "startChar": 46,
+        "endLine": 72,
+        "endChar": 38
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4c210f6_32d5cfe2",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-02-16T02:23:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 83,
+        "startChar": 43,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdde8db0_7719b74d",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-02-16T02:23:37Z",
+      "side": 1,
+      "message": "qq: is the result used in Tast tests? If so, perhaps we should use different TextViews for response code \u0026 exception because it\u0027s more machine readable. Also see my comment about WaitForText in another CL.",
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
