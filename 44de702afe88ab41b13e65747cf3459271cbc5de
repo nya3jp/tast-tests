@@ -22,6 +22,30 @@
       },
       "revId": "44de702afe88ab41b13e65747cf3459271cbc5de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af87b16d_8b80c097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-16T20:00:12Z",
+      "side": 1,
+      "message": "Sure. I will do that. Thanks for sharing.",
+      "parentUuid": "74725c37_175d2f32",
+      "range": {
+        "startLine": 520,
+        "startChar": 5,
+        "endLine": 520,
+        "endChar": 31
+      },
+      "revId": "44de702afe88ab41b13e65747cf3459271cbc5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
