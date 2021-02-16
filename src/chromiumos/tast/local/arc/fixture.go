@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -86,12 +87,39 @@ type bootedFixture struct {
 	arc  *ARC
 	init *Snapshot
 
+	playStoreOptin bool // Opt into PlayStore.
+
 	fOpt chrome.OptionsCallback // Function to return chrome options.
 }
 
 // NewArcBootedFixture returns a FixtureImpl with a OptionsCallback function provided.
-func NewArcBootedFixture(fOpt chrome.OptionsCallback) testing.FixtureImpl {
-	return &bootedFixture{fOpt: fOpt}
+// ARCEnabled() will always be added to the Chrome options returned by OptionsCallback.
+func NewArcBootedFixture(fOpts chrome.OptionsCallback) testing.FixtureImpl {
+	return &bootedFixture{
+		fOpt: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			opts, err := fOpts(ctx, s)
+			if err != nil {
+				return nil, err
+			}
+			return append(opts, chrome.ARCEnabled()), nil
+		},
+	}
+}
+
+// NewArcBootedWithPlayStoreFixture returns a FixtureImpl with a OptionsCallback function
+// provided.
+// ARCSupported() will always be added to the Chrome options returned by OptionsCallback.
+func NewArcBootedWithPlayStoreFixture(fOpts chrome.OptionsCallback) testing.FixtureImpl {
+	return &bootedFixture{
+		playStoreOptin: true,
+		fOpt: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			opts, err := fOpts(ctx, s)
+			if err != nil {
+				return nil, err
+			}
+			return append(opts, chrome.ARCSupported()), nil
+		},
+	}
 }
 
 func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -111,6 +139,26 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 			cr.Close(ctx)
 		}
 	}()
+
+	if f.playStoreOptin {
+		s.Log("Performing Play Store Optin")
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect Test API: ", err)
+		}
+		provisioned, err := optin.IsArcProvisioned(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get ARC provisioned status")
+		}
+		if provisioned {
+			s.Log("ARC is already provisioned. Skipping the Play Store setup")
+		} else {
+			// Optin to Play Store and close the Play Store window.
+			if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
+				s.Fatal("Failed to optin to Play Store: ", err)
+			}
+		}
+	}
 
 	arc, err := New(ctx, s.OutDir())
 	if err != nil {
