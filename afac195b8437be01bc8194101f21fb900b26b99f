@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fd59e65_b59deb5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-16T23:44:40Z",
+      "side": 1,
+      "message": "Patchset 1 is the original commit, so you can see the changes by comparing to that.\n\n* Use `multivm.CrostiniFromPre` to extract Crostini data from the precondition.\n* Change the local name of the lifecycle unit to be less that 15 chars, so that `killall` can find it easily.\n* Reorder the killall command so it\u0027s not in the middle of the code that removed the lifecycle binary.",
+      "revId": "afac195b8437be01bc8194101f21fb900b26b99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
