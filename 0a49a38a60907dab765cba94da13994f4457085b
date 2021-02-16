@@ -50,6 +50,24 @@
       "message": "This looks like it\u0027s better to be defined in arc/optin package, not here.\n\nThat fixture can conduct the optin behavior only, and use \u0027Parent\u0027 to make the arc setup in prior.",
       "revId": "0a49a38a60907dab765cba94da13994f4457085b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef54cda_00852f00",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T23:36:25Z",
+      "side": 1,
+      "message": "Jun, thanks for the input of using \"Parent\" feature. But per my test, the play store opt-in logic has to be performed before arc.New() (when chrome.Supported() and GAIA login are enabled). If I define a new fixture with \"Parent\" assigned to \"arcBooted\", I think arcBooted will fail to do arc.New() because play store hasn\u0027t been opted in.\n\nBut I can move the whole implementation into the arc/optin package, with the chrome.New() and arc.New() logic copied. Do you think this approach is preferred?",
+      "parentUuid": "8d452b1f_5113238c",
+      "revId": "0a49a38a60907dab765cba94da13994f4457085b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
