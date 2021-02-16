@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6310c1c3_9b339bdf",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-16T03:11:21Z",
+      "side": 1,
+      "message": "It first presses Ctrl, then clicks the file, after that the icon of the file becomes a checkbox.",
+      "parentUuid": "3eaac5cf_78b8ebb7",
+      "range": {
+        "startLine": 310,
+        "startChar": 19,
+        "endLine": 310,
+        "endChar": 38
+      },
+      "revId": "e5b9d07364c66dfd4100d607e9a06a4cfc7664dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23910691_93bdb795",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d6d4cf_1b246671",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-16T03:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23910691_93bdb795",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 2
+      },
+      "revId": "e5b9d07364c66dfd4100d607e9a06a4cfc7664dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9073619_cf7a987e",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-15T23:54:50Z",
       "side": 1,
       "message": "Can you make this an action?",
+      "range": {
+        "startLine": 336,
+        "startChar": 128,
+        "endLine": 336,
+        "endChar": 133
+      },
+      "revId": "e5b9d07364c66dfd4100d607e9a06a4cfc7664dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "439ea98c_6cecb807",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-16T03:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9073619_cf7a987e",
       "range": {
         "startLine": 336,
         "startChar": 128,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "afa25bb5_aaaf444d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-16T03:11:21Z",
+      "side": 1,
+      "message": "We have switched between passing one and creating one a few times. Passing one saves sometime but it fails to work occasionally. Creating one locally might take a long time but usually works.",
+      "parentUuid": "0584b5dd_d4d3ef44",
+      "range": {
+        "startLine": 341,
+        "startChar": 55,
+        "endLine": 341,
+        "endChar": 57
+      },
+      "revId": "e5b9d07364c66dfd4100d607e9a06a4cfc7664dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a4c3898_422d0da3",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
         "patchSetId": 2
@@ -106,6 +202,30 @@
       "writtenOn": "2021-02-15T23:54:50Z",
       "side": 1,
       "message": "do we really need this?",
+      "range": {
+        "startLine": 346,
+        "startChar": 14,
+        "endLine": 346,
+        "endChar": 44
+      },
+      "revId": "e5b9d07364c66dfd4100d607e9a06a4cfc7664dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5efafdd5_5b0deffb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-16T03:11:21Z",
+      "side": 1,
+      "message": "I\u0027m not sure actually. It is possible that something happens on the Files app after selecting the file which might cause the failure of the following drag.",
+      "parentUuid": "1a4c3898_422d0da3",
       "range": {
         "startLine": 346,
         "startChar": 14,
