@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a515e754_6df82b1b",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-16T08:19:12Z",
+      "side": 1,
+      "message": "I see. But when I tried locally I realized that only `wait4` is supported by go (both \"syscall\" and \"golang.org/x/sys/unix\") and WNOWAIT requires the `waitid` syscall. We need something like [1] but it\u0027s unsafe code.\n\nIf we really want this I guess testexec.CommandContext is a better place for implementing.\n\n[1] https://go.googlesource.com/go/+/go1.15.8/src/os/wait_waitid.go#32",
+      "parentUuid": "1a1dbbdb_6461e9f5",
+      "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "430e5ad1_943110f3",
         "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
         "patchSetId": 2
