@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba7b711_a4dd950a",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-16T01:35:24Z",
+      "side": 1,
+      "message": "I guess we can do this in one statement:\n\n return []chrome.Option{\n   chrome.ARCEnabled(),\n   chrome.ExtraArgs(DisableSyncFlags()...),\n }, nil",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "da6028259b15578fc56003b8e0237dc04de56acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
