@@ -22,6 +22,30 @@
       },
       "revId": "671565b0c6dab87dca06f8e6d864e243b95e6da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a83ce4a_49ece138",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-16T11:40:26Z",
+      "side": 1,
+      "message": "We are already performing 2., but it is flaky since reset sometimes fails in the Chrome Cq.\n\n1. Might be a good way forward, but we will introduce a large number of tests in tastboard since each policy test has at least 3 params. Only the params will be different, no other test metadata will differ. Is that acceptable?",
+      "parentUuid": "cc4c5c6c_2cc877fc",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "671565b0c6dab87dca06f8e6d864e243b95e6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
