@@ -22,6 +22,30 @@
       },
       "revId": "4f8a791d799e08a2f9fcd29af7e01f9efde754de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff7a080_3816243f",
+        "filename": "src/chromiumos/tast/local/bluetooth/logging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-16T22:03:56Z",
+      "side": 1,
+      "message": "I\u0027ll just go with this for now haha",
+      "parentUuid": "7d790a45_665930cc",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "revId": "4f8a791d799e08a2f9fcd29af7e01f9efde754de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
