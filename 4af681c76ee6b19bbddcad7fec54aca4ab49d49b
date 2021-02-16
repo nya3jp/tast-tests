@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6510edf5_110ff19b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-16T13:34:24Z",
+      "side": 1,
+      "message": "Thanks a lot for the quick review and for the great feedback!\n\nI\u0027ve update the CL, PTAL!",
+      "revId": "4af681c76ee6b19bbddcad7fec54aca4ab49d49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

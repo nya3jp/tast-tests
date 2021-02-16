@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3f96b40_e7eb141a",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-16T13:34:24Z",
+      "side": 1,
+      "message": "Thanks for pointing this out!",
+      "parentUuid": "bfb739cc_2f7b22dc",
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6954cf5_a4eabc3f",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-16T02:23:37Z",
       "side": 1,
       "message": "nit: final",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3462be74_7c35733f",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-16T13:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6954cf5_a4eabc3f",
       "range": {
         "startLine": 34,
         "startChar": 2,
@@ -105,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22597eef_7294741a",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-16T13:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e543e52_ab5102b8",
+      "range": {
+        "startLine": 41,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "574bde99_ce8b4b85",
@@ -118,6 +184,30 @@
       "writtenOn": "2021-02-16T02:23:37Z",
       "side": 1,
       "message": "nit: Integer.toString(urlConnection.getResponseCode())",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 53
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "009d6863_6ca42548",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-16T13:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "574bde99_ce8b4b85",
       "range": {
         "startLine": 51,
         "startChar": 17,
@@ -151,6 +241,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4efa660e_a9271c73",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-16T13:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1a6857a_8663c9a4",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcf05f83_4bf1c1f2",
@@ -164,6 +278,30 @@
       "writtenOn": "2021-02-16T02:23:37Z",
       "side": 1,
       "message": "nit: can be replaced by lambda expression?\n\n\n    (View view) -\u003e {",
+      "range": {
+        "startLine": 70,
+        "startChar": 46,
+        "endLine": 72,
+        "endChar": 38
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28d2c5b7_9a0ebf40",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-16T13:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcf05f83_4bf1c1f2",
       "range": {
         "startLine": 70,
         "startChar": 46,
@@ -197,6 +335,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de86fb2_b22b5bb6",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-16T13:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4c210f6_32d5cfe2",
+      "range": {
+        "startLine": 83,
+        "startChar": 43,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdde8db0_7719b74d",
@@ -210,6 +372,24 @@
       "writtenOn": "2021-02-16T02:23:37Z",
       "side": 1,
       "message": "qq: is the result used in Tast tests? If so, perhaps we should use different TextViews for response code \u0026 exception because it\u0027s more machine readable. Also see my comment about WaitForText in another CL.",
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65a8d66_5bd98cab",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-16T13:34:24Z",
+      "side": 1,
+      "message": "Done.\n\nYes, the result is used in tests.\n\nThanks for pointing we need `WaitForText`!\n\nFYI my reasoning for adding HTTP response code+errors msg on the same text view is that in case of failed proxy authentication, there\u0027s an exception thrown instead of just returning an HTTP 407 code.\n\nBut you\u0027re making a good point so I added a separate view.",
+      "parentUuid": "cdde8db0_7719b74d",
       "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
