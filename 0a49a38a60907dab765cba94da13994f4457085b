@@ -16,6 +16,23 @@
       "message": "Hi Shuhei and Jun,\n\nFollowing the merge of this CL (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2666200), I feel we should extend the current \"arcBooted\" fixture by allowing Play Store opt-in. Currently a fixture called \"loggedInToCUJUser\" is implemented under cros/ui/cuj/fixture.go. It starts Chrome, does PlayStore opt-in, and then do arc.New(). This fixture is needed by tests requiring Android App installation from play store. When I create a new category \"benchmark\", the benchmark cases also need it. So I created this CL to move the implementation to local/arc package.",
       "revId": "0a49a38a60907dab765cba94da13994f4457085b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba7edd59_8a16c07c",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T05:25:05Z",
+      "side": 1,
+      "message": "Hi Shuhei, I have a confusion here. Any reason we always use literal string as fixture name, instead of defining a constant? With a constant, users don\u0027t have to worry about misspelling the name, and the name literal string can be changed globally.",
+      "revId": "0a49a38a60907dab765cba94da13994f4457085b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
