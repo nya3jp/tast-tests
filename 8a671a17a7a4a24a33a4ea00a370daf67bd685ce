@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "436e13e7_3b3e439d",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-16T08:25:24Z",
+      "side": 1,
+      "message": "Alternatively, I guess we can ignore the race since `os/exec.Process.Signal` already guards against simultaneous `Wait`s [1]. We don\u0027t really care when Kill fails.\n\n[1] https://go.googlesource.com/go/+/go1.15.8/src/os/exec_unix.go#73",
+      "parentUuid": "a515e754_6df82b1b",
+      "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "430e5ad1_943110f3",
         "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
         "patchSetId": 2
