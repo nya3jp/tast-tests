@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d17a3b9c_7e463063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/registration_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-02-16T12:34:35Z",
+      "side": 0,
+      "message": "I forgot updating here.",
+      "revId": "82c5f9790954cf5ec4b74233edfb5bedf35a36b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
