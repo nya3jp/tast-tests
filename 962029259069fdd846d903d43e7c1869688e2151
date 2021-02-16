@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27881819_42d7687e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-16T04:44:29Z",
+      "side": 1,
+      "message": "-Roka. Feel free to add me again when needed.",
+      "revId": "962029259069fdd846d903d43e7c1869688e2151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "6e285135_c7540074",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
@@ -20,8 +38,7 @@
         "endChar": 83
       },
       "revId": "962029259069fdd846d903d43e7c1869688e2151",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
