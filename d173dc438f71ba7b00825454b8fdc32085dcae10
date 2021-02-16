@@ -16,6 +16,29 @@
       "message": "PTAL.",
       "revId": "d173dc438f71ba7b00825454b8fdc32085dcae10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee01183_74ec0cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-02-16T20:50:11Z",
+      "side": 1,
+      "message": "Can we add owner checks then? root and chronos? While it\u0027s not ideal to have the race and having to list two users, it\u0027s better than not checking any users at all.",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 40
+      },
+      "revId": "d173dc438f71ba7b00825454b8fdc32085dcae10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
