@@ -50,7 +50,7 @@ var advancedSubHeadings = []ui.FindParams{
 	},
 	{
 		Role: ui.RoleTypeHeading,
-		Name: "Printing",
+		Name: "Print and scan",
 	},
 	{
 		Role: ui.RoleTypeHeading,
