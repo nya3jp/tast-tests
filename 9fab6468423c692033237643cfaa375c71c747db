@@ -52,6 +52,24 @@
       "parentUuid": "0768ce76_897cedf9",
       "revId": "9fab6468423c692033237643cfaa375c71c747db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "071a2e14_f7012bfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T05:10:35Z",
+      "side": 1,
+      "message": "Jun, as discussed in our sync-up meeting, we will continue to use the geekbench public version in this test but will (1) remove it from crosbolt run, (2) use hardware dependencies to limit the DUT models.",
+      "parentUuid": "eb23308d_57b5c728",
+      "revId": "9fab6468423c692033237643cfaa375c71c747db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

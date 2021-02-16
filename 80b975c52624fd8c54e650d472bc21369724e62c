@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4fc5396_4fa7be76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T05:10:35Z",
+      "side": 1,
+      "message": "I reverted the change. But I will discuss with Shuhei if we should define a constant variable for fixture name instead of copying the string here and there. This will prevent incorrect fixture name at compiling time, and also easy to do global changes...",
+      "parentUuid": "fb1cf753_be2c3333",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0fc43fb_f8716ce7",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-10T01:49:40Z",
       "side": 1,
       "message": "What is TCPBS?  What\u0027s 1?",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17804fab_6888fd6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T05:10:35Z",
+      "side": 1,
+      "message": "As we aligned, the benchmark cases were moved under \"benchmark\" category and this case is named benchmark.Geekbench5AndroidApp.",
+      "parentUuid": "b0fc43fb_f8716ce7",
       "range": {
         "startLine": 34,
         "startChar": 16,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47061ce5_cec9496e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T05:10:35Z",
+      "side": 1,
+      "message": "As we aligned, we will continue to make a device white list here in case the test is run accidentally on any other new models.",
+      "parentUuid": "2545ecd7_e01de4dd",
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dd11ab5_92fbc942",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-02-10T01:49:40Z",
       "side": 1,
       "message": "couldn\u0027t we get the pkg file for us?",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f48646_281aff13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T05:10:35Z",
+      "side": 1,
+      "message": "As we aligned with Aings, we will continue to use the public version from Play store.",
+      "parentUuid": "1dd11ab5_92fbc942",
       "range": {
         "startLine": 65,
         "startChar": 21,
@@ -121,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3324dc07_1d21c86f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T05:10:35Z",
+      "side": 1,
+      "message": "Thanks for pointing out the sleep issue. We re-considered this and removed unnecessary sleep.",
+      "parentUuid": "b489aa4c_999d2ce0",
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "949bda7d_fa3761a9",
@@ -138,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22904274_d6928b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T05:10:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "949bda7d_fa3761a9",
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbe74b56_7d9e961c",
@@ -151,6 +277,30 @@
       "writtenOn": "2021-02-10T01:49:40Z",
       "side": 1,
       "message": "Looks like, this test uploads the benchmark results to geekbench and then check the result webpage to download the score.  I believe this is unacceptable.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "405a60b8_c08c31ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T05:10:35Z",
+      "side": 1,
+      "message": "As we discussed, we will run the public version on the given models only.",
+      "parentUuid": "cbe74b56_7d9e961c",
       "range": {
         "startLine": 119,
         "startChar": 0,
