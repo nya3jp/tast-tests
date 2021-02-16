@@ -16,6 +16,23 @@
       "message": "kansho@, could you review this?\nAlso, please let me know if this doesn\u0027t work well with your rtcpu work.",
       "revId": "e7c3dc387321578c53ea1aafb6dac063cd3a9ebe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c8a0f61_7c961d81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2021-02-16T12:28:07Z",
+      "side": 1,
+      "message": "Actually, it will work with the current rt-vcpu implementation because --cpus \u003d\u003d the number of the guest vcpu \u003d\u003d the number of host cpus at the moment. Our current plan is to add a rt-vcpu and to reduce non rt-vcpu by 1.\n\nHowever, we may choose overcommitment for 2 core board like akemi. In this case, it\u0027s not enough to check the guest and the host cpu num.\nIs it difficult to check --cpus passed to crosvm and the guest vcpu num, which is originally mentioned by yusukes@?",
+      "revId": "e7c3dc387321578c53ea1aafb6dac063cd3a9ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
