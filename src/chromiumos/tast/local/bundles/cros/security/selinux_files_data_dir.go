@@ -35,7 +35,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Attr:    []string{"group:mainline", "informational"},
+		Attr:    []string{"group:mainline"},
 		Timeout: 5 * time.Minute,
 	})
 }
