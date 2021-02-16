@@ -16,6 +16,74 @@
       "message": "PTALA",
       "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a1dbbdb_6461e9f5",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-16T06:09:27Z",
+      "side": 1,
+      "message": "the race issue is still remained.\nthere\u0027s a timing that cmd.Wait() is called (so that the terminated subprocess is collected),\nbut exited is not yet called.\nThen, Kill at L87 will be called targeting a proacess which no longer exists.\n\nThe correct way will be using raw waitpid syscall with WEXITED | WNOWAIT.\nThen, exited will be signaled without collecting process.\nOn the main thread, it again needs to call cmd.Wait() to collect the subprocess, after Kill.",
+      "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "430e5ad1_943110f3",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-16T06:09:27Z",
+      "side": 1,
+      "message": "with waitpid, this can be removed, because it is ensured that the child process is not yet corrected here, so signal SIGTERM should be ok always.",
+      "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e4e951_67fabfa5",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-16T06:09:27Z",
+      "side": 1,
+      "message": "start a goroutine waiting exited followed by cmd.Wait() here (maybe with logging), so that the process may be collected later.",
+      "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae5fc37_9ee350bd",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-16T06:09:27Z",
+      "side": 1,
+      "message": "and then Wait() here.",
+      "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
