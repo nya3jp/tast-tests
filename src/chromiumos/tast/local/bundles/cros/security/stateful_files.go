@@ -56,6 +56,9 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Path("encrypted/var/cache/display_profiles"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
 		chk.NewPattern(chk.Path("encrypted/var/cache/edb"), chk.Users("root"), chk.Groups("portage"), chk.Mode(0755), chk.SkipChildren()),
 		chk.NewPattern(chk.Tree("encrypted/var/cache/echo"), chk.Users("root"), chk.NotMode(022)),
+		// Temporary directory to create external_cache. Most of time, it's owned by root, but switched to chronos just before its renaming.
+		// See also crx-import.sh for details.
+		chk.NewPattern(chk.Path("encrypted/var/cache/external_cache.tmp"), chk.Users("chronos", "root"), chk.Groups("chronos", "root"), chk.Mode(0700), chk.SkipChildren()),
 		chk.NewPattern(chk.Path("encrypted/var/cache/external_cache"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
 		chk.NewPattern(chk.Tree("encrypted/var/cache/ldconfig"), chk.Users("root"), chk.Groups("root"), chk.NotMode(077)),
 		chk.NewPattern(chk.Tree("encrypted/var/cache/modemfwd"), chk.Users("modem"), chk.Groups("modem"), chk.NotMode(022)),
