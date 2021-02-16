@@ -52,6 +52,24 @@
       "parentUuid": "17a0e6f9_7c0269af",
       "revId": "730d83346816f15a2b891a05d011a01f2b676715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67181f36_f5477152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-16T04:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "487a680f_65398967",
+      "revId": "730d83346816f15a2b891a05d011a01f2b676715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
