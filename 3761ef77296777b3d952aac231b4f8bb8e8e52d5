@@ -16,6 +16,29 @@
       "message": "rebase",
       "revId": "3761ef77296777b3d952aac231b4f8bb8e8e52d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3187cb4f_6de66e5e",
+        "filename": "src/chromiumos/tast/local/bluetooth/logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-16T19:29:24Z",
+      "side": 1,
+      "message": "One, these should probably be bools?\nTwo, this api is hard to read when you call the function, can we pass a struct instead.",
+      "range": {
+        "startLine": 18,
+        "startChar": 44,
+        "endLine": 18,
+        "endChar": 119
+      },
+      "revId": "3761ef77296777b3d952aac231b4f8bb8e8e52d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
