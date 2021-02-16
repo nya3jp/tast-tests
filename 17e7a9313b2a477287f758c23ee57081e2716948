@@ -157,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "706ce92e_1d7d5074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-16T17:27:45Z",
+      "side": 1,
+      "message": "LGTM. Thank you for explanation. Remember that part from the doc as well.",
+      "parentUuid": "0d7fe143_b779c4cf",
+      "revId": "17e7a9313b2a477287f758c23ee57081e2716948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a2fcbab_76c93af2",
