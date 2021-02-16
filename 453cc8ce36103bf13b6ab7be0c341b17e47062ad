@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb55e8e8_2b4856fe",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-16T01:26:48Z",
+      "side": 0,
+      "message": "Yes, Close here may return an error, and that is why a returned error is ignored here (maybe I should have added a comment, sorry for confusing you).\n\nWe still MUST call Close to release resources associated to sess, such as open socket file descriptors. Releasing file descriptors is always needed, even if a remote end (in this case Chrome) has initiated close of a network connection.",
+      "parentUuid": "fced0281_4564db62",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 18
+      },
+      "revId": "453cc8ce36103bf13b6ab7be0c341b17e47062ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbbff1d1_2318566f",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 7
