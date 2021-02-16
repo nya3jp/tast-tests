@@ -16,6 +16,132 @@
       "message": "The public benchmark cases were moved under \"benchmark\" category. Also added new fixture for benchmark tests.",
       "revId": "fefc717eaf33d04e5e8c7565046d122121790a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7367c353_7d88023c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-16T22:15:33Z",
+      "side": 1,
+      "message": "In the previous cycle I\u0027ve forgotten to add nya@ to the CL.\nnya, you\u0027re cc-ed because:\n* how to define the hwdep for the benchmarks\n* fixture name as constant\n\nthanks!",
+      "revId": "fefc717eaf33d04e5e8c7565046d122121790a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07cdf9e_3dd3e491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/doc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-16T22:15:33Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to clarify what type of benchmark.  I guess something like \"exercise external benchmark software on the DUT\" makes more sense.",
+      "range": {
+        "startLine": 5,
+        "startChar": 61,
+        "endLine": 5,
+        "endChar": 78
+      },
+      "revId": "fefc717eaf33d04e5e8c7565046d122121790a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4377aad_a1ffd434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench5_android_app.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-16T22:15:33Z",
+      "side": 1,
+      "message": "I chatted with nya@ and we came up with an idea of creating a special hwdep for those benchmarks, say \"hwdep.PublicBenchmarkAllowed\".  Its implementation would be simply the checking of models, but by using that, you can customize the error message, and can say why those models are allowed (and no other models are allowed).",
+      "revId": "fefc717eaf33d04e5e8c7565046d122121790a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "021246da_6b297be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench5_android_app.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-16T22:15:33Z",
+      "side": 1,
+      "message": "Please use \"a\", I think that\u0027s more common name for an instance of ARC.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 3
+      },
+      "revId": "fefc717eaf33d04e5e8c7565046d122121790a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51ad5df_b592d16d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench5_android_app.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-16T22:15:33Z",
+      "side": 1,
+      "message": "Please use NewActivity to directly launch the application.\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git@v0.0.0-20210216212315-e5b37a398054/src/chromiumos/tast/local/arc#NewActivity",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 24
+      },
+      "revId": "fefc717eaf33d04e5e8c7565046d122121790a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35257c89_1a832a0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/setup/fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-16T22:15:33Z",
+      "side": 1,
+      "message": "please wait for https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2696487 to be merged, and use chrome.GAIALoginTimeout.",
+      "range": {
+        "startLine": 50,
+        "startChar": 26,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "fefc717eaf33d04e5e8c7565046d122121790a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
