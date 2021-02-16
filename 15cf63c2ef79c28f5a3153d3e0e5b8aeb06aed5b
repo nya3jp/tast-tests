@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "810bf780_59a963ae",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-16T01:36:35Z",
+      "side": 1,
+      "message": "nit\u0026optional: chrome.ExtraArgs takes multiple arguments, thus we can write this as:\n\n chrome.ExtraArgs(\"--force-tablet-mode\u003dtouch_view\", \"--enable-virtual-keyboard\")",
+      "range": {
+        "startLine": 54,
+        "startChar": 47,
+        "endLine": 54,
+        "endChar": 139
+      },
+      "revId": "15cf63c2ef79c28f5a3153d3e0e5b8aeb06aed5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
