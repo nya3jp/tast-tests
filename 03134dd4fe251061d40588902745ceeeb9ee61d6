@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2746a7e_465b86e4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T04:48:45Z",
+      "side": 1,
+      "message": "Comments modified/added. I also moved the function definition further down after ResetState().",
+      "parentUuid": "742b5d57_2ea39d58",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 58
+      },
+      "revId": "03134dd4fe251061d40588902745ceeeb9ee61d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff8a861c_bad58bde",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73977eb_a4d17078",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T04:48:45Z",
+      "side": 1,
+      "message": "Sure. Now I understand how the different connections are managed by the internal session. :-)",
+      "parentUuid": "ff8a861c_bad58bde",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 24
+      },
+      "revId": "03134dd4fe251061d40588902745ceeeb9ee61d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4a07c5b_de03baf3",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-02-15T09:47:28Z",
       "side": 1,
       "message": "c.sess is always non-nil, so you can drop this conditional.",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 19
+      },
+      "revId": "03134dd4fe251061d40588902745ceeeb9ee61d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cc799d8_a69cd3b3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T04:48:45Z",
+      "side": 1,
+      "message": "I got your comments for previous CLs not checking nil, too. I‘m pessimistic for using pointers. :-(",
+      "parentUuid": "f4a07c5b_de03baf3",
       "range": {
         "startLine": 262,
         "startChar": 1,
