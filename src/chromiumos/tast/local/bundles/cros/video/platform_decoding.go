@@ -25,25 +25,36 @@ type failExpectedFn func(output []byte) bool
 type platformDecodingParams struct {
 	filename     string
 	failExpected failExpectedFn
+	decoder      string // command line decoder binary
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: PlatformDecoding,
-		Desc: "Smoke tests libva decoding by running the media/gpu/vaapi/test:decode_test binary",
+		Desc: "Smoke tests for vaapi libva decoding by running the media/gpu/vaapi/test:decode_test binary, for v4l2 decoding by running the drm-tests/v4l2_decode binary",
 		Contacts: []string{
 			"jchinlee@chromium.org",
+			"stevecho@chromium.org",
 			"chromeos-gfx-video@google.com",
 		},
-		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-		SoftwareDeps: []string{"vaapi"},
+		Attr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Params: []testing.Param{{
 			Name: "vp9",
 			Val: platformDecodingParams{
 				filename:     "resolution_change_500frames.vp9.ivf",
 				failExpected: nil,
+				decoder:      filepath.Join(chrome.BinTestDir, "decode_test"),
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraSoftwareDeps: []string{"vaapi", caps.HWDecodeVP9},
+			ExtraData:         []string{"resolution_change_500frames.vp9.ivf", "resolution_change_500frames.vp9.ivf.json"},
+		}, {
+			Name: "v4l2_vp9",
+			Val: platformDecodingParams{
+				filename:     "resolution_change_500frames.vp9.ivf",
+				failExpected: nil,
+				decoder:      "v4l2_stateful_decoder",
+			},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWDecodeVP9},
 			ExtraData:         []string{"resolution_change_500frames.vp9.ivf", "resolution_change_500frames.vp9.ivf.json"},
 		}, {
 			// Attempt to decode an unsupported codec to ensure that the binary is not
@@ -54,8 +65,10 @@ func init() {
 				failExpected: func(output []byte) bool {
 					return strings.Contains(string(output), "Codec VP80 not supported.")
 				},
+				decoder: filepath.Join(chrome.BinTestDir, "decode_test"),
 			},
-			ExtraData: []string{"resolution_change_500frames.vp8.ivf", "resolution_change_500frames.vp8.ivf.json"},
+			ExtraSoftwareDeps: []string{"vaapi"},
+			ExtraData:         []string{"resolution_change_500frames.vp8.ivf", "resolution_change_500frames.vp8.ivf.json"},
 		}},
 	})
 }
@@ -93,11 +106,11 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	// fails if the VAAPI calls themselves error, the binary is called on
 	// unsupported inputs or could not open the DRI render node, or the binary
 	// otherwise crashes.
-	const exec = "decode_test"
+	exec := testOpt.decoder
 	testing.ContextLog(ctx, "Running ", exec)
 	output, err := testexec.CommandContext(
 		ctx,
-		filepath.Join(chrome.BinTestDir, exec),
+		exec,
 		"--video="+s.DataPath(testOpt.filename),
 	).CombinedOutput(testexec.DumpLogOnError)
 
