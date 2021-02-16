@@ -22,6 +22,30 @@
       },
       "revId": "da6028259b15578fc56003b8e0237dc04de56acd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a684f9a2_206af80d",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-02-16T03:51:03Z",
+      "side": 1,
+      "message": "Thanks! I had forgotten that Go allows unpacking of lists.",
+      "parentUuid": "dba7b711_a4dd950a",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "da6028259b15578fc56003b8e0237dc04de56acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
