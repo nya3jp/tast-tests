@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82551dad_60498a05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-02-16T01:02:37Z",
+      "side": 1,
+      "message": "Is it? Shill only set service as connected after all the Connection set up has returned. And I believe all those rtnetlink setup are synchronized calls so a Connected state should guarantee that everything already setup.\n\nI feel we might need a feedback channel in shill-patchpanel interaction to make sure that service is set as connected only after everything is ready. Maybe have patchpanel create a file in /var and shill monitoring that?",
+      "parentUuid": "a93d0b39_80388368",
+      "range": {
+        "startLine": 170,
+        "startChar": 4,
+        "endLine": 170,
+        "endChar": 72
+      },
+      "revId": "ef817c8e6ae8162dc7342c70f2a21745a68b2b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75136131_82dcd6fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 1
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "\u003e 2) Don\u0027t want to bind the test to the specific implementation;\n\nI would be very much against checking the existing of specific iptables for this reason. We ve had to deal in the past with a lot of spurious autotest errors when we started changing some of the old assumptions on IP assignements and iptables setup for ARC 2 years ago.\n\nFor now I would just go with your timeout. If there is still some flakiness, we can do a retry loop but it need to be done such that it would generate a new conntrack entry. I am not exactly sure how conntrack tracks icmp packets, but I think doing a new attempt with a new process should be enough.",
       "parentUuid": "75136131_82dcd6fd",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 41
+      },
+      "revId": "ef817c8e6ae8162dc7342c70f2a21745a68b2b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "352f5da8_714c1775",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-02-16T01:02:37Z",
+      "side": 1,
+      "message": "\u003e how conntrack tracks icmp packets\nTook a look at this and it looks like each icmp echo request-reply roundtrip is considered a new session. This actually changes our assumed reason for this bug - it\u0027s not that the later pings get wrongly enforced to the old interface, but maybe just now the new connection setting needs more time to converge since it involves shill-patchpanel interaction.",
+      "parentUuid": "f6bf0af2_0bc79342",
       "range": {
         "startLine": 172,
         "startChar": 1,
