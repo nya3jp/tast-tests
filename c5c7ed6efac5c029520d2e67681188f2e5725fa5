@@ -83,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e543e52_ab5102b8",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-02-16T04:04:51Z",
+      "side": 1,
+      "message": "Sorry perhaps we can\u0027t because it\u0027s Callable, not Runnable. In that case, please add @Override to call().",
+      "parentUuid": "a17b4ea0_effff5b1",
+      "range": {
+        "startLine": 41,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "c5c7ed6efac5c029520d2e67681188f2e5725fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "574bde99_ce8b4b85",
         "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
         "patchSetId": 3
