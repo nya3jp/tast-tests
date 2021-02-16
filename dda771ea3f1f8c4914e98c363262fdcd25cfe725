@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44355a5_2927102c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-16T09:16:34Z",
+      "side": 1,
+      "message": "The fix was made about a week ago.\nWe didn\u0027t see it since then, but it was flakiness issue.\nSo, following the guideline, how about waiting for several more days to make sure it became stable?",
+      "revId": "dda771ea3f1f8c4914e98c363262fdcd25cfe725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
