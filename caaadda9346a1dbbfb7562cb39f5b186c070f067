@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eda9fe3_1b2d07a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-16T16:37:10Z",
+      "side": 1,
+      "message": "PTAL.\n\nI could have reproduced last time,\nbut as of today + latest image, I couldn\u0027t even with the patch.\nConsidering the flakiness failures, to be safer, let me give it a try to reland\nthe last CL excluding login/guest.go (pls see diff PS1 and PS2), which looked like the cause of the flakiness.\nI\u0027ll send another CL for login/guest.go with possible fix (though it\u0027s hard to verify...).",
+      "revId": "caaadda9346a1dbbfb7562cb39f5b186c070f067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
