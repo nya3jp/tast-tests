@@ -50,6 +50,23 @@
       "message": "kathrelkeld@, gentle ping for review.",
       "revId": "aa291a95dd47db27e4d3be432d7f8d0d410786dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6baef02f_1351baa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-16T02:14:40Z",
+      "side": 1,
+      "message": "LGTM instead of Katherine. Sorry for delay!\n",
+      "revId": "aa291a95dd47db27e4d3be432d7f8d0d410786dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
