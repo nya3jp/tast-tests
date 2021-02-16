@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/adb"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
@@ -504,4 +505,28 @@ func (a *ARC) WaitForPackages(ctx context.Context, packages []string) error {
 		}
 		return nil
 	}, &testing.PollOptions{Interval: time.Second})
+}
+
+// State holds the ARC state returned from autotestPrivate.getArcState() call.
+//
+// Refer to https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/autotest_private.idl
+// for the mapping of the fields to JavaScript.
+type State struct {
+	// Provisioned indicates whether the ARC is provisioned.
+	Provisioned bool `json:"provisioned"`
+	// TOSNeeded indicates whether ARC Terms of Service needs to be shown.
+	TOSNeeded bool `json:"tosNeeded"`
+	// PreStartTime is ARC pre-start time (mini-ARC) or 0 if not pre-started.
+	PreStartTime float64 `json:"preStartTime"`
+	// StartTime is the ARC start time or 0 if not started.
+	StartTime float64 `json:"startTime"`
+}
+
+// GetState gets the arc state. It is a wrapper for chrome.autotestPrivate.getArcState.
+func GetState(ctx context.Context, tconn *chrome.TestConn) (State, error) {
+	var state State
+	if err := tconn.Call(ctx, &state, `tast.promisify(chrome.autotestPrivate.getArcState)`); err != nil {
+		return state, errors.Wrap(err, "failed to run autotestPrivate.getArcState")
+	}
+	return state, nil
 }
