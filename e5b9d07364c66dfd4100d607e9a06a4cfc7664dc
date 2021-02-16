@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79765043_f4b04689",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-16T03:14:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "afa25bb5_aaaf444d",
+      "range": {
+        "startLine": 341,
+        "startChar": 55,
+        "endLine": 341,
+        "endChar": 57
+      },
+      "revId": "e5b9d07364c66dfd4100d607e9a06a4cfc7664dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a4c3898_422d0da3",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "I\u0027m not sure actually. It is possible that something happens on the Files app after selecting the file which might cause the failure of the following drag.",
       "parentUuid": "1a4c3898_422d0da3",
+      "range": {
+        "startLine": 346,
+        "startChar": 14,
+        "endLine": 346,
+        "endChar": 44
+      },
+      "revId": "e5b9d07364c66dfd4100d607e9a06a4cfc7664dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e2fc3a9_c8ba9902",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-16T03:14:48Z",
+      "side": 1,
+      "message": "can we try and remove it (and the other one) and reintroduce if necessary?  It is not good that we keep using this function to mean \"sleep for 2 seconds\".",
+      "parentUuid": "5efafdd5_5b0deffb",
       "range": {
         "startLine": 346,
         "startChar": 14,
