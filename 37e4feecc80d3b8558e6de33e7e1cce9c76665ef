@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f8947f_510c854a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-16T04:42:55Z",
+      "side": 1,
+      "message": "-Roka. Feel free to add again when needed.",
+      "revId": "37e4feecc80d3b8558e6de33e7e1cce9c76665ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "a95bd965_53016dad",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
@@ -20,8 +38,7 @@
         "endChar": 47
       },
       "revId": "37e4feecc80d3b8558e6de33e7e1cce9c76665ef",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
