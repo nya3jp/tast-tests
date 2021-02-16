@@ -33,6 +33,24 @@
       "message": "It does not properly wait for the network request to complete, because it just verifies the existence of the result field. How about using WaitForText?",
       "revId": "b66afe405dcc68068187d769a8a872d1d13b9ae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46efe0a5_3ad33338",
+        "filename": "src/chromiumos/tast/local/network/ui_utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-16T13:39:54Z",
+      "side": 1,
+      "message": "You\u0027re right, thank you!",
+      "parentUuid": "d1f9ca36_9b1ba054",
+      "revId": "b66afe405dcc68068187d769a8a872d1d13b9ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
