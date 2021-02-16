@@ -16,6 +16,24 @@
       "message": "What\u0027s different between this and the original change?",
       "revId": "03e0166d3c362af0bdc9d46708340f0d8d01b54b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5b9a10b_ac84c4c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-16T23:40:27Z",
+      "side": 1,
+      "message": "Patchset 1 is the original version, so you can see by just comparing 1 to the most recent.\n\nI moved the \":multivm.Lifecycle.crostini\" dep in BUILD.gn to inside the conditional that turns it off for asan or ubsan builds.\n\nI needed to link statically so that the same binary runs inside Crostini without linker issues, but asan doesn\u0027t like that, (since it needs to interpose malloc etc.?)",
+      "parentUuid": "a76f7ba3_1b18c3c2",
+      "revId": "03e0166d3c362af0bdc9d46708340f0d8d01b54b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
