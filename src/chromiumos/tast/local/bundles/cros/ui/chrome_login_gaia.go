@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -30,6 +31,7 @@ func init() {
 			"ui.ChromeLoginGAIA.user",
 			"ui.ChromeLoginGAIA.password",
 		},
+		Timeout: chrome.GAIALoginTimeout + time.Minute,
 	})
 }
 

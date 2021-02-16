@@ -325,7 +325,7 @@ var startedByDlcBusterPre = &preImpl{
 
 var startedByComponentStretchGaiaPre = &preImpl{
 	name:          "crostini_started_by_component_stretch_gaia",
-	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
 	vmMode:        component,
 	container:     normal,
 	debianVersion: vm.DebianStretch,
@@ -334,7 +334,7 @@ var startedByComponentStretchGaiaPre = &preImpl{
 
 var startedByComponentBusterGaiaPre = &preImpl{
 	name:          "crostini_started_by_component_buster_gaia",
-	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
 	vmMode:        component,
 	container:     normal,
 	debianVersion: vm.DebianBuster,
@@ -343,7 +343,7 @@ var startedByComponentBusterGaiaPre = &preImpl{
 
 var startedByDlcStretchGaiaPre = &preImpl{
 	name:          "crostini_started_by_dlc_stretch_gaia",
-	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
 	vmMode:        dlc,
 	container:     normal,
 	debianVersion: vm.DebianStretch,
@@ -352,7 +352,7 @@ var startedByDlcStretchGaiaPre = &preImpl{
 
 var startedByDlcBusterGaiaPre = &preImpl{
 	name:          "crostini_started_by_dlc_buster_gaia",
-	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
 	vmMode:        dlc,
 	container:     normal,
 	debianVersion: vm.DebianBuster,

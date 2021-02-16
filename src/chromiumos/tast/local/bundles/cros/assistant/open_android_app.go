@@ -25,6 +25,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal", "android_p"},
 		Vars:         []string{"assistant.username", "assistant.password"},
+		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 	})
 }
 

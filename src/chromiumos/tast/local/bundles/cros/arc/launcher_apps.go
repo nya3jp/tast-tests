@@ -29,7 +29,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
 		}},
-		Timeout: chrome.LoginTimeout + arc.BootTimeout + 120*time.Second,
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 		Vars:    []string{"arc.username", "arc.password"},
 	})
 }

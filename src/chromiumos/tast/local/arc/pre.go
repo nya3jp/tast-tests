@@ -56,14 +56,15 @@ var bootedPre = &preImpl{
 
 // NewPrecondition creates a new arc precondition for tests that need different args.
 func NewPrecondition(name string, gaia *GaiaVars, extraArgs ...string) testing.Precondition {
+	timeout := resetTimeout + chrome.LoginTimeout + BootTimeout
+	if gaia != nil {
+		timeout = resetTimeout + chrome.GAIALoginTimeout + BootTimeout + optin.OptinTimeout
+	}
 	pre := &preImpl{
 		name:      name,
-		timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
+		timeout:   timeout,
 		gaia:      gaia,
 		extraArgs: extraArgs,
-	}
-	if pre.gaia != nil {
-		pre.timeout += optin.OptinTimeout
 	}
 	return pre
 }

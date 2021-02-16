@@ -33,6 +33,7 @@ func init() {
 		Vars:         []string{"ambient.username", "ambient.password"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 	})
 }
 

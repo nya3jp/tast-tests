@@ -7,6 +7,7 @@ package unicorn
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -20,6 +21,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"unicorn.parentUser", "unicorn.parentPassword", "unicorn.childUser", "unicorn.childPassword"},
+		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 	})
 }
 
