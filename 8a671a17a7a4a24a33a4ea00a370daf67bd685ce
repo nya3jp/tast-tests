@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c8d3dfd_d8c02a31",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-16T14:37:47Z",
+      "side": 1,
+      "message": "Oh, good finding.\nThen, could you remove unnecessary |exited| checking at L84 and L106?",
+      "parentUuid": "436e13e7_3b3e439d",
+      "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "430e5ad1_943110f3",
         "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
         "patchSetId": 2
