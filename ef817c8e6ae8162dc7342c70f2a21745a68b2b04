@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d539e4ec_75401c44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-02-16T01:59:07Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "ef817c8e6ae8162dc7342c70f2a21745a68b2b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a93d0b39_80388368",
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "Is it? Shill only set service as connected after all the Connection set up has returned. And I believe all those rtnetlink setup are synchronized calls so a Connected state should guarantee that everything already setup.\n\nI feel we might need a feedback channel in shill-patchpanel interaction to make sure that service is set as connected only after everything is ready. Maybe have patchpanel create a file in /var and shill monitoring that?",
       "parentUuid": "a93d0b39_80388368",
+      "range": {
+        "startLine": 170,
+        "startChar": 4,
+        "endLine": 170,
+        "endChar": 72
+      },
+      "revId": "ef817c8e6ae8162dc7342c70f2a21745a68b2b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ccef19_1848caa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-02-16T01:59:07Z",
+      "side": 1,
+      "message": "I assume we\u0027re going to move the routing part into patchpanel, right? Will that plan affect this?",
+      "parentUuid": "82551dad_60498a05",
       "range": {
         "startLine": 170,
         "startChar": 4,
@@ -126,6 +167,30 @@
       "side": 1,
       "message": "\u003e how conntrack tracks icmp packets\nTook a look at this and it looks like each icmp echo request-reply roundtrip is considered a new session. This actually changes our assumed reason for this bug - it\u0027s not that the later pings get wrongly enforced to the old interface, but maybe just now the new connection setting needs more time to converge since it involves shill-patchpanel interaction.",
       "parentUuid": "f6bf0af2_0bc79342",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 41
+      },
+      "revId": "ef817c8e6ae8162dc7342c70f2a21745a68b2b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4160616b_ce54374e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-02-16T01:59:07Z",
+      "side": 1,
+      "message": "Thanks for the information! I\u0027ll update the comment if we have confirmed the reason.\nIt seems to me that we will ping for 3 times, if only the first one failed we will get another error.",
+      "parentUuid": "352f5da8_714c1775",
       "range": {
         "startLine": 172,
         "startChar": 1,
