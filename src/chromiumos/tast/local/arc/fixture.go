@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -86,12 +87,24 @@ type bootedFixture struct {
 	arc  *ARC
 	init *Snapshot
 
+	playStoreOptin bool // Opt into PlayStore.
+
 	fOpt chrome.OptionsCallback // Function to return chrome options.
 }
 
 // NewArcBootedFixture returns a FixtureImpl with a OptionsCallback function provided.
+// It is expected that ARCEnabled() or ARCSupported() option should be among the options
+// returned by fOpt. Otherwise the fixture will fail to start ARC.
 func NewArcBootedFixture(fOpt chrome.OptionsCallback) testing.FixtureImpl {
 	return &bootedFixture{fOpt: fOpt}
+}
+
+// NewArcBootedWithPlayStoreFixture returns a FixtureImpl with a OptionsCallback function
+// provided.
+// It is expected that ARCSupported() option should be among the options returned
+// by fOpt. Otherwise the fixture will fail to start ARC and opt into Play Store.
+func NewArcBootedWithPlayStoreFixture(fOpt chrome.OptionsCallback) testing.FixtureImpl {
+	return &bootedFixture{playStoreOptin: true, fOpt: fOpt}
 }
 
 func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -111,6 +124,26 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 			cr.Close(ctx)
 		}
 	}()
+
+	if f.playStoreOptin {
+		s.Log("Performing Play Store Optin")
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect Test API: ", err)
+		}
+		provisioned, err := optin.IsArcProvisioned(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get ARC provisioned status")
+		}
+		if provisioned {
+			s.Log("ARC is already provisioned. Skipping the Play Store setup")
+		} else {
+			// Optin to Play Store and close the Play Store window.
+			if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
+				s.Fatal("Failed to optin to Play Store: ", err)
+			}
+		}
+	}
 
 	arc, err := New(ctx, s.OutDir())
 	if err != nil {
