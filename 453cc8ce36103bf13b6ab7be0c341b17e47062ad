@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe0d8353_b68d3feb",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-16T02:08:09Z",
+      "side": 0,
+      "message": "I have to agree that we might miss some errors. But I\u0027m optimistic because we don\u0027t care much about sess\u0027s health after restarting Chrome. If we want to do more, I guess we can explicitly perform health check of Chrome before restarting Chrome.",
+      "parentUuid": "b2dbdada_bba2e387",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 18
+      },
+      "revId": "453cc8ce36103bf13b6ab7be0c341b17e47062ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbbff1d1_2318566f",
