@@ -9,10 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/conndiag"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
@@ -54,38 +52,7 @@ func ConnectivityDiagnosticsApp(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	if err := apps.Launch(ctx, tconn, apps.ConnectivityDiagnostics.ID); err != nil {
-		s.Fatal("Failed to launch connectivity diagnostics app: ", err)
-	}
-
-	appRootParams := ui.FindParams{
-		Name: "Connectivity Diagnostics",
-		Role: ui.RoleTypeWindow,
-	}
-
-	// Get the Connectivity Diagnostics app root node.
-	appRoot, err := ui.FindWithTimeout(ctx, tconn, appRootParams, time.Minute)
-	if err != nil {
-		s.Fatal("Failed to find app root: ", err)
-	}
-
-	pollOpts := testing.PollOptions{
-		Interval: 100 * time.Millisecond,
-		Timeout:  5 * time.Second,
-	}
-
-	appTitleParams := ui.FindParams{
-		Name: "Connectivity Diagnostics",
-		Role: ui.RoleTypeInlineTextBox,
-	}
-
-	// Poll the root node for the title node.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if _, err := appRoot.DescendantWithTimeout(ctx, appTitleParams, time.Minute); err != nil {
-			return errors.Wrap(err, "failed to find app title")
-		}
-		return nil
-	}, &pollOpts); err != nil {
-		s.Fatal("Failed to wait for app title: ", err)
+	if _, err := conndiag.Launch(ctx, tconn); err != nil {
+		s.Fatal("Error launching Connectivity Diagnostics App: ", err)
 	}
 }
