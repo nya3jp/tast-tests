@@ -8,6 +8,7 @@ import (
 	"context"
 	"os"
 	"path"
+	"time"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/drivefs"
@@ -34,6 +35,7 @@ func init() {
 			"platform.Drivefs.user",     // GAIA username.
 			"platform.Drivefs.password", // GAIA password.
 		},
+		Timeout: chrome.GAIALoginTimeout + time.Minute,
 	})
 }
 

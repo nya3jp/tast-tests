@@ -28,6 +28,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"policy.ExtensionInstallForceList.username", "policy.ExtensionInstallForceList.password"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 	})
 }
 

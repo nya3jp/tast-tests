@@ -32,6 +32,7 @@ func init() {
 			"ui.oac_username",
 			"ui.oac_password",
 		},
+		Timeout: 2*chrome.GAIALoginTimeout + time.Minute,
 	})
 }
 
