@@ -196,6 +196,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf520609_10696fc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-16T22:15:33Z",
+      "side": 1,
+      "message": "Public version might be fine, but I guess it matters to pin the app version. It would be much better if we can get the apk file for the geekbench app and using it, instead of installing it from Playstore every time.  Isn\u0027t it possible?",
+      "parentUuid": "c7f48646_281aff13",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b489aa4c_999d2ce0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
         "patchSetId": 13
@@ -301,6 +325,30 @@
       "side": 1,
       "message": "As we discussed, we will run the public version on the given models only.",
       "parentUuid": "cbe74b56_7d9e961c",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b06cc754_b6f220d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-16T22:15:33Z",
+      "side": 1,
+      "message": "Using public geekbench doesn\u0027t mean we need to access to the browser tab.  The data can be seen from the app.  Please get that.\n\nAings said that this test will also run internal version of geekbench if possible.  This approach of using browser tab makes the internal version impossible.",
+      "parentUuid": "405a60b8_c08c31ef",
       "range": {
         "startLine": 119,
         "startChar": 0,
