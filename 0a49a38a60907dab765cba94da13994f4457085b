@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58aab33f_e2d0318f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-16T05:00:03Z",
+      "side": 1,
+      "message": "Hi Shuhei and Jun,\n\nFollowing the merge of this CL (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2666200), I feel we should extend the current \"arcBooted\" fixture by allowing Play Store opt-in. Currently a fixture called \"loggedInToCUJUser\" is implemented under cros/ui/cuj/fixture.go. It starts Chrome, does PlayStore opt-in, and then do arc.New(). This fixture is needed by tests requiring Android App installation from play store. When I create a new category \"benchmark\", the benchmark cases also need it. So I created this CL to move the implementation to local/arc package.",
+      "revId": "0a49a38a60907dab765cba94da13994f4457085b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
