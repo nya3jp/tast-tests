@@ -275,7 +275,8 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, t
 	if invoc.traceDir != "" {
 		oldPerfFn := perfFn
 		perfFn = func(ctx context.Context) error {
-			if err := tracer.StartTracing(ctx, tracingCategories); err != nil {
+			// TODO(https://crbug.com/1162385, b/177636800): Enable systrace again
+			if err := tracer.StartTracing(ctx, tracingCategories, cdputil.DisableSystrace()); err != nil {
 				return err
 			}
 			if err := oldPerfFn(ctx); err != nil {
