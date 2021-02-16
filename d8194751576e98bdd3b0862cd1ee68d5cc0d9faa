@@ -52,6 +52,24 @@
       "parentUuid": "ba94ea54_ba15efa1",
       "revId": "d8194751576e98bdd3b0862cd1ee68d5cc0d9faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea5702db_5b1937ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-16T16:29:58Z",
+      "side": 1,
+      "message": "frkoenig@ suggested to factor out all these |numFrames| and\n|fps| to a parameter-generator, I\u0027ll add a comment there as\nto 50 being correct (otherwise I\u0027d need to add it everywhere).",
+      "parentUuid": "dfd5cb83_781e32df",
+      "revId": "d8194751576e98bdd3b0862cd1ee68d5cc0d9faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
