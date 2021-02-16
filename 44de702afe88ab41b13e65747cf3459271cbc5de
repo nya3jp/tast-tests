@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74725c37_175d2f32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-16T19:02:36Z",
+      "side": 1,
+      "message": "Please rebase on main to pull in my latest changes and merge this directly in KeyBoardNavigations.\n\nYou can look into TouchAndTextInputs for example.",
+      "range": {
+        "startLine": 520,
+        "startChar": 5,
+        "endLine": 520,
+        "endChar": 31
+      },
+      "revId": "44de702afe88ab41b13e65747cf3459271cbc5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
