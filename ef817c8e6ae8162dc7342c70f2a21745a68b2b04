@@ -216,6 +216,30 @@
       },
       "revId": "ef817c8e6ae8162dc7342c70f2a21745a68b2b04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a0191ff_5372ec51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-02-16T06:33:49Z",
+      "side": 1,
+      "message": "Just did a quick experiment with Jie and it looks like each ping6 session is actually tracked as a single flow by conntrack. Maybe my information was obsoleted or ping is doing sth special to trick conntrack.\n\nSo that our initial inference of the failure cause is still applicable.",
+      "parentUuid": "4160616b_ce54374e",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 41
+      },
+      "revId": "ef817c8e6ae8162dc7342c70f2a21745a68b2b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
