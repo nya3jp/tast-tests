@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4c5c6c_2cc877fc",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-16T09:08:09Z",
+      "side": 1,
+      "message": "Hmm.\n\nI don\u0027t recommend mutating FixtData. In many tests its fields are copied to local variables, e.g.\n\n cr :\u003d s.FixtValue().(*fixtures.FixtData).Chrome\n\nIt\u0027s nice to avoid invalidating `cr` by side effects of other function calls.\n\nGenerally speaking, subtests are just a simple way to add a prefix to error messages when a test consists of several smaller cases. Subtests are not very specially treated by the framework (and it\u0027s difficult to treat them specially since subtests are generated dynamically at run time). So resetting a fixture between subtests essentially means resetting a fixture at arbitrary timing in a test. Unfortunately I don\u0027t think the framework can offer general mechanism to reset fixtures within a test.\n\nConsidering these two points together, my recommendation is either:\n\n1. Convert subtests to test parameters if we want to fall back to expensive reset (SetUp+TearDown) in case of reset failures\n2. Just call reset in each subtest without falling back to expensive reset",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "671565b0c6dab87dca06f8e6d864e243b95e6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
