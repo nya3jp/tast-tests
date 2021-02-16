@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2dbdada_bba2e387",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-16T02:01:06Z",
+      "side": 0,
+      "message": "Ack. Releasing of underlying resources makes sense. I feel like this error always appearing *may* lead to some red herring debugging experiences though.",
+      "parentUuid": "fb55e8e8_2b4856fe",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 18
+      },
+      "revId": "453cc8ce36103bf13b6ab7be0c341b17e47062ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbbff1d1_2318566f",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 7
@@ -85,6 +109,30 @@
       "writtenOn": "2021-02-15T06:40:24Z",
       "side": 0,
       "message": "Same here.",
+      "range": {
+        "startLine": 520,
+        "startChar": 2,
+        "endLine": 520,
+        "endChar": 19
+      },
+      "revId": "453cc8ce36103bf13b6ab7be0c341b17e47062ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdedc5c1_7a7ef60c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-16T02:01:06Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "cbbff1d1_2318566f",
       "range": {
         "startLine": 520,
         "startChar": 2,

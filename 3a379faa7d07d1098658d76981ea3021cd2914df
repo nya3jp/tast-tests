@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dadf7ac6_f148aaed",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/guest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-16T02:01:06Z",
+      "side": 1,
+      "message": "Ack. Thanks for explaining 😊",
+      "parentUuid": "d0589c89_c5024be5",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "3a379faa7d07d1098658d76981ea3021cd2914df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63c73af5_f7745ce9",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-16T01:26:48Z",
       "side": 1,
       "message": "As I commented in PS5, we must not Close sess here; callers are responsible for closing sess. See also my other comments.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "3a379faa7d07d1098658d76981ea3021cd2914df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b11d0305_ffab1ce3",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/guest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-16T02:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63c73af5_f7745ce9",
       "range": {
         "startLine": 47,
         "startChar": 0,
