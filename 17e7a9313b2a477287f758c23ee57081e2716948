@@ -139,6 +139,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d7fe143_b779c4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-16T16:29:52Z",
+      "side": 1,
+      "message": "Done. Before this was a typo, VP9 improves BPP by 30% (see doco), and\nI mistakenly multiplied it.",
+      "parentUuid": "47f4ec37_8736995e",
+      "revId": "17e7a9313b2a477287f758c23ee57081e2716948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a2fcbab_76c93af2",
