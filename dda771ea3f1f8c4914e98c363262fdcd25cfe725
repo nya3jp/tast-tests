@@ -34,6 +34,23 @@
       "parentUuid": "d44355a5_2927102c",
       "revId": "dda771ea3f1f8c4914e98c363262fdcd25cfe725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a24b095_29efc6f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-16T09:29:29Z",
+      "side": 1,
+      "message": "Thanks!\n# Note: update attention. Please let me know when ready via the attention.",
+      "revId": "dda771ea3f1f8c4914e98c363262fdcd25cfe725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
