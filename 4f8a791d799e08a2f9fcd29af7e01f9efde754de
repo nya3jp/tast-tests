@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d790a45_665930cc",
+        "filename": "src/chromiumos/tast/local/bluetooth/logging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-16T20:45:05Z",
+      "side": 1,
+      "message": "haha, that is weird, I guess it would be less weird if you just made an enum with default and verbose? But like how this is now is also fine.\n\n const (\n   Default \u003d iota\n   Verbose\n )\n\n type LogVerbosity struct {\n \tDispatcher int\n \tNewblue    int\n \tBluez      int\n \tKernel     int\n }\n\n x:\u003d LogVerbosity {\n   Dispatcher: Verbose,\n   Bluez:      Verbose,\n   // Others default to Default\n }",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "revId": "4f8a791d799e08a2f9fcd29af7e01f9efde754de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
