@@ -6,6 +6,7 @@ package assistant
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome"
@@ -20,6 +21,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Vars:         []string{"assistant.username", "assistant.password"},
+		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 	})
 }
 

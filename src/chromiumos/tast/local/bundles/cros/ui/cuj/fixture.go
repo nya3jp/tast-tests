@@ -26,7 +26,7 @@ func init() {
 		Desc:            "The main fixture used for UI CUJ tests",
 		Contacts:        []string{"mukai@chromium.org"},
 		Impl:            &loggedInToCUJUserFixture{},
-		SetUpTimeout:    chrome.LoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		Vars:            []string{"ui.cuj_username", "ui.cuj_password"},

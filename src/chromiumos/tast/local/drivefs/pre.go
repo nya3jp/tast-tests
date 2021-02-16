@@ -33,7 +33,7 @@ type PreData struct {
 func NewPrecondition(name string, gaia *GaiaVars) testing.Precondition {
 	pre := &preImpl{
 		name:    name,
-		timeout: chrome.LoginTimeout,
+		timeout: chrome.GAIALoginTimeout,
 		gaia:    gaia,
 	}
 	return pre

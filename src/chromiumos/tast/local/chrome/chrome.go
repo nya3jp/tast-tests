@@ -36,11 +36,11 @@ const (
 	// Tests that call New with the default fake login mode should declare a timeout that's at least this long.
 	LoginTimeout = 80 * time.Second
 
-	// gaiaLoginTimeout is the maximum amount of the time that Chrome is expected
+	// GAIALoginTimeout is the maximum amount of the time that Chrome is expected
 	// to take to perform actual gaia login. As far as I checked a few samples of
 	// actual test runs, most of successful login finishes within ~40secs. Use
 	// 40*3=120 seconds for the safety.
-	gaiaLoginTimeout = 120 * time.Second
+	GAIALoginTimeout = 120 * time.Second
 
 	// tryReuseSessionTimeout is the maximum amount of time that Chrome is expected to take to perform
 	// session reuse checking. Chrome will connect to the exsting Chrome instance, obtained the
@@ -160,7 +160,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	// it simply runs out the entire timeout. See https://crbug.com/1078873.
 	timeout := LoginTimeout
 	if cfg.LoginMode == config.GAIALogin {
-		timeout = gaiaLoginTimeout
+		timeout = GAIALoginTimeout
 	}
 	origCtx := ctx
 	ctx, cancel := context.WithTimeout(origCtx, timeout)

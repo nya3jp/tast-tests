@@ -6,6 +6,7 @@ package apps
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
@@ -33,6 +34,7 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Vars:         []string{"apps.LaunchHelpApp.consumer_username", "apps.LaunchHelpApp.consumer_password"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 		Params: []testing.Param{
 			{
 				Name:              "clamshell_oobe_stable",
