@@ -39,6 +39,30 @@
       },
       "revId": "609333d7eeaeceaa3f56a000586f1445ef5ee029",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c90374b4_4015034b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-02-17T17:41:59Z",
+      "side": 1,
+      "message": "That wasn\u0027t necessary while testing. The assistant.Cleanup functions runs after this one and cleans up Assistant and closes the UI.",
+      "parentUuid": "ef5c6cf0_5ec6a2f4",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "609333d7eeaeceaa3f56a000586f1445ef5ee029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
