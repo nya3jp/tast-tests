@@ -16,6 +16,46 @@
       "message": "Adding more metrics (this time for Android memory), so we have better regression protection later.",
       "revId": "5768bc4450141c56103fc64b10c0fc3fa77c56fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d97ea4_5f8eaabf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-02-17T15:42:47Z",
+      "side": 1,
+      "message": "LGTM % nit\nPlease get +2 from a team member before submitting.",
+      "revId": "5768bc4450141c56103fc64b10c0fc3fa77c56fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a229570d_da0296ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-02-17T15:42:47Z",
+      "side": 1,
+      "message": "nit: variable declarations should be as close as possible to their first use so the previous position of this line was actually better.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 31
+      },
+      "revId": "5768bc4450141c56103fc64b10c0fc3fa77c56fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
