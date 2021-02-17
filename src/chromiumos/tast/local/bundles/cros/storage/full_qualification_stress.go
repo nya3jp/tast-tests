@@ -22,8 +22,11 @@ import (
 
 // qualConfig is the configuration of dual-qual functionality.
 type qualConfig struct {
-	isSlcEnabled bool
-	slcDevice    string
+	isSlcEnabled          bool
+	slcDevice             string
+	soakBlockTimeout      time.Duration
+	retentionBlockTimeout time.Duration
+	suspendBlockTimeout   time.Duration
 }
 
 // subTestFunc is the code associated with a sub-test.
@@ -37,9 +40,9 @@ const (
 	maxSubtestRetry = 3
 
 	// Total duration of the soak, retention and suspend sub-tests.
-	soakBlockTimeout      = 2 * time.Hour
-	retentionBlockTimeout = 20 * time.Minute
-	suspendBlockTimeout   = 10 * time.Minute
+	defaultSoakBlockTimeout      = 2 * time.Hour
+	defaultRetentionBlockTimeout = 20 * time.Minute
+	defaultSuspendBlockTimeout   = 10 * time.Minute
 )
 
 func init() {
@@ -145,12 +148,12 @@ func setupBenchmarks(ctx context.Context, s *testing.State, rw *stress.FioResult
 // soakTestBlock runs long, write-intensive storage stresses.
 func soakTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testConfig qualConfig) {
 	testConfigNoVerify := &stress.TestConfig{
-		Duration: soakBlockTimeout / 2,
+		Duration: testConfig.soakBlockTimeout / 2,
 	}
 	testConfigVerify := &stress.TestConfig{
 		VerifyOnly:   true,
 		ResultWriter: rw,
-		Duration:     soakBlockTimeout / 2,
+		Duration:     testConfig.soakBlockTimeout / 2,
 	}
 
 	stressTasks := []func(context.Context){
@@ -175,7 +178,7 @@ func soakTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWr
 func retentionTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testConfig qualConfig) {
 	writeConfig := stress.TestConfig{
 		Job:      "8k_async_randwrite",
-		Duration: retentionBlockTimeout,
+		Duration: testConfig.retentionBlockTimeout,
 	}
 	// Verify disk consistency written by the initial FIO test.
 	verifyConfig := stress.TestConfig{
@@ -209,7 +212,7 @@ func retentionTestBlock(ctx context.Context, s *testing.State, rw *stress.FioRes
 
 	// Run Suspend repeatedly until the timeout.
 	pollOptions := &testing.PollOptions{
-		Timeout:  retentionBlockTimeout,
+		Timeout:  testConfig.retentionBlockTimeout,
 		Interval: 30 * time.Second,
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -258,7 +261,7 @@ func runPeriodicPowerSuspend(ctx context.Context) {
 // This test block doesn't validate consistency nor status of the disk stress, which
 // is done by measuring storage degradation by the next soak iteration.
 func suspendTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testConfig qualConfig) {
-	if deadline, _ := ctx.Deadline(); time.Until(deadline) < suspendBlockTimeout {
+	if deadline, _ := ctx.Deadline(); time.Until(deadline) < testConfig.suspendBlockTimeout {
 		s.Fatal("Context timeout occurs before suspend block timeout")
 	}
 
@@ -276,7 +279,7 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResul
 			})
 	}
 
-	runTasksInParallel(ctx, suspendBlockTimeout, tasks)
+	runTasksInParallel(ctx, testConfig.suspendBlockTimeout, tasks)
 }
 
 // trimTestBlock is a dispatcher function to start trim test on the boot device
@@ -558,6 +561,10 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 			}
 		}
 	}
+
+	testConfig.soakBlockTimeout = defaultSoakBlockTimeout
+	testConfig.retentionBlockTimeout = defaultRetentionBlockTimeout
+	testConfig.suspendBlockTimeout = defaultSuspendBlockTimeout
 
 	// Before running any functional test block, test setup should be validated.
 	passed := s.Run(ctx, "setup_checks", func(ctx context.Context, s *testing.State) {
