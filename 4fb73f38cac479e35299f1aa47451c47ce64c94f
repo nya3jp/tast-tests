@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbd9dc98_21a01049",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-17T16:01:12Z",
+      "side": 1,
+      "message": "to have Params like:\n\nParams: []testing.Param{\n\t\t\t{\n\t\t\t\tName: \"screen_magnifier\",\n\t\t\t\tVal:   screenMagnifierTestTable,\n\t\t\t},\n\t\t\t{\n\t\t\t\tName: \"high_contrast\",\n\t\t\t\tVal:   highContrastTestTable,\n\t\t\t},\n...\n\nand screenMagnifierTestTable and other tables define as const beforehand?",
+      "parentUuid": "f699ce3c_e071e8bd",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 5
+      },
+      "revId": "4fb73f38cac479e35299f1aa47451c47ce64c94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f9ff369_71ffc330",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
         "patchSetId": 1
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-17T15:54:09Z",
       "side": 1,
       "message": "nit: move to line 172 right before its first use.",
+      "range": {
+        "startLine": 166,
+        "startChar": 3,
+        "endLine": 166,
+        "endChar": 23
+      },
+      "revId": "4fb73f38cac479e35299f1aa47451c47ce64c94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "212db52f_113e3cc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-17T16:01:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9f9ff369_71ffc330",
       "range": {
         "startLine": 166,
         "startChar": 3,
