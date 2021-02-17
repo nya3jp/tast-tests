@@ -96,7 +96,7 @@ func init() {
 
 				// Tests can take a while: 13 minutes for the ~20 modules I first benchmarked.
 				// Give some headroom beyond that.
-				Timeout: 45 * time.Minute,
+				Timeout: 120 * 2 * time.Minute,
 			},
 		},
 	})
