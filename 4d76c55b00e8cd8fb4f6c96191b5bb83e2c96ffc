@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4152225a_2055e475",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-17T03:14:42Z",
+      "side": 1,
+      "message": "LGTM. Thanks for updating for guest mode!",
+      "revId": "4d76c55b00e8cd8fb4f6c96191b5bb83e2c96ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
