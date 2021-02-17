@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "645d653d_f2d809b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-17T22:39:57Z",
+      "side": 1,
+      "message": "PTAL.\n\nI realize that this goes against https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#device-dependencies, but I couldn\u0027t think of another way to ensure that this test doesn\u0027t break (we expect it to run on a high-touch lab in the future, but that is at least 1-2 Qs away).\n\nThanks!",
+      "revId": "db7162f874b083b06726079950f07b1ae405c06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
