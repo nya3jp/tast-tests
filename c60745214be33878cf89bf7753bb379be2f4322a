@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e2f627_cb915471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/title_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-17T00:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aede467a_807eb71d",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "c60745214be33878cf89bf7753bb379be2f4322a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8954278d_3a8c6f34",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-16T21:50:46Z",
       "side": 1,
       "message": "defer act.Stop()?",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "c60745214be33878cf89bf7753bb379be2f4322a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09e3333_eb034cf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/title_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-17T00:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8954278d_3a8c6f34",
       "range": {
         "startLine": 65,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49876364_9b557c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/title_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-17T00:48:51Z",
+      "side": 1,
+      "message": "As discussed fixed with else if and else instead of switch.",
+      "parentUuid": "66467e9d_3c08ce6a",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "c60745214be33878cf89bf7753bb379be2f4322a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "979c8271_06513e83",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-16T21:50:46Z",
       "side": 1,
       "message": "s",
+      "range": {
+        "startLine": 108,
+        "startChar": 10,
+        "endLine": 108,
+        "endChar": 11
+      },
+      "revId": "c60745214be33878cf89bf7753bb379be2f4322a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b27c32_b65842e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/title_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-17T00:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "979c8271_06513e83",
       "range": {
         "startLine": 108,
         "startChar": 10,
