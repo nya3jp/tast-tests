@@ -14,7 +14,7 @@ import (
 )
 
 // Event represents a chrome.automation AutomationEvent.
-// See https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl#492
+// See https://chromium.googlesource.com/chromium/src/+/HEAD/extensions/common/api/automation.idl#492
 type Event struct {
 	Target    *Node     `json:"target"`
 	Type      EventType `json:"type"`

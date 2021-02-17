@@ -9,7 +9,7 @@ package ui
 // StateType describes characteristics of a chrome.automation AutomationNode.
 type StateType string
 
-// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+// As defined in https://chromium.googlesource.com/chromium/src/+/HEAD/extensions/common/api/automation.idl
 const (
 	StateTypeAutofillAvailable StateType = "autofillAvailable"
 	StateTypeCollapsed         StateType = "collapsed"
@@ -36,7 +36,7 @@ const (
 // RoleType describes the purpose of a chrome.automation AutomationNode.
 type RoleType string
 
-// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+// As defined in https://chromium.googlesource.com/chromium/src/+/HEAD/extensions/common/api/automation.idl
 const (
 	RoleTypeAbbr                   RoleType = "abbr"
 	RoleTypeAlert                  RoleType = "alert"
@@ -231,7 +231,7 @@ const (
 // EventType describes the type of a chrome.automation AutomationEvent.
 type EventType string
 
-// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+// As defined in https://chromium.googlesource.com/chromium/src/+/HEAD/extensions/common/api/automation.idl
 const (
 	EventTypeAccessKeyChanged                EventType = "accessKeyChanged"
 	EventTypeActiveDescendantChanged         EventType = "activeDescendantChanged"
@@ -354,7 +354,7 @@ const (
 // RestrictionState describes the restriction state of a chrome.automation AutomationNode.
 type RestrictionState string
 
-// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+// As defined in https://chromium.googlesource.com/chromium/src/+/HEAD/extensions/common/api/automation.idl
 const (
 	RestrictionDisabled RestrictionState = "disabled"
 	RestrictionReadOnly RestrictionState = "readOnly"
@@ -364,7 +364,7 @@ const (
 // CheckedState describes the checked state of a chrome.automation AutomationNode.
 type CheckedState string
 
-// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+// As defined in https://chromium.googlesource.com/chromium/src/+/HEAD/extensions/common/api/automation.idl
 const (
 	CheckedStateTrue  CheckedState = "true"
 	CheckedStateFalse CheckedState = "false"
