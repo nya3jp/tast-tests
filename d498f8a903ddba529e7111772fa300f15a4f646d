@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74be1f30_2cac0be8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-17T23:25:55Z",
+      "side": 1,
+      "message": "Looking good. Of course it won\u0027t work without Shuhei removing the start ui from main.go.\n\nShuhei, any advice on how the graphics team can run its many platform tests without starting/stopping the browser all the time?",
+      "revId": "d498f8a903ddba529e7111772fa300f15a4f646d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9142cd2_05d8b3af",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-17T23:25:55Z",
+      "side": 1,
+      "message": "Assuming Shuhei removes the start ui in main.go this code is not needed.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "d498f8a903ddba529e7111772fa300f15a4f646d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0395cc7_0d9d1274",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-17T23:25:55Z",
+      "side": 1,
+      "message": "Move before the if. \"Stopping Chrome UI\"",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 31
+      },
+      "revId": "d498f8a903ddba529e7111772fa300f15a4f646d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a65100df_802ad5fb",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-17T23:25:55Z",
+      "side": 1,
+      "message": "Move before the if. \"Starting Chrome UI\"",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 32
+      },
+      "revId": "d498f8a903ddba529e7111772fa300f15a4f646d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
