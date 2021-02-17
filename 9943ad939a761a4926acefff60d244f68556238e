@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a45b6ef5_9c569bdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-17T07:13:04Z",
+      "side": 1,
+      "message": "Code itself LGTM, please let me know if you get any idea about connection drop.\n",
+      "revId": "9943ad939a761a4926acefff60d244f68556238e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
