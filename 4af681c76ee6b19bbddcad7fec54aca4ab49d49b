@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dadd0f2_e2b31b57",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-17T15:14:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae4879d3_724524b0",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "4af681c76ee6b19bbddcad7fec54aca4ab49d49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f9a624c_2ef886fc",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-17T01:15:31Z",
       "side": 1,
       "message": "ditto: new Callable\u003cString\u003e()",
+      "range": {
+        "startLine": 40,
+        "startChar": 41,
+        "endLine": 40,
+        "endChar": 67
+      },
+      "revId": "4af681c76ee6b19bbddcad7fec54aca4ab49d49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4131f2b_4e1b5a82",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-17T15:14:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f9a624c_2ef886fc",
       "range": {
         "startLine": 40,
         "startChar": 41,
