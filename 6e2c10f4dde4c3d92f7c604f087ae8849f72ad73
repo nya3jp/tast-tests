@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d46d942a_15b21938",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-17T06:32:58Z",
+      "side": 1,
+      "message": "By the way, what was this part trying to test?\n\nIf it\u0027s just testing maximize it can be done with a keyboard shortcut.",
+      "revId": "6e2c10f4dde4c3d92f7c604f087ae8849f72ad73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
