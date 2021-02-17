@@ -16,6 +16,115 @@
       "message": "PTAL, thanks!",
       "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae61bbc1_109f185d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-02-17T22:48:55Z",
+      "side": 1,
+      "message": "tast-wise: +2 % nit\n\n(wait for Yusuke reviews)",
+      "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a64381_e75605c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-02-17T22:48:55Z",
+      "side": 1,
+      "message": "nit: it seems that it creates the Command, but does not \"run\" it.",
+      "range": {
+        "startLine": 111,
+        "startChar": 17,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cce5436d_70cc0a27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-02-17T22:48:55Z",
+      "side": 1,
+      "message": "nit: don\u0027t use |var|, since it is not supported by godoc :(",
+      "range": {
+        "startLine": 131,
+        "startChar": 27,
+        "endLine": 131,
+        "endChar": 33
+      },
+      "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3b9f0b_2447e91d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-02-17T22:48:55Z",
+      "side": 1,
+      "message": "nit: prefer the, got;want. eg:\n\n\"unexpected prop, got: %q, want: %q\"",
+      "range": {
+        "startLine": 141,
+        "startChar": 26,
+        "endLine": 141,
+        "endChar": 51
+      },
+      "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5bf8976_10510d19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-02-17T22:48:55Z",
+      "side": 1,
+      "message": "nit: what\u0027s CID?  concierge id? crytohome id? just put \"...Concierge ID (CID)...\" (or the correct name)",
+      "range": {
+        "startLine": 147,
+        "startChar": 28,
+        "endLine": 147,
+        "endChar": 31
+      },
+      "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
