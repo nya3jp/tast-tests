@@ -53,7 +53,7 @@ func init() {
 		Attr:         []string{"group:storage-qual"},
 		Data:         stress.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
-		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual"},
+		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual", "tast_suspend_block_timeout"},
 		Params: []testing.Param{{
 			Name:    "setup_benchmarks",
 			Val:     setupBenchmarks,
@@ -567,6 +567,13 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 	testParam.soakBlockTimeout = defaultSoakBlockTimeout
 	testParam.retentionBlockTimeout = defaultRetentionBlockTimeout
 	testParam.suspendBlockTimeout = defaultSuspendBlockTimeout
+
+	if val, ok := s.Var("tast_suspend_block_timeout"); ok {
+		var err error
+		if testParam.suspendBlockTimeout, err = time.ParseDuration(val); err != nil {
+			s.Fatal("Cannot parse argument 'tast_suspend_block_timeout' of type Duration: ", err)
+		}
+	}
 
 	// Before running any functional test block, test setup should be validated.
 	passed := s.Run(ctx, "setup_checks", func(ctx context.Context, s *testing.State) {
