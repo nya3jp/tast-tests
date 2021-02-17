@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e904bfe_21745d19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-02-17T06:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43c3f807_956972cd",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4809d2a4_693b7b73",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97ac6e82_c78dee33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-02-17T06:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4809d2a4_693b7b73",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e96550f5_e60968ee",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-15T06:52:46Z",
       "side": 1,
       "message": "nit: standardize",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8901bb6_f0fedc85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-02-17T06:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e96550f5_e60968ee",
       "range": {
         "startLine": 14,
         "startChar": 5,
@@ -170,6 +242,24 @@
       "side": 1,
       "message": "nit:\ncould you please remove this.\n\nthis may break all other logger started by other program.\n(e.g. logger can be started by shill too. currently the flag doesn\u0027t match logger -t, but this could happen in the future that other program launch logger -t)\n\nadding /usr/bin/logger to L190 should be enough (just tested locally)\n\n\nAlso nit 2:\nthis is regular expression\n\" *\" means any counts of space, not \u003cspace\u003e\u003cany string\u003e",
       "parentUuid": "02c32d74_15358b71",
+      "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "badc9389_b10bec82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-02-17T06:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6d97815_b5df6787",
       "revId": "079a4ab370daebc5b00938f0ac37bc34b9e84b7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
