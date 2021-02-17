@@ -94,9 +94,10 @@ func init() {
 				// usage -- for example, for testing wholesale wpa_supplicant upgrades.
 				// Consider running this nightly in the future.
 
-				// Tests can take a while: 13 minutes for the ~20 modules I first benchmarked.
-				// Give some headroom beyond that.
-				Timeout: 45 * time.Minute,
+				// Tests can take a while: 13 minutes for the ~20 modules I first
+				// benchmarked, and ~an hour on some ARM devices. Give some headroom
+				// beyond that.
+				Timeout: 120 * 2 * time.Minute,
 			},
 		},
 	})
