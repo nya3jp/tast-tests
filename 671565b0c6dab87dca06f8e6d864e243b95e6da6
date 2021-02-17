@@ -46,6 +46,30 @@
       },
       "revId": "671565b0c6dab87dca06f8e6d864e243b95e6da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f982591c_095b9aa3",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-17T02:18:44Z",
+      "side": 1,
+      "message": "I gave it another thought...\n\nWhat\u0027s the cause of reset failures? Even if we split these subtests to test parameters, if reset still fails, we have to repeat expensive setup/teardown, which would increase the test runtime drastically.\n\nActually I\u0027m now feeling like it might be not a good idea for fixtures to suppress reset errors. I filed crbug.com/1179089 to track this issue.",
+      "parentUuid": "9a83ce4a_49ece138",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "671565b0c6dab87dca06f8e6d864e243b95e6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
