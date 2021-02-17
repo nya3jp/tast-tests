@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75f5c33_a60ca603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-17T22:51:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "911b6728_b366a410",
+      "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "776c8634_70e12a8a",
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "The DBus commands return immediately (i.e. they do not wait for the enable to complete), so that should be plenty.",
       "parentUuid": "776c8634_70e12a8a",
+      "range": {
+        "startLine": 51,
+        "startChar": 37,
+        "endLine": 51,
+        "endChar": 50
+      },
+      "revId": "d53edf69d8ddb7678fa5172599cb735164c6b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0251efcf_c0abeefc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-17T22:51:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a21ce1e_16aa16b2",
       "range": {
         "startLine": 51,
         "startChar": 37,
