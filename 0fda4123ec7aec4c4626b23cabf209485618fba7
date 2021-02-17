@@ -174,6 +174,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c70c9c9e_fa4faa8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-17T04:19:39Z",
+      "side": 1,
+      "message": "You can try if interest.\nuiauto.Run(ctx,\n    keyboard.TypeAction(\"abc\")\n    keyboard.AccelAction(\"left\")\n    keyboard.AccelAction(\"backspace\")\n)",
+      "parentUuid": "609aad95_ae0d43dc",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "0fda4123ec7aec4c4626b23cabf209485618fba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fe89804_0b0cdb29",
