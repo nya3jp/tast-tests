@@ -33,6 +33,23 @@
       "message": "Ah wait, we should mark it informational until we\u0027re sure it\u0027s stable.\n",
       "revId": "2811b7ca961fed29746b2624abe63a4b9a77bee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "285b0b70_457e8a67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-02-17T05:37:11Z",
+      "side": 1,
+      "message": "I am using this CL for testing of crrev.com/c/2690611. I will change this test informational after crrev.com/c/2690611 has CR+2. Thanks.",
+      "revId": "2811b7ca961fed29746b2624abe63a4b9a77bee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
