@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a922a3_8dabcddc",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-17T23:50:01Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "f295356e_3bfb7b19",
+      "revId": "0a49a38a60907dab765cba94da13994f4457085b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d452b1f_5113238c",
@@ -111,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34aa1697_f1916d5b",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-17T23:50:01Z",
+      "side": 1,
+      "message": "I see. We didn\u0027t run into issues by closing it, so I checked the code and found the conn is not closed at all because it is locked.\n\nRemoving this line now.",
+      "parentUuid": "cef2f867_db1a6b02",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 21
+      },
+      "revId": "0a49a38a60907dab765cba94da13994f4457085b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62fb5ce7_a497e93b",
@@ -134,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0943247b_00af84d2",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-17T23:50:01Z",
+      "side": 1,
+      "message": "My bad. Add else block.",
+      "parentUuid": "62fb5ce7_a497e93b",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 69
+      },
+      "revId": "0a49a38a60907dab765cba94da13994f4457085b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e829cc82_6bfcf43a",
@@ -147,6 +213,30 @@
       "writtenOn": "2021-02-17T07:22:29Z",
       "side": 1,
       "message": "I think this logic to close the play store window is interesting to all users of optin.Perform. How about introducing a new function optin.PerformAndClose which does exactly this?",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "0a49a38a60907dab765cba94da13994f4457085b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f9a3d6_6ee30d1d",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-17T23:50:01Z",
+      "side": 1,
+      "message": "Did what you suggested and code is neat now. But I did see a lot of duplicated code here and there setting up play store and close it... We should have the common code earlier for tests to re-use.",
+      "parentUuid": "e829cc82_6bfcf43a",
       "range": {
         "startLine": 105,
         "startChar": 3,
