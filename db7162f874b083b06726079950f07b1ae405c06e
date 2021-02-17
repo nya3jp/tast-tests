@@ -16,6 +16,115 @@
       "message": "PTAL.\n\nI realize that this goes against https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#device-dependencies, but I couldn\u0027t think of another way to ensure that this test doesn\u0027t break (we expect it to run on a high-touch lab in the future, but that is at least 1-2 Qs away).\n\nThanks!",
       "revId": "db7162f874b083b06726079950f07b1ae405c06e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02254b80_c2a0affb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-17T23:43:25Z",
+      "side": 1,
+      "message": "nit: make it single line if only one const. Also nice to have a comment for the usage.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "db7162f874b083b06726079950f07b1ae405c06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2893e1e8_6a0cf744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-17T23:43:25Z",
+      "side": 1,
+      "message": "nit: The default value of the Name is empty. You can leave it an empty object {} in this case.",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "db7162f874b083b06726079950f07b1ae405c06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eef299a_5b1e1d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-17T23:43:25Z",
+      "side": 1,
+      "message": "nit: \nif present, err :\u003d func(); err !\u003d nil {\n} else if present {\n}",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 3
+      },
+      "revId": "db7162f874b083b06726079950f07b1ae405c06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab4fc16_3036ec08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-17T23:43:25Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "db7162f874b083b06726079950f07b1ae405c06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e05fc0_0a95f8ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-17T23:43:25Z",
+      "side": 1,
+      "message": "nit: why not return regexp.MatchString(`SVID 0x8087`, string(out))",
+      "range": {
+        "startLine": 215,
+        "startChar": 17,
+        "endLine": 215,
+        "endChar": 63
+      },
+      "revId": "db7162f874b083b06726079950f07b1ae405c06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
