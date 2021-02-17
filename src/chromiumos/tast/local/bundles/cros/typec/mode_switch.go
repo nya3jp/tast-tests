@@ -14,7 +14,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/graphics"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -24,6 +26,17 @@ func init() {
 		Contacts:     []string{"pmalani@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
+		Params: []testing.Param{{
+			// For running manually.
+			Name: "",
+		}, {
+			// For automated testing.
+			Name: "test",
+			// We really can't run this test on CQ, but we want to make sure it can at least compile. So add this check.
+			// In the test, we can check for the existence of a connected TBT device at the PD level, and exit immediately if that is not that case
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("volteer", "voxel")),
+		}},
 	})
 }
 
@@ -40,6 +53,23 @@ func init() {
 //      (USB4)
 //
 func ModeSwitch(ctx context.Context, s *testing.State) {
+	// Check if a TBT device is connected. If one isn't, we should skip execution.
+	// Check each port successively. If a port returns an error, that means we are out of ports.
+	// This check is for test executions which take place on CQ (where TBT peripherals aren't connected).
+	for i := 0; i < 8; i++ {
+		s.Log("Checking port ", i)
+		present, err := checkPortForTBTPartner(ctx, i)
+		if err != nil {
+			s.Log("Couldn't find TBT device from PD identity: ", err)
+			return
+		}
+
+		if present {
+			s.Log("Found a TBT device, proceeding with test")
+			break
+		}
+	}
+
 	// Get to the Chrome login screen.
 	cr, err := chrome.New(ctx,
 		chrome.DeferLogin(),
@@ -159,4 +189,28 @@ func findConnectedDPMonitor(ctx context.Context, tc *chrome.TestConn) error {
 	}
 
 	return errors.New("no enabled and working external display found")
+}
+
+// checkPortForTBTPartner checks whether the device has a connected Thunderbolt device.
+// We use the 'ectool typecdiscovery' command to accomplish this.
+// If |port| is invalid, the ectool command should return an INVALID_PARAM error.
+//
+// This functions returns:
+// - Whether a TBT device is present at a given port.
+// - The error value if the command didn't run, else nil.
+func checkPortForTBTPartner(ctx context.Context, port int) (bool, error) {
+	out, err := testexec.CommandContext(ctx, "ectool", "--name=cros_ec", "help").Output(testexec.DumpLogOnError)
+
+	if err != nil {
+		return false, errors.Wrap(err, "failed to run ectool command")
+	}
+
+	// Look for a TBT SVID in the output. If one doesn't exist, return false.
+	present := true
+	matched, err := regexp.MatchString(`SVID 0x8087`, string(out))
+	if err != nil || !matched {
+		present = false
+	}
+
+	return present, nil
 }
