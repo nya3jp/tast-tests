@@ -80,6 +80,30 @@
       },
       "revId": "73c95276223ac0f26679545916c7e175b1997057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5dae448_7fb77275",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-17T22:32:46Z",
+      "side": 1,
+      "message": "Shuhei, I added comments in the bug for some debugging info. Please check. Thanks!",
+      "parentUuid": "67788b4e_bd56e0fc",
+      "range": {
+        "startLine": 235,
+        "startChar": 10,
+        "endLine": 235,
+        "endChar": 21
+      },
+      "revId": "73c95276223ac0f26679545916c7e175b1997057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
