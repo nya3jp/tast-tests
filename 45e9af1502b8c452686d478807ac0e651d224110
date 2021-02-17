@@ -1,0 +1,69 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c6d6e5_76585947",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-02-17T05:36:19Z",
+      "side": 1,
+      "message": "\u003e \"argumet\" is a possible misspelling of \"argument\".\n\nPlease fix.",
+      "parentUuid": "12db655b_c07079d1",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "45e9af1502b8c452686d478807ac0e651d224110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd269ab_395e8126",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-02-17T05:36:19Z",
+      "side": 1,
+      "message": "\u003e \"paramters\" is a possible misspelling of \"parameters\".\n\nPlease fix.",
+      "parentUuid": "ace1a668_ae281052",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "45e9af1502b8c452686d478807ac0e651d224110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6df47c7_840738ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-02-17T05:36:19Z",
+      "side": 1,
+      "message": "How do you actually pass in the values? I didn\u0027t see any corresponding Var definitions.",
+      "revId": "45e9af1502b8c452686d478807ac0e651d224110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
