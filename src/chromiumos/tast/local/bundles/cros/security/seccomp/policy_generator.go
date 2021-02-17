@@ -36,7 +36,7 @@ type argData struct {
 // arguments for the purpose of generating a Minijail seccomp policy.
 //
 // It is a reimplementation of
-// https://chromium.googlesource.com/aosp/platform/external/minijail/+/master/tools/generate_seccomp_policy.py
+// https://chromium.googlesource.com/aosp/platform/external/minijail/+/HEAD/tools/generate_seccomp_policy.py
 // with the goal of not making python a dependency of tast.
 type PolicyGenerator struct {
 	frequencyData map[string]*argData

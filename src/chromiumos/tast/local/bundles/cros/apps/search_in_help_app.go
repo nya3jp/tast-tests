@@ -90,7 +90,7 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 		}
 
 		// Status 1 corresponds to kSuccess.
-		// https://source.chromium.org/chromium/chromium/src/+/master:chromeos/components/local_search_service/mojom/types.mojom;l=68;drc=378c706113a7a8573a184d60e1bd67d704644251
+		// https://source.chromium.org/chromium/chromium/src/+/HEAD:chromeos/components/local_search_service/mojom/types.mojom;l=68;drc=378c706113a7a8573a184d60e1bd67d704644251
 		if responseStatus != 1 {
 			return errors.Wrap(err, "response status not equal to kSuccess")
 		}

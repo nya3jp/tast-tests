@@ -155,14 +155,14 @@ func DisableLanguage(ctx context.Context, tconn *chrome.TestConn, lang string) e
 }
 
 // InputMethod is the Go binding struct of
-// https://source.chromium.org/chromium/chromium/src/+/master:chrome/common/extensions/api/language_settings_private.idl;l=55
+// https://source.chromium.org/chromium/chromium/src/+/HEAD:chrome/common/extensions/api/language_settings_private.idl;l=55
 // The struct only defines the necessary fields.
 type InputMethod struct {
 	ID string `json:"id"`
 }
 
 // InputMethodLists is the Go binding struct of
-// https://source.chromium.org/chromium/chromium/src/+/master:chrome/common/extensions/api/language_settings_private.idl;l=75
+// https://source.chromium.org/chromium/chromium/src/+/HEAD:chrome/common/extensions/api/language_settings_private.idl;l=75
 // The struct only defines the necessary fields.
 type InputMethodLists struct {
 	ThirdPartyExtensionIMEs []InputMethod `json:"thirdPartyExtensionImes"`

@@ -74,7 +74,7 @@ func Exists(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 
 // LoadTimeData struct for the help app.
 // Following fields populated by |ChromeHelpAppUIDelegate::PopulateLoadTimeData|
-// https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/chromeos/web_applications/chrome_help_app_ui_delegate.cc;l=53;drc=c2c84a5ac7711dedcc0b7ff9e79bf7f2da019537.
+// https://source.chromium.org/chromium/chromium/src/+/HEAD:chrome/browser/chromeos/web_applications/chrome_help_app_ui_delegate.cc;l=53;drc=c2c84a5ac7711dedcc0b7ff9e79bf7f2da019537.
 type LoadTimeData struct {
 	IsManagedDevice bool `json:"isManagedDevice"`
 }
