@@ -25,16 +25,14 @@ func init() {
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(
-					"vilboz360", // TODO(b/177684735): Broken, causing CQ issues.
-					"maglia",    // TODO(b/177656181): Broken, causing CQ issues.
+					"maglia", // TODO(b/177656181): Broken, causing CQ issues.
 				)),
 			},
 			{
 				Name:      "informational",
 				ExtraAttr: []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(
-					"vilboz360", // TODO(b/177684735): Broken, causing CQ issues.
-					"maglia",    // TODO(b/177656181): Broken, causing CQ issues.
+					"maglia", // TODO(b/177656181): Broken, causing CQ issues.
 				)),
 			},
 		},
