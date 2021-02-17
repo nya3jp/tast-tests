@@ -60,6 +60,10 @@ func init() {
 			Val:     stressRunner,
 			Timeout: 5 * time.Hour,
 		}, {
+			Name:    "functional",
+			Val:     functionalRunner,
+			Timeout: 2 * time.Hour,
+		}, {
 			Name:    "mini_soak",
 			Val:     miniSoakRunner,
 			Timeout: 2 * time.Hour,
@@ -470,6 +474,38 @@ func stressRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWri
 			name:     "soak",
 			function: subTestFunc(soakTestBlock),
 		},
+		{
+			name:     "suspend",
+			function: subTestFunc(suspendTestBlock),
+		},
+		{
+			name:     "retention",
+			function: subTestFunc(retentionTestBlock),
+		},
+		{
+			name:     "trim",
+			function: subTestFunc(trimTestBlock),
+		},
+	} {
+		for retries := 0; retries < maxSubtestRetry; retries++ {
+			s.Logf("Subtest: %s, retry: %d of %d", tc.name, retries+1, maxSubtestRetry)
+			passed := s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+				tc.function(ctx, s, rw, slcConfig)
+			})
+			if passed {
+				break
+			}
+		}
+	}
+}
+
+// functionalRunner exercises only the functional part of the block.
+// It is intended to be used in the lab on bringup devices.
+func functionalRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
+	for _, tc := range []struct {
+		name     string
+		function subTestFunc
+	}{
 		{
 			name:     "suspend",
 			function: subTestFunc(suspendTestBlock),
