@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c7fc4e2_56624a3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-02-17T05:38:50Z",
+      "side": 1,
+      "message": "It would actually require more subtle code changes. While duplication is meh, I agree, it helps to keep the tests more straightforward and to the point.",
+      "parentUuid": "6a38fd37_f268650b",
+      "revId": "57387020c0ea5efb3bbfc575a60749bd42801aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df48ef9e_99122c5f",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-17T05:14:22Z",
       "side": 1,
       "message": "Could you add a comment that explains the purpose of this test?",
+      "range": {
+        "startLine": 502,
+        "startChar": 5,
+        "endLine": 502,
+        "endChar": 21
+      },
+      "revId": "57387020c0ea5efb3bbfc575a60749bd42801aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7274d7a0_19b5ec74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-02-17T05:38:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df48ef9e_99122c5f",
       "range": {
         "startLine": 502,
         "startChar": 5,
