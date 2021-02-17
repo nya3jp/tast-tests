@@ -33,6 +33,24 @@
       "message": "Little unfortunate that we just have to duplicate all of the preconditions for guest mode...",
       "revId": "4d76c55b00e8cd8fb4f6c96191b5bb83e2c96ffc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d635ff5_9fdc36b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-17T23:26:20Z",
+      "side": 1,
+      "message": "Yes, sadly many input features are developed behind separate chrome flag, there is no way to reuse chrome instance I am afraid.",
+      "parentUuid": "1549cbd8_b4a2427b",
+      "revId": "4d76c55b00e8cd8fb4f6c96191b5bb83e2c96ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
