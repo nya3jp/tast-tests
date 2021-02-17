@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e06f680_59337fda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-17T15:08:12Z",
+      "side": 0,
+      "message": "This TODO should be kept.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 92
+      },
+      "revId": "b9cd8cc7eba96c0dc42fd799f48239d1cb04cd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
