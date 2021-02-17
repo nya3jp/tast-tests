@@ -53,7 +53,7 @@ func init() {
 		Attr:         []string{"group:storage-qual"},
 		Data:         stress.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
-		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual", "tast_suspend_block_timeout"},
+		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual", "tast_suspend_block_timeout", "tast_skip_setup_check"},
 		Params: []testing.Param{{
 			Name:    "setup_benchmarks",
 			Val:     setupBenchmarks,
@@ -575,10 +575,21 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Before running any functional test block, test setup should be validated.
-	passed := s.Run(ctx, "setup_checks", func(ctx context.Context, s *testing.State) {
-		setupChecks(ctx, s)
-	})
+	skipSetup := false
+	if val, ok := s.Var("tast_skip_setup_check"); ok {
+		var err error
+		if skipSetup, err = strconv.ParseBool(val); err != nil {
+			s.Fatal("Cannot parse argument 'tast_skip_setup_check' of type bool: ", err)
+		}
+	}
+
+	// Before running any functional test block, test setup should be validated, unless bypassed.
+	passed := skipSetup
+	if !passed {
+		passed = s.Run(ctx, "setup_checks", func(ctx context.Context, s *testing.State) {
+			setupChecks(ctx, s)
+		})
+	}
 	if passed {
 		passed = s.Run(ctx, "storage_subtest", func(ctx context.Context, s *testing.State) {
 			resultWriter := &stress.FioResultWriter{}
