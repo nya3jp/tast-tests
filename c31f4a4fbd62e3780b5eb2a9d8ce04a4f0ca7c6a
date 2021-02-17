@@ -16,6 +16,24 @@
       "message": "nit: This test case actually conducts the gaia-login twice.  Although the latter one would be shorter (as it conducts the login through the user pod), I think it\u0027s safer to say, 2 * chrome.GAIALoginTimeout.",
       "revId": "c31f4a4fbd62e3780b5eb2a9d8ce04a4f0ca7c6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7e5d867_a5b50640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/existing_user_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-17T02:03:15Z",
+      "side": 1,
+      "message": "That is really a good catch! I updated the timeout.",
+      "parentUuid": "68d9acec_0af96d37",
+      "revId": "c31f4a4fbd62e3780b5eb2a9d8ce04a4f0ca7c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
