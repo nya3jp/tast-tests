@@ -20,14 +20,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// slcQualConfig is the configuration of dual-qual functionality.
-type slcQualConfig struct {
-	enabled bool
-	device  string
+// qualParam is the configuration of dual-qual functionality.
+type qualParam struct {
+	isSlcEnabled bool
+	slcDevice    string
 }
 
 // subTestFunc is the code associated with a sub-test.
-type subTestFunc func(context.Context, *testing.State, *stress.FioResultWriter, slcQualConfig)
+type subTestFunc func(context.Context, *testing.State, *stress.FioResultWriter, qualParam)
 
 const (
 	// Main storage device has to be >= 16GB.
@@ -124,7 +124,7 @@ func setupChecks(ctx context.Context, s *testing.State) {
 
 // setupBenchmarks captures and records bandwidth and latency disk benchmarks at the
 // beginning and the end of the test suite.
-func setupBenchmarks(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
+func setupBenchmarks(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testParam qualParam) {
 	testConfig := &stress.TestConfig{ResultWriter: rw}
 
 	// Run tests to collect metrics for boot device.
@@ -135,15 +135,15 @@ func setupBenchmarks(ctx context.Context, s *testing.State, rw *stress.FioResult
 	runFioStress(ctx, s, testConfig.WithPath(stress.BootDeviceFioPath).WithJob("16k_write"))
 	runFioStress(ctx, s, testConfig.WithPath(stress.BootDeviceFioPath).WithJob("16k_read"))
 
-	if slcConfig.enabled {
+	if testParam.isSlcEnabled {
 		// Run tests to collect metrics for Slc device.
-		runFioStress(ctx, s, testConfig.WithPath(slcConfig.device).WithJob("4k_write"))
-		runFioStress(ctx, s, testConfig.WithPath(slcConfig.device).WithJob("4k_read"))
+		runFioStress(ctx, s, testConfig.WithPath(testParam.slcDevice).WithJob("4k_write"))
+		runFioStress(ctx, s, testConfig.WithPath(testParam.slcDevice).WithJob("4k_read"))
 	}
 }
 
 // soakTestBlock runs long, write-intensive storage stresses.
-func soakTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
+func soakTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testParam qualParam) {
 	testConfigNoVerify := &stress.TestConfig{
 		Duration: soakBlockTimeout / 2,
 	}
@@ -160,11 +160,11 @@ func soakTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWr
 		},
 	}
 
-	if slcConfig.enabled {
+	if testParam.isSlcEnabled {
 		stressTasks = append(stressTasks,
 			func(ctx context.Context) {
-				runFioStress(ctx, s, testConfigNoVerify.WithPath(slcConfig.device).WithJob("4k_write"))
-				runFioStress(ctx, s, testConfigVerify.WithPath(slcConfig.device).WithJob("4k_write"))
+				runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.slcDevice).WithJob("4k_write"))
+				runFioStress(ctx, s, testConfigVerify.WithPath(testParam.slcDevice).WithJob("4k_write"))
 			})
 	}
 
@@ -172,7 +172,7 @@ func soakTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWr
 }
 
 // retentionTestBlock reads and then validates the same data after multiple short suspend cycles.
-func retentionTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
+func retentionTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testParam qualParam) {
 	writeConfig := stress.TestConfig{
 		Job:      "8k_async_randwrite",
 		Duration: retentionBlockTimeout,
@@ -194,14 +194,14 @@ func retentionTestBlock(ctx context.Context, s *testing.State, rw *stress.FioRes
 		},
 	}
 
-	if slcConfig.enabled {
+	if testParam.isSlcEnabled {
 		writeTasks = append(writeTasks,
 			func(ctx context.Context) {
-				runFioStress(ctx, s, writeConfig.WithPath(slcConfig.device))
+				runFioStress(ctx, s, writeConfig.WithPath(testParam.slcDevice))
 			})
 		verifyTasks = append(verifyTasks,
 			func(ctx context.Context) {
-				runFioStress(ctx, s, verifyConfig.WithPath(slcConfig.device))
+				runFioStress(ctx, s, verifyConfig.WithPath(testParam.slcDevice))
 			})
 	}
 
@@ -257,7 +257,7 @@ func runPeriodicPowerSuspend(ctx context.Context) {
 // suspendTestBlock triggers periodic power suspends while running disk stress.
 // This test block doesn't validate consistency nor status of the disk stress, which
 // is done by measuring storage degradation by the next soak iteration.
-func suspendTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
+func suspendTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testParam qualParam) {
 	if deadline, _ := ctx.Deadline(); time.Until(deadline) < suspendBlockTimeout {
 		s.Fatal("Context timeout occurs before suspend block timeout")
 	}
@@ -269,10 +269,10 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResul
 		runPeriodicPowerSuspend,
 	}
 
-	if slcConfig.enabled {
+	if testParam.isSlcEnabled {
 		tasks = append(tasks,
 			func(ctx context.Context) {
-				runContinuousStorageStress(ctx, "4k_write", s.DataPath("4k_write"), rw, slcConfig.device)
+				runContinuousStorageStress(ctx, "4k_write", s.DataPath("4k_write"), rw, testParam.slcDevice)
 			})
 	}
 
@@ -281,15 +281,15 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResul
 
 // trimTestBlock is a dispatcher function to start trim test on the boot device
 // and on the slc.
-func trimTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
+func trimTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testParam qualParam) {
 	bootDevPartition, err := stress.RootPartitionForTrim(ctx)
 	if err != nil {
 		s.Fatal("Failed to select partition for trim stress: ", err)
 	}
 	trimTestBlockImpl(ctx, s, bootDevPartition, rw)
 
-	if slcConfig.enabled {
-		trimTestBlockImpl(ctx, s, slcConfig.device, rw)
+	if testParam.isSlcEnabled {
+		trimTestBlockImpl(ctx, s, testParam.slcDevice, rw)
 	}
 }
 
@@ -465,7 +465,7 @@ func runFioStress(ctx context.Context, s *testing.State, testConfig stress.TestC
 
 // stressRunner is the main entry point of the unversal stress block.
 // It runs all other functional sub-tests in a sequence, retrying failed sub-tests.
-func stressRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
+func stressRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testParam qualParam) {
 	for _, tc := range []struct {
 		name     string
 		function subTestFunc
@@ -490,7 +490,7 @@ func stressRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWri
 		for retries := 0; retries < maxSubtestRetry; retries++ {
 			s.Logf("Subtest: %s, retry: %d of %d", tc.name, retries+1, maxSubtestRetry)
 			passed := s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-				tc.function(ctx, s, rw, slcConfig)
+				tc.function(ctx, s, rw, testParam)
 			})
 			if passed {
 				break
@@ -501,7 +501,7 @@ func stressRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWri
 
 // functionalRunner exercises only the functional part of the block.
 // It is intended to be used in the lab on bringup devices.
-func functionalRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
+func functionalRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testParam qualParam) {
 	for _, tc := range []struct {
 		name     string
 		function subTestFunc
@@ -522,7 +522,7 @@ func functionalRunner(ctx context.Context, s *testing.State, rw *stress.FioResul
 		for retries := 0; retries < maxSubtestRetry; retries++ {
 			s.Logf("Subtest: %s, retry: %d of %d", tc.name, retries+1, maxSubtestRetry)
 			passed := s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-				tc.function(ctx, s, rw, slcConfig)
+				tc.function(ctx, s, rw, testParam)
 			})
 			if passed {
 				break
@@ -534,25 +534,25 @@ func functionalRunner(ctx context.Context, s *testing.State, rw *stress.FioResul
 // miniSoakRunner is a minimized version of the storage stress consisting from
 // a single attempt of a soak subtest.
 // This stress is used for storage qualification v2 validation.
-func miniSoakRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
-	soakTestBlock(ctx, s, rw, slcConfig)
+func miniSoakRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, testParam qualParam) {
+	soakTestBlock(ctx, s, rw, testParam)
 }
 
 // FullQualificationStress runs a full version of disk IO qualification test.
 // The full run of the test can take anything between 2-14 days.
 func FullQualificationStress(ctx context.Context, s *testing.State) {
-	subtest := s.Param().(func(context.Context, *testing.State, *stress.FioResultWriter, slcQualConfig))
+	subtest := s.Param().(func(context.Context, *testing.State, *stress.FioResultWriter, qualParam))
 	start := time.Now()
 
-	slcConfig := slcQualConfig{}
+	testParam := qualParam{}
 	if val, ok := s.Var("tast_storage_slc_qual"); ok {
 		var err error
-		if slcConfig.enabled, err = strconv.ParseBool(val); err != nil {
+		if testParam.isSlcEnabled, err = strconv.ParseBool(val); err != nil {
 			s.Fatal("Cannot parse argumet 'storage.QuickStress.slcQual' of type bool: ", err)
 		}
-		if slcConfig.enabled {
+		if testParam.isSlcEnabled {
 			// Run tests to collect metrics for Slc device.
-			if slcConfig.device, err = slcDevice(ctx); err != nil {
+			if testParam.slcDevice, err = slcDevice(ctx); err != nil {
 				s.Fatal("Failed to get slc device: ", err)
 			}
 			if err = swapoff(ctx); err != nil {
@@ -569,7 +569,7 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 		passed = s.Run(ctx, "storage_subtest", func(ctx context.Context, s *testing.State) {
 			resultWriter := &stress.FioResultWriter{}
 			defer resultWriter.Save(ctx, s.OutDir(), true)
-			subtest(ctx, s, resultWriter, slcConfig)
+			subtest(ctx, s, resultWriter, testParam)
 		})
 	}
 	if err := stress.WriteTestStatusFile(ctx, s.OutDir(), passed, start); err != nil {
