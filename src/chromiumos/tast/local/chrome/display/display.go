@@ -263,7 +263,7 @@ func GetOrientation(ctx context.Context, tconn *chrome.TestConn) (*Orientation, 
 // IsFakeDisplayID checks if a display is fake or not by its id.
 func IsFakeDisplayID(id string) bool {
 	// the id of fake displays will start from this number.
-	// See also: https://source.chromium.org/chromium/chromium/src/+/master:ui/display/manager/managed_display_info.cc?q=%20kSynthesizedDisplayIdStart
+	// See also: https://source.chromium.org/chromium/chromium/src/+/HEAD:ui/display/manager/managed_display_info.cc?q=%20kSynthesizedDisplayIdStart
 	const fakeDisplayID = "2200000000"
 
 	// Theoretically it is possible that a fake display has a different ID. This

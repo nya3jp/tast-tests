@@ -37,7 +37,7 @@ FOOTER = """\
 // CheckedState describes the checked state of a chrome.automation AutomationNode.
 type CheckedState string
 
-// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl
+// As defined in https://chromium.googlesource.com/chromium/src/+/HEAD/extensions/common/api/automation.idl
 const (
 \tCheckedStateTrue  CheckedState = "true"
 \tCheckedStateFalse CheckedState = "false"
@@ -77,7 +77,7 @@ def print_definitions(lines, defined_type_name, go_type_name, description, outpu
   print('type %s string' % go_type_name)
   print()
   print(
-      '// As defined in https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl'
+      '// As defined in https://chromium.googlesource.com/chromium/src/+/HEAD/extensions/common/api/automation.idl'
   )
   print('const (')
 

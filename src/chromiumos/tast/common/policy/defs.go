@@ -2047,7 +2047,7 @@ func (p *NotificationsBlockedForUrls) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 107. OpenNetworkConfiguration
 // This policy can be modified without rebooting.
-// See https://chromium.googlesource.com/chromium/src/+/master/components/onc/docs/onc_spec.md for full schema.
+// See https://chromium.googlesource.com/chromium/src/+/HEAD/components/onc/docs/onc_spec.md for full schema.
 ///////////////////////////////////////////////////////////////////////////////
 type OpenNetworkConfiguration struct {
 	Stat Status

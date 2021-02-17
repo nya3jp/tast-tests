@@ -24,12 +24,12 @@ import (
 
 // Action represents a MotionEvent's action key.
 // The values are from Android's MotionEvent.java.
-// See: https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/view/MotionEvent.java
+// See: https://cs.android.com/android/platform/superproject/+/HEAD:frameworks/base/core/java/android/view/MotionEvent.java
 type Action string
 
 // Axis represents a MotionEvent's axis key.
 // The values are from Android's MotionEvent.java.
-// See: https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/view/MotionEvent.java
+// See: https://cs.android.com/android/platform/superproject/+/HEAD:frameworks/base/core/java/android/view/MotionEvent.java
 type Axis string
 
 // Source represents an input device's source.
@@ -67,7 +67,7 @@ type MotionEvent struct {
 	PointerAxes []map[Axis]float64 `json:"pointer_axes"`
 	// Batched is true if this event was included in the history of another MotionEvent in Android,
 	// and false otherwise. See more information about batching at:
-	// https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/view/MotionEvent.java;l=93
+	// https://cs.android.com/android/platform/superproject/+/HEAD:frameworks/base/core/java/android/view/MotionEvent.java;l=93
 	Batched bool `json:"batched"`
 }
 
