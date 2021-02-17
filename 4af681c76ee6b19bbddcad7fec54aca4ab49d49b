@@ -16,6 +16,69 @@
       "message": "Thanks a lot for the quick review and for the great feedback!\n\nI\u0027ve update the CL, PTAL!",
       "revId": "4af681c76ee6b19bbddcad7fec54aca4ab49d49b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de433317_4c75c172",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-02-17T01:15:31Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "4af681c76ee6b19bbddcad7fec54aca4ab49d49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4879d3_724524b0",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-02-17T01:15:31Z",
+      "side": 1,
+      "message": "nit: no need to add spaces. Future\u003cString\u003e",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "4af681c76ee6b19bbddcad7fec54aca4ab49d49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f9a624c_2ef886fc",
+        "filename": "android/ArcConnectivityTest/src/org/chromium/arc/testapp/connectivity/ConnectivityActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-02-17T01:15:31Z",
+      "side": 1,
+      "message": "ditto: new Callable\u003cString\u003e()",
+      "range": {
+        "startLine": 40,
+        "startChar": 41,
+        "endLine": 40,
+        "endChar": 67
+      },
+      "revId": "4af681c76ee6b19bbddcad7fec54aca4ab49d49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
