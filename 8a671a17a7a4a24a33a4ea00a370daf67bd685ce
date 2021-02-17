@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c3bd83b_8280d505",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-17T02:18:16Z",
+      "side": 1,
+      "message": "Done, PTALA",
+      "parentUuid": "33273c0b_5535e551",
+      "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "430e5ad1_943110f3",
@@ -138,6 +156,24 @@
       "writtenOn": "2021-02-16T06:09:27Z",
       "side": 1,
       "message": "with waitpid, this can be removed, because it is ensured that the child process is not yet corrected here, so signal SIGTERM should be ok always.",
+      "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512055f4_675f334c",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-17T02:18:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "430e5ad1_943110f3",
       "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -159,6 +195,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f07f95_e7d2d59a",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-17T02:18:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b1e4e951_67fabfa5",
+      "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ae5fc37_9ee350bd",
@@ -172,6 +226,24 @@
       "writtenOn": "2021-02-16T06:09:27Z",
       "side": 1,
       "message": "and then Wait() here.",
+      "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ddc62f_f5d1339e",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-17T02:18:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4ae5fc37_9ee350bd",
       "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
