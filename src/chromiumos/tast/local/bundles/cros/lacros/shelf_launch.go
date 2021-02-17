@@ -96,11 +96,6 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch Lacros: ", err)
 	}
 
-	s.Log("Checking that Lacros window is visible")
-	if err := launcher.WaitForLacrosWindow(ctx, tconn, "Welcome to Chrome"); err != nil {
-		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
-	}
-
 	s.Log("Connecting to the lacros-chrome browser")
 	p := s.FixtValue().(launcher.FixtData)
 	l, err := launcher.ConnectToLacrosChrome(ctx, p.LacrosPath, launcher.LacrosUserDataDir)

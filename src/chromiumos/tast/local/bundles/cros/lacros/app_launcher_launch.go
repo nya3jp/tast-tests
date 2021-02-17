@@ -50,14 +50,23 @@ func AppLauncherLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to search and launch Lacros app: ", err)
 	}
 
-	s.Log("Checking that Lacros window is visible")
-	if err := launcher.WaitForLacrosWindow(ctx, tconn, "Welcome to Chrome"); err != nil {
-		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
-	}
-
-	l, err := launcher.ConnectToLacrosChrome(ctx, f.LacrosPath, launcher.LacrosUserDataDir)
+	s.Log("Connecting to the lacros-chrome browser")
+	p := s.FixtValue().(launcher.FixtData)
+	l, err := launcher.ConnectToLacrosChrome(ctx, p.LacrosPath, launcher.LacrosUserDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}
 	defer l.Close(ctx)
+
+	s.Log("Opening a new tab")
+	tab, err := l.Devsess.CreateTarget(ctx, "about:blank")
+	if err != nil {
+		s.Fatal("Failed to open new tab: ", err)
+	}
+	defer l.Devsess.CloseTarget(ctx, tab)
+
+	s.Log("Checking that Lacros window is visible")
+	if err := launcher.WaitForLacrosWindow(ctx, tconn, "about:blank"); err != nil {
+		s.Fatal("Failed waiting for Lacros to navigate to about:blank page: ", err)
+	}
 }
