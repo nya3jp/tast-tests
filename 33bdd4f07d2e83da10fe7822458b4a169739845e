@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f23c3ff0_8bc56780",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-17T15:08:12Z",
+      "side": 1,
+      "message": "Please add a \"why\" as well.\nE.g. Functions in the arc/screenshot package are useful and can be used in other tests outside of arc.",
+      "revId": "33bdd4f07d2e83da10fe7822458b4a169739845e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aa457b3_5014c467",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-17T15:08:12Z",
+      "side": 1,
+      "message": "When you add multiple reviewers, it is nice to write a short message on what parts should a specific reviewer check.",
+      "revId": "33bdd4f07d2e83da10fe7822458b4a169739845e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
