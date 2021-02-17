@@ -20,6 +20,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4b5c6ce_5f6fa51e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-02-17T17:00:56Z",
+      "side": 1,
+      "message": "I don\u0027t see cr used anywhere. Is it needed for this test?",
+      "revId": "e7c3dc387321578c53ea1aafb6dac063cd3a9ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b7d976_ce5d4d4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-02-17T17:00:56Z",
+      "side": 1,
+      "message": "nit/style: Define `a` as close to where it is used as possible. So, move L45-53 to after L59.",
+      "revId": "e7c3dc387321578c53ea1aafb6dac063cd3a9ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b319b1dc_d9031da1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-02-17T17:00:56Z",
+      "side": 1,
+      "message": "nit/style: It is simpler to operate directly on the bytes, rather than casting to strings.\n\n    // L59\n    hostResult :\u003d bytes.TrimSpace(output)\n\n    // L65\n    guestResult :\u003d bytes.TrimSpace(output)\n\n    // L67-68: No change required.\n\nhttp://go/go-style/guide#simplicity",
+      "revId": "e7c3dc387321578c53ea1aafb6dac063cd3a9ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c8a0f61_7c961d81",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_config.go",
         "patchSetId": 1
