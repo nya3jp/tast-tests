@@ -16,6 +16,23 @@
       "message": "LGTM. Thanks for updating for guest mode!",
       "revId": "4d76c55b00e8cd8fb4f6c96191b5bb83e2c96ffc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1549cbd8_b4a2427b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-17T21:56:36Z",
+      "side": 1,
+      "message": "Little unfortunate that we just have to duplicate all of the preconditions for guest mode...",
+      "revId": "4d76c55b00e8cd8fb4f6c96191b5bb83e2c96ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
