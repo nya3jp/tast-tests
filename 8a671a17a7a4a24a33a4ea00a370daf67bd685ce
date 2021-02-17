@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33273c0b_5535e551",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-17T01:36:41Z",
+      "side": 1,
+      "message": "Actually I think we can move close(exited) to the end of the scanner goroutine, the loop is terminated when EOF is sent on stderr. kmsvnc should always keep stderr open so I think EOF there is equivalent to process exit.",
+      "parentUuid": "6d28e93e_7a7596cc",
+      "revId": "8a671a17a7a4a24a33a4ea00a370daf67bd685ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "430e5ad1_943110f3",
         "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
         "patchSetId": 2
