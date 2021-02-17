@@ -10,12 +10,14 @@ import (
 	"image"
 	_ "image/png" // PNG decoder
 	"io"
+	"io/ioutil"
 	"os"
 	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/testexec"
 )
 
@@ -125,4 +127,39 @@ func CaptureChromeForDisplay(ctx context.Context, cr *chrome.Chrome, displayID, 
 		return err
 	}
 	return nil
+}
+
+// GrabAndCropScreenshot grabs a screenshot and crops it to the specified bounds.
+func GrabAndCropScreenshot(ctx context.Context, cr *chrome.Chrome, bounds coords.Rect) (image.Image, error) {
+	img, err := GrabScreenshot(ctx, cr)
+	if err != nil {
+		return nil, err
+	}
+
+	subImage := img.(interface {
+		SubImage(r image.Rectangle) image.Image
+	}).SubImage(image.Rect(bounds.Left, bounds.Top, bounds.Right(), bounds.Bottom()))
+
+	return subImage, nil
+}
+
+// GrabScreenshot creates a screenshot and returns an image.Image.
+// The path of the image is generated ramdomly in /tmp.
+func GrabScreenshot(ctx context.Context, cr *chrome.Chrome) (image.Image, error) {
+	fd, err := ioutil.TempFile("", "screenshot")
+	if err != nil {
+		return nil, errors.Wrap(err, "error opening screenshot file")
+	}
+	defer os.Remove(fd.Name())
+	defer fd.Close()
+
+	if err := CaptureChrome(ctx, cr, fd.Name()); err != nil {
+		return nil, errors.Wrap(err, "failed to capture screenshot")
+	}
+
+	img, _, err := image.Decode(fd)
+	if err != nil {
+		return nil, errors.Wrap(err, "error decoding image file")
+	}
+	return img, nil
 }

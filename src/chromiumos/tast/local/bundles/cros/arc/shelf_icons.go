@@ -13,10 +13,10 @@ import (
 	"chromiumos/tast/errors"
 	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 

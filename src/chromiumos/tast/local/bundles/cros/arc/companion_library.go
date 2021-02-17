@@ -21,14 +21,14 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	screenshotCR "chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/media/imgcmp"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -186,7 +186,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 			if err := tc.fn(ctx, a, cr, tconn, act, d); err != nil {
 				fileName := fmt.Sprintf("screenshot-companionlib-failed-test-%s.png", strings.ReplaceAll(tc.name, " ", ""))
 				path := filepath.Join(s.OutDir(), fileName)
-				if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
+				if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
 					s.Log("Failed to capture screenshot: ", err)
 				}
 				s.Fatalf("%s test failed: %v", tc.name, err)
@@ -284,7 +284,7 @@ func testWindowShadow(ctx context.Context, _ *arc.ARC, cr *chrome.Chrome, tconn 
 
 		rect := subImageWithShadow.Bounds()
 		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
-		brighterPixelsCount, err := screenshot.CountBrighterPixels(subImageWithShadow, subImageWithoutShadow)
+		brighterPixelsCount, err := imgcmp.CountBrighterPixels(subImageWithShadow, subImageWithoutShadow)
 		testing.ContextLogf(ctx, "WindowShadow: Test %s, screenshot rect: %v, totalPixels: %d, brighterPixels: %d", test.name, rect, totalPixels, brighterPixelsCount)
 		if err != nil {
 			return errors.Wrap(err, "failed to count brighter pixels by subimg in screenshot")
@@ -941,7 +941,7 @@ func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 	}
 
 	const roundingErrorThreshold = 1
-	diffPixelNum, err := screenshot.CountDiffPixels(imageBeforeActive, imageAfterActive, roundingErrorThreshold)
+	diffPixelNum, err := imgcmp.CountDiffPixels(imageBeforeActive, imageAfterActive, roundingErrorThreshold)
 	if err != nil {
 		return errors.Wrap(err, "error on count match pixels")
 	}
@@ -974,7 +974,7 @@ func testPopupWindow(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 		holoBlueLight := color.RGBA{0x33, 0xb5, 0xe5, 0xff}
 		rect := captionImage.Bounds()
 		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
-		popupWindowPixelsCount := screenshot.CountPixels(captionImage, holoBlueLight)
+		popupWindowPixelsCount := imgcmp.CountPixels(captionImage, holoBlueLight)
 		return float64(popupWindowPixelsCount) * 100.0 / float64(totalPixels)
 	}
 

@@ -12,10 +12,11 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/media/imgcmp"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -211,7 +212,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 			SubImage(r image.Rectangle) image.Image
 		}).SubImage(image.Rect(bounds.Left, bounds.Top, bounds.Width, bounds.Height))
 
-		blackPixels := screenshot.CountPixels(subImage, color.RGBA{0, 0, 0, 255})
+		blackPixels := imgcmp.CountPixels(subImage, color.RGBA{0, 0, 0, 255})
 		rect := subImage.Bounds()
 		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
 		percent := blackPixels * 100 / totalPixels
@@ -222,7 +223,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		if percent > 3 {
 			// Save image with black pixels.
 			path := filepath.Join(s.OutDir(), "screenshot_fail.png")
-			if err := screenshot.DumpImageToPNG(ctx, &subImage, path); err != nil {
+			if err := imgcmp.DumpImageToPNG(ctx, &subImage, path); err != nil {
 				s.Fatal("Failed to create screenshot: ", err)
 			}
 			s.Logf("Image containing the black pixels: %s", path)

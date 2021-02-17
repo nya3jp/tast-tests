@@ -10,17 +10,15 @@ import (
 	"image"
 	"image/color"
 	"image/jpeg"
-	"io/ioutil"
 	"os"
 	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/colorcmp"
+	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/externaldata"
 	"chromiumos/tast/local/policyutil/pre"
@@ -61,42 +59,6 @@ func getImgBytesFromFilePath(filePath string) ([]byte, error) {
 	}
 	imgBytes := buf.Bytes()
 	return imgBytes, nil
-}
-
-// countPixelsWithDiff returns how many pixels in the specified color are contained in image with max diff.
-func countPixelsWithDiff(image image.Image, clr color.Color, colorMaxDiff uint8) int {
-	// TODO(mohamedaomar) crbug/1178509: refactor this function later to a shared package between  policy tests and arc.
-	rect := image.Bounds()
-	numPixels := 0
-	for y := rect.Min.Y; y < rect.Max.Y; y++ {
-		for x := rect.Min.X; x < rect.Max.X; x++ {
-			if colorcmp.ColorsMatch(image.At(x, y), clr, colorMaxDiff) {
-				numPixels++
-			}
-		}
-	}
-	return numPixels
-}
-
-// grabScreenshot creates a screenshot and returns an image.Image.
-func grabScreenshot(ctx context.Context, cr *chrome.Chrome) (image.Image, error) {
-	// TODO(mohamedaomar) crbug/1178509: refactor this function later to a shared package between  policy tests and arc.
-	fd, err := ioutil.TempFile("", "screenshot")
-	if err != nil {
-		return nil, errors.Wrap(err, "error opening screenshot file")
-	}
-	defer os.Remove(fd.Name())
-	defer fd.Close()
-
-	if err := screenshot.CaptureChrome(ctx, cr, fd.Name()); err != nil {
-		return nil, errors.Wrap(err, "failed to capture screenshot")
-	}
-
-	img, _, err := image.Decode(fd)
-	if err != nil {
-		return nil, errors.Wrap(err, "error decoding image file")
-	}
-	return img, nil
 }
 
 // WallpaperImage tests the WallpaperImage policy.
@@ -157,12 +119,12 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 			if param.wantImageCheck {
 				// Take a screenshot and check the red pixels percentage.
 				if err := testing.Poll(ctx, func(ctx context.Context) error {
-					img, err := grabScreenshot(ctx, cr)
+					img, err := screenshot.GrabScreenshot(ctx, cr)
 					if err != nil {
 						return testing.PollBreak(errors.Wrap(err, "failed to grab screenshot"))
 					}
 					rect := img.Bounds()
-					redPixels := countPixelsWithDiff(img, color.RGBA{255, 0, 0, 255}, 10)
+					redPixels := imgcmp.CountPixelsWithDiff(img, color.RGBA{255, 0, 0, 255}, 10)
 					totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
 					percent := redPixels * 100 / totalPixels
 					if percent < 90 {
