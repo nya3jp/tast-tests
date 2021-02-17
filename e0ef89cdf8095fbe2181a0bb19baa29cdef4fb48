@@ -35,6 +35,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5e773d_6c9100da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-17T01:25:37Z",
+      "side": 1,
+      "message": "Incognito windows are not returned by chrome.windows.getAll, and I\u0027m not sure why.",
+      "revId": "e0ef89cdf8095fbe2181a0bb19baa29cdef4fb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c1ec426_1fd93b15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-17T01:25:37Z",
+      "side": 1,
+      "message": "Ah, it might not be able to close incognito tabs. I need to look into this more.",
+      "parentUuid": "872f8eca_a7cdf5ca",
+      "revId": "e0ef89cdf8095fbe2181a0bb19baa29cdef4fb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74a9fda3_ce9843ae",
@@ -58,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f814552_05a8bfc0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-17T01:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74a9fda3_ce9843ae",
+      "range": {
+        "startLine": 292,
+        "startChar": 13,
+        "endLine": 292,
+        "endChar": 19
+      },
+      "revId": "e0ef89cdf8095fbe2181a0bb19baa29cdef4fb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4db1e610_6caa4e9e",
@@ -71,6 +130,24 @@
       "writtenOn": "2021-02-10T09:54:47Z",
       "side": 1,
       "message": "Maybe\n\nawait Promise.all((await getAll()).map(w \u003d\u003e remove(w.id));\n\nto run them in parallel?",
+      "revId": "e0ef89cdf8095fbe2181a0bb19baa29cdef4fb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e21a3ae_9e7f7ee0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-17T01:25:37Z",
+      "side": 1,
+      "message": "Ah, yes, that would be faster if there are a lot of windows.",
+      "parentUuid": "4db1e610_6caa4e9e",
       "revId": "e0ef89cdf8095fbe2181a0bb19baa29cdef4fb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
