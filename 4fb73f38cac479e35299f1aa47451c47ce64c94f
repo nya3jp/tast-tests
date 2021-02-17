@@ -177,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39df33e_96a55173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-17T18:18:18Z",
+      "side": 1,
+      "message": "done. please take a look Alex.",
+      "parentUuid": "cce09970_5e45fdf4",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 5
+      },
+      "revId": "4fb73f38cac479e35299f1aa47451c47ce64c94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f9ff369_71ffc330",
