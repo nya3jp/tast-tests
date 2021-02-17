@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f295356e_3bfb7b19",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-17T07:22:29Z",
+      "side": 1,
+      "message": "You\u0027re right, we\u0027re considering to recommend defining constants. We\u0027ll let you know in tast-users if we decide to do so.",
+      "parentUuid": "ba7edd59_8a16c07c",
+      "revId": "0a49a38a60907dab765cba94da13994f4457085b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d452b1f_5113238c",
@@ -66,6 +84,75 @@
       "side": 1,
       "message": "Jun, thanks for the input of using \"Parent\" feature. But per my test, the play store opt-in logic has to be performed before arc.New() (when chrome.Supported() and GAIA login are enabled). If I define a new fixture with \"Parent\" assigned to \"arcBooted\", I think arcBooted will fail to do arc.New() because play store hasn\u0027t been opted in.\n\nBut I can move the whole implementation into the arc/optin package, with the chrome.New() and arc.New() logic copied. Do you think this approach is preferred?",
       "parentUuid": "8d452b1f_5113238c",
+      "revId": "0a49a38a60907dab765cba94da13994f4457085b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef2f867_db1a6b02",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-17T07:22:29Z",
+      "side": 1,
+      "message": "TestAPIConn is cached and should not be closed.",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 21
+      },
+      "revId": "0a49a38a60907dab765cba94da13994f4457085b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62fb5ce7_a497e93b",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-17T07:22:29Z",
+      "side": 1,
+      "message": "This just emits a log. What operations are skipped?",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 69
+      },
+      "revId": "0a49a38a60907dab765cba94da13994f4457085b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e829cc82_6bfcf43a",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-17T07:22:29Z",
+      "side": 1,
+      "message": "I think this logic to close the play store window is interesting to all users of optin.Perform. How about introducing a new function optin.PerformAndClose which does exactly this?",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 39
+      },
       "revId": "0a49a38a60907dab765cba94da13994f4457085b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
