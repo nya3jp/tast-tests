@@ -90,7 +90,10 @@ func Homepage(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to convert test cases to the desired type")
 	}
 
-	kb, err := input.Keyboard(ctx)
+	// (crbug/1153639): It is suspected that some devices might have a special keyboard which
+	// is not able to execute the hotkeys in the test and hence makes it flaky on some boards.
+	// So, using virtual keyboard here to fix it.
+	kb, err := input.VirtualKeyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the keyboard: ", err)
 	}
