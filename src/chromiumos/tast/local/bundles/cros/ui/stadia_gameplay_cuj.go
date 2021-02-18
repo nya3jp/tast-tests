@@ -6,13 +6,18 @@ package ui
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/stadiacuj"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -21,12 +26,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     StadiaGameplayCUJ,
-		Desc:     "Measures the performance of critical user journey for game playing on Stadia",
-		Contacts: []string{"yichenz@chromium.org"},
-		// TODO(http://b/172070475): Test is disabled until it can be fixed
-		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Func:         StadiaGameplayCUJ,
+		Desc:         "Measures the performance of critical user journey for game playing on Stadia",
+		Contacts:     []string{"yichenz@chromium.org"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
+		Vars:         []string{"record"},
 		Timeout:      10 * time.Minute,
 		Fixture:      "loggedInToCUJUser",
 	})
@@ -36,10 +41,8 @@ func init() {
 // The game playing is hardcoded.
 func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	const (
-		timeout  = 10 * time.Second
-		gameName = "Mortal Kombat 11"
+		timeout = 30 * time.Second
 	)
-
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
@@ -62,6 +65,27 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
 
+	if _, ok := s.Var("record"); ok {
+		screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create ScreenRecorder: ", err)
+		}
+		defer func() {
+			screenRecorder.Stop(ctx)
+			dir, ok := testing.ContextOutDir(ctx)
+			if ok && dir != "" {
+				if _, err := os.Stat(dir); err == nil {
+					testing.ContextLogf(ctx, "Saving screen record to %s", dir)
+					if err := screenRecorder.SaveInBytes(ctx, filepath.Join(dir, "screen_record.webm")); err != nil {
+						s.Fatal("Failed to save screen record in bytes: ", err)
+					}
+				}
+			}
+			screenRecorder.Release(ctx)
+		}()
+		screenRecorder.Start(ctx, tconn)
+	}
+
 	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
 		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
 		"percent", perf.SmallerIsBetter, []int64{50, 80})}
@@ -72,7 +96,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(closeCtx)
 
-	conn, err := cr.NewConn(ctx, stadiacuj.StadiaAllGamesURL)
+	conn, err := cr.NewConn(ctx, stadiacuj.StadiaGameURL)
 	if err != nil {
 		s.Fatal("Failed to open the stadia staging instance: ", err)
 	}
@@ -85,21 +109,84 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer webview.Release(closeCtx)
 
-	if err := stadiacuj.StartGameFromGameListsView(ctx, tconn, conn, webview, gameName, timeout); err != nil {
-		s.Fatalf("Failed to start the game %s: %s", gameName, err)
-	}
-
-	// Wait for the game to be completely loaded and the opening animation to be done.
-	// TODO(crbug.com/1091976): use signal from Stadia games instead.
-	if err := testing.Sleep(ctx, time.Minute); err != nil {
-		s.Fatal("Failed to sleep: ", err)
-	}
-
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to create a keyboard: ", err)
 	}
 	defer kb.Close()
+
+	// Launch the game.
+	gameLaunchButton, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Play", Role: ui.RoleTypeButton}, timeout)
+	if err != nil {
+		s.Fatal("Failed to find the game launch button: ", err)
+	}
+	defer gameLaunchButton.Release(ctx)
+	if err := gameLaunchButton.MakeVisible(ctx); err != nil {
+		s.Fatal("Failed to make the game launch button visible: ", err)
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if exists, err := ui.Exists(ctx, tconn, ui.FindParams{Name: stadiacuj.StadiaGameName + " Play game", Role: ui.RoleTypeButton}); err != nil {
+			return errors.Wrap(err, "failed to check the existence of game start button")
+		} else if exists {
+			return nil
+		}
+		if err := gameLaunchButton.StableLeftClick(ctx, &testing.PollOptions{Interval: time.Second, Timeout: timeout}); err != nil {
+			return errors.Wrap(err, "failed to click the game launch button")
+		}
+		return errors.New("game hasn't launched yet")
+	}, &testing.PollOptions{Interval: time.Second, Timeout: timeout}); err != nil {
+		s.Fatal("Failed to launch the game: ", err)
+	}
+
+	// Start the game.
+	gameStartButton, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: stadiacuj.StadiaGameName + " Play game", Role: ui.RoleTypeButton}, timeout)
+	if err != nil {
+		s.Fatal("Failed to find the game start button: ", err)
+	}
+	defer gameStartButton.Release(ctx)
+	// Make sure the game is fully launched.
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the window list: ", err)
+	}
+	id0 := ws[0].ID
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		w0, err := ash.GetWindow(ctx, tconn, id0)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get the window"))
+		}
+		// If the window is already in full screen, the game has already started and
+		// no need to press the start button.
+		if w0.State == ash.WindowStateFullscreen {
+			return nil
+		}
+		if err = kb.Accel(ctx, "Enter"); err != nil {
+			return errors.Wrap(err, "failed to click the game start button")
+		}
+		return errors.New("game hasn't started yet")
+	}, &testing.PollOptions{Interval: time.Second, Timeout: timeout}); err != nil {
+		s.Fatal("Failed to start the game: ", err)
+	}
+
+	// If internet is unstable, try to start again one time.
+	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Name: "Try again"}, 45*time.Second); err != nil {
+		if !errors.Is(err, ui.ErrNodeDoesNotExist) {
+			s.Fatal("Failed to wait for try again button to show up: ", err)
+		}
+	} else {
+		// Try again if the button exists.
+		if err := ui.StableFindAndClick(ctx, tconn,
+			ui.FindParams{Name: "Try again"},
+			&testing.PollOptions{Interval: time.Second, Timeout: timeout},
+		); err != nil {
+			s.Fatal("Failed to find and click the try again button: ", err)
+		}
+	}
+
+	// Wait for the game to be completely loaded and the opening animation to be done.
+	if err := testing.Sleep(ctx, time.Minute); err != nil {
+		s.Fatal("Failed to sleep: ", err)
+	}
 
 	gameOngoing := false
 	defer func() {
@@ -114,25 +201,25 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Hard code the game playing routine.
 		// Enter the menu.
-		if err := stadiacuj.PressKeyInGame(ctx, kb, "Enter", 10*time.Second); err != nil {
+		if err := stadiacuj.PressKey(ctx, kb, "Enter", 10*time.Second); err != nil {
 			s.Fatal("Failed to enter the menu: ", err)
 		}
 		// Enter story mode.
-		if err := stadiacuj.PressKeyInGame(ctx, kb, "Enter", time.Second); err != nil {
+		if err := stadiacuj.PressKey(ctx, kb, "Enter", time.Second); err != nil {
 			s.Fatal("Failed to enter Story Mode: ", err)
 		}
 		// Select and enter exploration mode.
 		for i := 0; i < 3; i++ {
-			if err := stadiacuj.PressKeyInGame(ctx, kb, "Right", time.Second); err != nil {
+			if err := stadiacuj.PressKey(ctx, kb, "Right", time.Second); err != nil {
 				s.Fatal("Failed to select Exploration Mode: ", err)
 			}
 		}
-		if err := stadiacuj.PressKeyInGame(ctx, kb, "Enter", 20*time.Second); err != nil {
+		if err := stadiacuj.PressKey(ctx, kb, "Enter", 20*time.Second); err != nil {
 			s.Fatal("Failed to enter Exploration Mode: ", err)
 		}
 		gameOngoing = true
 		// Game starts. Control the main character to move forward for 30 seconds.
-		if err := stadiacuj.HoldKeyInGame(ctx, kb, "W", 30*time.Second); err != nil {
+		if err := stadiacuj.HoldKey(ctx, kb, "W", 30*time.Second); err != nil {
 			s.Fatal("Failed to move forward: ", err)
 		}
 		return nil

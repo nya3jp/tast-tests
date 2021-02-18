@@ -9,118 +9,21 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
 const (
-	// StadiaAllGamesURL is the url of all Stadia games page.
-	StadiaAllGamesURL = "https://ggp-staging.sandbox.google.com/store/list"
+	// StadiaGameURL is the url of the page of the testing game.
+	StadiaGameURL = "https://ggp-staging.sandbox.google.com/store/details/af885a49666547028488e24465865765rct1/sku/37e10f659b9e41e69df224a94ad881ac"
+	// StadiaGameName is the name of the testing game.
+	StadiaGameName = "Mortal Kombat 11"
 )
 
-// StartGameFromGameListsView locates the game by its name from the game list page
-// and starts the game.
-func StartGameFromGameListsView(ctx context.Context, tconn *chrome.TestConn, conn *chrome.Conn, n *ui.Node, name string, timeout time.Duration) error {
-	gameView := "View " + name + "."
-	gamePlay := "Play"
-	gameStart := name + " Play game"
-	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
-
-	// Find the game view from the game list.
-	gameViewButton, err := n.DescendantWithTimeout(ctx, ui.FindParams{Name: gameView, Role: ui.RoleTypeButton}, timeout)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find the game view button (%s)", gameView)
-	}
-	defer gameViewButton.Release(ctx)
-	if err := gameViewButton.MakeVisible(ctx); err != nil {
-		return errors.Wrapf(err, "failed to make the game view button (%s) visible", gameView)
-	}
-	if err := gameViewButton.StableLeftClick(ctx, &pollOpts); err != nil {
-		return errors.Wrapf(err, "failed to click the game view button (%s)", gameView)
-	}
-	// Wait for the progress bar to show up (new page loading) and to be gone (new page loading completed).
-	if err := n.WaitUntilDescendantExists(ctx, ui.FindParams{Role: ui.RoleTypeProgressIndicator}, timeout); err != nil {
-		return errors.Wrap(err, "failed to wait for progress bar to show up")
-	}
-	if err = n.WaitUntilDescendantGone(ctx, ui.FindParams{Role: ui.RoleTypeProgressIndicator}, timeout); err != nil {
-		return errors.Wrap(err, "failed to wait for progress bar to be gone")
-	}
-
-	// Play the game.
-	gamePlayButton, err := n.DescendantWithTimeout(ctx, ui.FindParams{Name: gamePlay, Role: ui.RoleTypeButton}, timeout)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find the game play button (%s)", gamePlay)
-	}
-	defer gamePlayButton.Release(ctx)
-	if err := gamePlayButton.MakeVisible(ctx); err != nil {
-		return errors.Wrapf(err, "failed to make the game play button (%s) visible", gamePlay)
-	}
-	// Make sure the Play button is clickable.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var atTop bool
-		if err := conn.Call(ctx, &atTop,
-			`() => {
-				var sel = Array.from(document.querySelectorAll('div')).find(e => e.textContent === "Play");
-				var b = sel.getBoundingClientRect();
-				var el = document.elementFromPoint((b.left+b.right)/2, (b.top+b.bottom)/2);
-				return sel.contains(el);
-			}`); err != nil {
-			return errors.Wrapf(err, "failed to check at top of selector %q", gamePlay)
-		}
-		if !atTop {
-			return errors.Errorf("selector %q is not at top", gamePlay)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
-		return errors.Wrap(err, "failed to wait for the Play button to be clickable")
-	}
-
-	if err := gamePlayButton.LeftClickUntil(ctx,
-		func(ctx context.Context) (bool, error) {
-			return ui.Exists(ctx, tconn, ui.FindParams{Name: gameStart, Role: ui.RoleTypeButton})
-		}, &pollOpts); err != nil {
-		return errors.Wrapf(err, "failed to click the game play button (%s)", gamePlay)
-	}
-
-	// Start(enter) the game.
-	gameStartButton, err := n.DescendantWithTimeout(ctx, ui.FindParams{Name: gameStart, Role: ui.RoleTypeButton}, timeout)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find the game start button (%s)", gameStart)
-	}
-	defer gameStartButton.Release(ctx)
-	// Make sure the game is fully launched.
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to obtain the window list")
-	}
-	id0 := ws[0].ID
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		w0, err := ash.GetWindow(ctx, tconn, id0)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get the window"))
-		}
-		// If the window is already in full screen, the game has already started and
-		// no need to press the start button.
-		if w0.State == ash.WindowStateFullscreen {
-			return nil
-		}
-		if err := gameStartButton.StableLeftClick(ctx, &pollOpts); err != nil {
-			return errors.Wrapf(err, "failed to click the game start button (%s)", gameStart)
-		}
-		return errors.New("game hasn't started yet")
-	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
-		return errors.Wrapf(err, "failed to start the game %s", name)
-	}
-
-	return nil
-}
-
-// PressKeyInGame presses a given key and waited for a given duration. Video games take time
+// PressKey presses a given key and waited for a given duration. Video games take time
 // to process keyboard events so the intervals between two events are necessary.
-func PressKeyInGame(ctx context.Context, kb *input.KeyboardEventWriter, s string, duration time.Duration) error {
+func PressKey(ctx context.Context, kb *input.KeyboardEventWriter, s string, duration time.Duration) error {
 	if err := kb.Accel(ctx, s); err != nil {
 		return errors.Wrap(err, "failed to press the key")
 	}
@@ -130,9 +33,9 @@ func PressKeyInGame(ctx context.Context, kb *input.KeyboardEventWriter, s string
 	return nil
 }
 
-// HoldKeyInGame holds a key for a given duration. Holding keys (especially arrow keys) is very common in
+// HoldKey holds a key for a given duration. Holding keys (especially arrow keys) is very common in
 // video game playing.
-func HoldKeyInGame(ctx context.Context, kb *input.KeyboardEventWriter, s string, duration time.Duration) error {
+func HoldKey(ctx context.Context, kb *input.KeyboardEventWriter, s string, duration time.Duration) error {
 	if err := kb.AccelPress(ctx, s); err != nil {
 		return errors.Wrap(err, "failed to long press the key")
 	}
@@ -147,7 +50,7 @@ func HoldKeyInGame(ctx context.Context, kb *input.KeyboardEventWriter, s string,
 
 // ExitGame holds esc key and exits the game.
 func ExitGame(ctx context.Context, kb *input.KeyboardEventWriter, webpage *ui.Node) error {
-	if err := HoldKeyInGame(ctx, kb, "esc", 2*time.Second); err != nil {
+	if err := HoldKey(ctx, kb, "esc", 2*time.Second); err != nil {
 		return errors.Wrap(err, "failed to hold the sec key")
 	}
 	exitButton, err := webpage.DescendantWithTimeout(ctx, ui.FindParams{Name: "Exit game", Role: ui.RoleTypeButton}, 10*time.Second)
