@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "573f45e1_60cbfea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-02-18T21:28:33Z",
+      "side": 1,
+      "message": "I will do it in another CL :D",
+      "parentUuid": "95b0dbcb_925d1ffd",
+      "revId": "6e8c587dc16144f9c715115c86a6dad5fea557de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83116cde_9ffd5699",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b560f7b_4ec00c99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-02-18T21:28:33Z",
+      "side": 1,
+      "message": "I will do it in another CL 👌",
+      "parentUuid": "83116cde_9ffd5699",
+      "revId": "6e8c587dc16144f9c715115c86a6dad5fea557de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c21477a4_7e779532",
@@ -82,6 +118,30 @@
       "writtenOn": "2021-02-18T20:34:06Z",
       "side": 1,
       "message": "Do we still need \"-1\" that \"new tab\" seems no longer there?",
+      "range": {
+        "startLine": 434,
+        "startChar": 91,
+        "endLine": 434,
+        "endChar": 93
+      },
+      "revId": "6e8c587dc16144f9c715115c86a6dad5fea557de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "915f12e6_8e8e5f86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-02-18T21:28:33Z",
+      "side": 1,
+      "message": "oops thank you for catching that...",
+      "parentUuid": "c21477a4_7e779532",
       "range": {
         "startLine": 434,
         "startChar": 91,
