@@ -6,13 +6,13 @@ package nearbyshare
 
 import (
 	"context"
-	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/nearbyshare"
 	"chromiumos/tast/testing"
@@ -32,26 +32,14 @@ func init() {
 
 // MultiDUTUISmoke tests that we can enable Nearby Share on two DUTs in a single test.
 func MultiDUTUISmoke(ctx context.Context, s *testing.State) {
-	// TODO(b/175889133) Remove hardcoded hostnames when multi dut skylab support is available.
-	const (
-		HatchHostname   = "chromeos15-row6a-rack12-host2a"
-		OctopusHostname = "chromeos15-row6a-rack12-host2b"
-	)
 	d1 := s.DUT()
-	s.Log("Hostname is ", s.DUT().HostName())
-	// Figure out which DUT is primary and which is secondary.
-	// Switch on the DUTs in our lab setup first, then fall back to user supplied var.
-	var secondaryDUT string
-	if strings.Contains(s.DUT().HostName(), HatchHostname) {
-		secondaryDUT = OctopusHostname
-	} else if strings.Contains(s.DUT().HostName(), OctopusHostname) {
-		secondaryDUT = HatchHostname
-	} else {
-		secondary, ok := s.Var("secondaryTarget")
-		if !ok {
-			s.Fatal("Test is running on an unknown hostname and no secondaryTarget arg was supplied")
-		}
-		secondaryDUT = secondary
+	secondary, ok := s.Var("secondaryTarget")
+	if !ok {
+		secondary = ""
+	}
+	secondaryDUT, err := nearbytestutils.ChooseSecondaryDUT(d1.HostName(), secondary)
+	if err != nil {
+		s.Fatal("Failed to find hostname for DUT2: ", err)
 	}
 
 	s.Log("Connecting to secondary DUT: ", secondaryDUT)
