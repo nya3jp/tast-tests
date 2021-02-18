@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/crd"
+	"chromiumos/tast/local/chrome/uiauto/crd"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
