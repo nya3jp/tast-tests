@@ -8,6 +8,8 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -20,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
@@ -30,12 +33,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     WindowArrangementCUJ,
-		Desc:     "Measures the performance of critical user journey for window arrangements",
-		Contacts: []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
-		// TODO(http://b/172069842): Test is disabled until it can be fixed
-		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Func:         WindowArrangementCUJ,
+		Desc:         "Measures the performance of critical user journey for window arrangements",
+		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},
+		Vars:         []string{"record"},
 		Timeout:      10 * time.Minute,
 		Data:         []string{"bear-320x240.vp8.webm", "pip.html"},
 		Fixture:      "loggedInToCUJUser",
@@ -92,6 +95,27 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
+	}
+
+	if _, ok := s.Var("record"); ok {
+		screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create ScreenRecorder: ", err)
+		}
+		defer func() {
+			screenRecorder.Stop(ctx)
+			dir, ok := testing.ContextOutDir(ctx)
+			if ok && dir != "" {
+				if _, err := os.Stat(dir); err == nil {
+					testing.ContextLogf(ctx, "Saving screen record to %s", dir)
+					if err := screenRecorder.SaveInBytes(ctx, filepath.Join(dir, "screen_record.webm")); err != nil {
+						s.Fatal("Failed to save screen record in bytes: ", err)
+					}
+				}
+			}
+			screenRecorder.Release(ctx)
+		}()
+		screenRecorder.Start(ctx, tconn)
 	}
 
 	// Set up the cuj.Recorder: In clamshell mode, this test will measure the combinations of
@@ -226,15 +250,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			}
 
 			// Drag window.
-			tabs, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeTab, ClassName: "Tab"})
+			newTabButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "New Tab"}, timeout)
 			if err != nil {
-				return errors.Wrap(err, "failed to find tabs")
+				return errors.Wrap(err, "failed to find maximize button")
 			}
-			defer tabs.Release(ctx)
-			if len(tabs) != 2 {
-				return errors.Errorf("expected 2 tabs, only found %v tab(s)", len(tabs))
-			}
-			tabStripGapPt := coords.NewPoint(tabs[1].Location.CenterX(), (tabs[1].Location.Top+bounds.Top)/2)
+			tabStripGapPt := coords.NewPoint(newTabButton.Location.Right()+10, newTabButton.Location.Top)
 			testing.ContextLog(ctx, "Dragging the window")
 			if err := pointer.Drag(ctx, pc, tabStripGapPt, middlePt, duration); err != nil {
 				return errors.Wrap(err, "failed to drag window from the tab strip point to the middle")
@@ -254,7 +274,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to maximize the window")
 			}
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-				return w.ID == id0 && w.State == ash.WindowStateMaximized
+				return w.ID == id0 && w.State == ash.WindowStateMaximized && !w.IsAnimating
 			}, &testing.PollOptions{Timeout: timeout}); err != nil {
 				return errors.Wrap(err, "failed to wait for window to become maximized")
 			}
@@ -270,7 +290,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to minimize the window")
 			}
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-				return w.ID == id0 && w.State == ash.WindowStateMinimized
+				return w.ID == id0 && w.State == ash.WindowStateMinimized && !w.IsAnimating
 			}, &testing.PollOptions{Timeout: timeout}); err != nil {
 				return errors.Wrap(err, "failed to wait for window to become minimized")
 			}
@@ -294,7 +314,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to wait for window to be left snapped")
 			}
 			testing.ContextLog(ctx, "Snapping the second tab to the right")
-			tabs, err = chromeui.FindAll(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeTab, ClassName: "Tab"})
+			tabs, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeTab, ClassName: "Tab"})
 			if err != nil {
 				return errors.Wrap(err, "failed to find tabs")
 			}
@@ -400,7 +420,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		// tab dragging and split view resizing.
 		f = func(ctx context.Context) error {
 			// Drag the second tab to snap to the right.
-			tabStrip, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeTabList, ClassName: "TabStrip"}, timeout)
+			tabStrip, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "TabStrip"}, timeout)
 			if err != nil {
 				return errors.Wrap(err, "failed to find the tab strip")
 			}
@@ -410,9 +430,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to find children nodes of the tab list")
 			}
 			defer tabs.Release(ctx)
-			// tabStrip includes tabs and a 'New Tab' button, so it should have three children nodes.
-			if len(tabs) != 3 {
-				return errors.Errorf("failed to get the second tab, expected 2 tabs, got %v", len(tabs)-1)
+			if len(tabs) != 2 {
+				return errors.Errorf("failed to get the second tab, expected 2 tabs, got %v", len(tabs))
 			}
 			tab2 := tabs[1]
 			testing.ContextLog(ctx, "Snapping the second tab to the right")
