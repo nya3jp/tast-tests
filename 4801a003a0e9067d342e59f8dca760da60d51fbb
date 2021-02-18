@@ -33,6 +33,24 @@
       "message": "It provides vital information about missing boards on server.\nI want let Josh decide",
       "revId": "4801a003a0e9067d342e59f8dca760da60d51fbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f315fa_dafb5a81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2021-02-18T19:24:17Z",
+      "side": 1,
+      "message": "Agreed, the test is providing good information, and I\u0027m working on fixing the broken builds so Play Auto Install works properly. I\u0027d prefer we leave the test enabled.",
+      "parentUuid": "c59c0b14_79ad2bfc",
+      "revId": "4801a003a0e9067d342e59f8dca760da60d51fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
