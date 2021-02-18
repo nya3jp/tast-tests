@@ -88,18 +88,7 @@ func ModeSwitch(ctx context.Context, s *testing.State) {
 	s.Log("Verifying that no TBT devices enumerated")
 
 	err = testing.Poll(ctx, func(ctx context.Context) error {
-		files, err := ioutil.ReadDir("/sys/bus/thunderbolt/devices")
-		if err != nil {
-			return err
-		}
-		for _, file := range files {
-			// Check for built-in TBT devices.
-			if file.Name() == "domain0" || file.Name() == "0-0" {
-				continue
-			}
-			return errors.Errorf("found TBT device: %s", file.Name())
-		}
-		return nil
+		return checkTBTDevice(false)
 	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 10 * time.Second})
 	if err != nil {
 		s.Fatal("Failed to verify no TBT devices connected at login screen: ", err)
@@ -121,18 +110,7 @@ func ModeSwitch(ctx context.Context, s *testing.State) {
 	s.Log("Verifying that TBT device enumerated correctly")
 
 	err = testing.Poll(ctx, func(ctx context.Context) error {
-		files, err := ioutil.ReadDir("/sys/bus/thunderbolt/devices")
-		if err != nil {
-			return err
-		}
-		for _, file := range files {
-			// Check for non-built-in TBT devices.
-			if file.Name() != "domain0" && file.Name() != "0-0" {
-				return nil
-			}
-		}
-
-		return errors.New("no external TBT device found")
+		return checkTBTDevice(true)
 	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 10 * time.Second})
 	if err != nil {
 		s.Fatal("Failed to verify TBT devices connected after login: ", err)
@@ -146,6 +124,33 @@ func ModeSwitch(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to verify DP monitor working after login: ", err)
 	}
+}
+
+// checkTBTDevice is a helper function which checks for a TBT connected device.
+// |expected| specifies whether we want to check for the presence of a TBT device (true) or the
+// absence of one (false).
+func checkTBTDevice(expected bool) error {
+	files, err := ioutil.ReadDir("/sys/bus/thunderbolt/devices")
+	if err != nil {
+		return errors.Wrap(err, "couldn't read TBT devices directory")
+	}
+
+	found := ""
+	for _, file := range files {
+		// Check for non-built-in TBT devices.
+		if file.Name() != "domain0" && file.Name() != "0-0" {
+			found = file.Name()
+			break
+		}
+	}
+
+	if expected && found == "" {
+		return errors.New("no external TBT device found")
+	} else if !expected && found != "" {
+		return errors.Errorf("found TBT device: %s", found)
+	}
+
+	return nil
 }
 
 // findConnectedDPMonitor checks the following two conditions:
