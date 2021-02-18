@@ -98,21 +98,21 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 		return nil, errors.Wrap(err, "failed to run getArcStartTime()")
 	}
 	adjustedArcStartTimeMS := int64(arcStartTimeMS)
-	testing.ContextLogf(ctx, "ARC start time in host uptime: %dms", adjustedArcStartTimeMS)
+	testing.ContextLogf(ctx, "ARC start time in host clock: %dms", adjustedArcStartTimeMS)
 
 	vmEnabled, err := arc.VMEnabled()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to check whether ARCVM is enabled")
 	}
 	if vmEnabled {
-		uptimeDeltaMS, err := uptimeDeltaMS(ctx, a)
+		clockDeltaMS, err := clockDeltaMS(ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to obtain uptime delta")
+			return nil, errors.Wrap(err, "failed to obtain clock delta")
 		}
-		// Guest uptime and host uptime are different on ARCVM, so we adjust ARC start time.
+		// Guest clock and host clock are different on ARCVM, so we adjust ARC start time.
 		// adjustedArcStartTimeMS is expected to be a negative value.
-		adjustedArcStartTimeMS -= uptimeDeltaMS
-		testing.ContextLogf(ctx, "ARC start time in guest uptime: %dms", adjustedArcStartTimeMS)
+		adjustedArcStartTimeMS -= clockDeltaMS
+		testing.ContextLogf(ctx, "ARC start time in guest clock: %dms", adjustedArcStartTimeMS)
 	}
 
 	// Set timeout for the logcat command below.
@@ -181,38 +181,39 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 	return res, nil
 }
 
-// uptimeDeltaMS returns (hostUptime - guestUptime) in millisecond.
-func uptimeDeltaMS(ctx context.Context, a *arc.ARC) (int64, error) {
-	parseUptime := func(output string) (int64, error) {
-		tokens := strings.Split(output, " ")
-		if len(tokens) != 2 {
-			return 0, errors.Errorf("unexpected format of /proc/uptime: %q", output)
+// clockDeltaMS returns (the host's CLOCK_MONOTONIC - the guest's CLOCK_MONOTONIC) in milliseconds.
+func clockDeltaMS(ctx context.Context) (int64, error) {
+	// /proc/timer_list contains a line which says "now at %Ld nsecs".
+	// This clock value comes from CLOCK_MONOTONIC (see the kernel's kernel/time/timer_list.c).
+	parse := func(output string) (int64, error) {
+		for _, line := range strings.Split(output, "\n") {
+			tokens := strings.Split(line, " ")
+			if len(tokens) == 4 && tokens[0] == "now" && tokens[1] == "at" && tokens[3] == "nsecs" {
+				return strconv.ParseInt(tokens[2], 10, 64)
+			}
 		}
-		uptime, err := strconv.ParseFloat(tokens[0], 64)
-		if err != nil {
-			return 0, errors.Wrapf(err, "unexpected content in uptime fil: %q", output)
-		}
-		return (int64)(uptime * 1000), nil
+		return 0, errors.Errorf("unexpected format of /proc/timer_list: %q", output)
 	}
 
-	out, err := a.Command(ctx, "cat", "/proc/uptime").Output(testexec.DumpLogOnError)
+	// Use android-sh to read /proc/timer_list which only root can read.
+	out, err := arc.BootstrapCommand(ctx, "/system/bin/cat", "/proc/timer_list").Output(testexec.DumpLogOnError)
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to read guest's /proc/uptime")
+		return 0, errors.Wrap(err, "failed to read guest's /proc/timer_list")
 	}
-	guestUptimeMS, err := parseUptime(string(out))
+	guestClockNS, err := parse(string(out))
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to prase guest's /proc/uptime")
-	}
-
-	out, err = testexec.CommandContext(ctx, "cat", "/proc/uptime").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to read host's /proc/uptime")
-	}
-	hostUptimeMS, err := parseUptime(string(out))
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to prase host's /proc/uptime")
+		return 0, errors.Wrap(err, "failed to prase guest's /proc/timer_list")
 	}
 
-	testing.ContextLogf(ctx, "Host uptime: %dms, Guest uptime: %dms", hostUptimeMS, guestUptimeMS)
-	return hostUptimeMS - guestUptimeMS, nil
+	out, err = testexec.CommandContext(ctx, "cat", "/proc/timer_list").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to read host's /proc/timer_list")
+	}
+	hostClockNS, err := parse(string(out))
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to prase host's /proc/timer_list")
+	}
+
+	testing.ContextLogf(ctx, "Host clock: %d ns, Guest clock: %d ns", hostClockNS, guestClockNS)
+	return (hostClockNS - guestClockNS) / 1000000, nil
 }
