@@ -222,6 +222,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23a1da62_3f2fbd5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-18T15:32:42Z",
+      "side": 1,
+      "message": "This is the future of all tests that uses precondition, so there is no need to add a TODO here.\nIt is just that the fixtures are working now, and if you use it instead of the precondition, you don\u0027t have to update the test later.",
+      "parentUuid": "2d9ba8f7_67d0fc34",
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c79d8d0_fdcc05d1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
         "patchSetId": 3
@@ -398,6 +416,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "dabe45a1_090beca6",
+      "range": {
+        "startLine": 191,
+        "startChar": 62,
+        "endLine": 191,
+        "endChar": 65
+      },
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7b30aea_0afdb6a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-18T15:32:42Z",
+      "side": 1,
+      "message": "You did not rewrite it to [\u0027%s\u0027].",
+      "parentUuid": "7ed7ee2b_ce279122",
       "range": {
         "startLine": 191,
         "startChar": 62,
