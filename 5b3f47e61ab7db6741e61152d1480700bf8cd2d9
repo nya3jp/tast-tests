@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32c1198d_4ee72113",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-18T02:29:06Z",
+      "side": 1,
+      "message": "My CQ+1 on crrev.com/c/2688763 accidentally aborted CQ run, sorry.\n",
+      "revId": "5b3f47e61ab7db6741e61152d1480700bf8cd2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
