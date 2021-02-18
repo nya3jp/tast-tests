@@ -46,6 +46,23 @@
       },
       "revId": "1f4f8af443dcdeaae001a448080c8feaf8fde55a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06252f6c_0cd53d23",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-18T13:04:23Z",
+      "side": 1,
+      "message": "Sorry, overlooked.\nThis may be another timing issue. The subprocess may be collected at this timing in another goroutine.\n\nMaybe skip this?",
+      "revId": "1f4f8af443dcdeaae001a448080c8feaf8fde55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
