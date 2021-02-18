@@ -22,9 +22,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WifiCheckIntelFWDump,
-		Desc:         "Verifies that device coredumps are not empty",
-		Contacts:     []string{"arowa@chromium.org", "cros-telemetry@google.com"},
+		Func: WifiCheckIntelFWDump,
+		Desc: "Verifies that device coredumps are not empty",
+		Contacts: []string{
+			"arowa@chromium.org",              // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+			"cros-telemetry@google.com",
+		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi"},
 		// NB: The WifiIntel dependency tracks a manually maintained list of devices.

@@ -27,9 +27,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UdevRename,
-		Desc:         "Verifies that network interfaces remain intact after udev restart and WiFi driver rebind",
-		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
+		Func: UdevRename,
+		Desc: "Verifies that network interfaces remain intact after udev restart and WiFi driver rebind",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
 		// TODO(b/149247291): remove the dependency once elm/hana upreved kernel to 4.19 or above.

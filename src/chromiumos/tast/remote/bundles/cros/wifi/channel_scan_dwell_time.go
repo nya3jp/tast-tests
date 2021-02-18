@@ -30,9 +30,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        ChannelScanDwellTime,
-		Desc:        "Tests that channel dwell time for single-channel scan is within acceptable range",
-		Contacts:    []string{"wgd@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: ChannelScanDwellTime,
+		Desc: "Tests that channel dwell time for single-channel scan is within acceptable range",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_perf"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),

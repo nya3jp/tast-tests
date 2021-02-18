@@ -19,9 +19,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PersistenceWifiSansBluetooth,
-		Desc:         "Verifies that WiFi remains operational when Bluetooth is disabled on reboot",
-		Contacts:     []string{"billyzhao@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: PersistenceWifiSansBluetooth,
+		Desc: "Verifies that WiFi remains operational when Bluetooth is disabled on reboot",
+		Contacts: []string{
+			"billyzhao@google.com",            // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		SoftwareDeps: []string{"chrome", "reboot"},
 		ServiceDeps:  []string{wificell.TFServiceName, "tast.cros.network.BluetoothService"},

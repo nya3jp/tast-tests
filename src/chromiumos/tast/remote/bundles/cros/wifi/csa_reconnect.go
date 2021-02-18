@@ -17,9 +17,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        CSAReconnect,
-		Desc:        "Verifies that DUT will switch to the new channel after the AP starts a CSA",
-		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: CSAReconnect,
+		Desc: "Verifies that DUT will switch to the new channel after the AP starts a CSA",
+		Contacts: []string{
+			"arowa@google.com",                // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
