@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eec432ac_d9af9eb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-18T11:04:56Z",
+      "side": 1,
+      "message": "really, they all can have all 4 states? I didn\u0027t know about it. Is there a doc about it? I was able to find only\nhttps://cloud.google.com/docs/chrome-enterprise/policies/?policy\u003dScreenMagnifierType",
+      "parentUuid": "3bdf3215_085052ea",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a786149_28e614e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2021-02-18T10:14:21Z",
       "side": 1,
       "message": "File a tracking bug (and it here) about deleting the other accessibility tests that this test substitutes when this test goes to CQ.",
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "148cd3cd_23a4dd3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-18T11:04:56Z",
+      "side": 1,
+      "message": "I was planning to create a CQ after this one. But your approach makes more sense and the intention is more visible. Will do.",
+      "parentUuid": "5a786149_28e614e9",
       "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dff3b88_8d29df29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-18T11:04:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c79d8d0_fdcc05d1",
+      "range": {
+        "startLine": 156,
+        "startChar": 24,
+        "endLine": 156,
+        "endChar": 53
+      },
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e23a0bc2_f74b9959",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-02-18T08:59:31Z",
       "side": 1,
       "message": "nit: use [\u0027%s\u0027]",
+      "range": {
+        "startLine": 181,
+        "startChar": 76,
+        "endLine": 181,
+        "endChar": 79
+      },
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15174b9c_adaf4cef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-18T11:04:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e23a0bc2_f74b9959",
       "range": {
         "startLine": 181,
         "startChar": 76,
@@ -140,6 +230,54 @@
       "writtenOn": "2021-02-18T10:14:21Z",
       "side": 1,
       "message": "nit: change here as well, if you change it above.",
+      "range": {
+        "startLine": 191,
+        "startChar": 62,
+        "endLine": 191,
+        "endChar": 65
+      },
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6379bc2_e1a35f78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-18T11:04:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c2f1845f_7c156fab",
+      "range": {
+        "startLine": 191,
+        "startChar": 6,
+        "endLine": 191,
+        "endChar": 12
+      },
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ed7ee2b_ce279122",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-18T11:04:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dabe45a1_090beca6",
       "range": {
         "startLine": 191,
         "startChar": 62,
