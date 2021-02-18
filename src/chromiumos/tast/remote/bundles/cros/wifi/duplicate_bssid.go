@@ -14,9 +14,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        DuplicateBSSID,
-		Desc:        "Test that two APs with the same BSSID, but with different SSIDs can both be seen in the scan results",
-		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: DuplicateBSSID,
+		Desc: "Test that two APs with the same BSSID, but with different SSIDs can both be seen in the scan results",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation
+		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

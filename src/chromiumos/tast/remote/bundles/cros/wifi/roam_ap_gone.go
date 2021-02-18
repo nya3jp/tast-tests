@@ -33,9 +33,12 @@ var (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        RoamAPGone,
-		Desc:        "Tests roaming to an AP that disappears while the client is awake",
-		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: RoamAPGone,
+		Desc: "Tests roaming to an AP that disappears while the client is awake",
+		Contacts: []string{
+			"arowa@google.com",                // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation
+		},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),

@@ -13,10 +13,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     IWGetSet,
-		Desc:     "Test IW getter and setter functions",
-		Contacts: []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func: IWGetSet,
+		Desc: "Test IW getter and setter functions",
+		Contacts: []string{
+			"deanliao@google.com",             // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation
+		},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 

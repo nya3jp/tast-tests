@@ -14,9 +14,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WifiCaps80211ac,
-		Desc:         "Verifies DUT supports required 802.11ac capabilities",
-		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
+		Func: WifiCaps80211ac,
+		Desc: "Verifies DUT supports required 802.11ac capabilities",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation
+		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi"},
 		HardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
