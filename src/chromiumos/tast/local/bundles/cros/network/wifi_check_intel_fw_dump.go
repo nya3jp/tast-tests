@@ -22,9 +22,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WifiCheckIntelFWDump,
-		Desc:         "Verifies that device coredumps are not empty",
-		Contacts:     []string{"arowa@chromium.org", "cros-telemetry@google.com"},
+		Func: WifiCheckIntelFWDump,
+		Desc: "Verifies that device coredumps are not empty",
+		Contacts: []string{
+			"arowa@chromium.org",              // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation
+			"cros-telemetry@google.com",
+		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi", "intel_wifi_chip"},
 		// TODO(crbug.com/1070299): Remove the below hard-coded devices

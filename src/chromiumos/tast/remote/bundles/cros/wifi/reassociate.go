@@ -14,9 +14,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        Reassociate,
-		Desc:        "Tests that wpa_supplicant reassociate operation completes within a reasonable time",
-		Contacts:    []string{"wgd@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: Reassociate,
+		Desc: "Tests that wpa_supplicant reassociate operation completes within a reasonable time",
+		Contacts: []string{
+			"wgd@google.com",                  // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation
+		},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

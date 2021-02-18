@@ -21,9 +21,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        ProfileGUID,
-		Desc:        "Verifies that shill correctly handles GUIDs (Globally Unique IDentifier) in the context of WiFi services",
-		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: ProfileGUID,
+		Desc: "Verifies that shill correctly handles GUIDs (Globally Unique IDentifier) in the context of WiFi services",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation
+		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

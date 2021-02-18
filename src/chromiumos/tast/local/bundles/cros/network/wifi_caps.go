@@ -16,9 +16,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WifiCaps,
-		Desc:         "Verifies DUT supports a minimum set of required protocols",
-		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
+		Func: WifiCaps,
+		Desc: "Verifies DUT supports a minimum set of required protocols",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation
+		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
 	})

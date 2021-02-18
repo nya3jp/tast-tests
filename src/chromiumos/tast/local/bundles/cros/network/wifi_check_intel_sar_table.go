@@ -27,7 +27,7 @@ func init() {
 		Desc: "Runs a preliminary check on device SAR tables for devices with Intel WiFi",
 		Contacts: []string{
 			"kglund@google.com",               // Author
-			"chromeos-kernel-wifi@google.com", // WiFi team
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation
 		},
 		SoftwareDeps: []string{"wifi", "shill-wifi", "intel_wifi_chip"},
 		Attr:         []string{"group:mainline", "informational"},
