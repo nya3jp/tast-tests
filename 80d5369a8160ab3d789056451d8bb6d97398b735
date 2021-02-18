@@ -300,6 +300,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c7bc1a2_ed7070b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-18T22:38:39Z",
+      "side": 1,
+      "message": "LGTM 👍",
+      "parentUuid": "3721e7ed_c4245d08",
+      "range": {
+        "startLine": 217,
+        "startChar": 47,
+        "endLine": 217,
+        "endChar": 56
+      },
+      "revId": "80d5369a8160ab3d789056451d8bb6d97398b735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "023f9f76_94854dc0",
@@ -384,6 +408,30 @@
       "side": 1,
       "message": "The thing here is that I don\u0027t have a specific file name to click on (and the file names are different from one subtest to another). Is it ok if I keep it this way?",
       "parentUuid": "ce93f0d4_eb141cf9",
+      "range": {
+        "startLine": 234,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 70
+      },
+      "revId": "80d5369a8160ab3d789056451d8bb6d97398b735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7bd3db1_3321b1b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-18T22:38:39Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "192d6280_b715ab70",
       "range": {
         "startLine": 234,
         "startChar": 2,
