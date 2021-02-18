@@ -30,7 +30,7 @@ func init() {
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
-		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
+		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBootedWithVideoLogging",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
@@ -41,7 +41,7 @@ func init() {
 				PixelFormat: videotype.I420,
 			},
 			ExtraData:         []string{video.Bear192P.Name},
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_p", caps.HWEncodeH264},
 		}, {
 			Name: "h264_192p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -50,7 +50,7 @@ func init() {
 				PixelFormat: videotype.I420,
 			},
 			ExtraData:         []string{video.Bear192P.Name},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeH264},
 		}, {
 			Name: "h264_360p_i420",
 			Val: video.EncodeTestOptions{
@@ -58,7 +58,7 @@ func init() {
 				Params:      video.Tulip360P,
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip360P.Name},
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_p", caps.HWEncodeH264},
 		}, {
 			Name: "h264_360p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -66,7 +66,7 @@ func init() {
 				Params:      video.Tulip360P,
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip360P.Name},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeH264},
 		}, {
 			Name: "h264_720p_i420",
 			Val: video.EncodeTestOptions{
@@ -74,7 +74,7 @@ func init() {
 				Params:      video.Tulip720P,
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip720P.Name},
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_p", caps.HWEncodeH264},
 		}, {
 			Name: "h264_720p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -82,7 +82,7 @@ func init() {
 				Params:      video.Tulip720P,
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Tulip720P.Name},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeH264},
 		}, {
 			Name: "h264_1080p_i420",
 			Val: video.EncodeTestOptions{
@@ -90,7 +90,7 @@ func init() {
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Crowd1080P.Name},
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_p", caps.HWEncodeH264},
 		}, {
 			Name: "h264_1080p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -98,7 +98,73 @@ func init() {
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420},
 			ExtraData:         []string{video.Crowd1080P.Name},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeH264},
+		}, {
+			Name: "vp8_192p_i420_vm",
+			Val: video.EncodeTestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      video.Bear192P,
+				PixelFormat: videotype.I420,
+			},
+			ExtraData:         []string{video.Bear192P.Name},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP8},
+		}, {
+			Name: "vp8_360p_i420_vm",
+			Val: video.EncodeTestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      video.Tulip360P,
+				PixelFormat: videotype.I420},
+			ExtraData:         []string{video.Tulip360P.Name},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP8},
+		}, {
+			Name: "vp8_720p_i420_vm",
+			Val: video.EncodeTestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      video.Tulip720P,
+				PixelFormat: videotype.I420},
+			ExtraData:         []string{video.Tulip720P.Name},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP8},
+		}, {
+			Name: "vp8_1080p_i420_vm",
+			Val: video.EncodeTestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      video.Crowd1080P,
+				PixelFormat: videotype.I420},
+			ExtraData:         []string{video.Crowd1080P.Name},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP8},
+		}, {
+			Name: "vp9_192p_i420_vm",
+			Val: video.EncodeTestOptions{
+				Profile:     videotype.VP9Prof,
+				Params:      video.Bear192P,
+				PixelFormat: videotype.I420,
+			},
+			ExtraData:         []string{video.Bear192P.Name},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP9},
+		}, {
+			Name: "vp9_360p_i420_vm",
+			Val: video.EncodeTestOptions{
+				Profile:     videotype.VP9Prof,
+				Params:      video.Tulip360P,
+				PixelFormat: videotype.I420},
+			ExtraData:         []string{video.Tulip360P.Name},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP9},
+		}, {
+			Name: "vp9_720p_i420_vm",
+			Val: video.EncodeTestOptions{
+				Profile:     videotype.VP9Prof,
+				Params:      video.Tulip720P,
+				PixelFormat: videotype.I420},
+			ExtraData:         []string{video.Tulip720P.Name},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP9},
+		}, {
+			Name: "vp9_1080p_i420_vm",
+			Val: video.EncodeTestOptions{
+				Profile:     videotype.VP9Prof,
+				Params:      video.Crowd1080P,
+				PixelFormat: videotype.I420},
+			ExtraData:         []string{video.Crowd1080P.Name},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP9},
 		}},
 	})
 }
