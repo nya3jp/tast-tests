@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f098747_3b7a5715",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_managed_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-02-18T00:29:46Z",
+      "side": 1,
+      "message": "we can probably drop Vlad from this list 😊 And potentially add amehfooz",
+      "revId": "2fb5adf4d64e388c77a85ff45ff10e309df19e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "317f3f1b_815bf42a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_managed_device_info.go",
         "patchSetId": 2
@@ -60,6 +77,23 @@
         "endLine": 35,
         "endChar": 34
       },
+      "revId": "2fb5adf4d64e388c77a85ff45ff10e309df19e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf6538d_8d095895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_managed_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-02-18T00:29:46Z",
+      "side": 1,
+      "message": "Is this expected to open chrome://management, we may want to verify that it actually opens that page",
       "revId": "2fb5adf4d64e388c77a85ff45ff10e309df19e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
