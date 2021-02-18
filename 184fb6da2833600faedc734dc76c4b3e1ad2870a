@@ -33,6 +33,24 @@
       "message": "In the newest patchset, maybe always having chrome.KeepState() is good enough.  It won\u0027t hurt the existing fixture when running Google\u0027s testing lab.",
       "revId": "184fb6da2833600faedc734dc76c4b3e1ad2870a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67499f48_07185610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-18T18:36:03Z",
+      "side": 1,
+      "message": "Hi Jun, modification on this CL was delayed because we want to re-write the CUJ fixture based on this new common fixture by this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2695778. We will make changes after that CL is approved. Thank you!",
+      "parentUuid": "c0b8079f_8ca07062",
+      "revId": "184fb6da2833600faedc734dc76c4b3e1ad2870a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
