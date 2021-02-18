@@ -37,6 +37,9 @@ var regExpFPSVP9 = regexp.MustCompile(`encode \d+ frames in \d+.\d+ secondes, FP
 // regExpFPSH264 is the regexp to find the FPS output from the H.264 binary log.
 var regExpFPSH264 = regexp.MustCompile(`PERFORMANCE:\s+Frame Rate\s+: (\d+.\d+)`)
 
+// regExpFPSV4L2 is the regexp to find the FPS output from v4l2_stateful_encoder.
+var regExpFPSV4L2 = regexp.MustCompile(`\((\d+\.\d+)fps\)`)
+
 // regExpFPSVpxenc is the regexp to find the FPS output from vpxenc's log.
 var regExpFPSVpxenc = regexp.MustCompile(`\((\d+\.\d+) fps\)`)
 
@@ -403,6 +406,96 @@ func init() {
 				decoder:        "vpxdec",
 			},
 			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
+		}, {
+			Name: "v4l2_h264_180",
+			Val: testParam{
+				command:        "v4l2_stateful_encoder",
+				filename:       "tulip2-320x180.vp9.webm",
+				numFrames:      500,
+				fps:            30,
+				size:           coords.NewSize(320, 180),
+				commandBuilder: h264argsV4L2,
+				regExpFPS:      regExpFPSV4L2,
+				decoder:        "openh264dec",
+			},
+			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+		}, {
+			Name: "v4l2_h264_360",
+			Val: testParam{
+				command:        "v4l2_stateful_encoder",
+				filename:       "tulip2-640x360.vp9.webm",
+				numFrames:      500,
+				fps:            30,
+				size:           coords.NewSize(640, 360),
+				commandBuilder: h264argsV4L2,
+				regExpFPS:      regExpFPSV4L2,
+				decoder:        "openh264dec",
+			},
+			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+		}, {
+			Name: "v4l2_h264_720",
+			Val: testParam{
+				command:        "v4l2_stateful_encoder",
+				filename:       "tulip2-1280x720.vp9.webm",
+				numFrames:      500,
+				fps:            30,
+				size:           coords.NewSize(1280, 720),
+				commandBuilder: h264argsV4L2,
+				regExpFPS:      regExpFPSV4L2,
+				decoder:        "openh264dec",
+			},
+			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+		}, {
+			Name: "v4l2_h264_180_meet",
+			Val: testParam{
+				command:        "v4l2_stateful_encoder",
+				filename:       "gipsrestat-320x180.vp9.webm",
+				numFrames:      846,
+				fps:            50,
+				size:           coords.NewSize(320, 180),
+				commandBuilder: h264argsV4L2,
+				regExpFPS:      regExpFPSV4L2,
+				decoder:        "openh264dec",
+			},
+			ExtraData:         []string{"gipsrestat-320x180.vp9.webm"},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+		}, {
+			Name: "v4l2_h264_360_meet",
+			Val: testParam{
+				command:        "v4l2_stateful_encoder",
+				filename:       "gipsrestat-640x360.vp9.webm",
+				numFrames:      846,
+				fps:            50,
+				size:           coords.NewSize(640, 360),
+				commandBuilder: h264argsV4L2,
+				regExpFPS:      regExpFPSV4L2,
+				decoder:        "openh264dec",
+			},
+			ExtraData:         []string{"gipsrestat-640x360.vp9.webm"},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+		}, {
+			Name: "v4l2_h264_720_meet",
+			Val: testParam{
+				command:        "v4l2_stateful_encoder",
+				filename:       "gipsrestat-1280x720.vp9.webm",
+				numFrames:      846,
+				fps:            50,
+				size:           coords.NewSize(1280, 720),
+				commandBuilder: h264argsV4L2,
+				regExpFPS:      regExpFPSV4L2,
+				decoder:        "openh264dec",
+			},
+			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
 		}},
 		Timeout: 20 * time.Minute,
 	})
@@ -697,5 +790,28 @@ func vp8argsVpxenc(exe, yuvFile string, size coords.Size, fps int) (command []st
 
 	// Source file goes at the end without any flag.
 	command = append(command, yuvFile)
+	return
+}
+
+// h264argsV4L2 constructs the command line for the v4l2_stateful_encoder and for H.264.
+func h264argsV4L2(exe, yuvFile string, size coords.Size, fps int) (command []string, h264File string, bitrate int) {
+	command = append(command, exe, "--width", strconv.Itoa(size.Width), "--height", strconv.Itoa(size.Height))
+	command = append(command, "--file", yuvFile, "--file_format", "yv12")
+
+	command = append(command, "--fps", strconv.Itoa(fps))
+
+	command = append(command, "--codec", "H264")
+
+	// The output file automatically gets a .h264 suffix added.
+	command = append(command, "--output", yuvFile)
+	h264File = yuvFile + ".h264"
+
+	// WebRTC uses Constant BitRate (CBR) with a very large intra-frame
+	// period and a certain quality parameter target, bitrate and profile.
+	command = append(command, "--gop", "65535")
+	command = append(command, "--end_usage", "CBR" /* Constant BitRate */)
+
+	bitrate = int(0.1 /* BPP */ * float64(fps) * float64(size.Width) * float64(size.Height))
+	command = append(command, "--bitrate", strconv.Itoa(bitrate) /* bps */)
 	return
 }
