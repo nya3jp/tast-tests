@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ab138a_5f53e25e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-02-18T23:58:41Z",
+      "side": 1,
+      "message": "Ok, let\u0027s keep it as is for now. Could you please add someone from the Tast team for another opinion?",
+      "parentUuid": "7c7fc4e2_56624a3a",
+      "revId": "57387020c0ea5efb3bbfc575a60749bd42801aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df48ef9e_99122c5f",
