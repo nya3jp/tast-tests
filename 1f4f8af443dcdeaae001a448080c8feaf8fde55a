@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13402a8b_418e2698",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-18T05:37:48Z",
+      "side": 1,
+      "message": "I guess it\u0027s not a good idea to directly set the outer ready \u003d nil, so I made it a parameter.",
+      "range": {
+        "startLine": 58,
+        "startChar": 9,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "1f4f8af443dcdeaae001a448080c8feaf8fde55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
