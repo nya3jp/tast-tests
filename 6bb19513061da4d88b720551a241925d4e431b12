@@ -46,6 +46,30 @@
       },
       "revId": "6bb19513061da4d88b720551a241925d4e431b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91553c46_805f8583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-18T16:33:48Z",
+      "side": 1,
+      "message": "I see, right. How about a lookup table screen_magnifier -\u003e screenMagnifier?",
+      "parentUuid": "4f917961_34560c77",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 5
+      },
+      "revId": "6bb19513061da4d88b720551a241925d4e431b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
