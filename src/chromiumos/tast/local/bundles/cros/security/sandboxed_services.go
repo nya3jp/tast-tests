@@ -149,6 +149,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"lockbox-cache.sh", "root", "root", 0},
 		{"powerd-pre-start.sh", "root", "root", 0},
 		{"update_rw_vpd", "root", "root", 0},
+		{"vpd_get_value", "root", "root", 0},
+		{"vpd_icc", "root", "root", 0},
 	}
 
 	// Names of processes whose children should be ignored. These processes themselves are also ignored.
