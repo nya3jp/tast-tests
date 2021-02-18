@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/scanapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
@@ -31,7 +32,10 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
-		Data:         []string{sourceImage},
+		Data: []string{
+			sourceImage,
+			pngGoldenFile,
+		},
 	})
 }
 
@@ -41,6 +45,7 @@ const scannerName = "DavieV Virtual USB Printer (USB)"
 
 const (
 	sourceImage      = "scan_source.jpg"
+	pngGoldenFile    = "flatbed_png_color_letter_300_dpi.png"
 	descriptors      = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
 	attributes       = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 	esclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
@@ -49,8 +54,9 @@ const (
 // TODO(jschettler): Test other scan settings when the virtual USB printer
 // supports them.
 var tests = []struct {
-	name     string
-	settings scanapp.ScanSettings
+	name       string
+	settings   scanapp.ScanSettings
+	goldenFile string
 }{{
 	name: "flatbed_png_color_letter_300_dpi",
 	settings: scanapp.ScanSettings{
@@ -61,7 +67,21 @@ var tests = []struct {
 		PageSize:   scanapp.PageSizeLetter,
 		Resolution: scanapp.Resolution300DPI,
 	},
+	goldenFile: pngGoldenFile,
 }}
+
+func getScan(pattern string) (string, error) {
+	scans, err := filepath.Glob(pattern)
+	if err != nil {
+		return "", err
+	}
+
+	if len(scans) != 1 {
+		return "", errors.New("found too many scans")
+	}
+
+	return scans[0], nil
+}
 
 func removeScans(pattern string) error {
 	scans, err := filepath.Glob(pattern)
@@ -151,10 +171,18 @@ func Scan(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to perform scan: ", err)
 			}
 
-			// TODO(jschettler): Verify the saved file can be found in the Files
-			// app and compare it to a golden file.
 			if err := app.ClickDone(ctx); err != nil {
 				s.Fatal("Failed to finish scanning: ", err)
+			}
+
+			scan, err := getScan(defaultScanPattern)
+			if err != nil {
+				s.Fatal("Failed to find scan: ", err)
+			}
+
+			diffPath := filepath.Join(s.OutDir(), test.name, "_diff.txt")
+			if err := document.CompareFiles(ctx, scan, s.DataPath(test.goldenFile), diffPath); err != nil {
+				s.Error("Scan differs from golden file: ", err)
 			}
 		})
 	}
