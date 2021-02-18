@@ -240,6 +240,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d040cb2e_03bea3c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-18T15:44:18Z",
+      "side": 1,
+      "message": "rebasing and then completing the comment.",
+      "parentUuid": "23a1da62_3f2fbd5a",
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c79d8d0_fdcc05d1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
         "patchSetId": 3
@@ -440,6 +458,30 @@
       "side": 1,
       "message": "You did not rewrite it to [\u0027%s\u0027].",
       "parentUuid": "7ed7ee2b_ce279122",
+      "range": {
+        "startLine": 191,
+        "startChar": 62,
+        "endLine": 191,
+        "endChar": 65
+      },
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae8d264_e94947d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-18T15:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7b30aea_0afdb6a9",
       "range": {
         "startLine": 191,
         "startChar": 62,
