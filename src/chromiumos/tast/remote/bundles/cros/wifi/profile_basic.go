@@ -17,9 +17,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        ProfileBasic,
-		Desc:        "Tests basic operations on profiles and profile entries",
-		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: ProfileBasic,
+		Desc: "Tests basic operations on profiles and profile entries",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_cq", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

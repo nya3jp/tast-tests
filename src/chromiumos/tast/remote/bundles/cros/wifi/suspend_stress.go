@@ -27,9 +27,12 @@ type suspendStressParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        SuspendStress,
-		Desc:        "Asserts WiFi connectivity after suspend-resume cycle using powerd_dbus_suspend command",
-		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: SuspendStress,
+		Desc: "Asserts WiFi connectivity after suspend-resume cycle using powerd_dbus_suspend command",
+		Contacts: []string{
+			"chharry@google.com",              // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

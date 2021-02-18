@@ -26,9 +26,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         RandomMACAddress,
-		Desc:         "Verifies that the MAC address is randomized (or not) according to the setting when we toggle it on/off",
-		Contacts:     []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: RandomMACAddress,
+		Desc: "Verifies that the MAC address is randomized (or not) according to the setting when we toggle it on/off",
+		Contacts: []string{
+			"yenlinlai@google.com",            // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:         []string{"group:wificell", "wificell_func"},
 		ServiceDeps:  []string{wificell.TFServiceName},
 		Pre:          wificell.TestFixturePre(),

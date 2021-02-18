@@ -29,9 +29,11 @@ type paramBgscanBackoff struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        BgscanBackoff,
-		Desc:        "Verifies that bgscan aborts and/or backs off when there is consistent outgoing traffic",
-		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: BgscanBackoff,
+		Desc: "Verifies that bgscan aborts and/or backs off when there is consistent outgoing traffic",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),

@@ -43,9 +43,11 @@ var (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        SimpleConnect,
-		Desc:        "Verifies that DUT can connect to the host via AP in different WiFi configuration",
-		Contacts:    []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
+		Func: SimpleConnect,
+		Desc: "Verifies that DUT can connect to the host via AP in different WiFi configuration",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),

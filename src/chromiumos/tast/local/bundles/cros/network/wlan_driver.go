@@ -22,9 +22,7 @@ func init() {
 		Func: WLANDriver,
 		Desc: "Ensure wireless devices have the expected associated kernel driver",
 		Contacts: []string{
-			"briannorris@chromium.org",        // Connectivity team
-			"chromeos-kernel-wifi@google.com", // Connectivity team
-			"oka@chromium.org",                // Tast port author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
 		// Run on both Tast CQ and suite:wifi_matfunc.
 		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
