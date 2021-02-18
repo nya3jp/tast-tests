@@ -12,6 +12,7 @@ option go_package = "chromiumos/tast/services/cros/nearbyshare";
 
 // NearbyShareService allows basic remote operations of the Nearby Share feature.
 service NearbyShareService {
+
   // NewChromeLogin logs into a Chrome session as a fake user with the Nearby
   // Share flags enabled. Close must be called later to clean up the associated resources.
   rpc NewChromeLogin (google.protobuf.Empty) returns (google.protobuf.Empty) {}
@@ -22,9 +23,23 @@ service NearbyShareService {
   // CrOSSetup configures Nearby Share on a ChromeOS device.
   rpc CrOSSetup (CrOSSetupRequest) returns (google.protobuf.Empty) {}
 
+  rpc GetFilesHashes (CrOSFileHashRequest) returns (CrOSFileHashResponse) {}
+
+  /// Functions for sender.
+
+  rpc PrepareFilesAndStartSend (CrOSSendFilesRequest) returns (CrOSSendFilesResponse) {}
+
+  rpc SelectShareTarget (CrOSSelectShareTargetRequest) returns (google.protobuf.Empty) {}
+
+  /// Functions for receiver.
+
   // StartHighVisibilityMode enables the Nearby Share High Visibility mode from
   // quick settings.
   rpc StartHighVisibilityMode (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc StartReceiving (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc WaitForSenderAndAcceptShare(CrOSReceiveFilesRequest) returns (google.protobuf.Empty) {}
 }
 
 // CrOSSetupRequest is a request to setup and configure Nearby Share on a
@@ -35,6 +50,27 @@ message CrOSSetupRequest {
   string device_name = 3;
 }
 
+message CrOSSendFilesRequest {
+  string file_name = 1;
+}
 
+message CrOSSendFilesResponse {
+  repeated string file_names = 1;
+}
 
+message CrOSSelectShareTargetRequest {
+  string receiver_name = 1;
+}
 
+message CrOSFileHashRequest {
+  repeated string file_names = 1;
+  string file_dir = 2;
+}
+
+message CrOSFileHashResponse {
+  repeated string hashes = 1;
+}
+
+message CrOSReceiveFilesRequest {
+  string sender_name = 1;
+}

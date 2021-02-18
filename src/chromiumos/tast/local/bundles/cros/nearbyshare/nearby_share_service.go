@@ -5,6 +5,9 @@
 package nearbyshare
 
 import (
+	"os"
+	"path/filepath"
+
 	"github.com/golang/protobuf/ptypes/empty"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -13,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	localnearby "chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/services/cros/nearbyshare"
 	"chromiumos/tast/testing"
 )
@@ -29,9 +33,11 @@ func init() {
 type NearbyService struct {
 	s *testing.ServiceState
 
-	cr         *chrome.Chrome
-	tconn      *chrome.TestConn
-	deviceName string
+	cr              *chrome.Chrome
+	tconn           *chrome.TestConn
+	deviceName      string
+	senderSurface   *localnearby.SendSurface
+	receiverSurface *localnearby.ReceiveSurface
 }
 
 func (n *NearbyService) NewChromeLogin(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
@@ -61,6 +67,9 @@ func (n *NearbyService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
+	os.RemoveAll(nearbytestutils.SendDir)
+	n.senderSurface.Close(ctx)
+	n.receiverSurface.Close(ctx)
 	err := n.cr.Close(ctx)
 	n.cr = nil
 	return &empty.Empty{}, err
@@ -79,4 +88,83 @@ func (n *NearbyService) StartHighVisibilityMode(ctx context.Context, req *empty.
 		return nil, errors.New("Chrome not available")
 	}
 	return &empty.Empty{}, localnearby.StartHighVisibilityMode(ctx, n.tconn, n.deviceName)
+}
+
+func (n *NearbyService) PrepareFilesAndStartSend(ctx context.Context, req *nearbyshare.CrOSSendFilesRequest) (*nearbyshare.CrOSSendFilesResponse, error) {
+	if n.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+
+	filenames, err := nearbytestutils.ExtractCrosTestFiles(ctx, req.FileName)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to extract test files")
+		return nil, err
+	}
+
+	var res nearbyshare.CrOSSendFilesResponse
+	res.FileNames = filenames
+	// Get the full paths of the test files to pass to chrome://nearby.
+	var testFiles []string
+	for _, f := range filenames {
+		testFiles = append(testFiles, filepath.Join(nearbytestutils.SendDir, f))
+	}
+	sender, err := localnearby.StartSendFiles(ctx, n.cr, testFiles)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to set up control over the send surface")
+		return nil, err
+	}
+	n.senderSurface = sender
+	return &res, nil
+}
+
+func (n *NearbyService) SelectShareTarget(ctx context.Context, req *nearbyshare.CrOSSelectShareTargetRequest) (*empty.Empty, error) {
+	if n.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+	if n.senderSurface == nil {
+		return nil, errors.New("SendSurface is not defined")
+	}
+	return &empty.Empty{}, n.senderSurface.SelectShareTarget(ctx, req.ReceiverName, localnearby.CrosDetectReceiverTimeout)
+}
+
+func (n *NearbyService) StartReceiving(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if n.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+	receiver, err := localnearby.StartReceiving(ctx, n.cr)
+	if err != nil {
+		return nil, errors.New("failed to set up control over the receiving surface")
+	}
+	n.receiverSurface = receiver
+	return &empty.Empty{}, nil
+}
+
+func (n *NearbyService) WaitForSenderAndAcceptShare(ctx context.Context, req *nearbyshare.CrOSReceiveFilesRequest) (*empty.Empty, error) {
+	if n.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+	if n.receiverSurface == nil {
+		return nil, errors.New("ReceiveSurface is not defined")
+	}
+
+	if _, err := n.receiverSurface.WaitForSender(ctx, req.SenderName, localnearby.CrosDetectSenderTimeout); err != nil {
+		return nil, errors.New("CrOS receiver failed to find CrOS sender")
+	}
+	if err := n.receiverSurface.AcceptShare(ctx); err != nil {
+		return nil, errors.New("CrOs receiver failed to accept share from CrOS sender")
+	}
+	return &empty.Empty{}, nil
+}
+
+func (n *NearbyService) GetFilesHashes(ctx context.Context, req *nearbyshare.CrOSFileHashRequest) (*nearbyshare.CrOSFileHashResponse, error) {
+	if n.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+	var res nearbyshare.CrOSFileHashResponse
+	hashes, err := nearbytestutils.CrOSFileHashFilenames(ctx, req.FileNames, req.FileDir)
+	if err != nil {
+		return nil, errors.Wrapf(err, "could not get hash of %s ", req.FileNames)
+	}
+	res.Hashes = hashes
+	return &res, nil
 }
