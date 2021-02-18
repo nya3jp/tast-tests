@@ -22,6 +22,30 @@
       },
       "revId": "786091457c9733f0bc98da1da6914093ca08f121",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ae36c3_50db4245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-02-18T22:19:03Z",
+      "side": 1,
+      "message": "Yeah the TODO above is for adding more subtests.",
+      "parentUuid": "2f90b1ba_034806f4",
+      "range": {
+        "startLine": 118,
+        "startChar": 22,
+        "endLine": 118,
+        "endChar": 27
+      },
+      "revId": "786091457c9733f0bc98da1da6914093ca08f121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
