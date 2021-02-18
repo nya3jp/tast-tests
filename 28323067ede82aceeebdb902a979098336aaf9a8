@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e44eb89_e2f1dcf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-18T05:06:18Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "28323067ede82aceeebdb902a979098336aaf9a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09dcc2ba_327cf4b1",
@@ -14,6 +31,24 @@
       "writtenOn": "2021-02-18T04:45:06Z",
       "side": 1,
       "message": "Sorry for adding a new usage of android-sh.\nDo you think this is acceptable, or should we try a different approach?",
+      "revId": "28323067ede82aceeebdb902a979098336aaf9a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4833aa46_c3f25f69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-02-18T05:06:18Z",
+      "side": 1,
+      "message": "I think this is acceptable.",
+      "parentUuid": "09dcc2ba_327cf4b1",
       "revId": "28323067ede82aceeebdb902a979098336aaf9a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
