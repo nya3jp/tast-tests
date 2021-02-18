@@ -124,6 +124,14 @@ func (o *Object) ScrollTo(ctx context.Context, target *Object) error {
 	return o.callSimple(ctx, "scrollTo", o.s, target.s, true)
 }
 
+// GetChild Creates a new UiObject for a child view that is under the present UiObject
+//
+// This method corresponds to UiObject.getChild().
+// https://developer.android.com/reference/androidx/test/uiautomator/UiObject#getchild
+func (o *Object) GetChild(ctx context.Context, target *Object) error {
+	return o.callSimple(ctx, "getChild", o.s, target.s)
+}
+
 // Exists returns if an object exists.
 //
 // This method corresponds to UiObject.exists().
