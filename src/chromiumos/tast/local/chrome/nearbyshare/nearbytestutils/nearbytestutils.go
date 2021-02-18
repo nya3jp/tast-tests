@@ -125,17 +125,10 @@ func FileHashComparison(ctx context.Context, filenames []string, crosFileDir, an
 	var mismatched []string
 	for _, f := range filenames {
 		// Get the hash on the CrOS side.
-		crosPath := filepath.Join(crosFileDir, f)
-		r, err := os.Open(crosPath)
+		crosHash, err := CrOSFileHash(ctx, crosFileDir, f)
 		if err != nil {
-			return errors.Wrapf(err, "failed to open test file %v on CrOS", crosPath)
+			return err
 		}
-		defer r.Close()
-		h := sha256.New()
-		if _, err := io.Copy(h, r); err != nil {
-			return errors.Wrapf(err, "failed to copy %v file contents to the hasher", crosPath)
-		}
-		crosHash := hex.EncodeToString(h.Sum(nil))
 
 		// Get the hash on the Android side.
 		androidHash, err := androidDevice.SHA256Sum(ctx, filepath.Join(androidFileDir, f))
@@ -152,4 +145,32 @@ func FileHashComparison(ctx context.Context, filenames []string, crosFileDir, an
 		return errors.Errorf("CrOS and Android hashes did not match for files %v", mismatched)
 	}
 	return nil
+}
+
+// CrOSFileHash returns the hash for a single file.
+func CrOSFileHash(ctx context.Context, filePath, fileName string) (string, error) {
+	filePath = filepath.Join(filePath, fileName)
+	r, err := os.Open(filePath)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to open test file %v on CrOS", filePath)
+	}
+	defer r.Close()
+	h := sha256.New()
+	if _, err := io.Copy(h, r); err != nil {
+		return "", errors.Wrapf(err, "failed to copy %v file contents to the hasher", filePath)
+	}
+	return hex.EncodeToString(h.Sum(nil)), nil
+}
+
+// CrOSFileHashFilenames takes in a list of filenames and returns a list of their hashes.
+func CrOSFileHashFilenames(ctx context.Context, filenames []string, fileDir string) ([]string, error) {
+	var hashes []string
+	for _, f := range filenames {
+		crosHash, err := CrOSFileHash(ctx, fileDir, f)
+		if err != nil {
+			return nil, err
+		}
+		hashes = append(hashes, crosHash)
+	}
+	return hashes, nil
 }
