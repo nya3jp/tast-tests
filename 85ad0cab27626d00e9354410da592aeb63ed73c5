@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c463cdb4_af809e28",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-18T05:06:54Z",
+      "side": 1,
+      "message": "Could you unify those two channels?\nthere\u0027s no guarantee around the order of events.\nPractically, it\u0027s little risky, because exited is signaled far after ready,\nor if it\u0027s in race, it\u0027s most likely failure situation.\nThough, I still prefer the behavior is deterministic per output from kmsvnc command.\n\nE．g．\n\nready :\u003d make(chan bool)\n...\nL64:\nready \u003c- true\nclose(ready)\nready \u003d nil\n\nL74\nif ready !\u003d nil {\n  ready \u003c- false\n  close(ready)\n}\n\nyou can check the value in the select block at L82.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "85ad0cab27626d00e9354410da592aeb63ed73c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "930c0bb3_bb02cc59",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-18T05:06:54Z",
+      "side": 1,
+      "message": "(optional): it\u0027s better to run go cmd.Wait() regardless of Kill, because we anyways want to collect the subprocess, right?",
+      "revId": "85ad0cab27626d00e9354410da592aeb63ed73c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
