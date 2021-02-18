@@ -110,7 +110,7 @@ var VKEnabledClamshellExpInGuest = inputsPreCondition("virtual_keyboard_enabled_
 //		d := s.PreValue().(pre.PreData)
 //		...
 //	}
-type PreData struct {
+type PreData struct { // NOLINT
 	Chrome      *chrome.Chrome
 	TestAPIConn *chrome.TestConn
 }
