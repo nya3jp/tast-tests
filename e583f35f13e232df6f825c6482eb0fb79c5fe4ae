@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "162896a3_2bbfa24b",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-02-18T08:57:27Z",
+      "side": 1,
+      "message": "saveProcessList calls `$ adb shell ps` and this requires arc.ARC object. So faillog/ps-arcvm.txt is collected only with \"arcBooted\" fixture now. How should I do? Can I switch os.Command(\"adb\", \"shell\", \"ps\") from arc.Command(\"ps\")? I keep this TODO for now.",
+      "revId": "e583f35f13e232df6f825c6482eb0fb79c5fe4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fad49f0_467046b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-02-18T08:57:27Z",
+      "side": 1,
+      "message": "tools/run_lint.sh blamed this line and I need to capitalize to run `repo upload`.",
+      "revId": "e583f35f13e232df6f825c6482eb0fb79c5fe4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
