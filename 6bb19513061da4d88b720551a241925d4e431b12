@@ -22,6 +22,30 @@
       },
       "revId": "6bb19513061da4d88b720551a241925d4e431b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f917961_34560c77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-18T15:36:21Z",
+      "side": 1,
+      "message": "there is no custom field in Param data structure to do so. I wanted to do it that way.\n\n        Name string // Note -\u003e cannot have capital letters  Not suitable\n\n\t// ExtraAttr contains freeform text attributes describing the test,\n\t// in addition to Attr declared in the enclosing Test.\n\tExtraAttr []string // Maybe suitable, but it is a misuse IMHO\n\n\t// ExtraData contains paths of data files needed by the test case of this\n\t// param in addition to Data declared in the enclosing Test.\n\tExtraData []string //  Not suitable\n\n\t// ExtraSoftwareDeps lists software features that are required to run the test case for this param,\n\t// in addition to SoftwareDeps in the enclosing Test.\n\tExtraSoftwareDeps []string // Not suitable\n\n\t// ExtraHardwareDeps describes hardware features and setup that are required to run the test for this\n\t// param, in addition to HardwareDeps in the enclosing Test.\n\tExtraHardwareDeps hwdep.Deps // Not suitable\n\n\t// Pre contains a precondition that must be met before the test is run.\n\t// Can only be set if the enclosing test doesn\u0027t have one already set.\n\tPre Precondition // Not suitable\n\n\t// Fixture is the name of the fixture the test depends on.\n\t// Can only be set if the enclosing test doesn\u0027t have one already set.\n\tFixture string // Not suitable\n\n\t// Timeout contains the maximum duration for which Func may run before the test is aborted.\n\t// Can only be set if the enclosing test doesn\u0027t have one already set.\n\tTimeout time.Duration // Not suitable\n\n\t// Val is the value which can be retrieved from testing.State.Param() method.\n\tVal interface{} // Current solution.",
+      "parentUuid": "2ea82d1f_f0d4446b",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 5
+      },
+      "revId": "6bb19513061da4d88b720551a241925d4e431b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
