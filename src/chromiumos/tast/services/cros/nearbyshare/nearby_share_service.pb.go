@@ -82,33 +82,306 @@ func (m *CrOSSetupRequest) GetDeviceName() string {
 	return ""
 }
 
+// CrOSSendFileRequest contains the archive of files to be sent by Nearby Share.
+type CrOSSendFileRequest struct {
+	FileName             string   `protobuf:"bytes,1,opt,name=file_name,json=fileName,proto3" json:"file_name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CrOSSendFileRequest) Reset()         { *m = CrOSSendFileRequest{} }
+func (m *CrOSSendFileRequest) String() string { return proto.CompactTextString(m) }
+func (*CrOSSendFileRequest) ProtoMessage()    {}
+func (*CrOSSendFileRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c9d9f6df6ba76c0a, []int{1}
+}
+
+func (m *CrOSSendFileRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CrOSSendFileRequest.Unmarshal(m, b)
+}
+func (m *CrOSSendFileRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CrOSSendFileRequest.Marshal(b, m, deterministic)
+}
+func (m *CrOSSendFileRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CrOSSendFileRequest.Merge(m, src)
+}
+func (m *CrOSSendFileRequest) XXX_Size() int {
+	return xxx_messageInfo_CrOSSendFileRequest.Size(m)
+}
+func (m *CrOSSendFileRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CrOSSendFileRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CrOSSendFileRequest proto.InternalMessageInfo
+
+func (m *CrOSSendFileRequest) GetFileName() string {
+	if m != nil {
+		return m.FileName
+	}
+	return ""
+}
+
+// CrOSSendFilesResponse is the individual file names that will be sent.
+type CrOSSendFilesResponse struct {
+	FileNames            []string `protobuf:"bytes,1,rep,name=file_names,json=fileNames,proto3" json:"file_names,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CrOSSendFilesResponse) Reset()         { *m = CrOSSendFilesResponse{} }
+func (m *CrOSSendFilesResponse) String() string { return proto.CompactTextString(m) }
+func (*CrOSSendFilesResponse) ProtoMessage()    {}
+func (*CrOSSendFilesResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c9d9f6df6ba76c0a, []int{2}
+}
+
+func (m *CrOSSendFilesResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CrOSSendFilesResponse.Unmarshal(m, b)
+}
+func (m *CrOSSendFilesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CrOSSendFilesResponse.Marshal(b, m, deterministic)
+}
+func (m *CrOSSendFilesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CrOSSendFilesResponse.Merge(m, src)
+}
+func (m *CrOSSendFilesResponse) XXX_Size() int {
+	return xxx_messageInfo_CrOSSendFilesResponse.Size(m)
+}
+func (m *CrOSSendFilesResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CrOSSendFilesResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CrOSSendFilesResponse proto.InternalMessageInfo
+
+func (m *CrOSSendFilesResponse) GetFileNames() []string {
+	if m != nil {
+		return m.FileNames
+	}
+	return nil
+}
+
+// CrOSSelectShareTargetRequest contains the receiver to send files to.
+type CrOSSelectShareTargetRequest struct {
+	ReceiverName         string   `protobuf:"bytes,1,opt,name=receiver_name,json=receiverName,proto3" json:"receiver_name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CrOSSelectShareTargetRequest) Reset()         { *m = CrOSSelectShareTargetRequest{} }
+func (m *CrOSSelectShareTargetRequest) String() string { return proto.CompactTextString(m) }
+func (*CrOSSelectShareTargetRequest) ProtoMessage()    {}
+func (*CrOSSelectShareTargetRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c9d9f6df6ba76c0a, []int{3}
+}
+
+func (m *CrOSSelectShareTargetRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CrOSSelectShareTargetRequest.Unmarshal(m, b)
+}
+func (m *CrOSSelectShareTargetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CrOSSelectShareTargetRequest.Marshal(b, m, deterministic)
+}
+func (m *CrOSSelectShareTargetRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CrOSSelectShareTargetRequest.Merge(m, src)
+}
+func (m *CrOSSelectShareTargetRequest) XXX_Size() int {
+	return xxx_messageInfo_CrOSSelectShareTargetRequest.Size(m)
+}
+func (m *CrOSSelectShareTargetRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CrOSSelectShareTargetRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CrOSSelectShareTargetRequest proto.InternalMessageInfo
+
+func (m *CrOSSelectShareTargetRequest) GetReceiverName() string {
+	if m != nil {
+		return m.ReceiverName
+	}
+	return ""
+}
+
+// CrOSFileHashRequest contains the list of files we want to hash.
+type CrOSFileHashRequest struct {
+	FileNames            []string `protobuf:"bytes,1,rep,name=file_names,json=fileNames,proto3" json:"file_names,omitempty"`
+	FileDir              string   `protobuf:"bytes,2,opt,name=file_dir,json=fileDir,proto3" json:"file_dir,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CrOSFileHashRequest) Reset()         { *m = CrOSFileHashRequest{} }
+func (m *CrOSFileHashRequest) String() string { return proto.CompactTextString(m) }
+func (*CrOSFileHashRequest) ProtoMessage()    {}
+func (*CrOSFileHashRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c9d9f6df6ba76c0a, []int{4}
+}
+
+func (m *CrOSFileHashRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CrOSFileHashRequest.Unmarshal(m, b)
+}
+func (m *CrOSFileHashRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CrOSFileHashRequest.Marshal(b, m, deterministic)
+}
+func (m *CrOSFileHashRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CrOSFileHashRequest.Merge(m, src)
+}
+func (m *CrOSFileHashRequest) XXX_Size() int {
+	return xxx_messageInfo_CrOSFileHashRequest.Size(m)
+}
+func (m *CrOSFileHashRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CrOSFileHashRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CrOSFileHashRequest proto.InternalMessageInfo
+
+func (m *CrOSFileHashRequest) GetFileNames() []string {
+	if m != nil {
+		return m.FileNames
+	}
+	return nil
+}
+
+func (m *CrOSFileHashRequest) GetFileDir() string {
+	if m != nil {
+		return m.FileDir
+	}
+	return ""
+}
+
+// CrOSFileHashResponse contains the list of hashes generated for a list of
+// files.
+type CrOSFileHashResponse struct {
+	Hashes               []string `protobuf:"bytes,1,rep,name=hashes,proto3" json:"hashes,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CrOSFileHashResponse) Reset()         { *m = CrOSFileHashResponse{} }
+func (m *CrOSFileHashResponse) String() string { return proto.CompactTextString(m) }
+func (*CrOSFileHashResponse) ProtoMessage()    {}
+func (*CrOSFileHashResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c9d9f6df6ba76c0a, []int{5}
+}
+
+func (m *CrOSFileHashResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CrOSFileHashResponse.Unmarshal(m, b)
+}
+func (m *CrOSFileHashResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CrOSFileHashResponse.Marshal(b, m, deterministic)
+}
+func (m *CrOSFileHashResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CrOSFileHashResponse.Merge(m, src)
+}
+func (m *CrOSFileHashResponse) XXX_Size() int {
+	return xxx_messageInfo_CrOSFileHashResponse.Size(m)
+}
+func (m *CrOSFileHashResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CrOSFileHashResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CrOSFileHashResponse proto.InternalMessageInfo
+
+func (m *CrOSFileHashResponse) GetHashes() []string {
+	if m != nil {
+		return m.Hashes
+	}
+	return nil
+}
+
+// CrOSReceiveFilesRequest contains the sender name that we want to receive
+// files from.
+type CrOSReceiveFilesRequest struct {
+	SenderName           string   `protobuf:"bytes,1,opt,name=sender_name,json=senderName,proto3" json:"sender_name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CrOSReceiveFilesRequest) Reset()         { *m = CrOSReceiveFilesRequest{} }
+func (m *CrOSReceiveFilesRequest) String() string { return proto.CompactTextString(m) }
+func (*CrOSReceiveFilesRequest) ProtoMessage()    {}
+func (*CrOSReceiveFilesRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c9d9f6df6ba76c0a, []int{6}
+}
+
+func (m *CrOSReceiveFilesRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CrOSReceiveFilesRequest.Unmarshal(m, b)
+}
+func (m *CrOSReceiveFilesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CrOSReceiveFilesRequest.Marshal(b, m, deterministic)
+}
+func (m *CrOSReceiveFilesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CrOSReceiveFilesRequest.Merge(m, src)
+}
+func (m *CrOSReceiveFilesRequest) XXX_Size() int {
+	return xxx_messageInfo_CrOSReceiveFilesRequest.Size(m)
+}
+func (m *CrOSReceiveFilesRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CrOSReceiveFilesRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CrOSReceiveFilesRequest proto.InternalMessageInfo
+
+func (m *CrOSReceiveFilesRequest) GetSenderName() string {
+	if m != nil {
+		return m.SenderName
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*CrOSSetupRequest)(nil), "tast.cros.nearbyshare.CrOSSetupRequest")
+	proto.RegisterType((*CrOSSendFileRequest)(nil), "tast.cros.nearbyshare.CrOSSendFileRequest")
+	proto.RegisterType((*CrOSSendFilesResponse)(nil), "tast.cros.nearbyshare.CrOSSendFilesResponse")
+	proto.RegisterType((*CrOSSelectShareTargetRequest)(nil), "tast.cros.nearbyshare.CrOSSelectShareTargetRequest")
+	proto.RegisterType((*CrOSFileHashRequest)(nil), "tast.cros.nearbyshare.CrOSFileHashRequest")
+	proto.RegisterType((*CrOSFileHashResponse)(nil), "tast.cros.nearbyshare.CrOSFileHashResponse")
+	proto.RegisterType((*CrOSReceiveFilesRequest)(nil), "tast.cros.nearbyshare.CrOSReceiveFilesRequest")
 }
 
 func init() { proto.RegisterFile("nearby_share_service.proto", fileDescriptor_c9d9f6df6ba76c0a) }
 
 var fileDescriptor_c9d9f6df6ba76c0a = []byte{
-	// 304 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x92, 0x51, 0x4b, 0xf3, 0x30,
-	0x14, 0x86, 0xbf, 0xed, 0x43, 0x61, 0x67, 0x20, 0x12, 0x50, 0x47, 0x45, 0x1d, 0xbb, 0x71, 0x22,
-	0x24, 0xa0, 0x3f, 0x40, 0x58, 0x11, 0x04, 0xb5, 0x42, 0x8b, 0x5e, 0x78, 0x53, 0xd2, 0xf6, 0xd8,
-	0x06, 0xda, 0xa6, 0x26, 0xe9, 0xa4, 0x7f, 0xcc, 0xdf, 0x27, 0x69, 0x74, 0x0c, 0x51, 0x2f, 0x76,
-	0xfb, 0xe4, 0x9c, 0x97, 0xe7, 0xbc, 0x04, 0xbc, 0x1a, 0xb9, 0x4a, 0xba, 0x58, 0x17, 0x5c, 0x61,
-	0xac, 0x51, 0x2d, 0x45, 0x8a, 0xb4, 0x51, 0xd2, 0x48, 0xb2, 0x67, 0xb8, 0x36, 0x34, 0x55, 0x52,
-	0x53, 0x37, 0xd5, 0x0f, 0x79, 0x87, 0xb9, 0x94, 0x79, 0x89, 0xac, 0x1f, 0x4a, 0xda, 0x17, 0x86,
-	0x55, 0x63, 0x3a, 0xb7, 0x33, 0x53, 0xb0, 0xeb, 0xab, 0x87, 0x28, 0x42, 0xd3, 0x36, 0x21, 0xbe,
-	0xb6, 0xa8, 0x0d, 0x39, 0x02, 0xc8, 0xb8, 0xe1, 0x71, 0xab, 0x79, 0x8e, 0x93, 0xc1, 0x74, 0x30,
-	0xdf, 0x0a, 0x47, 0x96, 0x3c, 0x5a, 0x40, 0x8e, 0x01, 0x96, 0x42, 0x8b, 0x44, 0x94, 0xc2, 0x74,
-	0x93, 0x61, 0xff, 0xbc, 0x46, 0xc8, 0x09, 0x8c, 0x33, 0xb4, 0x5a, 0x71, 0xcd, 0x2b, 0x9c, 0xfc,
-	0x9f, 0x0e, 0xe6, 0xa3, 0x10, 0x1c, 0x0a, 0x78, 0x85, 0x17, 0xef, 0x43, 0x20, 0x41, 0x2f, 0x18,
-	0x59, 0xc1, 0xc8, 0x1d, 0x41, 0x16, 0xb0, 0x13, 0xe0, 0x9b, 0x5f, 0x28, 0x59, 0xe1, 0x9d, 0xcc,
-	0x45, 0x4d, 0xf6, 0xa9, 0x53, 0xa7, 0x5f, 0xea, 0xf4, 0xda, 0xaa, 0x7b, 0xbf, 0xf0, 0xd9, 0x3f,
-	0x72, 0x05, 0x63, 0xbf, 0x94, 0x1a, 0x5d, 0xca, 0x06, 0x01, 0x01, 0x8c, 0x56, 0x7d, 0x90, 0x53,
-	0xfa, 0x63, 0xa3, 0xf4, 0x7b, 0x63, 0x7f, 0xe4, 0xdd, 0xc2, 0x41, 0x64, 0xb8, 0x32, 0x37, 0x22,
-	0x2f, 0x9e, 0x56, 0x1d, 0xdd, 0xcb, 0x6c, 0x03, 0xb9, 0xc5, 0xf9, 0xf3, 0x59, 0x6a, 0x0f, 0x13,
-	0x6d, 0x25, 0x35, 0xb3, 0x6e, 0xec, 0xf3, 0x07, 0x68, 0x66, 0x25, 0xd9, 0x9a, 0x64, 0xb2, 0xdd,
-	0xaf, 0x5f, 0x7e, 0x04, 0x00, 0x00, 0xff, 0xff, 0xdf, 0x12, 0x21, 0xb0, 0x32, 0x02, 0x00, 0x00,
+	// 562 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x54, 0x5f, 0x6f, 0xd3, 0x30,
+	0x10, 0x5f, 0x99, 0x18, 0xe4, 0x0a, 0x13, 0x18, 0xb6, 0x95, 0x16, 0x58, 0x15, 0x1e, 0x28, 0x0c,
+	0x25, 0xd2, 0x26, 0xf1, 0xc0, 0x0b, 0x6a, 0x0b, 0x53, 0x25, 0xa0, 0x43, 0x09, 0x7f, 0x24, 0x5e,
+	0x2a, 0x37, 0xb9, 0x25, 0x96, 0xd2, 0x38, 0xd8, 0x6e, 0x51, 0x3f, 0x12, 0xdf, 0x12, 0xd9, 0x6e,
+	0xab, 0xac, 0x74, 0xd1, 0xd4, 0xc7, 0x5c, 0xef, 0xf7, 0xe7, 0xee, 0x7e, 0x2e, 0x34, 0x73, 0xa4,
+	0x62, 0x3c, 0x1f, 0xc9, 0x94, 0x0a, 0x1c, 0x49, 0x14, 0x33, 0x16, 0xa1, 0x57, 0x08, 0xae, 0x38,
+	0x39, 0x50, 0x54, 0x2a, 0x2f, 0x12, 0x5c, 0x7a, 0xb6, 0xcb, 0x34, 0x35, 0x5b, 0x09, 0xe7, 0x49,
+	0x86, 0xbe, 0x69, 0x1a, 0x4f, 0x2f, 0x7d, 0x9c, 0x14, 0x6a, 0x6e, 0x31, 0xae, 0x80, 0x07, 0x7d,
+	0x71, 0x11, 0x86, 0xa8, 0xa6, 0x45, 0x80, 0xbf, 0xa7, 0x28, 0x15, 0x79, 0x06, 0x10, 0x53, 0x45,
+	0x47, 0x53, 0x49, 0x13, 0x6c, 0xd4, 0xda, 0xb5, 0xce, 0xed, 0xc0, 0xd1, 0x95, 0xef, 0xba, 0x40,
+	0x9e, 0x03, 0xcc, 0x98, 0x64, 0x63, 0x96, 0x31, 0x35, 0x6f, 0xdc, 0x32, 0x3f, 0x97, 0x2a, 0xe4,
+	0x18, 0xea, 0x31, 0x6a, 0x5b, 0xa3, 0x9c, 0x4e, 0xb0, 0xb1, 0xdb, 0xae, 0x75, 0x9c, 0x00, 0x6c,
+	0x69, 0x48, 0x27, 0xe8, 0x9e, 0xc2, 0x23, 0xab, 0x99, 0xc7, 0xe7, 0x2c, 0xc3, 0xa5, 0x6c, 0x0b,
+	0x9c, 0x4b, 0x96, 0x2d, 0x50, 0x35, 0x83, 0xba, 0xab, 0x0b, 0x06, 0xf3, 0x16, 0x0e, 0xca, 0x18,
+	0x19, 0xa0, 0x2c, 0x78, 0x2e, 0x51, 0x9b, 0x5d, 0xa1, 0x64, 0xa3, 0xd6, 0xde, 0xed, 0x38, 0x81,
+	0xb3, 0x84, 0x49, 0xb7, 0x0f, 0x4f, 0x2d, 0x2e, 0xc3, 0x48, 0x85, 0x7a, 0x1f, 0xdf, 0xa8, 0x48,
+	0x50, 0x2d, 0x45, 0x5f, 0xc0, 0x7d, 0x81, 0x11, 0xb2, 0x19, 0x8a, 0xb2, 0xf0, 0xbd, 0x65, 0xd1,
+	0x88, 0x5f, 0x58, 0xc3, 0x5a, 0x78, 0x40, 0x65, 0x5a, 0xda, 0x53, 0x85, 0x34, 0x79, 0x02, 0xc6,
+	0xfe, 0x28, 0x66, 0xc2, 0x6c, 0xc9, 0x09, 0xee, 0xe8, 0xef, 0x0f, 0x4c, 0xb8, 0x1e, 0x3c, 0xbe,
+	0x4a, 0xb8, 0x18, 0xe6, 0x10, 0xf6, 0x52, 0x2a, 0xd3, 0x15, 0xdb, 0xe2, 0xcb, 0x7d, 0x07, 0x47,
+	0xba, 0x3f, 0xb0, 0xa6, 0x16, 0x0b, 0xb0, 0x26, 0x8e, 0xa1, 0x2e, 0x31, 0x8f, 0xaf, 0xda, 0x07,
+	0x5b, 0xd2, 0x3e, 0x4e, 0xff, 0xee, 0x01, 0x19, 0x9a, 0x38, 0x98, 0xf1, 0x43, 0x1b, 0x19, 0xd2,
+	0x83, 0xfd, 0x21, 0xfe, 0xe9, 0xa7, 0x82, 0x4f, 0xf0, 0x33, 0x4f, 0x58, 0x4e, 0x0e, 0x3d, 0x1b,
+	0x14, 0x6f, 0x19, 0x14, 0xef, 0xa3, 0x0e, 0x4a, 0xf3, 0x9a, 0xba, 0xbb, 0x43, 0xde, 0x43, 0xbd,
+	0x9f, 0x71, 0x89, 0x96, 0x65, 0x0b, 0x82, 0x21, 0x38, 0xab, 0xf4, 0x91, 0x97, 0xde, 0xc6, 0xfc,
+	0x7a, 0xeb, 0xf9, 0xac, 0xe0, 0x4b, 0xa1, 0x6e, 0x96, 0x33, 0x30, 0x6b, 0x23, 0xaf, 0x2b, 0x18,
+	0xd7, 0x8e, 0xd9, 0x3c, 0xb9, 0x51, 0xaf, 0xbd, 0x93, 0xbb, 0x43, 0x66, 0xd0, 0xf8, 0x2a, 0xb0,
+	0xa0, 0xc2, 0x5e, 0xa3, 0x9b, 0xc7, 0xa1, 0xa2, 0x42, 0xe9, 0x7c, 0x56, 0xca, 0xae, 0x85, 0xbe,
+	0xf9, 0xe6, 0x06, 0xbd, 0xb2, 0xa4, 0x3b, 0x86, 0x87, 0xff, 0x65, 0x99, 0x9c, 0x55, 0x92, 0x6c,
+	0x4e, 0x7e, 0xc5, 0x16, 0x3f, 0xc1, 0x91, 0x19, 0x66, 0xc0, 0x92, 0xf4, 0xc7, 0xea, 0x5d, 0x7f,
+	0xe1, 0xf1, 0x36, 0x27, 0xee, 0xc1, 0xbe, 0x21, 0xb3, 0xd9, 0x65, 0x79, 0xb2, 0x05, 0x47, 0x02,
+	0xad, 0x9f, 0x94, 0xa9, 0x73, 0x2e, 0x42, 0x93, 0xeb, 0x6e, 0x1e, 0x77, 0xa3, 0x08, 0x0b, 0x3b,
+	0x16, 0xf1, 0x2a, 0xc6, 0xdf, 0xf0, 0x64, 0xae, 0x17, 0xea, 0x9d, 0xfc, 0x7a, 0x15, 0xe9, 0x2c,
+	0xb3, 0xe9, 0x84, 0x4b, 0x5f, 0xb3, 0xfa, 0x8b, 0xbf, 0x58, 0xe9, 0x6b, 0x7a, 0xbf, 0x44, 0x3f,
+	0xde, 0x33, 0xf0, 0xb3, 0x7f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x42, 0x17, 0xa4, 0x81, 0x93, 0x05,
+	0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -130,9 +403,20 @@ type NearbyShareServiceClient interface {
 	CloseChrome(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 	// CrOSSetup configures Nearby Share on a ChromeOS device.
 	CrOSSetup(ctx context.Context, in *CrOSSetupRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// GetFilesHashes returns a list of hashes for a list of files.
+	FilesHashes(ctx context.Context, in *CrOSFileHashRequest, opts ...grpc.CallOption) (*CrOSFileHashResponse, error)
+	// PrepareFilesAndStartSend extracts test files and starts sending them.
+	PrepareFilesAndStartSend(ctx context.Context, in *CrOSSendFileRequest, opts ...grpc.CallOption) (*CrOSSendFilesResponse, error)
+	// SelectShareTarget will select the receiver device.
+	SelectShareTarget(ctx context.Context, in *CrOSSelectShareTargetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// StartHighVisibilityMode enables the Nearby Share High Visibility mode from
 	// quick settings.
 	StartHighVisibilityMode(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
+	// StartReceiving will enable high vis receiving from javascript.
+	StartReceiving(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
+	// WaitForSenderAndAcceptShare is called by receiver to receive the file from
+	// sender.
+	WaitForSenderAndAcceptShare(ctx context.Context, in *CrOSReceiveFilesRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
 type nearbyShareServiceClient struct {
@@ -170,9 +454,54 @@ func (c *nearbyShareServiceClient) CrOSSetup(ctx context.Context, in *CrOSSetupR
 	return out, nil
 }
 
+func (c *nearbyShareServiceClient) FilesHashes(ctx context.Context, in *CrOSFileHashRequest, opts ...grpc.CallOption) (*CrOSFileHashResponse, error) {
+	out := new(CrOSFileHashResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.nearbyshare.NearbyShareService/FilesHashes", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *nearbyShareServiceClient) PrepareFilesAndStartSend(ctx context.Context, in *CrOSSendFileRequest, opts ...grpc.CallOption) (*CrOSSendFilesResponse, error) {
+	out := new(CrOSSendFilesResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.nearbyshare.NearbyShareService/PrepareFilesAndStartSend", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *nearbyShareServiceClient) SelectShareTarget(ctx context.Context, in *CrOSSelectShareTargetRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.nearbyshare.NearbyShareService/SelectShareTarget", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *nearbyShareServiceClient) StartHighVisibilityMode(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/tast.cros.nearbyshare.NearbyShareService/StartHighVisibilityMode", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *nearbyShareServiceClient) StartReceiving(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.nearbyshare.NearbyShareService/StartReceiving", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *nearbyShareServiceClient) WaitForSenderAndAcceptShare(ctx context.Context, in *CrOSReceiveFilesRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.nearbyshare.NearbyShareService/WaitForSenderAndAcceptShare", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -188,9 +517,20 @@ type NearbyShareServiceServer interface {
 	CloseChrome(context.Context, *empty.Empty) (*empty.Empty, error)
 	// CrOSSetup configures Nearby Share on a ChromeOS device.
 	CrOSSetup(context.Context, *CrOSSetupRequest) (*empty.Empty, error)
+	// GetFilesHashes returns a list of hashes for a list of files.
+	FilesHashes(context.Context, *CrOSFileHashRequest) (*CrOSFileHashResponse, error)
+	// PrepareFilesAndStartSend extracts test files and starts sending them.
+	PrepareFilesAndStartSend(context.Context, *CrOSSendFileRequest) (*CrOSSendFilesResponse, error)
+	// SelectShareTarget will select the receiver device.
+	SelectShareTarget(context.Context, *CrOSSelectShareTargetRequest) (*empty.Empty, error)
 	// StartHighVisibilityMode enables the Nearby Share High Visibility mode from
 	// quick settings.
 	StartHighVisibilityMode(context.Context, *empty.Empty) (*empty.Empty, error)
+	// StartReceiving will enable high vis receiving from javascript.
+	StartReceiving(context.Context, *empty.Empty) (*empty.Empty, error)
+	// WaitForSenderAndAcceptShare is called by receiver to receive the file from
+	// sender.
+	WaitForSenderAndAcceptShare(context.Context, *CrOSReceiveFilesRequest) (*empty.Empty, error)
 }
 
 // UnimplementedNearbyShareServiceServer can be embedded to have forward compatible implementations.
@@ -206,8 +546,23 @@ func (*UnimplementedNearbyShareServiceServer) CloseChrome(ctx context.Context, r
 func (*UnimplementedNearbyShareServiceServer) CrOSSetup(ctx context.Context, req *CrOSSetupRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CrOSSetup not implemented")
 }
+func (*UnimplementedNearbyShareServiceServer) FilesHashes(ctx context.Context, req *CrOSFileHashRequest) (*CrOSFileHashResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FilesHashes not implemented")
+}
+func (*UnimplementedNearbyShareServiceServer) PrepareFilesAndStartSend(ctx context.Context, req *CrOSSendFileRequest) (*CrOSSendFilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PrepareFilesAndStartSend not implemented")
+}
+func (*UnimplementedNearbyShareServiceServer) SelectShareTarget(ctx context.Context, req *CrOSSelectShareTargetRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SelectShareTarget not implemented")
+}
 func (*UnimplementedNearbyShareServiceServer) StartHighVisibilityMode(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartHighVisibilityMode not implemented")
+}
+func (*UnimplementedNearbyShareServiceServer) StartReceiving(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartReceiving not implemented")
+}
+func (*UnimplementedNearbyShareServiceServer) WaitForSenderAndAcceptShare(ctx context.Context, req *CrOSReceiveFilesRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WaitForSenderAndAcceptShare not implemented")
 }
 
 func RegisterNearbyShareServiceServer(s *grpc.Server, srv NearbyShareServiceServer) {
@@ -268,6 +623,60 @@ func _NearbyShareService_CrOSSetup_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _NearbyShareService_FilesHashes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CrOSFileHashRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NearbyShareServiceServer).FilesHashes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.nearbyshare.NearbyShareService/FilesHashes",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NearbyShareServiceServer).FilesHashes(ctx, req.(*CrOSFileHashRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NearbyShareService_PrepareFilesAndStartSend_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CrOSSendFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NearbyShareServiceServer).PrepareFilesAndStartSend(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.nearbyshare.NearbyShareService/PrepareFilesAndStartSend",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NearbyShareServiceServer).PrepareFilesAndStartSend(ctx, req.(*CrOSSendFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NearbyShareService_SelectShareTarget_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CrOSSelectShareTargetRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NearbyShareServiceServer).SelectShareTarget(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.nearbyshare.NearbyShareService/SelectShareTarget",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NearbyShareServiceServer).SelectShareTarget(ctx, req.(*CrOSSelectShareTargetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _NearbyShareService_StartHighVisibilityMode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(empty.Empty)
 	if err := dec(in); err != nil {
@@ -282,6 +691,42 @@ func _NearbyShareService_StartHighVisibilityMode_Handler(srv interface{}, ctx co
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NearbyShareServiceServer).StartHighVisibilityMode(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NearbyShareService_StartReceiving_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NearbyShareServiceServer).StartReceiving(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.nearbyshare.NearbyShareService/StartReceiving",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NearbyShareServiceServer).StartReceiving(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NearbyShareService_WaitForSenderAndAcceptShare_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CrOSReceiveFilesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NearbyShareServiceServer).WaitForSenderAndAcceptShare(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.nearbyshare.NearbyShareService/WaitForSenderAndAcceptShare",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NearbyShareServiceServer).WaitForSenderAndAcceptShare(ctx, req.(*CrOSReceiveFilesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -303,8 +748,28 @@ var _NearbyShareService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _NearbyShareService_CrOSSetup_Handler,
 		},
 		{
+			MethodName: "FilesHashes",
+			Handler:    _NearbyShareService_FilesHashes_Handler,
+		},
+		{
+			MethodName: "PrepareFilesAndStartSend",
+			Handler:    _NearbyShareService_PrepareFilesAndStartSend_Handler,
+		},
+		{
+			MethodName: "SelectShareTarget",
+			Handler:    _NearbyShareService_SelectShareTarget_Handler,
+		},
+		{
 			MethodName: "StartHighVisibilityMode",
 			Handler:    _NearbyShareService_StartHighVisibilityMode_Handler,
+		},
+		{
+			MethodName: "StartReceiving",
+			Handler:    _NearbyShareService_StartReceiving_Handler,
+		},
+		{
+			MethodName: "WaitForSenderAndAcceptShare",
+			Handler:    _NearbyShareService_WaitForSenderAndAcceptShare_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -22,9 +22,25 @@ service NearbyShareService {
   // CrOSSetup configures Nearby Share on a ChromeOS device.
   rpc CrOSSetup (CrOSSetupRequest) returns (google.protobuf.Empty) {}
 
+  // GetFilesHashes returns a list of hashes for a list of files.
+  rpc FilesHashes (CrOSFileHashRequest) returns (CrOSFileHashResponse) {}
+
+  // PrepareFilesAndStartSend extracts test files and starts sending them.
+  rpc PrepareFilesAndStartSend (CrOSSendFileRequest) returns (CrOSSendFilesResponse) {}
+
+  // SelectShareTarget will select the receiver device.
+  rpc SelectShareTarget (CrOSSelectShareTargetRequest) returns (google.protobuf.Empty) {}
+
   // StartHighVisibilityMode enables the Nearby Share High Visibility mode from
   // quick settings.
   rpc StartHighVisibilityMode (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // StartReceiving will enable high vis receiving from javascript.
+  rpc StartReceiving (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // WaitForSenderAndAcceptShare is called by receiver to receive the file from
+  // sender.
+  rpc WaitForSenderAndAcceptShare(CrOSReceiveFilesRequest) returns (google.protobuf.Empty) {}
 }
 
 // CrOSSetupRequest is a request to setup and configure Nearby Share on a
@@ -35,6 +51,35 @@ message CrOSSetupRequest {
   string device_name = 3;
 }
 
+// CrOSSendFileRequest contains the archive of files to be sent by Nearby Share.
+message CrOSSendFileRequest {
+  string file_name = 1;
+}
 
+// CrOSSendFilesResponse is the individual file names that will be sent.
+message CrOSSendFilesResponse {
+  repeated string file_names = 1;
+}
 
+// CrOSSelectShareTargetRequest contains the receiver to send files to.
+message CrOSSelectShareTargetRequest {
+  string receiver_name = 1;
+}
 
+// CrOSFileHashRequest contains the list of files we want to hash.
+message CrOSFileHashRequest {
+  repeated string file_names = 1;
+  string file_dir = 2;
+}
+
+// CrOSFileHashResponse contains the list of hashes generated for a list of
+// files.
+message CrOSFileHashResponse {
+  repeated string hashes = 1;
+}
+
+// CrOSReceiveFilesRequest contains the sender name that we want to receive
+// files from.
+message CrOSReceiveFilesRequest {
+  string sender_name = 1;
+}
