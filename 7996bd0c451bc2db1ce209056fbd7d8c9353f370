@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2646787_daac12cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2021-02-18T22:52:47Z",
+      "side": 1,
+      "message": "No, this command returns very quickly. Maybe it makes more sense not to poll here?",
+      "parentUuid": "3358f60d_c369d4c0",
+      "range": {
+        "startLine": 79,
+        "startChar": 19,
+        "endLine": 83,
+        "endChar": 12
+      },
+      "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b27e1d56_b797fa12",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
         "patchSetId": 1
@@ -88,6 +112,30 @@
       "writtenOn": "2021-02-18T07:13:04Z",
       "side": 1,
       "message": "nit: The function is called even after the successful upgrade. Should we rename?",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 23
+      },
+      "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3675ac98_6e4a960b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2021-02-18T22:52:47Z",
+      "side": 1,
+      "message": "Yes, I will rename it to vmCommand()",
+      "parentUuid": "b27e1d56_b797fa12",
       "range": {
         "startLine": 105,
         "startChar": 9,
@@ -115,6 +163,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e5b4b2_60fdffd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2021-02-18T22:52:47Z",
+      "side": 1,
+      "message": "Added checks for some upgrade props, though I am not able to test most of them due to guest sepolicy (many are not readable from shell).",
+      "parentUuid": "75119f05_1bf25d40",
+      "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7a64381_e75605c1",
@@ -128,6 +194,30 @@
       "writtenOn": "2021-02-17T22:48:55Z",
       "side": 1,
       "message": "nit: it seems that it creates the Command, but does not \"run\" it.",
+      "range": {
+        "startLine": 111,
+        "startChar": 17,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "022b87af_76fbc4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2021-02-18T22:52:47Z",
+      "side": 1,
+      "message": "Changed to \"creates a command to be run in the VM\".",
+      "parentUuid": "a7a64381_e75605c1",
       "range": {
         "startLine": 111,
         "startChar": 17,
@@ -161,6 +251,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf382c4_1c36600a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2021-02-18T22:52:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cce5436d_70cc0a27",
+      "range": {
+        "startLine": 131,
+        "startChar": 27,
+        "endLine": 131,
+        "endChar": 33
+      },
+      "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd3b9f0b_2447e91d",
@@ -184,6 +298,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6418700a_61610317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2021-02-18T22:52:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd3b9f0b_2447e91d",
+      "range": {
+        "startLine": 141,
+        "startChar": 26,
+        "endLine": 141,
+        "endChar": 51
+      },
+      "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5bf8976_10510d19",
@@ -197,6 +335,30 @@
       "writtenOn": "2021-02-17T22:48:55Z",
       "side": 1,
       "message": "nit: what\u0027s CID?  concierge id? crytohome id? just put \"...Concierge ID (CID)...\" (or the correct name)",
+      "range": {
+        "startLine": 147,
+        "startChar": 28,
+        "endLine": 147,
+        "endChar": 31
+      },
+      "revId": "7996bd0c451bc2db1ce209056fbd7d8c9353f370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d56da7d_7dbbe102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2021-02-18T22:52:47Z",
+      "side": 1,
+      "message": "It stands for context identifier (from https://man7.org/linux/man-pages/man7/vsock.7.html). Added the full name here.",
+      "parentUuid": "f5bf8976_10510d19",
       "range": {
         "startLine": 147,
         "startChar": 28,
