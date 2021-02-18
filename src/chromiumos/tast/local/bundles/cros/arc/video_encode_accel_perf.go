@@ -24,9 +24,8 @@ func init() {
 		Func:         VideoEncodeAccelPerf,
 		Desc:         "Measures ARC++ and ARCVM hardware video encode performance by running the arcvideoencoder_test binary",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
-		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
+		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted", // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
@@ -37,7 +36,8 @@ func init() {
 				PixelFormat: videotype.I420,
 			},
 			ExtraData:         []string{video.Crowd1080P.Name},
-			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraSoftwareDeps: []string{"android_p", caps.HWEncodeH264},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 		}, {
 			Name: "h264_1080p_i420_vm",
 			Val: video.EncodeTestOptions{
@@ -46,7 +46,26 @@ func init() {
 				PixelFormat: videotype.I420,
 			},
 			ExtraData:         []string{video.Crowd1080P.Name},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeH264},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+		}, {
+			Name: "vp8_1080p_i420_vm",
+			Val: video.EncodeTestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      video.Crowd1080P,
+				PixelFormat: videotype.I420,
+			},
+			ExtraData:         []string{video.Crowd1080P.Name},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP8},
+		}, {
+			Name: "vp9_1080p_i420_vm",
+			Val: video.EncodeTestOptions{
+				Profile:     videotype.VP9Prof,
+				Params:      video.Crowd1080P,
+				PixelFormat: videotype.I420,
+			},
+			ExtraData:         []string{video.Crowd1080P.Name},
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP9},
 		}},
 	})
 }
