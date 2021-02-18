@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "506f5279_3bb86209",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-18T20:34:06Z",
+      "side": 1,
+      "message": "lgtm % one nit",
+      "revId": "6e8c587dc16144f9c715115c86a6dad5fea557de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21477a4_7e779532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-18T20:34:06Z",
+      "side": 1,
+      "message": "Do we still need \"-1\" that \"new tab\" seems no longer there?",
+      "range": {
+        "startLine": 434,
+        "startChar": 91,
+        "endLine": 434,
+        "endChar": 93
+      },
+      "revId": "6e8c587dc16144f9c715115c86a6dad5fea557de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
