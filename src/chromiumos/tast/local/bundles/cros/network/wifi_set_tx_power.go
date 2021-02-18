@@ -17,8 +17,7 @@ func init() {
 		Func: WifiSetTXPower,
 		Desc: "Tests WiFi TX power helper's basic operation",
 		Contacts: []string{
-			"briannorris@chromium.org",        // Author
-			"chromeos-kernel-wifi@google.com", // WiFi team
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
 		SoftwareDeps: []string{"tablet_mode"},
 		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},

@@ -20,9 +20,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        CSALeaveChannel,
-		Desc:        "Verifies that DUT will move off-channel after the AP sends a Spectrum Management action frame with a Channel Move element",
-		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: CSALeaveChannel,
+		Desc: "Verifies that DUT will move off-channel after the AP sends a Spectrum Management action frame with a Channel Move element",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

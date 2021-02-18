@@ -33,9 +33,11 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        DisconnectReason,
-		Desc:        "Verify the DUT disconnects from an AP and verify the supplicant DisconnectReason for various scenarios",
-		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: DisconnectReason,
+		Desc: "Verify the DUT disconnects from an AP and verify the supplicant DisconnectReason for various scenarios",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

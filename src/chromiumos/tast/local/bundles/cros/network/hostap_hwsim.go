@@ -25,8 +25,8 @@ func init() {
 		Func: HostapHwsim,
 		Desc: "Run selected hostap tests using a set of simulated WiFi clients/APs",
 		Contacts: []string{
-			"briannorris@chromium.org",
-			"chromeos-kernel-wifi@google.com",
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+			"briannorris@chromium.org",        // Test author
 		},
 
 		SoftwareDeps: []string{"hostap_hwsim"},

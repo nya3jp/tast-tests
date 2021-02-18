@@ -19,9 +19,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WPAValidity,
-		Desc:         "Verifies wpa_supplicant is up and running",
-		Contacts:     []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
+		Func: WPAValidity,
+		Desc: "Verifies wpa_supplicant is up and running",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
 	})
