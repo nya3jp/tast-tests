@@ -46,6 +46,7 @@ func init() {
 			"arc-performance@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Fixture:      "arcLogging",
 		// This test steps through opt-in flow 10 times and each iteration takes 20~40 seconds.
 		Timeout: 20 * time.Minute,
 		Params: []testing.Param{{

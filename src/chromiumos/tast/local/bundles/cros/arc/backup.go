@@ -29,6 +29,7 @@ func init() {
 		Contacts:     []string{"bhansknecht@chromium.org", "rohitbm@google.com", "arc-core@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
+		Fixture:      "arcLogging",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {

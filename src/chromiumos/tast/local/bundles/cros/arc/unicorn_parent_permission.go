@@ -22,6 +22,7 @@ func init() {
 		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "arcLogging",
 		Timeout:      5 * time.Minute,
 		Vars:         []string{"arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword"},
 		Params: []testing.Param{{

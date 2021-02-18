@@ -30,6 +30,7 @@ func init() {
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "arcLogging",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: accountTypeTestParam{

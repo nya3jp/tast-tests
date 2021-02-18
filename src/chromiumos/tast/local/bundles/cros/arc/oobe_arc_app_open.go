@@ -28,6 +28,7 @@ func init() {
 		//TODO(b/179637267): Enable once the bug is fixed.
 		//Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "arcLogging",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {

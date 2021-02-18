@@ -21,6 +21,7 @@ func init() {
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "arcLogging",
 		Timeout:      5 * time.Minute,
 		Vars:         []string{"arc.SmartSelectionChrome.username", "arc.SmartSelectionChrome.password"},
 		Params: []testing.Param{{

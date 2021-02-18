@@ -49,6 +49,7 @@ func init() {
 		Contacts:     []string{"youkichihosoi@chromium.org", "arcvm-eng@google.com"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
 		Attr:         []string{"group:mainline", "informational"},
+		Fixture:      "arcLogging",
 		Params: []testing.Param{{
 			Name: "houdini",
 			Val: nativeBridgeConfig{

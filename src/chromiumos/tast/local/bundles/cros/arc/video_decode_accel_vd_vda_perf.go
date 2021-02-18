@@ -20,6 +20,7 @@ func init() {
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"arc", "chrome", "video_decoder_direct"},
+		Fixture:      "arcLogging",
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "h264_1080p_30fps",

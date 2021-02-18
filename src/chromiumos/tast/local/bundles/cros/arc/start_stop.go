@@ -37,6 +37,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author.
 		},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "arcLogging",
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
 		Attr:    []string{"group:mainline"},

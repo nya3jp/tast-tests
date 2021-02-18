@@ -8,6 +8,7 @@ import (
 	gotesting "testing"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -41,4 +42,16 @@ func TestTimeout(t *gotesting.T) {
 
 func TestSoftwareDeps(t *gotesting.T) {
 	testcheck.SoftwareDeps(t, testcheck.Glob(t, pattern), []string{"chrome", "android_vm|android_vm_r|android_p|arc"})
+}
+
+func TestPreAndFixture(t *gotesting.T) {
+	check := func(pre testing.Precondition, fixture string) error {
+		// All ARC-related tests should use "arcLogging" fixture or its children, like "arcBooted", to collect logs.
+		// TODO(kimiyuki): Replace preconditions in arc.AppLoadingPerf.* and remove `t.Pre == nil`.
+		if pre == nil && fixture == "" {
+			return errors.New("Please use \"arcLogging\" fixture or its children to collect logs")
+		}
+		return nil
+	}
+	testcheck.PreAndFixture(t, testcheck.Glob(t, pattern), check)
 }

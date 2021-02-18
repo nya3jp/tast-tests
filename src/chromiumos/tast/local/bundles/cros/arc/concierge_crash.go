@@ -25,6 +25,7 @@ func init() {
 		Contacts:     []string{"hashimoto@chromium.org", "arcvm-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
+		Fixture:      "arcLogging",
 		Timeout:      10 * time.Minute,
 	})
 }

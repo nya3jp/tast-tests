@@ -23,7 +23,8 @@ func init() {
 			"khmel@chromium.org", // author.
 		},
 		// TODO(khmel): Make it critical.
-		Attr: []string{"group:mainline", "informational"},
+		Attr:    []string{"group:mainline", "informational"},
+		Fixture: "arcLogging",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 		}, {

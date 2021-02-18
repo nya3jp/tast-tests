@@ -32,7 +32,8 @@ func init() {
 			"khmel@chromium.org", // author.
 			"arc-performance@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr:    []string{"group:mainline", "informational"},
+		Fixture: "arcLogging",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 			Val: preoptTestParam{

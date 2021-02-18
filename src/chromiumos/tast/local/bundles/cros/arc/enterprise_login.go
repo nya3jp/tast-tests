@@ -29,6 +29,7 @@ func init() {
 		Contacts:     []string{"pbond@chromium.org", "arc-commercial@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"arc", "chrome"},
+		Fixture:      "arcLogging",
 		Timeout:      8 * time.Minute,
 		Params: []testing.Param{
 			{
