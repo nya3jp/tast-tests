@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5ceb23e_e7cf29e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-18T21:51:45Z",
+      "side": 1,
+      "message": "remove get",
+      "range": {
+        "startLine": 164,
+        "startChar": 24,
+        "endLine": 164,
+        "endChar": 27
+      },
+      "revId": "8e6edfe7cabd3094edd3ed391c590091e44c3fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6fa6245_9c9f7822",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbytestutils/nearbytestutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-18T21:51:45Z",
+      "side": 1,
+      "message": "Can these just be called something like HashFile and HashFiles",
+      "range": {
+        "startLine": 151,
+        "startChar": 5,
+        "endLine": 151,
+        "endChar": 17
+      },
+      "revId": "8e6edfe7cabd3094edd3ed391c590091e44c3fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef461ae1_45a48891",
+        "filename": "src/chromiumos/tast/services/cros/nearbyshare/nearby_share_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-18T21:51:45Z",
+      "side": 1,
+      "message": "repeated?\n\nOr just CrOsSendFileRequest",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "8e6edfe7cabd3094edd3ed391c590091e44c3fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
