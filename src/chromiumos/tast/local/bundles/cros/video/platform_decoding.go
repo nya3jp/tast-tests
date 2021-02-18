@@ -6,6 +6,9 @@ package video
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
 	"path/filepath"
 	"strings"
 	"time"
@@ -20,7 +23,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type failExpectedFn func(output []byte) bool
+type failExpectedFn func(stdout, stderr []byte) bool
 
 type platformDecodingParams struct {
 	filename     string
@@ -51,13 +54,52 @@ func init() {
 			Name: "unsupported_codec_fail",
 			Val: platformDecodingParams{
 				filename: "resolution_change_500frames.vp8.ivf",
-				failExpected: func(output []byte) bool {
-					return strings.Contains(string(output), "Codec VP80 not supported.")
+				failExpected: func(stdout, stderr []byte) bool {
+					return strings.Contains(string(stderr), "Codec VP80 not supported.")
 				},
 			},
 			ExtraData: []string{"resolution_change_500frames.vp8.ivf", "resolution_change_500frames.vp8.ivf.json"},
 		}},
 	})
+}
+
+func verifyContent(expectedHashesPath, actualOutput string) error {
+	// Read expected hashes from metadata json.
+	metadataJSONBytes, err := ioutil.ReadFile(expectedHashesPath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read metadata file at %s", expectedHashesPath)
+	}
+
+	var meta map[string]interface{}
+	if err = json.Unmarshal(metadataJSONBytes, &meta); err != nil {
+		return errors.Wrapf(err, "failed to read json from metadata file at %s", expectedHashesPath)
+	}
+	expected, ok := meta["md5_checksums"].([]interface{})
+	if !ok {
+		return errors.Errorf("`md5_checksums` in metadata at %s not a slice; got %v", expectedHashesPath, meta["md5_checksums"])
+	}
+
+	// Compare expected hashes to actual hashes.
+	actual := strings.Split(strings.TrimSpace(actualOutput), "\n")
+	if len(expected) != len(actual) {
+		return errors.Errorf("expected and actual number of frames mismatched (%d != %d)", len(expected), len(actual))
+	}
+
+	var mismatched []string
+	for i, ex := range expected {
+		if _, ok := ex.(string); !ok {
+			return errors.Errorf("failed to cast expected hash %v of type %T to string", ex, ex)
+		}
+		if wanted, got := strings.TrimSpace(ex.(string)), strings.TrimSpace(actual[i]); wanted != got {
+			mismatched = append(mismatched, fmt.Sprintf("frame %d (%s != %s)", i, wanted, got))
+		}
+	}
+
+	if mismatched != nil {
+		return errors.Wrap(errors.New("mismatched hashes"), strings.Join(mismatched, "\n"))
+	}
+
+	return nil
 }
 
 // PlatformDecoding runs the media/gpu/vaapi/test:decode_test binary on the
@@ -93,18 +135,28 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	// fails if the VAAPI calls themselves error, the binary is called on
 	// unsupported inputs or could not open the DRI render node, or the binary
 	// otherwise crashes.
+	// The test may also fail to verify the decode results (MD5 comparison).
 	const exec = "decode_test"
-	testing.ContextLog(ctx, "Running ", exec)
-	output, err := testexec.CommandContext(
+	stdout, stderr, err := testexec.CommandContext(
 		ctx,
 		filepath.Join(chrome.BinTestDir, exec),
 		"--video="+s.DataPath(testOpt.filename),
-	).CombinedOutput(testexec.DumpLogOnError)
+		"--visible",
+		"--md5",
+	).SeparatedOutput(testexec.DumpLogOnError)
 
-	if err != nil && (testOpt.failExpected == nil || !testOpt.failExpected(output)) {
+	if err != nil && (testOpt.failExpected == nil || !testOpt.failExpected(stdout, stderr)) {
+		output := append(stdout, stderr...)
 		s.Fatalf("%v failed unexpectedly: %v", exec, errors.Wrap(err, string(output)))
 	}
 	if err == nil && testOpt.failExpected != nil {
-		s.Fatalf("%v passed when expected to fail", exec)
+		s.Fatalf("%v passed on %s when expected to fail", exec, testOpt.filename)
+	}
+	if testOpt.failExpected != nil && testOpt.failExpected(stdout, stderr) {
+		return
+	}
+
+	if err := verifyContent(s.DataPath(testOpt.filename+".json"), string(stdout)); err != nil {
+		s.Fatalf("%v failed to verify content: %v", exec, errors.Wrap(err, testOpt.filename))
 	}
 }
