@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f27ad54_964ac8aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_managed_device_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-02-18T22:46:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "763e7708_6529d42f",
+      "range": {
+        "startLine": 80,
+        "startChar": 34,
+        "endLine": 80,
+        "endChar": 35
+      },
+      "revId": "4b2cb828d8c0d0500ee5881f0dc70e1369f850e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd67f0fc_686b6dd8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40f48789_711932e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_managed_device_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-02-18T22:46:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd67f0fc_686b6dd8",
+      "range": {
+        "startLine": 89,
+        "startChar": 27,
+        "endLine": 89,
+        "endChar": 31
+      },
+      "revId": "4b2cb828d8c0d0500ee5881f0dc70e1369f850e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93a34dfd_fa07c2f7",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-18T19:40:34Z",
       "side": 1,
       "message": "nit remove else since you are calling s.Fatal in the if",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "4b2cb828d8c0d0500ee5881f0dc70e1369f850e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e41b6e_2c6bd920",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_managed_device_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-02-18T22:46:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93a34dfd_fa07c2f7",
       "range": {
         "startLine": 90,
         "startChar": 3,
