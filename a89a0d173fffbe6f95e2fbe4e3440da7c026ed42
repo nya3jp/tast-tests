@@ -16,6 +16,24 @@
       "message": "It seems like this test is dependent on the DUT having an on-body detection sensor, and if such a sensor is not present, then the test does nothing..\n\nFrom http://go/tast-writing#device-dependencies:\n\n    Avoid writing tests that probe the DUT\u0027s capabilities at runtime, e.g.\n    \n    // WRONG: Avoid testing for software or hardware features at runtime.\n    func CheckCamera(ctx context.Context, s *testing.State) {\n        if !supports720PCamera() {\n            s.Log(\"Skipping test; device unsupported\")\n            return\n        }\n        // ...\n    }\n\n    This approach results in the test incorrectly passing even though it actually didn‘t verify anything. (Tast doesn’t let tests report an “N/A” state at runtime since it would be slower than skipping the test altogether and since it will prevent making intelligent scheduling decisions in the future about where tests should be executed.)\n\n    Instead, specify software dependencies when declaring tests.\n\ngo/tast-deps describes how to do so. Would that be an option for this test?",
       "revId": "a89a0d173fffbe6f95e2fbe4e3440da7c026ed42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc259af1_1f29cf07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-02-18T09:09:24Z",
+      "side": 1,
+      "message": "The on-body detection is an activity of the activity sensor, and this tast-test supposes to be test the entire activity sensor. However, the tests of the other activity is still unimplemented, so there is only on-body detection test now. Thus, depending on only on-body detection will disallow future tests of other activities.\n\nInstead, maybe we should depend on presentation of the activity sensor. If so, I think we should make another CL for this and maybe for the other sensor testing, since that most sensor tests are also using this pattern to skip testing.\n\nGwendal@, WDYT?",
+      "parentUuid": "ac4d0168_7cd2b409",
+      "revId": "a89a0d173fffbe6f95e2fbe4e3440da7c026ed42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
