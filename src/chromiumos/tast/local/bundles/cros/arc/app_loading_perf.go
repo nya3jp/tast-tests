@@ -35,11 +35,11 @@ var (
 
 	// arcAppLoadingBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--arc-disable-media-store-maintenance")...)
+	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, append(arc.DisableSyncFlags())...)
 
 	// arcAppLoadingVMBooted is a precondition similar to arc.VMBooted(). The only difference from arc.VMBooted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf", "--arc-disable-media-store-maintenance")...)
+	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf")...)
 )
 
 func init() {
