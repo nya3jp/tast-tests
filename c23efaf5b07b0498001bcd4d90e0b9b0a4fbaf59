@@ -3,6 +3,86 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bdf3215_085052ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-18T10:14:21Z",
+      "side": 1,
+      "message": "This should be split into 2, one for the screenMagnifier key, and one for the dockedMagnifier key, as both keys should be checked in all 4 states of the policy.\nThis way the policyKey can be moved out from here, and to Params in init().",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a786149_28e614e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-18T10:14:21Z",
+      "side": 1,
+      "message": "File a tracking bug (and it here) about deleting the other accessibility tests that this test substitutes when this test goes to CQ.",
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcfe2a20_68c9209a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-18T10:14:21Z",
+      "side": 1,
+      "message": "@Victor: What do you think about using the new fixtures here?",
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c79d8d0_fdcc05d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-18T10:14:21Z",
+      "side": 1,
+      "message": "nit: you can delete this part. The test does not use the UI library.",
+      "range": {
+        "startLine": 156,
+        "startChar": 24,
+        "endLine": 156,
+        "endChar": 53
+      },
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e23a0bc2_f74b9959",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
         "patchSetId": 3
@@ -42,6 +122,29 @@
         "startChar": 6,
         "endLine": 191,
         "endChar": 12
+      },
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dabe45a1_090beca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-18T10:14:21Z",
+      "side": 1,
+      "message": "nit: change here as well, if you change it above.",
+      "range": {
+        "startLine": 191,
+        "startChar": 62,
+        "endLine": 191,
+        "endChar": 65
       },
       "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
