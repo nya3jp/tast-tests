@@ -20,9 +20,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        PowerSave,
-		Desc:        "Test that we can enter and exit powersave mode without issues",
-		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: PowerSave,
+		Desc: "Test that we can enter and exit powersave mode without issues",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
