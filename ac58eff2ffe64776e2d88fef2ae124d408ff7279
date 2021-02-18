@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce211c70_e662e93d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-18T02:25:05Z",
+      "side": 1,
+      "message": "Thanks, LGTM. I\u0027ll defer to Jun for approval.",
+      "revId": "ac58eff2ffe64776e2d88fef2ae124d408ff7279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
