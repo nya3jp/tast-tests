@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "800c97ac_e3d3f0d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-18T22:38:39Z",
+      "side": 1,
+      "message": "This will be defined at the filemanager package namespace which might get conflicts, maybe zipPerfUITimeout ?",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 15
+      },
+      "revId": "a03b78fbdf9d1e5c6c515e1515099b7185e00a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
