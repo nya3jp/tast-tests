@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c67ea01_b8a82359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-02-18T07:28:35Z",
+      "side": 1,
+      "message": "Thanks for sharing that. I think enabling FilesZipMount is enough. The other 2 flags are disabled by default, and I will probably enable them before they will be enabled by default.",
+      "parentUuid": "bf57675a_4f66e6a6",
+      "range": {
+        "startLine": 48,
+        "startChar": 28,
+        "endLine": 48,
+        "endChar": 151
+      },
+      "revId": "80d5369a8160ab3d789056451d8bb6d97398b735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c8f8824_8d4f4610",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-18T04:08:54Z",
       "side": 1,
       "message": "Might want to add a cleanupCtx here to ensure the UI tree is dumped\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 30*time.Second)\ndefer cancel()\n```",
+      "range": {
+        "startLine": 76,
+        "startChar": 33,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "80d5369a8160ab3d789056451d8bb6d97398b735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d65110_7a62597c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-02-18T07:28:35Z",
+      "side": 1,
+      "message": "Thanks, I think that might have been useful in some cases. Added.",
+      "parentUuid": "3c8f8824_8d4f4610",
       "range": {
         "startLine": 76,
         "startChar": 33,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d089380_b7ec0b20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-02-18T07:28:35Z",
+      "side": 1,
+      "message": "Yes good catch, I removed some inaccurate comments.",
+      "parentUuid": "95737a81_1bc305a1",
+      "range": {
+        "startLine": 146,
+        "startChar": 2,
+        "endLine": 146,
+        "endChar": 56
+      },
+      "revId": "80d5369a8160ab3d789056451d8bb6d97398b735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84a00cdb_8cc9190d",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5976cc6b_49c07336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-02-18T07:28:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "84a00cdb_8cc9190d",
+      "range": {
+        "startLine": 186,
+        "startChar": 36,
+        "endLine": 186,
+        "endChar": 52
+      },
+      "revId": "80d5369a8160ab3d789056451d8bb6d97398b735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b941b8ae_5301037d",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-02-18T04:08:54Z",
       "side": 1,
       "message": "All this can be replaced with filesapp.CreateFolder\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go;l\u003d221-239;drc\u003de93e7683511f22ad54ddf1846d80a062f9129e14",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 137
+      },
+      "revId": "80d5369a8160ab3d789056451d8bb6d97398b735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a77c14_bf207b91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-02-18T07:28:35Z",
+      "side": 1,
+      "message": "Thanks, more lines to drop :)\nI\u0027m also seeing nodewith....Focused() that I didn\u0027t know about, changed below.",
+      "parentUuid": "b941b8ae_5301037d",
       "range": {
         "startLine": 196,
         "startChar": 0,
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3721e7ed_c4245d08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-02-18T07:28:35Z",
+      "side": 1,
+      "message": "I tried something in the next patchset, let me know what you think.",
+      "parentUuid": "041b5cb9_736a5137",
+      "range": {
+        "startLine": 217,
+        "startChar": 47,
+        "endLine": 217,
+        "endChar": 56
+      },
+      "revId": "80d5369a8160ab3d789056451d8bb6d97398b735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "023f9f76_94854dc0",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
         "patchSetId": 3
@@ -169,6 +313,30 @@
       "writtenOn": "2021-02-18T04:08:54Z",
       "side": 1,
       "message": "Might want to define these timeouts more globally as well as the 15*time.Second",
+      "range": {
+        "startLine": 220,
+        "startChar": 29,
+        "endLine": 220,
+        "endChar": 40
+      },
+      "revId": "80d5369a8160ab3d789056451d8bb6d97398b735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac39c5d8_2e2f0325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-02-18T07:28:35Z",
+      "side": 1,
+      "message": "Created a zipOperationTimeout constant, if the name\u0027s ok.",
+      "parentUuid": "023f9f76_94854dc0",
       "range": {
         "startLine": 220,
         "startChar": 29,
@@ -192,6 +360,30 @@
       "writtenOn": "2021-02-18T04:08:54Z",
       "side": 1,
       "message": "You can replace this with files.ClickContextMenuItem\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go;l\u003d176-185;drc\u003de93e7683511f22ad54ddf1846d80a062f9129e14",
+      "range": {
+        "startLine": 234,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 70
+      },
+      "revId": "80d5369a8160ab3d789056451d8bb6d97398b735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "192d6280_b715ab70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-02-18T07:28:35Z",
+      "side": 1,
+      "message": "The thing here is that I don\u0027t have a specific file name to click on (and the file names are different from one subtest to another). Is it ok if I keep it this way?",
+      "parentUuid": "ce93f0d4_eb141cf9",
       "range": {
         "startLine": 234,
         "startChar": 2,
