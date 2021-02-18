@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3876f113_d9962799",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-02-18T04:29:08Z",
+      "side": 1,
+      "message": "What linters do these changes affect? If it is something in Chromium, can we add a commandline that tries the linter to the local files?",
+      "revId": "757b3e8c18cafa21d37217b161c6da15194bf865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
