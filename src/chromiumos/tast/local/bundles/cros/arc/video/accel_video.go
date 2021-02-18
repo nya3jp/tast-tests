@@ -123,10 +123,16 @@ func runARCVideoEncoderTest(ctx context.Context, s *testing.State, a *arc.ARC,
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	if opts.Profile != videotype.H264Prof {
+	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm")
+	if opts.Profile == videotype.H264Prof {
+		encodeOutFile = encodeOutFile + ".h264"
+	} else if opts.Profile == videotype.VP8Prof {
+		encodeOutFile = encodeOutFile + ".vp8.ivf"
+	} else if opts.Profile == videotype.VP9Prof {
+		encodeOutFile = encodeOutFile + ".vp9.ivf"
+	} else {
 		s.Fatalf("Profile (%d) is not supported", opts.Profile)
 	}
-	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm") + ".h264"
 	outPath := filepath.Join(arcFilePath, encodeOutFile)
 
 	commonArgs := []string{
