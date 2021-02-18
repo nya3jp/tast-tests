@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10238b7_baf93b79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-02-18T21:58:11Z",
+      "side": 1,
+      "message": "Good to know that! Thanks~",
+      "parentUuid": "e38f0dab_b7c7eb55",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 26
+      },
+      "revId": "33a1b44dc2f8b49445f11d12a96c5ca4f808668c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4f8a00e_c70702fb",
@@ -85,6 +109,30 @@
       "writtenOn": "2021-02-18T19:03:51Z",
       "side": 1,
       "message": "We now have StableFindAndClick, which is sort of DescendantWithTimeout + StableLeftClick.",
+      "range": {
+        "startLine": 176,
+        "startChar": 34,
+        "endLine": 176,
+        "endChar": 55
+      },
+      "revId": "33a1b44dc2f8b49445f11d12a96c5ca4f808668c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfadad46_6fed01b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-02-18T21:58:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4f8a00e_c70702fb",
       "range": {
         "startLine": 176,
         "startChar": 34,
