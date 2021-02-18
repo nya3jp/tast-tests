@@ -32,12 +32,31 @@ func init() {
 	})
 }
 
+const scannerName = "DavieV Virtual USB Printer (USB)"
+
 const (
 	sourceImage      = "scan_source.jpg"
 	descriptors      = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
 	attributes       = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 	esclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
 )
+
+// TODO(jschettler): Test other scan settings when the virtual USB printer
+// supports them.
+var tests = []struct {
+	name     string
+	settings scanapp.ScanSettings
+}{{
+	name: "flatbed_png_color_letter_300_dpi",
+	settings: scanapp.ScanSettings{
+		Scanner:    scannerName,
+		Source:     scanapp.SourceFlatbed,
+		FileType:   scanapp.FileTypePNG,
+		ColorMode:  scanapp.ColorModeColor,
+		PageSize:   scanapp.PageSizeLetter,
+		Resolution: scanapp.Resolution300DPI,
+	},
+}}
 
 func Scan(ctx context.Context, s *testing.State) {
 	// Use cleanupCtx for any deferred cleanups in case of timeouts or
@@ -96,29 +115,22 @@ func Scan(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to expand More settings: ", err)
 	}
 
-	// TODO(jschettler): Test other scan settings when the virtual USB printer
-	// supports them.
-	for _, settings := range []scanapp.ScanSettings{{
-		Scanner:    "DavieV Virtual USB Printer (USB)",
-		Source:     scanapp.SourceFlatbed,
-		FileType:   scanapp.FileTypePNG,
-		ColorMode:  scanapp.ColorModeColor,
-		PageSize:   scanapp.PageSizeLetter,
-		Resolution: scanapp.Resolution300DPI,
-	}} {
-		if err := app.SetScanSettings(ctx, settings); err != nil {
-			s.Fatal("Failed to set scan settings: ", err)
-		}
+	for _, test := range tests {
+		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
+			if err := app.SetScanSettings(ctx, test.settings); err != nil {
+				s.Fatal("Failed to set scan settings: ", err)
+			}
 
-		if err := app.Scan(ctx); err != nil {
-			s.Fatal("Failed to perform scan: ", err)
-		}
+			if err := app.Scan(ctx); err != nil {
+				s.Fatal("Failed to perform scan: ", err)
+			}
 
-		// TODO(jschettler): Verify the saved file can be found in the Files app
-		// and compare it to a golden file.
-		if err := app.ClickDone(ctx); err != nil {
-			s.Fatal("Failed to finish scanning: ", err)
-		}
+			// TODO(jschettler): Verify the saved file can be found in the Files
+			// app and compare it to a golden file.
+			if err := app.ClickDone(ctx); err != nil {
+				s.Fatal("Failed to finish scanning: ", err)
+			}
+		})
 	}
 
 	// Intentionally stop the printer early to trigger shutdown in
