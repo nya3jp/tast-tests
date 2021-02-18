@@ -16,6 +16,23 @@
       "message": "Thanks you for reviewing this CL :)",
       "revId": "a4ae32b3722148e0f24e280c45543855a540f2cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "383f57c5_849de147",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-18T03:58:13Z",
+      "side": 1,
+      "message": "According to https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_reviews.md#summary, can you also have a team member to review this change?",
+      "revId": "a4ae32b3722148e0f24e280c45543855a540f2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
