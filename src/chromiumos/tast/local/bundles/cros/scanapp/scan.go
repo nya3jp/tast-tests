@@ -6,9 +6,12 @@ package scanapp
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/scanapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -31,6 +34,8 @@ func init() {
 		Data:         []string{sourceImage},
 	})
 }
+
+const defaultScanPattern = "/home/chronos/user/MyFiles/scan*_*.*"
 
 const scannerName = "DavieV Virtual USB Printer (USB)"
 
@@ -57,6 +62,21 @@ var tests = []struct {
 		Resolution: scanapp.Resolution300DPI,
 	},
 }}
+
+func removeScans(pattern string) error {
+	scans, err := filepath.Glob(pattern)
+	if err != nil {
+		return err
+	}
+
+	for _, scan := range scans {
+		if err = os.Remove(scan); err != nil {
+			return errors.Wrapf(err, "failed to remove %s", scan)
+		}
+	}
+
+	return nil
+}
 
 func Scan(ctx context.Context, s *testing.State) {
 	// Use cleanupCtx for any deferred cleanups in case of timeouts or
@@ -117,6 +137,12 @@ func Scan(ctx context.Context, s *testing.State) {
 
 	for _, test := range tests {
 		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
+			defer func() {
+				if err := removeScans(defaultScanPattern); err != nil {
+					s.Error("Failed to remove scans: ", err)
+				}
+			}()
+
 			if err := app.SetScanSettings(ctx, test.settings); err != nil {
 				s.Fatal("Failed to set scan settings: ", err)
 			}
