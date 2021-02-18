@@ -180,6 +180,9 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	if err := memory.SmapsMetrics(ctx, p, s.OutDir(), ""); err != nil {
 		s.Error("Failed to log smaps_rollup metrics: ", err)
 	}
+	if err := memory.ZramMmStatMetrics(ctx, p, s.OutDir(), ""); err != nil {
+		s.Error("Failed to log zram mm_stat metrics: ", err)
+	}
 	if preARC != nil {
 		if err := arcMemory.DumpsysMeminfoMetrics(ctx, preARC, p, s.OutDir(), ""); err != nil {
 			s.Error("Failed to log dumpsys meminfo metrics: ", err)
