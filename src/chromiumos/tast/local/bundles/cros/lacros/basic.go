@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/lacros/faillog"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
@@ -31,7 +32,12 @@ func Basic(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}
-	defer l.Close(ctx)
+	defer func() {
+		l.Close(ctx)
+		if err := faillog.Save(s.HasError, l, s.OutDir()); err != nil {
+			s.Log("Failed to save lacros logs: ", err)
+		}
+	}()
 
 	if _, err = l.Devsess.CreateTarget(ctx, "about:blank"); err != nil {
 		s.Fatal("Failed to open new tab: ", err)
