@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4af7b40_56babe31",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-18T05:37:48Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, done.",
+      "parentUuid": "c463cdb4_af809e28",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "85ad0cab27626d00e9354410da592aeb63ed73c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "930c0bb3_bb02cc59",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-02-18T05:06:54Z",
       "side": 1,
       "message": "(optional): it\u0027s better to run go cmd.Wait() regardless of Kill, because we anyways want to collect the subprocess, right?",
+      "revId": "85ad0cab27626d00e9354410da592aeb63ed73c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d13b78b_840cc867",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-18T05:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "930c0bb3_bb02cc59",
       "revId": "85ad0cab27626d00e9354410da592aeb63ed73c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
