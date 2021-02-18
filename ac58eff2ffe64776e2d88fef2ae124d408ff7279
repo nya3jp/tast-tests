@@ -33,6 +33,24 @@
       "message": "Our testing on R89 shows the step calling WaitForPlayStoreShown() logic is fragile - on certain models, the play store doesn\u0027t show after opt-in. arc.New() and other test procedures can continue to be performed. I will further change the logic and close the play store window only when it shows up within certain time.\n\nBut I\u0027m curious if this has ever happened on other tests using the similar logic. Have you heard of this, Jun, Xiyuan, and Shuhei?",
       "revId": "ac58eff2ffe64776e2d88fef2ae124d408ff7279",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "860047f7_df76e6d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-18T18:25:53Z",
+      "side": 1,
+      "message": "I uploaded another patch to make the logic robust.",
+      "parentUuid": "c44317b0_6faee83d",
+      "revId": "ac58eff2ffe64776e2d88fef2ae124d408ff7279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
