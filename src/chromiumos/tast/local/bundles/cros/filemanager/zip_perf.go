@@ -18,9 +18,12 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
@@ -84,7 +87,6 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	defer files.Release(ctx)
 
 	// Wait until cpu idle before starting performance measures.
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
@@ -138,195 +140,84 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 }
 
 func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.FilesApp, zipFile string) float64 {
-	// Open the Downloads folder.
-	if err := files.OpenDownloads(ctx); err != nil {
-		s.Fatal("Opening Downloads folder failed: ", err)
-	}
-
-	// Click zip file and wait for Open button in top bar.
-	if err := files.WaitForFile(ctx, zipFile, 15*time.Second); err != nil {
-		s.Fatal("Waiting for test file failed: ", err)
-	}
-
-	// Mount zip file.
-	if err := files.SelectFile(ctx, zipFile); err != nil {
-		s.Fatal("Failed to mount zip file: ", err)
-	}
-
-	params := ui.FindParams{
-		Name: "Open",
-		Role: ui.RoleTypeButton,
-	}
-
-	open, err := files.Root.DescendantWithTimeout(ctx, params, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find Open menu item: ", err)
-	}
-	defer open.Release(ctx)
-
-	if err := open.LeftClick(ctx); err != nil {
-		s.Fatal("Mounting zip file failed: ", err)
+	if err := uiauto.Run(ctx,
+		// Open the Downloads folder.
+		files.OpenDownloads(),
+		// Click zip file and wait for Open button in top bar.
+		files.WaitForFile(zipFile),
+		// Mount zip file.
+		files.SelectFile(zipFile),
+		// Click "Open" to mount the selected zip file.
+		files.LeftClick(nodewith.Name("Open").Role(role.Button)),
+	); err != nil {
+		s.Fatal("Failed to open Downloads and start mounting the ZIP file: ", err)
 	}
 
 	// Start timer for zip file mounting operation.
 	startTime := time.Now()
 
-	// Wait until the Files App is displaying the content of the mounted zip file.
-	params = ui.FindParams{
-		Name: "Files - " + zipFile,
-		Role: ui.RoleTypeRootWebArea,
-	}
-
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, time.Minute); err != nil {
-		s.Fatal("Opening mounted zip file failed: ", err)
+	if err := files.WithTimeout(time.Minute).WaitUntilExists(nodewith.Name("Files - " + zipFile).Role(role.RootWebArea))(ctx); err != nil {
+		s.Fatal("Failed to find mounted ZIP file: ", err)
 	}
 
 	return float64(time.Since(startTime).Milliseconds())
 }
 
 func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, zipBaseName string) float64 {
-	// Get the Files App listBox.
-	filesBox, err := files.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, 15*time.Second)
-	if err != nil {
-		s.Fatal("Failed getting filesBox: ", err)
-	}
-	defer filesBox.Release(ctx)
-
-	// Move the focus to the file list.
-	if err := filesBox.FocusAndWait(ctx, 15*time.Second); err != nil {
-		s.Fatal("Failed selecting filesBox: ", err)
-	}
-
-	// Define the number of files that we expect to select for the extraction operation.
-	var selectionLabel string
-	switch zipBaseName {
-	case "various_documents":
-		selectionLabel = "102 items selected"
-	case "500_small_files":
-		selectionLabel = "500 files selected"
-	default:
-		s.Fatal("Unexpected test zip file")
-	}
-
-	// Ensure that the right number of files is selected.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Select all mounted files.
-		if err := ew.Accel(ctx, "ctrl+A"); err != nil {
-			s.Fatal("Failed selecting files with Ctrl+A: ", err)
+	// Define action for selecting contents of mounted file before extraction.
+	selectAllInMountedFileAction := func() uiauto.Action {
+		// Define the number of files that we expect to select for the extraction operation.
+		var selectionLabel string
+		switch zipBaseName {
+		case "various_documents":
+			selectionLabel = "102 items selected"
+		case "500_small_files":
+			selectionLabel = "500 files selected"
+		default:
+			s.Fatal("Unexpected test zip file")
 		}
-
-		// Ensure that the right number of files is selected.
-		params := ui.FindParams{
-			Name: selectionLabel,
-			Role: ui.RoleTypeStaticText,
+		return func(ctx context.Context) error {
+			return testing.Poll(ctx, func(ctx context.Context) error {
+				// Select all mounted files.
+				if err := ew.Accel(ctx, "ctrl+A"); err != nil {
+					s.Fatal("Failed selecting files with Ctrl+A: ", err)
+				}
+				return files.Exists(nodewith.Name(selectionLabel).Role(role.StaticText))(ctx)
+			}, &testing.PollOptions{Timeout: 15 * time.Second})
 		}
-		selectionLabelFound, err := files.Root.DescendantExists(ctx, params)
-		if err != nil {
-			return err
-		}
-		if !selectionLabelFound {
-			return errors.New("expected selection label still not found")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-		s.Fatal("Cannot check that the right number of files is selected: ", err)
 	}
 
-	// Copy.
-	if err := ew.Accel(ctx, "ctrl+C"); err != nil {
-		s.Fatal("Failed copying files with Ctrl+C: ", err)
+	if err := uiauto.Run(ctx,
+		// Move the focus to the file list.
+		files.FocusAndWait(nodewith.Role(role.ListBox)),
+		selectAllInMountedFileAction(),
+		ew.AccelAction("ctrl+C"),
+		files.OpenDownloads(),
+		// Create receiving directory for extraction operation.
+		ew.AccelAction("ctrl+E"),
+		// Wait for rename text field.
+		files.WaitUntilExists(nodewith.Role(role.TextField).State(state.Editable, true).State(state.Focusable, true).State(state.Focused, true)),
+		// Name the new directory with the name of the zip file.
+		ew.TypeAction(zipBaseName),
+		ew.AccelAction("Enter"),
+		files.WaitUntilGone(nodewith.Role(role.TextField).State(state.Editable, true).State(state.Focusable, true).State(state.Focused, true)),
+		// Enter the new directory.
+		files.OpenFile(zipBaseName),
+		// Before pasting, ensure the Files App has switched to the new location.
+		files.WaitUntilExists(nodewith.Name("Files - "+zipBaseName).Role(role.RootWebArea)),
+		ew.AccelAction("ctrl+V"),
+	); err != nil {
+		s.Fatal("Failed to start ZIP file extraction: ", err)
 	}
-
-	// Open the Downloads folder.
-	if err := files.OpenDownloads(ctx); err != nil {
-		s.Fatal("Opening Downloads folder failed: ", err)
-	}
-
-	// Create receiving directory for extraction operation.
-	if err := ew.Accel(ctx, "ctrl+E"); err != nil {
-		s.Fatal("Failed renaming folder with Ctrl+E: ", err)
-	}
-
-	// Wait for rename text field.
-	params := ui.FindParams{
-		Role:  ui.RoleTypeTextField,
-		State: map[ui.StateType]bool{ui.StateTypeEditable: true, ui.StateTypeFocusable: true, ui.StateTypeFocused: true},
-	}
-
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second); err != nil {
-		s.Fatal("Failed finding rename input text field: ", err)
-	}
-
-	// Name the new directory with the name of the zip file.
-	if err := ew.Type(ctx, zipBaseName); err != nil {
-		s.Fatal("Failed renaming the new directory: ", err)
-	}
-
-	// Validate the new directory name.
-	if err := ew.Accel(ctx, "Enter"); err != nil {
-		s.Fatal("Failed validating the name of the new directory: ", err)
-	}
-
-	// Wait for the input field to disappear.
-	if err := files.Root.WaitUntilDescendantGone(ctx, params, 15*time.Second); err != nil {
-		s.Fatal("Failed waiting for input field to disappear: ", err)
-	}
-
-	// Enter the new directory.
-	if err := files.OpenFile(ctx, zipBaseName); err != nil {
-		s.Fatal("Failed navigating to the new directory: ", err)
-	}
-
-	// Before pasting, ensure the Files App has switched to the new location.
-	params = ui.FindParams{
-		Name: "Files - " + zipBaseName,
-		Role: ui.RoleTypeRootWebArea,
-	}
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second); err != nil {
-		s.Fatal("Opening "+zipBaseName+" folder failed: ", err)
-	}
-
-	if err := ew.Accel(ctx, "ctrl+V"); err != nil {
-		s.Fatal("Failed pasting files with Ctrl+V: ", err)
-	}
-
-	// Similarly to the selection label, define the number of items we're expecting to copy.
-	notificationRE := regexp.MustCompile("Copying (102|500) items to *")
 
 	// Start timer for zip file extracting operation.
 	startTime := time.Now()
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Find notification panel for copy operation.
-		params := ui.FindParams{
-			Role: ui.RoleTypeGenericContainer,
-			Attributes: map[string]interface{}{
-				"name": notificationRE,
-			},
-		}
+	// Similarly to the selection label, define the number of items we're expecting to copy.
+	notificationRE := regexp.MustCompile("Copying (102|500) items to *")
 
-		panel, err := files.Root.Descendant(ctx, params)
-		if err != nil {
-			return errors.New("still unable to find copy notification")
-		}
-		defer panel.Release(ctx)
-
-		// Wait for the copy operation to finish.
-		params = ui.FindParams{
-			Name: "Complete",
-			Role: ui.RoleTypeStaticText,
-		}
-
-		completeStringFound, err := panel.DescendantExists(ctx, params)
-		if err != nil {
-			return err
-		}
-		if !completeStringFound {
-			return errors.New("still unable to find 'Complete' string")
-		}
-
-		return nil
-	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+	// Find "Complete" within the copy notification panel, to wait for the copy operation to finish.
+	if err := files.WithTimeout(time.Minute).WaitUntilExists(nodewith.Name("Complete").Role(role.StaticText).Ancestor(nodewith.NameRegex(notificationRE).Role(role.GenericContainer)))(ctx); err != nil {
 		s.Fatal("Failed to wait for end of copy operation: ", err)
 	}
 
@@ -335,46 +226,17 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 }
 
 func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, zipBaseName string) float64 {
-	// Get the Files App listBox, which should be in a focused state.
-	params := ui.FindParams{
-		Role:  ui.RoleTypeListBox,
-		State: map[ui.StateType]bool{ui.StateTypeFocused: true},
-	}
-
-	filesBox, err := files.Root.DescendantWithTimeout(ctx, params, 15*time.Second)
-	if err != nil {
-		s.Fatal("Failed getting filesBox: ", err)
-	}
-	defer filesBox.Release(ctx)
-
-	// Select all extracted files.
-	if err := ew.Accel(ctx, "ctrl+A"); err != nil {
-		s.Fatal("Failed selecting files with Ctrl+A: ", err)
-	}
-
-	// Open menu item.
-	if err := filesBox.RightClick(ctx); err != nil {
-		s.Fatal("Failed opening menu item: ", err)
-	}
-
-	// Wait for location change events to be propagated (b/161438238).
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for location change completed: ", err)
-	}
-
-	// Zip selection.
-	params = ui.FindParams{
-		Name: "Zip selection",
-		Role: ui.RoleTypeMenuItem,
-	}
-	zipSelection, err := files.Root.DescendantWithTimeout(ctx, params, 15*time.Second)
-	if err != nil {
-		s.Fatal("Failed zipping files: ", err)
-	}
-	defer zipSelection.Release(ctx)
-
-	if err := zipSelection.LeftClick(ctx); err != nil {
-		s.Fatal("Failed unzipping menu item: ", err)
+	if err := uiauto.Run(ctx,
+		// The Files app listBox, which should be in a focused state.
+		files.WaitUntilExists(nodewith.Role(role.ListBox).State(state.Focused, true)),
+		// Select all extracted files.
+		ew.AccelAction("ctrl+A"),
+		// Right click on the Files app listBox.
+		files.RightClick(nodewith.Role(role.ListBox).State(state.Focused, true)),
+		// Select "Zip selection".
+		files.LeftClick(nodewith.Name("Zip selection").Role(role.MenuItem)),
+	); err != nil {
+		s.Fatal("Failed to start zipping files: ", err)
 	}
 
 	zipArchiverExtensionID := "dmboannefpncccogfdikhmhpmdnddgoe"
