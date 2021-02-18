@@ -59,6 +59,7 @@ type objectInfo struct {
 	LongClickable      bool   `json:"longClickable"`
 	Scrollable         bool   `json:"scrollable"`
 	Selected           bool   `json:"selected"`
+	ChildCount         int    `json:"childCount"`
 }
 
 // Object creates an Object from given selectors.
@@ -186,6 +187,18 @@ func (o *Object) GetClassName(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "GetClassName failed")
 	}
 	return info.ClassName, nil
+}
+
+// GetChildCount returns the count of child views immediately under the present UiObject.
+//
+// This method corresponds to UiObject.getChildCount().
+// https://developer.android.com/reference/androidx/test/uiautomator/UiObject#getchildcount
+func (o *Object) GetChildCount(ctx context.Context) (int, error) {
+	info, err := o.info(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "GetChildCount failed")
+	}
+	return info.ChildCount, nil
 }
 
 // GetBounds returns the bounds of a view.
