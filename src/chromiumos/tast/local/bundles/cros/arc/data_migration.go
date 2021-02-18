@@ -40,6 +40,7 @@ func init() {
 		// "no_qemu" is added for excluding betty from the target board list.
 		// TODO(b/179636279): Remove "no_qemu" after making the test pass on betty.
 		SoftwareDeps: []string{"chrome", "no_qemu"},
+		Fixture:      "arcLogging",
 		Timeout:      10 * time.Minute,
 		Vars:         []string{"arc.DataMigration.username", "arc.DataMigration.password"},
 		Params: []testing.Param{{

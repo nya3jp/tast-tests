@@ -27,6 +27,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		// TODO(http://b/172011479): Test is disabled until it can be fixed
 		// Attr:         []string{"group:mainline", "informational"},
+		Fixture: "arcLogging",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {

@@ -50,6 +50,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Fixture:      "arcLogging",
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "unmanaged",

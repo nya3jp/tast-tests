@@ -28,6 +28,7 @@ func init() {
 		Desc:     "Installs a TWA and WebAPK app via Omnibox in Play Store",
 		Contacts: []string{"benreich@chromium.org", "jshikaram@chromium.org"},
 		Attr:     []string{"group:mainline", "informational"},
+		Fixture:  "arcLogging",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 		}, {

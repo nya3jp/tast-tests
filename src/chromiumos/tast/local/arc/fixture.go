@@ -18,12 +18,21 @@ import (
 )
 
 func init() {
+	// arcLogging is a fixture to collect ARC-related logs. This fixture doesn't prepare anything like arc.ARC objects.
+	testing.AddFixture(&testing.Fixture{
+		Name:            "arcLogging",
+		Desc:            "Does nothing but collects ARC-related logs",
+		Impl:            &loggingFixture{},
+		PostTestTimeout: resetTimeout,
+	})
+
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBooted",
 		Desc: "ARC is booted",
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ARCEnabled()}, nil
 		}),
+		Parent:          "arcLogging",
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: resetTimeout,
@@ -40,6 +49,7 @@ func init() {
 				chrome.ExtraArgs(DisableSyncFlags()...),
 			}, nil
 		}),
+		Parent:          "arcLogging",
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: resetTimeout,
@@ -56,6 +66,7 @@ func init() {
 				chrome.ExtraArgs("--force-tablet-mode=touch_view", "--enable-virtual-keyboard"),
 			}, nil
 		}),
+		Parent:          "arcLogging",
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: resetTimeout,
@@ -74,6 +85,7 @@ func init() {
 					"*/media/gpu/v4l2/*=2",
 					"*/components/arc/video_accelerator/*=2"}, ","))}, nil
 		}),
+		Parent:          "arcLogging",
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: resetTimeout,
@@ -164,18 +176,10 @@ func (f *bootedFixture) Reset(ctx context.Context) error {
 }
 
 func (f *bootedFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
-	// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
-	// hooks in fixtures.
 }
 
 func (f *bootedFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-	// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
-	// hooks in fixtures.
-
-	if err := saveARCVMConsole(ctx, s.OutDir()); err != nil {
-		s.Error("Failed to to save ARCVM console output: ", err)
-	}
-
+	// TODO(kimiyuki): Move this to loggingFixture.PostTest()
 	if s.HasError() {
 		faillogDir := filepath.Join(s.OutDir(), "faillog")
 		if err := os.MkdirAll(faillogDir, 0755); err != nil {
@@ -185,6 +189,34 @@ func (f *bootedFixture) PostTest(ctx context.Context, s *testing.FixtTestState) 
 		if err := saveProcessList(ctx, f.arc, faillogDir); err != nil {
 			s.Error("Failed to save the process list in ARCVM: ", err)
 		}
+	}
+}
+
+type loggingFixture struct {
+}
+
+func (f *loggingFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	return nil
+}
+
+func (f *loggingFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+}
+
+func (f *loggingFixture) Reset(ctx context.Context) error {
+	return nil
+}
+
+func (f *loggingFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
+	// hooks in fixtures.
+}
+
+func (f *loggingFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
+	// hooks in fixtures.
+
+	if err := saveARCVMConsole(ctx, s.OutDir()); err != nil {
+		s.Error("Failed to to save ARCVM console output: ", err)
 	}
 }
 

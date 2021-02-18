@@ -28,6 +28,7 @@ func init() {
 			"nya@chromium.org", // Tast port author.
 		},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "arcLogging",
 		Params: []testing.Param{{
 			Val: bootConfig{
 				numTrials: 1,
@@ -107,7 +108,7 @@ func runBoot(ctx context.Context, s *testing.State) {
 	// Ensures package manager service is running by checking the existence of the "android" package.
 	pkgs, err := a.InstalledPackages(ctx)
 	if err != nil {
-		s.Fatal("getting installed packages failed: ", err)
+		s.Fatal("Getting installed packages failed: ", err)
 	}
 
 	if _, ok := pkgs["android"]; !ok {

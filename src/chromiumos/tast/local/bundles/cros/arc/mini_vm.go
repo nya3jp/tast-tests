@@ -28,6 +28,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
+		Fixture:      "arcLogging",
 		Timeout:      4 * time.Minute,
 		Vars:         []string{"arc.username", "arc.password"},
 	})

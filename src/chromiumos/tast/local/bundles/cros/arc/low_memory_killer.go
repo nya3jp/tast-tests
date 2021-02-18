@@ -33,6 +33,7 @@ func init() {
 		// Attr:     []string{"group:mainline", "informational"},
 		// This test doesn't run well in VMs. See crbug.com/1103472.
 		SoftwareDeps: []string{"chrome", "android_p", "no_qemu"},
+		Fixture:      "arcLogging",
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
 	})

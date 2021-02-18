@@ -27,7 +27,8 @@ func init() {
 			"arc-core@google.com",
 			"khmel@chromium.org", // author.
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr:    []string{"group:mainline", "informational"},
+		Fixture: "arcLogging",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 		}, {

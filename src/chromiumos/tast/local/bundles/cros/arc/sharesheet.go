@@ -31,6 +31,7 @@ func init() {
 			"chromeos-apps-foundation-team@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "arcLogging",
 		Timeout:      7 * time.Minute,
 		Params: []testing.Param{{
 			ExtraAttr:         []string{"group:mainline", "informational"},

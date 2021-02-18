@@ -27,6 +27,7 @@ func init() {
 		Contacts:     []string{"khmel@chromium.org", "jhorwich@chromium.org", "arc-core@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "arcLogging",
 		// 1 min for ARC is provisioned, 4 minutes max waiting for daily hygiene, and
 		// 1 min max waiting for CPU is idle. Normally test takes ~2.5-3.5 minutes to complete.
 		Timeout: 5 * time.Minute,
