@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "779728a4_1e9385e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-02-18T03:23:46Z",
+      "side": 1,
+      "message": "Note: I am waiting for iHD uprev + CDF patch.",
+      "revId": "880b3ae000d57f012cd7c7dff0f794e8056025cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
