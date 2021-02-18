@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59f1b4a6_41892f50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-18T03:58:13Z",
+      "side": 1,
+      "message": "nit: not fixed. \nconst maxTypeCPorts \u003d 8",
+      "parentUuid": "2a21e952_84235f96",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "db7162f874b083b06726079950f07b1ae405c06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2893e1e8_6a0cf744",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
         "patchSetId": 2
