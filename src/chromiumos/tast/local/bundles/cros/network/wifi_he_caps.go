@@ -14,9 +14,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WifiHeCaps,
-		Desc:         "Verifies HE-MAC supported DUT actually supports Wifi HE protocols",
-		Contacts:     []string{"billyzhao@google.com", "chromeos-kernel-wifi@google.com"},
+		Func: WifiHeCaps,
+		Desc: "Verifies HE-MAC supported DUT actually supports Wifi HE protocols",
+		Contacts: []string{
+			"billyzhao@google.com",            // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
 		HardwareDeps: hwdep.D(hwdep.Wifi80211ax()),

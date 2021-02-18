@@ -23,9 +23,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        ConnectScan,
-		Desc:        "Verifies that the 802.11 probe frames with expected SSIDs are seen over-the-air when connecting to WiFi",
-		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: ConnectScan,
+		Desc: "Verifies that the 802.11 probe frames with expected SSIDs are seen over-the-air when connecting to WiFi",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),

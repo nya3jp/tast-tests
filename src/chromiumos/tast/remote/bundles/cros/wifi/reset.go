@@ -16,9 +16,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        Reset,
-		Desc:        "Test that the WiFi interface can be reset successfully, and that WiFi comes back up properly",
-		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: Reset,
+		Desc: "Test that the WiFi interface can be reset successfully, and that WiFi comes back up properly",
+		Contacts: []string{
+			"chharry@google.com",              // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

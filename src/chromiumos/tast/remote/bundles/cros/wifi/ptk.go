@@ -29,9 +29,12 @@ type ptkParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        PTK,
-		Desc:        "Verifies that pairwise temporal key rotations works as expected",
-		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: PTK,
+		Desc: "Verifies that pairwise temporal key rotations works as expected",
+		Contacts: []string{
+			"chharry@google.com",              // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),

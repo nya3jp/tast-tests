@@ -21,9 +21,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        GTK,
-		Desc:        "Verifies that we can continue to decrypt broadcast traffic while going through group temporal key (GTK) rekeys",
-		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: GTK,
+		Desc: "Verifies that we can continue to decrypt broadcast traffic while going through group temporal key (GTK) rekeys",
+		Contacts: []string{
+			"chharry@google.com",              // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

@@ -19,9 +19,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        ScanPerf,
-		Desc:        "Measure BSS scan performance in various setup",
-		Contacts:    []string{"deanliao@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: ScanPerf,
+		Desc: "Measure BSS scan performance in various setup",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_perf"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

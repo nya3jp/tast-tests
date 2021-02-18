@@ -17,9 +17,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        LinkMonitorFailure,
-		Desc:        "Verifies how fast the DUT detects the link failure and reconnects to the AP when an AP changes its DHCP configuration",
-		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: LinkMonitorFailure,
+		Desc: "Verifies how fast the DUT detects the link failure and reconnects to the AP when an AP changes its DHCP configuration",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

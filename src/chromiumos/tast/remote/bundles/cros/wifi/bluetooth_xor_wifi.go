@@ -21,9 +21,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BluetoothXorWifi,
-		Desc:         "Verifies that Bluetooth and Wifi can function when the other phy is disabled",
-		Contacts:     []string{"billyzhao@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: BluetoothXorWifi,
+		Desc: "Verifies that Bluetooth and Wifi can function when the other phy is disabled",
+		Contacts: []string{
+			"billyzhao@google.com",            // Test author
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{wificell.TFServiceName, "tast.cros.network.BluetoothService"},
