@@ -27,6 +27,14 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:            "chromeLoggedInWithARCLogging",
+		Desc:            "Logged into a user session of Chrome OS and collects ARC-related logs",
+		Impl:            &loggingFixture{},
+		Parent:          "chromeLoggedIn",
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name: "arcBooted",
 		Desc: "ARC is booted",
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
@@ -196,7 +204,7 @@ type loggingFixture struct {
 }
 
 func (f *loggingFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	return nil
+	return s.ParentValue()
 }
 
 func (f *loggingFixture) TearDown(ctx context.Context, s *testing.FixtState) {

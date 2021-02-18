@@ -51,6 +51,9 @@ func TestPreAndFixture(t *gotesting.T) {
 		if pre == nil && fixture == "" {
 			return errors.New("Please use \"arcLogging\" fixture or its children to collect logs")
 		}
+		if fixture == "chromeLoggedIn" {
+			return errors.New("Please use \"chromeLoggedInWithARCLogging\" fixture instead to collect logs")
+		}
 		return nil
 	}
 	testcheck.PreAndFixture(t, testcheck.Glob(t, pattern), check)

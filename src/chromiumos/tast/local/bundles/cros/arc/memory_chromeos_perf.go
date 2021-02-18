@@ -28,7 +28,7 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "noarc",
 			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
-			Fixture:           "chromeLoggedIn",
+			Fixture:           "chromeLoggedInWithARCLogging",
 		}, {
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",

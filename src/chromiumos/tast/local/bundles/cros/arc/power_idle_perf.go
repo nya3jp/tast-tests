@@ -46,7 +46,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.ForceBatteryDischarge,
 				},
-				Fixture: "chromeLoggedIn",
+				Fixture: "chromeLoggedInWithARCLogging",
 			},
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
@@ -72,7 +72,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.NoBatteryDischarge,
 				},
-				Fixture: "chromeLoggedIn",
+				Fixture: "chromeLoggedInWithARCLogging",
 			},
 			{
 				Name:              "nobatterymetrics",
