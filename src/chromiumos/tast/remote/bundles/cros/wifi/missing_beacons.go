@@ -16,9 +16,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        MissingBeacons,
-		Desc:        "Test how a DUT behaves when an AP disappears suddenly",
-		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: MissingBeacons,
+		Desc: "Test how a DUT behaves when an AP disappears suddenly",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

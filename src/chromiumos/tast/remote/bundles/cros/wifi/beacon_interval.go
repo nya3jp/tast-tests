@@ -18,9 +18,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        BeaconInterval,
-		Desc:        "Verifies that the beacon interval set on the AP is successfully adopted by the DUT",
-		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: BeaconInterval,
+		Desc: "Verifies that the beacon interval set on the AP is successfully adopted by the DUT",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_cq"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),

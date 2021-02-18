@@ -15,9 +15,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        MultiAuth,
-		Desc:        "Tests the ability to select network correctly among APs with similar network configurations, by configuring two APs with the same SSID/channel/mode but different security config and connecting to each in turn",
-		Contacts:    []string{"wgd@google.com", "chromeos-platform-connectivity@google.com"},
+		Func: MultiAuth,
+		Desc: "Tests the ability to select network correctly among APs with similar network configurations, by configuring two APs with the same SSID/channel/mode but different security config and connecting to each in turn",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
