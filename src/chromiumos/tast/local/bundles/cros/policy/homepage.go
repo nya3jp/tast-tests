@@ -6,8 +6,10 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
@@ -43,6 +45,7 @@ func init() {
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Val: homepageURL},
 							&policy.HomepageIsNewTabPage{Val: false},
+							&policy.ShowHomeButton{Val: true},
 						},
 					},
 					{
@@ -51,6 +54,7 @@ func init() {
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Stat: policy.StatusUnset},
 							&policy.HomepageIsNewTabPage{Val: false},
+							&policy.ShowHomeButton{Val: true},
 						},
 					},
 				},
@@ -65,6 +69,7 @@ func init() {
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Val: homepageURL},
 							&policy.HomepageIsNewTabPage{Val: true},
+							&policy.ShowHomeButton{Val: true},
 						},
 					},
 					{
@@ -73,6 +78,7 @@ func init() {
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Val: homepageURL},
 							&policy.HomepageIsNewTabPage{Stat: policy.StatusUnset},
+							&policy.ShowHomeButton{Val: true},
 						},
 					},
 				},
@@ -84,6 +90,12 @@ func init() {
 func Homepage(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*pre.PreData).Chrome
 	fdms := s.PreValue().(*pre.PreData).FakeDMS
+
+	// Connect to Test API to use it with the UI library.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
 
 	tcs, ok := s.Param().([]homepageSettingTestTable)
 	if !ok {
@@ -115,9 +127,12 @@ func Homepage(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			// Navigate to the home page using the hotkey.
-			if err := kb.Accel(ctx, "alt+home"); err != nil {
-				s.Fatal("Failed to navigate to homepage using hotkey: ", err)
+			// Navigate to the home page using the home button in the toolbar.
+			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
+				Role: ui.RoleTypeButton,
+				Name: "Home",
+			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+				s.Fatal("Failed to find and click home button: ", err)
 			}
 
 			// Get the current page URL and verify whether it's according to the policy.
