@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "889cd879_fdf04a0f",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-02-18T01:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0395cc7_0d9d1274",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 31
+      },
+      "revId": "d498f8a903ddba529e7111772fa300f15a4f646d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a65100df_802ad5fb",
@@ -77,6 +101,30 @@
       "writtenOn": "2021-02-17T23:25:55Z",
       "side": 1,
       "message": "Move before the if. \"Starting Chrome UI\"",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 32
+      },
+      "revId": "d498f8a903ddba529e7111772fa300f15a4f646d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d62f5e_ef7cc602",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-02-18T01:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a65100df_802ad5fb",
       "range": {
         "startLine": 96,
         "startChar": 1,
