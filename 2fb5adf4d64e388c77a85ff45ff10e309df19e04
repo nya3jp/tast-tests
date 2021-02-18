@@ -16,6 +16,75 @@
       "message": "Hi Brendan and Toni, please review this added Tast test. Thank you!",
       "revId": "2fb5adf4d64e388c77a85ff45ff10e309df19e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2c49ce_1a896519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_managed_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-18T00:26:35Z",
+      "side": 1,
+      "message": "I think you need to rebase on tot. this should be uiauto now.",
+      "range": {
+        "startLine": 15,
+        "startChar": 31,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "2fb5adf4d64e388c77a85ff45ff10e309df19e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "317f3f1b_815bf42a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_managed_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-18T00:26:35Z",
+      "side": 1,
+      "message": "please move this into the function. Here it is visible to the entire package.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "2fb5adf4d64e388c77a85ff45ff10e309df19e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c991ec5_58c65c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_managed_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-18T00:26:35Z",
+      "side": 1,
+      "message": "You should probably check something after this to confirm the click worked. This just issues a click and doesn\u0027t guarantee that it was accepted and did anything.",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "2fb5adf4d64e388c77a85ff45ff10e309df19e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
