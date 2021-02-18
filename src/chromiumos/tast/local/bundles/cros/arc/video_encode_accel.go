@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -32,7 +31,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklist...)),
 		Fixture:      "arcBootedWithVideoLogging",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
