@@ -14,7 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/crd"
+	"chromiumos/tast/local/chrome/uiauto/crd"
 	pb "chromiumos/tast/services/cros/camerabox"
 	"chromiumos/tast/testing"
 )

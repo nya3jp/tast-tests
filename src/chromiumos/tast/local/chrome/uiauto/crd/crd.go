@@ -11,7 +11,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -34,38 +36,25 @@ func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 	defer cws.Close()
 	defer cws.CloseTarget(ctx)
 
+	ui := uiauto.New(tconn)
+	remove := nodewith.Name("Remove from Chrome").Role(role.Button).First()
+	add := nodewith.Name("Add to Chrome").Role(role.Button).First()
+	confirm := nodewith.Name("Add extension").Role(role.Button)
+
 	// Click the add button at most once to prevent triggering
 	// weird UI behaviors in Chrome Web Store.
 	addClicked := false
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Check if Remote Desktop is installed.
-		params := ui.FindParams{
-			Name: "Remove from Chrome",
-			Role: ui.RoleTypeButton,
-		}
-		if installed, err := ui.Exists(ctx, tconn, params); err != nil {
-			return testing.PollBreak(err)
-		} else if installed {
+		if err := ui.Exists(remove)(ctx); err == nil {
 			return nil
 		}
 
 		if !addClicked {
 			// If Remote Desktop is not installed, install it now.
 			// Click on the add button, if it exists.
-			params = ui.FindParams{
-				Name: "Add to Chrome",
-				Role: ui.RoleTypeButton,
-			}
-			if addButtonExists, err := ui.Exists(ctx, tconn, params); err != nil {
-				return testing.PollBreak(err)
-			} else if addButtonExists {
-				addButton, err := ui.Find(ctx, tconn, params)
-				if err != nil {
-					return testing.PollBreak(err)
-				}
-				defer addButton.Release(ctx)
-
-				if err := addButton.LeftClick(ctx); err != nil {
+			if err := ui.Exists(add)(ctx); err == nil {
+				if err := ui.LeftClick(add)(ctx); err != nil {
 					return testing.PollBreak(err)
 				}
 				addClicked = true
@@ -73,22 +62,8 @@ func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 		}
 
 		// Click on the confirm button, if it exists.
-		params = ui.FindParams{
-			Name: "Add extension",
-			Role: ui.RoleTypeButton,
-		}
-		if confirmButtonExists, err := ui.Exists(ctx, tconn, params); err != nil {
+		if err := ui.IfSuccessThen(ui.Exists(confirm), ui.LeftClick(confirm))(ctx); err != nil {
 			return testing.PollBreak(err)
-		} else if confirmButtonExists {
-			confirmButton, err := ui.Find(ctx, tconn, params)
-			if err != nil {
-				return testing.PollBreak(err)
-			}
-			defer confirmButton.Release(ctx)
-
-			if err := confirmButton.LeftClick(ctx); err != nil {
-				return testing.PollBreak(err)
-			}
 		}
 		return errors.New("Remote Desktop still installing")
 	}, rdpPollOpts); err != nil {
@@ -163,38 +138,10 @@ func Launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) erro
 func WaitConnection(ctx context.Context, tconn *chrome.TestConn) error {
 	// The share button might not be clickable at first, so we keep retrying
 	// until we see "Stop Sharing".
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Check if sharing
-		params := ui.FindParams{
-			Name: "Stop Sharing",
-			Role: ui.RoleTypeButton,
-		}
-		if sharing, err := ui.Exists(ctx, tconn, params); err != nil {
-			return testing.PollBreak(err)
-		} else if sharing {
-			return nil
-		}
-
-		// Click on the share button, if it exists.
-		params = ui.FindParams{
-			Name: "Share",
-			Role: ui.RoleTypeButton,
-		}
-		if shareButtonExists, err := ui.Exists(ctx, tconn, params); err != nil {
-			return testing.PollBreak(err)
-		} else if shareButtonExists {
-			shareButton, err := ui.Find(ctx, tconn, params)
-			if err != nil {
-				return testing.PollBreak(err)
-			}
-			defer shareButton.Release(ctx)
-
-			if err := shareButton.LeftClick(ctx); err != nil {
-				return testing.PollBreak(err)
-			}
-		}
-		return errors.New("still enabling sharing")
-	}, rdpPollOpts); err != nil {
+	ui := uiauto.New(tconn).WithPollOpts(*rdpPollOpts)
+	share := nodewith.Name("Share").Role(role.Button)
+	shared := ui.Exists(nodewith.Name("Stop Sharing").Role(role.Button))
+	if err := ui.LeftClickUntil(share, shared)(ctx); err != nil {
 		return errors.Wrap(err, "failed to enable sharing")
 	}
 	return nil
