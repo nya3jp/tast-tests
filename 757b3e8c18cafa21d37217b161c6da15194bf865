@@ -34,6 +34,24 @@
       "parentUuid": "3876f113_d9962799",
       "revId": "757b3e8c18cafa21d37217b161c6da15194bf865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489e644f_35d90d81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-02-18T05:03:54Z",
+      "side": 1,
+      "message": "Thanks for the explanation.\nI suggest leaving comment to the CL description or TEST\u003d line, like\ntools/run_lint.sh -commit ${COMMIT}\nso that readers can get information that \"the linter\" means the tast linter and where it is.",
+      "parentUuid": "020e2372_63d74148",
+      "revId": "757b3e8c18cafa21d37217b161c6da15194bf865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
