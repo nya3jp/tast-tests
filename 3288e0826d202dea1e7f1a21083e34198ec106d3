@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cc34ccc_36bfbfca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2021-02-18T23:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4814ff0_3a068312",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 17
+      },
+      "revId": "3288e0826d202dea1e7f1a21083e34198ec106d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca419679_e4f395df",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-18T07:54:08Z",
       "side": 1,
       "message": "Can we do positive check. Same as above.",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 17
+      },
+      "revId": "3288e0826d202dea1e7f1a21083e34198ec106d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45001e63_3a9cc193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2021-02-18T23:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca419679_e4f395df",
       "range": {
         "startLine": 276,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3208d624_ff035239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2021-02-18T23:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3c0fcb2_d07707b0",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 59
+      },
+      "revId": "3288e0826d202dea1e7f1a21083e34198ec106d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3eaa51c7_4f314e08",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-02-18T07:54:08Z",
       "side": 1,
       "message": "We can keep this as locationStatus.",
+      "range": {
+        "startLine": 300,
+        "startChar": 1,
+        "endLine": 300,
+        "endChar": 11
+      },
+      "revId": "3288e0826d202dea1e7f1a21083e34198ec106d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a664bb22_9f9c4410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2021-02-18T23:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eaa51c7_4f314e08",
       "range": {
         "startLine": 300,
         "startChar": 1,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23bc730e_01f184a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2021-02-18T23:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84140ef6_64fcf004",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 4
+      },
+      "revId": "3288e0826d202dea1e7f1a21083e34198ec106d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9875044f_56f76507",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-02-18T07:54:08Z",
       "side": 1,
       "message": "Guess the test should fail if default value is not as expected (I guess default is on).",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 2
+      },
+      "revId": "3288e0826d202dea1e7f1a21083e34198ec106d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72b6a35_c0963e0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2021-02-18T23:29:35Z",
+      "side": 1,
+      "message": "No, even if the default is Off, our test turns it On. Finally checks if its actually in On state after moving the toggle.",
+      "parentUuid": "9875044f_56f76507",
       "range": {
         "startLine": 306,
         "startChar": 0,
