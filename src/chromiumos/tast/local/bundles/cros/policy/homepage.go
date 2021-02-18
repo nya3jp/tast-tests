@@ -90,7 +90,7 @@ func Homepage(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to convert test cases to the desired type")
 	}
 
-	kb, err := input.Keyboard(ctx)
+	kb, err := input.VirtualKeyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the keyboard: ", err)
 	}
