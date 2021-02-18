@@ -36,6 +36,7 @@ const LacrosUserDataDir = "/home/chronos/user/lacros/"
 // that has been launched. Must call Close() to release resources.
 type LacrosChrome struct {
 	Devsess       *cdputil.Session  // Debugging session for lacros-chrome
+	userDataDir   string            // User data directory
 	cmd           *testexec.Cmd     // The command context used to start lacros-chrome.
 	logAggregator *jslog.Aggregator // collects JS console output
 	testExtConn   *chrome.Conn      // connection to test extension exposing APIs
@@ -44,7 +45,7 @@ type LacrosChrome struct {
 
 // ConnectToLacrosChrome connects to a running lacros instance (e.g launched by the UI) and returns a LacrosChrome object that can be used to interact with it.
 func ConnectToLacrosChrome(ctx context.Context, lacrosPath, userDataDir string) (*LacrosChrome, error) {
-	l := &LacrosChrome{lacrosPath: lacrosPath}
+	l := &LacrosChrome{lacrosPath: lacrosPath, userDataDir: userDataDir}
 	debuggingPortPath := filepath.Join(userDataDir, "DevToolsActivePort")
 	var err error
 	if l.Devsess, err = cdputil.NewSession(ctx, debuggingPortPath, cdputil.WaitPort); err != nil {
@@ -197,24 +198,24 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 		return nil, errors.Wrap(err, "failed to create temp dir")
 	}
 
-	l := &LacrosChrome{lacrosPath: f.LacrosPath}
+	l := &LacrosChrome{lacrosPath: f.LacrosPath, userDataDir: userDataDir}
 	extList := strings.Join(f.Chrome.DeprecatedExtDirs(), ",")
 	args := []string{
 		"--ozone-platform=wayland",                 // Use wayland to connect to exo wayland server.
 		"--no-sandbox",                             // Disable sandbox for now
 		"--no-first-run",                           // Prevent showing up offer pages, e.g. google.com/chromebooks.
-		"--user-data-dir=" + userDataDir,           // Specify a --user-data-dir, which holds on-disk state for Chrome.
+		"--user-data-dir=" + l.userDataDir,         // Specify a --user-data-dir, which holds on-disk state for Chrome.
 		"--lang=en-US",                             // Language
 		"--breakpad-dump-location=" + f.LacrosPath, // Specify location for breakpad dump files.
 		"--window-size=800,600",
-		"--log-file=" + filepath.Join(userDataDir, "logfile"), // Specify log file location for debugging.
-		"--enable-logging",                                    // This flag is necessary to ensure the log file is written.
-		"--enable-gpu-rasterization",                          // Enable GPU rasterization. This is necessary to enable OOP rasterization.
-		"--enable-oop-rasterization",                          // Enable OOP rasterization.
-		"--autoplay-policy=no-user-gesture-required",          // Allow media autoplay.
-		"--use-cras",                                          // Use CrAS.
-		"--use-fake-ui-for-media-stream",                      // Avoid the need to grant camera/microphone permissions.
-		chrome.BlankURL,                                       // Specify first tab to load.
+		"--log-file=" + l.LogFile(),                  // Specify log file location for debugging.
+		"--enable-logging",                           // This flag is necessary to ensure the log file is written.
+		"--enable-gpu-rasterization",                 // Enable GPU rasterization. This is necessary to enable OOP rasterization.
+		"--enable-oop-rasterization",                 // Enable OOP rasterization.
+		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
+		"--use-cras",                                 // Use CrAS.
+		"--use-fake-ui-for-media-stream",             // Avoid the need to grant camera/microphone permissions.
+		chrome.BlankURL,                              // Specify first tab to load.
 	}
 	args = append(args, extensionArgs(chrome.TestExtensionID, extList)...)
 	args = append(args, f.Chrome.LacrosExtraArgs()...)
@@ -233,7 +234,7 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 		return nil, err
 	}
 
-	debuggingPortPath := userDataDir + "/DevToolsActivePort"
+	debuggingPortPath := l.userDataDir + "/DevToolsActivePort"
 	if l.Devsess, err = cdputil.NewSession(ctx, debuggingPortPath, cdputil.WaitPort); err != nil {
 		l.Close(ctx)
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
@@ -242,6 +243,11 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData, artifactPath string) (*
 	l.logAggregator = jslog.NewAggregator()
 
 	return l, nil
+}
+
+// LogFile returns a path to a file containing Lacros's log.
+func (l *LacrosChrome) LogFile() string {
+	return filepath.Join(l.userDataDir, "logfile")
 }
 
 // WaitForLacrosWindow waits for a Lacrow window with the specified title to be visibe.

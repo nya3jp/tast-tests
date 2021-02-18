@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
+	"chromiumos/tast/local/lacros/faillog"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
@@ -34,7 +35,12 @@ func AudioPlay(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}
-	defer l.Close(ctx)
+	defer func() {
+		l.Close(ctx)
+		if err := faillog.Save(s.HasError, l, s.OutDir()); err != nil {
+			s.Log("Failed to save lacros logs: ", err)
+		}
+	}()
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
