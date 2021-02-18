@@ -33,6 +33,24 @@
       "message": "According to https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_reviews.md#summary, can you also have a team member to review this change?",
       "revId": "a4ae32b3722148e0f24e280c45543855a540f2cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ecc0ad9_6cc8f7ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-18T04:10:26Z",
+      "side": 1,
+      "message": "Hmm. I don\u0027t think any of my team members would have enough context in this area (at least from a TAST perspective). I\u0027ll add our USB Type C lead bleung@ though...",
+      "parentUuid": "383f57c5_849de147",
+      "revId": "a4ae32b3722148e0f24e280c45543855a540f2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
