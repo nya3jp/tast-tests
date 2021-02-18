@@ -81,6 +81,24 @@
       "parentUuid": "06252f6c_0cd53d23",
       "revId": "1f4f8af443dcdeaae001a448080c8feaf8fde55a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81cf1a61_9cf4d50b",
+        "filename": "src/chromiumos/tast/local/graphics/kmsvnc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-02-18T13:23:15Z",
+      "side": 1,
+      "message": "Done. Synchronization is hard...",
+      "parentUuid": "62063c02_262b0ab1",
+      "revId": "1f4f8af443dcdeaae001a448080c8feaf8fde55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
