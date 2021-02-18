@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c961f020_49de4cb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-18T23:44:13Z",
+      "side": 1,
+      "message": "fritz@ migule@ PTAL\n\ntested on trogor that decoder binary was detected \u0026 executed as expected using tast.",
+      "revId": "5c44e861a0d6a9dfcf6b60e588329c9c7a4b0110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
