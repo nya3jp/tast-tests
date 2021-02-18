@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea82d1f_f0d4446b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-18T15:27:52Z",
+      "side": 1,
+      "message": "For one table the policyKey is unique, so the policyKey can be moved here, instead of repeating it 3-4 times in a table.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 5
+      },
+      "revId": "6bb19513061da4d88b720551a241925d4e431b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
