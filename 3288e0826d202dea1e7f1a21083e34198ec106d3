@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea982420_709e6793",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2021-02-18T00:36:35Z",
+      "side": 1,
+      "message": "Uploaded patch with changes as requested.",
+      "revId": "3288e0826d202dea1e7f1a21083e34198ec106d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
