@@ -16,6 +16,24 @@
       "message": "What linters do these changes affect? If it is something in Chromium, can we add a commandline that tries the linter to the local files?",
       "revId": "757b3e8c18cafa21d37217b161c6da15194bf865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "020e2372_63d74148",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-18T04:36:29Z",
+      "side": 1,
+      "message": "Not quite understand the question. More context here: Whenever I change any line in these 2 files, go_lint will complain about the variable naming, and I had to force skip the lint check. I can see some other places using NOLINT to make exemption. http://source/search?q\u003dNOLINT\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fbundles%2F",
+      "parentUuid": "3876f113_d9962799",
+      "revId": "757b3e8c18cafa21d37217b161c6da15194bf865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
