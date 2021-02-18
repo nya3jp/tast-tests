@@ -36,15 +36,15 @@ var (
 
 	// arcAppLoadingBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--arc-disable-media-store-maintenance")...)
+	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, append(arc.DisableSyncFlags())...)
 	// arcAppLoadingHighmemBooted additionally adds feature to boot ARC with high-memory profile enabled
-	arcAppLoadingHighmemBooted = arc.NewPrecondition("arcapploading_highmem_booted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--arc-disable-media-store-maintenance", "--enable-features=ArcUseHighMemoryDalvikProfile")...)
+	arcAppLoadingHighmemBooted = arc.NewPrecondition("arcapploading_highmem_booted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--enable-features=ArcUseHighMemoryDalvikProfile")...)
 
 	// arcAppLoadingVMBooted is a precondition similar to arc.VMBooted(). The only difference from arc.VMBooted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf", "--arc-disable-media-store-maintenance")...)
+	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf")...)
 	// arcAppLoadingHighmemVMBooted additionally adds feature to boot ARC with high-memory profile enabled
-	arcAppLoadingHighmemVMBooted = arc.NewPrecondition("arcapploading_highmem_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf", "--arc-disable-media-store-maintenance", "--enable-features=ArcUseHighMemoryDalvikProfile")...)
+	arcAppLoadingHighmemVMBooted = arc.NewPrecondition("arcapploading_highmem_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf", "--enable-features=ArcUseHighMemoryDalvikProfile")...)
 )
 
 func init() {
