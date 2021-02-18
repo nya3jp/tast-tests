@@ -16,6 +16,98 @@
       "message": "Thanks for the great new uiauto package!",
       "revId": "9cdd1ec35da7e55ccab93112466efbce4bfedb18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f3d03b_421678a5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-18T18:11:34Z",
+      "side": 1,
+      "message": "Since this is getting updated, can we move it to chrome/uiauto/crd/crd.go?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "9cdd1ec35da7e55ccab93112466efbce4bfedb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "130bc3f6_c490229b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-18T18:11:34Z",
+      "side": 1,
+      "message": "This poll may not actually be needed anymore?\n\ncould this just be something like:\n\n uiauto.Run(ctx,\n   ui.IfSuccessThen(ui.Exists(add), ui.LeftClick(add))\n   ui.IfSuccessThen(ui.Exists(confirm), ui.LeftClick(confirm))\n   ui.withPollOpts(rdpPollOpts).WaitUntilExists(remove)\n )\n\nThough you may need to use ui.WithTimeout(something short).WaitUntilExists() in the IfSuccessThen\nNot fully sure if that will work for you, but it maybe.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 62
+      },
+      "revId": "9cdd1ec35da7e55ccab93112466efbce4bfedb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dead0cf_c2e8338b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-18T18:11:34Z",
+      "side": 1,
+      "message": "nit: This could also be an IfSuccessThen, it would just need an else statement to change addClicked.",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "9cdd1ec35da7e55ccab93112466efbce4bfedb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e19a780_cd3ab040",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-18T18:11:34Z",
+      "side": 1,
+      "message": "Just a note: depending on how some of these functions are used in tests, you may find it useful to return a ui.Action. Which essentially means removing context from the function params and wrapping the body with func(ctx context.Context) error.\n\nThe advantage of of ui.Action is chain-ability in tests.\n\nex:\n uiauto.Run(ctx,\n   crd.Launch(cr, tconn),\n   ui.LeftClick(something),\n   kb.TypeAction(\"Hi\"),\n   crd.WaitConnection(tconn),\n )",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 11
+      },
+      "revId": "9cdd1ec35da7e55ccab93112466efbce4bfedb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
