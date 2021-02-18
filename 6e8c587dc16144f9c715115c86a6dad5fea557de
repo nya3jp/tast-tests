@@ -18,6 +18,57 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3d33e7a_2d696e6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-18T21:18:33Z",
+      "side": 1,
+      "message": "Giving some thoughts / comments, but LGTM.",
+      "revId": "6e8c587dc16144f9c715115c86a6dad5fea557de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b0dbcb_925d1ffd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-18T21:18:33Z",
+      "side": 1,
+      "message": "Could you switch from \"chrome/ui\" package to \"uiauto\" package fully?  It doesn\u0027t have to be in this CL though (filed crbug.com/1179858)",
+      "revId": "6e8c587dc16144f9c715115c86a6dad5fea557de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83116cde_9ffd5699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-18T21:18:33Z",
+      "side": 1,
+      "message": "This is just an idea, but possibly this can be moved to the \"loggedInToCUJUser\" fixture implementation.  Fixture has hooks of PreTest and PostTest, and it can refer to variables.  By having that there, this recording option will be uniformly available on all CUJ tests.",
+      "revId": "6e8c587dc16144f9c715115c86a6dad5fea557de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c21477a4_7e779532",
