@@ -16,6 +16,64 @@
       "message": "this came out of chats with Yoni. I may also point here and ask tast-users@ about policy, but first: WDYT?",
       "revId": "0bfb3bb5ebd3945f01fde827902593681f43d169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94245672_51289b0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-02-19T01:52:01Z",
+      "side": 1,
+      "message": "SGTM! Thanks :-)",
+      "parentUuid": "fbb2abeb_66a52cdf",
+      "revId": "0bfb3bb5ebd3945f01fde827902593681f43d169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6321596a_82ff0c94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-02-19T01:52:01Z",
+      "side": 1,
+      "message": "Making the +2 sticky, just one minor oversight",
+      "revId": "0bfb3bb5ebd3945f01fde827902593681f43d169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2783e37_c7a1356a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_he_caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-02-19T01:52:01Z",
+      "side": 1,
+      "message": "This one is still informational, Billy should still be primary owner I think?",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "0bfb3bb5ebd3945f01fde827902593681f43d169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
