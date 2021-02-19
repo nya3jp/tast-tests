@@ -256,6 +256,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88737b7e_b5d87597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-19T10:40:14Z",
+      "side": 1,
+      "message": "won\u0027t do for now as I wasn\u0027t able to run tests with fixtures. Not only those but in general, any.",
+      "parentUuid": "d040cb2e_03bea3c9",
+      "revId": "c23efaf5b07b0498001bcd4d90e0b9b0a4fbaf59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c79d8d0_fdcc05d1",
