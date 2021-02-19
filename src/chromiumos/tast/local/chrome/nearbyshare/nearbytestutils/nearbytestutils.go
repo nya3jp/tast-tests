@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 )
 
@@ -151,5 +152,40 @@ func FileHashComparison(ctx context.Context, filenames []string, crosFileDir, an
 	if len(mismatched) != 0 {
 		return errors.Errorf("CrOS and Android hashes did not match for files %v", mismatched)
 	}
+	return nil
+}
+
+// StartLogging starts collecting logs from the specified log file, such as /var/log/chrome/chrome or /var/log/messages.
+// Only log lines that appear after StartLogging is called will be collected, so logs for
+// individual tests can be extracted if tests are running consecutively on a shared fixture or precondition.
+// Callers should defer calling Save with the returned *syslog.LineReader to save the logs and free associated resources.
+func StartLogging(ctx context.Context, path string) (*syslog.LineReader, error) {
+	reader, err := syslog.NewLineReader(ctx, path, false, nil)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create ChromeReader")
+	}
+	return reader, nil
+}
+
+// SaveLogs saves the logs that have appeared since StartLogging was called, and then closes the individual line readers.
+func SaveLogs(ctx context.Context, reader *syslog.LineReader, path string) error {
+	// Ensure the LineReader is closed.
+	defer reader.Close()
+
+	log, err := os.Create(path)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create %v", log)
+	}
+	defer log.Close()
+	for {
+		line, err := reader.ReadLine()
+		if err == io.EOF {
+			break
+		} else if err != nil {
+			return errors.Wrap(err, "failed to read Chrome log")
+		}
+		log.WriteString(line)
+	}
+
 	return nil
 }

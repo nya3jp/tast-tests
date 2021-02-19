@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -83,6 +84,18 @@ func AndroidSenderCrosReceiverInContacts(ctx context.Context, s *testing.State) 
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
+	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
+	if err != nil {
+		s.Fatal("Failed to start Chrome logging: ", err)
+	}
+	defer nearbytestutils.SaveLogs(ctx, chromeReader, filepath.Join(s.OutDir(), nearbyshare.ChromeLog))
+
+	messageReader, err := nearbytestutils.StartLogging(ctx, syslog.MessageFile)
+	if err != nil {
+		s.Fatal("Failed to start message logging: ", err)
+	}
+	defer nearbytestutils.SaveLogs(ctx, messageReader, filepath.Join(s.OutDir(), nearbyshare.MessageLog))
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
