@@ -9,7 +9,6 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/local/testexec"
@@ -46,9 +45,6 @@ func RestartPrintingSystem(ctx context.Context, devInfo usbprinter.DevInfo) erro
 	cmd := testexec.CommandContext(ctx, "fuser", "-sk", "/run/ippusb/ippusb_manager.sock")
 	if err := cmd.Run(); err != nil {
 		return errors.Wrap(err, "failed to kill processes with ippusb_manager.sock open")
-	}
-	if err := ippusbbridge.Kill(ctx, devInfo); err != nil {
-		return errors.Wrap(err, "failed to kill ippusb_bridge")
 	}
 
 	if err := upstart.RestartJob(ctx, "upstart-socket-bridge"); err != nil {
