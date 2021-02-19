@@ -78,6 +78,42 @@ func (o *Object) WaitForExists(ctx context.Context, timeout time.Duration) error
 	return o.callSimple(ctx, "waitForExists", o.s, timeout/time.Millisecond)
 }
 
+// SwipeUp performs the swipe up action on the UiObject
+// steps indicates the number of injected move steps into the system. Steps are injected about 5ms apart. So a 100 steps may take about 1/2 second to complete.
+//
+// This method corresponds to UiObject.SwipeUp().
+// https://github.com/lnishan/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/AutomatorServiceImpl.java
+func (o *Object) SwipeUp(ctx context.Context, steps int) error {
+	return o.callSimple(ctx, "swipe", o.s, "up", steps)
+}
+
+// SwipeDown performs the swipe down action on the UiObject
+// steps indicates the number of injected move steps into the system. Steps are injected about 5ms apart. So a 100 steps may take about 1/2 second to complete.
+//
+// This method corresponds to UiObject.SwipeDown().
+// https://github.com/lnishan/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/AutomatorServiceImpl.java
+func (o *Object) SwipeDown(ctx context.Context, steps int) error {
+	return o.callSimple(ctx, "swipe", o.s, "down", steps)
+}
+
+// SwipeRight performs the swipe right action on the UiObject
+// steps indicates the number of injected move steps into the system. Steps are injected about 5ms apart. So a 100 steps may take about 1/2 second to complete.
+//
+// This method corresponds to UiObject.SwipeRight().
+// https://github.com/lnishan/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/AutomatorServiceImpl.java
+func (o *Object) SwipeRight(ctx context.Context, steps int) error {
+	return o.callSimple(ctx, "swipe", o.s, "right", steps)
+}
+
+// SwipeLeft performs the swipe left action on the UiObject
+// steps indicates the number of injected move steps into the system. Steps are injected about 5ms apart. So a 100 steps may take about 1/2 second to complete.
+//
+// This method corresponds to UiObject.SwipeLeft().
+// https://github.com/lnishan/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/AutomatorServiceImpl.java
+func (o *Object) SwipeLeft(ctx context.Context, steps int) error {
+	return o.callSimple(ctx, "swipe", o.s, "left", steps)
+}
+
 // WaitForText waits for a text view matching the selector to have the expected text.
 func (o *Object) WaitForText(ctx context.Context, expected string, timeout time.Duration) error {
 	s := *o.s
