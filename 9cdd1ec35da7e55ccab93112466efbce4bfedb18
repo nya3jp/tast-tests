@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "904504c4_a173a049",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-19T18:16:12Z",
+      "side": 1,
+      "message": "I thought we blocked extension syncing. Hmm. That would make it hard to represent as UI run.",
+      "parentUuid": "0f928f30_be98a8f1",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 62
+      },
+      "revId": "9cdd1ec35da7e55ccab93112466efbce4bfedb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dead0cf_c2e8338b",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Hmm both \"no add button\" and \"clicked add button\" will return nil with IfSuccessThen(). How can I differentiate them?",
       "parentUuid": "0dead0cf_c2e8338b",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "9cdd1ec35da7e55ccab93112466efbce4bfedb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc0ef47_71a8256e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-19T18:16:12Z",
+      "side": 1,
+      "message": "My bad. Just got a bit mixed up.",
+      "parentUuid": "9e7d5031_bd706013",
       "range": {
         "startLine": 56,
         "startChar": 3,
