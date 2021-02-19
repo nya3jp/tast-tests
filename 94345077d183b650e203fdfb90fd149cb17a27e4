@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "637875b5_a6273e63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-02-19T14:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5082a8c1_ba45b24a",
+      "revId": "94345077d183b650e203fdfb90fd149cb17a27e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9071a8bf_fa5710a5",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-02-19T09:15:56Z",
       "side": 1,
       "message": "minor nit: not sure why this needs to be a parameter, just hard-code the glob.",
+      "range": {
+        "startLine": 66,
+        "startChar": 17,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "94345077d183b650e203fdfb90fd149cb17a27e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1736346c_1849fd2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-02-19T14:56:45Z",
+      "side": 1,
+      "message": "One of the scan settings is scan-to location, so we\u0027ll want to be able to change what folder we delete scans from.",
+      "parentUuid": "9071a8bf_fa5710a5",
       "range": {
         "startLine": 66,
         "startChar": 17,
