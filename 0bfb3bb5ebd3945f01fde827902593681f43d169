@@ -74,6 +74,30 @@
       },
       "revId": "0bfb3bb5ebd3945f01fde827902593681f43d169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e53b284_d32a8900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_he_caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-19T01:56:15Z",
+      "side": 1,
+      "message": "Oops, fixed.\n\nI\u0027ll take another glance myself before submitting, if it gets approved by others.",
+      "parentUuid": "b2783e37_c7a1356a",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "0bfb3bb5ebd3945f01fde827902593681f43d169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
