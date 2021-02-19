@@ -16,6 +16,23 @@
       "message": "LGTM. Thanks again!",
       "revId": "58da1888c30cd31749b94a4131323a3027b1dbf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a06baf_2232e6e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-02-19T07:26:56Z",
+      "side": 1,
+      "message": "Note that the type and const below are shared among go files in cros/filemanager. Be aware of naming collision.\n\nHow about zipPerfTestData or just move the definition into func ZipPerf()?",
+      "revId": "58da1888c30cd31749b94a4131323a3027b1dbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
