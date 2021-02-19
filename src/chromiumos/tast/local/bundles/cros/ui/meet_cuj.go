@@ -64,7 +64,7 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
-		Timeout:      7 * time.Minute,
+		Timeout:      10 * time.Minute,
 		Fixture:      "loggedInToCUJUser",
 		Vars: []string{
 			"mute",
@@ -105,6 +105,114 @@ func init() {
 				present: false,
 				docs:    false,
 				split:   false,
+				cam:     true,
+				power:   false,
+			},
+		}, {
+			// Big meeting with notes.
+			Name: "16p0_notes",
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    true,
+				split:   true,
+				cam:     true,
+				power:   false,
+			},
+		}, {
+			// Big meeting with notes.
+			Name: "16p1_notes",
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    true,
+				split:   true,
+				cam:     true,
+				power:   false,
+			},
+		}, {
+			// Big meeting with notes.
+			Name: "16p2_notes",
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    true,
+				split:   true,
+				cam:     true,
+				power:   false,
+			},
+		}, {
+			// Big meeting with notes.
+			Name: "16p3_notes",
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    true,
+				split:   true,
+				cam:     true,
+				power:   false,
+			},
+		}, {
+			// Big meeting with notes.
+			Name: "16p4_notes",
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    true,
+				split:   true,
+				cam:     true,
+				power:   false,
+			},
+		}, {
+			// Big meeting with notes.
+			Name: "16p5_notes",
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    true,
+				split:   true,
+				cam:     true,
+				power:   false,
+			},
+		}, {
+			// Big meeting with notes.
+			Name: "16p6_notes",
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    true,
+				split:   true,
+				cam:     true,
+				power:   false,
+			},
+		}, {
+			// Big meeting with notes.
+			Name: "16p7_notes",
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    true,
+				split:   true,
+				cam:     true,
+				power:   false,
+			},
+		}, {
+			// Big meeting with notes.
+			Name: "16p8_notes",
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    true,
+				split:   true,
 				cam:     true,
 				power:   false,
 			},
@@ -186,7 +294,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	meet := s.Param().(meetTest)
 	meetTimeout := 30 * time.Second
 	if meet.docs {
-		meetTimeout = 60 * time.Second
+		meetTimeout = 5 * time.Minute
 	}
 
 	// Shorten context to allow for cleanup. Reserve one minute in case of power
@@ -266,28 +374,28 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				s.Error("Cleanup meet power setup failed: ", err)
 			}
 		}()
+	}
 
-		// Power tests need to record power metrics; they are separated from
-		// cuj.Recorder's timeline as it is for a different purpose and mixing them
-		// might cause a risk of taking too much time of collecting data.
-		timeline, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Prefix("Power."))
+	// Power tests need to record power metrics; they are separated from
+	// cuj.Recorder's timeline as it is for a different purpose and mixing them
+	// might cause a risk of taking too much time of collecting data.
+	timeline, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(1*time.Second), perf.Prefix("Power."))
+	if err != nil {
+		s.Fatal("Failed to create power metrics: ", err)
+	}
+	if err = timeline.Start(ctx); err != nil {
+		s.Fatal("Failed to start power timeline: ", err)
+	}
+	if err = timeline.StartRecording(ctx); err != nil {
+		s.Fatal("Failed to start recording the power metrics: ", err)
+	}
+	tweakPerfValues = func(pv *perf.Values) error {
+		values, err := timeline.StopRecording(ctx)
 		if err != nil {
-			s.Fatal("Failed to create power metrics: ", err)
+			return err
 		}
-		if err = timeline.Start(ctx); err != nil {
-			s.Fatal("Failed to start power timeline: ", err)
-		}
-		if err = timeline.StartRecording(ctx); err != nil {
-			s.Fatal("Failed to start recording the power metrics: ", err)
-		}
-		tweakPerfValues = func(pv *perf.Values) error {
-			values, err := timeline.StopRecording(ctx)
-			if err != nil {
-				return err
-			}
-			pv.Merge(values)
-			return nil
-		}
+		pv.Merge(values)
+		return nil
 	}
 
 	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
@@ -297,6 +405,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		configs = append(configs, cuj.NewCustomMetricConfig(
 			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
 			[]int64{50, 80}))
+	}
+	for _, suffix := range []string{"Decoded", "Input", "Render", "Sent"} {
+		configs = append(configs, cuj.NewCustomMetricConfig(
+			"WebRTC.Video."+suffix+"FramesPerSecond", "fps", perf.BiggerIsBetter,
+			[]int64{22, 10}))
 	}
 	if meet.docs {
 		configs = append(configs, cuj.NewCustomMetricConfig(
@@ -403,7 +516,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	defer func() {
 		// Close the Meet window to finish meeting.
 		if err := meetConn.CloseTarget(closeCtx); err != nil {
-			s.Error("Failed to close the meeting: ", err)
+			s.Log("Failed to close the meeting: ", err)
 		}
 	}()
 
@@ -571,20 +684,23 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
-		if err != nil {
-			if errors.Is(err, profiler.ErrUnsupportedPlatform) {
-				s.Log("Profiler is not supported: ", err)
-			} else {
-				return errors.Wrap(err, "failed to start the profiler")
-			}
-		}
-		if prof != nil {
-			defer func() {
-				if err := prof.End(); err != nil {
-					s.Error("Failed to stop profiler: ", err)
+		// XXX: Add an ! before meet.docs below to disable the profiler.
+		if meet.docs {
+			prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
+			if err != nil {
+				if errors.Is(err, profiler.ErrUnsupportedPlatform) {
+					s.Log("Profiler is not supported: ", err)
+				} else {
+					return errors.Wrap(err, "failed to start the profiler")
 				}
-			}()
+			}
+			if prof != nil {
+				defer func() {
+					if err := prof.End(); err != nil {
+						s.Error("Failed to stop profiler: ", err)
+					}
+				}()
+			}
 		}
 
 		errc := make(chan error)
@@ -632,6 +748,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		// Ensures that meet session is long enough. graphics.MeasureGPUCounters
 		// exits early without errors on ARM where there is no i915 counters.
 		if err := testing.Sleep(ctx, meetTimeout); err != nil {
+			return errors.Wrap(err, "failed to wait")
+		}
+		if err := meetConn.CloseTarget(closeCtx); err != nil {
+			s.Error("Failed to close the meeting: ", err)
+		}
+		if err := testing.Sleep(ctx, 1 * time.Second); err != nil {
 			return errors.Wrap(err, "failed to wait")
 		}
 
