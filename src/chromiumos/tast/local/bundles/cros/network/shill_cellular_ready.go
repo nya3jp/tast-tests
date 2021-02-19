@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/network/cellular"
+	"chromiumos/tast/local/bundles/cros/network/pre"
 	"chromiumos/tast/testing"
 )
 
@@ -16,6 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: ShillCellularReady,
+		Pre:  pre.SetLoggingCellular(),
 		Desc: "Verifies that Shill is running and that a Cellular Device and connectable Service are present",
 		Contacts: []string{
 			"stevenjb@google.com",
