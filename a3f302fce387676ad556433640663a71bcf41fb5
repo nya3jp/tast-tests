@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa553d2_393a3fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-02-19T22:39:00Z",
+      "side": 1,
+      "message": "A thought here: have you tried to waiting for the saveButton to be found THEN sending the keystroke? would that result in a stable journey?",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "a3f302fce387676ad556433640663a71bcf41fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d38861_58d1291d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-02-19T22:39:00Z",
+      "side": 1,
+      "message": "Add check for other generic errors too, so that we don\u0027t have to check fileInfo !\u003d nil below.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 24
+      },
+      "revId": "a3f302fce387676ad556433640663a71bcf41fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c067f9_20424d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-02-19T22:39:00Z",
+      "side": 1,
+      "message": "Add this as defer earlier on so that it won\u0027t be skipped if the test test fails (e.g. file is created but empty -\u003e fails and remove isn\u0027t called)",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 20
+      },
+      "revId": "a3f302fce387676ad556433640663a71bcf41fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
