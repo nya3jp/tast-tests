@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fdf9b1b_45f739d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2021-02-19T17:32:06Z",
+      "side": 1,
+      "message": "please add a TODO here with the bug # for DRC, so that we know why this is not the same as it is for vaapi, and that we wish for them to eventually be the same.",
+      "revId": "8fd168925d8c6ae4eeb29dd42a3a309a6608f936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
