@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d0e8e8_7e079214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-19T02:34:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5ceb23e_e7cf29e6",
+      "range": {
+        "startLine": 164,
+        "startChar": 24,
+        "endLine": 164,
+        "endChar": 27
+      },
+      "revId": "8e6edfe7cabd3094edd3ed391c590091e44c3fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6fa6245_9c9f7822",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fabe8eb2_5fe1ac49",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbytestutils/nearbytestutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-19T02:34:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6fa6245_9c9f7822",
+      "range": {
+        "startLine": 151,
+        "startChar": 5,
+        "endLine": 151,
+        "endChar": 17
+      },
+      "revId": "8e6edfe7cabd3094edd3ed391c590091e44c3fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef461ae1_45a48891",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-18T21:51:45Z",
       "side": 1,
       "message": "repeated?\n\nOr just CrOsSendFileRequest",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "8e6edfe7cabd3094edd3ed391c590091e44c3fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a014b13f_5b6881ad",
+        "filename": "src/chromiumos/tast/services/cros/nearbyshare/nearby_share_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-19T02:34:38Z",
+      "side": 1,
+      "message": "Not repeated. We are sending a zip here.",
+      "parentUuid": "ef461ae1_45a48891",
       "range": {
         "startLine": 56,
         "startChar": 2,
