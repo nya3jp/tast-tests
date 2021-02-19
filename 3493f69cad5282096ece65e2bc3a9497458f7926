@@ -22,6 +22,30 @@
       },
       "revId": "3493f69cad5282096ece65e2bc3a9497458f7926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e759cfe1_1c4a7d3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/cups/services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-02-19T18:13:26Z",
+      "side": 0,
+      "message": "The ScanESCLIPP call was converted in crrev.com/c/2691513.  I haven\u0027t looked at the others, but we can probably remove them as well.  Do you want me to do that in this same CL?",
+      "parentUuid": "7345d14b_fbf8222e",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "3493f69cad5282096ece65e2bc3a9497458f7926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
