@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f928f30_be98a8f1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-02-19T02:19:11Z",
+      "side": 1,
+      "message": "The tricky part is that the logic is not sequential. After login with a GAIA account, the extension that already installed on this account would be synced in the background. So (from my vague memory), we might see situations like\n\n1. (not installed before) click add -\u003e click confirm -\u003e remove exist\n2. (installed before and synced early) remove exist\n3. (installed before and synced late) click add -\u003e remove exist\n\nNot sure how to express this cleanly with uiauto.Run().",
+      "parentUuid": "130bc3f6_c490229b",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 62
+      },
+      "revId": "9cdd1ec35da7e55ccab93112466efbce4bfedb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0dead0cf_c2e8338b",
         "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
         "patchSetId": 1
@@ -77,6 +101,30 @@
       "writtenOn": "2021-02-18T18:11:34Z",
       "side": 1,
       "message": "nit: This could also be an IfSuccessThen, it would just need an else statement to change addClicked.",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "9cdd1ec35da7e55ccab93112466efbce4bfedb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e7d5031_bd706013",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-02-19T02:19:11Z",
+      "side": 1,
+      "message": "Hmm both \"no add button\" and \"clicked add button\" will return nil with IfSuccessThen(). How can I differentiate them?",
+      "parentUuid": "0dead0cf_c2e8338b",
       "range": {
         "startLine": 56,
         "startChar": 3,
