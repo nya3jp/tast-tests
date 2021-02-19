@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b77927_eddf161e",
+        "filename": "src/chromiumos/tast/local/android/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-19T19:42:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c06bef7e_92a94d34",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 122
+      },
+      "revId": "4ab980bd159f72bf9155a0722c6ae8fafcd70c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36fc6eef_43d1ab45",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-19T19:24:35Z",
       "side": 1,
       "message": "Instead of passing a dir string, can we make 4 short methods, SwipeUp, SwipeDown, etc?",
+      "range": {
+        "startLine": 87,
+        "startChar": 44,
+        "endLine": 87,
+        "endChar": 54
+      },
+      "revId": "4ab980bd159f72bf9155a0722c6ae8fafcd70c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2453a2_984aa785",
+        "filename": "src/chromiumos/tast/local/android/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-19T19:42:29Z",
+      "side": 1,
+      "message": "Hi, In uiautomator server, https://github.com/lnishan/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/AutomatorServiceImpl.java, it doesn\u0027t have separate methods for SwipeUp, SwipeDown, SwipeLeft, SwipeRight.Thanks.",
+      "parentUuid": "36fc6eef_43d1ab45",
       "range": {
         "startLine": 87,
         "startChar": 44,
