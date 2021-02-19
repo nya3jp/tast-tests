@@ -16,6 +16,23 @@
       "message": "PTAL, thank you! The dependent CLs that actually invoke the added exclusions are here:\n+ https://chromium-review.googlesource.com/c/chromiumos/platform/vpd/+/2683043\n+ https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/2682845",
       "revId": "2c97ff2f082e065c697535a47c3c359462d79ae3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a9d6b91_cd696bb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-02-19T19:25:31Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "2c97ff2f082e065c697535a47c3c359462d79ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
