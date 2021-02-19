@@ -42,11 +42,15 @@ func WaitUntilCPUCoolDown(ctx context.Context, coolDownMode CoolDownMode) (time.
 
 		// thermalZonePath is the path to thermal zone directories.
 		thermalZonePath = "/sys/class/thermal/thermal_zone*"
-
-		// thermalIgnoreType is a thermal zone type to be ignored.
-		// iwlwifi is the zone type of generic driver for WiFi adapters on most Intel platforms.
-		thermalIgnoreType = "iwlwifi"
 	)
+
+	// thermalIgnoreTypes list thermal zones type to be ignored.
+	var thermalIgnoreTypes = []string{
+		// iwlwifi is the zone type of generic driver for WiFi adapters on most Intel platforms.
+		"iwlwifi",
+		// b/180696076: trogdor boards have a charger sensor which cools down extremely slowly when it charges the battery.
+		"charger-thermal",
+	}
 
 	timeBefore := time.Now()
 
@@ -84,7 +88,14 @@ func WaitUntilCPUCoolDown(ctx context.Context, coolDownMode CoolDownMode) (time.
 					errors.Wrapf(err, "failed to read %q", zoneTypePath))
 			}
 			zoneType := strings.TrimSpace(string(b))
-			if strings.Contains(zoneType, thermalIgnoreType) {
+			ignoreZone := false
+			for _, zoneToIgnore := range thermalIgnoreTypes {
+				if strings.Contains(zoneType, zoneToIgnore) {
+					ignoreZone = true
+					break
+				}
+			}
+			if ignoreZone {
 				continue
 			}
 
