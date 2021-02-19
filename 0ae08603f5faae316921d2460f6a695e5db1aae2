@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f46fc6_5e60ca98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-19T09:01:23Z",
+      "side": 1,
+      "message": "Addressed comments and added in share token comparison",
+      "revId": "0ae08603f5faae316921d2460f6a695e5db1aae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
