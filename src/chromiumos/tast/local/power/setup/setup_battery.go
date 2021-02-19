@@ -29,7 +29,16 @@ func setChargeControl(ctx context.Context, s chargeControlState) error {
 
 // SetBatteryDischarge forces the battery to discharge. This will fail if the
 // remaining battery charge is lower than lowBatteryCutoff.
-func SetBatteryDischarge(ctx context.Context, expectedMaxCapacityDischarge float64) (CleanupCallback, error) {
+func SetBatteryDischarge(ctx context.Context, expectedMaxCapacityDischarge float64) (cb CleanupCallback, retErr error) {
+	// The caller expect the DUT is charged before and after calling this function. But the
+	// DUT might be undischarged before the test, and the battery level is too low. We will
+	// put the DUT to charge for any error cases so the test can be re-run after the DUT is
+	// charged above the lowBatteryCutoff threshold.
+	defer func() {
+		if retErr != nil {
+			setChargeControl(ctx, ccNormal)
+		}
+	}()
 	shutdownCutoff, err := power.LowBatteryShutdownPercent(ctx)
 	if err != nil {
 		return nil, err
