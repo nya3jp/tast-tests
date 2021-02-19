@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7184de9b_f17d68cf",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-19T18:19:57Z",
+      "side": 1,
+      "message": "Can we just put this before the testing.Poll and remove the if?\nAlso please check the error returned by this.",
+      "range": {
+        "startLine": 413,
+        "startChar": 4,
+        "endLine": 413,
+        "endChar": 44
+      },
+      "revId": "1bd4ecdd7e955cb8623c861507ec5132524e2806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
