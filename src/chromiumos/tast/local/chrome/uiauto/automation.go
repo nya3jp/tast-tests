@@ -448,6 +448,9 @@ func (ac *Context) LeftClickUntil(finder *nodewith.Finder, condition func(contex
 		if err := ac.LeftClick(finder)(ctx); err != nil {
 			return errors.Wrap(err, "failed to initially click the node")
 		}
+		if err := testing.Sleep(ctx, ac.pollOpts.Interval); err != nil {
+			return err
+		}
 		return testing.Poll(ctx, func(ctx context.Context) error {
 			if err := condition(ctx); err != nil {
 				if err := ac.ImmediateLeftClick(finder)(ctx); err != nil {
