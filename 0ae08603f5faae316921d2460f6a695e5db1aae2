@@ -39,6 +39,30 @@
       },
       "revId": "0ae08603f5faae316921d2460f6a695e5db1aae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c953039d_4d389bab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-19T21:25:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf76c8ff_4f0eeb55",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 4
+      },
+      "revId": "0ae08603f5faae316921d2460f6a695e5db1aae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
