@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7345d14b_fbf8222e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/cups/services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-02-19T18:07:50Z",
+      "side": 0,
+      "message": "We\u0027re also calling this in scanner.ScanEsclIpp, scanapp.Scan, and documentscanapi.Scan. I\u0027m assuming we can remove it everywhere now?",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "3493f69cad5282096ece65e2bc3a9497458f7926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
