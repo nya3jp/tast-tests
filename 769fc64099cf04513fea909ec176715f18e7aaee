@@ -22,6 +22,30 @@
       },
       "revId": "769fc64099cf04513fea909ec176715f18e7aaee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bc98f38_61a787fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-19T07:43:48Z",
+      "side": 1,
+      "message": "OK cool. I\u0027ll just do it now",
+      "parentUuid": "1c13f8de_0c03ac61",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 5
+      },
+      "revId": "769fc64099cf04513fea909ec176715f18e7aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
