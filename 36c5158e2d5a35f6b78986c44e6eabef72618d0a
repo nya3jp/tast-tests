@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16174715_7e0fd9a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cujrunner/actions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-19T17:30:00Z",
+      "side": 1,
+      "message": "Goodpoint. Done.",
+      "parentUuid": "5fd2b386_d1066b06",
+      "range": {
+        "startLine": 30,
+        "startChar": 20,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "36c5158e2d5a35f6b78986c44e6eabef72618d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b110810_569451b7",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0298182a_d434b5a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cujrunner/actions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-19T17:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b110810_569451b7",
+      "revId": "36c5158e2d5a35f6b78986c44e6eabef72618d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c4f4987_6bea17f0",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-02-18T22:18:12Z",
       "side": 1,
       "message": "I think you don\u0027t have to define this. Instead you can use sort.Slice function by passing the compare function (https://golang.org/pkg/sort/#Slice)",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 66
+      },
+      "revId": "36c5158e2d5a35f6b78986c44e6eabef72618d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "410da3d2_09893993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cujrunner/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-19T17:30:00Z",
+      "side": 1,
+      "message": "Cool. Thank you for the pointer. I actually read the package doc but somehow missed this call.\n\nDone.",
+      "parentUuid": "9c4f4987_6bea17f0",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c18464b1_85942979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cujrunner/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-19T17:30:00Z",
+      "side": 1,
+      "message": "Done. Good catch. Totally forgot the constants.",
+      "parentUuid": "2fe268e2_037dd276",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 37
+      },
+      "revId": "36c5158e2d5a35f6b78986c44e6eabef72618d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70ec8c7a_06f8205e",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-02-18T22:18:12Z",
       "side": 1,
       "message": "can\u0027t it be something like\n  for i :\u003d 0; i \u003c len(r.q); i++ {\n    t :\u003d r.q[i]\n    ...\n\n?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 50
+      },
+      "revId": "36c5158e2d5a35f6b78986c44e6eabef72618d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35473903_d4122cfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cujrunner/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-19T17:30:00Z",
+      "side": 1,
+      "message": "The index based loop could be tricky to use because the task queue is not fully flat. The tasks with relative start time are stored as `blocked` task on their dependent tasks. These are merged back the the queue when the dependent tasks finishes. The merge could cause the index to change.\n\nSuppose we have 3 tasks. Task 2 is a relative one start after task 1. We could have a queue like:\n\n  task 1 --blocked-\u003e task 2\n  task 3\n\nThe queue have 2 entries: task 1 and task 3. Task 2 is linked via task 1\u0027s `blocked`.\n\nWhen task 1 finishes, task 2 needs to merge back into the queue. In this case, we need to keep index `i` not increment. This might look strange.\n\nCurrently, we remove the first task from queue, execute it, then add back its blocked tasks, then re-sort the queue based on start time. Think it is more straightforward.",
+      "parentUuid": "70ec8c7a_06f8205e",
       "range": {
         "startLine": 131,
         "startChar": 0,
