@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4f53635_390bc3fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-19T23:54:50Z",
+      "side": 1,
+      "message": "we may want to put these in a sub folder. I wouldn\u0027t be surprised if at some point tast/chrome decides to save a log called messages or chrome",
+      "range": {
+        "startLine": 92,
+        "startChar": 77,
+        "endLine": 92,
+        "endChar": 98
+      },
+      "revId": "7fa4c2f2498fcba8fca982a6ee76ac189b79ff72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b49c54_bbdb65da",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbytestutils/nearbytestutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-19T23:54:50Z",
+      "side": 1,
+      "message": "This is a bit weird to put here instead of after calls to startlogging.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "7fa4c2f2498fcba8fca982a6ee76ac189b79ff72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
