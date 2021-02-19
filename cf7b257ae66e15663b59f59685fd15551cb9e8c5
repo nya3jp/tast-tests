@@ -16,6 +16,24 @@
       "message": "Another nit: this will only work on stateful decoders, but with the\ncurrent ExtraSoftwareDeps, it\u0027ll run on all V4L2-supporting platforms.\n\nThe only devices supporting stateful decoding are Trogdor-based and\nhana/oak-based (but those are on a very old kernel). So we could leave\nhere a:\n\n  \tExtraHardwareDeps: hwdep.D(hwdep.Model(\"trogdor\")),",
       "revId": "cf7b257ae66e15663b59f59685fd15551cb9e8c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d90db4_e2c0a127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-19T05:48:59Z",
+      "side": 1,
+      "message": "Thanks Miguel for pointing this out. \n\nI actually got an error with \"trogdor\". \n2021-02-19T05:45:49.067384Z Skipped test video.PlatformDecoding.v4l2_vp9 due to missing dependencies: ModelId did not match\n\nWith \"pompom\", it did pass. \n\nThen, maybe I should list all models: trogdor, pompom, lazor.",
+      "parentUuid": "1fa6f5b5_f7cddbc1",
+      "revId": "cf7b257ae66e15663b59f59685fd15551cb9e8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
