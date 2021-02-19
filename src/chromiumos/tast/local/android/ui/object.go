@@ -77,6 +77,17 @@ func (o *Object) WaitForExists(ctx context.Context, timeout time.Duration) error
 	return o.callSimple(ctx, "waitForExists", o.s, timeout/time.Millisecond)
 }
 
+// Swipe performs the swipe up/down/left/right action on the UiObject
+// dir   "u"/"up", "d"/"down", "l"/"left", "r"/"right"
+// steps indicates the number of injected move steps into the system. Steps are injected about 5ms apart. So a 100 steps may take about 1/2 second to complete.
+// percent expect value: percent >= 0.0F && percent <= 1.0F,The length of the swipe as a percentage of this object's size.
+//
+// This method corresponds to UiObject.Swipe().
+// https://github.com/lnishan/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/AutomatorServiceImpl.java
+func (o *Object) Swipe(ctx context.Context, dir string, percent float64, steps int) error {
+	return o.callSimple(ctx, "swipe", o.s, dir, percent, steps)
+}
+
 // WaitForText waits for a text view matching the selector to have the expected text.
 func (o *Object) WaitForText(ctx context.Context, expected string, timeout time.Duration) error {
 	s := *o.s
