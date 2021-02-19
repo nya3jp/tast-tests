@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "443dd49e_aedcf342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-19T03:22:48Z",
+      "side": 1,
+      "message": "I\u0027ll get rid of these later when I add another in-contacts test and fixture-ize them.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 102
+      },
+      "revId": "6c6b77a45c668477a85233f62f0b9a8e21544048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e1f08ab_ab6b86f3",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-19T03:22:48Z",
+      "side": 1,
+      "message": "syslog\u0027s line readers have some polling built in so these are needed to ensure the context deadline is not reached immediately.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "6c6b77a45c668477a85233f62f0b9a8e21544048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
