@@ -16,6 +16,69 @@
       "message": "PTAL, thank you!",
       "revId": "fc991ca8c1763524bef437d9e39ba130b9e0bcc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3676d6d8_c05a4e4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-19T20:31:57Z",
+      "side": 1,
+      "message": "Looks good, mostly questions.",
+      "revId": "fc991ca8c1763524bef437d9e39ba130b9e0bcc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c41c918f_8a2ae523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-19T20:31:57Z",
+      "side": 1,
+      "message": "Can you show both hashes in the error message as well?",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "fc991ca8c1763524bef437d9e39ba130b9e0bcc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d3ebb45_429e2aac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-19T20:31:57Z",
+      "side": 1,
+      "message": "Are these files already on the DUT?\nAlso all DUTs are expected to have the same MD5s?",
+      "range": {
+        "startLine": 151,
+        "startChar": 27,
+        "endLine": 151,
+        "endChar": 61
+      },
+      "revId": "fc991ca8c1763524bef437d9e39ba130b9e0bcc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
