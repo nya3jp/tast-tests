@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7beb7189_db8b97c7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-02-19T05:44:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5f3d03b_421678a5",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "9cdd1ec35da7e55ccab93112466efbce4bfedb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "130bc3f6_c490229b",
@@ -148,6 +172,30 @@
       "writtenOn": "2021-02-18T18:11:34Z",
       "side": 1,
       "message": "Just a note: depending on how some of these functions are used in tests, you may find it useful to return a ui.Action. Which essentially means removing context from the function params and wrapping the body with func(ctx context.Context) error.\n\nThe advantage of of ui.Action is chain-ability in tests.\n\nex:\n uiauto.Run(ctx,\n   crd.Launch(cr, tconn),\n   ui.LeftClick(something),\n   kb.TypeAction(\"Hi\"),\n   crd.WaitConnection(tconn),\n )",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 11
+      },
+      "revId": "9cdd1ec35da7e55ccab93112466efbce4bfedb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf896248_90506459",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-02-19T05:44:06Z",
+      "side": 1,
+      "message": "Thanks for the advice.",
+      "parentUuid": "4e19a780_cd3ab040",
       "range": {
         "startLine": 115,
         "startChar": 5,
