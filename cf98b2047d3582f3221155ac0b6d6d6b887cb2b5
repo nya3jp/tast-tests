@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6227a5e_8768f17a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-19T06:52:59Z",
+      "side": 1,
+      "message": "Interesting. Thanks for the suggestion. I could add this as an improvement in a follow up patch (once I land this Cl and the subsequent crash test).\n\nI think one benefit of keeping the poll at the callsite is to keep the Interval and Timeout configurable by the caller (of course, we can just add those as parameters, but that makes the function signature a bit more complex.).",
+      "parentUuid": "ff5bd3c2_53a9eca7",
+      "revId": "cf98b2047d3582f3221155ac0b6d6d6b887cb2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa90fe0d_235c48ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
         "patchSetId": 2
@@ -65,6 +83,30 @@
       "writtenOn": "2021-02-19T03:33:43Z",
       "side": 1,
       "message": "optional: checkTBTDeviceExists() (bool, error)\n\nThis would simplify the function as the if statements at the end would no longer be necessary (although it would make the call sites slightly more complicated with more error handling)",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "cf98b2047d3582f3221155ac0b6d6d6b887cb2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3694d44_3bd657b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-19T06:52:59Z",
+      "side": 1,
+      "message": "Ack\n\nHmm. Seems like a wash (slightly more complicated error handling v/s not-so-great if at the end)\n\nI\u0027m gonna leave this one as-is for now (of course, can revisit it later).",
+      "parentUuid": "fa90fe0d_235c48ce",
       "range": {
         "startLine": 101,
         "startChar": 5,
