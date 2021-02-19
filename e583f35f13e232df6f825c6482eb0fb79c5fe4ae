@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f54e33f_9e2ca00b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-19T09:28:35Z",
+      "side": 1,
+      "message": "I posted a question in crrev.com/c/2703561.\n",
+      "revId": "e583f35f13e232df6f825c6482eb0fb79c5fe4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "162896a3_2bbfa24b",
@@ -14,6 +31,24 @@
       "writtenOn": "2021-02-18T08:57:27Z",
       "side": 1,
       "message": "saveProcessList calls `$ adb shell ps` and this requires arc.ARC object. So faillog/ps-arcvm.txt is collected only with \"arcBooted\" fixture now. How should I do? Can I switch os.Command(\"adb\", \"shell\", \"ps\") from arc.Command(\"ps\")? I keep this TODO for now.",
+      "revId": "e583f35f13e232df6f825c6482eb0fb79c5fe4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29f048d_13375d5d",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-19T09:28:35Z",
+      "side": 1,
+      "message": "arc.Command sets up environment variables like ADB_VENDOR_KEYS. We want to avoid running adb directly.",
+      "parentUuid": "162896a3_2bbfa24b",
       "revId": "e583f35f13e232df6f825c6482eb0fb79c5fe4ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
