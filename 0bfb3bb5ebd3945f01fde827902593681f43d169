@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb2abeb_66a52cdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-19T01:41:22Z",
+      "side": 1,
+      "message": "this came out of chats with Yoni. I may also point here and ask tast-users@ about policy, but first: WDYT?",
+      "revId": "0bfb3bb5ebd3945f01fde827902593681f43d169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
