@@ -165,22 +165,12 @@ func hwsecGetTPMStatus(ctx context.Context) (*hwsec.NonsensitiveStatusInfo, erro
 	return status, nil
 }
 
-func hwsecCheckDACounter(ctx context.Context, origVal int) error {
-	da, err := hwsecGetDACounter(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get DA counter")
-	}
-	if da > origVal {
-		return errors.Errorf("TPM dictionary counter is increased: %v -> %v", origVal, da)
-	}
-	return nil
-}
-
-func hwsecCheckTPMStatus(ctx context.Context, origStatus *hwsec.NonsensitiveStatusInfo) error {
+func hwsecCheckTPMState(ctx context.Context, origStatus *hwsec.NonsensitiveStatusInfo, origCounter int) error {
 	status, err := hwsecGetTPMStatus(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get TPM status")
 	}
+
 	// We didn't expect the TPM is owned but doesn't have the permission to reset DA counter.
 	if status.IsOwned && !status.HasResetLockPermissions {
 		testing.ContextLog(ctx, "TPM is owned but doesn't have the permission to reset DA counter")
@@ -189,6 +179,18 @@ func hwsecCheckTPMStatus(ctx context.Context, origStatus *hwsec.NonsensitiveStat
 			return errors.Errorf("unexpect TPM status: %#v -> %#v", origStatus, status)
 		}
 	}
+
+	// Only Check the DA counter when the TPM is owned.
+	if status.IsOwned {
+		da, err := hwsecGetDACounter(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get DA counter")
+		}
+		if da > origCounter {
+			return errors.Errorf("TPM dictionary counter is increased: %v -> %v", origCounter, da)
+		}
+	}
+
 	return nil
 }
 
@@ -248,14 +250,9 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 
 	return func(ctx context.Context, s *testing.TestHookState) {
 
-		// Ensure the TPM is in the expect status after tast finish.
-		if err := hwsecCheckTPMStatus(ctx, hwsecTpmStatus); err != nil {
-			s.Error("Failed to check TPM status: ", err)
-		}
-
-		// Ensure the TPM dictionary attack counter didn't be increased after tast finish.
-		if err := hwsecCheckDACounter(ctx, hwsecDACounter); err != nil {
-			s.Error("Failed to check TPM DA counter: ", err)
+		// Ensure the TPM is in the expect state after tast finish.
+		if err := hwsecCheckTPMState(ctx, hwsecTpmStatus, hwsecDACounter); err != nil {
+			s.Error("Failed to check TPM state: ", err)
 		}
 
 		if s.HasError() {
