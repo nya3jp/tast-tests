@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e83154b_deca16ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_slots.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-19T03:58:40Z",
+      "side": 1,
+      "message": "I guess foundErr is intended to be assigned here?\n\nAlso, wrapping multiple errors might be less readable. One alternative might be:\n\n  for ... {\n    ...\n    if err !\u003d nil {\n      s.Error(\"Cellular Service not found for ICCID: \", err)\n    }\n  }\n  if s.HasError() {\n    // Early return on error.\n    s.Log(\"Error(s) finding Cellular Services\")\n    return\n  }",
+      "revId": "265495c0d6f5e6eb74b990afe5eacdb3a456f061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
