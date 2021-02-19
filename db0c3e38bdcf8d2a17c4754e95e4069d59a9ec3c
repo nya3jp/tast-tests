@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d45259df_0d42a0ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/app_launcher_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-02-19T01:08:32Z",
+      "side": 0,
+      "message": "I think it just displays about:blank page, so I think we can wait for different pages based on whether it\u0027s chromium or chrome, do you know if there is a way to tell chromium from chrome?",
+      "parentUuid": "57715b3e_7449ea91",
+      "revId": "db0c3e38bdcf8d2a17c4754e95e4069d59a9ec3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcca0a9f_4f2fea87",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
         "patchSetId": 1
