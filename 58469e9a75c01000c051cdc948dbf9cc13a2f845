@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50db5458_e318fa24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-19T16:25:50Z",
+      "side": 1,
+      "message": "Almost LG.\n\nBTW, could you run CQ-DRY-RUN when you send a review request?",
+      "revId": "58469e9a75c01000c051cdc948dbf9cc13a2f845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b2043b_a1e433cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-19T16:25:50Z",
+      "side": 1,
+      "message": "I think you no longer need 3 mins timeout?",
+      "revId": "58469e9a75c01000c051cdc948dbf9cc13a2f845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ad8d3c_9654160b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-19T16:25:50Z",
+      "side": 1,
+      "message": "This fetches all chrome app list for each app check.\nHow long will it take?\nif it takes several seconds, then maybe it\u0027s better to unify the fetches and check if ID is on the list.",
+      "revId": "58469e9a75c01000c051cdc948dbf9cc13a2f845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66950314_61cb8255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-19T16:25:50Z",
+      "side": 1,
+      "message": "style\n\ninstalled, err :\u003d ash.ChromeAppInstalled(...)\nif err !\u003d nil {\n  s.Fatalf(...)\n}\nif installed {\n  s.Fatalf(...)\n}",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "58469e9a75c01000c051cdc948dbf9cc13a2f845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
