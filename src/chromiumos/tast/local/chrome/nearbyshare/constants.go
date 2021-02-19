@@ -25,3 +25,6 @@ const CrosDetectSenderTimeout = time.Minute
 
 // SmallFileTimeout is the test timeout for small file transfer tests.
 const SmallFileTimeout = 2 * time.Minute
+
+// ChromeLog is the filename of the Chrome log that is saved for each test.
+const ChromeLog = "nearby_chrome"

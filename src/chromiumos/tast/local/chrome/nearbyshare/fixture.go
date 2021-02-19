@@ -6,12 +6,14 @@ package nearbyshare
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -26,11 +28,16 @@ func init() {
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
 	})
 }
 
 type dataOfflineAllContactsFixture struct {
 	cr *chrome.Chrome
+
+	// ChromeReader is the line reader for collecting Chrome logs.
+	ChromeReader *syslog.LineReader
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -94,6 +101,19 @@ func (f *dataOfflineAllContactsFixture) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (f *dataOfflineAllContactsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *dataOfflineAllContactsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
+	if err != nil {
+		s.Fatal("Failed to start Chrome logging: ", err)
+	}
+	f.ChromeReader = chromeReader
+}
 
-func (f *dataOfflineAllContactsFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *dataOfflineAllContactsFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.ChromeReader == nil {
+		s.Fatal("ChromeReader not defined")
+	}
+	if err := nearbytestutils.SaveLogs(ctx, f.ChromeReader, filepath.Join(s.OutDir(), ChromeLog)); err != nil {
+		s.Fatal("Failed to save Chrome log: ", err)
+	}
+}
