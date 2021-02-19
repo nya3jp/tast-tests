@@ -16,6 +16,23 @@
       "message": "fritz@ migule@ PTAL\n\ntested on trogor that decoder binary was detected \u0026 executed as expected using tast.",
       "revId": "5c44e861a0d6a9dfcf6b60e588329c9c7a4b0110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deeb301b_51e29127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2021-02-19T00:59:31Z",
+      "side": 1,
+      "message": "this file is going to fail until b/180615056 is fixed.",
+      "revId": "5c44e861a0d6a9dfcf6b60e588329c9c7a4b0110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
