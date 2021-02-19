@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50480ad1_03a47c17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-19T03:33:43Z",
+      "side": 1,
+      "message": "Looks ok, but please get a review from a team member before I can +2.",
+      "revId": "cf98b2047d3582f3221155ac0b6d6d6b887cb2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5bd3c2_53a9eca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-19T03:33:43Z",
+      "side": 1,
+      "message": "optional: should you move the testing.Poll call into the helper function too?  pollTBTExists?",
+      "revId": "cf98b2047d3582f3221155ac0b6d6d6b887cb2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa90fe0d_235c48ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-19T03:33:43Z",
+      "side": 1,
+      "message": "optional: checkTBTDeviceExists() (bool, error)\n\nThis would simplify the function as the if statements at the end would no longer be necessary (although it would make the call sites slightly more complicated with more error handling)",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "cf98b2047d3582f3221155ac0b6d6d6b887cb2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
