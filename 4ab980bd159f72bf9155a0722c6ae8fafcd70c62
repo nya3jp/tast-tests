@@ -16,6 +16,52 @@
       "message": "Hi Brendan,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "4ab980bd159f72bf9155a0722c6ae8fafcd70c62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c06bef7e_92a94d34",
+        "filename": "src/chromiumos/tast/local/android/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-19T19:24:35Z",
+      "side": 1,
+      "message": "Does it make sense to pass both steps and percent? Which would this method use?",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 122
+      },
+      "revId": "4ab980bd159f72bf9155a0722c6ae8fafcd70c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36fc6eef_43d1ab45",
+        "filename": "src/chromiumos/tast/local/android/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-19T19:24:35Z",
+      "side": 1,
+      "message": "Instead of passing a dir string, can we make 4 short methods, SwipeUp, SwipeDown, etc?",
+      "range": {
+        "startLine": 87,
+        "startChar": 44,
+        "endLine": 87,
+        "endChar": 54
+      },
+      "revId": "4ab980bd159f72bf9155a0722c6ae8fafcd70c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
