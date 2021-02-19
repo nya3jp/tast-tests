@@ -9,9 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
@@ -87,7 +85,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		password := s.RequiredVar("ui.cuj_password")
 		opts := []chrome.Option{
 			chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
-			chrome.ARCSupported(),
+			// chrome.ARCSupported(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...),
 		}
 		if f.keepState {
@@ -112,81 +110,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		}
 	}()
 
-	enablePlayStore := true
-	if f.keepState {
-		// Check whether the play store has been enabled.
-		tconn, err := cr.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to connect Test API: ", err)
-		}
-		st, err := arc.GetState(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to get ARC state: ", err)
-		}
-		enablePlayStore = !st.Provisioned
-	}
-
-	if enablePlayStore {
-		func() {
-			const playStorePackageName = "com.android.vending"
-			ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout+time.Minute)
-			defer cancel()
-
-			// Optin to Play Store.
-			s.Log("Opting into Play Store")
-			tconn, err := cr.TestAPIConn(ctx)
-			if err != nil {
-				s.Fatal("Failed to get the test conn: ", err)
-			}
-			if err := optin.Perform(ctx, cr, tconn); err != nil {
-				s.Fatal("Failed to optin to Play Store: ", err)
-			}
-
-			s.Log("Waiting for Playstore shown")
-			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-				return w.ARCPackageName == playStorePackageName
-			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-				// Playstore app window might not be shown, but optin should be successful
-				// at this time. Log the error message but continue.
-				s.Log("Failed to wait for the playstore window to be visible: ", err)
-				return
-			}
-
-			if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-				s.Fatal("Failed to close Play Store: ", err)
-			}
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				if _, err := ash.GetARCAppWindowInfo(ctx, tconn, playStorePackageName); err == ash.ErrWindowNotFound {
-					return nil
-				} else if err != nil {
-					return testing.PollBreak(err)
-				}
-				return errors.New("still seeing playstore window")
-			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-				s.Fatal("Failed to wait for the playstore window to be closed: ", err)
-			}
-		}()
-	}
-
-	var a *arc.ARC
-	func() {
-		ctx, cancel := context.WithTimeout(ctx, arc.BootTimeout)
-		defer cancel()
-
-		var err error
-		if a, err = arc.New(ctx, s.OutDir()); err != nil {
-			s.Fatal("Failed to start ARC: ", err)
-		}
-
-		if f.origRunningPkgs, err = runningPackages(ctx, a); err != nil {
-			if err := a.Close(ctx); err != nil {
-				s.Error(ctx, "Failed to close ARC connection: ", err)
-			}
-			s.Fatal("Failed to list running packages: ", err)
-		}
-	}()
 	f.cr = cr
-	f.arc = a
 	cr = nil
 	return FixtureData{Chrome: f.cr, ARC: f.arc}
 }
@@ -194,9 +118,9 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 func (f *loggedInToCUJUserFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	chrome.Unlock()
 
-	if err := f.arc.Close(ctx); err != nil {
-		testing.ContextLog(ctx, "Failed to close ARC connection: ", err)
-	}
+	// if err := f.arc.Close(ctx); err != nil {
+		// testing.ContextLog(ctx, "Failed to close ARC connection: ", err)
+	// }
 
 	if err := f.cr.Close(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to close Chrome connection: ", err)
@@ -205,7 +129,7 @@ func (f *loggedInToCUJUserFixture) TearDown(ctx context.Context, s *testing.Fixt
 
 func (f *loggedInToCUJUserFixture) Reset(ctx context.Context) error {
 	// Stopping the running apps.
-	running, err := runningPackages(ctx, f.arc)
+	/* running, err := runningPackages(ctx, f.arc)
 	if err != nil {
 		return errors.Wrap(err, "failed to get running packages")
 	}
@@ -217,12 +141,12 @@ func (f *loggedInToCUJUserFixture) Reset(ctx context.Context) error {
 		if err := f.arc.Command(ctx, "am", "force-stop", pkg).Run(testexec.DumpLogOnError); err != nil {
 			return errors.Wrapf(err, "failed to stop %q", pkg)
 		}
-	}
+	} */
 
 	// Unlike ARC.preImpl, this does not uninstall apps. This is because we
 	// typically want to reuse the same list of applications, and additional
 	// installed apps wouldn't affect the test scenarios.
-	if err = f.cr.ResetState(ctx); err != nil {
+	if err := f.cr.ResetState(ctx); err != nil {
 		return errors.Wrap(err, "failed to reset chrome")
 	}
 
