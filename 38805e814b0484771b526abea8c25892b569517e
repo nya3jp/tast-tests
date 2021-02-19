@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f2afd7_9e8ec5ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-19T06:06:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7194b537_f422a829",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 48,
+        "endChar": 64
+      },
+      "revId": "38805e814b0484771b526abea8c25892b569517e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb38f884_110f9951",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-18T09:43:23Z",
       "side": 1,
       "message": "style:\n\nif playStoreState[\"enabled\"] {\n  ...\n\n\nBTW, is there any chance that playStoreState is enabled on Guest account?\nIf so, could you add comments when/why it happens?",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "38805e814b0484771b526abea8c25892b569517e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2803d935_312403f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-19T06:06:38Z",
+      "side": 1,
+      "message": "Realized that explicit check of playstore state is not needed as playstore app is again checked below. Hence removing this code. Thanks",
+      "parentUuid": "bb38f884_110f9951",
       "range": {
         "startLine": 50,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b3dd5a_57ca9d70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-19T06:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4e9e7a9_df9f7e0b",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "38805e814b0484771b526abea8c25892b569517e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26cce62e_47974555",
@@ -83,6 +155,24 @@
       "writtenOn": "2021-02-18T09:43:23Z",
       "side": 1,
       "message": "It looks like this makes sure that apps are not installed.\nSo, waiting 10secs for each does not make sense.\nCould you fetch all Chrome apps and check App ids in a single loop?\n\nYou can refer ash.ChromeAppInstalled for how to.",
+      "revId": "38805e814b0484771b526abea8c25892b569517e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ed42a4_740c8b4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-19T06:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26cce62e_47974555",
       "revId": "38805e814b0484771b526abea8c25892b569517e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
