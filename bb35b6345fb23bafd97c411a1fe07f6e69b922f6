@@ -86,6 +86,46 @@
       "parentUuid": "f7d04b34_4c34ccbe",
       "revId": "bb35b6345fb23bafd97c411a1fe07f6e69b922f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33575ffd_cceabeee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-02-19T23:37:13Z",
+      "side": 1,
+      "message": "Ah OK, I think I misread the code. SGTM w/ one request below.\n",
+      "revId": "bb35b6345fb23bafd97c411a1fe07f6e69b922f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b634d76_9f341213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-02-19T23:37:13Z",
+      "side": 1,
+      "message": "So, this means login as an opt-out user, correct? Can you explicitly mention that? Otherwise, the code looks confusing to me.",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "bb35b6345fb23bafd97c411a1fe07f6e69b922f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
