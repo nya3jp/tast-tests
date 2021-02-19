@@ -16,6 +16,29 @@
       "message": "Addressed comments and added in share token comparison",
       "revId": "0ae08603f5faae316921d2460f6a695e5db1aae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf76c8ff_4f0eeb55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-19T17:45:15Z",
+      "side": 1,
+      "message": "Can we rename these to indicate sender/receiver, instead of 1 and 2?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 4
+      },
+      "revId": "0ae08603f5faae316921d2460f6a695e5db1aae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
