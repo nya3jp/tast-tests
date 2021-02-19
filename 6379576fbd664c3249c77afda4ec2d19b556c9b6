@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfe9692b_500469e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-19T21:48:39Z",
+      "side": 1,
+      "message": "Dear reviewers, this case was updated to open the android app with activity, instead of from ui.",
+      "revId": "6379576fbd664c3249c77afda4ec2d19b556c9b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
