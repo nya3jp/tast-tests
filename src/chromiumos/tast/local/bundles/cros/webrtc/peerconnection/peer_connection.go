@@ -131,26 +131,28 @@ func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, verifyM
 	// [1] https://w3c.github.io/webrtc-stats/#dom-rtcinboundrtpstreamstats-decoderimplementation
 	// [2] https://w3c.github.io/webrtc-stats/#dom-rtcoutboundrtpstreamstats-encoderimplementation
 	expectedImpl := "EncodeAccelerator"
-	readImpl := func(ctx context.Context) (string, error) {
+	readImpl := func(ctx context.Context) (string, int, int, error) {
 		var out struct {
 			Encoder string `json:"encoderImplementation"`
+			Width   int    `json:"frameWidth"`
+			Height  int    `json:"frameHeight"`
 		}
 		if err := readRTCReport(ctx, conn, localPeerConnection, "outbound-rtp", &out); err != nil {
-			return "", err
+			return "", -1, -1, err
 		}
-		return out.Encoder, nil
+		return out.Encoder, out.Width, out.Height, nil
 	}
 
 	if verifyMode == VerifyHWDecoderUsed {
 		expectedImpl = "ExternalDecoder"
-		readImpl = func(ctx context.Context) (string, error) {
+		readImpl = func(ctx context.Context) (string, int, int, error) {
 			var out struct {
 				Decoder string `json:"decoderImplementation"`
 			}
 			if err := readRTCReport(ctx, conn, remotePeerConnection, "inbound-rtp", &out); err != nil {
-				return "", err
+				return "", -1, -1, err
 			}
-			return out.Decoder, nil
+			return out.Decoder, 12345, 12345, nil
 		}
 	}
 
@@ -162,9 +164,14 @@ func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, verifyM
 	var impl string
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		impl, err = readImpl(ctx)
+		var w, h int
+		impl, w, h, err = readImpl(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to retrieve and/or parse RTCStatsReport")
+		}
+		testing.ContextLogf(ctx, "IMPL: %v (%vx%v)", impl, w, h)
+		if w != 1280 || h != 720 {
+			return errors.New("no desired peer connection")
 		}
 		if impl == "unknown" {
 			return errors.New("getStats() didn't fill in the codec implementation (yet)")
@@ -173,6 +180,9 @@ func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, verifyM
 		// before filling the actual one, see b/162764016.
 		if verifyMode == VerifyHWEncoderUsed && impl == "ExternalEncoder" {
 			return errors.New("getStats() didn't fill in the encoder implementation (yet)")
+		}
+		if verifyMode == VerifyHWEncoderUsed && !strings.Contains(impl, expectedImpl) {
+			return errors.Errorf("getStats() shows sw decoder: %s", impl)
 		}
 		return nil
 	}, &testing.PollOptions{Interval: pollInterval, Timeout: pollTimeout}); err != nil {
