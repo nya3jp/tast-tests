@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c13f8de_0c03ac61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-19T03:43:27Z",
+      "side": 1,
+      "message": "How about getting the token and returning it in a response? Then we can compare it against the sender. I realized I forgot to add token verification to Phone-\u003eCB too so I made a bug for it (crbug/1180009), so we could save doing it here for later.",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 5
+      },
+      "revId": "769fc64099cf04513fea909ec176715f18e7aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
