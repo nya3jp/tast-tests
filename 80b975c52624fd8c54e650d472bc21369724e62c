@@ -218,6 +218,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b8e0b3_5c318142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-19T21:46:49Z",
+      "side": 1,
+      "message": "Hi Jun, as we discussed offline, it seems we have to stick to the Play Store version.",
+      "parentUuid": "cf520609_10696fc6",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b489aa4c_999d2ce0",
@@ -349,6 +373,30 @@
       "side": 1,
       "message": "Using public geekbench doesn\u0027t mean we need to access to the browser tab.  The data can be seen from the app.  Please get that.\n\nAings said that this test will also run internal version of geekbench if possible.  This approach of using browser tab makes the internal version impossible.",
       "parentUuid": "405a60b8_c08c31ef",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f03352_708855e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-19T21:46:49Z",
+      "side": 1,
+      "message": "We have been trying hard to get the android element directly with the ui selection options from local/android/ui/ package. Unfortunately, the android element for the score doesn\u0027t have any unique resource-id/class/package/content-desc/etc that can be used to locate the element. \n\n            \u003cnode index\u003d\"0\" text\u003d\"986\" resource-id\u003d\"\" class\u003d\"android.view.View\" package\u003d\"com.primatelabs.geekbench5\" content-desc\u003d\"\" checkable\u003d\"false\" checked\u003d\"false\" clickable\u003d\"false\" enabled\u003d\"true\" focusable\u003d\"false\" focused\u003d\"false\" scrollable\u003d\"false\" long-clickable\u003d\"false\" password\u003d\"false\" selected\u003d\"false\" bounds\u003d\"[570,398][1920,494]\" /\u003e\n\n\nAlso the local/android/ui/ package doesn\u0027t provide getChild() so we cannot locate this element from other element, either. I created the chromium:1179839 bug to ask for this feature.\n\nTaking screenshot and use text recognition is too complicated to do.\n\nAt this time, get the score from the UI seems to be the applicable way.\n\nWe have a TODO in the code but additional information was added.",
+      "parentUuid": "b06cc754_b6f220d0",
       "range": {
         "startLine": 119,
         "startChar": 0,

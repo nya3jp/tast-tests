@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a00aece1_11bf575f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/doc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-19T21:46:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07cdf9e_3dd3e491",
+      "range": {
+        "startLine": 5,
+        "startChar": 61,
+        "endLine": 5,
+        "endChar": 78
+      },
+      "revId": "fefc717eaf33d04e5e8c7565046d122121790a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4377aad_a1ffd434",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "948600ee_0d7666f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench5_android_app.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-19T21:46:49Z",
+      "side": 1,
+      "message": "Thanks for discussing this and providing a solution. In the new patch, a  PublicBenchmarkAllowed() hardware dependency function was implemented under benchmark package. Please check if this satisfies the your proposal.",
+      "parentUuid": "d4377aad_a1ffd434",
+      "revId": "fefc717eaf33d04e5e8c7565046d122121790a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "021246da_6b297be2",
@@ -88,6 +130,30 @@
       "writtenOn": "2021-02-16T22:15:33Z",
       "side": 1,
       "message": "Please use \"a\", I think that\u0027s more common name for an instance of ARC.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 3
+      },
+      "revId": "fefc717eaf33d04e5e8c7565046d122121790a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ff321b4_de27d2c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench5_android_app.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-19T21:46:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "021246da_6b297be2",
       "range": {
         "startLine": 53,
         "startChar": 1,
@@ -121,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94f7b244_05e66eda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench5_android_app.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-19T21:46:49Z",
+      "side": 1,
+      "message": "Thanks for the comments. Test changed accordingly.",
+      "parentUuid": "f51ad5df_b592d16d",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 24
+      },
+      "revId": "fefc717eaf33d04e5e8c7565046d122121790a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35257c89_1a832a0a",
@@ -134,6 +224,30 @@
       "writtenOn": "2021-02-16T22:15:33Z",
       "side": 1,
       "message": "please wait for https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2696487 to be merged, and use chrome.GAIALoginTimeout.",
+      "range": {
+        "startLine": 50,
+        "startChar": 26,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "fefc717eaf33d04e5e8c7565046d122121790a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a48263_29277a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/setup/fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-19T21:46:49Z",
+      "side": 1,
+      "message": "The referred CL as merged and the change was made accordingly.",
+      "parentUuid": "35257c89_1a832a0a",
       "range": {
         "startLine": 50,
         "startChar": 26,
