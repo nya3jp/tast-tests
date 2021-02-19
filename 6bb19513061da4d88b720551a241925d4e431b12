@@ -94,6 +94,30 @@
       },
       "revId": "6bb19513061da4d88b720551a241925d4e431b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d752b68b_a4f141f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-19T12:28:06Z",
+      "side": 1,
+      "message": "s.TestName() returns whole test name with package, category and name e.g. policy.AccessibilityPolicies.virtual_keyboard\nIMHO it is not better to have it as it with conscious repetition rather than to build logic for parsing that as it will depend on string and if framework changes the way this name is concatenated those test will fail.\n\nWill keep it as is.",
+      "parentUuid": "e8af17c8_573c5b86",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 5
+      },
+      "revId": "6bb19513061da4d88b720551a241925d4e431b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
