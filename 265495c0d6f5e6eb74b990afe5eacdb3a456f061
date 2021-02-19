@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00f6c3d3_574d7567",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_slots.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-02-19T05:10:33Z",
+      "side": 1,
+      "message": "If we plan on supporting this test for mbim platforms or 1 sim platforms, this may need to change to a warning. \n\nOtherwise, we will need to limit this test to qmi + 2 sim platforms, which probably was your intention. The problem is that we don\u0027t have a mechanism to schedule it only on 2 sim + qmi platforms. We will end up hardcoding the boards on which the test should run(For e.g. trogdor). The scheduler will need an update every time a new 2 sim platform is introduced.\n\nShould we have a workaround similar to the one in shill?\nIf it\u0027s too much work right now, maybe we could add a hint about why mbim/single sim  platforms are not supported by this test.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "265495c0d6f5e6eb74b990afe5eacdb3a456f061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e83154b_deca16ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_slots.go",
         "patchSetId": 4
