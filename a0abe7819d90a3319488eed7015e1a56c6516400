@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd8ca0a_430cf2cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-19T17:48:35Z",
+      "side": 1,
+      "message": "Thank you for comment!",
+      "revId": "a0abe7819d90a3319488eed7015e1a56c6516400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6d92988_1494d5fb",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-02-19T17:37:02Z",
       "side": 1,
       "message": "Is it possible to make this something more generic? Ideally, I think we want to save the Lacros logs for all tests if they fail.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "a0abe7819d90a3319488eed7015e1a56c6516400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44c05f29_545e8dc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-19T17:48:35Z",
+      "side": 1,
+      "message": "I agreed your point, but AFAIK, no such a way, unfortunately.\n\nThere\u0027s on-going work about faillog in framework go/tast-failure-hooks,\nbut even if it comes, I don\u0027t think we can write \"Generic Lacros log fetching metchanism\", because Tast framework does not know what are Lacros related and what aer not.\nThus, at least we have to inject faillog retrieval for each Lacros test manually.\n\nOne future possibility is to set up fixture for lacros test environment, but fixture itself is still under development, and even if we could use fixture, we need more complicated design about log retrieval, because there\u0027s no guarantee that lacros launches only once in a testing scenario.\nWe may want to revisit some time later, but I think it\u0027s better to discuss separately.",
+      "parentUuid": "e6d92988_1494d5fb",
       "range": {
         "startLine": 35,
         "startChar": 0,
