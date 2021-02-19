@@ -34,6 +34,24 @@
       "parentUuid": "1fa6f5b5_f7cddbc1",
       "revId": "cf7b257ae66e15663b59f59685fd15551cb9e8c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef6d7aa1_e3dab022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-19T17:21:28Z",
+      "side": 1,
+      "message": "I think Platform(\"trogdor\") is what we should use. Test passed with this on pompom. \nI think Platform(\"trogdor\") \u003d Model(\"trogdor\", \"lazor\", \"pompom\"). \nPlease correct me if this is not the case. \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:infra/proto/go/device/platform_id.pb.go",
+      "parentUuid": "31d90db4_e2c0a127",
+      "revId": "cf7b257ae66e15663b59f59685fd15551cb9e8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
