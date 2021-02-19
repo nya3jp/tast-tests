@@ -22,6 +22,30 @@
       },
       "revId": "145ebf56adb00ada4ff56faa7727dfb76ab22016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "308a708b_683c102f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-19T15:38:06Z",
+      "side": 1,
+      "message": "I\u0027ve been tuning this so I just kept it a Ms for convenience. Eventually I need to track this down and fix it deterministically.",
+      "parentUuid": "24fb905b_9581a817",
+      "range": {
+        "startLine": 93,
+        "startChar": 20,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "145ebf56adb00ada4ff56faa7727dfb76ab22016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
