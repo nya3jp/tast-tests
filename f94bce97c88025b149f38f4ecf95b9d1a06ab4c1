@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78cdab07_d6f2ad68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-19T03:44:53Z",
+      "side": 1,
+      "message": "mentioned in the other CL too but it might be good to have a response with the secure sharing token here so we can check it on both sides. can save it for later though, should be a simple addition",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 5
+      },
+      "revId": "f94bce97c88025b149f38f4ecf95b9d1a06ab4c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
