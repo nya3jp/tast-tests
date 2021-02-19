@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32236dd2_16097081",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-02-19T18:35:04Z",
+      "side": 1,
+      "message": "Looks good to me and will help fix the immediate issue in the lab.\n\nOn a related note, is there a tast test that looks at the thermal zones and checks for high temperatures? We didn\u0027t notice that this temp sensor was broken for a while and I wonder if we had a tast test for it we could record and look at thermal zones over time and fail if something is way out of whack like zero degrees C or really hot.",
+      "revId": "0c924a06710cd05c9b28e5c3e368d189460dcb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad858adb_f7892267",
+        "filename": "src/chromiumos/tast/local/power/cpucooldown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-02-19T18:35:04Z",
+      "side": 1,
+      "message": "I came to the same conclusion last week. It would be better to only look at CPU thermals, but I don\u0027t know how non-ARM boards setup their thermal zones. On Trogdor we have many thermal zones that don\u0027t correspond to the CPUs, so this list could become quite long.",
+      "revId": "0c924a06710cd05c9b28e5c3e368d189460dcb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
