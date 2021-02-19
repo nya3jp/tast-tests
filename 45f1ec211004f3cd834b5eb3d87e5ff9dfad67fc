@@ -16,6 +16,24 @@
       "message": "I think I sent an email for the design questions for this CL. I am still waiting for these things to be addressed. Specifically:\n* It is actually not essential to use OS settings window to control bluetooth. Please use the dbus interface.\n* Aings told me that gmail website should be used for CUJs. Please rewrite the code around gmail control.",
       "revId": "45f1ec211004f3cd834b5eb3d87e5ff9dfad67fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13eab55f_6e3dd6bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-19T21:18:34Z",
+      "side": 1,
+      "message": "Jun,\n\n- We couldn\u0027t find any examples of using DBUS to connect a Bluetooth devices. There are examples to enable / disable BT though. So we didn\u0027t change the Bluetooth package and still keep the BT device control from UI. But if you know any existing examples of controlling BT device (connect/disconnect) from DBUS, please let us know and we can modify.\n- Jane modified the gmail package and now it supports both web and APP. CUJ or other UI test can choose what they need.",
+      "parentUuid": "da2905f2_225dde9d",
+      "revId": "45f1ec211004f3cd834b5eb3d87e5ff9dfad67fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
