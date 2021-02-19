@@ -80,6 +80,30 @@
       },
       "revId": "a0abe7819d90a3319488eed7015e1a56c6516400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99126029_e661be0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-02-19T18:43:00Z",
+      "side": 1,
+      "message": "That makes sense, thank you for explaining!",
+      "parentUuid": "44c05f29_545e8dc1",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "a0abe7819d90a3319488eed7015e1a56c6516400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
