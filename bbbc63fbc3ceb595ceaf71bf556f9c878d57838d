@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caf3bde0_9ad073a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-02-19T04:13:43Z",
+      "side": 1,
+      "message": "As I understand, this test requires a valid WiFi configuration. What if DUT is connected via ethernet? Is it possible to make WiFi optional for the tests that not explicitly require it?",
+      "revId": "bbbc63fbc3ceb595ceaf71bf556f9c878d57838d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
