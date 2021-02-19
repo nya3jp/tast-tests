@@ -110,6 +110,30 @@
       },
       "revId": "4ab980bd159f72bf9155a0722c6ae8fafcd70c62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07e36c2_63f50517",
+        "filename": "src/chromiumos/tast/local/android/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-19T23:59:06Z",
+      "side": 1,
+      "message": "I know. the methods would look like:\n func (o *Object) SwipeUp(ctx context.Context, percent float64, steps int) error {\n   return o.callSimple(ctx, \"swipe\", o.s, \"up\", percent, steps)\n }\n func (o *Object) SwipeDown(ctx context.Context, percent float64, steps int) error {\n   return o.callSimple(ctx, \"swipe\", o.s, \"down\", percent, steps)\n }\n\netc",
+      "parentUuid": "3e2453a2_984aa785",
+      "range": {
+        "startLine": 87,
+        "startChar": 44,
+        "endLine": 87,
+        "endChar": 54
+      },
+      "revId": "4ab980bd159f72bf9155a0722c6ae8fafcd70c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
