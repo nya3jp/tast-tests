@@ -70,6 +70,30 @@
       },
       "revId": "3493f69cad5282096ece65e2bc3a9497458f7926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8aaf3f_85e09841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/cups/services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-02-19T18:25:36Z",
+      "side": 0,
+      "message": "The one that happens in the case when it runs ippusb_bridge manually after stopping the upstart job is still needed.  I think we can probably remove the other call, but it should be harmless because it happens at the end of the test right before the USB printer gets unplugged anyway.  Once the new udev stuff is all fully landed, I intend to make another pass through all these related tests and clean up any of the unnecessary flakiness workarounds we\u0027ve added over the last couple of months.",
+      "parentUuid": "b52ba5b0_f807d6c1",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "3493f69cad5282096ece65e2bc3a9497458f7926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
