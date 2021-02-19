@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ecacd96_b5dec030",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-19T21:52:49Z",
+      "side": 1,
+      "message": "Dear reviewers, this is a new CL to fix the CUJ run stability issue about DUT charging status. ",
+      "revId": "b54c0573d4aae7fb97669cd07da975c6c079d901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
