@@ -16,6 +16,40 @@
       "message": "Hi,\n\nCan you please have a look ?\n\nThanks",
       "revId": "6cd6fb49fd471a9d1717f2adb939f423688c36d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98dd90f8_430b3eaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-19T09:21:39Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "6cd6fb49fd471a9d1717f2adb939f423688c36d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae9c7ff_83c95162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-19T09:21:39Z",
+      "side": 1,
+      "message": "nit: add a comment explaining why VirtualKeyboard was used here.",
+      "revId": "6cd6fb49fd471a9d1717f2adb939f423688c36d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
