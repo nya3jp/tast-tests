@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b66b6bd_270a5e35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-19T12:35:14Z",
+      "side": 1,
+      "message": "please inline all these variables into params\n\nthese are global variables and in theory test can modify them.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "6bb19513061da4d88b720551a241925d4e431b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ea82d1f_f0d4446b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
         "patchSetId": 5
