@@ -113,6 +113,7 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	// We use the same value as the low compress ratio in
 	// platform.MemoryStressBasic.
 	const compressRatio = 0.67
+	const retouchRatio = 1
 	const numTasks = 100
 	taskAllocMiB := (2 * int64(info.Total) / numTasks) / memory.MiB
 	var tasks []memoryuser.MemoryTask
@@ -121,7 +122,7 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	var procsAliveTasks []memoryuser.KillableTask
 	for i := 0; i < numTasks/numTypes; i++ {
 		if param.inHost {
-			task := server.NewMemoryStressTask(int(taskAllocMiB), compressRatio, hostLimit)
+			task := server.NewMemoryStressTask(int(taskAllocMiB), compressRatio, retouchRatio, hostLimit)
 			tabsAliveTasks = append(tabsAliveTasks, task)
 			tasks = append(tasks, task)
 		}

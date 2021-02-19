@@ -94,6 +94,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 	// We use the same value as the low compress ratio in
 	// platform.MemoryStressBasic.
 	const compressRatio = 0.67
+	const retouchRatio = 0.333
 	taskAllocMiB := (2 * int64(info.Total) / 100) / memory.MiB
 	var tasks []memoryuser.MemoryTask
 	var appsAliveTasks []memoryuser.KillableTask
@@ -106,7 +107,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		const numTasks = 50
 		if param.inHost {
 			for j := 0; j < numTasks/numTypes; j++ {
-				task := server.NewMemoryStressTask(int(taskAllocMiB), compressRatio, hostLimit)
+				task := server.NewMemoryStressTask(int(taskAllocMiB), compressRatio, retouchRatio, hostLimit)
 				tabsAliveTasks = append(tabsAliveTasks, task)
 				tasks = append(tasks, task)
 			}

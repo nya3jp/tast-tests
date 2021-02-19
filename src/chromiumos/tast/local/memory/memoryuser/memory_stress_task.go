@@ -106,10 +106,12 @@ func NewMemoryStressServer(dataFileSystem http.FileSystem) *MemoryStressServer {
 
 // NewMemoryStressTask creates a new MemoryStressTask.
 // allocMiB - The amount of memory the tab will allocate.
-// ratio    - How compressible the allocated memory will be.
+// random   - What fraction of each allocated page to fill with random data.
+// retouch  - What fraction of allocated pages to refill with random data every
+//            second.
 // limit    - (optional) wait until memory is not low after creating the tab.
-func (s *MemoryStressServer) NewMemoryStressTask(allocMiB int, ratio float32, limit memory.Limit) *MemoryStressTask {
-	url := fmt.Sprintf("%s/%s?alloc=%d&ratio=%.3f&id=%d", s.server.URL, AllocPageFilename, allocMiB, ratio, s.nextID)
+func (s *MemoryStressServer) NewMemoryStressTask(allocMiB int, random, retouch float32, limit memory.Limit) *MemoryStressTask {
+	url := fmt.Sprintf("%s/%s?alloc=%d&random=%.3f&retouch=%.3f&id=%d", s.server.URL, AllocPageFilename, allocMiB, random, retouch, s.nextID)
 	s.nextID++
 	return &MemoryStressTask{
 		url:   url,
