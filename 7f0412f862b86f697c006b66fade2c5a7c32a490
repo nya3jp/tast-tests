@@ -16,6 +16,46 @@
       "message": "I just added meta.RunTests.files_remote to informational group. Please review.",
       "revId": "7f0412f862b86f697c006b66fade2c5a7c32a490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b0e69c_5dc0f915",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-19T09:34:27Z",
+      "side": 1,
+      "message": "LGTM with one request.\n",
+      "revId": "7f0412f862b86f697c006b66fade2c5a7c32a490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40f53d3_42df02bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-19T09:34:27Z",
+      "side": 1,
+      "message": "group:meta is for stable tests only. Would you mind dropping it?\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/attr.go;rcl\u003dba9f732a05f614487d15b0dce58d08fb46733c32;l\u003d309",
+      "range": {
+        "startLine": 97,
+        "startChar": 42,
+        "endLine": 97,
+        "endChar": 52
+      },
+      "revId": "7f0412f862b86f697c006b66fade2c5a7c32a490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
