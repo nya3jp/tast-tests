@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a415d8_0e120e76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-19T03:59:00Z",
+      "side": 1,
+      "message": "LGTM % a nit. Need Pavan\u0027s review on the cellular specific logic.",
+      "revId": "475cf7cf84a638d49ac1f82cf71a40fc8185ab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d32c0eb_9eb9a881",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_slots.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-19T03:59:00Z",
+      "side": 1,
+      "message": "nit: I slightly prefer checking \"ok\" field of type assertion, so it won\u0027t panic when something goes wrong.",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 48
+      },
+      "revId": "475cf7cf84a638d49ac1f82cf71a40fc8185ab01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
