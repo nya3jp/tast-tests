@@ -341,6 +341,34 @@ func TouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
+// KeyboardNavigations func verifies app perform keyboard navigations successfully without crash or ANR.
+func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	if tabletModeEnabled {
+		s.Log("Device is in tablet mode. Skipping test")
+		return
+	}
+	// Press enter key twice.
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	}
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	}
+	// To perform keyboard navigations.
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "20", "--pct-nav", "20", "--pct-majornav", "20", "--pct-nav", "20", "--pct-majornav", "20", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Error("Failed to perform monkey test keyboard navigations: ", err)
+	}
+	if err := processMonkeyOutput(string(out)); err != nil {
+		s.Error("Key board navigations such as up/down/left/right are not working properly in the app: ", err)
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
@@ -506,4 +534,35 @@ func processMonkeyOutput(output string) error {
 		}
 	}
 	return nil
+}
+
+// HandleDialogBoxes func will handle the dialog box
+func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appPkgName string) {
+	const (
+		allowText                   = "ALLOW"
+		whileUsingThisAppButtonText = "WHILE USING THE APP"
+	)
+
+	allowButton := d.Object(ui.TextMatches("(?i)" + allowText))
+	appverifer := d.Object(ui.PackageName(appPkgName))
+	permissionButton := d.Object(ui.ClassName(AndroidButtonClassName))
+	whileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := allowButton.Exists(ctx); err == nil {
+			s.Log("Click on allowButton")
+			allowButton.Click(ctx)
+		}
+		if err := whileUsingThisAppButton.Exists(ctx); err == nil {
+			s.Log("Click on whileUsingThisApp")
+			whileUsingThisAppButton.Click(ctx)
+		}
+		if err := permissionButton.Exists(ctx); err == nil {
+			s.Log("Click on permissionButton")
+			permissionButton.Click(ctx)
+		}
+		return appverifer.Exists(ctx)
+	}, &testing.PollOptions{Timeout: LongUITimeout}); err != nil {
+		s.Error("appPkgName doesn't exist: ", err)
+	}
 }

@@ -131,24 +131,11 @@ func launchAppForESPN(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to click on ok button: ", err)
 	}
 
-	// Press back key  until home screen exists.
-	homeButton := d.Object(ui.ID(homeID))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := homeButton.Exists(ctx); err != nil {
-			if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
-				s.Log("Failed to enter KEYCODE_BACK: ", err)
-			} else {
-				s.Log("Entered KEYCODE_BACK")
-			}
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Fatal("Failed to enter KEYCODE_BACK: ", err)
-	}
-
-	// Check home page is launched.
-	if err := homeButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("home button doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homeIcon on homePage.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
