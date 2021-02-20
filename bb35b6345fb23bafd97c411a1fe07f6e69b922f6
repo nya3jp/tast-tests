@@ -126,6 +126,30 @@
       },
       "revId": "bb35b6345fb23bafd97c411a1fe07f6e69b922f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2afa1dd1_20f944d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2021-02-20T00:19:02Z",
+      "side": 1,
+      "message": "Gotcha, I\u0027ve added \"login as an opt-out user\" to be clearer.",
+      "parentUuid": "6b634d76_9f341213",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "bb35b6345fb23bafd97c411a1fe07f6e69b922f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
