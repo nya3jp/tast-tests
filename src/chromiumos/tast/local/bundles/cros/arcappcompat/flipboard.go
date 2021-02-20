@@ -214,15 +214,22 @@ func launchAppForFlipboard(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Log("Entered KEYCODE_DPAD_RIGHT")
 	}
 
-	// Check for home icon.
+	// Check for homeIcon.
 	homeIcon := d.Object(ui.ID(homeID))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("homeIcon doesn't exist: ", err)
+		s.Log("homeIcon doesn't exist: ", err)
 	} else {
 		s.Log("homeIcon does exist")
 		signOutOfFlipboard(ctx, s, a, d, appPkgName, appActivity)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
+	}
 }
 
 // signOutOfFlipboard verifies app is signed out.

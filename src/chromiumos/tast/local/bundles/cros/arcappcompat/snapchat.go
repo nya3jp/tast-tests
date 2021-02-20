@@ -113,9 +113,13 @@ func launchAppForSnapchat(ctx context.Context, s *testing.State, tconn *chrome.T
 		s.Log("checkForUsernameOrEmail does exist")
 		loginToSnapchatWithOtherUI(ctx, s, tconn, a, d, appPkgName, appActivity)
 	}
-
-	// Click on signIn Button until not now button exist.
+	// Check for signin button.
 	signInButton := d.Object(ui.ID(signInID))
+	if err := signInButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Error("signInButton doesn't exists: ", err)
+	}
+	// Click on signIn Button until not now button exist.
+	signInButton = d.Object(ui.ID(signInID))
 	notNowButton := d.Object(ui.ID(notNowID))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := notNowButton.Exists(ctx); err != nil {
@@ -174,10 +178,11 @@ func launchAppForSnapchat(ctx context.Context, s *testing.State, tconn *chrome.T
 		s.Fatal("Failed to click on clickOnWhileUsingThisApp Button: ", err)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for profile icon.
 	profileIcon := d.Object(ui.ID(profileID))
 	if err := profileIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("profileIcon doesn't exist: ", err)
+		s.Fatal("profileIcon doesn't exist: ", err)
 	}
 }
 

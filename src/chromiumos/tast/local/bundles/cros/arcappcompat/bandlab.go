@@ -142,10 +142,10 @@ func launchAppForBandlab(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
-	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.PackageName(appPkgName))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-		s.Fatal("homeIcon doesn't exists: ", err)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }

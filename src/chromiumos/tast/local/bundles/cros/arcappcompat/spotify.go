@@ -25,6 +25,7 @@ var clamshellTestsForSpotify = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Signout app", Fn: signOutOfSpotify},
 }
 
 // TouchviewTests are placed here.
@@ -32,6 +33,7 @@ var touchviewTestsForSpotify = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForSpotify},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Signout app", Fn: signOutOfSpotify},
 }
 
 func init() {
@@ -88,7 +90,6 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 		notNowID              = "android:id/autofill_save_no"
 		neverButtonID         = "com.google.android.gms:id/credential_save_reject"
 		passwordText          = "Password"
-		homeiconID            = "com.spotify.music:id/home_tab"
 	)
 
 	// Click on login button.
@@ -187,12 +188,12 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to start app: ", err)
 	}
 
-	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeiconID))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("home icon doesn't exist: ", err)
-	} else {
-		signOutOfSpotify(ctx, s, tconn, a, d, appPkgName, appActivity)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 
 }
@@ -205,7 +206,14 @@ func signOutOfSpotify(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		scrollLayoutID        = "android:id/list"
 		logoutID              = "android:id/text1"
 		logOutOfSpotifyText   = "Log out"
+		homeiconID            = "com.spotify.music:id/home_tab"
 	)
+	// Check for homeIcon.
+	homeIcon := d.Object(ui.ID(homeiconID))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("homeIcon doesn't exist and skipped logout: ", err)
+		return
+	}
 
 	// Click on settings icon.
 	settingsIcon := d.Object(ui.ClassName(settingsIconClassName), ui.Description(settingsIconDes))
