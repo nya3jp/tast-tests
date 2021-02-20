@@ -507,3 +507,43 @@ func processMonkeyOutput(output string) error {
 	}
 	return nil
 }
+
+// HandleDialogBoxes func will handle the dialog box
+func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appPkgName string) {
+	const (
+		allowText                   = "ALLOW"
+		whileUsingThisAppButtonText = "WHILE USING THE APP"
+	)
+
+	allowButton := d.Object(ui.TextMatches("(?i)" + allowText))
+	appverifer := d.Object(ui.PackageName(appPkgName))
+	permissionButton := d.Object(ui.ClassName(AndroidButtonClassName))
+	whileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := allowButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
+			s.Log("allowButton doesn't exist: ", err)
+		} else if err := appverifer.Exists(ctx); err != nil {
+			s.Log(" Click on allow button until appverifer exist")
+			allowButton.Click(ctx)
+			return err
+		}
+		if err := whileUsingThisAppButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
+			s.Log("whileUsingThisAppButton Button doesn't exists: ", err)
+		} else if err := appverifer.Exists(ctx); err != nil {
+			s.Log(" Click on whileUsingThisApp until appverifer exist")
+			whileUsingThisAppButton.Click(ctx)
+			return err
+		}
+		if err := permissionButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
+			s.Log("permission Button doesn't exists: ", err)
+		} else if err := appverifer.Exists(ctx); err != nil {
+			s.Log(" Click on permissionButton until appverifer exist")
+			permissionButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: LongUITimeout}); err != nil {
+		s.Error("appPkgName doesn't exist: ", err)
+	}
+}
