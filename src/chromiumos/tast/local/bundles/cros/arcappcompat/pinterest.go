@@ -135,7 +135,7 @@ func launchAppForPinterest(ctx context.Context, s *testing.State, tconn *chrome.
 
 	// Click on allow button until profile icon exists.
 	allowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(allowButtonText))
-	profileIcon := d.Object(ui.ID(profileIconID))
+	profileIcon := d.Object(ui.PackageName(appPkgName))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := profileIcon.Exists(ctx); err != nil {
 			s.Log("Click on allow button")
@@ -144,52 +144,7 @@ func launchAppForPinterest(ctx context.Context, s *testing.State, tconn *chrome.
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 		s.Fatal("profileIcon doesn't exists: ", err)
-	} else {
-		signOutOfPinterest(ctx, s, a, d, appPkgName, appActivity)
-	}
-}
-
-// signOutOfPinterest verifies app is signed out.
-func signOutOfPinterest(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	const (
-		accountIconID              = "com.pinterest:id/profile_menu_view"
-		profileIconID              = "com.pinterest:id/user_profile_collapsed_avatar_container"
-		settingsIconClassName      = "android.widget.ImageView"
-		settingsIconDescription    = "Settings"
-		logOutOfPinterestClassName = "android.widget.TextView"
-		logOutOfPinterestText      = "Log out"
-	)
-
-	// Click on account icon.
-	accountIcon := d.Object(ui.ID(accountIconID))
-	if err := accountIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("AccountIcon doesn't exist: ", err)
-	} else if err := accountIcon.Click(ctx); err != nil {
-		s.Fatal("Failed to click on accountIcon: ", err)
-	}
-
-	// Click on profile icon.
-	profileIcon := d.Object(ui.ID(profileIconID))
-	if err := profileIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("ProfileIcon doesn't exist: ", err)
-	} else if err := profileIcon.Click(ctx); err != nil {
-		s.Fatal("Failed to click on ProfileIcon: ", err)
-	}
-
-	// Click on settings icon.
-	settingsIcon := d.Object(ui.DescriptionMatches("(?i)" + settingsIconDescription))
-	if err := settingsIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("SettingsIcon doesn't exist: ", err)
-	} else if err := settingsIcon.Click(ctx); err != nil {
-		s.Fatal("Failed to click on settingsIcon: ", err)
-	}
-
-	// Click on log out of Pinterest.
-	logOutOfPinterest := d.Object(ui.ClassName(logOutOfPinterestClassName), ui.Text(logOutOfPinterestText))
-	if err := logOutOfPinterest.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("LogOutOfPinterest doesn't exist: ", err)
-	} else if err := logOutOfPinterest.Click(ctx); err != nil {
-		s.Fatal("Failed to click on logOutOfPinterest: ", err)
 	}
 }
