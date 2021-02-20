@@ -122,7 +122,7 @@ func launchAppForESPN(ctx context.Context, s *testing.State, tconn *chrome.TestC
 	} else if err := okButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on ok button: ", err)
 	}
-
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for launch verifier.
 	launchVerifier := d.Object(ui.PackageName(appPkgName))
 	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {

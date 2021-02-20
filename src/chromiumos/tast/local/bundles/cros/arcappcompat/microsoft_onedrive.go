@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -26,6 +25,7 @@ var clamshellTestsForMicrosoftOnedrive = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+	{Name: "Clamshell: Signout app", Fn: signOutOfMicrosoftOnedrive},
 }
 
 // TouchviewTests are placed here.
@@ -33,6 +33,7 @@ var touchviewTestsForMicrosoftOnedrive = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForMicrosoftOnedrive},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Signout app", Fn: signOutOfMicrosoftOnedrive},
 }
 
 func init() {
@@ -99,7 +100,6 @@ func launchAppForMicrosoftOnedrive(ctx context.Context, s *testing.State, tconn 
 		signInClassName                = "android.widget.Button"
 		signinText                     = "SIGN IN"
 		turnOnCameraUploadText         = "TURN ON CAMERA UPLOAD"
-		profileID                      = "com.microsoft.skydrive:id/pivot_me"
 	)
 
 	// Click on signin button.
@@ -118,7 +118,7 @@ func launchAppForMicrosoftOnedrive(ctx context.Context, s *testing.State, tconn 
 		s.Fatal("Failed to click on enterEmailAddress: ", err)
 	}
 
-	// Keep clicking enterEmailAddress until the email text field is focused.
+	// Click on enterEmailAddress until the email text field is focused.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if enterEmailAddressFocused, err := enterEmailAddress.IsFocused(ctx); err != nil {
 			return errors.New("enterEmailAddress not focused yet")
@@ -131,15 +131,9 @@ func launchAppForMicrosoftOnedrive(ctx context.Context, s *testing.State, tconn 
 		s.Fatal("Failed to focus enterEmailAddress: ", err)
 	}
 
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
-	}
-	defer kb.Close()
-
 	emailAddress := s.RequiredVar("arcappcompat.MicrosoftOnedrive.emailid")
-	if err := kb.Type(ctx, emailAddress); err != nil {
-		s.Fatal("Failed to enter emailAddress: ", err)
+	if err := enterEmailAddress.SetText(ctx, emailAddress); err != nil {
+		s.Fatal("Failed to enter EmailAddress: ", err)
 	}
 	s.Log("Entered EmailAddress")
 
@@ -159,7 +153,7 @@ func launchAppForMicrosoftOnedrive(ctx context.Context, s *testing.State, tconn 
 		s.Fatal("Failed to click on enterPassword: ", err)
 	}
 
-	// Keep clicking password text field until the password text field is focused.
+	// Click on password text field until the password text field is focused.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if pwdFocused, err := enterPassword.IsFocused(ctx); err != nil {
 			return errors.New("password text field not focused yet")
@@ -173,8 +167,8 @@ func launchAppForMicrosoftOnedrive(ctx context.Context, s *testing.State, tconn 
 	}
 
 	password := s.RequiredVar("arcappcompat.MicrosoftOnedrive.password")
-	if err := kb.Type(ctx, password); err != nil {
-		s.Fatal("Failed to enter password: ", err)
+	if err := enterPassword.SetText(ctx, password); err != nil {
+		s.Fatal("Failed to enter enterPassword: ", err)
 	}
 	s.Log("Entered password")
 
@@ -239,12 +233,12 @@ func launchAppForMicrosoftOnedrive(ctx context.Context, s *testing.State, tconn 
 		s.Fatal("Failed to click on clickOnMeetYourPersonalVault: ", err)
 	}
 
-	// Check for profile icon.
-	profileIcon := d.Object(ui.ID(profileID))
-	if err := profileIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Fatal("profileIcon doesn't exists: ", err)
-	} else {
-		signOutOfMicrosoftOnedrive(ctx, s, tconn, a, d, appPkgName, appActivity)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
 
@@ -255,11 +249,11 @@ func signOutOfMicrosoftOnedrive(ctx context.Context, s *testing.State, tconn *ch
 		okButtonText         = "OK"
 		profileID            = "com.microsoft.skydrive:id/pivot_me"
 	)
-
 	// Click on profile icon.
 	profileIcon := d.Object(ui.ID(profileID))
 	if err := profileIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("profileIcon doesn't exists: ", err)
+		s.Log("profileIcon doesn't exists and skipped logout: ", err)
+		return
 	} else if err := profileIcon.Click(ctx); err != nil {
 		s.Fatal("Failed to click on profileIcon: ", err)
 	}

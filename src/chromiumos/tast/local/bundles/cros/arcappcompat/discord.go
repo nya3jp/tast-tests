@@ -177,13 +177,13 @@ func launchAppForDiscord(ctx context.Context, s *testing.State, tconn *chrome.Te
 	verifyCaptcha := d.Object(ui.ID(verifyCaptchaID))
 	if err := verifyCaptcha.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("verifyCaptcha doesn't exist: ", err)
-		// Check for home icon.
-		homeIcon := d.Object(ui.ID(homeIconID))
-		if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-			s.Error("HomeIcon doesn't exist: ", err)
+		testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+		// Check for homePageVerifier.
+		homePageVerifier := d.Object(ui.ID(homeIconID))
+		if err := homePageVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+			s.Fatal("homePageVerifier doesn't exist: ", err)
 		}
 	} else {
 		s.Log("Verify by reCaptcha exists")
 	}
-
 }

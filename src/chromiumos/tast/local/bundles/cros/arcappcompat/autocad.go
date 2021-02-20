@@ -178,10 +178,10 @@ func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.Te
 	} else if err := notNowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on not now button: ", err)
 	}
-
-	// Check for title icon.
-	titleButton := d.Object(ui.TextContains(titleText))
-	if err := titleButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Title button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homePageVerifier.
+	homePageVerifier := d.Object(ui.TextContains(titleText))
+	if err := homePageVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Fatal("homePageVerifier doesn't exist: ", err)
 	}
 }

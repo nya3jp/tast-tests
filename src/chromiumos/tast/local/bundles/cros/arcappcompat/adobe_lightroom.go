@@ -82,7 +82,6 @@ func launchAppForAdobeLightroom(ctx context.Context, s *testing.State, tconn *ch
 	const (
 		skipID         = "com.adobe.lrmobile:id/gotoLastPage"
 		googleID       = "com.adobe.lrmobile:id/google"
-		addPhotoID     = "com.adobe.lrmobile:id/addPhotosButton"
 		emailAddressID = "com.google.android.gms:id/container"
 	)
 	var loginWithGoogleIndex int
@@ -120,9 +119,11 @@ func launchAppForAdobeLightroom(ctx context.Context, s *testing.State, tconn *ch
 		s.Fatal("Failed to click on EmailAddress: ", err)
 	}
 
-	// Check for add icon.
-	addPhotoButton := d.Object(ui.ID(addPhotoID))
-	if err := addPhotoButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("addPhoto button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }

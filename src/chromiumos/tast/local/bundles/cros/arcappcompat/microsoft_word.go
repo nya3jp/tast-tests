@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -124,15 +123,9 @@ func launchAppForMicrosoftWord(ctx context.Context, s *testing.State, tconn *chr
 		s.Fatal("Failed to focus EmailId: ", err)
 	}
 
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
-	}
-	defer kb.Close()
-
-	emailID := s.RequiredVar("arcappcompat.MicrosoftWord.emailid")
-	if err := kb.Type(ctx, emailID); err != nil {
-		s.Fatal("Failed to enter emailID: ", err)
+	emailAddress := s.RequiredVar("arcappcompat.MicrosoftWord.emailid")
+	if err := enterEmailAddress.SetText(ctx, emailAddress); err != nil {
+		s.Fatal("Failed to enter EmailAddress: ", err)
 	}
 	s.Log("Entered EmailAddress")
 
@@ -166,8 +159,8 @@ func launchAppForMicrosoftWord(ctx context.Context, s *testing.State, tconn *chr
 	}
 
 	password := s.RequiredVar("arcappcompat.MicrosoftWord.password")
-	if err := kb.Type(ctx, password); err != nil {
-		s.Fatal("Failed to enter password: ", err)
+	if err := enterPassword.SetText(ctx, password); err != nil {
+		s.Fatal("Failed to enter enterPassword: ", err)
 	}
 	s.Log("Entered password")
 
@@ -187,24 +180,11 @@ func launchAppForMicrosoftWord(ctx context.Context, s *testing.State, tconn *chr
 		s.Fatal("Failed to click on notNowButton: ", err)
 	}
 
-	// Click on allow button to access your files.
-	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Allow Button doesn't exists: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allowButton: ", err)
-	}
-
-	// Click on ok button.
-	okButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(okText))
-	if err := okButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("okButton doesn't exists: ", err)
-	} else if err := okButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on okButton: ", err)
-	}
-
-	// Check for newIcon on homePage.
-	newIcon := d.Object(ui.ID(newID))
-	if err := newIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("NewIcon doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }

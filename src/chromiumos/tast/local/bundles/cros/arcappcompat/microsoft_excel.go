@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -93,7 +92,6 @@ func launchAppForMicrosoftExcel(ctx context.Context, s *testing.State, tconn *ch
 		passwordText          = "Password"
 		signInClassName       = "android.widget.Button"
 		signInText            = "Sign in"
-		newID                 = "com.microsoft.office.excel:id/docsui_landing_pane_header_heading"
 	)
 
 	// Click on allow button to access your photos, media and files.
@@ -110,6 +108,19 @@ func launchAppForMicrosoftExcel(ctx context.Context, s *testing.State, tconn *ch
 		s.Error("EnterEmailAddress doesn't exists: ", err)
 	} else if err := enterEmailAddress.Click(ctx); err != nil {
 		s.Fatal("Failed to click on enterEmailAddress: ", err)
+	}
+
+	// Click on enterEmailAddress until the email text field is focused.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if enterEmailAddressFocused, err := enterEmailAddress.IsFocused(ctx); err != nil {
+			return errors.New("enterEmailAddress not focused yet")
+		} else if !enterEmailAddressFocused {
+			enterEmailAddress.Click(ctx)
+			return errors.New("enterEmailAddress not focused yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
+		s.Fatal("Failed to focus enterEmailAddress: ", err)
 	}
 
 	emailAddress := s.RequiredVar("arcappcompat.MicrosoftExcel.emailid")
@@ -134,7 +145,7 @@ func launchAppForMicrosoftExcel(ctx context.Context, s *testing.State, tconn *ch
 		s.Fatal("Failed to click on enterPassword: ", err)
 	}
 
-	// Keep clicking password text field until the password text field is focused.
+	// Click on password text field until the password text field is focused.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if pwdFocused, err := enterPassword.IsFocused(ctx); err != nil {
 			return errors.New("password text field not focused yet")
@@ -147,15 +158,9 @@ func launchAppForMicrosoftExcel(ctx context.Context, s *testing.State, tconn *ch
 		s.Fatal("Failed to focus password: ", err)
 	}
 
-	kbp, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
-	}
-	defer kbp.Close()
-
 	password := s.RequiredVar("arcappcompat.MicrosoftExcel.password")
-	if err := kbp.Type(ctx, password); err != nil {
-		s.Fatal("Failed to enter password: ", err)
+	if err := enterPassword.SetText(ctx, password); err != nil {
+		s.Fatal("Failed to enter enterPassword: ", err)
 	}
 	s.Log("Entered password")
 
@@ -182,17 +187,11 @@ func launchAppForMicrosoftExcel(ctx context.Context, s *testing.State, tconn *ch
 		s.Fatal("Failed to click on okButton: ", err)
 	}
 
-	// Click on not now button.
-	notNowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(notNowText))
-	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("notNowButton doesn't exists: ", err)
-	} else if err := notNowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on notNowButton: ", err)
-	}
-
-	// Check for newIcon on homePage.
-	newIcon := d.Object(ui.ID(newID))
-	if err := newIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("NewIcon doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
