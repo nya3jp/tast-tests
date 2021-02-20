@@ -69,6 +69,24 @@
       "parentUuid": "784bf5ca_e1b4254a",
       "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "818a78d3_b4873210",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-20T03:11:09Z",
+      "side": 1,
+      "message": "Jun, kernel panic is one of the reasons and we will surely to check when we see it. Another reason I heard of from the testing team is that the DUT runs out of battery during test and goes down with battery uncharged. When it gets rebooted (it can still be brought up for a while) it is with discharged status. Usually testers don\u0027t know this and will report issues that this DUT is unchangeable. This logic can help put the battery into charge by a new test and save debugging and manual restore effort.\nWe can always raise the battery cutoff level but it doesn\u0027t guarantee different DUTs can support the same time of testing. So above mentioned scenario will occasionally happen.\n\nThis logic will help to resolve various issues related to charge status, and I hope this change makes sense. If you think explicitly setting to charged status by test cases is preferred, I will make that change.",
+      "parentUuid": "871d9a86_f40d83fe",
+      "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
