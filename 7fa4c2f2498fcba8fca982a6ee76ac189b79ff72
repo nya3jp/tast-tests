@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5777487_d9bd8e2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-20T09:14:16Z",
+      "side": 1,
+      "message": "I added the nearby_ prefix to the file, since we have nearby_logcat for the Android logs.",
+      "parentUuid": "f4f53635_390bc3fb",
+      "range": {
+        "startLine": 92,
+        "startChar": 77,
+        "endLine": 92,
+        "endChar": 98
+      },
+      "revId": "7fa4c2f2498fcba8fca982a6ee76ac189b79ff72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1b49c54_bbdb65da",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-19T23:54:50Z",
       "side": 1,
       "message": "This is a bit weird to put here instead of after calls to startlogging.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "7fa4c2f2498fcba8fca982a6ee76ac189b79ff72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "900bb0f7_7ceba51a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbytestutils/nearbytestutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-20T09:14:16Z",
+      "side": 1,
+      "message": "Yeah, the main reason for having it here is so we can use the fixture\u0027s PreTest and PostTest to handle all of the log collection. The reader is created in PreTest and we need to keep it open until the end of the test with its current implementation, so we can\u0027t defer closing it unfortunately.",
+      "parentUuid": "f1b49c54_bbdb65da",
       "range": {
         "startLine": 173,
         "startChar": 1,
