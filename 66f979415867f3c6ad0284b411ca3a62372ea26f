@@ -51,6 +51,24 @@
       "parentUuid": "315fdfd6_ae582432",
       "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "871d9a86_f40d83fe",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-20T02:18:34Z",
+      "side": 1,
+      "message": "That is a transient status due to kernel panic. Isn\u0027t it?  Why not manually fixing the battery status by yourself?\n(by the way, I think kernel panic is exceptional and is really bad.  If that happens consistently for some reasons, I guess that needs to be resolved).\n\nOr maybe simply ensuring to start from normal state is probably good enough.",
+      "parentUuid": "784bf5ca_e1b4254a",
+      "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
