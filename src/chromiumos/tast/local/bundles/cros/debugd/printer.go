@@ -7,6 +7,8 @@ package debugd
 import (
 	"context"
 	"io/ioutil"
+	"net/http"
+	"time"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/debugd"
@@ -29,7 +31,19 @@ func init() {
 	})
 }
 
+func pageNotAPrinter(w http.ResponseWriter, req *http.Request) {
+	w.Header().Set("Content-Type", "text/plain")
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("It is not a printer!"))
+}
+
 func Printer(ctx context.Context, s *testing.State) {
+	// Start local HTTP server on port 7001.
+	http.HandleFunc("/not_a_printer", pageNotAPrinter)
+	server := &http.Server{Addr: ":7001"}
+	go server.ListenAndServe()
+	defer server.Close()
+
 	ppd, err := ioutil.ReadFile(s.DataPath("GenericPostScript.ppd.gz"))
 	if err != nil {
 		s.Fatal("Failed to read PPD file: ", err)
@@ -80,9 +94,29 @@ func Printer(ctx context.Context, s *testing.State) {
 		s.Error("Incorrect error code received: ", result)
 	}
 
-	s.Log("Attempting to add a url that is not a printer")
+	// Make sure that the HTTP server on port 7001 is ready.
+	for tries := 1; true; tries++ {
+		res, err := http.Get("http://127.0.0.1:7001/not_a_printer")
+		if err == nil && res.StatusCode == http.StatusOK {
+			break
+		}
+		if tries == 5 {
+			s.Fatal("Cannot start local HTTP server ")
+		}
+		testing.Sleep(ctx, 100*time.Millisecond)
+	}
+
+	s.Log("Attempting to add a url that returns HTTP_BAD_REQUEST")
 	if result, err := d.CupsAddAutoConfiguredPrinter(
-		ctx, "NotAPrinter", "ipps://gstatic.com:443"); err != nil {
+		ctx, "NotAPrinter", "ipp://127.0.0.1:7001/bad_request"); err != nil {
+		s.Error("Calling printer setup crashed: ", err)
+	} else if result != debugd.CUPSPrinterWrongResponse {
+		s.Error("Incorrect error code received: ", result)
+	}
+
+	s.Log("Attempting to add a url that returns text page")
+	if result, err := d.CupsAddAutoConfiguredPrinter(
+		ctx, "NotAPrinter", "ipp://127.0.0.1:7001/not_a_printer"); err != nil {
 		s.Error("Calling printer setup crashed: ", err)
 	} else if result != debugd.CUPSPrinterWrongResponse {
 		s.Error("Incorrect error code received: ", result)
