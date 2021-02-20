@@ -2,10 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package servo
+package xmlrpc
 
 import (
+	"encoding/xml"
 	"math"
+	"reflect"
 	"strconv"
 	"testing"
 )
@@ -198,6 +200,17 @@ func TestNewValue(t *testing.T) {
 		t.Errorf("got %q; want %q", v.Double, expectedDoubleStr)
 	}
 
+	arrInt := []int{1, 2}
+	expectedArrayOfInt := []value{{Int: "1"}, {Int: "2"}}
+	v, err = newValue(arrInt)
+	if err != nil {
+		t.Errorf("input %v gave unexpected error: %v", arrInt, err)
+		return
+	}
+	if !reflect.DeepEqual(v.Array, expectedArrayOfInt) {
+		t.Errorf("got %v; want %v", v.Array, expectedArrayOfInt)
+	}
+
 	expectedUnsupported := struct{}{}
 	v, err = newValue(expectedUnsupported)
 	if err == nil {
@@ -227,7 +240,8 @@ func TestNewParams(t *testing.T) {
 }
 
 func TestUnpack(t *testing.T) {
-	params, err := newParams([]interface{}{"rutabaga", true, 1, -3.14})
+	arrIntIn := []int{1, 2}
+	params, err := newParams([]interface{}{"rutabaga", true, 1, -3.14, arrIntIn})
 	if err != nil {
 		t.Fatal("creating params: ", err)
 	}
@@ -236,7 +250,8 @@ func TestUnpack(t *testing.T) {
 	var boolOut bool
 	var intOut int
 	var floatOut float64
-	if err := resp.unpack([]interface{}{&stringOut, &boolOut, &intOut, &floatOut}); err != nil {
+	var arrIntOut []int
+	if err := resp.unpack([]interface{}{&stringOut, &boolOut, &intOut, &floatOut, &arrIntOut}); err != nil {
 		t.Fatal("unpacking: ", err)
 	}
 	if stringOut != "rutabaga" {
@@ -250,5 +265,68 @@ func TestUnpack(t *testing.T) {
 	}
 	if floatOut != -3.14 {
 		t.Errorf("unpacking %q: got %f; want %f", "-3.14", floatOut, -3.14)
+	}
+	if !reflect.DeepEqual(arrIntIn, arrIntOut) {
+		t.Errorf("unpacking %v: got %v", arrIntIn, arrIntOut)
+	}
+}
+
+func TestXMLToResponse(t *testing.T) {
+	xmlStr := `
+	<?xml version="1.0"?>
+	<methodResponse>
+	<params>
+		<param>
+			<value><double>3.14</double></value>
+		</param>
+		<param>
+			<value><int>1</int></value>
+		</param>
+		<param>
+			<value><string>hellow world</string></value>
+		</param>
+		<param>
+			<value><boolean>0</boolean></value>
+		</param>
+		<param>
+			<value>
+				<array>
+					<data>
+						<value><int>10</int></value>
+						<value><int>20</int></value>						
+					</data>
+				</array>
+			</value>
+		</param>
+	</params>
+	</methodResponse>
+	`
+	res := response{}
+	if err := xml.Unmarshal([]byte(xmlStr), &res); err != nil {
+		t.Fatal("xml unmarshal: ", err)
+	}
+	var stringOut string
+	var boolOut bool
+	var intOut int
+	var floatOut float64
+	var arrIntOut []int
+	if err := res.unpack([]interface{}{&floatOut, &intOut, &stringOut, &boolOut, &arrIntOut}); err != nil {
+		t.Fatal("response unpack: ", err)
+	}
+	if floatOut != 3.14 {
+		t.Errorf("unpacking %q: got %f; want %f", "-3.14", floatOut, -3.14)
+	}
+	if intOut != 1 {
+		t.Errorf("unpacking %q: got %d; want %d", "1", intOut, 1)
+	}
+	if stringOut != "hellow world" {
+		t.Errorf("unpacking %q: got %q; want %q", "rutabaga", stringOut, "rutabaga")
+	}
+	if boolOut != false {
+		t.Errorf("unpacking %q: got %v; want %v", "true", boolOut, true)
+	}
+	arrIntIn := []int{10, 20}
+	if !reflect.DeepEqual(arrIntIn, arrIntOut) {
+		t.Errorf("unpacking %v: got %v", arrIntIn, arrIntOut)
 	}
 }
