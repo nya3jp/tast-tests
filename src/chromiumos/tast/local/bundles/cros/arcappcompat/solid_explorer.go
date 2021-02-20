@@ -86,13 +86,12 @@ func launchAppForSolidExplorer(ctx context.Context, s *testing.State, tconn *chr
 		doneID    = "pl.solidexplorer2:id/btn_next"
 		allowText = "ALLOW"
 		OkText    = "OK"
-		drawerID  = "pl.solidexplorer2:id/ab_icon"
 	)
 
 	// Click on skip button.
 	skipButton := d.Object(ui.ID(skipID))
 	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("Skip button doesn't exist: ", err)
+		s.Log("Skip button doesn't exist: ", err)
 	} else if err := skipButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on skip button: ", err)
 	}
@@ -100,7 +99,7 @@ func launchAppForSolidExplorer(ctx context.Context, s *testing.State, tconn *chr
 	// Click on licence button.
 	licenceButton := d.Object(ui.ID(licenceID))
 	if err := licenceButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("Licence button doesn't exist: ", err)
+		s.Log("Licence button doesn't exist: ", err)
 	} else if err := licenceButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on licence button: ", err)
 	}
@@ -108,7 +107,7 @@ func launchAppForSolidExplorer(ctx context.Context, s *testing.State, tconn *chr
 	// Click on got it button.
 	gotItButton := d.Object(ui.Text(gotItText))
 	if err := gotItButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("Got It button doesn't exist: ", err)
+		s.Log("Got It button doesn't exist: ", err)
 	} else if err := gotItButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on Got It button: ", err)
 	}
@@ -116,7 +115,7 @@ func launchAppForSolidExplorer(ctx context.Context, s *testing.State, tconn *chr
 	// Click on done button.
 	doneButton := d.Object(ui.ID(doneID))
 	if err := doneButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("Done button doesn't exist: ", err)
+		s.Log("Done button doesn't exist: ", err)
 	} else if err := doneButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on done button: ", err)
 	}
@@ -132,19 +131,21 @@ func launchAppForSolidExplorer(ctx context.Context, s *testing.State, tconn *chr
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Error("OK button doesn't exist: ", err)
+		s.Log("OK button doesn't exist: ", err)
 	}
 
 	// Click on OK button.
 	if err := OKButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("Ok button doesn't exist: ", err)
+		s.Log("Ok button doesn't exist: ", err)
 	} else if err := OKButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on Ok button: ", err)
 	}
 
-	// Check for navigation drawer button.
-	drawerButton := d.Object(ui.ID(drawerID))
-	if err := drawerButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Drawer button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
