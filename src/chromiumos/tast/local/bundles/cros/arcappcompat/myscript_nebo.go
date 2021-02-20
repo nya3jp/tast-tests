@@ -101,7 +101,6 @@ func launchAppForMyscriptNebo(ctx context.Context, s *testing.State, tconn *chro
 	} else if err := clickOnIUnderstandButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnIUnderstandButton: ", err)
 	}
-
 	// Click on next button until home page exist.
 	nextButton := d.Object(ui.ID(nextID))
 	homePage := d.Object(ui.ID(homeID))
@@ -113,6 +112,14 @@ func launchAppForMyscriptNebo(ctx context.Context, s *testing.State, tconn *chro
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Error("homePage doesn't exist: ", err)
+		s.Log("homePage doesn't exist: ", err)
+	}
+
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

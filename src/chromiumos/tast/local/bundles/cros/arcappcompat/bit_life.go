@@ -79,11 +79,11 @@ func BitLife(ctx context.Context, s *testing.State) {
 // launchAppForBitLife verifies BitLife is launched and
 // verify BitLife reached main activity page of the app.
 func launchAppForBitLife(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	const homeClassName = "android.widget.FrameLayout"
-
-	// Check for home icon.
-	homeIcon := d.Object(ui.ClassName(homeClassName), ui.PackageName(appPkgName))
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homeIcon on homePage.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("homeIcon doesn't exist: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

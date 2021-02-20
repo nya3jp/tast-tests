@@ -89,7 +89,6 @@ func launchAppForInstagram(ctx context.Context, s *testing.State, tconn *chrome.
 		loginID             = "com.instagram.android:id/button_text"
 		notNowID            = "android:id/autofill_save_no"
 		passwordID          = "com.instagram.android:id/password"
-		profileID           = "com.instagram.android:id/profile_tab"
 	)
 
 	// Check for login button.
@@ -191,10 +190,11 @@ func launchAppForInstagram(ctx context.Context, s *testing.State, tconn *chrome.
 		return
 	}
 
-	// Check for profile icon.
-	profileIcon := d.Object(ui.ID(profileID))
-	if err := profileIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("ProfileIcon doesn't exists: ", err)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 
 }

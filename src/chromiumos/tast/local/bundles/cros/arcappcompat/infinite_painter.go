@@ -79,33 +79,13 @@ func InfinitePainter(ctx context.Context, s *testing.State) {
 // launchAppForInfinitePainter verifies InfinitePainter is logged in and
 // verify InfinitePainter reached main activity page of the app.
 func launchAppForInfinitePainter(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	const (
-		allowText          = "ALLOW"
-		optionsDescription = "Options"
-	)
 
-	// Click on allow button to access your photos, media and files.
-	allowButton := d.Object(ui.Text(allowText))
-	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log(" allow button doesn't exists: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allow button: ", err)
-	}
-
-	// Press back key until option button exist.
-	optionsButton := d.Object(ui.Description(optionsDescription))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := optionsButton.Exists(ctx); err != nil {
-			if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
-				s.Log("Failed to press BACK_CODE: ", err)
-			} else {
-				s.Log("BACK_CODE pressed")
-			}
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
-		s.Log("Options button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 
 }

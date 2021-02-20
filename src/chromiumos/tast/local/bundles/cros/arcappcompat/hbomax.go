@@ -79,14 +79,11 @@ func Hbomax(ctx context.Context, s *testing.State) {
 // launchAppForHbomax verifies Hbomax is launched and
 // verify Hbomax reached main activity page of the app.
 func launchAppForHbomax(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	const (
-		frameClassName = "android.widget.FrameLayout"
-		profileIconDes = "My Profile"
-	)
-
-	// Check for profile icon.
-	profileIcon := d.Object(ui.ClassName(frameClassName), ui.Description(profileIconDes))
-	if err := profileIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("profileIcon doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

@@ -162,9 +162,11 @@ func launchAppForDocusign(ctx context.Context, s *testing.State, tconn *chrome.T
 		s.Fatal("Failed to click on notNowButton: ", err)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.ClassName(homeClassName), ui.PackageName(appPkgName))
+	homeIcon := d.Object(ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
