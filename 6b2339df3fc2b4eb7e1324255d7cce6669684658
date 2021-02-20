@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b7a45c_724213f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-20T16:47:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "566cb455_08c88641",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "6b2339df3fc2b4eb7e1324255d7cce6669684658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af1ff8dc_dee8fe1b",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-02-20T06:46:23Z",
       "side": 1,
       "message": "ditto: maybe deviceICCID?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "6b2339df3fc2b4eb7e1324255d7cce6669684658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c4ad3c_54ae1396",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-20T16:47:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af1ff8dc_dee8fe1b",
       "range": {
         "startLine": 64,
         "startChar": 1,
