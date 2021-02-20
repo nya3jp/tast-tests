@@ -82,21 +82,11 @@ func CrossDJ(ctx context.Context, s *testing.State) {
 // verify app reached main activity page of the app.
 func launchAppForCrossDJ(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 
-	const (
-		allowText = "ALLOW"
-		recID     = "com.mixvibes.crossdjapp:id/recordMixerButton"
-	)
-	// Click on allow button to access your photos, media and files.
-	allowButton := d.Object(ui.Text(allowText))
-	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log(" allow button doesn't exists: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allow button: ", err)
-	}
-
-	// Check home page is launched.
-	homeButton := d.Object(ui.ID(recID))
-	if err := homeButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("home button doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homeIcon on homePage.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
