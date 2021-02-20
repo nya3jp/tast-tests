@@ -16,6 +16,70 @@
       "message": "+yenlinlai@ for owner\n",
       "revId": "6b2339df3fc2b4eb7e1324255d7cce6669684658",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72db873e_62ce62da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-20T06:46:23Z",
+      "side": 1,
+      "message": "I think Eric is also tast-reviewer. ,-)\n\nLGTM % nits.",
+      "parentUuid": "bac8611a_a50658c7",
+      "revId": "6b2339df3fc2b4eb7e1324255d7cce6669684658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "566cb455_08c88641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-20T06:46:23Z",
+      "side": 1,
+      "message": "nit: maybe simICCID? ref: https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "6b2339df3fc2b4eb7e1324255d7cce6669684658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1ff8dc_dee8fe1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-20T06:46:23Z",
+      "side": 1,
+      "message": "ditto: maybe deviceICCID?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "6b2339df3fc2b4eb7e1324255d7cce6669684658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
