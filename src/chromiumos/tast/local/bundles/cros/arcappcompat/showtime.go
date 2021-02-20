@@ -131,14 +131,16 @@ func launchAppForShowtime(ctx context.Context, s *testing.State, tconn *chrome.T
 
 	notNowButton := d.Object(ui.ID(notNowButtonID))
 	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("notNowButton button doesn't exist: ", err)
+		s.Log("notNowButton button doesn't exist: ", err)
 	} else if err := notNowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on notNowButton button: ", err)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeIconID), ui.Text(homeIconText))
+	homeIcon := d.Object(ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("homeIcon doesn't exist: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

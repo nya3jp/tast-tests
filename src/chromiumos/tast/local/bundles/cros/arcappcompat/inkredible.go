@@ -82,7 +82,6 @@ func launchAppForInkredible(ctx context.Context, s *testing.State, tconn *chrome
 	const (
 		allowButtonText    = "ALLOW"
 		noThanksButtonText = "No, thanks."
-		homeClassName      = "android.widget.FrameLayout"
 	)
 
 	// Click on allow button to access your photos, media and files.
@@ -101,9 +100,11 @@ func launchAppForInkredible(ctx context.Context, s *testing.State, tconn *chrome
 		s.Fatal("Failed to click on clickOnNoThanksButton: ", err)
 	}
 
-	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.ClassName(homeClassName), ui.PackageName(appPkgName))
-	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

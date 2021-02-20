@@ -91,9 +91,11 @@ func launchAppForAudible(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on getStartedButton: ", err)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for homeIcon on homePage.
 	homeIcon := d.Object(ui.Description(homeDes))
 	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

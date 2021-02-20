@@ -79,14 +79,12 @@ func Youtube(ctx context.Context, s *testing.State) {
 // launchAppForYoutube verifies app is logged in and
 // verify app reached main activity page of the app.
 func launchAppForYoutube(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	const (
-		accountImageDescription = "Account"
-		accountImageID          = "com.google.android.youtube:id/image"
-	)
 
-	// Check for account image in home page.
-	accountImage := d.Object(ui.ID(accountImageID), ui.DescriptionContains(accountImageDescription))
-	if err := accountImage.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("AccountImage doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exist: ", err)
 	}
 }

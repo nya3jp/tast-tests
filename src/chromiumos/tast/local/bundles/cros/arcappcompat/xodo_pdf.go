@@ -80,22 +80,12 @@ func XodoPdf(ctx context.Context, s *testing.State) {
 // launchAppForXodoPdf verifies XodoPdf is logged in and
 // verify XodoPdf reached main activity page of the app.
 func launchAppForXodoPdf(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	const (
-		allowText         = "ALLOW"
-		drawerDescription = "Open navigation drawer"
-	)
 
-	// Click on allow button to access your photos, media and files.
-	allowButton := d.Object(ui.Text(allowText))
-	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log(" allow button doesn't exists: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allow button: ", err)
-	}
-
-	// Check for navigation drawer button.
-	drawerButton := d.Object(ui.Description(drawerDescription))
-	if err := drawerButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Drawer button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Error("homeIcon doesn't exist: ", err)
 	}
 }

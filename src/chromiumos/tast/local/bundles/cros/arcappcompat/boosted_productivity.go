@@ -82,20 +82,21 @@ func BoostedProductivity(ctx context.Context, s *testing.State) {
 func launchAppForBoostedProductivity(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		acceptText = "Accept & continue"
-		drawerID   = "com.boostedproductivity.app:id/iv_drawer_button"
 	)
 
 	// Click on accept and continue button.
 	acceptButton := d.Object(ui.Text(acceptText))
 	if err := acceptButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("Accept button doesn't exist: ", err)
+		s.Log("Accept button doesn't exist: ", err)
 	} else if err := acceptButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on accept button: ", err)
 	}
 
-	// Check for drawer button.
-	drawerButton := d.Object(ui.ID(drawerID))
-	if err := drawerButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Drawer button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homeIcon on homePage.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

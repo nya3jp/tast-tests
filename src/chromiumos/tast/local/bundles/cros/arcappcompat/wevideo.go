@@ -81,7 +81,6 @@ func launchAppForWevideo(ctx context.Context, s *testing.State, tconn *chrome.Te
 	const (
 		continueButtonText = "CONTINUE"
 		reviewButtonText   = "REVIEW"
-		homeID             = "com.wevideo.mobile.android:id/create_new_timeline_fab"
 	)
 	// Click on review button to review private settings.
 	reviewButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+reviewButtonText))
@@ -99,9 +98,11 @@ func launchAppForWevideo(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on continueButton: ", err)
 	}
 
-	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.ID(homeID))
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exist: ", err)
 	}
 }

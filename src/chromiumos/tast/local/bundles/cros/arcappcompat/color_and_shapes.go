@@ -120,9 +120,11 @@ func launchAppForColorAndShapes(ctx context.Context, s *testing.State, tconn *ch
 		s.Fatal("Failed to press enter to click on continue button: ", err)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.ClassName(homeClassName), ui.PackageName(appPkgName))
-	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

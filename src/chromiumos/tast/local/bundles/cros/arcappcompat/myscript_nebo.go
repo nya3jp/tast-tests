@@ -81,8 +81,6 @@ func MyscriptNebo(ctx context.Context, s *testing.State) {
 func launchAppForMyscriptNebo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		agreeButtonText      = "I AGREE"
-		nextID               = "com.myscript.nebo:id/onboarding_next_button"
-		homeID               = "com.myscript.nebo:id/onboarding_pager"
 		understandButtonText = "I UNDERSTAND"
 	)
 
@@ -102,17 +100,11 @@ func launchAppForMyscriptNebo(ctx context.Context, s *testing.State, tconn *chro
 		s.Fatal("Failed to click on clickOnIUnderstandButton: ", err)
 	}
 
-	// Click on next button until home page exist.
-	nextButton := d.Object(ui.ID(nextID))
-	homePage := d.Object(ui.ID(homeID))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := homePage.Exists(ctx); err != nil {
-			s.Log(" Click on next button until home page exist")
-			nextButton.Click(ctx)
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Error("homePage doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

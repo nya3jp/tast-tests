@@ -79,13 +79,11 @@ func Squid(ctx context.Context, s *testing.State) {
 // launchAppForSquid verifies Squid is launched and
 // verify Squid reached main activity page of the app.
 func launchAppForSquid(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	const (
-		homeID = "com.steadfastinnovation.android.projectpapyrus:id/action_bar"
-	)
-
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeID))
+	homeIcon := d.Object(ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("homeIcon doesn't exist: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

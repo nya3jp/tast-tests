@@ -105,21 +105,30 @@ func launchAppForWordPress(ctx context.Context, s *testing.State, tconn *chrome.
 
 	// Click on account button.
 	accountButton := d.Object(ui.ID(accountID))
-	notNowButton := d.Object(ui.Text(notNowText))
 	if err := accountButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		// Click on not now button.
-		if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-			s.Error("Not now button doesn't exist: ", err)
-		} else if err := notNowButton.Click(ctx); err != nil {
-			s.Fatal("Failed to click on not now button: ", err)
-		}
+		s.Log("accountButton doesn't exist: ", err)
 	} else if err := accountButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on account button: ", err)
 	}
-
-	// Check for reader label.
+	// Click on not now button.
+	notNowButton := d.Object(ui.Text(notNowText))
 	navReaderLabel := d.Object(ui.Text(readerText))
-	if err := navReaderLabel.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Reader label doesn't exist: ", err)
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Not now button doesn't exist: ", err)
+	} else if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := navReaderLabel.Exists(ctx); err != nil {
+			notNowButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
+		s.Log("Reader label doesn't exist: ", err)
+	}
+
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exist: ", err)
 	}
 }
