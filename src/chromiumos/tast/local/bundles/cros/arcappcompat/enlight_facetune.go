@@ -81,7 +81,6 @@ func launchAppForEnlightFacetune(ctx context.Context, s *testing.State, tconn *c
 	const (
 		closeID           = "com.lightricks.facetune.free:id/subscribe_skip"
 		getStartedText    = "Get Started"
-		homeIconText      = "Try a demo photo"
 		shortTimeInterval = 300 * time.Millisecond
 	)
 
@@ -110,9 +109,11 @@ func launchAppForEnlightFacetune(ctx context.Context, s *testing.State, tconn *c
 		s.Fatal("Failed to click on clickOnCloseButton: ", err)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+homeIconText))
-	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

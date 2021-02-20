@@ -89,7 +89,6 @@ func launchAppForVsco(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		emailAddressID                 = "com.google.android.gms:id/container"
 		loginWithGoogleButtonClassName = "android.widget.Button"
 		loginWithGoogleButtonText      = "Continue with Google"
-		homeID                         = "com.vsco.cam:id/import_fab"
 	)
 
 	loginWithGoogleButton := d.Object(ui.ClassName(loginWithGoogleButtonClassName), ui.TextMatches("(?i)"+loginWithGoogleButtonText))
@@ -150,10 +149,11 @@ func launchAppForVsco(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to click on closeButton: ", err)
 	}
 
-	// Click on home icon.
-	homeIcon := d.Object(ui.ID(homeID))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Error("homeIcon doesn't exist: ", err)
 	}
-
 }

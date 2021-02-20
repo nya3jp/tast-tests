@@ -80,8 +80,7 @@ func GuitarEffects(ctx context.Context, s *testing.State) {
 // verify GuitarEffects reached main activity page of the app.
 func launchAppForGuitarEffects(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		letRockText  = "Let's Rock"
-		iconLooperID = "com.deplike.andrig:id/imageButton"
+		letRockText = "Let's Rock"
 	)
 
 	// Click on let's allow button to access your photos, media and files.
@@ -92,9 +91,11 @@ func launchAppForGuitarEffects(ctx context.Context, s *testing.State, tconn *chr
 		s.Fatal("Failed to click on letRock button: ", err)
 	}
 
-	// Check for looper button in home page.
-	iconLooperButton := d.Object(ui.ID(iconLooperID))
-	if err := iconLooperButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Looper button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

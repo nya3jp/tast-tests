@@ -81,7 +81,6 @@ func Artrage(ctx context.Context, s *testing.State) {
 func launchAppForArtrage(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		allowButtonText = "ALLOW"
-		homeID          = "com.ambientdesign.artrage.playstore:id/ic_system"
 		retryButtonText = "Retry"
 	)
 
@@ -101,7 +100,7 @@ func launchAppForArtrage(ctx context.Context, s *testing.State, tconn *chrome.Te
 
 	// Click on retry button to check for licence until home page exist.
 	retryButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+retryButtonText))
-	homePage := d.Object(ui.ID(homeID))
+	homePage := d.Object(ui.PackageName(appPkgName))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := homePage.Exists(ctx); err != nil {
 			s.Log(" Click on retry button until home page exist")
@@ -110,6 +109,8 @@ func launchAppForArtrage(ctx context.Context, s *testing.State, tconn *chrome.Te
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Error("homePage doesn't exist: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homePage doesn't exist: ", err)
 	}
+
 }

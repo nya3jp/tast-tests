@@ -85,7 +85,6 @@ func launchAppForAsana(ctx context.Context, s *testing.State, tconn *chrome.Test
 		continueEmailText = "Continue with email"
 		typePasswordText  = "Type password"
 		passwordID        = "com.asana.app:id/password"
-		myTaskDescription = "My Tasks"
 	)
 
 	// Click on log in button
@@ -137,9 +136,11 @@ func launchAppForAsana(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on LogIn button: ", err)
 	}
 
-	// Check for my task button.
-	myTaskButton := d.Object(ui.Description(myTaskDescription))
-	if err := myTaskButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("My task button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homeIcon on homePage.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
