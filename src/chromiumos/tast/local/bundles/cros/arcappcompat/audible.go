@@ -91,9 +91,10 @@ func launchAppForAudible(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on getStartedButton: ", err)
 	}
 
-	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.Description(homeDes))
-	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Fatal("homeIcon doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homePageVerifier.
+	homePageVerifier := d.Object(ui.Description(homeDes))
+	if err := homePageVerifier.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Fatal("homePageVerifier doesn't exists: ", err)
 	}
 }

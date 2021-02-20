@@ -26,6 +26,7 @@ var clamshellTestsForHulu = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Signout app", Fn: signOutOfHulu},
 }
 
 // TouchviewTests are placed here.
@@ -33,6 +34,7 @@ var touchviewTestsForHulu = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForHulu},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Signout app", Fn: signOutOfHulu},
 }
 
 func init() {
@@ -205,24 +207,31 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to start Hulu app: ", err)
 	}
 
-	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeIconID))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("HomeIcon doesn't exist: ", err)
-	} else {
-		s.Log("HomeIcon does exist")
-		signOutOfHulu(ctx, s, a, d, appPkgName, appActivity)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
-
 }
 
 // signOutOfHulu verifies app is signed out.
-func signOutOfHulu(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func signOutOfHulu(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		accountIconID    = "com.hulu.plus:id/menu_profile"
 		logoutText       = "Log Out"
 		logOutOfHuluText = "LOG OUT"
+		homeIconID       = "com.hulu.plus:id/menu_home"
 	)
+
+	// Check for homeIcon.
+	homeIcon := d.Object(ui.ID(homeIconID))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("homeIcon doesn't exist and skipped logout of an app: ", err)
+		return
+	}
+
 	// Click on account icon.
 	accountIcon := d.Object(ui.ID(accountIconID))
 	if err := accountIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -230,6 +239,7 @@ func signOutOfHulu(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Devi
 	} else if err := accountIcon.Click(ctx); err != nil {
 		s.Fatal("Failed to click on accountIcon: ", err)
 	}
+
 	// Click on logout button.
 	logoutbutton := d.Object(ui.TextMatches("(?i)" + logoutText))
 	if err := logoutbutton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {

@@ -112,14 +112,6 @@ func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on takeMeToGmailButton: ", err)
 	}
 
-	// Click on Got It button.
-	GotItButton = d.Object(ui.TextMatches("(?i)" + gotItButtonText))
-	if err := GotItButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("GotIt Button doesn't exist: ", err)
-	} else if err := GotItButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on GotItButton: ", err)
-	}
-
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for launch verifier.
 	launchVerifier := d.Object(ui.PackageName(appPkgName))
