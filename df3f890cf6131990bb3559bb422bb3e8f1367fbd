@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56949751_12643540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-20T00:03:15Z",
+      "side": 1,
+      "message": "are these \"platform\" names? I think previous code assumed \"model\" names. \n\nnit: also update \"models\" in the comment.",
+      "revId": "df3f890cf6131990bb3559bb422bb3e8f1367fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7489823e_40344282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-20T00:03:15Z",
+      "side": 1,
+      "message": "maybe I didn\u0027t understand here. decoder should be decoding vp9, not h264?",
+      "revId": "df3f890cf6131990bb3559bb422bb3e8f1367fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c76a0648_ee1239f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-20T00:03:15Z",
+      "side": 1,
+      "message": "are we sure we want to hard code \"yv12\".\nthought we might need other formats like \"nv12\" soon. \nbut fine as it is as well.",
+      "revId": "df3f890cf6131990bb3559bb422bb3e8f1367fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
