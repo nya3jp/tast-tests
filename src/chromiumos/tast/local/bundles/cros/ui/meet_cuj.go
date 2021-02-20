@@ -356,7 +356,15 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	defer pc.Close()
 
 	// Find the web view of Meet window.
-	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "WebView"}, timeout)
+	// TODO(crbug.com/1180422): the class name has been renamed ContentsWebView
+	// as of crrev.com/854806. Right now this should supports both name. Switch
+	// Back to "ClassName" parameter once the next uprev happened.
+	webviewFindParams := ui.FindParams{
+		Role: ui.RoleTypeWebView,
+		Attributes: map[string]interface{}{
+			"className": regexp.MustCompile("(Contents)?WebView"),
+		}}
+	webview, err := ui.FindWithTimeout(ctx, tconn, webviewFindParams, timeout)
 	if err != nil {
 		s.Fatal("Failed to find webview: ", err)
 	}
