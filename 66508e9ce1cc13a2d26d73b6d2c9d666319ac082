@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04659aa2_9de5d1b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-02-20T01:29:35Z",
+      "side": 1,
+      "message": "This can also be appended just for aarch64 and when the kernel is 5.10 if preferred.",
+      "range": {
+        "startLine": 226,
+        "startChar": 3,
+        "endLine": 226,
+        "endChar": 9
+      },
+      "revId": "66508e9ce1cc13a2d26d73b6d2c9d666319ac082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
