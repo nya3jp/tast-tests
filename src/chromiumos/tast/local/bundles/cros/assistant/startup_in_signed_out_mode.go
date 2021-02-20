@@ -17,7 +17,7 @@ func init() {
 		Func:         StartupInSignedOutMode,
 		Desc:         "Starts Google Assistant service in signed-out mode and checks the running status",
 		Contacts:     []string{"jeroendh@google.com", "xiaohuic@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Pre:          assistant.VerboseLoggingEnabled(),
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 	})
