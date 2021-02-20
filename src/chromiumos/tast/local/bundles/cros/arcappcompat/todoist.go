@@ -99,7 +99,7 @@ func launchAppForTodoist(ctx context.Context, s *testing.State, tconn *chrome.Te
 	// Click on none button.
 	noneButton := d.Object(ui.ID(noneID))
 	if err := noneButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("None button doesn't exist: ", err)
+		s.Log("None button doesn't exist: ", err)
 	} else if err := noneButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on none button: ", err)
 	}
@@ -147,11 +147,11 @@ func launchAppForTodoist(ctx context.Context, s *testing.State, tconn *chrome.Te
 	} else if err := logInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on log in button: ", err)
 	}
-
-	// Check for home icon.
-	homeIcon := d.Object(ui.PackageName(appPkgName))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-		s.Fatal("homeIcon doesn't exists: ", err)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }

@@ -26,6 +26,7 @@ var clamshellTestsForStarz = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+	{Name: "Clamshell: Signout app", Fn: signOutOfStarz},
 }
 
 // TouchviewTests are placed here.
@@ -33,6 +34,7 @@ var touchviewTestsForStarz = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForStarz},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Signout app", Fn: signOutOfStarz},
 }
 
 func init() {
@@ -86,22 +88,15 @@ func launchAppForStarz(ctx context.Context, s *testing.State, tconn *chrome.Test
 		enterEmailAddressID = "com.bydeluxe.d3.android.program.starz:id/email_et"
 		loginButtonID       = "com.bydeluxe.d3.android.program.starz:id/login_link"
 		loginID             = "com.bydeluxe.d3.android.program.starz:id/login_button"
-		menuID              = "com.bydeluxe.d3.android.program.starz:id/action_more"
 		notNowID            = "android:id/autofill_save_no"
 		passwordID          = "com.bydeluxe.d3.android.program.starz:id/password_et"
 		homeID              = "com.bydeluxe.d3.android.program.starz:id/action_home"
 	)
 
-	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeID))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
-	}
-
 	// Check for login button.
 	loginButton := d.Object(ui.ID(loginButtonID))
 	if err := loginButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("LoginButton doesn't exist: ", err)
+		s.Error("LoginButton doesn't exist: ", err)
 	}
 
 	// Press until KEYCODE_DPAD_DOWN login button is focused.
@@ -181,8 +176,14 @@ func launchAppForStarz(ctx context.Context, s *testing.State, tconn *chrome.Test
 	}
 	s.Log("Entered password")
 
-	// Click on signIn Button until not now button exist.
+	// Check for signIn Button.
 	signInButton := d.Object(ui.ID(loginID))
+	if err := signInButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Error("signInButton doesn't exists: ", err)
+	}
+
+	// Click on signIn Button until not now button exist.
+	signInButton = d.Object(ui.ID(loginID))
 	notNowButton := d.Object(ui.ID(notNowID))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := notNowButton.Exists(ctx); err != nil {
@@ -204,12 +205,12 @@ func launchAppForStarz(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on dimissButton: ", err)
 	}
 
-	// Check for menu icon.
-	menuIcon := d.Object(ui.ID(menuID))
-	if err := menuIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("menuIcon doesn't exist: ", err)
-	} else {
-		signOutOfStarz(ctx, s, tconn, a, d, appPkgName, appActivity)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 
 }
@@ -224,7 +225,8 @@ func signOutOfStarz(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 	// Click on menu icon.
 	menuIcon := d.Object(ui.ID(menuID))
 	if err := menuIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("menuIcon doesn't exist: ", err)
+		s.Log("menuIcon doesn't exist and skipped logout: ", err)
+		return
 	} else if err := menuIcon.Click(ctx); err != nil {
 		s.Fatal("Failed to click on menuIcon: ", err)
 	}

@@ -79,22 +79,12 @@ func ColorNote(ctx context.Context, s *testing.State) {
 // launchAppForColorNote verifies ColorNote is logged in and
 // verify ColorNote reached main activity page of the app.
 func launchAppForColorNote(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	const (
-		allowText = "ALLOW"
-		iconNavID = "com.socialnmobile.dictapps.notepad.color.note:id/bottom_fab"
-	)
 
-	// Click on allow button to access your photos, media and files.
-	allowButton := d.Object(ui.Text(allowText))
-	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log(" allow button doesn't exists: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allow button: ", err)
-	}
-
-	// Check for navigation button.
-	iconNavButton := d.Object(ui.ID(iconNavID))
-	if err := iconNavButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Navigation button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }

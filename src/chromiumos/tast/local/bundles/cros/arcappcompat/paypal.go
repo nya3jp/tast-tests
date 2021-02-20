@@ -26,6 +26,7 @@ var clamshellTestsForPaypal = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+	{Name: "Clamshell: Signout app", Fn: signOutOfPaypal},
 }
 
 // TouchviewTests are placed here.
@@ -33,6 +34,7 @@ var touchviewTestsForPaypal = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForPaypal},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Signout app", Fn: signOutOfPaypal},
 }
 
 func init() {
@@ -89,7 +91,6 @@ func launchAppForPaypal(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		passwordText     = "Password"
 		notNowID         = "android:id/autofill_save_no"
 		notNowButtonText = "Not Now"
-		homeDes          = "Scan/Pay"
 	)
 
 	// Click on login button.
@@ -191,13 +192,12 @@ func launchAppForPaypal(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Fatal("Failed to click on notNowButton: ", err)
 	}
 
-	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.Description(homeDes))
-	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
-	} else {
-		s.Log("homeIcon does exists")
-		signOutOfPaypal(ctx, s, tconn, a, d, appPkgName, appActivity)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 
 }
@@ -208,7 +208,14 @@ func signOutOfPaypal(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 		settingsIconClassName = "android.widget.ImageView"
 		settingsIconDes       = "Settings"
 		logOutOfPaypalText    = "Log Out"
+		homeDes               = "Scan/Pay"
 	)
+	// Check for homeIcon.
+	homeIcon := d.Object(ui.Description(homeDes))
+	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("homeIcon doesn't exists and skipped logout: ", err)
+		return
+	}
 
 	// Click on settings icon.
 	settingsIcon := d.Object(ui.ClassName(settingsIconClassName), ui.Description(settingsIconDes))
