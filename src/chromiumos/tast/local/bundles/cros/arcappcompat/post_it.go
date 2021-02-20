@@ -79,13 +79,11 @@ func PostIt(ctx context.Context, s *testing.State) {
 // launchAppForPostIt verifies PostIt is logged in and
 // verify PostIt reached main activity page of the app.
 func launchAppForPostIt(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	const (
-		addNoteText = "ADD NOTE"
-	)
-
-	// Check for add note icon.
-	addNoteButton := d.Object(ui.Text(addNoteText))
-	if err := addNoteButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("addNote button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

@@ -84,7 +84,6 @@ func launchAppForOneTwoThreeNumbers(ctx context.Context, s *testing.State, tconn
 		continueClassName                = "android.widget.FrameLayout"
 		demoDes                          = "Game view"
 		languageText                     = "Language"
-		homeClassName                    = "android.widget.LinearLayout"
 		shortTimeInterval                = 300 * time.Millisecond
 	)
 	// Wait for app to load the page.
@@ -120,9 +119,11 @@ func launchAppForOneTwoThreeNumbers(ctx context.Context, s *testing.State, tconn
 		s.Fatal("Failed to press enter to click on continue button: ", err)
 	}
 
-	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.ClassName(homeClassName), ui.PackageName(appPkgName))
-	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

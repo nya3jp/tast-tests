@@ -128,6 +128,7 @@ func launchAppForABCKids(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on clickOnContinueButton: ", err)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for homeIcon on homePage.
 	homeIcon := d.Object(ui.ClassName(homeClassName), ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {

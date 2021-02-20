@@ -126,4 +126,12 @@ func launchAppForRoblox(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	} else if err := loginButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on loginButton: ", err)
 	}
+
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
+	}
 }

@@ -119,9 +119,11 @@ func launchAppForEnlightPixaloop(ctx context.Context, s *testing.State, tconn *c
 		s.Fatal("Failed to click on clickOnCloseButton: ", err)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for homeIcon on homePage.
 	homeIcon := d.Object(ui.ClassName(homeClassName), ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

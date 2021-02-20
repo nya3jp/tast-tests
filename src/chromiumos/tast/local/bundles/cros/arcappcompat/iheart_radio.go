@@ -81,13 +81,14 @@ func IHeartRadio(ctx context.Context, s *testing.State) {
 // verify IHeartRadio reached main activity page of the app.
 func launchAppForIHeartRadio(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		signInID           = "com.clearchannel.iheartradio.controller:id/login_button"
-		enterEmailID       = "com.clearchannel.iheartradio.controller:id/email"
-		enterPasswordID    = "com.clearchannel.iheartradio.controller:id/password"
-		logInID            = "com.clearchannel.iheartradio.controller:id/email_login"
-		notNowText         = "NOT NOW"
-		skipText           = "Skip"
-		libraryDescription = "Your Library"
+		signInID        = "com.clearchannel.iheartradio.controller:id/login_button"
+		enterEmailID    = "com.clearchannel.iheartradio.controller:id/email"
+		enterPasswordID = "com.clearchannel.iheartradio.controller:id/password"
+		logInID         = "com.clearchannel.iheartradio.controller:id/email_login"
+		notNowText      = "NOT NOW"
+		skipText        = "Skip"
+		notNowID        = "android:id/autofill_save_no"
+		neverButtonID   = "com.google.android.gms:id/credential_save_reject"
 	)
 
 	// Click on sign in button.
@@ -134,6 +135,22 @@ func launchAppForIHeartRadio(ctx context.Context, s *testing.State, tconn *chrom
 		s.Fatal("Failed to click on notNowButton: ", err)
 	}
 
+	// Click on never button.
+	neverButton := d.Object(ui.ID(neverButtonID))
+	if err := neverButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Never Button doesn't exist: ", err)
+	} else if err := neverButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on neverButton: ", err)
+	}
+
+	// Click on no thanks button.
+	clickOnNoThanksButton := d.Object(ui.ID(notNowID))
+	if err := clickOnNoThanksButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnNoThanksButton doesn't exist: ", err)
+	} else if err := clickOnNoThanksButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnNoThanksButton: ", err)
+	}
+
 	// Click on skip button.
 	skipButton := d.Object(ui.Text(skipText))
 	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -142,9 +159,11 @@ func launchAppForIHeartRadio(ctx context.Context, s *testing.State, tconn *chrom
 		s.Fatal("Failed to click on skip button: ", err)
 	}
 
-	// Check for library button.
-	libraryButton := d.Object(ui.Description(libraryDescription))
-	if err := libraryButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Library button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

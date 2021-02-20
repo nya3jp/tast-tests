@@ -83,7 +83,6 @@ func launchAppForGooglePlayBooks(ctx context.Context, s *testing.State, tconn *c
 		okText          = "OK"
 		getStartedText  = "Get started"
 		selectAccountID = "android:id/text1"
-		homeID          = "com.google.android.apps.books:id/bottom_home"
 	)
 	// Click on select account.
 	clickOnSelectAccount := d.Object(ui.ID(selectAccountID))
@@ -108,9 +107,11 @@ func launchAppForGooglePlayBooks(ctx context.Context, s *testing.State, tconn *c
 		s.Fatal("Failed to click on clickOnGetStartedButton: ", err)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeID))
+	homeIcon := d.Object(ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("homeIcon doesn't exist: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

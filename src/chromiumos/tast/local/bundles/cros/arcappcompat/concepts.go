@@ -85,7 +85,6 @@ func launchAppForConcepts(ctx context.Context, s *testing.State, tconn *chrome.T
 	const (
 		closeButtonClassName = "android.widget.ImageButton"
 		closeButtonID        = "com.tophatch.concepts:id/closeButton"
-		addButtonID          = "com.tophatch.concepts:id/addButton"
 	)
 
 	// Click on close button to launch home page of the app.
@@ -95,10 +94,11 @@ func launchAppForConcepts(ctx context.Context, s *testing.State, tconn *chrome.T
 	} else if err := closeButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on closeButton: ", err)
 	}
-
-	// Check home page is launched.
-	addButton := d.Object(ui.ID(addButtonID))
-	if err := addButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("AddButton doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homeIcon on homePage.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

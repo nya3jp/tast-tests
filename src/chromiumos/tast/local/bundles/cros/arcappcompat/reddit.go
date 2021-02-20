@@ -84,7 +84,6 @@ func launchAppForReddit(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		continueID                  = "com.google.android.gms:id/continue_button"
 		continueText                = "Continue"
 		skipButtonText              = "Skip"
-		homeDes                     = "Home"
 		whileUsingThisAppButtonText = "WHILE USING THE APP"
 	)
 	// Click on continue button to sign in using gmail account.
@@ -143,9 +142,11 @@ func launchAppForReddit(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Fatal("Failed to click on clickOnWhileUsingThisApp Button: ", err)
 	}
 
-	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.DescriptionMatches("(?i)" + homeDes))
-	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
