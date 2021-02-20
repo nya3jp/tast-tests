@@ -32,7 +32,6 @@ func init() {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},
 			Pre:               chrome.LoggedIn(),
-			ExtraAttr:         []string{"informational", "group:camera-postsubmit"},
 		}, {
 			Name: "fake",
 			Pre:  testutil.ChromeWithFakeCamera(),
