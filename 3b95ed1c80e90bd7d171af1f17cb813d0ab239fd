@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55b66e4_0cec4111",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-20T01:19:47Z",
+      "side": 1,
+      "message": "Jun thanks for review and approve it. I did another patch to resolve the PlayStore not shown issue found in the test. Somehow it was revert in last patch. May I ask you to do a final check on the latest patch before we land it? ",
+      "revId": "3b95ed1c80e90bd7d171af1f17cb813d0ab239fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
