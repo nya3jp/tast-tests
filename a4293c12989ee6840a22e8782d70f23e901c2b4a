@@ -51,6 +51,24 @@
       "parentUuid": "225b333c_02a3eba5",
       "revId": "a4293c12989ee6840a22e8782d70f23e901c2b4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a08d1cd8_0cf25ba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pre/pre_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-20T06:40:45Z",
+      "side": 1,
+      "message": "IMO, Prepare should not always \"Start\" logging. (Sorry that I missed this in previous review)\n\nIt also doesn\u0027t sound right to call the Start of an object again without Stop.\n\nMy guess to solve this might be: put *Logging in preImpl and only Start it once when constructing. And also Stop once in Close when it is non-nil.\n\nStill one alternative is to start using Fixture (ref: https://groups.google.com/a/chromium.org/g/tast-users/c/-vC6RR8fYlQ/m/JhiULM82BAAJ) which has a more fine-grained steps. Setup and Teardown of the Fixture will only be called once.",
+      "parentUuid": "6f791d1f_39a04cd3",
+      "revId": "a4293c12989ee6840a22e8782d70f23e901c2b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
