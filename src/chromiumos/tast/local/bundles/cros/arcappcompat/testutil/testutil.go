@@ -507,3 +507,57 @@ func processMonkeyOutput(output string) error {
 	}
 	return nil
 }
+
+// HandleDialogBoxes func will handle the dialog box
+func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appPkgName string) {
+	const (
+		allowText                   = "ALLOW"
+		whileUsingThisAppButtonText = "WHILE USING THE APP"
+	)
+
+	clickOnAllowButton := d.Object(ui.TextMatches("(?i)" + allowText))
+	appverifer := d.Object(ui.PackageName(appPkgName))
+	// Click on Allow button until appverifer exist.
+	if err := clickOnAllowButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
+		s.Log("clickOnAllowButton doesn't exist: ", err)
+	} else if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := appverifer.Exists(ctx); err != nil {
+			s.Log(" Click on allow button until appverifer exist")
+			clickOnAllowButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: ShortUITimeout}); err != nil {
+		s.Error("appPkgName doesn't exist: ", err)
+	}
+
+	// Click on allow while using this app button until appverifer exist.
+	clickOnWhileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
+	if err := clickOnWhileUsingThisAppButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
+		s.Log("clickOnWhileUsingThisApp Button doesn't exists: ", err)
+	} else if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := appverifer.Exists(ctx); err != nil {
+			s.Log(" Click on WhileUsingThisApp until appverifer exist")
+			clickOnWhileUsingThisAppButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: ShortUITimeout}); err != nil {
+		s.Error("appPkgName doesn't exist: ", err)
+	}
+
+	// Click on permission button until appverifer exist.
+	clickOnPermissionButton := d.Object(ui.ClassName(AndroidButtonClassName))
+	if err := clickOnPermissionButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
+		s.Log("clickOnPermissionButton Button doesn't exists: ", err)
+	} else if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := appverifer.Exists(ctx); err != nil {
+			s.Log(" Click on clickOnPermissionButton until appverifer exist")
+			clickOnPermissionButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: ShortUITimeout}); err != nil {
+		s.Error("appPkgName doesn't exist: ", err)
+	}
+}
