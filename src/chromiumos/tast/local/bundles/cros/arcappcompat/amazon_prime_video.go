@@ -162,10 +162,14 @@ func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *
 	}
 	s.Log("Entered password")
 
+	// Check for signIn Button.
 	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
-	notNowButton := d.Object(ui.ID(notNowID))
-
+	if err := signInButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Fatal("signInButton does not exist: ", err)
+	}
 	// Click on signIn Button until notNow Button exist.
+	signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
+	notNowButton := d.Object(ui.ID(notNowID))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := notNowButton.Exists(ctx); err != nil {
 			signInButton.Click(ctx)
@@ -189,7 +193,7 @@ func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *
 			s.Log("Send OTP Button doesn't exist")
 			//Check for myStuffIcon.
 			if err := myStuffIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-				s.Error("MyStuffIcon doesn't exist: ", err)
+				s.Log("myStuffIcon doesn't exist: ", err)
 			} else {
 				signOutAmazonPrimeVideo(ctx, s, a, d, appPkgName, appActivity)
 			}
@@ -198,6 +202,13 @@ func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *
 		}
 	} else {
 		s.Log("Check for captcha exist")
+	}
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
 

@@ -94,11 +94,14 @@ func launchAppForRemixlive(ctx context.Context, s *testing.State, tconn *chrome.
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
-		s.Log("beLikeThemButton doesn't exists: ", err)
+		s.Log("hamburgerButton doesn't exists: ", err)
 	}
 
-	// Check for hamburger button in home page.
-	if err := hamburgerButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Hamburger button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }

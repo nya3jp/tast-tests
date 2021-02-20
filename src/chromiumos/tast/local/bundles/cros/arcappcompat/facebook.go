@@ -24,6 +24,7 @@ var clamshellTestsForFacebook = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Signout app", Fn: signOutOfFacebook},
 }
 
 // TouchviewTests are placed here.
@@ -31,6 +32,7 @@ var touchviewTestsForFacebook = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForFacebook},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Signout app", Fn: signOutOfFacebook},
 }
 
 func init() {
@@ -81,21 +83,19 @@ func Facebook(ctx context.Context, s *testing.State) {
 // verify Facebook reached main activity page of the app.
 func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		allowDes               = "Allow"
-		allowText              = "ALLOW"
-		cancelID               = "com.google.android.gms:id/cancel"
-		dismissButtonText      = "Dismiss"
-		loginPageClassName     = "android.view.ViewGroup"
-		loginPageDes           = "•"
-		hamburgerIconClassName = "android.view.View"
-		notNowText             = "Not Now"
-		notNowID               = "android:id/autofill_save_no"
-		okText                 = "OK"
-		passwordDes            = "Password"
-		userNameDes            = "Username"
-		textClassName          = "android.widget.EditText"
+		allowDes           = "Allow"
+		allowText          = "ALLOW"
+		cancelID           = "com.google.android.gms:id/cancel"
+		dismissButtonText  = "Dismiss"
+		loginPageClassName = "android.view.ViewGroup"
+		loginPageDes       = "•"
+		notNowText         = "Not Now"
+		notNowID           = "android:id/autofill_save_no"
+		okText             = "OK"
+		passwordDes        = "Password"
+		userNameDes        = "Username"
+		textClassName      = "android.widget.EditText"
 	)
-	var indexNum = 5
 
 	// Check for login page.
 	checkForloginPage := d.Object(ui.ClassName(loginPageClassName), ui.Description(loginPageDes))
@@ -188,24 +188,32 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 		s.Fatal("Failed to click on clickOnOkButton: ", err)
 	}
 
-	// Check for hambuger Icon.
-	hambugerIcon := d.Object(ui.ClassName(hamburgerIconClassName), ui.Index(indexNum))
-	if err := hambugerIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("hambugerIcon doesn't exist: ", err)
-	} else {
-		signOutOfFacebook(ctx, s, a, d, appPkgName, appActivity)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
 
 // signOutOfFacebook verifies app is signed out.
-func signOutOfFacebook(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func signOutOfFacebook(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		viewClassName   = "android.view.View"
-		scrollClassName = "androidx.recyclerview.widget.RecyclerView"
-		logoutClassName = "android.view.ViewGroup"
-		logoutDes       = "Log Out, Button 1 of 1"
+		viewClassName          = "android.view.View"
+		scrollClassName        = "androidx.recyclerview.widget.RecyclerView"
+		logoutClassName        = "android.view.ViewGroup"
+		logoutDes              = "Log Out, Button 1 of 1"
+		hamburgerIconClassName = "android.view.View"
 	)
 	var indexNum = 5
+
+	// Check for hamburgerIcon.
+	hamburgerIcon := d.Object(ui.ClassName(hamburgerIconClassName), ui.Index(indexNum))
+	if err := hamburgerIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("hamburgerIcon doesn't exist and skipped logout: ", err)
+		return
+	}
 
 	// Click on menu icon.
 	menuIcon := d.Object(ui.ClassName(viewClassName), ui.Index(indexNum))

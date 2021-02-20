@@ -26,6 +26,7 @@ var clamshellTestsForSkype = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Signout app", Fn: signOutOfSkype},
 }
 
 // TouchviewTests are placed here.
@@ -33,6 +34,7 @@ var touchviewTestsForSkype = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForSkype},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Signout app", Fn: signOutOfSkype},
 }
 
 func init() {
@@ -87,8 +89,6 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		continueButtonDes           = "Continue"
 		letsGoDes                   = "Let's go"
 		enterEmailAddressID         = "i0116"
-		profileClassName            = "android.widget.Button"
-		profileDes                  = "My info"
 		nextButtonText              = "Next"
 		notNowID                    = "android:id/autofill_save_no"
 		passwordID                  = "i0118"
@@ -101,7 +101,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	// Click on letsGo button.
 	letsGoButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(letsGoDes))
 	if err := letsGoButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("letsGoButton doesn't exists: ", err)
+		s.Log("letsGoButton doesn't exists: ", err)
 	} else if err := letsGoButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on letsGoButton: ", err)
 	}
@@ -278,13 +278,12 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on clickOnWhileUsingThisApp Button: ", err)
 	}
 
-	// Check for profileIcon on homePage.
-	profileIcon := d.Object(ui.ClassName(profileClassName), ui.Description(profileDes))
-	if err := profileIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("profileIcon doesn't exists: ", err)
-	} else {
-		s.Log("profileIcon does exists")
-		signOutOfSkype(ctx, s, tconn, a, d, appPkgName, appActivity)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
 
@@ -299,12 +298,11 @@ func signOutOfSkype(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 		yesText            = "YES"
 	)
 
-	// Check for profileIcon on homePage.
+	// Check for profileIcon.
 	profileIcon := d.Object(ui.ClassName(profileClassName), ui.Description(profileDes))
-	if err := profileIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("profileIcon doesn't exists: ", err)
-	} else if err := profileIcon.Click(ctx); err != nil {
-		s.Fatal("Failed to click on profileIcon: ", err)
+	if err := profileIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("profileIcon doesn't exists and skipped logout: ", err)
+		return
 	}
 
 	// Click on sign out of Skype.

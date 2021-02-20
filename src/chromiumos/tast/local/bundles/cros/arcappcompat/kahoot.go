@@ -26,6 +26,7 @@ var clamshellTestsForKahoot = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+	{Name: "Clamshell: Signout app", Fn: signOutOfKahoot},
 }
 
 // TouchviewTests are placed here.
@@ -33,6 +34,7 @@ var touchviewTestsForKahoot = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForKahoot},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Signout app", Fn: signOutOfKahoot},
 }
 
 func init() {
@@ -90,7 +92,6 @@ func launchAppForKahoot(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		mayBeLaterText      = "Maybe later"
 		notNowID            = "android:id/autofill_save_no"
 		passwordID          = "password"
-		homeID              = "no.mobitroll.kahoot.android:id/homeTab"
 	)
 
 	// Check for login button.
@@ -215,14 +216,13 @@ func launchAppForKahoot(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Fatal("Failed to click on continueButton: ", err)
 	}
 
-	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeID))
-	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("homeIcon doesn't exist: ", err)
-	} else {
-		signOutOfKahoot(ctx, s, tconn, a, d, appPkgName, appActivity)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
-
 }
 
 // signOutOfKahoot verifies app is signed out.
@@ -232,7 +232,14 @@ func signOutOfKahoot(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 		settingsID      = "no.mobitroll.kahoot.android:id/settings"
 		logoutClassName = "android.widget.TextView"
 		logoutText      = "Sign out"
+		homeID          = "no.mobitroll.kahoot.android:id/homeTab"
 	)
+	// Check for homeIcon.
+	homeIcon := d.Object(ui.ID(homeID))
+	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("homeIcon doesn't exist and skipped logout: ", err)
+		return
+	}
 
 	// Click on profile icon.
 	profileIcon := d.Object(ui.ID(profileID))

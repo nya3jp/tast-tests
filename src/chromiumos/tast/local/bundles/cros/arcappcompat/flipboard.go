@@ -26,6 +26,7 @@ var clamshellTestsForFlipboard = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+	{Name: "Clamshell: Signout app", Fn: signOutOfFlipboard},
 }
 
 // TouchviewTests are placed here.
@@ -33,6 +34,7 @@ var touchviewTestsForFlipboard = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForFlipboard},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Signout app", Fn: signOutOfFlipboard},
 }
 
 func init() {
@@ -90,7 +92,6 @@ func launchAppForFlipboard(ctx context.Context, s *testing.State, tconn *chrome.
 		passwordText             = "Password"
 		nextID                   = "flipboard.app:id/account_login_email_next_button"
 		flipID                   = "flipboard.app:id/cover_flip_hint"
-		homeID                   = "flipboard.app:id/toc_page_avatar"
 		noneOFTheAboveButtonText = "None Of The Above"
 		notNowID                 = "android:id/autofill_save_no"
 	)
@@ -214,25 +215,44 @@ func launchAppForFlipboard(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Log("Entered KEYCODE_DPAD_RIGHT")
 	}
 
-	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeID))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("homeIcon doesn't exist: ", err)
-	} else {
-		s.Log("homeIcon does exist")
-		signOutOfFlipboard(ctx, s, a, d, appPkgName, appActivity)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
-
 }
 
 // signOutOfFlipboard verifies app is signed out.
-func signOutOfFlipboard(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func signOutOfFlipboard(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		accountIconID     = "flipboard.app:id/toc_page_avatar"
+		flipID            = "flipboard.app:id/cover_flip_hint"
+		homeID            = "flipboard.app:id/toc_page_avatar"
 		settingsIconID    = "flipboard.app:id/profile_page_header_settings"
 		selectSignOutID   = "android:id/title"
 		selectSignOutText = "Sign Out"
 	)
+	// Check for flip button.
+	checkForflipButton := d.Object(ui.ID(flipID))
+	if err := checkForflipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("checkForflipButton doesn't exist: ", err)
+	}
+
+	// Press KEYCODE_DPAD_RIGHT to flip the page to goto home page.
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_DPAD_RIGHT, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_DPAD_RIGHT: ", err)
+	} else {
+		s.Log("Entered KEYCODE_DPAD_RIGHT")
+	}
+
+	// Check for homeIcon.
+	homeIcon := d.Object(ui.ID(homeID))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("homeIcon doesn't exist and skipped logout : ", err)
+		return
+	}
 
 	// Click on account icon.
 	accountIcon := d.Object(ui.ID(accountIconID))

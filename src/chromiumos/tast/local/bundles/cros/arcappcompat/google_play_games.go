@@ -137,11 +137,11 @@ func launchAppForGooglePlayGames(ctx context.Context, s *testing.State, tconn *c
 			s.Fatal("Failed to start Google play games app: ", err)
 		}
 	}
-
-	// Check for home icon.
-	homeIcon := d.Object(ui.PackageName(appPkgName))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-		s.Fatal("homeIcon doesn't exists: ", err)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
