@@ -89,7 +89,6 @@ func launchAppForInstagram(ctx context.Context, s *testing.State, tconn *chrome.
 		loginID             = "com.instagram.android:id/button_text"
 		notNowID            = "android:id/autofill_save_no"
 		passwordID          = "com.instagram.android:id/password"
-		profileID           = "com.instagram.android:id/profile_tab"
 	)
 
 	// Check for login button.
@@ -159,8 +158,13 @@ func launchAppForInstagram(ctx context.Context, s *testing.State, tconn *chrome.
 	}
 	s.Log("Entered password")
 
-	// Click on signIn Button until not now button exist.
+	// Check for signInButton.
 	signInButton := d.Object(ui.ID(loginID))
+	if err := signInButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Error("signInButton does not exist")
+	}
+	// Click on signIn Button until not now button exist.
+	signInButton = d.Object(ui.ID(loginID))
 	notNowButton := d.Object(ui.ID(notNowID))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := notNowButton.Exists(ctx); err != nil {
@@ -191,10 +195,10 @@ func launchAppForInstagram(ctx context.Context, s *testing.State, tconn *chrome.
 		return
 	}
 
-	// Check for profile icon.
-	profileIcon := d.Object(ui.ID(profileID))
-	if err := profileIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("ProfileIcon doesn't exists: ", err)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
-
 }

@@ -87,15 +87,13 @@ func launchAppForDisney(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		editFieldID = "com.disney.disneyplus:id/editFieldEditText"
 		continueID  = "com.disney.disneyplus:id/continueLoadingButton"
 		signInID    = "com.disney.disneyplus:id/standardButtonBackground"
-		homeID      = "com.disney.disneyplus:id/menuViewLayout"
-		homeDes     = "Home"
 		notNowID    = "android:id/autofill_save_no"
 	)
 
 	// Click on login button.
 	loginButton := d.Object(ui.ID(loginID))
 	if err := loginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Login Button doesn't exists: ", err)
+		s.Error("Login Button doesn't exists: ", err)
 	} else if err := loginButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on loginButton: ", err)
 	}
@@ -123,7 +121,7 @@ func launchAppForDisney(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	// Click on continue button.
 	continueButton := d.Object(ui.ID(continueID))
 	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Continue Button doesn't exists: ", err)
+		s.Error("Continue Button doesn't exists: ", err)
 	} else if err := continueButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on continueButton: ", err)
 	}
@@ -148,8 +146,13 @@ func launchAppForDisney(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	}
 	s.Log("Entered password")
 
-	// Click on signIn Button until notNowButton exist.
+	// Check for signInButton.
 	signInButton := d.Object(ui.ID(signInID))
+	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("signInButton doesn't exists: ", err)
+	}
+	// Click on signIn Button until notNowButton exist.
+	signInButton = d.Object(ui.ID(signInID))
 	notNowButton := d.Object(ui.ID(notNowID))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := notNowButton.Exists(ctx); err != nil {
@@ -170,10 +173,12 @@ func launchAppForDisney(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Fatal("Failed to click on notNowButton: ", err)
 	}
 
-	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeID), ui.Description(homeDes))
-	if err := homeIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
 
@@ -188,7 +193,8 @@ func signOutOfDisney(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 	// Click on my stuff icon.
 	myStuffIcon := d.Object(ui.Description(myStuffDes))
 	if err := myStuffIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("MyStuffIcon doesn't exist: ", err)
+		s.Log("MyStuffIcon doesn't exist and skipped login: ", err)
+		return
 	} else if err := myStuffIcon.Click(ctx); err != nil {
 		s.Fatal("Failed to click MyStuffIcon: ", err)
 	}

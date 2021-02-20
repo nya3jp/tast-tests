@@ -124,9 +124,10 @@ func launchAppForAdobeIllustratorDraw(ctx context.Context, s *testing.State, tco
 		s.Fatal("Failed to click on continueButton: ", err)
 	}
 
-	// Check for add project icon in home page.
-	addProjectIcon := d.Object(ui.ID(addProjectIconID))
-	if err := addProjectIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("addProjectIcon doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homePageVerifier.
+	homePageVerifier := d.Object(ui.ID(addProjectIconID))
+	if err := homePageVerifier.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Fatal("homePageVerifier doesn't exists: ", err)
 	}
 }

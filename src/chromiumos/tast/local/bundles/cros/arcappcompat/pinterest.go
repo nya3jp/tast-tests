@@ -135,9 +135,9 @@ func launchAppForPinterest(ctx context.Context, s *testing.State, tconn *chrome.
 
 	// Click on allow button until profile icon exists.
 	allowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(allowButtonText))
-	profileIcon := d.Object(ui.PackageName(appPkgName))
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := profileIcon.Exists(ctx); err != nil {
+		if err := launchVerifier.Exists(ctx); err != nil {
 			s.Log("Click on allow button")
 			allowButton.Click(ctx)
 			return err
@@ -145,6 +145,6 @@ func launchAppForPinterest(ctx context.Context, s *testing.State, tconn *chrome.
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
 		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-		s.Fatal("profileIcon doesn't exists: ", err)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }

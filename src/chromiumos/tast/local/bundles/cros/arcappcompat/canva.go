@@ -113,10 +113,11 @@ func launchAppForCanva(ctx context.Context, s *testing.State, tconn *chrome.Test
 	} else if err := emailAddress.Click(ctx); err != nil {
 		s.Fatal("Failed to click on EmailAddress: ", err)
 	}
-
-	// Check for home icon.
-	homeIconButton := d.Object(ui.Text(homeIconText))
-	if err := homeIconButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("homeIcon button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homePageVerifier.
+	homePageVerifier := d.Object(ui.Text(homeIconText))
+	if err := homePageVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homePageVerifier button doesn't exist: ", err)
 	}
 }
