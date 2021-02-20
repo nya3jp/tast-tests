@@ -81,7 +81,6 @@ func NFL(ctx context.Context, s *testing.State) {
 func launchAppForNFL(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		skipText = "Skip"
-		googleID = "wp.NFL:id/authentication_view_google_button"
 		homeText = "Home"
 	)
 
@@ -95,11 +94,14 @@ func launchAppForNFL(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Error("Home icon doesn't exist: ", err)
+		s.Log("homeButton doesn't exist: ", err)
 	}
 
-	// Check for home icon.
-	if err := homeButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Home icon doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
