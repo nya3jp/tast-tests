@@ -13,9 +13,10 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/filesapp"
-	"chromiumos/tast/local/chrome/ui/scanapp"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/scanapp"
 	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
@@ -150,9 +151,8 @@ func Scan(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to launch app: ", err)
 	}
-	defer app.Release(cleanupCtx)
 
-	if err := app.ClickMoreSettings(ctx); err != nil {
+	if err := uiauto.Run(ctx, app.ClickMoreSettings()); err != nil {
 		s.Fatal("Failed to expand More settings: ", err)
 	}
 
@@ -164,16 +164,12 @@ func Scan(ctx context.Context, s *testing.State) {
 				}
 			}()
 
-			if err := app.SetScanSettings(ctx, test.settings); err != nil {
-				s.Fatal("Failed to set scan settings: ", err)
-			}
-
-			if err := app.Scan(ctx); err != nil {
+			if err := uiauto.Run(ctx,
+				app.SetScanSettings(test.settings),
+				app.Scan(),
+				app.ClickDone(),
+			); err != nil {
 				s.Fatal("Failed to perform scan: ", err)
-			}
-
-			if err := app.ClickDone(ctx); err != nil {
-				s.Fatal("Failed to finish scanning: ", err)
 			}
 
 			scan, err := getScan(defaultScanPattern)
