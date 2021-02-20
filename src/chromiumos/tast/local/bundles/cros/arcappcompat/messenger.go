@@ -118,7 +118,7 @@ func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.
 
 	clickOnLoginButton := d.Object(ui.ClassName(viewGroupClassName), ui.Description(loginDes))
 	if err := clickOnLoginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("clickOnLoginButton doesn't exist: ", err)
+		s.Error("clickOnLoginButton doesn't exist: ", err)
 	} else if err := clickOnLoginButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnLoginButton: ", err)
 	}
@@ -161,9 +161,10 @@ func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Fatal("Failed to click on clickOnDoneButton: ", err)
 	}
 
-	// Check for camera Icon.
-	cameraIcon := d.Object(ui.ClassName(viewGroupClassName), ui.Description(cameraDes))
-	if err := cameraIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("cameraIcon doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homePageVerifier.
+	homePageVerifier := d.Object(ui.ClassName(viewGroupClassName), ui.Description(cameraDes))
+	if err := homePageVerifier.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Fatal("homePageVerifier doesn't exist: ", err)
 	}
 }

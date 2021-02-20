@@ -98,17 +98,17 @@ func launchAppForAmazonKindle(ctx context.Context, s *testing.State, tconn *chro
 		importantMessageText   = "Important"
 	)
 
-	// Check for home icon.
-	homeIcon := d.Object(ui.ClassName(homeClassName), ui.Description(homeDes))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("home icon doesn't exist: ", err)
-	} else if err := homeIcon.Click(ctx); err != nil {
-		s.Fatal("Failed to click on homeIcon: ", err)
+	// Check for homePageVerifier.
+	homePageVerifier := d.Object(ui.ClassName(homeClassName), ui.Description(homeDes))
+	if err := homePageVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("homePageVerifier doesn't exist: ", err)
+	} else if err := homePageVerifier.Click(ctx); err != nil {
+		s.Fatal("Failed to click on homePageVerifier: ", err)
 	}
 	// Click on signin with amazon button.
 	signInWithAmazonButton := d.Object(ui.ClassName(textViewClassName), ui.Text(signInAmazonButtonText))
 	if err := signInWithAmazonButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("signInWithAmazonButton doesn't exists: ", err)
+		s.Log("signInWithAmazonButton doesn't exists: ", err)
 	} else if err := signInWithAmazonButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on signInWithAmazonButton: ", err)
 	}
@@ -207,12 +207,18 @@ func launchAppForAmazonKindle(ctx context.Context, s *testing.State, tconn *chro
 	checkForCaptcha := d.Object(ui.TextStartsWith(importantMessageText))
 	if err := checkForCaptcha.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("checkForCaptcha doesn't exists: ", err)
-
 		signoutOfAmazonKindle(ctx, s, a, d, appPkgName, appActivity)
 	} else {
 		s.Log("checkForCaptcha does exist")
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
+	}
 }
 
 // signoutOfAmazonKindle verifies app is signed out.
