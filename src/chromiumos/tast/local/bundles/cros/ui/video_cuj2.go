@@ -113,5 +113,5 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 	tier := param.tier
 	app := param.app
 
-	videocuj.Run(ctx, s, cr, a, app, tabletMode, tier)
+	videocuj.Run(ctx, s, cr, a, app, tabletMode, tier, false)
 }
