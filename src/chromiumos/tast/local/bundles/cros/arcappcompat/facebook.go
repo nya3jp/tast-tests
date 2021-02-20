@@ -188,12 +188,20 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 		s.Fatal("Failed to click on clickOnOkButton: ", err)
 	}
 
-	// Check for hambuger Icon.
-	hambugerIcon := d.Object(ui.ClassName(hamburgerIconClassName), ui.Index(indexNum))
-	if err := hambugerIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("hambugerIcon doesn't exist: ", err)
+	// Check for hamburgerIcon.
+	hamburgerIcon := d.Object(ui.ClassName(hamburgerIconClassName), ui.Index(indexNum))
+	if err := hamburgerIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("homePageVerifier doesn't exist: ", err)
 	} else {
 		signOutOfFacebook(ctx, s, a, d, appPkgName, appActivity)
+	}
+
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
 

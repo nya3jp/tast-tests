@@ -205,15 +205,22 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to start Hulu app: ", err)
 	}
 
-	// Check for home icon.
+	// Check for homeIcon.
 	homeIcon := d.Object(ui.ID(homeIconID))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("HomeIcon doesn't exist: ", err)
+		s.Log("homeIcon doesn't exist: ", err)
 	} else {
-		s.Log("HomeIcon does exist")
+		s.Log("homeIcon does exist")
 		signOutOfHulu(ctx, s, a, d, appPkgName, appActivity)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
+	}
 }
 
 // signOutOfHulu verifies app is signed out.

@@ -101,7 +101,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	// Click on letsGo button.
 	letsGoButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(letsGoDes))
 	if err := letsGoButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("letsGoButton doesn't exists: ", err)
+		s.Log("letsGoButton doesn't exists: ", err)
 	} else if err := letsGoButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on letsGoButton: ", err)
 	}
@@ -278,12 +278,12 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on clickOnWhileUsingThisApp Button: ", err)
 	}
 
-	// Check for profileIcon on homePage.
-	profileIcon := d.Object(ui.ClassName(profileClassName), ui.Description(profileDes))
-	if err := profileIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("profileIcon doesn't exists: ", err)
+	// Check for homePageVerifier.
+	homePageVerifier := d.Object(ui.ClassName(profileClassName), ui.Description(profileDes))
+	if err := homePageVerifier.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Fatal("homePageVerifier doesn't exists: ", err)
 	} else {
-		s.Log("profileIcon does exists")
+		s.Log("homePageVerifier does exists")
 		signOutOfSkype(ctx, s, tconn, a, d, appPkgName, appActivity)
 	}
 }

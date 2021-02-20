@@ -125,10 +125,10 @@ func launchAppForMicrosoftOutlook(ctx context.Context, s *testing.State, tconn *
 	loginHelperForChromeAndroidApp(ctx, s, tconn, a, d, chromeAppPkgName, chromeAppActivity)
 	loginHelperForMicrosoftApp(ctx, s, tconn, a, d, appPkgName, appActivity)
 
-	// Check for composeIcon on homePage.
-	composeIcon := d.Object(ui.ID(composeID))
-	if err := composeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("composeIcon doesn't exists: ", err)
+	// Check for homePageVerifier.
+	homePageVerifier := d.Object(ui.ID(composeID))
+	if err := homePageVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Fatal("homePageVerifier doesn't exists: ", err)
 	}
 }
 
@@ -228,8 +228,11 @@ func loginHelperForChromeAndroidApp(ctx context.Context, s *testing.State, tconn
 	defer kb.Close()
 
 	emailAddress := s.RequiredVar("arcappcompat.MicrosoftOutlook.emailid")
-	if err := kb.Type(ctx, emailAddress); err != nil {
+	/* if err := kb.Type(ctx, emailAddress); err != nil {
 		s.Fatal("Failed to enter emailAddress: ", err)
+	} */
+	if err := enterEmailAddress.SetText(ctx, emailAddress); err != nil {
+		s.Fatal("Failed to enter EmailAddress: ", err)
 	}
 	s.Log("Entered EmailAddress")
 
@@ -287,8 +290,11 @@ func loginHelperForChromeAndroidApp(ctx context.Context, s *testing.State, tconn
 	}
 
 	password := s.RequiredVar("arcappcompat.MicrosoftOutlook.password")
-	if err := kb.Type(ctx, password); err != nil {
+	/* if err := kb.Type(ctx, password); err != nil {
 		s.Fatal("Failed to enter password: ", err)
+	} */
+	if err := enterPassword.SetText(ctx, password); err != nil {
+		s.Fatal("Failed to enter enterPassword: ", err)
 	}
 	s.Log("Entered password")
 
@@ -355,7 +361,6 @@ func loginHelperForMicrosoftApp(ctx context.Context, s *testing.State, tconn *ch
 		s.Fatal("Failed to click on addAccountButton: ", err)
 	}
 
-	// click on addAccountButton until enterEmailAddress exists.
 	enterEmailAddress := d.Object(ui.ID(enterEmailAddressID))
 	// Click on emailid text field until the emailid text field is focused.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -370,15 +375,9 @@ func loginHelperForMicrosoftApp(ctx context.Context, s *testing.State, tconn *ch
 		s.Fatal("Failed to focus EmailId: ", err)
 	}
 
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
-	}
-	defer kb.Close()
-
 	emailAddress := s.RequiredVar("arcappcompat.MicrosoftOutlook.emailid")
-	if err := kb.Type(ctx, emailAddress); err != nil {
-		s.Fatal("Failed to enter emailAddress: ", err)
+	if err := enterEmailAddress.SetText(ctx, emailAddress); err != nil {
+		s.Fatal("Failed to enter EmailAddress: ", err)
 	}
 	s.Log("Entered EmailAddress")
 
@@ -406,7 +405,7 @@ func loginHelperForMicrosoftApp(ctx context.Context, s *testing.State, tconn *ch
 		s.Log("Failed to click on enterPassword: ", err)
 	}
 
-	// Keep clicking password text field until the password text field is focused.
+	// Click on password text field until the password text field is focused.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if pwdFocused, err := enterPassword.IsFocused(ctx); err != nil {
 			return errors.New("password text field not focused yet")
@@ -420,8 +419,8 @@ func loginHelperForMicrosoftApp(ctx context.Context, s *testing.State, tconn *ch
 	}
 
 	password := s.RequiredVar("arcappcompat.MicrosoftOutlook.password")
-	if err := kb.Type(ctx, password); err != nil {
-		s.Fatal("Failed to enter password: ", err)
+	if err := enterPassword.SetText(ctx, password); err != nil {
+		s.Fatal("Failed to enter enterPassword: ", err)
 	}
 	s.Log("Entered password")
 
@@ -463,4 +462,11 @@ func loginHelperForMicrosoftApp(ctx context.Context, s *testing.State, tconn *ch
 		s.Fatal("Failed to click on clickOnMayBeLaterButton: ", err)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
+	}
 }

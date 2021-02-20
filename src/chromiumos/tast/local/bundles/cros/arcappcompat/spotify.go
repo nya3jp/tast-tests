@@ -187,12 +187,21 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to start app: ", err)
 	}
 
-	// Check for home icon.
+	// Check for homeIcon.
 	homeIcon := d.Object(ui.ID(homeiconID))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("home icon doesn't exist: ", err)
+		s.Log("homeIcon doesn't exist: ", err)
 	} else {
+		s.Log("homeIcon does exist")
 		signOutOfSpotify(ctx, s, tconn, a, d, appPkgName, appActivity)
+	}
+
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 
 }

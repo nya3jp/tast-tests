@@ -81,18 +81,23 @@ func Netflix(ctx context.Context, s *testing.State) {
 // verify Netflix reached main activity page of the app.
 func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		signInButtonDes       = "SIGN IN"
+		signInButtonText      = "SIGN IN"
 		TextClassName         = "android.widget.EditText"
 		enterEmailAddressText = "Email or phone number"
 		passwordText          = "Password"
 		signInBtnText         = "Sign In"
-		selectUserID          = "com.netflix.mediaclient:id/profile_avatar_title"
+		selectUserID          = "com.netflix.mediaclient:id/profile_avatar_img"
 		okButtonText          = "OK"
 		homeIconID            = "com.netflix.mediaclient:id/ribbon_n_logo"
 	)
 	var selectUserIndex int
 
-	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(signInButtonDes))
+	// Check for signInButton.
+	signInButton := d.Object(ui.TextMatches("(?i)" + signInButtonText))
+	if err := signInButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Fatal("signInButton doesn't exist: ", err)
+	}
+	signInButton = d.Object(ui.TextMatches("(?i)" + signInButtonText))
 	enterEmailAddress := d.Object(ui.ClassName(TextClassName), ui.Text(enterEmailAddressText))
 	// Keep clicking signIn button until enterEmailAddress exist in the home page.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -134,6 +139,7 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 	} else if err := clickOnSignInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnSignInButton: ", err)
 	}
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
 	// Select User.
 	selectUser := d.Object(ui.ID(selectUserID), ui.Index(selectUserIndex))
@@ -147,18 +153,26 @@ func launchAppForNetflix(ctx context.Context, s *testing.State, tconn *chrome.Te
 	okButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(okButtonText))
 	if err := okButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Error("okButton doesn't exist: ", err)
-	} else if err := selectUser.Click(ctx); err != nil {
+	} else if err := okButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on okButton: ", err)
 	}
 
-	// Check for home icon.
+	// Check for homeIcon.
 	homeIcon := d.Object(ui.ID(homeIconID))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("SelectUser doesn't exist: ", err)
+		s.Log("homeIcon doesn't exist: ", err)
+	} else {
+		s.Log("homeIcon does exist")
+		signOutOfNetflix(ctx, s, a, d, appPkgName, appActivity)
 	}
 
-	signOutOfNetflix(ctx, s, a, d, appPkgName, appActivity)
-
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
+	}
 }
 
 // signOutOfNetflix verifies app is signed out.

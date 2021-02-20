@@ -120,9 +120,9 @@ func launchAppForAdobeLightroom(ctx context.Context, s *testing.State, tconn *ch
 		s.Fatal("Failed to click on EmailAddress: ", err)
 	}
 
-	// Check for add icon.
-	addPhotoButton := d.Object(ui.ID(addPhotoID))
-	if err := addPhotoButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("addPhoto button doesn't exist: ", err)
+	// Check for home page verifier.
+	homePageVerifier := d.Object(ui.ID(addPhotoID))
+	if err := homePageVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Fatal("homePageVerifier doesn't exist: ", err)
 	}
 }

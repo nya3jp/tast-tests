@@ -177,7 +177,7 @@ func launchAppForSnapchat(ctx context.Context, s *testing.State, tconn *chrome.T
 	// Check for profile icon.
 	profileIcon := d.Object(ui.ID(profileID))
 	if err := profileIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("profileIcon doesn't exist: ", err)
+		s.Fatal("profileIcon doesn't exist: ", err)
 	}
 }
 
