@@ -34,6 +34,24 @@
       "parentUuid": "da2905f2_225dde9d",
       "revId": "45f1ec211004f3cd834b5eb3d87e5ff9dfad67fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f08635_92ff388f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-20T01:19:10Z",
+      "side": 1,
+      "message": "As I noted in the email, bluetooth dbus protocol is publicly available, and I believe that\u0027s possible in chromeos devices (and tast has the feature to communicate through dbus). The existing \"bluetooth\" package does not have the control, so you will have to expand that. That would be a high engineering cost indeed, but I think that\u0027s worth doing.\nI am not familiar with how those dbus messages to be used.\n\nAlternatively there\u0027s bluetooth related extension APIs.  You could use that (that\u0027s still indirect but better and faster than controlling through UI, I think).\nhttps://chromium.googlesource.com/chromium/src.git/+/refs/heads/master/extensions/common/api/bluetooth_private.idl\nhttps://chromium.googlesource.com/chromium/src.git/+/refs/heads/master/extensions/common/api/bluetooth.idl\n\n\nFor Gmail, my understanding is *NOT* using the Android version of it, so please remove that until necessary. Please let me know if that\u0027s wrong.",
+      "parentUuid": "13eab55f_6e3dd6bb",
+      "revId": "45f1ec211004f3cd834b5eb3d87e5ff9dfad67fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
