@@ -80,13 +80,11 @@ func GoogleDuo(ctx context.Context, s *testing.State) {
 // verify Google Duo reached main activity page of the app.
 func launchAppForGoogleDuo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		addPhoneNumberText      = "Add number"
-		agreeButtonText         = "Agree"
-		allowButtonText         = "ALLOW"
-		giveAccessButtonText    = "Give access"
-		searchContactsText      = "Search contacts or dial"
-		videoMsgButtonClassName = "android.widget.TextView"
-		videoMsgButtonText      = "Send a video message"
+		addPhoneNumberText   = "Add number"
+		agreeButtonText      = "Agree"
+		allowButtonText      = "ALLOW"
+		giveAccessButtonText = "Give access"
+		searchContactsText   = "Search contacts or dial"
 	)
 
 	// Click on give access button.
@@ -164,9 +162,10 @@ func launchAppForGoogleDuo(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Log("CheckForSearchContacts doesn't exists: ", err)
 	}
 
-	// Check for video message button.
-	videoMessageButton := d.Object(ui.ClassName(videoMsgButtonClassName), ui.Text(videoMsgButtonText))
-	if err := videoMessageButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("VideoMessageButton doesn't exists: ", err)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
