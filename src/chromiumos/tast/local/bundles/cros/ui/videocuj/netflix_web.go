@@ -18,7 +18,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-func openAndPlayNetflixWeb(ctx context.Context, s *testing.State, tconn *chrome.TestConn, cr *chrome.Chrome) (*netflix.Netflix, error) {
+func openAndPlayNetflixWeb(ctx context.Context, s *testing.State, tconn *chrome.TestConn, cr *chrome.Chrome, kb *input.KeyboardEventWriter, extendedDisplay bool) (*netflix.Netflix, error) {
 	s.Log("Open Netflix web")
 	username := s.RequiredVar("ui.netflix_username")
 	password := s.RequiredVar("ui.netflix_password")
@@ -26,6 +26,15 @@ func openAndPlayNetflixWeb(ctx context.Context, s *testing.State, tconn *chrome.
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to open or sign in Netflix")
 	}
+
+	s.Logf("Check extendedDisplay: %t", extendedDisplay)
+	if extendedDisplay {
+		s.Log("Switch Netflix to the extended display")
+		if err := kb.Accel(ctx, "Search+Alt+M"); err != nil {
+			s.Fatal("Failed to switch Netflix to the extended display: ", err)
+		}
+	}
+
 	s.Log("Go to watch netflix video")
 	if err := n.Play(ctx, "https://www.netflix.com/watch/80026431"); err != nil {
 		return nil, errors.Wrap(err, "failed to play Netflix video")
