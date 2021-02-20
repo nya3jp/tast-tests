@@ -109,7 +109,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to call D-Bus API to get certificate: ", err)
 			}
 			if *certReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
-				s.Fatal("Faild to get certificate: ", enrollReply.Status.String())
+				s.Fatal("Faild to get certificate: ", certReply.Status.String())
 			}
 
 			// TODO(b/165426637): Enable it after we inject the fake devive policy with customer ID.
@@ -163,7 +163,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 					s.Fatalf("Failed to create certificate request for label %q: %v", label, err)
 				}
 				if *certReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
-					s.Fatalf("Faild to get certificate for label %q: %v", label, enrollReply.Status.String())
+					s.Fatalf("Faild to get certificate for label %q: %v", label, certReply.Status.String())
 				}
 				_, err = utility.GetPublicKey(ctx, username, label)
 				if err != nil {
