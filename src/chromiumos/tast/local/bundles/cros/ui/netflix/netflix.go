@@ -82,6 +82,10 @@ func (n *Netflix) signIn(ctx context.Context, tconn *chrome.TestConn, conn *chro
 		return errors.Wrap(err, "failed to click account field")
 	}
 
+	if err := kb.Accel(ctx, "Ctrl+A"); err != nil {
+		return errors.Wrap(err, "failed to select all")
+	}
+
 	if err := kb.Type(ctx, username); err != nil {
 		return errors.Wrap(err, "failed to type email")
 	}
@@ -89,6 +93,10 @@ func (n *Netflix) signIn(ctx context.Context, tconn *chrome.TestConn, conn *chro
 	passwordParam := ui.FindParams{Name: "Password"}
 	if err := cuj.WaitAndClick(ctx, tconn, passwordParam, timeout); err != nil {
 		return errors.Wrap(err, "failed to click password field")
+	}
+
+	if err := kb.Accel(ctx, "Ctrl+A"); err != nil {
+		return errors.Wrap(err, "failed to select all")
 	}
 
 	if err := kb.Type(ctx, password); err != nil {
