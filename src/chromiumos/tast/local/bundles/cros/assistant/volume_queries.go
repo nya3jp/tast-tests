@@ -22,7 +22,7 @@ func init() {
 		Func:         VolumeQueries,
 		Desc:         "Tests setting and increasing volume actions via Assistant",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal", "audio_play"},
 		Pre:          assistant.VerboseLoggingEnabled(),
 	})
