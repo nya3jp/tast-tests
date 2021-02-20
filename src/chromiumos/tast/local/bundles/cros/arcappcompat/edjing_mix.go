@@ -87,7 +87,6 @@ func launchAppForEdjingMix(ctx context.Context, s *testing.State, tconn *chrome.
 		closeClassName = "android.widget.ImageView"
 		allowText      = "ALLOW"
 		allowID        = "com.android.packageinstaller:id/permission_allow_button"
-		recordingText  = "REC"
 	)
 	var pressAllowEnabled bool
 	// Click on next button until skip button exists.
@@ -139,10 +138,12 @@ func launchAppForEdjingMix(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Fatal("Failed to click on skip button: ", err)
 	}
 
-	// Check for recording button in home page.
-	recButton := d.Object(ui.Text(recordingText))
-	if err := recButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Recording button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homeIcon on homePage.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
 

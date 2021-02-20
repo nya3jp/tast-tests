@@ -84,7 +84,6 @@ func launchAppForGooglePhotos(ctx context.Context, s *testing.State, tconn *chro
 		confirmButtonText = "Confirm"
 		skipButtonID      = "com.google.android.apps.photos:id/welcomescreens_skip_button"
 		turnOnBackUpText  = "Turn on Backup"
-		photosIconID      = "com.google.android.apps.photos:id/tab_photos"
 	)
 
 	// Click on allow button to access your photos, media and files.
@@ -94,6 +93,8 @@ func launchAppForGooglePhotos(ctx context.Context, s *testing.State, tconn *chro
 	} else if err := allowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on allowButton: ", err)
 	}
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+
 	// Click on turn on back up button.
 	turnOnBackUpButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(turnOnBackUpText))
 	if err := turnOnBackUpButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -116,10 +117,10 @@ func launchAppForGooglePhotos(ctx context.Context, s *testing.State, tconn *chro
 		s.Fatal("Failed to click on confirmButton: ", err)
 	}
 
-	// Check for photos icon.
-	photosIcon := d.Object(ui.ID(photosIconID))
-	if err := photosIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("PhotosIcon doesn't exist: ", err)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
-
 }
