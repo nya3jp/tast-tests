@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package servo
+// Package xmlrpc provides methods making XML-RPC calls.
+package xmlrpc
 
 import (
 	"bytes"
@@ -18,8 +19,22 @@ import (
 	"chromiumos/tast/errors"
 )
 
-// call represents a Servo call request.
-type call struct {
+// rpcTimeout is the default and maximum timeout for XML-RPC requests.
+const rpcTimeout = 10 * time.Second
+
+// XMLRpc holds the XML-RPC information.
+type XMLRpc struct {
+	host string
+	port int
+}
+
+// New creates a new Chameleon object for communicating with XML-RPC server.
+func New(host string, port int) *XMLRpc {
+	return &XMLRpc{host: host, port: port}
+}
+
+// Call represents a XML-RPC call request.
+type Call struct {
 	method string
 	args   []interface{}
 }
@@ -49,10 +64,11 @@ type param struct {
 
 // value is an XML-RPC value.
 type value struct {
-	Boolean string `xml:"boolean,omitempty"`
-	Double  string `xml:"double,omitempty"`
-	Int     string `xml:"int,omitempty"`
-	String  string `xml:"string,omitempty"`
+	Boolean string  `xml:"boolean,omitempty"`
+	Double  string  `xml:"double,omitempty"`
+	Int     string  `xml:"int,omitempty"`
+	String  string  `xml:"string,omitempty"`
+	Array   []value `xml:"array>data>value,omitempty"`
 }
 
 // xmlBooleanToBool converts the strings '1' or '0' into boolean.
@@ -127,6 +143,16 @@ func newValue(in interface{}) (value, error) {
 		return value{Int: i}, nil
 	case float64:
 		return value{Double: float64ToXMLDouble(v)}, nil
+	case []int:
+		var a []value
+		for _, i := range in.([]int) {
+			val, err := newValue(i)
+			if err != nil {
+				return value{}, err
+			}
+			a = append(a, val)
+		}
+		return value{Array: a}, nil
 	}
 
 	return value{}, errors.Errorf("%q not of supported type", in)
@@ -145,12 +171,13 @@ func newParams(args []interface{}) ([]param, error) {
 	return params, nil
 }
 
-func newCall(method string, args ...interface{}) call {
-	return call{method, args}
+// NewCall creates a XML-RPC call.
+func NewCall(method string, args ...interface{}) Call {
+	return Call{method, args}
 }
 
 // serializeMethodCall turns a method and args into a serialized XML-RPC method call.
-func serializeMethodCall(cl call) ([]byte, error) {
+func serializeMethodCall(cl Call) ([]byte, error) {
 	params, err := newParams(cl.args)
 	if err != nil {
 		return nil, err
@@ -172,6 +199,41 @@ func getTimeout(ctx context.Context) time.Duration {
 	return timeout
 }
 
+// unpack unpacks a value struct into the given pointers.
+func unpack(val value, out interface{}) error {
+	switch o := out.(type) {
+	case *string:
+		*o = val.String
+	case *bool:
+		v, err := xmlBooleanToBool(val.Boolean)
+		if err != nil {
+			return err
+		}
+		*o = v
+	case *int:
+		i, err := xmlIntegerToInt(val.Int)
+		if err != nil {
+			return err
+		}
+		*o = i
+	case *float64:
+		f, err := xmlDoubleToFloat64(val.Double)
+		if err != nil {
+			return err
+		}
+		*o = f
+	case *[]int:
+		for _, e := range val.Array {
+			var i int
+			if err := unpack(e, &i); err != nil {
+				return err
+			}
+			*o = append(*o, i)
+		}
+	}
+	return nil
+}
+
 // unpack extracts a response's arguments into a list of given pointers.
 func (r *response) unpack(out []interface{}) error {
 	if len(r.Params) != len(out) {
@@ -179,35 +241,16 @@ func (r *response) unpack(out []interface{}) error {
 	}
 
 	for i, p := range r.Params {
-		switch o := out[i].(type) {
-		case *string:
-			*o = p.Value.String
-		case *bool:
-			v, err := xmlBooleanToBool(p.Value.Boolean)
-			if err != nil {
-				return err
-			}
-			*o = v
-		case *int:
-			i, err := xmlIntegerToInt(p.Value.Int)
-			if err != nil {
-				return err
-			}
-			*o = i
-		case *float64:
-			f, err := xmlDoubleToFloat64(p.Value.Double)
-			if err != nil {
-				return err
-			}
-			*o = f
+		if err := unpack(p.Value, out[i]); err != nil {
+			return err
 		}
 	}
 
 	return nil
 }
 
-// run makes an XML-RPC call to servod.
-func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
+// Run makes an XML-RPC call.
+func (r *XMLRpc) Run(ctx context.Context, cl Call, out ...interface{}) error {
 	body, err := serializeMethodCall(cl)
 	if err != nil {
 		return err
@@ -215,10 +258,10 @@ func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
 
 	// Get RPC timeout duration from context or use default.
 	timeout := getTimeout(ctx)
-	servodURL := fmt.Sprintf("http://%s:%d", s.host, s.port)
+	serverURL := fmt.Sprintf("http://%s:%d", r.host, r.port)
 	httpClient := &http.Client{Timeout: timeout}
 
-	resp, err := httpClient.Post(servodURL, "text/xml", bytes.NewBuffer(body))
+	resp, err := httpClient.Post(serverURL, "text/xml", bytes.NewBuffer(body))
 	if err != nil {
 		return err
 	}
