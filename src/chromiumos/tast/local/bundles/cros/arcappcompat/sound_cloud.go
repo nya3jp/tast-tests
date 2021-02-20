@@ -89,7 +89,6 @@ func launchAppForSoundCloud(ctx context.Context, s *testing.State, tconn *chrome
 		iHaveAnAccountButtonText = "I already have an account"
 		passwordID               = "com.soundcloud.android:id/passwordInputText"
 		passwordText             = "Password"
-		homeDes                  = "Discover"
 	)
 
 	// Click on I have an account button.
@@ -180,10 +179,11 @@ func launchAppForSoundCloud(ctx context.Context, s *testing.State, tconn *chrome
 		s.Fatal("Failed to click on notNowButton: ", err)
 	}
 
-	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.Description(homeDes))
-	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
-
 }

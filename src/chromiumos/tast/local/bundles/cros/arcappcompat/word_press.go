@@ -114,7 +114,7 @@ func launchAppForWordPress(ctx context.Context, s *testing.State, tconn *chrome.
 	notNowButton := d.Object(ui.Text(notNowText))
 	navReaderLabel := d.Object(ui.Text(readerText))
 	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("Not now button doesn't exist: ", err)
+		s.Log("Not now button doesn't exist: ", err)
 	} else if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := navReaderLabel.Exists(ctx); err != nil {
 			notNowButton.Click(ctx)
@@ -124,11 +124,11 @@ func launchAppForWordPress(ctx context.Context, s *testing.State, tconn *chrome.
 	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
 		s.Log("Reader label doesn't exist: ", err)
 	}
-
-	// Check for home icon.
-	homeIcon := d.Object(ui.PackageName(appPkgName))
-	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-		s.Fatal("homeIcon doesn't exist: ", err)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }

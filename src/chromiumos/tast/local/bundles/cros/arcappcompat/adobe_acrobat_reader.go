@@ -85,8 +85,6 @@ func launchAppForAdobeAcrobatReader(ctx context.Context, s *testing.State, tconn
 		continueButtonID    = "com.adobe.reader:id/continue_button"
 		closeClassName      = "android.widget.ImageButton"
 		closeDes            = "Close tour"
-		homeIconClassName   = "android.view.ViewGroup"
-		homeIconDescription = "Home"
 		signInButtonText    = "Sign in with Google"
 		userButtonClassName = "android.widget.TextView"
 	)
@@ -128,9 +126,11 @@ func launchAppForAdobeAcrobatReader(ctx context.Context, s *testing.State, tconn
 		s.Fatal("Failed to click on closeButton: ", err)
 	}
 
-	// Check for home icon in home page.
-	homeIcon := d.Object(ui.ClassName(homeIconClassName), ui.DescriptionContains(homeIconDescription))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("homeIcon doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
