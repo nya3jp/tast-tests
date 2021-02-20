@@ -34,8 +34,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklist...)),
 		Fixture:      "arcBootedWithVideoLogging",
-		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
-		Timeout: 5 * time.Minute,
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name: "h264_192p_i420",
 			Val: video.EncodeTestOptions{

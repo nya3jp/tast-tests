@@ -26,9 +26,8 @@ func init() {
 		Contacts:     []string{"niwa@chromium.org", "risan@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
-		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
-		Timeout: 5 * time.Minute,
-		Attr:    []string{"group:mainline"},
+		Timeout:      4 * time.Minute,
+		Attr:         []string{"group:mainline"},
 		// Val is the property representing ARC boot type, which is different for container/VM.
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
