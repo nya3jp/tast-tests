@@ -341,6 +341,34 @@ func TouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
+// KeyboardNavigations func verifies app perform keyboard navigations successfully without crash or ANR.
+func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	if tabletModeEnabled {
+		s.Log("Device is in tablet mode. Skipping test")
+		return
+	}
+	// Press enter key twice.
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	}
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	}
+	// To perform keyboard navigations.
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "20", "--pct-nav", "20", "--pct-majornav", "20", "--pct-nav", "20", "--pct-majornav", "20", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Error("Failed to perform monkey test keyboard navigations: ", err)
+	}
+	if err := processMonkeyOutput(string(out)); err != nil {
+		s.Error("Key board navigations such as up/down/left/right are not working properly in the app: ", err)
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
@@ -506,4 +534,58 @@ func processMonkeyOutput(output string) error {
 		}
 	}
 	return nil
+}
+
+// HandleDialogBoxes func will handle the dialog box
+func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appPkgName string) {
+	const (
+		allowText                   = "ALLOW"
+		whileUsingThisAppButtonText = "WHILE USING THE APP"
+	)
+
+	clickOnAllowButton := d.Object(ui.TextMatches("(?i)" + allowText))
+	appverifer := d.Object(ui.PackageName(appPkgName))
+	// Click on Allow button until appverifer exist.
+	if err := clickOnAllowButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
+		s.Log("clickOnAllowButton doesn't exist: ", err)
+	} else if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := appverifer.Exists(ctx); err != nil {
+			s.Log(" Click on allow button until appverifer exist")
+			clickOnAllowButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: ShortUITimeout}); err != nil {
+		s.Error("appPkgName doesn't exist: ", err)
+	}
+
+	// Click on allow while using this app button until appverifer exist.
+	clickOnWhileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
+	if err := clickOnWhileUsingThisAppButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
+		s.Log("clickOnWhileUsingThisApp Button doesn't exists: ", err)
+	} else if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := appverifer.Exists(ctx); err != nil {
+			s.Log(" Click on WhileUsingThisApp until appverifer exist")
+			clickOnWhileUsingThisAppButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: ShortUITimeout}); err != nil {
+		s.Error("appPkgName doesn't exist: ", err)
+	}
+
+	// Click on permission button until appverifer exist.
+	clickOnPermissionButton := d.Object(ui.ClassName(AndroidButtonClassName))
+	if err := clickOnPermissionButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
+		s.Log("clickOnPermissionButton Button doesn't exists: ", err)
+	} else if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := appverifer.Exists(ctx); err != nil {
+			s.Log(" Click on clickOnPermissionButton until appverifer exist")
+			clickOnPermissionButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: ShortUITimeout}); err != nil {
+		s.Error("appPkgName doesn't exist: ", err)
+	}
 }
