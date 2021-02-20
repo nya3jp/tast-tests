@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3939173_01b256dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-20T00:57:09Z",
+      "side": 1,
+      "message": "The key part of genparams is that they\u0027re implemented as test cases (+nya for confirmation). Please follow that.\n\nIf that\u0027s possible please make sure that generator-only data types and structures are only in the test binaries (i.e. in the file of _test.go suffix).",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 51
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dd3a1bd_b3baa9d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-20T00:57:09Z",
+      "side": 1,
+      "message": "Please do not use embedding.  \"Tier Tier\".",
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17ad589f_5ed4395a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-20T00:57:09Z",
+      "side": 1,
+      "message": "I believe that this \u0027TestParam\u0027 type name should be avoided, as it is extremely confusing with \"TestParameters\" type just above.\n\nI am guessing this is the parameter for generators.  \"GeneratorParam\" might be the good.",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 14
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7a9fbf_960b9a43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-20T00:57:09Z",
+      "side": 1,
+      "message": "Bluetooth is a boolean value, so \"EnableBT: {{.EnableBT}}\" is good enough, I think.",
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de88358_99b59e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-20T00:57:09Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s such necessity of defining sub template.  Please directly embed into the main one.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 8
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d613c602_19e04f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-20T00:57:09Z",
+      "side": 1,
+      "message": "nit: remove trailing whitespaces",
+      "range": {
+        "startLine": 142,
+        "startChar": 122,
+        "endLine": 142,
+        "endChar": 151
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9410882_a73db84b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-20T00:57:09Z",
+      "side": 1,
+      "message": "From this, I assume that you have the set of parameters mostly, and this simply doubles for clamshell and tablet.  I don\u0027t think you really need to generate parameters -- you can just put those parameters directly to your test.",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
