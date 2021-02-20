@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/android/ui"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
@@ -127,6 +128,10 @@ func launchAppForGooglePlayGames(ctx context.Context, s *testing.State, tconn *c
 			s.Log("checkForDeactivateButton does not exists: ", err)
 		}
 
+		if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+			s.Log("Failed to close Play Store: ", err)
+		}
+
 		// Launch the Google play games app.
 		if err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "-c", "android.intent.category.LAUNCHER", "1").Run(testexec.DumpLogOnError); err != nil {
 			s.Fatal("Failed to start Google play games app: ", err)
@@ -134,8 +139,9 @@ func launchAppForGooglePlayGames(ctx context.Context, s *testing.State, tconn *c
 	}
 
 	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeID))
+	homeIcon := d.Object(ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("homeIcon doesn't exist: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
