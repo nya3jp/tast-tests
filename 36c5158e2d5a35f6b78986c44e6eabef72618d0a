@@ -239,6 +239,30 @@
       },
       "revId": "36c5158e2d5a35f6b78986c44e6eabef72618d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3845f759_d0848b96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cujrunner/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-20T01:56:31Z",
+      "side": 1,
+      "message": "Correct me if I\u0027m wrong, but the blocked task (task 2 in that example) will be placed after task 1 anyways, and that can be ensured by setting st (time.Now().Sub(st) + t.blocked.rt)?\nIt may come earlier than task 3 (or later), but I don\u0027t think incrementing i will break anything.",
+      "parentUuid": "35473903_d4122cfb",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 50
+      },
+      "revId": "36c5158e2d5a35f6b78986c44e6eabef72618d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
