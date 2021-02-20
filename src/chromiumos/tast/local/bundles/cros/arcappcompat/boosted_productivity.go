@@ -93,9 +93,10 @@ func launchAppForBoostedProductivity(ctx context.Context, s *testing.State, tcon
 		s.Fatal("Failed to click on accept button: ", err)
 	}
 
-	// Check for drawer button.
-	drawerButton := d.Object(ui.ID(drawerID))
-	if err := drawerButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Drawer button doesn't exist: ", err)
+	// Check for homeIcon on homePage.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

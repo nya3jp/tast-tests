@@ -117,6 +117,7 @@ func launchAppForCanva(ctx context.Context, s *testing.State, tconn *chrome.Test
 	// Check for home icon.
 	homeIconButton := d.Object(ui.Text(homeIconText))
 	if err := homeIconButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 		s.Fatal("homeIcon button doesn't exist: ", err)
 	}
 }

@@ -84,7 +84,6 @@ func launchAppForAppleMusic(ctx context.Context, s *testing.State, tconn *chrome
 		cancelButtonText      = "Cancel"
 		donotSendButtonText   = "DON'T SEND"
 		scrollLayoutClassName = "android.webkit.WebView"
-		homeID                = "com.apple.android.music:id/action_listen_now"
 	)
 
 	// Check for scroll layout.
@@ -140,8 +139,9 @@ func launchAppForAppleMusic(ctx context.Context, s *testing.State, tconn *chrome
 	}
 
 	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.ID(homeID))
-	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

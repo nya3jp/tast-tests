@@ -84,6 +84,7 @@ func launchAppForBitLife(ctx context.Context, s *testing.State, tconn *chrome.Te
 	// Check for home icon.
 	homeIcon := d.Object(ui.ClassName(homeClassName), ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("homeIcon doesn't exist: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exist: ", err)
 	}
 }
