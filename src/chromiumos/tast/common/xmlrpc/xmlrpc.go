@@ -13,10 +13,12 @@ import (
 	"io/ioutil"
 	"math"
 	"net/http"
+	"reflect"
 	"strconv"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // rpcTimeout is the default and maximum timeout for XML-RPC requests.
@@ -33,7 +35,7 @@ func New(host string, port int) *XMLRpc {
 	return &XMLRpc{host: host, port: port}
 }
 
-// Call represents a Servo call request.
+// Call represents a XML-RPC call request.
 type Call struct {
 	method string
 	args   []interface{}
@@ -41,21 +43,16 @@ type Call struct {
 
 // methodCall mirrors the structure of an XML-RPC method call.
 type methodCall struct {
-	MethodName string  `xml:"methodName"`
-	Params     []param `xml:"params>param"`
+	XMLName    xml.Name `xml:"methodCall"`
+	MethodName string   `xml:"methodName"`
+	Params     []param  `xml:"params>param"`
 }
 
-// request is an XML-RPC request.
-type request struct {
-	Name   xml.Name `xml:"methodCall"`
-	Params []param  `xml:"params>param"`
-}
-
-// response is an XML-RPC response.
-type response struct {
-	Name   xml.Name `xml:"methodResponse"`
-	Params []param  `xml:"params>param"`
-	Fault  fault    `xml:"fault>value>struct"`
+// methodResponse is an XML-RPC response.
+type methodResponse struct {
+	XMLName xml.Name `xml:"methodResponse"`
+	Params  *[]param `xml:"params>param,omitempty"`
+	Fault   *fault   `xml:"fault,omitempty"`
 }
 
 // param is an XML-RPC param.
@@ -63,24 +60,78 @@ type param struct {
 	Value value `xml:"value"`
 }
 
-// value is an XML-RPC value.
-type value struct {
-	Boolean string `xml:"boolean,omitempty"`
-	Double  string `xml:"double,omitempty"`
-	Int     string `xml:"int,omitempty"`
-	String  string `xml:"string,omitempty"`
+// fault is an XML-RPC fault.
+// If present, it usually contains in its value a struct of two members:
+// faultCode (an int) and faultString (a string).
+type fault struct {
+	Value value `xml:"value"`
 }
 
-// fault is an XML-RPC fault.
-// If present, it usually contains two members: faultCode (an int) and faultString (a string).
-type fault struct {
-	Members []member `xml:"member"`
+// value is an XML-RPC value.
+type value struct {
+	Boolean *string    `xml:"boolean,omitempty"`
+	Double  *string    `xml:"double,omitempty"`
+	Int     *string    `xml:"int,omitempty"`
+	Str     *string    `xml:"string,omitempty"`
+	Array   *xmlArray  `xml:"array,omitempty"`
+	Struct  *xmlStruct `xml:"struct,omitempty"`
+}
+
+// xmlArray is an XML-RPC array.
+type xmlArray struct {
+	Values []value `xml:"data>value,omitempty"`
+}
+
+// xmlStruct is an XML-RPC struct.
+type xmlStruct struct {
+	Members []member `xml:"member,omitempty"`
 }
 
 // member is an XML-RPC object containing a name and a value.
 type member struct {
 	Name  string `xml:"name"`
 	Value value  `xml:"value"`
+}
+
+// String implements the String() interface of value.
+func (v value) String() string {
+	if v.Boolean != nil {
+		return *v.Boolean
+	}
+	if v.Double != nil {
+		return *v.Double
+	}
+	if v.Int != nil {
+		return *v.Int
+	}
+	if v.Str != nil {
+		return *v.Str
+	}
+	if v.Array != nil {
+		s := "["
+		values := v.Array.Values
+		for i, e := range values {
+			s += fmt.Sprint(e)
+			if i != len(values)-1 {
+				s += ", "
+			}
+		}
+		s += "]"
+		return s
+	}
+	if v.Struct != nil {
+		s := "{"
+		members := v.Struct.Members
+		for i, m := range members {
+			s += fmt.Sprintf("%s: %s", m.Name, m.Value)
+			if i != len(members)-1 {
+				s += ", "
+			}
+		}
+		s += "}"
+		return s
+	}
+	return "<empty>"
 }
 
 // FaultError is a type of error representing an XML-RPC fault.
@@ -159,23 +210,38 @@ func float64ToXMLDouble(f float64) string {
 
 // newValue creates an XML-RPC <value>.
 func newValue(in interface{}) (value, error) {
-	// TODO(jeffcarp): Support more data types.
+	// TODO(jeffcarp): Support more data types, such as Golang map to XML-RPC struct.
+	if reflect.TypeOf(in).Kind() == reflect.Slice || reflect.TypeOf(in).Kind() == reflect.Array {
+		v := reflect.ValueOf(in)
+		var a xmlArray
+		for i := 0; i < v.Len(); i++ {
+			val, err := newValue(v.Index(i).Interface())
+			if err != nil {
+				return value{}, err
+			}
+			a.Values = append(a.Values, val)
+		}
+		return value{Array: &a}, nil
+	}
 	switch v := in.(type) {
 	case string:
-		return value{String: v}, nil
+		s := v
+		return value{Str: &s}, nil
 	case bool:
-		return value{Boolean: boolToXMLBoolean(v)}, nil
+		b := boolToXMLBoolean(v)
+		return value{Boolean: &b}, nil
 	case int:
 		i, err := intToXMLInteger(v)
 		if err != nil {
 			return value{}, err
 		}
-		return value{Int: i}, nil
+		return value{Int: &i}, nil
 	case float64:
-		return value{Double: float64ToXMLDouble(v)}, nil
+		f := float64ToXMLDouble(v)
+		return value{Double: &f}, nil
 	}
 
-	return value{}, errors.Errorf("%q not of supported type", in)
+	return value{}, errors.Errorf("%q not of supported type for newValue", reflect.TypeOf(in))
 }
 
 // newParams creates a list of XML-RPC <params>.
@@ -202,7 +268,7 @@ func serializeMethodCall(cl Call) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	return xml.Marshal(methodCall{cl.method, params})
+	return xml.Marshal(&methodCall{MethodName: cl.method, Params: params})
 }
 
 // getTimeout returns the lowest of the default timeout or remaining duration
@@ -219,34 +285,101 @@ func getTimeout(ctx context.Context) time.Duration {
 	return timeout
 }
 
+// unpackValue unpacks a value struct into the given pointers.
+func unpackValue(val value, out interface{}) error {
+	//TODO: Support unpack more data types, such as XML-RPC struct.
+	switch o := out.(type) {
+	case *string:
+		if val.Str == nil {
+			return errors.Errorf("value %s is not a string value", val)
+		}
+		*o = *val.Str
+	case *bool:
+		if val.Boolean == nil {
+			return errors.Errorf("value %s is not a boolean value", val)
+		}
+		v, err := xmlBooleanToBool(*val.Boolean)
+		if err != nil {
+			return err
+		}
+		*o = v
+	case *int:
+		if val.Int == nil {
+			return errors.Errorf("value %s is not an int value", val)
+		}
+		i, err := xmlIntegerToInt(*val.Int)
+		if err != nil {
+			return err
+		}
+		*o = i
+	case *float64:
+		if val.Double == nil {
+			return errors.Errorf("value %s is not a double value", val)
+		}
+		f, err := xmlDoubleToFloat64(*val.Double)
+		if err != nil {
+			return err
+		}
+		*o = f
+	case *[]string:
+		if val.Array == nil {
+			return errors.Errorf("value %s is not an array value", val)
+		}
+		for _, e := range val.Array.Values {
+			var i string
+			if err := unpackValue(e, &i); err != nil {
+				return err
+			}
+			*o = append(*o, i)
+		}
+	case *[]bool:
+		if val.Array == nil {
+			return errors.Errorf("value %s is not an array value", val)
+		}
+		for _, e := range val.Array.Values {
+			var i bool
+			if err := unpackValue(e, &i); err != nil {
+				return err
+			}
+			*o = append(*o, i)
+		}
+	case *[]int:
+		if val.Array == nil {
+			return errors.Errorf("value %s is not an array value", val)
+		}
+		for _, e := range val.Array.Values {
+			var i int
+			if err := unpackValue(e, &i); err != nil {
+				return err
+			}
+			*o = append(*o, i)
+		}
+	case *[]float64:
+		if val.Array == nil {
+			return errors.Errorf("value %s is not an array value", val)
+		}
+		for _, e := range val.Array.Values {
+			var i float64
+			if err := unpackValue(e, &i); err != nil {
+				return err
+			}
+			*o = append(*o, i)
+		}
+	default:
+		return errors.Errorf("%q not of supported type for unpackValue", reflect.TypeOf(out))
+	}
+	return nil
+}
+
 // unpack extracts a response's arguments into a list of given pointers.
-func (r *response) unpack(out []interface{}) error {
-	if len(r.Params) != len(out) {
-		return errors.Errorf("response contains %d arg(s); want %d", len(r.Params), len(out))
+func (r *methodResponse) unpack(out []interface{}) error {
+	if len(*r.Params) != len(out) {
+		return errors.Errorf("response contains %d arg(s); want %d", len(*r.Params), len(out))
 	}
 
-	for i, p := range r.Params {
-		switch o := out[i].(type) {
-		case *string:
-			*o = p.Value.String
-		case *bool:
-			v, err := xmlBooleanToBool(p.Value.Boolean)
-			if err != nil {
-				return err
-			}
-			*o = v
-		case *int:
-			i, err := xmlIntegerToInt(p.Value.Int)
-			if err != nil {
-				return err
-			}
-			*o = i
-		case *float64:
-			f, err := xmlDoubleToFloat64(p.Value.Double)
-			if err != nil {
-				return err
-			}
-			*o = f
+	for i, p := range *r.Params {
+		if err := unpackValue(p.Value, out[i]); err != nil {
+			return errors.Wrapf(err, "failed to unpack response param at index %d", i)
 		}
 	}
 
@@ -254,18 +387,27 @@ func (r *response) unpack(out []interface{}) error {
 }
 
 // checkFault returns a FaultError if the response contains a fault with a non-zero faultCode.
-func (r *response) checkFault() error {
-	if len(r.Fault.Members) == 0 {
+func (r *methodResponse) checkFault() error {
+	if r.Fault == nil {
 		return nil
+	}
+	if r.Fault.Value.Struct == nil {
+		return errors.Errorf("fault %s doesn't contain xml-rpc struct", r.Fault.Value)
 	}
 	var rawFaultCode string
 	var faultString string
-	for _, m := range r.Fault.Members {
+	for _, m := range r.Fault.Value.Struct.Members {
 		switch m.Name {
 		case "faultCode":
-			rawFaultCode = m.Value.Int
+			if m.Value.Int == nil {
+				return errors.Errorf("faultCode %s doesn't provide integer value", m.Value)
+			}
+			rawFaultCode = *m.Value.Int
 		case "faultString":
-			faultString = m.Value.String
+			if m.Value.Str == nil {
+				return errors.Errorf("faultString %s doesn't provide string value", m.Value)
+			}
+			faultString = *m.Value.Str
 		default:
 			return errors.Errorf("unexpected fault member name: %s", m.Name)
 		}
@@ -300,10 +442,11 @@ func (r *XMLRpc) Run(ctx context.Context, cl Call, out ...interface{}) error {
 
 	// Read body and unmarshal XML.
 	bodyBytes, err := ioutil.ReadAll(resp.Body)
-	res := response{}
+	res := methodResponse{}
 	if err = xml.Unmarshal(bodyBytes, &res); err != nil {
 		return err
 	}
+
 	if err = res.checkFault(); err != nil {
 		return err
 	}
@@ -311,7 +454,10 @@ func (r *XMLRpc) Run(ctx context.Context, cl Call, out ...interface{}) error {
 	// If outs are specified, unpack response params.
 	// Otherwise, return without unpacking.
 	if len(out) > 0 {
-		return res.unpack(out)
+		if err := res.unpack(out); err != nil {
+			testing.ContextLogf(ctx, "Failed to unpack XML-RPC response for request %v: %s", cl, string(bodyBytes))
+			return err
+		}
 	}
 	return nil
 }
