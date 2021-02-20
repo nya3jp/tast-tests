@@ -86,12 +86,11 @@ func launchAppForTodoist(ctx context.Context, s *testing.State, tconn *chrome.Te
 		emailAddressID        = "com.todoist:id/email_exists_input"
 		passwordID            = "com.todoist:id/log_in_password"
 		logInText             = "LOG IN"
-		fabID                 = "com.todoist:id/fab"
 	)
 
 	// Click on continue button.
 	continueButton := d.Object(ui.Text(continueWithEmailText))
-	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := continueButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("Continue button doesn't exist: ", err)
 	} else if err := continueButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on continue button: ", err)
@@ -109,23 +108,30 @@ func launchAppForTodoist(ctx context.Context, s *testing.State, tconn *chrome.Te
 	TodoistEmailID := s.RequiredVar("arcappcompat.Todoist.emailid")
 	emailAddress := d.Object(ui.ID(emailAddressID))
 	if err := emailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("EmailAddress doesn't exist: ", err)
+		s.Error("EmailAddress doesn't exist: ", err)
 	} else if err := emailAddress.Click(ctx); err != nil {
 		s.Fatal("Failed to click on EmailAddress: ", err)
 	} else if err := emailAddress.SetText(ctx, TodoistEmailID); err != nil {
 		s.Fatal("Failed to enterEmailAddress: ", err)
 	}
 
-	// Click on continue button.
-	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	// Click on continueButton until enterPassword exist.
+	enterPassword := d.Object(ui.ID(passwordID))
+	if err := continueButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("Continue button doesn't exist: ", err)
-	} else if err := continueButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on continue button: ", err)
+	} else if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := enterPassword.Exists(ctx); err != nil {
+			continueButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
+		s.Log("enterPassword doesn't exist: ", err)
 	}
 
 	// Enter password.
 	TodoistPassword := s.RequiredVar("arcappcompat.Todoist.password")
-	enterPassword := d.Object(ui.ID(passwordID))
+	enterPassword = d.Object(ui.ID(passwordID))
 	if err := enterPassword.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("EnterPassword doesn't exist: ", err)
 	} else if err := enterPassword.Click(ctx); err != nil {
@@ -142,9 +148,10 @@ func launchAppForTodoist(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on log in button: ", err)
 	}
 
-	// Check for home Icon.
-	homeButton := d.Object(ui.ID(fabID))
-	if err := homeButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Fatal("homeButton doesn't exist: ", err)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
