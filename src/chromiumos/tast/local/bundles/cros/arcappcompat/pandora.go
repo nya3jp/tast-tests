@@ -81,13 +81,11 @@ func Pandora(ctx context.Context, s *testing.State) {
 // verify Pandora reached main activity page of the app.
 func launchAppForPandora(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		signInID       = "com.pandora.android:id/welcome_log_in_button"
-		emailText      = "Email"
-		passwordText   = "Password"
-		logInText      = "Log In"
-		logInID        = "com.pandora.android:id/button_sign_in_submit"
-		profileIconID  = "com.pandora.android:id/toolbar_home"
-		profileIconDes = "Navigation Menu with Notification"
+		signInID     = "com.pandora.android:id/welcome_log_in_button"
+		emailText    = "Email"
+		passwordText = "Password"
+		logInText    = "Log In"
+		logInID      = "com.pandora.android:id/button_sign_in_submit"
 	)
 
 	// Click on sign in button.
@@ -128,9 +126,10 @@ func launchAppForPandora(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on LogIn button: ", err)
 	}
 
-	// Check for profile icon.
-	profileIcon := d.Object(ui.ID(profileIconID), ui.Description(profileIconDes))
-	if err := profileIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("profileIcon doesn't exist: ", err)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
