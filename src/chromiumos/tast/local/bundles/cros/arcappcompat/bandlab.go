@@ -141,9 +141,11 @@ func launchAppForBandlab(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on noThanks button: ", err)
 	}
 
-	// Check for create icon.
-	createIcon := d.Object(ui.ID(createIconID), ui.Description(createIconDesc))
-	if err := createIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("createIcon doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homeIcon on homePage.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

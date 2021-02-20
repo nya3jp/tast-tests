@@ -507,3 +507,34 @@ func processMonkeyOutput(output string) error {
 	}
 	return nil
 }
+
+// HandleDialogBoxes func will handle the dialog box
+func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appPkgName string) {
+	const (
+		allowText                   = "ALLOW"
+		whileUsingThisAppButtonText = "WHILE USING THE APP"
+	)
+
+	allowButton := d.Object(ui.TextMatches("(?i)" + allowText))
+	appverifer := d.Object(ui.PackageName(appPkgName))
+	permissionButton := d.Object(ui.ClassName(AndroidButtonClassName))
+	whileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := allowButton.Exists(ctx); err == nil {
+			s.Log("Click on allowButton")
+			allowButton.Click(ctx)
+		}
+		if err := whileUsingThisAppButton.Exists(ctx); err == nil {
+			s.Log("Click on whileUsingThisApp")
+			whileUsingThisAppButton.Click(ctx)
+		}
+		if err := permissionButton.Exists(ctx); err == nil {
+			s.Log("Click on permissionButton")
+			permissionButton.Click(ctx)
+		}
+		return appverifer.Exists(ctx)
+	}, &testing.PollOptions{Timeout: LongUITimeout}); err != nil {
+		s.Error("appPkgName doesn't exist: ", err)
+	}
+}
