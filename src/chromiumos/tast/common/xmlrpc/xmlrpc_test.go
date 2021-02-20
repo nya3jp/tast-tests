@@ -6,7 +6,9 @@ package xmlrpc
 
 import (
 	"encoding/xml"
+	"fmt"
 	"math"
+	"reflect"
 	"strconv"
 	"testing"
 )
@@ -155,6 +157,70 @@ func TestFloat64ToXMLDouble(t *testing.T) {
 	}
 }
 
+func TestValueString(t *testing.T) {
+	s := "1"
+	v := value{Int: &s}
+	sOut := fmt.Sprintf("%v", v)
+	sWant := "(int)1"
+	if sOut != sWant {
+		t.Errorf("String() got %q, want %q", sOut, sWant)
+	}
+
+	s = "1"
+	v = value{Boolean: &s}
+	sOut = fmt.Sprintf("%v", v)
+	sWant = "(boolean)1"
+	if sOut != sWant {
+		t.Errorf("String() got %q, want %q", sOut, sWant)
+	}
+
+	s = "1.2"
+	v = value{Double: &s}
+	sOut = fmt.Sprintf("%v", v)
+	sWant = "(double)1.2"
+	if sOut != sWant {
+		t.Errorf("String() got %q, want %q", sOut, sWant)
+	}
+
+	s = "1.2"
+	v = value{Str: &s}
+	sOut = fmt.Sprintf("%v", v)
+	sWant = "(string)1.2"
+	if sOut != sWant {
+		t.Errorf("String() got %q, want %q", sOut, sWant)
+	}
+
+	s1 := "2"
+	s2 := "0"
+	s3 := "2.1"
+	s4 := "2.1"
+	a := xmlArray{Values: []value{
+		value{Int: &s1},
+		value{Boolean: &s2},
+		value{Double: &s3},
+		value{Str: &s4},
+	}}
+	v = value{Array: &a}
+	sOut = fmt.Sprintf("%v", v)
+	sWant = "[(int)2, (boolean)0, (double)2.1, (string)2.1]"
+	if sOut != sWant {
+		t.Errorf("String() got %q, want %q", sOut, sWant)
+	}
+
+	b := xmlStruct{Members: []member{
+		member{Name: "key1", Value: value{Int: &s1}},
+		member{Name: "key2", Value: value{Boolean: &s2}},
+		member{Name: "key3", Value: value{Double: &s3}},
+		member{Name: "key4", Value: value{Str: &s4}},
+	}}
+	v = value{Struct: &b}
+	sOut = fmt.Sprintf("%v", v)
+	sWant = "{key1: (int)2, key2: (boolean)0, key3: (double)2.1, key4: (string)2.1}"
+	if sOut != sWant {
+		t.Errorf("String() got %q, want %q", sOut, sWant)
+	}
+}
+
 func TestNewValue(t *testing.T) {
 	expectedStr := "rutabaga"
 	v, err := newValue(expectedStr)
@@ -162,8 +228,8 @@ func TestNewValue(t *testing.T) {
 		t.Errorf("newValue(%q) failed: %v", expectedStr, err)
 		return
 	}
-	if v.String != expectedStr {
-		t.Errorf("got %q; want %q", v.String, expectedStr)
+	if *v.Str != expectedStr {
+		t.Errorf("got %q; want %q", *v.Str, expectedStr)
 	}
 
 	expectedBool := true
@@ -173,8 +239,8 @@ func TestNewValue(t *testing.T) {
 		t.Errorf("input %v gave unexpected error: %v", expectedStr, err)
 		return
 	}
-	if v.Boolean != expectedBoolStr {
-		t.Errorf("got %q; want %q", v.Boolean, expectedBoolStr)
+	if *v.Boolean != expectedBoolStr {
+		t.Errorf("got %q; want %q", *v.Boolean, expectedBoolStr)
 	}
 
 	expectedInt := -1
@@ -184,8 +250,8 @@ func TestNewValue(t *testing.T) {
 		t.Errorf("input %v gave unexpected error: %v", expectedInt, err)
 		return
 	}
-	if v.Int != expectedIntStr {
-		t.Errorf("got %q; want %q", v.Int, expectedIntStr)
+	if *v.Int != expectedIntStr {
+		t.Errorf("got %q; want %q", *v.Int, expectedIntStr)
 	}
 
 	f := -3.14
@@ -195,8 +261,21 @@ func TestNewValue(t *testing.T) {
 		t.Errorf("input %f gave unexpected error: %v", f, err)
 		return
 	}
-	if v.Double != expectedDoubleStr {
-		t.Errorf("got %q; want %q", v.Double, expectedDoubleStr)
+	if *v.Double != expectedDoubleStr {
+		t.Errorf("got %q; want %q", *v.Double, expectedDoubleStr)
+	}
+
+	arrInt := []int{1, 2}
+	s1 := "1"
+	s2 := "2"
+	expectedArrayOfInt := xmlArray{Values: []value{{Int: &s1}, {Int: &s2}}}
+	v, err = newValue(arrInt)
+	if err != nil {
+		t.Errorf("input %v gave unexpected error: %v", arrInt, err)
+		return
+	}
+	if !reflect.DeepEqual(*v.Array, expectedArrayOfInt) {
+		t.Errorf("got %v; want %v", v.Array, expectedArrayOfInt)
 	}
 
 	expectedUnsupported := struct{}{}
@@ -216,29 +295,70 @@ func TestNewParams(t *testing.T) {
 	if len(actual) != 3 {
 		t.Errorf("got len %d; want %d", len(actual), 3)
 	}
-	if actual[0].Value.String != "rutabaga" {
-		t.Errorf("for first return value got %q; want %q", actual[0].Value.String, "rutabaga")
+	if *actual[0].Value.Str != "rutabaga" {
+		t.Errorf("for first return value got %q; want %q", *actual[0].Value.Str, "rutabaga")
 	}
-	if actual[1].Value.Boolean != "1" {
-		t.Errorf("for second return value got %q; want %q", actual[1].Value.Boolean, "1")
+	if *actual[1].Value.Boolean != "1" {
+		t.Errorf("for second return value got %q; want %q", *actual[1].Value.Boolean, "1")
 	}
-	if actual[2].Value.Double != "-3.14" {
-		t.Errorf("for third return value got %q; want %q", actual[2].Value.Double, "-3.14")
+	if *actual[2].Value.Double != "-3.14" {
+		t.Errorf("for third return value got %q; want %q", *actual[2].Value.Double, "-3.14")
+	}
+}
+
+func TestSerializeMethodCall(t *testing.T) {
+	cl := NewCall("TestMethod", 1, false, 2.2, "lucky",
+		[]int{1, 2}, []bool{false, true}, []float64{1.1, 2.2}, []string{"so", "lucky"})
+	body, err := serializeMethodCall(cl)
+	if err != nil {
+		t.Fatal("Failed to serialize call: ", cl)
+	}
+
+	expectedBody := `<methodCall>` +
+		`<methodName>TestMethod</methodName>` +
+		`<params>` +
+		`<param><value><int>1</int></value></param>` +
+		`<param><value><boolean>0</boolean></value></param>` +
+		`<param><value><double>2.2</double></value></param>` +
+		`<param><value><string>lucky</string></value></param>` +
+		`<param><value><array><data><value><int>1</int></value><value><int>2</int></value></data></array></value></param>` +
+		`<param><value><array><data><value><boolean>0</boolean></value><value><boolean>1</boolean></value></data></array></value></param>` +
+		`<param><value><array><data><value><double>1.1</double></value><value><double>2.2</double></value></data></array></value></param>` +
+		`<param><value><array><data><value><string>so</string></value><value><string>lucky</string></value></data></array></value></param>` +
+		`</params>` +
+		`</methodCall>`
+
+	if string(body) != expectedBody {
+		t.Errorf("serializeMethodCall: got\n%s\nwant\n%s", string(body), expectedBody)
 	}
 }
 
 func TestUnpack(t *testing.T) {
-	params, err := newParams([]interface{}{"rutabaga", true, 1, -3.14})
+	resp := methodResponse{Params: nil}
+	var out string
+	expErr := "response contains no args; want 1"
+	if err := resp.unpack([]interface{}{&out}); err == nil {
+		t.Errorf("unpacking got no error")
+	} else if err.Error() != expErr {
+		t.Errorf("unpacking got %q; want %q", err.Error(), expErr)
+	}
+	if err := resp.unpack([]interface{}{}); err != nil {
+		t.Errorf("unpacking got error %v", err)
+	}
+
+	arrIntIn := []int{1, 2}
+	params, err := newParams([]interface{}{"rutabaga", true, 1, -3.14, arrIntIn})
 	if err != nil {
 		t.Fatal("creating params: ", err)
 	}
-	resp := response{Params: params}
+	resp = methodResponse{Params: &params}
 	var stringOut string
 	var boolOut bool
 	var intOut int
 	var floatOut float64
-	if err := resp.unpack([]interface{}{&stringOut, &boolOut, &intOut, &floatOut}); err != nil {
-		t.Fatal("unpacking: ", err)
+	var arrIntOut []int
+	if err := resp.unpack([]interface{}{&stringOut, &boolOut, &intOut, &floatOut, &arrIntOut}); err != nil {
+		t.Fatal("unpacking:", err)
 	}
 	if stringOut != "rutabaga" {
 		t.Errorf("unpacking %q: got %q; want %q", "rutabaga", stringOut, "rutabaga")
@@ -251,6 +371,115 @@ func TestUnpack(t *testing.T) {
 	}
 	if floatOut != -3.14 {
 		t.Errorf("unpacking %q: got %f; want %f", "-3.14", floatOut, -3.14)
+	}
+	if !reflect.DeepEqual(arrIntIn, arrIntOut) {
+		t.Errorf("unpacking %v: got %v", arrIntIn, arrIntOut)
+	}
+}
+
+func TestXMLResponse(t *testing.T) {
+	xmlStr := `
+	<?xml version="1.0"?>
+	<methodResponse>
+	<params>
+		<param>
+			<value><double>3.14</double></value>
+		</param>
+		<param>
+			<value><int>1</int></value>
+		</param>
+		<param>
+			<value><string>hellow world</string></value>
+		</param>
+		<param>
+			<value><boolean>0</boolean></value>
+		</param>
+		<param>
+			<value>
+				<array>
+					<data>
+						<value><int>10</int></value>
+						<value><int>20</int></value>
+					</data>
+				</array>
+			</value>
+		</param>
+		<param>
+			<value>
+				<array>
+					<data>
+						<value><boolean>0</boolean></value>
+						<value><boolean>1</boolean></value>
+					</data>
+				</array>
+			</value>
+		</param>
+		<param>
+			<value>
+				<array>
+					<data>
+						<value><double>1.1</double></value>
+						<value><double>2.2</double></value>
+					</data>
+				</array>
+			</value>
+		</param>
+		<param>
+			<value>
+				<array>
+					<data>
+						<value><string>10</string></value>
+						<value><string>20</string></value>
+					</data>
+				</array>
+			</value>
+		</param>
+	</params>
+	</methodResponse>
+	`
+	res := methodResponse{}
+	if err := xml.Unmarshal([]byte(xmlStr), &res); err != nil {
+		t.Fatal("xml unmarshal:", err)
+	}
+	var stringOut string
+	var boolOut bool
+	var intOut int
+	var floatOut float64
+	var arrIntOut []int
+	var arrBoolOut []bool
+	var arrDoubleOut []float64
+	var arrStrOut []string
+	if err := res.unpack([]interface{}{&floatOut, &intOut, &stringOut, &boolOut,
+		&arrIntOut, &arrBoolOut, &arrDoubleOut, &arrStrOut}); err != nil {
+		t.Fatal("response unpack:", err)
+	}
+	if floatOut != 3.14 {
+		t.Errorf("unpacking %q: got %f; want %f", "3.14", floatOut, 3.14)
+	}
+	if intOut != 1 {
+		t.Errorf("unpacking %q: got %d; want %d", "1", intOut, 1)
+	}
+	if stringOut != "hellow world" {
+		t.Errorf("unpacking %q: got %q; want %q", "hellow world", stringOut, "hellow world")
+	}
+	if boolOut != false {
+		t.Errorf("unpacking %q: got %v; want %v", "false", boolOut, false)
+	}
+	arrIntIn := []int{10, 20}
+	if !reflect.DeepEqual(arrIntIn, arrIntOut) {
+		t.Errorf("unpacking %v: got %v", arrIntIn, arrIntOut)
+	}
+	arrBoolIn := []bool{false, true}
+	if !reflect.DeepEqual(arrBoolIn, arrBoolOut) {
+		t.Errorf("unpacking %v: got %v", arrBoolIn, arrBoolOut)
+	}
+	arrDoubleIn := []float64{1.1, 2.2}
+	if !reflect.DeepEqual(arrDoubleIn, arrDoubleOut) {
+		t.Errorf("unpacking %v: got %v", arrDoubleIn, arrDoubleOut)
+	}
+	arrStrIn := []string{"10", "20"}
+	if !reflect.DeepEqual(arrStrIn, arrStrOut) {
+		t.Errorf("unpacking %v: got %v", arrStrIn, arrStrOut)
 	}
 }
 
@@ -348,7 +577,7 @@ func TestCheckFault(t *testing.T) {
 		testCase{faultWithUnexpectedMember, true, false, 0, ""},
 	} {
 		// Check the XML bytes for fault.
-		r := response{}
+		r := methodResponse{}
 		if err := xml.Unmarshal(tc.b, &r); err != nil {
 			t.Errorf("tc #%d: failed to unmarshal bytes: %v", i, err)
 			continue
