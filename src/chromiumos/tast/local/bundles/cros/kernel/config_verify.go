@@ -222,6 +222,8 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 	optional := []string{
 		// OVERLAY_FS is needed in moblab images, and allowed to exist in general. https://crbug.com/990741#c9
 		"OVERLAY_FS",
+		// SET_FS is used to mark architectures that have set_fs().
+		"SET_FS",
 	}
 	missing := []string{
 		// Never going to optimize to this CPU.
@@ -301,7 +303,7 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 	} else {
 		builtin = append(builtin, "DEBUG_RODATA", "DEBUG_SET_MODULE_RONX")
 	}
-	if arch == "aarch64" {
+	if arch == "aarch64" && ver.IsOrLess(5, 6) {
 		builtin = append(builtin, "DEBUG_ALIGN_RODATA")
 	}
 
