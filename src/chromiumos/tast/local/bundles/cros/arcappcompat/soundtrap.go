@@ -89,7 +89,6 @@ func launchAppForSoundtrap(ctx context.Context, s *testing.State, tconn *chrome.
 		dismissText       = "Dismiss"
 		nextText          = "Next"
 		doneText          = "Done"
-		homeIconText      = "Create New Project"
 	)
 
 	// Click on sign in button.
@@ -160,9 +159,11 @@ func launchAppForSoundtrap(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Log("next button does exists")
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for home icon.
-	homeIconButton := d.Object(ui.Text(homeIconText))
-	if err := homeIconButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("homeIcon button doesn't exist: ", err)
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

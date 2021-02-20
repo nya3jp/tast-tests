@@ -206,10 +206,11 @@ func launchAppForTwitch(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Fatal("Failed to click on continueButton: ", err)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeiconID))
+	homeIcon := d.Object(ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("home icon doesn't exist: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Error("homeIcon doesn't exist: ", err)
 	}
-
 }

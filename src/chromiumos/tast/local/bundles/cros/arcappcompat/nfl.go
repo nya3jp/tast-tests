@@ -95,11 +95,14 @@ func launchAppForNFL(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Error("Home icon doesn't exist: ", err)
+		s.Log("homeButton doesn't exist: ", err)
 	}
 
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for home icon.
-	if err := homeButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Home icon doesn't exist: ", err)
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

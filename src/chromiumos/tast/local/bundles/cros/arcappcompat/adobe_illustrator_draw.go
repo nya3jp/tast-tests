@@ -80,7 +80,6 @@ func AdobeIllustratorDraw(ctx context.Context, s *testing.State) {
 // verify app reached main activity page of the app.
 func launchAppForAdobeIllustratorDraw(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		addProjectIconID     = "com.adobe.creativeapps.draw:id/add_project_btn"
 		continueButtonText   = "Continue"
 		checkBoxID           = "consent"
 		selectGmailAccountID = "com.google.android.gms:id/container"
@@ -124,9 +123,11 @@ func launchAppForAdobeIllustratorDraw(ctx context.Context, s *testing.State, tco
 		s.Fatal("Failed to click on continueButton: ", err)
 	}
 
-	// Check for add project icon in home page.
-	addProjectIcon := d.Object(ui.ID(addProjectIconID))
-	if err := addProjectIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("addProjectIcon doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon in home page.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
