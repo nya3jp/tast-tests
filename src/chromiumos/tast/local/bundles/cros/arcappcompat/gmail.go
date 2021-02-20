@@ -83,8 +83,6 @@ func Gmail(ctx context.Context, s *testing.State) {
 func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 
 	const (
-		composeIconClassName    = "android.widget.ImageButton"
-		composeIconDescription  = "Compose"
 		textViewClassName       = "android.widget.TextView"
 		gotItButtonText         = "GOT IT"
 		takeMeToGmailButtonText = "TAKE ME TO GMAIL"
@@ -113,9 +111,10 @@ func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on takeMeToGmailButton: ", err)
 	}
 
-	// Check for compose icon in home page.
-	composeIcon := d.Object(ui.ClassName(composeIconClassName), ui.DescriptionContains(composeIconDescription))
-	if err := composeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Failed to click on composeIcon: ", err)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
