@@ -80,12 +80,10 @@ func VLC(ctx context.Context, s *testing.State) {
 // verify VLC reached main activity page of the app.
 func launchAppForVLC(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		allowText     = "ALLOW"
-		doneText      = "DONE"
-		nextID        = "org.videolan.vlc:id/next"
-		noText        = "NO"
-		homeClassName = "android.widget.FrameLayout"
-		homeDes       = "Video"
+		allowText = "ALLOW"
+		doneText  = "DONE"
+		nextID    = "org.videolan.vlc:id/next"
+		noText    = "NO"
 	)
 	// Click on next Button.
 	clickOnNextButton := d.Object(ui.ID(nextID))
@@ -127,8 +125,9 @@ func launchAppForVLC(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 	}
 
 	// Check for home icon.
-	homeIcon := d.Object(ui.ClassName(homeClassName), ui.Description(homeDes))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 		s.Error("homeIcon doesn't exist: ", err)
 	}
 }

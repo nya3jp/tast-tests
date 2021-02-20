@@ -81,8 +81,6 @@ func GoogleCalendar(ctx context.Context, s *testing.State) {
 func launchAppForGoogleCalendar(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 
 	const (
-		addButtonClassName       = "android.widget.ImageButton"
-		addButtonDescription     = "Create new event"
 		allowButtonText          = "ALLOW"
 		androidButtonClassName   = "android.widget.Button"
 		gotItButtonText          = "Got it"
@@ -141,16 +139,15 @@ func launchAppForGoogleCalendar(ctx context.Context, s *testing.State, tconn *ch
 	userName := d.Object(ui.ID(userNameID))
 	if err := userName.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Error("userName doesn't exist: ", err)
-	}
-
-	// Click on press back.
-	if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
+	} else if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
 		s.Log("Failed to enter KEYCODE_BACK: ", err)
 	}
 
-	// Check for add icon in home page.
-	addIcon := d.Object(ui.ClassName(addButtonClassName), ui.DescriptionContains(addButtonDescription))
-	if err := addIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("addIcon doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

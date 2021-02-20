@@ -118,7 +118,7 @@ func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.
 
 	clickOnLoginButton := d.Object(ui.ClassName(viewGroupClassName), ui.Description(loginDes))
 	if err := clickOnLoginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("clickOnLoginButton doesn't exist: ", err)
+		s.Error("clickOnLoginButton doesn't exist: ", err)
 	} else if err := clickOnLoginButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnLoginButton: ", err)
 	}

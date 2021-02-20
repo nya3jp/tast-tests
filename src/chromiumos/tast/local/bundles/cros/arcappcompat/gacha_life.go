@@ -79,11 +79,11 @@ func GachaLife(ctx context.Context, s *testing.State) {
 // launchAppForGachaLife verifies GachaLife is launched and
 // verify GachaLife reached main activity page of the app.
 func launchAppForGachaLife(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	const homeClassName = "android.widget.FrameLayout"
-
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for home icon.
-	homeIcon := d.Object(ui.ClassName(homeClassName), ui.PackageName(appPkgName))
+	homeIcon := d.Object(ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("homeIcon doesn't exist: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

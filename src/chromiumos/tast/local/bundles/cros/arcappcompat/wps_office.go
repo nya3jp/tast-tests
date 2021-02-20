@@ -86,7 +86,6 @@ func launchAppForWPSOffice(ctx context.Context, s *testing.State, tconn *chrome.
 		agreeText = "AGREE"
 		startText = "Start WPS Office"
 		allowText = "ALLOW"
-		homeID    = "cn.wps.moffice_eng:id/home_my_roaming_userinfo_pic"
 	)
 
 	// Click on agree button.
@@ -113,9 +112,11 @@ func launchAppForWPSOffice(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Fatal("Failed to click on allow button: ", err)
 	}
 
-	// Check home page is launched.
-	homeButton := d.Object(ui.ID(homeID))
-	if err := homeButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("home button doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Error("homeIcon doesn't exist: ", err)
 	}
 }

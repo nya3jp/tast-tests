@@ -95,7 +95,6 @@ func launchAppForDropbox(ctx context.Context, s *testing.State, tconn *chrome.Te
 		unLinkDevicesID        = "com.dropbox.android:id/secondary_button"
 		unLinkButtonID         = "com.dropbox.android:id/confirmButton"
 		selectDevicesClassName = "android.view.ViewGroup"
-		homeFabID              = "com.dropbox.android:id/fab_button"
 	)
 
 	var countDevices = 1
@@ -226,9 +225,11 @@ func launchAppForDropbox(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on skip  button: ", err)
 	}
 
-	// Check for fav icon.
-	homeFavButton := d.Object(ui.ID(homeFabID))
-	if err := homeFavButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("homeFavButton button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homeIcon on homePage.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
