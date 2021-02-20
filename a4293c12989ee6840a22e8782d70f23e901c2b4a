@@ -33,6 +33,24 @@
       "message": "While working on a follow-up for this, I learned that Prepare() is called for every test, and Close() is only called for the last test. Each test however creates its own instance of Precondition.\n\nThat has the unfortunate consequence that when multiple tests are run, this will return defaultLogLevel and Close() will \"restore\" the debug level to the defaultLogLevel.\n\n@nya - Any thoughts / suggestions?",
       "revId": "a4293c12989ee6840a22e8782d70f23e901c2b4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f791d1f_39a04cd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pre/pre_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-20T00:19:39Z",
+      "side": 1,
+      "message": "This will be even more problematic for the next change I need to make:\n\nPre: stop modemfwd *if it is running* (it does not run on all devices)\nPost: start modemfwd if it was stopped",
+      "parentUuid": "225b333c_02a3eba5",
+      "revId": "a4293c12989ee6840a22e8782d70f23e901c2b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
