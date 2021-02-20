@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power/setup"
@@ -53,8 +54,8 @@ var plusVideoSrc = []Video{
 }
 
 // Run runs the VideoCUJ test.
-func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, appName string, tabletMode bool, tier cuj.Tier) {
-	s.Logf("Run app appName: %s tabletMode: %t", appName, tabletMode)
+func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, appName string, tabletMode bool, tier cuj.Tier, extendedDisplay bool) {
+	s.Logf("Run app appName: %s tabletMode: %t, extendedDisplay: %t", appName, tabletMode, extendedDisplay)
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
@@ -96,22 +97,10 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, a
 	pc := pointer.NewMouseController(tconn)
 	defer pc.Close()
 
-	// Hold alt a bit then tab to show the window cycle list.
-	altTab := func() error {
-		if err := kb.AccelPress(ctx, "Alt"); err != nil {
-			return errors.Wrap(err, "failed to press alt")
+	if extendedDisplay && tabletMode {
+		if err := unsetMirrorDisplay(ctx, s, tconn); err != nil {
+			s.Fatal("Failed to unset mirror display: ", err)
 		}
-		defer kb.AccelRelease(ctx, "Alt")
-		if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
-			return errors.Wrap(err, "failed to wait")
-		}
-		if err := kb.Accel(ctx, "Tab"); err != nil {
-			return errors.Wrap(err, "failed to type tab")
-		}
-		if err := testing.Sleep(ctx, time.Second); err != nil {
-			return errors.Wrap(err, "failed to wait")
-		}
-		return nil
 	}
 
 	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
@@ -184,7 +173,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, a
 				defer ytAct.Close()
 				defer ytAct.Stop(ctx, tconn)
 			case NetflixWeb:
-				if _, err := openAndPlayNetflixWeb(ctx, s, tconn, cr); err != nil {
+				if _, err := openAndPlayNetflixWeb(ctx, s, tconn, cr, kb, extendedDisplay); err != nil {
 					s.Fatal("Failed to open Netflix web: ", err)
 				}
 			}
@@ -216,6 +205,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, a
 			if err := testing.Sleep(ctx, time.Second); err != nil {
 				s.Fatal("Failed to sleep: ", err)
 			}
+
 			// Open Gmail web.
 			s.Log("Open Gmail web")
 			gConn, err := openGmailWeb(ctx)
@@ -241,7 +231,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, a
 					return errors.Wrap(err, "failed to type the tab key")
 				}
 			} else {
-				if err := altTab(); err != nil {
+				if err := altTab(ctx, s, kb); err != nil {
 					return errors.Wrap(err, "failed to alt-tab")
 				}
 			}
@@ -258,6 +248,12 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, a
 			case NetflixWeb:
 				if err := pauseAndPlayNetflixWeb(ctx, tconn, kb); err != nil {
 					return errors.Wrap(err, "failed to pause and play Netflix web")
+				}
+			}
+
+			if extendedDisplay {
+				if err := moveGmailWindow(ctx, s, gConn, kb); err != nil {
+					return errors.Wrap(err, "failed to move Gmail window between main display and extended display")
 				}
 			}
 
@@ -300,4 +296,69 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, a
 	if err := recorder.SaveHistograms(s.OutDir()); err != nil {
 		s.Fatal("Failed to save histogram raw data: ", err)
 	}
+}
+
+// unsetMirrorDisplay disables external display mirror mode for tablet
+func unsetMirrorDisplay(ctx context.Context, s *testing.State, tConn *chrome.TestConn) error {
+	s.Log("Launch os settins to disable mirror")
+	settings, err := ossettings.LaunchAtPage(ctx, tConn, ossettings.Device)
+	if err != nil {
+		return errors.Wrap(err, "failed to launch Settings: ")
+	}
+
+	if err := settings.LaunchDisplay()(ctx); err != nil {
+		return errors.Wrap(err, "failed to launch display Page")
+	}
+
+	if err := settings.ClickMirrorDisplay()(ctx); err != nil {
+		return errors.Wrap(err, "failed to click mirror display")
+	}
+
+	if err := settings.Close(ctx); err != nil {
+		return errors.Wrap(err, "failed to close Settings")
+	}
+
+	return nil
+}
+
+// moveGmailWindow switch Gmail to the extended display
+func moveGmailWindow(ctx context.Context, s *testing.State, gConn *chrome.Conn, kb *input.KeyboardEventWriter) error {
+	s.Log("Move focus to Gmail and move it to extended screen")
+	if err := altTab(ctx, s, kb); err != nil {
+		return errors.Wrap(err, "failed to alt-tab")
+	}
+
+	s.Log("Switch Gmail to the extended display")
+	if err := kb.Accel(ctx, "Search+Alt+M"); err != nil {
+		return errors.Wrap(err, "failed to switch Gmail to the extended display")
+	}
+
+	if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait")
+	}
+
+	s.Log("Switch Gmail back to the main display")
+	if err := kb.Accel(ctx, "Search+Alt+M"); err != nil {
+		return errors.Wrap(err, "failed to switch Gmail back to the main display")
+	}
+
+	return nil
+}
+
+// altTab hold alt a bit then tab to show the window cycle list.
+func altTab(ctx context.Context, s *testing.State, kb *input.KeyboardEventWriter) error {
+	if err := kb.AccelPress(ctx, "Alt"); err != nil {
+		return errors.Wrap(err, "failed to press alt")
+	}
+	defer kb.AccelRelease(ctx, "Alt")
+	if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to wait")
+	}
+	if err := kb.Accel(ctx, "Tab"); err != nil {
+		return errors.Wrap(err, "failed to type tab")
+	}
+	if err := testing.Sleep(ctx, time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait")
+	}
+	return nil
 }
