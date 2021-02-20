@@ -86,7 +86,6 @@ func launchAppForSolidExplorer(ctx context.Context, s *testing.State, tconn *chr
 		doneID    = "pl.solidexplorer2:id/btn_next"
 		allowText = "ALLOW"
 		OkText    = "OK"
-		drawerID  = "pl.solidexplorer2:id/ab_icon"
 	)
 
 	// Click on skip button.
@@ -142,9 +141,11 @@ func launchAppForSolidExplorer(ctx context.Context, s *testing.State, tconn *chr
 		s.Fatal("Failed to click on Ok button: ", err)
 	}
 
-	// Check for navigation drawer button.
-	drawerButton := d.Object(ui.ID(drawerID))
-	if err := drawerButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Drawer button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
