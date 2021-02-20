@@ -52,6 +52,24 @@
       "parentUuid": "b751569d_0f6d3218",
       "revId": "abbcf909c676a578f5fb5e3ca46aef71757630cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c1813b9_39d948ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-02-20T08:20:06Z",
+      "side": 1,
+      "message": "According to the comments:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/media/cpu/cpu.go;rcl\u003dc1e954f26d6d1a142152239d9e4c51dc0908b58c;l\u003d232\n\nIt seems that power measurement is only supported on Intel platform.",
+      "parentUuid": "d4881e5d_c498cc85",
+      "revId": "abbcf909c676a578f5fb5e3ca46aef71757630cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
