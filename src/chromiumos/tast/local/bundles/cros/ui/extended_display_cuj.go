@@ -8,6 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/chameleon"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome/ash"
@@ -15,83 +17,61 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-type videoCUJParam struct {
+type extendedDisplayCUJParam struct {
 	tier cuj.Tier
 	app  string
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VideoCUJ2,
-		Desc:         "Measures the smoothess of switch between full screen YouTube video and another browser window",
-		Contacts:     []string{"xiyuan@chromium.org", "tim.chang@cienet.com"},
+		Func:         ExtendedDisplayCUJ,
+		Desc:         "Test video entertainment with extended display",
+		Contacts:     []string{"vlin@cienet.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
-			"mode", // Optional. Expecting "tablet" or "clamshell".
 			"ui.netflix_username",
 			"ui.netflix_password",
+			"perf_level",
+			"chameleon",
 		},
 		Params: []testing.Param{
 			{
-				Name:    "basic_youtube_web",
+				Name:    "plus_video_netflix_web",
 				Timeout: 10 * time.Minute,
-				Val: videoCUJParam{
-					tier: cuj.Basic,
-					app:  videocuj.YoutubeWeb,
-				},
-			}, {
-				Name:    "plus_youtube_web",
-				Timeout: 10 * time.Minute,
-				Val: videoCUJParam{
-					tier: cuj.Plus,
-					app:  videocuj.YoutubeWeb,
-				},
-			}, {
-				Name:    "basic_netflix_web",
-				Timeout: 10 * time.Minute,
-				Val: videoCUJParam{
-					tier: cuj.Basic,
-					app:  videocuj.NetflixWeb,
-				},
-			}, {
-				Name:    "plus_netflix_web",
-				Timeout: 10 * time.Minute,
-				Val: videoCUJParam{
+				Val: extendedDisplayCUJParam{
 					tier: cuj.Plus,
 					app:  videocuj.NetflixWeb,
-				},
-			}, {
-				Name:    "basic_youtube_app",
-				Timeout: 10 * time.Minute,
-				Val: videoCUJParam{
-					tier: cuj.Basic,
-					app:  videocuj.YoutubeApp,
-				},
-			}, {
-				Name:    "plus_youtube_app",
-				Timeout: 10 * time.Minute,
-				Val: videoCUJParam{
-					tier: cuj.Plus,
-					app:  videocuj.YoutubeApp,
 				},
 			},
 		},
 	})
 }
 
-// VideoCUJ2 ...
-func VideoCUJ2(ctx context.Context, s *testing.State) {
+// ExtendedDisplayCUJ ...
+func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(cuj.FixtureData).Chrome
 	a := s.FixtValue().(cuj.FixtureData).ARC
+
+	chameleonAddr := s.RequiredVar("chameleon")
+	che, err := chameleon.New(ctx, chameleonAddr)
+	if err != nil {
+		s.Fatal("Failed to connect to chameleon board: ", err)
+	}
+
+	che.Plug(ctx, 3)
+	defer che.Unplug(ctx, 3)
+	// Wait DUT detect external display
+	if err := che.WaitVideoInputStable(ctx, 3, 10*time.Second); err != nil {
+		s.Fatal("Failed to plug external display: ", err)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-
 	var tabletMode bool
 	if mode, ok := s.Var("mode"); ok {
 		tabletMode = mode == "tablet"
@@ -109,9 +89,12 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Running test with tablet mode: ", tabletMode)
 
-	param := s.Param().(videoCUJParam)
+	param := s.Param().(extendedDisplayCUJParam)
 	tier := param.tier
 	app := param.app
 
-	videocuj.Run(ctx, s, cr, a, app, tabletMode, tier, false)
+	// Shorten context a bit to allow for cleanup if Run fails.
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+	videocuj.Run(ctx, s, cr, a, app, tabletMode, tier, true)
 }

@@ -146,14 +146,14 @@ const ServoKeypressDelay = 100 * time.Millisecond
 // Echo calls the Servo echo method.
 func (s *Servo) Echo(ctx context.Context, message string) (string, error) {
 	var val string
-	err := s.run(ctx, newCall("echo", message), &val)
+	err := s.xmlrpc.Run(NewCall("echo", message), &val)
 	return val, err
 }
 
 // PowerNormalPress calls the Servo power_normal_press method.
 func (s *Servo) PowerNormalPress(ctx context.Context) (bool, error) {
 	var val bool
-	err := s.run(ctx, newCall("power_normal_press"), &val)
+	err := s.xmlrpc.Run(NewCall("power_normal_press"), &val)
 	return val, err
 }
 
@@ -170,14 +170,14 @@ func (s *Servo) DUTVoltageMV(ctx context.Context) (string, error) {
 // GetServoVersion gets the version of Servo being used.
 func (s *Servo) GetServoVersion(ctx context.Context) (string, error) {
 	var version string
-	err := s.run(ctx, newCall("get_version"), &version)
+	err := s.xmlrpc.Run(NewCall("get_version"), &version)
 	return version, err
 }
 
 // GetString returns the value of a specified control.
 func (s *Servo) GetString(ctx context.Context, control StringControl) (string, error) {
 	var value string
-	if err := s.run(ctx, newCall("get", string(control)), &value); err != nil {
+	if err := s.xmlrpc.Run(NewCall("get", string(control)), &value); err != nil {
 		return "", errors.Wrapf(err, "getting value for servo control %q", control)
 	}
 	return value, nil
@@ -188,7 +188,7 @@ func (s *Servo) SetString(ctx context.Context, control StringControl, value stri
 	// Servo's Set method returns a bool stating whether the call succeeded or not.
 	// This is redundant, because a failed call will return an error anyway.
 	// So, we can skip unpacking the output.
-	if err := s.run(ctx, newCall("set", string(control), value)); err != nil {
+	if err := s.xmlrpc.Run(NewCall("set", string(control), value)); err != nil {
 		return errors.Wrapf(err, "setting servo control %q to %q", control, value)
 	}
 	return nil
@@ -196,7 +196,7 @@ func (s *Servo) SetString(ctx context.Context, control StringControl, value stri
 
 // SetInt sets a Servo control to an integer value.
 func (s *Servo) SetInt(ctx context.Context, control IntControl, value int) error {
-	if err := s.run(ctx, newCall("set", string(control), value)); err != nil {
+	if err := s.xmlrpc.Run(NewCall("set", string(control), value)); err != nil {
 		return errors.Wrapf(err, "setting servo control %q to %d", control, value)
 	}
 	return nil
