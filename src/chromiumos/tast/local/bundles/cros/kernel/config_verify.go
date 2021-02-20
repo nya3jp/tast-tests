@@ -301,7 +301,7 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 	} else {
 		builtin = append(builtin, "DEBUG_RODATA", "DEBUG_SET_MODULE_RONX")
 	}
-	if arch == "aarch64" {
+	if arch == "aarch64" && ver.IsOrLess(5, 6) {
 		builtin = append(builtin, "DEBUG_ALIGN_RODATA")
 	}
 
@@ -331,6 +331,11 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		builtin = append(builtin, "CC_STACKPROTECTOR")
 		// bpf(2) syscall can be used to generate code patterns in kernel memory.
 		missing = append(missing, "BPF_SYSCALL")
+	}
+
+	if arch == "aarch64" && ver.IsOrLater(5, 9) && ver.IsOrLess(5, 10) {
+		// SET_FS is used to mark architectures that have set_fs(). arm64 has this on 5.9 and 5.10 only.
+		builtin = append(builtin, "SET_FS")
 	}
 
 	isX86Family := regexp.MustCompile(`^i\d86$`).MatchString(arch) || arch == "x86_64"
