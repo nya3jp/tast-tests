@@ -82,7 +82,6 @@ func launchAppForNoteshelf(ctx context.Context, s *testing.State, tconn *chrome.
 	const (
 		agreeID           = "com.fluidtouch.noteshelf2:id/agreeCheckLayout"
 		continueButtonID  = "com.fluidtouch.noteshelf2:id/welcome_screen1_continue_button"
-		homeID            = "com.fluidtouch.noteshelf2:id/menu_create_notebook"
 		skipText          = "SKIP"
 		startNoteTakingID = "com.fluidtouch.noteshelf2:id/welcome_screen5_start_button"
 	)
@@ -119,8 +118,9 @@ func launchAppForNoteshelf(ctx context.Context, s *testing.State, tconn *chrome.
 	}
 
 	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeID))
+	homeIcon := d.Object(ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("homeIcon doesn't exist: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }

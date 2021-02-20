@@ -86,7 +86,6 @@ func launchAppForWattpad(ctx context.Context, s *testing.State, tconn *chrome.Te
 		enterPasswordText = "Password"
 		startText         = "Start Reading"
 		notNowText        = "NOT NOW"
-		homeDescription   = "Home"
 	)
 
 	// Click on sign in button.
@@ -136,8 +135,9 @@ func launchAppForWattpad(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 
 	// Check for home icon.
-	homeDescriptionButton := d.Object(ui.Description(homeDescription))
-	if err := homeDescriptionButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Home icon doesn't exist: ", err)
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Error("homeIcon doesn't exist: ", err)
 	}
 }

@@ -81,7 +81,6 @@ func Pixlr(ctx context.Context, s *testing.State) {
 func launchAppForPixlr(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		acceptID = "android:id/button1"
-		homeID   = "com.pixlr.express:id/choose"
 	)
 
 	// Click on accept button.
@@ -93,8 +92,9 @@ func launchAppForPixlr(ctx context.Context, s *testing.State, tconn *chrome.Test
 	}
 
 	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeID))
+	homeIcon := d.Object(ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("homeIcon doesn't exist: ", err)
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
