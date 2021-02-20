@@ -83,7 +83,6 @@ func SpreakerStudio(ctx context.Context, s *testing.State) {
 // verify SpreakerStudio reached main activity page of the app.
 func launchAppForSpreakerStudio(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		addNewSongButtonText        = "ADD NEW SONG"
 		allowButtonText             = "ALLOW"
 		enterEmailAddressID         = "com.spreaker.android.studio:id/login_spreaker_signin_email"
 		loginText                   = "LOG IN / SIGN UP"
@@ -213,10 +212,11 @@ func launchAppForSpreakerStudio(ctx context.Context, s *testing.State, tconn *ch
 
 	}
 
-	// Check for add new song on homePage.
-	addNewSongButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+addNewSongButtonText))
-	if err := addNewSongButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("addNewSongButton doesn't exists: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
-
 }

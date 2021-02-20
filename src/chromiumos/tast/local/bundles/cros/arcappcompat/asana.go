@@ -85,7 +85,6 @@ func launchAppForAsana(ctx context.Context, s *testing.State, tconn *chrome.Test
 		continueEmailText = "Continue with email"
 		typePasswordText  = "Type password"
 		passwordID        = "com.asana.app:id/password"
-		myTaskDescription = "My Tasks"
 	)
 
 	// Click on log in button
@@ -116,7 +115,7 @@ func launchAppForAsana(ctx context.Context, s *testing.State, tconn *chrome.Test
 	// Click on type password button.
 	typePasswordButton := d.Object(ui.Text(typePasswordText))
 	if err := typePasswordButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("typePassword button doesn't exists: ", err)
+		s.Error("typePassword button doesn't exists: ", err)
 	} else if err := typePasswordButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on typePassword button: ", err)
 	}
@@ -125,7 +124,7 @@ func launchAppForAsana(ctx context.Context, s *testing.State, tconn *chrome.Test
 	AsanaPassword := s.RequiredVar("arcappcompat.Asana.password")
 	enterPassword := d.Object(ui.ID(passwordID))
 	if err := enterPassword.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("enterPassword doesn't exists: ", err)
+		s.Error("enterPassword doesn't exists: ", err)
 	} else if err := enterPassword.SetText(ctx, AsanaPassword); err != nil {
 		s.Fatal("Failed to enter password: ", err)
 	}
@@ -137,9 +136,11 @@ func launchAppForAsana(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on LogIn button: ", err)
 	}
 
-	// Check for my task button.
-	myTaskButton := d.Object(ui.Description(myTaskDescription))
-	if err := myTaskButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("My task button doesn't exist: ", err)
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for homeIcon on homePage.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
