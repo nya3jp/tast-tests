@@ -80,11 +80,10 @@ func Tunein(ctx context.Context, s *testing.State) {
 // verify TuneIn reached main activity page of the app.
 func launchAppForTuneIn(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		closeButtonText = "Close Button"
-		continueText    = "Continue with"
-		allowText       = "ALLOW"
-		homeIconID      = "tunein.player:id/menu_navigation_home"
-		homeIconDes     = "Home"
+		closeButtonText          = "Close Button"
+		continueText             = "Continue with"
+		allowText                = "ALLOW"
+		noneOFTheAboveButtonText = "None Of The Above"
 	)
 
 	// Click on close button.
@@ -105,6 +104,14 @@ func launchAppForTuneIn(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Fatal("Failed to press ENTER key: ", err)
 	}
 
+	// Click on none of the above button.
+	clickOnNoneOfTheAboveButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+noneOFTheAboveButtonText))
+	if err := clickOnNoneOfTheAboveButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnNoneOfTheAboveButton doesn't exist: ", err)
+	} else if err := clickOnNoneOfTheAboveButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnNoneOfTheAboveButton: ", err)
+	}
+
 	// Click on allow button.
 	clickOnAllowButton := d.Object(ui.Text(allowText))
 	if err := clickOnAllowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -113,9 +120,10 @@ func launchAppForTuneIn(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Fatal("Failed to click on clickOnAllowButton: ", err)
 	}
 
-	// Check for home Icon.
-	homeIcon := d.Object(ui.ID(homeIconID), ui.Description(homeIconDes))
-	if err := homeIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Fatal("homeIcon doesn't exist: ", err)
+	// Check for home icon.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
