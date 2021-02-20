@@ -20,8 +20,9 @@ import (
 
 // Servo holds the servod connection information.
 type Servo struct {
-	host string
-	port int
+	host   string
+	port   int
+	xmlrpc *XMLRpc
 
 	// If initialV4Role is set, then upon Servo.Close(), the V4Role control will be set to initialV4Role.
 	initialV4Role V4RoleValue
@@ -44,7 +45,8 @@ func New(ctx context.Context, connSpec string) (*Servo, error) {
 	if err != nil {
 		return nil, err
 	}
-	s := &Servo{host: host, port: port}
+	r := &XMLRpc{Ctx: ctx, Host: host, Port: port}
+	s := &Servo{host: host, port: port, xmlrpc: r}
 
 	// Ensure Servo is set up properly before returning.
 	return s, s.verifyConnectivity(ctx)
