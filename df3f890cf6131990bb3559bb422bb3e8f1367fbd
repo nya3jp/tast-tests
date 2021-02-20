@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b15f7cd7_06abf5cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-20T03:53:48Z",
+      "side": 1,
+      "message": "Sorry, this was my bad, I replaced s/Model/Platform/ and that touched\nthis by mistake. Reverting.",
+      "parentUuid": "56949751_12643540",
+      "revId": "df3f890cf6131990bb3559bb422bb3e8f1367fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7489823e_40344282",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d031691a_e9d05e4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-20T03:53:48Z",
+      "side": 1,
+      "message": "There\u0027s two decoders, one is from the input file (tulip2-320x180.vp9.webm\nin this case) to .YUV, and another one from the encoded output to YUV\nagain (to compare); the second depends on the encoder codec, and is specified \nhere.",
+      "parentUuid": "7489823e_40344282",
+      "revId": "df3f890cf6131990bb3559bb422bb3e8f1367fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c76a0648_ee1239f3",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-02-20T00:03:15Z",
       "side": 1,
       "message": "are we sure we want to hard code \"yv12\".\nthought we might need other formats like \"nv12\" soon. \nbut fine as it is as well.",
+      "revId": "df3f890cf6131990bb3559bb422bb3e8f1367fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27bbb0d6_d4bc44db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-20T03:53:48Z",
+      "side": 1,
+      "message": "Well, the vpxdec YUV output only comes in two formats: YV12 or I420,\nand by default the go logic says YV12, so that\u0027s why is explicit here.",
+      "parentUuid": "c76a0648_ee1239f3",
       "revId": "df3f890cf6131990bb3559bb422bb3e8f1367fbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
