@@ -229,5 +229,5 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 
 	cr := s.FixtValue().(cuj.FixtureData).Chrome
 	a := s.FixtValue().(cuj.FixtureData).ARC
-	videocuj.Run(ctx, s, cr, a, app, tabletMode, tier)
+	videocuj.Run(ctx, s, cr, a, app, tabletMode, tier, false)
 }
