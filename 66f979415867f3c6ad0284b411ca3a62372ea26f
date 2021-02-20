@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e5300c8_159cf83e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-20T01:48:47Z",
+      "side": 1,
+      "message": "The CL description says about the kernel panic, and indeed that\u0027s an interesting problem. I\u0027m still not sure if it\u0027s worth doing here as defer.  Rather it\u0027s better to provide the way to back to ccNormal and test callers invoke that.",
+      "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "315fdfd6_ae582432",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-20T01:48:47Z",
+      "side": 1,
+      "message": "Sorry I don\u0027t quite get this actually.  Basically this function does:\n* check the current level of battery, and return an error if the battery is too low\n* set to ccDischarge at the end.  Returning function (CleanupCallback) will reest back to ccNormal.\n\nSo, what this CL does is to set to ccNormal when the battery is low. Why doing that?\n* if the test calling this function fails, CleanupCallback should be called and it should be reset back to ccNormal already.\n* if the device is in low-battery state for some reasons, I\u0027m not sure how setting ccNormal changes some behaviors.",
+      "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
