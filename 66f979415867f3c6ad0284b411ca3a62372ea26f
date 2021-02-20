@@ -33,6 +33,24 @@
       "message": "Sorry I don\u0027t quite get this actually.  Basically this function does:\n* check the current level of battery, and return an error if the battery is too low\n* set to ccDischarge at the end.  Returning function (CleanupCallback) will reest back to ccNormal.\n\nSo, what this CL does is to set to ccNormal when the battery is low. Why doing that?\n* if the test calling this function fails, CleanupCallback should be called and it should be reset back to ccNormal already.\n* if the device is in low-battery state for some reasons, I\u0027m not sure how setting ccNormal changes some behaviors.",
       "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "784bf5ca_e1b4254a",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-20T02:08:25Z",
+      "side": 1,
+      "message": "Because the battery is low, the test cannot be executed. If we re-charge the DUT, next time the same test will have the chance to succeed. This is useful when we repeatedly run CUJs on a dedicated DUT. Even the first run failed, the subsequent tests can benefit from this and will not be blocked by low battery. I think this logic does\u0027t have adverse impact but will improve the stability of the test environment.",
+      "parentUuid": "315fdfd6_ae582432",
+      "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
