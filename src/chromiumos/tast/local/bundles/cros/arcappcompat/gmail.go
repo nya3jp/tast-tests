@@ -20,20 +20,20 @@ import (
 // ClamshellTests are placed here.
 var clamshellTestsForGmail = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForGmail},
-	{Name: "Clamshell: Physical Keyboard", Fn: testutil.TouchAndTextInputs},
-	{Name: "Clamshell : Keyboard Critical Path", Fn: testutil.KeyboardNavigations},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Physical Keyboard", Fn: testutil.TouchAndTextInputs},
+	{Name: "Clamshell: Keyboard Critical Path", Fn: testutil.KeyboardNavigations},
 }
 
 // TouchviewTests are placed here.
 var touchviewTestsForGmail = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForGmail},
-	{Name: "Touchview: Virtual Keyboard", Fn: testutil.TouchAndTextInputs},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Virtual Keyboard", Fn: testutil.TouchAndTextInputs},
 }
 
 func init() {
@@ -84,8 +84,6 @@ func Gmail(ctx context.Context, s *testing.State) {
 func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 
 	const (
-		composeIconClassName    = "android.widget.ImageButton"
-		composeIconDescription  = "Compose"
 		textViewClassName       = "android.widget.TextView"
 		gotItButtonText         = "GOT IT"
 		takeMeToGmailButtonText = "TAKE ME TO GMAIL"
@@ -114,9 +112,19 @@ func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to click on takeMeToGmailButton: ", err)
 	}
 
-	// Check for compose icon in home page.
-	composeIcon := d.Object(ui.ClassName(composeIconClassName), ui.DescriptionContains(composeIconDescription))
-	if err := composeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Failed to click on composeIcon: ", err)
+	// Click on Got It button.
+	GotItButton = d.Object(ui.TextMatches("(?i)" + gotItButtonText))
+	if err := GotItButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("GotIt Button doesn't exist: ", err)
+	} else if err := GotItButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on GotItButton: ", err)
+	}
+
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
