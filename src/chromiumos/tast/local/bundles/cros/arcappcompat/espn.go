@@ -91,18 +91,10 @@ func launchAppForESPN(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		homeID          = "com.espn.score_center:id/largeLabel"
 	)
 
-	// Click on allow button until log in button exists.
-	allowButton := d.Object(ui.Text(allowText))
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	signUpButton := d.Object(ui.Text(signUpLaterText))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := signUpButton.Exists(ctx); err != nil {
-			s.Log(" Click on allow button until sign up button exist")
-			allowButton.Click(ctx)
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Error("Sign up button doesn't exist: ", err)
+	if err := signUpButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Sign up button doesn't exist: ", err)
 	} else if err := signUpButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on sign up button: ", err)
 	}
@@ -131,24 +123,10 @@ func launchAppForESPN(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to click on ok button: ", err)
 	}
 
-	// Press back key  until home screen exists.
-	homeButton := d.Object(ui.ID(homeID))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := homeButton.Exists(ctx); err != nil {
-			if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
-				s.Log("Failed to enter KEYCODE_BACK: ", err)
-			} else {
-				s.Log("Entered KEYCODE_BACK")
-			}
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Fatal("Failed to enter KEYCODE_BACK: ", err)
-	}
-
-	// Check home page is launched.
-	if err := homeButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("home button doesn't exists: ", err)
+	// Check for homeIcon on homePage.
+	homeIcon := d.Object(ui.PackageName(appPkgName))
+	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
