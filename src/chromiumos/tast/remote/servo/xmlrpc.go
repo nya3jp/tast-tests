@@ -18,6 +18,13 @@ import (
 	"chromiumos/tast/errors"
 )
 
+// XMLRpc is for invoking xml-rpc
+type XMLRpc struct {
+	Ctx  context.Context
+	Host string
+	Port int
+}
+
 // call represents a Servo call request.
 type call struct {
 	method string
@@ -145,7 +152,8 @@ func newParams(args []interface{}) ([]param, error) {
 	return params, nil
 }
 
-func newCall(method string, args ...interface{}) call {
+// NewCall creates a XML-RPC call.
+func NewCall(method string, args ...interface{}) call {
 	return call{method, args}
 }
 
@@ -206,16 +214,16 @@ func (r *response) unpack(out []interface{}) error {
 	return nil
 }
 
-// run makes an XML-RPC call to servod.
-func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
+// Run makes an XML-RPC call to servod.
+func (r *XMLRpc) Run(cl call, out ...interface{}) error {
 	body, err := serializeMethodCall(cl)
 	if err != nil {
 		return err
 	}
 
 	// Get RPC timeout duration from context or use default.
-	timeout := getTimeout(ctx)
-	servodURL := fmt.Sprintf("http://%s:%d", s.host, s.port)
+	timeout := getTimeout(r.Ctx)
+	servodURL := fmt.Sprintf("http://%s:%d", r.Host, r.Port)
 	httpClient := &http.Client{Timeout: timeout}
 
 	resp, err := httpClient.Post(servodURL, "text/xml", bytes.NewBuffer(body))
