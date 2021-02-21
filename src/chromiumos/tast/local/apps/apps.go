@@ -256,6 +256,30 @@ func ListSystemWebApps(ctx context.Context, tconn *chrome.TestConn) ([]*ash.Chro
 	return systemWebApps, nil
 }
 
+// ListSystemWebAppsInternalNames returns a string[] that contains system app's internal names.
+// It queries System Web App Manager via Test API.
+func ListSystemWebAppsInternalNames(ctx context.Context, tconn *chrome.TestConn) ([]string, error) {
+	var result []string
+	err := tconn.Eval(
+		ctx,
+		`new Promise((resolve, reject) => {
+			chrome.autotestPrivate.getRegisteredSystemWebApps((system_apps) => {
+				if (chrome.runtime.lastError) {
+					reject(new Error(chrome.runtime.lastError.message));
+					return;
+				}
+
+				resolve(system_apps.map(system_app => system_app.internalName));
+			});
+		});`, &result)
+
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get result from Test API")
+	}
+
+	return result, nil
+}
+
 // LaunchOSSettings launches the OS Settings app to its subpage URL, and returns
 // a connection to it. When this method returns, OS Settings page has finished
 // loading.

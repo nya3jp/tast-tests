@@ -114,7 +114,7 @@ func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]strin
 		installedNames = append(installedNames, app.Name)
 	}
 
-	registeredInternalNames, err := registeredSystemAppsInternalNames(ctx, tconn)
+	registeredInternalNames, err := apps.ListSystemWebAppsInternalNames(ctx, tconn)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to get registered system apps")
 	}
@@ -159,28 +159,4 @@ func supportCrostini(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 	}
 
 	return allowCrostini, nil
-}
-
-// registeredSystemAppsInternalNames returns a string[] that contains system app's internal names.
-// It queries System Web App Manager via Test API.
-func registeredSystemAppsInternalNames(ctx context.Context, tconn *chrome.TestConn) ([]string, error) {
-	var result []string
-	err := tconn.Eval(
-		ctx,
-		`new Promise((resolve, reject) => {
-			chrome.autotestPrivate.getRegisteredSystemWebApps((system_apps) => {
-				if (chrome.runtime.lastError) {
-					reject(new Error(chrome.runtime.lastError.message));
-					return;
-				}
-
-				resolve(system_apps.map(system_app => system_app.internalName));
-			});
-		});`, &result)
-
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get result from Test API")
-	}
-
-	return result, nil
 }
