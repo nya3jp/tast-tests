@@ -17,7 +17,7 @@ func init() {
 		Desc:         "Check Tast extension can be loaded in Guest mode",
 		Contacts:     []string{"benreich@chromium.org", "chromeos-engprod-syd@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Fixture:      "chromeLoggedInGuest",
 	})
 }
