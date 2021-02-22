@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38761c52_62a07d31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T17:31:05Z",
+      "side": 1,
+      "message": "overall, I like the idea of this commit, but am very nervous about log spam from this. Though it is a little extra work to figure out step mapping, all information should be in the error and the accompanying stack trace.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "eac42a9673e0560bc122861e63531976293d3047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96803b9a_571e7cb1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T17:31:05Z",
+      "side": 1,
+      "message": "I guess since this is optin, it is probably fine, but I am still worried about log spam if people default to this. The general tast guideline is only to log before long operations.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "eac42a9673e0560bc122861e63531976293d3047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "624c9451_61828dfa",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T17:31:05Z",
+      "side": 1,
+      "message": "I would remove this. If the action didn\u0027t fail, you will know the action completed. This is just extra clutter in the logs",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 55
+      },
+      "revId": "eac42a9673e0560bc122861e63531976293d3047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd5ba5e_65bb3e3d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T17:31:05Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to spam the logs with a message for every single action. Maybe once verbose logging is in, this will be a good idea. I think it should be in soon if it isn\u0027t already in, I will ask around to figure that out.\n\ngo/verbose-tast-logging",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 74
+      },
+      "revId": "eac42a9673e0560bc122861e63531976293d3047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
