@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d92301_dbad4746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-22T17:23:51Z",
+      "side": 1,
+      "message": "got it. thanks.",
+      "parentUuid": "b15f7cd7_06abf5cf",
+      "revId": "df3f890cf6131990bb3559bb422bb3e8f1367fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7489823e_40344282",
@@ -71,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9070f0df_292c405f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-22T17:23:51Z",
+      "side": 1,
+      "message": "I see. Thank you for the explanation. Which one is used for the first one (from the input file to YUV)?",
+      "parentUuid": "d031691a_e9d05e4d",
+      "revId": "df3f890cf6131990bb3559bb422bb3e8f1367fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c76a0648_ee1239f3",
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "Well, the vpxdec YUV output only comes in two formats: YV12 or I420,\nand by default the go logic says YV12, so that\u0027s why is explicit here.",
       "parentUuid": "c76a0648_ee1239f3",
+      "revId": "df3f890cf6131990bb3559bb422bb3e8f1367fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9c2cb0f_4ed28f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-22T17:23:51Z",
+      "side": 1,
+      "message": "Thank you.",
+      "parentUuid": "27bbb0d6_d4bc44db",
       "revId": "df3f890cf6131990bb3559bb422bb3e8f1367fbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
