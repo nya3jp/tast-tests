@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -744,4 +745,134 @@ func WaitForStableShelfBounds(ctx context.Context, tc *chrome.TestConn) error {
 	}
 
 	return nil
+}
+
+// SetShelfBehaviorAction is the same as SetShelfBehavior, but generates
+// an action suitable for use with the uiauto library.
+func SetShelfBehaviorAction(tconn *chrome.TestConn, displayID string, b ShelfBehavior) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.SetShelfBehaviorAction(*chrome.TestConn, displayID=%v, b=%v)", displayID, b),
+		func(ctx context.Context) error { return SetShelfBehavior(ctx, tconn, displayID, b) })
+}
+
+// WaitForShelfAction is the same as WaitForShelf, but generates
+// an action suitable for use with the uiauto library.
+func WaitForShelfAction(tconn *chrome.TestConn, timeout time.Duration) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.WaitForShelfAction(*chrome.TestConn, timeout=%v)", timeout),
+		func(ctx context.Context) error { return WaitForShelf(ctx, tconn, timeout) })
+}
+
+// PinAppAction is the same as PinApp, but generates
+// an action suitable for use with the uiauto library.
+func PinAppAction(tconn *chrome.TestConn, appID string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.PinAppAction(*chrome.TestConn, appID=%v)", appID),
+		func(ctx context.Context) error { return PinApp(ctx, tconn, appID) })
+}
+
+// SetShelfAlignmentAction is the same as SetShelfAlignment, but generates
+// an action suitable for use with the uiauto library.
+func SetShelfAlignmentAction(tconn *chrome.TestConn, displayID string, a ShelfAlignment) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.SetShelfAlignmentAction(*chrome.TestConn, displayID=%v, a=%v)", displayID, a),
+		func(ctx context.Context) error { return SetShelfAlignment(ctx, tconn, displayID, a) })
+}
+
+// WaitForChromeAppInstalledAction is the same as WaitForChromeAppInstalled, but generates
+// an action suitable for use with the uiauto library.
+func WaitForChromeAppInstalledAction(tconn *chrome.TestConn, appID string, timeout time.Duration) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.WaitForChromeAppInstalledAction(*chrome.TestConn, appID=%v, timeout=%v)", appID, timeout),
+		func(ctx context.Context) error { return WaitForChromeAppInstalled(ctx, tconn, appID, timeout) })
+}
+
+// ScrollShelfAndWaitUntilFinishAction is the same as ScrollShelfAndWaitUntilFinish, but generates
+// an action suitable for use with the uiauto library.
+func ScrollShelfAndWaitUntilFinishAction(tconn *chrome.TestConn, buttonBounds coords.Rect, targetOffset float32) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.ScrollShelfAndWaitUntilFinishAction(*chrome.TestConn, buttonBounds=%v, targetOffset=%v)", buttonBounds, targetOffset),
+		func(ctx context.Context) error {
+			return ScrollShelfAndWaitUntilFinish(ctx, tconn, buttonBounds, targetOffset)
+		})
+}
+
+// WaitForAppAction is the same as WaitForApp, but generates
+// an action suitable for use with the uiauto library.
+func WaitForAppAction(tconn *chrome.TestConn, appID string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.WaitForAppAction(*chrome.TestConn, appID=%v)", appID),
+		func(ctx context.Context) error { return WaitForApp(ctx, tconn, appID) })
+}
+
+// WaitForAppClosedAction is the same as WaitForAppClosed, but generates
+// an action suitable for use with the uiauto library.
+func WaitForAppClosedAction(tconn *chrome.TestConn, appID string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.WaitForAppClosedAction(*chrome.TestConn, appID=%v)", appID),
+		func(ctx context.Context) error { return WaitForAppClosed(ctx, tconn, appID) })
+}
+
+// WaitForHotseatAnimatingToIdealStateAction is the same as WaitForHotseatAnimatingToIdealState, but generates
+// an action suitable for use with the uiauto library.
+func WaitForHotseatAnimatingToIdealStateAction(tc *chrome.TestConn, state HotseatStateType) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.WaitForHotseatAnimatingToIdealStateAction(*chrome.TestConn, state=%v)", state),
+		func(ctx context.Context) error { return WaitForHotseatAnimatingToIdealState(ctx, tc, state) })
+}
+
+// SwipeUpHotseatAndWaitForCompletionAction is the same as SwipeUpHotseatAndWaitForCompletion, but generates
+// an action suitable for use with the uiauto library.
+func SwipeUpHotseatAndWaitForCompletionAction(tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tcc *input.TouchCoordConverter) uiauto.Action {
+	return uiauto.NamedAction(
+		"ash.SwipeUpHotseatAndWaitForCompletionAction(*chrome.TestConn, *input.SingleTouchEventWriter, *input.TouchCoordConverter)",
+		func(ctx context.Context) error { return SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc) })
+}
+
+// EnterShelfOverflowAction is the same as EnterShelfOverflow, but generates
+// an action suitable for use with the uiauto library.
+func EnterShelfOverflowAction(tconn *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"ash.EnterShelfOverflowAction(*chrome.TestConn)",
+		func(ctx context.Context) error { return EnterShelfOverflow(ctx, tconn) })
+}
+
+// ShowHotseatAction is the same as ShowHotseat, but generates
+// an action suitable for use with the uiauto library.
+func ShowHotseatAction(tconn *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"ash.ShowHotseatAction(*chrome.TestConn)",
+		func(ctx context.Context) error { return ShowHotseat(ctx, tconn) })
+}
+
+// PinAppFromShelfAction is the same as PinAppFromShelf, but generates
+// an action suitable for use with the uiauto library.
+func PinAppFromShelfAction(tconn *chrome.TestConn, appName string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.PinAppFromShelfAction(*chrome.TestConn, appName=%v)", appName),
+		func(ctx context.Context) error { return PinAppFromShelf(ctx, tconn, appName) })
+}
+
+// PinAppFromHotseatAction is the same as PinAppFromHotseat, but generates
+// an action suitable for use with the uiauto library.
+func PinAppFromHotseatAction(tconn *chrome.TestConn, appName string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.PinAppFromHotseatAction(*chrome.TestConn, appName=%v)", appName),
+		func(ctx context.Context) error { return PinAppFromHotseat(ctx, tconn, appName) })
+}
+
+// WaitForHotseatAnimationToFinishAction is the same as WaitForHotseatAnimationToFinish, but generates
+// an action suitable for use with the uiauto library.
+func WaitForHotseatAnimationToFinishAction(tc *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"ash.WaitForHotseatAnimationToFinishAction(*chrome.TestConn)",
+		func(ctx context.Context) error { return WaitForHotseatAnimationToFinish(ctx, tc) })
+}
+
+// WaitForStableShelfBoundsAction is the same as WaitForStableShelfBounds, but generates
+// an action suitable for use with the uiauto library.
+func WaitForStableShelfBoundsAction(tc *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"ash.WaitForStableShelfBoundsAction(*chrome.TestConn)",
+		func(ctx context.Context) error { return WaitForStableShelfBounds(ctx, tc) })
 }

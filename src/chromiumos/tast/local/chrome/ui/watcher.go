@@ -157,3 +157,9 @@ func WaitForLocationChangeCompleted(ctx context.Context, tconn *chrome.TestConn)
 
 	return WaitForLocationChangeCompletedOnNode(ctx, tconn, root)
 }
+
+// WaitForLocationChangeCompletedAction is the same as WaitForLocationChangeCompleted, but generates
+// an action suitable for use with the uiauto library.
+func WaitForLocationChangeCompletedAction(tconn *chrome.TestConn) func(context.Context) error {
+	return func(ctx context.Context) error { return WaitForLocationChangeCompleted(ctx, tconn) }
+}

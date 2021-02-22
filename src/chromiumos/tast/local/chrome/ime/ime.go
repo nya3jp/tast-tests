@@ -7,11 +7,13 @@ package ime
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/testing"
 )
 
@@ -203,4 +205,76 @@ func GetIMEPrefix(ctx context.Context, tconn *chrome.TestConn) (string, error) {
 		}
 	}
 	return "", errors.New("failed to detect the default IME extension")
+}
+
+// AddAndSetInputMethodAction is the same as AddAndSetInputMethod, but generates
+// an action suitable for use with the uiauto library.
+func AddAndSetInputMethodAction(tconn *chrome.TestConn, imeID string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ime.AddAndSetInputMethodAction(*chrome.TestConn, imeID=%v)", imeID),
+		func(ctx context.Context) error { return AddAndSetInputMethod(ctx, tconn, imeID) })
+}
+
+// AddInputMethodAction is the same as AddInputMethod, but generates
+// an action suitable for use with the uiauto library.
+func AddInputMethodAction(tconn *chrome.TestConn, imeID string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ime.AddInputMethodAction(*chrome.TestConn, imeID=%v)", imeID),
+		func(ctx context.Context) error { return AddInputMethod(ctx, tconn, imeID) })
+}
+
+// RemoveInputMethodAction is the same as RemoveInputMethod, but generates
+// an action suitable for use with the uiauto library.
+func RemoveInputMethodAction(tconn *chrome.TestConn, imeID string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ime.RemoveInputMethodAction(*chrome.TestConn, imeID=%v)", imeID),
+		func(ctx context.Context) error { return RemoveInputMethod(ctx, tconn, imeID) })
+}
+
+// SetCurrentInputMethodAction is the same as SetCurrentInputMethod, but generates
+// an action suitable for use with the uiauto library.
+func SetCurrentInputMethodAction(tconn *chrome.TestConn, imeID string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ime.SetCurrentInputMethodAction(*chrome.TestConn, imeID=%v)", imeID),
+		func(ctx context.Context) error { return SetCurrentInputMethod(ctx, tconn, imeID) })
+}
+
+// WaitForInputMethodMatchesAction is the same as WaitForInputMethodMatches, but generates
+// an action suitable for use with the uiauto library.
+func WaitForInputMethodMatchesAction(tconn *chrome.TestConn, imeID string, timeout time.Duration) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ime.WaitForInputMethodMatchesAction(*chrome.TestConn, imeID=%v, timeout=%v)", imeID, timeout),
+		func(ctx context.Context) error { return WaitForInputMethodMatches(ctx, tconn, imeID, timeout) })
+}
+
+// WaitForInputMethodInstalledAction is the same as WaitForInputMethodInstalled, but generates
+// an action suitable for use with the uiauto library.
+func WaitForInputMethodInstalledAction(tconn *chrome.TestConn, imeID string, timeout time.Duration) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ime.WaitForInputMethodInstalledAction(*chrome.TestConn, imeID=%v, timeout=%v)", imeID, timeout),
+		func(ctx context.Context) error { return WaitForInputMethodInstalled(ctx, tconn, imeID, timeout) })
+}
+
+// WaitForInputMethodRemovedAction is the same as WaitForInputMethodRemoved, but generates
+// an action suitable for use with the uiauto library.
+func WaitForInputMethodRemovedAction(tconn *chrome.TestConn, imeID string, timeout time.Duration) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ime.WaitForInputMethodRemovedAction(*chrome.TestConn, imeID=%v, timeout=%v)", imeID, timeout),
+		func(ctx context.Context) error { return WaitForInputMethodRemoved(ctx, tconn, imeID, timeout) })
+}
+
+// EnableLanguageAction is the same as EnableLanguage, but generates
+// an action suitable for use with the uiauto library.
+func EnableLanguageAction(tconn *chrome.TestConn, lang string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ime.EnableLanguageAction(*chrome.TestConn, lang=%v)", lang),
+		func(ctx context.Context) error { return EnableLanguage(ctx, tconn, lang) })
+}
+
+// DisableLanguageAction is the same as DisableLanguage, but generates
+// an action suitable for use with the uiauto library.
+func DisableLanguageAction(tconn *chrome.TestConn, lang string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ime.DisableLanguageAction(*chrome.TestConn, lang=%v)", lang),
+		func(ctx context.Context) error { return DisableLanguage(ctx, tconn, lang) })
 }

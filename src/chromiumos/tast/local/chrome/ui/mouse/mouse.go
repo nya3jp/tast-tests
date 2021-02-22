@@ -96,3 +96,36 @@ func Drag(ctx context.Context, tconn *chrome.TestConn, start, end coords.Point, 
 	}
 	return Release(ctx, tconn, LeftButton)
 }
+
+// Ensure we don't have an import cycle.
+type action = func(context.Context) error
+
+// ClickAction is the same as Click, but generates
+// an action suitable for use with the uiauto library.
+func ClickAction(tconn *chrome.TestConn, location coords.Point, button Button) action {
+	return func(ctx context.Context) error { return Click(ctx, tconn, location, button) }
+}
+
+// DoubleClickAction is the same as DoubleClick, but generates
+// an action suitable for use with the uiauto library.
+func DoubleClickAction(tconn *chrome.TestConn, location coords.Point, doubleClickInterval time.Duration) action {
+	return func(ctx context.Context) error { return DoubleClick(ctx, tconn, location, doubleClickInterval) }
+}
+
+// PressAction is the same as Press, but generates
+// an action suitable for use with the uiauto library.
+func PressAction(tconn *chrome.TestConn, button Button) action {
+	return func(ctx context.Context) error { return Press(ctx, tconn, button) }
+}
+
+// ReleaseAction is the same as Release, but generates
+// an action suitable for use with the uiauto library.
+func ReleaseAction(tconn *chrome.TestConn, button Button) action {
+	return func(ctx context.Context) error { return Release(ctx, tconn, button) }
+}
+
+// MoveAction is the same as Move, but generates
+// an action suitable for use with the uiauto library.
+func MoveAction(tconn *chrome.TestConn, location coords.Point, duration time.Duration) action {
+	return func(ctx context.Context) error { return Move(ctx, tconn, location, duration) }
+}
