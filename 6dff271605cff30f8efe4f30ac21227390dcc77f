@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4c864de_56c8036f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-02-22T02:30:08Z",
+      "side": 1,
+      "message": "Q: how easy is it to rename a test later on? This might be extend to more latin-based languages in the future. Should I name it PhysicalKeyboardLatinTyping now or later?",
+      "revId": "6dff271605cff30f8efe4f30ac21227390dcc77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
