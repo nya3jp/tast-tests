@@ -34,7 +34,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
 		}},
-		Timeout: 5 * time.Minute,
+		Timeout: 4 * time.Minute,
 		Vars:    []string{"arc.PlayAutoInstall.username", "arc.PlayAutoInstall.password"},
 	})
 }

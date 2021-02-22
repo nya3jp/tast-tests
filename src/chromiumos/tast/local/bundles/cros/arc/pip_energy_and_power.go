@@ -40,7 +40,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Fixture:      "arcBooted",
-		Timeout:      5 * time.Minute,
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name: "small",
 			Val:  arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false},

@@ -45,7 +45,7 @@ func init() {
 				template: `DexInv: --- BEGIN \'(.+?)\' ---`,
 			},
 		}},
-		Timeout: 5 * time.Minute,
+		Timeout: 4 * time.Minute,
 	})
 }
 
