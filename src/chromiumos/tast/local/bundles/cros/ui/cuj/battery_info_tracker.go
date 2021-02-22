@@ -35,7 +35,12 @@ type BatteryInfoTracker struct {
 func NewBatteryInfoTracker(ctx context.Context, metricPrefix string) (*BatteryInfoTracker, error) {
 	batteryPath, err := power.SysfsBatteryPath(ctx)
 	if err != nil {
-		return nil, err
+		// Some devices (e.g. chromeboxes) do not have the battery, but that's fine
+		// for now.
+		// TODO(b/180915240): find the way to measure power data on those devices.
+		testing.ContextLog(ctx, "Failed to get battery path: ", err)
+		testing.ContextLog(ctx, "This might be okay. Continue the test without battery info")
+		return nil, nil
 	}
 
 	chargeFullDesign, err := power.ReadBatteryProperty(batteryPath, "charge_full_design")
