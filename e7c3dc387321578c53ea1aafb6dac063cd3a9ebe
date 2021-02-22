@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f28b5d1_4e55e994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-02-22T23:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "504b9a8c_75cb02a9",
+      "revId": "e7c3dc387321578c53ea1aafb6dac063cd3a9ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5b7d976_ce5d4d4a",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "arc.New() is not only about creating the ARC object, but also for waiting for Android to finish initialization.\nReplaced it with arcBooted fixture.",
       "parentUuid": "d5b7d976_ce5d4d4a",
+      "revId": "e7c3dc387321578c53ea1aafb6dac063cd3a9ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "172ca809_4fd8ea71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-02-22T23:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc47fa3c_a4be77a3",
       "revId": "e7c3dc387321578c53ea1aafb6dac063cd3a9ebe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
