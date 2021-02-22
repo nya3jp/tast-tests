@@ -294,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4aaf9ee_ad5aab84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-22T17:48:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71796627_73f9d88e",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a7bfd4c_798b257d",
@@ -512,6 +536,30 @@
         "startChar": 2,
         "endLine": 54,
         "endChar": 8
+      },
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f76062_2d062809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-22T17:48:22Z",
+      "side": 1,
+      "message": "I could actually add comment why those are not added.",
+      "parentUuid": "f12fc381_6605c4c3",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 54,
+        "endChar": 25
       },
       "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
