@@ -40,6 +40,9 @@ var (
 	// arcAppLoadingVMBooted is a precondition similar to arc.VMBooted(). The only difference from arc.VMBooted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
 	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf")...)
+
+	// arcAppLoadingRtVcpuVMBooted adds feature to boot ARC with realtime vcpu is enabled.
+	arcAppLoadingRtVcpuVMBooted = arc.NewPrecondition("arcapploading_rt_vcpu_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--enable-arcvm-rt-vcpu", "--ignore-arcvm-dev-conf")...)
 )
 
 func init() {
@@ -72,6 +75,15 @@ func init() {
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingVMBooted,
+		}, {
+			Name:              "rt_vcpu_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingRtVcpuVMBooted,
 		}, {
 			Name:              "binarytranslation",
 			ExtraSoftwareDeps: []string{"android_p"},
