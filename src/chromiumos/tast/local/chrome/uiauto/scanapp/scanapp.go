@@ -49,8 +49,8 @@ type Source string
 // The available source options.
 const (
 	SourceFlatbed     Source = "Flatbed"
-	SourceADFOneSided Source = "Document Feeder (One Sided)"
-	SourceADFTwoSided Source = "Document Feeder (Two Sided)"
+	SourceADFOneSided Source = "Document Feeder (One-sided)"
+	SourceADFTwoSided Source = "Document Feeder (Two-sided)"
 )
 
 // FileType defines a file type option.
