@@ -19,3 +19,10 @@ import (
 func NewRootWatcher(ctx context.Context, tconn *chrome.TestConn, event event.Event) (*ui.EventWatcher, error) {
 	return ui.NewRootWatcher(ctx, tconn, ui.EventType(event))
 }
+
+// WaitForLocationChangeCompletedAction returns a uiauto.Action which calls ui.WaitForLocationChangeCompleted.
+func WaitForLocationChangeCompletedAction(tconn *chrome.TestConn) Action {
+	return NamedAction(
+		"uiauto.WaitForLocationChangeCompletedAction(tconn *chrome.TestConn)",
+		func(ctx context.Context) error { return ui.WaitForLocationChangeCompleted(ctx, tconn) })
+}
