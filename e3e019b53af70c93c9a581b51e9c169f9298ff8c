@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "958c502a_7a71a53c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-22T14:44:52Z",
+      "side": 1,
+      "message": ":facepalm:",
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e04e6dac_fc9d1379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-22T14:44:52Z",
+      "side": 1,
+      "message": "missing .",
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cbc62e5_6c27658b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-22T14:44:52Z",
+      "side": 1,
+      "message": "missing .",
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
