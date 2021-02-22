@@ -20,6 +20,41 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f39e8d6b_2918baaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-02-22T01:56:15Z",
+      "side": 1,
+      "message": "answered to the comment in crrev.com/c/2703561",
+      "parentUuid": "6f54e33f_9e2ca00b",
+      "revId": "e583f35f13e232df6f825c6482eb0fb79c5fe4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd8496af_5e445031",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-02-22T01:56:15Z",
+      "side": 1,
+      "message": "I rebased and fixed a new test which didn\u0027t use any fixtures.",
+      "revId": "e583f35f13e232df6f825c6482eb0fb79c5fe4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "162896a3_2bbfa24b",
         "filename": "src/chromiumos/tast/local/arc/fixture.go",
         "patchSetId": 1
@@ -49,6 +84,24 @@
       "side": 1,
       "message": "arc.Command sets up environment variables like ADB_VENDOR_KEYS. We want to avoid running adb directly.",
       "parentUuid": "162896a3_2bbfa24b",
+      "revId": "e583f35f13e232df6f825c6482eb0fb79c5fe4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4804ff66_4a850d81",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-02-22T01:56:15Z",
+      "side": 1,
+      "message": "Ack. I want to keep this TODO.",
+      "parentUuid": "d29f048d_13375d5d",
       "revId": "e583f35f13e232df6f825c6482eb0fb79c5fe4ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
