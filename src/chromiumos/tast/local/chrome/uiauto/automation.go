@@ -79,12 +79,16 @@ type Action = func(context.Context) error
 
 // Run runs a sequence of steps that take a context and return an error.
 // It is made to enable easy chaining of ui actions.
-func Run(ctx context.Context, steps ...Action) error {
-	return Combine("execution", steps...)(ctx)
+func Run(ctx context.Context, name string, steps ...Action) error {
+	return Combine(name, steps...)(ctx)
 }
 
 // Combine combines a list of functions from Context to error into one function.
 // Combine adds the name of the operation into the error message to clarify the step.
+// It is recommended to start the name of operations with "to do", e.g.,
+//     "to open Downloads and right click a folder"
+// Then the failure msg would be like:
+//     "failed to open Downloads and right click a folder on step ..."
 func Combine(name string, steps ...Action) Action {
 	return func(ctx context.Context) error {
 		for i, f := range steps {

@@ -248,8 +248,8 @@ func (s *Settings) GetDiskSize(ctx context.Context) (string, error) {
 // ResizeDisk resizes the VM disk to approximately targetSize via the settings app.
 // If growing the VM disk, set increase to true, otherwise set it to false.
 func (s *Settings) ResizeDisk(ctx context.Context, kb *input.KeyboardEventWriter, targetSize uint64, increase bool) error {
-	if err := uiauto.Run(ctx, s.ui.LeftClick(resizeButton), s.ui.FocusAndWait(ResizeDiskDialog.Slider)); err != nil {
-		return errors.Wrap(err, "failed to open resize slider")
+	if err := uiauto.Run(ctx, "to open resize dialog and focus on slider", s.ui.LeftClick(resizeButton), s.ui.FocusAndWait(ResizeDiskDialog.Slider)); err != nil {
+		return err
 	}
 
 	if _, err := ChangeDiskSize(ctx, s.tconn, kb, ResizeDiskDialog.Slider, increase, targetSize); err != nil {
@@ -393,7 +393,7 @@ func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWrit
 	}
 	sizeOnSlider := nodeInfo.Name
 
-	if err := uiauto.Run(ctx, s.ui.LeftClick(ResizeDiskDialog.Resize), s.ui.WaitUntilGone(ResizeDiskDialog.Self)); err != nil {
+	if err := uiauto.Run(ctx, "to resize", s.ui.LeftClick(ResizeDiskDialog.Resize), s.ui.WaitUntilGone(ResizeDiskDialog.Self)); err != nil {
 		return "", 0, errors.Wrap(err, "failed to click button Resize on Resize Linux disk dialog")
 	}
 

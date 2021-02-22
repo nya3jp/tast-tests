@@ -109,7 +109,7 @@ func RemoveOk(ctx context.Context, s *testing.State) {
 
 	// Click button remove and click Delete on the confirmation dialog.
 	ui := uiauto.New(tconn)
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to open Remove dialog and confirm remove",
 		st.ClickRemove(),
 		ui.LeftClick(settings.RemoveConfirmDialog.Delete),
 		ui.WaitUntilExists(settings.RemoveLinuxAlert),

@@ -119,7 +119,7 @@ func ShareFilesToast(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to share My files and click button Manage on toast",
 		sharedFolders.ShareMyFilesOK(ctx, filesApp),
 		uiauto.New(tconn).LeftClick(sharedfolders.ShareToastNotification.ManageButton)); err != nil {
 		s.Fatal("Failed to share My files: ", err)
@@ -130,7 +130,7 @@ func ShareFilesToast(ctx context.Context, s *testing.State) {
 	}
 
 	// Unshare My files. This is part of the test, different from clean up in line 72.
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to unshare My files",
 		sharedFolders.Unshare(cr, sharedfolders.MyFiles),
 		sharedFolders.CheckNoSharedFolders(cont, cr)); err != nil {
 		s.Fatal("Failed to unshare My files: ", err)

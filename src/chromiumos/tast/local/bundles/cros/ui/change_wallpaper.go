@@ -39,7 +39,7 @@ func ChangeWallpaper(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 	setWallpaperMenu := nodewith.Name("Set wallpaper").Role(role.MenuItem)
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to change the wallpaper",
 		ui.RightClick(nodewith.ClassName("WallpaperView")),
 		// This button takes a bit before it is clickable.
 		// Keep clicking it until the click is received and the menu closes.

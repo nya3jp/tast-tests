@@ -124,7 +124,7 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 	defer filesApp.Close(ctx)
 
 	const Movies = "Movies"
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to open Play files and click Manage with Linux on Movies",
 		filesApp.OpenDir(filesapp.Playfiles, "Files - "+filesapp.Playfiles),
 		filesApp.ClickContextMenuItem(Movies, sharedfolders.ShareWithLinux),
 		sharedFolders.AddFolder(filesapp.Playfiles+" › "+Movies)); err != nil {

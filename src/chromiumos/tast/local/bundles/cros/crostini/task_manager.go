@@ -99,7 +99,7 @@ func TaskManager(ctx context.Context, s *testing.State) {
 	tastkManager := nodewith.Name("Task Manager").ClassName("TaskManagerView").First()
 	crostiniEntry := nodewith.Name("Linux Virtual Machine: termina").Ancestor(tastkManager)
 	ui := uiauto.New(tconn)
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to open Task Manager and look for Crostini",
 		// Press Search + Esc to launch task manager
 		keyboard.AccelAction("Search+Esc"),
 

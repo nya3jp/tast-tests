@@ -57,7 +57,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
 
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to open downloads and check items",
 		// Open the Downloads folder and check for the test file.
 		files.OpenDownloads(),
 		files.WaitForFile(textFile),
