@@ -36,7 +36,7 @@ func init() {
 		Func:        DisconnectReason,
 		Desc:        "Verify the DUT disconnects from an AP and verify the supplicant DisconnectReason for various scenarios",
 		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
