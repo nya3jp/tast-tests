@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a54d1ee_f3c16ed4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-22T22:59:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b8e8977c_8f67dd59",
+      "range": {
+        "startLine": 524,
+        "startChar": 12,
+        "endLine": 524,
+        "endChar": 22
+      },
+      "revId": "90c2dd44d792e5f3e073e0bbdf981a983ad69546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f0495b5_8fc90e91",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e7d912_bb740f89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-22T22:59:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f0495b5_8fc90e91",
+      "range": {
+        "startLine": 539,
+        "startChar": 12,
+        "endLine": 539,
+        "endChar": 22
+      },
+      "revId": "90c2dd44d792e5f3e073e0bbdf981a983ad69546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b10872b3_b4c3c8c1",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-22T22:57:44Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 554,
+        "startChar": 12,
+        "endLine": 554,
+        "endChar": 22
+      },
+      "revId": "90c2dd44d792e5f3e073e0bbdf981a983ad69546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cef7cdc_18aa3588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-22T22:59:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b10872b3_b4c3c8c1",
       "range": {
         "startLine": 554,
         "startChar": 12,
