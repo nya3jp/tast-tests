@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "651aa469_e88c9728",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T17:37:23Z",
+      "side": 1,
+      "message": "Just some minor comments",
+      "revId": "971db6d6e51985b539dd3fc4897118a646eb417b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2157c0c4_026059b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T17:37:23Z",
+      "side": 1,
+      "message": "super nit: you can also just run this directly like app.ClickMoreSettings()(ctx)\neither is fine. I tend to avoid run for single operations for simpler logs",
+      "range": {
+        "startLine": 155,
+        "startChar": 11,
+        "endLine": 155,
+        "endChar": 51
+      },
+      "revId": "971db6d6e51985b539dd3fc4897118a646eb417b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7138fbc6_7e885e8f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T17:37:23Z",
+      "side": 1,
+      "message": "do you want to say its ancestor is WindowFinder? probably will never come up as a bug, but if there is every another button named scan on the screen for some reason this could break.\n\nyou could always create ScanApp early and use it instead of ui here to automatically do that",
+      "range": {
+        "startLine": 120,
+        "startChar": 55,
+        "endLine": 120,
+        "endChar": 71
+      },
+      "revId": "971db6d6e51985b539dd3fc4897118a646eb417b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
