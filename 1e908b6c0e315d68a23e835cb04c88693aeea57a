@@ -16,6 +16,24 @@
       "message": "looks like username is not necessary?  please remove this.",
       "revId": "1e908b6c0e315d68a23e835cb04c88693aeea57a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54f32486_6d6fb765",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-22T19:44:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c790c53_af2d856d",
+      "revId": "1e908b6c0e315d68a23e835cb04c88693aeea57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
