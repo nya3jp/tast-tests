@@ -37,10 +37,38 @@ func CSAReconnect(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
+	// TODO(b/154879577): Currently the action frames sent by FrameSender
+	// are not buffered for DTIM so if the DUT is in power saving mode, it
+	// cannot receive the action frame and the test will fail.
+	// Turn off power saving mode to replicate the behavior of Autotest in
+	// this test for now.
+	shortenCtx, restore, err := tf.DisablePowersaveMode(ctx)
+	if err != nil {
+		s.Fatal("Failed to disable power saving mode: ", err)
+	}
+	ctx = shortenCtx
+	defer func() {
+		if err := restore(); err != nil {
+			s.Error("Failed to restore initial power saving mode: ", err)
+		}
+	}()
+
 	const (
 		primaryChannel = 64
 		alterChannel   = 36
 	)
+
+	capturer, err := tf.Pcap().StartCapture(ctx, "CSAReconnect", primaryChannel, nil)
+	if err != nil {
+		s.Fatal("Failed to start capturer: ", err)
+	}
+	defer func(ctx context.Context) {
+		if err := tf.Pcap().StopCapture(ctx, capturer); err != nil {
+			s.Fatal("Failed to stop capturer: ", err)
+		}
+	}(ctx)
+	ctx, cancel = tf.Pcap().ReserveForStopCapture(ctx, capturer)
+	defer cancel()
 
 	apOps := []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.Channel(primaryChannel), hostapd.HTCaps(hostapd.HTCapHT20)}
 	ap, err := tf.ConfigureAP(ctx, apOps, nil)
