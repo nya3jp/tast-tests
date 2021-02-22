@@ -1,0 +1,304 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa75786a_0b95a8b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "nit: Can you include the command you ran?\n```\ntast run \u003cDUT-IP\u003e ui.WebUIJSErrors\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ec4c8e_d18f66b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "These are all shared across the ui package, suggest prefixing with some more unique or moving to a more local scope.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd681083_15e30442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "Suggest using cleanupCtx here.",
+      "range": {
+        "startLine": 55,
+        "startChar": 28,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "766993b7_e04b3eae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "nit: Removed?",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e7842c3_199f9afa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "\u003e \"vunerable\" is a possible misspelling of \"vulnerable\".\n\nPlease fix.",
+      "parentUuid": "6e1dac19_8e921ff7",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f4b604c_2e4d9d16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "The Tast way of formatting these error messages is:\n```\nerrors.Errorf(\"Unexpected meta var: got %s; want %s\", metas[0], expectedErrorMessage)\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 120
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f062e254_289152b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "See above comment on error messages.",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 112
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de956ba6_5bd9da2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "See above comment on error messages.",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 119
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76f05de7_ae8496f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "See above comment on error messages.",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 124
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0444616_d428a666",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "See above comment on error messages.",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 123
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64481802_6a97630c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "Can we just return the err? You\u0027re wrapping this error already in the main test body.",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 44
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ffcf56_a0e3fb73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "There\u0027s a potential the test times out and the deferrals aren\u0027t run leaving no time for teardown. Suggest creating a cleanup context to ensure all deferred cleanup actions are ran\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n```",
+      "range": {
+        "startLine": 209,
+        "startChar": 31,
+        "endLine": 209,
+        "endChar": 34
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94463d5b_42c27023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-22T23:08:17Z",
+      "side": 1,
+      "message": "Don\u0027t need this here, filepath.Join, \"Join joins any number of path elements into a single path, separating them with an OS specific Separator\"\n\nhttps://golang.org/pkg/path/filepath/#Join",
+      "range": {
+        "startLine": 222,
+        "startChar": 34,
+        "endLine": 222,
+        "endChar": 35
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
