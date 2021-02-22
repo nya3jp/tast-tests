@@ -481,6 +481,30 @@
       },
       "revId": "bd576ce0574b9b26398b4074c3f10e8a77fe91e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d31e2192_1262130c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-22T14:47:24Z",
+      "side": 1,
+      "message": "Not sure what you mean by two different easier to understand functions. If you want to change the functions in policyutil you could do it in a separate CL for easier reviews.\n\nThe current implementation LGTM.",
+      "parentUuid": "5ca907aa_8b3ceb32",
+      "range": {
+        "startLine": 155,
+        "startChar": 24,
+        "endLine": 155,
+        "endChar": 45
+      },
+      "revId": "bd576ce0574b9b26398b4074c3f10e8a77fe91e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
