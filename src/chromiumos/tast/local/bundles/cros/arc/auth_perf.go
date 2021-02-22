@@ -32,6 +32,7 @@ type testParam struct {
 	// maxErrorBootCount is the number of maximum allowed boot errors.
 	maxErrorBootCount int
 	resultSuffix      string
+	chromeArgs        []string
 }
 
 var resultPropRegexp = regexp.MustCompile(`OK,(\d+)`)
@@ -67,6 +68,17 @@ func init() {
 				password:          "arc.AuthPerf.unmanaged_password",
 				maxErrorBootCount: 3,
 				resultSuffix:      "",
+			},
+		}, {
+			Name:              "unmanaged_rt_vcpu_vm",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: testParam{
+				username:          "arc.AuthPerf.unmanaged_username",
+				password:          "arc.AuthPerf.unmanaged_password",
+				maxErrorBootCount: 3,
+				resultSuffix:      "",
+				chromeArgs:        []string{"--enable-arcvm-rt-vcpu"},
 			},
 		}, {
 			Name: "managed",
@@ -126,6 +138,9 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	maxErrorBootCount := param.maxErrorBootCount
 
 	args := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui", "--ignore-arcvm-dev-conf")
+	if param.chromeArgs != nil {
+		args = append(args, param.chromeArgs...)
+	}
 
 	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
 	cr, err := chrome.New(ctx, chrome.ARCSupported(), chrome.RestrictARCCPU(), chrome.GAIALogin(),
