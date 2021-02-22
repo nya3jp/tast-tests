@@ -16,6 +16,23 @@
       "message": "Addressed the arc type check.",
       "revId": "3738b828bdf0c81e7706ead30a7547616edeeef8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa074cc_c92d10c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T19:24:51Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "3738b828bdf0c81e7706ead30a7547616edeeef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
