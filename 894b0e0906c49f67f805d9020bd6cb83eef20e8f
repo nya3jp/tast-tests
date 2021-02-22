@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66d509f3_3269abf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_install_guest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-02-22T02:09:09Z",
+      "side": 1,
+      "message": "nit: Terminal SWA is always installed. But it is disabled (controlled by Crostini App Service publisher) in guest mode, so it isn\u0027t included in installed app list.",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 50
+      },
+      "revId": "894b0e0906c49f67f805d9020bd6cb83eef20e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
