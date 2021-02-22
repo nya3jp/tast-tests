@@ -87,6 +87,24 @@
       "parentUuid": "a08d1cd8_0cf25ba3",
       "revId": "a4293c12989ee6840a22e8782d70f23e901c2b4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee21f7cc_26e9251d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pre/pre_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-22T22:14:49Z",
+      "side": 1,
+      "message": "Ah, Fixture is exactly what I was looking for. I will abandon this and put up a CL using Fixture. (We should probably replace network/pre/ with a logging fixture as well, but that is lower priority to me).",
+      "parentUuid": "cbcda67c_0740644d",
+      "revId": "a4293c12989ee6840a22e8782d70f23e901c2b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
