@@ -22,6 +22,30 @@
       },
       "revId": "d857f473e4bc669ad3e3d7ae7f92f20e58920201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50a5875a_405cddb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T23:00:05Z",
+      "side": 1,
+      "message": "You should be able to rebase on https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2709309\n\nSo that you don\u0027t re-add this method multiple times.",
+      "parentUuid": "f2b08ef3_477d5cca",
+      "range": {
+        "startLine": 512,
+        "startChar": 5,
+        "endLine": 512,
+        "endChar": 22
+      },
+      "revId": "d857f473e4bc669ad3e3d7ae7f92f20e58920201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
