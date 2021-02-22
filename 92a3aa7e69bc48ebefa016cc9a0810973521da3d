@@ -51,6 +51,24 @@
       "parentUuid": "6e81dd6f_31213e49",
       "revId": "92a3aa7e69bc48ebefa016cc9a0810973521da3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f5c75f4_e1d0b8c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-02-22T13:15:37Z",
+      "side": 1,
+      "message": "It\u0027s turned out that we need to wait here for MyFiles to be in the state of (3) below:\n  (1) \u003ccryptohome-user\u003e/MyFiles is mounted on /run/arcvm/MyFiles in CrOS\n  (2) /storage/\u003cMyFiles-UUID\u003e becomes a mount point in ARC\n  (3) Android FUSE gets ready for /storage/\u003cMyFiles-UUID\u003e\n\nFortunately, StorageManager updates the volume\u0027s mount status only after (3), and thus we can use the sm command here to make sure that the volume is ready to use. waitForARCMyFilesMount() is added for this purpose. It takes at most a few seconds in my local betty-arc-r.\n\nAs a side note, while this kind of race is not likely to happen when CrOS is used by ordinary human beings, it can surely happen in testing environments. That said, we might want to export waitForARCMyFilesMount() (or something like that) in the future to use it in other ARC Tast tests that uses MyFiles or Downloads.",
+      "parentUuid": "8436615e_b34ad758",
+      "revId": "92a3aa7e69bc48ebefa016cc9a0810973521da3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
