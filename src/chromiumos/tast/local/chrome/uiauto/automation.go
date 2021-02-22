@@ -576,3 +576,12 @@ func (ac *Context) Retry(n int, action Action) Action {
 		return err
 	}
 }
+
+// Poll returns a function that retries a given action if it returns error.
+// The action will be executed every until either it succeeds, or times out,
+// according to the uiauto.Context pollOpts interval and timeout.
+func (ac *Context) Poll(action Action) Action {
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx, action, &ac.pollOpts)
+	}
+}
