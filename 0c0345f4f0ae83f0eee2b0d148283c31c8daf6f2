@@ -16,6 +16,29 @@
       "message": "Hi Brendan,\n\nPlease review it. Thanks.\n\nRegards,\nMeena\n",
       "revId": "0c0345f4f0ae83f0eee2b0d148283c31c8daf6f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10061a5f_6d1b058c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T23:10:40Z",
+      "side": 1,
+      "message": "Same here. It should really be rebase on https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2709309\n\nSo that you don\u0027t re-add this method multiple times.",
+      "range": {
+        "startLine": 512,
+        "startChar": 5,
+        "endLine": 512,
+        "endChar": 22
+      },
+      "revId": "0c0345f4f0ae83f0eee2b0d148283c31c8daf6f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
