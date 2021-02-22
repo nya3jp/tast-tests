@@ -48,10 +48,10 @@ func init() {
 		Desc: "Signs in to DUT and performs ARC++ boot with various paramters. Captures required data and uploads it to Chrome binary server. This data is used by various tools. Normally, this test should be run during the Android PFQ, once per build/arch",
 		Contacts: []string{
 			"khmel@chromium.org", // Original author.
+			"alanding@chromium.org",
 			"arc-performance@google.com",
 		},
-		// TODO(b/150012956): Stop using 'arc' here and use ExtraSoftwareDeps instead.
-		SoftwareDeps: []string{"arc", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
 			"tast.cros.arc.GmsCoreCacheService"},
 		Timeout: 20 * time.Minute,
@@ -180,8 +180,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		gsUtil = "gsutil"
 
 		// Number of retries for each flow in case of failure.
-		// TODO(b/167697547): Set retryCount to 0 once bug gets fixed.
-		retryCount = 2
+		retryCount = 0
 	)
 
 	d := s.DUT()
@@ -332,7 +331,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			if err := upload(shortCtx, targetTar, ureadAheadPack); err != nil {
 				s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
 			}
-
 		}
 
 		return nil
