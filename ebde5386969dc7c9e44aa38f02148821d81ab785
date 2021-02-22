@@ -22,6 +22,30 @@
       },
       "revId": "ebde5386969dc7c9e44aa38f02148821d81ab785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37424e3_9c26d4f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-02-22T23:04:50Z",
+      "side": 1,
+      "message": "I\u0027ll make sure to change that and the filename as well when I update the color mode option.",
+      "parentUuid": "7b0afb88_1666bc97",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "ebde5386969dc7c9e44aa38f02148821d81ab785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
