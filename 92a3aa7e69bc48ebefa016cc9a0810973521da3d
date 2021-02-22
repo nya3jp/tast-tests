@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b48e088_e69af0c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-02-22T09:02:01Z",
+      "side": 1,
+      "message": "This CL is to add a Tast test for MyFiles sharing. PTAL. Thanks!",
+      "revId": "92a3aa7e69bc48ebefa016cc9a0810973521da3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
