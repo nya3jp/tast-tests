@@ -69,6 +69,24 @@
       "parentUuid": "ad858adb_f7892267",
       "revId": "0c924a06710cd05c9b28e5c3e368d189460dcb11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "217e0fe0_22a311aa",
+        "filename": "src/chromiumos/tast/local/power/cpucooldown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-02-22T19:46:16Z",
+      "side": 1,
+      "message": "Ok. I suppose I\u0027m more concerned with the name of the function, which says it waits for CPUs to cool down, when it really waits for all thermal zones to cool down. Maybe it\u0027s as simple as changing the name 😊\n\nFWIW, mka@ is removing this thermal zone from trogdor so this CL becomes sort of unnecessary once that is done.",
+      "parentUuid": "2605bff6_2a831ca3",
+      "revId": "0c924a06710cd05c9b28e5c3e368d189460dcb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
