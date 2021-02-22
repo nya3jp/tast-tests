@@ -19,7 +19,7 @@ func init() {
 		Func:        Reset,
 		Desc:        "Test that the WiFi interface can be reset successfully, and that WiFi comes back up properly",
 		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_suspend", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
