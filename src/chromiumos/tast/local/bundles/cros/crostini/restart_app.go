@@ -75,7 +75,7 @@ func launchGedit(ctx context.Context, keyboard *input.KeyboardEventWriter, tconn
 
 	ui := uiauto.New(tconn)
 	appWindow := nodewith.NameRegex(regexp.MustCompile(`.* - gedit`)).Role(role.Window).First()
-	return uiauto.Run(ctx,
+	return uiauto.Combine("click and close Gedit",
 		// Focus on the Gedit window.
 		ui.LeftClick(appWindow),
 
@@ -84,5 +84,5 @@ func launchGedit(ctx context.Context, keyboard *input.KeyboardEventWriter, tconn
 		keyboard.AccelAction("ctrl+W"),
 
 		// Check window close.
-		ui.WaitUntilGone(appWindow))
+		ui.WaitUntilGone(appWindow))(ctx)
 }

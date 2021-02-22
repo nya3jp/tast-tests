@@ -79,30 +79,30 @@ func PhysicalKeyboardEnglishTyping(ctx context.Context, s *testing.State) {
 		}, {
 			testName: "Backspace",
 			inputFunc: func(ctx context.Context) error {
-				return uiauto.Run(ctx,
+				return uiauto.Combine("type a string and Backspace",
 					keyboard.TypeAction("abc"),
 					keyboard.AccelAction("Backspace"),
-				)
+				)(ctx)
 			},
 			expectedText: "ab",
 		}, {
 			testName: "Ctrl+Backspace",
 			inputFunc: func(ctx context.Context) error {
-				return uiauto.Run(ctx,
+				return uiauto.Combine("type a string and Ctrl+Backspace",
 					keyboard.TypeAction("hello world"),
 					keyboard.AccelAction("Ctrl+Backspace"),
-				)
+				)(ctx)
 			},
 			expectedText: "hello ",
 		}, {
 			testName: "Editing middle of text",
 			inputFunc: func(ctx context.Context) error {
-				return uiauto.Run(ctx,
+				return uiauto.Combine("type strings and edit in the middle of text",
 					keyboard.TypeAction("abc"),
 					keyboard.AccelAction("Left"),
 					keyboard.AccelAction("Backspace"),
 					keyboard.TypeAction("bc ab"),
-				)
+				)(ctx)
 			},
 			expectedText: "abc abc",
 		},

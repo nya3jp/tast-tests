@@ -81,11 +81,11 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 	// Find eclipse window.
 	name := fmt.Sprintf("%s - /home/%s/%s/%s - Eclipse IDE ", workspace, strings.Split(cr.User(), "@")[0], workspace, testFile)
 	eclipseWindow := nodewith.Name(name).Role(role.Window).First()
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("start Eclipse",
 		terminalApp.RunCommand(keyboard, fmt.Sprintf("eclipse -data %s --launcher.openFile %s/%s --noSplash", workspace, workspace, testFile)),
 		uiauto.New(tconn).WaitUntilExists(eclipseWindow),
-		crostini.TakeAppScreenshot("eclipse")); err != nil {
-		s.Fatal("Failed to start android studio in Terminal: ", err)
+		crostini.TakeAppScreenshot("eclipse"))(ctx); err != nil {
+		s.Fatal("Failed to start Eclipse in Terminal: ", err)
 	}
 
 	//TODO(jinrongwu): UI test on eclipse.

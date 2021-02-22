@@ -615,7 +615,7 @@ func uninstallLinuxFromUI(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 
 	// Uninstall Crostini
 	ui := uiauto.New(tconn)
-	if err := uiauto.Combine("Remove Linux",
+	if err := uiauto.Combine("remove Linux",
 		st.ClickRemove(),
 		ui.LeftClick(settings.RemoveConfirmDialog.Delete),
 		ui.WaitUntilExists(settings.RemoveLinuxAlert),

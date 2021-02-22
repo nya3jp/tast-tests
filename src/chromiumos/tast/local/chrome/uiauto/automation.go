@@ -77,19 +77,17 @@ func (ac *Context) WithPollOpts(pollOpts testing.PollOptions) *Context {
 // Action is a function that takes a context and returns an error.
 type Action = func(context.Context) error
 
-// Run runs a sequence of steps that take a context and return an error.
-// It is made to enable easy chaining of ui actions.
-func Run(ctx context.Context, steps ...Action) error {
-	return Combine("execution", steps...)(ctx)
-}
-
 // Combine combines a list of functions from Context to error into one function.
 // Combine adds the name of the operation into the error message to clarify the step.
+// It is recommended to start the name of operations with a verb, e.g.,
+//     "open Downloads and right click a folder"
+// Then the failure msg would be like:
+//     "failed to open Downloads and right click a folder on step ..."
 func Combine(name string, steps ...Action) Action {
 	return func(ctx context.Context) error {
 		for i, f := range steps {
 			if err := f(ctx); err != nil {
-				return errors.Wrapf(err, "failed %s on step %d", name, i+1)
+				return errors.Wrapf(err, "failed to %s on step %d", name, i+1)
 			}
 		}
 		return nil
