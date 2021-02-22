@@ -17,9 +17,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ClamshellTests are placed here.
+/// ClamshellTests are placed here.
 var clamshellTestsForYoutube = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForYoutube},
+	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
@@ -29,6 +30,7 @@ var clamshellTestsForYoutube = []testutil.TestCase{
 // TouchviewTests are placed here.
 var touchviewTestsForYoutube = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForYoutube},
+	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
