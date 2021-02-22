@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/testing"
 )
 
@@ -344,4 +345,18 @@ func InstallPWAForURL(ctx context.Context, cr *chrome.Chrome, pwaURL string, tim
 	}
 
 	return appID, nil
+}
+
+// LaunchAction returns a uiauto.Action which calls Launch.
+func LaunchAction(tconn *chrome.TestConn, appID string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("apps.LaunchAction(tconn *chrome.TestConn, appID string) with appID=%v", appID),
+		func(ctx context.Context) error { return Launch(ctx, tconn, appID) })
+}
+
+// CloseAction returns a uiauto.Action which calls Close.
+func CloseAction(tconn *chrome.TestConn, appID string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("apps.CloseAction(tconn *chrome.TestConn, appID string) with appID=%v", appID),
+		func(ctx context.Context) error { return Close(ctx, tconn, appID) })
 }
