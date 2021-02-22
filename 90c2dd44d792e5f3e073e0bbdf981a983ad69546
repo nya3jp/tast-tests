@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e8977c_8f67dd59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T22:57:44Z",
+      "side": 1,
+      "message": "all of these wait for appverifer. is that correct? I would assume that one of these should wait for the next button to appear.",
+      "range": {
+        "startLine": 524,
+        "startChar": 12,
+        "endLine": 524,
+        "endChar": 22
+      },
+      "revId": "90c2dd44d792e5f3e073e0bbdf981a983ad69546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f0495b5_8fc90e91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T22:57:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 539,
+        "startChar": 12,
+        "endLine": 539,
+        "endChar": 22
+      },
+      "revId": "90c2dd44d792e5f3e073e0bbdf981a983ad69546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10872b3_b4c3c8c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T22:57:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 554,
+        "startChar": 12,
+        "endLine": 554,
+        "endChar": 22
+      },
+      "revId": "90c2dd44d792e5f3e073e0bbdf981a983ad69546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
