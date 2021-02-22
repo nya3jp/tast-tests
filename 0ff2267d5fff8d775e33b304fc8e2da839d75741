@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6574ea1b_0177a696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-22T22:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "548156cf_54df1aef",
+      "revId": "0ff2267d5fff8d775e33b304fc8e2da839d75741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f9fbb84_952ab79e",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-22T21:17:41Z",
       "side": 1,
       "message": "Add comment explaining why you expect one line for each of these variables.",
+      "revId": "0ff2267d5fff8d775e33b304fc8e2da839d75741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce2ad97f_a5485217",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-22T22:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f9fbb84_952ab79e",
       "revId": "0ff2267d5fff8d775e33b304fc8e2da839d75741",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
