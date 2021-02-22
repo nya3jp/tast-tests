@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
@@ -136,6 +137,7 @@ func DisableArc(ctx context.Context, s *testing.State) {
 		screenRecorder.Release(ctx)
 	}()
 	screenRecorder.Start(ctx, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	s.Log("Turn Play Store Off from Settings")
 	if err := turnOffPlayStore(ctx, tconn); err != nil {
