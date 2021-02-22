@@ -80,7 +80,7 @@ type Action = func(context.Context) error
 // Run runs a sequence of steps that take a context and return an error.
 // It is made to enable easy chaining of ui actions.
 func Run(ctx context.Context, steps ...Action) error {
-	return Combine("execution", steps...)(ctx)
+	return Combine("uiauto.Run", steps...)(ctx)
 }
 
 // Combine combines a list of functions from Context to error into one function.
@@ -88,9 +88,22 @@ func Run(ctx context.Context, steps ...Action) error {
 func Combine(name string, steps ...Action) Action {
 	return func(ctx context.Context) error {
 		for i, f := range steps {
+			testing.ContextLogf(ctx, "Running action group %s, step %d", name, i+1)
 			if err := f(ctx); err != nil {
 				return errors.Wrapf(err, "failed %s on step %d", name, i+1)
 			}
+		}
+		return nil
+	}
+}
+
+// NamedAction gives a name to an action. It logs when an action starts,
+// and if the action fails, tells you the name of the failing action.
+func NamedAction(name string, fn Action) Action {
+	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Running action %s", name)
+		if err := fn(ctx); err != nil {
+			return errors.Wrapf(err, "failed action %s", name)
 		}
 		return nil
 	}
