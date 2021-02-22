@@ -169,15 +169,15 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 }
 
 func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.FilesApp, zipFile string) float64 {
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("open downloads and mount ZIP file",
 		// Open the Downloads folder.
 		files.OpenDownloads(),
 		files.WaitForFile(zipFile),
 		files.SelectFile(zipFile),
 		// Click "Open" to mount the selected zip file.
 		files.LeftClick(nodewith.Name("Open").Role(role.Button)),
-	); err != nil {
-		s.Fatal("Failed to open Downloads and start mounting the ZIP file: ", err)
+	)(ctx); err != nil {
+		s.Fatal("Failed to test mounting the ZIP file: ", err)
 	}
 
 	// Start timer for zip file mounting operation.
@@ -204,7 +204,7 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 		}
 	}
 
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("select and copy mounted files and paste them into a new folder",
 		// Move the focus to the file list.
 		files.FocusAndWait(nodewith.Role(role.ListBox)),
 		selectAllInMountedFileAction(),
@@ -216,7 +216,7 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 		// Before pasting, ensure the Files App has switched to the new location.
 		files.WaitUntilExists(nodewith.Name("Files - "+zipBaseName).Role(role.RootWebArea)),
 		ew.AccelAction("ctrl+V"),
-	); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to start ZIP file extraction: ", err)
 	}
 
@@ -233,7 +233,7 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 }
 
 func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, zipBaseName string) float64 {
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("select Zip selection on all files",
 		// The Files app listBox, which should be in a focused state.
 		files.WaitUntilExists(nodewith.Role(role.ListBox).Focused()),
 		// Select all extracted files.
@@ -242,7 +242,7 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 		files.RightClick(nodewith.Role(role.ListBox).Focused()),
 		// Select "Zip selection".
 		files.LeftClick(nodewith.Name("Zip selection").Role(role.MenuItem)),
-	); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to start zipping files: ", err)
 	}
 

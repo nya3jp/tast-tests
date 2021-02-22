@@ -120,10 +120,10 @@ func ResizeCancel(ctx context.Context, s *testing.State) {
 
 	// Click Resize on Linux settings page.
 	ui := uiauto.New(tconn)
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("open Resize dialog and click button Cancel",
 		st.ClickChange(),
 		ui.LeftClick(settings.ResizeDiskDialog.Cancel),
-		ui.WaitUntilGone(settings.ResizeDiskDialog.Self)); err != nil {
+		ui.WaitUntilGone(settings.ResizeDiskDialog.Self))(ctx); err != nil {
 		s.Fatal("Failed to cancel resize: ", err)
 	}
 

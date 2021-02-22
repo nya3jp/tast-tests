@@ -133,9 +133,9 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 	defer filesApp.Close(cleanupCtx)
 
 	// Right click Downloads and select Share with Linux.
-	if err = uiauto.Run(ctx,
+	if err = uiauto.Combine("click Share with Linux on Downloads",
 		filesApp.ClickDirectoryContextMenuItem(filesapp.Downloads, sharedfolders.ShareWithLinux),
-		sharedFolders.AddFolder(sharedfolders.SharedDownloads)); err != nil {
+		sharedFolders.AddFolder(sharedfolders.SharedDownloads))(ctx); err != nil {
 		s.Fatal("Failed to share Downloads with Crostini: ", err)
 	}
 
@@ -223,10 +223,10 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to push test file to the container: ", err)
 		}
 
-		if err := uiauto.Run(ctx,
+		if err := uiauto.Combine("open Downloads and find the test files",
 			filesApp.OpenDownloads(),
 			filesApp.WaitForFile(testFile),
-			filesApp.WaitForFile(testFolder)); err != nil {
+			filesApp.WaitForFile(testFolder))(ctx); err != nil {
 			s.Fatal("Failed to find the newly created files in Downloads: ", err)
 		}
 

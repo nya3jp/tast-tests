@@ -164,11 +164,11 @@ func Scan(ctx context.Context, s *testing.State) {
 				}
 			}()
 
-			if err := uiauto.Run(ctx,
+			if err := uiauto.Combine("scan",
 				app.SetScanSettings(test.settings),
 				app.Scan(),
 				app.ClickDone(),
-			); err != nil {
+			)(ctx); err != nil {
 				s.Fatal("Failed to perform scan: ", err)
 			}
 

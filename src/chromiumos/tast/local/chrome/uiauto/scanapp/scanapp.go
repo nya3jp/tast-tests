@@ -169,7 +169,7 @@ func (s *ScanApp) SetScanSettings(settings ScanSettings) uiauto.Action {
 
 // Scan returns a function that performs a scan by clicking the scan button.
 func (s *ScanApp) Scan() uiauto.Action {
-	return uiauto.Combine("Scan",
+	return uiauto.Combine("scan",
 		s.LeftClick(scanButtonFinder),
 		// Wait until the done button is displayed to verify the scan completed
 		// successfully.

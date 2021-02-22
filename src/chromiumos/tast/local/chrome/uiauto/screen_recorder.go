@@ -89,8 +89,8 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 	entireDesktopButton := nodewith.ClassName("DesktopMediaSourceView").Role(role.Button).Ancestor(shareScreenDialog)
 	shareButton := nodewith.Name("Share").Role(role.Button).Ancestor(shareScreenDialog)
 
-	if err := Run(ctx, ui.LeftClick(entireDesktopButton), ui.LeftClick(shareButton)); err != nil {
-		return nil, errors.Wrap(err, "failed to start screeen recording through ui")
+	if err := Combine("start screen recorder through ui", ui.LeftClick(entireDesktopButton), ui.LeftClick(shareButton))(ctx); err != nil {
+		return nil, err
 	}
 
 	return sr, nil
@@ -111,8 +111,10 @@ func (r *ScreenRecorder) Start(ctx context.Context, tconn *chrome.TestConn) erro
 	ui := New(tconn)
 	closeNotificationButton := nodewith.Name("Notification close").Role(role.Button)
 	messagePopupAlert := nodewith.ClassName("MessagePopupView").Role(role.AlertDialog)
-	if err := Run(ctx, ui.WithInterval(1*time.Second).LeftClick(closeNotificationButton), ui.WaitUntilGone(messagePopupAlert)); err != nil {
-		return errors.Wrap(err, "failed to close notification and wait for it to be gone")
+	if err := Combine("close notification and wait for it to disappear",
+		ui.WithInterval(1*time.Second).LeftClick(closeNotificationButton),
+		ui.WaitUntilGone(messagePopupAlert))(ctx); err != nil {
+		return err
 	}
 	return nil
 }

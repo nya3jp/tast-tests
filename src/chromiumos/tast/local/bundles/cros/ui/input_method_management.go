@@ -58,7 +58,7 @@ func InputMethodManagement(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to launch OS settings and land at inputs setting page: ", err)
 	}
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("test input method management",
 		settings.ClickAddInputMethodButton(),
 		settings.SearchInputMethod(keyboard, searchKeyword, inputMethodName),
 		settings.SelectInputMethod(inputMethodName),
@@ -70,7 +70,7 @@ func InputMethodManagement(ctx context.Context, s *testing.State) {
 		func(ctx context.Context) error {
 			return ime.WaitForInputMethodRemoved(ctx, tconn, inputMethodCode, 10*time.Second)
 		},
-	); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to test input method management: ", err)
 	}
 }

@@ -116,7 +116,7 @@ func openFilesApp(ctx context.Context, cr *chrome.Chrome) (*filesapp.FilesApp, e
 func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, dir Directory) error {
 	testing.ContextLog(ctx, "Opening the test file with ArcFileReaderTest")
 
-	return uiauto.Run(ctx,
+	return uiauto.Combine("open the test file with ArcFileReaderTest",
 		files.OpenDir(dir.Name, dir.Title),
 		// Note: due to the banner loading, this may still be flaky.
 		// If that is the case, we may want to increase the interval and timeout for this next call.
@@ -134,7 +134,7 @@ func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, dir Direct
 		},
 		files.LeftClick(nodewith.Name("Open").Role(role.Button)),
 		files.LeftClick(nodewith.Name("ARC File Reader Test").Role(role.StaticText)),
-	)
+	)(ctx)
 }
 
 // waitForFileType waits for file type (mime type) to be populated. This is an

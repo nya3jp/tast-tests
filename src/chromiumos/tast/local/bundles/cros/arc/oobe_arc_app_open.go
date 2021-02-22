@@ -64,7 +64,7 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn)
 
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("go through the oobe flow",
 		ui.LeftClick(nodewith.NameRegex(regexp.MustCompile(
 			"Accept and continue|Got it")).Role(role.Button)),
 		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
@@ -73,7 +73,7 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 		ui.LeftClick(nodewith.Name("No thanks").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Done").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Get started").Role(role.Button)),
-	); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to go through the oobe flow: ", err)
 	}
 

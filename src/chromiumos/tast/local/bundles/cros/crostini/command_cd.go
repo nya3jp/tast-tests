@@ -116,13 +116,13 @@ func CommandCd(ctx context.Context, s *testing.State) {
 
 	outputFile := "test.txt"
 	folderName := "testFolder"
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("run command cd",
 		// Create a test folder.
 		terminalApp.RunCommand(keyboard, fmt.Sprintf("mkdir %s", folderName)),
 		// Cd to the newly created folder.
 		terminalApp.RunCommand(keyboard, fmt.Sprintf("cd %s", folderName)),
 		// Run pwd to check the path has changed.
-		terminalApp.RunCommand(keyboard, fmt.Sprintf("pwd > %s", outputFile))); err != nil {
+		terminalApp.RunCommand(keyboard, fmt.Sprintf("pwd > %s", outputFile)))(ctx); err != nil {
 		s.Fatal("Failed to test command cd: ", err)
 	}
 
