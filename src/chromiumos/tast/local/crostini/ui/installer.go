@@ -82,8 +82,10 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 	}
 
 	ui := uiauto.New(p.tconn)
-	if err := uiauto.Run(ctx, ui.LeftClick(customStaticText), ui.FocusAndWait(slider)); err != nil {
-		return 0, errors.Wrap(err, "failed to click radio custom and display slider")
+	if err := uiauto.Combine("click radio custom and display slider",
+		ui.LeftClick(customStaticText),
+		ui.FocusAndWait(slider))(ctx); err != nil {
+		return 0, err
 	}
 
 	// Use keyboard to manipulate the slider rather than writing
@@ -168,7 +170,9 @@ func (p *Installer) Install(ctx context.Context) error {
 	// way and prevent the button from being clicked.
 	ui := uiauto.New(p.tconn)
 	installButton := nodewith.Name("Install").Role(role.Button)
-	if err := uiauto.Run(ctx, ui.LeftClick(installButton), ui.WithTimeout(8*time.Minute).WaitUntilGone(installWindow)); err != nil {
+	if err := uiauto.Combine("click install and wait it to finish",
+		ui.LeftClick(installButton),
+		ui.WithTimeout(8*time.Minute).WaitUntilGone(installWindow))(ctx); err != nil {
 		// If the install fails, return any error message from the installer rather than a timeout error.
 		message, messageErr := p.checkErrorMessage(cleanupCtx)
 		if messageErr != nil {

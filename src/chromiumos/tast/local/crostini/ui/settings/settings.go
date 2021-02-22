@@ -186,7 +186,7 @@ func (s *Settings) GetSharedFolders(ctx context.Context) (listOffolders []string
 func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
 	folderButton := nodewith.Name(folder).Role(role.Button).Ancestor(sharedFoldersList)
 
-	return uiauto.Combine("Unshare folder "+folder,
+	return uiauto.Combine("unshare folder "+folder,
 		s.ui.LeftClick(folderButton),
 		s.ui.IfSuccessThen(s.ui.WithTimeout(5*time.Second).WaitUntilExists(unshareFailDlg), s.ui.LeftClick(okButton)),
 		s.ui.IfSuccessThen(s.ui.Exists(sharedFoldersList), s.ui.WaitUntilGone(folderButton)),
@@ -230,7 +230,7 @@ var ResizeDiskDialog = resizeDiskDialogStruct{
 
 // ClickChange clicks Change to launch the resize dialog.
 func (s *Settings) ClickChange() uiauto.Action {
-	return uiauto.Combine("Click button resize and wait for resize dialog and slider",
+	return uiauto.Combine("click button resize and wait for resize dialog and slider",
 		s.ui.LeftClick(resizeButton),
 		s.ui.WaitUntilExists(ResizeDiskDialog.Self),
 		s.ui.WithTimeout(time.Minute).WaitUntilExists(ResizeDiskDialog.Slider))
@@ -248,15 +248,17 @@ func (s *Settings) GetDiskSize(ctx context.Context) (string, error) {
 // ResizeDisk resizes the VM disk to approximately targetSize via the settings app.
 // If growing the VM disk, set increase to true, otherwise set it to false.
 func (s *Settings) ResizeDisk(ctx context.Context, kb *input.KeyboardEventWriter, targetSize uint64, increase bool) error {
-	if err := uiauto.Run(ctx, s.ui.LeftClick(resizeButton), s.ui.FocusAndWait(ResizeDiskDialog.Slider)); err != nil {
-		return errors.Wrap(err, "failed to open resize slider")
+	if err := uiauto.Combine("open resize dialog and focus on slider",
+		s.ui.LeftClick(resizeButton),
+		s.ui.FocusAndWait(ResizeDiskDialog.Slider))(ctx); err != nil {
+		return err
 	}
 
 	if _, err := ChangeDiskSize(ctx, s.tconn, kb, ResizeDiskDialog.Slider, increase, targetSize); err != nil {
 		return errors.Wrap(err, "failed to resize disk")
 	}
 
-	return uiauto.Combine("Click button Resize and wait resize dialog gone",
+	return uiauto.Combine("click button Resize and wait resize dialog gone",
 		s.ui.LeftClick(ResizeDiskDialog.Resize),
 		s.ui.WaitUntilGone(ResizeDiskDialog.Self),
 	)(ctx)
@@ -334,7 +336,7 @@ func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 
 // GetCurAndTargetDiskSize gets the current disk size and calculates a target disk size to resize.
 func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.KeyboardEventWriter) (curSize, targetSize uint64, err error) {
-	if err := uiauto.Combine("Launch resize dialog and focus on the slider",
+	if err := uiauto.Combine("launch resize dialog and focus on the slider",
 		s.ClickChange(),
 		s.ui.FocusAndWait(ResizeDiskDialog.Slider))(ctx); err != nil {
 		return 0, 0, err
@@ -362,7 +364,7 @@ func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.
 		targetSize = minSize + (maxSize-minSize)/3
 	}
 
-	if err := uiauto.Combine("Click button Cancel and wait resize dialog gone",
+	if err := uiauto.Combine("click button Cancel and wait resize dialog gone",
 		s.ui.LeftClick(ResizeDiskDialog.Cancel),
 		s.ui.WaitUntilGone(ResizeDiskDialog.Self))(ctx); err != nil {
 		return 0, 0, err
@@ -374,7 +376,7 @@ func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.
 // Resize changes the disk size to the target size.
 // It returns the size on the slider as string and the result size as uint64.
 func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWriter, curSize, targetSize uint64) (string, uint64, error) {
-	if err := uiauto.Combine("Launch resize dialog and focus on the slider",
+	if err := uiauto.Combine("launch resize dialog and focus on the slider",
 		s.ClickChange(),
 		s.ui.FocusAndWait(ResizeDiskDialog.Slider))(ctx); err != nil {
 		return "", 0, err
@@ -393,8 +395,10 @@ func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWrit
 	}
 	sizeOnSlider := nodeInfo.Name
 
-	if err := uiauto.Run(ctx, s.ui.LeftClick(ResizeDiskDialog.Resize), s.ui.WaitUntilGone(ResizeDiskDialog.Self)); err != nil {
-		return "", 0, errors.Wrap(err, "failed to click button Resize on Resize Linux disk dialog")
+	if err := uiauto.Combine("to click button Resize on Resize Linux disk dialog",
+		s.ui.LeftClick(ResizeDiskDialog.Resize),
+		s.ui.WaitUntilGone(ResizeDiskDialog.Self))(ctx); err != nil {
+		return "", 0, errors.Wrap(err, "failed to resize")
 	}
 
 	return sizeOnSlider, size, nil

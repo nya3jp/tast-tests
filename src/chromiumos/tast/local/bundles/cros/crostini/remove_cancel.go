@@ -109,11 +109,11 @@ func RemoveCancel(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 	// Click button Remove and click cancel on the confirm dialog.
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("click button Cancel on remove Linux dialog",
 		st.ClickRemove(),
 		ui.LeftClick(settings.RemoveConfirmDialog.Cancel),
-		ui.WaitUntilExists(settings.PageLinux)); err != nil {
-		s.Fatal("Failed to click button Cancel on remove Linux dialog: ", err)
+		ui.WaitUntilExists(settings.PageLinux))(ctx); err != nil {
+		s.Fatal("Failed to test cancel remove: ", err)
 	}
 
 	// Launch Terminal to verify that Crostini still works.

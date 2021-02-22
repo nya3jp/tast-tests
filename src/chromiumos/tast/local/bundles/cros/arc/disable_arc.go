@@ -168,11 +168,11 @@ func turnOffPlayStore(ctx context.Context, tconn *chrome.TestConn) error {
 
 	ui := uiauto.New(tconn)
 	playStoreButton := nodewith.Name("Google Play Store").Role(role.Button)
-	return uiauto.Run(ctx,
+	return uiauto.Combine("turn off Play Store",
 		ui.LeftClickUntil(nodewith.Name("Apps").Role(role.Heading), ui.Exists(playStoreButton)),
 		ui.FocusAndWait(playStoreButton),
 		ui.LeftClick(playStoreButton),
 		ui.LeftClick(nodewith.Name("Remove Google Play Store").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Remove Android apps").Role(role.Button)),
-	)
+	)(ctx)
 }

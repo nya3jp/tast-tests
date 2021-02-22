@@ -172,7 +172,7 @@ func copyFilesToLinuxfiles(ctx context.Context, tconn *chrome.TestConn, filesApp
 		// Paste all files.
 		keyboard.AccelAction("ctrl+V"))
 
-	if err := uiauto.Combine("to copy files from Downloads to Linux files", steps...)(ctx); err != nil {
+	if err := uiauto.Combine("copy files from Downloads to Linux files", steps...)(ctx); err != nil {
 		return err
 	}
 

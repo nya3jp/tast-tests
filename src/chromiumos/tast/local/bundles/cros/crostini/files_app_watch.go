@@ -118,9 +118,9 @@ func FilesAppWatch(ctx context.Context, s *testing.State) {
 	}
 
 	// Validate file1.txt is shown in 'Linux files'.
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("find file1.txt",
 		files.OpenDir("Linux files", "Files - Linux files"),
-		files.WithTimeout(10*time.Second).WaitForFile(testFileName1)); err != nil {
+		files.WithTimeout(10*time.Second).WaitForFile(testFileName1))(ctx); err != nil {
 		s.Fatal("Failed to find file1.txt created in the container in Linux files: ", err)
 	}
 	// Create file2.txt in container and check that FilesApp refreshes.

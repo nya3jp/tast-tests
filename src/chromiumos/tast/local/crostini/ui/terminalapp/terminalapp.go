@@ -101,7 +101,7 @@ func (ta *TerminalApp) clickShelfMenuItem(itemNameRegexp string) uiauto.Action {
 			defer revert(ctx)
 		}
 
-		return uiauto.Combine("Click menu item on the Shelf",
+		return uiauto.Combine("click menu item on the Shelf",
 			ta.ui.RightClick(nodewith.Name("Terminal").Role(role.Button).First()),
 			ta.ui.LeftClick(nodewith.NameRegex(regexp.MustCompile(itemNameRegexp)).Role(role.MenuItem)))(ctx)
 	}
@@ -175,7 +175,7 @@ func (ta *TerminalApp) ShutdownCrostini(cont *vm.Container) uiauto.Action {
 
 // RunCommand runs command in Terminal windows.
 func (ta *TerminalApp) RunCommand(keyboard *input.KeyboardEventWriter, cmd string) uiauto.Action {
-	return uiauto.Combine("Run Command "+cmd,
+	return uiauto.Combine("run command "+cmd,
 		// Focus on the Terminal window.
 		ta.ui.LeftClick(rootWindow),
 		// Type command.
@@ -186,14 +186,14 @@ func (ta *TerminalApp) RunCommand(keyboard *input.KeyboardEventWriter, cmd strin
 
 // Exit closes the Terminal App through entering exit in the Terminal window.
 func (ta *TerminalApp) Exit(keyboard *input.KeyboardEventWriter) uiauto.Action {
-	return uiauto.Combine("Exit Terminal window",
+	return uiauto.Combine("exit Terminal window",
 		ta.RunCommand(keyboard, "exit"),
 		ta.ui.WithTimeout(time.Minute).WaitUntilGone(rootWindow))
 }
 
 // Close closes the Terminal App through clicking Close on shelf context menu.
 func (ta *TerminalApp) Close() uiauto.Action {
-	return uiauto.Combine("Close Terminal window",
+	return uiauto.Combine("close Terminal window",
 		ta.clickShelfMenuItem("Close"),
 		ta.ui.WithTimeout(time.Minute).WaitUntilGone(rootWindow))
 }
