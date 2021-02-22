@@ -37,6 +37,8 @@ func init() {
 		Data: []string{
 			sourceImage,
 			pngGoldenFile,
+			jpgGoldenFile,
+			pdfGoldenFile,
 		},
 	})
 }
@@ -48,6 +50,8 @@ const scannerName = "DavieV Virtual USB Printer (USB)"
 const (
 	sourceImage      = "scan_source.jpg"
 	pngGoldenFile    = "flatbed_png_color_letter_300_dpi.png"
+	jpgGoldenFile    = "adf_simplex_jpg_grayscale_a4_150_dpi.jpg"
+	pdfGoldenFile    = "adf_duplex_pdf_grayscale_max_300_dpi.pdf"
 	descriptors      = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
 	attributes       = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 	esclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
@@ -70,6 +74,28 @@ var tests = []struct {
 		Resolution: scanapp.Resolution300DPI,
 	},
 	goldenFile: pngGoldenFile,
+}, {
+	name: "adf_simplex_jpg_grayscale_a4_150_dpi",
+	settings: scanapp.ScanSettings{
+		Scanner:    scannerName,
+		Source:     scanapp.SourceADFOneSided,
+		FileType:   scanapp.FileTypeJPG,
+		ColorMode:  scanapp.ColorModeGrayscale,
+		PageSize:   scanapp.PageSizeA4,
+		Resolution: scanapp.Resolution150DPI,
+	},
+	goldenFile: jpgGoldenFile,
+}, {
+	name: "adf_duplex_pdf_grayscale_max_300_dpi",
+	settings: scanapp.ScanSettings{
+		Scanner:    scannerName,
+		Source:     scanapp.SourceADFTwoSided,
+		FileType:   scanapp.FileTypePDF,
+		ColorMode:  scanapp.ColorModeGrayscale,
+		PageSize:   scanapp.PageSizeFitToScanArea,
+		Resolution: scanapp.Resolution300DPI,
+	},
+	goldenFile: pdfGoldenFile,
 }}
 
 func getScan(pattern string) (string, error) {
@@ -146,16 +172,6 @@ func Scan(ctx context.Context, s *testing.State) {
 	}()
 	defer ippusbbridge.Kill(cleanupCtx, devInfo)
 
-	// Launch the Scan app, configure the settings, and perform scans.
-	app, err := scanapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to launch app: ", err)
-	}
-
-	if err := app.ClickMoreSettings()(ctx); err != nil {
-		s.Fatal("Failed to expand More settings: ", err)
-	}
-
 	for _, test := range tests {
 		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
 			defer func() {
@@ -164,12 +180,25 @@ func Scan(ctx context.Context, s *testing.State) {
 				}
 			}()
 
+			// Launch the Scan app, configure the settings, and perform a scan.
+			app, err := scanapp.Launch(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to launch app: ", err)
+			}
+
+			if err := app.ClickMoreSettings()(ctx); err != nil {
+				s.Fatal("Failed to expand More settings: ", err)
+			}
+
 			if err := uiauto.Run(ctx,
 				app.SetScanSettings(test.settings),
 				app.Scan(),
-				app.ClickDone(),
 			); err != nil {
 				s.Fatal("Failed to perform scan: ", err)
+			}
+
+			if err := app.Close(ctx); err != nil {
+				s.Fatal("Failed to close app: ", err)
 			}
 
 			scan, err := getScan(defaultScanPattern)
