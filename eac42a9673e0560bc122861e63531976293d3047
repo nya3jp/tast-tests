@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa08d17_a111fabc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-02-22T23:59:48Z",
+      "side": 1,
+      "message": "My intention was that we would transform code like this:\nif err :\u003d vkb.ClickUntilVKShown(ctx, tconn, finder); err !\u003d nil {\n  s.Fatalf(\"Failed to click until VK shown\", err)\n}\n\nInto this:\n  uiauto.NamedAction(\"click until VK shown\",\n    vkb.ClickUntilVKShownAction(tconn, finder))\n\nOr, IMO, even better, you wouldn\u0027t name the action, and the libraries providing the actions would name them for you, so you could debug them easily. For example:\n\nfunc ClickUntilVKShownAction(tconn *chrome.TestConn, finder *nodewith.Finder) uiauto.Action {\n  return uiauto.NamedAction(\n    fmt.Sprintf(\"vkb.ClickUntilVKShownAction(*chrome.TestConn, finder\u003d%+v)\", finder),\n    func(ctx context.Context) error { return ClickUntilVKShown(ctx, tconn, finder) })\n}\n\nThis should significantly improve the error messages (and should tell you exactly the parameters the failing function was called with). However, since your points regarding log spam are very valid, and I\u0027d like to use this all over the place, I\u0027ve removed any logging from this, and will re-add it once we have verbose logging.",
+      "parentUuid": "38761c52_62a07d31",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "eac42a9673e0560bc122861e63531976293d3047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96803b9a_571e7cb1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-22T17:31:05Z",
       "side": 1,
       "message": "I guess since this is optin, it is probably fine, but I am still worried about log spam if people default to this. The general tast guideline is only to log before long operations.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "eac42a9673e0560bc122861e63531976293d3047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "678325fd_8a473633",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-02-22T23:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96803b9a_571e7cb1",
       "range": {
         "startLine": 90,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf12614_e08c9501",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-02-22T23:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "624c9451_61828dfa",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 55
+      },
+      "revId": "eac42a9673e0560bc122861e63531976293d3047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bd5ba5e_65bb3e3d",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-22T17:31:05Z",
       "side": 1,
       "message": "I don\u0027t think we want to spam the logs with a message for every single action. Maybe once verbose logging is in, this will be a good idea. I think it should be in soon if it isn\u0027t already in, I will ask around to figure that out.\n\ngo/verbose-tast-logging",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 74
+      },
+      "revId": "eac42a9673e0560bc122861e63531976293d3047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65d607e_a1516986",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-02-22T23:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bd5ba5e_65bb3e3d",
       "range": {
         "startLine": 104,
         "startChar": 3,
