@@ -18,6 +18,63 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "775bd133_6bf2c4c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-22T15:39:48Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f460199_80d1adc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-22T15:39:48Z",
+      "side": 1,
+      "message": "nit: this is less readable compared to a comment right before the checks.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "673f5097_27668dff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-22T15:39:48Z",
+      "side": 1,
+      "message": "nit: add the original author as CC",
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e04e6dac_fc9d1379",
@@ -31,6 +88,46 @@
       "writtenOn": "2021-02-22T14:44:52Z",
       "side": 1,
       "message": "missing .",
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6dc4b10_e511b336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-22T15:39:48Z",
+      "side": 1,
+      "message": "exists",
+      "range": {
+        "startLine": 168,
+        "startChar": 40,
+        "endLine": 168,
+        "endChar": 45
+      },
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9fb897_b7763dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-22T15:39:48Z",
+      "side": 1,
+      "message": "nit: use if else + a comment as explained above.",
       "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
