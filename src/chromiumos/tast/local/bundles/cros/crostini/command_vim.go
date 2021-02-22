@@ -120,7 +120,7 @@ func CommandVim(ctx context.Context, s *testing.State) {
 		testString = "This is a test string."
 	)
 
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to create a file with vim",
 		// Open file through running command vim filename in Terminal.
 		terminalApp.RunCommand(keyboard, fmt.Sprintf("vim %s", testFile)),
 		// Type i to enter edit mode.

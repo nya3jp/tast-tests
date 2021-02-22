@@ -86,7 +86,7 @@ func TitleBar(ctx context.Context, s *testing.State) {
 
 	if t, ok := arc.Type(); ok && t == arc.VM {
 		s.Log("ARC-R")
-		if err := uiauto.Run(ctx,
+		if err := uiauto.Run(ctx, "to Maximize and Restore it back",
 			ui.LeftClick(nodewith.Name("Maximize").Role(role.Button)),
 			ui.LeftClick(nodewith.Name("Restore").Role(role.Button)),
 		); err != nil {
@@ -94,7 +94,7 @@ func TitleBar(ctx context.Context, s *testing.State) {
 		}
 	} else if ok && t == arc.Container {
 		s.Log("ARC-P")
-		if err := uiauto.Run(ctx,
+		if err := uiauto.Run(ctx, "to Restore and Maximize it back",
 			ui.LeftClick(nodewith.Name("Restore").Role(role.Button)),
 			ui.LeftClick(nodewith.Name("Maximize").Role(role.Button)),
 		); err != nil {

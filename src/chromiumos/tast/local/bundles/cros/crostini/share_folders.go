@@ -153,7 +153,7 @@ func ShareFolders(ctx context.Context, s *testing.State) {
 			sharedFolders.AddFolder(sharedfolders.SharedDownloads+" › "+folder))
 
 	}
-	if err := uiauto.Run(ctx, steps...); err != nil {
+	if err := uiauto.Run(ctx, "to click Share with Linux on test folders", steps...); err != nil {
 		s.Fatal("Failed to share folders: ", err)
 	}
 

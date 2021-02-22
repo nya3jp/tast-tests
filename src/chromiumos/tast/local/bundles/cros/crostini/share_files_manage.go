@@ -118,7 +118,7 @@ func ShareFilesManage(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to share My files and click Manage with Linux on My files",
 		sharedFolders.ShareMyFilesOK(ctx, filesApp),
 		filesApp.ClickDirectoryContextMenuItem(sharedfolders.MyFiles, sharedfolders.ManageLinuxSharing)); err != nil {
 		s.Fatal("Failed to share My files: ", err)
