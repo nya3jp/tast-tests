@@ -57,14 +57,14 @@ func Smoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
 
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("open downloads and check items",
 		// Open the Downloads folder and check for the test file.
 		files.OpenDownloads(),
 		files.WaitForFile(textFile),
 		// Open the more menu and check for the new folder button.
 		files.ClickMoreMenuItem(),
 		files.WaitUntilExists(nodewith.Name("New folder").Role(role.MenuItem)),
-	); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to smoke test the Files App: ", err)
 	}
 }

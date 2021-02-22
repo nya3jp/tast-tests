@@ -39,7 +39,7 @@ func ChangeWallpaper(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 	setWallpaperMenu := nodewith.Name("Set wallpaper").Role(role.MenuItem)
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("change the wallpaper",
 		ui.RightClick(nodewith.ClassName("WallpaperView")),
 		// This button takes a bit before it is clickable.
 		// Keep clicking it until the click is received and the menu closes.
@@ -49,7 +49,7 @@ func ChangeWallpaper(ctx context.Context, s *testing.State) {
 		// Ensure that "Deep Purple" text is displayed.
 		// The UI displays the name of the currently set wallpaper.
 		ui.WaitUntilExists(nodewith.Name("Deep Purple").Role(role.StaticText)),
-	); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to change the wallpaper: ", err)
 	}
 }

@@ -195,10 +195,10 @@ func Scan(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to expand More settings: ", err)
 			}
 
-			if err := uiauto.Run(ctx,
+			if err := uiauto.Combine("scan",
 				app.SetScanSettings(test.settings),
 				app.Scan(),
-			); err != nil {
+			)(ctx); err != nil {
 				s.Fatal("Failed to perform scan: ", err)
 			}
 

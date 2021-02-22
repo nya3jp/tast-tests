@@ -115,13 +115,13 @@ func turnOnPlayStore(ctx context.Context, tconn *chrome.TestConn) error {
 
 	ui := uiauto.New(tconn)
 	playStoreButton := nodewith.Name("Google Play Store").Role(role.Button)
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("enable Play Store",
 		settings.FocusAndWait(playStoreButton),
 		settings.LeftClick(playStoreButton),
 		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
-	); err != nil {
-		return errors.Wrap(err, "failed to enable playstore on")
+	)(ctx); err != nil {
+		return err
 	}
 
 	if err := optin.WaitForPlayStoreReady(ctx, tconn); err != nil {

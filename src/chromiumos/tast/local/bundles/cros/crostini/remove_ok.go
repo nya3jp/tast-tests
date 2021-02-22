@@ -109,12 +109,12 @@ func RemoveOk(ctx context.Context, s *testing.State) {
 
 	// Click button remove and click Delete on the confirmation dialog.
 	ui := uiauto.New(tconn)
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Combine("open Remove dialog and confirm remove",
 		st.ClickRemove(),
 		ui.LeftClick(settings.RemoveConfirmDialog.Delete),
 		ui.WaitUntilExists(settings.RemoveLinuxAlert),
 		ui.WaitUntilGone(settings.RemoveLinuxAlert),
-		ui.WaitUntilExists(settings.DevelopersButton)); err != nil {
+		ui.WaitUntilExists(settings.DevelopersButton))(ctx); err != nil {
 		s.Fatal("Failed to remove Linux: ", err)
 	}
 
