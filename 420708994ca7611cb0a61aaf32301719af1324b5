@@ -16,6 +16,23 @@
       "message": "Hi tast experts,\n\nCan you please take a look at this CL? \n\nThank you!",
       "revId": "420708994ca7611cb0a61aaf32301719af1324b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2f4861a_799e20fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-22T11:50:59Z",
+      "side": 1,
+      "message": "Hi Katherine,\n\nFriendly ping! :)",
+      "revId": "420708994ca7611cb0a61aaf32301719af1324b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
