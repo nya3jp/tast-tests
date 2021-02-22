@@ -16,6 +16,23 @@
       "message": "This CL is to add a Tast test for MyFiles sharing. PTAL. Thanks!",
       "revId": "92a3aa7e69bc48ebefa016cc9a0810973521da3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e81dd6f_31213e49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-02-22T10:28:43Z",
+      "side": 1,
+      "message": "I\u0027ve found that testArcToCros() often fails on betty-arc-r, and it is resolved by either inserting a short sleep before that, or executing testCrosToArc() first. I\u0027ll investigate this issue a little more to figure out what is required for testArcToCros() to succeed.",
+      "revId": "92a3aa7e69bc48ebefa016cc9a0810973521da3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
