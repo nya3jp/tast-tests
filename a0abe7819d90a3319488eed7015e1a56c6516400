@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0a2e00e_5af21c5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-02-22T05:07:18Z",
+      "side": 1,
+      "message": "lgtm; it would be nice to have a more long term soln as mentioned on other parts of the CL though (understandably difficult)",
+      "revId": "a0abe7819d90a3319488eed7015e1a56c6516400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6d92988_1494d5fb",
