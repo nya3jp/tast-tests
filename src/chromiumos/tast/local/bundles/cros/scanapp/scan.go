@@ -164,7 +164,7 @@ func Scan(ctx context.Context, s *testing.State) {
 				}
 			}()
 
-			if err := uiauto.Run(ctx,
+			if err := uiauto.Run(ctx, "to scan",
 				app.SetScanSettings(test.settings),
 				app.Scan(),
 				app.ClickDone(),

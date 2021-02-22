@@ -59,7 +59,7 @@ func OobeArc(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn)
 
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to go through the oobe flow ui",
 		ui.LeftClick(nodewith.NameRegex(regexp.MustCompile(
 			"Accept and continue|Got it")).Role(role.Button)),
 		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
@@ -68,7 +68,7 @@ func OobeArc(ctx context.Context, s *testing.State) {
 		ui.LeftClick(nodewith.Name("No thanks").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Get started").Role(role.Button)),
 	); err != nil {
-		s.Fatal("Failed to go through the oobe flow ui: ", err)
+		s.Fatal("Failed to test oobe Arc: ", err)
 	}
 
 	s.Log("Verify Play Store is On")

@@ -116,7 +116,7 @@ func CommandCd(ctx context.Context, s *testing.State) {
 
 	outputFile := "test.txt"
 	folderName := "testFolder"
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to run command cd",
 		// Create a test folder.
 		terminalApp.RunCommand(keyboard, fmt.Sprintf("mkdir %s", folderName)),
 		// Cd to the newly created folder.

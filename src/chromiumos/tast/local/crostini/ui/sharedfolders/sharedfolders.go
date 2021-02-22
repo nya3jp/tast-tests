@@ -119,7 +119,7 @@ func (sf *SharedFolders) ShareMyFiles(ctx context.Context, filesApp *filesapp.Fi
 			return errors.New("My files has already been shared with Linux")
 		}
 
-		return uiauto.Run(ctx,
+		return uiauto.Run(ctx, "to confirm share",
 			filesApp.ClickDirectoryContextMenuItem(MyFiles, ShareWithLinux),
 			sf.checkConfirmatioDialog(MyFilesMsg))
 	}
@@ -146,7 +146,7 @@ func (sf *SharedFolders) ShareDriveOK(ctx context.Context, filesApp *filesapp.Fi
 			return errors.New("Google Drive has already been shared with Linux")
 		}
 
-		return uiauto.Run(ctx,
+		return uiauto.Run(ctx, "to share Drive",
 			filesApp.ClickDirectoryContextMenuItem(filesapp.GoogleDrive, ShareWithLinux),
 			sf.checkConfirmatioDialog(DriveMsg),
 

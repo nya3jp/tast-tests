@@ -120,7 +120,7 @@ func ShareDownloads(ctx context.Context, s *testing.State) {
 	}()
 
 	// Right click Downloads and select Share with Linux.
-	if err = uiauto.Run(ctx,
+	if err = uiauto.Run(ctx, "to click Share with Linux on Downloads",
 		filesApp.ClickDirectoryContextMenuItem(filesapp.Downloads, sharedfolders.ShareWithLinux),
 		sharedFolders.AddFolder(sharedfolders.SharedDownloads)); err != nil {
 		s.Fatal("Failed to share Downloads with Crostini: ", err)

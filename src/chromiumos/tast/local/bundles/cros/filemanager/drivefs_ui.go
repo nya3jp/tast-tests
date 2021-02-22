@@ -82,7 +82,7 @@ func DrivefsUI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch Files app: ", err)
 	}
 
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to check Drive",
 		// Open the Google Drive folder and check for the test file.
 		files.OpenDrive(),
 		files.WaitForFile(testFileName),

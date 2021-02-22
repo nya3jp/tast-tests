@@ -169,7 +169,7 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 }
 
 func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.FilesApp, zipFile string) float64 {
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to open downloads and mount ZIP file",
 		// Open the Downloads folder.
 		files.OpenDownloads(),
 		files.WaitForFile(zipFile),
@@ -177,7 +177,7 @@ func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.
 		// Click "Open" to mount the selected zip file.
 		files.LeftClick(nodewith.Name("Open").Role(role.Button)),
 	); err != nil {
-		s.Fatal("Failed to open Downloads and start mounting the ZIP file: ", err)
+		s.Fatal("Failed to test mounting the ZIP file: ", err)
 	}
 
 	// Start timer for zip file mounting operation.
@@ -204,7 +204,7 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 		}
 	}
 
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to select and copy mounted files and paste them into a new folder",
 		// Move the focus to the file list.
 		files.FocusAndWait(nodewith.Role(role.ListBox)),
 		selectAllInMountedFileAction(),
@@ -233,7 +233,7 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 }
 
 func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, zipBaseName string) float64 {
-	if err := uiauto.Run(ctx,
+	if err := uiauto.Run(ctx, "to select Zip selection on all files",
 		// The Files app listBox, which should be in a focused state.
 		files.WaitUntilExists(nodewith.Role(role.ListBox).Focused()),
 		// Select all extracted files.
