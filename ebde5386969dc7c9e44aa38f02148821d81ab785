@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b0afb88_1666bc97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T23:03:29Z",
+      "side": 1,
+      "message": "should this name be black and white to match the comment on L81, or will you change that later as well?",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "ebde5386969dc7c9e44aa38f02148821d81ab785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
