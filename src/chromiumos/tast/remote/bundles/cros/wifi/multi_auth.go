@@ -18,7 +18,7 @@ func init() {
 		Func:        MultiAuth,
 		Desc:        "Tests the ability to select network correctly among APs with similar network configurations, by configuring two APs with the same SSID/channel/mode but different security config and connecting to each in turn",
 		Contacts:    []string{"wgd@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
