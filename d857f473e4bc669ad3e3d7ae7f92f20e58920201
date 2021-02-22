@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b08ef3_477d5cca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T22:58:24Z",
+      "side": 1,
+      "message": "You added this in another CL. I am just gonna have this CL wait until the other CL is in and it can be rebased.",
+      "range": {
+        "startLine": 512,
+        "startChar": 5,
+        "endLine": 512,
+        "endChar": 22
+      },
+      "revId": "d857f473e4bc669ad3e3d7ae7f92f20e58920201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
