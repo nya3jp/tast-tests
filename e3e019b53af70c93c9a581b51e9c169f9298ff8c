@@ -471,6 +471,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f12fc381_6605c4c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-22T17:25:04Z",
+      "side": 1,
+      "message": "both disable\u0026disabled and unset\u0026unset don\u0027t check anything new (based on decision table testing). Wither we have \nA) tests for mixing: disabled\u0026disable + unset\u0026unset (2 tests)\nOR\nB) tests for individual values: disable + disable + unset + unset (4 tests)\n\nhaving all 6 tests brings no more coverage.",
+      "parentUuid": "b9c3faf6_46b87c29",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1780c620_6de8eb3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-22T17:25:04Z",
+      "side": 1,
+      "message": "The value it bring is how it is presented and grouped in Tastboard.",
+      "parentUuid": "0f20c2be_fed07a87",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be34ccb4_58365ad7",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
         "patchSetId": 3
@@ -482,6 +530,30 @@
       "writtenOn": "2021-02-22T15:53:22Z",
       "side": 1,
       "message": "cannot you just ignore it?",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 7
+      },
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df5ddcb4_ca8b979b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-22T17:25:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be34ccb4_58365ad7",
       "range": {
         "startLine": 138,
         "startChar": 4,
@@ -532,6 +604,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e044c0e_efa8e214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-22T17:25:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e04e6dac_fc9d1379",
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4142a234_9223695b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-22T17:25:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6dc4b10_e511b336",
+      "range": {
+        "startLine": 168,
+        "startChar": 40,
+        "endLine": 168,
+        "endChar": 45
+      },
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc9fb897_b7763dae",
@@ -549,6 +663,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f6dacd4_e9799cb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-22T17:25:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc9fb897_b7763dae",
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cbc62e5_6c27658b",
@@ -562,6 +694,24 @@
       "writtenOn": "2021-02-22T14:44:52Z",
       "side": 1,
       "message": "missing .",
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1aa42a2_b1753b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-22T17:25:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cbc62e5_6c27658b",
       "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
