@@ -24,8 +24,8 @@ import (
 )
 
 const (
-	// Filename of the test file.
-	testFile = "storage.txt"
+	// TestFile is the name of the test file used by the test app.
+	TestFile = "storage.txt"
 	// Timeout to wait for UI item to appear.
 	uiTimeout = 10 * time.Second
 
@@ -69,7 +69,7 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 	}
 
 	testing.ContextLog(ctx, "Setting up a test file")
-	testFileLocation := filepath.Join(dir.Path, testFile)
+	testFileLocation := filepath.Join(dir.Path, TestFile)
 	if err := ioutil.WriteFile(testFileLocation, []byte(ExpectedFileContent), 0666); err != nil {
 		s.Fatalf("Failed to create test file %s: %s", testFileLocation, err)
 	}
@@ -120,14 +120,14 @@ func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, dir Direct
 		files.OpenDir(dir.Name, dir.Title),
 		// Note: due to the banner loading, this may still be flaky.
 		// If that is the case, we may want to increase the interval and timeout for this next call.
-		files.SelectFile(testFile),
+		files.SelectFile(TestFile),
 		func(ctx context.Context) error {
 			if dir.CheckFileType {
 				if err := waitForFileType(ctx, files); err != nil {
 					return errors.Wrap(err, "waiting for file type failed")
 				}
-				if err := files.SelectFile(testFile)(ctx); err != nil {
-					return errors.Wrapf(err, "selecting the test file %s failed", testFile)
+				if err := files.SelectFile(TestFile)(ctx); err != nil {
+					return errors.Wrapf(err, "selecting the test file %s failed", TestFile)
 				}
 			}
 			return nil
