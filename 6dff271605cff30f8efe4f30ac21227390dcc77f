@@ -16,6 +16,24 @@
       "message": "Q: how easy is it to rename a test later on? This might be extend to more latin-based languages in the future. Should I name it PhysicalKeyboardLatinTyping now or later?",
       "revId": "6dff271605cff30f8efe4f30ac21227390dcc77f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a3cd91_9f5c026f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-22T02:38:09Z",
+      "side": 1,
+      "message": "You can rename it at anytime as you want. So it would not be a problem.",
+      "parentUuid": "e4c864de_56c8036f",
+      "revId": "6dff271605cff30f8efe4f30ac21227390dcc77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
