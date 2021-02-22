@@ -52,6 +52,24 @@
       "parentUuid": "47cc6d28_cbaccf22",
       "revId": "e1c5caa5f4c8c4ed83c474108bded4b2c7028b11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78f103df_edacfbfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-22T05:24:00Z",
+      "side": 1,
+      "message": "For tests calling arc.New directly, why don\u0027t we put the log collection logic to arc.ARC? For example, arc.ARC.Close.\n\nIf we put logging logic to a fixture, we have to make sure all ARC-related tests use the fixture, directly or indirectly. I guess you tried to enforce this by adding a unit test, but I\u0027m afraid it\u0027s not exhaustive. The unit test can catch tests using chromeLoggedIn, but not other fixtures. Also, we can\u0027t cover tests that are outside of the \"arc\" category (there are many tests calling arc.New outside of the category).\n\nBy putting the log collection logic to arc.ARC, we can make sure all ARC-related tests are covered, since all ARC-related tests should use arc.ARC (possibly indirectly via preconditions/fixtures).",
+      "parentUuid": "2aac2ecd_4901d7fd",
+      "revId": "e1c5caa5f4c8c4ed83c474108bded4b2c7028b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
