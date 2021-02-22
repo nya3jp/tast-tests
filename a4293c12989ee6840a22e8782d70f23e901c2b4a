@@ -69,6 +69,24 @@
       "parentUuid": "6f791d1f_39a04cd3",
       "revId": "a4293c12989ee6840a22e8782d70f23e901c2b4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbcda67c_0740644d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pre/pre_logging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-22T05:34:34Z",
+      "side": 1,
+      "message": "Yen-lin said all comments I\u0027d have :)",
+      "parentUuid": "a08d1cd8_0cf25ba3",
+      "revId": "a4293c12989ee6840a22e8782d70f23e901c2b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
