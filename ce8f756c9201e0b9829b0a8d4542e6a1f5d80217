@@ -82,6 +82,24 @@
       "parentUuid": "059e6898_810a3409",
       "revId": "ce8f756c9201e0b9829b0a8d4542e6a1f5d80217",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f8eb2c8_cd6339d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-22T08:29:05Z",
+      "side": 1,
+      "message": "I\u0027m still confused by what the retry is trying to achieve. I noticed it was used before in this test, and it raises the same concerns.\n\nIf any of the iterations fail, the entire test fails. Retrying does not allow the test to be successful again. If it does, it needs to be reported as a bug.\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/state.go",
+      "parentUuid": "d45a4dae_e6ab2cbe",
+      "revId": "ce8f756c9201e0b9829b0a8d4542e6a1f5d80217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
