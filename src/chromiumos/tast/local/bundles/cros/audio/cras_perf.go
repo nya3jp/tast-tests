@@ -89,15 +89,23 @@ func crasPerfOneIteration(ctx context.Context, s *testing.State, pid int, pv *pe
 	playbackCommand := crastestclient.PlaybackCommand(runCtx, int(commandDuration.Seconds()), blocksize)
 	captureCommand := crastestclient.CaptureCommand(runCtx, int(commandDuration.Seconds()), blocksize)
 
-	if param.Playback {
-		playbackCommand.Start()
-	}
-
 	if param.Capture {
 		captureCommand.Start()
 	}
 
-	// Wait one second for audio processing to be stable.
+	if param.Capture && param.Playback {
+		// Wait one second to simulate WebRTC creating an output
+		// stream about 1 seconds after creating an input stream.
+		if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+			s.Fatal("Timed out on sleep: ", err)
+		}
+	}
+
+	if param.Playback {
+		playbackCommand.Start()
+	}
+
+	// Wait one second for audio processing stream to be ready.
 	// TODO(b/165995912) remove the sleep once we can query
 	// stream state from CRAS.
 	if err := testing.Sleep(ctx, 1*time.Second); err != nil {
