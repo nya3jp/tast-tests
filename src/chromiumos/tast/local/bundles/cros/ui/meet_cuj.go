@@ -356,7 +356,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	defer pc.Close()
 
 	// Find the web view of Meet window.
-	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "WebView"}, timeout)
+	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "ContentsWebView"}, timeout)
 	if err != nil {
 		s.Fatal("Failed to find webview: ", err)
 	}
