@@ -20,6 +20,7 @@ func init() {
 		Desc:     "Verifies that Cellular Device and Service properties match ModemManager SIM properties",
 		Contacts: []string{"stevenjb@google.com", "chromeos-cellular-team@google.com"},
 		Attr:     []string{"group:cellular"},
+		Fixture:  "cellular",
 	})
 }
 

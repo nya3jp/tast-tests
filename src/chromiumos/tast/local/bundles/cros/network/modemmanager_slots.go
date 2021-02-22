@@ -18,6 +18,7 @@ func init() {
 		Desc:     "Verifies that modemmanager reports multiple SIM slots",
 		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com"},
 		Attr:     []string{"group:cellular"},
+		Fixture:  "cellular",
 	})
 }
 
