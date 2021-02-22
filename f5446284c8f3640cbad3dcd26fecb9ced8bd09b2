@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a52fb328_009221dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T23:10:16Z",
+      "side": 1,
+      "message": "Same here. It should really be rebase on https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2709309\n\nSo that you don\u0027t re-add this method multiple times.",
+      "range": {
+        "startLine": 540,
+        "startChar": 5,
+        "endLine": 540,
+        "endChar": 22
+      },
+      "revId": "f5446284c8f3640cbad3dcd26fecb9ced8bd09b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
