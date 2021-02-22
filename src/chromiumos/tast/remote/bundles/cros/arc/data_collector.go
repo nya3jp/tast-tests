@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/arc"
 	arcpb "chromiumos/tast/services/cros/arc"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -48,10 +49,10 @@ func init() {
 		Desc: "Signs in to DUT and performs ARC++ boot with various paramters. Captures required data and uploads it to Chrome binary server. This data is used by various tools. Normally, this test should be run during the Android PFQ, once per build/arch",
 		Contacts: []string{
 			"khmel@chromium.org", // Original author.
+			"alanding@chromium.org",
 			"arc-performance@google.com",
 		},
-		// TODO(b/150012956): Stop using 'arc' here and use ExtraSoftwareDeps instead.
-		SoftwareDeps: []string{"arc", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
 			"tast.cros.arc.GmsCoreCacheService"},
 		Timeout: 20 * time.Minute,
@@ -180,8 +181,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		gsUtil = "gsutil"
 
 		// Number of retries for each flow in case of failure.
-		// TODO(b/167697547): Set retryCount to 0 once bug gets fixed.
-		retryCount = 2
+		retryCount = 0
 	)
 
 	d := s.DUT()
@@ -307,7 +307,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to create %q: %v", targetDir, err)
 		}
 
-		if err = d.GetFile(shortCtx, response.PackPath, filepath.Join(targetDir, initialPack)); err != nil {
+		if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, filepath.Join(targetDir, initialPack)); err != nil {
 			s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
 		}
 
@@ -318,7 +318,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for second boot pass: ")
 		}
 
-		if err = d.GetFile(shortCtx, response.PackPath, filepath.Join(targetDir, provisionedPack)); err != nil {
+		if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, filepath.Join(targetDir, provisionedPack)); err != nil {
 			s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
 		}
 
@@ -332,7 +332,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			if err := upload(shortCtx, targetTar, ureadAheadPack); err != nil {
 				s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
 			}
-
 		}
 
 		return nil
@@ -375,7 +374,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		resources := []string{response.GmsCoreCacheName, response.GmsCoreManifestName, response.GsfCacheName}
 		for _, resource := range resources {
-			if err = d.GetFile(shortCtx, filepath.Join(response.TargetDir, resource), filepath.Join(targetDir, resource)); err != nil {
+			if err = linuxssh.GetFile(shortCtx, d.Conn(), filepath.Join(response.TargetDir, resource), filepath.Join(targetDir, resource)); err != nil {
 				s.Fatalf("Failed to get %q from the device: %v", resource, err)
 			}
 		}
