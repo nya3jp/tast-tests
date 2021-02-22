@@ -304,3 +304,8 @@ func (c *cryptohomeBinary) removeFirmwareManagementParameters(ctx context.Contex
 func (c *cryptohomeBinary) getAccountDiskUsage(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "--action=get_account_disk_usage", "--user="+username)
 }
+
+// getSupportedKeyPolicies calls "cryptohome --action=get_supported_key_policies".
+func (c *cryptohomeBinary) getSupportedKeyPolicies(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "--action=get_supported_key_policies")
+}
