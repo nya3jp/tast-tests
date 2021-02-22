@@ -22,6 +22,30 @@
       },
       "revId": "fed34d2c9df0bae6c67ea9321a1d39bc5c71756d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1c5f5df_c125590b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-22T17:44:26Z",
+      "side": 1,
+      "message": "Well, actually within Start/Stop/Record, it is already taken care of -- return immediately if self is nil (i.e. if t \u003d\u003d nil { return }).  I suggested this mechanism but it seems not used yet right now",
+      "parentUuid": "05929a11_ae11949a",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "fed34d2c9df0bae6c67ea9321a1d39bc5c71756d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
