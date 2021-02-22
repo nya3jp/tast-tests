@@ -16,6 +16,23 @@
       "message": "Defer +2 to Tast owners",
       "revId": "8294f3fac14069283e6ba3709d93e211ff0388cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05bdcb25_e9456678",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-02-22T16:02:27Z",
+      "side": 1,
+      "message": "@ejcaruso Friendly ping :)",
+      "revId": "8294f3fac14069283e6ba3709d93e211ff0388cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
