@@ -110,6 +110,30 @@
       },
       "revId": "971db6d6e51985b539dd3fc4897118a646eb417b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43e6326d_900ee15e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-02-22T17:58:57Z",
+      "side": 1,
+      "message": "I reaized what you meant and updated it to create ScanApp early so that it would be scoped correctly.",
+      "parentUuid": "977d1b00_2bc027c7",
+      "range": {
+        "startLine": 120,
+        "startChar": 55,
+        "endLine": 120,
+        "endChar": 71
+      },
+      "revId": "971db6d6e51985b539dd3fc4897118a646eb417b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
