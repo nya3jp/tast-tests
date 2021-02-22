@@ -17,7 +17,7 @@ func init() {
 		Func:        Reassociate,
 		Desc:        "Tests that wpa_supplicant reassociate operation completes within a reasonable time",
 		Contacts:    []string{"wgd@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
