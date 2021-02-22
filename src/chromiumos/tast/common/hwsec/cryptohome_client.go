@@ -750,3 +750,18 @@ func (u *CryptohomeClient) GetRootUserPath(ctx context.Context, username string)
 	}
 	return strings.TrimSpace(msg), nil
 }
+
+// SupportsLECredentials calls GetSupportedKeyPolicies and parses the output for low entropy credential support.
+func (u *CryptohomeClient) SupportsLECredentials(ctx context.Context) (bool, error) {
+	binaryMsg, err := u.binary.getSupportedKeyPolicies(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "GetSupportedKeyPolicies failed")
+	}
+
+	// Parse the text output which looks something like:
+	// [cryptohome.GetSupportedKeyPoliciesReply.reply] {
+	//	 low_entropy_credentials: true
+	// }
+	// GetSupportedKeyPolicies success.
+	return strings.Contains(string(binaryMsg), "low_entropy_credentials: true"), nil
+}
