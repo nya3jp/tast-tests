@@ -28,7 +28,7 @@ func init() {
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		Fixture:      "arcBooted", // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
-		Timeout:      5 * time.Minute,
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name: "h264_1080p_i420",
 			Val: video.EncodeTestOptions{

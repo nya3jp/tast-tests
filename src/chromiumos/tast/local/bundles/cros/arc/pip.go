@@ -89,7 +89,7 @@ func init() {
 		Contacts:     []string{"edcourtney@chromium.org", "arc-framework+tast@google.com", "cros-arc-te@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
-		Timeout:      5 * time.Minute,
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val:               pipTests,
 			ExtraAttr:         []string{"group:mainline", "informational"},

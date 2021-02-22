@@ -27,7 +27,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
-		Timeout:      5 * time.Minute,
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(edmanp): Download only one file for the current architecture.

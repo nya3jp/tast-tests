@@ -106,7 +106,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Data:         []string{"ArcCompanionLibDemo.apk", "white_wallpaper.jpg"},
 		Fixture:      "arcBooted",
-		Timeout:      5 * time.Minute,
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			// Use the android_p dep for running on android P of the container.
 			ExtraSoftwareDeps: []string{"android_p"},

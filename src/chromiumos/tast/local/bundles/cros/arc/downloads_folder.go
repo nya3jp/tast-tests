@@ -28,7 +28,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome", "chrome_internal", "drivefs"},
-		Timeout:      5 * time.Minute,
+		Timeout:      4 * time.Minute,
 		Fixture:      "arcBooted",
 		// TODO(b/147620213): Add similar test for ARCVM.
 	})
