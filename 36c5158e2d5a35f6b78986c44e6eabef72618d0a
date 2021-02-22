@@ -263,6 +263,30 @@
       },
       "revId": "36c5158e2d5a35f6b78986c44e6eabef72618d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa59aaeb_eee4d368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cujrunner/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-22T19:44:19Z",
+      "side": 1,
+      "message": "Right. Done and removed getTask().",
+      "parentUuid": "3845f759_d0848b96",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 50
+      },
+      "revId": "36c5158e2d5a35f6b78986c44e6eabef72618d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
