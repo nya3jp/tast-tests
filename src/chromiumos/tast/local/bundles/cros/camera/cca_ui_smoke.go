@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -36,9 +35,6 @@ func init() {
 		}, {
 			Name: "fake",
 			Pre:  testutil.ChromeWithFakeCamera(),
-			// TODO(crbug.com/1050732): Remove this once the unknown crash on
-			// scarlet is resolved.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("scarlet")),
 		}},
 	})
 }
