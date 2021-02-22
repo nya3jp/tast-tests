@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "776e035e_1812dcd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T19:48:09Z",
+      "side": 1,
+      "message": "Make sure to rebase off of main right before submitting to reduce the chance of merge issues with this many files.",
+      "revId": "24b900eec4d273fe213e1fcb30db660d05ae7278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afbafc3_7a2fa208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-22T19:48:09Z",
+      "side": 1,
+      "message": "This is the one case where this still feels odd to me due to the double error message. But like not sure of a better solution.",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 49
+      },
+      "revId": "24b900eec4d273fe213e1fcb30db660d05ae7278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
