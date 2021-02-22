@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e487a17_e0ab4dfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-02-22T13:15:37Z",
+      "side": 1,
+      "message": "The problem of race condition is resolved. PTAL when you have plenty of time.",
+      "revId": "f641e7f2a4c301927cae7804c1eec7627c8292ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
