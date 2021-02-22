@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7053fcbc_1ed2cb6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2021-02-22T14:25:56Z",
+      "side": 1,
+      "message": "cpucooldown.go is the only Tast file that references `/sys/class/thermal/thermal_zone`, so there seem to be no other tests for this.\n\nBut I think I can help with it :-)",
+      "parentUuid": "32236dd2_16097081",
+      "revId": "0c924a06710cd05c9b28e5c3e368d189460dcb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad858adb_f7892267",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-19T18:35:04Z",
       "side": 1,
       "message": "I came to the same conclusion last week. It would be better to only look at CPU thermals, but I don\u0027t know how non-ARM boards setup their thermal zones. On Trogdor we have many thermal zones that don\u0027t correspond to the CPUs, so this list could become quite long.",
+      "revId": "0c924a06710cd05c9b28e5c3e368d189460dcb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2605bff6_2a831ca3",
+        "filename": "src/chromiumos/tast/local/power/cpucooldown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2021-02-22T14:25:56Z",
+      "side": 1,
+      "message": "Only the zones that stay over 46°C for over 5 minutes are going to be a problem, hopefully there won\u0027t be many of them.\n\nWhen WaitUntilCPUCoolDown() waits for the cool down it prints all the sensors that are over 46°C, and during my non-thorough trogdor log browsing I haven\u0027t found problems with other sensors.\n\nI plan on trying to plot the temperatures of all similar Tast failures, since there quite a lot of tast.platform.MLBenchmark failures not related to trogdor, it\u0027ll also show problems with other sensors if any.",
+      "parentUuid": "ad858adb_f7892267",
       "revId": "0c924a06710cd05c9b28e5c3e368d189460dcb11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
