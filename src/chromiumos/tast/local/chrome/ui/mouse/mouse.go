@@ -96,3 +96,30 @@ func Drag(ctx context.Context, tconn *chrome.TestConn, start, end coords.Point, 
 	}
 	return Release(ctx, tconn, LeftButton)
 }
+
+type action = func(context.Context) error
+
+// ClickAction returns a uiauto.Action that which calls Click.
+func ClickAction(tconn *chrome.TestConn, location coords.Point, button Button) action {
+	return func(ctx context.Context) error { return Click(ctx, tconn, location, button) }
+}
+
+// DoubleClickAction returns a uiauto.Action that which calls DoubleClick.
+func DoubleClickAction(tconn *chrome.TestConn, location coords.Point, doubleClickInterval time.Duration) action {
+	return func(ctx context.Context) error { return DoubleClick(ctx, tconn, location, doubleClickInterval) }
+}
+
+// PressAction returns a uiauto.Action that which calls Press.
+func PressAction(tconn *chrome.TestConn, button Button) action {
+	return func(ctx context.Context) error { return Press(ctx, tconn, button) }
+}
+
+// ReleaseAction returns a uiauto.Action that which calls Release.
+func ReleaseAction(tconn *chrome.TestConn, button Button) action {
+	return func(ctx context.Context) error { return Release(ctx, tconn, button) }
+}
+
+// MoveAction returns a uiauto.Action that which calls Move.
+func MoveAction(tconn *chrome.TestConn, location coords.Point, duration time.Duration) action {
+	return func(ctx context.Context) error { return Move(ctx, tconn, location, duration) }
+}

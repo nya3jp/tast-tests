@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -744,4 +745,118 @@ func WaitForStableShelfBounds(ctx context.Context, tc *chrome.TestConn) error {
 	}
 
 	return nil
+}
+
+// SetShelfBehaviorAction returns a uiauto.Action that which calls SetShelfBehavior.
+func SetShelfBehaviorAction(tconn *chrome.TestConn, displayID string, b ShelfBehavior) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.SetShelfBehaviorAction(tconn *chrome.TestConn, displayID string, b ShelfBehavior) with displayID=%v, b=%v)", displayID, b),
+		func(ctx context.Context) error { return SetShelfBehavior(ctx, tconn, displayID, b) })
+}
+
+// WaitForShelfAction returns a uiauto.Action that which calls WaitForShelf.
+func WaitForShelfAction(tconn *chrome.TestConn, timeout time.Duration) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.WaitForShelfAction(tconn *chrome.TestConn, timeout time.Duration) with timeout=%v)", timeout),
+		func(ctx context.Context) error { return WaitForShelf(ctx, tconn, timeout) })
+}
+
+// PinAppAction returns a uiauto.Action that which calls PinApp.
+func PinAppAction(tconn *chrome.TestConn, appID string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.PinAppAction(tconn *chrome.TestConn, appID string) with appID=%v)", appID),
+		func(ctx context.Context) error { return PinApp(ctx, tconn, appID) })
+}
+
+// SetShelfAlignmentAction returns a uiauto.Action that which calls SetShelfAlignment.
+func SetShelfAlignmentAction(tconn *chrome.TestConn, displayID string, a ShelfAlignment) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.SetShelfAlignmentAction(tconn *chrome.TestConn, displayID string, a ShelfAlignment) with displayID=%v, a=%v)", displayID, a),
+		func(ctx context.Context) error { return SetShelfAlignment(ctx, tconn, displayID, a) })
+}
+
+// WaitForChromeAppInstalledAction returns a uiauto.Action that which calls WaitForChromeAppInstalled.
+func WaitForChromeAppInstalledAction(tconn *chrome.TestConn, appID string, timeout time.Duration) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.WaitForChromeAppInstalledAction(tconn *chrome.TestConn, appID string, timeout time.Duration) with appID=%v, timeout=%v)", appID, timeout),
+		func(ctx context.Context) error { return WaitForChromeAppInstalled(ctx, tconn, appID, timeout) })
+}
+
+// ScrollShelfAndWaitUntilFinishAction returns a uiauto.Action that which calls ScrollShelfAndWaitUntilFinish.
+func ScrollShelfAndWaitUntilFinishAction(tconn *chrome.TestConn, buttonBounds coords.Rect, targetOffset float32) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.ScrollShelfAndWaitUntilFinishAction(tconn *chrome.TestConn, buttonBounds coords.Rect, targetOffset float32) with buttonBounds=%v, targetOffset=%v)", buttonBounds, targetOffset),
+		func(ctx context.Context) error {
+			return ScrollShelfAndWaitUntilFinish(ctx, tconn, buttonBounds, targetOffset)
+		})
+}
+
+// WaitForAppAction returns a uiauto.Action that which calls WaitForApp.
+func WaitForAppAction(tconn *chrome.TestConn, appID string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.WaitForAppAction(tconn *chrome.TestConn, appID string) with appID=%v)", appID),
+		func(ctx context.Context) error { return WaitForApp(ctx, tconn, appID) })
+}
+
+// WaitForAppClosedAction returns a uiauto.Action that which calls WaitForAppClosed.
+func WaitForAppClosedAction(tconn *chrome.TestConn, appID string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.WaitForAppClosedAction(tconn *chrome.TestConn, appID string) with appID=%v)", appID),
+		func(ctx context.Context) error { return WaitForAppClosed(ctx, tconn, appID) })
+}
+
+// WaitForHotseatAnimatingToIdealStateAction returns a uiauto.Action that which calls WaitForHotseatAnimatingToIdealState.
+func WaitForHotseatAnimatingToIdealStateAction(tc *chrome.TestConn, state HotseatStateType) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.WaitForHotseatAnimatingToIdealStateAction(tc *chrome.TestConn, state HotseatStateType) with state=%v)", state),
+		func(ctx context.Context) error { return WaitForHotseatAnimatingToIdealState(ctx, tc, state) })
+}
+
+// SwipeUpHotseatAndWaitForCompletionAction returns a uiauto.Action that which calls SwipeUpHotseatAndWaitForCompletion.
+func SwipeUpHotseatAndWaitForCompletionAction(tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tcc *input.TouchCoordConverter) uiauto.Action {
+	return uiauto.NamedAction(
+		"ash.SwipeUpHotseatAndWaitForCompletionAction(tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tcc *input.TouchCoordConverter) with )",
+		func(ctx context.Context) error { return SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc) })
+}
+
+// EnterShelfOverflowAction returns a uiauto.Action that which calls EnterShelfOverflow.
+func EnterShelfOverflowAction(tconn *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"ash.EnterShelfOverflowAction(tconn *chrome.TestConn) with )",
+		func(ctx context.Context) error { return EnterShelfOverflow(ctx, tconn) })
+}
+
+// ShowHotseatAction returns a uiauto.Action that which calls ShowHotseat.
+func ShowHotseatAction(tconn *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"ash.ShowHotseatAction(tconn *chrome.TestConn) with )",
+		func(ctx context.Context) error { return ShowHotseat(ctx, tconn) })
+}
+
+// PinAppFromShelfAction returns a uiauto.Action that which calls PinAppFromShelf.
+func PinAppFromShelfAction(tconn *chrome.TestConn, appName string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.PinAppFromShelfAction(tconn *chrome.TestConn, appName string) with appName=%v)", appName),
+		func(ctx context.Context) error { return PinAppFromShelf(ctx, tconn, appName) })
+}
+
+// PinAppFromHotseatAction returns a uiauto.Action that which calls PinAppFromHotseat.
+func PinAppFromHotseatAction(tconn *chrome.TestConn, appName string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("ash.PinAppFromHotseatAction(tconn *chrome.TestConn, appName string) with appName=%v)", appName),
+		func(ctx context.Context) error { return PinAppFromHotseat(ctx, tconn, appName) })
+}
+
+// WaitForHotseatAnimationToFinishAction returns a uiauto.Action that which calls WaitForHotseatAnimationToFinish.
+func WaitForHotseatAnimationToFinishAction(tc *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"ash.WaitForHotseatAnimationToFinishAction(tc *chrome.TestConn) with )",
+		func(ctx context.Context) error { return WaitForHotseatAnimationToFinish(ctx, tc) })
+}
+
+// WaitForStableShelfBoundsAction returns a uiauto.Action that which calls WaitForStableShelfBounds.
+func WaitForStableShelfBoundsAction(tc *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"ash.WaitForStableShelfBoundsAction(tc *chrome.TestConn) with )",
+		func(ctx context.Context) error { return WaitForStableShelfBounds(ctx, tc) })
 }
