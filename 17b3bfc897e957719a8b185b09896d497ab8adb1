@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a649966_c3519d65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-23T15:56:37Z",
+      "side": 1,
+      "message": "It is a good indicator to split CL into 2 CLs :)",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85c57000_90498536",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -31,6 +54,75 @@
       "writtenOn": "2021-02-23T13:18:33Z",
       "side": 1,
       "message": "Please take a look.",
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "743b32ad_50b9f23c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-23T15:56:37Z",
+      "side": 1,
+      "message": "nit: either use enabled/disabled or enable/disable",
+      "range": {
+        "startLine": 41,
+        "startChar": 18,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3afbd511_d8491af6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-23T15:56:37Z",
+      "side": 1,
+      "message": "I think it makes sense to use self explained name instead, e.g. enable-docker instead enabled-2 and enable-full-screen instead of enabled-1\n\nThese names come from policy enum value in go/policy_templates.json\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:components/policy/resources/policy_templates.json;l\u003d13029\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:components/policy/resources/policy_templates.json;l\u003d12718",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab3d4f4a_220ea793",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-23T15:56:37Z",
+      "side": 1,
+      "message": "nit: maybe %q will fit better here",
+      "range": {
+        "startLine": 208,
+        "startChar": 34,
+        "endLine": 208,
+        "endChar": 35
+      },
       "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
