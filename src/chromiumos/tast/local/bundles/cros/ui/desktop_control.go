@@ -8,15 +8,15 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -178,49 +178,32 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 	// - close the quick settings
 	s.Log("Shrink and expand the quick settings")
 	r.RunMultiple(ctx, s, "quick-settings", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		releaseCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, time.Second)
-		defer cancel()
-
 		// The option to be used for StableLeftClick and WaitLocationStable. Also,
 		// it uses a longer interval (default interval is 100msecs), as the location
 		// update may not happen very quickly.
-		waitingOption := &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}
+		waitingOption := testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}
 
-		// Seems that the quick settings open/close don't have metrics, but in case
-		// that's added in the future, it is noted here.
-		statusArea, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "ash/StatusAreaWidgetDelegate"}, 10*time.Second)
-		if err != nil {
-			return errors.Wrap(err, "failed to find the status area")
-		}
-		if err := statusArea.StableLeftClick(ctx, waitingOption); err != nil {
-			return errors.Wrap(err, "failed to click the status area")
-		}
-		defer statusArea.Release(releaseCtx)
+		uiBase := uiauto.New(tconn)
+		ui := uiBase.WithPollOpts(waitingOption)
+		statusarea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
+		collapseButton := nodewith.ClassName("CollapseButton")
 
-		collapseButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "CollapseButton"}, 20*time.Second)
-		if err != nil {
-			return errors.Wrap(err, "failed to find the collapse button, possibly quick settings is not open yet")
-		}
-		defer collapseButton.Release(releaseCtx)
-
-		// Click the collapse button to collapse.
-		if err := collapseButton.StableLeftClick(ctx, waitingOption); err != nil {
-			return errors.Wrap(err, "failed to click the collapse button")
-		}
-
-		// Click the collapse button again to expand.
-		if err := collapseButton.StableLeftClick(ctx, waitingOption); err != nil {
-			return errors.Wrap(err, "failed to click the collapse button")
-		}
-
-		if err := collapseButton.WaitLocationStable(ctx, waitingOption); err != nil {
-			return errors.Wrap(err, "failed to wait for the collapse button location to be stabilized")
-		}
-
-		// Close the quick settings by clicking the status area again.
-		if err := statusArea.LeftClick(ctx); err != nil {
-			return errors.Wrap(err, "failed to click the status area")
+		if err := uiauto.Run(ctx,
+			// Seems that the quick settings open/close don't have metrics, but in
+			// case that's added in the future, it is noted here.
+			ui.WaitUntilExists(statusarea),
+			ui.LeftClick(statusarea),
+			// Wait for the collapse button to exist, for 20 seconds.
+			uiBase.WithTimeout(20*time.Second).WaitUntilExists(collapseButton),
+			// Click the collapse button to shrink.
+			ui.LeftClick(collapseButton),
+			// Click the collapse button to expand.
+			ui.LeftClick(collapseButton),
+			// Wait for the quick settings to be fully expanded.
+			ui.WaitForLocation(collapseButton),
+			// Close the quick settings by clicking the status area again.
+			ui.LeftClick(statusarea)); err != nil {
+			return errors.Wrap(err, "failed to proceed the test scenario")
 		}
 
 		// Right now there's no way to identify the quick settings is closed.
