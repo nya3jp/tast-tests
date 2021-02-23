@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd82e784_62d0020d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_shortcut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-23T05:50:22Z",
+      "side": 1,
+      "message": "Added a comment for this.",
+      "parentUuid": "a1eba394_225b145e",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "2be07125c7ff46212ace0bd3217f99cc9782d081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eddb9cb_bc6325a3",
