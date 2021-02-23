@@ -22,6 +22,30 @@
       },
       "revId": "c355aaf40e669a276da332aef4b885b1ebf54267",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ac8932_3f4a050b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-23T22:02:08Z",
+      "side": 1,
+      "message": "It may be a little safer to use \"reboot ro\" since that will actually do a reset (https://chromium.googlesource.com/chromiumos/platform/ec/+/95539494f87b663853ea89f448658f05b2818ca0/common/system.c#1323) whereas a sysjump will just do a jump (https://chromium.googlesource.com/chromiumos/platform/ec/+/95539494f87b663853ea89f448658f05b2818ca0/common/system.c#1252).\n\nI think \"reboot ro\" will work whether the current image is in RO or RW since it sets the SYSTEM_RESET_STAY_IN_RO flag (https://chromium.googlesource.com/chromiumos/platform/ec/+/95539494f87b663853ea89f448658f05b2818ca0/common/system.c#1303).",
+      "parentUuid": "cb9a9d95_10da2e9e",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 2
+      },
+      "revId": "c355aaf40e669a276da332aef4b885b1ebf54267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
