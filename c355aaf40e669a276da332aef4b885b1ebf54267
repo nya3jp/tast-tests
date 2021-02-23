@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9a9d95_10da2e9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-23T19:54:34Z",
+      "side": 1,
+      "message": "I can see alternatives to do this:\n1. Use \"reboot ro\" here. Feels a little heavier (unnecessary).\n2. Use \"reboot ro\" before seeing it jump to RW. I\u0027m afraid this will interfere/compete with the automatic reboot at the end of flashing.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 2
+      },
+      "revId": "c355aaf40e669a276da332aef4b885b1ebf54267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
