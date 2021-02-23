@@ -26,7 +26,7 @@ type extensionInstallPolicyTestTable struct {
 
 // Google keep chrome extension.
 const extensionID = "lpcaedmchfhocbbapmcbpinfpgnhiddi"
-const url = "https://chrome.google.com/webstore/detail/" + extensionID
+const extensionURL = "https://chrome.google.com/webstore/detail/" + extensionID
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -157,7 +157,7 @@ func isInstallationAllowed(ctx context.Context, tconn *chrome.TestConn, cr *chro
 	}
 
 	// Open the Chrome Web Store page of the extension.
-	conn, err := cr.NewConn(ctx, url)
+	conn, err := cr.NewConn(ctx, extensionURL)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to connect to chrome")
 	}
