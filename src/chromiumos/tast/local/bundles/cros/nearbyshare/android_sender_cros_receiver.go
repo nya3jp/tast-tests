@@ -35,7 +35,7 @@ func init() {
 		// This var can be used when running locally on non-rooted devices. For non-rooted devices, you need to
 		// have already enabled bluetooth, extended the screen timeout, and overridden the GMS Core flags.
 		Vars:    []string{"rooted"},
-		Fixture: "nearbyShareEnabledDataOfflineAllContacts",
+		Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
 		Params: []testing.Param{
 			{
 				Name: "small_jpg",
