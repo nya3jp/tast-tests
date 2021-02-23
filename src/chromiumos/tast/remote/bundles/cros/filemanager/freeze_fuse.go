@@ -33,7 +33,6 @@ func init() {
 		},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 		},
 		Data:    []string{"100000_files_in_one_folder.zip"},
 		Timeout: 15 * time.Minute,
