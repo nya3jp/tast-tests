@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d0208f_a9409822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T23:31:38Z",
+      "side": 1,
+      "message": "Sure. Excluded.",
+      "parentUuid": "e89f36ed_3cdaf926",
+      "revId": "e860f07736b15347958dcc3236647b1951a2d223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3f9dd33_93830e3d",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-23T22:48:58Z",
       "side": 1,
       "message": "What\u0027s the reason you want to report this?",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 25
+      },
+      "revId": "e860f07736b15347958dcc3236647b1951a2d223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2788fcce_83a980f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T23:31:38Z",
+      "side": 1,
+      "message": "I just shared the discussion about this metrics via email to reviewers.",
+      "parentUuid": "f3f9dd33_93830e3d",
       "range": {
         "startLine": 335,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b18122_d55d3130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T23:31:38Z",
+      "side": 1,
+      "message": "Ok. Since this is to track the media quality, I use the \"Media\" prefix instead.",
+      "parentUuid": "3668e02c_1f2ffc4a",
+      "range": {
+        "startLine": 345,
+        "startChar": 13,
+        "endLine": 345,
+        "endChar": 25
+      },
+      "revId": "e860f07736b15347958dcc3236647b1951a2d223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1159fd85_525d98ab",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-02-23T22:48:58Z",
       "side": 1,
       "message": "Minutes?  The name says PerMinute.",
+      "range": {
+        "startLine": 348,
+        "startChar": 29,
+        "endLine": 348,
+        "endChar": 36
+      },
+      "revId": "e860f07736b15347958dcc3236647b1951a2d223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06918266_0aa032e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T23:31:38Z",
+      "side": 1,
+      "message": "Thanks. Yes should be Minutes().",
+      "parentUuid": "1159fd85_525d98ab",
       "range": {
         "startLine": 348,
         "startChar": 29,
