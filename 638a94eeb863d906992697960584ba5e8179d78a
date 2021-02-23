@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "937872e8_e0d26ca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_media_track_advanced_controls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-02-23T03:07:28Z",
+      "side": 1,
+      "message": "The CCAUI* tests are for testing \"UI\" interaction and result of CCA. It looks like the test is mainly used to verify the behavior of MediaStreamTrack.applyConstraints() without using the UI of CCA. Let\u0027s have a standalone camera.MediaTrackConstraints test without using CCA similar what we do for camera.GetUserMedia.\n\nWe should add the corresponding camera.CCAUIManualControl once the UI of advanced controls is ready for CCA.",
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05b74341_5ae22956",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_media_track_advanced_controls.go",
         "patchSetId": 8
