@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09c12e46_912c4a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-23T22:24:05Z",
+      "side": 1,
+      "message": "Instead of changing to array, it looks like \"Val\" can be any arbitrary type (as long as it\u0027s the same for all), so you might be able to do something like this:\n\n type ImageType int\n\n  const (\n\tImageTypeRO ImageType \u003d iota\n\tImageTypeRW ImageType \u003d iota\n  ) \n\n  type TestParams struct {\n\tName string\n\tImage ImageType\n  }\n\nwhere \"Val\" uses TestParams.",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 76
+      },
+      "revId": "7337ec291bce6d0b2f1cea8962592c8576e5c641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ae9e604_8b6126d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
         "patchSetId": 3
