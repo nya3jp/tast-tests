@@ -16,6 +16,29 @@
       "message": "Just a note, it sounds like the goal is to have verbose logging in by the end of the quarter.",
       "revId": "c63da8a740cc1e8c3355eaf050e6d9ce1b3babf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4fa6e3_4056a9b4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-23T23:45:02Z",
+      "side": 1,
+      "message": "Is this method used anywhere?",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "c63da8a740cc1e8c3355eaf050e6d9ce1b3babf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
