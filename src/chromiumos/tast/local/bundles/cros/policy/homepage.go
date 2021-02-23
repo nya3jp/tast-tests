@@ -20,7 +20,7 @@ type homepageSettingTestTable struct {
 	policies     []policy.Policy // policies is a list of HomepageLocation and HomepageIsNewTabPage policies to update before checking the homepage.
 }
 
-const homepageURL = "chrome://policy/"
+const chromePoliciesURL = "chrome://policy/"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -41,7 +41,7 @@ func init() {
 						name:         "set",
 						wantHomepage: true,
 						policies: []policy.Policy{
-							&policy.HomepageLocation{Val: homepageURL},
+							&policy.HomepageLocation{Val: chromePoliciesURL},
 							&policy.HomepageIsNewTabPage{Val: false},
 						},
 					},
@@ -63,7 +63,7 @@ func init() {
 						name:         "set_true",
 						wantHomepage: false,
 						policies: []policy.Policy{
-							&policy.HomepageLocation{Val: homepageURL},
+							&policy.HomepageLocation{Val: chromePoliciesURL},
 							&policy.HomepageIsNewTabPage{Val: true},
 						},
 					},
@@ -71,7 +71,7 @@ func init() {
 						name:         "unset",
 						wantHomepage: false,
 						policies: []policy.Policy{
-							&policy.HomepageLocation{Val: homepageURL},
+							&policy.HomepageLocation{Val: chromePoliciesURL},
 							&policy.HomepageIsNewTabPage{Stat: policy.StatusUnset},
 						},
 					},
@@ -130,8 +130,8 @@ func Homepage(ctx context.Context, s *testing.State) {
 			}
 
 			if tc.wantHomepage {
-				if url != homepageURL {
-					s.Errorf("New tab navigated to %s, expected %s", url, homepageURL)
+				if url != chromePoliciesURL {
+					s.Errorf("New tab navigated to %s, expected %s", url, chromePoliciesURL)
 				}
 				// Depending on test flags the new tab page url might be one of the following.
 			} else if url != "chrome://new-tab-page/" && url != "chrome://newtab/" && url != "chrome-search://local-ntp/local-ntp.html" {
