@@ -76,14 +76,14 @@ type Config struct {
 	// They are used during NewConfig to populate actual duration fields, which are defined below.
 	// Generally, these raw fields should not be accessed by tests and libraries.
 	// Nevertheless, the raw fields must be exported in order for them to be set by json.Unmarshal.
-	RawConfirmScreen     float64 `json:"confirm_screen"`
+	RawKeypressDelay     float64 `json:"keypress_delay"`
 	RawDelayRebootToPing float64 `json:"delay_reboot_to_ping"`
 	RawECBootToPwrButton float64 `json:"ec_boot_to_pwr_button"`
 	RawFirmwareScreen    float64 `json:"firmware_screen"`
 	RawUSBPlug           float64 `json:"usb_plug"`
 
 	// Actual duration fields are populated during NewConfig based on raw JSON duration values, defined above.
-	ConfirmScreen     time.Duration
+	KeypressDelay     time.Duration
 	DelayRebootToPing time.Duration
 	ECBootToPwrButton time.Duration
 	FirmwareScreen    time.Duration
@@ -171,7 +171,7 @@ func NewConfig(cfgFilepath, board, model string) (*Config, error) {
 	}
 
 	// Populate actual durations based on raw JSON values.
-	cfg.ConfirmScreen = toSeconds(cfg.RawConfirmScreen)
+	cfg.KeypressDelay = toSeconds(cfg.RawKeypressDelay)
 	cfg.DelayRebootToPing = toSeconds(cfg.RawDelayRebootToPing)
 	cfg.ECBootToPwrButton = toSeconds(cfg.RawECBootToPwrButton)
 	cfg.FirmwareScreen = toSeconds(cfg.RawFirmwareScreen)

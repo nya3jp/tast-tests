@@ -231,7 +231,7 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
 	case KeyboardDevSwitcher:
 		// 1. Sleep for [FirmwareScreen] seconds.
 		// 2. Press enter.
-		// 3. Sleep for [ConfirmScreen] seconds.
+		// 3. Sleep for [KeypressDelay] seconds.
 		// 4. Press enter.
 		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
 			return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) while disabling dev mode", h.Config.FirmwareScreen)
@@ -239,8 +239,8 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
 		if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurPress); err != nil {
 			return errors.Wrap(err, "pressing Enter on firmware screen while disabling dev mode")
 		}
-		if err := testing.Sleep(ctx, h.Config.ConfirmScreen); err != nil {
-			return errors.Wrapf(err, "sleeping for %s (ConfirmScreen) while disabling dev mode", h.Config.ConfirmScreen)
+		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
 		}
 		if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurPress); err != nil {
 			return errors.Wrap(err, "pressing Enter on confirm screen while disabling dev mode")
@@ -248,9 +248,9 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
 	case TabletDetachableSwitcher:
 		// 1. Wait until the firmware screen appears.
 		// 2. Hold volume_up for 100ms to highlight the previous menu item (Enable Root Verification).
-		// 3. Sleep for [ConfirmScreen] seconds to confirm keypress.
+		// 3. Sleep for [KeypressDelay] seconds to confirm keypress.
 		// 4. Press power to select Enable Root Verification.
-		// 5. Sleep for [ConfirmScreen] seconds to confirm keypress.
+		// 5. Sleep for [KeypressDelay] seconds to confirm keypress.
 		// 6. Wait until the TO_NORM screen appears.
 		// 7. Press power to select Confirm Enabling Verified Boot.
 		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
@@ -259,7 +259,7 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
 		if err := h.Servo.SetInt(ctx, servo.VolumeUpHold, 100); err != nil {
 			return errors.Wrap(err, "changing menu selection to 'Enable Root Verification'")
 		}
-		if err := testing.Sleep(ctx, h.Config.ConfirmScreen); err != nil {
+		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
 			return errors.Wrap(err, "confirming change of menu selection")
 		}
 		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
@@ -298,7 +298,7 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context) error {
 		if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlD, servo.DurPress); err != nil {
 			return err
 		}
-		if err := testing.Sleep(ctx, h.Config.ConfirmScreen); err != nil {
+		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
 			return err
 		}
 		if h.Config.RecButtonDevSwitch {
@@ -317,11 +317,11 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context) error {
 	case TabletDetachableSwitcher:
 		// 1. Wait [FirmwareScreen] seconds for the INSERT screen to appear.
 		// 2. Hold both VolumeUp and VolumeDown for 100ms to trigger TO_DEV screen.
-		// 3. Wait [ConfirmScreen] seconds to confirm keypress.
+		// 3. Wait [KeypressDelay] seconds to confirm keypress.
 		// 4. Hold VolumeUp for 100ms to change menu selection to 'Confirm enabling developer mode'.
-		// 5. Wait [ConfirmScreen] seconds to confirm keypress.
+		// 5. Wait [KeypressDelay] seconds to confirm keypress.
 		// 6. Press PowerKey to select menu item.
-		// 7. Wait [ConfirmScreen] seconds to confirm keypress.
+		// 7. Wait [KeypressDelay] seconds to confirm keypress.
 		// 8. Wait [FirmwareScreen] seconds to transition screens.
 		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
 			return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
@@ -329,20 +329,20 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context) error {
 		if err := h.Servo.SetInt(ctx, servo.VolumeUpDownHold, 100); err != nil {
 			return errors.Wrap(err, "triggering TO_DEV screen")
 		}
-		if err := testing.Sleep(ctx, h.Config.ConfirmScreen); err != nil {
-			return errors.Wrapf(err, "sleeping for %s (ConfirmScreen) to confirm triggering TO_DEV screen", h.Config.ConfirmScreen)
+		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (KeypressDelay) to confirm triggering TO_DEV screen", h.Config.KeypressDelay)
 		}
 		if err := h.Servo.SetInt(ctx, servo.VolumeUpHold, 100); err != nil {
 			return errors.Wrap(err, "changing menu selection to 'Confirm enabling developer mode' on TO_DEV screen")
 		}
-		if err := testing.Sleep(ctx, h.Config.ConfirmScreen); err != nil {
-			return errors.Wrapf(err, "sleeping for %s (ConfirmScreen) to confirm changing menu selection on TO_DEV screen", h.Config.ConfirmScreen)
+		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (KeypressDelay) to confirm changing menu selection on TO_DEV screen", h.Config.KeypressDelay)
 		}
 		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
 			return errors.Wrap(err, "selecting menu item 'Confirm enabling developer mode' on TO_DEV screen")
 		}
-		if err := testing.Sleep(ctx, h.Config.ConfirmScreen); err != nil {
-			return errors.Wrapf(err, "sleeping for %s (ConfirmScreen) to confirm selecting menu item on TO_DEV screen", h.Config.ConfirmScreen)
+		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (KeypressDelay) to confirm selecting menu item on TO_DEV screen", h.Config.KeypressDelay)
 		}
 		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
 			return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to transition to dev mode", h.Config.FirmwareScreen)
