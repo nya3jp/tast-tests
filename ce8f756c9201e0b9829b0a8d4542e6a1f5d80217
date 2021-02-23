@@ -172,6 +172,24 @@
       "parentUuid": "cd1acf10_29adc378",
       "revId": "ce8f756c9201e0b9829b0a8d4542e6a1f5d80217",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5fdf240_f8a5fa33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-02-23T22:46:55Z",
+      "side": 1,
+      "message": "Thanks Victor-Gabriel for alerting us on this issue, I also did some experiments and confirmed the same. I\u0027m going to rework the test (in a separate CL) to fix this behavior. For now, it\u0027s still usable (subtests are being retried correctly), but the test result is reported as failed.",
+      "parentUuid": "7f791bb9_18e6d558",
+      "revId": "ce8f756c9201e0b9829b0a8d4542e6a1f5d80217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
