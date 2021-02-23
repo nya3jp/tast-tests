@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8d52b7_90f44413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T13:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f06beb15_86e2f011",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "8f00e205a4233037392a73247a6d4ee51ccbef1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e8eaae0_275900a3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-19T14:40:22Z",
       "side": 1,
       "message": "nit: please add brief comment what is the difference between 1 and 2 enum values\n\nor maybe rename enabled-1 to enable-screen-magnifier and enabled-2 to enable-docked-magnifier\n\n\nsame for the next test param",
+      "range": {
+        "startLine": 47,
+        "startChar": 18,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "8f00e205a4233037392a73247a6d4ee51ccbef1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3517c51c_baf2a632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T13:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e8eaae0_275900a3",
       "range": {
         "startLine": 47,
         "startChar": 18,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0abe06d2_cd7616d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T13:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3af150c_dd0a1fa5",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "8f00e205a4233037392a73247a6d4ee51ccbef1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06347d82_d6a5955a",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "074a773a_5b4c5cdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T13:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06347d82_d6a5955a",
+      "range": {
+        "startLine": 189,
+        "startChar": 23,
+        "endLine": 189,
+        "endChar": 31
+      },
+      "revId": "8f00e205a4233037392a73247a6d4ee51ccbef1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67095ead_bda5acfb",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-02-19T14:44:59Z",
       "side": 1,
       "message": "nit: Fatal since it does not make sense to continue and fail when you compare with tc.wantValue",
+      "range": {
+        "startLine": 205,
+        "startChar": 6,
+        "endLine": 205,
+        "endChar": 12
+      },
+      "revId": "8f00e205a4233037392a73247a6d4ee51ccbef1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "749b3554_47c79d35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T13:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67095ead_bda5acfb",
       "range": {
         "startLine": 205,
         "startChar": 6,
