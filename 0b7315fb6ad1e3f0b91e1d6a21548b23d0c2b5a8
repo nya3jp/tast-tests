@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1874816d_57a8e593",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T10:23:28Z",
+      "side": 1,
+      "message": "Done. \nBut something feels wrong - having file called virtual_keyboard in the code base without it being in test bundle/package or having any other prefix or suffix in file name distinguishing it from the actual keyboard may be misleading later.",
+      "parentUuid": "b59db0ef_6fab0976",
+      "range": {
+        "startLine": 28,
+        "startChar": 23,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "0b7315fb6ad1e3f0b91e1d6a21548b23d0c2b5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a8f4806_3514a243",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1ba965e_dcfa7e90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T10:23:28Z",
+      "side": 1,
+      "message": "keyboards returned by those methods may differ.\n\ninput.Keyboard() doc says:\n// Keyboard returns an EventWriter to inject events into an arbitrary keyboard device.\n//\n// If a physical keyboard is present, it is used.\n// Otherwise, a one-off virtual device is created.\n\nso, I would stick with this implementation.",
+      "parentUuid": "9a8f4806_3514a243",
+      "range": {
+        "startLine": 117,
+        "startChar": 24,
+        "endLine": 117,
+        "endChar": 39
+      },
+      "revId": "0b7315fb6ad1e3f0b91e1d6a21548b23d0c2b5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b475d94_c72fdbf6",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-23T08:23:47Z",
       "side": 1,
       "message": "This does not check if the page is opened or not. If the opening fails, the StableFindAndClick() will fail in the test, making the debugging harder. Using cr.NewConn() might be better.",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "0b7315fb6ad1e3f0b91e1d6a21548b23d0c2b5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7d83073_42f4fbf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T10:23:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b475d94_c72fdbf6",
       "range": {
         "startLine": 141,
         "startChar": 3,
