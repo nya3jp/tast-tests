@@ -312,3 +312,8 @@ func (s *Servo) ToggleOffOn(ctx context.Context, ctrl OnOffControl) error {
 	}
 	return nil
 }
+
+// Cc sets the cc line to the on or off state.
+func (s *Servo) Cc(ctx context.Context, val string) error {
+	return s.run(ctx, newCall("cc", val))
+}
