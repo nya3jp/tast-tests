@@ -21,13 +21,20 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PersistenceBluetoothSansWifi,
-		Desc:         "Verifies that Bluetooth remains operational when Wifi is disabled on reboot",
-		Contacts:     []string{"billyzhao@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
-		SoftwareDeps: []string{"chrome", "reboot"},
-		ServiceDeps:  []string{wificell.TFServiceName, "tast.cros.network.BluetoothService"},
-		Vars:         []string{"router", "wifi.signinProfileTestExtensionManifestKey"},
+		Func:     PersistenceBluetoothSansWifi,
+		Desc:     "Verifies that Bluetooth remains operational when Wifi is disabled on reboot",
+		Contacts: []string{"billyzhao@google.com", "chromeos-platform-connectivity@google.com"},
+		Attr:     []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		// Jacuzzi devices are prone to becoming inaccessible over ethernet on reboot which impacts future tests in the test suite (b/178529170).
+		// We will disable the persistence tests on jacuzzi devices as these tests perform a reboot (b:181057823).
+		// We choose not to use hwdep.SkipOnPlatform as the filter relies on an identifier internal to mosys.
+		// In the case for jacuzzi, the relevant platform identifier is actually kukui which is unintuitive (crbug.com/1124372).
+		// As a result, we have defined a softwaredep, no_eth_loss_on_reboot, to service as a skiplist for this test.
+		// TODO: remove this swdep when the jacuzzi issue is fixed (b:178449023)
+		SoftwareDeps: []string{"chrome", "reboot", "no_eth_loss_on_reboot"},
+
+		ServiceDeps: []string{wificell.TFServiceName, "tast.cros.network.BluetoothService"},
+		Vars:        []string{"router", "wifi.signinProfileTestExtensionManifestKey"},
 	})
 }
 
