@@ -10,11 +10,11 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
-type accessibilityTestTable struct {
+type accessibilityTestCase struct {
 	name      string          // name is the subtest name.
 	policyKey string          // policyKey is the key for the policy value in chrome.accessibilityFeatures map.
 	wantValue bool            // wantValue is the expected value of the policy once set.
@@ -31,26 +31,29 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		// Once this test gets into QC please start https://crbug.com/1179710 .
-		Attr: []string{"group:mainline", "informational"},
-		Pre:  pre.User,
+		Attr:    []string{"group:mainline", "informational"},
+		Fixture: "chromePolicyLoggedIn",
 		Params: []testing.Param{
 			{
 				Name: "screen_magnifier",
-				Val: []accessibilityTestTable{
+				Val: []accessibilityTestCase{
 					{
-						name:      "enabled-1",
+						name:      "enabled-full-screen",
 						policyKey: "screenMagnifier",
 						wantValue: true,
 						policies:  []policy.Policy{&policy.ScreenMagnifierType{Val: 1}},
 					},
 					{
-						name:      "enabled-2",
+						// Value 2 for this policy is allowed but enables
+						// docked magnifier. Hence, the value for the
+						// 'screenMagnifier' key is expected to be false.
+						name:      "enabled-docker",
 						policyKey: "screenMagnifier",
 						wantValue: false, // Negative test case as this value applies to dockedMagnifier.
 						policies:  []policy.Policy{&policy.ScreenMagnifierType{Val: 2}},
 					},
 					{
-						name:      "disable",
+						name:      "disabled",
 						policyKey: "screenMagnifier",
 						wantValue: false,
 						policies:  []policy.Policy{&policy.ScreenMagnifierType{Val: 0}},
@@ -65,21 +68,24 @@ func init() {
 			},
 			{
 				Name: "docked_magnifier",
-				Val: []accessibilityTestTable{
+				Val: []accessibilityTestCase{
 					{
-						name:      "enabled-1",
+						// Value 1 for this policy is allowed but does not
+						// enable docked magnifier. Hence, the value for the
+						// 'dockedMagnifier' key is expected to be false.
+						name:      "enabled-full-screen",
 						policyKey: "dockedMagnifier",
 						wantValue: false, // Negative test case as this value applies to screenMagnifier.
 						policies:  []policy.Policy{&policy.ScreenMagnifierType{Val: 1}},
 					},
 					{
-						name:      "enabled-2",
+						name:      "enabled-docked",
 						policyKey: "dockedMagnifier",
 						wantValue: true,
 						policies:  []policy.Policy{&policy.ScreenMagnifierType{Val: 2}},
 					},
 					{
-						name:      "disable",
+						name:      "disabled",
 						policyKey: "dockedMagnifier",
 						wantValue: false,
 						policies:  []policy.Policy{&policy.ScreenMagnifierType{Val: 0}},
@@ -94,7 +100,7 @@ func init() {
 			},
 			{
 				Name: "high_contrast",
-				Val: []accessibilityTestTable{
+				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
 						policyKey: "highContrast",
@@ -102,7 +108,7 @@ func init() {
 						policies:  []policy.Policy{&policy.HighContrastEnabled{Val: true}},
 					},
 					{
-						name:      "disable",
+						name:      "disabled",
 						policyKey: "highContrast",
 						wantValue: false,
 						policies:  []policy.Policy{&policy.HighContrastEnabled{Val: false}},
@@ -117,7 +123,7 @@ func init() {
 			},
 			{
 				Name: "large_cursor",
-				Val: []accessibilityTestTable{
+				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
 						policyKey: "largeCursor",
@@ -125,7 +131,7 @@ func init() {
 						policies:  []policy.Policy{&policy.LargeCursorEnabled{Val: true}},
 					},
 					{
-						name:      "disable",
+						name:      "disabled",
 						policyKey: "largeCursor",
 						wantValue: false,
 						policies:  []policy.Policy{&policy.LargeCursorEnabled{Val: false}},
@@ -140,7 +146,7 @@ func init() {
 			},
 			{
 				Name: "virtual_keyboard",
-				Val: []accessibilityTestTable{
+				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
 						policyKey: "virtualKeyboard",
@@ -148,7 +154,7 @@ func init() {
 						policies:  []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}},
 					},
 					{
-						name:      "disable",
+						name:      "disabled",
 						policyKey: "virtualKeyboard",
 						wantValue: false,
 						policies:  []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}},
@@ -168,8 +174,8 @@ func init() {
 // AccessibilityPolicies checks that accessibility policies have the correct
 // value in chrome.accessibilityFeatures.
 func AccessibilityPolicies(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*pre.PreData).Chrome
-	fdms := s.PreValue().(*pre.PreData).FakeDMS
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	// Connect to Test API.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -177,16 +183,13 @@ func AccessibilityPolicies(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	tcs, ok := s.Param().([]accessibilityTestTable)
-	if !ok {
-		s.Fatal("Failed to convert test cases to the desired type")
-	}
+	tcs := s.Param().([]accessibilityTestCase)
 
 	for _, tc := range tcs {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
-				s.Fatal("Failed to clean up: ", err)
+				s.Fatal("Failed to reset Chrome: ", err)
 			}
 
 			// Update policies.
@@ -202,7 +205,7 @@ func AccessibilityPolicies(ctx context.Context, s *testing.State) {
 
 			var policyValue bool
 			if err := tconn.Eval(ctx, script, &policyValue); err != nil {
-				s.Errorf("Failed to retrieve %s enabled value: %s", tc.policyKey, err)
+				s.Fatalf("Failed to retrieve %q enabled value: %s", tc.policyKey, err)
 			}
 
 			if policyValue != tc.wantValue {
