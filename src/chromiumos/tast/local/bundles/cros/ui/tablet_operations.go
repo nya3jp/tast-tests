@@ -16,8 +16,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -188,22 +188,17 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
 			return errors.Wrap(err, "hotseat is in an unexpected state")
 		}
+		ui := uiauto.New(tconn)
 		// Tap the chrome icon in the app-list to re-activate the browser window.
-		findParams := ui.FindParams{
-			ClassName: "AppListItemView",
-			Attributes: map[string]interface{}{
-				"name": regexp.MustCompile("(Chrome|Chromium)"),
-			},
-		}
-		button, err := ui.FindWithTimeout(ctx, tconn, findParams, 10*time.Second)
-		if err != nil {
+		button := nodewith.ClassName("AppListItemView").NameRegex(regexp.MustCompile("(Chrome|Chromium)"))
+		if err := uiauto.Run(ctx, ui.WaitUntilExists(button)); err != nil {
 			return errors.Wrap(err, "failed to find the Chrome icon")
 		}
-		defer button.Release(ctx)
-		if err := button.WaitLocationStable(ctx, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		loc, err := ui.Location(ctx, button)
+		if err != nil {
 			return errors.Wrap(err, "Chrome button is not stabilized yet")
 		}
-		if err := stw.Move(tcc.ConvertLocation(button.Location.CenterPoint())); err != nil {
+		if err := stw.Move(tcc.ConvertLocation(loc.CenterPoint())); err != nil {
 			return errors.Wrap(err, "failed to tap the leftmost icon")
 		}
 		if err := stw.End(); err != nil {
