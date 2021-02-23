@@ -16,6 +16,46 @@
       "message": "Thanks Piotr.  Hopefully this will resolve the flakiness that we\u0027ve seen historically.",
       "revId": "f5b81caf54b30bcb8fb00d77244452def5865fe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19301f15_0a69383a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-23T05:59:57Z",
+      "side": 1,
+      "message": "Does Shutdown work?  It would be good to document the reason for Close over Shutdown in a comment.",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "f5b81caf54b30bcb8fb00d77244452def5865fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0405bdc7_49d7f2a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-23T05:59:57Z",
+      "side": 1,
+      "message": "Use testing.Poll instead?",
+      "revId": "f5b81caf54b30bcb8fb00d77244452def5865fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
