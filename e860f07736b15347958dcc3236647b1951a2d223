@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e89f36ed_3cdaf926",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-23T22:48:58Z",
+      "side": 1,
+      "message": "continue?  Do you also want to report the original counts too?\n\nI\u0027m also guessing that jank_rate things are not useful to this metric. Can you exclude that?",
+      "revId": "e860f07736b15347958dcc3236647b1951a2d223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f9dd33_93830e3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-23T22:48:58Z",
+      "side": 1,
+      "message": "What\u0027s the reason you want to report this?",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 25
+      },
+      "revId": "e860f07736b15347958dcc3236647b1951a2d223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3668e02c_1f2ffc4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-23T22:48:58Z",
+      "side": 1,
+      "message": "I think this is not related to TPS but for your metrics. Can you use a different prefix?",
+      "range": {
+        "startLine": 345,
+        "startChar": 13,
+        "endLine": 345,
+        "endChar": 25
+      },
+      "revId": "e860f07736b15347958dcc3236647b1951a2d223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1159fd85_525d98ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-23T22:48:58Z",
+      "side": 1,
+      "message": "Minutes?  The name says PerMinute.",
+      "range": {
+        "startLine": 348,
+        "startChar": 29,
+        "endLine": 348,
+        "endChar": 36
+      },
+      "revId": "e860f07736b15347958dcc3236647b1951a2d223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
