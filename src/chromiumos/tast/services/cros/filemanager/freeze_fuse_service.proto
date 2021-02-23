@@ -1,0 +1,22 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.filemanager;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/filemanager";
+
+message TestMountZipAndSuspendRequest {
+    string user = 1;
+    string password = 2;
+    string zip_data_path = 3;
+}
+
+// FreezeFUSEService is the service for FreezeFUSE
+service FreezeFUSEService {
+  rpc TestMountZipAndSuspend (TestMountZipAndSuspendRequest) returns (google.protobuf.Empty) {}
+}
