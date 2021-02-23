@@ -26,6 +26,11 @@ const (
 	PowerState           StringControl = "power_state"
 	V4Role               StringControl = "servo_v4_role"
 	ECUARTCmd            StringControl = "ec_uart_cmd"
+	UARTCmd              StringControl = "servo_v4_uart_cmd"
+	WatchdogAdd          StringControl = "watchdog_add"
+	WatchdogRemove       StringControl = "watchdog_remove"
+	CCDKeepaliveEn       StringControl = "ccd_keepalive_en"
+	DTSMode              StringControl = "servo_v4_dts_mode"
 )
 
 // An IntControl contains the name of a gettable/settable Control which takes an integer value.
@@ -114,6 +119,14 @@ type V4RoleValue string
 const (
 	V4RoleSnk V4RoleValue = "snk"
 	V4RoleSrc V4RoleValue = "src"
+)
+
+// A WatchdogType is a string that would be accepted by WatchdogAdd & WatchdogRemove control.
+type WatchdogType string
+
+// These are the string watchdog type values that can be passed to WatchdogAdd & WatchdogRemove.
+const (
+	WatchdogCCD WatchdogType = "ccd"
 )
 
 // ServoKeypressDelay comes from hdctools/servo/drv/keyboard_handlers.py.
@@ -311,4 +324,35 @@ func (s *Servo) ToggleOffOn(ctx context.Context, ctrl OnOffControl) error {
 		return err
 	}
 	return nil
+}
+
+// WatchdogAdd adds the specified watchdog to the servod instance.
+func (s *Servo) WatchdogAdd(ctx context.Context, val WatchdogType) error {
+	return s.SetString(ctx, WatchdogAdd, string(val))
+}
+
+// WatchdogRemove removes the specified watchdog from the servod instance.
+func (s *Servo) WatchdogRemove(ctx context.Context, val WatchdogType) error {
+	return s.SetString(ctx, WatchdogRemove, string(val))
+}
+
+// runServoCommand runs the given command on the servo console.
+func (s *Servo) runServoCommand(ctx context.Context, cmd string) error {
+	return s.SetString(ctx, UARTCmd, cmd)
+}
+
+// RunUsbcDPConfigCommand executes the "usbc_action dp" command with the specified args on the servo
+// console.
+func (s *Servo) RunUsbcDPConfigCommand(ctx context.Context, args ...string) error {
+	cmd := "usbc_action dp"
+	for _, arg := range args {
+		cmd = cmd + " " + arg
+	}
+	return s.runServoCommand(ctx, cmd)
+}
+
+// SetCC sets the CC line to the specified value.
+func (s *Servo) SetCC(ctx context.Context, val OnOffValue) error {
+	cmd := "cc " + string(val)
+	return s.runServoCommand(ctx, cmd)
 }
