@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BlockOutboundNetwork,
 		Desc:         "Test the network blockage functionality of ARC++",
-		Contacts:     []string{"bhansknecht@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline", "informational"},

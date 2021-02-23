@@ -65,7 +65,6 @@ func (params *FindParams) rawAttributes() ([]byte, error) {
 	}
 
 	// json.Marshal can't be used because this is JavaScript code with regular expressions, not JSON.
-	// TODO(bhansknecht): work with chrome.automation API maintainers to support a JSON friendly regex format.
 	var buf bytes.Buffer
 	buf.WriteByte('{')
 	first := true
