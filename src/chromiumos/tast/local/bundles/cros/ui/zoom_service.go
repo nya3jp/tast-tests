@@ -66,7 +66,7 @@ func (s *ZoomService) MeetScenario(ctx context.Context, req *pb.MeetScenarioRequ
 	cleanup := func() {
 		runConferenceAPI(host, conferenceName, "endaio", "")
 	}
-	if err := conference.MeetConference(ctx, cr, zmcli, prepare, cleanup, req.Tier, outDir, req.TabletMode); err != nil {
+	if err := conference.MeetConference(ctx, cr, zmcli, prepare, cleanup, req.Tier, outDir, req.TabletMode, req.ExtendedDisplay); err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to run MeetConference")
 	}
 
