@@ -154,6 +154,24 @@
       "parentUuid": "d7ef1776_21367794",
       "revId": "ce8f756c9201e0b9829b0a8d4542e6a1f5d80217",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f791bb9_18e6d558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-02-23T21:56:43Z",
+      "side": 1,
+      "message": "Ack, mind if I change it then in both cases in another CL? For now I want to have both tests (this one and the one I have extracted that from) to be in line with each other.",
+      "parentUuid": "cd1acf10_29adc378",
+      "revId": "ce8f756c9201e0b9829b0a8d4542e6a1f5d80217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
