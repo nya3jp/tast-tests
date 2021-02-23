@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -35,6 +36,9 @@ func init() {
 			Name:              "logged_in",
 			Val:               true,
 			ExtraSoftwareDeps: []string{"android_p"},
+			// Tests are failed after arc.ChromeCrash.logged_in in betty-pi-arc-release.
+			// Disable the test on betty to unblock LegacyRelease. (https://crbug.com/1181402)
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("betty")),
 		}, {
 			Name:              "vm_logged_in",
 			Val:               true,
