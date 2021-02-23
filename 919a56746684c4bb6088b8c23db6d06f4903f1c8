@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83e1bffe_9476b1df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T20:52:02Z",
+      "side": 1,
+      "message": "Hi Jun, this file is a common part that will be called by all cuj _test.go file, and all definitions should be used by _test.go files only. Actually I followed the local/crostini/params.go usage, which is imported by crostini _test.go files.",
+      "parentUuid": "a3939173_01b256dd",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 51
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dd3a1bd_b3baa9d0",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-02-20T00:57:09Z",
       "side": 1,
       "message": "Please do not use embedding.  \"Tier Tier\".",
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3193114a_49dee867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T20:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dd3a1bd_b3baa9d0",
       "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb05cf9a_6cd41dc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T20:52:02Z",
+      "side": 1,
+      "message": "You are right. It is only used by generator. I like the GeneratorParam name and changed it.",
+      "parentUuid": "17ad589f_5ed4395a",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 14
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a7a9fbf_960b9a43",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bba3803_0d123390",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T20:52:02Z",
+      "side": 1,
+      "message": "The purpose here is to let the generated TestParameter code doesn\u0027t include the EnbaleBT flag when it is false, so the test parameter definition will be more concise.",
+      "parentUuid": "9a7a9fbf_960b9a43",
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8de88358_99b59e2a",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-02-20T00:57:09Z",
       "side": 1,
       "message": "I don\u0027t think there\u0027s such necessity of defining sub template.  Please directly embed into the main one.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 8
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1b1809_8d81d8d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T20:52:02Z",
+      "side": 1,
+      "message": "Ok, I embedded the sub-template part directly.",
+      "parentUuid": "8de88358_99b59e2a",
       "range": {
         "startLine": 130,
         "startChar": 0,
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51dd4229_25958916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T20:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d613c602_19e04f9b",
+      "range": {
+        "startLine": 142,
+        "startChar": 122,
+        "endLine": 142,
+        "endChar": 151
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9410882_a73db84b",
@@ -140,6 +272,30 @@
       "writtenOn": "2021-02-20T00:57:09Z",
       "side": 1,
       "message": "From this, I assume that you have the set of parameters mostly, and this simply doubles for clamshell and tablet.  I don\u0027t think you really need to generate parameters -- you can just put those parameters directly to your test.",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a25f66a1_a81cd3a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T20:52:02Z",
+      "side": 1,
+      "message": "I think other than the tablet/clamshell parameter, it also standardize the parameter names in the format of\n\n\u003ctier\u003e_\u003cscreen model\u003e_\u003cscenario\u003e_\u003capp name\u003e_\u003capp type\u003e_\u003cbluetooth\u003e\n\nThis will force the CUJ parameters follow this convention.\n\nPlease let me know if you think this is unnecessary. The developers already found this useful.",
+      "parentUuid": "b9410882_a73db84b",
       "range": {
         "startLine": 160,
         "startChar": 1,
