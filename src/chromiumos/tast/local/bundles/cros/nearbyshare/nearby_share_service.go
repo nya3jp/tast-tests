@@ -144,7 +144,7 @@ func (n *NearbyService) StartReceiving(ctx context.Context, req *empty.Empty) (*
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
-	receiver, err := localnearby.StartReceiving(ctx, n.cr)
+	receiver, err := localnearby.StartReceiving(ctx, n.tconn, n.cr)
 	if err != nil {
 		return nil, errors.New("failed to set up control over the receiving surface")
 	}
