@@ -255,6 +255,16 @@ func (ac *Context) ImmediateLocation(ctx context.Context, finder *nodewith.Finde
 	return &loc, nil
 }
 
+// WaitForLocation returns a function that waits until the node location is
+// stabilized.
+func (ac *Context) WaitForLocation(finder *nodewith.Finder) Action {
+	return func(ctx context.Context) error {
+		// Invokes Location method to wait for the location to be stabilized.
+		_, err := ac.Location(ctx, finder)
+		return err
+	}
+}
+
 // Exists returns a function that returns nil if a node exists.
 // If any node in the chain is not found, it will return an error.
 func (ac *Context) Exists(finder *nodewith.Finder) Action {
