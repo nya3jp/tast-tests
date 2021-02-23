@@ -147,7 +147,17 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for PIP window: ", err)
 	}
 
-	resizeHandle, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Name: "Resize", ClassName: "ImageButton"})
+	pipWindow, err := chromeui.Find(ctx, tconn, pipWindowFindParams)
+	if err != nil {
+		s.Fatal("Failed to get PIP window before resize: ", err)
+	}
+	defer pipWindow.Release(cleanupCtx)
+
+	if err := mouse.Move(ctx, tconn, pipWindow.Location.CenterPoint(), 0); err != nil {
+		s.Fatal("Failed to move mouse to PIP window: ", err)
+	}
+
+	resizeHandle, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Name: "Resize", ClassName: "ResizeHandleButton"})
 	if err != nil {
 		s.Fatal("Failed to get PIP resize handle: ", err)
 	}
@@ -181,9 +191,9 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for location-change events to be propagated to the automation API: ", err)
 	}
 
-	pipWindow, err := chromeui.Find(ctx, tconn, pipWindowFindParams)
+	pipWindow, err = chromeui.Find(ctx, tconn, pipWindowFindParams)
 	if err != nil {
-		s.Fatal("Failed to get PIP window: ", err)
+		s.Fatal("Failed to get PIP window after resize: ", err)
 	}
 	defer pipWindow.Release(cleanupCtx)
 
