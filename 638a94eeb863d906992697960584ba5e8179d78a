@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "510bf750_14cb6b6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_media_track_advanced_controls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "IIUC, there are only 2 possible value \"manual\" or \"continuous\".\nLet\u0027s use enum to list these value, for example: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/camera/cca/cca.go;rcl\u003d8e73ab0dcc63b9b6df8862851f24f8e066d61a63;l\u003d47",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b74341_5ae22956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_media_track_advanced_controls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "Use |RunThroughCameras|, example: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go;rcl\u003d8e73ab0dcc63b9b6df8862851f24f8e066d61a63;l\u003d227",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e82fb2d9_83865a34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_media_track_advanced_controls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "What\u0027s this for?",
+      "range": {
+        "startLine": 84,
+        "startChar": 16,
+        "endLine": 84,
+        "endChar": 19
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e15c54_40d16cdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_media_track_advanced_controls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "How about use a formal json string with proper curl bracket here to improve the readability:\n{\u0027exposureMode\u0027: \u0027continuous\u0027} and wrap with backtick",
+      "range": {
+        "startLine": 88,
+        "startChar": 31,
+        "endLine": 88,
+        "endChar": 63
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "020852cb_9f15d169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_media_track_advanced_controls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 89,
+        "startChar": 14,
+        "endLine": 89,
+        "endChar": 66
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fbb5f24_a5bdc9d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_media_track_advanced_controls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "Use backtick so that no need to escape quote here. Also follow our javascript style, prefer single quote rather than double quote for string literal.",
+      "range": {
+        "startLine": 209,
+        "startChar": 32,
+        "endLine": 209,
+        "endChar": 33
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "050671ca_17552e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "{!Promise\u003c!MediaTrackCapabilities\u003e}",
+      "range": {
+        "startLine": 326,
+        "startChar": 13,
+        "endLine": 326,
+        "endChar": 35
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b11a1ed7_f20a4b89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "{!Promise\u003c!MediaTrackSettings\u003e}",
+      "range": {
+        "startLine": 336,
+        "startChar": 13,
+        "endLine": 336,
+        "endChar": 31
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a26e05_3050f47c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "constraints",
+      "range": {
+        "startLine": 346,
+        "startChar": 21,
+        "endLine": 346,
+        "endChar": 42
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85811000_601e61d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "@return {!Promise}",
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46cf1f07_0d2884fa",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "Is it necessary to pass in a pointer?",
+      "range": {
+        "startLine": 240,
+        "startChar": 18,
+        "endLine": 240,
+        "endChar": 19
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be9b4fdb_d633c87f",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "The comment style should be XXXfunc do something.\nFor example:\nGetMediaTrackCapabilities gets |MediaTrackCapabilities| from preview video track.",
+      "range": {
+        "startLine": 658,
+        "startChar": 28,
+        "endLine": 658,
+        "endChar": 61
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c212d938_b6fcda13",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "Is it still valid?",
+      "range": {
+        "startLine": 662,
+        "startChar": 2,
+        "endLine": 662,
+        "endChar": 35
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "767fdf42_5a3ac99c",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "MediaTrackCapabilities",
+      "range": {
+        "startLine": 663,
+        "startChar": 55,
+        "endLine": 663,
+        "endChar": 67
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6e8469_17b9450a",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 668,
+        "startChar": 25,
+        "endLine": 668,
+        "endChar": 57
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7a3bd6_3ea4e135",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "Is it still valid?",
+      "range": {
+        "startLine": 672,
+        "startChar": 2,
+        "endLine": 672,
+        "endChar": 35
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dfbf6f0_bf346dcf",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "MediaTrackSettings",
+      "range": {
+        "startLine": 673,
+        "startChar": 51,
+        "endLine": 673,
+        "endChar": 59
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "884eed49_6d099e9c",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 678,
+        "startChar": 30,
+        "endLine": 678,
+        "endChar": 62
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c0dd2c2_0619527a",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-02-23T01:53:14Z",
+      "side": 1,
+      "message": "failed to apply constraints %s",
+      "range": {
+        "startLine": 681,
+        "startChar": 28,
+        "endLine": 681,
+        "endChar": 60
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
