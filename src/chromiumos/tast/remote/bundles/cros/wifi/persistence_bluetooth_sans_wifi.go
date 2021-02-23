@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -26,6 +27,11 @@ func init() {
 		Contacts:     []string{"billyzhao@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		SoftwareDeps: []string{"chrome", "reboot"},
+		// Jacuzzi devices are prone to bricking on reboot, we will disable the persistence tests on
+		// jacuzzi devices as these tests perform a reboot (b:181057823). We cannot use hwdep.SkipOnPlatform
+		// as the filter doesn't actually work properly (doesn't skip on some jacuzzi devices) (crbug.com/1124372).
+		// TODO: remove this hwdep when the jacuzzi issue is fixed (b:178449023)
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("burnet", "cerise", "damu", "esche", "fennel", "fennel14", "juniper", "kappa", "stern", "willow")),
 		ServiceDeps:  []string{wificell.TFServiceName, "tast.cros.network.BluetoothService"},
 		Vars:         []string{"router", "wifi.signinProfileTestExtensionManifestKey"},
 	})
