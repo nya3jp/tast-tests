@@ -33,7 +33,6 @@ func init() {
 		},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 		},
 		Data:    []string{"100000_files_in_one_folder.zip"},
 		Timeout: 15 * time.Minute,
@@ -47,7 +46,6 @@ func init() {
 
 func FreezeFUSE(ctx context.Context, s *testing.State) {
 	d := s.DUT()
-
 	// Connect to the gPRC service
 	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
 	if err != nil {
