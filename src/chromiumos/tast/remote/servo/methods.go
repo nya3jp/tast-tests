@@ -26,6 +26,9 @@ const (
 	PowerState           StringControl = "power_state"
 	V4Role               StringControl = "servo_v4_role"
 	ECUARTCmd            StringControl = "ec_uart_cmd"
+	ECUARTRegexp         StringControl = "ec_uart_regexp"
+	UARTCmd              StringControl = "servo_v4_uart_cmd"
+	PDComm               StringControl = "servo_v4_pd_comm"
 )
 
 // An IntControl contains the name of a gettable/settable Control which takes an integer value.
@@ -299,6 +302,17 @@ func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
 	return s.SetString(ctx, ECUARTCmd, cmd)
 }
 
+// GetECCommand gets the response regexp for the command previously run using RunECCommand.
+func (s *Servo) GetECCommand(ctx context.Context) (string, error) {
+	return s.GetString(ctx, ECUARTCmd)
+}
+
+// SetECCommandRegexp sets the regexp which is run on the response to the command run using
+// RunECCommand.
+func (s *Servo) SetECCommandRegexp(ctx context.Context, cmd string) error {
+	return s.SetString(ctx, ECUARTRegexp, cmd)
+}
+
 // ToggleOffOn turns a switch off and on again.
 func (s *Servo) ToggleOffOn(ctx context.Context, ctrl OnOffControl) error {
 	if err := s.SetString(ctx, StringControl(ctrl), string(Off)); err != nil {
@@ -311,4 +325,14 @@ func (s *Servo) ToggleOffOn(ctx context.Context, ctrl OnOffControl) error {
 		return err
 	}
 	return nil
+}
+
+// RunServoCommand runs the given command on the servo console.
+func (s *Servo) RunServoCommand(ctx context.Context, cmd string) error {
+	return s.SetString(ctx, UARTCmd, cmd)
+}
+
+// PDComm sets the PD capability for the Servo to on or off.
+func (s *Servo) PDComm(ctx context.Context, val OnOffValue) error {
+	return s.SetString(ctx, PDComm, string(val))
 }
