@@ -88,6 +88,24 @@
       "parentUuid": "3ab5f2ba_e6aeba2f",
       "revId": "b982428b0263ddc3d1bc329dea7a86c00c29fc1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c18d5af_ced2e9ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-23T07:09:44Z",
+      "side": 1,
+      "message": "This E2E test only aims to validate that shortcut works on SWA. That\u0027s it. \nPlease correct me if I am wrong. @Ben, @Zufeng.",
+      "parentUuid": "f01de808_f3dad93e",
+      "revId": "b982428b0263ddc3d1bc329dea7a86c00c29fc1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
