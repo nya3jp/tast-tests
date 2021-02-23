@@ -19,6 +19,21 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type imageType int
+
+const (
+	// imageTypeRW should be the default in testMetadata.
+	imageTypeRW imageType = iota
+	imageTypeRO imageType = iota
+)
+
+type testMetadata struct {
+	name  string
+	image imageType
+	// Params to append to "runtest" command.
+	testParams []string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: FpmcuUnittest,
@@ -33,82 +48,87 @@ func init() {
 		Params: []testing.Param{{
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_aes",
-			Val:       "bloonchipper/test-aes.bin",
+			Val:       testMetadata{name: "bloonchipper/test-aes.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_compile_time_macros",
-			Val:       "bloonchipper/test-compile_time_macros.bin",
+			Val:       testMetadata{name: "bloonchipper/test-compile_time_macros.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_crc",
-			Val:       "bloonchipper/test-crc.bin",
+			Val:       testMetadata{name: "bloonchipper/test-crc.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_flash_physical",
-			Val:       "bloonchipper/test-flash_physical.bin",
+			Val:       testMetadata{name: "bloonchipper/test-flash_physical.bin", image: imageTypeRO},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_flash_write_protect",
-			Val:       "bloonchipper/test-flash_write_protect.bin",
+			Val:       testMetadata{name: "bloonchipper/test-flash_write_protect.bin", image: imageTypeRO},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
-			Name:      "bloonchipper_fpsensor",
-			Val:       "bloonchipper/test-fpsensor.bin",
+			Name:      "bloonchipper_fpsensor_spi_ro",
+			Val:       testMetadata{name: "bloonchipper/test-fpsensor.bin", image: imageTypeRO},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_fpsensor_spi_rw",
+			Val:       testMetadata{name: "bloonchipper/test-fpsensor.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_mpu",
-			Val:       "bloonchipper/test-mpu.bin",
+			Val:       testMetadata{name: "bloonchipper/test-mpu.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_mutex",
-			Val:       "bloonchipper/test-mutex.bin",
+			Val:       testMetadata{name: "bloonchipper/test-mutex.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_pingpong",
-			Val:       "bloonchipper/test-pingpong.bin",
+			Val:       testMetadata{name: "bloonchipper/test-pingpong.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_rollback",
-			Val:       "bloonchipper/test-rollback.bin",
+			Val:       testMetadata{name: "bloonchipper/test-rollback.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_rollback_entropy",
-			Val:       "bloonchipper/test-rollback_entropy.bin",
+			Val:       testMetadata{name: "bloonchipper/test-rollback_entropy.bin", image: imageTypeRO},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_rsa3",
-			Val:       "bloonchipper/test-rsa3.bin",
+			Val:       testMetadata{name: "bloonchipper/test-rsa3.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_rtc",
-			Val:       "bloonchipper/test-rtc.bin",
+			Val:       testMetadata{name: "bloonchipper/test-rtc.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_scratchpad",
-			Val:       "bloonchipper/test-scratchpad.bin",
+			Val:       testMetadata{name: "bloonchipper/test-scratchpad.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_sha256",
-			Val:       "bloonchipper/test-sha256.bin",
+			Val:       testMetadata{name: "bloonchipper/test-sha256.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_sha256_unrolled",
-			Val:       "bloonchipper/test-sha256_unrolled.bin",
+			Val:       testMetadata{name: "bloonchipper/test-sha256_unrolled.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_stm32f_rtc",
-			Val:       "bloonchipper/test-stm32f_rtc.bin",
+			Val:       testMetadata{name: "bloonchipper/test-stm32f_rtc.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_utils",
-			Val:       "bloonchipper/test-utils.bin",
+			Val:       testMetadata{name: "bloonchipper/test-utils.bin"},
 		}},
 	})
 }
 
 // getFpmcuBoardName extracts the FPMCU board name from test params.
 func getFpmcuBoardName(s *testing.State) string {
-	return strings.Split(s.Param().(string), "/")[0]
+	testName := s.Param().(testMetadata).name
+	return strings.Split(testName, "/")[0]
 }
 
 // setupServo sets up a servo host connected to FPMCU.
@@ -141,14 +161,14 @@ func setupServo(ctx context.Context, s *testing.State) *testexec.Cmd {
 
 // extractBinaryToFlash extracts the chosen binary to flash to the FPMCU.
 func extractBinaryToFlash(ctx context.Context, s *testing.State, tempDir, tarballPath string) string {
-	// The specific binary is "Val" in the test params.
-	cmdUntar := testexec.CommandContext(ctx, "tar", "-C", tempDir, "-xvjf", tarballPath, s.Param().(string))
+	// The specific binary is the first string in "Val" in the test params.
+	cmdUntar := testexec.CommandContext(ctx, "tar", "-C", tempDir, "-xvjf", tarballPath, s.Param().(testMetadata).name)
 	s.Logf("Running command: %q", shutil.EscapeSlice(cmdUntar.Args))
 	if err := cmdUntar.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatalf("%q failed: %v", shutil.EscapeSlice(cmdUntar.Args), err)
 	}
 
-	return s.Param().(string)
+	return s.Param().(testMetadata).name
 }
 
 // flashUnittestBinary flashes the unittest binary to the FPMCU connected to the target.
@@ -207,6 +227,12 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 
 	flashUnittestBinary(ctx, s)
 
+	// Run the test in RO or RW, depending on "Val" in test params.
+	imageToBoot := "RW"
+	if s.Param().(testMetadata).image == imageTypeRO {
+		imageToBoot = "RO"
+	}
+
 	// Wait for FPMCU to reboot after flashing
 	for {
 		if !scanner.Scan() {
@@ -216,8 +242,14 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 			continue
 		}
 		t := scanner.Text()
-		if strings.Contains(t, "Image: RW") {
+		if strings.Contains(t, fmt.Sprintf("Image: %s", imageToBoot)) {
 			break
+		}
+	}
+
+	if imageToBoot == "RO" {
+		if _, err = console.Write([]byte("sysjump ro\n")); err != nil {
+			s.Fatal("Failed to switch FPMCU to RO: ", err)
 		}
 	}
 
