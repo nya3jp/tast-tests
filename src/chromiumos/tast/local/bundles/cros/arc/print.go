@@ -61,45 +61,79 @@ func init() {
 // unstableModels is a list of models that are too flaky for the CQ.
 var unstableModels = []string{
 	"asuka",
+
+	// auron:
 	"paine",
+
 	"banon",
 	"betty",
 	"caroline",
 	"cave",
 	"celes",
 	"cyan",
+
+	// dedede:
+	"madoo",
+
 	"edgar",
-	"eve",
 	"elm",
+	"eve",
+
+	// grunt:
 	"barla",
 	"careena",
 	"kasumi",
 	"treeya",
+
+	"hana",
+
+	// hatch:
 	"dragonair",
 	"kled",
 	"nightfury",
 	"willow",
+
 	"kefka",
+
+	// kukui:
 	"kodama",
 	"krane",
+
 	"lars",
 	"lulu",
+
+	// octopus:
 	"ampton",
 	"blooglet",
 	"bluebird",
 	"bobba",
 	"dood",
+	"dorp",
 	"fleex",
 	"foob360",
 	"garg",
+	"laser14",
+	"lick",
 	"phaser360",
 	"sparky",
 	"vorticon",
+
+	"sarien",
+
+	// trogdor:
 	"lazor",
 	"pompom",
+
+	// veyron:
 	"fievel",
 	"tiger",
+
 	"volteer2",
+
+	"wizpig",
+
+	// zork:
+	"berknip",
 	"dirinboz",
 	"ezkinil",
 	"morphius",
