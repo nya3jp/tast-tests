@@ -340,8 +340,7 @@ func init() {
 				}},
 			}, {
 				// Verifies that DUT can connect to an AP in WPA3-SAE ("pure") mode. WiFi alliance requires PMF in this mode.
-				Name:      "wpa3",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wpa3",
 				// Not all WiFi chips support SAE. We enable the feature as a Software dependency for now, but eventually
 				// this will require a hardware dependency (crbug.com/1070299).
 				ExtraSoftwareDeps: []string{"wpa3_sae"},
