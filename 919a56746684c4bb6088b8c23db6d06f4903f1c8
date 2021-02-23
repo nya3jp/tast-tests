@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26377e70_1db5adac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-23T21:53:11Z",
+      "side": 1,
+      "message": "I did not know about crostini/params.go, but that won\u0027t change my point. As long as possible, things only used for tests should be kept within test binary.  Maybe crostini part should be refactored eventually (though it looks a bit hard to do so).",
+      "parentUuid": "83e1bffe_9476b1df",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 51
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dd3a1bd_b3baa9d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
         "patchSetId": 8
@@ -296,6 +320,30 @@
       "side": 1,
       "message": "I think other than the tablet/clamshell parameter, it also standardize the parameter names in the format of\n\n\u003ctier\u003e_\u003cscreen model\u003e_\u003cscenario\u003e_\u003capp name\u003e_\u003capp type\u003e_\u003cbluetooth\u003e\n\nThis will force the CUJ parameters follow this convention.\n\nPlease let me know if you think this is unnecessary. The developers already found this useful.",
       "parentUuid": "b9410882_a73db84b",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d197b4_5f095701",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-23T21:53:11Z",
+      "side": 1,
+      "message": "I\u0027m afraid that is not the great usage of genparams.  Why not writing everything?\n\nAlso, on a CL of quick_check_cuj2.go, all of cases are \u0027basic\u0027. Do we want to keep the \u0027tier\u0027 section always?  Why not simply skipping it?  (i.e. clamshell_unlock, tablet_unlock etc).  To control those parameter names, I think manually writing them is actually a better approach.",
+      "parentUuid": "a25f66a1_a81cd3a3",
       "range": {
         "startLine": 160,
         "startChar": 1,
