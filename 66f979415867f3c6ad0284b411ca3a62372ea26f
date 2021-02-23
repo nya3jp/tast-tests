@@ -105,6 +105,24 @@
       "parentUuid": "818a78d3_b4873210",
       "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfaba4ac_f9ce6e6a",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T21:03:23Z",
+      "side": 1,
+      "message": "Thanks Jun. As you pointed out, I think we need to improve the cutoff level for certain tests - probably on certain models only. For example, some AMD models run test case very slow and consumes more power. Do you have any suggestions how to control the cutoff level per model?",
+      "parentUuid": "72848044_b704e0c3",
+      "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
