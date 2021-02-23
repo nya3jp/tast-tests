@@ -47,7 +47,6 @@ func init() {
 
 func TabletOperations(ctx context.Context, s *testing.State) {
 	expects := perfutil.CreateExpectations(ctx,
-		"Ash.DragWindowFromShelf.PresentationTime",
 		"Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat",
 		"Ash.HotseatTransition.Drag.PresentationTime",
 		"Ash.HotseatWidgetAnimation.Widget.AnimationSmoothness.TransitionToHiddenHotseat",
@@ -58,6 +57,8 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		"Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview",
 		// Ash.TabletMode.AnimationSmoothness.{Enter,Exit} are skipped, as it is
 		// known to be bad. TODO(https://crbug.com/1054489): add them.
+		// Ash.DragWindowFromShelf.PresentationTime is skipped, it is bad
+		// on some devices. TODO(https://crbug.com/1168774): add this.
 	)
 	// When custom expectation value needs to be set, modify expects here.
 
@@ -79,7 +80,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 	}
 
 	r := perfutil.NewRunner(cr)
-	r.Runs = 3
+	r.Runs = 5
 	r.RunTracing = false
 
 	s.Log("1. enter/exit tablet mode status")
