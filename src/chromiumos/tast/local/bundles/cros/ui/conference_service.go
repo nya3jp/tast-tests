@@ -15,8 +15,10 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/conference"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
@@ -109,6 +111,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to test API")
 	}
+
 	var tabletMode bool
 	if mode, ok := s.s.Var("ui.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
@@ -122,6 +125,23 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		tabletMode, err = ash.TabletModeEnabled(ctx, tconn)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to get DUT default screen mode")
+		}
+	}
+	testing.ContextLog(ctx, "Running test with tablet mode: ", tabletMode)
+
+	if req.ExtendedDisplay {
+		// Unset mirrored display to have two different displays.
+		if err := cuj.UnsetMirrorDisplay(ctx, tconn); err != nil {
+			return nil, errors.Wrap(err, "failed to unset mirror display")
+		}
+		// Make sure there are two displays on DUT.
+		infos, err := display.GetInfo(ctx, tconn)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get display info")
+		}
+
+		if len(infos) != 2 {
+			return nil, errors.Errorf("expect 2 displays but got %d", len(infos))
 		}
 	}
 
