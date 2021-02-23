@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8a3114_e68afb03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-23T07:42:34Z",
+      "side": 1,
+      "message": "Could you comment why Sleep should be used?\nCould you use testing.Poll instead?",
+      "range": {
+        "startLine": 33,
+        "startChar": 11,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "fc7bdbe735be758ee1f8cdc7cc9bb2771f726b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90448d87_5eff9eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-23T07:42:34Z",
+      "side": 1,
+      "message": "Could you unexport the function? Same for others.",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "fc7bdbe735be758ee1f8cdc7cc9bb2771f726b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86dd8a36_1f2d3145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-23T07:42:34Z",
+      "side": 1,
+      "message": "() are not needed.\nAlso, you can flip the condition to reduce the number of nests.\n\nif disabled {\n  continue\n}\nif err :\u003d ClickSave...",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 16
+      },
+      "revId": "fc7bdbe735be758ee1f8cdc7cc9bb2771f726b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1109c489_4cde221c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-23T07:42:34Z",
+      "side": 1,
+      "message": "error",
+      "range": {
+        "startLine": 68,
+        "startChar": 66,
+        "endLine": 68,
+        "endChar": 73
+      },
+      "revId": "fc7bdbe735be758ee1f8cdc7cc9bb2771f726b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c64f38_66641b35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-23T07:42:34Z",
+      "side": 1,
+      "message": "indent.\n\nI think this will be automatically formatted with gofmt, and linter should warn it.\nHave you run `repo upload`? It should run linter against the files to be uploaded.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "fc7bdbe735be758ee1f8cdc7cc9bb2771f726b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d276b5b_cf9fc55a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-23T07:42:34Z",
+      "side": 1,
+      "message": "nit: add period. Same for other comments below.",
+      "range": {
+        "startLine": 131,
+        "startChar": 21,
+        "endLine": 131,
+        "endChar": 27
+      },
+      "revId": "fc7bdbe735be758ee1f8cdc7cc9bb2771f726b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be69e2a_ef483210",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-23T07:42:34Z",
+      "side": 1,
+      "message": "nit: you can inline pollOpts.",
+      "range": {
+        "startLine": 146,
+        "startChar": 50,
+        "endLine": 146,
+        "endChar": 58
+      },
+      "revId": "fc7bdbe735be758ee1f8cdc7cc9bb2771f726b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
