@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8609adf0_07d50fcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-23T23:40:49Z",
+      "side": 1,
+      "message": "One more change to clean up the polling some:\n\n if err :\u003d allowButton.Exists(ctx); err \u003d\u003d nil {\n   s.Log(\"Clicking on allowButton\")\n   allowButton.Click(ctx)\n }\n if err :\u003d whileUsingThisAppButton.Exists(ctx); err \u003d\u003d nil {\n   s.Log(\"Clicking on whileUsingThisApp\")\n   whileUsingThisAppButton.Click(ctx)\n }\n if err :\u003d permissionButton.Exists(ctx); err \u003d\u003d nil {\n   s.Log(\"Clicking on permissionButton\")\n   permissionButton.Click(ctx)\n }\n return appverifer.Exists(ctx)\n\nThis will try all of the buttons and then end if appverifier exists. Otherwise, it will repeat and try clicking buttons again.",
+      "range": {
+        "startLine": 524,
+        "startChar": 2,
+        "endLine": 545,
+        "endChar": 12
+      },
+      "revId": "aab197609cd92c45078a8966a2e32a181352ff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
