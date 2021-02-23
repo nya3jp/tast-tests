@@ -13,55 +13,33 @@ import (
 	"strings"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+	"google.golang.org/grpc"
+
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/testexec"
+	fmpb "chromiumos/tast/services/cros/filemanager"
 	"chromiumos/tast/testing"
 )
 
 func init() {
-	testing.AddTest(&testing.Test{
-		// TODO(b/177494589): Add additional test cases for different FUSE instances.
-		Func: FreezeFUSE,
-		Desc: "Verify that freeze on suspend works with FUSE",
-		Contacts: []string{
-			"dbasehore@google.com",
-			"cros-telemetry@google.com",
-		},
-		SoftwareDeps: []string{
-			"chrome",
-			"chrome_internal",
-		},
-		Attr: []string{
-			"group:mainline",
-			"informational",
-		},
-		Data:    []string{"100000_files_in_one_folder.zip"},
-		Timeout: 15 * time.Minute,
-		Vars: []string{
-			"filemanager.user",
-			"filemanager.password",
+	testing.AddService(&testing.Service{
+		Register: func(srv *grpc.Server, s *testing.ServiceState) {
+			fmpb.RegisterFreezeFUSEServiceServer(srv, &FreezeFUSEService{s})
 		},
 	})
 }
 
-func FreezeFUSE(ctx context.Context, s *testing.State) {
-	// Attempt to suspend/resume 5 times while mounting a zip file.
-	// Without the freeze ordering patches, suspend is more likely to fail than
-	// not, so attempt 5 times to balance reproducing the bug with test runtime
-	// (about 1 minute 15 seconds per attempt).
-	const suspendAttempts = 5
-	for i := 0; i < suspendAttempts; i++ {
-		if !s.Run(ctx, fmt.Sprintf("FUSE Suspend Attempt %d", i), testMountZipAndSuspend) {
-			return
-		}
-	}
+type FreezeFUSEService struct {
+	s *testing.ServiceState
 }
 
-func testMountZipAndSuspend(ctx context.Context, s *testing.State) {
+func (f *FreezeFUSEService) TestMountZipAndSuspend(ctx context.Context, request *fmpb.TestMountZipAndSuspendRequest) (emp *empty.Empty, lastErr error) {
 	// Use a shortened context to allow time for required cleanup steps.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
@@ -72,17 +50,17 @@ func testMountZipAndSuspend(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chrome.GAIALogin(),
-		chrome.Auth(s.RequiredVar("filemanager.user"), s.RequiredVar("filemanager.password"), "gaia-id"),
+		chrome.Auth(request.GetUser(), request.GetPassword(), "gaia-id"),
 		chrome.ARCDisabled(),
 		chrome.EnableFeatures("FilesZipMount"))
 	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
+		return nil, errors.Wrap(err, "failed to start Chrome")
 	}
 	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to create TestAPIConn for Chrome: ", err)
+		return nil, errors.Wrap(err, "failed to create TestAPIConn for Chrome: ")
 	}
 
 	// This command quickly reproduces freeze timeouts with archives.
@@ -103,40 +81,44 @@ func testMountZipAndSuspend(ctx context.Context, s *testing.State) {
 	// Copy the zip file to Downloads folder.
 	zipFile := "100000_files_in_one_folder.zip"
 	zipPath := path.Join(filesapp.DownloadPath, zipFile)
-	if err := fsutil.CopyFile(s.DataPath(zipFile), zipPath); err != nil {
-		s.Fatalf("Error copying ZIP file to %s: %s", zipPath, err)
+	if err := fsutil.CopyFile(request.GetZipDataPath(), zipPath); err != nil {
+		return nil, errors.Wrapf(err, "error copying ZIP file to %q", zipPath)
 	}
 	defer func() {
 		if err := os.Remove(zipPath); err != nil {
-			s.Errorf("Failed to remove ZIP file %s: %v", zipPath, err)
+			lastErr = errors.Wrapf(err, "failed to remove ZIP file %q", zipPath)
+			// Log the error now, because this may not the last error.
+			testing.ContextLog(cleanupCtx, lastErr)
 		}
 		if err := cmd.Kill(); err != nil {
-			s.Error("Failed to kill testing script: ", err)
+			lastErr = errors.Wrap(err, "failed to kill testing script")
+			// Log the error now, because this may not the last error.
+			testing.ContextLog(cleanupCtx, lastErr)
 		}
 		cmd.Wait()
 		// Restart powerd, otherwise we may get stuck in suspend.
 		if err := testexec.CommandContext(cleanupCtx, "restart", "powerd").Run(); err != nil {
-			s.Error("Failed to restart powerd after failed suspend attempt. DUT may get stuck after retry suspend: ", err)
+			lastErr = errors.Wrap(err, "failed to restart powerd after failed suspend attempt. DUT may get stuck after retry suspend")
 		}
 	}()
 
 	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
-		s.Fatal("Could not launch the Files App: ", err)
+		return nil, errors.Wrap(err, "could not launch the Files App")
 	}
 	defer files.Close(cleanupCtx)
 
 	if err := files.OpenDownloads(ctx); err != nil {
-		s.Fatal("Could not open Downloads folder: ", err)
+		return nil, errors.Wrap(err, "could not open Downloads folder")
 	}
 
 	// Wait for the zip file to show up in the UI.
 	if err := files.WaitForFile(ctx, zipFile, 3*time.Minute); err != nil {
-		s.Fatal("Waiting for test ZIP file failed: ", err)
+		return nil, errors.Wrap(err, "Waiting for test ZIP file failed")
 	}
 
 	if err := files.OpenFile(ctx, zipFile); err != nil {
-		s.Fatal("Mounting zip file failed: ", err)
+		return nil, errors.Wrap(err, "Opening ZIP file failed")
 	}
 
 	params := ui.FindParams{
@@ -145,28 +127,29 @@ func testMountZipAndSuspend(ctx context.Context, s *testing.State) {
 	}
 
 	if err := files.Root.WaitUntilDescendantExists(ctx, params, time.Minute); err != nil {
-		s.Fatalf("Mounting zip file, %s, failed: %v", zipFile, err)
+		return nil, errors.Wrapf(err, "Mounting ZIP file %q failed", zipFile)
 	}
 
 	if err := cmd.Start(); err != nil {
-		s.Fatal("Unable to start archive stress script: ", err)
+		return nil, errors.Wrap(err, "Unable to start archive stress script")
 	}
 
 	// Read wakeup count here to prevent suspend retries, which happen without user input.
 	wakeupCount, err := ioutil.ReadFile("/sys/power/wakeup_count")
 	if err != nil {
-		s.Fatal("Failed to read wakeup count before suspend: ", err)
+		return nil, errors.Wrap(err, "failed to read wakeup count before suspend")
 	}
 
 	// Suspend for 45 seconds since the stress script slows us down.
 	// This gives freeze during suspend enough time to timeout in 20s.
-	s.Log("Attempting suspend")
+	testing.ContextLog(ctx, "Attempting suspend")
 	if err := testexec.CommandContext(
 		ctx,
 		"powerd_dbus_suspend",
 		fmt.Sprintf("--wakeup_count=%s", strings.Trim(string(wakeupCount), "\n")),
 		"--timeout=30",
 		"--suspend_for_sec=45").Run(); err != nil {
-		s.Fatal("powerd_dbus_suspend failed to properly suspend: ", err)
+		return nil, errors.Wrap(err, "powerd_dbus_suspend failed to properly suspend")
 	}
+	return &empty.Empty{}, lastErr
 }
