@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e870d43a_57a44423",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-23T23:53:42Z",
+      "side": 1,
+      "message": "Removed uiauto.Run.",
+      "parentUuid": "999ad4c7_50421ad3",
+      "range": {
+        "startLine": 82,
+        "startChar": 30,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "a77ec3d549f2bfa26e3a7f8075e12c1eb255a16e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27052f19_e6ea428d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-23T23:53:42Z",
+      "side": 1,
+      "message": "Removed uiauto.Run. Combine allows to compose methods to return a func.",
+      "parentUuid": "a6686e13_e7532182",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 8
+      },
+      "revId": "a77ec3d549f2bfa26e3a7f8075e12c1eb255a16e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac06f015_4871f716",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-23T06:26:48Z",
       "side": 1,
       "message": "Every single message starts with \"to\" and it doesn\u0027t read well at the call site.\n\nI would prefer the \"to\" to be in line 96 here, and the string the user supplies to start with an action word (verb).\n\neg\n\nuiauto.Combine(\"open Downloads and right click a folder\", ...)",
+      "range": {
+        "startLine": 88,
+        "startChar": 59,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "a77ec3d549f2bfa26e3a7f8075e12c1eb255a16e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1808ac03_35fa0783",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-23T23:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac06f015_4871f716",
       "range": {
         "startLine": 88,
         "startChar": 59,
