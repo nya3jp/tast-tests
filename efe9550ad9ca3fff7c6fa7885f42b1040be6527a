@@ -25,6 +25,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ef1f00b_9ce61673",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-23T15:05:08Z",
+      "side": 1,
+      "message": "lgtm % Yen-lin\u0027s comments",
+      "revId": "efe9550ad9ca3fff7c6fa7885f42b1040be6527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bb5f39b_c9f19cff",
