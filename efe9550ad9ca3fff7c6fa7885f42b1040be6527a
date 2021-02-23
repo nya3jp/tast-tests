@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e541fb23_0a17dd3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-23T08:59:59Z",
+      "side": 1,
+      "message": "\u003e \"dameon\" is a possible misspelling of \"daemon\", \"demon\", or \"Damien\".\n\nPlease fix.",
+      "parentUuid": "94ab7765_6c97f569",
+      "range": {
+        "startLine": 12,
+        "startChar": 30,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "efe9550ad9ca3fff7c6fa7885f42b1040be6527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb5f39b_c9f19cff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-23T08:59:59Z",
+      "side": 1,
+      "message": "minor nit: If this is only for package docstring, I think naming it as doc.go is more common.",
+      "revId": "efe9550ad9ca3fff7c6fa7885f42b1040be6527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
