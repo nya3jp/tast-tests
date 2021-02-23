@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4c179d1_e66cb99d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-23T12:54:18Z",
+      "side": 1,
+      "message": "Now you are not using any keyboard, so it can be deleted.\nThe keyboards can differ on devices where there is no physical keyboard. But usually this is the encouraged choice when using keyboards in tests.",
+      "parentUuid": "e1ba965e_dcfa7e90",
+      "range": {
+        "startLine": 117,
+        "startChar": 24,
+        "endLine": 117,
+        "endChar": 39
+      },
+      "revId": "0b7315fb6ad1e3f0b91e1d6a21548b23d0c2b5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b475d94_c72fdbf6",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
         "patchSetId": 4
