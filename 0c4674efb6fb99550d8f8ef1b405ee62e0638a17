@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a26c93f9_335167eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-23T23:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb072639_de196622",
+      "range": {
+        "startLine": 518,
+        "startChar": 1,
+        "endLine": 518,
+        "endChar": 19
+      },
+      "revId": "0c4674efb6fb99550d8f8ef1b405ee62e0638a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12872120_06b427f0",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "please find my idea, to handle the scenario  of dialog boxes like allow  button, allowWhileUsingTheApp button and permission button. First the method will look for allow button and if it exists click on it else simply moves to  look for allowWhileUsingTheApp button and if it exist click on it else simply moves to  look for permission button. So we will be able to handle any of these dialog boxes.",
       "parentUuid": "12872120_06b427f0",
+      "range": {
+        "startLine": 524,
+        "startChar": 12,
+        "endLine": 524,
+        "endChar": 22
+      },
+      "revId": "0c4674efb6fb99550d8f8ef1b405ee62e0638a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "437aa2bc_d795bb07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-23T23:29:01Z",
+      "side": 1,
+      "message": "Hi, Made changes as suggested. Thanks.",
+      "parentUuid": "658d8b84_2fb7c0c6",
       "range": {
         "startLine": 524,
         "startChar": 12,
@@ -142,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "384a92c8_e29e673d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-23T23:29:01Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "22305e57_02e10c7d",
+      "range": {
+        "startLine": 535,
+        "startChar": 1,
+        "endLine": 535,
+        "endChar": 31
+      },
+      "revId": "0c4674efb6fb99550d8f8ef1b405ee62e0638a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35b868a8_4d92f3c9",
@@ -179,6 +251,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "35b868a8_4d92f3c9",
+      "range": {
+        "startLine": 550,
+        "startChar": 1,
+        "endLine": 550,
+        "endChar": 24
+      },
+      "revId": "0c4674efb6fb99550d8f8ef1b405ee62e0638a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08e3d569_809fc0a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-23T23:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "444fbb53_76ad8023",
       "range": {
         "startLine": 550,
         "startChar": 1,
