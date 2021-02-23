@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e84dce_6ecbbdf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-23T17:53:00Z",
+      "side": 1,
+      "message": "naming nit: just allowButton",
+      "range": {
+        "startLine": 518,
+        "startChar": 1,
+        "endLine": 518,
+        "endChar": 19
+      },
+      "revId": "0c4674efb6fb99550d8f8ef1b405ee62e0638a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12872120_06b427f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-23T17:53:00Z",
+      "side": 1,
+      "message": "Sorry, I think you misunderstood what I meant.\nI meant should after you click on the allowButton it wait for the whileUsingThisAppButton. Then after you click on the whileUsingThisAppButton it wait for the permissionButton.\n\nIt seems strange that all of these wait for the same thing because if we click on the allowButton and then the whileUsingThisAppButton appears, will it fail to move to the next step?",
+      "range": {
+        "startLine": 524,
+        "startChar": 12,
+        "endLine": 524,
+        "endChar": 22
+      },
+      "revId": "0c4674efb6fb99550d8f8ef1b405ee62e0638a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002cf554_7b235441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-23T17:53:00Z",
+      "side": 1,
+      "message": "naming nit: just whileUsingThisAppButton",
+      "range": {
+        "startLine": 535,
+        "startChar": 1,
+        "endLine": 535,
+        "endChar": 31
+      },
+      "revId": "0c4674efb6fb99550d8f8ef1b405ee62e0638a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b868a8_4d92f3c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-23T17:53:00Z",
+      "side": 1,
+      "message": "naming nit: just permissionButton",
+      "range": {
+        "startLine": 550,
+        "startChar": 1,
+        "endLine": 550,
+        "endChar": 24
+      },
+      "revId": "0c4674efb6fb99550d8f8ef1b405ee62e0638a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
