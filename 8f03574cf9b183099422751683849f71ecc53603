@@ -22,6 +22,30 @@
       },
       "revId": "8f03574cf9b183099422751683849f71ecc53603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "398e8145_e897ced8",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-23T23:37:35Z",
+      "side": 1,
+      "message": "Sounds good, I filed a task to come back and condense things: crbug/1181476",
+      "parentUuid": "400f5846_f54a397a",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "8f03574cf9b183099422751683849f71ecc53603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
