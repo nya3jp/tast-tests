@@ -87,6 +87,24 @@
       "parentUuid": "871d9a86_f40d83fe",
       "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72848044_b704e0c3",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-23T19:32:07Z",
+      "side": 1,
+      "message": "I am pretty sure you\u0027re seeing the problem, I am not sure if this is the right fix.\n\nIf the device is shutting down during the test case, I guess the assumption of this function is not working well with your test cases. As described in https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/power/setup/setup_battery.go#31, it will not start the test if the battery is too low, and the cutoff percentage looks like shutdown percentage + 2% (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/power/setup/setup.go#167).\n\nHow about allow customizing those parameters to prevent shutting down during your test case?",
+      "parentUuid": "818a78d3_b4873210",
+      "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
