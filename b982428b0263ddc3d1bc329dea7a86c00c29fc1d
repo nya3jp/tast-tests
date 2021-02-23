@@ -34,6 +34,24 @@
       "parentUuid": "84f550bc_b7b7750b",
       "revId": "b982428b0263ddc3d1bc329dea7a86c00c29fc1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab5f2ba_e6aeba2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426917
+      },
+      "writtenOn": "2021-02-23T06:53:22Z",
+      "side": 1,
+      "message": "What I mean is there are two different shortcuts that open the help app:\nCtrl Shift /\nCtrl /\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:ash/public/cpp/accelerators.cc;l\u003d69-71;drc\u003db581c154bb5f7c9e079bfac3870c9c8aab1ebd9a",
+      "parentUuid": "346bc94c_dcd0d8b3",
+      "revId": "b982428b0263ddc3d1bc329dea7a86c00c29fc1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
