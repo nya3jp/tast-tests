@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a1ea0ae_bdd24ed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T21:04:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dd2804d_62c89613",
+      "range": {
+        "startLine": 83,
+        "startChar": 55,
+        "endLine": 83,
+        "endChar": 59
+      },
+      "revId": "9d0f7d1c5b29a579d8a5e70557b425bb33de0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dc032b9_571618bc",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-23T16:23:52Z",
       "side": 1,
       "message": "did you also want to quote this for consistency?",
+      "range": {
+        "startLine": 109,
+        "startChar": 61,
+        "endLine": 109,
+        "endChar": 63
+      },
+      "revId": "9d0f7d1c5b29a579d8a5e70557b425bb33de0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01cd652d_fe678f0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T21:04:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc032b9_571618bc",
       "range": {
         "startLine": 109,
         "startChar": 61,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0f800c_9426abfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T21:04:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d18a652_775e89b3",
+      "range": {
+        "startLine": 112,
+        "startChar": 48,
+        "endLine": 112,
+        "endChar": 50
+      },
+      "revId": "9d0f7d1c5b29a579d8a5e70557b425bb33de0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b370127_703698cd",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-23T05:44:51Z",
       "side": 1,
       "message": "Tast has a built in keyboard library which allows these key combinations, e.g.\n```\nkw, err :\u003d input.Keyboard(ctx)\nif err !\u003d nil {\n\ts.Fatal(\"Failed to get keyboard handle: \", err)\n}\ndefer kw.Close()\n...\nif err :\u003d kw.Accel(ctx, \"Alt+l\"); err !\u003d nil {\n\ts.Fatal(\"Failed to press keys: %v\", err)\n}\n```",
+      "range": {
+        "startLine": 141,
+        "startChar": 17,
+        "endLine": 141,
+        "endChar": 113
+      },
+      "revId": "9d0f7d1c5b29a579d8a5e70557b425bb33de0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "129ae319_e47e0de2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T21:04:27Z",
+      "side": 1,
+      "message": "Doesn\u0027t that risk making the test more flaky, though? Now we\u0027re assuming the Chrome tab has focus. If something else pops up and steals focus, or Chrome just doesn\u0027t start with focus, then the test will fail. What\u0027s the advantage of using the system keyboard over sending the key events to Chrome?",
+      "parentUuid": "0b370127_703698cd",
       "range": {
         "startLine": 141,
         "startChar": 17,
