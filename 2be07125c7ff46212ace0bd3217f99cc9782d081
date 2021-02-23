@@ -161,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1eba394_225b145e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_shortcut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-23T05:45:29Z",
+      "side": 1,
+      "message": "It should also be flaky on logged users on some low-end devices. I think it is a good idea if shortcut registration is done before APP installation. Finger crossed if it can solve the problem.\n\nIt is also considerable to create a function in ash, such as ash.WaitForShortcutReg(ctx, tconn, apps.Help.ID, timeout), then just use WaitForChromeAppInstalled in implementation. It sounds a better structured and general solution if other apps got same problem in shortcuts and also easy to refactor if it does not work as expected.\n\nIf you do not intend to do this, maybe at least add a line of comment above the code to explain why doing this.",
+      "parentUuid": "9d806a3c_1f46f20c",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "2be07125c7ff46212ace0bd3217f99cc9782d081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1eddb9cb_bc6325a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_shortcut.go",
         "patchSetId": 1
