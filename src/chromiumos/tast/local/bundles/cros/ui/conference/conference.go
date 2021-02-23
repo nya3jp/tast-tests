@@ -31,13 +31,14 @@ type Conference interface {
 	SwitchTabs(context.Context) error
 	ChangeLayout(context.Context) error
 	BackgroundBlurring(context.Context) error
+	ExtendedDisplayPresenting(context.Context, bool) error
 	PresentSlide(context.Context) error
 	StopPresenting(context.Context) error
 	End(context.Context) error
 }
 
 // MeetConference runs the specified user scenario in conference room with different CUJ performance level.
-func MeetConference(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, cleanup Cleanup, tier, tmpPath string, tabletMode bool) error {
+func MeetConference(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, cleanup Cleanup, tier, tmpPath string, tabletMode, extendedDisplay bool) error {
 	inviteLink := ""
 	if prepare != nil {
 		url, err := prepare()
@@ -60,10 +61,10 @@ func MeetConference(ctx context.Context, cr *chrome.Chrome, conf Conference, pre
 	defer tconn.Close()
 
 	testing.ContextLog(ctx, "Start to get browser start time")
-	browserStartTime, err := cuj.GetBrowserStartTime(ctx, cr, tconn, tabletMode)
-	if err != nil {
-		return errors.Wrap(err, "failed to get browser start time")
-	}
+	//browserStartTime, err := cuj.GetBrowserStartTime(ctx, cr, tconn, tabletMode)
+	//if err != nil {
+	//	return errors.Wrap(err, "failed to get browser start time")
+	//}
 
 	if err := conf.Join(ctx, inviteLink); err != nil {
 		return err
@@ -107,18 +108,23 @@ func MeetConference(ctx context.Context, cr *chrome.Chrome, conf Conference, pre
 			return err
 		}
 
-		// Plus
+		// Plus and premium tier.
 		if tier == "plus" || tier == "premium" {
-			if err := conf.PresentSlide(ctx); err != nil {
-				return err
-			}
-
-			if err := conf.StopPresenting(ctx); err != nil {
-				return err
+			if extendedDisplay {
+				if err := conf.ExtendedDisplayPresenting(ctx, tabletMode); err != nil {
+					return err
+				}
+			} else {
+				if err := conf.PresentSlide(ctx); err != nil {
+					return err
+				}
+				if err := conf.StopPresenting(ctx); err != nil {
+					return err
+				}
 			}
 		}
 
-		// Premium
+		// Premium tier.
 		if tier == "premium" {
 			if err := conf.BackgroundBlurring(ctx); err != nil {
 				return err
@@ -137,11 +143,11 @@ func MeetConference(ctx context.Context, cr *chrome.Chrome, conf Conference, pre
 		return errors.Wrap(err, "failed to record the data")
 	}
 
-	pv.Set(perf.Metric{
-		Name:      "Browser.StartTime",
-		Unit:      "ms",
-		Direction: perf.SmallerIsBetter,
-	}, float64(browserStartTime.Milliseconds()))
+	// pv.Set(perf.Metric{
+	// Name:      "Browser.StartTime",
+	// Unit:      "ms",
+	// Direction: perf.SmallerIsBetter,
+	// }, float64(browserStartTime.Milliseconds()))
 
 	if err := pv.Save(tmpPath); err != nil {
 		return errors.Wrap(err, "failed to save perf data")

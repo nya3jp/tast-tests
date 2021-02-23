@@ -52,7 +52,7 @@ func (s *GoogleMeetService) MeetScenario(ctx context.Context, req *pb.MeetScenar
 	}
 	// create Google Meet Client
 	gmcli := googlemeet.NewGoogleMeetConference(cr, int(req.RoomSize))
-	if err := conference.MeetConference(ctx, cr, gmcli, prepare, nil, req.Tier, outDir, req.TabletMode); err != nil {
+	if err := conference.MeetConference(ctx, cr, gmcli, prepare, nil, req.Tier, outDir, req.TabletMode, req.ExtendedDisplay); err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to run MeetConference")
 	}
 
