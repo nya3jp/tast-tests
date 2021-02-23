@@ -51,6 +51,24 @@
       "parentUuid": "c0b8079f_8ca07062",
       "revId": "184fb6da2833600faedc734dc76c4b3e1ad2870a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf84a0a7_50c0a913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-23T20:55:07Z",
+      "side": 1,
+      "message": "Hi Jun, we simplified the precondition by re-using the logic from the above mentioned CL (2695778). Also, KeepState() was added for all CUJ fixture. Please check.",
+      "parentUuid": "67499f48_07185610",
+      "revId": "184fb6da2833600faedc734dc76c4b3e1ad2870a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
