@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c57000_90498536",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-23T14:35:29Z",
+      "side": 1,
+      "message": "Move this to a comment, out of the commit description. Also note that this is moving to fixtures.",
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "91dd0bc3_a75804e7",
