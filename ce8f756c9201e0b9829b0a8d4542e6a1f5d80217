@@ -136,6 +136,24 @@
       "parentUuid": "5c18d340_91125f9b",
       "revId": "ce8f756c9201e0b9829b0a8d4542e6a1f5d80217",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd1acf10_29adc378",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-23T13:00:10Z",
+      "side": 1,
+      "message": "I just tested this behavior and the test fails if any iteration of the subtest fails. This is working as intended in tast.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2713109",
+      "parentUuid": "d7ef1776_21367794",
+      "revId": "ce8f756c9201e0b9829b0a8d4542e6a1f5d80217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
