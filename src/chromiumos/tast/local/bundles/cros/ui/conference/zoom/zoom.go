@@ -230,6 +230,10 @@ func (conf *zoomConference) BackgroundBlurring(ctx context.Context) error {
 	return nil
 }
 
+func (conf *zoomConference) ExtendedDisplayPresenting(_ context.Context, _ bool) error {
+	return nil
+}
+
 func (conf *zoomConference) PresentSlide(ctx context.Context) error {
 	const timeout = time.Second * 15
 
