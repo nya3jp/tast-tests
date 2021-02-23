@@ -29,7 +29,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars:            []string{"ui.cuj_username", "ui.cuj_password"},
+		// Vars:            []string{"ui.cuj_username", "ui.cuj_password"},
 	})
 }
 
@@ -67,8 +67,8 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
 		defer cancel()
 		var err error
-		username := s.RequiredVar("ui.cuj_username")
-		password := s.RequiredVar("ui.cuj_password")
+		username := "username@gmail.com"
+		password := "password"
 		cr, err = chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...))
 		if err != nil {

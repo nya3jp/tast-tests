@@ -197,7 +197,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer bc.Close()
 
-	var meetingCode string
+	var meetingCode string = "abc-defg-hij"
+	/*
 	func() {
 		sctx, cancel := context.WithTimeout(ctx, timeout)
 		defer cancel()
@@ -207,7 +208,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}()
 	s.Log("Created a room with the code ", meetingCode)
-
+        */
 	cr := s.FixtValue().(cuj.FixtureData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -529,13 +530,14 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 
+		/*
 		sctx, cancel := context.WithTimeout(ctx, timeout)
 		defer cancel()
 		// Add 30 seconds to the bot duration to make sure that bots do not leave
 		// slightly earlier than the test scenario.
 		if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+30*time.Second); err != nil {
 			return errors.Wrap(err, "failed to create bots")
-		}
+		}*/
 		if err := meetConn.WaitForExpr(ctx, "hrTelemetryApi.isInMeeting() === true"); err != nil {
 			return errors.Wrap(err, "failed to wait for entering meeting")
 		}
