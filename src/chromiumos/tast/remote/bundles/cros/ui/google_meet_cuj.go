@@ -168,5 +168,5 @@ func GoogleMeetCUJ(ctx context.Context, s *testing.State) {
 	defer u1.Close(ctx)
 
 	client := pb.NewGoogleMeetServiceClient(u1.Conn)
-	conference.Run(ctx, s, client, param.Tier, param.Size, tabletMode)
+	conference.Run(ctx, s, client, param.Tier, param.Size, tabletMode, false)
 }
