@@ -286,7 +286,6 @@ func simpleConnectWPA3() []simpleConnectParams {
 		Val:  mkOps("Optional", "Mixed"),
 	}, {
 		Name:              "wpa3",
-		ExtraAttr:         []string{"wificell_unstable"},
 		ExtraSoftwareDeps: []string{"wpa3_sae"},
 		ExtraSoftwareDepsDoc: []string{
 			"Not all WiFi chips support SAE. We enable the feature as a Software dependency for now, but eventually",
