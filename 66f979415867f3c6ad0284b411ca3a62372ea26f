@@ -123,6 +123,24 @@
       "parentUuid": "72848044_b704e0c3",
       "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "859a7e47_cec65908",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-23T21:55:42Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s realistic.  Apparently you could check the model id or CPU type from /etc or /proc or /sys, but it\u0027s very hard to manage those levels.  I think you can increase the level of power monotonically to your test case.",
+      "parentUuid": "bfaba4ac_f9ce6e6a",
+      "revId": "66f979415867f3c6ad0284b411ca3a62372ea26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
