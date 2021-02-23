@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "820192c4_890f3351",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2021-02-23T23:53:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "27a8fbc4_287b85ea",
+      "range": {
+        "startLine": 7,
+        "startChar": 32,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "fb03493d3bc2da434449ecf1d9960b7359072e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "49524a7f_f53c8c34",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2021-02-22T17:41:17Z",
       "side": 1,
       "message": "Were you able to make this fail before this change?",
+      "revId": "fb03493d3bc2da434449ecf1d9960b7359072e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4c77a0c_de192890",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2021-02-23T23:53:18Z",
+      "side": 1,
+      "message": "Yes! And here is the reason of the failure, very interesting:\nlocalhost ~ # stat -f /run/namespaces/mnt_chrome \n  File: \"/run/namespaces/mnt_chrome\"\n    ID: 0        Namelen: 255     Type: proc\nBlock size: 4096       Fundamental block size: 4096\nBlocks: Total: 0          Free: 0          Available: 0\nInodes: Total: 0          Free: 0\nlocalhost ~ # stat -f /proc/self/ns/mnt\n  File: \"/proc/self/ns/mnt\"\n    ID: 0        Namelen: 255     Type: proc\nBlock size: 4096       Fundamental block size: 4096\nBlocks: Total: 0          Free: 0          Available: 0\nInodes: Total: 0          Free: 0",
+      "parentUuid": "49524a7f_f53c8c34",
       "revId": "fb03493d3bc2da434449ecf1d9960b7359072e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2021-02-22T17:40:53Z",
       "side": 1,
       "message": "Maybe add a short comment here? \"Bind-mount of the user session namespace.\"",
+      "range": {
+        "startLine": 121,
+        "startChar": 39,
+        "endLine": 121,
+        "endChar": 58
+      },
+      "revId": "fb03493d3bc2da434449ecf1d9960b7359072e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7c8078_e61aadd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2021-02-23T23:53:18Z",
+      "side": 1,
+      "message": "line exceeded the trashold of character limit when I firs tried submitting with comment. But sure I can add to the upper line.",
+      "parentUuid": "4494d8ab_8d2ecf57",
       "range": {
         "startLine": 121,
         "startChar": 39,
