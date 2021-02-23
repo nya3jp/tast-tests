@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e9fb30_ba06eb21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-23T23:28:12Z",
+      "side": 1,
+      "message": "Just a note, it sounds like the goal is to have verbose logging in by the end of the quarter.",
+      "revId": "c63da8a740cc1e8c3355eaf050e6d9ce1b3babf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
