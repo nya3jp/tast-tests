@@ -196,6 +196,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74f1aded_9fc4be84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-23T17:11:56Z",
+      "side": 1,
+      "message": "In the tastboard you will only see \"AccesibilityPolicies.screen_magnifier\", it does not split deeper at the moment.\n\n\"val-{value}\" pattern is not that common in the codebase, usually people don\u0027t mention enum values in test case names, instead they mention what these values mean (unset, disable, enable).",
+      "parentUuid": "0d35488e_7b0caf40",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab3d4f4a_220ea793",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
         "patchSetId": 1
