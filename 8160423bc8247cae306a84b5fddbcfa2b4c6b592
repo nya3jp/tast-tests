@@ -22,6 +22,30 @@
       },
       "revId": "8160423bc8247cae306a84b5fddbcfa2b4c6b592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04741170_8a47e250",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-02-23T23:24:35Z",
+      "side": 1,
+      "message": "I tried using SkipOnPlatform, but found that it wasn\u0027t actually working as intended on jacuzzi devices. I leased a stern and kappa device (the kappa device was impacted in the original bug) and tried SkipOnPlatform(\"jacuzzi\") and found that the test was still working on both devices.",
+      "parentUuid": "9c7b6317_d746f7db",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "8160423bc8247cae306a84b5fddbcfa2b4c6b592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
