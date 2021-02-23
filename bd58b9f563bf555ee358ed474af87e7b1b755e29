@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4984d595_cb7a6df3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-23T02:00:49Z",
+      "side": 1,
+      "message": "nit: any reason why we need to do this in 1 second?  Can it be done with 0 (i.e. move the mouse instantly)?",
+      "range": {
+        "startLine": 156,
+        "startChar": 68,
+        "endLine": 156,
+        "endChar": 79
+      },
+      "revId": "bd58b9f563bf555ee358ed474af87e7b1b755e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
