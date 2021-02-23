@@ -22,7 +22,7 @@ func init() {
 		Func:         WPAValidity,
 		Desc:         "Verifies wpa_supplicant is up and running",
 		Contacts:     []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
 	})
 }
