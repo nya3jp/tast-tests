@@ -19,27 +19,15 @@ func init() {
 }
 
 func Run(ctx context.Context, s *testing.State) {
-	s.Run(ctx, "ok", func(ctx context.Context, s *testing.State) {
-		s.Log("ok")
-	})
-
-	s.Run(ctx, "error", func(ctx context.Context, s *testing.State) {
-		s.Error("Here's an error")
-	})
-
-	s.Run(ctx, "fatal", func(ctx context.Context, s *testing.State) {
-		s.Fatal("Here's a fatal error")
-	})
-
-	s.Run(ctx, "still-ok", func(ctx context.Context, s *testing.State) {
-		s.Log("Still ok")
-	})
-
-	s.Run(ctx, "l1", func(ctx context.Context, s *testing.State) {
-		s.Log("Level 1")
-
-		s.Run(ctx, "l2", func(ctx context.Context, s *testing.State) {
-			s.Log("Level 2")
+	for retries := 0; retries < 5; retries++ {
+		s.Logf("Subtest: %s, retry: %d of %d", "stest", retries+1, 5)
+		passed := s.Run(ctx, "stest", func(ctx context.Context, s *testing.State) {
+			if retries < 3 {
+				s.Fatal("Not yet")
+			}
 		})
-	})
+		if passed {
+			break
+		}
+	}
 }
