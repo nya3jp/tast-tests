@@ -267,6 +267,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7a3216f_596ad794",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-02-23T03:18:00Z",
+      "side": 1,
+      "message": "Yes, we need a pointer to know if the key exists.\nNot all keys are supported in a camera.",
+      "parentUuid": "46cf1f07_0d2884fa",
+      "range": {
+        "startLine": 240,
+        "startChar": 18,
+        "endLine": 240,
+        "endChar": 19
+      },
+      "revId": "638a94eeb863d906992697960584ba5e8179d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be9b4fdb_d633c87f",
         "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
         "patchSetId": 8
