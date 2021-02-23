@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c7b6317_d746f7db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-02-23T23:20:34Z",
+      "side": 1,
+      "message": "Same as https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2692943/7#message-786675e2d7dc856fd5f1b9febe7d5bbc97b72bd6\n\nWe should use SkipOnPlatform since it\u0027s a generic problem with jacuzzi. Otherwise this test is going to flake and need to be updated every time a new jacuzzi model is added to the lab",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "8160423bc8247cae306a84b5fddbcfa2b4c6b592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
