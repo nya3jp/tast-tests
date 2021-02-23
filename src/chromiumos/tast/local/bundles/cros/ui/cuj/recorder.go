@@ -94,6 +94,9 @@ type Recorder struct {
 	names   []string
 	records map[string]*record
 
+	// duration is the total running time of the recorder.
+	duration time.Duration
+
 	timeline           *perf.Timeline
 	gpuDataSource      *gpuDataSource
 	frameDataTracker   *FrameDataTracker
@@ -225,10 +228,12 @@ func (r *Recorder) Close(ctx context.Context) error {
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
 func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) error {
+	tm := time.Now()
 	hists, err := metrics.Run(ctx, r.tconn, f, r.names...)
 	if err != nil {
 		return err
 	}
+	r.duration += time.Now().Sub(tm)
 
 	for _, hist := range hists {
 		if hist.TotalCount() == 0 {
@@ -300,9 +305,13 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		return errors.Wrap(err, "failed to get display info")
 	}
 
+	var crasUnderruns float64
 	for name, record := range r.records {
 		if record.totalCount == 0 {
 			continue
+		}
+		if name == "Cras.UnderrunsPerDevice" {
+			crasUnderruns = float64(record.Sum)
 		}
 		pv.Set(perf.Metric{
 			Name:      name,
@@ -323,6 +332,20 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 			Direction: perf.SmallerIsBetter,
 		}, record.jankCounts[1]/float64(record.totalCount)*100)
 	}
+
+	// Record running time.
+	pv.Set(perf.Metric{
+		Name:      metricPrefix + "RecorderDuration",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+	}, r.duration.Seconds())
+	// Derive Cras.UnderrunsPerDevicePerMinute. Ideally, the audio playing time and number of CRAS audio device
+	// should be captured. For now use the recorder running duration and assume there is only one device.
+	pv.Set(perf.Metric{
+		Name:      metricPrefix + "Cras.UnderrunsPerDevicePerMinute",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}, crasUnderruns/r.duration.Seconds())
 
 	displayInfo.Record(pv)
 	r.frameDataTracker.Record(pv)
