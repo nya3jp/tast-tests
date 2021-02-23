@@ -68,38 +68,69 @@ var unstableModels = []string{
 	"cave",
 	"celes",
 	"cyan",
+
+	// dedede:
+	"madoo",
+
 	"edgar",
 	"eve",
 	"elm",
+
+	// grunt:
 	"barla",
 	"careena",
 	"kasumi",
 	"treeya",
+
+	"hana",
+
+	// hatch:
 	"dragonair",
 	"kled",
 	"nightfury",
 	"willow",
+
 	"kefka",
+
+	// kukui:
 	"kodama",
 	"krane",
+
 	"lars",
 	"lulu",
+
+	// octopus:
 	"ampton",
 	"blooglet",
 	"bluebird",
 	"bobba",
 	"dood",
+	"dorp",
 	"fleex",
 	"foob360",
 	"garg",
+	"laser14",
+	"lick",
 	"phaser360",
 	"sparky",
 	"vorticon",
+
+	"sarien",
+
+	// trogdor:
 	"lazor",
 	"pompom",
+
+	// veyron:
 	"fievel",
 	"tiger",
+
 	"volteer2",
+
+	"wizpig",
+
+	// zork:
+	"berknip",
 	"dirinboz",
 	"ezkinil",
 	"morphius",
