@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f529e3_522efdde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T16:36:43Z",
+      "side": 1,
+      "message": "I will do that then. And it is a good point.",
+      "parentUuid": "5a649966_c3519d65",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85c57000_90498536",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-02-23T14:35:29Z",
       "side": 1,
       "message": "Move this to a comment, out of the commit description. Also note that this is moving to fixtures.",
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda6acf6_f626edee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T16:36:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85c57000_90498536",
       "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9b6af57_aac84a45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T16:36:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "743b32ad_50b9f23c",
+      "range": {
+        "startLine": 41,
+        "startChar": 18,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3afbd511_d8491af6",
@@ -106,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d35488e_7b0caf40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T16:36:43Z",
+      "side": 1,
+      "message": "I want to convey with those values (0, 1, 2) that the policy ScreenMagnifierType is on or off and what was the value that was set. Valid values for that policy presented in the tastboard like:\nAccesibilityPolicies.scnree.magnifier.enabled-1\nAccesibilityPolicies.scnree.magnifier.enabled-2\nAccesibilityPolicies.scnree.magnifier.disabled\n...\nThe links are really good examples -\u003e they point to the \u0027name\u0027 of the state and I want to focus on the values they represent.\n\nI could see that as, possibly:\nval-1-enabled-full-screen\nval-2-enabled-docker\nval-0-disable\n\nresulting in \n\nAccesibilityPolicies.scnree.magnifier.val-1-enabled-full-screen\nAccesibilityPolicies.scnree.magnifier.val-2-enabled-docker\nAccesibilityPolicies.scnree.magnifier.val-0-disabled\n\n\nWhat do you think?",
+      "parentUuid": "3afbd511_d8491af6",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab3d4f4a_220ea793",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
         "patchSetId": 1
@@ -117,6 +207,30 @@
       "writtenOn": "2021-02-23T15:56:37Z",
       "side": 1,
       "message": "nit: maybe %q will fit better here",
+      "range": {
+        "startLine": 208,
+        "startChar": 34,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd7f56f8_18273bdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-23T16:36:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab3d4f4a_220ea793",
       "range": {
         "startLine": 208,
         "startChar": 34,
