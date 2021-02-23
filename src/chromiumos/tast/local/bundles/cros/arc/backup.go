@@ -26,7 +26,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Backup,
 		Desc:         "This test ensure that we can backup and restore Android Apps",
-		Contacts:     []string{"bhansknecht@chromium.org", "rohitbm@google.com", "arc-core@google.com"},
+		Contacts:     []string{"rohitbm@google.com", "arc-core@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
