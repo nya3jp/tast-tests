@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a813088d_5fbb24dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-23T15:57:42Z",
+      "side": 1,
+      "message": "nit: this name is not consistent with struct name from another your CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2713110\n\nso, this name should be vkTestCase",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "70c30f8c614d5b290a8e79e7492ac75ad8082b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7007322_256eb219",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
         "patchSetId": 6
