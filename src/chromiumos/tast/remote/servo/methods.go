@@ -26,6 +26,9 @@ const (
 	PowerState           StringControl = "power_state"
 	V4Role               StringControl = "servo_v4_role"
 	ECUARTCmd            StringControl = "ec_uart_cmd"
+	UARTCmd              StringControl = "servo_v4_uart_cmd"
+	WatchdogAdd          StringControl = "watchdog_add"
+	WatchdogRemove       StringControl = "watchdog_remove"
 )
 
 // An IntControl contains the name of a gettable/settable Control which takes an integer value.
@@ -43,7 +46,9 @@ type OnOffControl string
 
 // These controls accept only "on" and "off" as values.
 const (
-	RecMode OnOffControl = "rec_mode"
+	RecMode        OnOffControl = "rec_mode"
+	CCDKeepaliveEn OnOffControl = "ccd_keepalive_en"
+	DTSMode        OnOffControl = "servo_v4_dts_mode"
 )
 
 // An OnOffValue is a string value that would be accepted by an OnOffControl.
@@ -114,6 +119,14 @@ type V4RoleValue string
 const (
 	V4RoleSnk V4RoleValue = "snk"
 	V4RoleSrc V4RoleValue = "src"
+)
+
+// A WatchdogValue is a string that would be accepted by WatchdogAdd & WatchdogRemove control.
+type WatchdogValue string
+
+// These are the string watchdog type values that can be passed to WatchdogAdd & WatchdogRemove.
+const (
+	WatchdogCCD WatchdogValue = "ccd"
 )
 
 // ServoKeypressDelay comes from hdctools/servo/drv/keyboard_handlers.py.
@@ -299,6 +312,11 @@ func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
 	return s.SetString(ctx, ECUARTCmd, cmd)
 }
 
+// SetOnOff sets an OnOffControl setting to the specified value.
+func (s *Servo) SetOnOff(ctx context.Context, ctrl OnOffControl, value OnOffValue) error {
+	return s.SetString(ctx, StringControl(ctrl), string(value))
+}
+
 // ToggleOffOn turns a switch off and on again.
 func (s *Servo) ToggleOffOn(ctx context.Context, ctrl OnOffControl) error {
 	if err := s.SetString(ctx, StringControl(ctrl), string(Off)); err != nil {
@@ -311,4 +329,33 @@ func (s *Servo) ToggleOffOn(ctx context.Context, ctrl OnOffControl) error {
 		return err
 	}
 	return nil
+}
+
+// WatchdogAdd adds the specified watchdog to the servod instance.
+func (s *Servo) WatchdogAdd(ctx context.Context, val WatchdogValue) error {
+	return s.SetString(ctx, WatchdogAdd, string(val))
+}
+
+// WatchdogRemove removes the specified watchdog from the servod instance.
+func (s *Servo) WatchdogRemove(ctx context.Context, val WatchdogValue) error {
+	return s.SetString(ctx, WatchdogRemove, string(val))
+}
+
+// runUARTCommand runs the given command on the servo console.
+func (s *Servo) runUARTCommand(ctx context.Context, cmd string) error {
+	return s.SetString(ctx, UARTCmd, cmd)
+}
+
+// RunUSBCDPConfigCommand executes the "usbc_action dp" command with the specified args on the servo
+// console.
+func (s *Servo) RunUSBCDPConfigCommand(ctx context.Context, args ...string) error {
+	args = append([]string{"usbc_action dp"}, args...)
+	cmd := strings.Join(args, " ")
+	return s.runUARTCommand(ctx, cmd)
+}
+
+// SetCC sets the CC line to the specified value.
+func (s *Servo) SetCC(ctx context.Context, val OnOffValue) error {
+	cmd := "cc " + string(val)
+	return s.runUARTCommand(ctx, cmd)
 }
