@@ -50,7 +50,7 @@ var mockData = map[string]json.RawMessage{
 		"parent": null,
 		"firmware_screen": %d,
 		"delay_reboot_to_ping": %d,
-		"confirm_screen": %d,
+		"keypress_delay": %d,
 		"usb_plug": %d
 	}`, defaultValue, defaultValue, defaultValue, defaultValue)),
 	myBoardName: json.RawMessage(fmt.Sprintf(`{
@@ -66,13 +66,13 @@ var mockData = map[string]json.RawMessage{
 	myParentName: json.RawMessage(fmt.Sprintf(`{
 		"platform": %q,
 		"parent": %q,
-		"confirm_screen": %f,
+		"keypress_delay": %f,
 		"firmware_screen": %f
 	}`, myParentName, myGrandparentName, myParentValue, myParentValue)),
 	myGrandparentName: json.RawMessage(fmt.Sprintf(`{
 		"platform": %q,
 		"usb_plug": %f,
-		"confirm_screen": %f
+		"keypress_delay": %f
 	}`, myGrandparentName, myGrandparentValue, myGrandparentValue)),
 	withECBatteryName: json.RawMessage(fmt.Sprintf(`{
 		"platform": %q,
@@ -130,8 +130,8 @@ func TestNewConfig(t *testing.T) {
 		t.Errorf("unexpected FirmwareScreen value; got %s, want %s", cfg.FirmwareScreen, myBoardDuration)
 	}
 	// Platform inherits from parent (even though grandparent also sets the value)
-	if cfg.ConfirmScreen != myParentDuration {
-		t.Errorf("unexpected ConfirmScreen value; got %s, want %s", cfg.ConfirmScreen, myParentDuration)
+	if cfg.KeypressDelay != myParentDuration {
+		t.Errorf("unexpected KeypressDelay value; got %s, want %s", cfg.KeypressDelay, myParentDuration)
 	}
 	// Platform inherits from grandparent
 	if cfg.USBPlug != myGrandparentDuration {
