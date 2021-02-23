@@ -20,11 +20,42 @@ import (
 // resetTimeout is the timeout duration to trying reset of the current fixture.
 const resetTimeout = 30 * time.Second
 
+// NewNearbyShareFixture creates a new implementation of the Nearby Share fixture.
+func NewNearbyShareFixture(dataUsage nearbysetup.DataUsage, visibility nearbysetup.Visibility, gaiaLogin bool, opts ...chrome.Option) testing.FixtureImpl {
+	defaultNearbyOpts := []chrome.Option{
+		chrome.EnableFeatures("IntentHandlingSharing", "NearbySharing", "Sharesheet"),
+		chrome.ExtraArgs("--nearby-share-verbose-logging"),
+	}
+	return &nearbyShareFixture{
+		opts:       append(defaultNearbyOpts, opts...),
+		dataUsage:  dataUsage,
+		visibility: visibility,
+		gaiaLogin:  gaiaLogin,
+	}
+}
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            "nearbyShareEnabledDataOfflineAllContacts",
+		Name:            "nearbyShareDataUsageOfflineAllContactsTestUser",
 		Desc:            "Nearby Share enabled and configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'",
-		Impl:            &dataOfflineAllContactsFixture{},
+		Impl:            NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, false),
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareDataUsageOfflineAllContactsGAIA",
+		Desc: "Nearby Share enabled and configured with 'Data Usage' set to 'Offline',  'Visibility' set to 'All Contacts' and logged in with a real GAIA account",
+		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, true),
+		Vars: []string{
+			"username",
+			"password",
+			"nearbyshare.cros_username",
+			"nearbyshare.cros_password",
+		},
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -33,8 +64,12 @@ func init() {
 	})
 }
 
-type dataOfflineAllContactsFixture struct {
-	cr *chrome.Chrome
+type nearbyShareFixture struct {
+	cr         *chrome.Chrome
+	opts       []chrome.Option
+	dataUsage  nearbysetup.DataUsage
+	visibility nearbysetup.Visibility
+	gaiaLogin  bool
 
 	// ChromeReader is the line reader for collecting Chrome logs.
 	ChromeReader *syslog.LineReader
@@ -52,11 +87,25 @@ type FixtData struct {
 	DeviceName string
 }
 
-func (f *dataOfflineAllContactsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	if f.gaiaLogin {
+		username := s.RequiredVar("nearbyshare.cros_username")
+		password := s.RequiredVar("nearbyshare.cros_password")
+		customUser, userOk := s.Var("username")
+		customPass, passOk := s.Var("password")
+		if userOk && passOk {
+			s.Log("Logging in with user-provided credentials")
+			username = customUser
+			password = customPass
+		} else {
+			s.Log("Logging in with default GAIA credentials")
+		}
+		f.opts = append(f.opts, chrome.Auth(username, password, ""), chrome.GAIALogin())
+	}
+
 	cr, err := chrome.New(
 		ctx,
-		chrome.EnableFeatures("IntentHandlingSharing", "NearbySharing", "Sharesheet"),
-		chrome.ExtraArgs("--nearby-share-verbose-logging"),
+		f.opts...,
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -71,7 +120,7 @@ func (f *dataOfflineAllContactsFixture) SetUp(ctx context.Context, s *testing.Fi
 	// Set up Nearby Share on the CrOS device.
 	const crosBaseName = "cros_test"
 	crosDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
-	if err := nearbysetup.CrOSSetup(ctx, tconn, cr, nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, crosDisplayName); err != nil {
+	if err := nearbysetup.CrOSSetup(ctx, tconn, cr, f.dataUsage, f.visibility, crosDisplayName); err != nil {
 		s.Fatal("Failed to set up Nearby Share: ", err)
 	}
 
@@ -83,7 +132,7 @@ func (f *dataOfflineAllContactsFixture) SetUp(ctx context.Context, s *testing.Fi
 	}
 }
 
-func (f *dataOfflineAllContactsFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+func (f *nearbyShareFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	chrome.Unlock()
 	if err := f.cr.Close(ctx); err != nil {
 		s.Log("Failed to close Chrome connection: ", err)
@@ -91,7 +140,7 @@ func (f *dataOfflineAllContactsFixture) TearDown(ctx context.Context, s *testing
 	f.cr = nil
 }
 
-func (f *dataOfflineAllContactsFixture) Reset(ctx context.Context) error {
+func (f *nearbyShareFixture) Reset(ctx context.Context) error {
 	if err := f.cr.Responded(ctx); err != nil {
 		return errors.Wrap(err, "existing Chrome connection is unusable")
 	}
@@ -101,7 +150,7 @@ func (f *dataOfflineAllContactsFixture) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (f *dataOfflineAllContactsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
 	if err != nil {
 		s.Fatal("Failed to start Chrome logging: ", err)
@@ -109,7 +158,7 @@ func (f *dataOfflineAllContactsFixture) PreTest(ctx context.Context, s *testing.
 	f.ChromeReader = chromeReader
 }
 
-func (f *dataOfflineAllContactsFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	if f.ChromeReader == nil {
 		s.Fatal("ChromeReader not defined")
 	}

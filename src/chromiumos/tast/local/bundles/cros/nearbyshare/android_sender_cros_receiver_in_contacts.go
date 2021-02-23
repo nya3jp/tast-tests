@@ -11,7 +11,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/android"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
@@ -19,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/screenshot"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -35,14 +33,10 @@ func init() {
 		Data:         []string{nearbysnippet.ZipName},
 		// The rooted var can be used when running locally on non-rooted devices. For non-rooted devices, you need to
 		// have already enabled bluetooth, extended the screen timeout, and overridden the GMS Core flags.
-		// An internal test account will be used for the CrOS login, unless both username and password vars are specified.
 		Vars: []string{
 			"rooted",
-			"username",
-			"password",
-			"nearbyshare.cros_username",
-			"nearbyshare.cros_password",
 		},
+		Fixture: "nearbyShareDataUsageOfflineAllContactsGAIA",
 		Params: []testing.Param{
 			{
 				Name: "small_jpg",
@@ -60,48 +54,9 @@ func init() {
 
 // AndroidSenderCrosReceiverInContacts tests in-contact file sharing with an Android device as sender and CrOS device as receiver.
 func AndroidSenderCrosReceiverInContacts(ctx context.Context, s *testing.State) {
-	// Use internal credentials for the CrOS device login unless the user provides credentials.
-	username := s.RequiredVar("nearbyshare.cros_username")
-	password := s.RequiredVar("nearbyshare.cros_password")
-	customUser, userOk := s.Var("username")
-	customPass, passOk := s.Var("password")
-	if userOk && passOk {
-		s.Log("Logging in with user-provided credentials")
-		username = customUser
-		password = customPass
-	} else {
-		s.Log("Logging in with default credentials")
-	}
-
-	// TODO(crbug/1159975): Remove flags (or use precondition) once the feature is enabled by default.
-	cr, err := chrome.New(
-		ctx,
-		chrome.EnableFeatures("IntentHandlingSharing", "NearbySharing", "Sharesheet"),
-		chrome.ExtraArgs("--nearby-share-verbose-logging"),
-		chrome.Auth(username, password, ""), chrome.GAIALogin(),
-	)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
-	if err != nil {
-		s.Fatal("Failed to start Chrome logging: ", err)
-	}
-	defer nearbytestutils.SaveLogs(ctx, chromeReader, filepath.Join(s.OutDir(), nearbyshare.ChromeLog))
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
-
-	// Set up Nearby Share on the CrOS device.
-	const crosBaseName = "cros_test"
-	crosDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
-	if err := nearbysetup.CrOSSetup(ctx, tconn, cr, nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, crosDisplayName); err != nil {
-		s.Fatal("Failed to set up Nearby Share: ", err)
-	}
+	cr := s.FixtValue().(*nearbyshare.FixtData).Chrome
+	tconn := s.FixtValue().(*nearbyshare.FixtData).TestConn
+	crosDisplayName := s.FixtValue().(*nearbyshare.FixtData).DeviceName
 
 	// Set up Nearby Share on the Android device. Don't override GMS Core flags or perform settings changes that require root access if specified in the runtime vars.
 	// TODO(crbug/1171010): this test assumes the Android device is signed in as a user who is mutual contacts with the CrOS user. Add explicit Android login when available.

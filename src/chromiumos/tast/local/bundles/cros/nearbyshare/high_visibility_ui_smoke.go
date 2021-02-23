@@ -21,7 +21,7 @@ func init() {
 		},
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "nearbyShareEnabledDataOfflineAllContacts",
+		Fixture:      "nearbyShareDataUsageOfflineAllContactsTestUser",
 	})
 }
 
