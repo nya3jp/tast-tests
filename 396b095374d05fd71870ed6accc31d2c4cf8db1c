@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede9ef3d_47904c0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-23T21:53:11Z",
+      "side": 1,
+      "message": "I think it\u0027s better to involve nya. It\u0027s still questionable to me if it\u0027s worthwhile introducing genparams for this specific use case.",
+      "revId": "396b095374d05fd71870ed6accc31d2c4cf8db1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
