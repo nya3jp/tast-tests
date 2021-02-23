@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acc0c605_70bd72ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-23T20:32:41Z",
+      "side": 1,
+      "message": "Have issue to run CQ as I have permission issue and tracking bug (crbug/1154957#c3)",
+      "parentUuid": "50db5458_e318fa24",
+      "revId": "58469e9a75c01000c051cdc948dbf9cc13a2f845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85b2043b_a1e433cd",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-19T16:25:50Z",
       "side": 1,
       "message": "I think you no longer need 3 mins timeout?",
+      "revId": "58469e9a75c01000c051cdc948dbf9cc13a2f845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aa84661_4bb04971",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-23T20:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85b2043b_a1e433cd",
       "revId": "58469e9a75c01000c051cdc948dbf9cc13a2f845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b7d86d7_e73551b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-23T20:32:41Z",
+      "side": 1,
+      "message": "Modified it to fetch once.",
+      "parentUuid": "01ad8d3c_9654160b",
+      "revId": "58469e9a75c01000c051cdc948dbf9cc13a2f845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66950314_61cb8255",
@@ -65,6 +119,30 @@
       "writtenOn": "2021-02-19T16:25:50Z",
       "side": 1,
       "message": "style\n\ninstalled, err :\u003d ash.ChromeAppInstalled(...)\nif err !\u003d nil {\n  s.Fatalf(...)\n}\nif installed {\n  s.Fatalf(...)\n}",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "58469e9a75c01000c051cdc948dbf9cc13a2f845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f543963d_59ff4ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-23T20:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66950314_61cb8255",
       "range": {
         "startLine": 44,
         "startChar": 2,
