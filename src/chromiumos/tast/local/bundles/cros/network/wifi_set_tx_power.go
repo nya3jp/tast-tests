@@ -26,7 +26,6 @@ func init() {
 			{
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(
 					"vilboz360", // TODO(b/177684735): Broken, causing CQ issues.
-					"maglia",    // TODO(b/177656181): Broken, causing CQ issues.
 				)),
 			},
 			{
@@ -34,7 +33,6 @@ func init() {
 				ExtraAttr: []string{"informational", "wificell_unstable"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(
 					"vilboz360", // TODO(b/177684735): Broken, causing CQ issues.
-					"maglia",    // TODO(b/177656181): Broken, causing CQ issues.
 				)),
 			},
 		},
