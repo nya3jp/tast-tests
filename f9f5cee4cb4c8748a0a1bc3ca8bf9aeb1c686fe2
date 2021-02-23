@@ -22,6 +22,30 @@
       },
       "revId": "f9f5cee4cb4c8748a0a1bc3ca8bf9aeb1c686fe2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a092cf2f_38f5f05c",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-23T21:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e45b9f3_fad0d2de",
+      "range": {
+        "startLine": 45,
+        "startChar": 59,
+        "endLine": 45,
+        "endChar": 84
+      },
+      "revId": "f9f5cee4cb4c8748a0a1bc3ca8bf9aeb1c686fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
