@@ -21,7 +21,7 @@ func init() {
 			"chromeos-kernel-wifi@google.com", // WiFi team
 		},
 		SoftwareDeps: []string{"tablet_mode"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(
@@ -31,7 +31,7 @@ func init() {
 			},
 			{
 				Name:      "informational",
-				ExtraAttr: []string{"informational"},
+				ExtraAttr: []string{"informational", "wificell_unstable"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(
 					"vilboz360", // TODO(b/177684735): Broken, causing CQ issues.
 					"maglia",    // TODO(b/177656181): Broken, causing CQ issues.
