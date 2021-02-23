@@ -41,16 +41,17 @@ type Client interface {
 }
 
 // Run starts a gRPC call to run the specified user scenario.
-func Run(ctx context.Context, s *testing.State, client Client, tier string, roomSize int, tabletMode bool) {
+func Run(ctx context.Context, s *testing.State, client Client, tier string, roomSize int, tabletMode, extendedDisplay bool) {
 	account := s.RequiredVar("ui.cuj_username")
 	password := s.RequiredVar("ui.cuj_password")
 
 	if _, err := client.MeetScenario(ctx, &pb.MeetScenarioRequest{
-		Account:    account,
-		Password:   password,
-		Tier:       tier,
-		RoomSize:   int64(roomSize),
-		TabletMode: tabletMode,
+		Account:         account,
+		Password:        password,
+		Tier:            tier,
+		RoomSize:        int64(roomSize),
+		TabletMode:      tabletMode,
+		ExtendedDisplay: extendedDisplay,
 	}); err != nil {
 		s.Fatal("Failed to run Meet Scenario: ", err)
 	}

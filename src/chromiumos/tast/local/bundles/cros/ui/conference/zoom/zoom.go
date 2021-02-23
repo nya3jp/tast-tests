@@ -194,6 +194,10 @@ func (conf *zoomConference) BackgroundBlurring(ctx context.Context, tconn *chrom
 	return nil
 }
 
+func (conf *zoomConference) ExtendedDisplayPresenting(_ context.Context, _ *chrome.TestConn, _ bool) error {
+	return nil
+}
+
 func (conf *zoomConference) PresentSlide(ctx context.Context, tconn *chrome.TestConn) error {
 	const timeout = time.Second * 15
 

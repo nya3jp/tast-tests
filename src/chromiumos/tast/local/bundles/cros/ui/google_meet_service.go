@@ -66,7 +66,7 @@ func (s *GoogleMeetService) MeetScenario(ctx context.Context, req *pb.MeetScenar
 	// Creates a Google Meet conference instance which implements conference.Conference methods
 	// which provides conference operations.
 	gmcli := googlemeet.NewGoogleMeetConference(cr, int(req.RoomSize), meetAccount, meetPassword)
-	if err := conference.MeetConference(ctx, cr, gmcli, prepare, req.Tier, outDir, req.TabletMode); err != nil {
+	if err := conference.MeetConference(ctx, cr, gmcli, prepare, req.Tier, outDir, req.TabletMode, req.ExtendedDisplay); err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to run MeetConference")
 	}
 

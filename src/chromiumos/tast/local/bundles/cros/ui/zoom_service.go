@@ -80,7 +80,7 @@ func (s *ZoomService) MeetScenario(ctx context.Context, req *pb.MeetScenarioRequ
 		}
 		return room, cleanup, nil
 	}
-	if err := conference.MeetConference(ctx, cr, zmcli, prepare, req.Tier, outDir, req.TabletMode); err != nil {
+	if err := conference.MeetConference(ctx, cr, zmcli, prepare, req.Tier, outDir, req.TabletMode, req.ExtendedDisplay); err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to run MeetConference")
 	}
 

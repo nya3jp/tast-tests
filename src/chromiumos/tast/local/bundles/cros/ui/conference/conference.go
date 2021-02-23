@@ -30,13 +30,14 @@ type Conference interface {
 	SwitchTabs(context.Context, *chrome.TestConn) error
 	ChangeLayout(context.Context, *chrome.TestConn) error
 	BackgroundBlurring(context.Context, *chrome.TestConn) error
+	ExtendedDisplayPresenting(context.Context, *chrome.TestConn, bool) error
 	PresentSlide(context.Context, *chrome.TestConn) error
 	StopPresenting(context.Context, *chrome.TestConn) error
 	End(context.Context, *chrome.TestConn) error
 }
 
 // MeetConference runs the specified user scenario in conference room with different CUJ tiers.
-func MeetConference(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, tmpPath string, tabletMode bool) error {
+func MeetConference(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, tmpPath string, tabletMode, extendedDisplay bool) error {
 	if prepare == nil {
 		return errors.New("failed to get invite link from prepare method")
 	}
@@ -107,11 +108,17 @@ func MeetConference(ctx context.Context, cr *chrome.Chrome, conf Conference, pre
 
 		// Plus and premium tier.
 		if tier == "plus" || tier == "premium" {
-			if err := conf.PresentSlide(ctx, tconn); err != nil {
-				return err
-			}
-			if err := conf.StopPresenting(ctx, tconn); err != nil {
-				return err
+			if extendedDisplay {
+				if err := conf.ExtendedDisplayPresenting(ctx, tconn, tabletMode); err != nil {
+					return err
+				}
+			} else {
+				if err := conf.PresentSlide(ctx, tconn); err != nil {
+					return err
+				}
+				if err := conf.StopPresenting(ctx, tconn); err != nil {
+					return err
+				}
 			}
 		}
 

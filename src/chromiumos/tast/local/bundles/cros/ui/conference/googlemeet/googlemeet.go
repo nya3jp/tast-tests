@@ -17,9 +17,11 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -575,6 +577,219 @@ func (conf *googleMeetConference) PresentSlide(ctx context.Context, tconn *chrom
 		return errors.Wrap(err, `failed to send keyboard event`)
 	}
 
+	return nil
+}
+
+func (conf *googleMeetConference) ExtendedDisplayPresenting(ctx context.Context, tconn *chrome.TestConn, tabletMode bool) error {
+	const (
+		timeout  = time.Second * 30
+		slideURL = "https://docs.google.com/presentation/d/1BuvbMyZ0KE_kgtJ3WODZe0dXz2hs2qrjgM82NxhIQos/edit"
+	)
+
+	// Make Google Meet to show the bottom bar
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to initialize keyboard input")
+	}
+	defer kb.Close()
+
+	unsetMirrorDisplay := func(ctx context.Context, tConn *chrome.TestConn) error {
+		testing.ContextLog(ctx, "Launch os settins to disable mirror")
+		settings, err := ossettings.LaunchAtPage(ctx, tConn, ossettings.Device)
+		if err != nil {
+			return errors.Wrap(err, "failed to launch os-settings page")
+		}
+
+		if err := settings.LaunchDisplay()(ctx); err != nil {
+			return errors.Wrap(err, "failed to launch display page")
+		}
+
+		if err := settings.ClickMirrorDisplay()(ctx); err != nil {
+			return errors.Wrap(err, "failed to click mirror display")
+		}
+
+		if err := settings.Close(ctx); err != nil {
+			return errors.Wrap(err, "failed to close settings")
+		}
+
+		return nil
+	}
+
+	moveMouseToScreenCenter := func(ctx context.Context, tconn *chrome.TestConn) error {
+		const xRatio, yRatio = .5, .5
+		info, err := display.GetInternalInfo(ctx, tconn)
+		if err != nil {
+			return err
+		}
+
+		dw := info.WorkArea.Width
+		dh := info.WorkArea.Height
+		mw, mh := int(float64(dw)*xRatio), int(float64(dh)*yRatio)
+
+		if err := mouse.Move(ctx, tconn, coords.Point{X: mw, Y: mh}, time.Millisecond*50); err != nil {
+			return err
+		}
+		return nil
+	}
+
+	openSlide := func(ctx context.Context) error {
+		slideConn, err := conf.cr.NewConn(ctx, slideURL, cdputil.WithNewWindow())
+		if err != nil {
+			return errors.Wrap(err, "failed to open the slide url")
+		}
+		defer slideConn.Close()
+
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := conference.ClickUIByName(ctx, tconn, "OK", time.Second*3); err != nil {
+				return err
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: time.Minute * 20, Interval: time.Second})
+	}
+
+	moveConferenceTab := func(ctx context.Context) error {
+		testing.Sleep(ctx, time.Millisecond*400)
+		if err := kb.Accel(ctx, "Alt+Tab"); err != nil {
+			return errors.Wrap(err, "failed to switch split tabs")
+		}
+		testing.Sleep(ctx, time.Millisecond*400)
+		if err := kb.Accel(ctx, "Search+Alt+M"); err != nil {
+			return errors.Wrap(err, "failed to move tab to extended display")
+		}
+		testing.Sleep(ctx, time.Millisecond*400)
+		return nil
+	}
+
+	enterPresentingMode := func(ctx context.Context) error {
+		if err := kb.Accel(ctx, "Alt+Tab"); err != nil {
+			return err
+		}
+		testing.Sleep(ctx, time.Millisecond*400)
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := moveMouseToScreenCenter(ctx, tconn); err != nil {
+				return errors.Wrap(err, "failed to move mouse to screen center")
+			}
+
+			if err := conference.ClickUIByName(ctx, tconn, "Present now", time.Second*3); err != nil {
+				return err
+			}
+
+			if err := conference.ClickUIByName(ctx, tconn, "A tab", time.Second*3); err != nil {
+				return err
+			}
+
+			if err := ui.WaitUntilGone(ctx, tconn, ui.FindParams{Name: "A tab"}, time.Second*3); err != nil {
+				return err
+			}
+
+			return nil
+		}, &testing.PollOptions{Timeout: time.Minute * 2, Interval: time.Second}); err != nil {
+			return errors.Wrap(err, "failed to present slide")
+		}
+		return nil
+	}
+
+	selectSharedTab := func(ctx context.Context) error {
+		// Focus on Tab selection window
+		if err := kb.Accel(ctx, "Tab"); err != nil {
+			return err
+		}
+		testing.Sleep(ctx, time.Millisecond*400)
+		// Select second tab (slide)
+		if err := kb.Accel(ctx, "Down"); err != nil {
+			return err
+		}
+		testing.Sleep(ctx, time.Millisecond*400)
+		if err := kb.Accel(ctx, "Down"); err != nil {
+			return err
+		}
+		testing.Sleep(ctx, time.Millisecond*400)
+		if err := kb.Accel(ctx, "Enter"); err != nil {
+			return err
+		}
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := ui.WaitUntilGone(ctx, tconn, ui.FindParams{Name: "Stop presenting"}, time.Second); err != nil {
+				return err
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second * 2}); err != nil {
+			return err
+		}
+		return nil
+	}
+
+	startPresent := func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			params := ui.FindParams{Name: "Start presentation (Ctrl+F5)", Role: ui.RoleTypeButton}
+			presentButton, err := ui.FindWithTimeout(ctx, tconn, params, time.Second*2)
+			if err != nil {
+				return err
+			}
+			defer presentButton.Release(ctx)
+			if err := presentButton.LeftClick(ctx); err != nil {
+				return err
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second})
+	}
+
+	switchSlide := func(ctx context.Context) error {
+		for i := 0; i < 6; i++ {
+			if err := kb.Accel(ctx, "Enter"); err != nil {
+				return errors.Wrap(err, `failed to type enter key to switch slide`)
+			}
+			if err := testing.Sleep(ctx, time.Second*1); err != nil {
+				return errors.Wrap(err, "failed to sleep for wait slide switching")
+			}
+		}
+
+		testing.ContextLog(ctx, "Leave presentation mode")
+		if err := kb.Accel(ctx, "Esc"); err != nil {
+			return errors.Wrap(err, `failed to type esc to leave presentation mode`)
+		}
+		return nil
+	}
+
+	if tabletMode {
+		if err := unsetMirrorDisplay(ctx, tconn); err != nil {
+			return err
+		}
+	}
+
+	testing.ContextLog(ctx, "Open a slide")
+	if err := openSlide(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Enter Presenting Mode")
+	if err := enterPresentingMode(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Select Tab for Sharing")
+	if err := selectSharedTab(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Move conference tab to extended display")
+	if err := moveConferenceTab(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Start presenting")
+	if err := startPresent(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Switch slides")
+	if err := switchSlide(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Edit slide")
+	if err := conference.EditSlide(ctx, tconn, kb); err != nil {
+		return errors.Wrap(err, `failed to edit slide when leave presentation mode`)
+	}
 	return nil
 }
 
