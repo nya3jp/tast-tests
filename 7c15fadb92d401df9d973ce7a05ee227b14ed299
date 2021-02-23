@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb0b26a_cdfa0b8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa75786a_0b95a8b9",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6ec4c8e_d18f66b8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-22T23:08:17Z",
       "side": 1,
       "message": "These are all shared across the ui package, suggest prefixing with some more unique or moving to a more local scope.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d280e2a8_65ed09c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "Moved to function scope",
+      "parentUuid": "a6ec4c8e_d18f66b8",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bc55e25_4f636c54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd681083_15e30442",
+      "range": {
+        "startLine": 55,
+        "startChar": 28,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "766993b7_e04b3eae",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-22T23:08:17Z",
       "side": 1,
       "message": "nit: Removed?",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "378fb585_ff160bf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "766993b7_e04b3eae",
       "range": {
         "startLine": 64,
         "startChar": 25,
@@ -117,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86710994_3cea0658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e7842c3_199f9afa",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f4b604c_2e4d9d16",
@@ -130,6 +250,30 @@
       "writtenOn": "2021-02-22T23:08:17Z",
       "side": 1,
       "message": "The Tast way of formatting these error messages is:\n```\nerrors.Errorf(\"Unexpected meta var: got %s; want %s\", metas[0], expectedErrorMessage)\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 120
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d334bab_cb8bb267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "metas[0] is a filename, expectedErrorMessage is a string we expect to find in the file. They\u0027re not the same \"type\".",
+      "parentUuid": "3f4b604c_2e4d9d16",
       "range": {
         "startLine": 81,
         "startChar": 2,
@@ -163,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "710a004e_4b066420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "Same",
+      "parentUuid": "f062e254_289152b9",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 112
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de956ba6_5bd9da2f",
@@ -176,6 +344,30 @@
       "writtenOn": "2021-02-22T23:08:17Z",
       "side": 1,
       "message": "See above comment on error messages.",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 119
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d1b5421_176340e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "Same",
+      "parentUuid": "de956ba6_5bd9da2f",
       "range": {
         "startLine": 90,
         "startChar": 2,
@@ -209,6 +401,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b1110b_f4b8a2ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "Same",
+      "parentUuid": "76f05de7_ae8496f1",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 124
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0444616_d428a666",
@@ -222,6 +438,30 @@
       "writtenOn": "2021-02-22T23:08:17Z",
       "side": 1,
       "message": "See above comment on error messages.",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 123
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6251d678_8caee676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "Same",
+      "parentUuid": "f0444616_d428a666",
       "range": {
         "startLine": 107,
         "startChar": 3,
@@ -255,6 +495,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ed0466_075ee4ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64481802_6a97630c",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 44
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73ffcf56_a0e3fb73",
@@ -278,6 +542,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1620b84_5407c0bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73ffcf56_a0e3fb73",
+      "range": {
+        "startLine": 209,
+        "startChar": 31,
+        "endLine": 209,
+        "endChar": 34
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94463d5b_42c27023",
@@ -291,6 +579,30 @@
       "writtenOn": "2021-02-22T23:08:17Z",
       "side": 1,
       "message": "Don\u0027t need this here, filepath.Join, \"Join joins any number of path elements into a single path, separating them with an OS specific Separator\"\n\nhttps://golang.org/pkg/path/filepath/#Join",
+      "range": {
+        "startLine": 222,
+        "startChar": 34,
+        "endLine": 222,
+        "endChar": 35
+      },
+      "revId": "7c15fadb92d401df9d973ce7a05ee227b14ed299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f2bc10_c9001825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-23T00:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94463d5b_42c27023",
       "range": {
         "startLine": 222,
         "startChar": 34,
