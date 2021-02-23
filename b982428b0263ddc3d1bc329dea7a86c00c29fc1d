@@ -16,6 +16,24 @@
       "message": "Does there need to be a test for the Ctrl+/ shortcut?",
       "revId": "b982428b0263ddc3d1bc329dea7a86c00c29fc1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "346bc94c_dcd0d8b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-23T06:43:31Z",
+      "side": 1,
+      "message": "The SWA platform want to ensure all custom entry points into SWAs have a test to exercise the functionality. I believe no other SWA has a shortcut entry point",
+      "parentUuid": "84f550bc_b7b7750b",
+      "revId": "b982428b0263ddc3d1bc329dea7a86c00c29fc1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
