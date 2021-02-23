@@ -7,6 +7,7 @@ package video
 import (
 	"context"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/testing"
@@ -20,6 +21,9 @@ func init() {
 			"jkardatzke@google.com",
 			"chromeos-gfx-video@google.com",
 		},
+		SoftwareDeps: []string{"protected_content"},
+		Timeout:      15 * time.Minute,
+		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name: "ce_cdm",
 			Val:  "widevine_ce_cdm_hw_tests",
@@ -27,8 +31,6 @@ func init() {
 			Name: "oemcrypto",
 			Val:  "oemcrypto_hw_ref_tests",
 		}},
-		// TODO(jkardatzke): Add SoftwareDeps for cdm_factory_daemon USE flag and
-		// add Attr to enable this for CI once this is functional.
 	})
 }
 
