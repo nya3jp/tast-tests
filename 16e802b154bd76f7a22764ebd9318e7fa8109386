@@ -50,6 +50,24 @@
       "message": "LGTM, but how those variables are exposed? they start with lower case letter, so they are private!",
       "revId": "16e802b154bd76f7a22764ebd9318e7fa8109386",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2acbe7e1_90a51a2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-23T18:12:19Z",
+      "side": 1,
+      "message": "Yeah, they are not exposed, but they are private within a policy package. However, Tast does not allow access variables from other test files.",
+      "parentUuid": "e123faf1_19083648",
+      "revId": "16e802b154bd76f7a22764ebd9318e7fa8109386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
