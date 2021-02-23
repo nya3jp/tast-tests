@@ -34,7 +34,7 @@ func init() {
 			"mukai@chromium.org", // Tast author
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedIn",
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 	})
@@ -53,7 +53,7 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 	)
 	// When custom expectation value needs to be set, modify expects here.
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the connection to the test API: ", err)
