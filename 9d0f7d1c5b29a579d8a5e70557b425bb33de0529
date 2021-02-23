@@ -26,6 +26,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9dc032b9_571618bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-23T16:23:52Z",
+      "side": 1,
+      "message": "did you also want to quote this for consistency?",
+      "range": {
+        "startLine": 109,
+        "startChar": 61,
+        "endLine": 109,
+        "endChar": 63
+      },
+      "revId": "9d0f7d1c5b29a579d8a5e70557b425bb33de0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d18a652_775e89b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-23T16:23:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 112,
+        "startChar": 48,
+        "endLine": 112,
+        "endChar": 50
+      },
+      "revId": "9d0f7d1c5b29a579d8a5e70557b425bb33de0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b370127_703698cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
         "patchSetId": 3
@@ -42,6 +88,52 @@
         "startChar": 17,
         "endLine": 141,
         "endChar": 113
+      },
+      "revId": "9d0f7d1c5b29a579d8a5e70557b425bb33de0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0615200a_b37a793e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-23T16:23:52Z",
+      "side": 1,
+      "message": "ditto w.r.t what Ben said above",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 2
+      },
+      "revId": "9d0f7d1c5b29a579d8a5e70557b425bb33de0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2713e5_894471c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-23T16:23:52Z",
+      "side": 1,
+      "message": "ditto w.r.t what Ben said above",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 2
       },
       "revId": "9d0f7d1c5b29a579d8a5e70557b425bb33de0529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
