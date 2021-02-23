@@ -90,7 +90,7 @@ func AndroidSenderCrosReceiver(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting receiving on the CrOS device")
-	receiver, err := nearbyshare.StartReceiving(ctx, cr)
+	receiver, err := nearbyshare.StartReceiving(ctx, tconn, cr)
 	if err != nil {
 		s.Fatal("Failed to set up control over the receiving surface: ", err)
 	}
