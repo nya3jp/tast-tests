@@ -142,6 +142,24 @@
       "parentUuid": "73db5b5f_05342c02",
       "revId": "b982428b0263ddc3d1bc329dea7a86c00c29fc1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c70c4c14_7a188481",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-23T08:20:02Z",
+      "side": 1,
+      "message": "Yeah agree on the E2E vs. unit tests, however, given we have the help app setup, it\u0027s a matter of a few milliseconds extra to test both shortcuts. Might as well cover them both. Would not be worth it if these were two tests requiring equal setup time.",
+      "parentUuid": "5d173009_22d5eafd",
+      "revId": "b982428b0263ddc3d1bc329dea7a86c00c29fc1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
