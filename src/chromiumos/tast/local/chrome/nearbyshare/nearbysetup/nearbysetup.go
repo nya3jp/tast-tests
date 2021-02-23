@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
 )
 
@@ -27,39 +26,40 @@ import (
 // since Nearby Share on Android requires the screen to be on.
 const DefaultScreenTimeout = 10 * time.Minute
 
-// CrOSSetup enables Chrome OS Nearby Share and configures its settings through OS Settings. This allows tests to bypass onboarding.
+// CrOSSetup enables Chrome OS Nearby Share and configures its settings using the nearby_share_settings
+// interface which is available through chrome://nearby. This allows tests to bypass onboarding.
 // If deviceName is empty, the device display name will not be set and the default will be used.
 func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, dataUsage DataUsage, visibility Visibility, deviceName string) error {
-	settings, err := ossettings.Launch(ctx, tconn)
+	nearbyConn, err := cr.NewConn(ctx, "chrome://nearby")
 	if err != nil {
-		return errors.Wrap(err, "failed to launch OS Settings")
+		return errors.Wrap(err, "failed to launch chrome://nearby")
 	}
-	settingsConn, err := settings.ChromeConn(ctx, cr)
-	if err != nil {
-		return errors.Wrap(err, "failed to establish connection to OS Settings Chrome session")
-	}
-	defer settingsConn.Close()
+	defer nearbyConn.Close()
+	defer nearbyConn.CloseTarget(ctx)
 
-	if err := settingsConn.WaitForExpr(ctx, `nearby_share !== undefined`); err != nil {
-		return errors.Wrap(err, "failed waiting for nearby_share to load")
+	var nearbySettings chrome.JSObject
+	if err := nearbyConn.Call(ctx, &nearbySettings, `async function() {
+		return await import('./shared/nearby_share_settings.m.js').then(m => m.getNearbyShareSettings());
+	}`); err != nil {
+		return errors.Wrap(err, "failed to import nearby_share_settings.m.js")
 	}
 
-	if err := settingsConn.Call(ctx, nil, `function() {nearby_share.getNearbyShareSettings().setEnabled(true)}`); err != nil {
+	if err := nearbySettings.Call(ctx, nil, `function() {this.setEnabled(true)}`); err != nil {
 		return errors.Wrap(err, "failed to enable Nearby Share from OS settings")
 	}
 
-	if err := settingsConn.Call(ctx, nil, `function(dataUsage) {nearby_share.getNearbyShareSettings().setDataUsage(dataUsage)}`, dataUsage); err != nil {
+	if err := nearbySettings.Call(ctx, nil, `function(dataUsage) {this.setDataUsage(dataUsage)}`, dataUsage); err != nil {
 		return errors.Wrapf(err, "failed to call setDataUsage with value %v", dataUsage)
 	}
 
-	if err := settingsConn.Call(ctx, nil, `function(visibility) {nearby_share.getNearbyShareSettings().setVisibility(visibility)}`, visibility); err != nil {
+	if err := nearbySettings.Call(ctx, nil, `function(visibility) {this.setVisibility(visibility)}`, visibility); err != nil {
 		return errors.Wrapf(err, "failed to call setVisibility with value %v", visibility)
 	}
 
 	if deviceName != "" {
 		var res DeviceNameValidationResult
-		if err := settingsConn.Call(ctx, &res, `async function(name) {
-			r = await nearby_share.getNearbyShareSettings().setDeviceName(name);
+		if err := nearbySettings.Call(ctx, &res, `async function(name) {
+			r = await this.setDeviceName(name);
 			return r.result;
 		}`, deviceName); err != nil {
 			return errors.Wrapf(err, "failed to call setDeviceName with name %v", deviceName)
