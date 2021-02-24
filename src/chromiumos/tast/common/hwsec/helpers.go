@@ -57,16 +57,40 @@ type AttestationHelper struct {
 	attestation *AttestationClient
 }
 
+// TPMClearHelperIF is the interface of TPMClearHelper
+type TPMClearHelperIF interface {
+	TPMClearer() TPMClearer
+}
+
+// TPMClearHelper provides various helper functions that could be shared across all
+// hwsec integration test base on TPMClearer.
+type TPMClearHelper struct {
+	tpmClearer TPMClearer
+}
+
+// CmdTPMClearHelperIF is the interface of CmdTPMClearHelper
+type CmdTPMClearHelperIF interface {
+	CmdHelperIF
+	TPMClearHelperIF
+}
+
+// CmdTPMClearHelper provides various helper functions that could be shared across all
+// hwsec integration test base on CmdHelper & TPMClearer.
+type CmdTPMClearHelper struct {
+	CmdHelper
+	TPMClearHelper
+}
+
 // FullHelperIF is the interface of FullHelper
 type FullHelperIF interface {
-	CmdHelperIF
+	CmdTPMClearHelperIF
 	AttestationHelperIF
 }
 
 // FullHelper is the full version of all kinds of helper that could be shared across all
 // hwsec integration test regardless of run-type, i.e., remote or local.
 type FullHelper struct {
-	CmdHelper
+	CmdTPMClearHelper
 	AttestationHelper
 }
 
@@ -87,12 +111,21 @@ func NewAttestationHelper(ac AttestationDBus) *AttestationHelper {
 	}
 }
 
-// NewFullHelper creates a new FullHelper, with ch responsible for CmdHelper and ah responsible for AttestationHelper.
-func NewFullHelper(ch *CmdHelper, ah *AttestationHelper) *FullHelper {
-	return &FullHelper{
-		*ch,
-		*ah,
+// NewTPMClearHelper creates a new AttestationHelper, with tc responsible for TPMClearer.
+func NewTPMClearHelper(tc TPMClearer) *TPMClearHelper {
+	return &TPMClearHelper{
+		tpmClearer: tc,
 	}
+}
+
+// NewCmdTPMClearHelper creates a new CmdTPMClearHelper, with ch responsible for CmdHelper and th responsible for TPMClearHelper.
+func NewCmdTPMClearHelper(ch *CmdHelper, th *TPMClearHelper) *CmdTPMClearHelper {
+	return &CmdTPMClearHelper{*ch, *th}
+}
+
+// NewFullHelper creates a new FullHelper, with ch responsible for CmdTPMClearHelper and ah responsible for AttestationHelper.
+func NewFullHelper(ch *CmdTPMClearHelper, ah *AttestationHelper) *FullHelper {
+	return &FullHelper{*ch, *ah}
 }
 
 // CmdRunner exposes the cmdRunner of helper
@@ -109,6 +142,9 @@ func (h *CmdHelper) DaemonController() *DaemonController { return h.daemonContro
 
 // AttestationClient exposes the attestation of helper
 func (h *AttestationHelper) AttestationClient() *AttestationClient { return h.attestation }
+
+// TPMClearer exposes the tpmClearer of helper
+func (h *TPMClearHelper) TPMClearer() TPMClearer { return h.tpmClearer }
 
 // EnsureTPMIsReady ensures the TPM is ready when the function returns |nil|.
 // Otherwise, returns any encountered error.
@@ -269,4 +305,72 @@ func (h *CmdHelper) GetTPMVersion(ctx context.Context) (string, error) {
 	out, err := h.cmdRunner.Run(ctx, "tpmc", "tpmver")
 	// Trailing newline char is trimmed.
 	return strings.TrimSpace(string(out)), err
+}
+
+// ensureTPMIsReset ensures the TPM is reset when the function returns nil.
+// Otherwise, returns any encountered error.
+// Optionally removes files from the DUT to simulate a powerwash.
+func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
+	if err := h.daemonController.WaitForAllDBusServices(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
+	}
+
+	if err := h.tpmClearer.PreClearTPM(ctx); err != nil {
+		return errors.Wrap(err, "failed to pre clear TPM")
+	}
+
+	if err := h.daemonController.TryStop(ctx, UIDaemonInfo); err != nil {
+		return errors.Wrap(err, "failed to try to stop ui")
+	}
+
+	if err := h.daemonController.TryStopDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to try to stop high-level TPM daemons")
+	}
+
+	if err := h.tpmClearer.ClearTPM(ctx); err != nil {
+		return errors.Wrap(err, "failed to clear TPM")
+	}
+
+	if removeFiles {
+		args := append([]string{"-rf", "--"}, SystemStateFiles...)
+		if out, err := h.cmdRunner.Run(ctx, "rm", args...); err != nil {
+			// TODO(b/173189029): Ignore errors on failure. This is a workaround to prevent Permission denied when removing a fscrypt directory.
+			testing.ContextLog(ctx, "Failed to remove files to clear ownership: ", err, string(out))
+		}
+	}
+
+	if err := h.tpmClearer.PostClearTPM(ctx); err != nil {
+		return errors.Wrap(err, "failed to post clear TPM")
+	}
+
+	if err := h.daemonController.EnsureDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to ensure high-level TPM daemons")
+	}
+
+	if err := h.daemonController.Ensure(ctx, UIDaemonInfo); err != nil {
+		return errors.Wrap(err, "failed to ensure ui")
+	}
+
+	testing.ContextLog(ctx, "Waiting for system to be ready after reset TPM ")
+	info, err := h.tpmManager.GetNonsensitiveStatus(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get TPM status")
+	}
+	if info.IsOwned {
+		// If the TPM is ready, the reset was not successful
+		return errors.New("ineffective reset of TPM")
+	}
+
+	return nil
+}
+
+// EnsureTPMIsReset ensures the TPM is reset when the function returns nil.
+// Otherwise, returns any encountered error.
+func (h *CmdTPMClearHelper) EnsureTPMIsReset(ctx context.Context) error {
+	return h.ensureTPMIsReset(ctx, false)
+}
+
+// EnsureTPMIsResetAndPowerwash ensures the TPM is reset and simulates a Powerwash.
+func (h *CmdTPMClearHelper) EnsureTPMIsResetAndPowerwash(ctx context.Context) error {
+	return h.ensureTPMIsReset(ctx, true)
 }
