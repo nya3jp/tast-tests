@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "511973cb_b16c9cde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-24T19:53:52Z",
+      "side": 1,
+      "message": "Done, I added it to the graphics nightly run instead.",
+      "parentUuid": "154d3df7_d28b344e",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "e258ff10e9a784a9c78d50ca22630562f6d2af5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89b0695a_9008cfd4",
