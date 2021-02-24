@@ -49,8 +49,8 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 	} else if result {
 		s.Fatal("Enrollment preparation is not reset after clearing ownership")
 	}
-	dCtrl := hwsec.NewDaemonController(r)
-	dCtrl.StopAttestation(ctx)
+	dCtrl := helper.DaemonController()
+	dCtrl.Stop(ctx, hwsec.AttestationDaemonInfo)
 
 	s.Log("Start taking ownership")
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
@@ -65,7 +65,7 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Start attestation service")
-	dCtrl.StartAttestation(ctx)
+	dCtrl.Start(ctx, hwsec.AttestationDaemonInfo)
 
 	if err := helper.EnsureIsPreparedForEnrollment(ctx, hwsec.DefaultPreparationForEnrolmentTimeout); err != nil {
 		s.Fatal("Failed to prepare for enrollment: ", err)
@@ -90,7 +90,7 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 		}
 		lastTime = newTime
 		// For now, restarting cryptohome is necessary because we still use cryptohome binary.
-		if err := dCtrl.RestartCryptohome(ctx); err != nil {
+		if err := dCtrl.Restart(ctx, hwsec.CryptohomeDaemonInfo); err != nil {
 			return err
 		}
 		if passwd, err := utility.GetOwnerPassword(ctx); err != nil {
