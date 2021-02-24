@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4f3992_9415954f",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-24T02:32:59Z",
+      "side": 1,
+      "message": "nit: I\u0027d prefer LaunchAction returns an uiauto.Action which calls Launch.\n\nThe same for others.",
+      "range": {
+        "startLine": 350,
+        "startChar": 3,
+        "endLine": 351,
+        "endChar": 54
+      },
+      "revId": "1e6545700610e739d8c3f7322f1718554e5255b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3a55a64_11bbd79d",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-24T02:32:59Z",
+      "side": 1,
+      "message": "I think using the signature of the method + appID would be easier to locate: fmt.Sprintf(\"LaunchAction(tconn *chrome.TestConn, appID string) with appID\u003d%v\", appID) \n\nThe same for others.",
+      "range": {
+        "startLine": 354,
+        "startChar": 20,
+        "endLine": 354,
+        "endChar": 32
+      },
+      "revId": "1e6545700610e739d8c3f7322f1718554e5255b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587031fd_65475e89",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-24T02:32:59Z",
+      "side": 1,
+      "message": "Is this used somewhere else?",
+      "range": {
+        "startLine": 536,
+        "startChar": 19,
+        "endLine": 536,
+        "endChar": 23
+      },
+      "revId": "1e6545700610e739d8c3f7322f1718554e5255b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
