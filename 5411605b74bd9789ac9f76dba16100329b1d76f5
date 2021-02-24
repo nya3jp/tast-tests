@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d31650fd_d4b3fbee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/espn.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-24T22:58:41Z",
+      "side": 1,
+      "message": "Please change name before submitting",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 9
+      },
+      "revId": "5411605b74bd9789ac9f76dba16100329b1d76f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
