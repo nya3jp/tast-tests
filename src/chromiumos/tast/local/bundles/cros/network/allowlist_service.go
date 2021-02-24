@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/network/proxy"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
@@ -154,7 +155,33 @@ func (a *AllowlistService) TestArcConnectivity(ctx context.Context, req *empty.E
 }
 
 func (a *AllowlistService) TestExtensionConnectivity(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	return nil, errors.New("method TestExtensionConnectivity not implemented")
+	// Connect to Test API to use it with the UI library.
+	tconn, err := a.cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	const downloadURL = "chrome://extensions"
+
+	sconn, err := a.cr.NewConn(ctx, downloadURL)
+	if err != nil {
+		return nil, err
+	}
+	defer sconn.Close()
+
+	// If the extension is installed, the Installed button will be present which is not clickable.
+	desc :=
+		ui.FindParams{
+			Name: "Certificate Enrollment for Chrome OS",
+			Role: ui.RoleTypeStaticText,
+		}
+
+	node, err := ui.FindWithTimeout(ctx, tconn, desc, 3*time.Minute)
+	if err != nil {
+		return nil, err
+	}
+	defer node.Release(ctx)
+	return &empty.Empty{}, nil
 }
 
 func executeIptables(ctx context.Context, cmds, args []string) error {
