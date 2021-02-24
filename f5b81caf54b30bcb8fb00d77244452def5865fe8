@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed717681_4061b577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1294545
+      },
+      "writtenOn": "2021-02-24T20:53:14Z",
+      "side": 1,
+      "message": "I have replaced it by Shutdown(ctx)",
+      "parentUuid": "19301f15_0a69383a",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "f5b81caf54b30bcb8fb00d77244452def5865fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0405bdc7_49d7f2a0",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-02-23T05:59:57Z",
       "side": 1,
       "message": "Use testing.Poll instead?",
+      "revId": "f5b81caf54b30bcb8fb00d77244452def5865fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f54fd12e_8eee59b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1294545
+      },
+      "writtenOn": "2021-02-24T20:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0405bdc7_49d7f2a0",
       "revId": "f5b81caf54b30bcb8fb00d77244452def5865fe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
