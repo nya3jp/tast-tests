@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fba244f_47490c99",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-24T06:57:13Z",
+      "side": 1,
+      "message": "Could you make it a function? See the comment below.\nAlso, could you unexport it?",
+      "range": {
+        "startLine": 124,
+        "startChar": 17,
+        "endLine": 124,
+        "endChar": 26
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c9e7593_d5291be5",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 10
