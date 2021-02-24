@@ -6,7 +6,11 @@ package ash
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"image"
+	"image/color"
+	"image/png"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -83,6 +87,7 @@ func PrepareFakeApps(baseDir string, num int) ([]string, error) {
 		"name": "fake app %d",
 		"manifest_version": 2,
 		"version": "0",
+		"icons": %s,
 		"app": {
 			"launch": {
 				"web_url": "https://www.google.com/"
@@ -92,13 +97,67 @@ func PrepareFakeApps(baseDir string, num int) ([]string, error) {
 	if err := extension.ChownContentsToChrome(baseDir); err != nil {
 		return nil, errors.Wrapf(err, "failed to change ownership of %s", baseDir)
 	}
+
+	// creating icon images for the fake apps. To be a bit realistic, the icon
+	// is a circle in which diagonal stripes are drawn.
+	// Icons are shared among all fake apps. Icons are created in its own
+	// directory, and each app directory has symlinks to those icon files.
+	iconDir := filepath.Join(baseDir, "icons")
+	if err := os.Mkdir(iconDir, 0755); err != nil {
+		return nil, errors.Wrapf(err, "failed to create the icon directory %q", iconDir)
+	}
+	sizes := []int{32, 48, 64, 96, 128, 192, 256}
+	iconNames := make(map[int]string, len(sizes))
+
+	colors := []color.Color{
+		newColor(255, 0, 0), newColor(0, 255, 0), newColor(0, 0, 255),
+		newColor(255, 255, 0), newColor(255, 0, 255), newColor(0, 255, 255)}
+	for _, siz := range sizes {
+		img := image.NewRGBA(image.Rect(0, 0, siz, siz))
+		for x := 0; x < siz; x++ {
+			for y := 0; y < siz; y++ {
+				// Do not draw outside of the circle.
+				if (x-siz/2)*(x-siz/2)+(y-siz/2)*(y-siz/2) > siz*siz/4 {
+					continue
+				}
+				// Choose the color with diagonal stripe.
+				c := colors[((x+y)*7/siz)%len(colors)]
+				img.Set(x, y, c)
+			}
+		}
+		iconName := fmt.Sprintf("icon%d.png", siz)
+		iconNames[siz] = iconName
+		// Save the icon image into the iconDir in png format.
+		if err := func() error {
+			f, err := os.OpenFile(filepath.Join(iconDir, iconName), os.O_WRONLY|os.O_CREATE, 0644)
+			if err != nil {
+				return err
+			}
+			defer f.Close()
+			return png.Encode(f, img)
+		}(); err != nil {
+			return nil, errors.Wrapf(err, "failed to save the icon file %q", iconName)
+		}
+	}
+	// iconJSON is the part of JSON data in the manifest.json file.
+	iconJSON, err := json.Marshal(iconNames)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to marshal icon names")
+	}
+
 	extDirs := make([]string, 0, num)
 	for i := 0; i < num; i++ {
 		extDir := filepath.Join(baseDir, fmt.Sprintf("fake_%d", i))
 		if err := os.Mkdir(extDir, 0755); err != nil {
 			return nil, errors.Wrapf(err, "failed to create the directory for %d-th extension", i)
 		}
-		if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, i)), 0644); err != nil {
+		// Create symlinks for the icons.
+		for _, iconName := range iconNames {
+			if err := os.Symlink(filepath.Join(iconDir, iconName), filepath.Join(extDir, iconName)); err != nil {
+				return nil, errors.Wrapf(err, "failed to create link of icon %q for %d-th extension", iconName, i)
+			}
+		}
+		if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, i, string(iconJSON))), 0644); err != nil {
 			return nil, errors.Wrapf(err, "failed to prepare manifest.json for %d-th extension", i)
 		}
 		extDirs = append(extDirs, extDir)
