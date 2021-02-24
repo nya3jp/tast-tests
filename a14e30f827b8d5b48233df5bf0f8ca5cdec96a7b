@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd8a490_d3fcb090",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T02:03:34Z",
+      "side": 1,
+      "message": "Okay, then that might be fine.\n\nBy the way, I also checked the API document (https://chromium.googlesource.com/chromium/src.git/+/refs/heads/master/chrome/common/extensions/api/autotest_private.idl#684), it says isArcProvisioned is deprecated.  Sorry I didn\u0027t notice this deprecation.\n\nCan you:\n- remove this IsArcProvisioned, and introduce GetArcState() -- since it is getting arc state, arc package is suitable, I think.\n- For the check of IsArcProvisioned, it would be arcState, err :\u003d GetArcState(); if arcState.Provisioned...",
+      "parentUuid": "557e54e0_c91e893a",
+      "range": {
+        "startLine": 158,
+        "startChar": 5,
+        "endLine": 158,
+        "endChar": 21
+      },
+      "revId": "a14e30f827b8d5b48233df5bf0f8ca5cdec96a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9056d229_f98790de",
