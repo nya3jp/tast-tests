@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "228f7287_45f9f942",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-24T22:09:43Z",
+      "side": 1,
+      "message": "Please address remaining comment before submitting",
+      "revId": "f7050cc8ffeb174a3374203768d0b8408f0e25b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a1f5fa6_c28b47fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-24T22:09:43Z",
+      "side": 1,
+      "message": "Please make this Error. If the monkey test fails to run, this should be a failure.",
+      "range": {
+        "startLine": 405,
+        "startChar": 4,
+        "endLine": 405,
+        "endChar": 7
+      },
+      "revId": "f7050cc8ffeb174a3374203768d0b8408f0e25b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
