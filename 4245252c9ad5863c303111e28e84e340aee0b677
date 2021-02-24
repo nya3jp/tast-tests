@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a780cb3_d139d3c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-24T04:02:01Z",
+      "side": 1,
+      "message": "Can you make these into separate funcs in the test scope (not function scope) with potentially this signature:\n```\nfunc(ctx context.Context, path string, perm os.FileMode, uid, gid int) error\n```\nYou can then reduce the reuse with leaf_user_path_not_owned, leaf_system_path_not_owned and leaf_user_path_too_permissive\n\nYou could also do the same for the cleanupFuncs for these 3 as well.",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 5
+      },
+      "revId": "4245252c9ad5863c303111e28e84e340aee0b677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
