@@ -146,7 +146,7 @@ func (h *HelperRemote) Reboot(ctx context.Context) error {
 	if err := h.d.Reboot(ctx); err != nil {
 		return err
 	}
-	dCtrl := hwsec.NewDaemonController(h.CmdRunner())
+	dCtrl := h.DaemonController()
 	// Waits for all the daemons of interest to be ready because the asynchronous initialization of dbus service could complete "after" the booting process.
 	if err := dCtrl.WaitForAllDBusServices(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")

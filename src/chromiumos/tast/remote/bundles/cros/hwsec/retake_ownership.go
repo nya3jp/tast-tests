@@ -109,8 +109,8 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 		}
 		lastTime = newTime
 		// For now, restarting cryptohome is necessary because we still use cryptohome binary.
-		dCtrl := hwsec.NewDaemonController(r)
-		if err := dCtrl.RestartCryptohome(ctx); err != nil {
+		dCtrl := helper.DaemonController()
+		if err := dCtrl.Restart(ctx, hwsec.CryptohomeDaemon); err != nil {
 			return err
 		}
 		if passwd, err := utility.GetOwnerPassword(ctx); err != nil {

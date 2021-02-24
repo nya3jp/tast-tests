@@ -145,13 +145,13 @@ func (h *Helper) SetTPMManagerLocalData(ctx context.Context, data []byte) error 
 // DropResetLockPermissions drops the reset lock permissions and return a callback to restore the permissions.
 func (h *Helper) DropResetLockPermissions(ctx context.Context) (restoreFunc func(ctx context.Context) error, retErr error) {
 	// Stop TPM Manager before modifying its local data.
-	if err := h.daemonController.StopTpmManager(ctx); err != nil {
+	if err := h.daemonController.Stop(ctx, TPMManagerDaemon); err != nil {
 		return nil, errors.Wrap(err, "failed to stop TPM Manager")
 	}
 
 	// Restart it after finishing all operation.
 	defer func() {
-		if err := h.daemonController.StartTpmManager(ctx); err != nil {
+		if err := h.daemonController.Start(ctx, TPMManagerDaemon); err != nil {
 			if retErr == nil {
 				retErr = errors.Wrap(err, "failed to start TPM Manager")
 			} else {
@@ -190,13 +190,13 @@ func (h *Helper) DropResetLockPermissions(ctx context.Context) (restoreFunc func
 
 	return func(ctx context.Context) error {
 		// Stop TPM Manager before modifying its local data.
-		if err := h.daemonController.StopTpmManager(ctx); err != nil {
+		if err := h.daemonController.Stop(ctx, TPMManagerDaemon); err != nil {
 			return errors.Wrap(err, "failed to stop TPM Manager")
 		}
 
 		// Restart it after finishing all operation.
 		defer func() {
-			if err := h.daemonController.StartTpmManager(ctx); err != nil {
+			if err := h.daemonController.Start(ctx, TPMManagerDaemon); err != nil {
 				if retErr == nil {
 					retErr = errors.Wrap(err, "failed to start TPM Manager")
 				} else {
