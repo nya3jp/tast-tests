@@ -23,7 +23,10 @@ func ClickApp(ctx context.Context, tconn *chrome.TestConn, appShareLabel string)
 		Name: appShareLabel,
 	}
 
-	pollOpts := testing.PollOptions{Timeout: 15 * time.Second}
+	// The Sharesheet appears to not properly update the accessibility tree with
+	// the coordinates whilst animating. The total time to animate is currently 150ms
+	// so setting to 1s to ensure low-end devices are given enough time.
+	pollOpts := testing.PollOptions{Timeout: 15 * time.Second, Interval: time.Second}
 
 	return ui.StableFindAndClick(ctx, tconn, params, &pollOpts)
 }
