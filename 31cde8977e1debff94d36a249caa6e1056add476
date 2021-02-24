@@ -22,6 +22,30 @@
       },
       "revId": "31cde8977e1debff94d36a249caa6e1056add476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e44ec891_dff8b554",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-24T01:59:58Z",
+      "side": 0,
+      "message": "Brendan did in this cl: https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2716965",
+      "parentUuid": "c64f889d_9b764151",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 8
+      },
+      "revId": "31cde8977e1debff94d36a249caa6e1056add476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
