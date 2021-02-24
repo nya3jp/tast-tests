@@ -63,6 +63,30 @@
       },
       "revId": "c63da8a740cc1e8c3355eaf050e6d9ce1b3babf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e0fd07f_614e0715",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-24T00:11:28Z",
+      "side": 1,
+      "message": "Generally I think we\u0027d prefer to make the definition and usage of a method in one method.",
+      "parentUuid": "761d49ef_b25ee0d0",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "c63da8a740cc1e8c3355eaf050e6d9ce1b3babf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
