@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e18fca67_56261306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-24T03:05:21Z",
+      "side": 1,
+      "message": "chown. ditto for the remainder misspellings of this.",
+      "range": {
+        "startLine": 69,
+        "startChar": 22,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "fc57de1ff82571ecf4860d618f0c0f4603a22a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd399ac5_021b6103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-24T03:05:21Z",
+      "side": 1,
+      "message": "There\u0027s a lot of reuse with this function and subsequent functions. Consider extracting the duplicated lines into a separate functions, then passing through the required data and executing them all as subtests via s.Run.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "fc57de1ff82571ecf4860d618f0c0f4603a22a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa32ebf_73a88112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-24T03:05:21Z",
+      "side": 1,
+      "message": "Do we need this here? Can\u0027t we just pass userPath directly into filepath.Dir",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 18
+      },
+      "revId": "fc57de1ff82571ecf4860d618f0c0f4603a22a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e900a9b0_8517e936",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cryptohome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-24T03:05:21Z",
+      "side": 1,
+      "message": "You can join these together\n```\nif err :\u003d utility.MountVault(ctx, user, pass, label, true, hwsec.NewVaultConfig()); err !\u003d nil {\n...\n}\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "fc57de1ff82571ecf4860d618f0c0f4603a22a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
