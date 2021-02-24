@@ -14,8 +14,8 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -75,14 +75,8 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 		testEmail              = "test@gmail.com"
 	)
 
-	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Email or phone"}, 20*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find user name input: ", err)
-	}
-	defer element.Release(ctx)
-
 	s.Log("Click input to trigger virtual keyboard")
-	if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
+	if err := vkb.ClickUntilVKShown(ctx, tconn, nodewith.Name("Email or phone")); err != nil {
 		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
 	}
 

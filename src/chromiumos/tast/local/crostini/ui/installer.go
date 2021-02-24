@@ -73,10 +73,7 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 	slider := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeSlider}, uiTimeout)
 
 	// Check whether the virtual keyboard is shown.
-	virtualkb, err := vkb.IsShown(ctx, p.tconn)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to check whether virtual keyboard is shown")
-	} else if virtualkb {
+	if vkb.IsShown(ctx, p.tconn) {
 		// Hide virtual keyboard.
 		if err := vkb.HideVirtualKeyboard(ctx, p.tconn); err != nil {
 			return 0, errors.Wrap(err, "failed to hide virtual keyboard")

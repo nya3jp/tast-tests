@@ -12,11 +12,12 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/vkb"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -74,98 +75,44 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		languageLabel = "FR"
 	)
 
-	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.IMEPrefix+inputMethodID); err != nil {
-		s.Fatal("Failed to set input method: ", err)
-	}
-
 	inputField := testserver.TextAreaNoCorrectionInputField
-
-	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
-	}
-
-	params := ui.FindParams{
-		Name: languageLabel,
-	}
-	if err := ui.WaitUntilExists(ctx, tconn, params, 3*time.Second); err != nil {
-		s.Fatalf("Failed to switch to language %s: %v", inputMethodID, err)
+	ui := uiauto.New(tconn).WithTimeout(10 * time.Second).WithInterval(1 * time.Second)
+	if err := uiauto.Run(ctx,
+		ime.AddAndSetInputMethodAction(tconn, ime.IMEPrefix+inputMethodID),
+		inputField.ClickUntilVKShownAction(tconn),
+		uiauto.NamedAction("find language switch key",
+			ui.WithTimeout(3*time.Second).WaitUntilExists(nodewith.Name(languageLabel))),
+	); err != nil {
+		s.Fatal("Failed to open VK: ", err)
 	}
 
 	s.Log("Click and hold key for accent window")
-	vk, err := vkb.VirtualKeyboard(ctx, tconn)
+	key, err := vkb.FindKeyNode(ctx, tconn, keyName)
 	if err != nil {
-		s.Fatal("Failed to find virtual keyboad automation node: ", err)
-	}
-	defer vk.Release(ctx)
-
-	keyParams := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: keyName,
+		s.Fatalf("Failed to find key %s: %v", keyName, err)
 	}
 
-	key, err := vk.Descendant(ctx, keyParams)
-	if err != nil {
-		s.Fatalf("Failed to find key with %v: %v", keyParams, err)
-	}
-	defer key.Release(ctx)
+	if err := uiauto.Run(ctx,
+		uiauto.Combine("open accent window",
+			mouse.MoveAction(tconn, key.Location.CenterPoint(), 500*time.Millisecond),
+			mouse.PressAction(tconn, mouse.LeftButton)),
+		// Popup accent window sometimes flash on showing, so using polling instead of DescendantofTimeOut
+		uiauto.NamedAction("wait for window to show",
+			ui.WithTimeout(10*time.Second).WithInterval(1*time.Second).Poll(func(ctx context.Context) error {
+				accentContainer := nodewith.ClassName("goog-container goog-container-vertical accent-container")
+				if _, err := ui.Location(ctx, accentContainer); err != nil {
+					return errors.Wrap(err, "failed to find the container")
+				}
 
-	if err := mouse.Move(ctx, tconn, key.Location.CenterPoint(), 500*time.Millisecond); err != nil {
-		s.Fatalf("Failed to move mouse to key %s: %v", keyName, err)
-	}
-
-	if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
-		s.Fatal("Failed to press key: ", err)
-	}
-
-	// Popup accent window sometimes flash on showing, so using polling instead of DescendantofTimeOut
-	s.Log("Waiting for accent window pop up")
-	var location coords.Point
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		accentContainer, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "goog-container goog-container-vertical accent-container"}, 1*time.Second)
-		if err != nil {
-			return errors.Wrap(err, "failed to find the container")
-		}
-		defer accentContainer.Release(ctx)
-
-		// Wait for pop up window fully positioned
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			containerLocation := accentContainer.Location
-			testing.Sleep(ctx, time.Second)
-			accentContainer.Update(ctx)
-			if accentContainer.Location != containerLocation {
-				return errors.New("popup window is not positioned")
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			return err
-		}
-
-		accentKeyParams := ui.FindParams{Name: accentKeyName}
-		accentKey, err := accentContainer.Descendant(ctx, accentKeyParams)
-		if err != nil {
-			return errors.Wrapf(err, "failed to find accentkey with %v", accentKeyParams)
-		}
-		defer accentKey.Release(ctx)
-
-		if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to wait for animation finished")
-		}
-		accentKey.Update(ctx)
-		location = accentKey.Location.CenterPoint()
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
-		s.Fatal("Failed to wait for accent window: ", err)
-	}
-
-	if err := mouse.Move(ctx, tconn, location, 500*time.Millisecond); err != nil {
-		s.Fatalf("Failed to move mouse to key %s: %v", accentKeyName, err)
-	}
-
-	if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-		s.Fatal("Failed to release mouse click: ", err)
-	}
-
-	if err := inputField.WaitForValueToBe(ctx, tconn, accentKeyName); err != nil {
-		s.Fatal("Failed to verify input: ", err)
+				rect, err := ui.Location(ctx, nodewith.Name(accentKeyName).Role(role.StaticText).Ancestor(accentContainer))
+				if err != nil {
+					return errors.Wrapf(err, "failed to find accentkey %s", accentKeyName)
+				}
+				return mouse.Move(ctx, tconn, rect.CenterPoint(), 500*time.Millisecond)
+			})),
+		mouse.ReleaseAction(tconn, mouse.LeftButton),
+		inputField.WaitForValueToBeAction(tconn, accentKeyName),
+	); err != nil {
+		s.Fatal("Failed to type accent: ", err)
 	}
 }

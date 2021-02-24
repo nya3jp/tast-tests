@@ -12,8 +12,10 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -93,11 +95,9 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 				return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, ime.IMEPrefix+inputMethod)
 			}
 
-			imeKeyNode, err := vkb.DescendantNode(ctx, tconn, ui.FindParams{Name: inputMethodLabel})
-			if err != nil {
+			if _, err := vkb.DescendantNode(ctx, tconn, nodewith.Role(role.InlineTextBox).Name(inputMethodLabel)); err != nil {
 				return errors.Wrapf(err, "failed to wait for language menu label change to %s", inputMethodLabel)
 			}
-			defer imeKeyNode.Release(ctx)
 			return nil
 		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 			s.Fatal("Failed to assert input method: ", err)
@@ -134,15 +134,9 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click language menu on vk: ", err)
 	}
 
-	languageOptionParams := ui.FindParams{
-		Name: defaultInputMethodOption,
-	}
-	updatedLanguageOptionParams := ui.FindParams{
-		Name: updatedInputMethodOption,
-	}
-	opts := testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}
-	if err := ui.StableFindAndClick(ctx, tconn, languageOptionParams, &opts); err != nil {
-		if err := ui.StableFindAndClick(ctx, tconn, updatedLanguageOptionParams, &opts); err != nil {
+	ui := uiauto.New(tconn).WithTimeout(5 * time.Second).WithInterval(500 * time.Millisecond)
+	if err := ui.LeftClick(nodewith.Role(role.InlineTextBox).Name(defaultInputMethodOption))(ctx); err != nil {
+		if err := ui.LeftClick(nodewith.Role(role.InlineTextBox).Name(updatedInputMethodOption))(ctx); err != nil {
 			s.Fatalf("Failed to select language option %s or %s: %v", defaultInputMethodOption, updatedInputMethodOption, err)
 		}
 	}

@@ -14,7 +14,10 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -84,44 +87,30 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 	assertInputMode := func(mode inputMode) {
 		s.Log("Asserting input mode is ", mode.name)
 		// Using omnibox to verify input mode.
-		params := ui.FindParams{
-			Role:       ui.RoleTypeTextField,
-			Attributes: map[string]interface{}{"inputType": "url"},
-		}
+		omniboxResultParams := nodewith.ClassName("OmniboxResultView").First()
 
-		if err := vkb.FindAndClickUntilVKShown(ctx, tconn, params); err != nil {
-			s.Fatal("Failed to click the omnibox and wait for vk shown: ", err)
-		}
+		ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
+		if err := uiauto.Run(ctx,
+			vkb.ClickUntilVKShownAction(tconn, nodewith.Role(role.TextField).Attribute("inputType", "url")),
+			vkb.TapKeyAction(tconn, mode.typeKey),
+			// Value change can be a bit delayed after input.
+			ui.Poll(func(ctx context.Context) error {
+				searchResultNode, err := ui.WithTimeout(2*time.Second).Info(ctx, omniboxResultParams)
+				if err != nil {
+					return errors.Wrap(err, "failed to find omnibox results")
+				}
 
-		if err := vkb.TapKey(ctx, tconn, mode.typeKey); err != nil {
-			s.Fatal("Failed to input with virtual keyboard: ", err)
-		}
-
-		omniboxResultParams := ui.FindParams{ClassName: "OmniboxResultView"}
-
-		// Value change can be a bit delayed after input.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			searchResultFirstNode, err := ui.FindWithTimeout(ctx, tconn, omniboxResultParams, 2*time.Second)
-			if err != nil {
-				return errors.Wrap(err, "failed to find omnibox results")
-			}
-			defer searchResultFirstNode.Release(ctx)
-
-			if !strings.Contains(searchResultFirstNode.Name, mode.output) {
-				return errors.Errorf("unexpected output found: got %s; want %s", searchResultFirstNode.Name, mode.output)
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			s.Fatal("Failed to input with virtual keyboard: ", err)
-		}
-
-		// Delete input in omnibox.
-		if err := vkb.TapKey(ctx, tconn, "backspace"); err != nil {
-			s.Fatal("Failed to delete with virtual keyboard: ", err)
-		}
-
-		if err := ui.WaitUntilGone(ctx, tconn, omniboxResultParams, 10*time.Second); err != nil {
-			s.Fatal("Failed to wait for omnibox search result disappear after deleting input: ", err)
+				if !strings.Contains(searchResultNode.Name, mode.output) {
+					return errors.Errorf("unexpected output found: got %s; want %s", searchResultNode.Name, mode.output)
+				}
+				return nil
+			}),
+			// Delete input in omnibox.
+			vkb.TapKeyAction(tconn, "backspace"),
+			uiauto.NamedAction("wait for omnibox search result to disappear after deleting input",
+				ui.WaitUntilGone(omniboxResultParams)),
+		); err != nil {
+			s.Fatal("Failed to check that input mode has switched: ", err)
 		}
 	}
 
@@ -137,8 +126,8 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 		}
 
 		condition := func(ctx context.Context) (bool, error) {
-			isVKShown, err := vkb.IsShown(ctx, tconn)
-			return !isVKShown, err
+			isVKShown := vkb.IsShown(ctx, tconn)
+			return !isVKShown, nil
 		}
 		opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 2 * time.Second}
 		if err := header.LeftClickUntil(ctx, condition, &opts); err != nil {
