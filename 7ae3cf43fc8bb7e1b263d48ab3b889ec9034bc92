@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91dd6a44_d3501efa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2021-02-24T17:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1b8dee3_3dc016f9",
+      "revId": "7ae3cf43fc8bb7e1b263d48ab3b889ec9034bc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53bc8d53_b9688274",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c55390e6_e6ae1cce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2021-02-24T17:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53bc8d53_b9688274",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 4
+      },
+      "revId": "7ae3cf43fc8bb7e1b263d48ab3b889ec9034bc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2702e02f_37c6a55b",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-02-24T05:31:17Z",
       "side": 1,
       "message": "nit: const filepPath \u003d ...",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "7ae3cf43fc8bb7e1b263d48ab3b889ec9034bc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38b015c_ff5ecc69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2021-02-24T17:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2702e02f_37c6a55b",
       "range": {
         "startLine": 88,
         "startChar": 2,
