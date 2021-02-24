@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af67a49b_b5049eb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-24T00:25:42Z",
+      "side": 1,
+      "message": "Thanks, I removed it. The original thought was this might be useful for post processing. But let\u0027s add it when it is needed.",
+      "parentUuid": "57f7183e_68a84a01",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 25
+      },
+      "revId": "e860f07736b15347958dcc3236647b1951a2d223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3668e02c_1f2ffc4a",
