@@ -68,6 +68,24 @@
       "parentUuid": "e123faf1_19083648",
       "revId": "16e802b154bd76f7a22764ebd9318e7fa8109386",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4882b0d4_8134411f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-24T07:39:29Z",
+      "side": 1,
+      "message": "I should have been more precise with naming there. I noticed that once - Oleh pointed it out in my review and then I used url variable which was accessible in the code but I didn\u0027t define it.",
+      "parentUuid": "2acbe7e1_90a51a2d",
+      "revId": "16e802b154bd76f7a22764ebd9318e7fa8109386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
