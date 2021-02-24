@@ -38,6 +38,7 @@ func (f *fakeAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to create a tempdir: ", err)
 	}
 	f.extDirBase = extDirBase
+	testing.ContextLogf(ctx, "extdir: %s", extDirBase)
 
 	dirs, err := PrepareFakeApps(extDirBase, f.numApps)
 	if err != nil {
