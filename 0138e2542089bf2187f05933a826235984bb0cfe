@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdff1618_0434f48c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-24T00:53:55Z",
+      "side": 1,
+      "message": "Please do not use uiauto.Run from now on since it is being deleted in this cl: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2711153",
+      "range": {
+        "startLine": 175,
+        "startChar": 15,
+        "endLine": 175,
+        "endChar": 18
+      },
+      "revId": "0138e2542089bf2187f05933a826235984bb0cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
