@@ -22,6 +22,30 @@
       },
       "revId": "4245252c9ad5863c303111e28e84e340aee0b677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7e299a_fdcb2f67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-24T06:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a780cb3_d139d3c0",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 5
+      },
+      "revId": "4245252c9ad5863c303111e28e84e340aee0b677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
