@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "b72060d9170ee81ccf87dddb76a91c322587f6c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4364b28e_c2c22148",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-02-24T03:08:37Z",
+      "side": 1,
+      "message": "thanks for the change!\nDerek, are you okay with that?",
+      "revId": "b72060d9170ee81ccf87dddb76a91c322587f6c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
