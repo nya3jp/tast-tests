@@ -39,7 +39,7 @@ func CryptohomeTPMLiveTestsTPM2(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 
-	if err := hwseclocal.ResetTPMAndSystemStates(ctx); err != nil {
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to reset TPM or system states: ", err)
 	}
 	if err := cryptohome.CheckService(ctx); err != nil {

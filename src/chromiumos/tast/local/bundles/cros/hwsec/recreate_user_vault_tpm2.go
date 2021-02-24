@@ -50,7 +50,7 @@ func RecreateUserVaultTPM2(ctx context.Context, s *testing.State) {
 	utility := helper.CryptohomeClient()
 
 	// Resets the TPM, system, and user states before running the tests.
-	if err := hwseclocal.ResetTPMAndSystemStates(ctx); err != nil {
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to reset TPM or system states: ", err)
 	}
 	if err = cryptohome.CheckService(ctx); err != nil {
@@ -107,7 +107,7 @@ func RecreateUserVaultTPM2(ctx context.Context, s *testing.State) {
 
 	s.Log("Phase 3: clears TPM and mounts user vault again")
 
-	if err := hwseclocal.ResetTPMAndSystemStates(ctx); err != nil {
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to reset TPM or system states: ", err)
 	}
 	if err = cryptohome.CheckService(ctx); err != nil {

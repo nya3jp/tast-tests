@@ -49,7 +49,7 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	// Write NVRAM Index is used to trigger an increase in DA counter.
 
 	// Reset TPM and take ownership.
-	if err := hwseclocal.ResetTPMAndSystemStates(ctx); err != nil {
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to reset TPM or system states: ", err)
 	}
 	if err := cryptohome.CheckService(ctx); err != nil {
