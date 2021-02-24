@@ -177,6 +177,16 @@ func Scan(ctx context.Context, s *testing.State) {
 	}()
 	defer ippusbbridge.Kill(cleanupCtx, devInfo)
 
+	// Launch the Scan app, configure the settings, and perform scans.
+	app, err := scanapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch app: ", err)
+	}
+
+	if err := app.ClickMoreSettings()(ctx); err != nil {
+		s.Fatal("Failed to expand More settings: ", err)
+	}
+
 	for _, test := range tests {
 		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
 			defer func() {
@@ -185,28 +195,12 @@ func Scan(ctx context.Context, s *testing.State) {
 				}
 			}()
 
-			// Launch the Scan app, configure the settings, and perform a scan.
-			app, err := scanapp.Launch(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to launch app: ", err)
-			}
-
-			if err := app.ClickMoreSettings()(ctx); err != nil {
-				s.Fatal("Failed to expand More settings: ", err)
-			}
-
 			if err := uiauto.Combine("scan",
 				app.SetScanSettings(test.settings),
 				app.Scan(),
+				app.ClickDone(),
 			)(ctx); err != nil {
 				s.Fatal("Failed to perform scan: ", err)
-			}
-
-			// TODO(jschettler): Click the done button instead of closing the
-			// app. Closing the app is a workaround for an issue where some
-			// nodes don't exist after leaving the done page.
-			if err := app.Close(ctx); err != nil {
-				s.Fatal("Failed to close app: ", err)
 			}
 
 			scan, err := getScan(defaultScanPattern)
