@@ -84,7 +84,7 @@ func init() {
 				// real consent variant.
 				restartChrome: true,
 			},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"breakpad", "metrics_consent"},
 		}, {
 			Name: "gpu_process_breakpad_mock_consent",
