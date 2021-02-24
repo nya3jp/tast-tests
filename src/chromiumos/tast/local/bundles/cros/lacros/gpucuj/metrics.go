@@ -30,6 +30,16 @@ var metricMap = map[string]struct {
 	direction perf.Direction
 	uma       bool
 }{
+	"Graphics.Smoothness.Checkerboarding.TouchScroll": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.Checkerboarding.WheelScroll": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
 	"Graphics.Smoothness.PercentDroppedFrames.AllAnimations": {
 		unit:      "percent",
 		direction: perf.SmallerIsBetter,
