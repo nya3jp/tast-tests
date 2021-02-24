@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8b97bcd_a89cd3aa",
+        "filename": "src/chromiumos/tast/local/chrome/ui/mouse/mouse.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-24T05:24:09Z",
+      "side": 1,
+      "message": "Please use *Action to chain up the actions. Please transfer other similar places in these files in cl using the *Action methods.",
+      "range": {
+        "startLine": 88,
+        "startChar": 11,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "6b20180832e93b7be6018c01cfd7bd0fa319c510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e274f098_9eabc977",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-24T05:24:09Z",
+      "side": 1,
+      "message": "there is a watcher.go in uiauto, please add WaitForLocationChangeCompletedAction there.",
+      "range": {
+        "startLine": 161,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 11
+      },
+      "revId": "6b20180832e93b7be6018c01cfd7bd0fa319c510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
