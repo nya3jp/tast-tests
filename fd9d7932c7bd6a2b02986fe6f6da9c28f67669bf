@@ -70,6 +70,30 @@
       },
       "revId": "fd9d7932c7bd6a2b02986fe6f6da9c28f67669bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3033bb07_38e0463d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-24T22:52:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a8d248c_953418bf",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "fd9d7932c7bd6a2b02986fe6f6da9c28f67669bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
