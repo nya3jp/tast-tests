@@ -44,12 +44,12 @@ func (r *CmdRunnerLocal) Run(ctx context.Context, cmd string, args ...string) ([
 
 // CmdHelperLocalImpl implements the helper functions for CmdHelperLocal
 type CmdHelperLocalImpl struct {
-	h hwsec.CmdHelperIF
+	h hwsec.CmdTPMClearHelperIF
 }
 
 // CmdHelperLocal extends the function set of hwsec.CmdHelper
 type CmdHelperLocal struct {
-	hwsec.CmdHelper
+	hwsec.CmdTPMClearHelper
 	CmdHelperLocalImpl
 }
 
@@ -67,8 +67,11 @@ type FullHelperLocal struct {
 // NewHelper creates a new hwsec.CmdHelper instance that make use of the functions
 // implemented by CmdRunnerLocal.
 func NewHelper(r hwsec.CmdRunner) (*CmdHelperLocal, error) {
-	helper := hwsec.NewCmdHelper(r)
-	return &CmdHelperLocal{*helper, CmdHelperLocalImpl{helper}}, nil
+	cmdHelper := hwsec.NewCmdHelper(r)
+	tpmClearer := NewTPMClearer(r, cmdHelper.DaemonController())
+	tpmClearHelper := hwsec.NewTPMClearHelper(tpmClearer)
+	cmdTpmHelper := hwsec.NewCmdTPMClearHelper(cmdHelper, tpmClearHelper)
+	return &CmdHelperLocal{*cmdTpmHelper, CmdHelperLocalImpl{cmdTpmHelper}}, nil
 }
 
 // NewAttestationHelper creates a new hwsec.AttestationHelper instance that make use of the functions
@@ -90,7 +93,10 @@ func NewFullHelper(ctx context.Context, r hwsec.CmdRunner) (*FullHelperLocal, er
 	}
 	cmdHelper := hwsec.NewCmdHelper(r)
 	attestationHelper := hwsec.NewAttestationHelper(ac)
-	helper := hwsec.NewFullHelper(cmdHelper, attestationHelper)
+	tpmClearer := NewTPMClearer(r, cmdHelper.DaemonController())
+	tpmClearHelper := hwsec.NewTPMClearHelper(tpmClearer)
+	cmdTpmHelper := hwsec.NewCmdTPMClearHelper(cmdHelper, tpmClearHelper)
+	helper := hwsec.NewFullHelper(cmdTpmHelper, attestationHelper)
 	return &FullHelperLocal{*helper, CmdHelperLocalImpl{helper}}, nil
 }
 
