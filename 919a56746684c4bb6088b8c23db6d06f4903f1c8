@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74e1b7c_dae99c89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-24T23:25:10Z",
+      "side": 1,
+      "message": "Thanks Jun and Shuhei for clarifying the binary packaging issue. I leave the TestParameter definition in the cuj package, but move the generator only definitions to the same ui package as cuj test cases in _test.go file. This makes sure the generator definitions are included in only test binary.",
+      "parentUuid": "11f92a8f_b980f8e5",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 51
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dd3a1bd_b3baa9d0",
@@ -392,6 +416,30 @@
       "side": 1,
       "message": "I agree that it\u0027s nice to ensure that parameter naming convention is aligned across all CUJ tests.\n\nOTOH, in the current approach, we define a struct (TestParameters) that is a union of test parameters of all CUJ tests. This struct has to accumulate internal details of all different CUJ tests. IIUC that\u0027s Jun\u0027s concern.\n\nWe might be able to define a utility library without introducing a union type, e.g. by reflection. But I\u0027m not confident that it would be a useful utility.",
       "parentUuid": "22d197b4_5f095701",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9173388b_49489b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-24T23:25:10Z",
+      "side": 1,
+      "message": "Jun, the quick_check_cuj2 only has basic tier at this time. To be consistent with other CUJs, I prefer leave the \"basic_\" token in the parameter so when seeing this test we know it is basic tier and can be run on \"basic\" plus models.\n\nShuhei, Jun, I redefined the cuj.TestParameters - it includes a common struct for all CUJs (Category with tier, screen mode and a scenario field), and also has a interface{} that allow test cases define their own parameters. This way we don\u0027t need the union structure. Please help review. Thanks!",
+      "parentUuid": "929227cf_98392351",
       "range": {
         "startLine": 160,
         "startChar": 1,
