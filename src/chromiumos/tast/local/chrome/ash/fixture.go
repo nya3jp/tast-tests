@@ -6,8 +6,10 @@ package ash
 
 import (
 	"context"
+	"encoding/base64"
 	"io/ioutil"
 	"os"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/chrome"
@@ -24,6 +26,10 @@ func init() {
 		Impl:            &fakeAppsFixture{numApps: 100},
 		SetUpTimeout:    fixtureTimeout,
 		TearDownTimeout: fixtureTimeout,
+		// Fixtures don't support external data yet, so icon files are supplied
+		// through a runtime variable for now.
+		// TODO(crbug.com/1127165): fix this.
+		Vars: []string{"ash.fake_icon_data"},
 	})
 }
 
@@ -39,7 +45,15 @@ func (f *fakeAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 	f.extDirBase = extDirBase
 
-	dirs, err := PrepareFakeApps(extDirBase, f.numApps)
+	var iconData []byte
+	if varsData, ok := s.Var("ash.fake_icon_data"); ok {
+		var err error
+		if iconData, err = ioutil.ReadAll(base64.NewDecoder(base64.StdEncoding, strings.NewReader(varsData))); err != nil {
+			s.Fatal("Failed to parse fake icon data")
+		}
+	}
+
+	dirs, err := PrepareFakeApps(extDirBase, f.numApps, iconData)
 	if err != nil {
 		s.Fatal("Failed to prepare fake apps: ", err)
 	}

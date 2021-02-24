@@ -5,8 +5,10 @@
 package ash
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"image/png"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -74,8 +76,9 @@ func TriggerLauncherStateChange(ctx context.Context, tconn *chrome.TestConn, acc
 // the directory of baseDir and returns their path names. The intermediate
 // data may remain even when an error is returned. It is the caller's
 // responsibility to clean up the contents under the baseDir. This also may
-// update the ownership of baseDir.
-func PrepareFakeApps(baseDir string, num int) ([]string, error) {
+// update the ownership of baseDir. iconData is the data of the icon for those
+// fake apps in png format, or nil if the default icon is used.
+func PrepareFakeApps(baseDir string, num int, iconData []byte) ([]string, error) {
 	// The manifest.json data for the fake hosted app; it just opens google.com
 	// page on launch.
 	const manifestTmpl = `{
@@ -83,6 +86,7 @@ func PrepareFakeApps(baseDir string, num int) ([]string, error) {
 		"name": "fake app %d",
 		"manifest_version": 2,
 		"version": "0",
+		%s
 		"app": {
 			"launch": {
 				"web_url": "https://www.google.com/"
@@ -92,13 +96,39 @@ func PrepareFakeApps(baseDir string, num int) ([]string, error) {
 	if err := extension.ChownContentsToChrome(baseDir); err != nil {
 		return nil, errors.Wrapf(err, "failed to change ownership of %s", baseDir)
 	}
+
+	var iconFile string
+	var iconJSON string
+	if iconData != nil {
+		img, err := png.Decode(bytes.NewReader(iconData))
+		if err != nil {
+			return nil, err
+		}
+		iconDir := filepath.Join(baseDir, "icons")
+		iconSize := img.Bounds().Size().X
+		iconFile = fmt.Sprintf("icon%d.png", iconSize)
+		iconJSON = fmt.Sprintf(`"icons": {"%d": "%s"},`, iconSize, iconFile)
+		iconFile = filepath.Join(baseDir, "icons", iconFile)
+		if err := os.Mkdir(iconDir, 0755); err != nil {
+			return nil, errors.Wrapf(err, "failed to create the icon directory %q", iconDir)
+		}
+		if err := ioutil.WriteFile(iconFile, iconData, 0644); err != nil {
+			return nil, err
+		}
+	}
+
 	extDirs := make([]string, 0, num)
 	for i := 0; i < num; i++ {
 		extDir := filepath.Join(baseDir, fmt.Sprintf("fake_%d", i))
 		if err := os.Mkdir(extDir, 0755); err != nil {
 			return nil, errors.Wrapf(err, "failed to create the directory for %d-th extension", i)
 		}
-		if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, i)), 0644); err != nil {
+		if iconFile != "" {
+			if err := os.Symlink(iconFile, filepath.Join(extDir, filepath.Base(iconFile))); err != nil {
+				return nil, errors.Wrapf(err, "failed to create link of icon %q", iconFile)
+			}
+		}
+		if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, i, iconJSON)), 0644); err != nil {
 			return nil, errors.Wrapf(err, "failed to prepare manifest.json for %d-th extension", i)
 		}
 		extDirs = append(extDirs, extDir)
