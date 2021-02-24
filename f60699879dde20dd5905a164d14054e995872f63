@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3301716_b0b9863c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-24T09:57:49Z",
+      "side": 1,
+      "message": "cc harpreet, FYI. This only moves the tests to another Autotest wrapper in the same suite and should not create noticeable change in test results. (other than possibly less \"Failed to reconnect to DUT\")",
+      "revId": "f60699879dde20dd5905a164d14054e995872f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
