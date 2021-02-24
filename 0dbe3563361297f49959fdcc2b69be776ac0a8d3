@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6bb3943a_e5089b21",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-24T07:02:23Z",
+      "side": 1,
+      "message": "btw, I found NewCryptohomeBinary doesn\u0027t have to return an error, because it never returns error. You may want to update it before this CL.",
+      "parentUuid": "8c9e7593_d5291be5",
+      "range": {
+        "startLine": 149,
+        "startChar": 16,
+        "endLine": 149,
+        "endChar": 17
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec3f6a8c_3b74346d",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 10
