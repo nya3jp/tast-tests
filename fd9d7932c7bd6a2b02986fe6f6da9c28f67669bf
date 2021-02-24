@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94ea0bec_88c85c3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-24T22:15:56Z",
+      "side": 1,
+      "message": "Overall I am fine with this change, but I am a bit confused to the changes to all of the home icon specifications. Why are we making these PackageName instead of the specific objects they used to wait for? Also if we change this, homeIcon isn\u0027t really a good name anymore.",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "fd9d7932c7bd6a2b02986fe6f6da9c28f67669bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
