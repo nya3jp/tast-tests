@@ -16,6 +16,23 @@
       "message": "I will carry over left comments in an another review. ",
       "revId": "1cbcc36d86a62782dbb7a8f929c8548ead70cf62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4270c8_b7153526",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-24T13:04:25Z",
+      "side": 1,
+      "message": "Follow up on \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2717316",
+      "revId": "1cbcc36d86a62782dbb7a8f929c8548ead70cf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
