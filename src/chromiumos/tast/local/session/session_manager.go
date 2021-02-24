@@ -16,7 +16,9 @@ import (
 	"chromiumos/policy/enterprise_management"
 	lm "chromiumos/system_api/login_manager_proto"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
@@ -107,6 +109,42 @@ func (m *SessionManager) EnableChromeTesting(ctx context.Context, forceRelaunch 
 		return "", err
 	}
 	return filepath, nil
+}
+
+// EnableChromeTestingAndWait calls EnableChromeTesting and waits for the new
+// chrome process to start up.
+func (m *SessionManager) EnableChromeTestingAndWait(ctx context.Context, forceRelaunch bool,
+	extraArguments, extraEnvironmentVariables []string) (filepath string, err error) {
+	// Wait for a browser to start since session_manager can take a while to start it.
+	var oldPID int
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		oldPID, err = chromeproc.GetRootPID()
+		return err
+	}, nil); err != nil {
+		return "", errors.Wrap(err, "failed to find the browser process")
+	}
+
+	filepath, enableErr := m.EnableChromeTesting(ctx, forceRelaunch, extraArguments, extraEnvironmentVariables)
+	if enableErr != nil {
+		return "", enableErr
+	}
+
+	// Wait for a new browser to appear.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		newPID, err := chromeproc.GetRootPID()
+		if err != nil {
+			return err
+		}
+		if newPID == oldPID {
+			return errors.New("Original browser still running")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
+		return "", err
+	}
+
+	return filepath, enableErr
 }
 
 // HandleSupervisedUserCreationStarting calls

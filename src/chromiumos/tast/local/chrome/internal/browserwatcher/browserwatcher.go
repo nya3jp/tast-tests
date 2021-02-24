@@ -14,7 +14,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/internal/chromeproc"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/testing"
 )
 

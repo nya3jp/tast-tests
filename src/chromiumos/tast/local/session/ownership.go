@@ -60,8 +60,11 @@ func SetUpDevice(ctx context.Context) error {
 // PrepareChromeForPolicyTesting prepares Chrome for ownership or policy tests.
 // This prevents a crash on startup due to synchronous profile creation and not
 // knowing whether to expect policy, see https://crbug.com/950812.
+// Waits for the new chrome browser to start so that when test calls
+// StartSession, it is not picked up by chrome. Otherwise, chrome crashes
+// because it does not know the test user. See https://crbug.com/1166265.
 func PrepareChromeForPolicyTesting(ctx context.Context, m *SessionManager) error {
-	_, err := m.EnableChromeTesting(ctx, true, []string{"--profile-requires-policy=false"}, []string{})
+	_, err := m.EnableChromeTestingAndWait(ctx, true, []string{"--profile-requires-policy=false"}, []string{})
 	return err
 }
 
