@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed0f46e_11a5e91a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-02-24T19:52:39Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "8c82dc3b8289f4c1b45c61fa8bef23db464e71b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4475025b_12d369dc",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-02-24T19:52:39Z",
+      "side": 1,
+      "message": "nit: slightly cleaner to return directly\n\n    return s.SetString(ctx, ActiveChgPort, port)",
+      "revId": "8c82dc3b8289f4c1b45c61fa8bef23db464e71b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea5861a6_9e7f1642",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-02-24T19:52:39Z",
+      "side": 1,
+      "message": "L146 will initialize voltageMV, so you can remove this line.",
+      "revId": "8c82dc3b8289f4c1b45c61fa8bef23db464e71b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
