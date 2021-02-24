@@ -36,12 +36,13 @@ func init() {
 }
 
 func ShelfLaunch(ctx context.Context, s *testing.State) {
+	f := s.FixtValue().(launcher.FixtData)
 	// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
-	if err := launcher.EnsureLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact)); err != nil {
+	if err := launcher.EnsureLacrosChrome(ctx, f, s.DataPath(launcher.DataArtifact)); err != nil {
 		s.Fatal("Failed to extract lacros binary: ", err)
 	}
 
-	tconn, err := s.FixtValue().(launcher.FixtData).Chrome.TestAPIConn(ctx)
+	tconn, err := f.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
@@ -95,13 +96,16 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Checking that Lacros window is visible")
-	if err := launcher.WaitForLacrosWindow(ctx, tconn, "Welcome to Chrome"); err != nil {
+	firstRunPage := "New Tab"
+	if f.IsChromeBranded {
+		firstRunPage = "Welcome to Chrome"
+	}
+	if err := launcher.WaitForLacrosWindow(ctx, tconn, firstRunPage); err != nil {
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 
 	s.Log("Connecting to the lacros-chrome browser")
-	p := s.FixtValue().(launcher.FixtData)
-	l, err := launcher.ConnectToLacrosChrome(ctx, p.LacrosPath, launcher.LacrosUserDataDir)
+	l, err := launcher.ConnectToLacrosChrome(ctx, f.LacrosPath, launcher.LacrosUserDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}
