@@ -7,15 +7,18 @@ package network
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -87,9 +90,37 @@ func (a *AllowlistService) GaiaLogin(ctx context.Context, req *network.GaiaLogin
 
 // CheckArcAppInstalled verifies that ARC provisioning and installing ARC apps by checking that force installed apps are successfully installed.
 func (a *AllowlistService) CheckArcAppInstalled(ctx context.Context, req *network.CheckArcAppInstalledRequest) (*empty.Empty, error) {
-	// TODO(acostinas,b/181110031): Implement `CheckArcAppInstalled`.
-	return nil, errors.New("method CheckArcAppInstalled not implemented")
+	if a.cr == nil {
+		return nil, errors.New("Please start a new Chrome instance that uses the firewall by calling GaiaLogin()")
+	}
 
+	td, _ := testing.ContextOutDir(ctx)
+	arc, err := arc.New(ctx, td)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start ARC")
+	}
+	defer arc.Close(ctx)
+
+	// Ensure that Android packages are force-installed by ARC policy.
+	ctx, st := timing.Start(ctx, "wait_packages")
+	defer st.End()
+
+	testing.ContextLog(ctx, "Waiting for packages to be installed")
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
+		pkgs, err := arc.InstalledPackages(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		if _, appFound := pkgs[req.AppName]; appFound {
+			return nil
+		}
+		return errors.New("failed to install 3rd party app")
+	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 180 * time.Second}); err != nil {
+		return nil, err
+	}
+
+	return &empty.Empty{}, nil
 }
 
 // CheckExtensionInstalled verifies that specified extension is installed by performing a full-text search on the chrome://extensions page.
