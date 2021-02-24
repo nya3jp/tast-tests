@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64f889d_9b764151",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-02-24T01:13:13Z",
+      "side": 0,
+      "message": "If we are removing Run, I am assuming there is a bunch of documentation that needs to be updated as well, posssibly examples in code as well...",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 8
+      },
+      "revId": "31cde8977e1debff94d36a249caa6e1056add476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
