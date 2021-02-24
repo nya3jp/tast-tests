@@ -16,6 +16,24 @@
       "message": "nit: it takes some time for?",
       "revId": "b5b93344b86c693882961c744c9e02ceca153920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a348113_955463ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-02-24T11:33:03Z",
+      "side": 1,
+      "message": "Thanks! Done.",
+      "parentUuid": "48014653_4bd35985",
+      "revId": "b5b93344b86c693882961c744c9e02ceca153920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
