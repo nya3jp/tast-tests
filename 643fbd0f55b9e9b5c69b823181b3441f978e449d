@@ -16,6 +16,69 @@
       "message": "lgtm % others",
       "revId": "643fbd0f55b9e9b5c69b823181b3441f978e449d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9be63b6a_3b59ad4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-24T17:18:44Z",
+      "side": 1,
+      "message": "Sorry, 1 more thing to tack on. Essentially we wanted to do a minor api clean up and remove Run in favor of Combine since they are basically the same method.",
+      "revId": "643fbd0f55b9e9b5c69b823181b3441f978e449d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1012d560_64dc426b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-24T17:18:44Z",
+      "side": 1,
+      "message": "Oh, one other thing, can you actually use uiauto.Combine here?\nAfter some discussion, we have decided to just support Combine instead of Run for simplicity and clarity reasons. It is essentially the same method, but you have to pass in a string of what operation is happening. Then you also won\u0027t need errors.Wrap.\n\nRun isn\u0027t removed yet, but it will be by this CL: crrev.com/c/2711153\n\nsomething like:\n\n uiauto.Combine(\"do x\",\n   ...\n )(ctx)",
+      "range": {
+        "startLine": 191,
+        "startChar": 19,
+        "endLine": 191,
+        "endChar": 22
+      },
+      "revId": "643fbd0f55b9e9b5c69b823181b3441f978e449d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7de5e54_f9b32b6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-24T17:18:44Z",
+      "side": 1,
+      "message": "To go along with my comment above, you can just directly call this:\n\nui.WaitUntilExists(button)(ctx)",
+      "range": {
+        "startLine": 194,
+        "startChar": 12,
+        "endLine": 194,
+        "endChar": 56
+      },
+      "revId": "643fbd0f55b9e9b5c69b823181b3441f978e449d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
