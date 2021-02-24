@@ -8,6 +8,7 @@ import (
 	"context"
 	"io/ioutil"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
@@ -86,6 +87,8 @@ func init() {
 			},
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"breakpad", "metrics_consent"},
+			// This test performs 2 logins.
+			Timeout: 2*chrome.LoginTimeout + time.Minute,
 		}, {
 			Name: "gpu_process_breakpad_mock_consent",
 			Val: chromeCrashLoggedInParams{

@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
@@ -36,6 +37,8 @@ func init() {
 				consent: crash.RealConsent,
 			},
 			ExtraSoftwareDeps: []string{"breakpad", "metrics_consent"},
+			// This test performs 2 logins.
+			Timeout: 2*chrome.LoginTimeout + time.Minute,
 		}, {
 			Name: "browser_breakpad_mock_consent",
 			Val: chromeCrashNotLoggedInParams{
@@ -53,6 +56,8 @@ func init() {
 			},
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
+			// This test performs 2 logins.
+			Timeout: 2*chrome.LoginTimeout + time.Minute,
 		}, {
 			Name: "browser_crashpad_mock_consent",
 			Val: chromeCrashNotLoggedInParams{
@@ -70,6 +75,8 @@ func init() {
 				consent: crash.RealConsent,
 			},
 			ExtraSoftwareDeps: []string{"breakpad", "metrics_consent"},
+			// This test performs 2 logins.
+			Timeout: 2*chrome.LoginTimeout + time.Minute,
 		}, {
 			Name: "gpu_process_breakpad_mock_consent",
 			Val: chromeCrashNotLoggedInParams{
@@ -87,6 +94,8 @@ func init() {
 			},
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
+			// This test performs 2 logins.
+			Timeout: 2*chrome.LoginTimeout + time.Minute,
 		}, {
 			Name: "gpu_process_crashpad_mock_consent",
 			Val: chromeCrashNotLoggedInParams{
