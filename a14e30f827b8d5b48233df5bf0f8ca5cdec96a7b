@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "557e54e0_c91e893a",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-24T00:07:49Z",
+      "side": 1,
+      "message": "Thanks for review this again, Jun.\n\nI was reading the implementation of IsArcProvisioned() and found it is only got provisioned after Optin. (The kArcSignedIn flag). So I put it under optin so users know they are related. Hope this makes sense.\n\nhttps://chromium.googlesource.com/chromium/src/+/master/chrome/browser/chromeos/arc/arc_util.cc\nhttps://chromium.googlesource.com/chromium/src/+/HEAD/components/arc/arc_prefs.cc",
+      "parentUuid": "e277ae14_221dd87c",
+      "range": {
+        "startLine": 158,
+        "startChar": 5,
+        "endLine": 158,
+        "endChar": 21
+      },
+      "revId": "a14e30f827b8d5b48233df5bf0f8ca5cdec96a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9056d229_f98790de",
