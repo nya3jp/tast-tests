@@ -46,6 +46,30 @@
       },
       "revId": "5d26d73e9d7b18f4c4ae37b97cd6a744b725d810",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e414aa9_3fbf8fa0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-02-24T01:21:54Z",
+      "side": 1,
+      "message": "Haha, definitely not your fault",
+      "parentUuid": "bc3a67cc_39720297",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 60
+      },
+      "revId": "5d26d73e9d7b18f4c4ae37b97cd6a744b725d810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
