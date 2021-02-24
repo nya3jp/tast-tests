@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/testing"
 )
 
@@ -29,8 +30,7 @@ func init() {
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			// TODO(b/179498403): Reenable when the test is fixed.
-			// ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 		}},
 	})
 }
@@ -181,6 +181,17 @@ func Clipboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the app shown: ", err)
 	}
 
+	rect, err := act.WindowBounds(ctx)
+	if err != nil {
+		s.Fatal("Failed to get the window bounds: ", err)
+	}
+
+	// Click the center of the activity from Chrome to generate the first mouse event, because
+	// Wayland's set_selection should be associated with a valid serial number from an actual event.
+	if err := mouse.Click(ctx, tconn, rect.CenterPoint(), mouse.LeftButton); err != nil {
+		s.Fatal("Failed to click the center of the app: ", err)
+	}
+
 	s.Log("Waiting for chrome.clipboard API to become available")
 	if err := tconn.WaitForExpr(ctx, "chrome.clipboard"); err != nil {
 		s.Fatal("chrome.clipboard API unavailable: ", err)
@@ -241,14 +252,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to enable observer: ", err)
 		}
 		defer d.Object(ui.ID(observerDisableID)).Click(ctx)
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if msg, err := d.Object(ui.ID(observerTextViewID)).GetText(ctx); err != nil {
-				return testing.PollBreak(err)
-			} else if msg != observerReady {
-				return errors.New("observer is not yet ready")
-			}
-			return nil
-		}, nil); err != nil {
+		if err := d.Object(ui.ID(observerTextViewID)).WaitForText(ctx, observerReady, 5*time.Second); err != nil {
 			s.Fatal("Failed to wait for observer ready: ", err)
 		}
 
