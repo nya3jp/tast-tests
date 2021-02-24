@@ -32,10 +32,15 @@ type params struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ScanESCLIPP,
-		Desc:         "Tests eSCL scanning via an ipp-over-usb tunnel",
-		Contacts:     []string{"bmgordon@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     ScanESCLIPP,
+		Desc:     "Tests eSCL scanning via an ipp-over-usb tunnel",
+		Contacts: []string{"bmgordon@chromium.org", "project-bolton@google.com"},
+		Attr: []string{
+			"group:mainline",
+			"informational",
+			"group:paper-io",
+			"paper-io_scanning",
+		},
 		SoftwareDeps: []string{"virtual_usb_printer", "cups", "chrome"},
 		Pre:          chrome.LoggedIn(),
 		Data:         []string{sourceImage, goldenImage},
