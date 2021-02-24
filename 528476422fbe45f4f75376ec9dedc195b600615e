@@ -50,6 +50,23 @@
       "message": "This is a KI, will simply keep retrying till the issue has been fixed in the builders; no other way for me to know.",
       "revId": "528476422fbe45f4f75376ec9dedc195b600615e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17886ae5_377f0265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-24T10:57:22Z",
+      "side": 1,
+      "message": "*sigh* again....",
+      "revId": "528476422fbe45f4f75376ec9dedc195b600615e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
