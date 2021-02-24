@@ -70,6 +70,24 @@
       "parentUuid": "2aac2ecd_4901d7fd",
       "revId": "e1c5caa5f4c8c4ed83c474108bded4b2c7028b11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12dc42e6_e93022ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-02-24T22:49:27Z",
+      "side": 1,
+      "message": "Kimiyuki, can you link to the previous discussion / design doc ? I think fixture was introduced because it was difficult to do as suggested by nya.",
+      "parentUuid": "78f103df_edacfbfa",
+      "revId": "e1c5caa5f4c8c4ed83c474108bded4b2c7028b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
