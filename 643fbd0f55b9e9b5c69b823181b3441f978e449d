@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e9b52f_ea164001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T18:58:40Z",
+      "side": 1,
+      "message": "Thanks for the info!  Done.",
+      "parentUuid": "1012d560_64dc426b",
+      "range": {
+        "startLine": 191,
+        "startChar": 19,
+        "endLine": 191,
+        "endChar": 22
+      },
+      "revId": "643fbd0f55b9e9b5c69b823181b3441f978e449d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7de5e54_f9b32b6c",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-24T17:18:44Z",
       "side": 1,
       "message": "To go along with my comment above, you can just directly call this:\n\nui.WaitUntilExists(button)(ctx)",
+      "range": {
+        "startLine": 194,
+        "startChar": 12,
+        "endLine": 194,
+        "endChar": 56
+      },
+      "revId": "643fbd0f55b9e9b5c69b823181b3441f978e449d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b32403c_ec17f7d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T18:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7de5e54_f9b32b6c",
       "range": {
         "startLine": 194,
         "startChar": 12,
