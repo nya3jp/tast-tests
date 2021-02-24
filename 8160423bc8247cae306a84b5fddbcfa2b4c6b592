@@ -142,6 +142,30 @@
       },
       "revId": "8160423bc8247cae306a84b5fddbcfa2b4c6b592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985757c9_8b8fa14c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-02-24T01:05:38Z",
+      "side": 1,
+      "message": "This patch is a workaround for now anyways, and would ultimately be removed upon bug resolution. It seems like the SoftwareDep works for now, but I can revert back to any strategy if needed.\n\nI guess the tradeoff here is that if we block on crbug/1124372, we can\u0027t promote the persistence tests which are essentially only blocked on the reboot issue. Do we know when jacuzzi-kernelnext/arc-r efforts would begin?",
+      "parentUuid": "fcd9a85c_b040705d",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "8160423bc8247cae306a84b5fddbcfa2b4c6b592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
