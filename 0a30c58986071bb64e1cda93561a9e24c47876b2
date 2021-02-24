@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f22a4013_a3a47dd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-24T22:13:34Z",
+      "side": 1,
+      "message": "only use it only platforms -\u003e only use it for platforms?",
+      "revId": "0a30c58986071bb64e1cda93561a9e24c47876b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9be62e90_f4ec5c3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
         "patchSetId": 2
@@ -44,6 +61,23 @@
         "endLine": 33,
         "endChar": 71
       },
+      "revId": "0a30c58986071bb64e1cda93561a9e24c47876b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f40a7c1_e42a7e19",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-24T22:13:34Z",
+      "side": 1,
+      "message": "shouldn\u0027t we have _ after HEVC to be consistent with other codecs?",
       "revId": "0a30c58986071bb64e1cda93561a9e24c47876b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
