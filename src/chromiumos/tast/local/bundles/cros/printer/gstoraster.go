@@ -13,10 +13,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Gstoraster,
-		Desc:         "Tests that the gstoraster CUPS filter produces expected output",
-		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline"},
+		Func:     Gstoraster,
+		Desc:     "Tests that the gstoraster CUPS filter produces expected output",
+		Contacts: []string{"skau@chromium.org", "project-bolton@google.com"},
+		Attr: []string{
+			"group:mainline",
+			"group:paper-io",
+			"paper-io_printing",
+		},
 		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{"gstoraster_input.pdf", "gstoraster_golden.pwg"},
 	})

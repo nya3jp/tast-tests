@@ -25,7 +25,11 @@ func init() {
 			"hidehiko@chromium.org",    // Tast port author
 		},
 		SoftwareDeps: []string{"cros_internal", "cups"},
-		Attr:         []string{"group:mainline"},
+		Attr: []string{
+			"group:mainline",
+			"group:paper-io",
+			"paper-io_printing",
+		},
 	})
 }
 

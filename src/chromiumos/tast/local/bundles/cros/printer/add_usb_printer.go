@@ -16,10 +16,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AddUSBPrinter,
-		Desc:         "Verifies setup of a basic USB printer",
-		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline"},
+		Func:     AddUSBPrinter,
+		Desc:     "Verifies setup of a basic USB printer",
+		Contacts: []string{"skau@chromium.org", "project-bolton@google.com"},
+		Attr: []string{
+			"group:mainline",
+			"group:paper-io",
+			"paper-io_printing",
+		},
 		SoftwareDeps: []string{"cros_internal", "cups", "virtual_usb_printer"},
 	})
 }

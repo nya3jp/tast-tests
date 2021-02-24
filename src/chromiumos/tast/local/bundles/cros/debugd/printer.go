@@ -25,7 +25,12 @@ func init() {
 		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{"GenericPostScript.ppd.gz"},
 		Pre:          chrome.LoggedIn(),
-		Attr:         []string{"group:mainline", "informational"},
+		Attr: []string{
+			"group:mainline",
+			"informational",
+			"group:paper-io",
+			"paper-io_printing",
+		},
 	})
 }
 

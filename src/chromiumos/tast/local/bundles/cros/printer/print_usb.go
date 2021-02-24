@@ -16,10 +16,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PrintUSB,
-		Desc:         "Tests that USB print job can be successfully sent",
-		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline"},
+		Func:     PrintUSB,
+		Desc:     "Tests that USB print job can be successfully sent",
+		Contacts: []string{"skau@chromium.org", "project-bolton@google.com"},
+		Attr: []string{
+			"group:mainline",
+			"group:paper-io",
+			"paper-io_printing",
+		},
 		SoftwareDeps: []string{"cros_internal", "cups", "virtual_usb_printer"},
 		Data: []string{"print_usb_ps.ppd.gz", "print_usb_to_print.pdf",
 			"print_usb_golden.ps"},

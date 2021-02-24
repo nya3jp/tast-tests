@@ -14,10 +14,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         IPPUSBPPDNoCopies,
-		Desc:         "Verifies that the 'copies-supported' attribute of the printer is used to populate the cupsManualCopies and cupsMaxCopies values in the corresponding generated PPD",
-		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline"},
+		Func:     IPPUSBPPDNoCopies,
+		Desc:     "Verifies that the 'copies-supported' attribute of the printer is used to populate the cupsManualCopies and cupsMaxCopies values in the corresponding generated PPD",
+		Contacts: []string{"skau@chromium.org", "project-bolton@google.com"},
+		Attr: []string{
+			"group:mainline",
+			"group:paper-io",
+			"paper-io_printing",
+		},
 		SoftwareDeps: []string{"chrome", "cros_internal", "cups", "virtual_usb_printer"},
 		Data:         []string{"ippusb_no_copies.json"},
 		Pre:          chrome.LoggedIn(),
