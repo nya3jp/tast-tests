@@ -39,6 +39,30 @@
       },
       "revId": "c63da8a740cc1e8c3355eaf050e6d9ce1b3babf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "761d49ef_b25ee0d0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-02-24T00:08:58Z",
+      "side": 1,
+      "message": "Not yet - I\u0027ve got some CLs in the works which use it, but first I wanted to get the library code approved.",
+      "parentUuid": "7d4fa6e3_4056a9b4",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "c63da8a740cc1e8c3355eaf050e6d9ce1b3babf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
