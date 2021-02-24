@@ -80,6 +80,24 @@
       "message": "shouldn\u0027t we have _ after HEVC to be consistent with other codecs?",
       "revId": "0a30c58986071bb64e1cda93561a9e24c47876b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6237b805_554a9fa1",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-24T22:17:57Z",
+      "side": 1,
+      "message": "Unfortunately no....the other ones only passed the linter because the codec ends in a number, so it allows inserting an _ between them. This codec name does not end in a number, so the linter doesn\u0027t want me to put an underscore between them (although I could have used H265...but I prefer HEVC so it\u0027s easier to differentiate from H264 quickly with your eyes).",
+      "parentUuid": "7f40a7c1_e42a7e19",
+      "revId": "0a30c58986071bb64e1cda93561a9e24c47876b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
