@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7407c9d0_a8321b39",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T18:44:19Z",
+      "side": 1,
+      "message": "sure, sorry I was wrong about hexdigits.",
+      "parentUuid": "7e34a796_9c541050",
+      "range": {
+        "startLine": 44,
+        "startChar": 45,
+        "endLine": 44,
+        "endChar": 57
+      },
+      "revId": "8df061e31387de9a7d0794a2f840b9ea33c7e34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f433ef7_08947f1c",
@@ -361,6 +385,30 @@
       "side": 1,
       "message": "I\u0027ve added chrome_gpu and chrome_browser.\n\nLet me know if the logic for chrome_browser makes sense (we assume any chrome without a `--type` arg is the browser).",
       "parentUuid": "aa171e0b_9f1e1afc",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 28
+      },
+      "revId": "8df061e31387de9a7d0794a2f840b9ea33c7e34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33af223b_fa6b52be",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T18:44:19Z",
+      "side": 1,
+      "message": "To be very strict, I\u0027ve heard that occasionally \u0027--type\u0027 flag may not be seen just because the commandline is too long.  That case those processes could be categorized as the browser process.\n\nHowever, I guess your code is probably good enough, probably you don\u0027t have to worry about that for those test cases. But please just keep that in mind in case you see some strange numbers in the future.",
+      "parentUuid": "81e2e519_20a59fbf",
       "range": {
         "startLine": 180,
         "startChar": 0,

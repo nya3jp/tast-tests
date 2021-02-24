@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cca042eb_d8da404d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T18:44:19Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "bb6ee747e91d98cd60ba07a6f025840a37d5bf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "800bf48d_b6cb9f5e",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T18:44:19Z",
+      "side": 1,
+      "message": "This is actually a typical problem of golang -- \"index\" and \"process\" variables are shared among iterations, and they are silently updated during the goroutine is running asynchronously. This code creates a new scope for i and p, so it solves the problem.\n\nSo this is kinda idiom of Go, you actually don\u0027t need to have a TODO. https://songlh.github.io/paper/go-study.pdf section 6.1.1 might be an interesting read.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 14
+      },
+      "revId": "bb6ee747e91d98cd60ba07a6f025840a37d5bf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff4efb67_9d75a8a9",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T18:44:19Z",
+      "side": 1,
+      "message": "\u003e \"anythign\" is a possible misspelling of \"anything\".\n\nPlease fix.",
+      "parentUuid": "0d2d6caa_b4909c8c",
+      "range": {
+        "startLine": 134,
+        "startChar": 11,
+        "endLine": 134,
+        "endChar": 19
+      },
+      "revId": "bb6ee747e91d98cd60ba07a6f025840a37d5bf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e014f4e_34c47c20",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T18:44:19Z",
+      "side": 1,
+      "message": "Can you put a comment here for the future readers?  e.g.\n  // Not all processes have smaps_rollup, so this is fine.",
+      "revId": "bb6ee747e91d98cd60ba07a6f025840a37d5bf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
