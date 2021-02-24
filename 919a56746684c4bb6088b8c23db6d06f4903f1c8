@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11f92a8f_b980f8e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-24T09:16:38Z",
+      "side": 1,
+      "message": "I agree with Jun that it\u0027s nice to avoid linking test-only code to production binary.\n\nIf you plan to use this library only from single package, you can put it in the same package as _test.go.\n\nIf you plan to use this library from multiple packages, you can\u0027t put it in _test.go since symbols defined in _test.go cannot be imported from other packages, even when building for unit tests. In this case I recommend introducing a test-only subpackage, e.g. cujgenparams.",
+      "parentUuid": "26377e70_1db5adac",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 51
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dd3a1bd_b3baa9d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
         "patchSetId": 8
@@ -344,6 +368,30 @@
       "side": 1,
       "message": "I\u0027m afraid that is not the great usage of genparams.  Why not writing everything?\n\nAlso, on a CL of quick_check_cuj2.go, all of cases are \u0027basic\u0027. Do we want to keep the \u0027tier\u0027 section always?  Why not simply skipping it?  (i.e. clamshell_unlock, tablet_unlock etc).  To control those parameter names, I think manually writing them is actually a better approach.",
       "parentUuid": "a25f66a1_a81cd3a3",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "919a56746684c4bb6088b8c23db6d06f4903f1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929227cf_98392351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-24T09:16:38Z",
+      "side": 1,
+      "message": "I agree that it\u0027s nice to ensure that parameter naming convention is aligned across all CUJ tests.\n\nOTOH, in the current approach, we define a struct (TestParameters) that is a union of test parameters of all CUJ tests. This struct has to accumulate internal details of all different CUJ tests. IIUC that\u0027s Jun\u0027s concern.\n\nWe might be able to define a utility library without introducing a union type, e.g. by reflection. But I\u0027m not confident that it would be a useful utility.",
+      "parentUuid": "22d197b4_5f095701",
       "range": {
         "startLine": 160,
         "startChar": 1,

@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3425b2f6_211654de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-24T09:16:38Z",
+      "side": 1,
+      "message": "We need to repeat types. Otherwise these constants have a plain string type, not Tier type.\n\nNote that we can omit types when using values with iota.",
+      "range": {
+        "startLine": 64,
+        "startChar": 10,
+        "endLine": 65,
+        "endChar": 13
+      },
+      "revId": "c1d136bf6bd91f735e16deb40e685040305eff29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e0bb22_0371aaa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-24T09:16:38Z",
+      "side": 1,
+      "message": "This is an embedded field, and I believe it\u0027s unintentional.",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 16
+      },
+      "revId": "c1d136bf6bd91f735e16deb40e685040305eff29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b567eb5_9e815ee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-24T09:16:38Z",
+      "side": 1,
+      "message": "ditto: embedded field\n\nnit: You might want to move this field around Tier to match the actual output order.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 11
+      },
+      "revId": "c1d136bf6bd91f735e16deb40e685040305eff29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f733824_55bd0351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-24T09:16:38Z",
+      "side": 1,
+      "message": "ditto: embedded field",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 16
+      },
+      "revId": "c1d136bf6bd91f735e16deb40e685040305eff29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff486668_8f3519a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-24T09:16:38Z",
+      "side": 1,
+      "message": "It would be nice to output these as constants instead of literals (e.g. cuj.Basic)",
+      "range": {
+        "startLine": 134,
+        "startChar": 25,
+        "endLine": 135,
+        "endChar": 47
+      },
+      "revId": "c1d136bf6bd91f735e16deb40e685040305eff29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
