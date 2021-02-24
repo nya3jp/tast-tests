@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
@@ -125,8 +126,32 @@ func (a *AllowlistService) CheckArcAppInstalled(ctx context.Context, req *networ
 
 // CheckExtensionInstalled verifies that specified extension is installed by performing a full-text search on the chrome://extensions page.
 func (a *AllowlistService) CheckExtensionInstalled(ctx context.Context, req *network.CheckExtensionInstalledRequest) (*empty.Empty, error) {
-	// TODO(acostinas,b/181110031): Implement `CheckExtensionInstalled`.
-	return nil, errors.New("method CheckExtensionInstalled not implemented")
+	// Connect to Test API to use it with the UI library.
+	tconn, err := a.cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	const extensionURL = "chrome://extensions"
+
+	sconn, err := a.cr.NewConn(ctx, extensionURL)
+	if err != nil {
+		return nil, err
+	}
+	defer sconn.Close()
+
+	desc :=
+		ui.FindParams{
+			Name: req.ExtensionTitle,
+			Role: ui.RoleTypeStaticText,
+		}
+
+	node, err := ui.FindWithTimeout(ctx, tconn, desc, 3*time.Minute)
+	if err != nil {
+		return nil, err
+	}
+	defer node.Release(ctx)
+	return &empty.Empty{}, nil
 }
 
 func executeIptables(ctx context.Context, cmds, args []string) error {
