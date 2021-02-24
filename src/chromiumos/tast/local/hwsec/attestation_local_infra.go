@@ -50,7 +50,7 @@ func (ali *AttestationLocalInfra) Enable(ctx context.Context) (lastErr error) {
 			if err := ali.snapshot.Pop(hwsec.AttestationDBPath); err != nil {
 				testing.ContextLog(ctx, "Failed to pop attestation datase back: ", err)
 			}
-			if err := ali.dc.RestartAttestation(ctx); err != nil {
+			if err := ali.dc.Restart(ctx, hwsec.AttestationDaemonInfo); err != nil {
 				testing.ContextLog(ctx, "Failed to restart attestation service after popping attestation database: ", err)
 			}
 		}
@@ -108,7 +108,7 @@ func (ali *AttestationLocalInfra) restoreTPMOwnerPasswordIfNeeded(ctx context.Co
 		testing.ContextLog(ctx, "You chould try to power wash the device and run the test again")
 		return errors.Wrap(err, "failed to restore tpm manager local data")
 	}
-	if err := ali.dc.RestartTpmManager(ctx); err != nil {
+	if err := ali.dc.Restart(ctx, hwsec.TPMManagerDaemonInfo); err != nil {
 		return errors.Wrap(err, "failed to restart tpm manager")
 	}
 	hasOwnerPassword, err = isTPMLocalDataIntact(ctx)
@@ -135,7 +135,7 @@ func (ali *AttestationLocalInfra) injectWellKnownGoogleKeys(ctx context.Context)
 			}
 		}
 	}()
-	if err := ali.dc.RestartAttestation(ctx); err != nil {
+	if err := ali.dc.Restart(ctx, hwsec.AttestationDaemonInfo); err != nil {
 		return errors.Wrap(err, "failed to restart attestation")
 	}
 	return nil
@@ -146,7 +146,7 @@ func (ali *AttestationLocalInfra) injectNormalGoogleKeys(ctx context.Context) er
 	if err := os.Remove(googleKeysDataPath); err != nil {
 		return errors.Wrap(err, "failed to remove injected key file")
 	}
-	if err := ali.dc.RestartAttestation(ctx); err != nil {
+	if err := ali.dc.Restart(ctx, hwsec.AttestationDaemonInfo); err != nil {
 		return errors.Wrap(err, "failed to restart attestation")
 	}
 	return nil
@@ -154,12 +154,12 @@ func (ali *AttestationLocalInfra) injectNormalGoogleKeys(ctx context.Context) er
 
 // enableFakePCAAgent stops the normal pca agent and starts the fake one.
 func (ali *AttestationLocalInfra) enableFakePCAAgent(ctx context.Context) (lastErr error) {
-	if err := ali.dc.StopPCAAgent(ctx); err != nil {
+	if err := ali.dc.Stop(ctx, hwsec.PCAAgentDaemonInfo); err != nil {
 		return errors.Wrap(err, "failed to stop normal pca agent")
 	}
 	defer func() {
 		if lastErr != nil {
-			if err := ali.dc.StartPCAAgent(ctx); err != nil {
+			if err := ali.dc.Start(ctx, hwsec.PCAAgentDaemonInfo); err != nil {
 				testing.ContextLog(ctx, "Failed to stop start normal pca agent: ", err)
 			}
 		}
@@ -184,7 +184,7 @@ func (ali *AttestationLocalInfra) disableFakePCAAgent(ctx context.Context) error
 			ali.fpca = nil
 		}
 	}
-	if err := ali.dc.StartPCAAgent(ctx); err != nil {
+	if err := ali.dc.Start(ctx, hwsec.PCAAgentDaemonInfo); err != nil {
 		testing.ContextLog(ctx, "Failed to start normal pca agent: ", err)
 		if firstErr == nil {
 			firstErr = errors.Wrap(err, "failed to start normal pca agent")

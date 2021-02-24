@@ -24,6 +24,77 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// DaemonInfo represents the information for a daemon.
+type DaemonInfo struct {
+	Name       string
+	DaemonName string
+	HasDBus    bool
+	DBusName   string
+}
+
+// AttestationDaemonInfo represents the DaemonsInfo for attestation.
+var AttestationDaemonInfo = &DaemonInfo{
+	Name:       "attestation",
+	DaemonName: "attestationd",
+	HasDBus:    true,
+	DBusName:   "org.chromium.Attestation",
+}
+
+// CryptohomeDaemonInfo represents the DaemonsInfo for cryptohome.
+var CryptohomeDaemonInfo = &DaemonInfo{
+	Name:       "cryptohome",
+	DaemonName: "cryptohomed",
+	HasDBus:    true,
+	DBusName:   "org.chromium.Cryptohome",
+}
+
+// TPMManagerDaemonInfo represents the DaemonsInfo for tpm_manager.
+var TPMManagerDaemonInfo = &DaemonInfo{
+	Name:       "tpm_manager",
+	DaemonName: "tpm_managerd",
+	HasDBus:    true,
+	DBusName:   "org.chromium.TpmManager",
+}
+
+// TrunksDaemonInfo represents the DaemonsInfo for trunks.
+var TrunksDaemonInfo = &DaemonInfo{
+	Name:       "trunks",
+	DaemonName: "trunksd",
+	HasDBus:    true,
+	DBusName:   "org.chromium.Trunks",
+}
+
+// TcsdDaemonInfo represents the DaemonsInfo for tcsd.
+var TcsdDaemonInfo = &DaemonInfo{
+	Name:       "tcsd",
+	DaemonName: "tcsd",
+	HasDBus:    false,
+}
+
+// PCAAgentDaemonInfo represents the DaemonsInfo for pca_agent.
+var PCAAgentDaemonInfo = &DaemonInfo{
+	Name:       "pca_agent",
+	DaemonName: "pca_agentd",
+	HasDBus:    true,
+	DBusName:   "org.chromium.PcaAgent",
+}
+
+// FakePCAAgentDaemonInfo represents the DaemonsInfo for fake_pca_agent.
+// Note that fake_pca_agentd runs the same service as pca_agentd.
+var FakePCAAgentDaemonInfo = &DaemonInfo{
+	Name:       "fake_pca_agent",
+	DaemonName: "fake_pca_agentd",
+	HasDBus:    true,
+	DBusName:   "org.chromium.PcaAgent",
+}
+
+// UIDaemonInfo represents the DaemonsInfo for ui.
+var UIDaemonInfo = &DaemonInfo{
+	Name:       "ui",
+	DaemonName: "ui",
+	HasDBus:    false,
+}
+
 // DaemonController controls the daemons via upstart commands.
 type DaemonController struct {
 	r CmdRunner
@@ -37,12 +108,15 @@ func NewDaemonController(r CmdRunner) *DaemonController {
 // WaitForAllDBusServices waits for all D-Bus services of our interest to be running.
 func (dc *DaemonController) WaitForAllDBusServices(ctx context.Context) error {
 	// Just waits for cryptohomd because it's at the tail of dependency chain. We might have to change it if any dependency is decoupled.
-	return dc.waitForDBusService(ctx, "org.chromium.Cryptohome")
+	return dc.waitForDBusService(ctx, CryptohomeDaemonInfo)
 }
 
-func (dc *DaemonController) waitForDBusService(ctx context.Context, name string) error {
+func (dc *DaemonController) waitForDBusService(ctx context.Context, info *DaemonInfo) error {
+	if !info.HasDBus {
+		return errors.Errorf("%s doesn't have D-Bus interface", info.Name)
+	}
 	// Without quote, we might find something prefixed by name.
-	name = "\"" + name + "\""
+	name := "\"" + info.DBusName + "\""
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if out, err := dc.r.Run(
 			ctx,
@@ -60,172 +134,32 @@ func (dc *DaemonController) waitForDBusService(ctx context.Context, name string)
 	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 15 * time.Second})
 }
 
-// StartTrunks starts trunksd and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) StartTrunks(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "start", "trunksd"); err != nil {
-		return errors.Wrap(err, "failed to start trunks")
+// Start starts a daemon and waits until the D-Bus interface is responsive if it has D-Bus interface.
+func (dc *DaemonController) Start(ctx context.Context, info *DaemonInfo) error {
+	if _, err := dc.r.Run(ctx, "start", info.DaemonName); err != nil {
+		return errors.Wrapf(err, "failed to start %s", info.Name)
 	}
-	return dc.waitForDBusService(ctx, "org.chromium.Trunks")
-}
-
-// StopTrunks stops trunksd.
-func (dc *DaemonController) StopTrunks(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "stop", "trunksd"); err != nil {
-		return errors.Wrap(err, "failed to stop trunks")
+	if info.HasDBus {
+		return dc.waitForDBusService(ctx, info)
 	}
 	return nil
 }
 
-// RestartTrunks restarts trunksd and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) RestartTrunks(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "restart", "trunksd"); err != nil {
-		return errors.Wrap(err, "failed to restart trunksd")
-	}
-	return dc.waitForDBusService(ctx, "org.chromium.Trunks")
-}
-
-// StartTcsd starts tcsd.
-func (dc *DaemonController) StartTcsd(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "start", "tcsd"); err != nil {
-		return errors.Wrap(err, "failed to start tcsd")
-	}
-	return nil
-}
-
-// StopTcsd stops tcsd.
-func (dc *DaemonController) StopTcsd(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "stop", "tcsd"); err != nil {
-		return errors.Wrap(err, "failed to stop tcsd")
-	}
-	return nil
-}
-
-// RestartTcsd restarts tcsd.
-func (dc *DaemonController) RestartTcsd(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "restart", "tcsd"); err != nil {
-		return errors.Wrap(err, "failed to restart tcsd")
-	}
-	return nil
-}
-
-// StartCryptohome starts cryptohomed and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) StartCryptohome(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "start", "cryptohomed"); err != nil {
-		return errors.Wrap(err, "failed to start cryptohome")
-	}
-	return dc.waitForDBusService(ctx, "org.chromium.Cryptohome")
-}
-
-// StopCryptohome stops cryptohomed.
-func (dc *DaemonController) StopCryptohome(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "stop", "cryptohomed"); err != nil {
-		return errors.Wrap(err, "failed to stop cryptohome")
-	}
-	return nil
-}
-
-// RestartCryptohome restarts cryptohomed and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) RestartCryptohome(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "restart", "cryptohomed"); err != nil {
-		return errors.Wrap(err, "failed to restart cryptohome")
-	}
-	return dc.waitForDBusService(ctx, "org.chromium.Cryptohome")
-}
-
-// StartAttestation starts attestationd and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) StartAttestation(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "start", "attestationd"); err != nil {
-		return errors.Wrap(err, "failed to start attestation")
-	}
-	return dc.waitForDBusService(ctx, "org.chromium.Attestation")
-}
-
-// StopAttestation stops attestationd.
-func (dc *DaemonController) StopAttestation(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "stop", "attestationd"); err != nil {
-		return errors.Wrap(err, "failed to stop attestation")
-	}
-	return nil
-}
-
-// RestartAttestation restarts attestationd and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) RestartAttestation(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "restart", "attestationd"); err != nil {
-		return errors.Wrap(err, "failed to restart attestation")
-	}
-	return dc.waitForDBusService(ctx, "org.chromium.Attestation")
-}
-
-// StartTpmManager starts tpm_managerd and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) StartTpmManager(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "start", "tpm_managerd"); err != nil {
-		return errors.Wrap(err, "failed to start tpm_manager")
-	}
-	return dc.waitForDBusService(ctx, "org.chromium.TpmManager")
-}
-
-// StopTpmManager stops tpm_managerd.
-func (dc *DaemonController) StopTpmManager(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "stop", "tpm_managerd"); err != nil {
-		return errors.Wrap(err, "failed to stop tpm_manager")
-	}
-	return nil
-}
-
-// RestartTpmManager restarts tpm_managerd and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) RestartTpmManager(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "restart", "tpm_managerd"); err != nil {
-		return errors.Wrap(err, "failed to restart tpm_manager")
-	}
-	return dc.waitForDBusService(ctx, "org.chromium.TpmManager")
-}
-
-// StartPCAAgent starts pca_agentd and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) StartPCAAgent(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "start", "pca_agentd"); err != nil {
-		return errors.Wrap(err, "failed to start pca_agent")
-	}
-	return dc.waitForDBusService(ctx, "org.chromium.PcaAgent")
-}
-
-// StopPCAAgent stops pca_agentd.
-func (dc *DaemonController) StopPCAAgent(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "stop", "pca_agentd"); err != nil {
-		return errors.Wrap(err, "failed to stop pca_agent")
-	}
-	return nil
-}
-
-// RestartPCAAgent restarts pca_agentd and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) RestartPCAAgent(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "restart", "pca_agentd"); err != nil {
-		return errors.Wrap(err, "failed to restart pca_agent")
-	}
-	return dc.waitForDBusService(ctx, "org.chromium.PcaAgent")
-}
-
-// StartFakePCAAgent starts fake_pca_agentd and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) StartFakePCAAgent(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "start", "fake_pca_agentd"); err != nil {
-		return errors.Wrap(err, "failed to start fake_pca_agent")
-	}
-	// Note that fake_pca_agentd runs the same service as pca_agentd.
-	return dc.waitForDBusService(ctx, "org.chromium.PcaAgent")
-}
-
-// StopFakePCAAgent stops fake_pca_agentd.
-func (dc *DaemonController) StopFakePCAAgent(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "stop", "fake_pca_agentd"); err != nil {
+// Stop stops a daemon.
+func (dc *DaemonController) Stop(ctx context.Context, info *DaemonInfo) error {
+	if _, err := dc.r.Run(ctx, "stop", info.DaemonName); err != nil {
 		return errors.Wrap(err, "failed to stop fake_pca_agent")
 	}
 	return nil
 }
 
-// RestartFakePCAAgent restarts fake_pca_agentd and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) RestartFakePCAAgent(ctx context.Context) error {
-	if _, err := dc.r.Run(ctx, "restart", "fake_pca_agentd"); err != nil {
-		return errors.Wrap(err, "failed to restart fake_pca_agent")
+// Restart restarts a daemon and waits until the D-Bus interface is responsive if it has D-Bus interface.
+func (dc *DaemonController) Restart(ctx context.Context, info *DaemonInfo) error {
+	if _, err := dc.r.Run(ctx, "restart", info.DaemonName); err != nil {
+		return errors.Wrapf(err, "failed to restart %s", info.Name)
 	}
-	// Note that fake_pca_agentd runs the same service as pca_agentd.
-	return dc.waitForDBusService(ctx, "org.chromium.PcaAgent")
+	if info.HasDBus {
+		return dc.waitForDBusService(ctx, info)
+	}
+	return nil
 }
