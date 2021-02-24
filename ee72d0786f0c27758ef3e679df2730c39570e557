@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da40dd7_8e135782",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2021-02-24T07:12:24Z",
+      "side": 1,
+      "message": "Hi, PTAL.\n\nThis test should be merged after Chrome 90.0.4425.0 lands up in ChromeOS(*1).\n\n*1) This CL depends http://crrev.com/c/2703044",
+      "revId": "ee72d0786f0c27758ef3e679df2730c39570e557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
