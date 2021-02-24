@@ -94,6 +94,30 @@
       },
       "revId": "8160423bc8247cae306a84b5fddbcfa2b4c6b592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eea5580_3068f828",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-24T00:11:24Z",
+      "side": 1,
+      "message": "I wouldn\u0027t suggest using SkipOnPlatform (crbug.com/1124372).\nInstead, you can introduce a SoftwareDeps which skips on \"board:jacuzzi\" or wait until https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1070299 is introduced.",
+      "parentUuid": "762ae847_b0270814",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "8160423bc8247cae306a84b5fddbcfa2b4c6b592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
