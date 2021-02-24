@@ -90,7 +90,7 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 		return singletonStore, nil
 	}
 
-	helper, err := hwsec.NewHelper(runner)
+	helper, err := hwsec.NewHelper(runner, nil, nil)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create hwsec helper")
 	}
