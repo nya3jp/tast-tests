@@ -190,6 +190,24 @@
       "parentUuid": "7f791bb9_18e6d558",
       "revId": "ce8f756c9201e0b9829b0a8d4542e6a1f5d80217",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed1d073c_88741f90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-24T09:52:31Z",
+      "side": 1,
+      "message": "Fixing this in another CL SGTM.",
+      "parentUuid": "c5fdf240_f8a5fa33",
+      "revId": "ce8f756c9201e0b9829b0a8d4542e6a1f5d80217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
