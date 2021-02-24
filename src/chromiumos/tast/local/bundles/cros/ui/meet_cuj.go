@@ -632,6 +632,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if err := docsTextfield.StableLeftClick(ctx, &pollOpts); err != nil {
 				return errors.Wrap(err, "failed to click on the docs text field")
 			}
+			if err := kw.Accel(ctx, "Ctrl+Alt+["); err != nil {
+				return errors.Wrap(err, "failed to hit ctrl-alt-[ to zoom to fit")
+			}
 			if err := kw.Accel(ctx, "Ctrl+A"); err != nil {
 				return errors.Wrap(err, "failed to hit ctrl-a and select all text")
 			}
