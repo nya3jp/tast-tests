@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58329f68_3f6192a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/app_launcher_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-02-24T05:32:02Z",
+      "side": 0,
+      "message": "Done. I added a var to indicate chrome instead chromium because it conforms to the convention at browser side, such as the is_chrome_branded gn arg.",
+      "parentUuid": "baf7e399_14f6a105",
+      "revId": "db0c3e38bdcf8d2a17c4754e95e4069d59a9ec3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcca0a9f_4f2fea87",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
         "patchSetId": 1
