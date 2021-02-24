@@ -16,6 +16,46 @@
       "message": "Follow up from https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2710710\n\nPlease take a look",
       "revId": "79bf2348d3f5dc19341b07ae3645721266f57a9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068a23f1_297cb7a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-24T13:10:22Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "79bf2348d3f5dc19341b07ae3645721266f57a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b164372f_9b739cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-24T13:10:22Z",
+      "side": 1,
+      "message": "nit: maybe it makes sense to sort cases by name to see the pattern better?",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "79bf2348d3f5dc19341b07ae3645721266f57a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
