@@ -85,7 +85,7 @@ func init() {
 				// real consent variant.
 				restartChrome: true,
 			},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"breakpad", "metrics_consent"},
 			// This test performs 2 logins.
 			Timeout: 2*chrome.LoginTimeout + time.Minute,
