@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b82e877_d5f319c8",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-24T01:15:46Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "c63a1b6f_6dd7b6f2",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 53
+      },
+      "revId": "a14e30f827b8d5b48233df5bf0f8ca5cdec96a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e277ae14_221dd87c",
         "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
         "patchSetId": 9
