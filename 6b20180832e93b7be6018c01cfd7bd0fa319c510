@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6b87fd2_4d539f99",
+        "filename": "src/chromiumos/tast/local/chrome/ui/mouse/mouse.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-02-24T05:34:11Z",
+      "side": 1,
+      "message": "This can\u0027t call uiauto.Combine because the uiauto library depends on this file to implement its own mouse methods.\n\nAny particular preference on how to resolve this? I could pull uiauto.Combine and uiauto.NamedAction into a seperate library to the rest of uiauto, but that seems like potentially overkill. Is it worth fixing?",
+      "parentUuid": "c8b97bcd_a89cd3aa",
+      "range": {
+        "startLine": 88,
+        "startChar": 11,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "6b20180832e93b7be6018c01cfd7bd0fa319c510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e274f098_9eabc977",
         "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
         "patchSetId": 4
