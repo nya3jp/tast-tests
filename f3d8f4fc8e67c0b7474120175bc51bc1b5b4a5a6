@@ -16,6 +16,24 @@
       "message": "LGTM. ",
       "revId": "f3d8f4fc8e67c0b7474120175bc51bc1b5b4a5a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b6d114d_c7bba797",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-24T06:51:04Z",
+      "side": 1,
+      "message": "I added an error message to display the cleanup message.",
+      "parentUuid": "9fe3f3c0_c04da2c8",
+      "revId": "f3d8f4fc8e67c0b7474120175bc51bc1b5b4a5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
