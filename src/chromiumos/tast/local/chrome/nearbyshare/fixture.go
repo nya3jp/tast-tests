@@ -7,11 +7,13 @@ package nearbyshare
 import (
 	"context"
 	"path/filepath"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
@@ -21,24 +23,37 @@ import (
 const resetTimeout = 30 * time.Second
 
 // NewNearbyShareFixture creates a new implementation of the Nearby Share fixture.
-func NewNearbyShareFixture(dataUsage nearbysetup.DataUsage, visibility nearbysetup.Visibility, gaiaLogin bool, opts ...chrome.Option) testing.FixtureImpl {
+func NewNearbyShareFixture(dataUsage nearbysetup.DataUsage, visibility nearbysetup.Visibility, gaiaLogin, androidSetup bool, opts ...chrome.Option) testing.FixtureImpl {
 	defaultNearbyOpts := []chrome.Option{
 		chrome.EnableFeatures("IntentHandlingSharing", "NearbySharing", "Sharesheet"),
 		chrome.ExtraArgs("--nearby-share-verbose-logging"),
 	}
 	return &nearbyShareFixture{
-		opts:       append(defaultNearbyOpts, opts...),
-		dataUsage:  dataUsage,
-		visibility: visibility,
-		gaiaLogin:  gaiaLogin,
+		opts:         append(defaultNearbyOpts, opts...),
+		dataUsage:    dataUsage,
+		visibility:   visibility,
+		gaiaLogin:    gaiaLogin,
+		androidSetup: androidSetup,
 	}
 }
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
+		Name:            "nearbyShareDataUsageOfflineAllContactsTestUserNoAndroid",
+		Desc:            "CrOS Nearby Share enabled and configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'. No Android device setup.",
+		Impl:            NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, false, false),
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:            "nearbyShareDataUsageOfflineAllContactsTestUser",
-		Desc:            "Nearby Share enabled and configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'",
-		Impl:            NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, false),
+		Desc:            "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'",
+		Impl:            NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, false, true),
+		Vars:            []string{"rooted"},
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -48,9 +63,10 @@ func init() {
 
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareDataUsageOfflineAllContactsGAIA",
-		Desc: "Nearby Share enabled and configured with 'Data Usage' set to 'Offline',  'Visibility' set to 'All Contacts' and logged in with a real GAIA account",
-		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, true),
+		Desc: "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Offline',  'Visibility' set to 'All Contacts' and logged in with a real GAIA account",
+		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, true, true),
 		Vars: []string{
+			"rooted",
 			"username",
 			"password",
 			"nearbyshare.cros_username",
@@ -65,12 +81,13 @@ func init() {
 }
 
 type nearbyShareFixture struct {
-	cr         *chrome.Chrome
-	opts       []chrome.Option
-	dataUsage  nearbysetup.DataUsage
-	visibility nearbysetup.Visibility
-	gaiaLogin  bool
-
+	cr            *chrome.Chrome
+	opts          []chrome.Option
+	dataUsage     nearbysetup.DataUsage
+	visibility    nearbysetup.Visibility
+	gaiaLogin     bool
+	androidSetup  bool
+	androidDevice *nearbysnippet.AndroidNearbyDevice
 	// ChromeReader is the line reader for collecting Chrome logs.
 	ChromeReader *syslog.LineReader
 }
@@ -83,8 +100,14 @@ type FixtData struct {
 	// TestConn is a connection to the test extension.
 	TestConn *chrome.TestConn
 
-	// DeviceName is the device name configured for Nearby Share.
-	DeviceName string
+	// CrOSDeviceName is the CrOS device name configured for Nearby Share.
+	CrOSDeviceName string
+
+	// AndroidDevice is an object for interacting with the connected Android device's Snippet Library.
+	AndroidDevice *nearbysnippet.AndroidNearbyDevice
+
+	// AndroidDeviceName is the Android device name configured for Nearby Share.
+	AndroidDeviceName string
 }
 
 func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -125,11 +148,41 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 
 	f.cr = cr
-	return &FixtData{
-		Chrome:     cr,
-		TestConn:   tconn,
-		DeviceName: crosDisplayName,
+	fixData := &FixtData{
+		Chrome:         cr,
+		TestConn:       tconn,
+		CrOSDeviceName: crosDisplayName,
 	}
+
+	if f.androidSetup {
+		// Set up Nearby Share on the Android device. Don't override GMS Core flags or perform settings changes that require root access if specified in the runtime vars.
+		rooted := true
+		if val, ok := s.Var("rooted"); ok {
+			b, err := strconv.ParseBool(val)
+			if err != nil {
+				s.Fatal("Unable to convert rooted var to bool: ", err)
+			}
+			rooted = b
+		}
+		const androidBaseName = "android_test"
+		androidDisplayName := nearbytestutils.RandomDeviceName(androidBaseName)
+		// TODO(crbug/1127165): Replace with s.DataPath(nearbysnippet.ZipName) when data is supported in Fixtures.
+		apkZipPath := "/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/nearbyshare/data/nearby_snippet.zip"
+		androidDevice, err := nearbysetup.AndroidSetup(
+			ctx, apkZipPath, rooted,
+			nearbysetup.DefaultScreenTimeout,
+			nearbysnippet.DataUsageOffline,
+			nearbysnippet.VisibilityAllContacts,
+			androidDisplayName,
+		)
+		if err != nil {
+			s.Fatal("Failed to prepare connected Android device for Nearby Share testing: ", err)
+		}
+		f.androidDevice = androidDevice
+		fixData.AndroidDevice = androidDevice
+		fixData.AndroidDeviceName = androidDisplayName
+	}
+	return fixData
 }
 
 func (f *nearbyShareFixture) TearDown(ctx context.Context, s *testing.FixtState) {
@@ -138,6 +191,9 @@ func (f *nearbyShareFixture) TearDown(ctx context.Context, s *testing.FixtState)
 		s.Log("Failed to close Chrome connection: ", err)
 	}
 	f.cr = nil
+	if f.androidDevice != nil {
+		f.androidDevice.StopSnippet(ctx)
+	}
 }
 
 func (f *nearbyShareFixture) Reset(ctx context.Context) error {

@@ -8,11 +8,9 @@ import (
 	"context"
 	"os"
 	"path/filepath"
-	"strconv"
 
 	"chromiumos/tast/local/android"
 	"chromiumos/tast/local/chrome/nearbyshare"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -29,7 +27,8 @@ func init() {
 		},
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{nearbysnippet.ZipName},
+		// TODO(crbug/1127165) Move to fixture when data is available.
+		Data: []string{nearbysnippet.ZipName},
 		// This var can be used when running locally on non-rooted devices. For non-rooted devices, you need to
 		// have already enabled bluetooth, extended the screen timeout, and overridden the GMS Core flags.
 		Vars:    []string{"rooted"},
@@ -55,31 +54,10 @@ func init() {
 func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*nearbyshare.FixtData).Chrome
 	tconn := s.FixtValue().(*nearbyshare.FixtData).TestConn
-	crosDisplayName := s.FixtValue().(*nearbyshare.FixtData).DeviceName
-
-	// Set up Nearby Share on the Android device. Don't override GMS Core flags or perform settings changes that require root access if specified in the runtime vars.
-	rooted := true
-	if val, ok := s.Var("rooted"); ok {
-		b, err := strconv.ParseBool(val)
-		if err != nil {
-			s.Fatal("Unable to convert rooted var to bool: ", err)
-		}
-		rooted = b
-	}
-	const androidBaseName = "android_test"
-	androidDisplayName := nearbytestutils.RandomDeviceName(androidBaseName)
-	androidDevice, err := nearbysetup.AndroidSetup(
-		ctx, s.DataPath(nearbysnippet.ZipName), rooted,
-		nearbysetup.DefaultScreenTimeout,
-		nearbysnippet.DataUsageOffline,
-		nearbysnippet.VisibilityAllContacts,
-		androidDisplayName,
-	)
-	if err != nil {
-		s.Fatal("Failed to prepare connected Android device for Nearby Share testing: ", err)
-	}
+	crosDisplayName := s.FixtValue().(*nearbyshare.FixtData).CrOSDeviceName
+	androidDevice := s.FixtValue().(*nearbyshare.FixtData).AndroidDevice
+	androidDisplayName := s.FixtValue().(*nearbyshare.FixtData).AndroidDeviceName
 	defer androidDevice.DumpLogs(ctx, s.OutDir())
-	defer androidDevice.StopSnippet(ctx)
 
 	// Extract the test file(s) to nearbyshare.SendDir.
 	testDataZip := s.DataPath(s.Param().(nearbytestutils.TestData).Filename)
