@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c69619d_b600a1cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-02-24T02:33:19Z",
+      "side": 1,
+      "message": "The current definition is \"group:wificell - Tests that depends on [wificell] fixture to run.\", so we might also want to update the doc/description of this attribute in Tast?\n\nOr, having a new group for these local test might also be an option. (cons: more control files to maintain.)\n\nThis change LGTM in any case.",
+      "revId": "fa83a35f31b949dee052134082aa44fa43bb2377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
