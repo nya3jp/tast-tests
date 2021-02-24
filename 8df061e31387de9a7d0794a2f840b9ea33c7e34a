@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e34a796_9c541050",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-24T07:10:15Z",
+      "side": 1,
+      "message": "It looks like there is no short escape sequence for hex digits in Go regexp.\n\n`\\x7F` is for specifying ASCII characters by hex.\n\nI\u0027ve switched [:digit:] to \\d",
+      "parentUuid": "690b0b86_54c01912",
+      "range": {
+        "startLine": 44,
+        "startChar": 45,
+        "endLine": 44,
+        "endChar": 57
+      },
+      "revId": "8df061e31387de9a7d0794a2f840b9ea33c7e34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f433ef7_08947f1c",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-17T01:29:12Z",
       "side": 1,
       "message": "Can you use gopsutil/process package for finding processes?\nhttps://pkg.go.dev/github.com/shirou/gopsutil/process\n\nThis is already used in tast (see chrome/internal/browserwatcher for example). It is probably better to do that without running external commands.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "8df061e31387de9a7d0794a2f840b9ea33c7e34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dda4c11_c322bc97",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-24T07:10:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f433ef7_08947f1c",
       "range": {
         "startLine": 120,
         "startChar": 0,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2aefaf3_0804f82f",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-24T07:10:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e8c1542_676fafb6",
+      "revId": "8df061e31387de9a7d0794a2f840b9ea33c7e34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c59fee00_531f3593",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-02-17T01:29:12Z",
       "side": 1,
       "message": "I guess you should report this error somewhere.",
+      "range": {
+        "startLine": 138,
+        "startChar": 84,
+        "endLine": 138,
+        "endChar": 94
+      },
+      "revId": "8df061e31387de9a7d0794a2f840b9ea33c7e34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ee1e5e_3c8acdbd",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-24T07:10:15Z",
+      "side": 1,
+      "message": "There are many processes that do not have a smaps_rollup, like kernel threads.\n\nWe are also racing with any process exit that happens to occur while we are reading.\n\nI\u0027ve tried to make the error handling more specific, and added some comments, but I\u0027m not sure how far I should go.",
+      "parentUuid": "c59fee00_531f3593",
       "range": {
         "startLine": 138,
         "startChar": 84,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b2c77b_cb3422e4",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-24T07:10:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f8ed60_d13bdd80",
+      "range": {
+        "startLine": 140,
+        "startChar": 54,
+        "endLine": 140,
+        "endChar": 66
+      },
+      "revId": "8df061e31387de9a7d0794a2f840b9ea33c7e34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13633b35_5682b6fe",
@@ -140,6 +254,24 @@
       "writtenOn": "2021-02-17T01:29:12Z",
       "side": 1,
       "message": "Rather than using a channel, I guess it\u0027s simpler to bring the result directly into the slice, i.e.\n  rollups :\u003d make([]*NamedSmapsRollup, 0, len(match))\n  var rollupsMutex sync.Mutex\n  for _, match :\u003d range matches {\n    ...\n    \n    go func() {\n      ...\n      rollupsMutex.Lock()\n      defer rollupsMutex.Unlock()\n      rollups \u003d append(rollups, \u0026NamedSmapsRollup{...})\n    }()\n  }",
+      "revId": "8df061e31387de9a7d0794a2f840b9ea33c7e34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2669446b_fe82e23e",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-24T07:10:15Z",
+      "side": 1,
+      "message": "It looks like append is not thread-safe?\n\nBut I could `make` the slice beforehand, and have each go-routine insert into their own index.",
+      "parentUuid": "13633b35_5682b6fe",
       "revId": "8df061e31387de9a7d0794a2f840b9ea33c7e34a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -158,6 +290,30 @@
       "side": 1,
       "message": "\u003e \"Catagories\" is a possible misspelling of \"Categories\".\n\nPlease fix.",
       "parentUuid": "c6e6b340_b5f85b27",
+      "range": {
+        "startLine": 166,
+        "startChar": 10,
+        "endLine": 166,
+        "endChar": 20
+      },
+      "revId": "8df061e31387de9a7d0794a2f840b9ea33c7e34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c25877_6e2adc58",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-24T07:10:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70beab45_b652ada5",
       "range": {
         "startLine": 166,
         "startChar": 10,
@@ -191,6 +347,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81e2e519_20a59fbf",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-24T07:10:15Z",
+      "side": 1,
+      "message": "I\u0027ve added chrome_gpu and chrome_browser.\n\nLet me know if the logic for chrome_browser makes sense (we assume any chrome without a `--type` arg is the browser).",
+      "parentUuid": "aa171e0b_9f1e1afc",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 28
+      },
+      "revId": "8df061e31387de9a7d0794a2f840b9ea33c7e34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b746582_6fd74d4c",
@@ -204,6 +384,30 @@
       "writtenOn": "2021-02-17T01:29:12Z",
       "side": 1,
       "message": "sorry if I\u0027m wrong, but the value of \u0027rollup.Pss\u0027 is already in KiB (by seeing the line 46). MiB is defined as 1024 * 1024. By dividing KiB value by 1024*1024, isn\u0027t it going to be GiB?",
+      "range": {
+        "startLine": 214,
+        "startChar": 30,
+        "endLine": 214,
+        "endChar": 55
+      },
+      "revId": "8df061e31387de9a7d0794a2f840b9ea33c7e34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8e1f5c2_3414666a",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-24T07:10:15Z",
+      "side": 1,
+      "message": "We convert to bytes inside `bytesFromSmapsRollupSubmatch`.\n\nI\u0027ve added comments to the struct and funcs.",
+      "parentUuid": "6b746582_6fd74d4c",
       "range": {
         "startLine": 214,
         "startChar": 30,
