@@ -9,6 +9,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
@@ -46,25 +47,16 @@ func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	shown, err := vkb.IsShown(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to check if the virtual keyboard is initially hidden: ", err)
-	}
-	if shown {
+	if vkb.IsShown(ctx, tconn) {
 		s.Fatal("Virtual keyboard is shown, but expected it to be hidden")
 	}
 
-	if err := vkb.ShowVirtualKeyboard(ctx, tconn); err != nil {
-		s.Fatal("Failed to show the virtual keyboard: ", err)
-	}
-
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard ready: ", err)
-	}
-
-	// Check that the keyboard has modifier and tab keys.
 	keys := []string{"ctrl", "alt", "caps lock", "tab"}
-	if err := vkb.WaitForKeysExist(ctx, tconn, keys); err != nil {
-		s.Fatal("Failed to wait for keys to be shown: ", err)
+	if err := uiauto.Combine("open VK",
+		vkb.ShowVirtualKeyboardAction(tconn),
+		vkb.WaitForVKReadyAction(tconn, cr),
+		vkb.WaitForKeysExistAction(tconn, keys),
+	)(ctx); err != nil {
+		s.Fatal("Failed to open VK: ", err)
 	}
 }
