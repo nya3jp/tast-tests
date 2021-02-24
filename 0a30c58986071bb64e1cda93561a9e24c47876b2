@@ -116,6 +116,24 @@
       "parentUuid": "7f40a7c1_e42a7e19",
       "revId": "0a30c58986071bb64e1cda93561a9e24c47876b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a4fe6cc_92d24066",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-24T22:32:33Z",
+      "side": 1,
+      "message": "Thanks Jeff for explanation. I see what you are saying. I think I had similar problem in fact with AV1. So it became HWDecodeAV1_4K10BPP instead of HWDecodeAV1_4K_10BPP. Good to know underlying rule behind this.",
+      "parentUuid": "6237b805_554a9fa1",
+      "revId": "0a30c58986071bb64e1cda93561a9e24c47876b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
