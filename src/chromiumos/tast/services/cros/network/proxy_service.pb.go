@@ -73,10 +73,12 @@ func (m *AuthCredentials) GetPassword() string {
 }
 
 type StartServerRequest struct {
+	// Optional. Port where the proxy should listen for incoming connections. Must be a valid port
+	// value (1 to 65535). If not set, the default value is 3128.
 	Port uint32 `protobuf:"varint,1,opt,name=port,proto3" json:"port,omitempty"`
 	// Credentials for basic authentication. If set, clients connecting to the proxy server
 	// must provide the same credentials for authentication otherwise the connection will fail.
-	// Leave unset if the clients should not require authentication.
+	// Leave unset if the proxy should not require authentication.
 	AuthCredentials      *AuthCredentials `protobuf:"bytes,2,opt,name=auth_credentials,json=authCredentials,proto3" json:"auth_credentials,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
@@ -123,6 +125,9 @@ func (m *StartServerRequest) GetAuthCredentials() *AuthCredentials {
 }
 
 type StartServerResponse struct {
+	// The host and port where the proxy is listening for connections, in the format
+	// <host>:<port>. Clients should use this value to point to the proxy server.
+	// NOTE: This is an HTTP proxy.
 	HostAndPort          string   `protobuf:"bytes,1,opt,name=host_and_port,json=hostAndPort,proto3" json:"host_and_port,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -206,9 +211,9 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ProxyServiceClient interface {
-	// Start starts a proxy server instance with the given configuration.
+	// StartServer starts a proxy server instance with the given configuration.
 	StartServer(ctx context.Context, in *StartServerRequest, opts ...grpc.CallOption) (*StartServerResponse, error)
-	// Stop stops the running server instance.
+	// StopServer stops the running server instance.
 	StopServer(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
@@ -240,9 +245,9 @@ func (c *proxyServiceClient) StopServer(ctx context.Context, in *empty.Empty, op
 
 // ProxyServiceServer is the server API for ProxyService service.
 type ProxyServiceServer interface {
-	// Start starts a proxy server instance with the given configuration.
+	// StartServer starts a proxy server instance with the given configuration.
 	StartServer(context.Context, *StartServerRequest) (*StartServerResponse, error)
-	// Stop stops the running server instance.
+	// StopServer stops the running server instance.
 	StopServer(context.Context, *empty.Empty) (*empty.Empty, error)
 }
 
