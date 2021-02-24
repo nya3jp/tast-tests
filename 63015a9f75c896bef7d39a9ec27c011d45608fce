@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "233818a1_a6494b76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-02-24T18:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fec65020_5d6fe81e",
+      "range": {
+        "startLine": 349,
+        "startChar": 35,
+        "endLine": 349,
+        "endChar": 43
+      },
+      "revId": "63015a9f75c896bef7d39a9ec27c011d45608fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d7a60bd_167e384a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-24T09:55:54Z",
       "side": 1,
       "message": "nit: choose a different name here. Maybe testValue?",
+      "range": {
+        "startLine": 350,
+        "startChar": 2,
+        "endLine": 350,
+        "endChar": 18
+      },
+      "revId": "63015a9f75c896bef7d39a9ec27c011d45608fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b895bce_912cffed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-02-24T18:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d7a60bd_167e384a",
       "range": {
         "startLine": 350,
         "startChar": 2,
