@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "155bc7b8_a49d299e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-24T17:58:40Z",
+      "side": 1,
+      "message": "Waiting on crbug/1152158 before this test is ready to check in. As it is now, the CB won\u0027t detect the phone since it needs to re-download its contact certificates after we change the phone\u0027s display name. I verified that the test works fine when we don\u0027t update the device name, though, so it should work fine once crbug/1152158 is resolved.",
+      "revId": "4e40568e93d5a7a721c287a3f48e504703141422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
