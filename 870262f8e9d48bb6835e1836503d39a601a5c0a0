@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a66b71a_c6087cf7",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_path_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-24T12:13:43Z",
+      "side": 1,
+      "message": "Would it make sense for this function to do the casting to string as well?\nAs I saw, the byte answer is not used anywhere, but for turning it to string.\nEven trimming the spaces here might worth considering if those are not important in error messages.",
+      "range": {
+        "startLine": 27,
+        "startChar": 31,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "870262f8e9d48bb6835e1836503d39a601a5c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd368ec3_f31d8e86",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_path_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-02-24T12:13:43Z",
+      "side": 1,
+      "message": "It uses a \u003c operator, or \u003cusername\u003e was intended here?",
+      "range": {
+        "startLine": 36,
+        "startChar": 44,
+        "endLine": 36,
+        "endChar": 53
+      },
+      "revId": "870262f8e9d48bb6835e1836503d39a601a5c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
