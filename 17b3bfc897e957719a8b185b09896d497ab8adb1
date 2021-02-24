@@ -244,6 +244,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ac0845f_ff661b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-24T10:42:01Z",
+      "side": 1,
+      "message": "Yes, \n\n```\nenabled-full-screen: Unexpected value of chrome.accessibilityFeatures[\"dockedMagnifier\"]: got false; want true\n```\n\nimo looks more readable in terms of it describe itself what policy value means.\n\n\n\n\nAlso, logs looks much cooler when \"enabled-1\" and \"enabled-2\" have the same length. But other test cases with different name length may also fail. We also can modify Tast framework itself so it will print nice logs independently of the test case name length.",
+      "parentUuid": "91f5f068_2e43b134",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab3d4f4a_220ea793",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
         "patchSetId": 1
