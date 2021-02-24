@@ -220,6 +220,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91f5f068_2e43b134",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-24T09:42:56Z",
+      "side": 1,
+      "message": "okay, I get it - convention and not split when tast pass. However, when they fail we have nice indicator what values were used. I can change it, it is not a problem. I just believe that seeing that in logs is beneficial:\n\n\n\n2021/02/24 09:39:03 Collecting system information\n2021/02/24 09:39:15 --------------------------------------------------------------------------------\n2021/02/24 09:39:15 policy.AccessibilityPolicies.docked_magnifier  [ FAIL ] enabled-1: Unexpected value of chrome.accessibilityFeatures[\"dockedMagnifier\"]: got false; want true\n2021/02/24 09:39:15                                                         enabled-2: Unexpected value of chrome.accessibilityFeatures[\"dockedMagnifier\"]: got true; want false\n2021/02/24 09:39:15 policy.AccessibilityPolicies.high_contrast     [ PASS ]\n2021/02/24 09:39:15 policy.AccessibilityPolicies.large_cursor      [ PASS ]\n2021/02/24 09:39:15 policy.AccessibilityPolicies.screen_magnifier  [ PASS ]\n2021/02/24 09:39:15 policy.AccessibilityPolicies.virtual_keyboard  [ FAIL ] enabled: Unexpected value of chrome.accessibilityFeatures[\"virtualKeyboard\"]: got true; want false\n \n\nYou suggest that those:\n2021/02/24 09:39:15 policy.AccessibilityPolicies.docked_magnifier  [ FAIL ]\n\nenabled-1: Unexpected value of chrome.accessibilityFeatures[\"dockedMagnifier\"]: got false; want true\nenabled-2: Unexpected value of chrome.accessibilityFeatures[\"dockedMagnifier\"]: got true; want false\n\nrather to look like:\n\n2021/02/24 09:39:15 policy.AccessibilityPolicies.docked_magnifier  [ FAIL ] \n\nenabled-full-screen: Unexpected value of chrome.accessibilityFeatures[\"dockedMagnifier\"]: got false; want true\nenabled-docked: Unexpected value of chrome.accessibilityFeatures[\"dockedMagnifier\"]: got true; want false\n\n\nIs that what you have in mind?",
+      "parentUuid": "74f1aded_9fc4be84",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "17b3bfc897e957719a8b185b09896d497ab8adb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab3d4f4a_220ea793",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
         "patchSetId": 1
