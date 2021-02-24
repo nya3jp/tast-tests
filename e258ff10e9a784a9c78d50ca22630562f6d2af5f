@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "978c66cc_53ac02ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-24T01:49:32Z",
+      "side": 1,
+      "message": "1. It\u0027s not possible, this is a reference test so I\u0027d rather keep it the way it is.\n2. That\u0027s fine, what are my other options?\n\nI should also mention this test uses the network as well (but the traffic is low bandwidth). There\u0027s no way around that part.",
+      "parentUuid": "3ee656db_d0e22aa6",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "e258ff10e9a784a9c78d50ca22630562f6d2af5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89b0695a_9008cfd4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-24T01:21:53Z",
       "side": 1,
       "message": "Can we delete this comment now?",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 60
+      },
+      "revId": "e258ff10e9a784a9c78d50ca22630562f6d2af5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca07a38b_9437c859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-24T01:49:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89b0695a_9008cfd4",
       "range": {
         "startLine": 34,
         "startChar": 2,
