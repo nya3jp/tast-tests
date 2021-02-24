@@ -136,17 +136,14 @@ func (s *Servo) PowerNormalPress(ctx context.Context) (bool, error) {
 
 // SetActChgPort enables a charge port on fluffy.
 func (s *Servo) SetActChgPort(ctx context.Context, port string) error {
-	// Servo's Set method returns a bool stating whether the call succeeded or not.
-	// This is redundant, because a failed call will return an error anyway.
-	// So, we can skip unpacking the output.
-	err := s.run(ctx, newCall("set", ActiveChgPort, port))
+	err := s.SetString(ctx, ActiveChgPort, port)
 	return err
 }
 
 // DUTVoltageMV reads the voltage present on the DUT port on fluffy.
 func (s *Servo) DUTVoltageMV(ctx context.Context) (string, error) {
 	var voltageMV string
-	err := s.run(ctx, newCall("get", DUTVoltageMV), &voltageMV)
+	voltageMV, err := s.GetString(ctx, DUTVoltageMV)
 	return voltageMV, err
 }
 
