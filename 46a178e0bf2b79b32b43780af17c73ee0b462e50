@@ -16,6 +16,24 @@
       "message": "this is not clear if Help is going to need all the functions declared in the interface, right?",
       "revId": "46a178e0bf2b79b32b43780af17c73ee0b462e50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beaef59e_0a3189e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-24T04:26:12Z",
+      "side": 1,
+      "message": "atestation_client.go is the interface of https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/hwsec/attestation_client.go\nso we could using the same interface between local \u0026 remote tasts.\n\nAnd utility_attestation_client.go is going to implement the \"attestationClient\" interface in attestation_common.go, and we would switch UtilityCryptohomeBinary to UtilityAttestationClient in http://crrev/c/2654785",
+      "parentUuid": "a074d2b0_21a4c608",
+      "revId": "46a178e0bf2b79b32b43780af17c73ee0b462e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
