@@ -163,6 +163,30 @@
       },
       "revId": "fc57de1ff82571ecf4860d618f0c0f4603a22a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3478c3aa_f36b768c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cryptohome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-24T03:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e900a9b0_8517e936",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "fc57de1ff82571ecf4860d618f0c0f4603a22a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
