@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0f51ea_c326c588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-24T23:25:10Z",
+      "side": 1,
+      "message": "Thanks Shuhei! It is great to learn.",
+      "parentUuid": "3425b2f6_211654de",
+      "range": {
+        "startLine": 64,
+        "startChar": 10,
+        "endLine": 65,
+        "endChar": 13
+      },
+      "revId": "c1d136bf6bd91f735e16deb40e685040305eff29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3e0bb22_0371aaa7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-24T09:16:38Z",
       "side": 1,
       "message": "This is an embedded field, and I believe it\u0027s unintentional.",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 16
+      },
+      "revId": "c1d136bf6bd91f735e16deb40e685040305eff29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91601350_d44b702d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-24T23:25:10Z",
+      "side": 1,
+      "message": "This was removed. Let the test case define their own parameter.",
+      "parentUuid": "d3e0bb22_0371aaa7",
       "range": {
         "startLine": 95,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecfaf7da_f4565d01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-24T23:25:10Z",
+      "side": 1,
+      "message": "Remove it. Let the test case define their own parameter.",
+      "parentUuid": "9b567eb5_9e815ee7",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 11
+      },
+      "revId": "c1d136bf6bd91f735e16deb40e685040305eff29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f733824_55bd0351",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2635caa5_5302e1a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-24T23:25:10Z",
+      "side": 1,
+      "message": "This GeneratorParam was moved to ui/cuj_genparams_test.go, ApplicationType was removed and left to the test to define them.",
+      "parentUuid": "4f733824_55bd0351",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 16
+      },
+      "revId": "c1d136bf6bd91f735e16deb40e685040305eff29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff486668_8f3519a8",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-02-24T09:16:38Z",
       "side": 1,
       "message": "It would be nice to output these as constants instead of literals (e.g. cuj.Basic)",
+      "range": {
+        "startLine": 134,
+        "startChar": 25,
+        "endLine": 135,
+        "endChar": 47
+      },
+      "revId": "c1d136bf6bd91f735e16deb40e685040305eff29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f13e4900_f4e727dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/test_params.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-24T23:25:10Z",
+      "side": 1,
+      "message": "Thanks. I fix this problem by providing a screenModeConst() and tierConst() converter.",
+      "parentUuid": "ff486668_8f3519a8",
       "range": {
         "startLine": 134,
         "startChar": 25,
