@@ -118,6 +118,30 @@
       },
       "revId": "8160423bc8247cae306a84b5fddbcfa2b4c6b592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcd9a85c_b040705d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-02-24T00:22:58Z",
+      "side": 1,
+      "message": "\u003e I wouldn\u0027t suggest using SkipOnPlatform (crbug.com/1124372).\n\nIt still seems like the least bad option :-(\n\n\u003e Instead, you can introduce a SoftwareDeps which skips on \"board:jacuzzi\"\n\nBut that\u0027s going to break as soon as someone creates jacuzzi-kernelnext, or jacuzzi-arc-r, correct? That means an ongoing maintenance burden.\n\n\u003e or wait until https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1070299 is introduced.\n\nThere\u0027s no path to resolution on that bug yet, that\u0027s not a viable solution for a few more quarters unfortunately :-(",
+      "parentUuid": "6eea5580_3068f828",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "8160423bc8247cae306a84b5fddbcfa2b4c6b592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
