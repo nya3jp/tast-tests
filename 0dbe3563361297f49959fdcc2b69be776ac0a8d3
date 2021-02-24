@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a4dbbd_4503ddb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-24T06:54:08Z",
+      "side": 1,
+      "message": "Could you split the change? It seems these two are orthogonal.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92d9206a_e3fe2675",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-24T06:54:08Z",
+      "side": 1,
+      "message": "Chiming is as a reviewer of a child change.",
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c9e7593_d5291be5",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-24T06:54:08Z",
+      "side": 1,
+      "message": "It seems Helper is becoming the toolbox for arbitrary type of operations. Could we consider refactoring it?\nSpeaking of this function, it only uses cryptohomeUtil and cmdRunner. I\u0027d suggest making it a pure function. I\u0027d make CleanupUserPaths takes cmdRunner only. WDYT?\n\nfunc CleanupUserPaths(ctx, runner, user) error {\n  chome :\u003d hwsec.NewCryptohomeBinary(runner) // This is not costly operation.\n  chome.Unmount()\n  RemoveDir(ctx, runner, ...)\n  ...\n}\n\nfunc RemoveDir(ctx, runner, path) error {\n}",
+      "range": {
+        "startLine": 149,
+        "startChar": 16,
+        "endLine": 149,
+        "endChar": 17
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec3f6a8c_3b74346d",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-24T06:54:08Z",
+      "side": 1,
+      "message": "This is a very thin wrapper of cryptohomePathBinary.SystemPath. Can we directly call SystemPath ? I think it\u0027s allowed to make the return value of SystemPath string for usability.\n\nI think we can apply the same for similar thin wrappers for simplicity. WDYT?",
+      "range": {
+        "startLine": 965,
+        "startChar": 34,
+        "endLine": 965,
+        "endChar": 49
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c800cf2c_7f3d9376",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_validity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-24T06:54:08Z",
+      "side": 1,
+      "message": "Could you comment why without this operation test becomes flaky?",
+      "range": {
+        "startLine": 276,
+        "startChar": 11,
+        "endLine": 276,
+        "endChar": 27
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
