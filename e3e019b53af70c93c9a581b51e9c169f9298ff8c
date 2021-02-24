@@ -471,6 +471,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83b4e43_5ba99eef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-24T09:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b4a36c1_7120017a",
+      "range": {
+        "startLine": 47,
+        "startChar": 50,
+        "endLine": 47,
+        "endChar": 77
+      },
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f20c2be_fed07a87",
@@ -627,6 +651,30 @@
       "side": 1,
       "message": "implementation may change in the future, e.g. someone may change some default values\n\ni think we should cover all 9 combinations: not you have 1 use case covered twice and 1 use case not covered",
       "parentUuid": "51f76062_2d062809",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "e3e019b53af70c93c9a581b51e9c169f9298ff8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88b5847_080edea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-24T09:27:32Z",
+      "side": 1,
+      "message": "I have no problem adding test cases here and will do so. However I would like to sheed some light on how it can be decided when to and what to remove?\n\nWhen it comes to deriving test cases from requirements. I used decision table testing https://paste.googleplex.com/5708956740616192# \n\nin principle this method is used to make sure all ACTIONS are covered and to eliminate redundancy while keeping coverage high. \nGenerally speaking if ACTIONS are the same then:\n- we can remove redundant test case\n- if we want to keep such test case we should find another actions that we could have missed when designing test cases to distinguish then from each other.\n\nAnother rule of thumb when testing (especially when tests are moving into regression suite) is that positive test cases (at the test level we run Tast test) could and should be combined (negative though must not be). Looking at the table we actually can reduce those 9 test cases to IMHO 3 - tc3 (unset/unset), tc6 (0,0), and tc8 (1,1).",
+      "parentUuid": "c7dd6770_5706e179",
       "range": {
         "startLine": 54,
         "startChar": 12,
