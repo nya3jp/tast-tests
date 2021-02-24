@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a6993fc_ae638a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-24T22:52:12Z",
+      "side": 1,
+      "message": "So uiauto.Run is getting removed because we realized that it is basically the same as uiauto.Combine, can you switch this to uiauto.Combine\n\njust:\n\n uiauto.Combine(\"Open Android Settings\",\n   ...\n )(ctx)",
+      "range": {
+        "startLine": 95,
+        "startChar": 18,
+        "endLine": 95,
+        "endChar": 21
+      },
+      "revId": "9a2c2a26221ada525f2c97d39aa84efaaf960042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
