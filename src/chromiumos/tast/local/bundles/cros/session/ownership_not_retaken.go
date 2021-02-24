@@ -27,6 +27,8 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
+		// This test performs 2 logins.
+		Timeout: 2*chrome.LoginTimeout + time.Minute,
 	})
 }
 
