@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b809ee92_32332898",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-24T22:43:02Z",
+      "side": 1,
+      "message": "nit: don\u0027t rename this library since it is not necessary. It has no conflict with any other imports",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "baf11959eaa99f9f817c7d50bb736ba477344bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c78121ac_8e0d15c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-24T22:43:02Z",
+      "side": 1,
+      "message": "nit: success\n\nor \"Mount unexpectedly succeeded\"",
+      "range": {
+        "startLine": 163,
+        "startChar": 30,
+        "endLine": 163,
+        "endChar": 39
+      },
+      "revId": "baf11959eaa99f9f817c7d50bb736ba477344bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf464e9e_67a5fb6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cryptohome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-24T22:43:02Z",
+      "side": 1,
+      "message": "generally util packages should be avoided, they tend to collect a lot of random methods and have no clear goal. Can we make this more specific or potentially put this directly in cros/hwsec if it fits?\n\nhttps://blog.golang.org/package-names\n\nMaybe this isn\u0027t possible to fix with this CL, but it should be changed if possible.",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 12
+      },
+      "revId": "baf11959eaa99f9f817c7d50bb736ba477344bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3fcc3fa_156d031d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cryptohome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-24T22:43:02Z",
+      "side": 1,
+      "message": "nit: if it succeeds",
+      "range": {
+        "startLine": 14,
+        "startChar": 70,
+        "endLine": 14,
+        "endChar": 85
+      },
+      "revId": "baf11959eaa99f9f817c7d50bb736ba477344bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
