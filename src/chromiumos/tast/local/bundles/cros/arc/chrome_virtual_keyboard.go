@@ -191,11 +191,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := d.Object(ui.ID(fieldID2), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Clicking the button didn't cause the focus move: ", err)
 	}
-	shown, err := vkb.IsShown(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the virtual keyboard visibility: ", err)
-	}
-	if !shown {
+	if !vkb.IsShown(ctx, tconn) {
 		s.Fatal("The focus move makes the virtual keyboard to be hidden")
 	}
 
@@ -214,11 +210,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := d.Object(ui.ID(fieldID1), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Pressing the button didn't cause focusing on the field: ", err)
 	}
-	shown, err = vkb.IsShown(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the virtual keyboard visibility: ", err)
-	}
-	if shown {
+	if vkb.IsShown(ctx, tconn) {
 		s.Fatal("The virtual keyboard is shown without any user action")
 	}
 
@@ -382,9 +374,9 @@ func chromeVirtualKeyboardFloatingTest(
 	if err := vkb.SetFloatingMode(ctx, cr, true); err != nil {
 		s.Fatal("Failed to switch to floating mode: ", err)
 	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
+	// if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+	// 	s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	// }
 	if err := waitForRelayout(initialBounds); err != nil {
 		s.Fatal("Failed to move back the field by switching to floating mode: ", err)
 	}
@@ -393,9 +385,9 @@ func chromeVirtualKeyboardFloatingTest(
 	if err := vkb.SetFloatingMode(ctx, cr, false); err != nil {
 		s.Fatal("Failed to switch to dock mode: ", err)
 	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
+	// if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+	// 	s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	// }
 	if err := waitForRelayout(boundsWithVK); err != nil {
 		s.Fatal("Failed to move up the field by switching to normal mode: ", err)
 	}
