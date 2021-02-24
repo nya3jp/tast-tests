@@ -56,6 +56,30 @@
       },
       "revId": "79bf2348d3f5dc19341b07ae3645721266f57a9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51360487_efa2f09e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-24T13:19:32Z",
+      "side": 1,
+      "message": "I think, sorting here is a preference here. I added them by the pattern:\ntrue/true\ntrue/false\nfalse/true\nfalse/false\n\nunset/true\ntrue/unset\nunset/false\nfalse/unset\nunset/unset",
+      "parentUuid": "b164372f_9b739cbe",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "79bf2348d3f5dc19341b07ae3645721266f57a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
