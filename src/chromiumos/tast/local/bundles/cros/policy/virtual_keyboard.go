@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type vkTestCaseData struct {
+type vkTestCase struct {
 	name          string          // name is the subtest name.
 	wantedAllowVK bool            // wantedAllowVK describes if virtual keyboard is expected to to shown or not.
 	policies      []policy.Policy // policies is the policies values.
@@ -28,8 +28,8 @@ func init() {
 		Desc: "Behavior of VirtualKeyboardEnabled and TouchVirtualKeyboardEnabled policies and their mixing by checking that the virtual keyboard (is/is not) displayed as requested by the policy",
 		Contacts: []string{
 			"kamilszarek@google.com",    // Test author of the merge.
-			"giovax@google.com",         // Test author of virtual_keyboard_enabled.go.
-			"alexanderhartl@google.com", // Test author of touch_virtual_keyboard_enabled.go.
+			"giovax@google.com",         // Test author of the initial test for policy.VirtualKeyboardEnabled.
+			"alexanderhartl@google.com", // Test author of the initial test for policy.TouchVirtualKeyboardEnabled.
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
@@ -38,7 +38,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "both",
-				Val: []vkTestCaseData{
+				Val: []vkTestCase{
 					{
 						name:          "vke_enabled-tvke_enabled",
 						wantedAllowVK: true,
@@ -54,11 +54,41 @@ func init() {
 						wantedAllowVK: true,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}, &policy.TouchVirtualKeyboardEnabled{Val: true}},
 					},
+					{
+						name:          "vke_disabled-tvke_disabled",
+						wantedAllowVK: false,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}, &policy.TouchVirtualKeyboardEnabled{Val: false}},
+					},
+					{
+						name:          "vke_unset-tvke_enabled",
+						wantedAllowVK: true,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}, &policy.TouchVirtualKeyboardEnabled{Val: true}},
+					},
+					{
+						name:          "vke_enabled-tvke_unset",
+						wantedAllowVK: true,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}, &policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
+					},
+					{
+						name:          "vke_unset-tvke_disabled",
+						wantedAllowVK: false,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}, &policy.TouchVirtualKeyboardEnabled{Val: false}},
+					},
+					{
+						name:          "vke_disabled-tvke_unset",
+						wantedAllowVK: false,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}, &policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
+					},
+					{
+						name:          "vke_unset-tvke_unset",
+						wantedAllowVK: false,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}, &policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
+					},
 				},
 			},
 			{
 				Name: "virtual",
-				Val: []vkTestCaseData{
+				Val: []vkTestCase{
 					{
 						name:          "enabled",
 						wantedAllowVK: true,
@@ -78,7 +108,7 @@ func init() {
 			},
 			{
 				Name: "touch_virtual",
-				Val: []vkTestCaseData{
+				Val: []vkTestCase{
 					{
 						name:          "enabled",
 						wantedAllowVK: true,
@@ -112,7 +142,7 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	tcs := s.Param().([]vkTestCaseData)
+	tcs := s.Param().([]vkTestCase)
 
 	for _, tc := range tcs {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
@@ -144,12 +174,12 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 			}
 
 			const vkTimeout = 15 * time.Second
-			var vkFindParams = ui.FindParams{
+			vkFindParams := ui.FindParams{
 				Role: ui.RoleTypeKeyboard,
 				Name: "Chrome OS Virtual Keyboard",
 			}
 
-			if tc.wantedAllowVK == true {
+			if tc.wantedAllowVK {
 				// Confirm that the virtual keyboard exists.
 				if err := ui.WaitUntilExists(ctx, tconn, vkFindParams, vkTimeout); err != nil {
 					s.Errorf("Virtual keyboard did not show up within %s: %s", vkTimeout, err)
