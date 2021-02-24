@@ -36,9 +36,12 @@ func init() {
 }
 
 func ShelfLaunch(ctx context.Context, s *testing.State) {
-	// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
-	if err := launcher.EnsureLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact)); err != nil {
-		s.Fatal("Failed to extract lacros binary: ", err)
+	setupMode := s.FixtValue().(launcher.FixtData).Mode
+	if setupMode != launcher.Omaha {
+		// TODO(crbug.com/1127165): Remove this when we can use Data in fixtures.
+		if err := launcher.EnsureLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact)); err != nil {
+			s.Fatal("Failed to extract lacros binary: ", err)
+		}
 	}
 
 	tconn, err := s.FixtValue().(launcher.FixtData).Chrome.TestAPIConn(ctx)
