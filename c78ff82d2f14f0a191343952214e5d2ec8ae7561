@@ -16,6 +16,23 @@
       "message": "fritz@ PTAL and can you approve if you don\u0027t have further comment?\n       Thank you.",
       "revId": "c78ff82d2f14f0a191343952214e5d2ec8ae7561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e266091_174f9a49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-24T17:27:35Z",
+      "side": 1,
+      "message": "pwang@ ihf@ PTAL \n\nThank you Fritz.",
+      "revId": "c78ff82d2f14f0a191343952214e5d2ec8ae7561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
