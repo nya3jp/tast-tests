@@ -48,7 +48,7 @@ func (s *ProxyService) StartServer(ctx context.Context, request *network.StartSe
 		port = int(request.Port)
 	}
 
-	if err := s.proxy.Start(ctx, port, cred); err != nil {
+	if err := s.proxy.Start(ctx, port, cred, request.Allowlist); err != nil {
 		return nil, errors.Wrap(err, "failed to setup proxy server")
 	}
 

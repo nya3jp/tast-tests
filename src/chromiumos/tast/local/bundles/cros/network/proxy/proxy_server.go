@@ -23,6 +23,11 @@ import (
 const (
 	proxyServerBin    = "/usr/local/bin/tinyproxy"
 	proxyServerConfig = "/etc/tinyproxy/tinyproxy.conf"
+	filterConfig      = `
+FilterExtended On
+FilterDefaultDeny Yes
+Filter "%s"
+`
 )
 
 // Server represents a HTTP proxy server running on the DUT.
@@ -44,11 +49,13 @@ func NewServer() *Server {
 	return &Server{pid: -1}
 }
 
-// Start starts a proxy server. |port| must be a valid port number where the proxy will listen for connections.
-// The proxy address will be assigned by patchpanel. If |auth| is specified, access to the proxy is only granted for
-// authenticated users. If proxy configuration and setup are successful, |s.HostAndPort| will be set to the host and
+// Start starts a proxy server. `port` must be a valid port number where the proxy will listen for connections.
+// The proxy address will be assigned by patchpanel. If `auth` is specified, access to the proxy is only granted for
+// authenticated users. If proxy configuration and setup are successful, `s.HostAndPort` will be set to the host and
 // port of the local proxy in the format <host>:<port>.
-func (s *Server) Start(ctx context.Context, port int, auth *AuthCredentials) (retErr error) {
+// If `allowlist` is not empty, only connection to hosts specified in `allowlist` are allowed. The hostnames will be matched
+// using reqular expressions.
+func (s *Server) Start(ctx context.Context, port int, auth *AuthCredentials, allowlist []string) (retErr error) {
 	// Create a temp dir where configuration and pid files can be saved.
 	tempDir, err := ioutil.TempDir("", "tinyproxy-")
 	if err != nil {
@@ -64,7 +71,7 @@ func (s *Server) Start(ctx context.Context, port int, auth *AuthCredentials) (re
 	if err != nil {
 		return errors.Wrap(err, "failed to create PID file")
 	}
-	configFile, err := s.createTinyproxyConfig(port, auth, pidFile)
+	configFile, err := s.createTinyproxyConfig(ctx, port, auth, pidFile, allowlist)
 	if err != nil {
 		return errors.Wrap(err, "failed to create the proxy config file")
 	}
@@ -91,7 +98,7 @@ func (s *Server) Stop(ctx context.Context) error {
 
 // createTinyproxyConfig creates the proxy configuration file. Returns the config filename in case of success,
 // otherwise returns error.
-func (s *Server) createTinyproxyConfig(port int, auth *AuthCredentials, pidFileName string) (string, error) {
+func (s *Server) createTinyproxyConfig(ctx context.Context, port int, auth *AuthCredentials, pidFileName string, allowlist []string) (string, error) {
 	// tinyproxy configuration file
 	c := `# User and group for the tinyproxy proxy.
 User tinyproxy
@@ -101,7 +108,7 @@ Group tinyproxy
 Port %d
 
 # Max seconds of inactivity a connection is allowed to have before it is closed by tinyproxy.
-Timeout 600
+Timeout 10
 
 # The file that gets sent if there is an HTTP error that has occured.
 DefaultErrorFile "/usr/share/tinyproxy/default.html"
@@ -113,14 +120,14 @@ LogLevel Info
 PidFile "%s"
 
 # Max number of threads which will be created.
-MaxClients 100
+MaxClients 300
 
 # These settings set the upper and lower limit for the number of spare servers which should be available.
 MinSpareServers 5
-MaxSpareServers 10
+MaxSpareServers 30
 
 # The number of servers to start initially.
-StartServers 5
+StartServers 10
 `
 	c = fmt.Sprintf(c, port, pidFileName)
 
@@ -128,6 +135,28 @@ StartServers 5
 		// Credentials for basic authentication
 		c += fmt.Sprintf("BasicAuth %s %s\n", auth.Username, auth.Password)
 	}
+
+	if len(allowlist) > 0 {
+		hosts := strings.Join(allowlist, "\n")
+
+		filterFile, err := s.createTempFile()
+		if err != nil {
+			return "", errors.Wrapf(err, "failed to create tinyproxy filter file %s: ", hosts)
+		}
+
+		f, err := os.OpenFile(filterFile, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0755)
+		if err != nil {
+			return "", errors.Wrapf(err, "failed to open filter file %s for writing", filterFile)
+		}
+		defer f.Close()
+
+		if _, err := f.WriteString(hosts); err != nil {
+			return "", errors.Wrapf(err, "failed to write hostnames to file %s", filterFile)
+		}
+
+		c += fmt.Sprintf(filterConfig, filterFile)
+	}
+
 	configFile, err := s.createTempFile()
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create tinyproxy config file")
