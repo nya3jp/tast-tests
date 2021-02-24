@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee656db_d0e22aa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-24T01:21:53Z",
+      "side": 1,
+      "message": "All mainline tests are supposed to be promoted to critical (CQ tests) eventually after stabilization process. But 15-min timeout is too long for CQ tests.\n\nThere are several possible choices:\n1. Decrease the run time (if at all possible...)\n2. Make it belong to non-mainline groups",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "e258ff10e9a784a9c78d50ca22630562f6d2af5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89b0695a_9008cfd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-24T01:21:53Z",
+      "side": 1,
+      "message": "Can we delete this comment now?",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 60
+      },
+      "revId": "e258ff10e9a784a9c78d50ca22630562f6d2af5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
