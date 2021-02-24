@@ -34,9 +34,8 @@ func init() {
 		Vars:         []string{"secondaryTarget"},
 		Params: []testing.Param{
 			{
-				Name: "small_jpg",
-				Val:  nearbytestutils.TestData{Filename: "small_jpg.zip", Timeout: nearbyshare.SmallFileTimeout},
-				// TODO(crbug/1111251): Replace with external data when remote tests support it.
+				Name:      "small_jpg",
+				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", Timeout: nearbyshare.SmallFileTimeout},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbyshare.SmallFileTimeout,
 			},
