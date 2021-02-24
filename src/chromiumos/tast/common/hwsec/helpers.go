@@ -28,40 +28,56 @@ type CmdRunner interface {
 	Run(ctx context.Context, cmd string, args ...string) ([]byte, error)
 }
 
-// Helper provides various helper functions that could be shared across all
-// hwsec integration test regardless of run-type, i.e., remote or local.
-type Helper struct {
+// CmdHelper provides various helper functions that could be shared across all
+// hwsec integration test base on CmdRunner.
+type CmdHelper struct {
 	cmdRunner        CmdRunner
 	cryptohome       *CryptohomeClient
 	tpmManager       *TPMManagerClient
 	daemonController *DaemonController
 }
 
-// NewHelper creates a new Helper, with r responsible for CmdRunner.
-func NewHelper(r CmdRunner) (*Helper, error) {
-	return &Helper{
+// TPMClearHelper provides various helper functions that could be shared across all
+// hwsec integration test base on TPMClearer.
+type TPMClearHelper struct {
+	tpmClearer TPMClearer
+}
+
+// NewCmdHelper creates a new CmdHelper, with r responsible for CmdRunner.
+func NewCmdHelper(r CmdRunner, d *DaemonController) *CmdHelper {
+	return &CmdHelper{
 		cmdRunner:        r,
 		cryptohome:       NewCryptohomeClient(r),
 		tpmManager:       NewTPMManagerClient(r),
 		daemonController: NewDaemonController(r),
-	}, nil
+	}
+}
+
+// NewTPMClearHelper creates a new TPMClearHelper, with tc responsible for TPMClearer.
+func NewTPMClearHelper(tc TPMClearer) *TPMClearHelper {
+	return &TPMClearHelper{
+		tpmClearer: tc,
+	}
 }
 
 // CmdRunner exposes the cmdRunner of helper
-func (h *Helper) CmdRunner() CmdRunner { return h.cmdRunner }
+func (h *CmdHelper) CmdRunner() CmdRunner { return h.cmdRunner }
 
 // CryptohomeClient exposes the cryptohome of helper
-func (h *Helper) CryptohomeClient() *CryptohomeClient { return h.cryptohome }
+func (h *CmdHelper) CryptohomeClient() *CryptohomeClient { return h.cryptohome }
 
 // TPMManagerClient exposes the tpmManager of helper
-func (h *Helper) TPMManagerClient() *TPMManagerClient { return h.tpmManager }
+func (h *CmdHelper) TPMManagerClient() *TPMManagerClient { return h.tpmManager }
 
 // DaemonController exposes the daemonController of helper
-func (h *Helper) DaemonController() *DaemonController { return h.daemonController }
+func (h *CmdHelper) DaemonController() *DaemonController { return h.daemonController }
+
+// TPMClearer exposes the tpmClearer of helper
+func (h *TPMClearHelper) TPMClearer() TPMClearer { return h.tpmClearer }
 
 // EnsureTPMIsReady ensures the TPM is ready when the function returns |nil|.
 // Otherwise, returns any encountered error.
-func (h *Helper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration) error {
+func (h *CmdHelper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration) error {
 	info, err := h.tpmManager.GetNonsensitiveStatus(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to ensure ownership due to error in |GetNonsensitiveStatus|")
@@ -88,7 +104,7 @@ func (h *Helper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration) er
 
 // EnsureIsPreparedForEnrollment ensures the DUT is prepareed for enrollment
 // when the function returns |nil|. Otherwise, returns any encountered error.
-func (h *Helper) EnsureIsPreparedForEnrollment(ctx context.Context, timeout time.Duration) error {
+func (h *CmdHelper) EnsureIsPreparedForEnrollment(ctx context.Context, timeout time.Duration) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		// intentionally ignores error; retry the operation until timeout.
 		isPrepared, err := h.cryptohome.IsPreparedForEnrollment(ctx)
@@ -106,18 +122,18 @@ func (h *Helper) EnsureIsPreparedForEnrollment(ctx context.Context, timeout time
 }
 
 // RemoveFile would delete the file
-func (h *Helper) RemoveFile(ctx context.Context, filename string) error {
+func (h *CmdHelper) RemoveFile(ctx context.Context, filename string) error {
 	_, err := h.cmdRunner.Run(ctx, "rm", "-f", "--", filename)
 	return err
 }
 
 // ReadFile would read data from the file
-func (h *Helper) ReadFile(ctx context.Context, filename string) ([]byte, error) {
+func (h *CmdHelper) ReadFile(ctx context.Context, filename string) ([]byte, error) {
 	return h.cmdRunner.Run(ctx, "cat", "--", filename)
 }
 
 // WriteFile would write data into the file
-func (h *Helper) WriteFile(ctx context.Context, filename string, data []byte) error {
+func (h *CmdHelper) WriteFile(ctx context.Context, filename string, data []byte) error {
 	// Because we may pass NULL('\0') byte in data, using base64 to encode the data could resolve the escape character issue.
 	// Using "echo" or "printf" would require a complex escaping rule to let it work correctly.
 	b64String := base64.StdEncoding.EncodeToString(data)
@@ -132,26 +148,26 @@ func (h *Helper) WriteFile(ctx context.Context, filename string, data []byte) er
 
 // GetTPMManagerLocalData would read the tpm_manager local_tpm_data.
 // Note: Get the data without stopping tpm_managerd may result stale data.
-func (h *Helper) GetTPMManagerLocalData(ctx context.Context) ([]byte, error) {
+func (h *CmdHelper) GetTPMManagerLocalData(ctx context.Context) ([]byte, error) {
 	return h.ReadFile(ctx, "/var/lib/tpm_manager/local_tpm_data")
 }
 
 // SetTPMManagerLocalData would write the local_tpm_data.
 // Because tpm_managerd may cache the local data in the memory, we would need to restart tpm_managerd after modifying the data.
-func (h *Helper) SetTPMManagerLocalData(ctx context.Context, data []byte) error {
+func (h *CmdHelper) SetTPMManagerLocalData(ctx context.Context, data []byte) error {
 	return h.WriteFile(ctx, "/var/lib/tpm_manager/local_tpm_data", data)
 }
 
 // DropResetLockPermissions drops the reset lock permissions and return a callback to restore the permissions.
-func (h *Helper) DropResetLockPermissions(ctx context.Context) (restoreFunc func(ctx context.Context) error, retErr error) {
+func (h *CmdHelper) DropResetLockPermissions(ctx context.Context) (restoreFunc func(ctx context.Context) error, retErr error) {
 	// Stop TPM Manager before modifying its local data.
-	if err := h.daemonController.Stop(ctx, TPMManagerDaemon); err != nil {
+	if err := h.daemonController.StopTpmManager(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to stop TPM Manager")
 	}
 
 	// Restart it after finishing all operation.
 	defer func() {
-		if err := h.daemonController.Start(ctx, TPMManagerDaemon); err != nil {
+		if err := h.daemonController.StartTpmManager(ctx); err != nil {
 			if retErr == nil {
 				retErr = errors.Wrap(err, "failed to start TPM Manager")
 			} else {
@@ -190,13 +206,13 @@ func (h *Helper) DropResetLockPermissions(ctx context.Context) (restoreFunc func
 
 	return func(ctx context.Context) error {
 		// Stop TPM Manager before modifying its local data.
-		if err := h.daemonController.Stop(ctx, TPMManagerDaemon); err != nil {
+		if err := h.daemonController.StopTpmManager(ctx); err != nil {
 			return errors.Wrap(err, "failed to stop TPM Manager")
 		}
 
 		// Restart it after finishing all operation.
 		defer func() {
-			if err := h.daemonController.Start(ctx, TPMManagerDaemon); err != nil {
+			if err := h.daemonController.StartTpmManager(ctx); err != nil {
 				if retErr == nil {
 					retErr = errors.Wrap(err, "failed to start TPM Manager")
 				} else {
@@ -214,7 +230,7 @@ func (h *Helper) DropResetLockPermissions(ctx context.Context) (restoreFunc func
 }
 
 // GetTPMVersion would rteurn the TPM version, for example: "1.2", "2.0"
-func (h *Helper) GetTPMVersion(ctx context.Context) (string, error) {
+func (h *CmdHelper) GetTPMVersion(ctx context.Context) (string, error) {
 	out, err := h.cmdRunner.Run(ctx, "tpmc", "tpmver")
 	// Trailing newline char is trimmed.
 	return strings.TrimSpace(string(out)), err
