@@ -237,6 +237,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fa392c5_5508a53f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-02-24T20:16:19Z",
+      "side": 1,
+      "message": "Alright, I\u0027ll try the built-in one.",
+      "parentUuid": "b71220f9_4d3ce3ac",
+      "range": {
+        "startLine": 141,
+        "startChar": 17,
+        "endLine": 141,
+        "endChar": 113
+      },
+      "revId": "9d0f7d1c5b29a579d8a5e70557b425bb33de0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0615200a_b37a793e",
