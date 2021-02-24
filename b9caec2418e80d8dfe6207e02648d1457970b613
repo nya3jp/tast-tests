@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f61dc133_5506959e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T02:20:42Z",
+      "side": 1,
+      "message": "This is actually waiting for the animation of quick settings to complete. Sadly there\u0027s no other good trigger for that.",
+      "parentUuid": "79024418_5e261503",
+      "range": {
+        "startLine": 202,
+        "startChar": 3,
+        "endLine": 203,
+        "endChar": 38
+      },
+      "revId": "b9caec2418e80d8dfe6207e02648d1457970b613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b390756_b267330e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-23T23:21:20Z",
       "side": 1,
       "message": "NameRegex",
+      "range": {
+        "startLine": 193,
+        "startChar": 50,
+        "endLine": 193,
+        "endChar": 67
+      },
+      "revId": "b9caec2418e80d8dfe6207e02648d1457970b613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d793c263_44d1cdc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T02:20:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b390756_b267330e",
       "range": {
         "startLine": 193,
         "startChar": 50,
