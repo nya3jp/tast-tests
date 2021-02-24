@@ -7,7 +7,7 @@ package chrome
 import (
 	"github.com/shirou/gopsutil/process"
 
-	"chromiumos/tast/local/chrome/internal/chromeproc"
+	"chromiumos/tast/local/chrome/chromeproc"
 )
 
 // ExecPath contains the path to the Chrome executable.

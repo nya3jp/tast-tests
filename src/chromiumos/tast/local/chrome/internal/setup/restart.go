@@ -14,7 +14,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
-	"chromiumos/tast/local/chrome/internal/chromeproc"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/extension"
 	"chromiumos/tast/local/session"
@@ -157,34 +156,8 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 			"BREAKPAD_DUMP_LOCATION=/home/chronos/crash") // Write crash dumps outside cryptohome.
 	}
 
-	// Wait for a browser to start since session_manager can take a while to start it.
-	var oldPID int
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		oldPID, err = chromeproc.GetRootPID()
-		return err
-	}, nil); err != nil {
-		return errors.Wrap(err, "failed to find the browser process")
-	}
-
-	if _, err = sm.EnableChromeTesting(ctx, true, args, envVars); err != nil {
-		return err
-	}
-
-	// Wait for a new browser to appear.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		newPID, err := chromeproc.GetRootPID()
-		if err != nil {
-			return err
-		}
-		if newPID == oldPID {
-			return errors.New("Original browser still running")
-		}
-		return nil
-	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
-		return err
-	}
-	return nil
+	_, err = sm.EnableChromeTestingAndWait(ctx, true, args, envVars)
+	return err
 }
 
 // restartSession stops the "ui" job, clears policy files and the user's cryptohome if requested,
