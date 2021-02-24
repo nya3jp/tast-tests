@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -73,40 +74,40 @@ func DaemonsRestartStress(ctx context.Context, s *testing.State) {
 	// Restart TPM related daemons multiple times.
 	for i := 0; i < 10; i++ {
 		func() {
-			if err := daemonController.StopCryptohome(ctx); err != nil {
+			if err := daemonController.Stop(ctx, hwsec.CryptohomeDaemon); err != nil {
 				s.Fatal("Failed to stop cryptohomed: ", err)
 			}
 			defer func() {
-				if err := daemonController.StartCryptohome(ctx); err != nil {
+				if err := daemonController.Start(ctx, hwsec.CryptohomeDaemon); err != nil {
 					s.Fatal("Failed to start cryptohomed: ", err)
 				}
 			}()
 
-			if err := daemonController.StopAttestation(ctx); err != nil {
+			if err := daemonController.Stop(ctx, hwsec.AttestationDaemon); err != nil {
 				s.Fatal("Failed to stop attestationd: ", err)
 			}
 			defer func() {
-				if err := daemonController.StartAttestation(ctx); err != nil {
+				if err := daemonController.Start(ctx, hwsec.AttestationDaemon); err != nil {
 					s.Fatal("Failed to start attestationd: ", err)
 				}
 			}()
 
-			if err := daemonController.StopTpmManager(ctx); err != nil {
+			if err := daemonController.Stop(ctx, hwsec.TPMManagerDaemon); err != nil {
 				s.Fatal("Failed to stop tpm_managerd: ", err)
 			}
 			defer func() {
-				if err := daemonController.StartTpmManager(ctx); err != nil {
+				if err := daemonController.Start(ctx, hwsec.TPMManagerDaemon); err != nil {
 					s.Fatal("Failed to start tpm_managerd: ", err)
 				}
 			}()
 
 			switch tpmVer {
 			case "1.2":
-				if daemonController.RestartTcsd(ctx); err != nil {
+				if daemonController.Restart(ctx, hwsec.TcsdDaemon); err != nil {
 					s.Fatal("Failed to restart tcsd: ", err)
 				}
 			case "2.0":
-				if daemonController.RestartTrunks(ctx); err != nil {
+				if daemonController.Restart(ctx, hwsec.TrunksDaemon); err != nil {
 					s.Fatal("Failed to restart trunksd: ", err)
 				}
 			default:

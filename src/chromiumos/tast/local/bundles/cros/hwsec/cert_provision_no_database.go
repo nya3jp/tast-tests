@@ -69,14 +69,14 @@ func CertProvisionNoDatabase(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Emulating Cleared attetation database")
 	fw := hwsec.NewFileWiper(r)
-	dCtrl := hwsec.NewDaemonController(r)
+	dCtrl := helper.DaemonController()
 
 	if err := func() (retErr error) {
-		if err := dCtrl.StopAttestation(ctx); err != nil {
+		if err := dCtrl.Stop(ctx, hwsec.AttestationDaemon); err != nil {
 			return errors.Wrap(err, "failed to stop attestationd")
 		}
 		defer func() {
-			if err := dCtrl.StartAttestation(ctx); err != nil && retErr == nil {
+			if err := dCtrl.Start(ctx, hwsec.AttestationDaemon); err != nil && retErr == nil {
 				retErr = errors.Wrap(err, "failed to restart attestationd")
 			}
 		}()
@@ -87,11 +87,11 @@ func CertProvisionNoDatabase(ctx context.Context, s *testing.State) {
 
 	defer func() {
 		s.Log("Restoring attestation DB")
-		if err := dCtrl.StopAttestation(ctx); err != nil {
+		if err := dCtrl.Stop(ctx, hwsec.AttestationDaemon); err != nil {
 			s.Error("Failed to stop attestationd: ", err)
 		} else {
 			defer func() {
-				if err := dCtrl.StartAttestation(ctx); err != nil {
+				if err := dCtrl.Start(ctx, hwsec.AttestationDaemon); err != nil {
 					s.Error("Failed to start attestationd: ", err)
 				}
 			}()
