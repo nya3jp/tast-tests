@@ -50,7 +50,9 @@ type HelperLocal struct {
 // NewHelper creates a new hwsec.Helper instance that make use of the functions
 // implemented by CmdRunnerLocal.
 func NewHelper(r hwsec.CmdRunner) (*HelperLocal, error) {
-	helper, err := hwsec.NewHelper(r)
+	daemonController := hwsec.NewDaemonController(r)
+	tpmClearer := NewTPMClearer(r, daemonController)
+	helper, err := hwsec.NewHelper(r, daemonController, tpmClearer)
 	if err != nil {
 		return nil, err
 	}
