@@ -1,0 +1,50 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.network;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/network";
+
+// AllowlistService tests that ChromeOS connectivity works as expected behind a
+// firewall configured according to our support page.
+service AllowlistService {
+  // SetupFirewall sets up a firewall using `iptables`, blocking https and https
+  // connections through the default ports (80,443). Only http/s connections
+  // coming from a specified port are allowed.
+  rpc SetupFirewall(SetupFirewallRequest) returns (google.protobuf.Empty) {}
+
+  // GaiaLogin starts a new Chrome instance behind a proxy and performs
+  // Chrome OS login using the specified credentials.
+  rpc GaiaLogin(GaiaLoginRequest) returns (google.protobuf.Empty) {}
+
+  // CheckArcAppInstalled verifies that a specified ARC app is installed.
+  rpc CheckArcAppInstalled(CheckArcAppInstalledRequest)
+      returns (google.protobuf.Empty) {}
+
+  // CheckExtensionInstalled verifies that specified extension is installed.
+  rpc CheckExtensionInstalled(CheckExtensionInstalledRequest)
+      returns (google.protobuf.Empty) {}
+}
+
+message SetupFirewallRequest {
+  // Must be a valid port number. Only http/s connection from this port are
+  // allowed by the firewall.
+  uint32 allowed_port = 1;
+}
+
+message GaiaLoginRequest {
+  string username = 1;
+  string password = 2;
+  // Host and port of an HTTP proxy, formatted as "<host>:<port>". The new
+  // instance of Chrome will point to the proxy via command line args.
+  string proxy_host_and_port = 3;
+}
+
+message CheckArcAppInstalledRequest { string app_name = 1; }
+
+message CheckExtensionInstalledRequest { string extension_title = 1; }
