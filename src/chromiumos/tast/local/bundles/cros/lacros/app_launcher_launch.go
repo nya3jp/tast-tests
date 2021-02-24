@@ -51,7 +51,11 @@ func AppLauncherLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Checking that Lacros window is visible")
-	if err := launcher.WaitForLacrosWindow(ctx, tconn, "Welcome to Chrome"); err != nil {
+	firstRunPage := "New Tab"
+	if f.LacrosIsChromeBranded {
+		firstRunPage = "Welcome to Chrome"
+	}
+	if err := launcher.WaitForLacrosWindow(ctx, tconn, firstRunPage); err != nil {
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 
