@@ -44,6 +44,18 @@ func MalformedProbeResp(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
+	// We'll use `iw scan` to trigger background scan, turn it off
+	// in shill so we won't race with shill on the device.
+	ctx, restoreBgscan, err := tf.TurnOffBgscan(ctx)
+	if err != nil {
+		s.Fatal("Failed to turn off background scan: ", err)
+	}
+	defer func() {
+		if err := restoreBgscan(); err != nil {
+			s.Error("Failed to restore background scan config: ", err)
+		}
+	}()
+
 	s.Log("Configuring AP")
 	ap, err := tf.DefaultOpenNetworkAP(ctx)
 	if err != nil {
