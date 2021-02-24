@@ -7,6 +7,7 @@ package vkb
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -16,6 +17,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -25,7 +29,10 @@ import (
 // Usage: It can be used to test Layout and UI interaction in a quick way.
 // For example, testing switch layout.
 func ShowVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
-	return tconn.Eval(ctx, `tast.promisify(chrome.inputMethodPrivate.showInputView)()`, nil)
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.inputMethodPrivate.showInputView)()`, nil); err != nil {
+		return errors.Wrap(err, "failed to show the virtual keyboard")
+	}
+	return nil
 }
 
 // HideVirtualKeyboard forces the virtual keyboard to be hidden via Chrome API.
@@ -39,41 +46,35 @@ func HideVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
 	return WaitUntilHidden(ctx, tconn)
 }
 
+func vkRootFinder() *nodewith.Finder {
+	return nodewith.Role(role.RootWebArea).Name("Chrome OS Virtual Keyboard")
+}
+
 // VirtualKeyboard returns a reference to chrome.automation API AutomationNode of virtual keyboard.
-func VirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
-	params := ui.FindParams{
-		Role: ui.RoleTypeRootWebArea,
-		Name: "Chrome OS Virtual Keyboard",
-	}
-	return ui.FindWithTimeout(ctx, tconn, params, 30*time.Second)
+func VirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) (*uiauto.NodeInfo, error) {
+	return uiauto.New(tconn).WithTimeout(30*time.Second).Info(ctx, vkRootFinder())
 }
 
 // IsShown checks if the virtual keyboard is currently shown. It checks whether
 // there is a visible DOM element with an accessibility role of "keyboard".
-func IsShown(ctx context.Context, tconn *chrome.TestConn) (shown bool, err error) {
-	params := ui.FindParams{
-		Role: ui.RoleTypeRootWebArea,
-		Name: "Chrome OS Virtual Keyboard",
-	}
-	return ui.Exists(ctx, tconn, params)
+func IsShown(ctx context.Context, tconn *chrome.TestConn) bool {
+	return uiauto.New(tconn).Exists(vkRootFinder())(ctx) == nil
 }
 
 // WaitLocationStable waits for the virtual keyboard to appear and have a stable location.
 func WaitLocationStable(ctx context.Context, tconn *chrome.TestConn) error {
-	keyboard, err := VirtualKeyboard(ctx, tconn)
+	_, err := VirtualKeyboard(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "fail to wait for virtual keyboard shown")
 	}
-	defer keyboard.Release(ctx)
-	return keyboard.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 20 * time.Second})
+	_, err = uiauto.New(tconn).WithTimeout(20*time.Second).WithInterval(1*time.Second).Location(ctx, vkRootFinder())
+	return err
 }
 
 // WaitUntilHidden waits for the virtual keyboard to hide. It waits until the node is gone from a11y tree.
 func WaitUntilHidden(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if shown, err := IsShown(ctx, tconn); err != nil {
-			return testing.PollBreak(err)
-		} else if shown {
+		if IsShown(ctx, tconn) {
 			return errors.New("waiting for virtual keyboard to be hidden")
 		}
 		return nil
@@ -88,16 +89,10 @@ func WaitUntilHidden(ctx context.Context, tconn *chrome.TestConn) error {
 // It is not actually required because TapKey will find the key node first.
 func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		keyboard, err := ui.Find(ctx, tconn, ui.FindParams{Role: ui.RoleTypeKeyboard})
+		keys, err := uiauto.New(tconn).NodesInfo(ctx, nodewith.Role(role.Button).Ancestor(nodewith.Role(role.Keyboard)))
 		if err != nil {
-			return errors.Wrap(err, "virtual keyboard does not exist yet")
+			return err
 		}
-		defer keyboard.Release(ctx)
-		keys, err := keyboard.Descendants(ctx, ui.FindParams{Role: ui.RoleTypeButton})
-		if err != nil {
-			return errors.Wrap(err, "keyboard buttons don't exist yet")
-		}
-		defer keys.Release(ctx)
 		// English keyboard should have at least 26 keys.
 		if len(keys) <= 26 {
 			return errors.New("not all buttons have rendered yet")
@@ -150,7 +145,6 @@ func TapKey(ctx context.Context, tconn *chrome.TestConn, keyName string) error {
 	if err != nil {
 		return errors.Wrapf(err, "failed to find key: %s", keyName)
 	}
-	defer key.Release(ctx)
 
 	// Note: Must use mouse Move + Press + Sleep + Release here instead of Click.
 	// Mouse click is simulated by calling Chrome private api `chrome.autotestPrivate.mouseClick`.
@@ -168,27 +162,20 @@ func TapKey(ctx context.Context, tconn *chrome.TestConn, keyName string) error {
 	return mouse.Release(ctx, tconn, mouse.LeftButton)
 }
 
-// FindKeyNode returns the ui node of the specified key.
-func FindKeyNode(ctx context.Context, tconn *chrome.TestConn, keyName string) (*ui.Node, error) {
-	keyParams := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: keyName,
-	}
+func keyFinder(key string) *nodewith.Finder {
+	return nodewith.Role(role.Button).Name(key).Ancestor(vkRootFinder())
+}
 
-	return DescendantNode(ctx, tconn, keyParams)
+// FindKeyNode returns the ui node of the specified key.
+func FindKeyNode(ctx context.Context, tconn *chrome.TestConn, keyName string) (*uiauto.NodeInfo, error) {
+	return DescendantNode(ctx, tconn, keyFinder(keyName))
 }
 
 // DescendantNode returns the first descendant node in virtual keyboard matches given FindParams.
-func DescendantNode(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams) (*ui.Node, error) {
-	vk, err := VirtualKeyboard(ctx, tconn)
+func DescendantNode(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder) (*uiauto.NodeInfo, error) {
+	node, err := uiauto.New(tconn).WithTimeout(10*time.Second).Info(ctx, finder.Ancestor(vkRootFinder()))
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to find virtual keyboard automation node")
-	}
-	defer vk.Release(ctx)
-
-	node, err := vk.DescendantWithTimeout(ctx, params, 10*time.Second)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to find descendant node with %v", params)
+		return nil, errors.Wrap(err, "failed to find descendant node under the virtual keyboard")
 	}
 	return node, nil
 }
@@ -248,34 +235,19 @@ func TapKeys(ctx context.Context, tconn *chrome.TestConn, keys []string) error {
 // WaitForKeysExist waits for a list of keys to appear on virtual keyboard.
 // Note: Should not use FindKeyNode in a loop to implement this function, because it waits for each key within a timeout.
 func WaitForKeysExist(ctx context.Context, tconn *chrome.TestConn, keys []string) error {
-	vk, err := VirtualKeyboard(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find virtual keyboard automation node")
-	}
-	defer vk.Release(ctx)
-
-	return testing.Poll(ctx, func(ctx context.Context) error {
+	ui := uiauto.New(tconn).WithInterval(1 * time.Second).WithTimeout(10 * time.Second)
+	return ui.Poll(func(ctx context.Context) error {
 		var notFoundKeys []string
 		for _, key := range keys {
-			keyParams := ui.FindParams{
-				Role: ui.RoleTypeButton,
-				Name: key,
-			}
-
-			keyExists, err := vk.DescendantExists(ctx, keyParams)
-			if err != nil {
-				return errors.Wrapf(err, "failed to find key node %s", key)
-			}
-
-			if !keyExists {
+			if ui.Exists(keyFinder(key))(ctx) != nil {
 				notFoundKeys = append(notFoundKeys, key)
 			}
 		}
 		if len(notFoundKeys) > 0 {
-			return errors.Errorf("these keys are not found: %v", notFoundKeys)
+			return errors.Errorf("while waiting for keys %v to exist, these keys are not found: %v", keys, notFoundKeys)
 		}
 		return nil
-	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second})
+	})(ctx)
 }
 
 // TapKeysJS simulates tap events on the middle of the specified sequence of keys via javascript.
@@ -315,36 +287,26 @@ func WaitForDecoderEnabled(ctx context.Context, cr *chrome.Chrome, enabled bool)
 // ClickUntilVKShown repeatedly left clicks the node until the condition returns true with no error.
 // This is useful for situations where there is no indication of whether the node is ready to receive clicks.
 // The interval between clicks and the timeout can be specified using testing.PollOptions.
-func ClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn, node *ui.Node) error {
-	condition := func(ctx context.Context) (bool, error) {
-		return IsShown(ctx, tconn)
-	}
-	opts := testing.PollOptions{Timeout: 30 * time.Second, Interval: 3 * time.Second}
-	if err := node.LeftClickUntil(ctx, condition, &opts); err != nil {
-		return errors.Wrapf(err, "failed to click %v until vk shown", node)
-	}
-	return WaitLocationStable(ctx, tconn)
-}
-
-// FindAndClickUntilVKShown is similar to ClickUntilVKShown.
-// It finds element first and then performs ClickUntilVKShown.
-func FindAndClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams) error {
-	node, err := ui.FindWithTimeout(ctx, tconn, params, 20*time.Second)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find node with params %v", params)
-	}
-	defer node.Release(ctx)
-	return ClickUntilVKShown(ctx, tconn, node)
+func ClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn, finder *nodewith.Finder) error {
+	ui := uiauto.New(tconn)
+	return uiauto.Combine("click until vk shown",
+		ui.WithTimeout(20*time.Second).WaitUntilExists(finder),
+		ui.WithTimeout(30*time.Second).WithInterval(3*time.Second).LeftClickUntil(finder, func(ctx context.Context) error {
+			if IsShown(ctx, tconn) {
+				return nil
+			}
+			return errors.New("node not shown missing")
+		}),
+		WaitLocationStableAction(tconn),
+	)(ctx)
 }
 
 // WaitForVKReady waits for virtual keyboard shown, completely positioned and decoder ready for use.
 // Similar to document.readyState === 'complete' in DOM, Virtual keyboard's readiness needs to be ensured before using it.
 func WaitForVKReady(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
-	if err := WaitLocationStable(ctx, tconn); err != nil {
-		return err
-	}
-
-	return WaitForDecoderEnabled(ctx, cr, true)
+	return uiauto.Combine("wait for virtual keyboard to be ready",
+		WaitLocationStableAction(tconn),
+		WaitForDecoderEnabledAction(cr, true))(ctx)
 }
 
 // SwitchToVoiceInput changes virtual keyboard to voice input layout.
@@ -362,36 +324,21 @@ func SwitchToVoiceInput(ctx context.Context, cr *chrome.Chrome) error {
 
 // TapKeyboardInput changes virtual keyboard to keyboard input layout.
 func TapKeyboardInput(ctx context.Context, tconn *chrome.TestConn) error {
-	params := ui.FindParams{
-		Role:      ui.RoleTypeButton,
-		Name:      "Back",
-		ClassName: "sk icon-key",
-	}
-	opts := testing.PollOptions{Timeout: 2 * time.Second}
-	return ui.StableFindAndClick(ctx, tconn, params, &opts)
+	finder := nodewith.Role(role.Button).Name("Back").ClassName("sk icon-key")
+	return uiauto.New(tconn).WithTimeout(2 * time.Second).LeftClick(finder)(ctx)
 }
 
 // TapAccessPoints changes the suggestion bar to input icons.
 func TapAccessPoints(ctx context.Context, tconn *chrome.TestConn) error {
-	params := ui.FindParams{
-		Role:      ui.RoleTypeButton,
-		Name:      "Show access points",
-		ClassName: "sk icon-key",
-	}
-	opts := testing.PollOptions{Timeout: 2 * time.Second}
-	return ui.StableFindAndClick(ctx, tconn, params, &opts)
+	finder := nodewith.Role(role.Button).Name("Show access points").ClassName("sk icon-key")
+	return uiauto.New(tconn).WithTimeout(2 * time.Second).LeftClick(finder)(ctx)
 }
 
 // TapHandwritingInputAndWaitForEngine changes virtual keyboard to handwriting input layout and waits for the handwriting
 // engine to become ready.
 func TapHandwritingInputAndWaitForEngine(ctx context.Context, tconn *chrome.TestConn) error {
-	params := ui.FindParams{
-		Role:      ui.RoleTypeButton,
-		Name:      "switch to handwriting, not compatible with ChromeVox",
-		ClassName: "sk icon-key",
-	}
-	opts := testing.PollOptions{Timeout: 2 * time.Second}
-	if err := ui.StableFindAndClick(ctx, tconn, params, &opts); err != nil {
+	finder := nodewith.Role(role.Button).Name("switch to handwriting, not compatible with ChromeVox").ClassName("sk icon-key")
+	if err := uiauto.New(tconn).WithTimeout(2 * time.Second).LeftClick(finder)(ctx); err != nil {
 		return err
 	}
 
@@ -410,12 +357,139 @@ func EnableA11yVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn, enab
 
 // SelectFromSuggestion waits for suggestion candidate to appear and clicks it to select.
 func SelectFromSuggestion(ctx context.Context, tconn *chrome.TestConn, candidateText string) error {
-	candidateFindParams := ui.FindParams{
-		Role:      ui.RoleTypeButton,
-		ClassName: "sk",
-		Name:      candidateText,
-	}
+	finder := nodewith.Role(role.Button).Name(candidateText).ClassName("sk")
+	return uiauto.New(tconn).WithTimeout(3 * time.Second).WithInterval(500 * time.Millisecond).LeftClick(finder)(ctx)
+}
 
-	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
-	return ui.StableFindAndClick(ctx, tconn, candidateFindParams, &opts)
+// ShowVirtualKeyboardAction returns a uiauto.Action which calls ShowVirtualKeyboard.
+func ShowVirtualKeyboardAction(tconn *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"vkb.ShowVirtualKeyboardAction(tconn *chrome.TestConn)",
+		func(ctx context.Context) error { return ShowVirtualKeyboard(ctx, tconn) })
+}
+
+// HideVirtualKeyboardAction returns a uiauto.Action which calls HideVirtualKeyboard.
+func HideVirtualKeyboardAction(tconn *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"vkb.HideVirtualKeyboardAction(tconn *chrome.TestConn)",
+		func(ctx context.Context) error { return HideVirtualKeyboard(ctx, tconn) })
+}
+
+// WaitLocationStableAction returns a uiauto.Action which calls WaitLocationStable.
+func WaitLocationStableAction(tconn *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"vkb.WaitLocationStableAction(tconn *chrome.TestConn)",
+		func(ctx context.Context) error { return WaitLocationStable(ctx, tconn) })
+}
+
+// WaitUntilHiddenAction returns a uiauto.Action which calls WaitUntilHidden.
+func WaitUntilHiddenAction(tconn *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"vkb.WaitUntilHiddenAction(tconn *chrome.TestConn)",
+		func(ctx context.Context) error { return WaitUntilHidden(ctx, tconn) })
+}
+
+// WaitUntilButtonsRenderAction returns a uiauto.Action which calls WaitUntilButtonsRender.
+func WaitUntilButtonsRenderAction(tconn *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"vkb.WaitUntilButtonsRenderAction(tconn *chrome.TestConn)",
+		func(ctx context.Context) error { return WaitUntilButtonsRender(ctx, tconn) })
+}
+
+// TapKeyAction returns a uiauto.Action which calls TapKey.
+func TapKeyAction(tconn *chrome.TestConn, keyName string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("vkb.TapKeyAction(tconn *chrome.TestConn, keyName string) with keyName=%v", keyName),
+		func(ctx context.Context) error { return TapKey(ctx, tconn, keyName) })
+}
+
+// TapKeyJSAction returns a uiauto.Action which calls TapKeyJS.
+func TapKeyJSAction(kconn *chrome.Conn, key string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("vkb.TapKeyJSAction(kconn *chrome.Conn, key string) with key=%v", key),
+		func(ctx context.Context) error { return TapKeyJS(ctx, kconn, key) })
+}
+
+// SetFloatingModeAction returns a uiauto.Action which calls SetFloatingMode.
+func SetFloatingModeAction(tconn *chrome.TestConn, enable bool) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("vkb.SetFloatingModeAction(tconn *chrome.TestConn, enable bool) with enable=%v", enable),
+		func(ctx context.Context) error { return SetFloatingMode(ctx, tconn, enable) })
+}
+
+// TapKeysAction returns a uiauto.Action which calls TapKeys.
+func TapKeysAction(tconn *chrome.TestConn, keys []string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("vkb.TapKeysAction(tconn *chrome.TestConn, keys []string) with keys=%v", keys),
+		func(ctx context.Context) error { return TapKeys(ctx, tconn, keys) })
+}
+
+// WaitForKeysExistAction returns a uiauto.Action which calls WaitForKeysExist.
+func WaitForKeysExistAction(tconn *chrome.TestConn, keys []string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("vkb.WaitForKeysExistAction(tconn *chrome.TestConn, keys []string) with keys=%v", keys),
+		func(ctx context.Context) error { return WaitForKeysExist(ctx, tconn, keys) })
+}
+
+// TapKeysJSAction returns a uiauto.Action which calls TapKeysJS.
+func TapKeysJSAction(kconn *chrome.Conn, keys []string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("vkb.TapKeysJSAction(kconn *chrome.Conn, keys []string) with keys=%v", keys),
+		func(ctx context.Context) error { return TapKeysJS(ctx, kconn, keys) })
+}
+
+// WaitForDecoderEnabledAction returns a uiauto.Action which calls WaitForDecoderEnabled.
+func WaitForDecoderEnabledAction(cr *chrome.Chrome, enabled bool) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("vkb.WaitForDecoderEnabledAction(cr *chrome.Chrome, enabled bool) with enabled=%v", enabled),
+		func(ctx context.Context) error { return WaitForDecoderEnabled(ctx, cr, enabled) })
+}
+
+// ClickUntilVKShownAction returns a uiauto.Action which calls ClickUntilVKShown.
+func ClickUntilVKShownAction(tconn *chrome.TestConn, finder *nodewith.Finder) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("vkb.ClickUntilVKShownAction(tconn *chrome.TestConn, finder *nodewith.Finder) with finder=%+v", finder),
+		func(ctx context.Context) error { return ClickUntilVKShown(ctx, tconn, finder) })
+}
+
+// WaitForVKReadyAction returns a uiauto.Action which calls WaitForVKReady.
+func WaitForVKReadyAction(tconn *chrome.TestConn, cr *chrome.Chrome) uiauto.Action {
+	return uiauto.NamedAction(
+		"vkb.WaitForVKReadyAction(tconn *chrome.TestConn, cr *chrome.Chrome)",
+		func(ctx context.Context) error { return WaitForVKReady(ctx, tconn, cr) })
+}
+
+// SwitchToVoiceInputAction returns a uiauto.Action which calls SwitchToVoiceInput.
+func SwitchToVoiceInputAction(cr *chrome.Chrome) uiauto.Action {
+	return uiauto.NamedAction(
+		"vkb.SwitchToVoiceInputAction(cr *chrome.Chrome)",
+		func(ctx context.Context) error { return SwitchToVoiceInput(ctx, cr) })
+}
+
+// TapKeyboardInputAction returns a uiauto.Action which calls TapKeyboardInput.
+func TapKeyboardInputAction(tconn *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"vkb.TapKeyboardInputAction(tconn *chrome.TestConn)",
+		func(ctx context.Context) error { return TapKeyboardInput(ctx, tconn) })
+}
+
+// TapAccessPointsAction returns a uiauto.Action which calls TapAccessPoints.
+func TapAccessPointsAction(tconn *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"vkb.TapAccessPointsAction(tconn *chrome.TestConn)",
+		func(ctx context.Context) error { return TapAccessPoints(ctx, tconn) })
+}
+
+// TapHandwritingInputAndWaitForEngineAction returns a uiauto.Action which calls TapHandwritingInputAndWaitForEngine.
+func TapHandwritingInputAndWaitForEngineAction(tconn *chrome.TestConn) uiauto.Action {
+	return uiauto.NamedAction(
+		"vkb.TapHandwritingInputAndWaitForEngineAction(tconn *chrome.TestConn)",
+		func(ctx context.Context) error { return TapHandwritingInputAndWaitForEngine(ctx, tconn) })
+}
+
+// SelectFromSuggestionAction returns a uiauto.Action which calls SelectFromSuggestion.
+func SelectFromSuggestionAction(tconn *chrome.TestConn, candidateText string) uiauto.Action {
+	return uiauto.NamedAction(
+		fmt.Sprintf("vkb.SelectFromSuggestionAction(tconn *chrome.TestConn, candidateText string) with candidateText=%v", candidateText),
+		func(ctx context.Context) error { return SelectFromSuggestion(ctx, tconn, candidateText) })
 }

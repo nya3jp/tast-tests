@@ -13,8 +13,10 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -55,58 +57,29 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
+	searchInputElement := nodewith.Role(role.SearchBox).Name("Search settings")
 	app := apps.Settings
-	s.Logf("Launching %s", app.Name)
-	if err := apps.Launch(ctx, tconn, app.ID); err != nil {
-		s.Fatalf("Failed to launch %s: %c", app.Name, err)
-	}
-	if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
-		s.Fatalf("%s did not appear in shelf after launch: %v", app.Name, err)
-	}
+	if err := uiauto.Combine("type in an app",
+		apps.LaunchAction(tconn, app.ID),
+		ash.WaitForAppAction(tconn, app.ID),
+		uiauto.WaitForLocationChangeCompletedAction(tconn),
+		vkb.ClickUntilVKShownAction(tconn, searchInputElement),
+		vkb.WaitForVKReadyAction(tconn, cr),
+		vkb.TapKeysAction(tconn, strings.Split(typingKeys, "")),
+		// Hide virtual keyboard to submit candidate
+		vkb.HideVirtualKeyboardAction(tconn),
+		uiauto.New(tconn).WithTimeout(10*time.Second).Poll(func(ctx context.Context) error {
+			info, err := uiauto.New(tconn).Info(ctx, searchInputElement)
+			if err != nil {
+				return errors.Wrap(err, "failed to get the node's location")
+			}
 
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for animation finished: ", err)
-	}
-
-	s.Log("Find searchbox input element")
-	params := ui.FindParams{
-		Role: ui.RoleTypeSearchBox,
-		Name: "Search settings",
-	}
-	searchInputElement, err := ui.FindWithTimeout(ctx, tconn, params, 5*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find searchbox input field in settings: ", err)
-	}
-	defer searchInputElement.Release(ctx)
-
-	s.Log("Click searchbox to trigger virtual keyboard")
-	if err := vkb.ClickUntilVKShown(ctx, tconn, searchInputElement); err != nil {
-		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
-	}
-
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard ready")
-	}
-
-	if err := vkb.TapKeys(ctx, tconn, strings.Split(typingKeys, "")); err != nil {
-		s.Fatal("Failed to input with virtual keyboard: ", err)
-	}
-
-	// Hide virtual keyboard to submit candidate
-	if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
-		s.Fatal("Failed to hide virtual keyboard: ", err)
-	}
-
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := searchInputElement.Update(ctx); err != nil {
-			return errors.Wrap(err, "failed to update the node's location")
-		}
-
-		if searchInputElement.Value != typingKeys {
-			return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", searchInputElement.Value, typingKeys)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Error("Failed to input with virtual keyboard: ", err)
+			if info.Value != typingKeys {
+				return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", info.Value, typingKeys)
+			}
+			return nil
+		}),
+	)(ctx); err != nil {
+		s.Fatal("Failed to type in an app: ", err)
 	}
 }
