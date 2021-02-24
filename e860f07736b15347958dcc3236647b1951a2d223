@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57f7183e_68a84a01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T00:12:40Z",
+      "side": 1,
+      "message": "I\u0027m asking specifically about the duration. What is the reason to record the duration?",
+      "parentUuid": "2788fcce_83a980f0",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 25
+      },
+      "revId": "e860f07736b15347958dcc3236647b1951a2d223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3668e02c_1f2ffc4a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
@@ -120,6 +144,30 @@
       "side": 1,
       "message": "Ok. Since this is to track the media quality, I use the \"Media\" prefix instead.",
       "parentUuid": "3668e02c_1f2ffc4a",
+      "range": {
+        "startLine": 345,
+        "startChar": 13,
+        "endLine": 345,
+        "endChar": 25
+      },
+      "revId": "e860f07736b15347958dcc3236647b1951a2d223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95d13e4f_30c1e4ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-24T00:12:40Z",
+      "side": 1,
+      "message": "\u003e Ok. Since this is to track the media quality, I use the \"Media\" prefix instead.\n\nOr no prefix might be good enough, it\u0027s up to you.",
+      "parentUuid": "81b18122_d55d3130",
       "range": {
         "startLine": 345,
         "startChar": 13,
