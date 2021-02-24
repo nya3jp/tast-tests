@@ -26,8 +26,12 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
-		Pre:          pre.User,
+		Attr: []string{
+			"group:mainline",
+			"group:paper-io",
+			"paper-io_printing",
+		},
+		Pre: pre.User,
 	})
 }
 

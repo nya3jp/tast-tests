@@ -13,10 +13,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         GstorasterUnembeddedFont,
-		Desc:         "Tests that the gstoraster CUPS filter handles unembedded PDF fonts",
-		Contacts:     []string{"batrapranav@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline"},
+		Func:     GstorasterUnembeddedFont,
+		Desc:     "Tests that the gstoraster CUPS filter handles unembedded PDF fonts",
+		Contacts: []string{"batrapranav@chromium.org", "project-bolton@google.com"},
+		Attr: []string{
+			"group:mainline",
+			"group:paper-io",
+			"paper-io_printing",
+		},
 		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{fontFile, fontGoldenFile},
 	})

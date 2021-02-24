@@ -29,7 +29,12 @@ func init() {
 			"batrapranav@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr: []string{
+			"group:mainline",
+			"informational",
+			"group:paper-io",
+			"paper-io_printing",
+		},
 		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{ppdsAll},
 	})

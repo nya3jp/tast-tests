@@ -20,7 +20,11 @@ func init() {
 			"batrapranav@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr: []string{
+			"group:mainline",
+			"group:paper-io",
+			"paper-io_printing",
+		},
 		SoftwareDeps: []string{"chrome", "cros_internal", "cups", "plugin_vm"},
 		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{

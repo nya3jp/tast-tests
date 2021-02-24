@@ -13,10 +13,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Gstopdf,
-		Desc:         "Tests that the gstopdf CUPS filter produces expected output",
-		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline"},
+		Func:     Gstopdf,
+		Desc:     "Tests that the gstopdf CUPS filter produces expected output",
+		Contacts: []string{"skau@chromium.org", "project-bolton@google.com"},
+		Attr: []string{
+			"group:mainline",
+			"group:paper-io",
+			"paper-io_printing",
+		},
 		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{"gstopdf_input.ps", "gstopdf_golden.pdf"},
 	})

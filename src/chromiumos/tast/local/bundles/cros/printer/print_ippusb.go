@@ -17,10 +17,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PrintIPPUSB,
-		Desc:         "Tests ipp-over-usb printing",
-		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline"},
+		Func:     PrintIPPUSB,
+		Desc:     "Tests ipp-over-usb printing",
+		Contacts: []string{"skau@chromium.org", "project-bolton@google.com"},
+		Attr: []string{
+			"group:mainline",
+			"group:paper-io",
+			"paper-io_printing",
+		},
 		SoftwareDeps: []string{"chrome", "cros_internal", "cups", "virtual_usb_printer"},
 		Data:         []string{"print_ippusb_to_print.pdf", "print_ippusb_golden.pdf"},
 		Pre:          chrome.LoggedIn(),

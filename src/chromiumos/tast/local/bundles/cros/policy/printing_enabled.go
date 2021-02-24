@@ -31,8 +31,13 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
-		Pre:          pre.User,
+		Attr: []string{
+			"group:mainline",
+			"informational",
+			"group:paper-io",
+			"paper-io_printing",
+		},
+		Pre: pre.User,
 		Params: []testing.Param{
 			{
 				Name: "print_from_chrome_menu",

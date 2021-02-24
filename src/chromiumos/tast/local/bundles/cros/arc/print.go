@@ -35,7 +35,12 @@ func init() {
 			"bmgordon@google.com",
 			"jschettler@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr: []string{
+			"group:mainline",
+			"informational",
+			"group:paper-io",
+			"paper-io_printing",
+		},
 		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
