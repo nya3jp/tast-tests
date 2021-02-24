@@ -22,6 +22,30 @@
       },
       "revId": "0a30c58986071bb64e1cda93561a9e24c47876b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a8802b_f21c757c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-24T22:11:32Z",
+      "side": 1,
+      "message": "Yes, it is optional because devices will have HEVC HW decode capabilities, but we won\u0027t be using them unless they also support protected content.\n\nI do also plan on taking another pass on this to add specific capabilities for hw decode of protected content (at least for each codec, possibly even across combinations of codec x encryption...there\u0027s only 2 kinds of encryption so it won\u0027t explode).  I won\u0027t be going as far as codec x encryption x 4k x 10bit though, that seems excessive. :)",
+      "parentUuid": "9be62e90_f4ec5c3b",
+      "range": {
+        "startLine": 33,
+        "startChar": 67,
+        "endLine": 33,
+        "endChar": 71
+      },
+      "revId": "0a30c58986071bb64e1cda93561a9e24c47876b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
