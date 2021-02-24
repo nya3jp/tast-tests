@@ -31,10 +31,15 @@ var ippUsbFormat = regexp.MustCompile("^ippusb:escl:.*:(....)_(....)/.*")
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         EnumerateIPPUSB,
-		Desc:         "Tests that IPP-USB devices are correctly found",
-		Contacts:     []string{"bmgordon@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     EnumerateIPPUSB,
+		Desc:     "Tests that IPP-USB devices are correctly found",
+		Contacts: []string{"bmgordon@chromium.org", "project-bolton@google.com"},
+		Attr: []string{
+			"group:mainline",
+			"informational",
+			"group:paper-io",
+			"paper-io_scanning",
+		},
 		SoftwareDeps: []string{"virtual_usb_printer", "cups", "chrome"},
 		Pre:          chrome.LoggedIn(),
 	})

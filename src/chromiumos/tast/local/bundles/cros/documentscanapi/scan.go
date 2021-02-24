@@ -32,7 +32,12 @@ func init() {
 		Contacts:     []string{"kmoed@google.com", "project-bolton@google.com"},
 		Data:         []string{"manifest.json", "background.js", "scan.css", "scan.html", "scan.js", "scan_escl_ipp_source.jpg", "scan_escl_ipp_golden.png"},
 		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr: []string{
+			"group:mainline",
+			"informational",
+			"group:paper-io",
+			"paper-io_scanning",
+		},
 	})
 }
 

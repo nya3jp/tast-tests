@@ -32,7 +32,12 @@ func init() {
 			"cros-peripherals@google.com",
 			"project-bolton@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr: []string{
+			"group:mainline",
+			"informational",
+			"group:paper-io",
+			"paper-io_scanning",
+		},
 		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
 		Data: []string{
 			sourceImage,
