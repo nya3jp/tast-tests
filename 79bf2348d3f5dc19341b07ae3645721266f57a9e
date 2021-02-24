@@ -80,6 +80,30 @@
       },
       "revId": "79bf2348d3f5dc19341b07ae3645721266f57a9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ecbb76_89765151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-24T19:39:14Z",
+      "side": 1,
+      "message": "So are you going to sort them or use existing pattern?\n\nimo here it\u0027s easier to see pattern: \n\nfalse/false\nfalse/true\nfalse/unset\n\ntrue/false\ntrue/true\ntrue/unset\n\nunset/false\nunset/true\nunset/unset",
+      "parentUuid": "51360487_efa2f09e",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "79bf2348d3f5dc19341b07ae3645721266f57a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
