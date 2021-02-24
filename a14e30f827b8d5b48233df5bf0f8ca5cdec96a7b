@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c1fb06c_a3aae686",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-24T19:07:27Z",
+      "side": 1,
+      "message": "Thanks for the review. I added the default options and modified the comments.",
+      "parentUuid": "6b82e877_d5f319c8",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 53
+      },
+      "revId": "a14e30f827b8d5b48233df5bf0f8ca5cdec96a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e277ae14_221dd87c",
@@ -136,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70145f32_dce047e7",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-24T19:07:27Z",
+      "side": 1,
+      "message": "Thanks for this finding. GetArcState() is implemented in the new patch.",
+      "parentUuid": "dcd8a490_d3fcb090",
+      "range": {
+        "startLine": 158,
+        "startChar": 5,
+        "endLine": 158,
+        "endChar": 21
+      },
+      "revId": "a14e30f827b8d5b48233df5bf0f8ca5cdec96a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9056d229_f98790de",
@@ -149,6 +197,30 @@
       "writtenOn": "2021-02-23T21:26:33Z",
       "side": 1,
       "message": "tconn.Call(ctx, \u0026provisioned, \"tast.promisify(chrome.autotestPrivate.isArcProvisioned)\") might be better.",
+      "range": {
+        "startLine": 160,
+        "startChar": 11,
+        "endLine": 160,
+        "endChar": 101
+      },
+      "revId": "a14e30f827b8d5b48233df5bf0f8ca5cdec96a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "336d4172_ef1a9ade",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-02-24T19:07:27Z",
+      "side": 1,
+      "message": "Good to know the subtle difference of the two. Changed.",
+      "parentUuid": "9056d229_f98790de",
       "range": {
         "startLine": 160,
         "startChar": 11,
