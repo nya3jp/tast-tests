@@ -62,6 +62,7 @@ func init() {
 					query:       apps.Scan.Name,
 					featureFlag: "ScanningUI",
 				},
+				ExtraAttr: []string{"group:paper-io", "paper-io_scanning"},
 			},
 		},
 	})

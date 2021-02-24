@@ -56,6 +56,7 @@ func init() {
 					featureFlag:  "ScanningUI",
 					settingsPage: "osPrinting", // URL for Print and scan page
 				},
+				ExtraAttr: []string{"group:paper-io", "paper-io_scanning"},
 			},
 			{
 				Name: "print_management",
