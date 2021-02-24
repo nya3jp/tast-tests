@@ -7,16 +7,19 @@ package network
 import (
 	"context"
 	"strings"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/network/proxy"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -112,9 +115,42 @@ func (a *AllowlistService) TestSystemServicesConnectivity(ctx context.Context, r
 	return &empty.Empty{}, nil
 }
 
+// TestArcConnectivity verifies that ARC provisioning and installing ARC apps by checking that force installed apps are successfully installed.
 func (a *AllowlistService) TestArcConnectivity(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	return nil, errors.New("method TestArcConnectivity not implemented")
+	if a.cr == nil {
+		return nil, errors.New("Please start a new Chrome instance that uses the firewall by calling GaiaLogin()")
+	}
 
+	td, _ := testing.ContextOutDir(ctx)
+	arc, err := arc.New(ctx, td)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start ARC")
+	}
+	defer arc.Close()
+
+	// Ensure that Android packages are force-installed by ARC policy.
+	ctx, st := timing.Start(ctx, "wait_packages")
+	defer st.End()
+
+	testing.ContextLog(ctx, "Waiting for packages being installed")
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
+		// List installed 3rd patry packages
+		cmd := arc.Command(ctx, "pm", "list", "packages", "-3")
+		out, err := cmd.Output()
+		if err != nil {
+			cmd.DumpLog(ctx)
+			return errors.Wrap(err, "pm list -3 failed")
+		}
+		if len(out) > 0 {
+			testing.ContextLogf(ctx, "Found packages %s", string(out))
+			return nil
+		}
+		return errors.New("failed to install 3rd party")
+	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 180 * time.Second}); err != nil {
+		return nil, err
+	}
+
+	return &empty.Empty{}, nil
 }
 
 func (a *AllowlistService) TestExtensionConnectivity(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
