@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d27f7a80_84a1d0eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-24T07:46:27Z",
+      "side": 1,
+      "message": "Oh, I overlooked it in the prev review. Thank you for the fix.",
+      "revId": "6fbecd78f98c5996600668e2cff5c051cd05e3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
