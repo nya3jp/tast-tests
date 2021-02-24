@@ -36,7 +36,7 @@ func init() {
 
 func LauncherApps(ctx context.Context, s *testing.State) {
 	const (
-		pkgName = "com.google.android.apps.maps"
+		pkgName = "com.google.android.apps.dynamite"
 	)
 
 	username := s.RequiredVar("arc.username")
@@ -83,11 +83,11 @@ func LauncherApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the newly downloaded app in Launcher.
-	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Maps)(ctx); err != nil {
+	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Chat)(ctx); err != nil {
 		s.Fatal("Failed to launch: ", err)
 	}
 
-	if err := apps.Close(ctx, tconn, apps.Maps.ID); err != nil {
+	if err := apps.Close(ctx, tconn, apps.Chat.ID); err != nil {
 		s.Fatal("Failed to close: ", err)
 	}
 
@@ -106,7 +106,7 @@ func LauncherApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify the app icon is not visible in Launcher and the app fails to launch.
-	if err := launcher.LaunchApp(tconn, apps.Maps.Name)(ctx); err == nil {
+	if err := launcher.LaunchApp(tconn, apps.Chat.Name)(ctx); err == nil {
 		s.Fatal("Installed app remained in launcher after play store disabled")
 	}
 }
