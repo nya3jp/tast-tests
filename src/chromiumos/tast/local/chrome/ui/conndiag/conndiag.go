@@ -23,6 +23,8 @@ type App struct {
 	Root  *ui.Node
 }
 
+const appURL = "chrome://connectivity-diagnostics/"
+
 var pollOpts = testing.PollOptions{
 	Interval: 100 * time.Millisecond,
 	Timeout:  5 * time.Second,
@@ -58,6 +60,15 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*App, error) {
 	}
 
 	return &app, nil
+}
+
+// ChromeConn returns a Chrome connection to the Connectivity Diagnostics app.
+func (a *App) ChromeConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
+	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(appURL))
+	if err != nil {
+		return nil, err
+	}
+	return conn, nil
 }
 
 func (a *App) waitForTitle(ctx context.Context) error {
