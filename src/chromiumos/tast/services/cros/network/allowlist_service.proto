@@ -1,0 +1,51 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.network;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/network";
+
+// AllowlistService allows settings up a firewall on the DUT and performs basic
+// operations like login and ARC provisioning. It's used to make sure the list
+// of hostnames from our Google support page is up to date.
+// https://support.google.com/chrome/a/answer/6334001?hl=en&ref_topic=3504941
+service AllowlistService {
+  // SetupFirewall sets up a firewall using a proxy server that can filter
+  // requests by the hostname.
+  rpc SetupFirewall(SetupFirewallRequest) returns (google.protobuf.Empty) {}
+
+  // GaiaLogin does real Gaia login to a remote Google endpoint via the proxy
+  // setup via `SetupFirewall`.
+  rpc GaiaLogin(GaiaLoginRequest) returns (google.protobuf.Empty) {}
+
+  // TestSystemServicesConnectivity verifies that the system services work
+  // behind the firewall. `GaiaLogin` must be called before as it forces Chrome
+  // to use the proxy firewall.
+  rpc TestSystemServicesConnectivity(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+
+  // TestArcConnectivity verifies that ARC provisioning and installing apps
+  // works behind the firewall.
+  rpc TestArcConnectivity(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+
+  // TestExtensionConnectivity verifies that installing extensions works behind
+  // the firewall.
+  rpc TestExtensionConnectivity(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+}
+
+message SetupFirewallRequest {
+  // Specifies the hostnames to which connections are allowed.
+  repeated string hostnames = 1;
+}
+
+message GaiaLoginRequest {
+  string username = 1;
+  string password = 2;
+}
