@@ -14,7 +14,8 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -54,6 +55,7 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Optin to PlayStore.
 	if err := optin.Perform(ctx, cr, tconn); err != nil {
@@ -88,41 +90,15 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to Open Apps Settings Page: ", err)
 	}
 
-	// Find the "Google Play Store" heading and associated button.
-	PlayStoreParam := chromeui.FindParams{
-		Role: chromeui.RoleTypeButton,
-		Name: "Google Play Store",
-	}
+	ui := uiauto.New(tconn)
+	playStoreButton := nodewith.Name("Google Play Store").Role(role.Button)
 
-	playstore, err := chromeui.FindWithTimeout(ctx, tconn, PlayStoreParam, 30*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find GooglePlayStore Heading: ", err)
-	}
-	defer playstore.Release(ctx)
-
-	if err := playstore.FocusAndWait(ctx, 5*time.Second); err != nil {
-		s.Fatal("Failed to call focus() on GooglePlayStore: ", err)
-	}
-
-	if err := playstore.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the GooglePlayStore Heading: ", err)
-	}
-
-	webview, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeWebView, ClassName: "WebView"}, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find webview: ", err)
-	}
-	defer webview.Release(ctx)
-
-	s.Log("Navigating to Android Preferences")
-	enter, err := webview.DescendantWithTimeout(ctx, chromeui.FindParams{Name: "Manage Android preferences"}, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find Manage Android Preferences: ", err)
-	}
-	defer enter.Release(ctx)
-
-	if err := enter.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click Manage Android Preferences: ", err)
+	if err := uiauto.Combine("Open Android Settings",
+		ui.FocusAndWait(playStoreButton),
+		ui.LeftClick(playStoreButton),
+		ui.LeftClick(nodewith.Name("Manage Android preferences").Role(role.Link)),
+	)(ctx); err != nil {
+		s.Fatal("Failed to Open Android Settings : ", err)
 	}
 
 	if err := checkAndroidSettings(ctx, d); err != nil {
