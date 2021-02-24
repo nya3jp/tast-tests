@@ -22,6 +22,30 @@
       },
       "revId": "fd9d7932c7bd6a2b02986fe6f6da9c28f67669bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4fee0c_5de05551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-24T22:26:55Z",
+      "side": 1,
+      "message": "Hi, Observed that multiple apps are failing in launch due to new dialog boxes and change in launch verifier ID. To avoid flaky launch failures, we are making package name as a launch verifier instead of specific object. Ok, Let me know if could change to launch verifier. Thanks.",
+      "parentUuid": "94ea0bec_88c85c3c",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "fd9d7932c7bd6a2b02986fe6f6da9c28f67669bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
