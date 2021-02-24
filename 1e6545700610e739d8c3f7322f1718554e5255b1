@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b34e27_6f1453f5",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-02-24T05:13:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da4f3992_9415954f",
+      "range": {
+        "startLine": 350,
+        "startChar": 3,
+        "endLine": 351,
+        "endChar": 54
+      },
+      "revId": "1e6545700610e739d8c3f7322f1718554e5255b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3a55a64_11bbd79d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-24T02:32:59Z",
       "side": 1,
       "message": "I think using the signature of the method + appID would be easier to locate: fmt.Sprintf(\"LaunchAction(tconn *chrome.TestConn, appID string) with appID\u003d%v\", appID) \n\nThe same for others.",
+      "range": {
+        "startLine": 354,
+        "startChar": 20,
+        "endLine": 354,
+        "endChar": 32
+      },
+      "revId": "1e6545700610e739d8c3f7322f1718554e5255b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3efbb2db_c7360e52",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-02-24T05:13:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3a55a64_11bbd79d",
       "range": {
         "startLine": 354,
         "startChar": 20,
