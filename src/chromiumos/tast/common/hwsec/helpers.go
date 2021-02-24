@@ -35,10 +35,11 @@ type Helper struct {
 	cryptohomeUtil   *UtilityCryptohomeBinary
 	tpmManagerUtil   *UtilityTpmManagerBinary
 	daemonController *DaemonController
+	tpmClearer       TPMClearer
 }
 
 // NewHelper creates a new Helper, with r responsible for CmdRunner.
-func NewHelper(r CmdRunner) (*Helper, error) {
+func NewHelper(r CmdRunner, d *DaemonController, t TPMClearer) (*Helper, error) {
 	cryptohomeUtil, err := NewUtilityCryptohomeBinary(r)
 	if err != nil {
 		return nil, err
@@ -47,17 +48,23 @@ func NewHelper(r CmdRunner) (*Helper, error) {
 	if err != nil {
 		return nil, err
 	}
-	daemonController := NewDaemonController(r)
+	if d == nil {
+		d = NewDaemonController(r)
+	}
 	return &Helper{
 		cmdRunner:        r,
 		cryptohomeUtil:   cryptohomeUtil,
 		tpmManagerUtil:   tpmManagerUtil,
-		daemonController: daemonController,
+		daemonController: d,
+		tpmClearer:       t,
 	}, nil
 }
 
 // CmdRunner exposes the cmdRunner of helper
 func (h *Helper) CmdRunner() CmdRunner { return h.cmdRunner }
+
+// TPMClearer exposes the tpmClearer of helper
+func (h *Helper) TPMClearer() TPMClearer { return h.tpmClearer }
 
 // CryptohomeUtil exposes the cryptohomeUtil of helper
 func (h *Helper) CryptohomeUtil() *UtilityCryptohomeBinary { return h.cryptohomeUtil }
@@ -227,4 +234,84 @@ func (h *Helper) GetTPMVersion(ctx context.Context) (string, error) {
 	out, err := h.cmdRunner.Run(ctx, "tpmc", "tpmver")
 	// Trailing newline char is trimmed.
 	return strings.TrimSpace(string(out)), err
+}
+
+// ensureTPMIsReset ensures the TPM is reset when the function returns nil.
+// Otherwise, returns any encountered error.
+// Optionally removes files from the DUT to simulate a powerwash.
+func (h *Helper) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
+	if err := h.daemonController.WaitForAllDBusServices(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
+	}
+
+	if err := h.daemonController.TryStop(ctx, UIDaemonInfo); err != nil {
+		return errors.Wrap(err, "")
+	}
+
+	if err := h.daemonController.TryStopDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "")
+	}
+
+	if removeFiles {
+		if out, err := h.cmdRunner.Run(ctx, "rm", "-rf", "--",
+			"/home/.shadow/",
+			"/home/chronos/.oobe_completed",
+			"/home/chronos/Local State",
+			"/mnt/stateful_partition/.tpm_owned",
+			"/mnt/stateful_partition/.tpm_status.sum",
+			"/mnt/stateful_partition/.tpm_status",
+			"/run/cryptohome",
+			"/run/lockbox",
+			"/run/tpm_manager",
+			"/var/cache/app_pack",
+			"/var/cache/shill/default.profile",
+			"/var/lib/boot-lockbox",
+			"/var/lib/bootlockbox",
+			"/var/lib/chaps",
+			"/var/lib/cryptohome",
+			"/var/lib/public_mount_salt",
+			"/var/lib/tpm_manager",
+			"/var/lib/tpm",
+			"/var/lib/u2f",
+			"/var/lib/whitelist/",
+		); err != nil {
+			// TODO(b/173189029): Ignore errors on failure. This is a workaround to prevent Permission denied when removing a fscrypt directory.
+			testing.ContextLog(ctx, "Failed to remove files to clear ownership: ", err, string(out))
+		}
+	}
+
+	if err := h.tpmClearer.ClearTPM(ctx); err != nil {
+		return errors.Wrap(err, "")
+	}
+
+	if err := h.daemonController.EnsureDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "")
+	}
+
+	if err := h.daemonController.Ensure(ctx, UIDaemonInfo); err != nil {
+		return errors.Wrap(err, "")
+	}
+
+	testing.ContextLog(ctx, "Waiting for system to be ready after reset TPM ")
+	info, err := h.TPMManagerUtil().GetNonsensitiveStatus(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get TPM status")
+	}
+	if info.IsOwned {
+		// If the TPM is ready, the reset was not successful
+		return errors.New("ineffective reset of TPM")
+	}
+
+	return nil
+}
+
+// EnsureTPMIsReset ensures the TPM is reset when the function returns nil.
+// Otherwise, returns any encountered error.
+func (h *Helper) EnsureTPMIsReset(ctx context.Context) error {
+	return h.ensureTPMIsReset(ctx, false)
+}
+
+// EnsureTPMIsResetAndPowerwash ensures the TPM is reset and simulates a Powerwash.
+func (h *Helper) EnsureTPMIsResetAndPowerwash(ctx context.Context) error {
+	return h.ensureTPMIsReset(ctx, true)
 }
