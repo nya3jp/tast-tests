@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/testing"
 )
 
@@ -179,6 +180,17 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	defer d.Close(ctx)
 	if err := d.Object(ui.ID(titleID), ui.Text(title)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Failed to wait for the app shown: ", err)
+	}
+
+	rect, err := act.WindowBounds(ctx)
+	if err != nil {
+		s.Fatal("Failed to get the window bounds: ", err)
+	}
+
+	// Click the center of the activity from Chrome to generate the first mouse event, because
+	// Wayland's set_selection should be associated with a valid serial number from an actual event.
+	if err := mouse.Click(ctx, tconn, rect.CenterPoint(), mouse.LeftButton); err != nil {
+		s.Fatal("Failed to click the center of the app: ", err)
 	}
 
 	s.Log("Waiting for chrome.clipboard API to become available")
