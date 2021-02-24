@@ -7,6 +7,8 @@ package session
 
 import (
 	"context"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -17,6 +19,9 @@ import (
 	lm "chromiumos/system_api/login_manager_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
@@ -107,6 +112,66 @@ func (m *SessionManager) EnableChromeTesting(ctx context.Context, forceRelaunch 
 		return "", err
 	}
 	return filepath, nil
+}
+
+// getBrowserPID returns the PID of chrome browser process using "pgrep" and
+// assumes that chrome browser process is the immediate child of session manager
+// daemon. It returns the same PID as chrome.GetRootPID(). chrome.GetRootPID)
+// could not be used here because "session" package is a lower level package and
+// could not depend on "chrome".
+func getBrowserPID(ctx context.Context) (int, error) {
+	_, _, pid, err := upstart.JobStatus(ctx, "ui")
+	if err != nil {
+		return 0, err
+	}
+
+	out, err := testexec.CommandContext(ctx,
+		"pgrep", "chrome", "--parent", strconv.Itoa(pid)).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, err
+	}
+
+	pid, err = strconv.Atoi(strings.TrimSpace(string(out)))
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to parse PID: %s", out)
+	}
+	return pid, nil
+}
+
+// EnableChromeTestingAndWait calls EnableChromeTesting and waits for the new
+// chrome process to start up.
+func (m *SessionManager) EnableChromeTestingAndWait(ctx context.Context, forceRelaunch bool,
+	extraArguments, extraEnvironmentVariables []string) (filepath string, err error) {
+	// Wait for a browser to start since session_manager can take a while to start it.
+	var oldPID int
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		oldPID, err = getBrowserPID(ctx)
+		return err
+	}, nil); err != nil {
+		return "", errors.Wrap(err, "failed to find the browser process")
+	}
+
+	filepath, enableErr := m.EnableChromeTesting(ctx, forceRelaunch, extraArguments, extraEnvironmentVariables)
+	if enableErr != nil {
+		return "", enableErr
+	}
+
+	// Wait for a new browser to appear.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		newPID, err := getBrowserPID(ctx)
+		if err != nil {
+			return err
+		}
+		if newPID == oldPID {
+			return errors.New("Original browser still running")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
+		return "", err
+	}
+
+	return filepath, enableErr
 }
 
 // HandleSupervisedUserCreationStarting calls
