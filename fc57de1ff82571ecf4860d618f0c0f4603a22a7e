@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "221896f1_679e131d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-24T03:51:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e18fca67_56261306",
+      "range": {
+        "startLine": 69,
+        "startChar": 22,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "fc57de1ff82571ecf4860d618f0c0f4603a22a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd399ac5_021b6103",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64852c56_640e15da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-24T03:51:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd399ac5_021b6103",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "fc57de1ff82571ecf4860d618f0c0f4603a22a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9aa32ebf_73a88112",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-24T03:05:21Z",
       "side": 1,
       "message": "Do we need this here? Can\u0027t we just pass userPath directly into filepath.Dir",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 18
+      },
+      "revId": "fc57de1ff82571ecf4860d618f0c0f4603a22a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "494e8ff4_ef9d5660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-24T03:51:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aa32ebf_73a88112",
       "range": {
         "startLine": 123,
         "startChar": 2,
