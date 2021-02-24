@@ -49,7 +49,7 @@ func (p *preImpl) Timeout() time.Duration { return p.crPre.Timeout() }
 
 func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	if !p.prepared {
-		_, err := PrepareFakeApps(p.extDirBase, p.numApps)
+		_, err := PrepareFakeApps(p.extDirBase, p.numApps, nil)
 		if err != nil {
 			s.Fatal("Failed to prepare fake apps: ", err)
 		}
