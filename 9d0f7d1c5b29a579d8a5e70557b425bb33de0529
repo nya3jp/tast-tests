@@ -215,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b71220f9_4d3ce3ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-24T17:05:02Z",
+      "side": 1,
+      "message": "I don\u0027t believe we have any flakiness issues from using that library, and I don\u0027t think we should be expecting that Chrome suddenly loses focus during the test. If you\u0027re seeing that kind of thing then it makes sense to do what you\u0027re doing, though maybe we should figure out why.\n\nUp to you on whether or not you want to change over. I think the keyboard library is more readable.",
+      "parentUuid": "59887821_8a9a2deb",
+      "range": {
+        "startLine": 141,
+        "startChar": 17,
+        "endLine": 141,
+        "endChar": 113
+      },
+      "revId": "9d0f7d1c5b29a579d8a5e70557b425bb33de0529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0615200a_b37a793e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/webui_js_errors.go",
         "patchSetId": 3
