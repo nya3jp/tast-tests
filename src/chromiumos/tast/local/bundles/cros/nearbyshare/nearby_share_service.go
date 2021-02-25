@@ -17,6 +17,7 @@ import (
 	localnearby "chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/services/cros/nearbyshare"
 	"chromiumos/tast/testing"
 )
@@ -38,6 +39,8 @@ type NearbyService struct {
 	deviceName      string
 	senderSurface   *localnearby.SendSurface
 	receiverSurface *localnearby.ReceiveSurface
+	chromeReader    *syslog.LineReader
+	messageReader   *syslog.LineReader
 }
 
 // NewChromeLogin logs into Chrome with Nearby Share flags enabled.
@@ -60,6 +63,19 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *empty.Empty) (*
 		return nil, err
 	}
 	n.tconn = tconn
+
+	// Start collecting chrome and messages logs.
+	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
+	if err != nil {
+		return nil, errors.New("failed to start Chrome logging")
+	}
+	messageReader, err := nearbytestutils.StartLogging(ctx, syslog.MessageFile)
+	if err != nil {
+		return nil, errors.New("failed to start Message logging")
+	}
+	testing.ContextLog(ctx, "Started logging chrome and message logs")
+	n.chromeReader = chromeReader
+	n.messageReader = messageReader
 	return &empty.Empty{}, nil
 }
 
@@ -69,10 +85,27 @@ func (n *NearbyService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 		return nil, errors.New("Chrome not available")
 	}
 	os.RemoveAll(nearbytestutils.SendDir)
-	n.senderSurface.Close(ctx)
-	n.receiverSurface.Close(ctx)
+	if n.senderSurface != nil {
+		n.senderSurface.Close(ctx)
+	}
+	if n.receiverSurface != nil {
+		n.receiverSurface.Close(ctx)
+	}
+	if err := os.RemoveAll(localnearby.NearbyLogDir); err != nil {
+		testing.ContextLog(ctx, "Faied to delete nearby log dir: ", err)
+	}
+	if err := os.Mkdir(localnearby.NearbyLogDir, 0755); err != nil {
+		testing.ContextLog(ctx, "Faied to create tmp dir log: ", err)
+	}
+	if err := nearbytestutils.SaveLogs(ctx, n.chromeReader, filepath.Join(localnearby.NearbyLogDir, localnearby.ChromeLog)); err != nil {
+		testing.ContextLog(ctx, "Faied to save chrome log: ", err)
+	}
+	if err := nearbytestutils.SaveLogs(ctx, n.messageReader, filepath.Join(localnearby.NearbyLogDir, localnearby.MessageLog)); err != nil {
+		testing.ContextLog(ctx, "Faied to save message log: ", err)
+	}
 	err := n.cr.Close(ctx)
 	n.cr = nil
+
 	return &empty.Empty{}, err
 }
 

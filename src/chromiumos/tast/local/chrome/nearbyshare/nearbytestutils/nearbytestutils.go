@@ -220,7 +220,7 @@ func SaveLogs(ctx context.Context, reader *syslog.LineReader, path string) error
 
 	log, err := os.Create(path)
 	if err != nil {
-		return errors.Wrapf(err, "failed to create %v", log)
+		return errors.Wrapf(err, "failed to create %v", path)
 	}
 	defer log.Close()
 	for {

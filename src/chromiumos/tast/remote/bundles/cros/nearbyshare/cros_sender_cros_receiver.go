@@ -12,6 +12,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
@@ -94,8 +95,7 @@ func CrosSenderCrosReceiver(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT1 (Sender): ", err)
 	}
-	defer sender.CloseChrome(ctx, &empty.Empty{})
-
+	defer saveLogs(ctx, s, sender, d1, "sender")
 	cl2, err := rpc.Dial(ctx, d2, s.RPCHint(), "cros")
 	if err != nil {
 		s.Fatal("Failed to dial rpc service on DUT2: ", err)
@@ -107,7 +107,7 @@ func CrosSenderCrosReceiver(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT2 (Receiver): ", err)
 	}
-	defer receiver.CloseChrome(ctx, &empty.Empty{})
+	defer saveLogs(ctx, s, receiver, d1, "receiver")
 
 	s.Log("Starting receiving on DUT2 (Receiver)")
 	if _, err := receiver.StartReceiving(ctx, &empty.Empty{}); err != nil {
@@ -187,4 +187,17 @@ func enableNearbyShare(ctx context.Context, s *testing.State, cl *rpc.Client, de
 		s.Fatal("Failed to setup Nearby Share: ", err)
 	}
 	return ns, nil
+}
+
+// saveLogs is a helper function to save the relevant logs from each DUT.
+func saveLogs(ctx context.Context, s *testing.State, nearbyService nearbyservice.NearbyShareServiceClient, dut *dut.DUT, tag string) {
+	nearbyService.CloseChrome(ctx, &empty.Empty{})
+	logsToSave := []string{nearbyshare.ChromeLog, nearbyshare.MessageLog}
+	for _, log := range logsToSave {
+		logPathSrc := filepath.Join(nearbyshare.NearbyLogDir, log)
+		logPathDst := filepath.Join(s.OutDir(), log+"_"+tag)
+		if err := linuxssh.GetFile(ctx, dut.Conn(), logPathSrc, logPathDst); err != nil {
+			s.Log("Failed to grab file: ", err)
+		}
+	}
 }
