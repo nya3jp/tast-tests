@@ -133,10 +133,7 @@ func hwsecGetDACounter(ctx context.Context) (int, error) {
 		return 0, errors.Wrap(err, "failed to create CmdRunner")
 	}
 
-	tpmManager, err := hwsec.NewTPMManagerClient(cmdRunner)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to create TPMManagerClient")
-	}
+	tpmManager := hwsec.NewTPMManagerClient(cmdRunner)
 
 	// Get the TPM dictionary attack info
 	daInfo, err := tpmManager.GetDAInfo(ctx)
@@ -152,10 +149,7 @@ func hwsecGetTPMStatus(ctx context.Context) (*hwsec.NonsensitiveStatusInfo, erro
 		return nil, errors.Wrap(err, "failed to create CmdRunner")
 	}
 
-	tpmManager, err := hwsec.NewTPMManagerClient(cmdRunner)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create TPMManagerClient")
-	}
+	tpmManager := hwsec.NewTPMManagerClient(cmdRunner)
 
 	// Get the TPM nonsensitive status info
 	status, err := tpmManager.GetNonsensitiveStatusIgnoreCache(ctx)
