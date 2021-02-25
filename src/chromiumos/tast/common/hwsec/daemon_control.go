@@ -329,6 +329,23 @@ func (dc *DaemonController) EnsureDaemons(ctx context.Context, daemons []*Daemon
 	return nil
 }
 
+// RestartTPMDaemons restarts all TPM-related daemons.
+func (dc *DaemonController) RestartTPMDaemons(ctx context.Context) error {
+	if err := dc.TryStopDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to try to stop high-level TPM daemons")
+	}
+	if err := dc.TryStopDaemons(ctx, LowLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to try to stop low-level TPM daemons")
+	}
+	if err := dc.EnsureDaemons(ctx, LowLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to ensure low-level TPM daemons")
+	}
+	if err := dc.EnsureDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to ensure high-level TPM daemons")
+	}
+	return nil
+}
+
 // parseStatus parses the output from "initctl status <job>", e.g. "ui start/running, process 28515".
 // The output may be multiple lines; see the example in Section 10.1.6.19.3,
 // "Single Job Instance Running with Multiple PIDs", in the Upstart Cookbook.
