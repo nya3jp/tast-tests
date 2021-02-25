@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f142e15_07223f96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:24:21Z",
+      "side": 1,
+      "message": "Alternatively, there could be a way to send an Intent to Play and get Play to start downloading something.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 46
+      },
+      "revId": "565beab6ef7d144ea041ee4e7eee37dd20342625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd89a5af_ca51b005",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:24:21Z",
+      "side": 1,
+      "message": "You should be a little bit careful hardcoding too many ADB commands. In my experience the syntax of Android shell stuff tends to change a bit from releases to releases.\n\nThis can make it hard to run the same test logic on multiple version of ARC.\n\nI think we should still target both P and ARCVM. Maybe you can just move these arg list as package constant array and explains on which Android versions it currently work.",
+      "range": {
+        "startLine": 138,
+        "startChar": 9,
+        "endLine": 138,
+        "endChar": 57
+      },
+      "revId": "565beab6ef7d144ea041ee4e7eee37dd20342625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "862123b9_dcbcd570",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/arc_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:24:21Z",
+      "side": 1,
+      "message": "Where do we check the output ?",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "565beab6ef7d144ea041ee4e7eee37dd20342625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
