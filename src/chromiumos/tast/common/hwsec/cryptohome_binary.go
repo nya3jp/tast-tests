@@ -75,52 +75,52 @@ func (c *CryptohomeBinary) removeFile(ctx context.Context, filename string) erro
 	return err
 }
 
-// TPMStatus calls "cryptohome --action=tpm_status".
-func (c *CryptohomeBinary) TPMStatus(ctx context.Context) (string, error) {
+// tpmStatus calls "cryptohome --action=tpm_status".
+func (c *CryptohomeBinary) tpmStatus(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=tpm_status")
 	return string(out), err
 }
 
-// TPMMoreStatus calls "cryptohome --action=tpm_more_status".
-func (c *CryptohomeBinary) TPMMoreStatus(ctx context.Context) (string, error) {
+// tpmMoreStatus calls "cryptohome --action=tpm_more_status".
+func (c *CryptohomeBinary) tpmMoreStatus(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=tpm_more_status")
 	return string(out), err
 }
 
-// TPMAttestationStatus calls "cryptohome --action=tpm_attestation_status".
-func (c *CryptohomeBinary) TPMAttestationStatus(ctx context.Context) (string, error) {
+// tpmAttestationStatus calls "cryptohome --action=tpm_attestation_status".
+func (c *CryptohomeBinary) tpmAttestationStatus(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=tpm_attestation_status")
 	return string(out), err
 }
 
-// GetStatusString calls "cryptohome --action=status".
-func (c *CryptohomeBinary) GetStatusString(ctx context.Context) (string, error) {
+// getStatusString calls "cryptohome --action=status".
+func (c *CryptohomeBinary) getStatusString(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=status")
 	return string(out), err
 }
 
-// TPMTakeOwnership calls "cryptohome --action=tpm_take_ownership".
-func (c *CryptohomeBinary) TPMTakeOwnership(ctx context.Context) error {
+// tpmTakeOwnership calls "cryptohome --action=tpm_take_ownership".
+func (c *CryptohomeBinary) tpmTakeOwnership(ctx context.Context) error {
 	_, err := c.call(ctx, "--action=tpm_take_ownership")
 	// We only care about the return code from cryptohome --action=tpm_take_ownership
 	return err
 }
 
-// TPMWaitOwnership calls "cryptohome --action=tpm_wait_ownership".
-func (c *CryptohomeBinary) TPMWaitOwnership(ctx context.Context) error {
+// tpmWaitOwnership calls "cryptohome --action=tpm_wait_ownership".
+func (c *CryptohomeBinary) tpmWaitOwnership(ctx context.Context) error {
 	_, err := c.call(ctx, "--action=tpm_wait_ownership")
 	// We only care about the return code from cryptohome --action=tpm_wait_ownership
 	return err
 }
 
-// TPMClearStoredPassword calls "cryptohome --action=tpm_clear_stored_password".
-func (c *CryptohomeBinary) TPMClearStoredPassword(ctx context.Context) ([]byte, error) {
+// tpmClearStoredPassword calls "cryptohome --action=tpm_clear_stored_password".
+func (c *CryptohomeBinary) tpmClearStoredPassword(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=tpm_clear_stored_password")
 }
 
-// TPMAttestationStartEnroll calls "cryptohome --action=enroll_request".
+// tpmAttestationStartEnroll calls "cryptohome --action=enroll_request".
 // If async is set, calls it long with "--async" flag.
-func (c *CryptohomeBinary) TPMAttestationStartEnroll(ctx context.Context, pcaType PCAType, async bool) (string, error) {
+func (c *CryptohomeBinary) tpmAttestationStartEnroll(ctx context.Context, pcaType PCAType, async bool) (string, error) {
 	if pcaType == TestPCA {
 		return "", errors.New("test PCA doesn't support automated test")
 	}
@@ -147,9 +147,9 @@ func (c *CryptohomeBinary) TPMAttestationStartEnroll(ctx context.Context, pcaTyp
 	return string(out), err
 }
 
-// TPMAttestationFinishEnroll calls "cryptohome --action=finish_enroll".
+// tpmAttestationFinishEnroll calls "cryptohome --action=finish_enroll".
 // If async is set, calls it long with "--async" flag.
-func (c *CryptohomeBinary) TPMAttestationFinishEnroll(ctx context.Context, pcaType PCAType, resp string, async bool) (bool, error) {
+func (c *CryptohomeBinary) tpmAttestationFinishEnroll(ctx context.Context, pcaType PCAType, resp string, async bool) (bool, error) {
 	if pcaType == TestPCA {
 		return false, errors.New("test PCA doesn't support automated test")
 	}
@@ -177,9 +177,9 @@ func (c *CryptohomeBinary) TPMAttestationFinishEnroll(ctx context.Context, pcaTy
 	return true, nil
 }
 
-// TPMAttestationStartCertRequest calls "cryptohome --action=tpm_attestation_start_cert_request".
+// tpmAttestationStartCertRequest calls "cryptohome --action=tpm_attestation_start_cert_request".
 // If |async| is set, calls it long with "--async" flag.
-func (c *CryptohomeBinary) TPMAttestationStartCertRequest(
+func (c *CryptohomeBinary) tpmAttestationStartCertRequest(
 	ctx context.Context,
 	pcaType PCAType,
 	profile int,
@@ -212,9 +212,9 @@ func (c *CryptohomeBinary) TPMAttestationStartCertRequest(
 	return string(out), err
 }
 
-// TPMAttestationFinishCertRequest calls "cryptohome --action=tpm_attestation_finish_cert_request".
+// tpmAttestationFinishCertRequest calls "cryptohome --action=tpm_attestation_finish_cert_request".
 // If |async| is set, calls it long with "--async" flag.
-func (c *CryptohomeBinary) TPMAttestationFinishCertRequest(
+func (c *CryptohomeBinary) tpmAttestationFinishCertRequest(
 	ctx context.Context,
 	resp,
 	username,
@@ -255,8 +255,8 @@ func (c *CryptohomeBinary) TPMAttestationFinishCertRequest(
 	return string(out), err
 }
 
-// TPMAttestationEnterpriseVaChallenge calls "cryptohome --action=tpm_attestation_enterprise_challenge".
-func (c *CryptohomeBinary) TPMAttestationEnterpriseVaChallenge(
+// tpmAttestationEnterpriseVaChallenge calls "cryptohome --action=tpm_attestation_enterprise_challenge".
+func (c *CryptohomeBinary) tpmAttestationEnterpriseVaChallenge(
 	ctx context.Context,
 	vaType VAType,
 	username,
@@ -283,8 +283,8 @@ func (c *CryptohomeBinary) TPMAttestationEnterpriseVaChallenge(
 	return string(out), err
 }
 
-// TPMAttestationSimpleChallenge calls "cryptohome --action=tpm_attestation_simple_challenge".
-func (c *CryptohomeBinary) TPMAttestationSimpleChallenge(
+// tpmAttestationSimpleChallenge calls "cryptohome --action=tpm_attestation_simple_challenge".
+func (c *CryptohomeBinary) tpmAttestationSimpleChallenge(
 	ctx context.Context,
 	username,
 	label string,
@@ -300,8 +300,8 @@ func (c *CryptohomeBinary) TPMAttestationSimpleChallenge(
 	return string(out), err
 }
 
-// TPMAttestationKeyStatus calls "cryptohome --action=tpm_attestation_key_status".
-func (c *CryptohomeBinary) TPMAttestationKeyStatus(
+// tpmAttestationKeyStatus calls "cryptohome --action=tpm_attestation_key_status".
+func (c *CryptohomeBinary) tpmAttestationKeyStatus(
 	ctx context.Context,
 	username,
 	label string) (string, error) {
@@ -313,8 +313,8 @@ func (c *CryptohomeBinary) TPMAttestationKeyStatus(
 	return string(out), err
 }
 
-// TPMAttestationGetKeyPayload calls "cryptohome --action=tpm_attestation_get_key_payload".
-func (c *CryptohomeBinary) TPMAttestationGetKeyPayload(
+// tpmAttestationGetKeyPayload calls "cryptohome --action=tpm_attestation_get_key_payload".
+func (c *CryptohomeBinary) tpmAttestationGetKeyPayload(
 	ctx context.Context,
 	username,
 	label string) (string, error) {
@@ -326,8 +326,8 @@ func (c *CryptohomeBinary) TPMAttestationGetKeyPayload(
 	return string(out), err
 }
 
-// TPMAttestationRegisterKey calls "cryptohome --action=tpm_attestation_register_key".
-func (c *CryptohomeBinary) TPMAttestationRegisterKey(
+// tpmAttestationRegisterKey calls "cryptohome --action=tpm_attestation_register_key".
+func (c *CryptohomeBinary) tpmAttestationRegisterKey(
 	ctx context.Context,
 	username,
 	label string) (string, error) {
@@ -339,8 +339,8 @@ func (c *CryptohomeBinary) TPMAttestationRegisterKey(
 	return string(out), err
 }
 
-// TPMAttestationSetKeyPayload calls "cryptohome --action=tpm_attestation_set_key_payload".
-func (c *CryptohomeBinary) TPMAttestationSetKeyPayload(
+// tpmAttestationSetKeyPayload calls "cryptohome --action=tpm_attestation_set_key_payload".
+func (c *CryptohomeBinary) tpmAttestationSetKeyPayload(
 	ctx context.Context,
 	username,
 	label,
@@ -354,61 +354,61 @@ func (c *CryptohomeBinary) TPMAttestationSetKeyPayload(
 	return string(out), err
 }
 
-// InstallAttributesGet calls "cryptohome --action=install_attributes_get".
-func (c *CryptohomeBinary) InstallAttributesGet(ctx context.Context, attributeName string) (string, error) {
+// installAttributesGet calls "cryptohome --action=install_attributes_get".
+func (c *CryptohomeBinary) installAttributesGet(ctx context.Context, attributeName string) (string, error) {
 	out, err := c.call(ctx, "--action=install_attributes_get", "--name="+attributeName)
 	return string(out), err
 }
 
-// InstallAttributesSet calls "cryptohome --action=install_attributes_set".
-func (c *CryptohomeBinary) InstallAttributesSet(ctx context.Context, attributeName, attributeValue string) (string, error) {
+// installAttributesSet calls "cryptohome --action=install_attributes_set".
+func (c *CryptohomeBinary) installAttributesSet(ctx context.Context, attributeName, attributeValue string) (string, error) {
 	out, err := c.call(ctx, "--action=install_attributes_set", "--name="+attributeName, "--value="+attributeValue)
 	return string(out), err
 }
 
-// InstallAttributesFinalize calls "cryptohome --action=install_attributes_finalize".
-func (c *CryptohomeBinary) InstallAttributesFinalize(ctx context.Context) (string, error) {
+// installAttributesFinalize calls "cryptohome --action=install_attributes_finalize".
+func (c *CryptohomeBinary) installAttributesFinalize(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=install_attributes_finalize")
 	return string(out), err
 }
 
-// InstallAttributesCount calls "cryptohome --action=install_attributes_count".
-func (c *CryptohomeBinary) InstallAttributesCount(ctx context.Context) (string, error) {
+// installAttributesCount calls "cryptohome --action=install_attributes_count".
+func (c *CryptohomeBinary) installAttributesCount(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=install_attributes_count")
 	return string(out), err
 }
 
-// InstallAttributesIsReady calls "cryptohome --action=install_attributes_is_ready".
-func (c *CryptohomeBinary) InstallAttributesIsReady(ctx context.Context) (string, error) {
+// installAttributesIsReady calls "cryptohome --action=install_attributes_is_ready".
+func (c *CryptohomeBinary) installAttributesIsReady(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=install_attributes_is_ready")
 	return string(out), err
 }
 
-// InstallAttributesIsSecure calls "cryptohome --action=install_attributes_is_secure".
-func (c *CryptohomeBinary) InstallAttributesIsSecure(ctx context.Context) (string, error) {
+// installAttributesIsSecure calls "cryptohome --action=install_attributes_is_secure".
+func (c *CryptohomeBinary) installAttributesIsSecure(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=install_attributes_is_secure")
 	return string(out), err
 }
 
-// InstallAttributesIsInvalid calls "cryptohome --action=install_attributes_is_invalid".
-func (c *CryptohomeBinary) InstallAttributesIsInvalid(ctx context.Context) (string, error) {
+// installAttributesIsInvalid calls "cryptohome --action=install_attributes_is_invalid".
+func (c *CryptohomeBinary) installAttributesIsInvalid(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=install_attributes_is_invalid")
 	return string(out), err
 }
 
-// InstallAttributesIsFirstInstall calls "cryptohome --action=install_attributes_is_first_install".
-func (c *CryptohomeBinary) InstallAttributesIsFirstInstall(ctx context.Context) (string, error) {
+// installAttributesIsFirstInstall calls "cryptohome --action=install_attributes_is_first_install".
+func (c *CryptohomeBinary) installAttributesIsFirstInstall(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=install_attributes_is_first_install")
 	return string(out), err
 }
 
-// IsMounted calls "cryptohome --action=is_mounted".
-func (c *CryptohomeBinary) IsMounted(ctx context.Context) ([]byte, error) {
+// isMounted calls "cryptohome --action=is_mounted".
+func (c *CryptohomeBinary) isMounted(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=is_mounted")
 }
 
-// MountEx calls "cryptohome --action=mount_ex".
-func (c *CryptohomeBinary) MountEx(ctx context.Context, username, password string, doesCreate bool, label string, extraFlags []string) ([]byte, error) {
+// mountEx calls "cryptohome --action=mount_ex".
+func (c *CryptohomeBinary) mountEx(ctx context.Context, username, password string, doesCreate bool, label string, extraFlags []string) ([]byte, error) {
 	args := []string{"--action=mount_ex", "--user=" + username, "--password=" + password, "--key_label=" + label}
 	if doesCreate {
 		args = append(args, "--create")
@@ -417,8 +417,8 @@ func (c *CryptohomeBinary) MountEx(ctx context.Context, username, password strin
 	return c.call(ctx, args...)
 }
 
-// GetSanitizedUsername calls "cryptohome --action=obfuscate_user".
-func (c *CryptohomeBinary) GetSanitizedUsername(ctx context.Context, username string, useDBus bool) ([]byte, error) {
+// getSanitizedUsername calls "cryptohome --action=obfuscate_user".
+func (c *CryptohomeBinary) getSanitizedUsername(ctx context.Context, username string, useDBus bool) ([]byte, error) {
 	args := []string{"--action=obfuscate_user", "--user=" + username}
 	if useDBus {
 		args = append(args, "--use_dbus")
@@ -426,8 +426,8 @@ func (c *CryptohomeBinary) GetSanitizedUsername(ctx context.Context, username st
 	return c.call(ctx, args...)
 }
 
-// GetSystemSalt calls "cryptohome --action=get_system_salt".
-func (c *CryptohomeBinary) GetSystemSalt(ctx context.Context, useDBus bool) ([]byte, error) {
+// getSystemSalt calls "cryptohome --action=get_system_salt".
+func (c *CryptohomeBinary) getSystemSalt(ctx context.Context, useDBus bool) ([]byte, error) {
 	args := []string{"--action=get_system_salt"}
 	if useDBus {
 		args = append(args, "--use_dbus")
@@ -435,18 +435,18 @@ func (c *CryptohomeBinary) GetSystemSalt(ctx context.Context, useDBus bool) ([]b
 	return c.call(ctx, args...)
 }
 
-// CheckKeyEx calls "cryptohome --action=check_key_ex".
-func (c *CryptohomeBinary) CheckKeyEx(ctx context.Context, username, password, label string) ([]byte, error) {
+// checkKeyEx calls "cryptohome --action=check_key_ex".
+func (c *CryptohomeBinary) checkKeyEx(ctx context.Context, username, password, label string) ([]byte, error) {
 	return c.call(ctx, "--action=check_key_ex", "--user="+username, "--password="+password, "--key_label="+label)
 }
 
-// ListKeysEx calls "cryptohome --action=list_keys_ex".
-func (c *CryptohomeBinary) ListKeysEx(ctx context.Context, username string) ([]byte, error) {
+// listKeysEx calls "cryptohome --action=list_keys_ex".
+func (c *CryptohomeBinary) listKeysEx(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "--action=list_keys_ex", "--user="+username)
 }
 
-// AddKeyEx calls "cryptohome --action=add_key_ex".
-func (c *CryptohomeBinary) AddKeyEx(ctx context.Context, username, password, label, newPassword, newLabel string, lowEntropy bool) ([]byte, error) {
+// addKeyEx calls "cryptohome --action=add_key_ex".
+func (c *CryptohomeBinary) addKeyEx(ctx context.Context, username, password, label, newPassword, newLabel string, lowEntropy bool) ([]byte, error) {
 	args := []string{"--action=add_key_ex", "--user=" + username, "--password=" + password, "--key_label=" + label, "--new_password=" + newPassword, "--new_key_label=" + newLabel}
 	if lowEntropy {
 		args = append(args, "--key_policy=le")
@@ -454,79 +454,79 @@ func (c *CryptohomeBinary) AddKeyEx(ctx context.Context, username, password, lab
 	return c.call(ctx, args...)
 }
 
-// RemoveKeyEx calls "cryptohome --action=remove_key_ex".
-func (c *CryptohomeBinary) RemoveKeyEx(ctx context.Context, username, password, removeLabel string) ([]byte, error) {
+// removeKeyEx calls "cryptohome --action=remove_key_ex".
+func (c *CryptohomeBinary) removeKeyEx(ctx context.Context, username, password, removeLabel string) ([]byte, error) {
 	return c.call(ctx, "--action=remove_key_ex", "--user="+username, "--password="+password, "--remove_key_label="+removeLabel)
 }
 
-// MigrateKeyEx calls "cryptohome --action=migrate_key_ex".
-func (c *CryptohomeBinary) MigrateKeyEx(ctx context.Context, username, password, label, newPassword string) ([]byte, error) {
+// migrateKeyEx calls "cryptohome --action=migrate_key_ex".
+func (c *CryptohomeBinary) migrateKeyEx(ctx context.Context, username, password, label, newPassword string) ([]byte, error) {
 	return c.call(ctx, "--action=migrate_key_ex", "--user="+username, "--old_password="+password, "--key_label="+label, "--password="+newPassword)
 }
 
-// Remove calls "cryptohome --action=remove".
-func (c *CryptohomeBinary) Remove(ctx context.Context, username string) ([]byte, error) {
+// remove calls "cryptohome --action=remove".
+func (c *CryptohomeBinary) remove(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "--action=remove", "--user="+username, "--force")
 }
 
-// Unmount calls "cryptohome --action=unmount".
-func (c *CryptohomeBinary) Unmount(ctx context.Context, username string) ([]byte, error) {
+// unmount calls "cryptohome --action=unmount".
+func (c *CryptohomeBinary) unmount(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "--action=unmount", "--user="+username)
 }
 
-// UnmountAll calls "cryptohome --action=unmount", but without the username.
-func (c *CryptohomeBinary) UnmountAll(ctx context.Context) ([]byte, error) {
+// unmountAll calls "cryptohome --action=unmount", but without the username.
+func (c *CryptohomeBinary) unmountAll(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=unmount")
 }
 
-// LockToSingleUserMountUntilReboot calls "cryptohome --action=lock_to_single_user_mount_until_reboot"
-func (c *CryptohomeBinary) LockToSingleUserMountUntilReboot(ctx context.Context, username string) ([]byte, error) {
+// lockToSingleUserMountUntilReboot calls "cryptohome --action=lock_to_single_user_mount_until_reboot"
+func (c *CryptohomeBinary) lockToSingleUserMountUntilReboot(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "--action=lock_to_single_user_mount_until_reboot", "--user="+username)
 }
 
-// DumpKeyset calls "cryptohome --action=dump_keyset".
-func (c *CryptohomeBinary) DumpKeyset(ctx context.Context, username string) ([]byte, error) {
+// dumpKeyset calls "cryptohome --action=dump_keyset".
+func (c *CryptohomeBinary) dumpKeyset(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "--action=dump_keyset", "--user="+username)
 }
 
-// GetEnrollmentID calls "cryptohome --action=get_enrollment_id".
-func (c *CryptohomeBinary) GetEnrollmentID(ctx context.Context) ([]byte, error) {
+// getEnrollmentID calls "cryptohome --action=get_enrollment_id".
+func (c *CryptohomeBinary) getEnrollmentID(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=get_enrollment_id")
 }
 
-// TPMAttestationDeleteKeys calls "cryptohome --action=tpm_attestation_delete_keys".
-func (c *CryptohomeBinary) TPMAttestationDeleteKeys(ctx context.Context, username, prefix string) ([]byte, error) {
+// tpmAttestationDeleteKeys calls "cryptohome --action=tpm_attestation_delete_keys".
+func (c *CryptohomeBinary) tpmAttestationDeleteKeys(ctx context.Context, username, prefix string) ([]byte, error) {
 	return c.call(ctx, "--action=tpm_attestation_delete_keys", "--user="+username, "--prefix="+prefix)
 }
 
-// Pkcs11SystemTokenInfo calls "cryptohome --action=pkcs11_get_system_token_info".
-func (c *CryptohomeBinary) Pkcs11SystemTokenInfo(ctx context.Context) ([]byte, error) {
+// pkcs11SystemTokenInfo calls "cryptohome --action=pkcs11_get_system_token_info".
+func (c *CryptohomeBinary) pkcs11SystemTokenInfo(ctx context.Context) ([]byte, error) {
 	out, err := c.call(ctx, "--action=pkcs11_get_system_token_info")
 	return out, err
 }
 
-// Pkcs11UserTokenInfo calls "cryptohome --action=pkcs11_get_user_token_info". (and gets the user token status)
-func (c *CryptohomeBinary) Pkcs11UserTokenInfo(ctx context.Context, username string) ([]byte, error) {
+// pkcs11UserTokenInfo calls "cryptohome --action=pkcs11_get_user_token_info". (and gets the user token status)
+func (c *CryptohomeBinary) pkcs11UserTokenInfo(ctx context.Context, username string) ([]byte, error) {
 	out, err := c.call(ctx, "--action=pkcs11_get_user_token_info", "--user="+username)
 	return out, err
 }
 
-// GetFirmwareManagementParameters calls "cryptohome --action=get_firmware_management_parameters".
-func (c *CryptohomeBinary) GetFirmwareManagementParameters(ctx context.Context) ([]byte, error) {
+// getFirmwareManagementParameters calls "cryptohome --action=get_firmware_management_parameters".
+func (c *CryptohomeBinary) getFirmwareManagementParameters(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=get_firmware_management_parameters")
 }
 
-// SetFirmwareManagementParameters calls "cryptohome --action=set_firmware_management_parameters".
-func (c *CryptohomeBinary) SetFirmwareManagementParameters(ctx context.Context, flags, hash string) ([]byte, error) {
+// setFirmwareManagementParameters calls "cryptohome --action=set_firmware_management_parameters".
+func (c *CryptohomeBinary) setFirmwareManagementParameters(ctx context.Context, flags, hash string) ([]byte, error) {
 	return c.call(ctx, "--action=set_firmware_management_parameters", "--flags="+flags, "--developer_key_hash="+hash)
 }
 
-// RemoveFirmwareManagementParameters calls "cryptohome --action=remove_firmware_management_parameters".
-func (c *CryptohomeBinary) RemoveFirmwareManagementParameters(ctx context.Context) ([]byte, error) {
+// removeFirmwareManagementParameters calls "cryptohome --action=remove_firmware_management_parameters".
+func (c *CryptohomeBinary) removeFirmwareManagementParameters(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=remove_firmware_management_parameters")
 }
 
-// GetAccountDiskUsage calls "cryptohome --action=get_account_disk_usage".
-func (c *CryptohomeBinary) GetAccountDiskUsage(ctx context.Context, username string) ([]byte, error) {
+// getAccountDiskUsage calls "cryptohome --action=get_account_disk_usage".
+func (c *CryptohomeBinary) getAccountDiskUsage(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "--action=get_account_disk_usage", "--user="+username)
 }
