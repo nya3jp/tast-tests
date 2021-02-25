@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6355d019_d9060480",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-25T21:52:50Z",
+      "side": 1,
+      "message": "your hitting a test issue:\ntestcheck.go:48: arc.GuestPlayStore: timeout is too short (0s \u003c 3m50s)\n\nArc requires a certain timeout length.\nat least chrome.LoginTimeout + arc.BootTimeout + 30s",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 5
+      },
+      "revId": "5cd0da676bf1f84458238634e3997b4c8d14d9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
