@@ -36,7 +36,7 @@ func init() {
 // is tied to the TPM.
 func loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx context.Context, s *testing.State, utility *hwsec.CryptohomeClient, helper *hwsecremote.CmdHelperRemote, reboot bool) {
 	// Reset TPM.
-	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
 	}
 	s.Log("TPM is confirmed to be reset")
