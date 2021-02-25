@@ -24,8 +24,8 @@ import (
 )
 
 const (
-	// Filename of the test file.
-	testFile = "storage.txt"
+	// TestFile is the name of the test file used by the test app.
+	TestFile = "storage.txt"
 	// Timeout to wait for UI item to appear.
 	uiTimeout = 10 * time.Second
 
@@ -51,29 +51,35 @@ type Expectation struct {
 
 // Directory represents a FilesApp directory, e.g. Drive FS, Downloads.
 type Directory struct {
-	Path  string
-	Name  string
-	Title string
-	// Optional: If CheckFileType is true, wait for file type to appear before opening the file.
-	CheckFileType bool
+	Name           string   // Name of the directory.
+	Title          string   // Title of the directory.
+	SubDirectories []string // If specified, go into sub-directories under "Name".
+	Path           string   // Actual path of the directory on the file system.
+	CreateTestFile bool     // If true, create the test file at "Path". For directory where there is
+	                        // no actual file path, set this to false and create the file before
+	                        // running the test (e.g. MTP).
+	CheckFileType bool      // Optional: If true, wait for file type to appear before opening the
+	                        // file. Currently used by DriveFS to ensure metadata has arrived.
 }
 
 // TestOpenWithAndroidApp performs OpenWith operation on the test file in the specified directory dir.
 // dir needs to be one of the top folders in FilesApp, e.g. Google Drive, Downloads.
 func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, cr *chrome.Chrome, dir Directory, expectations []Expectation) {
-	testing.ContextLogf(ctx, "Performing TestOpenWithAndroidApp on: %s", dir.Path)
+	testing.ContextLogf(ctx, "Performing TestOpenWithAndroidApp on: %s", dir.Name)
 
 	testing.ContextLog(ctx, "Installing ArcFileReaderTest app")
 	if err := a.Install(ctx, arc.APKPath("ArcFileReaderTest.apk")); err != nil {
 		s.Fatal("Failed to install ArcFileReaderTest app: ", err)
 	}
 
-	testing.ContextLog(ctx, "Setting up a test file")
-	testFileLocation := filepath.Join(dir.Path, testFile)
-	if err := ioutil.WriteFile(testFileLocation, []byte(ExpectedFileContent), 0666); err != nil {
-		s.Fatalf("Failed to create test file %s: %s", testFileLocation, err)
+	if dir.CreateTestFile {
+		testing.ContextLog(ctx, "Setting up a test file")
+		testFileLocation := filepath.Join(dir.Path, TestFile)
+		if err := ioutil.WriteFile(testFileLocation, []byte(ExpectedFileContent), 0666); err != nil {
+			s.Fatalf("Failed to create test file %s: %s", testFileLocation, err)
+		}
+		defer os.Remove(testFileLocation)
 	}
-	defer os.Remove(testFileLocation)
 
 	if err := a.WaitIntentHelper(ctx); err != nil {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
@@ -117,17 +123,17 @@ func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, dir Direct
 	testing.ContextLog(ctx, "Opening the test file with ArcFileReaderTest")
 
 	return uiauto.Run(ctx,
-		files.OpenDir(dir.Name, dir.Title),
+		files.OpenPath(dir.Title, dir.Name, dir.SubDirectories...),
 		// Note: due to the banner loading, this may still be flaky.
 		// If that is the case, we may want to increase the interval and timeout for this next call.
-		files.SelectFile(testFile),
+		files.SelectFile(TestFile),
 		func(ctx context.Context) error {
 			if dir.CheckFileType {
 				if err := waitForFileType(ctx, files); err != nil {
 					return errors.Wrap(err, "waiting for file type failed")
 				}
-				if err := files.SelectFile(testFile)(ctx); err != nil {
-					return errors.Wrapf(err, "selecting the test file %s failed", testFile)
+				if err := files.SelectFile(TestFile)(ctx); err != nil {
+					return errors.Wrapf(err, "selecting the test file %s failed", TestFile)
 				}
 			}
 			return nil

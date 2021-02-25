@@ -27,7 +27,7 @@ func init() {
 			"arc-storage@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome", "chrome_internal", "drivefs"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 		Fixture:      "arcBooted",
 		// TODO(b/147620213): Add similar test for ARCVM.
@@ -42,7 +42,8 @@ func DownloadsFolder(ctx context.Context, s *testing.State) {
 		{LabelID: storage.URIID, Value: downloadURI},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
-	dir := storage.Directory{Path: filesapp.DownloadPath, Name: "Downloads", Title: "Files - Downloads"}
+	dir := storage.Directory{Path: filesapp.DownloadPath, Name: "Downloads",
+		Title: "Files - Downloads", CreateTestFile: true}
 
 	storage.TestOpenWithAndroidApp(ctx, s, a, cr, dir, expectations)
 }
