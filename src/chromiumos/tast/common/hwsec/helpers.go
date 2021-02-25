@@ -32,18 +32,18 @@ type CmdRunner interface {
 // hwsec integration test regardless of run-type, i.e., remote or local.
 type Helper struct {
 	cmdRunner        CmdRunner
-	cryptohomeUtil   *UtilityCryptohomeBinary
-	tpmManagerUtil   *UtilityTpmManagerBinary
+	cryptohomeUtil   *CryptohomeClient
+	tpmManagerUtil   *TPMManagerClient
 	daemonController *DaemonController
 }
 
 // NewHelper creates a new Helper, with r responsible for CmdRunner.
 func NewHelper(r CmdRunner) (*Helper, error) {
-	cryptohomeUtil, err := NewUtilityCryptohomeBinary(r)
+	cryptohomeUtil, err := NewCryptohomeClient(r)
 	if err != nil {
 		return nil, err
 	}
-	tpmManagerUtil, err := NewUtilityTpmManagerBinary(r)
+	tpmManagerUtil, err := NewTPMManagerClient(r)
 	if err != nil {
 		return nil, err
 	}
@@ -60,10 +60,10 @@ func NewHelper(r CmdRunner) (*Helper, error) {
 func (h *Helper) CmdRunner() CmdRunner { return h.cmdRunner }
 
 // CryptohomeUtil exposes the cryptohomeUtil of helper
-func (h *Helper) CryptohomeUtil() *UtilityCryptohomeBinary { return h.cryptohomeUtil }
+func (h *Helper) CryptohomeUtil() *CryptohomeClient { return h.cryptohomeUtil }
 
 // TPMManagerUtil exposes the tpmManagerUtil of helper
-func (h *Helper) TPMManagerUtil() *UtilityTpmManagerBinary { return h.tpmManagerUtil }
+func (h *Helper) TPMManagerUtil() *TPMManagerClient { return h.tpmManagerUtil }
 
 // DaemonController exposes the daemonController of helper
 func (h *Helper) DaemonController() *DaemonController { return h.daemonController }
