@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbf84df4_777bf50b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_install_guest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-02-25T01:48:03Z",
+      "side": 1,
+      "message": "Some context: we want to have the names for LOG, so it\u0027s easier to figure out what went wrong. \n\nIt\u0027s possible that certain Apps fails to install (or all of them). So only comparing len() isn\u0027t going to work.",
+      "parentUuid": "dff15c8a_f5a448b8",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "8b889b253cd72468ae217f3eaa2ed4e70a970108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e8ea921_f944e35a",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_install_guest.go",
         "patchSetId": 4
@@ -129,6 +153,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d58b6a60_f3d3e65c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_install_guest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-02-25T01:48:03Z",
+      "side": 1,
+      "message": "FYI: https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/apps/app_service/crostini_apps.cc;l\u003d240;drc\u003d282d69546f05aee5593a319b78bf550429bd6ff9;bpv\u003d0;bpt\u003d1",
+      "parentUuid": "a7a31f9b_a14341fd",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 33
+      },
+      "revId": "8b889b253cd72468ae217f3eaa2ed4e70a970108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cae8680_18e3b7a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_install_guest.go",
         "patchSetId": 4
@@ -140,6 +188,30 @@
       "writtenOn": "2021-02-24T22:40:55Z",
       "side": 1,
       "message": "could it be possible that the length is the same but there are different applications installed?\n\nperhaps compare that both have the same apps?\n\none possible way is to convert the list to sets (actually a map[string]bool)\nand then do a: reflect.DeepEqual(map1, map2).\n\nand removing the \"Terminal\" app is going to be easier as well.\n\nWDYT?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 57
+      },
+      "revId": "8b889b253cd72468ae217f3eaa2ed4e70a970108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f0fcf50_d3adccc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_install_guest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-02-25T01:48:03Z",
+      "side": 1,
+      "message": "context: internal name and application names are different. so they aren\u0027t comparable.\n\nsimilarly below, sorted list won\u0027t help much, since the names are different.",
+      "parentUuid": "2cae8680_18e3b7a1",
       "range": {
         "startLine": 78,
         "startChar": 0,
