@@ -15,9 +15,10 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/media/imgcmp"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -145,7 +146,7 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 		rect := subImage.Bounds()
 		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
 
-		blackPixels := screenshot.CountPixels(subImage, color.RGBA{0, 0, 0, 255})
+		blackPixels := imgcmp.CountPixels(subImage, color.RGBA{0, 0, 0, 255})
 		percent := blackPixels * 100 / totalPixels
 
 		// "10 percent" is arbitrary. It shouldn't have any black pixel.
@@ -163,7 +164,7 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 			s.Fatalf("Test failed. Contains %d / %d (%d%%) black pixels", blackPixels, totalPixels, percent)
 		}
 
-		bluePixels := screenshot.CountPixels(subImage, color.RGBA{0, 0, 255, 255})
+		bluePixels := imgcmp.CountPixels(subImage, color.RGBA{0, 0, 255, 255})
 		percent = bluePixels * 100 / totalPixels
 
 		// When the activity gets maximized, most of the pixels become blue.

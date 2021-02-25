@@ -14,10 +14,11 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/screen"
-	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/media/imgcmp"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -80,7 +81,7 @@ func confirmPixelCountInScreenshot(ctx context.Context, cr *chrome.Chrome, a *ar
 	if err != nil {
 		return errors.Wrap(err, "failed to grab screenshot")
 	}
-	n := screenshot.CountPixels(img, clr)
+	n := imgcmp.CountPixels(img, clr)
 	diff := math.Abs(float64(wantPixelCount-n) / float64(wantPixelCount))
 	// Allow a small epsilon as wantPixelCount is computed as a float.
 	if diff > 0.01 {
