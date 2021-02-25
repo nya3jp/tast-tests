@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff10cef_9e586e8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-02-25T11:54:10Z",
+      "side": 1,
+      "message": "takise@ PTAL at the arc related changes\ngabormagda@ PTAL at the policy related changes\n",
+      "revId": "e864dd5e6aa6de45f7a29c92e956f975b68636c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
