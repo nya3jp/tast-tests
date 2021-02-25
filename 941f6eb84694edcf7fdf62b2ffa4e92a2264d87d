@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffac84b8_910dd560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-25T17:26:39Z",
+      "side": 1,
+      "message": "super nit: you may want to comment that this \"\u003d\u003d nil\" is intentional. Otherwise someone later may think it is a bug because it is reverse from what it common.",
+      "range": {
+        "startLine": 161,
+        "startChar": 94,
+        "endLine": 161,
+        "endChar": 96
+      },
+      "revId": "941f6eb84694edcf7fdf62b2ffa4e92a2264d87d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49853a9a_93f84c93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-25T17:26:39Z",
+      "side": 1,
+      "message": "Also, this is always gonna print nil, so you probably don\u0027t want to include it in s.Fatal",
+      "range": {
+        "startLine": 162,
+        "startChar": 46,
+        "endLine": 162,
+        "endChar": 49
+      },
+      "revId": "941f6eb84694edcf7fdf62b2ffa4e92a2264d87d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
