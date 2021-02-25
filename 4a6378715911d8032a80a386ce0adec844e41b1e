@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "432a7fef_0b2af815",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-25T17:04:58Z",
+      "side": 1,
+      "message": "nit: I wonder if it\u0027d be better to bundle this and l.82\u0027s comment and\njust make a function-level comment? Also, does this function verify\nthe content or the MD5 hash? Per frame or for the whole file?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9482159c_657f415e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-25T17:04:58Z",
+      "side": 1,
+      "message": "nit: \"fail if the decoded results don\u0027t verify the expected MD5 hash\"?",
+      "range": {
+        "startLine": 138,
+        "startChar": 22,
+        "endLine": 138,
+        "endChar": 55
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a732284f_be4c3103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-25T17:04:58Z",
+      "side": 1,
+      "message": "Why do we need to have \"--visible\"? (Maybe leave a comment)",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 144,
+        "endChar": 12
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
