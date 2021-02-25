@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/720_hevc_20210224.mp4",
+  "size": 1012947,
+  "sha256sum": "499124ec2c2ebe32a0fb73566d985d3cd8392fd7932ae2ab42f04b559311855b"
+}

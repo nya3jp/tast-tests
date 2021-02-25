@@ -143,6 +143,20 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
 			Fixture:           "chromeVideoWithHDRScreen",
 		}, {
+			Name:              "hevc_hw",
+			Val:               playParams{fileName: "bear-320x240.hevc.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "bear-320x240.hevc.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+		}, {
+			Name:              "hevc10_hw",
+			Val:               playParams{fileName: "bear-320x240.hevc10.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"video.html", "bear-320x240.hevc10.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC10BPP, "proprietary_codecs", "protected_content"},
+			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+		}, {
 			Name:              "h264_hw_mse",
 			Val:               playParams{fileName: "bear-320x240.h264.mpd", videoType: play.MSEVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
@@ -163,6 +177,13 @@ func init() {
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.vp9.webm", "bear-320x240-audio-only.opus.webm", "bear-320x240.vp9.mpd"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideo",
+		}, {
+			Name:              "hevc_hw_mse",
+			Val:               playParams{fileName: "bear-320x240.hevc.mpd", videoType: play.MSEVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.hevc.mp4", "bear-320x240-audio-only.aac.mp4", "bear-320x240.hevc.mpd"),
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name:      "av1_guest",
 			Val:       playParams{fileName: "bear-320x240.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},

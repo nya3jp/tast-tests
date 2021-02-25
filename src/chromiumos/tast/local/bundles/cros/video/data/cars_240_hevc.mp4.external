@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/cars_240_hevc_20210225.mp4",
+  "size": 4457621,
+  "sha256sum": "ea8dee3ca087a89c7bd98face7411e9ce8f8b93351513e353f7c15014733a05b"
+}
