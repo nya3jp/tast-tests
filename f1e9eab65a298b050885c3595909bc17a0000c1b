@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22db0738_08603cfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2021-02-25T08:42:44Z",
+      "side": 0,
+      "message": "Why we don\u0027t keep these attributes for all the VP8/VP9 tests?",
+      "range": {
+        "startLine": 31,
+        "startChar": 18,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "f1e9eab65a298b050885c3595909bc17a0000c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
