@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d310e56_aed85fef",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-25T18:14:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d751f30_a81b8985",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9982f4ca_06011ac8",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-02-25T07:54:33Z",
       "side": 1,
       "message": "Do you need to run this all the time?\nI think it\u0027s just fine to call this a the beginning of WaitForMojoBootstrap, and inside poll, running cros-health-tool is enough?",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91a77904_fefa9191",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-25T18:14:44Z",
+      "side": 1,
+      "message": "It probably could only be run once, but I\u0027m trying to reuse the pattern established for other cros-health-tool subcommands. If this is every used outside of this package, I would like this detail to be encapsulated in the function. \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/croshealthd/diag.go;l\u003d117?q\u003ddiag.go",
+      "parentUuid": "9982f4ca_06011ac8",
       "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c968ebf_972bdc24",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-25T18:14:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd80ada9_d93c748c",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9b2c39d_010a7662",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-02-25T07:54:33Z",
       "side": 1,
       "message": "For better encapsulation, let\u0027s move this into RunStatus.\nOr, instead, you can move CommandContext into this function.",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdca23d1_c4c19314",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-25T18:14:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9b2c39d_010a7662",
       "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +181,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59654aa3_24a772fe",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-25T18:14:44Z",
+      "side": 1,
+      "message": "Good call, done. I\u0027ll also add it for the error above on line 39.",
+      "parentUuid": "269f1bbe_cf1ce4ac",
+      "range": {
+        "startLine": 43,
+        "startChar": 10,
+        "endLine": 43,
+        "endChar": 57
+      },
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e49502d_2e12ce42",
@@ -122,6 +218,24 @@
       "writtenOn": "2021-02-25T07:54:33Z",
       "side": 1,
       "message": "you do not need a map, but you can use an array, instead.",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fadace64_7e960f7f",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-25T18:14:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e49502d_2e12ce42",
       "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94df2e9_46b2c162",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-25T18:14:44Z",
+      "side": 1,
+      "message": "That\u0027s a good idea. I\u0027ll just compare it line by line so it\u0027s more obvious what is different.",
+      "parentUuid": "6e5b7f6c_3b8b536d",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 3
+      },
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8704fc34_78725c7a",
@@ -162,6 +300,24 @@
       "writtenOn": "2021-02-25T07:54:33Z",
       "side": 1,
       "message": "Could you check \"key\", too, for better robustness?",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79467e6a_4c6b41c6",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-25T18:14:44Z",
+      "side": 1,
+      "message": "Removed in favor of comparing lines directly.",
+      "parentUuid": "8704fc34_78725c7a",
       "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
