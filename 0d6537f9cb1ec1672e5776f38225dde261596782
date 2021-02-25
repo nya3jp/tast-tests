@@ -16,6 +16,97 @@
       "message": "# Unset my attention.",
       "revId": "0d6537f9cb1ec1672e5776f38225dde261596782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde1ed89_d0fe9ac4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-25T09:49:23Z",
+      "side": 1,
+      "message": "Can you choose a single tast reviewer? Adding just tast-owners will automatically assign one for review.",
+      "revId": "0d6537f9cb1ec1672e5776f38225dde261596782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c8ae7c1_03c9d109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-25T09:49:23Z",
+      "side": 1,
+      "message": "nit: add a comment explaining the structure of this map.",
+      "revId": "0d6537f9cb1ec1672e5776f38225dde261596782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c98d0a5_3c4d7a0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-25T09:49:23Z",
+      "side": 1,
+      "message": "Is there a plan to add multiple profiles?",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "0d6537f9cb1ec1672e5776f38225dde261596782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63bf7dec_76eae6ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-25T09:49:23Z",
+      "side": 1,
+      "message": "Use a generator to generate the test params. Example:\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/example/many_params.go",
+      "revId": "0d6537f9cb1ec1672e5776f38225dde261596782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77c81eb6_ba0d97b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-25T09:49:23Z",
+      "side": 1,
+      "message": "minor nit: use subtests (s.Run)",
+      "revId": "0d6537f9cb1ec1672e5776f38225dde261596782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
