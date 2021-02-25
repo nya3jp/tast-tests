@@ -27,15 +27,15 @@ const (
 	tpmManagerStatusSuccessMessage = "STATUS_SUCCESS"
 )
 
-// UtilityTpmManagerBinary wraps and the functions of TpmManagerBinary and parses the outputs to
+// UtilityTpmManagerBinary wraps and the functions of tpmManagerBinary and parses the outputs to
 // structured data.
 type UtilityTpmManagerBinary struct {
-	binary *TpmManagerBinary
+	binary *tpmManagerBinary
 }
 
 // NewUtilityTpmManagerBinary creates a new UtilityTpmManagerBinary.
 func NewUtilityTpmManagerBinary(r CmdRunner) (*UtilityTpmManagerBinary, error) {
-	binary, err := NewTpmManagerBinary(r)
+	binary, err := newTPMManagerBinary(r)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func checkStatusCommandAndReturn(ctx context.Context, binaryMsg []byte, err erro
 // Will return nil for error iff the operation completes successfully. The string returned, msg, is the message from the command line, if any.
 func (u *UtilityTpmManagerBinary) DefineSpace(ctx context.Context, size int, bindToPCR0 bool, index string, attributes []string, password string) (string, error) {
 	attributesParam := strings.Join(attributes, "|")
-	binaryMsg, err := u.binary.DefineSpace(ctx, size, bindToPCR0, index, attributesParam, password)
+	binaryMsg, err := u.binary.defineSpace(ctx, size, bindToPCR0, index, attributesParam, password)
 
 	return checkNVRAMCommandAndReturn(ctx, binaryMsg, err, "DefineSpace")
 }
@@ -84,35 +84,35 @@ func (u *UtilityTpmManagerBinary) DefineSpace(ctx context.Context, size int, bin
 // DestroySpace destroys (removes) an NVRAM space at index.
 // Will return nil for error iff the operation completes successfully. The string returned, msg, is the message from the command line, if any.
 func (u *UtilityTpmManagerBinary) DestroySpace(ctx context.Context, index string) (string, error) {
-	binaryMsg, err := u.binary.DestroySpace(ctx, index)
+	binaryMsg, err := u.binary.destroySpace(ctx, index)
 
 	return checkNVRAMCommandAndReturn(ctx, binaryMsg, err, "DestroySpace")
 }
 
 // WriteSpaceFromFile writes the content of file inputFile into the NVRAM space at index, with password password (if not empty).
 func (u *UtilityTpmManagerBinary) WriteSpaceFromFile(ctx context.Context, index, inputFile, password string) (string, error) {
-	binaryMsg, err := u.binary.WriteSpace(ctx, index, inputFile, password)
+	binaryMsg, err := u.binary.writeSpace(ctx, index, inputFile, password)
 
 	return checkNVRAMCommandAndReturn(ctx, binaryMsg, err, "WriteSpace")
 }
 
 // ReadSpaceToFile reads the content of NVRAM space at index into the file outputFile, with password (if not empty).
 func (u *UtilityTpmManagerBinary) ReadSpaceToFile(ctx context.Context, index, outputFile, password string) (string, error) {
-	binaryMsg, err := u.binary.ReadSpace(ctx, index, outputFile, password)
+	binaryMsg, err := u.binary.readSpace(ctx, index, outputFile, password)
 
 	return checkNVRAMCommandAndReturn(ctx, binaryMsg, err, "ReadSpace")
 }
 
 // TakeOwnership takes the TPM ownership.
 func (u *UtilityTpmManagerBinary) TakeOwnership(ctx context.Context) (string, error) {
-	binaryMsg, err := u.binary.TakeOwnership(ctx)
+	binaryMsg, err := u.binary.takeOwnership(ctx)
 
 	return checkStatusCommandAndReturn(ctx, binaryMsg, err, "TakeOwnership")
 }
 
 // Status returns the status string.
 func (u *UtilityTpmManagerBinary) Status(ctx context.Context) (string, error) {
-	binaryMsg, err := u.binary.Status(ctx)
+	binaryMsg, err := u.binary.status(ctx)
 
 	return checkStatusCommandAndReturn(ctx, binaryMsg, err, "Status")
 }
@@ -210,7 +210,7 @@ func parseNonsensitiveStatusInfo(ctx context.Context, checkStatus bool, msg stri
 
 // GetNonsensitiveStatus retrieves the NonsensitiveStatusInfo.
 func (u *UtilityTpmManagerBinary) GetNonsensitiveStatus(ctx context.Context) (info *NonsensitiveStatusInfo, returnedError error) {
-	binaryMsg, err := u.binary.NonsensitiveStatus(ctx)
+	binaryMsg, err := u.binary.nonsensitiveStatus(ctx)
 
 	// Convert msg first because it's still used when there's an error.
 	msg := string(binaryMsg)
@@ -225,7 +225,7 @@ func (u *UtilityTpmManagerBinary) GetNonsensitiveStatus(ctx context.Context) (in
 
 // GetNonsensitiveStatusIgnoreCache retrieves the NonsensitiveStatusInfo and ignore the cache.
 func (u *UtilityTpmManagerBinary) GetNonsensitiveStatusIgnoreCache(ctx context.Context) (info *NonsensitiveStatusInfo, returnedError error) {
-	binaryMsg, err := u.binary.NonsensitiveStatusIgnoreCache(ctx)
+	binaryMsg, err := u.binary.nonsensitiveStatusIgnoreCache(ctx)
 
 	// Convert msg first because it's still used when there's an error.
 	msg := string(binaryMsg)
@@ -301,7 +301,7 @@ func parseDAInfo(ctx context.Context, checkStatus bool, msg string) (info *DAInf
 
 // GetDAInfo retrieves the dictionary attack counter, threshold, if lockout is in effect and seconds remaining. The returned err is nil iff the operation is successful.
 func (u *UtilityTpmManagerBinary) GetDAInfo(ctx context.Context) (info *DAInfo, returnedError error) {
-	binaryMsg, err := u.binary.GetDAInfo(ctx)
+	binaryMsg, err := u.binary.getDAInfo(ctx)
 
 	// Convert msg first because it's still used when there's an error.
 	msg := string(binaryMsg)
@@ -316,7 +316,7 @@ func (u *UtilityTpmManagerBinary) GetDAInfo(ctx context.Context) (info *DAInfo, 
 
 // ResetDALock resets the dictionary attack lockout.
 func (u *UtilityTpmManagerBinary) ResetDALock(ctx context.Context) (string, error) {
-	binaryMsg, err := u.binary.ResetDALock(ctx)
+	binaryMsg, err := u.binary.resetDALock(ctx)
 
 	// Convert msg first because it's still used when there's an error.
 	msg := string(binaryMsg)
