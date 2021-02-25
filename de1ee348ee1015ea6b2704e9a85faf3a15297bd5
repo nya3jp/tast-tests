@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c93530_b857e446",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:07:37Z",
+      "side": 1,
+      "message": "Which allowlist ? Can you be more specific in the commit msg ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29c1ce58_71fe810d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:07:37Z",
+      "side": 1,
+      "message": "Can you explain who calls this service, and why it needs to be a service ? (You can just refer to the AllowlistService proto).",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "744e5b3f_7ded1e61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:07:37Z",
+      "side": 1,
+      "message": "LGTM but I have a few questions on the iptables setup.",
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86662ed_e92fc829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:07:37Z",
+      "side": 1,
+      "message": "OUTPUT is only relevant for local sockets.\n\nFor ARC and Crostini you need some rule in FORWARD. However it might interfere badly with the system proxy itself (whose traffic goes through FORWARD).\n\nSo you might need to add an interface matching argument \"-i arc+\" as well.",
+      "range": {
+        "startLine": 63,
+        "startChar": 27,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09223a15_9dee93e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:07:37Z",
+      "side": 1,
+      "message": "I was going to say that this rule that we set in patchpanel will prevent you from making your firewall rules above effective.\n\nInstead of adding the http and https drop rules with -A, why not adding them with -I which inserts by default on the front.\n\nYou can also do -I 2 to insert just after your proxy accept rule.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b62d51_1c6af4af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:07:37Z",
+      "side": 1,
+      "message": "why do we check || arc \u003d\u003d true here ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d92ed4_361cdf40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:07:37Z",
+      "side": 1,
+      "message": "This formatting is a bit weird. It this is the formatting tool output ?",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e8ed08a_46f2bb47",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:07:37Z",
+      "side": 1,
+      "message": "Just curious: are these links stable ? I couldn\u0027t imagine that they would not be stable, but you never know.",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 77
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a5c163_56f8280b",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:07:37Z",
+      "side": 1,
+      "message": "If these can be regexes or hav esome form of wildcarding, we should say so here.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 62
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
