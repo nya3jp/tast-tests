@@ -6,7 +6,12 @@
 package nearbysetup
 
 import (
+	"archive/zip"
 	"context"
+	"io"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -93,7 +98,7 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 }
 
 // AndroidSetup prepares the connected Android device for Nearby Share tests.
-func AndroidSetup(ctx context.Context, apkZipPath string, rooted bool, screenOff time.Duration, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) (*nearbysnippet.AndroidNearbyDevice, error) {
+func AndroidSetup(ctx context.Context, accountUtilZipPath, username, password string, loggedIn bool, apkZipPath string, rooted bool, screenOff time.Duration, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) (*nearbysnippet.AndroidNearbyDevice, error) {
 	// This loads the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
 	if err := adb.LaunchServer(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to launch adb server")
@@ -129,6 +134,70 @@ func AndroidSetup(ctx context.Context, apkZipPath string, rooted bool, screenOff
 		}
 		if err := testDevice.SetScreenOffTimeout(ctx, screenOff); err != nil {
 			return nil, errors.Wrap(err, "failed to extend screen-off timeout")
+		}
+	}
+
+	// Remove and re-add the specified account. A GAIA login is required to configure Nearby Share on the Android device.
+	if !loggedIn {
+		// Unzip the APK to a temp dir.
+		tempDir, err := ioutil.TempDir("", "account-util-apk")
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to create temp dir")
+		}
+		defer os.RemoveAll(tempDir)
+
+		r, err := zip.OpenReader(accountUtilZipPath)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to unzip %v", accountUtilZipPath)
+		}
+		defer r.Close()
+
+		var apkExists bool
+		for _, f := range r.File {
+			if f.Name == nearbysnippet.AccountUtilApk {
+				src, err := f.Open()
+				if err != nil {
+					return nil, errors.Wrap(err, "failed to open zip contents")
+				}
+				dstPath := filepath.Join(tempDir, f.Name)
+				dst, err := os.Create(dstPath)
+				if err != nil {
+					return nil, errors.Wrap(err, "failed to create file for copying APK")
+				}
+				defer dst.Close()
+
+				if _, err := io.Copy(dst, src); err != nil {
+					return nil, errors.Wrap(err, "failed to extract apk from zip")
+				}
+				apkExists = true
+			}
+		}
+		if !apkExists {
+			return nil, errors.Errorf("failed to find %v in %v", nearbysnippet.AccountUtilApk, accountUtilZipPath)
+		}
+
+		// Install the GoogleAccountUtil APK.
+		if err := testDevice.Install(ctx, filepath.Join(tempDir, nearbysnippet.AccountUtilApk), adb.InstallOptionGrantPermissions); err != nil {
+			return nil, errors.Wrap(err, "failed to install GoogleAccountUtil APK on the device")
+		}
+
+		// Try to remove the user account before re-adding it.
+		testing.ContextLog(ctx, "Removing all GAIA users from the Android device")
+		removeAccountsCmd := testDevice.ShellCommand(ctx, "am", "instrument", "-w", "com.google.android.tradefed.account/.RemoveAccounts")
+		if out, err := removeAccountsCmd.Output(); err != nil {
+			return nil, errors.Wrap(err, "failed to run remove accounts command")
+		} else if !strings.Contains(string(out), "INSTRUMENTATION_RESULT: result=SUCCESS") {
+			return nil, errors.Errorf("failed to remove accounts from the device (%v)", string(out))
+		}
+
+		testing.ContextLog(ctx, "Adding Nearby GAIA user to the Android device")
+		addAccountCmd := testDevice.ShellCommand(ctx, "am", "instrument", "-w",
+			"-e", "account", username, "-e", "password", password, "com.google.android.tradefed.account/.AddAccount",
+		)
+		if out, err := addAccountCmd.Output(); err != nil {
+			return nil, errors.Wrap(err, "failed to add account from the device")
+		} else if !strings.Contains(string(out), "INSTRUMENTATION_RESULT: result=SUCCESS") {
+			return nil, errors.Errorf("failed to add account to the device (%v)", string(out))
 		}
 	}
 
