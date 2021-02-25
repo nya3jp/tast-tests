@@ -9,28 +9,28 @@ import (
 	"strconv"
 )
 
-// TpmManagerBinary is used to interact with the tpm_managerd process over
+// tpmManagerBinary is used to interact with the tpm_managerd process over
 // 'tpm_manager_client' executable. For more details of the arguments of the
 // functions in this file, please check //src/platform2/tpm_manager/client/main.cc.
 // The arguments here are documented only when they are not directly
 // mapped to the ones in so-mentioned main.cc.
-type TpmManagerBinary struct {
+type tpmManagerBinary struct {
 	runner CmdRunner
 }
 
-// NewTpmManagerBinary is a factory function to create a
-// TpmManagerBinary instance.
-func NewTpmManagerBinary(r CmdRunner) (*TpmManagerBinary, error) {
-	return &TpmManagerBinary{r}, nil
+// newTPMManagerBinary is a factory function to create a
+// tpmManagerBinary instance.
+func newTPMManagerBinary(r CmdRunner) (*tpmManagerBinary, error) {
+	return &tpmManagerBinary{r}, nil
 }
 
 // call is a simple utility that helps to call tpm_manager_client.
-func (c *TpmManagerBinary) call(ctx context.Context, args ...string) ([]byte, error) {
+func (c *tpmManagerBinary) call(ctx context.Context, args ...string) ([]byte, error) {
 	return c.runner.Run(ctx, "tpm_manager_client", args...)
 }
 
-// DefineSpace calls "tpm_manager_client define_space".
-func (c *TpmManagerBinary) DefineSpace(ctx context.Context, size int, bindToPCR0 bool, index, attributes, password string) ([]byte, error) {
+// defineSpace calls "tpm_manager_client define_space".
+func (c *tpmManagerBinary) defineSpace(ctx context.Context, size int, bindToPCR0 bool, index, attributes, password string) ([]byte, error) {
 	args := []string{"define_space", "--index=" + index, "--size=" + strconv.Itoa(size)}
 	if bindToPCR0 {
 		args = append(args, "--bind_to_pcr0")
@@ -44,13 +44,13 @@ func (c *TpmManagerBinary) DefineSpace(ctx context.Context, size int, bindToPCR0
 	return c.call(ctx, args...)
 }
 
-// DestroySpace calls "tpm_manager_client destroy_space".
-func (c *TpmManagerBinary) DestroySpace(ctx context.Context, index string) ([]byte, error) {
+// destroySpace calls "tpm_manager_client destroy_space".
+func (c *tpmManagerBinary) destroySpace(ctx context.Context, index string) ([]byte, error) {
 	return c.call(ctx, "destroy_space", "--index="+index)
 }
 
-// WriteSpace calls "tpm_manager_client write_space".
-func (c *TpmManagerBinary) WriteSpace(ctx context.Context, index, file, password string) ([]byte, error) {
+// writeSpace calls "tpm_manager_client write_space".
+func (c *tpmManagerBinary) writeSpace(ctx context.Context, index, file, password string) ([]byte, error) {
 	args := []string{"write_space", "--index=" + index, "--file=" + file}
 	if password != "" {
 		args = append(args, "--password="+password)
@@ -58,8 +58,8 @@ func (c *TpmManagerBinary) WriteSpace(ctx context.Context, index, file, password
 	return c.call(ctx, args...)
 }
 
-// ReadSpace calls "tpm_manager_client read_space".
-func (c *TpmManagerBinary) ReadSpace(ctx context.Context, index, file, password string) ([]byte, error) {
+// readSpace calls "tpm_manager_client read_space".
+func (c *tpmManagerBinary) readSpace(ctx context.Context, index, file, password string) ([]byte, error) {
 	args := []string{"read_space", "--index=" + index, "--file=" + file}
 	if password != "" {
 		args = append(args, "--password="+password)
@@ -67,32 +67,32 @@ func (c *TpmManagerBinary) ReadSpace(ctx context.Context, index, file, password 
 	return c.call(ctx, args...)
 }
 
-// GetDAInfo calls "tpm_manager_client get_da_info".
-func (c *TpmManagerBinary) GetDAInfo(ctx context.Context) ([]byte, error) {
+// getDAInfo calls "tpm_manager_client get_da_info".
+func (c *tpmManagerBinary) getDAInfo(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "get_da_info")
 }
 
-// ResetDALock calls "tpm_manager_client reset_da_lock".
-func (c *TpmManagerBinary) ResetDALock(ctx context.Context) ([]byte, error) {
+// resetDALock calls "tpm_manager_client reset_da_lock".
+func (c *tpmManagerBinary) resetDALock(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "reset_da_lock")
 }
 
-// TakeOwnership calls "tpm_manager_client take_ownership".
-func (c *TpmManagerBinary) TakeOwnership(ctx context.Context) ([]byte, error) {
+// takeOwnership calls "tpm_manager_client take_ownership".
+func (c *tpmManagerBinary) takeOwnership(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "take_ownership")
 }
 
-// Status calls "tpm_manager_client status".
-func (c *TpmManagerBinary) Status(ctx context.Context) ([]byte, error) {
+// status calls "tpm_manager_client status".
+func (c *tpmManagerBinary) status(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "status")
 }
 
-// NonsensitiveStatus calls "tpm_manager_client status --nonsensitive".
-func (c *TpmManagerBinary) NonsensitiveStatus(ctx context.Context) ([]byte, error) {
+// nonsensitiveStatus calls "tpm_manager_client status --nonsensitive".
+func (c *tpmManagerBinary) nonsensitiveStatus(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "status", "--nonsensitive")
 }
 
-// NonsensitiveStatusIgnoreCache calls "tpm_manager_client status --nonsensitive --ignore_cache".
-func (c *TpmManagerBinary) NonsensitiveStatusIgnoreCache(ctx context.Context) ([]byte, error) {
+// nonsensitiveStatusIgnoreCache calls "tpm_manager_client status --nonsensitive --ignore_cache".
+func (c *tpmManagerBinary) nonsensitiveStatusIgnoreCache(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "status", "--nonsensitive", "--ignore_cache")
 }
