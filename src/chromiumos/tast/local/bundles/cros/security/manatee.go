@@ -64,7 +64,7 @@ func init() {
 	})
 }
 
-func stopCmd(cmd testexec.Cmd) error {
+func stopCmd(cmd *testexec.Cmd) error {
 	// SIGKILL (sent by Cmd.Kill()) does not allow cleanup hooks to run. Upstart uses SIGTERM to notify daemons when
 	// their job is being stopped, so it is used here.
 	if err := cmd.Signal(syscall.SIGTERM); err != nil {
@@ -279,7 +279,7 @@ func (z *sireniaServices) stopCronista() error {
 		return errors.New("cronista not initialized; call start before stop")
 	}
 
-	return stopCmd(*z.cronista)
+	return stopCmd(z.cronista)
 }
 
 func (z *sireniaServices) stopTrichechus() error {
@@ -287,7 +287,7 @@ func (z *sireniaServices) stopTrichechus() error {
 		return errors.New("trichechus not initialized; call start before stop")
 	}
 
-	return stopCmd(*z.trichechus)
+	return stopCmd(z.trichechus)
 }
 
 func (z *sireniaServices) stopDugong() error {
@@ -295,7 +295,7 @@ func (z *sireniaServices) stopDugong() error {
 		return errors.New("dugong not initialized; call start before stop")
 	}
 
-	return stopCmd(*z.dugong)
+	return stopCmd(z.dugong)
 }
 
 // Stop tears down the test environment. Start() must be called first.
