@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37c04646_1732f473",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-25T09:42:59Z",
+      "side": 1,
+      "message": "I believe this should describe how did you test that your CL does not break anything, e.g. Go compilation\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#describe-testing-performed",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "e5167941e1d98921d6fa099f845ad7caa34e5c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e398b9cd_a54ccb34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-25T09:42:59Z",
+      "side": 1,
+      "message": "Hi Ian,\n\nIf you follow link you provided, you will find:\n\n\"This informational test passed in last 18 builds. Please promote it to the Commit Queue after 20+ consecutive passes\"\n\nIs there some good reason to promote this test faster or we should wait 2 more builds?",
+      "revId": "e5167941e1d98921d6fa099f845ad7caa34e5c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
