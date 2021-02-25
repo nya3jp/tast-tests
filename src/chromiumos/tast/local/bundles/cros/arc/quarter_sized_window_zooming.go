@@ -12,9 +12,10 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/colorcmp"
+	"chromiumos/tast/local/media/imgcmp"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -152,7 +153,7 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 				// Should be black.
 				if !colorcmp.ColorsMatch(img.At(rect.Min.X+j, rect.Min.Y+i), black, colorMaxDiff) {
 					path := filepath.Join(s.OutDir(), "screenshot_fail.png")
-					if err := screenshot.DumpImageToPNG(ctx, &img, path); err != nil {
+					if err := imgcmp.DumpImageToPNG(ctx, &img, path); err != nil {
 						s.Fatal("Failed to create screenshot: ", err)
 					}
 					s.Logf("Screenshot image for failed test created in: %s", path)
@@ -162,7 +163,7 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 				// Should be white.
 				if !colorcmp.ColorsMatch(img.At(rect.Min.X+j, rect.Min.Y+i), white, colorMaxDiff) {
 					path := filepath.Join(s.OutDir(), "screenshot_fail.png")
-					if err := screenshot.DumpImageToPNG(ctx, &img, path); err != nil {
+					if err := imgcmp.DumpImageToPNG(ctx, &img, path); err != nil {
 						s.Fatal("Failed to create screenshot: ", err)
 					}
 					s.Logf("Screenshot image for failed test created in: %s", path)
