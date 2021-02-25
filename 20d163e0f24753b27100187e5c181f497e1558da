@@ -16,6 +16,75 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "20d163e0f24753b27100187e5c181f497e1558da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7d754a3_42590b7e",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-25T06:41:16Z",
+      "side": 1,
+      "message": "This field can be nil or non-nil, depending on which constructor was called. I feel a bit uneasy as we can\u0027t distinguish two type of instances statically.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "20d163e0f24753b27100187e5c181f497e1558da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cece84bb_722d46c3",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_attestation_client.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-25T06:41:16Z",
+      "side": 1,
+      "message": "Optional: If you don\u0027t have a plan to return an error, you might want to return just client.",
+      "range": {
+        "startLine": 22,
+        "startChar": 38,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "20d163e0f24753b27100187e5c181f497e1558da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43108320_d3bc8506",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_attestation_client.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-25T06:41:16Z",
+      "side": 1,
+      "message": "It\u0027s strange to export this general-purpose function from hwsec... do you have a plan to call it from outside this package?",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "20d163e0f24753b27100187e5c181f497e1558da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
