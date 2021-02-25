@@ -184,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc2731c1_8e9a38eb",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-25T06:20:51Z",
+      "side": 1,
+      "message": "PS: I understand you followed the existing pattern, and I don\u0027t mean to block your CL here. But while reviewing I thought there\u0027s a room for refactoring the libarary as I commented. Could you consider filing a bug?",
+      "parentUuid": "26eca15e_9f855c69",
+      "range": {
+        "startLine": 965,
+        "startChar": 34,
+        "endLine": 965,
+        "endChar": 49
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c800cf2c_7f3d9376",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_validity.go",
         "patchSetId": 10
