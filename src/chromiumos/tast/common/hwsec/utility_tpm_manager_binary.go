@@ -34,12 +34,10 @@ type UtilityTpmManagerBinary struct {
 }
 
 // NewUtilityTpmManagerBinary creates a new UtilityTpmManagerBinary.
-func NewUtilityTpmManagerBinary(r CmdRunner) (*UtilityTpmManagerBinary, error) {
-	binary, err := NewTpmManagerBinary(r)
-	if err != nil {
-		return nil, err
+func NewUtilityTpmManagerBinary(r CmdRunner) *UtilityTpmManagerBinary {
+	return &UtilityTpmManagerBinary{
+		binary: NewTpmManagerBinary(r),
 	}
-	return &UtilityTpmManagerBinary{binary}, nil
 }
 
 // checkCommandAndReturn is a simple helper that checks if binaryMsg returned is successful, and returns the corresponding message and error.
