@@ -56,6 +56,30 @@
       },
       "revId": "c78ff82d2f14f0a191343952214e5d2ec8ae7561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342ce22c_b6a4ff22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-25T20:31:20Z",
+      "side": 1,
+      "message": "Thank you Po-Hsien. Made changes accordingly.",
+      "parentUuid": "c5c5390a_8759b467",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "c78ff82d2f14f0a191343952214e5d2ec8ae7561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
