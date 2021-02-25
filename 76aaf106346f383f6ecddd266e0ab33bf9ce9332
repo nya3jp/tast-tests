@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "76aaf106346f383f6ecddd266e0ab33bf9ce9332",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "661d0a51_9339bf57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-25T06:46:12Z",
+      "side": 1,
+      "message": "This CL is closely related to crrev.com/c/2652153. Please add me to the attention set after discussions in that CL.\n",
+      "revId": "76aaf106346f383f6ecddd266e0ab33bf9ce9332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
