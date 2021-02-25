@@ -22,6 +22,30 @@
       },
       "revId": "09520a072f8a0d576faec7eb4c7abfa1f2cf3ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8458fd5b_57645c35",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-02-25T17:40:54Z",
+      "side": 1,
+      "message": "That works. I was not sure whether you will be okay to expose chormeproc.\n\nWith chromeproc out of internal, it seems like we could also get rid of chromiumos/tast/local/chrome/proc.go, whose sole purpose seems to be exposing certain methods of chromeproc? I could remove it in a follow-up if you want.",
+      "parentUuid": "d8742292_5b521a10",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 18
+      },
+      "revId": "09520a072f8a0d576faec7eb4c7abfa1f2cf3ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
