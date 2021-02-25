@@ -16,9 +16,7 @@ service UreadaheadPackService {
 }
 
 message UreadaheadPackRequest {
-  reserved 1, 2, 3;
-  // Specify which build is requested.
-  bool vm_enabled = 4;
+  reserved 1, 2, 3, 4;
   // Credentials to perform login
   string creds = 5;
 }
