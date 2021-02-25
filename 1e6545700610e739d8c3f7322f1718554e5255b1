@@ -164,6 +164,30 @@
       },
       "revId": "1e6545700610e739d8c3f7322f1718554e5255b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca8c833_9b709052",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-02-25T05:23:32Z",
+      "side": 1,
+      "message": "In google3, we had a general principle of small CLs, where we would try and make the CLs as small as possible, so that\u0027s what I was doing. I dunno if that\u0027s still a thing in chrome, or if I should just squash my CLs or something?",
+      "parentUuid": "a030a302_70f316bd",
+      "range": {
+        "startLine": 536,
+        "startChar": 19,
+        "endLine": 536,
+        "endChar": 23
+      },
+      "revId": "1e6545700610e739d8c3f7322f1718554e5255b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
