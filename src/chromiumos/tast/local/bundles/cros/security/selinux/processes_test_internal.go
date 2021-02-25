@@ -193,7 +193,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 		case Unstable:
 			testCases = append(testCases, []testCaseType{
 				{exe, "/sbin/minijail0", matchRegexp, "(minijail|.*_minijail0|cros_.*_minijail)", zeroProcs, ""},
-				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils)", notString, "cros_init_scripts", zeroProcs, domainIsolationErrorMessage},
+				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/usr/bin/logger)", notString, "cros_init_scripts", zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/init", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
 				{notCmdline, ".*(ping|frecon|agetty|recover_duts).*", notString, "chromeos", zeroProcs, domainIsolationErrorMessage},
 				{cmdline, ".*", notString, "minijailed", zeroProcs, domainIsolationErrorMessage},
