@@ -34,7 +34,7 @@ type combinations struct {
 }
 
 // cleanupVault is a helper that unmount and removes a vault.
-func cleanupVault(ctx context.Context, s *testing.State, utility *hwsec.UtilityCryptohomeBinary, username string) {
+func cleanupVault(ctx context.Context, s *testing.State, utility *hwsec.UtilityCryptohomeClient, username string) {
 	if err := utility.UnmountAndRemoveVault(ctx, username); err != nil {
 		s.Errorf("Failed to remove user vault for %q: %v", username, err)
 	}
