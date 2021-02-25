@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eccf9a45_ba53b569",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-25T19:43:18Z",
+      "side": 0,
+      "message": "I guess it\u0027s slightly safer to use \u0027ContentsWebView\u0027 rather than omitting it -- there might be other webview-based browser UIs in the future which can be matched with this find parameter (right now it would be okay as webview-based browser UI are only webuitabstrip and tab-searcher, IIRC)",
+      "range": {
+        "startLine": 106,
+        "startChar": 100,
+        "endLine": 106,
+        "endChar": 107
+      },
+      "revId": "02faa5200f65ae25667412be2e3942b7470656cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
