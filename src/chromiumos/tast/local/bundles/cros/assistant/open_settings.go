@@ -24,7 +24,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"meilinw@chromium.org",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          assistant.VerboseLoggingEnabled(),
 	})
