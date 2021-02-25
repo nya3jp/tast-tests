@@ -20,8 +20,6 @@ message UreadaheadPackRequest {
   // Credentials to perform login
   string username = 2;
   string password = 3;
-  // Specify which build is requested.
-  bool vm_enabled = 4;
 }
 
 message UreadaheadPackResponse {
