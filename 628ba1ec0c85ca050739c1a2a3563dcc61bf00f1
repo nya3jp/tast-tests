@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c56960_fbf2b97f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-02-25T07:48:23Z",
+      "side": 1,
+      "message": "PTAL. Thanks!",
+      "revId": "628ba1ec0c85ca050739c1a2a3563dcc61bf00f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d135d44e_328ddd34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-02-25T07:48:23Z",
+      "side": 1,
+      "message": "This function is defined and exported here because it is planned to be used by other Tast tests (a new test for Play files, and possibly the existing tests for Downloads and removable media). If it\u0027s inappropriate (from the perspective of the YAGNI principle), I can define it as a local function in my_files.go for now.",
+      "range": {
+        "startLine": 209,
+        "startChar": 5,
+        "endLine": 209,
+        "endChar": 33
+      },
+      "revId": "628ba1ec0c85ca050739c1a2a3563dcc61bf00f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
