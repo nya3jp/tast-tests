@@ -49,7 +49,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 
 	at := hwsec.NewAttestationTest(utility, hwsec.DefaultPCA)
 
-	ac, err := hwseclocal.NewAttestationClient(ctx)
+	ac, err := hwseclocal.NewAttestationDBus(ctx)
 	if err != nil {
 		s.Fatal("Failed to create attestation client: ", err)
 	}

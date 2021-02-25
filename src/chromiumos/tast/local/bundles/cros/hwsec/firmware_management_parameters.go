@@ -38,7 +38,7 @@ func init() {
 }
 
 // checkFWMPCleared checks that FWMP is cleared, and returns nil iff it is cleared.
-func checkFWMPCleared(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) error {
+func checkFWMPCleared(ctx context.Context, utility *hwsec.CryptohomeClient) error {
 	_, _, err := utility.GetFirmwareManagementParameters(ctx)
 	if err == nil {
 		return errors.New("call to GetFirmwareManagementParameters succeeded when FWMP is cleared")
@@ -52,7 +52,7 @@ func checkFWMPCleared(ctx context.Context, utility *hwsec.UtilityCryptohomeBinar
 }
 
 // clearFWMPAndCheck clears FWMP and checks that it's cleared correctly. It return nil iff FWMP is successfully cleared.
-func clearFWMPAndCheck(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) error {
+func clearFWMPAndCheck(ctx context.Context, utility *hwsec.CryptohomeClient) error {
 	if _, err := utility.RemoveFirmwareManagementParameters(ctx); err != nil {
 		return errors.Wrap(err, "failed to clear fwmp")
 	}
@@ -70,7 +70,7 @@ func clearFWMPAndCheck(ctx context.Context, utility *hwsec.UtilityCryptohomeBina
 }
 
 // checkFWMPSet checks that FWMP is set to the expected values.
-func checkFWMPSet(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary, expectedFlags, expectedHash string) error {
+func checkFWMPSet(ctx context.Context, utility *hwsec.CryptohomeClient, expectedFlags, expectedHash string) error {
 	flags, hash, err := utility.GetFirmwareManagementParameters(ctx)
 	if err != nil {
 		return errors.Wrap(err, "call to GetFirmwareManagementParameters failed when trying to check FWMP is set correctly")
@@ -88,7 +88,7 @@ func checkFWMPSet(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary, e
 }
 
 // setFWMPAndCheck sets the FWMP and checks that it's set correctly. It return nil iff FWMP is successfully set.
-func setFWMPAndCheck(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary, flags, hash string) error {
+func setFWMPAndCheck(ctx context.Context, utility *hwsec.CryptohomeClient, flags, hash string) error {
 	if _, err := utility.SetFirmwareManagementParameters(ctx, flags, hash); err != nil {
 		return errors.Wrap(err, "failed to set FWMP")
 	}
