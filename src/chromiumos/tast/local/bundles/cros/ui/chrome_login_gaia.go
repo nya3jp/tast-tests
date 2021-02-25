@@ -28,19 +28,16 @@ func init() {
 			"group:mainline",
 		},
 		Vars: []string{
-			"ui.ChromeLoginGAIA.user",
-			"ui.ChromeLoginGAIA.password",
+			"ui.gaiaPoolDefault",
 		},
 		Timeout: chrome.GAIALoginTimeout + time.Minute,
 	})
 }
 
 func ChromeLoginGAIA(ctx context.Context, s *testing.State) {
-	user := s.RequiredVar("ui.ChromeLoginGAIA.user")
-	password := s.RequiredVar("ui.ChromeLoginGAIA.password")
 	cr, err := chrome.New(
 		ctx,
-		chrome.Auth(user, password, ""),
+		chrome.AuthPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.GAIALogin(),
 	)
 	if err != nil {
