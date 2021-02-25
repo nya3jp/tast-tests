@@ -51,10 +51,18 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:            "nearbyShareDataUsageOfflineAllContactsTestUser",
-		Desc:            "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'",
-		Impl:            NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, false, true),
-		Vars:            []string{"rooted"},
+		Name: "nearbyShareDataUsageOfflineAllContactsTestUser",
+		Desc: "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'",
+		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, false, true),
+		Vars: []string{
+			// Specify -var=rooted=false when running on an unrooted device to skip steps that require adb root access.
+			"rooted",
+			// Specify -var=skipAndroidLogin=true if the Android device is logged in to a personal account.
+			// Otherwise we will attempt removing all Google accounts and adding a test account to the phone.
+			"skipAndroidLogin",
+			"nearbyshare.android_username",
+			"nearbyshare.android_password",
+		},
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -68,10 +76,17 @@ func init() {
 		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, true, true),
 		Vars: []string{
 			"rooted",
+			// Specify -var=username=<your username> and -var=password=<your password> to log in to a different GAIA account on the CrOS device.
+			// Combine this with -var=skipAndroidLogin=true and a manually-signed-in Android device to run the tests on your own GAIA accounts.
+			// Otherwise we will log in both devices to pre-configured GAIA test accounts. These account credentials are loaded with the
+			// nearbyshare.cros_{username,password} and nearbyshare.android_{username,password} vars, so these vars are not meant to be overridden by the user.
 			"username",
 			"password",
 			"nearbyshare.cros_username",
 			"nearbyshare.cros_password",
+			"skipAndroidLogin",
+			"nearbyshare.android_username",
+			"nearbyshare.android_password",
 		},
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -113,18 +128,18 @@ type FixtData struct {
 
 func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	if f.gaiaLogin {
-		username := s.RequiredVar("nearbyshare.cros_username")
-		password := s.RequiredVar("nearbyshare.cros_password")
+		crosUsername := s.RequiredVar("nearbyshare.cros_username")
+		crosPassword := s.RequiredVar("nearbyshare.cros_password")
 		customUser, userOk := s.Var("username")
 		customPass, passOk := s.Var("password")
 		if userOk && passOk {
 			s.Log("Logging in with user-provided credentials")
-			username = customUser
-			password = customPass
+			crosUsername = customUser
+			crosPassword = customPass
 		} else {
 			s.Log("Logging in with default GAIA credentials")
 		}
-		f.opts = append(f.opts, chrome.Auth(username, password, ""), chrome.GAIALogin())
+		f.opts = append(f.opts, chrome.Auth(crosUsername, crosPassword, ""), chrome.GAIALogin())
 	}
 
 	cr, err := chrome.New(
@@ -169,20 +184,39 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		// TODO(crbug/1127165): Replace with s.DataPath(nearbysnippet.ZipName) when data is supported in Fixtures.
 		// The data path changes based on whether -build=true or -build=false is supplied to `tast run`.
 		// Local test runs on your workstation use -build=true by default, while lab runs use -build=false.
-		prebuiltLocalDataPath := "/usr/local/share/tast/data/chromiumos/tast/local/bundles/cros/nearbyshare/data"
-		builtLocalDataPath := "/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/nearbyshare/data"
-		apkZipName := "nearby_snippet.zip"
+		const (
+			prebuiltLocalDataPath = "/usr/local/share/tast/data/chromiumos/tast/local/bundles/cros/nearbyshare/data"
+			builtLocalDataPath    = "/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/nearbyshare/data"
+			apkZipName            = "nearby_snippet.zip"
+			accountUtilZipName    = "google_account_util.zip"
+		)
 
 		// Use the built local data path if it exists, and fall back to the prebuilt data path otherwise.
 		apkZipPath := filepath.Join(builtLocalDataPath, apkZipName)
+		accountUtilZipPath := filepath.Join(builtLocalDataPath, accountUtilZipName)
 		if _, err := os.Stat(builtLocalDataPath); os.IsNotExist(err) {
 			apkZipPath = filepath.Join(prebuiltLocalDataPath, apkZipName)
+			accountUtilZipPath = filepath.Join(prebuiltLocalDataPath, accountUtilZipName)
 		} else if err != nil {
 			s.Fatal("Failed to check if built local data path exists: ", err)
 		}
 
+		// Skip logging in to the test account on the Android device if specified in the runtime vars.
+		// This lets you run the tests on a phone that's already signed in with your own account.
+		loggedIn := false
+		if val, ok := s.Var("skipAndroidLogin"); ok {
+			b, err := strconv.ParseBool(val)
+			if err != nil {
+				s.Fatal("Unable to convert skipAndroidLogin var to bool: ", err)
+			}
+			loggedIn = b
+		}
+		androidUsername := s.RequiredVar("nearbyshare.android_username")
+		androidPassword := s.RequiredVar("nearbyshare.android_password")
+
 		androidDevice, err := nearbysetup.AndroidSetup(
-			ctx, apkZipPath, rooted,
+			ctx, accountUtilZipPath, androidUsername, androidPassword, loggedIn,
+			apkZipPath, rooted,
 			nearbysetup.DefaultScreenTimeout,
 			nearbysnippet.DataUsageOffline,
 			nearbysnippet.VisibilityAllContacts,
