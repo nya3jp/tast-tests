@@ -16,6 +16,23 @@
       "message": "lgtm",
       "revId": "bb03c1e459e01e252616caed9e768653df5d08e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58d0e851_5a06307e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-02-25T19:30:33Z",
+      "side": 1,
+      "message": "oshima, can you take a look? Is this what you expect?",
+      "revId": "bb03c1e459e01e252616caed9e768653df5d08e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
