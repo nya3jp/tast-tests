@@ -103,7 +103,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	defer conn.Close()
 	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
 
-	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "WebView"}, timeout)
+	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView}, timeout)
 	if err != nil {
 		s.Fatal("Failed to find webview: ", err)
 	}
