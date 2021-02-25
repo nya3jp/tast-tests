@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf584f3b_c11a65b7",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-25T06:50:45Z",
+      "side": 1,
+      "message": "Is there any reason the info.HasDBus call has been removed?",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 22
+      },
+      "revId": "9d907666ee5ebc393247d8bb6156ee77ca03d570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
