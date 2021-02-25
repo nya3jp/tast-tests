@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/remote/bundles/cros/nearbyshare/remotetestutils"
 	"chromiumos/tast/rpc"
 	nearbyservice "chromiumos/tast/services/cros/nearbyshare"
 	"chromiumos/tast/ssh/linuxssh"
@@ -94,8 +95,7 @@ func CrosSenderCrosReceiver(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT1 (Sender): ", err)
 	}
-	defer sender.CloseChrome(ctx, &empty.Empty{})
-
+	defer remotetestutils.SaveLogs(ctx, sender, d1, "sender", s.OutDir())
 	cl2, err := rpc.Dial(ctx, d2, s.RPCHint(), "cros")
 	if err != nil {
 		s.Fatal("Failed to dial rpc service on DUT2: ", err)
@@ -107,7 +107,7 @@ func CrosSenderCrosReceiver(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT2 (Receiver): ", err)
 	}
-	defer receiver.CloseChrome(ctx, &empty.Empty{})
+	defer remotetestutils.SaveLogs(ctx, receiver, d1, "receiver", s.OutDir())
 
 	s.Log("Starting receiving on DUT2 (Receiver)")
 	if _, err := receiver.StartReceiving(ctx, &empty.Empty{}); err != nil {

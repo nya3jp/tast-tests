@@ -28,3 +28,9 @@ const SmallFileTimeout = 2 * time.Minute
 
 // ChromeLog is the filename of the Chrome log that is saved for each test.
 const ChromeLog = "nearby_chrome"
+
+// MessageLog is the filename of the messages log that is saved for each test. It is saved automatically by tast for local tests. For remote tests we need to grab it within the test.
+const MessageLog = "nearby_messages"
+
+// NearbyLogDir is the dir that logs will be saved in temporarily on the DUT during remote tests before being pulled back to remote host.
+const NearbyLogDir = "/tmp/nearbyshare/"
