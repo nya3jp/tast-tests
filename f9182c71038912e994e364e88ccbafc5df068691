@@ -46,6 +46,30 @@
       },
       "revId": "f9182c71038912e994e364e88ccbafc5df068691",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc3394f_334cca69",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-25T21:54:35Z",
+      "side": 1,
+      "message": "Understood, that sounds good.",
+      "parentUuid": "9244f31c_e5f212dd",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 18
+      },
+      "revId": "f9182c71038912e994e364e88ccbafc5df068691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
