@@ -56,16 +56,12 @@ type UtilityCryptohomeBinary struct {
 }
 
 // NewUtilityCryptohomeBinary creates a new UtilityCryptohomeBinary.
-func NewUtilityCryptohomeBinary(r CmdRunner) (*UtilityCryptohomeBinary, error) {
-	binary, err := NewCryptohomeBinary(r)
-	if err != nil {
-		return nil, err
+func NewUtilityCryptohomeBinary(r CmdRunner) *UtilityCryptohomeBinary {
+	return &UtilityCryptohomeBinary{
+		binary:               NewCryptohomeBinary(r),
+		cryptohomePathBinary: NewCryptohomePathBinary(r),
+		attestationAsyncMode: true,
 	}
-	cryptohomePathBinary, err := NewCryptohomePathBinary(r)
-	if err != nil {
-		return nil, err
-	}
-	return &UtilityCryptohomeBinary{binary, cryptohomePathBinary, true}, nil
 }
 
 // GetStatusJSON retrieves the a status string from cryptohome. The status string is in JSON format and holds the various cryptohome related status.

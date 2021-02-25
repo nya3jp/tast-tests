@@ -36,8 +36,8 @@ func fromVATypeIntToString(vaType VAType) string {
 
 // NewCryptohomeBinary is a factory function to create a
 // CryptohomeBinary instance.
-func NewCryptohomeBinary(r CmdRunner) (*CryptohomeBinary, error) {
-	return &CryptohomeBinary{r}, nil
+func NewCryptohomeBinary(r CmdRunner) *CryptohomeBinary {
+	return &CryptohomeBinary{r}
 }
 
 func (c *CryptohomeBinary) call(ctx context.Context, args ...string) ([]byte, error) {

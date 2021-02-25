@@ -20,8 +20,8 @@ type CryptohomePathBinary struct {
 
 // NewCryptohomePathBinary is a factory function that create a
 // CryptohomePathBinary instance.
-func NewCryptohomePathBinary(r CmdRunner) (*CryptohomePathBinary, error) {
-	return &CryptohomePathBinary{r}, nil
+func NewCryptohomePathBinary(r CmdRunner) *CryptohomePathBinary {
+	return &CryptohomePathBinary{r}
 }
 
 func (c *CryptohomePathBinary) call(ctx context.Context, args ...string) ([]byte, error) {
