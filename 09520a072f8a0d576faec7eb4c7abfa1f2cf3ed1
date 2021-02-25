@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8742292_5b521a10",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-25T06:56:14Z",
+      "side": 1,
+      "message": "It\u0027s unfortunate that we have to duplicate the logic to find the browser process...\n\nWhat do you think about moving chromiumos/tast/local/chrome/internal/chromeproc to chromiumos/tast/local/chrome/chromeproc (outside internal) so that we can call GetRootPID here?",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 18
+      },
+      "revId": "09520a072f8a0d576faec7eb4c7abfa1f2cf3ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
