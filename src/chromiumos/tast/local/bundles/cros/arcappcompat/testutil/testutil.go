@@ -369,6 +369,23 @@ func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.Te
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
+// TouchScreenScroll Test verifies app perform scrollForward, scrollBackward successfully without crash or ANR.
+func TouchScreenScroll(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	checkForScrollLayout := d.Object(ui.Scrollable(true), ui.Focusable(true), ui.Enabled(true))
+	if err := checkForScrollLayout.WaitForExists(ctx, DefaultUITimeout); err != nil {
+		s.Log("ScrollLayout doesn't exist. Page is not scrollable and skipping the test: ", err)
+		return
+	}
+	if err := checkForScrollLayout.ScrollForward(ctx, 50); err != nil {
+		s.Fatal("Failed to scrollForward: ", err)
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+	if err := checkForScrollLayout.ScrollBackward(ctx, 5); err != nil {
+		s.Log("Can't scroll anymore: ", err)
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
