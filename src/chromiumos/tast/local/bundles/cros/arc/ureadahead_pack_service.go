@@ -16,12 +16,12 @@ import (
 
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/testing"
@@ -40,7 +40,7 @@ type UreadaheadPackService struct {
 	s *testing.ServiceState
 }
 
-// Generate generates ureadahead pack for requested Chrome login mode, initial or provisioned.
+// Generate generates ureadahead pack for requested Chrome login mode for VM or container.
 func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.UreadaheadPackRequest) (*arcpb.UreadaheadPackResponse, error) {
 	const (
 		ureadaheadDataDir = "/var/lib/ureadahead"
@@ -58,7 +58,6 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 	// Create arguments for running ureadahead.
 	args := []string{
-		"--quiet",
 		"--force-trace",
 	}
 
@@ -69,10 +68,16 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
+	// Check for whether ARCVM is present.
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check whether ARCVM is enabled")
+	}
+
 	var packPath string
 	var arcRoot string
 	// Part of arguments differ in container and arcvm.
-	if request.VmEnabled {
+	if vmEnabled {
 		packPath = filepath.Join(ureadaheadDataDir, arcvmPackName)
 		args = append(args, fmt.Sprintf("--path-prefix-filter=%s", arcvmRoot))
 		args = append(args, fmt.Sprintf("--pack-file=%s", packPath))
@@ -96,12 +101,8 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		return nil, errors.Errorf("found locks for %q: %q", arcRoot, outStr)
 	}
 
-	if _, err := os.Stat(packPath); err == nil {
-		if err := os.Remove(packPath); err != nil {
-			return nil, errors.Wrap(err, "failed to clean up existing pack")
-		}
-	} else if !os.IsNotExist(err) {
-		return nil, errors.Wrap(err, "failed to check if pack exists")
+	if err := os.Remove(packPath); err != nil && !os.IsNotExist(err) {
+		return nil, errors.Wrap(err, "failed to clean up existing pack")
 	}
 
 	if err := ioutil.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0200); err != nil {
@@ -124,6 +125,11 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		return nil, errors.Wrap(err, "failed to start ureadahead tracing")
 	}
 
+	// Shorten the total context by 5 seconds to allow for cleanup.
+	cleanCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	// Wait ureadahead actually started.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		for _, flag := range flags {
@@ -143,8 +149,8 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 	}
 
 	defer func() {
-		if err := stopUreadaheadTracing(ctx, cmd); err != nil {
-			testing.ContextLog(ctx, "Failed to stop ureadahead tracing")
+		if err := stopUreadaheadTracing(cleanCtx, cmd); err != nil {
+			testing.ContextLog(cleanCtx, "Failed to stop ureadahead tracing")
 		}
 	}()
 
@@ -157,11 +163,14 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 	// Try to reset filter on exit.
 	defer func() {
 		if err := ioutil.WriteFile(sysOpenFilterPath, []byte("0"), 0644); err != nil {
-			testing.ContextLog(ctx, "WARNING: Failed to reset sys open filter")
+			testing.ContextLog(cleanCtx, "WARNING: Failed to reset sys open filter")
 		}
 	}()
 
 	chromeArgs := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
+	if vmEnabled {
+		chromeArgs = append(chromeArgs, "--arcvm-ureadahead-mode=generate")
+	}
 
 	opts := []chrome.Option{
 		chrome.ARCSupported(),
@@ -173,16 +182,7 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}
-	defer cr.Close(ctx)
-
-	actualVMEnabled, err := arc.VMEnabled()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to check ARCVM status")
-	}
-
-	if actualVMEnabled != request.VmEnabled {
-		return nil, errors.New("ARCVM enabled mismatch with actual ARC type")
-	}
+	defer cr.Close(cleanCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -190,17 +190,13 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 	}
 	defer tconn.Close()
 
-	// Shorten the total context by 5 seconds to allow for cleanup.
-	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
 	// Opt in.
-	testing.ContextLog(shortCtx, "Waiting for ARC opt-in flow to complete")
-	if err := optin.Perform(shortCtx, cr, tconn); err != nil {
+	testing.ContextLog(ctx, "Waiting for ARC opt-in flow to complete")
+	if err := optin.Perform(ctx, cr, tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to perform opt-in")
 	}
 
-	if err := stopUreadaheadTracing(shortCtx, cmd); err != nil {
+	if err := stopUreadaheadTracing(ctx, cmd); err != nil {
 		return nil, err
 	}
 
@@ -211,8 +207,18 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		return nil, errors.Wrap(err, "failed to ensure pack file exists")
 	}
 
+	var vmPackPath string
+	if vmEnabled {
+		// Pull and obtain ARCVM pack from guest OS.
+		vmPackPath, err = getGuestPack(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to obtain ureadahead pack from ARCVM guest OS")
+		}
+	}
+
 	response := arcpb.UreadaheadPackResponse{
-		PackPath: packPath,
+		PackPath:   packPath,
+		VmPackPath: vmPackPath,
 	}
 	return &response, nil
 }
@@ -235,4 +241,69 @@ func stopUreadaheadTracing(ctx context.Context, cmd *testexec.Cmd) error {
 	}
 
 	return nil
+}
+
+// getGuestPack pulls ureadahead initial pack for requested Chrome login mode from guest OS.
+func getGuestPack(ctx context.Context) (string, error) {
+	const (
+		ureadaheadDataDir = "/var/lib/ureadahead"
+
+		arcvmPackName = "arcvm.var.lib.ureadahead.pack"
+
+		ureadaheadStopTimeout     = 30 * time.Second
+		ureadaheadStopInterval    = 1 * time.Second
+		ureadaheadFileStatTimeout = 10 * time.Second
+	)
+
+	packPath := filepath.Join(ureadaheadDataDir, arcvmPackName)
+
+	if err := os.Remove(packPath); err != nil && !os.IsNotExist(err) {
+		return "", errors.Wrap(err, "failed to clean up existing pack")
+	}
+
+	outdir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return "", errors.New("failed to get name of the output directory")
+	}
+
+	// Connect to ARCVM instance.
+	a, err := arc.New(ctx, outdir)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to connect ARCVM")
+	}
+	defer a.Close(ctx)
+
+	// Confirm ureadahead_generate service has stopped.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if value, err := a.GetProp(ctx, "init.svc.ureadahead_generate"); err != nil {
+			return testing.PollBreak(err)
+		} else if value != "stopped" {
+			return errors.New("ureadahead is not yet stopped")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  ureadaheadStopTimeout,
+		Interval: ureadaheadStopInterval,
+	}); err != nil {
+		return "", errors.Wrap(err, "failed to wait for ureadahead to stop")
+	}
+
+	// Verify ureadahead exited which is triggered by opt-in completion.
+	if value, err := a.GetProp(ctx, "dev.arc.ureadahead.exit"); err != nil || value != "1" {
+		return "", errors.Wrap(err, "failed to verify ureadahead to exited")
+	}
+
+	srcPath := filepath.Join(ureadaheadDataDir, "pack")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := a.FileSize(ctx, srcPath)
+		return err
+	}, &testing.PollOptions{Timeout: ureadaheadFileStatTimeout}); err != nil {
+		return "", errors.Wrap(err, "failed to ensure pack file exists")
+	}
+
+	if err := a.PullFile(ctx, srcPath, packPath); err != nil {
+		return "", errors.Wrapf(err, "failed to pull %s from ARCVM: ", srcPath)
+	}
+
+	return packPath, nil
 }
