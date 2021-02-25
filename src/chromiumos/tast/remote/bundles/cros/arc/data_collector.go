@@ -177,6 +177,11 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// Name of the pack in case of provisioned boot.
 		provisionedPack = "provisioned_pack"
 
+		// Name of the pack in case of initial boot inside VM.
+		// TODO(b/180359699): Once VM ureadahead flow is stable, remove this and
+		// change vm_initial_pack -> initial_pack.
+		vmInitialPack = "vm_initial_pack"
+
 		// Name of gsutil
 		gsUtil = "gsutil"
 
@@ -278,24 +283,14 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			Username:    s.RequiredVar("arc.DataCollector.UreadaheadService_username"),
 			Password:    s.RequiredVar("arc.DataCollector.UreadaheadService_password"),
 			VmEnabled:   param.vmEnabled,
+			OutDir:      s.OutDir(),
 		}
 
 		// Shorten the total context by 5 seconds to allow for cleanup.
 		shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
 
-		// Due to race condition of using ureadahead in various parts of Chrome,
-		// first generation might be incomplete. Just pass it without analyzing.
-		if _, err := service.Generate(shortCtx, &request); err != nil {
-			return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for warm-up pass")
-		}
-
-		// Pass initial boot and capture results.
-		response, err := service.Generate(shortCtx, &request)
-		if err != nil {
-			return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for initial boot pass")
-		}
-
+		// Prepare target directory on host for pack file.
 		targetDir := filepath.Join(dataDir, ureadAheadPack)
 		defer func() {
 			// Cleanup in case of failure. Might be needed for next retry passes.
@@ -307,19 +302,43 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to create %q: %v", targetDir, err)
 		}
 
-		if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, filepath.Join(targetDir, initialPack)); err != nil {
-			s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
-		}
+		if param.vmEnabled {
+			// VM flow will run ureadahead inside guest OS.
+			response, err := service.Generate(shortCtx, &request)
+			if err != nil {
+				return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for initial boot pass for VM")
+			}
 
-		// Now pass provisioned boot and capture results.
-		request.InitialBoot = false
-		response, err = service.Generate(shortCtx, &request)
-		if err != nil {
-			return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for second boot pass: ")
-		}
+			if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, filepath.Join(targetDir, vmInitialPack)); err != nil {
+				s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
+			}
+		} else {
+			// Due to race condition of using ureadahead in various parts of Chrome,
+			// first generation might be incomplete. Just pass it without analyzing.
+			if _, err := service.Generate(shortCtx, &request); err != nil {
+				return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for warm-up pass")
+			}
 
-		if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, filepath.Join(targetDir, provisionedPack)); err != nil {
-			s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
+			// Pass initial boot and capture results.
+			response, err := service.Generate(shortCtx, &request)
+			if err != nil {
+				return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for initial boot pass")
+			}
+
+			if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, filepath.Join(targetDir, initialPack)); err != nil {
+				s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
+			}
+
+			// Now pass provisioned boot and capture results.
+			request.InitialBoot = false
+			response, err = service.Generate(shortCtx, &request)
+			if err != nil {
+				return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for second boot pass: ")
+			}
+
+			if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, filepath.Join(targetDir, provisionedPack)); err != nil {
+				s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
+			}
 		}
 
 		targetTar := filepath.Join(targetDir, v+".tar")
