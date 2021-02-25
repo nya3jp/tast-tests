@@ -5,6 +5,11 @@
 package chrome
 
 import (
+	"math/rand"
+	"strings"
+	"time"
+
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/cryptohome"
 )
@@ -59,6 +64,56 @@ func Auth(user, pass, gaiaID string) Option {
 		cfg.GAIAID = gaiaID
 		return nil
 	}
+}
+
+// AuthPool returns an Option that can be passed to New to configure the login
+// credentials used by Chrome.
+//
+// creds is a string containing multiple credentials separated by newlines:
+//  user1:pass1
+//  user2:pass2
+//  user3:pass3
+//  ...
+//
+// This option randomly picks one user/pass pair. A chosen user is written to
+// logs in chrome.New, as well as available via Chrome.User.
+func AuthPool(creds string) Option {
+	return func(cfg *config.Config) error {
+		cs, err := parseCreds(creds)
+		if err != nil {
+			return err
+		}
+		r := rand.New(rand.NewSource(time.Now().UnixNano()))
+		c := cs[r.Intn(len(cs))]
+		cfg.User = c.user
+		cfg.Pass = c.pass
+		return nil
+	}
+}
+
+type cred struct {
+	user, pass string
+}
+
+func parseCreds(creds string) ([]cred, error) {
+	// Note: Do not include creds in error messages to avoid accidental
+	// credential leaks in logs.
+	var cs []cred
+	for i, line := range strings.Split(creds, "\n") {
+		line = strings.TrimSpace(line)
+		if len(line) == 0 || strings.HasPrefix(line, "#") {
+			continue
+		}
+		ps := strings.SplitN(line, ":", 2)
+		if len(ps) != 2 {
+			return nil, errors.Errorf("failed to parse credential list: line %d: does not contain a colon", i+1)
+		}
+		cs = append(cs, cred{
+			user: ps[0],
+			pass: ps[1],
+		})
+	}
+	return cs, nil
 }
 
 // Contact returns an Option that can be passed to New to configure the contact email used by Chrome for
