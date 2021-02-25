@@ -22,7 +22,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	arcscreenshot "chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -31,6 +30,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -1172,7 +1172,7 @@ func ensureNoBlackBkg(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Test
 		if err != nil {
 			return err
 		}
-		blackPixels := arcscreenshot.CountPixels(img, color.RGBA{0, 0, 0, 255})
+		blackPixels := imgcmp.CountPixels(img, color.RGBA{0, 0, 0, 255})
 		rect := img.Bounds()
 		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
 		percent := blackPixels * 100 / totalPixels

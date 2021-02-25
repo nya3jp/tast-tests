@@ -14,10 +14,11 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/perappdensity"
 	"chromiumos/tast/local/bundles/cros/arc/screen"
-	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/media/imgcmp"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -65,7 +66,7 @@ func baselinePixelCount(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 		return 0, err
 	}
 
-	return screenshot.CountPixels(img, color.Black), nil
+	return imgcmp.CountPixels(img, color.Black), nil
 }
 
 func UniformScaleFactorNonMaximized(ctx context.Context, s *testing.State) {
