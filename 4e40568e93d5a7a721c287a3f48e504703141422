@@ -16,6 +16,52 @@
       "message": "Waiting on crbug/1152158 before this test is ready to check in. As it is now, the CB won\u0027t detect the phone since it needs to re-download its contact certificates after we change the phone\u0027s display name. I verified that the test works fine when we don\u0027t update the device name, though, so it should work fine once crbug/1152158 is resolved.",
       "revId": "4e40568e93d5a7a721c287a3f48e504703141422",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4770671a_6e983b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-25T23:57:13Z",
+      "side": 1,
+      "message": "Rebase and use fixture when this CL is through CQ:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2716970",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 37
+      },
+      "revId": "4e40568e93d5a7a721c287a3f48e504703141422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83c1478_361d96aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-25T23:57:13Z",
+      "side": 1,
+      "message": "Could we init and close this as part of the snippet New() and StopSnippet() instead?",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "4e40568e93d5a7a721c287a3f48e504703141422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
