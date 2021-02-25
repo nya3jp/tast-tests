@@ -33,6 +33,24 @@
       "message": "I recommend adding an import alias.",
       "revId": "eb0eec99edabc8c0bc9939abc3289a51167d9d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f03eca_c67439a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_client_service.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T11:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "972a41df_f58b5754",
+      "revId": "eb0eec99edabc8c0bc9939abc3289a51167d9d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
