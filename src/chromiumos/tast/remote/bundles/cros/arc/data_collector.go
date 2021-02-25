@@ -170,6 +170,11 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// Name of the pack in case of initial boot.
 		initialPack = "initial_pack"
 
+		// Name of the pack in case of initial boot inside VM.
+		// TODO(b/180359699): Once VM ureadahead flow is stable, remove this and
+		// change vm_initial_pack -> initial_pack.
+		vmInitialPack = "vm_initial_pack"
+
 		// Name of gsutil
 		gsUtil = "gsutil"
 
@@ -270,8 +275,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		service := arc.NewUreadaheadPackServiceClient(cl.Conn)
 		// First boot is needed to be initial boot with removing all user data.
 		request := arcpb.UreadaheadPackRequest{
-			VmEnabled: param.vmEnabled,
-			Creds:     s.RequiredVar("ui.gaiaPoolDefault"),
+			Creds: s.RequiredVar("ui.gaiaPoolDefault"),
 		}
 
 		// Shorten the total context by 5 seconds to allow for cleanup.
@@ -297,6 +301,9 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 
 		targetPackPath := filepath.Join(targetDir, initialPack)
+		if param.vmEnabled {
+			targetPackPath = filepath.Join(targetDir, vmInitialPack)
+		}
 		if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, targetPackPath); err != nil {
 			s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
 		}
