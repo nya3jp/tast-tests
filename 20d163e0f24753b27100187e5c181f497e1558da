@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d707e8a_59be5720",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T09:09:59Z",
+      "side": 1,
+      "message": "I create three interfaces (CmdHelper \u0026 AttestationHelper \u0026 FullHelper), so we won\u0027t mix up the usage.",
+      "parentUuid": "e7d754a3_42590b7e",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "20d163e0f24753b27100187e5c181f497e1558da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cece84bb_722d46c3",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8819a3a4_6f20f927",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_attestation_client.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T09:09:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cece84bb_722d46c3",
+      "range": {
+        "startLine": 22,
+        "startChar": 38,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "20d163e0f24753b27100187e5c181f497e1558da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43108320_d3bc8506",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-02-25T06:41:16Z",
       "side": 1,
       "message": "It\u0027s strange to export this general-purpose function from hwsec... do you have a plan to call it from outside this package?",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "20d163e0f24753b27100187e5c181f497e1558da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd49484b_0f226a96",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_attestation_client.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T09:09:59Z",
+      "side": 1,
+      "message": "No, we shouldn\u0027t export it...",
+      "parentUuid": "43108320_d3bc8506",
       "range": {
         "startLine": 26,
         "startChar": 5,
