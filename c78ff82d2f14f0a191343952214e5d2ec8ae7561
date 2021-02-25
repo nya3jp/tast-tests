@@ -33,6 +33,29 @@
       "message": "pwang@ ihf@ PTAL \n\nThank you Fritz.",
       "revId": "c78ff82d2f14f0a191343952214e5d2ec8ae7561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c5390a_8759b467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-25T01:00:14Z",
+      "side": 1,
+      "message": "This is kind of strange to me. I thought optionName should be something standalone (e.g. --sync -hasty) until I see you append the file path at l121. \n\nHow about having something similar to commandLineBuilder as miguel suggests above.",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "c78ff82d2f14f0a191343952214e5d2ec8ae7561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
