@@ -24,6 +24,7 @@ var clamshellTestsForGmail = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
 	{Name: "Clamshell: Physical Keyboard", Fn: testutil.TouchAndTextInputs},
 	{Name: "Clamshell: Keyboard Critical Path", Fn: testutil.KeyboardNavigations},
 }
@@ -33,6 +34,7 @@ var touchviewTestsForGmail = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForGmail},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
 	{Name: "Touchview: Virtual Keyboard", Fn: testutil.TouchAndTextInputs},
 }
 
@@ -90,12 +92,12 @@ func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.Test
 		userNameID              = "com.google.android.gm:id/account_address"
 	)
 
-	// Click on Got It button.
-	GotItButton := d.Object(ui.ClassName(textViewClassName), ui.Text(gotItButtonText))
-	if err := GotItButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("GotIt Button doesn't exist: ", err)
-	} else if err := GotItButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on GotItButton: ", err)
+	// Click on got It button.
+	gotItButton := d.Object(ui.ClassName(textViewClassName), ui.Text(gotItButtonText))
+	if err := gotItButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("gotItButton doesn't exist: ", err)
+	} else if err := gotItButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on gotItButton: ", err)
 	}
 
 	// Check app is logged in with username.
@@ -110,14 +112,6 @@ func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Log("TAKE ME TO GMAIL Button doesn't exist: ", err)
 	} else if err := takeMeToGmailButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on takeMeToGmailButton: ", err)
-	}
-
-	// Click on Got It button.
-	GotItButton = d.Object(ui.TextMatches("(?i)" + gotItButtonText))
-	if err := GotItButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("GotIt Button doesn't exist: ", err)
-	} else if err := GotItButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on GotItButton: ", err)
 	}
 
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
