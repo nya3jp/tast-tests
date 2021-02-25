@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "27fd701d_158bfbff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T07:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04a4dbbd_4503ddb8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "92d9206a_e3fe2675",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 10
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-24T06:57:13Z",
       "side": 1,
       "message": "Could you make it a function? See the comment below.\nAlso, could you unexport it?",
+      "range": {
+        "startLine": 124,
+        "startChar": 17,
+        "endLine": 124,
+        "endChar": 26
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad73a933_e68fdbd9",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T07:20:37Z",
+      "side": 1,
+      "message": "We don\u0027t need this function any more.",
+      "parentUuid": "7fba244f_47490c99",
       "range": {
         "startLine": 124,
         "startChar": 17,
@@ -101,6 +149,30 @@
       "side": 1,
       "message": "btw, I found NewCryptohomeBinary doesn\u0027t have to return an error, because it never returns error. You may want to update it before this CL.",
       "parentUuid": "8c9e7593_d5291be5",
+      "range": {
+        "startLine": 149,
+        "startChar": 16,
+        "endLine": 149,
+        "endChar": 17
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "267a16f4_50315c5e",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T07:20:37Z",
+      "side": 1,
+      "message": "We don\u0027t need this function any more.",
+      "parentUuid": "6bb3943a_e5089b21",
       "range": {
         "startLine": 149,
         "startChar": 16,
@@ -206,6 +278,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad4c817_9b5cae3c",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T07:20:37Z",
+      "side": 1,
+      "message": "I refactored those two things in these two CLs:\n\nunexport functions:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2717613\n\nrename:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2717614\n\nAnd I think we could reuse this bug: b/175510138",
+      "parentUuid": "dc2731c1_8e9a38eb",
+      "range": {
+        "startLine": 965,
+        "startChar": 34,
+        "endLine": 965,
+        "endChar": 49
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c800cf2c_7f3d9376",
@@ -219,6 +315,30 @@
       "writtenOn": "2021-02-24T06:54:08Z",
       "side": 1,
       "message": "Could you comment why without this operation test becomes flaky?",
+      "range": {
+        "startLine": 276,
+        "startChar": 11,
+        "endLine": 276,
+        "endChar": 27
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d27904a_748a8012",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_validity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T07:20:37Z",
+      "side": 1,
+      "message": "The root cause is \"EnsureTPMIsResetAndPowerwash\" isn\u0027t precise to its action.\nI would fix it in another issue: b/181183725",
+      "parentUuid": "c800cf2c_7f3d9376",
       "range": {
         "startLine": 276,
         "startChar": 11,
