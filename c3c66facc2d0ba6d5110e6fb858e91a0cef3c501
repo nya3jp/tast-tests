@@ -16,6 +16,24 @@
       "message": "Let\u0027s add some comment here about why \"arc\" is needed.",
       "revId": "c3c66facc2d0ba6d5110e6fb858e91a0cef3c501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "178120f6_1c027ed6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/characteristics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2021-02-25T03:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b907812_c37a7fc9",
+      "revId": "c3c66facc2d0ba6d5110e6fb858e91a0cef3c501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
