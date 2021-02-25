@@ -27,8 +27,12 @@ var errTimeout = errors.New("timeout")
 // This object corresponds to UiObject in UI Automator API:
 // https://developer.android.com/reference/android/support/test/uiautomator/UiObject
 type Object struct {
-	d *Device
-	s *selector
+	// id is a string ID representing the Android UI Object.
+	// It can be assigned by GetObject() or GetChild() method, and will be used by methods
+	// which require the object ID as one of the parameters.
+	id string
+	d  *Device
+	s  *selector
 }
 
 // rect represents a rectangle, as defined here:
@@ -68,6 +72,19 @@ type objectInfo struct {
 //  btn := d.Object(ui.ID("foo_button"), ui.Text("bar"))
 func (d *Device) Object(opts ...SelectorOption) *Object {
 	return &Object{d: d, s: newSelector(opts)}
+}
+
+// GetObject assigns the UI Object ID to the object so it can be used in subsequent calls
+// to the same object.
+//
+// It is the interface for getUiObject() method of UI Automator server.
+func (o *Object) GetObject(ctx context.Context) error {
+	// Always call JSONRPC to get new id.
+	method := "getUiObject"
+	if err := o.d.call(ctx, method, &o.id, o.s); err != nil {
+		return wrapMethodError(method, o.s, err)
+	}
+	return nil
 }
 
 // WaitForExists waits for a view matching the selector to appear.
@@ -174,7 +191,16 @@ func (o *Object) ScrollTo(ctx context.Context, target *Object) error {
 // This method corresponds to UiObject.getChild().
 // https://developer.android.com/reference/androidx/test/uiautomator/UiObject#getchild
 func (o *Object) GetChild(ctx context.Context, target *Object) error {
-	return o.callSimple(ctx, "getChild", o.s, target.s)
+	if o.id == "" {
+		if err := o.GetObject(ctx); err != nil {
+			return errors.Wrap(err, "failed to get parent object")
+		}
+	}
+	method := "getChild"
+	if err := o.d.call(ctx, method, &target.id, o.id, target.s); err != nil {
+		return wrapMethodError(method, o.s, err)
+	}
+	return nil
 }
 
 // Exists returns if an object exists.
@@ -392,6 +418,14 @@ func (o *Object) callSimple(ctx context.Context, method string, params ...interf
 func (o *Object) info(ctx context.Context) (*objectInfo, error) {
 	const method = "objInfo"
 	var info objectInfo
+	if o.id != "" {
+		// Use object ID to get info.
+		if err := o.d.call(ctx, method, &info, o.id); err != nil {
+			return nil, wrapMethodError(method, o.s, err)
+		}
+		return &info, nil
+	}
+	// Use select to get info.
 	if err := o.d.call(ctx, method, &info, o.s); err != nil {
 		return nil, wrapMethodError(method, o.s, err)
 	}
