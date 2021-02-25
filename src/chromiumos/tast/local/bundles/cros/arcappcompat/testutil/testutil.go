@@ -397,6 +397,19 @@ func TouchAndPlayVideo(ctx context.Context, s *testing.State, tconn *chrome.Test
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
+// TouchScreenScroll Test verifies app perform scrollForward successfully without crash or ANR.
+func TouchScreenScroll(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	checkForScrollLayout := d.Object(ui.Scrollable(true), ui.Focusable(true), ui.Enabled(true))
+	if err := checkForScrollLayout.WaitForExists(ctx, DefaultUITimeout); err != nil {
+		s.Log("ScrollLayout doesn't exist. Page is not scrollable and skipping the test: ", err)
+		return
+	}
+	if err := checkForScrollLayout.ScrollForward(ctx, 50); err != nil {
+		s.Fatal("Failed to scrollForward: ", err)
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
@@ -568,12 +581,25 @@ func processMonkeyOutput(output string) error {
 func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appPkgName string) {
 	const (
 		allowText                   = "ALLOW"
+		agreeText                   = "Agree"
+		continueText                = "Continue"
+		gotItText                   = "Got it"
+		notNowText                  = "NOT NOW"
+		okText                      = "OK"
+		okayText                    = "OKAY"
+		skipText                    = "Skip"
 		whileUsingThisAppButtonText = "WHILE USING THE APP"
 	)
 
 	allowButton := d.Object(ui.TextMatches("(?i)" + allowText))
 	appverifer := d.Object(ui.PackageName(appPkgName))
-	permissionButton := d.Object(ui.ClassName(AndroidButtonClassName))
+	agreeButton := d.Object(ui.TextMatches("(?i)" + agreeText))
+	continueButton := d.Object(ui.TextMatches("(?i)" + continueText))
+	gotItButton := d.Object(ui.TextMatches("(?i)" + gotItText))
+	notNowButton := d.Object(ui.TextMatches("(?i)" + notNowText))
+	okButton := d.Object(ui.TextMatches("(?i)" + okText))
+	okayButton := d.Object(ui.TextMatches("(?i)" + okayText))
+	skipButton := d.Object(ui.TextMatches("(?i)" + skipText))
 	whileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -585,9 +611,33 @@ func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appP
 			s.Log("Click on whileUsingThisApp")
 			whileUsingThisAppButton.Click(ctx)
 		}
-		if err := permissionButton.Exists(ctx); err == nil {
-			s.Log("Click on permissionButton")
-			permissionButton.Click(ctx)
+		if err := notNowButton.Exists(ctx); err == nil {
+			s.Log("Click on notNowButton")
+			notNowButton.Click(ctx)
+		}
+		if err := agreeButton.Exists(ctx); err == nil {
+			s.Log("Click on agreeButton")
+			agreeButton.Click(ctx)
+		}
+		if err := okButton.Exists(ctx); err == nil {
+			s.Log("Click on okButton")
+			okButton.Click(ctx)
+		}
+		if err := okayButton.Exists(ctx); err == nil {
+			s.Log("Click on okayButton")
+			okayButton.Click(ctx)
+		}
+		if err := skipButton.Exists(ctx); err == nil {
+			s.Log("Click on skipButton")
+			skipButton.Click(ctx)
+		}
+		if err := continueButton.Exists(ctx); err == nil {
+			s.Log("Click on continueButton")
+			continueButton.Click(ctx)
+		}
+		if err := gotItButton.Exists(ctx); err == nil {
+			s.Log("Click on gotItButton")
+			gotItButton.Click(ctx)
 		}
 		return appverifer.Exists(ctx)
 	}, &testing.PollOptions{Timeout: LongUITimeout}); err != nil {
