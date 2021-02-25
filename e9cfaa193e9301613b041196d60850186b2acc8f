@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2f39a7_bf285c3e",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-25T07:01:12Z",
+      "side": 1,
+      "message": "Is this something you can do as part of this refactor?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "e9cfaa193e9301613b041196d60850186b2acc8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47a21a5a_4cfe6e90",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-25T07:01:12Z",
+      "side": 1,
+      "message": "Need to update this error to reflect new name you\u0027re stopping",
+      "range": {
+        "startLine": 151,
+        "startChar": 42,
+        "endLine": 151,
+        "endChar": 56
+      },
+      "revId": "e9cfaa193e9301613b041196d60850186b2acc8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
