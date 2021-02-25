@@ -27,7 +27,7 @@ func init() {
 	})
 }
 
-func checkBothUnmounted(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary, cmdRunner hwsec.CmdRunner) error {
+func checkBothUnmounted(ctx context.Context, utility *hwsec.CryptohomeClient, cmdRunner hwsec.CmdRunner) error {
 	// Check with IsMounted().
 	if mounted, err := utility.IsMounted(ctx); err != nil {
 		return errors.Wrap(err, "failed to check is mounted")

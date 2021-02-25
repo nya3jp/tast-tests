@@ -73,7 +73,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 
 	at := hwsec.NewAttestationTestWith(utility, hwsec.DefaultPCA, hwseclocal.NewPCAAgentClient(), hwseclocal.NewLocalVA())
 
-	ac, err := hwseclocal.NewAttestationClient(ctx)
+	ac, err := hwseclocal.NewAttestationDBus(ctx)
 	if err != nil {
 		s.Fatal("Failed to create attestation client: ", err)
 	}

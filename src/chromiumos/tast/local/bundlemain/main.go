@@ -133,9 +133,9 @@ func hwsecGetDACounter(ctx context.Context) (int, error) {
 		return 0, errors.Wrap(err, "failed to create CmdRunner")
 	}
 
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	tpmManagerUtil, err := hwsec.NewTPMManagerClient(cmdRunner)
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to create UtilityTpmManagerBinary")
+		return 0, errors.Wrap(err, "failed to create TPMManagerClient")
 	}
 
 	// Get the TPM dictionary attack info
@@ -152,9 +152,9 @@ func hwsecGetTPMStatus(ctx context.Context) (*hwsec.NonsensitiveStatusInfo, erro
 		return nil, errors.Wrap(err, "failed to create CmdRunner")
 	}
 
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	tpmManagerUtil, err := hwsec.NewTPMManagerClient(cmdRunner)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create UtilityTpmManagerBinary")
+		return nil, errors.Wrap(err, "failed to create TPMManagerClient")
 	}
 
 	// Get the TPM nonsensitive status info
