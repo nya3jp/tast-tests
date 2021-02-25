@@ -48,6 +48,13 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Fixture:           "chromeVideo",
 		}, {
+			Name:              "hevc",
+			Val:               seekTest{filename: "720_hevc.mp4", numSeeks: 25},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"720_hevc.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+		}, {
 			Name:              "vp8",
 			Val:               seekTest{filename: "720_vp8.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
@@ -75,6 +82,13 @@ func init() {
 			ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Fixture:           "chromeVideo",
+		}, {
+			Name:              "switch_hevc",
+			Val:               seekTest{filename: "smpte_bars_resolution_ladder.hevc.mp4", numSeeks: 25},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"smpte_bars_resolution_ladder.hevc.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name:              "switch_vp8",
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.vp8.webm", numSeeks: 25},
@@ -121,6 +135,14 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Timeout:           20 * time.Minute,
 			Fixture:           "chromeVideo",
+		}, {
+			Name:              "stress_hevc",
+			Val:               seekTest{filename: "720_hevc.mp4", numSeeks: 1000},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData:         []string{"720_hevc.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
+			Timeout:           20 * time.Minute,
+			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name:              "h264_alt",
 			Val:               seekTest{filename: "720_h264.mp4", numSeeks: 25},

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generated with https://github.com/google/shaka-packager version 025e10de69-release-->
+<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mpeg:dash:schema:mpd:2011 DASH-MPD.xsd" profiles="urn:mpeg:dash:profile:isoff-on-demand:2011" minBufferTime="PT2S" type="static" mediaPresentationDuration="PT430.02960205078125S">
+  <Period id="0">
+    <AdaptationSet id="0" contentType="video" maxWidth="426" maxHeight="240" maxFrameRate="30000/1001" par="16:9">
+      <Representation id="0" bandwidth="50251" codecs="hev1.1.6.L30.90" mimeType="video/mp4" sar="1:1" width="256" height="144" frameRate="15000/1001">
+        <BaseURL>cars_144_hevc.mp4</BaseURL>
+        <SegmentBase indexRange="3194-3537" timescale="15000">
+          <Initialization range="0-3193"/>
+        </SegmentBase>
+      </Representation>
+      <Representation id="1" bandwidth="143215" codecs="hev1.1.6.L60.90" mimeType="video/mp4" sar="1:1" width="426" height="240" frameRate="30000/1001">
+        <BaseURL>cars_240_hevc.mp4</BaseURL>
+        <SegmentBase indexRange="3195-3850" timescale="30000">
+          <Initialization range="0-3194"/>
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet>
+  </Period>
+</MPD>

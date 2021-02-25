@@ -49,6 +49,14 @@ func init() {
 			Fixture:           "chromeVideoWithGuestLogin",
 			Timeout:           10 * time.Minute,
 		}, {
+			Name:              "hevc_hw",
+			Val:               memCheckParams{fileName: "720_hevc.mp4", sizes: []graphics.Size{{Width: 1280, Height: 720}}, videoType: play.NormalVideo},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData:         []string{"video.html", "720_hevc.mp4"},
+			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeHEVC, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithGuestLoginAndClearHEVCHWDecoding",
+			Timeout:           10 * time.Minute,
+		}, {
 			Name:              "vp8_hw",
 			Val:               memCheckParams{fileName: "720_vp8.webm", sizes: []graphics.Size{{Width: 1280, Height: 720}}, videoType: play.NormalVideo},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -75,10 +83,18 @@ func init() {
 		}, {
 			Name:              "h264_hw_switch",
 			Val:               memCheckParams{fileName: "cars_dash_mp4.mpd", sizes: []graphics.Size{{Width: 256, Height: 144}, {Width: 426, Height: 240}}, videoType: play.MSEVideo},
-			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         append(play.MSEDataFiles(), "cars_dash_mp4.mpd", "cars_144_h264.mp4", "cars_240_h264.mp4"),
 			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeH264, "proprietary_codecs"},
 			Fixture:           "chromeVideoWithGuestLogin",
+			Timeout:           10 * time.Minute,
+		}, {
+			Name:              "hevc_hw_switch",
+			Val:               memCheckParams{fileName: "cars_dash_hevc.mpd", sizes: []graphics.Size{{Width: 256, Height: 144}, {Width: 426, Height: 240}}, videoType: play.MSEVideo},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData:         append(play.MSEDataFiles(), "cars_dash_hevc.mpd", "cars_144_hevc.mp4", "cars_240_hevc.mp4"),
+			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeHEVC, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithGuestLoginAndClearHEVCHWDecoding",
 			Timeout:           10 * time.Minute,
 		}},
 	})

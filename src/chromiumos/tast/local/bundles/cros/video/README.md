@@ -236,6 +236,11 @@ respectively:
     gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=1280,height=800  ! x264enc ! video/x-h264,profile=baseline ! mp4mux ! filesink location=smpte02.mp4;
     gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=1904,height=1008 ! x264enc ! video/x-h264,profile=high     ! mp4mux ! filesink location=smpte03.mp4;
 
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=320,height=240   ! x265enc ! video/x-h265,profile=main ! h265parse ! mp4mux ! filesink location=smpte00.mp4;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=854,height=480   ! x265enc ! video/x-h265,profile=main ! h265parse ! mp4mux ! filesink location=smpte01.mp4;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=1280,height=800  ! x265enc ! video/x-h265,profile=main ! h265parse ! mp4mux ! filesink location=smpte02.mp4;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=1904,height=1008 ! x265enc ! video/x-h265,profile=main ! h265parse ! mp4mux ! filesink location=smpte03.mp4;
+
 The resolutions were chosen to be of different aspect ratios: `4:3`, `16:9`,
 `16:10` and `17:9`, respectively.
 

@@ -330,6 +330,39 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeVideoWithClearHEVCHWDecoding",
+		Desc: "Similar to chromeVideo fixture but also enables hardware accelerated hevc decoding for clear content.",
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeSuppressNotificationsArgs,
+				chrome.ExtraArgs("--enable-clear-hevc-for-testing"),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeVideoWithGuestLoginAndClearHEVCHWDecoding",
+		Desc: "Similar to chromeVideo fixture but forcing login as a guest and enables hardware accelerated hevc decoding for clear content.",
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeSuppressNotificationsArgs,
+				chrome.ExtraArgs("--enable-clear-hevc-for-testing"),
+				chrome.GuestLogin(),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
 
 var chromeVModuleArgs = chrome.ExtraArgs(
