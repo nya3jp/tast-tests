@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "088407f9_e537e4c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-25T00:48:58Z",
+      "side": 1,
+      "message": "I\u0027m sorry about all of the churn, but I believe we have landed on the right solution here. There is now a new API in cros_healthd that shows the status of the service. We can poll this API until the service is ready after restarting the ui job. \n\nIf you wouldn\u0027t mind, could you give it one more look? Thanks for your patience and advice. ",
+      "revId": "dcffd3491b57172c5ea47e18bfec882d6f3f82a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

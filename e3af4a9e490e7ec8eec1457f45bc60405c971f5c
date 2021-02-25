@@ -157,6 +157,24 @@
       "parentUuid": "2aa37a24_0435c176",
       "revId": "e3af4a9e490e7ec8eec1457f45bc60405c971f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be1efcc9_8adbdf1f",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-25T00:48:58Z",
+      "side": 1,
+      "message": "Alright based on a lot of experimentation. I added a new API to cros_healthd to report when it is fully ready to go. This way we can restart the \"ui\" job, and then just want for cros_healthd to be ready.",
+      "parentUuid": "e212c1e0_c3fbbeed",
+      "revId": "e3af4a9e490e7ec8eec1457f45bc60405c971f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
