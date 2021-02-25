@@ -146,7 +146,7 @@ func VerifyCapabilities(ctx context.Context, e ErrorReporter, avtestLabelToCapab
 		c.Name = stripPrefix(c.Name)
 		state, ok := staticCaps[c.Name]
 		if !ok {
-			// This is a sanity check: avtestLabelToCapability is using a capability
+			// This is a smoke check: avtestLabelToCapability is using a capability
 			// name that is unknown to autocaps.
 			e.Errorf("static capabilities don't include %q", c.Name)
 			continue
