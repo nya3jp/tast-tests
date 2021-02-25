@@ -330,6 +330,39 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeVideoWithClearHEVCHWDecoding",
+		Desc: "Similar to chromeVideo fixture but also enables hardware accelerated HEVC decoding for clear content.",
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeSuppressNotificationsArgs,
+				chromeUseClearHEVCHWDecodingArgs,
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeVideoWithGuestLoginAndClearHEVCHWDecoding",
+		Desc: "Similar to chromeVideo fixture but forcing login as a guest and enables hardware accelerated HEVC decoding for clear content.",
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeSuppressNotificationsArgs,
+				chromeUseClearHEVCHWDecodingArgs,
+				chrome.GuestLogin(),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
 
 var chromeVModuleArgs = chrome.ExtraArgs(
@@ -362,3 +395,7 @@ var chromeBypassPermissionsArgs = chrome.ExtraArgs(
 var chromeSuppressNotificationsArgs = chrome.ExtraArgs(
 	// Do not show message center notifications.
 	"--suppress-message-center-popups")
+
+var chromeUseClearHEVCHWDecodingArgs = chrome.ExtraArgs(
+	// Enable playback of unencrypted HEVC content in Chrome
+	"--enable-clear-hevc-for-testing")
