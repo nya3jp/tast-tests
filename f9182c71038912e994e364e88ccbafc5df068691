@@ -22,6 +22,30 @@
       },
       "revId": "f9182c71038912e994e364e88ccbafc5df068691",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9244f31c_e5f212dd",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T12:49:58Z",
+      "side": 1,
+      "message": "Hmmm, the behavior is a little different.\nStart a daemon which doesn\u0027t have D-Bus interface shouldn\u0027t return an error.\nMaybe we should just remove the info.HasDBus check in waitForDBusService.",
+      "parentUuid": "30e4a94e_9dedaa1a",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 18
+      },
+      "revId": "f9182c71038912e994e364e88ccbafc5df068691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
