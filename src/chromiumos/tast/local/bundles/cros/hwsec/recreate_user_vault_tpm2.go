@@ -81,8 +81,8 @@ func RecreateUserVaultTPM2(ctx context.Context, s *testing.State) {
 	s.Log("Phase 2: restarts TPM daemons and mounts user vault")
 
 	// Restarts all TPM daemons to simulate a reboot in the original autotest test.
-	if err := hwseclocal.RestartTPMDaemons(ctx); err != nil {
-		s.Fatal("Failed to restart TPM-related daemons: ", err)
+	if err := helper.DaemonController().RestartTPMDaemons(ctx); err != nil {
+		s.Fatal("Failed to restart TPM-related daemons to simulate reboot: ", err)
 	}
 	if err = cryptohome.CheckService(ctx); err != nil {
 		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
