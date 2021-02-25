@@ -14,7 +14,7 @@ import (
 // This file contains helper functions related to files in a user's home directory.
 
 // GetUserTestFilePath returns the full path of the given file under the given user's home dir.
-func GetUserTestFilePath(ctx context.Context, util *UtilityCryptohomeBinary, user, fileName string) (string, error) {
+func GetUserTestFilePath(ctx context.Context, util *UtilityCryptohomeClient, user, fileName string) (string, error) {
 	userPath, err := util.GetHomeUserPath(ctx, user)
 	if err != nil {
 		return "", err
@@ -25,7 +25,7 @@ func GetUserTestFilePath(ctx context.Context, util *UtilityCryptohomeBinary, use
 
 // WriteUserTestContent writes the given content to the given file into the given user's home dir.
 // The file is created if it doesn't exist.
-func WriteUserTestContent(ctx context.Context, util *UtilityCryptohomeBinary, cmdRunner CmdRunner, user, fileName, content string) error {
+func WriteUserTestContent(ctx context.Context, util *UtilityCryptohomeClient, cmdRunner CmdRunner, user, fileName, content string) error {
 	testFile, err := GetUserTestFilePath(ctx, util, user, fileName)
 	if err != nil {
 		return err
@@ -39,7 +39,7 @@ func WriteUserTestContent(ctx context.Context, util *UtilityCryptohomeBinary, cm
 }
 
 // DoesUserTestFileExist checks and returns if the given test file exists in the given user's home dir.
-func DoesUserTestFileExist(ctx context.Context, util *UtilityCryptohomeBinary, cmdRunner CmdRunner, user, fileName string) (bool, error) {
+func DoesUserTestFileExist(ctx context.Context, util *UtilityCryptohomeClient, cmdRunner CmdRunner, user, fileName string) (bool, error) {
 	testFile, err := GetUserTestFilePath(ctx, util, user, fileName)
 	if err != nil {
 		return false, err
@@ -56,7 +56,7 @@ func DoesUserTestFileExist(ctx context.Context, util *UtilityCryptohomeBinary, c
 
 // ReadUserTestContent reads content from the given file under the given user's home dir.
 // Returns the file contents if the read succeeded or an error if there's anything wrong.
-func ReadUserTestContent(ctx context.Context, util *UtilityCryptohomeBinary, cmdRunner CmdRunner, user, fileName string) ([]byte, error) {
+func ReadUserTestContent(ctx context.Context, util *UtilityCryptohomeClient, cmdRunner CmdRunner, user, fileName string) ([]byte, error) {
 	testFile, err := GetUserTestFilePath(ctx, util, user, fileName)
 	if err != nil {
 		return nil, err

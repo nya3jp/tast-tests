@@ -37,7 +37,7 @@ const (
 )
 
 // waitUntilTpmManagerReady is a helper function to wait until cryptohome initialized.
-func waitUntilTpmManagerReady(ctx context.Context, tpmManagerUtil *hwsec.UtilityTpmManagerBinary) error {
+func waitUntilTpmManagerReady(ctx context.Context, tpmManagerUtil *hwsec.UtilityTPMManagerClient) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		status, err := tpmManagerUtil.Status(ctx)
 		if err != nil {
