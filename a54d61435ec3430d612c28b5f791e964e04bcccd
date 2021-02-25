@@ -16,6 +16,29 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "a54d61435ec3430d612c28b5f791e964e04bcccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "368d9067_160a1dcd",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-25T07:30:13Z",
+      "side": 1,
+      "message": "Could you unexport this struct too?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "a54d61435ec3430d612c28b5f791e964e04bcccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
