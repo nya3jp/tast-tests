@@ -136,6 +136,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f11b2eb_e5b075e0",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T05:15:18Z",
+      "side": 1,
+      "message": "We think we shouldn\u0027t call CryptohomeBinary \u0026 CryptohomePathBinary directly from the test bundles, because we may change the binary output(or change to D-Bus client) in the further, an extra layer could help us abstract the operation.\n\nBTW, this code had been moved into another CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2666737/21/src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+      "parentUuid": "ec3f6a8c_3b74346d",
+      "range": {
+        "startLine": 965,
+        "startChar": 34,
+        "endLine": 965,
+        "endChar": 49
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c800cf2c_7f3d9376",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_validity.go",
         "patchSetId": 10
