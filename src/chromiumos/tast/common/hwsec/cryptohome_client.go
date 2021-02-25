@@ -56,16 +56,12 @@ type CryptohomeClient struct {
 }
 
 // NewCryptohomeClient creates a new CryptohomeClient.
-func NewCryptohomeClient(r CmdRunner) (*CryptohomeClient, error) {
-	binary, err := newCryptohomeBinary(r)
-	if err != nil {
-		return nil, err
+func NewCryptohomeClient(r CmdRunner) *CryptohomeClient {
+	return &CryptohomeClient{
+		binary:               newCryptohomeBinary(r),
+		cryptohomePathBinary: newCryptohomePathBinary(r),
+		attestationAsyncMode: true,
 	}
-	cryptohomePathBinary, err := newCryptohomePathBinary(r)
-	if err != nil {
-		return nil, err
-	}
-	return &CryptohomeClient{binary, cryptohomePathBinary, true}, nil
 }
 
 // GetStatusJSON retrieves the a status string from cryptohome. The status string is in JSON format and holds the various cryptohome related status.

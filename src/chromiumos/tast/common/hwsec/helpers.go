@@ -39,20 +39,11 @@ type Helper struct {
 
 // NewHelper creates a new Helper, with r responsible for CmdRunner.
 func NewHelper(r CmdRunner) (*Helper, error) {
-	cryptohomeUtil, err := NewCryptohomeClient(r)
-	if err != nil {
-		return nil, err
-	}
-	tpmManagerUtil, err := NewTPMManagerClient(r)
-	if err != nil {
-		return nil, err
-	}
-	daemonController := NewDaemonController(r)
 	return &Helper{
 		cmdRunner:        r,
-		cryptohomeUtil:   cryptohomeUtil,
-		tpmManagerUtil:   tpmManagerUtil,
-		daemonController: daemonController,
+		cryptohomeUtil:   NewCryptohomeClient(r),
+		tpmManagerUtil:   NewTPMManagerClient(r),
+		daemonController: NewDaemonController(r),
 	}, nil
 }
 
