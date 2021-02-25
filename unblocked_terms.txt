@@ -31,15 +31,14 @@ black.?list
 # \bshe\b               - clean
 # \bhim\b               - clean
 
-\bher\b
-#    - see crbug/1135044
+# \bher\b               - see crbug/1135044
+# src/chromiumos/tast/local/bundles/cros/video/data/third_party/shaka-player/shaka-player.compiled.debug.js
 
 # \bhis\b               - clean
 # \bhers\b              - clean
 # man.?in.?the.?middle  - clean
 
-master
-#    - see crbug/1122372
+# master                - see crbug/1122372
 
 # \bmitm(\b|\d)         - clean
 
@@ -57,8 +56,8 @@ slave
 # white.?glove          - clean
 # white.?hat            - clean
 
-white.?label
-#    - see crbug/1135050
+# white.?label          - see crbug/1135050
+# src/chromiumos/tast/local/bundles/cros/platform/cros_config.go
 
 white.?list
 #    - see crbug/1101928
