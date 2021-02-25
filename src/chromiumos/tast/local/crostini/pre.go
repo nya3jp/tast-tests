@@ -439,8 +439,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 	}
 	opts = append(opts, chrome.ExtraArgs("--vmodule=crostini*=1"))
-	// crbug.com/1171103
-	opts = append(opts, chrome.ExtraArgs("--vmodule=url_handler_service_provider=1"))
 
 	// To help identify sources of flake, we report disk usage before the test.
 	if err := reportDiskUsage(ctx); err != nil {
