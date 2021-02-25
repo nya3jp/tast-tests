@@ -69,7 +69,7 @@ func (s *Server) Start(ctx context.Context, port int, auth *AuthCredentials) (re
 		return errors.Wrap(err, "failed to create the proxy config file")
 	}
 
-	if err := testexec.CommandContext(ctx, "/sbin/minijail0", "-i", "-e", proxyServerBin, "-c", configFile).Run(); err != nil {
+	if err := testexec.CommandContext(ctx, "/sbin/minijail0", "-e", proxyServerBin, "-c", configFile).Run(); err != nil {
 		return errors.Wrap(err, "failed to start sandboxed proxy server")
 	}
 
