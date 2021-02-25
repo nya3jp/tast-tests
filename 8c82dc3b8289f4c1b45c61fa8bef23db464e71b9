@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d1f741_d8ab90e1",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-25T23:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4475025b_12d369dc",
+      "revId": "8c82dc3b8289f4c1b45c61fa8bef23db464e71b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea5861a6_9e7f1642",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-02-24T19:52:39Z",
       "side": 1,
       "message": "L146 will initialize voltageMV, so you can remove this line.",
+      "revId": "8c82dc3b8289f4c1b45c61fa8bef23db464e71b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "349c5ea6_a77a4076",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-25T23:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea5861a6_9e7f1642",
       "revId": "8c82dc3b8289f4c1b45c61fa8bef23db464e71b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
