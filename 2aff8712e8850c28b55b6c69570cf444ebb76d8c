@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f3190e_d0bc19bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-25T10:30:05Z",
+      "side": 1,
+      "message": "Hi Hugo,\n\nAs discussed offline, an iptables firewall doesn\u0027t work well in out case since different google hostnames map to the same ip :). \n\nPTAL at this CL which implements a firewall using tinyproxy. The nice part is that all the failed requests are logged in sys logs as \"tinyproxy: connection refused on \u003cURL\u003e\".\n\nThanks!",
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
