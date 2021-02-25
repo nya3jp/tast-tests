@@ -140,6 +140,30 @@
       },
       "revId": "1e6545700610e739d8c3f7322f1718554e5255b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a030a302_70f316bd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-25T04:33:59Z",
+      "side": 1,
+      "message": "Any particular reason it is included in this cl instead of the child CL?",
+      "parentUuid": "d7a8f368_8554efa9",
+      "range": {
+        "startLine": 536,
+        "startChar": 19,
+        "endLine": 536,
+        "endChar": 23
+      },
+      "revId": "1e6545700610e739d8c3f7322f1718554e5255b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
