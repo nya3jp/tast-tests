@@ -24,8 +24,10 @@ var clamshellTestsForGmail = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
 	{Name: "Clamshell: Physical Keyboard", Fn: testutil.TouchAndTextInputs},
 	{Name: "Clamshell: Keyboard Critical Path", Fn: testutil.KeyboardNavigations},
+	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
 }
 
 // TouchviewTests are placed here.
@@ -33,7 +35,9 @@ var touchviewTestsForGmail = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForGmail},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
 	{Name: "Touchview: Virtual Keyboard", Fn: testutil.TouchAndTextInputs},
+	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
 }
 
 func init() {
