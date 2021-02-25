@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46136b38_bd922644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-02-25T11:29:09Z",
+      "side": 1,
+      "message": "All these reviewers were added by a spammer (this is also a KI, see b/144587335), and I actually abandoned this CL before everyone was added. I do appreciate your attention regardless, and sorry for the inconvenience!",
+      "parentUuid": "fde1ed89_d0fe9ac4",
+      "revId": "0d6537f9cb1ec1672e5776f38225dde261596782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c8ae7c1_03c9d109",
