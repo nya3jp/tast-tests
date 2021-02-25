@@ -235,3 +235,71 @@ func (h *CmdHelper) GetTPMVersion(ctx context.Context) (string, error) {
 	// Trailing newline char is trimmed.
 	return strings.TrimSpace(string(out)), err
 }
+
+// ensureTPMIsReset ensures the TPM is reset when the function returns nil.
+// Otherwise, returns any encountered error.
+// Optionally removes files from the DUT to simulate a powerwash.
+func (h *Helper) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
+	if err := h.daemonController.WaitForAllDBusServices(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
+	}
+
+	if err := h.tpmClearer.PreClearTPM(ctx); err != nil {
+		return errors.Wrap(err, "failed to pre clear TPM")
+	}
+
+	if err := h.daemonController.TryStop(ctx, UIDaemonInfo); err != nil {
+		return errors.Wrap(err, "failed to try to stop ui")
+	}
+
+	if err := h.daemonController.TryStopDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to try to stop high-level TPM daemons")
+	}
+
+	if err := h.tpmClearer.ClearTPM(ctx); err != nil {
+		return errors.Wrap(err, "failed to clear TPM")
+	}
+
+	if removeFiles {
+		args := append([]string{"-rf", "--"}, SystemStateFiles...)
+		if out, err := h.cmdRunner.Run(ctx, "rm", args...); err != nil {
+			// TODO(b/173189029): Ignore errors on failure. This is a workaround to prevent Permission denied when removing a fscrypt directory.
+			testing.ContextLog(ctx, "Failed to remove files to clear ownership: ", err, string(out))
+		}
+	}
+
+	if err := h.tpmClearer.PostClearTPM(ctx); err != nil {
+		return errors.Wrap(err, "failed to post clear TPM")
+	}
+
+	if err := h.daemonController.EnsureDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to ensure high-level TPM daemons")
+	}
+
+	if err := h.daemonController.Ensure(ctx, UIDaemonInfo); err != nil {
+		return errors.Wrap(err, "failed to ensure ui")
+	}
+
+	testing.ContextLog(ctx, "Waiting for system to be ready after reset TPM ")
+	info, err := h.TPMManagerUtil().GetNonsensitiveStatus(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get TPM status")
+	}
+	if info.IsOwned {
+		// If the TPM is ready, the reset was not successful
+		return errors.New("ineffective reset of TPM")
+	}
+
+	return nil
+}
+
+// EnsureTPMIsReset ensures the TPM is reset when the function returns nil.
+// Otherwise, returns any encountered error.
+func (h *Helper) EnsureTPMIsReset(ctx context.Context) error {
+	return h.ensureTPMIsReset(ctx, false)
+}
+
+// EnsureTPMAndSystemStateAreReset ensures the TPM is reset and simulates a Powerwash.
+func (h *Helper) EnsureTPMAndSystemStateAreReset(ctx context.Context) error {
+	return h.ensureTPMIsReset(ctx, true)
+}
