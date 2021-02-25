@@ -16,6 +16,138 @@
       "message": "Hi Hugo,\n\nAs discussed offline, an iptables firewall doesn\u0027t work well in out case since different google hostnames map to the same ip :). \n\nPTAL at this CL which implements a firewall using tinyproxy. The nice part is that all the failed requests are logged in sys logs as \"tinyproxy: connection refused on \u003cURL\u003e\".\n\nThanks!",
       "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5fd68a4_3bc4eab2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T13:52:07Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ebe76a_cdeb66d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T13:52:07Z",
+      "side": 1,
+      "message": "missing back quotes",
+      "range": {
+        "startLine": 51,
+        "startChar": 70,
+        "endLine": 51,
+        "endChar": 79
+      },
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a1073e_70045f3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T13:52:07Z",
+      "side": 1,
+      "message": "Prefer https://golang.org/pkg/strings/#Join",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23fc5115_1dad74be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T13:52:07Z",
+      "side": 1,
+      "message": "needs error wrapping so that we can identify this was the tinyproxy filter file creation failing",
+      "range": {
+        "startLine": 147,
+        "startChar": 14,
+        "endLine": 147,
+        "endChar": 17
+      },
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f48c3f_38a97355",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T13:52:07Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 152,
+        "startChar": 14,
+        "endLine": 152,
+        "endChar": 17
+      },
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85242f0e_c1db404d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T13:52:07Z",
+      "side": 1,
+      "message": "This should be a package constant.",
+      "range": {
+        "startLine": 154,
+        "startChar": 12,
+        "endLine": 158,
+        "endChar": 1
+      },
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
