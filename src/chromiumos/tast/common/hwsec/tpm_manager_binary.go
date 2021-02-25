@@ -20,8 +20,8 @@ type tpmManagerBinary struct {
 
 // newTPMManagerBinary is a factory function to create a
 // tpmManagerBinary instance.
-func newTPMManagerBinary(r CmdRunner) (*tpmManagerBinary, error) {
-	return &tpmManagerBinary{r}, nil
+func newTPMManagerBinary(r CmdRunner) *tpmManagerBinary {
+	return &tpmManagerBinary{r}
 }
 
 // call is a simple utility that helps to call tpm_manager_client.

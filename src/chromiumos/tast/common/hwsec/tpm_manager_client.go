@@ -34,12 +34,10 @@ type TPMManagerClient struct {
 }
 
 // NewTPMManagerClient creates a new TPMManagerClient.
-func NewTPMManagerClient(r CmdRunner) (*TPMManagerClient, error) {
-	binary, err := newTPMManagerBinary(r)
-	if err != nil {
-		return nil, err
+func NewTPMManagerClient(r CmdRunner) *TPMManagerClient {
+	return &TPMManagerClient{
+		binary: newTPMManagerBinary(r),
 	}
-	return &TPMManagerClient{binary}, nil
 }
 
 // checkCommandAndReturn is a simple helper that checks if binaryMsg returned is successful, and returns the corresponding message and error.
