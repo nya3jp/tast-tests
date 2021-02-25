@@ -7,8 +7,6 @@ package network
 import (
 	"context"
 	"os"
-	"os/exec"
-	"syscall"
 	"time"
 
 	"chromiumos/tast/common/network/ping"
@@ -180,16 +178,8 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to ping %s: no response received", vpn.Xl2tpdServerIPAddress)
 	}
 
-	// IPv6 should be blackholed. Note that we cannot get the exit code from pr.Ping() if we parse the output of ping successfully, so we
-	// also need to check |res.Received| to make sure ping failed.
-	isExitCode := func(err error, code int) bool {
-		var exitErr *exec.ExitError
-		if ok := errors.As(err, &exitErr); ok {
-			return exitErr.Sys().(syscall.WaitStatus).ExitStatus() == code
-		}
-		return false
-	}
-	if res, err := pr.Ping(ctx, "2001:db8::1", ping.Count(1), ping.User("chronos")); isExitCode(err, 0) || res.Received != 0 {
+	// IPv6 should be blackholed.
+	if res, err := pr.Ping(ctx, "2001:db8::1", ping.Count(1), ping.User("chronos")); err == nil && res.Received != 0 {
 		s.Fatal("IPv6 ping should fail: ", err)
 	}
 
