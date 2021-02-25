@@ -22,6 +22,8 @@ message UreadaheadPackRequest {
   string password = 3;
   // Specify which build is requested.
   bool vm_enabled = 4;
+  // Out directory for logcat.
+  string out_dir = 5;
 }
 
 message UreadaheadPackResponse {
