@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba1941b_214f54c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-25T06:04:18Z",
+      "side": 1,
+      "message": "It seems helper is made only for CryptohomeUtil. Could you skip it and directly create CryptohomeUtil? NewUtilityCryptohomeBinary(cmdRunner) may work?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "3bc584b0418886bddc9693bf61b6563aa1edb406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30fc2628_b5f8815a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-25T06:04:18Z",
+      "side": 1,
+      "message": "Could you rename it to chome (abbreviation of cryptohome) or something? utility sounds too general.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 8
+      },
+      "revId": "3bc584b0418886bddc9693bf61b6563aa1edb406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0597a2c7_20efd478",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-25T06:04:18Z",
+      "side": 1,
+      "message": "Could you omit Func?\ngo/go-style/decisions#variable-names",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 13
+      },
+      "revId": "3bc584b0418886bddc9693bf61b6563aa1edb406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e87efc_b69d8066",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-25T06:04:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "3bc584b0418886bddc9693bf61b6563aa1edb406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
