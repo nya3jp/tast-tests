@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3900292f_a2ccbd63",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-25T08:04:09Z",
+      "side": 1,
+      "message": "So, enabling presubmit check even though we still have some unresolved use?\nCould you document what to do if someone needs to work on the files containing it? It looks like external dependency, so \"just not to use the words\" approach wouldn\u0027t work, I guess.",
+      "revId": "0119999a112d4395e88bcb4300951f9528795da8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45100e84_fb2a1762",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-25T08:04:09Z",
+      "side": 1,
+      "message": "Could you document what does this line mean?",
+      "revId": "0119999a112d4395e88bcb4300951f9528795da8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff7137d_7f4b0c0d",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-25T08:04:09Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "0119999a112d4395e88bcb4300951f9528795da8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
