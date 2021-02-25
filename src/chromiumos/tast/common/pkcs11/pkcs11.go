@@ -24,14 +24,14 @@ type Chaps struct {
 	runner hwsec.CmdRunner
 
 	// utility is an interface to cryptohome for calling cryptohome related operations.
-	utility *hwsec.UtilityCryptohomeBinary
+	utility *hwsec.UtilityCryptohomeClient
 
 	// chapsPath is the path to the chaps PKCS#11 module.
 	chapsPath string
 }
 
 // NewChaps creates a new Chaps.
-func NewChaps(ctx context.Context, r hwsec.CmdRunner, u *hwsec.UtilityCryptohomeBinary) (*Chaps, error) {
+func NewChaps(ctx context.Context, r hwsec.CmdRunner, u *hwsec.UtilityCryptohomeClient) (*Chaps, error) {
 	chapsPath, err := locateChapsModule(ctx, r)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to locate the chaps module")

@@ -28,7 +28,7 @@ type Store struct {
 	chaps *pkcs11.Chaps
 
 	// cryptohome is an interface to the cryptohome API in common/hwsec package.
-	cryptohome *hwsec.UtilityCryptohomeBinary
+	cryptohome *hwsec.UtilityCryptohomeClient
 
 	// nextID is the next available object ID.
 	nextID int
@@ -60,7 +60,7 @@ const (
 )
 
 // cleanupVault removes the vault belonging to the test user.
-func cleanupVault(ctx context.Context, cryptohome *hwsec.UtilityCryptohomeBinary) error {
+func cleanupVault(ctx context.Context, cryptohome *hwsec.UtilityCryptohomeClient) error {
 	if _, err := cryptohome.Unmount(ctx, testUsername); err != nil {
 		return errors.Wrap(err, "failed to unmount")
 	}

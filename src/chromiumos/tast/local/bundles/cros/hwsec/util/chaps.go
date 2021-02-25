@@ -118,7 +118,7 @@ func createKeysForTestingForUser(ctx context.Context, username string, pkcs11Uti
 // CreateKeysForTesting creates the set of keys that we want to cover in our tests.
 // scratchpadPath is a temporary location allocated by the test to place materials related to the keys.
 // Note that a user may be created and its vault mounted in this method. Pass in RSAKey or ECKey for keyType.
-func CreateKeysForTesting(ctx context.Context, r hwsec.CmdRunner, pkcs11Util *pkcs11.Chaps, cryptohomeUtil *hwsec.UtilityCryptohomeBinary, scratchpadPath string, keyType KeyType) (keys []*pkcs11.KeyInfo, retErr error) {
+func CreateKeysForTesting(ctx context.Context, r hwsec.CmdRunner, pkcs11Util *pkcs11.Chaps, cryptohomeUtil *hwsec.UtilityCryptohomeClient, scratchpadPath string, keyType KeyType) (keys []*pkcs11.KeyInfo, retErr error) {
 	// Mount the vault of the user, so that we can test user keys as well.
 	if err := cryptohomeUtil.MountVault(ctx, FirstUsername, FirstPassword, PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
 		return keys, errors.Wrap(err, "failed to mount vault")
@@ -178,7 +178,7 @@ func CreateKeysForTesting(ctx context.Context, r hwsec.CmdRunner, pkcs11Util *pk
 
 // CleanupTestingKeys is a helper method that remove the keys created by CreateKeysForTesting() after the test finishes.
 // Usually this is called by defer in the test body.
-func CleanupTestingKeys(ctx context.Context, keys []*pkcs11.KeyInfo, pkcs11Util *pkcs11.Chaps, cryptohomeUtil *hwsec.UtilityCryptohomeBinary) (retErr error) {
+func CleanupTestingKeys(ctx context.Context, keys []*pkcs11.KeyInfo, pkcs11Util *pkcs11.Chaps, cryptohomeUtil *hwsec.UtilityCryptohomeClient) (retErr error) {
 	// Cleanup should remove all keys, only return the last error.
 	for _, k := range keys {
 		if err := pkcs11Util.DestroyKey(ctx, k); err != nil {
@@ -202,7 +202,7 @@ func CleanupTestingKeys(ctx context.Context, keys []*pkcs11.KeyInfo, pkcs11Util 
 // CleanupKeysBeforeTest is a helper method that resets the system back to a state that is consistent for the test. This ensures that no stray remnants of key is left on the system.
 // Note that this doesn't return anything because there's no guarantee if there's anything to remove/cleanup before the test runs.
 // Usually this is called at the start of the test.
-func CleanupKeysBeforeTest(ctx context.Context, pkcs11Util *pkcs11.Chaps, cryptohomeUtil *hwsec.UtilityCryptohomeBinary) {
+func CleanupKeysBeforeTest(ctx context.Context, pkcs11Util *pkcs11.Chaps, cryptohomeUtil *hwsec.UtilityCryptohomeClient) {
 	// We simply remove the user vault to ensure user token is clean.
 	if _, err := cryptohomeUtil.Unmount(ctx, FirstUsername); err != nil {
 		testing.ContextLog(ctx, "Failed to unmount in CleanupKeysBeforeTest: ", err)

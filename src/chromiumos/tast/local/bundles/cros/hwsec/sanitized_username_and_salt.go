@@ -32,7 +32,7 @@ func init() {
 }
 
 // getSanitizedUsernameAndCompare retrieves/computes the sanitized username of the given user with various methods (dbus and libbrillo), compares them to check that they match, and returns the sanitized username if everything is alright.
-func getSanitizedUsernameAndCompare(ctx context.Context, cryptohomeUtil *hwsec.UtilityCryptohomeBinary, username string) (string, error) {
+func getSanitizedUsernameAndCompare(ctx context.Context, cryptohomeUtil *hwsec.UtilityCryptohomeClient, username string) (string, error) {
 	fromBrillo, err := cryptohomeUtil.GetSanitizedUsername(ctx, username, false /* don't use dbus */)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get sanitized username from libbrillo")
@@ -50,7 +50,7 @@ func getSanitizedUsernameAndCompare(ctx context.Context, cryptohomeUtil *hwsec.U
 }
 
 // getSystemSaltAndCompare retrieves the system salt through various methods (dbus and libbrillo), compares them to check that they match, and returns the hex encoded system salt if everything is alright.
-func getSystemSaltAndCompare(ctx context.Context, cryptohomeUtil *hwsec.UtilityCryptohomeBinary) (string, error) {
+func getSystemSaltAndCompare(ctx context.Context, cryptohomeUtil *hwsec.UtilityCryptohomeClient) (string, error) {
 	fromBrillo, err := cryptohomeUtil.GetSystemSalt(ctx, false /* don't use dbus */)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get system salt from libbrillo")
