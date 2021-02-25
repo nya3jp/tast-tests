@@ -12,8 +12,8 @@ import (
 	"chromiumos/tast/remote/hwsec"
 )
 
-// EnsureTPMIsResetAndPowerwash initialises the required helpers and calls HelperRemote.EnsureTPMIsResetAndPowerwash.
-func EnsureTPMIsResetAndPowerwash(ctx context.Context, d *dut.DUT) error {
+// EnsureTPMAndSystemStateAreReset initialises the required helpers and calls HelperRemote.EnsureTPMAndSystemStateAreReset.
+func EnsureTPMAndSystemStateAreReset(ctx context.Context, d *dut.DUT) error {
 	r, err := hwsec.NewCmdRunner(d)
 	if err != nil {
 		return errors.Wrap(err, "CmdRunner creation error")
@@ -24,7 +24,7 @@ func EnsureTPMIsResetAndPowerwash(ctx context.Context, d *dut.DUT) error {
 		return errors.Wrap(err, "helper creation error")
 	}
 
-	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		return errors.Wrap(err, "failed to reset system")
 	}
 
