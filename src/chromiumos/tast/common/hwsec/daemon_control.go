@@ -345,3 +345,20 @@ func (dc *DaemonController) EnsureDaemons(ctx context.Context, daemons []*Daemon
 	}
 	return nil
 }
+
+// RestartTPMDaemons restarts all TPM-related daemons.
+func (dc *DaemonController) RestartTPMDaemons(ctx context.Context) error {
+	if err := dc.TryStopDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to try to stop high-level TPM daemons")
+	}
+	if err := dc.TryStopDaemons(ctx, LowLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to try to stop low-level TPM daemons")
+	}
+	if err := dc.EnsureDaemons(ctx, LowLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to ensure low-level TPM daemons")
+	}
+	if err := dc.EnsureDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to ensure high-level TPM daemons")
+	}
+	return nil
+}
