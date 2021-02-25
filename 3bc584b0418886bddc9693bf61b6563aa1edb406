@@ -49,6 +49,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58b3b462_e48e3d86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-25T06:08:53Z",
+      "side": 1,
+      "message": "Is there a reason we should use this constant here?\nI\u0027m confused because FirstUsername lacks any comment. If it something must be used, could you consider updating the comment of FirstUsername? Same for other constants.",
+      "revId": "3bc584b0418886bddc9693bf61b6563aa1edb406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0597a2c7_20efd478",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
         "patchSetId": 15
