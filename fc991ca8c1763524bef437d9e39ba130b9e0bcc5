@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9efc9719_2fec6b78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-02-25T05:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c41c918f_8a2ae523",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "fc991ca8c1763524bef437d9e39ba130b9e0bcc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d3ebb45_429e2aac",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-19T20:31:57Z",
       "side": 1,
       "message": "Are these files already on the DUT?\nAlso all DUTs are expected to have the same MD5s?",
+      "range": {
+        "startLine": 151,
+        "startChar": 27,
+        "endLine": 151,
+        "endChar": 61
+      },
+      "revId": "fc991ca8c1763524bef437d9e39ba130b9e0bcc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ebcf8ca_aa583925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-02-25T05:33:07Z",
+      "side": 1,
+      "message": "I think so (from being specified in the ExtraData)? Do you mean something else?\n\nAnd I believe so re. MD5, as long as they\u0027re spec-compliant and the spec mandates deterministic MD5s (should be most cases IIUC).",
+      "parentUuid": "6d3ebb45_429e2aac",
       "range": {
         "startLine": 151,
         "startChar": 27,
