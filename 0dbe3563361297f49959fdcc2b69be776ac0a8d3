@@ -160,6 +160,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26eca15e_9f855c69",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-25T05:48:45Z",
+      "side": 1,
+      "message": "If CyrptohomeBinary should never be used from tests, could you unexport it, and consider renaming UtilityCryptohomeBinary to Cryptohome or something? If it\u0027s an abstraction layer, I think we don\u0027t have to add Binary here.",
+      "parentUuid": "9f11b2eb_e5b075e0",
+      "range": {
+        "startLine": 965,
+        "startChar": 34,
+        "endLine": 965,
+        "endChar": 49
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c800cf2c_7f3d9376",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_validity.go",
         "patchSetId": 10
