@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32e31e1_37cd4e00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T12:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ba1941b_214f54c2",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "3bc584b0418886bddc9693bf61b6563aa1edb406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30fc2628_b5f8815a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-25T06:04:18Z",
       "side": 1,
       "message": "Could you rename it to chome (abbreviation of cryptohome) or something? utility sounds too general.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 8
+      },
+      "revId": "3bc584b0418886bddc9693bf61b6563aa1edb406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b354131_1429e4cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T12:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30fc2628_b5f8815a",
       "range": {
         "startLine": 43,
         "startChar": 1,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77acd389_f4ad1708",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T12:40:53Z",
+      "side": 1,
+      "message": "No, We don\u0027t have a strong reason to use this constant.\nIt could be a random string. But should we just hard code another random strings here?",
+      "parentUuid": "58b3b462_e48e3d86",
+      "revId": "3bc584b0418886bddc9693bf61b6563aa1edb406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9baa3f28_3d79ee29",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
         "patchSetId": 15
@@ -77,6 +143,30 @@
       "writtenOn": "2021-02-25T06:13:25Z",
       "side": 1,
       "message": "nit: name seems to be more common.\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#table-driven-tests",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 6
+      },
+      "revId": "3bc584b0418886bddc9693bf61b6563aa1edb406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df127f53_b56d3e81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T12:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9baa3f28_3d79ee29",
       "range": {
         "startLine": 59,
         "startChar": 2,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c930a6_90c9c364",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T12:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0597a2c7_20efd478",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 13
+      },
+      "revId": "3bc584b0418886bddc9693bf61b6563aa1edb406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78e87efc_b69d8066",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-02-25T06:04:18Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "3bc584b0418886bddc9693bf61b6563aa1edb406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cdd5060_5eb3f74c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T12:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78e87efc_b69d8066",
       "range": {
         "startLine": 61,
         "startChar": 2,
