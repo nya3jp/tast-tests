@@ -63,7 +63,7 @@ func loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx context.Context, s *testing.S
 
 	if reboot {
 		// Restarts all TPM daemons to simulate a reboot.
-		if err := hwseclocal.RestartTPMDaemons(ctx); err != nil {
+		if err := helper.DaemonController().RestartTPMDaemons(ctx); err != nil {
 			s.Fatal("Failed to restart TPM-related daemons to simulate reboot: ", err)
 		}
 		if err := cryptohome.CheckService(ctx); err != nil {
