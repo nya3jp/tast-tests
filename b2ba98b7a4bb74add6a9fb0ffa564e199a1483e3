@@ -16,6 +16,24 @@
       "message": "Hey, I noticed you have a bug on you to make a test for suspending arcvm.\n\nHere\u0027s my hacked together code for my experiments, which is probably a good start.\n\nIt wouldn\u0027t take me very long to convert it to a proper Tast Param.",
       "revId": "b2ba98b7a4bb74add6a9fb0ffa564e199a1483e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ab331f_aaf4e54e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2021-02-25T11:58:39Z",
+      "side": 1,
+      "message": "Thanks for putting this together, looks good.\n\nFor a full end to end test, we\u0027ll want to wait for Android suspend readiness as well before calling crosvm suspend. Right now this is done through Chrome: https://source.chromium.org/chromium/chromium/src/+/master:components/arc/power/arc_power_bridge.cc;drc\u003d62c3647e9a8388caac99f7cb9d217a7567376a4a;l\u003d179",
+      "parentUuid": "e756519e_9c048e6f",
+      "revId": "b2ba98b7a4bb74add6a9fb0ffa564e199a1483e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
