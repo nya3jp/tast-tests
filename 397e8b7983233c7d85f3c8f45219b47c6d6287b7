@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ac4e9b_777df0d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-25T20:31:20Z",
+      "side": 1,
+      "message": "pwang@ mcasas@ PTAL for command builder change",
+      "revId": "397e8b7983233c7d85f3c8f45219b47c6d6287b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
