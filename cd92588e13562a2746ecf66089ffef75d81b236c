@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc72ac6f_ed83d437",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-02-25T01:36:28Z",
+      "side": 1,
+      "message": "This is an attempt to stop the test flakes while we diagnose what really happened to Tast spawning vsh commands",
+      "revId": "cd92588e13562a2746ecf66089ffef75d81b236c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
