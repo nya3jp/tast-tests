@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e4a94e_9dedaa1a",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-02-25T12:01:56Z",
+      "side": 1,
+      "message": "You\u0027re gating the dc.waitforDBusService with this call already, no need to replace it. Just return dc.waitforDBusService instead.",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 18
+      },
+      "revId": "f9182c71038912e994e364e88ccbafc5df068691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
