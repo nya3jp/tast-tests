@@ -116,7 +116,7 @@ func LaunchBrowser(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	checkLaunch("http://x-www-browser.test/", "/etc/alternatives/x-www-browser", "http://x-www-browser.test/")
 	checkLaunch("http://browser-env.test/", "sh", "-c", "${BROWSER} http://browser-env.test/")
+	checkLaunch("http://x-www-browser.test/", "/etc/alternatives/x-www-browser", "http://x-www-browser.test/")
 	checkLaunch("http://xdg-open.test/", "xdg-open", "http://xdg-open.test/")
 }
