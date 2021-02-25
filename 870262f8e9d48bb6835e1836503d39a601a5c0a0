@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f05b6c0_8fde1df5",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_path_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T07:20:37Z",
+      "side": 1,
+      "message": "Because we didn\u0027t call CryptohomeBinary \u0026 CryptohomePathBinary directly from the test bundles, an extra abstraction layer would be helpful when we change the client output/interface in the future.",
+      "parentUuid": "5a66b71a_c6087cf7",
+      "range": {
+        "startLine": 27,
+        "startChar": 31,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "870262f8e9d48bb6835e1836503d39a601a5c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd368ec3_f31d8e86",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-24T12:13:43Z",
       "side": 1,
       "message": "It uses a \u003c operator, or \u003cusername\u003e was intended here?",
+      "range": {
+        "startLine": 36,
+        "startChar": 44,
+        "endLine": 36,
+        "endChar": 53
+      },
+      "revId": "870262f8e9d48bb6835e1836503d39a601a5c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf63bab_b142f06c",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_path_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T07:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd368ec3_f31d8e86",
       "range": {
         "startLine": 36,
         "startChar": 44,
