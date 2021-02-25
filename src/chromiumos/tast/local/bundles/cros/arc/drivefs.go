@@ -76,7 +76,8 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	}
 	drivefsRoot := path.Join(mountPath, "root")
 
-	dir := storage.Directory{Path: drivefsRoot, Name: "Google Drive", Title: "Files - My Drive", CheckFileType: true}
+	dir := storage.Directory{Path: drivefsRoot, Name: "Google Drive", Title: "Files - My Drive",
+		CreateTestFile: true, CheckFileType: true}
 
 	storage.TestOpenWithAndroidApp(ctx, s, a, cr, dir, expectations)
 }
