@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074339e4_4f9f4ab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-02-25T05:31:16Z",
+      "side": 1,
+      "message": "This is very similar to testFiles used by decode_compliance.go. I can move this out to a util package under video/, but I\u0027m not sure how much other shared functionality will be useful to move into that package.",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 17
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ad9d4a_1c32d5b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-02-25T05:31:16Z",
+      "side": 1,
+      "message": "We talked a bit about propagating multiple failures --- currently we\u0027re surfacing all failed frames of the first failing video. If we\u0027re not surfacing all failed frames of all failing videos, might it be preferable to surface the first failed frame of all failing videos instead?",
+      "range": {
+        "startLine": 494,
+        "startChar": 45,
+        "endLine": 494,
+        "endChar": 71
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
