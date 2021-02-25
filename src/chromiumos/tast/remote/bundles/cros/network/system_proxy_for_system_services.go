@@ -43,7 +43,7 @@ func init() {
 
 func SystemProxyForSystemServices(ctx context.Context, s *testing.State) {
 	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
 			s.Fatal("Failed to reset TPM: ", err)
 		}
 	}(ctx)
@@ -51,7 +51,7 @@ func SystemProxyForSystemServices(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
 	defer cancel()
 
-	if err := policyutil.EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
+	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
