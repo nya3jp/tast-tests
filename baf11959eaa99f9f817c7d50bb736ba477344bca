@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7490cab6_4702d657",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T04:41:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b809ee92_32332898",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "baf11959eaa99f9f817c7d50bb736ba477344bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c78121ac_8e0d15c8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-24T22:43:02Z",
       "side": 1,
       "message": "nit: success\n\nor \"Mount unexpectedly succeeded\"",
+      "range": {
+        "startLine": 163,
+        "startChar": 30,
+        "endLine": 163,
+        "endChar": 39
+      },
+      "revId": "baf11959eaa99f9f817c7d50bb736ba477344bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3378814_a702d9df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T04:41:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c78121ac_8e0d15c8",
       "range": {
         "startLine": 163,
         "startChar": 30,
@@ -83,6 +131,30 @@
       "writtenOn": "2021-02-24T22:43:02Z",
       "side": 1,
       "message": "nit: if it succeeds",
+      "range": {
+        "startLine": 14,
+        "startChar": 70,
+        "endLine": 14,
+        "endChar": 85
+      },
+      "revId": "baf11959eaa99f9f817c7d50bb736ba477344bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c30188_19573418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cryptohome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T04:41:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3fcc3fa_156d031d",
       "range": {
         "startLine": 14,
         "startChar": 70,
