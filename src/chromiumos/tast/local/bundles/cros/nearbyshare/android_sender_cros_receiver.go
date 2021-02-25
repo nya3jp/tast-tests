@@ -30,9 +30,7 @@ func init() {
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
 		// TODO(crbug/1127165) Move to fixture when data is available.
-		Data: []string{nearbysnippet.ZipName},
-		// This var can be used when running locally on non-rooted devices. For non-rooted devices, you need to
-		// have already enabled bluetooth, extended the screen timeout, and overridden the GMS Core flags.
+		Data:    []string{nearbysnippet.ZipName, nearbysnippet.AccountUtilZip},
 		Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
 		Params: []testing.Param{
 			{
