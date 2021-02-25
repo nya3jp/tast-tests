@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79592933_f51c10f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-25T07:54:33Z",
+      "side": 1,
+      "message": "The direction LG.\n# Unsetting CR+2 for the new PS temporarily, so that next PS update will notify me nicely.",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d751f30_a81b8985",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-25T07:54:33Z",
+      "side": 1,
+      "message": "could you make this package private, as you do not need this in another place?",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9982f4ca_06011ac8",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-25T07:54:33Z",
+      "side": 1,
+      "message": "Do you need to run this all the time?\nI think it\u0027s just fine to call this a the beginning of WaitForMojoBootstrap, and inside poll, running cros-health-tool is enough?",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd80ada9_d93c748c",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-25T07:54:33Z",
+      "side": 1,
+      "message": "ditto for package private.",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b2c39d_010a7662",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-25T07:54:33Z",
+      "side": 1,
+      "message": "For better encapsulation, let\u0027s move this into RunStatus.\nOr, instead, you can move CommandContext into this function.",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "269f1bbe_cf1ce4ac",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-25T07:54:33Z",
+      "side": 1,
+      "message": "so this output means the unexpected error case, right?\nThen, could you wrap by testing.PollBreak() to terminate the polling immediately?",
+      "range": {
+        "startLine": 43,
+        "startChar": 10,
+        "endLine": 43,
+        "endChar": 57
+      },
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e49502d_2e12ce42",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-25T07:54:33Z",
+      "side": 1,
+      "message": "you do not need a map, but you can use an array, instead.",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5b7f6c_3b8b536d",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-25T07:54:33Z",
+      "side": 1,
+      "message": "optional: if the expected output is fixed, you can just compare the output with the string literal.",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 3
+      },
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8704fc34_78725c7a",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-25T07:54:33Z",
+      "side": 1,
+      "message": "Could you check \"key\", too, for better robustness?",
+      "revId": "d32ba8c6763cde0401b8b5c92eaaf743d81dd333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
