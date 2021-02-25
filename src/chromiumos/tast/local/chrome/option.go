@@ -26,28 +26,38 @@ type Option = config.Option
 // By default web app auto-install is disabled to reduce network traffic in test environment.
 // See https://crbug.com/1076660 for more details.
 func EnableWebAppInstall() Option {
-	return func(cfg *config.Config) { cfg.InstallWebApp = true }
+	return func(cfg *config.Config) error {
+		cfg.InstallWebApp = true
+		return nil
+	}
 }
 
 // EnableLoginVerboseLogs returns an Option that enables verbose logging for some login-related files.
 func EnableLoginVerboseLogs() Option {
-	return func(cfg *config.Config) { cfg.EnableLoginVerboseLogs = true }
+	return func(cfg *config.Config) error {
+		cfg.EnableLoginVerboseLogs = true
+		return nil
+	}
 }
 
 // VKEnabled returns an Option that force enable virtual keyboard.
 // VKEnabled option appends "--enable-virtual-keyboard" to chrome initialization and also checks VK connection after user login.
 // Note: This option can not be used by ARC tests as some boards block VK background from presence.
 func VKEnabled() Option {
-	return func(cfg *config.Config) { cfg.VKEnabled = true }
+	return func(cfg *config.Config) error {
+		cfg.VKEnabled = true
+		return nil
+	}
 }
 
 // Auth returns an Option that can be passed to New to configure the login credentials used by Chrome.
 // Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
 func Auth(user, pass, gaiaID string) Option {
-	return func(cfg *config.Config) {
+	return func(cfg *config.Config) error {
 		cfg.User = user
 		cfg.Pass = pass
 		cfg.GAIAID = gaiaID
+		return nil
 	}
 }
 
@@ -55,8 +65,9 @@ func Auth(user, pass, gaiaID string) Option {
 // cross account challenge (go/ota-security). Please do not check in real credentials to public repositories
 // when using this in conjunction with GAIALogin.
 func Contact(contact string) Option {
-	return func(cfg *config.Config) {
+	return func(cfg *config.Config) error {
 		cfg.Contact = contact
+		return nil
 	}
 }
 
@@ -64,9 +75,10 @@ func Contact(contact string) Option {
 // If the GAIA account specified by Auth is a supervised child user, this credential is used to go through the unicorn login flow.
 // Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
 func ParentAuth(parentUser, parentPass string) Option {
-	return func(cfg *config.Config) {
+	return func(cfg *config.Config) error {
 		cfg.ParentUser = parentUser
 		cfg.ParentPass = parentPass
+		return nil
 	}
 }
 
@@ -74,40 +86,54 @@ func ParentAuth(parentUser, parentPass string) Option {
 // files under /home/chronos and the user's existing cryptohome (if any) instead of
 // wiping them before logging in.
 func KeepState() Option {
-	return func(cfg *config.Config) { cfg.KeepState = true }
+	return func(cfg *config.Config) error {
+		cfg.KeepState = true
+		return nil
+	}
 }
 
 // DeferLogin returns an option that instructs chrome.New to return before logging into a session.
 // After successful return of chrome.New, you can call ContinueLogin to continue login.
 func DeferLogin() Option {
-	return func(cfg *config.Config) { cfg.DeferLogin = true }
+	return func(cfg *config.Config) error {
+		cfg.DeferLogin = true
+		return nil
+	}
 }
 
 // GAIALogin returns an Option that can be passed to New to perform a real GAIA-based login rather
 // than the default fake login.
 func GAIALogin() Option {
-	return func(cfg *config.Config) { cfg.LoginMode = config.GAIALogin }
+	return func(cfg *config.Config) error {
+		cfg.LoginMode = config.GAIALogin
+		return nil
+	}
 }
 
 // NoLogin returns an Option that can be passed to New to avoid logging in.
 // Chrome is still restarted with testing-friendly behavior.
 func NoLogin() Option {
-	return func(cfg *config.Config) { cfg.LoginMode = config.NoLogin }
+	return func(cfg *config.Config) error {
+		cfg.LoginMode = config.NoLogin
+		return nil
+	}
 }
 
 // GuestLogin returns an Option that can be passed to New to log in as guest
 // user.
 func GuestLogin() Option {
-	return func(cfg *config.Config) {
+	return func(cfg *config.Config) error {
 		cfg.LoginMode = config.GuestLogin
 		cfg.User = cryptohome.GuestUser
+		return nil
 	}
 }
 
 // DontSkipOOBEAfterLogin returns an Option that can be passed to stay in OOBE after user login.
 func DontSkipOOBEAfterLogin() Option {
-	return func(cfg *config.Config) {
+	return func(cfg *config.Config) error {
 		cfg.SkipOOBEAfterLogin = false
+		return nil
 	}
 }
 
@@ -115,8 +141,9 @@ func DontSkipOOBEAfterLogin() Option {
 // the locale used in the OOBE screen and the user sessions. region is a
 // two-letter code such as "us", "fr", or "ja".
 func Region(region string) Option {
-	return func(cfg *config.Config) {
+	return func(cfg *config.Config) error {
 		cfg.Region = region
+		return nil
 	}
 }
 
@@ -124,9 +151,10 @@ func Region(region string) Option {
 // policy fetch upon login. By default, policies are not fetched.
 // The default Device Management service is used.
 func ProdPolicy() Option {
-	return func(cfg *config.Config) {
+	return func(cfg *config.Config) error {
 		cfg.PolicyEnabled = true
 		cfg.DMSAddr = ""
+		return nil
 	}
 }
 
@@ -134,41 +162,57 @@ func ProdPolicy() Option {
 // policies from the policy server at the given url. By default policies are not
 // fetched.
 func DMSPolicy(url string) Option {
-	return func(cfg *config.Config) {
+	return func(cfg *config.Config) error {
 		cfg.PolicyEnabled = true
 		cfg.DMSAddr = url
+		return nil
 	}
 }
 
 // EnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
 // Enrollment
 func EnterpriseEnroll() Option {
-	return func(cfg *config.Config) { cfg.Enroll = true }
+	return func(cfg *config.Config) error {
+		cfg.Enroll = true
+		return nil
+	}
 }
 
 // ARCDisabled returns an Option that can be passed to New to disable ARC.
 func ARCDisabled() Option {
-	return func(cfg *config.Config) { cfg.ARCMode = config.ARCDisabled }
+	return func(cfg *config.Config) error {
+		cfg.ARCMode = config.ARCDisabled
+		return nil
+	}
 }
 
 // ARCEnabled returns an Option that can be passed to New to enable ARC (without Play Store)
 // for the user session with mock GAIA account.
 func ARCEnabled() Option {
-	return func(cfg *config.Config) { cfg.ARCMode = config.ARCEnabled }
+	return func(cfg *config.Config) error {
+		cfg.ARCMode = config.ARCEnabled
+		return nil
+	}
 }
 
 // ARCSupported returns an Option that can be passed to New to allow to enable ARC with Play Store gaia opt-in for the user
 // session with real GAIA account.
 // In this case ARC is not launched by default and is required to be launched by user policy or from UI.
 func ARCSupported() Option {
-	return func(cfg *config.Config) { cfg.ARCMode = config.ARCSupported }
+	return func(cfg *config.Config) error {
+		cfg.ARCMode = config.ARCSupported
+		return nil
+	}
 }
 
 // RestrictARCCPU returns an Option that can be passed to New which controls whether
 // to let Chrome use CGroups to limit the CPU time of ARC when in the background.
 // Most ARC-related tests should not pass this option.
 func RestrictARCCPU() Option {
-	return func(cfg *config.Config) { cfg.RestrictARCCPU = true }
+	return func(cfg *config.Config) error {
+		cfg.RestrictARCCPU = true
+		return nil
+	}
 }
 
 // CrashNormalMode tells the crash handling system to act like it would on a
@@ -176,27 +220,42 @@ func RestrictARCCPU() Option {
 // will skip calling crash_reporter and write any dumps into /home/chronos/crash directly
 // from breakpad. This option restores the normal behavior of calling crash_reporter.
 func CrashNormalMode() Option {
-	return func(cfg *config.Config) { cfg.BreakpadTestMode = false }
+	return func(cfg *config.Config) error {
+		cfg.BreakpadTestMode = false
+		return nil
+	}
 }
 
 // ExtraArgs returns an Option that can be passed to New to append additional arguments to Chrome's command line.
 func ExtraArgs(args ...string) Option {
-	return func(cfg *config.Config) { cfg.ExtraArgs = append(cfg.ExtraArgs, args...) }
+	return func(cfg *config.Config) error {
+		cfg.ExtraArgs = append(cfg.ExtraArgs, args...)
+		return nil
+	}
 }
 
 // LacrosExtraArgs returns an Option that can be passed to New to append additional arguments to Lacros Chrome's command line.
 func LacrosExtraArgs(args ...string) Option {
-	return func(cfg *config.Config) { cfg.LacrosExtraArgs = append(cfg.LacrosExtraArgs, args...) }
+	return func(cfg *config.Config) error {
+		cfg.LacrosExtraArgs = append(cfg.LacrosExtraArgs, args...)
+		return nil
+	}
 }
 
 // EnableFeatures returns an Option that can be passed to New to enable specific features in Chrome.
 func EnableFeatures(features ...string) Option {
-	return func(cfg *config.Config) { cfg.EnableFeatures = append(cfg.EnableFeatures, features...) }
+	return func(cfg *config.Config) error {
+		cfg.EnableFeatures = append(cfg.EnableFeatures, features...)
+		return nil
+	}
 }
 
 // DisableFeatures returns an Option that can be passed to New to disable specific features in Chrome.
 func DisableFeatures(features ...string) Option {
-	return func(cfg *config.Config) { cfg.DisableFeatures = append(cfg.DisableFeatures, features...) }
+	return func(cfg *config.Config) error {
+		cfg.DisableFeatures = append(cfg.DisableFeatures, features...)
+		return nil
+	}
 }
 
 // UnpackedExtension returns an Option that can be passed to New to make Chrome load an unpacked
@@ -204,13 +263,19 @@ func DisableFeatures(features ...string) Option {
 // The specified directory is copied to a different location before loading, so modifications to
 // the directory do not take effect after starting Chrome.
 func UnpackedExtension(dir string) Option {
-	return func(cfg *config.Config) { cfg.ExtraExtDirs = append(cfg.ExtraExtDirs, dir) }
+	return func(cfg *config.Config) error {
+		cfg.ExtraExtDirs = append(cfg.ExtraExtDirs, dir)
+		return nil
+	}
 }
 
 // LoadSigninProfileExtension loads the test extension which is allowed to run in the signin profile context.
 // Private manifest key should be passed (see ui.SigninProfileExtension for details).
 func LoadSigninProfileExtension(key string) Option {
-	return func(cfg *config.Config) { cfg.SigninExtKey = key }
+	return func(cfg *config.Config) error {
+		cfg.SigninExtKey = key
+		return nil
+	}
 }
 
 // TryReuseSession returns an Option that can be passed to New to make Chrome to reuse the existing
@@ -219,5 +284,8 @@ func LoadSigninProfileExtension(key string) Option {
 // For noLogin mode and deferLogin option, session will not be re-used.
 // If the existing session cannot be reused, a new Chrome session will be restarted.
 func TryReuseSession() Option {
-	return func(cfg *config.Config) { cfg.TryReuseSession = true }
+	return func(cfg *config.Config) error {
+		cfg.TryReuseSession = true
+		return nil
+	}
 }

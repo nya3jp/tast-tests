@@ -102,7 +102,7 @@ type Config struct {
 // Option is a self-referential function can be used to configure Chrome.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
-type Option func(cfg *Config)
+type Option func(cfg *Config) error
 
 // NewConfig constructs Config from a list of options given to chrome.New.
 func NewConfig(opts []Option) (*Config, error) {
@@ -122,7 +122,9 @@ func NewConfig(opts []Option) (*Config, error) {
 		BreakpadTestMode:       true,
 	}
 	for _, opt := range opts {
-		opt(cfg)
+		if err := opt(cfg); err != nil {
+			return nil, err
+		}
 	}
 
 	// TODO(rrsilva, crbug.com/1109176) - Disable login-related verbose logging
