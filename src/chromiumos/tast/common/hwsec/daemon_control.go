@@ -213,7 +213,7 @@ func (dc *DaemonController) WaitForAllDBusServices(ctx context.Context) error {
 }
 
 func (dc *DaemonController) waitForDBusService(ctx context.Context, info *DaemonInfo) error {
-	// Create a 30 seconds timeout to wait for D-Bus service
+	// Create a 30 seconds timeout to wait for D-Bus service.
 	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 
@@ -347,6 +347,23 @@ func (dc *DaemonController) EnsureDaemons(ctx context.Context, daemons []*Daemon
 		if err := dc.Ensure(ctx, info); err != nil {
 			return errors.Wrapf(err, "failed to ensure %s", info.Name)
 		}
+	}
+	return nil
+}
+
+// RestartTPMDaemons restarts all TPM-related daemons.
+func (dc *DaemonController) RestartTPMDaemons(ctx context.Context) error {
+	if err := dc.TryStopDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to try to stop high-level TPM daemons")
+	}
+	if err := dc.TryStopDaemons(ctx, LowLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to try to stop low-level TPM daemons")
+	}
+	if err := dc.EnsureDaemons(ctx, LowLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to ensure low-level TPM daemons")
+	}
+	if err := dc.EnsureDaemons(ctx, HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to ensure high-level TPM daemons")
 	}
 	return nil
 }
