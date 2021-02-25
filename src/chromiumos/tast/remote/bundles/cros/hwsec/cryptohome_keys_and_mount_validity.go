@@ -33,7 +33,7 @@ func init() {
 
 // unmountTestVault is a helper function that unmount the test vault. It expects
 // the test vault to be mounted when it is called.
-func unmountTestVault(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) error {
+func unmountTestVault(ctx context.Context, utility *hwsec.UtilityCryptohomeClient) error {
 	if _, err := utility.Unmount(ctx, util.FirstUsername); err != nil {
 		return errors.Wrap(err, "failed to unmount vault")
 	}
@@ -46,7 +46,7 @@ func unmountTestVault(ctx context.Context, utility *hwsec.UtilityCryptohomeBinar
 // checkMountState is a helper function that returns an error if the result
 // from IsMounted() is not equal to expected, or if we've problem calling
 // IsMounted().
-func checkMountState(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary, expected bool) error {
+func checkMountState(ctx context.Context, utility *hwsec.UtilityCryptohomeClient, expected bool) error {
 	actuallyMounted, err := utility.IsMounted(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to call IsMounted()")
@@ -59,7 +59,7 @@ func checkMountState(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary
 
 // checkKeysLabels checks if the list of key labels matches target and returns
 // an error if it doesn't.
-func checkKeysLabels(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary, target []string) error {
+func checkKeysLabels(ctx context.Context, utility *hwsec.UtilityCryptohomeClient, target []string) error {
 	labels, err := utility.ListVaultKeys(ctx, util.FirstUsername)
 	if err != nil {
 		return errors.Wrap(err, "failed to list keys")
@@ -78,7 +78,7 @@ func checkKeysLabels(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary
 }
 
 // testCheckKeyEx tests that CheckKeyEx() works as expected.
-func testCheckKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary, username, label, correctPassword, incorrectPassword string) error {
+func testCheckKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeClient, username, label, correctPassword, incorrectPassword string) error {
 	// CheckKeyEx should work with the correct password.
 	result, err := utility.CheckVault(ctx, username, correctPassword, label)
 	if err != nil {
@@ -101,7 +101,7 @@ func testCheckKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary,
 }
 
 // testListKeysEx tests that ListKeysEx() in cryptohome's API works as expected.
-func testListKeysEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) error {
+func testListKeysEx(ctx context.Context, utility *hwsec.UtilityCryptohomeClient) error {
 	// ListKeysEx should show the keys that are in stock.
 	if err := checkKeysLabels(ctx, utility, []string{util.PasswordLabel}); err != nil {
 		return errors.Wrap(err, "list of keys is incorrect")
@@ -111,7 +111,7 @@ func testListKeysEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary)
 }
 
 // testAddRemoveKeyEx tests that AddKeyEx() and RemoveKeyEx() work as expected.
-func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) error {
+func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeClient) error {
 	// AddKeyEx shouldn't work if password is incorrect.
 	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.IncorrectPassword, util.PasswordLabel, util.FirstPin, util.PinLabel, false); err == nil {
 		return errors.New("add key succeeded when it shouldn't")
@@ -182,7 +182,7 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBin
 
 // testMigrateKeyEx tests that MigrateKeyEx() works correctly.
 // Note: MigrateKeyEx() changes the vault password.
-func testMigrateKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) error {
+func testMigrateKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeClient) error {
 	// MigrateKeyEx should work, and check if both new and old password behave as expected.
 	if err := utility.ChangeVaultPassword(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, util.FirstChangedPassword); err != nil {
 		return errors.Wrap(err, "failed to change vault password")
@@ -230,7 +230,7 @@ func testMigrateKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinar
 }
 
 // checkUserVault checks that the vault/keys related API works correctly.
-func checkUserVault(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) error {
+func checkUserVault(ctx context.Context, utility *hwsec.UtilityCryptohomeClient) error {
 	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.PasswordLabel, util.FirstPassword, util.IncorrectPassword); err != nil {
 		return errors.Wrap(err, "test on CheckKeyEx failed")
 	}

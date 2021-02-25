@@ -36,7 +36,7 @@ func init() {
 
 // setUpVaultAndUserAsOwner will setup a user and its vault, and setup the policy to make the user the owner of the device.
 // Caller of this assumes the responsibility of umounting/cleaning up the vault regardless of whether the function returned an error.
-func setUpVaultAndUserAsOwner(ctx context.Context, certpath, username, password, label string, utility *hwsec.UtilityCryptohomeBinary) error {
+func setUpVaultAndUserAsOwner(ctx context.Context, certpath, username, password, label string, utility *hwsec.UtilityCryptohomeClient) error {
 	// We need the policy/ownership related stuff because we want to set the owner, so that we can create ephemeral mount.
 	privKey, err := session.ExtractPrivKey(certpath)
 	if err != nil {
@@ -96,7 +96,7 @@ func setUpVaultAndUserAsOwner(ctx context.Context, certpath, username, password,
 
 // setUpEphemeralVaultAndUser will setup the vault and user of the specified username, password and label, as an ephemeral user/mount.
 // Caller of this assumes the responsibility of umounting/cleaning up the vault regardless of whether the function returned an error.
-func setUpEphemeralVaultAndUser(ctx context.Context, username, password, label string, utility *hwsec.UtilityCryptohomeBinary) error {
+func setUpEphemeralVaultAndUser(ctx context.Context, username, password, label string, utility *hwsec.UtilityCryptohomeClient) error {
 	config := hwsec.NewVaultConfig()
 	config.Ephemeral = true
 	if err := utility.MountVault(ctx, username, password, label, true, config); err != nil {
@@ -108,7 +108,7 @@ func setUpEphemeralVaultAndUser(ctx context.Context, username, password, label s
 
 // setUpEcryptfsVaultAndUser will setup the vault and user of the specified username, password and label, with the vault backed by ecryptfs.
 // Caller of this assumes the responsibility of umounting/cleaning up the vault regardless of whether the function returned an error.
-func setUpEcryptfsVaultAndUser(ctx context.Context, username, password, label string, utility *hwsec.UtilityCryptohomeBinary) error {
+func setUpEcryptfsVaultAndUser(ctx context.Context, username, password, label string, utility *hwsec.UtilityCryptohomeClient) error {
 	config := hwsec.NewVaultConfig()
 	config.Ecryptfs = true
 	if err := utility.MountVault(ctx, username, password, label, true, config); err != nil {
@@ -140,7 +140,7 @@ func createSparseFile(path string, size int64) error {
 // If testSparseFile is true, then it'll test the sparse file test case in addition to what's normally tested, otherwise, spare file case is not tested.
 // Note that the account's home directory should be empty or nearly empty before calling this.
 // This method doesn't return anything, it'll just output the error or abort the test.
-func testAccountUsage(ctx context.Context, s *testing.State, cmdRunner hwsec.CmdRunner, username string, utility *hwsec.UtilityCryptohomeBinary, testSparseFile bool) {
+func testAccountUsage(ctx context.Context, s *testing.State, cmdRunner hwsec.CmdRunner, username string, utility *hwsec.UtilityCryptohomeClient, testSparseFile bool) {
 	const (
 		// The size of the test file in MiB.
 		testFileSize = 256

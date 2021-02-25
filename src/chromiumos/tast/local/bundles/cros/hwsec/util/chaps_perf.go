@@ -28,7 +28,7 @@ const (
 )
 
 // CleanupUserMount unmounts and removes the vault of util.FirstUsername.
-func CleanupUserMount(ctx context.Context, cryptohomeUtil *hwsec.UtilityCryptohomeBinary) error {
+func CleanupUserMount(ctx context.Context, cryptohomeUtil *hwsec.UtilityCryptohomeClient) error {
 	if _, err := cryptohomeUtil.Unmount(ctx, FirstUsername); err != nil {
 		return errors.Wrap(err, "failed to unmount")
 	}
