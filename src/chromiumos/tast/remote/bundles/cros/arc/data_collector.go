@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/fsutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/arc"
 	arcpb "chromiumos/tast/services/cros/arc"
@@ -101,8 +100,7 @@ func init() {
 }
 
 // getBuildDescriptorRemotely gets ARC build properties from the device, parses for build ID, ABI,
-// and returns these fields as a combined string. It also return weither this is official build or
-// not.
+// and returns these fields as a combined string. It also return whether this is official build.
 func getBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled bool) (*buildDescriptor, error) {
 	var propertyFile string
 	if vmEnabled {
@@ -172,8 +170,10 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// Name of the pack in case of initial boot.
 		initialPack = "initial_pack"
 
-		// Name of the pack in case of provisioned boot.
-		provisionedPack = "provisioned_pack"
+		// Name of the pack in case of initial boot inside VM.
+		// TODO(b/180359699): Once VM ureadahead flow is stable, remove this and
+		// change vm_initial_pack -> initial_pack.
+		vmInitialPack = "vm_initial_pack"
 
 		// Name of gsutil
 		gsUtil = "gsutil"
@@ -275,21 +275,14 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		service := arc.NewUreadaheadPackServiceClient(cl.Conn)
 		// First boot is needed to be initial boot with removing all user data.
 		request := arcpb.UreadaheadPackRequest{
-			InitialBoot: true,
-			Creds:       s.RequiredVar("ui.gaiaPoolDefault"),
-			VmEnabled:   param.vmEnabled,
+			Creds: s.RequiredVar("ui.gaiaPoolDefault"),
 		}
 
 		// Shorten the total context by 5 seconds to allow for cleanup.
 		shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
 
-		// Pass initial boot and capture results.
-		response, err := service.Generate(shortCtx, &request)
-		if err != nil {
-			return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for initial boot pass")
-		}
-
+		// Prepare target directory on host for pack file.
 		targetDir := filepath.Join(dataDir, ureadAheadPack)
 		defer func() {
 			// Cleanup in case of failure. Might be needed for next retry passes.
@@ -301,23 +294,18 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to create %q: %v", targetDir, err)
 		}
 
-		intitalPackPath := filepath.Join(targetDir, initialPack)
-		provisionedPackPath := filepath.Join(targetDir, provisionedPack)
-		if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, intitalPackPath); err != nil {
-			s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
+		// Pass initial boot and capture results.
+		response, err := service.Generate(shortCtx, &request)
+		if err != nil {
+			return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for initial boot pass")
 		}
 
-		// Initial implementation of DataCollector had here second pass that booted over
-		// the already provisioned account. However nowadays this pack is no longer used
-		// but is still referenced from the ChromeOS build system. Recently we switched to
-		// the pool of accounts and this introduces an inconsistency when the already
-		// provisioned pass exececuted with a random account, which in most cases does not
-		// match one, used for initial provisioning.  As a temporary solution, copy the
-		// initial pack to provisioned pack in order to satisfy ebuild requirements.
-		// TODO(b/182294127): Discard the reference to the provisioned pack in build system
-		// and remove this coping.
-		if err := fsutil.CopyFile(intitalPackPath, provisionedPackPath); err != nil {
-			s.Fatal("Failed copying file: ", err)
+		targetPackPath := filepath.Join(targetDir, initialPack)
+		if param.vmEnabled {
+			targetPackPath = filepath.Join(targetDir, vmInitialPack)
+		}
+		if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, targetPackPath); err != nil {
+			s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
 		}
 
 		targetTar := filepath.Join(targetDir, v+".tar")
