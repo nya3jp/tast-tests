@@ -302,6 +302,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28d27756_4cfb8d10",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-25T07:28:21Z",
+      "side": 1,
+      "message": "Nice! Thank you.",
+      "parentUuid": "cad4c817_9b5cae3c",
+      "range": {
+        "startLine": 965,
+        "startChar": 34,
+        "endLine": 965,
+        "endChar": 49
+      },
+      "revId": "0dbe3563361297f49959fdcc2b69be776ac0a8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c800cf2c_7f3d9376",
