@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53369113_0c700fab",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-25T11:56:02Z",
+      "side": 1,
+      "message": "We already have an \"AttestationClient\" which is in the same abstraction layer of \"CryptohomeBinary\".\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/hwsec/attestation_client.go\n\nAnd we are planing to create an \"UtilityAttestationClient\" to replace part of \"UtilityCryptohomeBinary\"\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2652153\n\nNaming \"CryptohomeClient\" would be a bit confuse to \"AttestationClient\".\nI\u0027m not sure using \"CryptohomeClient\" here is a good idea.",
+      "parentUuid": "3e8293f3_d4cb0ce9",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "8dd83e148318ab28417d6bbd9191cb7c4189c6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb95d73d_dac4849b",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 2
