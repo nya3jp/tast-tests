@@ -8,7 +8,27 @@
 #
 # See repohooks/README.md for more details.
 #
+# !!! READ FIRST !!!
+#
 # When updating this file, make sure to update go/tast-coil-status.
+#
+# Some of the terms may be unblocked even so some of the are still
+# present in the code base because they are in files sourced from
+# thrid party or from a file where the term can not be modified.
+#
+# When a blocked term is used because it can not be replaced
+#  1. Make sure to explicitely state the reason in the commit message.
+#  2. Update go/tast-coild-status with an explanation of why
+#     the term is included.
+#  3. Add "see go/tast-coil-status for known use cases" below the
+#     unblocked term.
+#
+# All unblocked terms should have a bug associated with them.
+# All blocked terms should be 'clean" if all terms have been removed.
+#  OR have a bug associated with them and a reference to go/tast-coil-status
+#
+
+
 
 # black.?hat            - clean
 
@@ -31,15 +51,15 @@ black.?list
 # \bshe\b               - clean
 # \bhim\b               - clean
 
-\bher\b
-#    - see crbug/1135044
+# \bher\b               - see crbug/1135044
+#                       - see go/tast-coil-status for known use cases
 
 # \bhis\b               - clean
 # \bhers\b              - clean
 # man.?in.?the.?middle  - clean
 
-master
-#    - see crbug/1122372
+# master                - see crbug/1122372
+#                       - see go/tast-coil-status for known use cases
 
 # \bmitm(\b|\d)         - clean
 
@@ -57,8 +77,8 @@ slave
 # white.?glove          - clean
 # white.?hat            - clean
 
-white.?label
-#    - see crbug/1135050
+# white.?label          - see crbug/1135050
+#                       - see go/tast-coil-status for known use cases
 
 white.?list
 #    - see crbug/1101928
