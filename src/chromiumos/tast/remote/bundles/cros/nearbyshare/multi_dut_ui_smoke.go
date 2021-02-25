@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
+	"chromiumos/tast/remote/bundles/cros/nearbyshare/remotetestutils"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/nearbyshare"
 	"chromiumos/tast/testing"
@@ -51,17 +52,17 @@ func MultiDUTUISmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to secondary DUT: ", err)
 	}
 
-	if err := openHighVisibilityMode(ctx, s, d1); err != nil {
+	if err := openHighVisibilityMode(ctx, s, d1, "dut1"); err != nil {
 		s.Fatal("Failed to enable high vis mode on primary DUT: ", err)
 	}
 
-	if err := openHighVisibilityMode(ctx, s, d2); err != nil {
+	if err := openHighVisibilityMode(ctx, s, d2, "dut2"); err != nil {
 		s.Fatal("Failed to enable high vis mode on secondary DUT: ", err)
 	}
 }
 
 // openHighVisibilityMode is a helper function to enable high vis mode on each DUT.
-func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT) error {
+func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT, tag string) error {
 	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
@@ -73,7 +74,7 @@ func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT) e
 	if _, err := ns.NewChromeLogin(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	defer ns.CloseChrome(ctx, &empty.Empty{})
+	defer remotetestutils.SaveLogs(ctx, ns, d, tag, s.OutDir())
 
 	// Setup Nearby Share on the DUT.
 	const deviceName = "MultiDut_HighVisibilityUISmoke"
