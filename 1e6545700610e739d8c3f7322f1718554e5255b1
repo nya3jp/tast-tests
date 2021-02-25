@@ -188,6 +188,30 @@
       },
       "revId": "1e6545700610e739d8c3f7322f1718554e5255b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d673459_c74b54e1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-25T06:51:12Z",
+      "side": 1,
+      "message": "It is still a thing: the smaller the better. However, I think the structure is the same important. It looks nicer to put a method in a cl where it also uses it.",
+      "parentUuid": "3ca8c833_9b709052",
+      "range": {
+        "startLine": 536,
+        "startChar": 19,
+        "endLine": 536,
+        "endChar": 23
+      },
+      "revId": "1e6545700610e739d8c3f7322f1718554e5255b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
