@@ -16,6 +16,23 @@
       "message": "Hi Hugo, Pavol,\n\nCan you please take a look at this CL? \n\nThanks!",
       "revId": "20eae5ab1720c4ee31126ac0fcc7c3c6d1bca3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50bf9119_0b5812e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-25T13:02:44Z",
+      "side": 1,
+      "message": "Follow this huge link to see logs where patchpanel is called before tinyproxy starts: \n\nhttps://00f74ba44b9bbcf797cdc930e9cff788aacc6c99ed-apidata.googleusercontent.com/download/storage/v1/b/chromeos-autotest-results/o/swarming-51dca8d30bcad310%2Fautoserv_test%2Ftast%2Fresults%2Ftests%2Fnetwork.TestProxyServer%2Fmessages?jk\u003dAFshE3XRFB0u03Sv4IHpa6yjy2kOJL6iG9PS662D4gVbikrlERKRzVnxs9BOigzWzFdf0yiqJvBUCDx2iCPgt0k_sns-FrZNbLyYJ5OrKst_KzM0_SOPlGUdBgOI1kjUyWTjYcD93ytMUzuooC4Nq6T_Vu5U49gXFnUZ0VgOgXQPGgGfubMjTs59uIfqJCzndmhq2sUP2znekgV92jCoAr4UubHrHUJSz9idICReGHSIu34bWict4h60milLjCQ7uvOr05oqJWD3F27FuqbHGfP1-iTndkJBdd1vPE47wa6PnQwYcf302YBn9DAHcu3Zwfrgu_HmaqFIx8ZtJkAUCOA9P79LMqGxsA93ja7roOqXahQlnE4uR9CPKQBCUKZkItZRGcI74MV8DHZz-XrV8vdGKqW7pd7qOWHUu-sYy13VpJuohNB6ayrCXxTEmlEkEzyulQM-0Jh7K0PpDzkyO2j4izQS2bNaMCt4VY1C5UGxCbgMNQKu1KtOGlEIXQZJMIykNng9zbAmw7dmhvAwvpqRXaL_UEMtDkUqEcKlQkcrEyjpeayJeJ6YwKR7JiBKS1qf_Lvr1ykwsLjAzX3il1uvw6LzodfsAuoEKOi4I0o8QcIvQMC7UHVnrhRC75kLq-wn668QEtUFSnDK_6DoPOHLG4u44sDkLFY083yeXoZWFuO_BWyDChYbc4v4YpizDStkpyPmVWd5x2ngvHrEjFGdbsTqfDZa9mMiCXM2YM-Vcfeq1wWYAWHMFrgMq5mlBoutRvjvFy8N3RTnBlw5QdtiYnuOwmbhyFdGc5OpAlSHvUQXuj14zzrijFoS0uRtNgiUyjQJK9Qvhj_Arv8Zr4OyF11rlPmKKgHkCLG4fIUnoSflUhIE7l6UapFEeH7CUOSJPdENHfhtjj-t8UuTvqigPlObOXz3V0sSibWojuH2yLNtMRPWzm1HIMCrpF_TUx95bVPTYXJfZSz1YGCk1leY3SuCPVzhvYW6pQF8BVF2pOjIOR6Vnf1qZSLFEl3ohmigX0beSpx2_0JNsTU2AE5FnsMA6WVP7HfDlw\u0026isca\u003d1",
+      "revId": "20eae5ab1720c4ee31126ac0fcc7c3c6d1bca3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
