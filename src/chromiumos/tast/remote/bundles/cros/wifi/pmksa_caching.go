@@ -23,7 +23,7 @@ func init() {
 		Func:        PMKSACaching,
 		Desc:        "Verifies that 802.1x authentication (EAP exchange) is bypassed and PMKSA is done using PMK caching when it is available",
 		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
