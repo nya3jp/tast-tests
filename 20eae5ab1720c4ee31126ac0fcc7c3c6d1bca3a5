@@ -50,6 +50,24 @@
       "message": "LGTM, but could you document explicitly the race in the code somewhere ?",
       "revId": "20eae5ab1720c4ee31126ac0fcc7c3c6d1bca3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d2eb15f_fe3ea123",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-02-25T14:27:04Z",
+      "side": 1,
+      "message": "That link did not work for me",
+      "parentUuid": "50bf9119_0b5812e4",
+      "revId": "20eae5ab1720c4ee31126ac0fcc7c3c6d1bca3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
