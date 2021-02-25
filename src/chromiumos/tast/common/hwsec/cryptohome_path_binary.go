@@ -28,7 +28,7 @@ func (c *CryptohomePathBinary) call(ctx context.Context, args ...string) ([]byte
 	return c.runner.Run(ctx, "cryptohome-path", args...)
 }
 
-// UserPath calls "cryptohome-path user <username" to retrieve the user home for the user.
-func (c *CryptohomePathBinary) UserPath(ctx context.Context, username string) ([]byte, error) {
+// userPath calls "cryptohome-path user <username>" to retrieve the user home for the user.
+func (c *CryptohomePathBinary) userPath(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "user", username)
 }

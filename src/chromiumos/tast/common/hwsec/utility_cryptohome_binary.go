@@ -70,7 +70,7 @@ func NewUtilityCryptohomeBinary(r CmdRunner) (*UtilityCryptohomeBinary, error) {
 
 // GetStatusJSON retrieves the a status string from cryptohome. The status string is in JSON format and holds the various cryptohome related status.
 func (u *UtilityCryptohomeBinary) GetStatusJSON(ctx context.Context) (map[string]interface{}, error) {
-	s, err := u.binary.GetStatusString(ctx)
+	s, err := u.binary.getStatusString(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "Failed to call GetStatusString()")
 	}
@@ -89,7 +89,7 @@ func (u *UtilityCryptohomeBinary) IsTPMReady(ctx context.Context) (bool, error) 
 
 	var result bool
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := u.binary.TPMStatus(ctx)
+		out, err := u.binary.tpmStatus(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to call tpm_status")
 		}
@@ -118,7 +118,7 @@ func (u *UtilityCryptohomeBinary) IsPreparedForEnrollment(ctx context.Context) (
 
 	var result bool
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := u.binary.TPMAttestationStatus(ctx)
+		out, err := u.binary.tpmAttestationStatus(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to call cryptohome")
 		}
@@ -147,7 +147,7 @@ func (u *UtilityCryptohomeBinary) IsEnrolled(ctx context.Context) (bool, error) 
 
 	var result bool
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := u.binary.TPMAttestationStatus(ctx)
+		out, err := u.binary.tpmAttestationStatus(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to call cryptohome")
 		}
@@ -172,10 +172,10 @@ func (u *UtilityCryptohomeBinary) IsEnrolled(ctx context.Context) (bool, error) 
 
 // EnsureOwnership takes TPM ownership if found unowned.
 func (u *UtilityCryptohomeBinary) EnsureOwnership(ctx context.Context) (bool, error) {
-	if err := u.binary.TPMTakeOwnership(ctx); err != nil {
+	if err := u.binary.tpmTakeOwnership(ctx); err != nil {
 		return false, errors.Wrap(err, "failed to take ownership")
 	}
-	if err := u.binary.TPMWaitOwnership(ctx); err != nil {
+	if err := u.binary.tpmWaitOwnership(ctx); err != nil {
 		return false, errors.Wrap(err, "failed to wait ownership")
 	}
 	return true, nil
@@ -183,12 +183,12 @@ func (u *UtilityCryptohomeBinary) EnsureOwnership(ctx context.Context) (bool, er
 
 // CreateEnrollRequest creates enroll request.
 func (u *UtilityCryptohomeBinary) CreateEnrollRequest(ctx context.Context, pcaType PCAType) (string, error) {
-	return u.binary.TPMAttestationStartEnroll(ctx, pcaType, u.attestationAsyncMode)
+	return u.binary.tpmAttestationStartEnroll(ctx, pcaType, u.attestationAsyncMode)
 }
 
 // FinishEnroll handles enroll response.
 func (u *UtilityCryptohomeBinary) FinishEnroll(ctx context.Context, pcaType PCAType, resp string) error {
-	result, err := u.binary.TPMAttestationFinishEnroll(ctx, pcaType, resp, u.attestationAsyncMode)
+	result, err := u.binary.tpmAttestationFinishEnroll(ctx, pcaType, resp, u.attestationAsyncMode)
 	if err != nil {
 		return errors.Wrap(err, "failed to enroll")
 	}
@@ -205,12 +205,12 @@ func (u *UtilityCryptohomeBinary) CreateCertRequest(
 	profile apb.CertificateProfile,
 	username,
 	origin string) (string, error) {
-	return u.binary.TPMAttestationStartCertRequest(ctx, pcaType, int(profile), username, origin, u.attestationAsyncMode)
+	return u.binary.tpmAttestationStartCertRequest(ctx, pcaType, int(profile), username, origin, u.attestationAsyncMode)
 }
 
 // FinishCertRequest handles cert response.
 func (u *UtilityCryptohomeBinary) FinishCertRequest(ctx context.Context, resp, username, label string) error {
-	cert, err := u.binary.TPMAttestationFinishCertRequest(ctx, resp, username, label, u.attestationAsyncMode)
+	cert, err := u.binary.tpmAttestationFinishCertRequest(ctx, resp, username, label, u.attestationAsyncMode)
 	if err != nil {
 		return errors.Wrap(err, "failed to finish cert request")
 	}
@@ -233,7 +233,7 @@ func (u *UtilityCryptohomeBinary) SignEnterpriseVAChallenge(
 	if !includeSignedPublicKey {
 		return "", errors.New("crytptohome binary always includes signed public key")
 	}
-	return u.binary.TPMAttestationEnterpriseVaChallenge(ctx,
+	return u.binary.tpmAttestationEnterpriseVaChallenge(ctx,
 		vaType,
 		username,
 		label,
@@ -248,7 +248,7 @@ func (u *UtilityCryptohomeBinary) SignSimpleChallenge(
 	username,
 	label string,
 	challenge []byte) (string, error) {
-	return u.binary.TPMAttestationSimpleChallenge(ctx,
+	return u.binary.tpmAttestationSimpleChallenge(ctx,
 		username,
 		label,
 		challenge)
@@ -271,7 +271,7 @@ func (u *UtilityCryptohomeBinary) getKeyStatus(
 	ctx context.Context,
 	username,
 	label string) (string, string, error) {
-	out, err := u.binary.TPMAttestationKeyStatus(ctx, username, label)
+	out, err := u.binary.tpmAttestationKeyStatus(ctx, username, label)
 	if err != nil {
 		return "", "", errors.Wrap(err, "failed to get key status")
 	}
@@ -292,7 +292,7 @@ func (u *UtilityCryptohomeBinary) getKeyStatus(
 
 // InstallAttributesGet retrieves the install attributes with the name of attributeName, and returns the tuple (value, error), whereby value is the value of the attributes, and error is nil iff the operation is successful, otherwise error is the error that occurred.
 func (u *UtilityCryptohomeBinary) InstallAttributesGet(ctx context.Context, attributeName string) (string, error) {
-	out, err := u.binary.InstallAttributesGet(ctx, attributeName)
+	out, err := u.binary.installAttributesGet(ctx, attributeName)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to get Install Attributes with the following output %q", out)
 	}
@@ -304,7 +304,7 @@ func (u *UtilityCryptohomeBinary) InstallAttributesGet(ctx context.Context, attr
 
 // InstallAttributesSet sets the install attributes with the name of attributeName with the value attributeValue, and returns error, whereby error is nil iff the operation is successful, otherwise error is the error that occurred.
 func (u *UtilityCryptohomeBinary) InstallAttributesSet(ctx context.Context, attributeName, attributeValue string) error {
-	out, err := u.binary.InstallAttributesSet(ctx, attributeName, attributeValue)
+	out, err := u.binary.installAttributesSet(ctx, attributeName, attributeValue)
 	if err != nil {
 		return errors.Wrapf(err, "failed to set Install Attributes with the following output %q", out)
 	}
@@ -313,7 +313,7 @@ func (u *UtilityCryptohomeBinary) InstallAttributesSet(ctx context.Context, attr
 
 // InstallAttributesFinalize finalizes the install attributes, and returns error encountered if any. error is nil iff the operation completes successfully.
 func (u *UtilityCryptohomeBinary) InstallAttributesFinalize(ctx context.Context) error {
-	out, err := u.binary.InstallAttributesFinalize(ctx)
+	out, err := u.binary.installAttributesFinalize(ctx)
 	if err != nil {
 		return errors.Wrapf(err, "failed to finalize Install Attributes with the following output %q", out)
 	}
@@ -325,7 +325,7 @@ func (u *UtilityCryptohomeBinary) InstallAttributesFinalize(ctx context.Context)
 
 // InstallAttributesCount retrieves the number of entries in install attributes. It returns count and error. error is nil iff the operation completes successfully, and in this case count holds the number of entries in install attributes.
 func (u *UtilityCryptohomeBinary) InstallAttributesCount(ctx context.Context) (int, error) {
-	out, err := u.binary.InstallAttributesCount(ctx)
+	out, err := u.binary.installAttributesCount(ctx)
 	if err != nil {
 		return -1, errors.Wrapf(err, "failed to query install attributes count with the following output %q", out)
 	}
@@ -358,31 +358,31 @@ func installAttributesBooleanHelper(out string, err error, methodName string) (b
 
 // InstallAttributesIsReady checks if install attributes is ready, returns isReady and error. error is nil iff the operation completes successfully, and in this case isReady is whether install attributes is ready.
 func (u *UtilityCryptohomeBinary) InstallAttributesIsReady(ctx context.Context) (bool, error) {
-	out, err := u.binary.InstallAttributesIsReady(ctx)
+	out, err := u.binary.installAttributesIsReady(ctx)
 	return installAttributesBooleanHelper(out, err, "InstallAttributesIsReady")
 }
 
 // InstallAttributesIsSecure checks if install attributes is secure, returns isSecure and error. error is nil iff the operation completes successfully, and in this case isSecure is whether install attributes is secure.
 func (u *UtilityCryptohomeBinary) InstallAttributesIsSecure(ctx context.Context) (bool, error) {
-	out, err := u.binary.InstallAttributesIsSecure(ctx)
+	out, err := u.binary.installAttributesIsSecure(ctx)
 	return installAttributesBooleanHelper(out, err, "InstallAttributesIsSecure")
 }
 
 // InstallAttributesIsInvalid checks if install attributes is invalid, returns isInvalid and error. error is nil iff the operation completes successfully, and in this case isInvalid is whether install attributes is invalid.
 func (u *UtilityCryptohomeBinary) InstallAttributesIsInvalid(ctx context.Context) (bool, error) {
-	out, err := u.binary.InstallAttributesIsInvalid(ctx)
+	out, err := u.binary.installAttributesIsInvalid(ctx)
 	return installAttributesBooleanHelper(out, err, "InstallAttributesIsInvalid")
 }
 
 // InstallAttributesIsFirstInstall checks if install attributes is the first install state, returns isFirstInstall and error. error is nil iff the operation completes successfully, and in this case isFirstInstall is whether install attributes is in the first install state.
 func (u *UtilityCryptohomeBinary) InstallAttributesIsFirstInstall(ctx context.Context) (bool, error) {
-	out, err := u.binary.InstallAttributesIsFirstInstall(ctx)
+	out, err := u.binary.installAttributesIsFirstInstall(ctx)
 	return installAttributesBooleanHelper(out, err, "InstallAttributesIsFirstInstall")
 }
 
 // IsMounted checks if any vault is mounted.
 func (u *UtilityCryptohomeBinary) IsMounted(ctx context.Context) (bool, error) {
-	out, err := u.binary.IsMounted(ctx)
+	out, err := u.binary.isMounted(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to check if mounted")
 	}
@@ -395,7 +395,7 @@ func (u *UtilityCryptohomeBinary) IsMounted(ctx context.Context) (bool, error) {
 
 // Unmount unmounts the vault for username.
 func (u *UtilityCryptohomeBinary) Unmount(ctx context.Context, username string) (bool, error) {
-	out, err := u.binary.Unmount(ctx, username)
+	out, err := u.binary.unmount(ctx, username)
 	if err != nil {
 		testing.ContextLogf(ctx, "Unmount command failed for %q with: %q", username, string(out))
 		return false, errors.Wrap(err, "failed to unmount")
@@ -405,7 +405,7 @@ func (u *UtilityCryptohomeBinary) Unmount(ctx context.Context, username string) 
 
 // UnmountAll unmounts all vault.
 func (u *UtilityCryptohomeBinary) UnmountAll(ctx context.Context) error {
-	out, err := u.binary.UnmountAll(ctx)
+	out, err := u.binary.unmountAll(ctx)
 	if err != nil {
 		testing.ContextLogf(ctx, "Unmount command failed with: %q", string(out))
 		return errors.Wrap(err, "failed to unmount")
@@ -444,7 +444,7 @@ func (u *UtilityCryptohomeBinary) MountVault(ctx context.Context, username, pass
 	if config.Ecryptfs {
 		extraFlags = append(extraFlags, mountFlagEcryptfs)
 	}
-	if _, err := u.binary.MountEx(ctx, username, password, create, label, extraFlags); err != nil {
+	if _, err := u.binary.mountEx(ctx, username, password, create, label, extraFlags); err != nil {
 		return errors.Wrap(err, "failed to mount")
 	}
 	return nil
@@ -453,7 +453,7 @@ func (u *UtilityCryptohomeBinary) MountVault(ctx context.Context, username, pass
 // GetSanitizedUsername computes the sanitized username for the given user.
 // If useDBus is true, the sanitized username will be computed by cryptohome (through dbus). Otherwise, it'll be computed directly by libbrillo (without dbus).
 func (u *UtilityCryptohomeBinary) GetSanitizedUsername(ctx context.Context, username string, useDBus bool) (string, error) {
-	out, err := u.binary.GetSanitizedUsername(ctx, username, useDBus)
+	out, err := u.binary.getSanitizedUsername(ctx, username, useDBus)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to call CryptohomeBinary.GetSanitizedUsername")
 	}
@@ -469,7 +469,7 @@ func (u *UtilityCryptohomeBinary) GetSanitizedUsername(ctx context.Context, user
 // GetSystemSalt retrieves the system salt and return the hex encoded version of it.
 // If useDBus is true, the system salt will be retrieved from cryptohome (through dbus). Otherwise, it'll be loaded directly by libbrillo (without dbus).
 func (u *UtilityCryptohomeBinary) GetSystemSalt(ctx context.Context, useDBus bool) (string, error) {
-	out, err := u.binary.GetSystemSalt(ctx, useDBus)
+	out, err := u.binary.getSystemSalt(ctx, useDBus)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to call CryptohomeBinary.GetSystemSalt")
 	}
@@ -484,7 +484,7 @@ func (u *UtilityCryptohomeBinary) GetSystemSalt(ctx context.Context, useDBus boo
 
 // CheckVault checks the vault via |CheckKeyEx| dbus mehod.
 func (u *UtilityCryptohomeBinary) CheckVault(ctx context.Context, username, password, label string) (bool, error) {
-	_, err := u.binary.CheckKeyEx(ctx, username, password, label)
+	_, err := u.binary.checkKeyEx(ctx, username, password, label)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to check key")
 	}
@@ -493,7 +493,7 @@ func (u *UtilityCryptohomeBinary) CheckVault(ctx context.Context, username, pass
 
 // ListVaultKeys queries the vault associated with user username and password password, and returns nil for error iff the operation is completed successfully, in that case, the returned slice of string contains the labels of keys belonging to that vault.
 func (u *UtilityCryptohomeBinary) ListVaultKeys(ctx context.Context, username string) ([]string, error) {
-	binaryOutput, err := u.binary.ListKeysEx(ctx, username)
+	binaryOutput, err := u.binary.listKeysEx(ctx, username)
 	if err != nil {
 		return []string{}, errors.Wrap(err, "failed to call list keys")
 	}
@@ -511,7 +511,7 @@ func (u *UtilityCryptohomeBinary) ListVaultKeys(ctx context.Context, username st
 
 // AddVaultKey adds the key with newLabel and newPassword to the user specified by username, with password password and label label. nil is returned iff the operation is successful.
 func (u *UtilityCryptohomeBinary) AddVaultKey(ctx context.Context, username, password, label, newPassword, newLabel string, lowEntropy bool) error {
-	binaryOutput, err := u.binary.AddKeyEx(ctx, username, password, label, newPassword, newLabel, lowEntropy)
+	binaryOutput, err := u.binary.addKeyEx(ctx, username, password, label, newPassword, newLabel, lowEntropy)
 	if err != nil {
 		return errors.Wrap(err, "failed to call AddKeyEx")
 	}
@@ -527,7 +527,7 @@ func (u *UtilityCryptohomeBinary) AddVaultKey(ctx context.Context, username, pas
 
 // RemoveVaultKey removes the key with label removeLabel from user specified by username's vault. password for username is supplied so the operation can be proceeded. nil is returned iff the operation is successful.
 func (u *UtilityCryptohomeBinary) RemoveVaultKey(ctx context.Context, username, password, removeLabel string) error {
-	binaryOutput, err := u.binary.RemoveKeyEx(ctx, username, password, removeLabel)
+	binaryOutput, err := u.binary.removeKeyEx(ctx, username, password, removeLabel)
 	if err != nil {
 		return errors.Wrap(err, "failed to call RemoveKeyEx")
 	}
@@ -543,7 +543,7 @@ func (u *UtilityCryptohomeBinary) RemoveVaultKey(ctx context.Context, username, 
 
 // ChangeVaultPassword changes the vault for user username with label and password to newPassword. nil is returned iff the operation is successful.
 func (u *UtilityCryptohomeBinary) ChangeVaultPassword(ctx context.Context, username, password, label, newPassword string) error {
-	binaryOutput, err := u.binary.MigrateKeyEx(ctx, username, password, label, newPassword)
+	binaryOutput, err := u.binary.migrateKeyEx(ctx, username, password, label, newPassword)
 	if err != nil {
 		return errors.Wrap(err, "failed to call MigrateKeyEx")
 	}
@@ -559,7 +559,7 @@ func (u *UtilityCryptohomeBinary) ChangeVaultPassword(ctx context.Context, usern
 
 // RemoveVault remove the vault for username.
 func (u *UtilityCryptohomeBinary) RemoveVault(ctx context.Context, username string) (bool, error) {
-	_, err := u.binary.Remove(ctx, username)
+	_, err := u.binary.remove(ctx, username)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to remove vault")
 	}
@@ -584,7 +584,7 @@ func (u *UtilityCryptohomeBinary) UnmountAndRemoveVault(ctx context.Context, use
 // LockToSingleUserMountUntilReboot will block users other than the specified from logging in if the call succeeds, and in that case, nil is returned.
 func (u *UtilityCryptohomeBinary) LockToSingleUserMountUntilReboot(ctx context.Context, username string) error {
 	const successMessage = "Login disabled."
-	binaryOutput, err := u.binary.LockToSingleUserMountUntilReboot(ctx, username)
+	binaryOutput, err := u.binary.lockToSingleUserMountUntilReboot(ctx, username)
 	if err != nil {
 		return errors.Wrap(err, "failed to call lock_to_single_user_mount_until_reboot")
 	}
@@ -599,7 +599,7 @@ func (u *UtilityCryptohomeBinary) LockToSingleUserMountUntilReboot(ctx context.C
 
 // IsTPMWrappedKeySet checks if the current user vault is TPM-backed.
 func (u *UtilityCryptohomeBinary) IsTPMWrappedKeySet(ctx context.Context, username string) (bool, error) {
-	out, err := u.binary.DumpKeyset(ctx, username)
+	out, err := u.binary.dumpKeyset(ctx, username)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to dump keyset")
 	}
@@ -620,7 +620,7 @@ func (u *UtilityCryptohomeBinary) CheckTPMWrappedUserKeyset(ctx context.Context,
 
 // GetEnrollmentID gets the enrollment ID.
 func (u *UtilityCryptohomeBinary) GetEnrollmentID(ctx context.Context) (string, error) {
-	out, err := u.binary.GetEnrollmentID(ctx)
+	out, err := u.binary.getEnrollmentID(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get EID")
 	}
@@ -629,7 +629,7 @@ func (u *UtilityCryptohomeBinary) GetEnrollmentID(ctx context.Context) (string, 
 
 // GetOwnerPassword gets the TPM owner password.
 func (u *UtilityCryptohomeBinary) GetOwnerPassword(ctx context.Context) (string, error) {
-	out, err := u.binary.TPMStatus(ctx)
+	out, err := u.binary.tpmStatus(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get tpm status")
 	}
@@ -648,7 +648,7 @@ func (u *UtilityCryptohomeBinary) GetOwnerPassword(ctx context.Context) (string,
 
 // ClearOwnerPassword clears TPM owner password in the best effort.
 func (u *UtilityCryptohomeBinary) ClearOwnerPassword(ctx context.Context) error {
-	_, err := u.binary.TPMClearStoredPassword(ctx)
+	_, err := u.binary.tpmClearStoredPassword(ctx)
 	return err
 }
 
@@ -657,7 +657,7 @@ func (u *UtilityCryptohomeBinary) GetKeyPayload(
 	ctx context.Context,
 	username,
 	label string) (string, error) {
-	out, err := u.binary.TPMAttestationGetKeyPayload(ctx, username, label)
+	out, err := u.binary.tpmAttestationGetKeyPayload(ctx, username, label)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get key payload")
 	}
@@ -670,7 +670,7 @@ func (u *UtilityCryptohomeBinary) SetKeyPayload(
 	username,
 	label,
 	payload string) (bool, error) {
-	_, err := u.binary.TPMAttestationSetKeyPayload(ctx, username, label, payload)
+	_, err := u.binary.tpmAttestationSetKeyPayload(ctx, username, label, payload)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to set key payload")
 	}
@@ -682,7 +682,7 @@ func (u *UtilityCryptohomeBinary) RegisterKeyWithChapsToken(
 	ctx context.Context,
 	username,
 	label string) (bool, error) {
-	out, err := u.binary.TPMAttestationRegisterKey(ctx, username, label)
+	out, err := u.binary.tpmAttestationRegisterKey(ctx, username, label)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to register key")
 	}
@@ -703,7 +703,7 @@ func (u *UtilityCryptohomeBinary) SetAttestationAsyncMode(ctx context.Context, a
 
 // DeleteKeys delete all the |usernames|'s keys with label having prefix.
 func (u *UtilityCryptohomeBinary) DeleteKeys(ctx context.Context, username, prefix string) error {
-	_, err := u.binary.TPMAttestationDeleteKeys(ctx, username, prefix)
+	_, err := u.binary.tpmAttestationDeleteKeys(ctx, username, prefix)
 	if err != nil {
 		return errors.Wrap(err, "failed to delete keys")
 	}
@@ -745,14 +745,14 @@ func (u *UtilityCryptohomeBinary) GetTokenInfoForUser(ctx context.Context, usern
 	cmdOutput := ""
 	if username == "" {
 		// We want the system token.
-		out, err := u.binary.Pkcs11SystemTokenInfo(ctx)
+		out, err := u.binary.pkcs11SystemTokenInfo(ctx)
 		cmdOutput = string(out)
 		if err != nil {
 			return "", "", -1, errors.Wrapf(err, "failed to get system token info %q", cmdOutput)
 		}
 	} else {
 		// We want the user token.
-		out, err := u.binary.Pkcs11UserTokenInfo(ctx, username)
+		out, err := u.binary.pkcs11UserTokenInfo(ctx, username)
 		cmdOutput = string(out)
 		if err != nil {
 			return "", "", -1, errors.Wrapf(err, "failed to get user token info %q", cmdOutput)
@@ -810,7 +810,7 @@ type FWMPError struct {
 // It returns (flags, hash, msg, errorCode, err), whereby flags and hash is part of FWMP, and will be valid iff err is nil; msg is the message from the command line; errorCode is the error code from dbus call, if available.
 // The operation is successful iff err is nil.
 func (u *UtilityCryptohomeBinary) GetFirmwareManagementParameters(ctx context.Context) (flags, hash string, returnedError *FWMPError) {
-	binaryMsg, err := u.binary.GetFirmwareManagementParameters(ctx)
+	binaryMsg, err := u.binary.getFirmwareManagementParameters(ctx)
 	msg := string(binaryMsg)
 
 	// Parse for the error code and stuffs because we might need the error code in the return error in case it failed.
@@ -855,7 +855,7 @@ func (u *UtilityCryptohomeBinary) GetFirmwareManagementParameters(ctx context.Co
 // SetFirmwareManagementParameters sets the firmware management parameters flags and hash (both as a hex string), then returns (msg, error).
 // msg is the command line output from cryptohome command; error is nil iff the operation is successful.
 func (u *UtilityCryptohomeBinary) SetFirmwareManagementParameters(ctx context.Context, flags, hash string) (string, error) {
-	binaryMsg, err := u.binary.SetFirmwareManagementParameters(ctx, "0x"+flags, hash)
+	binaryMsg, err := u.binary.setFirmwareManagementParameters(ctx, "0x"+flags, hash)
 	msg := string(binaryMsg)
 
 	// Note that error code is not parsed because currently no tests requires it.
@@ -871,7 +871,7 @@ func (u *UtilityCryptohomeBinary) SetFirmwareManagementParameters(ctx context.Co
 // RemoveFirmwareManagementParameters removes the firmware management parameters.
 // msg is the command line output from cryptohome command; error is nil iff the operation is successful.
 func (u *UtilityCryptohomeBinary) RemoveFirmwareManagementParameters(ctx context.Context) (string, error) {
-	binaryMsg, err := u.binary.RemoveFirmwareManagementParameters(ctx)
+	binaryMsg, err := u.binary.removeFirmwareManagementParameters(ctx)
 	msg := string(binaryMsg)
 
 	// Note that error code is not parsed because currently no tests requires it.
@@ -931,7 +931,7 @@ func (u *UtilityCryptohomeBinary) RestoreFWMP(ctx context.Context, fwmp *Firmwar
 
 // GetAccountDiskUsage returns the disk space (in bytes) used by the username.
 func (u *UtilityCryptohomeBinary) GetAccountDiskUsage(ctx context.Context, username string) (diskUsage int64, returnedError error) {
-	binaryMsg, err := u.binary.GetAccountDiskUsage(ctx, username)
+	binaryMsg, err := u.binary.getAccountDiskUsage(ctx, username)
 	msg := string(binaryMsg)
 	if err != nil {
 		testing.ContextLogf(ctx, "Failure to call GetAccountDiskUsage, got %q", msg)
@@ -952,7 +952,7 @@ func (u *UtilityCryptohomeBinary) GetAccountDiskUsage(ctx context.Context, usern
 
 // GetHomeUserPath retrieves the user specified by username's user home path.
 func (u *UtilityCryptohomeBinary) GetHomeUserPath(ctx context.Context, username string) (string, error) {
-	binaryMsg, err := u.cryptohomePathBinary.UserPath(ctx, username)
+	binaryMsg, err := u.cryptohomePathBinary.userPath(ctx, username)
 	msg := string(binaryMsg)
 	if err != nil {
 		testing.ContextLogf(ctx, "Failure to call cryptohome-path user, got %q", msg)
