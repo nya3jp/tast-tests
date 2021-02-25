@@ -43,12 +43,12 @@ func APIGetConfigurationData(ctx context.Context, s *testing.State) {
 	const configData = `{"test": 1}`
 	const newConfigData = `{"test": 2}`
 
-	if err := policyutil.EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
+	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
 	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
 			s.Error("Failed to reset TPM: ", err)
 		}
 	}(ctx)
