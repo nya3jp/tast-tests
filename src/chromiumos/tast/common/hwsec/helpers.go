@@ -363,7 +363,7 @@ func (h *CmdTPMClearHelper) EnsureTPMIsReset(ctx context.Context) error {
 	return h.ensureTPMIsReset(ctx, false)
 }
 
-// EnsureTPMIsResetAndPowerwash ensures the TPM is reset and simulates a Powerwash.
-func (h *CmdTPMClearHelper) EnsureTPMIsResetAndPowerwash(ctx context.Context) error {
+// EnsureTPMAndSystemStateAreReset ensures the TPM is reset and simulates a Powerwash.
+func (h *CmdTPMClearHelper) EnsureTPMAndSystemStateAreReset(ctx context.Context) error {
 	return h.ensureTPMIsReset(ctx, true)
 }

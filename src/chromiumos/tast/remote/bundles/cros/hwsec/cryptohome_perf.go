@@ -80,7 +80,7 @@ func CryptohomePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 
-	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
 	}
 

@@ -47,7 +47,7 @@ func RecreateUserVaultTPM1(ctx context.Context, s *testing.State) {
 	utility := helper.CryptohomeClient()
 
 	// Resets the TPM states before running the tests.
-	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
 	}
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
@@ -98,7 +98,7 @@ func RecreateUserVaultTPM1(ctx context.Context, s *testing.State) {
 
 	s.Log("Phase 3: clears TPM and mounts user vault again")
 
-	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
 	}
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {

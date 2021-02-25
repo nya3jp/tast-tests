@@ -35,7 +35,7 @@ type enrolledFixt struct {
 }
 
 func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	if err := EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
+	if err := EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
@@ -43,7 +43,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	defer func() {
 		if !ok {
 			s.Log("Removing enrollment after failing SetUp")
-			if err := EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
+			if err := EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
 				s.Fatal("Failed to reset TPM: ", err)
 			}
 		}
@@ -88,7 +88,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 }
 
 func (e *enrolledFixt) TearDown(ctx context.Context, s *testing.FixtState) {
-	if err := EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
+	if err := EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
