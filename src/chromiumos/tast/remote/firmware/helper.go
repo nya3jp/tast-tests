@@ -5,7 +5,13 @@
 package firmware
 
 import (
+	"archive/zip"
 	"context"
+	"io"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -15,6 +21,7 @@ import (
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -36,6 +43,12 @@ type Helper struct {
 
 	// DUT is used for communicating with the device under test.
 	DUT *dut.DUT
+
+	// dutTastFilesTmpDir is a temporary directory on the test server holding a copy of the DUT's Tast files.
+	dutTastFilesTmpDir string
+
+	// dutTastFilesInstallTime is the time when Tast files were installed onto the DUT, in seconds since the epoch.
+	dutTastFilesInstallTime int
 
 	// Model contains the DUT's model, as reported by the Platform RPC.
 	// Currently, this is based on cros_config / name.
@@ -78,13 +91,20 @@ func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, cfgFilepath, servoHostPort 
 // Close shuts down any firmware objects associated with the Helper.
 // Generally, tests should defer Close() immediately after initializing a Helper.
 func (h *Helper) Close(ctx context.Context) error {
+	var firstErr error
 	if h.ServoProxy != nil {
 		h.ServoProxy.Close(ctx)
 	}
-	if err := h.CloseRPCConnection(ctx); err != nil {
-		return errors.Wrap(err, "closing rpc connection")
+	if h.dutTastFilesTmpDir != "" {
+		if err := os.RemoveAll(h.dutTastFilesTmpDir); err != nil {
+			firstErr = errors.Wrap(err, "removing remote copy of local Tast files")
+		}
+		h.dutTastFilesTmpDir = ""
 	}
-	return nil
+	if err := h.CloseRPCConnection(ctx); err != nil && firstErr == nil {
+		firstErr = errors.Wrap(err, "closing rpc connection")
+	}
+	return firstErr
 }
 
 // RequireRPCClient creates a client connection to the DUT's gRPC server, unless a connection already exists.
@@ -201,5 +221,205 @@ func (h *Helper) RequireServo(ctx context.Context) error {
 	}
 	h.ServoProxy = pxy
 	h.Servo = pxy.Servo()
+	return nil
+}
+
+const (
+	// dutLocalRunner, dutLocalBundleDir, and dutLocalDataDir are paths to local Tast files and directories on the DUT.
+	dutLocalRunner    = "/usr/local/bin/local_test_runner"
+	dutLocalBundleDir = "/usr/local/libexec/tast/"
+	dutLocalDataDir   = "/usr/local/share/tast/"
+
+	// tmpLocalRunner, tmpLocalBundleDir, and tmpLocalDataDir are relative paths, within a tempdir on the server, to copies of the DUT's Tast files.
+	tmpLocalRunner    = "local-runner"
+	tmpLocalBundleDir = "local-bundle-dir"
+	tmpLocalDataDir   = "local-data-dir"
+
+	// tastDataZipName and tastBundleZipName are basenames for zipfiles containing the DUT's tast directories.
+	tastDataZipName   = "tast-bundles.zip"
+	tastBundleZipName = "tast-data.zip"
+)
+
+// AreDUTTastFilesOnServer determines whether the test server has a copy of the DUT's local Tast files.
+func (h *Helper) AreDUTTastFilesOnServer() bool {
+	return h.dutTastFilesTmpDir != ""
+}
+
+// CopyTastFilesFromDUT retrieves Tast files from the DUT and stores them locally for later use.
+// This allows the remote host to re-push Tast files to the DUT if a different OS is booted mid-test.
+func (h *Helper) CopyTastFilesFromDUT(ctx context.Context) error {
+	if h.AreDUTTastFilesOnServer() {
+		return errors.New("cannot copy Tast files from DUT twice")
+	}
+
+	// Create temp dir to hold copied Tast files.
+	tmpDir, err := ioutil.TempDir("", "dut-tast-files-copy")
+	if err != nil {
+		return err
+	}
+	h.dutTastFilesTmpDir = tmpDir
+
+	// Copy files from DUT onto test server.
+	testing.ContextLogf(ctx, "Copying DUT Tast files to test server at %s", tmpDir)
+	for dutSrc, serverDst := range map[string]string{
+		dutLocalRunner:    filepath.Join(tmpDir, tmpLocalRunner),
+		dutLocalBundleDir: filepath.Join(tmpDir, tmpLocalBundleDir),
+		dutLocalDataDir:   filepath.Join(tmpDir, tmpLocalDataDir),
+	} {
+		if err = linuxssh.GetFile(ctx, h.DUT.Conn(), dutSrc, serverDst); err != nil {
+			return errors.Wrap(err, "copying local Tast files from DUT")
+		}
+	}
+
+	// Zip local files into tmpDir.
+	for srcBasename, zipBasename := range map[string]string{
+		tmpLocalDataDir:   tastDataZipName,
+		tmpLocalBundleDir: tastBundleZipName,
+	} {
+		srcDir := filepath.Join(tmpDir, srcBasename)
+		dstZip := filepath.Join(tmpDir, zipBasename)
+		if err := zipDir(srcDir, dstZip); err != nil {
+			return errors.Wrapf(err, "zipping %q into %q", srcDir, dstZip)
+		}
+	}
+
+	// Record the last modified time of the DUT's Tast files.
+	out, err := h.Reporter.CommandOutputLines(ctx, "stat", "-c", "%Y", dutLocalRunner, dutLocalBundleDir, dutLocalDataDir)
+	if err != nil {
+		return err
+	}
+	for _, line := range out {
+		mtime, err := strconv.Atoi(strings.TrimSpace(line))
+		if err != nil {
+			return errors.Wrapf(err, "converting `stat` output line to int: %q", line)
+		}
+		if h.dutTastFilesInstallTime == 0 || mtime < h.dutTastFilesInstallTime {
+			h.dutTastFilesInstallTime = mtime
+		}
+	}
+	return nil
+}
+
+// CopyTastFilesToDUT copies the test server's copy of local Tast files back onto the DUT.
+func (h *Helper) CopyTastFilesToDUT(ctx context.Context) error {
+	if !h.AreDUTTastFilesOnServer() {
+		return errors.New("must copy Tast files from DUT before copying back onto DUT")
+	}
+	testing.ContextLog(ctx, "Copying DUT Tast files back onto DUT")
+	srcDstMap := map[string]string{
+		filepath.Join(h.dutTastFilesTmpDir, tmpLocalRunner):    dutLocalRunner,
+		filepath.Join(h.dutTastFilesTmpDir, tastBundleZipName): filepath.Join("/tmp", tastBundleZipName),
+		filepath.Join(h.dutTastFilesTmpDir, tastDataZipName):   filepath.Join("/tmp", tastDataZipName),
+	}
+	if _, err := linuxssh.PutFiles(ctx, h.DUT.Conn(), srcDstMap, linuxssh.PreserveSymlinks); err != nil {
+		return err
+	}
+
+	// Unzip Tast bundles and data files to their expected locations on the DUT.
+	for zipPath, dstPath := range map[string]string{
+		filepath.Join("/tmp", tastBundleZipName): dutLocalBundleDir,
+		filepath.Join("/tmp", tastDataZipName):   dutLocalDataDir,
+	} {
+		if err := h.DUT.Command("rm", "-rf", dstPath).Run(ctx); err != nil {
+			return errors.Wrapf(err, "removing pre-existing files on DUT at %s", dstPath)
+		}
+		if err := h.DUT.Command("unzip", zipPath, "-d", dstPath).Run(ctx); err != nil {
+			return errors.Wrapf(err, "unzipping zipfile %s on DUT to %s", zipPath, dstPath)
+		}
+		if err := h.DUT.Command("rm", "-rf", zipPath).Run(ctx); err != nil {
+			return errors.Wrapf(err, "cleaning up zipfile on DUT at %s", zipPath)
+		}
+	}
+
+	// Set file permissions on the DUT.
+	for _, fp := range []string{
+		dutLocalRunner,
+		filepath.Join(dutLocalBundleDir, "bin_pushed", "local_test_runner"),
+		filepath.Join(dutLocalBundleDir, "bundles", "local", "cros"),
+		filepath.Join(dutLocalBundleDir, "bundles", "local_pushed", "cros"),
+	} {
+		if err := h.DUT.Command("chmod", "755", fp).Run(ctx); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+// DoesDUTNeedTastFiles determines whether the DUT's Tast files are either missing or outdated.
+func (h *Helper) DoesDUTNeedTastFiles(ctx context.Context) (bool, error) {
+	// If the files are not present on the DUT, then installation is needed.
+	if ok, err := h.Reporter.DoAllPathsExist(ctx, []string{dutLocalRunner, dutLocalBundleDir, dutLocalDataDir}); err != nil {
+		return false, errors.Wrap(err, "checking whether Tast files are present on DUT")
+	} else if !ok {
+		return true, nil
+	}
+
+	// If the files are present but older than the previously recorded install time, then installation is needed.
+	out, err := h.Reporter.CommandOutputLines(ctx, "stat", "-c", "%Y", dutLocalRunner, dutLocalBundleDir, dutLocalDataDir)
+	if err != nil {
+		return false, errors.Wrap(err, "checking last-modified-time of DUT's Tast files")
+	}
+	for _, line := range out {
+		mtime, err := strconv.Atoi(strings.TrimSpace(line))
+		if err != nil {
+			return false, errors.Wrapf(err, "converting `stat` output line to int: %q", line)
+		}
+		if mtime < h.dutTastFilesInstallTime {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
+// zipDir compresses a directory's contents on the test server into a zipfile.
+func zipDir(srcDir, zipPath string) error {
+	zipFile, err := os.Create(zipPath)
+	if err != nil {
+		return errors.Wrapf(err, "creating zipfile at %s", zipPath)
+	}
+	defer zipFile.Close()
+
+	w := zip.NewWriter(zipFile)
+	defer w.Close()
+
+	if err = filepath.Walk(srcDir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return errors.Wrapf(err, "crawling path %s", path)
+		}
+
+		// No need to add directories directly to the zipfile.
+		// filepath.Walk will crawl that directory.
+		if info.IsDir() {
+			return nil
+		}
+
+		// Open the file within srcDir so we can write it to the zipfile.
+		file, err := os.Open(path)
+		if err != nil {
+			return errors.Wrapf(err, "opening path %s", path)
+		}
+		defer file.Close()
+
+		// Add a new file to the zip file with the same name.
+		// The argument to w.Create must be a relative path: it must not begin with '/'.
+		relPath, err := filepath.Rel(srcDir, path)
+		if err != nil {
+			return errors.Wrapf(err, "file %s did not contain prefix %s", path, srcDir)
+		}
+		f, err := w.Create(relPath)
+		if err != nil {
+			return errors.Wrapf(err, "creating new file %s in zip writer", relPath)
+		}
+
+		// Copy the contents of the src file into the zip's new file.
+		if _, err = io.Copy(f, file); err != nil {
+			return errors.Wrapf(err, "copying file %s into zip file", path)
+		}
+
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "adding source files to zipfile")
+	}
 	return nil
 }
