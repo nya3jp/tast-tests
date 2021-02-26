@@ -104,6 +104,23 @@
       "parentUuid": "470470a3_6de47a60",
       "revId": "4d0eec5408cf0868614bccd6a3b9a974cac85704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5702471e_4aac46a7",
+        "filename": "src/chromiumos/tast/local/policyutil/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-26T10:41:36Z",
+      "side": 1,
+      "message": "looks like attached bug is not related to issue in Prepare method",
+      "revId": "4d0eec5408cf0868614bccd6a3b9a974cac85704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
