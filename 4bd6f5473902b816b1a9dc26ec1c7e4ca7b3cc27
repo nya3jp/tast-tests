@@ -16,6 +16,52 @@
       "message": "MTP tast test works locally on my setup.\n\nHowever, to deploy it to the lab, it is pending a special lab setup (b/179736612). Thus, the test is marked as disabled now.\n\nCould you please take a look? Thanks.",
       "revId": "4bd6f5473902b816b1a9dc26ec1c7e4ca7b3cc27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60340997_fbd3393b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-02-26T13:52:41Z",
+      "side": 1,
+      "message": "nit: line overflow",
+      "range": {
+        "startLine": 58,
+        "startChar": 89,
+        "endLine": 58,
+        "endChar": 97
+      },
+      "revId": "4bd6f5473902b816b1a9dc26ec1c7e4ca7b3cc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af2da8af_e17c14fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-02-26T13:52:41Z",
+      "side": 1,
+      "message": "nit: line overflow",
+      "range": {
+        "startLine": 61,
+        "startChar": 91,
+        "endLine": 61,
+        "endChar": 94
+      },
+      "revId": "4bd6f5473902b816b1a9dc26ec1c7e4ca7b3cc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
