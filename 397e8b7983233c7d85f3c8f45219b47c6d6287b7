@@ -39,6 +39,30 @@
       },
       "revId": "397e8b7983233c7d85f3c8f45219b47c6d6287b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97f74054_dc11fa65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-26T00:44:00Z",
+      "side": 1,
+      "message": "Thank you Po-Hsien for suggestion. \nI just tested, but seems that it wants to have 3 params. \n\n2021-02-26T00:41:45.220968Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go:122:40: not enough arguments in call to testexec.CommandContext\n2021-02-26T00:41:45.220977Z \thave (context.Context, []string...)\n2021-02-26T00:41:45.220988Z \twant (context.Context, string, ...string)\n2021-02-26T00:41:45.221016Z Failed to build and push: build failed: failed to build chromiumos/tast/local/bundles/cros: exit status 2\n\nLet me know if I missed something. Otherwise, I will leave it as it is.",
+      "parentUuid": "f2eb2078_5fee1590",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 9
+      },
+      "revId": "397e8b7983233c7d85f3c8f45219b47c6d6287b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
