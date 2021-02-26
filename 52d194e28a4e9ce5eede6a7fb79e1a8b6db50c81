@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad15930f_c2bc6a7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-26T17:51:59Z",
+      "side": 1,
+      "message": "Take a look at go/tast/+/refs/heads/master/docs/test_dependencies.md#hardware-dependencies before submitting this CL.\n\nSkipOnModel and the like are very brittle.  They rely on identifiers out of your control.  (Specifically, SkipOnPlatform being especially bad, as it relies on an identifier which is purely internal to mosys, the name of the platform_intf.  The mosys owners can change these identifiers at any time they want, and your code will be subject to breakage when that happens).\n\nSo I\u0027d recommend trying to stay away from those functions if you can.",
+      "revId": "52d194e28a4e9ce5eede6a7fb79e1a8b6db50c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efa1dc51_4610fd40",
