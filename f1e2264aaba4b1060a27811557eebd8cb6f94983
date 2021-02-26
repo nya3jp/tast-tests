@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d944add4_5a6e03a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-26T22:06:30Z",
+      "side": 1,
+      "message": "mostly looks good",
+      "revId": "f1e2264aaba4b1060a27811557eebd8cb6f94983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10245a5a_6ebb214f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-26T22:06:30Z",
+      "side": 1,
+      "message": "nit: maybe use %q here since it\u0027s a filepath, YMMV",
+      "range": {
+        "startLine": 85,
+        "startChar": 59,
+        "endLine": 85,
+        "endChar": 61
+      },
+      "revId": "f1e2264aaba4b1060a27811557eebd8cb6f94983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a622be0_1cacbbd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-26T22:06:30Z",
+      "side": 1,
+      "message": "ditto re: %q",
+      "range": {
+        "startLine": 89,
+        "startChar": 58,
+        "endLine": 89,
+        "endChar": 60
+      },
+      "revId": "f1e2264aaba4b1060a27811557eebd8cb6f94983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d71dc22_e71ad8b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-26T22:06:30Z",
+      "side": 1,
+      "message": "Don\u0027t we need to run this even if L88 fails?",
+      "revId": "f1e2264aaba4b1060a27811557eebd8cb6f94983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dcbb054_1d7fe846",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-26T22:06:30Z",
+      "side": 1,
+      "message": "ditto, don\u0027t we need to run this even if we have failures earlier in this function?",
+      "revId": "f1e2264aaba4b1060a27811557eebd8cb6f94983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09df64ed_5c5515e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-26T22:06:30Z",
+      "side": 1,
+      "message": "nit: ZIP or zip?",
+      "range": {
+        "startLine": 120,
+        "startChar": 41,
+        "endLine": 120,
+        "endChar": 44
+      },
+      "revId": "f1e2264aaba4b1060a27811557eebd8cb6f94983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa7f974_e10c1a28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-02-26T22:06:30Z",
+      "side": 1,
+      "message": "Just %q here should work rather than using commas to delineate, if you even want to bother listing the filename here.\n\nAlso, isn\u0027t this a bit misleading? Failure to mount would show up on L119-120, right? We hit this when the UI fails to update properly.",
+      "revId": "f1e2264aaba4b1060a27811557eebd8cb6f94983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
