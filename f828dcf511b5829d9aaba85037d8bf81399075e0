@@ -22,6 +22,30 @@
       },
       "revId": "f828dcf511b5829d9aaba85037d8bf81399075e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95f8c6d_101e3143",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2021-02-26T01:34:31Z",
+      "side": 0,
+      "message": "Yes we did.\nI am wondering how it was not caught by pre-submit.",
+      "parentUuid": "969ad8f7_04d1dd35",
+      "range": {
+        "startLine": 149,
+        "startChar": 16,
+        "endLine": 149,
+        "endChar": 22
+      },
+      "revId": "f828dcf511b5829d9aaba85037d8bf81399075e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
