@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b54e7d7_040f763f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-26T09:38:38Z",
+      "side": 1,
+      "message": "I added some fincore metrics to our tests, as expected, just after login or when ARCVM is under load, the size can be quite large, but if ChromeOS is using enough memory to reclaim, the numbers are much lower:\n\u003d\u003d\u003e /tmp/tast/results/20210226-174328/tests/multivm.Lifecycle.arc/fincore.json \u003c\u003d\u003d\n{\n   \"fincore\": [\n      {\"res\": \"164577280\", \"pages\": \"40180\", \"size\": \"695627776\", \"file\": \"/opt/google/vms/android/system.raw.img\"},\n      {\"res\": \"4272128\", \"pages\": \"1043\", \"size\": \"159023104\", \"file\": \"/opt/google/vms/android/vendor.raw.img\"}\n   ]\n}\n\n\u003d\u003d\u003e /tmp/tast/results/20210226-174328/tests/multivm.Lifecycle.host_with_bg_arc/fincore.json \u003c\u003d\u003d\n{\n   \"fincore\": [\n      {\"res\": \"80920576\", \"pages\": \"19756\", \"size\": \"695627776\", \"file\": \"/opt/google/vms/android/system.raw.img\"},\n      {\"res\": \"954368\", \"pages\": \"233\", \"size\": \"159023104\", \"file\": \"/opt/google/vms/android/vendor.raw.img\"}\n   ]\n}\n\n\u003d\u003d\u003e /tmp/tast/results/20210226-174328/tests/multivm.Login.arc/fincore.json \u003c\u003d\u003d\n{\n   \"fincore\": [\n      {\"res\": \"138661888\", \"pages\": \"33853\", \"size\": \"695627776\", \"file\": \"/opt/google/vms/android/system.raw.img\"},\n      {\"res\": \"1114112\", \"pages\": \"272\", \"size\": \"159023104\", \"file\": \"/opt/google/vms/android/vendor.raw.img\"}\n   ]\n}\n\nThis does show that there is a lot of room to improve this though, even 90 MiB is a lot!\n",
+      "revId": "1816e50ed2ff39281b12d647834a367d9aed0033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
