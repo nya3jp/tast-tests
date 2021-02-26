@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3135221c_5bfae60c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-26T00:21:34Z",
+      "side": 1,
+      "message": "Hi, when I tried doing that, got timeout error for ScrollBackward. I observed that, even though app was performing scrollBackward, the test got failed due to \"timeout error for ScrollBackward\" leading to flaky failures. So I think we need to go with this style. Thanks.",
+      "parentUuid": "56bbb652_17834f74",
+      "range": {
+        "startLine": 375,
+        "startChar": 1,
+        "endLine": 375,
+        "endChar": 82
+      },
+      "revId": "6ec07458d9fb5ed87eb4c5a74a75ef445c4f2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c40f7388_ce4587f7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-25T21:58:25Z",
       "side": 1,
       "message": "this looks organize wrong, it should be:\n\n if err :\u003d checkForScrollLayout.ScrollForward(ctx, 500); err !\u003d nil {\n   s.Fatal(\"Failed to scrollForward: \", err)\n }\n DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)\n\nditto for below.",
+      "range": {
+        "startLine": 376,
+        "startChar": 2,
+        "endLine": 382,
+        "endChar": 3
+      },
+      "revId": "6ec07458d9fb5ed87eb4c5a74a75ef445c4f2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "696c008e_2467db82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-02-26T00:21:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c40f7388_ce4587f7",
       "range": {
         "startLine": 376,
         "startChar": 2,
