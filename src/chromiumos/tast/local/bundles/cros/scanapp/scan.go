@@ -6,16 +6,14 @@ package scanapp
 
 import (
 	"context"
-	"os"
 	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/scanapp/scanning"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/scanapp"
 	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/ippusbbridge"
@@ -40,7 +38,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
 		Data: []string{
-			sourceImage,
+			scanning.SourceImage,
 			pngGoldenFile,
 			jpgGoldenFile,
 			pdfGoldenFile,
@@ -48,18 +46,10 @@ func init() {
 	})
 }
 
-const defaultScanPattern = filesapp.MyFilesPath + "/scan*_*.*"
-
-const scannerName = "DavieV Virtual USB Printer (USB)"
-
 const (
-	sourceImage      = "scan_source.jpg"
-	pngGoldenFile    = "flatbed_png_color_letter_300_dpi.png"
-	jpgGoldenFile    = "adf_simplex_jpg_grayscale_a4_150_dpi.jpg"
-	pdfGoldenFile    = "adf_duplex_pdf_grayscale_max_300_dpi.pdf"
-	descriptors      = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
-	attributes       = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
-	esclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
+	pngGoldenFile = "flatbed_png_color_letter_300_dpi.png"
+	jpgGoldenFile = "adf_simplex_jpg_grayscale_a4_150_dpi.jpg"
+	pdfGoldenFile = "adf_duplex_pdf_grayscale_max_300_dpi.pdf"
 )
 
 var tests = []struct {
@@ -69,7 +59,7 @@ var tests = []struct {
 }{{
 	name: "flatbed_png_color_letter_300_dpi",
 	settings: scanapp.ScanSettings{
-		Scanner:    scannerName,
+		Scanner:    scanning.ScannerName,
 		Source:     scanapp.SourceFlatbed,
 		FileType:   scanapp.FileTypePNG,
 		ColorMode:  scanapp.ColorModeColor,
@@ -80,7 +70,7 @@ var tests = []struct {
 }, {
 	name: "adf_simplex_jpg_grayscale_a4_150_dpi",
 	settings: scanapp.ScanSettings{
-		Scanner:  scannerName,
+		Scanner:  scanning.ScannerName,
 		Source:   scanapp.SourceADFOneSided,
 		FileType: scanapp.FileTypeJPG,
 		// TODO(jschettler): Change this to black and white when the virtual
@@ -93,7 +83,7 @@ var tests = []struct {
 }, {
 	name: "adf_duplex_pdf_grayscale_max_300_dpi",
 	settings: scanapp.ScanSettings{
-		Scanner:    scannerName,
+		Scanner:    scanning.ScannerName,
 		Source:     scanapp.SourceADFTwoSided,
 		FileType:   scanapp.FileTypePDF,
 		ColorMode:  scanapp.ColorModeGrayscale,
@@ -102,34 +92,6 @@ var tests = []struct {
 	},
 	goldenFile: pdfGoldenFile,
 }}
-
-func getScan(pattern string) (string, error) {
-	scans, err := filepath.Glob(pattern)
-	if err != nil {
-		return "", err
-	}
-
-	if len(scans) != 1 {
-		return "", errors.New("found too many scans")
-	}
-
-	return scans[0], nil
-}
-
-func removeScans(pattern string) error {
-	scans, err := filepath.Glob(pattern)
-	if err != nil {
-		return err
-	}
-
-	for _, scan := range scans {
-		if err = os.Remove(scan); err != nil {
-			return errors.Wrapf(err, "failed to remove %s", scan)
-		}
-	}
-
-	return nil
-}
 
 func Scan(ctx context.Context, s *testing.State) {
 	// Use cleanupCtx for any deferred cleanups in case of timeouts or
@@ -161,12 +123,12 @@ func Scan(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
+	devInfo, err := usbprinter.LoadPrinterIDs(scanning.Descriptors)
 	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
+		s.Fatalf("Failed to load printer IDs from %v: %v", scanning.Descriptors, err)
 	}
 
-	printer, err := usbprinter.StartScanner(ctx, devInfo, descriptors, attributes, esclCapabilities, s.DataPath(sourceImage))
+	printer, err := usbprinter.StartScanner(ctx, devInfo, scanning.Descriptors, scanning.Attributes, scanning.EsclCapabilities, s.DataPath(scanning.SourceImage))
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
@@ -190,7 +152,7 @@ func Scan(ctx context.Context, s *testing.State) {
 	for _, test := range tests {
 		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
 			defer func() {
-				if err := removeScans(defaultScanPattern); err != nil {
+				if err := scanning.RemoveScans(scanning.DefaultScanPattern); err != nil {
 					s.Error("Failed to remove scans: ", err)
 				}
 			}()
@@ -203,7 +165,7 @@ func Scan(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to perform scan: ", err)
 			}
 
-			scan, err := getScan(defaultScanPattern)
+			scan, err := scanning.GetScan(scanning.DefaultScanPattern)
 			if err != nil {
 				s.Fatal("Failed to find scan: ", err)
 			}
