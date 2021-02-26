@@ -114,14 +114,19 @@ func CrosSenderCrosReceiver(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting sending on DUT1 (Sender)")
-	fileReq := &nearbyservice.CrOSSendFileRequest{FileName: remoteFilePath}
-	fileNames, err := sender.PrepareFilesAndStartSend(ctx, fileReq)
+	fileReq := &nearbyservice.CrOSPrepareFileRequest{FileName: remoteFilePath}
+	fileNames, err := sender.PrepareFiles(ctx, fileReq)
+	if err != nil {
+		s.Fatal("Failed to prepare files for sending on DUT1 (Sender): ", err)
+	}
+	sendReq := &nearbyservice.CrOSSendFilesRequest{FileNames: fileNames.FileNames}
+	_, err = sender.StartSend(ctx, sendReq)
 	if err != nil {
 		s.Fatal("Failed to start send on DUT1 (Sender): ", err)
 	}
 
 	s.Log("Selecting Receiver's (DUT2) share target on Sender (DUT1)")
-	targetReq := &nearbyservice.CrOSSelectShareTargetRequest{ReceiverName: receiverDisplayName}
+	targetReq := &nearbyservice.CrOSSelectShareTargetRequest{ReceiverName: receiverDisplayName, CollectShareToken: true}
 	senderShareToken, err := sender.SelectShareTarget(ctx, targetReq)
 	if err != nil {
 		s.Fatal("Failed to select share target on DUT1 (Sender): ", err)

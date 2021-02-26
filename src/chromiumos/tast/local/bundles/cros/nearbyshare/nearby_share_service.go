@@ -130,8 +130,8 @@ func (n *NearbyService) StartHighVisibilityMode(ctx context.Context, req *empty.
 	return &empty.Empty{}, localnearby.StartHighVisibilityMode(ctx, n.tconn, n.deviceName)
 }
 
-// PrepareFilesAndStartSend extracts test files and then starts to share the extracted files.
-func (n *NearbyService) PrepareFilesAndStartSend(ctx context.Context, req *nearbyshare.CrOSSendFileRequest) (*nearbyshare.CrOSSendFilesResponse, error) {
+// PrepareFiles extracts test files.
+func (n *NearbyService) PrepareFiles(ctx context.Context, req *nearbyshare.CrOSPrepareFileRequest) (*nearbyshare.CrOSPrepareFileResponse, error) {
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
@@ -140,11 +140,22 @@ func (n *NearbyService) PrepareFilesAndStartSend(ctx context.Context, req *nearb
 		testing.ContextLog(ctx, "Failed to extract test files")
 		return nil, err
 	}
-	var res nearbyshare.CrOSSendFilesResponse
-	res.FileNames = filenames
+	res := nearbyshare.CrOSPrepareFileResponse{FileNames: filenames}
+	return &res, nil
+}
+
+// StartSend starts to share files.
+func (n *NearbyService) StartSend(ctx context.Context, req *nearbyshare.CrOSSendFilesRequest) (*empty.Empty, error) {
+	if n.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+	if n.senderSurface != nil {
+		n.senderSurface.Close(ctx)
+	}
+
 	// Get the full paths of the test files to pass to chrome://nearby.
 	var testFiles []string
-	for _, f := range filenames {
+	for _, f := range req.FileNames {
 		testFiles = append(testFiles, filepath.Join(nearbytestutils.SendDir, f))
 	}
 	sender, err := localnearby.StartSendFiles(ctx, n.cr, testFiles)
@@ -153,7 +164,7 @@ func (n *NearbyService) PrepareFilesAndStartSend(ctx context.Context, req *nearb
 		return nil, err
 	}
 	n.senderSurface = sender
-	return &res, nil
+	return &empty.Empty{}, nil
 }
 
 // SelectShareTarget selects the expected receiver in the sending window.
@@ -168,11 +179,13 @@ func (n *NearbyService) SelectShareTarget(ctx context.Context, req *nearbyshare.
 		return nil, errors.New("failed to select share target")
 	}
 	var res nearbyshare.CrOSShareTokenResponse
-	token, err := n.senderSurface.ConfirmationToken(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get confirmation token")
+	if req.CollectShareToken {
+		token, err := n.senderSurface.ConfirmationToken(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get confirmation token")
+		}
+		res.ShareToken = token
 	}
-	res.ShareToken = token
 	return &res, nil
 }
 
@@ -221,4 +234,20 @@ func (n *NearbyService) FilesHashes(ctx context.Context, req *nearbyshare.CrOSFi
 	}
 	res.Hashes = hashes
 	return &res, nil
+}
+
+// AcceptIncomingShareNotificationAndWaitForCompletion accepts the incoming transfer via notification. Used for in contact tests.
+func (n *NearbyService) AcceptIncomingShareNotificationAndWaitForCompletion(ctx context.Context, req *nearbyshare.CrOSReceiveFilesRequest) (*empty.Empty, error) {
+	if n.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+	if err := localnearby.AcceptIncomingShareNotification(ctx, n.tconn, req.SenderName, localnearby.CrosDetectSenderTimeout); err != nil {
+		return nil, errors.Wrap(err, "CrOS receiver failed to accept Nearby Share notification")
+	}
+	testing.ContextLog(ctx, "Accepted the share on the CrOS receiver")
+	testing.ContextLog(ctx, "Waiting for receiving-complete notification on CrOS receiver")
+	if err := localnearby.WaitForReceivingCompleteNotification(ctx, n.tconn, req.SenderName, localnearby.CrosDetectSenderTimeout); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for notification to indicate sharing has completed on CrOS")
+	}
+	return &empty.Empty{}, nil
 }
