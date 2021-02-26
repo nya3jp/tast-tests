@@ -71,7 +71,8 @@ func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT, t
 
 	// Connect to the Nearby Share Service so we can execute local code on the DUT.
 	ns := nearbyshare.NewNearbyShareServiceClient(cl.Conn)
-	if _, err := ns.NewChromeLogin(ctx, &empty.Empty{}); err != nil {
+	loginReq := &nearbyshare.CrOSLoginRequest{}
+	if _, err := ns.NewChromeLogin(ctx, loginReq); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer remotetestutils.SaveLogs(ctx, ns, d, tag, s.OutDir())

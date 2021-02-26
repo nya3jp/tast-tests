@@ -176,7 +176,8 @@ func CrosSenderCrosReceiver(ctx context.Context, s *testing.State) {
 func enableNearbyShare(ctx context.Context, s *testing.State, cl *rpc.Client, deviceName string) (nearbyservice.NearbyShareServiceClient, error) {
 	// Connect to the Nearby Share Service so we can execute local code on the DUT.
 	ns := nearbyservice.NewNearbyShareServiceClient(cl.Conn)
-	if _, err := ns.NewChromeLogin(ctx, &empty.Empty{}); err != nil {
+	loginReq := &nearbyservice.CrOSLoginRequest{}
+	if _, err := ns.NewChromeLogin(ctx, loginReq); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 
