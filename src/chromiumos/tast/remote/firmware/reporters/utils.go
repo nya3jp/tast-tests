@@ -7,6 +7,7 @@ package reporters
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -21,4 +22,16 @@ func (r *Reporter) Now(ctx context.Context) (time.Time, error) {
 		return time.Time{}, err
 	}
 	return time.Parse(goFormat, res)
+}
+
+// DoAllPathsExist reports whether all given paths exist on the DUT.
+func (r *Reporter) DoAllPathsExist(ctx context.Context, paths []string) (bool, error) {
+	out, err := r.CombinedOutput(ctx, "file", append([]string{"-E"}, paths...)...)
+	if err == nil {
+		return true, nil
+	}
+	if strings.Contains(out, "No such file or directory") {
+		return false, nil
+	}
+	return false, err
 }
