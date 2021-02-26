@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dbabadf_f9d025c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-26T18:58:03Z",
+      "side": 1,
+      "message": "This version doesn\u0027t properly handle errors. We should switch back the the previous version and figure out why it was throwing errors.",
+      "revId": "5a3e4bfa88932267247b8597236b3fad48bc3dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c26006_f3d36e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-26T18:58:03Z",
+      "side": 1,
+      "message": "This is just checking the same error as on like 375. It should be using the error from line 376.",
+      "range": {
+        "startLine": 378,
+        "startChar": 2,
+        "endLine": 382,
+        "endChar": 3
+      },
+      "revId": "5a3e4bfa88932267247b8597236b3fad48bc3dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553cb8e2_ed9cb08e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-26T18:58:03Z",
+      "side": 1,
+      "message": "This is just checking the same error as on like 375. It should be using the error from line 383.",
+      "range": {
+        "startLine": 385,
+        "startChar": 2,
+        "endLine": 389,
+        "endChar": 3
+      },
+      "revId": "5a3e4bfa88932267247b8597236b3fad48bc3dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
