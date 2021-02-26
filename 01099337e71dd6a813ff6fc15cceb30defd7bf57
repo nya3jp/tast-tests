@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b52afca_735420b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-26T22:01:56Z",
+      "side": 1,
+      "message": "I think we can leave that alone for now.",
+      "parentUuid": "0ca565c9_c6583ebc",
+      "revId": "01099337e71dd6a813ff6fc15cceb30defd7bf57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddea2c0d_8a7f719e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-26T21:15:01Z",
       "side": 1,
       "message": "You might want to consider adding a perf test for 10bpp.",
+      "range": {
+        "startLine": 438,
+        "startChar": 3,
+        "endLine": 438,
+        "endChar": 4
+      },
+      "revId": "01099337e71dd6a813ff6fc15cceb30defd7bf57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3530243_6d8b6e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-26T22:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddea2c0d_8a7f719e",
       "range": {
         "startLine": 438,
         "startChar": 3,
