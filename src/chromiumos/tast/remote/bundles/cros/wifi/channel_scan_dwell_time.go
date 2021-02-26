@@ -45,7 +45,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		knownTestPrefix        = "wifi_CSDT"
 		suffixLetters          = "abcdefghijklmnopqrstuvwxyz0123456789"
 		captureName            = "channel_scan_dwell_time"
-		testChannel            = 1
+		testChannel            = 36
 		numBSS                 = 1024
 		delayInterval          = 1 * time.Millisecond
 		scanStartDelay         = 500 * time.Millisecond
@@ -84,7 +84,10 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 
 	bssList, capturer, err := func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
 		s.Log("Configuring AP on router")
-		apOpts := []hostapd.Option{hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(testChannel)}
+		apOpts := []hostapd.Option{
+			hostapd.Mode(hostapd.Mode80211nMixed),
+			hostapd.HTCaps(hostapd.HTCapHT40),
+			hostapd.Channel(testChannel)}
 		ap, err := tf.ConfigureAP(ctx, apOpts, nil)
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to configure ap")
