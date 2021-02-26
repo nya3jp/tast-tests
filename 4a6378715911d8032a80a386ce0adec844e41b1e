@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "278a794b_4952682c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-26T18:25:28Z",
+      "side": 1,
+      "message": "Jao-ke,\n\nheads up. note that my change landed yesterday, and looks like the change has merge conflict with the change.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2702521\n\n",
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "432a7fef_0b2af815",
