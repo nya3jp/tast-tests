@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0dc963e0_f76b6cb8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-26T21:44:38Z",
+      "side": 1,
+      "message": "generally you should only rename if there is a conflict. Also, you may just want to change the service name to be nearbyservice in general",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "fe0cb604d3b865a506f1946ec4e621ea3d68346e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "201c5809_04e019ad",
         "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver_in_contacts.go",
         "patchSetId": 1
@@ -19,6 +42,29 @@
         "startChar": 3,
         "endLine": 36,
         "endChar": 34
+      },
+      "revId": "fe0cb604d3b865a506f1946ec4e621ea3d68346e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1af8d6_882b86ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-26T21:44:38Z",
+      "side": 1,
+      "message": "nit: define all of these as variables instead of inline",
+      "range": {
+        "startLine": 95,
+        "startChar": 70,
+        "endLine": 95,
+        "endChar": 84
       },
       "revId": "fe0cb604d3b865a506f1946ec4e621ea3d68346e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
