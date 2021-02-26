@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4ac4c7f_294eea05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-26T17:17:18Z",
+      "side": 1,
+      "message": "cc: Harpreet, Hidehiko - This is an example of a ",
+      "revId": "dcf0a5b61cfc7bc7bb688c18295c56a5081576be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
