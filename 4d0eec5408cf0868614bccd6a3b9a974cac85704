@@ -86,6 +86,24 @@
       "parentUuid": "470470a3_6de47a60",
       "revId": "4d0eec5408cf0868614bccd6a3b9a974cac85704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1970b47_103b5876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-26T10:39:59Z",
+      "side": 1,
+      "message": "it might be that the problem sits somewhere in Chrome DevTools protocol Go library",
+      "parentUuid": "470470a3_6de47a60",
+      "revId": "4d0eec5408cf0868614bccd6a3b9a974cac85704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
