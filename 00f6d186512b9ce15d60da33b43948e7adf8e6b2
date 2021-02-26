@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89c511b8_31889bc4",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-02-26T08:59:13Z",
+      "side": 1,
+      "message": "Use a shortened context in this case to be consistent with the previous implementation.",
+      "revId": "00f6d186512b9ce15d60da33b43948e7adf8e6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
