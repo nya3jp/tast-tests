@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "52c74d9a_8211232e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-26T02:03:56Z",
+      "side": 1,
+      "message": "Allowlist done, and the test now runs fine.",
+      "parentUuid": "263e54f7_99ff1b11",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "6607e4cfa1ef09164349097a1b4cc686f5f37db5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0f7dce43_36e2c449",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2021-02-25T19:36:32Z",
       "side": 1,
       "message": "nit: maybe random should be placed outside?\n  r :\u003d rand.New(...)\n  return func(cfg *config.Config) error {\n    ...\n    c :\u003d cs[r.Intn(len(cs))\n    ...\n  }",
+      "revId": "6607e4cfa1ef09164349097a1b4cc686f5f37db5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a2fe8e_9b66b448",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-26T02:03:56Z",
+      "side": 1,
+      "message": "Done. Since Option function is called exactly once, it\u0027s not really different to instanciate rand.Rand there, but I think it makes sense to make it a global variable to initialize it only once within a program run.",
+      "parentUuid": "0f7dce43_36e2c449",
       "revId": "6607e4cfa1ef09164349097a1b4cc686f5f37db5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
