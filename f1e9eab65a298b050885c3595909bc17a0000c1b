@@ -22,6 +22,30 @@
       },
       "revId": "f1e9eab65a298b050885c3595909bc17a0000c1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df2ee97_5d937565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-02-26T06:46:10Z",
+      "side": 0,
+      "message": "Because VP8 is currently disabled on most Intel devices due to b/158655609 so we don\u0027t want to run them in the lab yet. To test this I had to manually enable VP8 again. But I would like to check the tests in already to make it easier to run them. I will enable them once that bug is resolved.",
+      "parentUuid": "22db0738_08603cfd",
+      "range": {
+        "startLine": 31,
+        "startChar": 18,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "f1e9eab65a298b050885c3595909bc17a0000c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
