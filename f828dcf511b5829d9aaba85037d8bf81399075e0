@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "969ad8f7_04d1dd35",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-26T00:01:17Z",
+      "side": 0,
+      "message": "TIL: https://acrolinx.corp.goog/termbrowser/standardview.html#termDatabaseId\u003d9902\n\nSometimes, it\u0027s hard not to use these widely established terms.\nDidn\u0027t we have a presubmit style check?",
+      "range": {
+        "startLine": 149,
+        "startChar": 16,
+        "endLine": 149,
+        "endChar": 22
+      },
+      "revId": "f828dcf511b5829d9aaba85037d8bf81399075e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
