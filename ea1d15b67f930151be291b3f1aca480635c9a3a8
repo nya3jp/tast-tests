@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "993c459b_cfea2c48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-26T02:56:46Z",
+      "side": 1,
+      "message": "Have not done the review. Just some quick feedback so that you can continue to work on. As discussed offline, yes, it would be nice to have a new lib for vkb and one-by-one migrate existing tests to avoid flakiness.\n\nSince vkb is also part of UI. You can probably duplicate vkb package to uiauto package and make the changes there.",
+      "revId": "ea1d15b67f930151be291b3f1aca480635c9a3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6cbe6f7_bf1d4c29",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-26T02:56:46Z",
+      "side": 1,
+      "message": "any reason to rewrite this? Do not see anything wrong before.",
+      "range": {
+        "startLine": 32,
+        "startChar": 101,
+        "endLine": 34,
+        "endChar": 2
+      },
+      "revId": "ea1d15b67f930151be291b3f1aca480635c9a3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e18b56c2_79afccc6",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-26T02:56:46Z",
+      "side": 1,
+      "message": "I am so worried this function will hide potential erros inside, such as executing js. If an error occurs, it is taken as VK not shown. This is assuming uiauto.Exists(finder *nodewith.Finder) never fails. I suggest to remian the old code return (bool, error) unless it is a new practice I do not aware.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 60
+      },
+      "revId": "ea1d15b67f930151be291b3f1aca480635c9a3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d2584e_8e10879c",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-26T02:56:46Z",
+      "side": 1,
+      "message": "Location() will throw out error if node does not show up.This code is not required any more.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "ea1d15b67f930151be291b3f1aca480635c9a3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d511a5a_39ecd75c",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-26T02:56:46Z",
+      "side": 1,
+      "message": "This function is deprecated. I can see http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go is the only user now. Maybe it is safe enough to just remove the function.",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 27
+      },
+      "revId": "ea1d15b67f930151be291b3f1aca480635c9a3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "963330e8_0244365e",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-02-26T02:56:46Z",
+      "side": 1,
+      "message": "FindKeyNode was designed for locating keys specifically while DescendantNode for any ui mode. Since nodeFinder is introduced, we do not actually need to return the actual node any more. Instead returns the KeyFinder and NodeFinder.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 91
+      },
+      "revId": "ea1d15b67f930151be291b3f1aca480635c9a3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
