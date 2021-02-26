@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c32cc8e5_789e0761",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-26T21:46:49Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "01099337e71dd6a813ff6fc15cceb30defd7bf57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca565c9_c6583ebc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-26T21:46:49Z",
+      "side": 1,
+      "message": "nit: maybe want to add here?",
+      "revId": "01099337e71dd6a813ff6fc15cceb30defd7bf57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddea2c0d_8a7f719e",
