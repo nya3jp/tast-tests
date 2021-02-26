@@ -52,7 +52,7 @@ func MountCombinations(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 
-	utility := helper.CryptohomeUtil()
+	utility := helper.CryptohomeClient()
 
 	// Take TPM ownership before running the test.
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {

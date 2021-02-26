@@ -92,7 +92,7 @@ func KeysetTiedToTPM1(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
-	utility := helper.CryptohomeUtil()
+	utility := helper.CryptohomeClient()
 
 	// First we test the case without reboot, that is:
 	// Reset TPM -> Login+Logout -> TakeOwnership -> Login -> Check TPM Bound.

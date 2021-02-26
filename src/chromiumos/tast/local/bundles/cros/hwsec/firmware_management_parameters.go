@@ -116,7 +116,7 @@ func FirmwareManagementParameters(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create hwsec helper: ", err)
 	}
-	utility := helper.CryptohomeUtil()
+	utility := helper.CryptohomeClient()
 
 	// First backup the current FWMP so the test doesn't affect what's on DUT.
 	fwmp, err := utility.BackupFWMP(ctx)

@@ -32,26 +32,26 @@ type CmdRunner interface {
 // hwsec integration test regardless of run-type, i.e., remote or local.
 type Helper struct {
 	cmdRunner        CmdRunner
-	cryptohomeUtil   *CryptohomeClient
-	tpmManagerUtil   *TPMManagerClient
+	cryptohome       *CryptohomeClient
+	tpmManager       *TPMManagerClient
 	daemonController *DaemonController
 }
 
 // NewHelper creates a new Helper, with r responsible for CmdRunner.
 func NewHelper(r CmdRunner) (*Helper, error) {
-	cryptohomeUtil, err := NewCryptohomeClient(r)
+	cryptohome, err := NewCryptohomeClient(r)
 	if err != nil {
 		return nil, err
 	}
-	tpmManagerUtil, err := NewTPMManagerClient(r)
+	tpmManager, err := NewTPMManagerClient(r)
 	if err != nil {
 		return nil, err
 	}
 	daemonController := NewDaemonController(r)
 	return &Helper{
 		cmdRunner:        r,
-		cryptohomeUtil:   cryptohomeUtil,
-		tpmManagerUtil:   tpmManagerUtil,
+		cryptohome:       cryptohome,
+		tpmManager:       tpmManager,
 		daemonController: daemonController,
 	}, nil
 }
@@ -59,11 +59,11 @@ func NewHelper(r CmdRunner) (*Helper, error) {
 // CmdRunner exposes the cmdRunner of helper
 func (h *Helper) CmdRunner() CmdRunner { return h.cmdRunner }
 
-// CryptohomeUtil exposes the cryptohomeUtil of helper
-func (h *Helper) CryptohomeUtil() *CryptohomeClient { return h.cryptohomeUtil }
+// CryptohomeClient exposes the cryptohome of helper
+func (h *Helper) CryptohomeClient() *CryptohomeClient { return h.cryptohome }
 
-// TPMManagerUtil exposes the tpmManagerUtil of helper
-func (h *Helper) TPMManagerUtil() *TPMManagerClient { return h.tpmManagerUtil }
+// TPMManagerClient exposes the tpmManager of helper
+func (h *Helper) TPMManagerClient() *TPMManagerClient { return h.tpmManager }
 
 // DaemonController exposes the daemonController of helper
 func (h *Helper) DaemonController() *DaemonController { return h.daemonController }
@@ -71,17 +71,17 @@ func (h *Helper) DaemonController() *DaemonController { return h.daemonControlle
 // EnsureTPMIsReady ensures the TPM is ready when the function returns |nil|.
 // Otherwise, returns any encountered error.
 func (h *Helper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration) error {
-	info, err := h.tpmManagerUtil.GetNonsensitiveStatus(ctx)
+	info, err := h.tpmManager.GetNonsensitiveStatus(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to ensure ownership due to error in |GetNonsensitiveStatus|")
 	}
 	if !info.IsOwned {
-		if _, err := h.tpmManagerUtil.TakeOwnership(ctx); err != nil {
+		if _, err := h.tpmManager.TakeOwnership(ctx); err != nil {
 			return errors.Wrap(err, "failed to ensure ownership due to error in |TakeOwnership|")
 		}
 	}
 	return testing.Poll(ctx, func(context.Context) error {
-		info, err := h.tpmManagerUtil.GetNonsensitiveStatus(ctx)
+		info, err := h.tpmManager.GetNonsensitiveStatus(ctx)
 		if err != nil {
 			return errors.New("error during checking TPM readiness")
 		}
@@ -100,7 +100,7 @@ func (h *Helper) EnsureTPMIsReady(ctx context.Context, timeout time.Duration) er
 func (h *Helper) EnsureIsPreparedForEnrollment(ctx context.Context, timeout time.Duration) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		// intentionally ignores error; retry the operation until timeout.
-		isPrepared, err := h.cryptohomeUtil.IsPreparedForEnrollment(ctx)
+		isPrepared, err := h.cryptohome.IsPreparedForEnrollment(ctx)
 		if err != nil {
 			return err
 		}

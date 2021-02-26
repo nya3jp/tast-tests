@@ -158,7 +158,7 @@ func LockToSingleUserMountUntilReboot(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
-	utility := helper.CryptohomeUtil()
+	utility := helper.CryptohomeClient()
 
 	// LockToSingleUserMountUntilReboot would only available when the TPM is ready.
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {

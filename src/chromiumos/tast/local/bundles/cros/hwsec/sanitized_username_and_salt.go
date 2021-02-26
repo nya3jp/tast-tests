@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
-	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -32,12 +31,12 @@ func init() {
 }
 
 // getSanitizedUsernameAndCompare retrieves/computes the sanitized username of the given user with various methods (dbus and libbrillo), compares them to check that they match, and returns the sanitized username if everything is alright.
-func getSanitizedUsernameAndCompare(ctx context.Context, cryptohomeUtil *hwsec.CryptohomeClient, username string) (string, error) {
-	fromBrillo, err := cryptohomeUtil.GetSanitizedUsername(ctx, username, false /* don't use dbus */)
+func getSanitizedUsernameAndCompare(ctx context.Context, cryptohome *hwsec.CryptohomeClient, username string) (string, error) {
+	fromBrillo, err := cryptohome.GetSanitizedUsername(ctx, username, false /* don't use dbus */)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get sanitized username from libbrillo")
 	}
-	fromDBus, err := cryptohomeUtil.GetSanitizedUsername(ctx, username, true /* use dbus*/)
+	fromDBus, err := cryptohome.GetSanitizedUsername(ctx, username, true /* use dbus*/)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get sanitized username from dbus")
 	}
@@ -50,12 +49,12 @@ func getSanitizedUsernameAndCompare(ctx context.Context, cryptohomeUtil *hwsec.C
 }
 
 // getSystemSaltAndCompare retrieves the system salt through various methods (dbus and libbrillo), compares them to check that they match, and returns the hex encoded system salt if everything is alright.
-func getSystemSaltAndCompare(ctx context.Context, cryptohomeUtil *hwsec.CryptohomeClient) (string, error) {
-	fromBrillo, err := cryptohomeUtil.GetSystemSalt(ctx, false /* don't use dbus */)
+func getSystemSaltAndCompare(ctx context.Context, cryptohome *hwsec.CryptohomeClient) (string, error) {
+	fromBrillo, err := cryptohome.GetSystemSalt(ctx, false /* don't use dbus */)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get system salt from libbrillo")
 	}
-	fromDBus, err := cryptohomeUtil.GetSystemSalt(ctx, true /* use dbus */)
+	fromDBus, err := cryptohome.GetSystemSalt(ctx, true /* use dbus */)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get system salt from dbus")
 	}
@@ -98,15 +97,15 @@ func SanitizedUsernameAndSalt(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create hwsec helper: ", err)
 	}
-	cryptohomeUtil := helper.CryptohomeUtil()
+	cryptohome := helper.CryptohomeClient()
 
 	// Check the sanitized username.
-	firstSanitized, err := getSanitizedUsernameAndCompare(ctx, cryptohomeUtil, util.FirstUsername)
+	firstSanitized, err := getSanitizedUsernameAndCompare(ctx, cryptohome, util.FirstUsername)
 	if err != nil {
 		s.Fatal("Error with sanitized username for first user: ", err)
 	}
 
-	secondSanitized, err := getSanitizedUsernameAndCompare(ctx, cryptohomeUtil, util.SecondUsername)
+	secondSanitized, err := getSanitizedUsernameAndCompare(ctx, cryptohome, util.SecondUsername)
 	if err != nil {
 		s.Fatal("Error with sanitized username for second user: ", err)
 	}
@@ -118,7 +117,7 @@ func SanitizedUsernameAndSalt(ctx context.Context, s *testing.State) {
 	usernames := []string{util.FirstUsername, util.SecondUsername}
 	sanitizeds := []string{firstSanitized, secondSanitized}
 	for i, u := range usernames {
-		homedir, err := cryptohome.UserPath(ctx, u)
+		homedir, err := cryptohome.GetHomeUserPath(ctx, u)
 		if err != nil {
 			s.Fatalf("Failed to get home path for %q: %v", u, err)
 		}
@@ -128,7 +127,7 @@ func SanitizedUsernameAndSalt(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the system salt.
-	systemSalt, err := getSystemSaltAndCompare(ctx, cryptohomeUtil)
+	systemSalt, err := getSystemSaltAndCompare(ctx, cryptohome)
 	if err != nil {
 		s.Fatal("Failed to get system salt: ", err)
 	}

@@ -34,7 +34,7 @@ func LoginDuringTakingOwnership(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 
-	utility := helper.CryptohomeUtil()
+	utility := helper.CryptohomeClient()
 
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {

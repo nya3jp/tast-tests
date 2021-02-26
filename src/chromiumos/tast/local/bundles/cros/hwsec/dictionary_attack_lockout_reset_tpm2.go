@@ -45,7 +45,7 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
-	tpmManagerUtil := helper.TPMManagerUtil()
+	tpmManager := helper.TPMManagerClient()
 
 	// In this test, we want to check if DA counter increases, and then reset it to see if everything is correct.
 	// Reset/Clear TPM => Check DA Counter => Create NVRAM Index => Write NVRAM Index => Check DA Counter => Reset DA Lockout => Check DA Counter
@@ -63,7 +63,7 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	}
 
 	// Check that the counter is 0 right after resetting.
-	info, err := tpmManagerUtil.GetDAInfo(ctx)
+	info, err := tpmManager.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}
@@ -80,12 +80,12 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	const testFilePath = "/tmp/dictionary_attack_test_1byte.bin"
 
 	// Create the NVRAM space so that we can attempt to increase the counter by unauthorized write.
-	if _, err := tpmManagerUtil.DefineSpace(ctx, 1, false, testNVRAMIndex, []string{hwsec.NVRAMAttributeWriteAuth}, testPassword); err != nil {
+	if _, err := tpmManager.DefineSpace(ctx, 1, false, testNVRAMIndex, []string{hwsec.NVRAMAttributeWriteAuth}, testPassword); err != nil {
 		s.Fatal("Failed to create NVRAM space: ", err)
 	}
 	// Clean up by removing the NVRAM space.
 	defer func() {
-		if _, err := tpmManagerUtil.DestroySpace(ctx, testNVRAMIndex); err != nil {
+		if _, err := tpmManager.DestroySpace(ctx, testNVRAMIndex); err != nil {
 			s.Error("Failed to destroy NVRAM space: ", err)
 		}
 	}()
@@ -101,12 +101,12 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	}()
 
 	// Try to write the NVRAM space with incorrect password to increase the counter.
-	if _, err := tpmManagerUtil.WriteSpaceFromFile(ctx, testNVRAMIndex, testFilePath, testIncorrectPassword); err == nil {
+	if _, err := tpmManager.WriteSpaceFromFile(ctx, testNVRAMIndex, testFilePath, testIncorrectPassword); err == nil {
 		s.Fatal("Writing NVRAM Space should not succeed with incorrect password")
 	}
 
 	// Check counter again, should be 1 because we tried to write NVRAM space with an incorrect password.
-	info, err = tpmManagerUtil.GetDAInfo(ctx)
+	info, err = tpmManager.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}
@@ -115,12 +115,12 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	}
 
 	// Now try to reset the dictionary attack lockout counter.
-	if _, err := tpmManagerUtil.ResetDALock(ctx); err != nil {
+	if _, err := tpmManager.ResetDALock(ctx); err != nil {
 		s.Fatal("Failed to reset dictionary attack lockout: ", err)
 	}
 
 	// Check counter again, should be 0, and lockout shouldn't be in effect.
-	info, err = tpmManagerUtil.GetDAInfo(ctx)
+	info, err = tpmManager.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}

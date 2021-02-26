@@ -31,7 +31,7 @@ func AttestationEID(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Local hwsec helper creation error: ", err)
 	}
-	utility := helper.CryptohomeUtil()
+	utility := helper.CryptohomeClient()
 
 	// Enrollment ID depends on endorsement key, which can only be read when TPM is ready on TPMv1.2.
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {

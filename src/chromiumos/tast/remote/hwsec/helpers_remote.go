@@ -68,7 +68,7 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 	// Currently cryptohome is a bit slow on the first boot, so this polling here is necessary to avoid flakiness.
 	isReady := false
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := h.TPMManagerUtil().GetNonsensitiveStatus(ctx)
+		info, err := h.TPMManagerClient().GetNonsensitiveStatus(ctx)
 		isReady = info.IsOwned
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
@@ -126,7 +126,7 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 	// TODO(crbug.com/879797): Remove polling.
 	isOwned := false
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := h.TPMManagerUtil().GetNonsensitiveStatus(ctx)
+		info, err := h.TPMManagerClient().GetNonsensitiveStatus(ctx)
 		isOwned = info.IsOwned
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
