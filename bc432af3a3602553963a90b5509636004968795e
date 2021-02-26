@@ -16,6 +16,23 @@
       "message": "Cleaned it up a bit ",
       "revId": "bc432af3a3602553963a90b5509636004968795e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5757716_8dfe0d64",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/remotetestutils/remotetestutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-26T19:52:04Z",
+      "side": 1,
+      "message": "not a fan of this package name, but otherwise looks fine.",
+      "revId": "bc432af3a3602553963a90b5509636004968795e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
