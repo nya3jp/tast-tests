@@ -132,6 +132,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6053c55_bee079fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-02-26T02:58:29Z",
+      "side": 1,
+      "message": "I\u0027d use random string if there\u0027s no reason to make dependency.\n\ne.g.\nconst (\n  user \u003d \"foo@example.com\"\n  password \u003d \"whatever\"\n)",
+      "parentUuid": "77acd389_f4ad1708",
+      "revId": "3bc584b0418886bddc9693bf61b6563aa1edb406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9baa3f28_3d79ee29",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go",
         "patchSetId": 15
