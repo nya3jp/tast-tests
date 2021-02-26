@@ -25,7 +25,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"tpm1", "reboot"},
 		Attr:         []string{"group:hwsec_destructive_func"},
-		Timeout:      10 * time.Minute,
+		Timeout:      15 * time.Minute,
 	})
 }
 
