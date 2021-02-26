@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7692522_6432f74a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-26T09:42:43Z",
+      "side": 1,
+      "message": "Sergey, what do you thing about using ComprDataSize vs MemUsedTotal for the perf metric? I went with ComprDataSize since it means we won\u0027t get variance from fragmentation, but it doesn\u0027t include the whole memory cost.",
+      "revId": "e53d7b83214d1f682c1596db736984d83bb974b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11aa1da0_45b1b44e",
+        "filename": "src/chromiumos/tast/local/memory/zram_mm_stat.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-26T09:42:43Z",
+      "side": 1,
+      "message": "I did the TODO, but forgot to remove the comment.",
+      "revId": "e53d7b83214d1f682c1596db736984d83bb974b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
