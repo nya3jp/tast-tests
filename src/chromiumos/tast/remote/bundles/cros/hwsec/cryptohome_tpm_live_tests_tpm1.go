@@ -41,7 +41,7 @@ func CryptohomeTPMLiveTestsTPM1(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 
-	tpmManagerUtil := helper.TPMManagerUtil()
+	tpmManager := helper.TPMManagerClient()
 
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
@@ -59,7 +59,7 @@ func CryptohomeTPMLiveTestsTPM1(ctx context.Context, s *testing.State) {
 		}
 	}(ctxForResetTPM)
 
-	if _, err := tpmManagerUtil.TakeOwnership(ctx); err != nil {
+	if _, err := tpmManager.TakeOwnership(ctx); err != nil {
 		s.Fatal("Failed to take TPM ownership: ", err)
 	}
 

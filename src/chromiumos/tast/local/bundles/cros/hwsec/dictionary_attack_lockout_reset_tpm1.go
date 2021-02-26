@@ -48,7 +48,7 @@ func DictionaryAttackLockoutResetTPM1(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
-	tpmManagerUtil := helper.TPMManagerUtil()
+	tpmManager := helper.TPMManagerClient()
 
 	// In this test, we want to check if DA counter increases, and then reset it to see if everything is correct.
 	// Reset DA Lockout => Check DA Counter => Read NVRAM Index with incorrect password =>
@@ -56,12 +56,12 @@ func DictionaryAttackLockoutResetTPM1(ctx context.Context, s *testing.State) {
 	// Read NVRAM Index with incorrect password is used to trigger an increase in DA counter.
 
 	// Reset DA at the start of the test.
-	if _, err := tpmManagerUtil.ResetDALock(ctx); err != nil {
+	if _, err := tpmManager.ResetDALock(ctx); err != nil {
 		s.Fatal("Failed to reset dictionary attack lockout: ", err)
 	}
 
 	// Check that the counter is 0 right after resetting.
-	info, err := tpmManagerUtil.GetDAInfo(ctx)
+	info, err := tpmManager.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}
@@ -97,12 +97,12 @@ func DictionaryAttackLockoutResetTPM1(ctx context.Context, s *testing.State) {
 	}
 
 	// Try to write the NVRAM space with incorrect password to increase the counter.
-	if _, err := tpmManagerUtil.ReadSpaceToFile(ctx, testNVRAMIndex, testFilePath, testIncorrectPassword); err == nil {
+	if _, err := tpmManager.ReadSpaceToFile(ctx, testNVRAMIndex, testFilePath, testIncorrectPassword); err == nil {
 		s.Fatal("Reading NVRAM Space should not succeed with incorrect password")
 	}
 
 	// Check counter again, should be 1 because we tried to write NVRAM space with an incorrect password.
-	info, err = tpmManagerUtil.GetDAInfo(ctx)
+	info, err = tpmManager.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}
@@ -111,12 +111,12 @@ func DictionaryAttackLockoutResetTPM1(ctx context.Context, s *testing.State) {
 	}
 
 	// Now try to reset the dictionary attack lockout counter.
-	if _, err := tpmManagerUtil.ResetDALock(ctx); err != nil {
+	if _, err := tpmManager.ResetDALock(ctx); err != nil {
 		s.Fatal("Failed to reset dictionary attack lockout: ", err)
 	}
 
 	// Check counter again, should be 0, and lockout shouldn't be in effect.
-	info, err = tpmManagerUtil.GetDAInfo(ctx)
+	info, err = tpmManager.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}

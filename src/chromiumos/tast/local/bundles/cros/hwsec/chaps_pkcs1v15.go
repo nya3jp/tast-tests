@@ -39,7 +39,7 @@ func ChapsPKCS1V15(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create hwsec helper: ", err)
 	}
-	utility := helper.CryptohomeUtil()
+	utility := helper.CryptohomeClient()
 
 	pkcs11Util, err := pkcs11.NewChaps(ctx, r, utility)
 	if err != nil {

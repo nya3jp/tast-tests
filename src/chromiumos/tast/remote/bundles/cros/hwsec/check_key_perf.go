@@ -40,7 +40,7 @@ func CheckKeyPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
-	utility := helper.CryptohomeUtil()
+	utility := helper.CryptohomeClient()
 
 	// Reset TPM
 	s.Log("Start resetting TPM if needed")

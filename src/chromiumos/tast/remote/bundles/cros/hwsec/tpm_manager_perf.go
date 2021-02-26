@@ -37,9 +37,9 @@ const (
 )
 
 // waitUntilTpmManagerReady is a helper function to wait until cryptohome initialized.
-func waitUntilTpmManagerReady(ctx context.Context, tpmManagerUtil *hwsec.TPMManagerClient) error {
+func waitUntilTpmManagerReady(ctx context.Context, tpmManager *hwsec.TPMManagerClient) error {
 	return testing.Poll(ctx, func(context.Context) error {
-		status, err := tpmManagerUtil.Status(ctx)
+		status, err := tpmManager.Status(ctx)
 		if err != nil {
 			return errors.Wrap(err, "can't get TPM status")
 		}
@@ -71,15 +71,15 @@ func TpmManagerPerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
-	tpmManagerUtil := helper.TPMManagerUtil()
+	tpmManager := helper.TPMManagerClient()
 
-	err = waitUntilTpmManagerReady(ctx, tpmManagerUtil)
+	err = waitUntilTpmManagerReady(ctx, tpmManager)
 	if err != nil {
 		s.Fatal("Failed to wait tpm_manager ready: ", err)
 	}
 
 	takeOwnershipStart := time.Now()
-	tpmManagerUtil.TakeOwnership(ctx)
+	tpmManager.TakeOwnership(ctx)
 	takeOwnershipElapsed := time.Since(takeOwnershipStart)
 
 	s.Log("time to take tpm ownership: ", takeOwnershipElapsed.Seconds())

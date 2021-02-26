@@ -214,7 +214,7 @@ func AccountDiskUsage(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create hwsec helper: ", err)
 	}
-	utility := helper.CryptohomeUtil()
+	utility := helper.CryptohomeClient()
 
 	// Cleanup before we start.
 	if err := utility.UnmountAll(ctx); err != nil {

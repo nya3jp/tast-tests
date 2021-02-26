@@ -37,11 +37,11 @@ func DaemonsRestartStress(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
-	tpmManagerUtil := helper.TPMManagerUtil()
+	tpmManager := helper.TPMManagerClient()
 	daemonController := helper.DaemonController()
 
 	// Check that lockout shouldn't be in effect.
-	info, err := tpmManagerUtil.GetDAInfo(ctx)
+	info, err := tpmManager.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}
@@ -116,7 +116,7 @@ func DaemonsRestartStress(ctx context.Context, s *testing.State) {
 	}
 
 	// Check counter didn't increase too much, and lockout shouldn't be in effect.
-	newInfo, err := tpmManagerUtil.GetDAInfo(ctx)
+	newInfo, err := tpmManager.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
 	}

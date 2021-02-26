@@ -47,7 +47,7 @@ func RecreateUserVaultTPM1(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 
-	utility := helper.CryptohomeUtil()
+	utility := helper.CryptohomeClient()
 
 	// Resets the TPM states before running the tests.
 	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {

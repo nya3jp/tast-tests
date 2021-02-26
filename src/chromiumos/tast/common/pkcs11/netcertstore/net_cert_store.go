@@ -94,7 +94,7 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create hwsec helper")
 	}
-	cryptohome := helper.CryptohomeUtil()
+	cryptohome := helper.CryptohomeClient()
 
 	// Take ownership first. We need the ownership for chaps keystore to be available after mount.
 	// For local tests, Tast will try to take ownership before the test runs, but that is not
