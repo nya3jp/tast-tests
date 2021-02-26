@@ -21,6 +21,7 @@ func init() {
 			"group:mainline",
 			"group:paper-io",
 			"paper-io_printing",
+			"informational",
 		},
 		SoftwareDeps: []string{"chrome", "cros_internal", "cups", "virtual_usb_printer"},
 		Data:         []string{"ippusb_copies_unsupported.json"},
