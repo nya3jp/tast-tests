@@ -155,6 +155,24 @@
       "message": "I\u0027m against trying to start Chrome multiple times. It\u0027s not required for the normal Chrome login, it should not be required when policies are used.\n\nThis might hide issues on enterprise devices.",
       "revId": "4d0eec5408cf0868614bccd6a3b9a974cac85704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb2690a4_011eccac",
+        "filename": "src/chromiumos/tast/local/policyutil/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-02-26T13:49:16Z",
+      "side": 1,
+      "message": "thanks for the comment Victor. I removed everyone not make you think this will land in any form as is. I am checking what is going on.",
+      "parentUuid": "0c0ebfbe_7f32c9e9",
+      "revId": "4d0eec5408cf0868614bccd6a3b9a974cac85704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
