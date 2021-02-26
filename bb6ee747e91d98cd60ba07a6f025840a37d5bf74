@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff88eefb_27021168",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-26T08:01:13Z",
+      "side": 1,
+      "message": "I got bit by this the first time because I was used to JS, where a `for (const i of container) {` has a new binding for `i` per loop.\n\nBut if it\u0027s a common idiom in Go, I\u0027ll remove the comment.",
+      "parentUuid": "800bf48d_b6cb9f5e",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 14
+      },
+      "revId": "bb6ee747e91d98cd60ba07a6f025840a37d5bf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff4efb67_9d75a8a9",
@@ -65,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c11b36_59d53dd4",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-26T08:01:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff4efb67_9d75a8a9",
+      "range": {
+        "startLine": 134,
+        "startChar": 11,
+        "endLine": 134,
+        "endChar": 19
+      },
+      "revId": "bb6ee747e91d98cd60ba07a6f025840a37d5bf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e014f4e_34c47c20",
@@ -78,6 +126,24 @@
       "writtenOn": "2021-02-24T18:44:19Z",
       "side": 1,
       "message": "Can you put a comment here for the future readers?  e.g.\n  // Not all processes have smaps_rollup, so this is fine.",
+      "revId": "bb6ee747e91d98cd60ba07a6f025840a37d5bf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "861ac694_fcafbe7e",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-02-26T08:01:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e014f4e_34c47c20",
       "revId": "bb6ee747e91d98cd60ba07a6f025840a37d5bf74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
