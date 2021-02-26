@@ -87,6 +87,30 @@
       },
       "revId": "397e8b7983233c7d85f3c8f45219b47c6d6287b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e9892d_f29a50ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-02-26T17:12:34Z",
+      "side": 1,
+      "message": "Sorry that I missed your comment. \nI guess your intent was to say that command[1:]... is better in a sense that it will consider 2+ options while command[1] will just cover 1 option. \nWill make this change in next one.",
+      "parentUuid": "4c351c11_8d4d1700",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 9
+      },
+      "revId": "397e8b7983233c7d85f3c8f45219b47c6d6287b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
