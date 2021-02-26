@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/multivm"
 	"chromiumos/tast/local/vm"
@@ -70,5 +71,13 @@ func Login(ctx context.Context, s *testing.State) {
 		if err := crostini.BasicCommandWorks(ctx, crostiniVM); err != nil {
 			s.Fatal("Crostini basic commands don't work: ", err)
 		}
+	}
+
+	p := perf.NewValues()
+	if err := multivm.MemoryMetrics(ctx, pre, p, s.OutDir(), ""); err != nil {
+		s.Error("Failed to collect memory metrics")
+	}
+	if err := p.Save(s.OutDir()); err != nil {
+		s.Error("Failed to save perf.Values: ", err)
 	}
 }
