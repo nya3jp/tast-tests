@@ -44,14 +44,18 @@ type NearbyService struct {
 }
 
 // NewChromeLogin logs into Chrome with Nearby Share flags enabled.
-func (n *NearbyService) NewChromeLogin(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyshare.CrOSLoginRequest) (*empty.Empty, error) {
 	if n.cr != nil {
 		return nil, errors.New("Chrome already available")
 	}
-	cr, err := chrome.New(
-		ctx,
+	nearbyOpts := []chrome.Option{
 		chrome.EnableFeatures("IntentHandlingSharing", "NearbySharing", "Sharesheet"),
-	)
+		chrome.ExtraArgs("--nearby-share-verbose-logging"),
+	}
+	if req.Username != "" {
+		nearbyOpts = append(nearbyOpts, chrome.Auth(req.Username, req.Password, ""), chrome.GAIALogin())
+	}
+	cr, err := chrome.New(ctx, nearbyOpts...)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to start Chrome")
 		return nil, err
