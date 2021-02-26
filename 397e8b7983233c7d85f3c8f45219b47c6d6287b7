@@ -63,6 +63,30 @@
       },
       "revId": "397e8b7983233c7d85f3c8f45219b47c6d6287b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c351c11_8d4d1700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-02-26T00:58:44Z",
+      "side": 1,
+      "message": "Oh, Sorry, It is\noutput, err :\u003d testexec.CommandContext(ctx, command[0], command[1:]...)\n\nOr if you want\noutput, err :\u003d testexec.CommandContext(\n    ctx, \n    testOpt.decoder,\n    testOpt.commandBuilder(s.DataPath(testOpt.filename))...\n).CombinedOutput",
+      "parentUuid": "97f74054_dc11fa65",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 9
+      },
+      "revId": "397e8b7983233c7d85f3c8f45219b47c6d6287b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
