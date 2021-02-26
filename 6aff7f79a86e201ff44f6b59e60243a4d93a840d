@@ -91,6 +91,29 @@
       },
       "revId": "6aff7f79a86e201ff44f6b59e60243a4d93a840d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eb51e23_8a29f4dd",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-02-26T12:34:42Z",
+      "side": 1,
+      "message": "May need InstallOptionGrantPermissions for this?\nThe -g option grants all permission when install.\nhttp://screen/32LGP3rXonNXE5y.png",
+      "range": {
+        "startLine": 152,
+        "startChar": 23,
+        "endLine": 152,
+        "endChar": 30
+      },
+      "revId": "6aff7f79a86e201ff44f6b59e60243a4d93a840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
