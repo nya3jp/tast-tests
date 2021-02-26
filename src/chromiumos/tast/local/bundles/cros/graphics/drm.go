@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -41,6 +42,7 @@ func init() {
 			Name:              "dmabuf_test",
 			Val:               []string{"dmabuf_test"},
 			Timeout:           30 * time.Second,
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("coral", "pyro", "reef", "sand", "snappy")),
 			ExtraSoftwareDeps: []string{"display_backlight"},
 			ExtraAttr:         []string{"informational"},
 		}, {
