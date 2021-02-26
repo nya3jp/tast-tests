@@ -158,6 +158,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82f0486d_0ce8ce97",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-26T12:02:08Z",
+      "side": 1,
+      "message": "For better reusability in the future, (don\u0027t have to do it now), WDYT about having a ProxyService that would just set up a tinyproxy (with a hostname allowlist) and a separate FirewallService which would work with iptables to simulate enterprise firewalls, and then the test (or another, third service such as MandatoryProxyNetworkService) would use them together to set up the \"chromeos can only access internet through proxy, proxy only allows certain hosts\" scenario?",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e8ed08a_46f2bb47",
         "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
         "patchSetId": 1
@@ -174,6 +197,52 @@
         "startChar": 3,
         "endLine": 16,
         "endChar": 77
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a20b0da_b5ca2bdd",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-26T12:02:08Z",
+      "side": 1,
+      "message": "I think I\u0027d prefer a name like ProxyAllowlistService here, WDYT?",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c05877c0_bfe957d5",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-26T12:02:08Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused about why the service also has \"perform test\" functions - shouldn\u0027t this service just configure the network setup, and a test *using* this service perform the actual tests?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 68
       },
       "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
