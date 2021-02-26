@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49e24a6a_287bccce",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-26T23:38:37Z",
+      "side": 1,
+      "message": "Hmm we should come up with something better than this. Can be in a separate bug if you wanna get this in though.  \n\nFor snippet and this app, perhaps storing the app version we want in the external data file and comparing against the app version that is installed. Because I\u0027d guess like 99% of the time this is not needed to be reinstalled",
+      "parentUuid": "8a48f44a_45dd3bb9",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 33
+      },
+      "revId": "6aff7f79a86e201ff44f6b59e60243a4d93a840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3eb51e23_8a29f4dd",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
         "patchSetId": 1
