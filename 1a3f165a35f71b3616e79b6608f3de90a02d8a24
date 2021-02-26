@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "268dc92d_d56ffa8e",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-26T06:55:59Z",
+      "side": 1,
+      "message": "We should usually return a concrete type instead of an interface.\n\n\u003e Go interfaces generally belong in the package that uses values of the interface type, not the package that implements those values. The implementing package should return concrete (usually pointer or struct) types: that way, new methods can be added to implementations without requiring extensive refactoring.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#interfaces\n\nFor more details see: go/go-style/decisions#interfaces",
+      "range": {
+        "startLine": 67,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 40
+      },
+      "revId": "1a3f165a35f71b3616e79b6608f3de90a02d8a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
