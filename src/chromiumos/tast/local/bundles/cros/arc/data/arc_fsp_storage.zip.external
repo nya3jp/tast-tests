@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/fsp_storage_20210226.zip",
+  "size": 187,
+  "sha256sum": "e0bd353beed8751170b181a0f076b5e8fa9b1be4e5c12b08d0b962750b84b06d"
+}
