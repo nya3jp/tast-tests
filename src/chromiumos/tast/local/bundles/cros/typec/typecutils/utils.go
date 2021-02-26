@@ -30,10 +30,20 @@ func CheckTBTDevice(expected bool) error {
 	found := ""
 	for _, file := range files {
 		// Check for non-built-in TBT devices.
-		if file.Name() != "domain0" && file.Name() != "0-0" {
-			found = file.Name()
-			break
+		if file.Name() == "domain0" || file.Name() == "0-0" {
+			continue
 		}
+
+		// Check for retimers.
+		// They are of the form "0-0:1.1" or "0-0:3.1".
+		if matched, err := regexp.MatchString(`[\d\-\:]+\.\d`, file.Name()); err != nil {
+			return errors.Wrap(err, "couldn't execute retimer regexp")
+		} else if matched {
+			continue
+		}
+
+		found = file.Name()
+		break
 	}
 
 	if expected && found == "" {
