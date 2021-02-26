@@ -68,6 +68,29 @@
       "parentUuid": "50bf9119_0b5812e4",
       "revId": "20eae5ab1720c4ee31126ac0fcc7c3c6d1bca3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a59730_8503bd58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-26T10:53:47Z",
+      "side": 1,
+      "message": "I struggle to find the minijail0 command line args reference :D what was -i doing?",
+      "range": {
+        "startLine": 72,
+        "startChar": 47,
+        "endLine": 72,
+        "endChar": 56
+      },
+      "revId": "20eae5ab1720c4ee31126ac0fcc7c3c6d1bca3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
