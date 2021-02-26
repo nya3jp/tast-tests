@@ -59,6 +59,14 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		return errors.Wrap(err, "determining boot mode at the start of RebootToMode")
 	}
 
+	// When booting to a different image, such as normal vs. recovery, the new image might
+	// not have local Tast files installed. So, store those files on the test server and reinstall later.
+	if fromMode != toMode && !h.AreDUTTastFilesOnServer() {
+		if err := h.CopyTastFilesFromDUT(ctx); err != nil {
+			return errors.Wrap(err, "copying Tast files from DUT to test server")
+		}
+	}
+
 	// Perform blocking sync prior to reboot, then close the RPC connection.
 	if err := h.RequireRPCUtils(ctx); err != nil {
 		return errors.Wrap(err, "requiring RPC utils")
@@ -118,6 +126,15 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		return h.DUT.WaitConnect(ctx)
 	}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil {
 		return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
+	}
+
+	// Send Tast files back to DUT.
+	if needCopy, err := h.DoesDUTNeedTastFiles(ctx); err != nil {
+		return errors.Wrap(err, "determining whether DUT needs Tast files")
+	} else if needCopy {
+		if err := h.CopyTastFilesToDUT(ctx); err != nil {
+			return errors.Wrap(err, "copying Tast files back to DUT")
+		}
 	}
 
 	// Verify successful reboot.
