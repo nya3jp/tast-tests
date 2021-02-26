@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac6dda9_b350c90d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-26T19:12:28Z",
+      "side": 1,
+      "message": "Rebased to use the new fixture. I\u0027ll go ahead and submit the test now. It might fail for a few builds until we get an uprev containing crrev.com/c/2721003, after which it should go green. I\u0027ll keep an eye on it.",
+      "revId": "b202af6c71edf1746be1f6f6fc04dcc1e36a7852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
