@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
 	"chromiumos/tast/local/camera/testutil"
@@ -33,6 +34,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{caps.BuiltinUSBCamera},
+		Timeout:      4 * time.Minute,
 	})
 }
 
