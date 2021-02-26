@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "da064d15_5597a886",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-26T11:39:01Z",
+      "side": 1,
+      "message": "should we be calling this \u0027a filter\u0027 or \u0027filter rules\u0027 ?\n\nit\u0027s not really a firewall in the sense that some ports are blocked.",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "77f3190e_d0bc19bf",
@@ -31,6 +54,23 @@
       "writtenOn": "2021-02-25T13:52:07Z",
       "side": 1,
       "message": "LGTM",
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b995d564_a8ebdb72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-02-26T11:39:01Z",
+      "side": 1,
+      "message": "LGTM % naming nits",
       "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
