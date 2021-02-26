@@ -109,6 +109,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cdbe1b8_b92ee2b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-26T17:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82599115_35ef0d7c",
+      "range": {
+        "startLine": 216,
+        "startChar": 45,
+        "endLine": 216,
+        "endChar": 76
+      },
+      "revId": "9c57d5c30d452c89db3f6428738ad7a130b01ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dc2afbe_cda48fea",
@@ -122,6 +146,30 @@
       "writtenOn": "2021-02-26T01:35:15Z",
       "side": 1,
       "message": "Why did this need to change to weekly?",
+      "range": {
+        "startLine": 86,
+        "startChar": 68,
+        "endLine": 86,
+        "endChar": 83
+      },
+      "revId": "9c57d5c30d452c89db3f6428738ad7a130b01ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7486f975_3bd43cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mem_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-26T17:45:19Z",
+      "side": 1,
+      "message": "It seemed appropriate since this test plays back a 7 minute video clip...so it\u0027s an extended version of the basic MemCheck tests, so I thought it should go weekly. I didn\u0027t change av1_hw_switch because that one only runs 2 seconds and doesn\u0027t actually change resolutions (I filed a bug for hiroh to fix that).",
+      "parentUuid": "3dc2afbe_cda48fea",
       "range": {
         "startLine": 86,
         "startChar": 68,
@@ -157,6 +205,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a63c89a_cbc8ad75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mem_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-26T17:45:19Z",
+      "side": 1,
+      "message": "Same answer as above :)",
+      "parentUuid": "4301a7c7_d3d84793",
+      "range": {
+        "startLine": 94,
+        "startChar": 68,
+        "endLine": 94,
+        "endChar": 83
+      },
+      "revId": "9c57d5c30d452c89db3f6428738ad7a130b01ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33e1475b_df6663c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
         "patchSetId": 1
@@ -168,6 +240,30 @@
       "writtenOn": "2021-02-26T01:35:15Z",
       "side": 1,
       "message": "Do you need \"proprietary_codecs\"?",
+      "range": {
+        "startLine": 150,
+        "startChar": 48,
+        "endLine": 150,
+        "endChar": 50
+      },
+      "revId": "9c57d5c30d452c89db3f6428738ad7a130b01ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36e44887_dba1b1b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-26T17:45:19Z",
+      "side": 1,
+      "message": "Yeah, I should have that...and protected_content since some places in Chrome gate HEVC functionality on that as well.",
+      "parentUuid": "33e1475b_df6663c8",
       "range": {
         "startLine": 150,
         "startChar": 48,
@@ -201,6 +297,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde8f4f7_43c4fe3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-26T17:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f352bcec_bdbca9f3",
+      "range": {
+        "startLine": 157,
+        "startChar": 53,
+        "endLine": 157,
+        "endChar": 54
+      },
+      "revId": "9c57d5c30d452c89db3f6428738ad7a130b01ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a8f2ba5_004b98c1",
@@ -224,6 +344,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a49d9fb_1943555a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-26T17:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a8f2ba5_004b98c1",
+      "range": {
+        "startLine": 185,
+        "startChar": 48,
+        "endLine": 185,
+        "endChar": 50
+      },
+      "revId": "9c57d5c30d452c89db3f6428738ad7a130b01ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8625e937_a1e9b566",
@@ -237,6 +381,30 @@
       "writtenOn": "2021-02-26T01:35:15Z",
       "side": 1,
       "message": "nit: HEVC",
+      "range": {
+        "startLine": 336,
+        "startChar": 78,
+        "endLine": 336,
+        "endChar": 82
+      },
+      "revId": "9c57d5c30d452c89db3f6428738ad7a130b01ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe938d0a_ddd10fb3",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-26T17:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8625e937_a1e9b566",
       "range": {
         "startLine": 336,
         "startChar": 78,
@@ -294,6 +462,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae1a47a7_2a8084c0",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-26T17:45:19Z",
+      "side": 1,
+      "message": "That first one for smallResolutions doesn\u0027t matter because there is no SW fallback for HEVC....and Miguel said I don\u0027t need the second one, so leaving as-is.",
+      "parentUuid": "5c6cdbd8_8d475069",
+      "range": {
+        "startLine": 339,
+        "startChar": 21,
+        "endLine": 339,
+        "endChar": 22
+      },
+      "revId": "9c57d5c30d452c89db3f6428738ad7a130b01ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3657a3fe_350d7479",
@@ -317,6 +509,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01aee779_2d8b4c88",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-26T17:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3657a3fe_350d7479",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 341,
+        "endChar": 56
+      },
+      "revId": "9c57d5c30d452c89db3f6428738ad7a130b01ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8daf9723_cc5b63fc",
@@ -330,6 +546,30 @@
       "writtenOn": "2021-02-26T01:35:15Z",
       "side": 1,
       "message": "Same comment about\n\n  chromeUseHWCodecsForSmallResolutions,\n  chromeBypassPermissionsArgs,",
+      "range": {
+        "startLine": 355,
+        "startChar": 21,
+        "endLine": 355,
+        "endChar": 22
+      },
+      "revId": "9c57d5c30d452c89db3f6428738ad7a130b01ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33871bcb_cd04c467",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-02-26T17:45:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8daf9723_cc5b63fc",
       "range": {
         "startLine": 355,
         "startChar": 21,
