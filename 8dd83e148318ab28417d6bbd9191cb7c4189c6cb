@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a9e8c1b_7bd1e6f7",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-26T02:24:03Z",
+      "side": 1,
+      "message": "Or we could rename with these rules:\n\nAttestationClient -\u003e AttestationDBus\nUtilityAttestationClient -\u003e AttestationClient\nUtilityCryptohomeBinary -\u003e CryptohomeClient\nUtilityTpmManagerBinary -\u003e TPMManagerClient\n\nCryptohomeBinary -\u003e cryptohomeBinary\nCryptohomePathBinary -\u003e cryptohomePathBinary\nTpmManagerBinary -\u003e tpmManagerBinary\n\nDid you prefer this naming style?",
+      "parentUuid": "8180b8c6_e85e3f57",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "8dd83e148318ab28417d6bbd9191cb7c4189c6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb95d73d_dac4849b",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 2
