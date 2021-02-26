@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/memory"
-	arcMemory "chromiumos/tast/local/memory/arc"
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/memoryuser"
 	"chromiumos/tast/local/multivm"
@@ -177,16 +176,8 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 		s.Fatal("RunTest failed: ", err)
 	}
 
-	if err := memory.SmapsMetrics(ctx, p, s.OutDir(), ""); err != nil {
-		s.Error("Failed to log smaps_rollup metrics: ", err)
-	}
-	if err := memory.ZramMmStatMetrics(ctx, p, s.OutDir(), ""); err != nil {
-		s.Error("Failed to log zram mm_stat metrics: ", err)
-	}
-	if preARC != nil {
-		if err := arcMemory.DumpsysMeminfoMetrics(ctx, preARC, p, s.OutDir(), ""); err != nil {
-			s.Error("Failed to log dumpsys meminfo metrics: ", err)
-		}
+	if err := multivm.MemoryMetrics(ctx, pre, p, s.OutDir(), ""); err != nil {
+		s.Error("Failed to collect memory metrics")
 	}
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save perf.Values: ", err)
