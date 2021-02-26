@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71135cad_d815f09a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-26T23:08:09Z",
+      "side": 1,
+      "message": "Looking good, not sure were the conflict came from, so needs rebase now.",
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "432a7fef_0b2af815",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-02-25T17:04:58Z",
       "side": 1,
       "message": "nit: I wonder if it\u0027d be better to bundle this and l.82\u0027s comment and\njust make a function-level comment? Also, does this function verify\nthe content or the MD5 hash? Per frame or for the whole file?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05091d57_7ed79b44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-26T23:08:09Z",
+      "side": 1,
+      "message": "That is a good idea. Alternatively it could also be split into two separate functions as one does file IO the other string comparison.",
+      "parentUuid": "432a7fef_0b2af815",
       "range": {
         "startLine": 67,
         "startChar": 1,
@@ -66,6 +107,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "806ea905_882049fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-26T23:08:09Z",
+      "side": 1,
+      "message": "I am probably not reading this right. It shouldn\u0027t \"fail to verify\" right? It always verifies. It fails when comparison against expected MD5 fails.",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 55
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a732284f_be4c3103",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 4
@@ -82,6 +146,29 @@
         "startChar": 3,
         "endLine": 144,
         "endChar": 12
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36b14fd_2067daed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-26T23:08:09Z",
+      "side": 1,
+      "message": "You are matching the string twice now. But I think you can delete it. If we expected a failure to decode, yet it managed to decode, do we really want to compare MD5s below?",
+      "range": {
+        "startLine": 155,
+        "startChar": 35,
+        "endLine": 155,
+        "endChar": 72
       },
       "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
