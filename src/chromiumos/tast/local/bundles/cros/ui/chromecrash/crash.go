@@ -20,7 +20,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
 )
@@ -319,7 +319,7 @@ func getChromePIDs(ctx context.Context) ([]int, error) {
 	// and running.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		pids, err = chrome.GetPIDs()
+		pids, err = chromeproc.GetPIDs()
 		if err != nil {
 			return testing.PollBreak(err)
 		}
@@ -341,7 +341,7 @@ func getChromePIDs(ctx context.Context) ([]int, error) {
 func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (process.Process, error) {
 	switch ct.ptype {
 	case GPUProcess:
-		processes, err := chrome.GetGPUProcesses()
+		processes, err := chromeproc.GetGPUProcesses()
 		if err != nil {
 			return process.Process{}, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
 		}
@@ -350,7 +350,7 @@ func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (process.Proces
 		}
 		return processes[0], nil
 	case Broker:
-		processes, err := chrome.GetBrokerProcesses()
+		processes, err := chromeproc.GetBrokerProcesses()
 		if err != nil {
 			return process.Process{}, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
 		}
@@ -519,7 +519,7 @@ func (ct *CrashTester) killBrowser(ctx context.Context) error {
 	// The root Chrome process (i.e. the one that doesn't have another Chrome process
 	// as its parent) is the browser process. It's not sandboxed, so it should be able
 	// to write a minidump file when it crashes.
-	rp, err := chrome.GetRootPID()
+	rp, err := chromeproc.GetRootPID()
 	if err != nil {
 		return errors.Wrap(err, "failed to get root Chrome PID")
 	}

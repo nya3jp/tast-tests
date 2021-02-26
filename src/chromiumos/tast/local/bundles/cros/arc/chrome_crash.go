@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -94,7 +95,7 @@ func ChromeCrash(ctx context.Context, s *testing.State) {
 	// Chrome crash should result in Android reboot.
 	s.Log("Inducing chrome crash")
 
-	chromePID, err := chrome.GetRootPID()
+	chromePID, err := chromeproc.GetRootPID()
 	if err != nil {
 		s.Fatal("Failed to get chrome PID: ", err)
 	}
