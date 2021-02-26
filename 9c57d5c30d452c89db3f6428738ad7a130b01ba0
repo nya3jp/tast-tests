@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2fcacbd_ade9645f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-26T02:04:47Z",
+      "side": 1,
+      "message": "One comment to Andres\u0027 comment, otherwise LGTM!",
+      "revId": "9c57d5c30d452c89db3f6428738ad7a130b01ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82599115_35ef0d7c",
@@ -226,6 +243,30 @@
       "writtenOn": "2021-02-26T01:35:15Z",
       "side": 1,
       "message": "I think you also need\n\n  chromeUseHWCodecsForSmallResolutions,\n  chromeBypassPermissionsArgs,\n\nThe first one to make sure a rule introduced by the media team doesn\u0027t take effect, and the second to be consistent with chromeVideo.",
+      "range": {
+        "startLine": 339,
+        "startChar": 21,
+        "endLine": 339,
+        "endChar": 22
+      },
+      "revId": "9c57d5c30d452c89db3f6428738ad7a130b01ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c6cdbd8_8d475069",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-02-26T02:04:47Z",
+      "side": 1,
+      "message": "Note: chromeBypassPermissionsArgs is only used to access capture devices\n(camera, microphone, screen capture), so it shouldn\u0027t be needed here.",
+      "parentUuid": "44eaf96f_2c7669f1",
       "range": {
         "startLine": 339,
         "startChar": 21,
