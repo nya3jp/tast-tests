@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "201c5809_04e019ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-26T20:03:49Z",
+      "side": 1,
+      "message": "Should we rename these since we\u0027re using them here too? Or maybe just leave a comment that we\u0027re reusing the Android credentials for this one?",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "fe0cb604d3b865a506f1946ec4e621ea3d68346e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5abc6ddc_1cacab6b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver_in_contacts.go",
         "patchSetId": 1
@@ -14,6 +37,30 @@
       "writtenOn": "2021-02-26T10:03:00Z",
       "side": 1,
       "message": "Similarly to the other in contact CL in review (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2716761)\n\nThis retry can be removed when we roll to a build with this change \nhttps://chromium-review.googlesource.com/c/chromium/src/+/2721003",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "fe0cb604d3b865a506f1946ec4e621ea3d68346e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1eaf49_1d9d9e51",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-26T20:03:49Z",
+      "side": 1,
+      "message": "I figure we can just go ahead without the retry and let it fail until that change makes it into CrOS. That\u0027s what I did at least for that CB-\u003ePhone CL haha, WDYT?",
+      "parentUuid": "5abc6ddc_1cacab6b",
       "range": {
         "startLine": 129,
         "startChar": 2,
