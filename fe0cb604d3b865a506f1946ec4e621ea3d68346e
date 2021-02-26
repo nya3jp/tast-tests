@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a316c8a0_a43d1bbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-26T22:39:27Z",
+      "side": 1,
+      "message": "Filed crbug/1182879 to rename it",
+      "parentUuid": "0dc963e0_f76b6cb8",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "fe0cb604d3b865a506f1946ec4e621ea3d68346e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "201c5809_04e019ad",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cca9ea0_321a48e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-26T22:39:27Z",
+      "side": 1,
+      "message": "Renaming is fine:\nhttps://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/3645283",
+      "parentUuid": "201c5809_04e019ad",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "fe0cb604d3b865a506f1946ec4e621ea3d68346e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f1af8d6_882b86ff",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-26T21:44:38Z",
       "side": 1,
       "message": "nit: define all of these as variables instead of inline",
+      "range": {
+        "startLine": 95,
+        "startChar": 70,
+        "endLine": 95,
+        "endChar": 84
+      },
+      "revId": "fe0cb604d3b865a506f1946ec4e621ea3d68346e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6692d5c6_10252c00",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-26T22:39:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f1af8d6_882b86ff",
       "range": {
         "startLine": 95,
         "startChar": 70,
@@ -107,6 +179,30 @@
       "side": 1,
       "message": "I figure we can just go ahead without the retry and let it fail until that change makes it into CrOS. That\u0027s what I did at least for that CB-\u003ePhone CL haha, WDYT?",
       "parentUuid": "5abc6ddc_1cacab6b",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "fe0cb604d3b865a506f1946ec4e621ea3d68346e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3dd61c9_305b4de7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_sender_cros_receiver_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-26T22:39:27Z",
+      "side": 1,
+      "message": "OK Sure. I\u0027ll remove",
+      "parentUuid": "4a1eaf49_1d9d9e51",
       "range": {
         "startLine": 129,
         "startChar": 2,
