@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9f43cb3_18bf3c5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_slots.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-26T17:17:18Z",
+      "side": 1,
+      "message": "Yes, updated Attr to be group:cellular_esim, which is the current plan, although using HardwareDeps or SoftwareDeps would be better.\n\nI would specifically like this test to fail if SimSlots is missing or does not return what is expected, that\u0027s basically the point of the test :-) If we have a workaround, then we won\u0027t catch bugs where SimSlots breaks.\n\nI will add a comment in init().",
+      "parentUuid": "00f6c3d3_574d7567",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "265495c0d6f5e6eb74b990afe5eacdb3a456f061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e83154b_deca16ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_slots.go",
         "patchSetId": 4
@@ -37,6 +61,24 @@
       "writtenOn": "2021-02-19T03:58:40Z",
       "side": 1,
       "message": "I guess foundErr is intended to be assigned here?\n\nAlso, wrapping multiple errors might be less readable. One alternative might be:\n\n  for ... {\n    ...\n    if err !\u003d nil {\n      s.Error(\"Cellular Service not found for ICCID: \", err)\n    }\n  }\n  if s.HasError() {\n    // Early return on error.\n    s.Log(\"Error(s) finding Cellular Services\")\n    return\n  }",
+      "revId": "265495c0d6f5e6eb74b990afe5eacdb3a456f061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7864bbd4_0323d986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_slots.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-02-26T17:17:18Z",
+      "side": 1,
+      "message": "Oops, good catch. Fixed.\n\nI wasn\u0027t aware of s.HasError, that seems like a good option.",
+      "parentUuid": "8e83154b_deca16ca",
       "revId": "265495c0d6f5e6eb74b990afe5eacdb3a456f061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
