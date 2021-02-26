@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98afec4e_094c5cdd",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-26T20:14:28Z",
+      "side": 1,
+      "message": "Ah that make sense, you\u0027ve convinced me. I would imagine there are cases where a client would want to run this command without triggering the side effect of potentially running cros_healthd. \n\nI\u0027ll move this command to waitForMojoBootstrap and consider moving this call out of the other sub commands (telem and diag)",
+      "parentUuid": "b11cfb60_3497d0f7",
+      "range": {
+        "startLine": 18,
+        "startChar": 37,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "a42e0860b24140a9e15d477fbaf8bcc2ea1c6c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d10125ff_a7c666c3",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62aa1b2_00874e3f",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-26T20:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d10125ff_a7c666c3",
+      "range": {
+        "startLine": 20,
+        "startChar": 37,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "a42e0860b24140a9e15d477fbaf8bcc2ea1c6c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a36026b2_e0865fc7",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-02-26T05:04:32Z",
       "side": 1,
       "message": "optional:\n\nthis looks heavily depending on the details of the cros-health-tool command.\nI\u0027m ok now as long as the functions are encapsulated within this file,\nbut I would introduce a enum/struct to represent the cros_healthd\u0027s status to have clearer meaning.\n\ntype CrosHealthdServiceStatus int\nconst (\n  CrosHealthdServiceRunning CrosHealthdService \u003d iota\n  ...\n)\ntype CrosHealthdStatus struct {\n  ServiceStatus CrosHealthdServiceStatus\n  NetworkHealthMojoRemoteBound bool\n  NetworkDIagnosticMojoRemoteBound bool\n}\n\nfunc crosHealthdStatus(...) (CrosHEalthdStatus, error) {  // instead of runStatus\n  ...\n}\n\nthen here,\n\nstatus, err :\u003d crosHealthdStatus(...)\nif err !\u003d nil {\n  ...\n}\n\nif status.ServiceStatus !\u003d CrosHealthdServiceRunnin {\n  ...\n}\nif !status.NetworkHealthMojoRemoteBound {\n...\n\nor so.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "a42e0860b24140a9e15d477fbaf8bcc2ea1c6c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae0625d_7bbc80d3",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-26T20:14:28Z",
+      "side": 1,
+      "message": "This looks like a good idea to me. I changed around some of the function names to avoid naming stutter. Let me know if you disagree with any of my choices.",
+      "parentUuid": "a36026b2_e0865fc7",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -128,6 +200,54 @@
         "startChar": 54,
         "endLine": 55,
         "endChar": 56
+      },
+      "revId": "a42e0860b24140a9e15d477fbaf8bcc2ea1c6c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ef5a38d_dc5d8f2e",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-26T20:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa68329_bf875cf3",
+      "range": {
+        "startLine": 55,
+        "startChar": 54,
+        "endLine": 55,
+        "endChar": 56
+      },
+      "revId": "a42e0860b24140a9e15d477fbaf8bcc2ea1c6c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b222d21e_6a2aded6",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-02-26T20:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b91f7e59_96857acb",
+      "range": {
+        "startLine": 55,
+        "startChar": 63,
+        "endLine": 55,
+        "endChar": 65
       },
       "revId": "a42e0860b24140a9e15d477fbaf8bcc2ea1c6c3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
