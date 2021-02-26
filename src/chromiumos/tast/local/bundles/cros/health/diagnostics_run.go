@@ -74,9 +74,11 @@ func init() {
 			Val:               newRoutineParams(croshealthd.RoutineNVMESelfTest),
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"nvme"},
-			// TODO(http://b/175305207): some zork nvme controllers lock up
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("morphius"),
-				hwdep.Nvme()),
+			ExtraHardwareDeps: hwdep.D(hwdep.Nvme(),
+				// TODO(http://b/175305207): some zork nvme controllers lock up
+				hwdep.SkipOnModel("morphius"),
+				// eve uses Samsung nvme drives which do not support self-test
+				hwdep.SkipOnModel("eve")),
 		}, {
 			Name:      "nvme_wear_level",
 			Val:       newRoutineParams(croshealthd.RoutineNVMEWearLevel),
