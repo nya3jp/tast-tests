@@ -70,6 +70,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b7cb340_24464da8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-26T13:21:34Z",
+      "side": 1,
+      "message": "I tried to explain this in the comment. \n\nThe problem is I added the \"-i\" option to minijail which says immediately exit after fork. We use this for most of our system daemons so we don\u0027t block upstart until the daemon is up and running. But here it doesn\u0027t make sense :D.",
+      "parentUuid": "3e03135f_2b890a4c",
+      "revId": "20eae5ab1720c4ee31126ac0fcc7c3c6d1bca3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb833091_2ae40386",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-26T13:21:34Z",
+      "side": 1,
+      "message": "Uh, sorry Hugo! I didn\u0027t realise it\u0027s a temporary link.\n\nThe log looks like this, for all the 5 failed tests:\n\n2021-02-16T14:33:31.169178Z INFO tast[3123]: network.TestProxyServer: Error at test_proxy_server.go:37: Failed to setup server: failed to setup the network namespace: failed to get proxy process pid: strconv.Atoi: parsing \"\": invalid syntax\n2021-02-16T14:33:31.170204Z INFO tinyproxy[15816]: Initializing tinyproxy ...\n2021-02-16T14:33:31.170363Z INFO tinyproxy[15816]: Reloading config file",
+      "parentUuid": "1d2eb15f_fe3ea123",
+      "revId": "20eae5ab1720c4ee31126ac0fcc7c3c6d1bca3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28a59730_8503bd58",
@@ -83,6 +119,30 @@
       "writtenOn": "2021-02-26T10:53:47Z",
       "side": 1,
       "message": "I struggle to find the minijail0 command line args reference :D what was -i doing?",
+      "range": {
+        "startLine": 72,
+        "startChar": 47,
+        "endLine": 72,
+        "endChar": 56
+      },
+      "revId": "20eae5ab1720c4ee31126ac0fcc7c3c6d1bca3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f6d546e_935f22eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-02-26T13:21:34Z",
+      "side": 1,
+      "message": "Code search won\u0027t help much. From the `--help` output:\n\n -i:           Exit immediately after fork(2). The jailed process will run\n               in the background.\n\nIn this case, it\u0027s not a good idea because we need tinyproxy to write it\u0027s pid to a file before we can move to the next action.",
+      "parentUuid": "28a59730_8503bd58",
       "range": {
         "startLine": 72,
         "startChar": 47,
