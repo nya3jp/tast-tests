@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"
@@ -644,7 +645,7 @@ func saveMinidumpsWithoutCrash(ctx context.Context) error {
 		// Login timeout is often caused by TPM slowness.
 		minidump.MatchByName("chapsd", "cryptohome", "cryptohomed", "session_manager", "tcsd"),
 	}
-	if pid, err := GetRootPID(); err == nil {
+	if pid, err := chromeproc.GetRootPID(); err == nil {
 		matchers = append(matchers, minidump.MatchByPID(int32(pid)))
 	}
 
