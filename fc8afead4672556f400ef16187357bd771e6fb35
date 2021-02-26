@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf381bb7_f90e7f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/share_files_to_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-02-26T22:48:34Z",
+      "side": 1,
+      "message": "This should poll for something. testing.Sleep should be avoided whenever possible because it is a core source a flakiness depending on device speed. You probably should either add a completion indicator to the app or poll the new file that is getting created.",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "fc8afead4672556f400ef16187357bd771e6fb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
