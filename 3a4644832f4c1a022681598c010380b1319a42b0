@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc2292d_b4e7c3be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2021-02-26T23:56:06Z",
+      "side": 1,
+      "message": "This seems like a fine change to me, the only reason for channel 1 before was consistency with the Autotest version while porting.\n\nIs it worth maybe parameterizing the test with multiple channels and their expected dwell times?",
+      "revId": "3a4644832f4c1a022681598c010380b1319a42b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
