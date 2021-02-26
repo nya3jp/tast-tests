@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 )
 
 // WindowFinder is the finder for the ScanApp window.
@@ -175,6 +176,12 @@ func (s *ScanApp) Scan() uiauto.Action {
 		// successfully.
 		s.WaitUntilExists(doneButtonFinder),
 	)
+}
+
+// ClickMyFilesLink returns a function that opens My files in the Files app by
+// clicking the My files folder link.
+func (s *ScanApp) ClickMyFilesLink() uiauto.Action {
+	return s.LeftClick(nodewith.Name("My files").Role(role.StaticText).State(state.Linked, true))
 }
 
 // ClickDone returns a function that clicks the done button to return to the

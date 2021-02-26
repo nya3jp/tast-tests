@@ -67,6 +67,12 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 		return nil, err
 	}
 
+	return App(ctx, tconn)
+}
+
+// App returns an existing instance of the Files app.
+// An error is returned if the app cannot be found.
+func App(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	// Create a uiauto.Context with default timeout.
 	ui := uiauto.New(tconn)
 
