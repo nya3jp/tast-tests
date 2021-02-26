@@ -47,7 +47,7 @@ func init() {
 			"allenwebb@chromium.org",
 			"cros-manatee@google.com",
 		},
-		Attr: []string{"group:mainline"},
+		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{
 			{
 				Name:              "real",
