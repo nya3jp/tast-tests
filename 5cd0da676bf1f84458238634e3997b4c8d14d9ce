@@ -22,6 +22,30 @@
       },
       "revId": "5cd0da676bf1f84458238634e3997b4c8d14d9ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3813cdb_d16d4c4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-02-26T01:37:54Z",
+      "side": 1,
+      "message": "Actually I removed this with an earlier comment and it worked. May be this check is new.",
+      "parentUuid": "6355d019_d9060480",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 5
+      },
+      "revId": "5cd0da676bf1f84458238634e3997b4c8d14d9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
