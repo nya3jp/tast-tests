@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98d3f7c_38fc5623",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-26T00:52:25Z",
+      "side": 1,
+      "message": "+2 for Tast Review % clar. Please also wait for test owner review.",
+      "revId": "e1d3adbdecffa4f19e6c25480ad8bc7f93c03b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d12852_2f6e3faa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-02-26T00:52:25Z",
+      "side": 1,
+      "message": "clar: The way the regex is being modified here looks a little odd to me (the logger is being added outside the capture group () and there is a trailing |). However, this is a test content issue not a tast review issue, and I don\u0027t know enough about this test to comment with any confidence.",
+      "range": {
+        "startLine": 195,
+        "startChar": 49,
+        "endLine": 195,
+        "endChar": 67
+      },
+      "revId": "e1d3adbdecffa4f19e6c25480ad8bc7f93c03b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
