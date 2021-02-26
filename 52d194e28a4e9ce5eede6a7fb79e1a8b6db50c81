@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa1dc51_4610fd40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-02-26T17:25:30Z",
+      "side": 1,
+      "message": "Hopefully that\u0027s not literally the case?\n\nMy understanding is that eth0 with Servo v4 is flaky on jacuzzi, right? That\u0027s very different from bricking devices.\nIt would also be good to point to b/178529170",
+      "range": {
+        "startLine": 26,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 53
+      },
+      "revId": "52d194e28a4e9ce5eede6a7fb79e1a8b6db50c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b193ff8_8a08e173",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-02-26T17:25:30Z",
+      "side": 1,
+      "message": "Not sure that comment is true either. IIRC, you found that jacuzzi reports the platform as kukui instead of jacuzzi. That doesn\u0027t mean you can\u0027t use SkipOnPlatform",
+      "range": {
+        "startLine": 27,
+        "startChar": 68,
+        "endLine": 28,
+        "endChar": 88
+      },
+      "revId": "52d194e28a4e9ce5eede6a7fb79e1a8b6db50c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1e363bb_bd4273a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-02-26T17:25:30Z",
+      "side": 1,
+      "message": "You shouldn\u0027t implicitly translate device-specific bugs to the device itself. It\u0027s better to use generic descriptive terms for the feature itself, and keep the implementation detail hidden. For example you could create instead a SoftwareDep called |reliable_ethernet_on_reboot| implemented thusly:\n\n\"reliable_ethernet_on_reboot\":         `!(\"board:jacuzzi\")`,\n\nThat way, if we find another board -say, octopus- that doesn\u0027t reboot very reliably we will just add it to the list of reliable_ethernet_on_reboot. Otherwise you\u0027d end up with head-scratchers like:\n\n\"no_jacuzzi\" : `!(\"board:jacuzzi\" || \"board:octopus\")`,\n\n\n\"reliable_ethernet_on_reboot\" is not a great name for the SoftwareDep, it\u0027s just meant as an example, feel free to propose a better name :-)",
+      "range": {
+        "startLine": 30,
+        "startChar": 46,
+        "endLine": 30,
+        "endChar": 56
+      },
+      "revId": "52d194e28a4e9ce5eede6a7fb79e1a8b6db50c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
