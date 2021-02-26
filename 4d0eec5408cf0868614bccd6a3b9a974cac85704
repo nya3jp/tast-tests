@@ -33,6 +33,24 @@
       "message": "From logs,\n\n2021-02-26T00:56:30.273227Z [16:56:29.491] Error at edit_bookmarks_enabled.go:100: true: Failed to clean up: failed to reset Chrome: failed to free tast remote JS object group: cdp.Runtime: ReleaseObjectGroup: context deadline exceeded\n\n\nIt looks like test just does not have enough time to Reset Chrome, retries won\u0027t help here.",
       "revId": "4d0eec5408cf0868614bccd6a3b9a974cac85704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "470470a3_6de47a60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-02-26T10:37:05Z",
+      "side": 1,
+      "message": "My comment is about ResetChrome.\n\nI think you are trying to solve different issues in one CL. It totally makes sense to split them into different CLs, because there is a huge chance for such CL (core methods for Chrome) to be reverted.",
+      "parentUuid": "cd5058ab_dda5ffa0",
+      "revId": "4d0eec5408cf0868614bccd6a3b9a974cac85704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
