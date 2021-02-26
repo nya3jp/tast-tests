@@ -16,6 +16,23 @@
       "message": "+1 ... hinton@ to review and approve.",
       "revId": "3f23aa7f749bbadeabd1ad66b00ff36cbcd4ac13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23858cd7_5c4d8e7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-02-26T17:04:35Z",
+      "side": 1,
+      "message": "The WifiSetTXPower test failure is b/181331023, not caused by this CL. Other failures are unrelated. I\u0027d suggest chumping",
+      "revId": "3f23aa7f749bbadeabd1ad66b00ff36cbcd4ac13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
