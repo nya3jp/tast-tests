@@ -46,6 +46,30 @@
       },
       "revId": "09520a072f8a0d576faec7eb4c7abfa1f2cf3ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0d1170_912ae2f8",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-02-26T06:58:49Z",
+      "side": 1,
+      "message": "Thanks for offering help, it would be very helpful if you could do the cleanup.",
+      "parentUuid": "8458fd5b_57645c35",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 18
+      },
+      "revId": "09520a072f8a0d576faec7eb4c7abfa1f2cf3ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
