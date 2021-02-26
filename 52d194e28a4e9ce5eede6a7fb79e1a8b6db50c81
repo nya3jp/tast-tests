@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02af4364_2709f036",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-02-26T22:01:05Z",
+      "side": 1,
+      "message": "Hi Jack, I took a look at the doc and although I understand that we should avoid trying to use SkipOn* in general, it seems like this bug falls under a valid use case specified in the doc. \n\n* There are known issues in a driver of a specific device, which cannot be\n  fixed immediately. The test is stable on other models, and we would like\n  to promoted it to critical.\n\nIn the case of this cl, I\u0027m trying to avoid a test being run on a specific platform as there\u0027s some issue on this platform that this test will trigger semi-reliably. This issue has no immediate path to resolution. The tests are stable on other models and is a candidate tast that would ideally be promoted at some point.\n\nWould you say that using  SoftwareDep (the strategy implemented in the current patchset) is preferable over the hwdep? I\u0027m fine with committing a cl that uses either strategy, but I\u0027m a bit confused on which strategy I should ultimately use.",
+      "parentUuid": "ad15930f_c2bc6a7b",
+      "revId": "52d194e28a4e9ce5eede6a7fb79e1a8b6db50c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efa1dc51_4610fd40",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-26T17:25:30Z",
       "side": 1,
       "message": "Hopefully that\u0027s not literally the case?\n\nMy understanding is that eth0 with Servo v4 is flaky on jacuzzi, right? That\u0027s very different from bricking devices.\nIt would also be good to point to b/178529170",
+      "range": {
+        "startLine": 26,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 53
+      },
+      "revId": "52d194e28a4e9ce5eede6a7fb79e1a8b6db50c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a76e142_2ad09bb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-02-26T22:01:05Z",
+      "side": 1,
+      "message": "Fixed. Yes that is correct. In general, there is a decent probability that just eth0 will go down. FWIW, @jemele was able to reproduce one instance where after a reboot, the device would not respond over serial either (not listed in bug).",
+      "parentUuid": "efa1dc51_4610fd40",
       "range": {
         "startLine": 26,
         "startChar": 21,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b225e3a_a7dde31a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-02-26T22:01:05Z",
+      "side": 1,
+      "message": "I am currently continuing to use the SWdep. I made some comments on whether we should use SkipOnPlatform under Jack\u0027s comment.\n\nI have modified the message to specify the reasoning for why we aren\u0027t using SkipOnPlatform currently.\n\nI forgot to update the cl when i realized that the mosys output for the jacuzzi device was kukui. If we do ultimately end up using SkipOnPlatform, I\u0027ll change up the comment regarding skiponplatform to specify why exactly \"kukui\" is used for the jacuzzi board.",
+      "parentUuid": "7b193ff8_8a08e173",
+      "range": {
+        "startLine": 27,
+        "startChar": 68,
+        "endLine": 28,
+        "endChar": 88
+      },
+      "revId": "52d194e28a4e9ce5eede6a7fb79e1a8b6db50c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1e363bb_bd4273a1",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-02-26T17:25:30Z",
       "side": 1,
       "message": "You shouldn\u0027t implicitly translate device-specific bugs to the device itself. It\u0027s better to use generic descriptive terms for the feature itself, and keep the implementation detail hidden. For example you could create instead a SoftwareDep called |reliable_ethernet_on_reboot| implemented thusly:\n\n\"reliable_ethernet_on_reboot\":         `!(\"board:jacuzzi\")`,\n\nThat way, if we find another board -say, octopus- that doesn\u0027t reboot very reliably we will just add it to the list of reliable_ethernet_on_reboot. Otherwise you\u0027d end up with head-scratchers like:\n\n\"no_jacuzzi\" : `!(\"board:jacuzzi\" || \"board:octopus\")`,\n\n\n\"reliable_ethernet_on_reboot\" is not a great name for the SoftwareDep, it\u0027s just meant as an example, feel free to propose a better name :-)",
+      "range": {
+        "startLine": 30,
+        "startChar": 46,
+        "endLine": 30,
+        "endChar": 56
+      },
+      "revId": "52d194e28a4e9ce5eede6a7fb79e1a8b6db50c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f15ec08f_86905f3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-02-26T22:01:05Z",
+      "side": 1,
+      "message": "Done. I have changed the swdep to no_eth_loss_on_reboot as the swdep name implies that we\u0027re adding a skiplist for an issue without constraining the issue to a board.",
+      "parentUuid": "d1e363bb_bd4273a1",
       "range": {
         "startLine": 30,
         "startChar": 46,
