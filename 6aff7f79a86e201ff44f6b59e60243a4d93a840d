@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8548321_d1566aeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/android_sender_cros_receiver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-26T22:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a07d0336_f72614b4",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 100
+      },
+      "revId": "6aff7f79a86e201ff44f6b59e60243a4d93a840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9346f84_7a3f81c4",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0e2587_4d83dc19",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-26T22:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c64cb80d_1ebfa03a",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "6aff7f79a86e201ff44f6b59e60243a4d93a840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51d0d98a_4f5e1542",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-26T22:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9346f84_7a3f81c4",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "6aff7f79a86e201ff44f6b59e60243a4d93a840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b89d77b_a778f223",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-26T10:23:54Z",
       "side": 1,
       "message": "Could you check if the apk is already installed on the DUT and only unzip/install if missing",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 33
+      },
+      "revId": "6aff7f79a86e201ff44f6b59e60243a4d93a840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a48f44a_45dd3bb9",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-26T22:46:08Z",
+      "side": 1,
+      "message": "We decided against that during the initial CLs since it would prevent updating the snippet automatically.",
+      "parentUuid": "1b89d77b_a778f223",
       "range": {
         "startLine": 141,
         "startChar": 3,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34e5d407_e7462fc0",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-26T22:46:08Z",
+      "side": 1,
+      "message": "Seems to work without it, but I will add it anyways",
+      "parentUuid": "3eb51e23_8a29f4dd",
+      "range": {
+        "startLine": 152,
+        "startChar": 23,
+        "endLine": 152,
+        "endChar": 30
+      },
+      "revId": "6aff7f79a86e201ff44f6b59e60243a4d93a840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "924fc9dc_cdc0a8b9",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7a6cb32_cac2d6bb",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-26T22:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "924fc9dc_cdc0a8b9",
+      "range": {
+        "startLine": 159,
+        "startChar": 67,
+        "endLine": 159,
+        "endChar": 81
+      },
+      "revId": "6aff7f79a86e201ff44f6b59e60243a4d93a840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81c238ad_4b1e2382",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-02-26T12:50:46Z",
       "side": 1,
       "message": "I think you may want to add \"-e\", \"sync\" to make sure the login actually sync all the things to that device.\nhttp://cs/rvc-arc/vendor/google_tradefederation/core/util-apps/AccountUtil/src/com/google/android/tradefed/account/AddAccount.java?l\u003d71\u0026rcl\u003d73b69463ef87ec88026f4c9b8432ea7b48e07e3b\n\nBy the way, some logs only appear in logcat logs.\nNot sure this will collect logcat logs if fail or not?",
+      "range": {
+        "startLine": 169,
+        "startChar": 3,
+        "endLine": 169,
+        "endChar": 57
+      },
+      "revId": "6aff7f79a86e201ff44f6b59e60243a4d93a840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9631cdc0_41b686b3",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-26T22:46:08Z",
+      "side": 1,
+      "message": "Good point, we aren\u0027t grabbing logcat logs at this point. I filed crbug/1182883 to move saving the Android logs into the fixture. That will make sure we grab the logcat logs for everything that happens during this setup. Also added the sync flag.",
+      "parentUuid": "81c238ad_4b1e2382",
       "range": {
         "startLine": 169,
         "startChar": 3,
