@@ -18,6 +18,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
@@ -106,7 +107,7 @@ func getThreadsFromProcess(p *process.Process) ([]*process.Process, error) {
 func verifyTags() error {
 	cookieMap := make(map[int64]bool)
 
-	procs, err := chrome.GetRendererProcesses()
+	procs, err := chromeproc.GetRendererProcesses()
 	if err != nil {
 		return errors.Wrap(err, "failed to get renderer processes")
 	}

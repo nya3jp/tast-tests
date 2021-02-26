@@ -20,7 +20,7 @@ import (
 	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/adb"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -343,7 +343,7 @@ func ensureARCEnabled() error {
 
 // getChromeArgs returns command line arguments of the Chrome browser process.
 func getChromeArgs() ([]string, error) {
-	pid, err := chrome.GetRootPID()
+	pid, err := chromeproc.GetRootPID()
 	if err != nil {
 		return nil, err
 	}

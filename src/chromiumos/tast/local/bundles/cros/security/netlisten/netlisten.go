@@ -14,6 +14,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/testing"
 )
 
@@ -76,7 +77,7 @@ func getExe(pid int32) (string, error) {
 // Common returns well-known network listeners shared between all security.NetworkListeners* tests.
 func Common(cr *chrome.Chrome) map[string]string {
 	return map[string]string{
-		cr.DebugAddrPort(): chrome.ExecPath,
+		cr.DebugAddrPort(): chromeproc.ExecPath,
 		// p2p-http-server may be running on production systems or have been started by an earlier test.
 		"*:16725": "/usr/sbin/p2p-http-server",
 		// Tast may forward port 28082 to the ephemeral devserver.

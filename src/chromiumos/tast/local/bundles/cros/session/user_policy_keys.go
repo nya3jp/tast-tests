@@ -14,7 +14,7 @@ import (
 
 	"chromiumos/policy/enterprise_management"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/session/ownership"
@@ -173,7 +173,7 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	if err := cryptohome.UnmountVault(ctx, testUser); err != nil {
 		s.Fatal("Failed to unmount user vault: ", err)
 	}
-	chromePID, err := chrome.GetRootPID()
+	chromePID, err := chromeproc.GetRootPID()
 	if err != nil {
 		s.Fatal("Failed to find Chrome: ", err)
 	}
@@ -184,7 +184,7 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	// code. Thus wait for the Chrome reboot, which should be after the
 	// setup.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if newPID, err := chrome.GetRootPID(); err != nil {
+		if newPID, err := chromeproc.GetRootPID(); err != nil {
 			return err
 		} else if chromePID == newPID {
 			return errors.Errorf("Chrome PID is not yet changed: %d", chromePID)
