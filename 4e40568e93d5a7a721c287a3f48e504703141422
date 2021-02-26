@@ -110,6 +110,30 @@
       },
       "revId": "4e40568e93d5a7a721c287a3f48e504703141422",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b908a70e_4d6e70c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-02-26T10:09:12Z",
+      "side": 1,
+      "message": "If it is only gonna be short term than ok to leave",
+      "parentUuid": "eb6a9f88_6e52fe6a",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "4e40568e93d5a7a721c287a3f48e504703141422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
