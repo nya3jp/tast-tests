@@ -14,7 +14,7 @@ option go_package = "chromiumos/tast/services/cros/nearbyshare";
 service NearbyShareService {
   // NewChromeLogin logs into a Chrome session as a fake user with the Nearby
   // Share flags enabled. Close must be called later to clean up the associated resources.
-  rpc NewChromeLogin (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc NewChromeLogin (CrOSLoginRequest) returns (google.protobuf.Empty) {}
 
   // Close releases the resources obtained by New.
   rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
@@ -41,6 +41,12 @@ service NearbyShareService {
   // WaitForSenderAndAcceptShare is called by receiver to receive the file from
   // sender.
   rpc WaitForSenderAndAcceptShare(CrOSReceiveFilesRequest) returns (CrOSShareTokenResponse) {}
+}
+
+// CrOSLoginRequest to login to Chrome with configurable GAIA credentials.
+message CrOSLoginRequest {
+  string username = 1;
+  string password = 2;
 }
 
 // CrOSSetupRequest is a request to setup and configure Nearby Share on a
