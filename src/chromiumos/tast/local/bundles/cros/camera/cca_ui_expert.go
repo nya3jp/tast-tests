@@ -57,6 +57,7 @@ func CCAUIExpert(ctx context.Context, s *testing.State) {
 		// Expert mode is not reset after each test for persistency
 		{"toggleExpertMode", toggleExpertMode, false},
 		{"toggleExpertModeOptions", toggleExpertModeOptions, true},
+		{"checkPTZavailble", checkPTZavailble, true},
 		{"switchSquareMode", switchSquareMode, true},
 		{"toggleExpertMode", toggleExpertMode, false},
 		{"toggleExpertMode", toggleExpertMode, true},
@@ -97,7 +98,29 @@ func toggleExpertModeOptions(ctx context.Context, app *cca.App) error {
 	if _, err := app.ToggleSaveMetadata(ctx); err != nil {
 		return err
 	}
+	if _, err := app.ToggleShowPTZ(ctx); err != nil {
+		return err
+	}
 	return nil
+}
+
+func checkPTZavailble(ctx context.Context, app *cca.App) error {
+	return app.RunThroughCameras(ctx, func(facing cca.Facing) error {
+		pan, err := app.Visible(ctx, cca.PanRangeInput)
+		if err != nil {
+			return err
+		}
+		tilt, err := app.Visible(ctx, cca.TiltRangeInput)
+		if err != nil {
+			return err
+		}
+		zoom, err := app.Visible(ctx, cca.ZoomRangeInput)
+		if err != nil {
+			return err
+		}
+		testing.ContextLogf(ctx, "PTZ support for %v camera: %v %v %v", facing, pan, tilt, zoom)
+		return nil
+	})
 }
 
 func switchSquareMode(ctx context.Context, app *cca.App) error {

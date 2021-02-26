@@ -168,6 +168,13 @@ var (
 	// BarcodeCopyTextButton is button to copy text detected from barcode.
 	BarcodeCopyTextButton = UIComponent{"barcode copy text button",
 		[]string{"#barcode-chip-text-container .barcode-copy-button"}}
+
+	// PanRangeInput is the range input for adjusting camera pan.
+	PanRangeInput = UIComponent{"pan range input", []string{"#pan-slider input[type=range]"}}
+	// TiltRangeInput is the range input for adjusting camera tilt.
+	TiltRangeInput = UIComponent{"tilt range input", []string{"#tilt-slider input[type=range]"}}
+	// ZoomRangeInput is the range input for adjusting camera zoom.
+	ZoomRangeInput = UIComponent{"zoom range input", []string{"#zoom-slider input[type=range]"}}
 )
 
 // ResolutionType is different capture resolution type.
@@ -1110,6 +1117,11 @@ func (a *App) ToggleShowMetadata(ctx context.Context) (bool, error) {
 // ToggleSaveMetadata toggles save metadata and returns whether it's enabled after toggling.
 func (a *App) ToggleSaveMetadata(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "save-metadata", "#expert-save-metadata")
+}
+
+// ToggleShowPTZ toggles show PTZ and returns whether it's enabled after toggling.
+func (a *App) ToggleShowPTZ(ctx context.Context) (bool, error) {
+	return a.toggleOption(ctx, "show-ptz-options", "#expert-show-ptz-options")
 }
 
 // ClickShutter clicks the shutter button.
