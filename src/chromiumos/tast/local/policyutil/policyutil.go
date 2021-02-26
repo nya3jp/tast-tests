@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // ServeAndVerify serves the policies using ServeAndRefresh and verifies that they are set in Chrome.
@@ -77,8 +78,21 @@ func ResetChrome(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) 
 		return errors.Wrap(err, "failed to communicate with Chrome")
 	}
 
-	if err := cr.ResetState(ctx); err != nil {
-		return errors.Wrap(err, "failed to reset Chrome")
+	const MaxAttempts = 3
+	attempt := 1
+	var rsErr error
+	// Sometimes resetting Chrome state fails. This retries it up to MaxAttempts.
+	for attempt <= MaxAttempts {
+		rsErr = cr.ResetState(ctx)
+		if rsErr != nil {
+			testing.ContextLogf(ctx, "WARNING - %d. Chrome reset state attempt failed due to %v Retrying", attempt, rsErr)
+		} else {
+			break
+		}
+	}
+
+	if rsErr != nil {
+		return errors.Wrapf(rsErr, "failed to reset Chrome in %d attempts", MaxAttempts)
 	}
 
 	if err := ServeBlobAndRefresh(ctx, fdms, cr, fakedms.NewPolicyBlob()); err != nil {

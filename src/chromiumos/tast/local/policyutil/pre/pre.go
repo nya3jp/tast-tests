@@ -70,7 +70,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		p.fdms.Stop(ctx)
 		chrome.Unlock()
 		if err := p.cr.Close(ctx); err != nil {
-			s.Log("Failed to close Chrome: ", err)
+			s.Fatal("Failed to close Chrome: ", err)
 		}
 	}
 
@@ -98,11 +98,24 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
-	cr, err := chrome.New(ctx,
-		chrome.Auth(Username, Password, GaiaID),
-		chrome.DMSPolicy(fdms.URL))
+	const MaxAttempts = 3
+	attempt := 1
+	var cr *chrome.Chrome
+	// Sometimes logging in fails. Hence retrying up MaxAttempts.
+	for attempt <= MaxAttempts {
+		cr, err = chrome.New(ctx,
+			chrome.Auth(Username, Password, GaiaID),
+			chrome.DMSPolicy(fdms.URL))
+		if err != nil {
+			s.Logf("WARNING - %d. login attempt failed due to %v. Retrying", attempt, err)
+			attempt++
+		} else {
+			break
+		}
+
+	}
 	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
+		s.Fatalf("Chrome login failed %d times: %v", MaxAttempts, err)
 	}
 
 	p.cr = cr

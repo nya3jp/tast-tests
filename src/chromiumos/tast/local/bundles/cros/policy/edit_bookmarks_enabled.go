@@ -97,7 +97,7 @@ func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fakeDMS, cr); err != nil {
-				s.Fatal("Failed to clean up: ", err)
+				s.Fatal("Failed to reset Chrome: ", err)
 			}
 
 			// Update policies.
