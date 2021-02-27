@@ -6,7 +6,6 @@ package ui
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
@@ -14,12 +13,16 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
-	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -84,6 +87,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure clamshell mode: ", err)
 	}
 	defer cleanup(cleanupCtx)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to hide notifications: ", err)
@@ -122,53 +126,21 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for pip_video.html to achieve quiescence: ", err)
 	}
 
-	var pipButtonCenterString string
-	if err := conn.Call(ctx, &pipButtonCenterString, "getPIPButtonCenter"); err != nil {
-		s.Fatal("Failed to get center of PIP button: ", err)
+	ac := uiauto.New(tconn)
+
+	pipButton := nodewith.Name("PIP").Role(role.Button)
+	pipWindow := nodewith.Name("Picture in picture").ClassName("PictureInPictureWindow")
+
+	if err := action.Combine(
+		"show PIP window",
+		ac.LeftClick(pipButton),
+		ac.WithTimeout(10*time.Second).WaitUntilExists(pipWindow),
+	)(ctx); err != nil {
+		s.Fatal("Failed to show the PIP window: ", err)
 	}
 
-	var pipButtonCenterInWebContents coords.Point
-	if n, err := fmt.Sscanf(pipButtonCenterString, "%v,%v", &pipButtonCenterInWebContents.X, &pipButtonCenterInWebContents.Y); err != nil {
-		s.Fatalf("Failed to parse center of PIP button (successfully parsed %v of 2 tokens): %v", n, err)
-	}
+	resizeHandle := nodewith.Name("Resize").ClassName("ResizeHandleButton")
 
-	webContentsView, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: "WebContentsViewAura"})
-	if err != nil {
-		s.Fatal("Failed to get web contents view: ", err)
-	}
-	defer webContentsView.Release(cleanupCtx)
-
-	if err := mouse.Click(ctx, tconn, webContentsView.Location.TopLeft().Add(pipButtonCenterInWebContents), mouse.LeftButton); err != nil {
-		s.Fatal("Failed to click PIP button: ", err)
-	}
-
-	pipWindowFindParams := chromeui.FindParams{Name: "Picture in picture", ClassName: "PictureInPictureWindow"}
-	if err := chromeui.WaitUntilExists(ctx, tconn, pipWindowFindParams, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for PIP window: ", err)
-	}
-
-	pipWindow, err := chromeui.Find(ctx, tconn, pipWindowFindParams)
-	if err != nil {
-		s.Fatal("Failed to get PIP window before resize: ", err)
-	}
-	defer pipWindow.Release(cleanupCtx)
-
-	if err := mouse.Move(ctx, tconn, pipWindow.Location.CenterPoint(), 0); err != nil {
-		s.Fatal("Failed to move mouse to PIP window: ", err)
-	}
-
-	resizeHandle, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Name: "Resize", ClassName: "ResizeHandleButton"})
-	if err != nil {
-		s.Fatal("Failed to get PIP resize handle: ", err)
-	}
-	defer resizeHandle.Release(cleanupCtx)
-
-	if err := mouse.Move(ctx, tconn, resizeHandle.Location.CenterPoint(), time.Second); err != nil {
-		s.Fatal("Failed to move mouse to PIP resize handle: ", err)
-	}
-	if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
-		s.Fatal("Failed to press left mouse button for dragging PIP resize handle: ", err)
-	}
 	params := s.Param().(chromePIPEnergyAndPowerTestParams)
 	workAreaTopLeft := info.WorkArea.TopLeft()
 	var resizeEnd coords.Point
@@ -177,22 +149,25 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	} else {
 		resizeEnd = info.WorkArea.BottomRight().Sub(coords.NewPoint(1, 1))
 	}
-	if err := mouse.Move(ctx, tconn, resizeEnd, time.Second); err != nil {
-		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-			s.Fatal("Failed to move mouse for dragging PIP resize handle, and then failed to release left mouse button: ", err)
+
+	if err := action.Combine(
+		"resize the PIP window",
+		ac.MouseMoveTo(pipWindow, 0),
+		ac.MouseMoveTo(resizeHandle, time.Second),
+		mouse.Press(tconn, mouse.LeftButton),
+		mouse.Move(tconn, resizeEnd, time.Second),
+		mouse.Release(tconn, mouse.LeftButton),
+	)(ctx); err != nil {
+		// Ensure releasing the mouse button.
+		if err := mouse.Release(tconn, mouse.LeftButton)(cleanupCtx); err != nil {
+			s.Error("Failed to release the mouse button: ", err)
 		}
-		s.Fatal("Failed to move mouse for dragging PIP resize handle: ", err)
-	}
-	if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-		s.Fatal("Failed to release left mouse button for dragging PIP resize handle: ", err)
+		s.Fatal("Failed to resize the PIP window: ", err)
 	}
 
-	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for location-change events to be propagated to the automation API: ", err)
-	}
-
-	if err := pipWindow.Update(ctx); err != nil {
-		s.Fatal("Failed to get PIP window after resize: ", err)
+	pipWindowBounds, err := ac.Location(ctx, pipWindow)
+	if err != nil {
+		s.Fatal("Failed to get the PIP window location: ", err)
 	}
 
 	if params.bigPIP {
@@ -201,42 +176,40 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		// Expect the PIP window to have either the maximum width or the maximum
 		// height, depending on how their ratio compares with 4x3.
 		if maxWidth*3 <= maxHeight*4 {
-			if pipWindow.Location.Width != maxWidth {
-				s.Fatalf("PIP window is %v (after resize attempt). It should have width %d", pipWindow.Location.Size(), maxWidth)
+			if pipWindowBounds.Width != maxWidth {
+				s.Fatalf("PIP window is %v (after resize attempt). It should have width %d", pipWindowBounds.Size(), maxWidth)
 			}
 		} else {
-			if pipWindow.Location.Height != maxHeight {
-				s.Fatalf("PIP window is %v (after resize attempt). It should have height %d", pipWindow.Location.Size(), maxHeight)
+			if pipWindowBounds.Height != maxHeight {
+				s.Fatalf("PIP window is %v (after resize attempt). It should have height %d", pipWindowBounds.Size(), maxHeight)
 			}
 		}
 	} else {
 		// The minimum size of a Chrome PIP window is 260x146. The aspect ratio of the
 		// video is 4x3, and so the minimum width 260 corresponds to a height of 195.
-		if pipWindow.Location.Width != 260 || pipWindow.Location.Height != 195 {
-			s.Fatalf("PIP window is %v. It should be (260 x 195)", pipWindow.Location.Size())
+		if pipWindowBounds.Width != 260 || pipWindowBounds.Height != 195 {
+			s.Fatalf("PIP window is %v. It should be (260 x 195)", pipWindowBounds.Size())
 		}
 	}
 
 	if params.layerOverPIP {
-		chromeIcon, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Name: "Google Chrome", ClassName: "ash/ShelfAppButton"})
-		if err != nil {
-			s.Fatal("Failed to get Chrome icon: ", err)
-		}
-		defer chromeIcon.Release(cleanupCtx)
-
-		if err := mouse.Move(ctx, tconn, chromeIcon.Location.CenterPoint(), time.Second); err != nil {
-			s.Fatal("Failed to move mouse to Chrome icon: ", err)
-		}
-		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
-			s.Fatal("Failed to press left mouse button for dragging Chrome icon: ", err)
-		}
-		defer mouse.Release(cleanupCtx, tconn, mouse.LeftButton)
-		if err := mouse.Move(ctx, tconn, pipWindow.Location.CenterPoint(), time.Second); err != nil {
-			s.Fatal("Failed to move mouse for dragging Chrome icon: ", err)
+		chromeIcon := nodewith.Name("Google Chrome").ClassName("ash/ShelfAppButton")
+		defer func() {
+			if err := mouse.Release(tconn, mouse.LeftButton)(cleanupCtx); err != nil {
+				s.Log("Failed to releaase the mouse button: ", err)
+			}
+		}()
+		if err := action.Combine(
+			"drag chrome icon over PIP window",
+			ac.MouseMoveTo(chromeIcon, time.Second),
+			mouse.Press(tconn, mouse.LeftButton),
+			mouse.Move(tconn, pipWindowBounds.CenterPoint(), time.Second),
+		)(ctx); err != nil {
+			s.Fatal("Failed to drag the chrome icon onto the PIP window: ", err)
 		}
 	} else {
 		// Ensure that the PIP window will show no controls or resize shadows.
-		if err := mouse.Move(ctx, tconn, workAreaTopLeft.Add(coords.NewPoint(20, 20)), time.Second); err != nil {
+		if err := mouse.Move(tconn, workAreaTopLeft.Add(coords.NewPoint(20, 20)), time.Second)(ctx); err != nil {
 			s.Fatal("Failed to move mouse: ", err)
 		}
 	}
