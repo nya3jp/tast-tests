@@ -13,7 +13,9 @@ import (
 	"path/filepath"
 	"strings"
 	"syscall"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -28,10 +30,11 @@ const (
 )
 
 type testMetadata struct {
-	name  string
-	image imageType
-	// Params to append to "runtest" command.
-	testParams []string
+	name        string
+	image       imageType
+	togglePower bool
+	// Args to append to "runtest" command.
+	testArgs []string
 }
 
 func init() {
@@ -60,19 +63,27 @@ func init() {
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_flash_physical",
-			Val:       testMetadata{name: "bloonchipper/test-flash_physical.bin", image: imageTypeRO},
+			Val:       testMetadata{name: "bloonchipper/test-flash_physical.bin", image: imageTypeRO, togglePower: true},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_flash_write_protect",
-			Val:       testMetadata{name: "bloonchipper/test-flash_write_protect.bin", image: imageTypeRO},
+			Val:       testMetadata{name: "bloonchipper/test-flash_write_protect.bin", image: imageTypeRO, togglePower: true},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_fpsensor_spi_ro",
-			Val:       testMetadata{name: "bloonchipper/test-fpsensor.bin", image: imageTypeRO},
+			Val:       testMetadata{name: "bloonchipper/test-fpsensor.bin", image: imageTypeRO, testArgs: []string{"spi"}},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_fpsensor_spi_rw",
-			Val:       testMetadata{name: "bloonchipper/test-fpsensor.bin"},
+			Val:       testMetadata{name: "bloonchipper/test-fpsensor.bin", testArgs: []string{"spi"}},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_fpsensor_uart_ro",
+			Val:       testMetadata{name: "bloonchipper/test-fpsensor.bin", image: imageTypeRO, testArgs: []string{"uart"}},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_fpsensor_uart_rw",
+			Val:       testMetadata{name: "bloonchipper/test-fpsensor.bin", testArgs: []string{"uart"}},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_mpu",
@@ -126,28 +137,27 @@ func init() {
 }
 
 // getFpmcuBoardName extracts the FPMCU board name from test params.
-func getFpmcuBoardName(s *testing.State) string {
-	testName := s.Param().(testMetadata).name
-	return strings.Split(testName, "/")[0]
+func getFpmcuBoardName(metadata testMetadata) string {
+	return strings.Split(metadata.name, "/")[0]
 }
 
 // setupServo sets up a servo host connected to FPMCU.
-func setupServo(ctx context.Context, s *testing.State) *testexec.Cmd {
-	cmdServod := testexec.CommandContext(ctx, "servod", "--board="+getFpmcuBoardName(s))
+func setupServo(ctx context.Context, metadata testMetadata) (*testexec.Cmd, error) {
+	cmdServod := testexec.CommandContext(ctx, "servod", "--board="+getFpmcuBoardName(metadata))
 	stdout, err := cmdServod.StdoutPipe()
 	if err != nil {
-		s.Fatalf("Cannot watch stdout for %q: %v", shutil.EscapeSlice(cmdServod.Args), err)
+		return nil, errors.Wrapf(err, "cannot watch stdout for %q", shutil.EscapeSlice(cmdServod.Args))
 	}
-	s.Logf("Running command: %q", shutil.EscapeSlice(cmdServod.Args))
+	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(cmdServod.Args))
 	if err := cmdServod.Start(); err != nil {
-		s.Fatalf("%q failed: %v", shutil.EscapeSlice(cmdServod.Args), err)
+		return nil, errors.Wrapf(err, "%q failed", shutil.EscapeSlice(cmdServod.Args))
 	}
 	// Wait for servod to initialize.
 	sc := bufio.NewScanner(stdout)
 	for {
 		if !sc.Scan() {
 			if err := sc.Err(); err != nil {
-				s.Fatal("Error while scanning servo output: ", err)
+				return nil, errors.Wrap(err, "error while scanning servo output")
 			}
 			continue
 		}
@@ -156,57 +166,97 @@ func setupServo(ctx context.Context, s *testing.State) *testexec.Cmd {
 			break
 		}
 	}
-	return cmdServod
+	return cmdServod, nil
 }
 
 // extractBinaryToFlash extracts the chosen binary to flash to the FPMCU.
-func extractBinaryToFlash(ctx context.Context, s *testing.State, tempDir, tarballPath string) string {
+func extractBinaryToFlash(ctx context.Context, metadata testMetadata, tempDir, tarballPath string) (string, error) {
 	// The specific binary is the first string in "Val" in the test params.
-	cmdUntar := testexec.CommandContext(ctx, "tar", "-C", tempDir, "-xvjf", tarballPath, s.Param().(testMetadata).name)
-	s.Logf("Running command: %q", shutil.EscapeSlice(cmdUntar.Args))
+	cmdUntar := testexec.CommandContext(ctx, "tar", "-C", tempDir, "-xvjf", tarballPath, metadata.name)
+	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(cmdUntar.Args))
 	if err := cmdUntar.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatalf("%q failed: %v", shutil.EscapeSlice(cmdUntar.Args), err)
+		return "", errors.Wrapf(err, "%q failed", shutil.EscapeSlice(cmdUntar.Args))
 	}
 
-	return s.Param().(testMetadata).name
+	return metadata.name, nil
 }
 
 // flashUnittestBinary flashes the unittest binary to the FPMCU connected to the target.
-func flashUnittestBinary(ctx context.Context, s *testing.State) {
+func flashUnittestBinary(ctx context.Context, metadata testMetadata, dataPath string) error {
 	// The default working directory is /root, which isn't writable.
 	dir, err := ioutil.TempDir("", "tast.firmware.FpmcuUnittest.")
 	if err != nil {
-		s.Fatal("Failed to create temp directory: ", err)
+		return errors.Wrap(err, "failed to create temp directory")
 	}
 	defer os.RemoveAll(dir)
 
-	binaryToFlash := extractBinaryToFlash(ctx, s, dir, s.DataPath("fpmcu_unittests.tar.bz2"))
-	imageOption := fmt.Sprintf("--image=%s", filepath.Join(dir, binaryToFlash))
-	cmdFlash := testexec.CommandContext(ctx, "flash_ec", "--board="+getFpmcuBoardName(s), imageOption)
-	s.Logf("Running command: %q", shutil.EscapeSlice(cmdFlash.Args))
-	if err := cmdFlash.Run(); err != nil {
-		s.Fatal("Flashing unittest binary failed: ", err)
+	binaryToFlash, err := extractBinaryToFlash(ctx, metadata, dir, dataPath)
+	if err != nil {
+		return err
 	}
+	imageOption := fmt.Sprintf("--image=%s", filepath.Join(dir, binaryToFlash))
+	cmdFlash := testexec.CommandContext(ctx, "flash_ec", "--board="+getFpmcuBoardName(metadata), imageOption)
+	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(cmdFlash.Args))
+	return cmdFlash.Run()
+}
+
+// fpmcuPower toggles FPMCU power on or off.
+func fpmcuPower(ctx context.Context, on bool) error {
+	powerArg := "pp3300"
+	if !on {
+		powerArg = "off"
+	}
+	cmd := testexec.CommandContext(ctx, "dut-control", fmt.Sprintf("fpmcu_pp3300:%s", powerArg))
+	if err := cmd.Run(); err != nil {
+		testing.ContextLogf(ctx, "Failed to toggle power to %q: %v", powerArg, err)
+		return err
+	}
+	return nil
+}
+
+// rebootFpmcu turns off and then turns on power for FPMCU.
+func rebootFpmcu(ctx context.Context) error {
+	if err := fpmcuPower(ctx, false); err != nil {
+		return err
+	}
+	testing.Sleep(ctx, time.Second)
+	if err := fpmcuPower(ctx, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 // getFpmcuConsolePath returns FPMCU UART console's PTY.
-func getFpmcuConsolePath(ctx context.Context, s *testing.State) string {
-	s.Log("Getting FPMCU's UART console")
+func getFpmcuConsolePath(ctx context.Context) (string, error) {
+	testing.ContextLog(ctx, "Getting FPMCU's UART console")
 	cmd := testexec.CommandContext(ctx, "dut-control", "raw_fpmcu_console_uart_pty")
 	output, err := cmd.Output()
 	if err != nil {
-		s.Fatal("Failed to get FPMCU UART console: ", err)
+		return "", errors.Wrap(err, "failed to get FPMCU UART console: ")
 	}
 	// Example output: raw_fpmcu_console_uart_pty:/dev/pts/8
-	return strings.TrimSpace(strings.Split(string(output), ":")[1])
+	return strings.TrimSpace(strings.Split(string(output), ":")[1]), nil
 }
 
 func FpmcuUnittest(ctx context.Context, s *testing.State) {
-	cmdServod := setupServo(ctx, s)
+	metadata := s.Param().(testMetadata)
+
+	cmdServod, err := setupServo(ctx, metadata)
+	if err != nil {
+		s.Fatal("Failed to start servod: ", err)
+	}
 	defer cmdServod.Wait(testexec.DumpLogOnError)
 	defer cmdServod.Signal(syscall.SIGINT)
 
-	consolePath := getFpmcuConsolePath(ctx, s)
+	// Reboot the FPMCU for a clean state.
+	if err := rebootFpmcu(ctx); err != nil {
+		s.Fatal("Failed to reboot FPMCU: ", err)
+	}
+
+	consolePath, err := getFpmcuConsolePath(ctx)
+	if err != nil {
+		s.Fatal("Cannot get FPMCU console path: ", err)
+	}
 
 	console, err := os.OpenFile(consolePath, os.O_APPEND|os.O_RDWR|syscall.O_NOCTTY, 0644)
 	if err != nil {
@@ -225,7 +275,13 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 	logWriter := bufio.NewWriter(logFile)
 	defer logWriter.Flush()
 
-	flashUnittestBinary(ctx, s)
+	if err := flashUnittestBinary(ctx, metadata, s.DataPath("fpmcu_unittests.tar.bz2")); err != nil {
+		// Try reboot for cleanup.
+		if err := rebootFpmcu(ctx); err != nil {
+			s.Error("Failed to reboot FPMCU in cleanup: ", err)
+		}
+		s.Fatal("Flashing unittest binary failed: ", err)
+	}
 
 	// Run the test in RO or RW, depending on "Val" in test params.
 	imageToBoot := "RW"
@@ -253,8 +309,15 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	if s.Param().(testMetadata).togglePower {
+		if err := rebootFpmcu(ctx); err != nil {
+			s.Fatal("Failed to reboot FPMCU: ", err)
+		}
+	}
+
 	s.Log("Running FPMCU unittest through UART console: ", consolePath)
-	if _, err = console.Write([]byte("runtest\n")); err != nil {
+	cmd := fmt.Sprintf("runtest %s\n", strings.Join(s.Param().(testMetadata).testArgs, " "))
+	if _, err = console.Write([]byte(cmd)); err != nil {
 		s.Fatal("Failed to execute runtest from FPMCU console: ", err)
 	}
 
