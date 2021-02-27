@@ -6,6 +6,7 @@ package chrome
 
 import (
 	"context"
+	"path/filepath"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -143,6 +144,16 @@ func (f *loggedInFixture) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (f *loggedInFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *loggedInFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	if err := f.cr.LogSaver.Start(ctx); err != nil {
+		s.Log("Failed to start the log-saver: ", err)
+	}
+}
 
-func (f *loggedInFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *loggedInFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.cr.LogSaver.Started() {
+		if err := f.cr.LogSaver.StopAndSave(filepath.Join(s.OutDir(), "chrome.log")); err != nil {
+			s.Log("Failed to store per-test log data: ", err)
+		}
+	}
+}

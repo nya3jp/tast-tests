@@ -28,6 +28,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/setup"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -117,6 +118,8 @@ type Chrome struct {
 	sess *driver.Session
 
 	loginPending bool // true if login is pending until ContinueLogin is called
+
+	LogSaver *logsaver.LogSaver
 }
 
 // Creds returns credentials used to log into a session.
@@ -234,6 +237,16 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		}
 	}
 
+	logFilename, err := CurrentLogFile()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find the log filename")
+	}
+	testing.ContextLogf(ctx, "Log file name: %q", logFilename)
+	logSaver, err := logsaver.New(logFilename, false /*omitOldLog*/)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create the log saver")
+	}
+
 	loginPending := false
 	if cfg.DeferLogin {
 		loginPending = true
@@ -279,6 +292,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		agg:               agg,
 		sess:              sess,
 		loginPending:      loginPending,
+		LogSaver:          logSaver,
 	}, nil
 }
 
@@ -305,6 +319,20 @@ func (c *Chrome) Close(ctx context.Context) error {
 	// the system crash directory.
 	if err := moveUserCrashDumps(); err != nil && firstErr == nil {
 		firstErr = err
+	}
+
+	if outDir, ok := testing.ContextOutDir(ctx); ok {
+		if c.LogSaver.Started() {
+			testing.ContextLog(ctx, "Start is invoked but StopAndSave is not invoked")
+		}
+		if err := c.LogSaver.SaveAll(filepath.Join(outDir, filepath.Base(c.LogSaver.Filename()))); err != nil {
+			testing.ContextLog(ctx, "Failed to save the entire log: ", err)
+			if firstErr == nil {
+				firstErr = err
+			}
+		}
+	} else {
+		testing.ContextLog(ctx, "No output directory exists, not saving log file")
 	}
 	return firstErr
 }

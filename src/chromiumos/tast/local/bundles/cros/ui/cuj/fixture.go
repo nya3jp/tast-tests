@@ -6,6 +6,7 @@ package cuj
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -199,6 +200,16 @@ func (f *loggedInToCUJUserFixture) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (f *loggedInToCUJUserFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *loggedInToCUJUserFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	if err := f.cr.LogSaver.Start(ctx); err != nil {
+		s.Log("Failed to start the log-saver: ", err)
+	}
+}
 
-func (f *loggedInToCUJUserFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *loggedInToCUJUserFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.cr.LogSaver.Started() {
+		if err := f.cr.LogSaver.StopAndSave(filepath.Join(s.OutDir(), "chrome.log")); err != nil {
+			s.Log("Failed to store per-test log data: ", err)
+		}
+	}
+}
