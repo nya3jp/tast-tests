@@ -8,13 +8,13 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -64,46 +64,36 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	webview, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeWebView, ClassName: "WebView"}, 10*time.Second)
+	ac := uiauto.New(tconn)
+	webviewLocation, err := ac.WithTimeout(10*time.Second).Location(ctx, nodewith.Role(role.WebView).ClassName("ContentsWebView"))
 	if err != nil {
-		s.Fatal("Failed to find webview: ", err)
+		s.Fatal("Failed to find the webview location: ", err)
 	}
-	defer webview.Release(ctx)
-	center := webview.Location.CenterPoint()
+	center := webviewLocation.CenterPoint()
 
 	// Find tabs.
-	tabs, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeTab, ClassName: "Tab"})
+	tabs, err := ac.NodesInfo(ctx, nodewith.Role(role.Tab).ClassName("Tab"))
 	if err != nil {
 		s.Fatal("Failed to find tabs: ", err)
-	}
-	defer tabs.Release(ctx)
-	if len(tabs) != 2 {
-		s.Fatalf("Expected 2 tabs, only found %v tab(s)", len(tabs))
 	}
 
 	runner := perfutil.NewRunner(cr)
 	for _, data := range []struct {
-		tab    *chromeui.Node
+		tab    uiauto.NodeInfo
 		suffix string
 	}{
 		{tabs[0], "inactive"},
 		{tabs[1], "active"},
 	} {
 		runner.RunMultiple(ctx, s, data.suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-			if err := mouse.Move(ctx, tconn, center, 0); err != nil {
-				return errors.Wrap(err, "failed to put the mouse to the center")
-			}
-			if err := mouse.Move(ctx, tconn, data.tab.Location.CenterPoint(), 500*time.Millisecond); err != nil {
-				return errors.Wrapf(err, "failed to move the mouse to the %s tab", data.suffix)
-			}
-			// Hover on the tab.
-			if err := testing.Sleep(ctx, 4*time.Second); err != nil {
-				return errors.Wrap(err, "failed to sleep for 5 seconds")
-			}
-			if err := mouse.Move(ctx, tconn, center, 500*time.Millisecond); err != nil {
-				return errors.Wrap(err, "failed to move the mouse back to the center")
-			}
-			return nil
+			return uiauto.Combine(
+				"hover and exit",
+				ac.MouseMoveToLocation(center, 0),
+				ac.MouseMoveToLocation(data.tab.Location.CenterPoint(), 500*time.Millisecond),
+				// Waiting to make the hover card appear.
+				func(ctx context.Context) error { return testing.Sleep(ctx, 4*time.Second) },
+				ac.MouseMoveToLocation(center, 500*time.Millisecond),
+			)(ctx)
 		},
 			"Chrome.Tabs.AnimationSmoothness.HoverCard.FadeIn",
 			"Chrome.Tabs.AnimationSmoothness.HoverCard.FadeOut"),
