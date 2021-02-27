@@ -134,7 +134,6 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	chrome.Lock()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -196,6 +195,8 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		fixData.AndroidDevice = androidDevice
 		fixData.AndroidDeviceName = androidDisplayName
 	}
+	// Lock chrome after all Setup is complete so we don't block other fixtures.
+	chrome.Lock()
 	return fixData
 }
 
@@ -223,16 +224,16 @@ func (f *nearbyShareFixture) Reset(ctx context.Context) error {
 func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
 	if err != nil {
-		s.Fatal("Failed to start Chrome logging: ", err)
+		s.Error("Failed to start Chrome logging: ", err)
 	}
 	f.ChromeReader = chromeReader
 }
 
 func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	if f.ChromeReader == nil {
-		s.Fatal("ChromeReader not defined")
+		s.Error("ChromeReader not defined")
 	}
 	if err := nearbytestutils.SaveLogs(ctx, f.ChromeReader, filepath.Join(s.OutDir(), ChromeLog)); err != nil {
-		s.Fatal("Failed to save Chrome log: ", err)
+		s.Error("Failed to save Chrome log: ", err)
 	}
 }
