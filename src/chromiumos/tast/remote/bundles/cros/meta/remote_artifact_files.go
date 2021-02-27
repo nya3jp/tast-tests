@@ -1,8 +1,8 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package example
+package meta
 
 import (
 	"context"
@@ -13,15 +13,16 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ArtifactFiles,
-		Desc:     "Demonstrates how to use artifact data files",
-		Contacts: []string{"nya@chromium.org", "tast-owners@chromium.org"},
+		Func:     RemoteArtifactFiles,
+		Desc:     "Demonstrates how to use artifact data files for remote test",
+		Contacts: []string{"seewaifu@chromium.org", "tast-owners@chromium.org"},
 		Attr:     []string{"group:mainline", "informational"},
 		Data:     []string{"artifact_files_UPLOADED"},
 	})
 }
 
-func ArtifactFiles(ctx context.Context, s *testing.State) {
+// RemoteArtifactFiles tests if build artifacts can be download from remote tests.
+func RemoteArtifactFiles(ctx context.Context, s *testing.State) {
 	// Build artifacts can be used as an external data file and read with
 	// s.DataPath just similarly as internal data files or static external data files.
 	// However, this works for Chrome OS images built on official builders only;
