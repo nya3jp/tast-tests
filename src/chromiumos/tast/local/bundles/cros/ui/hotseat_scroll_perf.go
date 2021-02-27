@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -277,7 +276,6 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-	defer ui.WaitForLocationChangeCompleted(ctx, tconn)
 
 	runner := perfutil.NewRunner(cr)
 
