@@ -71,11 +71,11 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyshare.CrO
 	// Start collecting chrome and messages logs.
 	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
 	if err != nil {
-		return nil, errors.New("failed to start Chrome logging")
+		return nil, errors.Wrap(err, "failed to start Chrome logging")
 	}
 	messageReader, err := nearbytestutils.StartLogging(ctx, syslog.MessageFile)
 	if err != nil {
-		return nil, errors.New("failed to start Message logging")
+		return nil, errors.Wrap(err, "failed io start Message logging")
 	}
 	testing.ContextLog(ctx, "Started logging chrome and message logs")
 	n.chromeReader = chromeReader
@@ -160,8 +160,7 @@ func (n *NearbyService) StartSend(ctx context.Context, req *nearbyshare.CrOSSend
 	}
 	sender, err := localnearby.StartSendFiles(ctx, n.cr, testFiles)
 	if err != nil {
-		testing.ContextLog(ctx, "Failed to set up control over the send surface")
-		return nil, err
+		return nil, errors.Wrap(err, "failed to set up control over the send surface")
 	}
 	n.senderSurface = sender
 	return &empty.Empty{}, nil
@@ -176,7 +175,7 @@ func (n *NearbyService) SelectShareTarget(ctx context.Context, req *nearbyshare.
 		return nil, errors.New("SendSurface is not defined")
 	}
 	if err := n.senderSurface.SelectShareTarget(ctx, req.ReceiverName, localnearby.CrosDetectReceiverTimeout); err != nil {
-		return nil, errors.New("failed to select share target")
+		return nil, errors.Wrap(err, "failed to select share target")
 	}
 	var res nearbyshare.CrOSShareTokenResponse
 	if req.CollectShareToken {
@@ -196,7 +195,7 @@ func (n *NearbyService) StartReceiving(ctx context.Context, req *empty.Empty) (*
 	}
 	receiver, err := localnearby.StartReceiving(ctx, n.tconn, n.cr)
 	if err != nil {
-		return nil, errors.New("failed to set up control over the receiving surface")
+		return nil, errors.Wrap(err, "failed to set up control over the receiving surface")
 	}
 	n.receiverSurface = receiver
 	return &empty.Empty{}, nil
@@ -213,11 +212,11 @@ func (n *NearbyService) WaitForSenderAndAcceptShare(ctx context.Context, req *ne
 	var res nearbyshare.CrOSShareTokenResponse
 	token, err := n.receiverSurface.WaitForSender(ctx, req.SenderName, localnearby.CrosDetectSenderTimeout)
 	if err != nil {
-		return nil, errors.New("CrOS receiver failed to find CrOS sender")
+		return nil, errors.Wrap(err, "CrOS receiver failed to find CrOS sender")
 	}
 	res.ShareToken = token
 	if err := n.receiverSurface.AcceptShare(ctx); err != nil {
-		return nil, errors.New("CrOs receiver failed to accept share from CrOS sender")
+		return nil, errors.Wrap(err, "CrOS receiver failed to accept share from CrOS sender")
 	}
 	return &res, nil
 }
