@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3be1bf48_ead14b68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-27T00:22:06Z",
+      "side": 1,
+      "message": "Actually, I realized that ideally the verifyContent functionality would be moved to the decode_test binary. Otherwise half of the test logic is in tast and it starts getting hard to add features like outputing bad frames.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2719190/1/src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+      "parentUuid": "05091d57_7ed79b44",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18f40a56_2016c212",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 4
