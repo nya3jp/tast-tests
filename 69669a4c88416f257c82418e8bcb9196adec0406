@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ee58315_c991a2ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-27T00:17:39Z",
+      "side": 1,
+      "message": "The \"ish\" bothers me. If you don\u0027t want to call it \"l1\" (which I can understand due to confusion) you could call it \"L1\" or \"g1\" (for group) or just spell out \"l1-l11\"?\n\nAlternatively define l1 and l11 separately and pass them to the test, but that still leave the problem of naming the test something short and simple.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 8
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7539ee4_fcd7749d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-27T00:17:39Z",
+      "side": 1,
+      "message": "We can leave it this way but it would have been easier to just reverse order below, say:\n\nName: \"vp9_0_l1ish_buf\",\nVal: platformDecodingParams{\n\tfilenames:    vp9Files[\"profile_0\"][\"buf\"][\"l1ish\"],",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "074339e4_4f9f4ab1",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 1
@@ -19,6 +65,75 @@
         "startChar": 5,
         "endLine": 210,
         "endChar": 17
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd4c654c_30987d87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-27T00:17:39Z",
+      "side": 1,
+      "message": "Maybe add a comment here or below \"The tests are named and ordered with increasing VP9  levels (resolution and bitrate) of the test. Each test plays back 6 different videos of approximately the same resolution. The frames of each output video are verified against precomputed MD5 checksums. https://www.webmproject.org/vp9/levels/\"",
+      "range": {
+        "startLine": 222,
+        "startChar": 86,
+        "endLine": 222,
+        "endChar": 90
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0431efce_7ab90388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-27T00:17:39Z",
+      "side": 1,
+      "message": "These tests will run a longer time, lets start with graphics_nightly.",
+      "range": {
+        "startLine": 227,
+        "startChar": 62,
+        "endLine": 227,
+        "endChar": 79
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b07cfcf0_d6b75c96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-27T00:17:39Z",
+      "side": 1,
+      "message": "TODO(jchinlee): Move stop ui to a fixture to avoid stopping Chrome all the time once crbug.com/1165694 is resolved.",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 2
       },
       "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -43,6 +158,47 @@
         "endLine": 494,
         "endChar": 71
       },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0fd565b_480534ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-27T00:17:39Z",
+      "side": 1,
+      "message": "We are playing back 6 videos right now. I think surfacing the first failing frame (plus the count of failing frames) should be sufficient.\n\nIdeally saving the content of the failing frame for tast to pick up would be nice, but I don\u0027t know if there is an easy way to view it without conversion to png. (Also right now that looks very hard to do, but maybe have a TODO to move reading the json and doing the comparision into the decode_test?) Otherwise the MD5 of the failing frame is enough. It mostly will show us if it is consistently or randomly wrong.",
+      "parentUuid": "24ad9d4a_1c32d5b5",
+      "range": {
+        "startLine": 494,
+        "startChar": 45,
+        "endLine": 494,
+        "endChar": 71
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c6a8a7c_b5439fb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-27T00:17:39Z",
+      "side": 1,
+      "message": "Just to clarify what I wrote above, ideally the decode_test binary gets the json with the MD5s of the frames passed in. Then it can decide itself on the failure message and if it wants to output some of the frames for debugging. I think that would help people troubleshooting failures and keeps test logic out of tast if our partners want to run this in their own CI. For now lets keep/land it but\n\nTODO(jchinlee): Move verifyContent into decode_test.",
       "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
