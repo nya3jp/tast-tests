@@ -37,6 +37,16 @@ func init() {
 		Fixture:      "chromeLoggedIn",
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(perfutil.UnstableBoards...)),
+			},
+			// TODO(crbug.com/1163981): remove "unstable" once we see stability on all platforms.
+			{
+				Name:              "unstable",
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform(perfutil.UnstableBoards...)),
+			},
+		},
 	})
 }
 
