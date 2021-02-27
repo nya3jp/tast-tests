@@ -33,10 +33,21 @@ func init() {
 			"kaznacheev@chromium.org",
 			"mukai@chromium.org", // Tast author
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Fixture:      "chromeLoggedIn",
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform(perfutil.CQTargetModels...)),
+			},
+			// TODO(crbug.com/xxxx): remove "unstable" once we see stability on all platforms.
+			{
+				Name:              "unstable",
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(perfutil.CQTargetModels...)),
+			},
+		},
 	})
 }
 
