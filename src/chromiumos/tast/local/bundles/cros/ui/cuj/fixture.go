@@ -6,6 +6,7 @@ package cuj
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -14,6 +15,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -58,6 +60,7 @@ type loggedInToCUJUserFixture struct {
 	cr              *chrome.Chrome
 	arc             *arc.ARC
 	origRunningPkgs map[string]struct{}
+	logMarker       *logsaver.Marker
 }
 
 func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -199,6 +202,23 @@ func (f *loggedInToCUJUserFixture) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (f *loggedInToCUJUserFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *loggedInToCUJUserFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.logMarker != nil {
+		s.Log("A log marker is already created but not cleaned up")
+	}
+	logMarker, err := logsaver.NewMarker(f.cr.LogFilename())
+	if err == nil {
+		f.logMarker = logMarker
+	} else {
+		s.Log("Failed to start the log saver: ", err)
+	}
+}
 
-func (f *loggedInToCUJUserFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *loggedInToCUJUserFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.logMarker != nil {
+		if err := f.logMarker.Save(filepath.Join(s.OutDir(), "chrome.log")); err != nil {
+			s.Log("Failed to store per-test log data: ", err)
+		}
+		f.logMarker = nil
+	}
+}

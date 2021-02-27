@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"
 	"chromiumos/tast/local/chrome/jslog"
+	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/testing"
 )
 
@@ -56,10 +57,25 @@ func tryReuseSession(ctx context.Context, cfg *config.Config) (cr *Chrome, retEr
 		return nil, err
 	}
 
+	logFilename, err := CurrentLogFile()
+	if err != nil {
+		return nil, err
+	}
+	testing.ContextLogf(ctx, "Log file name: %s", logFilename)
+	// When reusing the session, lines already in the log file should be unrelated
+	// to the test itself. Thus use logsaver.NewMarker to exclude already existing
+	// log lines.
+	logMarker, err := logsaver.NewMarker(logFilename)
+	if err != nil {
+		return nil, err
+	}
+
 	return &Chrome{
 		cfg:          *cfg,
 		agg:          agg,
 		sess:         sess,
+		logFilename:  logFilename,
+		logMarker:    logMarker,
 		loginPending: cfg.DeferLogin(),
 	}, nil
 }

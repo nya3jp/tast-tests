@@ -6,8 +6,10 @@ package chrome
 
 import (
 	"context"
+	"path/filepath"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/testing"
 )
 
@@ -94,8 +96,9 @@ type OptionsCallback func(ctx context.Context, s *testing.FixtState) ([]Option, 
 // If the parent is specified, and the parent returns a value of []Option, it
 // will also add those options when starting Chrome.
 type loggedInFixture struct {
-	cr   *Chrome
-	fOpt OptionsCallback // Function to generate Chrome Options
+	cr        *Chrome
+	fOpt      OptionsCallback  // Function to generate Chrome Options
+	logMarker *logsaver.Marker // Marker for per-test log.
 }
 
 // NewLoggedInFixture returns a FixtureImpl with a OptionsCallback function to provide Chrome options.
@@ -143,6 +146,23 @@ func (f *loggedInFixture) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (f *loggedInFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *loggedInFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.logMarker != nil {
+		s.Log("A log marker is already created but not cleaned up")
+	}
+	logMarker, err := logsaver.NewMarker(f.cr.LogFilename())
+	if err == nil {
+		f.logMarker = logMarker
+	} else {
+		s.Log("Failed to start the log saver: ", err)
+	}
+}
 
-func (f *loggedInFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *loggedInFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.logMarker != nil {
+		if err := f.logMarker.Save(filepath.Join(s.OutDir(), "chrome.log")); err != nil {
+			s.Log("Failed to store per-test log data: ", err)
+		}
+		f.logMarker = nil
+	}
+}
