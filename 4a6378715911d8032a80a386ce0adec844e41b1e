@@ -84,6 +84,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18f40a56_2016c212",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-02-27T00:08:23Z",
+      "side": 1,
+      "message": "I think you could just keep track of the number and output the first MD5 below plus the number for shorter string,",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 86
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9482159c_657f415e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 4
