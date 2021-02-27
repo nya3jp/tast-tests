@@ -47,6 +47,7 @@ func init() {
 				Val:               false,
 			}, {
 				Name:              "tablet_stable",
+				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: pre.AppsStableModels,
 				Val:               true,
 			}, {
