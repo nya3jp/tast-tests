@@ -28,6 +28,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/setup"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -116,6 +117,9 @@ type Chrome struct {
 	agg  *jslog.Aggregator
 	sess *driver.Session
 
+	logFilename string
+	logMarker   *logsaver.Marker
+
 	loginPending bool // true if login is pending until ContinueLogin is called
 }
 
@@ -144,6 +148,11 @@ func (c *Chrome) DeprecatedExtDirs() []string {
 // but it is exposed so that the port's owner can be easily identified.
 func (c *Chrome) DebugAddrPort() string {
 	return c.sess.DebugAddrPort()
+}
+
+// LogFilename returns the real path of the log file for the Chrome.
+func (c *Chrome) LogFilename() string {
+	return c.logFilename
 }
 
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
@@ -237,6 +246,12 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		}
 	}
 
+	logFilename, err := CurrentLogFile()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find the log filename")
+	}
+	testing.ContextLogf(ctx, "Log file name: %s", logFilename)
+
 	loginPending := false
 	if cfg.DeferLogin() {
 		loginPending = true
@@ -281,6 +296,8 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		deprecatedExtDirs: exts.DeprecatedDirs(),
 		agg:               agg,
 		sess:              sess,
+		logFilename:       logFilename,
+		logMarker:         logsaver.NewMarkerNoOffset(logFilename),
 		loginPending:      loginPending,
 	}, nil
 }
@@ -308,6 +325,17 @@ func (c *Chrome) Close(ctx context.Context) error {
 	// the system crash directory.
 	if err := moveUserCrashDumps(); err != nil && firstErr == nil {
 		firstErr = err
+	}
+
+	if outDir, ok := testing.ContextOutDir(ctx); ok {
+		if err := c.logMarker.Save(filepath.Join(outDir, filepath.Base(c.logFilename))); err != nil {
+			testing.ContextLog(ctx, "Failed to save the entire log: ", err)
+			if firstErr == nil {
+				firstErr = err
+			}
+		}
+	} else {
+		testing.ContextLog(ctx, "No output directory exists, not saving log file")
 	}
 	return firstErr
 }
