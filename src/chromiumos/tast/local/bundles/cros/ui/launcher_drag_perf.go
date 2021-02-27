@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/coords"
@@ -59,21 +58,11 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	defer chromeui.WaitForLocationChangeCompleted(ctx, tconn)
-
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
 		s.Fatal("Failed to ensure in clamshell mode: ", err)
 	}
 	defer cleanup(ctx)
-
-	// When the device is tablet-mode by default, entering into clamshell mode may
-	// cause a lot of location change events which may not finish timely. So wait
-	// here to ensure that the following test scenarios work as expected. See also
-	// https://crbug.com/1076520.
-	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the location changes: ", err)
-	}
 
 	var primaryBounds coords.Rect
 	var primaryWorkArea coords.Rect
