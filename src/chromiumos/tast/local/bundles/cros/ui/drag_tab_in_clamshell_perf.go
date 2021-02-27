@@ -12,9 +12,11 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -86,15 +88,20 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	end := bounds.CenterPoint()
 
 	// Find tabs.
-	tabs, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeTab, ClassName: "Tab"})
+	ac := uiauto.New(tconn)
+	tabParam := nodewith.Role(role.Tab).ClassName("Tab")
+	tabs, err := ac.NodesInfo(ctx, tabParam)
 	if err != nil {
 		s.Fatal("Failed to find tabs: ", err)
 	}
-	defer tabs.Release(ctx)
 	if len(tabs) != 2 {
 		s.Fatalf("Expected 2 tabs, only found %v tab(s)", len(tabs))
 	}
-	start := tabs[0].Location.CenterPoint()
+	tabRect, err := ac.Location(ctx, tabParam.First())
+	if err != nil {
+		s.Fatal("Failed to get the location of the tab: ", err)
+	}
+	start := tabRect.CenterPoint()
 
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := mouse.Drag(ctx, tconn, start, end, time.Second); err != nil {

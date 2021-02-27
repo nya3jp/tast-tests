@@ -394,6 +394,14 @@ func (ac *Context) MouseClickAtLocation(ct clickType, loc coords.Point) Action {
 	}
 }
 
+// MouseMoveToLocation returns a function that moves the mouse cursor to the
+// specified location.
+func (ac *Context) MouseMoveToLocation(loc coords.Point, duration time.Duration) Action {
+	return func(ctx context.Context) error {
+		return mouse.Move(ctx, ac.tconn, loc, duration)
+	}
+}
+
 // immediateMouseClick returns a function that clicks on the location of the node found by the input finder.
 // It will not wait until the location is stable before clicking.
 // This returns a function to make it chainable in ui.Run.
