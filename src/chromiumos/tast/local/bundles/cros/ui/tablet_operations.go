@@ -34,14 +34,21 @@ func init() {
 			"chromeos-wmp@google.com",
 			"mukai@chromium.org", // Tast author
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Fixture:      "chromeLoggedIn",
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
-		HardwareDeps: hwdep.D(
-			hwdep.InternalDisplay(),
-			// Exclude sparky360 as its touchscreen often doesn't work well. See b/176940351.
-			hwdep.SkipOnModel("sparky360"),
-		),
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform(perfutil.CQTargetModels...)),
+			},
+			// TODO(crbug.com/1168774): remove "unstable" once we see stability on all platforms.
+			{
+				Name:              "unstable",
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(perfutil.CQTargetModels...)),
+			},
+		},
 	})
 }
 
