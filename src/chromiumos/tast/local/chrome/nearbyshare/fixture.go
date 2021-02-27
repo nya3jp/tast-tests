@@ -6,6 +6,7 @@ package nearbyshare
 
 import (
 	"context"
+	"os"
 	"path/filepath"
 	"strconv"
 	"time"
@@ -167,7 +168,20 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		const androidBaseName = "android_test"
 		androidDisplayName := nearbytestutils.RandomDeviceName(androidBaseName)
 		// TODO(crbug/1127165): Replace with s.DataPath(nearbysnippet.ZipName) when data is supported in Fixtures.
-		apkZipPath := "/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/nearbyshare/data/nearby_snippet.zip"
+		// The data path changes based on whether -build=true or -build=false is supplied to `tast run`.
+		// Local test runs on your workstation use -build=true by default, while lab runs use -build=false.
+		prebuiltLocalDataPath := "/usr/local/share/tast/data/chromiumos/tast/local/bundles/cros/nearbyshare/data"
+		builtLocalDataPath := "/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/nearbyshare/data"
+		apkZipName := "nearby_snippet.zip"
+
+		// Use the built local data path if it exists, and fall back to the prebuilt data path otherwise.
+		apkZipPath := filepath.Join(builtLocalDataPath, apkZipName)
+		if _, err := os.Stat(builtLocalDataPath); os.IsNotExist(err) {
+			apkZipPath = filepath.Join(prebuiltLocalDataPath, apkZipName)
+		} else if err != nil {
+			s.Fatal("Failed to check if built local data path exists: ", err)
+		}
+
 		androidDevice, err := nearbysetup.AndroidSetup(
 			ctx, apkZipPath, rooted,
 			nearbysetup.DefaultScreenTimeout,
