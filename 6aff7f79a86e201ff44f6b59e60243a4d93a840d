@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9977b1fb_d9671a54",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-02-27T01:57:02Z",
+      "side": 1,
+      "message": "Sounds good, I see you filed the bug so I will take a look at that next week.",
+      "parentUuid": "49e24a6a_287bccce",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 33
+      },
+      "revId": "6aff7f79a86e201ff44f6b59e60243a4d93a840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3eb51e23_8a29f4dd",
