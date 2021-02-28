@@ -30,9 +30,10 @@ const (
 )
 
 type testMetadata struct {
-	name        string
-	image       imageType
-	togglePower bool
+	name           string
+	image          imageType
+	togglePower    bool
+	hwWriteProtect bool
 	// Args to append to "runtest" command.
 	testArgs []string
 }
@@ -67,7 +68,7 @@ func init() {
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_flash_write_protect",
-			Val:       testMetadata{name: "bloonchipper/test-flash_write_protect.bin", image: imageTypeRO, togglePower: true},
+			Val:       testMetadata{name: "bloonchipper/test-flash_write_protect.bin", image: imageTypeRO, togglePower: true, hwWriteProtect: true},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_fpsensor_spi_ro",
@@ -214,6 +215,20 @@ func fpmcuPower(ctx context.Context, on bool) error {
 	return err
 }
 
+// hwWriteProtect toggles hardware write protect
+func hwWriteProtect(ctx context.Context, on bool) error {
+	wpArg := "on"
+	if !on {
+		wpArg = "off"
+	}
+	cmd := testexec.CommandContext(ctx, "dut-control", fmt.Sprintf("fw_wp_en:%s", wpArg))
+	err := cmd.Run()
+	if err != nil {
+		testing.ContextLogf(ctx, "Failed to toggle write protect to %q: %v", wpArg, err)
+	}
+	return err
+}
+
 // getFpmcuConsolePath returns FPMCU UART console's PTY.
 func getFpmcuConsolePath(ctx context.Context, s *testing.State) string {
 	s.Log("Getting FPMCU's UART console")
@@ -303,6 +318,8 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to reset FPMCU: ", err)
 		}
 	}
+
+	hwWriteProtect(ctx, s.Param().(testMetadata).hwWriteProtect)
 
 	s.Log("Running FPMCU unittest through UART console: ", consolePath)
 	cmd := fmt.Sprintf("runtest %s\n", strings.Join(s.Param().(testMetadata).testArgs, " "))
