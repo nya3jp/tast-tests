@@ -244,7 +244,7 @@ func getFpmcuConsolePath(ctx context.Context, s *testing.State) string {
 func FpmcuUnittest(ctx context.Context, s *testing.State) {
 	cmdServod := setupServo(ctx, s)
 	defer cmdServod.Wait(testexec.DumpLogOnError)
-	defer cmdServod.Kill()
+	defer cmdServod.Signal(syscall.SIGINT)
 
 	// Reboot the FPMCU for a clean state.
 	if err := fpmcuPower(ctx, false); err != nil {
