@@ -30,9 +30,9 @@ const (
 )
 
 type testMetadata struct {
-	name        string
-	image       imageType
-	togglePower bool
+	name           string
+	image          imageType
+	hwWriteProtect bool
 	// Args to append to "runtest" command.
 	testArgs []string
 }
@@ -63,11 +63,11 @@ func init() {
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_flash_physical",
-			Val:       testMetadata{name: "bloonchipper/test-flash_physical.bin", image: imageTypeRO, togglePower: true},
+			Val:       testMetadata{name: "bloonchipper/test-flash_physical.bin", image: imageTypeRO},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_flash_write_protect",
-			Val:       testMetadata{name: "bloonchipper/test-flash_write_protect.bin", image: imageTypeRO, togglePower: true},
+			Val:       testMetadata{name: "bloonchipper/test-flash_write_protect.bin", image: imageTypeRO, hwWriteProtect: true},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_fpsensor_spi_ro",
@@ -225,6 +225,26 @@ func rebootFpmcu(ctx context.Context) error {
 	return nil
 }
 
+// hwWriteProtect toggles hardware write protect
+func hwWriteProtect(ctx context.Context, on bool) error {
+	// fw_wp_en allows servo to control the hardware write protect.
+	err := testexec.CommandContext(ctx, "dut-control", "fw_wp_en:on").Run()
+	if err != nil {
+		return errors.Wrap(err, "failed to enable control of write protect")
+	}
+	// The WP gpio on the dev board is inverted: b/182499499.
+	// force_on will actually turn the WP gpio off.
+	wpArg := "force_on"
+	if on {
+		wpArg = "force_off"
+	}
+	err = testexec.CommandContext(ctx, "dut-control", fmt.Sprintf("fw_wp_state:%s", wpArg)).Run()
+	if err != nil {
+		return errors.Wrapf(err, "failed to toggle write protect to %q", wpArg)
+	}
+	return nil
+}
+
 // getFpmcuConsolePath returns FPMCU UART console's PTY.
 func getFpmcuConsolePath(ctx context.Context) (string, error) {
 	testing.ContextLog(ctx, "Getting FPMCU's UART console")
@@ -302,15 +322,13 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	if err := hwWriteProtect(ctx, s.Param().(testMetadata).hwWriteProtect); err != nil {
+		s.Fatal("Failed to initialize HW write protect: ", err)
+	}
+
 	if imageToBoot == "RO" {
 		if _, err = console.Write([]byte("sysjump ro\n")); err != nil {
 			s.Fatal("Failed to switch FPMCU to RO: ", err)
-		}
-	}
-
-	if s.Param().(testMetadata).togglePower {
-		if err := rebootFpmcu(ctx); err != nil {
-			s.Fatal("Failed to reboot FPMCU: ", err)
 		}
 	}
 
