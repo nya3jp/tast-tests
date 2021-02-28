@@ -184,7 +184,7 @@ func getFpmcuConsolePath(ctx context.Context, s *testing.State) string {
 func FpmcuUnittest(ctx context.Context, s *testing.State) {
 	cmdServod := setupServo(ctx, s)
 	defer cmdServod.Wait(testexec.DumpLogOnError)
-	defer cmdServod.Kill()
+	defer cmdServod.Signal(syscall.SIGINT)
 
 	consolePath := getFpmcuConsolePath(ctx, s)
 
