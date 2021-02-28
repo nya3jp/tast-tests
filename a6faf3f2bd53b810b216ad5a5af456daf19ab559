@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed61b7b_5e6457ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-28T01:30:59Z",
+      "side": 1,
+      "message": "mpu is because I did not supply the proper \"finish regex\". mutex is affected by the failure of mpu (servod does not start properly).",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 125
+      },
+      "revId": "a6faf3f2bd53b810b216ad5a5af456daf19ab559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c58bed00_45ba024d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-28T01:30:59Z",
+      "side": 1,
+      "message": "rollback is because I did not supply the proper \"finish regex\". rollback_entropy is affected by the failure of rollback - it passed before.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 125
+      },
+      "revId": "a6faf3f2bd53b810b216ad5a5af456daf19ab559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "536fe6ee_5fb2e769",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-28T01:30:59Z",
+      "side": 1,
+      "message": "rsa3 is probably because rwsig verification of the unittest binary can be flaky (fails pretty often). rtc is affected by rsa3 - rtc passed before on the dashboard.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 125
+      },
+      "revId": "a6faf3f2bd53b810b216ad5a5af456daf19ab559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b6d671_4db7b106",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-28T01:30:59Z",
+      "side": 1,
+      "message": "stm32f_rtc itself is flaky - it passed before on the dashboard.\nOn another run it fails with \"Failed to scan unittest result\" which means no \"Fail!\" line.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 91
+      },
+      "revId": "a6faf3f2bd53b810b216ad5a5af456daf19ab559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fbc6254_b3f65217",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-28T01:30:59Z",
+      "side": 1,
+      "message": "This gives the whole-suite result. See comment on commit message for error analysis. Overall I find the results encouraging. It\u0027s getting close to the failure rate of our autotests...",
+      "revId": "a6faf3f2bd53b810b216ad5a5af456daf19ab559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
