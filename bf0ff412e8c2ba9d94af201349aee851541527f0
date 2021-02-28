@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "592ac1fd_fb34e003",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-02-28T13:31:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e6e4625_32d84b0e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 97
+      },
+      "revId": "bf0ff412e8c2ba9d94af201349aee851541527f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7252d12_85343e32",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-26T09:08:09Z",
       "side": 1,
       "message": "+1",
+      "range": {
+        "startLine": 11,
+        "startChar": 47,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "bf0ff412e8c2ba9d94af201349aee851541527f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde3fb16_2ce50aea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-02-28T13:31:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7252d12_85343e32",
       "range": {
         "startLine": 11,
         "startChar": 47,
@@ -77,6 +125,24 @@
       "writtenOn": "2021-02-26T09:08:09Z",
       "side": 1,
       "message": "This file should not be changed in this CL.",
+      "revId": "bf0ff412e8c2ba9d94af201349aee851541527f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21053c22_ff1f3878",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/finalize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-02-28T13:31:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3eab2ff_86e9fd99",
       "revId": "bf0ff412e8c2ba9d94af201349aee851541527f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
