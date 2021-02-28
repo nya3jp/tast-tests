@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7e4aa13_87889436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-28T01:24:19Z",
+      "side": 1,
+      "message": "Tast owners: there\u0027s no way to replace with sleep with a polling, because the MCU board is powered off.",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 32
+      },
+      "revId": "79b888df39df2174a9a10b01fee1a4637346f296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
