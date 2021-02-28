@@ -16,6 +16,29 @@
       "message": "Invite Tast-owners to review",
       "revId": "01307e038072d8713d079b8d8bb5e022407dc7fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e4c40a1_6f3338ef",
+        "filename": "src/chromiumos/tast/local/android/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-02-28T22:08:50Z",
+      "side": 1,
+      "message": "Does it make sense to call GetObject here to get the ID?",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 2
+      },
+      "revId": "01307e038072d8713d079b8d8bb5e022407dc7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
