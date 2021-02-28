@@ -108,6 +108,23 @@
       "message": "This gives the whole-suite result. See comment on commit message for error analysis. Overall I find the results encouraging. It\u0027s getting close to the failure rate of our autotests...",
       "revId": "a6faf3f2bd53b810b216ad5a5af456daf19ab559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "980809ae_e64b9df7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-28T01:33:21Z",
+      "side": 1,
+      "message": "Just for info: Time to run the entire suite is 35~40 minutes. If FPMCU is really unresponsive, rebooting the AP helps.",
+      "revId": "a6faf3f2bd53b810b216ad5a5af456daf19ab559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
