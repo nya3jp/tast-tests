@@ -36,16 +36,16 @@ func init() {
 			"informational",
 		},
 		Vars: []string{
-			"filemanager.user",
-			"filemanager.password",
+			"filemanager.DrivefsUI.username",
+			"filemanager.DrivefsUI.password",
 		},
 	})
 }
 
 func DrivefsUI(ctx context.Context, s *testing.State) {
 	const testFileName = "drivefs"
-	username := s.RequiredVar("filemanager.user")
-	password := s.RequiredVar("filemanager.password")
+	username := s.RequiredVar("filemanager.DrivefsUI.username")
+	password := s.RequiredVar("filemanager.DrivefsUI.password")
 
 	// Start up Chrome.
 	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, ""))
