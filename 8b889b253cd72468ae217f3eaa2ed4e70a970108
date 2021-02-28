@@ -155,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69726b61_056e0534",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_install_guest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-02-28T14:43:10Z",
+      "side": 1,
+      "message": "I\u0027d add a comment in L74 describing why the names are not compared. (e.g: if the test fails, or if it passes when it shouldn\u0027t, a future test maintainer might not know why it fails/passes). e.g:\n\n\n  // Only the list length is compared, and not the names because ...",
+      "parentUuid": "eb3df691_15adb046",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "8b889b253cd72468ae217f3eaa2ed4e70a970108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ccfc3d1_92028a58",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_install_guest.go",
         "patchSetId": 4
