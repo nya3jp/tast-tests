@@ -16,6 +16,69 @@
       "message": "Thank you for your suggestions and patience! ",
       "revId": "c0e7447a72d2c67e4854dc89029b6460dbe76b38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29ec758c_d21fd34c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-28T16:39:57Z",
+      "side": 1,
+      "message": "One more fix request for the latest PS.",
+      "revId": "c0e7447a72d2c67e4854dc89029b6460dbe76b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca37f95_1b0a67ee",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-28T16:39:57Z",
+      "side": 1,
+      "message": "optional: maybe crosHealthdStatus() ? Running status command sounds like implementation details to me.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 14
+      },
+      "revId": "c0e7447a72d2c67e4854dc89029b6460dbe76b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c3cba4b_ffb43bdc",
+        "filename": "src/chromiumos/tast/local/croshealthd/status.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-02-28T16:39:57Z",
+      "side": 1,
+      "message": "I think this can be improved as follows:\n\nentries :\u003d []struct {\n  key string\n  expected string\n  dest *bool\n}{{\n  \"cros_health service status: \",\n  \"running\",\n  \u0026status.ServiceRunning\n}, {\n  ...\n}}\n\nif len(lines) !\u003d len(entries) {\n  return nil, errors.Errorf(...)\n}\n\nfor i, e :\u003d range entries {\n  if !strings.HasPrefix(lines[i], e.key) {\n    return nil, ...\n  }\n  *e.dest \u003d strings.TrimPrefix(...) \u003d\u003d e.expected\n}\n\nto avoid 3 hard-coded.",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "c0e7447a72d2c67e4854dc89029b6460dbe76b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
