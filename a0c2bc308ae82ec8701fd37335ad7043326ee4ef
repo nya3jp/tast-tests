@@ -73,6 +73,24 @@
       "message": "When I ran arc.Fsp.vm locally, I got the following error:\n\n  2021-02-27T19:02:40.597954Z [04:02:40.327] Performing TestOpenWithAndroidApp on:\n  2021-02-27T19:02:40.598021Z [04:02:40.327] Installing ArcFileReaderTest app\n  2021-02-27T19:02:40.598059Z [04:02:40.327] WARNING: When files under tast-tests/android are modified, APKs on the DUT should be pushed manually. See tast-tests/android/README.md\n  2021-02-27T19:02:42.998149Z [04:02:42.727] Setting up a test file\n  2021-02-27T19:02:42.998233Z [04:02:42.727] Error at storage.go:74: Failed to create test file storage.txt: open storage.txt: read-only file system\n  2021-02-27T19:02:42.998263Z [04:02:42.727] Stack trace:\n  Failed to create test file storage.txt: open storage.txt: read-only file system\n          at chromiumos/tast/local/bundles/cros/arc/storage.TestOpenWithAndroidApp (storage.go:74)\n\nIt seems to have tried to create a file under dir.Path which is empty.\nMaybe it is expected to modify storage.go in the same way as crrev.com/c/2719940, or am I missing something?",
       "revId": "a0c2bc308ae82ec8701fd37335ad7043326ee4ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29421121_8f2a118c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-02-28T07:45:55Z",
+      "side": 1,
+      "message": "Sorry, I meant to have the same change in storage.go.\nI\u0027ve rebased this CL on top of crrev.com/c/2719940",
+      "parentUuid": "dcdfd540_117832fe",
+      "revId": "a0c2bc308ae82ec8701fd37335ad7043326ee4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
