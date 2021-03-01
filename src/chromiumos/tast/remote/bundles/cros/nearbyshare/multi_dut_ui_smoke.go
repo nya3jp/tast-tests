@@ -75,7 +75,8 @@ func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT, t
 	if _, err := ns.NewChromeLogin(ctx, loginReq); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	defer remotetestutils.SaveLogs(ctx, ns, d, tag, s.OutDir())
+	defer ns.CloseChrome(ctx, &empty.Empty{})
+	defer remotetestutils.SaveLogs(ctx, d, tag, s.OutDir())
 
 	// Setup Nearby Share on the DUT.
 	const deviceName = "MultiDut_HighVisibilityUISmoke"
