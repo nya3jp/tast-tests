@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30f3ac1e_8aac7d6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-01T17:04:00Z",
+      "side": 1,
+      "message": "\u003e Are we concerned about the number of changed lines?\nMore than that, I guess one day LaCrOS will be shipped and all\nthese tests will just run on it by default, right? If yes then\nhaving a default value for this parameter would be best, so we\ndon\u0027t have to come back and change this file again when we\nflip the feature flag (we\u0027ll only need to remove the _lacros\nvariants).\n\nMaybe we could have a small parameter constructor function here\nand give this parameter a default value?\n\n\u003e \n\u003e This pattern is used a number of other tests so IMO it is better to stick to the existing pattern rather than having multiple patterns used over the codebase.\n\u003e \n\u003e WDYT?",
+      "parentUuid": "fb73f356_a9226808",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "f6b656f72d87c496d448388dcbcff63b8003dd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dd17323_c556ff15",
         "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
         "patchSetId": 5
@@ -137,6 +161,30 @@
       "side": 1,
       "message": "chrome.ExtraArgs isn\u0027t a []string, it\u0027s a closure that appends arguments to the config.Config struct. I may have misunderstood your comment - but I don\u0027t see an easy way to convert from a chrome.ExtraArgs to a []string.\n\nI\u0027m happy to do this bit in a different way though. FWIW I also looked into making lacros accept chrome.ExtraArgs directly but it turns out to be a very messy way to do it (and a huge CL).",
       "parentUuid": "9dd17323_c556ff15",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "f6b656f72d87c496d448388dcbcff63b8003dd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0570eb8_9aa0ab5d",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-01T17:04:00Z",
+      "side": 1,
+      "message": "\u003e chrome.ExtraArgs isn\u0027t a []string, it\u0027s a closure that appends arguments to the config.Config struct. I may have misunderstood your comment - but I don\u0027t see an easy way to convert from a chrome.ExtraArgs to a []string.\n\nAh I see - well if there\u0027s no easy way to get the arguments \"back out\" from\nchrome.ExtraArgs as a []string, then what we do here is fine.\n\n\u003e \n\u003e I\u0027m happy to do this bit in a different way though. FWIW I also looked into making lacros accept chrome.ExtraArgs directly but it turns out to be a very messy way to do it (and a huge CL).",
+      "parentUuid": "69a3dc4f_e3f81450",
       "range": {
         "startLine": 23,
         "startChar": 4,
