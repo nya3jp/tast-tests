@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f673274c_14e85bf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-01T05:01:58Z",
+      "side": 1,
+      "message": "This chown looks like doing more than the description \"too permissive\". Is this intended?",
+      "revId": "421188f1a0086b2b3cf4ff14dcbf1e895aa4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa567493_ed657151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-01T05:01:58Z",
+      "side": 1,
+      "message": "how about resetting to restoreInfo\u003dnil here or before clobber so that additional test cases would not accidentally read the restoreInfo value from previous ones?",
+      "revId": "421188f1a0086b2b3cf4ff14dcbf1e895aa4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
