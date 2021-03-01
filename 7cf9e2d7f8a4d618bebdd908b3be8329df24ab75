@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18cb5dc4_8cae5131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-01T00:10:23Z",
+      "side": 1,
+      "message": "consider using longer names, particularly for a\n\ns and cr are fine as they are conventional in the tast codebase.",
+      "range": {
+        "startLine": 122,
+        "startChar": 37,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "7cf9e2d7f8a4d618bebdd908b3be8329df24ab75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91a0e753_41ebd4b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-01T00:10:23Z",
+      "side": 1,
+      "message": "while go encourages use of short var names, please don\u0027t use them for function arguments.\n\nSee go/go-style/decisions#variable-names and go/go-style/decisions#v",
+      "range": {
+        "startLine": 126,
+        "startChar": 60,
+        "endLine": 126,
+        "endChar": 64
+      },
+      "revId": "7cf9e2d7f8a4d618bebdd908b3be8329df24ab75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10076f28_f0f96263",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-01T00:10:23Z",
+      "side": 1,
+      "message": "Please document each field (including whether it is required or optional)",
+      "revId": "7cf9e2d7f8a4d618bebdd908b3be8329df24ab75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f79a7e52_b8a71302",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-01T00:10:23Z",
+      "side": 1,
+      "message": "Are there defaults or regexs that could be used rather than the user having to specify these?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "7cf9e2d7f8a4d618bebdd908b3be8329df24ab75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
