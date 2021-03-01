@@ -33,6 +33,23 @@
       "message": "+2 for Tast Owners",
       "revId": "83733e6cb2e8ef0cbbc12abbe1f4570e927a0bfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a03ca5_e2f639d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T11:39:53Z",
+      "side": 1,
+      "message": "Thanks a lot, Patrick!",
+      "revId": "83733e6cb2e8ef0cbbc12abbe1f4570e927a0bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
