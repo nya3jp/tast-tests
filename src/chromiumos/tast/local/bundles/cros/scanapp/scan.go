@@ -208,7 +208,7 @@ func Scan(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to find scan: ", err)
 			}
 
-			diffPath := filepath.Join(s.OutDir(), test.name, "_diff.txt")
+			diffPath := filepath.Join(s.OutDir(), test.name+"_diff.txt")
 			if err := document.CompareFiles(ctx, scan, s.DataPath(test.goldenFile), diffPath); err != nil {
 				s.Error("Scan differs from golden file: ", err)
 			}
