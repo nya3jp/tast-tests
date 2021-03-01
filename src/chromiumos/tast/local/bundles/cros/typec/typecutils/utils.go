@@ -18,6 +18,9 @@ import (
 	"chromiumos/tast/local/testexec"
 )
 
+// The maximum number of USB Type C ports that a Chromebook supports.
+const maxTypeCPorts = 8
+
 // CheckTBTDevice is a helper function which checks for a TBT connected device.
 // |expected| specifies whether we want to check for the presence of a TBT device (true) or the
 // absence of one (false).
@@ -101,17 +104,25 @@ func FindConnectedDPMonitor(ctx context.Context, tc *chrome.TestConn) error {
 
 // CheckPortForTBTPartner checks whether the device has a connected Thunderbolt device.
 // We use the 'ectool typecdiscovery' command to accomplish this.
-// If |port| is invalid, the ectool command should return an INVALID_PARAM error.
+// Check each port successively. If a port returns an error, that means
+// we are out of ports.
 //
 // This functions returns:
-// - Whether a TBT device is present at a given port.
-// - The error value if the command didn't run, else nil.
-func CheckPortForTBTPartner(ctx context.Context, port int) (bool, error) {
-	out, err := testexec.CommandContext(ctx, "ectool", "typecdiscovery", strconv.Itoa(port), "0").Output()
-	if err != nil {
-		return false, errors.Wrap(err, "failed to run ectool command")
+// - The error if the command didn't run or no TBT device found, else nil on success.
+func CheckPortForTBTPartner(ctx context.Context) error {
+	for i := 0; i < maxTypeCPorts; i++ {
+		out, err := testexec.CommandContext(ctx, "ectool", "typecdiscovery", strconv.Itoa(i), "0").Output()
+		if err != nil {
+			return errors.Wrap(err, "failed to run ectool command")
+		}
+
+		// Look for a TBT SVID in the output. If one exists, return nil immediately.
+		if matched, err := regexp.MatchString(`SVID 0x8087`, string(out)); err != nil {
+			return errors.Wrap(err, "failed to run regex for TBT SVID")
+		} else if matched {
+			return nil
+		}
 	}
 
-	// Look for a TBT SVID in the output. If one doesn't exist, return false.
-	return regexp.MatchString(`SVID 0x8087`, string(out))
+	return errors.New("no TBT device found")
 }
