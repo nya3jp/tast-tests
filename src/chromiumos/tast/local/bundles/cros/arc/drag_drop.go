@@ -123,6 +123,10 @@ func DragDrop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to send drag events: ", err)
 	}
 
+	if err := act.Focus(ctx, tconn); err != nil {
+		s.Fatal("Failed to focus the activity: ", err)
+	}
+
 	const (
 		fieldID  = pkg + ":id/dropped_data_view"
 		expected = `ClipData { text/plain "" {T:Data text} }`
