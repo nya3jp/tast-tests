@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0f8ce9_f032709b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-03-01T17:28:13Z",
+      "side": 1,
+      "message": "As of today, Mar 1, I am no longer on ChromeOS EngProd and am no longer a Tast reviewer. My +2 most likely does not work anymore. Please follow the regular reviewing process at http://go/tast-reviews\n\nSorry for any inconvenience. ",
+      "revId": "f7050cc8ffeb174a3374203768d0b8408f0e25b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a1f5fa6_c28b47fe",
