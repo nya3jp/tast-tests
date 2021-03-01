@@ -16,6 +16,23 @@
       "message": "Thank you looks good to me!\nGurchetan, any concerns? We will follow your renaming/refactoring of subtests as they happen.",
       "revId": "28c3155d88b2896fe32fed4165257e592e0ef3ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e653fe5_f50a0def",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-01T15:37:28Z",
+      "side": 1,
+      "message": "I think this should be a table-driven test[1][2] rather than using preconditions for the separate invocations. You can report multiple errors so this should allow you to see each individual failure as well.\n\n[1] https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#table-driven-tests\n[2] https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#Table_driven-tests",
+      "revId": "28c3155d88b2896fe32fed4165257e592e0ef3ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
