@@ -78,7 +78,9 @@ var unstableModels = []string{
 	"cyan",
 
 	// dedede:
+	"drawman",
 	"madoo",
+	"maglia",
 
 	"edgar",
 	"elm",
@@ -94,9 +96,19 @@ var unstableModels = []string{
 
 	// hatch:
 	"dragonair",
+	"helios",
 	"kled",
+	"kohaku",
 	"nightfury",
 	"willow",
+
+	// jacuzzi:
+	"burnet",
+	"esche",
+	"fennel",
+	"fennel14",
+	"juniper",
+	"kappa",
 
 	"kefka",
 
@@ -127,6 +139,7 @@ var unstableModels = []string{
 
 	// trogdor:
 	"lazor",
+	"limozeen",
 	"pompom",
 
 	// veyron:
