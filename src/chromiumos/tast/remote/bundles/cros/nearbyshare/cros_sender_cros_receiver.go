@@ -81,7 +81,7 @@ func CrosSenderCrosReceiver(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to send data to remote data path %v: %v", dataPath, err)
 	}
 
-	// Login and setup Nearby Share on both DUTs
+	// Login and setup Nearby Share on DUT 1 (Sender).
 	cl1, err := rpc.Dial(ctx, d1, s.RPCHint(), "cros")
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
@@ -94,7 +94,10 @@ func CrosSenderCrosReceiver(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT1 (Sender): ", err)
 	}
-	defer remotetestutils.SaveLogs(ctx, sender, d1, "sender", s.OutDir())
+	defer sender.CloseChrome(ctx, &empty.Empty{})
+	defer remotetestutils.SaveLogs(ctx, d1, "sender", s.OutDir())
+
+	// Login and setup Nearby Share on DUT 2 (Receiver).
 	cl2, err := rpc.Dial(ctx, d2, s.RPCHint(), "cros")
 	if err != nil {
 		s.Fatal("Failed to dial rpc service on DUT2: ", err)
@@ -106,7 +109,8 @@ func CrosSenderCrosReceiver(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT2 (Receiver): ", err)
 	}
-	defer remotetestutils.SaveLogs(ctx, receiver, d1, "receiver", s.OutDir())
+	defer receiver.CloseChrome(ctx, &empty.Empty{})
+	defer remotetestutils.SaveLogs(ctx, d2, "receiver", s.OutDir())
 
 	s.Log("Starting receiving on DUT2 (Receiver)")
 	if _, err := receiver.StartReceiving(ctx, &empty.Empty{}); err != nil {
