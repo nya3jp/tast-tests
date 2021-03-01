@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be3bcddc_f8167222",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-01T10:45:10Z",
+      "side": 1,
+      "message": "Thanks for adding new features to policy_service and the test.\nLGTM % nits",
+      "revId": "57408c49ca36cac271db751e29556339c8350f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a320e6_873bb8fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-01T10:45:10Z",
+      "side": 1,
+      "message": "nit: add line break after this.",
+      "range": {
+        "startLine": 415,
+        "startChar": 1,
+        "endLine": 415,
+        "endChar": 2
+      },
+      "revId": "57408c49ca36cac271db751e29556339c8350f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d68b34c_459aa0e1",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-01T10:45:10Z",
+      "side": 1,
+      "message": "nit: move to line 35",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 79
+      },
+      "revId": "57408c49ca36cac271db751e29556339c8350f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3716321e_c5d80c47",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-01T10:45:10Z",
+      "side": 1,
+      "message": "nit:\nif _, err :\u003d ash.WaitForNotification(ctx, tconn, uiTimeout, ash.WaitTitle(notificationTitle)); err !\u003d nil {\n  return errors.Wrapf(err, \"failed waiting %v for system-proxy notification\", uiTimeout)\n}",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "57408c49ca36cac271db751e29556339c8350f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4d46502_db6cb2b1",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-01T10:45:10Z",
+      "side": 1,
+      "message": "Please handle the error.",
+      "range": {
+        "startLine": 60,
+        "startChar": 44,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "57408c49ca36cac271db751e29556339c8350f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffcd421d_69fa9b01",
+        "filename": "src/chromiumos/tast/local/network/ui_utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-01T10:45:10Z",
+      "side": 1,
+      "message": "nit: please add new lines after line 39, 48, 57 and 73 to improve readability.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "57408c49ca36cac271db751e29556339c8350f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e2b9b35_19fb1b6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_arc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-01T10:45:10Z",
+      "side": 1,
+      "message": "nit: move to line 104",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 41
+      },
+      "revId": "57408c49ca36cac271db751e29556339c8350f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c001e876_07787f53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_arc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-01T10:45:10Z",
+      "side": 1,
+      "message": "nit: Failed",
+      "range": {
+        "startLine": 113,
+        "startChar": 11,
+        "endLine": 113,
+        "endChar": 18
+      },
+      "revId": "57408c49ca36cac271db751e29556339c8350f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6671e23d_321e67e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_arc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-01T10:45:10Z",
+      "side": 1,
+      "message": "nit: Failed",
+      "range": {
+        "startLine": 123,
+        "startChar": 11,
+        "endLine": 123,
+        "endChar": 18
+      },
+      "revId": "57408c49ca36cac271db751e29556339c8350f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ee3ced_d0f39329",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_arc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-01T10:45:10Z",
+      "side": 1,
+      "message": "nit: System-proxy",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 16
+      },
+      "revId": "57408c49ca36cac271db751e29556339c8350f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d43c09a8_5bd8cc07",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-01T10:45:10Z",
+      "side": 1,
+      "message": "nit: trailing space",
+      "range": {
+        "startLine": 41,
+        "startChar": 75,
+        "endLine": 41,
+        "endChar": 76
+      },
+      "revId": "57408c49ca36cac271db751e29556339c8350f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
