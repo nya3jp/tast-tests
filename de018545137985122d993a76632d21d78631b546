@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e830ad_72fe67c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-01T16:38:43Z",
+      "side": 0,
+      "message": "Should we keep this one? It is in middle of test and is added to fix a flake bug.",
+      "revId": "de018545137985122d993a76632d21d78631b546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
