@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c7ec6c3_a18895d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-01T07:56:31Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "504ab912_f4df6ea3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-01T07:56:31Z",
+      "side": 1,
+      "message": "Calling os.Remove after os.Stat suffers from TOCTOU races. We can simply omit os.Stat calls.\n\n if err :\u003d os.Remove(packPath); err !\u003d nil \u0026\u0026 !os.IsNotExist(err) {\n   ...\n }",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 45
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89cf2a48_102fcbc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-01T07:56:31Z",
+      "side": 1,
+      "message": "Which cleanup do you expect here? I don\u0027t see any costly cleanup below. Also, if you intend to save time for cleanup, we have to use the shortened context for all operations below (except for cleanups).",
+      "range": {
+        "startLine": 128,
+        "startChar": 56,
+        "endLine": 128,
+        "endChar": 64
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c1bf29f_707bd973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-01T07:56:31Z",
+      "side": 1,
+      "message": "nit: We can remove this decl and use :\u003d below.",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 20
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55d9d74_f02b976c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-01T07:56:31Z",
+      "side": 1,
+      "message": "OutDir here is a file path on the host, not one on the DUT, so saving files in this directory on the DUT will fail.\n\nActually you can use testing.ContextOutDir() in gRPC services to obtain a path to a temporary directory, then files saved to the directory are copied back to the host by the framework.\n\n\u003e testing.ContextOutDir returns a path to a temporary directory. Files saved in the directory during a gRPC method call are copied back to the host machine\u0027s test output directory, as if they were saved by a remote test that called into a gRPC method. Note that this function does not allow gRPC methods to read output files from a remote test nor previous gRPC method calls. Files are overwritten in the case of name conflicts.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#implementing-grpc-services",
+      "range": {
+        "startLine": 286,
+        "startChar": 18,
+        "endLine": 286,
+        "endChar": 24
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
