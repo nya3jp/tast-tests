@@ -16,6 +16,23 @@
       "message": "I was not able to reproduce it locally with quite a few runs. Based on the findings for DefaultSearchProviderSearchURL this should fix the issue. Though here there is a way more interaction with the UI.",
       "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aff7965_21a2c818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-01T18:02:09Z",
+      "side": 1,
+      "message": "It increases execution time from ~25 seconds to ~1m10s",
+      "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
