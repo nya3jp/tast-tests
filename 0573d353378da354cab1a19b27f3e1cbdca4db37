@@ -16,6 +16,52 @@
       "message": "nya, can you take a look?",
       "revId": "0573d353378da354cab1a19b27f3e1cbdca4db37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2248f18f_2add3987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-01T07:38:18Z",
+      "side": 1,
+      "message": "typo: chrome",
+      "range": {
+        "startLine": 7,
+        "startChar": 73,
+        "endLine": 7,
+        "endChar": 79
+      },
+      "revId": "0573d353378da354cab1a19b27f3e1cbdca4db37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86d9ff4_9df50bea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-01T07:38:18Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m hesitant to define a list of \"CQ boards\" here because the source-of-truth list is managed in unbranched infra configs and the two lists can easily get out of sync.\n\nIf this was a list of \"stable boards\" where we believe tests are stable, I would feel more comfortable, since test stability is likely a property of (Chrome OS version, board).",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "0573d353378da354cab1a19b27f3e1cbdca4db37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
