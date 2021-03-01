@@ -20,7 +20,7 @@ func init() {
 		Func:        RoamDbus,
 		Desc:        "Tests an intentional client-driven roam between APs",
 		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
