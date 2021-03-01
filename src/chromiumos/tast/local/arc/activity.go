@@ -750,6 +750,14 @@ func (ac *Activity) getPackageTaskInfo(ctx context.Context) (TaskInfo, error) {
 	return TaskInfo{}, errors.Wrapf(errNoTaskInfo, "could not find task info for %s", ac.pkgName)
 }
 
+// Focus focuses the activity.
+func (ac *Activity) Focus(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setArcAppWindowFocus)", ac.pkgName); err != nil {
+		return errors.Wrap(err, "could not focus activity")
+	}
+	return nil
+}
+
 // dragWithPause performs a regular mouse drag with a brief pause before pressing and moving.
 func dragWithPause(ctx context.Context, tconn *chrome.TestConn, from, to coords.Point, t time.Duration) (firstErr error) {
 	if firstErr := mouse.Move(ctx, tconn, from, 0); firstErr != nil {
