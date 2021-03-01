@@ -16,6 +16,103 @@
       "message": "Rebased and removed the sync flag when adding the account. After running it a bunch more, syncing caused the command to fail occasionally, and it doesn\u0027t seem to be necessary for these tests to work.",
       "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6051a245_93aaea14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/google_account_util.zip.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-01T14:35:44Z",
+      "side": 1,
+      "message": "Could you document the version info to identify this version somewhere?",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd471261_275bb7fa",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-01T14:35:44Z",
+      "side": 1,
+      "message": "Could you also document more about the difference/responsibility between username/password, cros_{username,password} and android_{username,password} ?",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40955c2f_ddec8bed",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-01T14:35:44Z",
+      "side": 1,
+      "message": "Style: As you\u0027re here, could you update this block to...\n\nconst (\n  prebuiltLocalDataPath \u003d \"...\"\n  buildLocalDataPath \u003d \"...\"\n  ...\n)\n\nsince they are constants.",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 49
+      },
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbcd9f25_4ae3a058",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-01T14:35:44Z",
+      "side": 1,
+      "message": "this value should be checked, too.\nskipAndroidLogin\u003dfalse is not handled as expected currently, I think.",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 3
+      },
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c699024_1edc2db1",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-01T14:35:44Z",
+      "side": 1,
+      "message": "Could you use standard go library, instead of command execution?\n\nhttps://golang.org/pkg/archive/zip/",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
