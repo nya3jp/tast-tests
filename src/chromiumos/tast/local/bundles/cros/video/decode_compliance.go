@@ -20,7 +20,6 @@ var av1CommonFiles = []string{
 	"test_vectors/av1/48_delayed.ivf",
 	"test_vectors/av1/av1-1-b8-02-allintra.ivf",
 	"test_vectors/av1/av1-1-b8-03-sizeup.ivf",
-	"test_vectors/av1/crosvideo_last_2sec.ivf",
 	"test_vectors/av1/frames_refs_short_signaling.ivf",
 	"test_vectors/av1/non_uniform_tiling.ivf",
 	"test_vectors/av1/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf",
