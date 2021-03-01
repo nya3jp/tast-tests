@@ -29,7 +29,7 @@ func ShowBookmarksBar(ctx context.Context, tconn *chrome.TestConn, keyboard *inp
 		return nil
 	}
 
-	if err := ToggleBookmarksBar(ctx, keyboard); err != nil {
+	if err := ToggleBookmarksBar(ctx, tconn, keyboard); err != nil {
 		return errors.Wrap(err, "could not toggle bookmarks bar")
 	}
 
@@ -49,7 +49,7 @@ func Hide(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardE
 		return nil
 	}
 
-	if err := ToggleBookmarksBar(ctx, keyboard); err != nil {
+	if err := ToggleBookmarksBar(ctx, tconn, keyboard); err != nil {
 		return errors.Wrap(err, "could not toggle bookmarks bar")
 	}
 
@@ -61,10 +61,15 @@ func Hide(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardE
 }
 
 // ToggleBookmarksBar toggles bookmarks bar using keyboard shortcut.
-func ToggleBookmarksBar(ctx context.Context, keyboard *input.KeyboardEventWriter) error {
+func ToggleBookmarksBar(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter) error {
 	if err := keyboard.Accel(ctx, "ctrl+shift+b"); err != nil {
 		return errors.Wrap(err, "failed to write events ctrl+shift+b")
 	}
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed waiting for desktop to complete change after toggling bookmark")
+	}
+
 	return nil
 }
 
