@@ -117,6 +117,30 @@
       },
       "revId": "ea663987566bf45513ea627a1b1c1de6c807fab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32ea9586_cdeafcc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-01T23:16:34Z",
+      "side": 1,
+      "message": "\u003e Thank you for the additional context, Prashant.\n\u003e \n\u003e \u003e there is currently no easy way to determine the number of ports a system supports, but I\u0027m hopeful we can change that soon\n\u003e \n\u003e Optionally, you could file a bug for this and add a TODO at L22 and L113 in utils.go.\n\nI\u0027ve added a LDAP todo for this for the time being; I want to chat with the EC folks before filing a bug.\n\n\u003e \n\u003e \u003e I suppose an improvement is to parse the ectool stderr to disambiguate the invalid port error\n\u003e \n\u003e I think that would be helpful, if the ectool output is stable enough to parse. There are a few different ways that CheckPortForTBTPartner can fail, including unexpected ectool behavior or the inability to run commands on the DUT, and someday the function may contain additional logic. So, from a Tast perspective, in order for this test to yield the strongest possible signal, I support parsing the ectool stderr.\n\nSo, I\u0027ve gone ahead and added the stderr parsing to the new patchset.\n\nNow, if we run out of ports, we *don\u0027t* return an error (just false, nil).\nSo error is really only returned on legitimate ectool errors. That way, we can still fail the test if even ectool isn\u0027t functioning correctly (which is a sign of much more serious issues).",
+      "parentUuid": "1e73d925_962eb13c",
+      "range": {
+        "startLine": 112,
+        "startChar": 49,
+        "endLine": 112,
+        "endChar": 54
+      },
+      "revId": "ea663987566bf45513ea627a1b1c1de6c807fab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
