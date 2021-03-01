@@ -16,6 +16,24 @@
       "message": "Should we keep this one? It is in middle of test and is added to fix a flake bug.",
       "revId": "de018545137985122d993a76632d21d78631b546",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "223fea0d_c3d3abf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-01T16:42:33Z",
+      "side": 0,
+      "message": "Looks like when this was added, this test case uses automation API to find out the location of the icons in the shelf.\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/7ce64a041e67b86a4d4b5241c1dbd78af3563132/src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go#97\n\nThis is gone now, and so this waiting is not necessary anymore.",
+      "parentUuid": "c9e830ad_72fe67c2",
+      "revId": "de018545137985122d993a76632d21d78631b546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
