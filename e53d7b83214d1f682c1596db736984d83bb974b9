@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46ced4fe_2540e36c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-01T10:12:16Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "e53d7b83214d1f682c1596db736984d83bb974b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11aa1da0_45b1b44e",
@@ -31,6 +48,29 @@
       "writtenOn": "2021-02-26T09:42:43Z",
       "side": 1,
       "message": "I did the TODO, but forgot to remove the comment.",
+      "revId": "e53d7b83214d1f682c1596db736984d83bb974b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c22a862_b9a2beaf",
+        "filename": "src/chromiumos/tast/local/memory/zram_mm_stat.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-01T10:12:16Z",
+      "side": 1,
+      "message": "Optional: could be nice to move to the first line of the function and print log for infomation.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
       "revId": "e53d7b83214d1f682c1596db736984d83bb974b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
