@@ -84,16 +84,22 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyshare.CrO
 }
 
 // CloseChrome closes all surfaces and Chrome.
+// This will likely be called in a defer in remote tests instead of called explicitly. So log everything that fails to aid debugging later.
 func (n *NearbyService) CloseChrome(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if n.cr == nil {
+		testing.ContextLog(ctx, "Chrome not available")
 		return nil, errors.New("Chrome not available")
 	}
 	os.RemoveAll(nearbytestutils.SendDir)
 	if n.senderSurface != nil {
-		n.senderSurface.Close(ctx)
+		if err := n.senderSurface.Close(ctx); err != nil {
+			testing.ContextLog(ctx, "Closing SendSurface failed: ", err)
+		}
 	}
 	if n.receiverSurface != nil {
-		n.receiverSurface.Close(ctx)
+		if err := n.receiverSurface.Close(ctx); err != nil {
+			testing.ContextLog(ctx, "Closing ReceiveSurface failed: ", err)
+		}
 	}
 	if err := os.RemoveAll(localnearby.NearbyLogDir); err != nil {
 		testing.ContextLog(ctx, "Faied to delete nearby log dir: ", err)
