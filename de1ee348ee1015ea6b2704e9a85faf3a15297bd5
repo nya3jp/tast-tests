@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba2e5c3_c0db662f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "I changed to \"CrOS allowlist\" here and added a better explanation in the commit message bellow.",
+      "parentUuid": "93c93530_b857e446",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29c1ce58_71fe810d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-25T14:07:37Z",
       "side": 1,
       "message": "Can you explain who calls this service, and why it needs to be a service ? (You can just refer to the AllowlistService proto).",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c2ce61d_9e98be57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "Done.\n\nI\u0027ve also added your alternative proposal (using the test chain) to go/tast-for-allowlist in case we want to change the tests to local tests in the future.",
+      "parentUuid": "29c1ce58_71fe810d",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58810f64_cb9b43b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "Thanks, Hugo! I wasn\u0027t aware of this :D. I added a rule to allow all traffic from arc_ns* since the proxy will normally be behind arc_ns0 and blocked the http/s traffic on the Forward chain.",
+      "parentUuid": "c86662ed_e92fc829",
+      "range": {
+        "startLine": 63,
+        "startChar": 27,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09223a15_9dee93e0",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-02-25T14:07:37Z",
       "side": 1,
       "message": "I was going to say that this rule that we set in patchpanel will prevent you from making your firewall rules above effective.\n\nInstead of adding the http and https drop rules with -A, why not adding them with -I which inserts by default on the front.\n\nYou can also do -I 2 to insert just after your proxy accept rule.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "199d22d4_c6c9218e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "Good point, thanks!! Using \"-I\".",
+      "parentUuid": "09223a15_9dee93e0",
       "range": {
         "startLine": 70,
         "startChar": 1,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fd43bbb_924865d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "My mistake. I read again the support page and it\u0027s not required.",
+      "parentUuid": "83b62d51_1c6af4af",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01d92ed4_361cdf40",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-02-25T14:07:37Z",
       "side": 1,
       "message": "This formatting is a bit weird. It this is the formatting tool output ?",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d621fd13_c9cb8d14",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "It is weird, but it\u0027s the output of `gofmt`.",
+      "parentUuid": "01d92ed4_361cdf40",
       "range": {
         "startLine": 44,
         "startChar": 2,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8dead80_56956b6a",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "Good point! We do have a proxy server. I changes the code so it uses the proxy service to setup the allowlist.",
+      "parentUuid": "82f0486d_0ce8ce97",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e8ed08a_46f2bb47",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-02-25T14:07:37Z",
       "side": 1,
       "message": "Just curious: are these links stable ? I couldn\u0027t imagine that they would not be stable, but you never know.",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 77
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4484426_4659142b",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "TBH I don\u0027t know. But you make a good point, I removed the link from the comments.",
+      "parentUuid": "3e8ed08a_46f2bb47",
       "range": {
         "startLine": 16,
         "startChar": 3,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22843cef_895ae205",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "Based on your suggestion, I move the proxy functionality out of the allowlist service.",
+      "parentUuid": "4a20b0da_b5ca2bdd",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c05877c0_bfe957d5",
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3119bed_6fdf3c11",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "I got lazy with the naming, I changed the Test*Connectivity to something which reflects better what the function does.\n\nBut methods like GaiaLogin() of course need to be in the service because it can\u0027t be done remotely. Nor you can connect to arc remotely to query for third party packages.",
+      "parentUuid": "c05877c0_bfe957d5",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 68
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69a5c163_56f8280b",
@@ -261,6 +501,30 @@
       "writtenOn": "2021-02-25T14:07:37Z",
       "side": 1,
       "message": "If these can be regexes or hav esome form of wildcarding, we should say so here.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 62
+      },
+      "revId": "de1ee348ee1015ea6b2704e9a85faf3a15297bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "995350dc_7c60e7f4",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "Done! I moved the allowlist to the proxy_service.go in the previous patch.",
+      "parentUuid": "69a5c163_56f8280b",
       "range": {
         "startLine": 44,
         "startChar": 5,

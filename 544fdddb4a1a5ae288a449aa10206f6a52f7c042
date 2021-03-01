@@ -1,0 +1,100 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ae537b_70286bfa",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.pb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "\u003e \"comming\" is a possible misspelling of \"coming\".\n\nPlease fix.",
+      "parentUuid": "7dab49f3_9215a5b1",
+      "range": {
+        "startLine": 256,
+        "startChar": 4,
+        "endLine": 256,
+        "endChar": 11
+      },
+      "revId": "544fdddb4a1a5ae288a449aa10206f6a52f7c042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4287332c_5050ee25",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.pb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "\u003e \"perfrom\" is a possible misspelling of \"perform\".\n\nPlease fix.",
+      "parentUuid": "93e0fa97_8475128e",
+      "range": {
+        "startLine": 258,
+        "startChar": 66,
+        "endLine": 258,
+        "endChar": 73
+      },
+      "revId": "544fdddb4a1a5ae288a449aa10206f6a52f7c042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cba79bb_64908137",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "\u003e \"comming\" is a possible misspelling of \"coming\".\n\nPlease fix.",
+      "parentUuid": "9fb19e02_f517fe79",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 12
+      },
+      "revId": "544fdddb4a1a5ae288a449aa10206f6a52f7c042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "157a0664_6d232fba",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "\u003e \"perfrom\" is a possible misspelling of \"perform\".\n\nPlease fix.",
+      "parentUuid": "4a4c0dad_0b863987",
+      "range": {
+        "startLine": 21,
+        "startChar": 67,
+        "endLine": 21,
+        "endChar": 74
+      },
+      "revId": "544fdddb4a1a5ae288a449aa10206f6a52f7c042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8866bf43_e12ac939",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:27:35Z",
+      "side": 1,
+      "message": "Thanks a lot for reviewing this CL, Hugo! And thanks for the offline consulting on iptables. :D ",
+      "revId": "4fd624fdb742a820df8b3c8074d6a9284e38119e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
