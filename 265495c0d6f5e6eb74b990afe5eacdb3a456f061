@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a71a6fc_fbf24b3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_slots.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-03-01T16:20:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9f43cb3_18bf3c5c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "265495c0d6f5e6eb74b990afe5eacdb3a456f061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e83154b_deca16ca",
