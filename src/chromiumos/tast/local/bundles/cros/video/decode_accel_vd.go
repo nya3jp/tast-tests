@@ -34,8 +34,20 @@ func init() {
 			Name:              "h264",
 			Val:               "test-25fps.h264",
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
+		}, {
+			Name:              "hevc",
+			Val:               "test-25fps.hevc",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			ExtraData:         []string{"test-25fps.hevc", "test-25fps.hevc.json"},
+		}, {
+			Name:              "hevc_10bit",
+			Val:               "test-25fps.hevc10",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC10BPP, "proprietary_codecs", "protected_content"},
+			ExtraData:         []string{"test-25fps.hevc10", "test-25fps.hevc10.json"},
 		}, {
 			Name:              "vp8",
 			Val:               "test-25fps.vp8",
@@ -64,8 +76,14 @@ func init() {
 			Name:              "h264_resolution_switch",
 			Val:               "switch_1080p_720p_240frames.h264",
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         []string{"switch_1080p_720p_240frames.h264", "switch_1080p_720p_240frames.h264.json"},
+		}, {
+			Name:              "hevc_resolution_switch",
+			Val:               "switch_1080p_720p_240frames.hevc",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			ExtraData:         []string{"switch_1080p_720p_240frames.hevc", "switch_1080p_720p_240frames.hevc.json"},
 		}, {
 			Name:              "vp8_resolution_switch",
 			Val:               "resolution_change_500frames.vp8.ivf",
@@ -91,7 +109,7 @@ func init() {
 			Name:              "h264_profile_change",
 			Val:               "test-25fps_basemain.h264",
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         []string{"test-25fps_basemain.h264", "test-25fps_basemain.h264.json"},
 		}, {
 			// Run with HW decoder using VA-API only because only the HW decoder can decode SVC stream correctly today.
