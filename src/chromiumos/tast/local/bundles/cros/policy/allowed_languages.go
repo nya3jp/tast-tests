@@ -53,7 +53,7 @@ func AllowedLanguages(ctx context.Context, s *testing.State) {
 			name:     "unset",
 			minLangs: 5,
 			maxLangs: 200,
-			lastLang: "Dutch - Nederlands",
+			lastLang: "Asturian - asturianu", // It could be different depending on the screen size of the device, but since 5 is the minimum, so Asturian is enough.
 			value:    &policy.AllowedLanguages{Stat: policy.StatusUnset},
 		},
 		{
