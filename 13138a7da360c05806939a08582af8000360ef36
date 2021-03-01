@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "709fa092_70810324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/2160p_30fps_300frames.hevc10.mp4",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-01T18:08:39Z",
+      "side": 0,
+      "message": "Thanks for catching that!",
+      "parentUuid": "1953e510_4ba5ea44",
+      "revId": "13138a7da360c05806939a08582af8000360ef36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84b4eb9e_039aede7",
