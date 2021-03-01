@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a674c7c0_c9f795bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-01T18:16:31Z",
+      "side": 1,
+      "message": "Waiting for https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2695778, as this changes the waiting logic of playstore optin. It should be fine, though I want to make sure that this code works as expected on the boards I found the failures.",
+      "revId": "cc3550bd28baf410b7fb49311e7e599d070fae4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
