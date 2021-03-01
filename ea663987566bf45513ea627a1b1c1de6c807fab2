@@ -93,6 +93,30 @@
       },
       "revId": "ea663987566bf45513ea627a1b1c1de6c807fab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e73d925_962eb13c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-01T22:09:24Z",
+      "side": 1,
+      "message": "Thank you for the additional context, Prashant.\n\n\u003e there is currently no easy way to determine the number of ports a system supports, but I\u0027m hopeful we can change that soon\n\nOptionally, you could file a bug for this and add a TODO at L22 and L113 in utils.go.\n\n\u003e I suppose an improvement is to parse the ectool stderr to disambiguate the invalid port error\n\nI think that would be helpful, if the ectool output is stable enough to parse. There are a few different ways that CheckPortForTBTPartner can fail, including unexpected ectool behavior or the inability to run commands on the DUT, and someday the function may contain additional logic. So, from a Tast perspective, in order for this test to yield the strongest possible signal, I support parsing the ectool stderr.",
+      "parentUuid": "4d127aba_b0df5881",
+      "range": {
+        "startLine": 112,
+        "startChar": 49,
+        "endLine": 112,
+        "endChar": 54
+      },
+      "revId": "ea663987566bf45513ea627a1b1c1de6c807fab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
