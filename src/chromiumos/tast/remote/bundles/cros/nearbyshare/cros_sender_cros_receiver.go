@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/remote/bundles/cros/nearbyshare/remotetestutils"
 	"chromiumos/tast/rpc"
-	nearbyservice "chromiumos/tast/services/cros/nearbyshare"
+	"chromiumos/tast/services/cros/nearbyservice"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -31,7 +31,7 @@ func init() {
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
-		ServiceDeps:  []string{"tast.cros.nearbyshare.NearbyShareService"},
+		ServiceDeps:  []string{"tast.cros.nearbyservice.NearbyShareService"},
 		Vars:         []string{"secondaryTarget"},
 		Params: []testing.Param{
 			{
