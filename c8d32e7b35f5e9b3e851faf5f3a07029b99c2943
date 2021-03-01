@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c2fb648_3af07a19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-03-01T21:33:57Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "c8d32e7b35f5e9b3e851faf5f3a07029b99c2943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e38c1c_006a0fb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-03-01T21:33:57Z",
+      "side": 1,
+      "message": "what is criterion for \"proprietary_codecs\"?",
+      "revId": "c8d32e7b35f5e9b3e851faf5f3a07029b99c2943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
