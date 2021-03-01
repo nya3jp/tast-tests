@@ -16,6 +16,23 @@
       "message": "Thanks a lot for the quick review! ",
       "revId": "83733e6cb2e8ef0cbbc12abbe1f4570e927a0bfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5306f51e_731be35e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-03-01T11:28:35Z",
+      "side": 1,
+      "message": "+2 for Tast Owners",
+      "revId": "83733e6cb2e8ef0cbbc12abbe1f4570e927a0bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
