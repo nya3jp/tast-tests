@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c71a4027_913fae31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T17:53:31Z",
+      "side": 1,
+      "message": "True, thanks for this suggestion!",
+      "parentUuid": "da064d15_5597a886",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "77f3190e_d0bc19bf",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -98,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9594e89_172788b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T17:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62ebe76a_cdeb66d7",
+      "range": {
+        "startLine": 51,
+        "startChar": 70,
+        "endLine": 51,
+        "endChar": 79
+      },
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8a1073e_70045f3f",
@@ -111,6 +159,30 @@
       "writtenOn": "2021-02-25T13:52:07Z",
       "side": 1,
       "message": "Prefer https://golang.org/pkg/strings/#Join",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e4e587_05cc852b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T17:53:31Z",
+      "side": 1,
+      "message": "Thanks, Hugo!",
+      "parentUuid": "b8a1073e_70045f3f",
       "range": {
         "startLine": 136,
         "startChar": 0,
@@ -144,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c806340_fdd7f617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T17:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23fc5115_1dad74be",
+      "range": {
+        "startLine": 147,
+        "startChar": 14,
+        "endLine": 147,
+        "endChar": 17
+      },
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19f48c3f_38a97355",
@@ -167,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d0ce817_99295887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T17:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f48c3f_38a97355",
+      "range": {
+        "startLine": 152,
+        "startChar": 14,
+        "endLine": 152,
+        "endChar": 17
+      },
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85242f0e_c1db404d",
@@ -180,6 +300,30 @@
       "writtenOn": "2021-02-25T13:52:07Z",
       "side": 1,
       "message": "This should be a package constant.",
+      "range": {
+        "startLine": 154,
+        "startChar": 12,
+        "endLine": 158,
+        "endChar": 1
+      },
+      "revId": "2aff8712e8850c28b55b6c69570cf444ebb76d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "264f8e04_51c9a9c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T17:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85242f0e_c1db404d",
       "range": {
         "startLine": 154,
         "startChar": 12,

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "057308b0_b8967271",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T17:53:31Z",
+      "side": 1,
+      "message": "Thanks a lot for reviewing this CL!\n\nIn patch 2 I also changed the proxy service so remote tests can set an allowlist for the proxy remotely.",
+      "revId": "388750bdd6817356f207a5d63001d138f506cccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
