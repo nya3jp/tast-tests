@@ -34,6 +34,24 @@
       "parentUuid": "c9e830ad_72fe67c2",
       "revId": "de018545137985122d993a76632d21d78631b546",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84303a6f_d42de000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-01T17:14:51Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "223fea0d_c3d3abf2",
+      "revId": "de018545137985122d993a76632d21d78631b546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
