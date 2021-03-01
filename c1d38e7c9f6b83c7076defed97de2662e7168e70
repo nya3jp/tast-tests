@@ -16,6 +16,29 @@
       "message": "Please review this new test. Thanks.",
       "revId": "c1d38e7c9f6b83c7076defed97de2662e7168e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "974ec132_dff973de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/remote_artifact_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-01T08:09:52Z",
+      "side": 1,
+      "message": "I feel like this test, as well as existing example.ArtifactFiles test, should belong to the meta category. Would you mind moving those tests there?",
+      "range": {
+        "startLine": 16,
+        "startChar": 12,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "c1d38e7c9f6b83c7076defed97de2662e7168e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
