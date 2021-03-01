@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "370167d8_19610857",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2021-03-01T04:01:22Z",
+      "side": 1,
+      "message": "I Agree with the comments, let me think how to do it.",
+      "revId": "0119999a112d4395e88bcb4300951f9528795da8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3900292f_a2ccbd63",
@@ -67,6 +84,24 @@
       "side": 1,
       "message": "I think it is necessary to have some brief document what to do if a future eng hits this.\nIn most cases, if they need to use \"her\" in their new code unexpectedly from coil perspective, then, we expect them to fix it somehow. That\u0027s the default thing so I don\u0027t think we need any additional comments.\n\nHowever, shake-player.*.js code is something exception.\nWhat to do/how to do if they editing the file hits this check is unclear. crbug and go/tast-coil-status does not help to resolve it, because they contain just the current situation. So, I don\u0027t think just referencing them is not enough, and i expect to see something for the next step here (or somewhere else referred from here).\n\nAlso, just leaving paths here looks confusing. There\u0027s no context, and it\u0027s unclear what it is.\n\nWDYT?",
       "parentUuid": "5b245b42_8aa3076a",
+      "revId": "0119999a112d4395e88bcb4300951f9528795da8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6581c8f6_8c748aaf",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2021-03-01T04:01:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "49653803_41631518",
       "revId": "0119999a112d4395e88bcb4300951f9528795da8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
