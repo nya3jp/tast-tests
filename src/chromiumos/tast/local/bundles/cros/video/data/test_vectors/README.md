@@ -43,7 +43,6 @@ test-25fps-192x288.yuv`
 TODO(b/179426205): Clarify licenses of these video files.
 * 48\_delayed.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/issues/48_delayed.ivf)
 * ccvb\_film\_grain.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/ccvb_film_grain.ivf)
-* crosvideo\_last\_2sec.ivf (Last two seconds in http://crosvideo.commondatastorage.googleapis.com/av1_720p_30fps.mp4)
 * frames\_refs\_short\_signaling.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/frames_refs_short_signaling.ivf)
 * non\_uniform\_tiling.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/non_uniform_tiling.ivf)
 
