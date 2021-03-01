@@ -33,6 +33,24 @@
       "message": "what is criterion for \"proprietary_codecs\"?",
       "revId": "c8d32e7b35f5e9b3e851faf5f3a07029b99c2943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55cc66d0_0875523b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1302247
+      },
+      "writtenOn": "2021-03-01T21:44:24Z",
+      "side": 1,
+      "message": "H264 and HEVC are both behind that in Chrome for video codecs. I think it refers to codecs that have patent requirements.",
+      "parentUuid": "d0e38c1c_006a0fb3",
+      "revId": "c8d32e7b35f5e9b3e851faf5f3a07029b99c2943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
