@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8ee55ce_5531af3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-01T16:56:09Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective % nit",
+      "revId": "aa2d5f8952b9db4b1cbbe983d7c3a541ab58ebd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33df339d_ee7353c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-01T16:56:09Z",
+      "side": 1,
+      "message": "This can be simplified:\n\n    fmt.Sprintf(\"Image: %s\", imageToBoot)",
+      "range": {
+        "startLine": 245,
+        "startChar": 25,
+        "endLine": 245,
+        "endChar": 68
+      },
+      "revId": "aa2d5f8952b9db4b1cbbe983d7c3a541ab58ebd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
