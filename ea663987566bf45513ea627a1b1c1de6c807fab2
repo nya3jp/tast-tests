@@ -45,6 +45,54 @@
       },
       "revId": "ea663987566bf45513ea627a1b1c1de6c807fab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d127aba_b0df5881",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-01T21:42:38Z",
+      "side": 1,
+      "message": "The issue here is that ectool typecdiscovery also reports an error when we \"run out of ports\" i,e when it is queried on a port number which isn\u0027t supported by the system (there is currently no easy way to determine the number of ports a system supports, but I\u0027m hopeful we can change that soon).\n\nSo, unless one has an 8-port Chromebook, this function does end with an ectool error (if no TBT device is connected on any port)\nI suppose an improvement is to parse the ectool stderr to disambiguate the invalid port error, but we still want to mark it as passed, so I see that as a minor improvement.\n\n\u003e For example, if `ectool typecdiscovery` starts failing, then the ModeSwitch test will incorrectly report all successes\n\nAs stated above, this call is expected to fail when we run out of valid ports to query.\n\nI\u0027d called this out in the initial check in for this bit of code; these tests are meant to run on special hardware set up, but we want them to run minimally so as to ensure they still compile and break silently. I realize this comes in conflict with one of the tast writing guidelines, but couldn\u0027t figure a way around it. I\u0027ve tried to minimize the impact by listing specific boards (on which typecd runs) as hardware dependencies, and leaving it as informational.",
+      "parentUuid": "e1940a2b_58a4f375",
+      "range": {
+        "startLine": 112,
+        "startChar": 49,
+        "endLine": 112,
+        "endChar": 54
+      },
+      "revId": "ea663987566bf45513ea627a1b1c1de6c807fab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f89e1de_47168ee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-01T21:42:38Z",
+      "side": 1,
+      "message": "Ack\n\nWill update in the next patchset.",
+      "parentUuid": "320a66a1_df1a2ce5",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "ea663987566bf45513ea627a1b1c1de6c807fab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
