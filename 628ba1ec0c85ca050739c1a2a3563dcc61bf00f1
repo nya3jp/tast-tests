@@ -18,6 +18,52 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9220e0e2_34bfcc0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-01T05:42:56Z",
+      "side": 1,
+      "message": "move this to inside testARCToCros?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 33
+      },
+      "revId": "628ba1ec0c85ca050739c1a2a3563dcc61bf00f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66c595de_21f212f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-01T05:42:56Z",
+      "side": 1,
+      "message": "move this to inside testCrosToARC?",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "628ba1ec0c85ca050739c1a2a3563dcc61bf00f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d135d44e_328ddd34",
@@ -31,6 +77,30 @@
       "writtenOn": "2021-02-25T07:48:23Z",
       "side": 1,
       "message": "This function is defined and exported here because it is planned to be used by other Tast tests (a new test for Play files, and possibly the existing tests for Downloads and removable media). If it\u0027s inappropriate (from the perspective of the YAGNI principle), I can define it as a local function in my_files.go for now.",
+      "range": {
+        "startLine": 209,
+        "startChar": 5,
+        "endLine": 209,
+        "endChar": 33
+      },
+      "revId": "628ba1ec0c85ca050739c1a2a3563dcc61bf00f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ec29e9_67698ba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-01T05:42:56Z",
+      "side": 1,
+      "message": "I think it is fine if you plan to have the other tests soon. I\u0027ll be fine if you just add a TODO line.\n\nCan we split this into \"pushToArc\" and \"readFromCros\", and have the bigger \"TestPushToArcAndReadFromCros\" if needed in myfiles.go, etc. It will also be more modular that way. What do you think?",
+      "parentUuid": "d135d44e_328ddd34",
       "range": {
         "startLine": 209,
         "startChar": 5,
