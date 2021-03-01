@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6195dbd7_0255b489",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2021-03-01T23:12:52Z",
+      "side": 1,
+      "message": "I couldn\u0027t find a kevin64 board from the lab so I couldn\u0027t test on the failing kevin64 board. I guess the only way is to upload an see whether this fixes the failure. But since is has been fixed the same way for the non-informational test I think it should work.",
+      "revId": "1a4e7c5ed845abb6dea1f3c9fcd5c12a7c13e99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
