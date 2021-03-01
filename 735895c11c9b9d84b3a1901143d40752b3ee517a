@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb46607_37b11565",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-03-01T17:57:31Z",
+      "side": 1,
+      "message": "Thanks, Sean. Adding tast-owners@ in case they have comment.",
+      "revId": "735895c11c9b9d84b3a1901143d40752b3ee517a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03cf060f_8023a7f5",
@@ -31,6 +48,24 @@
       "writtenOn": "2021-03-01T02:04:19Z",
       "side": 1,
       "message": "Do you know why this file is changed?  This shouldn\u0027t be a PWG-Raster file but it does use gstoraster.",
+      "revId": "735895c11c9b9d84b3a1901143d40752b3ee517a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d63ae80d_2e4657dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/printer_add_dymo_lw_printer_golden.bin.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-03-01T17:57:31Z",
+      "side": 1,
+      "message": "I suppose `raster2dymolw` is sensitive to the metadata of the output from `gstoraster`. Perhaps it\u0027s now interpreting the page count.",
+      "parentUuid": "03cf060f_8023a7f5",
       "revId": "735895c11c9b9d84b3a1901143d40752b3ee517a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
