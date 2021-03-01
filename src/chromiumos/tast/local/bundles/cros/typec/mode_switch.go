@@ -14,9 +14,6 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// The maximum number of USB Type C ports that a Chromebook supports.
-const maxTypeCPorts = 8
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ModeSwitch,
@@ -49,20 +46,13 @@ func init() {
 //      (USB4)
 //
 func ModeSwitch(ctx context.Context, s *testing.State) {
-	// Check if a TBT device is connected. If one isn't, we should skip
-	// execution.
-	// Check each port successively. If a port returns an error, that means
-	// we are out of ports.
 	// This check is for test executions which take place on
 	// CQ (where TBT peripherals aren't connected).
-	for i := 0; i < maxTypeCPorts; i++ {
-		if present, err := typecutils.CheckPortForTBTPartner(ctx, i); err != nil {
-			s.Log("Couldn't find TBT device from PD identity: ", err)
-			return
-		} else if present {
-			s.Log("Found a TBT device, proceeding with test")
-			break
-		}
+	if present, err := typecutils.CheckPortsForTBTPartner(ctx); err != nil {
+		s.Fatal("Couldn't determine TBT device from PD identity: ", err)
+	} else if !present {
+		s.Log("No TBT device connected to DUT")
+		return
 	}
 
 	// Get to the Chrome login screen.
