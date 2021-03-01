@@ -17,7 +17,7 @@ func init() {
 		Func:     ShillCellularEnableAndConnect,
 		Desc:     "Verifies that Shill can enable, disable, connect, and disconnect to a Cellular Service",
 		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com"},
-		Attr:     []string{"group:cellular"},
+		Attr:     []string{"group:cellular", "cellular_unstable"},
 		Fixture:  "cellular",
 	})
 }
