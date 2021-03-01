@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461f9b70_2566932d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-01T17:14:51Z",
+      "side": 1,
+      "message": "nit: typo ?\n\n   WaitUntilLocationChangeCompleted\n-\u003e WaitForLocationChangeCompleted",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "87a26626ce94696ad80058bdd7787357b16eba7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f02476d_d5f9378c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-01T17:14:51Z",
+      "side": 1,
+      "message": "lgtm % one nit",
+      "revId": "87a26626ce94696ad80058bdd7787357b16eba7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
