@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec0588c_9bff020a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/google_account_util.zip.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-01T22:59:33Z",
+      "side": 1,
+      "message": "Changed the filename to have the version number that comes with the google-tradefed.zip from https://android-build.googleplex.com/builds/branches/tradefed/grid? (it\u0027s just the build # I guess)",
+      "parentUuid": "6051a245_93aaea14",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd471261_275bb7fa",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06542325_62d88763",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-01T22:59:33Z",
+      "side": 1,
+      "message": "Updated the comment with more details, let me know what you think",
+      "parentUuid": "cd471261_275bb7fa",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40955c2f_ddec8bed",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
         "patchSetId": 3
@@ -65,6 +101,30 @@
       "writtenOn": "2021-03-01T14:35:44Z",
       "side": 1,
       "message": "Style: As you\u0027re here, could you update this block to...\n\nconst (\n  prebuiltLocalDataPath \u003d \"...\"\n  buildLocalDataPath \u003d \"...\"\n  ...\n)\n\nsince they are constants.",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 49
+      },
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0156e7b_b5d84a92",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-01T22:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40955c2f_ddec8bed",
       "range": {
         "startLine": 185,
         "startChar": 2,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c103592a_056ef558",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-01T22:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbcd9f25_4ae3a058",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 3
+      },
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c699024_1edc2db1",
@@ -111,6 +195,24 @@
       "writtenOn": "2021-03-01T14:35:44Z",
       "side": 1,
       "message": "Could you use standard go library, instead of command execution?\n\nhttps://golang.org/pkg/archive/zip/",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a6f7468_5a4962e7",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-01T22:59:33Z",
+      "side": 1,
+      "message": "I went ahead and changed it to use archive/zip, but it\u0027s a lot longer and more complicated than using command execution. I also didn\u0027t see any other tests doing things this way, while command execution is used in a few places.\n\nhttps://source.corp.google.com/search?q\u003d%22archive%2Fzip%22%20language:go\u0026sq\u003dpackage:%5Echromeos_(internal%7Cpublic)$\u0026ssfr\u003d1\n\nhttps://source.corp.google.com/search?q\u003d%22testexec.CommandContext(ctx,%20%22unzip%22%22\u0026sq\u003dpackage:%5Echromeos_(internal%7Cpublic)$\n\nI think the simplicity of just using the unzip command is nicer. WDYT?",
+      "parentUuid": "7c699024_1edc2db1",
       "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
