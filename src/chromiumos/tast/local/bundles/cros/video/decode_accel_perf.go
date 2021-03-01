@@ -22,22 +22,22 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "h264_1080p_30fps",
 			Val:               "1080p_30fps_300frames.h264",
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         []string{"1080p_30fps_300frames.h264", "1080p_30fps_300frames.h264.json"},
 		}, {
 			Name:              "h264_1080p_60fps",
 			Val:               "1080p_60fps_600frames.h264",
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264", "1080p_60fps_600frames.h264.json"},
 		}, {
 			Name:              "h264_2160p_30fps",
 			Val:               "2160p_30fps_300frames.h264",
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K, "proprietary_codecs"},
 			ExtraData:         []string{"2160p_30fps_300frames.h264", "2160p_30fps_300frames.h264.json"},
 		}, {
 			Name:              "h264_2160p_60fps",
 			Val:               "2160p_60fps_600frames.h264",
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K60},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K60, "proprietary_codecs"},
 			ExtraData:         []string{"2160p_60fps_600frames.h264", "2160p_60fps_600frames.h264.json"},
 		}, {
 			Name:              "vp8_1080p_30fps",
