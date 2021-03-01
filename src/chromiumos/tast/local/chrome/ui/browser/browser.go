@@ -71,6 +71,10 @@ func BookmarkCurrentTab(ctx context.Context, tconn *chrome.TestConn, keyboard *i
 		return errors.Wrapf(err, "failed to write events %s", "Enter")
 	}
 
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed waiting for desktop to complete change after bookmarking current tab")
+	}
+
 	return nil
 }
 
@@ -113,6 +117,11 @@ func RenameBookmarkForCurrentTab(ctx context.Context, tconn *chrome.TestConn, ke
 	if err := keyboard.Type(ctx, newName+"\n"); err != nil {
 		return errors.Wrap(err, "failed to write events")
 	}
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed waiting for animation to finish after renaming bookmark")
+	}
+
 	return nil
 }
 
@@ -134,6 +143,10 @@ func CurrentTabBookmarkName(ctx context.Context, tconn *chrome.TestConn, keyboar
 
 	if err := keyboard.Accel(ctx, "Esc"); err != nil {
 		return "", errors.Wrapf(err, "failed to write events %s", "Esc")
+	}
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return "", errors.Wrap(err, "failed waiting for animation to finish after dismissing bookmark dialog")
 	}
 
 	return bookmarkNameTbx.Value, nil

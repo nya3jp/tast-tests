@@ -95,9 +95,9 @@ func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name+".txt")
 
-			// Perform cleanup.
+			// Perform Chrome reset.
 			if err := policyutil.ResetChrome(ctx, fakeDMS, cr); err != nil {
-				s.Fatal("Failed to clean up: ", err)
+				s.Fatal("Failed to reset Chrome: ", err)
 			}
 
 			// Update policies.
@@ -193,7 +193,7 @@ func canAddBookmark(ctx context.Context, tconn *chrome.TestConn, keyboard *input
 
 	// Toggle bar off/on to refresh it.
 	for i := 0; i < 2; i++ {
-		if err := browser.ToggleBookmarksBar(ctx, keyboard); err != nil {
+		if err := browser.ToggleBookmarksBar(ctx, tconn, keyboard); err != nil {
 			return false, errors.Wrap(err, "unable to toggle bookmark bar")
 		}
 	}
@@ -256,7 +256,7 @@ func canRemoveBookmark(ctx context.Context, tconn *chrome.TestConn, keyboard *in
 
 	// Toggle bar off/on to refresh it.
 	for i := 0; i < 2; i++ {
-		if err := browser.ToggleBookmarksBar(ctx, keyboard); err != nil {
+		if err := browser.ToggleBookmarksBar(ctx, tconn, keyboard); err != nil {
 			return false, errors.Wrap(err, "unable to toggle bookmark bar")
 		}
 	}
