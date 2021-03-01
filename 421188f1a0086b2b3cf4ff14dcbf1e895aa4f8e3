@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2747ecd_6585c1c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-01T16:02:26Z",
+      "side": 1,
+      "message": "Oh, you are right.\nI misread the code...",
+      "parentUuid": "4c0909e5_db5c3282",
+      "revId": "421188f1a0086b2b3cf4ff14dcbf1e895aa4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa567493_ed657151",
