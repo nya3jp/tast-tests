@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1940a2b_58a4f375",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-01T21:31:24Z",
+      "side": 1,
+      "message": "Why the change from returning (bool, error) to returning error? It would be useful to disambiguate between a genuine error and a lack of Thunderbolt. For example, if `ectool typecdiscovery` starts failing, then the ModeSwitch test will incorrectly report all successes.",
+      "range": {
+        "startLine": 112,
+        "startChar": 49,
+        "endLine": 112,
+        "endChar": 54
+      },
+      "revId": "ea663987566bf45513ea627a1b1c1de6c807fab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "320a66a1_df1a2ce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-01T21:31:24Z",
+      "side": 1,
+      "message": "The function name \"CheckPortForTBTPartner\" is no longer accurate, since it\u0027s no longer checking a single port. I recommend changing to either \"CheckForTBTPartner\" or \"CheckPortsForTBTPartner\".",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "ea663987566bf45513ea627a1b1c1de6c807fab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
