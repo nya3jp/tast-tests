@@ -39,6 +39,30 @@
       },
       "revId": "52986b6ab19199adbca7307f47e69e68b2b7bd97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b480c90_45185469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-01T19:18:02Z",
+      "side": 1,
+      "message": "Done. Hopefully that\u0027s an acceptable (not-so-universal)URL.",
+      "parentUuid": "13ba9a8a_80f860f3",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "52986b6ab19199adbca7307f47e69e68b2b7bd97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
