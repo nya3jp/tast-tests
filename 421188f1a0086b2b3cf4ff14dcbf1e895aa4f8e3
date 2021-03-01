@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfdf7c00_9bdc3e9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-01T06:31:33Z",
+      "side": 1,
+      "message": "It\u0027s the original behavior...\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/client/site_tests/platform_CryptohomeBadPerms/platform_CryptohomeBadPerms.py;drc\u003da150dda0a6638125fedf71565bb3ece68bae2ec9;l\u003d63\nI thinks it\u0027s intended.",
+      "parentUuid": "f673274c_14e85bf2",
+      "revId": "421188f1a0086b2b3cf4ff14dcbf1e895aa4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa567493_ed657151",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-01T05:01:58Z",
       "side": 1,
       "message": "how about resetting to restoreInfo\u003dnil here or before clobber so that additional test cases would not accidentally read the restoreInfo value from previous ones?",
+      "revId": "421188f1a0086b2b3cf4ff14dcbf1e895aa4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5496d456_eb773779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_bad_perms.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-01T06:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa567493_ed657151",
       "revId": "421188f1a0086b2b3cf4ff14dcbf1e895aa4f8e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
