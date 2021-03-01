@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42851ba7_adf78511",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-01T21:38:43Z",
+      "side": 1,
+      "message": "I\u0027m less familiar with the tast options for dependencies... however, generally, the Platform and SkipOnPlatform ones are no good as they rely on another project\u0027s internal identifiers....",
+      "parentUuid": "02af4364_2709f036",
+      "revId": "52d194e28a4e9ce5eede6a7fb79e1a8b6db50c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efa1dc51_4610fd40",
