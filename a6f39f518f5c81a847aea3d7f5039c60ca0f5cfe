@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "252ecd55_8f6b5d59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:30:50Z",
+      "side": 1,
+      "message": "\u003e \"extesnions\" is a possible misspelling of \"extensions\".\n\nPlease fix.",
+      "parentUuid": "8a164f23_903a3b2f",
+      "range": {
+        "startLine": 131,
+        "startChar": 119,
+        "endLine": 131,
+        "endChar": 129
+      },
+      "revId": "a6f39f518f5c81a847aea3d7f5039c60ca0f5cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
