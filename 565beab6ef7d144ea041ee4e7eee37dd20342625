@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c323cec_28575c87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:28:29Z",
+      "side": 1,
+      "message": "Thanks, I didn\u0027t knew it\u0027s possible. \n\nI\u0027d still like to check for force installed apps as it also tests that fetching policies works behind the firewall :D.",
+      "parentUuid": "3f142e15_07223f96",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 46
+      },
+      "revId": "565beab6ef7d144ea041ee4e7eee37dd20342625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd89a5af_ca51b005",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92e20cb2_9729ca41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:28:29Z",
+      "side": 1,
+      "message": "I\u0027ve changed the code to call arc.InstalledPackages() ... which also uses `pm` but it\u0027s consistently used in tast tests.",
+      "parentUuid": "cd89a5af_ca51b005",
+      "range": {
+        "startLine": 138,
+        "startChar": 9,
+        "endLine": 138,
+        "endChar": 57
+      },
+      "revId": "565beab6ef7d144ea041ee4e7eee37dd20342625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "862123b9_dcbcd570",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-25T14:24:21Z",
       "side": 1,
       "message": "Where do we check the output ?",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "565beab6ef7d144ea041ee4e7eee37dd20342625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "987bcaae_5f92b04e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/arc_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-01T18:28:29Z",
+      "side": 1,
+      "message": "`TestArcConnectivity` returned an error if no packages were installed.\n\nI changed the code so now we have the method `CheckArcAppInstalled` which returns an error is the given app is not found.",
+      "parentUuid": "862123b9_dcbcd570",
       "range": {
         "startLine": 71,
         "startChar": 4,
