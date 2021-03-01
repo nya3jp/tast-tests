@@ -34,6 +34,24 @@
       "parentUuid": "89c511b8_31889bc4",
       "revId": "00f6d186512b9ce15d60da33b43948e7adf8e6b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0274b5df_f8aa2084",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-01T11:12:15Z",
+      "side": 1,
+      "message": "I also increase the timeout because we may add more daemons to be controlled by this package. 30 seconds timeout could prevent the flakiness in the future.",
+      "parentUuid": "64b790b3_0360f853",
+      "revId": "00f6d186512b9ce15d60da33b43948e7adf8e6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
