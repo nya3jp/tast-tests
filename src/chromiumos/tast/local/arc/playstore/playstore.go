@@ -26,11 +26,13 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		accountSetupText = "Complete account setup"
 		permissionsText  = "needs access to"
 		cantDownloadText = "Can.t download.*"
+		cantInstallText  = "Can.t install.*"
 		versionText      = "Your device isn.t compatible with this version."
 		compatibleText   = "Your device is not compatible with this item."
 
 		acceptButtonText   = "accept"
 		continueButtonText = "continue"
+		gotItButtonText    = "got it"
 		installButtonText  = "install"
 		openButtonText     = "open"
 		okButtonText       = "ok"
@@ -72,6 +74,17 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 				return testing.PollBreak(err)
 			}
 			if err := okButton.Click(ctx); err != nil {
+				return testing.PollBreak(err)
+			}
+		}
+		// Similarly, press "Got it" button if "Can't install <app name>" dialog pops up.
+		if err := d.Object(ui.TextMatches(cantInstallText)).Exists(ctx); err == nil {
+			testing.ContextLog(ctx, `"Can't install" popup found. Skipping`)
+			gotItButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+gotItButtonText))
+			if err := gotItButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+				return testing.PollBreak(err)
+			}
+			if err := gotItButton.Click(ctx); err != nil {
 				return testing.PollBreak(err)
 			}
 		}
