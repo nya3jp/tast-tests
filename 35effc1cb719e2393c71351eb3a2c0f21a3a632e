@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2fc5a8_54703c81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/av1/crosvideo_last_2sec.ivf.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-03-01T16:57:53Z",
+      "side": 0,
+      "message": "Did you also remove it from Google Storage? I know we\u0027re not supposed to do it because of testing on branches, but we should ask a tast person how to handle that. Perhaps we need to cherry pick this all the way to 89.",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 110
+      },
+      "revId": "35effc1cb719e2393c71351eb3a2c0f21a3a632e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
