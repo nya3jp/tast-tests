@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74e60e2_e435e5b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-01T17:19:53Z",
+      "side": 1,
+      "message": "Thanks for the review, Judy. If the change looks good, could you please CQ+2? It seems I don\u0027t have the permission.",
+      "revId": "8b1db2dc05dd9696f4164fb4fff41bbe23f64dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

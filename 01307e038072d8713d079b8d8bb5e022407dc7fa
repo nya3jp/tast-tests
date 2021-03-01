@@ -39,6 +39,30 @@
       },
       "revId": "01307e038072d8713d079b8d8bb5e022407dc7fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b889a4aa_e26465ce",
+        "filename": "src/chromiumos/tast/local/android/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-01T17:19:53Z",
+      "side": 1,
+      "message": "I think it makes sense to call GetObject implicitly. I\u0027ve changed the code.",
+      "parentUuid": "2e4c40a1_6f3338ef",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 2
+      },
+      "revId": "01307e038072d8713d079b8d8bb5e022407dc7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
