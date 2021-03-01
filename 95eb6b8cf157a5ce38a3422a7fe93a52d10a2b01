@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbace377_980d17e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-01T23:29:35Z",
+      "side": 1,
+      "message": "This takes a port number as well, seems the other test enumerates over ports and identifies if they are present or not, any reason we don\u0027t follow the same pattern?",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "95eb6b8cf157a5ce38a3422a7fe93a52d10a2b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
