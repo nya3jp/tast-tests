@@ -16,7 +16,9 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/policyutil"
@@ -59,6 +61,28 @@ func getImgBytesFromFilePath(filePath string) ([]byte, error) {
 	}
 	imgBytes := buf.Bytes()
 	return imgBytes, nil
+}
+
+// validateBackground takes a screenshot and check the percentage of the clr in the image, returns error if it's less than 90%.
+func validateBackground(ctx context.Context, cr *chrome.Chrome, clr color.Color) error {
+	// Take a screenshot and check the red pixels percentage.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		img, err := screenshot.GrabScreenshot(ctx, cr)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to grab screenshot"))
+		}
+		rect := img.Bounds()
+		redPixels := imgcmp.CountPixelsWithDiff(img, clr, 10)
+		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
+		percent := redPixels * 100 / totalPixels
+		if percent < 90 {
+			return errors.Errorf("unexpected red pixels percentage: got %d / %d = %d%%; want at least 90%%", redPixels, totalPixels, percent)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return err
+	}
+	return nil
 }
 
 // WallpaperImage tests the WallpaperImage policy.
@@ -117,21 +141,9 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 			}
 
 			if param.wantImageCheck {
-				// Take a screenshot and check the red pixels percentage.
-				if err := testing.Poll(ctx, func(ctx context.Context) error {
-					img, err := screenshot.GrabScreenshot(ctx, cr)
-					if err != nil {
-						return testing.PollBreak(errors.Wrap(err, "failed to grab screenshot"))
-					}
-					rect := img.Bounds()
-					redPixels := imgcmp.CountPixelsWithDiff(img, color.RGBA{255, 0, 0, 255}, 10)
-					totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
-					percent := redPixels * 100 / totalPixels
-					if percent < 90 {
-						return errors.Errorf("unexpected red pixels percentage: got %d / %d = %d%%; want at least 90%%", redPixels, totalPixels, percent)
-					}
-					return nil
-				}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+				// Check red percentage of the desktop.
+				red := color.RGBA{255, 0, 0, 255}
+				if err := validateBackground(ctx, cr, red); err != nil {
 					s.Fatal("Did not reach expected state: ", err)
 				}
 			}
@@ -156,6 +168,21 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 				},
 			); err != nil {
 				s.Error("Unexpected settings state: ", err)
+			}
+
+			if param.wantImageCheck {
+				// Lock the screen and check blurred red percentage.
+				if err := lockscreen.Lock(ctx, tconn); err != nil {
+					s.Fatal("Failed to lock the screen: ", err)
+				}
+				if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, 30*time.Second); err != nil {
+					s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
+				}
+
+				blurredRed := color.RGBA{77, 26, 29, 255}
+				if err := validateBackground(ctx, cr, blurredRed); err != nil {
+					s.Fatal("Did not reach expected state: ", err)
+				}
 			}
 		})
 	}
