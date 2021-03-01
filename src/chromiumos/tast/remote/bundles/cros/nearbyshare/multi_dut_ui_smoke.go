@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/remote/bundles/cros/nearbyshare/remotetestutils"
 	"chromiumos/tast/rpc"
-	"chromiumos/tast/services/cros/nearbyshare"
+	"chromiumos/tast/services/cros/nearbyservice"
 	"chromiumos/tast/testing"
 )
 
@@ -26,7 +26,7 @@ func init() {
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
-		ServiceDeps:  []string{"tast.cros.nearbyshare.NearbyShareService"},
+		ServiceDeps:  []string{"tast.cros.nearbyservice.NearbyShareService"},
 		Vars:         []string{"secondaryTarget"},
 	})
 }
@@ -70,8 +70,8 @@ func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT, t
 	defer cl.Close(ctx)
 
 	// Connect to the Nearby Share Service so we can execute local code on the DUT.
-	ns := nearbyshare.NewNearbyShareServiceClient(cl.Conn)
-	loginReq := &nearbyshare.CrOSLoginRequest{}
+	ns := nearbyservice.NewNearbyShareServiceClient(cl.Conn)
+	loginReq := &nearbyservice.CrOSLoginRequest{}
 	if _, err := ns.NewChromeLogin(ctx, loginReq); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -80,7 +80,7 @@ func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT, t
 
 	// Setup Nearby Share on the DUT.
 	const deviceName = "MultiDut_HighVisibilityUISmoke"
-	req := &nearbyshare.CrOSSetupRequest{DataUsage: int32(nearbysetup.DataUsageOnline), Visibility: int32(nearbysetup.VisibilityAllContacts), DeviceName: deviceName}
+	req := &nearbyservice.CrOSSetupRequest{DataUsage: int32(nearbysetup.DataUsageOnline), Visibility: int32(nearbysetup.VisibilityAllContacts), DeviceName: deviceName}
 	if _, err := ns.CrOSSetup(ctx, req); err != nil {
 		s.Fatal("Failed to setup Nearby Share: ", err)
 	}
