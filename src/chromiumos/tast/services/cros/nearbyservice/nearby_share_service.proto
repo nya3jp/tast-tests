@@ -4,11 +4,11 @@
 
 syntax = "proto3";
 
-package tast.cros.nearbyshare;
+package tast.cros.nearbyservice;
 
 import "google/protobuf/empty.proto";
 
-option go_package = "chromiumos/tast/services/cros/nearbyshare";
+option go_package = "chromiumos/tast/services/cros/nearbyservice";
 
 // NearbyShareService allows basic remote operations of the Nearby Share feature.
 service NearbyShareService {

@@ -14,37 +14,37 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	localnearby "chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/syslog"
-	"chromiumos/tast/services/cros/nearbyshare"
+	"chromiumos/tast/services/cros/nearbyservice"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
-			nearbyshare.RegisterNearbyShareServiceServer(srv, &NearbyService{s: s})
+			nearbyservice.RegisterNearbyShareServiceServer(srv, &NearbyService{s: s})
 		},
 	})
 }
 
-// NearbyService implements tast.cros.nearbyshare.NearbyShareService.
+// NearbyService implements tast.cros.nearbyservice.NearbyShareService.
 type NearbyService struct {
 	s *testing.ServiceState
 
 	cr              *chrome.Chrome
 	tconn           *chrome.TestConn
 	deviceName      string
-	senderSurface   *localnearby.SendSurface
-	receiverSurface *localnearby.ReceiveSurface
+	senderSurface   *nearbyshare.SendSurface
+	receiverSurface *nearbyshare.ReceiveSurface
 	chromeReader    *syslog.LineReader
 	messageReader   *syslog.LineReader
 }
 
 // NewChromeLogin logs into Chrome with Nearby Share flags enabled.
-func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyshare.CrOSLoginRequest) (*empty.Empty, error) {
+func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.CrOSLoginRequest) (*empty.Empty, error) {
 	if n.cr != nil {
 		return nil, errors.New("Chrome already available")
 	}
@@ -95,16 +95,16 @@ func (n *NearbyService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 	if n.receiverSurface != nil {
 		n.receiverSurface.Close(ctx)
 	}
-	if err := os.RemoveAll(localnearby.NearbyLogDir); err != nil {
+	if err := os.RemoveAll(nearbyshare.NearbyLogDir); err != nil {
 		testing.ContextLog(ctx, "Faied to delete nearby log dir: ", err)
 	}
-	if err := os.Mkdir(localnearby.NearbyLogDir, 0755); err != nil {
+	if err := os.Mkdir(nearbyshare.NearbyLogDir, 0755); err != nil {
 		testing.ContextLog(ctx, "Faied to create tmp dir log: ", err)
 	}
-	if err := nearbytestutils.SaveLogs(ctx, n.chromeReader, filepath.Join(localnearby.NearbyLogDir, localnearby.ChromeLog)); err != nil {
+	if err := nearbytestutils.SaveLogs(ctx, n.chromeReader, filepath.Join(nearbyshare.NearbyLogDir, nearbyshare.ChromeLog)); err != nil {
 		testing.ContextLog(ctx, "Faied to save chrome log: ", err)
 	}
-	if err := nearbytestutils.SaveLogs(ctx, n.messageReader, filepath.Join(localnearby.NearbyLogDir, localnearby.MessageLog)); err != nil {
+	if err := nearbytestutils.SaveLogs(ctx, n.messageReader, filepath.Join(nearbyshare.NearbyLogDir, nearbyshare.MessageLog)); err != nil {
 		testing.ContextLog(ctx, "Faied to save message log: ", err)
 	}
 	err := n.cr.Close(ctx)
@@ -114,7 +114,7 @@ func (n *NearbyService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 }
 
 // CrOSSetup performs Nearby Share setup on a ChromeOS device.
-func (n *NearbyService) CrOSSetup(ctx context.Context, req *nearbyshare.CrOSSetupRequest) (*empty.Empty, error) {
+func (n *NearbyService) CrOSSetup(ctx context.Context, req *nearbyservice.CrOSSetupRequest) (*empty.Empty, error) {
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
@@ -127,11 +127,11 @@ func (n *NearbyService) StartHighVisibilityMode(ctx context.Context, req *empty.
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
-	return &empty.Empty{}, localnearby.StartHighVisibilityMode(ctx, n.tconn, n.deviceName)
+	return &empty.Empty{}, nearbyshare.StartHighVisibilityMode(ctx, n.tconn, n.deviceName)
 }
 
 // PrepareFiles extracts test files.
-func (n *NearbyService) PrepareFiles(ctx context.Context, req *nearbyshare.CrOSPrepareFileRequest) (*nearbyshare.CrOSPrepareFileResponse, error) {
+func (n *NearbyService) PrepareFiles(ctx context.Context, req *nearbyservice.CrOSPrepareFileRequest) (*nearbyservice.CrOSPrepareFileResponse, error) {
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
@@ -140,12 +140,12 @@ func (n *NearbyService) PrepareFiles(ctx context.Context, req *nearbyshare.CrOSP
 		testing.ContextLog(ctx, "Failed to extract test files")
 		return nil, err
 	}
-	res := nearbyshare.CrOSPrepareFileResponse{FileNames: filenames}
+	res := nearbyservice.CrOSPrepareFileResponse{FileNames: filenames}
 	return &res, nil
 }
 
 // StartSend starts to share files.
-func (n *NearbyService) StartSend(ctx context.Context, req *nearbyshare.CrOSSendFilesRequest) (*empty.Empty, error) {
+func (n *NearbyService) StartSend(ctx context.Context, req *nearbyservice.CrOSSendFilesRequest) (*empty.Empty, error) {
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
@@ -158,7 +158,7 @@ func (n *NearbyService) StartSend(ctx context.Context, req *nearbyshare.CrOSSend
 	for _, f := range req.FileNames {
 		testFiles = append(testFiles, filepath.Join(nearbytestutils.SendDir, f))
 	}
-	sender, err := localnearby.StartSendFiles(ctx, n.cr, testFiles)
+	sender, err := nearbyshare.StartSendFiles(ctx, n.cr, testFiles)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to set up control over the send surface")
 	}
@@ -167,17 +167,17 @@ func (n *NearbyService) StartSend(ctx context.Context, req *nearbyshare.CrOSSend
 }
 
 // SelectShareTarget selects the expected receiver in the sending window.
-func (n *NearbyService) SelectShareTarget(ctx context.Context, req *nearbyshare.CrOSSelectShareTargetRequest) (*nearbyshare.CrOSShareTokenResponse, error) {
+func (n *NearbyService) SelectShareTarget(ctx context.Context, req *nearbyservice.CrOSSelectShareTargetRequest) (*nearbyservice.CrOSShareTokenResponse, error) {
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
 	if n.senderSurface == nil {
 		return nil, errors.New("SendSurface is not defined")
 	}
-	if err := n.senderSurface.SelectShareTarget(ctx, req.ReceiverName, localnearby.CrosDetectReceiverTimeout); err != nil {
+	if err := n.senderSurface.SelectShareTarget(ctx, req.ReceiverName, nearbyshare.CrosDetectReceiverTimeout); err != nil {
 		return nil, errors.Wrap(err, "failed to select share target")
 	}
-	var res nearbyshare.CrOSShareTokenResponse
+	var res nearbyservice.CrOSShareTokenResponse
 	if req.CollectShareToken {
 		token, err := n.senderSurface.ConfirmationToken(ctx)
 		if err != nil {
@@ -193,7 +193,7 @@ func (n *NearbyService) StartReceiving(ctx context.Context, req *empty.Empty) (*
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
-	receiver, err := localnearby.StartReceiving(ctx, n.tconn, n.cr)
+	receiver, err := nearbyshare.StartReceiving(ctx, n.tconn, n.cr)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to set up control over the receiving surface")
 	}
@@ -202,15 +202,15 @@ func (n *NearbyService) StartReceiving(ctx context.Context, req *empty.Empty) (*
 }
 
 // WaitForSenderAndAcceptShare is called by a receiver to wait for a sender to appear in their list and accepts the share from them.
-func (n *NearbyService) WaitForSenderAndAcceptShare(ctx context.Context, req *nearbyshare.CrOSReceiveFilesRequest) (*nearbyshare.CrOSShareTokenResponse, error) {
+func (n *NearbyService) WaitForSenderAndAcceptShare(ctx context.Context, req *nearbyservice.CrOSReceiveFilesRequest) (*nearbyservice.CrOSShareTokenResponse, error) {
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
 	if n.receiverSurface == nil {
 		return nil, errors.New("ReceiveSurface is not defined")
 	}
-	var res nearbyshare.CrOSShareTokenResponse
-	token, err := n.receiverSurface.WaitForSender(ctx, req.SenderName, localnearby.CrosDetectSenderTimeout)
+	var res nearbyservice.CrOSShareTokenResponse
+	token, err := n.receiverSurface.WaitForSender(ctx, req.SenderName, nearbyshare.CrosDetectSenderTimeout)
 	if err != nil {
 		return nil, errors.Wrap(err, "CrOS receiver failed to find CrOS sender")
 	}
@@ -222,11 +222,11 @@ func (n *NearbyService) WaitForSenderAndAcceptShare(ctx context.Context, req *ne
 }
 
 // FilesHashes takes some filenames and returns a list of their hashes.
-func (n *NearbyService) FilesHashes(ctx context.Context, req *nearbyshare.CrOSFileHashRequest) (*nearbyshare.CrOSFileHashResponse, error) {
+func (n *NearbyService) FilesHashes(ctx context.Context, req *nearbyservice.CrOSFileHashRequest) (*nearbyservice.CrOSFileHashResponse, error) {
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
-	var res nearbyshare.CrOSFileHashResponse
+	var res nearbyservice.CrOSFileHashResponse
 	hashes, err := nearbytestutils.HashFiles(ctx, req.FileNames, req.FileDir)
 	if err != nil {
 		return nil, errors.Wrapf(err, "could not get hash of %s ", req.FileNames)
@@ -236,16 +236,16 @@ func (n *NearbyService) FilesHashes(ctx context.Context, req *nearbyshare.CrOSFi
 }
 
 // AcceptIncomingShareNotificationAndWaitForCompletion accepts the incoming transfer via notification. Used for in contact tests.
-func (n *NearbyService) AcceptIncomingShareNotificationAndWaitForCompletion(ctx context.Context, req *nearbyshare.CrOSReceiveFilesRequest) (*empty.Empty, error) {
+func (n *NearbyService) AcceptIncomingShareNotificationAndWaitForCompletion(ctx context.Context, req *nearbyservice.CrOSReceiveFilesRequest) (*empty.Empty, error) {
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
-	if err := localnearby.AcceptIncomingShareNotification(ctx, n.tconn, req.SenderName, localnearby.CrosDetectSenderTimeout); err != nil {
+	if err := nearbyshare.AcceptIncomingShareNotification(ctx, n.tconn, req.SenderName, nearbyshare.CrosDetectSenderTimeout); err != nil {
 		return nil, errors.Wrap(err, "CrOS receiver failed to accept Nearby Share notification")
 	}
 	testing.ContextLog(ctx, "Accepted the share on the CrOS receiver")
 	testing.ContextLog(ctx, "Waiting for receiving-complete notification on CrOS receiver")
-	if err := localnearby.WaitForReceivingCompleteNotification(ctx, n.tconn, req.SenderName, localnearby.CrosDetectSenderTimeout); err != nil {
+	if err := nearbyshare.WaitForReceivingCompleteNotification(ctx, n.tconn, req.SenderName, nearbyshare.CrosDetectSenderTimeout); err != nil {
 		return nil, errors.Wrap(err, "failed waiting for notification to indicate sharing has completed on CrOS")
 	}
 	return &empty.Empty{}, nil

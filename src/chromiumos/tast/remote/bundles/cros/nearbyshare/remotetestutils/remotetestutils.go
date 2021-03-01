@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/nearbyshare"
-	nearbyservice "chromiumos/tast/services/cros/nearbyshare"
+	"chromiumos/tast/services/cros/nearbyservice"
 	"chromiumos/tast/ssh/linuxssh"
 )
 
