@@ -55,6 +55,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6b0f9cc_3c908627",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-02T15:45:08Z",
+      "side": 1,
+      "message": "You could put it on {\"informational\", \"group:mainline\"} if you don\u0027t clear TPM ownership.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 56
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22e8f913_27fec7db",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 1
@@ -126,6 +149,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4de15b83_f0c4f8f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-02T15:45:08Z",
+      "side": 1,
+      "message": "nit: how about map[string]struct{}",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56635b64_277b39b2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 1
@@ -160,6 +206,30 @@
       "writtenOn": "2021-03-02T15:24:18Z",
       "side": 1,
       "message": "After I refactored daemon controller(http://crrev/c/2716801), it would become \n```\nhelper.DaemonController().Stop(hwsec.CryptohomeDaemon)\n```",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 47
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2536e57_bb0962fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-02T15:45:08Z",
+      "side": 1,
+      "message": "Oh, I forgot the ctx.\n```\nhelper.DaemonController().Stop(ctx, hwsec.CryptohomeDaemon)\n```\nAnd I think you would also want to handle the error.",
+      "parentUuid": "9e5ec67b_e902a4ae",
       "range": {
         "startLine": 85,
         "startChar": 2,
@@ -212,6 +282,23 @@
         "endLine": 150,
         "endChar": 2
       },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cab6504_41a70797",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-02T15:45:08Z",
+      "side": 1,
+      "message": "I think we should add a defer here to cleanup the user vault after finished this tast:\n```\ndefer func(){\n  helper.CryptohomeClient().RemoveVault(ctx, user1)\n  helper.CryptohomeClient().RemoveVault(ctx, user2)\n}()\n```",
       "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
