@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b58d12a2_4b7b62c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-03-02T01:10:52Z",
+      "side": 1,
+      "message": "Got it. I will move forward with the software dep in this cl and not use skiponplatform.",
+      "parentUuid": "42851ba7_adf78511",
+      "revId": "52d194e28a4e9ce5eede6a7fb79e1a8b6db50c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efa1dc51_4610fd40",
