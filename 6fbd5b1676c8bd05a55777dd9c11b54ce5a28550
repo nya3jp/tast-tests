@@ -3,6 +3,126 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e8a273c_737f7129",
+        "filename": "android/ArcDownloadTest/build.gradle",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-02T03:08:17Z",
+      "side": 1,
+      "message": "remove this file?",
+      "revId": "6fbd5b1676c8bd05a55777dd9c11b54ce5a28550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a1d3c4c_71147130",
+        "filename": "android/ArcDownloadTest/src/org/chromium/arc/testapp/download/MainActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-02T03:08:17Z",
+      "side": 1,
+      "message": "nit: make this variable local?",
+      "revId": "6fbd5b1676c8bd05a55777dd9c11b54ce5a28550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a70d8ce_84d18405",
+        "filename": "android/ArcDownloadTest/src/org/chromium/arc/testapp/download/MainActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-02T03:08:17Z",
+      "side": 1,
+      "message": "We should avoid accessing external resources during a test for multiple reasons (e.g. it can introduce flakiness, it can generate a large volume of requests and consumes completely unrelated team\u0027s quota, etc.) One suggestion is to start a local HTTP server within the test and access that. Golang provides net/http package so it should be straightforward. I couldn\u0027t find the exact example in Tast, but there seems to be other tests doing something similar.",
+      "range": {
+        "startLine": 36,
+        "startChar": 42,
+        "endLine": 36,
+        "endChar": 86
+      },
+      "revId": "6fbd5b1676c8bd05a55777dd9c11b54ce5a28550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed8e1b1_5ec9adcf",
+        "filename": "android/ArcDownloadTest/src/org/chromium/arc/testapp/download/MainActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-02T03:08:17Z",
+      "side": 1,
+      "message": "nit: lambda expression can be used here:\n\n    download.setOnClickListener((View v) -\u003e {\n        startDownload(...);\n    }",
+      "range": {
+        "startLine": 31,
+        "startChar": 36,
+        "endLine": 41,
+        "endChar": 10
+      },
+      "revId": "6fbd5b1676c8bd05a55777dd9c11b54ce5a28550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e9cc9ec_a5025033",
+        "filename": "android/ArcDownloadTest/src/org/chromium/arc/testapp/download/MainActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-02T03:08:17Z",
+      "side": 1,
+      "message": "we can let it fail without checking permission; This is only used for testing, and having the error printed in logcat is more informative than silently discarding the error.",
+      "revId": "6fbd5b1676c8bd05a55777dd9c11b54ce5a28550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5559348e_644bfaa6",
+        "filename": "android/ArcDownloadTest/src/org/chromium/arc/testapp/download/MainActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-02T03:08:17Z",
+      "side": 1,
+      "message": "nit: indent \u0026 spacing",
+      "range": {
+        "startLine": 64,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 90
+      },
+      "revId": "6fbd5b1676c8bd05a55777dd9c11b54ce5a28550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "571a434f_75a4f0c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/share_files_to_arc.go",
         "patchSetId": 4
