@@ -54,7 +54,6 @@ func PhoneToCrosHighVis(ctx context.Context, s *testing.State) {
 	crosDisplayName := s.FixtValue().(*nearbyshare.FixtData).CrOSDeviceName
 	androidDevice := s.FixtValue().(*nearbyshare.FixtData).AndroidDevice
 	androidDisplayName := s.FixtValue().(*nearbyshare.FixtData).AndroidDeviceName
-	defer androidDevice.DumpLogs(ctx, s.OutDir())
 
 	// Extract the test file to the staging directory on the Android device.
 	testData := s.Param().(nearbytestutils.TestData)
