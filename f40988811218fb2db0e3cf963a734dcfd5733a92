@@ -22,6 +22,30 @@
       },
       "revId": "f40988811218fb2db0e3cf963a734dcfd5733a92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "563c151b_79f0b16a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-02T17:26:30Z",
+      "side": 0,
+      "message": "FWIW: if I run servod outside Tast, and I send SIGKILL to the servod process, it\u0027s also an unclean shutdown, so it\u0027s not an error in Tast\u0027s cmd.Kill() implementation, but just SIGKILL vs SIGINT",
+      "parentUuid": "c4e9b507_b6e3025d",
+      "range": {
+        "startLine": 187,
+        "startChar": 7,
+        "endLine": 187,
+        "endChar": 23
+      },
+      "revId": "f40988811218fb2db0e3cf963a734dcfd5733a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
