@@ -369,6 +369,19 @@ func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.Te
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
+// MouseScrollAction func verifies app perform mouse scroll actions successfully without crash or ANR.
+func MouseScrollAction(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	// To perform mouse scroll actions.
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--throttle", "100", "--pct-touch", "30", "--pct-trackball", "50", "-v", "1000").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Error("Failed to perform monkey test mouse scroll: ", err)
+	}
+	if err := processMonkeyOutput(string(out)); err != nil {
+		s.Error("Mouse scroll is not working properly in the app: ", err)
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
