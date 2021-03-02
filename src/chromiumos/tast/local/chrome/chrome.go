@@ -122,7 +122,7 @@ type Chrome struct {
 }
 
 // User returns the username that was used to log in to Chrome.
-func (c *Chrome) User() string { return c.cfg.User }
+func (c *Chrome) User() string { return c.cfg.NormalizedUser }
 
 // LacrosExtraArgs returns the extra arguments that should be added to the Lacros command line.
 func (c *Chrome) LacrosExtraArgs() []string { return c.cfg.LacrosExtraArgs }
