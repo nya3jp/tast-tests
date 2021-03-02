@@ -22,6 +22,30 @@
       },
       "revId": "95eb6b8cf157a5ce38a3422a7fe93a52d10a2b01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5e05684_6d277d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-02T01:06:29Z",
+      "side": 1,
+      "message": "That has changed (see the previous patch in the series); the port iteration part is just folded into the function body.",
+      "parentUuid": "fbace377_980d17e8",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "95eb6b8cf157a5ce38a3422a7fe93a52d10a2b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
