@@ -365,6 +365,57 @@ func (d *Device) SDKVersion(ctx context.Context) (int, error) {
 	return strconv.Atoi(strings.TrimSuffix(string(sdkVersion), "\n"))
 }
 
+// AndroidVersion returns the Android version.
+func (d *Device) AndroidVersion(ctx context.Context) (int, error) {
+	androidVersion, err := d.ShellCommand(ctx, "getprop", "ro.build.version.release").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, err
+	}
+	return strconv.Atoi(strings.TrimSuffix(string(androidVersion), "\n"))
+}
+
+// GMSCoreVersion returns the GMS Core version.
+func (d *Device) GMSCoreVersion(ctx context.Context) (int, error) {
+	versionInfo, err := d.ShellCommand(ctx, "sh", "-c", "dumpsys package com.google.android.gms | grep versionCode").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, err
+	}
+
+	const versionCodePattern = "versionCode=([0-9]+)"
+	r, err := regexp.Compile(versionCodePattern)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to compile versionCode pattern")
+	}
+	versionCodeMatch := r.FindStringSubmatch(string(versionInfo))
+	if len(versionCodeMatch) == 0 {
+		return 0, errors.New("GMS Core version number not found in command output")
+	}
+	version, err := strconv.Atoi(versionCodeMatch[1])
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to convert GMS Core version %v to int", versionCodeMatch[0])
+	}
+	return version, nil
+}
+
+// GoogleAccount returns the first found Google account signed in to the Android device.
+func (d *Device) GoogleAccount(ctx context.Context) (string, error) {
+	accountInfo, err := d.ShellCommand(ctx, "sh", "-c", "dumpsys account all | grep Account").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+
+	const accountPattern = "{name=([^@^}]+@[^,^}]+), type=com.google}"
+	r, err := regexp.Compile(accountPattern)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to compile Google account pattern")
+	}
+	accountMatch := r.FindStringSubmatch(string(accountInfo))
+	if len(accountMatch) == 0 {
+		return "", errors.New("Google account not found on the device")
+	}
+	return accountMatch[1], nil
+}
+
 // Root restarts adbd with root permissions.
 func (d *Device) Root(ctx context.Context) error {
 	return d.Command(ctx, "root").Run(testexec.DumpLogOnError)

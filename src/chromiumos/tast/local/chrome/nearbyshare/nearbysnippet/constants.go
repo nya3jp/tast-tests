@@ -32,6 +32,13 @@ const (
 	DataUsageWifiOnly
 )
 
+// DataUsageStrings is a map of DataUsage to human-readable setting values.
+var DataUsageStrings = map[DataUsage]string{
+	DataUsageOffline:  "Offline",
+	DataUsageOnline:   "Online",
+	DataUsageWifiOnly: "Wifi Only",
+}
+
 // Visibility are values for the Nearby Snippet's setupDevice and getVisibility methods, corresponding to different contact visibility settings.
 type Visibility int
 
@@ -43,6 +50,15 @@ const (
 	VisibilitySelectedContacts
 	VisibilityEveryone
 )
+
+// VisibilityStrings is a map of Visibility to human-readable setting values.
+var VisibilityStrings = map[Visibility]string{
+	VisibilityUnknown:          "Unknown",
+	VisibilityNoOne:            "No One",
+	VisibilityAllContacts:      "All Contacts",
+	VisibilitySelectedContacts: "Selected Contacts",
+	VisibilityEveryone:         "Everyone",
+}
 
 // SnippetEvent are the event names posted by the Nearby Snippet to its event cache after initiating receiving.
 // The host CrOS device can monitor the sharing state by awaiting these events using the Nearby Snippet's eventWaitAndGet RPC.
