@@ -195,6 +195,12 @@ func (c *Config) ExtraExtDirs() []string { return append([]string(nil), c.m.Extr
 // SigninExtKey returns a private key for the sign-in profile test extension.
 func (c *Config) SigninExtKey() string { return c.m.SigninExtKey }
 
+// Returns true if creating browser windows on login should be skipped.
+func (c *Config) EnableRestoreTabs() bool { return c.m.EnableRestoreTabs }
+
+// Returns true if online sign-in enforcement should be disabled.
+func (c *Config) SkipForceOnlineSignInForTesting() bool { return c.m.SkipForceOnlineSignInForTesting }
+
 // MutableConfig is a mutable version of Config. MutableConfig is wrapped with
 // Config to prevent mutation after it is returned by NewConfig.
 //
@@ -206,30 +212,33 @@ func (c *Config) SigninExtKey() string { return c.m.SigninExtKey }
 // - "true": this field have to match for reused session
 // - "customized": Reuse checking logic is expected to be customized in customizedReuseCheck() function.
 // This tag must be set for every field with one of the above values. Otherwise, unit test will fail.
+
 type MutableConfig struct {
-	Creds                  Creds     `reuse_match:"true"`
-	NormalizedUser         string    `reuse_match:"true"`
-	KeepState              bool      `reuse_match:"false"`
-	DeferLogin             bool      `reuse_match:"customized"`
-	LoginMode              LoginMode `reuse_match:"customized"`
-	TryReuseSession        bool      `reuse_match:"false"`
-	EnableLoginVerboseLogs bool      `reuse_match:"true"`
-	VKEnabled              bool      `reuse_match:"true"`
-	SkipOOBEAfterLogin     bool      `reuse_match:"false"`
-	InstallWebApp          bool      `reuse_match:"true"`
-	Region                 string    `reuse_match:"true"`
-	PolicyEnabled          bool      `reuse_match:"true"`
-	DMSAddr                string    `reuse_match:"true"`
-	Enroll                 bool      `reuse_match:"true"`
-	ARCMode                ARCMode   `reuse_match:"true"`
-	RestrictARCCPU         bool      `reuse_match:"true"`
-	BreakpadTestMode       bool      `reuse_match:"true"`
-	ExtraArgs              []string  `reuse_match:"true"`
-	LacrosExtraArgs        []string  `reuse_match:"true"`
-	EnableFeatures         []string  `reuse_match:"true"`
-	DisableFeatures        []string  `reuse_match:"true"`
-	ExtraExtDirs           []string  `reuse_match:"customized"`
-	SigninExtKey           string    `reuse_match:"customized"`
+	Creds                           Creds     `reuse_match:"true"`
+	NormalizedUser                  string    `reuse_match:"true"`
+	KeepState                       bool      `reuse_match:"false"`
+	DeferLogin                      bool      `reuse_match:"customized"`
+	EnableRestoreTabs               bool      `reuse_match:"false"`
+	LoginMode                       LoginMode `reuse_match:"customized"`
+	TryReuseSession                 bool      `reuse_match:"false"`
+	EnableLoginVerboseLogs          bool      `reuse_match:"true"`
+	VKEnabled                       bool      `reuse_match:"true"`
+	SkipOOBEAfterLogin              bool      `reuse_match:"false"`
+	InstallWebApp                   bool      `reuse_match:"true"`
+	Region                          string    `reuse_match:"true"`
+	PolicyEnabled                   bool      `reuse_match:"true"`
+	DMSAddr                         string    `reuse_match:"true"`
+	Enroll                          bool      `reuse_match:"true"`
+	ARCMode                         ARCMode   `reuse_match:"true"`
+	RestrictARCCPU                  bool      `reuse_match:"true"`
+	BreakpadTestMode                bool      `reuse_match:"true"`
+	ExtraArgs                       []string  `reuse_match:"true"`
+	LacrosExtraArgs                 []string  `reuse_match:"true"`
+	EnableFeatures                  []string  `reuse_match:"true"`
+	DisableFeatures                 []string  `reuse_match:"true"`
+	ExtraExtDirs                    []string  `reuse_match:"customized"`
+	SigninExtKey                    string    `reuse_match:"customized"`
+	SkipForceOnlineSignInForTesting bool      `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -241,17 +250,19 @@ type Option func(cfg *MutableConfig) error
 func NewConfig(opts []Option) (*Config, error) {
 	cfg := &Config{
 		m: MutableConfig{
-			Creds:                  defaultCreds,
-			KeepState:              false,
-			LoginMode:              FakeLogin,
-			VKEnabled:              false,
-			SkipOOBEAfterLogin:     true,
-			EnableLoginVerboseLogs: false,
-			InstallWebApp:          false,
-			Region:                 "us",
-			PolicyEnabled:          false,
-			Enroll:                 false,
-			BreakpadTestMode:       true,
+			Creds:                           defaultCreds,
+			KeepState:                       false,
+			LoginMode:                       FakeLogin,
+			VKEnabled:                       false,
+			SkipOOBEAfterLogin:              true,
+			EnableLoginVerboseLogs:          false,
+			InstallWebApp:                   false,
+			Region:                          "us",
+			PolicyEnabled:                   false,
+			Enroll:                          false,
+			BreakpadTestMode:                true,
+			EnableRestoreTabs:               false,
+			SkipForceOnlineSignInForTesting: false,
 		},
 	}
 	for _, opt := range opts {
