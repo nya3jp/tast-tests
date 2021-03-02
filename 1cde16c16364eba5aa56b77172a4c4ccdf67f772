@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7662676_665009d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-03-02T05:38:03Z",
+      "side": 1,
+      "message": "Have a question about the nit, but we can fix in a later CL.",
+      "revId": "1cde16c16364eba5aa56b77172a4c4ccdf67f772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
