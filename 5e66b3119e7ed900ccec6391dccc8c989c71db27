@@ -232,6 +232,30 @@
       },
       "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b244d5c_6db0b291",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-02T10:51:21Z",
+      "side": 1,
+      "message": "Let\u0027s compare 2 messages:\n\n\"failed to wait for animation finished\":\n- this gives us info that we waited for animation to be finished, but failed\n\n\n\"failed waiting for desktop to complete change after dismissing bookmark dialog\":\n- it\u0027s a bit unclear what do you mean by \"desktop\", do you refer to device or DUT?\n- \"to complete change\" you don\u0027t specify what exact change we are waiting to complete\n- \"after dismissing bookmark dialog\" - yeah, this gives some context about previous steps, but not sure if it should be part of error message (don\u0027t have strong opinion here). I think usually we don\u0027t add context from previous steps.",
+      "parentUuid": "a210c9bb_89e6be9e",
+      "range": {
+        "startLine": 149,
+        "startChar": 31,
+        "endLine": 149,
+        "endChar": 109
+      },
+      "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
