@@ -118,6 +118,8 @@ func init() {
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
+			// These devices have a small SSD and can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("apel", "bluebird", "bobba", "flex", "mimrock", "vorticon")),
 		}, {
 			Name: "vaapi_vp8_180_meet",
 			Val: testParam{
@@ -160,6 +162,8 @@ func init() {
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
+			// These devices have a small SSD and can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("apel", "bluebird", "bobba", "flex", "mimrock", "vorticon")),
 		}, {
 			Name: "vaapi_vp9_180",
 			Val: testParam{
@@ -202,6 +206,8 @@ func init() {
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
+			// These devices have a small SSD and can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("apel", "bluebird", "bobba", "flex", "mimrock", "vorticon")),
 		}, {
 			Name: "vaapi_vp9_180_meet",
 			Val: testParam{
@@ -244,6 +250,8 @@ func init() {
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
+			// These devices have a small SSD and can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("apel", "bluebird", "bobba", "flex", "mimrock", "vorticon")),
 		}, {
 			Name: "vaapi_h264_180",
 			Val: testParam{
@@ -286,6 +294,8 @@ func init() {
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
+			// These devices have a small SSD and can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("apel", "bluebird", "bobba", "flex", "mimrock", "vorticon")),
 		}, {
 			Name: "vaapi_h264_180_meet",
 			Val: testParam{
@@ -328,6 +338,8 @@ func init() {
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
+			// These devices have a small SSD and can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("apel", "bluebird", "bobba", "flex", "mimrock", "vorticon")),
 		}, {
 			Name: "vpxenc_vp8_180",
 			Val: testParam{
@@ -367,6 +379,8 @@ func init() {
 				decoder:        "vpxdec",
 			},
 			ExtraData: []string{"tulip2-1280x720.vp9.webm"},
+			// These devices have a small SSD and can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("apel", "bluebird", "bobba", "flex", "mimrock", "vorticon")),
 		}, {
 			Name: "vpxenc_vp8_180_meet",
 			Val: testParam{
@@ -406,6 +420,8 @@ func init() {
 				decoder:        "vpxdec",
 			},
 			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
+			// These devices have a small SSD and can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("apel", "bluebird", "bobba", "flex", "mimrock", "vorticon")),
 		}, {
 			Name: "v4l2_h264_180",
 			Val: testParam{
