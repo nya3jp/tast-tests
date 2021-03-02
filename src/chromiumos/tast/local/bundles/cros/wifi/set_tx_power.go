@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package wifi
 
 import (
 	"context"
@@ -14,7 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WifiSetTXPower,
+		Func: SetTXPower,
 		Desc: "Tests WiFi TX power helper's basic operation",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
@@ -38,7 +38,7 @@ func init() {
 	})
 }
 
-func WifiSetTXPower(ctx context.Context, s *testing.State) {
+func SetTXPower(ctx context.Context, s *testing.State) {
 	const setTxPowerExe = "set_wifi_transmit_power"
 
 	cmd := testexec.CommandContext(ctx, "check_powerd_config", "--set_wifi_transmit_power")

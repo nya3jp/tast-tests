@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package wifi
 
 import (
 	"context"
@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/network/regdb"
+	"chromiumos/tast/local/bundles/cros/wifi/regdb"
 	network_iface "chromiumos/tast/local/network/iface"
 	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/local/shill"
@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WlanRegulatory,
+		Func: Regulatory,
 		// Test notes: We don't verify that the system truly respects the regulatory database rules, but only that it does not
 		// reject them. Note that some WiFi drivers "self manage" their domain detection and so this test can't apply everywhere.
 		Desc: "Ensure the regulatory database is coherent and that we can switch domains using the 'iw' utility",
@@ -34,7 +34,7 @@ func init() {
 	})
 }
 
-func WlanRegulatory(ctx context.Context, s *testing.State) {
+func Regulatory(ctx context.Context, s *testing.State) {
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)

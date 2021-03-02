@@ -7,7 +7,7 @@ which are run under a [hwsim-based test framework]. They rely on the
 AP devices. See the upstream project documentation for more info.
 
 The upstream test framework is integrated within Chrome OS to run via the
-[network.HostapHwsim] Tast test wrapper. This test has some limited software
+[wifi.HostapHwsim] Tast test wrapper. This test has some limited software
 dependencies, which are installed via the `USE=wifi_hostap_test` feature flag.
 Currently, this `USE` flag is enabled only on `BOARD=amd64-generic` and those
 that inherit from it. The easiest way to use the tests is via a VM target, like
@@ -32,7 +32,7 @@ export BOARD=betty
 cros_vm --start --board=${BOARD}
 
 # Run the validity test.
-tast -verbose run localhost:9222 network.HostapHwsim.validity
+tast -verbose run localhost:9222 wifi.HostapHwsim.validity
 
 # Make modifications.
 ## Find the appropriate src/third_party/wpa_supplicant-*/
@@ -47,11 +47,11 @@ cros_workon-${BOARD} start hostap-test
 emerge-${BOARD} hostap-test && cros deploy --root=/usr/local localhost:9222 hostap-test
 
 # Rerun validity tests.
-tast -verbose run localhost:9222 network.HostapHwsim.validity
+tast -verbose run localhost:9222 wifi.HostapHwsim.validity
 
 # Run a specific module, the 'ap_roam' module.
-tast -verbose run -var=network.HostapHwsim.runArgs='-f ap_roam' \
-    localhost:9222 network.HostapHwsim.full
+tast -verbose run -var=wifi.HostapHwsim.runArgs='-f ap_roam' \
+    localhost:9222 wifi.HostapHwsim.full
 ```
 
 ## Tips
@@ -64,11 +64,11 @@ tast -verbose run -var=network.HostapHwsim.runArgs='-f ap_roam' \
     packages are installed at `/usr/local`, so you should deploy the
     `hostap-test` package there too.
 *   Logs are stored to the Tast results directory
-    (`/tmp/tast/results/latest/tests/network.HostapHwsim.*/`). These include
+    (`/tmp/tast/results/latest/tests/wifi.HostapHwsim.*/`). These include
     kernel logs and logs for one or more `hostapd` or `wpa_supplicant`
     instance, as well as packet captures.
-*   You can pass arbitrary arguments to the `network.HostapHwsim.full` variant
-    via the `-var=network.HostapHwsim.runArgs='...'` parameter, to run specific
+*   You can pass arbitrary arguments to the `wifi.HostapHwsim.full` variant
+    via the `-var=wifi.HostapHwsim.runArgs='...'` parameter, to run specific
     tests, or to add extra debugging information. e.g., the `-T` parameter
     captures kernel tracing information via `trace-cmd`. See the `--help`
 descriptions for more info:
@@ -119,7 +119,7 @@ optional arguments:
 
 [hostap project]: https://w1.fi/
 [hwsim-based test framework]: https://w1.fi/cgit/hostap/plain/tests/hwsim/README
-[network.HostapHwsim]: hostap_hwsim.go
+[wifi.HostapHwsim]: hostap_hwsim.go
 [slides]: https://goto.google.com/hostap-hwsim-slides
 [cros_vm docs]: https://chromium.googlesource.com/chromiumos/docs/+/main/cros_vm.md
 [deploy to the correct root]: https://crbug.com/341708
