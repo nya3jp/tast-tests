@@ -26,7 +26,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CrosSenderCrosReceiver,
+		Func:         CrosToCrosHighVis,
 		Desc:         "Checks we can successfully send files from one Cros device to another",
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:nearby-share-remote"},
@@ -35,7 +35,7 @@ func init() {
 		Vars:         []string{"secondaryTarget"},
 		Params: []testing.Param{
 			{
-				Name:      "small_jpg",
+				Name:      "dataoffline_allcontacts_jpg11kb",
 				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", Timeout: nearbyshare.SmallFileTimeout},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbyshare.SmallFileTimeout,
@@ -44,8 +44,8 @@ func init() {
 	})
 }
 
-// CrosSenderCrosReceiver tests file sharing between Chrome OS devices.
-func CrosSenderCrosReceiver(ctx context.Context, s *testing.State) {
+// CrosToCrosHighVis tests file sharing between Chrome OS devices.
+func CrosToCrosHighVis(ctx context.Context, s *testing.State) {
 	d1 := s.DUT()
 	secondary, ok := s.Var("secondaryTarget")
 	if !ok {
