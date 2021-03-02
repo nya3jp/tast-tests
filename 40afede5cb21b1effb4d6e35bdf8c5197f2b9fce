@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "211d292a_4e7e067f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-02T08:40:11Z",
+      "side": 1,
+      "message": "LGTM for style. Please wait for the review from Tom.",
+      "revId": "40afede5cb21b1effb4d6e35bdf8c5197f2b9fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
