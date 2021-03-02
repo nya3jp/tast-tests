@@ -85,11 +85,8 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	}
 	defer pc.Close()
 
-	if conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 2); err != nil {
+	if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 2); err != nil {
 		s.Fatal("Failed to create windows: ", err)
-	} else {
-		// unnecessary to use the connections; simply close now.
-		conns.Close()
 	}
 	if !inTabletMode {
 		// In clamshell mode, turn all windows into normal state, so the desktop

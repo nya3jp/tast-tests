@@ -157,8 +157,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 			}
 			defer lacros.CloseLacrosChrome(ctx, l)
 
-			conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, windows-currentWindows)
-			if err != nil {
+			if err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, windows-currentWindows); err != nil {
 				s.Fatal("Failed to create browser windows: ", err)
 			}
 			// Maximize all windows to ensure a consistent state.
@@ -172,9 +171,6 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 				if err := lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 1); err != nil {
 					s.Fatal("Failed to close about:blank: ", err)
 				}
-			}
-			if err := conns.Close(); err != nil {
-				s.Error("Failed to close the connection to chrome")
 			}
 			currentWindows = windows
 
