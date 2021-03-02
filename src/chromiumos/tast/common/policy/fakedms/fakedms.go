@@ -29,8 +29,16 @@ const depsDir = "/usr/local/share/policy_testserver/"
 // LogFile is the name of the log file for FakeDMS.
 const LogFile = "fakedms.log"
 
-// PolicyFile is the name of the log file for FakeDMS.
+// PolicyFile is the name of the config file for FakeDMS.
 const PolicyFile = "policy.json"
+
+// StateFile is the name of the state file for FakeDMS.
+const StateFile = "state.json"
+
+// EnrollmentFakeDMSDir is the dirctory where FakeDMS stores state during enrollment.
+// Used to share state between the enrolled fixture and the fakeDMSEnrolled fixtures.
+// TODO(crbug.com/1187473): Remove
+const EnrollmentFakeDMSDir = "/tmp/enrolling-fdms"
 
 var testserverPath = filepath.Join(depsDir, "policy_testserver.py")
 var testserverPythonImports = []string{
@@ -59,6 +67,7 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 
 	policyPath := filepath.Join(outDir, PolicyFile)
 	logPath := filepath.Join(outDir, LogFile)
+	statePath := filepath.Join(outDir, StateFile)
 
 	fr, fw, err := os.Pipe()
 	if err != nil {
@@ -78,6 +87,7 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 		testserverPath,
 		"--config-file", policyPath,
 		"--log-file", logPath,
+		"--client-state", statePath,
 		"--log-level", "DEBUG",
 		// cmd.ExtraFiles (set below) assigns element i to file descriptor 3+i.
 		// See exec.Cmd for more info.

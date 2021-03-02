@@ -30,13 +30,31 @@ func init() {
 		PostTestTimeout: 15 * time.Second,
 		Parent:          "fakeDMS",
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeEnrolledLoggedIn",
+		Desc:     "Logged into a user session",
+		Contacts: []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Impl: &policyChromeFixture{
+			// Need to keep state to maintain enrollment.
+			extraOpts: []chrome.Option{chrome.KeepState(), chrome.ExtraArgs("--disable-policy-key-verification")},
+		},
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          "fakeDMSEnrolled",
+	})
 }
 
 type policyChromeFixture struct {
-	// Chrome is a connection to an already-started Chrome instance that loads policies from FakeDMS.
+	// cr is a connection to an already-started Chrome instance that loads policies from FakeDMS.
 	cr *chrome.Chrome
-	// FakeDMS is the already running DMS server from the parent fixture.
+	// fdms is the already running DMS server from the parent fixture.
 	fdms *fakedms.FakeDMS
+
+	// extraOpts contains extra options passed to Chrome.
+	extraOpts []chrome.Option
 }
 
 // FixtData is returned by the fixtures and used by tests to interact with Chrome and FakeDMS.
@@ -65,10 +83,14 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 
 	p.fdms = fdms
 
-	// Start a Chrome instance that will fetch policies from the FakeDMS.
-	cr, err := chrome.New(ctx,
+	opts := []chrome.Option{
 		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password, GAIAID: GaiaID}),
-		chrome.DMSPolicy(fdms.URL))
+		chrome.DMSPolicy(fdms.URL),
+	}
+	opts = append(opts, p.extraOpts...)
+
+	// Start a Chrome instance that will fetch policies from the FakeDMS.
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}

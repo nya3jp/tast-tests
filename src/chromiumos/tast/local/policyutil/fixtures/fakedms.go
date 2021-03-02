@@ -28,13 +28,29 @@ func init() {
 		TearDownTimeout: 5 * time.Second,
 		PostTestTimeout: 5 * time.Second,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "fakeDMSEnrolled",
+		Desc:     "Fixture for a running FakeDMS",
+		Contacts: []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Impl: &fakeDMSFixture{
+			importState: filepath.Join(fakedms.EnrollmentFakeDMSDir, fakedms.StateFile),
+		},
+		SetUpTimeout:    15 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+		Parent:          "enrolled",
+	})
 }
 
 type fakeDMSFixture struct {
 	// FakeDMS is the currently running fake DM server.
 	fakeDMS *fakedms.FakeDMS
-	// tmpdir is the directory where FakeDMS is currently running
-	tmpdir string
+	// fdmsDir is the directory where FakeDMS is currently running.
+	fdmsDir string
+	// importState is the path to an existing state file for FakeDMS.
+	importState string
 }
 
 func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -46,10 +62,16 @@ func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interf
 	if err != nil {
 		s.Fatal("Failed to create fdms temp dir: ", err)
 	}
-	f.tmpdir = tmpdir
+	f.fdmsDir = tmpdir
+
+	if f.importState != "" {
+		if err := fsutil.CopyFile(f.importState, filepath.Join(f.fdmsDir, fakedms.StateFile)); err != nil {
+			s.Fatalf("Failed to import the existing state from %q: %v", f.importState, err)
+		}
+	}
 
 	// Start FakeDMS.
-	fdms, err := fakedms.New(s.FixtContext(), f.tmpdir)
+	fdms, err := fakedms.New(s.FixtContext(), f.fdmsDir)
 	if err != nil {
 		s.Fatal("Failed to start FakeDMS: ", err)
 	}
@@ -98,7 +120,7 @@ func (f *fakeDMSFixture) PostTest(ctx context.Context, s *testing.FixtTestState)
 	}
 
 	// Copy FakeDMS log to the current tests OutDir.
-	src := filepath.Join(f.tmpdir, fakedms.LogFile)
+	src := filepath.Join(f.fdmsDir, fakedms.LogFile)
 	dst := filepath.Join(s.OutDir(), fakedms.LogFile)
 	if err := fsutil.CopyFile(src, dst); err != nil {
 		s.Error("Failed to copy FakeDMS logs: ", err)
@@ -106,7 +128,7 @@ func (f *fakeDMSFixture) PostTest(ctx context.Context, s *testing.FixtTestState)
 
 	// Copy FakeDMS policies to the current tests OutDir.
 	// Add prefix to avoid conflic with the Chrome fixture.
-	src = filepath.Join(f.tmpdir, fakedms.PolicyFile)
+	src = filepath.Join(f.fdmsDir, fakedms.PolicyFile)
 	dst = filepath.Join(s.OutDir(), "fakedms_"+fakedms.PolicyFile)
 	if err := fsutil.CopyFile(src, dst); err != nil {
 		s.Error("Failed to copy FakeDMS policies: ", err)
