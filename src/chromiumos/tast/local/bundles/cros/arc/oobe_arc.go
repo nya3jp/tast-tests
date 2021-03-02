@@ -22,11 +22,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     OobeArc,
-		Desc:     "Navigate through OOBE and Verify that PlayStore Settings Screen is launched at the end",
-		Contacts: []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
-		//TODO(b/179637267): Enable once the bug is fixed.
-		//Attr:         []string{"group:mainline", "informational"},
+		Func:         OobeArc,
+		Desc:         "Navigate through OOBE and Verify that PlayStore Settings Screen is launched at the end",
+		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -59,13 +58,17 @@ func OobeArc(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn)
 
+	skip := nodewith.Name("Skip").Role(role.StaticText)
+	noThanks := nodewith.Name("No thanks").Role(role.Button)
+
 	if err := uiauto.Combine("go through the oobe flow ui",
 		ui.LeftClick(nodewith.NameRegex(regexp.MustCompile(
 			"Accept and continue|Got it")).Role(role.Button)),
+		ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(skip), ui.LeftClick(skip)),
 		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Review Google Play options following setup").Role(role.CheckBox)),
 		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("No thanks").Role(role.Button)),
+		ui.IfSuccessThen(ui.WithTimeout(20*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
 		ui.LeftClick(nodewith.Name("Get started").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to test oobe Arc: ", err)
