@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a60d5350_496d0e63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-02T19:57:48Z",
+      "side": 1,
+      "message": "Rebased again; people are actively stabilizing tests (i.e., changing Attributes) so this will probably keep having conflicts.\n\nIt\u0027d be nice to get a clear vote on this soon, to minimize the number of rebases.",
+      "revId": "6d1f51c27b20a765d87a52484d93d517c312f57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
