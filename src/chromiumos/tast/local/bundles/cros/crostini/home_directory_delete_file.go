@@ -112,7 +112,7 @@ func HomeDirectoryDeleteFile(ctx context.Context, s *testing.State) {
 	defer filesApp.Close(cleanupCtx)
 
 	const fileName = "testfile.txt"
-	ownerID, err := cryptohome.UserHash(ctx, cr.User())
+	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}
