@@ -28,6 +28,18 @@ func init() {
 		TearDownTimeout: 5 * time.Second,
 		PostTestTimeout: 5 * time.Second,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "fakeDMSEnrolled",
+		Desc:            "Fixture for a running FakeDMS",
+		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Impl:            &fakeDMSFixture{},
+		SetUpTimeout:    15 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+		Parent:          "enrolled",
+	})
 }
 
 type fakeDMSFixture struct {
