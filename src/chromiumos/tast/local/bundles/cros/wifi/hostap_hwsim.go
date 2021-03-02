@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package wifi
 
 import (
 	"bufio"
@@ -32,7 +32,7 @@ func init() {
 		SoftwareDeps: []string{"hostap_hwsim"},
 		// For running manually, with specific 'run-all.sh' arguments (e.g., specific tests or
 		// modules).
-		Vars: []string{"network.HostapHwsim.runArgs"},
+		Vars: []string{"wifi.HostapHwsim.runArgs"},
 
 		Params: []testing.Param{
 			{
@@ -120,7 +120,7 @@ func HostapHwsim(fullCtx context.Context, s *testing.State) {
 	//
 	// By default, we only select modules/tests are currently known to pass
 	// reliably (defaultTestList), but for manual invocation, one can
-	// provide a precise test list via the 'network.HostapHwsim.runArgs'
+	// provide a precise test list via the 'wifi.HostapHwsim.runArgs'
 	// var.
 	var testArgs = []string{
 		"--vm",
@@ -128,7 +128,7 @@ func HostapHwsim(fullCtx context.Context, s *testing.State) {
 	defaultTestList := s.Param().([]string)
 
 	var runArgs []string
-	if testList, ok := s.Var("network.HostapHwsim.runArgs"); ok {
+	if testList, ok := s.Var("wifi.HostapHwsim.runArgs"); ok {
 		runArgs = append(testArgs, strings.Fields(testList)...)
 	} else {
 		runArgs = append(testArgs, defaultTestList...)

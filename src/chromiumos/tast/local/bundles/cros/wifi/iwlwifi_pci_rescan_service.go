@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package wifi
 
 import (
 	"context"
@@ -10,7 +10,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
-	"chromiumos/tast/local/bundles/cros/network/iwlwifirescan"
+	"chromiumos/tast/local/bundles/cros/wifi/iwlwifirescan"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
