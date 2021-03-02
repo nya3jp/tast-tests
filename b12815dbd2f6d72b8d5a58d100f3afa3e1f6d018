@@ -22,6 +22,29 @@
       },
       "revId": "b12815dbd2f6d72b8d5a58d100f3afa3e1f6d018",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d833d04_081e87a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-02T18:13:25Z",
+      "side": 1,
+      "message": "Combine can be used here:\n  if err :\u003d uiauto.Combine(\n    \"click and wait\",\n    ui.LeftClick(nodewith.Name(\"Close\")...),\n    ui.WaitUntilGone(nodewith.Name(shareMessage)...),\n  )(ctx); err !\u003d nil {\n    return err\n  }",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 4
+      },
+      "revId": "b12815dbd2f6d72b8d5a58d100f3afa3e1f6d018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
