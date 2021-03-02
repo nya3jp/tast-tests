@@ -20,6 +20,7 @@ import (
 // ClamshellTests are placed here.
 var clamshellTestsForInfinitePainter = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForInfinitePainter},
+	{Name: "Clamshell: Mouse Scroll", Fn: testutil.MouseScrollAction},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
