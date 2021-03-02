@@ -77,7 +77,8 @@ const (
 // On success, non-nil pointers are returned that must be closed by the calling function.
 // However, if there is an error, both pointers will be nil
 func OpenSession(ctx context.Context, packagesMode PackagesMode, gmsCoreMode GMSCoreMode, extraArgs []string, outputDir string) (cr *chrome.Chrome, a *arc.ARC, retErr error) {
-	args := []string{"--arc-disable-app-sync", "--arc-disable=play-auto-install"}
+	args := arc.DisableSyncFlags()
+	args = append(args, "--arc-disable-download-provider")
 	switch packagesMode {
 	case PackagesSkipCopy:
 		args = append(args, "--arc-packages-cache-mode=skip-copy")
