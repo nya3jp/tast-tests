@@ -30,12 +30,31 @@ func init() {
 			"chromeos-kernel-wifi@google.com", // WiFi team
 		},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		// NB: The WifiIntel dependency tracks a manually maintained list of devices.
 		// If the test is skipping when it should run or vice versa, check the hwdep
 		// to see if your board is incorrectly included/excluded.
 		HardwareDeps: hwdep.D(hwdep.WifiIntel()),
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(badModels...)),
+			},
+			{
+				Name:              "informational",
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(badModels...)),
+			},
+		},
 	})
+}
+
+// These models are known to fail this test, and are therefore only run in the
+// informational version. These failures are all tracked in the referenced bugs.
+var badModels = []string{
+	"akemi",  // TODO(b/172288894): Bad SAR table.
+	"eldrid", // TODO(b/181034399): ACPI bug causing this test to fail.
+	"eve",    // TODO(b/181055964): Unique SAR table causes this test to fail.
+	"leona",  // TODO(b/181049667): Bad SAR table.
 }
 
 // sarTableType is an enum that accounts for the different kinds of SAR tables
