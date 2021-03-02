@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package wifi
 
 import (
 	"context"
@@ -24,7 +24,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"iwlwifi_rescan"},
-		ServiceDeps:  []string{"tast.cros.network.IwlwifiPCIRescan", "tast.cros.network.WifiService"},
+		ServiceDeps:  []string{"tast.cros.wifi.IwlwifiPCIRescan", "tast.cros.network.WifiService"},
 	})
 }
 
