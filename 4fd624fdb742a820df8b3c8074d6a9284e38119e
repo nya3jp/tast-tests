@@ -16,6 +16,69 @@
       "message": "Thanks a lot for reviewing this CL, Hugo! And thanks for the offline consulting on iptables. :D ",
       "revId": "4fd624fdb742a820df8b3c8074d6a9284e38119e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a36d32aa_0cfa8a53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-03-02T04:19:27Z",
+      "side": 1,
+      "message": "LGTM. Pavol should have another look.\n\nSo are the filter rules effective ? If you dump iptables with counters (iptables -v -t filter -L) can you observe traffic being dropped ?",
+      "revId": "4fd624fdb742a820df8b3c8074d6a9284e38119e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c19bc799_fb7cc75c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-03-02T04:19:27Z",
+      "side": 1,
+      "message": "nit: we might want to document that this 2 here is to allow the accept rule on L44 to have a chance to let the proxy traffic in.",
+      "range": {
+        "startLine": 59,
+        "startChar": 36,
+        "endLine": 59,
+        "endChar": 39
+      },
+      "revId": "4fd624fdb742a820df8b3c8074d6a9284e38119e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ebb9469_cb8c28e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-03-02T04:19:27Z",
+      "side": 1,
+      "message": "nit: same thing here, maybe document the \"2\" is to insert that rule after the rule on L49 for protecting the proxy traffic.",
+      "range": {
+        "startLine": 63,
+        "startChar": 36,
+        "endLine": 63,
+        "endChar": 39
+      },
+      "revId": "4fd624fdb742a820df8b3c8074d6a9284e38119e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
