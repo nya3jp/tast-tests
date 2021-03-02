@@ -21,10 +21,11 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
@@ -355,20 +356,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer pc.Close()
 
-	// Find the web view of Meet window.
-	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "WebView"}, timeout)
-	if err != nil {
-		s.Fatal("Failed to find webview: ", err)
-	}
-	defer webview.Release(closeCtx)
+	ui := uiauto.New(tconn)
 
+	// Find the web view of Meet window.
+	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
 	// Assume that the meeting code is the only textfield in the webpage.
-	enter, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeTextField}, timeout)
-	if err != nil {
-		s.Fatal("Failed to find the meeting code: ", err)
-	}
-	defer enter.Release(closeCtx)
-	if err := enter.StableLeftClick(ctx, &pollOpts); err != nil {
+	if err := ui.LeftClick(nodewith.Role(role.TextField).Ancestor(webview))(ctx); err != nil {
 		s.Fatal("Failed to click the input form: ", err)
 	}
 	kw, err := input.Keyboard(ctx)
@@ -376,7 +369,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a keyboard: ", err)
 	}
 	defer kw.Close()
-
 	if err := kw.Type(ctx, meetingCode); err != nil {
 		s.Fatal("Failed to type the meeting code: ", err)
 	}
@@ -393,22 +385,10 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if !needPermission {
 			return nil
 		}
-		container, err := ui.Find(ctx, tconn, ui.FindParams{ClassName: "Desk_Container_A"})
-		if err != nil {
-			return errors.Wrap(err, "failed to find the container")
-		}
-		defer container.Release(closeCtx)
-		bubble, err := container.DescendantWithTimeout(ctx, ui.FindParams{ClassName: "PermissionPromptBubbleView"}, 20*time.Second)
-		if err != nil {
-			return errors.Wrap(err, "failed to find permission bubble")
-		}
-		defer bubble.Release(closeCtx)
-		allowButton, err := bubble.Descendant(ctx, ui.FindParams{Name: "Allow", Role: ui.RoleTypeButton})
-		if err != nil {
-			return errors.Wrap(err, "failed to find the allow button")
-		}
-		defer allowButton.Release(closeCtx)
-		if err := allowButton.StableLeftClick(ctx, &pollOpts); err != nil {
+		container := nodewith.ClassName("Desk_Container_A")
+		bubble := nodewith.ClassName("PermissionPromptBubbleView").Ancestor(container).First()
+		allow := nodewith.Name("Allow").Ancestor(container).Role(role.Button).Ancestor(bubble)
+		if err := ui.LeftClick(allow)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click the allow button")
 		}
 		return errors.New("granting permissions")
@@ -514,17 +494,13 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to hide visible notifications")
 		}
 		shareMessage := "Share this info with people you want in the meeting"
-		if err := webview.WaitUntilDescendantExists(ctx, ui.FindParams{Name: shareMessage}, timeout); err == nil {
+		if err := ui.WaitUntilExists(nodewith.Name(shareMessage).Ancestor(webview)); err == nil {
 			// "Share this code" popup appears, dismissing by close button.
 			// Close button
-			closeButton, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeButton, Name: "Close"}, timeout)
-			if err != nil {
-				return errors.Wrap(err, "close button should be in the popup")
-			}
-			if err := closeButton.StableLeftClick(ctx, &pollOpts); err != nil {
+			if err := ui.LeftClick(nodewith.Name("Close").Role(role.Button).Ancestor(webview))(ctx); err != nil {
 				return errors.Wrap(err, "failed to click the close button")
 			}
-			if err := webview.WaitUntilDescendantGone(ctx, ui.FindParams{Name: shareMessage}, timeout); err != nil {
+			if err := ui.WaitUntilGone(nodewith.Name(shareMessage).Ancestor(webview))(ctx); err != nil {
 				return errors.Wrap(err, "popup does not disappear")
 			}
 		}
@@ -560,11 +536,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 			// Start presenting the Google Docs tab.
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				exists, err := ui.Exists(ctx, tconn, ui.FindParams{Name: "Chrome Tab", Role: ui.RoleTypeListGrid})
-				if err != nil {
-					return errors.Wrap(err, "failed to find the list of tabs")
-				}
-				if exists {
+				if err := ui.Exists(nodewith.Name("Chrome Tab").Role(role.ListGrid))(ctx); err == nil {
 					return nil
 				}
 				if err := meetConn.Eval(ctx, "hrTelemetryApi.presentation.presentTab()", nil); err != nil {
@@ -574,14 +546,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}, &pollOpts); err != nil {
 				return errors.Wrap(err, "failed to start presentation")
 			}
-			tabs, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Chrome Tab", Role: ui.RoleTypeListGrid}, timeout)
-			if err != nil {
-				return errors.Wrap(err, "failed to find the tab list")
-			}
-			defer tabs.Release(closeCtx)
-			if err := tabs.StableLeftClick(ctx, &pollOpts); err != nil {
+
+			if err := ui.LeftClick(nodewith.Name("Chrome Tab").Role(role.ListGrid))(ctx); err != nil {
 				return errors.Wrap(err, "failed to click the tab list")
 			}
+
 			// Select the second tab (Google Docs tab) to present.
 			for i := 0; i < 2; i++ {
 				if err := kw.Accel(ctx, "Down"); err != nil {
@@ -624,13 +593,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
 				return errors.Wrap(err, "failed to hit alt-tab and focus on Docs tab")
 			}
-			docsTextfield, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Document content", Role: ui.RoleTypeTextField}, timeout)
-			if err != nil {
-				return errors.Wrap(err, "failed to find the docs text field")
-			}
-			defer docsTextfield.Release(closeCtx)
-			if err := docsTextfield.StableLeftClick(ctx, &pollOpts); err != nil {
+			if err := ui.LeftClick(nodewith.Name("Document content").Role(role.TextField))(ctx); err != nil {
 				return errors.Wrap(err, "failed to click on the docs text field")
+			}
+			if err := kw.Accel(ctx, "Ctrl+Alt+["); err != nil {
+				return errors.Wrap(err, "failed to hit ctrl-alt-[ to zoom to fit")
 			}
 			if err := kw.Accel(ctx, "Ctrl+A"); err != nil {
 				return errors.Wrap(err, "failed to hit ctrl-a and select all text")
