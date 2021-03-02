@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820639a5_caa23d04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-02T00:23:46Z",
+      "side": 1,
+      "message": "Might be worth defining the variables explicitly instead of passing *testing.State throughout these functions\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#State",
+      "range": {
+        "startLine": 186,
+        "startChar": 46,
+        "endLine": 186,
+        "endChar": 62
+      },
+      "revId": "d664dc348cbfebfecca3237abcdb40656c3ee207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097f30b7_8f0ae565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-02T00:23:46Z",
+      "side": 1,
+      "message": "Could simplify this by just returning cmdFlash.Run()",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 11
+      },
+      "revId": "d664dc348cbfebfecca3237abcdb40656c3ee207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee120d3b_02fd63de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-02T00:23:46Z",
+      "side": 1,
+      "message": "Can collapse these two lines\n```\nif err :\u003d cmd.Run(); err !\u003d nil {\n```",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 16
+      },
+      "revId": "d664dc348cbfebfecca3237abcdb40656c3ee207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c49e99c_2c1ea682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-02T00:23:46Z",
+      "side": 1,
+      "message": "Ensure you capture the errors here",
+      "range": {
+        "startLine": 264,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 24
+      },
+      "revId": "d664dc348cbfebfecca3237abcdb40656c3ee207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19dffd3_509c5a53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-02T00:23:46Z",
+      "side": 1,
+      "message": "You\u0027ve done this a few times now, might be worth extracting into a helper function? Maybe rebootFpmcu?",
+      "range": {
+        "startLine": 297,
+        "startChar": 2,
+        "endLine": 304,
+        "endChar": 3
+      },
+      "revId": "d664dc348cbfebfecca3237abcdb40656c3ee207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

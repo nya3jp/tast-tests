@@ -22,6 +22,30 @@
       },
       "revId": "79b888df39df2174a9a10b01fee1a4637346f296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea991b76_b9ce91a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-02T00:23:46Z",
+      "side": 1,
+      "message": "Is there any signal you can look for? even the absence of a signal? I\u0027m presuming the fpmcuPower function is asynchronous hence the sleep, is it possible to poll a health command until it fails indicating the DUT has powered off?\n\nWDYT?",
+      "parentUuid": "f7e4aa13_87889436",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 32
+      },
+      "revId": "79b888df39df2174a9a10b01fee1a4637346f296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
