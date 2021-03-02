@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f291ae_ae4233d1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/conndiag/conndiag.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-02T19:40:24Z",
+      "side": 1,
+      "message": "AddTastLibrary introduces tast.promisify and tast.bind. I don\u0027t think that\u0027s used. Can you remove this?",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e412efad_c5b69a0d",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-02T19:40:24Z",
+      "side": 1,
+      "message": "nit: you could use iota here (see https://yourbasic.org/golang/iota/#start-from-one for example):\n  const (\n    // ...\n    VerdictUnknown RoutineVerdict \u003d iota - 1\n    // ...\n    VerdictNoProblem\n    // ...\n    VerdictProblem\n    // ...\n    VerdictNotRun\n  )",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1181a9a2_5c953b34",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-02T19:40:24Z",
+      "side": 1,
+      "message": "Did you confirm this works?  IIRC the result is set through json.Unmarshal, and golang json.Unmarshal won\u0027t set any unexported fields.  cf. https://play.golang.org/p/ujZq7B3utZv",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337372e3_7b9763a6",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-02T19:40:24Z",
+      "side": 1,
+      "message": "I guess this is \"lanConnectivity\"?  Am I missing something?",
+      "range": {
+        "startLine": 44,
+        "startChar": 43,
+        "endLine": 44,
+        "endChar": 89
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18956a46_ef6bc2db",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-02T19:40:24Z",
+      "side": 1,
+      "message": "remove the last else.",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ce8766f_ea486b92",
+        "filename": "src/chromiumos/tast/local/network/diag/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-02T19:40:24Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to define this function -- simply \u0026networkDiagnosticsFixture{} would be fine.",
+      "range": {
+        "startLine": 33,
+        "startChar": 19,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d738c1_25a85936",
+        "filename": "src/chromiumos/tast/local/network/diag/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-02T19:40:24Z",
+      "side": 1,
+      "message": "I guess it\u0027s better to use the \u0027parent\u0027 fixture here.\n\n* Create another fixture, e.g. chromeLoggedInWithConnectivityDiagnosticsWebui -- chrome.NewLoggedInFixture with that feature\n* Set \"Parent\" field on \u0026testing.Fixture declaration in init\n* use like cr :\u003d s.ParentValue().(*chrome.Chrome) here\n\nOnce this feature is enabled by default, you actually don\u0027t need the special fixture anymore, you can simply reuse the existing \u0027chromeLoggedIn\u0027 fixture as its parent, which would simplify this type of initialization.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a295bd_8979e414",
+        "filename": "src/chromiumos/tast/local/network/diag/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-02T19:40:24Z",
+      "side": 1,
+      "message": "Please create a function like NewMojoAPI -- and initialization or injection of JS code to be done there.  Here would be:\n  api, err :\u003d NewMojoAPI(ctx, tconn)\n  if err !\u003d nil {\n    s.Fatal(...)\n  }\n  f.cr \u003d cr  // this might not be necessary if you adopt using \u0027parent\u0027\n  f.api \u003d api\n  return f.api",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
