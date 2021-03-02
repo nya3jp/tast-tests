@@ -16,6 +16,29 @@
       "message": "LGTM. Thanks for bearing with me through the back-and-forth, Prashant.",
       "revId": "9f6a8c2599e59f3d1ca73c52e97893c04bf1f418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f0e88e9_ec32fd61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-02T17:19:21Z",
+      "side": 1,
+      "message": "nit: looks like this comment is a hold-over from when the function only returned error with no bool. I recommend removing \"nil\" from the comment: \"If one exists, return immediately.\"",
+      "range": {
+        "startLine": 130,
+        "startChar": 62,
+        "endLine": 130,
+        "endChar": 65
+      },
+      "revId": "9f6a8c2599e59f3d1ca73c52e97893c04bf1f418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
