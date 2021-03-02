@@ -39,7 +39,7 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 		askinPersonButtonText  = "Ask in person"
 		installButtonText      = "install"
 		playStoreSearchText    = "Search for apps & games"
-		gamesAppName           = "roblox"
+		gamesAppName           = "facebook"
 	)
 	parentUser := s.RequiredVar("arc.parentUser")
 	parentPass := s.RequiredVar("arc.parentPassword")
