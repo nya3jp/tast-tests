@@ -67,12 +67,8 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	conns, err := ash.CreateWindows(ctx, tconn, cr, "", 2)
-	if err != nil {
+	if err := ash.CreateWindows(ctx, tconn, cr, "", 2); err != nil {
 		s.Fatal("Failed to create new windows: ", err)
-	}
-	if err := conns.Close(); err != nil {
-		s.Fatal("Failed to close the connections: ", err)
 	}
 
 	// This test assumes shelf visibility, setting the shelf behavior explicitly.

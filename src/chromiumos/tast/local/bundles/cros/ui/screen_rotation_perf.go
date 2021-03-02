@@ -62,11 +62,9 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 	runner := perfutil.NewRunner(cr)
 	// Run the screen rotation in overview mode with 2 or 8 windows.
 	for _, windows := range []int{2, 8} {
-		conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows)
-		if err != nil {
+		if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows); err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
 		}
-		defer conns.Close()
 		currentWindows = windows
 
 		if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {

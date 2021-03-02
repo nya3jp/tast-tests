@@ -476,36 +476,12 @@ type ConnSource interface {
 	NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error)
 }
 
-// Conns simply wraps a list of Conn and provides a method to Close all of them.
-type Conns []*chrome.Conn
-
-// Close closes all of the connections.
-func (cs Conns) Close() error {
-	var firstErr error
-	numErrs := 0
-	for _, c := range cs {
-		if err := c.Close(); err != nil {
-			numErrs++
-			if firstErr == nil {
-				firstErr = err
-			}
-		}
-	}
-	if numErrs == 0 {
-		return nil
-	}
-	if numErrs == 1 {
-		return firstErr
-	}
-	return errors.Wrapf(firstErr, "failed closing multiple connections: encountered %d errors; first one follows", numErrs)
-}
-
 // CreateWindows create n browser windows with specified URL and wait for them to become visible.
 // It will fail and return an error if at least one request fails to fulfill. Note that this will
 // parallelize the requests to create windows, which may be bad if the caller
 // wants to measure the performance of Chrome. This should be used for a
 // preparation, before the measurement happens.
-func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, url string, n int) (Conns, error) {
+func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, url string, n int) error {
 	prevvis := 0
 	if err := ForEachWindow(ctx, tconn, func(w *Window) error {
 		if w.IsVisible {
@@ -513,11 +489,18 @@ func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, u
 		}
 		return nil
 	}); err != nil {
-		return nil, err
+		return err
 	}
 
 	g, dctx := errgroup.WithContext(ctx)
-	conns := Conns(make([]*chrome.Conn, 0, n))
+	conns := make([]*chrome.Conn, 0, n)
+	defer func() {
+		for i, c := range conns {
+			if err := c.Close(); err != nil {
+				testing.ContextLogf(ctx, "Failed to close the %d-th connection: %v", i, err)
+			}
+		}
+	}()
 	var mu sync.Mutex
 	for i := 0; i < n; i++ {
 		g.Go(func() error {
@@ -532,8 +515,7 @@ func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, u
 		})
 	}
 	if err := g.Wait(); err != nil {
-		conns.Close()
-		return nil, err
+		return err
 	}
 
 	// N.B. This assumes that no existing windows will be closed during the duration of this function (CreateWindows).
@@ -554,11 +536,10 @@ func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, u
 		}
 		return nil
 	}, defaultPollOptions); err != nil {
-		conns.Close()
-		return nil, err
+		return err
 	}
 
-	return conns, nil
+	return nil
 }
 
 // DraggedWindowInOverview returns the window that is currently being dragged

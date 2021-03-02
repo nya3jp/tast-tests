@@ -107,11 +107,9 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	//   tablet mode.
 	// If these window number values are changed, make sure to check lacros about:blank pages are closed correctly.
 	for i, windows := range []int{2, 8} {
-		conns, err := ash.CreateWindows(ctx, tconn, cs, url, windows-currentWindows)
-		if err != nil {
+		if err := ash.CreateWindows(ctx, tconn, cs, url, windows-currentWindows); err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
 		}
-		defer conns.Close()
 
 		// This must be done after ash.CreateWindows to avoid terminating lacros-chrome.
 		if i == 0 && s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {

@@ -43,11 +43,9 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 	}
 
 	const numWindows = 8
-	conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows)
-	if err != nil {
+	if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows); err != nil {
 		s.Fatal("Failed to create windows: ", err)
 	}
-	defer conns.Close()
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {

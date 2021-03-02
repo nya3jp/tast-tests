@@ -73,11 +73,9 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 	defer stw.Close()
 
 	const numWindows = 8
-	conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows)
-	if err != nil {
+	if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows); err != nil {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
-	defer conns.Close()
 
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {

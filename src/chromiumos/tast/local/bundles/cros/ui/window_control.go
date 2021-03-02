@@ -63,12 +63,8 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure into clamshell mode: ", err)
 	}
 	defer cleanup(ctx)
-	conns, err := ash.CreateWindows(ctx, tconn, cr, "", 8)
-	if err != nil {
+	if err := ash.CreateWindows(ctx, tconn, cr, "", 8); err != nil {
 		s.Fatal("Failed to create new windows: ", err)
-	}
-	if err := conns.Close(); err != nil {
-		s.Fatal("Failed to close the connections: ", err)
 	}
 	ws, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {

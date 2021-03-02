@@ -68,12 +68,8 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 	defer stw.Close()
 
 	const numWindows = 1
-	conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows)
-	if err != nil {
+	if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows); err != nil {
 		s.Fatal("Failed to open browser windows: ", err)
-	}
-	if err := conns.Close(); err != nil {
-		s.Error("Failed to close the connection to a browser window")
 	}
 
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {

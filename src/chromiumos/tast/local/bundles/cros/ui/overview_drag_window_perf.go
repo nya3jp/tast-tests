@@ -325,15 +325,10 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 	currentWindows := 0
 	// Run the test cases with different number of browser windows.
 	for _, windows := range []int{2, 8} {
-		conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows)
-		if err != nil {
+		if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows); err != nil {
 			s.Fatal("Failed to open windows: ", err)
 		}
 		currentWindows = windows
-		// Those connections are not used. It's safe to close them now.
-		if err := conns.Close(); err != nil {
-			s.Fatal("Failed to close the connections to the windows: ", err)
-		}
 
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			s.Fatal("Failed to enter into the overview mode: ", err)
@@ -353,12 +348,8 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to clearSnap: ", err)
 				}
 			case dragTypeClose:
-				conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 1)
-				if err != nil {
+				if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 1); err != nil {
 					return errors.Wrap(err, "failed to create windows")
-				}
-				if err := conns.Close(); err != nil {
-					return errors.Wrap(err, "failed to close the connection to the window")
 				}
 				if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 					return errors.Wrap(err, "failed to re-enter into overview mode")
