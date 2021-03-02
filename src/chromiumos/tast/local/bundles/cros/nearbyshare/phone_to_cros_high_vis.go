@@ -95,8 +95,17 @@ func PhoneToCrosHighVis(ctx context.Context, s *testing.State) {
 	}()
 
 	s.Log("Waiting for CrOS receiver to detect incoming share from Android sender")
-	if _, err := receiver.WaitForSender(ctx, androidDisplayName, nearbyshare.CrosDetectSenderTimeout); err != nil {
+	crosToken, err := receiver.WaitForSender(ctx, androidDisplayName, nearbyshare.CrosDetectSenderTimeout)
+	if err != nil {
 		s.Fatal("CrOS receiver failed to find Android sender: ", err)
+	}
+	s.Log("Waiting for Android sender to see that CrOS receiver connected")
+	androidToken, err := androidDevice.AwaitReceiverAccept(ctx, transferTimeout)
+	if err != nil {
+		s.Fatal("Failed waiting for the Android to connect to receiver: ", err)
+	}
+	if crosToken != androidToken {
+		s.Fatalf("Share tokens for Android and CrOS do not match. Android: %s, CrOS: %s", androidToken, crosToken)
 	}
 	s.Log("Accepting the share on the CrOS receiver")
 	if err := receiver.AcceptShare(ctx); err != nil {
