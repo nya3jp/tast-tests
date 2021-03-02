@@ -93,23 +93,7 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 }
 
 // AndroidSetup prepares the connected Android device for Nearby Share tests.
-func AndroidSetup(ctx context.Context, apkZipPath string, rooted bool, screenOff time.Duration, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) (*nearbysnippet.AndroidNearbyDevice, error) {
-	// This loads the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
-	if err := adb.LaunchServer(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to launch adb server")
-	}
-
-	// Wait for the first available device, since we are assuming only a single device is connected.
-	testDevice, err := adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, 10*time.Second)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to list adb devices")
-	}
-
-	// Clear logcat logs and enable verbose logging for Nearby-related tags.
-	if err := ConfigureNearbyLogging(ctx, testDevice); err != nil {
-		return nil, errors.Wrap(err, "failed to configure Android Nearby logs")
-	}
-
+func AndroidSetup(ctx context.Context, testDevice *adb.Device, apkZipPath string, rooted bool, screenOff time.Duration, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) (*nearbysnippet.AndroidNearbyDevice, error) {
 	// Clear the Android's default directory for receiving shares.
 	if err := testDevice.RemoveAll(ctx, android.DownloadDir); err != nil {
 		return nil, errors.Wrap(err, "failed to clear Android downloads directory")
@@ -174,11 +158,30 @@ func AndroidSetup(ctx context.Context, apkZipPath string, rooted bool, screenOff
 	return androidNearby, nil
 }
 
-// ConfigureNearbyLogging clears existing logcat logs and enables verbose logging for Nearby modules.
-func ConfigureNearbyLogging(ctx context.Context, d *adb.Device) error {
-	if err := d.ClearLogcat(ctx); err != nil {
-		return errors.Wrap(err, "failed to clear previous logcat logs")
+// AdbSetup configures adb and connects to the Android device.
+func AdbSetup(ctx context.Context) (*adb.Device, error) {
+	// Load the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
+	if err := adb.LaunchServer(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to launch adb server")
 	}
+	// Wait for the first available device, since we are assuming only a single Anroid device is connected to each CrOS device.
+	adbDevice, err := adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, 10*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to list adb devices")
+	}
+	// Clear logcat so that logs start from this point on.
+	if err := adbDevice.ClearLogcat(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to clear previous logcat logs")
+	}
+	// Enable verbose logging for Nearby Share.
+	if err := ConfigureNearbyLogging(ctx, adbDevice); err != nil {
+		return nil, errors.Wrap(err, "failed to configure Android Nearby logs")
+	}
+	return adbDevice, nil
+}
+
+// ConfigureNearbyLogging enables verbose logging for Nearby modules on Android.
+func ConfigureNearbyLogging(ctx context.Context, d *adb.Device) error {
 	tags := []string{
 		"Nearby",
 		"NearbyMessages",
