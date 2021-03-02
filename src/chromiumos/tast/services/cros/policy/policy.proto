@@ -17,6 +17,9 @@ service PolicyService {
   rpc CheckChromeAndFakeDMS(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc StopChromeAndFakeDMS(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
+  rpc CreateTempDir(google.protobuf.Empty) returns (CreateTempDirResponse) {}
+  rpc RemoveTempDir(RemoveTempDirRequest) returns (google.protobuf.Empty) {}
+
   rpc StartExternalDataServer(google.protobuf.Empty)
       returns (google.protobuf.Empty) {}
   rpc ServePolicyData(ServePolicyDataRequest)
@@ -48,6 +51,15 @@ message EnrollUsingChromeRequest {
   string username = 2;
   repeated Extension extensions = 3;
   string extra_args = 4;
+  string fakedms_dir = 5;
+}
+
+message CreateTempDirResponse {
+  string path = 1;
+}
+
+message RemoveTempDirRequest {
+  string path = 1;
 }
 
 message UpdatePoliciesRequest {

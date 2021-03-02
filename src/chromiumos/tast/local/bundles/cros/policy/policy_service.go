@@ -48,6 +48,7 @@ type PolicyService struct { // NOLINT
 	extensionDirs  []string
 	fakeDMS        *fakedms.FakeDMS
 	fakeDMSDir     string
+	fakeDMSRemoval bool
 
 	eds *externaldata.Server
 }
@@ -91,11 +92,18 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 		opts = append(opts, chrome.UnpackedExtension(extDir))
 	}
 
-	tmpdir, err := ioutil.TempDir("", "fdms-")
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create temp dir")
+	if req.FakedmsDir == "" {
+		tmpdir, err := ioutil.TempDir("", "fdms-")
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to create temp dir")
+		}
+		c.fakeDMSDir = tmpdir
+		c.fakeDMSRemoval = true
+	} else {
+		c.fakeDMSDir = req.FakedmsDir
+		c.fakeDMSRemoval = false
 	}
-	c.fakeDMSDir = tmpdir
+
 	defer func() {
 		if !ok {
 			if err := os.RemoveAll(c.fakeDMSDir); err != nil {
@@ -106,7 +114,7 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 	}()
 
 	// fakedms.New starts a background process that outlives the current context.
-	fdms, err := fakedms.New(context.Background(), tmpdir) // NOLINT
+	fdms, err := fakedms.New(context.Background(), c.fakeDMSDir) // NOLINT
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start FakeDMS")
 	}
@@ -215,9 +223,11 @@ func (c *PolicyService) StopChromeAndFakeDMS(ctx context.Context, req *empty.Emp
 	c.fakeDMS.Stop(ctx)
 	c.fakeDMS = nil
 
-	if err := os.RemoveAll(c.fakeDMSDir); err != nil {
-		testing.ContextLog(ctx, "Failed to remove temporary directory: ", err)
-		lastErr = errors.Wrap(err, "failed to remove temporary directory")
+	if c.fakeDMSRemoval {
+		if err := os.RemoveAll(c.fakeDMSDir); err != nil {
+			testing.ContextLog(ctx, "Failed to remove temporary directory: ", err)
+			lastErr = errors.Wrap(err, "failed to remove temporary directory")
+		}
 	}
 
 	if err := c.chrome.Close(ctx); err != nil {
@@ -234,6 +244,27 @@ func (c *PolicyService) StopChromeAndFakeDMS(ctx context.Context, req *empty.Emp
 	}
 
 	return &empty.Empty{}, lastErr
+}
+
+// CreateTempDir creates a temporary directory. It needs to be removed with RemoveTempDir.
+func (c *PolicyService) CreateTempDir(ctx context.Context, _ *empty.Empty) (*ppb.CreateTempDirResponse, error) {
+	tmpdir, err := ioutil.TempDir("", "policy-")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create temp dir")
+	}
+
+	return &ppb.CreateTempDirResponse{
+		Path: tmpdir,
+	}, nil
+}
+
+// RemoveTempDir removes a directory created with CreateTempDir.
+func (c *PolicyService) RemoveTempDir(ctx context.Context, req *ppb.RemoveTempDirRequest) (*empty.Empty, error) {
+	if err := os.RemoveAll(req.Path); err != nil {
+		return nil, errors.Wrapf(err, "failed to remove temp dir %q", req.Path)
+	}
+
+	return &empty.Empty{}, nil
 }
 
 // StartExternalDataServer starts  an instance of externaldata.Server.
