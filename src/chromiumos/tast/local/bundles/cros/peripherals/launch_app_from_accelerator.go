@@ -75,7 +75,7 @@ func LaunchAppFromAccelerator(ctx context.Context, s *testing.State) {
 
 	// Briefly sleep so that the device will be ready to process the input.
 	// TODO(joonbug): Find a suitable polling target for this instead of sleep.
-	if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 		s.Fatal("Error stablizing: ", err)
 	}
 
