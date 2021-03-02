@@ -6,6 +6,7 @@ package nearbyshare
 
 import (
 	"context"
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
+	"chromiumos/tast/local/chrome/systemlogs"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -104,8 +106,32 @@ type nearbyShareFixture struct {
 	gaiaLogin     bool
 	androidSetup  bool
 	androidDevice *nearbysnippet.AndroidNearbyDevice
+	crosInfo      crosMetadata
+	androidInfo   androidMetadata
 	// ChromeReader is the line reader for collecting Chrome logs.
 	ChromeReader *syslog.LineReader
+}
+
+type crosMetadata struct {
+	CrosDisplayName string
+	CrosUser        string
+	CrosDataUsage   string
+	CrosVisibility  string
+	ChromeVersion   string
+}
+
+type androidMetadata struct {
+	AndroidDisplayName        string
+	AndroidUser               string
+	AndroidDataUsage          string
+	AndroidVisibility         string
+	AndroidNearbyShareVersion string
+	AndroidGMSCoreVersion     int
+	AndroidVersion            int
+	AndroidSDKVersion         int
+	AndroidProductName        string
+	AndroidModelName          string
+	AndroidDeviceName         string
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -127,8 +153,9 @@ type FixtData struct {
 }
 
 func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	crosUsername := chrome.DefaultUser
 	if f.gaiaLogin {
-		crosUsername := s.RequiredVar("nearbyshare.cros_username")
+		crosUsername = s.RequiredVar("nearbyshare.cros_username")
 		crosPassword := s.RequiredVar("nearbyshare.cros_password")
 		customUser, userOk := s.Var("username")
 		customPass, passOk := s.Var("password")
@@ -228,7 +255,44 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		f.androidDevice = androidDevice
 		fixData.AndroidDevice = androidDevice
 		fixData.AndroidDeviceName = androidDisplayName
+
+		// Store Android metadata for logging.
+		f.androidInfo.AndroidDisplayName = androidDisplayName
+		if loggedIn {
+			f.androidInfo.AndroidUser = "Custom Android user (skipped login)"
+		} else {
+			f.androidInfo.AndroidUser = androidUsername
+		}
+		f.androidInfo.AndroidDataUsage = nearbysetup.DataUsageStrings[f.dataUsage]
+		f.androidInfo.AndroidVisibility = nearbysetup.VisibilityStrings[f.visibility]
+		androidNearbyShareVersion, err := androidDevice.GetNearbySharingVersion(ctx)
+		if err != nil {
+			s.Fatal("Failed to get Android Nearby Share version: ", err)
+		}
+		f.androidInfo.AndroidNearbyShareVersion = androidNearbyShareVersion
+		f.androidInfo.AndroidGMSCoreVersion = androidDevice.GMSCoreVersion
+		f.androidInfo.AndroidVersion = androidDevice.AndroidVersion
+		f.androidInfo.AndroidSDKVersion = androidDevice.SDKVersion
+		f.androidInfo.AndroidProductName = androidDevice.Product
+		f.androidInfo.AndroidModelName = androidDevice.Model
+		f.androidInfo.AndroidDeviceName = androidDevice.Device
 	}
+
+	// Store CrOS test metadata before returning.
+	f.crosInfo.CrosDisplayName = crosDisplayName
+	f.crosInfo.CrosUser = crosUsername
+	f.crosInfo.CrosDataUsage = nearbysetup.DataUsageStrings[f.dataUsage]
+	f.crosInfo.CrosVisibility = nearbysetup.VisibilityStrings[f.visibility]
+	const expectedKey = "CHROME VERSION"
+	result, err := systemlogs.GetSystemLogs(ctx, tconn, expectedKey)
+	if err != nil {
+		s.Fatal("Error getting system logs to check Chrome version: ", err)
+	}
+	if result == "" {
+		s.Fatal("System logs result empty")
+	}
+	f.crosInfo.ChromeVersion = result
+
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
 	chrome.Lock()
 	return fixData
@@ -261,6 +325,21 @@ func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 		s.Error("Failed to start Chrome logging: ", err)
 	}
 	f.ChromeReader = chromeReader
+	s.Log("CrOS Nearby Share Configuration:")
+	crosLog, err := json.MarshalIndent(f.crosInfo, "", "\t")
+	if err != nil {
+		s.Error("Failed to format CrOS metadata for logging: ", err)
+	}
+	s.Log(string(crosLog))
+
+	if f.androidSetup {
+		s.Log("Android Configuration:")
+		androidLog, err := json.MarshalIndent(f.androidInfo, "", "\t")
+		if err != nil {
+			s.Error("Failed to format Android metadata for logging: ", err)
+		}
+		s.Log(string(androidLog))
+	}
 }
 
 func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
