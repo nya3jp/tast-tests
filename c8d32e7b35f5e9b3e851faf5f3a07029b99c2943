@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ebfdbc2_79a1ff0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-02T01:35:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4ecffdd_7609a2b3",
+      "revId": "c8d32e7b35f5e9b3e851faf5f3a07029b99c2943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ef5b6b8_f0b970bc",
@@ -101,6 +119,30 @@
       "writtenOn": "2021-03-02T01:16:16Z",
       "side": 1,
       "message": "Would it be useful to have a profile_change test for HEVC that changes from MAIN to MAIN10 or viceversa?",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 4
+      },
+      "revId": "c8d32e7b35f5e9b3e851faf5f3a07029b99c2943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041fa444_9a0c72f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-02T01:35:37Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure on that one....I noticed we didn\u0027t do that for VP9...so I was following that for HEVC.  Since for HEVC (like VP9), profile changes also mean bit-depth changes, I don\u0027t think providers are going to be switching profiles mid-stream at all.  In the interest of not testing things that we don\u0027t need so we don\u0027t spend time tracking down failures that don\u0027t affect the product....I\u0027ll pass on it for now and if this ever comes up, then I would definitely add a test. :)",
+      "parentUuid": "3ef5b6b8_f0b970bc",
       "range": {
         "startLine": 114,
         "startChar": 3,
