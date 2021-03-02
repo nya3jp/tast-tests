@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0117079e_42905eff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-03-02T18:35:00Z",
+      "side": 1,
+      "message": "Sorry for the late review.",
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6b0f9cc_3c908627",
@@ -142,6 +159,29 @@
         "startChar": 26,
         "endLine": 28,
         "endChar": 29
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1337e3_eedfc3ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-03-02T18:35:00Z",
+      "side": 1,
+      "message": "nit/optional: There are some ready to use constants in\nsrc/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/hwsec/util/constants.go\n\nYou can consider using them if a corresponding constant exists (such as the password), or adding the constant to that file if it doesn\u0027t (for lecred labels and pins)",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 19
       },
       "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -242,6 +282,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c4c025a_596918f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-03-02T18:35:00Z",
+      "side": 1,
+      "message": "It is recommended that we check the error returned by UnmountAll(). If my memory serves me right, it has failed under some rare conditions in the past (dbus issues if I remember correctly).\n\nDitto for other call to UnmountAll().",
+      "range": {
+        "startLine": 95,
+        "startChar": 10,
+        "endLine": 95,
+        "endChar": 20
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abd31345_27ffda27",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 1
@@ -288,6 +351,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05a706aa_1b4e42a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-03-02T18:35:00Z",
+      "side": 1,
+      "message": "Not sure if you need the username to be random or 2 set of usernames for testing would do. The code is fine if you need the former, otherwise, consider the constants in util/constants.go",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 26
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cab6504_41a70797",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 1
@@ -299,6 +385,24 @@
       "writtenOn": "2021-03-02T15:45:08Z",
       "side": 1,
       "message": "I think we should add a defer here to cleanup the user vault after finished this tast:\n```\ndefer func(){\n  helper.CryptohomeClient().RemoveVault(ctx, user1)\n  helper.CryptohomeClient().RemoveVault(ctx, user2)\n}()\n```",
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c19ff8d_b726f85f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-03-02T18:35:00Z",
+      "side": 1,
+      "message": "It should also be noted that there\u0027s no guarantee that certain cryptohome does or doesn\u0027t exist when the test starts, so if you want to be careful (or wants to ease debugging), it would be recommended to add cleanup that tries to remove the cryptohomes that you\u0027re trying to create before the test starts.",
+      "parentUuid": "2cab6504_41a70797",
       "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
