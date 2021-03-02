@@ -66,6 +66,21 @@ const (
 	HWDecodeHEVC4K10BPP    = Prefix + "hw_dec_hevc_2160_30_10bpp"
 	HWDecodeHEVC4K60_10BPP = Prefix + "hw_dec_hevc_2160_60_10bpp"
 
+	// Protected Video Decoding
+	HWDecodeCBCV1H264 = Prefix + "hw_video_prot_cencv1_h264_cbc"
+	HWDecodeCTRV1H264 = Prefix + "hw_video_prot_cencv1_h264_ctr"
+	HWDecodeCBCV3H264 = Prefix + "hw_video_prot_cencv3_h264_cbc"
+	HWDecodeCTRV3H264 = Prefix + "hw_video_prot_cencv3_h264_ctr"
+
+	HWDecodeCBCV3VP9 = Prefix + "hw_video_prot_cencv3_vp9_cbc"
+	HWDecodeCTRV3VP9 = Prefix + "hw_video_prot_cencv3_vp9_ctr"
+
+	HWDecodeCBCV3HEVC = Prefix + "hw_video_prot_cencv3_hevc_cbc"
+	HWDecodeCTRV3HEVC = Prefix + "hw_video_prot_cencv3_hevc_ctr"
+
+	HWDecodeCBCV3AV1 = Prefix + "hw_video_prot_cencv3_av1_cbc"
+	HWDecodeCTRV3AV1 = Prefix + "hw_video_prot_cencv3_av1_ctr"
+
 	// JPEG Decoding
 	HWDecodeJPEG = Prefix + "hw_dec_jpeg"
 
