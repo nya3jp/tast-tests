@@ -46,6 +46,30 @@
       },
       "revId": "f40988811218fb2db0e3cf963a734dcfd5733a92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc5f6be_9ccf04a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-02T17:45:09Z",
+      "side": 0,
+      "message": "Oh, I see, nevermind. I was thinking \"cmdServod\" was some sort of servod-specific object, but it\u0027s really just a generic command running servod.",
+      "parentUuid": "563c151b_79f0b16a",
+      "range": {
+        "startLine": 187,
+        "startChar": 7,
+        "endLine": 187,
+        "endChar": 23
+      },
+      "revId": "f40988811218fb2db0e3cf963a734dcfd5733a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
