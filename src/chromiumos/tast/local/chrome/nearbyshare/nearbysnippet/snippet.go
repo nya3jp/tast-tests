@@ -688,3 +688,77 @@ func (a *AndroidNearbyDevice) AcceptUI(ctx context.Context, timeout time.Duratio
 	}
 	return nil
 }
+
+// AndroidAttributes contains information about the Android device and its settings that are relevant to Nearby Share.
+// "Android" is redundantly prepended to the field names to make them easy to distinguish from CrOS attributes in test logs.
+type AndroidAttributes struct {
+	AndroidDisplayName        string
+	AndroidUser               string
+	AndroidDataUsage          string
+	AndroidVisibility         string
+	AndroidNearbyShareVersion string
+	AndroidGMSCoreVersion     int
+	AndroidVersion            int
+	AndroidSDKVersion         int
+	AndroidProductName        string
+	AndroidModelName          string
+	AndroidDeviceName         string
+}
+
+// GetAndroidAttributes returns the AndroidAttributes for the device.
+func (a *AndroidNearbyDevice) GetAndroidAttributes(ctx context.Context) (*AndroidAttributes, error) {
+	var metadata AndroidAttributes
+	displayName, err := a.GetDeviceName(ctx)
+	if err != nil {
+		return nil, err
+	}
+	metadata.AndroidDisplayName = displayName
+
+	user, err := a.device.GoogleAccount(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get device user account")
+	}
+	metadata.AndroidUser = user
+
+	dataUsage, err := a.GetDataUsage(ctx)
+	if err != nil {
+		return nil, err
+	}
+	metadata.AndroidDataUsage = DataUsageStrings[dataUsage]
+
+	visibility, err := a.GetVisibility(ctx)
+	if err != nil {
+		return nil, err
+	}
+	metadata.AndroidVisibility = VisibilityStrings[visibility]
+
+	nearbyVersion, err := a.GetNearbySharingVersion(ctx)
+	if err != nil {
+		return nil, err
+	}
+	metadata.AndroidNearbyShareVersion = nearbyVersion
+
+	gmsVersion, err := a.device.GMSCoreVersion(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get GMS Core version")
+	}
+	metadata.AndroidGMSCoreVersion = gmsVersion
+
+	androidVersion, err := a.device.AndroidVersion(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Android version")
+	}
+	metadata.AndroidVersion = androidVersion
+
+	sdkVersion, err := a.device.SDKVersion(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Android SDK version")
+	}
+	metadata.AndroidSDKVersion = sdkVersion
+
+	metadata.AndroidProductName = a.device.Product
+	metadata.AndroidModelName = a.device.Model
+	metadata.AndroidDeviceName = a.device.Device
+
+	return &metadata, nil
+}
