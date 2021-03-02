@@ -52,6 +52,24 @@
       "parentUuid": "cc259af1_1f29cf07",
       "revId": "a89a0d173fffbe6f95e2fbe4e3440da7c026ed42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebacfdc5_282b75e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-02T05:11:37Z",
+      "side": 1,
+      "message": "\"\"\" Instead, specify software dependencies when declaring tests.\"\"\"\nWe could allowlist the devices where we know activity sensors works with \nsomething like:\nParams: []testing.Param{{\n       ExtraHardwareDeps: hwdep.D(hwdep.Model(\"coachz\")),\n     }, {\n\nFinding if a sensor support on body/off body is not in the unibuild model.\nIf this is too restrictive, limit to device with accelerometer (but that\u0027s a lot of chromebook) and follow up with more tests at runtime. This is not the cleanest, but that would prevent wasting time on some chromebooks.\n\nBTW, (I am guilty of the same error in sensor tests like sensor_iioservice.go), we should use\nParams: []testing.Param{{\n       ExtraHardwareDeps: hwdep.D(hwdep.Accelerometer(\"...\"\n     }, {\n\nWhere Accelerometer would check if HardwareFeatures_Accelerometer is present, like Fingerprint() does.\n\nLooking at older device eve in src/project/poppy/eve/generated/joined.jsonproto\nsensors are marked as PRESENT_UNKNOWN, I need to alter some legacy configs for this to work first.",
+      "parentUuid": "fd99c440_9be6d64b",
+      "revId": "a89a0d173fffbe6f95e2fbe4e3440da7c026ed42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
