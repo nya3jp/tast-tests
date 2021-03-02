@@ -6,6 +6,8 @@ package nearbyshare
 
 import (
 	"context"
+	"encoding/json"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -165,6 +167,8 @@ type nearbyShareFixture struct {
 	gaiaLogin         bool
 	androidSetup      bool
 	androidDevice     *nearbysnippet.AndroidNearbyDevice
+	crosAttributes    *nearbysetup.CrosAttributes
+	androidAttributes *nearbysnippet.AndroidAttributes
 	// ChromeReader is the line reader for collecting Chrome logs.
 	ChromeReader *syslog.LineReader
 }
@@ -188,8 +192,9 @@ type FixtData struct {
 }
 
 func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	crosUsername := chrome.DefaultUser
 	if f.gaiaLogin {
-		crosUsername := s.RequiredVar("nearbyshare.cros_username")
+		crosUsername = s.RequiredVar("nearbyshare.cros_username")
 		crosPassword := s.RequiredVar("nearbyshare.cros_password")
 		customUser, userOk := s.Var("username")
 		customPass, passOk := s.Var("password")
@@ -222,6 +227,13 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if err := nearbysetup.CrOSSetup(ctx, tconn, cr, f.crosDataUsage, f.crosVisibility, crosDisplayName); err != nil {
 		s.Fatal("Failed to set up Nearby Share: ", err)
 	}
+
+	// Store CrOS test metadata for reporting.
+	crosAttributes, err := nearbysetup.GetCrosAttributes(ctx, tconn, crosDisplayName, crosUsername, f.crosDataUsage, f.crosVisibility)
+	if err != nil {
+		s.Fatal("Failed to get CrOS attributes for reporting: ", err)
+	}
+	f.crosAttributes = crosAttributes
 
 	f.cr = cr
 	fixData := &FixtData{
@@ -297,7 +309,15 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		f.androidDevice = androidDevice
 		fixData.AndroidDevice = androidDevice
 		fixData.AndroidDeviceName = androidDisplayName
+
+		// Store Android attributes for reporting.
+		androidAttributes, err := androidDevice.GetAndroidAttributes(ctx)
+		if err != nil {
+			s.Fatal("Failed to get Android attributes for reporting: ", err)
+		}
+		f.androidAttributes = androidAttributes
 	}
+
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
 	chrome.Lock()
 	return fixData
@@ -335,6 +355,9 @@ func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 			s.Fatal("Failed to clear logcat before the test run: ", err)
 		}
 	}
+	if err := saveDeviceAttributes(f.crosAttributes, f.androidAttributes, filepath.Join(s.OutDir(), "device_attributes.json")); err != nil {
+		s.Error("Failed to save device attributes: ", err)
+	}
 }
 
 func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
@@ -346,6 +369,21 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	}
 	if f.androidSetup {
 		f.androidDevice.DumpLogs(ctx, s.OutDir(), "nearby_logcat.txt")
-
 	}
+}
+
+// saveDeviceAttributes saves the CrOS and Android device attributes as a formatted JSON at the specified filepath.
+func saveDeviceAttributes(crosAttrs *nearbysetup.CrosAttributes, androidAttrs *nearbysnippet.AndroidAttributes, filepath string) error {
+	attributes := struct {
+		CrOS    *nearbysetup.CrosAttributes
+		Android *nearbysnippet.AndroidAttributes
+	}{CrOS: crosAttrs, Android: androidAttrs}
+	crosLog, err := json.MarshalIndent(attributes, "", "\t")
+	if err != nil {
+		return errors.Wrap(err, "failed to format device metadata for logging")
+	}
+	if err := ioutil.WriteFile(filepath, crosLog, 0644); err != nil {
+		return errors.Wrap(err, "failed to write CrOS attributes to output file")
+	}
+	return nil
 }
