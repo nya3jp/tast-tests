@@ -71,8 +71,8 @@ func CrosToCrosHighVis(ctx context.Context, s *testing.State) {
 	}
 	dataPath := strings.TrimSpace(string(tempdir))
 	defer d1.Conn().Command("rm", "-r", dataPath).Run(ctx)
-
 	testData := s.Param().(nearbytestutils.TestData).Filename
+	s.Log("Data file path is: ", s.DataPath(testData))
 	remoteFilePath := filepath.Join(dataPath, testData)
 	s.Log("Moving data files to DUT1 (Sender): ", remoteFilePath)
 	if _, err := linuxssh.PutFiles(ctx, d1.Conn(), map[string]string{
