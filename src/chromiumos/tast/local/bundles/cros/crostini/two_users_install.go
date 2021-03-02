@@ -22,7 +22,7 @@ func init() {
 		Func:         TwoUsersInstall,
 		Desc:         "Test two users can install crostini separately",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Vars:         []string{"crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID"},
+		Vars:         []string{"ui.gaiaPoolDefault"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
