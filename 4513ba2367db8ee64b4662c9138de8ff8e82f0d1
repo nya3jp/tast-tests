@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09c7b9da_19e7516b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/infinite_painter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-02T17:53:52Z",
+      "side": 1,
+      "message": "Archana, Could you remove this test case. Looks like we don\u0027t have \"Touchview: Mouse Scroll\" test case in go/arc-testcase. Also please remove Touchview:: Mouse Scroll from commit message. Thanks.",
+      "revId": "4513ba2367db8ee64b4662c9138de8ff8e82f0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c435000b_06fcf1f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 6
