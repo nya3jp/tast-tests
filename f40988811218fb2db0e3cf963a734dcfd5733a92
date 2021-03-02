@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e9b507_b6e3025d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-02T17:23:07Z",
+      "side": 0,
+      "message": "A question for tast owners: If the current implementation of \"Kill\" does an unclean shutdown, should we change the behavior to use SIGINT instead?",
+      "range": {
+        "startLine": 187,
+        "startChar": 7,
+        "endLine": 187,
+        "endChar": 23
+      },
+      "revId": "f40988811218fb2db0e3cf963a734dcfd5733a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
