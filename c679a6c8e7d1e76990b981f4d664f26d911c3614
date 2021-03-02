@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18aee61d_da55498d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-02T20:59:33Z",
+      "side": 1,
+      "message": "ihf@ PTAL\n",
+      "revId": "c679a6c8e7d1e76990b981f4d664f26d911c3614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38793a43_34181067",
@@ -48,6 +65,24 @@
       "writtenOn": "2021-03-02T19:59:35Z",
       "side": 1,
       "message": "Ok as a temporary stopgap, but long term we\u0027ll need a hardware feature to specify a minimum ssd size so you won\u0027t have to keep this list updated.  Can you track that work via the linked bug?",
+      "revId": "c679a6c8e7d1e76990b981f4d664f26d911c3614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55a73a0_a9c899c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-02T20:59:33Z",
+      "side": 1,
+      "message": "Thanks! I was literally on the fence about it indeed. Will add it to \nhwdep.go and pivot this code to the new method after landing.",
+      "parentUuid": "38793a43_34181067",
       "revId": "c679a6c8e7d1e76990b981f4d664f26d911c3614",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
