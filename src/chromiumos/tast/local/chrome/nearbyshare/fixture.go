@@ -200,6 +200,14 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		} else if err != nil {
 			s.Fatal("Failed to check if built local data path exists: ", err)
 		}
+		// Setup adb and connect to the Android phone.
+		adbDevice, err := nearbysetup.AdbSetup(ctx)
+		if err != nil {
+			s.Fatal("Failed to setup an adb device: ", err)
+		}
+		// We want to ensure we have logs even if the Android device setup fails.
+		fixtureLogcatPath := filepath.Join(s.OutDir(), "fixture_setup_logcat.txt")
+		defer adbDevice.DumpLogcat(ctx, fixtureLogcatPath)
 
 		// Skip logging in to the test account on the Android device if specified in the runtime vars.
 		// This lets you run the tests on a phone that's already signed in with your own account.
@@ -214,9 +222,9 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		androidUsername := s.RequiredVar("nearbyshare.android_username")
 		androidPassword := s.RequiredVar("nearbyshare.android_password")
 
+		// Configure the Android phone and setup the Snippet library.
 		androidDevice, err := nearbysetup.AndroidSetup(
-			ctx, accountUtilZipPath, androidUsername, androidPassword, loggedIn,
-			apkZipPath, rooted,
+			ctx, adbDevice, accountUtilZipPath, androidUsername, androidPassword, loggedIn, apkZipPath, rooted,
 			nearbysetup.DefaultScreenTimeout,
 			nearbysnippet.DataUsageOffline,
 			nearbysnippet.VisibilityAllContacts,
@@ -261,6 +269,11 @@ func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 		s.Error("Failed to start Chrome logging: ", err)
 	}
 	f.ChromeReader = chromeReader
+	if f.androidSetup {
+		if err := f.androidDevice.ClearLogcat(ctx); err != nil {
+			s.Fatal("Failed to clear logcat before the test run: ", err)
+		}
+	}
 }
 
 func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
@@ -269,5 +282,9 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	}
 	if err := nearbytestutils.SaveLogs(ctx, f.ChromeReader, filepath.Join(s.OutDir(), ChromeLog)); err != nil {
 		s.Error("Failed to save Chrome log: ", err)
+	}
+	if f.androidSetup {
+		f.androidDevice.DumpLogs(ctx, s.OutDir(), "nearby_logcat.txt")
+
 	}
 }
