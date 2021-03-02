@@ -78,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3c80ad2_b730f8f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-03-02T15:22:21Z",
+      "side": 1,
+      "message": "ah, and tpm2 simulator is not supported either. Currently we use \"endorsement\" dependency to rule it out, which is confusing in this case, though.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go?q\u003dattestation.go\u0026sq\u003dpackage:%5Echromeos_public$",
+      "parentUuid": "22e8f913_27fec7db",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abd31345_27ffda27",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 1
