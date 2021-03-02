@@ -19,11 +19,11 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui"
-	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -176,19 +176,13 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for pip.html to achieve quiescence: ", err)
 	}
 
+	ui := uiauto.New(tconn)
+
 	// The second tab enters the system PiP mode.
-	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "WebView"}, timeout)
-	if err != nil {
-		s.Fatal("Failed to find webview: ", err)
-	}
-	defer webview.Release(closeCtx)
-	pipButton, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeButton, Name: "Enter Picture-in-Picture"}, timeout)
-	if err != nil {
-		s.Fatal("Failed to find the pip button: ", err)
-	}
-	defer pipButton.Release(closeCtx)
-	if err := pipButton.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click on the pip button: ", err)
+	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
+	// Assume that the meeting code is the only textfield in the webpage.
+	if err := ui.LeftClick(nodewith.Name("Enter Picture-in-Picture").Role(role.Button).Ancestor(webview))(ctx); err != nil {
+		s.Fatal("Failed to click the pip button: ", err)
 	}
 	if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
 		s.Fatal("Failed to wait for quiescence: ", err)
@@ -250,11 +244,12 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			}
 
 			// Drag window.
-			newTabButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "New Tab"}, timeout)
+			newTabButton := nodewith.Name("New Tab")
+			newTabButtonRect, err := ui.Location(ctx, newTabButton)
 			if err != nil {
-				return errors.Wrap(err, "failed to find maximize button")
+				return errors.Wrap(err, "failed to get the location of the new tab button")
 			}
-			tabStripGapPt := coords.NewPoint(newTabButton.Location.Right()+10, newTabButton.Location.Top)
+			tabStripGapPt := coords.NewPoint(newTabButtonRect.Right()+10, newTabButtonRect.Top)
 			testing.ContextLog(ctx, "Dragging the window")
 			if err := pointer.Drag(ctx, pc, tabStripGapPt, middlePt, duration); err != nil {
 				return errors.Wrap(err, "failed to drag window from the tab strip point to the middle")
@@ -264,13 +259,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			}
 
 			// Maximize window.
-			maximizeButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton, ClassName: "FrameCaptionButton", Name: "Maximize"}, timeout)
-			if err != nil {
-				return errors.Wrap(err, "failed to find maximize button")
-			}
-			defer maximizeButton.Release(ctx)
-			testing.ContextLog(ctx, "Maximizing the window")
-			if err := maximizeButton.LeftClick(ctx); err != nil {
+			maximizeButton := nodewith.Name("Maximize").ClassName("FrameCaptionButton").Role(role.Button)
+			if err := ui.LeftClick(maximizeButton)(ctx); err != nil {
 				return errors.Wrap(err, "failed to maximize the window")
 			}
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
@@ -280,13 +270,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			}
 
 			// Minimize window.
-			minimizeButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton, ClassName: "FrameCaptionButton", Name: "Minimize"}, timeout)
-			if err != nil {
-				return errors.Wrap(err, "failed to find minimize button")
-			}
-			defer minimizeButton.Release(ctx)
-			testing.ContextLog(ctx, "Minimizing the window")
-			if err := minimizeButton.LeftClick(ctx); err != nil {
+			minimizeButton := nodewith.Name("Minimize").ClassName("FrameCaptionButton").Role(role.Button)
+			if err := ui.LeftClick(minimizeButton)(ctx); err != nil {
 				return errors.Wrap(err, "failed to minimize the window")
 			}
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
@@ -314,15 +299,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to wait for window to be left snapped")
 			}
 			testing.ContextLog(ctx, "Snapping the second tab to the right")
-			tabs, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{Role: chromeui.RoleTypeTab, ClassName: "Tab"})
+			firstTabRect, err := ui.Location(ctx, nodewith.Role(role.Tab).ClassName("Tab").First())
 			if err != nil {
-				return errors.Wrap(err, "failed to find tabs")
+				return errors.Wrap(err, "failed to get the location of the first tab")
 			}
-			defer tabs.Release(ctx)
-			if len(tabs) != 2 {
-				return errors.Errorf("expected 2 tabs, only found %v tab(s)", len(tabs))
-			}
-			if err := pointer.Drag(ctx, pc, tabs[1].Location.CenterPoint(), snapRightPoint, duration); err != nil {
+			if err := pointer.Drag(ctx, pc, firstTabRect.CenterPoint(), snapRightPoint, duration); err != nil {
 				return errors.Wrap(err, "failed to snap the second tab to the right")
 			}
 
@@ -379,11 +360,10 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			if err != nil {
 				return errors.Wrap(err, "failed to find the window in the overview mode to drag to snap")
 			}
-			deskMiniViews, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{ClassName: "DeskMiniView"})
+			deskMiniViews, err := ui.NodesInfo(ctx, nodewith.ClassName("DeskMiniView"))
 			if err != nil {
 				return errors.Wrap(err, "failed to get desk mini-views")
 			}
-			defer deskMiniViews.Release(ctx)
 			if deskMiniViewCount := len(deskMiniViews); deskMiniViewCount != 2 {
 				return errors.Wrapf(err, "expected 2 desk mini-views; found %v", deskMiniViewCount)
 			}
@@ -420,16 +400,10 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		// tab dragging and split view resizing.
 		f = func(ctx context.Context) error {
 			// Drag the second tab to snap to the right.
-			tabStrip, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "TabStrip"}, timeout)
+			tabs, err := ui.NodesInfo(ctx, nodewith.Role(role.Tab))
 			if err != nil {
-				return errors.Wrap(err, "failed to find the tab strip")
+				return errors.Wrap(err, "failed to find children nodes of the tabs")
 			}
-			defer tabStrip.Release(ctx)
-			tabs, err := tabStrip.Children(ctx)
-			if err != nil {
-				return errors.Wrap(err, "failed to find children nodes of the tab list")
-			}
-			defer tabs.Release(ctx)
 			if len(tabs) != 2 {
 				return errors.Errorf("failed to get the second tab, expected 2 tabs, got %v", len(tabs))
 			}
