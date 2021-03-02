@@ -29,7 +29,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.Platform("puff")),
-		Data:         []string{"fwupd_install_dummy_rtd2142_V99.99.cab", "flashrom"},
+		Data:         []string{"fwupd_install_fake_rtd2142_V99.99.cab", "flashrom"},
 	})
 }
 
@@ -80,7 +80,7 @@ func FwupdInstallRtd2142(ctx context.Context, s *testing.State) {
 	}
 	defer f.Close()
 
-	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdtool", "install", s.DataPath("fwupd_install_dummy_rtd2142_V99.99.cab"), deviceID)
+	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdtool", "install", s.DataPath("fwupd_install_fake_rtd2142_V99.99.cab"), deviceID)
 	defer os.Remove(flashromCallParam)
 
 	cmd.Stdout = f
