@@ -8,6 +8,7 @@ import (
 	"context"
 	"strings"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/testing"
 )
 
@@ -16,6 +17,7 @@ type metricType int
 const (
 	metricSmoothness metricType = iota
 	metricLatency
+	metricJank
 )
 
 // estimateMetricType checks the name of a histogram and returns type of the
@@ -25,8 +27,12 @@ func estimateMetricType(ctx context.Context, histname string) metricType {
 	if strings.Contains(histname, "PresentationTime") {
 		return metricLatency
 	}
-	// Measuring duration is latency metric (e.g. Ash.InteractiveWindowResize.TimeToPresent).
-	if strings.Contains(histname, ".TimeTo") {
+	// Jank is the opposite of smoothness, so should be treated as "smaller is better".
+	if strings.Contains(histname, ".Jank") {
+		return metricJank
+	}
+	// Measuring duration is latency metric (e.g. Ash.InteractiveWindowResize.TimeToPresent, Ash.LoginAnimation.Duration)
+	if strings.Contains(histname, ".TimeTo") || strings.Contains(histname, ".Duration") {
 		return metricLatency
 	}
 	// Having smoothness is smoothness metric.
@@ -36,6 +42,21 @@ func estimateMetricType(ctx context.Context, histname string) metricType {
 	// Otherwise, we're not sure. Assuming unknown pattern of animation smoothness.
 	testing.ContextLogf(ctx, "Can't decide histogram %s is either of smoothness or latency metric. Assuming smoothness metric", histname)
 	return metricSmoothness
+}
+
+// estimateMetricPresenattionType checks the name of a histogram and returns
+// presentation parameters (direction, data type)
+func estimateMetricPresenattionType(ctx context.Context, histname string) (perf.Direction, string) {
+	switch estimateMetricType(ctx, histname) {
+	case metricSmoothness:
+		return perf.BiggerIsBetter, "percent"
+	case metricLatency:
+		return perf.SmallerIsBetter, "ms"
+	case metricJank:
+		return perf.SmallerIsBetter, "percent"
+	}
+	testing.ContextLogf(ctx, "Can't guess histogram %s presentation type. Assuming 'percent' and 'BiggerIsBetter'", histname)
+	return perf.BiggerIsBetter, "percent"
 }
 
 // CreateExpectations creates the map of expected values for the given histogram
@@ -55,6 +76,8 @@ func CreateExpectations(ctx context.Context, histnames ...string) map[string]flo
 			result[histname] = smoothnessExpectation
 		case metricLatency:
 			result[histname] = latencyExpectation
+		case metricJank:
+			continue // No expectation for Junk now.
 		}
 	}
 	return result

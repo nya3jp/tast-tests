@@ -48,26 +48,27 @@ type StoreFunc func(ctx context.Context, pv *Values, hists []*metrics.Histogram)
 // StoreAllWithHeuristics is a utility function to store all metrics. It
 // determines the direction of perf (bigger is better or smaller is better)
 // and unit through heuristics from the name of metrics.
-func StoreAllWithHeuristics(ctx context.Context, pv *Values, hists []*metrics.Histogram) error {
-	for _, hist := range hists {
-		mean, err := hist.Mean()
-		if err != nil {
-			return errors.Wrapf(err, "failed to get mean for histogram %s", hist.Name)
+func StoreAllWithHeuristics(suffix string) StoreFunc {
+	return func(ctx context.Context, pv *Values, hists []*metrics.Histogram) error {
+		for _, hist := range hists {
+			mean, err := hist.Mean()
+			if err != nil {
+				return errors.Wrapf(err, "failed to get mean for histogram %s", hist.Name)
+			}
+			name := hist.Name
+			if suffix != "" {
+				name = name + "." + suffix
+			}
+			testing.ContextLog(ctx, name, " = ", mean)
+			direction, unit := estimateMetricPresenattionType(ctx, name)
+			pv.Append(perf.Metric{
+				Name:      name,
+				Unit:      unit,
+				Direction: direction,
+			}, mean)
 		}
-		testing.ContextLog(ctx, hist.Name, " = ", mean)
-		direction := perf.BiggerIsBetter
-		unit := "percent"
-		if estimateMetricType(ctx, hist.Name) == metricLatency {
-			direction = perf.SmallerIsBetter
-			unit = "ms"
-		}
-		pv.Append(perf.Metric{
-			Name:      hist.Name,
-			Unit:      unit,
-			Direction: direction,
-		}, mean)
+		return nil
 	}
-	return nil
 }
 
 // StoreAll is a function to store all histograms into values.
@@ -114,7 +115,7 @@ type Runner struct {
 
 // NewRunner creates a new instance of Runner.
 func NewRunner(cr *chrome.Chrome) *Runner {
-	return &Runner{cr: cr, pv: NewValues(), Runs: DefaultRuns, RunTracing: true}
+	return &Runner{cr: cr, pv: NewValues(), Runs: DefaultRuns, RunTracing: (cr != nil)}
 }
 
 // Values returns the values in the runner.
