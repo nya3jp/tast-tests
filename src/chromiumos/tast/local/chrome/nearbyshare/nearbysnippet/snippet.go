@@ -40,6 +40,13 @@ type AndroidNearbyDevice struct {
 	requestID        int
 	transferCallback string
 	uiDevice         *ui.Device
+	// Device metadata to better identify the device.
+	Product        string
+	Model          string
+	Device         string
+	AndroidVersion int
+	GMSCoreVersion int
+	SDKVersion     int
 }
 
 // New initializes the specified Android device for Nearby Sharing.
@@ -54,7 +61,27 @@ type AndroidNearbyDevice struct {
 // We can then send RPCs over the TCP connection to control Nearby Share on the Android device.
 // Callers should defer Cleanup to ensure the resources used by the AndroidNearbyDevice are freed.
 func New(ctx context.Context, d *adb.Device, apkZipPath string, overrideGMS bool) (a *AndroidNearbyDevice, err error) {
-	a = &AndroidNearbyDevice{device: d}
+	a = &AndroidNearbyDevice{device: d, Product: d.Product, Model: d.Model, Device: d.Device}
+
+	// Store Android device information that is relevant to Nearby Sharing.
+	androidVersion, err := a.device.AndroidVersion(ctx)
+	if err != nil {
+		return a, errors.Wrap(err, "failed to get Android version")
+	}
+	a.AndroidVersion = androidVersion
+
+	gmsCoreVersion, err := a.device.GMSCoreVersion(ctx)
+	if err != nil {
+		return a, errors.Wrap(err, "failed to get Android version")
+	}
+	a.GMSCoreVersion = gmsCoreVersion
+
+	sdkVersion, err := a.device.SDKVersion(ctx)
+	if err != nil {
+		return a, errors.Wrap(err, "failed to get Android version")
+	}
+	a.SDKVersion = sdkVersion
+
 	// Unzip the APK to a temp dir.
 	tempDir, err := ioutil.TempDir("", "snippet-apk")
 	if err != nil {
@@ -80,9 +107,7 @@ func New(ctx context.Context, d *adb.Device, apkZipPath string, overrideGMS bool
 	// Grant the MANAGE_EXTERNAL_STORAGE permission to the Nearby Snippet if the SDK version is 30+ (Android 11+).
 	// This is required for the Android sender flow, since the Nearby Snippet sends files from external storage.
 	const needsStoragePermissionsVersion = 30
-	if sdkVersion, err := a.device.SDKVersion(ctx); err != nil {
-		return a, errors.Wrap(err, "failed to get android sdk version")
-	} else if sdkVersion >= needsStoragePermissionsVersion {
+	if a.SDKVersion >= needsStoragePermissionsVersion {
 		permissionsCmd := a.device.ShellCommand(ctx, "appops", "set", "--uid", moblyPackage, "MANAGE_EXTERNAL_STORAGE", "allow")
 		if err := permissionsCmd.Run(testexec.DumpLogOnError); err != nil {
 			return a, errors.Wrap(err, "failed to grant external storage permissions to the Nearby Snippet APK")
@@ -657,4 +682,78 @@ func (a *AndroidNearbyDevice) AcceptUI(ctx context.Context, timeout time.Duratio
 		return errors.Wrap(err, "failed waiting for receive UI to be gone")
 	}
 	return nil
+}
+
+// AndroidAttributes contains information about the Android device and its settings that are relevant to Nearby Share.
+// "Android" is redundantly prepended to the field names to make them easy to distinguish from CrOS attributes in test logs.
+type AndroidAttributes struct {
+	AndroidDisplayName        string
+	AndroidUser               string
+	AndroidDataUsage          string
+	AndroidVisibility         string
+	AndroidNearbyShareVersion string
+	AndroidGMSCoreVersion     int
+	AndroidVersion            int
+	AndroidSDKVersion         int
+	AndroidProductName        string
+	AndroidModelName          string
+	AndroidDeviceName         string
+}
+
+// GetAndroidAttributes returns the AndroidAttributes for the device.
+func (a *AndroidNearbyDevice) GetAndroidAttributes(ctx context.Context) (*AndroidAttributes, error) {
+	var metadata AndroidAttributes
+	displayName, err := a.GetDeviceName(ctx)
+	if err != nil {
+		return nil, err
+	}
+	metadata.AndroidDisplayName = displayName
+
+	user, err := a.device.GoogleAccount(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get device user account")
+	}
+	metadata.AndroidUser = user
+
+	dataUsage, err := a.GetDataUsage(ctx)
+	if err != nil {
+		return nil, err
+	}
+	metadata.AndroidDataUsage = DataUsageStrings[dataUsage]
+
+	visibility, err := a.GetVisibility(ctx)
+	if err != nil {
+		return nil, err
+	}
+	metadata.AndroidVisibility = VisibilityStrings[visibility]
+
+	nearbyVersion, err := a.GetNearbySharingVersion(ctx)
+	if err != nil {
+		return nil, err
+	}
+	metadata.AndroidNearbyShareVersion = nearbyVersion
+
+	gmsVersion, err := a.device.GMSCoreVersion(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get GMS Core version")
+	}
+	metadata.AndroidGMSCoreVersion = gmsVersion
+
+	androidVersion, err := a.device.AndroidVersion(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Android version")
+	}
+	metadata.AndroidVersion = androidVersion
+
+	sdkVersion, err := a.device.SDKVersion(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Android SDK version")
+	}
+	metadata.AndroidSDKVersion = sdkVersion
+
+	metadata.AndroidProductName = a.device.Product
+	metadata.AndroidModelName = a.device.Model
+	metadata.AndroidDeviceName = a.device.Device
+
+	return &metadata, nil
 }

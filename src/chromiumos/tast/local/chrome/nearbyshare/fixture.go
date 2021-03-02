@@ -6,6 +6,7 @@ package nearbyshare
 
 import (
 	"context"
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -97,15 +98,39 @@ func init() {
 }
 
 type nearbyShareFixture struct {
-	cr            *chrome.Chrome
-	opts          []chrome.Option
-	dataUsage     nearbysetup.DataUsage
-	visibility    nearbysetup.Visibility
-	gaiaLogin     bool
-	androidSetup  bool
-	androidDevice *nearbysnippet.AndroidNearbyDevice
+	cr                *chrome.Chrome
+	opts              []chrome.Option
+	dataUsage         nearbysetup.DataUsage
+	visibility        nearbysetup.Visibility
+	gaiaLogin         bool
+	androidSetup      bool
+	androidDevice     *nearbysnippet.AndroidNearbyDevice
+	crosAttributes    *nearbysetup.CrosAttributes
+	androidAttributes *nearbysnippet.AndroidAttributes
 	// ChromeReader is the line reader for collecting Chrome logs.
 	ChromeReader *syslog.LineReader
+}
+
+type crosMetadata struct {
+	CrosDisplayName string
+	CrosUser        string
+	CrosDataUsage   string
+	CrosVisibility  string
+	ChromeVersion   string
+}
+
+type androidMetadata struct {
+	AndroidDisplayName        string
+	AndroidUser               string
+	AndroidDataUsage          string
+	AndroidVisibility         string
+	AndroidNearbyShareVersion string
+	AndroidGMSCoreVersion     int
+	AndroidVersion            int
+	AndroidSDKVersion         int
+	AndroidProductName        string
+	AndroidModelName          string
+	AndroidDeviceName         string
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -127,8 +152,9 @@ type FixtData struct {
 }
 
 func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	crosUsername := chrome.DefaultUser
 	if f.gaiaLogin {
-		crosUsername := s.RequiredVar("nearbyshare.cros_username")
+		crosUsername = s.RequiredVar("nearbyshare.cros_username")
 		crosPassword := s.RequiredVar("nearbyshare.cros_password")
 		customUser, userOk := s.Var("username")
 		customPass, passOk := s.Var("password")
@@ -161,6 +187,13 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if err := nearbysetup.CrOSSetup(ctx, tconn, cr, f.dataUsage, f.visibility, crosDisplayName); err != nil {
 		s.Fatal("Failed to set up Nearby Share: ", err)
 	}
+
+	// Store CrOS test metadata for reporting.
+	crosAttributes, err := nearbysetup.GetCrosAttributes(ctx, tconn, crosDisplayName, crosUsername, f.dataUsage, f.visibility)
+	if err != nil {
+		s.Fatal("Failed to get CrOS attributes for reporting: ", err)
+	}
+	f.crosAttributes = crosAttributes
 
 	f.cr = cr
 	fixData := &FixtData{
@@ -236,7 +269,15 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		f.androidDevice = androidDevice
 		fixData.AndroidDevice = androidDevice
 		fixData.AndroidDeviceName = androidDisplayName
+
+		// Store Android attributes for reporting.
+		androidAttributes, err := androidDevice.GetAndroidAttributes(ctx)
+		if err != nil {
+			s.Fatal("Failed to get Android attributes for reporting: ", err)
+		}
+		f.androidAttributes = androidAttributes
 	}
+
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
 	chrome.Lock()
 	return fixData
@@ -274,6 +315,21 @@ func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 			s.Fatal("Failed to clear logcat before the test run: ", err)
 		}
 	}
+	s.Log("CrOS Nearby Share Configuration:")
+	crosLog, err := json.MarshalIndent(f.crosAttributes, "", "\t")
+	if err != nil {
+		s.Error("Failed to format CrOS metadata for logging: ", err)
+	}
+	s.Log(string(crosLog))
+
+	if f.androidSetup {
+		s.Log("Android Configuration:")
+		androidLog, err := json.MarshalIndent(f.androidAttributes, "", "\t")
+		if err != nil {
+			s.Error("Failed to format Android metadata for logging: ", err)
+		}
+		s.Log(string(androidLog))
+	}
 }
 
 func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
@@ -285,6 +341,5 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	}
 	if f.androidSetup {
 		f.androidDevice.DumpLogs(ctx, s.OutDir(), "nearby_logcat.txt")
-
 	}
 }
