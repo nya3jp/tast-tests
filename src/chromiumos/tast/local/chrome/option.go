@@ -271,6 +271,16 @@ func RestrictARCCPU() Option {
 	}
 }
 
+// EnableRestoreTabs returns an Option that can be passed to New which controls whether
+// to let Chrome use CGroups to limit the CPU time of ARC when in the background.
+// Most ARC-related tests should not pass this option.
+func EnableRestoreTabs() Option {
+	return func(cfg *config.Config) error {
+		cfg.EnableRestoreTabs = true
+		return nil
+	}
+}
+
 // CrashNormalMode tells the crash handling system to act like it would on a
 // real device. If this option is not used, the Chrome instances created by this package
 // will skip calling crash_reporter and write any dumps into /home/chronos/crash directly

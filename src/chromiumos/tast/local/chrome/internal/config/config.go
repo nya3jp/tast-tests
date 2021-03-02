@@ -84,7 +84,8 @@ type Config struct {
 	DMSAddr                     string    `reuse_match:"true"` // Device Management URL, or empty if using default
 	Enroll                      bool      `reuse_match:"true"` // whether device should be enrolled
 	ARCMode                     ARCMode   `reuse_match:"true"`
-	RestrictARCCPU              bool      `reuse_match:"true"` // a flag to control cpu restrictions on ARC
+	RestrictARCCPU              bool      `reuse_match:"true"`  // a flag to control cpu restrictions on ARC
+	EnableRestoreTabs           bool      `reuse_match:"false"` // Skip creating browser windws on login
 
 	// If BreakpadTestMode is true, tell Chrome's breakpad to always write
 	// dumps directly to a hardcoded directory.
@@ -120,6 +121,7 @@ func NewConfig(opts []Option) (*Config, error) {
 		PolicyEnabled:          false,
 		Enroll:                 false,
 		BreakpadTestMode:       true,
+		EnableRestoreTabs:      false,
 	}
 	for _, opt := range opts {
 		if err := opt(cfg); err != nil {
