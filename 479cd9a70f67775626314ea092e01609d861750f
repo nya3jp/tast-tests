@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83375c4f_4588b8ed",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-02T22:30:11Z",
+      "side": 1,
+      "message": "May want to do the 2-value assignment to make sure the \"data\" field exists and handle the error case.\n```\ndata, ok :\u003d result[\"data\"]\nif !ok {...}\n```",
+      "range": {
+        "startLine": 558,
+        "startChar": 1,
+        "endLine": 558,
+        "endChar": 24
+      },
+      "revId": "479cd9a70f67775626314ea092e01609d861750f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "047d2cb7_a151e243",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-02T22:30:11Z",
+      "side": 1,
+      "message": "I think this is a little confusing if you\u0027re not looking at the result. It would help to include an example in the above comment and maybe split this up for each nested json we\u0027re dealing with",
+      "range": {
+        "startLine": 558,
+        "startChar": 25,
+        "endLine": 558,
+        "endChar": 58
+      },
+      "revId": "479cd9a70f67775626314ea092e01609d861750f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
