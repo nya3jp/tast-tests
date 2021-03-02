@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
+	"chromiumos/tast/local/chrome/systemlogs"
 	"chromiumos/tast/testing"
 )
 
@@ -267,4 +268,36 @@ func ConfigureNearbyLogging(ctx context.Context, d *adb.Device) error {
 		}
 	}
 	return nil
+}
+
+// CrosAttributes contains information about the CrOS device that are relevant to Nearby Share.
+// "Cros" is redundantly prepended to the field names to make them easy to distinguish from Android attributes in test logs.
+type CrosAttributes struct {
+	CrosDisplayName string
+	CrosUser        string
+	CrosDataUsage   string
+	CrosVisibility  string
+	ChromeVersion   string
+}
+
+// GetCrosAttributes gets the Chrome version and combines it into a CrosAttributes strct with the provided values for easy logging with json.MarshalIndent.
+func GetCrosAttributes(ctx context.Context, tconn *chrome.TestConn, displayName, username string, dataUsage DataUsage, visibility Visibility) (*CrosAttributes, error) {
+	attrs := CrosAttributes{
+		CrosDisplayName: displayName,
+		CrosUser:        username,
+		CrosDataUsage:   DataUsageStrings[dataUsage],
+		CrosVisibility:  VisibilityStrings[visibility],
+	}
+
+	const expectedKey = "CHROME VERSION"
+	version, err := systemlogs.GetSystemLogs(ctx, tconn, expectedKey)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed getting system logs to check Chrome version")
+	}
+	if version == "" {
+		return nil, errors.Wrap(err, "system logs result empty")
+	}
+	attrs.ChromeVersion = version
+
+	return &attrs, nil
 }
