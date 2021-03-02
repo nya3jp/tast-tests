@@ -16,6 +16,24 @@
       "message": "According to this: https://tastboard.corp.google.com/test/arc.Optin\nit cannot be promoted yet... we should wait for 20 consecutive green runs.",
       "revId": "6788cf863f7a79228d1450607ff4e3b9dbb91002",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d653902f_48e487cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-02T22:12:25Z",
+      "side": 1,
+      "message": "Split it into stable and unstable version. Stable version is critical while unstable version is not. The unstable devices that failed recently are skipped in critical but run in informational.",
+      "parentUuid": "199027ec_3ec11f75",
+      "revId": "6788cf863f7a79228d1450607ff4e3b9dbb91002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
