@@ -54,7 +54,6 @@ func CrosSenderAndroidReceiver(ctx context.Context, s *testing.State) {
 	crosDisplayName := s.FixtValue().(*nearbyshare.FixtData).CrOSDeviceName
 	androidDevice := s.FixtValue().(*nearbyshare.FixtData).AndroidDevice
 	androidDisplayName := s.FixtValue().(*nearbyshare.FixtData).AndroidDeviceName
-	defer androidDevice.DumpLogs(ctx, s.OutDir())
 
 	// Extract the test file(s) to nearbyshare.SendDir.
 	testDataZip := s.DataPath(s.Param().(nearbytestutils.TestData).Filename)

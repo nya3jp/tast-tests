@@ -181,6 +181,9 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		f.androidDevice = androidDevice
 		fixData.AndroidDevice = androidDevice
 		fixData.AndroidDeviceName = androidDisplayName
+		if err := f.androidDevice.DumpLogs(ctx, s.OutDir(), "fixture_setup_logcat.txt"); err != nil {
+			s.Fatal("Failed to save logcat for the fixture setup: ", err)
+		}
 	}
 	return fixData
 }
@@ -212,6 +215,11 @@ func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 		s.Fatal("Failed to start Chrome logging: ", err)
 	}
 	f.ChromeReader = chromeReader
+	if f.androidSetup {
+		if err := f.androidDevice.ClearLogcat(ctx); err != nil {
+			s.Fatal("Failed to clear logcat before the test run: ", err)
+		}
+	}
 }
 
 func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
@@ -220,5 +228,9 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	}
 	if err := nearbytestutils.SaveLogs(ctx, f.ChromeReader, filepath.Join(s.OutDir(), ChromeLog)); err != nil {
 		s.Fatal("Failed to save Chrome log: ", err)
+	}
+	if f.androidSetup {
+		f.androidDevice.DumpLogs(ctx, s.OutDir(), "nearby_logcat.txt")
+
 	}
 }
