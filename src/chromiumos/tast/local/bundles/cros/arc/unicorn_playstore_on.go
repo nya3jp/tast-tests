@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/unicorn"
 	"chromiumos/tast/testing"
 )
 
@@ -37,18 +38,11 @@ func UnicornPlaystoreOn(ctx context.Context, s *testing.State) {
 	childUser := s.RequiredVar("arc.childUser")
 	childPass := s.RequiredVar("arc.childPassword")
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(),
-		chrome.Auth(childUser, childPass, "gaia-id"),
-		chrome.ParentAuth(parentUser, parentPass), chrome.ARCSupported())
+	cr, tconn, err := unicorn.LoginAsRegularOrChild(ctx, parentUser, parentPass, childUser, childPass, true /*child*/, chrome.ARCSupported())
 	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
+		s.Fatal("Failed to log in as unicorn user: ", err)
 	}
 	defer cr.Close(ctx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
 
 	// Optin to Play Store.
 	s.Log("Opting into Play Store")

@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/unicorn"
 	"chromiumos/tast/testing"
 )
 
@@ -31,11 +32,9 @@ func Login(ctx context.Context, s *testing.State) {
 	childUser := s.RequiredVar("unicorn.childUser")
 	childPass := s.RequiredVar("unicorn.childPassword")
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(),
-		chrome.Auth(childUser, childPass, "gaia-id"),
-		chrome.ParentAuth(parentUser, parentPass))
+	cr, _, err := unicorn.LoginAsRegularOrChild(ctx, parentUser, parentPass, childUser, childPass, true /*child*/)
 	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
+		s.Fatal("Failed to log in as unicorn user: ", err)
 	}
 	defer cr.Close(ctx)
 }

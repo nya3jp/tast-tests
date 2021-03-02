@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/unicorn"
 	"chromiumos/tast/testing"
 )
 
@@ -60,35 +61,26 @@ func init() {
 }
 
 func EnableArc(ctx context.Context, s *testing.State) {
-
 	parentUser := s.RequiredVar("arc.parentUser")
 	parentPass := s.RequiredVar("arc.parentPassword")
 	childUser := s.RequiredVar("arc.childUser")
 	childPass := s.RequiredVar("arc.childPassword")
 	var cr *chrome.Chrome
 	var err error
+	var tconn *chrome.TestConn
 
 	accountType := s.Param().(accountTypeTestParam)
 	if accountType.unicorn {
-		cr, err = chrome.New(ctx, chrome.GAIALogin(),
-			chrome.Auth(childUser, childPass, "gaia-id"),
-			chrome.ParentAuth(parentUser, parentPass), chrome.ARCSupported())
+		cr, tconn, err = unicorn.LoginAsRegularOrChild(ctx, parentUser, parentPass, childUser, childPass, true /*child*/, chrome.ARCSupported())
 	} else {
-		cr, err = chrome.New(ctx, chrome.GAIALogin(),
-			chrome.Auth(parentUser, parentPass, "gaia-id"),
-			chrome.ARCSupported(),
-			chrome.ExtraArgs(arc.DisableSyncFlags()...))
+		cr, tconn, err = unicorn.LoginAsRegularOrChild(ctx, parentUser, parentPass, childUser, childPass, false /*child*/, chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	}
 
 	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
+		s.Fatal("Failed to log in as user: ", err)
 	}
+
 	defer cr.Close(ctx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
 
 	s.Log("Turn On Play Store from Settings")
 	if err := turnOnPlayStore(ctx, tconn); err != nil {

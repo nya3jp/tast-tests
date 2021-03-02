@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/unicorn"
 	"chromiumos/tast/testing"
 )
 
@@ -39,26 +40,18 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 		askinPersonButtonText  = "Ask in person"
 		installButtonText      = "install"
 		playStoreSearchText    = "Search for apps & games"
-		gamesAppName           = "roblox"
+		gamesAppName           = "among us"
 	)
 	parentUser := s.RequiredVar("arc.parentUser")
 	parentPass := s.RequiredVar("arc.parentPassword")
 	childUser := s.RequiredVar("arc.childUser")
 	childPass := s.RequiredVar("arc.childPassword")
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(),
-		chrome.Auth(childUser, childPass, "gaia-id"),
-		chrome.ParentAuth(parentUser, parentPass), chrome.ARCSupported(),
-		chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	cr, tconn, err := unicorn.LoginAsRegularOrChild(ctx, parentUser, parentPass, childUser, childPass, true /*child*/, chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
+		s.Fatal("Failed to log in as unicorn user: ", err)
 	}
 	defer cr.Close(ctx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
 
 	// Optin to Play Store.
 	s.Log("Opting into Play Store")
@@ -126,5 +119,4 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 	if err := parentPwd.WaitForExists(ctx, 90*time.Second); err != nil {
 		s.Fatal("parentPwd doesn't Exists: ", err)
 	}
-
 }
