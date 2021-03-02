@@ -22,6 +22,30 @@
       },
       "revId": "35effc1cb719e2393c71351eb3a2c0f21a3a632e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2619d0d_39039258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/av1/crosvideo_last_2sec.ivf.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-03-02T00:44:33Z",
+      "side": 0,
+      "message": "Right. We cannot remove the video in the server until the video is not used in the test.",
+      "parentUuid": "bb2fc5a8_54703c81",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 110
+      },
+      "revId": "35effc1cb719e2393c71351eb3a2c0f21a3a632e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
