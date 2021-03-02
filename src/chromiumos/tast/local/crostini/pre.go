@@ -193,7 +193,8 @@ type varState interface {
 
 // GaiaLoginAvailable returns whether or not a real gaia account is in use. This requires some variables from tast-tests-private
 func GaiaLoginAvailable(s varState) bool {
-	return false
+	_, ok := s.Var("ui.gaiaPoolDefault")
+	return ok
 }
 
 // The PreData object is made available to users of this precondition via:
@@ -230,18 +231,6 @@ func StartedByDlcBuster() testing.Precondition { return startedByDlcBusterPre }
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByDlcBullseye() testing.Precondition { return startedByDlcBullseyePre }
 
-// StartedByDlcStretchGaia is similar to StartedByDlcStretch, except for
-// logging in to Chrome using gaia user.
-func StartedByDlcStretchGaia() testing.Precondition { return startedByDlcStretchGaiaPre }
-
-// StartedByDlcBusterGaia is similar to StartedByDlcBuster, except for
-// logging in to Chrome using gaia user.
-func StartedByDlcBusterGaia() testing.Precondition { return startedByDlcBusterGaiaPre }
-
-// StartedByDlcBullseyeGaia is similar to StartedByDlcBullseye, except for
-// logging in to Chrome using gaia user.
-func StartedByDlcBullseyeGaia() testing.Precondition { return startedByDlcBullseyeGaiaPre }
-
 // StartedByDlcBusterLargeContainer is similar to StartedByDlcBuster,
 // but will download the large container which has apps (Gedit, Emacs, Eclipse, Android Studio, and Visual Studio) installed.
 func StartedByDlcBusterLargeContainer() testing.Precondition {
@@ -253,13 +242,6 @@ type containerType int
 const (
 	normal containerType = iota
 	largeContainer
-)
-
-type loginType int
-
-const (
-	loginNonGaia loginType = iota
-	loginGaia
 )
 
 var startedByDlcStretchPre = &preImpl{
@@ -283,30 +265,6 @@ var startedByDlcBullseyePre = &preImpl{
 	debianVersion: vm.DebianBullseye,
 }
 
-var startedByDlcStretchGaiaPre = &preImpl{
-	name:          "crostini_started_by_dlc_stretch_gaia",
-	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
-	container:     normal,
-	debianVersion: vm.DebianStretch,
-	loginType:     loginGaia,
-}
-
-var startedByDlcBusterGaiaPre = &preImpl{
-	name:          "crostini_started_by_dlc_buster_gaia",
-	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
-	container:     normal,
-	debianVersion: vm.DebianBuster,
-	loginType:     loginGaia,
-}
-
-var startedByDlcBullseyeGaiaPre = &preImpl{
-	name:          "crostini_started_by_dlc_bullseye_gaia",
-	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
-	container:     normal,
-	debianVersion: vm.DebianBullseye,
-	loginType:     loginGaia,
-}
-
 var startedByDlcBusterLargeContainerPre = &preImpl{
 	name:          "crostini_started_by_dlc_buster_large_container",
 	timeout:       chrome.LoginTimeout + 10*time.Minute,
@@ -325,7 +283,6 @@ type preImpl struct {
 	cont          *vm.Container
 	keyboard      *input.KeyboardEventWriter
 	startedOK     bool
-	loginType     loginType
 }
 
 // Interface methods for a testing.Precondition.
@@ -378,7 +335,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	// your test relies on ARC++ you should add an appropriate
 	// software dependency.
 	if arc.Supported() {
-		if p.loginType == loginGaia {
+		if GaiaLoginAvailable(s) {
 			opts = []chrome.Option{chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)}
 		} else {
 			opts = []chrome.Option{chrome.ARCEnabled()}
@@ -391,7 +348,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Log("Failed to gather disk usage: ", err)
 	}
 
-	if p.loginType == loginGaia {
+	if GaiaLoginAvailable(s) {
 		opts = append(opts, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
 	}
 	if useLocalImage {

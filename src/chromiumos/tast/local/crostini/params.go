@@ -139,10 +139,6 @@ type Param struct {
 	// OnlyStableBoards controls whether to only use the stable
 	// board variants and exclude all the unstable variants.
 	OnlyStableBoards bool
-
-	// UseGaiaLogin controls whether using gaia user to login
-	// to the DUT.
-	UseGaiaLogin bool
 }
 
 type generatedParam struct {
@@ -248,9 +244,6 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 					name = combineName(name, "unstable")
 				}
 			}
-			if testCase.UseGaiaLogin {
-				name = combineName(name, "gaia")
-			}
 
 			// _unstable tests can never be CQ critical.
 			// stretch is informational while we phase it out.
@@ -302,8 +295,6 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				precondition = ""
 			} else if testCase.UseLargeContainer {
 				precondition = fmt.Sprintf("crostini.StartedBy%s%sLargeContainer()", "Dlc", strings.Title(string(i.debianVersion)))
-			} else if testCase.UseGaiaLogin {
-				precondition = fmt.Sprintf("crostini.StartedBy%s%sGaia()", "Dlc", strings.Title(string(i.debianVersion)))
 			} else {
 				precondition = fmt.Sprintf("crostini.StartedBy%s%s()", "Dlc", strings.Title(string(i.debianVersion)))
 			}
