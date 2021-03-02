@@ -29,6 +29,8 @@ func init() {
 	})
 }
 
+
+// ChangeWallpaper will test changing of wallpaper.
 func ChangeWallpaper(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
@@ -38,6 +40,9 @@ func ChangeWallpaper(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	ui := uiauto.New(tconn)
+
+
+
 	setWallpaperMenu := nodewith.Name("Set wallpaper").Role(role.MenuItem)
 	if err := uiauto.Combine("change the wallpaper",
 		ui.RightClick(nodewith.ClassName("WallpaperView")),
