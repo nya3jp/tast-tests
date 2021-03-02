@@ -54,9 +54,9 @@ func MyFiles(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for MyFiles to be mounted in ARC: ", err)
 	}
 
-	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.User())
+	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
 	if err != nil {
-		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.User(), err)
+		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.NormalizedUser(), err)
 	}
 	myFilesPath := cryptohomeUserPath + "/MyFiles"
 

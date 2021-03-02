@@ -71,7 +71,7 @@ func Login(ctx context.Context, s *testing.State) {
 		}
 		defer cr.Close(ctx)
 
-		user = cr.User()
+		user = cr.NormalizedUser()
 		if mounted, err := cryptohome.IsMounted(ctx, user); err != nil {
 			s.Errorf("Failed to check mounted vault for %q: %v", user, err)
 		} else if !mounted {

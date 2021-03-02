@@ -68,7 +68,7 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 	}
 
 	// /data/data is not accessible from adb in RVC. Access this using chrome root.
-	androidDataDir, err := arc.AndroidDataDir(cr.User())
+	androidDataDir, err := arc.AndroidDataDir(cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get android-data path: ", err)
 	}
