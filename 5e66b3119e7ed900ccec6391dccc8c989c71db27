@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b4014a_0641338f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-02T09:46:31Z",
+      "side": 1,
+      "message": "nit: tast-tests",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "40432efe_a3c4aa1b",
@@ -88,6 +111,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbacccc1_4d82a23e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-02T09:46:31Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7157eb8e_291cf394",
@@ -119,6 +159,29 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "7157eb8e_291cf394",
+      "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eded0023_7fb2c507",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-02T09:46:31Z",
+      "side": 1,
+      "message": "Maybe use well known phrase for this type of error: \"failed to wait for animation finished\"\n\nhttps://source.chromium.org/search?q\u003dui.WaitForLocationChangeCompleted\u0026start\u003d1",
+      "range": {
+        "startLine": 149,
+        "startChar": 31,
+        "endLine": 149,
+        "endChar": 109
+      },
       "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
