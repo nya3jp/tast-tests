@@ -54,11 +54,9 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 
 	// We are only dragging one window, but have some background windows as occlusion changes can impact performance.
 	const numWindows = 5
-	conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows)
-	if err != nil {
+	if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows); err != nil {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
-	defer conns.Close()
 
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {

@@ -70,13 +70,8 @@ func SuggestionChipAnimationPerf(ctx context.Context, s *testing.State) {
 
 	for nWindows := 0; nWindows < 3; nWindows++ {
 		if nWindows > 0 {
-			conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 1)
-			if err != nil {
+			if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 1); err != nil {
 				s.Fatal("Failed to create a new browser window: ", err)
-			}
-
-			if err := conns.Close(); err != nil {
-				s.Error("Failed to close the connection to a browser window: ", err)
 			}
 		}
 

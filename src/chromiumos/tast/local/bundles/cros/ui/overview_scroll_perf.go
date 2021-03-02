@@ -74,11 +74,9 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 
 	// Use a total of 16 windows for this test, so that scrolling can happen.
 	const numWindows = 16
-	conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows)
-	if err != nil {
+	if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows); err != nil {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
-	defer conns.Close()
 
 	if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("It does not appear to be in the overview mode: ", err)

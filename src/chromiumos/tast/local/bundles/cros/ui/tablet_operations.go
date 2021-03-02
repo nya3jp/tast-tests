@@ -71,12 +71,8 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	conns, err := ash.CreateWindows(ctx, tconn, cr, "", 2)
-	if err != nil {
+	if err := ash.CreateWindows(ctx, tconn, cr, "", 2); err != nil {
 		s.Fatal("Failed to create new windows: ", err)
-	}
-	if err := conns.Close(); err != nil {
-		s.Fatal("Failed to close the connections: ", err)
 	}
 
 	r := perfutil.NewRunner(cr)
