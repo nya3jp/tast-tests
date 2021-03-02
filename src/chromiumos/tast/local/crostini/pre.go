@@ -202,7 +202,8 @@ type varState interface {
 
 // GaiaLoginAvailable returns whether or not a real gaia account is in use. This requires some variables from tast-tests-private
 func GaiaLoginAvailable(s varState) bool {
-	return false
+	_, ok := s.Var("ui.gaiaPoolDefault")
+	return ok
 }
 
 // The PreData object is made available to users of this precondition via:
@@ -456,11 +457,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 
 	if p.loginType == loginGaia {
-		opts = append(opts, chrome.Auth(
-			s.RequiredVar("crostini.gaiaUsername"),
-			s.RequiredVar("crostini.gaiaPassword"),
-			s.RequiredVar("crostini.gaiaID"),
-		), chrome.GAIALogin())
+		opts = append(opts, chrome.AuthPool(s.RequiredVar("ui.gaiaPoolDefault")), chrome.GAIALogin())
 	}
 	if p.vmMode == dlc {
 		opts = append(opts, chrome.EnableFeatures("CrostiniUseDlc"))

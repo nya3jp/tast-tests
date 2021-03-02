@@ -22,7 +22,7 @@ func init() {
 		Func:         TwoUsersInstall,
 		Desc:         "Test two users can install crostini separately",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Vars:         []string{"crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID"},
+		Vars:         []string{"ui.gaiaPoolDefault"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
@@ -47,7 +47,7 @@ func init() {
 
 func TwoUsersInstall(ctx context.Context, s *testing.State) {
 	// Login options for the first user.
-	optsUser1 := []chrome.Option{chrome.Auth(s.RequiredVar("crostini.gaiaUsername"), s.RequiredVar("crostini.gaiaPassword"), s.RequiredVar("crostini.gaiaID")),
+	optsUser1 := []chrome.Option{chrome.AuthPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ExtraArgs("--vmodule=crostini*=1"),
 		chrome.GAIALogin()}
 
@@ -56,7 +56,7 @@ func TwoUsersInstall(ctx context.Context, s *testing.State) {
 	var firstTconn *chrome.TestConn
 	var err error
 	if firstCr, firstTconn, err = loginChromeAndGetTconn(ctx, optsUser1...); err != nil {
-		s.Fatalf("Failed to login Chrome and get test API for %s: %s", s.RequiredVar("crostini.gaiaUsername"), err)
+		s.Fatalf("Failed to login Chrome and get test API for user 1: %s", err)
 	}
 
 	iOptionsUser1 := crostini.GetInstallerOptions(s, false /*isComponent*/, vm.DebianBuster, false /*largeContainer*/, firstCr.User())
