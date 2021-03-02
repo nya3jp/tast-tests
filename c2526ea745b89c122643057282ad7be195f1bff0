@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b26da7_f3439493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-02T02:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a6d1d97_6e925d47",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "c2526ea745b89c122643057282ad7be195f1bff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b1e068a_b678409f",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-02T02:08:05Z",
       "side": 1,
       "message": "This an subsequent calls can be collapsed into one if condition, e.g.\n```\nif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n\treturn typecutils.FindConnectedDPMonitor(ctx, testConn)\n}, \u0026testing.PollOptions{Timeout: 20 * time.Second}); err !\u003d nil {\n\ts.Fatal(\"Failed to verify DP monitor working after login: \", err)\n}\n```",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "c2526ea745b89c122643057282ad7be195f1bff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca1c055_f9d162b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-02T02:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1e068a_b678409f",
       "range": {
         "startLine": 83,
         "startChar": 1,
