@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5735fa99_9dd8a56c",
+        "filename": "src/chromiumos/tast/local/memory/zram_mm_stat.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-03-02T05:38:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11aa1da0_45b1b44e",
+      "revId": "e53d7b83214d1f682c1596db736984d83bb974b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c22a862_b9a2beaf",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-03-01T10:12:16Z",
       "side": 1,
       "message": "Optional: could be nice to move to the first line of the function and print log for infomation.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "e53d7b83214d1f682c1596db736984d83bb974b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81513ba1_8642dd61",
+        "filename": "src/chromiumos/tast/local/memory/zram_mm_stat.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-03-02T05:38:03Z",
+      "side": 1,
+      "message": "We still want to create the zram_mm_stat file even if we are not passed a perf.Values.\n\nWhat should be logged?",
+      "parentUuid": "8c22a862_b9a2beaf",
       "range": {
         "startLine": 80,
         "startChar": 1,
