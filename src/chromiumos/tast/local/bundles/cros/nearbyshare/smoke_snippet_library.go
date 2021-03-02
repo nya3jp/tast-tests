@@ -16,7 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SnippetLibrarySmoke,
+		Func: SmokeSnippetLibrary,
 		Desc: "Checks that we can successfully run the Nearby Snippet on the Android device",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -29,8 +29,8 @@ func init() {
 	})
 }
 
-// SnippetLibrarySmoke tests that we can successfully start and interact with the Nearby Snippet on the Android device.
-func SnippetLibrarySmoke(ctx context.Context, s *testing.State) {
+// SmokeSnippetLibrary tests that we can successfully start and interact with the Nearby Snippet on the Android device.
+func SmokeSnippetLibrary(ctx context.Context, s *testing.State) {
 	// This loads the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
 	if err := adb.LaunchServer(ctx); err != nil {
 		s.Fatal("Failed to launch adb server: ", err)

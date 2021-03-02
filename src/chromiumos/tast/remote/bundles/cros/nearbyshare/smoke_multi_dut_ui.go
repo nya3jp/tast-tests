@@ -21,7 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MultiDUTUISmoke,
+		Func:         SmokeMultiDUTUI,
 		Desc:         "Checks we can enable Nearby Share high-vis receving on two DUTs at once",
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:nearby-share"},
@@ -31,8 +31,8 @@ func init() {
 	})
 }
 
-// MultiDUTUISmoke tests that we can enable Nearby Share on two DUTs in a single test.
-func MultiDUTUISmoke(ctx context.Context, s *testing.State) {
+// SmokeMultiDUTUI tests that we can enable Nearby Share on two DUTs in a single test.
+func SmokeMultiDUTUI(ctx context.Context, s *testing.State) {
 	d1 := s.DUT()
 	secondary, ok := s.Var("secondaryTarget")
 	if !ok {
