@@ -24,7 +24,7 @@ func init() {
 		Func:        GTK,
 		Desc:        "Verifies that we can continue to decrypt broadcast traffic while going through group temporal key (GTK) rekeys",
 		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
