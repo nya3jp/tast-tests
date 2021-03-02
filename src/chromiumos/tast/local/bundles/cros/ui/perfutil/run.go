@@ -48,26 +48,27 @@ type StoreFunc func(ctx context.Context, pv *Values, hists []*metrics.Histogram)
 // StoreAllWithHeuristics is a utility function to store all metrics. It
 // determines the direction of perf (bigger is better or smaller is better)
 // and unit through heuristics from the name of metrics.
-func StoreAllWithHeuristics(ctx context.Context, pv *Values, hists []*metrics.Histogram) error {
-	for _, hist := range hists {
-		mean, err := hist.Mean()
-		if err != nil {
-			return errors.Wrapf(err, "failed to get mean for histogram %s", hist.Name)
+func StoreAllWithHeuristics(suffix string) StoreFunc {
+	return func(ctx context.Context, pv *Values, hists []*metrics.Histogram) error {
+		for _, hist := range hists {
+			mean, err := hist.Mean()
+			if err != nil {
+				return errors.Wrapf(err, "failed to get mean for histogram %s", hist.Name)
+			}
+			name := hist.Name
+			if suffix != "" {
+				name = name + "." + suffix
+			}
+			testing.ContextLog(ctx, name, " = ", mean)
+			direction, unit := estimateMetricPresenattionType(ctx, name)
+			pv.Append(perf.Metric{
+				Name:      name,
+				Unit:      unit,
+				Direction: direction,
+			}, mean)
 		}
-		testing.ContextLog(ctx, hist.Name, " = ", mean)
-		direction := perf.BiggerIsBetter
-		unit := "percent"
-		if estimateMetricType(ctx, hist.Name) == metricLatency {
-			direction = perf.SmallerIsBetter
-			unit = "ms"
-		}
-		pv.Append(perf.Metric{
-			Name:      hist.Name,
-			Unit:      unit,
-			Direction: direction,
-		}, mean)
+		return nil
 	}
-	return nil
 }
 
 // StoreAll is a function to store all histograms into values.
@@ -157,7 +158,9 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 		return true
 	}
 
-	defer r.cr.StopTracing(ctx)
+	if r.cr != nil {
+		defer r.cr.StopTracing(ctx)
+	}
 	return s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
 		sctx, cancel := ctxutil.Shorten(ctx, traceCleanupDuration)
 		defer cancel()
@@ -165,6 +168,9 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 		// that and data points from systrace isn't actually helpful to most of
 		// UI tests, disable systraces for the time being.
 		// TODO(https://crbug.com/1162385, b/177636800): enable it.
+		if r.cr == nil {
+			return
+		}
 		if err := r.cr.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}, cdputil.DisableSystrace()); err != nil {
 			s.Log("Failed to start tracing: ", err)
 			return
