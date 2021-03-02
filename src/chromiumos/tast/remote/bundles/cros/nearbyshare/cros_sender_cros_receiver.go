@@ -29,7 +29,7 @@ func init() {
 		Func:         CrosSenderCrosReceiver,
 		Desc:         "Checks we can successfully send files from one Cros device to another",
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
-		Attr:         []string{"group:nearby-share"},
+		Attr:         []string{"group:nearby-share-remote"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.nearbyshare.NearbyShareService"},
 		Vars:         []string{"secondaryTarget"},

@@ -24,7 +24,7 @@ func init() {
 		Func:         MultiDUTUISmoke,
 		Desc:         "Checks we can enable Nearby Share high-vis receving on two DUTs at once",
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
-		Attr:         []string{"group:nearby-share"},
+		Attr:         []string{"group:nearby-share-remote"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.nearbyshare.NearbyShareService"},
 		Vars:         []string{"secondaryTarget"},
