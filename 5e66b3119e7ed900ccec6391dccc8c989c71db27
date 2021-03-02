@@ -33,6 +33,23 @@
       "message": "It increases execution time from ~25 seconds to ~1m10s",
       "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b27696_351dab87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-02T07:59:16Z",
+      "side": 1,
+      "message": "Please take a look. This time no fishy retries :) ",
+      "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
