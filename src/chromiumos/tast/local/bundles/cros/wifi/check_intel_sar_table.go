@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package wifi
 
 import (
 	"context"
@@ -23,7 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WifiCheckIntelSARTable,
+		Func: CheckIntelSARTable,
 		Desc: "Runs a preliminary check on device SAR tables for devices with Intel WiFi",
 		Contacts: []string{
 			"kglund@google.com",               // Author
@@ -392,7 +392,7 @@ func verifyTable(decodedSSDT []byte, tableType sarTableType, geoTables []geoSART
 	s.Logf("%v SAR values are within allowable limits", tableName)
 }
 
-func WifiCheckIntelSARTable(ctx context.Context, s *testing.State) {
+func CheckIntelSARTable(ctx context.Context, s *testing.State) {
 	const (
 		// Vendor ID for Intel WiFi.
 		intelVendorID = "0x8086"

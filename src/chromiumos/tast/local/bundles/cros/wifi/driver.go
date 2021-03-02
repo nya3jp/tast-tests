@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package wifi
 
 import (
 	"context"
@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/network/wlan"
+	"chromiumos/tast/local/bundles/cros/wifi/wlan"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WLANDriver,
+		Func: Driver,
 		Desc: "Ensure wireless devices have the expected associated kernel driver",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
@@ -146,7 +146,7 @@ var expectedWLANDriver = map[string]map[string]string{
 	},
 }
 
-func WLANDriver(ctx context.Context, s *testing.State) {
+func Driver(ctx context.Context, s *testing.State) {
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
