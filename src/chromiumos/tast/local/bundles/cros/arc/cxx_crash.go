@@ -69,7 +69,7 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Getting crash dir path")
-	user := cr.User()
+	user := cr.NormalizedUser()
 	path, err := cryptohome.UserPath(ctx, user)
 	if err != nil {
 		s.Fatal("Couldn't get user path: ", err)

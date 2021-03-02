@@ -28,5 +28,5 @@ func init() {
 
 func UserFilesLoggedIn(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	userfiles.Check(ctx, s, cr.User())
+	userfiles.Check(ctx, s, cr.NormalizedUser())
 }

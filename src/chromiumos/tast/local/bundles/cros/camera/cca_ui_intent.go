@@ -139,7 +139,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	scripts := []string{s.DataPath("cca_ui.js")}
 	outDir := s.OutDir()
 
-	androidDataDir, err := arc.AndroidDataDir(cr.User())
+	androidDataDir, err := arc.AndroidDataDir(cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get Android data dir: ", err)
 	}

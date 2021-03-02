@@ -172,7 +172,7 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 			filePath := filepath.Join("files/DCIM", outputFile)
 			s.Log("Output file: ", filePath)
 			// Check if photo file was generated.
-			if fileSize, err := arc.PkgFileSize(ctx, cr.User(), cameraAppPackage, filePath); err != nil {
+			if fileSize, err := arc.PkgFileSize(ctx, cr.NormalizedUser(), cameraAppPackage, filePath); err != nil {
 				s.Error("Could not determine size of photo file: ", err)
 			} else if fileSize < minExpectedFileSize {
 				s.Errorf("Photo file is smaller than expected: got %d, want >= %d", fileSize, minExpectedFileSize)

@@ -91,7 +91,7 @@ func UserFilesGuest(ctx context.Context, s *testing.State) {
 	defer unix.Setns(rootNsFd, unix.CLONE_NEWNS)
 
 	if err := unix.Setns(chromeNsFd, unix.CLONE_NEWNS); err == nil {
-		userfiles.Check(ctx, s, cr.User())
+		userfiles.Check(ctx, s, cr.NormalizedUser())
 	} else {
 		s.Logf("Entering Chrome mount namespace at %s failed: %v", nsPath, err)
 	}

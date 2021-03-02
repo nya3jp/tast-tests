@@ -283,7 +283,7 @@ func readChromeLogFile(ctx context.Context, cr *chrome.Chrome) ([]byte, error) {
 	const logFilePath = "/app_push_install_log"
 
 	// Cryptohome dir for the current user.
-	rootCryptDir, err := cryptohome.UserPath(ctx, cr.User())
+	rootCryptDir, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the cryptohome directory for the user")
 	}

@@ -130,7 +130,7 @@ func SELinuxFilesDataDir(ctx context.Context, s *testing.State) {
 	}()
 
 	// Verify SELinux context for all files and directories except those in the skipDirMap.
-	ownerID, err := cryptohome.UserHash(ctx, cr.User())
+	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}

@@ -225,7 +225,7 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Check if video file was generated.
-	fileSize, err := arc.PkgFileSize(ctx, cr.User(), cameraAppPackage, filePath)
+	fileSize, err := arc.PkgFileSize(ctx, cr.NormalizedUser(), cameraAppPackage, filePath)
 	if err != nil {
 		s.Fatal("Could not determine size of video recording: ", err)
 	}

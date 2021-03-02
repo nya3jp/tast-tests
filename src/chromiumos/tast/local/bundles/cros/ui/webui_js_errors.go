@@ -231,7 +231,7 @@ func WebUIJSErrors(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	user := cr.User()
+	user := cr.NormalizedUser()
 	path, err := cryptohome.UserPath(ctx, user)
 	if err != nil {
 		s.Fatal("Couldn't get user path: ", err)

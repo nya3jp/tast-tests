@@ -157,7 +157,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 
 // setUpUserPIN sets up a test user with a specific PIN.
 func setUpUserPIN(ctx context.Context, cr *chrome.Chrome, PIN, password string, autosubmit bool) (*chrome.TestConn, error) {
-	user := cr.User()
+	user := cr.NormalizedUser()
 	if mounted, err := cryptohome.IsMounted(ctx, user); err != nil {
 		return nil, errors.Wrapf(err, "failed to check mounted vault for %q", user)
 	} else if !mounted {
