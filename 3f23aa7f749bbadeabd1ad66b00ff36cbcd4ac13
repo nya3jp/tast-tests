@@ -33,6 +33,23 @@
       "message": "The WifiSetTXPower test failure is b/181331023, not caused by this CL. Other failures are unrelated. I\u0027d suggest chumping",
       "revId": "3f23aa7f749bbadeabd1ad66b00ff36cbcd4ac13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aae30b96_dd3dd01f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-02T07:56:58Z",
+      "side": 1,
+      "message": "Let\u0027s retry CQ once. If still not pass, I\u0027ll take Nicolas\u0027s advice to chump.",
+      "revId": "3f23aa7f749bbadeabd1ad66b00ff36cbcd4ac13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
