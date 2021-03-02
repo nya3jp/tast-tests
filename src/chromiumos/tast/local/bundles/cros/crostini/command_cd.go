@@ -104,7 +104,7 @@ func CommandCd(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	userName := strings.Split(cr.User(), "@")[0]
+	userName := strings.Split(cr.NormalizedUser(), "@")[0]
 
 	// Open Terminal app.
 	terminalApp, err := terminalapp.Launch(ctx, tconn)

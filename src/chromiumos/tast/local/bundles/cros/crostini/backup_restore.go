@@ -98,7 +98,7 @@ func BackupRestore(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
-	ownerID, err := cryptohome.UserHash(ctx, cr.User())
+	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}
