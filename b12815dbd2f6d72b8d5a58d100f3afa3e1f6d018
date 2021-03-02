@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "479291da_5c85312c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-02T17:56:33Z",
+      "side": 1,
+      "message": "Do we need to add \".(ctx)\" to actually run the returned action?",
+      "range": {
+        "startLine": 497,
+        "startChar": 12,
+        "endLine": 497,
+        "endChar": 30
+      },
+      "revId": "b12815dbd2f6d72b8d5a58d100f3afa3e1f6d018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
