@@ -12,7 +12,18 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
+
+// TODO(b/177341225): Stabilize optin test.
+var optinUnstableModels = []string{
+	"kled",
+	"helios",
+	"pantheon",
+	"drawcia",
+	"veyron_tiger",
+	"volteer2",
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -22,13 +33,24 @@ func init() {
 			"arc-core@google.com",
 			"khmel@chromium.org", // author.
 		},
-		// TODO(khmel): Make it critical.
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(optinUnstableModels...)),
+		}, {
+			Name:              "unstable",
+			ExtraSoftwareDeps: []string{"android_p", "chrome"},
+			ExtraAttr:         []string{"informational"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(optinUnstableModels...)),
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(optinUnstableModels...)),
+		}, {
+			Name:              "vm_unstable",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(optinUnstableModels...)),
 		}},
 		Timeout: 5 * time.Minute,
 		Vars:    []string{"arc.Optin.username", "arc.Optin.password"},
