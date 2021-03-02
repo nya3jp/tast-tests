@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dbe97dc_a6133c61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-03-02T02:43:12Z",
+      "side": 1,
+      "message": "I got the following error the first time I ran this:\n2021-03-02T02:18:57.129775Z [18:18:57.129] Attempting suspend\n2021-03-02T02:19:26.826455Z [18:19:26.826] Error at freeze_fuse.go:88: Failed to TestMountZipAndSuspend: rpc error: code \u003d Unavailable desc \u003d transport is closing\n2021-03-02T02:19:26.826527Z [18:19:26.826] Stack trace:\nFailed to TestMountZipAndSuspend\n        at chromiumos/tast/remote/bundles/cros/filemanager.FreezeFUSE (freeze_fuse.go:88)\n        at chromiumos/tast/internal/planner.runTestWithRoot.func3 (run.go:768)\n        at chromiumos/tast/internal/planner.safeCall.func2 (safe.go:92)\n        at runtime.goexit (asm_amd64.s:1374)\nrpc error: code \u003d Unavailable desc \u003d transport is closing\n\nIt succeeding on the second run, though. I don\u0027t believe this was a pre-existing failure condition of the test.\n",
+      "revId": "79a2191fa8fb3a116b2a336924daca43e7061c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
