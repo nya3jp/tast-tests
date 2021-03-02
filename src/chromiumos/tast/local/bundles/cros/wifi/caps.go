@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package wifi
 
 import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/network/wlan"
+	"chromiumos/tast/local/bundles/cros/wifi/wlan"
 	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -16,7 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WifiCaps,
+		Func: Caps,
 		Desc: "Verifies DUT supports a minimum set of required protocols",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
@@ -26,7 +26,7 @@ func init() {
 	})
 }
 
-func WifiCaps(ctx context.Context, s *testing.State) {
+func Caps(ctx context.Context, s *testing.State) {
 	iwr := iw.NewLocalRunner()
 	// Get WiFi interface.
 	manager, err := shill.NewManager(ctx)

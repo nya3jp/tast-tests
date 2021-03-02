@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package wifi
 
 import (
 	"context"
@@ -22,7 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WifiCheckIntelFWDump,
+		Func: CheckIntelFWDump,
 		Desc: "Verifies that device coredumps are not empty",
 		Contacts: []string{
 			"arowa@chromium.org",              // Test author
@@ -38,7 +38,7 @@ func init() {
 	})
 }
 
-func WifiCheckIntelFWDump(ctx context.Context, s *testing.State) {
+func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 	const (
 		iwlwifiDir       = "/sys/kernel/debug/iwlwifi"
 		crashDir         = "/var/spool/crash"
