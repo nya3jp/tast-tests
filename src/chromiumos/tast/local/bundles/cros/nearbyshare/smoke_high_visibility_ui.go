@@ -14,7 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: HighVisibilityUISmoke,
+		Func: SmokeHighVisibilityUI,
 		Desc: "Checks that Nearby Share high-visibility receiving can be initiated from Quick Settings",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -25,8 +25,8 @@ func init() {
 	})
 }
 
-// HighVisibilityUISmoke tests that we can open the receiving UI surface from Quick Settings.
-func HighVisibilityUISmoke(ctx context.Context, s *testing.State) {
+// SmokeHighVisibilityUI tests that we can open the receiving UI surface from Quick Settings.
+func SmokeHighVisibilityUI(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(*nearbyshare.FixtData).TestConn
 	deviceName := s.FixtValue().(*nearbyshare.FixtData).CrOSDeviceName
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)

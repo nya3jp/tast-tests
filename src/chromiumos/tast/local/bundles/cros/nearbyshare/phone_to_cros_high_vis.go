@@ -22,7 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AndroidSenderCrosReceiver,
+		Func: PhoneToCrosHighVis,
 		Desc: "Checks that we can successfully send files from Android to CrOS",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -36,7 +36,7 @@ func init() {
 		Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
 		Params: []testing.Param{
 			{
-				Name: "small_jpg",
+				Name: "dataoffline_allcontacts_jpg11kb",
 				Val: nearbytestutils.TestData{
 					Filename: "small_jpg.zip",
 					Timeout:  nearbyshare.SmallFileTimeout,
@@ -49,8 +49,8 @@ func init() {
 	})
 }
 
-// AndroidSenderCrosReceiver tests file sharing with an Android device as sender and CrOS device as receiver.
-func AndroidSenderCrosReceiver(ctx context.Context, s *testing.State) {
+// PhoneToCrosHighVis tests file sharing with an Android device as sender and CrOS device as receiver.
+func PhoneToCrosHighVis(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*nearbyshare.FixtData).Chrome
 	tconn := s.FixtValue().(*nearbyshare.FixtData).TestConn
 	crosDisplayName := s.FixtValue().(*nearbyshare.FixtData).CrOSDeviceName
