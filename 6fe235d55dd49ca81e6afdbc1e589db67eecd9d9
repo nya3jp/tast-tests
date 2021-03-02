@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa233831_14224f2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-03-02T02:34:21Z",
+      "side": 1,
+      "message": "Hi David, this CL is ready for review.",
+      "revId": "6fe235d55dd49ca81e6afdbc1e589db67eecd9d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de6279b0_c18e8d01",
+        "filename": "src/chromiumos/tast/local/unicorn/unicorn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-03-02T02:34:21Z",
+      "side": 1,
+      "message": "Should I create a new test fixture instead? How do I do that?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "6fe235d55dd49ca81e6afdbc1e589db67eecd9d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
