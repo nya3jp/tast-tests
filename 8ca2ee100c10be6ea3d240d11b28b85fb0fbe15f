@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd573a03_f55062ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-03-02T11:21:35Z",
+      "side": 1,
+      "message": "An alternative way to fix this would be to add a new NormalizedUser() method, but I suspect that wanting the normalized username is more common. Does that sound correct?",
+      "revId": "8ca2ee100c10be6ea3d240d11b28b85fb0fbe15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
