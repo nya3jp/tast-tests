@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	rpu "chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -28,28 +29,44 @@ func init() {
 		TearDownTimeout: 5 * time.Second,
 		PostTestTimeout: 5 * time.Second,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "fakeDMSEnrolled",
+		Desc:     "Fixture for a running FakeDMS",
+		Contacts: []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
+		Impl: &fakeDMSFixture{
+			fdmsDir: rpu.FDMSDir,
+		},
+		SetUpTimeout:    15 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+		Parent:          "enrolled",
+	})
 }
 
 type fakeDMSFixture struct {
 	// FakeDMS is the currently running fake DM server.
 	fakeDMS *fakedms.FakeDMS
-	// tmpdir is the directory where FakeDMS is currently running
-	tmpdir string
+	// fdmsDir is the directory where FakeDMS is currently running.
+	fdmsDir string
 }
 
 func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	ctx, st := timing.Start(ctx, "fakeDMS_setup")
 	defer st.End()
 
-	// Use a tmpdir to ensure multiple startups don't override logs.
-	tmpdir, err := ioutil.TempDir(s.OutDir(), "fdms-")
-	if err != nil {
-		s.Fatal("Failed to create fdms temp dir: ", err)
+	if f.fdmsDir != "" {
+		// Use a tmpdir to ensure multiple startups don't override logs.
+		tmpdir, err := ioutil.TempDir(s.OutDir(), "fdms-")
+		if err != nil {
+			s.Fatal("Failed to create fdms temp dir: ", err)
+		}
+		f.fdmsDir = tmpdir
 	}
-	f.tmpdir = tmpdir
 
 	// Start FakeDMS.
-	fdms, err := fakedms.New(s.FixtContext(), f.tmpdir)
+	fdms, err := fakedms.New(s.FixtContext(), f.fdmsDir)
 	if err != nil {
 		s.Fatal("Failed to start FakeDMS: ", err)
 	}
@@ -98,7 +115,7 @@ func (f *fakeDMSFixture) PostTest(ctx context.Context, s *testing.FixtTestState)
 	}
 
 	// Copy FakeDMS log to the current tests OutDir.
-	src := filepath.Join(f.tmpdir, fakedms.LogFile)
+	src := filepath.Join(f.fdmsDir, fakedms.LogFile)
 	dst := filepath.Join(s.OutDir(), fakedms.LogFile)
 	if err := fsutil.CopyFile(src, dst); err != nil {
 		s.Error("Failed to copy FakeDMS logs: ", err)
@@ -106,7 +123,7 @@ func (f *fakeDMSFixture) PostTest(ctx context.Context, s *testing.FixtTestState)
 
 	// Copy FakeDMS policies to the current tests OutDir.
 	// Add prefix to avoid conflic with the Chrome fixture.
-	src = filepath.Join(f.tmpdir, fakedms.PolicyFile)
+	src = filepath.Join(f.fdmsDir, fakedms.PolicyFile)
 	dst = filepath.Join(s.OutDir(), "fakedms_"+fakedms.PolicyFile)
 	if err := fsutil.CopyFile(src, dst); err != nil {
 		s.Error("Failed to copy FakeDMS policies: ", err)
