@@ -256,6 +256,30 @@
       },
       "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "113963b3_d08b948c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-02T10:54:04Z",
+      "side": 1,
+      "message": "got it - about the \"desktop to complete the change\". Will change it. \nThe last point I would keep - since it describes after what animation was triggered.",
+      "parentUuid": "8b244d5c_6db0b291",
+      "range": {
+        "startLine": 149,
+        "startChar": 31,
+        "endLine": 149,
+        "endChar": 109
+      },
+      "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
