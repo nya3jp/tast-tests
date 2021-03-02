@@ -22,11 +22,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     OobeArcAppOpen,
-		Desc:     "Launch ARC App post the OOBE Flow Setup Complete",
-		Contacts: []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
-		//TODO(b/179637267): Enable once the bug is fixed.
-		//Attr:         []string{"group:mainline", "informational"},
+		Func:         OobeArcAppOpen,
+		Desc:         "Launch ARC App post the OOBE Flow Setup Complete",
+		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -42,8 +41,8 @@ func init() {
 func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 
 	const (
-		appPkgName  = "com.google.android.apps.kids.familylinkhelper"
-		appActivity = ".home.HomeActivity"
+		appPkgName  = "com.google.android.apps.books"
+		appActivity = ".app.BooksActivity"
 	)
 
 	username := s.RequiredVar("arc.parentUser")
@@ -64,14 +63,17 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn)
 
+	skip := nodewith.Name("Skip").Role(role.StaticText)
+	noThanks := nodewith.Name("No thanks").Role(role.Button)
+
 	if err := uiauto.Combine("go through the oobe flow",
 		ui.LeftClick(nodewith.NameRegex(regexp.MustCompile(
 			"Accept and continue|Got it")).Role(role.Button)),
+		ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(skip), ui.LeftClick(skip)),
 		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("Continue").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("No thanks").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("Done").Role(role.Button)),
+		ui.IfSuccessThen(ui.WithTimeout(20*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
+		ui.LeftClick(nodewith.Name("Skip").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Get started").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to go through the oobe flow: ", err)
@@ -91,11 +93,11 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting to check if app is installed before launching the app")
-	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.FamilyLink.ID, 2*time.Minute); err != nil {
-		s.Fatal("Failed to wait for Family Link App to install: ", err)
+	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.PlayBooks.ID, 2*time.Minute); err != nil {
+		s.Fatal("Failed to wait for app to install: ", err)
 	}
 
-	s.Log("Launch the Family Link App")
+	s.Log("Launch the App")
 	act, err := arc.NewActivity(a, appPkgName, appActivity)
 	if err != nil {
 		s.Fatal("Failed to create a new activity: ", err)
