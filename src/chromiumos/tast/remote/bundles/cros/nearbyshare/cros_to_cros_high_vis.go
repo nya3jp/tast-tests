@@ -8,7 +8,11 @@ import (
 	"context"
 	"path/filepath"
 	"strings"
+	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
@@ -22,32 +26,26 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CrosSenderCrosReceiverInContacts,
-		Desc:         "Checks we can successfully send files from one Cros device to another when they are in each other's contacts list",
+		Func:         CrosToCrosHighVis,
+		Desc:         "Checks we can successfully send files from one Cros device to another",
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.nearbyshare.NearbyShareService"},
-		Vars: []string{
-			"secondaryTarget",
-			"nearbyshare.cros_username",
-			"nearbyshare.cros_password",
-			"nearbyshare.cros2_username",
-			"nearbyshare.cros2_password",
-		},
+		Vars:         []string{"secondaryTarget"},
 		Params: []testing.Param{
 			{
-				Name:      "small_jpg",
+				Name:      "dataoffline_allcontacts_jpg11kb",
 				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", Timeout: nearbyshare.SmallFileTimeout},
 				ExtraData: []string{"small_jpg.zip"},
-				Timeout:   2 * nearbyshare.SmallFileTimeout,
+				Timeout:   nearbyshare.SmallFileTimeout,
 			},
 		},
 	})
 }
 
-// CrosSenderCrosReceiverInContacts tests file sharing between Chrome OS devices where the users are contacts.
-func CrosSenderCrosReceiverInContacts(ctx context.Context, s *testing.State) {
+// CrosToCrosHighVis tests file sharing between Chrome OS devices.
+func CrosToCrosHighVis(ctx context.Context, s *testing.State) {
 	d1 := s.DUT()
 	secondary, ok := s.Var("secondaryTarget")
 	if !ok {
@@ -92,9 +90,7 @@ func CrosSenderCrosReceiverInContacts(ctx context.Context, s *testing.State) {
 	const crosBaseName = "cros_test"
 	senderDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
 	s.Log("Enabling Nearby Share on DUT1 (Sender). Name: ", senderDisplayName)
-	senderUsername := s.RequiredVar("nearbyshare.cros_username")
-	senderPassword := s.RequiredVar("nearbyshare.cros_password")
-	sender, err := enableNearbyShareGAIA(ctx, s, cl1, senderDisplayName, senderUsername, senderPassword)
+	sender, err := enableNearbyShare(ctx, s, cl1, senderDisplayName)
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT1 (Sender): ", err)
 	}
@@ -106,13 +102,16 @@ func CrosSenderCrosReceiverInContacts(ctx context.Context, s *testing.State) {
 	defer cl2.Close(ctx)
 	receiverDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
 	s.Log("Enabling Nearby Share on DUT2 (Receiver). Name: ", receiverDisplayName)
-	receiverUsername := s.RequiredVar("nearbyshare.cros2_username")
-	receiverPassword := s.RequiredVar("nearbyshare.cros2_password")
-	receiver, err := enableNearbyShareGAIA(ctx, s, cl2, receiverDisplayName, receiverUsername, receiverPassword)
+	receiver, err := enableNearbyShare(ctx, s, cl2, receiverDisplayName)
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT2 (Receiver): ", err)
 	}
 	defer remotetestutils.SaveLogs(ctx, receiver, d1, "receiver", s.OutDir())
+
+	s.Log("Starting receiving on DUT2 (Receiver)")
+	if _, err := receiver.StartReceiving(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to start receiving on DUT2 (Receiver): ", err)
+	}
 
 	s.Log("Starting sending on DUT1 (Sender)")
 	fileReq := &nearbyservice.CrOSPrepareFileRequest{FileName: remoteFilePath}
@@ -127,17 +126,19 @@ func CrosSenderCrosReceiverInContacts(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Selecting Receiver's (DUT2) share target on Sender (DUT1)")
-	targetReq := &nearbyservice.CrOSSelectShareTargetRequest{ReceiverName: receiverDisplayName, CollectShareToken: false}
-	_, err = sender.SelectShareTarget(ctx, targetReq)
+	targetReq := &nearbyservice.CrOSSelectShareTargetRequest{ReceiverName: receiverDisplayName, CollectShareToken: true}
+	senderShareToken, err := sender.SelectShareTarget(ctx, targetReq)
 	if err != nil {
 		s.Fatal("Failed to select share target on DUT1 (Sender): ", err)
 	}
-
-	s.Log("Accepting the share request on DUT2 (Receiver) via a notification")
+	s.Log("Accepting the share request on DUT2 (Receiver)")
 	receiveReq := &nearbyservice.CrOSReceiveFilesRequest{SenderName: senderDisplayName}
-	_, err = receiver.AcceptIncomingShareNotificationAndWaitForCompletion(ctx, receiveReq)
+	receiverShareToken, err := receiver.WaitForSenderAndAcceptShare(ctx, receiveReq)
 	if err != nil {
 		s.Fatal("Failed to accept share on DUT2 (Receiver): ", err)
+	}
+	if senderShareToken.ShareToken != receiverShareToken.ShareToken {
+		s.Fatalf("Share tokens for sender and receiver do not match. Sender: %s, Receiver: %s", senderShareToken, receiverShareToken)
 	}
 	// Remove the files on the receiver after test run is complete.
 	defer func() {
@@ -147,33 +148,40 @@ func CrosSenderCrosReceiverInContacts(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	// Repeat the file hash check for a few seconds, as we have no indicator on the CrOS side for when the received file has been completely written.
+	// TODO(crbug/1173190): Remove polling when we can confirm the transfer status with public test functions.
 	s.Log("Comparing file hashes for all transferred files on both DUTs")
-	senderFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbytestutils.SendDir}
-	senderFileRes, err := sender.FilesHashes(ctx, senderFileReq)
-	if err != nil {
-		s.Fatal("Failed to get file hashes on DUT1 (Sender): ", err)
-	}
-	receiverFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: filesapp.DownloadPath}
-	receiverFileRes, err := receiver.FilesHashes(ctx, receiverFileReq)
-	if err != nil {
-		s.Fatal("Failed to get file hashes on DUT2 (Receiver): ", err)
-	}
-	if len(senderFileRes.Hashes) != len(receiverFileRes.Hashes) {
-		s.Fatal("Length of file hashes don't match")
-	}
-	for i := range senderFileRes.Hashes {
-		if senderFileRes.Hashes[i] != receiverFileRes.Hashes[i] {
-			s.Fatalf("Hashes don't match. Wanted: %s, Got: %s", senderFileRes.Hashes[i], receiverFileRes.Hashes[i])
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		senderFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbytestutils.SendDir}
+		senderFileRes, err := sender.FilesHashes(ctx, senderFileReq)
+		if err != nil {
+			return errors.Wrap(err, "failed to get file hashes on DUT1 (Sender)")
 		}
+		receiverFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: filesapp.DownloadPath}
+		receiverFileRes, err := receiver.FilesHashes(ctx, receiverFileReq)
+		if err != nil {
+			return errors.Wrap(err, "failed to get file hashes on DUT2 (Receiver)")
+		}
+		if len(senderFileRes.Hashes) != len(receiverFileRes.Hashes) {
+			return errors.Wrap(err, "length of hashes don't match")
+		}
+		for i := range senderFileRes.Hashes {
+			if senderFileRes.Hashes[i] != receiverFileRes.Hashes[i] {
+				return errors.Wrap(err, "hashes don't match")
+			}
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Fatal("Failed file hash comparison: ", err)
 	}
 	s.Log("Share completed and file hashes match on both DUTs")
 }
 
-// enableNearbyShareGAIA is a helper function to enable Nearby Share on each DUT.
-func enableNearbyShareGAIA(ctx context.Context, s *testing.State, cl *rpc.Client, deviceName, username, password string) (nearbyservice.NearbyShareServiceClient, error) {
+// enableNearbyShare is a helper function to enable Nearby Share on each DUT.
+func enableNearbyShare(ctx context.Context, s *testing.State, cl *rpc.Client, deviceName string) (nearbyservice.NearbyShareServiceClient, error) {
 	// Connect to the Nearby Share Service so we can execute local code on the DUT.
 	ns := nearbyservice.NewNearbyShareServiceClient(cl.Conn)
-	loginReq := &nearbyservice.CrOSLoginRequest{Username: username, Password: password}
+	loginReq := &nearbyservice.CrOSLoginRequest{}
 	if _, err := ns.NewChromeLogin(ctx, loginReq); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
