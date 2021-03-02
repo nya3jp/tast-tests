@@ -41,7 +41,7 @@ func init() {
 		Desc:         "Drag and drop a file in both directions between FilesApp and crostini",
 		Contacts:     []string{"joelhockey@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		Vars:         []string{"keepState", "crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID"},
+		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
 		Data:         []string{dragApplet, dropApplet},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
