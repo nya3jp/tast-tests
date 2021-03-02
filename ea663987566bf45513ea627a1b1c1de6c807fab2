@@ -141,6 +141,30 @@
       },
       "revId": "ea663987566bf45513ea627a1b1c1de6c807fab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2948f2a_5b67eda5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-02T00:00:17Z",
+      "side": 1,
+      "message": "Thanks Prashant, that looks good.",
+      "parentUuid": "32ea9586_cdeafcc7",
+      "range": {
+        "startLine": 112,
+        "startChar": 49,
+        "endLine": 112,
+        "endChar": 54
+      },
+      "revId": "ea663987566bf45513ea627a1b1c1de6c807fab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

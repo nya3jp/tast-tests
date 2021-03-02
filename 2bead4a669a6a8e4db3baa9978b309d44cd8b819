@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e85a355d_9ab52442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-02T00:00:17Z",
+      "side": 1,
+      "message": "nit/style: It is simpler to use bytes.Contains. Then you wouldn\u0027t need to worry about err2.\n\n    out, err :\u003d testexec.CommandContext(ctx, \"ectool\", \"typecdiscovery\", strconv.Itoa(i), \"0\").CombinedOutput()\n    if err !\u003d nil {\n        if bytes.Contains(out, []byte(\"INVALID_PARAM\")) {\n            false, nil\n        }\n        return false, errors.Wrap(err, \"failed to run ectool command\")\n    }\n\nhttp://go/godoc/bytes/#Contains",
+      "revId": "2bead4a669a6a8e4db3baa9978b309d44cd8b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "991b7809_95b0139d",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
         "patchSetId": 2
@@ -20,6 +37,47 @@
         "endLine": 124,
         "endChar": 72
       },
+      "revId": "2bead4a669a6a8e4db3baa9978b309d44cd8b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3584c24_79041a5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-02T00:00:17Z",
+      "side": 1,
+      "message": "The simplest way to do that is with named result parameters. These are initialized to zero-values: false for bool, nil for error. And they enable naked returns. So for example, this might look like:\n\n    func CheckPortsForTBTPartner(ctx context.Context) (found bool, err error) {\n        if err \u003d foo(); err !\u003d nil {  // Note using \u003d instead of :\u003d, because err has already been initialized.\n            return  // Returns (false, err).\n        }\n        found \u003d true  // Again, note using \u003d instead of :\u003d.\n        return  // Returns (true, nil).\n    }\n\nhttp://go/effective-go#named-results\nhttp://go/go-code-review-comments#named-result-parameters\n\nThat said, it is common in Go to have multiple returns. In particular, it is very common to return something with nil error, or to return an error with default values (such as false). I think this function would be most idiomatic by replacing the `found :\u003d false ... break ... return found, nil` pattern with simple returns: `return true, nil` and `return false, nil`.",
+      "parentUuid": "991b7809_95b0139d",
+      "range": {
+        "startLine": 124,
+        "startChar": 18,
+        "endLine": 124,
+        "endChar": 72
+      },
+      "revId": "2bead4a669a6a8e4db3baa9978b309d44cd8b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7519b97f_dc7b6433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-02T00:00:17Z",
+      "side": 1,
+      "message": "nit/style: As with L123, it is simpler to use bytes.Contains.\n\n    if bytes.Contains(out, []byte(\"SVID 0x8087\") {\n        found \u003d true\n        break\n    }",
       "revId": "2bead4a669a6a8e4db3baa9978b309d44cd8b819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
