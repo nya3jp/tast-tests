@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49cbf995_293a2ddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2021-03-02T16:02:20Z",
+      "side": 1,
+      "message": "Yes I tried to simulate the stream creating sequence of WebRTC usage.\nFrom testing apprtc and meet, I saw output stream was added after input stream.\nSince WebRTC is the most important use case we want to improve, I think it make sense to make this test more similar to WebRTC.\nHere the sequence does not wait for any event so using sleep seems reasonable.\nThanks!",
+      "parentUuid": "06d96083_a7667e96",
+      "range": {
+        "startLine": 99,
+        "startChar": 20,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "4f844d85ce022c618b4999b9f2d5cf3d47a4ae8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b91c27e3_3a2cd2b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-24T00:01:36Z",
       "side": 1,
       "message": "I\u0027m ok with the code from perspective of Tast. However, I do not fully understand the justification of this change, please have one of your team members review it.",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "4f844d85ce022c618b4999b9f2d5cf3d47a4ae8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b9c87b_bf52c462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2021-03-02T16:02:20Z",
+      "side": 1,
+      "message": "Yes YuHsuan has taken a look. Thanks!",
+      "parentUuid": "b91c27e3_3a2cd2b3",
       "range": {
         "startLine": 104,
         "startChar": 1,
