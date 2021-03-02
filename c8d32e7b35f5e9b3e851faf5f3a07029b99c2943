@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f057d3_5dd62f20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-03-02T01:16:16Z",
+      "side": 1,
+      "message": "Looks good % request",
+      "revId": "c8d32e7b35f5e9b3e851faf5f3a07029b99c2943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0e38c1c_006a0fb3",
@@ -49,6 +66,47 @@
       "side": 1,
       "message": "H264 and HEVC are both behind that in Chrome for video codecs. I think it refers to codecs that have patent requirements.",
       "parentUuid": "d0e38c1c_006a0fb3",
+      "revId": "c8d32e7b35f5e9b3e851faf5f3a07029b99c2943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ecffdd_7609a2b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-03-02T01:16:16Z",
+      "side": 1,
+      "message": "I was curious about this too. I discussed with Ilja and Miguel. It\u0027s probably not needed in our lab because we get Chrome images by the time these tests are run, but it\u0027s nice if for no other reason than semantics (and maybe if we ever run this tests in the Chromium CQ).\n\nCan you also add \"proprietary_codecs\" to the H.264 tests in video.DecodeAccel so that we don\u0027t have to create another CL?",
+      "parentUuid": "55cc66d0_0875523b",
+      "revId": "c8d32e7b35f5e9b3e851faf5f3a07029b99c2943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ef5b6b8_f0b970bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-03-02T01:16:16Z",
+      "side": 1,
+      "message": "Would it be useful to have a profile_change test for HEVC that changes from MAIN to MAIN10 or viceversa?",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 4
+      },
       "revId": "c8d32e7b35f5e9b3e851faf5f3a07029b99c2943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
