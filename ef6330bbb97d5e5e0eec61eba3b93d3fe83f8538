@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f866bd4_9fc02ea5",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-02T22:02:55Z",
+      "side": 1,
+      "message": "We won\u0027t get the logs if nearbysetup.AndroidSetup retuns an error, which is what I was mostly worried about. Without doing some refactoring to separate finding the adb.Device and setting up the AndroidNearbyDevice struct, I think the way to go is to also defer this within nearbysetup.AndroidSetup:\n```\ndefer func() {\n    if err !\u003d nil {\n        testDevice.DumpLogcat(...)\n    }\n}()\n```\nsomewhere around here: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go;l\u003d112\n\nAndroidSetup does a lot of non-trivial stuff so I wanted to make sure we get the logs if something goes wrong there.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 3
+      },
+      "revId": "ef6330bbb97d5e5e0eec61eba3b93d3fe83f8538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
