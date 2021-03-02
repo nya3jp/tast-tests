@@ -356,7 +356,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	defer pc.Close()
 
 	// Find the web view of Meet window.
-	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "WebView"}, timeout)
+	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "ContentsWebView"}, timeout)
 	if err != nil {
 		s.Fatal("Failed to find webview: ", err)
 	}
@@ -631,6 +631,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			defer docsTextfield.Release(closeCtx)
 			if err := docsTextfield.StableLeftClick(ctx, &pollOpts); err != nil {
 				return errors.Wrap(err, "failed to click on the docs text field")
+			}
+			if err := kw.Accel(ctx, "Ctrl+Alt+["); err != nil {
+				return errors.Wrap(err, "failed to hit ctrl-alt-[ to zoom to fit")
 			}
 			if err := kw.Accel(ctx, "Ctrl+A"); err != nil {
 				return errors.Wrap(err, "failed to hit ctrl-a and select all text")
