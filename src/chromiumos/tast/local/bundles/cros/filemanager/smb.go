@@ -66,7 +66,7 @@ func SMB(ctx context.Context, s *testing.State) {
 	}
 	defer files.Release(ctx)
 
-	menuItems := []string{"Add new service", "SMB file share"}
+	menuItems := []string{"Services", "SMB file share"}
 	if err := files.ClickMoreMenuItem(ctx, menuItems); err != nil {
 		s.Fatal("Failed clicking menu item SMB file share: ", err)
 	}
