@@ -429,6 +429,30 @@
       },
       "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1c19d85_df8ecde5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-02T18:14:38Z",
+      "side": 1,
+      "message": "I submitted a CL to fix the arc package bug: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2723751\n\nWith this being fixed we can get the Android score element from its ancestor element.\n\nNow the score capture with web page logic was replaced with native UI object allocation.",
+      "parentUuid": "cf07804a_7b0b0aeb",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
