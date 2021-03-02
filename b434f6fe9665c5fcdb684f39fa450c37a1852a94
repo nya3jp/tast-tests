@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5d41046_bc5cc610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/google_account_util.zip.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-02T06:07:47Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem to be a valid field here:\nhttp://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/extdata/extdata.go?l\u003d42\u0026rcl\u003d0b4765ab2ae6605512fcb9a1013025ef75a62e8e\n\nBut I haven\u0027t looked into if additional fields not defined there can be used. I can take a look tomorrow. We\u0027ll have to figure out something for that issue, too, since AFAIK this version number isn\u0027t something we can access from the APK at runtime.",
+      "parentUuid": "9c1845e6_17b48f33",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd471261_275bb7fa",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
         "patchSetId": 3
