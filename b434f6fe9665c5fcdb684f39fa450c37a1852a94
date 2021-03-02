@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c1845e6_17b48f33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/google_account_util.zip.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-02T01:34:12Z",
+      "side": 1,
+      "message": "Can you add this as a key/value pair instead or will that break things?\nThinking ahead to https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1182953",
+      "parentUuid": "2ec0588c_9bff020a",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd471261_275bb7fa",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
         "patchSetId": 3
@@ -213,6 +231,24 @@
       "side": 1,
       "message": "I went ahead and changed it to use archive/zip, but it\u0027s a lot longer and more complicated than using command execution. I also didn\u0027t see any other tests doing things this way, while command execution is used in a few places.\n\nhttps://source.corp.google.com/search?q\u003d%22archive%2Fzip%22%20language:go\u0026sq\u003dpackage:%5Echromeos_(internal%7Cpublic)$\u0026ssfr\u003d1\n\nhttps://source.corp.google.com/search?q\u003d%22testexec.CommandContext(ctx,%20%22unzip%22%22\u0026sq\u003dpackage:%5Echromeos_(internal%7Cpublic)$\n\nI think the simplicity of just using the unzip command is nicer. WDYT?",
       "parentUuid": "7c699024_1edc2db1",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdfa42c8_033cba48",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-02T01:34:12Z",
+      "side": 1,
+      "message": "Yeh I prefer the previous way too",
+      "parentUuid": "6a6f7468_5a4962e7",
       "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
