@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -23,6 +24,7 @@ import (
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
+	"chromiumos/tast/local/chrome/systemlogs"
 	"chromiumos/tast/testing"
 )
 
@@ -267,4 +269,54 @@ func ConfigureNearbyLogging(ctx context.Context, d *adb.Device) error {
 		}
 	}
 	return nil
+}
+
+// CrosAttributes contains information about the CrOS device that are relevant to Nearby Share.
+// "Cros" is redundantly prepended to the field names to make them easy to distinguish from Android attributes in test logs.
+type CrosAttributes struct {
+	DisplayName   string
+	User          string
+	DataUsage     string
+	Visibility    string
+	ChromeVersion string
+}
+
+// GetCrosAttributes gets the Chrome version and combines it into a CrosAttributes strct with the provided values for easy logging with json.MarshalIndent.
+func GetCrosAttributes(ctx context.Context, tconn *chrome.TestConn, displayName, username string, dataUsage DataUsage, visibility Visibility) (*CrosAttributes, error) {
+	attrs := CrosAttributes{
+		DisplayName: displayName,
+		User:        username,
+	}
+	if val, ok := DataUsageStrings[dataUsage]; ok {
+		attrs.DataUsage = val
+	} else {
+		return nil, errors.Errorf("undefined dataUsage: %v", dataUsage)
+	}
+	if val, ok := VisibilityStrings[visibility]; ok {
+		attrs.Visibility = val
+	} else {
+		return nil, errors.Errorf("undefined visibility: %v", visibility)
+	}
+
+	const expectedKey = "CHROME VERSION"
+	version, err := systemlogs.GetSystemLogs(ctx, tconn, expectedKey)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed getting system logs to check Chrome version")
+	}
+	if version == "" {
+		return nil, errors.Wrap(err, "system logs result empty")
+	}
+	// The output on test images contains 'unknown' for the channel, i.e. '91.0.4435.0 unknown', so just extract the channel version.
+	const versionPattern = `([0-9\.]+) [\w+]`
+	r, err := regexp.Compile(versionPattern)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to compile Chrome version pattern")
+	}
+	versionMatch := r.FindStringSubmatch(version)
+	if len(versionMatch) == 0 {
+		return nil, errors.New("failed to find valid Chrome version")
+	}
+	attrs.ChromeVersion = versionMatch[1]
+
+	return &attrs, nil
 }

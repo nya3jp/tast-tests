@@ -15,6 +15,14 @@ const (
 	DataUsageWifiOnly
 )
 
+// DataUsageStrings is a map of DataUsage to human-readable setting values.
+var DataUsageStrings = map[DataUsage]string{
+	DataUsageUnknown:  "Unknown",
+	DataUsageOffline:  "Offline",
+	DataUsageOnline:   "Online",
+	DataUsageWifiOnly: "Wifi Only",
+}
+
 // Visibility represents Nearby Share visibility setting values.
 type Visibility int
 
@@ -25,6 +33,14 @@ const (
 	VisibilityAllContacts
 	VisibilitySelectedContacts
 )
+
+// VisibilityStrings is a map of Visibility to human-readable setting values.
+var VisibilityStrings = map[Visibility]string{
+	VisibilityUnknown:          "Unknown",
+	VisibilityNoOne:            "No One",
+	VisibilityAllContacts:      "All Contacts",
+	VisibilitySelectedContacts: "Selected Contacts",
+}
 
 // DeviceNameValidationResult represents device name validation results that are returned after setting the device name programmatically.
 type DeviceNameValidationResult int
