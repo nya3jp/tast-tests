@@ -109,7 +109,7 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 		"Ash.Desks.AnimationSmoothness.DeskEndGesture",
 		"Ash.Desks.PresentationTime.UpdateGesture",
 		"Ash.Desks.PresentationTime.UpdateGesture.MaxLatency"),
-		perfutil.StoreAllWithHeuristics)
+		perfutil.StoreAllWithHeuristics(""))
 
 	if err := pv.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
