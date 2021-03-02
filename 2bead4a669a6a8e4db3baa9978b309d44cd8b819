@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f87812_5ab8f5b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-02T01:04:25Z",
+      "side": 1,
+      "message": "Done\n\nNice! Thanks for the tip; this is far cleaner than regex (which now looks like overkill)",
+      "parentUuid": "e85a355d_9ab52442",
+      "revId": "2bead4a669a6a8e4db3baa9978b309d44cd8b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "991b7809_95b0139d",
@@ -65,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb9b109_370d4f05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-02T01:04:25Z",
+      "side": 1,
+      "message": "Done\n\nThanks for providing the context and explanation. I\u0027ll follow the idiomatic usage you suggested.",
+      "parentUuid": "c3584c24_79041a5b",
+      "range": {
+        "startLine": 124,
+        "startChar": 18,
+        "endLine": 124,
+        "endChar": 72
+      },
+      "revId": "2bead4a669a6a8e4db3baa9978b309d44cd8b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7519b97f_dc7b6433",
@@ -78,6 +120,24 @@
       "writtenOn": "2021-03-02T00:00:17Z",
       "side": 1,
       "message": "nit/style: As with L123, it is simpler to use bytes.Contains.\n\n    if bytes.Contains(out, []byte(\"SVID 0x8087\") {\n        found \u003d true\n        break\n    }",
+      "revId": "2bead4a669a6a8e4db3baa9978b309d44cd8b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e88eff5b_13ad0cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-02T01:04:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7519b97f_dc7b6433",
       "revId": "2bead4a669a6a8e4db3baa9978b309d44cd8b819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
