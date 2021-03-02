@@ -68,6 +68,24 @@
       "parentUuid": "2e653fe5_f50a0def",
       "revId": "28c3155d88b2896fe32fed4165257e592e0ef3ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9b8cfb9_0f54edba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-02T00:08:35Z",
+      "side": 1,
+      "message": "A table-driven test won\u0027t split tests out in the dashboard, but the errors for each case can be reported separately. As it stands this seems like a misuse of test params.\n\nCheck out e.g. policy.AutoclickEnabled for an example of a table-driven test.",
+      "parentUuid": "68e84187_9defe153",
+      "revId": "28c3155d88b2896fe32fed4165257e592e0ef3ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
