@@ -35,7 +35,7 @@ func init() {
 		Desc:         "Tests Crostini input latency",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		Vars:         []string{"keepState", "crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID"},
+		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
 		Data:         []string{"input_latency_server.py"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
