@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2755527c_15bc15fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-02T10:49:07Z",
+      "side": 1,
+      "message": "Thanks, Pavol! Hugo LGTM (in text, in the prev patchset) so I\u0027ll go ahead and add the tast reviewers.",
+      "parentUuid": "931033cb_49788c18",
+      "revId": "4a0c907fa7577af766960d2603cede511f9af141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3853b14d_a659f37c",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-02T09:58:08Z",
       "side": 1,
       "message": "nit: Let\u0027s maybe write that this is a requirement of this test on the policy served for the user account allowlist.username/allowlist.password by prod DMServer?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 53
+      },
+      "revId": "4a0c907fa7577af766960d2603cede511f9af141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee23b391_fe6b4995",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/arc_connectivity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-02T10:49:07Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right :).",
+      "parentUuid": "3853b14d_a659f37c",
       "range": {
         "startLine": 86,
         "startChar": 0,
