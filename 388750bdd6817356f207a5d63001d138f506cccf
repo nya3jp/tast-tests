@@ -16,6 +16,29 @@
       "message": "Thanks a lot for reviewing this CL!\n\nIn patch 2 I also changed the proxy service so remote tests can set an allowlist for the proxy remotely.",
       "revId": "388750bdd6817356f207a5d63001d138f506cccf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d86835be_18fc38ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-02T16:09:33Z",
+      "side": 1,
+      "message": "nit: any reason for this \": \" here? since you\u0027re using Wrapf this will be redundant",
+      "range": {
+        "startLine": 144,
+        "startChar": 74,
+        "endLine": 144,
+        "endChar": 76
+      },
+      "revId": "388750bdd6817356f207a5d63001d138f506cccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
