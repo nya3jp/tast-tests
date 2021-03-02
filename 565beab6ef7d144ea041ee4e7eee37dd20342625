@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c32f9041_c10c215b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-03-02T05:05:24Z",
+      "side": 1,
+      "message": "TBH I am not sure what is the recommended way for doing this in tast.",
+      "parentUuid": "8c323cec_28575c87",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 46
+      },
+      "revId": "565beab6ef7d144ea041ee4e7eee37dd20342625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd89a5af_ca51b005",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I\u0027ve changed the code to call arc.InstalledPackages() ... which also uses `pm` but it\u0027s consistently used in tast tests.",
       "parentUuid": "cd89a5af_ca51b005",
+      "range": {
+        "startLine": 138,
+        "startChar": 9,
+        "endLine": 138,
+        "endChar": 57
+      },
+      "revId": "565beab6ef7d144ea041ee4e7eee37dd20342625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f9ca8ec_215235fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-03-02T05:05:24Z",
+      "side": 1,
+      "message": "That\u0027s good then. If this breaks tast maintainers will take care of it.",
+      "parentUuid": "92e20cb2_9729ca41",
       "range": {
         "startLine": 138,
         "startChar": 9,
