@@ -22,7 +22,7 @@ func init() {
 		Func:        ChannelHop,
 		Desc:        "Verifies that the DUT, connected to a BSS on one channel will successfully re-connect when the AP changes channels",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
