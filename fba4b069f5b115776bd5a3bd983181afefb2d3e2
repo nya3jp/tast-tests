@@ -271,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e8c02d_683740a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-02T02:08:05Z",
+      "side": 1,
+      "message": "You mean the defer on line 72? If so, yup that\u0027s fine.",
+      "parentUuid": "7745a23f_8a207f9d",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 9
+      },
+      "revId": "fba4b069f5b115776bd5a3bd983181afefb2d3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9c5545c_af554a79",
@@ -402,6 +426,30 @@
       "side": 1,
       "message": "I considered this, but the issue is that typecd needs to rebuild it\u0027s state after it restarts (which takes a non-trivial amount of time, in addition to the upstart machinery needing some time to restart typecd after it has crashed).\n\nSo, *just* checking for the pid immediately after killing it isn\u0027t sufficient.",
       "parentUuid": "6fdc7a36_ccc10f65",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 44
+      },
+      "revId": "fba4b069f5b115776bd5a3bd983181afefb2d3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a95d8b6_0d031f50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-02T02:08:05Z",
+      "side": 1,
+      "message": "Ack. Maybe create a tracking bug (to investigate a more reliable signal to poll for) and update the comment with why you\u0027re sleeping.",
+      "parentUuid": "52f46b78_4fc96587",
       "range": {
         "startLine": 93,
         "startChar": 4,
@@ -590,6 +638,30 @@
       "side": 1,
       "message": "I\u0027ve added a defer to the earlier callsite; that will take care of this?",
       "parentUuid": "aeb1544f_dc2ed6a4",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 9
+      },
+      "revId": "fba4b069f5b115776bd5a3bd983181afefb2d3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ca96c6_fc8200aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-02T02:08:05Z",
+      "side": 1,
+      "message": "Perfect.",
+      "parentUuid": "ea2abbdd_c356040d",
       "range": {
         "startLine": 121,
         "startChar": 1,
