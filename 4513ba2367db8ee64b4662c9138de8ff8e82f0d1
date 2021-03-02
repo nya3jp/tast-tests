@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c85ed372_455a2ee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/infinite_painter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2021-03-02T18:01:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "09c7b9da_19e7516b",
+      "revId": "4513ba2367db8ee64b4662c9138de8ff8e82f0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c435000b_06fcf1f4",
