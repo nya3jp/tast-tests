@@ -126,6 +126,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "352eb767_24ea9468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-02T04:16:36Z",
+      "side": 1,
+      "message": "\u003e \u003e Are we concerned about the number of changed lines?\n\u003e More than that, I guess one day LaCrOS will be shipped and all\n\u003e these tests will just run on it by default, right? If yes then\n\u003e having a default value for this parameter would be best, so we\n\u003e don\u0027t have to come back and change this file again when we\n\u003e flip the feature flag (we\u0027ll only need to remove the _lacros\n\u003e variants).\n\u003e \n\nMaybe introducing a constant for default flag? Then, the change on flipping should be smaller.\nI think it\u0027s optional, though, because for long term, we\u0027ll run only on lacros, so the enum can be removed eventually.\n\n\u003e Maybe we could have a small parameter constructor function here\n\u003e and give this parameter a default value?\n\nPlease, please do not introduce functions for creating test metadata (testing.Test).\nTest metadata must be statically fixed. Although, it is written in go,\nfor developers convenience, we do not expect that is \"calculated\" somehow under the environment, but we expect it is \"declared\" somehow.\nThis is because cros infra needs to understand it.\nIf we introduce a function, it is very difficult to ensure the situation.\nI understand it may look somewhat verbose, specifically this specific case,\nbut it is important from overall maintenance point of view, and thank you for your understanding.\n\n\u003e \n\u003e \u003e \n\u003e \u003e This pattern is used a number of other tests so IMO it is better to stick to the existing pattern rather than having multiple patterns used over the codebase.\n\u003e \u003e \n\u003e \u003e WDYT?",
+      "parentUuid": "30f3ac1e_8aac7d6b",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "f6b656f72d87c496d448388dcbcff63b8003dd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dd17323_c556ff15",
         "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
         "patchSetId": 5
