@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c06f1d7_17d4c870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-02T11:39:02Z",
+      "side": 1,
+      "message": "You are starting and stopping arc in this function. Does it make more sense to handle it like a.cr and have a start/stop function for future extensibility?",
+      "revId": "b1b2bbfe0e02351b8171db16c944abb29e31a510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de670916_f64cda05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-02T11:39:02Z",
+      "side": 1,
+      "message": "nit: to be",
+      "range": {
+        "startLine": 109,
+        "startChar": 47,
+        "endLine": 109,
+        "endChar": 52
+      },
+      "revId": "b1b2bbfe0e02351b8171db16c944abb29e31a510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a399339_910208ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-02T11:39:02Z",
+      "side": 1,
+      "message": "Not sure if this is useful. The function will fail if this does not happen.",
+      "revId": "b1b2bbfe0e02351b8171db16c944abb29e31a510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff910600_231f1da0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/arc_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-02T11:39:02Z",
+      "side": 1,
+      "message": "nit: allowlist",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "b1b2bbfe0e02351b8171db16c944abb29e31a510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
