@@ -16,6 +16,23 @@
       "message": "zwiser@ this CL is ready for tast owner review.",
       "revId": "da08c79998af9822f3c05ba03e5a3007e1252333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc68256d_05c63f58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2021-03-02T00:47:10Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not a \"real\" tast-tests owner. :)  I\u0027m only in tast-tests/OWNERS for simple CLs to disable flaky tests as part of Green Stainless.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/OWNERS\n\nAdding tast-owners@ to get this assigned to a normal tast-test reviewer.  ",
+      "revId": "da08c79998af9822f3c05ba03e5a3007e1252333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
