@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "356ec3a1_2f0fd6ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-02T09:12:09Z",
+      "side": 1,
+      "message": "Yep, the traffic is rejected. With the current rules:\nChain FORWARD (policy DROP 0 packets, 0 bytes)\n pkts bytes target     prot opt in     out     \n24430   19M ACCEPT     tcp  --  arc_ns+ *     \n    0     0 REJECT     udp  --  udp dpt:443 reject-with icmp-port-unreachable\n    0     0 REJECT     udp  --  udp dpt:80 reject-with icmp-port-unreachable\n    6   360 REJECT     tcp  --  tcp dpt:443 reject-with icmp-port-unreachable\n    6   360 REJECT     tcp  --  tcp dpt:80 reject-with icmp-port-unreachable\n\n\nI\u0027ve also ran the test without the proxy and the rejected traffic count is a lot higher (as expected):\n  160  9600 REJECT     tcp  --  tcp dpt:443 reject-with icmp-port-unreachable\n    8   480 REJECT     tcp  --  tcp dpt:80 reject-with icmp-port-unreachable",
+      "parentUuid": "a36d32aa_0cfa8a53",
+      "revId": "4fd624fdb742a820df8b3c8074d6a9284e38119e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c19bc799_fb7cc75c",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "583fc23e_53c6de05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-02T09:12:09Z",
+      "side": 1,
+      "message": "Good point!",
+      "parentUuid": "c19bc799_fb7cc75c",
+      "range": {
+        "startLine": 59,
+        "startChar": 36,
+        "endLine": 59,
+        "endChar": 39
+      },
+      "revId": "4fd624fdb742a820df8b3c8074d6a9284e38119e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ebb9469_cb8c28e9",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-03-02T04:19:27Z",
       "side": 1,
       "message": "nit: same thing here, maybe document the \"2\" is to insert that rule after the rule on L49 for protecting the proxy traffic.",
+      "range": {
+        "startLine": 63,
+        "startChar": 36,
+        "endLine": 63,
+        "endChar": 39
+      },
+      "revId": "4fd624fdb742a820df8b3c8074d6a9284e38119e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "960b6956_2e54fe4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-02T09:12:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ebb9469_cb8c28e9",
       "range": {
         "startLine": 63,
         "startChar": 36,
