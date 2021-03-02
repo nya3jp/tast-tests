@@ -33,6 +33,98 @@
       "message": "PTAL.\n\nThanks,\n\nGreg ",
       "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22e8f913_27fec7db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-03-02T15:19:37Z",
+      "side": 1,
+      "message": "tpm2, right? otherwise TPM1.2 devices would be able to run the test (and fail).",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd31345_27ffda27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-03-02T15:19:37Z",
+      "side": 1,
+      "message": "I am not sure how valuable this it is, but i guess \"some\" might argue that these verbosity might be useful only when developing the test. Upon any error the error message contains the line number already. On the other hand, I also met some tast reviewers who are okay with them. \n\nI personally think we can drop them as long as the test is stable enough.\nDitto for other places.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81120c60_2847b1b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-03-02T15:19:37Z",
+      "side": 1,
+      "message": "should we have the deferred cryptohome removal? i believe we wanna remove the cryptohome created by this test once it happens.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1857130c_04099ad2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-03-02T15:19:37Z",
+      "side": 1,
+      "message": "can we have comments as of why it is needed?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 19
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
