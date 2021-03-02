@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df1cdf39_79a67e77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/google_account_util.zip.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-02T21:16:43Z",
+      "side": 1,
+      "message": "Sounds good, I will leave it as is with the version in the filename for now then. Thanks!",
+      "parentUuid": "4f109efa_81d5d400",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd471261_275bb7fa",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "Updated the comment with more details, let me know what you think",
       "parentUuid": "cd471261_275bb7fa",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17ff729f_675ef2f9",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-02T21:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06542325_62d88763",
       "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -303,6 +339,24 @@
       "side": 1,
       "message": "Tast in general prefers avoiding command execution. There are several reasons AFAIK:\n  - In autotest, we experienced that random commandline execution are used,\n    so that there are multiple ways to do some conceptually similar things.\n    That makes maintenance harder.\n  - Command line execution often looses some detailed errors. Taking the detailed\n    errors from subprocess is not so easy.\n  - Command execution often has runtime overhead. Also, it depends on external\n    environment.\n\nFor better stability and maintenance, we prefer go\u0027s standard libraries often.\n\nAs for existing ones, I think it\u0027s nice if they can be nicely cleaned up in the future. If you\u0027d like the verbosity can be hidden by introducing a utility function wrapping the code.",
       "parentUuid": "bdfa42c8_033cba48",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f5769f_437032a2",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-02T21:16:43Z",
+      "side": 1,
+      "message": "Got it, thank you for the explanation!",
+      "parentUuid": "73fb5e43_f0925d0d",
       "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
