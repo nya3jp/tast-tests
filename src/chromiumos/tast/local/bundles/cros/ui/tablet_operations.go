@@ -129,7 +129,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 	},
 		"Ash.TabletMode.AnimationSmoothness.Enter",
 		"Ash.TabletMode.AnimationSmoothness.Exit",
-	), perfutil.StoreAllWithHeuristics)
+	), perfutil.StoreAllWithHeuristics(""))
 
 	if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to enter into the tablet mode: ", err)
@@ -233,7 +233,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		"Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat",
 		"Ash.HotseatTransition.Drag.PresentationTime",
 		"Ash.HotseatWidgetAnimation.Widget.AnimationSmoothness.TransitionToHiddenHotseat",
-	), perfutil.StoreAllWithHeuristics)
+	), perfutil.StoreAllWithHeuristics(""))
 
 	// This part works as:
 	// - enter into the overview mode
@@ -322,7 +322,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		"Ash.Overview.WindowDrag.PresentationTime.TabletMode",
 		"Ash.SplitViewResize.AnimationSmoothness.DividerAnimation",
 		"Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview",
-	), perfutil.StoreAllWithHeuristics)
+	), perfutil.StoreAllWithHeuristics(""))
 
 	// Check the validity of histogram data.
 	for _, err := range r.Values().Verify(ctx, expects) {

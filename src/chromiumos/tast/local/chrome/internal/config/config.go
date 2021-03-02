@@ -131,22 +131,24 @@ func ParseCreds(creds string) ([]Creds, error) {
 // - "customized": Reuse checking logic is expected to be customized in customizedReuseCheck() function.
 // This tag must be set for every field with one of the above values. Otherwise, unit test will fail.
 type Config struct {
-	Creds                  Creds     `reuse_match:"true"` // login credentials
-	NormalizedUser         string    `reuse_match:"true"` // user with domain added, periods removed, etc.
-	KeepState              bool      `reuse_match:"false"`
-	DeferLogin             bool      `reuse_match:"customized"`
-	LoginMode              LoginMode `reuse_match:"customized"`
-	TryReuseSession        bool      `reuse_match:"false"` // try to reuse existing login session if configuration matches
-	EnableLoginVerboseLogs bool      `reuse_match:"true"`  // enable verbose logging in some login related files
-	VKEnabled              bool      `reuse_match:"true"`
-	SkipOOBEAfterLogin     bool      `reuse_match:"false"` // skip OOBE post user login
-	InstallWebApp          bool      `reuse_match:"true"`  // auto install essential apps after user login
-	Region                 string    `reuse_match:"true"`
-	PolicyEnabled          bool      `reuse_match:"true"` // flag to enable policy fetch
-	DMSAddr                string    `reuse_match:"true"` // Device Management URL, or empty if using default
-	Enroll                 bool      `reuse_match:"true"` // whether device should be enrolled
-	ARCMode                ARCMode   `reuse_match:"true"`
-	RestrictARCCPU         bool      `reuse_match:"true"` // a flag to control cpu restrictions on ARC
+	Creds                           Creds     `reuse_match:"true"` // login credentials
+	NormalizedUser                  string    `reuse_match:"true"` // user with domain added, periods removed, etc.
+	KeepState                       bool      `reuse_match:"false"`
+	DeferLogin                      bool      `reuse_match:"customized"`
+	EnableRestoreTabs               bool      `reuse_match:"false"` // Skip creating browser windws on login
+	LoginMode                       LoginMode `reuse_match:"customized"`
+	TryReuseSession                 bool      `reuse_match:"false"` // try to reuse existing login session if configuration matches
+	EnableLoginVerboseLogs          bool      `reuse_match:"true"`  // enable verbose logging in some login related files
+	VKEnabled                       bool      `reuse_match:"true"`
+	SkipOOBEAfterLogin              bool      `reuse_match:"false"` // skip OOBE post user login
+	InstallWebApp                   bool      `reuse_match:"true"`  // auto install essential apps after user login
+	Region                          string    `reuse_match:"true"`
+	PolicyEnabled                   bool      `reuse_match:"true"` // flag to enable policy fetch
+	DMSAddr                         string    `reuse_match:"true"` // Device Management URL, or empty if using default
+	Enroll                          bool      `reuse_match:"true"` // whether device should be enrolled
+	ARCMode                         ARCMode   `reuse_match:"true"`
+	RestrictARCCPU                  bool      `reuse_match:"true"` // a flag to control cpu restrictions on ARC
+	SkipForceOnlineSignInForTesting bool      `reuse_match:"true"` // Disables online sign-in enforcement in tast tests.
 
 	// If BreakpadTestMode is true, tell Chrome's breakpad to always write
 	// dumps directly to a hardcoded directory.
@@ -169,17 +171,19 @@ type Option func(cfg *Config) error
 // NewConfig constructs Config from a list of options given to chrome.New.
 func NewConfig(opts []Option) (*Config, error) {
 	cfg := &Config{
-		Creds:                  defaultCreds,
-		KeepState:              false,
-		LoginMode:              FakeLogin,
-		VKEnabled:              false,
-		SkipOOBEAfterLogin:     true,
-		EnableLoginVerboseLogs: false,
-		InstallWebApp:          false,
-		Region:                 "us",
-		PolicyEnabled:          false,
-		Enroll:                 false,
-		BreakpadTestMode:       true,
+		Creds:                           defaultCreds,
+		KeepState:                       false,
+		LoginMode:                       FakeLogin,
+		VKEnabled:                       false,
+		SkipOOBEAfterLogin:              true,
+		EnableLoginVerboseLogs:          false,
+		InstallWebApp:                   false,
+		Region:                          "us",
+		PolicyEnabled:                   false,
+		Enroll:                          false,
+		BreakpadTestMode:                true,
+		EnableRestoreTabs:               false,
+		SkipForceOnlineSignInForTesting: false,
 	}
 	for _, opt := range opts {
 		if err := opt(cfg); err != nil {

@@ -151,7 +151,7 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 		"Apps.StateTransition.AnimationSmoothness.FullscreenSearch.ClamshellMode",
 		"Apps.StateTransition.AnimationSmoothness.FullscreenAllApps.ClamshellMode",
 		"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode",
-	), perfutil.StoreAllWithHeuristics)
+	), perfutil.StoreAllWithHeuristics(""))
 
 	// Controls of the launcher by mouse drag:
 	// - drag up from the bottom of the screen to open the launcher
@@ -175,7 +175,7 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 		return nil
 	},
 		"Apps.StateTransition.Drag.PresentationTime.ClamshellMode",
-	), perfutil.StoreAllWithHeuristics)
+	), perfutil.StoreAllWithHeuristics(""))
 
 	// Controls of the quick settings:
 	// - open the quick settings
@@ -222,7 +222,7 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 	},
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToCollapsed",
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToExpanded",
-	), perfutil.StoreAllWithHeuristics)
+	), perfutil.StoreAllWithHeuristics(""))
 
 	// TODO(crbug.com/1141164): add notification-related metrics once it's
 	// supported.
