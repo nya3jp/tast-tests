@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6b24efe8_807aa805",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-02T10:11:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9b4014a_0641338f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "40432efe_a3c4aa1b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -176,6 +200,30 @@
       "writtenOn": "2021-03-02T09:46:31Z",
       "side": 1,
       "message": "Maybe use well known phrase for this type of error: \"failed to wait for animation finished\"\n\nhttps://source.chromium.org/search?q\u003dui.WaitForLocationChangeCompleted\u0026start\u003d1",
+      "range": {
+        "startLine": 149,
+        "startChar": 31,
+        "endLine": 149,
+        "endChar": 109
+      },
+      "revId": "5e66b3119e7ed900ccec6391dccc8c989c71db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a210c9bb_89e6be9e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-02T10:11:44Z",
+      "side": 1,
+      "message": "\"failed to wait for animation finished\" such a message IMHO, when failure occurs does not provide much of a value as logs don\u0027t have enough details and WaitForLocationChangeComplete appears in several places. \nI think, all failure messages should give really clear what was attempted to be done and that it failed.",
+      "parentUuid": "eded0023_7fb2c507",
       "range": {
         "startLine": 149,
         "startChar": 31,
