@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "571a434f_75a4f0c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/share_files_to_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-02T01:58:46Z",
+      "side": 1,
+      "message": "You don\u0027t really need to include the fixture timeout.",
+      "range": {
+        "startLine": 33,
+        "startChar": 11,
+        "endLine": 33,
+        "endChar": 48
+      },
+      "revId": "6fbd5b1676c8bd05a55777dd9c11b54ce5a28550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b3b886_008e163f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/share_files_to_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-02T01:58:46Z",
+      "side": 1,
+      "message": "Do you mind making all the const variable start with lower case for consistency?\n\nandroidButtonClassName, androidTextClassName, androidImageClassName, defaultUITimeout, downloadButtonTxt.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "6fbd5b1676c8bd05a55777dd9c11b54ce5a28550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
