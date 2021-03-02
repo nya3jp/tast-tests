@@ -807,6 +807,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1847d1d0_5893249c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/system_proxy_for_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-02T10:26:52Z",
+      "side": 1,
+      "message": "It looks like \"android_vm\" will enable ARCVM preconditions (arc.VMBooted / arc.VMBootedInTabletMode) in tests. From the go/tast-deps page:\n\n\u003eandroid_vm - The ability to run Android apps in VM instead of container.",
+      "parentUuid": "caefb39f_e32f3fdf",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "ee7b11b32e3ba6080b84ffcdd47e848281243b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d14bca34_83547066",
         "filename": "src/chromiumos/tast/services/cros/policy/policy.pb.go",
         "patchSetId": 1
