@@ -512,14 +512,14 @@ func (a *AndroidNearbyDevice) SetupDevice(ctx context.Context, dataUsage DataUsa
 }
 
 // eventWaitAndGet waits for the specified event associated with the RPC that returned callbackID to appear in the snippet's event cache.
-func (a *AndroidNearbyDevice) eventWaitAndGet(ctx context.Context, callbackID string, eventName SnippetEvent, timeout time.Duration) error {
+func (a *AndroidNearbyDevice) eventWaitAndGet(ctx context.Context, callbackID string, eventName SnippetEvent, timeout time.Duration) (jsonRPCResponse, error) {
+	var res jsonRPCResponse
 	id, err := a.clientRPCRequest(ctx, "eventWaitAndGet", callbackID, eventName, int(timeout.Milliseconds()))
 	if err != nil {
-		return err
+		return res, err
 	}
 	// Read response.
-	_, err = a.clientRPCResponse(ctx, id, timeout)
-	return err
+	return a.clientRPCResponse(ctx, id, timeout)
 }
 
 // ReceiveFile starts receiving with a timeout.
@@ -539,13 +539,37 @@ func (a *AndroidNearbyDevice) ReceiveFile(ctx context.Context, senderName, recei
 	return nil
 }
 
+// AwaitReceiverAccept should be used to wait for the onAwaitingReceiverAccept SnippetEvent, which indicates
+// that the Android sender has successfully connected to the receiver. The response includes the secure connection token.
+func (a *AndroidNearbyDevice) AwaitReceiverAccept(ctx context.Context, timeout time.Duration) (string, error) {
+	if a.transferCallback == "" {
+		return "", errors.New("transferCallback is not set, a share needs to be initiated first")
+	}
+	res, err := a.eventWaitAndGet(ctx, a.transferCallback, SnippetEventOnAwaitingReceiverAccept, timeout)
+	if err != nil {
+		return "", errors.Wrap(err, "failed waiting for onAwaitingReceiverAccept event to know that Android sender has connected to receiver")
+	}
+	// Result contains multiple key/value pairs including another map called 'data' which contains the share token.
+	// Unmarshall to map instead of building a matching struct just to get one value.
+	var result map[string]interface{}
+	if err := json.Unmarshal(res.Result, &result); err != nil {
+		return "", errors.Wrap(err, "failed to read result map from json response")
+	}
+	token := result["data"].(map[string]interface{})["token"]
+	tokenStr, ok := token.(string)
+	if !ok {
+		return "", errors.Wrap(err, "share token in onAwaitingReceiverAccept response was not a string")
+	}
+	return tokenStr, nil
+}
+
 // AwaitReceiverConfirmation should be used after ReceiveFile to wait for the onLocalConfirmation SnippetEvent, which indicates
 // that the Android device has detected the incoming share and is awaiting confirmation to begin the transfer.
 func (a *AndroidNearbyDevice) AwaitReceiverConfirmation(ctx context.Context, timeout time.Duration) error {
 	if a.transferCallback == "" {
 		return errors.New("transferCallback is not set, ReceiveFile should be executed first")
 	}
-	if err := a.eventWaitAndGet(ctx, a.transferCallback, SnippetEventOnLocalConfirmation, timeout); err != nil {
+	if _, err := a.eventWaitAndGet(ctx, a.transferCallback, SnippetEventOnLocalConfirmation, timeout); err != nil {
 		return errors.Wrap(err, "failed waiting for onLocalConfirmation event to know that Android is ready to start the transfer")
 	}
 	return nil
@@ -557,7 +581,7 @@ func (a *AndroidNearbyDevice) AwaitSharingStopped(ctx context.Context, timeout t
 	if a.transferCallback == "" {
 		return errors.New("transferCallback is not set, a share needs to be initiated first")
 	}
-	if err := a.eventWaitAndGet(ctx, a.transferCallback, SnippetEventOnStop, timeout); err != nil {
+	if _, err := a.eventWaitAndGet(ctx, a.transferCallback, SnippetEventOnStop, timeout); err != nil {
 		return errors.Wrap(err, "failed waiting for onLocalConfirmation event to know that Android is ready to start the transfer")
 	}
 	return nil
