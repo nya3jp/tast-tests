@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b229218_dda4983b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-02T09:01:49Z",
+      "side": 1,
+      "message": "nit: focus in arc.DragDrop.vm",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "93c350045a3d865121be9e09bf09afda7b0e5742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb72d9cc_5960222d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-02T09:01:49Z",
+      "side": 1,
+      "message": "is it stable already? if not, please change to \"is failing\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "93c350045a3d865121be9e09bf09afda7b0e5742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d222c9f3_944b2f1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-02T09:01:49Z",
+      "side": 1,
+      "message": "please describe what changes you have in the CL. It just a background which describes why do you need this CL.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "93c350045a3d865121be9e09bf09afda7b0e5742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "69f90c96_fdb78311",
@@ -31,6 +100,46 @@
       "writtenOn": "2021-03-02T03:10:22Z",
       "side": 1,
       "message": "tast-owners@: Please take a look. Thank you.\nyhanada@: Thank you for reviewing.",
+      "revId": "93c350045a3d865121be9e09bf09afda7b0e5742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d0833b7_7d42d9a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-02T09:01:49Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "93c350045a3d865121be9e09bf09afda7b0e5742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "414de8c8_b0f16163",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-02T09:01:49Z",
+      "side": 1,
+      "message": "nit: rename it to \"failed to call setArcAppWindowFocus\" to be more specific",
+      "range": {
+        "startLine": 756,
+        "startChar": 27,
+        "endLine": 756,
+        "endChar": 51
+      },
       "revId": "93c350045a3d865121be9e09bf09afda7b0e5742",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
