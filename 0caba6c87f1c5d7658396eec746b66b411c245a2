@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e4a217_f3e8a066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-03-02T09:59:51Z",
+      "side": 1,
+      "message": "LGTM % nits but please also wait for Hugo!",
+      "revId": "0caba6c87f1c5d7658396eec746b66b411c245a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af24d474_02ac0597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-03-02T09:59:51Z",
+      "side": 1,
+      "message": "nit: performing a full-text search on",
+      "range": {
+        "startLine": 129,
+        "startChar": 77,
+        "endLine": 129,
+        "endChar": 84
+      },
+      "revId": "0caba6c87f1c5d7658396eec746b66b411c245a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0171573e_d55fca71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/extension_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-03-02T09:59:51Z",
+      "side": 1,
+      "message": "nit: Here also (similar to the other CL) I\u0027d be happy if we could explicitly comment that this test assumes that the user identified by allowlist.ext_username / allowlist.ext_password gets an enterprise policy from DMServer which contains the extension in the ExtensionInstallForceList policy.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 48
+      },
+      "revId": "0caba6c87f1c5d7658396eec746b66b411c245a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
