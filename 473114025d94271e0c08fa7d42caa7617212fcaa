@@ -16,6 +16,23 @@
       "message": "PTAL\nThanks",
       "revId": "473114025d94271e0c08fa7d42caa7617212fcaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0995ef1_d0433eb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-02T06:27:41Z",
+      "side": 1,
+      "message": "LGTM for tast-style.",
+      "revId": "473114025d94271e0c08fa7d42caa7617212fcaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
