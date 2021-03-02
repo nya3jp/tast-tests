@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f109efa_81d5d400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/google_account_util.zip.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-02T13:29:37Z",
+      "side": 1,
+      "message": "I think the preparation is the responsibility of the framework, and moving it into somewhere in tests sounds like crossing the layering boundary.\nI understand the overhead and it\u0027s nice to optimized somehow, but I think it is should be carefully designed and discussed with Tast framework team and Cros/Chromium infra team to ensure the approach works consistently.\n\nMy suggestion is to keep it as is in this CL.\nIn the future, if it turns out it makes sense to add version into this json, we can do it at that timing.",
+      "parentUuid": "d5d41046_bc5cc610",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd471261_275bb7fa",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
         "patchSetId": 3
@@ -267,6 +285,24 @@
       "side": 1,
       "message": "Yeh I prefer the previous way too",
       "parentUuid": "6a6f7468_5a4962e7",
+      "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73fb5e43_f0925d0d",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-02T13:29:37Z",
+      "side": 1,
+      "message": "Tast in general prefers avoiding command execution. There are several reasons AFAIK:\n  - In autotest, we experienced that random commandline execution are used,\n    so that there are multiple ways to do some conceptually similar things.\n    That makes maintenance harder.\n  - Command line execution often looses some detailed errors. Taking the detailed\n    errors from subprocess is not so easy.\n  - Command execution often has runtime overhead. Also, it depends on external\n    environment.\n\nFor better stability and maintenance, we prefer go\u0027s standard libraries often.\n\nAs for existing ones, I think it\u0027s nice if they can be nicely cleaned up in the future. If you\u0027d like the verbosity can be hidden by introducing a utility function wrapping the code.",
+      "parentUuid": "bdfa42c8_033cba48",
       "revId": "b434f6fe9665c5fcdb684f39fa450c37a1852a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

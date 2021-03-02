@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2295bb99_b32aa23b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-02T13:29:37Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "73203cc01d8ccb76264d5446ce5debb4bc00b87e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f8d855_2ad9111a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-02T13:29:37Z",
+      "side": 1,
+      "message": "nit: and break, here?",
+      "revId": "73203cc01d8ccb76264d5446ce5debb4bc00b87e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
