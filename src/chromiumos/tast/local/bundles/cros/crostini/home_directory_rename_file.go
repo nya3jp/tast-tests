@@ -128,7 +128,7 @@ func HomeDirectoryRenameFile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to test Renaming files in Linux files: ", err)
 	}
 
-	ownerID, err := cryptohome.UserHash(ctx, cr.User())
+	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}

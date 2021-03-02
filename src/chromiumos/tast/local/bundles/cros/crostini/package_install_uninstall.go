@@ -93,7 +93,7 @@ func init() {
 func PackageInstallUninstall(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	cr := s.PreValue().(crostini.PreData).Chrome
-	filePath := fmt.Sprintf("/home/%s/package.deb", strings.Split(cr.User(), "@")[0])
+	filePath := fmt.Sprintf("/home/%s/package.deb", strings.Split(cr.NormalizedUser(), "@")[0])
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	if err := crostini.TransferToContainer(ctx, cont, s.DataPath("package.deb"), filePath); err != nil {

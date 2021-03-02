@@ -788,7 +788,7 @@ func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration t
 
 // savedDirs returns the paths to the folder where captured files might be saved.
 func savedDirs(ctx context.Context, cr *chrome.Chrome) ([]string, error) {
-	path, err := cryptohome.UserPath(ctx, cr.User())
+	path, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		return nil, err
 	}

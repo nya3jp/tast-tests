@@ -158,7 +158,7 @@ func ShareDrive(ctx context.Context, s *testing.State) {
 	)
 	testFolder := fmt.Sprintf("testFolderD_%d", rand.Intn(1000000000))
 
-	mountPath, err := drivefs.WaitForDriveFs(ctx, cr.User())
+	mountPath, err := drivefs.WaitForDriveFs(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed waiting for DriveFS to start: ", err)
 	}

@@ -57,7 +57,7 @@ func AppAndroidStudio(ctx context.Context, s *testing.State) {
 	defer func() {
 		// Restart crostini in the end to close all Android Studio related windows.
 		// This could be skipped once UI test is implemented against Crostini apps.
-		if err := terminalApp.RestartCrostini(keyboard, cont, cr.User())(cleanupCtx); err != nil {
+		if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(cleanupCtx); err != nil {
 			s.Log("Failed to restart crostini: ", err)
 		}
 	}()

@@ -69,7 +69,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	// If mountPath exists and API client is not nil, check if Drive has stabilized and return early if it has.
 	if p.mountPath != "" && p.APIClient != nil {
-		mountPath, err := WaitForDriveFs(ctx, p.cr.User())
+		mountPath, err := WaitForDriveFs(ctx, p.cr.NormalizedUser())
 		if err != nil {
 			s.Log("Failed waiting for DriveFS to stabilize: ", err)
 			chrome.Unlock()
@@ -105,7 +105,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 	}()
 
-	mountPath, err := WaitForDriveFs(ctx, p.cr.User())
+	mountPath, err := WaitForDriveFs(ctx, p.cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed waiting for DriveFS to start: ", err)
 	}

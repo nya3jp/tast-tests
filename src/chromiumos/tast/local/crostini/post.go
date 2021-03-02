@@ -58,7 +58,7 @@ func RunCrostiniPostTest(ctx context.Context, p PreData) {
 	if p.Container != nil {
 		machine = p.Container.VM
 	} else {
-		machine2, err := vm.GetRunningVM(ctx, p.Chrome.User())
+		machine2, err := vm.GetRunningVM(ctx, p.Chrome.NormalizedUser())
 		machine = machine2
 		if err != nil {
 			testing.ContextLog(ctx, "Failed to get running VM, won't get LXC logs: ", err)
@@ -70,7 +70,7 @@ func RunCrostiniPostTest(ctx context.Context, p PreData) {
 
 	// VM logs are stored on the host, so we don't need the VM to
 	// be running at all to get them.
-	trySaveVMLogs(ctx, dir, p.Chrome.User())
+	trySaveVMLogs(ctx, dir, p.Chrome.NormalizedUser())
 }
 
 // When we run trySaveContainerLogs we only want to capture logs since we last
