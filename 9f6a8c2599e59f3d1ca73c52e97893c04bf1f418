@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eac75efa_d12c3aa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-02T17:18:01Z",
+      "side": 1,
+      "message": "LGTM. Thanks for bearing with me through the back-and-forth, Prashant.",
+      "revId": "9f6a8c2599e59f3d1ca73c52e97893c04bf1f418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
