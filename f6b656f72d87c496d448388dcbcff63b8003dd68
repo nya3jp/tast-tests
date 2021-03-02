@@ -150,6 +150,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82b75159_6913f24a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-02T19:50:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure I said what I meant: a parameter generator would only\naffect the |Val| entry, and it\u0027s used for example in [1] for to\ncompose different small variations of the test parameters.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/encode_accel.go?q\u003dencode_accel.go%20encode.Make",
+      "parentUuid": "352eb767_24ea9468",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "f6b656f72d87c496d448388dcbcff63b8003dd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dd17323_c556ff15",
         "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
         "patchSetId": 5
