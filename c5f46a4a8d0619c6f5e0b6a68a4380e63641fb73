@@ -56,6 +56,30 @@
       },
       "revId": "c5f46a4a8d0619c6f5e0b6a68a4380e63641fb73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9812503_61f82cb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-02T17:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32947e89_ba1dd403",
+      "range": {
+        "startLine": 45,
+        "startChar": 50,
+        "endLine": 45,
+        "endChar": 70
+      },
+      "revId": "c5f46a4a8d0619c6f5e0b6a68a4380e63641fb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
