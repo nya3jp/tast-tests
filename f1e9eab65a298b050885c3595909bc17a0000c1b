@@ -94,6 +94,30 @@
       },
       "revId": "f1e9eab65a298b050885c3595909bc17a0000c1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c25b041_d8ea8718",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2021-03-03T02:12:13Z",
+      "side": 0,
+      "message": "I see. When do you plan to add VPx in xml file?\nCould we add xml before this CL?",
+      "parentUuid": "87c14698_0658215e",
+      "range": {
+        "startLine": 31,
+        "startChar": 18,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "f1e9eab65a298b050885c3595909bc17a0000c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
