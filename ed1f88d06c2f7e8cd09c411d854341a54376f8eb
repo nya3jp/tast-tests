@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "600c6fa0_32bbc21f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-03T14:59:33Z",
+      "side": 1,
+      "message": "nit: Remove the \"would\".\n\nAlso, when migrating a test, add the origin. e.g:\n\nMigrates XXX from YYY:\n[include link to the original test]",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4788e8b_d07c469f",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
         "patchSetId": 3
@@ -43,6 +66,145 @@
         "startChar": 0,
         "endLine": 30,
         "endChar": 5
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b3ff710_36490f16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-03T14:59:33Z",
+      "side": 1,
+      "message": "I\u0027d add a comment saying that they are examples usernames/passwords",
+      "parentUuid": "ffe7487c_87bec4b3",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81a6a32e_4eea32bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-03T14:59:33Z",
+      "side": 1,
+      "message": "huge nit: user -\u003e username\n          oldPass -\u003e oldPassword\n          ...\n\n\nGo prefers short variable names. But this would be an exception since these are global variables and is better to have more explicit variable names",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba44e20_0e662167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-03T14:59:33Z",
+      "side": 1,
+      "message": "nit: ditto (here and it the rest of the test)\n\n  Pass -\u003e Password\n\nUsually it is good to have short names, but in this case, it doesn\u0027t make the name significantly shorter... I\u0027d use the full word since it adds clarity.",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ceae5a6_8c837971",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-03T14:59:33Z",
+      "side": 1,
+      "message": "here and below:\nadd docstrings for all non-trivial functions, even if they are non-public:\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f496f3_80f1ace0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-03T14:59:33Z",
+      "side": 1,
+      "message": "nit: I\u0027d just use \"change\"... consistent with the previous error message.\n\nIt seems that the caller will then add the \"failed to migrate...\" to the error message.",
+      "range": {
+        "startLine": 51,
+        "startChar": 21,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346ccbbc_88623ceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-03T14:59:33Z",
+      "side": 1,
+      "message": "nit: here and below (e.g: L83)\n\nAlthough it is implicit that the old password should not work, mention it in the error message. e.g:\n\n\"Cryptohome was successfully mounted with the old password; want: should have failed\"\n(or something like that).\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 37
       },
       "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
