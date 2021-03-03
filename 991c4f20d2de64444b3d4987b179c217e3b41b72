@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1799e033_74436df9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-03-03T01:04:34Z",
+      "side": 1,
+      "message": "+1 in principle, deferring to Eric for actual implementation :-)",
+      "revId": "991c4f20d2de64444b3d4987b179c217e3b41b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
