@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b51915f8_1dfbf2df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-03T21:33:12Z",
+      "side": 1,
+      "message": "Ok then I will abandon this CL and use one large CL",
+      "parentUuid": "e7cd62c0_24692bae",
+      "revId": "4b11de0637a6803b2f51bf176e082264f060eebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c71d6f41_1200f573",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
         "patchSetId": 2
