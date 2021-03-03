@@ -231,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "063c473f_c5944c41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T06:36:04Z",
+      "side": 1,
+      "message": "An example to add \"cert_provision\":\nhttp://crrev.com/c/2505326\nhttp://crrev.com/c/2506971\nhttp://crrev.com/c/2506863",
+      "parentUuid": "448f2a0c_78a3236a",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de1337e3_eedfc3ab",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 1
@@ -313,6 +337,30 @@
       "side": 1,
       "message": "I am not a go programmer, so why that over map[string]bool?",
       "parentUuid": "4de15b83_f0c4f8f2",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92de0f1_53873014",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T06:36:04Z",
+      "side": 1,
+      "message": "The difference is something like \"std::map\u003cstring,bool\u003e\" v.s. \"std::set\u003cstring\u003e\" in C++.\nBut I think it\u0027s ok if you don\u0027t want to change it.",
+      "parentUuid": "f077669e_fe3fc9b3",
       "range": {
         "startLine": 50,
         "startChar": 19,
