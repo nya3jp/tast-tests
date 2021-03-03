@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66c0db86_7098bd9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-03T21:47:46Z",
+      "side": 1,
+      "message": "Sorry it\u0027s not clear to me which precondition you\u0027re referring to here",
+      "parentUuid": "050c9e91_43ea61fa",
+      "revId": "4b11de0637a6803b2f51bf176e082264f060eebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98c56e4d_d15d8918",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
         "patchSetId": 2
