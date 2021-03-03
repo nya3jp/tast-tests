@@ -35,7 +35,7 @@ func VMPstoreDump(ctx context.Context, s *testing.State) {
 	)
 
 	// run the vm_pstore_dump command
-	buf, err := testexec.CommandContext(ctx, vmPstoreDumpPath).Output(testexec.DumpLogOnError)
+	buf, err := testexec.CommandContext(ctx, "/usr/bin/sudo", "-u", "crosvm", vmPstoreDumpPath).Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to get the output of vm_pstore_dump command: ", err)
 	}
