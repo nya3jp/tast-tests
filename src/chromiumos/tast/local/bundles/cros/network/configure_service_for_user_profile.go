@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
@@ -32,15 +31,12 @@ func init() {
 
 		Params: []testing.Param{
 			{
-				Name: "guest",
-				// It's a bit odd to create a single-use precondition; this is just for symmetry with
-				// the chrome.LoggedIn() usage, where we don't need a separate login instance; we can
-				// share with other tests.
-				Pre: chrome.NewPrecondition("guest_logged_in", chrome.GuestLogin()),
+				Name:    "guest",
+				Fixture: "chromeLoggedInGuest",
 			},
 			{
-				Name: "normal",
-				Pre:  chrome.LoggedIn(),
+				Name:    "normal",
+				Fixture: "chromeLoggedIn",
 			},
 		},
 	})
