@@ -16,6 +16,57 @@
       "message": "Jao-Ke and tast owner, review please\n\nOthers, FYI",
       "revId": "cf4eec5385c446ea685a76218176c0a408074d28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d451ec74_889c2dff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-03T14:41:29Z",
+      "side": 1,
+      "message": "LGTM with comments.",
+      "revId": "cf4eec5385c446ea685a76218176c0a408074d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c5177ae_ce768990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-03T14:41:29Z",
+      "side": 1,
+      "message": "optional: if there\u0027s no special reasons in this order, maybe sort in the lexicographical order?",
+      "revId": "cf4eec5385c446ea685a76218176c0a408074d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e83d93_a3129e7a",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-03T14:41:29Z",
+      "side": 1,
+      "message": "and align the order here.",
+      "revId": "cf4eec5385c446ea685a76218176c0a408074d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
