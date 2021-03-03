@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c05e567_a8b2bb30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T02:30:26Z",
+      "side": 1,
+      "message": "PTAL.\n\nAfter chatted with oshima, we agreed that to supply a bit more realistic icon data as the generated icon images are usually too simple and encoded into a very small file size.  I chose up the default app icon image https://source.chromium.org/chromium/chromium/src/+/master:extensions/browser/resources/default_200_percent/app_default_icon.png;l\u003d1 for the image of the app.",
+      "revId": "29f5e148cb195c2ed769830ce8f4e410937ebd91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
