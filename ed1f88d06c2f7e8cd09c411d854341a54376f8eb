@@ -22,6 +22,30 @@
       },
       "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffe7487c_87bec4b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T14:07:28Z",
+      "side": 1,
+      "message": "Seems tast team doesn\u0027t want to make too many dependency:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2712270/15..28/src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_non_dirs.go#b45",
+      "parentUuid": "a4788e8b_d07c469f",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
