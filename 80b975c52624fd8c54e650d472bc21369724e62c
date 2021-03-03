@@ -453,6 +453,30 @@
       },
       "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e47cdb64_03e5b7af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-03-03T14:14:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure if GB5 will change its UI layout. Since we rely on UI layout to get score, will it be better if we stores a fixed version of GB5 apk in our server (eg. google cloud?) and download from there instead of getting latest version everytime on playstore?\n\nIf we are certain that GB5 won\u0027t change it\u0027s UI layout, then current solution is okay.",
+      "parentUuid": "a1c19d85_df8ecde5",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
