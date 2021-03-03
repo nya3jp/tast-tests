@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39780b07_e2c4e45c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-03T23:53:45Z",
+      "side": 1,
+      "message": "Might be out-of-scope for this change, but initialisms like FPMCU should be kept in a consistent case: so, \"fpmcu\" or \"FPMCU\", but not \"Fpmcu\".\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57bfae33_29e2cf3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
         "patchSetId": 3
@@ -66,6 +89,23 @@
         "endLine": 173,
         "endChar": 68
       },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a358e35_2e63b47a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-03T23:53:45Z",
+      "side": 1,
+      "message": "AFAICT some DUTs expect pp1800 voltage. For example: zork, coral, octopus, grunt. Will this work on such DUTs?",
       "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
