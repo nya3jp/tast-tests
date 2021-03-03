@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57bfae33_29e2cf3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-03T11:04:54Z",
+      "side": 1,
+      "message": "Only the name is being used here. Consider just passing what you need.",
+      "range": {
+        "startLine": 140,
+        "startChar": 23,
+        "endLine": 140,
+        "endChar": 44
+      },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b597bb_f950f41d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-03T11:04:54Z",
+      "side": 1,
+      "message": "Seems getFpmcuBoardName is only using name.",
+      "range": {
+        "startLine": 145,
+        "startChar": 37,
+        "endLine": 145,
+        "endChar": 58
+      },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8315b5e_7ad5ec0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-03T11:04:54Z",
+      "side": 1,
+      "message": "Seems the name is only being used here? Should just be able to pass name as string.",
+      "range": {
+        "startLine": 173,
+        "startChar": 47,
+        "endLine": 173,
+        "endChar": 68
+      },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07525e99_252b8875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-03T11:04:54Z",
+      "side": 1,
+      "message": "nit: Failed to get FPMCU console path",
+      "range": {
+        "startLine": 258,
+        "startChar": 11,
+        "endLine": 258,
+        "endChar": 40
+      },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c00126ac_74de9299",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-03T11:04:54Z",
+      "side": 1,
+      "message": "nit: Failed to flash unittest binary (keeping error message pattern consistent)",
+      "range": {
+        "startLine": 283,
+        "startChar": 11,
+        "endLine": 283,
+        "endChar": 42
+      },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
