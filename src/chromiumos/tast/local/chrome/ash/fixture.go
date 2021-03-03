@@ -25,6 +25,15 @@ func init() {
 		SetUpTimeout:    fixtureTimeout,
 		TearDownTimeout: fixtureTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "install2Apps",
+		Desc:            "Install 2 fake apps in a temporary directory",
+		Contacts:        []string{"mukai@chromium.org"},
+		Impl:            &fakeAppsFixture{numApps: 2},
+		SetUpTimeout:    fixtureTimeout,
+		TearDownTimeout: fixtureTimeout,
+	})
 }
 
 type fakeAppsFixture struct {

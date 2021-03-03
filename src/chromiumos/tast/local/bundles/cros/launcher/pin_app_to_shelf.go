@@ -21,14 +21,6 @@ import (
 
 var shelfAppButton = "ash/ShelfAppButton"
 
-// loggedInWith2FakeApps returns the precondition that Chrome is already
-// logged in and 2 fake applications (extensions) are installed. PreValue for
-// the test with this precondition is an instance of *chrome.Chrome.
-// The parameter name makes sure each mode get a fresh login with fake apps.
-func loggedInWith2FakeApps(name string) testing.Precondition {
-	return ash.NewFakeAppPrecondition("PinAppToShelf_"+name, 2, chrome.NewPrecondition, false)
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: PinAppToShelf,
@@ -40,13 +32,12 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "install2Apps",
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
-			Pre:  loggedInWith2FakeApps("clamshell_mode"),
 			Val:  false,
 		}, {
 			Name:              "tablet_mode",
-			Pre:               loggedInWith2FakeApps("tablet_mode"),
 			Val:               true,
 			ExtraSoftwareDeps: []string{"tablet_mode"},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
@@ -59,7 +50,11 @@ func init() {
 func PinAppToShelf(ctx context.Context, s *testing.State) {
 	tabletMode := s.Param().(bool)
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx, s.FixtValue().([]chrome.Option)...)
+	if err != nil {
+		s.Fatal("Failed to start chrome: ", err)
+	}
+	defer cr.Close(ctx)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
