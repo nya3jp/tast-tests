@@ -46,6 +46,30 @@
       },
       "revId": "4a0d506c1ca5cd6bf03469018b7004db871b21c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b453e586_db42bfd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-03T18:39:10Z",
+      "side": 1,
+      "message": "The description kind of makes it sound like it would work if we specify \"localhost:9999\" as the \"spec\"?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/remote/servo/proxy.go#31\n\nLooks like it would skip https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/remote/servo/proxy.go#45 and just connect to local servo: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/remote/servo/proxy.go#78 ?",
+      "parentUuid": "9b928daf_5cf47532",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 1
+      },
+      "revId": "4a0d506c1ca5cd6bf03469018b7004db871b21c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
