@@ -39,6 +39,30 @@
       },
       "revId": "388750bdd6817356f207a5d63001d138f506cccf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f341e3b1_d770b8f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy/proxy_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-03T11:10:04Z",
+      "side": 1,
+      "message": "You\u0027re right, thanks!",
+      "parentUuid": "d86835be_18fc38ec",
+      "range": {
+        "startLine": 144,
+        "startChar": 74,
+        "endLine": 144,
+        "endChar": 76
+      },
+      "revId": "388750bdd6817356f207a5d63001d138f506cccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
