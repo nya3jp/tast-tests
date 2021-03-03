@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37022104_070c673b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-03-03T01:32:36Z",
+      "side": 1,
+      "message": "LGTM for pin_app_to_shelf.go",
+      "revId": "ac6e9b669d2ce41c6eb65ad82ff1ecfbff14ae03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
