@@ -69,6 +69,24 @@
       "parentUuid": "cf7389f9_cdb08abb",
       "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6dc5580_40d0bfb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-03-03T08:25:24Z",
+      "side": 1,
+      "message": "Is that ok? Is there any concern?\nOtherwise, I\u0027ll need to store it somewhere and re-check in after 3-6 months (wait for the lab setup).",
+      "parentUuid": "ef00f036_513223ca",
+      "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
