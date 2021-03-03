@@ -369,6 +369,34 @@ func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.Te
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
+// TouchAndPlayVideo func verifies app perform touch and play video successfully without crash or ANR.
+func TouchAndPlayVideo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	if tabletModeEnabled {
+		s.Log("Device is in tablet mode. Skipping test")
+		return
+	}
+	// Press enter key twice.
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	}
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	}
+	// To perform touch and play video.
+	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--pct-touch", "60", "--throttle", "100", "-v", "2000").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Error("Failed to perform monkey test touch and play video content: ", err)
+	}
+	if err := processMonkeyOutput(string(out)); err != nil {
+		s.Error("Touch and play videos are not working properly in the app: ", err)
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
