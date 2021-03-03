@@ -51,6 +51,24 @@
       "parentUuid": "f3483ba4_28066684",
       "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef00f036_513223ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-03T08:16:09Z",
+      "side": 1,
+      "message": "So you are going to submit this CL before we have the lab setup (maybe after getting Risan\u0027s approval), right?",
+      "parentUuid": "cf7389f9_cdb08abb",
+      "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
