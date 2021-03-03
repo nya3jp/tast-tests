@@ -93,6 +93,30 @@
       },
       "revId": "479cd9a70f67775626314ea092e01609d861750f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92614a81_6ea45820",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-03T02:44:36Z",
+      "side": 1,
+      "message": "Thanks, it\u0027s a lot clearer. I haven\u0027t seen that map type assertion before so it still feels a little weird but I\u0027m OK with it and think it makes sense.",
+      "parentUuid": "57b595f3_76e61e68",
+      "range": {
+        "startLine": 558,
+        "startChar": 25,
+        "endLine": 558,
+        "endChar": 58
+      },
+      "revId": "479cd9a70f67775626314ea092e01609d861750f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
