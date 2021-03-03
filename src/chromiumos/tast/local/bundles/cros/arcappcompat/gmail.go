@@ -33,6 +33,7 @@ var touchviewTestsForGmail = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForGmail},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Touchview: Rotate", Fn: testutil.TouchviewRotate},
 	{Name: "Touchview: Virtual Keyboard", Fn: testutil.TouchAndTextInputs},
 }
 
