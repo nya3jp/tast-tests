@@ -16,6 +16,46 @@
       "message": "Hi Victor,\n\nThanks a lot for the quick review! Please take another look!",
       "revId": "aa0a497152f0e272ac568c3cee9ae273cb4dc80b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd797c1_806191f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-03T11:32:16Z",
+      "side": 1,
+      "message": "nit: 3rd party app",
+      "range": {
+        "startLine": 119,
+        "startChar": 39,
+        "endLine": 119,
+        "endChar": 48
+      },
+      "revId": "aa0a497152f0e272ac568c3cee9ae273cb4dc80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ea3d76f_979ab470",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/arc_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-03T11:32:16Z",
+      "side": 1,
+      "message": "nit: add a comment about why a reboot is required.",
+      "revId": "aa0a497152f0e272ac568c3cee9ae273cb4dc80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
