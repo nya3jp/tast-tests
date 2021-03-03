@@ -10,6 +10,7 @@ This file implements miscellaneous and unsorted helpers.
 
 import (
 	"context"
+	"os/exec"
 	"path/filepath"
 	"time"
 
@@ -32,6 +33,12 @@ func (r *CmdRunnerRemote) Run(ctx context.Context, cmd string, args ...string) (
 		testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(append([]string{cmd}, args...)))
 	}
 	return r.d.Command(cmd, args...).Output(ctx)
+}
+
+// HasExitError return the exit status.
+func (r *CmdRunnerRemote) HasExitError(cmdErr error) bool {
+	var ee *exec.ExitError
+	return errors.As(cmdErr, &ee) && ee.Exited()
 }
 
 // NewCmdRunner creates a new CmdRunnerRemote instance associated with d.
