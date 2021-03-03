@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "358238f5_3b83c2c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-03T23:06:12Z",
+      "side": 1,
+      "message": "LGTM!",
+      "revId": "f6b656f72d87c496d448388dcbcff63b8003dd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cb5c578_820eec06",
@@ -192,6 +209,47 @@
         "endLine": 21,
         "endChar": 30
       },
+      "revId": "f6b656f72d87c496d448388dcbcff63b8003dd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5137902a_71aa5bc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-03T23:06:12Z",
+      "side": 1,
+      "message": "\u003e I think that usage of functions to construct Tast test Val params isn\u0027t strictly in-line with idiomatic Tast, like hidehiko@ said. Functionally it looks fine but idealistically the configuration should be static IIUC.\n\u003e \nOk, I assumed that because it\u0027s been reviewed and landed elsewhere then\nit was the way to go. It\u0027d be good to have a clear style, but that\u0027s\nindependent of this CL.\n\n\u003e W.R.T. reducing the number of lines. My understanding is that idiomatic Go favours explicitness over implicitness or reducing number of lines, and that this is the idiomatic Tast and Go way to do this, rather than using default values. But, I\u0027m happy to do it a different way if you want, e.g. relying on the default value for ChromeType. It won\u0027t be a simple switch of default value in the future though, since we will probably need some special configuration for lacros - we\u0027d have to at least audit each default value usage in the future before switching them.\n\u003e \n\u003e WDYT?\n\nI wouldn\u0027t know how lacros shall be enabled in the future, my thought was\nthat it would become the default operating condition and then we wouldn\u0027t\nneed this parameter at all. That said, I don\u0027t feel strongly about this,\nit was more to simplify future removal-of-flags.",
+      "parentUuid": "39098553_36d9bc3d",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "f6b656f72d87c496d448388dcbcff63b8003dd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bdced3e_489ef020",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-03T23:06:12Z",
+      "side": 1,
+      "message": "The C++ programmer in me would leave here an \n  assert(test_name contains \"lacros\")\nWDYT?",
       "revId": "f6b656f72d87c496d448388dcbcff63b8003dd68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
