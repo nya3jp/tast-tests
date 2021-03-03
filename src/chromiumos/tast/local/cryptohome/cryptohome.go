@@ -5,6 +5,8 @@
 // Package cryptohome operates on encrypted home directories.
 package cryptohome
 
+// TODO(b/182152667): We should deprecate the usage of this file
+
 import (
 	"context"
 	"fmt"
