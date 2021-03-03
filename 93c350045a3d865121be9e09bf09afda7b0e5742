@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a46c4b_50de968b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-03T05:00:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b229218_dda4983b",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "93c350045a3d865121be9e09bf09afda7b0e5742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb72d9cc_5960222d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "974e547c_4121d70f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-03T05:00:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb72d9cc_5960222d",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "93c350045a3d865121be9e09bf09afda7b0e5742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d222c9f3_944b2f1d",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-02T09:01:49Z",
       "side": 1,
       "message": "please describe what changes you have in the CL. It just a background which describes why do you need this CL.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "93c350045a3d865121be9e09bf09afda7b0e5742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3686fe9_69eb4713",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-03T05:00:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d222c9f3_944b2f1d",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -134,6 +206,30 @@
       "writtenOn": "2021-03-02T09:01:49Z",
       "side": 1,
       "message": "nit: rename it to \"failed to call setArcAppWindowFocus\" to be more specific",
+      "range": {
+        "startLine": 756,
+        "startChar": 27,
+        "endLine": 756,
+        "endChar": 51
+      },
+      "revId": "93c350045a3d865121be9e09bf09afda7b0e5742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e2a2f7_b6a457f9",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-03T05:00:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "414de8c8_b0f16163",
       "range": {
         "startLine": 756,
         "startChar": 27,
