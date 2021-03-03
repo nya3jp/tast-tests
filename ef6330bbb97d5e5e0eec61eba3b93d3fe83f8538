@@ -22,6 +22,30 @@
       },
       "revId": "ef6330bbb97d5e5e0eec61eba3b93d3fe83f8538",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d148ecf3_b2c667c8",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-03T00:14:25Z",
+      "side": 1,
+      "message": "Refactored adb setup out of AndroidDevice",
+      "parentUuid": "9f866bd4_9fc02ea5",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 3
+      },
+      "revId": "ef6330bbb97d5e5e0eec61eba3b93d3fe83f8538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
