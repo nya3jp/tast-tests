@@ -22,6 +22,30 @@
       },
       "revId": "a9fc303ab43d6a32d8309e3b9225132eb99ef5f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "614bd783_45eb4863",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-03T17:50:13Z",
+      "side": 1,
+      "message": "Kyle FYI too",
+      "parentUuid": "7cee2cac_210a4f57",
+      "range": {
+        "startLine": 515,
+        "startChar": 134,
+        "endLine": 515,
+        "endChar": 149
+      },
+      "revId": "a9fc303ab43d6a32d8309e3b9225132eb99ef5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
