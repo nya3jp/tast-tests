@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9006e538_6a3dcc01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-03T19:50:42Z",
+      "side": 1,
+      "message": "Hi Renuga, Thanks for CR+2. When I did CQ+2. I got commit message as, missing owners approval. Not sure why. So I also did CR+2. Wanted to let you know. Thanks.  ",
+      "revId": "2d1d68c19d4ebbb8fcc879bc5285968f38fd1256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
