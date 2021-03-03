@@ -759,3 +759,14 @@ func (p *Chaps) IsSoftwareBacked(ctx context.Context, key *KeyInfo) (bool, error
 
 	return false, errors.Errorf("unknown attribute value %s for kKeyInSoftware", isSoftwareBackedStr)
 }
+
+// ReplayWifiBySlot replays a EAP-TLS Wifi negotiation by slot.
+func (p *Chaps) ReplayWifiBySlot(ctx context.Context, slot int, args ...string) error {
+	cmdArgs := append([]string{"--replay_wifi", "--slot=" + strconv.Itoa(slot)}, args...)
+	binaryMsg, err := p.runner.Run(ctx, "p11_replay", cmdArgs...)
+	msg := string(binaryMsg)
+	if err != nil {
+		return errors.Wrapf(err, "failed to replay Wifi negotiation with message %q", msg)
+	}
+	return nil
+}
