@@ -167,6 +167,121 @@ func init() {
 					},
 				},
 			},
+			{
+				Name: "caret_highlight",
+				Val: []accessibilityTestCase{
+					{
+						name:      "enabled",
+						policyKey: "caretHighlight",
+						wantValue: true,
+						policies:  []policy.Policy{&policy.CaretHighlightEnabled{Val: true}},
+					},
+					{
+						name:      "disabled",
+						policyKey: "caretHighlight",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.CaretHighlightEnabled{Val: false}},
+					},
+					{
+						name:      "unset",
+						policyKey: "caretHighlight",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.CaretHighlightEnabled{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
+				Name: "cursor_highlight",
+				Val: []accessibilityTestCase{
+					{
+						name:      "enabled",
+						policyKey: "cursorHighlight",
+						wantValue: true,
+						policies:  []policy.Policy{&policy.CursorHighlightEnabled{Val: true}},
+					},
+					{
+						name:      "disabled",
+						policyKey: "cursorHighlight",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.CursorHighlightEnabled{Val: false}},
+					},
+					{
+						name:      "unset",
+						policyKey: "cursorHighlight",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.CursorHighlightEnabled{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
+				Name: "select_to_speak",
+				Val: []accessibilityTestCase{
+					{
+						name:      "enabled",
+						policyKey: "selectToSpeak",
+						wantValue: true,
+						policies:  []policy.Policy{&policy.SelectToSpeakEnabled{Val: true}},
+					},
+					{
+						name:      "disabled",
+						policyKey: "selectToSpeak",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.SelectToSpeakEnabled{Val: false}},
+					},
+					{
+						name:      "unset",
+						policyKey: "selectToSpeak",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.SelectToSpeakEnabled{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
+				Name: "spoken_feedback",
+				Val: []accessibilityTestCase{
+					{
+						name:      "enabled",
+						policyKey: "spokenFeedback",
+						wantValue: true,
+						policies:  []policy.Policy{&policy.SpokenFeedbackEnabled{Val: true}},
+					},
+					{
+						name:      "disabled",
+						policyKey: "spokenFeedback",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.SpokenFeedbackEnabled{Val: false}},
+					},
+					{
+						name:      "unset",
+						policyKey: "spokenFeedback",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.SpokenFeedbackEnabled{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
+				Name: "sticky_keys",
+				Val: []accessibilityTestCase{
+					{
+						name:      "enabled",
+						policyKey: "stickyKeys",
+						wantValue: true,
+						policies:  []policy.Policy{&policy.StickyKeysEnabled{Val: true}},
+					},
+					{
+						name:      "disabled",
+						policyKey: "stickyKeys",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.StickyKeysEnabled{Val: false}},
+					},
+					{
+						name:      "unset",
+						policyKey: "stickyKeys",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.StickyKeysEnabled{Stat: policy.StatusUnset}},
+					},
+				},
+			},
 		},
 	})
 }
