@@ -16,6 +16,23 @@
       "message": "slgtm",
       "revId": "19f6cdbca3b27058ef02b6e146e1fdd3dc5a43db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4309804d_0c479603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-03-03T16:02:42Z",
+      "side": 1,
+      "message": "Looks like it uses the same image for multiple sizes?\nIt\u0027s probably fine but it\u0027d be better if we can provide multiple sizes.",
+      "revId": "19f6cdbca3b27058ef02b6e146e1fdd3dc5a43db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
