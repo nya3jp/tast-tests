@@ -22,6 +22,30 @@
       },
       "revId": "d238395b0a54c01d06a2eb9f070176f3cc5b86d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc1fd07_e480ed91",
+        "filename": "src/chromiumos/tast/local/printing/lp/cups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-03-03T14:52:24Z",
+      "side": 1,
+      "message": "In this case, lpstat only produces output on stdout or stderr (not both).  We only attempt to parse it when the command succeeds.  I changed to SeparatedOutput to be explicit about that.",
+      "parentUuid": "61ae9b5d_aac2f71e",
+      "range": {
+        "startLine": 26,
+        "startChar": 58,
+        "endLine": 26,
+        "endChar": 72
+      },
+      "revId": "d238395b0a54c01d06a2eb9f070176f3cc5b86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
