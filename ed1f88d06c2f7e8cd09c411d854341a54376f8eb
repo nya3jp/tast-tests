@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "844723b4_d252e8c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T15:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "600c6fa0_32bbc21f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4788e8b_d07c469f",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cbaed1e_df6f2e4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T15:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b3ff710_36490f16",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81a6a32e_4eea32bb",
@@ -108,6 +156,30 @@
       "writtenOn": "2021-03-03T14:59:33Z",
       "side": 1,
       "message": "huge nit: user -\u003e username\n          oldPass -\u003e oldPassword\n          ...\n\n\nGo prefers short variable names. But this would be an exception since these are global variables and is better to have more explicit variable names",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8685f71f_93c7927d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T15:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a6a32e_4eea32bb",
       "range": {
         "startLine": 31,
         "startChar": 1,
@@ -164,6 +236,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43c11f1b_a488582c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T15:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba44e20_0e662167",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f159408f_242bfd01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T15:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ceae5a6_8c837971",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7f496f3_80f1ace0",
@@ -187,6 +307,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "617dee80_eb64202b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T15:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7f496f3_80f1ace0",
+      "range": {
+        "startLine": 51,
+        "startChar": 21,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c4d802e_abf125a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T15:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7f496f3_80f1ace0",
+      "range": {
+        "startLine": 51,
+        "startChar": 21,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "346ccbbc_88623ceb",
@@ -200,6 +368,30 @@
       "writtenOn": "2021-03-03T14:59:33Z",
       "side": 1,
       "message": "nit: here and below (e.g: L83)\n\nAlthough it is implicit that the old password should not work, mention it in the error message. e.g:\n\n\"Cryptohome was successfully mounted with the old password; want: should have failed\"\n(or something like that).\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "ed1f88d06c2f7e8cd09c411d854341a54376f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42e88b2_f836a7b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T15:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "346ccbbc_88623ceb",
       "range": {
         "startLine": 64,
         "startChar": 11,
