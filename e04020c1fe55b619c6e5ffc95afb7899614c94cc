@@ -16,6 +16,24 @@
       "message": "For the regression of interest, we\u0027ll want a test to run with -i; perhaps -i FMAP would always work. A test param for extra args might work: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/example/param.go;l\u003d24;drc\u003d3309c85d4331354a3fdd041995ef807c3a25aa4d.\n\nConsider adding a test case for -p ec (another test param for programmer?) and also covering -v as well.",
       "revId": "e04020c1fe55b619c6e5ffc95afb7899614c94cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dea5355d_012004bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-03-03T04:45:18Z",
+      "side": 1,
+      "message": "The EC part is a bit of scope run away here however for making this test more granular with params please see the WIP follow up:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2730235",
+      "parentUuid": "d6068da8_f6215a08",
+      "revId": "e04020c1fe55b619c6e5ffc95afb7899614c94cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
