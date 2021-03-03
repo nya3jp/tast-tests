@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a8136a_ad84e417",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-03T11:11:49Z",
+      "side": 1,
+      "message": "There\u0027s not current plan to add other allowlist tests. I\u0027d rather extend the service when it\u0027s required (YAGNI).",
+      "parentUuid": "2c06f1d7_17d4c870",
+      "revId": "b1b2bbfe0e02351b8171db16c944abb29e31a510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de670916_f64cda05",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-02T11:39:02Z",
       "side": 1,
       "message": "nit: to be",
+      "range": {
+        "startLine": 109,
+        "startChar": 47,
+        "endLine": 109,
+        "endChar": 52
+      },
+      "revId": "b1b2bbfe0e02351b8171db16c944abb29e31a510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8bbcb33_1a8aea9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-03T11:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de670916_f64cda05",
       "range": {
         "startLine": 109,
         "startChar": 47,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd712d59_da5ceab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-03T11:11:49Z",
+      "side": 1,
+      "message": "True, I mostly had it as a debug line because I was suspicious when the test ran successfully after the first try :D.",
+      "parentUuid": "7a399339_910208ab",
+      "revId": "b1b2bbfe0e02351b8171db16c944abb29e31a510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff910600_231f1da0",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-03-02T11:39:02Z",
       "side": 1,
       "message": "nit: allowlist",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "b1b2bbfe0e02351b8171db16c944abb29e31a510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f80c8548_194ba64c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/arc_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-03T11:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff910600_231f1da0",
       "range": {
         "startLine": 56,
         "startChar": 1,
