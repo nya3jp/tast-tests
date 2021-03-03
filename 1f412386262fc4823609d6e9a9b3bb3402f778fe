@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac35770_59063378",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-03T14:55:02Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "1f412386262fc4823609d6e9a9b3bb3402f778fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c6675c_d1266472",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-03T14:55:02Z",
+      "side": 1,
+      "message": "A cleanup context would be nice here in case of the test times out.\nIt can be added in a different CL.",
+      "range": {
+        "startLine": 103,
+        "startChar": 16,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "1f412386262fc4823609d6e9a9b3bb3402f778fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94f124b2_8d390420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-03T14:55:02Z",
+      "side": 1,
+      "message": "nit: Error\nEven if this step fails, it makes sense to check the restriction state.",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "1f412386262fc4823609d6e9a9b3bb3402f778fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2636c193_d1ff75c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-03T14:55:02Z",
+      "side": 1,
+      "message": "nit: Error",
+      "range": {
+        "startLine": 184,
+        "startChar": 7,
+        "endLine": 184,
+        "endChar": 12
+      },
+      "revId": "1f412386262fc4823609d6e9a9b3bb3402f778fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
