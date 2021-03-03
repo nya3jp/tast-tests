@@ -105,6 +105,24 @@
       "parentUuid": "e6dc5580_40d0bfb3",
       "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b6c9f2_1cf2072c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-03-03T08:47:48Z",
+      "side": 1,
+      "message": "Thanks. Let me clarify:\n\nIt is ok to submit this CL without the lab setup because we have marked it as disabled and added a TODO.\n// TODO(b/179736612): Enable the test when the lab setup is ready.\n//Attr:         []string{\"group:mainline\", \"informational\"},",
+      "parentUuid": "4d33bf21_f5841df9",
+      "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
