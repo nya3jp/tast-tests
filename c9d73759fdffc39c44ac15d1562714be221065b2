@@ -16,6 +16,40 @@
       "message": "I have moved ArtifactFiles and RemoteArtifactFiles to meta. Please review.",
       "revId": "c9d73759fdffc39c44ac15d1562714be221065b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "525490ff_0ae1c181",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-03T06:39:58Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "c9d73759fdffc39c44ac15d1562714be221065b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "becfed0b_b09177e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/data/artifact_files_UPLOADED",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-03T06:39:58Z",
+      "side": 1,
+      "message": "This file should be removed (we only need .external file)",
+      "revId": "c9d73759fdffc39c44ac15d1562714be221065b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
