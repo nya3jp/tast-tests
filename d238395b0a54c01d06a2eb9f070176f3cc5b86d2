@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ae9b5d_aac2f71e",
+        "filename": "src/chromiumos/tast/local/printing/lp/cups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-03T05:42:38Z",
+      "side": 1,
+      "message": "Please check if we could instead use Output or read stderr explicitly.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#combinedoutput",
+      "range": {
+        "startLine": 26,
+        "startChar": 58,
+        "endLine": 26,
+        "endChar": 72
+      },
+      "revId": "d238395b0a54c01d06a2eb9f070176f3cc5b86d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
