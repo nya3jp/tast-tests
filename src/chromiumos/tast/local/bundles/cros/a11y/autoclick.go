@@ -74,6 +74,13 @@ func Autoclick(ctx context.Context, s *testing.State) {
 	}
 	defer scroll.Release(ctx)
 
+	// We need to hover the mouse over the scroll button, so make sure the
+	// location is stable before we proceed. Otherwise, this can cause undesired
+	// failures.
+	if err := scroll.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for the scroll button to have a stable location: ", err)
+	}
+
 	// Move the mouse to the middle of the scroll button, which changes autoclick
 	// to scroll mode.
 	if err := mouse.Move(ctx, tconn, scroll.Location.CenterPoint(), 0); err != nil {
@@ -82,7 +89,16 @@ func Autoclick(ctx context.Context, s *testing.State) {
 
 	// Autoclick is in scroll mode once the scroll view appears.
 	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "AutoclickScrollBubbleView"}, 10*time.Second); err != nil {
-		s.Fatal("Failed to click the scroll button, the scroll view does not appear: ", err)
+		actualScroll, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
+			Name:      "Scroll",
+			ClassName: "FloatingMenuButton",
+			State:     map[ui.StateType]bool{ui.StateTypeOffscreen: false},
+		}, 10*time.Second)
+		if err != nil {
+			s.Fatal("Failed to find the autoclick scroll button: ", err)
+		}
+		defer actualScroll.Release(ctx)
+		s.Fatalf("Failed to click the scroll button; expected coordinates: %v, acutal coordinates: %v", scroll.Location.CenterPoint(), actualScroll.Location.CenterPoint())
 	}
 
 	// Change back to left click mode by finding the left click button and hovering.
