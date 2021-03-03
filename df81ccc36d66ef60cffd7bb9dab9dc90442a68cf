@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e8e5cd_ae0f15b1",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-03T22:13:07Z",
+      "side": 1,
+      "message": "No worries, I based this off of other examples of calling javascript in tast. I tried a few different ways to simply it, but this was the only one that worked.",
+      "parentUuid": "6184e674_9a7dcc2f",
+      "range": {
+        "startLine": 44,
+        "startChar": 43,
+        "endLine": 44,
+        "endChar": 89
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18956a46_ef6bc2db",
