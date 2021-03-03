@@ -33,6 +33,24 @@
       "message": "Hm, my understanding is, this can only be submitted if we have the lab setup in https://b.corp.google.com/issues/179736612 ?",
       "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf7389f9_cdb08abb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-03-03T07:55:38Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve marked it as disabled.\n// TODO(b/179736612): Enable the test when the lab setup is ready.\n//Attr:         []string{\"group:mainline\", \"informational\"},\n\nThis test is still useful when I need to run it on my local setup during WFH and also to keep track of the code in source control while waiting for the lab setup.",
+      "parentUuid": "f3483ba4_28066684",
+      "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
