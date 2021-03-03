@@ -21,7 +21,7 @@ func init() {
 		Name:            "crosHealthdRunning",
 		Desc:            "The croshealthd daemon is available and running",
 		Contacts:        []string{"tbegin@google.com", "pmoy@google.com"},
-		SetUpTimeout:    5 * time.Second,
+		SetUpTimeout:    30 * time.Second,
 		ResetTimeout:    5 * time.Second,
 		PreTestTimeout:  1 * time.Second,
 		PostTestTimeout: 1 * time.Second,
