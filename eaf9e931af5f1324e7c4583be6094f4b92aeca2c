@@ -16,6 +16,24 @@
       "message": "Doesn\u0027t it leave the OS in the locked state? What happens if you a test after it (without executing the precondition again)?",
       "revId": "eaf9e931af5f1324e7c4583be6094f4b92aeca2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eab84e8_0994da6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-03T14:15:48Z",
+      "side": 1,
+      "message": "Swapped the 2 sub-tests and it\u0027s not in a locked state.",
+      "parentUuid": "74b45f89_c23eae26",
+      "revId": "eaf9e931af5f1324e7c4583be6094f4b92aeca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
