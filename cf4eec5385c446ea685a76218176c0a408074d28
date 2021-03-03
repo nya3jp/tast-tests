@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a9e1a5_d3500c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-03T19:53:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c5177ae_ce768990",
+      "revId": "cf4eec5385c446ea685a76218176c0a408074d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61e83d93_a3129e7a",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-03-03T14:41:29Z",
       "side": 1,
       "message": "and align the order here.",
+      "revId": "cf4eec5385c446ea685a76218176c0a408074d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea624093_c26652d9",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-03T19:53:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61e83d93_a3129e7a",
       "revId": "cf4eec5385c446ea685a76218176c0a408074d28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
