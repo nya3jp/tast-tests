@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c61a965c_5fa402e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T21:35:21Z",
+      "side": 1,
+      "message": "There is already a GSC software dep, so I fixed everything else.\n\nPTAL.\n\n- Greg ",
+      "revId": "681c555efde250799abc93fdb0d5c0bf08079dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
