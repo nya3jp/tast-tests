@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
@@ -369,6 +370,48 @@ func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.Te
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
+// TouchviewRotate Test verifies if app performs rotation successfully without crash or ANR.
+func TouchviewRotate(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+
+	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
+	if err != nil {
+		s.Fatal("Failed to get window info: ", err)
+	}
+	s.Logf("App Display ID, info.DisplayID %+v", info.DisplayID)
+
+	// Set display orientation to natural state 90 degree.
+	if err := display.SetDisplayRotationSync(ctx, tconn, info.DisplayID, "Rotate90"); err != nil {
+		s.Fatal("Failed to set app to 90 rotation: ", err)
+	} else {
+		s.Log("Set app to 90 rotation was successful")
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+
+	// Set display orientation to natural state 180 degree.
+	if err := display.SetDisplayRotationSync(ctx, tconn, info.DisplayID, "Rotate180"); err != nil {
+		s.Fatal("Failed to set app to 180 rotation: ", err)
+	} else {
+		s.Log("Set app to 180 rotation was successful")
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+
+	// Set display orientation to natural state 270 degree.
+	if err := display.SetDisplayRotationSync(ctx, tconn, info.DisplayID, "Rotate270"); err != nil {
+		s.Fatal("Failed to set app to 270 rotation: ", err)
+	} else {
+		s.Log("Set app to 270 rotation was successful")
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+
+	// Set display orientation to natural state 0 degree.
+	if err := display.SetDisplayRotationSync(ctx, tconn, info.DisplayID, "Rotate0"); err != nil {
+		s.Fatal("Failed to set app to 0 rotation: ", err)
+	} else {
+		s.Log("Set app to 0 rotation was successful")
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
@@ -537,15 +580,27 @@ func processMonkeyOutput(output string) error {
 }
 
 // HandleDialogBoxes func will handle the dialog box
+// HandleDialogBoxes func will handle the dialog box
 func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appPkgName string) {
 	const (
 		allowText                   = "ALLOW"
+		agreeText                   = "Agree"
+		continueText                = "Continue"
+		notNowText                  = "NOT NOW"
+		okText                      = "OK"
+		okayText                    = "OKAY"
+		skipText                    = "Skip"
 		whileUsingThisAppButtonText = "WHILE USING THE APP"
 	)
 
 	allowButton := d.Object(ui.TextMatches("(?i)" + allowText))
 	appverifer := d.Object(ui.PackageName(appPkgName))
-	permissionButton := d.Object(ui.ClassName(AndroidButtonClassName))
+	agreeButton := d.Object(ui.TextMatches("(?i)" + agreeText))
+	continueButton := d.Object(ui.TextMatches("(?i)" + continueText))
+	notNowButton := d.Object(ui.TextMatches("(?i)" + notNowText))
+	okButton := d.Object(ui.TextMatches("(?i)" + okText))
+	okayButton := d.Object(ui.TextMatches("(?i)" + okayText))
+	skipButton := d.Object(ui.TextMatches("(?i)" + skipText))
 	whileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -557,9 +612,29 @@ func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appP
 			s.Log("Click on whileUsingThisApp")
 			whileUsingThisAppButton.Click(ctx)
 		}
-		if err := permissionButton.Exists(ctx); err == nil {
-			s.Log("Click on permissionButton")
-			permissionButton.Click(ctx)
+		if err := notNowButton.Exists(ctx); err == nil {
+			s.Log("Click on notNowButton")
+			notNowButton.Click(ctx)
+		}
+		if err := agreeButton.Exists(ctx); err == nil {
+			s.Log("Click on agreeButton")
+			agreeButton.Click(ctx)
+		}
+		if err := okButton.Exists(ctx); err == nil {
+			s.Log("Click on okButton")
+			okButton.Click(ctx)
+		}
+		if err := okayButton.Exists(ctx); err == nil {
+			s.Log("Click on okayButton")
+			okayButton.Click(ctx)
+		}
+		if err := skipButton.Exists(ctx); err == nil {
+			s.Log("Click on skipButton")
+			skipButton.Click(ctx)
+		}
+		if err := continueButton.Exists(ctx); err == nil {
+			s.Log("Click on continueButton")
+			continueButton.Click(ctx)
 		}
 		return appverifer.Exists(ctx)
 	}, &testing.PollOptions{Timeout: LongUITimeout}); err != nil {
