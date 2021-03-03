@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "673dce58_1ba7dc25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-03T05:39:11Z",
+      "side": 1,
+      "message": "Sorry for delay, I was out sick yesterday. LGTM with one request.\n",
+      "revId": "6979e0b56476c9937d6904ed468ae7989d1daec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de97be8_75bf4815",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-03T05:39:11Z",
+      "side": 1,
+      "message": "*HelperIF interfaces are not used in this change. Can you introduce them only once you really need them?\n\n\u003e Do not define interfaces before they are used: without a realistic example of usage, it is too difficult to see whether an interface is even necessary, let alone what methods it ought to contain.\nhttps://github.com/golang/go/wiki/CodeReviewComments#interfaces",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "6979e0b56476c9937d6904ed468ae7989d1daec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
