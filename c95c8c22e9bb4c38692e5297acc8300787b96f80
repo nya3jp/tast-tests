@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab2e882_5d543cbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-03-03T08:23:37Z",
+      "side": 1,
+      "message": "Do we need to worry about flash wear-out?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 66
+      },
+      "revId": "c95c8c22e9bb4c38692e5297acc8300787b96f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
