@@ -51,6 +51,460 @@
       "message": "Thanks again, Hugo!",
       "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26ddcc90_0fdc70dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "Is there any chance to split the cl into a few small cls?",
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb14e1b_917a1a82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "What is the plan for this method? Suggest to add a todo here.",
+      "range": {
+        "startLine": 89,
+        "startChar": 27,
+        "endLine": 89,
+        "endChar": 47
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0269121a_07e32981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "Please also wrap the cmd.",
+      "range": {
+        "startLine": 101,
+        "startChar": 17,
+        "endLine": 101,
+        "endChar": 22
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc250fa5_e9e2904e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/data/allowlist_ssl_inspection.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "Is there a source of these data? If yes, suggest to post it here.",
+      "range": {
+        "startLine": 2,
+        "startChar": 5,
+        "endLine": 2,
+        "endChar": 13
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d4c599_d341c7c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": ".",
+      "range": {
+        "startLine": 6,
+        "startChar": 93,
+        "endLine": 6,
+        "endChar": 94
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a25ded0d_adf73e6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/system_services_connectivity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "Is this in the private repository already?",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4fa5c60_c19b4e07",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/system_services_connectivity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "failed to verify the certificate",
+      "range": {
+        "startLine": 107,
+        "startChar": 24,
+        "endLine": 107,
+        "endChar": 55
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa947e0_40bff9cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "Is the content very large? Does it make sense to wrap the content in the error msg?",
+      "range": {
+        "startLine": 35,
+        "startChar": 52,
+        "endLine": 35,
+        "endChar": 56
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11601ffc_7be699bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "failed to decode the json file.",
+      "range": {
+        "startLine": 35,
+        "startChar": 38,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cad7f2b_340a8791",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "Use \"if ext \u0026\u0026 a.Extension !\u003d nil\" to avoid nil?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 7
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75030ba8_d457e6cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 7
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f86db55_70ef5e35",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.pb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "why renaming all of them?",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b0f4bc_45caa350",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.pb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "please end it with a period.",
+      "range": {
+        "startLine": 26,
+        "startChar": 67,
+        "endLine": 26,
+        "endChar": 74
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7df0699_cf0230ae",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.pb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "Both the struct and field are public, is this method needed?",
+      "range": {
+        "startLine": 158,
+        "startChar": 38,
+        "endLine": 158,
+        "endChar": 48
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d66e8668_fbc1a6d2",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.pb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "Is this necessary? If m is nil it won\u0027t get into this method.",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 12
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cabdedd6_cfe3dff9",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.pb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "Both the struct and field are public, is this method needed?",
+      "range": {
+        "startLine": 197,
+        "startChar": 41,
+        "endLine": 197,
+        "endChar": 58
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2762abfd_08d6ee81",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.pb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "Is this necessary? If m is nil it won\u0027t get into this method.",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 12
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b547e5_88db7ec2",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.pb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "Both the struct and its methods are kind of not implemented, add a todo?",
+      "range": {
+        "startLine": 327,
+        "startChar": 5,
+        "endLine": 327,
+        "endChar": 40
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44ec2e94_03c7ab05",
+        "filename": "src/chromiumos/tast/services/cros/network/allowlist_service.pb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "Add a comment for a public method.",
+      "range": {
+        "startLine": 343,
+        "startChar": 5,
+        "endLine": 343,
+        "endChar": 35
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cab53f2b_28e7c331",
+        "filename": "src/chromiumos/tast/services/cros/network/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-03T01:32:41Z",
+      "side": 1,
+      "message": "End with a period.",
+      "range": {
+        "startLine": 5,
+        "startChar": 169,
+        "endLine": 5,
+        "endChar": 174
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
