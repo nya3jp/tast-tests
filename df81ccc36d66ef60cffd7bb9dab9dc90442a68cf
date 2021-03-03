@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "491948aa_6068fb1c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/conndiag/conndiag.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-03T17:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45f291ae_ae4233d1",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e412efad_c5b69a0d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ac0b801_69d16a1d",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-03T17:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e412efad_c5b69a0d",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1181a9a2_5c953b34",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-02T19:40:24Z",
       "side": 1,
       "message": "Did you confirm this works?  IIRC the result is set through json.Unmarshal, and golang json.Unmarshal won\u0027t set any unexported fields.  cf. https://play.golang.org/p/ujZq7B3utZv",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a8932f_ee477221",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-03T17:05:02Z",
+      "side": 1,
+      "message": "Great catch! I was checking for the 0 enum value so I think it just worked by default.",
+      "parentUuid": "1181a9a2_5c953b34",
       "range": {
         "startLine": 42,
         "startChar": 2,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba6e29ec_8d545a9c",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-03T17:05:02Z",
+      "side": 1,
+      "message": "Sorry I\u0027m not sure I understand your question. Are you asking if I can omit the function wrapper and just call `lanConnectivity()`?",
+      "parentUuid": "337372e3_7b9763a6",
+      "range": {
+        "startLine": 44,
+        "startChar": 43,
+        "endLine": 44,
+        "endChar": 89
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18956a46_ef6bc2db",
         "filename": "src/chromiumos/tast/local/network/diag/api.go",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2021-03-02T19:40:24Z",
       "side": 1,
       "message": "remove the last else.",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5367fe04_c4736bd8",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-03T17:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18956a46_ef6bc2db",
       "range": {
         "startLine": 54,
         "startChar": 3,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ddd961_00e7a7bc",
+        "filename": "src/chromiumos/tast/local/network/diag/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-03T17:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ce8766f_ea486b92",
+      "range": {
+        "startLine": 33,
+        "startChar": 19,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9d738c1_25a85936",
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66ba983e_549ae422",
+        "filename": "src/chromiumos/tast/local/network/diag/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-03T17:05:02Z",
+      "side": 1,
+      "message": "The features is now enabled by default, so I will proceed with the \u0027chromeLoggedIn\u0027 fixture.",
+      "parentUuid": "e9d738c1_25a85936",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52a295bd_8979e414",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-03-02T19:40:24Z",
       "side": 1,
       "message": "Please create a function like NewMojoAPI -- and initialization or injection of JS code to be done there.  Here would be:\n  api, err :\u003d NewMojoAPI(ctx, tconn)\n  if err !\u003d nil {\n    s.Fatal(...)\n  }\n  f.cr \u003d cr  // this might not be necessary if you adopt using \u0027parent\u0027\n  f.api \u003d api\n  return f.api",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "df81ccc36d66ef60cffd7bb9dab9dc90442a68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14b625a9_1bc6ccc5",
+        "filename": "src/chromiumos/tast/local/network/diag/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-03T17:05:02Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "52a295bd_8979e414",
       "range": {
         "startLine": 88,
         "startChar": 1,
