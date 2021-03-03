@@ -191,11 +191,9 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for location-change events to be propagated to the automation API: ", err)
 	}
 
-	pipWindow, err = chromeui.Find(ctx, tconn, pipWindowFindParams)
-	if err != nil {
+	if err := pipWindow.Update(ctx); err != nil {
 		s.Fatal("Failed to get PIP window after resize: ", err)
 	}
-	defer pipWindow.Release(cleanupCtx)
 
 	if params.bigPIP {
 		maxWidth := info.WorkArea.Width / 2
