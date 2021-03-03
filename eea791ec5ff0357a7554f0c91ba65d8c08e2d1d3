@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e94a926_1b4ac0e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-03-03T04:01:29Z",
+      "side": 1,
+      "message": "overall LGTM.\nsorry i missed this CL.",
+      "revId": "eea791ec5ff0357a7554f0c91ba65d8c08e2d1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fdebc11_e2484c4f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-03-03T04:01:29Z",
+      "side": 1,
+      "message": "since TPM is cleared in this test, pls use hwsec_destructive_func to avoid loss of logs.\nReference: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership.go?q\u003dhwsec_destructive\u0026sq\u003dpackage:%5Echromeos_public$",
+      "range": {
+        "startLine": 28,
+        "startChar": 39,
+        "endLine": 28,
+        "endChar": 52
+      },
+      "revId": "eea791ec5ff0357a7554f0c91ba65d8c08e2d1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed1d8cd9_725e9fb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-03-03T04:01:29Z",
+      "side": 1,
+      "message": "missing software dependency, \"tpm\" and \"reboot\".",
+      "revId": "eea791ec5ff0357a7554f0c91ba65d8c08e2d1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd450f43_68b59428",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-03-03T04:01:29Z",
+      "side": 1,
+      "message": "some might argue that this is only useful for the developer of this test. \n\nI personally think we can drop this verbosity as long as the test is stable enough.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "eea791ec5ff0357a7554f0c91ba65d8c08e2d1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
