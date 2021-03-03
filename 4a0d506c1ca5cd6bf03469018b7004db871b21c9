@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f1d516_c6bb4ed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-03T18:01:19Z",
+      "side": 1,
+      "message": "It looks like instead of using \"dut-control\", we should really be using the Servo proxy:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/1774bc717e159777e73bc5dfde16b11635457e97/src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go#38\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/1774bc717e159777e73bc5dfde16b11635457e97/src/chromiumos/tast/remote/servo/methods.go#124\n\nSince we\u0027re already using dut-control in this test, I think it\u0027s OK, but can you create a followup CL to switch over to the proxy everywhere?",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 1
+      },
+      "revId": "4a0d506c1ca5cd6bf03469018b7004db871b21c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
