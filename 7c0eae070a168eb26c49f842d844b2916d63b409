@@ -104,6 +104,24 @@
       "parentUuid": "e222f7d8_67dac791",
       "revId": "7c0eae070a168eb26c49f842d844b2916d63b409",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e21d2c02_958e9c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-03-03T18:22:46Z",
+      "side": 1,
+      "message": "Unfortunately, CQ still doesn\u0027t trigger the vm job due to the issue Hidehiko mentioned on the email thread, so I\u0027ve made a new change to test it: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2733172",
+      "parentUuid": "981c1d69_63b7a972",
+      "revId": "7c0eae070a168eb26c49f842d844b2916d63b409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
