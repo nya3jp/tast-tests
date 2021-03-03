@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa2db22_28cef8a0",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-03T03:05:52Z",
+      "side": 1,
+      "message": "I\u0027m thinking I\u0027ll rebase this on top of crrev.com/c/2725368 and move it out of snippet.go since the adb.Device will be accessible within the fixture instead. I\u0027ll wait to see if there are more comments though and do em all at once.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "7d6981bf4157bc4c012fdcffc3d22b537d5f1a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
