@@ -33,6 +33,41 @@
       "message": "Looks like it uses the same image for multiple sizes?\nIt\u0027s probably fine but it\u0027d be better if we can provide multiple sizes.",
       "revId": "19f6cdbca3b27058ef02b6e146e1fdd3dc5a43db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2a923a_8c02b4c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T22:30:21Z",
+      "side": 1,
+      "message": "Yeah it simply provides a single image (192x192 pixels in the data) -- and to be honest I don\u0027t want to add data for other sizes.  I could write some test code to rescale the image data and use them.",
+      "parentUuid": "4309804d_0c479603",
+      "revId": "19f6cdbca3b27058ef02b6e146e1fdd3dc5a43db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b4bcf9_45df7970",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T22:30:21Z",
+      "side": 1,
+      "message": "nya, oka -- what do you think about this usage of runtime variable?  Also is this naming scheme good?",
+      "revId": "19f6cdbca3b27058ef02b6e146e1fdd3dc5a43db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
