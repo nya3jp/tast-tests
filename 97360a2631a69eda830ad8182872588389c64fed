@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66983b5a_1829d0f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-03T23:58:37Z",
+      "side": 1,
+      "message": "Chatted offline with rnanjappan@, we\u0027d proceed with this CL in place of crrev.com/c/2688156 to avoid unnecessary duplicate work.\nPTAL. Thanks!",
+      "revId": "97360a2631a69eda830ad8182872588389c64fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
