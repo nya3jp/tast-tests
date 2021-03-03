@@ -22,6 +22,52 @@
       },
       "revId": "c95c8c22e9bb4c38692e5297acc8300787b96f80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaf74152_dddce0b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-03-03T08:59:07Z",
+      "side": 1,
+      "message": "What would happen on a consecutive invocation? Will flashrom override dump.bin? If not, you should probably delete it first.\n\nAlso, does flashrom have permissions to write in the current folder?",
+      "range": {
+        "startLine": 88,
+        "startChar": 56,
+        "endLine": 88,
+        "endChar": 64
+      },
+      "revId": "c95c8c22e9bb4c38692e5297acc8300787b96f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20906957_516cdb2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-03-03T08:59:07Z",
+      "side": 1,
+      "message": "In addition to return value check, do you also want to make sure that the dump file has been successfully written? For example, you could check that the size of dump.bin is correct.",
+      "range": {
+        "startLine": 89,
+        "startChar": 51,
+        "endLine": 89,
+        "endChar": 61
+      },
+      "revId": "c95c8c22e9bb4c38692e5297acc8300787b96f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
