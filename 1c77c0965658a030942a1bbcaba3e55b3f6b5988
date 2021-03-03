@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b32948_3d12eef6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-03-03T01:36:24Z",
+      "side": 1,
+      "message": "not sure if this is correct or needed?\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/2730370",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 56
+      },
+      "revId": "1c77c0965658a030942a1bbcaba3e55b3f6b5988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
