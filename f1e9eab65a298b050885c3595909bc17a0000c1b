@@ -70,6 +70,30 @@
       },
       "revId": "f1e9eab65a298b050885c3595909bc17a0000c1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87c14698_0658215e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-03-03T01:58:51Z",
+      "side": 0,
+      "message": "That\u0027s true, but we also need to add the VP8/9 encoders in the xml files or the tests will fail. But I guess it\u0027s OK for the tests to fail while I add the necessary xml changes. And now the branch happened we also have a bit more time to fix things if we break anything.",
+      "parentUuid": "1142c7d4_7ec7741a",
+      "range": {
+        "startLine": 31,
+        "startChar": 18,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "f1e9eab65a298b050885c3595909bc17a0000c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
