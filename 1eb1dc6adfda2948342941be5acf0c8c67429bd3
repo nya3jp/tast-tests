@@ -70,6 +70,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a84318d_778cbd65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T02:49:16Z",
+      "side": 1,
+      "message": "Uploading many fixes and a question about the cr50_board dependency.",
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6b0f9cc_3c908627",
@@ -83,6 +100,30 @@
       "writtenOn": "2021-03-02T15:45:08Z",
       "side": 1,
       "message": "You could put it on {\"informational\", \"group:mainline\"} if you don\u0027t clear TPM ownership.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 56
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "930efdde_ad556003",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T02:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6b0f9cc_3c908627",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -166,6 +207,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "448f2a0c_78a3236a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T02:49:16Z",
+      "side": 1,
+      "message": "Do you have any pointers to where and how I add that dependency?",
+      "parentUuid": "5afc64e3_b16cc5a4",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de1337e3_eedfc3ab",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 1
@@ -177,6 +242,30 @@
       "writtenOn": "2021-03-02T18:35:00Z",
       "side": 1,
       "message": "nit/optional: There are some ready to use constants in\nsrc/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/hwsec/util/constants.go\n\nYou can consider using them if a corresponding constant exists (such as the password), or adding the constant to that file if it doesn\u0027t (for lecred labels and pins)",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "526b9de4_52c5ae9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T02:49:16Z",
+      "side": 1,
+      "message": "I\u0027ll leave the constants in the test unless you feel strongly. I think we move them to constants.go if another test needs to same variables for pinweaver.",
+      "parentUuid": "de1337e3_eedfc3ab",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -212,6 +301,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f077669e_fe3fc9b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T02:49:16Z",
+      "side": 1,
+      "message": "I am not a go programmer, so why that over map[string]bool?",
+      "parentUuid": "4de15b83_f0c4f8f2",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56635b64_277b39b2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 1
@@ -223,6 +336,30 @@
       "writtenOn": "2021-03-02T15:24:18Z",
       "side": 1,
       "message": "We don\u0027t want to use the cryptohome binary directly, so we would need to add the functions in \"common/hwsec/cryptohome_client.go\"",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 42
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf13ce7_66a4625e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T02:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56635b64_277b39b2",
       "range": {
         "startLine": 65,
         "startChar": 23,
@@ -303,6 +440,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e6fd43_87dd3b03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T02:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c4c025a_596918f6",
+      "range": {
+        "startLine": 95,
+        "startChar": 10,
+        "endLine": 95,
+        "endChar": 20
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abd31345_27ffda27",
@@ -316,6 +477,30 @@
       "writtenOn": "2021-03-02T15:19:37Z",
       "side": 1,
       "message": "I am not sure how valuable this it is, but i guess \"some\" might argue that these verbosity might be useful only when developing the test. Upon any error the error message contains the line number already. On the other hand, I also met some tast reviewers who are okay with them. \n\nI personally think we can drop them as long as the test is stable enough.\nDitto for other places.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa201d0d_6b96c764",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T02:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abd31345_27ffda27",
       "range": {
         "startLine": 110,
         "startChar": 0,
@@ -349,6 +534,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e10cd561_ad7023ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T02:49:16Z",
+      "side": 1,
+      "message": "Yes, how do we add deferred cryptohome removal?",
+      "parentUuid": "81120c60_2847b1b2",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05a706aa_1b4e42a2",
@@ -362,6 +571,30 @@
       "writtenOn": "2021-03-02T18:35:00Z",
       "side": 1,
       "message": "Not sure if you need the username to be random or 2 set of usernames for testing would do. The code is fine if you need the former, otherwise, consider the constants in util/constants.go",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 26
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c90be89_e5e02b50",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T02:49:16Z",
+      "side": 1,
+      "message": "I find random usernames made the test more reliable when running locally, otherwise the users may exist between runs if it crashes.",
+      "parentUuid": "05a706aa_1b4e42a2",
       "range": {
         "startLine": 183,
         "startChar": 0,
@@ -407,6 +640,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f52c63_846ff96a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T02:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c19ff8d_b726f85f",
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1857130c_04099ad2",
@@ -420,6 +671,30 @@
       "writtenOn": "2021-03-02T15:19:37Z",
       "side": 1,
       "message": "can we have comments as of why it is needed?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 19
+      },
+      "revId": "1eb1dc6adfda2948342941be5acf0c8c67429bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33165e5b_60c665c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-03T02:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1857130c_04099ad2",
       "range": {
         "startLine": 197,
         "startChar": 0,
