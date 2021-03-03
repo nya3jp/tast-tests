@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4438ed23_6a432428",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-03T22:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "404c2b01_8da1f4a5",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 4
+      },
+      "revId": "862772f1ddf734d3de2fb5d360457bd617e94bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94db1d7a_448ec61a",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-03-03T18:47:38Z",
       "side": 1,
       "message": "please remove this line",
+      "revId": "862772f1ddf734d3de2fb5d360457bd617e94bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24813790_4ffc2880",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-03T22:13:07Z",
+      "side": 1,
+      "message": "Left over from testing :) Good catch.",
+      "parentUuid": "94db1d7a_448ec61a",
       "revId": "862772f1ddf734d3de2fb5d360457bd617e94bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
