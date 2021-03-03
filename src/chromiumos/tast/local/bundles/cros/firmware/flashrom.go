@@ -17,6 +17,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type params struct {
+	region string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Flashrom,
@@ -39,6 +43,17 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "group:labqual"},
 		SoftwareDeps: []string{"flashrom"},
+		Params: []testing.Param{{
+			Name: "fmap",
+			Val: params{
+				region: "FMAP",
+			},
+		}, {
+			Name: "coreboot",
+			Val: params{
+				region: "COREBOOT",
+			},
+		}},
 	})
 }
 
@@ -73,19 +88,23 @@ func FlashromPerf(ctx context.Context, s *testing.State) {
 		}
 	)
 
-	p := perf.NewValues()
-	duration = testFlashromReadTime()
-	p.Set(readTime, duration)
+	// TODO split up timing per region duration.
+	for _, p = range s.Param().(params) {
+		perf := perf.NewValues()
+		duration = testFlashromReadTime(p.region)
+		perf.Set(readTime, duration)
+	}
 
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }
 
-func testFlashromReadTime() {
+func testFlashromReadTime(region string) {
 	flashromStart := time.Now()
 
-	cmd := testexec.CommandContext(ctx, "flashrom", "-r", "dump.bin")
+	opFileName = "dump_" + r + ".bin"
+	cmd := testexec.CommandContext(ctx, "flashrom", "-i", region, "-r", opFileName)
 	if out, err := cmd.Output(testexec.DumpLogOnError); err != nil {
 		s.Fatalf("%q failed: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
