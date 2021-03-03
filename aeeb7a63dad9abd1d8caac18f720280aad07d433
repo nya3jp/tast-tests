@@ -56,6 +56,30 @@
       },
       "revId": "aeeb7a63dad9abd1d8caac18f720280aad07d433",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08c688b_ee13e299",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T22:12:44Z",
+      "side": 1,
+      "message": "I made a temporary handling of those failures, so they should be fine.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2714308",
+      "parentUuid": "2e7ea263_dba3e73c",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "aeeb7a63dad9abd1d8caac18f720280aad07d433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
