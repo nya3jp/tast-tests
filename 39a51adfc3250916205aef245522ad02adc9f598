@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ac39c39_c6fc73cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-03T18:44:05Z",
+      "side": 1,
+      "message": "Hi Jun,\n\nI\u0027ve never disabled a tast test before, so not sure if this is how to do it. I based this change off of the following example:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/attr_test.go;l\u003d38\n\nThanks for bringing the issue to my attention.",
+      "revId": "39a51adfc3250916205aef245522ad02adc9f598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
