@@ -33,6 +33,80 @@
       "message": "Thanks!",
       "revId": "384b80e07bf3f2d1a98b98951726d770e0ffe12c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "094b451a_91ea739e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-03T06:06:26Z",
+      "side": 1,
+      "message": "Some nit comments.",
+      "revId": "384b80e07bf3f2d1a98b98951726d770e0ffe12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a46de7_ac8d109f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-03T06:06:26Z",
+      "side": 1,
+      "message": "So the command \"sm list-volumes\" also mounts the MyFiles directory? If not, which command does?\n\nDo we need to umount it after the test?",
+      "revId": "384b80e07bf3f2d1a98b98951726d770e0ffe12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097766c3_8f0fe18e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-03T06:06:26Z",
+      "side": 1,
+      "message": "Though this is okay, we often use the pattern:\n\ndefer func(ctx context.Context) {\n   if err :\u003d a.RemoveAll(ctx, ...) ...\n}(cleanupCtx)",
+      "range": {
+        "startLine": 129,
+        "startChar": 24,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "384b80e07bf3f2d1a98b98951726d770e0ffe12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00063d7d_2a2b88e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-03T06:06:26Z",
+      "side": 1,
+      "message": "So for retErr !\u003d nil case, we don\u0027t report the failure to revert error. Is that what you expect?",
+      "revId": "384b80e07bf3f2d1a98b98951726d770e0ffe12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
