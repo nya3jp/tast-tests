@@ -16,6 +16,63 @@
       "message": "Thanks Jun for the feedback!",
       "revId": "862772f1ddf734d3de2fb5d360457bd617e94bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "212931b0_67a06312",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T18:47:38Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "862772f1ddf734d3de2fb5d360457bd617e94bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "404c2b01_8da1f4a5",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T18:47:38Z",
+      "side": 1,
+      "message": "Just in case, I guess it\u0027s better to set the default value:\n  {Verdict: VerdictUnknown}\n\nThat way, when the returned object happens to miss the \u0027verdict\u0027 field, it can return Unknown error.",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 4
+      },
+      "revId": "862772f1ddf734d3de2fb5d360457bd617e94bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94db1d7a_448ec61a",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T18:47:38Z",
+      "side": 1,
+      "message": "please remove this line",
+      "revId": "862772f1ddf734d3de2fb5d360457bd617e94bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
