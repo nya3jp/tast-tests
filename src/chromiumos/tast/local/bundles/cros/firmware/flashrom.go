@@ -9,7 +9,9 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"regexp"
+	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -19,6 +21,17 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: Flashrom,
 		Desc: "Checks that flashrom can find a SPI ROM",
+		Contacts: []string{
+			"kmshelton@chromium.org",       // Test Author
+			"quasisec@chromium.org",        // CrOS Flashrom Maintainer
+			"chromeos-firmware@google.com", // CrOS Firmware Developers
+		},
+		Attr:         []string{"group:mainline", "group:labqual"},
+		SoftwareDeps: []string{"flashrom"},
+	})
+	testing.AddTest(&testing.Test{
+		Func: FlashromPerf,
+		Desc: "Flashrom perf metrics",
 		Contacts: []string{
 			"kmshelton@chromium.org",       // Test Author
 			"quasisec@chromium.org",        // CrOS Flashrom Maintainer
@@ -47,4 +60,44 @@ func Flashrom(ctx context.Context, s *testing.State) {
 			"Output of %q did not contain %q (saved output to %s).",
 			shutil.EscapeSlice(cmd.Args), re, filepath.Base(path))
 	}
+}
+
+func FlashromPerf(ctx context.Context, s *testing.State) {
+	// In order to upload metrics, they should be listed in:
+	// src/third_party/autotest/files/tko/perf_upload/perf_dashboard_config.json
+	// Example metrics below are not allowed, thus ignored.
+	var (
+		readTime = perf.Metric{Name: "flashrom_read_time", Unit: "ms", Direction: perf.SmallerIsBetter}
+	)
+
+	p := perf.NewValues()
+	duration = testFlashromReadTime()
+
+	p.Set(readTime, duration)
+
+	// Variant can be also specified.
+	for _, name := range []string{"flashrom"} {
+		cpuUsage := perf.Metric{Name: "flashrom_cpu_usage", Variant: name, Unit: "percent", Direction: perf.SmallerIsBetter}
+		p.Set(cpuUsage, 50.0)
+	}
+
+	if err := p.Save(s.OutDir()); err != nil {
+		s.Error("Failed saving perf data: ", err)
+	}
+}
+
+func testFlashromReadTime() {
+	flashromStart := time.Now()
+	cmd := testexec.CommandContext(ctx, "flashrom", "-r", "dump.bin")
+	if out, err := cmd.Output(testexec.DumpLogOnError); err != nil {
+		s.Fatalf("%q failed: %v", shutil.EscapeSlice(cmd.Args), err)
+	}
+	path := filepath.Join(s.OutDir(), "flashrom.txt")
+	if err := ioutil.WriteFile(path, out, 0644); err != nil {
+		s.Error("Failed to save flashrom output: ", err)
+	}
+	flashromElapsed = time.Since(flashromStart)
+
+	// Return duration.
+	return float64(flashromElapsed.Milliseconds())
 }
