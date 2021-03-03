@@ -45,6 +45,54 @@
       },
       "revId": "479cd9a70f67775626314ea092e01609d861750f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80216e3f_eba394f2",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-03T00:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83375c4f_4588b8ed",
+      "range": {
+        "startLine": 558,
+        "startChar": 1,
+        "endLine": 558,
+        "endChar": 24
+      },
+      "revId": "479cd9a70f67775626314ea092e01609d861750f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b595f3_76e61e68",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-03T00:45:36Z",
+      "side": 1,
+      "message": "Added example query and some more comments. lemme know if still not clear",
+      "parentUuid": "047d2cb7_a151e243",
+      "range": {
+        "startLine": 558,
+        "startChar": 25,
+        "endLine": 558,
+        "endChar": 58
+      },
+      "revId": "479cd9a70f67775626314ea092e01609d861750f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
