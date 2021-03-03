@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cee2cac_210a4f57",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-03-03T17:18:52Z",
+      "side": 1,
+      "message": "general note - it\u0027s more common to pass around struct pointers instead of a copy of the struct, particularly if the struct can get large.  Then you could return nil instead of returning an empty jsonRPCResponse below.  But I see that the file has not been written that way, so consider this for a future CL",
+      "range": {
+        "startLine": 515,
+        "startChar": 134,
+        "endLine": 515,
+        "endChar": 149
+      },
+      "revId": "a9fc303ab43d6a32d8309e3b9225132eb99ef5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
