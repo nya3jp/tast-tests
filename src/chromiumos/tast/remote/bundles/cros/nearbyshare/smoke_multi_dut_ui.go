@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
-	"chromiumos/tast/remote/bundles/cros/nearbyshare/remotetestutils"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/nearbyservice"
 	"chromiumos/tast/testing"
@@ -78,7 +77,6 @@ func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT, t
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer ns.CloseChrome(ctx, &empty.Empty{})
-	defer remotetestutils.SaveLogs(ctx, d, tag, s.OutDir())
 
 	// Setup Nearby Share on the DUT.
 	const deviceName = "MultiDut_HighVisibilityUISmoke"
