@@ -27,7 +27,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
 			{
 				Name:              "stable",
@@ -42,7 +42,7 @@ func init() {
 
 // LaunchReleaseNotesFromSettings verifies launching Help app at the release notes page from Chrome OS settings.
 func LaunchReleaseNotesFromSettings(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)

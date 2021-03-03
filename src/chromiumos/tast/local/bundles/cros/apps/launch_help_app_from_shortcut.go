@@ -32,20 +32,20 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "stable",
-				Fixture:           "chromeLoggedIn",
+				Fixture:           "chromeLoggedInForEA",
 				ExtraHardwareDeps: pre.AppsStableModels,
 			}, {
 				Name:              "unstable",
-				Fixture:           "chromeLoggedIn",
+				Fixture:           "chromeLoggedInForEA",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
 			},
 			{
 				Name:              "stable_guest",
-				Fixture:           "chromeLoggedInGuest",
+				Fixture:           "chromeLoggedInGuestForEA",
 				ExtraHardwareDeps: pre.AppsStableModels,
 			}, {
 				Name:              "unstable_guest",
-				Fixture:           "chromeLoggedInGuest",
+				Fixture:           "chromeLoggedInGuestForEA",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
 			},
 		},
