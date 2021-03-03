@@ -16,6 +16,52 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "c12347147cd05ca22fdbd0d615bc3dde1a34ce42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311471ea_be5cf343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-03T11:34:43Z",
+      "side": 1,
+      "message": "I think this could be refactored, it\u0027s almost the same as migrateGoddKeyTest, with different password values.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "c12347147cd05ca22fdbd0d615bc3dde1a34ce42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b166ab_e80ec423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-03T11:34:43Z",
+      "side": 1,
+      "message": "missing . at the end of the comment",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 18
+      },
+      "revId": "c12347147cd05ca22fdbd0d615bc3dde1a34ce42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
