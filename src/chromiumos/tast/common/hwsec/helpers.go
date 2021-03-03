@@ -26,6 +26,7 @@ import (
 // CmdRunner declares interface that runs command on DUT.
 type CmdRunner interface {
 	Run(ctx context.Context, cmd string, args ...string) ([]byte, error)
+	HasExitError(cmdErr error) bool
 }
 
 // CmdHelper provides various helper functions that could be shared across all

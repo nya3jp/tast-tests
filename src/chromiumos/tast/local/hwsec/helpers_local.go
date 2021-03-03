@@ -10,6 +10,7 @@ This file implements miscellaneous and unsorted helpers.
 
 import (
 	"context"
+	"os/exec"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -40,6 +41,12 @@ func (r *CmdRunnerLocal) Run(ctx context.Context, cmd string, args ...string) ([
 		testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(append([]string{cmd}, args...)))
 	}
 	return testexec.CommandContext(ctx, cmd, args...).Output()
+}
+
+// HasExitError return the exit status.
+func (r *CmdRunnerLocal) HasExitError(cmdErr error) bool {
+	var ee *exec.ExitError
+	return errors.As(cmdErr, &ee) && ee.Exited()
 }
 
 // CmdHelperLocalImpl implements the helper functions for CmdHelperLocal
