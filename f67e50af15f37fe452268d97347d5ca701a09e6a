@@ -33,6 +33,52 @@
       "message": "FYI: shaochuan",
       "revId": "f67e50af15f37fe452268d97347d5ca701a09e6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e235b9b_521e6aea",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-03T05:25:39Z",
+      "side": 1,
+      "message": "I\u0027m feeling like this is a bit tricky...\n\nWhy don\u0027t we use a plain bool protected by a mutex, instead of an atomic one, that indicates whether a process became collectable?\n\n func (c *Cmd) Wait(...) error {\n   ...\n\n   if err :\u003d c.blockUntilWaitable(); err !\u003d nil { ... }\n\n   c.watchdogStop \u003c- true\n\n   c.mu.Lock()\n   c.waitable \u003d true\n   c.mu.Unlock()\n\n   werr :\u003d c.Cmd.Wait()\n\n   ...\n }\n\n func (c *Cmd) Signal(...) error {\n   ...\n   c.mu.RLock()\n   defer c.mu.RUnlock()\n   if c.waitable {\n     return errAlreadyWaited\n   }\n   ...\n }",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 17
+      },
+      "revId": "f67e50af15f37fe452268d97347d5ca701a09e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af14d799_fa899ee6",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-03T05:25:39Z",
+      "side": 1,
+      "message": "Should we remove this check? IIUC c.ProcessState is set by Wait, so it would be a kind of data race to refer it concurrently. It might not be a problem since we don\u0027t read its content though.",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 2
+      },
+      "revId": "f67e50af15f37fe452268d97347d5ca701a09e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
