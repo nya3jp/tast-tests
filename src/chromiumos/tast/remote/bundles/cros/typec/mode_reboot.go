@@ -128,22 +128,32 @@ func checkTBTDevice(ctx context.Context, d *dut.DUT, expected bool) error {
 		return errors.Wrap(err, "could not run ls command on DUT")
 	}
 
-	found := false
+	found := ""
 	for _, device := range strings.Split(string(out), "\n") {
 		if device == "" {
 			continue
 		}
 
-		if device != "domain0" && device != "0-0" {
-			found = true
-			break
+		if device == "domain0" || device == "0-0" {
+			continue
 		}
+
+		// Check for retimers.
+		// They are of the form "0-0:1.1" or "0-0:3.1".
+		if matched, err := regexp.MatchString(`[\d\-\:]+\.\d`, device); err != nil {
+			return errors.Wrap(err, "couldn't execute retimer regexp")
+		} else if matched {
+			continue
+		}
+
+		found = device
+		break
 	}
 
-	if expected && !found {
+	if expected && found == "" {
 		return errors.New("no TBT device found")
-	} else if !expected && found {
-		return errors.New("TBT device found")
+	} else if !expected && found != "" {
+		return errors.Errorf("TBT device found: %s", found)
 	}
 
 	return nil
