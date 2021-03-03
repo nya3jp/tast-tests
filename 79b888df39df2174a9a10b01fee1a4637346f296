@@ -46,6 +46,30 @@
       },
       "revId": "79b888df39df2174a9a10b01fee1a4637346f296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e73522b_ae6a1c64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-03T01:22:04Z",
+      "side": 1,
+      "message": "Since this is initialization, we don\u0027t have the console to talk to the MCU at this point, so the best signal would be the dut-control pp3300 itself (which we just set). Doing a polling on the pp3300 itself seems like an overcomplication: we are really just waiting for the electric current to settle, essentially a local version of the toggle in remote: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/servo/methods.go;l\u003d307",
+      "parentUuid": "ea991b76_b9ce91a2",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 32
+      },
+      "revId": "79b888df39df2174a9a10b01fee1a4637346f296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
