@@ -52,6 +52,24 @@
       "parentUuid": "b65ed0b0_c030aca8",
       "revId": "8ca2ee100c10be6ea3d240d11b28b85fb0fbe15f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "659e154e_a9b099e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-03T06:43:46Z",
+      "side": 1,
+      "message": "I see. I recommend naming the method \"NormalizedUser\" anyway not to confuse users.",
+      "parentUuid": "f184f09b_1ed06a32",
+      "revId": "8ca2ee100c10be6ea3d240d11b28b85fb0fbe15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
