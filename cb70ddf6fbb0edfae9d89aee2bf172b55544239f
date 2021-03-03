@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6f8592_2f1c2fdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-03T23:24:23Z",
+      "side": 1,
+      "message": "Hi Hiroki,\n\nI\u0027d appreciate if you could review this before I send this to tast owners for approval.\n\nThanks!",
+      "revId": "cb70ddf6fbb0edfae9d89aee2bf172b55544239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
