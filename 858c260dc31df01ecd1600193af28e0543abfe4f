@@ -50,6 +50,24 @@
       "message": "LGTM.\nHowever Can\u0027t you refactor the Val array? maybe a function that return this array and pass the policy name to it, it\u0027d be much cleaner IMO.",
       "revId": "858c260dc31df01ecd1600193af28e0543abfe4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a804203_0933831e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-03T17:10:17Z",
+      "side": 1,
+      "message": "I kinda like this huge array testing many many policies 😊. I also doubt that generating the array will make it more readable.",
+      "parentUuid": "02f8cd0b_2c291bc5",
+      "revId": "858c260dc31df01ecd1600193af28e0543abfe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
