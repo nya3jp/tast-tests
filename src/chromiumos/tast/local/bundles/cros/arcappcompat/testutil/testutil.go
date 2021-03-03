@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
@@ -393,6 +394,48 @@ func TouchAndPlayVideo(ctx context.Context, s *testing.State, tconn *chrome.Test
 	}
 	if err := processMonkeyOutput(string(out)); err != nil {
 		s.Error("Touch and play videos are not working properly in the app: ", err)
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
+// TouchviewRotate Test verifies if app performs rotation successfully without crash or ANR.
+func TouchviewRotate(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+
+	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
+	if err != nil {
+		s.Fatal("Failed to get window info: ", err)
+	}
+	s.Logf("App Display ID, info.DisplayID %+v", info.DisplayID)
+
+	// Set display orientation to natural state 90 degree.
+	if err := display.SetDisplayRotationSync(ctx, tconn, info.DisplayID, "Rotate90"); err != nil {
+		s.Fatal("Failed to set app to 90 rotation: ", err)
+	} else {
+		s.Log("Set app to 90 rotation was successful")
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+
+	// Set display orientation to natural state 180 degree.
+	if err := display.SetDisplayRotationSync(ctx, tconn, info.DisplayID, "Rotate180"); err != nil {
+		s.Fatal("Failed to set app to 180 rotation: ", err)
+	} else {
+		s.Log("Set app to 180 rotation was successful")
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+
+	// Set display orientation to natural state 270 degree.
+	if err := display.SetDisplayRotationSync(ctx, tconn, info.DisplayID, "Rotate270"); err != nil {
+		s.Fatal("Failed to set app to 270 rotation: ", err)
+	} else {
+		s.Log("Set app to 270 rotation was successful")
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+
+	// Set display orientation to natural state 0 degree.
+	if err := display.SetDisplayRotationSync(ctx, tconn, info.DisplayID, "Rotate0"); err != nil {
+		s.Fatal("Failed to set app to 0 rotation: ", err)
+	} else {
+		s.Log("Set app to 0 rotation was successful")
 	}
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
