@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bbe5d563_885f1cff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-03-03T02:48:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37c04646_1732f473",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "e5167941e1d98921d6fa099f845ad7caa34e5c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e398b9cd_a54ccb34",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2021-02-25T09:42:59Z",
       "side": 1,
       "message": "Hi Ian,\n\nIf you follow link you provided, you will find:\n\n\"This informational test passed in last 18 builds. Please promote it to the Commit Queue after 20+ consecutive passes\"\n\nIs there some good reason to promote this test faster or we should wait 2 more builds?",
+      "revId": "e5167941e1d98921d6fa099f845ad7caa34e5c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be86185_f4728978",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-03-03T02:48:22Z",
+      "side": 1,
+      "message": "It will never show 20+ builds because tastboard\u0027s history doesn\u0027t go back far enough.\n\nIt\u0027s been a week. As you can see at the link, it now says \"This informational test passed in last 16 builds. Please promote it to the Commit Queue after 20+ consecutive passes (go/tast-add-test).\" even though you can see it has passed every test since Feb 18th. There haven\u0027t been any new failures but the number of \"passed builds\" is now 2 lower.",
+      "parentUuid": "e398b9cd_a54ccb34",
       "revId": "e5167941e1d98921d6fa099f845ad7caa34e5c74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
