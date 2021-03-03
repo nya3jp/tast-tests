@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f6e7fc_8ed1be61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T17:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b85352b8_42d3e3bb",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "7e8bbd69775a1fbe49c7475ee7564290c0c02421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "685e7db7_48b9914a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T17:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03b03c9a_639ab197",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "7e8bbd69775a1fbe49c7475ee7564290c0c02421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f65ba983_cf512104",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-03T16:47:04Z",
       "side": 1,
       "message": "nit: add add docstring to these tests as well..",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "7e8bbd69775a1fbe49c7475ee7564290c0c02421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe67a64_5aaa1b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T17:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f65ba983_cf512104",
       "range": {
         "startLine": 58,
         "startChar": 5,
