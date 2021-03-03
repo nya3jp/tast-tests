@@ -33,6 +33,372 @@
       "message": "is this ready to try? I\u0027ve got no windows restored, and the test did seem to hang in the middle (waiting for some results)",
       "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926cc473_16660b66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "I am afraid this is not describing what this test does.",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "327b695b_ad18995d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "Are they the right contact?  Guessing you and oshima, plus chromeos-wmp@ would be a better contact list.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5531562_4684d691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "Does this have to be internal only?",
+      "range": {
+        "startLine": 34,
+        "startChar": 36,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1d1a55a_9a9afd85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "Is this a mainline test?  I think it\u0027s a performance test, and if so \"group:crosbolt\" and \"crosbolt_perbuild\" would be the attributes.\ncf. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md",
+      "range": {
+        "startLine": 35,
+        "startChar": 25,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "139b3fdb_c17948c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "When using DataFilesystem, please specify \u0027Data\u0027 field here.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go;l\u003d48?sq\u003dpackage:%5Echromeos_public$\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Data-files",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef0f8ca_e312e850",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "Typically utility functions like this should return an error instead of doing s.Fatal.\n\nIn this case specifically, you should return 2 values (*chrome.Chrome, error). Then you also don\u0027t need passing \u0027s\u0027.",
+      "range": {
+        "startLine": 46,
+        "startChar": 92,
+        "endLine": 46,
+        "endChar": 106
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1047595e_93bed164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "With the comments above, this is written like:\n  return nil, err\n\n(or return nil, errors.Wrap(err, \"failed to start Chrome\"))",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "472212a2_ae3da153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d0b6ef_a6bfc35f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "Please remove this log, I guess this is for your debugging.\n\n(also: please run \"../platform/tast/fast_build.sh -C\" in your chroot environment -- I guess it will print some warnings on the log like this.  Sadly fast_build.sh -C isn\u0027t running in repo-upload hook, but CQ verifies that).\n\nSee also: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/modifying_tast.md#fast_build_sh",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e217dcc_9f25dad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "Remove this comment -- looks like unrelated.",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d514602d_24d3f436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "similarly it\u0027s better to return an error here.",
+      "range": {
+        "startLine": 80,
+        "startChar": 79,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dabf41d0_f6d31b9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "Actually I am having a CL in CQ to change this function (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2725366). Could you wait a bit for that to be merged?\n\nAfter that, these lines would be:\n  if err :\u003d ash.CreateWindows(ctx, tconn, cr, n); err !\u003d nil {\n    ...\n\ni.e. you don\u0027t have to worry about \u0027conns\u0027.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a24d715_4471e9ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "Please use \u0027ctx\u0027, which hides referring to the external \u0027ctx\u0027.",
+      "range": {
+        "startLine": 219,
+        "startChar": 82,
+        "endLine": 219,
+        "endChar": 86
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faca6916_a8325bc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "Sorry but \u0027s\u0027 (especially s.Fatal) shouldn\u0027t be used within r.RunMultiple; RunMultiple internally creates \u0027subtest\u0027 but the subtest state is not passed to this function.  \"s.Fatal\" will report the failure of the main one, not sub one.",
+      "range": {
+        "startLine": 222,
+        "startChar": 42,
+        "endLine": 222,
+        "endChar": 43
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9258b3_1877f7ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "This is basically a simple wrapper. I guess you could simply write like:\n  return metrics.RunAndWaitAll(ctx, tLoginConn, time.Minute, func(ctx context.Context) error {\n    ...\n  },\n    \"Ash.LoginAnimation.Smoothness\"+suffix,\n    ...\n  )",
+      "range": {
+        "startLine": 230,
+        "startChar": 11,
+        "endLine": 230,
+        "endChar": 79
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d453a80_ec9c60aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "As I suggested above, make it return an error.  Please do not combine returning errors and s.Fatal.",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c838dab8_f06d2680",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d1fa8cc_d2467bb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-03T21:50:30Z",
+      "side": 1,
+      "message": "Maybe it\u0027s good to tweak this as\n  RunTracing: (cr !\u003d nil)\n\nThat way you don\u0027t need to make a trick around cr\u003d\u003dnil case below?",
+      "range": {
+        "startLine": 118,
+        "startChar": 72,
+        "endLine": 118,
+        "endChar": 76
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
