@@ -114,8 +114,12 @@ func (n *NearbyService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 		testing.ContextLog(ctx, "Faied to save message log: ", err)
 	}
 	err := n.cr.Close(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "Faied to close Chrome in Nearby Share service: ", err)
+	} else {
+		testing.ContextLog(ctx, "Nearby Share service closed successfully for: ", n.deviceName)
+	}
 	n.cr = nil
-
 	return &empty.Empty{}, err
 }
 
