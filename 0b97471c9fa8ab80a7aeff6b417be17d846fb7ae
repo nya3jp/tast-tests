@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6785ef81_7ac4f1ae",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T07:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "821eddee_3e538280",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "0b97471c9fa8ab80a7aeff6b417be17d846fb7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56ed0449_68a40b71",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-03T05:56:01Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "0b97471c9fa8ab80a7aeff6b417be17d846fb7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a13625a_98b0bec8",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-03T07:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ed0449_68a40b71",
       "range": {
         "startLine": 49,
         "startChar": 3,
