@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08addec6_0972e604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_canvas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-04T08:41:47Z",
+      "side": 1,
+      "message": "Can you please split the CL into 2? The first one adds the fixture and only affects informational tests. After we know the fixture is stable and working as expected, create another CL to move the critical tests.",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "4fa14069043d72b4f04fd74cacc4890703fea63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
