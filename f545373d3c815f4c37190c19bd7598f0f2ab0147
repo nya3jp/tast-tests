@@ -22,6 +22,30 @@
       },
       "revId": "f545373d3c815f4c37190c19bd7598f0f2ab0147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2772dd87_ff4d2e6f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-04T22:29:24Z",
+      "side": 1,
+      "message": "I will keep this in mind. Thanks.",
+      "parentUuid": "375a22f1_52c54e25",
+      "range": {
+        "startLine": 257,
+        "startChar": 9,
+        "endLine": 257,
+        "endChar": 24
+      },
+      "revId": "f545373d3c815f4c37190c19bd7598f0f2ab0147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
