@@ -17,14 +17,20 @@ var ReceiveUIParams ui.FindParams = ui.FindParams{
 	Name: "Settings - Nearby Share",
 }
 
-// CrosDetectReceiverTimeout is the timeout for a CrOS sender to detect a receiver.
-const CrosDetectReceiverTimeout = time.Minute
+// DetectShareTargetTimeout is the timeout for a sender to detect an available receiver or vice versa.
+const DetectShareTargetTimeout = time.Minute
 
-// CrosDetectSenderTimeout is the timeout for a CrOS receiver to detect a sender.
-const CrosDetectSenderTimeout = time.Minute
+// AdditionalTestTime is the amount of time to add to the share target detection and file transfer timeouts to make up the global test timeout.
+// This is to account for any additional setup and non-sharing interactions performed by the test.
+const AdditionalTestTime = 30 * time.Second
 
-// SmallFileTimeout is the test timeout for small file transfer tests.
-const SmallFileTimeout = 2 * time.Minute
+// DetectionTimeout is the standard timeout for activities performed in a test excluding the actual file transfer.
+// 2*DetectShareTargetTimeout accounts for the amount of time given for the sender to find+select the receiver,
+// and then for the receiver to detect the incoming share from the sender.
+const DetectionTimeout = 2*DetectShareTargetTimeout + AdditionalTestTime
+
+// SmallFileTransferTimeout is the test timeout for small file (~10kb) transfer tests.
+const SmallFileTransferTimeout = 30 * time.Second
 
 // ChromeLog is the filename of the Chrome log that is saved for each test.
 const ChromeLog = "nearby_chrome"

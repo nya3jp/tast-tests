@@ -26,14 +26,16 @@ import (
 	"chromiumos/tast/local/testexec"
 )
 
-// TestData contains the values for parameterized tests, such as the file name and the total test timeout
-// which can vary depending on file size. The timeout for the test is actually set in the testing.Params,
-// Android Nearby tests need to know the total timeout, which is used as a parameter to several RPCs.
-// The MimeType is required when sending from Android
+// TestData contains the values for parameterized tests, such as:
+// - File name of the archive containing files to be shared
+// - File transfer timeout (varies depending on file size)
+// - Total test timeout (transfer timeout + time required for sender and receiver to detect each other)
+// - MIME type of shared files (only required when sending from Android)
 type TestData struct {
-	Filename string
-	Timeout  time.Duration
-	MimeType nearbysnippet.MimeType
+	Filename        string
+	TransferTimeout time.Duration
+	TestTimeout     time.Duration
+	MimeType        nearbysnippet.MimeType
 }
 
 // SendDir is the staging directory for test files when sending from CrOS.

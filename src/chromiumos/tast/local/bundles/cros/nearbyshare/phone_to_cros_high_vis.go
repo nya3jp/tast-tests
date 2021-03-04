@@ -36,12 +36,13 @@ func init() {
 			{
 				Name: "dataoffline_allcontacts_jpg11kb",
 				Val: nearbytestutils.TestData{
-					Filename: "small_jpg.zip",
-					Timeout:  nearbyshare.SmallFileTimeout,
-					MimeType: nearbysnippet.MimeTypeJpeg,
+					Filename:        "small_jpg.zip",
+					TransferTimeout: nearbyshare.SmallFileTransferTimeout,
+					TestTimeout:     nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+					MimeType:        nearbysnippet.MimeTypeJpeg,
 				},
 				ExtraData: []string{"small_jpg.zip"},
-				Timeout:   nearbyshare.SmallFileTimeout,
+				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
 			},
 		},
 	})
@@ -72,9 +73,9 @@ func PhoneToCrosHighVis(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	s.Log("Starting sending on the Android device")
-	transferTimeout := testData.Timeout
+	testTimeout := testData.TestTimeout
 	mimetype := testData.MimeType
-	if err := androidDevice.SendFile(ctx, androidDisplayName, crosDisplayName, testFile, mimetype, transferTimeout); err != nil {
+	if err := androidDevice.SendFile(ctx, androidDisplayName, crosDisplayName, testFile, mimetype, testTimeout); err != nil {
 		s.Fatal("Failed to start sending on Android: ", err)
 	}
 	// Defer cancelling the share on the Android side if it does not succeed.
@@ -88,19 +89,19 @@ func PhoneToCrosHighVis(ctx context.Context, s *testing.State) {
 			if err := androidDevice.CancelSendingFile(ctx); err != nil {
 				s.Error("Failed to cancel sending after the share failed: ", err)
 			}
-			if err := androidDevice.AwaitSharingStopped(ctx, transferTimeout); err != nil {
+			if err := androidDevice.AwaitSharingStopped(ctx, testTimeout); err != nil {
 				s.Error("Failed waiting for the Android device to signal that sharing has finished: ", err)
 			}
 		}
 	}()
 
 	s.Log("Waiting for CrOS receiver to detect incoming share from Android sender")
-	crosToken, err := receiver.WaitForSender(ctx, androidDisplayName, nearbyshare.CrosDetectSenderTimeout)
+	crosToken, err := receiver.WaitForSender(ctx, androidDisplayName, nearbyshare.DetectShareTargetTimeout)
 	if err != nil {
 		s.Fatal("CrOS receiver failed to find Android sender: ", err)
 	}
 	s.Log("Waiting for Android sender to see that CrOS receiver connected")
-	androidToken, err := androidDevice.AwaitReceiverAccept(ctx, transferTimeout)
+	androidToken, err := androidDevice.AwaitReceiverAccept(ctx, nearbyshare.DetectShareTargetTimeout)
 	if err != nil {
 		s.Fatal("Failed waiting for the Android to connect to receiver: ", err)
 	}
@@ -113,7 +114,7 @@ func PhoneToCrosHighVis(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for the Android sender to signal that sharing has completed")
-	if err := androidDevice.AwaitSharingStopped(ctx, transferTimeout); err != nil {
+	if err := androidDevice.AwaitSharingStopped(ctx, testData.TransferTimeout); err != nil {
 		s.Fatal("Failed waiting for the Android device to signal that sharing has finished: ", err)
 	}
 	shareCompleted = true

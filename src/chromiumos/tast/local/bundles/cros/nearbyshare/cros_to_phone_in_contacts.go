@@ -31,16 +31,24 @@ func init() {
 		Fixture: "nearbyShareDataUsageOfflineAllContactsGAIA",
 		Params: []testing.Param{
 			{
-				Name:      "dataoffline_allcontacts_png5kb",
-				Val:       nearbytestutils.TestData{Filename: "small_png.zip", Timeout: nearbyshare.SmallFileTimeout},
+				Name: "dataoffline_allcontacts_png5kb",
+				Val: nearbytestutils.TestData{
+					Filename:        "small_png.zip",
+					TransferTimeout: nearbyshare.SmallFileTransferTimeout,
+					TestTimeout:     nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+				},
 				ExtraData: []string{"small_png.zip"},
-				Timeout:   nearbyshare.SmallFileTimeout,
+				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
 			},
 			{
-				Name:      "dataoffline_allcontacts_jpg11kb",
-				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", Timeout: nearbyshare.SmallFileTimeout},
+				Name: "dataoffline_allcontacts_jpg11kb",
+				Val: nearbytestutils.TestData{
+					Filename:        "small_jpg.zip",
+					TransferTimeout: nearbyshare.SmallFileTransferTimeout,
+					TestTimeout:     nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+				},
 				ExtraData: []string{"small_jpg.zip"},
-				Timeout:   nearbyshare.SmallFileTimeout,
+				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
 			},
 		},
 	})
@@ -55,7 +63,8 @@ func CrosToPhoneInContacts(ctx context.Context, s *testing.State) {
 	androidDisplayName := s.FixtValue().(*nearbyshare.FixtData).AndroidDeviceName
 
 	// Extract the test file(s) to nearbytestutils.SendDir.
-	testDataZip := s.DataPath(s.Param().(nearbytestutils.TestData).Filename)
+	testData := s.Param().(nearbytestutils.TestData)
+	testDataZip := s.DataPath(testData.Filename)
 	filenames, err := nearbytestutils.ExtractCrosTestFiles(ctx, testDataZip)
 	if err != nil {
 		s.Fatal("Failed to extract test data files: ", err)
@@ -77,7 +86,7 @@ func CrosToPhoneInContacts(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	s.Log("Waiting for CrOS sender to detect Android receiver")
-	if err := sender.SelectShareTarget(ctx, androidDisplayName, nearbyshare.CrosDetectReceiverTimeout); err != nil {
+	if err := sender.SelectShareTarget(ctx, androidDisplayName, nearbyshare.DetectShareTargetTimeout); err != nil {
 		s.Fatal("CrOS device failed to select Android device as a receiver and start the transfer: ", err)
 	}
 
@@ -87,13 +96,12 @@ func CrosToPhoneInContacts(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start UI Automator: ", err)
 	}
 	defer androidDevice.CloseUI(ctx)
-	if err := androidDevice.WaitForInContactSenderUI(ctx, crosDisplayName, nearbyshare.CrosDetectSenderTimeout); err != nil {
+	if err := androidDevice.WaitForInContactSenderUI(ctx, crosDisplayName, nearbyshare.DetectShareTargetTimeout); err != nil {
 		s.Fatal("Failed to find receive UI on the Android device: ", err)
 	}
 
 	s.Log("Accepting the share through the UI on the Android receiver")
-	transferTimeout := s.Param().(nearbytestutils.TestData).Timeout
-	if err := androidDevice.AcceptUI(ctx, transferTimeout); err != nil {
+	if err := androidDevice.AcceptUI(ctx, testData.TransferTimeout); err != nil {
 		s.Fatal("Android failed to accept the share through the UI: ", err)
 	}
 

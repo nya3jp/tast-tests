@@ -7,6 +7,7 @@ package nearbyshare
 import (
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"golang.org/x/net/context"
@@ -195,7 +196,7 @@ func (n *NearbyService) SelectShareTarget(ctx context.Context, req *nearbyservic
 	if n.senderSurface == nil {
 		return nil, errors.New("SendSurface is not defined")
 	}
-	if err := n.senderSurface.SelectShareTarget(ctx, req.ReceiverName, nearbyshare.CrosDetectReceiverTimeout); err != nil {
+	if err := n.senderSurface.SelectShareTarget(ctx, req.ReceiverName, nearbyshare.DetectShareTargetTimeout); err != nil {
 		return nil, errors.Wrap(err, "failed to select share target")
 	}
 	var res nearbyservice.CrOSShareTokenResponse
@@ -231,7 +232,7 @@ func (n *NearbyService) WaitForSenderAndAcceptShare(ctx context.Context, req *ne
 		return nil, errors.New("ReceiveSurface is not defined")
 	}
 	var res nearbyservice.CrOSShareTokenResponse
-	token, err := n.receiverSurface.WaitForSender(ctx, req.SenderName, nearbyshare.CrosDetectSenderTimeout)
+	token, err := n.receiverSurface.WaitForSender(ctx, req.SenderName, nearbyshare.DetectShareTargetTimeout)
 	if err != nil {
 		return nil, errors.Wrap(err, "CrOS receiver failed to find CrOS sender")
 	}
@@ -262,12 +263,12 @@ func (n *NearbyService) AcceptIncomingShareNotificationAndWaitForCompletion(ctx 
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
-	if err := nearbyshare.AcceptIncomingShareNotification(ctx, n.tconn, req.SenderName, nearbyshare.CrosDetectSenderTimeout); err != nil {
+	if err := nearbyshare.AcceptIncomingShareNotification(ctx, n.tconn, req.SenderName, nearbyshare.DetectShareTargetTimeout); err != nil {
 		return nil, errors.Wrap(err, "CrOS receiver failed to accept Nearby Share notification")
 	}
 	testing.ContextLog(ctx, "Accepted the share on the CrOS receiver")
 	testing.ContextLog(ctx, "Waiting for receiving-complete notification on CrOS receiver")
-	if err := nearbyshare.WaitForReceivingCompleteNotification(ctx, n.tconn, req.SenderName, nearbyshare.CrosDetectSenderTimeout); err != nil {
+	if err := nearbyshare.WaitForReceivingCompleteNotification(ctx, n.tconn, req.SenderName, time.Duration(req.TransferTimeoutSeconds)*time.Second); err != nil {
 		return nil, errors.Wrap(err, "failed waiting for notification to indicate sharing has completed on CrOS")
 	}
 	return &empty.Empty{}, nil
