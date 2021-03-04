@@ -6,11 +6,13 @@ package camera
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"time"
 
 	"github.com/abema/go-mp4"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
@@ -83,6 +85,8 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Custom video parameters is not toggled")
 	}
 
+	perfValues := perf.NewValues()
+
 	if err := app.RunThroughCameras(ctx, func(facing cca.Facing) error {
 		for _, profile := range []cca.Profile{cca.ProfileH264Baseline, cca.ProfileH264Main, cca.ProfileH264High} {
 			// Set encoder profile.
@@ -132,8 +136,23 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 				if err := checkVideoFile(path, profile); err != nil {
 					return err
 				}
-				testing.ContextLogf(ctx, "Video perf profile=%v multiplier=%v: %v", profile, c, usage)
-				// TODO(b/151047420): Dashboarding usage data with chromiumos/tast/common/perf.
+				testing.ContextLogf(ctx, "Video perf profile=%v multiplier=%v: %v", profile.Name, c, usage)
+				if cpu, ok := usage["cpu"]; ok {
+					cpuMetric := fmt.Sprintf("cpu_usage_video_option-facing-%s-profile-%s-bitrate-x%d", facing, profile.Name, c)
+					perfValues.Set(perf.Metric{
+						Name:      cpuMetric,
+						Unit:      "percent",
+						Direction: perf.SmallerIsBetter,
+					}, cpu)
+				}
+				if power, ok := usage["power"]; ok {
+					powerMetric := fmt.Sprintf("power_usage_video_option-facing-%s-profile-%s-bitrate-x%d", facing, profile.Name, c)
+					perfValues.Set(perf.Metric{
+						Name:      powerMetric,
+						Unit:      "Watts",
+						Direction: perf.SmallerIsBetter,
+					}, power)
+				}
 			}
 		}
 		return nil
@@ -142,6 +161,10 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// TODO(b/151047420): Collect ui latency data.
+
+	if err := perfValues.Save(s.OutDir()); err != nil {
+		s.Fatal("Failed to save perf metrics: ", err)
+	}
 }
 
 func checkVideoFile(path string, profile cca.Profile) error {
@@ -176,8 +199,8 @@ func checkVideoFile(path string, profile cca.Profile) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to get videoAVCConfigure from result video")
 	}
-	if int(config.Profile) != int(profile) {
-		return errors.Errorf("mismatch video profile, got %v; want %v", config.Profile, profile)
+	if int(config.Profile) != int(profile.Value) {
+		return errors.Errorf("mismatch video profile, got %v; want %v", config.Profile, profile.Value)
 	}
 	return nil
 }
