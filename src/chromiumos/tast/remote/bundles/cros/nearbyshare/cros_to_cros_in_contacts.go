@@ -40,9 +40,9 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:      "dataoffline_allcontacts_jpg11kb",
-				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", Timeout: nearbyshare.SmallFileTimeout},
+				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbyshare.SmallFileTransferTimeout},
 				ExtraData: []string{"small_jpg.zip"},
-				Timeout:   2 * nearbyshare.SmallFileTimeout,
+				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
 			},
 		},
 	})
@@ -76,11 +76,12 @@ func CrosToCrosInContacts(ctx context.Context, s *testing.State) {
 	dataPath := strings.TrimSpace(string(tempdir))
 	defer d1.Conn().Command("rm", "-r", dataPath).Run(ctx)
 
-	testData := s.Param().(nearbytestutils.TestData).Filename
-	remoteFilePath := filepath.Join(dataPath, testData)
+	testData := s.Param().(nearbytestutils.TestData)
+	testZip := testData.Filename
+	remoteFilePath := filepath.Join(dataPath, testZip)
 	s.Log("Moving data files to DUT1 (Sender): ", remoteFilePath)
 	if _, err := linuxssh.PutFiles(ctx, d1.Conn(), map[string]string{
-		s.DataPath(testData): remoteFilePath,
+		s.DataPath(testZip): remoteFilePath,
 	}, linuxssh.DereferenceSymlinks); err != nil {
 		s.Fatalf("Failed to send data to remote data path %v: %v", dataPath, err)
 	}
@@ -140,7 +141,8 @@ func CrosToCrosInContacts(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Accepting the share request on DUT2 (Receiver) via a notification")
-	receiveReq := &nearbyservice.CrOSReceiveFilesRequest{SenderName: senderDisplayName}
+	transferTimeoutSeconds := int32(testData.TransferTimeout.Seconds())
+	receiveReq := &nearbyservice.CrOSReceiveFilesRequest{SenderName: senderDisplayName, TransferTimeoutSeconds: transferTimeoutSeconds}
 	_, err = receiver.AcceptIncomingShareNotificationAndWaitForCompletion(ctx, receiveReq)
 	if err != nil {
 		s.Fatal("Failed to accept share on DUT2 (Receiver): ", err)
