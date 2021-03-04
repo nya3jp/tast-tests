@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb87282_bd47eb11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T09:17:38Z",
+      "side": 1,
+      "message": "And I know why it some times freeze:\n\n2021-03-04T07:44:52.983578Z WARNING chrome[22370:22370]: [login_unlock_throughput_recorder.cc(51)] Zero frames expected in login animation throughput data\n\nSo I guess that 0 frames must also be reported.",
+      "parentUuid": "cd527857_9717da7f",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "926cc473_16660b66",
