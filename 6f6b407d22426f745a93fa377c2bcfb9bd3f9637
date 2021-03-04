@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd527857_9717da7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T03:25:31Z",
+      "side": 1,
+      "message": "I had a few questions to both of you in my first comment:\n\n\u003e This is debug version of the LoginPerf tast test.\n\u003e It has a few issues:\n\u003e - Open windows are not saved across logout/login. I don\u0027t know why.\n\u003e - It some times time out waiting for some metric, which is very strange. I added debug to Chrome and it seems to always generate relevant metrics.\n\u003e - It does not support lacros, as its bindings seem to require login through the fixtures (i.e. it does not seem possible to log in / log out withing the test function).\n\u003e \n\u003e \n\u003e PTAL.\n\u003e \n\u003e WDYT?\n\nI know that it does not restore windows, I dust don\u0027t know why ;)\n\n\n\u003e I\u0027ve got no windows restored, and the test did seem to hang in the\n\u003e middle (waiting for some results)\n\nAre you sure your Chrome build has your UMA metrics? I had to deploy my local Chrome build for that, because your Cl has not reached canary yet.",
+      "parentUuid": "43c1630a_8c786085",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "926cc473_16660b66",
