@@ -33,15 +33,15 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:      "dataoffline_allcontacts_png5kb",
-				Val:       nearbytestutils.TestData{Filename: "small_png.zip", Timeout: nearbyshare.SmallFileTimeout},
+				Val:       nearbytestutils.TestData{Filename: "small_png.zip", TransferTimeout: nearbyshare.SmallFileTransferTimeout},
 				ExtraData: []string{"small_png.zip"},
-				Timeout:   nearbyshare.SmallFileTimeout,
+				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
 			},
 			{
 				Name:      "dataoffline_allcontacts_jpg11kb",
-				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", Timeout: nearbyshare.SmallFileTimeout},
+				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbyshare.SmallFileTransferTimeout},
 				ExtraData: []string{"small_jpg.zip"},
-				Timeout:   nearbyshare.SmallFileTimeout,
+				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
 			},
 		},
 	})
@@ -61,7 +61,8 @@ func CrosToCrosHighVis(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting sending on DUT1 (Sender)")
-	remoteFile := filepath.Join(remoteFilePath, s.Param().(nearbytestutils.TestData).Filename)
+	testData := s.Param().(nearbytestutils.TestData)
+	remoteFile := filepath.Join(remoteFilePath, testData.Filename)
 	fileReq := &nearbyservice.CrOSPrepareFileRequest{FileName: remoteFile}
 	fileNames, err := sender.PrepareFiles(ctx, fileReq)
 	if err != nil {
@@ -80,7 +81,8 @@ func CrosToCrosHighVis(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to select share target on DUT1 (Sender): ", err)
 	}
 	s.Log("Accepting the share request on DUT2 (Receiver)")
-	receiveReq := &nearbyservice.CrOSReceiveFilesRequest{SenderName: senderDisplayName}
+	transferTimeoutSeconds := int32(testData.TransferTimeout.Seconds())
+	receiveReq := &nearbyservice.CrOSReceiveFilesRequest{SenderName: senderDisplayName, TransferTimeoutSeconds: transferTimeoutSeconds}
 	receiverShareToken, err := receiver.WaitForSenderAndAcceptShare(ctx, receiveReq)
 	if err != nil {
 		s.Fatal("Failed to accept share on DUT2 (Receiver): ", err)

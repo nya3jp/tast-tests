@@ -108,9 +108,10 @@ message CrOSFileHashResponse {
 }
 
 // CrOSReceiveFilesRequest contains the sender name that we want to receive
-// files from.
+// files from and the file transfer timeout in seconds.
 message CrOSReceiveFilesRequest {
   string sender_name = 1;
+  int32 transfer_timeout_seconds = 2;
 }
 
 // CrOSShareTokenResponse contains the share token from the receiver.

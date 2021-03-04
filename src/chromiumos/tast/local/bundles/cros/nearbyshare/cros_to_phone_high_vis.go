@@ -32,16 +32,24 @@ func init() {
 		Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
 		Params: []testing.Param{
 			{
-				Name:      "dataoffline_allcontacts_png5kb",
-				Val:       nearbytestutils.TestData{Filename: "small_png.zip", Timeout: nearbyshare.SmallFileTimeout},
+				Name: "dataoffline_allcontacts_png5kb",
+				Val: nearbytestutils.TestData{
+					Filename:        "small_png.zip",
+					TransferTimeout: nearbyshare.SmallFileTransferTimeout,
+					TestTimeout:     nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+				},
 				ExtraData: []string{"small_png.zip"},
-				Timeout:   nearbyshare.SmallFileTimeout,
+				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
 			},
 			{
-				Name:      "dataoffline_allcontacts_jpg11kb",
-				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", Timeout: nearbyshare.SmallFileTimeout},
+				Name: "dataoffline_allcontacts_jpg11kb",
+				Val: nearbytestutils.TestData{
+					Filename:        "small_jpg.zip",
+					TransferTimeout: nearbyshare.SmallFileTransferTimeout,
+					TestTimeout:     nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+				},
 				ExtraData: []string{"small_jpg.zip"},
-				Timeout:   nearbyshare.SmallFileTimeout,
+				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
 			},
 		},
 	})
@@ -56,7 +64,8 @@ func CrosToPhoneHighVis(ctx context.Context, s *testing.State) {
 	androidDisplayName := s.FixtValue().(*nearbyshare.FixtData).AndroidDeviceName
 
 	// Extract the test file(s) to nearbyshare.SendDir.
-	testDataZip := s.DataPath(s.Param().(nearbytestutils.TestData).Filename)
+	testData := s.Param().(nearbytestutils.TestData)
+	testDataZip := s.DataPath(testData.Filename)
 	filenames, err := nearbytestutils.ExtractCrosTestFiles(ctx, testDataZip)
 	if err != nil {
 		s.Fatal("Failed to extract test data files: ", err)
@@ -78,8 +87,8 @@ func CrosToPhoneHighVis(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	s.Log("Starting receiving on the Android device")
-	transferTimeout := s.Param().(nearbytestutils.TestData).Timeout
-	if err := androidDevice.ReceiveFile(ctx, crosDisplayName, androidDisplayName, transferTimeout); err != nil {
+	testTimeout := testData.TestTimeout
+	if err := androidDevice.ReceiveFile(ctx, crosDisplayName, androidDisplayName, testTimeout); err != nil {
 		s.Fatal("Failed to start receiving on Android: ", err)
 	}
 	// Defer cancelling receiving if something goes wrong.
@@ -93,19 +102,19 @@ func CrosToPhoneHighVis(ctx context.Context, s *testing.State) {
 			if err := androidDevice.CancelReceivingFile(ctx); err != nil {
 				s.Error("Failed to cancel receiving after the share failed: ", err)
 			}
-			if err := androidDevice.AwaitSharingStopped(ctx, transferTimeout); err != nil {
+			if err := androidDevice.AwaitSharingStopped(ctx, testTimeout); err != nil {
 				s.Error("Failed waiting for the Android device to signal that sharing has finished: ", err)
 			}
 		}
 	}()
 
 	s.Log("Waiting for CrOS sender to detect Android receiver")
-	if err := sender.SelectShareTarget(ctx, androidDisplayName, nearbyshare.CrosDetectReceiverTimeout); err != nil {
+	if err := sender.SelectShareTarget(ctx, androidDisplayName, nearbyshare.DetectShareTargetTimeout); err != nil {
 		s.Fatal("CrOS device failed to select Android device as a receiver and start the transfer: ", err)
 	}
 
 	s.Log("Waiting for Android receiver to detect the incoming share from CrOS sender")
-	if err := androidDevice.AwaitReceiverConfirmation(ctx, transferTimeout); err != nil {
+	if err := androidDevice.AwaitReceiverConfirmation(ctx, nearbyshare.DetectShareTargetTimeout); err != nil {
 		s.Fatal("Failed waiting for the Android device to detect the share: ", err)
 	}
 
@@ -121,7 +130,7 @@ func CrosToPhoneHighVis(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for the Android receiver to signal that sharing has completed")
-	if err := androidDevice.AwaitSharingStopped(ctx, transferTimeout); err != nil {
+	if err := androidDevice.AwaitSharingStopped(ctx, testData.TransferTimeout); err != nil {
 		s.Fatal("Failed waiting for the Android device to signal that sharing has finished: ", err)
 	}
 	shareCompleted = true
