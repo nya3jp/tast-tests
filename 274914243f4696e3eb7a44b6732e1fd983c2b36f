@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e0ed809_3a418e4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T15:53:17Z",
+      "side": 1,
+      "message": "Thanks! lgtm, I will let mwarton@ to give final +2.",
+      "revId": "274914243f4696e3eb7a44b6732e1fd983c2b36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5495a9c_4abacd0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T15:53:17Z",
+      "side": 1,
+      "message": "Btw, please run gofmt before submitting (if you already run it, please ignore this comment :)",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 7
+      },
+      "revId": "274914243f4696e3eb7a44b6732e1fd983c2b36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
