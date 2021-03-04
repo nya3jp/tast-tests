@@ -22,6 +22,30 @@
       },
       "revId": "7a5472b24237121e49a0361056107bb44154c279",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ff1ff5_96dfafbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-03-04T04:38:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6ef3e16_47665e0c",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 6
+      },
+      "revId": "7a5472b24237121e49a0361056107bb44154c279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
