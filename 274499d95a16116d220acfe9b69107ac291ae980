@@ -39,6 +39,30 @@
       },
       "revId": "274499d95a16116d220acfe9b69107ac291ae980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b74cc3b4_07629a76",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-04T23:43:00Z",
+      "side": 1,
+      "message": "I don\u0027t think the current implementation has ever been stable without retries due to frequent OptIn failures on development builds.  This was actually set to 0 due to a previous TODO so I don\u0027t want to give the next person impression that setting to 0 is okay and won\u0027t break anything.\n\nThat said, I\u0027ll add another comment to mention reason for retries based on http://b/167697547.",
+      "parentUuid": "e9c14954_d0cfecf1",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 52
+      },
+      "revId": "274499d95a16116d220acfe9b69107ac291ae980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
