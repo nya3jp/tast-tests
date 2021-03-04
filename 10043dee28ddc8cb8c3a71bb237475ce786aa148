@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1744cc0_4a897957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_key_eviction.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-04T03:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bb78888_5c8d255e",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "10043dee28ddc8cb8c3a71bb237475ce786aa148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2824de9_7c1fde9c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12747f25_eb1fdf1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_key_eviction.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-04T03:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2824de9_7c1fde9c",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "10043dee28ddc8cb8c3a71bb237475ce786aa148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b70aa77e_5cd56a3e",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-04T03:12:29Z",
       "side": 1,
       "message": "This is the same as the content in the defer func, make it a method?",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "10043dee28ddc8cb8c3a71bb237475ce786aa148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f2e55c_1dd793ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_key_eviction.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-04T03:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b70aa77e_5cd56a3e",
       "range": {
         "startLine": 68,
         "startChar": 1,
