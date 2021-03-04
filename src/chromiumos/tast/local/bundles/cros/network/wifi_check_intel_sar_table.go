@@ -30,7 +30,7 @@ func init() {
 			"chromeos-kernel-wifi@google.com", // WiFi team
 		},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		// NB: The WifiIntel dependency tracks a manually maintained list of devices.
 		// If the test is skipping when it should run or vice versa, check the hwdep
 		// to see if your board is incorrectly included/excluded.
