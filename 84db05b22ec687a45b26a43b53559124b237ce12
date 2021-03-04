@@ -22,6 +22,30 @@
       },
       "revId": "84db05b22ec687a45b26a43b53559124b237ce12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9240ace4_8e45820a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-04T01:57:07Z",
+      "side": 1,
+      "message": "LOL 😎",
+      "parentUuid": "c5e9f7ce_1db3a8ec",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "84db05b22ec687a45b26a43b53559124b237ce12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
