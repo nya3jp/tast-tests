@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6931334_df7b68a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-04T06:07:57Z",
+      "side": 0,
+      "message": "Is this intentional to remove this as this was added in http://crrev.com/c/2709316 and Got it doesn\u0027t appear to be handled in HandleDialogBoxes as well.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "86d9d14eafe7a4a5d52df19b2988abd684dcd4a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
