@@ -137,6 +137,13 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 		return nil, errors.Wrap(err, "failed to create chaps")
 	}
 
+	// Remove all keys/certs before the test as well.
+	// Note that this is needed because there's no guarantee on the state fo the DUT before the test
+	// starts, so we'll need to ensure that it's clean ourselves.
+	if err := pkcs11test.CleanupScratchpad(ctx, runner, scratchpadPath); err != nil {
+		return nil, errors.Wrap(err, "failed to clean scratchpad before the start of test")
+	}
+
 	// Prepare the scratchpad so we can put our temp files there.
 	if _, _, err := pkcs11test.PrepareScratchpadAndTestFiles(ctx, runner, scratchpadPath); err != nil {
 		return nil, errors.Wrap(err, "failed to prepare scratchpad")
