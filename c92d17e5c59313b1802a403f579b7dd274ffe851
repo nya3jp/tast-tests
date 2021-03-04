@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad49e0e9_d9383087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1483212
+      },
+      "writtenOn": "2021-03-04T21:07:36Z",
+      "side": 1,
+      "message": "The original spec was to calculate the geomean, but I am fine with this proposed change",
+      "parentUuid": "6a77ca60_818fd95e",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 3
+      },
+      "revId": "c92d17e5c59313b1802a403f579b7dd274ffe851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ef9692c_e585dc2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
         "patchSetId": 5
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-03T14:58:25Z",
       "side": 1,
       "message": "We also compares multiple sizes of bw_mem from small to large. Example: 1024 2048 4096 8192 15360 16384 24576 30720 32768 33792 49152 65536 98304 130048 131072 256000 262144 393216 524288 1048576 1468006 1572864 1992294 2097152 2202010 2621440 3040870 3145728 3250586 4194304 8388608 16777216 33554432 67108864 134217728 268435456\n\nMaybe pick 4 like lat_mem_read?",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "c92d17e5c59313b1802a403f579b7dd274ffe851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a3bd5de_371664ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1483212
+      },
+      "writtenOn": "2021-03-04T21:07:36Z",
+      "side": 1,
+      "message": "Hsin-Yi, what sizes do you recommend to pick?",
+      "parentUuid": "3ef9692c_e585dc2b",
       "range": {
         "startLine": 174,
         "startChar": 1,
