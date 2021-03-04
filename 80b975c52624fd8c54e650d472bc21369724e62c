@@ -477,6 +477,30 @@
       },
       "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87af26c3_bd570703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tcpbs1_geekbench_android_version.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-04T16:30:40Z",
+      "side": 1,
+      "message": "Hi Hsin-Yi, I totally agree that pin the APP version will avoid the risk of UI being changed in the future release. There was discussion with Aings if we can get the APK from the vendor (we don\u0027t want to upload their APP to Google cloud without permission). The conclusion was we will go ahead to install APK from play store. So we might need to adjust the UI in the future if it changes.",
+      "parentUuid": "e47cdb64_03e5b7af",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "80b975c52624fd8c54e650d472bc21369724e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
