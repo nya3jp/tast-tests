@@ -31,9 +31,10 @@ import (
 // Android Nearby tests need to know the total timeout, which is used as a parameter to several RPCs.
 // The MimeType is required when sending from Android
 type TestData struct {
-	Filename string
-	Timeout  time.Duration
-	MimeType nearbysnippet.MimeType
+	Filename        string
+	TransferTimeout time.Duration
+	TestTimeout     time.Duration
+	MimeType        nearbysnippet.MimeType
 }
 
 // SendDir is the staging directory for test files when sending from CrOS.
