@@ -62,6 +62,54 @@
       },
       "revId": "9e59d3fdca4cbfc06d2e6a0965a06632a2201838",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d224a79f_3252ed7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-04T02:17:15Z",
+      "side": 1,
+      "message": "I was too heavy on copy/paste...\n\nFixed in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2733932, to avoid disrupting CQ. (The 3 in-flight CLs have had a lot of conflicts, so I\u0027d like to get them in the tree.)",
+      "parentUuid": "13f00da6_93c007ab",
+      "range": {
+        "startLine": 5,
+        "startChar": 71,
+        "endLine": 5,
+        "endChar": 75
+      },
+      "revId": "9e59d3fdca4cbfc06d2e6a0965a06632a2201838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "282a73a7_67cda6e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-04T02:17:15Z",
+      "side": 1,
+      "message": "I was *definitely* heavy on copy/paste! Also fixed https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2733932",
+      "parentUuid": "1a10dcfe_8d68a1b7",
+      "range": {
+        "startLine": 5,
+        "startChar": 25,
+        "endLine": 5,
+        "endChar": 31
+      },
+      "revId": "9e59d3fdca4cbfc06d2e6a0965a06632a2201838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
