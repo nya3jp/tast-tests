@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce083f10_c9cc9675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-04T18:13:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39780b07_e2c4e45c",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57bfae33_29e2cf3a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-03T11:04:54Z",
       "side": 1,
       "message": "Only the name is being used here. Consider just passing what you need.",
+      "range": {
+        "startLine": 140,
+        "startChar": 23,
+        "endLine": 140,
+        "endChar": 44
+      },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b00017_b6893a0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-04T18:13:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bfae33_29e2cf3a",
       "range": {
         "startLine": 140,
         "startChar": 23,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aa13d30_60fdf449",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-04T18:13:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0b597bb_f950f41d",
+      "range": {
+        "startLine": 145,
+        "startChar": 37,
+        "endLine": 145,
+        "endChar": 58
+      },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8315b5e_7ad5ec0c",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-03T11:04:54Z",
       "side": 1,
       "message": "Seems the name is only being used here? Should just be able to pass name as string.",
+      "range": {
+        "startLine": 173,
+        "startChar": 47,
+        "endLine": 173,
+        "endChar": 68
+      },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a06f7ae6_bdaec8e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-04T18:13:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8315b5e_7ad5ec0c",
       "range": {
         "startLine": 173,
         "startChar": 47,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e0d48f_e9f77912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-04T18:13:22Z",
+      "side": 1,
+      "message": "This is toggling power on a standalone MCU dev board outside the DUT, connected via servo-micro. The MCU dev board can only be STM32F412 or STM32H743. We are using special setups in the test lab. So this code should never have to deal with zork, coral, etc.",
+      "parentUuid": "2a358e35_2e63b47a",
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07525e99_252b8875",
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39f41f4b_4d3128bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-04T18:13:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07525e99_252b8875",
+      "range": {
+        "startLine": 258,
+        "startChar": 11,
+        "endLine": 258,
+        "endChar": 40
+      },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c00126ac_74de9299",
@@ -146,6 +284,30 @@
       "writtenOn": "2021-03-03T11:04:54Z",
       "side": 1,
       "message": "nit: Failed to flash unittest binary (keeping error message pattern consistent)",
+      "range": {
+        "startLine": 283,
+        "startChar": 11,
+        "endLine": 283,
+        "endChar": 42
+      },
+      "revId": "2230d791ca9a35089ab5bda991696b42d6829388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8ee0ad3_3e2cbf20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-04T18:13:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c00126ac_74de9299",
       "range": {
         "startLine": 283,
         "startChar": 11,
