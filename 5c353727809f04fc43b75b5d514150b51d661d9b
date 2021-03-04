@@ -16,6 +16,24 @@
       "message": "I am okay with this CL, but how will we collect the logs as the later part of the survey? Do we have a script?",
       "revId": "5c353727809f04fc43b75b5d514150b51d661d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c096c1_2170d13e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-03-04T04:02:13Z",
+      "side": 1,
+      "message": "IIRC, its doable with a script just like how we collect code coverage data or maybe perf data?",
+      "parentUuid": "0cd641b0_85638b84",
+      "revId": "5c353727809f04fc43b75b5d514150b51d661d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
