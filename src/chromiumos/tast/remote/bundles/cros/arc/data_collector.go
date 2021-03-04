@@ -181,7 +181,10 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		gsUtil = "gsutil"
 
 		// Number of retries for each flow in case of failure.
-		retryCount = 0
+		// Please see b/167697547, b/181832600 for more information. Retries are
+		// needed for occasional OptIn instability on ARC development builds. Only
+		// lower count if for sure OptIn is completely stable.
+		retryCount = 2
 	)
 
 	d := s.DUT()
