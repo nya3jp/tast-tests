@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51a9db7a_0b901205",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-04T01:18:15Z",
+      "side": 1,
+      "message": "Found one in the Android Nearby tests:\nhttps://source.corp.google.com/piper///depot/google3/javatests/com/google/android/gmscore/integ/modules/nearby/mobly/e2e/tests/performance/test_report_base.py;l\u003d269\n\nWent with the same thing here.",
+      "parentUuid": "44cf13f6_00dbfb99",
+      "range": {
+        "startLine": 262,
+        "startChar": 31,
+        "endLine": 262,
+        "endChar": 68
+      },
+      "revId": "7d6981bf4157bc4c012fdcffc3d22b537d5f1a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d655cca_101422b7",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ba8e3c2_cfcc847c",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-04T01:18:15Z",
+      "side": 1,
+      "message": "There is, but no support for getting the Chrome version:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/lsbrelease/lsbrelease.go\n\nlooks like /etc/lsb-release doesn\u0027t have the browser version on my test devices either",
+      "parentUuid": "0d655cca_101422b7",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 2
+      },
+      "revId": "7d6981bf4157bc4c012fdcffc3d22b537d5f1a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01b4e09e_b53cf8db",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/constants.go",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-03T06:17:35Z",
       "side": 1,
       "message": "Capitalize pleaseeeeeee",
+      "range": {
+        "startLine": 41,
+        "startChar": 34,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "7d6981bf4157bc4c012fdcffc3d22b537d5f1a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f2356f_c5fd5cd6",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-04T01:18:15Z",
+      "side": 1,
+      "message": "lol sure, do you want all of the other multi-word ones capitalized too? No One, Wifi Only",
+      "parentUuid": "01b4e09e_b53cf8db",
       "range": {
         "startLine": 41,
         "startChar": 34,
@@ -107,6 +179,30 @@
       "side": 1,
       "message": "Can you make it a function that I can also call in the remote tests?",
       "parentUuid": "0fa2db22_28cef8a0",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "7d6981bf4157bc4c012fdcffc3d22b537d5f1a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5595b02e_4bfcb8de",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-04T01:18:15Z",
+      "side": 1,
+      "message": "Sure I made one for the CrOS info in nearbytestutils. We don\u0027t need one for Android in the remote tests right?",
+      "parentUuid": "131bcf75_b716906a",
       "range": {
         "startLine": 43,
         "startChar": 0,
