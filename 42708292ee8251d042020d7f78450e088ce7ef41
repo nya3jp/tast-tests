@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ebdadf_1ab9ab20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-04T16:22:35Z",
+      "side": 1,
+      "message": "Hi Jun, this CL implemented the dbus bluetooth device interface. Could you review it or add other reviewers? Thanks!",
+      "revId": "42708292ee8251d042020d7f78450e088ce7ef41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
