@@ -16,6 +16,29 @@
       "message": "TY!",
       "revId": "274499d95a16116d220acfe9b69107ac291ae980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9c14954_d0cfecf1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-04T23:34:24Z",
+      "side": 1,
+      "message": "Will this number be changed back to 0 once the bug is resolved? If yes, please add a todo.",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 52
+      },
+      "revId": "274499d95a16116d220acfe9b69107ac291ae980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
