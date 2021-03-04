@@ -22,6 +22,30 @@
       },
       "revId": "f1590f418eba08a5fe6916c24eaab198e415d9fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59956fd1_3a1c9f3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-03-04T18:25:28Z",
+      "side": 1,
+      "message": "I just ran both versions of the test on a Meep device and it doesn\u0027t seem to be causing any issues. I guess it could theoretically cause a problem in the scheduler infra? The CQ testing would catch that though right?",
+      "parentUuid": "f7601083_11ff5f5c",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 49
+      },
+      "revId": "f1590f418eba08a5fe6916c24eaab198e415d9fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
