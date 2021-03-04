@@ -13,6 +13,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -105,6 +106,23 @@ const (
 // TimerDelay is default timer delay of CCA.
 const TimerDelay time.Duration = 3 * time.Second
 
+// Profile is type of encoder profile.
+type Profile int
+
+const (
+	// ProfileH264Baseline is h264 baseline profile.
+	ProfileH264Baseline Profile = 66
+	// ProfileH264Main is h264 main profile.
+	ProfileH264Main Profile = 77
+	// ProfileH264High is h264 high profile.
+	ProfileH264High Profile = 100
+)
+
+// Option returns the value of corresponding select-option.
+func (p Profile) Option() string {
+	return strconv.Itoa(int(p))
+}
+
 // UIComponent represents a CCA UI component.
 type UIComponent struct {
 	Name      string
@@ -168,6 +186,11 @@ var (
 	// BarcodeCopyTextButton is button to copy text detected from barcode.
 	BarcodeCopyTextButton = UIComponent{"barcode copy text button",
 		[]string{"#barcode-chip-text-container .barcode-copy-button"}}
+
+	// VideoProfileSelect is select-options for selecting video profile.
+	VideoProfileSelect = UIComponent{"video profile select", []string{"#video-profile"}}
+	// BitrateMultiplierRangeInput is range input for selecting bitrate multiplier.
+	BitrateMultiplierRangeInput = UIComponent{"bitrate multiplier range input", []string{"#bitrate-slider input[type=range]"}}
 )
 
 // ResolutionType is different capture resolution type.
@@ -204,6 +227,12 @@ func (e *ErrJS) Error() string {
 type Resolution struct {
 	Width  int `json:"width"`
 	Height int `json:"height"`
+}
+
+// Range represents valid range of range type input element.
+type Range struct {
+	Max int `json:"max"`
+	Min int `json:"min"`
 }
 
 // AspectRatio returns width divided by height as the aspect ratio of the resolution.
@@ -1112,6 +1141,11 @@ func (a *App) ToggleSaveMetadata(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "save-metadata", "#expert-save-metadata")
 }
 
+// ToggleCustomVideoParameters customize video parameters options and returns whether it's enabled after toggling.
+func (a *App) ToggleCustomVideoParameters(ctx context.Context) (bool, error) {
+	return a.toggleOption(ctx, "custom-video-parameters", "#custom-video-parameters")
+}
+
 // ClickShutter clicks the shutter button.
 func (a *App) ClickShutter(ctx context.Context) error {
 	if err := a.conn.Eval(ctx, "Tast.click('.shutter')", nil); err != nil {
@@ -1230,6 +1264,49 @@ func (a *App) IsCheckedWithIndex(ctx context.Context, ui UIComponent, index int)
 // ClickWithSelector clicks an element with given selector.
 func (a *App) ClickWithSelector(ctx context.Context, selector string) error {
 	return a.conn.Call(ctx, nil, `(selector) => document.querySelector(selector).click()`, selector)
+}
+
+// SelectOption selects the target option in HTMLSelectElement.
+func (a *App) SelectOption(ctx context.Context, ui UIComponent, value string) error {
+	if err := a.WaitForVisibleState(ctx, ui, true); err != nil {
+		return err
+	}
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return err
+	}
+	return a.conn.Call(ctx, nil, "Tast.selectOption", selector, value)
+}
+
+// InputRange returns the range of valid value for range type input element.
+func (a *App) InputRange(ctx context.Context, ui UIComponent) (*Range, error) {
+	if err := a.WaitForVisibleState(ctx, ui, true); err != nil {
+		return nil, err
+	}
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return nil, err
+	}
+	var r Range
+	if err := a.conn.Call(ctx, &r, "Tast.getInputRange", selector); err != nil {
+		return nil, errors.Wrapf(err, "failed to get input range of %v", ui.Name)
+	}
+	return &r, nil
+}
+
+// SetRangeInput set value of range input.
+func (a *App) SetRangeInput(ctx context.Context, ui UIComponent, value int) error {
+	if err := a.WaitForVisibleState(ctx, ui, true); err != nil {
+		return err
+	}
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return err
+	}
+	if err := a.conn.Call(ctx, nil, "Tast.setInputValue", selector, value); err != nil {
+		return errors.Wrapf(err, "failed to set range input %v to %v", ui.Name, value)
+	}
+	return nil
 }
 
 // RunThroughCameras runs function f in app after switching to each available camera.
