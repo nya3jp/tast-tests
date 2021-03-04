@@ -28,11 +28,11 @@ func init() {
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
 		// TODO(crbug/1127165) Move to fixture when data is available.
-		Data:    []string{nearbysnippet.ZipName, nearbysnippet.AccountUtilZip},
-		Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
+		Data: []string{nearbysnippet.ZipName, nearbysnippet.AccountUtilZip},
 		Params: []testing.Param{
 			{
-				Name: "dataoffline_allcontacts_png5kb",
+				Name:    "dataoffline_allcontacts_png5kb",
+				Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
 				Val: nearbytestutils.TestData{
 					Filename:        "small_png.zip",
 					TransferTimeout: nearbyshare.SmallFileTransferTimeout,
@@ -42,7 +42,8 @@ func init() {
 				Timeout:   nearbyshare.TurnaroundTimeout + nearbyshare.SmallFileTransferTimeout,
 			},
 			{
-				Name: "dataoffline_allcontacts_jpg11kb",
+				Name:    "dataoffline_allcontacts_jpg11kb",
+				Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
 				Val: nearbytestutils.TestData{
 					Filename:        "small_jpg.zip",
 					TransferTimeout: nearbyshare.SmallFileTransferTimeout,
@@ -50,6 +51,17 @@ func init() {
 				},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbyshare.TurnaroundTimeout + nearbyshare.SmallFileTransferTimeout,
+			},
+			{
+				Name:    "dataonline_noone_txt30mb",
+				Fixture: "nearbyShareDataUsageOnlineNoOneGAIA",
+				Val: nearbytestutils.TestData{
+					Filename:        "big_txt.zip",
+					TransferTimeout: nearbyshare.LargeFileOnlineTransferTimeout,
+					TestTimeout:     nearbyshare.TurnaroundTimeout + nearbyshare.LargeFileOnlineTransferTimeout,
+				},
+				ExtraData: []string{"big_txt.zip"},
+				Timeout:   nearbyshare.TurnaroundTimeout + nearbyshare.LargeFileOnlineTransferTimeout,
 			},
 		},
 	})
@@ -87,7 +99,7 @@ func CrosToPhoneHighVis(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	s.Log("Starting receiving on the Android device")
-	testTimeout := testData.TransferTimeout
+	testTimeout := testData.TestTimeout
 	if err := androidDevice.ReceiveFile(ctx, crosDisplayName, androidDisplayName, testTimeout); err != nil {
 		s.Fatal("Failed to start receiving on Android: ", err)
 	}
