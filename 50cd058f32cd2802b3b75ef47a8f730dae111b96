@@ -63,6 +63,30 @@
       },
       "revId": "50cd058f32cd2802b3b75ef47a8f730dae111b96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eace06f0_e4244824",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-04T22:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17a35921_00f1f324",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 12
+      },
+      "revId": "50cd058f32cd2802b3b75ef47a8f730dae111b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
