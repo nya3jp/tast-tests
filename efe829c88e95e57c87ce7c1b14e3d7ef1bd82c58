@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b45616b_e5dede7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-04T19:30:30Z",
+      "side": 1,
+      "message": "Uploaded the new patchset:\n* embeds the fake icon data into a Go file\n* adds scaling of the icon image\n\nPTAL",
+      "revId": "efe829c88e95e57c87ce7c1b14e3d7ef1bd82c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
