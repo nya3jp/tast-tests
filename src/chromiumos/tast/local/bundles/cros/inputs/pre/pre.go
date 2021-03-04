@@ -64,24 +64,24 @@ func inputsPreCondition(name string, dm deviceMode, opts ...chrome.Option) *preI
 
 // VKEnabled creates a new precondition can be shared by tests that require an already-started Chromeobject that enables virtual keyboard.
 // It uses --enable-virtual-keyboard to force enable virtual keyboard regardless of device ui mode.
-var VKEnabled = inputsPreCondition("virtual_keyboard_enabled_pre", notForced)
+var VKEnabled = inputsPreCondition("virtual_keyboard_enabled_pre", notForced, chrome.ExtraArgs("--disable-features=ImeMojoDecoder"))
 
 // VKEnabledInGuest creates a new precondition the same as VKEnabled in Guest mode.
-var VKEnabledInGuest = inputsPreCondition("virtual_keyboard_enabled_guest_pre", notForced, chrome.GuestLogin())
+var VKEnabledInGuest = inputsPreCondition("virtual_keyboard_enabled_guest_pre", notForced, chrome.GuestLogin(), chrome.ExtraArgs("--disable-features=ImeMojoDecoder"))
 
 // VKEnabledTablet creates a new precondition for testing virtual keyboard in tablet mode.
 // It boots device in tablet mode and force enabled virtual keyboard via chrome flag --enable-virtual-keyboard.
-var VKEnabledTablet = inputsPreCondition("virtual_keyboard_enabled_tablet_pre", tabletMode)
+var VKEnabledTablet = inputsPreCondition("virtual_keyboard_enabled_tablet_pre", tabletMode, chrome.ExtraArgs("--disable-features=ImeMojoDecoder"))
 
 // VKEnabledTabletInGuest creates a new precondition the same as VKEnabledTablet in Guest mode.
-var VKEnabledTabletInGuest = inputsPreCondition("virtual_keyboard_enabled_tablet_guest_pre", tabletMode, chrome.GuestLogin())
+var VKEnabledTabletInGuest = inputsPreCondition("virtual_keyboard_enabled_tablet_guest_pre", tabletMode, chrome.GuestLogin(), chrome.ExtraArgs("--disable-features=ImeMojoDecoder"))
 
 // VKEnabledClamshell creates a new precondition for testing virtual keyboard in clamshell mode.
 // It uses Chrome API settings.a11y.virtual_keyboard to enable a11y vk instead of --enable-virtual-keyboard.
-var VKEnabledClamshell = inputsPreCondition("virtual_keyboard_enabled_clamshell_pre", clamshellMode)
+var VKEnabledClamshell = inputsPreCondition("virtual_keyboard_enabled_clamshell_pre", clamshellMode, chrome.ExtraArgs("--disable-features=ImeMojoDecoder"))
 
 // VKEnabledClamshellInGuest creates a new precondition the same as VKEnabledClamshell in Guest mode.
-var VKEnabledClamshellInGuest = inputsPreCondition("virtual_keyboard_enabled_clamshell_guest_pre", clamshellMode, chrome.GuestLogin())
+var VKEnabledClamshellInGuest = inputsPreCondition("virtual_keyboard_enabled_clamshell_guest_pre", clamshellMode, chrome.GuestLogin(), chrome.ExtraArgs("--disable-features=ImeMojoDecoder"))
 
 // VKEnabledExp creates same precondition as VKEnabled with extra Chrome options.
 var VKEnabledExp = inputsPreCondition("virtual_keyboard_enabled_exp_pre", notForced, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"))
@@ -185,11 +185,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	var err error
 
-	// Flag enable-features=LanguageSettingsUpdate is used to enable new language settings.
-	// It will be enabled by default after M87.
 	opts := p.opts
-
-	opts = append(opts, chrome.ExtraArgs("--enable-features=LanguageSettingsUpdate"))
 
 	switch p.dm {
 	case notForced:
