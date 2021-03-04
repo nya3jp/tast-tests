@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca668dd1_2685fcb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-04T20:25:24Z",
+      "side": 1,
+      "message": "Thanks for the comments. Just as FYI, I won\u0027t be submitting this patch until the autoclick test has been disabled [1]. Then when I submit this patch, I will also re-enable the test.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2733179",
+      "revId": "dbdf80db222a3abbe2ee99fe8490c71586b341d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
