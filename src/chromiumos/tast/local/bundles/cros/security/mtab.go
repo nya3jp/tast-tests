@@ -32,10 +32,6 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		Attr: []string{"group:mainline"},
-		// This test is failing in nyan_kitty postsubmit.
-		// nyan_kitty will AUE on M85.
-		// TODO(crbug.com/1092834): Remove this after nyan_kitty goes away.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty")),
 	})
 }
 
