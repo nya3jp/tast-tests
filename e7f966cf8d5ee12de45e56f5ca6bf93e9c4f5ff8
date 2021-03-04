@@ -16,6 +16,46 @@
       "message": "+PST Tast-Owner for approval.",
       "revId": "e7f966cf8d5ee12de45e56f5ca6bf93e9c4f5ff8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab530de_828d4e40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-04T19:09:24Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "e7f966cf8d5ee12de45e56f5ca6bf93e9c4f5ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e754cdd_cac02d9d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-04T19:09:24Z",
+      "side": 1,
+      "message": "nit add something like: \n\n  // For further info see: b/181832600",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 56
+      },
+      "revId": "e7f966cf8d5ee12de45e56f5ca6bf93e9c4f5ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
