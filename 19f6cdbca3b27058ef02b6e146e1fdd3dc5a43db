@@ -68,6 +68,23 @@
       "message": "nya, oka -- what do you think about this usage of runtime variable?  Also is this naming scheme good?",
       "revId": "19f6cdbca3b27058ef02b6e146e1fdd3dc5a43db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f8bb925_a92568f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-04T03:43:38Z",
+      "side": 1,
+      "message": "I didn\u0027t have an idea to use runtime variables for data. :) \n\nBut I feel like it\u0027s more straightforward to just embed the data in Go code. Given the size of the data it seems acceptable as a short-term workaround...\n",
+      "revId": "19f6cdbca3b27058ef02b6e146e1fdd3dc5a43db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
