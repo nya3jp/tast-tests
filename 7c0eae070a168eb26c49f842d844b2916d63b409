@@ -122,6 +122,24 @@
       "parentUuid": "981c1d69_63b7a972",
       "revId": "7c0eae070a168eb26c49f842d844b2916d63b409",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c17e3be1_12b9154e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-03-04T23:57:48Z",
+      "side": 1,
+      "message": "It\u0027s safe to land this CL now, the issue has been fixed, see: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1168664#c29",
+      "parentUuid": "e21d2c02_958e9c9c",
+      "revId": "7c0eae070a168eb26c49f842d844b2916d63b409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
