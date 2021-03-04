@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb110268_9cc8bb6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-03-04T00:28:25Z",
+      "side": 1,
+      "message": "just curious, which board did you use? According to the tast board, flakiness depends on a board. I would use a board which fails frequently and compare before and after this CL. Especially, as you\u0027re disabling this test, I guess it\u0027s not easy to get the bot results with this patch after the submission.",
+      "revId": "cb70ddf6fbb0edfae9d89aee2bf172b55544239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1d6f8592_2f1c2fdc",
@@ -14,6 +31,40 @@
       "writtenOn": "2021-03-03T23:24:23Z",
       "side": 1,
       "message": "Hi Hiroki,\n\nI\u0027d appreciate if you could review this before I send this to tast owners for approval.\n\nThanks!",
+      "revId": "cb70ddf6fbb0edfae9d89aee2bf172b55544239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d7a8bd_15ce1e43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-03-04T00:28:25Z",
+      "side": 1,
+      "message": "Thanks! I have a few comments.",
+      "revId": "cb70ddf6fbb0edfae9d89aee2bf172b55544239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31059729_6fe66023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-03-04T00:28:25Z",
+      "side": 1,
+      "message": "If these coordinates are different, it means that `WaitLocationStable` was not able to wait for the location stable, which is a little bit strange. Furthermore, in the future, if we add more journys and it starts to fail with a similar reason, we have to add the same there.\n\nInstead, how about doing these below:\n- Add more logging on what the test is doing. e.g. add more lines like s.Log(cts, \"Moving mouse to %v to auto-click the scroll button\"). This can be added not only here but also all places where the mouse is moved.\n- Use \"defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)\" (maybe around line 54) so that the entire UI tree is dumped when there is an error. However, it uses AutomationRootNode.toString in Chrome and doesn’t output location for now. We can modify DumpUITreeOnError (or Chrome AutomationNodeImpl itself?) to output locations of each node.\n\nThese need more work. Let me know what you think!",
       "revId": "cb70ddf6fbb0edfae9d89aee2bf172b55544239f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
