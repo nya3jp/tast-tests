@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a10dcfe_8d68a1b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-04T00:50:03Z",
+      "side": 1,
+      "message": "local",
+      "range": {
+        "startLine": 5,
+        "startChar": 25,
+        "endLine": 5,
+        "endChar": 31
+      },
+      "revId": "9e59d3fdca4cbfc06d2e6a0965a06632a2201838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f00da6_93c007ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-04T00:50:03Z",
+      "side": 1,
+      "message": "Wi-Fi",
+      "range": {
+        "startLine": 5,
+        "startChar": 71,
+        "endLine": 5,
+        "endChar": 75
+      },
+      "revId": "9e59d3fdca4cbfc06d2e6a0965a06632a2201838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
