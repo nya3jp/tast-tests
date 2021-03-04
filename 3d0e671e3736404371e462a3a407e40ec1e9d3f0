@@ -16,6 +16,29 @@
       "message": "Hi Judy,\n\nThanks a lot for reviewing this CL! Please take another look!",
       "revId": "3d0e671e3736404371e462a3a407e40ec1e9d3f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32817bb9_de55e896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-04T03:26:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 96,
+        "startChar": 27,
+        "endLine": 96,
+        "endChar": 50
+      },
+      "revId": "3d0e671e3736404371e462a3a407e40ec1e9d3f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
