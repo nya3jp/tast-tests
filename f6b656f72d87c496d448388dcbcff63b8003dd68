@@ -70,6 +70,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b44b288_0db0ae48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-04T13:13:28Z",
+      "side": 1,
+      "message": "LGTM. Defer to Honda-san.",
+      "revId": "f6b656f72d87c496d448388dcbcff63b8003dd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cb5c578_820eec06",
