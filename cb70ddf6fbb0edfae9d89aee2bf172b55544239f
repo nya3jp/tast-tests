@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f30bdfe4_d943e152",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-03-04T23:58:49Z",
+      "side": 1,
+      "message": "Thank you!\n\nFYI, I had this concern because in my tast experience, I suffered from flakiness that happens only on low-end devices, that happens only on tablets, that happens only on devices with a small display, that happens only on Chromebox, etc... It sounds like this is not the case, that\u0027s great :)",
+      "parentUuid": "8aff98b6_bd17b174",
+      "revId": "cb70ddf6fbb0edfae9d89aee2bf172b55544239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1d6f8592_2f1c2fdc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2

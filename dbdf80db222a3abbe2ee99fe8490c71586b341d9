@@ -16,6 +16,69 @@
       "message": "Thanks for the comments. Just as FYI, I won\u0027t be submitting this patch until the autoclick test has been disabled [1]. Then when I submit this patch, I will also re-enable the test.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2733179",
       "revId": "dbdf80db222a3abbe2ee99fe8490c71586b341d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a01b7c_e58a6ebd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-03-04T23:58:49Z",
+      "side": 1,
+      "message": "Thank you for addressing my comments. LGTM % nits.",
+      "revId": "dbdf80db222a3abbe2ee99fe8490c71586b341d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d638dfe_690c8f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-03-04T23:58:49Z",
+      "side": 1,
+      "message": "nit: I would append err to the message. i.e., s.Fatalf(\"Failed to wait for %s to have a stable location: %v\", name, err)",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 68
+      },
+      "revId": "dbdf80db222a3abbe2ee99fe8490c71586b341d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f47285c_82c479cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-03-04T23:58:49Z",
+      "side": 1,
+      "message": "nit: ditto here, append err.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 51
+      },
+      "revId": "dbdf80db222a3abbe2ee99fe8490c71586b341d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
