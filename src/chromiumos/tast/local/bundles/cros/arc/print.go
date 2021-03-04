@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/printpreview"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/printing/document"
@@ -146,35 +145,6 @@ var unstableModels = []string{
 	"woomax",
 }
 
-func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
-	params := ui.FindParams{
-		Name: "Loading preview",
-	}
-	// Wait for the loading text to appear to indicate print preview is loading.
-	// Since print preview can finish loading before the loading text is found,
-	// log the error without failing the test.
-	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
-		testing.ContextLog(ctx, "Did not find loading text: ", err)
-	}
-	// Wait for the loading text to be removed to indicate print preview is no
-	// longer loading.
-	if err := ui.WaitUntilGone(ctx, tconn, params, 30*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait for loading text to be removed")
-	}
-	// Check if print preview failed.
-	params = ui.FindParams{
-		Name: "Print preview failed",
-	}
-	failed, err := ui.Exists(ctx, tconn, params)
-	if err != nil {
-		return errors.Wrap(err, "failed to check if print preview failed")
-	}
-	if failed {
-		return errors.New("print preview failed")
-	}
-	return nil
-}
-
 func Print(ctx context.Context, s *testing.State) {
 	const (
 		apkName      = "ArcPrintTest.apk"
@@ -276,9 +246,7 @@ func Print(ctx context.Context, s *testing.State) {
 
 	// Wait for print preview to load before selecting a printer.
 	s.Log("Waiting for print preview to load")
-	if err := waitForPrintPreview(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for print preview to load: ", err)
-	}
+	printpreview.WaitForPrintPreview(tconn)(ctx)
 
 	// Select printer.
 	s.Log("Selecting printer")
@@ -289,9 +257,7 @@ func Print(ctx context.Context, s *testing.State) {
 
 	// Wait for print preview to load before changing settings.
 	s.Log("Waiting for print preview to load")
-	if err := waitForPrintPreview(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for print preview to load: ", err)
-	}
+	printpreview.WaitForPrintPreview(tconn)(ctx)
 
 	s.Log("Changing print settings")
 
@@ -312,9 +278,7 @@ func Print(ctx context.Context, s *testing.State) {
 
 	// Wait for print preview to load before starting the print job.
 	s.Log("Waiting for print preview to load")
-	if err := waitForPrintPreview(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for print preview to load: ", err)
-	}
+	printpreview.WaitForPrintPreview(tconn)(ctx)
 
 	// Click the print button to start the print job.
 	s.Log("Clicking print button")
