@@ -46,6 +46,30 @@
       },
       "revId": "4fa14069043d72b4f04fd74cacc4890703fea63a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "854cab37_d692935b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_canvas.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-04T10:42:51Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "939432c0_ab5202bb",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "4fa14069043d72b4f04fd74cacc4890703fea63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
