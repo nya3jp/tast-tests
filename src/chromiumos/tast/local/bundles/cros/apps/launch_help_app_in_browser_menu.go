@@ -26,7 +26,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
 			{
 				Name:              "stable",
@@ -42,7 +42,7 @@ func init() {
 
 // LaunchHelpAppInBrowserMenu verifies launching Help app in chrome browser three dot menu.
 func LaunchHelpAppInBrowserMenu(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
