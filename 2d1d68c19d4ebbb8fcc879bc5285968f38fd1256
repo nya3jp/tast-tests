@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "143876cf_2d85904c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/abc_kids.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-04T20:10:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34aa560e_a40921c9",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "2d1d68c19d4ebbb8fcc879bc5285968f38fd1256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b6c6c2d_0b661ea5",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-03-04T02:17:11Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 54
+      },
+      "revId": "2d1d68c19d4ebbb8fcc879bc5285968f38fd1256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b758a9aa_af55686d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/abc_spelling.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-04T20:10:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7b6c6c2d_0b661ea5",
       "range": {
         "startLine": 87,
         "startChar": 2,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3afc3409_4b965900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_illustrator_draw.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-04T20:10:39Z",
+      "side": 1,
+      "message": "Hi, LongUITimeout is needed as it will long time to the load app home page and Also to avoid flaky failures. Thanks.",
+      "parentUuid": "4aba5cf1_05a6e949",
+      "range": {
+        "startLine": 130,
+        "startChar": 56,
+        "endLine": 130,
+        "endChar": 72
+      },
+      "revId": "2d1d68c19d4ebbb8fcc879bc5285968f38fd1256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0fa9cc6_4c200685",
@@ -121,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "111d2635_aadb37bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_illustrator_draw.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-04T20:10:39Z",
+      "side": 1,
+      "message": "Hi, testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d) method will check if any crash or ANR after the app is launched. So it is needed here. Thanks.",
+      "parentUuid": "b0fa9cc6_4c200685",
+      "revId": "2d1d68c19d4ebbb8fcc879bc5285968f38fd1256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e27f50c_079cd5e1",
@@ -134,6 +224,30 @@
       "writtenOn": "2021-03-04T02:17:11Z",
       "side": 1,
       "message": "delete.",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "2d1d68c19d4ebbb8fcc879bc5285968f38fd1256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1417dc0d_1437ca13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_lightroom.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-04T20:10:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e27f50c_079cd5e1",
       "range": {
         "startLine": 85,
         "startChar": 1,
@@ -167,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d28c093_fa345321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/artrage.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-04T20:10:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffd04ad0_9c892166",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "2d1d68c19d4ebbb8fcc879bc5285968f38fd1256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "376d9615_6b9427ee",
@@ -180,6 +318,30 @@
       "writtenOn": "2021-03-04T02:17:11Z",
       "side": 1,
       "message": "delete.",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 15
+      },
+      "revId": "2d1d68c19d4ebbb8fcc879bc5285968f38fd1256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b73f95d5_eda728ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/color_and_shapes.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-04T20:10:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "376d9615_6b9427ee",
       "range": {
         "startLine": 87,
         "startChar": 2,
@@ -213,6 +375,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb74196_59c7055d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/discord.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-04T20:10:39Z",
+      "side": 1,
+      "message": "Hi, Only launchVerifier is assigned to ui.PackageName(appPkgName). HomePageVerifier is assigned to UI specific ID. So it is needed here. Thanks.",
+      "parentUuid": "094fa9cf_7641dacf",
+      "range": {
+        "startLine": 182,
+        "startChar": 31,
+        "endLine": 182,
+        "endChar": 48
+      },
+      "revId": "2d1d68c19d4ebbb8fcc879bc5285968f38fd1256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6383a02_b4868827",
@@ -236,6 +422,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c054bcda_7cb5df7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/docusign.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-04T20:10:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f6383a02_b4868827",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "2d1d68c19d4ebbb8fcc879bc5285968f38fd1256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2f79b31_260b5750",
@@ -249,6 +459,30 @@
       "writtenOn": "2021-03-04T02:17:11Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "2d1d68c19d4ebbb8fcc879bc5285968f38fd1256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b775e0_f5529f42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/enlight_pixaloop.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-04T20:10:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d2f79b31_260b5750",
       "range": {
         "startLine": 85,
         "startChar": 2,
