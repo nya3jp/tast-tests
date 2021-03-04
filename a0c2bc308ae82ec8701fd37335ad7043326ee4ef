@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afc8f79f_732024cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-03-04T05:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74319bd5_f9cdc71b",
+      "revId": "a0c2bc308ae82ec8701fd37335ad7043326ee4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b0abaa5_bd36112c",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-27T19:29:40Z",
       "side": 1,
       "message": "Could you use \u003cuserPath\u003e/MyFiles/Downloads instead? There is an ongoing project to make Downloads a standard subdirectory of MyFiles: b/174727521.\n(Currently there are multiple Tast tests using /home/chronos/user/Downloads and thus some cleanup work would be needed anyways, though.)",
+      "range": {
+        "startLine": 106,
+        "startChar": 13,
+        "endLine": 106,
+        "endChar": 57
+      },
+      "revId": "a0c2bc308ae82ec8701fd37335ad7043326ee4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e2a9caa_3f50b894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-03-04T05:08:34Z",
+      "side": 1,
+      "message": "Thanks for the heads up.\nChanged to use \"MyFiles\" instead because either way works for this test and using \"MyFiles\" can avoid the above complication.",
+      "parentUuid": "3b0abaa5_bd36112c",
       "range": {
         "startLine": 106,
         "startChar": 13,
