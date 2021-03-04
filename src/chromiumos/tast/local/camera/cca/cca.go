@@ -107,20 +107,23 @@ const (
 const TimerDelay time.Duration = 3 * time.Second
 
 // Profile is type of encoder profile.
-type Profile int
+type Profile struct {
+	Name  string
+	Value int
+}
 
-const (
+var (
 	// ProfileH264Baseline is h264 baseline profile.
-	ProfileH264Baseline Profile = 66
+	ProfileH264Baseline = Profile{"baseline", 66}
 	// ProfileH264Main is h264 main profile.
-	ProfileH264Main Profile = 77
+	ProfileH264Main = Profile{"main", 77}
 	// ProfileH264High is h264 high profile.
-	ProfileH264High Profile = 100
+	ProfileH264High = Profile{"high", 100}
 )
 
 // Option returns the value of corresponding select-option.
 func (p Profile) Option() string {
-	return strconv.Itoa(int(p))
+	return strconv.Itoa(int(p.Value))
 }
 
 // UIComponent represents a CCA UI component.
