@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed0d97e_8e093271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-03-04T03:34:06Z",
+      "side": 1,
+      "message": "It will be clobbered. Your comment is on a old version of the patch as I prefixed with /tmp/ now.",
+      "parentUuid": "eaf74152_dddce0b2",
+      "range": {
+        "startLine": 88,
+        "startChar": 56,
+        "endLine": 88,
+        "endChar": 64
+      },
+      "revId": "c95c8c22e9bb4c38692e5297acc8300787b96f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9627daf_02a66fe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-03-04T03:34:06Z",
+      "side": 1,
+      "message": "No, reads are fine they happen every time a chromebook boots.",
+      "parentUuid": "6ab2e882_5d543cbf",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 66
+      },
+      "revId": "c95c8c22e9bb4c38692e5297acc8300787b96f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20906957_516cdb2c",
