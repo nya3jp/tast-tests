@@ -22,6 +22,30 @@
       },
       "revId": "cebce04aefb55a9c8e341a61777473d77de06ccf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81bf1805_42a9aff1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-03-04T15:36:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27edf2a0_a6568050",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 78
+      },
+      "revId": "cebce04aefb55a9c8e341a61777473d77de06ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
