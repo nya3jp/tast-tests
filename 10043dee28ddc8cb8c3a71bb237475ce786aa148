@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb78888_5c8d255e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_key_eviction.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-04T03:12:29Z",
+      "side": 1,
+      "message": "Should this fail this test?",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "10043dee28ddc8cb8c3a71bb237475ce786aa148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2824de9_7c1fde9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_key_eviction.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-04T03:12:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "10043dee28ddc8cb8c3a71bb237475ce786aa148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70aa77e_5cd56a3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_key_eviction.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-04T03:12:29Z",
+      "side": 1,
+      "message": "This is the same as the content in the defer func, make it a method?",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "10043dee28ddc8cb8c3a71bb237475ce786aa148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
