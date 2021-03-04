@@ -104,6 +104,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64de5183_5f545e37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-03-04T18:16:16Z",
+      "side": 1,
+      "message": "+2 with those nits from lamzin@",
+      "revId": "90afa985cdb72bed4ed29d06d6dc298301a4804c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26a67a01_87b3af2e",
