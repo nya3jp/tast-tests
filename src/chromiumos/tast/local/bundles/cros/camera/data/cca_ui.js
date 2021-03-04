@@ -133,6 +133,55 @@ window.Tast = class Tast {
   }
 
   /**
+   * @param {string} selector Selector for the target element.
+   * @param {string} value Value of option to be selected.
+   */
+  static selectOption(selector, value) {
+    const selectEl = document.querySelector(selector);
+    if (!selectEl) {
+      throw new Error('No element: ', selector);
+    }
+    const optionEl =
+        document.querySelector(`${selector}>option[value="${value}"]`);
+    if (!optionEl) {
+      throw new Error(`No option with value ${value} in select ${selector}`);
+    }
+    selectEl.value = value;
+    selectEl.dispatchEvent(new Event('change'));
+  }
+
+  /**
+   * @param {string} selector Selector for the range type input element.
+   * @return {{max: number, min: number}} value
+   */
+  static getInputRange(selector) {
+    const el = document.querySelector(selector);
+    if (!el) {
+      throw new Error('No element: ', selector);
+    }
+    return {max: Number(el.max), min: Number(el.min)};
+  }
+
+  /**
+   * @param {string} selector Selector for the target element.
+   * @param {number} value
+   */
+  static setInputValue(selector, value) {
+    const el = document.querySelector(selector);
+    if (!el) {
+      throw new Error('No element: ', selector);
+    }
+    if (el.type === 'range') {
+      const {max, min} = Tast.getInputRange(selector);
+      if (value < min || value > max) {
+        throw new Error(`Invalid value ${value} within range ${min}-${max}`);
+      }
+    }
+    el.value = value;
+    el.dispatchEvent(new Event('change'));
+  }
+
+  /**
    * Switches to specific camera mode.
    * @param {string} mode The target mode which we expects to switch to.
    * @throws {Error} Throws error if there is no button found for given |mode|.
