@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "61185604_d7676008",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-04T10:47:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b759091c_a5f2cfca",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "ff873e06613a030d2e52a51e69360afb51e179bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c956591d_a06ef484",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da453023_5e51d840",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-04T10:47:20Z",
+      "side": 1,
+      "message": "changed to apps for consistence.",
+      "parentUuid": "d3b94679_21f302f6",
+      "range": {
+        "startLine": 29,
+        "startChar": 54,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "ff873e06613a030d2e52a51e69360afb51e179bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "971a40fb_cc7a8fcd",
@@ -77,6 +125,24 @@
       "writtenOn": "2021-03-04T10:42:51Z",
       "side": 1,
       "message": "Same",
+      "revId": "ff873e06613a030d2e52a51e69360afb51e179bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e02e1b5_82da229d",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-04T10:47:20Z",
+      "side": 1,
+      "message": "changed to apps for consistence.",
+      "parentUuid": "971a40fb_cc7a8fcd",
       "revId": "ff873e06613a030d2e52a51e69360afb51e179bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
