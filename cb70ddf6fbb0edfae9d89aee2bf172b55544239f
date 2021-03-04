@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8aff98b6_bd17b174",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-04T20:25:24Z",
+      "side": 1,
+      "message": "I tested on Eve. Before the patch, the test failed ~20% the time. After the patch, it didn\u0027t fail at all. In both cases, I ran the test 30 times in succession.\n\nIt feels pretty safe to assume that the location of the node is the main culprit of the failure. If you look at the tast board, almost all of the failures are the following:\n\n\"Failed to click the scroll button, the scroll view does not appear...\"\n\nSo it seems that regardless of the board, they\u0027re all running into the same issue.",
+      "parentUuid": "cb110268_9cc8bb6e",
+      "revId": "cb70ddf6fbb0edfae9d89aee2bf172b55544239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1d6f8592_2f1c2fdc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "writtenOn": "2021-03-04T00:28:25Z",
       "side": 1,
       "message": "If these coordinates are different, it means that `WaitLocationStable` was not able to wait for the location stable, which is a little bit strange. Furthermore, in the future, if we add more journys and it starts to fail with a similar reason, we have to add the same there.\n\nInstead, how about doing these below:\n- Add more logging on what the test is doing. e.g. add more lines like s.Log(cts, \"Moving mouse to %v to auto-click the scroll button\"). This can be added not only here but also all places where the mouse is moved.\n- Use \"defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)\" (maybe around line 54) so that the entire UI tree is dumped when there is an error. However, it uses AutomationRootNode.toString in Chrome and doesn’t output location for now. We can modify DumpUITreeOnError (or Chrome AutomationNodeImpl itself?) to output locations of each node.\n\nThese need more work. Let me know what you think!",
+      "revId": "cb70ddf6fbb0edfae9d89aee2bf172b55544239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "078fb665_e152c27e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-04T20:25:24Z",
+      "side": 1,
+      "message": "Thanks for the recommendations. I added both in my latest patch and did some cleanup too.\n\nTo output node locations, I think it makes more sense to modify AutomationNodeImpl.toString(). This is a debugging method anyway, so I don\u0027t think the added verbosity will be a big issue. I can do that in a separate change.",
+      "parentUuid": "31059729_6fe66023",
       "revId": "cb70ddf6fbb0edfae9d89aee2bf172b55544239f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
