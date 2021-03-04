@@ -27,8 +27,7 @@ func init() {
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
 		// TODO(crbug/1127165) Move to fixture when data is available.
-		Data:    []string{nearbysnippet.ZipName},
-		Fixture: "nearbyShareDataUsageOfflineAllContactsGAIA",
+		Data: []string{nearbysnippet.ZipName},
 		Params: []testing.Param{
 			{
 				Name: "dataoffline_allcontacts_png5kb",
@@ -49,6 +48,17 @@ func init() {
 				},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbyshare.TurnaroundTimeout + nearbyshare.SmallFileTransferTimeout,
+			},
+			{
+				Name:    "dataonline_allcontacts_txt30mb",
+				Fixture: "nearbyShareDataUsageOnlineAllContactsGAIA",
+				Val: nearbytestutils.TestData{
+					Filename:        "big_txt.zip",
+					TransferTimeout: nearbyshare.LargeFileOnlineTransferTimeout,
+					TestTimeout:     nearbyshare.TurnaroundTimeout + nearbyshare.LargeFileOnlineTransferTimeout,
+				},
+				ExtraData: []string{"big_txt.zip"},
+				Timeout:   nearbyshare.TurnaroundTimeout + nearbyshare.LargeFileOnlineTransferTimeout,
 			},
 		},
 	})
