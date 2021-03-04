@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdc286aa_048d04da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-04T11:06:07Z",
+      "side": 1,
+      "message": "More accurate message could hel with later investigation:\n\"Failed waiting for animation to finish after entering search form\"",
+      "range": {
+        "startLine": 116,
+        "startChar": 13,
+        "endLine": 116,
+        "endChar": 47
+      },
+      "revId": "cc10eab25623a98cde504e7fe0b8080b0509c1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd20804d_22e283cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
         "patchSetId": 3
