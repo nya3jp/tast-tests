@@ -190,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ff17f3_9b8ce1fc",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-04T05:21:58Z",
+      "side": 1,
+      "message": "Cool, already did it this patch :D",
+      "parentUuid": "a5c86d06_3655fb39",
+      "range": {
+        "startLine": 41,
+        "startChar": 34,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "7d6981bf4157bc4c012fdcffc3d22b537d5f1a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fa2db22_28cef8a0",
