@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
@@ -56,9 +57,6 @@ const (
 
 	// BlankURL is the URL corresponding to the about:blank page.
 	BlankURL = "about:blank"
-
-	// vkBackgroundPageURL is the virtual keyboard background page url.
-	vkBackgroundPageURL = "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background.html"
 
 	// persistentDir is a directory to save files that should persist even
 	// after Tast finishes. For instance, we save test extensions here so
@@ -256,7 +254,12 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		// Background target from login persists for a few seconds, causing 2 background targets.
 		// Polling until connected to the unique target.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			bconn, err := sess.NewConnForTarget(ctx, MatchTargetURL(vkBackgroundPageURL))
+			bgPageURLPrefix := "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background"
+			bgTargetFilter := func(t *driver.Target) bool {
+				return strings.HasPrefix(t.URL, bgPageURLPrefix)
+			}
+
+			bconn, err := sess.NewConnForTarget(ctx, bgTargetFilter)
 			if err != nil {
 				return err
 			}
