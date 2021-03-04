@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49a0308b_1afcb4df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-04T03:20:50Z",
+      "side": 1,
+      "message": "CQ+2 on behalf of Xibin.",
+      "revId": "bdf44f3bbd75dbaf33bc098f4e7a7a08661a89c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
