@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "513e4602_c163a5d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T13:33:16Z",
+      "side": 1,
+      "message": "nit: add cleanup",
+      "range": {
+        "startLine": 13,
+        "startChar": 22,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "90afa985cdb72bed4ed29d06d6dc298301a4804c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daee6200_8a1a2e29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T13:33:16Z",
+      "side": 1,
+      "message": "nit: wrap to 80 symbols",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 73
+      },
+      "revId": "90afa985cdb72bed4ed29d06d6dc298301a4804c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c1636ff_968c9d6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T13:33:16Z",
+      "side": 1,
+      "message": "i think you mean \"commit queue\" by CQ\n\nsomeone may think \"CQ\" is a real command, please remove",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "90afa985cdb72bed4ed29d06d6dc298301a4804c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fe0670bb_372bb1b2",
@@ -14,6 +83,69 @@
       "writtenOn": "2021-03-04T09:03:57Z",
       "side": 1,
       "message": "Hello, please help me review this change. Thank you.",
+      "revId": "90afa985cdb72bed4ed29d06d6dc298301a4804c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd7b48c9_a5aa1ee7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T13:33:16Z",
+      "side": 1,
+      "message": "LGTM % nits\n\nPlease wait approval from your team before submission.",
+      "revId": "90afa985cdb72bed4ed29d06d6dc298301a4804c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a67a01_87b3af2e",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T13:33:16Z",
+      "side": 1,
+      "message": "nit: please wrap this line for consistency because other lines in this comment are no conger 80 symbols even it\u0027s not required.",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 97
+      },
+      "revId": "90afa985cdb72bed4ed29d06d6dc298301a4804c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6515561b_a2710b83",
+        "filename": "src/chromiumos/tast/common/pkcs11/netcertstore/net_cert_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T13:33:16Z",
+      "side": 1,
+      "message": "nit: \"test start\"?",
+      "range": {
+        "startLine": 144,
+        "startChar": 66,
+        "endLine": 144,
+        "endChar": 83
+      },
       "revId": "90afa985cdb72bed4ed29d06d6dc298301a4804c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
