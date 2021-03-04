@@ -1,5 +1,5 @@
 {
-    "sha256sum": "b93ed023a95dfb19884210a3ed4e45816033d6dc87828dbf8607dfd82642bfca",
-    "size": 366927864,
-    "url": "gs://cros-containers-staging/90/images/debian/stretch/arm64/test/20210206_14:16/rootfs.tar.xz"
+    "sha256sum": "b54e83984b3325f690aad19dc8b18b0c20c1c1a285cf090e9f18671eac88c535",
+    "size": 366977108,
+    "url": "gs://cros-containers-staging/91/images/debian/stretch/arm64/test/20210304_03:57/rootfs.tar.xz"
 }
