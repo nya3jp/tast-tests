@@ -27,6 +27,7 @@ func init() {
 			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline"},
+		Fixture:      "chromeLoggedInForEA",
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
@@ -42,12 +43,7 @@ func init() {
 
 // LaunchCanvas verifies launching Canvas after OOBE
 func LaunchCanvas(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.EnableWebAppInstall())
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)

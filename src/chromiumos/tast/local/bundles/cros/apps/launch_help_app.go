@@ -73,7 +73,7 @@ func init() {
 					tabletMode: false,
 					oobe:       false,
 				},
-				Pre: chrome.LoggedIn(),
+				Fixture: "chromeLoggedInForEA",
 			}, {
 				Name:              "clamshell_logged_in_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
@@ -89,7 +89,7 @@ func init() {
 					tabletMode: true,
 					oobe:       false,
 				},
-				Pre: chrome.LoggedIn(),
+				Fixture: "chromeLoggedInForEA",
 			}, {
 				Name:              "tablet_logged_in_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
@@ -98,7 +98,7 @@ func init() {
 					tabletMode: true,
 					oobe:       false,
 				},
-				Pre: chrome.LoggedIn(),
+				Fixture: "chromeLoggedInForEA",
 			},
 		}})
 }
@@ -149,7 +149,7 @@ func helpAppLaunchDuringOOBE(ctx context.Context, s *testing.State, isTabletMode
 
 // helpAppLaunchAfterLogin verifies help app launch after user login. It should be able to launch on devices in both clamshell and tablet mode.
 func helpAppLaunchAfterLogin(ctx context.Context, s *testing.State, isTabletMode bool) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

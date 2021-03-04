@@ -35,6 +35,7 @@ func init() {
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{testFile},
+		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
 			{
 				Name:              "clamshell_stable",
@@ -62,11 +63,6 @@ func init() {
 
 // LaunchGallery verifies launching Gallery on opening supported files.
 func LaunchGallery(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("MediaApp"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-
 	// Setup the test image.
 	testFileLocation := filepath.Join(filesapp.DownloadPath, testFile)
 	if err := fsutil.CopyFile(s.DataPath(testFile), testFileLocation); err != nil {
@@ -74,6 +70,7 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 	}
 	defer os.Remove(testFileLocation)
 
+	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
