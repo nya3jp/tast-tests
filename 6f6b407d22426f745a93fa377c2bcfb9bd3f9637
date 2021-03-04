@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7462ecb9_8b8beb62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "926cc473_16660b66",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "327b695b_ad18995d",
@@ -83,6 +101,30 @@
       "writtenOn": "2021-03-03T21:50:30Z",
       "side": 1,
       "message": "Are they the right contact?  Guessing you and oshima, plus chromeos-wmp@ would be a better contact list.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87948eb_053b671f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "327b695b_ad18995d",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -116,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f454d0e8_cddfcbe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5531562_4684d691",
+      "range": {
+        "startLine": 34,
+        "startChar": 36,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1d1a55a_9a9afd85",
@@ -129,6 +195,30 @@
       "writtenOn": "2021-03-03T21:50:30Z",
       "side": 1,
       "message": "Is this a mainline test?  I think it\u0027s a performance test, and if so \"group:crosbolt\" and \"crosbolt_perbuild\" would be the attributes.\ncf. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md",
+      "range": {
+        "startLine": 35,
+        "startChar": 25,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe0b274_b7e35b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1d1a55a_9a9afd85",
       "range": {
         "startLine": 35,
         "startChar": 25,
@@ -156,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb455e82_b97d8cea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "139b3fdb_c17948c4",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eef0f8ca_e312e850",
@@ -169,6 +277,30 @@
       "writtenOn": "2021-03-03T21:50:30Z",
       "side": 1,
       "message": "Typically utility functions like this should return an error instead of doing s.Fatal.\n\nIn this case specifically, you should return 2 values (*chrome.Chrome, error). Then you also don\u0027t need passing \u0027s\u0027.",
+      "range": {
+        "startLine": 46,
+        "startChar": 92,
+        "endLine": 46,
+        "endChar": 106
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23df1be2_bd084db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done.\n\ns is still needed for DumpUITreeOnError() below.",
+      "parentUuid": "eef0f8ca_e312e850",
       "range": {
         "startLine": 46,
         "startChar": 92,
@@ -196,6 +328,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38c36429_c2c28734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1047595e_93bed164",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "472212a2_ae3da153",
@@ -209,6 +359,24 @@
       "writtenOn": "2021-03-03T21:50:30Z",
       "side": 1,
       "message": "ditto",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1507f92_d78f3e5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "472212a2_ae3da153",
       "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -230,6 +398,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "533d2710_1a98230b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done.\n\nI actually asked a few questions to both of you before sending this CL for early review. So debug was here to debug the CL itself ;)",
+      "parentUuid": "70d0b6ef_a6bfc35f",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e217dcc_9f25dad0",
@@ -247,6 +433,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d602605a_a8910732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e217dcc_9f25dad0",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d514602d_24d3f436",
@@ -260,6 +464,30 @@
       "writtenOn": "2021-03-03T21:50:30Z",
       "side": 1,
       "message": "similarly it\u0027s better to return an error here.",
+      "range": {
+        "startLine": 80,
+        "startChar": 79,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08b95641_94d518ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d514602d_24d3f436",
       "range": {
         "startLine": 80,
         "startChar": 79,
@@ -295,6 +523,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa50ebcd_386eea1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll rebase this once it lands.",
+      "parentUuid": "dabf41d0_f6d31b9e",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a24d715_4471e9ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 1
@@ -306,6 +558,30 @@
       "writtenOn": "2021-03-03T21:50:30Z",
       "side": 1,
       "message": "Please use \u0027ctx\u0027, which hides referring to the external \u0027ctx\u0027.",
+      "range": {
+        "startLine": 219,
+        "startChar": 82,
+        "endLine": 219,
+        "endChar": 86
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d55246d_9eb72276",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "This remained from my attempt to integrate with lacros .\nYou are probably right, as lacros test API does not allow tests like this yet.\nDone.",
+      "parentUuid": "3a24d715_4471e9ab",
       "range": {
         "startLine": 219,
         "startChar": 82,
@@ -339,6 +615,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "495f04b6_97cd551e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done.\n\nI would love test to immediately crash on any Fatal(), but it does not seem to work this way.\n\nFatals get intercepted and ignored somewhere (while it\u0027s senseless to continue).",
+      "parentUuid": "faca6916_a8325bc9",
+      "range": {
+        "startLine": 222,
+        "startChar": 42,
+        "endLine": 222,
+        "endChar": 43
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f9258b3_1877f7ae",
@@ -352,6 +652,30 @@
       "writtenOn": "2021-03-03T21:50:30Z",
       "side": 1,
       "message": "This is basically a simple wrapper. I guess you could simply write like:\n  return metrics.RunAndWaitAll(ctx, tLoginConn, time.Minute, func(ctx context.Context) error {\n    ...\n  },\n    \"Ash.LoginAnimation.Smoothness\"+suffix,\n    ...\n  )",
+      "range": {
+        "startLine": 230,
+        "startChar": 11,
+        "endLine": 230,
+        "endChar": 79
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b86ed15_f2e41b83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done.\n\n(I was just trying to keep the coupling between both runner and wrapper that belong to perfutil .)",
+      "parentUuid": "7f9258b3_1877f7ae",
       "range": {
         "startLine": 230,
         "startChar": 11,
@@ -379,6 +703,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1adc4772_64edcd40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d453a80_ec9c60aa",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c838dab8_f06d2680",
@@ -396,6 +738,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f84ca32_caa7a09f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c838dab8_f06d2680",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d1fa8cc_d2467bb2",
@@ -409,6 +769,30 @@
       "writtenOn": "2021-03-03T21:50:30Z",
       "side": 1,
       "message": "Maybe it\u0027s good to tweak this as\n  RunTracing: (cr !\u003d nil)\n\nThat way you don\u0027t need to make a trick around cr\u003d\u003dnil case below?",
+      "range": {
+        "startLine": 118,
+        "startChar": 72,
+        "endLine": 118,
+        "endChar": 76
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d6748a_ba046798",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-04T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d1fa8cc_d2467bb2",
       "range": {
         "startLine": 118,
         "startChar": 72,
