@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "588deca1_163990f5",
+        "filename": "android/ArcDownloadManagerTest/src/org/chromium/arc/testapp/downloadmanager/MainActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T14:48:31Z",
+      "side": 1,
+      "message": "Have you tried any of this? https://stackoverflow.com/questions/45625890/support-annotation-does-not-exist-after-upgrading-to-android-studio-3-0\n\nIf that doesn\u0027t work, could you ask around in groups? If in the end we cannot make it work, then I think it is better to have a comment explaining that it is guarded by lock and we cannot enable the annotation (at least the reader knows what happen with the annotation).",
+      "parentUuid": "13890a52_e51e2dfb",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "97360a2631a69eda830ad8182872588389c64fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c36033f4_4342c84a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
         "patchSetId": 9

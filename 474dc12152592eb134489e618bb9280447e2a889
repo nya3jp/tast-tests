@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "343da519_e6976735",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T14:48:31Z",
+      "side": 1,
+      "message": "This is a really cool CL. LGTM for the way it test the download path. I\u0027d like a go/tast expert to review this as well (probably nya@?).",
+      "revId": "474dc12152592eb134489e618bb9280447e2a889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2826e39e_334e93f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T14:48:31Z",
+      "side": 1,
+      "message": "What does it mean by stopping the app before starting the activity? Is the activity not belong to the app? Could you elaborate a bit more?",
+      "range": {
+        "startLine": 239,
+        "startChar": 11,
+        "endLine": 239,
+        "endChar": 66
+      },
+      "revId": "474dc12152592eb134489e618bb9280447e2a889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
