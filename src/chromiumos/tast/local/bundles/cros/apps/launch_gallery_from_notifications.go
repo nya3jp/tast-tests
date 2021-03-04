@@ -35,7 +35,7 @@ func init() {
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"gear_wheels_4000x3000_20200624.jpg", "download_link.html"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
 			{
 				Name:              "clamshell_stable",
@@ -60,7 +60,7 @@ func init() {
 
 // LaunchGalleryFromNotifications verifies Gallery opens when Chrome notifications are clicked.
 func LaunchGalleryFromNotifications(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	const (
 		testImageFileName    = "gear_wheels_4000x3000_20200624.jpg"
