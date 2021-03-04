@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4542e2_b5602a53",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-04T14:27:03Z",
+      "side": 1,
+      "message": "Could you add how to avoid the error?\nI think even if it hits blocking term on exceptional case, we still would like to run other presubmit check, and they should be green.",
+      "revId": "c2a5403d9b0b6d17e79a1ae6c3ab550699f45f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
