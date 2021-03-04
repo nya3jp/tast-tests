@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf0b5d3_a6dda67f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-04T07:44:12Z",
+      "side": 1,
+      "message": "Could you help check what\u0027s the default bitrate value in GCA mapped to multiplier? Thanks.",
+      "revId": "38538395d86c6761e7ea64a6c30f85e9f3f69635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
