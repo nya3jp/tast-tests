@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84c6e206_d0f9f388",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-04T18:16:25Z",
+      "side": 1,
+      "message": "LGTM from ARC Functional Test Coverage Point of View.",
+      "revId": "7300942630b8c6aabdbb25be9b70bf8dca94565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "127072e5_7d031277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-04T18:16:25Z",
+      "side": 1,
+      "message": "Can you please add cros-arc-te@google.com to the contacts list so that we track it as part of ARC functional Test Dashboard (https://tastboard.corp.google.com/test?contact\u003dcros-arc-te%40google.com\u0026testname\u003d\u0026dep\u003d).",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "7300942630b8c6aabdbb25be9b70bf8dca94565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
