@@ -137,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f60e8174_f51ed79c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-04T03:26:31Z",
+      "side": 1,
+      "message": "This method still does nothing but returns an error, I\u0027d prefer to add a todo (for a specific person or a bug) so that it could be addressed in the future.",
+      "parentUuid": "1fee7b7e_0c781bfe",
+      "range": {
+        "startLine": 89,
+        "startChar": 27,
+        "endLine": 89,
+        "endChar": 47
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0269121a_07e32981",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/allowlist_service.go",
         "patchSetId": 4
@@ -459,6 +483,54 @@
         "startChar": 38,
         "endLine": 35,
         "endChar": 46
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f3c0b91_2bc2fbca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-04T03:26:31Z",
+      "side": 1,
+      "message": "Oh, I meant \"failed to decode the json file\". I just put a period at the end of my comment :)",
+      "parentUuid": "df03ab37_e734fd4f",
+      "range": {
+        "startLine": 35,
+        "startChar": 38,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb1ce056_57abbda3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/allowlist/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-04T03:26:31Z",
+      "side": 1,
+      "message": "Oh, sorry for confusion, I meant the content of j.",
+      "parentUuid": "62c79073_48f97e27",
+      "range": {
+        "startLine": 35,
+        "startChar": 52,
+        "endLine": 35,
+        "endChar": 56
       },
       "revId": "28efe3eaf7eb7c9948a20a1e343b3eb40a59f3cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
