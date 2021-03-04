@@ -123,6 +123,87 @@
       "parentUuid": "4d33bf21_f5841df9",
       "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0ae9da_53160529",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T01:26:05Z",
+      "side": 1,
+      "message": "sgtm. Thanks.",
+      "parentUuid": "40b6c9f2_1cf2072c",
+      "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ae94ba_2f1a7b5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T01:26:05Z",
+      "side": 1,
+      "message": "Thanks for clarifying.",
+      "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7713131b_1e0a1c2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T01:26:05Z",
+      "side": 1,
+      "message": "1 more space to align the column? Could you run gofmt?",
+      "range": {
+        "startLine": 61,
+        "startChar": 14,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b457293_33230c39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T01:26:05Z",
+      "side": 1,
+      "message": "nit: could you extract this out as a separate function to be more modular and to avoid deep nested code that looks complex?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
