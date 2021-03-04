@@ -16,6 +16,24 @@
       "message": "Could you help check what\u0027s the default bitrate value in GCA mapped to multiplier? Thanks.",
       "revId": "38538395d86c6761e7ea64a6c30f85e9f3f69635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e68725d_89c28e64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-03-04T08:46:28Z",
+      "side": 1,
+      "message": "Checked that the default media_profiles.xml also use about x8 for 720p and 1080p.\n\nhttps://source.corp.google.com/chromeos_public/src/overlays/overlay-scarlet/chromeos-base/arc-media-profiles-scarlet/files/media_profiles.xml;rcl\u003d7d1c41a9ab50e20ebca8f99f4613ddeff0a01234;l\u003d103",
+      "parentUuid": "bcf0b5d3_a6dda67f",
+      "revId": "38538395d86c6761e7ea64a6c30f85e9f3f69635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
