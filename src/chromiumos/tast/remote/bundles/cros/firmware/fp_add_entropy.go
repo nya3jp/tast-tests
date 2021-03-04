@@ -39,6 +39,18 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 		s.Fatal("Initialization failed: ", err)
 	}
 
+	fpBoard, err := fingerprint.Board(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get fingerprint board: ", err)
+	}
+	buildFwFile, err := fingerprint.FirmwarePath(ctx, d, fpBoard)
+	if err != nil {
+		s.Fatal("Failed to get build firmware file path: ", err)
+	}
+	if err := fingerprint.ValidateBuildFwFile(ctx, d, fpBoard, buildFwFile); err != nil {
+		s.Fatal("Failed to validate build firmware file: ", err)
+	}
+
 	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
 	if err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
