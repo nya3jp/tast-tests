@@ -181,7 +181,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		gsUtil = "gsutil"
 
 		// Number of retries for each flow in case of failure.
-		retryCount = 0
+		retryCount = 2
 	)
 
 	d := s.DUT()
