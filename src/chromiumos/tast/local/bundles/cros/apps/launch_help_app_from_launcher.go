@@ -29,7 +29,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
 			{
 				Name:              "stable",
@@ -45,7 +45,7 @@ func init() {
 
 // LaunchHelpAppFromLauncher verifies launching Help app from the launcher.
 func LaunchHelpAppFromLauncher(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
