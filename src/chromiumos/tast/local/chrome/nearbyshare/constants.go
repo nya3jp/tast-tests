@@ -20,6 +20,14 @@ var ReceiveUIParams ui.FindParams = ui.FindParams{
 // DetectShareTargetTimeout is the timeout for a sender to detect an available receiver or vice versa.
 const DetectShareTargetTimeout = time.Minute
 
+// SmallFileTransferTimeout is the test timeout for small file (~10kb) transfer tests.
+const SmallFileTransferTimeout = 30 * time.Second
+
+// LargeFileOnlineTransferTimeout is the transfer timeout for large file (~30MB) online transfer tests.
+// Online transfers should be at least 10x faster than offline transfers.
+// Some extra time is required to account for the delay in upgrading the bandwidth.
+const LargeFileOnlineTransferTimeout = time.Minute
+
 // AdditionalTestTime is the amount of time to add to the share target detection and file transfer timeouts to make up the global test timeout.
 // This is to account for any additional setup and non-sharing interactions performed by the test.
 const AdditionalTestTime = 30 * time.Second
@@ -28,9 +36,6 @@ const AdditionalTestTime = 30 * time.Second
 // 2*DetectShareTargetTimeout accounts for the amount of time given for the sender to find+select the receiver,
 // and then for the receiver to detect the incoming share from the sender.
 const DetectionTimeout = 2*DetectShareTargetTimeout + AdditionalTestTime
-
-// SmallFileTransferTimeout is the test timeout for small file (~10kb) transfer tests.
-const SmallFileTransferTimeout = 30 * time.Second
 
 // ChromeLog is the filename of the Chrome log that is saved for each test.
 const ChromeLog = "nearby_chrome"
