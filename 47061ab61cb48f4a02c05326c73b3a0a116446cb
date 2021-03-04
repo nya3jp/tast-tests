@@ -16,6 +16,24 @@
       "message": "Looks like the disabled attribute is deprecated (I got the following error message when trying to submit):\n\nthe disabled attribute is deprecated; remove group:* attributes instead\n\nUpdated the patch by following the instructions given by the error message. ",
       "revId": "47061ab61cb48f4a02c05326c73b3a0a116446cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e8f538_3fd3858f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-04T18:44:43Z",
+      "side": 1,
+      "message": "According to documentation [1], \"a test will not run in automated testing if it belongs to no group.\"\n\nSo, it sounds like removing the group:* attributes will in fact disable the test.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md",
+      "parentUuid": "36375635_64a1d016",
+      "revId": "47061ab61cb48f4a02c05326c73b3a0a116446cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
