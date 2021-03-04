@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f82d417b_2a4b66d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T11:37:52Z",
+      "side": 1,
+      "message": "qq: Will this test be affected later by simmonsjosh@ Archive work? If yes, how much will it be affected?",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "c0e7ed363ffc70924bfe79d0e7d75dd75c8d0613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b8a721c_3449e0ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T11:37:52Z",
+      "side": 1,
+      "message": "This is a bit hard to understand. What is z and what is f (they are not parameters in your code)? Are they from a selector? Could you describe in the comment?",
+      "range": {
+        "startLine": 121,
+        "startChar": 42,
+        "endLine": 121,
+        "endChar": 63
+      },
+      "revId": "c0e7ed363ffc70924bfe79d0e7d75dd75c8d0613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e39a34_b91b2f0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T11:37:52Z",
+      "side": 1,
+      "message": "maybe something more direct like: \"converts a path p to its FSP URI\"?",
+      "range": {
+        "startLine": 139,
+        "startChar": 7,
+        "endLine": 139,
+        "endChar": 38
+      },
+      "revId": "c0e7ed363ffc70924bfe79d0e7d75dd75c8d0613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc16b7a_40c48105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T11:37:52Z",
+      "side": 1,
+      "message": "I think a function usually represents an action, so it should be named starting with a verb.",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 8
+      },
+      "revId": "c0e7ed363ffc70924bfe79d0e7d75dd75c8d0613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52081d6e_381d5d60",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/crd/crd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T11:37:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be under\nconst (\n  crdURL \u003d ...\n  appCWSURL \u003d ...\n)\nfor consistency with other files?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 122
+      },
+      "revId": "c0e7ed363ffc70924bfe79d0e7d75dd75c8d0613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
