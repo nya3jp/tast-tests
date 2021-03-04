@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 )
 
@@ -203,4 +205,16 @@ func SetPages(ctx context.Context, tconn *chrome.TestConn, pages string) error {
 		return errors.Wrap(err, "failed to type pages")
 	}
 	return nil
+}
+
+// WaitForPrintPreview waits for Print Preview to finish loading after it's
+// initially opened.
+func WaitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	loadingPreviewText := nodewith.Name("Loading preview")
+	printPreviewFailedText := nodewith.Name("Print preview failed")
+	return uiauto.Combine("wait for Print Preview to finish loading",
+		ui.WithTimeout(30*time.Second).WaitUntilGone(loadingPreviewText),
+		ui.Gone(printPreviewFailedText),
+	)(ctx)
 }
