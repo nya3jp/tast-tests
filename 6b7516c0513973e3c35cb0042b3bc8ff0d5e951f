@@ -22,6 +22,30 @@
       },
       "revId": "6b7516c0513973e3c35cb0042b3bc8ff0d5e951f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1165024_28f82951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/geekbench_public_android_app.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-04T16:30:40Z",
+      "side": 1,
+      "message": "Thanks Hsin-Yi. Yes it is obsolete and was removed.",
+      "parentUuid": "3828fe66_2d40a673",
+      "range": {
+        "startLine": 182,
+        "startChar": 5,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "6b7516c0513973e3c35cb0042b3bc8ff0d5e951f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
