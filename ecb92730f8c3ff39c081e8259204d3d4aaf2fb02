@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c74b5327_eee605e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-03-04T04:38:54Z",
+      "side": 1,
+      "message": "Do all boards have an RW_MRC_CACHE region?",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "ecb92730f8c3ff39c081e8259204d3d4aaf2fb02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e90a895_2a0bf0e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_perf.go",
         "patchSetId": 9
