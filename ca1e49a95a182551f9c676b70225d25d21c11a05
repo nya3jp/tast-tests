@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d35da9_0f94aacd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-04T09:33:32Z",
+      "side": 1,
+      "message": "\"tast-tests\" or \"arc\"\nWhichever you prefer.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "ca1e49a95a182551f9c676b70225d25d21c11a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "178acd83_931a5e93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-04T09:33:32Z",
+      "side": 1,
+      "message": "nit: This line is too long.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 75
+      },
+      "revId": "ca1e49a95a182551f9c676b70225d25d21c11a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "984b9425_909ed576",
@@ -14,6 +60,46 @@
       "writtenOn": "2021-03-03T18:31:58Z",
       "side": 1,
       "message": "Please review this cherry pick commit.",
+      "revId": "ca1e49a95a182551f9c676b70225d25d21c11a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "003b66eb_0ad3fda3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-04T09:33:32Z",
+      "side": 1,
+      "message": "LGTM % nit and question",
+      "revId": "ca1e49a95a182551f9c676b70225d25d21c11a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "996b0e3d_0650b671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-04T09:33:32Z",
+      "side": 1,
+      "message": "As I saw the default timeout is 15 seconds. Would you like to keep the 5 seconds timeout?",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 34
+      },
       "revId": "ca1e49a95a182551f9c676b70225d25d21c11a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
