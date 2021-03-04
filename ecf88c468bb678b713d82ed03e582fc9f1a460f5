@@ -16,6 +16,535 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f2b4ad_7aa15e3c",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "move this after const and before NewCryptohomeMountInfo",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2000b727_e91aa033",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "nit: it makes sense to wrap this line to ~80 characters",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 96
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b5476af_1c67ad08",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "nit: we can just drop this part of comment. It\u0027s obvious how r and c will be used",
+      "range": {
+        "startLine": 47,
+        "startChar": 59,
+        "endLine": 48,
+        "endChar": 42
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b315a967_163b6907",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "in many places we just store regexps as global variables \"var\" for package:\n\nhttps://source.chromium.org/search?q\u003dregexp.MustCompile%20tast-tests\u0026sq\u003d\n\n\nAlso for each regexp please add example of valid strings",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cddb5b3a_f3df00f5",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "this is never used",
+      "range": {
+        "startLine": 57,
+        "startChar": 66,
+        "endLine": 57,
+        "endChar": 73
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eec4849_225f6952",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "same: do we really need it?",
+      "range": {
+        "startLine": 58,
+        "startChar": 57,
+        "endLine": 58,
+        "endChar": 70
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8abdbe18_18e21f11",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "to be safe, let\u0027s use strconv.ParseInt(s, 10, 32) instead",
+      "range": {
+        "startLine": 65,
+        "startChar": 13,
+        "endLine": 65,
+        "endChar": 25
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5143aca_ffeb286d",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "do we really need to escape from well defined path?",
+      "range": {
+        "startLine": 75,
+        "startChar": 43,
+        "endLine": 75,
+        "endChar": 56
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16c36dc3_3a469923",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "cannot we just directly read that file from Go?\n\nupdate: looks like we can. Then use ioutil.ReadFile:\nhttps://golang.org/pkg/io/ioutil/#ReadFile",
+      "range": {
+        "startLine": 75,
+        "startChar": 31,
+        "endLine": 75,
+        "endChar": 34
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad50a9e_3b0e22fa",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "It\u0027s much simpler and less error prone to don\u0027t specify capacity unless you will get really performance boost which is probably not our case\n\n```\nvar res []disk.PartitionStat\n```",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b817732_52962337",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "there is no need to declare it without initialisation here, instead modify line 86:\n\n```\nd :\u003d disk.PartitionStat{}\n```",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c1f83a_82506444",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "check if fields has 4 elements",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 33
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2be3e18_ff6f2159",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "nit: this can be removed",
+      "range": {
+        "startLine": 122,
+        "startChar": 27,
+        "endLine": 122,
+        "endChar": 71
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc783e9d_ff4be213",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "nit: maybe \"does not\" fits better here?",
+      "range": {
+        "startLine": 145,
+        "startChar": 40,
+        "endLine": 145,
+        "endChar": 46
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1815877_4d3e24e9",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "nit: put it after NewCryptohomeMountInfo",
+      "range": {
+        "startLine": 158,
+        "startChar": 30,
+        "endLine": 158,
+        "endChar": 39
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d99984_56ac2e29",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "there are so many ways to fail for this method, it will be easier to investigate issue if you wrap errors and give more context what failed",
+      "range": {
+        "startLine": 169,
+        "startChar": 16,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3abf69_6380e520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "nit: move it after CryptohomeMount. CryptohomeMount is more important and should be first in the file",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b8636f_a1b370e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "nit: rename to wantMounted",
+      "range": {
+        "startLine": 31,
+        "startChar": 96,
+        "endLine": 31,
+        "endChar": 109
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c5a543c_c083172e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "I\u0027d remove it and return error always when \"err !\u003d nil\"\n\nif you want ignore error in some cases, you must explicitly check if error equals to expected error",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94719458_8b1d7e60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "This can be simplified to smth like this:\n\n```\nif mounted !\u003d wantMounted {\n  return errors.Errorf(\"unexpected mounted: got %t; want %t\", mounted, wantMounted)\n}\nreturn nil\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183c9c9e_7a3ae8b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "nit: this can be Error",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f09809_408573d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "always pass context into functions, never bind by reference:\n\n```\n\tdefer func(ctx context.Context) {\n\t\t// Ensure we remove the user account after the test.\n\t\tif _, err :\u003d cryptohome.Unmount(ctx, user); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to unmount: \", err)\n\t\t}\n\t\tif _, err :\u003d cryptohome.RemoveVault(ctx, user); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to remove vault: \", err)\n\t\t}\n\t}(ctx)\n```",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1e5543_cb63fe9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-04T10:12:20Z",
+      "side": 1,
+      "message": "nit: Error",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 9
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
