@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b73efa_893c4ab0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-03-04T10:29:59Z",
+      "side": 1,
+      "message": "Good catch! Fixed spacing.\n\nI didn\u0027t use gofmt on this file because otherwise, the comment block will be all left-aligned and not as readable.\n\ne.g.\nCreateTestFile bool // If true, create the test file at \"Path\". For directory where\n// there is no actual file path, set this to false and create\n// the file before running the test (e.g. MTP).",
+      "parentUuid": "7713131b_1e0a1c2a",
+      "range": {
+        "startLine": 61,
+        "startChar": 14,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b457293_33230c39",
@@ -196,6 +220,30 @@
       "writtenOn": "2021-03-04T01:26:05Z",
       "side": 1,
       "message": "nit: could you extract this out as a separate function to be more modular and to avoid deep nested code that looks complex?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c81f99_7737b4d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-03-04T10:29:59Z",
+      "side": 1,
+      "message": "Yes, I agree with this idea in general.\n\nHowever, with this block, if defer os.Remove(testFileLocation) is put in its own function, it will be executed as soon as we return from that function (i.e. too early). We can also leave defer os.Remove(testFileLocation) in the outer function as is, but that will also complicate the code and defeat the purpose.\n\nWhat do you think?",
+      "parentUuid": "7b457293_33230c39",
       "range": {
         "startLine": 77,
         "startChar": 0,
