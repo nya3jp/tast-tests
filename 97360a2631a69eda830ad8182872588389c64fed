@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13890a52_e51e2dfb",
+        "filename": "android/ArcDownloadManagerTest/src/org/chromium/arc/testapp/downloadmanager/MainActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-04T13:15:40Z",
+      "side": 1,
+      "message": "I could not import the annotation, so I\u0027m currently leaving it as a comment (for readers). Maybe it\u0027s just because I\u0027m not familiar with the build system and there might be some way to import it.\nFYI, below is the error messages I got when I tried to import the annotation.\n  error: package com.android.internal.annotations does not exist\n  error: package com.google.errorprone.annotations.concurrent does not exist\n  error: package javax.annotation.concurrent does not exist\n  error: cannot find symbol\n  import androidx.annotation.GuardedBy;\n                            ^\n    symbol:   class GuardedBy\n    location: package androidx.annotation",
+      "parentUuid": "5639a389_b1f239a9",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "97360a2631a69eda830ad8182872588389c64fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c36033f4_4342c84a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
         "patchSetId": 9
@@ -71,6 +95,30 @@
       "writtenOn": "2021-03-04T02:02:01Z",
       "side": 1,
       "message": "I\u0027m wondering if arc-storage@ is a better contact? like https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2726255",
+      "range": {
+        "startLine": 31,
+        "startChar": 56,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "97360a2631a69eda830ad8182872588389c64fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e8d3ea_38f41b64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-04T13:15:40Z",
+      "side": 1,
+      "message": "Agreed. I will also change the contacts of other new storage tests like MyFiles.",
+      "parentUuid": "c36033f4_4342c84a",
       "range": {
         "startLine": 31,
         "startChar": 56,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ecf3b0_5746ed03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-04T13:15:40Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "edaedd84_7faad458",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 66
+      },
+      "revId": "97360a2631a69eda830ad8182872588389c64fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4eec795a_ccf13a1d",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "939b49c0_1cc53f03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-04T13:15:40Z",
+      "side": 1,
+      "message": "Yes. I almost always hit the same complaint by gofmt when I try to add a new Tast test:\n  $ gofmt -d src/chromiumos/tast/local/bundles/cros/arc/download_manager.go\n  [...]\n  -       ctx, cancel :\u003d ctxutil.Shorten(ctx, 10 * time.Second)\n  +       ctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)",
+      "parentUuid": "4eec795a_ccf13a1d",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "97360a2631a69eda830ad8182872588389c64fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cf0a6c2_bc01d0d5",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-03-04T02:02:01Z",
       "side": 1,
       "message": "I feel that these functions are a bit too long/complex, I think we need to make this easier to read somehow. Could you break this further? For example, these function subsection that you notate with a comment (like this and the install one), it might be more readable if they are extracted out as a separate function with its function name as an immediate documentation. What do you think?",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 35
+      },
+      "revId": "97360a2631a69eda830ad8182872588389c64fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e133b12_42ca6235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-04T13:15:40Z",
+      "side": 1,
+      "message": "That\u0027s true. I extracted the subsection where we interact with the app as \"downloadFileWithAppFromLocalAndroidPort\" (though the name is a little awkward), and modified this function to call it after setting up the test API conn \u0026 reverse port forwarding.",
+      "parentUuid": "3cf0a6c2_bc01d0d5",
       "range": {
         "startLine": 180,
         "startChar": 1,
