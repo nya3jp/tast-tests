@@ -28,11 +28,11 @@ func init() {
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
 		// TODO(crbug/1127165) Move to fixture when data is available.
-		Data:    []string{nearbysnippet.ZipName, nearbysnippet.AccountUtilZip},
-		Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
+		Data: []string{nearbysnippet.ZipName, nearbysnippet.AccountUtilZip},
 		Params: []testing.Param{
 			{
-				Name: "dataoffline_allcontacts_png5kb",
+				Name:    "dataoffline_allcontacts_png5kb",
+				Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
 				Val: nearbytestutils.TestData{
 					Filename:        "small_png.zip",
 					TransferTimeout: nearbyshare.SmallFileTransferTimeout,
@@ -42,7 +42,8 @@ func init() {
 				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
 			},
 			{
-				Name: "dataoffline_allcontacts_jpg11kb",
+				Name:    "dataoffline_allcontacts_jpg11kb",
+				Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
 				Val: nearbytestutils.TestData{
 					Filename:        "small_jpg.zip",
 					TransferTimeout: nearbyshare.SmallFileTransferTimeout,
@@ -50,6 +51,17 @@ func init() {
 				},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+			},
+			{
+				Name:    "dataonline_noone_txt30mb",
+				Fixture: "nearbyShareDataUsageOnlineNoOneGAIA",
+				Val: nearbytestutils.TestData{
+					Filename:        "big_txt.zip",
+					TransferTimeout: nearbyshare.LargeFileOnlineTransferTimeout,
+					TestTimeout:     nearbyshare.DetectionTimeout + nearbyshare.LargeFileOnlineTransferTimeout,
+				},
+				ExtraData: []string{"big_txt.zip"},
+				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.LargeFileOnlineTransferTimeout,
 			},
 		},
 	})

@@ -528,8 +528,9 @@ func (a *AndroidNearbyDevice) eventWaitAndGet(ctx context.Context, callbackID st
 	if err != nil {
 		return res, err
 	}
-	// Read response.
-	return a.clientRPCResponse(ctx, id, timeout)
+	// Read response with a slightly extended timeout. eventWaitAndGet won't respond until the event is posted in the snippet cache,
+	// or the timeout is reached. In the timeout case, we need to set the TCP read deadline a little later so we'll get the response before the conn times out.
+	return a.clientRPCResponse(ctx, id, timeout+time.Second)
 }
 
 // ReceiveFile starts receiving with a timeout.
@@ -598,7 +599,7 @@ func (a *AndroidNearbyDevice) AwaitSharingStopped(ctx context.Context, timeout t
 		return errors.New("transferCallback is not set, a share needs to be initiated first")
 	}
 	if _, err := a.eventWaitAndGet(ctx, a.transferCallback, SnippetEventOnStop, timeout); err != nil {
-		return errors.Wrap(err, "failed waiting for onLocalConfirmation event to know that Android is ready to start the transfer")
+		return errors.Wrap(err, "failed waiting for onStop event to know that transfer is complete on Android")
 	}
 	return nil
 }

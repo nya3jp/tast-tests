@@ -128,7 +128,7 @@ func (d *Device) RemoveAll(ctx context.Context, path string) error {
 
 // SHA256Sum returns the sha256sum of the specified file as a string.
 func (d *Device) SHA256Sum(ctx context.Context, filename string) (string, error) {
-	res, err := d.ShellCommand(ctx, "sha256sum", filename).Output()
+	res, err := d.ShellCommand(ctx, "sha256sum", filename).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to run sha256sum command for the target file")
 	}
