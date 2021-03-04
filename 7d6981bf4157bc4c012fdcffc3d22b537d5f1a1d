@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9715899_4fcecd22",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-04T03:05:29Z",
+      "side": 1,
+      "message": "huh ok nvm",
+      "parentUuid": "4ba8e3c2_cfcc847c",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 2
+      },
+      "revId": "7d6981bf4157bc4c012fdcffc3d22b537d5f1a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01b4e09e_b53cf8db",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "lol sure, do you want all of the other multi-word ones capitalized too? No One, Wifi Only",
       "parentUuid": "01b4e09e_b53cf8db",
+      "range": {
+        "startLine": 41,
+        "startChar": 34,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "7d6981bf4157bc4c012fdcffc3d22b537d5f1a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5c86d06_3655fb39",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-04T03:05:29Z",
+      "side": 1,
+      "message": "Yes plz",
+      "parentUuid": "c1f2356f_c5fd5cd6",
       "range": {
         "startLine": 41,
         "startChar": 34,
