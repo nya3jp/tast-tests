@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7601083_11ff5f5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-04T18:20:52Z",
+      "side": 1,
+      "message": "I guess I\u0027ll leave it to either tast reviewers or your own testing to answer: does it matter that \"informational\" shows up in both Attr and ExtraAttr?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 49
+      },
+      "revId": "f1590f418eba08a5fe6916c24eaab198e415d9fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
