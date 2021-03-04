@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b4b6efa_53d1d6fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-03-04T22:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5823c62f_ff179c96",
+      "range": {
+        "startLine": 74,
+        "startChar": 19,
+        "endLine": 74,
+        "endChar": 75
+      },
+      "revId": "63de6b47b62af37fbf8192b722ced00fe7721a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1e1bc97_71244ac3",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-03-04T17:43:09Z",
       "side": 1,
       "message": "What will happen if opFileName already exists and is populated? Would that would cause the test to fail? If so, you might consider using ioutil.TempFile instead.\n\n    tempFile, err :\u003d ioutil.TempFile(\"\", \"dump_\" + region + \"_*.bin\")\n    if err !\u003d nil {\n        s.Fatal(\"Failed creating temp file: \", err)\n    }\n    defer os.Remove(tempFile.Name())\n\nhttps://pkg.go.dev/io/ioutil#TempFile",
+      "revId": "63de6b47b62af37fbf8192b722ced00fe7721a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b97a8e_8120d769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-03-04T22:50:08Z",
+      "side": 1,
+      "message": "Good question, this was also asked previously in review. Flashrom will unconditionally clobber the existing file if it exists. Although I suppose it is harmless to also adopt this way as well such that the preamble state is always consistent (a file exists) to avoid future flakiness of the test so I have applied the diff. Cheers Greg.",
+      "parentUuid": "e1e1bc97_71244ac3",
       "revId": "63de6b47b62af37fbf8192b722ced00fe7721a1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
