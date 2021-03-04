@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d492d6e7_c3f4bad9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-04T18:18:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "60d35da9_0f94aacd",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "ca1e49a95a182551f9c676b70225d25d21c11a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "178acd83_931a5e93",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-04T09:33:32Z",
       "side": 1,
       "message": "nit: This line is too long.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 75
+      },
+      "revId": "ca1e49a95a182551f9c676b70225d25d21c11a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5ed60d_cafbc050",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-04T18:18:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "178acd83_931a5e93",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "writtenOn": "2021-03-04T09:33:32Z",
       "side": 1,
       "message": "As I saw the default timeout is 15 seconds. Would you like to keep the 5 seconds timeout?",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 34
+      },
+      "revId": "ca1e49a95a182551f9c676b70225d25d21c11a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d8de7a_9d14aac2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-04T18:18:28Z",
+      "side": 1,
+      "message": "As discussed over chat leaving it at 15secs default from new ui library.",
+      "parentUuid": "996b0e3d_0650b671",
       "range": {
         "startLine": 97,
         "startChar": 2,
