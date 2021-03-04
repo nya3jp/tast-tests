@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 // Layout represents the layout setting in Chrome print preview.
@@ -201,6 +202,36 @@ func SetPages(ctx context.Context, tconn *chrome.TestConn, pages string) error {
 	}
 	if err := kb.Type(ctx, pages); err != nil {
 		return errors.Wrap(err, "failed to type pages")
+	}
+	return nil
+}
+
+// WaitForPrintPreview waits for Print Preview to finish loading after opening.
+func WaitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
+	params := ui.FindParams{
+		Name: "Loading preview",
+	}
+	// Wait for the loading text to appear to indicate print preview is loading.
+	// Since print preview can finish loading before the loading text is found,
+	// log the error without failing the test.
+	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
+		testing.ContextLog(ctx, "Did not find loading text: ", err)
+	}
+	// Wait for the loading text to be removed to indicate print preview is no
+	// longer loading.
+	if err := ui.WaitUntilGone(ctx, tconn, params, 30*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for loading text to be removed")
+	}
+	// Check if print preview failed.
+	params = ui.FindParams{
+		Name: "Print preview failed",
+	}
+	failed, err := ui.Exists(ctx, tconn, params)
+	if err != nil {
+		return errors.Wrap(err, "failed to check if print preview failed")
+	}
+	if failed {
+		return errors.New("print preview failed")
 	}
 	return nil
 }
