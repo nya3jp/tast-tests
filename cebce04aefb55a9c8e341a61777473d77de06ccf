@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27edf2a0_a6568050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T14:22:32Z",
+      "side": 1,
+      "message": "oh sorry I was unclear. I mean each comment above each field.\n// Name is the name of the directory.\nName string\n// Title is the title of the directory.\nTitle string\netc.\nI think the formatting will still be correct for this?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 78
+      },
+      "revId": "cebce04aefb55a9c8e341a61777473d77de06ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
