@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/browser"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
@@ -111,26 +111,13 @@ func DefaultSearchProviderSearchURL(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to write events: ", err)
 			}
 
-			// Find the address bar.
-			addressBar, err := ui.FindWithTimeout(ctx, tconn, addressBarParams, 10*time.Second)
-			if err != nil {
-				s.Fatal("Failed to find the address bar: ", err)
-			}
-			defer addressBar.Release(ctx)
-
-			var location string
-			// Wait for the address bar value change.
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				addressBar.Update(ctx)
-				if addressBar.Value != "about:blank" && addressBar.Value != searchTerm {
-					location = addressBar.Value
-					return nil
-				}
-				return errors.New("failed to wait for address bar value change")
-			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-				s.Fatal("Failed to wait for address bar value change: ", err)
+			// Wait for the page to load.
+			if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+				s.Fatal("Failed to wait for location change: ", err)
 			}
 
+			location, err := browser.GetAddressBarText(ctx, tconn)
+			location = strings.TrimPrefix(location, "https://www.")
 			if !strings.HasPrefix(location, param.wantURL) {
 				s.Fatalf("Unexpected search engine used: got %q; want %q", location, param.wantURL)
 			}
