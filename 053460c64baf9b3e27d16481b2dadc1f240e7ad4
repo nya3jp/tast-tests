@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96b73674_c996492a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-04T17:23:05Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective, with nits.",
+      "revId": "053460c64baf9b3e27d16481b2dadc1f240e7ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e826d27c_5694b472",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-04T17:23:05Z",
+      "side": 1,
+      "message": "nit: declare as const\n\n    if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n        const bgPageURLPrefix \u003d \"chrome-extension...\"\n        ...\n    }",
+      "revId": "053460c64baf9b3e27d16481b2dadc1f240e7ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8abd7e1a_f947ef1b",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-04T17:23:05Z",
+      "side": 1,
+      "message": "nit: declare as const\n\n    func BackgroundConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {\n        const bgPageURLPrefix \u003d \"chrome-extension...\"\n        ...\n    }",
+      "revId": "053460c64baf9b3e27d16481b2dadc1f240e7ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
