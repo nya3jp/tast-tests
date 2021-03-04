@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36375635_64a1d016",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-04T18:38:25Z",
+      "side": 1,
+      "message": "Looks like the disabled attribute is deprecated (I got the following error message when trying to submit):\n\nthe disabled attribute is deprecated; remove group:* attributes instead\n\nUpdated the patch by following the instructions given by the error message. ",
+      "revId": "47061ab61cb48f4a02c05326c73b3a0a116446cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
