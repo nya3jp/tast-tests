@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5232dfab_bc8ea789",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-04T17:47:47Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective.",
+      "revId": "7733006dfdaca884456e5a1ef32dd4825c91e191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
