@@ -16,6 +16,24 @@
       "message": "Please update the http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?l\u003d255 too",
       "revId": "63c43a8c0f111afecfd68768a90d5a178cd92fde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42057351_c05abef7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-04T04:25:17Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "8bae7a3c_0886e00e",
+      "revId": "63c43a8c0f111afecfd68768a90d5a178cd92fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
