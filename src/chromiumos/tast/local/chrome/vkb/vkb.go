@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/testing"
@@ -127,14 +128,16 @@ func UIConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
 // BackgroundConn returns a connection to the virtual keyboard background page,
 // where JavaScript can be executed to simulate interactions with IME.
 func BackgroundConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
-	extURL := "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background.html"
-
+	const bgPageURLPrefix = "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background"
+	bgTargetFilter := func(t *driver.Target) bool {
+		return strings.HasPrefix(t.URL, bgPageURLPrefix)
+	}
 	// Background target from login persists for a few seconds, causing 2 background targets.
 	// Polling until connected to the unique target.
 	var bconn *chrome.Conn
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		bconn, err = c.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
+		bconn, err = c.NewConnForTarget(ctx, bgTargetFilter)
 		return err
 	}, &testing.PollOptions{Timeout: 60 * time.Second, Interval: 3 * time.Second}); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for unique virtual keyboard background target")
