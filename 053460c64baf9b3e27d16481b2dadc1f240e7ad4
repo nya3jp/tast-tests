@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d71a7660_830b9d2d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-04T22:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e826d27c_5694b472",
+      "revId": "053460c64baf9b3e27d16481b2dadc1f240e7ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8abd7e1a_f947ef1b",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-03-04T17:23:05Z",
       "side": 1,
       "message": "nit: declare as const\n\n    func BackgroundConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {\n        const bgPageURLPrefix \u003d \"chrome-extension...\"\n        ...\n    }",
+      "revId": "053460c64baf9b3e27d16481b2dadc1f240e7ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9cf1e16_9fec24ab",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-04T22:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8abd7e1a_f947ef1b",
       "revId": "053460c64baf9b3e27d16481b2dadc1f240e7ad4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
