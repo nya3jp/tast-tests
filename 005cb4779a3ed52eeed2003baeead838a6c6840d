@@ -209,6 +209,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3654556_e9a0dc1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T11:51:49Z",
+      "side": 1,
+      "message": "In that case, I think we should have all the comments above the described fields. I think allowing gofmt to format this file will be more beneficial and convenient for us (and for everyone who will change this file later) compared to keeping the current comments format. Could you move them and run gofmt?",
+      "parentUuid": "e3b73efa_893c4ab0",
+      "range": {
+        "startLine": 61,
+        "startChar": 14,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b457293_33230c39",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
         "patchSetId": 4
@@ -244,6 +268,30 @@
       "side": 1,
       "message": "Yes, I agree with this idea in general.\n\nHowever, with this block, if defer os.Remove(testFileLocation) is put in its own function, it will be executed as soon as we return from that function (i.e. too early). We can also leave defer os.Remove(testFileLocation) in the outer function as is, but that will also complicate the code and defeat the purpose.\n\nWhat do you think?",
       "parentUuid": "7b457293_33230c39",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "005cb4779a3ed52eeed2003baeead838a6c6840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57181d9b_7aca5261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-04T11:51:49Z",
+      "side": 1,
+      "message": "ah that makes sense. I think it\u0027s fine as it is then. Thanks for explaining!",
+      "parentUuid": "39c81f99_7737b4d1",
       "range": {
         "startLine": 77,
         "startChar": 0,
