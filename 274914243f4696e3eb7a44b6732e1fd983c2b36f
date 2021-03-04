@@ -39,6 +39,30 @@
       },
       "revId": "274914243f4696e3eb7a44b6732e1fd983c2b36f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f72162_a43715c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-03-04T16:05:09Z",
+      "side": 1,
+      "message": "Thanks for the reminder. Yes, I did.\nNo worry. repo upload will force me to run it, unless with --no-verify.",
+      "parentUuid": "a5495a9c_4abacd0e",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 7
+      },
+      "revId": "274914243f4696e3eb7a44b6732e1fd983c2b36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
