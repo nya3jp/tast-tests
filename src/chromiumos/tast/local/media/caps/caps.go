@@ -132,7 +132,10 @@ func VerifyCapabilities(ctx context.Context, e ErrorReporter, avtestLabelToCapab
 	if err != nil {
 		return errors.Wrap(err, "failed to read statically-set capabilities")
 	}
-	testing.ContextLog(ctx, "Statically-set capabilities: ", staticCaps)
+	testing.ContextLog(ctx, "Statically-set capabilities:")
+	for c, s := range staticCaps {
+		testing.ContextLogf(ctx, "    %v: %v", c, s)
+	}
 
 	// Get capabilities detected by "avtest_label_detect" command.
 	cmd := testexec.CommandContext(ctx, "avtest_label_detect")
@@ -150,7 +153,10 @@ func VerifyCapabilities(ctx context.Context, e ErrorReporter, avtestLabelToCapab
 			detectedCaps[stripPrefix(c.Name)] = struct{}{}
 		}
 	}
-	testing.ContextLog(ctx, "avtest_label_detect result: ", detectedCaps)
+	testing.ContextLog(ctx, "avtest_label_detect result:")
+	for c := range detectedCaps {
+		testing.ContextLog(ctx, "    ", c)
+	}
 
 	for _, c := range avtestLabelToCapability {
 		c.Name = stripPrefix(c.Name)
