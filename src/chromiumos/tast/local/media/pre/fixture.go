@@ -363,6 +363,46 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeVideoWithDistinctiveIdentifier",
+		Desc: "Similar to chromeVideo fixture but also allows a distinctive identifier which is needed for HWDRM.",
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeSuppressNotificationsArgs,
+				chromeAllowDistinctiveIdentifierArgs,
+				chromeUseHWCodecsForSmallResolutions,
+				chromeBypassPermissionsArgs,
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	// We need to allow clear HEVC for DRM content because Shaka player needs that
+	// to function properly for HEVC.
+	// TODO(jkardatzke): Remove this once Shaka player is updated to support HEVC
+	// without this flag.
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeVideoWithClearHEVCHWDecodingAndDistinctiveIdentifier",
+		Desc: "Similar to chromeVideo fixture but also allows a distinctive identifer and enables hardware accelerated HEVC decoding for clear content.",
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeSuppressNotificationsArgs,
+				chromeUseClearHEVCHWDecodingArgs,
+				chromeAllowDistinctiveIdentifierArgs,
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
 }
 
 var chromeVModuleArgs = chrome.ExtraArgs(
@@ -397,5 +437,14 @@ var chromeSuppressNotificationsArgs = chrome.ExtraArgs(
 	"--suppress-message-center-popups")
 
 var chromeUseClearHEVCHWDecodingArgs = chrome.ExtraArgs(
-	// Enable playback of unencrypted HEVC content in Chrome
+	// Enable playback of unencrypted HEVC content in Chrome.
 	"--enable-clear-hevc-for-testing")
+
+var chromeAllowDistinctiveIdentifierArgs = chrome.ExtraArgs(
+	// Allows distinctive identifier with DRM playback when in dev mode. We don't
+	// actually use RA for this, but it correlates to the same flag.
+	"--allow-ra-in-dev-mode",
+	// Prevents showing permission prompt and automatically grants permission to
+	// allow a distinctive identifier for localhost which is where we server the
+	// DRM content from in the test.
+	"--unsafely-allow-protected-media-identifier-for-domain=127.0.0.1")
