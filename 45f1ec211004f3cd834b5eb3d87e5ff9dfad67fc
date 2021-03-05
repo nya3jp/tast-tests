@@ -52,6 +52,24 @@
       "parentUuid": "13eab55f_6e3dd6bb",
       "revId": "45f1ec211004f3cd834b5eb3d87e5ff9dfad67fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6934c845_104b987d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T20:49:34Z",
+      "side": 1,
+      "message": "Hi Jun, thanks for your patience.\n\nA new CL was submitted to implement the dbus interface to control the Bluetooth device. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2736414. This CL is changed to address your comment about bluetooth.\n\nAlso gmail package is removed.",
+      "parentUuid": "50f08635_92ff388f",
+      "revId": "45f1ec211004f3cd834b5eb3d87e5ff9dfad67fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
