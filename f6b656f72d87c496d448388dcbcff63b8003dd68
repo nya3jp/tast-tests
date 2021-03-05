@@ -271,6 +271,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e1d6ac_96f37f20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-03-05T05:28:59Z",
+      "side": 1,
+      "message": "We don\u0027t have assert exactly but I put a check in here.",
+      "parentUuid": "7bdced3e_489ef020",
+      "revId": "f6b656f72d87c496d448388dcbcff63b8003dd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dd17323_c556ff15",
