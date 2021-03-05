@@ -64,8 +64,8 @@ func init() {
 
 func Optin(ctx context.Context, s *testing.State) {
 	// Setup Chrome.
-	cr, err := chrome.New(ctx, chrome.GAIALogin(),
-		chrome.AuthPool(s.RequiredVar("ui.gaiaPoolDefault")),
+	cr, err := chrome.New(ctx,
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
