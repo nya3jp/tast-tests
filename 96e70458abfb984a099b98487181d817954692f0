@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8e1e3b_4b3a2552",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-05T13:50:39Z",
+      "side": 1,
+      "message": "\u003e \"informations\" is a possible misspelling of \"information\".\n\nPlease fix.",
+      "parentUuid": "94fb60ba_87fa8bd4",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "96e70458abfb984a099b98487181d817954692f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23370008_8aba4ac0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-05T13:50:39Z",
+      "side": 1,
+      "message": "Thank you for update!",
+      "revId": "96e70458abfb984a099b98487181d817954692f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
