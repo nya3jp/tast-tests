@@ -37,8 +37,7 @@ func init() {
 func ChromeLoginGAIA(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
-		chrome.AuthPool(s.RequiredVar("ui.gaiaPoolDefault")),
-		chrome.GAIALogin(),
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 	)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
