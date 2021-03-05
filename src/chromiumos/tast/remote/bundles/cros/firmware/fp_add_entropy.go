@@ -7,7 +7,6 @@ package firmware
 import (
 	"context"
 
-	"chromiumos/tast/dut"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
@@ -35,9 +34,6 @@ func init() {
 
 func FpAddEntropy(ctx context.Context, s *testing.State) {
 	d := s.DUT()
-	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir()); err != nil {
-		s.Fatal("Initialization failed: ", err)
-	}
 
 	fpBoard, err := fingerprint.Board(ctx, d)
 	if err != nil {
@@ -55,7 +51,31 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
-	defer cleanup(ctx, s, d, pxy)
+	defer func() {
+		testing.ContextLog(ctx, "Starting cleanup at the end of test")
+		defer pxy.Close(ctx)
+		if err := pxy.Servo().SetStringAndCheck(ctx, servo.FWWPState, "force_off"); err != nil {
+			s.Fatal("Failed to disable HW write protect: ", err)
+		}
+
+		if err := fingerprint.FlashFirmware(ctx, d); err != nil {
+			s.Error("Failed to flash original FP firmware: ", err)
+		}
+		if err := fingerprint.InitializeEntropy(ctx, d); err != nil {
+			s.Error("Failed to initiailze entropy: ", err)
+		}
+		if err := d.Reboot(ctx); err != nil {
+			s.Error("Failed to reboot DUT: ", err)
+		}
+
+		if err := pxy.Servo().SetStringAndCheck(ctx, servo.FWWPState, "force_on"); err != nil {
+			s.Fatal("Failed to enable HW write protect: ", err)
+		}
+	}()
+
+	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy); err != nil {
+		s.Fatal("Initialization failed: ", err)
+	}
 
 	// TODO(yichengli): Check the FPMCU is running expected firmware version.
 
@@ -130,22 +150,5 @@ func FpAddEntropy(ctx context.Context, s *testing.State) {
 	testing.ContextLog(ctx, "Validating nothing changed")
 	if err := fingerprint.CheckRollbackState(ctx, d, 4, 0, 0); err != nil {
 		s.Fatal("Unexpected rollback state: ", err)
-	}
-}
-
-// cleanup restores the original fingerprint firmware.
-func cleanup(ctx context.Context, s *testing.State, d *dut.DUT, pxy *servo.Proxy) {
-	testing.ContextLog(ctx, "Starting cleanup at the end of test")
-	defer pxy.Close(ctx)
-	if err := pxy.Servo().SetStringAndCheck(ctx, servo.FWWPState, "force_off"); err != nil {
-		s.Fatal("Failed to disable HW write protect: ", err)
-	}
-
-	if err := fingerprint.FlashFirmware(ctx, d); err != nil {
-		s.Error("Failed to flash original FP firmware: ", err)
-	}
-
-	if err := pxy.Servo().SetStringAndCheck(ctx, servo.FWWPState, "force_on"); err != nil {
-		s.Fatal("Failed to enable HW write protect: ", err)
 	}
 }
