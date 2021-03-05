@@ -1,6 +1,92 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "949d649b_17ecd681",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-05T16:24:19Z",
+      "side": 1,
+      "message": "policy: Add HideWebStoreIcon",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "228c7a13_23c8f494",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-05T16:24:19Z",
+      "side": 1,
+      "message": "Line is too long. Please use 2 lines.",
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "884524cb_2746ed98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-05T16:24:19Z",
+      "side": 1,
+      "message": "nit: \"policy.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 124,
+        "endLine": 9,
+        "endChar": 130
+      },
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6729c8d4_b86e29f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-05T16:24:19Z",
+      "side": 1,
+      "message": "nit: tast run \u003cip\u003e policy.HideWebStoreIcon",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5c51da41_35410761",
@@ -14,6 +100,63 @@
       "writtenOn": "2021-03-05T04:56:26Z",
       "side": 1,
       "message": "+gabormagda for feedback",
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca9a0404_7f11e571",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-05T16:24:19Z",
+      "side": 1,
+      "message": "Looks good.\nNext week I will have more time, and will look into it in more details.",
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a849d0e_7752141b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-05T16:24:19Z",
+      "side": 1,
+      "message": "Fixtures for policies are stable now, please use that instead.\nExample: I63f69346a06b1d624184fef346201ce8b2b00542",
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4716e331_1227b158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-05T16:24:19Z",
+      "side": 1,
+      "message": "hide",
+      "range": {
+        "startLine": 59,
+        "startChar": 14,
+        "endLine": 59,
+        "endChar": 24
+      },
       "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
