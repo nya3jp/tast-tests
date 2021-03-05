@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "418bce04_00d1422f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-05T02:25:06Z",
+      "side": 1,
+      "message": "Move this outside of for-loop. This is a one-shot task you don\u0027t need to do here.",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 0
+      },
+      "revId": "bb308cd11c57d640426b0b327715585f83baa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
