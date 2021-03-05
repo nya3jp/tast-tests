@@ -7,6 +7,7 @@ package config
 
 import (
 	"encoding/json"
+	"fmt"
 	"reflect"
 	"strings"
 
@@ -222,32 +223,51 @@ func Unmarshal(data []byte) (*Config, error) {
 // Default comparison logic is implemented here. Customized comparison logic goes to
 // customizedReuseCheck() function .
 func (c *Config) VerifySessionReuse(newCfg *Config) error {
-	t := reflect.TypeOf(c).Elem()
-	val1 := reflect.ValueOf(c).Elem()
-	val2 := reflect.ValueOf(newCfg).Elem()
+	if err := verifySessionReuse(c, newCfg); err != nil {
+		return err
+	}
+	// Check fields requiring customized comparison logic.
+	return c.customizedReuseCheck(newCfg)
+}
+
+func verifySessionReuse(cfg1, cfg2 interface{}) error {
+	t := reflect.TypeOf(cfg1)
+	val1 := reflect.ValueOf(cfg1)
+	val2 := reflect.ValueOf(cfg2)
+	for t.Kind() == reflect.Ptr {
+		t = t.Elem()
+		val1 = val1.Elem()
+		val2 = val2.Elem()
+	}
+
 	// Iterate over all available fields and compare fields requiring exact match.
 	for i := 0; i < t.NumField(); i++ {
 		field := t.Field(i)
+		fv1 := val1.Field(i)
+		fv2 := val2.Field(i)
 
 		// Get the field tag.
 		reuseMatch := field.Tag.Get("reuse_match")
-		if reuseMatch == "false" || reuseMatch == "customized" {
-			continue
-		}
-		if reuseMatch != "true" {
-			// Not a known "reuse_match" value. Deny the reuse.
-			return errors.Errorf("reuse_match tag for field %q has unexpected value %q", field.Name, reuseMatch)
-		}
-
-		fv1 := val1.Field(i)
-		fv2 := val2.Field(i)
-		if !reflect.DeepEqual(fv1.Interface(), fv2.Interface()) {
-			return errors.Errorf("field %q has different values and cannot be reused", field.Name)
+		switch reuseMatch {
+		case "false", "customized":
+			// No need to compare.
+		case "true":
+			if !reflect.DeepEqual(fv1.Interface(), fv2.Interface()) {
+				return errors.Errorf("field %q has different values and cannot be reused", field.Name)
+			}
+		case "":
+			if field.Type.Kind() != reflect.Struct {
+				panic(fmt.Sprintf("non-struct field %q lacks reuse_match tag", field.Name))
+			}
+			if err := verifySessionReuse(fv1.Interface(), fv2.Interface()); err != nil {
+				return err
+			}
+		default:
+			// Not a known "reuse_match" value.
+			panic(fmt.Sprintf("reuse_match tag for field %q has unexpected value %q", field.Name, reuseMatch))
 		}
 	}
-
-	// Check fields requiring customized comparison logic.
-	return c.customizedReuseCheck(newCfg)
+	return nil
 }
 
 // customizedReuseCheck provides customized session reuse checking logic for fields with
