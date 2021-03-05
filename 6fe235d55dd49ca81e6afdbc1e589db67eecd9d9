@@ -39,6 +39,30 @@
       },
       "revId": "6fe235d55dd49ca81e6afdbc1e589db67eecd9d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "620545b1_a8ee3544",
+        "filename": "src/chromiumos/tast/local/unicorn/unicorn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-05T20:40:28Z",
+      "side": 1,
+      "message": "Yes please add a fixture instead of a library. That way all the tests can run with a single login if appropriate \n\nYou can see an example I added for nearby share tests here:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+      "parentUuid": "de6279b0_c18e8d01",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "6fe235d55dd49ca81e6afdbc1e589db67eecd9d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
