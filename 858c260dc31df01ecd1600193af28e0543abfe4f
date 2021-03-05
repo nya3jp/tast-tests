@@ -185,6 +185,30 @@
       },
       "revId": "858c260dc31df01ecd1600193af28e0543abfe4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3304da5a_e53cdeaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/accessibility_policies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-05T08:28:50Z",
+      "side": 1,
+      "message": "I haven\u0027t forgotten about that. Will do it.",
+      "parentUuid": "bea89081_7fba2ecb",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "858c260dc31df01ecd1600193af28e0543abfe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
