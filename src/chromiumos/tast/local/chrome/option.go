@@ -6,10 +6,8 @@ package chrome
 
 import (
 	"math/rand"
-	"strings"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/cryptohome"
 )
@@ -59,9 +57,9 @@ func VKEnabled() Option {
 // Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
 func Auth(user, pass, gaiaID string) Option {
 	return func(cfg *config.Config) error {
-		cfg.User = user
-		cfg.Pass = pass
-		cfg.GAIAID = gaiaID
+		cfg.Creds.User = user
+		cfg.Creds.Pass = pass
+		cfg.Creds.GAIAID = gaiaID
 		return nil
 	}
 }
@@ -81,40 +79,15 @@ var random = rand.New(rand.NewSource(time.Now().UnixNano()))
 // logs in chrome.New, as well as available via Chrome.User.
 func AuthPool(creds string) Option {
 	return func(cfg *config.Config) error {
-		cs, err := parseCreds(creds)
+		cs, err := config.ParseCreds(creds)
 		if err != nil {
 			return err
 		}
 		c := cs[random.Intn(len(cs))]
-		cfg.User = c.user
-		cfg.Pass = c.pass
+		cfg.Creds.User = c.User
+		cfg.Creds.Pass = c.Pass
 		return nil
 	}
-}
-
-type cred struct {
-	user, pass string
-}
-
-func parseCreds(creds string) ([]cred, error) {
-	// Note: Do not include creds in error messages to avoid accidental
-	// credential leaks in logs.
-	var cs []cred
-	for i, line := range strings.Split(creds, "\n") {
-		line = strings.TrimSpace(line)
-		if len(line) == 0 || strings.HasPrefix(line, "#") {
-			continue
-		}
-		ps := strings.SplitN(line, ":", 2)
-		if len(ps) != 2 {
-			return nil, errors.Errorf("failed to parse credential list: line %d: does not contain a colon", i+1)
-		}
-		cs = append(cs, cred{
-			user: ps[0],
-			pass: ps[1],
-		})
-	}
-	return cs, nil
 }
 
 // Contact returns an Option that can be passed to New to configure the contact email used by Chrome for
@@ -122,7 +95,7 @@ func parseCreds(creds string) ([]cred, error) {
 // when using this in conjunction with GAIALogin.
 func Contact(contact string) Option {
 	return func(cfg *config.Config) error {
-		cfg.Contact = contact
+		cfg.Creds.Contact = contact
 		return nil
 	}
 }
@@ -132,8 +105,8 @@ func Contact(contact string) Option {
 // Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
 func ParentAuth(parentUser, parentPass string) Option {
 	return func(cfg *config.Config) error {
-		cfg.ParentUser = parentUser
-		cfg.ParentPass = parentPass
+		cfg.Creds.ParentUser = parentUser
+		cfg.Creds.ParentPass = parentPass
 		return nil
 	}
 }
@@ -180,7 +153,7 @@ func NoLogin() Option {
 func GuestLogin() Option {
 	return func(cfg *config.Config) error {
 		cfg.LoginMode = config.GuestLogin
-		cfg.User = cryptohome.GuestUser
+		cfg.Creds = config.Creds{User: cryptohome.GuestUser}
 		return nil
 	}
 }
