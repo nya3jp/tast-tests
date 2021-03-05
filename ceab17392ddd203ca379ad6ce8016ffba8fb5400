@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f75637e0_df96c9b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-05T19:51:14Z",
+      "side": 1,
+      "message": "This seems like a change worth noting in the commit subject as well?",
+      "revId": "ceab17392ddd203ca379ad6ce8016ffba8fb5400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce560ad_97fcba26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-05T19:51:14Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "ceab17392ddd203ca379ad6ce8016ffba8fb5400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
