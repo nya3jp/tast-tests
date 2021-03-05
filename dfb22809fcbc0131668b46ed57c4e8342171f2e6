@@ -157,6 +157,29 @@
       },
       "revId": "dfb22809fcbc0131668b46ed57c4e8342171f2e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3bc5c1e_3c448723",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-05T22:23:29Z",
+      "side": 1,
+      "message": "just saw this too lol, anyways I\u0027m assuming you need to handle -build\u003dtrue vs -build\u003dfalse here too right?",
+      "range": {
+        "startLine": 135,
+        "startChar": 27,
+        "endLine": 135,
+        "endChar": 42
+      },
+      "revId": "dfb22809fcbc0131668b46ed57c4e8342171f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
