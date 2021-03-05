@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee96100_db17f13d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-05T02:17:11Z",
+      "side": 1,
+      "message": "LGTM just some typos",
+      "revId": "5c18c9a344377a25712876ba2b83952a47732465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9578b10_e63902ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-05T02:17:11Z",
+      "side": 1,
+      "message": "Failed",
+      "range": {
+        "startLine": 123,
+        "startChar": 27,
+        "endLine": 123,
+        "endChar": 32
+      },
+      "revId": "5c18c9a344377a25712876ba2b83952a47732465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a04fd4e_89fad272",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-05T02:17:11Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 126,
+        "startChar": 27,
+        "endLine": 126,
+        "endChar": 32
+      },
+      "revId": "5c18c9a344377a25712876ba2b83952a47732465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2a2dc0_065af07c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-05T02:17:11Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 32
+      },
+      "revId": "5c18c9a344377a25712876ba2b83952a47732465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ce70891_9452ecbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-05T02:17:11Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 132,
+        "startChar": 27,
+        "endLine": 132,
+        "endChar": 32
+      },
+      "revId": "5c18c9a344377a25712876ba2b83952a47732465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ec9be2d_98faa5f6",
+        "filename": "src/chromiumos/tast/services/cros/nearbyservice/nearby_share_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-05T02:17:11Z",
+      "side": 1,
+      "message": "Start",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 9
+      },
+      "revId": "5c18c9a344377a25712876ba2b83952a47732465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce5574a_a074340d",
+        "filename": "src/chromiumos/tast/services/cros/nearbyservice/nearby_share_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-05T02:17:11Z",
+      "side": 1,
+      "message": "receiver\u0027s",
+      "range": {
+        "startLine": 59,
+        "startChar": 63,
+        "endLine": 59,
+        "endChar": 72
+      },
+      "revId": "5c18c9a344377a25712876ba2b83952a47732465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
