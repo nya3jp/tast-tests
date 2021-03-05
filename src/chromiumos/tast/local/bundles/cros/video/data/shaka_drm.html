@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <script src="third_party/shaka-player/shaka-player.compiled.debug.js"></script>
+  <script>
+    function play_shaka_drm(mpdPath) {
+      return new Promise((resolve, reject) => {
+        let video = document.getElementById('video');
+        let player = new shaka.Player(video);
+        window.player = player;
+
+        player.onerror = e => { return reject(e.error.ToString()); };
+        video.onerror = e => { return reject(e.error.ToString()); };
+        video.onended = () => { resolve();};
+
+        // Enable Widevine DRM w/ the UAT license servers and forcing L1 DRM.
+        player.configure({
+          drm: {
+            servers: {
+              'com.widevine.alpha': 'https://proxy.uat.widevine.com/proxy?provider=widevine_test&video_id=GTS_HW_SECURE_ALL'
+            },
+            advanced: {
+              'com.widevine.alpha': {
+                'videoRobustness': 'HW_SECURE_ALL',
+                'audioRobustness': 'SW_SECURE_CRYPTO'
+              }
+            }
+          }
+        });
+
+        player.load(mpdPath)
+          .then(() => {
+            console.log('Loaded url: ', mpdPath);
+          }).catch((e) => {
+            return reject(e.toString());
+          });
+      });
+    }
+
+  window.addEventListener("keydown", function(event) {
+    if (event.key == 'f')
+      document.getElementById('video').requestFullscreen();
+  });
+
+</script>
+
+  <body>
+    <video id="video" controls autoplay muted></video>
+  </body>
+</html>

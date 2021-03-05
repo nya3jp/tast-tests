@@ -179,6 +179,37 @@ To run these tests use:
 
     tast run $HOST video.Play.*
 
+## Play DRM Tests ('video.PlayDRM)
+
+The PlayDRM tests are for playing back HW DRM protected video and
+verifying all the supported codec + encryption scheme combinations.
+
+-The tests use MSE/EME w/ Shaka Player to playback the content. The content
+has the first 5 seconds as clear and the rest of the content is
+encrypted w/ the technique matching the test case. The clips are 16
+seconds long.
+
+-After playback is done, it goes fullscreen with the video and then takes
+a screenshot to verify the vast majority of the screen is solid black.
+With HW DRM, video screenshots will be solid black. It then also uses
+DevTools to verify the video pipeline is set up in a way that maps to HW
+DRM (i.e. video is encrypted, HW decoder is used and a decrypting
+demuxer is not used).
+
+-Tests are named with `CENCVersion_EncryptionScheme_Codec`
+
+-`CENCVersion` is either cencv1 (full sample encryption) or cencv3 (subsamples),
+cencv1 is only tested with h264 as that is the only codec that needs to support
+it
+
+-`EncryptionScheme` is either cbc (for cbcs) or ctr (for cenc)
+
+-`Codec` currently supports hevc, vp9 or h264
+
+To run these tests use:
+
+    tast run $HOST video.PlayDRM.*
+
 ### Play Performance Tests (`video.PlaybackPerf`)
 
 The video playback performance tests measure video decoder performance by
