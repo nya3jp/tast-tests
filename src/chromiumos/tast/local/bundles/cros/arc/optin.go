@@ -31,39 +31,42 @@ func init() {
 		Desc: "A functional test that verifies OptIn flow",
 		Contacts: []string{
 			"arc-core@google.com",
+			"mhasank@chromium.org",
 			"khmel@chromium.org", // author.
 		},
 		Attr: []string{"group:mainline"},
+		Vars: []string{"ui.gaiaPoolDefault"}, // TODO(mhasank): add VarDeps when supported.
+		SoftwareDeps: []string{
+			"chrome",
+			"chrome_internal",
+		},
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p", "chrome"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(optinUnstableModels...)),
 		}, {
 			Name:              "unstable",
-			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(optinUnstableModels...)),
 		}, {
 			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(optinUnstableModels...)),
 		}, {
 			Name:              "vm_unstable",
 			ExtraAttr:         []string{"informational"},
-			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(optinUnstableModels...)),
 		}},
 		Timeout: 4 * time.Minute,
-		Vars:    []string{"arc.Optin.username", "arc.Optin.password"},
 	})
 }
 
 func Optin(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("arc.Optin.username")
-	password := s.RequiredVar("arc.Optin.password")
-
 	// Setup Chrome.
 	cr, err := chrome.New(ctx, chrome.GAIALogin(),
-		chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(),
+		chrome.AuthPool(s.RequiredVar("ui.gaiaPoolDefault")),
+		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
