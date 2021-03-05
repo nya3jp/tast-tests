@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8945160_9ded9861",
+        "filename": "src/chromiumos/tast/services/cros/arc/ureadahead_pack_service.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-05T08:33:47Z",
+      "side": 0,
+      "message": "I assume removing is okay since only data_collector.go and ureadahead_pack_service.go uses it?",
+      "revId": "ae169147163af65754ba3d12d40b288cd5a823de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
