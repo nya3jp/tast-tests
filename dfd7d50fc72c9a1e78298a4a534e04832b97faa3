@@ -16,6 +16,29 @@
       "message": "+2 from hwsec side.",
       "revId": "dfd7d50fc72c9a1e78298a4a534e04832b97faa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f8e5ff_bcc78358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_key_eviction.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-05T11:46:11Z",
+      "side": 1,
+      "message": "This code repeats between your CLs. Please consider move it into a helper function.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "dfd7d50fc72c9a1e78298a4a534e04832b97faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
