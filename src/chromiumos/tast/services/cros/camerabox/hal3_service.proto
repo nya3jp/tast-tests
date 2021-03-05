@@ -48,6 +48,4 @@ message RunTestResponse {
   TestResult result = 1;
   // Error message from running test.
   string error = 2;
-  // Path to test output directory.
-  string out_path = 3;
 }
