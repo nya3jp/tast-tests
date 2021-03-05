@@ -337,25 +337,50 @@ func FlashFirmware(ctx context.Context, d *dut.DUT) error {
 	if err := d.Command(flashCmd[0], flashCmd[1:]...).Run(ctx); err != nil {
 		return errors.Wrap(err, "flash_fp_mcu failed")
 	}
-	testing.ContextLog(ctx, "Flashed FP firmware, now initializing the entropy")
+	return nil
+}
+
+// InitializeEntropy initializes the anti-rollback block in RO firmware.
+func InitializeEntropy(ctx context.Context, d *dut.DUT) error {
 	if err := d.Command("bio_wash", "--factory_init").Run(ctx); err != nil {
-		return errors.Wrap(err, "failed to initialize entropy after flashing FPMCU")
+		return errors.Wrap(err, "failed to initialize entropy")
+	}
+	return nil
+}
+
+// CheckFirmwareIsFunctional checks that the AP can talk to the FPMCU and get the version.
+func CheckFirmwareIsFunctional(ctx context.Context, d *dut.DUT) ([]byte, error) {
+	testing.ContextLog(ctx, "Checking firmware is functional")
+	versionCmd := []string{"ectool", "--name=cros_fp", "version"}
+	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(versionCmd))
+	return d.Command(versionCmd[0], versionCmd[1:]...).Output(ctx)
+}
+
+// ReimageFPMCU flashes the FPMCU completely and initializes entropy.
+func ReimageFPMCU(ctx context.Context, d *dut.DUT, pxy *servo.Proxy) error {
+	if err := pxy.Servo().SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
+		return errors.Wrap(err, "failed to disable HW write protect")
+	}
+	if err := FlashFirmware(ctx, d); err != nil {
+		return errors.Wrap(err, "failed to flash FP firmware")
+	}
+	testing.ContextLog(ctx, "Flashed FP firmware, now initializing the entropy")
+	if err := InitializeEntropy(ctx, d); err != nil {
+		return err
 	}
 	testing.ContextLog(ctx, "Entropy initialized, now rebooting to get seed")
 	if err := d.Reboot(ctx); err != nil {
 		return errors.Wrap(err, "failed to reboot DUT")
 	}
+	if err := pxy.Servo().SetFWWPState(ctx, servo.FWWPStateOn); err != nil {
+		return errors.Wrap(err, "failed to enable HW write protect")
+	}
 	return nil
 }
 
 // InitializeKnownState checks that the AP can talk to FPMCU. If not, it flashes the FPMCU.
-func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string) error {
-	// Check version and see if the FPMCU is in a good state.
-	versionCmd := []string{"ectool", "--name=cros_fp", "version"}
-	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(versionCmd))
-	out, err := d.Command(versionCmd[0], versionCmd[1:]...).Output(ctx)
-
-	if err == nil {
+func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string, pxy *servo.Proxy) error {
+	if out, err := CheckFirmwareIsFunctional(ctx, d); err == nil {
 		versionOutputFile := "cros_fp_version.txt"
 		testing.ContextLogf(ctx, "Writing FP firmware version to %s", versionOutputFile)
 		if err := ioutil.WriteFile(filepath.Join(outdir, versionOutputFile), out, 0644); err != nil {
@@ -363,10 +388,8 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string) error 
 			testing.ContextLog(ctx, "Failed to write FP firmware version to file: ", err)
 		}
 	} else {
-		testing.ContextLogf(ctx, "Failed to query FPMCU version (error: %v). Trying re-flashing FP firmware", err)
-		if err := FlashFirmware(ctx, d); err != nil {
-			return errors.Wrap(err, "failed to flash FP firmware")
-		}
+		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Trying re-flashing FP firmware", err)
+		return ReimageFPMCU(ctx, d, pxy)
 	}
 	return nil
 }
