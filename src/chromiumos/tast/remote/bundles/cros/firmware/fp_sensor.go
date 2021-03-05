@@ -9,6 +9,7 @@ import (
 	"regexp"
 
 	"chromiumos/tast/remote/firmware/fingerprint"
+	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/shutil"
@@ -29,12 +30,19 @@ func init() {
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
 		ServiceDeps:  []string{"tast.cros.platform.UpstartService"},
+		Vars:         []string{"servo"},
 	})
 }
 
 func FpSensor(ctx context.Context, s *testing.State) {
 	d := s.DUT()
-	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir()); err != nil {
+	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
+	if err != nil {
+		s.Fatal("Failed to connect to servo: ", err)
+	}
+	defer pxy.Close(ctx)
+
+	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
 
