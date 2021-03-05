@@ -94,6 +94,30 @@
       },
       "revId": "4a0d506c1ca5cd6bf03469018b7004db871b21c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad53975a_6a34eb7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-05T18:08:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8ea11b1f_914ca8cc",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 1
+      },
+      "revId": "4a0d506c1ca5cd6bf03469018b7004db871b21c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
