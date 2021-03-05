@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02f8467_8ca0a5d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-05T08:32:36Z",
+      "side": 1,
+      "message": "Sorry for confusion.  I had it earlier because I still needed to finish some testing.",
+      "parentUuid": "4c7ec6c3_a18895d5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "504ab912_f4df6ea3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-01T07:56:31Z",
       "side": 1,
       "message": "Calling os.Remove after os.Stat suffers from TOCTOU races. We can simply omit os.Stat calls.\n\n if err :\u003d os.Remove(packPath); err !\u003d nil \u0026\u0026 !os.IsNotExist(err) {\n   ...\n }",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 45
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "562fd9fa_67f0353b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-05T08:32:36Z",
+      "side": 1,
+      "message": "Great insight!  If I think about these as just OS lib calls, I guess os.Stat could be calling fstat() and os.Remove calls fclose() then unlink().  In this case there is a potential for a TOUTOC race which could allow for attack between the check and the deletion accesses.  Thanks!",
+      "parentUuid": "504ab912_f4df6ea3",
       "range": {
         "startLine": 90,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc8483c3_96f87ee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-05T08:32:36Z",
+      "side": 1,
+      "message": "This is copy from L196 from the code before my change.   I assume khmel@ wanted to shorten ctx for all consecutive calls except for cleanup.\n\nhttps://crrev.com/c/2721543/8/src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go#b196\n\nClean up in this case would be the defer calls from L145 and L158 in the previous code to stopUreadaheadTracing() if an error occurs (or it just gets called explicitly in L214) and to remove the previously set filter options.\n\nhttps://crrev.com/c/2721543/8/src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go#b145\n\nhttps://crrev.com/c/2721543/8/src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go#b158\n\nkhmel@ - Is the shortened context needed?",
+      "parentUuid": "89cf2a48_102fcbc0",
+      "range": {
+        "startLine": 128,
+        "startChar": 56,
+        "endLine": 128,
+        "endChar": 64
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c1bf29f_707bd973",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
         "patchSetId": 8
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-01T07:56:31Z",
       "side": 1,
       "message": "nit: We can remove this decl and use :\u003d below.",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 20
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40539869_dc1530f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-05T08:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c1bf29f_707bd973",
       "range": {
         "startLine": 197,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf6838bf_583869ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-05T08:32:36Z",
+      "side": 1,
+      "message": "Thanks for pointing this out and removed.",
+      "parentUuid": "e55d9d74_f02b976c",
+      "range": {
+        "startLine": 286,
+        "startChar": 18,
+        "endLine": 286,
+        "endChar": 24
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f147064_378fcdf4",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36f296e9_3c30cee5",
+        "filename": "src/chromiumos/tast/services/cros/arc/ureadahead_pack_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-05T08:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f147064_378fcdf4",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5aa1edf_a5106a33",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-03-03T17:56:09Z",
       "side": 1,
       "message": "to confirm that is only for logcat. If so, maybe use explicit file name to dump it to?",
+      "range": {
+        "startLine": 25,
+        "startChar": 23,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "255b5047_fc0921bf",
+        "filename": "src/chromiumos/tast/services/cros/arc/ureadahead_pack_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-05T08:32:36Z",
+      "side": 1,
+      "message": "nya@ pointed out I should use testing.ContextOutDir() for remote DUT side logs so this is no longer needed.",
+      "parentUuid": "f5aa1edf_a5106a33",
       "range": {
         "startLine": 25,
         "startChar": 23,
