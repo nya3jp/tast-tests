@@ -35,34 +35,48 @@ func init() {
 		Fixture: "chromePolicyLoggedIn",
 		Params: []testing.Param{
 			{
-				Name: "screen_magnifier",
+				Name: "caret_highlight",
 				Val: []accessibilityTestCase{
 					{
-						name:      "enabled-full-screen",
-						policyKey: "screenMagnifier",
+						name:      "enabled",
+						policyKey: "caretHighlight",
 						wantValue: true,
-						policies:  []policy.Policy{&policy.ScreenMagnifierType{Val: 1}},
-					},
-					{
-						// Value 2 for this policy is allowed but enables
-						// docked magnifier. Hence, the value for the
-						// 'screenMagnifier' key is expected to be false.
-						name:      "enabled-docker",
-						policyKey: "screenMagnifier",
-						wantValue: false, // Negative test case as this value applies to dockedMagnifier.
-						policies:  []policy.Policy{&policy.ScreenMagnifierType{Val: 2}},
+						policies:  []policy.Policy{&policy.CaretHighlightEnabled{Val: true}},
 					},
 					{
 						name:      "disabled",
-						policyKey: "screenMagnifier",
+						policyKey: "caretHighlight",
 						wantValue: false,
-						policies:  []policy.Policy{&policy.ScreenMagnifierType{Val: 0}},
+						policies:  []policy.Policy{&policy.CaretHighlightEnabled{Val: false}},
 					},
 					{
 						name:      "unset",
-						policyKey: "screenMagnifier",
+						policyKey: "caretHighlight",
 						wantValue: false,
-						policies:  []policy.Policy{&policy.ScreenMagnifierType{Stat: policy.StatusUnset}},
+						policies:  []policy.Policy{&policy.CaretHighlightEnabled{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
+				Name: "cursor_highlight",
+				Val: []accessibilityTestCase{
+					{
+						name:      "enabled",
+						policyKey: "cursorHighlight",
+						wantValue: true,
+						policies:  []policy.Policy{&policy.CursorHighlightEnabled{Val: true}},
+					},
+					{
+						name:      "disabled",
+						policyKey: "cursorHighlight",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.CursorHighlightEnabled{Val: false}},
+					},
+					{
+						name:      "unset",
+						policyKey: "cursorHighlight",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.CursorHighlightEnabled{Stat: policy.StatusUnset}},
 					},
 				},
 			},
@@ -145,71 +159,34 @@ func init() {
 				},
 			},
 			{
-				Name: "virtual_keyboard",
+				Name: "screen_magnifier",
 				Val: []accessibilityTestCase{
 					{
-						name:      "enabled",
-						policyKey: "virtualKeyboard",
+						name:      "enabled-full-screen",
+						policyKey: "screenMagnifier",
 						wantValue: true,
-						policies:  []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}},
+						policies:  []policy.Policy{&policy.ScreenMagnifierType{Val: 1}},
+					},
+					{
+						// Value 2 for this policy is allowed but enables
+						// docked magnifier. Hence, the value for the
+						// 'screenMagnifier' key is expected to be false.
+						name:      "enabled-docker",
+						policyKey: "screenMagnifier",
+						wantValue: false, // Negative test case as this value applies to dockedMagnifier.
+						policies:  []policy.Policy{&policy.ScreenMagnifierType{Val: 2}},
 					},
 					{
 						name:      "disabled",
-						policyKey: "virtualKeyboard",
+						policyKey: "screenMagnifier",
 						wantValue: false,
-						policies:  []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}},
+						policies:  []policy.Policy{&policy.ScreenMagnifierType{Val: 0}},
 					},
 					{
 						name:      "unset",
-						policyKey: "virtualKeyboard",
+						policyKey: "screenMagnifier",
 						wantValue: false,
-						policies:  []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}},
-					},
-				},
-			},
-			{
-				Name: "caret_highlight",
-				Val: []accessibilityTestCase{
-					{
-						name:      "enabled",
-						policyKey: "caretHighlight",
-						wantValue: true,
-						policies:  []policy.Policy{&policy.CaretHighlightEnabled{Val: true}},
-					},
-					{
-						name:      "disabled",
-						policyKey: "caretHighlight",
-						wantValue: false,
-						policies:  []policy.Policy{&policy.CaretHighlightEnabled{Val: false}},
-					},
-					{
-						name:      "unset",
-						policyKey: "caretHighlight",
-						wantValue: false,
-						policies:  []policy.Policy{&policy.CaretHighlightEnabled{Stat: policy.StatusUnset}},
-					},
-				},
-			},
-			{
-				Name: "cursor_highlight",
-				Val: []accessibilityTestCase{
-					{
-						name:      "enabled",
-						policyKey: "cursorHighlight",
-						wantValue: true,
-						policies:  []policy.Policy{&policy.CursorHighlightEnabled{Val: true}},
-					},
-					{
-						name:      "disabled",
-						policyKey: "cursorHighlight",
-						wantValue: false,
-						policies:  []policy.Policy{&policy.CursorHighlightEnabled{Val: false}},
-					},
-					{
-						name:      "unset",
-						policyKey: "cursorHighlight",
-						wantValue: false,
-						policies:  []policy.Policy{&policy.CursorHighlightEnabled{Stat: policy.StatusUnset}},
+						policies:  []policy.Policy{&policy.ScreenMagnifierType{Stat: policy.StatusUnset}},
 					},
 				},
 			},
@@ -279,6 +256,29 @@ func init() {
 						policyKey: "stickyKeys",
 						wantValue: false,
 						policies:  []policy.Policy{&policy.StickyKeysEnabled{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
+				Name: "virtual_keyboard",
+				Val: []accessibilityTestCase{
+					{
+						name:      "enabled",
+						policyKey: "virtualKeyboard",
+						wantValue: true,
+						policies:  []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}},
+					},
+					{
+						name:      "disabled",
+						policyKey: "virtualKeyboard",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}},
+					},
+					{
+						name:      "unset",
+						policyKey: "virtualKeyboard",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}},
 					},
 				},
 			},
