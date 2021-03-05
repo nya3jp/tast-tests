@@ -35,6 +35,29 @@ func init() {
 		Fixture: "chromePolicyLoggedIn",
 		Params: []testing.Param{
 			{
+				Name: "autoclick",
+				Val: []accessibilityTestCase{
+					{
+						name:      "enabled",
+						policyKey: "autoclick",
+						wantValue: true,
+						policies:  []policy.Policy{&policy.AutoclickEnabled{Val: true}},
+					},
+					{
+						name:      "disabled",
+						policyKey: "autoclick",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.AutoclickEnabled{Val: false}},
+					},
+					{
+						name:      "unset",
+						policyKey: "autoclick",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.AutoclickEnabled{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
 				Name: "caret_highlight",
 				Val: []accessibilityTestCase{
 					{
@@ -109,6 +132,29 @@ func init() {
 						policyKey: "dockedMagnifier",
 						wantValue: false,
 						policies:  []policy.Policy{&policy.ScreenMagnifierType{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
+				Name: "focus_highlight",
+				Val: []accessibilityTestCase{
+					{
+						name:      "enabled",
+						policyKey: "focusHighlight",
+						wantValue: true,
+						policies:  []policy.Policy{&policy.KeyboardFocusHighlightEnabled{Val: true}},
+					},
+					{
+						name:      "disabled",
+						policyKey: "focusHighlight",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.KeyboardFocusHighlightEnabled{Val: false}},
+					},
+					{
+						name:      "unset",
+						policyKey: "focusHighlight",
+						wantValue: false,
+						policies:  []policy.Policy{&policy.KeyboardFocusHighlightEnabled{Stat: policy.StatusUnset}},
 					},
 				},
 			},
