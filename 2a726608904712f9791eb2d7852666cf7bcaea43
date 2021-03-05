@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc37edf_70cf52dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T17:12:51Z",
+      "side": 1,
+      "message": "Jun, thanks for the detailed review. I have responses for some comments to clarify certain things. Please take a look. Other comments will be further addressed with code changes.",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5f4b824_48f9fcf2",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "I am interested in how much difference is observed between clamshell mode and tablet mode.  Did you find anything interesting?\nMy guess is no much performance difference on tab-switching.  If so I am wondering why we want to measure both scenarios.",
+      "range": {
+        "startLine": 45,
+        "startChar": 20,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9688cb5e_9723b9a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T17:12:51Z",
+      "side": 1,
+      "message": "The current tests strategy is, run clamshell cases on all Chromebooks if clamshell mode is supported, and run tablet cases on tablet-only models. We didn\u0027t run both cases on a single DUT which can support both modes. \n\nBut what you brought up is a good topic. I will ask the team to measure both test on a single DUT and let you know the result.",
+      "parentUuid": "f5f4b824_48f9fcf2",
       "range": {
         "startLine": 45,
         "startChar": 20,
@@ -467,6 +508,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4eee4b2_7364391f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T17:12:51Z",
+      "side": 1,
+      "message": "Jun, thanks for the explanation! The physical panel orientation and UI orientation mismatch confused the developers in the past and we thought it was a bug. We will change the comment message with your input.",
+      "parentUuid": "e06753c1_0b00fdf4",
+      "range": {
+        "startLine": 671,
+        "startChar": 51,
+        "endLine": 672,
+        "endChar": 51
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26d4e2d1_3494deb5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
         "patchSetId": 15
@@ -501,6 +566,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "286639f9_73a8ce5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T17:12:51Z",
+      "side": 1,
+      "message": "Jun, we have \"application switch\" metrics measured by cycle window UMAs. We are very cautious not triggering things that are not doable by end users in the main test scenario. I think we can discuss this topic together with Aings if alt-tab is okay on tablet.",
+      "parentUuid": "d41aa5c5_70be5734",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56743f52_ed47264a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
         "patchSetId": 15
@@ -518,6 +601,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ced010c_96dc2fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T17:12:51Z",
+      "side": 1,
+      "message": "Ctrl-tab is working but the only thing is that end user cannot trigger it on tablet. Tab switch is the main test scenario and we are not confident to ignore this UI procedure. I will let the team measure the performance difference, and we can discuss together with the Alt-tab topic.",
+      "parentUuid": "56743f52_ed47264a",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6454eb95_279bf234",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
         "patchSetId": 15
@@ -529,6 +630,24 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "similarly, can\u0027t we use keyboard to refresh?\nThis won\u0027t be in the main test scenario, so it won\u0027t affect the result numbers. Simpler one is better.",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2271f12_ca4b4dc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T17:12:51Z",
+      "side": 1,
+      "message": ":-) Let\u0027s discuss and agree on this one together with alt-tab and ctrl-tab.",
+      "parentUuid": "6454eb95_279bf234",
       "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

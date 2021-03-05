@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72cd7fee_ef34cf1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T17:12:51Z",
+      "side": 1,
+      "message": "The purpose for local mode is that it can be used for development and informal testing without manual setup of remote server, while remote mode will be used for formal benchmark testing.",
+      "parentUuid": "7beee6c6_a455697f",
+      "range": {
+        "startLine": 95,
+        "startChar": 32,
+        "endLine": 95,
+        "endChar": 37
+      },
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "082b2464_cabd17a1",
@@ -95,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e28c6980_deaafe72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T17:12:51Z",
+      "side": 1,
+      "message": "Could you be more specific Jun? Currently there is a common genparam function for all CUJs. IIUC, you prefer each CUJ has their own genparam logic and for this case, it can add some parameters (time, precondition, data) automatically when seeing some basic inputs (tier, remote or local). Can you confirm my understanding?",
+      "parentUuid": "5004da34_1da2f662",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 4
+      },
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1aef9c58_73305865",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder2.go",
         "patchSetId": 11
@@ -106,6 +154,30 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "Why is remote reply mode declared for Recorder?",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d9ed29_ff157181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T17:12:51Z",
+      "side": 1,
+      "message": "This is to simplify the remote server setup. Testers can just set up the remote proxy, run this recorder case with remote mode, and the content will be recorded in the proxy server. They can then continue to run the formal tests in replay mode with the remote proxy server.\nAnother approach is they run the recorder case in local remote. But in this case they need to copy recorded files over to the remote proxy server, which is not as convenient.",
+      "parentUuid": "1aef9c58_73305865",
       "range": {
         "startLine": 30,
         "startChar": 6,
@@ -411,6 +483,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "833db0bf_42b2922f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T17:12:51Z",
+      "side": 1,
+      "message": "Thanks Jun for this info. We just noticed a kernel panic on latest R89 release and your information explained.\n\nDo you mean we need to add DisableSystrace option and then remove it after the kernel panic problem resolved?",
+      "parentUuid": "faec9315_35475121",
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49e1bd75_d8a09569",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T17:12:51Z",
+      "side": 1,
+      "message": "We added more categories because we were not sure which categories to use to trace the issues as reported in the bug https://partnerissuetracker.corp.google.com/issues/175232416.",
+      "parentUuid": "0c6b7f71_154a6eab",
+      "range": {
+        "startLine": 304,
+        "startChar": 42,
+        "endLine": 304,
+        "endChar": 108
+      },
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3b774fa_5e77c1ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
         "patchSetId": 11
@@ -422,6 +536,30 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "wait, please explain this a bit more.  Which UMA requires tracing?\n\nI think the tracing\u0027s impact on performance should be minimal, but would like to know.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 2
+      },
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26d36d45_18019d00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-05T17:12:51Z",
+      "side": 1,
+      "message": "This is to trace the issue reported in https://partnerissuetracker.corp.google.com/issues/175232416. I think we should remove this now because trace has already provided.",
+      "parentUuid": "c3b774fa_5e77c1ce",
       "range": {
         "startLine": 302,
         "startChar": 0,
