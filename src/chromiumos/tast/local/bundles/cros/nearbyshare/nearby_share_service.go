@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/services/cros/nearbyservice"
 	"chromiumos/tast/testing"
@@ -41,6 +42,7 @@ type NearbyService struct {
 	receiverSurface *nearbyshare.ReceiveSurface
 	chromeReader    *syslog.LineReader
 	messageReader   *syslog.LineReader
+	fileNames       []string
 }
 
 // NewChromeLogin logs into Chrome with Nearby Share flags enabled.
@@ -67,19 +69,6 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.C
 		return nil, err
 	}
 	n.tconn = tconn
-
-	// Start collecting chrome and messages logs.
-	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to start Chrome logging")
-	}
-	messageReader, err := nearbytestutils.StartLogging(ctx, syslog.MessageFile)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed io start Message logging")
-	}
-	testing.ContextLog(ctx, "Started logging chrome and message logs")
-	n.chromeReader = chromeReader
-	n.messageReader = messageReader
 	return &empty.Empty{}, nil
 }
 
@@ -101,18 +90,6 @@ func (n *NearbyService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 			testing.ContextLog(ctx, "Closing ReceiveSurface failed: ", err)
 		}
 	}
-	if err := os.RemoveAll(nearbyshare.NearbyLogDir); err != nil {
-		testing.ContextLog(ctx, "Faied to delete nearby log dir: ", err)
-	}
-	if err := os.Mkdir(nearbyshare.NearbyLogDir, 0755); err != nil {
-		testing.ContextLog(ctx, "Faied to create tmp dir log: ", err)
-	}
-	if err := nearbytestutils.SaveLogs(ctx, n.chromeReader, filepath.Join(nearbyshare.NearbyLogDir, nearbyshare.ChromeLog)); err != nil {
-		testing.ContextLog(ctx, "Faied to save chrome log: ", err)
-	}
-	if err := nearbytestutils.SaveLogs(ctx, n.messageReader, filepath.Join(nearbyshare.NearbyLogDir, nearbyshare.MessageLog)); err != nil {
-		testing.ContextLog(ctx, "Faied to save message log: ", err)
-	}
 	err := n.cr.Close(ctx)
 	if err != nil {
 		testing.ContextLog(ctx, "Faied to close Chrome in Nearby Share service: ", err)
@@ -120,6 +97,40 @@ func (n *NearbyService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 		testing.ContextLog(ctx, "Nearby Share service closed successfully for: ", n.deviceName)
 	}
 	n.cr = nil
+	return &empty.Empty{}, err
+}
+
+// StartLogging starts logging at the start of a test.
+func (n *NearbyService) StartLogging(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to start Chrome logging")
+	}
+	messageReader, err := nearbytestutils.StartLogging(ctx, syslog.MessageFile)
+	if err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed io start Message logging")
+	}
+	testing.ContextLog(ctx, "Started logging chrome and message logs")
+	n.chromeReader = chromeReader
+	n.messageReader = messageReader
+	return &empty.Empty{}, err
+}
+
+// SaveLogs saves the chrome and messages logs on the DUT.
+func (n *NearbyService) SaveLogs(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	var err error
+	if err = os.RemoveAll(nearbyshare.NearbyLogDir); err != nil {
+		testing.ContextLog(ctx, "Faied to delete nearby log dir: ", err)
+	}
+	if err = os.Mkdir(nearbyshare.NearbyLogDir, 0755); err != nil {
+		testing.ContextLog(ctx, "Faied to create tmp dir log: ", err)
+	}
+	if err = nearbytestutils.SaveLogs(ctx, n.chromeReader, filepath.Join(nearbyshare.NearbyLogDir, nearbyshare.ChromeLog)); err != nil {
+		testing.ContextLog(ctx, "Faied to save chrome log: ", err)
+	}
+	if err = nearbytestutils.SaveLogs(ctx, n.messageReader, filepath.Join(nearbyshare.NearbyLogDir, nearbyshare.MessageLog)); err != nil {
+		testing.ContextLog(ctx, "Faied to save message log: ", err)
+	}
 	return &empty.Empty{}, err
 }
 
@@ -241,6 +252,7 @@ func (n *NearbyService) FilesHashes(ctx context.Context, req *nearbyservice.CrOS
 	if err != nil {
 		return nil, errors.Wrapf(err, "could not get hash of %s ", req.FileNames)
 	}
+	n.fileNames = req.FileNames
 	res.Hashes = hashes
 	return &res, nil
 }
@@ -257,6 +269,18 @@ func (n *NearbyService) AcceptIncomingShareNotificationAndWaitForCompletion(ctx 
 	testing.ContextLog(ctx, "Waiting for receiving-complete notification on CrOS receiver")
 	if err := nearbyshare.WaitForReceivingCompleteNotification(ctx, n.tconn, req.SenderName, nearbyshare.CrosDetectSenderTimeout); err != nil {
 		return nil, errors.Wrap(err, "failed waiting for notification to indicate sharing has completed on CrOS")
+	}
+	return &empty.Empty{}, nil
+}
+
+// ClearTransferredFiles clears the transferred files in the receivers Downloads folder.
+func (n *NearbyService) ClearTransferredFiles(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	for _, f := range n.fileNames {
+		filePath := filepath.Join(filesapp.DownloadPath, f)
+		testing.ContextLog(ctx, "file to delete: ", filePath)
+		if err := os.Remove(filePath); err != nil {
+			return nil, errors.Wrapf(err, "failed to remove %s from Downloads on receiver", filePath)
+		}
 	}
 	return &empty.Empty{}, nil
 }
