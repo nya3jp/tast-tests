@@ -70,6 +70,24 @@
       "parentUuid": "fd99c440_9be6d64b",
       "revId": "a89a0d173fffbe6f95e2fbe4e3440da7c026ed42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23975b77_cd71c211",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-05T18:09:49Z",
+      "side": 1,
+      "message": "Ching-Kang, how would you like to handle this?",
+      "parentUuid": "ebacfdc5_282b75e8",
+      "revId": "a89a0d173fffbe6f95e2fbe4e3440da7c026ed42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
