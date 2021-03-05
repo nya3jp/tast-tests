@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d892f9f7_d56a87f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-03-05T03:18:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fdebc11_e2484c4f",
+      "range": {
+        "startLine": 28,
+        "startChar": 39,
+        "endLine": 28,
+        "endChar": 52
+      },
+      "revId": "eea791ec5ff0357a7554f0c91ba65d8c08e2d1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed1d8cd9_725e9fb9",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1116c4_61df6dec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-03-05T03:18:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed1d8cd9_725e9fb9",
+      "revId": "eea791ec5ff0357a7554f0c91ba65d8c08e2d1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd450f43_68b59428",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-03-03T04:01:29Z",
       "side": 1,
       "message": "some might argue that this is only useful for the developer of this test. \n\nI personally think we can drop this verbosity as long as the test is stable enough.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "eea791ec5ff0357a7554f0c91ba65d8c08e2d1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1ecaa5_645d8932",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-03-05T03:18:40Z",
+      "side": 1,
+      "message": "As an ex-SRE, I can testify, I have never ever said \"I wish I had fewer logs\" :D",
+      "parentUuid": "dd450f43_68b59428",
       "range": {
         "startLine": 60,
         "startChar": 0,
