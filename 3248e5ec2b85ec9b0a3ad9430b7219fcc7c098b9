@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b867898f_a7526f59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-05T03:31:14Z",
+      "side": 1,
+      "message": "I recommend splitting the CL into two:\n\n1. a CL to add NormalizedUser\n2. one or more CL to rewrite callers of User\n\nso that, even if we happen to break some tests by CL 2, we don\u0027t need to revert CL 1.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "3248e5ec2b85ec9b0a3ad9430b7219fcc7c098b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c18710f_fc62f5f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-05T03:31:14Z",
+      "side": 1,
+      "message": "Could you check if we want to rewrite other User calls in arc/, camera/, hwsec/, security/, u2fd/, ui/? I took a look at them and found that they eventually call cryptohome.*Path, so I guess we want to use normalized user names there as well.\n\nThe only occurrence I was not very confident was session/ownership_taken.go, which compares the user name with a protobuf got via D-Bus IPC.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 47
+      },
+      "revId": "3248e5ec2b85ec9b0a3ad9430b7219fcc7c098b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b09252f_0a2f97c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-05T03:31:14Z",
+      "side": 1,
+      "message": "Sorry for delay...\n",
+      "revId": "3248e5ec2b85ec9b0a3ad9430b7219fcc7c098b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
