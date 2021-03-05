@@ -33,6 +33,24 @@
       "message": "Per offline discussion, cancelling revert as the test is disabled within chromium.",
       "revId": "9e035882471607d90181dd84c2c9ea30a05c1937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "558f9b30_c242e3a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1228384
+      },
+      "writtenOn": "2021-03-05T17:30:06Z",
+      "side": 1,
+      "message": "See https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1185176",
+      "parentUuid": "063ead8b_e08f332a",
+      "revId": "9e035882471607d90181dd84c2c9ea30a05c1937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
