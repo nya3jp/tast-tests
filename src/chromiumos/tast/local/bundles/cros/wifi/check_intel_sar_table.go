@@ -30,7 +30,7 @@ func init() {
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		// NB: The WifiIntel dependency tracks a manually maintained list of devices.
 		// If the test is skipping when it should run or vice versa, check the hwdep
 		// to see if your board is incorrectly included/excluded.
@@ -55,6 +55,7 @@ var badModels = []string{
 	"eldrid", // TODO(b/181034399): ACPI bug causing this test to fail.
 	"eve",    // TODO(b/181055964): Unique SAR table causes this test to fail.
 	"leona",  // TODO(b/181049667): Bad SAR table.
+	"meep",   // TODO(b/181887950): Bad GEO SAR table.
 }
 
 // sarTableType is an enum that accounts for the different kinds of SAR tables
