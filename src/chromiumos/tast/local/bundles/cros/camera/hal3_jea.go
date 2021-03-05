@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Verifies JPEG encode accelerator works in USB HALv3",
 		Contacts:     []string{"hywu@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-postsubmit", "group:camera-libcamera"},
-		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.HWEncodeJPEG, caps.BuiltinUSBCamera},
+		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.HWEncodeJPEG, caps.BuiltinCamera},
 		Pre:          chrome.LoggedIn(),
 	})
 }
