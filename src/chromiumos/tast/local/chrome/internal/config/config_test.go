@@ -5,35 +5,19 @@
 package config
 
 import (
-	"reflect"
 	"strings"
 	gotesting "testing"
 )
 
 func TestReuseTag(t *gotesting.T) {
-	cfg, _ := NewConfig(nil)
-	tp := reflect.TypeOf(cfg).Elem()
-	// Iterate over all available fields and verify the "reuse_match" tag value.
-	for i := 0; i < tp.NumField(); i++ {
-		field := tp.Field(i)
-
-		// Get the field tag.
-		reuseMatch := field.Tag.Get("reuse_match")
-
-		wanted := []string{"false", "true", "customized"}
-
-		found := false
-		for _, v := range wanted {
-			if v == reuseMatch {
-				found = true
-				break
-			}
-		}
-
-		if !found {
-			t.Errorf("reuse_match tag for field %q has unexpected value %q; want one of: %v", field.Name, reuseMatch, wanted)
-		}
+	cfg, err := NewConfig(nil)
+	if err != nil {
+		t.Fatalf("NewConfig failed: %v", err)
 	}
+
+	// In case of invalid reuse_match tag usage, VerifySessionReuse will
+	// panic. We're not interested in its return value.
+	_ = cfg.VerifySessionReuse(cfg)
 }
 
 func TestVerifySessionReuse(t *gotesting.T) {
