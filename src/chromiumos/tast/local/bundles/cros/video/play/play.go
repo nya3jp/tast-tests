@@ -21,6 +21,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/devtools"
@@ -38,6 +40,8 @@ const (
 	NormalVideo VideoType = iota
 	// MSEVideo represents a video requiring Media Source Extensions (MSE).
 	MSEVideo
+	// DRMVideo represents a video requiring Digital Rights Management (DRM).
+	DRMVideo
 )
 
 // VerifyHWAcceleratorMode represents a mode of TestPlay.
@@ -53,6 +57,9 @@ const (
 	// VerifyNoHWAcceleratorUsed is a mode that verifies a video is not played
 	// using a hardware accelerator, i.e. it's using software decoding.
 	VerifyNoHWAcceleratorUsed
+	// VerifyHWDRMUsed is a mode that verifies a video is played using a hardware
+	// accelerator with HW DRM protection.
+	VerifyHWDRMUsed
 )
 
 // This is how long we need to wait before taking a screenshot in the
@@ -60,10 +67,19 @@ const (
 // and to let the "Press Esc to exit full screen" message disappear.
 const delayToScreenshot = 7 * time.Second
 
-// MSEDataFiles returns a list of required files that tests that play MSE videos.
+// MSEDataFiles returns a list of required files for tests that play MSE videos.
 func MSEDataFiles() []string {
 	return []string{
 		"shaka.html",
+		"third_party/shaka-player/shaka-player.compiled.debug.js",
+		"third_party/shaka-player/shaka-player.compiled.debug.map",
+	}
+}
+
+// DRMDataFiles returns a list of required files for tests that play DRM videos.
+func DRMDataFiles() []string {
+	return []string{
+		"shaka_drm.html",
 		"third_party/shaka-player/shaka-player.compiled.debug.js",
 		"third_party/shaka-player/shaka-player.compiled.debug.map",
 	}
@@ -105,21 +121,7 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) (b
 		return false, err
 	}
 
-	// Sometimes observer doesn't supply the whole Media Player Properties set,
-	// especially when running Chrome on Guest mode. Experimentally, requesting
-	// the Properties again works fine.
-	var isPlatform bool
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		if isPlatform, _, err = devtools.GetVideoDecoder(ctx, observer, url); err == nil {
-			return nil
-		}
-		testing.ContextLogf(ctx, "DevTools might have not filled in the response correctly, trying again: %s", err.Error())
-		return errors.Wrap(err, "still waiting for DevTools to fill in the response")
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
-
-	if err != nil {
-		return false, errors.Wrap(err, "timeout waiting for DevTools to fill in Player Properties")
-	}
+	isPlatform, _, err := devtools.GetVideoDecoder(ctx, observer, url)
 	return isPlatform, err
 }
 
@@ -148,6 +150,73 @@ func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, url string) (
 
 	isPlatform, _, err := devtools.GetVideoDecoder(ctx, observer, url)
 	return isPlatform, err
+}
+
+// playDRMVideo plays a DRM-protected MSE video stream via Shaka player, and
+// checks its play progress. After it's done, it goes full screen and takes a
+// screenshot and verifies the contents are all black.
+// mpdFile is the name of MPD file for the video stream.
+// url is the URL of the shaka player webpage.
+func playDRMVideo(ctx context.Context, s *testing.State, cr *chrome.Chrome, mpdFile, url string) (bool, error) {
+	ctx, st := timing.Start(ctx, "play_drm_video")
+	defer st.End()
+
+	conn, err := loadPage(ctx, cr, url)
+	if err != nil {
+		return false, err
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	observer, err := conn.GetMediaPropertiesChangedObserver(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to retrieve a media DevTools observer")
+	}
+
+	if err := conn.Call(ctx, nil, "play_shaka_drm", mpdFile); err != nil {
+		return false, err
+	}
+
+	// Now go full screen, take a screenshot and verify it's all black.
+
+	// Make the video go to full screen mode by pressing 'f': requestFullScreen() needs a user gesture.
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to initialize the keyboard writer")
+	}
+	defer ew.Close()
+	if err := ew.Type(ctx, "f"); err != nil {
+		return false, errors.Wrap(err, "failed to inject the 'f' key")
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to connect to test API")
+	}
+	defer tconn.Close()
+
+	if err := ash.WaitForFullScreen(ctx, tconn); err != nil {
+		return false, errors.Wrap(err, "failed waiting for full screen")
+	}
+
+	// Take the screenshot, we don't need to wait because we are only verifying
+	// that the vast majority is black, so things like 'hit Esc to exist full screen'
+	// won't be an issue.
+	im, err := screenshot.GrabScreenshot(ctx, cr)
+	if err != nil {
+		return false, errors.Wrap(err, "failed taking screenshot")
+	}
+
+	// Verify that over 95% of the image is solid black. This is true because for
+	// HW DRM, you cannot actually screenshot the video and it will be replaced by
+	// solid black in the compositor.
+	color, ratio := colorcmp.DominantColor(im)
+	if ratio < 0.95 || !colorcmp.ColorsMatch(color, colorcmp.RGB(0, 0, 0), 1) {
+		return false, errors.Errorf("screenshot did not have solid black, instead got %v at ratio %0.2f",
+			colorcmp.ColorStr(color), ratio)
+	}
+
+	return devtools.CheckHWDRMPipeline(ctx, observer, url)
 }
 
 // seekVideoRepeatedly seeks video numSeeks times.
@@ -261,8 +330,8 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	defer server.Close()
 
 	var playErr error
-	var usesPlatformVideoDecoder bool
 	var url string
+	usesPlatformVideoDecoder, isHwDrmPipeline := false, false
 	switch videotype {
 	case NormalVideo:
 		url = server.URL + "/video.html"
@@ -270,6 +339,9 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	case MSEVideo:
 		url = server.URL + "/shaka.html"
 		usesPlatformVideoDecoder, playErr = playMSEVideo(ctx, cr, filename, url)
+	case DRMVideo:
+		url = server.URL + "/shaka_drm.html"
+		isHwDrmPipeline, playErr = playDRMVideo(ctx, s, cr, filename, url)
 	}
 	if playErr != nil {
 		return errors.Wrapf(err, "failed to play %v (%v): %v", filename, url, playErr)
@@ -285,6 +357,9 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 	if mode == VerifyNoHWAcceleratorUsed && usesPlatformVideoDecoder {
 		return errors.New("software decoding was not used when it was expected to")
+	}
+	if mode == VerifyHWDRMUsed && !isHwDrmPipeline {
+		return errors.New("HW DRM video pipeline was not used when it was expected to")
 	}
 	return nil
 }

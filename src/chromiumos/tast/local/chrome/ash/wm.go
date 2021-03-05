@@ -348,6 +348,13 @@ func WaitWindowFinishAnimating(ctx context.Context, tconn *chrome.TestConn, wind
 	}, defaultPollOptions)
 }
 
+// WaitForFullScreen waits until any window that exists is in the full screen state.
+func WaitForFullScreen(ctx context.Context, tconn *chrome.TestConn) error {
+	return WaitForCondition(ctx, tconn, func(window *Window) bool {
+		return window.State == WindowStateFullscreen
+	}, defaultPollOptions)
+}
+
 // WaitForCondition waits for a window to satisfy the given predicate.
 func WaitForCondition(ctx context.Context, tconn *chrome.TestConn, predicate func(window *Window) bool, pollOptions *testing.PollOptions) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
