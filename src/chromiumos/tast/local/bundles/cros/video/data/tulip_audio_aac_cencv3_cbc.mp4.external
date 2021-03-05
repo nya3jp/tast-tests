@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/tulip_audio_aac_cencv3_cbc_20210305.mp4",
+  "size": 277156,
+  "sha256sum": "d924de0aeef6f807270a7414ebd9cae2a8393c6b66c251828731547e5d6ffca5"
+}
