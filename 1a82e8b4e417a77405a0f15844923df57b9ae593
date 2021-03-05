@@ -16,6 +16,23 @@
       "message": "Wanted to try CL dependency very badly :D \n\nPlease take a look",
       "revId": "1a82e8b4e417a77405a0f15844923df57b9ae593",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "995944dc_035e4d89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-05T11:33:09Z",
+      "side": 1,
+      "message": "I know autoclick is covered. Just wanted to make the check in the chrome.accessibility map",
+      "revId": "1a82e8b4e417a77405a0f15844923df57b9ae593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
