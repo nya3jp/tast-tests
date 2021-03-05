@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const defaultTimeout = 30 * time.Second
+
 // Helper fetches Cellular Device and Service properties.
 type Helper struct {
 	Manager *shill.Manager
@@ -60,7 +62,7 @@ func (h *Helper) waitForEnabled(ctx context.Context, expected bool) error {
 		}
 		return nil
 	}, &testing.PollOptions{
-		Timeout:  3 * time.Second,
+		Timeout:  defaultTimeout,
 		Interval: 100 * time.Millisecond,
 	})
 }
@@ -72,11 +74,11 @@ func (h *Helper) Enable(ctx context.Context) error {
 	if err := h.waitForEnabled(ctx, true); err != nil {
 		return err
 	}
-	if err := h.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyPowered, true, 3*time.Second); err != nil {
+	if err := h.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyPowered, true, defaultTimeout); err != nil {
 		return err
 	}
 	// Cellular scanning can take up to 30 seconds to complete.
-	return h.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyScanning, false, 30*time.Second)
+	return h.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyScanning, false, defaultTimeout)
 }
 
 // Disable calls Manager.DisableTechnology(cellular) and returns true if the disable succeeded, or an error otherwise.
@@ -86,7 +88,7 @@ func (h *Helper) Disable(ctx context.Context) error {
 	if err := h.waitForEnabled(ctx, false); err != nil {
 		return err
 	}
-	err := h.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyPowered, false, 3*time.Second)
+	err := h.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyPowered, false, defaultTimeout)
 	// Operations (i.e. Enable) called immediately after disabling can fail.
 	// TODO(b/177588333): Fix instead of sleeping here.
 	testing.Sleep(ctx, 1000*time.Millisecond)
@@ -101,7 +103,7 @@ func (h *Helper) FindService(ctx context.Context) (*shill.Service, error) {
 		shillconst.ServicePropertyConnectable: true,
 		shillconst.ServicePropertyType:        shillconst.TypeCellular,
 	}
-	return h.Manager.WaitForServiceProperties(ctx, cellularProperties, 5*time.Second)
+	return h.Manager.WaitForServiceProperties(ctx, cellularProperties, defaultTimeout)
 }
 
 // FindServiceForDevice returns the first connectable Cellular Service matching the Device ICCID.
@@ -123,7 +125,7 @@ func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, erro
 		shillconst.ServicePropertyConnectable:   true,
 		shillconst.ServicePropertyType:          shillconst.TypeCellular,
 	}
-	service, err := h.Manager.WaitForServiceProperties(ctx, props, 5*time.Second)
+	service, err := h.Manager.WaitForServiceProperties(ctx, props, defaultTimeout)
 	if err != nil {
 		return nil, errors.Wrapf(err, "Service not found for: %+v", props)
 	}
@@ -170,7 +172,7 @@ func (h *Helper) Connect(ctx context.Context) error {
 	if err := service.Connect(ctx); err != nil {
 		return err
 	}
-	return service.WaitForShillProperty(ctx, shillconst.ServicePropertyIsConnected, true, 6*time.Second)
+	return service.WaitForShillProperty(ctx, shillconst.ServicePropertyIsConnected, true, defaultTimeout)
 }
 
 // Disconnect from the Cellular Service and ensure that the disconnect succeeded, otherwise return an error.
@@ -182,5 +184,5 @@ func (h *Helper) Disconnect(ctx context.Context) error {
 	if err := service.Disconnect(ctx); err != nil {
 		return err
 	}
-	return service.WaitForShillProperty(ctx, shillconst.ServicePropertyIsConnected, false, 6*time.Second)
+	return service.WaitForShillProperty(ctx, shillconst.ServicePropertyIsConnected, false, defaultTimeout)
 }
