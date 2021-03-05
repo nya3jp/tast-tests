@@ -10,7 +10,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/media/caps"
@@ -145,23 +144,12 @@ func HAL3Remote(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	// Reserve extra time for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
 	// Run remote test on DUT.
 	hal3Client := pb.NewHAL3ServiceClient(cl.Conn)
 	response, err := hal3Client.RunTest(ctx, runTestRequest)
 	if err != nil {
 		s.Fatal("Remote call RunTest() failed: ", err)
 	}
-	// Assert err is nil then response should not be nil.
-	defer func() {
-		if err := d.Conn().Command("rm", "-r", response.OutPath).Start(cleanupCtx); err != nil {
-			s.Errorf("Failed to cleanup remote output directory %q from DUT: %v", response.OutPath, err)
-		}
-	}()
 
 	// Check test result.
 	switch response.Result {
@@ -170,12 +158,6 @@ func HAL3Remote(ctx context.Context, s *testing.State) {
 		s.Error("Remote test failed with error message:", response.Error)
 	case pb.TestResult_TEST_RESULT_UNSET:
 		s.Error("Remote test result is unset")
-	}
-
-	// Collect logs.
-	logPath := path.Join(s.OutDir(), "test")
-	if err := linuxssh.GetFile(ctx, d.Conn(), response.OutPath, logPath); err != nil {
-		s.Errorf("Failed to get remote output directory %q from DUT: %v", response.OutPath, err)
 	}
 }
 

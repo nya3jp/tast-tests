@@ -5,9 +5,6 @@
 package camera
 
 import (
-	"io/ioutil"
-	"os"
-
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
@@ -45,21 +42,13 @@ var getTestConfigMap = map[cameraboxpb.HAL3CameraTest]getTestConfig{
 }
 
 func (c *HAL3Service) RunTest(ctx context.Context, req *cameraboxpb.RunTestRequest) (_ *cameraboxpb.RunTestResponse, retErr error) {
-	outDir, err := createOutDir(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create remote output directory")
-	}
-	defer func() {
-		if retErr != nil && len(outDir) > 0 {
-			if err := os.Remove(outDir); err != nil {
-				testing.ContextLog(ctx, "Failed to remove temp output directory in error cleanup: ", err)
-			}
-		}
-	}()
-
 	getTestConfig, ok := getTestConfigMap[req.Test]
 	if !ok {
 		return nil, errors.Errorf("failed to run unknown test %v", req.Test)
+	}
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return nil, errors.New("failed to get remote output directory")
 	}
 	cfg := getTestConfig(outDir)
 	switch req.Facing {
@@ -72,7 +61,7 @@ func (c *HAL3Service) RunTest(ctx context.Context, req *cameraboxpb.RunTestReque
 	}
 	cfg.CameraHALs = []string{}
 
-	result := cameraboxpb.RunTestResponse{OutPath: outDir}
+	result := cameraboxpb.RunTestResponse{}
 	if testErr := hal3.RunTest(ctx, cfg); testErr == nil {
 		result.Result = cameraboxpb.TestResult_TEST_RESULT_PASSED
 	} else {
@@ -80,27 +69,4 @@ func (c *HAL3Service) RunTest(ctx context.Context, req *cameraboxpb.RunTestReque
 		result.Error = testErr.Error()
 	}
 	return &result, nil
-}
-
-func createOutDir(ctx context.Context) (_ string, retErr error) {
-	outDir, err := ioutil.TempDir("", "hal3_outdir_")
-	if err != nil {
-		return "", errors.Wrap(err, "failed to create temp output directory")
-	}
-	defer func() {
-		if retErr != nil {
-			if err := os.Remove(outDir); err != nil {
-				testing.ContextLog(ctx, "Failed to remove temp directory in error cleanup: ", err)
-			}
-		}
-	}()
-
-	uid, err := hal3.ArcCameraUID()
-	if err != nil {
-		return "", err
-	}
-	if err := os.Chown(outDir, uid, -1); err != nil {
-		return "", errors.Wrapf(err, "failed to chown temp output directory %v to arc-camera", outDir)
-	}
-	return outDir, nil
 }
