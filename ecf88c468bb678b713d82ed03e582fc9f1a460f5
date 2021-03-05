@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca4db8d1_32816d06",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9f2b4ad_7aa15e3c",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2000b727_e91aa033",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-04T10:12:20Z",
       "side": 1,
       "message": "nit: it makes sense to wrap this line to ~80 characters",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 96
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a28dc1_8157d310",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2000b727_e91aa033",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e733e4e0_7686f83d",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b5476af_1c67ad08",
+      "range": {
+        "startLine": 47,
+        "startChar": 59,
+        "endLine": 48,
+        "endChar": 42
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b315a967_163b6907",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-04T10:12:20Z",
       "side": 1,
       "message": "in many places we just store regexps as global variables \"var\" for package:\n\nhttps://source.chromium.org/search?q\u003dregexp.MustCompile%20tast-tests\u0026sq\u003d\n\n\nAlso for each regexp please add example of valid strings",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95dc64f2_6fd9c465",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b315a967_163b6907",
       "range": {
         "startLine": 50,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd533b2_5332b32c",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cddb5b3a_f3df00f5",
+      "range": {
+        "startLine": 57,
+        "startChar": 66,
+        "endLine": 57,
+        "endChar": 73
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7eec4849_225f6952",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f07f65_c86d7291",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eec4849_225f6952",
+      "range": {
+        "startLine": 58,
+        "startChar": 57,
+        "endLine": 58,
+        "endChar": 70
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8abdbe18_18e21f11",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-03-04T10:12:20Z",
       "side": 1,
       "message": "to be safe, let\u0027s use strconv.ParseInt(s, 10, 32) instead",
+      "range": {
+        "startLine": 65,
+        "startChar": 13,
+        "endLine": 65,
+        "endChar": 25
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd38054_b26364e2",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8abdbe18_18e21f11",
       "range": {
         "startLine": 65,
         "startChar": 13,
@@ -225,6 +393,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f86b8ead_513483c9",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5143aca_ffeb286d",
+      "range": {
+        "startLine": 75,
+        "startChar": 43,
+        "endLine": 75,
+        "endChar": 56
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ffd7a3d_3dce1b85",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "ioutil.ReadFile only works on local test, and we may want to run this helper in the remote test. I thinks we shouldn\u0027t read this file directly from Go here.",
+      "parentUuid": "16c36dc3_3a469923",
+      "range": {
+        "startLine": 75,
+        "startChar": 31,
+        "endLine": 75,
+        "endChar": 34
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ad50a9e_3b0e22fa",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-03-04T10:12:20Z",
       "side": 1,
       "message": "It\u0027s much simpler and less error prone to don\u0027t specify capacity unless you will get really performance boost which is probably not our case\n\n```\nvar res []disk.PartitionStat\n```",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc39e424_b54ac647",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ad50a9e_3b0e22fa",
       "range": {
         "startLine": 82,
         "startChar": 1,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc1f00c_2b7c4210",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b817732_52962337",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1c1f83a_82506444",
@@ -284,6 +548,30 @@
       "writtenOn": "2021-03-04T10:12:20Z",
       "side": 1,
       "message": "check if fields has 4 elements",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 33
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ac8148_bc81c86b",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1c1f83a_82506444",
       "range": {
         "startLine": 85,
         "startChar": 2,
@@ -317,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24723d7e_3f08c479",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2be3e18_ff6f2159",
+      "range": {
+        "startLine": 122,
+        "startChar": 27,
+        "endLine": 122,
+        "endChar": 71
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc783e9d_ff4be213",
@@ -330,6 +642,30 @@
       "writtenOn": "2021-03-04T10:12:20Z",
       "side": 1,
       "message": "nit: maybe \"does not\" fits better here?",
+      "range": {
+        "startLine": 145,
+        "startChar": 40,
+        "endLine": 145,
+        "endChar": 46
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62471b57_96e0c634",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc783e9d_ff4be213",
       "range": {
         "startLine": 145,
         "startChar": 40,
@@ -363,6 +699,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3aa8669_5921325b",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1815877_4d3e24e9",
+      "range": {
+        "startLine": 158,
+        "startChar": 30,
+        "endLine": 158,
+        "endChar": 39
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96d99984_56ac2e29",
@@ -376,6 +736,30 @@
       "writtenOn": "2021-03-04T10:12:20Z",
       "side": 1,
       "message": "there are so many ways to fail for this method, it will be easier to investigate issue if you wrap errors and give more context what failed",
+      "range": {
+        "startLine": 169,
+        "startChar": 16,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afeb4a5f_79caa78a",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96d99984_56ac2e29",
       "range": {
         "startLine": 169,
         "startChar": 16,
@@ -432,6 +816,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "073e5abb_5b8e31a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62b8636f_a1b370e7",
+      "range": {
+        "startLine": 31,
+        "startChar": 96,
+        "endLine": 31,
+        "endChar": 109
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "851e94e7_6465aa07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa3abf69_6380e520",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c5a543c_c083172e",
@@ -445,6 +877,30 @@
       "writtenOn": "2021-03-04T10:12:20Z",
       "side": 1,
       "message": "I\u0027d remove it and return error always when \"err !\u003d nil\"\n\nif you want ignore error in some cases, you must explicitly check if error equals to expected error",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6e3a18f_9ca91058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c5a543c_c083172e",
       "range": {
         "startLine": 33,
         "startChar": 4,
@@ -478,6 +934,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0d05bc_4d1842f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94719458_8b1d7e60",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "183c9c9e_7a3ae8b8",
@@ -491,6 +971,30 @@
       "writtenOn": "2021-03-04T10:12:20Z",
       "side": 1,
       "message": "nit: this can be Error",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bdffbc2_1d7a7909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "183c9c9e_7a3ae8b8",
       "range": {
         "startLine": 67,
         "startChar": 5,
@@ -524,6 +1028,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cae698f_d351187c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84f09809_408573d9",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d1e5543_cb63fe9c",
@@ -537,6 +1065,30 @@
       "writtenOn": "2021-03-04T10:12:20Z",
       "side": 1,
       "message": "nit: Error",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 9
+      },
+      "revId": "ecf88c468bb678b713d82ed03e582fc9f1a460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9091b039_4c00ecee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-05T09:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1e5543_cb63fe9c",
       "range": {
         "startLine": 116,
         "startChar": 4,
