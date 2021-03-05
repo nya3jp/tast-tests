@@ -39,6 +39,30 @@
       },
       "revId": "7300942630b8c6aabdbb25be9b70bf8dca94565e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97fe201f_411739bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-05T00:33:34Z",
+      "side": 1,
+      "message": "Done. Thanks for the review!",
+      "parentUuid": "127072e5_7d031277",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "7300942630b8c6aabdbb25be9b70bf8dca94565e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
