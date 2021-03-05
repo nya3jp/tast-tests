@@ -39,6 +39,30 @@
       },
       "revId": "4ae397c0dd3c68f1b8122cdcf56c3c300cd1caf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea3066d_14a300de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-03-05T01:22:25Z",
+      "side": 1,
+      "message": "This time is to let storage device to finish all pending operations. Unfortunately, there\u0027s no better way to check if the device has finished, so we simply allow enough time. This sleep is the same for all devices and boards.",
+      "parentUuid": "3d140d94_45e0e614",
+      "range": {
+        "startLine": 166,
+        "startChar": 21,
+        "endLine": 166,
+        "endChar": 26
+      },
+      "revId": "4ae397c0dd3c68f1b8122cdcf56c3c300cd1caf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
