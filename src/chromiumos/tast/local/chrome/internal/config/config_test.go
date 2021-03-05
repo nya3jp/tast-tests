@@ -38,6 +38,7 @@ func TestReuseTag(t *gotesting.T) {
 
 func TestVerifySessionReuse(t *gotesting.T) {
 	checkErrorContains := func(err error, keyWord string) {
+		t.Helper()
 		if err == nil {
 			t.Errorf("No error is given when key word %q is expected", keyWord)
 			return
@@ -64,7 +65,7 @@ func TestVerifySessionReuse(t *gotesting.T) {
 	if err == nil {
 		t.Error("Reuse should not be allowed with different User values")
 	} else {
-		checkErrorContains(err, "User")
+		checkErrorContains(err, "Creds")
 	}
 
 	cfg1, _ = NewConfig(nil)

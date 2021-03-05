@@ -121,6 +121,9 @@ type Chrome struct {
 	loginPending bool // true if login is pending until ContinueLogin is called
 }
 
+// Creds returns credentials used to log into a session.
+func (c *Chrome) Creds() Creds { return c.cfg.Creds }
+
 // User returns the username that was used to log in to Chrome.
 func (c *Chrome) User() string { return c.cfg.Creds.User }
 

@@ -31,7 +31,7 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 
 	switch cfg.LoginMode {
 	case config.FakeLogin:
-		if err := conn.Call(ctx, nil, "Oobe.loginForTesting", cfg.Creds.User, cfg.Creds.Pass, cfg.GAIAID, cfg.Enroll); err != nil {
+		if err := conn.Call(ctx, nil, "Oobe.loginForTesting", cfg.Creds.User, cfg.Creds.Pass, cfg.Creds.GAIAID, cfg.Enroll); err != nil {
 			return err
 		}
 	case config.GAIALogin:
