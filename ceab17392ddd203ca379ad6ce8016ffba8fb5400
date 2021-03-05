@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa0de727_90d45388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-05T21:18:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f75637e0_df96c9b0",
+      "revId": "ceab17392ddd203ca379ad6ce8016ffba8fb5400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bce560ad_97fcba26",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-05T19:51:14Z",
       "side": 1,
       "message": "ditto",
+      "revId": "ceab17392ddd203ca379ad6ce8016ffba8fb5400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4055463_73a33db2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-05T21:18:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bce560ad_97fcba26",
       "revId": "ceab17392ddd203ca379ad6ce8016ffba8fb5400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
