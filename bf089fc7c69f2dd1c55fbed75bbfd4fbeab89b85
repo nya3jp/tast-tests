@@ -16,6 +16,24 @@
       "message": "As per suggestion. I think this could be a rule of thumb in general - when tests are run the results are presented in alphabetical order.",
       "revId": "bf089fc7c69f2dd1c55fbed75bbfd4fbeab89b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "440a4a15_16923de3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-05T11:24:38Z",
+      "side": 1,
+      "message": "Can a linter rule be added to make sure this is enforced?",
+      "parentUuid": "4e14acd8_0c5af550",
+      "revId": "bf089fc7c69f2dd1c55fbed75bbfd4fbeab89b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
