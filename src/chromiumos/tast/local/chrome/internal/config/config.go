@@ -8,6 +8,7 @@ package config
 import (
 	"encoding/json"
 	"reflect"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/session"
@@ -19,7 +20,7 @@ const (
 
 	// DefaultPass contains the password we use to log into the DefaultUser account.
 	DefaultPass   = "testpass"
-	defaultGaiaID = "gaia-id"
+	defaultGAIAID = "gaia-id"
 )
 
 // ARCMode describes the mode that ARC should be put into.
@@ -53,6 +54,72 @@ const (
 	ContactAuth  AuthType = "contact"  // contact email approval based authentication
 )
 
+// Creds contains credentials to log into a Chrome user session.
+type Creds struct {
+	// User is the user name of a user account. It is typically an email
+	// address (e.g. example@gmail.com). Required.
+	User string
+	// Pass is the password of a user account. Required.
+	Pass string
+
+	// GAIAID is a GAIA ID used on fake logins. The field is ignored on
+	// other type of logins.
+	GAIAID string
+
+	// Contact is an email address of a user who owns a test account.
+	// When logging in with a test account, a contact user is notified
+	// of a login attempt and is asked whether to grant it.
+	// This field can be left blank when using a test account with
+	// password lifetime exceptions.
+	Contact string
+
+	// ParentUser is the user name of a parent account. It is used to
+	// approve a login attempt when a user account is supervised by a
+	// parent account.
+	// This field can be left blank if a user account is not supervised.
+	ParentUser string
+	// ParentPass is the pass of a parent account. It is used to approve
+	// a login attempt when a user account is supervised by a parent
+	// account.
+	// This field can be left blank if a user account is not supervised.
+	ParentPass string
+}
+
+// defaultCreds is the default credentials used for fake logins.
+var defaultCreds = Creds{
+	User:   DefaultUser,
+	Pass:   DefaultPass,
+	GAIAID: defaultGAIAID,
+}
+
+// ParseCreds parses a string containing a list of credentials.
+//
+// creds is a string containing multiple credentials separated by newlines:
+//  user1:pass1
+//  user2:pass2
+//  user3:pass3
+//  ...
+func ParseCreds(creds string) ([]Creds, error) {
+	// Note: Do not include creds in error messages to avoid accidental
+	// credential leaks in logs.
+	var cs []Creds
+	for i, line := range strings.Split(creds, "\n") {
+		line = strings.TrimSpace(line)
+		if len(line) == 0 || strings.HasPrefix(line, "#") {
+			continue
+		}
+		ps := strings.SplitN(line, ":", 2)
+		if len(ps) != 2 {
+			return nil, errors.Errorf("failed to parse credential list: line %d: does not contain a colon", i+1)
+		}
+		cs = append(cs, Creds{
+			User: ps[0],
+			Pass: ps[1],
+		})
+	}
+	return cs, nil
+}
+
 // Config contains configurations for chrome.Chrome instance as requested by
 // options to chrome.New.
 //
@@ -68,23 +135,22 @@ const (
 // - "customized": Reuse checking logic is expected to be customized in customizedReuseCheck() function.
 // This tag must be set for every field with one of the above values. Otherwise, unit test will fail.
 type Config struct {
-	User, Pass, GAIAID, Contact string    `reuse_match:"true"` // login credentials
-	NormalizedUser              string    `reuse_match:"true"` // user with domain added, periods removed, etc.
-	ParentUser, ParentPass      string    `reuse_match:"true"` // unicorn parent login credentials
-	KeepState                   bool      `reuse_match:"false"`
-	DeferLogin                  bool      `reuse_match:"customized"`
-	LoginMode                   LoginMode `reuse_match:"customized"`
-	TryReuseSession             bool      `reuse_match:"false"` // try to reuse existing login session if configuration matches
-	EnableLoginVerboseLogs      bool      `reuse_match:"true"`  // enable verbose logging in some login related files
-	VKEnabled                   bool      `reuse_match:"true"`
-	SkipOOBEAfterLogin          bool      `reuse_match:"false"` // skip OOBE post user login
-	InstallWebApp               bool      `reuse_match:"true"`  // auto install essential apps after user login
-	Region                      string    `reuse_match:"true"`
-	PolicyEnabled               bool      `reuse_match:"true"` // flag to enable policy fetch
-	DMSAddr                     string    `reuse_match:"true"` // Device Management URL, or empty if using default
-	Enroll                      bool      `reuse_match:"true"` // whether device should be enrolled
-	ARCMode                     ARCMode   `reuse_match:"true"`
-	RestrictARCCPU              bool      `reuse_match:"true"` // a flag to control cpu restrictions on ARC
+	Creds                  Creds     `reuse_match:"true"` // login credentials
+	NormalizedUser         string    `reuse_match:"true"` // user with domain added, periods removed, etc.
+	KeepState              bool      `reuse_match:"false"`
+	DeferLogin             bool      `reuse_match:"customized"`
+	LoginMode              LoginMode `reuse_match:"customized"`
+	TryReuseSession        bool      `reuse_match:"false"` // try to reuse existing login session if configuration matches
+	EnableLoginVerboseLogs bool      `reuse_match:"true"`  // enable verbose logging in some login related files
+	VKEnabled              bool      `reuse_match:"true"`
+	SkipOOBEAfterLogin     bool      `reuse_match:"false"` // skip OOBE post user login
+	InstallWebApp          bool      `reuse_match:"true"`  // auto install essential apps after user login
+	Region                 string    `reuse_match:"true"`
+	PolicyEnabled          bool      `reuse_match:"true"` // flag to enable policy fetch
+	DMSAddr                string    `reuse_match:"true"` // Device Management URL, or empty if using default
+	Enroll                 bool      `reuse_match:"true"` // whether device should be enrolled
+	ARCMode                ARCMode   `reuse_match:"true"`
+	RestrictARCCPU         bool      `reuse_match:"true"` // a flag to control cpu restrictions on ARC
 
 	// If BreakpadTestMode is true, tell Chrome's breakpad to always write
 	// dumps directly to a hardcoded directory.
@@ -107,9 +173,7 @@ type Option func(cfg *Config) error
 // NewConfig constructs Config from a list of options given to chrome.New.
 func NewConfig(opts []Option) (*Config, error) {
 	cfg := &Config{
-		User:                   DefaultUser,
-		Pass:                   DefaultPass,
-		GAIAID:                 defaultGaiaID,
+		Creds:                  defaultCreds,
 		KeepState:              false,
 		LoginMode:              FakeLogin,
 		VKEnabled:              false,
@@ -134,11 +198,11 @@ func NewConfig(opts []Option) (*Config, error) {
 	// This works around https://crbug.com/358427.
 	if cfg.LoginMode == GAIALogin {
 		var err error
-		if cfg.NormalizedUser, err = session.NormalizeEmail(cfg.User, true); err != nil {
-			return nil, errors.Wrapf(err, "failed to normalize email %q", cfg.User)
+		if cfg.NormalizedUser, err = session.NormalizeEmail(cfg.Creds.User, true); err != nil {
+			return nil, errors.Wrapf(err, "failed to normalize email %q", cfg.Creds.User)
 		}
 	} else {
-		cfg.NormalizedUser = cfg.User
+		cfg.NormalizedUser = cfg.Creds.User
 	}
 
 	return cfg, nil

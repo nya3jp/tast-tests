@@ -38,6 +38,7 @@ func TestReuseTag(t *gotesting.T) {
 
 func TestVerifySessionReuse(t *gotesting.T) {
 	checkErrorContains := func(err error, keyWord string) {
+		t.Helper()
 		if err == nil {
 			t.Errorf("No error is given when key word %q is expected", keyWord)
 			return
@@ -58,19 +59,19 @@ func TestVerifySessionReuse(t *gotesting.T) {
 	// Verify field without "reuse_match" tag must exactly match.
 	cfg1, _ = NewConfig(nil)
 	cfg2, _ = NewConfig(nil)
-	cfg1.User = "user1@example.com"
-	cfg2.User = "user2@example.com"
+	cfg1.Creds.User = "user1@example.com"
+	cfg2.Creds.User = "user2@example.com"
 	err := cfg1.VerifySessionReuse(cfg2)
 	if err == nil {
 		t.Error("Reuse should not be allowed with different User values")
 	} else {
-		checkErrorContains(err, "User")
+		checkErrorContains(err, "Creds")
 	}
 
 	cfg1, _ = NewConfig(nil)
 	cfg2, _ = NewConfig(nil)
-	cfg1.User = "user1@example.com"
-	cfg2.User = "user1@example.com"
+	cfg1.Creds.User = "user1@example.com"
+	cfg2.Creds.User = "user1@example.com"
 	if err = cfg1.VerifySessionReuse(cfg2); err != nil {
 		t.Errorf("Reuse should be allowed with same User values. Got: %v", err)
 	}
