@@ -8,6 +8,7 @@ import (
 	"math/rand"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/cryptohome"
 )
@@ -19,6 +20,9 @@ const (
 	// DefaultPass contains the password we use to log into the DefaultUser account.
 	DefaultPass = config.DefaultPass
 )
+
+// Creds contains credentials to log into a Chrome user session.
+type Creds = config.Creds
 
 // Option is a self-referential function can be used to configure Chrome.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
@@ -55,6 +59,8 @@ func VKEnabled() Option {
 
 // Auth returns an Option that can be passed to New to configure the login credentials used by Chrome.
 // Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
+//
+// DEPRECATED: Use GAIALogin with a Creds parameter, or FakeLogin.
 func Auth(user, pass, gaiaID string) Option {
 	return func(cfg *config.Config) error {
 		cfg.Creds.User = user
@@ -64,35 +70,11 @@ func Auth(user, pass, gaiaID string) Option {
 	}
 }
 
-var random = rand.New(rand.NewSource(time.Now().UnixNano()))
-
-// AuthPool returns an Option that can be passed to New to configure the login
-// credentials used by Chrome.
-//
-// creds is a string containing multiple credentials separated by newlines:
-//  user1:pass1
-//  user2:pass2
-//  user3:pass3
-//  ...
-//
-// This option randomly picks one user/pass pair. A chosen user is written to
-// logs in chrome.New, as well as available via Chrome.User.
-func AuthPool(creds string) Option {
-	return func(cfg *config.Config) error {
-		cs, err := config.ParseCreds(creds)
-		if err != nil {
-			return err
-		}
-		c := cs[random.Intn(len(cs))]
-		cfg.Creds.User = c.User
-		cfg.Creds.Pass = c.Pass
-		return nil
-	}
-}
-
 // Contact returns an Option that can be passed to New to configure the contact email used by Chrome for
 // cross account challenge (go/ota-security). Please do not check in real credentials to public repositories
 // when using this in conjunction with GAIALogin.
+//
+// DEPRECATED: Use GAIALogin with a Creds parameter.
 func Contact(contact string) Option {
 	return func(cfg *config.Config) error {
 		cfg.Creds.Contact = contact
@@ -103,6 +85,8 @@ func Contact(contact string) Option {
 // ParentAuth returns an Option that can be passed to New to configure the login credentials of a parent user.
 // If the GAIA account specified by Auth is a supervised child user, this credential is used to go through the unicorn login flow.
 // Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
+//
+// DEPRECATED: Use GAIALogin with a Creds parameter.
 func ParentAuth(parentUser, parentPass string) Option {
 	return func(cfg *config.Config) error {
 		cfg.Creds.ParentUser = parentUser
@@ -130,11 +114,61 @@ func DeferLogin() Option {
 	}
 }
 
-// GAIALogin returns an Option that can be passed to New to perform a real GAIA-based login rather
-// than the default fake login.
-func GAIALogin() Option {
+// GAIALogin returns an Option that can be passed to New to perform a real
+// GAIA-based login rather than the default fake login.
+//
+// Pass exactly one Creds to set GAIA credentials. Passing no creds is accepted
+// for backward compatibility, but it is deprecated. It is an error to pass two
+// or more creds.
+func GAIALogin(creds ...Creds) Option {
 	return func(cfg *config.Config) error {
 		cfg.LoginMode = config.GAIALogin
+		if len(creds) >= 2 {
+			return errors.Errorf("chrome.GAIALogin accepts zero or one Creds; got %d", len(creds))
+		}
+		if len(creds) == 1 {
+			cfg.Creds = creds[0]
+		}
+		return nil
+	}
+}
+
+var random = rand.New(rand.NewSource(time.Now().UnixNano()))
+
+// GAIALoginPool returns an Option that can be passed to New to perform a real
+// GAIA-based login with a pool of GAIA account credentials.
+//
+// creds is a string containing multiple credentials separated by newlines:
+//  user1:pass1
+//  user2:pass2
+//  user3:pass3
+//  ...
+//
+// This option randomly picks one credentials. A chosen one is written to
+// logs in chrome.New, as well as available via Chrome.Creds.
+func GAIALoginPool(creds string) Option {
+	return func(cfg *config.Config) error {
+		cs, err := config.ParseCreds(creds)
+		if err != nil {
+			return err
+		}
+		cfg.LoginMode = config.GAIALogin
+		cfg.Creds = cs[random.Intn(len(cs))]
+		return nil
+	}
+}
+
+// FakeLogin returns an Option that can be passed to New to perform a fake
+// login, which skips credential verifications with GAIA servers.
+//
+// When no login option is specified, the default is to perform a fake login
+// with the default credentials (DefaultUser, DefaultPass). Thus you rarely
+// need to specify this option. An example use case is to work with two or more
+// fake accounts.
+func FakeLogin(creds Creds) Option {
+	return func(cfg *config.Config) error {
+		cfg.LoginMode = config.FakeLogin
+		cfg.Creds = creds
 		return nil
 	}
 }
