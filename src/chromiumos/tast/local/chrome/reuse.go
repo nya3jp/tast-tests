@@ -52,7 +52,7 @@ func tryReuseSession(ctx context.Context, cfg *config.Config) (cr *Chrome, retEr
 		return nil, err
 	}
 
-	if err := compareUserLogin(ctx, sess, cfg.User); err != nil {
+	if err := compareUserLogin(ctx, sess, cfg.Creds.User); err != nil {
 		return nil, err
 	}
 
