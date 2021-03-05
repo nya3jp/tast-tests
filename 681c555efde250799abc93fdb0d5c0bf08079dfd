@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "587514a8_ffd56ab2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-05T00:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03cda2a4_5843b001",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 3
+      },
+      "revId": "681c555efde250799abc93fdb0d5c0bf08079dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2aa224b7_e2b719c9",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94fb1f69_889b4501",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-05T00:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aa224b7_e2b719c9",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 25
+      },
+      "revId": "681c555efde250799abc93fdb0d5c0bf08079dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed9fdc9a_07bcf05d",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-04T05:08:11Z",
       "side": 1,
       "message": "ditto here.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 24
+      },
+      "revId": "681c555efde250799abc93fdb0d5c0bf08079dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8650f124_0440e274",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-05T00:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed9fdc9a_07bcf05d",
       "range": {
         "startLine": 115,
         "startChar": 1,
@@ -133,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c7e306f_98eda8eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-05T00:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b45e1d_d696aa6c",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 24
+      },
+      "revId": "681c555efde250799abc93fdb0d5c0bf08079dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b8f6ccc_f82f28ba",
@@ -146,6 +242,30 @@
       "writtenOn": "2021-03-04T05:08:11Z",
       "side": 1,
       "message": "ditto here.",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 24
+      },
+      "revId": "681c555efde250799abc93fdb0d5c0bf08079dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc3fc887_92c7fb25",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-05T00:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b8f6ccc_f82f28ba",
       "range": {
         "startLine": 161,
         "startChar": 1,
