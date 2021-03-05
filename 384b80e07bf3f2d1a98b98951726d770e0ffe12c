@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cf5e1f6_df67736e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-05T00:23:01Z",
+      "side": 1,
+      "message": "The command does not mount the MyFiles directory. It just checks the directory\u0027s mount status.\nThe MyFiles directory is automatically mounted by Android\u0027s volume daemon some time after ARC boots up, and it is kept mounted until ARC stops. So we do need to unmount it.",
+      "parentUuid": "f4a46de7_ac8d109f",
+      "revId": "384b80e07bf3f2d1a98b98951726d770e0ffe12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "097766c3_8f0fe18e",
@@ -92,6 +110,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9e75da_7091620d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-05T00:23:01Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! That looks much better. Done.",
+      "parentUuid": "097766c3_8f0fe18e",
+      "range": {
+        "startLine": 129,
+        "startChar": 24,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "384b80e07bf3f2d1a98b98951726d770e0ffe12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00063d7d_2a2b88e9",
@@ -105,6 +147,24 @@
       "writtenOn": "2021-03-03T06:06:26Z",
       "side": 1,
       "message": "So for retErr !\u003d nil case, we don\u0027t report the failure to revert error. Is that what you expect?",
+      "revId": "384b80e07bf3f2d1a98b98951726d770e0ffe12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8bb653_8479fdbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-05T00:23:01Z",
+      "side": 1,
+      "message": "My expectation is:\n  retErr \u003d\u003d nil -\u003e err for a.RemoveAll is returned.\n  retErr !\u003d nil -\u003e original retErr is returned, err for a.RemoveAll is logged.\n\nDoes my code behave as expected?\nAlso, is there any better way to handle the situation in which retErr !\u003d nil?",
+      "parentUuid": "00063d7d_2a2b88e9",
       "revId": "384b80e07bf3f2d1a98b98951726d770e0ffe12c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8477fe2_36df52b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-05T00:23:01Z",
+      "side": 1,
+      "message": "Rebased on top of crrev.com/c/2719940 and replied to each comment.\ndeanliao@, could you please take another look when you have time? Thanks!",
+      "revId": "e038c47beb0b9480044b528a7439785540b2687b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ccbf3ea_7c695a93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-05T00:23:01Z",
+      "side": 1,
+      "message": "Changed from arc-eng as per the discussion at crrev.com/c/2695052/9/src/chromiumos/tast/local/bundles/cros/arc/download_manager.go#b31.",
+      "range": {
+        "startLine": 33,
+        "startChar": 34,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "e038c47beb0b9480044b528a7439785540b2687b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb60cf1b_2b57133d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-05T00:23:01Z",
+      "side": 1,
+      "message": "Added because this became a required field by crrev.com/c/2719940.",
+      "range": {
+        "startLine": 161,
+        "startChar": 90,
+        "endLine": 161,
+        "endChar": 110
+      },
+      "revId": "e038c47beb0b9480044b528a7439785540b2687b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
