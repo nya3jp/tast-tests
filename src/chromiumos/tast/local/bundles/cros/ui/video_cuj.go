@@ -39,6 +39,7 @@ func init() {
 		Timeout:      4 * time.Minute,
 		Fixture:      "loggedInToCUJUser",
 		Vars: []string{
+			"mute",
 			"ui.VideoCUJ.ytExperiments",
 		},
 		Params: []testing.Param{{
@@ -75,10 +76,12 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
 
-	if err := crastestclient.Mute(ctx); err != nil {
-		s.Fatal("Failed to mute audio: ", err)
+	if _, ok := s.Var("mute"); ok {
+		if err := crastestclient.Mute(ctx); err != nil {
+			s.Fatal("Failed to mute audio: ", err)
+		}
+		defer crastestclient.Unmute(closeCtx)
 	}
-	defer crastestclient.Unmute(closeCtx)
 
 	tabletMode := s.Param().(bool)
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
