@@ -7,6 +7,7 @@ package hwsec
 import (
 	"context"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/perf"
@@ -28,6 +29,7 @@ func init() {
 			"cros-hwsec@chromium.org",
 		},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      4 * time.Minute,
 	})
 }
 
