@@ -22,6 +22,30 @@
       },
       "revId": "f65112859af21726ab8f9db33c198b9239e99f76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71f4fcb8_340c1089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/2d.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-06T00:40:54Z",
+      "side": 1,
+      "message": "Oshima?",
+      "parentUuid": "548926da_f88249bf",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "f65112859af21726ab8f9db33c198b9239e99f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
