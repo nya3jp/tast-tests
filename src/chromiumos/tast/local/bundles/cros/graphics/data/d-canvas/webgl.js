@@ -29,16 +29,16 @@ function initWebGL() {
     canvas.style.transform = `rotateZ(${angle}deg)`;
     const dpr = devicePixelRatio;
 
-    let dp_width = window.innerWidth;
-    let dp_height = window.innerHeight;
-    let pixel_width = Math.floor(dp_width * dpr);
-    let pixel_height = Math.floor(dp_height * dpr);
+    var dp_width = window.innerWidth;
+    var dp_height = window.innerHeight;
+    var pixel_width = Math.floor(dp_width * dpr);
+    var pixel_height = Math.floor(dp_height * dpr);
     console.log('update:' + angle + ", size=" + dp_width + "x" + dp_height);
 
     if (angle % 180 == 90) {
       canvas.style.width = `${dp_height}px`;
       canvas.style.height = `${dp_width}px`;
-      let offset = (dp_height - dp_width) / 2;
+      var offset = (dp_height - dp_width) / 2;
       canvas.style.left = `-${offset}px`;
       canvas.style.top = `${offset}px`;
       canvas.height = pixel_width;

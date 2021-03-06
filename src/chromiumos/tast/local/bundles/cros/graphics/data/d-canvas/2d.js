@@ -2,24 +2,24 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-let pixel_width;
-let pixel_height;
+var pixel_width;
+var pixel_height;
 
 function init2D() {
   const canvas = document.querySelector('canvas');
 
   const setSizeAndRotation = () => {
-    const angle = screen.orientation.angle % 360;
-    const dpr = devicePixelRatio;
-    const dp_width = window.innerWidth;
-    const dp_height = window.innerHeight;
+    var angle = screen.orientation.angle % 360;
+    var dpr = devicePixelRatio;
+    var dp_width = window.innerWidth;
+    var dp_height = window.innerHeight;
     pixel_width = Math.round(dp_width * dpr);
     pixel_height = Math.round(dp_height * dpr);
 
     if (angle % 180 == 90) {
       canvas.style.width = `${dp_height}px`;
       canvas.style.height = `${dp_width}px`;
-      let tmp = pixel_height;
+      var tmp = pixel_height;
       pixel_height = pixel_width;
       pixel_width = tmp;
     } else {
@@ -52,13 +52,16 @@ function init2D() {
     console.log("update1:" + angle + ", size=" + dp_width + "x" + dp_height +
                 " angle=" + screen.orientation.angle);
   };
+
   screen.orientation.addEventListener('change', setSizeAndRotation);
-  window.addEventListener('resize',  setSizeAndRotation);
+  window.addEventListener('resize', setSizeAndRotation);
+
+  document.documentElement.addEventListener('click',  setSizeAndRotation);
   setSizeAndRotation();
   draw();
 }
 
-let deg = 0;
+var deg = 0;
 
 function draw() {
   const angle = screen.orientation.angle % 360;
@@ -77,7 +80,7 @@ function draw() {
   // Text
   c2.fillStyle = 'rgb(255,255,255)';
   c2.font = "40px Arial";
-  let text = `Pixel size=${pixel_width}x${pixel_height} \
+  var text = `Pixel size=${pixel_width}x${pixel_height} \
 dp size=${dp_width}x${dp_height} dpr=${dpr} angle=${angle}`;
   c2.fillText(text, 10, 50);
   c2.strokeStyle = 'rgb(0,0,0)';
