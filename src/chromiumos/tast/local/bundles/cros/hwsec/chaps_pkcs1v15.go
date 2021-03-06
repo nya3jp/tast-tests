@@ -26,6 +26,7 @@ func init() {
 			"cros-hwsec@chromium.org",
 		},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      4 * time.Minute,
 	})
 }
 

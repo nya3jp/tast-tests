@@ -26,6 +26,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "tpm2"},
+		Timeout:      4 * time.Minute,
 	})
 }
 
