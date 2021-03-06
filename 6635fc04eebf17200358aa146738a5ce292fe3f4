@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fdd4bf8_bc18bc5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1487212
+      },
+      "writtenOn": "2021-03-06T02:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "949d649b_17ecd681",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "228c7a13_23c8f494",
@@ -64,6 +88,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10508ff7_45acb9b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1487212
+      },
+      "writtenOn": "2021-03-06T02:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "884524cb_2746ed98",
+      "range": {
+        "startLine": 9,
+        "startChar": 124,
+        "endLine": 9,
+        "endChar": 130
+      },
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d87de30_d11c463d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1487212
+      },
+      "writtenOn": "2021-03-06T02:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "228c7a13_23c8f494",
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6729c8d4_b86e29f6",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-03-05T16:24:19Z",
       "side": 1,
       "message": "nit: tast run \u003cip\u003e policy.HideWebStoreIcon",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0e629c_5851a51d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1487212
+      },
+      "writtenOn": "2021-03-06T02:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6729c8d4_b86e29f6",
       "range": {
         "startLine": 12,
         "startChar": 5,
@@ -155,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a908ae51_5a028cbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1487212
+      },
+      "writtenOn": "2021-03-06T02:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a849d0e_7752141b",
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4716e331_1227b158",
@@ -168,6 +276,30 @@
       "writtenOn": "2021-03-05T16:24:19Z",
       "side": 1,
       "message": "hide",
+      "range": {
+        "startLine": 59,
+        "startChar": 14,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "6635fc04eebf17200358aa146738a5ce292fe3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78488faf_a3a52965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1487212
+      },
+      "writtenOn": "2021-03-06T02:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4716e331_1227b158",
       "range": {
         "startLine": 59,
         "startChar": 14,
