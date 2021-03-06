@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28422203_6795e06a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-06T00:30:52Z",
+      "side": 1,
+      "message": "Can we change this to a bug?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa59599d_75a36bc2",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-06T00:30:52Z",
+      "side": 1,
+      "message": "I think there is a bug for this. Can you include that with a TODO?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 67
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb94db3f_815b7533",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-06T00:30:52Z",
+      "side": 1,
+      "message": "I think there\u0027s a comment in the autotest code for why we sleep (and a bug)",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0645fd1b_adbb7ece",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-06T00:30:52Z",
+      "side": 1,
+      "message": "Can we add a bug for this?",
+      "range": {
+        "startLine": 153,
+        "startChar": 4,
+        "endLine": 153,
+        "endChar": 19
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e44885c_30bb6c3e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-06T00:30:52Z",
+      "side": 1,
+      "message": "Potentially less error prone if you use golang\u0027s enum equivalent for this:\n\n type FWImageType int\n\n const (\n\tImageTypeRO FWImageType \u003d iota\n        ImageTypeRW\n)",
+      "range": {
+        "startLine": 158,
+        "startChar": 50,
+        "endLine": 158,
+        "endChar": 63
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982b6e10_342de3a5",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-06T00:30:52Z",
+      "side": 1,
+      "message": "See comment below about helper function to handle ectool output.",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 53
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32ecab3b_a9fa8a2d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-06T00:30:52Z",
+      "side": 1,
+      "message": "nit: this can be a little more readable if you pass the args as a struct:\n\n type RollbackState struct {\n\tBlockID int\n\tMinVersion int\n\tRWVersion int\n }\n\nsince you can then specify the arg like this:\n\n RollbackState{\n\tBlockID:    1,\n\tMinVersion: 0,\n\tRWVersion:  0,\n }",
+      "range": {
+        "startLine": 220,
+        "startChar": 32,
+        "endLine": 220,
+        "endChar": 42
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "058b6920_080e5f5e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-06T00:30:52Z",
+      "side": 1,
+      "message": "ectool uses a \"key: value\" format in a lot of places, so it would probably be good to create a generic helper function to parse that (like get_ectool_output_val in the original code).",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 2
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
