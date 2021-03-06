@@ -1,18 +1,19 @@
 // Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
+'use strict';
 
 let pixel_width;
 let pixel_height;
 
 function init2D() {
-  const canvas = document.querySelector('canvas');
+  let canvas = document.querySelector('canvas');
 
   const setSizeAndRotation = () => {
-    const angle = screen.orientation.angle % 360;
-    const dpr = devicePixelRatio;
-    const dp_width = window.innerWidth;
-    const dp_height = window.innerHeight;
+    let angle = screen.orientation.angle % 360;
+    let dpr = devicePixelRatio;
+    let dp_width = window.innerWidth;
+    let dp_height = window.innerHeight;
     pixel_width = Math.round(dp_width * dpr);
     pixel_height = Math.round(dp_height * dpr);
 
@@ -61,13 +62,13 @@ function init2D() {
 let deg = 0;
 
 function draw() {
-  const angle = screen.orientation.angle % 360;
-  const dpr = devicePixelRatio;
-  const dp_width = window.innerWidth;
-  const dp_height = window.innerHeight;
+  let angle = screen.orientation.angle % 360;
+  let dpr = devicePixelRatio;
+  let dp_width = window.innerWidth;
+  let dp_height = window.innerHeight;
 
-  const canvas = document.querySelector('canvas');
-  const c2 = canvas.getContext('2d', {desynchronized: true, alpha: false});
+  let canvas = document.querySelector('canvas');
+  let c2 = canvas.getContext('2d', {desynchronized: true, alpha: false});
 
   c2.fillStyle = 'rgb(255,255,0)';
   c2.fillRect(0, 0, pixel_width, pixel_height);
