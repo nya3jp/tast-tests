@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7abd49e0_5df95252",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-03-06T00:02:08Z",
+      "side": 1,
+      "message": "2 thoughts:\n- I suggest waiting until after the weekend before landing it :-)\n- When it lands, you should proactively check stainless, see if it\u0027s failing in the CQ. You\u0027ll need to *uncheck* \"Exclude non-release builds\" to see the CQ runs, something like http://shortn/_xIIIWrcMvf",
+      "revId": "33232ef2662fa95ca8f83f8168df054a2483b78e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
