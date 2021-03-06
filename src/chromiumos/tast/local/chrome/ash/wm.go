@@ -345,7 +345,7 @@ func WaitForHidden(ctx context.Context, tconn *chrome.TestConn, pkgName string) 
 func WaitWindowFinishAnimating(ctx context.Context, tconn *chrome.TestConn, windowID int) error {
 	return WaitForCondition(ctx, tconn, func(window *Window) bool {
 		return window.ID == windowID && !window.IsAnimating
-	}, &testing.PollOptions{Timeout: 2 * time.Second})
+	}, defaultPollOptions)
 }
 
 // WaitForCondition waits for a window to satisfy the given predicate.
@@ -522,7 +522,7 @@ func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, u
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		nowvis := 0
 		if err := ForEachWindow(ctx, tconn, func(w *Window) error {
-			if w.IsVisible {
+			if !w.IsAnimating && w.IsVisible {
 				nowvis++
 			}
 			return nil
