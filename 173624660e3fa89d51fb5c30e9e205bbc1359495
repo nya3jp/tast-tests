@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a607bd_1a851aa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-06T03:17:16Z",
+      "side": 1,
+      "message": "Just realized...\nwhat about datausage offline, all contacts, gaia \n\nSo basically a gaia version of the high vis test we have. There\u0027s probably some extra stuff complexity we will test in a gaia version.\n\nProbably best to have *another* user account that is not a contact of the sender",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 60
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba28a9d7_f2eb2ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/big_txt.zip.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-06T03:17:16Z",
+      "side": 1,
+      "message": "Can you put this in the common data folder instead\nsrc/chromiumos/tast/local/chrome/nearbyshare/data/ \n\nAnd put a symlink here that points to it",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 89
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10053144_8c96dfa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-06T03:17:16Z",
+      "side": 1,
+      "message": "What do you think of adding the png and jpg version to each existing test we have",
+      "range": {
+        "startLine": 37,
+        "startChar": 14,
+        "endLine": 37,
+        "endChar": 60
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2576b51b_51da83d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-06T03:17:16Z",
+      "side": 1,
+      "message": "interesting. What does this test?",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a331730_7a86d8fc",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-06T03:17:16Z",
+      "side": 1,
+      "message": "We can remove this now. vecore@ said it is on by default",
+      "range": {
+        "startLine": 43,
+        "startChar": 25,
+        "endLine": 43,
+        "endChar": 46
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
