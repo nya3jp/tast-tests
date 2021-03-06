@@ -16,6 +16,24 @@
       "message": "I still think var is kinda an obsolete concept in JS. It continues to exist for the backward compatibility but it\u0027s better to be avoided in newer code.\n\nI\u0027ve seen oshima said that const might be problematic on those code, but isn\u0027t let good enough?",
       "revId": "f6142fdb809999eaecb220b8842be316bbbd8b2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "776d1345_97f4fb3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/2d.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-06T00:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd44a117_6b89f7c3",
+      "revId": "f6142fdb809999eaecb220b8842be316bbbd8b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
