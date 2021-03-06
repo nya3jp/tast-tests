@@ -16,6 +16,24 @@
       "message": "I found that this file almost duplicate another file: \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/cryptohome/cryptohome.go\n\nWe should think about not duplicating code and reuse already written code.",
       "revId": "dfd7d50fc72c9a1e78298a4a534e04832b97faa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35354dbd_dded3871",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-06T05:09:02Z",
+      "side": 0,
+      "message": "We are going to deprecate the cryptohome package, because that package didn\u0027t support the remote test environment.",
+      "parentUuid": "e2dbb45b_be5f7829",
+      "revId": "dfd7d50fc72c9a1e78298a4a534e04832b97faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
