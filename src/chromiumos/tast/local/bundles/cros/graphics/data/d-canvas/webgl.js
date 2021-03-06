@@ -3,8 +3,8 @@
 // found in the LICENSE file.
 
 function initWebGL() {
-  const canvas = document.querySelector('canvas');
-  const gl = canvas.getContext('webgl', {desynchronized: true, alpha: false});
+  let canvas = document.querySelector('canvas');
+  let gl = canvas.getContext('webgl', {desynchronized: true, alpha: false});
 
   gl.clearColor(1, 1, 0, 1);
   gl.clear(gl.COLOR_BUFFER_BIT);
@@ -12,7 +12,7 @@ function initWebGL() {
   gl.enable(gl.SCISSOR_TEST);
 
   let hue = 0;
-  const raf = () => {
+  let raf = () => {
     hue += 1;
     r = Math.sin(0.05 * hue + 0) * 127 + 128;
     g = Math.sin(0.05 * hue + 2) * 127 + 128;
@@ -24,10 +24,10 @@ function initWebGL() {
   };
   requestAnimationFrame(raf);
 
-  const setSizeAndRotation = () => {
-    const angle = screen.orientation.angle % 360;
+  let setSizeAndRotation = () => {
+    let angle = screen.orientation.angle % 360;
     canvas.style.transform = `rotateZ(${angle}deg)`;
-    const dpr = devicePixelRatio;
+    let dpr = devicePixelRatio;
 
     let dp_width = window.innerWidth;
     let dp_height = window.innerHeight;
