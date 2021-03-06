@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b8368a_9df727a3",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-06T04:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4a3af7b_05dab4ee",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 1
+      },
+      "revId": "b03b004c6d138e306f0cce93144e839957feb74a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "877d940e_89e57a79",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-05T11:48:01Z",
       "side": 1,
       "message": "we cannot just ignore \"err\", you must explicitly check for expected error to be able to return \"-1, nil\".\n\nFor example, you pass context into c.runner.Run and it might expire, so you will get \"context deadline exceeded\" error which is not what you expected",
+      "range": {
+        "startLine": 111,
+        "startChar": 13,
+        "endLine": 111,
+        "endChar": 16
+      },
+      "revId": "b03b004c6d138e306f0cce93144e839957feb74a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2e81854_a5e479c5",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-06T04:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "877d940e_89e57a79",
       "range": {
         "startLine": 111,
         "startChar": 13,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74771ef2_8c2e2fc7",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-06T04:33:47Z",
+      "side": 1,
+      "message": "Yes, and we expect to get 6 fields.",
+      "parentUuid": "2bb6184c_c13654aa",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 20
+      },
+      "revId": "b03b004c6d138e306f0cce93144e839957feb74a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fcf68d2_76d0b228",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "830b534c_a03d2594",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-06T04:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fcf68d2_76d0b228",
+      "range": {
+        "startLine": 194,
+        "startChar": 76,
+        "endLine": 194,
+        "endChar": 81
+      },
+      "revId": "b03b004c6d138e306f0cce93144e839957feb74a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc35814d_241dc884",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-03-05T11:48:01Z",
       "side": 1,
       "message": "Shouldn\u0027t it be Fatal instead? does it makes sense to try remove vault after error from unmount?\n\ns.Error won\u0027t stop execution of the function",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "b03b004c6d138e306f0cce93144e839957feb74a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2f6ee27_e71cc60f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-06T04:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc35814d_241dc884",
       "range": {
         "startLine": 49,
         "startChar": 5,
