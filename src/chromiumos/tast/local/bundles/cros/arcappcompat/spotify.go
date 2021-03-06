@@ -84,27 +84,30 @@ func Spotify(ctx context.Context, s *testing.State) {
 // verify Spotify reached main activity page of the app.
 func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		enterEmailAddressText = "Email or username"
 		loginText             = "Log in"
 		loginBtnText          = "LOG IN"
+		continueWithEmailText = "Continue with Email"
 		notNowID              = "android:id/autofill_save_no"
 		neverButtonID         = "com.google.android.gms:id/credential_save_reject"
-		passwordText          = "Password"
 	)
 
 	// Click on login button.
-	clickOnLoginButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(loginText))
+	clickOnLoginButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+loginText))
 	if err := clickOnLoginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Fatal("clickOnLoginButton doesn't exist: ", err)
 	} else if err := clickOnLoginButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnLoginButton: ", err)
 	}
 
-	enterEmailAddress := d.Object(ui.Text(enterEmailAddressText))
-	if err := enterEmailAddress.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Log("EnterEmailAddress does not exist: ", err)
+	// Click on Continue with Email button.
+	continueWithEmailButton := d.Object(ui.TextMatches("(?i)" + continueWithEmailText))
+	if err := continueWithEmailButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("continueWithEmailButton doesn't exist: ", err)
+	} else if err := continueWithEmailButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on continueWithEmailButton: ", err)
 	}
 
+	d.WaitForIdle(ctx, testutil.LongUITimeout)
 	// Press tab twice to click on enter email.
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
 		s.Log("Failed to enter KEYCODE_TAB: ", err)
@@ -130,11 +133,7 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 	s.Log("Entered enterEmail")
 
-	enterPassword := d.Object(ui.Text(passwordText))
-	if err := enterPassword.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Log("EnterPassword does not exist: ", err)
-	}
-
+	d.WaitForIdle(ctx, testutil.LongUITimeout)
 	// Press tab to click on enter password.
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
 		s.Log("Failed to enter KEYCODE_TAB: ", err)
@@ -149,9 +148,9 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 	s.Log("Entered password")
 
 	// Click on Login button.
-	loginButton := d.Object(ui.Text(loginBtnText))
+	loginButton := d.Object(ui.TextMatches("(?i)" + loginBtnText))
 	if err := loginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Login Button doesn't exist: ", err)
+		s.Error("Login Button doesn't exist: ", err)
 	} else if err := loginButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on loginButton: ", err)
 	}
