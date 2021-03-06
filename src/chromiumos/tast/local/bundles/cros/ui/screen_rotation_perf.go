@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
@@ -46,17 +47,23 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
 		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(closeCtx)
 
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get internal display info: ", err)
 	}
+
+	// Ensure returning back to the normal rotation at the end.
+	defer display.SetDisplayRotationSync(closeCtx, tconn, dispInfo.ID, display.Rotate0)
 
 	currentWindows := 0
 	runner := perfutil.NewRunner(cr)
