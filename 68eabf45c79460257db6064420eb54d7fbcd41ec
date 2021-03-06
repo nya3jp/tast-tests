@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76eeb363_f60754ca",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-03-06T13:22:11Z",
+      "side": 1,
+      "message": "This CL replaces the only submitted user of this API. I\u0027m happy to change my existing CLs over, so is there any need to keep this in the codebase?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 36
+      },
+      "revId": "68eabf45c79460257db6064420eb54d7fbcd41ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
