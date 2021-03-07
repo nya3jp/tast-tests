@@ -58,7 +58,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(optinUnstableModels...)),
 		}},
-		Timeout: 4 * time.Minute,
+		Timeout: 6 * time.Minute,
 	})
 }
 
