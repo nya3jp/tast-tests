@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e92dde68_5c80a63d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-07T14:17:18Z",
+      "side": 1,
+      "message": "Please use the new GrabScreenshot for screenshots: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/screenshot/capture.go;l\u003d148\n\nand CountPixelsWithDiff for the pixels comparisons, Also it might be possible that on certain devices the color is slightly different. In that case we should adjust the colorMaxDiff (I think 10 is safe in this case).\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/media/imgcmp/imgcmp.go;l\u003d20;bpv\u003d0;bpt\u003d0",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "4935bd227f2fabfead4882ca0ced5dbfd3e237d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf2dd8b_30dbe5a4",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-07T14:17:18Z",
+      "side": 1,
+      "message": "Could you create a bug for this and write it here?",
+      "range": {
+        "startLine": 387,
+        "startChar": 4,
+        "endLine": 388,
+        "endChar": 21
+      },
+      "revId": "4935bd227f2fabfead4882ca0ced5dbfd3e237d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
