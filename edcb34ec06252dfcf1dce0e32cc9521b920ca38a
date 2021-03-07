@@ -22,6 +22,30 @@
       },
       "revId": "edcb34ec06252dfcf1dce0e32cc9521b920ca38a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6c7090_1e8f9530",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-07T07:11:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa924c40_dcf044da",
+      "range": {
+        "startLine": 265,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 90
+      },
+      "revId": "edcb34ec06252dfcf1dce0e32cc9521b920ca38a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
