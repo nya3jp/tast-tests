@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "537c7dad_27fad736",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-07T13:36:55Z",
+      "side": 1,
+      "message": "LGTM % minor nits",
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99602580_fd239e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-07T13:36:55Z",
+      "side": 1,
+      "message": "nit: Error\nEven if saving the printer failed, it makes sense to check the next steps IMO.",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9576d6a1_0cd2bb75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-07T13:36:55Z",
+      "side": 1,
+      "message": "nit: Error\nsame as the above comment.",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 9
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe221377_414650b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-07T13:36:55Z",
+      "side": 1,
+      "message": "nit: missing . at the end of the comment",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 31
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
