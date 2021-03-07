@@ -33,7 +33,6 @@ func init() {
 		},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 		},
 		Vars: []string{
 			"filemanager.DrivefsUI.username",
