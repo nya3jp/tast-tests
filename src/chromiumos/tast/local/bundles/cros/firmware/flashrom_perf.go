@@ -86,11 +86,13 @@ func FlashromPerf(ctx context.Context, s *testing.State) {
 	duration := testFlashromReadTime(ctx, s, p.region)
 	perf.Set(readTime, duration)
 
+	const lowerBound = 100 // sub-process execution should take some time.
+
 	if err := perf.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
-	if duration > p.deadline {
-		s.Errorf("Flashrom took too long to execute, expected <= %v ms, got = %v ms", p.deadline, duration)
+	if duration <= lowerBound || duration >= p.deadline {
+		s.Errorf("Flashrom execution outside time-bounds, %v < expected < %v ms, got = %v ms", lowerBound, p.deadline, duration)
 	}
 }
 
