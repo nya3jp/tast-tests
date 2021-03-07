@@ -20,6 +20,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18c0d934_48ab9de3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "It is using a virtual USB printer instead of a real USB printer, right? If yes, please specify in the description.",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f77b616_2e51d4d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "Will the following steps take a long time?\nIf yes, keep s.Log and delete the comment // Install virtual USB printer.\nIf no, delete s.Log instead.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de788737_81fd4c39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "This comment is for the following defer code instead of usbprinter.InstallModules?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 43
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9c240a_60a601dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "Please use uiauto.Combine to combine uiauto.LeftClick(entryFinder), uiauto.LeftClick(savePrinterButton), uiauto.WithTimeout(time.Minute).WaitUntilExists(editPrinterButton), and kb.Accel (kb.AccelAction).\n\nIf you make WaitForPrintPreview, SelectPrinter, and Print return uiauto.Action, the following four steps could be combined as well.",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1559ede2_065715e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "Printer",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99602580_fd239e88",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
         "patchSetId": 3
@@ -82,6 +197,236 @@
         "startChar": 1,
         "endLine": 160,
         "endChar": 31
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed07ae12_7a04e0d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "After change printmanagementapp.Launch to return uiauto.Action, you could use uiauto.Combine to combine these three steps.",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8abce242_6e54e74f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "Define it as nodewith.Name()...",
+      "range": {
+        "startLine": 19,
+        "startChar": 36,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b645b44_0151bbfe",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 24,
+        "startChar": 40,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f62cc3_83d67f21",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b248785_a8562787",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 37,
+        "startChar": 35,
+        "endLine": 37,
+        "endChar": 48
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3fba315_24103c1a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "Please use uiauto in this method and return a uiauto.Action",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df4793e_bc9dd537",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "not for this cl, but suggest to port from ui to uiauto to reduce flakiness. When you do this, suggest to return uiauto.Action for all the methods only return an error now.",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 34
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b9eb14_996e9028",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "Suggest to make this return an uiauto.Action",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58276fe_3d2f8a84",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "Suggest to make this return an uiauto.Action, e.g, https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go;l\u003d106",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e89d7f4_7c78b973",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-07T23:37:42Z",
+      "side": 1,
+      "message": "Suggest to make this return an uiauto.Action and use uiauto instead of ui to find and act on nodes.",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 211,
+        "endChar": 24
       },
       "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
