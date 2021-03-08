@@ -16,6 +16,64 @@
       "message": "Test in another draft CL and find that by simply call |CollectLogs| and |endLogFn| some logs at the end won\u0027t be collected. Is those missing logs still cached in syslog? Probably need to flush syslog somehow.",
       "revId": "5d91c2929f15e73ec1d8a73b26ef807743689e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "802ae578_38866d52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-08T08:35:16Z",
+      "side": 1,
+      "message": "Flushing syslogs is too expensive. I also considered it when implementing, but even in the current state the log cut is pretty good.",
+      "parentUuid": "ef69e7b9_7f5a6a0f",
+      "revId": "5d91c2929f15e73ec1d8a73b26ef807743689e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eb47a27_81505904",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-08T08:35:16Z",
+      "side": 1,
+      "message": "Also remove this function if unused.",
+      "revId": "5d91c2929f15e73ec1d8a73b26ef807743689e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757c0692_6e3566f1",
+        "filename": "src/chromiumos/tast/local/syslog/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-08T08:35:16Z",
+      "side": 1,
+      "message": "This is very specific to messages. Other logs (like Chrome) behave differently. Either use an enum to select the log (with correct logic) or keep this method specific for messages.",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "5d91c2929f15e73ec1d8a73b26ef807743689e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
