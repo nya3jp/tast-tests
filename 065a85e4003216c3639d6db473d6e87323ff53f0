@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3a11a12_cf3f5c40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-08T06:50:15Z",
+      "side": 0,
+      "message": "Just to make sure: In the new PS we don\u0027t save files to the subdir named \"test\". I assume it\u0027s okay.",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 41
+      },
+      "revId": "065a85e4003216c3639d6db473d6e87323ff53f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
