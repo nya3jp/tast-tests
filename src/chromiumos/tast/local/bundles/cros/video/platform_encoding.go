@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -48,6 +49,9 @@ var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
 
 // regExpPSNR is the regexp to find the PSNR output in the tiny_ssim log.
 var regExpPSNR = regexp.MustCompile(`\nGlbPSNR: (\d+\.\d+)`)
+
+var ym12Detect = regexp.MustCompile(`'YM12'`)
+var nv12Detect = regexp.MustCompile(`'NV12'`)
 
 // commandBuilderFn is the function type to generate the command line with arguments.
 type commandBuilderFn func(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, err error)
@@ -436,7 +440,7 @@ func init() {
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor", "kukui", "jacuzzi")),
 		}, {
 			Name: "v4l2_h264_360",
 			Val: testParam{
@@ -451,7 +455,7 @@ func init() {
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor", "kukui", "jacuzzi")),
 		}, {
 			Name: "v4l2_h264_720",
 			Val: testParam{
@@ -466,7 +470,7 @@ func init() {
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor", "kukui", "jacuzzi")),
 		}, {
 			Name: "v4l2_h264_180_meet",
 			Val: testParam{
@@ -481,7 +485,7 @@ func init() {
 			},
 			ExtraData:         []string{"gipsrestat-320x180.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor", "kukui", "jacuzzi")),
 		}, {
 			Name: "v4l2_h264_360_meet",
 			Val: testParam{
@@ -496,7 +500,7 @@ func init() {
 			},
 			ExtraData:         []string{"gipsrestat-640x360.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor", "kukui", "jacuzzi")),
 		}, {
 			Name: "v4l2_h264_720_meet",
 			Val: testParam{
@@ -511,7 +515,7 @@ func init() {
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor", "kukui", "jacuzzi")),
 		}},
 		Timeout: 20 * time.Minute,
 	})
@@ -832,5 +836,25 @@ func h264argsV4L2(ctx context.Context, exe, yuvFile string, size coords.Size, fp
 
 	bitrate = int(0.1 /* BPP */ * float64(fps) * float64(size.Width) * float64(size.Height))
 	command = append(command, "--bitrate", strconv.Itoa(bitrate) /* bps */)
+
+	// Query the driver for its supported input (OUTPUT_queue) video pixel formats.
+	v4l2CtlCmd := testexec.CommandContext(ctx, "v4l2-ctl", "--device",
+		"/dev/video-enc0", "--list-formats-out")
+	v4l2Out, err := v4l2CtlCmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		testing.ContextLog(ctx, "Could not run v4l2-ctl to query OUTPUT formats")
+		return
+	}
+	v4l2Lines := strings.Split(string(v4l2Out), "\n")
+	// If the pixel format is not listed below, we leave it unspecified for exe to
+	// figure out. For more information on these pixel formats see:
+	// https://www.kernel.org/doc/html/v5.4/media/uapi/v4l/yuv-formats.html.
+	for _, line := range v4l2Lines {
+		if ym12Detect.MatchString(line) {
+			command = append(command, "--buffer_fmt", "YM12")
+		} else if nv12Detect.MatchString(line) {
+			command = append(command, "--buffer_fmt", "NV12")
+		}
+	}
 	return
 }
