@@ -22,6 +22,30 @@
       },
       "revId": "065a85e4003216c3639d6db473d6e87323ff53f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ab196a6_59da2964",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-03-08T09:07:46Z",
+      "side": 0,
+      "message": "Checked that all logs are under same directory.",
+      "parentUuid": "d3a11a12_cf3f5c40",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 41
+      },
+      "revId": "065a85e4003216c3639d6db473d6e87323ff53f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
