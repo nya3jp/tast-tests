@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e33566_c68279b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-08T10:37:52Z",
+      "side": 1,
+      "message": "LGTM % nits\n\nPlease wait John review as well before submission.",
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea4b03aa_1763fcf4",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-08T10:37:52Z",
+      "side": 1,
+      "message": "there is no need to bind validateGuestPartition to the CryptohomeMountInfo pointer, check other methods",
+      "range": {
+        "startLine": 212,
+        "startChar": 5,
+        "endLine": 212,
+        "endChar": 29
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8daa8bdd_7ab68247",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-08T10:37:52Z",
+      "side": 1,
+      "message": "as mentioned in another comment, remove it",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7e1d00_d83bf6a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_key_eviction.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-08T10:37:52Z",
+      "side": 1,
+      "message": "same here: please always pass context.\n\nYou can read more about using context here:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Contexts-and-timeouts",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 4
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e26604_d62adb40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-08T10:37:52Z",
+      "side": 1,
+      "message": "there is no need to assign err to nil",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 11
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ec63d64_1058893b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-08T10:37:52Z",
+      "side": 1,
+      "message": "nit: what about rewriting to smth like this:\n\n```\n// Mount with bad password should fail.\nif err :\u003d cryptohome.MountVault(ctx, user, badPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); !cmdRunner.HasExitError(err) {\n\ts.Fatal(\"Mount failed with unexpected error: \", err)\n}\n```",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 0
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5877bf1e_5c9d8cbc",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-08T10:37:52Z",
+      "side": 1,
+      "message": "I think you should use textexec.ExitCode method, instead of introducing new method. Moreover, HasExitError is more like a helper and does not depend on CmdRunner.\n\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go;l\u003d329?q\u003dexec.ExitError",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
