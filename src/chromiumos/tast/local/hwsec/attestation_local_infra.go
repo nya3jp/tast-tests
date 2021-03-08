@@ -154,12 +154,12 @@ func (ali *AttestationLocalInfra) injectNormalGoogleKeys(ctx context.Context) er
 
 // enableFakePCAAgent stops the normal pca agent and starts the fake one.
 func (ali *AttestationLocalInfra) enableFakePCAAgent(ctx context.Context) (lastErr error) {
-	if err := ali.dc.Stop(ctx, hwsec.PCAAgentDaemonInfo); err != nil {
+	if err := ali.dc.Stop(ctx, hwsec.PCAAgentDaemon); err != nil {
 		return errors.Wrap(err, "failed to stop normal pca agent")
 	}
 	defer func() {
 		if lastErr != nil {
-			if err := ali.dc.Start(ctx, hwsec.PCAAgentDaemonInfo); err != nil {
+			if err := ali.dc.Start(ctx, hwsec.PCAAgentDaemon); err != nil {
 				testing.ContextLog(ctx, "Failed to stop start normal pca agent: ", err)
 			}
 		}
@@ -184,7 +184,7 @@ func (ali *AttestationLocalInfra) disableFakePCAAgent(ctx context.Context) error
 			ali.fpca = nil
 		}
 	}
-	if err := ali.dc.Start(ctx, hwsec.PCAAgentDaemonInfo); err != nil {
+	if err := ali.dc.Start(ctx, hwsec.PCAAgentDaemon); err != nil {
 		testing.ContextLog(ctx, "Failed to start normal pca agent: ", err)
 		if firstErr == nil {
 			firstErr = errors.Wrap(err, "failed to start normal pca agent")
