@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee1a0ef1_12fe8f9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-03-08T09:05:17Z",
+      "side": 1,
+      "message": "Thanks for the information. Found another bug on my remote test migration CL, will try fix that first to see if the log can be collect correctly after that.",
+      "parentUuid": "802ae578_38866d52",
+      "revId": "5d91c2929f15e73ec1d8a73b26ef807743689e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eb47a27_81505904",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e624dd3b_e9d49326",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-03-08T09:05:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eb47a27_81505904",
+      "revId": "5d91c2929f15e73ec1d8a73b26ef807743689e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "757c0692_6e3566f1",
@@ -66,6 +102,30 @@
       "writtenOn": "2021-03-08T08:35:16Z",
       "side": 1,
       "message": "This is very specific to messages. Other logs (like Chrome) behave differently. Either use an enum to select the log (with correct logic) or keep this method specific for messages.",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "5d91c2929f15e73ec1d8a73b26ef807743689e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a1ad71b_4a0ded83",
+        "filename": "src/chromiumos/tast/local/syslog/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-03-08T09:05:17Z",
+      "side": 1,
+      "message": "Done by making it exclusive to collect messages.",
+      "parentUuid": "757c0692_6e3566f1",
       "range": {
         "startLine": 57,
         "startChar": 3,
