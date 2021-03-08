@@ -16,6 +16,57 @@
       "message": "Tast Owners: PTAL. Thanks!",
       "revId": "1365c00436e48f648cff917dade874df7f1b1470",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22c5be61_644c49ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-08T16:54:41Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective % nits",
+      "revId": "1365c00436e48f648cff917dade874df7f1b1470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8efd960a_5a33e229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-08T16:54:41Z",
+      "side": 1,
+      "message": "filepath.Join is safer here. For example, if cryptohome.UserPath ever returns a path that ends in \u0027/\u0027, then filepath.Join would avoid writing two consecutive \u0027/\u0027s.\n\n    targetPathInCros :\u003d filepath.Join(cryptohomeUserPath\", \"MyFiles\", \"Downloads\", filename)\n\nhttps://pkg.go.dev/path/filepath#Join",
+      "revId": "1365c00436e48f648cff917dade874df7f1b1470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a138e9e6_ca304f50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-08T16:54:41Z",
+      "side": 1,
+      "message": "You may want to include either the downloaded contents, the original contents, the diff, or (my recommendation) the number of bytes in each.",
+      "revId": "1365c00436e48f648cff917dade874df7f1b1470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
