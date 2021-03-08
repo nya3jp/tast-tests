@@ -47,7 +47,7 @@ func CCAUIPolicy(ctx context.Context, s *testing.State) {
 	}
 
 	opts := []chrome.Option{
-		chrome.Auth("tast-user@managedchrome.com", "test0000", "gaia-id"),
+		chrome.FakeLogin(chrome.Creds{User: "tast-user@managedchrome.com", Pass: "test0000", GAIAID: "gaia-id"}),
 		chrome.DMSPolicy(fdms.URL)}
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {

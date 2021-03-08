@@ -55,7 +55,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	)
 
 	// Enable device event log in Chrome logs for validation.
-	cr, err := chrome.New(ctx, chrome.Auth(username, password, gaiaID), chrome.ExtraArgs("--vmodule=device_event_log*=1"))
+	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: username, Pass: password, GAIAID: gaiaID}), chrome.ExtraArgs("--vmodule=device_event_log*=1"))
 	if err != nil {
 		s.Fatal("Failed to log in by Chrome: ", err)
 	}
