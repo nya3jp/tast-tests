@@ -85,7 +85,7 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 
 	// Choose to record the entire desktop/screen with no audio.
 	ui := New(tconn)
-	shareScreenDialog := nodewith.Name("Share your screen").ClassName("DesktopMediaPickerDialogView")
+	shareScreenDialog := nodewith.Name("Choose what to share").ClassName("DesktopMediaPickerDialogView")
 	entireDesktopButton := nodewith.ClassName("DesktopMediaSourceView").Role(role.Button).Ancestor(shareScreenDialog)
 	shareButton := nodewith.Name("Share").Role(role.Button).Ancestor(shareScreenDialog)
 
