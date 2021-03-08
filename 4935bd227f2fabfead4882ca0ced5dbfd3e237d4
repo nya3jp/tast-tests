@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4abddaea_1060fcfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-08T17:44:21Z",
+      "side": 1,
+      "message": "Done for the GrabScreenshot change.\n\nFor the pixel diff, because it\u0027s solid black, then I\u0027d expect it to always be zero (vs. another value which could get modulated more). However, I did have a test that used this same feature and I set that diff value at 1 about 3 years ago and it was never changed due to the test failing. So I\u0027ll go ahead and make the allowed diff 1 and we should be fine.",
+      "parentUuid": "e92dde68_5c80a63d",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "4935bd227f2fabfead4882ca0ced5dbfd3e237d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "daf2dd8b_30dbe5a4",
         "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-07T14:17:18Z",
       "side": 1,
       "message": "Could you create a bug for this and write it here?",
+      "range": {
+        "startLine": 387,
+        "startChar": 4,
+        "endLine": 388,
+        "endChar": 21
+      },
+      "revId": "4935bd227f2fabfead4882ca0ced5dbfd3e237d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d52312_2c4ef163",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-08T17:44:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daf2dd8b_30dbe5a4",
       "range": {
         "startLine": 387,
         "startChar": 4,
