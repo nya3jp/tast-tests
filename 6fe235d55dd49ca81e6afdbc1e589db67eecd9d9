@@ -18,6 +18,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "530ec331_502cb4f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_parent_permission.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-03-08T16:42:32Z",
+      "side": 1,
+      "message": "Quick note about why I replaced Roblox with Among Us for two reasons:\n1) I accidentally approved the Roblox installation on the test child account, so now the installation succeeds instead of asking for the parent permission. This test is now failing in prod [1]. Switching to Among Us will fix the test.\n2) Among Us is now the most installed game on the Play Store, surpassing Roblox [2].\n\n[1] https://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003darc.UnicornParentPermission\u0026dep\u003d\n[2] https://screenshot.googleplex.com/9kyTcFKz2AFSyFA.png",
+      "range": {
+        "startLine": 43,
+        "startChar": 28,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "6fe235d55dd49ca81e6afdbc1e589db67eecd9d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de6279b0_c18e8d01",
