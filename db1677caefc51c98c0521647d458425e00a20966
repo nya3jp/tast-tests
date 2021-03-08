@@ -16,6 +16,41 @@
       "message": "the change lgtm.\n\nIn R, does this mean the window focus leaves after snapping the window to left/right?",
       "revId": "db1677caefc51c98c0521647d458425e00a20966",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "523e02fe_318502c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-08T11:23:20Z",
+      "side": 1,
+      "message": "tast-owners@: Please take a look. Thank you.\nyhanada@: Thank you for reviewing.",
+      "revId": "db1677caefc51c98c0521647d458425e00a20966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea588345_67077ecc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-08T11:23:20Z",
+      "side": 1,
+      "message": "It\u0027s the input field focus. It\u0027s slight behavioral change in EditText and not related to https://crrev.com/c/2726270 (which is behavioral change in UIAutomator which now only accepts WaitForExist for a focused window).",
+      "parentUuid": "262dd95b_367cf3e9",
+      "revId": "db1677caefc51c98c0521647d458425e00a20966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
