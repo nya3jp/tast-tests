@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7220ccab_573c75a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/allow_cross_origin_auth_prompt_index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-08T12:36:58Z",
+      "side": 1,
+      "message": "Why not host this image using the server as well?",
+      "range": {
+        "startLine": 14,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "e2f4e9e21f5cffc2b6715b85ef3547db4d4ff716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
