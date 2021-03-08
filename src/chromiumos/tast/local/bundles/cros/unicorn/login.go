@@ -2,14 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package unicorn is used for writing Unicorn tests.
-package unicorn
+// Package familylink is used for writing Family Link tests.
+package familylink
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/testing"
 )
 
@@ -22,20 +23,18 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"unicorn.parentUser", "unicorn.parentPassword", "unicorn.childUser", "unicorn.childPassword"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
+		Fixture:      "familyLinkUnicornLogin",
 	})
 }
 
 func Login(ctx context.Context, s *testing.State) {
-	parentUser := s.RequiredVar("unicorn.parentUser")
-	parentPass := s.RequiredVar("unicorn.parentPassword")
-	childUser := s.RequiredVar("unicorn.childUser")
-	childPass := s.RequiredVar("unicorn.childPassword")
+	cr := s.FixtValue().(*familylink.FixtData).Chrome
+	tconn := s.FixtValue().(*familylink.FixtData).TestConn
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(),
-		chrome.Auth(childUser, childPass, "gaia-id"),
-		chrome.ParentAuth(parentUser, parentPass))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
+	if cr == nil {
+		s.Fatal("Failed to start Chrome")
 	}
-	defer cr.Close(ctx)
+	if tconn == nil {
+		s.Fatal("Failed to create test API connection")
+	}
 }
