@@ -39,6 +39,30 @@
       },
       "revId": "efb50e04db76cfc1022406c2bca6faf93588bce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd5fca2_15f058cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-08T21:10:08Z",
+      "side": 1,
+      "message": "Will add in upcoming CL",
+      "parentUuid": "e2b46332_24e99361",
+      "range": {
+        "startLine": 44,
+        "startChar": 42,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "efb50e04db76cfc1022406c2bca6faf93588bce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
