@@ -52,6 +52,24 @@
       "parentUuid": "35354dbd_dded3871",
       "revId": "dfd7d50fc72c9a1e78298a4a534e04832b97faa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4762f5f8_fa7677ec",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-08T14:49:03Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "a3abf4a1_70c56e81",
+      "revId": "dfd7d50fc72c9a1e78298a4a534e04832b97faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fb71855_90b45338",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-08T14:49:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea4b03aa_1763fcf4",
+      "range": {
+        "startLine": 212,
+        "startChar": 5,
+        "endLine": 212,
+        "endChar": 29
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8daa8bdd_7ab68247",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-08T10:37:52Z",
       "side": 1,
       "message": "as mentioned in another comment, remove it",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "645243bb_50416dff",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-08T14:49:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8daa8bdd_7ab68247",
       "range": {
         "startLine": 29,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "993a9dfe_52a8128f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_key_eviction.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-08T14:49:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec7e1d00_d83bf6a7",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 4
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85e26604_d62adb40",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-08T10:37:52Z",
       "side": 1,
       "message": "there is no need to assign err to nil",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 11
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f58cbb_ad63931c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-08T14:49:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85e26604_d62adb40",
       "range": {
         "startLine": 81,
         "startChar": 2,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6f2cc44_42ce6052",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-08T14:49:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ec63d64_1058893b",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 0
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5877bf1e_5c9d8cbc",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-03-08T10:37:52Z",
       "side": 1,
       "message": "I think you should use textexec.ExitCode method, instead of introducing new method. Moreover, HasExitError is more like a helper and does not depend on CmdRunner.\n\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go;l\u003d329?q\u003dexec.ExitError",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e6ede6_8b7e170c",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-08T14:49:03Z",
+      "side": 1,
+      "message": "The error returned by helper functions could be wrap a lot of error layer, so we would need to use errors.As to unwrap the error. textexec.ExitCode doesn\u0027t support to unwrap the error.",
+      "parentUuid": "5877bf1e_5c9d8cbc",
       "range": {
         "startLine": 46,
         "startChar": 0,
