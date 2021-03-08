@@ -27,8 +27,7 @@ func init() {
 			"gabormagda@google.com",
 			"chromeos-commercial-stability@google.com",
 		},
-		// TODO(crbug.com/1149286) Disable the test until it can be fixed
-		// Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.User,
 	})
@@ -61,7 +60,7 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 			warning: "PIN must be at least 6 digits",
 			policies: []policy.Policy{
 				&policy.PinUnlockMinimumLength{Stat: policy.StatusUnset},
-				&policy.QuickUnlockModeWhitelist{Val: []string{"PIN"}},
+				&policy.QuickUnlockModeAllowlist{Val: []string{"PIN"}},
 			},
 		},
 		{
@@ -70,7 +69,7 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 			warning: "PIN must be at least 4 digits",
 			policies: []policy.Policy{
 				&policy.PinUnlockMinimumLength{Val: 4},
-				&policy.QuickUnlockModeWhitelist{Val: []string{"PIN"}},
+				&policy.QuickUnlockModeAllowlist{Val: []string{"PIN"}},
 			},
 		},
 		{
@@ -79,7 +78,7 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 			warning: "PIN must be at least 8 digits",
 			policies: []policy.Policy{
 				&policy.PinUnlockMinimumLength{Val: 8},
-				&policy.QuickUnlockModeWhitelist{Val: []string{"PIN"}},
+				&policy.QuickUnlockModeAllowlist{Val: []string{"PIN"}},
 			},
 		},
 	} {
