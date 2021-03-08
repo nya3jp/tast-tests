@@ -28,9 +28,8 @@ func init() {
 			ExtraAttr:         []string{"informational", "group:mainline"},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "vm",
-			// TODO(b/179520931): Reenable when the test is passing.
-			// ExtraAttr:         []string{"informational", "group:mainline"},
+			Name:              "vm",
+			ExtraAttr:         []string{"informational", "group:mainline"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -148,13 +147,20 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		const fieldID = "org.chromium.arc.testapp.softinputmode:id/text"
 		field := d.Object(ui.ID(fieldID))
 		if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
-			s.Fatal("Failed to find field: ", err)
+			s.Fatal("Failed to find the field: ", err)
+		}
+		if err := field.Click(ctx); err != nil {
+			s.Fatal("Failed to click the field: ", err)
+		}
+		field = d.Object(ui.ID(fieldID), ui.Focused(true))
+		if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
+			s.Fatal("Failed to focus the field: ", err)
 		}
 		if err := field.Click(ctx); err != nil {
 			s.Fatal("Failed to click the field: ", err)
 		}
 		if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+			s.Fatal("Failed to wait for the virtual keyboard to be shown: ", err)
 		}
 
 		if err := field.Exists(ctx); err != nil {
