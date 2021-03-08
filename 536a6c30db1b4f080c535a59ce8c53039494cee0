@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8974adda_cd8758c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-03-08T19:48:39Z",
+      "side": 1,
+      "message": "Note that I did not move WifiService (suggested in https://buganizer.corp.google.com/issues/181998586#comment3). I can move this in a subsequent commit.",
+      "revId": "536a6c30db1b4f080c535a59ce8c53039494cee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
