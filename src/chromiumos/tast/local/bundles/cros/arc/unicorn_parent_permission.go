@@ -46,9 +46,15 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 	childUser := s.RequiredVar("arc.childUser")
 	childPass := s.RequiredVar("arc.childPassword")
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(),
-		chrome.Auth(childUser, childPass, "gaia-id"),
-		chrome.ParentAuth(parentUser, parentPass), chrome.ARCSupported(),
+	cr, err := chrome.New(ctx,
+		chrome.GAIALogin(chrome.Creds{
+			User:       childUser,
+			Pass:       childPass,
+			GAIAID:     "gaia-id",
+			ParentUser: parentUser,
+			ParentPass: parentPass,
+		}),
+		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

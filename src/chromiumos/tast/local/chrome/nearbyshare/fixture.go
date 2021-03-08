@@ -139,7 +139,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		} else {
 			s.Log("Logging in with default GAIA credentials")
 		}
-		f.opts = append(f.opts, chrome.Auth(crosUsername, crosPassword, ""), chrome.GAIALogin())
+		f.opts = append(f.opts, chrome.GAIALogin(chrome.Creds{User: crosUsername, Pass: crosPassword}))
 	}
 
 	cr, err := chrome.New(

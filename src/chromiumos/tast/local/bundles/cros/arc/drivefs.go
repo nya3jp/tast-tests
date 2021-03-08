@@ -54,8 +54,10 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chrome.ARCEnabled(),
-		chrome.Auth(s.RequiredVar("arc.Drivefs.user"), s.RequiredVar("arc.Drivefs.password"), ""),
-		chrome.GAIALogin(),
+		chrome.GAIALogin(chrome.Creds{
+			User: s.RequiredVar("arc.Drivefs.user"),
+			Pass: s.RequiredVar("arc.Drivefs.password"),
+		}),
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

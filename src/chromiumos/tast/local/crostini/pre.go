@@ -454,11 +454,11 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 
 	if p.loginType == loginGaia {
-		opts = append(opts, chrome.Auth(
-			s.RequiredVar("crostini.gaiaUsername"),
-			s.RequiredVar("crostini.gaiaPassword"),
-			s.RequiredVar("crostini.gaiaID"),
-		), chrome.GAIALogin())
+		opts = append(opts, chrome.GAIALogin(chrome.Creds{
+			User:   s.RequiredVar("crostini.gaiaUsername"),
+			Pass:   s.RequiredVar("crostini.gaiaPassword"),
+			GAIAID: s.RequiredVar("crostini.gaiaID"),
+		}))
 	}
 	if p.vmMode == dlc {
 		opts = append(opts, chrome.EnableFeatures("CrostiniUseDlc"))
