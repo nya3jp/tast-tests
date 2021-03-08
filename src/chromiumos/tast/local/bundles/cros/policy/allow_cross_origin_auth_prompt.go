@@ -1,0 +1,150 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package policy
+
+import (
+	"context"
+	"fmt"
+	"io"
+	"net"
+	"net/http"
+	"net/http/httptest"
+	"time"
+
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: AllowCrossOriginAuthPrompt,
+		Desc: "Checks the behavior of 3rd part resources on pages whether it shows auth prompt or not",
+		Contacts: []string{
+			"mohamedaomar@google.com", // Test author
+			"chromeos-commercial-stability@google.com",
+		},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
+		Pre:          pre.User,
+	})
+}
+
+// htmlPageWithCORSRequest returns html page with specified port.
+// Cross-Origin indicates any other origins (domain, scheme, or port) and since the test is using 127.0.0.1,
+// we must use localhost here instead, so that the browser could see this link as a different origin.
+func htmlPageWithCORSRequest(port int) string {
+	return fmt.Sprintf(`<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>AllowCrossOriginAuthPrompt</title>
+</head>
+<body>
+
+  <div id="imagePage">
+    <img src='http://localhost:%v' alt='img' id='img_id'>
+  </div>
+</body>
+</html>
+`, port)
+}
+
+func AllowCrossOriginAuthPrompt(ctx context.Context, s *testing.State) {
+	cr := s.PreValue().(*pre.PreData).Chrome
+	fdms := s.PreValue().(*pre.PreData).FakeDMS
+
+	// Connect to Test API to use it with the UI library.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	// Create a server with basic auth.
+	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("WWW-Authenticate", `Basic realm="Please enter your username and password for this site"`)
+		// Always deny access, so that it requires auth and shows the authentication prompt window.
+		w.WriteHeader(401)
+		w.Write([]byte("Unauthorised.\n"))
+	}))
+	defer authServer.Close()
+
+	port := authServer.Listener.Addr().(*net.TCPAddr).Port
+
+	// Create a server that will serve html page with a link that require auth (http://localhost:port).
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/html")
+		io.WriteString(w, htmlPageWithCORSRequest(port))
+	}))
+	defer server.Close()
+
+	for _, param := range []struct {
+		name       string
+		wantPrompt bool                               // wantPrompt is to check if the page should show an authentication prompt.
+		value      *policy.AllowCrossOriginAuthPrompt // value is the value of the policy.
+	}{
+		{
+			name:       "enabled",
+			wantPrompt: true,
+			value:      &policy.AllowCrossOriginAuthPrompt{Val: true},
+		},
+		{
+			name:       "disabled",
+			wantPrompt: false,
+			value:      &policy.AllowCrossOriginAuthPrompt{Val: false},
+		},
+		{
+			name:       "unset",
+			wantPrompt: false,
+			value:      &policy.AllowCrossOriginAuthPrompt{Stat: policy.StatusUnset},
+		},
+	} {
+		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name+".txt")
+
+			// Perform cleanup.
+			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
+				s.Fatal("Failed to clean up: ", err)
+			}
+
+			// Update policies.
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
+				s.Fatal("Failed to update policies: ", err)
+			}
+
+			conn, err := cr.NewConn(ctx, "")
+			if err != nil {
+				s.Fatal("Failed to connect to the settings page: ", err)
+			}
+
+			// Open a page that contains a link which requires authentication.
+			if err := conn.Navigate(ctx, server.URL); err != nil {
+				s.Fatal("Failed to connect to chrome: ", err)
+			}
+			defer conn.Close()
+
+			// Create a uiauto.Context with default timeout.
+			ui := uiauto.New(tconn)
+
+			promptWindow := nodewith.Name("Sign in").Role(role.Window)
+			if param.wantPrompt {
+				if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(promptWindow.First())(ctx); err != nil {
+					s.Fatal("Failed to find the prompt window for authentication: ", err)
+				}
+			} else {
+				if err := ui.EnsureGoneFor(promptWindow, 10*time.Second)(ctx); err != nil {
+					s.Fatal("Failed to make sure no authentication prompt window popup: ", err)
+				}
+			}
+		})
+	}
+}
