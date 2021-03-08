@@ -46,7 +46,7 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	cr, err := chrome.New(ctx, chrome.Auth(username, password, gaiaID))
+	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: username, Pass: password, GAIAID: gaiaID}))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
