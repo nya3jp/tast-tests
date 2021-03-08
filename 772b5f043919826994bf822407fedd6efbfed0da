@@ -16,6 +16,23 @@
       "message": "Happy Monday! Thanks for changes.",
       "revId": "772b5f043919826994bf822407fedd6efbfed0da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a383b2_35ef7574",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-08T10:25:14Z",
+      "side": 1,
+      "message": "still LGTM",
+      "revId": "772b5f043919826994bf822407fedd6efbfed0da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
