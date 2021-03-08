@@ -45,13 +45,13 @@ func init() {
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val:               "arc_print_ippusb_golden.pdf",
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(unstableModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(stableModels...)),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
 		}, {
 			Name:              "unstable",
 			Val:               "arc_print_ippusb_golden.pdf",
-			ExtraHardwareDeps: hwdep.D(hwdep.Model(unstableModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(stableModels...)),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
 		}, {
@@ -63,100 +63,71 @@ func init() {
 	})
 }
 
-// unstableModels is a list of models that are too flaky for the CQ.
-var unstableModels = []string{
-	"asuka",
-
-	// auron:
-	"paine",
-
-	"banon",
-	"betty",
-	"caroline",
-	"cave",
-	"celes",
-	"cyan",
+// stableModels is a list of models stable enough for the CQ.
+var stableModels = []string{
+	"chell",
 
 	// dedede:
-	"drawman",
-	"madoo",
-	"maglia",
+	"boten",
+	"drawcia",
+	"drawlat",
+	"magolor",
 
-	"edgar",
-	"elm",
-	"eve",
+	"drallion",
+	"drallion360",
+	"gandof",
 
 	// grunt:
-	"barla",
-	"careena",
-	"kasumi",
-	"treeya",
-
-	"hana",
+	"treeya360",
 
 	// hatch:
-	"dragonair",
-	"helios",
-	"kled",
-	"kohaku",
-	"nightfury",
-	"willow",
-
-	// jacuzzi:
-	"burnet",
-	"esche",
-	"fennel",
-	"fennel14",
-	"juniper",
-	"kappa",
-
-	"kefka",
-
-	// kukui:
-	"kodama",
-	"krane",
-
-	"lars",
-	"lulu",
+	"akemi",
+	"dratini",
+	"jinlon",
+	"kindred",
 
 	// octopus:
-	"ampton",
-	"blooglet",
-	"bluebird",
-	"bobba",
-	"dood",
-	"dorp",
-	"fleex",
-	"foob360",
-	"garg",
-	"laser14",
-	"lick",
-	"phaser360",
-	"sparky",
-	"vorticon",
+	"bloog",
+	"blooguard",
+	"blorb",
+	"bobba360",
+	"casta",
+	"droid",
+	"foob",
+	"garfour",
+	"garg360",
+	"grabbiter",
+	"meep",
+	"mimrock",
+	"nospike",
+	"orbatrix",
+	"phaser",
+	"sparky360",
+	"vortininja",
 
-	"sarien",
+	// puff:
+	"duffy",
+	"puff",
+	"wyvern",
 
-	// trogdor:
-	"lazor",
-	"limozeen",
-	"pompom",
+	"reks",
+	"relm",
+	"samus",
 
-	// veyron:
-	"fievel",
-	"tiger",
+	// sarien:
+	"arcada",
 
-	"volteer2",
+	"sentry",
+	"ultima",
 
-	"wizpig",
+	// volteer:
+	"delbin",
+	"eldrid",
+	"voxel",
 
 	// zork:
-	"berknip",
-	"dirinboz",
-	"ezkinil",
-	"morphius",
-	"vilboz",
-	"woomax",
+	"vilboz14",
+	"vilboz360",
 }
 
 func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
