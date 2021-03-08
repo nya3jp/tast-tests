@@ -1,0 +1,3 @@
+[submodule "src/chromiumos/tast/remote/wificell/ixchariot/src/chromiumos/tast/remote/wificell/ixchariot/go-restful"]
+	path = src/chromiumos/tast/remote/wificell/ixchariot/src/chromiumos/tast/remote/wificell/ixchariot/go-restful
+	url = sso://github/emicklei/go-restful
