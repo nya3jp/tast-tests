@@ -70,12 +70,24 @@ func EnableArc(ctx context.Context, s *testing.State) {
 
 	accountType := s.Param().(accountTypeTestParam)
 	if accountType.unicorn {
-		cr, err = chrome.New(ctx, chrome.GAIALogin(),
-			chrome.Auth(childUser, childPass, "gaia-id"),
-			chrome.ParentAuth(parentUser, parentPass), chrome.ARCSupported())
+		cr, err = chrome.New(
+			ctx,
+			chrome.GAIALogin(chrome.Creds{
+				User:       childUser,
+				Pass:       childPass,
+				GAIAID:     "gaia-id",
+				ParentUser: parentUser,
+				ParentPass: parentPass,
+			}),
+			chrome.ARCSupported())
 	} else {
-		cr, err = chrome.New(ctx, chrome.GAIALogin(),
-			chrome.Auth(parentUser, parentPass, "gaia-id"),
+		cr, err = chrome.New(
+			ctx,
+			chrome.GAIALogin(chrome.Creds{
+				User:   parentUser,
+				Pass:   parentPass,
+				GAIAID: "gaia-id",
+			}),
 			chrome.ARCSupported(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	}

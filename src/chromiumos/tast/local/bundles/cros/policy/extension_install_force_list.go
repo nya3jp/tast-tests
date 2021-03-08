@@ -49,7 +49,7 @@ func ExtensionInstallForceList(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	cr, err := chrome.New(ctx, chrome.Auth(username, password, ""), chrome.GAIALogin(), chrome.ProdPolicy())
+	cr, err := chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ProdPolicy())
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
