@@ -154,7 +154,7 @@ func USBBouncer(ctx context.Context, s *testing.State) {
 	m := seccomp.NewPolicyGenerator()
 	testUsbBouncer(ctx, s, m, d, false /*withChrome*/, enforceSeccomp /*withSeccomp*/)
 
-	cr, err := chrome.New(ctx, chrome.Auth(defaultUser, defaultPass, defaultGaiaID))
+	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: defaultUser, Pass: defaultPass, GAIAID: defaultGaiaID}))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

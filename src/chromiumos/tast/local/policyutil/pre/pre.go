@@ -99,7 +99,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx,
-		chrome.Auth(Username, Password, GaiaID),
+		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password, GAIAID: GaiaID}),
 		chrome.DMSPolicy(fdms.URL))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
