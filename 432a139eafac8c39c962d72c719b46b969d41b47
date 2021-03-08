@@ -16,6 +16,24 @@
       "message": "LGTM % Please solve the code conflict.",
       "revId": "432a139eafac8c39c962d72c719b46b969d41b47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53cbb487_d66b5a29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-08T17:57:55Z",
+      "side": 1,
+      "message": "Hi, Sure. I will do that. Thanks.",
+      "parentUuid": "faa0d39a_a4f90ace",
+      "revId": "432a139eafac8c39c962d72c719b46b969d41b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
