@@ -43,7 +43,7 @@ func ExistingUserLogin(ctx context.Context, s *testing.State) {
 
 	// Log in and log out to create a user pod on the login screen.
 	func() {
-		cr, err := chrome.New(ctx, chrome.Auth(username, password, ""), chrome.GAIALogin())
+		cr, err := chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}))
 		if err != nil {
 			s.Fatal("Chrome login failed: ", err)
 		}

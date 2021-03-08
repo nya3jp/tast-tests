@@ -164,8 +164,9 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 	chromeArgs := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
 
 	opts := []chrome.Option{
-		chrome.ARCSupported(), chrome.RestrictARCCPU(), chrome.GAIALogin(),
-		chrome.Auth(request.Username, request.Password, ""),
+		chrome.ARCSupported(),
+		chrome.RestrictARCCPU(),
+		chrome.GAIALogin(chrome.Creds{User: request.Username, Pass: request.Password}),
 		chrome.ExtraArgs(chromeArgs...)}
 
 	if !request.InitialBoot {
