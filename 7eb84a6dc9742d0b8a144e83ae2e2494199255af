@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "46e485ae_58e0d238",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-08T17:57:09Z",
+      "side": 1,
+      "message": "Hi, Let me check. If tastlint allows me do that. Thanks.",
+      "parentUuid": "fed81d3a_15725207",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "7eb84a6dc9742d0b8a144e83ae2e2494199255af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9d359da8_0119a78c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5964dfd_4c68bc2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-08T17:57:09Z",
+      "side": 1,
+      "message": "Hi, ContinueWithEmailButton doesn\u0027t necessarily appear on all devices. Log is needed here to avoid flaky launch failure. Thanks.",
+      "parentUuid": "74da349f_ba1fa0e9",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 7
+      },
+      "revId": "7eb84a6dc9742d0b8a144e83ae2e2494199255af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5bd7fb8_9f431e45",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-07T22:24:50Z",
       "side": 1,
       "message": "Could you put these 2 into distinct if conditions? if the first fails I imagine we can\u0027t proceed to the second. If we can, you might want to add a comment on why.",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 64
+      },
+      "revId": "7eb84a6dc9742d0b8a144e83ae2e2494199255af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ec9ca1_83cdd3f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-08T17:57:09Z",
+      "side": 1,
+      "message": "Hi, I think adding comment is not needed here. Thanks.",
+      "parentUuid": "d5bd7fb8_9f431e45",
       "range": {
         "startLine": 106,
         "startChar": 3,
