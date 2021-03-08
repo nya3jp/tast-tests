@@ -43,9 +43,10 @@ func OobeArc(ctx context.Context, s *testing.State) {
 	username := s.RequiredVar("arc.username")
 	password := s.RequiredVar("arc.password")
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.DontSkipOOBEAfterLogin(),
+	cr, err := chrome.New(ctx,
+		chrome.DontSkipOOBEAfterLogin(),
 		chrome.ARCSupported(),
-		chrome.Auth(username, password, "gaia-id"))
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password, GAIAID: "gaia-id"}))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

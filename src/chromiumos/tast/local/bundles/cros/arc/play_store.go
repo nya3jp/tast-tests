@@ -43,7 +43,9 @@ func PlayStore(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar("arc.PlayStore.password")
 
 	// Setup Chrome.
-	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(),
+	cr, err := chrome.New(ctx,
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password, GAIAID: "gaia-id"}),
+		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

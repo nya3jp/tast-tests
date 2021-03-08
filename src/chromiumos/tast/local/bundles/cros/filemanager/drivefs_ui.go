@@ -48,7 +48,7 @@ func DrivefsUI(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar("filemanager.DrivefsUI.password")
 
 	// Start up Chrome.
-	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, ""))
+	cr, err := chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

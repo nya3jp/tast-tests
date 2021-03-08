@@ -47,9 +47,14 @@ func init() {
 
 func TwoUsersInstall(ctx context.Context, s *testing.State) {
 	// Login options for the first user.
-	optsUser1 := []chrome.Option{chrome.Auth(s.RequiredVar("crostini.gaiaUsername"), s.RequiredVar("crostini.gaiaPassword"), s.RequiredVar("crostini.gaiaID")),
+	optsUser1 := []chrome.Option{
+		chrome.GAIALogin(chrome.Creds{
+			User:   s.RequiredVar("crostini.gaiaUsername"),
+			Pass:   s.RequiredVar("crostini.gaiaPassword"),
+			GAIAID: s.RequiredVar("crostini.gaiaID"),
+		}),
 		chrome.ExtraArgs("--vmodule=crostini*=1"),
-		chrome.GAIALogin()}
+	}
 
 	// Prepare to install Crostini for the first user.
 	var firstCr *chrome.Chrome

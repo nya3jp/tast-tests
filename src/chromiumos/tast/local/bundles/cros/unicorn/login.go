@@ -31,9 +31,14 @@ func Login(ctx context.Context, s *testing.State) {
 	childUser := s.RequiredVar("unicorn.childUser")
 	childPass := s.RequiredVar("unicorn.childPassword")
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(),
-		chrome.Auth(childUser, childPass, "gaia-id"),
-		chrome.ParentAuth(parentUser, parentPass))
+	cr, err := chrome.New(ctx,
+		chrome.GAIALogin(chrome.Creds{
+			User:       childUser,
+			Pass:       childPass,
+			GAIAID:     "gaia-id",
+			ParentUser: parentUser,
+			ParentPass: parentPass,
+		}))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

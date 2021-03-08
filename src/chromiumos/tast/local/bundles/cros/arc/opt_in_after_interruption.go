@@ -134,8 +134,7 @@ func OptInAfterInterruption(ctx context.Context, s *testing.State) {
 			cr, err := chrome.New(
 				ctx,
 				chrome.ARCSupported(),
-				chrome.GAIALogin(),
-				chrome.Auth(username, password, ""),
+				chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 				chrome.ExtraArgs(args...),
 				chrome.KeepState(),
 			)
@@ -194,8 +193,7 @@ func attemptOptIn(ctx context.Context, username, password string, args []string,
 	cr, err := chrome.New(
 		ctx,
 		chrome.ARCSupported(),
-		chrome.GAIALogin(),
-		chrome.Auth(username, password, ""),
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.ExtraArgs(args...),
 	)
 	if err != nil {

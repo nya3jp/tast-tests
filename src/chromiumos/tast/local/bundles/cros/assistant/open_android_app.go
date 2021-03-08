@@ -33,15 +33,16 @@ func init() {
 func OpenAndroidApp(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
-		chrome.ARCEnabled(),
-		chrome.Auth(s.RequiredVar("assistant.username"), s.RequiredVar("assistant.password"), ""),
+		chrome.GAIALogin(chrome.Creds{
+			User: s.RequiredVar("assistant.username"),
+			Pass: s.RequiredVar("assistant.password"),
+		}),
 		chrome.EnableFeatures("AssistantAppSupport"),
 		chrome.ExtraArgs(
 			"--arc-disable-app-sync",
 			"--arc-disable-locale-sync",
 			"--arc-play-store-auto-update=off"),
 		assistant.VerboseLogging(),
-		chrome.GAIALogin(),
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

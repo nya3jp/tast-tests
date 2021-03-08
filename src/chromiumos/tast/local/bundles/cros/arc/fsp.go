@@ -66,8 +66,7 @@ func Fsp(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chrome.ARCEnabled(),
-		chrome.Auth(s.RequiredVar("arc.Fsp.user"), s.RequiredVar("arc.Fsp.password"), ""),
-		chrome.GAIALogin(),
+		chrome.GAIALogin(chrome.Creds{User: s.RequiredVar("arc.Fsp.user"), Pass: s.RequiredVar("arc.Fsp.password")}),
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

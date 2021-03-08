@@ -36,7 +36,7 @@ func (a *AlignmentService) ManualAlign(ctx context.Context, req *pb.ManualAlignR
 	defer srv.Close()
 
 	cr, err := chrome.New(ctx, chrome.ARCDisabled(),
-		chrome.Auth(req.Username, req.Password, ""), chrome.GAIALogin(),
+		chrome.GAIALogin(chrome.Creds{User: req.Username, Pass: req.Password}),
 		chrome.KeepState(),
 		// Avoid the need to grant camera/microphone permissions.
 		chrome.ExtraArgs("--use-fake-ui-for-media-stream"))

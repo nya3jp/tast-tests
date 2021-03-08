@@ -55,7 +55,7 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.C
 		chrome.ExtraArgs("--nearby-share-verbose-logging"),
 	}
 	if req.Username != "" {
-		nearbyOpts = append(nearbyOpts, chrome.Auth(req.Username, req.Password, ""), chrome.GAIALogin())
+		nearbyOpts = append(nearbyOpts, chrome.GAIALogin(chrome.Creds{User: req.Username, Pass: req.Password}))
 	}
 	cr, err := chrome.New(ctx, nearbyOpts...)
 	if err != nil {
