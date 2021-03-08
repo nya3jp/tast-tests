@@ -145,6 +145,30 @@
       },
       "revId": "536a6c30db1b4f080c535a59ce8c53039494cee0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c403d31_803d4461",
+        "filename": "src/chromiumos/tast/services/cros/wifi/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-08T20:14:59Z",
+      "side": 1,
+      "message": "Yep. I should probably just provide links to be more specific, but you found it 😊",
+      "parentUuid": "3588223d_181d46ff",
+      "range": {
+        "startLine": 5,
+        "startChar": 49,
+        "endLine": 5,
+        "endChar": 53
+      },
+      "revId": "536a6c30db1b4f080c535a59ce8c53039494cee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
