@@ -25,6 +25,7 @@ import (
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/ready"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -199,11 +200,9 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 		cancel()
 	}
 
-	// Store the current log state.
-	oldInfo, err := os.Stat(varLogMessages)
+	endLogFn, err := syslog.CollectLogs(syslog.MessageFile)
 	if err != nil {
-		s.Logf("Saving log position: failed to stat %s: %v", varLogMessages, err)
-		oldInfo = nil
+		s.Log("Saving log position: ", err)
 	}
 
 	// Ensure disk space and record the current free space.
@@ -253,8 +252,8 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 			faillog.Save(ctx)
 		}
 
-		if oldInfo != nil {
-			if err := copyLogs(ctx, oldInfo, s.OutDir()); err != nil {
+		if endLogFn != nil {
+			if err := endLogFn(ctx, s.OutDir()); err != nil {
 				s.Log("Failed to copy logs: ", err)
 			}
 		}
