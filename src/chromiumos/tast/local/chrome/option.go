@@ -8,7 +8,6 @@ import (
 	"math/rand"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/cryptohome"
 )
@@ -57,44 +56,6 @@ func VKEnabled() Option {
 	}
 }
 
-// Auth returns an Option that can be passed to New to configure the login credentials used by Chrome.
-// Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
-//
-// DEPRECATED: Use GAIALogin with a Creds parameter, or FakeLogin.
-func Auth(user, pass, gaiaID string) Option {
-	return func(cfg *config.Config) error {
-		cfg.Creds.User = user
-		cfg.Creds.Pass = pass
-		cfg.Creds.GAIAID = gaiaID
-		return nil
-	}
-}
-
-// Contact returns an Option that can be passed to New to configure the contact email used by Chrome for
-// cross account challenge (go/ota-security). Please do not check in real credentials to public repositories
-// when using this in conjunction with GAIALogin.
-//
-// DEPRECATED: Use GAIALogin with a Creds parameter.
-func Contact(contact string) Option {
-	return func(cfg *config.Config) error {
-		cfg.Creds.Contact = contact
-		return nil
-	}
-}
-
-// ParentAuth returns an Option that can be passed to New to configure the login credentials of a parent user.
-// If the GAIA account specified by Auth is a supervised child user, this credential is used to go through the unicorn login flow.
-// Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
-//
-// DEPRECATED: Use GAIALogin with a Creds parameter.
-func ParentAuth(parentUser, parentPass string) Option {
-	return func(cfg *config.Config) error {
-		cfg.Creds.ParentUser = parentUser
-		cfg.Creds.ParentPass = parentPass
-		return nil
-	}
-}
-
 // KeepState returns an Option that can be passed to New to preserve the state such as
 // files under /home/chronos and the user's existing cryptohome (if any) instead of
 // wiping them before logging in.
@@ -116,19 +77,10 @@ func DeferLogin() Option {
 
 // GAIALogin returns an Option that can be passed to New to perform a real
 // GAIA-based login rather than the default fake login.
-//
-// Pass exactly one Creds to set GAIA credentials. Passing no creds is accepted
-// for backward compatibility, but it is deprecated. It is an error to pass two
-// or more creds.
-func GAIALogin(creds ...Creds) Option {
+func GAIALogin(creds Creds) Option {
 	return func(cfg *config.Config) error {
 		cfg.LoginMode = config.GAIALogin
-		if len(creds) >= 2 {
-			return errors.Errorf("chrome.GAIALogin accepts zero or one Creds; got %d", len(creds))
-		}
-		if len(creds) == 1 {
-			cfg.Creds = creds[0]
-		}
+		cfg.Creds = creds
 		return nil
 	}
 }
