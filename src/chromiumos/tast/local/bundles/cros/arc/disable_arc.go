@@ -94,6 +94,7 @@ func DisableArc(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Optin to PlayStore.
 	if err := optin.Perform(ctx, cr, tconn); err != nil {
