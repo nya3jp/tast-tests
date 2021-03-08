@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20997ffe_5cea49b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-08T17:56:02Z",
+      "side": 1,
+      "message": "Sure, I wrote 10 as a very large margin. we can see the results later.",
+      "parentUuid": "4abddaea_1060fcfe",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "4935bd227f2fabfead4882ca0ced5dbfd3e237d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daf2dd8b_30dbe5a4",
