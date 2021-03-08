@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f64c96dc_a87bea6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-08T15:17:14Z",
+      "side": 1,
+      "message": "huge nit: it says 7 minutes but code increases it to 6?",
+      "range": {
+        "startLine": 9,
+        "startChar": 116,
+        "endLine": 9,
+        "endChar": 129
+      },
+      "revId": "041faabbb109bde9235d6eb836e2d8aaabdaa9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "749fbe16_bc7173c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-08T15:17:14Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "041faabbb109bde9235d6eb836e2d8aaabdaa9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abb35a31_80edc2a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
         "patchSetId": 2
