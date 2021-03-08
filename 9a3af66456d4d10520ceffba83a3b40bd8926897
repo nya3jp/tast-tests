@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e16268_05fa6d72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-08T20:34:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec150171_4ddb843b",
+      "revId": "9a3af66456d4d10520ceffba83a3b40bd8926897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e446becf_b3c28d1a",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-08T20:23:24Z",
       "side": 1,
       "message": "This cap says H264 but the sequence if HEVC. Intended?\n\nSame in the next 3 entries.",
+      "range": {
+        "startLine": 44,
+        "startChar": 36,
+        "endLine": 44,
+        "endChar": 53
+      },
+      "revId": "9a3af66456d4d10520ceffba83a3b40bd8926897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe82d4d1_dd2adf08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-08T20:34:58Z",
+      "side": 1,
+      "message": "Thanks, good catch!",
+      "parentUuid": "e446becf_b3c28d1a",
       "range": {
         "startLine": 44,
         "startChar": 36,
