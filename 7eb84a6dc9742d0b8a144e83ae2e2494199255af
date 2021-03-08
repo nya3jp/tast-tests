@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe5e9537_f937820d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-08T23:51:29Z",
+      "side": 1,
+      "message": "Please resolve once updated.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "parentUuid": "46e485ae_58e0d238",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "7eb84a6dc9742d0b8a144e83ae2e2494199255af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9d359da8_0119a78c",
