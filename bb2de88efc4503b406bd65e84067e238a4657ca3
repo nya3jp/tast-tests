@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328cf69a_86182bd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-08T09:35:44Z",
+      "side": 1,
+      "message": "Please also run multiple tests to see that the previous split still works.",
+      "revId": "bb2de88efc4503b406bd65e84067e238a4657ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87685bc2_0a5f6ae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-08T09:35:44Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "bb2de88efc4503b406bd65e84067e238a4657ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e8b5db_42f59ee7",
+        "filename": "src/chromiumos/tast/local/syslog/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-08T09:35:44Z",
+      "side": 1,
+      "message": "each call to the returned",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "bb2de88efc4503b406bd65e84067e238a4657ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f65ef7_19bd3a49",
+        "filename": "src/chromiumos/tast/local/syslog/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-08T09:35:44Z",
+      "side": 1,
+      "message": "Maybe rename to CollectSyslog?",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "bb2de88efc4503b406bd65e84067e238a4657ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0ef86d_a5e49bc8",
+        "filename": "src/chromiumos/tast/local/syslog/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-08T09:35:44Z",
+      "side": 1,
+      "message": "nit: end comment with a .",
+      "revId": "bb2de88efc4503b406bd65e84067e238a4657ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ad4bb2_0e150872",
+        "filename": "src/chromiumos/tast/local/syslog/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-08T09:35:44Z",
+      "side": 1,
+      "message": "nit: end comment with a .",
+      "revId": "bb2de88efc4503b406bd65e84067e238a4657ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
