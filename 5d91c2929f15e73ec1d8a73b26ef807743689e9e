@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef69e7b9_7f5a6a0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-03-08T06:36:10Z",
+      "side": 1,
+      "message": "Test in another draft CL and find that by simply call |CollectLogs| and |endLogFn| some logs at the end won\u0027t be collected. Is those missing logs still cached in syslog? Probably need to flush syslog somehow.",
+      "revId": "5d91c2929f15e73ec1d8a73b26ef807743689e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
