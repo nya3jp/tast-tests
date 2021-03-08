@@ -65,7 +65,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 
 	const username = "test@crashwsec.bigr.name"
 
-	resetVault := func() {
+	resetVault := func(ctx context.Context) {
 		if _, err := cryptohome.Unmount(ctx, username); err != nil {
 			s.Fatal("Failed to remove user vault: ", err)
 		}
@@ -76,16 +76,16 @@ func Attestation(ctx context.Context, s *testing.State) {
 
 	s.Log("Resetting vault in case the cryptohome status is contaminated")
 	// Okay to call it even if the vault doesn't exist.
-	resetVault()
+	resetVault(ctx)
 
 	if err := cryptohome.MountVault(ctx, username, "testpass", "fake_label", true /* create */, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 
-	defer func() {
+	defer func(ctx context.Context) {
 		s.Log("Resetting vault after use")
-		resetVault()
-	}()
+		resetVault(ctx)
+	}(ctx)
 
 	for _, param := range []struct {
 		name     string
