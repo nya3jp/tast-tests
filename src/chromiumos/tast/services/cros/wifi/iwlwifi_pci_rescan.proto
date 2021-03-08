@@ -4,11 +4,11 @@
 
 syntax = "proto3";
 
-package tast.cros.network;
+package tast.cros.wifi;
 
 import "google/protobuf/empty.proto";
 
-option go_package = "chromiumos/tast/services/cros/network";
+option go_package = "chromiumos/tast/services/cros/wifi";
 
 // IwlwifiPCIRescan provides an interface to run IwlwifiPCIRescan test remotely.
 service IwlwifiPCIRescan {

@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -35,7 +36,7 @@ func RemoteIwlwifiPCIRescan(ctx context.Context, s *testing.State) {
 	}
 	defer r.Close(ctx)
 
-	client := network.NewIwlwifiPCIRescanClient(r.Conn)
+	client := wifi.NewIwlwifiPCIRescanClient(r.Conn)
 
 	if _, err := client.RemoveIfaceAndWaitForRecovery(ctx, &empty.Empty{}); err != nil {
 		s.Error("Test failed with reason: ", err)
