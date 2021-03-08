@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7969c4d3_f7427b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-08T04:33:34Z",
+      "side": 1,
+      "message": "nit: I\u0027d swap the condition: if on { wpArg \u003d \"on\" }",
+      "range": {
+        "startLine": 232,
+        "startChar": 4,
+        "endLine": 232,
+        "endChar": 7
+      },
+      "revId": "390b8df23fbb06cb3f89fd73453d79d029bd556d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec6966d_172faaf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-08T04:33:34Z",
+      "side": 1,
+      "message": "nit: you can inline it.",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 4
+      },
+      "revId": "390b8df23fbb06cb3f89fd73453d79d029bd556d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd5049c0_c56234fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-08T04:33:34Z",
+      "side": 1,
+      "message": "Could you check error here, instead of inside the function?",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 332,
+        "endChar": 15
+      },
+      "revId": "390b8df23fbb06cb3f89fd73453d79d029bd556d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
