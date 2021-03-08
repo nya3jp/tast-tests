@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -464,6 +465,46 @@ func TouchScreenScroll(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Fatal("Failed to scrollForward: ", err)
 	}
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
+// MouseClick func verifies mouse click work successfully in the app without crash or ANR.
+func MouseClick(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	var (
+		xCoordinate int
+		yCoordinate int
+	)
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	if tabletModeEnabled {
+		s.Log("Device is in tablet mode. Skipping test")
+		return
+	}
+	checkUIElement := d.Object(ui.Clickable(true), ui.Focusable(true), ui.Enabled(true))
+	if err := checkUIElement.WaitForExists(ctx, DefaultUITimeout); err != nil {
+		s.Log("checkUIElement doesn't exist and skipped mouse click: ", err)
+		return
+	}
+	s.Log("checkUIElement does exists")
+	if uiElementBounds, err := checkUIElement.GetBounds(ctx); err != nil {
+		s.Log("Failed to get uiElementBounds and skipped mouse click : ", err)
+	} else {
+		s.Log("uiElementBounds: ", uiElementBounds)
+		xCoordinate = uiElementBounds.Left
+		s.Log("uiElementBoundsBeforeMouseClick.Left, Xcoordinate: ", xCoordinate)
+		yCoordinate = uiElementBounds.Top
+		s.Log("uiElementBounds.Top, Ycoordinate: ", yCoordinate)
+
+		// To perform mouse click.
+		out, err := a.Command(ctx, "input", "mouse", "tap", strconv.Itoa(xCoordinate), strconv.Itoa(yCoordinate)).Output(testexec.DumpLogOnError)
+		if err != nil {
+			s.Fatal("Failed to perform mouse click: ", err)
+		} else {
+			s.Log("Performed mouse click: ", string(out))
+		}
+		DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+	}
 }
 
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
