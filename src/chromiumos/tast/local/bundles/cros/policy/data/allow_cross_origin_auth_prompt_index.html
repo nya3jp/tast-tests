@@ -1,0 +1,20 @@
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>AllowCrossOriginAuthPrompt</title>
+</head>
+
+<body>
+  <div id="imagePage">
+    <!-- Cross-Origin indicates any other origins (domain, scheme, or port) and since the test is using 127.0.0.1,
+         we must use localhost here instead so that the browser could see this link as a different origin -->
+    <img src='http://localhost:8080' alt='img' id='img_id'>
+  </div>
+</body>
+
+</html>
