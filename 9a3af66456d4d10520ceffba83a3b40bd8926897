@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec150171_4ddb843b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-08T20:23:24Z",
+      "side": 1,
+      "message": "These CL description is great, could we add it to the README.md?\nWe direct OEMs/partners to that.",
+      "revId": "9a3af66456d4d10520ceffba83a3b40bd8926897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e446becf_b3c28d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-08T20:23:24Z",
+      "side": 1,
+      "message": "This cap says H264 but the sequence if HEVC. Intended?\n\nSame in the next 3 entries.",
+      "range": {
+        "startLine": 44,
+        "startChar": 36,
+        "endLine": 44,
+        "endChar": 53
+      },
+      "revId": "9a3af66456d4d10520ceffba83a3b40bd8926897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
