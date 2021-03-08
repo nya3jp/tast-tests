@@ -93,6 +93,30 @@
       },
       "revId": "e2f4e9e21f5cffc2b6715b85ef3547db4d4ff716",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08514ac_f59a5835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/allow_cross_origin_auth_prompt_index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-08T17:07:03Z",
+      "side": 1,
+      "message": "I would wait until the test is written correctly before merging. We should not depend on resources on the internet.\n\nWe will be requesting that image repeatedly. Is the owner expecting the traffic from our test fleet?",
+      "parentUuid": "f25c9541_a9b18d15",
+      "range": {
+        "startLine": 14,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "e2f4e9e21f5cffc2b6715b85ef3547db4d4ff716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
