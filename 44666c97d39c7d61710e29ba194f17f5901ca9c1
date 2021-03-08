@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008780368",
+      "url": "https://android-build.googleplex.com/builds/treetop/chromium-review/2695052?revision\u003d18",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "eaac3583_79b899b2",
+        "filename": "android/ArcDownloadManagerTest/src/org/chromium/arc/testapp/downloadmanager/MainActivity.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1493702
+      },
+      "writtenOn": "2021-03-08T22:42:52Z",
+      "side": 1,
+      "message": "Prefer to use getSystemService(DownloadManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 60,
+        "startChar": 27,
+        "endLine": 60,
+        "endChar": 62
+      },
+      "revId": "44666c97d39c7d61710e29ba194f17f5901ca9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
