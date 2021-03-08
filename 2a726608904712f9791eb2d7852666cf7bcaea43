@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4eb1d95a_4ef1447d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T23:06:01Z",
+      "side": 1,
+      "message": "I think you mentioned about how this test case is running within Cienet, but this code does not work that way in Google\u0027s testing lab.\n\n* \u0027tablet_mode\u0027 software dependency can match with various clamshell-default devices, such as convertibles and detachables.\n* there\u0027s no way to exclude running clamshell case on tablet-devices.  Actually any tablet device can switch to clamshell mode UI.\n\nTo satisfy your condition, I guess you want to either of:\n* stop splitting clamshell and tablet subtests.\n* then, don\u0027t call EnsureTabletModeEnabled.\n* probably use ash.GetTabletModeEnabled to add a log message of whether it is in tablet mode or not.\n\nThat way the device should run in its natural mode -- i.e. clamshell on most devices but tablet on pure tablet device.",
+      "parentUuid": "9688cb5e_9723b9a5",
+      "range": {
+        "startLine": 45,
+        "startChar": 20,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a260497b_526afc51",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
         "patchSetId": 15
