@@ -33,6 +33,23 @@
       "message": "Friendly ping.\nAll comments have been resolved, and a team member has also provided a +2. Is there anything else that needs to be addressed? If not, can this be approved?\n\nThanks,",
       "revId": "cf18525c5b3d9049f41d0408dbedd5f578a86304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e05cf9_1511be56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-08T05:12:25Z",
+      "side": 1,
+      "message": "Adding back in my +1, please wait for deanliao@ as tast-owners +2",
+      "revId": "cf18525c5b3d9049f41d0408dbedd5f578a86304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
