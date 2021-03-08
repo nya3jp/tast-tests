@@ -77,7 +77,7 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 	}
 
 	const emojiChar = "😂"
-	emojiButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: emojiChar}, 5*time.Second)
+	emojiButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: emojiChar}, 20*time.Second)
 	if err != nil {
 		s.Fatalf("Failed to find emoji button %s: %v", emojiChar, err)
 	}
