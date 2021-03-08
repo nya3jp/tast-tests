@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf9002b_9eaec3fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-08T20:44:58Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "efb50e04db76cfc1022406c2bca6faf93588bce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b46332_24e99361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-08T20:44:58Z",
+      "side": 1,
+      "message": "nit: here and below\n\n  ...{\"informational\"}, // TODO(b/182134543): remove once bug gets fixed.",
+      "range": {
+        "startLine": 44,
+        "startChar": 42,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "efb50e04db76cfc1022406c2bca6faf93588bce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
