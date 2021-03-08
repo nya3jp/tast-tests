@@ -11,7 +11,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	hwsecremote "chromiumos/tast/remote/hwsec"
@@ -37,7 +36,6 @@ func init() {
 			"cros-hwsec@chromium.org",
 		},
 		SoftwareDeps: []string{"reboot", "tpm"},
-		ServiceDeps:  []string{"tast.cros.hwsec.AttestationDBusService"},
 	})
 }
 
@@ -93,39 +91,18 @@ func getTime(ctx context.Context, remote *hwsecremote.CmdRunnerRemote, eventName
 	return stamp, nil
 }
 
-func clearOwnership(ctx context.Context, s *testing.State) {
+func CryptohomePerf(ctx context.Context, s *testing.State) {
 	r := hwsecremote.NewCmdRunner(s.DUT())
-
-	helper, err := hwsecremote.NewFullHelper(r, s.DUT(), s.RPCHint())
+	helper, err := hwsecremote.NewHelper(r, s.DUT())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
 
-	attestation := helper.AttestationClient()
-
-	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
 	}
-	s.Log("TPM is confirmed to be reset")
 
-	if result, err := attestation.IsPreparedForEnrollment(ctx); err != nil {
-		s.Fatal("Cannot check if enrollment preparation is reset: ", err)
-	} else if result {
-		s.Fatal("Enrollment preparation is not reset after clearing ownership")
-	}
-	s.Log("Enrolling with TPM not ready")
-	if _, err := attestation.CreateEnrollRequest(ctx, hwsec.DefaultPCA); err == nil {
-		s.Fatal("Enrollment should not happen w/o getting prepared")
-	}
-}
-
-func CryptohomePerf(ctx context.Context, s *testing.State) {
-	r := hwsecremote.NewCmdRunner(s.DUT())
-
-	clearOwnership(ctx, s)
-
-	err := waitUntilCryptohomeInit(ctx, r)
+	err = waitUntilCryptohomeInit(ctx, r)
 	if err != nil {
 		s.Fatal("Failed to wait cryptohome init: ", err)
 	}

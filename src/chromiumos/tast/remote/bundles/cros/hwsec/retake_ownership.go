@@ -88,7 +88,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 	if passwd2, err := cryptohome.GetOwnerPassword(ctx); err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	} else if passwd != passwd2 {
-		s.Fatal("Inconsistent owner password after reboot")
+		s.Fatalf("Inconsistent owner password after reboot; passwd: %q passwd2: %q", passwd, passwd2)
 	}
 
 	s.Log("Clearing owner password")
