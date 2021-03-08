@@ -51,6 +51,23 @@
       "parentUuid": "262dd95b_367cf3e9",
       "revId": "db1677caefc51c98c0521647d458425e00a20966",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76031741_1915e539",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-08T11:32:12Z",
+      "side": 1,
+      "message": "Please add the comment why clicking is necessary in the code.",
+      "revId": "db1677caefc51c98c0521647d458425e00a20966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
