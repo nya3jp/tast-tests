@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b136e987_27d808d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-08T23:47:21Z",
+      "side": 1,
+      "message": "Looking at this again. It is weird that we wait for so much time here (the entire context\u0027s timeout) but then small times for subsequent actions. What is this rpc doing?",
+      "range": {
+        "startLine": 91,
+        "startChar": 79,
+        "endLine": 91,
+        "endChar": 90
+      },
+      "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
