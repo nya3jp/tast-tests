@@ -60,7 +60,7 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 	if passwd, err := cryptohome.GetOwnerPassword(ctx); err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	} else if len(passwd) != hwsec.OwnerPasswordLength {
-		s.Fatal("Ill-formed owner password")
+		s.Fatalf("Ill-formed owner password; passwd: %q, expected length: %v", passwd, hwsec.OwnerPasswordLength)
 	}
 
 	s.Log("Start attestation service")
