@@ -70,6 +70,30 @@
       },
       "revId": "f65112859af21726ab8f9db33c198b9239e99f76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1060ef6_0d9ad924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/2d.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-08T17:28:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ed18866_6bf97c06",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "f65112859af21726ab8f9db33c198b9239e99f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
