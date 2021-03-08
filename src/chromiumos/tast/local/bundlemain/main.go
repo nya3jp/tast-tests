@@ -11,9 +11,7 @@ package bundlemain
 
 import (
 	"context"
-	"io"
 	"os"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/bundle"
@@ -25,6 +23,7 @@ import (
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/ready"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -37,71 +36,6 @@ const (
 	lowSpaceThreshold   = 100 * mib
 	spaceUsageThreshold = 10 * mib
 )
-
-func copyLogs(ctx context.Context, oldInfo os.FileInfo, outDir string) error {
-	dp := filepath.Join(outDir, "messages")
-
-	df, err := os.Create(dp)
-	if err != nil {
-		return errors.Wrapf(err, "failed to write log: failed to create %s", dp)
-	}
-	defer df.Close()
-
-	sf, err := os.Open(varLogMessages)
-	if err != nil {
-		return errors.Wrapf(err, "failed to read log: failed to open %s", varLogMessages)
-	}
-	defer sf.Close()
-
-	info, err := sf.Stat()
-	if err != nil {
-		return errors.Wrapf(err, "failed reading log position: failed to stat %s", varLogMessages)
-	}
-
-	if os.SameFile(info, oldInfo) {
-		// If the file has not rotated just copy everything since the test started.
-		if _, err = sf.Seek(oldInfo.Size(), 0); err != nil {
-			return errors.Wrapf(err, "failed to read log: failed to seek %s", varLogMessages)
-		}
-
-		if _, err = io.Copy(df, sf); err != nil {
-			return errors.Wrapf(err, "failed to write log: failed to copy %s", varLogMessages)
-		}
-	} else {
-		// If the log has rotated copy the old file from where the test started and then copy the entire new file.
-		// We assume that the log does not rotate twice during one test.
-		// If we fail to open the older log, we still copy the newer one.
-		previousLog := varLogMessages + ".1"
-
-		sfp, err := os.Open(previousLog)
-		if err != nil {
-			_, _ = io.Copy(df, sf)
-
-			return errors.Wrapf(err, "failed to read log: failed to open %s", previousLog)
-		}
-		defer sfp.Close()
-
-		if _, err = sfp.Seek(oldInfo.Size(), 0); err != nil {
-			_, _ = io.Copy(df, sf)
-
-			return errors.Wrapf(err, "failed to read log: failed to seek %s", previousLog)
-		}
-
-		// Copy previous log
-		if _, err = io.Copy(df, sfp); err != nil {
-			_, _ = io.Copy(df, sf)
-
-			return errors.Wrapf(err, "failed to write log: failed to copy previous %s", previousLog)
-		}
-
-		// Copy current log
-		if _, err = io.Copy(df, sf); err != nil {
-			return errors.Wrapf(err, "failed to write log: failed to copy current %s", previousLog)
-		}
-	}
-
-	return nil
-}
 
 func ensureDiskSpace(ctx context.Context, purgeable []string) (uint64, error) {
 	// Unconditionally delete core dumps.
@@ -199,11 +133,9 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 		cancel()
 	}
 
-	// Store the current log state.
-	oldInfo, err := os.Stat(varLogMessages)
+	endLogFn, err := syslog.CollectLogs()
 	if err != nil {
-		s.Logf("Saving log position: failed to stat %s: %v", varLogMessages, err)
-		oldInfo = nil
+		s.Log("Saving log position: ", err)
 	}
 
 	// Ensure disk space and record the current free space.
@@ -253,8 +185,8 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 			faillog.Save(ctx)
 		}
 
-		if oldInfo != nil {
-			if err := copyLogs(ctx, oldInfo, s.OutDir()); err != nil {
+		if endLogFn != nil {
+			if err := endLogFn(ctx, s.OutDir()); err != nil {
 				s.Log("Failed to copy logs: ", err)
 			}
 		}
