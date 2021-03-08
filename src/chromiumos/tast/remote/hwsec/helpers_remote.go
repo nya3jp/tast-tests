@@ -101,20 +101,13 @@ func NewFullHelper(r hwsec.CmdRunner, d *dut.DUT, h *testing.RPCHint) (*FullHelp
 // Otherwise, returns any encountered error.
 // Optionally removes files from the DUT to simulate a powerwash.
 func (h *CmdHelperRemoteImpl) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
-	// TODO(crbug.com/879797): Remove polling.
-	// Currently cryptohome is a bit slow on the first boot, so this polling here is necessary to avoid flakiness.
-	isReady := false
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := h.h.TPMManagerClient().GetNonsensitiveStatus(ctx)
-		isReady = info.IsOwned
-		return err
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to wait for cryptohome")
+	if err := h.h.DaemonController().WaitForAllDBusServices(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
 	}
 
-	if !isReady {
-		// TPM has already been reset by a previous test so we can skip doing it.
-		return nil
+	tpmInfo, err := h.h.TPMManagerClient().GetNonsensitiveStatus(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get TPM information")
 	}
 
 	// Copy logs before TPM reset. Ignore errors on failure.
@@ -125,20 +118,29 @@ func (h *CmdHelperRemoteImpl) ensureTPMIsReset(ctx context.Context, removeFiles 
 		}
 	}
 
-	if _, err := h.h.CmdRunner().Run(ctx, "stop", "ui"); err != nil {
+	if err := h.h.DaemonController().TryStop(ctx, hwsec.UIDaemon); err != nil {
 		// ui might not be running because there's no guarantee that it's running when we start the test.
 		// If we actually failed to stop ui and something ends up being wrong, then we can use the logging
 		// below to let whoever that's debugging this problem find out.
-		testing.ContextLog(ctx, "Failed to stop ui, this is normal if ui was not running")
+		testing.ContextLog(ctx, "Failed to stop ui, this is normal if ui was not running: ", err)
 	}
+	defer func(ctx context.Context) {
+		if err := h.h.DaemonController().Ensure(ctx, hwsec.UIDaemon); err != nil {
+			testing.ContextLog(ctx, "Failed to ensure ui daemon: ", err)
+		}
+	}(ctx)
 
-	if _, err := h.h.CmdRunner().Run(ctx, "cryptohome", "--action=unmount"); err != nil {
-		return errors.Wrap(err, "failed to unmount users")
+	if err := h.h.DaemonController().TryStopDaemons(ctx, hwsec.HighLevelTPMDaemons); err != nil {
+		// High-level TPM daemons might not be running because there's no guarantee that it's running when we start the test.
+		// If we actually failed to stop them and something ends up being wrong, then we can use the logging
+		// below to let whoever that's debugging this problem find out.
+		testing.ContextLog(ctx, "Failed to stop High-level TPM daemons, this is normal if they were not running: ", err)
 	}
-
-	if _, err := h.h.CmdRunner().Run(ctx, "crossystem", "clear_tpm_owner_request=1"); err != nil {
-		return errors.Wrap(err, "failed to file clear_tpm_owner_request")
-	}
+	defer func(ctx context.Context) {
+		if err := h.h.DaemonController().EnsureDaemons(ctx, hwsec.HighLevelTPMDaemons); err != nil {
+			testing.ContextLog(ctx, "Failed to ensure High-level TPM daemons: ", err)
+		}
+	}(ctx)
 
 	if removeFiles {
 		if out, err := h.d.Command("rm", "-rf", "--",
@@ -155,22 +157,30 @@ func (h *CmdHelperRemoteImpl) ensureTPMIsReset(ctx context.Context, removeFiles 
 		}
 	}
 
+	if !tpmInfo.IsOwned {
+		// TPM has already been reset by a previous test so we can skip doing it.
+		return nil
+	}
+
+	if _, err := h.h.CmdRunner().Run(ctx, "crossystem", "clear_tpm_owner_request=1"); err != nil {
+		return errors.Wrap(err, "failed to file clear_tpm_owner_request")
+	}
+
 	if err := h.Reboot(ctx); err != nil {
 		return errors.Wrap(err, "failed to reboot")
 	}
 
 	testing.ContextLog(ctx, "Waiting for system to be ready after reboot ")
-	// TODO(crbug.com/879797): Remove polling.
-	isOwned := false
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := h.h.TPMManagerClient().GetNonsensitiveStatus(ctx)
-		isOwned = info.IsOwned
-		return err
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to wait for cryptohome")
+	if err := h.h.DaemonController().WaitForAllDBusServices(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
 	}
 
-	if isOwned {
+	tpmInfo, err = h.h.TPMManagerClient().GetNonsensitiveStatus(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get TPM information")
+	}
+
+	if tpmInfo.IsOwned {
 		// If the TPM is ready, the reset was not successful
 		return errors.New("ineffective reset of TPM")
 	}
