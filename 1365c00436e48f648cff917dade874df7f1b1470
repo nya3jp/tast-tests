@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "091dc52d_abb397bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-08T22:53:55Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8efd960a_5a33e229",
+      "revId": "1365c00436e48f648cff917dade874df7f1b1470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a138e9e6_ca304f50",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-03-08T16:54:41Z",
       "side": 1,
       "message": "You may want to include either the downloaded contents, the original contents, the diff, or (my recommendation) the number of bytes in each.",
+      "revId": "1365c00436e48f648cff917dade874df7f1b1470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ed5d61_01e9cc0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-08T22:53:55Z",
+      "side": 1,
+      "message": "Made it report the number of bytes read from each file. Thanks for the suggestion!",
+      "parentUuid": "a138e9e6_ca304f50",
       "revId": "1365c00436e48f648cff917dade874df7f1b1470",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
