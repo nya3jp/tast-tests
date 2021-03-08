@@ -50,7 +50,7 @@ var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
 var regExpPSNR = regexp.MustCompile(`\nGlbPSNR: (\d+\.\d+)`)
 
 // commandBuilderFn is the function type to generate the command line with arguments.
-type commandBuilderFn func(exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int)
+type commandBuilderFn func(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, err error)
 
 // testParam is used to describe the config used to run each test.
 type testParam struct {
@@ -537,7 +537,10 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	}
 	defer os.Remove(yuvFile)
 
-	command, encodedFile, targetBitrate := testOpt.commandBuilder(testOpt.command, yuvFile, testOpt.size, int(testOpt.fps))
+	command, encodedFile, targetBitrate, err := testOpt.commandBuilder(ctx, testOpt.command, yuvFile, testOpt.size, int(testOpt.fps))
+	if err != nil {
+		s.Fatal("Failed to construct the command line: ", err)
+	}
 
 	energy, raplErr := power.NewRAPLSnapshot()
 	if raplErr != nil || energy == nil {
@@ -701,7 +704,7 @@ func compareFiles(ctx context.Context, decoder, yuvFile, encodedFile, outDir str
 }
 
 // vp8argsVAAPI constructs the command line for the VP8 encoding binary exe.
-func vp8argsVAAPI(exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int) {
+func vp8argsVAAPI(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, _ error) {
 	command = append(command, exe, strconv.Itoa(size.Width), strconv.Itoa(size.Height), yuvFile)
 
 	ivfFile = yuvFile + ".ivf"
@@ -723,7 +726,7 @@ func vp8argsVAAPI(exe, yuvFile string, size coords.Size, fps int) (command []str
 }
 
 // vp9argsVAAPI constructs the command line for the VP9 encoding binary exe.
-func vp9argsVAAPI(exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int) {
+func vp9argsVAAPI(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, _ error) {
 	command = append(command, exe, strconv.Itoa(size.Width), strconv.Itoa(size.Height), yuvFile)
 
 	ivfFile = yuvFile + ".ivf"
@@ -750,7 +753,7 @@ func vp9argsVAAPI(exe, yuvFile string, size coords.Size, fps int) (command []str
 }
 
 // h264argsVAAPI constructs the command line for the H.264 encoding binary exe.
-func h264argsVAAPI(exe, yuvFile string, size coords.Size, fps int) (command []string, h264File string, bitrate int) {
+func h264argsVAAPI(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, h264File string, bitrate int, _ error) {
 	command = append(command, exe, "-w", strconv.Itoa(size.Width), "-h", strconv.Itoa(size.Height))
 	command = append(command, "--srcyuv", yuvFile, "--fourcc", "YV12")
 	command = append(command, "-n", "0" /* Read number of frames from yuvFile*/)
@@ -773,7 +776,7 @@ func h264argsVAAPI(exe, yuvFile string, size coords.Size, fps int) (command []st
 }
 
 // vp8argsVpxenc constructs the command line for vpxenc.
-func vp8argsVpxenc(exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int) {
+func vp8argsVpxenc(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, _ error) {
 	command = append(command, exe, "-w", strconv.Itoa(size.Width), "-h", strconv.Itoa(size.Height))
 
 	command = append(command, "--passes=1" /* 1 encoding pass */)
@@ -810,7 +813,7 @@ func vp8argsVpxenc(exe, yuvFile string, size coords.Size, fps int) (command []st
 }
 
 // h264argsV4L2 constructs the command line for the v4l2_stateful_encoder and for H.264.
-func h264argsV4L2(exe, yuvFile string, size coords.Size, fps int) (command []string, h264File string, bitrate int) {
+func h264argsV4L2(ctx context.Context, exe, yuvFile string, size coords.Size, fps int) (command []string, h264File string, bitrate int, _ error) {
 	command = append(command, exe, "--width", strconv.Itoa(size.Width), "--height", strconv.Itoa(size.Height))
 	command = append(command, "--file", yuvFile, "--file_format", "yv12")
 
