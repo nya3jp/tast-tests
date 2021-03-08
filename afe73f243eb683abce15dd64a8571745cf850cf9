@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b610557e_1c5bf5a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-08T23:47:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95526423_cc9d9f6d",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "afe73f243eb683abce15dd64a8571745cf850cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dcf6cc1_1cfda8f4",
@@ -142,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "040712f5_34ad3bc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-08T23:47:21Z",
+      "side": 1,
+      "message": "Can\u0027t believe you updated the service for this :D I definitely would have just hardcoded the value",
+      "parentUuid": "356d7288_c9760198",
+      "range": {
+        "startLine": 258,
+        "startChar": 102,
+        "endLine": 258,
+        "endChar": 126
+      },
+      "revId": "afe73f243eb683abce15dd64a8571745cf850cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62d858eb_c443cbcb",
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "I wasn\u0027t sure how to best describe it haha. DetectionTimeout maybe? Since that\u0027s the main thing it\u0027s doing. Open to suggestions though",
       "parentUuid": "62d858eb_c443cbcb",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "afe73f243eb683abce15dd64a8571745cf850cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "345cbc03_9056c4ac",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-08T23:47:21Z",
+      "side": 1,
+      "message": "DetectionTimeout works",
+      "parentUuid": "c37f22fa_c47cbae0",
       "range": {
         "startLine": 30,
         "startChar": 6,
