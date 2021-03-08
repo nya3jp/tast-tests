@@ -154,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ef8b4a_571fda89",
+        "filename": "android/ArcDownloadManagerTest/src/org/chromium/arc/testapp/downloadmanager/MainActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-08T08:34:09Z",
+      "side": 1,
+      "message": "As per a discussion at group chat, it seems that we can define our own GuardedBy annotation here. However, it might involve some licensing issue (as the definition would be almost a verbatim copy of an existing one) and needs some clarification, I\u0027d proceed this CL as-is, leaving it as a TODO.",
+      "parentUuid": "c8504126_e16b269c",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "97360a2631a69eda830ad8182872588389c64fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c36033f4_4342c84a",
