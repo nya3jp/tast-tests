@@ -110,6 +110,30 @@
       },
       "revId": "c92d17e5c59313b1802a403f579b7dd274ffe851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "334816b2_59623992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-03-08T04:41:24Z",
+      "side": 1,
+      "message": "Xibin has found a reference to use \"0.00098\", \"0.12500\", \"8.00000\", \"128.00000\". I think this looks fine",
+      "parentUuid": "3a3bd5de_371664ee",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "c92d17e5c59313b1802a403f579b7dd274ffe851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
