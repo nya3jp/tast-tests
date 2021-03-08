@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package unicorn is used for writing Unicorn tests.
-package unicorn
+// Package familylink is used for writing Family Link tests.
+package familylink
 
 import (
 	"context"
@@ -16,7 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Login,
+		Func:         UnicornLogin,
 		Desc:         "Checks if Unicorn login is working",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -27,7 +27,7 @@ func init() {
 	})
 }
 
-func Login(ctx context.Context, s *testing.State) {
+func UnicornLogin(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*familylink.FixtData).Chrome
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
 
