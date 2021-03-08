@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8504126_e16b269c",
+        "filename": "android/ArcDownloadManagerTest/src/org/chromium/arc/testapp/downloadmanager/MainActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-03-08T04:11:59Z",
+      "side": 1,
+      "message": "sgtm. Please resolve this after asking around.",
+      "parentUuid": "604b365e_049c2f6b",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "97360a2631a69eda830ad8182872588389c64fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c36033f4_4342c84a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
         "patchSetId": 9
