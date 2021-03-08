@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be7647a_1ffafba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T23:06:01Z",
+      "side": 1,
+      "message": "That sounds like you don\u0027t need that in the committed code. Developers can do that by modifying that manually.  Please consider removing them.",
+      "parentUuid": "72cd7fee_ef34cf1d",
+      "range": {
+        "startLine": 95,
+        "startChar": 32,
+        "endLine": 95,
+        "endChar": 37
+      },
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "082b2464_cabd17a1",
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Could you be more specific Jun? Currently there is a common genparam function for all CUJs. IIUC, you prefer each CUJ has their own genparam logic and for this case, it can add some parameters (time, precondition, data) automatically when seeing some basic inputs (tier, remote or local). Can you confirm my understanding?",
       "parentUuid": "5004da34_1da2f662",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 4
+      },
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c67bdac_28a066ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T23:06:01Z",
+      "side": 1,
+      "message": "I meant\n  for _, tier :\u003d range []Tier{cuj.Basic, cuj.Plus, cuj.Premium} {\n    for _, isLocal \u003d range []bool{false, true} {\n      p \u003d generatorParam{Tier: tier, Timeout: timeoutFor(tier)}\n      if isLocal {\n        p.Scenario \u003d \"local\"\n        p.ExtraData \u003d ...\n        ...\n      } else {\n         ...\n      }\n      params \u003d append(params, p)\n    }\n  }\n\n\nBut as I commented below, \u0027local\u0027 might not be necessary anymore. If so that is fine.",
+      "parentUuid": "e28c6980_deaafe72",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -523,6 +571,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2631df34_ee9304c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T23:06:01Z",
+      "side": 1,
+      "message": "I am not sure why traces are needed in this test case.  Sadrul asked to upload a trace file into that issue page, which would be a oneshot task. That doesn\u0027t mean tracing needs to be committed.  Please remove this.",
+      "parentUuid": "49e1bd75_d8a09569",
+      "range": {
+        "startLine": 304,
+        "startChar": 42,
+        "endLine": 304,
+        "endChar": 108
+      },
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6645fb1b_e9a0757a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T23:06:01Z",
+      "side": 1,
+      "message": "Exactly. I am still not sure what is the cause/when it will be resolved.  crbug.com/1162385 for the info.",
+      "parentUuid": "833db0bf_42b2922f",
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3b774fa_5e77c1ce",
@@ -560,6 +650,30 @@
       "side": 1,
       "message": "This is to trace the issue reported in https://partnerissuetracker.corp.google.com/issues/175232416. I think we should remove this now because trace has already provided.",
       "parentUuid": "c3b774fa_5e77c1ce",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 2
+      },
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c280c8e9_d6d39db9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T23:06:01Z",
+      "side": 1,
+      "message": "yup, please remove.",
+      "parentUuid": "26d36d45_18019d00",
       "range": {
         "startLine": 302,
         "startChar": 0,
