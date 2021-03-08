@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "262dd95b_367cf3e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-03-08T09:56:43Z",
+      "side": 1,
+      "message": "the change lgtm.\n\nIn R, does this mean the window focus leaves after snapping the window to left/right?",
+      "revId": "db1677caefc51c98c0521647d458425e00a20966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
