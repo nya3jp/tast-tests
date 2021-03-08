@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d86b00f0_ee1bb117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T19:02:07Z",
+      "side": 1,
+      "message": "GAIA version of high-vis test is what I\u0027m doing for the online+large file high-vis test. We can reuse the same credentials, but just set visibility to \u0027No one\u0027 to make sure it won\u0027t be discovered by contacts.\n\nA new OTA that has no contacts might be better, though, so we\u0027re not implicitly relying on the visibility setting. WDYT?",
+      "parentUuid": "33a607bd_1a851aa4",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 60
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba28a9d7_f2eb2ac9",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/big_txt.zip.external",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-06T03:17:16Z",
       "side": 1,
       "message": "Can you put this in the common data folder instead\nsrc/chromiumos/tast/local/chrome/nearbyshare/data/ \n\nAnd put a symlink here that points to it",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 89
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a24588_9b85862f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/big_txt.zip.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T19:02:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba28a9d7_f2eb2ac9",
       "range": {
         "startLine": 2,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21a72583_56a9d357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T19:02:07Z",
+      "side": 1,
+      "message": "Not 100% sure what you mean here. Like add the file version? Or something with the fixture?",
+      "parentUuid": "10053144_8c96dfa5",
+      "range": {
+        "startLine": 37,
+        "startChar": 14,
+        "endLine": 37,
+        "endChar": 60
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2576b51b_51da83d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis.go",
         "patchSetId": 3
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82793ab5_94c8ba2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T19:02:07Z",
+      "side": 1,
+      "message": "This is for high-vis WebRTC sharing. The WebRTC upgrade requires a real GAIA login, so to accomplish that I added this fixture that uses the existing GAIA credentials, but sets visibility to \u0027No one\u0027 to ensure the sharing is high-visibility.",
+      "parentUuid": "2576b51b_51da83d6",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a331730_7a86d8fc",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
         "patchSetId": 3
@@ -106,6 +202,30 @@
       "writtenOn": "2021-03-06T03:17:16Z",
       "side": 1,
       "message": "We can remove this now. vecore@ said it is on by default",
+      "range": {
+        "startLine": 43,
+        "startChar": 25,
+        "endLine": 43,
+        "endChar": 46
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c0108fa_e50fc1b0",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T19:02:07Z",
+      "side": 1,
+      "message": "SG, I made crbug/1185910 for removing it, I\u0027ll do it in a separate CL",
+      "parentUuid": "2a331730_7a86d8fc",
       "range": {
         "startLine": 43,
         "startChar": 25,
