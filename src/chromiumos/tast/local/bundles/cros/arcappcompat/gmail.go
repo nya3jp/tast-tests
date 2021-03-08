@@ -7,6 +7,8 @@ package arcappcompat
 
 import (
 	"context"
+	//"os/exec"
+
 	"time"
 
 	"chromiumos/tast/local/android/ui"
@@ -24,6 +26,7 @@ var clamshellTestsForGmail = []testutil.TestCase{
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Mouse click", Fn: testutil.MouseClick},
 	{Name: "Clamshell: Physical Keyboard", Fn: testutil.TouchAndTextInputs},
 	{Name: "Clamshell: Keyboard Critical Path", Fn: testutil.KeyboardNavigations},
 }
