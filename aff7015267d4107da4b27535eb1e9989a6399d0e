@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ca0b2e_7c959667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/2d.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T17:44:47Z",
+      "side": 1,
+      "message": "can we add \u0027use strict\u0027; ?\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode",
+      "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20594f4e_9ad2ce0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/2d.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T17:44:47Z",
+      "side": 1,
+      "message": "this looks a bit strange to me.  Typically const foo \u003d () \u003d\u003e { ... } is considered to be a good coding style, and I think it won\u0027t change the behavior much.  If that\u0027s fine, I like to stick with using const for function bindings.",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c16971f_cc961a43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/webgl.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T17:44:47Z",
+      "side": 1,
+      "message": "similarly, \u0027use strict\u0027;?   This will prevent trivial mistakes like r/g/b being global variables below.",
+      "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11da4425_f3e9f893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/webgl.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T17:44:47Z",
+      "side": 1,
+      "message": "similarly, if okay, use of const would be more preferable here.",
+      "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41435dcb_bdef2a69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/webgl.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T17:44:47Z",
+      "side": 1,
+      "message": "I just happened to notice but shouldn\u0027t they be let?  Right now they\u0027re global variables. i.e.\n  let r \u003d ...\n  let g \u003d ...\n  let b \u003d ...",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6190e050_777f3e66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/webgl.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T17:44:47Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
