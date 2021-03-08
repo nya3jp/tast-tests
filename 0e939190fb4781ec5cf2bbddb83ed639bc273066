@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af83d76_7d65fea3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-08T08:32:46Z",
+      "side": 1,
+      "message": "There is a new UI package, please check it, and try to use this one:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_3.md",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "0e939190fb4781ec5cf2bbddb83ed639bc273066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d28d235e_8a660776",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-08T08:32:46Z",
+      "side": 1,
+      "message": "nit: \"policy.\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 47,
+        "endLine": 35,
+        "endChar": 53
+      },
+      "revId": "0e939190fb4781ec5cf2bbddb83ed639bc273066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "216f304a_8e82f9b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-08T08:32:46Z",
+      "side": 1,
+      "message": "nit: \").\"\nComments should be full sentences.",
+      "range": {
+        "startLine": 89,
+        "startChar": 95,
+        "endLine": 89,
+        "endChar": 96
+      },
+      "revId": "0e939190fb4781ec5cf2bbddb83ed639bc273066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b6be76_a6ac806f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/hide_web_store_icon.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-08T08:32:46Z",
+      "side": 1,
+      "message": "nit: \"view.\"",
+      "range": {
+        "startLine": 94,
+        "startChar": 41,
+        "endLine": 94,
+        "endChar": 45
+      },
+      "revId": "0e939190fb4781ec5cf2bbddb83ed639bc273066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
