@@ -41,7 +41,7 @@ func init() {
 			"chrome_internal",
 		},
 		Params: []testing.Param{{
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"informational"}, // TODO(b/177341225): remove after stabalized.
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(optinUnstableModels...)),
 		}, {
@@ -51,7 +51,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(optinUnstableModels...)),
 		}, {
 			Name:              "vm",
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"informational"}, // TODO(b/177341225): remove after stabalized.
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(optinUnstableModels...)),
 		}, {
@@ -60,11 +60,12 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(optinUnstableModels...)),
 		}},
-		Timeout: 6 * time.Minute,
+		Timeout: 16 * time.Minute,
 	})
 }
 
 func Optin(ctx context.Context, s *testing.State) {
+
 	// Setup Chrome.
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
@@ -80,7 +81,24 @@ func Optin(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Performing optin")
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
-		s.Error("Failed to optin: ", err)
+
+	const maxAttempts = 3 // TODO(b/177341225): remove after stabalized.
+	attempts := 0
+	for {
+		err := optin.Perform(ctx, cr, tconn)
+		if err == nil {
+			break
+		}
+		attempts = attempts + 1
+		if attempts >= maxAttempts {
+			s.Fatal("Failed to optin. No more retries left: ", err)
+		}
+		s.Log("Retrying optin, previous attempt failed: ", err)
+
+		// Opt out.
+		if err := optin.SetPlayStoreEnabled(ctx, tconn, false); err != nil {
+			s.Log("Failed to optout: ", err)
+		}
 	}
+
 }
