@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e62e8f6_a7a8c2ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-08T15:16:48Z",
+      "side": 1,
+      "message": "Hi Nya,\n\nCan you please take a look on my comment about supporting wrapped errors in testexec.GetWaitStatus?",
+      "revId": "428b04a133d403c3c626d7fe4be31805e05ed031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
