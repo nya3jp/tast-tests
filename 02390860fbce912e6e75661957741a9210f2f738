@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c06407_a391168d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-08T17:21:19Z",
+      "side": 1,
+      "message": "nit: I see majority of FakeLogin/GAIALogin use cases are username/password/gaia-id. Maybe having chrome.NewCreds(username, password, gaiaid) function (to create an instance of Creds) may help a bit shorter code?",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 110
+      },
+      "revId": "02390860fbce912e6e75661957741a9210f2f738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
