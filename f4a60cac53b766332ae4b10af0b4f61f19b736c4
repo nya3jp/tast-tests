@@ -298,6 +298,30 @@
       },
       "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff521f3_40d3c3b3",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-08T15:16:48Z",
+      "side": 1,
+      "message": "If it does not support, maybe we can modify that method to support wrapped errors?\n\nNya, WDYT? Looks like you was the last person who touched that code.",
+      "parentUuid": "f4e6ede6_8b7e170c",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
