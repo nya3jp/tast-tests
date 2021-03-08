@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5977ec01_40cc43e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-08T21:38:56Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "501f40472d7afd35955a5c1a068f5fe644dbcf7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f172a45f_89c24379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-08T21:38:56Z",
+      "side": 1,
+      "message": "nit:\n\nif you are only defining one const, you can just do:\n\n  const retryCount \u003d 2\n\nAlso, since this is used only once, I\u0027d move it close to where it is being used, like to L95",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "501f40472d7afd35955a5c1a068f5fe644dbcf7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
