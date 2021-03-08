@@ -97,6 +97,30 @@
       },
       "revId": "536a6c30db1b4f080c535a59ce8c53039494cee0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a328a63_5f033586",
+        "filename": "src/chromiumos/tast/services/cros/wifi/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-08T19:59:50Z",
+      "side": 1,
+      "message": "I think Gerrit snafus dropped the last part of my comment: I have an outstanding CL to fix other \"wifi\"s that I propagated.",
+      "parentUuid": "fbef66c5_994efae1",
+      "range": {
+        "startLine": 5,
+        "startChar": 49,
+        "endLine": 5,
+        "endChar": 53
+      },
+      "revId": "536a6c30db1b4f080c535a59ce8c53039494cee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
