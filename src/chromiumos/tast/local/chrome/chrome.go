@@ -81,6 +81,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/bundles/pita/pita/pre",
 	"chromiumos/tast/local/chrome",
 	"chromiumos/tast/local/chrome/nearbyshare",
+	"chromiumos/tast/local/chrome/familylink",
 	"chromiumos/tast/local/crostini",
 	"chromiumos/tast/local/drivefs",
 	"chromiumos/tast/local/lacros/launcher",
