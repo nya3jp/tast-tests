@@ -81,7 +81,7 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 
 	cr, err := chrome.New(ctx,
 		chrome.UnpackedExtension(extDir),
-		chrome.Auth(pre.Username, pre.Password, pre.GaiaID),
+		chrome.FakeLogin(chrome.Creds{User: pre.Username, Pass: pre.Password, GAIAID: pre.GaiaID}),
 		chrome.DMSPolicy(fdms.URL))
 	if err != nil {
 		s.Fatal("Failed to create Chrome instance: ", err)
