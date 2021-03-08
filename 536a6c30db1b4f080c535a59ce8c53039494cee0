@@ -55,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5b7e76e5_ac40ea9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-03-08T20:20:58Z",
+      "side": 1,
+      "message": "Noted, I\u0027ve added tast-owners@google.com based on guidance in the OWNERS doc (Prefer tast-owners@ to individual owners).",
+      "parentUuid": "97e375a3_c3c2419b",
+      "revId": "536a6c30db1b4f080c535a59ce8c53039494cee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "24380d65_546930d4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/remote_iwlwifi_pci_rescan.go",
         "patchSetId": 3
@@ -66,6 +84,30 @@
       "writtenOn": "2021-03-08T19:57:42Z",
       "side": 1,
       "message": "side note: so my problem was that I started to move this all to wifi.*, then I stopped and still forgot to flip this back?\n\nAnyway, it\u0027s probably good to move the whole service to the \"correct\" namespace, so thanks for that :)",
+      "range": {
+        "startLine": 28,
+        "startChar": 36,
+        "endLine": 28,
+        "endChar": 40
+      },
+      "revId": "536a6c30db1b4f080c535a59ce8c53039494cee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dff09301_163a48aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/remote_iwlwifi_pci_rescan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-03-08T20:20:58Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what it looks like. Alternatively I could have just updated this reference. From b/181998586 and crrev/c/2728461 it seemed like this wanted to be moved, so that\u0027s what I did. I left WifiService alone, since it\u0027s not clear that should be moved (without additional discussion and consensus).",
+      "parentUuid": "24380d65_546930d4",
       "range": {
         "startLine": 28,
         "startChar": 36,
