@@ -68,6 +68,23 @@
       "message": "Please add the comment why clicking is necessary in the code.",
       "revId": "db1677caefc51c98c0521647d458425e00a20966",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1769629_99b4694f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-08T14:30:32Z",
+      "side": 1,
+      "message": "I think this part needs to be guarded by VMEnabled.\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/arc/arc.go#322\n\nbecause, for P, we still expect that VK becomes visible on one click, right?",
+      "revId": "db1677caefc51c98c0521647d458425e00a20966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
