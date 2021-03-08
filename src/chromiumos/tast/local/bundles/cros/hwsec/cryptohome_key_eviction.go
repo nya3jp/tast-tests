@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/pkcs11"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -30,16 +29,6 @@ func init() {
 	})
 }
 
-func cleanupCryptohomeUser(ctx context.Context, cryptohome *hwsec.CryptohomeClient, user string) error {
-	if _, err := cryptohome.Unmount(ctx, user); err != nil {
-		return errors.Wrap(err, "failed to unmount")
-	}
-	if _, err := cryptohome.RemoveVault(ctx, user); err != nil {
-		return errors.Wrap(err, "failed to remove vault")
-	}
-	return nil
-}
-
 // CryptohomeKeyEviction ensures that the cryptohome properly manages key eviction from the tpm.
 // This test verifies this behaviour by creating 30 keys using chaps, and then remounting a user's cryptohome.
 // Mount requires use of the user's cryptohome key, and thus the mount only succeeds if the cryptohome key was properly evicted and reloaded into the TPM.
@@ -56,6 +45,8 @@ func CryptohomeKeyEviction(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create chaps client: ", err)
 	}
 
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
+
 	const (
 		user     = util.FirstUsername
 		password = util.FirstPassword
@@ -65,17 +56,16 @@ func CryptohomeKeyEviction(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure TPM is ready: ", err)
 	}
 
-	defer func() {
+	defer func(ctx context.Context) {
 		// Ensure we remove the user account after the test.
-		err := cleanupCryptohomeUser(ctx, cryptohome, user)
-		if err != nil {
-			testing.ContextLog(ctx, "Failed to cleanup cryptohome: ", err)
+		if err := mountInfo.CleanUpMount(ctx, user); err != nil {
+			s.Fatal("Failed to cleanup: ", err)
 		}
-	}()
+	}(ctx)
 
 	// Ensure clean cryptohome.
-	if err := cleanupCryptohomeUser(ctx, cryptohome, user); err != nil {
-		s.Fatal("Failed to cleanup cryptohome: ", err)
+	if err := mountInfo.CleanUpMount(ctx, user); err != nil {
+		s.Fatal("Failed to cleanup: ", err)
 	}
 
 	// Mount the user vault.
