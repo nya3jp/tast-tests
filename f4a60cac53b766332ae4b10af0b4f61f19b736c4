@@ -322,6 +322,30 @@
       },
       "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1950174_fa16a7d2",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-08T17:08:14Z",
+      "side": 1,
+      "message": "BTW, the import path of testexec is \"chromiumos/tast/local/testexec\", and it seems a little bit weird to import a local test package in a common test package.\nMaybe we should find a better place to put this helper function?",
+      "parentUuid": "0ff521f3_40d3c3b3",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
