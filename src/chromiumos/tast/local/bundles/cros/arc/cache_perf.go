@@ -182,8 +182,11 @@ func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (ti
 	username := s.RequiredVar("arc.CachePerf.username")
 	password := s.RequiredVar("arc.CachePerf.password")
 
-	cr, err := chrome.New(ctx, chrome.ARCSupported(), chrome.RestrictARCCPU(), chrome.GAIALogin(),
-		chrome.Auth(username, password, ""), chrome.ExtraArgs(args...))
+	cr, err := chrome.New(ctx,
+		chrome.ARCSupported(),
+		chrome.RestrictARCCPU(),
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.ExtraArgs(args...))
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to login to Chrome")
 	}

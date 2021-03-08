@@ -49,8 +49,9 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 	)
 
 	// Setup Chrome.
-	cr, err := chrome.New(ctx, chrome.GAIALogin(),
-		chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(),
+	cr, err := chrome.New(ctx,
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password, GAIAID: "gaia-id"}),
+		chrome.ARCSupported(),
 		chrome.ExtraArgs("--arc-disable-app-sync", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

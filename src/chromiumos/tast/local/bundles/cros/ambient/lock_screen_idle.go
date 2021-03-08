@@ -81,8 +81,7 @@ func setup(
 ) (*chrome.Chrome, *chrome.TestConn, error) {
 	cr, err := chrome.New(
 		ctx,
-		chrome.Auth(username, password, ""),
-		chrome.GAIALogin(),
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.EnableFeatures("ChromeOSAmbientMode:FineArtAlbumEnabled/true/CulturalInstitutePhotosEnabled/true/FeaturedPhotoAlbumEnabled/true/FeaturedPhotosEnabled/true"),
 	)
 	if err != nil {
