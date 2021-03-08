@@ -15,24 +15,38 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SELinuxProcessesARC,
-		Desc:         "Checks that processes are running in correct SELinux domain after ARC boots",
+		Desc:         "Checks that host processes are running in correct SELinux domain after ARC boots",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
-		SoftwareDeps: []string{"android_p", "selinux", "chrome"},
+		SoftwareDeps: []string{"selinux", "chrome"},
 		Pre:          arc.Booted(),
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			// TODO(b/182216018): Move this out of informational.
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
 func SELinuxProcessesARC(ctx context.Context, s *testing.State) {
-	// Check Android init domain.
-	a := s.PreValue().(arc.PreData).ARC
-	c, err := a.Command(ctx, "cat", "/proc/1/attr/current").Output()
+	vmEnabled, err := arc.VMEnabled()
 	if err != nil {
-		s.Error("Failed to check Android init context: ", err)
-	} else {
-		const expected = "u:r:init:s0\x00"
-		if string(c) != expected {
-			s.Errorf("Android init context must be %q but got %q", expected, string(c))
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	}
+	if !vmEnabled {
+		// Check Android init domain.
+		a := s.PreValue().(arc.PreData).ARC
+		c, err := a.Command(ctx, "cat", "/proc/1/attr/current").Output()
+		if err != nil {
+			s.Error("Failed to check Android init context: ", err)
+		} else {
+			const expected = "u:r:init:s0\x00"
+			if string(c) != expected {
+				s.Errorf("Android init context must be %q but got %q", expected, string(c))
+			}
 		}
 	}
 
