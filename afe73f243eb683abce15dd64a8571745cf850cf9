@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95526423_cc9d9f6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T18:13:41Z",
+      "side": 1,
+      "message": "Supposed to be where you commented below. It will be passed in to androidDevice.ReceiveFile. The sendFile and receiveFile RPCs both accept timeouts for the entire sharing time (sender/receiver finding each other + transfer).",
+      "parentUuid": "29a0a469_3f09a055",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "afe73f243eb683abce15dd64a8571745cf850cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3dcf6cc1_1cfda8f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-06T03:00:25Z",
       "side": 1,
       "message": "Is this supposed to be TestTimeout?",
+      "range": {
+        "startLine": 90,
+        "startChar": 25,
+        "endLine": 90,
+        "endChar": 40
+      },
+      "revId": "afe73f243eb683abce15dd64a8571745cf850cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "177087e0_e3456d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T18:13:41Z",
+      "side": 1,
+      "message": "Yes haha I noticed+fixed it the next CL accidentally instead of here",
+      "parentUuid": "3dcf6cc1_1cfda8f4",
       "range": {
         "startLine": 90,
         "startChar": 25,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-06T03:00:25Z",
       "side": 1,
       "message": "This doesn\u0027t seem like the right timeout to use for this. Since it will appear when the transfer is complete",
+      "range": {
+        "startLine": 258,
+        "startChar": 102,
+        "endLine": 258,
+        "endChar": 126
+      },
+      "revId": "afe73f243eb683abce15dd64a8571745cf850cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "356d7288_c9760198",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T18:13:41Z",
+      "side": 1,
+      "message": "Ah okay I just changed it based on what the original timeouts were (both are CrosDetectSenderTimeout). The request here needs a new field to specify the transfer timeout, I went ahead and added it.",
+      "parentUuid": "dd6a69d6_7d2611fb",
       "range": {
         "startLine": 258,
         "startChar": 102,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c37f22fa_c47cbae0",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T18:13:41Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure how to best describe it haha. DetectionTimeout maybe? Since that\u0027s the main thing it\u0027s doing. Open to suggestions though",
+      "parentUuid": "62d858eb_c443cbcb",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "afe73f243eb683abce15dd64a8571745cf850cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57fe5abf_034eb7f9",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
         "patchSetId": 3
@@ -106,6 +202,30 @@
       "writtenOn": "2021-03-06T03:00:25Z",
       "side": 1,
       "message": "Give an example or max file size for reference",
+      "range": {
+        "startLine": 32,
+        "startChar": 52,
+        "endLine": 32,
+        "endChar": 77
+      },
+      "revId": "afe73f243eb683abce15dd64a8571745cf850cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e183e060_a99cfbc4",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T18:13:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57fe5abf_034eb7f9",
       "range": {
         "startLine": 32,
         "startChar": 52,
@@ -162,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6138cc5c_b9bf47d7",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbytestutils/nearbytestutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T18:13:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "991486fa_b6311832",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 83
+      },
+      "revId": "afe73f243eb683abce15dd64a8571745cf850cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9acbbdfe_80903287",
@@ -185,6 +329,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d285c6_acfbc515",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_to_cros_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T18:13:41Z",
+      "side": 1,
+      "message": "I added a field to `nearbyservice.CrOSReceiveFilesRequest` to use this transfer timeout. nearbyservice.go\u0027s `AcceptIncomingShareNotificationAndWaitForCompletion` function was using CrosDetectSenderTimeout to wait for the sharing-complete notification, but it should be using a timeout tailored to the transfer size.",
+      "parentUuid": "9acbbdfe_80903287",
+      "range": {
+        "startLine": 39,
+        "startChar": 67,
+        "endLine": 39,
+        "endChar": 120
+      },
+      "revId": "afe73f243eb683abce15dd64a8571745cf850cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32dd0a4d_fc6d1690",
@@ -198,6 +366,30 @@
       "writtenOn": "2021-03-06T03:00:25Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 43,
+        "startChar": 67,
+        "endLine": 43,
+        "endChar": 120
+      },
+      "revId": "afe73f243eb683abce15dd64a8571745cf850cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6a29e7_455e7ed9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_to_cros_in_contacts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-08T18:13:41Z",
+      "side": 1,
+      "message": "see comment in other file",
+      "parentUuid": "32dd0a4d_fc6d1690",
       "range": {
         "startLine": 43,
         "startChar": 67,
