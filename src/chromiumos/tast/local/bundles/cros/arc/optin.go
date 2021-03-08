@@ -50,6 +50,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(optinUnstableModels...)),
 		}, {
 			Name:              "vm",
+            ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(optinUnstableModels...)),
 		}, {
