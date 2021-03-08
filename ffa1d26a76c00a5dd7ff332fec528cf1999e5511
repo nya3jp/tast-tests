@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1783ef1b_0614d8db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-03-08T22:46:59Z",
+      "side": 1,
+      "message": "-1 to prevent submission once Q is open",
+      "revId": "ffa1d26a76c00a5dd7ff332fec528cf1999e5511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dc8f90e_98fde879",
