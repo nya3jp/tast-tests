@@ -39,6 +39,30 @@
       },
       "revId": "6433d2bb50bd94e9bcf5d36a9bd34e95a7ecffa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b01060e4_fd0cadb1",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-03-08T03:34:10Z",
+      "side": 1,
+      "message": "Looks resolved.",
+      "parentUuid": "3a9e3e0c_5f6e8e43",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 62
+      },
+      "revId": "6433d2bb50bd94e9bcf5d36a9bd34e95a7ecffa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
