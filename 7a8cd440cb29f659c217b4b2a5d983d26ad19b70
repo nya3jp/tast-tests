@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4602e0c_fe54072b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-08T06:47:11Z",
+      "side": 1,
+      "message": "In this case of generateVMPack, it\u0027s okay to omit shortening the context because the only deferred call with contexts involved is cr.Close(ctx), which is known to be safe to call with expired contexts.\n\nThe use of Shorten in existing generateContainerPack looks wrong. If we want to save cleanup time for deferred stopUreadaheadTracing, we have to do it before starting ureadahead, e.g.\n\n cleanCtx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\n defer cancel()\n\n if err :\u003d startUreadaheadTracing(ctx); err !\u003d nil {\n   ...\n }\n\n defer func() {\n   if err :\u003d stopUreadaheadTracing(cleanCtx); err !\u003d nil {\n     ...\n   }\n }()\n\nOtherwise, we fail to secure enough cleanup time (5s) if there are less than 5s timeout left when startUreadshetTracing returns successfully.",
+      "parentUuid": "a2894138_c58f5515",
+      "range": {
+        "startLine": 128,
+        "startChar": 56,
+        "endLine": 128,
+        "endChar": 64
+      },
+      "revId": "7a8cd440cb29f659c217b4b2a5d983d26ad19b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c1bf29f_707bd973",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
         "patchSetId": 8
