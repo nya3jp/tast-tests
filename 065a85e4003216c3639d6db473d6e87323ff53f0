@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db147571_53394aa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-08T14:54:16Z",
+      "side": 0,
+      "message": "wouldn\u0027t it be better to extract this as a private function or functions and give ti a name?\nand then, have in RUN part e.g.:\n\n{\nrotateDisplay(...)\nopenFirstActivity(...)\nopenSecondActivity(...)\nsnapToTheRight(activityOne)\nsnapToTheLeft(activityTwo)\n...\n\n}\n\n\nIt could evolve even in some utility",
+      "revId": "065a85e4003216c3639d6db473d6e87323ff53f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
