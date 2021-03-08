@@ -11,19 +11,19 @@ import (
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/local/bundles/cros/wifi/iwlwifirescan"
-	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
-			network.RegisterIwlwifiPCIRescanServer(srv, &IwlwifiPCIRescanService{})
+			wifi.RegisterIwlwifiPCIRescanServer(srv, &IwlwifiPCIRescanService{})
 		},
 	})
 }
 
-// IwlwifiPCIRescanService implements tast.cros.network.IwlwifiPCIRescan gRPC service.
+// IwlwifiPCIRescanService implements tast.cros.wifi.IwlwifiPCIRescan gRPC service.
 type IwlwifiPCIRescanService struct{}
 
 // RemoveIfaceAndWaitForRecovery triggers iwlwifi-rescan rule by removing the WiFi device.
