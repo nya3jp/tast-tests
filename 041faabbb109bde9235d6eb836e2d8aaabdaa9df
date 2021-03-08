@@ -16,6 +16,24 @@
       "message": "nit: Is this below hard time limit? I remember there is hard time limit for each test like 5 minutes but I might be wrong. (You can quickly check that by doing testing.Sleep(ctx, 7 * time.minute) in the test)",
       "revId": "041faabbb109bde9235d6eb836e2d8aaabdaa9df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7058c1_a4696405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-08T05:41:50Z",
+      "side": 1,
+      "message": "Seems to be set at 30 minutes in the control file\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/server/site_tests/tast/control.category-arc;l\u003d36",
+      "parentUuid": "abb35a31_80edc2a8",
+      "revId": "041faabbb109bde9235d6eb836e2d8aaabdaa9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
