@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c00a66eb_ee363b0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/2d.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-08T19:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41ca0b2e_7c959667",
+      "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20594f4e_9ad2ce0f",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-08T17:44:47Z",
       "side": 1,
       "message": "this looks a bit strange to me.  Typically const foo \u003d () \u003d\u003e { ... } is considered to be a good coding style, and I think it won\u0027t change the behavior much.  If that\u0027s fine, I like to stick with using const for function bindings.",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b55ac7f_6030cfaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/2d.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-08T19:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20594f4e_9ad2ce0f",
       "range": {
         "startLine": 11,
         "startChar": 1,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94f3eb14_2d92ac94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/webgl.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-08T19:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c16971f_cc961a43",
+      "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11da4425_f3e9f893",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-03-08T17:44:47Z",
       "side": 1,
       "message": "similarly, if okay, use of const would be more preferable here.",
+      "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b66e6d9_5e1ae31b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/webgl.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-08T19:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11da4425_f3e9f893",
       "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2916f98d_f31f709f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/webgl.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-08T19:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41435dcb_bdef2a69",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6190e050_777f3e66",
@@ -111,6 +213,24 @@
       "writtenOn": "2021-03-08T17:44:47Z",
       "side": 1,
       "message": "ditto",
+      "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62500cb_09258f4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/d-canvas/webgl.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-08T19:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6190e050_777f3e66",
       "revId": "aff7015267d4107da4b27535eb1e9989a6399d0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
