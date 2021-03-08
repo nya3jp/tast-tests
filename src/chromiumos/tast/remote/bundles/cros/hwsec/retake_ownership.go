@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	hwsecremote "chromiumos/tast/remote/hwsec"
@@ -49,8 +50,14 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 		s.Fatal("Enrollment preparation is not reset after clearing ownership")
 	}
 	s.Log("Enrolling with TPM not ready")
-	if _, err := attestation.CreateEnrollRequest(ctx, hwsec.DefaultPCA); err == nil {
+	_, err = attestation.CreateEnrollRequest(ctx, hwsec.DefaultPCA)
+	var ae *hwsec.AttestationError
+	if err == nil {
 		s.Fatal("Enrollment should not happen w/o getting prepared")
+	} else if !errors.As(err, &ae) {
+		s.Fatalf("Unexpected CreateEnrollRequest error: got %q; want *hwsec.AttestationError", err)
+	} else if ae.AttestationStatus != apb.AttestationStatus_STATUS_UNEXPECTED_DEVICE_ERROR {
+		s.Fatalf("Unexpected error status: got %s; want STATUS_UNEXPECTED_DEVICE_ERROR", ae.AttestationStatus.String())
 	}
 
 	s.Log("Start taking ownership")
@@ -88,7 +95,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 	if passwd2, err := cryptohome.GetOwnerPassword(ctx); err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	} else if passwd != passwd2 {
-		s.Fatal("Inconsistent owner password after reboot")
+		s.Fatalf("Unexpected owner password after reboot: got %q; want %q", passwd2, passwd)
 	}
 
 	s.Log("Clearing owner password")
