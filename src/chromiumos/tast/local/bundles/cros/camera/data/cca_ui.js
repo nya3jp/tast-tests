@@ -14,12 +14,11 @@ function ccaImport(path) {
 }
 
 const state = await ccaImport('state.js');
+const localStorage = await ccaImport('models/local_storage.js');
 const {DeviceOperator} = await ccaImport('mojo/device_operator.js');
 const {ChromeHelper} = await ccaImport('mojo/chrome_helper.js');
 const {Facing} = await ccaImport('type.js');
-const {browserProxy} = await ccaImport('browser_proxy/browser_proxy.js');
-const {windowController} =
-    await ccaImport('window_controller/window_controller.js');
+const {windowController} = await ccaImport('window_controller.js');
 
 /**
  * @typedef {chrome.app.window.AppWindow} AppWindow
@@ -147,7 +146,7 @@ window.Tast = class Tast {
    * @return {Promise}
    */
   static removeCacheData() {
-    return browserProxy.localStorageClear();
+    return localStorage.clear();
   }
 
   /**
