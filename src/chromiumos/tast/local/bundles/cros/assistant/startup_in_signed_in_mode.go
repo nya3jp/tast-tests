@@ -29,8 +29,10 @@ func StartupInSignedInMode(ctx context.Context, s *testing.State) {
 	// Start Chrome browser and log in using a test account.
 	cr, err := chrome.New(
 		ctx,
-		chrome.Auth(s.RequiredVar("assistant.username"), s.RequiredVar("assistant.password"), ""),
-		chrome.GAIALogin(),
+		chrome.GAIALogin(chrome.Creds{
+			User: s.RequiredVar("assistant.username"),
+			Pass: s.RequiredVar("assistant.password"),
+		}),
 		assistant.VerboseLogging(),
 	)
 	if err != nil {

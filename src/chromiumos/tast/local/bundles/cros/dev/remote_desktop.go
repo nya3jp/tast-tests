@@ -130,9 +130,11 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 		chromeARCOpt = chrome.ARCSupported()
 	}
 	opts = append(opts, chromeARCOpt)
-	opts = append(opts, chrome.Auth(vars.user, vars.pass, ""))
-	opts = append(opts, chrome.Contact(vars.contact))
-	opts = append(opts, chrome.GAIALogin())
+	opts = append(opts, chrome.GAIALogin(chrome.Creds{
+		User:    vars.user,
+		Pass:    vars.pass,
+		Contact: vars.contact,
+	}))
 
 	if !vars.reset {
 		opts = append(opts, chrome.KeepState())

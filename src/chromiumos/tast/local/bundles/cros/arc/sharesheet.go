@@ -60,7 +60,9 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar("arc.Sharesheet.password")
 
 	// Setup Chrome.
-	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCEnabled(),
+	cr, err := chrome.New(ctx,
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password, GAIAID: "gaia-id"}),
+		chrome.ARCEnabled(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

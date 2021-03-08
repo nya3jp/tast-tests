@@ -143,8 +143,10 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
-	cr, err := chrome.New(ctx, chrome.ARCSupported(), chrome.RestrictARCCPU(), chrome.GAIALogin(),
-		chrome.Auth(username, password, ""),
+	cr, err := chrome.New(ctx,
+		chrome.ARCSupported(),
+		chrome.RestrictARCCPU(),
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
