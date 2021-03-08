@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d3699de_32ec0690",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-08T06:51:26Z",
+      "side": 1,
+      "message": "LGTM with a nit.\n",
+      "revId": "138d590e79d8d0a36b38b6edc4c7c22d4b3f77eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17433701_f8c5efbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-08T06:51:26Z",
+      "side": 1,
+      "message": "Can you include err in the error message for debugging purpose?",
+      "range": {
+        "startLine": 36,
+        "startChar": 37,
+        "endLine": 36,
+        "endChar": 41
+      },
+      "revId": "138d590e79d8d0a36b38b6edc4c7c22d4b3f77eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
