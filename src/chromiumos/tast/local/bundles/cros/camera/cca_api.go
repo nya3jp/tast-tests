@@ -28,6 +28,13 @@ func init() {
 // APIs' implementations from silently breaking CCA.
 func CCAAPI(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get test connection: ", err)
+	}
+	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.waitForSystemWebAppsInstall)`); err != nil {
+		s.Fatal("Failed to wait swa installed")
+	}
 
 	conn, err := cr.NewConn(ctx, "chrome://camera-app/test/test.html")
 	if err != nil {
