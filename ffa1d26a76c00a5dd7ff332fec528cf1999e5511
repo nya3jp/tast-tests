@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc8f90e_98fde879",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-03-08T22:46:26Z",
+      "side": 1,
+      "message": "this probably should be fatal. We cannot continue after the unknown ARC state",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 8
+      },
+      "revId": "ffa1d26a76c00a5dd7ff332fec528cf1999e5511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
