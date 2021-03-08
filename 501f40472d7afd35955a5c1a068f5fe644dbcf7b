@@ -39,6 +39,30 @@
       },
       "revId": "501f40472d7afd35955a5c1a068f5fe644dbcf7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da3b65cf_ec32302d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-08T21:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f172a45f_89c24379",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "501f40472d7afd35955a5c1a068f5fe644dbcf7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
