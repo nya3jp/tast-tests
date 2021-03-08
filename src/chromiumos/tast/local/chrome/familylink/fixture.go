@@ -48,6 +48,23 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name: "familyLinkGellerLogin",
+		Desc: "Supervised Family Link user login with Geller account",
+		Impl: NewFamilyLinkFixture("geller.parentUser", "geller.parentPassword", "geller.childUser", "geller.childPassword"),
+		Vars: []string{
+			"geller.parentUser",
+			"geller.parentPassword",
+			"geller.childUser",
+			"geller.childPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginTimeout + time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name: "familyLinkUnicornArcLogin",
 		Desc: "Supervised Family Link user login with Unicorn account and ARC support",
 		Impl: NewFamilyLinkFixture("arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword", chrome.ARCSupported()),

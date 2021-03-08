@@ -47,7 +47,6 @@ func init() {
 			Fixture:           "familyLinkUnicornArcLogin",
 		}},
 		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
-		Vars:    []string{"arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword"},
 	})
 }
 
