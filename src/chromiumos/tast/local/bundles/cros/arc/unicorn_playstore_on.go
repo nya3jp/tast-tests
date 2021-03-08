@@ -22,7 +22,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
-		Vars:         []string{"arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
