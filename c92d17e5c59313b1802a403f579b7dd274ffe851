@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18da944_45807aa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-08T22:24:32Z",
+      "side": 1,
+      "message": "Hsin-Yi, thanks for pointing this out. I discussed with Aings and he wants to use native ones. Now the whole case we changed to use /usr/local/bin lmbench directly.",
+      "parentUuid": "f536bae6_9cd5321d",
+      "revId": "c92d17e5c59313b1802a403f579b7dd274ffe851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a77ca60_818fd95e",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "The original spec was to calculate the geomean, but I am fine with this proposed change",
       "parentUuid": "6a77ca60_818fd95e",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 3
+      },
+      "revId": "c92d17e5c59313b1802a403f579b7dd274ffe851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0be5f3_32b07608",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-08T22:24:32Z",
+      "side": 1,
+      "message": "Test was modified to output geometric mean of latency (for quick compare) in results_chart.json as well the per array size latency in lmbench_results.json. Example output:\n\n  \"lat_mem_rd\": {\n    \"0.00098\": 0.96,\n    \"0.12500\": 2.941,\n    \"128.00000\": 6.258,\n    \"8.00000\": 5.737\n  }",
+      "parentUuid": "ad49e0e9_d9383087",
       "range": {
         "startLine": 160,
         "startChar": 2,
@@ -126,6 +168,30 @@
       "side": 1,
       "message": "Xibin has found a reference to use \"0.00098\", \"0.12500\", \"8.00000\", \"128.00000\". I think this looks fine",
       "parentUuid": "3a3bd5de_371664ee",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "c92d17e5c59313b1802a403f579b7dd274ffe851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f41c572e_1418fe19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-08T22:24:32Z",
+      "side": 1,
+      "message": "Test was modified to output geometric mean of bandwidth (for quick compare) in results_chart.json as well bandwidth values for different sizes (picked 4) in lmbench_results.json. Example output:\n\n  \"bw_mem_wr\": {\n    \"1024m\": 13039.39,\n    \"16k\": 66518.97,\n    \"1m\": 42078.9,\n    \"256m\": 13415.74\n  },",
+      "parentUuid": "334816b2_59623992",
       "range": {
         "startLine": 174,
         "startChar": 1,
