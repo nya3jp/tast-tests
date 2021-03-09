@@ -54,7 +54,7 @@ func ArcEnabled(ctx context.Context, s *testing.State) {
 
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: pre.Username, Pass: pre.Password, GAIAID: pre.GaiaID}),
+		chrome.FakeLogin(chrome.Creds{User: pre.Username, Pass: pre.Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.ExtraArgs("--arc-availability=officially-supported"))
 	if err != nil {
