@@ -94,6 +94,11 @@ func bootPerfOnce(fullCtx context.Context, s *testing.State, i, iterations int, 
 
 	waitUntilCPUCoolDown(ctx, s)
 
+	// Stop tlsdated, that makes sure nobody will touch the RTC anymore, and also creates a sync-rtc bootstat file.
+	if err := d.Conn().Command("stop", "tlsdated").Run(ctx); err != nil {
+		s.Fatal("Failed to stop tlsdated")
+	}
+
 	if err := d.Reboot(ctx); err != nil {
 		s.Fatal("Failed to reboot DUT: ", err)
 	}
