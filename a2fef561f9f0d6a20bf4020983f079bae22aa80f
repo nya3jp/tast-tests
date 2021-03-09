@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f85e0140_15d70f6c",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-09T08:22:53Z",
+      "side": 1,
+      "message": "No action required: it\u0027s unfortunate we have to replicate many of the upstart library, but I don\u0027t have a good idea to avoid it.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 68
+      },
+      "revId": "a2fef561f9f0d6a20bf4020983f079bae22aa80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ba31ea0_1dc4adbc",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-09T08:22:53Z",
+      "side": 1,
+      "message": "Let us make it a normal function (not a method) since it doesn\u0027t access dc.",
+      "range": {
+        "startLine": 267,
+        "startChar": 5,
+        "endLine": 267,
+        "endChar": 28
+      },
+      "revId": "a2fef561f9f0d6a20bf4020983f079bae22aa80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f66b7f28_0f363f50",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-09T08:22:53Z",
+      "side": 1,
+      "message": "Why don\u0027t you introduce a method \"Status\" or \"status\" for this operation shared with Ensure?",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 64
+      },
+      "revId": "a2fef561f9f0d6a20bf4020983f079bae22aa80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
