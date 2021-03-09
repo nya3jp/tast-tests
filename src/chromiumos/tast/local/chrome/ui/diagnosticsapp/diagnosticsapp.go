@@ -65,7 +65,7 @@ var DxSuccessBadge = ui.FindParams{
 
 // DxProgressBadge export is used to find successful launch of a routine
 var DxProgressBadge = ui.FindParams{
-	Name: "TEST RUNNING",
+	Name: "RUNNING",
 	Role: ui.RoleTypeStaticText,
 }
 
