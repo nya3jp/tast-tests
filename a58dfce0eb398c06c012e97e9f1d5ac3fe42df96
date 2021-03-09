@@ -37,6 +37,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d320309_535bdfd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-09T09:02:05Z",
+      "side": 1,
+      "message": "Yes that\u0027s right. We should be able to access test output directory in PreTest by testing.ContextOutDir.",
+      "parentUuid": "f3cad389_8a47b1ba",
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e4b6e96_706dabfe",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-09T09:02:05Z",
+      "side": 1,
+      "message": "I don\u0027t think shell operators work in ShellCommand (despite its name!)\n\nIf you need shell interpretation, we have to invoke sh explicitly:\n\n d.ShellCommand(ctx, \"sh\", \"-c\", \"dumpsys package com.google.android.gms | grep versionCode\")",
+      "range": {
+        "startLine": 379,
+        "startChar": 89,
+        "endLine": 379,
+        "endChar": 93
+      },
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "407711db_4e19b55b",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
         "patchSetId": 4
