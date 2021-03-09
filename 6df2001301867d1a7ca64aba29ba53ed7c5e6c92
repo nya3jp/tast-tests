@@ -16,6 +16,46 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "6df2001301867d1a7ca64aba29ba53ed7c5e6c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "939bf9cb_89f4d33b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-09T21:08:48Z",
+      "side": 1,
+      "message": "+2 (see comment)",
+      "revId": "6df2001301867d1a7ca64aba29ba53ed7c5e6c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cdb4c49_f6e57e1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_attribute_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-09T21:08:48Z",
+      "side": 1,
+      "message": "just wanted to make sure you meant 3 (and not 4, like in the rest of the tests)",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "6df2001301867d1a7ca64aba29ba53ed7c5e6c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
