@@ -81,7 +81,7 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 	// Flag --arc-install-event-chrome-log-for-tests logs ARC install events to chrome log.
 	cr, err := chrome.New(
 		ctx,
-		chrome.GAIALogin(chrome.Creds{User: user, Pass: password, GAIAID: "gaia-id"}),
+		chrome.GAIALogin(chrome.Creds{User: user, Pass: password}),
 		chrome.ARCSupported(),
 		chrome.ProdPolicy(),
 		chrome.ExtraArgs("--install-log-fast-upload-for-tests", "--arc-install-event-chrome-log-for-tests"))
