@@ -39,6 +39,30 @@
       },
       "revId": "32447f52d4fb486a97d56988ee9a38a7d53b1687",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ff13aa_311b4225",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-09T22:54:01Z",
+      "side": 1,
+      "message": "yes, it is cryptic and unhelpful in the test output.",
+      "parentUuid": "549b0e6d_6b5e12b9",
+      "range": {
+        "startLine": 68,
+        "startChar": 29,
+        "endLine": 68,
+        "endChar": 66
+      },
+      "revId": "32447f52d4fb486a97d56988ee9a38a7d53b1687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
