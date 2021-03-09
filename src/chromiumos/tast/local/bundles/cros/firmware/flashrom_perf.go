@@ -35,37 +35,37 @@ func init() {
 		Params: []testing.Param{{
 			Val: params{
 				region:   "", // empty str implies a full read.
-				deadline: 10000,
+				deadline: 21000,
 			},
 		}, {
 			Name: "fmap",
 			Val: params{
 				region:   "FMAP",
-				deadline: 450,
+				deadline: 850,
 			},
 		}, {
 			Name: "gbb",
 			Val: params{
 				region:   "GBB",
-				deadline: 1700,
+				deadline: 2700,
 			},
 		}, {
 			Name: "rw_vpd",
 			Val: params{
 				region:   "RW_VPD",
-				deadline: 1300,
+				deadline: 2300,
 			},
 		}, {
 			Name: "rw_elog",
 			Val: params{
 				region:   "RW_ELOG",
-				deadline: 1300,
+				deadline: 2300,
 			},
 		}, {
 			Name: "coreboot",
 			Val: params{
 				region:   "COREBOOT",
-				deadline: 3000,
+				deadline: 6000,
 			},
 		}},
 	})
