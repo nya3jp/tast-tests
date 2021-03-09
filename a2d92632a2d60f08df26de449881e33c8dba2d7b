@@ -22,6 +22,53 @@
       },
       "revId": "a2d92632a2d60f08df26de449881e33c8dba2d7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ea2e2eb_8c7e9eab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-03-09T12:02:10Z",
+      "side": 1,
+      "message": "I think that is a good idea, but then we have to print the number of photos taken to allow reproducible traces.",
+      "parentUuid": "bdf540e2_d0956c49",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 52
+      },
+      "revId": "a2d92632a2d60f08df26de449881e33c8dba2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41482b8a_1475c230",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-03-09T12:02:10Z",
+      "side": 1,
+      "message": "Same here, might be good to have random video time.",
+      "range": {
+        "startLine": 106,
+        "startChar": 49,
+        "endLine": 106,
+        "endChar": 59
+      },
+      "revId": "a2d92632a2d60f08df26de449881e33c8dba2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
