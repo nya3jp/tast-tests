@@ -51,10 +51,12 @@ func init() {
 // These models are known to fail this test, and are therefore only run in the
 // informational version. These failures are all tracked in the referenced bugs.
 var badModels = []string{
-	"akemi",  // TODO(b/172288894): Bad SAR table.
-	"eldrid", // TODO(b/181034399): ACPI bug causing this test to fail.
-	"eve",    // TODO(b/181055964): Unique SAR table causes this test to fail.
-	"leona",  // TODO(b/181049667): Bad SAR table.
+	"akemi",   // TODO(b/172288894): Bad SAR table.
+	"eldrid",  // TODO(b/181034399): ACPI bug causing this test to fail.
+	"eve",     // TODO(b/181055964): Unique SAR table causes this test to fail.
+	"leona",   // TODO(b/181049667): Bad SAR table.
+	"meep",    // TODO(b/181887950): Bad GEO SAR table.
+	"mimrock", // TODO(b/181887950): Bad GEO SAR table.
 }
 
 // sarTableType is an enum that accounts for the different kinds of SAR tables
