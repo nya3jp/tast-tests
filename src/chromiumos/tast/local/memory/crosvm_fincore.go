@@ -70,6 +70,9 @@ func CrosvmFincoreMetrics(ctx context.Context, p *perf.Values, outdir, suffix st
 			}
 		}
 	}
+	if len(disks) == 0 {
+		return nil
+	}
 	args := []string{"--bytes", "--json"}
 	for disk := range disks {
 		args = append(args, disk)

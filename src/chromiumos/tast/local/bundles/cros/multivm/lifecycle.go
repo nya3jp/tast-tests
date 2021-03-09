@@ -177,7 +177,7 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	}
 
 	if err := multivm.MemoryMetrics(ctx, pre, p, s.OutDir(), ""); err != nil {
-		s.Error("Failed to collect memory metrics")
+		s.Error("Failed to collect memory metrics: ", err)
 	}
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save perf.Values: ", err)
