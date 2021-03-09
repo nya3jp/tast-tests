@@ -39,6 +39,30 @@
       },
       "revId": "0b0b50864b7faec61988d98036a3cfaf43a8cb6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54201ba7_5ac99be0",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-09T01:45:58Z",
+      "side": 1,
+      "message": "Cool. I\u0027ve another change coming. I\u0027ll add it there.",
+      "parentUuid": "6767cf2a_74fa377f",
+      "range": {
+        "startLine": 232,
+        "startChar": 29,
+        "endLine": 232,
+        "endChar": 34
+      },
+      "revId": "0b0b50864b7faec61988d98036a3cfaf43a8cb6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
