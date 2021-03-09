@@ -16,6 +16,24 @@
       "message": "I\u0027ve taken a stab at parameterizing the dwell time test like we discussed on b/181294019 a couple weeks ago. Currently I haven\u0027t tightened up the passing time ranges for each channel, but if you\u0027d like we can do that in this CL as well.",
       "revId": "91d2cd7dc109e4f46b7d8278f42607a56443ae97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d412aefd_5bcef663",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-03-09T22:35:35Z",
+      "side": 1,
+      "message": "Not tightening just yet sgtm, no need to trigger failures for the sake of it. Especially since we\u0027ve seen some boards take 150ms on some channels: http://shortn/_ooWX1uGmMr",
+      "parentUuid": "c82e6cbf_5460ae11",
+      "revId": "91d2cd7dc109e4f46b7d8278f42607a56443ae97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
