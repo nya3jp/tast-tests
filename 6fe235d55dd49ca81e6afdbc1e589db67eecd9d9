@@ -110,6 +110,30 @@
       },
       "revId": "6fe235d55dd49ca81e6afdbc1e589db67eecd9d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bef42b6_b735ff8f",
+        "filename": "src/chromiumos/tast/local/unicorn/unicorn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-03-09T03:58:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6144f87f_fd7d1ff2",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "6fe235d55dd49ca81e6afdbc1e589db67eecd9d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
