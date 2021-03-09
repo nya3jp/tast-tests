@@ -16,6 +16,63 @@
       "message": "Thanks for your comments",
       "revId": "c317219f9744955dba69ba995c5f7e038bca9036",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab90c6c8_c131ce2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-09T17:41:27Z",
+      "side": 1,
+      "message": "Ideally let the server choose a random port like in:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/externaldata/server.go;l\u003d72\nYou will need to rewrite the port in the html page to be correct.\n\nOtherwise:\nUse a less common port and add a comment to explain why a specific port was chosen instead of a random one (to match the html page).",
+      "range": {
+        "startLine": 64,
+        "startChar": 40,
+        "endLine": 64,
+        "endChar": 44
+      },
+      "revId": "c317219f9744955dba69ba995c5f7e038bca9036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2cba9b_3cd3d6a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-09T17:41:27Z",
+      "side": 1,
+      "message": "Move this below where it is actually closed.",
+      "revId": "c317219f9744955dba69ba995c5f7e038bca9036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92b0c036_40c6598f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-09T17:41:27Z",
+      "side": 1,
+      "message": "No need to compare username and passowrd. It should always fail. You don\u0027t even need the image.",
+      "revId": "c317219f9744955dba69ba995c5f7e038bca9036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
