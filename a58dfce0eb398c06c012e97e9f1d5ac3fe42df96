@@ -16,6 +16,23 @@
       "message": "deanliao@ gentle ping",
       "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3cad389_8a47b1ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-09T04:11:35Z",
+      "side": 1,
+      "message": "+nya, Tast core member, for further comment.\n\nI remembered that it is disallowed to have multiline log message. For the purpose having test metadata at the beginning, we can output the full metadata to a structured file and maybe log a message to prompt users to look at the metadata there.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Output-files",
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
