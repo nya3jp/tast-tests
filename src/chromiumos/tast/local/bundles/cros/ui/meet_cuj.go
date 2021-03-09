@@ -184,6 +184,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	meet := s.Param().(meetTest)
 	meetTimeout := 30 * time.Second
+	if meet.docs {
+		meetTimeout = 60 * time.Second
+	}
 
 	// Shorten context to allow for cleanup. Reserve one minute in case of power
 	// test.
@@ -602,18 +605,22 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if err := kw.Accel(ctx, "Ctrl+A"); err != nil {
 				return errors.Wrap(err, "failed to hit ctrl-a and select all text")
 			}
-			// Type notes three times with 5 seconds pauses.
-			for i := 0; i < 3; i++ {
-				if err := kw.Type(ctx, notes); err != nil {
-					return errors.Wrap(err, "failed to type the notes")
-				}
+			end := time.Now().Add(meetTimeout)
+			// Wait for 5 seconds, type notes for 12.4 seconds then until the time is
+			// elapsed (3 times by default). Wait before the first typing to reduce
+			// the overlap between typing and joining the meeting.
+			for end.Sub(time.Now()).Seconds() > 18 {
 				if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 					return errors.Wrap(err, "failed to wait")
+				}
+				if err := kw.Type(ctx, notes); err != nil {
+					return errors.Wrap(err, "failed to type the notes")
 				}
 			}
 			if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
 				return errors.Wrap(err, "failed to hit alt-tab and focus back to Meet tab")
 			}
+			meetTimeout = end.Sub(time.Now())
 		}
 
 		// Ensures that meet session is long enough. graphics.MeasureGPUCounters
