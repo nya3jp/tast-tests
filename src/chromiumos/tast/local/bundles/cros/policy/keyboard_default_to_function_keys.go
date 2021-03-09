@@ -44,6 +44,18 @@ func KeyboardDefaultToFunctionKeys(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	// Old Chrome OS keyboards send F1 and software maps it to "back".
+	// Wilco devices and newer Chrome OS keyboards directly send "back".
+	topRow, err := input.KeyboardTopRowLayout(ctx, kb)
+	if err != nil {
+		s.Fatal("Failed to obtain kayobard layout: ", err)
+	}
+
+	back := "F1"
+	if topRow.BrowserBack != "F1" {
+		back = "back"
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get TestConn: ", err)
@@ -57,17 +69,17 @@ func KeyboardDefaultToFunctionKeys(ctx context.Context, s *testing.State) {
 		{
 			name:  "true",
 			value: &policy.KeyboardDefaultToFunctionKeys{Val: true},
-			keys:  []string{"search+f1", "f1"},
+			keys:  []string{"search+" + back, back},
 		},
 		{
 			name:  "false",
 			value: &policy.KeyboardDefaultToFunctionKeys{Val: false},
-			keys:  []string{"f1", "search+f1"},
+			keys:  []string{back, "search+" + back},
 		},
 		{
 			name:  "unset",
 			value: &policy.KeyboardDefaultToFunctionKeys{Stat: policy.StatusUnset},
-			keys:  []string{"f1", "search+f1"},
+			keys:  []string{back, "search+" + back},
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
