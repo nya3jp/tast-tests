@@ -29,11 +29,7 @@ import (
 )
 
 func hwsecGetDACounter(ctx context.Context, s *testing.TestHookState) (int, error) {
-	cmdRunner, err := hwsecremote.NewLoglessCmdRunner(s.DUT())
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to create CmdRunner")
-	}
-
+	cmdRunner := hwsecremote.NewLoglessCmdRunner(s.DUT())
 	tpmManager := hwsec.NewTPMManagerClient(cmdRunner)
 
 	// Get the TPM dictionary attack info
@@ -45,11 +41,7 @@ func hwsecGetDACounter(ctx context.Context, s *testing.TestHookState) (int, erro
 }
 
 func hwsecGetTPMStatus(ctx context.Context, s *testing.TestHookState) (*hwsec.NonsensitiveStatusInfo, error) {
-	cmdRunner, err := hwsecremote.NewLoglessCmdRunner(s.DUT())
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create CmdRunner")
-	}
-
+	cmdRunner := hwsecremote.NewLoglessCmdRunner(s.DUT())
 	tpmManager := hwsec.NewTPMManagerClient(cmdRunner)
 
 	// Get the TPM nonsensitive status info

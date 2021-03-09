@@ -42,10 +42,7 @@ func isTPM2(ctx context.Context) bool {
 // AttestationNoExternalServer runs through the attestation flow, including enrollment, cert, sign challenge.
 // Also, it verifies the the key access functionality. All the external dependencies are replaced with the locally generated server responses.
 func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
-	r, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("CmdRunner creation error: ", err)
-	}
+	r := hwseclocal.NewCmdRunner()
 	helper, err := hwseclocal.NewFullHelper(ctx, r)
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)

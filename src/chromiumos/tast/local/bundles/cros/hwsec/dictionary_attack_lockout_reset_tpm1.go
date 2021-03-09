@@ -40,10 +40,7 @@ func init() {
 
 // DictionaryAttackLockoutResetTPM1 checks that get dictionary attack info and reset dictionary attack lockout works as expected.
 func DictionaryAttackLockoutResetTPM1(ctx context.Context, s *testing.State) {
-	cmdRunner, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("Failed to create CmdRunner: ", err)
-	}
+	cmdRunner := hwseclocal.NewCmdRunner()
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)

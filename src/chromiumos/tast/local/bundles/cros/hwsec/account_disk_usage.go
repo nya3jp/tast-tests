@@ -205,10 +205,7 @@ func testAccountUsage(ctx context.Context, s *testing.State, cmdRunner hwsec.Cmd
 }
 
 func AccountDiskUsage(ctx context.Context, s *testing.State) {
-	cmdRunner, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("Failed to create CmdRunner: ", err)
-	}
+	cmdRunner := hwseclocal.NewCmdRunner()
 
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {

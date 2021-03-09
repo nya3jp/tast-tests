@@ -55,10 +55,7 @@ func waitUntilTpmManagerReady(ctx context.Context, tpmManager *hwsec.TPMManagerC
 
 // TpmManagerPerf do the performance test for tpm_manager.
 func TpmManagerPerf(ctx context.Context, s *testing.State) {
-	r, err := hwsecremote.NewCmdRunner(s.DUT())
-	if err != nil {
-		s.Fatal("Failed to create new command runner: ", err)
-	}
+	r := hwsecremote.NewCmdRunner(s.DUT())
 
 	helper, err := hwsecremote.NewHelper(r, s.DUT())
 	if err != nil {
