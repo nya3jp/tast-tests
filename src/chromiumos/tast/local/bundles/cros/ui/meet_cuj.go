@@ -70,6 +70,7 @@ func init() {
 			"mute",
 			"record",
 			"ui.MeetCUJ.bond_credentials",
+			"ui.MeetCUJ.doc",
 		},
 		Params: []testing.Param{{
 			// Base case.
@@ -170,9 +171,9 @@ func init() {
 //   - Record and save metrics.
 func MeetCUJ(ctx context.Context, s *testing.State) {
 	const (
-		timeout = 10 * time.Second
-		docsURL = "https://docs.google.com/document/d/1qREN9w1WgjgdGYBT_eEtE6T21ErlW_4nQoBJVhrR1S0/edit"
-		notes   = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		timeout        = 10 * time.Second
+		defaultDocsURL = "https://docs.google.com/document/d/1qREN9w1WgjgdGYBT_eEtE6T21ErlW_4nQoBJVhrR1S0/edit"
+		notes          = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	)
 
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
@@ -407,6 +408,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}()
 
 	if meet.docs {
+		docsURL := defaultDocsURL
+		if docsURLOverride, ok := s.Var("ui.MeetCUJ.doc"); ok {
+			docsURL = docsURLOverride
+		}
+
 		// Create another browser window and open a Google Docs file.
 		docsConn, err := cr.NewConn(ctx, docsURL, cdputil.WithNewWindow())
 		if err != nil {
