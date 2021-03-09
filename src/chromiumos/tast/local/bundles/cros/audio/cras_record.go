@@ -27,7 +27,7 @@ func init() {
 }
 
 func CrasRecord(ctx context.Context, s *testing.State) {
-	const duration = 1 // second
+	const duration = 5 // second
 
 	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
 		s.Fatal("Failed to wait for input stream: ", err)
