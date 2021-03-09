@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d7448ee_844c740b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-09T00:06:42Z",
+      "side": 1,
+      "message": "I like both. I think you said you planned to do no transfers for the other visibility settings tests. Having one transfer test in that visibility can\u0027t hurt",
+      "parentUuid": "d86b00f0_ee1bb117",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 60
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba28a9d7_f2eb2ac9",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/big_txt.zip.external",
         "patchSetId": 3
@@ -144,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81d1b062_02cc2db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-09T00:06:42Z",
+      "side": 1,
+      "message": "I mean only some tests are parameterized to do the small_png test right now. I think we should have them all do it.",
+      "parentUuid": "21a72583_56a9d357",
+      "range": {
+        "startLine": 37,
+        "startChar": 14,
+        "endLine": 37,
+        "endChar": 60
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2576b51b_51da83d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis.go",
         "patchSetId": 3
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "This is for high-vis WebRTC sharing. The WebRTC upgrade requires a real GAIA login, so to accomplish that I added this fixture that uses the existing GAIA credentials, but sets visibility to \u0027No one\u0027 to ensure the sharing is high-visibility.",
       "parentUuid": "2576b51b_51da83d6",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb907b2_8bbc57fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-09T00:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82793ab5_94c8ba2f",
       "range": {
         "startLine": 49,
         "startChar": 14,
