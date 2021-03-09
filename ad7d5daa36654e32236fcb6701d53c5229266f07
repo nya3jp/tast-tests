@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61846409_16f7fc06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18c0d934_48ab9de3",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f77b616_2e51d4d8",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-07T23:37:42Z",
       "side": 1,
       "message": "Will the following steps take a long time?\nIf yes, keep s.Log and delete the comment // Install virtual USB printer.\nIf no, delete s.Log instead.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5a8d443_e2b59e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f77b616_2e51d4d8",
       "range": {
         "startLine": 63,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac48427_327a2914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de788737_81fd4c39",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 43
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed9c240a_60a601dd",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-07T23:37:42Z",
       "side": 1,
       "message": "Please use uiauto.Combine to combine uiauto.LeftClick(entryFinder), uiauto.LeftClick(savePrinterButton), uiauto.WithTimeout(time.Minute).WaitUntilExists(editPrinterButton), and kb.Accel (kb.AccelAction).\n\nIf you make WaitForPrintPreview, SelectPrinter, and Print return uiauto.Action, the following four steps could be combined as well.",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9846a8ca_13f0ea7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed9c240a_60a601dd",
       "range": {
         "startLine": 100,
         "startChar": 18,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee9f019_e72243c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1559ede2_065715e1",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99602580_fd239e88",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-03-07T13:36:55Z",
       "side": 1,
       "message": "nit: Error\nEven if saving the printer failed, it makes sense to check the next steps IMO.",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e90dedb_18be62b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99602580_fd239e88",
       "range": {
         "startLine": 107,
         "startChar": 4,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "895b0e18_cf6e194b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9576d6a1_0cd2bb75",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 9
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe221377_414650b1",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-03-07T13:36:55Z",
       "side": 1,
       "message": "nit: missing . at the end of the comment",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 31
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ecb205_6a06ea03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe221377_414650b1",
       "range": {
         "startLine": 160,
         "startChar": 1,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c01ab08c_703b1f67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed07ae12_7a04e0d6",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8abce242_6e54e74f",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-03-07T23:37:42Z",
       "side": 1,
       "message": "Define it as nodewith.Name()...",
+      "range": {
+        "startLine": 19,
+        "startChar": 36,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75422d70_4d9c0f67",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8abce242_6e54e74f",
       "range": {
         "startLine": 19,
         "startChar": 36,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb5e44f5_815a5024",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b645b44_0151bbfe",
+      "range": {
+        "startLine": 24,
+        "startChar": 40,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1f62cc3_83d67f21",
@@ -284,6 +548,30 @@
       "writtenOn": "2021-03-07T23:37:42Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f380512f_5397f497",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1f62cc3_83d67f21",
       "range": {
         "startLine": 31,
         "startChar": 34,
@@ -317,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e03cc75_cbc7990f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b248785_a8562787",
+      "range": {
+        "startLine": 37,
+        "startChar": 35,
+        "endLine": 37,
+        "endChar": 48
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3fba315_24103c1a",
@@ -330,6 +642,30 @@
       "writtenOn": "2021-03-07T23:37:42Z",
       "side": 1,
       "message": "Please use uiauto in this method and return a uiauto.Action",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d643e5e0_1b256e5d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Went with returning an instance of the app",
+      "parentUuid": "f3fba315_24103c1a",
       "range": {
         "startLine": 42,
         "startChar": 5,
@@ -363,6 +699,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2cfd35_8618b704",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Will do this in a separate CL",
+      "parentUuid": "5df4793e_bc9dd537",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 34
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6b9eb14_996e9028",
@@ -376,6 +736,30 @@
       "writtenOn": "2021-03-07T23:37:42Z",
       "side": 1,
       "message": "Suggest to make this return an uiauto.Action",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4987ac13_5e115d5c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b6b9eb14_996e9028",
       "range": {
         "startLine": 33,
         "startChar": 5,
@@ -409,6 +793,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17003193_59b223cb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f58276fe_3d2f8a84",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e89d7f4_7c78b973",
@@ -422,6 +830,30 @@
       "writtenOn": "2021-03-07T23:37:42Z",
       "side": 1,
       "message": "Suggest to make this return an uiauto.Action and use uiauto instead of ui to find and act on nodes.",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 211,
+        "endChar": 24
+      },
+      "revId": "ad7d5daa36654e32236fcb6701d53c5229266f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96221492_cc7e56a3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-09T17:38:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e89d7f4_7c78b973",
       "range": {
         "startLine": 211,
         "startChar": 5,
