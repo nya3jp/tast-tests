@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdc1cb40_0c5a1859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-09T21:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d638dfe_690c8f63",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 68
+      },
+      "revId": "dbdf80db222a3abbe2ee99fe8490c71586b341d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f47285c_82c479cc",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-03-04T23:58:49Z",
       "side": 1,
       "message": "nit: ditto here, append err.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 51
+      },
+      "revId": "dbdf80db222a3abbe2ee99fe8490c71586b341d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e9231f7_7033a421",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-09T21:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f47285c_82c479cc",
       "range": {
         "startLine": 65,
         "startChar": 0,
