@@ -50,7 +50,7 @@ func init() {
 				"git_rvc-arc-linux-apps",
 			},
 		}},
-		Timeout: 5 * time.Minute,
+		Timeout: 10 * time.Minute,
 	})
 }
 
