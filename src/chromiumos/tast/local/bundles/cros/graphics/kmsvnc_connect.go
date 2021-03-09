@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -22,6 +23,7 @@ func init() {
 		Desc:         "Connects to kmsvnc server and verifies server parameters",
 		Contacts:     []string{"shaochuan@chromium.org", "uekawa@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeGraphics",
 	})
