@@ -161,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba3fe674_2e6cbed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-09T23:55:59Z",
+      "side": 1,
+      "message": "it is a good practice return a cleanup function for certain operations.\nit is being used in different parts of the code. e.g:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/power/setup/setup_app.go;l\u003d32?q\u003dlang:go%20setup_app.go\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)\n\n\nif you return \"cleanups\", the function could look something like the following:\n\n  // only as an example...\n  func downloadFileWithApp() {\n    cleanup, err :\u003d setupPorts()\n    cleanup, err :\u003d installAndLaunchApp()\n    cleanup, err :\u003d waitForDownload()\n  }\n\nAnd it will be easier to understand what\u0027s happening. As it is now, it takes time to understand who is calling what.",
+      "parentUuid": "73f4dfaa_01ad7292",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 24
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6e2aa9d_0a90d58e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
         "patchSetId": 19
@@ -196,6 +220,30 @@
       "side": 1,
       "message": "Could you elaborate a little more on your suggestion?\nIs it to (1) stop using `retErr`, and (2) just log the `err` returned by RemoveReverseTCP() when it fails, like:\n  defer func(ctx context.Context, androidPort int) {\n    if err :\u003d a.RemoveReverseTCP(ctx, androidPort); err !\u003d nil {\n      testing.ContextLog(ctx, \"Failed to ...\")\n    }\n  }(cleanupCtx, androidPort)\n\n?",
       "parentUuid": "b6e2aa9d_0a90d58e",
+      "range": {
+        "startLine": 184,
+        "startChar": 6,
+        "endLine": 184,
+        "endChar": 12
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca1ed3a_1f46541a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-09T23:55:59Z",
+      "side": 1,
+      "message": "my bad, I misunderstood the code. But it seems that the check `if retErr \u003d\u003d nil` is not needed ?\n\nIt is needed in the downloadFileWithAppFromLocalAndroidPort function, but not in this one(?)",
+      "parentUuid": "8a7164e6_93db5e88",
       "range": {
         "startLine": 184,
         "startChar": 6,
