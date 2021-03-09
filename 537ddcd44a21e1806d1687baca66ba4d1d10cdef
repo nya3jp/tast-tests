@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d23ab9a_52d0745c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-03-09T03:27:42Z",
+      "side": 1,
+      "message": "This change is doing parameterization like this CL: https://crrev.com/c/2561970",
+      "revId": "537ddcd44a21e1806d1687baca66ba4d1d10cdef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
