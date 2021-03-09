@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d006993e_2f5b2280",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-09T18:58:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab90c6c8_c131ce2e",
+      "range": {
+        "startLine": 64,
+        "startChar": 40,
+        "endLine": 64,
+        "endChar": 44
+      },
+      "revId": "c317219f9744955dba69ba995c5f7e038bca9036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce2cba9b_3cd3d6a6",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19f81baf_50199a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-09T18:58:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ce2cba9b_3cd3d6a6",
+      "revId": "c317219f9744955dba69ba995c5f7e038bca9036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92b0c036_40c6598f",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-03-09T17:41:27Z",
       "side": 1,
       "message": "No need to compare username and passowrd. It should always fail. You don\u0027t even need the image.",
+      "revId": "c317219f9744955dba69ba995c5f7e038bca9036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dab545f5_b9d31f38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-09T18:58:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92b0c036_40c6598f",
       "revId": "c317219f9744955dba69ba995c5f7e038bca9036",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
