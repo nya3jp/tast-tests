@@ -29,6 +29,10 @@ const (
 
 	firmwareTimeFile = "/tmp/firmware-boot-time"
 
+	// Directory where the current statistics are stored
+	// TODO(b:182094511): Move the statistics to a subdirectory of /tmp
+	bootstatCurrentDir = "/tmp"
+
 	// The chromeos_shutdown script archives bootstat files under shutdown.TIMESTAMP directory. The timestamp is generated using `date '+%Y%m%d%H%M%S'`.
 	bootstatArchiveGlob = "/var/log/metrics/shutdown.[0-9]*"
 
@@ -97,8 +101,8 @@ var (
 		{"kernel_to_wifi_registered", "network-wifi-registered", metricRecommended},
 	}
 
-	uptimeFileGlob = filepath.Join("/tmp", uptimePrefix+"*")
-	diskFileGlob   = filepath.Join("/tmp", diskPrefix+"*")
+	uptimeFileGlob = filepath.Join(bootstatCurrentDir, uptimePrefix+"*")
+	diskFileGlob   = filepath.Join(bootstatCurrentDir, diskPrefix+"*")
 
 	// The name of this file has changed starting with linux-3.19.
 	// Use a glob to snarf up all existing records.
@@ -116,7 +120,7 @@ func WaitUntilBootComplete(ctx context.Context) error {
 			}
 
 			for _, prefix := range []string{uptimePrefix, diskPrefix} {
-				key := filepath.Join("/tmp", prefix+k.EventName)
+				key := filepath.Join(bootstatCurrentDir, prefix+k.EventName)
 				if _, err := os.Stat(key); err != nil {
 					return errors.Wrapf(err, "error in waiting for bootstat file %s", key)
 				}
@@ -240,7 +244,7 @@ func parseUptime(eventName, bootstatDir string, index int) (float64, error) {
 func GatherTimeMetrics(ctx context.Context, results *platform.GetBootPerfMetricsResponse) error {
 	for _, k := range eventMetrics {
 		key := "seconds_" + k.MetricName
-		val, err := parseUptime(k.EventName, "/tmp", 0)
+		val, err := parseUptime(k.EventName, bootstatCurrentDir, 0)
 		if err != nil {
 			if k.Requirement == metricRequired {
 				return errors.Wrapf(err, "failed in gather time for %s", k.EventName)
@@ -259,7 +263,7 @@ func GatherTimeMetrics(ctx context.Context, results *platform.GetBootPerfMetrics
 	firstNetworkReadyTime := math.MaxFloat64
 	for _, e := range networkReadyEvents {
 		metricName := "seconds_kernel_to_" + strings.ReplaceAll(e, "-", "_")
-		t, err := parseUptime(e, "/tmp", 0)
+		t, err := parseUptime(e, bootstatCurrentDir, 0)
 		if err != nil {
 			continue
 		}
@@ -305,7 +309,7 @@ func GatherDiskMetrics(results *platform.GetBootPerfMetricsResponse) {
 	// We get around that by ignoring all errors.
 	for _, k := range eventMetrics {
 		key := "rdbytes_" + k.MetricName
-		val, err := parseDiskstat(k.EventName, "/tmp", 0)
+		val, err := parseDiskstat(k.EventName, bootstatCurrentDir, 0)
 		if err == nil {
 			results.Metrics[key] = val * sectorSize
 		} // else skip the error and continue.
