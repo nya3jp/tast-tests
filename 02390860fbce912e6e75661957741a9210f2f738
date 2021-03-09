@@ -22,6 +22,30 @@
       },
       "revId": "02390860fbce912e6e75661957741a9210f2f738",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "457e9d40_b88b2ca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_on_managed_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-09T00:02:46Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m in a mixed feeling. If we were to introduce a helper, I would drop the GAIA ID argument. GAIA ID is completely ignored on GAIA logins despite many GAIA login tests specify them just because chrome.Auth requires one. Even for fake login tests, I\u0027m not sure if there\u0027s any test which really needs to set GAIA ID explicitly as most of them specify \"gaia-id\" or \"\".\n\nAnyway, in this CL, I want to focus on API rewrites without any behavior change. Let me consider in a follow-up CL.",
+      "parentUuid": "a0c06407_a391168d",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 110
+      },
+      "revId": "02390860fbce912e6e75661957741a9210f2f738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
