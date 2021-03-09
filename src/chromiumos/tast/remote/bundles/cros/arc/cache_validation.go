@@ -40,14 +40,12 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: []string{
 				"/usr/share/arc/properties/build.prop",
-				"git_pi-arc-linux-apps",
 			},
 		}, {
 			Name:              "r",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: []string{
 				"/usr/share/arcvm/properties/build.prop",
-				"git_rvc-arc-linux-apps",
 			},
 		}},
 		Timeout: 10 * time.Minute,
@@ -56,7 +54,7 @@ func init() {
 
 // generateJarURL gets ARC build properties from the device, parses for build ID, and
 // generates gs URL for org.chromium.ard.cachebuilder.jar
-func generateJarURL(ctx context.Context, dut *dut.DUT, propertyFile, branch string) (string, error) {
+func generateJarURL(ctx context.Context, dut *dut.DUT, propertyFile string) (string, error) {
 	const (
 		// Base path
 		buildsRoot = "gs://chromeos-arc-images/builds"
@@ -77,7 +75,7 @@ func generateJarURL(ctx context.Context, dut *dut.DUT, propertyFile, branch stri
 		return "", errors.Errorf("ro.build.version.incremental is not found in %q", buildPropStr)
 	}
 
-	url := fmt.Sprintf("%s/%s/%s/%s", buildsRoot, branch, mBuildID[2], jarName)
+	url := fmt.Sprintf("%s/%s/%s/%s", buildsRoot, "git_*-linux-apps", mBuildID[2], jarName)
 	return url, nil
 }
 
@@ -87,7 +85,6 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 	params := s.Param().([]string)
 
 	propertyFile := params[0]
-	buildBranch := params[1]
 
 	tempDir, err := ioutil.TempDir("", "tmp_dir")
 	if err != nil {
@@ -96,7 +93,7 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 
 	defer os.RemoveAll(tempDir)
 
-	url, err := generateJarURL(ctx, d, propertyFile, buildBranch)
+	url, err := generateJarURL(ctx, d, propertyFile)
 	if err != nil {
 		s.Fatal("Failed to generate jar URL: ", err)
 	}
