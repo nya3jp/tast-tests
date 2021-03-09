@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "498c3891_89d1f23e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-09T23:08:23Z",
+      "side": 1,
+      "message": "(still some polishing work to do, particularly in the comments)",
+      "revId": "821985a738f4501c8e7bc60f5e315355fc646bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca0ce5b4_c4a6751a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-09T23:08:23Z",
+      "side": 1,
+      "message": "offset",
+      "range": {
+        "startLine": 348,
+        "startChar": 32,
+        "endLine": 348,
+        "endChar": 39
+      },
+      "revId": "821985a738f4501c8e7bc60f5e315355fc646bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
