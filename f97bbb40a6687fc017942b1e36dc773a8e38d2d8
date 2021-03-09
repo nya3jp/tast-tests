@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd25279e_fa1788be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T00:39:48Z",
+      "side": 1,
+      "message": "I wrote a CL to fix these issues, but it is still WIP:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2742436",
+      "parentUuid": "7d2d2663_b408d899",
+      "revId": "f97bbb40a6687fc017942b1e36dc773a8e38d2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fced71da_1578cbde",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-03-08T10:45:47Z",
       "side": 1,
       "message": "not related to the CL, but here you should pass context",
+      "range": {
+        "startLine": 68,
+        "startChar": 15,
+        "endLine": 68,
+        "endChar": 21
+      },
+      "revId": "f97bbb40a6687fc017942b1e36dc773a8e38d2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b6ae879_78dfd936",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T00:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fced71da_1578cbde",
       "range": {
         "startLine": 68,
         "startChar": 15,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "684955e6_88b8465c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T00:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd9adb90_8a0dc7c3",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "f97bbb40a6687fc017942b1e36dc773a8e38d2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fe423db_20f13794",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c1c4b7e_ffd7bf2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T00:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fe423db_20f13794",
+      "range": {
+        "startLine": 176,
+        "startChar": 65,
+        "endLine": 176,
+        "endChar": 76
+      },
+      "revId": "f97bbb40a6687fc017942b1e36dc773a8e38d2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7254eaf9_43556918",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-03-08T10:45:47Z",
       "side": 1,
       "message": "not related: this is a candidate to a separate function, because it is used in multiple packages",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "f97bbb40a6687fc017942b1e36dc773a8e38d2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee44153e_757b6d19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_no_external_server.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T00:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7254eaf9_43556918",
       "range": {
         "startLine": 93,
         "startChar": 0,
