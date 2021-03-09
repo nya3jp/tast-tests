@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a403599_408a7db4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-09T21:26:44Z",
+      "side": 1,
+      "message": "FYI but nya@ recently introduced a \u0027login pool\u0027, where the account is randomly selected from the list.  Basically this is a good choice for this test.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2746374 outlines how it works.",
+      "revId": "f9fb09089078c829e2cd4915736b56fbdfebbc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
