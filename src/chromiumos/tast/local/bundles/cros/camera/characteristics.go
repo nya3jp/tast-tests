@@ -23,7 +23,7 @@ func init() {
 			"kamesan@chromium.org",
 			"chromeos-camera-eng@google.com",
 		},
-		Attr: []string{"group:mainline", "informational", "group:camera-libcamera"},
+		Attr: []string{"group:mainline", "group:camera-libcamera"},
 		// The camera characteristics config file was designed for Android. Some old boards
 		// without ARC can have built-in USB cameras but don't have the config file.
 		SoftwareDeps: []string{"arc"},
