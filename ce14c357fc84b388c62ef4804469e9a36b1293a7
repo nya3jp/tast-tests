@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c085ebf_b820c85a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-09T07:15:21Z",
+      "side": 1,
+      "message": "I realise this isn\u0027t in your CL but might be worth following up with a cleanupCtx here and in any other deferred methods that take a context to ensure they\u0027re run\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 30*time.Second)\ndefer cancel()\n```",
+      "range": {
+        "startLine": 87,
+        "startChar": 33,
+        "endLine": 87,
+        "endChar": 36
+      },
+      "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b136e987_27d808d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
         "patchSetId": 4
@@ -43,6 +66,75 @@
         "startChar": 79,
         "endLine": 91,
         "endChar": 90
+      },
+      "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e5fa0c_10059a3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-09T07:15:21Z",
+      "side": 1,
+      "message": "If the cleanupCtx gets implemented, make sure to pass it to this function to ensure it\u0027s used here as well.",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9a368b5_bda567dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-09T07:15:21Z",
+      "side": 1,
+      "message": "Given the var is quite self explanatory, might be worth just inlining it seeing as you don\u0027t reuse it later on.",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 44
+      },
+      "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff457d9_8ad99ae1",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-09T07:15:21Z",
+      "side": 1,
+      "message": "nit: vice-versa",
+      "range": {
+        "startLine": 20,
+        "startChar": 92,
+        "endLine": 20,
+        "endChar": 102
       },
       "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
