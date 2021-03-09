@@ -194,6 +194,24 @@
       "parentUuid": "b6b7bd2e_2dd03c6b",
       "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f18c47_18b86944",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-09T09:23:26Z",
+      "side": 1,
+      "message": "I discourage runtime skips. One reason is that, if a test with the same name performs different test scenarios depending on environment, it\u0027s confusing on reproducing failures.\n\nIIUC you want to exercise typecutils.CheckPortsForTBTPartner in release builds. Then how about adding a \"smoke\" test parameter that instructs the test to return early with minimal checks, just like:\n\n Params: []testing.Param{\n   {\n     Val: false,\n   },\n   {\n     Name: \"smoke\",\n     ExtraAttr: []string{\"group:mainline\", \"informational\"},\n     ExtraHardwareDeps: ...,\n     Val: true,\n   },\n }\n\n ...\n\n present, err :\u003d typecutils.CheckPortsForTBTPartner(ctx)\n if err !\u003d nil {\n   s.Fatal(...)\n }\n\n // Return early for smoke testing.\n if smoke :\u003d s.Param().(bool); smoke {\n   return\n }\n\n if !present {\n   s.Fatal(\"No TBT device connected to DUT\")\n }",
+      "parentUuid": "df098847_0bfb669f",
+      "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
