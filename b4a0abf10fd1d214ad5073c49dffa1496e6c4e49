@@ -140,6 +140,24 @@
       "parentUuid": "e8e92a4a_a44386dd",
       "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5785c415_c30c0316",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-09T04:11:33Z",
+      "side": 1,
+      "message": "In essence, it won\u0027t.\n\nPractically, it will run \"minimally\" on group:mainline.\nThe test will just exist early because typecutils.CheckPortsForTBTPartner() will return \"present \u003d\u003d false\" (since the CQ DUT pool doesn\u0027t have a Thunderbolt dock connected to it; that would be impractical at the scale of CQ). I don\u0027t anticipate removing the \"informational\" attribute from this test.\n\nI acknowledge that this isn\u0027t in conformance in https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#device-dependencies; but I couldn\u0027t come up with better way of getting this to continue to compile (since the Type C lab is still a ways off and we want our partners to be able to run these tests too). Of course, I\u0027m open to suggestions or alternatives.\n\nI\u0027ve attempted to reduce the number of iterations on CQ by limiting it to voxel and volteer.",
+      "parentUuid": "393aa1d1_9c87a298",
+      "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
