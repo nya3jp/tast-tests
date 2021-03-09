@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52474f2a_de4f2f52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-09T19:06:22Z",
+      "side": 1,
+      "message": "Hi Alex, could you please review this tast test? Thanks! :) ",
+      "revId": "508d8908603c504402488f99f199f73c1d59fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
