@@ -176,6 +176,24 @@
       "parentUuid": "5785c415_c30c0316",
       "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df098847_0bfb669f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-09T08:49:27Z",
+      "side": 1,
+      "message": "\u003e What\u0027s the benefit scheduling a test that tests nothing?\n\nMy understanding (and I might be mistaken) is that if the test isn\u0027t scheduled/run, we cannot guard against it breaking (or knowing that it breaks) when a dependent library changes. To restate the context: I anticipate at least a quarter or perhaps longer before this test is run regularly in a specialized lab, and both developers and partners need to run in semi-regularly in the interim.\n\nIf there are ways to guarantee these won\u0027t break without minimally scheduling them on CQ, I\u0027d be glad to explore those avenues.",
+      "parentUuid": "b6b7bd2e_2dd03c6b",
+      "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
