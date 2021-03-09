@@ -455,9 +455,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	if p.loginType == loginGaia {
 		opts = append(opts, chrome.GAIALogin(chrome.Creds{
-			User:   s.RequiredVar("crostini.gaiaUsername"),
-			Pass:   s.RequiredVar("crostini.gaiaPassword"),
-			GAIAID: s.RequiredVar("crostini.gaiaID"),
+			User: s.RequiredVar("crostini.gaiaUsername"),
+			Pass: s.RequiredVar("crostini.gaiaPassword"),
 		}))
 	}
 	if p.vmMode == dlc {
