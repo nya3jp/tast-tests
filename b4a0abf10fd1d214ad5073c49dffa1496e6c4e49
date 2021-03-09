@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6af6ca2b_5a38f39d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-09T03:40:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4be52896_af830a6d",
+      "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "138d708f_82963c6f",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "That\u0027s correct; it\u0027s not. The setup is for manual testing (and coming soon: the Type-C test lab). We\u0027ll just quit early in group:mainline. We need it to run minimally to ensure it doesn\u0027t break/bit-rot (the specialized Type C lab setup is still WIP); we limit the number of boards it runs on CQ to just volteer/voxel.",
       "parentUuid": "138d708f_82963c6f",
+      "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "393aa1d1_9c87a298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-09T03:40:44Z",
+      "side": 1,
+      "message": "In init(), the test runs in a generic DUT pool, which does not have the fixture mentioned here. I wonder that typec.ModeCrash can be run on volteer device in the generic pool (i.e. the pool group:mainline is used).",
+      "parentUuid": "e8e92a4a_a44386dd",
       "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
