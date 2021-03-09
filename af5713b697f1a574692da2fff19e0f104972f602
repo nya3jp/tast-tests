@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b01ea5_386884e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-03-09T07:56:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "613be52e_4e00278e",
+      "range": {
+        "startLine": 143,
+        "startChar": 18,
+        "endLine": 143,
+        "endChar": 19
+      },
+      "revId": "af5713b697f1a574692da2fff19e0f104972f602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21ec87a2_f3d002e0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-09T06:47:18Z",
       "side": 1,
       "message": "I think this change should belong to the previous CL?",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 95
+      },
+      "revId": "af5713b697f1a574692da2fff19e0f104972f602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abbf3943_d32f1ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-03-09T07:56:35Z",
+      "side": 1,
+      "message": "In the previous CL the profile is simply an integer while in this CL the profile become a composite type, this change is for this.",
+      "parentUuid": "21ec87a2_f3d002e0",
       "range": {
         "startLine": 193,
         "startChar": 1,
