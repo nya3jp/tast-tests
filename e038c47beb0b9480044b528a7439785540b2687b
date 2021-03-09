@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0f662c44_b6d26c61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-09T03:38:12Z",
+      "side": 1,
+      "message": "Thanks for the reviews!",
+      "revId": "e038c47beb0b9480044b528a7439785540b2687b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3ccbf3ea_7c695a93",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
         "patchSetId": 8
