@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe1e87f_b7f0d33b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-09T20:56:31Z",
+      "side": 1,
+      "message": "also removed redundant \"Cros\" and \"Android\" prefixes from struct fields",
+      "revId": "516f717f8a27ff9de3959697621bf729895f008f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

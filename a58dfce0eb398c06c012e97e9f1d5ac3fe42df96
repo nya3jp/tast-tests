@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "045fab2c_ac09fba5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-09T20:56:31Z",
+      "side": 1,
+      "message": "I\u0027ve change it to output to a .json instead. Is there a particular reason why multi-line log messages aren\u0027t allowed though? All I found regarding this is was in https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting:\n\"please avoid multiline strings since they make logs difficult to read\"\n\nSeems kind of subjective, so just curious about the reasoning. In this case I was thinking it would make the logs easier to read, since it puts more important info in a single place (one less tab to open from stainless 😊).\n\nStainless doesn\u0027t have a good way of surfacing all of this info, so we\u0027re trying to make it as easy as possible for developers to get the info they need from the logs. There\u0027s already a lot to go through for these tests:\n- log.txt for the test\n- nearby_chrome for Chrome + verbose Nearby Share logs\n- nearby_logcat.txt for Android logs\n- messages for bluetooth logs\n- faillog/ui_tree.txt for UI-based tests\n\nAdding another one might just be a drop in the bucket, but it\u0027d be nice if we could consolidate where possible.",
+      "parentUuid": "2d320309_535bdfd9",
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e4b6e96_706dabfe",
         "filename": "src/chromiumos/tast/local/android/adb/device.go",
         "patchSetId": 4
@@ -66,6 +84,30 @@
       "writtenOn": "2021-03-09T09:02:05Z",
       "side": 1,
       "message": "I don\u0027t think shell operators work in ShellCommand (despite its name!)\n\nIf you need shell interpretation, we have to invoke sh explicitly:\n\n d.ShellCommand(ctx, \"sh\", \"-c\", \"dumpsys package com.google.android.gms | grep versionCode\")",
+      "range": {
+        "startLine": 379,
+        "startChar": 89,
+        "endLine": 379,
+        "endChar": 93
+      },
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54035216_b11a69b1",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-09T20:56:31Z",
+      "side": 1,
+      "message": "Ah okay, it was somehow working anyways haha but indeed the operator wasn\u0027t doing anything. I\u0027ve updated it so that the commands are actually returning the sections I was expecting.",
+      "parentUuid": "4e4b6e96_706dabfe",
       "range": {
         "startLine": 379,
         "startChar": 89,
@@ -93,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0b8fd3_542b8d00",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-09T20:56:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "407711db_4e19b55b",
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55338527_3eb96e40",
@@ -110,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d615789f_2b2c4668",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-09T20:56:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55338527_3eb96e40",
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b0484f4_2c479928",
@@ -123,6 +201,24 @@
       "writtenOn": "2021-03-09T04:27:19Z",
       "side": 1,
       "message": "ditto",
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f072e792_238baf36",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-09T20:56:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b0484f4_2c479928",
       "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
