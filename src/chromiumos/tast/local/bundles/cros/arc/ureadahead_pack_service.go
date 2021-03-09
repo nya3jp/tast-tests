@@ -166,7 +166,7 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 	opts := []chrome.Option{
 		chrome.ARCSupported(),
 		chrome.RestrictARCCPU(),
-		chrome.GAIALogin(chrome.Creds{User: request.Username, Pass: request.Password}),
+		chrome.GAIALoginPool(request.Creds),
 		chrome.ExtraArgs(chromeArgs...)}
 
 	if !request.InitialBoot {

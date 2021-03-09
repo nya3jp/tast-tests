@@ -52,7 +52,7 @@ func init() {
 			"alanding@chromium.org",
 			"arc-performance@google.com",
 		},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
 			"tast.cros.arc.GmsCoreCacheService"},
 		Timeout: 20 * time.Minute,
@@ -95,10 +95,7 @@ func init() {
 				dataDir:   "/tmp/data_collector",
 			},
 		}},
-		Vars: []string{
-			"arc.DataCollector.UreadaheadService_username",
-			"arc.DataCollector.UreadaheadService_password",
-		},
+		Vars: []string{"ui.gaiaPoolDefault"},
 	})
 }
 
@@ -278,8 +275,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// First boot is needed to be initial boot with removing all user data.
 		request := arcpb.UreadaheadPackRequest{
 			InitialBoot: true,
-			Username:    s.RequiredVar("arc.DataCollector.UreadaheadService_username"),
-			Password:    s.RequiredVar("arc.DataCollector.UreadaheadService_password"),
+			Creds:       s.RequiredVar("ui.gaiaPoolDefault"),
 			VmEnabled:   param.vmEnabled,
 		}
 
