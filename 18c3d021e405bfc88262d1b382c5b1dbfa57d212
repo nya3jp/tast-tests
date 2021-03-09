@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee98c9b_a47fff63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-03-09T07:05:22Z",
+      "side": 1,
+      "message": "PTAL. I\u0027ve incorporated feedback from the previous CL.",
+      "revId": "18c3d021e405bfc88262d1b382c5b1dbfa57d212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
