@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48da5e3b_9883068e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-09T22:35:38Z",
+      "side": 1,
+      "message": "Correct...technically it\u0027s verifying that the last frame is using a HW protected surface which causes the compositor to draw black.  I made sure to use a video that had no black frames in it to avoid false positives in that regard.",
+      "parentUuid": "d6dccca5_18fc8698",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 23
+      },
+      "revId": "acf0a8166168d9cbef06f4cf29ea354992232b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45627188_e5cc3016",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-09T21:20:45Z",
       "side": 1,
       "message": "Nit: this can be returned directly, and then we don\u0027t need the named return values.",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 24
+      },
+      "revId": "acf0a8166168d9cbef06f4cf29ea354992232b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a40653d9_95784b58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-09T22:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45627188_e5cc3016",
       "range": {
         "startLine": 207,
         "startChar": 1,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-09T21:20:45Z",
       "side": 1,
       "message": "Optional: this can be\n usesPlatformVideoDecoder, isHwDrmPipeline :\u003d false, false",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 324,
+        "endChar": 28
+      },
+      "revId": "acf0a8166168d9cbef06f4cf29ea354992232b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "211e1182_eb9291bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-09T22:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7453678f_f6bd799c",
       "range": {
         "startLine": 323,
         "startChar": 1,
