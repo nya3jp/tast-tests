@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "881c78e5_27dc0674",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-03-09T22:35:35Z",
+      "side": 1,
+      "message": "Thanks! Just a few comments and dumb questions :-)",
+      "revId": "6c9748ddfd1480f9a4c27e87492115bfa3542405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89780fa2_fcf56595",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-03-09T22:35:35Z",
+      "side": 1,
+      "message": "It\u0027s nice to have a bug number with the TODO http://go/cstyle#TODO_Comments",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "6c9748ddfd1480f9a4c27e87492115bfa3542405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8fe9270_60b31c94",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-03-09T22:35:35Z",
+      "side": 1,
+      "message": "Could we use 11n? http://uma/histograms?sid\u003d1c6b9e40b5562aea1932283328863338",
+      "range": {
+        "startLine": 55,
+        "startChar": 57,
+        "endLine": 55,
+        "endChar": 67
+      },
+      "revId": "6c9748ddfd1480f9a4c27e87492115bfa3542405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "259e101a_edf1712d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-03-09T22:35:35Z",
+      "side": 1,
+      "message": "dumb question: what does that name expand to in practice?\n\nMaybe it can be added to the TEST\u003d line in the commit message?",
+      "range": {
+        "startLine": 272,
+        "startChar": 13,
+        "endLine": 272,
+        "endChar": 23
+      },
+      "revId": "6c9748ddfd1480f9a4c27e87492115bfa3542405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
