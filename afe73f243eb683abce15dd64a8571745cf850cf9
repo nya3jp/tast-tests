@@ -355,6 +355,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50201e94_b94c33c7",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-03-09T06:59:18Z",
+      "side": 1,
+      "message": "Seems reasonable to me, lets just try it out and see how often we are hitting timeouts.",
+      "parentUuid": "91b8274a_f8eae734",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "afe73f243eb683abce15dd64a8571745cf850cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "991486fa_b6311832",
