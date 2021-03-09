@@ -93,6 +93,30 @@
       },
       "revId": "af5713b697f1a574692da2fff19e0f104972f602",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26908485_a443b645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-09T08:30:41Z",
+      "side": 1,
+      "message": "I got it. Is there any reason why we cannot just use composite type in the beginning? I think it will be more clear than only integer values, even if the names haven\u0027t been used in the codes.",
+      "parentUuid": "abbf3943_d32f1ad5",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 95
+      },
+      "revId": "af5713b697f1a574692da2fff19e0f104972f602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
