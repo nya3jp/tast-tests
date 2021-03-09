@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6481345_f8b00f86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-09T10:17:50Z",
+      "side": 1,
+      "message": "nit, optional: I suggest [min, max] ordering like the notation of an interval in mathematics.",
+      "range": {
+        "startLine": 98,
+        "startChar": 54,
+        "endLine": 98,
+        "endChar": 86
+      },
+      "revId": "0f992933a861675e55846a8b653e258a7031f6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7e49e75_39ef5564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-09T10:17:50Z",
+      "side": 1,
+      "message": "nit: unsupported?",
+      "range": {
+        "startLine": 101,
+        "startChar": 17,
+        "endLine": 101,
+        "endChar": 27
+      },
+      "revId": "0f992933a861675e55846a8b653e258a7031f6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b7d539_cc5edd9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-09T10:17:50Z",
+      "side": 1,
+      "message": "got before want is preferred.\ngo/go-style/decisions#got-before-want",
+      "revId": "0f992933a861675e55846a8b653e258a7031f6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1abf8be_2d55d38b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-09T10:17:50Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "0f992933a861675e55846a8b653e258a7031f6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
