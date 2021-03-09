@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e69c04_15d17d02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-03-09T07:57:06Z",
+      "side": 1,
+      "message": "I think this is different from what I\u0027m experiencing. When I have hang, I don\u0027t see this message and it hangs in the lock (or login) screen. I think if this is due to missing uma, then i should wait in sesssion.\n\nHere is the last lines in tast tests:\n\nWaiting for Chrome to write its debugging port to /home/chronos/DevToolsActivePort\n2021-03-09T07:48:18.268655Z [21:48:18.180] Connecting to browser at ws://127.0.0.1:33356/devtools/browser/09e83dcd-0cb7-4917-bd02-10383b98fa24\n2021-03-09T07:48:18.310204Z [21:48:18.222] Waiting for test API extension at chrome-extension://mecfefiddjlmabpeilblgegnbioikfmp/_generated_background_page.html\n2021-03-09T07:48:18.349247Z [21:48:18.261] Connecting to Chrome target 8CF3EE703825737351A721B23FE2BE6D\n2021-03-09T07:48:18.690770Z [21:48:18.598] Test API extension is ready\n2021-03-09T07:48:34.063451Z [21:48:33.920] Waiting for test API extension at chrome-extension://behllobkkfkfnphdnhnkndlbkcpglgmj/_generated_background_page.html",
+      "parentUuid": "5e9d7d98_63fb5594",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "926cc473_16660b66",
