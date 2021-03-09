@@ -27,10 +27,7 @@ func init() {
 }
 
 func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
-	r, err := hwsecremote.NewCmdRunner(s.DUT())
-	if err != nil {
-		s.Fatal("CmdRunner creation error: ", err)
-	}
+	r := hwsecremote.NewCmdRunner(s.DUT())
 
 	helper, err := hwsecremote.NewFullHelper(r, s.DUT(), s.RPCHint())
 	if err != nil {

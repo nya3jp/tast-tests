@@ -94,10 +94,7 @@ func getTime(ctx context.Context, remote *hwsecremote.CmdRunnerRemote, eventName
 }
 
 func clearOwnership(ctx context.Context, s *testing.State) {
-	r, err := hwsecremote.NewCmdRunner(s.DUT())
-	if err != nil {
-		s.Fatal("CmdRunner creation error: ", err)
-	}
+	r := hwsecremote.NewCmdRunner(s.DUT())
 
 	helper, err := hwsecremote.NewFullHelper(r, s.DUT(), s.RPCHint())
 	if err != nil {
@@ -124,14 +121,11 @@ func clearOwnership(ctx context.Context, s *testing.State) {
 }
 
 func CryptohomePerf(ctx context.Context, s *testing.State) {
-	r, err := hwsecremote.NewCmdRunner(s.DUT())
-	if err != nil {
-		s.Fatal("Failed to create new command runner: ", err)
-	}
+	r := hwsecremote.NewCmdRunner(s.DUT())
 
 	clearOwnership(ctx, s)
 
-	err = waitUntilCryptohomeInit(ctx, r)
+	err := waitUntilCryptohomeInit(ctx, r)
 	if err != nil {
 		s.Fatal("Failed to wait cryptohome init: ", err)
 	}

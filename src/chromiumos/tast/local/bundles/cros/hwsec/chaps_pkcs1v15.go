@@ -30,10 +30,7 @@ func init() {
 }
 
 func ChapsPKCS1V15(ctx context.Context, s *testing.State) {
-	r, err := libhwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("CmdRunner creation error: ", err)
-	}
+	r := libhwseclocal.NewCmdRunner()
 
 	helper, err := libhwseclocal.NewHelper(r)
 	if err != nil {

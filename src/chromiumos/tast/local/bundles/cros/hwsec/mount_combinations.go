@@ -42,10 +42,7 @@ func cleanupVault(ctx context.Context, s *testing.State, utility *hwsec.Cryptoho
 
 // MountCombinations tests that we are able to signin/mount 2+ users with different combinations of pin/password.
 func MountCombinations(ctx context.Context, s *testing.State) {
-	cmdRunner, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("Failed to create CmdRunner: ", err)
-	}
+	cmdRunner := hwseclocal.NewCmdRunner()
 
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {

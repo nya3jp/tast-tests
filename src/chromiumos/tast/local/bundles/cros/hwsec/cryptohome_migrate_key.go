@@ -91,10 +91,7 @@ func migrateNonexistUserTest(ctx context.Context, s *testing.State, cryptohome *
 
 // CryptohomeMigrateKey checks that cryptohome could migrate the key and login correctly.
 func CryptohomeMigrateKey(ctx context.Context, s *testing.State) {
-	cmdRunner, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("Failed to create CmdRunner: ", err)
-	}
+	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 
 	// Ensure clean cryptohome.

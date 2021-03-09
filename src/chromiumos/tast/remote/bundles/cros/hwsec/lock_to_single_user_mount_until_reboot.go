@@ -150,10 +150,7 @@ func checkOthersAreBlocked(ctx context.Context, utility *hwsec.CryptohomeClient)
 
 func LockToSingleUserMountUntilReboot(ctx context.Context, s *testing.State) {
 	// Standard initializations.
-	r, err := hwsecremote.NewCmdRunner(s.DUT())
-	if err != nil {
-		s.Fatal("CmdRunner creation error: ", err)
-	}
+	r := hwsecremote.NewCmdRunner(s.DUT())
 	helper, err := hwsecremote.NewHelper(r, s.DUT())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)

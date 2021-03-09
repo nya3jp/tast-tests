@@ -257,10 +257,7 @@ func checkUserVault(ctx context.Context, utility *hwsec.CryptohomeClient) error 
 // cryptohome's key and vault related APIs when the DUT goes through
 // various states (ownership not taken, ownership taken, after reboot).
 func CryptohomeKeysAndMountValidity(ctx context.Context, s *testing.State) {
-	r, err := hwsecremote.NewCmdRunner(s.DUT())
-	if err != nil {
-		s.Fatal("CmdRunner creation error: ", err)
-	}
+	r := hwsecremote.NewCmdRunner(s.DUT())
 	helper, err := hwsecremote.NewHelper(r, s.DUT())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)

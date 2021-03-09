@@ -40,10 +40,7 @@ func init() {
 // reflects what's being tested. It avoids reboots in the original test by using the soft-clearing
 // TPM utils and restarting TPM-related daemons.
 func RecreateUserVaultTPM2(ctx context.Context, s *testing.State) {
-	cmdRunner, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("Failed to create CmdRunner: ", err)
-	}
+	cmdRunner := hwseclocal.NewCmdRunner()
 
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {

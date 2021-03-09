@@ -176,10 +176,8 @@ func (tf *TestFixture) setupNetCertStore(ctx context.Context) error {
 		return nil
 	}
 
-	runner, err := hwsec.NewCmdRunner(tf.dut)
-	if err != nil {
-		return err
-	}
+	runner := hwsec.NewCmdRunner(tf.dut)
+	var err error
 	tf.netCertStore, err = netcertstore.CreateStore(ctx, runner)
 	return err
 }

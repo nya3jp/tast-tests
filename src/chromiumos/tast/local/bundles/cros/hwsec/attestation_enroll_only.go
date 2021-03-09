@@ -26,10 +26,7 @@ func init() {
 // AttestationEnrollOnly enrolls the device.
 // Note that this item it to check if crbug/1070162 can be reproduced.
 func AttestationEnrollOnly(ctx context.Context, s *testing.State) {
-	r, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("CmdRunner creation error: ", err)
-	}
+	r := hwseclocal.NewCmdRunner()
 	helper, err := hwseclocal.NewFullHelper(ctx, r)
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)

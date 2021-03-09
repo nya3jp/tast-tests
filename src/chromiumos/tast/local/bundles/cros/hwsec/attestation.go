@@ -30,10 +30,7 @@ func init() {
 // Attestation runs through the attestation flow, including enrollment, cert, sign challenge.
 // Also, it verifies the the key access functionality.
 func Attestation(ctx context.Context, s *testing.State) {
-	r, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("CmdRunner creation error: ", err)
-	}
+	r := hwseclocal.NewCmdRunner()
 	helper, err := hwseclocal.NewFullHelper(ctx, r)
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)

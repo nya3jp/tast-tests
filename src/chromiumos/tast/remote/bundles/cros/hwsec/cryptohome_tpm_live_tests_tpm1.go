@@ -31,10 +31,7 @@ func init() {
 
 // CryptohomeTPMLiveTestsTPM1 would check cryptohome-tpm-live-test running as expect.
 func CryptohomeTPMLiveTestsTPM1(ctx context.Context, s *testing.State) {
-	cmdRunner, err := hwsecremote.NewCmdRunner(s.DUT())
-	if err != nil {
-		s.Fatal("Failed to create CmdRunner: ", err)
-	}
+	cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
 
 	helper, err := hwsecremote.NewHelper(cmdRunner, s.DUT())
 	if err != nil {

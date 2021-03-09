@@ -107,10 +107,7 @@ func setFWMPAndCheck(ctx context.Context, utility *hwsec.CryptohomeClient, flags
 
 // FirmwareManagementParameters checks that the firmware management parameters are functioning correctly.
 func FirmwareManagementParameters(ctx context.Context, s *testing.State) {
-	cmdRunner, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("Failed to create CmdRunner: ", err)
-	}
+	cmdRunner := hwseclocal.NewCmdRunner()
 
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
