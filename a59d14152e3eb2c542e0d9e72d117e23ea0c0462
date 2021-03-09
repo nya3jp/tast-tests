@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a73af0_6f1c39d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-09T04:44:48Z",
+      "side": 1,
+      "message": "Remove myself from the idle CL. Please feel free to add me back when it is resumed.",
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4870f796_e907345d",
