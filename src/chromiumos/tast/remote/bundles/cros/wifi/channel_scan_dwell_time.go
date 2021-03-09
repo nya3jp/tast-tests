@@ -6,6 +6,7 @@ package wifi
 
 import (
 	"context"
+	"fmt"
 	"math/rand"
 	"sort"
 	"strconv"
@@ -28,6 +29,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type csdtTestcase struct {
+	apChannel    int
+	apOpts       []hostapd.Option
+	minDwellTime time.Duration
+	maxDwellTime time.Duration
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: ChannelScanDwellTime,
@@ -39,6 +47,36 @@ func init() {
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
+		// TODO(b/182308669): Tighten up min/max bounds on various channel dwell times
+		Params: []testing.Param{
+			{
+				Name: "ch1",
+				Val: csdtTestcase{
+					apChannel:    1,
+					apOpts:       []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.HTCaps(hostapd.HTCapHT40)},
+					minDwellTime: 5 * time.Millisecond,
+					maxDwellTime: 250 * time.Millisecond,
+				},
+			},
+			{
+				Name: "ch9",
+				Val: csdtTestcase{
+					apChannel:    9,
+					apOpts:       []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.HTCaps(hostapd.HTCapHT40)},
+					minDwellTime: 5 * time.Millisecond,
+					maxDwellTime: 250 * time.Millisecond,
+				},
+			},
+			{
+				Name: "ch36",
+				Val: csdtTestcase{
+					apChannel:    36,
+					apOpts:       []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.HTCaps(hostapd.HTCapHT40)},
+					minDwellTime: 5 * time.Millisecond,
+					maxDwellTime: 250 * time.Millisecond,
+				},
+			},
+		},
 	})
 }
 
@@ -47,16 +85,14 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		knownTestPrefix        = "wifi_CSDT"
 		suffixLetters          = "abcdefghijklmnopqrstuvwxyz0123456789"
 		captureName            = "channel_scan_dwell_time"
-		testChannel            = 36
 		numBSS                 = 1024
 		delayInterval          = 1 * time.Millisecond
 		scanStartDelay         = 500 * time.Millisecond
 		scanRetryTimeout       = 10 * time.Second
 		missingBeaconThreshold = 2
-		maxDwellTime           = 250 * time.Millisecond
-		minDwellTime           = 5 * time.Millisecond
 	)
 	ssidPrefix := knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
+	tc := s.Param().(csdtTestcase)
 
 	tf := s.PreValue().(*wificell.TestFixture)
 	defer func(ctx context.Context) {
@@ -86,10 +122,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 
 	bssList, capturer, err := func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
 		s.Log("Configuring AP on router")
-		apOpts := []hostapd.Option{
-			hostapd.Mode(hostapd.Mode80211nMixed),
-			hostapd.HTCaps(hostapd.HTCapHT40),
-			hostapd.Channel(testChannel)}
+		apOpts := append([]hostapd.Option{hostapd.Channel(tc.apChannel)}, tc.apOpts...)
 		ap, err := tf.ConfigureAP(ctx, apOpts, nil)
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to configure ap")
@@ -117,7 +150,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		}
 		senderDone := make(chan error)
 		go func(ctx context.Context) {
-			senderDone <- sender.Send(ctx, framesender.TypeBeacon, testChannel,
+			senderDone <- sender.Send(ctx, framesender.TypeBeacon, tc.apChannel,
 				framesender.SSIDPrefix(ssidPrefix),
 				framesender.NumBSS(numBSS),
 				framesender.Count(numBSS),
@@ -143,7 +176,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Performing scan")
-		freq, err := hostapd.ChannelToFrequency(testChannel)
+		freq, err := hostapd.ChannelToFrequency(tc.apChannel)
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to select scan frequency")
 		}
@@ -231,13 +264,13 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 	s.Log("First Beacon Time: ", timeFirst)
 	s.Log("Final Beacon Time: ", timeFinal)
 	s.Log("Dwell Time: ", dwellTime)
-	if (dwellTime < minDwellTime) || (dwellTime > maxDwellTime) {
-		s.Fatalf("Dwell time %v is not within range [%v, %v]", dwellTime, minDwellTime, maxDwellTime)
+	if (dwellTime < tc.minDwellTime) || (dwellTime > tc.maxDwellTime) {
+		s.Fatalf("Dwell time %v is not within range [%v, %v]", dwellTime, tc.minDwellTime, tc.maxDwellTime)
 	}
 
 	pv := perf.NewValues()
 	pv.Set(perf.Metric{
-		Name:      "dwell_time_single_channel_scan",
+		Name:      fmt.Sprintf("dwell_time_ch%d", tc.apChannel),
 		Unit:      "seconds",
 		Direction: perf.SmallerIsBetter,
 	}, dwellTime.Seconds())
