@@ -340,20 +340,54 @@ func GatherFirmwareBootTime(results *platform.GetBootPerfMetricsResponse) error 
 	return nil
 }
 
-// calculateSystemTime estimates the system time of a time since boot. Input
-// values |eventUptime| and |tUptime| are times measured as seconds since boot (for
-// the same boot event, as from /proc/uptime). The input values |systemTime0| and |systemTime1|
-// are two values measured as seconds since the epoch. The three "t" values
-// were sampled in the order |systemTime0|, |tUptime|, |systemTime1|.
-// This function estimates the time of |event| measured as seconds since the
-// epoch and also estimates the worst-case error based on the time elapsed
-// between `systemTime0` and `systemTime1`.
-// All values are floats.  The precision of |event| and `tUptime` is expected to
-// be kernel jiffies (i.e. one centisecond).
-func calculateSystemTime(eventUptime, systemTime0, systemTime1, tUptime float64) (float64, float64) {
-	bootSystemTime := (systemTime0+systemTime1)/2 - tUptime
-	error := (systemTime1 - systemTime0) / 2
-	return bootSystemTime + eventUptime, error
+// calculateTimeOffset calculates the time offset between 2 different clock
+// sources (e.g. RTC and uptime), assumed to have no drift (just a fixed
+// offset).
+//
+// The input values |t0| and |t1| are two values read from clock source A,
+// |tx| is read from clock source B.
+// The three "t" values were sampled in the order |t0|, |tx|, |t1|.
+//
+// The first return value (`offset`) is the offset between clock A and B, adding
+// this offset to a measurement in clock source B will convert it to an
+// estimated measurement in clock source A (i.e. `tx + offset = (t0 + t1) / 2`).
+// Conversely, subtracting the offset from a measurement in clock source A will
+// convert it to an estimated measurement in clock source B.
+// The second return value estimates the worst-case error based on the time
+// elapsed between `t0` and `t1`.
+// All values are floats.
+func calculateTimeOffset(t0, t1, tx float64) (float64, float64) {
+	offset := (t0+t1)/2 - tx
+	error := (t1 - t0) / 2
+	return offset, error
+}
+
+// parseSyncRtc parses a sync-rtc-* file, which has this format:
+// `uptime0 uptime1 RTCDate RTCTime`, where uptimeT* are uptime measurements
+// before and after the RTC measurement.
+// For example: `7.558581153 7.559699999 2021-02-09 11:42:10`
+// Returns `uptime0`, `uptime1` as floats, RTC time as a Unix timestamp.
+func parseSyncRtc(rtcPath string) (float64, float64, int64, error) {
+	c, err := ioutil.ReadFile(rtcPath)
+	if err != nil {
+		return 0, 0, 0, errors.Wrap(err, "failed to read timestamp")
+	}
+	timesStr := strings.Split(strings.TrimSuffix(string(c), "\n"), " ")
+	uptime0, err := strconv.ParseFloat(timesStr[0], 64)
+	if err != nil {
+		return 0, 0, 0, errors.Wrapf(err, "error in parsing timestamp value %s", timesStr[0])
+	}
+	uptime1, err := strconv.ParseFloat(timesStr[1], 64)
+	if err != nil {
+		return 0, 0, 0, errors.Wrapf(err, "error in parsing timestamp value %s", timesStr[1])
+	}
+	const rtcTimeFormat = "2006-01-02 15:04:05"
+	rtcTimeStr := timesStr[2] + " " + timesStr[3]
+	rtcTime, err := time.Parse(rtcTimeFormat, rtcTimeStr)
+	if err != nil {
+		return 0, 0, 0, errors.Wrapf(err, "failed in parsing RTC time %s", rtcTimeStr)
+	}
+	return uptime0, uptime1, rtcTime.Unix(), nil
 }
 
 // findMostRecentBootstatArchivePath returns the path of the bootstat archive
@@ -423,9 +457,18 @@ func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 		return errors.Wrap(err, "failed in getting the information of bootperf_ran")
 	}
 
-	// Time values can come from 2 different sources. To reduce confusion, we suffix the variables as follows:
+	// Time values can come from 3 different sources. To reduce confusion, we suffix the variables as follows:
 	//  - *Uptime: uptime in seconds (a.k.a. clock_gettime with CLOCK_BOOTTIME)
 	//  - *SystemTime: seconds since epoch, system/wall clock time (a.k.a. clock_gettime with CLOCK_REALTIME, time.Now().Unix())
+	//  - *RtcTime: seconds since epoch, but obtained from an RTC source
+
+	shutdownUptime, err := parseUptime("ui-post-stop", bootstatDir, -1)
+	if err != nil {
+		return errors.Wrap(err, "failed in parsing uptime of event ui-post-stop")
+	}
+
+	// Compute reboot time using system time (quite inaccurate).
+	// TODO(b:181084968): Remove this once we are convinced RTC code works better.
 	timestampPath := filepath.Join(bootstatDir, "timestamp")
 	b, err := ioutil.ReadFile(timestampPath)
 	if err != nil {
@@ -436,10 +479,6 @@ func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 	if err != nil {
 		return errors.Wrap(err, "failed in parsing uptime of event archive")
 	}
-	shutdownUptime, err := parseUptime("ui-post-stop", bootstatDir, -1)
-	if err != nil {
-		return errors.Wrap(err, "failed in parsing uptime of event ui-post-stop")
-	}
 	archiveSystemTime0, err := strconv.ParseFloat(archiveSystemTimeStr[0], 64)
 	if err != nil {
 		return errors.Wrapf(err, "error in parsing timestamp value %s", archiveSystemTimeStr[0])
@@ -449,7 +488,8 @@ func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 		return errors.Wrapf(err, "error in parsing timestamp value %s", archiveSystemTimeStr[1])
 	}
 
-	shutdownSystemTime, shutdownError := calculateSystemTime(shutdownUptime, archiveSystemTime0, archiveSystemTime1, archiveUptime)
+	archiveSystemTimeOffset, archiveError := calculateTimeOffset(archiveSystemTime0, archiveSystemTime1, archiveUptime)
+	shutdownSystemTime := shutdownUptime + archiveSystemTimeOffset
 
 	nowSystemTime0 := time.Now().Unix()
 	nowUptimeStr, err := ioutil.ReadFile("/proc/uptime")
@@ -461,15 +501,40 @@ func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 	if err != nil {
 		return errors.Wrapf(err, "failed to parse system uptime %s", string(nowUptimeStr))
 	}
-	bootSystemTime, bootError := calculateSystemTime(results.Metrics["seconds_kernel_to_login"], float64(nowSystemTime0), float64(nowSystemTime1), nowUptime)
+	nowSystemTimeOffset, nowError := calculateTimeOffset(float64(nowSystemTime0), float64(nowSystemTime1), nowUptime)
+	bootSystemTime := results.Metrics["seconds_kernel_to_login"] + nowSystemTimeOffset
 
 	rebootTime := bootSystemTime - shutdownSystemTime
 	poweronTime := results.Metrics["seconds_power_on_to_login"]
 	shutdownTime := rebootTime - poweronTime
 
 	results.Metrics["seconds_reboot_time"] = rebootTime
-	results.Metrics["seconds_reboot_error"] = shutdownError + bootError
+	results.Metrics["seconds_reboot_error"] = archiveError + nowError
+	// TODO(b:181084548): This is somewhat inaccurate, as this excludes power sequencing.
 	results.Metrics["seconds_shutdown_time"] = shutdownTime
+
+	// Compute reboot time using RTC (much better accuracy)
+	rtcStopPath := filepath.Join(bootstatDir, "sync-rtc-tlsdated-stop")
+	stopUptime0, stopUptime1, stopRtcTime, err := parseSyncRtc(rtcStopPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse RTC sync stop time")
+	}
+	rtcStartPath := filepath.Join(bootstatCurrentDir, "sync-rtc-tlsdated-start")
+	startUptime0, startUptime1, startRtcTime, err := parseSyncRtc(rtcStartPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse RTC sync start time")
+	}
+
+	stopRtcTimeOffset, stopError := calculateTimeOffset(stopUptime0, stopUptime1, float64(stopRtcTime))
+	shutdownTimeRtc := shutdownUptime - stopRtcTimeOffset
+	startRtcTimeOffset, startError := calculateTimeOffset(startUptime0, startUptime1, float64(startRtcTime))
+	bootTimeRtc := results.Metrics["seconds_kernel_to_login"] - startRtcTimeOffset
+
+	rebootTimeRtc := bootTimeRtc - shutdownTimeRtc
+
+	// TODO(b:181084548): Drop the "_rtc" suffix once we remove the system time metrics above.
+	results.Metrics["seconds_reboot_time_rtc"] = rebootTimeRtc
+	results.Metrics["seconds_reboot_error_rtc"] = stopError + startError
 
 	return nil
 }
