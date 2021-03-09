@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fdd70e1_d7d591e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-09T01:56:27Z",
+      "side": 1,
+      "message": "Adding Tast reviewers from the other CL in the chain",
+      "revId": "e5562c543825009cbc740a2fc46a5ccaa3cbde54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "967909bf_7a9d4d16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-09T01:56:27Z",
+      "side": 1,
+      "message": "Sounds good, for the positive visibility cases I can do actual transfers (this CL covers a \u0027No one\u0027 visibility transfer, so we just need a \u0027Some contacts\u0027 one to round things out). Added a comment to crbug/1185940 so we can brainstorm more there if we want to add more visibility/datausage/GAIA-login combinations.",
+      "parentUuid": "9d7448ee_844c740b",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 60
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba28a9d7_f2eb2ac9",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "I mean only some tests are parameterized to do the small_png test right now. I think we should have them all do it.",
       "parentUuid": "21a72583_56a9d357",
+      "range": {
+        "startLine": 37,
+        "startChar": 14,
+        "endLine": 37,
+        "endChar": 60
+      },
+      "revId": "173624660e3fa89d51fb5c30e9e205bbc1359495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6a87ac4_c3c8ea85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-09T01:56:27Z",
+      "side": 1,
+      "message": "made crbug/1186069, I\u0027ll do it tomorrow in a separate CL, should only take a few minutes to get it working",
+      "parentUuid": "81d1b062_02cc2db1",
       "range": {
         "startLine": 37,
         "startChar": 14,
