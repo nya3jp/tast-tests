@@ -55,7 +55,7 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 	bgURL := chrome.ExtensionBackgroundPageURL(apps.PlayStore.ID)
 	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
 	if err != nil {
-		return errors.Wrapf(err, "failed to find %v", bgURL)
+		return errors.Wrapf(err, "failed to find optin extension page %v", bgURL)
 	}
 	defer conn.Close()
 
@@ -65,7 +65,7 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 		"termsPage.isManaged_ || termsPage.state_ == LoadState.LOADED",
 	} {
 		if err := conn.WaitForExpr(ctx, condition); err != nil {
-			return errors.Wrapf(err, "failed to wait for %v", condition)
+			return errors.Wrap(err, "failed to find terms of service page")
 		}
 	}
 
@@ -74,8 +74,17 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 	}
 
 	if wait {
-		if err := conn.WaitForExpr(ctx, "!appWindow"); err != nil {
-			return errors.Wrap(err, "failed to wait for '!appWindow'")
+		if err := conn.WaitForExpr(ctx, "!appWindow || appWindow.contentWindow.document.querySelector('#error.section:not([hidden])')"); err != nil {
+			return errors.Wrap(err, "failed to wait for optin completion")
+		}
+
+		var message string
+		if err := conn.Eval(ctx, "!appWindow ? '' : appWindow.contentWindow.document.getElementById('error-message')?.innerText ?? 'Unknown error'", &message); err != nil {
+			return errors.Wrap(err, "failed to evaluate optin result")
+		}
+
+		if message != "" {
+			return errors.Wrapf(err, "provisioning failed: %v", message)
 		}
 	}
 
@@ -90,7 +99,7 @@ func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) err
 	SetPlayStoreEnabled(ctx, tconn, true)
 
 	if err := FindOptInExtensionPageAndAcceptTerms(ctx, cr, true); err != nil {
-		return errors.Wrap(err, "failed to find optin extension page")
+		return err
 	}
 
 	// TODO(niwa): Check if we still need to handle non-tos_needed case.
