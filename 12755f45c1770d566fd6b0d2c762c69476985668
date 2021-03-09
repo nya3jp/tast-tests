@@ -613,6 +613,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f539a5ae_83dbcc56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-09T19:42:11Z",
+      "side": 1,
+      "message": "I added kernel stack trace via crbug.com/1186336 hoping it can help the debugging. (I don\u0027t have permission to add comments to crbug.com/1162385 so I created a new bug).",
+      "parentUuid": "6645fb1b_e9a0757a",
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3b774fa_5e77c1ce",
