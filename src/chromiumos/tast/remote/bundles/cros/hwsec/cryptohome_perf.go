@@ -39,22 +39,6 @@ func init() {
 	})
 }
 
-// waitUntilCryptohomeInit is a helper function to wait until cryptohome initialized.
-func waitUntilCryptohomeInit(ctx context.Context, remote *hwsecremote.CmdRunnerRemote) error {
-	return testing.Poll(ctx, func(context.Context) error {
-		file := filepath.Join(resultDir, cryptohomeDbusTimeFile)
-		_, err := remote.Run(ctx, "stat", file)
-		if err != nil {
-			return errors.Wrap(err, "stat file failed")
-		}
-
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  60 * time.Second,
-		Interval: time.Second,
-	})
-}
-
 // waitUntilUserdataauthInit is a helper function to wait until userdataauth initialized.
 func waitUntilUserdataauthInit(ctx context.Context, remote *hwsecremote.CmdRunnerRemote) error {
 	return testing.Poll(ctx, func(context.Context) error {
@@ -102,60 +86,27 @@ func CryptohomePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
 	}
 
-	err = waitUntilCryptohomeInit(ctx, r)
+	err = waitUntilUserdataauthInit(ctx, r)
 	if err != nil {
-		s.Fatal("Failed to wait cryptohome init: ", err)
+		s.Fatal("Failed to wait userdataauth init: ", err)
 	}
 
-	enableUserdataauth := false
-	_, err = r.Run(ctx, "/usr/libexec/cryptohome/shall-use-userdataauth.sh")
-	if err == nil {
-		enableUserdataauth = true
-	}
-
-	if enableUserdataauth {
-		err = waitUntilUserdataauthInit(ctx, r)
-		if err != nil {
-			s.Fatal("Failed to wait userdataauth init: ", err)
-		}
-	}
-
-	cryptohomeDbusTime, err := getTime(ctx, r, cryptohomeDbusTimeFile)
+	userdataauthDbusTime, err := getTime(ctx, r, userdataauthDbusTimeFile)
 	if err != nil {
-		s.Fatal("Failed to parse cryptohome D-Bus startup time: ", err)
+		s.Fatal("Failed to parse userdataauth D-Bus startup time: ", err)
 	}
-
-	s.Log("start-up time of cryptohome D-Bus: ", cryptohomeDbusTime)
-
-	var userdataauthDbusTime float64
-	if enableUserdataauth {
-		userdataauthDbusTime, err = getTime(ctx, r, userdataauthDbusTimeFile)
-		if err != nil {
-			s.Fatal("Failed to parse userdataauth D-Bus startup time: ", err)
-		}
-		s.Log("start-up time of userdataauth D-Bus: ", userdataauthDbusTime)
-	}
+	s.Log("start-up time of userdataauth D-Bus: ", userdataauthDbusTime)
 
 	// Record the perf measurements.
 	value := perf.NewValues()
 
 	value.Set(perf.Metric{
 		Name:      "crpytohome_start_time",
-		Variant:   "cryptohome_dbus",
+		Variant:   "userdataauth_dbus",
 		Unit:      "s",
 		Direction: perf.SmallerIsBetter,
 		Multiple:  false,
-	}, cryptohomeDbusTime)
-
-	if enableUserdataauth {
-		value.Set(perf.Metric{
-			Name:      "crpytohome_start_time",
-			Variant:   "userdataauth_dbus",
-			Unit:      "s",
-			Direction: perf.SmallerIsBetter,
-			Multiple:  false,
-		}, userdataauthDbusTime)
-	}
+	}, userdataauthDbusTime)
 
 	value.Save(s.OutDir())
 }
