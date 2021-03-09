@@ -346,6 +346,30 @@
       },
       "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "198ba278_70524c0a",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-09T08:40:46Z",
+      "side": 1,
+      "message": "Does this code work for CmdRunnerRemote? I guess ssh.Cmd returns ssh.ExitError instead of exec.ExitError.\nhttps://pkg.go.dev/golang.org/x/crypto/ssh#ExitError\n\nIf we want to have a common utility to extract a return code from error, I would define a new struct hwsec.ExitError as a greatest common divisor of exec.ExitError and ssh.ExitError, and let each CmdRunner implementations (CmdRunnerLocal, CmdRunnerRemote) responsible for converting ExitError in Run.",
+      "parentUuid": "e1950174_fa16a7d2",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
