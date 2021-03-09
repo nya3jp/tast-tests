@@ -16,6 +16,29 @@
       "message": "Updated to use switch on -build\u003dfalse paths",
       "revId": "0b0b50864b7faec61988d98036a3cfaf43a8cb6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6767cf2a_74fa377f",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-03-09T01:02:38Z",
+      "side": 1,
+      "message": "do you plan to implement this eventually?  if so, please make a note of that.  Otherwise, give it a docstring to say here for the interface and purposefully does nothing",
+      "range": {
+        "startLine": 232,
+        "startChar": 29,
+        "endLine": 232,
+        "endChar": 34
+      },
+      "revId": "0b0b50864b7faec61988d98036a3cfaf43a8cb6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
