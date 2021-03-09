@@ -34,6 +34,24 @@
       "parentUuid": "a4cfb29c_72ed4811",
       "revId": "28ae5b755ba40ef97fae49b237bd8311e968efb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0ae828_80e39392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-09T16:02:52Z",
+      "side": 1,
+      "message": "Tanks for explanation. Let\u0027s then maybe adjust commit message so it reflects giving full permissions to all groups 😎",
+      "parentUuid": "ed00efba_0aa8bd35",
+      "revId": "28ae5b755ba40ef97fae49b237bd8311e968efb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
