@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78556677_56fd7b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-09T23:17:40Z",
+      "side": 1,
+      "message": "Ah, so the first 5 seconds being clear is not used in this test case?",
+      "parentUuid": "48da5e3b_9883068e",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 23
+      },
+      "revId": "acf0a8166168d9cbef06f4cf29ea354992232b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45627188_e5cc3016",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 5
