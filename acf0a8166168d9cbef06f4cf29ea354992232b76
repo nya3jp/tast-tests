@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8f41677_1b76cbb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-09T23:31:47Z",
+      "side": 1,
+      "message": "It is used in this test case; but the clear lead still uses HW protected surfaces and those also cannot be screenshotted.  Whether the content is actually DRM protected or not isn\u0027t what blocks the screenshots directly...it\u0027s whether it\u0027s a protected surface or not.  And then in conjunction with that, the firmware will not decrypt/decode video that indicates it requires HW protection if the target is not a protected surface.  There\u0027s different levels of DRM...some specify HW protection required...some do not...with the L1 DRM we have, we do full HW protection no matter what (but Chrome only loads our DRM if the web page requests HW protection).  Yeah, this is somewhat confusing....it should become more clear after the presentation I\u0027m giving in 2 weeks to the team. :)",
+      "parentUuid": "78556677_56fd7b7d",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 23
+      },
+      "revId": "acf0a8166168d9cbef06f4cf29ea354992232b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45627188_e5cc3016",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 5
