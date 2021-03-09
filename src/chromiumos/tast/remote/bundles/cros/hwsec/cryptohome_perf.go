@@ -107,17 +107,9 @@ func CryptohomePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait cryptohome init: ", err)
 	}
 
-	enableUserdataauth := false
-	_, err = r.Run(ctx, "/usr/libexec/cryptohome/shall-use-userdataauth.sh")
-	if err == nil {
-		enableUserdataauth = true
-	}
-
-	if enableUserdataauth {
-		err = waitUntilUserdataauthInit(ctx, r)
-		if err != nil {
-			s.Fatal("Failed to wait userdataauth init: ", err)
-		}
+	err = waitUntilUserdataauthInit(ctx, r)
+	if err != nil {
+		s.Fatal("Failed to wait userdataauth init: ", err)
 	}
 
 	cryptohomeDbusTime, err := getTime(ctx, r, cryptohomeDbusTimeFile)
@@ -127,14 +119,11 @@ func CryptohomePerf(ctx context.Context, s *testing.State) {
 
 	s.Log("start-up time of cryptohome D-Bus: ", cryptohomeDbusTime)
 
-	var userdataauthDbusTime float64
-	if enableUserdataauth {
-		userdataauthDbusTime, err = getTime(ctx, r, userdataauthDbusTimeFile)
-		if err != nil {
-			s.Fatal("Failed to parse userdataauth D-Bus startup time: ", err)
-		}
-		s.Log("start-up time of userdataauth D-Bus: ", userdataauthDbusTime)
+	userdataauthDbusTime, err := getTime(ctx, r, userdataauthDbusTimeFile)
+	if err != nil {
+		s.Fatal("Failed to parse userdataauth D-Bus startup time: ", err)
 	}
+	s.Log("start-up time of userdataauth D-Bus: ", userdataauthDbusTime)
 
 	// Record the perf measurements.
 	value := perf.NewValues()
@@ -147,15 +136,13 @@ func CryptohomePerf(ctx context.Context, s *testing.State) {
 		Multiple:  false,
 	}, cryptohomeDbusTime)
 
-	if enableUserdataauth {
-		value.Set(perf.Metric{
-			Name:      "crpytohome_start_time",
-			Variant:   "userdataauth_dbus",
-			Unit:      "s",
-			Direction: perf.SmallerIsBetter,
-			Multiple:  false,
-		}, userdataauthDbusTime)
-	}
+	value.Set(perf.Metric{
+		Name:      "crpytohome_start_time",
+		Variant:   "userdataauth_dbus",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, userdataauthDbusTime)
 
 	value.Save(s.OutDir())
 }
