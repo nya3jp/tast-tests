@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93f05739_195b24cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-09T16:32:40Z",
+      "side": 1,
+      "message": "Thank you for your comments, Ricardo!\n\nAddressed several of them, and put two questions to you.\n\nPTAL when you have time. Thanks!",
+      "revId": "d61b300b0df61981d29cde8912e75a71cd58cc74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

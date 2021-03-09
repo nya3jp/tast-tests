@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "78faab8e_e81da01c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-09T16:32:40Z",
+      "side": 1,
+      "message": "Sorry for the insufficient description. Updated the commit message.",
+      "parentUuid": "18d53968_3278d0d5",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d37d49d1_8b89c606",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 19
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde73968_1ac536e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-09T16:32:40Z",
+      "side": 1,
+      "message": "Updated the description so that what the function does gets clearer.",
+      "parentUuid": "f67f2fa4_1bc0661d",
+      "range": {
+        "startLine": 162,
+        "startChar": 3,
+        "endLine": 162,
+        "endChar": 22
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "774d4773_5e669a06",
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73f4dfaa_01ad7292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-09T16:32:40Z",
+      "side": 1,
+      "message": "I agree that the suggested restructuring will make it easier to see the overall picture of the function.\n\nOn the other hand, splitting waitForDownloadComplete() from download...Port() might complicate things a little, since we\u0027d like to (1) stop the app\u0027s MainActivity, (2) close the app\u0027s MainActivity, and (3) uninstall the app after the download is completed.\nIn order to achieve that with the restructuring, I think we make download...Port() return either (a) a cleanup function which has some duplicates with its body or (b) the started MainActivity (and possibly the apk name). I wonder whether it\u0027s clearly better than the current design.\n\nWhat do you think?",
+      "parentUuid": "774d4773_5e669a06",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 24
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6e2aa9d_0a90d58e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
         "patchSetId": 19
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-09T03:52:40Z",
       "side": 1,
       "message": "here and below:\n\nyou are checking for `retErr`, but the value is `err`.\nI\u0027d just avoid returning a named variable here, since returning \"error\" is good enough.",
+      "range": {
+        "startLine": 184,
+        "startChar": 6,
+        "endLine": 184,
+        "endChar": 12
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7164e6_93db5e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-09T16:32:40Z",
+      "side": 1,
+      "message": "Could you elaborate a little more on your suggestion?\nIs it to (1) stop using `retErr`, and (2) just log the `err` returned by RemoveReverseTCP() when it fails, like:\n  defer func(ctx context.Context, androidPort int) {\n    if err :\u003d a.RemoveReverseTCP(ctx, androidPort); err !\u003d nil {\n      testing.ContextLog(ctx, \"Failed to ...\")\n    }\n  }(cleanupCtx, androidPort)\n\n?",
+      "parentUuid": "b6e2aa9d_0a90d58e",
       "range": {
         "startLine": 184,
         "startChar": 6,
@@ -151,6 +247,30 @@
         "startChar": 151,
         "endLine": 195,
         "endChar": 157
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d19f50_71144a5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-09T16:32:40Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "455f1253_20c46219",
+      "range": {
+        "startLine": 195,
+        "startChar": 5,
+        "endLine": 195,
+        "endChar": 44
       },
       "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
