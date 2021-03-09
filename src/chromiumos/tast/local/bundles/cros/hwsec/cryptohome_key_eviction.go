@@ -44,10 +44,7 @@ func cleanupCryptohomeUser(ctx context.Context, cryptohome *hwsec.CryptohomeClie
 // This test verifies this behaviour by creating 30 keys using chaps, and then remounting a user's cryptohome.
 // Mount requires use of the user's cryptohome key, and thus the mount only succeeds if the cryptohome key was properly evicted and reloaded into the TPM.
 func CryptohomeKeyEviction(ctx context.Context, s *testing.State) {
-	cmdRunner, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("Failed to create CmdRunner: ", err)
-	}
+	cmdRunner := hwseclocal.NewCmdRunner()
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
 		s.Fatal("Failed to create hwsec helper: ", err)

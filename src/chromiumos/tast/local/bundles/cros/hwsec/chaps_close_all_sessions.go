@@ -40,10 +40,7 @@ func ChapsCloseAllSessions(ctx context.Context, s *testing.State) {
 	// --check_close_all_sessions will wait for --use_sessions_loop to be ready, as in, --use_sessions_loop's session is created. --check_close_all_sessions waits for this even through polling the IPC file. After that, it'll create a session (for itself, different from the one created by --use_sessions_loop), call C_CloseAllSessions() to verify that it is closed, then signal to --use_sessions_loop through IPC file that it's done.
 	// In summary, what is done is checking that C_CloseAllSessions() doesn't affect other users of chaps PKCS#11 API, while C_CloseAllSessions() works.
 
-	cmdRunner, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("Failed to create CmdRunner: ", err)
-	}
+	cmdRunner := hwseclocal.NewCmdRunner()
 
 	// Create the file for IPC between --check_close_all_sessions and --use_sessions_loop.
 	seededRand := rand.New(rand.NewSource(time.Now().UnixNano()))

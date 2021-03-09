@@ -228,10 +228,7 @@ func tamperWithInstallAttributes(ctx context.Context, r hwsec.CmdRunner) error {
 }
 
 func InstallAttributes(ctx context.Context, s *testing.State) {
-	r, err := hwsecremote.NewCmdRunner(s.DUT())
-	if err != nil {
-		s.Fatal("CmdRunner creation error: ", err)
-	}
+	r := hwsecremote.NewCmdRunner(s.DUT())
 	helper, err := hwsecremote.NewHelper(r, s.DUT())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)

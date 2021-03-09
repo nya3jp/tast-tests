@@ -54,10 +54,7 @@ func checkBothUnmounted(ctx context.Context, utility *hwsec.CryptohomeClient, cm
 
 // UnmountAll tests that cryptohome's Unmount() correctly unmount all logged-in user's vault.
 func UnmountAll(ctx context.Context, s *testing.State) {
-	cmdRunner, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("Failed to create CmdRunner: ", err)
-	}
+	cmdRunner := hwseclocal.NewCmdRunner()
 
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {

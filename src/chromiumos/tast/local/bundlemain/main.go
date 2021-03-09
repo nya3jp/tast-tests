@@ -62,11 +62,7 @@ func ensureDiskSpace(ctx context.Context, purgeable []string) (uint64, error) {
 }
 
 func hwsecGetDACounter(ctx context.Context) (int, error) {
-	cmdRunner, err := hwseclocal.NewLoglessCmdRunner()
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to create CmdRunner")
-	}
-
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
 	tpmManager := hwsec.NewTPMManagerClient(cmdRunner)
 
 	// Get the TPM dictionary attack info
@@ -78,11 +74,7 @@ func hwsecGetDACounter(ctx context.Context) (int, error) {
 }
 
 func hwsecGetTPMStatus(ctx context.Context) (*hwsec.NonsensitiveStatusInfo, error) {
-	cmdRunner, err := hwseclocal.NewLoglessCmdRunner()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create CmdRunner")
-	}
-
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
 	tpmManager := hwsec.NewTPMManagerClient(cmdRunner)
 
 	// Get the TPM nonsensitive status info
