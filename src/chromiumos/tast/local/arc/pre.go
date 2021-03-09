@@ -141,7 +141,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		if p.gaia != nil {
 			username := s.RequiredVar(p.gaia.UserVar)
 			password := s.RequiredVar(p.gaia.PassVar)
-			p.cr, err = chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password, GAIAID: "gaia-id"}), chrome.ARCSupported(), chrome.ExtraArgs(extraArgs...))
+			p.cr, err = chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCSupported(), chrome.ExtraArgs(extraArgs...))
 		} else {
 			p.cr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(extraArgs...))
 		}

@@ -50,7 +50,6 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 		chrome.GAIALogin(chrome.Creds{
 			User:       childUser,
 			Pass:       childPass,
-			GAIAID:     "gaia-id",
 			ParentUser: parentUser,
 			ParentPass: parentPass,
 		}),

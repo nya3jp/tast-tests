@@ -49,7 +49,7 @@ func (f *FreezeFUSEService) TestMountZipAndSuspend(ctx context.Context, request 
 	// TODO(crbug.com/1168360): Don't restart Chrome after tconn survives suspend/resume.
 	cr, err := chrome.New(
 		ctx,
-		chrome.GAIALogin(chrome.Creds{User: request.GetUser(), Pass: request.GetPassword(), GAIAID: "gaia-id"}),
+		chrome.GAIALogin(chrome.Creds{User: request.GetUser(), Pass: request.GetPassword()}),
 		chrome.ARCDisabled(),
 		chrome.EnableFeatures("FilesZipMount"))
 	if err != nil {

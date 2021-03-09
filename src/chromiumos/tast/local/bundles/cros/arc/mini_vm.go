@@ -40,7 +40,7 @@ func MiniVM(ctx context.Context, s *testing.State) {
 	// Setup Chrome and login as an opt-out user. mini-ARCVM should
 	// automatically start.
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password, GAIAID: "gaia-id"}),
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {

@@ -75,7 +75,6 @@ func EnableArc(ctx context.Context, s *testing.State) {
 			chrome.GAIALogin(chrome.Creds{
 				User:       childUser,
 				Pass:       childPass,
-				GAIAID:     "gaia-id",
 				ParentUser: parentUser,
 				ParentPass: parentPass,
 			}),
@@ -84,9 +83,8 @@ func EnableArc(ctx context.Context, s *testing.State) {
 		cr, err = chrome.New(
 			ctx,
 			chrome.GAIALogin(chrome.Creds{
-				User:   parentUser,
-				Pass:   parentPass,
-				GAIAID: "gaia-id",
+				User: parentUser,
+				Pass: parentPass,
 			}),
 			chrome.ARCSupported(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...))

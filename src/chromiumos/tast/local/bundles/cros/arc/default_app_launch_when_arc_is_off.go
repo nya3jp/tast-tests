@@ -45,7 +45,7 @@ func DefaultAppLaunchWhenArcIsOff(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar("arc.password")
 
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password, GAIAID: "gaia-id"}),
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
