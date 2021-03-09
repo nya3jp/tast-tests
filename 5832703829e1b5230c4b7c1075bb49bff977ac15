@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57598644_5aa5ed94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-09T23:08:27Z",
+      "side": 1,
+      "message": "This is looking great, cheers!\n",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b12a4dd_0273a760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/lan_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-09T23:08:27Z",
+      "side": 1,
+      "message": "I think this should be DiagLanConnectivity so that the diagnostics routine tests are grouped together.",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6454134b_4da35598",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-09T23:08:27Z",
+      "side": 1,
+      "message": "I think it would be cleaner to avoid the conndiag dependency here, even though it means a little more cookie-cutter code in the tests. I would pass \u0027conn *chrome.Conn\u0027 to this (instead of tconn). That also makes this a little more versatile, e.g. it can be used with a different app.\n\nWe could probably add a helper to conndiag to launch the app and return app.ChromeConn().",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "921323a9_1c553c9d",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-09T23:08:27Z",
+      "side": 1,
+      "message": "If we are matching enum values we should set them explicitly, otherwise just use \u0027iota\u0027.",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1efea5_1f186dd3",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-09T23:08:27Z",
+      "side": 1,
+      "message": "Maybe add a generator for this string, e.g. jsWrapper(\u0027lanConnectivity\u0027), since presumably we will be adding others.",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9045c13_3279cba0",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-09T23:08:27Z",
+      "side": 1,
+      "message": "If we pass conn to NewMojoAPI, we will want to do the close in the caller.",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41256d3_af5575c9",
+        "filename": "src/chromiumos/tast/local/network/diag/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-09T23:08:27Z",
+      "side": 1,
+      "message": "This should probably go with the tests (i.e. in tast/local/bundles/cros/network/diag/). Then it can create both the app and the MojoAPI, without either of those imports depending on the other.",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
