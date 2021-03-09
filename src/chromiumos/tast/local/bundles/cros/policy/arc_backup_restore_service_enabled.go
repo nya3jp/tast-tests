@@ -84,7 +84,7 @@ func ArcBackupRestoreServiceEnabled(ctx context.Context, s *testing.State) {
 			// Start a Chrome instance that will fetch policies from the FakeDMS.
 			// This policy must be updated before starting Chrome.
 			cr, err := chrome.New(ctx,
-				chrome.FakeLogin(chrome.Creds{User: pre.Username, Pass: pre.Password, GAIAID: pre.GaiaID}),
+				chrome.FakeLogin(chrome.Creds{User: pre.Username, Pass: pre.Password}),
 				chrome.DMSPolicy(fdms.URL),
 				chrome.ARCEnabled())
 			if err != nil {
