@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008818631",
+      "url": "https://android-build.googleplex.com/builds/treetop/chromium-review/2744368?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "e5ce7cc5_3da5e36c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/signer_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1493702
+      },
+      "writtenOn": "2021-03-09T17:16:38Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 1
+      },
+      "revId": "f445a17493720d78cf8b813a8ca9f917f2c5383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008818631",
+      "url": "https://android-build.googleplex.com/builds/treetop/chromium-review/2744368?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8025064e_f5f39744",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/signer_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1493702
+      },
+      "writtenOn": "2021-03-09T17:16:38Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027valid\u0027, \u0027validity check\u0027 or \u0027initial check\u0027; see https://source.android.com/setup/contribute/respectful-code for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 10
+      },
+      "revId": "f445a17493720d78cf8b813a8ca9f917f2c5383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
