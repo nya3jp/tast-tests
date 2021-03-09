@@ -16,6 +16,80 @@
       "message": "Hi Victor,\n\nCan you please have a look ?\n\nThanks",
       "revId": "3ebbdf54b840a0c16fccdefcfd504435faa96e84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf8f5fd_d24826d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-09T12:43:41Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "3ebbdf54b840a0c16fccdefcfd504435faa96e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fcfff02_1d058ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/block_third_party_cookies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-09T12:43:41Z",
+      "side": 1,
+      "message": "nit: I don\u0027t understand what this comment refers to. Please clarify.",
+      "revId": "3ebbdf54b840a0c16fccdefcfd504435faa96e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e723c3b6_f1c28907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/block_third_party_cookies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-09T12:43:41Z",
+      "side": 1,
+      "message": "the cookies setting page",
+      "range": {
+        "startLine": 99,
+        "startChar": 19,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "3ebbdf54b840a0c16fccdefcfd504435faa96e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261735b7_ad683f3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/block_third_party_cookies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-09T12:43:41Z",
+      "side": 1,
+      "message": "nit: file a bug (P3) and link a TODO here to actually check that cookies are actually blocked.",
+      "revId": "3ebbdf54b840a0c16fccdefcfd504435faa96e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
