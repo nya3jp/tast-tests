@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -25,7 +26,7 @@ func init() {
 			"akihiroota@chromium.org",      // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list
 		},
-		Attr:         []string{},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
@@ -52,6 +53,19 @@ func Autoclick(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	moveMouseToNodeLocationStable := func(node *ui.Node, name string) {
+		if err := node.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
+			s.Fatalf("Failed to wait for %s to have a stable location: %v", name, err)
+		}
+
+		s.Logf("Moving the mouse to %v to click %s", node.Location.CenterPoint(), name)
+		if err := mouse.Move(ctx, tconn, node.Location.CenterPoint(), 0); err != nil {
+			s.Fatalf("Failed to move the mouse to %s: %v", name, err)
+		}
+	}
+
 	// Ensure the presence of the floating autoclick menu.
 	menu, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
 		ClassName: "AutoclickMenuView",
@@ -74,11 +88,7 @@ func Autoclick(ctx context.Context, s *testing.State) {
 	}
 	defer scroll.Release(ctx)
 
-	// Move the mouse to the middle of the scroll button, which changes autoclick
-	// to scroll mode.
-	if err := mouse.Move(ctx, tconn, scroll.Location.CenterPoint(), 0); err != nil {
-		s.Fatal("Failed to move the mouse to the autoclick scroll button: ", err)
-	}
+	moveMouseToNodeLocationStable(scroll, "autoclick scroll button")
 
 	// Autoclick is in scroll mode once the scroll view appears.
 	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "AutoclickScrollBubbleView"}, 10*time.Second); err != nil {
@@ -95,9 +105,7 @@ func Autoclick(ctx context.Context, s *testing.State) {
 	}
 	defer leftClick.Release(ctx)
 
-	if err := mouse.Move(ctx, tconn, leftClick.Location.CenterPoint(), 0); err != nil {
-		s.Fatal("Failed to move the mouse to the left click button: ", err)
-	}
+	moveMouseToNodeLocationStable(leftClick, "autoclick left click button")
 
 	// Autoclick is in left click mode once the scroll view disappears.
 	if err := ui.WaitUntilGone(ctx, tconn, ui.FindParams{ClassName: "AutoclickScrollBubbleView"}, 10*time.Second); err != nil {
@@ -132,9 +140,7 @@ func Autoclick(ctx context.Context, s *testing.State) {
 	}
 	defer yesButton.Release(ctx)
 
-	if err := mouse.Move(ctx, tconn, yesButton.Location.CenterPoint(), 0); err != nil {
-		s.Fatal("Failed to move the mouse to the yes button in the autoclick confirmation dialog: ", err)
-	}
+	moveMouseToNodeLocationStable(yesButton, "autoclick confirmation dialog yes button")
 
 	// Wait for the confirmation dialog to disappear.
 	if err := ui.WaitUntilGone(ctx, tconn, ui.FindParams{
