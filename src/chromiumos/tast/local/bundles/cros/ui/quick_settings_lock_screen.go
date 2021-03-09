@@ -49,7 +49,7 @@ func QuickSettingsLockScreen(ctx context.Context, s *testing.State) {
 		lockTimeout = 30 * time.Second
 	)
 
-	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: username, Pass: password, GAIAID: "1234"}))
+	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: username, Pass: password}))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

@@ -37,7 +37,6 @@ func OwnershipNotRetaken(ctx context.Context, s *testing.State) {
 		ownerKeyFile = "/var/lib/whitelist/owner.key"
 		testUser     = "example@chromium.org"
 		testPass     = "testme"
-		testGAIAID   = "7583"
 
 		uiSetupTimeout = 90 * time.Second
 	)
@@ -106,7 +105,7 @@ func OwnershipNotRetaken(ctx context.Context, s *testing.State) {
 
 	// Second login.
 	s.Log("Logging in to Chrome, second time")
-	c, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: testUser, Pass: testPass, GAIAID: testGAIAID}), chrome.KeepState())
+	c, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: testUser, Pass: testPass}), chrome.KeepState())
 	if err != nil {
 		s.Fatalf("Failed to log in %s with Chrome: %v", testUser, err)
 	}

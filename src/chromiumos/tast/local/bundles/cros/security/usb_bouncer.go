@@ -107,9 +107,8 @@ func testUsbBouncer(ctx context.Context, s *testing.State, m *seccomp.PolicyGene
 
 func USBBouncer(ctx context.Context, s *testing.State) {
 	const (
-		defaultUser   = "testuser@gmail.com"
-		defaultPass   = "testpass"
-		defaultGaiaID = "gaia-id"
+		defaultUser = "testuser@gmail.com"
+		defaultPass = "testpass"
 	)
 
 	d, err := pathOfTestDevice()
@@ -154,7 +153,7 @@ func USBBouncer(ctx context.Context, s *testing.State) {
 	m := seccomp.NewPolicyGenerator()
 	testUsbBouncer(ctx, s, m, d, false /*withChrome*/, enforceSeccomp /*withSeccomp*/)
 
-	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: defaultUser, Pass: defaultPass, GAIAID: defaultGaiaID}))
+	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: defaultUser, Pass: defaultPass}))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

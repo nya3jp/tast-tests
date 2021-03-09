@@ -80,7 +80,7 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 
 		cr, err = chrome.New(
 			ctx,
-			chrome.FakeLogin(chrome.Creds{User: policyPre.Username, Pass: policyPre.Password, GAIAID: policyPre.GaiaID}),
+			chrome.FakeLogin(chrome.Creds{User: policyPre.Username, Pass: policyPre.Password}),
 			chrome.DMSPolicy(fdms.URL), chrome.DontSkipOOBEAfterLogin(),
 			chrome.EnableFeatures("HelpAppFirstRun"),
 		)

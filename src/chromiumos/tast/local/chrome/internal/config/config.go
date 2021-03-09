@@ -191,6 +191,12 @@ func NewConfig(opts []Option) (*Config, error) {
 	// in all tests once the issue is solved.
 	cfg.EnableLoginVerboseLogs = true
 
+	// Logging in with a fake account requires non-empty GAIA ID. Set it to
+	// the default value when it's missing.
+	if cfg.LoginMode == FakeLogin && cfg.Creds.GAIAID == "" {
+		cfg.Creds.GAIAID = defaultGAIAID
+	}
+
 	// This works around https://crbug.com/358427.
 	if cfg.LoginMode == GAIALogin {
 		var err error

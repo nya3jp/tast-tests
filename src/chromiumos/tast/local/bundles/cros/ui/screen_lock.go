@@ -31,7 +31,6 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 		username      = "testuser@gmail.com"
 		password      = "good"
 		wrongPassword = "bad"
-		gaiaID        = "1234"
 
 		lockTimeout     = 30 * time.Second
 		goodAuthTimeout = 30 * time.Second
@@ -46,7 +45,7 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: username, Pass: password, GAIAID: gaiaID}))
+	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: username, Pass: password}))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}

@@ -36,13 +36,12 @@ func PINUnlock(ctx context.Context, s *testing.State) {
 	const (
 		username = "testuser@gmail.com"
 		password = "good"
-		gaiaID   = "1234"
 		PIN      = "1234567890"
 	)
 
 	autosubmit := s.Param().(bool)
 
-	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: username, Pass: password, GAIAID: gaiaID}))
+	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: username, Pass: password}))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
