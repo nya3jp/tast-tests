@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1af82571_0df8db5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-09T04:00:27Z",
+      "side": 1,
+      "message": "Trivial change. Skipping shadow review. LGTM.\n",
+      "revId": "31a2ac0b274978bc945a336db73bf4b6e80764d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
