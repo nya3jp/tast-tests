@@ -16,6 +16,24 @@
       "message": "I tried this patch several times with HP Pro c640 Chromebook and hatch-arc-r board in our testing lab.\n\nI ran ui.MeetCUJ.16p and it appears to be problematic for some reasons; it sometimes fails to wait for the app to be closed, or sometimes it passes but the play-store window remains (so it causes errors during ui.MeetCUJ.16p).\n\nPlease consider revert back to the previous code of checking with GetARCAppWindowInfo. Or analyze the problem and find the solution on your side.",
       "revId": "8fb3d3bdd85d0d82892282f18e50c830712e99b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6d21c60_41157d0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-09T01:47:10Z",
+      "side": 1,
+      "message": "Jun, thanks for trying this. I reverted the change to GetARCAppWindowInfo version.\n\nThe difference between performAndClose() and GetARCAppWindowInfo() is that one uses application ID, and the other one uses Apk name. \n\nI\u0027d like to debug this if I can access the HP Pro c640 Chromebook and hatch-arc-r board. (I\u0027ll take to you offline). If it shows using Apk name is more reliable, I will further change the performAndClose() implementation.",
+      "parentUuid": "505dd89c_529e6541",
+      "revId": "8fb3d3bdd85d0d82892282f18e50c830712e99b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
