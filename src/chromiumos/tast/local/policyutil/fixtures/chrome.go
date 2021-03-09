@@ -51,7 +51,6 @@ type FixtData struct {
 const (
 	Username = "tast-user@managedchrome.com"
 	Password = "test0000"
-	GaiaID   = "gaia-id"
 )
 
 // PolicyFileDump is the filename where the state of policies is dumped after the test ends.
@@ -67,7 +66,7 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password, GAIAID: GaiaID}),
+		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password}),
 		chrome.DMSPolicy(fdms.URL))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
