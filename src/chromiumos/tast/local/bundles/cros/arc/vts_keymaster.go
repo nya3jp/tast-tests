@@ -61,7 +61,7 @@ func VTSKeymaster(ctx context.Context, s *testing.State) {
 	}
 	defer a.Command(ctx, "rm", testExecPath).Run()
 
-	if err := a.Command(ctx, "chmod", "0700", testExecPath).Run(testexec.DumpLogOnError); err != nil {
+	if err := a.Command(ctx, "chmod", "0777", testExecPath).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to change test binary permissions: ", err)
 	}
 
