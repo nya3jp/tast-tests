@@ -37,9 +37,8 @@ func init() {
 
 func USBGuard(ctx context.Context, s *testing.State) {
 	const (
-		defaultUser   = "testuser@gmail.com"
-		defaultPass   = "testpass"
-		defaultGaiaID = "gaia-id"
+		defaultUser = "testuser@gmail.com"
+		defaultPass = "testpass"
 
 		usbguardFeature    = "USBGuard"
 		usbbouncerFeature  = "USBBouncer"
@@ -210,7 +209,7 @@ func USBGuard(ctx context.Context, s *testing.State) {
 
 	generateSeccompPolicy()
 
-	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: defaultUser, Pass: defaultPass, GAIAID: defaultGaiaID}))
+	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: defaultUser, Pass: defaultPass}))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

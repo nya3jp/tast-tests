@@ -40,7 +40,7 @@ func SystemTimezone(ctx context.Context, s *testing.State) {
 
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password, GAIAID: fixtures.GaiaID}),
+		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.KeepState(),
 		chrome.ExtraArgs("--disable-policy-key-verification"))
@@ -87,7 +87,7 @@ func SystemTimezone(ctx context.Context, s *testing.State) {
 
 			// Restart Chrome.
 			cr, err = chrome.New(ctx,
-				chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password, GAIAID: fixtures.GaiaID}),
+				chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 				chrome.DMSPolicy(fdms.URL),
 				chrome.KeepState(),
 				chrome.ExtraArgs("--disable-policy-key-verification"))
