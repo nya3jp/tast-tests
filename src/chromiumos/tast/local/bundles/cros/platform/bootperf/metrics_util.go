@@ -316,11 +316,6 @@ func GatherDiskMetrics(results *platform.GetBootPerfMetricsResponse) {
 	}
 }
 
-// round is an utility function for rounding |x| to 2 decimal places.
-func round(x float64) float64 {
-	return math.Round(x*100) / 100
-}
-
 // GatherFirmwareBootTime reads and reports firmware startup time. The boot
 // process writes the firmware startup time to the file named in
 // |firmwareTimeFile|. Read the time from that file, and record it as the metric
@@ -339,8 +334,8 @@ func GatherFirmwareBootTime(results *platform.GetBootPerfMetricsResponse) error 
 	}
 
 	bootTime := results.Metrics["seconds_kernel_to_login"]
-	results.Metrics["seconds_power_on_to_kernel"] = round(fw)
-	results.Metrics["seconds_power_on_to_login"] = round(fw + bootTime)
+	results.Metrics["seconds_power_on_to_kernel"] = fw
+	results.Metrics["seconds_power_on_to_login"] = fw + bootTime
 	return nil
 }
 
@@ -353,11 +348,9 @@ func GatherFirmwareBootTime(results *platform.GetBootPerfMetricsResponse) error 
 // epoch and also estimates the worst-case error based on the time elapsed
 // between `t0` and `t1`.
 // All values are floats.  The precision of |event| and `tUptime` is expected to
-// be kernel jiffies (i.e. one centisecond). The output result is rounded to the
-// nearest jiffy.
+// be kernel jiffies (i.e. one centisecond).
 func calculateTimeval(event, t0, t1, tUptime float64) (float64, float64) {
-	bootTimeval := round((t0+t1)/2 - tUptime)
-	// |error| should be close to 0 so is not rounded.
+	bootTimeval := (t0+t1)/2 - tUptime
 	error := (t1 - t0) / 2
 	return bootTimeval + event, error
 }
@@ -467,9 +460,9 @@ func GatherRebootMetrics(results *platform.GetBootPerfMetricsResponse) error {
 	}
 	bootTimeval, bootError := calculateTimeval(results.Metrics["seconds_kernel_to_login"], float64(bootT0), float64(bootT1), uptimeF)
 
-	rebootTime := round(bootTimeval - shutdownTimeval)
+	rebootTime := bootTimeval - shutdownTimeval
 	poweronTime := results.Metrics["seconds_power_on_to_login"]
-	shutdownTime := round(rebootTime - poweronTime)
+	shutdownTime := rebootTime - poweronTime
 
 	results.Metrics["seconds_reboot_time"] = rebootTime
 	results.Metrics["seconds_reboot_error"] = shutdownError + bootError
@@ -494,7 +487,7 @@ func CalculateDiff(results *platform.GetBootPerfMetricsResponse) {
 			rb, ok1 := results.Metrics[begin]
 			if re, ok2 := results.Metrics[end]; ok1 && ok2 {
 				diffName := t + "_" + b + "_to_" + barriers[i+1]
-				results.Metrics[diffName] = round(re - rb)
+				results.Metrics[diffName] = re - rb
 			}
 		}
 	}
