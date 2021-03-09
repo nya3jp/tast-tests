@@ -104,29 +104,6 @@ func launchAppForABCKids(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to press ENTER key: ", err)
 	}
 
-	// Click on continue button.
-	clickOnContinueButton := d.Object(ui.TextMatches("(?i)" + continueText))
-	if err := clickOnContinueButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("clickOnContinueButton doesn't exists: ", err)
-		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-			s.Fatal("Failed to press enter to click on continue button: ", err)
-			d.WaitForIdle(ctx, shortTimeInterval)
-		}
-	} else if err := clickOnContinueButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnContinueButton: ", err)
-	}
-
-	clickOnContinueButton = d.Object(ui.TextMatches("(?i)" + continueText))
-	if err := clickOnContinueButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("clickOnContinueButton doesn't exists: ", err)
-		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-			s.Fatal("Failed to press enter: ", err)
-			d.WaitForIdle(ctx, shortTimeInterval)
-		}
-	} else if err := clickOnContinueButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnContinueButton: ", err)
-	}
-
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for launch verifier.
 	launchVerifier := d.Object(ui.PackageName(appPkgName))
