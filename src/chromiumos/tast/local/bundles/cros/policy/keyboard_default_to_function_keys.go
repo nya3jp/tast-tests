@@ -44,6 +44,17 @@ func KeyboardDefaultToFunctionKeys(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	topRow, err := input.KeyboardTopRowLayout(ctx, kb)
+	if err != nil {
+		s.Fatal("Failed to obtain kayobard layout: ", err)
+	}
+
+	back := topRow.BrowserBack
+	f1 := strings.Trim(back, "search+")
+	if !strings.HasPrefix(back, "search") {
+		f1 = "search" + back
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get TestConn: ", err)
@@ -57,17 +68,17 @@ func KeyboardDefaultToFunctionKeys(ctx context.Context, s *testing.State) {
 		{
 			name:  "true",
 			value: &policy.KeyboardDefaultToFunctionKeys{Val: true},
-			keys:  []string{"search+f1", "f1"},
+			keys:  []string{f1, back},
 		},
 		{
 			name:  "false",
 			value: &policy.KeyboardDefaultToFunctionKeys{Val: false},
-			keys:  []string{"f1", "search+f1"},
+			keys:  []string{back, f1},
 		},
 		{
 			name:  "unset",
 			value: &policy.KeyboardDefaultToFunctionKeys{Stat: policy.StatusUnset},
-			keys:  []string{"f1", "search+f1"},
+			keys:  []string{back, f1},
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
