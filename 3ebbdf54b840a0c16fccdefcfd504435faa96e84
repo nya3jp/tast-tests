@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a743d9e_63f2b652",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/block_third_party_cookies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-03-09T14:10:21Z",
+      "side": 1,
+      "message": "Updated the comment to be more descriptive.",
+      "parentUuid": "8fcfff02_1d058ea7",
+      "revId": "3ebbdf54b840a0c16fccdefcfd504435faa96e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e723c3b6_f1c28907",
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e4abaa_e976a914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/block_third_party_cookies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-03-09T14:10:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e723c3b6_f1c28907",
+      "range": {
+        "startLine": 99,
+        "startChar": 19,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "3ebbdf54b840a0c16fccdefcfd504435faa96e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "261735b7_ad683f3d",
@@ -88,6 +130,24 @@
       "writtenOn": "2021-03-09T12:43:41Z",
       "side": 1,
       "message": "nit: file a bug (P3) and link a TODO here to actually check that cookies are actually blocked.",
+      "revId": "3ebbdf54b840a0c16fccdefcfd504435faa96e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b8564f8_5b106e74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/block_third_party_cookies.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-03-09T14:10:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "261735b7_ad683f3d",
       "revId": "3ebbdf54b840a0c16fccdefcfd504435faa96e84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
