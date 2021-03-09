@@ -29,8 +29,7 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Vars: []string{
 			"ui.signinProfileTestExtensionManifestKey",
-			"ui.oac_username",
-			"ui.oac_password",
+			"ui.gaiaPoolDefault",
 		},
 		Timeout: 2*chrome.GAIALoginTimeout + time.Minute,
 	})
@@ -38,16 +37,16 @@ func init() {
 
 // ExistingUserLogin logs in to an existing user account from the login screen.
 func ExistingUserLogin(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("ui.oac_username")
-	password := s.RequiredVar("ui.oac_password")
+	var creds chrome.Creds
 
 	// Log in and log out to create a user pod on the login screen.
 	func() {
-		cr, err := chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}))
+		cr, err := chrome.New(ctx, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
 		if err != nil {
 			s.Fatal("Chrome login failed: ", err)
 		}
 		defer cr.Close(ctx)
+		creds = cr.Creds()
 
 		if err := upstart.RestartJob(ctx, "ui"); err != nil {
 			s.Fatal("Failed to restart ui: ", err)
@@ -83,7 +82,7 @@ func ExistingUserLogin(ctx context.Context, s *testing.State) {
 	// This causes it to miss some of the keyboard input, so the password will be wrong.
 	// We can check in the UI for the password field to exist, which seems to be a good enough indicator that
 	// the field is ready for keyboard input.
-	if err := lockscreen.WaitForPasswordField(ctx, tLoginConn, username, 5*time.Second); err != nil {
+	if err := lockscreen.WaitForPasswordField(ctx, tLoginConn, creds.User, 5*time.Second); err != nil {
 		s.Fatal("Password text field did not appear in the UI: ", err)
 	}
 
@@ -94,7 +93,7 @@ func ExistingUserLogin(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	s.Log("Entering password to log in")
-	if err := kb.Type(ctx, password+"\n"); err != nil {
+	if err := kb.Type(ctx, creds.Pass+"\n"); err != nil {
 		s.Fatal("Entering password failed: ", err)
 	}
 
