@@ -30,10 +30,7 @@ func init() {
 
 // DaemonsRestartStress checks that restarting hwsec daemons wouldn't cause problems.
 func DaemonsRestartStress(ctx context.Context, s *testing.State) {
-	cmdRunner, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("Failed to create CmdRunner: ", err)
-	}
+	cmdRunner := hwseclocal.NewCmdRunner()
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)

@@ -14,10 +14,7 @@ import (
 
 // EnsureTPMIsResetAndPowerwash initialises the required helpers and calls HelperRemote.EnsureTPMIsResetAndPowerwash.
 func EnsureTPMIsResetAndPowerwash(ctx context.Context, d *dut.DUT) error {
-	r, err := hwsec.NewCmdRunner(d)
-	if err != nil {
-		return errors.Wrap(err, "CmdRunner creation error")
-	}
+	r := hwsec.NewCmdRunner(d)
 
 	helper, err := hwsec.NewHelper(r, d)
 	if err != nil {

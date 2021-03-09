@@ -23,11 +23,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// CmdRunner declares interface that runs command on DUT.
-type CmdRunner interface {
-	Run(ctx context.Context, cmd string, args ...string) ([]byte, error)
-}
-
 // CmdHelper provides various helper functions that could be shared across all
 // hwsec integration test base on CmdRunner.
 type CmdHelper struct {

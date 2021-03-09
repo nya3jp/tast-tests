@@ -84,10 +84,7 @@ func loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx context.Context, s *testing.S
 // KeysetTiedToTPM1 is an integration test that verifies a user's VKK is tied
 // to the TPM after the second login.
 func KeysetTiedToTPM1(ctx context.Context, s *testing.State) {
-	cmdRunner, err := hwsecremote.NewCmdRunner(s.DUT())
-	if err != nil {
-		s.Fatal("Failed to create CmdRunner: ", err)
-	}
+	cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
 	helper, err := hwsecremote.NewHelper(cmdRunner, s.DUT())
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)

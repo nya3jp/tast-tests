@@ -30,10 +30,7 @@ func init() {
 }
 
 func ChapsECDSA(ctx context.Context, s *testing.State) {
-	r, err := hwseclocal.NewCmdRunner()
-	if err != nil {
-		s.Fatal("CmdRunner creation error: ", err)
-	}
+	r := hwseclocal.NewCmdRunner()
 
 	helper, err := hwseclocal.NewHelper(r)
 	if err != nil {

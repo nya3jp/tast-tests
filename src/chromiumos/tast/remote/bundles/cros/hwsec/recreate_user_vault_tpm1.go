@@ -37,10 +37,7 @@ func init() {
 // which was ported from the autotest test platform_CryptohomeTPMReOwn and
 // renamed to reflects what's being tested.
 func RecreateUserVaultTPM1(ctx context.Context, s *testing.State) {
-	cmdRunner, err := hwsecremote.NewCmdRunner(s.DUT())
-	if err != nil {
-		s.Fatal("CmdRunner creation error: ", err)
-	}
+	cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
 
 	helper, err := hwsecremote.NewHelper(cmdRunner, s.DUT())
 	if err != nil {
