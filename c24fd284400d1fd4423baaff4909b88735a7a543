@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60cb3ba6_e1eb115d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-09T06:41:48Z",
+      "side": 1,
+      "message": "Btw, we usually sleep for a while before measuring usage to get more stable result:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/camera/cca/perf.go;rcl\u003dc9e6559993dcf0a7ec8ea8ddccc9a2660e42327d;l\u003d117",
+      "range": {
+        "startLine": 113,
+        "startChar": 22,
+        "endLine": 113,
+        "endChar": 34
+      },
+      "revId": "c24fd284400d1fd4423baaff4909b88735a7a543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b484761_83d7f18f",
         "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
         "patchSetId": 2
