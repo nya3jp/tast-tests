@@ -29,7 +29,7 @@ func init() {
 }
 
 const (
-	waitForInstallAttributesTimeout = 30 * time.Second
+	waitForInstallAttributesTimeout = 2 * time.Minute
 	testAttributesUndefined         = "Naproxen"
 	tamperedAttributes              = "Methadone"
 	databasePath                    = "/home/.shadow/install_attributes.pb"
