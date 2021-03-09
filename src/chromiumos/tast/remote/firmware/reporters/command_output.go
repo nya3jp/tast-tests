@@ -9,7 +9,6 @@ import (
 	"context"
 	"fmt"
 	"strings"
-	"time"
 
 	"chromiumos/tast/errors"
 )
@@ -32,15 +31,4 @@ func (r *Reporter) CommandOutput(ctx context.Context, format string, args ...str
 
 	// Command returns an extra newline vs running the command in shell, so remove it.
 	return string(bytes.TrimSuffix(res, []byte{'\n'})), nil
-}
-
-// Now reports the output of the `date` command as a Go Time.
-func (r *Reporter) Now(ctx context.Context) (time.Time, error) {
-	const bashFormat = "%Y-%m-%d %H:%M:%S"
-	res, err := r.CommandOutput(ctx, "date", fmt.Sprintf("+%s", bashFormat))
-	if err != nil {
-		return time.Time{}, err
-	}
-	const goFormat = "2006-01-02 15:04:05"
-	return time.Parse(goFormat, res)
 }
