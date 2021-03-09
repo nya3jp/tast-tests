@@ -10,5 +10,5 @@
       "scripts": ["background.js"]
     }
   },
-  "permissions": [ "documentScan", "fullscreen", "alwaysOnTopWindows", "automation", "autotestPrivate" ]
+  "permissions": [ "documentScan", "alwaysOnTopWindows" ]
 }
