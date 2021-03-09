@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d53968_3278d0d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-09T03:52:40Z",
+      "side": 1,
+      "message": "nit: be more verbose with the body.\n\nThis is not a trivial CL. Add more context in the body helps the reviewer, and also good for reference in the future.\n\ne.g:\nmention that a new APK is being added. The APK does all the download, and that the Tast code just calls it/fetches the results from it... The downloaded file is read, etc...\n\nMention that two new methods are added to ADB, and mention why they are needed...\n\netc.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d37d49d1_8b89c606",
@@ -14,6 +37,121 @@
       "writtenOn": "2021-03-08T22:53:55Z",
       "side": 1,
       "message": "Thanks for your review, Greg!",
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f67f2fa4_1bc0661d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-09T03:52:40Z",
+      "side": 1,
+      "message": "nit:\ndownloadFileWithApp implies that are you using an App, but the description doesn\u0027t say anything about it. Either I\u0027d rename it to \"downloadFile\"... or I\u0027d add that you are using an App in the description",
+      "range": {
+        "startLine": 162,
+        "startChar": 3,
+        "endLine": 162,
+        "endChar": 22
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774d4773_5e669a06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-09T03:52:40Z",
+      "side": 1,
+      "message": "I\u0027d shuffle a bit these functions.\n\nfunc downloadFile() {\n  setupADBPorts();       // optional: move the setup ports to its own function (probably it should return a \"cleanup\" function...)\n  downloadFileWithAppFromLocalAndroidPort();\n  waitForDownloadComplete(); // basically all this function from downloadFile() instead of from downloadFileWtihAppFromLocal...()\n}",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 24
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e2aa9d_0a90d58e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-09T03:52:40Z",
+      "side": 1,
+      "message": "here and below:\n\nyou are checking for `retErr`, but the value is `err`.\nI\u0027d just avoid returning a named variable here, since returning \"error\" is good enough.",
+      "range": {
+        "startLine": 184,
+        "startChar": 6,
+        "endLine": 184,
+        "endChar": 12
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "455f1253_20c46219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-09T03:52:40Z",
+      "side": 1,
+      "message": "add docstring to all non-trivial functions",
+      "range": {
+        "startLine": 195,
+        "startChar": 5,
+        "endLine": 195,
+        "endChar": 44
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c5f576_6363bac4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-09T03:52:40Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 195,
+        "startChar": 151,
+        "endLine": 195,
+        "endChar": 157
+      },
       "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
