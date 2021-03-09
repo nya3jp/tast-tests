@@ -16,6 +16,41 @@
       "message": "Just FYI You should wait for a +2 from a local team member before adding tast-owners :) ",
       "revId": "2608f548bbdd572965f706c2dbadacafd6aa6c41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0130e0f_f7a8682b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-03-09T18:14:30Z",
+      "side": 1,
+      "message": "Hold on while I fix this merge conflict. I rebased the repo yesterday, how is there another conflict already?",
+      "revId": "2608f548bbdd572965f706c2dbadacafd6aa6c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09f5b6b0_994a9b48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-03-09T18:14:30Z",
+      "side": 1,
+      "message": "Ack. Sorry about that. Noted for next time.",
+      "parentUuid": "ec36b600_bf4392e5",
+      "revId": "2608f548bbdd572965f706c2dbadacafd6aa6c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
