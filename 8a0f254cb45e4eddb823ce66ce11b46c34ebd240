@@ -16,6 +16,23 @@
       "message": "Couldn\u0027t figure out how many times we round and re-round things, so let\u0027s round everything at the end.",
       "revId": "8a0f254cb45e4eddb823ce66ce11b46c34ebd240",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d43190e_0fcd3e52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-09T12:03:14Z",
+      "side": 1,
+      "message": "Also, I\u0027m not clear, do we even need to round at all? Does crosbolt round the values? (I\u0027m thinking it\u0027d be easier to partners to read rounded values though...)",
+      "revId": "8a0f254cb45e4eddb823ce66ce11b46c34ebd240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
