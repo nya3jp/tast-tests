@@ -25,11 +25,9 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type GmsCoreCacheRequest struct {
-	// Uses PackagesCopy if true and
-	// PackagesSkipCopy if false
+	// If set, PackagesCopy is requested. Otherwise, requests PackageSkipCopy.
 	PackagesCacheEnabled bool `protobuf:"varint,1,opt,name=packages_cache_enabled,json=packagesCacheEnabled,proto3" json:"packages_cache_enabled,omitempty"`
-	// Uses GMSCoreEnabled if true and
-	// GMSCoreDisabled if false
+	// If set, GMSCoreEnabled is requested. Otherwise, requests GMSCoreDisabled.
 	GmsCoreEnabled       bool     `protobuf:"varint,2,opt,name=gms_core_enabled,json=gmsCoreEnabled,proto3" json:"gms_core_enabled,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
