@@ -370,6 +370,30 @@
       },
       "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a50cd2_58dda8ac",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T11:07:08Z",
+      "side": 1,
+      "message": "I added another CL(http://crrev.com/c/2745043) to add a hwsec.ExitError.",
+      "parentUuid": "198ba278_70524c0a",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "f4a60cac53b766332ae4b10af0b4f61f19b736c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
