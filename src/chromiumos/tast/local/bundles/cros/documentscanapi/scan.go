@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -55,6 +54,30 @@ func Scan(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	extDir, err := ioutil.TempDir("", "tast.documentscanapi.Scan.")
+	if err != nil {
+		s.Fatal("Failed to create temp extension dir: ", err)
+	}
+	defer os.RemoveAll(extDir)
+
+	scanTargetExtID, err := setUpDocumentScanExtension(ctx, s, extDir)
+	if err != nil {
+		s.Fatal("Failed setup of Document Scan extension: ", err)
+	}
+
+	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir))
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	// Open the test API.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to Test API: ", err)
+	}
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
 	// Set up the virtual USB printer.
 	if err := usbprinter.InstallModules(ctx); err != nil {
 		s.Fatal("Failed to install kernel modules: ", err)
@@ -79,24 +102,6 @@ func Scan(ctx context.Context, s *testing.State) {
 			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
 		}
 	}()
-	defer ippusbbridge.Kill(cleanupCtx, devInfo)
-
-	extDir, err := ioutil.TempDir("", "tast.documentscanapi.Scan.")
-	if err != nil {
-		s.Fatal("Failed to create temp extension dir: ", err)
-	}
-	defer os.RemoveAll(extDir)
-
-	scanTargetExtID, err := setUpDocumentScanExtension(ctx, s, extDir)
-	if err != nil {
-		s.Fatal("Failed setup of Document Scan extension: ", err)
-	}
-
-	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
 
 	extURL := "chrome-extension://" + scanTargetExtID + "/scan.html"
 	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
@@ -105,20 +110,9 @@ func Scan(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	if err := conn.Navigate(ctx, extURL); err != nil {
-		s.Fatal("Failed to navigate to extension: ", err)
-	}
-
-	// Open the test API.
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Test API: ", err)
-	}
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
 	// APIs are not immediately available to extensions: https://crbug.com/789313.
 	s.Log("Waiting for chrome.documentScan API to become available")
-	if err := conn.WaitForExpr(ctx, "chrome.documentScan"); err != nil {
+	if err := conn.WaitForExprFailOnErr(ctx, "chrome.documentScan"); err != nil {
 		s.Fatal("chrome.documentScan API unavailable: ", err)
 	}
 
@@ -129,6 +123,7 @@ func Scan(ctx context.Context, s *testing.State) {
 	}
 	defer scanButton.Release(cleanupCtx)
 
+	s.Log("Clicking Scan button")
 	if err := scanButton.LeftClick(ctx); err != nil {
 		s.Fatal("Failed to click Scan button: ", err)
 	}
@@ -137,6 +132,7 @@ func Scan(ctx context.Context, s *testing.State) {
 		s.Fatal("Scan not completed: ", err)
 	}
 
+	s.Log("Extracting scanned image")
 	var imageSource string
 	if err := conn.Eval(ctx, "document.getElementById('scannedImage').src", &imageSource); err != nil {
 		s.Fatal("Failed to get image source: ", err)
@@ -163,6 +159,7 @@ func Scan(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to write out image file: ", err)
 	}
 
+	s.Log("Comparing image to golden")
 	diff := testexec.CommandContext(ctx, "perceptualdiff", "-verbose", "-threshold", "1", scanPath, s.DataPath("scan_escl_ipp_golden.png"))
 	if err := diff.Run(testexec.DumpLogOnError); err != nil {
 		s.Error("Scanned file differed from golden image: ", err)

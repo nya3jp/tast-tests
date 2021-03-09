@@ -3,9 +3,7 @@
 // found in the LICENSE file.
 
 chrome.app.window.create("scan.html", {
-  singleton: true,
-  id: "ChromeApps-Sample-Document-Scan",
-  bounds: {
+  innerBounds: {
    'width': 480,
    'height': 640
   },
