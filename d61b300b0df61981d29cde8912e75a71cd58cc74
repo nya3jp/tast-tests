@@ -16,6 +16,29 @@
       "message": "Thank you for your comments, Ricardo!\n\nAddressed several of them, and put two questions to you.\n\nPTAL when you have time. Thanks!",
       "revId": "d61b300b0df61981d29cde8912e75a71cd58cc74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec170a18_596cdca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-09T23:55:59Z",
+      "side": 1,
+      "message": "sorry, I missed this one. This cleanup might not be needed. I think newly installed packages gets automatically uninstalled when the fixture ends:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/snapshot.go;l\u003d90?q\u003dsnapshot.go\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 14
+      },
+      "revId": "d61b300b0df61981d29cde8912e75a71cd58cc74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
