@@ -6,6 +6,8 @@ package platform
 
 import (
 	"context"
+	"math"
+	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -108,6 +110,13 @@ func (*BootPerfService) GetBootPerfMetrics(ctx context.Context, _ *empty.Empty) 
 
 	testing.ContextLog(ctx, "Calculate diff")
 	bootperf.CalculateDiff(out)
+
+	// Round the seconds_* values for nicer presentation.
+	for key, value := range out.Metrics {
+		if strings.HasPrefix(key, "seconds_") {
+			out.Metrics[key] = math.Round(value*1000) / 1000
+		}
+	}
 
 	return out, nil
 }
