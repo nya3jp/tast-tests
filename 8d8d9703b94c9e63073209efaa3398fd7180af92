@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d4778a_8e3715fb",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T04:02:21Z",
+      "side": 1,
+      "message": "runtime error: invalid memory address or nil pointer dereference\nMay resolve in http://crrev/c/2738583",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "8d8d9703b94c9e63073209efaa3398fd7180af92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
