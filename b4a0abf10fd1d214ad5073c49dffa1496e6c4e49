@@ -230,6 +230,24 @@
       "parentUuid": "45f18c47_18b86944",
       "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0166f2bd_34bd278c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-09T10:16:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "882a7759_ae58599b",
+      "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
