@@ -158,6 +158,24 @@
       "parentUuid": "393aa1d1_9c87a298",
       "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b7bd2e_2dd03c6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-09T04:41:38Z",
+      "side": 1,
+      "message": "I see. If the fixture is missing, the test will ends with success.\n\nWhat\u0027s the benefit scheduling a test that tests nothing? We can still check in the code, but just not to schedule it to group:mainline. What do you think?",
+      "parentUuid": "5785c415_c30c0316",
+      "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
