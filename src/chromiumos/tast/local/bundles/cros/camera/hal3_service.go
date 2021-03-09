@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
+	"chromiumos/tast/local/syslog"
 	cameraboxpb "chromiumos/tast/services/cros/camerabox"
 	"chromiumos/tast/testing"
 )
@@ -61,6 +62,11 @@ func (c *HAL3Service) RunTest(ctx context.Context, req *cameraboxpb.RunTestReque
 	}
 	cfg.CameraHALs = []string{}
 
+	endLogFn, err := syslog.CollectSyslog()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start collecting syslog")
+	}
+
 	result := cameraboxpb.RunTestResponse{}
 	if testErr := hal3.RunTest(ctx, cfg); testErr == nil {
 		result.Result = cameraboxpb.TestResult_TEST_RESULT_PASSED
@@ -68,5 +74,10 @@ func (c *HAL3Service) RunTest(ctx context.Context, req *cameraboxpb.RunTestReque
 		result.Result = cameraboxpb.TestResult_TEST_RESULT_FAILED
 		result.Error = testErr.Error()
 	}
+
+	if err := endLogFn(ctx, outDir); err != nil {
+		return nil, errors.Wrap(err, "failed to finish collecting syslog")
+	}
+
 	return &result, nil
 }
