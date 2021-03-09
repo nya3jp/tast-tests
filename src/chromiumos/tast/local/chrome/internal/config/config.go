@@ -19,8 +19,7 @@ const (
 	DefaultUser = "testuser@gmail.com"
 
 	// DefaultPass contains the password we use to log into the DefaultUser account.
-	DefaultPass   = "testpass"
-	defaultGAIAID = "gaia-id"
+	DefaultPass = "testpass"
 )
 
 // ARCMode describes the mode that ARC should be put into.
@@ -83,9 +82,8 @@ type Creds struct {
 
 // defaultCreds is the default credentials used for fake logins.
 var defaultCreds = Creds{
-	User:   DefaultUser,
-	Pass:   DefaultPass,
-	GAIAID: defaultGAIAID,
+	User: DefaultUser,
+	Pass: DefaultPass,
 }
 
 // ParseCreds parses a string containing a list of credentials.
