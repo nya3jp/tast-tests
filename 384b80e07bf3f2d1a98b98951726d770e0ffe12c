@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a40545a0_dd2b3471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-09T03:35:18Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "6cf5e1f6_df67736e",
+      "revId": "384b80e07bf3f2d1a98b98951726d770e0ffe12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "097766c3_8f0fe18e",
@@ -165,6 +183,24 @@
       "side": 1,
       "message": "My expectation is:\n  retErr \u003d\u003d nil -\u003e err for a.RemoveAll is returned.\n  retErr !\u003d nil -\u003e original retErr is returned, err for a.RemoveAll is logged.\n\nDoes my code behave as expected?\nAlso, is there any better way to handle the situation in which retErr !\u003d nil?",
       "parentUuid": "00063d7d_2a2b88e9",
+      "revId": "384b80e07bf3f2d1a98b98951726d770e0ffe12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "442ac044_35cfd16e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/my_files.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-09T03:35:18Z",
+      "side": 1,
+      "message": "This is also okay as the retErr one could be more important.",
+      "parentUuid": "4e8bb653_8479fdbc",
       "revId": "384b80e07bf3f2d1a98b98951726d770e0ffe12c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
