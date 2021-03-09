@@ -16,6 +16,75 @@
       "message": "Adding Tast reviewers from the other CL in the chain",
       "revId": "e5562c543825009cbc740a2fc46a5ccaa3cbde54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8950643_36a82a86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-09T22:42:57Z",
+      "side": 1,
+      "message": "Is this the right MimeType? The filename seems to indicate it\u0027s a big txt file",
+      "range": {
+        "startLine": 54,
+        "startChar": 36,
+        "endLine": 54,
+        "endChar": 48
+      },
+      "revId": "e5562c543825009cbc740a2fc46a5ccaa3cbde54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d8e6e98_f0de4297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_in_contacts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-09T22:42:57Z",
+      "side": 1,
+      "message": "Same as comment above (wrong mimetype?)",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 48
+      },
+      "revId": "e5562c543825009cbc740a2fc46a5ccaa3cbde54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "043b5ee9_8740d715",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-09T22:42:57Z",
+      "side": 1,
+      "message": "nit: don\u0027t really need this, time.Minute is already 1 unit.",
+      "range": {
+        "startLine": 29,
+        "startChar": 39,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "e5562c543825009cbc740a2fc46a5ccaa3cbde54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
