@@ -33,6 +33,57 @@
       "message": "+nya, Tast core member, for further comment.\n\nI remembered that it is disallowed to have multiline log message. For the purpose having test metadata at the beginning, we can output the full metadata to a structured file and maybe log a message to prompt users to look at the metadata there.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Output-files",
       "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "407711db_4e19b55b",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-09T04:27:19Z",
+      "side": 1,
+      "message": "Perform a map key check:\nif val, ok :\u003d DataUsageStrings[dataUsage]; ok {\n  attrs.CrosDataUsage \u003d val\n} else {\n  return nil, errors.Wrapf(err, \"undefined dataUsage: %v\", dataUsage) \n}",
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55338527_3eb96e40",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-09T04:27:19Z",
+      "side": 1,
+      "message": "Perform a map key check:\nif val, ok :\u003d DataUsageStrings[dataUsage]; ok {\n  metadata.AndroidDataUsage \u003d val\n} else {\n  return nil, errors.Wrapf(err, \"undefined dataUsage: %v\", dataUsage) \n}",
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b0484f4_2c479928",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-09T04:27:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
