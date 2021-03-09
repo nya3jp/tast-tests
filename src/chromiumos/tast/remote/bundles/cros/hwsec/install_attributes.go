@@ -25,11 +25,12 @@ func init() {
 		},
 		Attr:         []string{"group:hwsec_destructive_func"},
 		SoftwareDeps: []string{"tpm", "reboot"},
+		Timeout:      7 * time.Minute,
 	})
 }
 
 const (
-	waitForInstallAttributesTimeout = 30 * time.Second
+	waitForInstallAttributesTimeout = 2 * time.Minute
 	testAttributesUndefined         = "Naproxen"
 	tamperedAttributes              = "Methadone"
 	databasePath                    = "/home/.shadow/install_attributes.pb"
