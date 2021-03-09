@@ -52,7 +52,7 @@ func DisableScreenshotsCaptureMode(ctx context.Context, s *testing.State) {
 	}
 
 	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: pre.Username, Pass: pre.Password, GAIAID: pre.GaiaID}),
+		chrome.FakeLogin(chrome.Creds{User: pre.Username, Pass: pre.Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.EnableFeatures("CaptureMode"))
 	if err != nil {
