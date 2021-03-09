@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebaf6b0d_70e3e8c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-09T04:43:43Z",
+      "side": 1,
+      "message": "Is the project suspended? Remove myself from the reviewer. Please feel free to add me back when it is resumed.",
+      "revId": "2c1c4af9038b0a81868ef6c41b6f1a7bb4a1d78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
