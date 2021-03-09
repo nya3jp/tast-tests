@@ -38,82 +38,82 @@ func init() {
 
 func WMResizableClamshell(ctx context.Context, s *testing.State) {
 	wm.SetupAndRunTestCases(ctx, s, false, []wm.TestCase{
-		wm.TestCase{
+		{
 			// resizable/clamshell: default launch behavior
 			Name: "RC01_launch",
 			Func: wmRC01,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: maximize portrait app (pillarbox)
 			Name: "RC02_maximize_portrait",
 			Func: wmRC02,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: maximize non-portrait app
 			Name: "RC03_maximize_non_portrait",
 			Func: wmRC03,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: user immerse portrait app (pillarbox)
 			Name: "RC04_user_immerse_portrait",
 			Func: wmRC04,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: user immerse non-portrait app
 			Name: "RC05_user_immerse_non_portrait",
 			Func: wmRC05,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: immerse via API ignored if windowed
 			Name: "RC06_immerse_via_API_ignored_if_windowed",
 			Func: wmRC06,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: immerse via API from maximized portrait (pillarbox)
 			Name: "RC07_immerse_via_API_from_maximized_portrait",
 			Func: wmRC07,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: immerse via API from maximized non-portrait
 			Name: "RC08_immerse_via_API_from_maximized_non_portrait",
 			Func: wmRC08,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: new activity follows root activity
 			Name: "RC09_new_activity_follows_root_activity",
 			Func: wmRC09,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: font size change
 			Name: "RC10_font_size_change",
 			Func: wmRC10,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: hide Shelf when app maximized
 			Name: "RC12_hide_Shelf_when_app_maximized",
 			Func: wmRC12,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: freeform resize
 			Name: "RC13_freeform_resize",
 			Func: wmRC13,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: snap to half screen
 			Name: "RC14_snap_to_half_screen",
 			Func: wmRC14,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: display size change
 			Name: "RC15_display_size_change",
 			Func: wmRC15,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: font size change
 			Name: "RC17_font_size_change",
 			Func: wmRC17,
 		},
-		wm.TestCase{
+		{
 			// resizable/clamshell: snap to half screen
 			Name: "RC22_split_screen",
 			Func: wmRC22,
@@ -410,7 +410,7 @@ func wmRC10(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 // wmRC12 covers resizable/clamshell: hide shelf when app maximized.
 // Expected behavior is defined in: go/arc-wm-r RC12: resizable/clamshell: hide shelf when app maximized.
-func wmRC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
+func wmRC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) (retErr error) {
 	// Get primary display info to set shelf behavior.
 	primaryDisplayInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
@@ -455,6 +455,15 @@ func wmRC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
 		return err
 	}
+	defer func() {
+		if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "failed to set window state back to normal")
+			} else {
+				testing.ContextLog(ctx, "Failed to set window state back to normal")
+			}
+		}
+	}()
 
 	// Store initial window info to compare with after hiding and showing the shelf.
 	winInfoInitialState, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
