@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2945762_1184f3e1",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T13:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5da5359_021f2b7c",
+      "revId": "1e2a5e83c5347a3bdb80fe8d78d949aa43daf938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5683d1c_0aa863d0",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-09T12:36:43Z",
       "side": 1,
       "message": "nit: please split it into two if statements:\n\n```\nerr \u003d cryptohome.MountVault(ctx, user, badPassword, util.PasswordLabel, false, hwsec.NewVaultConfig())\n\nvar exitErr *hwsec.ExitError\nif !errors.As(err, \u0026exitErr) {\n  s.Fatalf(\"Unexpected mount error: got %q; want *hwsec.ExitError\", err)\n}\nif exitErr.ExitCode !\u003d PUT_EXPECTED_CODE {\n  s.Fatalf(\"Unexpected mount exit code: got %d; want %d\", exitErr.ExitCode, YOUR_EXPECTED_CODE)\n}\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "1e2a5e83c5347a3bdb80fe8d78d949aa43daf938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3457cefe_55471d60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_mount.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T13:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5683d1c_0aa863d0",
       "range": {
         "startLine": 81,
         "startChar": 0,
