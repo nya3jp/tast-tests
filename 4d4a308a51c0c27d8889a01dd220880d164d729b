@@ -22,6 +22,30 @@
       },
       "revId": "4d4a308a51c0c27d8889a01dd220880d164d729b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba0af51_b1d276a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-09T03:15:28Z",
+      "side": 1,
+      "message": "Sorry for misleading. I actually mean JS modules in CCA but not models.\nSpecifically, it is BrowserProxy [1] and WindowController [2].\n\n[1]: https://source.chromium.org/chromium/chromium/src/+/master:chromeos/components/camera_app_ui/resources/js/browser_proxy/browser_proxy.js\n[2]: https://source.chromium.org/chromium/chromium/src/+/master:chromeos/components/camera_app_ui/resources/js/window_controller/window_controller.js",
+      "parentUuid": "a50a898d_7117d8c5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "4d4a308a51c0c27d8889a01dd220880d164d729b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
