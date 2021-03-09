@@ -23,7 +23,6 @@ import (
 const (
 	Username = "tast-user@managedchrome.com"
 	Password = "test0000"
-	GaiaID   = "gaia-id"
 )
 
 // PreData is returned by the precondition and used by tests to
@@ -99,7 +98,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password, GAIAID: GaiaID}),
+		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password}),
 		chrome.DMSPolicy(fdms.URL))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
