@@ -32,7 +32,7 @@ func init() {
 			hwdep.SkipOnPlatform("veyron_tiger"),
 		),
 		Pre:          pre.NormalMode(),
-		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
+		ServiceDeps:  []string{"tast.cros.firmware.UtilsService", "tast.cros.firmware.BiosService"},
 		SoftwareDeps: []string{"crossystem"},
 		Vars:         []string{"servo"},
 	})
