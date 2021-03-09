@@ -16,6 +16,24 @@
       "message": "Are all permissions (execute, and read and write) needed for all permissions groups (specifically group) as well?\nShouldn\u0027t that be:\n0701\n?",
       "revId": "28ae5b755ba40ef97fae49b237bd8311e968efb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed00efba_0aa8bd35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2021-03-09T15:57:58Z",
+      "side": 1,
+      "message": "I opted for 777 because I was careful with the mask before. Initially it was 500, then it crashed in some boards and we changed to 700, and now to 701 with ARCVM. None of these test failures were useful to identify bugs but took lots of time to debug.\n\nThat said, I don\u0027t mind. It will work with 701 and I can change if you prefer.",
+      "parentUuid": "a4cfb29c_72ed4811",
+      "revId": "28ae5b755ba40ef97fae49b237bd8311e968efb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
