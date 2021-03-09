@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3409fc27_e0fde7d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-09T08:32:46Z",
+      "side": 1,
+      "message": "lgtm. Defer +2 to Tast owners.",
+      "revId": "41deac15e64b72c321607b6d788f19d59e038c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feccbc50_9908822d",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-09T08:32:46Z",
+      "side": 1,
+      "message": "Do we need to wait until it becomes visible here as well?",
+      "range": {
+        "startLine": 1283,
+        "startChar": 1,
+        "endLine": 1283,
+        "endChar": 46
+      },
+      "revId": "41deac15e64b72c321607b6d788f19d59e038c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
