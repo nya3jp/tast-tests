@@ -94,7 +94,7 @@ func init() {
 					"meta.RemoteFiles/remote_files_external.txt": "This is an external data file for remote tests.\n",
 				},
 			},
-			ExtraAttr: []string{"group:mainline", "informational"},
+			ExtraAttr: []string{"group:mainline", "group:meta"},
 		}, {
 			Name: "panic",
 			Val: runTestsParam{
