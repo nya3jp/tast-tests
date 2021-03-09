@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55527af_f88e283c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T13:12:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ce977c5_aee0707a",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "83cf075d1bcff8f4e4654f25d4bc466a02947965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6fd3393_1f40027b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9055c128_ca8e57cf",
+        "filename": "src/chromiumos/tast/common/hwsec/cmd_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T13:12:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6fd3393_1f40027b",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 14
+      },
+      "revId": "83cf075d1bcff8f4e4654f25d4bc466a02947965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f14b42d_82e67122",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-09T12:13:20Z",
       "side": 1,
       "message": "there is no need to return error here\n\nsame in other 3 New* functions",
+      "range": {
+        "startLine": 28,
+        "startChar": 37,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "83cf075d1bcff8f4e4654f25d4bc466a02947965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7af95076_3a9ad186",
+        "filename": "src/chromiumos/tast/local/hwsec/cmd_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T13:12:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f14b42d_82e67122",
       "range": {
         "startLine": 28,
         "startChar": 37,
@@ -106,6 +178,30 @@
       "writtenOn": "2021-03-09T12:13:20Z",
       "side": 1,
       "message": "Maybe it makes sense to add exit code to the error message:\n\n\"failed %q command with error code %d\", cmd, e.ExitCode()",
+      "range": {
+        "startLine": 45,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "83cf075d1bcff8f4e4654f25d4bc466a02947965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f8fc956_016a7f7f",
+        "filename": "src/chromiumos/tast/local/hwsec/cmd_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T13:12:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c61c5c7d_f80fb1be",
       "range": {
         "startLine": 45,
         "startChar": 22,
