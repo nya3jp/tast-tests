@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b5f5f5_41dc9c92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-03-09T15:56:34Z",
+      "side": 1,
+      "message": "Hi Oleh,\n\nI noticed that a mapping for default function keys exists already, just needed to use it before deciding which key to press.\n\nOne very weird thing is that this test will now succeed on dedede (i.e. with a different layout) but it will still fail on sarien. On sarien, it succeeds if all keys arrays are the same, which should not be the case. I already checked but it\u0027s not actually broken on sarien, if I press the keys manually everything works just fine the way it should. Do you have any idea why this is the case?",
+      "revId": "1c18966fb8ce16eed6222c2427b8aa4dccebb128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
