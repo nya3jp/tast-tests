@@ -22,6 +22,30 @@
       },
       "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "888997e5_2d242d40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-09T00:09:55Z",
+      "side": 1,
+      "message": "The receiveFile and sendFile RPCs take a timeout for the entire sharing flow, but they are async and return pretty much immediately. There\u0027ll be an error on the Android side if the timeout is reached, so we need to give it long enough for everything in the test to finish. Realistically we\u0027ll probably never hit this, since we\u0027ll either time out earlier if one of the subsequent step fails or the share will finish. If the test exits without cleaning up for some reason, though, then at least the Android side will time out and shut things down after the timeout expires.",
+      "parentUuid": "b136e987_27d808d8",
+      "range": {
+        "startLine": 91,
+        "startChar": 79,
+        "endLine": 91,
+        "endChar": 90
+      },
+      "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
