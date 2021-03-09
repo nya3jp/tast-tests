@@ -33,6 +33,24 @@
       "message": "By default, timeout is 2 min.\nYou increased the time by 1.5 min, so maybe 4 mins should be enough?\nCould you double check and update if possible?",
       "revId": "32366435b0b8c1a277fbb19d8cfcb4c53cb28da1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d492062f_53c3417c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-09T15:09:53Z",
+      "side": 1,
+      "message": "This test would also reboot the device multiple(3) times, I think 5 minutes timeout may be suitable.",
+      "parentUuid": "6f1e446a_def2d748",
+      "revId": "32366435b0b8c1a277fbb19d8cfcb4c53cb28da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
