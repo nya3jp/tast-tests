@@ -212,6 +212,24 @@
       "parentUuid": "df098847_0bfb669f",
       "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "882a7759_ae58599b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/mode_crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-09T09:46:22Z",
+      "side": 1,
+      "message": "This works for me. I\u0027ll go ahead and make the change if deanliao@ is OK with this approach.",
+      "parentUuid": "45f18c47_18b86944",
+      "revId": "b4a0abf10fd1d214ad5073c49dffa1496e6c4e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
