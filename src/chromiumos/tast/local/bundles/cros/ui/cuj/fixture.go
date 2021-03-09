@@ -104,7 +104,10 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 			return w.ARCPackageName == playStorePackageName
 		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-			s.Fatal("Failed to wait for the playstore: ", err)
+			// Playstore app window might not be shown, but optin should be successful
+			// at this time. Log the error message but continue.
+			s.Log("Failed to wait for the playstore window to be visible: ", err)
+			return
 		}
 
 		if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
