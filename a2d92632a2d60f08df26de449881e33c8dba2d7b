@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6825348_27339948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-09T23:11:19Z",
+      "side": 1,
+      "message": "I understand the timeout gets reduced depending on the num of iterations but I\u0027m sure this could be reduced to a more sensible timeout. 30 days seems pretty large. The global timeout for the test suites you\u0027ve added are less than this.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "a2d92632a2d60f08df26de449881e33c8dba2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3744c8b_94bcdc1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-09T23:11:19Z",
+      "side": 1,
+      "message": "Would be good to introduce a cleanupCtx as well to ensure these cleanup actions have enough time to execute.\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 30*time.Second)\ndefer cancel()\n```",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "a2d92632a2d60f08df26de449881e33c8dba2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f672fda_8125ae80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-09T23:11:19Z",
+      "side": 1,
+      "message": "Pass the aforementioned cleanupCtx in here.",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "a2d92632a2d60f08df26de449881e33c8dba2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdf540e2_d0956c49",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
         "patchSetId": 2
@@ -89,6 +158,53 @@
         "startChar": 2,
         "endLine": 126,
         "endChar": 44
+      },
+      "revId": "a2d92632a2d60f08df26de449881e33c8dba2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c86eaf_1dda3637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-09T23:11:19Z",
+      "side": 1,
+      "message": "Another potential option: Generate a random seed at the start of the iteration, use rand.Shuffle to randomize the actions and then pass the seed into the action to randomize the number of photos to take and length of time to record video. Make sure to print out the seed to ensure you can generate the random number again.\n\nWDYT?\n\nhttps://golang.org/pkg/math/rand/#Seed\nhttps://golang.org/pkg/math/rand/#Shuffle",
+      "parentUuid": "f4bbebc9_ae887944",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 44
+      },
+      "revId": "a2d92632a2d60f08df26de449881e33c8dba2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8376e317_baafb9cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-09T23:11:19Z",
+      "side": 1,
+      "message": "There\u0027s an outer scope cancel that you define, can you be more specific about this cancel, i.e. actionCancel",
+      "range": {
+        "startLine": 128,
+        "startChar": 13,
+        "endLine": 128,
+        "endChar": 19
       },
       "revId": "a2d92632a2d60f08df26de449881e33c8dba2d7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
