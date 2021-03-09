@@ -96,7 +96,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			var err error
 			username := s.RequiredVar(p.gaia.UserVar)
 			password := s.RequiredVar(p.gaia.PassVar)
-			p.cr, err = chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password, GAIAID: "gaia-id"}), chrome.ARCDisabled())
+			p.cr, err = chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCDisabled())
 			if err != nil {
 				s.Fatal("Failed to start Chrome: ", err)
 			}

@@ -61,7 +61,7 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 
 	// Setup Chrome.
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password, GAIAID: "gaia-id"}),
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.ARCEnabled(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {

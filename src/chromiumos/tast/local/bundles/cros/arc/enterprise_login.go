@@ -102,7 +102,7 @@ func EnterpriseLogin(ctx context.Context, s *testing.State) {
 	// Log-in to Chrome and allow to launch ARC if allowed by user policy.
 	cr, err := chrome.New(
 		ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password, GAIAID: "gaia-id"}),
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.ARCSupported(),
 		// TODO(b/154760453): switch to fake DMS once crbug.com/1099310 is resolved
 		chrome.ProdPolicy())

@@ -36,7 +36,7 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 	username := s.RequiredVar("arc.SmartSelectionChrome.username")
 	password := s.RequiredVar("arc.SmartSelectionChrome.password")
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password, GAIAID: "gaia-id"}), chrome.ARCSupported())
+	cr, err := chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCSupported())
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
