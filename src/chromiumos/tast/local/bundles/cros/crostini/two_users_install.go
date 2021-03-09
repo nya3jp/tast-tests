@@ -22,7 +22,7 @@ func init() {
 		Func:         TwoUsersInstall,
 		Desc:         "Test two users can install crostini separately",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Vars:         []string{"crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID"},
+		Vars:         []string{"crostini.gaiaUsername", "crostini.gaiaPassword"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
@@ -49,9 +49,8 @@ func TwoUsersInstall(ctx context.Context, s *testing.State) {
 	// Login options for the first user.
 	optsUser1 := []chrome.Option{
 		chrome.GAIALogin(chrome.Creds{
-			User:   s.RequiredVar("crostini.gaiaUsername"),
-			Pass:   s.RequiredVar("crostini.gaiaPassword"),
-			GAIAID: s.RequiredVar("crostini.gaiaID"),
+			User: s.RequiredVar("crostini.gaiaUsername"),
+			Pass: s.RequiredVar("crostini.gaiaPassword"),
 		}),
 		chrome.ExtraArgs("--vmodule=crostini*=1"),
 	}
