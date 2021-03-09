@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd2d4284_8b604b39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-09T07:17:00Z",
+      "side": 1,
+      "message": "LGTM.\n\nAs CQ already started on the parent CL, I\u0027ll remove the CQ+2 from Auto-submit here in order not to bother that run.",
+      "revId": "e79d55b9a17d4053638383bc0ff73511d7d873e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
