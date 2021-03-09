@@ -16,6 +16,23 @@
       "message": "LGTM.",
       "revId": "bb3f56393825fd5e92951fc674042129db0c50c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6d3c60d_0064e0f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/spotify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-09T02:47:31Z",
+      "side": 1,
+      "message": "optional: What is the situation where test should conitnue when there was not the expected login button (thus did not click it)? Looking the next code uses TAB key expecting a certain UI arrangement, I guessed that there may be the case where this step is skipped, but don\u0027t know much.\nI suggest explaining it in a comment line for that multiple success path.",
+      "revId": "bb3f56393825fd5e92951fc674042129db0c50c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
