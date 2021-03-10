@@ -16,6 +16,40 @@
       "message": "Can we please refactor this test into smaller helper methods that each do a well-defined task? i.e. optin to arg can be a method, opening the add account UI can be another, adding an account can be another, initializing the UI automator can be another, etc?",
       "revId": "2ece3a5ee6cce0b11f071c4486ace2188ce2c82c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8214114_ce7d884c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-10T18:22:03Z",
+      "side": 1,
+      "message": "optin can take up to 5 minutes total.",
+      "revId": "2ece3a5ee6cce0b11f071c4486ace2188ce2c82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf59386_4c44057d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-10T18:22:03Z",
+      "side": 1,
+      "message": "we may need to add retries around optin because it is flaky and can fail due to sign-in and check-in timeouts. You can take a look at arc.Optin test for how retries are implemented. It would help to factor out opting in another method as well.",
+      "revId": "2ece3a5ee6cce0b11f071c4486ace2188ce2c82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
