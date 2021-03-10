@@ -49,6 +49,10 @@ func runSingleClient(ctx context.Context, s *testing.State, sn *iio.Sensor, i in
 		channels += " accel_x accel_y accel_z"
 	} else if sn.Name == iio.Gyro {
 		channels += " anglvel_x anglvel_y anglvel_z"
+	} else if sn.Name == iio.Activity {
+		return nil
+	} else if sn.Name == iio.Ring {
+		return errors.New("Kernel must be compiled with USE=iioservice")
 	}
 	cmd := testexec.CommandContext(
 		ctx, "iioservice_simpleclient", fmt.Sprintf("--frequency=%d.%03d",
