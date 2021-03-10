@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d044d19_2dcbe576",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-10T19:05:13Z",
+      "side": 1,
+      "message": "Hi Victor and Gabor, can you please take a look?\n\nThanks!",
+      "revId": "c395f55fffbe1129b406a6326e9adc5502631dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
