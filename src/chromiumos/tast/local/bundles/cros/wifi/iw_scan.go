@@ -23,7 +23,7 @@ func init() {
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"wifi", "shill-wifi"},
+		SoftwareDeps: []string{"wifi", "shill-wifi", "no_elm_hana_3_18"},
 	})
 }
 
