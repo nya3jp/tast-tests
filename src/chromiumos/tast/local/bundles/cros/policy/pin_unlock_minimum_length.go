@@ -92,7 +92,7 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, param.policies); err != nil {
+			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, param.policies); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
