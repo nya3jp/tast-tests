@@ -47,6 +47,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/launcher"
 	_ "chromiumos/tast/local/bundles/cros/logs"
 	_ "chromiumos/tast/local/bundles/cros/meta"
+	_ "chromiumos/tast/local/bundles/cros/mlservice"
 	_ "chromiumos/tast/local/bundles/cros/multivm"
 	_ "chromiumos/tast/local/bundles/cros/nacl"
 	_ "chromiumos/tast/local/bundles/cros/nearbyshare"
