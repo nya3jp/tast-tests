@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a17cdec5_95c3a7f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_maximum_length.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-10T12:12:42Z",
+      "side": 1,
+      "message": "New tests now should use fixtures instead of preconditions. Example:\nI214da77d9f02ef06f245c440eda5a9a391886757",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "ef6c96d2fc751b16f257b5858a393269900c674e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79735435_4e5aaa47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_maximum_length.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-10T12:12:42Z",
+      "side": 1,
+      "message": "This can be reached from the fixture as well.",
+      "range": {
+        "startLine": 110,
+        "startChar": 26,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "ef6c96d2fc751b16f257b5858a393269900c674e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cecca182_2b8c3bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_maximum_length.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-10T12:12:42Z",
+      "side": 1,
+      "message": "In this branch it would be nice if you tested what happens if you delete 1 characters from the PIN. If you use FindWithTimeout() instead of WaitUntilExists(), you get a reference to the node, and you can check if it disappears.\n+check the restriction state of the Continue button again.",
+      "range": {
+        "startLine": 159,
+        "startChar": 5,
+        "endLine": 159,
+        "endChar": 9
+      },
+      "revId": "ef6c96d2fc751b16f257b5858a393269900c674e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
