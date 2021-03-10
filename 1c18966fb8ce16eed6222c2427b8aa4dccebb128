@@ -52,6 +52,24 @@
       "parentUuid": "70082203_13ccbd3e",
       "revId": "1c18966fb8ce16eed6222c2427b8aa4dccebb128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87d620ac_f41ddc74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-03-10T12:52:03Z",
+      "side": 1,
+      "message": "Yes, sorry should have put this latest comment in this thread:\n\nTurns out that wilco devices treat \"search + back\" differently than \"search + fn + F1\". The former respects the policy this test tests for, the latter does not (and I think this is on purpose).\n\nI fixed the test and tested on the different keyboards, could you have a look?",
+      "parentUuid": "691e137e_330470bb",
+      "revId": "1c18966fb8ce16eed6222c2427b8aa4dccebb128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
