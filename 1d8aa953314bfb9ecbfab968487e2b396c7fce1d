@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf45386_02f62f78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-10T22:12:31Z",
+      "side": 1,
+      "message": "Please do not use capitalise here since the fail msg would like: fail to save.\n\nIn addition suggest to make the msg more descriptive: \"click Printers, save printer, and open Print Preview with shortcut Ctrl+P\"",
+      "range": {
+        "startLine": 108,
+        "startChar": 27,
+        "endLine": 108,
+        "endChar": 31
+      },
+      "revId": "1d8aa953314bfb9ecbfab968487e2b396c7fce1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
