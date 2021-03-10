@@ -281,7 +281,8 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 	}
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 	if err != nil {
-		s.Error("Failed to get window info: ", err)
+		s.Log("Failed to get window info. Skipping test: ", err)
+		return
 	}
 	s.Logf("App Resize info, info.CanResize %+v", info.CanResize)
 	if !info.CanResize {
