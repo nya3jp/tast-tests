@@ -16,6 +16,23 @@
       "message": "Hi Xiyuan,\n\nWanted to keep you in the loop here, just following up on your recommendation in the bug.",
       "revId": "226fa192bfa40421cab28b7346fb5eef4f3dcbeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad83935c_ee129b96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-10T00:41:49Z",
+      "side": 1,
+      "message": "lgtm but I am not tast owner. ",
+      "revId": "226fa192bfa40421cab28b7346fb5eef4f3dcbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
