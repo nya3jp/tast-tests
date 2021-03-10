@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c84a5dec_509205db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-10T17:40:01Z",
+      "side": 1,
+      "message": "Thanks for the explanation, that makes sense. I\u0027ll stick with the output file for now, but may revisit adding it to the logs if we end up receiving any feedback along those lines. The content is fairly short in this case and the Nearby tests will typically be executed independently due to the special DUT setup needed, so I don\u0027t think we\u0027ll fill up the console too much if we end up needing to do that.",
+      "parentUuid": "e224285e_a7e4a6da",
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e4b6e96_706dabfe",
