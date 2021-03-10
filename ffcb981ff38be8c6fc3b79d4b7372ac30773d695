@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dcae495_71a55df8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-10T09:30:04Z",
+      "side": 1,
+      "message": "nit: Start with \"appcompat: \" or \"tast-tests: \".",
+      "revId": "ffcb981ff38be8c6fc3b79d4b7372ac30773d695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2fe12d4e_ead6245d",
@@ -14,6 +31,23 @@
       "writtenOn": "2021-03-10T01:20:02Z",
       "side": 1,
       "message": "Hi Renuga,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
+      "revId": "ffcb981ff38be8c6fc3b79d4b7372ac30773d695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75a083fd_ffb85341",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-10T09:30:04Z",
+      "side": 1,
+      "message": "LGTM % nit\nPlease wait for a feature owner review before submitting.",
       "revId": "ffcb981ff38be8c6fc3b79d4b7372ac30773d695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
