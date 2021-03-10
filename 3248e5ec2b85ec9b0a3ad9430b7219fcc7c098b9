@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f80ce2_b45a81d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-03-10T19:02:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b867898f_a7526f59",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "3248e5ec2b85ec9b0a3ad9430b7219fcc7c098b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c18710f_fc62f5f1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-05T03:31:14Z",
       "side": 1,
       "message": "Could you check if we want to rewrite other User calls in arc/, camera/, hwsec/, security/, u2fd/, ui/? I took a look at them and found that they eventually call cryptohome.*Path, so I guess we want to use normalized user names there as well.\n\nThe only occurrence I was not very confident was session/ownership_taken.go, which compares the user name with a protobuf got via D-Bus IPC.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 47
+      },
+      "revId": "3248e5ec2b85ec9b0a3ad9430b7219fcc7c098b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5c0748e_5a2959af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-03-10T19:02:24Z",
+      "side": 1,
+      "message": "I agree that everything except maybe session/ownership_taken.go can be moved over.\n\nI\u0027ve split out crostini so later CLs can depend on that specifically, and the OwnershipTaken test so it can be reverted independently.",
+      "parentUuid": "0c18710f_fc62f5f1",
       "range": {
         "startLine": 21,
         "startChar": 0,
