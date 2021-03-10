@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16bf401_4500b743",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-10T01:29:04Z",
+      "side": 1,
+      "message": "Thanks for the review Ricardo 😊 just FYI I\u0027m still shadowing for tast-owners@ so you\u0027ll still have to add them to get the elusive +2",
+      "revId": "4d8c0bf543f3eb7c270d0c9ff49f853d408da6da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d3b1de8_661a3b68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-10T01:29:04Z",
+      "side": 1,
+      "message": "This feels really dangerous. Are you wanting to run for all video devices, is there an upper bound you could go with? Could potentially add a helper package to retrieve the list of video devices based on the pattern on line 39 and then iterate over them.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "4d8c0bf543f3eb7c270d0c9ff49f853d408da6da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d7c9b77_10d110f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-10T01:29:04Z",
+      "side": 1,
+      "message": "You can use s.Log here, however, you might want to avoid logging for every iteration. Instead you could log only when an error occurs indicating the failing videodevice\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "4d8c0bf543f3eb7c270d0c9ff49f853d408da6da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6182c6e2_4346f604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-10T01:29:04Z",
+      "side": 1,
+      "message": "Same as above, use s.Log if necessary but consider not logging everything all the time only on failures for ease of debugging.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "4d8c0bf543f3eb7c270d0c9ff49f853d408da6da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94ea35b5_40844ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-10T01:29:04Z",
+      "side": 1,
+      "message": "Gap between // and R, same for the other comments",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 5
+      },
+      "revId": "4d8c0bf543f3eb7c270d0c9ff49f853d408da6da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c56ba467_4c631796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-10T01:29:04Z",
+      "side": 1,
+      "message": "Not sure of the output here so ignore if this is incorrect, but is there the potential one device returns an output yet the remainder don\u0027t and this will still pass? e.g.\n/dev/video1 - \"output\"\n/dev/video2\n/dev/video3\nThen testOutput as content and so it passes but video2 and 3 have actually reported nothing? Might be beneficial to error for each individual device if no output is reported.\n\nWDYT?",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "4d8c0bf543f3eb7c270d0c9ff49f853d408da6da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
