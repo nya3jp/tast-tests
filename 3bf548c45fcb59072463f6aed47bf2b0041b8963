@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78bb0337_33d495fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-03-10T18:09:49Z",
+      "side": 1,
+      "message": "CL:2728914 will do this implicitly while moving to the authpool mechanism, and I\u0027d like to avoid the merge conflict",
+      "revId": "3bf548c45fcb59072463f6aed47bf2b0041b8963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
