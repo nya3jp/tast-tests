@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c19f116_8c4d7875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-10T04:23:00Z",
+      "side": 1,
+      "message": "Sounds good, I made a bug for it and will implement it in a separate CL crbug/1186391",
+      "parentUuid": "73ac9690_c3470842",
+      "range": {
+        "startLine": 87,
+        "startChar": 33,
+        "endLine": 87,
+        "endChar": 36
+      },
+      "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b136e987_27d808d8",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54778cbe_91f12c6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-10T04:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "888997e5_2d242d40",
+      "range": {
+        "startLine": 91,
+        "startChar": 79,
+        "endLine": 91,
+        "endChar": 90
+      },
+      "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4e5fa0c_10059a3c",
@@ -118,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6457d52a_27d69992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-10T04:23:00Z",
+      "side": 1,
+      "message": "sounds good, will implement the cleanup context in crbug/1186391",
+      "parentUuid": "c4e5fa0c_10059a3c",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9a368b5_bda567dd",
@@ -131,6 +203,30 @@
       "writtenOn": "2021-03-09T07:15:21Z",
       "side": 1,
       "message": "Given the var is quite self explanatory, might be worth just inlining it seeing as you don\u0027t reuse it later on.",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 44
+      },
+      "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e2c932_ef350c90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-10T04:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9a368b5_bda567dd",
       "range": {
         "startLine": 133,
         "startChar": 1,
@@ -177,6 +273,54 @@
       "writtenOn": "2021-03-09T17:10:33Z",
       "side": 1,
       "message": "It\u0027s unclear to me whether this timeout is long enough for both the sender and receiver to detect each other, or only long enough for one. Based on the 2* below, I *think* it is only long enough for one. If that\u0027s true, then I recommend clarifying this by changing \"and vice-versa\" to \"or vice-versa\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 88,
+        "endLine": 20,
+        "endChar": 91
+      },
+      "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b2b58b2_61c0dc1a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-10T04:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ff457d9_8ad99ae1",
+      "range": {
+        "startLine": 20,
+        "startChar": 92,
+        "endLine": 20,
+        "endChar": 102
+      },
+      "revId": "ce14c357fc84b388c62ef4804469e9a36b1293a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb1772a_7d051c62",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-10T04:23:00Z",
+      "side": 1,
+      "message": "Updated to \"or vice versa\", since the timeout is meant for one direction as you noted.",
+      "parentUuid": "fe86a665_cf1da3db",
       "range": {
         "startLine": 20,
         "startChar": 88,
