@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0de07b9_1d28157c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-10T00:39:35Z",
+      "side": 1,
+      "message": "Hi Xiyuan,\n\nWanted to keep you in the loop here, just following up on your recommendation in the bug.",
+      "revId": "226fa192bfa40421cab28b7346fb5eef4f3dcbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
