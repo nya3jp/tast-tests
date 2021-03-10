@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/testing"
 )
 
 // StartHighVisibilityMode enables Nearby Share's high visibility mode via Quick Settings.
@@ -67,11 +68,22 @@ func AcceptIncomingShareNotification(ctx context.Context, tconn *chrome.TestConn
 
 // WaitForReceivingCompleteNotification waits for the notification indicating that the incoming share has completed.
 func WaitForReceivingCompleteNotification(ctx context.Context, tconn *chrome.TestConn, senderName string, timeout time.Duration) error {
-	if _, err := ash.WaitForNotification(ctx, tconn, timeout,
+	// if _, err := ash.WaitForNotification(ctx, tconn, timeout,
+	// 	ash.WaitTitleContains("received"),
+	// 	ash.WaitTitleContains(senderName),
+	// ); err != nil {
+	// 	return errors.Wrap(err, "failed to wait for receiving complete notification")
+	// }
+	// return nil
+	n, err := ash.WaitForNotification(ctx, tconn, timeout,
 		ash.WaitTitleContains("received"),
 		ash.WaitTitleContains(senderName),
-	); err != nil {
+	)
+	if err != nil {
 		return errors.Wrap(err, "failed to wait for receiving complete notification")
 	}
+	testing.ContextLog(ctx, "################ NOTIFICATION TITLE: ", n.Title)
+	testing.ContextLog(ctx, "################ NOTIFICATION MESSAGE: ", n.Message)
+	testing.ContextLog(ctx, "################ NOTIFICATION PROGRESS: ", n.Progress)
 	return nil
 }
