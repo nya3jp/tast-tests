@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -99,9 +100,10 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 		}
 	}()
 
-	testing.ContextLogf(ctx, "Executing vpxdec %s to prepare YUV data %s", webMName, yuvName)
 	// TODO(hiroh): When YV12 test case is added, try generate YV12 yuv here by passing "--yv12" instead of "--i420".
-	cmd := testexec.CommandContext(ctx, "vpxdec", webMFile, "-o", yuvFile, "--codec=vp9", "--i420")
+	command := []string{"vpxdec", webMFile, "-o", yuvFile, "--codec=vp9", "--i420"}
+	testing.ContextLogf(ctx, "Running %s", shutil.EscapeSlice(command))
+	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
 		return "", errors.Wrap(err, "vpxdec failed")
