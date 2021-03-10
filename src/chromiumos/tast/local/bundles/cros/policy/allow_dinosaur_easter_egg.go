@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -9,7 +9,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -19,18 +19,17 @@ func init() {
 		Desc: "Behavior of AllowDinosaurEasterEgg policy",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
-			"kathrelkeld@chromium.org",
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Pre:          pre.User,
+		Fixture:      "chromePolicyLoggedIn",
 	})
 }
 
 func AllowDinosaurEasterEgg(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*pre.PreData).Chrome
-	fdms := s.PreValue().(*pre.PreData).FakeDMS
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	for _, param := range []struct {
 		// name is the subtest name.
