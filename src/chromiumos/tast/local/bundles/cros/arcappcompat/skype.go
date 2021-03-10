@@ -24,8 +24,8 @@ var clamshellTestsForSkype = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForSkype},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Signout app", Fn: signOutOfSkype},
 }
 
@@ -89,12 +89,14 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		continueButtonDes           = "Continue"
 		letsGoDes                   = "Let's go"
 		enterEmailAddressID         = "i0116"
+		finishButtonDes             = "Finish"
 		nextButtonText              = "Next"
 		notNowID                    = "android:id/autofill_save_no"
 		passwordID                  = "i0118"
 		signInClassName             = "android.widget.Button"
 		signInText                  = "Sign in"
 		signInOrCreateDes           = "Sign in or create"
+		syncContactsButtonDes       = "Sync contacts"
 		whileUsingThisAppButtonText = "WHILE USING THE APP"
 		mediumUITimeout             = 30 * time.Second
 	)
@@ -112,7 +114,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Error("signInButton doesn't exists: ", err)
 	}
 
-	// Press until KEYCODE_TAB until login button is focused.
+	// Press KEYCODE_TAB until login button is focused.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if loginBtnFocused, err := signInButton.IsFocused(ctx); err != nil {
 			return errors.New("login button not focused yet")
@@ -229,20 +231,24 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 
 	// Click on continue button.
 	continueButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(continueButtonDes))
-	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := continueButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("Continue Button doesn't exists: ", err)
 	} else if err := continueButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on continueButton: ", err)
 	}
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
-	// Click on allow button to access your files.
-	if err = allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Allow Button doesn't exists: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allowButton: ", err)
+	// Click on Sync contacts button.
+	syncContactsButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(syncContactsButtonDes))
+	if err := syncContactsButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("syncContactsButton doesn't exists: ", err)
+	} else if err := syncContactsButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on syncContactsButton: ", err)
 	}
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
 	// Click on continue Button until allow button exist.
+	continueButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(continueButtonDes))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := allowButton.Exists(ctx); err != nil {
 			continueButton.Click(ctx)
@@ -251,31 +257,15 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
 		s.Log("allowButton doesn't exist: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allowButton: ", err)
 	}
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
-	// Click on allow button to access your files.
-	if err = allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Allow Button doesn't exists: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allowButton: ", err)
-	}
-
-	// Click on allow while using this app button to record audio.
-	clickOnWhileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
-	if err = clickOnWhileUsingThisAppButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("clickOnWhileUsingThisApp Button doesn't exists: ", err)
-	} else if err := clickOnWhileUsingThisAppButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnWhileUsingThisApp Button: ", err)
-	}
-
-	// Click on allow while using this app button to record video.
-	clickOnWhileUsingThisAppButton = d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
-	if err = clickOnWhileUsingThisAppButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("clickOnWhileUsingThisApp Button doesn't exists: ", err)
-	} else if err := clickOnWhileUsingThisAppButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnWhileUsingThisApp Button: ", err)
+	// Click on finish button.
+	finishButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(finishButtonDes))
+	if err := finishButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("finishButton doesn't exists: ", err)
+	} else if err := finishButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on finishButton: ", err)
 	}
 
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
@@ -303,6 +293,11 @@ func signOutOfSkype(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 	if err := profileIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Log("profileIcon doesn't exists and skipped logout: ", err)
 		return
+	}
+	s.Log("ProfileIcon does exists")
+	// Click on profile icon.
+	if err := profileIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on profileIcon: ", err)
 	}
 
 	// Click on sign out of Skype.
