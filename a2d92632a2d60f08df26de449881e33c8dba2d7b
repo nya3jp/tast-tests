@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da03509b_745a8cde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-10T06:54:09Z",
+      "side": 1,
+      "message": "Ah ok. Might be worth splitting this test into 2 variants using Params to make the timeouts (and inclusion on mainline) more explicit:\n```\nParams: []testing.Param{{\n  ExtraAttr: []string{\"group:mainline\", \"informational\", \"group:camera-libcamera\"},\n  Timeout:   time.Minute, // some sensible timeout.\n}, {\n  Name: \"manual\",\n  Timeout: 30 * 24 * time.Hour, // timeout used for manual stress testing\n}},\n```\nThis will give you camera.CCAUIStress and camera.CCAUIStress.manual with the former only being ran on CI.\n\nYou can omit all the timeout restructuring in the test then.",
+      "parentUuid": "c444f3ed_310466bd",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "a2d92632a2d60f08df26de449881e33c8dba2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3744c8b_94bcdc1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
         "patchSetId": 2
