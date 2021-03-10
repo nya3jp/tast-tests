@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ab44db_d150eed6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-03-10T19:04:39Z",
+      "side": 1,
+      "message": "mnissler or hidehiko, can either of you comment on whether the username here should be normalized?",
+      "revId": "195953277c0d0db8ef7da2e2233f337641c81417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
