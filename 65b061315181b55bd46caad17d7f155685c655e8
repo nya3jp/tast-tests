@@ -39,6 +39,30 @@
       },
       "revId": "65b061315181b55bd46caad17d7f155685c655e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ee3154e_d3b93a27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-10T20:57:33Z",
+      "side": 1,
+      "message": "Question: this added check is a nice-to-have as stated in l.838. If\nv4l2-ctl fails for some reason and we return an error, then the whole\ntest would be derailed, when in reality we wouldn\u0027t mind, and we\u0027d \nlike to let it continue. How to codify that?",
+      "parentUuid": "160973e4_831917c8",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 845,
+        "endChar": 0
+      },
+      "revId": "65b061315181b55bd46caad17d7f155685c655e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
