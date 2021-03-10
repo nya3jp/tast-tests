@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "661e2905_371cad59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-10T08:48:30Z",
+      "side": 1,
+      "message": "I managed to reproduce this. the reason seems to be in test accounts, which have expiring keys.\n\nYou can apply this fix:\n\ndiff --git a/chrome/browser/ash/login/screens/user_selection_screen.cc b/chrome/browser/ash/login/screens/user_selection_screen.cc\nindex ebfbbd7f5854..12c2b6d21e6f 100644\n--- a/chrome/browser/ash/login/screens/user_selection_screen.cc\n+++ b/chrome/browser/ash/login/screens/user_selection_screen.cc\n@@ -73,7 +73,7 @@ constexpr StaticOobeScreenId UserBoardView::kScreenId;\n \n namespace {\n \n-bool g_skip_force_online_signin_for_testing \u003d false;\n+bool g_skip_force_online_signin_for_testing \u003d true;\n \n const char kWakeLockReason[] \u003d \"TPMLockedIssue\";\n const int kWaitingOvertimeInSeconds \u003d 1;\n\nWe probably need to expose it as a command-line parameter.\n\nWith this fix it runs up to \"Zero frames expected in login animation throughput data\".",
+      "parentUuid": "61e69c04_15d17d02",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "926cc473_16660b66",
