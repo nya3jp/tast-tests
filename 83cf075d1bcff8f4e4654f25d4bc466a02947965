@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba90754f_b47dcbf3",
+        "filename": "src/chromiumos/tast/local/hwsec/cmd_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-10T10:25:59Z",
+      "side": 1,
+      "message": "As long as the interface value has *exec.ExitError type, we don\u0027t need to (or rather we should not) check if it is nil. Go allows calling methods with a nil receiver, so authors may intentionally return a typed nil value.",
+      "parentUuid": "e4380cce_bd03bde2",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "83cf075d1bcff8f4e4654f25d4bc466a02947965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c61c5c7d_f80fb1be",
         "filename": "src/chromiumos/tast/local/hwsec/cmd_runner.go",
         "patchSetId": 3
