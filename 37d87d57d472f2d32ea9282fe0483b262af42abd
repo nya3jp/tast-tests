@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50ee3142_e11ad65d",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-03-10T21:46:08Z",
+      "side": 1,
+      "message": "Should return nil, err here.",
+      "revId": "37d87d57d472f2d32ea9282fe0483b262af42abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b612f54_d85f422b",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-03-10T21:46:08Z",
+      "side": 1,
+      "message": "Should return ..., nil here.",
+      "revId": "37d87d57d472f2d32ea9282fe0483b262af42abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
