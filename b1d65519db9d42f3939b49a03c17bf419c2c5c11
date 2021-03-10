@@ -50,6 +50,46 @@
       "message": "Shik, I believe you accidentally pressed CR+2 instead of CQ+2.\nAlso, it looks like we\u0027re missing OWNERS vote if gerrit UI is serving me right.",
       "revId": "b1d65519db9d42f3939b49a03c17bf419c2c5c11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74a9785f_cc9a4275",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-10T11:07:47Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b1d65519db9d42f3939b49a03c17bf419c2c5c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16c3adba_16f59a4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-10T11:07:47Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "b1d65519db9d42f3939b49a03c17bf419c2c5c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
