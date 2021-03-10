@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d7d322a_ccc5083e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-03-10T11:09:13Z",
+      "side": 1,
+      "message": "Thanks for the patch. Looks good % nits. Add tast-owners for approval.\n",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4067af59_0eb62d8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-03-10T11:09:13Z",
+      "side": 1,
+      "message": "I\u0027d add one thing to mention since you use the offset for conversions in both directions: This offset subtracted from a measurement in clock source A will convert it to an estimated measurement in B.\nThis makes it more obvious for line 520 and 522.",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde6e06b_0be19e8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-03-10T11:09:13Z",
+      "side": 1,
+      "message": "nit: rename |stopTime| since it\u0027s not used only for parsing the rtc-sync of tlsdated stop.",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f24720f_341a6c27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-03-10T11:09:13Z",
+      "side": 1,
+      "message": "nit: It took me a while to recall which variable is of which clock source 😊. Let\u0027s make it consistent (sorry I didn\u0027t do it right in the first place in the conversion from autotest to tast) this time:\nUse Uptime suffix for variables that are taken from the uptime clock source.\nUse Timeval (or Ts, or Epoch) suffix for variables that are in seconds since epoch.\nAnd comment what these suffixes mean. Maybe we can do it in a new refactor patch before this.\nWDYT?",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "308b01bd_cb3f0aec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-03-10T11:09:13Z",
+      "side": 1,
+      "message": "archiveT0 needs to be suffixed to show that it\u0027s seconds since epoch: e.g. archiveTimeval0, archiveTs0, or archiveEpoch0.",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8997bff7_57231f82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-03-10T11:09:13Z",
+      "side": 1,
+      "message": "Same for archiveT1.",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d40699_4bfa2eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-03-10T11:09:13Z",
+      "side": 1,
+      "message": "Same for bootT0.",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0f0b982_c0ce9c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-03-10T11:09:13Z",
+      "side": 1,
+      "message": "same for bootT1.",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1deeffff_6958e11a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-03-10T11:09:13Z",
+      "side": 1,
+      "message": "Same for these 3 variables.",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa368d8_21f14eb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-03-10T11:09:13Z",
+      "side": 1,
+      "message": "Same for these 3 variables.",
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
