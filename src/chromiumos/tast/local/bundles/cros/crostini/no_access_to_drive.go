@@ -112,7 +112,7 @@ func NoAccessToDrive(ctx context.Context, s *testing.State) {
 	s.Log("The new folder name is ", newFolder)
 
 	// Create a new folder in Drive.
-	mountPath, err := drivefs.WaitForDriveFs(ctx, cr.User())
+	mountPath, err := drivefs.WaitForDriveFs(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed waiting for DriveFS to start: ", err)
 	}

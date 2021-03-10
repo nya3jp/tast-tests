@@ -115,7 +115,7 @@ func NoAccessToDownloads(ctx context.Context, s *testing.State) {
 
 	// Create a file in Downloads.
 	const fileName = "test.txt"
-	ownerID, err := cryptohome.UserHash(ctx, cr.User())
+	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}
