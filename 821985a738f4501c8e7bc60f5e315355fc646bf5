@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8134b37_c4e40407",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-10T05:11:56Z",
+      "side": 1,
+      "message": "mostly done",
+      "parentUuid": "498c3891_89d1f23e",
+      "revId": "821985a738f4501c8e7bc60f5e315355fc646bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca0ce5b4_c4a6751a",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-09T23:08:23Z",
       "side": 1,
       "message": "offset",
+      "range": {
+        "startLine": 348,
+        "startChar": 32,
+        "endLine": 348,
+        "endChar": 39
+      },
+      "revId": "821985a738f4501c8e7bc60f5e315355fc646bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b25ef7a_c5b070c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-10T05:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca0ce5b4_c4a6751a",
       "range": {
         "startLine": 348,
         "startChar": 32,
