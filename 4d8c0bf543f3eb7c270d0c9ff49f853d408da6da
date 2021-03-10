@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "004c973c_dca23a04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-03-10T14:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d7c9b77_10d110f8",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "4d8c0bf543f3eb7c270d0c9ff49f853d408da6da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6182c6e2_4346f604",
@@ -77,6 +101,30 @@
       "writtenOn": "2021-03-10T01:29:04Z",
       "side": 1,
       "message": "Same as above, use s.Log if necessary but consider not logging everything all the time only on failures for ease of debugging.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "4d8c0bf543f3eb7c270d0c9ff49f853d408da6da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68828b80_9bc13bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-03-10T14:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6182c6e2_4346f604",
       "range": {
         "startLine": 51,
         "startChar": 2,
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf0e2c5_726f3a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-03-10T14:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94ea35b5_40844ab4",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 5
+      },
+      "revId": "4d8c0bf543f3eb7c270d0c9ff49f853d408da6da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c56ba467_4c631796",
@@ -123,6 +195,30 @@
       "writtenOn": "2021-03-10T01:29:04Z",
       "side": 1,
       "message": "Not sure of the output here so ignore if this is incorrect, but is there the potential one device returns an output yet the remainder don\u0027t and this will still pass? e.g.\n/dev/video1 - \"output\"\n/dev/video2\n/dev/video3\nThen testOutput as content and so it passes but video2 and 3 have actually reported nothing? Might be beneficial to error for each individual device if no output is reported.\n\nWDYT?",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "4d8c0bf543f3eb7c270d0c9ff49f853d408da6da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43419b04_2817ca4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-03-10T14:16:08Z",
+      "side": 1,
+      "message": "Not sure that I understand this comment sorry 😊\n\nI am only appending to testOutput if there is an error, so I can get a list of all the devices that fail the test.\n\nIf a device passes the test there is no need to save any info.",
+      "parentUuid": "c56ba467_4c631796",
       "range": {
         "startLine": 64,
         "startChar": 4,
