@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97e0c683_b09ddef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/lan_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-10T19:27:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b12a4dd_0273a760",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6454134b_4da35598",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-03-09T23:08:27Z",
       "side": 1,
       "message": "I think it would be cleaner to avoid the conndiag dependency here, even though it means a little more cookie-cutter code in the tests. I would pass \u0027conn *chrome.Conn\u0027 to this (instead of tconn). That also makes this a little more versatile, e.g. it can be used with a different app.\n\nWe could probably add a helper to conndiag to launch the app and return app.ChromeConn().",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab7696ce_cba38ca0",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-10T19:27:34Z",
+      "side": 1,
+      "message": "Done. I think just using the two functions to Launch and then get the chrome.Conn from the app should be simple enough to use in the fixture.",
+      "parentUuid": "6454134b_4da35598",
       "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4b448e_28d617e5",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-10T19:27:34Z",
+      "side": 1,
+      "message": "They are enum values, I\u0027ll set the explicitly.",
+      "parentUuid": "921323a9_1c553c9d",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f1efea5_1f186dd3",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-03-09T23:08:27Z",
       "side": 1,
       "message": "Maybe add a generator for this string, e.g. jsWrapper(\u0027lanConnectivity\u0027), since presumably we will be adding others.",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9128bd6_afee2c71",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-10T19:27:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f1efea5_1f186dd3",
       "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac5ae8c0_37475748",
+        "filename": "src/chromiumos/tast/local/network/diag/api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-10T19:27:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9045c13_3279cba0",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f41256d3_af5575c9",
@@ -116,6 +206,24 @@
       "writtenOn": "2021-03-09T23:08:27Z",
       "side": 1,
       "message": "This should probably go with the tests (i.e. in tast/local/bundles/cros/network/diag/). Then it can create both the app and the MojoAPI, without either of those imports depending on the other.",
+      "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f5f159_cd697201",
+        "filename": "src/chromiumos/tast/local/network/diag/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-10T19:27:34Z",
+      "side": 1,
+      "message": "That makes sense. I think I\u0027ll move the whole network/diag folder to bundles/cros/netwok/diag since this is the only package it\u0027s used in.",
+      "parentUuid": "f41256d3_af5575c9",
       "revId": "5832703829e1b5230c4b7c1075bb49bff977ac15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
