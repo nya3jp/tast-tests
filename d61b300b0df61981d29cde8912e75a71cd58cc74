@@ -39,6 +39,30 @@
       },
       "revId": "d61b300b0df61981d29cde8912e75a71cd58cc74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a545a64_38c0ae49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-10T17:33:19Z",
+      "side": 1,
+      "message": "Thanks for the info \u0026 pointer!\n\nSo it seems that packages installed after setting up the fixture will be uninstalled by bootedFixture.Reset() [1]. I\u0027m not sure on what timing the function is called (for example, my package does not seem to be unistalled when I run this test locally), but anyways given that not so many tests explicitly uninstall packages [2], I think it\u0027s okay to omit cleanup here.\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/fixture.go?l\u003d207\u0026rcl\u003d95d5d6b5b37fe8f182e85efa4500ffd067d1804c\n[2] https://source.corp.google.com/search?q\u003da%5C.Uninstall%20file:%5C.go\u0026sq\u003dpackage:chromeos",
+      "parentUuid": "ec170a18_596cdca9",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 14
+      },
+      "revId": "d61b300b0df61981d29cde8912e75a71cd58cc74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

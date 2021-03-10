@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f69ab14_befda3eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-10T17:33:19Z",
+      "side": 1,
+      "message": "Done. It indeed looks much better now. Thank you for the suggestion!",
+      "parentUuid": "ba3fe674_2e6cbed3",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 24
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6e2aa9d_0a90d58e",
@@ -244,6 +268,30 @@
       "side": 1,
       "message": "my bad, I misunderstood the code. But it seems that the check `if retErr \u003d\u003d nil` is not needed ?\n\nIt is needed in the downloadFileWithAppFromLocalAndroidPort function, but not in this one(?)",
       "parentUuid": "8a7164e6_93db5e88",
+      "range": {
+        "startLine": 184,
+        "startChar": 6,
+        "endLine": 184,
+        "endChar": 12
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7829ce86_06086248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-10T17:33:19Z",
+      "side": 1,
+      "message": "Removed the use of `retErr` from both functions.",
+      "parentUuid": "bca1ed3a_1f46541a",
       "range": {
         "startLine": 184,
         "startChar": 6,
@@ -319,6 +367,30 @@
         "startChar": 5,
         "endLine": 195,
         "endChar": 44
+      },
+      "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec76fae_e93c4d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-10T17:33:19Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "91c5f576_6363bac4",
+      "range": {
+        "startLine": 195,
+        "startChar": 151,
+        "endLine": 195,
+        "endChar": 157
       },
       "revId": "bf5237637f3382df741956f9eacd2edba1562d92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
