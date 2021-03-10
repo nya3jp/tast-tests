@@ -119,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40179209_efb12979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-03-10T01:59:14Z",
+      "side": 1,
+      "message": "It recalls me a regression b/176306615 once happen when you press shutter button multiple times consecutively at very quick speed. Not sure if we can to catch this in this kind of stress test.",
+      "parentUuid": "8ea2e2eb_8c7e9eab",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 52
+      },
+      "revId": "a2d92632a2d60f08df26de449881e33c8dba2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41482b8a_1475c230",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
         "patchSetId": 2
