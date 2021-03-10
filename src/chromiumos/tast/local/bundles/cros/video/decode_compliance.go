@@ -14,22 +14,22 @@ import (
 )
 
 var av1CommonFiles = []string{
-	"test_vectors/av1/00000527.ivf",
-	"test_vectors/av1/00000535.ivf",
-	"test_vectors/av1/00000548.ivf",
-	"test_vectors/av1/48_delayed.ivf",
-	"test_vectors/av1/av1-1-b8-02-allintra.ivf",
-	"test_vectors/av1/av1-1-b8-03-sizeup.ivf",
-	"test_vectors/av1/frames_refs_short_signaling.ivf",
-	"test_vectors/av1/non_uniform_tiling.ivf",
-	"test_vectors/av1/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf",
-	"test_vectors/av1/test-25fps-192x288-only-tile-rows-is-power-of-2.ivf",
-	"test_vectors/av1/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf",
+	"test_vectors/av1/8-bit/00000527.ivf",
+	"test_vectors/av1/8-bit/00000535.ivf",
+	"test_vectors/av1/8-bit/00000548.ivf",
+	"test_vectors/av1/8-bit/48_delayed.ivf",
+	"test_vectors/av1/8-bit/av1-1-b8-02-allintra.ivf",
+	"test_vectors/av1/8-bit/av1-1-b8-03-sizeup.ivf",
+	"test_vectors/av1/8-bit/frames_refs_short_signaling.ivf",
+	"test_vectors/av1/8-bit/non_uniform_tiling.ivf",
+	"test_vectors/av1/8-bit/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf",
+	"test_vectors/av1/8-bit/test-25fps-192x288-only-tile-rows-is-power-of-2.ivf",
+	"test_vectors/av1/8-bit/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf",
 }
 
 var av1FilmGrainFiles = []string{
-	"test_vectors/av1/av1-1-b8-23-film_grain-50.ivf",
-	"test_vectors/av1/ccvb_film_grain.ivf",
+	"test_vectors/av1/8-bit/av1-1-b8-23-film_grain-50.ivf",
+	"test_vectors/av1/8-bit/ccvb_film_grain.ivf",
 }
 
 var av1Files = append(av1CommonFiles, av1FilmGrainFiles...)
