@@ -19,9 +19,10 @@ func init() {
 		Func: IWScan,
 		Desc: "Verifies `iw` Timed Scan executes and is parsed properly",
 		Contacts: []string{
+			"deanliao@google.com",             // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
 	})
 }
