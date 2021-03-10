@@ -16,6 +16,46 @@
       "message": "hiroh@, tast-owners@, cosmetic change, PTAL",
       "revId": "57ee514d40c60a88058c79ab6f3f0cc65b545947",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1656dbd_48809498",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-03-10T11:01:02Z",
+      "side": 1,
+      "message": "LGTM % one nit.",
+      "revId": "57ee514d40c60a88058c79ab6f3f0cc65b545947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa59b8fb_b85fa977",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-03-10T11:01:02Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 90
+      },
+      "revId": "57ee514d40c60a88058c79ab6f3f0cc65b545947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
