@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "605ef609_69f042b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-10T09:53:12Z",
+      "side": 1,
+      "message": "sgtm, done and added some more variants.\n\n(I planned to add variants with different emulated cameras in another CL, and afraid that adding \"manual\" would double the number of variants. But after a second thought I think only the real camera worth a manual variant.)",
+      "parentUuid": "da03509b_745a8cde",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "a2d92632a2d60f08df26de449881e33c8dba2d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3744c8b_94bcdc1c",
