@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "909adfd2_a00943fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-10T22:40:08Z",
+      "side": 1,
+      "message": "I meant check as in check-for-error :-)",
+      "parentUuid": "5ee3154e_d3b93a27",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 845,
+        "endChar": 0
+      },
+      "revId": "65b061315181b55bd46caad17d7f155685c655e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "004fb065_90873e03",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
         "patchSetId": 1
@@ -78,6 +102,24 @@
       "writtenOn": "2021-03-10T21:26:50Z",
       "side": 1,
       "message": "do we need some default setting? if either of these match?\nalso when we got an error in I.843.",
+      "revId": "65b061315181b55bd46caad17d7f155685c655e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86301c1c_96ff6de4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-10T22:40:08Z",
+      "side": 1,
+      "message": "We can let v4l2_stateful_encoder decide, I tried to comment\nabout that in l. 838:\n  // If v4l2-ctl fails for some reason, we leave it unspecified.\n\nShould I also mention that only those two are interesting/relevant?\nOr leave a TODO() add more.",
+      "parentUuid": "004fb065_90873e03",
       "revId": "65b061315181b55bd46caad17d7f155685c655e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
