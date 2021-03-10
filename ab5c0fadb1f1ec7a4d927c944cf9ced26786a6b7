@@ -16,6 +16,24 @@
       "message": "This should belong to other CL, not LM bench",
       "revId": "ab5c0fadb1f1ec7a4d927c944cf9ced26786a6b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959ebbfc_6b90c847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/data/2160p_60fps_600frames_20181225.h264.mp4.external",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-10T21:34:13Z",
+      "side": 1,
+      "message": "Hi Hsin-Yi, the purpose is to reuse a large file from existing gs bucket. But we shouldn\u0027t hard code the data link here. How about we create a symbolic link to the file under bundles/cros/video/data, as we have seen in other test? if you prefer a dedicated new file, we can also do that.",
+      "parentUuid": "489e8fd9_0bfa7a4b",
+      "revId": "ab5c0fadb1f1ec7a4d927c944cf9ced26786a6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
