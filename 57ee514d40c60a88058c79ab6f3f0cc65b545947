@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3e8501_adbbde34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-10T03:14:47Z",
+      "side": 1,
+      "message": "hiroh@, tast-owners@, cosmetic change, PTAL",
+      "revId": "57ee514d40c60a88058c79ab6f3f0cc65b545947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
