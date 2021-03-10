@@ -81,6 +81,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1466dbe7_0b85eda9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-10T14:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aa43179_f19efeb7",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 9
+      },
+      "revId": "99e2c6cf6c10312619e01559a97c89aa75a1b0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f035fe0_7b4f5d53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-10T14:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14a79add_f457c93d",
+      "range": {
+        "startLine": 87,
+        "startChar": 10,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "99e2c6cf6c10312619e01559a97c89aa75a1b0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b4641f8_b605f9dd",
@@ -150,6 +198,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7a142a_70748932",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-10T14:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5df22d25_ab69f689",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "99e2c6cf6c10312619e01559a97c89aa75a1b0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9bcd7b_69e06d31",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-10T14:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b4641f8_b605f9dd",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 17
+      },
+      "revId": "99e2c6cf6c10312619e01559a97c89aa75a1b0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde0d922_075d7e86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-10T14:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "243d9473_6c831a46",
+      "range": {
+        "startLine": 91,
+        "startChar": 46,
+        "endLine": 91,
+        "endChar": 70
+      },
+      "revId": "99e2c6cf6c10312619e01559a97c89aa75a1b0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "348a87df_3ee62250",
@@ -163,6 +283,30 @@
       "writtenOn": "2021-03-10T14:02:05Z",
       "side": 1,
       "message": "We usually don\u0027t log such messages, unless you have a really good reason.\n\nPTAL on guideline:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 69
+      },
+      "revId": "99e2c6cf6c10312619e01559a97c89aa75a1b0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99459fd9_b7aea6b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-10T14:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "348a87df_3ee62250",
       "range": {
         "startLine": 95,
         "startChar": 1,
