@@ -240,6 +240,9 @@ func (n *NearbyService) WaitForSenderAndAcceptShare(ctx context.Context, req *ne
 	if err := n.receiverSurface.AcceptShare(ctx); err != nil {
 		return nil, errors.Wrap(err, "CrOS receiver failed to accept share from CrOS sender")
 	}
+	if err := nearbyshare.WaitForReceivingCompleteNotification(ctx, n.tconn, req.SenderName, time.Duration(req.TransferTimeoutSeconds)*time.Second); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for notification to indicate sharing has completed on CrOS")
+	}
 	return &res, nil
 }
 

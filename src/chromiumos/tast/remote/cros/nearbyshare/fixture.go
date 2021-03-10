@@ -34,7 +34,7 @@ func NewNearbyShareFixture(dataUsage nearbysetup.DataUsage, visibility nearbyset
 		visibility: visibility,
 		gaiaLogin:  gaiaLogin,
 		// TODO(crbug/1127165): Remove after data is supported in fixture.
-		testFiles: []string{"small_jpg.zip", "small_png.zip"},
+		testFiles: []string{"small_jpg.zip", "small_png.zip", "big_txt.zip"},
 	}
 }
 
@@ -57,6 +57,42 @@ func init() {
 		Name: "nearbyShareRemoteDataUsageOfflineAllContactsGAIA",
 		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'.",
 		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, true),
+		Vars: []string{
+			"secondaryTarget",
+			"nearbyshare.cros_username",
+			"nearbyshare.cros_password",
+			"nearbyshare.cros2_username",
+			"nearbyshare.cros2_password",
+		},
+		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareRemoteDataUsageOnlineAllContactsGAIA",
+		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'All Contacts'.",
+		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityAllContacts, true),
+		Vars: []string{
+			"secondaryTarget",
+			"nearbyshare.cros_username",
+			"nearbyshare.cros_password",
+			"nearbyshare.cros2_username",
+			"nearbyshare.cros2_password",
+		},
+		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareRemoteDataUsageOnlineNoOneGAIA",
+		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'No One'.",
+		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityNoOne, true),
 		Vars: []string{
 			"secondaryTarget",
 			"nearbyshare.cros_username",
