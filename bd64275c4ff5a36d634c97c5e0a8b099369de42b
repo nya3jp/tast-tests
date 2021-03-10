@@ -33,6 +33,24 @@
       "message": "Does the app not have a window when this happens? I don\u0027t know a ton about this code but it seems like it might be hiding a real bug?",
       "revId": "bd64275c4ff5a36d634c97c5e0a8b099369de42b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdb9fea5_3ff33270",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-10T18:19:34Z",
+      "side": 1,
+      "message": "Sure. I will add comment as \"Todo: Temporary workaround until there is a fix for GetARCAppWindowInfo API failing due to \"Failed to get window info\".  I have observed that even when the app is launched and GetARCAppWindowInfo API is failing with error message as, \"Failed to get window info\". So the clamshell resize test case is failing flaky without performing resize of app, had to skip the test case. I will file a separate bug for GetARCAppWindowInfo API. Thanks for the suggestion.",
+      "parentUuid": "e619a343_d074e69b",
+      "revId": "bd64275c4ff5a36d634c97c5e0a8b099369de42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
