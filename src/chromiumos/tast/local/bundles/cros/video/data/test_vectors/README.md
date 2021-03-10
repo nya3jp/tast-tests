@@ -40,7 +40,7 @@ The license of the video files is [AOM license].
 * [10-bit/av1-1-b10-00-quantizer-40.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-40.ivf)
 * [10-bit/av1-1-b10-00-quantizer-50.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-50.ivf)
 * [10-bit/av1-1-b10-00-quantizer-60.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-60.ivf)
-
+* [10-bit/av1-1-b10-23-film_grain-50.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/film_grain/av1-1-b10-23-film_grain-50.ivf)
 
 ### Files based on test-25fps.ivf
 TODO(b/179426205): Add the same license as test-25fps.mp4.
