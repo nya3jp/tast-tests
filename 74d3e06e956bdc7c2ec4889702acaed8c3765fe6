@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "74d3e06e956bdc7c2ec4889702acaed8c3765fe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31e7bea_fa4311f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-10T09:26:26Z",
+      "side": 1,
+      "message": "This test is already changed, and whitelist was removed in Idec6da94d3113945adb13aeb134e5feb8f972c2f.\nWe might have whitelist in the \"shorter\" subtest, and allowlist in the \"longer\" subtest.\nThis way both policies are tested. I don\u0027t we need full duplication, as this is not the main scope of this test.\n",
+      "revId": "74d3e06e956bdc7c2ec4889702acaed8c3765fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
