@@ -124,6 +124,25 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 	initInfo := infos[initPID]
 	if initInfo == nil {
 		s.Fatal("Didn't find init process")
+	} else {
+		// We want to see how many and which mounts in the init namespace are
+		// shared.
+		s.Logf("Checking status of %d init mounts", len(initInfo.MountInfos))
+		numChecked := 0
+		var sharedMounts []string
+		for _, mountInfo := range initInfo.MountInfos {
+			for _, optField := range mountInfo.OptFields {
+				if strings.Contains(optField, "shared") {
+					sharedMounts = append(sharedMounts, mountInfo.MountPoint)
+				}
+			}
+			numChecked++
+		}
+		s.Logf("Checked %d mounts in init mount namespace", numChecked)
+		s.Logf("%d mounts are shared", len(sharedMounts))
+		for _, mount := range sharedMounts {
+			s.Log(mount)
+		}
 	}
 
 	s.Logf("Checking status of %d processes", len(infos))
