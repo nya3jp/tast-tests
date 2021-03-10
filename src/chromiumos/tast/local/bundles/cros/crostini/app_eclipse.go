@@ -61,7 +61,7 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 	defer func() {
 		// Restart Crostini in the end because it is not possible to control the Crostini app.
 		// TODO(jinrongwu): modify this once it is possible to control Eclipse.
-		if err := terminalApp.RestartCrostini(keyboard, cont, cr.User())(cleanupCtx); err != nil {
+		if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(cleanupCtx); err != nil {
 			s.Log("Failed to restart Crostini: ", err)
 		}
 	}()
@@ -79,7 +79,7 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 	}
 
 	// Find eclipse window.
-	name := fmt.Sprintf("%s - /home/%s/%s/%s - Eclipse IDE ", workspace, strings.Split(cr.User(), "@")[0], workspace, testFile)
+	name := fmt.Sprintf("%s - /home/%s/%s/%s - Eclipse IDE ", workspace, strings.Split(cr.NormalizedUser(), "@")[0], workspace, testFile)
 	eclipseWindow := nodewith.Name(name).Role(role.Window).First()
 	if err := uiauto.Combine("start Eclipse",
 		terminalApp.RunCommand(keyboard, fmt.Sprintf("eclipse -data %s --launcher.openFile %s/%s --noSplash", workspace, workspace, testFile)),

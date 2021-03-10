@@ -52,8 +52,8 @@ func (o CrostiniOptions) ActivateTimeout() time.Duration {
 // Activate spins up the Crostini VM.
 func (o CrostiniOptions) Activate(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, st StateManagerTestingState) (VMActivation, error) {
 	testing.ContextLog(ctx, "Creating Crostini")
-	iOptions := crostini.GetInstallerOptions(st, true, o.DebianVersion, o.LargeContainer, cr.User())
-	iOptions.UserName = cr.User()
+	iOptions := crostini.GetInstallerOptions(st, true, o.DebianVersion, o.LargeContainer, cr.NormalizedUser())
+	iOptions.UserName = cr.NormalizedUser()
 	iOptions.MinDiskSize = o.MinDiskSize
 	if _, err := cui.InstallCrostini(ctx, tconn, cr, iOptions); err != nil {
 		return nil, errors.Wrap(err, "installing Crostini")
@@ -71,7 +71,7 @@ func (o CrostiniOptions) Activate(ctx context.Context, cr *chrome.Chrome, tconn 
 
 	// Container may be set even when an error is returned. This must be cleaned
 	// up if there was an error.
-	container, err := vm.DefaultContainer(ctx, cr.User())
+	container, err := vm.DefaultContainer(ctx, cr.NormalizedUser())
 	if err != nil {
 		return nil, errors.Wrap(err, "connecting to running container")
 	}

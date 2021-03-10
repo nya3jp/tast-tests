@@ -494,13 +494,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 	} else {
 		// Install Crostini.
-		iOptions := GetInstallerOptions(s, p.vmMode == component, p.debianVersion, p.container == largeContainer, p.cr.User())
+		iOptions := GetInstallerOptions(s, p.vmMode == component, p.debianVersion, p.container == largeContainer, p.cr.NormalizedUser())
 		if _, err := cui.InstallCrostini(ctx, p.tconn, p.cr, iOptions); err != nil {
 			s.Fatal("Failed to install Crostini: ", err)
 		}
 	}
 
-	p.cont, err = vm.DefaultContainer(ctx, p.cr.User())
+	p.cont, err = vm.DefaultContainer(ctx, p.cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to connect to running container: ", err)
 	}
@@ -537,7 +537,7 @@ func keepState(s *testing.PreState) bool {
 // Connect connects the precondition to a running VM/container.
 // If you shutdown and restart the VM you will need to call Connect again.
 func (p *PreData) Connect(ctx context.Context) error {
-	return p.Container.Connect(ctx, p.Chrome.User())
+	return p.Container.Connect(ctx, p.Chrome.NormalizedUser())
 }
 
 // Close is called after all tests involving this precondition have been run,

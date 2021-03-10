@@ -66,7 +66,7 @@ func AppVscode(ctx context.Context, s *testing.State) {
 		// Restart Crostini in the end in case any error in the middle and Visual Studio Code is not closed.
 		// This also closes the Terminal window.
 		if restartIfError {
-			if err := terminalApp.RestartCrostini(keyboard, cont, cr.User())(cleanupCtx); err != nil {
+			if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(cleanupCtx); err != nil {
 				s.Log("Failed to restart Crostini: ", err)
 			}
 		} else {
