@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe59cfc_0696e92f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-03-10T02:53:31Z",
+      "side": 1,
+      "message": "Not increasing full image read timeouts?",
+      "range": {
+        "startLine": 38,
+        "startChar": 14,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "a3cb654190f87a66300dc91dc8ec6f38761658b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
