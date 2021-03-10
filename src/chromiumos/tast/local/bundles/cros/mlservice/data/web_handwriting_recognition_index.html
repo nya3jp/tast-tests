@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+<title>Web Handwriting Recognition Test</title>
+<h1>Drawing - English "abc"</h1>
+
+<script>
+// Tast test should wait for this Promise.
+// Returns "" if test succeed, error message if failed.
+window.resultPromise = (async function() {
+    const json = await fetch('/web_handwriting_recognition_drawing_abc.json').then(resp => resp.json())
+})()
+</script>
