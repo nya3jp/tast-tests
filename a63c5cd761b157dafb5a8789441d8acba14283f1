@@ -16,6 +16,23 @@
       "message": "Now I got it :) Turns out that wilco devices treat \"search + back\" differently than \"search + fn + F1\". The former respects the policy this test tests for, the latter does not (and I think this is on purpose).",
       "revId": "a63c5cd761b157dafb5a8789441d8acba14283f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d76b6590_06ad341f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-10T13:55:26Z",
+      "side": 1,
+      "message": "LGTM, thanks Miriam!",
+      "revId": "a63c5cd761b157dafb5a8789441d8acba14283f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
