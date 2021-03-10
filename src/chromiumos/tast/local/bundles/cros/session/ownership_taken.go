@@ -75,7 +75,7 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to retrieve policy: ", err)
 		}
-		return cr.User(), ret
+		return cr.NormalizedUser(), ret
 	}()
 
 	if ret.PolicyData == nil {
