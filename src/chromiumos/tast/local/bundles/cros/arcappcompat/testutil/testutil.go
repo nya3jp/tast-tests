@@ -51,7 +51,6 @@ type TestCase struct {
 func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity string, testCases []TestCase) {
 	// Step up chrome on Chromebook.
 	cr, tconn, a := setUpDevice(ctx, s, appPkgName, appActivity)
-
 	// Ensure app launches before test cases.
 	act, err := arc.NewActivity(a, appPkgName, appActivity)
 	if err != nil {
@@ -135,7 +134,6 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 					}
 				}
 			}(cleanupCtx)
-
 			d, err := a.NewUIDevice(ctx)
 			if err != nil {
 				s.Fatal("Failed initializing UI Automator: ", err)
@@ -143,7 +141,6 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			defer d.Close(ctx)
 
 			DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-
 			// It is ok if the package is currently equal the installer package.
 			// It is also ok if the package is currently equal the play service package.
 			// It is also ok if the package is currently equal the android permission controller package
