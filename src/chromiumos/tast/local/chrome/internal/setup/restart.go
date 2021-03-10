@@ -48,18 +48,19 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 
 	testing.ContextLog(ctx, "Asking session_manager to enable Chrome testing")
 	args := []string{
-		"--remote-debugging-port=0",                  // Let Chrome choose its own debugging port.
-		"--disable-logging-redirect",                 // Disable redirection of Chrome logging into cryptohome.
-		"--ash-disable-system-sounds",                // Disable system startup sound.
-		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
-		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
-		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
-		"--no-startup-window",                        // Do not start up chrome://newtab by default to avoid unexpected patterns(doodle etc.)
-		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
-		"--cros-region=" + cfg.Region,                // Force the region.
-		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
-		"--enable-oobe-test-api",                     // Enable OOBE helper functions for authentication.
-		"--disable-hid-detection-on-oobe",            // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
+		"--remote-debugging-port=0",                       // Let Chrome choose its own debugging port.
+		"--disable-logging-redirect",                      // Disable redirection of Chrome logging into cryptohome.
+		"--ash-disable-system-sounds",                     // Disable system startup sound.
+		"--autoplay-policy=no-user-gesture-required",      // Allow media autoplay.
+		"--enable-experimental-extension-apis",            // Allow Chrome to use the Chrome Automation API.
+		"--redirect-libassistant-logging",                 // Redirect libassistant logging to /var/log/chrome/.
+		"--no-startup-window",                             // Do not start up chrome://newtab by default to avoid unexpected patterns(doodle etc.)
+		"--no-first-run",                                  // Prevent showing up offer pages, e.g. google.com/chromebooks.
+		"--cros-region=" + cfg.Region,                     // Force the region.
+		"--cros-regions-mode=hide",                        // Ignore default values in VPD.
+		"--enable-oobe-test-api",                          // Enable OOBE helper functions for authentication.
+		"--disable-hid-detection-on-oobe",                 // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
+		"--enable-oobe-chromevox-hint-timer-for-dev-mode", // Used to override the default dev mode behavior, which disables this feature by default.
 	}
 	if cfg.Enroll {
 		args = append(args, "--disable-policy-key-verification") // Remove policy key verification for fake enrollment
