@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2843c761_31407df1",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-03-10T20:47:31Z",
+      "side": 1,
+      "message": "nit, optional: I would prefer splitting this into a separate CL.",
+      "revId": "f19726576b75ee87f129decef443ffea3454b1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c431eec_1ac324b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_key_eviction.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-03-10T20:47:31Z",
+      "side": 1,
+      "message": "nit, optional: I would prefer splitting this into a separate CL.",
+      "revId": "f19726576b75ee87f129decef443ffea3454b1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
