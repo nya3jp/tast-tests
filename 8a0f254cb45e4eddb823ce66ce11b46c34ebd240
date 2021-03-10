@@ -68,6 +68,24 @@
       "parentUuid": "d61691be_d009b671",
       "revId": "8a0f254cb45e4eddb823ce66ce11b46c34ebd240",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07380782_d485ec6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-03-10T08:04:20Z",
+      "side": 1,
+      "message": "That sounds good. Thanks.",
+      "parentUuid": "579c712a_313f4a24",
+      "revId": "8a0f254cb45e4eddb823ce66ce11b46c34ebd240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
