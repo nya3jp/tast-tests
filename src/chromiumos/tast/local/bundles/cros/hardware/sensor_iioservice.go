@@ -45,7 +45,11 @@ func SensorIioservice(ctx context.Context, s *testing.State) {
 	for _, sn := range sensors {
 		maxFreq = sn.MaxFrequency
 
-		if sn.Name == iio.Ring || sn.Name == iio.Light {
+		if sn.Name == iio.Ring {
+			s.Error("Kernel must be compile with USE=iioservice")
+		}
+
+		if sn.Name == iio.Activity || sn.Name == iio.Light {
 			continue
 		}
 
