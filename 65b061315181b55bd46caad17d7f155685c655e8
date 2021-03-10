@@ -16,6 +16,29 @@
       "message": "stevecho@, tast-owners@ PTAL",
       "revId": "65b061315181b55bd46caad17d7f155685c655e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160973e4_831917c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-10T12:10:55Z",
+      "side": 1,
+      "message": "We cannot just ignore errors, please return error here and handle it in the caller.",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 845,
+        "endChar": 0
+      },
+      "revId": "65b061315181b55bd46caad17d7f155685c655e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
