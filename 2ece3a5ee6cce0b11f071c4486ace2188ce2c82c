@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e4726bb_0a59cd72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-10T18:15:36Z",
+      "side": 1,
+      "message": "Can we please refactor this test into smaller helper methods that each do a well-defined task? i.e. optin to arg can be a method, opening the add account UI can be another, adding an account can be another, initializing the UI automator can be another, etc?",
+      "revId": "2ece3a5ee6cce0b11f071c4486ace2188ce2c82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
