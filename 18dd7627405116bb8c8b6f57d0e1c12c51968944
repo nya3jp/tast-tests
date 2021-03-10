@@ -50,6 +50,374 @@
       "message": "+2 on cryptohome side",
       "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e8417b_b7917737",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "Is there no parser for this file format?",
+      "range": {
+        "startLine": 979,
+        "startChar": 0,
+        "endLine": 979,
+        "endChar": 53
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ffef975_cf2d8c21",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "How about returning a slice? You can sort the slice before returning it, and DeepEquals in the test will work.",
+      "range": {
+        "startLine": 49,
+        "startChar": 95,
+        "endLine": 49,
+        "endChar": 98
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e83dea6_b4a07090",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "Let\u0027s avoid get prefix http://go/go-style/decisions#getters",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d57d6c1_da0ad306",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "What is done if this flag is true? Could you rename this to indicate the operation?",
+      "range": {
+        "startLine": 64,
+        "startChar": 55,
+        "endLine": 64,
+        "endChar": 64
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11a579d_c6d12259",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "The function name is shared in the package. Could you use more specific name?",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac7db7fd_a86b1c15",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "I wonder why two users are needed. Could you add function comment?",
+      "range": {
+        "startLine": 64,
+        "startChar": 34,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76fea265_7ddf5ea0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "The name utility seems to be too generic. cryptohome ?",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 8
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea6569b_6dfca14d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "nit: If both are test failures, you can combine the if statement.\n\nif supportsLE, err :\u003d ...; err !\u003d nil {\n  s.Fatal(...)\n} else if !supportsLE {\n  s.Fatal(...)\n}",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 54
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cf015f5_cd1c527b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "Could you use testing.Poll ?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 35
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4371c45a_09b7c615",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "I wonder why this should be repeated 5 times. Could you add comment?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 25
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "360911ed_e0dc35f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "Could you add keyLabel1 to the error message, so that it\u0027s distinguishable from the error message below?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 47
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5bd206a_43f18039",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 47
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb25f29_a4675684",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "nit: is it difficult to predict the expected value?",
+      "range": {
+        "startLine": 157,
+        "startChar": 22,
+        "endLine": 157,
+        "endChar": 37
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9274fbb_5ce1d353",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "nit: cmp.Diff may provide better error message.\n\nif diff :\u003d cmp.Diff(got, want); diff !\u003d \"\" {\n    t.Errorf(\"LE cred not cleaned up correctly (-got +want):\\n%v\", diff)\n}",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 62
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abc15d46_9044e509",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "nit: Could you move this function to around L40? It\u0027s common to put the main test function first, so that the reader can read the code from top to bottom and understand it.",
+      "range": {
+        "startLine": 165,
+        "startChar": 5,
+        "endLine": 165,
+        "endChar": 14
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea54742_e246e6d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-10T02:25:04Z",
+      "side": 1,
+      "message": "Do we need random name here? For test reproducibility, I\u0027d prefer deterministic tests.",
+      "range": {
+        "startLine": 168,
+        "startChar": 10,
+        "endLine": 168,
+        "endChar": 24
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
