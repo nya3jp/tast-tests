@@ -21,11 +21,17 @@ var (
 		// The default fps of fake device is 20, but CCA requires fps >= 24.
 		// Set the fps to 30 to avoid OverconstrainedError.
 		"--use-fake-device-for-media-stream=fps=30")
-	chromeWithFakeCamera = chrome.NewPrecondition("chrome_fake_camera", fakeCameraOptions)
+	chromeWithFakeCamera          = chrome.NewPrecondition("chrome_fake_camera", fakeCameraOptions)
+	chromeBypassCameraPermissions = chrome.NewPrecondition(
+		"chrome_bypass_camera_permission",
+		chrome.ExtraArgs("--use-fake-ui-for-media-stream"))
 )
 
 // ChromeWithFakeCamera returns a precondition that Chrome is already logged in with fake camera.
 func ChromeWithFakeCamera() testing.Precondition { return chromeWithFakeCamera }
+
+// ChromeBypassCameraPermissions returns a precondition that can open camera without asking for camera permissions.
+func ChromeBypassCameraPermissions() testing.Precondition { return chromeBypassCameraPermissions }
 
 // AppLauncher is used during the launch process of CCA. We could launch CCA
 // by launchApp event, camera intent or any other ways.
