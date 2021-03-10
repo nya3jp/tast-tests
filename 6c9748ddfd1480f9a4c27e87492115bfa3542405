@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22878106_14291b2e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2021-03-10T00:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89780fa2_fcf56595",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "6c9748ddfd1480f9a4c27e87492115bfa3542405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8fe9270_60b31c94",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea44997_3cca863a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2021-03-10T00:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8fe9270_60b31c94",
+      "range": {
+        "startLine": 55,
+        "startChar": 57,
+        "endLine": 55,
+        "endChar": 67
+      },
+      "revId": "6c9748ddfd1480f9a4c27e87492115bfa3542405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "259e101a_edf1712d",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-09T22:35:35Z",
       "side": 1,
       "message": "dumb question: what does that name expand to in practice?\n\nMaybe it can be added to the TEST\u003d line in the commit message?",
+      "range": {
+        "startLine": 272,
+        "startChar": 13,
+        "endLine": 272,
+        "endChar": 23
+      },
+      "revId": "6c9748ddfd1480f9a4c27e87492115bfa3542405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6922e85_544fa641",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2021-03-10T00:37:35Z",
+      "side": 1,
+      "message": "On reflection using `s.TestName()` seems like a bad call for a number of reasons. I thought it would be the \u0027Name\u0027 value from the parameters list, but actually it expands to the full name that you have to give `tast run`, which in this case would be `wifi.ChannelScanDwellTime.ch1`, `wifi.ChannelScanDwellTime.ch9`, etc.\n\nChanged to use `fmt.Sprintf(\"dwell_time_ch%d\", tc.apChannel)` instead.",
+      "parentUuid": "259e101a_edf1712d",
       "range": {
         "startLine": 272,
         "startChar": 13,
