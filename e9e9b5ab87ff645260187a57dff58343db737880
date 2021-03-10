@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1416f57a_ee298191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-03-10T08:40:13Z",
+      "side": 1,
+      "message": "I really like the idea.\n\nI don\u0027t think this should be run in the test body, but we can have a small wrapper script on test images that does this for us.",
+      "parentUuid": "0cbbef3b_952cfcd3",
+      "revId": "e9e9b5ab87ff645260187a57dff58343db737880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77d178f7_307507b9",
