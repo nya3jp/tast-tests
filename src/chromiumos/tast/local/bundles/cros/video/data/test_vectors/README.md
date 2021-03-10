@@ -8,12 +8,14 @@ violated.
 
 ### AOM files
 The license of the video files is [AOM license].
-* [00000527.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000527.ivf)
-* [00000535.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000535.ivf)
-* [00000548.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000548.ivf)
-* [av1-1-b8-02-allintra.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/intra/av1-1-b8-02-allintra.ivf)
-* [av1-1-b8-03-sizeup.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/resize/av1-1-b8-03-sizeup.ivf)
-* [av1-1-b8-23-film\_grain-50.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/film_grain/av1-1-b8-23-film_grain-50.ivf)
+
+#### 8 bit
+* [8-bit/00000527.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000527.ivf)
+* [8-bit/00000535.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000535.ivf)
+* [8-bit/00000548.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000548.ivf)
+* [8-bit/av1-1-b8-02-allintra.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/intra/av1-1-b8-02-allintra.ivf)
+* [8-bit/av1-1-b8-03-sizeup.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/resize/av1-1-b8-03-sizeup.ivf)
+* [8-bit/av1-1-b8-23-film\_grain-50.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/film_grain/av1-1-b8-23-film_grain-50.ivf)
 
 ### Files based on test-25fps.ivf
 TODO(b/179426205): Add the same license as test-25fps.mp4.
@@ -23,17 +25,17 @@ test-25fps-192x288.yuv using [aomenc]. To create test-25fps-192x288.yuv, the
 resolution of [test-25fps.av1.ivf] was reduced using `ffmpeg -i
 test-25fps.av1.ivf -s 192x288 test-25fps-192x288.yuv`.
 
-* test-25fps-192x288-tile-rows-3-tile-cols-3.ivf
+* 8-bit/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf
   generated using the following command:
   `aomenc --sb-size=64 -w 192 -h 288 --tile-columns=2 --tile-rows=2
 --fps=25/1 --ivf -o test-25fps-192x288-tile-rows-3-tile-cols-3.ivf
 test-25fps-192x288.yuv`
-* test-25fps-192x288-only-tile-cols-is-power-of-2.ivf
+* 8-bit/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf
   generated using the following command:
   `aomenc --sb-size=128 -w 192 -h 288 --tile-columns=1 --tile-rows=4
 --fps=25/1 --ivf -o test-25fps-192x288-only-tile-cols-is-power-of-2.ivf
 test-25fps-192x288.yuv`
-* test-25fps-192x288-only-tile-rows-is-power-of-2.ivf
+* 8-bit/test-25fps-192x288-only-tile-rows-is-power-of-2.ivf
   generated using the following command:
   `aomenc --sb-size=64 -w 192 -h 288 --tile-columns=5 --tile-rows=1
 --fps=25/1 --ivf -o test-25fps-192x288-only-tile-rows-is-power-of-2.ivf
@@ -41,10 +43,10 @@ test-25fps-192x288.yuv`
 
 ### Others
 TODO(b/179426205): Clarify licenses of these video files.
-* 48\_delayed.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/issues/48_delayed.ivf)
-* ccvb\_film\_grain.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/ccvb_film_grain.ivf)
-* frames\_refs\_short\_signaling.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/frames_refs_short_signaling.ivf)
-* non\_uniform\_tiling.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/non_uniform_tiling.ivf)
+* 8-bit/48\_delayed.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/issues/48_delayed.ivf)
+* 8-bit/ccvb\_film\_grain.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/ccvb_film_grain.ivf)
+* 8-bit/frames\_refs\_short\_signaling.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/frames_refs_short_signaling.ivf)
+* 8-bit/non\_uniform\_tiling.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/non_uniform_tiling.ivf)
 
 [video decoder compliance tests]: ../../README.md#video-decoder-compliance-tests
 [aomenc]: https://aomedia.googlesource.com/aom/
