@@ -16,6 +16,236 @@
       "message": "I\u0027ll merge this now and then submit a new one that also adds H264 CENCv1 CTR once I have the corresponding media ready.",
       "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a184f9bb_c3a8ad3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-10T17:58:37Z",
+      "side": 1,
+      "message": "defer ew.Close()",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 4
+      },
+      "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bad53f4_5c0f52d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-10T17:58:37Z",
+      "side": 1,
+      "message": "Adding simple \"wait for fullscreen\" might be a good idea.\nYou can simple add a WaitForCondition\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;l\u003d352?q\u003dlang:go%20WaitForCondition%20file:wm.go\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)\n\n\nIf you strongly think it is not needed, please add more details in the comment.\nFrom the comment it is not clear why waiting is not needed... could it happen that the screenshot gets captured before the \"full-sizing the window\" starts (or finishes)... is it guaranteed that, no matter the state of \"full-sizing\", 95% of the screen is going to black?",
+      "range": {
+        "startLine": 190,
+        "startChar": 25,
+        "endLine": 191,
+        "endChar": 36
+      },
+      "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34f285d_98d72706",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-10T17:58:37Z",
+      "side": 1,
+      "message": "huge nit: URL",
+      "range": {
+        "startLine": 34,
+        "startChar": 51,
+        "endLine": 34,
+        "endChar": 54
+      },
+      "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ad6883_9ccf4126",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-10T17:58:37Z",
+      "side": 1,
+      "message": "nit:  else ?",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "623db411_71948e09",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-10T17:58:37Z",
+      "side": 1,
+      "message": "nit:  perhaps adding a quick return?\n\n  if hasName \u0026\u0026 hasPlatform {\n    return nil\n  }",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 4
+      },
+      "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "411aa071_fb9b84ad",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-10T17:58:37Z",
+      "side": 1,
+      "message": "nit: CheckHWDRMPipeline\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 77,
+        "startChar": 10,
+        "endLine": 77,
+        "endChar": 15
+      },
+      "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97c7176b_58abac68",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-10T17:58:37Z",
+      "side": 1,
+      "message": "ditto: isHWDRMPipiline\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 77,
+        "startChar": 104,
+        "endLine": 77,
+        "endChar": 119
+      },
+      "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f820fe_6e9a1475",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-10T17:58:37Z",
+      "side": 1,
+      "message": "nit: else?",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b8432d5_b7accd2f",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-10T17:58:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 6
+      },
+      "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87da2e2a_b60f5663",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-10T17:58:37Z",
+      "side": 1,
+      "message": "nit, ditto above: consider adding a quick return",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 4
+      },
+      "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
