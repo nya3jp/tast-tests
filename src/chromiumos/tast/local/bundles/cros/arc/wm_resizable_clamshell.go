@@ -1098,6 +1098,10 @@ func checkRestoreActivityToFullscreen(ctx context.Context, tconn *chrome.TestCon
 		return err
 	}
 
+	if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+		return err
+	}
+
 	// Toggle back from fullscreen
 	if err := wm.ToggleFullscreen(ctx, tconn); err != nil {
 		return err
