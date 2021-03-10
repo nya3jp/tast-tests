@@ -16,6 +16,29 @@
       "message": "Tast-owners PTAL. Easy change to facilitate the next CL.",
       "revId": "a75d0d1a260de945852bc25c2fbffb66a9a81607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f58294_3dbd64cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-10T12:11:45Z",
+      "side": 1,
+      "message": "Please check my comment in another your CL and return error as well",
+      "range": {
+        "startLine": 53,
+        "startChar": 96,
+        "endLine": 53,
+        "endChar": 143
+      },
+      "revId": "a75d0d1a260de945852bc25c2fbffb66a9a81607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
