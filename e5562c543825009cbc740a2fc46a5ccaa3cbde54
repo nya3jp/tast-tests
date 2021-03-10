@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e0a4e1_74670da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-10T04:56:12Z",
+      "side": 1,
+      "message": "Nice catch, yeah it should be text. Somehow it works even with the wrong value haha, I\u0027ll check in with our Android contact about that.",
+      "parentUuid": "b8950643_36a82a86",
+      "range": {
+        "startLine": 54,
+        "startChar": 36,
+        "endLine": 54,
+        "endChar": 48
+      },
+      "revId": "e5562c543825009cbc740a2fc46a5ccaa3cbde54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d8e6e98_f0de4297",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9063bc7b_22fb20b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_in_contacts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-10T04:56:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d8e6e98_f0de4297",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 48
+      },
+      "revId": "e5562c543825009cbc740a2fc46a5ccaa3cbde54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "043b5ee9_8740d715",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-09T22:42:57Z",
       "side": 1,
       "message": "nit: don\u0027t really need this, time.Minute is already 1 unit.",
+      "range": {
+        "startLine": 29,
+        "startChar": 39,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "e5562c543825009cbc740a2fc46a5ccaa3cbde54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f78889c9_9a2be032",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-10T04:56:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "043b5ee9_8740d715",
       "range": {
         "startLine": 29,
         "startChar": 39,
