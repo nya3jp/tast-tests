@@ -22,8 +22,8 @@ var clamshellTestsForAsana = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForAsana},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 }
 
 // TouchviewTests are placed here.
@@ -85,11 +85,12 @@ func launchAppForAsana(ctx context.Context, s *testing.State, tconn *chrome.Test
 		continueEmailText = "Continue with email"
 		typePasswordText  = "Type password"
 		passwordID        = "com.asana.app:id/password"
+		nextButtonText    = "NEXT"
 	)
 
 	// Click on log in button
 	logInButton := d.Object(ui.Text(logInText))
-	if err := logInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := logInButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("LogIn button doesn't exist: ", err)
 	} else if err := logInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on LogIn button: ", err)
@@ -130,10 +131,21 @@ func launchAppForAsana(ctx context.Context, s *testing.State, tconn *chrome.Test
 	}
 
 	// Click log in button.
+	logInButton = d.Object(ui.Text(logInText))
 	if err := logInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("LogIn button doesn't exist: ", err)
-	} else if err := logInButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on LogIn button: ", err)
+	}
+
+	// Click on loginbutton until next button exists.
+	nextButton := d.Object(ui.TextMatches("(?i)" + nextButtonText))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := nextButton.Exists(ctx); err != nil {
+			logInButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
+		s.Log("nextButton doesn't exists: ", err)
 	}
 
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
