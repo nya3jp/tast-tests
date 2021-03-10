@@ -73,7 +73,7 @@ func init() {
 func SoundCloud(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.soundcloud.android"
-		appActivity = ".main.LauncherActivity"
+		appActivity = ".launcher.LauncherActivity"
 	)
 	testCases := s.Param().([]testutil.TestCase)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
