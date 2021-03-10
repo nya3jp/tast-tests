@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4304056a_3a002e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-10T21:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8004e887_e69ae406",
+      "revId": "9b2d566d804c787d77695d04ed7c46ced20fc678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "240a75d9_d33e2eb6",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-10T21:01:39Z",
       "side": 1,
       "message": "This doesn\u0027t need to be an App member, but maybe make this LaunchAndCreateChromeConn and have it call Launch()? Alternatively just make it a non member func. Alternatively, make AppURL public and inline this in the Fixture.",
+      "revId": "9b2d566d804c787d77695d04ed7c46ced20fc678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2f1f56_6ffa451e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/conndiag/conndiag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-10T21:49:52Z",
+      "side": 1,
+      "message": "Good catch! done",
+      "parentUuid": "240a75d9_d33e2eb6",
       "revId": "9b2d566d804c787d77695d04ed7c46ced20fc678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
