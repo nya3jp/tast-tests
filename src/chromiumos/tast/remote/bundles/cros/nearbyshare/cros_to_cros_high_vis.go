@@ -28,20 +28,29 @@ func init() {
 		Attr:         []string{"group:nearby-share-remote"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.nearbyservice.NearbyShareService"},
-		Fixture:      "nearbyShareRemoteDataUsageOfflineAllContactsTestUser",
 		Vars:         []string{"secondaryTarget"},
 		Params: []testing.Param{
 			{
 				Name:      "dataoffline_allcontacts_png5kb",
+				Fixture:   "nearbyShareRemoteDataUsageOfflineAllContactsTestUser",
 				Val:       nearbytestutils.TestData{Filename: "small_png.zip", TransferTimeout: nearbyshare.SmallFileTransferTimeout},
 				ExtraData: []string{"small_png.zip"},
 				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
 			},
 			{
 				Name:      "dataoffline_allcontacts_jpg11kb",
+				Fixture:   "nearbyShareRemoteDataUsageOfflineAllContactsTestUser",
 				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbyshare.SmallFileTransferTimeout},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+			},
+			{
+				Name:    "dataonline_noone_txt30mb",
+				Fixture: "nearbyShareRemoteDataUsageOnlineNoOneGAIA",
+				Val: nearbytestutils.TestData{
+					Filename: "big_txt.zip", TransferTimeout: nearbyshare.LargeFileOnlineTransferTimeout},
+				ExtraData: []string{"big_txt.zip"},
+				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.LargeFileOnlineTransferTimeout,
 			},
 		},
 	})
