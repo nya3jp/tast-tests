@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e4e319_0d6e2032",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-10T19:13:55Z",
+      "side": 1,
+      "message": "Done. I\u0027ll need to wait for CR on the preceding CL\u0027s before marking CQ+2.",
+      "revId": "9870b0855bacd3cc30f34a163a38428d2cb55d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
