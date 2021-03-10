@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f651ed_cd8a58b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-03-10T17:33:19Z",
+      "side": 1,
+      "message": "Addressed the comments. PTAL when you have time, Ricardo. Thanks!",
+      "revId": "48f8e87848f79d8cbe5eed650937156082fb4da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
