@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8004e887_e69ae406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-10T21:01:39Z",
+      "side": 1,
+      "message": "nit: It looks like you don\u0027t need the |api| local?",
+      "revId": "9b2d566d804c787d77695d04ed7c46ced20fc678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "240a75d9_d33e2eb6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/conndiag/conndiag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-10T21:01:39Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be an App member, but maybe make this LaunchAndCreateChromeConn and have it call Launch()? Alternatively just make it a non member func. Alternatively, make AppURL public and inline this in the Fixture.",
+      "revId": "9b2d566d804c787d77695d04ed7c46ced20fc678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
