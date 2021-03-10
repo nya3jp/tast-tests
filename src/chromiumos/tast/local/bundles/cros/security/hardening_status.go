@@ -126,6 +126,25 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 		s.Fatal("Didn't find init process")
 	}
 
+	// We want to see how many and which mounts in the init namespace are
+	// shared. Daemonstore mounts are expected, so we ignore these.
+	const ignoreDaemonstore = "daemon-store"
+	numInitChecked := 0
+	var initSharedMounts []string
+	for _, mountInfo := range initInfo.MountInfos {
+		// Filter out mounts that we expect and would like to ignore.
+		if strings.Contains(mountInfo.MountPoint, ignoreDaemonstore) {
+			continue
+		}
+
+		for _, optField := range mountInfo.OptFields {
+			if strings.Contains(optField, "shared") {
+				initSharedMounts = append(initSharedMounts, mountInfo.MountPoint)
+			}
+		}
+		numInitChecked++
+	}
+
 	s.Logf("Checking status of %d processes", len(infos))
 	numChecked := 0
 	var haveOnlyMountsFlowingIn []string
@@ -187,6 +206,13 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 	s.Logf("Checked %d processes after exclusions", numChecked)
 	s.Logf("%d processes have mounts flowing in", len(haveOnlyMountsFlowingIn))
 	s.Logf("%d processes have shared mounts", len(haveSharedMounts))
+
+	s.Logf("Checked %d mounts in init mount namespace", numInitChecked)
+	s.Logf("%d mounts are shared", len(initSharedMounts))
+	for _, mount := range initSharedMounts {
+		s.Log(mount)
+	}
+
 	s.Logf("%d privileged processes are running in the init mount NS:", len(privProcsInInitMountNS))
 	for _, proc := range privProcsInInitMountNS {
 		s.Log(proc)
@@ -194,6 +220,24 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 	s.Logf("%d privileged processes are exposed to mount events:", len(privProcsWithMountsFlowingIn))
 	for _, proc := range privProcsWithMountsFlowingIn {
 		s.Log(proc)
+	}
+
+	const sharedMountsLogName = "shared_mounts.txt"
+	s.Log("Writing shared mounts to ", sharedMountsLogName)
+	sharedMounts, err := os.Create(filepath.Join(s.OutDir(), sharedMountsLogName))
+	if err != nil {
+		s.Fatal("Failed to open file: ", err)
+	}
+	defer sharedMounts.Close()
+
+	for _, l := range initSharedMounts {
+		b, err := json.Marshal(l)
+		if err != nil {
+			s.Error("Failed to marshal process list: ", err)
+			continue
+		}
+		sharedMounts.Write(b)
+		sharedMounts.WriteString("\n")
 	}
 
 	const relevantProcessesLogName = "relevant_processes.txt"
