@@ -34,7 +34,8 @@ func init() {
 		Attr:    []string{"group:mainline", "informational"},
 		Fixture: "chromePolicyLoggedIn",
 		Params: []testing.Param{
-			{
+			// TODO(crbug.com/1186655): Find a way to close/avoid the dialog about disabling autoclick.
+			/*{
 				Name: "autoclick",
 				Val: []accessibilityTestCase{
 					{
@@ -56,7 +57,7 @@ func init() {
 						policies:  []policy.Policy{&policy.AutoclickEnabled{Stat: policy.StatusUnset}},
 					},
 				},
-			},
+			},*/
 			{
 				Name: "caret_highlight",
 				Val: []accessibilityTestCase{
