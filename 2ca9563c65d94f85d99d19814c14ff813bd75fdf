@@ -39,6 +39,30 @@
       },
       "revId": "2ca9563c65d94f85d99d19814c14ff813bd75fdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39e22031_d3e8bf6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-10T12:43:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcd4d65b_03ed5930",
+      "range": {
+        "startLine": 40,
+        "startChar": 40,
+        "endLine": 40,
+        "endChar": 48
+      },
+      "revId": "2ca9563c65d94f85d99d19814c14ff813bd75fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
