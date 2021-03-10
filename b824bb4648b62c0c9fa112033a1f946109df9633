@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c4b915_7b7ea801",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-10T16:21:01Z",
+      "side": 1,
+      "message": "(Sending this CL while the previous 2 are still under \nreview, since this one is independent anyway).",
+      "revId": "b824bb4648b62c0c9fa112033a1f946109df9633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
