@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce7e86e_78f4f84c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-10T09:53:12Z",
+      "side": 1,
+      "message": "Yes, supporting something like auto bisection would be nice lol",
+      "parentUuid": "0cbbef3b_952cfcd3",
+      "revId": "e9e9b5ab87ff645260187a57dff58343db737880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77d178f7_307507b9",
@@ -59,6 +77,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1364036_7a1f1ba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-10T09:53:12Z",
+      "side": 1,
+      "message": "Thanks for the reminder. We already have a tracking bug to migrate CCA related tests to Fixtures: http://b/177800595.",
+      "parentUuid": "77d178f7_307507b9",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "e9e9b5ab87ff645260187a57dff58343db737880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4664938_d0ecf570",
@@ -72,6 +114,30 @@
       "writtenOn": "2021-03-10T06:54:09Z",
       "side": 1,
       "message": "Might want to be more explicit about this and the above cancel function, name them differently.",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 12
+      },
+      "revId": "e9e9b5ab87ff645260187a57dff58343db737880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7d0afe_94fcf6b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-10T09:53:12Z",
+      "side": 1,
+      "message": "Removed since we now have normal timeout for variants running on CI builders.",
+      "parentUuid": "f4664938_d0ecf570",
       "range": {
         "startLine": 82,
         "startChar": 6,
