@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f8b3baa_39459d9b",
+        "filename": "src/chromiumos/tast/services/cros/arc/ureadahead_pack_service.pb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-03-10T17:34:19Z",
+      "side": 1,
+      "message": "This is automatically generated code",
+      "parentUuid": "52222329_ed9ecc86",
+      "revId": "f5d4a4943e97ebad7a5726e78bdc21c1b70da6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "190acfcb_28525066",
@@ -86,6 +104,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d4c51f0_3bde0587",
+        "filename": "src/chromiumos/tast/services/cros/arc/ureadahead_pack_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-03-10T17:34:19Z",
+      "side": 1,
+      "message": "Will do next CL to have it landed first.",
+      "parentUuid": "190acfcb_28525066",
+      "revId": "f5d4a4943e97ebad7a5726e78bdc21c1b70da6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0d7c45f_1733d1a4",
@@ -99,6 +135,24 @@
       "writtenOn": "2021-03-10T03:02:06Z",
       "side": 1,
       "message": "nit: Are we skipping 3, 4 for now? Shall we add a comment?",
+      "revId": "f5d4a4943e97ebad7a5726e78bdc21c1b70da6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4543d8cc_f86c6ff8",
+        "filename": "src/chromiumos/tast/services/cros/arc/ureadahead_pack_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-03-10T17:34:19Z",
+      "side": 1,
+      "message": "Will do next CL to have it landed first.",
+      "parentUuid": "d0d7c45f_1733d1a4",
       "revId": "f5d4a4943e97ebad7a5726e78bdc21c1b70da6e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
