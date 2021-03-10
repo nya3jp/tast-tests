@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1147e5ab_15fd8a8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-10T12:21:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f15e9ec8_ca9a4259",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "79bd1320ee86a912d44659e70edbfbcae39d5010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9487f6b_e27a76f3",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7df9eb5_f3afbd63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-10T12:21:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9487f6b_e27a76f3",
+      "revId": "79bd1320ee86a912d44659e70edbfbcae39d5010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "caf4c422_c370eaf5",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-03-09T19:21:23Z",
       "side": 1,
       "message": "You don\u0027t need to parse from the URL. See here for an example: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/externaldata/server.go;l\u003d77",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 36
+      },
+      "revId": "79bd1320ee86a912d44659e70edbfbcae39d5010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76f96af7_0aefbe71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-10T12:21:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caf4c422_c370eaf5",
       "range": {
         "startLine": 82,
         "startChar": 1,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0255a91d_2710ce1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-10T12:21:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d979c155_1c23bf09",
+      "range": {
+        "startLine": 85,
+        "startChar": 46,
+        "endLine": 85,
+        "endChar": 90
+      },
+      "revId": "79bd1320ee86a912d44659e70edbfbcae39d5010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bc9a8c0_fa7c2b06",
@@ -100,6 +190,24 @@
       "writtenOn": "2021-03-09T19:21:23Z",
       "side": 1,
       "message": "nit: remove newline",
+      "revId": "79bd1320ee86a912d44659e70edbfbcae39d5010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89b1b497_b5810236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-10T12:21:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bc9a8c0_fa7c2b06",
       "revId": "79bd1320ee86a912d44659e70edbfbcae39d5010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
