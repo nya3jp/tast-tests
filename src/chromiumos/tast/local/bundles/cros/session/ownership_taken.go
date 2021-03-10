@@ -75,7 +75,7 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to retrieve policy: ", err)
 		}
-		return cr.User(), ret
+		return cr.NormalizedUser(), ret
 	}()
 
 	if ret.PolicyData == nil {
@@ -86,8 +86,11 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 	if err = proto.Unmarshal(ret.PolicyData, pol); err != nil {
 		s.Fatal("Failed to parse PolicyData: ", err)
 	}
-	if pol.GetUsername() != user {
-		s.Fatalf("Unexpected user: got %s; want %s", pol.GetUsername(), user)
+	if polUser, err := session.NormalizeEmail(pol.GetUsername(), true); polUser != user {
+		if err != nil {
+			s.Fatalf("Failed to normalize username %q: %v", pol.GetUsername(), err)
+		}
+		s.Fatalf("Unexpected user: got %s; want %s", polUser, user)
 	}
 
 	settings := &enterprise_management.ChromeDeviceSettingsProto{}
@@ -103,14 +106,14 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 	// supported by DMServer.
 	if settings.UserWhitelist != nil && settings.UserAllowlist == nil {
 		for _, u := range settings.UserWhitelist.UserWhitelist {
-			if u == user {
+			if normUser, _ := session.NormalizeEmail(u, true); normUser == user {
 				found = true
 				break
 			}
 		}
 	} else {
 		for _, u := range settings.UserAllowlist.UserAllowlist {
-			if u == user {
+			if normUser, _ := session.NormalizeEmail(u, true); normUser == user {
 				found = true
 				break
 			}
