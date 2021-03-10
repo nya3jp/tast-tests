@@ -33,6 +33,23 @@
       "message": "Also, I\u0027m not clear, do we even need to round at all? Does crosbolt round the values? (I\u0027m thinking it\u0027d be easier to partners to read rounded values though...)",
       "revId": "8a0f254cb45e4eddb823ce66ce11b46c34ebd240",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d61691be_d009b671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-03-10T03:52:51Z",
+      "side": 1,
+      "message": "nit: This comment is no longer true since this patch changes the precision to ms.",
+      "revId": "8a0f254cb45e4eddb823ce66ce11b46c34ebd240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
