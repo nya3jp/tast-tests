@@ -103,6 +103,23 @@
       "parentUuid": "579c712a_313f4a24",
       "revId": "8a0f254cb45e4eddb823ce66ce11b46c34ebd240",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f92da51_f66ff277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-10T18:09:15Z",
+      "side": 1,
+      "message": "It looks like on ToT, metrics where t\u003d\"rdbytes\" get rounded; but with this patchset, those metrics don\u0027t get rounded, because they don\u0027t have the \"seconds_\" prefix. Is this intentional?",
+      "revId": "8a0f254cb45e4eddb823ce66ce11b46c34ebd240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
