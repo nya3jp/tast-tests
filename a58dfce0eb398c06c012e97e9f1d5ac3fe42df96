@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e224285e_a7e4a6da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-10T10:33:50Z",
+      "side": 1,
+      "message": "Yes, I agree it\u0027s really subjective... The point of the guide is rather about user experience on running tests manually. These logs are streamed realtime to users, so writing many log lines would fill up console buffer quickly.\n\nThat said, if the content is short enough not to fill user console, it might be okay to write to normal logs.\n\nBTW there is an ongoing proposal about verbose logging mechanism. It would solve this problem as well.",
+      "parentUuid": "045fab2c_ac09fba5",
+      "revId": "a58dfce0eb398c06c012e97e9f1d5ac3fe42df96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e4b6e96_706dabfe",
         "filename": "src/chromiumos/tast/local/android/adb/device.go",
         "patchSetId": 4
