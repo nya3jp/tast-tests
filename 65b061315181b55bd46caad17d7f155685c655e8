@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fc83e59_b937c8d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-03-10T23:38:54Z",
+      "side": 1,
+      "message": "optional: as a casual observer I have no idea what a YM12 or an NV12 is (or an SSIM or G1bPSNR is, for that matter), is it worth commenting what any of this domain-specific terminology means?",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "65b061315181b55bd46caad17d7f155685c655e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "160973e4_831917c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
         "patchSetId": 1
@@ -79,6 +102,30 @@
       "side": 1,
       "message": "I meant check as in check-for-error :-)",
       "parentUuid": "5ee3154e_d3b93a27",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 845,
+        "endChar": 0
+      },
+      "revId": "65b061315181b55bd46caad17d7f155685c655e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1175ec99_a9690696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-03-10T23:38:54Z",
+      "side": 1,
+      "message": "My 2c on the issue:\n1. If you\u0027re concerned because this is a critical test that you are adding something that will make it flaky, I\u0027d probably allow it but request a TODO to fix it up (once you\u0027ve run it on some boards to see if this has any flakes). However, this test does not appear to be critical?\n2. To help us understand, maybe you could explain in what cases it would be legitimate for this function to fail or flake (and you not to know about it)?\nIn general, I agree with @Oleh that if something should work all the time, then we should be happy to just assert that and let the test fail if it doesn\u0027t.\n\nAnother way of posing the question is: if you don\u0027t need this command for the test to work, then why are you adding it to the test?",
+      "parentUuid": "909adfd2_a00943fb",
       "range": {
         "startLine": 843,
         "startChar": 0,
