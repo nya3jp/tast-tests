@@ -59,6 +59,12 @@ var av110BitCommonFiles = []string{
 	"test_vectors/av1/10-bit/av1-1-b10-00-quantizer-60.ivf",
 }
 
+var av110BitFilmGrainFiles = []string{
+	"test_vectors/av1/10-bit/av1-1-b10-23-film_grain-50.ivf",
+}
+
+var av110BitFiles = append(av110BitCommonFiles, av110BitFilmGrainFiles...)
+
 func testFiles(videoFiles []string) []string {
 	var tf []string
 	for _, file := range videoFiles {
@@ -117,6 +123,27 @@ func init() {
 			Val: decodeComplianceTestParam{
 				videoFiles:    av110BitCommonFiles,
 				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "av1_10bit_film_grain",
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_10BPP},
+			// Different decoders may use different film grain synthesis methods while producing
+			// a visually correct output (AV1 spec 7.2). Thus, for volteer, we don't validate
+			// the decoding of film-grain streams using MD5. Instead, we validate them using
+			// SSIM (see the av1_10bit_ssim test).
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("volteer")),
+			ExtraData:         testFiles(av110BitFilmGrainFiles),
+			Val: decodeComplianceTestParam{
+				videoFiles:    av110BitFilmGrainFiles,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "av1_10bit_ssim",
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_10BPP},
+			ExtraData:         testFiles(av110BitFiles),
+			Val: decodeComplianceTestParam{
+				videoFiles:    av110BitFiles,
+				validatorType: decoding.SSIM,
 			},
 		}},
 	})
