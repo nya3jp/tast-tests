@@ -1,0 +1,52 @@
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+
+<!DOCTYPE html>
+
+<title>Web Handwriting Recognition Test</title>
+<h1>Drawing - English "abc"</h1>
+
+<script>
+    // Tast test should wait for this Promise.
+    // This method should throw an Error with a description if test fails.
+    window.resultPromise = (async function () {
+        if (!navigator.queryHandwritingRecognizerSupport || !navigator.createHandwritingRecognizer) {
+            throw new Error("Web Handwriting Recognition API is not available");
+        }
+
+        const constraints = { languages: ['en'] };
+        const featureSupport = await navigator.queryHandwritingRecognizerSupport(constraints);
+        if (!featureSupport.languages) {
+            throw new Error("Handwriting recognizer doesn't support 'en' language");
+        }
+
+        const recognizer = await navigator.createHandwritingRecognizer(constraints);
+        const jsDrawing = await recognizer.startDrawing();
+
+        // Translate the drawing JSON to a HandwritingDrawing for recognition.
+        const drawing = await fetch('/web_handwriting_recognition_drawing_abc.json').then(resp => resp.json());
+        for (const stroke of drawing) {
+            const jsStroke = new HandwritingStroke();
+            for (const point of stroke) {
+                jsStroke.addPoint(point);
+            }
+            jsDrawing.addStroke(jsStroke);
+        }
+
+        // Check at least one prediction matches the written text.
+        const predictions = await jsDrawing.getPrediction();
+        const wantedPrediction = predictions.find(pred => pred.text === "abc");
+        if (!wantedPrediction) {
+            throw new Error(`Can't find expected text "abc", predictions are: ${predictions.map(p => p.text).join(", ")}`);
+        }
+
+        // Check "abc" is segmented to three graphemes.
+        const graphemeCount = wantedPrediction.segmentationResult.length;
+        if (graphemeCount !== 3) {
+            throw new Error(`Number of segmented graphemes doesn't match, got ${graphemeCount}, want 3`);
+        }
+
+        return wantedPrediction.text;
+    })();
+</script>
