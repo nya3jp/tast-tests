@@ -64,7 +64,7 @@ func TwoUsersInstall(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to login Chrome and get test API for %s: %s", s.RequiredVar("crostini.gaiaUsername"), err)
 	}
 
-	iOptionsUser1 := crostini.GetInstallerOptions(s, false /*isComponent*/, vm.DebianBuster, false /*largeContainer*/, firstCr.User())
+	iOptionsUser1 := crostini.GetInstallerOptions(s, false /*isComponent*/, vm.DebianBuster, false /*largeContainer*/, firstCr.NormalizedUser())
 	// Cleanup for the first user.
 	defer func() {
 		if err := cleanup(ctx, optsUser1...); err != nil {
@@ -86,7 +86,7 @@ func TwoUsersInstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to login Chrome and get test API for testuser: ", err)
 	}
 
-	iOptionsUser2 := crostini.GetInstallerOptions(s, false /*isComponent*/, vm.DebianBuster, false /*largeContainer*/, secondCr.User())
+	iOptionsUser2 := crostini.GetInstallerOptions(s, false /*isComponent*/, vm.DebianBuster, false /*largeContainer*/, secondCr.NormalizedUser())
 	// Cleanup for the second user.
 	defer func() {
 		if err := cleanup(ctx, optsUser2); err != nil {
@@ -120,7 +120,7 @@ func cleanup(ctx context.Context, opts ...chrome.Option) error {
 	}
 
 	// Get the container.
-	_, err = vm.GetRunningContainer(ctx, cr.User())
+	_, err = vm.GetRunningContainer(ctx, cr.NormalizedUser())
 	if err != nil {
 		testing.ContextLogf(ctx, "Failed to connect to the container, it might not exist: %s", err)
 	} else {

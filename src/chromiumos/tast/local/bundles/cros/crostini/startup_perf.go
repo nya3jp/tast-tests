@@ -91,7 +91,7 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to mount termina: ", err)
 	}
 	s.Log("Restarting Concierge")
-	concierge, err := vm.NewConcierge(ctx, cr.User())
+	concierge, err := vm.NewConcierge(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to start Concierge: ", err)
 	}
@@ -139,7 +139,7 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		// Create default container for the initial run.
 		if cont == nil {
 			s.Log("Creating default container")
-			cont, timing.containerCreate, err = createNewContainer(ctx, cr.User())
+			cont, timing.containerCreate, err = createNewContainer(ctx, cr.NormalizedUser())
 			if err != nil {
 				s.Fatal("Failed to set up default container: ", err)
 			}
