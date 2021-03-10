@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3779365_2eba3843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2021-03-10T12:14:23Z",
+      "side": 1,
+      "message": "What program generate this file? Is it possible to get RTC time with more precision than seconds?",
+      "range": {
+        "startLine": 365,
+        "startChar": 52,
+        "endLine": 365,
+        "endChar": 60
+      },
+      "revId": "ae2e63ada046c601edf9ed78b6e5860fa999ec39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cde6e06b_0be19e8c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
         "patchSetId": 2
