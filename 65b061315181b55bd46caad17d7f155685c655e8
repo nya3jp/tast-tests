@@ -63,6 +63,23 @@
       },
       "revId": "65b061315181b55bd46caad17d7f155685c655e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "004fb065_90873e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-03-10T21:26:50Z",
+      "side": 1,
+      "message": "do we need some default setting? if either of these match?\nalso when we got an error in I.843.",
+      "revId": "65b061315181b55bd46caad17d7f155685c655e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
