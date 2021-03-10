@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // rtcPerfTest is used to describe the config used to run each test case.
@@ -71,6 +72,8 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			Fixture:           "chromeVideoWithFakeWebcam",
+			// Trogdor doesn't have enough hardware contexts to pass this test.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("trogdor")),
 		}},
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 10 * time.Minute,
