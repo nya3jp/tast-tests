@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cbbef3b_952cfcd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-03-10T07:45:55Z",
+      "side": 1,
+      "message": "overnight idea...: We could try to replicate the error when we detect it. That will gives us an indication of how easy is going to be to fix the issue.\n\nsomething like:\n\nn_replicate \u003d N_REP\n\nwhile (n_replicate){\n error \u003d do_test()\n if (!error)\n   break\n n_replicate --\n}\n\nif (n_replicate !\u003d N_REP){\n  ERROR(We have found an error, that is replicable N_REP-n_replicate times)\n}",
+      "revId": "e9e9b5ab87ff645260187a57dff58343db737880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77d178f7_307507b9",
