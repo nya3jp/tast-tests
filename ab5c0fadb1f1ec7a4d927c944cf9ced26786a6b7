@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489e8fd9_0bfa7a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/data/2160p_60fps_600frames_20181225.h264.mp4.external",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-03-10T21:10:07Z",
+      "side": 1,
+      "message": "This should belong to other CL, not LM bench",
+      "revId": "ab5c0fadb1f1ec7a4d927c944cf9ced26786a6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
