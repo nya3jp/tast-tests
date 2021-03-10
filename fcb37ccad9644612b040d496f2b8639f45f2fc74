@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "352f1134_f22f7af1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-03-10T21:24:13Z",
+      "side": 1,
+      "message": "LGTM % licensing questions.",
+      "revId": "fcb37ccad9644612b040d496f2b8639f45f2fc74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19e0de37_4ebd74a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-03-10T21:24:13Z",
+      "side": 1,
+      "message": "A couple of questions:\n\n1) The xiph.org links are broken (I think this is expected). How do you know these have the AOM license?\n\n2) Does the license of the videolan.org files fall under TODO(b/179426205) (both for 8 bit and 10 bit)? We may want to clarify this license soon. Do you have a contact at the dav1d project?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 187
+      },
+      "revId": "fcb37ccad9644612b040d496f2b8639f45f2fc74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
