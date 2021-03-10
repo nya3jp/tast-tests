@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a11a4c7b_c9feb328",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-03-10T18:40:28Z",
+      "side": 1,
+      "message": "Comment Sentences (here and elsewhere).",
+      "range": {
+        "startLine": 318,
+        "startChar": 64,
+        "endLine": 318,
+        "endChar": 65
+      },
+      "revId": "803dd58a71b286bee6bc2323b0e51405e50ecbcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
