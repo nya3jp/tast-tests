@@ -261,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e721f723_b469fee0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-10T02:46:48Z",
+      "side": 1,
+      "message": "Actually \"helper.DaemonController().Start(ctx, hwsec.CryptohomeDaemon)\" would wait until cryptohome D-Bus is up, so we could just remove this line.",
+      "parentUuid": "1cf015f5_cd1c527b",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 35
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4371c45a_09b7c615",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 4
@@ -415,6 +439,29 @@
         "startChar": 10,
         "endLine": 168,
         "endChar": 24
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "780c8c39_d8c879c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-10T02:46:48Z",
+      "side": 1,
+      "message": "FYI: potential merge conflict with http://crrev.com/c/2745043",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 2
       },
       "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
