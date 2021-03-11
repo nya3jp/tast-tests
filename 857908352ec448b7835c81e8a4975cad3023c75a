@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d014e51_bc27e6d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_capture_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T17:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cacb92c_694793ee",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 12
+      },
+      "revId": "857908352ec448b7835c81e8a4975cad3023c75a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6044c3e9_0868af4a",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfbe71a5_ab2160af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_capture_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T17:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6044c3e9_0868af4a",
+      "range": {
+        "startLine": 114,
+        "startChar": 25,
+        "endLine": 114,
+        "endChar": 33
+      },
+      "revId": "857908352ec448b7835c81e8a4975cad3023c75a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e38ab3c9_2675e270",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-03-11T16:04:26Z",
       "side": 1,
       "message": "Fatal. Something went very wrong here.",
+      "range": {
+        "startLine": 130,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 11
+      },
+      "revId": "857908352ec448b7835c81e8a4975cad3023c75a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f030ae_b80c5fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_capture_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T17:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e38ab3c9_2675e270",
       "range": {
         "startLine": 130,
         "startChar": 6,
