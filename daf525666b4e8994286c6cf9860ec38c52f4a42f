@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65efb92a_aeb7d5a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T23:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51f076e_a57f7168",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44f1ad1a_68a7fb1d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-11T08:58:04Z",
       "side": 1,
       "message": "Could you error check, or add comment here too?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 50
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be24afe6_5030dfe0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T23:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44f1ad1a_68a7fb1d",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "331bcef9_ee93afed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T23:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e83536c_24c59c7e",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95dcd51b_7324d6d4",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-11T08:55:21Z",
       "side": 1,
       "message": "This intermediate variable is not need.",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59ca55e4_37eeaa48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T23:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95dcd51b_7324d6d4",
       "range": {
         "startLine": 79,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0112c0_7dcd1703",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T23:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86e07d9c_cbf9366c",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a95f5459_c30d19ca",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f09db86c_47004760",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T23:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a95f5459_c30d19ca",
+      "range": {
+        "startLine": 89,
+        "startChar": 21,
+        "endLine": 89,
+        "endChar": 41
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aae4a6bc_ae768483",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-03-11T08:55:21Z",
       "side": 1,
       "message": "Could you check error, or add comment if error check is not needed? Ditto for the next line.",
+      "range": {
+        "startLine": 106,
+        "startChar": 19,
+        "endLine": 106,
+        "endChar": 30
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c2c2558_9601d6ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T23:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae4a6bc_ae768483",
       "range": {
         "startLine": 106,
         "startChar": 19,
@@ -208,6 +376,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb8589cb_8126ee32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T23:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54559d50_517d5876",
+      "range": {
+        "startLine": 164,
+        "startChar": 51,
+        "endLine": 164,
+        "endChar": 52
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5261a719_909364ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T23:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb01f483_6e5ae43d",
+      "range": {
+        "startLine": 164,
+        "startChar": 42,
+        "endLine": 164,
+        "endChar": 47
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6066f92_e26ead85",
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcc861a_f3d4f2cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T23:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6066f92_e26ead85",
+      "range": {
+        "startLine": 167,
+        "startChar": 42,
+        "endLine": 167,
+        "endChar": 47
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "263cf96e_12512b59",
@@ -244,6 +484,30 @@
       "writtenOn": "2021-03-11T08:55:21Z",
       "side": 1,
       "message": "nit: I think this is not meaningful. diff is always empty.",
+      "range": {
+        "startLine": 182,
+        "startChar": 41,
+        "endLine": 182,
+        "endChar": 63
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae38a97_99b63cb0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T23:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "263cf96e_12512b59",
       "range": {
         "startLine": 182,
         "startChar": 41,
