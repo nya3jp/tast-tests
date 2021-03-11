@@ -54,6 +54,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ec5cc11_3a648ce7",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "Usually it is just ui.",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "714c897d_476e1178",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "I see cr is widely used to represent an instance of Chrome.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e10861_cc6ace8e",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "What about making this public so that we do not need NodeFinder?",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a82d5c_77519f7e",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "I\u0027d suggest to define a base node:\n   \n    keyNode \u003d nodewith.Role(role.Button).Ancestor(vkRootFinder)\n\nThen when it comes to define a real node:\n    keyNode.Name(\"...\")\n\nAccording to https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;l\u003d283, it always creates a new node when it calls Name().",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 1
+      },
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9878153c_11b40afd",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "This is a re-write of line 117 in the old version, suggest to move it above BackgroundConn to make it easier to review.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 1
+      },
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "828aed4a_30ae4475",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 3
@@ -71,6 +186,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7219c28_0284794f",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "Agree. And suggest to maintain the order of method for easier review.",
+      "parentUuid": "828aed4a_30ae4475",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1078dc81_521c51dd",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "Please do not use capitalise here, otherwise the error msg would become failed to Force...",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 23
+      },
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e935943_0c31c62b",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 3
@@ -82,6 +238,29 @@
       "writtenOn": "2021-03-11T02:17:39Z",
       "side": 1,
       "message": "I don\u0027t think you need to use uiauto.Action here. Since it\u0027s a typedef, I think it should work without.",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9111aee7_670bb6bb",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 108,
+        "startChar": 18,
+        "endLine": 108,
+        "endChar": 23
+      },
       "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +301,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8471251f_b5fc4a3a",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "vkbCtx.uiAutoCtx",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 32
+      },
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ae81b3_61f064a9",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "Please log the error",
+      "range": {
+        "startLine": 123,
+        "startChar": 65,
+        "endLine": 123,
+        "endChar": 67
+      },
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4194291a_4b9e03a6",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "vkbCtx.uiAutoCtx",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fca1cf3_f0fca8b4",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 3
@@ -133,6 +381,24 @@
       "writtenOn": "2021-03-11T02:17:39Z",
       "side": 1,
       "message": "Sleep returns an error. Also, since you\u0027re calling 4 functions that return an error in a row, it may be useful to create a mouse.*Action and a testing.SleepAction in the uiauto library (except presumably don\u0027t call them actions).\n\nI made this script to add relevant actions to a file, it\u0027ll probably give you a good start.\nhttps://paste.googleplex.com/5047391989268480",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fedd3370_1db2f282",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "I\u0027ll port ui/mouse to uiauto/mouse.",
+      "parentUuid": "4fca1cf3_f0fca8b4",
       "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -207,6 +473,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e870445_4432f90a",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "Please use lowcase",
+      "range": {
+        "startLine": 322,
+        "startChar": 24,
+        "endLine": 322,
+        "endChar": 27
+      },
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87a2e4bf_a3427057",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 3
@@ -218,6 +507,24 @@
       "writtenOn": "2021-03-11T02:17:39Z",
       "side": 1,
       "message": "Just a note that if you haven\u0027t, you may want to test these functions out with child CLs before submitting this one, or you may have to fix some bugs you\u0027ll end up submitting.\n\nIIRC, I had some issues with LeftClick failing because the keyfinder returned two nodes (which is an error in the new library, but not in the old one)",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f942e4_1e23e443",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T03:06:53Z",
+      "side": 1,
+      "message": "If there are multiple nodes matching the search and it is the first node you are looking for, call First(): https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;l\u003d243\n\nThe old library just return the first node it matches. The new library returns an error if multiple results found.",
+      "parentUuid": "87a2e4bf_a3427057",
       "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
