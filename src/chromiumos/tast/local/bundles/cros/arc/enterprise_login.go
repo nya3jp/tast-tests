@@ -128,7 +128,7 @@ func EnterpriseLogin(ctx context.Context, s *testing.State) {
 	// Try to launch ARC, it should succeed only if enabled by policy.
 	a, err := arc.New(ctx, s.OutDir())
 	if err == nil {
-		defer a.Close()
+		defer a.Close(ctx)
 		if arcEnabled != true {
 			s.Error("Started ARC while blocked by user policy")
 		}

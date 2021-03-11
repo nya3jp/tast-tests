@@ -350,7 +350,7 @@ func (te *TestEnv) Close(ctx context.Context, p *RunParameters) {
 		}
 	}
 	if te.arc != nil && p.ExistingARC == nil {
-		te.arc.Close()
+		te.arc.Close(ctx)
 		te.arc = nil
 	}
 	if te.cr != nil && p.ExistingChrome == nil {

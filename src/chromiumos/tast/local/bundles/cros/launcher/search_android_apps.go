@@ -75,7 +75,7 @@ func SearchAndroidApps(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 	if err := a.WaitIntentHelper(ctx); err != nil {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}

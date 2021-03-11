@@ -58,7 +58,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	}
 	defer func() {
 		if a != nil {
-			a.Close()
+			a.Close(ctx)
 		}
 	}()
 
@@ -97,7 +97,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		s.Fatal("Failed to wait for old ARCVM process to exit: ", err)
 	}
-	if err := a.Close(); err != nil {
+	if err := a.Close(ctx); err != nil {
 		s.Error("Failed to close a object associated with ARC: ", err)
 	}
 
@@ -107,7 +107,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	if a, err = arc.New(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed to start ARCVM: ", err)
 	}
-	// `defer a.Close()` is not needed here because it's already declared.
+	// `defer a.Close(ctx)` is not needed here because it's already declared.
 
 	s.Log("Getting crash dir path")
 	crashDir, err := crash.GetCrashDir("chronos")

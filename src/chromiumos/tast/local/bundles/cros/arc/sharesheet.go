@@ -88,7 +88,7 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to setup ARC: ", err)
 	}
-	defer arcDevice.Close()
+	defer arcDevice.Close(ctx)
 	defer uiAutomator.Close(ctx)
 
 	if err := arcDevice.Install(ctx, arc.APKPath("ArcChromeSharesheetTest.apk")); err != nil {
@@ -132,7 +132,7 @@ func setUpARC(ctx context.Context, cr *chrome.Chrome, outDir string) (*arc.ARC, 
 	// Start up UI automator.
 	uiAutomator, err := arcDevice.NewUIDevice(ctx)
 	if err != nil {
-		if err := arcDevice.Close(); err != nil {
+		if err := arcDevice.Close(ctx); err != nil {
 			testing.ContextLog(ctx, "Failed to close UI automator: ", err)
 		}
 		return nil, nil, errors.Wrap(err, "failed to initialize UI automator")

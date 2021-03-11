@@ -842,7 +842,7 @@ func NewTestEnv(ctx context.Context, outDir string, enableARC bool, archive stri
 // Close closes the Chrome, ARC, and WPR instances used in the TestEnv.
 func (te *TestEnv) Close(ctx context.Context) {
 	if te.arc != nil {
-		te.arc.Close()
+		te.arc.Close(ctx)
 		te.arc = nil
 	}
 	if te.cr != nil {
