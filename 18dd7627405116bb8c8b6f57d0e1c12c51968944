@@ -101,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ace0dbc_ae2d56ed",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-11T09:03:13Z",
+      "side": 1,
+      "message": "The output is not intended to be machine readable? I think it\u0027s worth having a TODO comment here. Parsing human-readable output is error-prone.",
+      "parentUuid": "88015135_29e502c6",
+      "range": {
+        "startLine": 979,
+        "startChar": 0,
+        "endLine": 979,
+        "endChar": 53
+      },
+      "revId": "18dd7627405116bb8c8b6f57d0e1c12c51968944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ffef975_cf2d8c21",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 4
