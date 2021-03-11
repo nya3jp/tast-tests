@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04dc7cea_f9d5c084",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-11T18:00:32Z",
+      "side": 1,
+      "message": "huge nit: I\u0027m not familiar with \"factically\" and \"define factically\" in Google didn\u0027t give any answer... any chance that you could use another word?",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 13
+      },
+      "revId": "be413f7f881101467ccce08f5e43e48eaef17775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d0bcaed_60d0fe6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-11T18:00:32Z",
+      "side": 1,
+      "message": "[Yury asked me to review since it was blocking PFQ]\n\n\ntast-wise: +2",
+      "revId": "be413f7f881101467ccce08f5e43e48eaef17775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
