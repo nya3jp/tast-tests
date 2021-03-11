@@ -115,12 +115,10 @@ func SystemProxyForSystemServices(ctx context.Context, s *testing.State) {
 // or if the certificate verification failed.
 func runTLSDate(ctx context.Context, conn *ssh.Conn) error {
 	// tlsdated is a CrOS daemon that runs the tlsdate binary periodically in the background and does proxy resolution through Chrome.
-	// Prepend `timeout` to the command that runs tlsdated to send SIGTERM to the daemon after the first invocation (otherwise tlsdated
-	// will run in the foreground until the connection times out).
 	// The `-m <n>` option means tlsdate should run at most once every n seconds in steady state
 	// The `-p` option means dry run.
-	// TODO(acostinas,b/179762130) Remove timeout once tlsdated has an option to exit after the first invocation.
-	out, err := conn.Command("timeout", "20", "/usr/bin/tlsdated", "-p", "-m", "60", "--", "/usr/bin/tlsdate", "-v", "-C", "/usr/share/chromeos-ca-certificates", "-l").CombinedOutput(ctx)
+	// The `-o` option means exit tlsdated after running once
+	out, err := conn.Command("/usr/bin/tlsdated", "-o", "-p", "-m", "60", "--", "/usr/bin/tlsdate", "-v", "-C", "/usr/share/chromeos-ca-certificates", "-l").CombinedOutput(ctx)
 
 	//  The exit code 124 indicates that timeout sent a SIGTERM to terminate tlsdate.
 	if err != nil && !strings.Contains(err.Error(), "Process exited with status 124") {
