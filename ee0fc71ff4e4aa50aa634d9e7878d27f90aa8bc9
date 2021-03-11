@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d1ccc85_0a4a58eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-11T06:28:33Z",
+      "side": 1,
+      "message": "If you could also add the fixture to proxy_add.go, that be awesome. Thanks in advance!",
+      "revId": "ee0fc71ff4e4aa50aa634d9e7878d27f90aa8bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
