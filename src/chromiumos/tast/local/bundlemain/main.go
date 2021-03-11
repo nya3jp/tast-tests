@@ -24,7 +24,6 @@ import (
 	"chromiumos/tast/local/ready"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/syslog"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -115,16 +114,6 @@ func hwsecCheckTPMState(ctx context.Context, origStatus *hwsec.NonsensitiveStatu
 }
 
 func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx context.Context, s *testing.TestHookState) {
-	// Ensure the ui service is running.
-	if upstart.WaitForJobStatus(ctx, "ui", upstart.StartGoal, upstart.RunningState, upstart.RejectWrongGoal, 10*time.Second) != nil {
-		s.Log("Starting ui service")
-		con, cancel := context.WithTimeout(ctx, 10*time.Second)
-		if err := upstart.StartJob(con, "ui"); err != nil {
-			s.Log("Failed to start ui service: ", err)
-		}
-		cancel()
-	}
-
 	endLogFn, err := syslog.CollectSyslog()
 	if err != nil {
 		s.Log("Saving log position: ", err)
