@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "221851d3_a5006373",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-11T08:53:00Z",
+      "side": 1,
+      "message": "nit: Revert",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "c395f55fffbe1129b406a6326e9adc5502631dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6ff1fe0_7f147513",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -106,6 +129,29 @@
       "writtenOn": "2021-03-10T19:05:13Z",
       "side": 1,
       "message": "Hi Victor and Gabor, can you please take a look?\n\nThanks!",
+      "revId": "c395f55fffbe1129b406a6326e9adc5502631dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f7300d2_500c6e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-11T08:53:00Z",
+      "side": 1,
+      "message": "Do we want to test all opening possibilities?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 19
+      },
       "revId": "c395f55fffbe1129b406a6326e9adc5502631dae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
