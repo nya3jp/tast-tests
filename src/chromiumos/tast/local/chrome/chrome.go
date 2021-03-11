@@ -120,16 +120,16 @@ type Chrome struct {
 }
 
 // Creds returns credentials used to log into a session.
-func (c *Chrome) Creds() Creds { return c.cfg.Creds }
+func (c *Chrome) Creds() Creds { return c.cfg.Creds() }
 
 // User returns the username that was used to log in to Chrome. Note that in almost all cases you actually want NormalizedUser below.
-func (c *Chrome) User() string { return c.cfg.Creds.User }
+func (c *Chrome) User() string { return c.cfg.Creds().User }
 
 // NormalizedUser returns the normalized (lowercase and striping '.' characters) username that was used to log in to Chrome.
-func (c *Chrome) NormalizedUser() string { return c.cfg.NormalizedUser }
+func (c *Chrome) NormalizedUser() string { return c.cfg.NormalizedUser() }
 
 // LacrosExtraArgs returns the extra arguments that should be added to the Lacros command line.
-func (c *Chrome) LacrosExtraArgs() []string { return c.cfg.LacrosExtraArgs }
+func (c *Chrome) LacrosExtraArgs() []string { return c.cfg.LacrosExtraArgs() }
 
 // DeprecatedExtDirs returns the directories holding the test extensions.
 // For reused Chrome session, deprecatedExtDirs is not set and this method will return nil.
@@ -165,7 +165,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	// chrome.New may fail and get stuck on an unexpected screen. Without timeout,
 	// it simply runs out the entire timeout. See https://crbug.com/1078873.
 	timeout := LoginTimeout
-	if cfg.LoginMode == config.GAIALogin {
+	if cfg.LoginMode() == config.GAIALogin {
 		timeout = GAIALoginTimeout
 	}
 	origCtx := ctx
@@ -187,7 +187,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		return nil, errors.Wrap(err, "pre-flight check failed")
 	}
 
-	if cfg.TryReuseSession {
+	if cfg.TryReuseSession() {
 		reuseCtx, reuseCancel := context.WithTimeout(ctx, tryReuseSessionTimeout)
 		defer reuseCancel()
 		cr, err := tryReuseSession(reuseCtx, cfg)
@@ -202,7 +202,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	}
 
 	guestModeLogin := extension.GuestModeDisabled
-	if cfg.LoginMode == config.GuestLogin {
+	if cfg.LoginMode() == config.GuestLogin {
 		guestModeLogin = extension.GuestModeEnabled
 	}
 	exts, err := extension.PrepareExtensions(extensionsDir, cfg, guestModeLogin)
@@ -231,14 +231,14 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		}
 	}()
 
-	if cfg.LoginMode != config.NoLogin && !cfg.KeepState {
-		if err := cryptohome.RemoveUserDir(ctx, cfg.NormalizedUser); err != nil {
-			return nil, errors.Wrapf(err, "failed to remove cryptohome user directory for %s", cfg.NormalizedUser)
+	if cfg.LoginMode() != config.NoLogin && !cfg.KeepState() {
+		if err := cryptohome.RemoveUserDir(ctx, cfg.NormalizedUser()); err != nil {
+			return nil, errors.Wrapf(err, "failed to remove cryptohome user directory for %s", cfg.NormalizedUser())
 		}
 	}
 
 	loginPending := false
-	if cfg.DeferLogin {
+	if cfg.DeferLogin() {
 		loginPending = true
 	} else {
 		if err := login.LogIn(ctx, cfg, sess); err == login.ErrNeedNewSession {
@@ -256,7 +256,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 
 	// VK uses different extension instance in login profile and user profile.
 	// BackgroundConn will wait until the background connection is unique.
-	if cfg.VKEnabled {
+	if cfg.VKEnabled() {
 		// Background target from login persists for a few seconds, causing 2 background targets.
 		// Polling until connected to the unique target.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -387,7 +387,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		return errors.Wrap(err, "failed to free tast remote JS object group")
 	}
 
-	if c.cfg.VKEnabled {
+	if c.cfg.VKEnabled() {
 		// Calling the method directly to avoid vkb/chrome circular imports.
 		if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.inputMethodPrivate.hideInputView)()", nil); err != nil {
 			return errors.Wrap(err, "failed to hide virtual keyboard")

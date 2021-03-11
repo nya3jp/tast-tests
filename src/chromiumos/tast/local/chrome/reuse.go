@@ -24,7 +24,7 @@ import (
 func tryReuseSession(ctx context.Context, cfg *config.Config) (cr *Chrome, retErr error) {
 	testing.ContextLog(ctx, "Trying to reuse existing chrome session")
 
-	if !cfg.TryReuseSession {
+	if !cfg.TryReuseSession() {
 		return nil, errors.New("TryReuseSession option is not set")
 	}
 
@@ -52,7 +52,7 @@ func tryReuseSession(ctx context.Context, cfg *config.Config) (cr *Chrome, retEr
 		return nil, err
 	}
 
-	if err := compareUserLogin(ctx, sess, cfg.Creds.User); err != nil {
+	if err := compareUserLogin(ctx, sess, cfg.Creds().User); err != nil {
 		return nil, err
 	}
 
@@ -60,7 +60,7 @@ func tryReuseSession(ctx context.Context, cfg *config.Config) (cr *Chrome, retEr
 		cfg:          *cfg,
 		agg:          agg,
 		sess:         sess,
-		loginPending: cfg.DeferLogin,
+		loginPending: cfg.DeferLogin(),
 	}, nil
 }
 
@@ -79,7 +79,7 @@ func compareExtensions(cfg *config.Config) error {
 	}
 	defer os.RemoveAll(tempDir)
 	guestModeLogin := extension.GuestModeDisabled
-	if cfg.LoginMode == config.GuestLogin {
+	if cfg.LoginMode() == config.GuestLogin {
 		guestModeLogin = extension.GuestModeEnabled
 	}
 	// PrepareExtensions() expects a non-existent extension dir.
