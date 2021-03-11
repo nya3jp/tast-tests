@@ -238,6 +238,24 @@
       "message": "I\u0027m not sure if this is guaranteed. Can you ask someone from viz/gpu team to confirm.",
       "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac7b3f2e_3a6a2819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1357502
+      },
+      "writtenOn": "2021-03-11T19:14:02Z",
+      "side": 1,
+      "message": "Generally viz can\u0027t guarantee that quad will go to overlay, there are many reasons why quad can\u0027t be overlaid (e.g copy output requests).\n\nBut the idea of the test that we do actually overlay in specific conditions, which makes somewhat sense. Although maybe it\u0027s better to have it in chromium side? Maybe even as unit test and not the browser test.",
+      "parentUuid": "48241b58_2218a64a",
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
