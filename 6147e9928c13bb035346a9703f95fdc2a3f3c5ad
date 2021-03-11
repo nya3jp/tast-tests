@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8351c9b_00662a51",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-11T01:34:57Z",
+      "side": 1,
+      "message": "Though graphics team is mainly the consumer of this fixture, this fixture is mainly manipulating upstart init daemon. \n\nHow about moving this to tast/local/upstart/?",
+      "range": {
+        "startLine": 52,
+        "startChar": 20,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "6147e9928c13bb035346a9703f95fdc2a3f3c5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
