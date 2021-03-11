@@ -6,6 +6,7 @@
 package arc
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -42,6 +43,10 @@ const (
 	waitPackagesTimeout = 5 * time.Minute
 
 	logcatName = "logcat.txt"
+
+	pstoreCommandPath                 = "/usr/bin/vm_pstore_dump"
+	pstoreCommandExitCodeFileNotFound = 2
+	arcvmConsoleName                  = "messages-arcvm"
 
 	//ARCPath is the path where the container images are installed in the rootfs.
 	ARCPath = "/opt/google/containers/android"
@@ -124,6 +129,7 @@ func Type() (t InstallType, ok bool) {
 // those resources.
 type ARC struct {
 	device       *adb.Device   // ADB device to communicate with ARC
+	outDir       string        // directory for log files. This becomes empty after ARC.saveLogFiles().
 	logcatCmd    *testexec.Cmd // process saving Android logs
 	logcatWriter dynamicWriter // writes output from logcatCmd to logcatFile
 	logcatFile   *os.File      // file currently being written to
@@ -135,16 +141,17 @@ func (a *ARC) Close(ctx context.Context) error {
 	if locked {
 		panic("Do not call Close while precondition is being used")
 	}
-	var err error
-	if a.logcatCmd != nil {
-		a.logcatCmd.Kill()
-		a.logcatCmd.Wait()
+	var errs []error
+	if err := a.saveLogFiles(ctx); err != nil {
+		errs = append(errs, err)
 	}
-	if a.logcatFile != nil {
-		a.logcatWriter.setDest(nil)
-		err = a.logcatFile.Close()
+	if err := a.cleanUpLogcatFile(); err != nil {
+		errs = append(errs, err)
 	}
-	return err
+	if len(errs) != 0 {
+		return errs[0]
+	}
+	return nil
 }
 
 // New waits for Android to finish booting.
@@ -177,7 +184,9 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, err
 	}
 
-	arc := &ARC{}
+	arc := &ARC{
+		outDir: outDir,
+	}
 	toClose := arc
 	defer func() {
 		if toClose != nil {
@@ -288,6 +297,15 @@ func checkSoftwareDeps(ctx context.Context) error {
 	return errors.Errorf("test must declare at least one of Android software dependencies %v", androidDeps)
 }
 
+// resetOutDir updates the outDir field of ARC object.
+func (a *ARC) resetOutDir(ctx context.Context, outDir string) error {
+	a.outDir = outDir
+	if err := a.setLogcatFile(filepath.Join(a.outDir, logcatName)); err != nil {
+		return err
+	}
+	return nil
+}
+
 // setLogcatFile creates a new logcat output file at p and opens it as a.logcatFile.
 // a.logcatWriter is updated to write to the new file, and explanatory messages are
 // written to both the new file and old file (if there was a previous file).
@@ -316,6 +334,20 @@ func (a *ARC) setLogcatFile(p string) error {
 	}
 
 	return createErr
+}
+
+func (a *ARC) cleanUpLogcatFile() error {
+	if a.logcatCmd != nil {
+		a.logcatCmd.Kill()
+		a.logcatCmd.Wait()
+	}
+	if a.logcatFile != nil {
+		a.logcatWriter.setDest(nil)
+		if err := a.logcatFile.Close(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // VMEnabled returns true if Chrome OS is running ARCVM.
@@ -529,4 +561,63 @@ func GetState(ctx context.Context, tconn *chrome.TestConn) (State, error) {
 		return state, errors.Wrap(err, "failed to run autotestPrivate.getArcState")
 	}
 	return state, nil
+}
+
+// saveLogFiles writes log files to the a.outDir directory and clears the a.outDir.
+func (a *ARC) saveLogFiles(ctx context.Context) error {
+	if a.outDir == "" {
+		return nil
+	}
+	if _, err := os.Stat(a.outDir); os.IsNotExist(err) {
+		// Preconditions may call this method after the outDir is removed.
+		return nil
+	}
+
+	if err := saveARCVMConsole(ctx, filepath.Join(a.outDir, arcvmConsoleName)); err != nil {
+		return errors.Wrap(err, "failed to save the messages-arcvm")
+	}
+
+	// Reset outDir to avoid saving the same files twice at ARC.Close().
+	a.outDir = ""
+	return nil
+}
+
+// saveARCVMConsole saves the console output of ARCVM Kernel to the given path using vm_pstore_dump command.
+func saveARCVMConsole(ctx context.Context, path string) error {
+	// Do nothing for containers. The console output is already captured for containers.
+	isVMEnabled, err := VMEnabled()
+	if err != nil {
+		return err
+	}
+	if !isVMEnabled {
+		return nil
+	}
+
+	// TODO(b/153934386): Remove this check when pstore is enabled on ARM.
+	// The pstore feature is enabled only on x86_64. It's not enabled on some architectures, and this `vm_pstore_dump` command doesn't exist on such architectures.
+	if _, err := os.Stat(pstoreCommandPath); os.IsNotExist(err) {
+		testing.ContextLog(ctx, "Saving messages-arcvm file is skipped because vm_pstore_dump command is not found")
+		return nil
+	}
+
+	file, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	cmd := testexec.CommandContext(ctx, pstoreCommandPath)
+	cmd.Stdout = file
+	var errbuf bytes.Buffer
+	cmd.Stderr = &errbuf
+	if err := cmd.Run(); err != nil {
+		errmsg := errbuf.String()
+		if cmd.ProcessState.ExitCode() == pstoreCommandExitCodeFileNotFound {
+			// This failure sometimes happens when ARCVM failed to boot. So we don't make this error.
+			testing.ContextLogf(ctx, "vm_pstore_dump command failed because the .pstore file doesn't exist: %#v", errmsg)
+		} else {
+			return errors.Wrapf(err, "vm_pstore_dump command failed with an unexpected reason: %#v", errmsg)
+		}
+	}
+	return nil
 }

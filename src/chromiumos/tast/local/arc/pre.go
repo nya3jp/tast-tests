@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -110,8 +109,11 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			if err := p.cr.ResetState(ctx); err != nil {
 				return nil, errors.Wrap(err, "failed to reset Chrome")
 			}
-			if err := p.arc.setLogcatFile(filepath.Join(s.OutDir(), logcatName)); err != nil {
-				return nil, errors.Wrap(err, "failed to update logcat output file")
+			if err := p.arc.saveLogFiles(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed to save ARC-related log files")
+			}
+			if err := p.arc.resetOutDir(ctx, s.OutDir()); err != nil {
+				return nil, errors.Wrap(err, "failed to reset outDir field of ARC object")
 			}
 			return PreData{p.cr, p.arc}, nil
 		}()
