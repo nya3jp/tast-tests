@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0679fb2_1e7e0f1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T23:00:34Z",
+      "side": 1,
+      "message": "Agree",
+      "parentUuid": "210c3b19_173afdcc",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 15
+      },
+      "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77239cd7_0affa4ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
         "patchSetId": 3
@@ -60,6 +84,30 @@
       "writtenOn": "2021-03-11T22:26:29Z",
       "side": 1,
       "message": "Similar to the above comment here. The closeWebPage ensures the track has ended, you probably don\u0027t need to ensure such a state and doing so would stop the pageConn from closing as it would error out early. You can just defer the pageConn.Release in this context.\n\nGiven the pageConn and trackState are being created at the start of every test, you can close them off in the test scope as well.",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ac3b27_9104dd23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T23:00:34Z",
+      "side": 1,
+      "message": "I guess closing the app and webpage is part of the test as well, so if just using defer, it might not return the proper msg.",
+      "parentUuid": "98595386_5511fd95",
       "range": {
         "startLine": 96,
         "startChar": 2,
