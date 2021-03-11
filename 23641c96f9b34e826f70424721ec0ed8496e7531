@@ -46,6 +46,30 @@
       },
       "revId": "23641c96f9b34e826f70424721ec0ed8496e7531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e28b8a_b220d4db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-11T11:24:17Z",
+      "side": 1,
+      "message": "Not sure, but the informational tests are executed per build.",
+      "parentUuid": "258f2f6d_618600c1",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "23641c96f9b34e826f70424721ec0ed8496e7531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
