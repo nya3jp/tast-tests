@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a403895_b7a0a033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_coexistence.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-11T07:13:03Z",
+      "side": 1,
+      "message": "Replace it with \u003cvideo\u003e and set the camera stream as its srcObject?",
+      "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "220651c4_d77a0603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_coexistence.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-11T07:13:03Z",
+      "side": 1,
+      "message": "I guess this may fail for some devices in tablet mode with two cameras because\n\n1. CCA will try to open back camera in tablet mode.\n2. The web page will try to open front camera by default (not 100% sure, that\u0027s my vague memory)\n3. Some tablet/convertible devices do not support opening front and back cameras at the same time.",
+      "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
