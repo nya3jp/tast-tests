@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b76071_40b422a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-11T17:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d0b2c13_4e46fca3",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77e96811_b743313e",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-03-11T10:25:08Z",
       "side": 1,
       "message": "nit: Failed to record histogram Viz.DisplayCompositor.OverlayStrategy",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 80
+      },
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "711a0461_629cce42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-11T17:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77e96811_b743313e",
       "range": {
         "startLine": 63,
         "startChar": 11,
@@ -122,6 +170,54 @@
         "startChar": 4,
         "endLine": 83,
         "endChar": 10
+      },
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f611d6_c4649acd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-11T17:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cb94119_f6251a9b",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 10
+      },
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67caf0bd_7d76bb53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-11T17:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0364349_bde5acb6",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 77
       },
       "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
