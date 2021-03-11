@@ -41,7 +41,7 @@ func init() {
 			"chrome_internal",
 		},
 		Params: []testing.Param{{
-			ExtraAttr:         []string{"informational"}, // TODO(b/177341225): remove after stabalized.
+			ExtraAttr:         []string{"informational"}, // TODO(b/177341225): remove after stabilized.
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(optinUnstableModels...)),
 		}, {
@@ -51,7 +51,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(optinUnstableModels...)),
 		}, {
 			Name:              "vm",
-			ExtraAttr:         []string{"informational"}, // TODO(b/177341225): remove after stabalized.
+			ExtraAttr:         []string{"informational"}, // TODO(b/177341225): remove after stabilized.
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(optinUnstableModels...)),
 		}, {
@@ -64,9 +64,19 @@ func init() {
 	})
 }
 
+// Optin tests optin flow.
 func Optin(ctx context.Context, s *testing.State) {
+	cr := setupChrome(ctx, s)
+	defer cr.Close(ctx)
 
-	// Setup Chrome.
+	s.Log("Performing optin")
+
+	const maxAttempts = 3 // TODO(b/177341225): remove after stabilized.
+	optinWithRetry(ctx, s, cr, maxAttempts)
+}
+
+// setupChrome starts chrome with pooled GAIA account and ARC enabled.
+func setupChrome(ctx context.Context, s *testing.State) *chrome.Chrome {
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
@@ -74,15 +84,16 @@ func Optin(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	defer cr.Close(ctx)
+	return cr
+}
+
+// optinWithRetry retries optin on failure up to maxAttempts times.
+func optinWithRetry(ctx context.Context, s *testing.State, cr *chrome.Chrome, maxAttempts int) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
-	s.Log("Performing optin")
-
-	const maxAttempts = 3 // TODO(b/177341225): remove after stabalized.
 	attempts := 0
 	for {
 		err := optin.Perform(ctx, cr, tconn)
@@ -91,6 +102,11 @@ func Optin(ctx context.Context, s *testing.State) {
 		}
 		attempts = attempts + 1
 		if attempts >= maxAttempts {
+			// Creating ARC instance to dump logcat.txt on exit.
+			if a, err := arc.New(ctx, s.OutDir()); err == nil {
+				defer a.Close()
+			}
+
 			s.Fatal("Failed to optin. No more retries left: ", err)
 		}
 		s.Log("Retrying optin, previous attempt failed: ", err)
@@ -100,5 +116,4 @@ func Optin(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to optout: ", err)
 		}
 	}
-
 }
