@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a0d433_c14e4dec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-11T00:06:20Z",
+      "side": 1,
+      "message": "Hi reviewers, as discussed offline with Judy. New vkb uiauto libray will be placed under uiauto/vkb, the current change is in existing vkb lib so reviewers have a clear view of changes made.\nOnce all comments solved, I will move the whole file to new package in the last patch upload before submit.\n\nMore background: (AFAIK) Git can only simply diff 2 commits, does not provide a way to branching code like g3 ",
+      "revId": "20af597377ec84d934b3677357fb30811c1bcd5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
