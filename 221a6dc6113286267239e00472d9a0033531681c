@@ -16,6 +16,29 @@
       "message": "Reviewers PTAL.",
       "revId": "221a6dc6113286267239e00472d9a0033531681c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e971064e_d59a2b2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-11T16:31:36Z",
+      "side": 1,
+      "message": "Note that these lines are added in the previous CL in the chain.",
+      "range": {
+        "startLine": 544,
+        "startChar": 38,
+        "endLine": 547,
+        "endChar": 2
+      },
+      "revId": "221a6dc6113286267239e00472d9a0033531681c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
