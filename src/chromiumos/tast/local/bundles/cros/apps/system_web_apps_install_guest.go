@@ -24,7 +24,7 @@ func init() {
 		},
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name: "all_apps",
 			Val:  []chrome.Option{chrome.EnableFeatures("EnableAllSystemWebApps")},
