@@ -235,6 +235,24 @@
       "parentUuid": "86301c1c_96ff6de4",
       "revId": "65b061315181b55bd46caad17d7f155685c655e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef967db_a7d45b27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-03-11T05:12:34Z",
+      "side": 1,
+      "message": "Thank you Miguel. I saw that comment earlier, but didn\u0027t realize it is relevant here. Moving comment here made things more clear.",
+      "parentUuid": "f95f7f5c_bbba0a40",
+      "revId": "65b061315181b55bd46caad17d7f155685c655e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
