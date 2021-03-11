@@ -24,11 +24,12 @@ func init() {
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:        []string{"group:wificell", "wificell_func"},
-		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithCapture(),
-		Vars:        []string{"router", "pcap"},
-		Timeout:     10 * time.Minute,
+		Attr:         []string{"group:wificell", "wificell_func"},
+		ServiceDeps:  []string{wificell.TFServiceName},
+		SoftwareDeps: []string{"no_elm_hana_3_18"},
+		Pre:          wificell.TestFixturePreWithCapture(),
+		Vars:         []string{"router", "pcap"},
+		Timeout:      10 * time.Minute,
 	})
 }
 
