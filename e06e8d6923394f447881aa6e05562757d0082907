@@ -16,6 +16,24 @@
       "message": "Vasiliy Telezhnikov, can you answer Oshima\u0027s question?",
       "revId": "e06e8d6923394f447881aa6e05562757d0082907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0353b65_d27d49ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-11T17:27:51Z",
+      "side": 1,
+      "message": "Marking as unresolved. Sorry I did not see the \"Resolved\" checkbox when replying to the CL.",
+      "parentUuid": "45c95f69_89f8fc01",
+      "revId": "e06e8d6923394f447881aa6e05562757d0082907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
