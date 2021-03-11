@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26fd4dff_e34b82f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-11T10:40:08Z",
+      "side": 1,
+      "message": "Please take a look again. FYI, I switched to using uiauto so there a more changes. ",
+      "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d8b2d8_b5138128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_maximum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-11T10:40:08Z",
+      "side": 1,
+      "message": "I could not find an API to refresh node info, so I\u0027m fetching it here again. If you know a better way, I\u0027d be happy to change this.",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 15
+      },
+      "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
