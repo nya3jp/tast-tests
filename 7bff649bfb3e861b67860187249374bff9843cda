@@ -16,6 +16,24 @@
       "message": "This is breaking Cyan on ToT which it didn\u0027t test against. Is there a missing software or hardware dependency flag needed?",
       "revId": "7bff649bfb3e861b67860187249374bff9843cda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4fc28a7_4b29e779",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-03-11T15:05:21Z",
+      "side": 1,
+      "message": "This test should not be board specific. Should we revert it until I figure out what\u0027s wrong?\n\nCan you please share some error logs (the test runs successfully my eve DUT)?\n\nThank you!",
+      "parentUuid": "b8e13ecc_9f0051ca",
+      "revId": "7bff649bfb3e861b67860187249374bff9843cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
