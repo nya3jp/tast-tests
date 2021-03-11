@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AudioCaptureAllowed</title>
+</head>
+<body>
+  <script>
+    function requestMicrophone() {
+      return navigator.mediaDevices.getUserMedia({audio: true})
+      .then(function(stream){return true;})
+      .catch(function(err){return false;});
+    }
+  </script>
+</body>
+</html>
