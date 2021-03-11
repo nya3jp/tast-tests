@@ -16,6 +16,75 @@
       "message": "Hi Renuga, \n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13d0604_8fd33939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-11T02:35:32Z",
+      "side": 1,
+      "message": "Is this order change intentional?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 72
+      },
+      "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3a39f4_d6c3b3fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-11T02:35:32Z",
+      "side": 1,
+      "message": "continueButton I guess",
+      "range": {
+        "startLine": 259,
+        "startChar": 9,
+        "endLine": 259,
+        "endChar": 20
+      },
+      "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e397620_33c59e5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-11T02:35:32Z",
+      "side": 1,
+      "message": "There are 4 button clicks (continue + sync contacts + continue + finish button ) followed by HandleDialogBoxes each time. Is this because the ui flow of the app is different and unpredictable each time?",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 50
+      },
+      "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
