@@ -21,13 +21,13 @@ func TestGlBenchParams(t *testing.T) {
 	// This test suite has some non-crostini test parameters, so add them here.
 	params := `{
 			Name:      "",
-			Val:       glbenchConfig{environment: envCros},
+			Val:       config{config: &glbench.CrosConfig{}},
 			Timeout:   3 * time.Hour,
 			ExtraAttr: []string{"group:graphics", "graphics_nightly"},
 			Fixture:   "gpuWatchHangs",
 		}, {
 			Name:      "hasty",
-			Val:       glbenchConfig{hasty: true, environment: envCros},
+			Val:       config{config: &glbench.CrosConfig{Hasty: true}},
 			ExtraAttr: []string{"group:mainline"},
 			Timeout:   5 * time.Minute,
 			Fixture:   "gpuWatchHangs",
@@ -36,7 +36,7 @@ func TestGlBenchParams(t *testing.T) {
 		{
 			Name:              "crostini",
 			Timeout:           60 * time.Minute,
-			Val:               `glbenchConfig{environment: envDebian}`,
+			Val:               `config{config: &glbench.CrostiniConfig{}}`,
 			ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
 			ExtraAttr:         []string{"group:graphics", "graphics_weekly"},
 			MinimalSet:        true,
@@ -44,7 +44,7 @@ func TestGlBenchParams(t *testing.T) {
 		}, {
 			Name:              "crostini_hasty",
 			Timeout:           5 * time.Minute,
-			Val:               `glbenchConfig{hasty: true, environment: envDebian}`,
+			Val:               `config{config: &glbench.CrostiniConfig{Hasty: true}}`,
 			ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
 			ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
 			MinimalSet:        true,
