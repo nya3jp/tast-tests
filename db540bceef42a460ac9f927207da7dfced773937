@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d5d929a_bfb5df94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-11T17:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feb065f7_b7a6dbf9",
+      "range": {
+        "startLine": 73,
+        "startChar": 58,
+        "endLine": 73,
+        "endChar": 68
+      },
+      "revId": "db540bceef42a460ac9f927207da7dfced773937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "178257be_ae04d83f",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-11T17:32:17Z",
       "side": 1,
       "message": "nit: add docstring (all non-trivial funcs should have a docstring)",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "db540bceef42a460ac9f927207da7dfced773937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd1ef5b3_c3f1f140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-11T17:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "178257be_ae04d83f",
       "range": {
         "startLine": 77,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "523f9922_a550cb88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-11T17:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f47e3c2_5bc65747",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "db540bceef42a460ac9f927207da7dfced773937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cea03504_c2181aff",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-11T17:32:17Z",
       "side": 1,
       "message": "huge nit: creating -\u003e Creating\nhuge nit: arc -\u003e ARC\nhuge nit: end comment with period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 107,
+        "startChar": 15,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "db540bceef42a460ac9f927207da7dfced773937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb552eb8_6f7c28d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-11T17:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cea03504_c2181aff",
       "range": {
         "startLine": 107,
         "startChar": 15,
