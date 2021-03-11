@@ -227,6 +227,30 @@
       },
       "revId": "4d8c0bf543f3eb7c270d0c9ff49f853d408da6da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0bfc050_2c0b36cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T02:37:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "43419b04_2817ca4f",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "4d8c0bf543f3eb7c270d0c9ff49f853d408da6da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
