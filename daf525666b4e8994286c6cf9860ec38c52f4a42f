@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e83536c_24c59c7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-11T08:55:21Z",
+      "side": 1,
+      "message": "Given this is not test function but rather a helper, could you return error from the function and remove s from the function parameter?",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95dcd51b_7324d6d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-11T08:55:21Z",
+      "side": 1,
+      "message": "This intermediate variable is not need.",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e07d9c_cbf9366c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-11T08:55:21Z",
+      "side": 1,
+      "message": "Can we directly return labels sorting it?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a95f5459_c30d19ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-11T08:55:21Z",
+      "side": 1,
+      "message": "nit: || are not necessary.\nhttps://golang.org/doc/effective_go#commentary\nComments do not need extra formatting such as banners of stars.",
+      "range": {
+        "startLine": 89,
+        "startChar": 21,
+        "endLine": 89,
+        "endChar": 41
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae4a6bc_ae768483",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-11T08:55:21Z",
+      "side": 1,
+      "message": "Could you check error, or add comment if error check is not needed? Ditto for the next line.",
+      "range": {
+        "startLine": 106,
+        "startChar": 19,
+        "endLine": 106,
+        "endChar": 30
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54559d50_517d5876",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-11T08:55:21Z",
+      "side": 1,
+      "message": "nit: %v ?",
+      "range": {
+        "startLine": 164,
+        "startChar": 51,
+        "endLine": 164,
+        "endChar": 52
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb01f483_6e5ae43d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-11T08:55:21Z",
+      "side": 1,
+      "message": "nit: remove , err.\nSeparating err with : is a common construct.",
+      "range": {
+        "startLine": 164,
+        "startChar": 42,
+        "endLine": 164,
+        "endChar": 47
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6066f92_e26ead85",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-11T08:55:21Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 167,
+        "startChar": 42,
+        "endLine": 167,
+        "endChar": 47
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "263cf96e_12512b59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-11T08:55:21Z",
+      "side": 1,
+      "message": "nit: I think this is not meaningful. diff is always empty.",
+      "range": {
+        "startLine": 182,
+        "startChar": 41,
+        "endLine": 182,
+        "endChar": 63
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
