@@ -34,6 +34,16 @@ service AttestationDBusService {
   // GetKeyInfo returns the key info.
   rpc GetKeyInfo (attestation.GetKeyInfoRequest) returns (attestation.GetKeyInfoReply) {}
 
-  // GetEnrollmentID returns  the enrollment id.
+  // GetEnrollmentID returns the enrollment id.
   rpc GetEnrollmentID (attestation.GetEnrollmentIdRequest) returns (attestation.GetEnrollmentIdReply) {}
+
+  // SetKeyPayload sets a payload for a key.
+  rpc SetKeyPayload (attestation.SetKeyPayloadRequest) returns (attestation.SetKeyPayloadReply) {}
+
+  // RegisterKeyWithChapsToken registers the key into chaps.
+  rpc RegisterKeyWithChapsToken (attestation.RegisterKeyWithChapsTokenRequest) returns (attestation.RegisterKeyWithChapsTokenReply) {}
+
+  // DeleteKeys delete user's keys.
+  rpc DeleteKeys (attestation.DeleteKeysRequest) returns (attestation.DeleteKeysReply) {}
+
 }

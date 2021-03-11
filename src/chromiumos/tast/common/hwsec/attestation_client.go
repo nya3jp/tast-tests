@@ -223,3 +223,88 @@ func (u *AttestationClient) GetEnrollmentID(ctx context.Context) (string, error)
 	}
 	return string(hexEncode([]byte(reply.GetEnrollmentId()))), nil
 }
+
+// GetKeyPayload gets the payload associated with the specified key.
+func (u *AttestationClient) GetKeyPayload(
+	ctx context.Context,
+	username,
+	label string) (string, error) {
+	reply, err := u.ac.GetKeyInfo(ctx, &apb.GetKeyInfoRequest{
+		KeyLabel: &label,
+		Username: &username,
+	})
+	if err != nil {
+		return "", errors.Wrap(err, "failed to call |GetKeyInfo|")
+	}
+	if reply.GetStatus() != apb.AttestationStatus_STATUS_SUCCESS {
+		return "", &AttestationError{
+			errors.Errorf("failed |GetKeyInfo|: %s", reply.GetStatus().String()),
+			reply.GetStatus(),
+		}
+	}
+	return string(reply.GetPayload()), nil
+}
+
+// SetKeyPayload sets the payload associated with the specified key.
+func (u *AttestationClient) SetKeyPayload(
+	ctx context.Context,
+	username,
+	label,
+	payload string) (bool, error) {
+	reply, err := u.ac.SetKeyPayload(ctx, &apb.SetKeyPayloadRequest{
+		KeyLabel: &label,
+		Username: &username,
+		Payload:  []byte(payload),
+	})
+	if err != nil {
+		return false, errors.Wrap(err, "failed to call |SetKeyPayload|")
+	}
+	if reply.GetStatus() != apb.AttestationStatus_STATUS_SUCCESS {
+		return false, &AttestationError{
+			errors.Errorf("failed |SetKeyPayload|: %s", reply.GetStatus().String()),
+			reply.GetStatus(),
+		}
+	}
+	return true, nil
+}
+
+// RegisterKeyWithChapsToken registers the key into chaps.
+func (u *AttestationClient) RegisterKeyWithChapsToken(
+	ctx context.Context,
+	username,
+	label string) (bool, error) {
+	reply, err := u.ac.RegisterKeyWithChapsToken(ctx, &apb.RegisterKeyWithChapsTokenRequest{
+		KeyLabel: &label,
+		Username: &username,
+	})
+	if err != nil {
+		return false, errors.Wrap(err, "failed to call |RegisterKeyWithChapsToken|")
+	}
+	if reply.GetStatus() != apb.AttestationStatus_STATUS_SUCCESS {
+		return false, &AttestationError{
+			errors.Errorf("failed |RegisterKeyWithChapsToken|: %s", reply.GetStatus().String()),
+			reply.GetStatus(),
+		}
+	}
+	return true, nil
+}
+
+// DeleteKeys delete all the |usernames|'s keys with label having prefix.
+func (u *AttestationClient) DeleteKeys(ctx context.Context, username, prefix string) error {
+	bahavior := apb.DeleteKeysRequest_MATCH_BEHAVIOR_PREFIX
+	reply, err := u.ac.DeleteKeys(ctx, &apb.DeleteKeysRequest{
+		Username:      &username,
+		KeyLabelMatch: &prefix,
+		MatchBehavior: &bahavior,
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to call |DeleteKeys|")
+	}
+	if reply.GetStatus() != apb.AttestationStatus_STATUS_SUCCESS {
+		return &AttestationError{
+			errors.Errorf("failed |DeleteKeys|: %s", reply.GetStatus().String()),
+			reply.GetStatus(),
+		}
+	}
+	return nil
+}

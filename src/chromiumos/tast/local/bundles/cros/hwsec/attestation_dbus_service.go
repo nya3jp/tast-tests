@@ -99,3 +99,27 @@ func (*AttestationDBusService) GetEnrollmentID(ctx context.Context, request *apb
 	}
 	return ac.GetEnrollmentID(ctx, request)
 }
+
+func (*AttestationDBusService) SetKeyPayload(ctx context.Context, request *apb.SetKeyPayloadRequest) (*apb.SetKeyPayloadReply, error) {
+	ac, err := hwsec.NewAttestationDBus(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create attestation client")
+	}
+	return ac.SetKeyPayload(ctx, request)
+}
+
+func (*AttestationDBusService) RegisterKeyWithChapsToken(ctx context.Context, request *apb.RegisterKeyWithChapsTokenRequest) (*apb.RegisterKeyWithChapsTokenReply, error) {
+	ac, err := hwsec.NewAttestationDBus(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create attestation client")
+	}
+	return ac.RegisterKeyWithChapsToken(ctx, request)
+}
+
+func (*AttestationDBusService) DeleteKeys(ctx context.Context, request *apb.DeleteKeysRequest) (*apb.DeleteKeysReply, error) {
+	ac, err := hwsec.NewAttestationDBus(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create attestation client")
+	}
+	return ac.DeleteKeys(ctx, request)
+}
