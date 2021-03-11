@@ -33,6 +33,23 @@
       "message": "LGTM",
       "revId": "4998bc299f114e3b99b4031962b2c091d512bd29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c59605_1b2d8119",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-03-11T15:37:39Z",
+      "side": 1,
+      "message": "I would probably Exempt-From-Owner-Approval: this unless you want to wait for Tast owners.",
+      "revId": "4998bc299f114e3b99b4031962b2c091d512bd29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
