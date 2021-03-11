@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "003b4b16_b88ea37a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "Its not. That\u0027s still a WIP",
+      "parentUuid": "e4560a44_b980c316",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0700223d_9bb90db0",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
         "patchSetId": 7
@@ -48,6 +66,24 @@
       "writtenOn": "2021-03-11T06:38:36Z",
       "side": 1,
       "message": "Do you need to continue the test?\ns.Fatal() may be better.",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "039e8be7_b3f4bcc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0700223d_9bb90db0",
       "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93378f6f_2781f57b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc582cea_347446a9",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01c5c23a_bfe08da4",
@@ -92,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b0138f2_e91d0d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01c5c23a_bfe08da4",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "174ed3de_de7c8766",
@@ -105,6 +183,30 @@
       "writtenOn": "2021-03-11T06:38:36Z",
       "side": 1,
       "message": "style: if err :\u003d ...; err !\u003d nil {\n  s.Fatal(...)\n}\n\ntesting.ContextLog(...)",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a3c595_eca240c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "174ed3de_de7c8766",
       "range": {
         "startLine": 52,
         "startChar": 1,
@@ -138,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d4a5238_14d85de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08195f3a_8ac86e8d",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6f89691_d7158cdb",
@@ -155,6 +281,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c1097f_33d0ca38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6f89691_d7158cdb",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a3e3508_f6714b95",
@@ -168,6 +312,30 @@
       "writtenOn": "2021-03-11T06:38:36Z",
       "side": 1,
       "message": "if err :\u003d ...; err !\u003d nil {\n  s.Fatal(...)\n}\nif er :\u003d ...UnmountVault(...); err !\u003d nil {\n  s.Fatal(...)\n}\n\nwith defer below looks what you\u0027d like?",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 3
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e4252c_a7403291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a3e3508_f6714b95",
       "range": {
         "startLine": 59,
         "startChar": 2,
@@ -201,6 +369,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4f6ea00_222dcfe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4fecd3d_5c69e287",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "deb40db8_6949476b",
@@ -214,6 +406,24 @@
       "writtenOn": "2021-03-11T18:20:50Z",
       "side": 1,
       "message": "nit: go doesn\u0027t use the || around objects or variable names, at least I was told so in another review",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f02af97_e42e8f33",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deb40db8_6949476b",
       "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -267,6 +477,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb680056_4e888d32",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "I was capturing the output above to read AuthSessionID",
+      "parentUuid": "d0a00141_e3b8a214",
+      "range": {
+        "startLine": 500,
+        "startChar": 15,
+        "endLine": 500,
+        "endChar": 20
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15c1224c_c0647c70",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 7
@@ -278,6 +512,24 @@
       "writtenOn": "2021-03-11T06:38:36Z",
       "side": 1,
       "message": "ditto",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb701cc2_1ae0eb7b",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15c1224c_c0647c70",
       "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -299,6 +551,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc2adc2_a6a2a678",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7747e69e_4f7b9c8b",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5fc60f2_9d442d87",
@@ -312,6 +582,24 @@
       "writtenOn": "2021-03-11T06:38:36Z",
       "side": 1,
       "message": "I think this is taken from CreateVault, which we chatted?\nif so, this may not needed thanks to the bug fix.",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf3ee0e_2fd89950",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-11T18:44:13Z",
+      "side": 1,
+      "message": "For this we do. The has is not printed on the screen",
+      "parentUuid": "a5fc60f2_9d442d87",
       "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
