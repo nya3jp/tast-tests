@@ -22,6 +22,30 @@
       },
       "revId": "c8cbc93b99fb379145a6820614bd085738ef26bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4388f520_ba02d441",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-11T07:34:11Z",
+      "side": 1,
+      "message": "Discussed offline. New change uploaded.",
+      "parentUuid": "a959c1a0_49c6d5ba",
+      "range": {
+        "startLine": 269,
+        "startChar": 3,
+        "endLine": 275,
+        "endChar": 4
+      },
+      "revId": "c8cbc93b99fb379145a6820614bd085738ef26bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
