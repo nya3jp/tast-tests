@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71ce186_e085b7b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-11T17:14:25Z",
+      "side": 1,
+      "message": "+2 % n its",
+      "revId": "c24db0382ea3eac306d2f8023226c261083345fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0caafb8c_f62aa280",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-11T17:14:25Z",
+      "side": 1,
+      "message": "huge nit: perhaps \"exists that\" -\u003e \"that exists\" (?)",
+      "range": {
+        "startLine": 351,
+        "startChar": 44,
+        "endLine": 351,
+        "endChar": 55
+      },
+      "revId": "c24db0382ea3eac306d2f8023226c261083345fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

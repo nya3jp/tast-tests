@@ -255,6 +255,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "450dd4a5_a7a3fb52",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-11T17:14:25Z",
+      "side": 1,
+      "message": "a \"break\" perhaps?",
+      "parentUuid": "95a69331_7ea723e2",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 4
+      },
+      "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "411aa071_fb9b84ad",
         "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
         "patchSetId": 6
@@ -478,6 +502,30 @@
       "side": 1,
       "message": "See prior reply...",
       "parentUuid": "87da2e2a_b60f5663",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 4
+      },
+      "revId": "14a9211ab9b0e0836154323902bb026b0485420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba9fe6fc_aa2c401f",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-11T17:14:25Z",
+      "side": 1,
+      "message": "I\u0027d add a break. thoughts?",
+      "parentUuid": "e233b1f5_5fe061dd",
       "range": {
         "startLine": 109,
         "startChar": 3,
