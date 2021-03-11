@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac8aeb43_5c51fcab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-11T19:06:09Z",
+      "side": 1,
+      "message": "Hi, I have observed that some of the apps (b/182420349) are failing in Clamshell resize test case. Clamshell reopen test case is getting failed due to timeout. So changing the order is needed to fix the flaky failure of clamshell reopen test case. Thanks.",
+      "parentUuid": "e13d0604_8fd33939",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 72
+      },
+      "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a3a39f4_d6c3b3fc",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9ea344c_8c4f7ddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-11T19:06:09Z",
+      "side": 1,
+      "message": "Hi, It will click on continue button until allow button exists. So allowButton doesn\u0027t exist is needed here. Thanks.",
+      "parentUuid": "9a3a39f4_d6c3b3fc",
+      "range": {
+        "startLine": 259,
+        "startChar": 9,
+        "endLine": 259,
+        "endChar": 20
+      },
+      "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e397620_33c59e5e",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-11T02:35:32Z",
       "side": 1,
       "message": "There are 4 button clicks (continue + sync contacts + continue + finish button ) followed by HandleDialogBoxes each time. Is this because the ui flow of the app is different and unpredictable each time?",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 50
+      },
+      "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "add87eb0_96dd5438",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-11T19:06:09Z",
+      "side": 1,
+      "message": "Hi, yes, after clicking continue, sync contacts, continue, finish buttons, I have observed that the app is asking permissions for accessing files, photos, etc.. every time. So HandleDialogBoxes is needed here. Thanks.",
+      "parentUuid": "2e397620_33c59e5e",
       "range": {
         "startLine": 232,
         "startChar": 0,
