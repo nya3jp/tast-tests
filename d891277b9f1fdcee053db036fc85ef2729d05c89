@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b723fad_0791ddf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-11T22:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "090d9f24_5703cf76",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 46
+      },
+      "revId": "d891277b9f1fdcee053db036fc85ef2729d05c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "045f76ff_3d39f451",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5aa2c8a_3dda1a07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-11T22:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "045f76ff_3d39f451",
+      "range": {
+        "startLine": 78,
+        "startChar": 19,
+        "endLine": 78,
+        "endChar": 37
+      },
+      "revId": "d891277b9f1fdcee053db036fc85ef2729d05c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a07e6a7_ac2b4e34",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-11T22:33:03Z",
       "side": 1,
       "message": "Please do not ignore the error msg. If it does not fail the case, log it.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 59
+      },
+      "revId": "d891277b9f1fdcee053db036fc85ef2729d05c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "123ceaa7_e16509fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-11T22:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a07e6a7_ac2b4e34",
       "range": {
         "startLine": 106,
         "startChar": 1,
