@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e63d0d3_12473f5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-03-11T22:47:42Z",
+      "side": 1,
+      "message": "Wow, it is really much simpler. Thanks!",
+      "parentUuid": "496ee79f_cc64dca8",
+      "revId": "55e2c6b04d87aa6193338d95034aac56554b5300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0340aa7a_9ccc20af",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-11T00:55:13Z",
       "side": 1,
       "message": "You can call s.Error multiple times to report multiple errors. I recommend doing so instead of accumulating errors in a variable and calling Error only once.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 11
+      },
+      "revId": "55e2c6b04d87aa6193338d95034aac56554b5300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0647b0cc_74ceef76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-03-11T22:47:42Z",
+      "side": 1,
+      "message": "My bad, I was almost sure that you exited the test after Error.\n\nThanks!",
+      "parentUuid": "0340aa7a_9ccc20af",
       "range": {
         "startLine": 46,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d1c01d1_c817eda6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-03-11T22:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f021f3ff_57523cbf",
+      "range": {
+        "startLine": 66,
+        "startChar": 53,
+        "endLine": 66,
+        "endChar": 80
+      },
+      "revId": "55e2c6b04d87aa6193338d95034aac56554b5300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00c69afd_a7ad153b",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-03-11T00:55:13Z",
       "side": 1,
       "message": "It\u0027s nice to include videodev in the error message so that we can see which device failed the check.\n\n s.Errorf(\"v4l2-compliance failed: %s: %s\", videodev, lastLine)",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "55e2c6b04d87aa6193338d95034aac56554b5300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a77dd28e_41b3373a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-03-11T22:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00c69afd_a7ad153b",
       "range": {
         "startLine": 73,
         "startChar": 2,
