@@ -9,13 +9,14 @@ import (
 	"math"
 	"time"
 
-	"chromiumos/tast/errors"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -40,44 +41,43 @@ func init() {
 }
 
 func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
+	// Give 5 seconds to clean up and dump out UI tree.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	cr, err := chrome.New(ctx, chrome.EnableFeatures("VirtualKeyboardFloatingDefault"), chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
+		s.Fatal("Failed to create test API connection: ", err)
 	}
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	vkbCtx := vkb.NewContext(cr, tconn)
 
-	if err := vkb.ShowVirtualKeyboard(ctx, tconn); err != nil {
+	if err := vkbCtx.ShowVirtualKeyboard()(ctx); err != nil {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
 
-	s.Log("Waiting for the virtual keyboard to show")
-	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-
-	kconn, err := vkb.UIConn(ctx, cr)
+	kconn, err := vkbCtx.UIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create connection to virtual keyboard UI: ", err)
 	}
 	defer kconn.Close()
 
-	params := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "move keyboard, double tap then drag to reposition the keyboard",
-	}
+	dragPointFinder := vkb.NodeFinder.Role(role.Button).Name("move keyboard, double tap then drag to reposition the keyboard")
 
 	// Get current center point of drag button.
-	dragPoint, err := elementCenterPoint(ctx, tconn, params)
+	dragLoc, err := uiauto.New(tconn).Location(ctx, dragPointFinder)
 	if err != nil {
 		s.Fatal("Failed to find drag point: ", err)
 	}
+	dragPoint := dragLoc.CenterPoint()
 
 	// Drag float vk to new position.
 	destinationPoint := coords.NewPoint(dragPoint.X-100, dragPoint.Y-100)
@@ -85,11 +85,12 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to drag float window: ", err)
 	}
 
-	// Get current center point of drag button.
-	newDragPoint, err := elementCenterPoint(ctx, tconn, params)
+	// Get new center point of drag button.
+	newDragLoc, err := uiauto.New(tconn).Location(ctx, dragPointFinder)
 	if err != nil {
 		s.Fatal("Failed to find drag point: ", err)
 	}
+	newDragPoint := newDragLoc.CenterPoint()
 
 	// When dragging the virtual keyboard to a given location, the actual location it lands on can be slightly different.
 	// e.g. When dragging the virtual keyboard to (1016,762), it can end up at (1015, 762).
@@ -98,22 +99,11 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for resize handler to be shown.
-	params = ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "resize keyboard, double tap then drag to resize the keyboard",
-	}
+	resizeHandleFinder := vkb.NodeFinder.Name("resize keyboard, double tap then drag to resize the keyboard").Role(role.Button)
 
 	// Resizing float vk on some boards are flaky.
 	// Thus only check the handler is shown.
-	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
+	if err := uiauto.New(tconn).WaitUntilExists(resizeHandleFinder)(ctx); err != nil {
 		s.Fatal("Failed to wait for resize handler to be shown: ", err)
 	}
-}
-
-func elementCenterPoint(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams) (coords.Point, error) {
-	element, err := ui.FindWithTimeout(ctx, tconn, params, 5*time.Second)
-	if err != nil {
-		return coords.Point{}, errors.Wrap(err, "failed to find element")
-	}
-	return element.Location.CenterPoint(), nil
 }
