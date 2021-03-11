@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44f1ad1a_68a7fb1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-11T08:58:04Z",
+      "side": 1,
+      "message": "Could you error check, or add comment here too?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 50
+      },
+      "revId": "daf525666b4e8994286c6cf9860ec38c52f4a42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e83536c_24c59c7e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 5
