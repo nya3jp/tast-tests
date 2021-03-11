@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "938f9933_2aca272d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-11T04:21:50Z",
+      "side": 1,
+      "message": "I know, those are arcanes indeed. Beefed up the comments in the hope\nthat it becomes a bit less obscure.",
+      "parentUuid": "7fc83e59_b937c8d6",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "65b061315181b55bd46caad17d7f155685c655e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "160973e4_831917c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
         "patchSetId": 1
@@ -136,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0191a6cd_9848c6ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-11T04:21:50Z",
+      "side": 1,
+      "message": "You guys convinced me, fixed the previous and this CL.",
+      "parentUuid": "1175ec99_a9690696",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 845,
+        "endChar": 0
+      },
+      "revId": "65b061315181b55bd46caad17d7f155685c655e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "004fb065_90873e03",
@@ -167,6 +215,24 @@
       "side": 1,
       "message": "We can let v4l2_stateful_encoder decide, I tried to comment\nabout that in l. 838:\n  // If v4l2-ctl fails for some reason, we leave it unspecified.\n\nShould I also mention that only those two are interesting/relevant?\nOr leave a TODO() add more.",
       "parentUuid": "004fb065_90873e03",
+      "revId": "65b061315181b55bd46caad17d7f155685c655e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f95f7f5c_bbba0a40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-11T04:21:50Z",
+      "side": 1,
+      "message": "Latest PS should have better/more detailed comments.",
+      "parentUuid": "86301c1c_96ff6de4",
       "revId": "65b061315181b55bd46caad17d7f155685c655e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
