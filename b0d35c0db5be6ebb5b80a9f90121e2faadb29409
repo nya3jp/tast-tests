@@ -39,6 +39,30 @@
       },
       "revId": "b0d35c0db5be6ebb5b80a9f90121e2faadb29409",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b71faed_8ba0b4da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2021-03-11T19:24:32Z",
+      "side": 1,
+      "message": "Based on what I experienced a slight delay can prevent this to happen, and that is why I suggested a 1 second delay. \nFor now I created another bug (https://b.corp.google.com/issues/182487473) to check the root cause.\nIf we find out that solving the root cause takes too long, we can proceed with this delay with a comment in the code that says \"remove the delay once the bug is fixed\".\nIf fixing the root cause is easy and can be done quickly then obviously we go that way.\nI will do more research on that and will get back to you.",
+      "parentUuid": "f79d1faa_9121f78a",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "b0d35c0db5be6ebb5b80a9f90121e2faadb29409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
