@@ -131,7 +131,7 @@ type ARC struct {
 
 // Close releases testing-related resources associated with ARC.
 // ARC itself is not stopped.
-func (a *ARC) Close() error {
+func (a *ARC) Close(ctx context.Context) error {
 	if locked {
 		panic("Do not call Close while precondition is being used")
 	}
@@ -181,7 +181,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	toClose := arc
 	defer func() {
 		if toClose != nil {
-			toClose.Close()
+			toClose.Close(ctx)
 		}
 	}()
 

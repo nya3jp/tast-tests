@@ -104,7 +104,7 @@ func optinWithRetry(ctx context.Context, s *testing.State, cr *chrome.Chrome, ma
 		if attempts >= maxAttempts {
 			// Creating ARC instance to dump logcat.txt on exit.
 			if a, err := arc.New(ctx, s.OutDir()); err == nil {
-				defer a.Close()
+				defer a.Close(ctx)
 			}
 
 			s.Fatal("Failed to optin. No more retries left: ", err)

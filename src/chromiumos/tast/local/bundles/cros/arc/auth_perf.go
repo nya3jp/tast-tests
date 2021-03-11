@@ -341,7 +341,7 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 	if err != nil {
 		return v, errors.Wrap(err, "failed to connect ARC")
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	// Read sign-in results via properties.
 	if v.signInTime, err = readResultProp(ctx, a, "dev.arc.accountsignin.result"); err != nil {
@@ -443,7 +443,7 @@ func dumpLogcat(ctx context.Context, s *testing.State, filePath string) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to connect ARC")
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	logFile, err := os.Create(filePath)
 	if err != nil {

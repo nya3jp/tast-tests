@@ -96,7 +96,7 @@ func ArcBackupRestoreServiceEnabled(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Failed to start ARC: ", err)
 			}
-			defer a.Close()
+			defer a.Close(ctx)
 
 			// Get ARC Backup Manager state.
 			var enabled bool

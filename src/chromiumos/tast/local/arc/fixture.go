@@ -166,7 +166,7 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 	}
 	defer func() {
 		if !success {
-			arc.Close()
+			arc.Close(ctx)
 		}
 	}()
 
@@ -192,7 +192,7 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 
 func (f *bootedFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	Unlock()
-	if err := f.arc.Close(); err != nil {
+	if err := f.arc.Close(ctx); err != nil {
 		s.Log("Failed to close ARC: ", err)
 	}
 	f.arc = nil

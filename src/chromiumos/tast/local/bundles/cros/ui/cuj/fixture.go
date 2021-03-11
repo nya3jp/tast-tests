@@ -138,7 +138,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		}
 
 		if f.origRunningPkgs, err = runningPackages(ctx, a); err != nil {
-			if err := a.Close(); err != nil {
+			if err := a.Close(ctx); err != nil {
 				s.Error(ctx, "Failed to close ARC connection: ", err)
 			}
 			s.Fatal("Failed to list running packages: ", err)
@@ -153,7 +153,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 func (f *loggedInToCUJUserFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	chrome.Unlock()
 
-	if err := f.arc.Close(); err != nil {
+	if err := f.arc.Close(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to close ARC connection: ", err)
 	}
 

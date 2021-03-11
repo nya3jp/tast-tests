@@ -49,7 +49,7 @@ func MojoProxyCrash(ctx context.Context, s *testing.State) {
 	}
 	defer func() {
 		if a != nil {
-			a.Close()
+			a.Close(ctx)
 		}
 	}()
 
@@ -78,7 +78,7 @@ func MojoProxyCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for old init process to exit: ", err)
 	}
 
-	a.Close()
+	a.Close(ctx)
 	a = nil
 
 	// Make sure Android successfully boots.

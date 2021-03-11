@@ -58,7 +58,7 @@ func AndroidInitCrash(ctx context.Context, s *testing.State) {
 	defer func() {
 		// Note: |a| can be the arc.New() result above, or the one below after reboot.
 		if a != nil {
-			a.Close()
+			a.Close(ctx)
 		}
 	}()
 
@@ -82,7 +82,7 @@ func AndroidInitCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for old Android init to stop: ", err)
 	}
 
-	a.Close() // Ignore error and continue.
+	a.Close(ctx) // Ignore error and continue.
 	a = nil
 
 	// Make sure Android successfully boots.

@@ -153,7 +153,7 @@ func Availability(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to start ARC: ", err)
 		}
-		defer a.Close()
+		defer a.Close(ctx)
 		defer dumpUIOnErr(ctx, a)
 
 		d, err := a.NewUIDevice(ctx)
@@ -186,7 +186,7 @@ func Availability(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 	defer dumpUIOnErr(ctx, a)
 
 	d, err := a.NewUIDevice(ctx)

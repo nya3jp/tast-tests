@@ -205,7 +205,7 @@ func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 // closeInternal closes and resets p.arc and p.cr if non-nil.
 func (p *preImpl) closeInternal(ctx context.Context, s *testing.PreState) {
 	if p.arc != nil {
-		if err := p.arc.Close(); err != nil {
+		if err := p.arc.Close(ctx); err != nil {
 			s.Log("Failed to close ARC connection: ", err)
 		}
 		p.arc = nil

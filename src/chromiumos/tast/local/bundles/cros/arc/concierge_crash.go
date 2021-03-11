@@ -52,7 +52,7 @@ func ConciergeCrash(ctx context.Context, s *testing.State) {
 	defer func() {
 		// Note: |a| can be the arc.New() result above, or the one below after reboot.
 		if a != nil {
-			a.Close()
+			a.Close(ctx)
 		}
 	}()
 
@@ -85,7 +85,7 @@ func ConciergeCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for old init process to exit: ", err)
 	}
 
-	a.Close()
+	a.Close(ctx)
 	a = nil
 
 	// Make sure Android successfully boots.

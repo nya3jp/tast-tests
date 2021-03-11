@@ -95,7 +95,7 @@ func MiniVM(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to wait for ARC to finish booting: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	s.Log("Checking that arcvm-boot-notification-client is stopped")
 	if err := waitForProp(ctx, cid, serviceProp, "stopped"); err != nil {

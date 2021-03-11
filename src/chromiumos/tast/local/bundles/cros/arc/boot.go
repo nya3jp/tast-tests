@@ -102,12 +102,12 @@ func runBoot(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	// Ensures package manager service is running by checking the existence of the "android" package.
 	pkgs, err := a.InstalledPackages(ctx)
 	if err != nil {
-		s.Fatal("getting installed packages failed: ", err)
+		s.Fatal("Getting installed packages failed: ", err)
 	}
 
 	if _, ok := pkgs["android"]; !ok {
