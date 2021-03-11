@@ -398,31 +398,6 @@ func (u *CryptohomeClient) CheckTPMWrappedUserKeyset(ctx context.Context, user s
 	return nil
 }
 
-// GetOwnerPassword gets the TPM owner password.
-func (u *CryptohomeClient) GetOwnerPassword(ctx context.Context) (string, error) {
-	out, err := u.binary.tpmStatus(ctx)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to get tpm status")
-	}
-	lastLine := getLastLine(out)
-	fields := strings.Fields(lastLine)
-	// Output doesn't match our expectation.
-	if len(fields) < 2 || len(fields) > 3 || fields[0] != "TPM" || fields[1] != "Password:" {
-		return "", errors.New("bad form of owner password: " + lastLine)
-	}
-	// Special case when the password is empty.
-	if len(fields) == 2 {
-		return "", nil
-	}
-	return fields[2], nil
-}
-
-// ClearOwnerPassword clears TPM owner password in the best effort.
-func (u *CryptohomeClient) ClearOwnerPassword(ctx context.Context) error {
-	_, err := u.binary.tpmClearStoredPassword(ctx)
-	return err
-}
-
 // parseTokenStatus parse the output of cryptohome --action=pkcs11_system_token_status or cryptohome --action=pkcs11_token_status and return the label, pin, slot and error (in that order).
 func parseTokenStatus(cmdOutput string) (returnedLabel, returnedPin string, returnedSlot int, returnedErr error) {
 	arr := strings.Split(cmdOutput, "\n")
