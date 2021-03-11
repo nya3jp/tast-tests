@@ -18,6 +18,63 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4c6a458_8c8f6d99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-11T12:11:03Z",
+      "side": 1,
+      "message": "It is nice that you even added the new UI automation!",
+      "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceb3a905_d7aee673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_maximum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-11T12:11:03Z",
+      "side": 1,
+      "message": "nit: Error is enough here. This is the last check.",
+      "range": {
+        "startLine": 150,
+        "startChar": 7,
+        "endLine": 150,
+        "endChar": 12
+      },
+      "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07e3bf1f_3777c00a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_maximum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-11T12:11:03Z",
+      "side": 1,
+      "message": "If you put a \"continue\" here, you don\u0027t need the \"else\" branch, and its content can have 1 less indentation lvl.",
+      "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13d8b2d8_b5138128",
@@ -36,6 +93,53 @@
         "startChar": 4,
         "endLine": 169,
         "endChar": 15
+      },
+      "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bf21e99_b7ceee24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_maximum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-11T12:11:03Z",
+      "side": 1,
+      "message": "The new UI automation does not store nodes, so it does not support updating the info of a previously found node.\nBut you don\u0027t need a new variable, you can use the old one:\n\u003e  nodeInfo, err \u003d ui.Info(ctx, continueButton)\n(Just skip the \":\" from \":\u003d\")",
+      "parentUuid": "13d8b2d8_b5138128",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 15
+      },
+      "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21590219_ebc60013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_maximum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-11T12:11:03Z",
+      "side": 1,
+      "message": "nit: This can be an Error as well.",
+      "range": {
+        "startLine": 175,
+        "startChar": 7,
+        "endLine": 175,
+        "endChar": 12
       },
       "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
