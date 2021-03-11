@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"net"
 	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -804,6 +805,46 @@ func (r *Router) waitBridgeState(ctx context.Context, br string, expectedState i
 	})
 }
 
+// devicePowered polls for the properties and returns the Powered property value of the given device.
+// TODO(b/171683002): Find a better way to make sure that shill has already registered and enabled/disabled the device.
+func (r *Router) devicePowered(ctx context.Context, dev string) (bool, error) {
+	const (
+		poweredTimeout  = time.Second * 5
+		poweredInterval = time.Millisecond * 100
+	)
+
+	var b []byte
+	// The dbus call may fail if shill has not yet noticed and registered the device.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		b, err = r.host.Command("gdbus", "call", "--system",
+			"--dest", "org.chromium.flimflam",
+			"--object-path", fmt.Sprintf("/device/%s", dev),
+			"--method", "org.chromium.flimflam.Device.GetProperties",
+		).Output(ctx)
+		return err
+	}, &testing.PollOptions{
+		Timeout:  poweredTimeout,
+		Interval: poweredInterval,
+	}); err != nil {
+		return false, errors.Wrapf(err, "failed to get the properties of device %s, output=%v", dev, string(b))
+	}
+
+	poweredRE := regexp.MustCompile(`'Powered': <(false|true)>`)
+	m := poweredRE.FindStringSubmatch(string(b))
+	if len(m) != 2 {
+		return false, errors.Errorf("failed to parse gdbus output, matches=%v, raw output=%v", m, string(b))
+	}
+	switch m[1] {
+	case "true":
+		return true, nil
+	case "false":
+		return false, nil
+	default:
+		return false, errors.Errorf("unexpected matched string, got %s, want true or false", m[1])
+	}
+}
+
 // claimBridge claims the bridge from shill. We are doing this because once shill
 // manages a device, it runs dhcpcd on it and would mess up our network environment.
 // NOTE: This is only for CrOS-base test AP.
@@ -811,22 +852,31 @@ func (r *Router) waitBridgeState(ctx context.Context, br string, expectedState i
 // bridge state with ip command for avoiding parsing dbus-send output. shill-test-script might be an alternative:
 // https://source.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/shill-test-scripts/shill-test-scripts-9999.ebuild
 func (r *Router) claimBridge(ctx context.Context, br string) error {
-	// Wait for the bridge to be enabled by shill, that is, managed by shill.
-	// After shill enables the bridge, because the bridge has not yet connected to any other interface, the state would be UNKNOWN instead of UP.
-	if err := r.waitBridgeState(ctx, br, ip.LinkStateUnknown); err != nil {
-		return err
+	p, err := r.devicePowered(ctx, br)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get the Powered property value of bridge %s", br)
 	}
 
-	// Disable the bridge to prevent shill from spawning dhcpcd on it.
-	if err := r.host.Command("dbus-send", "--system", "--type=method_call", "--print-reply",
-		"--dest=org.chromium.flimflam", fmt.Sprintf("/device/%s", br), "org.chromium.flimflam.Device.Disable",
-	).Run(ctx, ssh.DumpLogOnError); err != nil {
-		return errors.Wrapf(err, "failed to set bridge %s down: %v", br, err)
-	}
+	if p {
+		// After shill enables the bridge, because the bridge has not yet connected to any other
+		// interface, the state would be UNKNOWN instead of UP.
+		// We watch the event "bridge state changes from UNKNOWN to DOWN" later for making sure that
+		// the Disable method works successfully, so first make sure the state is already in UNKNOWN.
+		if err := r.waitBridgeState(ctx, br, ip.LinkStateUnknown); err != nil {
+			return err
+		}
 
-	// Wait for the bridge to become disable.
-	if err := r.waitBridgeState(ctx, br, ip.LinkStateDown); err != nil {
-		return err
+		// Disable the bridge to prevent shill from spawning dhcpcd on it.
+		if err := r.host.Command("dbus-send", "--system", "--type=method_call", "--print-reply",
+			"--dest=org.chromium.flimflam", fmt.Sprintf("/device/%s", br), "org.chromium.flimflam.Device.Disable",
+		).Run(ctx, ssh.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to set bridge %s down", br)
+		}
+
+		// Wait for the bridge to become disable.
+		if err := r.waitBridgeState(ctx, br, ip.LinkStateDown); err != nil {
+			return err
+		}
 	}
 
 	return r.ipr.SetLinkUp(ctx, br)
