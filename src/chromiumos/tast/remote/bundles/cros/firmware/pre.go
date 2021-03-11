@@ -23,21 +23,22 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		SoftwareDeps: []string{"crossystem"},
 		Vars:         []string{"servo"},
+		Attr:         []string{"group:firmware"},
 		Params: []testing.Param{{
 			Name:      "normal",
 			Val:       common.BootModeNormal,
 			Pre:       pre.NormalMode(),
-			ExtraAttr: []string{"group:firmware", "firmware_smoke"},
+			ExtraAttr: []string{"firmware_smoke"},
 		}, {
 			Name: "dev",
 			Val:  common.BootModeDev,
 			Pre:  pre.DevMode(),
-			//TODO(aluo): Re-enable when b/169704069 is resolved.
+			// TODO(aluo): Re-enable when b/169704069 is resolved.
 		}, {
-			Name: "rec",
-			Val:  common.BootModeRecovery,
-			Pre:  pre.RecMode(),
-			//TODO(aluo): Re-enable when b/169704069 is resolved.
+			Name:      "rec",
+			Val:       common.BootModeRecovery,
+			Pre:       pre.RecMode(),
+			ExtraAttr: []string{"firmware_smoke"},
 		}},
 	})
 }
