@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc62d1cb_48dc4021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/asana.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-11T09:00:31Z",
+      "side": 1,
+      "message": "Any reason for this order change which I am missing?.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 72
+      },
+      "revId": "f6c4fc5eb9cba2bae8fde5d25eaeba7dad19c5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82d0fd4_3f8dad5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/asana.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-11T09:00:31Z",
+      "side": 1,
+      "message": "Guess this is not required.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 43
+      },
+      "revId": "f6c4fc5eb9cba2bae8fde5d25eaeba7dad19c5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
