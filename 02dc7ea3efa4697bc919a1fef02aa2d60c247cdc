@@ -33,6 +33,24 @@
       "message": "What about the actual autoclick test (policy.AutoclickEnabled) where functionality is checked? \nAre we sure this one pollutes the execution?\n",
       "revId": "02dc7ea3efa4697bc919a1fef02aa2d60c247cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b10212_0e049f5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-11T12:55:43Z",
+      "side": 1,
+      "message": "Yes, that one uses precondition. And also checks for this dialog.",
+      "parentUuid": "fa3ea952_80b0a1d7",
+      "revId": "02dc7ea3efa4697bc919a1fef02aa2d60c247cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
