@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22a1957_d30ced37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-11T05:20:50Z",
+      "side": 1,
+      "message": "It turned out that we cannot specify an empty GAIA ID for fake logins. Let me fix it...\n",
+      "revId": "b4743cd5cb66afca1c6777cbabb15c04fc95e009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
