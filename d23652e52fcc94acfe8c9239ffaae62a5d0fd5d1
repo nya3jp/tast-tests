@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc6fc9e_23a78663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_maximum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-11T17:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceb3a905_d7aee673",
+      "range": {
+        "startLine": 150,
+        "startChar": 7,
+        "endLine": 150,
+        "endChar": 12
+      },
+      "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07e3bf1f_3777c00a",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-03-11T12:11:03Z",
       "side": 1,
       "message": "If you put a \"continue\" here, you don\u0027t need the \"else\" branch, and its content can have 1 less indentation lvl.",
+      "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f7d83f_92f45bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_maximum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-11T17:40:54Z",
+      "side": 1,
+      "message": "I have to say I find the if-else way more readable, and since both branches have same importance I find that having the same indentation is more consistent. WDYT?",
+      "parentUuid": "07e3bf1f_3777c00a",
       "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8afc37d3_a9dcc785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_maximum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-11T17:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bf21e99_b7ceee24",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 15
+      },
+      "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21590219_ebc60013",
@@ -135,6 +201,30 @@
       "writtenOn": "2021-03-11T12:11:03Z",
       "side": 1,
       "message": "nit: This can be an Error as well.",
+      "range": {
+        "startLine": 175,
+        "startChar": 7,
+        "endLine": 175,
+        "endChar": 12
+      },
+      "revId": "d23652e52fcc94acfe8c9239ffaae62a5d0fd5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b78f76c_796cb6f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_maximum_length.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-11T17:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21590219_ebc60013",
       "range": {
         "startLine": 175,
         "startChar": 7,

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc8aab3_6a1502a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-11T17:40:54Z",
+      "side": 1,
+      "message": "I fixed it in Gerrit, but then re-uploaded the wrong one :D Fixed again.",
+      "parentUuid": "1d2672ce_b7e21482",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "ef6c96d2fc751b16f257b5858a393269900c674e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a17cdec5_95c3a7f7",
