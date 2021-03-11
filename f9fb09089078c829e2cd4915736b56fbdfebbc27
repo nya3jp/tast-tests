@@ -34,6 +34,24 @@
       "parentUuid": "3a403599_408a7db4",
       "revId": "f9fb09089078c829e2cd4915736b56fbdfebbc27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0004211_d217bb23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-11T22:03:43Z",
+      "side": 1,
+      "message": "As you see in the linked CL, the random selection happens for the first one. Then obtained credential can be used.\n  cr, err :\u003d chrome.New(ctx,chrome.GAIALoginPool(s.RequiredVar(\"ui.gaiaPoolDefault\")))\n  ...\n  creds :\u003d cr.Creds() // creds have \"User\" and \"Pass\" chosen for this chrome.New\n\n  ...\n  kb.Type(ctx, creds.Pass+\"\\n\")",
+      "parentUuid": "a055a32f_4e14eaac",
+      "revId": "f9fb09089078c829e2cd4915736b56fbdfebbc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
