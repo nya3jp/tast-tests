@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fcbd921_495a4541",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_test_auth.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-11T03:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "040606f9_68f7a81e",
+      "revId": "ebccf65a18c6dadc563520035d7592dfa8bda849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9fc3ec3_a4df7de5",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2159785_1bc412dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_test_auth.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-11T03:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9fc3ec3_a4df7de5",
+      "range": {
+        "startLine": 61,
+        "startChar": 29,
+        "endLine": 61,
+        "endChar": 48
+      },
+      "revId": "ebccf65a18c6dadc563520035d7592dfa8bda849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d83ef0b_945f1ea1",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-03-11T02:36:54Z",
       "side": 1,
       "message": "Same here:\nShould deny access the vault with the invalid credentials:",
+      "range": {
+        "startLine": 68,
+        "startChar": 11,
+        "endLine": 68,
+        "endChar": 70
+      },
+      "revId": "ebccf65a18c6dadc563520035d7592dfa8bda849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c05b5aaf_e5045331",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_test_auth.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-11T03:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d83ef0b_945f1ea1",
       "range": {
         "startLine": 68,
         "startChar": 11,
