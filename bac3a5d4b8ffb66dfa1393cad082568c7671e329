@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da7372b_2c08185c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-11T23:34:04Z",
+      "side": 1,
+      "message": "Not pretty, but the last lab runs were entirely red because of this. This should get things running for now, and once the last CUJ is done I can come back and do:\n1. Check the account history and only do this if it\u0027s been \u003e5 days\n2. Figure out how to tell when it\u0027s safe to re-add the account.\n\nI posted in the bug, but we\u0027re seeing failures here when there\u0027s some kind of interaction with the authentication server that\u0027s causing the LST to be revoked. The logcat logs aren\u0027t really giving me any clues, though.",
+      "revId": "bac3a5d4b8ffb66dfa1393cad082568c7671e329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
