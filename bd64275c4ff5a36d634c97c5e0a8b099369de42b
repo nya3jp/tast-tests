@@ -51,6 +51,24 @@
       "parentUuid": "e619a343_d074e69b",
       "revId": "bd64275c4ff5a36d634c97c5e0a8b099369de42b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2969d58_11e050f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-11T01:45:38Z",
+      "side": 1,
+      "message": "Hi, Done. I reverted the change and filed a separate bug, b/182420349. Thanks.",
+      "parentUuid": "cdb9fea5_3ff33270",
+      "revId": "bd64275c4ff5a36d634c97c5e0a8b099369de42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
