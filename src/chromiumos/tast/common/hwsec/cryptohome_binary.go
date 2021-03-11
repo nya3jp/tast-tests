@@ -63,21 +63,10 @@ func (c *cryptohomeBinary) removeFile(ctx context.Context, filename string) erro
 	return err
 }
 
-// tpmStatus calls "cryptohome --action=tpm_status".
-func (c *cryptohomeBinary) tpmStatus(ctx context.Context) (string, error) {
-	out, err := c.call(ctx, "--action=tpm_status")
-	return string(out), err
-}
-
 // getStatusString calls "cryptohome --action=status".
 func (c *cryptohomeBinary) getStatusString(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=status")
 	return string(out), err
-}
-
-// tpmClearStoredPassword calls "cryptohome --action=tpm_clear_stored_password".
-func (c *cryptohomeBinary) tpmClearStoredPassword(ctx context.Context) ([]byte, error) {
-	return c.call(ctx, "--action=tpm_clear_stored_password")
 }
 
 // installAttributesGet calls "cryptohome --action=install_attributes_get".

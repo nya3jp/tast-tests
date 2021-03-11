@@ -34,7 +34,7 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 
-	cryptohome := helper.CryptohomeClient()
+	tpmManager := helper.TPMManagerClient()
 	attestation := helper.AttestationClient()
 
 	s.Log("Start resetting TPM if needed")
@@ -57,7 +57,7 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Ownership is taken")
 
-	if passwd, err := cryptohome.GetOwnerPassword(ctx); err != nil {
+	if passwd, err := tpmManager.GetOwnerPassword(ctx); err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	} else if len(passwd) != hwsec.OwnerPasswordLength {
 		s.Fatalf("Unexpected owner password length: got %v; want %v", len(passwd), hwsec.OwnerPasswordLength)
@@ -80,7 +80,7 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 		// This hacky logic watches the file modification of the persistent tpm status for both
 		// monolithic and distributed models.
 		// Ignores error here; if it's because file doesn't exist we assume the local data has changed.
-		if err := cryptohome.ClearOwnerPassword(ctx); err != nil {
+		if _, err := tpmManager.ClearOwnerPassword(ctx); err != nil {
 			return err
 		}
 		newTime, err := r.Run(ctx, "stat", "-c", "%y", "/var/lib/tpm_manager/local_tpm_data")
@@ -92,7 +92,7 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 		if err := dCtrl.Restart(ctx, hwsec.CryptohomeDaemon); err != nil {
 			return err
 		}
-		if passwd, err := cryptohome.GetOwnerPassword(ctx); err != nil {
+		if passwd, err := tpmManager.GetOwnerPassword(ctx); err != nil {
 			return err
 		} else if len(passwd) != 0 {
 			return errors.New("Still have password")

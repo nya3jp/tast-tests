@@ -30,7 +30,7 @@ func RetakeOwnershipFlushPassword(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 
-	utility := helper.CryptohomeClient()
+	tpmManager := helper.TPMManagerClient()
 
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsReset(ctx); err != nil {
@@ -44,7 +44,7 @@ func RetakeOwnershipFlushPassword(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Ownership is taken")
 
-	passwd, err := utility.GetOwnerPassword(ctx)
+	passwd, err := tpmManager.GetOwnerPassword(ctx)
 	if err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	}
@@ -57,7 +57,7 @@ func RetakeOwnershipFlushPassword(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
-	passwd2, err := utility.GetOwnerPassword(ctx)
+	passwd2, err := tpmManager.GetOwnerPassword(ctx)
 	if err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	}
@@ -71,7 +71,7 @@ func RetakeOwnershipFlushPassword(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Ownership is taken")
 
-	passwd2, err = utility.GetOwnerPassword(ctx)
+	passwd2, err = tpmManager.GetOwnerPassword(ctx)
 	if err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	}
