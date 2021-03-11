@@ -16,6 +16,23 @@
       "message": "Hi Allen,\n\nThe allowlist_service uses chrome.Auth which was removed in CL:2738585.\n\nI\u0027m not sure how the CL which introduced allowlist_service passed the CQ.\n\nThanks a lot for sharing the failed build logs!",
       "revId": "4998bc299f114e3b99b4031962b2c091d512bd29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "064dacf9_8b83f312",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T15:35:02Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "4998bc299f114e3b99b4031962b2c091d512bd29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
