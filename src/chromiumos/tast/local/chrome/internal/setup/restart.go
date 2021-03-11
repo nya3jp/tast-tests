@@ -56,29 +56,29 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
 		"--no-startup-window",                        // Do not start up chrome://newtab by default to avoid unexpected patterns(doodle etc.)
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
-		"--cros-region=" + cfg.Region,                // Force the region.
+		"--cros-region=" + cfg.Region(),              // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
 		"--enable-oobe-test-api",                     // Enable OOBE helper functions for authentication.
 		"--disable-hid-detection-on-oobe",            // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
 	}
-	if cfg.Enroll {
+	if cfg.Enroll() {
 		args = append(args, "--disable-policy-key-verification") // Remove policy key verification for fake enrollment
 	}
 
-	if cfg.SkipOOBEAfterLogin {
+	if cfg.SkipOOBEAfterLogin() {
 		args = append(args, "--oobe-skip-postlogin")
 	}
 
-	if !cfg.InstallWebApp {
+	if !cfg.InstallWebApp() {
 		args = append(args, "--disable-features=DefaultWebAppInstallation")
 	}
 
-	if cfg.VKEnabled {
+	if cfg.VKEnabled() {
 		args = append(args, "--enable-virtual-keyboard")
 	}
 
 	// Enable verbose logging on some enrollment related files.
-	if cfg.EnableLoginVerboseLogs {
+	if cfg.EnableLoginVerboseLogs() {
 		args = append(args,
 			"--vmodule="+strings.Join([]string{
 				"*auto_enrollment_check_screen*=1",
@@ -88,25 +88,25 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 				"*auto_enrollment_controller*=1"}, ","))
 	}
 
-	if cfg.LoginMode != config.GAIALogin {
+	if cfg.LoginMode() != config.GAIALogin {
 		args = append(args, "--disable-gaia-services")
 	}
 
 	// Enable verbose logging on gaia_auth_fetcher to help debug some login failures. See crbug.com/1166530
-	if cfg.LoginMode == config.GAIALogin {
+	if cfg.LoginMode() == config.GAIALogin {
 		args = append(args, "--vmodule=gaia_auth_fetcher=1")
 	}
 
 	args = append(args, exts.ChromeArgs()...)
-	if cfg.PolicyEnabled {
+	if cfg.PolicyEnabled() {
 		args = append(args, "--profile-requires-policy=true")
 	} else {
 		args = append(args, "--profile-requires-policy=false")
 	}
-	if cfg.DMSAddr != "" {
-		args = append(args, "--device-management-url="+cfg.DMSAddr)
+	if cfg.DMSAddr() != "" {
+		args = append(args, "--device-management-url="+cfg.DMSAddr())
 	}
-	switch cfg.ARCMode {
+	switch cfg.ARCMode() {
 	case config.ARCDisabled:
 		// Make sure ARC is never enabled.
 		args = append(args, "--arc-availability=none")
@@ -120,7 +120,7 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		// Allow ARC being enabled on the device to test ARC with real gaia accounts.
 		args = append(args, "--arc-availability=officially-supported")
 	}
-	if cfg.ARCMode == config.ARCEnabled || cfg.ARCMode == config.ARCSupported {
+	if cfg.ARCMode() == config.ARCEnabled || cfg.ARCMode() == config.ARCSupported {
 		args = append(args,
 			// Do not sync the locale with ARC.
 			"--arc-disable-locale-sync",
@@ -128,29 +128,29 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 			"--arc-play-store-auto-update=off",
 			// Make 1 Android pixel always match 1 Chrome devicePixel.
 			"--force-remote-shell-scale=")
-		if !cfg.RestrictARCCPU {
+		if !cfg.RestrictARCCPU() {
 			args = append(args,
 				// Disable CPU restrictions to let tests run faster
 				"--disable-arc-cpu-restriction")
 		}
 	}
 
-	if len(cfg.EnableFeatures) != 0 {
-		args = append(args, "--enable-features="+strings.Join(cfg.EnableFeatures, ","))
+	if fs := cfg.EnableFeatures(); len(fs) != 0 {
+		args = append(args, "--enable-features="+strings.Join(fs, ","))
 	}
 
-	if len(cfg.DisableFeatures) != 0 {
-		args = append(args, "--disable-features="+strings.Join(cfg.DisableFeatures, ","))
+	if fs := cfg.DisableFeatures(); len(fs) != 0 {
+		args = append(args, "--disable-features="+strings.Join(fs, ","))
 	}
 
 	// Lacros Chrome additional arguments are delimited by '####'. See browser_manager.cc in Chrome source.
-	if len(cfg.LacrosExtraArgs) != 0 {
-		args = append(args, "--lacros-chrome-additional-args="+strings.Join(cfg.LacrosExtraArgs, "####"))
+	if as := cfg.LacrosExtraArgs(); len(args) != 0 {
+		args = append(args, "--lacros-chrome-additional-args="+strings.Join(as, "####"))
 	}
 
-	args = append(args, cfg.ExtraArgs...)
+	args = append(args, cfg.ExtraArgs()...)
 	var envVars []string
-	if cfg.BreakpadTestMode {
+	if cfg.BreakpadTestMode() {
 		envVars = append(envVars,
 			"CHROME_HEADLESS=",
 			"BREAKPAD_DUMP_LOCATION=/home/chronos/crash") // Write crash dumps outside cryptohome.
@@ -174,7 +174,7 @@ func restartSession(ctx context.Context, cfg *config.Config) error {
 		return err
 	}
 
-	if !cfg.KeepState {
+	if !cfg.KeepState() {
 		const chronosDir = "/home/chronos"
 		// This always fails because /home/chronos is a mount point, but all files
 		// under the directory should be removed.

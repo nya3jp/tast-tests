@@ -30,7 +30,7 @@ var ErrNeedNewSession = errors.New("Chrome restarted; need a new session")
 // This function may restart Chrome and make an existing session unavailable,
 // in which case errNeedNewSession is returned.
 func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
-	switch cfg.LoginMode {
+	switch cfg.LoginMode() {
 	case config.NoLogin:
 		return nil
 	case config.FakeLogin, config.GAIALogin:
@@ -55,7 +55,7 @@ func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error 
 		// need to recreate a session.
 		return ErrNeedNewSession
 	default:
-		return errors.Errorf("unknown login mode: %v", cfg.LoginMode)
+		return errors.Errorf("unknown login mode: %v", cfg.LoginMode())
 	}
 }
 

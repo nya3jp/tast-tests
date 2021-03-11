@@ -80,8 +80,8 @@ func PrepareExtensions(destDir string, cfg *config.Config, guestMode GuestModeLo
 
 	// Prepare the sign-in profile test extension if it is available.
 	var signin *testExtension
-	if cfg.SigninExtKey != "" {
-		signin, err = prepareTestExtension(filepath.Join(destDir, "test_api_signin_profile"), cfg.SigninExtKey, SigninProfileTestExtensionID, extraBgJs)
+	if cfg.SigninExtKey() != "" {
+		signin, err = prepareTestExtension(filepath.Join(destDir, "test_api_signin_profile"), cfg.SigninExtKey(), SigninProfileTestExtensionID, extraBgJs)
 		if err != nil {
 			return nil, err
 		}
@@ -89,7 +89,7 @@ func PrepareExtensions(destDir string, cfg *config.Config, guestMode GuestModeLo
 
 	// Prepare extra extensions.
 	var copiedExtraExtDirs []string
-	for i, src := range cfg.ExtraExtDirs {
+	for i, src := range cfg.ExtraExtDirs() {
 		manifest := filepath.Join(src, "manifest.json")
 		if _, err = os.Stat(manifest); err != nil {
 			return nil, errors.Wrap(err, "missing extension manifest")

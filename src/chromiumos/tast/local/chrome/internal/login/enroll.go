@@ -94,14 +94,16 @@ func enterpriseEnrollTargets(ctx context.Context, sess *driver.Session, userDoma
 // the testing.Poll will timeout.
 func waitForEnrollmentLoginScreen(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
 	testing.ContextLog(ctx, "Waiting for enrollment to complete")
-	fullDomain, err := fullUserDomain(cfg.Creds.User)
+	user := cfg.Creds().User
+
+	fullDomain, err := fullUserDomain(user)
 	if err != nil {
 		return errors.Wrap(err, "no valid full user domain found")
 	}
 	loginBanner := fmt.Sprintf(`document.querySelectorAll('span[title=%q]').length;`,
 		fullDomain)
 
-	userDomain, err := userDomain(cfg.Creds.User)
+	userDomain, err := userDomain(user)
 	if err != nil {
 		return errors.Wrap(err, "no vaid user domain found")
 	}
@@ -150,9 +152,10 @@ func enterpriseOOBELogin(ctx context.Context, cfg *config.Config, sess *driver.S
 	}
 	defer conn.Close()
 
-	testing.ContextLog(ctx, "Performing login after enrollment")
 	// Now login like "normal".
-	if err := conn.Call(ctx, nil, "Oobe.loginForTesting", cfg.Creds.User, cfg.Creds.Pass, cfg.Creds.GAIAID, false); err != nil {
+	testing.ContextLog(ctx, "Performing login after enrollment")
+	creds := cfg.Creds()
+	if err := conn.Call(ctx, nil, "Oobe.loginForTesting", creds.User, creds.Pass, creds.GAIAID, false); err != nil {
 		return err
 	}
 
