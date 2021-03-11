@@ -14,8 +14,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
@@ -327,6 +327,6 @@ func (f *FilesApp) DragAndDropFile(fileName string, dropPoint coords.Point, kb *
 			return errors.Wrap(err, "failed to find the location for the file")
 		}
 
-		return mouse.Drag(ctx, f.tconn, srcPoint.CenterPoint(), dropPoint, time.Second)
+		return mouse.Drag(f.tconn, srcPoint.CenterPoint(), dropPoint, time.Second)(ctx)
 	}
 }

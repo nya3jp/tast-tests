@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/power"
@@ -88,11 +89,11 @@ func TabHoverCardAnimationPerf(ctx context.Context, s *testing.State) {
 		runner.RunMultiple(ctx, s, data.suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			return uiauto.Combine(
 				"hover and exit",
-				ac.MouseMoveToLocation(center, 0),
-				ac.MouseMoveToLocation(data.tab.Location.CenterPoint(), 500*time.Millisecond),
+				mouse.Move(tconn, center, 0),
+				mouse.Move(tconn, data.tab.Location.CenterPoint(), 500*time.Millisecond),
 				// Waiting to make the hover card appear.
 				func(ctx context.Context) error { return testing.Sleep(ctx, 4*time.Second) },
-				ac.MouseMoveToLocation(center, 500*time.Millisecond),
+				mouse.Move(tconn, center, 500*time.Millisecond),
 			)(ctx)
 		},
 			"Chrome.Tabs.AnimationSmoothness.HoverCard.FadeIn",
