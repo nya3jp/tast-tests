@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a959c1a0_49c6d5ba",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T05:32:41Z",
+      "side": 1,
+      "message": "according to https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/automation.go;l\u003d450, if err !\u003d nil, keyExists will always be false.\n\nSo what about \n\nif err :\u003d vkbCtx.ui.Exists(KeyFinder.Name(key))(ctx); err !\u003d nil {\n\n    testing.ContextLogf(ctx, \"Failed to find %s: %s\", key, err)\n    notFoundKeys \u003d append(notFoundKeys, key)\n}",
+      "range": {
+        "startLine": 269,
+        "startChar": 3,
+        "endLine": 275,
+        "endChar": 4
+      },
+      "revId": "c8cbc93b99fb379145a6820614bd085738ef26bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
