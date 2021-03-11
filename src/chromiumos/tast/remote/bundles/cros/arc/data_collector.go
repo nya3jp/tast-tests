@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/arc"
 	arcpb "chromiumos/tast/services/cros/arc"
@@ -283,12 +284,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
 
-		// Due to race condition of using ureadahead in various parts of Chrome,
-		// first generation might be incomplete. Just pass it without analyzing.
-		if _, err := service.Generate(shortCtx, &request); err != nil {
-			return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for warm-up pass")
-		}
-
 		// Pass initial boot and capture results.
 		response, err := service.Generate(shortCtx, &request)
 		if err != nil {
@@ -306,19 +301,23 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to create %q: %v", targetDir, err)
 		}
 
-		if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, filepath.Join(targetDir, initialPack)); err != nil {
+		intitalPackPath := filepath.Join(targetDir, initialPack)
+		provisionedPackPath := filepath.Join(targetDir, provisionedPack)
+		if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, intitalPackPath); err != nil {
 			s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
 		}
 
-		// Now pass provisioned boot and capture results.
-		request.InitialBoot = false
-		response, err = service.Generate(shortCtx, &request)
-		if err != nil {
-			return errors.Wrap(err, "ureadaheadPackService.Generate returned an error for second boot pass: ")
-		}
-
-		if err = linuxssh.GetFile(shortCtx, d.Conn(), response.PackPath, filepath.Join(targetDir, provisionedPack)); err != nil {
-			s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
+		// Initial implementation of DataCollector had here second pass that booted over
+		// the already provisioned account. However nowadays this pack is no longer used
+		// but is still referenced from the ChromeOS build system. Recently we switched to
+		// the pool of accounts and this introduces an inconsistency when the already
+		// provisioned pass exececuted with a random account, which in most cases does not
+		// match one, used for initial provisioning.  As a temporary solution, copy the
+		// initial pack to provisioned pack in order to satisfy ebuild requirements.
+		// TODO(b/182294127): Discard the reference to the provisioned pack in build system
+		// and remove this coping.
+		if err := fsutil.CopyFile(intitalPackPath, provisionedPackPath); err != nil {
+			s.Fatal("Failed copying file: ", err)
 		}
 
 		targetTar := filepath.Join(targetDir, v+".tar")
@@ -334,18 +333,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}
-	attempts := 0
-	for {
-		err := genUreadaheadPack()
-		if err == nil {
-			break
-		}
-		attempts = attempts + 1
-		if attempts > retryCount {
-			s.Fatal("Failed to generate ureadahead packs. No more retries left: ", err)
-		}
-		s.Log("Retrying generating ureadahead, previous attempt failed: ", err)
 	}
 
 	genGmsCoreCache := func() error {
@@ -391,7 +378,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		return nil
 	}
-	attempts = 0
+	attempts := 0
 	for {
 		err := genGmsCoreCache()
 		if err == nil {
@@ -404,4 +391,19 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		s.Log("Retrying generating GMS Core caches, previous attempt failed: ", err)
 	}
 
+	// Due to race condition of using ureadahead in various parts of Chrome,
+	// first generation might be incomplete. Pass GMS Core cache generation as a warm-up
+	// for ureadahead generation.
+	attempts = 0
+	for {
+		err := genUreadaheadPack()
+		if err == nil {
+			break
+		}
+		attempts = attempts + 1
+		if attempts > retryCount {
+			s.Fatal("Failed to generate ureadahead packs. No more retries left: ", err)
+		}
+		s.Log("Retrying generating ureadahead, previous attempt failed: ", err)
+	}
 }
