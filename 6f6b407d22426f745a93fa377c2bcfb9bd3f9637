@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea98ba3_b48f8b33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-11T09:41:56Z",
+      "side": 1,
+      "message": "It\u0027s strange, but I no longer receive \u0027Zero frames expected\u0027. So let\u0027s assume this CL is ready.\n\nI also fixed error reporting so that it no longer freezes when there is no password field.\n\nThis version also adds --skip-force-online-signin-for-testing Chrome command-line option, so it depends on the Chrome change.",
+      "parentUuid": "661e2905_371cad59",
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "926cc473_16660b66",
@@ -607,6 +625,30 @@
       "side": 1,
       "message": "Sure, I\u0027ll rebase this once it lands.",
       "parentUuid": "dabf41d0_f6d31b9e",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "6f6b407d22426f745a93fa377c2bcfb9bd3f9637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63d96358_d3682aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-11T09:41:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa50ebcd_386eea1e",
       "range": {
         "startLine": 126,
         "startChar": 0,

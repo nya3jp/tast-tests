@@ -16,6 +16,24 @@
       "message": "FYI but nya@ recently introduced a \u0027login pool\u0027, where the account is randomly selected from the list.  Basically this is a good choice for this test.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2746374 outlines how it works.",
       "revId": "f9fb09089078c829e2cd4915736b56fbdfebbc27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a055a32f_4e14eaac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-11T09:41:56Z",
+      "side": 1,
+      "message": "i feel that it randomly selects credentials every time I run chrome.New. But we probably want to run all logins with consistent user state.",
+      "parentUuid": "3a403599_408a7db4",
+      "revId": "f9fb09089078c829e2cd4915736b56fbdfebbc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
