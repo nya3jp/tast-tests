@@ -118,12 +118,12 @@ func Attestation(ctx context.Context, s *testing.State) {
 			s.Log("Start key payload closed-loop testing")
 			s.Log("Setting key payload")
 			expectedPayload := hwsec.DefaultKeyPayload
-			_, err = cryptohome.SetKeyPayload(ctx, username, hwsec.DefaultCertLabel, expectedPayload)
+			_, err = attestation.SetKeyPayload(ctx, username, hwsec.DefaultCertLabel, expectedPayload)
 			if err != nil {
 				s.Fatal("Failed to set key payload: ", err)
 			}
 			s.Log("Getting key payload")
-			resultPayload, err := cryptohome.GetKeyPayload(ctx, username, hwsec.DefaultCertLabel)
+			resultPayload, err := attestation.GetKeyPayload(ctx, username, hwsec.DefaultCertLabel)
 			if err != nil {
 				s.Fatal("Failed to get key payload: ", err)
 			}
@@ -133,7 +133,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 			s.Log("Start key payload closed-loop done")
 
 			s.Log("Start verifying key registration")
-			isSuccessful, err := cryptohome.RegisterKeyWithChapsToken(ctx, username, hwsec.DefaultCertLabel)
+			isSuccessful, err := attestation.RegisterKeyWithChapsToken(ctx, username, hwsec.DefaultCertLabel)
 			if err != nil {
 				s.Fatal("Failed to register key with chaps token due to error: ", err)
 			}
@@ -163,7 +163,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 				}
 			}
 			s.Log("Deleting keys just created")
-			if err := cryptohome.DeleteKeys(ctx, username, "label"); err != nil {
+			if err := attestation.DeleteKeys(ctx, username, "label"); err != nil {
 				s.Fatal("Failed to remove the key group: ", err)
 			}
 			for _, label := range []string{"label1", "label2", "label3"} {

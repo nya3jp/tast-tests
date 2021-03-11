@@ -124,3 +124,36 @@ func (a *AttestationDBus) GetEnrollmentID(ctx context.Context, req *apb.GetEnrol
 	ac := hwsecpb.NewAttestationDBusServiceClient(cl.Conn)
 	return ac.GetEnrollmentID(ctx, req)
 }
+
+// SetKeyPayload calls "SetKeyPayload" gRPC D-Bus Interface.
+func (a *AttestationDBus) SetKeyPayload(ctx context.Context, req *apb.SetKeyPayloadRequest) (*apb.SetKeyPayloadReply, error) {
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+	}
+	defer cl.Close(ctx)
+	ac := hwsecpb.NewAttestationDBusServiceClient(cl.Conn)
+	return ac.SetKeyPayload(ctx, req)
+}
+
+// RegisterKeyWithChapsToken calls "RegisterKeyWithChapsToken" gRPC D-Bus Interface.
+func (a *AttestationDBus) RegisterKeyWithChapsToken(ctx context.Context, req *apb.RegisterKeyWithChapsTokenRequest) (*apb.RegisterKeyWithChapsTokenReply, error) {
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+	}
+	defer cl.Close(ctx)
+	ac := hwsecpb.NewAttestationDBusServiceClient(cl.Conn)
+	return ac.RegisterKeyWithChapsToken(ctx, req)
+}
+
+// DeleteKeys calls "DeleteKeys" gRPC D-Bus Interface.
+func (a *AttestationDBus) DeleteKeys(ctx context.Context, req *apb.DeleteKeysRequest) (*apb.DeleteKeysReply, error) {
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+	}
+	defer cl.Close(ctx)
+	ac := hwsecpb.NewAttestationDBusServiceClient(cl.Conn)
+	return ac.DeleteKeys(ctx, req)
+}
