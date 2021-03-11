@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e51613_642fdebb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-11T23:55:54Z",
+      "side": 1,
+      "message": "A bit confused here: \nIf either regex matches return true, you can return directly without finish the loop.\n\nIf all regex match return true, then there is no where to set it back to false when not match.",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 359,
+        "endChar": 3
+      },
+      "revId": "f733e355ef598abf625f48a98e5e099609db347d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
