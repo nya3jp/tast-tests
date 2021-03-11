@@ -22,6 +22,30 @@
       },
       "revId": "1d8aa953314bfb9ecbfab968487e2b396c7fce1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff66dc4e_ab3e1ebc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-03-11T04:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecf45386_02f62f78",
+      "range": {
+        "startLine": 108,
+        "startChar": 27,
+        "endLine": 108,
+        "endChar": 31
+      },
+      "revId": "1d8aa953314bfb9ecbfab968487e2b396c7fce1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
