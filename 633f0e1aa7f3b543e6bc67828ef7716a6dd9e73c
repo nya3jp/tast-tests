@@ -34,6 +34,24 @@
       "parentUuid": "4fdb702a_5718ef85",
       "revId": "633f0e1aa7f3b543e6bc67828ef7716a6dd9e73c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b4eafd_4b3091e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-11T04:25:13Z",
+      "side": 1,
+      "message": "Thanks. We\u0027re thinking about the way to harmonize test hooks and fixtures, I hope we can fix it in a clean way soon.",
+      "parentUuid": "5ae4e350_793c597e",
+      "revId": "633f0e1aa7f3b543e6bc67828ef7716a6dd9e73c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
