@@ -16,6 +16,23 @@
       "message": "Hi Alexander,\n\nPlease review this change to ui.QuickSettingsManagedDeviceInfo Tast test. Thank you!",
       "revId": "53852ea4e7bb2316b86cc77266d1eaad4102419f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97396772_afb282b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T09:01:30Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "53852ea4e7bb2316b86cc77266d1eaad4102419f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
