@@ -85,7 +85,7 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start ARC")
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

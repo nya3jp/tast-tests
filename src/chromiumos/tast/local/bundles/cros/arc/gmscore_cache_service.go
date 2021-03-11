@@ -67,7 +67,7 @@ func (c *GmsCoreCacheService) Generate(ctx context.Context, request *arcpb.GmsCo
 	}
 
 	defer cr.Close(ctx)
-	defer a.Close()
+	defer a.Close(ctx)
 
 	if err := cache.CopyCaches(ctx, a, targetDir); err != nil {
 		os.RemoveAll(targetDir)

@@ -84,7 +84,7 @@ func (a *arcActivation) Deactivate(ctx context.Context) error {
 }
 
 func cleanupARC(ctx context.Context, vm *arc.ARC) error {
-	if err := vm.Close(); err != nil {
+	if err := vm.Close(ctx); err != nil {
 		return errors.Wrap(err, "closing ARC")
 	}
 	return nil

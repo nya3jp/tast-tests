@@ -118,7 +118,7 @@ func PlayStorePersistent(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	pidBefore, err := getPlayStorePid(ctx, a)
 	if err != nil {

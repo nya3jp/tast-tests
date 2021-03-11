@@ -107,7 +107,7 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	if err := checkSdkVersionsInPackagesXML(ctx, username); err != nil {
 		s.Fatal("Failed to check SDK version in arc.log: ", err)
