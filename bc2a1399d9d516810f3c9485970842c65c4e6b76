@@ -16,6 +16,24 @@
       "message": "I think these methods can end the test with a fatal instead of returning an error that is handled here.\n\nAlso all of these fatals could use a different message i.e. \"Failed to open settings page\", \"Failed to add account\", \"Failed to switch play store account\", etc.",
       "revId": "bc2a1399d9d516810f3c9485970842c65c4e6b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ad49c3_685eb481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-11T23:21:01Z",
+      "side": 1,
+      "message": "Fixed the Fatal Messages as appropriate.",
+      "parentUuid": "b3ba9b66_478cdc8a",
+      "revId": "bc2a1399d9d516810f3c9485970842c65c4e6b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
