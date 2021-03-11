@@ -38,7 +38,7 @@ var extensionFiles = []string{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: DisableScreenshotsExtension,
-		Desc: "Behavior of the DisableScreenshots policy, check whether screenshot can be taken by extensions APIs",
+		Desc: "Behavior of the DisableScreenshots policy, check whether screenshot can be taken by chrome.tabs.captureVisibleTab extensions API",
 		Contacts: []string{
 			"lamzin@google.com", // Test port author
 			"chromeos-commercial-stability@google.com",
@@ -148,8 +148,6 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 			}
 
 			// Here we check only `chrome.tabs.captureVisibleTab` extension API.
-			// TODO(crbug.com/839630, crbug.com/817497): check whether DisableScreenshots should affect
-			// `chrome.tabCapture.capture` and `chrome.desktopCapture.chooseDesktopMedia` extension APIs.
 			if err := conn.Eval(ctx, `document.title = "captureVisibleTab"`, nil); err != nil {
 				s.Fatal("Failed to execute JS in extension: ", err)
 			}
