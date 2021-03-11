@@ -63,6 +63,30 @@
       },
       "revId": "d61b300b0df61981d29cde8912e75a71cd58cc74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d15993a_9269fad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-11T17:11:10Z",
+      "side": 1,
+      "message": "yes, when you run it manually the fixture.cleanup doesn\u0027t get called.\n\nbut you can try it when you run two test together. e.g:\n\n\n  $ tast run $DUT  your-test another-test\n\n\nand that will trigger the auto-uninstall",
+      "parentUuid": "6a545a64_38c0ae49",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 14
+      },
+      "revId": "d61b300b0df61981d29cde8912e75a71cd58cc74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
