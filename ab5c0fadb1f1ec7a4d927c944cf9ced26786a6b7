@@ -52,6 +52,24 @@
       "parentUuid": "959ebbfc_6b90c847",
       "revId": "ab5c0fadb1f1ec7a4d927c944cf9ced26786a6b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db82810_c43b4ab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/data/2160p_60fps_600frames_20181225.h264.mp4.external",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-11T21:29:51Z",
+      "side": 1,
+      "message": "It was indeed used by this test case. During bw_file_rd testing, a file has to be provided. But I just changed the script to use a native file (read chrome executable, which is big enough) - we don\u0027t have to download an external file to do this. This is is now removed.",
+      "parentUuid": "bf978f5b_56804481",
+      "revId": "ab5c0fadb1f1ec7a4d927c944cf9ced26786a6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
