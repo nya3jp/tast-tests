@@ -22,6 +22,30 @@
       },
       "revId": "23641c96f9b34e826f70424721ec0ed8496e7531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "258f2f6d_618600c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T11:13:54Z",
+      "side": 1,
+      "message": "I wanted to say that this test is running periodically on that board and based on Tast board it always fails.\nis there a special term for \"informational CQ\"?",
+      "parentUuid": "73c3f703_349a1990",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "23641c96f9b34e826f70424721ec0ed8496e7531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
