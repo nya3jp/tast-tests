@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8107ca_35c14b2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-11T17:43:40Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "b11f5195372b7d486d7e1a305506d794c6c196c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c6c6a0_7f138a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-11T17:43:40Z",
+      "side": 1,
+      "message": "[note: no change from your side].\n\nIt is implied that all test should be moved to critical at one point",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 56
+      },
+      "revId": "b11f5195372b7d486d7e1a305506d794c6c196c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c327e4ed_3d9600b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-11T17:43:40Z",
+      "side": 1,
+      "message": "nit: perhaps adding a comment why this check is not needed on ARCVM?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "b11f5195372b7d486d7e1a305506d794c6c196c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5873dd0b_938f6ed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-11T17:43:40Z",
+      "side": 1,
+      "message": "nit:\n\n  Output(testexec.DumpLogOnError)",
+      "range": {
+        "startLine": 42,
+        "startChar": 64,
+        "endLine": 42,
+        "endChar": 66
+      },
+      "revId": "b11f5195372b7d486d7e1a305506d794c6c196c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
