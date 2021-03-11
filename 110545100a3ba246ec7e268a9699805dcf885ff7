@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f478e6_9266a1dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-03-11T07:39:43Z",
+      "side": 1,
+      "message": "I tried locally with printer.Add.epson_software_collate and it seems to work fine.\n",
+      "revId": "110545100a3ba246ec7e268a9699805dcf885ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
