@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4560a44_b980c316",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T18:20:50Z",
+      "side": 1,
+      "message": "Should we try adding a second credential post mount? IS it setup for that yet?",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0700223d_9bb90db0",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
         "patchSetId": 7
@@ -100,6 +117,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08195f3a_8ac86e8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T18:20:50Z",
+      "side": 1,
+      "message": "This should probably be FATAL() then you can unnest the code below out of the else statement.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f89691_d7158cdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T18:20:50Z",
+      "side": 1,
+      "message": "Same thing here,  I think this becomes FATAL and you can unnest the code below.",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a3e3508_f6714b95",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
         "patchSetId": 7
@@ -146,6 +203,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "deb40db8_6949476b",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T18:20:50Z",
+      "side": 1,
+      "message": "nit: go doesn\u0027t use the || around objects or variable names, at least I was told so in another review",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "000cf380_182959f4",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 7
@@ -157,6 +231,30 @@
       "writtenOn": "2021-03-11T06:38:36Z",
       "side": 1,
       "message": "nit: cmd.Run(testexec.DumpLogOnError);",
+      "range": {
+        "startLine": 500,
+        "startChar": 15,
+        "endLine": 500,
+        "endChar": 20
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a00141_e3b8a214",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-11T18:20:50Z",
+      "side": 1,
+      "message": "Also why is this cmd.Run() different than how the command is executed about?",
+      "parentUuid": "000cf380_182959f4",
       "range": {
         "startLine": 500,
         "startChar": 15,
