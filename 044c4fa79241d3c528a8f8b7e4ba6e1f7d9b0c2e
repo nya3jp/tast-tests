@@ -653,6 +653,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b964dad3_2cb6e804",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T04:40:45Z",
+      "side": 1,
+      "message": "How about this:\n\nif err :\u003d vkbCtx.ui.Exists(KeyFinder.Name(keyName))(ctx); err !\u003d nil {\n    testing.ContextLogf(ctx, \"Failed to find %s: %s\", keyName, err)\n    return false\n}\nreturn true",
+      "parentUuid": "18b5fdb5_17f930f6",
+      "range": {
+        "startLine": 123,
+        "startChar": 65,
+        "endLine": 123,
+        "endChar": 67
+      },
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4194291a_4b9e03a6",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 3
@@ -747,6 +771,24 @@
       "side": 1,
       "message": "When I refactor this package, I do see the same thing. Agree with Judy, we can do a spearate change when porint mouse and other tests. I can do it as well if you like @Judy",
       "parentUuid": "fedd3370_1db2f282",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "343229f9_ffbd5610",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-11T04:40:45Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2751309",
+      "parentUuid": "abf2f194_c6557786",
       "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
