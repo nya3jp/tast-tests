@@ -25,13 +25,15 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 	}
 	defer conn.Close()
 
-	testing.ContextLogf(ctx, "Logging in as user %q", cfg.Creds.User)
+	creds := cfg.Creds()
+
+	testing.ContextLogf(ctx, "Logging in as user %q", creds.User)
 	ctx, st := timing.Start(ctx, "login")
 	defer st.End()
 
-	switch cfg.LoginMode {
+	switch cfg.LoginMode() {
 	case config.FakeLogin:
-		if err := conn.Call(ctx, nil, "Oobe.loginForTesting", cfg.Creds.User, cfg.Creds.Pass, cfg.Creds.GAIAID, cfg.Enroll); err != nil {
+		if err := conn.Call(ctx, nil, "Oobe.loginForTesting", creds.User, creds.Pass, creds.GAIAID, cfg.Enroll()); err != nil {
 			return err
 		}
 	case config.GAIALogin:
@@ -44,17 +46,17 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 		}
 	}
 
-	if cfg.Enroll {
+	if cfg.Enroll() {
 		if err := enterpriseOOBELogin(ctx, cfg, sess); err != nil {
 			return err
 		}
 	}
 
-	if err = cryptohome.WaitForUserMount(ctx, cfg.NormalizedUser); err != nil {
+	if err = cryptohome.WaitForUserMount(ctx, cfg.NormalizedUser()); err != nil {
 		return err
 	}
 
-	if cfg.SkipOOBEAfterLogin {
+	if cfg.SkipOOBEAfterLogin() {
 		testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
 		if err = testing.Poll(ctx, func(ctx context.Context) error {
 			if t, err := getFirstOOBETarget(ctx, sess); err != nil {

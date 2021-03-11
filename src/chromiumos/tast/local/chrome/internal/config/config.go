@@ -119,8 +119,84 @@ func ParseCreds(creds string) ([]Creds, error) {
 // Config contains configurations for chrome.Chrome instance as requested by
 // options to chrome.New.
 //
-// This is an immutable struct. Its fields must not be altered outside of Option
-// and NewConfig.
+// This is an immutable struct. Modification outside NewConfig is prohibited.
+type Config struct {
+	m MutableConfig
+}
+
+// Creds returns login credentials.
+func (c *Config) Creds() Creds { return c.m.Creds }
+
+// NormalizedUser returns a normalized user email.
+func (c *Config) NormalizedUser() string { return c.m.NormalizedUser }
+
+// KeepState returns whether to keep existing user profiles.
+func (c *Config) KeepState() bool { return c.m.KeepState }
+
+// DeferLogin returns whether to defer login in chrome.New. If it is true,
+// users should call Chrome.ContinueLogin to continue login.
+func (c *Config) DeferLogin() bool { return c.m.DeferLogin }
+
+// LoginMode returns a login mode.
+func (c *Config) LoginMode() LoginMode { return c.m.LoginMode }
+
+// TryReuseSession returns whether to try reusing a current user session.
+func (c *Config) TryReuseSession() bool { return c.m.TryReuseSession }
+
+// EnableLoginVerboseLogs returns whether to enable verbose logs on login.
+func (c *Config) EnableLoginVerboseLogs() bool { return c.m.EnableLoginVerboseLogs }
+
+// VKEnabled returns whether to force enable the virtual keyboard.
+func (c *Config) VKEnabled() bool { return c.m.VKEnabled }
+
+// SkipOOBEAfterLogin returns whether to skip OOBE after login.
+func (c *Config) SkipOOBEAfterLogin() bool { return c.m.SkipOOBEAfterLogin }
+
+// InstallWebApp returns whether to automatically install essential web apps.
+func (c *Config) InstallWebApp() bool { return c.m.InstallWebApp }
+
+// Region returns a region of a user session.
+func (c *Config) Region() string { return c.m.Region }
+
+// PolicyEnabled returns whether to enable policy.
+func (c *Config) PolicyEnabled() bool { return c.m.PolicyEnabled }
+
+// DMSAddr returns the address of a device management server.
+func (c *Config) DMSAddr() string { return c.m.DMSAddr }
+
+// Enroll returns whether to enroll the device.
+func (c *Config) Enroll() bool { return c.m.Enroll }
+
+// ARCMode returns the mode of ARC.
+func (c *Config) ARCMode() ARCMode { return c.m.ARCMode }
+
+// RestrictARCCPU returns whether to restrict CPU usage of ARC in background.
+func (c *Config) RestrictARCCPU() bool { return c.m.RestrictARCCPU }
+
+// BreakpadTestMode returns whether to tell Chrome's breakpad to always write
+// dumps directly to a hard-coded directory.
+func (c *Config) BreakpadTestMode() bool { return c.m.BreakpadTestMode }
+
+// ExtraArgs returns extra arguments to pass to Chrome.
+func (c *Config) ExtraArgs() []string { return append([]string(nil), c.m.ExtraArgs...) }
+
+// LacrosExtraArgs returns extra arguments to pass to Lacros Chrome.
+func (c *Config) LacrosExtraArgs() []string { return append([]string(nil), c.m.LacrosExtraArgs...) }
+
+// EnableFeatures returns extra Chrome features to enable.
+func (c *Config) EnableFeatures() []string { return append([]string(nil), c.m.EnableFeatures...) }
+
+// DisableFeatures returns extra Chrome features to disable.
+func (c *Config) DisableFeatures() []string { return append([]string(nil), c.m.DisableFeatures...) }
+
+// ExtraExtDirs returns directories containing extra unpacked extensions to load.
+func (c *Config) ExtraExtDirs() []string { return append([]string(nil), c.m.ExtraExtDirs...) }
+
+// SigninExtKey returns a private key for the sign-in profile test extension.
+func (c *Config) SigninExtKey() string { return c.m.SigninExtKey }
+
+// MutableConfig is a mutable version of Config. MutableConfig is wrapped with
+// Config to prevent mutation after it is returned by NewConfig.
 //
 // When TryReuseSession flag is set for a new chrome session, the configuration of the new session
 // will be checked with the existing chrome session, to see if session reuse is possible.
@@ -130,75 +206,78 @@ func ParseCreds(creds string) ([]Creds, error) {
 // - "true": this field have to match for reused session
 // - "customized": Reuse checking logic is expected to be customized in customizedReuseCheck() function.
 // This tag must be set for every field with one of the above values. Otherwise, unit test will fail.
-type Config struct {
-	Creds                  Creds     `reuse_match:"true"` // login credentials
-	NormalizedUser         string    `reuse_match:"true"` // user with domain added, periods removed, etc.
+type MutableConfig struct {
+	Creds                  Creds     `reuse_match:"true"`
+	NormalizedUser         string    `reuse_match:"true"`
 	KeepState              bool      `reuse_match:"false"`
 	DeferLogin             bool      `reuse_match:"customized"`
 	LoginMode              LoginMode `reuse_match:"customized"`
-	TryReuseSession        bool      `reuse_match:"false"` // try to reuse existing login session if configuration matches
-	EnableLoginVerboseLogs bool      `reuse_match:"true"`  // enable verbose logging in some login related files
+	TryReuseSession        bool      `reuse_match:"false"`
+	EnableLoginVerboseLogs bool      `reuse_match:"true"`
 	VKEnabled              bool      `reuse_match:"true"`
-	SkipOOBEAfterLogin     bool      `reuse_match:"false"` // skip OOBE post user login
-	InstallWebApp          bool      `reuse_match:"true"`  // auto install essential apps after user login
+	SkipOOBEAfterLogin     bool      `reuse_match:"false"`
+	InstallWebApp          bool      `reuse_match:"true"`
 	Region                 string    `reuse_match:"true"`
-	PolicyEnabled          bool      `reuse_match:"true"` // flag to enable policy fetch
-	DMSAddr                string    `reuse_match:"true"` // Device Management URL, or empty if using default
-	Enroll                 bool      `reuse_match:"true"` // whether device should be enrolled
+	PolicyEnabled          bool      `reuse_match:"true"`
+	DMSAddr                string    `reuse_match:"true"`
+	Enroll                 bool      `reuse_match:"true"`
 	ARCMode                ARCMode   `reuse_match:"true"`
-	RestrictARCCPU         bool      `reuse_match:"true"` // a flag to control cpu restrictions on ARC
-
-	// If BreakpadTestMode is true, tell Chrome's breakpad to always write
-	// dumps directly to a hardcoded directory.
-	BreakpadTestMode bool     `reuse_match:"true"`
-	ExtraArgs        []string `reuse_match:"true"`
-	LacrosExtraArgs  []string `reuse_match:"true"`
-	EnableFeatures   []string `reuse_match:"true"`
-	DisableFeatures  []string `reuse_match:"true"`
-
-	// reuse_match of extensions will be handled in Chrome.New().
-	ExtraExtDirs []string `reuse_match:"customized"` // directories containing all extra unpacked extensions to load
-	SigninExtKey string   `reuse_match:"customized"` // private key for signin profile test extension manifest
+	RestrictARCCPU         bool      `reuse_match:"true"`
+	BreakpadTestMode       bool      `reuse_match:"true"`
+	ExtraArgs              []string  `reuse_match:"true"`
+	LacrosExtraArgs        []string  `reuse_match:"true"`
+	EnableFeatures         []string  `reuse_match:"true"`
+	DisableFeatures        []string  `reuse_match:"true"`
+	ExtraExtDirs           []string  `reuse_match:"customized"`
+	SigninExtKey           string    `reuse_match:"customized"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
-type Option func(cfg *Config) error
+type Option func(cfg *MutableConfig) error
 
 // NewConfig constructs Config from a list of options given to chrome.New.
 func NewConfig(opts []Option) (*Config, error) {
 	cfg := &Config{
-		Creds:                  defaultCreds,
-		KeepState:              false,
-		LoginMode:              FakeLogin,
-		VKEnabled:              false,
-		SkipOOBEAfterLogin:     true,
-		EnableLoginVerboseLogs: false,
-		InstallWebApp:          false,
-		Region:                 "us",
-		PolicyEnabled:          false,
-		Enroll:                 false,
-		BreakpadTestMode:       true,
+		m: MutableConfig{
+			Creds:                  defaultCreds,
+			KeepState:              false,
+			LoginMode:              FakeLogin,
+			VKEnabled:              false,
+			SkipOOBEAfterLogin:     true,
+			EnableLoginVerboseLogs: false,
+			InstallWebApp:          false,
+			Region:                 "us",
+			PolicyEnabled:          false,
+			Enroll:                 false,
+			BreakpadTestMode:       true,
+		},
 	}
 	for _, opt := range opts {
-		if err := opt(cfg); err != nil {
+		if err := opt(&cfg.m); err != nil {
 			return nil, err
 		}
 	}
 
 	// TODO(rrsilva, crbug.com/1109176) - Disable login-related verbose logging
 	// in all tests once the issue is solved.
-	cfg.EnableLoginVerboseLogs = true
+	cfg.m.EnableLoginVerboseLogs = true
+
+	// Logging in with a fake account requires non-empty GAIA ID. Set it to
+	// the default value when it's missing.
+	if cfg.m.LoginMode == FakeLogin && cfg.m.Creds.GAIAID == "" {
+		cfg.m.Creds.GAIAID = defaultGAIAID
+	}
 
 	// This works around https://crbug.com/358427.
-	if cfg.LoginMode == GAIALogin {
+	if cfg.m.LoginMode == GAIALogin {
 		var err error
-		if cfg.NormalizedUser, err = session.NormalizeEmail(cfg.Creds.User, true); err != nil {
-			return nil, errors.Wrapf(err, "failed to normalize email %q", cfg.Creds.User)
+		if cfg.m.NormalizedUser, err = session.NormalizeEmail(cfg.m.Creds.User, true); err != nil {
+			return nil, errors.Wrapf(err, "failed to normalize email %q", cfg.m.Creds.User)
 		}
 	} else {
-		cfg.NormalizedUser = cfg.Creds.User
+		cfg.m.NormalizedUser = cfg.m.Creds.User
 	}
 
 	return cfg, nil
@@ -206,13 +285,13 @@ func NewConfig(opts []Option) (*Config, error) {
 
 // Marshal marshals the Config struct to bytes.
 func (c *Config) Marshal() ([]byte, error) {
-	return json.Marshal(c)
+	return json.Marshal(&c.m)
 }
 
 // Unmarshal unmarshals the data to a Config struct.
 func Unmarshal(data []byte) (*Config, error) {
 	cfg := &Config{}
-	if err := json.Unmarshal(data, cfg); err != nil {
+	if err := json.Unmarshal(data, &cfg.m); err != nil {
 		return nil, err
 	}
 	return cfg, nil
@@ -224,9 +303,9 @@ func Unmarshal(data []byte) (*Config, error) {
 // Default comparison logic is implemented here. Customized comparison logic goes to
 // customizedReuseCheck() function .
 func (c *Config) VerifySessionReuse(newCfg *Config) error {
-	t := reflect.TypeOf(c).Elem()
-	val1 := reflect.ValueOf(c).Elem()
-	val2 := reflect.ValueOf(newCfg).Elem()
+	t := reflect.TypeOf(&c.m).Elem()
+	val1 := reflect.ValueOf(&c.m).Elem()
+	val2 := reflect.ValueOf(&newCfg.m).Elem()
 	// Iterate over all available fields and compare fields requiring exact match.
 	for i := 0; i < t.NumField(); i++ {
 		field := t.Field(i)
@@ -261,14 +340,14 @@ func (c *Config) customizedReuseCheck(newCfg *Config) error {
 	// - If the current session has already logged in, UI restart is required to return to OOBE.
 	// - If the current session happens to be at the OOBE page, test API extension is not accessible
 	// yet and we are not sure if the session can be reused.
-	if newCfg.DeferLogin {
+	if newCfg.DeferLogin() {
 		return errors.New("session with DeferLogin cannot be reused")
 	}
-	if newCfg.LoginMode == NoLogin {
+	if newCfg.LoginMode() == NoLogin {
 		return errors.New("session with NoLogin as LoginMode cannot be reused")
 	}
-	if newCfg.LoginMode != c.LoginMode {
-		return errors.Errorf("LoginMode has different values and cannot be reused: %v vs. %v", c.LoginMode, newCfg.LoginMode)
+	if newCfg.LoginMode() != c.LoginMode() {
+		return errors.Errorf("LoginMode has different values and cannot be reused: %v vs. %v", c.LoginMode(), newCfg.LoginMode())
 	}
 
 	return nil

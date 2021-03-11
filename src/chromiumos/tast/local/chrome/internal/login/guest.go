@@ -44,7 +44,7 @@ func logInAsGuest(ctx context.Context, cfg *config.Config, sess *driver.Session)
 		return err
 	}
 
-	if err := cryptohome.WaitForUserMount(ctx, cfg.Creds.User); err != nil {
+	if err := cryptohome.WaitForUserMount(ctx, cfg.Creds().User); err != nil {
 		return err
 	}
 

@@ -29,7 +29,7 @@ func PreflightCheck(ctx context.Context, cfg *config.Config) error {
 
 	// Perform an early high-level check of cryptohomed to avoid
 	// less-descriptive errors later if it's broken.
-	if cfg.LoginMode != config.NoLogin {
+	if cfg.LoginMode() != config.NoLogin {
 		if err := cryptohome.CheckService(ctx); err != nil {
 			// Log problems in cryptohomed's dependencies.
 			for _, e := range cryptohome.CheckDeps(ctx) {

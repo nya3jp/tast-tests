@@ -70,9 +70,10 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 	defer gaiaConn.Close()
 
 	testing.ContextLog(ctx, "Performing GAIA login")
+	creds := cfg.Creds()
 
 	// Fill in username.
-	if err := insertGAIAField(ctx, gaiaConn, "#identifierId", cfg.Creds.User); err != nil {
+	if err := insertGAIAField(ctx, gaiaConn, "#identifierId", creds.User); err != nil {
 		return errors.Wrap(err, "failed to fill username field")
 	}
 	if err := oobeConn.Call(ctx, nil, "Oobe.clickGaiaPrimaryButtonForTesting"); err != nil {
@@ -86,18 +87,18 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 	}
 	if authType == config.PasswordAuth {
 		testing.ContextLog(ctx, "This account uses password authentication")
-		if cfg.Creds.Pass == "" {
+		if creds.Pass == "" {
 			return errors.New("please supply a password with chrome.Auth()")
 		}
-		if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", cfg.Creds.Pass); err != nil {
+		if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", creds.Pass); err != nil {
 			return errors.Wrap(err, "failed to fill in password field")
 		}
 	} else if authType == config.ContactAuth {
 		testing.ContextLog(ctx, "This account uses contact email authentication")
-		if cfg.Creds.Contact == "" {
+		if creds.Contact == "" {
 			return errors.New("please supply a contact email with chrome.Contact()")
 		}
-		if err := insertGAIAField(ctx, gaiaConn, "input[name=email]", cfg.Creds.Contact); err != nil {
+		if err := insertGAIAField(ctx, gaiaConn, "input[name=email]", creds.Contact); err != nil {
 			return errors.Wrap(err, "failed to fill in contact email field")
 		}
 	} else {
@@ -121,7 +122,7 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 	}
 
 	// Perform Unicorn login if parent user given.
-	if cfg.Creds.ParentUser != "" {
+	if creds.ParentUser != "" {
 		if err := performUnicornParentLogin(ctx, cfg, sess, oobeConn, gaiaConn); err != nil {
 			return err
 		}
@@ -192,9 +193,11 @@ func insertGAIAField(ctx context.Context, gaiaConn *driver.Conn, selector, value
 // This function is heavily based on NavigateUnicornLogin() in Catapult's
 // telemetry/telemetry/internal/backends/chrome/oobe.py.
 func performUnicornParentLogin(ctx context.Context, cfg *config.Config, sess *driver.Session, oobeConn, gaiaConn *driver.Conn) error {
-	normalizedParentUser, err := session.NormalizeEmail(cfg.Creds.ParentUser, false)
+	creds := cfg.Creds()
+
+	normalizedParentUser, err := session.NormalizeEmail(creds.ParentUser, false)
 	if err != nil {
-		return errors.Wrapf(err, "failed to normalize email %q", cfg.Creds.ParentUser)
+		return errors.Wrapf(err, "failed to normalize email %q", creds.ParentUser)
 	}
 
 	testing.ContextLogf(ctx, "Clicking button that matches parent email: %q", normalizedParentUser)
@@ -259,7 +262,7 @@ func performUnicornParentLogin(ctx context.Context, cfg *config.Config, sess *dr
 	}
 
 	testing.ContextLog(ctx, "Typing parent password")
-	if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", cfg.Creds.ParentPass); err != nil {
+	if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", creds.ParentPass); err != nil {
 		return err
 	}
 	if err := oobeConn.Call(ctx, nil, "Oobe.clickGaiaPrimaryButtonForTesting"); err != nil {
