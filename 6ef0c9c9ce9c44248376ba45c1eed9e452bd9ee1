@@ -18,6 +18,115 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51c74b50_82a7b2b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T10:25:08Z",
+      "side": 1,
+      "message": "LGTM % nits, please resolve Mitsuru comment as well :) ",
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d0b2c13_4e46fca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T10:25:08Z",
+      "side": 1,
+      "message": "default timeout is 90 seconds IIRC, do you really need 5 minutes?",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e96811_b743313e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T10:25:08Z",
+      "side": 1,
+      "message": "nit: Failed to record histogram Viz.DisplayCompositor.OverlayStrategy",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 80
+      },
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0364349_bde5acb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T10:25:08Z",
+      "side": 1,
+      "message": "nit: please use Go pattern (got/want) for such messages:\n\nsmth like:\nUnexpected underlay: got on only %d of %d frames; want on all frames",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 77
+      },
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb94119_f6251a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T10:25:08Z",
+      "side": 1,
+      "message": "nit: last s.Fatalf can be just s.Errorf",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 10
+      },
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48241b58_2218a64a",
