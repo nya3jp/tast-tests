@@ -103,6 +103,24 @@
       "message": "Failed to connect to ARC. ARC is already started after opt-in",
       "revId": "2ece3a5ee6cce0b11f071c4486ace2188ce2c82c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61f4ccbe_93299e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-11T22:30:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d85ec4cf_ec1f5eb6",
+      "revId": "2ece3a5ee6cce0b11f071c4486ace2188ce2c82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
