@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "02dc7ea3efa4697bc919a1fef02aa2d60c247cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa3ea952_80b0a1d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-11T11:42:39Z",
+      "side": 1,
+      "message": "What about the actual autoclick test (policy.AutoclickEnabled) where functionality is checked? \nAre we sure this one pollutes the execution?\n",
+      "revId": "02dc7ea3efa4697bc919a1fef02aa2d60c247cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
