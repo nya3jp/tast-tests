@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2a607c6_a8b15672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-03-11T09:24:24Z",
+      "side": 1,
+      "message": "I\u0027m not seeing any change to how errors are handled (as at Patchset 2)... am I missing something?",
+      "parentUuid": "0191a6cd_9848c6ae",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 845,
+        "endChar": 0
+      },
+      "revId": "65b061315181b55bd46caad17d7f155685c655e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "004fb065_90873e03",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
         "patchSetId": 1
