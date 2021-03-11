@@ -35,7 +35,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 
-	cryptohome := helper.CryptohomeClient()
+	tpmManager := helper.TPMManagerClient()
 	attestation := helper.AttestationClient()
 
 	s.Log("Start resetting TPM if needed")
@@ -71,7 +71,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to prepare for enrollment: ", err)
 	}
 	s.Log("Attestation prepared")
-	passwd, err := cryptohome.GetOwnerPassword(ctx)
+	passwd, err := tpmManager.GetOwnerPassword(ctx)
 	if err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	}
@@ -92,7 +92,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 	} else if !bytes.Equal(checksumOutput, checksumOutput2) {
 		s.Fatal("Inconsistent checksum after reboot")
 	}
-	if passwd2, err := cryptohome.GetOwnerPassword(ctx); err != nil {
+	if passwd2, err := tpmManager.GetOwnerPassword(ctx); err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	} else if passwd != passwd2 {
 		s.Fatalf("Unexpected owner password after reboot: got %q; want %q", passwd2, passwd)
@@ -107,7 +107,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 		// This hacky logic watches the file modification of the persistent tpm status for both
 		// monolithic and distributed models.
 		// Ignores error here; if it's because file doesn't exist we assume the local data has changed.
-		if err := cryptohome.ClearOwnerPassword(ctx); err != nil {
+		if _, err := tpmManager.ClearOwnerPassword(ctx); err != nil {
 			return err
 		}
 		newTime, err := r.Run(ctx, "stat", "-c", "%y", "/var/lib/tpm_manager/local_tpm_data")
@@ -120,7 +120,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 		if err := dCtrl.Restart(ctx, hwsec.CryptohomeDaemon); err != nil {
 			return err
 		}
-		if passwd, err := cryptohome.GetOwnerPassword(ctx); err != nil {
+		if passwd, err := tpmManager.GetOwnerPassword(ctx); err != nil {
 			return err
 		} else if len(passwd) != 0 {
 			return errors.New("Still have password")

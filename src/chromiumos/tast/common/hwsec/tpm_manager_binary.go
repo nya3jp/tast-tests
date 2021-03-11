@@ -96,3 +96,8 @@ func (c *tpmManagerBinary) nonsensitiveStatus(ctx context.Context) ([]byte, erro
 func (c *tpmManagerBinary) nonsensitiveStatusIgnoreCache(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "status", "--nonsensitive", "--ignore_cache")
 }
+
+// clearOwnerPassword calls "tpm_manager_client clear_owner_password".
+func (c *tpmManagerBinary) clearOwnerPassword(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "clear_owner_password")
+}

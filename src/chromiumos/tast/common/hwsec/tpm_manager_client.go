@@ -6,7 +6,9 @@ package hwsec
 
 import (
 	"context"
+	"encoding/hex"
 	"fmt"
+	"regexp"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -26,6 +28,10 @@ const (
 	// tpmManagerStatusSuccessMessage is the error code from other tpm_manager API when the operation is successful.
 	tpmManagerStatusSuccessMessage = "STATUS_SUCCESS"
 )
+
+// Matches the owner password in status string.
+// Example: "owner_password: 3344393734333945364646313534443137454434".
+var ownerPasswordRegexp = regexp.MustCompile("owner_password: (?P<OwnerPassword>[0-9A-F]+)$")
 
 // TPMManagerClient wraps and the functions of tpmManagerBinary and parses the outputs to
 // structured data.
@@ -113,6 +119,31 @@ func (u *TPMManagerClient) Status(ctx context.Context) (string, error) {
 	binaryMsg, err := u.binary.status(ctx)
 
 	return checkStatusCommandAndReturn(ctx, binaryMsg, err, "Status")
+}
+
+// GetOwnerPassword returns the owner password.
+func (u *TPMManagerClient) GetOwnerPassword(ctx context.Context) (string, error) {
+	msg, err := u.Status(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get TPM status")
+	}
+	result := ownerPasswordRegexp.FindStringSubmatch(msg)
+	if len(result) < 2 {
+		return "", nil
+	}
+	hexOwnerPassword := result[1]
+	dec := make([]byte, hex.DecodedLen(len(hexOwnerPassword)))
+	n, err := hex.Decode(dec, []byte(hexOwnerPassword))
+	if err != nil {
+		return "", errors.Wrap(err, "failed to call hex.Decode")
+	}
+	return string(dec[:n]), nil
+}
+
+// ClearOwnerPassword clears TPM owner password in the best effort.
+func (u *TPMManagerClient) ClearOwnerPassword(ctx context.Context) (string, error) {
+	binaryMsg, err := u.binary.clearOwnerPassword(ctx)
+	return checkStatusCommandAndReturn(ctx, binaryMsg, err, "ClearOwnerPassword")
 }
 
 // NonsensitiveStatusInfo contains the dictionary attack related information.
