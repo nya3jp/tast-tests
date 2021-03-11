@@ -87,6 +87,24 @@
       "message": "Theoretically, we can also decrease the 15 sec measure time or remove some profiles.\nHave no strong preference on shorten the test time.\nFeel free to comment on this.",
       "revId": "23f4ba906678558b83b3b4e921652d8f8ad6aaa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ceede44_e3a0477c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-11T09:33:45Z",
+      "side": 1,
+      "message": "After we confirmed that profile have negligible/acceptable performance impact, we can always use the highest available one in HP,MP,BP, and only test bitrate multiplier in this test to reduce the testing time.",
+      "parentUuid": "171bbb83_c68cfb56",
+      "revId": "23f4ba906678558b83b3b4e921652d8f8ad6aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
