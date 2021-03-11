@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73c3f703_349a1990",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-11T09:36:20Z",
+      "side": 1,
+      "message": "the test is informational, it never ran on the Cq. Maybe just remove \"in the CQ\"?",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "23641c96f9b34e826f70424721ec0ed8496e7531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
