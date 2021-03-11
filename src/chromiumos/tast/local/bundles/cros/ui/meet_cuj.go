@@ -172,7 +172,7 @@ func init() {
 func MeetCUJ(ctx context.Context, s *testing.State) {
 	const (
 		timeout        = 10 * time.Second
-		defaultDocsURL = "https://docs.google.com/document/d/1qREN9w1WgjgdGYBT_eEtE6T21ErlW_4nQoBJVhrR1S0/edit"
+		defaultDocsURL = "https://docs.google.com/document/d/1bscYEr0uC5uD9kcpRA0zJBnDkpJdFAlK6p9jyeNzu4k/edit"
 		notes          = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	)
 
