@@ -16,6 +16,161 @@
       "message": "Hi Alexander, please review the following. Thanks.",
       "revId": "f0c109ac6be1049595e6a48a8306ef7a70d112e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0618063_c191d52c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/dictation_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T14:15:47Z",
+      "side": 1,
+      "message": "nit: we have a new ui package which is more stable than the old one.\n\n\"chromiumos/tast/local/chrome/uiauto\"\n\nIn addition you will also need:\n\"chromiumos/tast/local/chrome/uiauto/checked\"\n\"chromiumos/tast/local/chrome/uiauto/nodewith\"\n\"chromiumos/tast/local/chrome/uiauto/restriction\"\n\"chromiumos/tast/local/chrome/uiauto/role\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "f0c109ac6be1049595e6a48a8306ef7a70d112e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3786d7b_4dfe5b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/dictation_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T14:15:47Z",
+      "side": 1,
+      "message": "nit: use Fixture instead of precondition:\n\nFixture:      \"chromePolicyLoggedIn\",\n\nIn the future we want to move all tests to Fixtures as far as possible.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "f0c109ac6be1049595e6a48a8306ef7a70d112e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c777f5_4cd0d17a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/dictation_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T14:15:47Z",
+      "side": 1,
+      "message": "for the Fixture use this instead:\n\ncr :\u003d s.FixtValue().(*fixtures.FixtData).Chrome\nfdms :\u003d s.FixtValue().(*fixtures.FixtData).FakeDMS",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "f0c109ac6be1049595e6a48a8306ef7a70d112e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc84ccc0_4cc8dba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/dictation_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T14:15:47Z",
+      "side": 1,
+      "message": "for the uiauto package do this instead:\n\nwantChecked     checked.Checked\nwantRestriction restriction.Restriction",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 37
+      },
+      "revId": "f0c109ac6be1049595e6a48a8306ef7a70d112e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f0b20c_cc5300e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/dictation_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T14:15:47Z",
+      "side": 1,
+      "message": "Checking if the button is available is still missing.\n\nbuttonExists :\u003d true\nif err \u003d ui.Exists(nodewith.Name(\"Toggle dictation\").Role(role.Button))(ctx); err !\u003d nil {\n  buttonExists \u003d false\n}\nif buttonExists !\u003d param.wantButton {\n  s.Errorf(\"Unexpected existance of Toggle dictation button: got %v; want %v\", buttonExists, param.wantButton)\n}",
+      "revId": "f0c109ac6be1049595e6a48a8306ef7a70d112e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc975a6_1e962c49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/dictation_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T14:15:47Z",
+      "side": 1,
+      "message": "for the uiauto package do this instead:\n\nui \u003d uiauto.New(tconn)\nif err :\u003d ui.LeftClick(nodewith.Name(\"Manage accessibility features Enable accessibility features\").Role(Link))(ctx); err !\u003d nil {\n  s.Fatal(\"Failed to find and click Manage accessibility features link: \", err)\n}",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "f0c109ac6be1049595e6a48a8306ef7a70d112e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76825f4a_928c45fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/dictation_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T14:15:47Z",
+      "side": 1,
+      "message": "for the uiauto package do this instead:\n\nnodeInfo, err :\u003d ui.Info(ctx, nodewith.Name(\"Enable dictation (speak to type)\").Role(role.ToggleButton))\nif err !\u003d nil {\n\ts.Fatal(\"Could not find Enable dictation (speak to type) button: \", err)\n}\n\n// Check that the button is in the correct state.\nif nodeInfo.Restriction !\u003d param.wantRestriction {\n\ts.Errorf(\"Unexpected button restriction state: got %v, want %v\", nodeInfo.Restriction, param.wantRestriction)\n}\nif nodeInfo.Checked !\u003d param.wantChecked {\n\ts.Errorf(\"Unexpected button checked state: got %v, want %v\", nodeInfo.Checked, param.wantChecked)\n}",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 4
+      },
+      "revId": "f0c109ac6be1049595e6a48a8306ef7a70d112e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
