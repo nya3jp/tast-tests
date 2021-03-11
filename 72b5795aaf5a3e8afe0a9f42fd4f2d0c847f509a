@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d4cd4b9_d6130fb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-03-11T05:22:29Z",
+      "side": 1,
+      "message": "This is a new CL to fix the same bugs which I tried to fix at https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2703560",
+      "revId": "72b5795aaf5a3e8afe0a9f42fd4f2d0c847f509a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
