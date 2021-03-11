@@ -39,6 +39,30 @@
       },
       "revId": "72b5795aaf5a3e8afe0a9f42fd4f2d0c847f509a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03c5668_e4b1eefd",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-03-11T07:42:10Z",
+      "side": 1,
+      "message": "You are right. I split the CL to two.",
+      "parentUuid": "0e5d4bda_f094dcd1",
+      "range": {
+        "startLine": 140,
+        "startChar": 19,
+        "endLine": 140,
+        "endChar": 40
+      },
+      "revId": "72b5795aaf5a3e8afe0a9f42fd4f2d0c847f509a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
