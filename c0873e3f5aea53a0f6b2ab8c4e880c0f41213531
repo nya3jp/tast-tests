@@ -16,6 +16,29 @@
       "message": "Will b/160208106 track moving this out of informational?",
       "revId": "c0873e3f5aea53a0f6b2ab8c4e880c0f41213531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f76f1b_5f77acc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-11T10:31:17Z",
+      "side": 1,
+      "message": "nit: out",
+      "range": {
+        "startLine": 26,
+        "startChar": 35,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "c0873e3f5aea53a0f6b2ab8c4e880c0f41213531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
