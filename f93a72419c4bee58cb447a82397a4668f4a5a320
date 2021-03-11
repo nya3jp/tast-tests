@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ee3da01_9ea568b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T00:07:21Z",
+      "side": 1,
+      "message": "Please use a cleanupCtx to ensure this gets properly torn down\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 30*time.Second)\ndefer cancel()\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 19,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "f93a72419c4bee58cb447a82397a4668f4a5a320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7cae21b3_e22cecfb",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
         "patchSetId": 1
@@ -65,6 +88,29 @@
         "startChar": 6,
         "endLine": 56,
         "endChar": 11
+      },
+      "revId": "f93a72419c4bee58cb447a82397a4668f4a5a320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16d98321_be4ff252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T00:07:21Z",
+      "side": 1,
+      "message": "Remember to close this connection. Ditto for all the remaining uses of this",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 9
       },
       "revId": "f93a72419c4bee58cb447a82397a4668f4a5a320",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -279,6 +325,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be67af6f_40c0a4e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T00:07:21Z",
+      "side": 1,
+      "message": "This needs to be closed in this scope if any errors occur. One way to achieve this (because you\u0027ll also be returning this if everything was successful) is to use a named return variable and check if it\u0027s nil in a deferred function and if it is, close the connection, e.g.\n```\nfunc openWebPage(ctx context.Context, cr *chrome.Chrome) (cr *chrome.Conn, jbObj *chrome.JSObject, retErr error) {\n  pageConn, err :\u003d cr.NewConn(ctx, \"https://www.google.com\")\n  if err !\u003d nil {\n    return nil, nil, errors.Wrap(err, \"failed to create blank URL\")\n  }\n  defer func() {\n    if retErr !\u003d nil {\n      pageConn.Close()\n    }\n  }()\n...\n```",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 9
+      },
+      "revId": "f93a72419c4bee58cb447a82397a4668f4a5a320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88be4cb6_ad5d5639",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
         "patchSetId": 1
@@ -318,6 +387,29 @@
         "startChar": 5,
         "endLine": 169,
         "endChar": 13
+      },
+      "revId": "f93a72419c4bee58cb447a82397a4668f4a5a320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d52cd3b3_c2729cac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T00:07:21Z",
+      "side": 1,
+      "message": "Please keep error messages consistent, e.g. failed as media track in web page unexpectedly ended",
+      "range": {
+        "startLine": 182,
+        "startChar": 21,
+        "endLine": 182,
+        "endChar": 66
       },
       "revId": "f93a72419c4bee58cb447a82397a4668f4a5a320",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
