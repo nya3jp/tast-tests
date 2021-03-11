@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff7e2fc6_4442ac41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-11T10:47:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc478e3_f009fee7",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 78
+      },
+      "revId": "426c8b47805af93bc5c1ab019d82e993b9deaff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55716535_3b44ac38",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ae7b6d_2ee0a506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-11T10:47:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55716535_3b44ac38",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 4
+      },
+      "revId": "426c8b47805af93bc5c1ab019d82e993b9deaff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35432022_a29dbccb",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-03-11T10:26:16Z",
       "side": 1,
       "message": "nit: missing .",
+      "range": {
+        "startLine": 139,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 48
+      },
+      "revId": "426c8b47805af93bc5c1ab019d82e993b9deaff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f56d51_0a459240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-11T10:47:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35432022_a29dbccb",
       "range": {
         "startLine": 139,
         "startChar": 3,
