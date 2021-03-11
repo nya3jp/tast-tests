@@ -16,6 +16,210 @@
       "message": "As suggested by Judy offline, removed session Context out of vkbCtx structure.",
       "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47ff7e9a_43f16048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-11T02:17:39Z",
+      "side": 1,
+      "message": "Could you document why you\u0027re shortening the deadline?",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bab07e3_bf9527ab",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-11T02:17:39Z",
+      "side": 1,
+      "message": "This looks to me like you\u0027re modifying the original vkb.go, rather than creating a modified copy of the file (though that may be just how it appears to gerrit - is that the case / how would I be able to tell in gerrit)?",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "828aed4a_30ae4475",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-11T02:17:39Z",
+      "side": 1,
+      "message": "If we\u0027re not having non-action versions of these functions, should they be called *Action? The only reason I called them *Action was because the function names conflicted, and I note that the uiauto library itself doesn\u0027t name these things *Action",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e935943_0c31c62b",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-11T02:17:39Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to use uiauto.Action here. Since it\u0027s a typedef, I think it should work without.",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c443edf_076dccfe",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-11T02:17:39Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to use uiauto.Action here. Since it\u0027s a typedef, I think it should work without.",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8287be26_42071d54",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-11T02:17:39Z",
+      "side": 1,
+      "message": "replace all uses of uiauto.New(vkbCtx.tconn) with vkbCtx.uiautoCtx?",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fca1cf3_f0fca8b4",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-11T02:17:39Z",
+      "side": 1,
+      "message": "Sleep returns an error. Also, since you\u0027re calling 4 functions that return an error in a row, it may be useful to create a mouse.*Action and a testing.SleepAction in the uiauto library (except presumably don\u0027t call them actions).\n\nI made this script to add relevant actions to a file, it\u0027ll probably give you a good start.\nhttps://paste.googleplex.com/5047391989268480",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e417cd9c_8e85a740",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-11T02:17:39Z",
+      "side": 1,
+      "message": "Is this the right key? Admittedly, the old code does seem to do it this way as well. If you know why it is the right key, could you document it?",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9d0bebb_bca96976",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-11T02:17:39Z",
+      "side": 1,
+      "message": "\"until the condition returns true\" -\u003e \"until the VK is shown\"",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "083f41af_a7cd9cd0",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-11T02:17:39Z",
+      "side": 1,
+      "message": "Just WithTimeout?",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad3bc870_0330e724",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-11T02:17:39Z",
+      "side": 1,
+      "message": "Should you just return the err directly here and put a better error message in BackgroundConn?",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a2e4bf_a3427057",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-11T02:17:39Z",
+      "side": 1,
+      "message": "Just a note that if you haven\u0027t, you may want to test these functions out with child CLs before submitting this one, or you may have to fix some bugs you\u0027ll end up submitting.\n\nIIRC, I had some issues with LeftClick failing because the keyfinder returned two nodes (which is an error in the new library, but not in the old one)",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
