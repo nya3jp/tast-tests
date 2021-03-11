@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e3e05818_61980744",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-03-11T17:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cc7509c_68d7c88a",
+      "range": {
+        "startLine": 7,
+        "startChar": 43,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "d33abbbe5366c0d254ad147abb89b9e7da6e4fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "04d23258_1e366cac",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-11T10:22:04Z",
       "side": 1,
       "message": "nowadays*",
+      "range": {
+        "startLine": 317,
+        "startChar": 46,
+        "endLine": 317,
+        "endChar": 53
+      },
+      "revId": "d33abbbe5366c0d254ad147abb89b9e7da6e4fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa95f12f_498b493a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-03-11T17:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8786d7d_82f638cc",
       "range": {
         "startLine": 317,
         "startChar": 46,
@@ -100,6 +148,30 @@
       "writtenOn": "2021-03-11T10:22:04Z",
       "side": 1,
       "message": "copying*",
+      "range": {
+        "startLine": 324,
+        "startChar": 21,
+        "endLine": 324,
+        "endChar": 27
+      },
+      "revId": "d33abbbe5366c0d254ad147abb89b9e7da6e4fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f23d8d4c_a0e7141b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-03-11T17:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3154065_bd214784",
       "range": {
         "startLine": 324,
         "startChar": 21,
