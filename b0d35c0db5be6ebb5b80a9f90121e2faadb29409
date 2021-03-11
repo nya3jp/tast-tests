@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71a736e6_5ed68fc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-11T06:20:07Z",
+      "side": 1,
+      "message": "to me, this sounds like actual timing issue on production, rather than just testing stuff?\nWhat\u0027s the plan to fix it properly?",
+      "revId": "b0d35c0db5be6ebb5b80a9f90121e2faadb29409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f79d1faa_9121f78a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-11T06:20:07Z",
+      "side": 1,
+      "message": "What is the exact condition to avoid to go into this state? Could you poll the condition, instead of sleep?\nActually, sleep in general is the source of flakiness, so we should avoid it as much as possible.",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "b0d35c0db5be6ebb5b80a9f90121e2faadb29409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
