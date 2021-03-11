@@ -16,6 +16,46 @@
       "message": "Hi Alexander,\n\nCan you please take a look?\n\nThanks!",
       "revId": "459892ec67cf00325df0404f944b567647036660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d188fa1_9503cb63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T15:24:17Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "459892ec67cf00325df0404f944b567647036660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c19cbe2_9635ee0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-11T15:24:17Z",
+      "side": 1,
+      "message": "nit: s/show //",
+      "range": {
+        "startLine": 145,
+        "startChar": 22,
+        "endLine": 145,
+        "endChar": 27
+      },
+      "revId": "459892ec67cf00325df0404f944b567647036660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
