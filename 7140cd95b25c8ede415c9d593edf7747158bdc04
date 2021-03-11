@@ -16,6 +16,206 @@
       "message": "I think now is a great time to write an integration test",
       "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0700223d_9bb90db0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-11T06:38:36Z",
+      "side": 1,
+      "message": "Do you need to continue the test?\ns.Fatal() may be better.",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc582cea_347446a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-11T06:38:36Z",
+      "side": 1,
+      "message": "style\n\nif err :\u003d ...; err !\u003d nil {\n  ...\n}\n\nto minimize the scope of err.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01c5c23a_bfe08da4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-11T06:38:36Z",
+      "side": 1,
+      "message": "s.Fatal()",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "174ed3de_de7c8766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-11T06:38:36Z",
+      "side": 1,
+      "message": "style: if err :\u003d ...; err !\u003d nil {\n  s.Fatal(...)\n}\n\ntesting.ContextLog(...)",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a3e3508_f6714b95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-11T06:38:36Z",
+      "side": 1,
+      "message": "if err :\u003d ...; err !\u003d nil {\n  s.Fatal(...)\n}\nif er :\u003d ...UnmountVault(...); err !\u003d nil {\n  s.Fatal(...)\n}\n\nwith defer below looks what you\u0027d like?",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 3
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4fecd3d_5c69e287",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-11T06:38:36Z",
+      "side": 1,
+      "message": "this can be in the defer at L50, which simplifies the nested if block above.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "000cf380_182959f4",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-11T06:38:36Z",
+      "side": 1,
+      "message": "nit: cmd.Run(testexec.DumpLogOnError);",
+      "range": {
+        "startLine": 500,
+        "startChar": 15,
+        "endLine": 500,
+        "endChar": 20
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c1224c_c0647c70",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-11T06:38:36Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7747e69e_4f7b9c8b",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-11T06:38:36Z",
+      "side": 1,
+      "message": "you can wrap.\n\nif err :\u003d testing.Poll(... {\n  ...\n}, ...options...); err !\u003d nil {\n  return errors.Wrapf(...)\n}",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5fc60f2_9d442d87",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-11T06:38:36Z",
+      "side": 1,
+      "message": "I think this is taken from CreateVault, which we chatted?\nif so, this may not needed thanks to the bug fix.",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
