@@ -16,6 +16,23 @@
       "message": "I might be too pessimistic, but I think it\u0027s important to enforce immutability of Config for maintained health of the chrome support library.",
       "revId": "dc84d55a0c04a48b6eddad4886b4c2c4ba1c67c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bc7c047_67b7787a",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-11T16:48:33Z",
+      "side": 1,
+      "message": "Can you move the implementation of those options into config package?  i.e.\n  package config\n\n  func EnableWebAppInstall(cfg *config.Config) error {\n    ...\n  }\n\n  package chrome\n\n  // Option is ...\n  type Option \u003d config.Option\n\n  // EnableWebAppInstall returns an Option that can ....\n  func EnableWebAppInstall() Option {\n    return config.EnableWebAppInstall;\n  }\n\n  ...\n\n\nParameterized options can be done as:\n\n  package config\n\n  func ExtraArgs(cfg *config.Config, args []string) error {\n    ...\n  }\n\n  package chrome\n  func ExtraArgs(args... string) Option {\n    return func(cfg *config.Config) error {\n      return config.ExtraArgs(cfg, args)\n    }\n  }\n\nThat way, you can unexport contents of config (e.g. mutableConfig) which enforces the immutability of config more strictly.",
+      "revId": "dc84d55a0c04a48b6eddad4886b4c2c4ba1c67c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
