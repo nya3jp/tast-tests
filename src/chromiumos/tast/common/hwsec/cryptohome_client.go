@@ -21,10 +21,6 @@ const (
 	getTPMStatusSuccessMessage             = "GetTpmStatus success."
 	tpmIsReadyString                       = "TPM Ready: true"
 	tpmIsNotReadyString                    = "TPM Ready: false"
-	tpmIsAttestationPreparedString         = "Attestation Prepared: true"
-	tpmIsNotAttestationPreparedString      = "Attestation Prepared: false"
-	tpmIsAttestationEnrolledString         = "Attestation Enrolled: true"
-	tpmIsNotAttestationEnrolledString      = "Attestation Enrolled: false"
 	resultIsSuccessString                  = "Result: Success"
 	resultIsFailureString                  = "Result: Failure"
 	cryptohomeWrappedKeysetString          = "TPM_WRAPPED"
@@ -49,9 +45,6 @@ func getLastLine(s string) string {
 type CryptohomeClient struct {
 	binary               *cryptohomeBinary
 	cryptohomePathBinary *cryptohomePathBinary
-	// attestationAsyncMode enables the asynchronous communication between cryptohome and attestation service.
-	// Note that from the cryptohomeBinary, the command is always blocking.
-	attestationAsyncMode bool
 }
 
 // NewCryptohomeClient creates a new CryptohomeClient.
@@ -59,7 +52,6 @@ func NewCryptohomeClient(r CmdRunner) *CryptohomeClient {
 	return &CryptohomeClient{
 		binary:               newCryptohomeBinary(r),
 		cryptohomePathBinary: newCryptohomePathBinary(r),
-		attestationAsyncMode: true,
 	}
 }
 
@@ -429,64 +421,6 @@ func (u *CryptohomeClient) GetOwnerPassword(ctx context.Context) (string, error)
 func (u *CryptohomeClient) ClearOwnerPassword(ctx context.Context) error {
 	_, err := u.binary.tpmClearStoredPassword(ctx)
 	return err
-}
-
-// GetKeyPayload gets the payload associated with the specified key.
-func (u *CryptohomeClient) GetKeyPayload(
-	ctx context.Context,
-	username,
-	label string) (string, error) {
-	out, err := u.binary.tpmAttestationGetKeyPayload(ctx, username, label)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to get key payload")
-	}
-	return string(out), nil
-}
-
-// SetKeyPayload sets the payload associated with the specified key.
-func (u *CryptohomeClient) SetKeyPayload(
-	ctx context.Context,
-	username,
-	label,
-	payload string) (bool, error) {
-	_, err := u.binary.tpmAttestationSetKeyPayload(ctx, username, label, payload)
-	if err != nil {
-		return false, errors.Wrap(err, "failed to set key payload")
-	}
-	return true, nil
-}
-
-// RegisterKeyWithChapsToken registers the key into chaps.
-func (u *CryptohomeClient) RegisterKeyWithChapsToken(
-	ctx context.Context,
-	username,
-	label string) (bool, error) {
-	out, err := u.binary.tpmAttestationRegisterKey(ctx, username, label)
-	if err != nil {
-		return false, errors.Wrap(err, "failed to register key")
-	}
-	if strings.Contains(string(out), resultIsSuccessString) {
-		return true, nil
-	}
-	if strings.Contains(string(out), resultIsFailureString) {
-		return false, nil
-	}
-	return false, errors.New("unexpected output from cryptohome binary")
-}
-
-// SetAttestationAsyncMode switches the attestation mothods to sync/async mode respectively.
-func (u *CryptohomeClient) SetAttestationAsyncMode(ctx context.Context, async bool) error {
-	u.attestationAsyncMode = async
-	return nil
-}
-
-// DeleteKeys delete all the |usernames|'s keys with label having prefix.
-func (u *CryptohomeClient) DeleteKeys(ctx context.Context, username, prefix string) error {
-	_, err := u.binary.tpmAttestationDeleteKeys(ctx, username, prefix)
-	if err != nil {
-		return errors.Wrap(err, "failed to delete keys")
-	}
-	return nil
 }
 
 // parseTokenStatus parse the output of cryptohome --action=pkcs11_system_token_status or cryptohome --action=pkcs11_token_status and return the label, pin, slot and error (in that order).

@@ -22,18 +22,6 @@ type cryptohomeBinary struct {
 	runner CmdRunner
 }
 
-const asyncAttestationFlag = "--async"
-
-func fromVATypeIntToString(vaType VAType) string {
-	if vaType == DefaultVA {
-		return "default"
-	}
-	if vaType == TestVA {
-		return "test"
-	}
-	return "unknown"
-}
-
 // newCryptohomeBinary is a factory function to create a
 // cryptohomeBinary instance.
 func newCryptohomeBinary(r CmdRunner) *cryptohomeBinary {
@@ -90,47 +78,6 @@ func (c *cryptohomeBinary) getStatusString(ctx context.Context) (string, error) 
 // tpmClearStoredPassword calls "cryptohome --action=tpm_clear_stored_password".
 func (c *cryptohomeBinary) tpmClearStoredPassword(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=tpm_clear_stored_password")
-}
-
-// tpmAttestationGetKeyPayload calls "cryptohome --action=tpm_attestation_get_key_payload".
-func (c *cryptohomeBinary) tpmAttestationGetKeyPayload(
-	ctx context.Context,
-	username,
-	label string) (string, error) {
-	out, err := c.call(
-		ctx,
-		"--action=tpm_attestation_get_key_payload",
-		"--user="+username,
-		"--name="+label)
-	return string(out), err
-}
-
-// tpmAttestationRegisterKey calls "cryptohome --action=tpm_attestation_register_key".
-func (c *cryptohomeBinary) tpmAttestationRegisterKey(
-	ctx context.Context,
-	username,
-	label string) (string, error) {
-	out, err := c.call(
-		ctx,
-		"--action=tpm_attestation_register_key",
-		"--user="+username,
-		"--name="+label)
-	return string(out), err
-}
-
-// tpmAttestationSetKeyPayload calls "cryptohome --action=tpm_attestation_set_key_payload".
-func (c *cryptohomeBinary) tpmAttestationSetKeyPayload(
-	ctx context.Context,
-	username,
-	label,
-	payload string) (string, error) {
-	out, err := c.call(
-		ctx,
-		"--action=tpm_attestation_set_key_payload",
-		"--user="+username,
-		"--name="+label,
-		"--value="+payload)
-	return string(out), err
 }
 
 // installAttributesGet calls "cryptohome --action=install_attributes_get".
@@ -266,11 +213,6 @@ func (c *cryptohomeBinary) lockToSingleUserMountUntilReboot(ctx context.Context,
 // dumpKeyset calls "cryptohome --action=dump_keyset".
 func (c *cryptohomeBinary) dumpKeyset(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "--action=dump_keyset", "--user="+username)
-}
-
-// tpmAttestationDeleteKeys calls "cryptohome --action=tpm_attestation_delete_keys".
-func (c *cryptohomeBinary) tpmAttestationDeleteKeys(ctx context.Context, username, prefix string) ([]byte, error) {
-	return c.call(ctx, "--action=tpm_attestation_delete_keys", "--user="+username, "--prefix="+prefix)
 }
 
 // pkcs11SystemTokenInfo calls "cryptohome --action=pkcs11_get_system_token_info".

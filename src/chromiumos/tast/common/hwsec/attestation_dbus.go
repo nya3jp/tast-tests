@@ -38,4 +38,13 @@ type AttestationDBus interface {
 
 	// GetEnrollmentID returns the enrollment id.
 	GetEnrollmentID(ctx context.Context, req *apb.GetEnrollmentIdRequest) (*apb.GetEnrollmentIdReply, error)
+
+	// GetEnrollmentID sets a payload for a key.
+	SetKeyPayload(ctx context.Context, req *apb.SetKeyPayloadRequest) (*apb.SetKeyPayloadReply, error)
+
+	// RegisterKeyWithChapsToken registers the key into chaps.
+	RegisterKeyWithChapsToken(ctx context.Context, req *apb.RegisterKeyWithChapsTokenRequest) (*apb.RegisterKeyWithChapsTokenReply, error)
+
+	// DeleteKeys delete user's keys.
+	DeleteKeys(ctx context.Context, req *apb.DeleteKeysRequest) (*apb.DeleteKeysReply, error)
 }
