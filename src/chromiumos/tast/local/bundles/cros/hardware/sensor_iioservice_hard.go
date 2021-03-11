@@ -21,7 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SensorIIOServiceHard,
+		Func: SensorIioserviceHard,
 		Desc: "Tests that iioservice provides sensors' samples properly",
 		Contacts: []string{
 			"gwendal@chromium.com",      // Chrome OS sensors point of contact
@@ -96,8 +96,8 @@ func runSingleClient(ctx context.Context, s *testing.State, sn *iio.Sensor, i in
 	return nil
 }
 
-// SensorIIOServiceHard reads all devices' samples from daemon iioservice.
-func SensorIIOServiceHard(ctx context.Context, s *testing.State) {
+// SensorIioserviceHard reads all devices' samples from daemon iioservice.
+func SensorIioserviceHard(ctx context.Context, s *testing.State) {
 	const nClientPerSensor = 3
 
 	sensors, err := iio.GetSensors()
