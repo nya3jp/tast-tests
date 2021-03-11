@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aab819d_0e0d5242",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-11T01:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5dfb9f4_d9f560c3",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "e41081b884cdd24a62591242d461e48a758b08e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9efebe84_1f217904",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fb0965a_e699468c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-11T01:27:30Z",
+      "side": 1,
+      "message": "The tester in me always likes to do this at the end. I\u0027m planning on this test to get more complicated and I don\u0027t want to leave the connection around. But I did add an additional disconnectWifi reusing the vars at the end as well. Overkill? for sure. If you ask me again, I\u0027ll remove the defer.",
+      "parentUuid": "9efebe84_1f217904",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 7
+      },
+      "revId": "e41081b884cdd24a62591242d461e48a758b08e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e445df0_f84d0482",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-12-16T15:59:38Z",
       "side": 1,
       "message": "nit: merge lines\n\nAlso, it may be good to add a comment about why you are using \"err \u003d\u003d nil\". It is pretty uncommon in Go, so someone may think it is a bug at first glance.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 16
+      },
+      "revId": "e41081b884cdd24a62591242d461e48a758b08e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc93ff50_fd314b09",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-11T01:27:30Z",
+      "side": 1,
+      "message": "I added a couple comments about it.",
+      "parentUuid": "4e445df0_f84d0482",
       "range": {
         "startLine": 60,
         "startChar": 1,

@@ -58,6 +58,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71879d5_ef091442",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-11T01:27:30Z",
+      "side": 1,
+      "message": "Yeah. The next steps here are to ping the router to verify the connection, talk to multiple peers, generate traffic (either with netperf or IxChariot) and control the pcap. All of that will make this remote more than local.",
+      "parentUuid": "4870f796_e907345d",
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2d4e296_2e42098d",
@@ -71,6 +89,30 @@
       "writtenOn": "2021-01-07T00:15:27Z",
       "side": 1,
       "message": "I believe in Tast\u0027s convention, we should avoid passing in the testing state into helper functions for the purpose of emitting errors. We should allow the main test to decide how to handle the error.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#support-packages\n\ne.g\n```\nfunc axConnect(ctx context.Context, ssid, passphrase string) error {\n\t...\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err,\"error trying to create RPC Dial\")\n\t}\n\t...\n\treturn nil\n}\n```",
+      "range": {
+        "startLine": 37,
+        "startChar": 36,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dbbd3b2_e12d1b9c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-11T01:27:30Z",
+      "side": 1,
+      "message": "Cool, I removed my direct s access and switched to passing in the dut and RPCHint. Wrapped my errors, and switched my logging to ContextLogs.",
+      "parentUuid": "b2d4e296_2e42098d",
       "range": {
         "startLine": 37,
         "startChar": 36,
@@ -104,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f1e05c_5b60df96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-11T01:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87e8ae2c_97484eaa",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a6009d4_c8a32630",
@@ -117,6 +183,30 @@
       "writtenOn": "2021-01-20T20:47:46Z",
       "side": 1,
       "message": "\u0027passphrase\u0027 parameter?",
+      "range": {
+        "startLine": 54,
+        "startChar": 26,
+        "endLine": 54,
+        "endChar": 36
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "227eead3_f042a642",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-11T01:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a6009d4_c8a32630",
       "range": {
         "startLine": 54,
         "startChar": 26,
@@ -150,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "164cbc7b_5bb6a391",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-11T01:27:30Z",
+      "side": 1,
+      "message": "OH! Opps, A little debugging snuck through. Thanks.",
+      "parentUuid": "dfca4332_ca13b106",
+      "range": {
+        "startLine": 66,
+        "startChar": 21,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "412e9dd8_e799563a",
@@ -163,6 +277,30 @@
       "writtenOn": "2021-01-20T20:47:46Z",
       "side": 1,
       "message": "any ping test? or is just checking that we made it as far as DHCP configuration good enough?\n\ntypically we\u0027d do some clean up (e.g., \u0027defer func() {\n  disconnectWifi(...) // + error handling?\n}()`) too",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9fa6223_d370c695",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-11T01:27:30Z",
+      "side": 1,
+      "message": "For the initial test, just proof of infrastructure was all I was shooting for. I\u0027ll extend this with ping testing in my next revision.",
+      "parentUuid": "412e9dd8_e799563a",
       "range": {
         "startLine": 77,
         "startChar": 0,

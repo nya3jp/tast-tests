@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "784ca5ed_86d451b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-11T01:27:30Z",
+      "side": 1,
+      "message": "Wow, long time, no update. I was trying to build a go-based RESTful API suite so I can drive IxChariot inside this test, but that\u0027s going nowhere very, very slowly.  So instead, I\u0027ll finish this test and update the mutipeer to just some pinging and netperf for validation (That part comes later. This one is still just a simple router connect and disconnect test.)",
+      "revId": "7653dd6deb9c69ed522492f0c7671cd4de6903d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
