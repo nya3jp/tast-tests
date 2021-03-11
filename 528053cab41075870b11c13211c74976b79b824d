@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f1e8792_fae9293f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-03-11T02:28:16Z",
+      "side": 1,
+      "message": "Do we need to do the same for iio.Light...?\nAnd an error for iio.Ring...?",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 12
+      },
+      "revId": "528053cab41075870b11c13211c74976b79b824d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
