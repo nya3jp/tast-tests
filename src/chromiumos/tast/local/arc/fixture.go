@@ -5,7 +5,6 @@
 package arc
 
 import (
-	"bytes"
 	"context"
 	"os"
 	"path/filepath"
@@ -14,7 +13,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -214,14 +212,18 @@ func (f *bootedFixture) Reset(ctx context.Context) error {
 func (f *bootedFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
 	// hooks in fixtures.
+
+	if err := f.arc.resetOutDir(ctx, s.OutDir()); err != nil {
+		s.Error("Failed to to reset outDir field of ARC object: ", err)
+	}
 }
 
 func (f *bootedFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
 	// hooks in fixtures.
 
-	if err := saveARCVMConsole(ctx, s.OutDir()); err != nil {
-		s.Error("Failed to to save ARCVM console output: ", err)
+	if err := f.arc.saveLogFiles(ctx); err != nil {
+		s.Error("Failed to to save ARC-related log files: ", err)
 	}
 
 	if s.HasError() {
@@ -234,53 +236,6 @@ func (f *bootedFixture) PostTest(ctx context.Context, s *testing.FixtTestState) 
 			s.Error("Failed to save the process list in ARCVM: ", err)
 		}
 	}
-}
-
-// saveARCVMConsole saves the console output of ARCVM Kernel to the output directory using vm_pstore_dump command.
-func saveARCVMConsole(ctx context.Context, outDir string) error {
-	const (
-		pstoreCommandPath                 = "/usr/bin/vm_pstore_dump"
-		pstoreCommandExitCodeFileNotFound = 2
-		arcvmConsoleName                  = "messages-arcvm"
-	)
-
-	// Do nothing for containers. The console output is already captured for containers.
-	isVMEnabled, err := VMEnabled()
-	if err != nil {
-		return err
-	}
-	if !isVMEnabled {
-		return nil
-	}
-
-	// TODO(b/153934386): Remove this check when pstore is enabled on ARM.
-	// The pstore feature is enabled only on x86_64. It's not enabled on some architectures, and this `vm_pstore_dump` command doesn't exist on such architectures.
-	if _, err := os.Stat(pstoreCommandPath); os.IsNotExist(err) {
-		testing.ContextLog(ctx, "Saving messages-arcvm file is skipped because vm_pstore_dump command is not found")
-		return nil
-	}
-
-	path := filepath.Join(outDir, arcvmConsoleName)
-	file, err := os.Create(path)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	cmd := testexec.CommandContext(ctx, pstoreCommandPath)
-	cmd.Stdout = file
-	var errbuf bytes.Buffer
-	cmd.Stderr = &errbuf
-	if err := cmd.Run(); err != nil {
-		errmsg := errbuf.String()
-		if cmd.ProcessState.ExitCode() == pstoreCommandExitCodeFileNotFound {
-			// This failure sometimes happens when ARCVM failed to boot. So we don't make this error.
-			testing.ContextLogf(ctx, "vm_pstore_dump command failed because the .pstore file doesn't exist: %#v", errmsg)
-		} else {
-			return errors.Wrapf(err, "vm_pstore_dump command failed with an unexpected reason: %#v", errmsg)
-		}
-	}
-	return nil
 }
 
 func saveProcessList(ctx context.Context, a *ARC, outDir string) error {
