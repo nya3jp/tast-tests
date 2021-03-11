@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "496ee79f_cc64dca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-11T03:15:36Z",
+      "side": 1,
+      "message": "nit: Could we use filepath.Glob() to simplify this?",
+      "revId": "55e2c6b04d87aa6193338d95034aac56554b5300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0340aa7a_9ccc20af",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
         "patchSetId": 2
