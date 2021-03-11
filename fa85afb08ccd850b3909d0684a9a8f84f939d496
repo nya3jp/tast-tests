@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19fa1a9e_c8e2dd6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/dictation_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2021-03-11T17:52:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12dbe192_1dfbae4e",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 22
+      },
+      "revId": "fa85afb08ccd850b3909d0684a9a8f84f939d496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fae4e326_4e6c51f1",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-03-11T17:44:59Z",
       "side": 1,
       "message": "nit: add a comment\n// Trying to find the \"Toggle dictation\" button in the system tray.",
+      "revId": "fa85afb08ccd850b3909d0684a9a8f84f939d496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7fa5ace_b8217ceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/dictation_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2021-03-11T17:52:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fae4e326_4e6c51f1",
       "revId": "fa85afb08ccd850b3909d0684a9a8f84f939d496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
