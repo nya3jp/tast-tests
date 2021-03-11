@@ -30,7 +30,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Timeout:      10 * time.Minute,
+		Timeout:      20 * time.Minute,
 		Pre:          chrome.LoggedIn(),
 	})
 }
@@ -60,6 +60,10 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set up benchmark: ", err)
 	}
 	defer cleanUpBenchmark(ctx)
+
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed to wait CPU idle: ", err)
+	}
 
 	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
 	if err != nil {
@@ -110,9 +114,6 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 				}
 
 				// Record video and measure cpu usage.
-				if err := cpu.WaitUntilIdle(ctx); err != nil {
-					return errors.Wrap(err, "failed to idle")
-				}
 				testing.ContextLog(ctx, "Sleeping to wait for CPU usage to stabilize for ", stabilizationDuration)
 				if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
 					return errors.Wrap(err, "failed to sleep for CPU usage to stabilize")
