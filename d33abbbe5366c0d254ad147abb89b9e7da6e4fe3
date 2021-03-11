@@ -135,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2c1a4c_f1d437ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-03-11T17:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e145694_fa3c3bde",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 15
+      },
+      "revId": "d33abbbe5366c0d254ad147abb89b9e7da6e4fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3154065_bd214784",
