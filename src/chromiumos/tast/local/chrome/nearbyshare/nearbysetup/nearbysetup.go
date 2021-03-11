@@ -175,6 +175,9 @@ func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPat
 			return nil, errors.Errorf("failed to remove accounts from the device (%v)", string(out))
 		}
 
+		// TODO(crbug/1185918): Re-adding the account immediately after removing it is flaky.
+		// Waiting an extra second fixes it, but we should find a deterministic way to tell when we can safely re-add the account.
+		testing.Sleep(ctx, 1*time.Second)
 		testing.ContextLog(ctx, "Adding Nearby GAIA user to the Android device")
 		addAccountCmd := testDevice.ShellCommand(ctx, "am", "instrument", "-w",
 			"-e", "account", username, "-e", "password", password, "com.google.android.tradefed.account/.AddAccount",
