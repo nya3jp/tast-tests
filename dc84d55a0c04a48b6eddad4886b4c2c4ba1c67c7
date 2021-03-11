@@ -33,6 +33,24 @@
       "message": "Can you move the implementation of those options into config package?  i.e.\n  package config\n\n  func EnableWebAppInstall(cfg *config.Config) error {\n    ...\n  }\n\n  package chrome\n\n  // Option is ...\n  type Option \u003d config.Option\n\n  // EnableWebAppInstall returns an Option that can ....\n  func EnableWebAppInstall() Option {\n    return config.EnableWebAppInstall;\n  }\n\n  ...\n\n\nParameterized options can be done as:\n\n  package config\n\n  func ExtraArgs(cfg *config.Config, args []string) error {\n    ...\n  }\n\n  package chrome\n  func ExtraArgs(args... string) Option {\n    return func(cfg *config.Config) error {\n      return config.ExtraArgs(cfg, args)\n    }\n  }\n\nThat way, you can unexport contents of config (e.g. mutableConfig) which enforces the immutability of config more strictly.",
       "revId": "dc84d55a0c04a48b6eddad4886b4c2c4ba1c67c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e936a60_b4a11281",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-11T17:07:02Z",
+      "side": 1,
+      "message": "I can do that, but since it will create many boilerplate functions (I had to introduce a lot of getters already...), I\u0027d like to know more about cases we can catch in the proposed approach.\n\nLet\u0027s call packages outside of the config package just \"users\". In the current approach, the only way for users to obtain *MutableConfig is to define Option and passing it to NewConfig. Users can instanciate Config and MutableConfig by their exported constructors, but they cannot create non-zero Config because Config.m is an unexported field. So in my understanding the only problematic case would be an Option saving MutableConfig to somewhere and mutating it later, e.g.\n\n var savedCfg *config.MutableConfig\n\n func BadOption() Option {\n   return func(cfg *config.MutableConfig) error {\n     savedCfg \u003d cfg\n     return nil\n   }\n }\n\n func MutateLater() {\n   savedCfg.key \u003d value\n }\n\nBut even if we unexport MutableConfig we cannot prevent defining such bad options.\n\nDo you have any other cases in your mind where we can catch mutations with unexporting MutableConfig?",
+      "parentUuid": "5bc7c047_67b7787a",
+      "revId": "dc84d55a0c04a48b6eddad4886b4c2c4ba1c67c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
