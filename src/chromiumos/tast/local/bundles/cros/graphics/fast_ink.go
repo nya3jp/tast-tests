@@ -156,7 +156,7 @@ func FastInk(ctx context.Context, s *testing.State) {
 
 					hist := hists[0]
 					if len(hist.Buckets) == 0 {
-						s.Fatal("Got no overlay strategy data: ", err)
+						s.Fatal("Got no overlay strategy data")
 					}
 
 					for _, bucket := range hist.Buckets {
