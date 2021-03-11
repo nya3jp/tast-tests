@@ -256,6 +256,24 @@
       "parentUuid": "48241b58_2218a64a",
       "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d166d343_921574cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-11T23:03:23Z",
+      "side": 1,
+      "message": "Drive by: think the reason that we are creating a tast test is to exercise on real Chrome OS hardware. For Chrome OS, unit test and browser test runs on build bots and build bots are very different from real ChromeOS devices.",
+      "parentUuid": "ac7b3f2e_3a6a2819",
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
