@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"syscall"
 	"time"
@@ -29,12 +30,21 @@ const (
 	imageTypeRO imageType = iota
 )
 
+var dataAccessViolation8020000Regex = regexp.MustCompile(
+	"Data access violation, mfar = 8020000")
+var dataAccessViolation8040000Regex = regexp.MustCompile(
+	"Data access violation, mfar = 8040000")
+var dataAccessViolation20000000Regex = regexp.MustCompile(
+	"Data access violation, mfar = 20000000")
+
 type testMetadata struct {
 	name           string
 	image          imageType
 	hwWriteProtect bool
 	// Args to append to "runtest" command.
 	testArgs []string
+	// Possible regexes that should terminate the test.
+	finishRegexes []*regexp.Regexp
 }
 
 func init() {
@@ -86,8 +96,12 @@ func init() {
 			Val:       testMetadata{name: "bloonchipper/test-fpsensor.bin", testArgs: []string{"uart"}},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
-			Name:      "bloonchipper_mpu",
-			Val:       testMetadata{name: "bloonchipper/test-mpu.bin"},
+			Name:      "bloonchipper_mpu_ro",
+			Val:       testMetadata{name: "bloonchipper/test-mpu.bin", image: imageTypeRO, finishRegexes: []*regexp.Regexp{dataAccessViolation20000000Regex}},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_mpu_rw",
+			Val:       testMetadata{name: "bloonchipper/test-mpu.bin", finishRegexes: []*regexp.Regexp{dataAccessViolation20000000Regex}},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_mutex",
@@ -98,8 +112,12 @@ func init() {
 			Val:       testMetadata{name: "bloonchipper/test-pingpong.bin"},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
-			Name:      "bloonchipper_rollback",
-			Val:       testMetadata{name: "bloonchipper/test-rollback.bin"},
+			Name:      "bloonchipper_rollback_region0",
+			Val:       testMetadata{name: "bloonchipper/test-rollback.bin", testArgs: []string{"region0"}, finishRegexes: []*regexp.Regexp{dataAccessViolation8020000Regex}},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_rollback_region1",
+			Val:       testMetadata{name: "bloonchipper/test-rollback.bin", testArgs: []string{"region1"}, finishRegexes: []*regexp.Regexp{dataAccessViolation8040000Regex}},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_rollback_entropy",
@@ -304,7 +322,7 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 
 	// Run the test in RO or RW, depending on "Val" in test params.
 	imageToBoot := "RW"
-	if s.Param().(testMetadata).image == imageTypeRO {
+	if metadata.image == imageTypeRO {
 		imageToBoot = "RO"
 	}
 
@@ -333,11 +351,12 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Running FPMCU unittest through UART console: ", consolePath)
-	cmd := fmt.Sprintf("runtest %s\n", strings.Join(s.Param().(testMetadata).testArgs, " "))
+	cmd := fmt.Sprintf("runtest %s\n", strings.Join(metadata.testArgs, " "))
 	if _, err = console.Write([]byte(cmd)); err != nil {
 		s.Fatal("Failed to execute runtest from FPMCU console: ", err)
 	}
 
+	finished := false
 	for scanner.Scan() {
 		line := scanner.Text()
 		if _, err := logWriter.WriteString(line + "\n"); err != nil {
@@ -349,9 +368,23 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 		if strings.Contains(line, "Fail!") {
 			s.Fatal("Unittest failed on device")
 		}
+		if !finished {
+			// After we hit any finish regex, we still want to scan
+			// the remaining lines, because a later "Fail!" still
+			// counts as unittest failure.
+			for _, re := range metadata.finishRegexes {
+				if re.MatchString(line) {
+					finished = true
+					break
+				}
+			}
+		}
 	}
 	if err := scanner.Err(); err != nil {
 		s.Error("Error while scanning FPMCU console: ", err)
 	}
-	s.Fatal("Failed to scan unittest result")
+	// If we have hit a finish regex, then it's ok to not hit "Pass!".
+	if !finished {
+		s.Fatal("Failed to scan unittest result")
+	}
 }
