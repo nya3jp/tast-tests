@@ -16,6 +16,29 @@
       "message": "This is a new CL to fix the same bugs which I tried to fix at https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2703560",
       "revId": "72b5795aaf5a3e8afe0a9f42fd4f2d0c847f509a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e5d4bda_f094dcd1",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-11T06:22:12Z",
+      "side": 1,
+      "message": "I recommend making a separate change to just add ctx to Close argument. There are many use of Close, so it\u0027s easy to break build with other in-flight CLs. When it happens I think you don\u0027t want to revert saveLogFiles change as well.",
+      "range": {
+        "startLine": 140,
+        "startChar": 19,
+        "endLine": 140,
+        "endChar": 40
+      },
+      "revId": "72b5795aaf5a3e8afe0a9f42fd4f2d0c847f509a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
