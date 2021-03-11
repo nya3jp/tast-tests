@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41613eb_24ccf739",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-11T07:40:09Z",
+      "side": 1,
+      "message": "Mark as resolved. Please feel free to reopen if any questions.",
+      "parentUuid": "43d67a30_2881eb96",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ec5cc11_3a648ce7",
@@ -354,6 +372,24 @@
       "side": 1,
       "message": "Agree. And suggest to maintain the order of method for easier review.",
       "parentUuid": "828aed4a_30ae4475",
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d746a951_6f0d0bf3",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-11T07:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7219c28_0284794f",
       "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -689,6 +725,30 @@
       "side": 1,
       "message": "Discussed offline. New change uploaded.",
       "parentUuid": "b964dad3_2cb6e804",
+      "range": {
+        "startLine": 123,
+        "startChar": 65,
+        "endLine": 123,
+        "endChar": 67
+      },
+      "revId": "044c4fa79241d3c528a8f8b7e4ba6e1f7d9b0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94f12630_2c423e90",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-11T07:40:09Z",
+      "side": 1,
+      "message": "Mark as resolved.",
+      "parentUuid": "793177b3_f7239f40",
       "range": {
         "startLine": 123,
         "startChar": 65,
