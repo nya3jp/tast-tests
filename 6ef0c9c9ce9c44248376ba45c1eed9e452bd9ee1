@@ -16,6 +16,23 @@
       "message": "LGTM.",
       "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48241b58_2218a64a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-03-11T07:16:45Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is guaranteed. Can you ask someone from viz/gpu team to confirm.",
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
