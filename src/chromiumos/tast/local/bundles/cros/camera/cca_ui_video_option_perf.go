@@ -36,7 +36,7 @@ func init() {
 // Candidates of bitrate multiplier to be tested.
 // x2 is the default multiplier in chrome.
 // x8 is the multiplier aligned with Ipad.
-var multiplierCandidates = []int{2, 4, 6, 8, 10}
+var multiplierCandidates = []int{2, 8}
 
 // Duration to wait for CPU to stabalize.
 const stabilizationDuration time.Duration = 5 * time.Second
@@ -58,6 +58,10 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set up benchmark: ", err)
 	}
 	defer cleanUpBenchmark(ctx)
+
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed to wait CPU idle: ", err)
+	}
 
 	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
 	if err != nil {
@@ -106,9 +110,6 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 				}
 
 				// Record video and measure cpu usage.
-				if err := cpu.WaitUntilIdle(ctx); err != nil {
-					return errors.Wrap(err, "failed to idle")
-				}
 				testing.ContextLog(ctx, "Sleeping to wait for CPU usage to stabilize for ", stabilizationDuration)
 				if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
 					return errors.Wrap(err, "failed to sleep for CPU usage to stabilize")
