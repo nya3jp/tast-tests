@@ -69,6 +69,30 @@
       },
       "revId": "b58bc78c233aa37c841cb750327403486db6f310",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd0b8cdc_bd764ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-11T19:54:34Z",
+      "side": 1,
+      "message": "Got it! Thanks for the explanation",
+      "parentUuid": "a3a79fbb_dced767e",
+      "range": {
+        "startLine": 243,
+        "startChar": 23,
+        "endLine": 243,
+        "endChar": 59
+      },
+      "revId": "b58bc78c233aa37c841cb750327403486db6f310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
