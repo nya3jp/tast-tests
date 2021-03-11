@@ -28,7 +28,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Timeout:      10 * time.Minute,
+		Timeout:      25 * time.Minute,
 		Pre:          chrome.LoggedIn(),
 	})
 }
@@ -36,7 +36,7 @@ func init() {
 // Candidates of bitrate multiplier to be tested.
 // x2 is the default multiplier in chrome.
 // x8 is the multiplier aligned with Ipad.
-var multiplierCandidates = []int{2, 4, 6, 8, 10}
+var multiplierCandidates = []int{2, 8}
 
 // Duration to wait for CPU to stabalize.
 const stabilizationDuration time.Duration = 5 * time.Second
