@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "064766ed_aba54b86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-11T21:24:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b8214114_ce7d884c",
+      "revId": "2ece3a5ee6cce0b11f071c4486ace2188ce2c82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cf59386_4c44057d",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-03-10T18:22:03Z",
       "side": 1,
       "message": "we may need to add retries around optin because it is flaky and can fail due to sign-in and check-in timeouts. You can take a look at arc.Optin test for how retries are implemented. It would help to factor out opting in another method as well.",
+      "revId": "2ece3a5ee6cce0b11f071c4486ace2188ce2c82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "485d0df2_1806376e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-11T21:24:18Z",
+      "side": 1,
+      "message": "Planning to do this in follow up code refactor related to optin tracked in b/182497089.",
+      "parentUuid": "9cf59386_4c44057d",
       "revId": "2ece3a5ee6cce0b11f071c4486ace2188ce2c82c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
