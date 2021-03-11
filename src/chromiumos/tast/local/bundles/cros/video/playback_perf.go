@@ -413,6 +413,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "144p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -423,6 +424,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "240p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -433,6 +435,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "360p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -443,6 +446,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -453,6 +457,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -463,6 +468,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"1080p_30fps_300frames.hevc.mp4"},
@@ -472,6 +478,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.hevc.mp4",
 				decoderType: playback.Hardware,
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"1080p_60fps_600frames.hevc.mp4"},
@@ -481,6 +488,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"2160p_30fps_300frames.hevc.mp4"},
@@ -490,6 +498,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.hevc.mp4",
 				decoderType: playback.Hardware,
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"2160p_60fps_600frames.hevc.mp4"},
@@ -499,6 +508,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_30fps_300frames.hevc10.mp4",
 				decoderType: playback.Hardware,
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K10BPP, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"2160p_30fps_300frames.hevc10.mp4"},
@@ -508,6 +518,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.hevc10.mp4",
 				decoderType: playback.Hardware,
+				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60_10BPP, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"2160p_60fps_600frames.hevc10.mp4"},
