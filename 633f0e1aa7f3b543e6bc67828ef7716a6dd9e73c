@@ -16,6 +16,24 @@
       "message": "I agree it was not right to start the ui job in the test hook. Thanks for catching it.\n\nThat said, I think we still need a fix for crbug.com/1165694. Perhaps we can introduce a fixture that ensures the ui job is started, and let tests depend on it. Pranav, WDYT?\n",
       "revId": "633f0e1aa7f3b543e6bc67828ef7716a6dd9e73c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae4e350_793c597e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-11T03:58:17Z",
+      "side": 1,
+      "message": "Hi Shuhei, I\u0027m ok with the ensureUI and graphicsNoChrome fixture proposal insofar as it\u0027s the easiest to implement. I think the ideal though is for the ui service to be running for all tests that do not specify the graphicsNoChrome fixture, which presumably is why the during the TearDown phase of graphicsNoChrome the ui service is (re)started. I understand the way the Tast framework is designed may make this difficult to accomplish, but if possible I think that would be a better solution than identifying test flakes that occur in the rare (\u003c1%) chance said tests happens to be started without the ui service running and then modifying the affected tests to use the ensureUI fixture.\n\nTL;DR I support the ensureUI and graphicsNoChrome fixture proposal for now as a stop gap measure to get the graphics tests working but longer term we may want to look into structuring this a bit differently.",
+      "parentUuid": "4fdb702a_5718ef85",
+      "revId": "633f0e1aa7f3b543e6bc67828ef7716a6dd9e73c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
