@@ -85,7 +85,7 @@ func performBootAndWaitForIdle(ctx context.Context, outDir string) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to ARC")
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	// Wait for CPU is idle once dex2oat is heavy operation and idle CPU would
 	// indicate that heavy boot operations are done.

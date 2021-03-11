@@ -96,7 +96,7 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC by user policy: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

@@ -114,7 +114,7 @@ func NativeBridge(ctx context.Context, s *testing.State) {
 	}
 	defer func() {
 		if a != nil {
-			a.Close()
+			a.Close(ctx)
 		}
 	}()
 

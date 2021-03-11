@@ -63,7 +63,7 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	// Explicitly start a browser window to test that switching to a new desk
 	// doesn't cause it to change desks.

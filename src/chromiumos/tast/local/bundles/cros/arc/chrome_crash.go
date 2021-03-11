@@ -69,7 +69,7 @@ func ChromeCrash(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to start ARC: ", err)
 			}
 			defer func() {
-				if err := a.Close(); err != nil {
+				if err := a.Close(ctx); err != nil {
 					s.Fatal("Failed to close ARC connection: ", err)
 				}
 			}()
