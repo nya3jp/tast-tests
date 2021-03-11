@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26595d58_58041b81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T09:20:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "221851d3_a5006373",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "c395f55fffbe1129b406a6326e9adc5502631dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6ff1fe0_7f147513",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf784f2_47cad8b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T09:20:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6ff1fe0_7f147513",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "c395f55fffbe1129b406a6326e9adc5502631dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e131b935_32cba8a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T09:20:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00998d91_6c0c5654",
+      "range": {
+        "startLine": 13,
+        "startChar": 43,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "c395f55fffbe1129b406a6326e9adc5502631dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbe6b85a_aa3eee5b",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f6d191_1c436cea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T09:20:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbe6b85a_aa3eee5b",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "c395f55fffbe1129b406a6326e9adc5502631dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83017247_da92f61c",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-03-11T08:49:32Z",
       "side": 1,
       "message": "What is orco_ip?",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "c395f55fffbe1129b406a6326e9adc5502631dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f031e596_9cd074b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T09:20:30Z",
+      "side": 1,
+      "message": "IP address of orco device, it is slow device from lab where test always failed.\n\nUpdated TEST field, PTAL.",
+      "parentUuid": "83017247_da92f61c",
       "range": {
         "startLine": 18,
         "startChar": 14,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7a3719_2d5c1c31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T09:20:30Z",
+      "side": 1,
+      "message": "Yes, otherwise there is no guarantee that policy will work as expected for all shortcuts.",
+      "parentUuid": "2f7300d2_500c6e9c",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 19
+      },
+      "revId": "c395f55fffbe1129b406a6326e9adc5502631dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "765b05db_ca9508ac",
@@ -169,6 +313,24 @@
       "writtenOn": "2021-03-11T08:49:32Z",
       "side": 1,
       "message": "Maybe use VerifyNotExists to be more readable?\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/ui.go;l\u003d18",
+      "revId": "c395f55fffbe1129b406a6326e9adc5502631dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd24e52f_20eb00a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T09:20:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "765b05db_ca9508ac",
       "revId": "c395f55fffbe1129b406a6326e9adc5502631dae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
