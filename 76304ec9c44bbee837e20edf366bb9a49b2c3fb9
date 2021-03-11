@@ -33,6 +33,24 @@
       "message": "I don\u0027t see updates on another CL.",
       "revId": "76304ec9c44bbee837e20edf366bb9a49b2c3fb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea579d83_526dd411",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-11T16:30:30Z",
+      "side": 1,
+      "message": "Does it need to be updated? (See my other comment). This CL\nadds the returned named value |err| and handles the case when\nit\u0027s not nil by exiting with an s.Fatal(). The following CL\njust uses |err| as a named returned value.",
+      "parentUuid": "39e0017c_e8c1aff8",
+      "revId": "76304ec9c44bbee837e20edf366bb9a49b2c3fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
