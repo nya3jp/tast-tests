@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dff282b_13a04c1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-11T06:15:08Z",
+      "side": 1,
+      "message": "Removed CR+2 to ask for another look.",
+      "revId": "bf708b8b4b339506d9226d14079b598fabaa6c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0742558a_8eec93c8",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-11T06:15:08Z",
+      "side": 1,
+      "message": "It turned out that we need to set non-empty ID on fake logins.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 2
+      },
+      "revId": "bf708b8b4b339506d9226d14079b598fabaa6c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
