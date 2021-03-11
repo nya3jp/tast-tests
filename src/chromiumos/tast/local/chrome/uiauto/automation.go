@@ -25,6 +25,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
+var errNodeNotFound = errors.New("node does not exist")
+
 // Context is the context used when interacting with chrome.automation.
 // Each individual UI interaction is limited by the pollOpts such that it will return an error when the pollOpts timeout.
 type Context struct {
@@ -284,10 +286,22 @@ func (ac *Context) Exists(finder *nodewith.Finder) Action {
 			return err
 		}
 		if !exists {
-			return errors.New("node does not exist")
+			return errNodeNotFound
 		}
 		return nil
 	}
+}
+
+// IsNodeFound immediately checks if any nodes found with given finder.
+// It returns true if found otherwise false.
+func (ac *Context) IsNodeFound(ctx context.Context, finder *nodewith.Finder) (bool, error) {
+	if err := ac.Exists(finder)(ctx); err != nil {
+		if errors.Is(err, errNodeNotFound) {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
 }
 
 // WaitUntilExists returns a function that waits until the node found by the input finder exists.
