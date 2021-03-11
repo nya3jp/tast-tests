@@ -14,9 +14,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/event"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -380,11 +380,11 @@ func (ac *Context) mouseClick(ct clickType, finder *nodewith.Finder) Action {
 		}
 		switch ct {
 		case leftClick:
-			return mouse.Click(ctx, ac.tconn, loc.CenterPoint(), mouse.LeftButton)
+			return mouse.Click(ac.tconn, loc.CenterPoint(), mouse.LeftButton)(ctx)
 		case rightClick:
-			return mouse.Click(ctx, ac.tconn, loc.CenterPoint(), mouse.RightButton)
+			return mouse.Click(ac.tconn, loc.CenterPoint(), mouse.RightButton)(ctx)
 		case doubleClick:
-			return mouse.DoubleClick(ctx, ac.tconn, loc.CenterPoint(), 100*time.Millisecond)
+			return mouse.DoubleClick(ac.tconn, loc.CenterPoint(), 100*time.Millisecond)(ctx)
 		default:
 			return errors.New("invalid click type")
 		}
@@ -394,25 +394,17 @@ func (ac *Context) mouseClick(ct clickType, finder *nodewith.Finder) Action {
 // MouseClickAtLocation returns a function that clicks on the specified location.
 // This returns a function to make it chainable in ui.Run.
 func (ac *Context) MouseClickAtLocation(ct clickType, loc coords.Point) Action {
-	return func(ctx context.Context) error {
-		switch ct {
-		case leftClick:
-			return mouse.Click(ctx, ac.tconn, loc, mouse.LeftButton)
-		case rightClick:
-			return mouse.Click(ctx, ac.tconn, loc, mouse.RightButton)
-		case doubleClick:
-			return mouse.DoubleClick(ctx, ac.tconn, loc, 100*time.Millisecond)
-		default:
+	switch ct {
+	case leftClick:
+		return mouse.Click(ac.tconn, loc, mouse.LeftButton)
+	case rightClick:
+		return mouse.Click(ac.tconn, loc, mouse.RightButton)
+	case doubleClick:
+		return mouse.DoubleClick(ac.tconn, loc, 100*time.Millisecond)
+	default:
+		return func(ctx context.Context) error {
 			return errors.New("invalid click type")
 		}
-	}
-}
-
-// MouseMoveToLocation returns a function that moves the mouse cursor to the
-// specified location.
-func (ac *Context) MouseMoveToLocation(loc coords.Point, duration time.Duration) Action {
-	return func(ctx context.Context) error {
-		return mouse.Move(ctx, ac.tconn, loc, duration)
 	}
 }
 
@@ -427,11 +419,11 @@ func (ac *Context) immediateMouseClick(ct clickType, finder *nodewith.Finder) Ac
 		}
 		switch ct {
 		case leftClick:
-			return mouse.Click(ctx, ac.tconn, loc.CenterPoint(), mouse.LeftButton)
+			return mouse.Click(ac.tconn, loc.CenterPoint(), mouse.LeftButton)(ctx)
 		case rightClick:
-			return mouse.Click(ctx, ac.tconn, loc.CenterPoint(), mouse.RightButton)
+			return mouse.Click(ac.tconn, loc.CenterPoint(), mouse.RightButton)(ctx)
 		case doubleClick:
-			return mouse.DoubleClick(ctx, ac.tconn, loc.CenterPoint(), 100*time.Millisecond)
+			return mouse.DoubleClick(ac.tconn, loc.CenterPoint(), 100*time.Millisecond)(ctx)
 		default:
 			return errors.New("invalid click type")
 		}
