@@ -51,6 +51,24 @@
       "parentUuid": "5bc7c047_67b7787a",
       "revId": "dc84d55a0c04a48b6eddad4886b4c2c4ba1c67c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dcceada_a1e04adc",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-11T18:58:30Z",
+      "side": 1,
+      "message": "Sorry I misread the code, this is not necessary at all. Please ignore that.",
+      "parentUuid": "7e936a60_b4a11281",
+      "revId": "dc84d55a0c04a48b6eddad4886b4c2c4ba1c67c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
