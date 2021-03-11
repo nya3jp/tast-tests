@@ -16,6 +16,178 @@
       "message": "Hi Ben,\n\nMind if doing a first pass on this? First time to add a package and test in Tast repo, unsure if I get the conventions right.\n\nDependencies are: https://crrev.com/c/2751629 , https://crrev.com/c/2751497",
       "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5db2182_93c81b06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T07:44:41Z",
+      "side": 1,
+      "message": "Nice one 👍 quick turnaround.",
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2de49c_9dc4fd15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/data/web_handwriting_recognition_index.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T07:44:41Z",
+      "side": 1,
+      "message": "This file appears to not be used in the tast test, required?",
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac0b32f_9e998170",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T07:44:41Z",
+      "side": 1,
+      "message": "Make sure to use a team contact",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d21c0b8_611c80c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T07:44:41Z",
+      "side": 1,
+      "message": "Nice one!",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 56
+      },
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f103c4d_b21759f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T07:44:41Z",
+      "side": 1,
+      "message": "This can be made much simpler with the httptest library, you should prefer this way if you\u0027re simply serving html files\n```\nserver :\u003d httptest.NewServer(http.FileServer(s.DataFileSystem()))\ndefer server.Close()\n...\ncr.NewConn(ctx, srv.URL+\"/web_handwriting_recognition_drawing_abc.html\")\n```",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18b51811_fcdb6607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T07:44:41Z",
+      "side": 1,
+      "message": "Might be worth just inlining this for now with the todo above the chrome.New? Overload given you won\u0027t be using it for now, e.g.\n```\n// TODO(qjw): Change to EnableFeature after we add a flag (or feature) in Chrome browser.\ncr, err :\u003d chrome.New(ctx, chrome.ExtraArgs(\"--enable-experimental-web-platform-features\")\nif err !\u003d nil {\n\ts.Fatal(\"Failed to start chrome: \", err)\n}\n```",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f2b1d5_c6255af2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T07:44:41Z",
+      "side": 1,
+      "message": "This already awaits on a Promise, previous line is redundant? Or if you\u0027re waiting for window.resultPromise to not be null (i.e. the promise has kicked off) then might want to be more explicit above\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/conn.go;l\u003d96-97;drc\u003df36a67811c515dc97745d2a2a60e7480d5a8dcbb",
+      "range": {
+        "startLine": 78,
+        "startChar": 10,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f94afcc4_e5e07b04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-11T07:44:41Z",
+      "side": 1,
+      "message": "Consistent error messages: Failed to evaluate window.resultPromise?",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 33
+      },
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
