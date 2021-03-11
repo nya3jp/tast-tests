@@ -8,6 +8,8 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
 	"os"
 	"path/filepath"
 	"time"
@@ -25,6 +27,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const disableScreenshotsExtensionHTML = "disable_screenshots_extension.html"
+
 var extensionFiles = []string{
 	"screen_shooter_extension/background.js",
 	"screen_shooter_extension/content.js",
@@ -41,7 +45,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         extensionFiles,
+		Data:         append(extensionFiles, disableScreenshotsExtensionHTML),
 	})
 }
 
@@ -79,6 +83,9 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
 	}
 
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+
 	cr, err := chrome.New(ctx,
 		chrome.UnpackedExtension(extDir),
 		chrome.Auth(pre.Username, pre.Password, pre.GaiaID),
@@ -87,12 +94,6 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Chrome instance: ", err)
 	}
 	defer cr.Close(ctx)
-
-	conn, err := cr.NewConn(ctx, "https://google.com")
-	if err != nil {
-		s.Fatal("Failed to create a tab: ", err)
-	}
-	defer conn.Close()
 
 	for _, tc := range []struct {
 		name      string
@@ -133,6 +134,17 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 			// Update policies.
 			if err := policyutil.ServeAndVerify(ctx, fdms, cr, tc.value); err != nil {
 				s.Fatal("Failed to update policies: ", err)
+			}
+
+			conn, err := cr.NewConn(ctx, server.URL+"/"+disableScreenshotsExtensionHTML)
+			if err != nil {
+				s.Fatal("Failed to create a tab: ", err)
+			}
+			defer conn.Close()
+
+			// Wait until page show has desired title to avoid race conditions.
+			if err := conn.WaitForExpr(ctx, `document.title === "Page Title"`); err != nil {
+				s.Fatal("Failed to execute JS in extension: ", err)
 			}
 
 			// Here we check only `chrome.tabs.captureVisibleTab` extension API.
