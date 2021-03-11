@@ -84,7 +84,7 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	s.Log("Waiting for notification")
 	_, err = ash.WaitForNotification(ctx, tconn, 5*time.Minute, ash.WaitTitle("Setup complete"))

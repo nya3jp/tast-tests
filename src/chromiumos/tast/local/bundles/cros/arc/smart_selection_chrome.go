@@ -45,7 +45,7 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC by user policy: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 	if err := a.WaitIntentHelper(ctx); err != nil {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}

@@ -84,7 +84,7 @@ func StartStop(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to start ARC: ", err)
 		}
-		defer a.Close()
+		defer a.Close(ctx)
 
 		for _, t := range args.subtests {
 			s.Run(ctx, t.Name()+".PostStart", t.PostStart)

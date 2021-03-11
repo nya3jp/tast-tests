@@ -66,7 +66,7 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	expectations := s.Param().([]storage.Expectation)
 

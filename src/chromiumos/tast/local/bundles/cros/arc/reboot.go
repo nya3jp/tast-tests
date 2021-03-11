@@ -50,7 +50,7 @@ func Reboot(ctx context.Context, s *testing.State) {
 	}
 	defer func() {
 		if a != nil {
-			a.Close()
+			a.Close(ctx)
 		}
 	}()
 
@@ -69,7 +69,7 @@ func Reboot(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for old init process to exit: ", err)
 	}
 
-	a.Close()
+	a.Close(ctx)
 
 	// Reboot Android and re-establish ADB connection.
 	a, err = arc.New(ctx, s.OutDir())

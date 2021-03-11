@@ -86,7 +86,7 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
