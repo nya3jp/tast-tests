@@ -16,6 +16,23 @@
       "message": "lamzin@ PTAL",
       "revId": "76304ec9c44bbee837e20edf366bb9a49b2c3fb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39e0017c_e8c1aff8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-11T11:18:53Z",
+      "side": 1,
+      "message": "I don\u0027t see updates on another CL.",
+      "revId": "76304ec9c44bbee837e20edf366bb9a49b2c3fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
