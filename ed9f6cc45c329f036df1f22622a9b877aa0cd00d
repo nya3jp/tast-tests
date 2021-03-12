@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377edacc_33e5c194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-12T08:51:25Z",
+      "side": 1,
+      "message": "s.Fatal() immediately returns from the function. No need else.",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47d3e755_d0f1c186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-12T08:51:25Z",
+      "side": 1,
+      "message": "could you move this to defer to run this always even if some testing above fails.",
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a66143_9568e69d",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-12T08:51:25Z",
+      "side": 1,
+      "message": "could you remove?",
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff525bb2_3b2f5fa4",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-12T08:51:25Z",
+      "side": 1,
+      "message": "same",
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c89c95c1_d538f652",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-12T08:51:25Z",
+      "side": 1,
+      "message": "ditto for testexec.DumpLogOnError",
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
