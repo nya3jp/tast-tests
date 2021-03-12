@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86e7bc7a_5c770ad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-12T09:48:35Z",
+      "side": 1,
+      "message": "Just remove this line. Tast will implicitly assign default timeout.",
+      "parentUuid": "31b76071_40b422a8",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77e96811_b743313e",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
         "patchSetId": 2
