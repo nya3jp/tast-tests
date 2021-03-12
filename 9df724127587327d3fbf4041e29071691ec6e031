@@ -16,6 +16,29 @@
       "message": "Hi hidehiko@,\n\nI got some presubmit error like\n\"Remote package should not import local package chromiumos/tast/local/media/caps\"\n\nAnd I still see some remote test import local package like:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go;rcl\u003dc2e00a83a0847d05bc9f58f47fac35d59b5c7108;l\u003d15\n\nDo you suggest to move those used local package to other place that can shared from local and remote? ",
       "revId": "9df724127587327d3fbf4041e29071691ec6e031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d8ac229_654b6840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/its_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2021-03-12T07:47:31Z",
+      "side": 1,
+      "message": "I don\u0027t think we want this.",
+      "range": {
+        "startLine": 45,
+        "startChar": 56,
+        "endLine": 45,
+        "endChar": 70
+      },
+      "revId": "9df724127587327d3fbf4041e29071691ec6e031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
