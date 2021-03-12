@@ -24,6 +24,7 @@ type Finder struct {
 	ancestor   *Finder
 	attributes map[string]interface{}
 	first      bool
+	nth        int
 	role       role.Role
 	state      map[state.State]bool
 }
@@ -43,6 +44,7 @@ func (f *Finder) copy() *Finder {
 	copy := newFinder()
 	copy.ancestor = f.ancestor
 	copy.first = f.first
+	copy.nth = f.nth
 	copy.role = f.role
 	for k, v := range f.attributes {
 		copy.attributes[k] = v
@@ -121,6 +123,11 @@ func (f *Finder) GenerateQuery() (string, error) {
 		let node = await tast.promisify(chrome.automation.getDesktop)();
 		let nodes = [];
 	`
+	// If the query is the root node, do nothing for sub query, so it returns
+	// the root node.
+	if f.ancestor == nil && len(f.attributes) == 0 && f.role == "" && len(f.state) == 0 {
+		return out, nil
+	}
 	subQuery, err := f.generateSubQuery(false)
 	if err != nil {
 		return "", err
@@ -179,16 +186,21 @@ func (f *Finder) generateSubQuery(multipleNodes bool) (string, error) {
 		`, bytes)
 		if !multipleNodes {
 			out += fmt.Sprintf(`
-			if (nodes.length == 0) {
+			if (nodes.length < %[4]d) {
 				throw %[2]q;
-			} else if (nodes.length > 1) {
+			} else if (%[4]d == 0 && nodes.length > 1) {
 				throw %[3]q;
 			}
-			node = nodes[0];
-		`, bytes, errNotFoundBytes, errTooGenericBytes)
+			node = nodes[%[4]d];
+		`, bytes, errNotFoundBytes, errTooGenericBytes, f.nth)
 		}
 	}
 	return out, nil
+}
+
+// Root creates a Finder which returns the root node.
+func Root() *Finder {
+	return newFinder()
 }
 
 // Ancestor creates a Finder with the specified ancestor.
@@ -239,10 +251,24 @@ func First() *Finder {
 	return f
 }
 
-// First creates a a copy of the input Finder that will find the first node instead of requiring uniqueness.
+// First creates a copy of the input Finder that will find the first node instead of requiring uniqueness.
 func (f *Finder) First() *Finder {
 	c := f.copy()
 	c.first = true
+	return c
+}
+
+// Nth creates a Finder that will find the n-th node instead of requiring uniqueness.
+func Nth(n int) *Finder {
+	f := newFinder()
+	f.nth = n
+	return f
+}
+
+// Nth creates a copy of the input Finder that will find the n-th node instead of requiring uniqueness.
+func (f *Finder) Nth(n int) *Finder {
+	c := f.copy()
+	c.nth = n
 	return c
 }
 

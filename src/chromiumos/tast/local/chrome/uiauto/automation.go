@@ -346,6 +346,52 @@ func (ac *Context) WaitUntilGone(finder *nodewith.Finder) Action {
 	}
 }
 
+// WaitForEvent returns a function that conducts the specified action and waits
+// for the specified event.
+func (ac *Context) WaitForEvent(finder *nodewith.Finder, ev event.Event, action Action) Action {
+	return func(ctx context.Context) error {
+		q, err := finder.GenerateQuery()
+		if err != nil {
+			return err
+		}
+		createWatcher := fmt.Sprintf(`async function(eventType) {
+			%s
+			let watcher = {
+				"events": [],
+				"callback": (ev) => {
+					watcher.events.push(ev);
+				},
+				"release": () => {
+					node.removeEventListener(eventType, watcher.callback);
+				}
+			};
+			node.addEventListener(eventType, watcher.callback);
+			return watcher;
+		}`, q)
+		watcherObj := &chrome.JSObject{}
+		if err := ac.tconn.Call(ctx, watcherObj, createWatcher, ev); err != nil {
+			return err
+		}
+		defer watcherObj.Release(ctx)
+		defer watcherObj.Call(ctx, nil, `function() { this.release(); }`)
+
+		if err := action(ctx); err != nil {
+			return err
+		}
+
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			var events []map[string]interface{}
+			if err := watcherObj.Call(ctx, &events, `function() { return this.events; }`); err != nil {
+				return testing.PollBreak(err)
+			}
+			if len(events) == 0 {
+				return errors.New("no events observed")
+			}
+			return nil
+		}, &ac.pollOpts)
+	}
+}
+
 // clickType describes how user clicks mouse.
 type clickType int
 
@@ -495,13 +541,7 @@ func (ac *Context) LeftClickUntil(finder *nodewith.Finder, condition func(contex
 // The focus event is not instant, so an EventWatcher (watcher.go) is used to check its status.
 // The EventWatcher waits the duration of timeout for the event to occur.
 func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
-	return func(ctx context.Context) error {
-		ew, err := NewRootWatcher(ctx, ac.tconn, event.Focus)
-		if err != nil {
-			return errors.Wrap(err, "failed to create focus event watcher")
-		}
-		defer ew.Release(ctx)
-
+	return ac.WaitForEvent(nodewith.Root(), event.Focus, func(ctx context.Context) error {
 		q, err := finder.GenerateQuery()
 		if err != nil {
 			return err
@@ -513,17 +553,11 @@ func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
 		})()
 	`, q)
 
-		return testing.Poll(ctx, func(ctx context.Context) error {
-			if err := ac.tconn.Eval(ctx, query, nil); err != nil {
-				return errors.Wrap(err, "failed to call focus() on the node")
-			}
-
-			if _, err := ew.WaitForEvent(ctx, ac.pollOpts.Timeout); err != nil {
-				return errors.Wrap(err, "failed to wait for the focus event on the specified node")
-			}
-			return nil
-		}, &ac.pollOpts)
-	}
+		if err := ac.tconn.Eval(ctx, query, nil); err != nil {
+			return errors.Wrap(err, "failed to call focus() on the node")
+		}
+		return nil
+	})
 }
 
 // MakeVisible returns a function that calls makeVisible() JS method to make found node visible.

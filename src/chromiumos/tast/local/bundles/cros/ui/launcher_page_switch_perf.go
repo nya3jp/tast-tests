@@ -12,9 +12,11 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -63,8 +65,6 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	defer chromeui.WaitForLocationChangeCompleted(ctx, tconn)
 
 	inTabletMode := s.Param().(bool)
 
@@ -133,29 +133,18 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
 		s.Fatal("Failed to wait: ", err)
 	}
-	// Wait for the location changes of launcher UI to be propagated.
-	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for location changes to complete: ", err)
-	}
 
 	// Find the apps grid view bounds.
-	appsGridView, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: "AppsGridView"}, time.Second)
+	ac := uiauto.New(tconn)
+	appsGridView := nodewith.ClassName("AppsGridView")
+	pageButtons := nodewith.ClassName("Button").Ancestor(nodewith.ClassName("PageSwitcher"))
+
+	buttonsInfo, err := ac.NodesInfo(ctx, pageButtons)
 	if err != nil {
-		s.Fatal("Failed to find the apps-grid: ", err)
+		s.Fatal("Failed to find the page switcher buttons: ", err)
 	}
-	defer appsGridView.Release(ctx)
-	pageSwitcher, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: "PageSwitcher"})
-	if err != nil {
-		s.Fatal("Failed to find the page switcher of the app-list: ", err)
-	}
-	defer pageSwitcher.Release(ctx)
-	pageButtons, err := pageSwitcher.Descendants(ctx, chromeui.FindParams{ClassName: "Button"})
-	if err != nil {
-		s.Fatal("Failed to find the page buttons: ", err)
-	}
-	defer pageButtons.Release(ctx)
-	if len(pageButtons) < 3 {
-		s.Fatalf("There are too few pages (%d), want more than 2 pages", len(pageButtons))
+	if len(buttonsInfo) < 3 {
+		s.Fatalf("There are too few pages (%d), want more than 2 pages", len(buttonsInfo))
 	}
 
 	suffix := "ClamshellMode"
@@ -166,27 +155,23 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	runner := perfutil.NewRunner(cr)
 
 	const pageSwitchTimeout = 2 * time.Second
-	clickPageButtonAndWait := func(ctx context.Context, pageButton *chromeui.Node) error {
-		ew, err := chromeui.NewWatcher(ctx, pageButton, chromeui.EventTypeAlert)
-		if err != nil {
-			return errors.Wrap(err, "failed to create an event watcher")
-		}
-		defer ew.Release(ctx)
-		if err := pointer.Click(ctx, pc, pageButton.Location.CenterPoint()); err != nil {
-			return errors.Wrap(err, "failed to click the page button")
-		}
-		if _, err := ew.WaitForEvent(ctx, pageSwitchTimeout); err != nil {
-			return errors.Wrap(err, "failed to wait for the page switch")
-		}
-		return nil
+	clickPageButtonAndWait := func(ctx context.Context, idx int) error {
+		button := pageButtons.Nth(idx)
+		return ac.WaitForEvent(button, event.Alert, func(ctx context.Context) error {
+			loc, err := ac.Location(ctx, button)
+			if err != nil {
+				return err
+			}
+			return pointer.Click(ctx, pc, loc.CenterPoint())
+		})(ctx)
 	}
 	// First: scroll by click. Clicking the second one, clicking the first one to
 	// go back, clicking the last one to long-jump, clicking the first one again
 	// to long-jump back to the original page.
 	s.Log("Starting the scroll by click")
 	runner.RunMultiple(ctx, s, "click", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		for step, idx := range []int{1, 0, len(pageButtons) - 1, 0} {
-			if err := clickPageButtonAndWait(ctx, pageButtons[idx]); err != nil {
+		for step, idx := range []int{1, 0, len(buttonsInfo) - 1, 0} {
+			if err := clickPageButtonAndWait(ctx, idx); err != nil {
 				return errors.Wrapf(err, "failed to click or wait %d-th button (at step %d)", idx, step)
 			}
 		}
@@ -203,14 +188,25 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// prevents the drag-up gesture, switches to the second page before starting
 	// this scenario.
 	s.Log("Starting the scroll by drags")
-	if err := clickPageButtonAndWait(ctx, pageButtons[1]); err != nil {
+	if err := clickPageButtonAndWait(ctx, 1); err != nil {
 		s.Fatal("Failed to switch to the second page: ", err)
 	}
 	// Reset back to the first page at the end of the test; apps-grid page
 	// selection may stay in the last page, and that causes troubles on another
 	// test. See https://crbug.com/1081285.
-	defer pointer.Click(ctx, pc, pageButtons[0].Location.CenterPoint())
-	appsGridLocation := appsGridView.Location
+	defer func() {
+		loc, err := ac.Location(ctx, pageButtons.First())
+		if err != nil {
+			s.Fatal("Failed to get the location: ", err)
+		}
+		if err := pointer.Click(ctx, pc, loc.CenterPoint()); err != nil {
+			s.Fatal("Failed to click: ", err)
+		}
+	}()
+	appsGridLocation, err := ac.Location(ctx, appsGridView)
+	if err != nil {
+		s.Fatal("Failed to get the location of appsgridview: ", err)
+	}
 	// drag-up gesture positions; starting at a bottom part of the apps-grid (at
 	// 4/5 height), and moves the height of the apps-grid. The starting height
 	// shouldn't be very bottom of the apps-grid, since it may fall into the
@@ -230,26 +226,19 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	dragDownEnd := coords.NewPoint(dragDownStart.X, dragDownStart.Y+appsGridLocation.Height)
 
 	runner.RunMultiple(ctx, s, "drag", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		ew, err := chromeui.NewWatcher(ctx, pageButtons[2], chromeui.EventTypeAlert)
-		if err != nil {
-			return errors.Wrap(err, "failed to create an event watcher")
-		}
-		defer ew.Release(ctx)
-		// First drag-up operation.
-		if err := pointer.Drag(ctx, pc, dragUpStart, dragUpEnd, dragDuration); err != nil {
-			return errors.Wrap(err, "failed to drag from the bottom to the top")
-		}
-		if _, err := ew.WaitForEvent(ctx, pageSwitchTimeout); err != nil {
-			// It is actually fine if the drag doesn't cause scrolling to the next
-			// page. The required metrics for dragging should be made and enough
-			// waiting time should have passed for the next dragging session.
-			s.Log("Failed to wait for the page switch; maybe the dragging does not cause the page scroll")
-		}
-		// drag-down operation.
-		if err := pointer.Drag(ctx, pc, dragDownStart, dragDownEnd, dragDuration); err != nil {
-			return errors.Wrap(err, "failed to drag from the top to the bottom")
-		}
-		return nil
+		// Drag-up operation.
+		action := uiauto.Combine(
+			"launcher page drag",
+			// Drag-up operation.
+			ac.WaitForEvent(pageButtons.Nth(2), event.Alert, func(ctx context.Context) error {
+				return pointer.Drag(ctx, pc, dragUpStart, dragUpEnd, dragDuration)
+			}),
+			// drag-down operation.
+			func(ctx context.Context) error {
+				return pointer.Drag(ctx, pc, dragDownStart, dragDownEnd, dragDuration)
+			},
+		)
+		return action(ctx)
 	},
 		"Apps.PaginationTransition.DragScroll.PresentationTime."+suffix,
 		"Apps.PaginationTransition.DragScroll.PresentationTime.MaxLatency."+suffix),
