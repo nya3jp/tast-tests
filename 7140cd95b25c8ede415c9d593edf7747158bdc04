@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6f565e4_8b9939d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-12T18:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "003b4b16_b88ea37a",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0700223d_9bb90db0",
@@ -499,6 +517,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82af6c70_8c880b71",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-12T18:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb680056_4e888d32",
+      "range": {
+        "startLine": 500,
+        "startChar": 15,
+        "endLine": 500,
+        "endChar": 20
+      },
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15c1224c_c0647c70",
@@ -618,6 +660,24 @@
       "side": 1,
       "message": "Do you need to call this repeatedly?\nCan be done outside of poll?",
       "parentUuid": "bcf3ee0e_2fd89950",
+      "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d677774_d75c3418",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-12T18:18:04Z",
+      "side": 1,
+      "message": "Yes .. actually I do not need poll right now. So going to remove it.",
+      "parentUuid": "8d97018b_2492a5ca",
       "revId": "7140cd95b25c8ede415c9d593edf7747158bdc04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
