@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e99428_f7a1ec41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T07:39:00Z",
+      "side": 1,
+      "message": "2.4k LoC is too large for a single CL. Please try to split it so that one CL is at most ~200 lines (except unit tests and generated code).",
+      "revId": "1e0cbf8474f2339229bf6eb1e1e3cb18f6d556be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
