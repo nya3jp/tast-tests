@@ -103,7 +103,7 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 			}
 
 			// Clear text before starting input.
-			if err := its.Clear(ctx, inputField); err != nil {
+			if err := its.Clear(inputField)(ctx); err != nil {
 				s.Fatal("Failed to clear input field: ", err)
 			}
 

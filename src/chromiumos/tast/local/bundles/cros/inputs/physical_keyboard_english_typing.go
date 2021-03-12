@@ -114,7 +114,9 @@ func PhysicalKeyboardEnglishTyping(ctx context.Context, s *testing.State) {
 		s.Run(ctx, subtest.testName, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-			its.Clear(ctx, inputField)
+			if err := its.Clear(inputField)(ctx); err != nil {
+				s.Fatal("Failed to clear input field: ", err)
+			}
 
 			if err := its.ClickFieldAndWaitForActive(ctx, tconn, inputField); err != nil {
 				s.Fatal("Failed to click input field: ", err)

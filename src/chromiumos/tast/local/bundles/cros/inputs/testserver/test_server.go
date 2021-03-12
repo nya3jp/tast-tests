@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -145,9 +146,11 @@ func (its *InputsTestServer) Close() {
 	its.server.Close()
 }
 
-// Clear clears given input field by setting value to empty string via javascript.
-func (its *InputsTestServer) Clear(ctx context.Context, inputField InputField) error {
-	return its.conn.Eval(ctx, fmt.Sprintf(`document.querySelector("*[aria-label='%s']").value=''`, string(inputField)), nil)
+// Clear returns an action clearing given input field by setting value to empty string via javascript.
+func (its *InputsTestServer) Clear(inputField InputField) uiauto.Action {
+	return func(ctx context.Context) error {
+		return its.conn.Eval(ctx, fmt.Sprintf(`document.querySelector("*[aria-label='%s']").value=''`, string(inputField)), nil)
+	}
 }
 
 // WaitForFieldToBeActive waits for certain input field to be the active element.
