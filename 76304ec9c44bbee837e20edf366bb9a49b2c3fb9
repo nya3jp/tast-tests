@@ -51,6 +51,64 @@
       "parentUuid": "39e0017c_e8c1aff8",
       "revId": "76304ec9c44bbee837e20edf366bb9a49b2c3fb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce21d152_888a43f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-12T11:33:06Z",
+      "side": 1,
+      "message": "I see, sorry my fault. I was confused, because code is a not very clear there.",
+      "parentUuid": "ea579d83_526dd411",
+      "revId": "76304ec9c44bbee837e20edf366bb9a49b2c3fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce16e702_c512f876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-12T11:33:06Z",
+      "side": 1,
+      "message": "LGTM % comment\n\nPlease add your teammate to review this CL as well.",
+      "revId": "76304ec9c44bbee837e20edf366bb9a49b2c3fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "997eef67_90cee3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-12T11:33:06Z",
+      "side": 1,
+      "message": "please use \"_\" unless your function does not really return error\n\nsame for all methods in this CL",
+      "range": {
+        "startLine": 816,
+        "startChar": 136,
+        "endLine": 816,
+        "endChar": 139
+      },
+      "revId": "76304ec9c44bbee837e20edf366bb9a49b2c3fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
