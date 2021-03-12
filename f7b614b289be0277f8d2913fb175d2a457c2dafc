@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f061ab4_70dc2fa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-03-12T04:05:33Z",
+      "side": 1,
+      "message": "Hi Xibin, Do you have plan to work on internal Geekbench version. This will be helpful for bringup projects.",
+      "revId": "f7b614b289be0277f8d2913fb175d2a457c2dafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
