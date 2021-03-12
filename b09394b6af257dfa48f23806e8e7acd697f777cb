@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e82671df_38c31cc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T13:53:32Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b09394b6af257dfa48f23806e8e7acd697f777cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b89dd1c6_ae1cfa04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T13:53:32Z",
+      "side": 1,
+      "message": "nit: %v ?",
+      "range": {
+        "startLine": 200,
+        "startChar": 73,
+        "endLine": 200,
+        "endChar": 76
+      },
+      "revId": "b09394b6af257dfa48f23806e8e7acd697f777cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
