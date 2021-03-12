@@ -22,6 +22,30 @@
       },
       "revId": "2a24e49b21c00e26d886a102ec6684f21f12b3ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74747e9d_c31b1ea3",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-03-12T08:52:43Z",
+      "side": 0,
+      "message": "It\u0027s set in p.arc.resetOutDir.",
+      "parentUuid": "b1827c7f_d4a95e8a",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 85
+      },
+      "revId": "2a24e49b21c00e26d886a102ec6684f21f12b3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
