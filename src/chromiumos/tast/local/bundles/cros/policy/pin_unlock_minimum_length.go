@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -29,13 +29,13 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          pre.User,
+		Fixture:      "chromePolicyLoggedIn",
 	})
 }
 
 func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*pre.PreData).Chrome
-	fdms := s.PreValue().(*pre.PreData).FakeDMS
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -106,7 +106,7 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 			if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Name: "Password"}, 15*time.Second); err != nil {
 				s.Fatal("Could not find the password field: ", err)
 			}
-			if err := kb.Type(ctx, pre.Password+"\n"); err != nil {
+			if err := kb.Type(ctx, fixtures.Password+"\n"); err != nil {
 				s.Fatal("Failed to type password: ", err)
 			}
 

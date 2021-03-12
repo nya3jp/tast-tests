@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -31,14 +31,14 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Pre:          pre.User,
+		Fixture:      "chromePolicyLoggedIn",
 		Data:         []string{"download_restrictions_index.html", "download_restrictions.zip"},
 	})
 }
 
 func DownloadRestrictions(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*pre.PreData).Chrome
-	fdms := s.PreValue().(*pre.PreData).FakeDMS
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	// Clear Downloads directory.
 	files, err := ioutil.ReadDir(filesapp.DownloadPath)
