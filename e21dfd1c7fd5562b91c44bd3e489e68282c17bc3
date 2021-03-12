@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe444fee_5448aba1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-12T04:24:13Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e13d0604_8fd33939",
@@ -60,6 +77,29 @@
         "startChar": 0,
         "endLine": 28,
         "endChar": 72
+      },
+      "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "693388d6_449cda63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-12T04:24:13Z",
+      "side": 1,
+      "message": "nit: exist",
+      "range": {
+        "startLine": 244,
+        "startChar": 36,
+        "endLine": 244,
+        "endChar": 42
       },
       "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -114,6 +154,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16307d23_84058c3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-12T04:24:13Z",
+      "side": 1,
+      "message": "exist",
+      "range": {
+        "startLine": 266,
+        "startChar": 30,
+        "endLine": 266,
+        "endChar": 36
+      },
+      "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a63b38_a2478e5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-12T04:24:13Z",
+      "side": 1,
+      "message": "nit: Do you want to reword \"finishButton\" to \"finish button\"",
+      "range": {
+        "startLine": 268,
+        "startChar": 30,
+        "endLine": 268,
+        "endChar": 42
+      },
+      "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e397620_33c59e5e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
         "patchSetId": 1
@@ -154,6 +240,52 @@
         "startChar": 0,
         "endLine": 271,
         "endChar": 50
+      },
+      "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3518b223_8e2044b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-12T04:24:13Z",
+      "side": 1,
+      "message": "nit: exist. \n\noptional: According to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log, test should only log if it takes a while.",
+      "range": {
+        "startLine": 297,
+        "startChar": 25,
+        "endLine": 297,
+        "endChar": 31
+      },
+      "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "352aab82_a48633a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-12T04:24:13Z",
+      "side": 1,
+      "message": "nit: profile icon",
+      "range": {
+        "startLine": 300,
+        "startChar": 30,
+        "endLine": 300,
+        "endChar": 41
       },
       "revId": "e21dfd1c7fd5562b91c44bd3e489e68282c17bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
