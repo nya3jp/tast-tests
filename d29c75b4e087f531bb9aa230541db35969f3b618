@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc75099_fa635632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/data/web_handwriting_recognition_index.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-03-12T03:52:02Z",
+      "side": 1,
+      "message": "Deleted.",
+      "parentUuid": "ba2de49c_9dc4fd15",
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ac0b32f_9e998170",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-03-11T07:44:41Z",
       "side": 1,
       "message": "Make sure to use a team contact",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9be4d1a1_bc916acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-03-12T03:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ac0b32f_9e998170",
       "range": {
         "startLine": 22,
         "startChar": 2,
@@ -121,6 +163,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f7e854_75f10046",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-03-12T03:52:02Z",
+      "side": 1,
+      "message": "Done.\n\nNeat. We only serve files from DataFileSystem.",
+      "parentUuid": "8f103c4d_b21759f3",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18b51811_fcdb6607",
@@ -134,6 +200,30 @@
       "writtenOn": "2021-03-11T07:44:41Z",
       "side": 1,
       "message": "Might be worth just inlining this for now with the todo above the chrome.New? Overload given you won\u0027t be using it for now, e.g.\n```\n// TODO(qjw): Change to EnableFeature after we add a flag (or feature) in Chrome browser.\ncr, err :\u003d chrome.New(ctx, chrome.ExtraArgs(\"--enable-experimental-web-platform-features\")\nif err !\u003d nil {\n\ts.Fatal(\"Failed to start chrome: \", err)\n}\n```",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b28fd3c1_857041f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-03-12T03:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18b51811_fcdb6607",
       "range": {
         "startLine": 56,
         "startChar": 1,
@@ -167,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64c5cc80_2d45fcae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-03-12T03:52:02Z",
+      "side": 1,
+      "message": "Done. Changed the previous line to be more obvious.\n\nPut a comment to explain why.",
+      "parentUuid": "b7f2b1d5_c6255af2",
+      "range": {
+        "startLine": 78,
+        "startChar": 10,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f94afcc4_e5e07b04",
@@ -180,6 +294,30 @@
       "writtenOn": "2021-03-11T07:44:41Z",
       "side": 1,
       "message": "Consistent error messages: Failed to evaluate window.resultPromise?",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 33
+      },
+      "revId": "d29c75b4e087f531bb9aa230541db35969f3b618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ec18e6_72f9da2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-03-12T03:52:02Z",
+      "side": 1,
+      "message": "Changed to \"Failed to complete JS test: \" ...\n\nFailed to \"evaluate\" is less accurate.\n\nThe error can either mean:\n- Tast can\u0027t evaluate the expression (Tast issue)\n- JS test fails (the promise rejects, err would indicate so with JS error message\n- JS test didn\u0027t complete (e.g. times out, renderer crash)",
+      "parentUuid": "f94afcc4_e5e07b04",
       "range": {
         "startLine": 79,
         "startChar": 11,
