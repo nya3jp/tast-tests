@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd05bfb_d0e82c77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-12T13:55:18Z",
+      "side": 1,
+      "message": "It does not matter, just noticed I\u0027m not consistent in this service anyway. Will file a cleanup CL to make everything the same after this lands.",
+      "parentUuid": "ec29cc56_b3d9f5fb",
+      "range": {
+        "startLine": 255,
+        "startChar": 9,
+        "endLine": 255,
+        "endChar": 12
+      },
+      "revId": "405bb041aff96c42dedb6992bc63c8b8077fa899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0523770_8e94e699",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28aa099_6a234c7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-12T13:55:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0523770_8e94e699",
+      "range": {
+        "startLine": 264,
+        "startChar": 9,
+        "endLine": 264,
+        "endChar": 12
+      },
+      "revId": "405bb041aff96c42dedb6992bc63c8b8077fa899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f121beb_f2d2b56c",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-12T13:39:12Z",
       "side": 1,
       "message": "nit: providing",
+      "range": {
+        "startLine": 23,
+        "startChar": 28,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "405bb041aff96c42dedb6992bc63c8b8077fa899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46851a82_422a42cb",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-12T13:55:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f121beb_f2d2b56c",
       "range": {
         "startLine": 23,
         "startChar": 28,
