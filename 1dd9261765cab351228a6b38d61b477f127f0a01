@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "501e4744_f700ba58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T12:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "712d7c68_49e41255",
+      "range": {
+        "startLine": 95,
+        "startChar": 52,
+        "endLine": 95,
+        "endChar": 60
+      },
+      "revId": "1dd9261765cab351228a6b38d61b477f127f0a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "441d48b4_6466db12",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-12T00:24:54Z",
       "side": 1,
       "message": "CreateWindows should wait for animations (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/chrome/ash/wm.go#525), so I think this is actually not necessary (not anymore -- it was added recently)",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "1dd9261765cab351228a6b38d61b477f127f0a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6feb936a_7c298f3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T12:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "441d48b4_6466db12",
       "range": {
         "startLine": 138,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10c83ef8_02816f8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T12:12:54Z",
+      "side": 1,
+      "message": "It seems that we can remove this.",
+      "parentUuid": "c5f76eda_4d829173",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 3
+      },
+      "revId": "1dd9261765cab351228a6b38d61b477f127f0a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2094f3b_e74e2162",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-12T00:24:54Z",
       "side": 1,
       "message": "Do we really need upstart.RestartJob here?  chrome.New will do that when creating a new session.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 5
+      },
+      "revId": "1dd9261765cab351228a6b38d61b477f127f0a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77af3a0a_9d88c4ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T12:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2094f3b_e74e2162",
       "range": {
         "startLine": 200,
         "startChar": 0,
