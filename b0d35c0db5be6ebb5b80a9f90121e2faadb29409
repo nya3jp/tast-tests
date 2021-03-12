@@ -63,6 +63,30 @@
       },
       "revId": "b0d35c0db5be6ebb5b80a9f90121e2faadb29409",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2f13f4_f4ba50e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-12T08:59:44Z",
+      "side": 1,
+      "message": "Thanks. Please let me know when ready.",
+      "parentUuid": "0b71faed_8ba0b4da",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "b0d35c0db5be6ebb5b80a9f90121e2faadb29409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
