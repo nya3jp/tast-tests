@@ -25,6 +25,8 @@ func init() {
 		Desc:         "Test to confirm that the screen diffing library works as intended",
 		Contacts:     []string{"msta@google.com", "chrome-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
+		Vars:         []string{screenshot.GoldServiceAccountKeyVar},
 	})
 }
 
@@ -73,9 +75,10 @@ func ScreenDiff(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	// Unfortunately, it's not possible to test that images fail on gold, because
+	// gold would then comment on everyone's CLs saying that they failed this test.
 	if err := screenshot.DiffPerConfig(ctx, s, []screenshot.Config{
 		{Region: "us"},
-		{Region: "au"},
 		{Region: "jp"},
 	}, func(d screenshot.Differ, cr *chrome.Chrome) {
 		tconn, err := cr.TestAPIConn(ctx)
