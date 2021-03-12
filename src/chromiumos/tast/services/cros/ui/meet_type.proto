@@ -1,0 +1,18 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+message MeetScenarioRequest {
+  string account = 1;
+  string password = 2;
+  string tier = 3;
+  int64 room_size = 4;
+  bool tablet_mode = 5;
+  bool extended_display = 6;
+}
