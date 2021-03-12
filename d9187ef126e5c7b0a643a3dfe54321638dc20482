@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d08d2202_36056779",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T08:51:24Z",
+      "side": 1,
+      "message": "Can we unexport this and provide a getter instead for immutability?\n\nnit: Also can you move this to somewhere above loginPending? loginPending is the only mutable field in this struct, so it\u0027s nice to put it at the end of the struct definition.",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 9
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25bbf911_88b6f5e5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T08:51:24Z",
+      "side": 1,
+      "message": "huge nit: %s might be easier for cut and pasting.",
+      "range": {
+        "startLine": 244,
+        "startChar": 42,
+        "endLine": 244,
+        "endChar": 44
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e045e122_5d3ca017",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T08:51:24Z",
+      "side": 1,
+      "message": "How about introducing a type?",
+      "range": {
+        "startLine": 245,
+        "startChar": 52,
+        "endLine": 245,
+        "endChar": 62
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81626e38_1c54c83c",
+        "filename": "src/chromiumos/tast/local/logsaver/log_saver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T08:51:24Z",
+      "side": 1,
+      "message": "Please remember to fill something here :)",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "089e67ad_102694cf",
+        "filename": "src/chromiumos/tast/local/logsaver/log_saver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T08:51:24Z",
+      "side": 1,
+      "message": "In the current design LogSaver is a stateful type and provides two very similar functionalities (saving logs since construction, saving logs between two method calls).\n\nWhat do you think about designing this component in a stateless way: for example, introducing an immutable type that represents a marker of a log file size, and implementing a method that copies log content since the marker. Here\u0027s an illustration of API (I didn\u0027t seriously consider naming):\n\n type Marker string {\n   filename string\n   offset int64\n }\n\n func NewMarker(filename string) (Marker, error)\n\n func NewMarkerNoOffset(filename string) (Marker, error)\n\n func SaveSince(m Marker, out string) error",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 13
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "802ebba6_b825df10",
+        "filename": "src/chromiumos/tast/local/logsaver/log_saver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T08:51:24Z",
+      "side": 1,
+      "message": "Usually Start should be always paired with StopAndSave, just like os.Open and Close, and having this method sounds like adding IsClosed to os.File...",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43da020c_13c01b75",
+        "filename": "src/chromiumos/tast/local/logsaver/log_saver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T08:51:24Z",
+      "side": 1,
+      "message": "nit: Do we want to call os.OpenFile instead of simpler os.Create?",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 25
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4198f39c_a09ca2b8",
+        "filename": "src/chromiumos/tast/local/logsaver/log_saver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T08:51:24Z",
+      "side": 1,
+      "message": "Let us use io.SeekStart.",
+      "range": {
+        "startLine": 89,
+        "startChar": 34,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
