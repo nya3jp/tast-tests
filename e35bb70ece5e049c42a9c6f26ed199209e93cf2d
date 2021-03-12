@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "e35bb70ece5e049c42a9c6f26ed199209e93cf2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7d6fdf2_3c3fbb10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-12T15:37:13Z",
+      "side": 1,
+      "message": "LGTM\n\nI think you are talking about chromeboxes. Can you please mention it in the commit message?",
+      "revId": "e35bb70ece5e049c42a9c6f26ed199209e93cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
