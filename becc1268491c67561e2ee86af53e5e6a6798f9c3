@@ -16,6 +16,40 @@
       "message": "LGTM.",
       "revId": "becc1268491c67561e2ee86af53e5e6a6798f9c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2f5946c_4ff2ed03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-12T09:40:45Z",
+      "side": 1,
+      "message": "LGTM with style fix request.",
+      "revId": "becc1268491c67561e2ee86af53e5e6a6798f9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec63371_d4b9c402",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/data/web_handwriting_recognition_drawing_abc.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-12T09:40:45Z",
+      "side": 1,
+      "message": "Could you add semicolons properly?\n\nhttps://google.github.io/styleguide/jsguide.html#formatting-semicolons-are-required\n\nall statements in this file.",
+      "revId": "becc1268491c67561e2ee86af53e5e6a6798f9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
