@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -28,14 +28,14 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Pre:          pre.User,
+		Fixture:      "chromePolicyLoggedIn",
 	})
 }
 
 // ChromeOsLockOnIdleSuspend tests the ChromeOsLockOnIdleSuspend policy.
 func ChromeOsLockOnIdleSuspend(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*pre.PreData).Chrome
-	fdms := s.PreValue().(*pre.PreData).FakeDMS
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -101,7 +101,7 @@ func ChromeOsLockOnIdleSuspend(ctx context.Context, s *testing.State) {
 			}
 
 			// Type the password to unlock the lock screen settings page.
-			if err := keyboard.Type(ctx, pre.Password+"\n"); err != nil {
+			if err := keyboard.Type(ctx, fixtures.Password+"\n"); err != nil {
 				s.Fatal("Failed to type password: ", err)
 			}
 

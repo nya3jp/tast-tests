@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -28,15 +28,15 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Pre:          pre.User,
+		Fixture:      "chromePolicyLoggedIn",
 	})
 }
 
 // KeyboardDefaultToFunctionKeys tests default function key action.
 // Search+function keys should perform the alternate action.
 func KeyboardDefaultToFunctionKeys(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*pre.PreData).Chrome
-	fdms := s.PreValue().(*pre.PreData).FakeDMS
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {

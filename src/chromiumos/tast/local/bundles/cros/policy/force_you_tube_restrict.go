@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -34,14 +34,14 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Pre:          pre.User,
+		Fixture:      "chromePolicyLoggedIn",
 	})
 }
 
 // ForceYouTubeRestrict tests the behavior of the ForceYouTubeRestrict Enterprise policy.
 func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*pre.PreData).Chrome
-	fdms := s.PreValue().(*pre.PreData).FakeDMS
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	for _, param := range []struct {
 		// name is the subtest name.

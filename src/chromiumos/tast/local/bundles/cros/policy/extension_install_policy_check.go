@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -38,7 +38,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Pre:          pre.User,
+		Fixture:      "chromePolicyLoggedIn",
 		Timeout:      4 * time.Minute, // There is a longer wait when installing the extension.
 		Params: []testing.Param{
 			{
@@ -105,8 +105,8 @@ func init() {
 }
 
 func ExtensionInstallPolicyCheck(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*pre.PreData).Chrome
-	fdms := s.PreValue().(*pre.PreData).FakeDMS
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
