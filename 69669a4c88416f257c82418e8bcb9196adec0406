@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c35e2a66_c7ef2d96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-03-12T21:10:51Z",
+      "side": 1,
+      "message": "Ugh. Thanks!",
+      "parentUuid": "972517b3_8accafb4",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 8
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7539ee4_fcd7749d",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "It was pretty straightforward to put together the map in this order --- or do you mean easier for something else? Happy to change it!",
       "parentUuid": "b7539ee4_fcd7749d",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11982bc1_dc3c4cac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-03-12T21:10:51Z",
+      "side": 1,
+      "message": "No need to change. But you were swizzling the directory order. Which means all the strings below were sorted not naturally. Easier to show in person, but no big deal, just a comment.",
+      "parentUuid": "53a89cbf_e3ba19b2",
       "range": {
         "startLine": 36,
         "startChar": 3,
