@@ -41,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf75b81_28d0f32f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-03-12T12:00:03Z",
+      "side": 1,
+      "message": "Thanks Gabor.\nA small clarification below.",
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "281cd649_d5301363",
@@ -71,6 +88,30 @@
       "writtenOn": "2021-03-12T11:52:26Z",
       "side": 1,
       "message": "The test should work without this part. If the button is not there, ui.RightClick(filesAppShelfButton) fails, and we know why.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 3
+      },
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b662dd7c_b8d75b9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pinned_launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-03-12T12:00:03Z",
+      "side": 1,
+      "message": "I thought this is useful to verify that the app is a pinned one through ash.ShelfItemTypePinnedApp.\nWDYT ?",
+      "parentUuid": "796fdb49_ae9db1aa",
       "range": {
         "startLine": 59,
         "startChar": 0,
