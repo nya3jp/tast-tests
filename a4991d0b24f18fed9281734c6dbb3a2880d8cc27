@@ -16,6 +16,75 @@
       "message": "+honglinyu FYI",
       "revId": "a4991d0b24f18fed9281734c6dbb3a2880d8cc27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc855b6_61d7ae44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/data/web_handwriting_recognition_drawing_abc.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-12T04:11:31Z",
+      "side": 1,
+      "message": "Ensure copyright for this file as well:\n```\n\u003c!-- Copyright 2021 The Chromium OS Authors. All rights reserved.\n     Use of this source code is governed by a BSD-style license that can be\n     found in the LICENSE file. --\u003e\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "a4991d0b24f18fed9281734c6dbb3a2880d8cc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2876d050_584077a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-12T04:11:31Z",
+      "side": 1,
+      "message": "Make sure to close this as well\n```\ndefer cr.Close(ctx)\n```",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "a4991d0b24f18fed9281734c6dbb3a2880d8cc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e32c1b1_e76c5738",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-12T04:11:31Z",
+      "side": 1,
+      "message": "It looks like nothing is actually done with this value? You can just supply nil if you don\u0027t want the output to go anywhere, I believe errors will still make their way up you just won\u0027t use the output.",
+      "range": {
+        "startLine": 67,
+        "startChar": 50,
+        "endLine": 67,
+        "endChar": 56
+      },
+      "revId": "a4991d0b24f18fed9281734c6dbb3a2880d8cc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
