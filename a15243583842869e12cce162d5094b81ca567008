@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ab7c75_9002d5ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-12T14:20:35Z",
+      "side": 1,
+      "message": "nit: Add",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "a15243583842869e12cce162d5094b81ca567008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "646e51a2_fbc03b18",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-03-12T13:40:26Z",
       "side": 1,
       "message": "Thanks for adding this.",
+      "revId": "a15243583842869e12cce162d5094b81ca567008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0fe934e_56f22cb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-12T14:20:35Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "a15243583842869e12cce162d5094b81ca567008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
