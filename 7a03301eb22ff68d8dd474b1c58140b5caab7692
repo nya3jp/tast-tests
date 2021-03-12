@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "581b684d_25b1fa5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T20:52:35Z",
+      "side": 1,
+      "message": "The style of error messages and doc comments should be warned on repo-upload\u0027s hook.  Please check that and make sure no warning messages appear there.",
+      "revId": "7a03301eb22ff68d8dd474b1c58140b5caab7692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c120302_0871a02f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T20:52:35Z",
+      "side": 1,
+      "message": "Messages for an error object should start with a lower-case letter and should not end with a punctuation (see https://github.com/golang/go/wiki/CodeReviewComments#error-strings).  \"failed to start Chrome\" would be better.\n\nSame on all other errors in this file.",
+      "range": {
+        "startLine": 61,
+        "startChar": 32,
+        "endLine": 61,
+        "endChar": 56
+      },
+      "revId": "7a03301eb22ff68d8dd474b1c58140b5caab7692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee0fbc1f_ba426bb4",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T20:52:35Z",
+      "side": 1,
+      "message": "Doc comment should start with the function name itself (see https://golang.org/doc/effective_go#commentary).\n\n  // SkipForceOnlineSignInForTesting returns an Option that ...",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 45
+      },
+      "revId": "7a03301eb22ff68d8dd474b1c58140b5caab7692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
