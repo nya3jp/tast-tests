@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda29de3_84eab7f1",
+        "filename": "src/chromiumos/tast/local/bluetooth/device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T01:14:29Z",
+      "side": 1,
+      "message": "I think it\u0027s better to avoid returning errors here. Consider a case that a device is in a weird state and fails. I think this function still wants to disconnect other devices, and then report the error.  Let\u0027s mark that as the \u0027first error\u0027. It would be:\n\n  var firstErr error\n  for _, d :\u003d range devices {\n    connected, err :\u003d d.Connected(ctx)\n    if err !\u003d nil {\n      err \u003d errors.Wrap(err, \"failed to get connected property\")\n      testing.ContextLogf(ctx, \"Failure during disconnecting %q: %v\", d.path, err)\n      if firstErr !\u003d nil {\n        firstErr \u003d err\n      }\n      continue\n    }\n    ... (use the similar pattern)\n  }\n  return firstErr",
+      "revId": "6d9c552bc9882939def5350c76cf0c21841dc536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
