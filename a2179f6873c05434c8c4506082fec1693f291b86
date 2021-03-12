@@ -16,6 +16,23 @@
       "message": "PTAL\nThanks",
       "revId": "a2179f6873c05434c8c4506082fec1693f291b86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a58115_84dae5bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-12T18:46:11Z",
+      "side": 1,
+      "message": "Do we need to ensure the path exists before writing to it?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/faillog/faillog.go;l\u003d36;drc\u003d6b55b5fc5dd20de6efcb4ec12c7b878743c40b0f",
+      "revId": "a2179f6873c05434c8c4506082fec1693f291b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
