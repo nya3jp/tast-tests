@@ -52,6 +52,24 @@
       "parentUuid": "a055a32f_4e14eaac",
       "revId": "f9fb09089078c829e2cd4915736b56fbdfebbc27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a99842af_9cc1fd52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T00:11:00Z",
+      "side": 1,
+      "message": "Thank you for the hint, it works ;)",
+      "parentUuid": "d0004211_d217bb23",
+      "revId": "f9fb09089078c829e2cd4915736b56fbdfebbc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
