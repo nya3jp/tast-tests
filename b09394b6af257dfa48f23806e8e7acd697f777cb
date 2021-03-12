@@ -39,6 +39,30 @@
       },
       "revId": "b09394b6af257dfa48f23806e8e7acd697f777cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c33f1193_c08cbee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-12T14:06:00Z",
+      "side": 1,
+      "message": "I am keeping the +, as with %+v the error msg is:\n\u003e  last status {LoggedIn:true Owner:true Locked:false ReadyForPassword:false RegularUser:true Guest:false Kiosk:false Email:tast-user@managedchrome.com DisplayEmail:tast-user@managedchrome.com UserImage:46\n\nWith %v:\n\u003e  last status {true true false false true false false tast-user@managedchrome.com tast-user@managedchrome.com 45}",
+      "parentUuid": "b89dd1c6_ae1cfa04",
+      "range": {
+        "startLine": 200,
+        "startChar": 73,
+        "endLine": 200,
+        "endChar": 76
+      },
+      "revId": "b09394b6af257dfa48f23806e8e7acd697f777cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
