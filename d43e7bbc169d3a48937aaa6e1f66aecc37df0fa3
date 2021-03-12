@@ -16,6 +16,23 @@
       "message": "Going to go ahead and push this. I\u0027ll keep an eye on CQ runs over the next few days.",
       "revId": "d43e7bbc169d3a48937aaa6e1f66aecc37df0fa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2d2beba_20e48682",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-03-12T17:34:29Z",
+      "side": 1,
+      "message": "These CQ failures don\u0027t look related to this change, but I\u0027m going to wait to resubmit until next week so that we don\u0027t add a new test to critical on a Friday afternoon :)",
+      "revId": "d43e7bbc169d3a48937aaa6e1f66aecc37df0fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
