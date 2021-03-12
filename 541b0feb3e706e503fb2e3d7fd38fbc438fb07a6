@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d613029_2faa1e7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T00:24:54Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary.  cr should be nil when it fails to create the instance.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "541b0feb3e706e503fb2e3d7fd38fbc438fb07a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b56a9e6b_1959ad3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T00:24:54Z",
+      "side": 1,
+      "message": "I am afraid that this isn\u0027t working well here.  It won\u0027t report any errors at this time, as it returns an error but doesn\u0027t change test\u0027s state.  Plus, s refers to the testing state passed to LoginPerf function, but this function is called within perfutil.RunMultiple -- which creates \"subtests\" through testing.Run (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/ui/perfutil/run.go#138).\n\nInstead, I think you should put a boolean flag.  That also helps doing the cr.Close.\n  hasError :\u003d true\n  defer func() {\n    if hasError {\n      cr.Close(ctx)\n    }\n  }()\n  ...\n  defer faillog.DumpUITreeOnError(ctx, outdir, func() bool { return hasError }, tLoginConn)\n  ...\n  hasError \u003d false\n  return cr, nil",
+      "range": {
+        "startLine": 73,
+        "startChar": 49,
+        "endLine": 73,
+        "endChar": 60
+      },
+      "revId": "541b0feb3e706e503fb2e3d7fd38fbc438fb07a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4152774_10af72bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T00:24:54Z",
+      "side": 1,
+      "message": "Due to the standard go formatter\u0027s behavior, this style of comment is becoming slightly awkward (comma always appears after the comment).  Instead, I recommend to adopt a different style to put the comment posterior, as\n  ..., false /*useTabletMode*/)\n\nsee some samples through https://source.corp.google.com/search?q\u003d%2F%5C*%5Ba-zA-Z%5D%2B%5C*%2F%20file:.go$\u0026sq\u003dpackage:%5Echromeos_public$",
+      "range": {
+        "startLine": 191,
+        "startChar": 50,
+        "endLine": 191,
+        "endChar": 75
+      },
+      "revId": "541b0feb3e706e503fb2e3d7fd38fbc438fb07a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
