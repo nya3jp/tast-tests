@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b384d3_be18b3b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T13:39:12Z",
+      "side": 1,
+      "message": "Thanks for adding the Fixture.\nLGTM % nits",
+      "revId": "405bb041aff96c42dedb6992bc63c8b8077fa899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec29cc56_b3d9f5fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T13:39:12Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be \u0026empty.Empty{} as well?",
+      "range": {
+        "startLine": 255,
+        "startChar": 9,
+        "endLine": 255,
+        "endChar": 12
+      },
+      "revId": "405bb041aff96c42dedb6992bc63c8b8077fa899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0523770_8e94e699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T13:39:12Z",
+      "side": 1,
+      "message": "see above",
+      "range": {
+        "startLine": 264,
+        "startChar": 9,
+        "endLine": 264,
+        "endChar": 12
+      },
+      "revId": "405bb041aff96c42dedb6992bc63c8b8077fa899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f121beb_f2d2b56c",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T13:39:12Z",
+      "side": 1,
+      "message": "nit: providing",
+      "range": {
+        "startLine": 23,
+        "startChar": 28,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "405bb041aff96c42dedb6992bc63c8b8077fa899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
