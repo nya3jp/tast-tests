@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/cryptohome/cleanup"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/disk"
 	"chromiumos/tast/testing"
 )
 
@@ -64,10 +65,19 @@ func ShowLowDiskSpaceNotification(ctx context.Context, s *testing.State) {
 		}
 
 		return errors.New("could not find low disk space notification")
-
 	}, &testing.PollOptions{
 		Timeout: 80 * time.Second, // Checks for low disk space run once per minute.
 	}); err != nil {
+		// Check if too much space was made available.
+		freeSpace, err := disk.FreeSpace(cleanup.UserHome)
+		if err != nil {
+			s.Fatal("Failed to read the amount of free space")
+		}
+
+		if freeSpace >= cleanup.NotificationThreshold {
+			s.Errorf("Space was cleaned without notification, %d bytes available", freeSpace)
+		}
+
 		s.Error("Notification not shown: ", err)
 	}
 }
