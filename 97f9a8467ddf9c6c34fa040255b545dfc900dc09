@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "589e4cb7_8cbac6c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-12T08:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0679fb2_1e7e0f1b",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 15
+      },
+      "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77239cd7_0affa4ee",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-03-11T22:26:29Z",
       "side": 1,
       "message": "I feel like all these deferred functions are harder to reason about (you\u0027re setting a reference to nil in another function then checking if nil here). The deferred functions are typically used to ensure the DUT returns to a normal state. You should be able with just deferring the app.Close(cleanupCtx) method and not reassigning the variable to nil.",
+      "range": {
+        "startLine": 85,
+        "startChar": 6,
+        "endLine": 85,
+        "endChar": 27
+      },
+      "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ed973a_540391cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-12T08:34:24Z",
+      "side": 1,
+      "message": "Originally I used \"app !\u003d nil\" here to avoid closing the app twice since closing app is also a part of the test. But on second thought, since we have logic in app.Close() to early return if it has been closed, it should be okay to just \"defer app.Close(ctx)\" here.",
+      "parentUuid": "77239cd7_0affa4ee",
       "range": {
         "startLine": 85,
         "startChar": 6,
@@ -120,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0a01f74_35fcd402",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-12T08:34:24Z",
+      "side": 1,
+      "message": "Yes, for normal case, |pageConn| and |trackState| should be closed in |closeWebPage()|. But |closeWebPage()| might not be the last thing to do in the test.\n\nAnd the defer function to call |closeWebPage()| is just for ensuring that even there is any error occurs before calling |closeWebPage()|, we can still call it while leaving the function.\n\nIn short, we make sure\n1. |closeWebPage()| can be called at least once.\n2. When fails to |closeWebPage()| during normal process, reports the error\n3. When fails to |closeWebPage()| during defer process, logs the error",
+      "parentUuid": "35ac3b27_9104dd23",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a403895_b7a0a033",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_coexistence.html",
         "patchSetId": 3
@@ -131,6 +203,24 @@
       "writtenOn": "2021-03-11T07:13:03Z",
       "side": 1,
       "message": "Replace it with \u003cvideo\u003e and set the camera stream as its srcObject?",
+      "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f1b0027_3b363c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_coexistence.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-12T08:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a403895_b7a0a033",
       "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -148,6 +238,24 @@
       "writtenOn": "2021-03-11T07:13:03Z",
       "side": 1,
       "message": "I guess this may fail for some devices in tablet mode with two cameras because\n\n1. CCA will try to open back camera in tablet mode.\n2. The web page will try to open front camera by default (not 100% sure, that\u0027s my vague memory)\n3. Some tablet/convertible devices do not support opening front and back cameras at the same time.",
+      "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91db3609_8221c139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_coexistence.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-12T08:34:24Z",
+      "side": 1,
+      "message": "How about adding \"facingMode: { ideal: \u0027user\u0027 }\" in the constraints?\nSo that it will first try to find an user-facing camera.",
+      "parentUuid": "220651c4_d77a0603",
       "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
