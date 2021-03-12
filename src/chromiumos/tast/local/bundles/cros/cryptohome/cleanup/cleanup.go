@@ -26,10 +26,11 @@ const (
 	// Location of user directories.
 	UserHome = "/home/user"
 
-	MiB              uint64 = 1024 * 1024 // 1 MiB
-	GiB              uint64 = 1024 * MiB  // 1 GiB
-	MinimalFreeSpace        = 512 * MiB   // hard-coded in cryptohomed
-	CleanupTarget           = 2 * GiB     // default value in cryptohomed
+	MiB                   uint64 = 1024 * 1024 // 1 MiB
+	GiB                   uint64 = 1024 * MiB  // 1 GiB
+	MinimalFreeSpace             = 512 * MiB   // hard-coded in cryptohomed
+	CleanupTarget                = 2 * GiB     // Default value in cryptohomed, when to stop cleaning.
+	NotificationThreshold        = 1 * GiB     // Default value in cryptohomed, threshold for sending the low-disk-space notification.
 )
 
 // RunAutomaticCleanup triggers cleanup by restarting cryptohome and waits until it is done.
