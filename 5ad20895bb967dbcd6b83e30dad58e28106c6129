@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f01e3e6b_aa0828b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-12T09:28:48Z",
+      "side": 1,
+      "message": "If you need shell, you have to escape.",
+      "range": {
+        "startLine": 118,
+        "startChar": 96,
+        "endLine": 118,
+        "endChar": 109
+      },
+      "revId": "5ad20895bb967dbcd6b83e30dad58e28106c6129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f69113d_49c2796a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-12T09:28:48Z",
+      "side": 1,
+      "message": "why not just \"[ -d %q ]\"?",
+      "revId": "5ad20895bb967dbcd6b83e30dad58e28106c6129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
