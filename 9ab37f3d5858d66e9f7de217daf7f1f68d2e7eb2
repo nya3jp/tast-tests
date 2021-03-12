@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28d1674f_c473b6cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-12T21:20:01Z",
+      "side": 1,
+      "message": "Done, this is cool technology",
+      "parentUuid": "44ed8bd8_32da79fc",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "9ab37f3d5858d66e9f7de217daf7f1f68d2e7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be1012c2_d8947538",
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "Not sure I follow. Can you pass testing.State as an argument to fingerprint.InitializeKnownState ?",
       "parentUuid": "590fea97_7f836025",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 38
+      },
+      "revId": "9ab37f3d5858d66e9f7de217daf7f1f68d2e7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a460eb6_fa58101e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-12T21:20:01Z",
+      "side": 1,
+      "message": "No, helper packages like \"fingerprint\" cannot take testing.State as an arg. It\u0027s forbidden by presubmit checks. But I am passing the servo.Proxy to fingerprint.InitializeKnownState and that achieves the desired effect. InitializeKnownState now enables HW WP.",
+      "parentUuid": "da56df1e_a5afdd3e",
       "range": {
         "startLine": 149,
         "startChar": 11,
