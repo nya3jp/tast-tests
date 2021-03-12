@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a373fd_5b33ff25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T19:31:22Z",
+      "side": 1,
+      "message": "but that\u0027s not important -- I think this comment is optional. Marking as Resolved. sorry I replied eagerly.",
+      "parentUuid": "8134d21d_86df1952",
+      "range": {
+        "startLine": 49,
+        "startChar": 54,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9b0736d_590f9169",
