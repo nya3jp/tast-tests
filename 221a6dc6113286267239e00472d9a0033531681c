@@ -35,6 +35,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f4dbd40_bd55923b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2021-03-12T23:01:28Z",
+      "side": 1,
+      "message": "i checked on a hana i have and it encodes. we should add |oak|",
+      "range": {
+        "startLine": 443,
+        "startChar": 74,
+        "endLine": 443,
+        "endChar": 75
+      },
+      "revId": "221a6dc6113286267239e00472d9a0033531681c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e971064e_d59a2b2a",
