@@ -16,6 +16,24 @@
       "message": "I would prefer to keep 2,4,6,8,10, or at least 2,4,6,8.",
       "revId": "810c65741b09a525f3bad0a419342a0bcf67fe64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a838dcd4_d341e9d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_video_option_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-03-12T02:12:26Z",
+      "side": 1,
+      "message": "5 candidates x 3 profiles x 2 facing x 30 sec per test item + 2 min start CPU idle ~\u003d 17 min\nGive it 20 min should enough.",
+      "parentUuid": "2032459a_edf2f9ce",
+      "revId": "810c65741b09a525f3bad0a419342a0bcf67fe64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
