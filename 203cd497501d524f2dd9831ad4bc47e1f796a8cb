@@ -16,6 +16,184 @@
       "message": "Hi Alexander, please review the following. Thanks. I could not find a better way to check the full screen mode than the window width. Let me know if you have any better ideas.\nI tried document.fullscreenEnabled, document.fullscreenElement, but weirdly they do not produce the expected output.",
       "revId": "203cd497501d524f2dd9831ad4bc47e1f796a8cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "521d4fde_e432b112",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T10:10:53Z",
+      "side": 1,
+      "message": "Thanks for adding this test.",
+      "revId": "203cd497501d524f2dd9831ad4bc47e1f796a8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "496ad966_068ffcd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/fullscreen_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T10:10:53Z",
+      "side": 1,
+      "message": "nit: \n// Open browser window.\nconn, err :\u003d cr.NewConn(ctx, \"\")",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 52
+      },
+      "revId": "203cd497501d524f2dd9831ad4bc47e1f796a8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "084b1d19_0957cbb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/fullscreen_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T10:10:53Z",
+      "side": 1,
+      "message": "nit: if isFullScreen \u003d\u003d true",
+      "range": {
+        "startLine": 89,
+        "startChar": 3,
+        "endLine": 89,
+        "endChar": 27
+      },
+      "revId": "203cd497501d524f2dd9831ad4bc47e1f796a8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3eff976_c339bf01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/fullscreen_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T10:10:53Z",
+      "side": 1,
+      "message": "It\u0027s better to use F11. F3 probably won\u0027t work with every device as it only works due to being a special key to toggle Fullscreen at some devices.",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 31
+      },
+      "revId": "203cd497501d524f2dd9831ad4bc47e1f796a8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b19b00_fa98d43d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/fullscreen_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T10:10:53Z",
+      "side": 1,
+      "message": "nit: fullscreen",
+      "range": {
+        "startLine": 102,
+        "startChar": 28,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "203cd497501d524f2dd9831ad4bc47e1f796a8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda9e7aa_9982dc07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/fullscreen_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T10:10:53Z",
+      "side": 1,
+      "message": "if isFullscreen !\u003d param.wantFullscreenEnabled",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 56
+      },
+      "revId": "203cd497501d524f2dd9831ad4bc47e1f796a8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37788183_73b633d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/fullscreen_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T10:10:53Z",
+      "side": 1,
+      "message": "isFullscreen",
+      "range": {
+        "startLine": 111,
+        "startChar": 65,
+        "endLine": 111,
+        "endChar": 82
+      },
+      "revId": "203cd497501d524f2dd9831ad4bc47e1f796a8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bcbcb4a_14e93569",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/fullscreen_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T10:10:53Z",
+      "side": 1,
+      "message": "fullscreen",
+      "range": {
+        "startLine": 111,
+        "startChar": 25,
+        "endLine": 111,
+        "endChar": 39
+      },
+      "revId": "203cd497501d524f2dd9831ad4bc47e1f796a8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
