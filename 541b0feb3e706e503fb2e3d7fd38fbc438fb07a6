@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a404b49_d4791be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T12:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d613029_2faa1e7a",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "541b0feb3e706e503fb2e3d7fd38fbc438fb07a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b56a9e6b_1959ad3e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c55bba9_1cef990e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T12:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b56a9e6b_1959ad3e",
+      "range": {
+        "startLine": 73,
+        "startChar": 49,
+        "endLine": 73,
+        "endChar": 60
+      },
+      "revId": "541b0feb3e706e503fb2e3d7fd38fbc438fb07a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4152774_10af72bc",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-12T00:24:54Z",
       "side": 1,
       "message": "Due to the standard go formatter\u0027s behavior, this style of comment is becoming slightly awkward (comma always appears after the comment).  Instead, I recommend to adopt a different style to put the comment posterior, as\n  ..., false /*useTabletMode*/)\n\nsee some samples through https://source.corp.google.com/search?q\u003d%2F%5C*%5Ba-zA-Z%5D%2B%5C*%2F%20file:.go$\u0026sq\u003dpackage:%5Echromeos_public$",
+      "range": {
+        "startLine": 191,
+        "startChar": 50,
+        "endLine": 191,
+        "endChar": 75
+      },
+      "revId": "541b0feb3e706e503fb2e3d7fd38fbc438fb07a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55bc0754_9471142d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T12:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4152774_10af72bc",
       "range": {
         "startLine": 191,
         "startChar": 50,
