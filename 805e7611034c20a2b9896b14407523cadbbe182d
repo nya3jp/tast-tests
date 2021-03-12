@@ -148,6 +148,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "851cea3c_2f9b57e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pinned_launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-12T12:56:02Z",
+      "side": 1,
+      "message": "I think this adds an additional dependency to ash, and we don\u0027t get much extra information out of this. The main thing we are interested in whether the Unpin option is present.",
+      "parentUuid": "490a8d04_6f5966dd",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 3
+      },
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "add207ee_d84cd2d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pinned_launcher_apps.go",
         "patchSetId": 1
