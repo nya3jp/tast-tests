@@ -26,6 +26,7 @@ const (
 	PowerState           StringControl = "power_state"
 	V4Role               StringControl = "servo_v4_role"
 	ECUARTCmd            StringControl = "ec_uart_cmd"
+	ECBoard              StringControl = "ec_board"
 )
 
 // An IntControl contains the name of a gettable/settable Control which takes an integer value.
