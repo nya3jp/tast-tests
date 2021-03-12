@@ -22,6 +22,30 @@
       },
       "revId": "f733e355ef598abf625f48a98e5e099609db347d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55d8a87_453ab6d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-12T00:10:51Z",
+      "side": 1,
+      "message": "The intention is, if either regex matches, we still want to see if an upcoming line contains \"Fail!\", i.e. we want to finish scanning until EOF. If we return, then we won\u0027t be able to catch a \"Fail!\" that comes afterwards. Any suggestions on making it clearer?",
+      "parentUuid": "44e51613_642fdebb",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 359,
+        "endChar": 3
+      },
+      "revId": "f733e355ef598abf625f48a98e5e099609db347d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
