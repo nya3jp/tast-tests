@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea942870_253d193a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-12T18:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffadfa0c_e5b94587",
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33a66143_9568e69d",
