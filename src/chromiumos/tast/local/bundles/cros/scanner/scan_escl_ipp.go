@@ -134,17 +134,10 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 	var deviceName string
 	if testOpt.Network {
 		// To simulate a network scanner, we start up ippusb_bridge manually and have it listen on localhost:60000.
-		// Normally udev automatically starts ippusb_bridge when a USB printer is plugged in, so we have to manually
-		// stop the job first.
+		// For USB scanners, lorgnette will automatically contact ippusb_manager to set up ippusb_bridge properly.
 		bus, device, err := findScanner(ctx, devInfo)
 		if err != nil {
 			s.Fatal("Failed to find scanner bus device: ", err)
-		}
-
-		s.Log("Stopping ippusb-bridge job")
-		cmd := testexec.CommandContext(ctx, "initctl", "stop", "ippusb-bridge", fmt.Sprintf("BUS=%03s", bus), fmt.Sprintf("DEV=%03s", device))
-		if err := cmd.Run(); err != nil {
-			s.Fatalf("Failed to stop ippusb-bridge instance for BUS=%03s DEV=%03s: %v", bus, device, err)
 		}
 
 		s.Log("Setting up ipp-usb connection")
