@@ -16,6 +16,23 @@
       "message": "Hi Gabor \u0026 Mohamed, PTAL at this CL. Thanks!",
       "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a597326_7abbe72c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-12T13:58:20Z",
+      "side": 1,
+      "message": "Oleh, FYI.",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
