@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9a275a_d4a299f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T13:48:31Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b84a2f3082dc9858d5c62d81e95dcdd6c6ce82d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44408ddd_fff692c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T13:48:31Z",
+      "side": 1,
+      "message": "nit: nya pointed out in the codelab that we can use os.Readlink to avoid the system call.\n\nout, err :\u003d os.Readlink(\"/var/lib/timezone/localtime\")",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 101
+      },
+      "revId": "b84a2f3082dc9858d5c62d81e95dcdd6c6ce82d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
