@@ -124,14 +124,14 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
 	}
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer its.Close()
 
 	type testData struct {
-		inputField      testserver.InputField
+		inputField      string
 		keySeq          []string
 		inputSuggestion bool
 		expectedText    string
@@ -281,7 +281,7 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 
 			inputField := subtest.inputField
 
-			if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+			if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
 				s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 			}
 
@@ -299,15 +299,15 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 			// Password input is a special case. The value is presented with placeholder "•".
 			// Using PasswordTextField field to verify the outcome.
 			if inputField == testserver.PasswordInputField {
-				if err := inputField.WaitForValueToBe(ctx, tconn, strings.Repeat("•", len(subtest.keySeq))); err != nil {
+				if err := its.WaitForFieldValueToBe(inputField, strings.Repeat("•", len(subtest.keySeq)))(ctx); err != nil {
 					s.Fatal("Failed to verify input: ", err)
 				}
 
-				if err := testserver.PasswordTextField.WaitForValueToBe(ctx, tconn, subtest.expectedText); err != nil {
+				if err := its.WaitForFieldValueToBe(testserver.PasswordTextField, subtest.expectedText)(ctx); err != nil {
 					s.Fatal("Failed to verify password input: ", err)
 				}
 			} else {
-				if err := inputField.WaitForValueToBe(ctx, tconn, subtest.expectedText); err != nil {
+				if err := its.WaitForFieldValueToBe(inputField, subtest.expectedText)(ctx); err != nil {
 					s.Fatal("Failed to verify input: ", err)
 				}
 			}
