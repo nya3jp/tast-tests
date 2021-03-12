@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a4ad588_aed367ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-12T04:28:53Z",
+      "side": 1,
+      "message": "Nice one! I\u0027ll add the tast-owners@ now so you can get the ultimate +2 (I\u0027m still a shadow reviewer)",
+      "revId": "244b9efe30e057b21ac07400c8339c2eb2f415d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13194877_47424099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-12T04:28:53Z",
+      "side": 1,
+      "message": "Might want to use the shortened context up above, i.e. get the longer context as cleanupCtx then assign ctx to the shorter one and pass cleanupCtx into here.",
+      "range": {
+        "startLine": 51,
+        "startChar": 16,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "244b9efe30e057b21ac07400c8339c2eb2f415d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
