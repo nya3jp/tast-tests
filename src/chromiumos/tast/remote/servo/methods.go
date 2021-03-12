@@ -25,6 +25,7 @@ const (
 	ImageUSBKeyPwr       StringControl = "image_usbkey_pwr"
 	PowerState           StringControl = "power_state"
 	V4Role               StringControl = "servo_v4_role"
+	ECBoard              StringControl = "ec_board"
 	ECUARTCmd            StringControl = "ec_uart_cmd"
 	UARTCmd              StringControl = "servo_v4_uart_cmd"
 	WatchdogAdd          StringControl = "watchdog_add"
