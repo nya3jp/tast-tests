@@ -13,6 +13,7 @@ import "google/protobuf/empty.proto";
 // ConferenceService provides RPC methods to run conference-related operations
 service ConferenceService {
   rpc RunGoogleMeetScenario(MeetScenarioRequest) returns (google.protobuf.Empty);
+  rpc RunZoomScenario(MeetScenarioRequest) returns (google.protobuf.Empty);
 }
 
 message MeetScenarioRequest {
