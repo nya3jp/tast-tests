@@ -16,6 +16,270 @@
       "message": "LGTM, please get +2 from Ricardo as he is from the tast owners",
       "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b699cb46_bea37946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T00:09:15Z",
+      "side": 1,
+      "message": "nit (here and below): don\u0027t leave an empty line at the beginning of the function (also valid for at the end of the function)",
+      "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60016137_34eaa848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T00:09:15Z",
+      "side": 1,
+      "message": "here and below: add docstring for all funcs (all non-trivial funcs should have one)",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 27
+      },
+      "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0ac8afe_9c8e0f83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T00:09:15Z",
+      "side": 1,
+      "message": "optional:\n\nI noticed that on some android version (was it on N or P or R???) it was using CamelCase for the button names.\n\nif you need to match both CamelCase and UPPERCASE, then you can do something like:\n\n androidui.TextMatches(\"(?i)No thanks\")\n\n\n(ah... I see that you already knew about it... you are using it in L195)",
+      "range": {
+        "startLine": 123,
+        "startChar": 92,
+        "endLine": 123,
+        "endChar": 110
+      },
+      "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b8c46f9_1490fed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T00:09:15Z",
+      "side": 1,
+      "message": "nit, here and below: \"noThanksButton\" is the name of the variable (and the variable exists)\n\n\nFor the error message I\u0027d use something like: \"\u0027No thanks\u0027 button doesn\u0027t exists:\"  (or something like that)",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 23
+      },
+      "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48864d75_2899f702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T00:09:15Z",
+      "side": 1,
+      "message": "nit: the else is not needed since the previous statement returns",
+      "range": {
+        "startLine": 139,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 10
+      },
+      "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2bd4878_83922cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T00:09:15Z",
+      "side": 1,
+      "message": "nit: remove empty line (L144)",
+      "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "813b01da_a184c66a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T00:09:15Z",
+      "side": 1,
+      "message": "huge nit: remove empty line (L148, and also L162)",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 0
+      },
+      "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2027f5c1_1d2ecc57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T00:09:15Z",
+      "side": 1,
+      "message": "huge nit: ARC",
+      "range": {
+        "startLine": 176,
+        "startChar": 42,
+        "endLine": 176,
+        "endChar": 45
+      },
+      "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d74dfcc_08edea8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T00:09:15Z",
+      "side": 1,
+      "message": "nit, here and below:  Arc -\u003e ARC\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 182,
+        "startChar": 5,
+        "endLine": 182,
+        "endChar": 18
+      },
+      "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3af4ec6d_909bdd5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T00:09:15Z",
+      "side": 1,
+      "message": "move it close to were it is being used, e.g: L229.",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aec9360b_2faf5fa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T00:09:15Z",
+      "side": 1,
+      "message": "huge nit (here and below):\n\nend sentences with a period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 221,
+        "startChar": 18,
+        "endLine": 221,
+        "endChar": 19
+      },
+      "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7873bf7d_d97d4a40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T00:09:15Z",
+      "side": 1,
+      "message": "nit, and assuming that you are entering the password in an Android Widget:\n\nSince you are already using UIAutomator, I\u0027d keep using it. I\u0027d do something like:\n\n\n  // o is the UIAutomator field where the password should be entered...\n  o.SetText(ctx, secondUser+\"\\n\")\n\n\nFor reference:\n - input.Keyboard() creates a virtual keyboard device and then inject kernel events.\n - object.SetText() keeps using the already UIAutomator connection.\n\n\nSo, it is just a bit lighter/faster to use UIAutomator, and also makes the code more consistent... (keep using UIAutomator, unless there is a good reason not not).",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 2
+      },
+      "revId": "283f80e80cd9eb7740ff94c22bf3a0fc1503e2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
