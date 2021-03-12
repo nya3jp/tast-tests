@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d390296_8e0a195c",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T01:35:04Z",
+      "side": 1,
+      "message": "Mind adding a comment about when outDir can be empty?",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 54
+      },
+      "revId": "570d82aca421b7b6cd13fee66aff8a89fcc42890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30df44f_4874cc75",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T01:35:04Z",
+      "side": 1,
+      "message": "Even if we fail to save log files we want to do cleanups below.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "570d82aca421b7b6cd13fee66aff8a89fcc42890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8bf17b_56a032a6",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T01:35:04Z",
+      "side": 1,
+      "message": "Can you add a comment why we need this check? And I believe this check won\u0027t be necessary if we fully migrate from preconditions to fixtures.",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 9
+      },
+      "revId": "570d82aca421b7b6cd13fee66aff8a89fcc42890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9395013b_bc82320e",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-12T01:35:04Z",
+      "side": 1,
+      "message": "Do you mean outDir instead of a.outDir?\n\nAlso, do we want to reset a.outDir to \"\" in this case?",
+      "range": {
+        "startLine": 304,
+        "startChar": 22,
+        "endLine": 304,
+        "endChar": 31
+      },
+      "revId": "570d82aca421b7b6cd13fee66aff8a89fcc42890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
