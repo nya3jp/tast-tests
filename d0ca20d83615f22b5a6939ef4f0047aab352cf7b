@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b9f96c_ddf89a10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-12T21:47:16Z",
+      "side": 1,
+      "message": "added and understood.",
+      "parentUuid": "47571b21_1afa7685",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "d0ca20d83615f22b5a6939ef4f0047aab352cf7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b757d5e7_8309fcee",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-12T21:20:47Z",
       "side": 1,
       "message": "nit, optional: I\u0027d move this between L126 \u0026 L127.\n\nThis way \"logcat_%attemp\" will match the attempt variable value.",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 25
+      },
+      "revId": "d0ca20d83615f22b5a6939ef4f0047aab352cf7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00957ff5_31052bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-12T21:47:16Z",
+      "side": 1,
+      "message": "I want attempt to show as 1 instead of 0 for the first run so reordered the statements and updated the initial value to make it obvious.",
+      "parentUuid": "b757d5e7_8309fcee",
       "range": {
         "startLine": 125,
         "startChar": 2,
