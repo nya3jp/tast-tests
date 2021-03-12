@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "972517b3_8accafb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:55Z",
+      "side": 1,
+      "message": "Chose group1 since \"g\" doesn\u0027t have standard meaning, but if that\u0027s too long I can shorten to \"g\". Incidentally, \"L\" and \"-\" are disallowed characters, it turns out! https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/test_instance.go;l\u003d263;drc\u003d6c1d490e22d818fe0777306893a6138ae9db77f8",
+      "parentUuid": "6ee58315_c991a2ba",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 8
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7539ee4_fcd7749d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-27T00:17:39Z",
       "side": 1,
       "message": "We can leave it this way but it would have been easier to just reverse order below, say:\n\nName: \"vp9_0_l1ish_buf\",\nVal: platformDecodingParams{\n\tfilenames:    vp9Files[\"profile_0\"][\"buf\"][\"l1ish\"],",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a89cbf_e3ba19b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:55Z",
+      "side": 1,
+      "message": "It was pretty straightforward to put together the map in this order --- or do you mean easier for something else? Happy to change it!",
+      "parentUuid": "b7539ee4_fcd7749d",
       "range": {
         "startLine": 36,
         "startChar": 3,
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "507f9fbd_173d1030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd4c654c_30987d87",
+      "range": {
+        "startLine": 222,
+        "startChar": 86,
+        "endLine": 222,
+        "endChar": 90
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0431efce_7ab90388",
@@ -116,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9578375_755cde1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0431efce_7ab90388",
+      "range": {
+        "startLine": 227,
+        "startChar": 62,
+        "endLine": 227,
+        "endChar": 79
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b07cfcf0_d6b75c96",
@@ -129,6 +225,30 @@
       "writtenOn": "2021-02-27T00:17:39Z",
       "side": 1,
       "message": "TODO(jchinlee): Move stop ui to a fixture to avoid stopping Chrome all the time once crbug.com/1165694 is resolved.",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 2
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec5211ef_5e159cee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b07cfcf0_d6b75c96",
       "range": {
         "startLine": 489,
         "startChar": 0,
@@ -186,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1efd8b_f14d446a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0fd565b_480534ba",
+      "range": {
+        "startLine": 494,
+        "startChar": 45,
+        "endLine": 494,
+        "endChar": 71
+      },
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c6a8a7c_b5439fb5",
@@ -199,6 +343,24 @@
       "writtenOn": "2021-02-27T00:17:39Z",
       "side": 1,
       "message": "Just to clarify what I wrote above, ideally the decode_test binary gets the json with the MD5s of the frames passed in. Then it can decide itself on the failure message and if it wants to output some of the frames for debugging. I think that would help people troubleshooting failures and keeps test logic out of tast if our partners want to run this in their own CI. For now lets keep/land it but\n\nTODO(jchinlee): Move verifyContent into decode_test.",
+      "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62b9062_d385740e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c6a8a7c_b5439fb5",
       "revId": "69669a4c88416f257c82418e8bcb9196adec0406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
