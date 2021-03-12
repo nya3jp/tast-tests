@@ -177,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0b78f39_1ea1b124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-03-12T21:14:33Z",
+      "side": 1,
+      "message": "Yes this is nice.",
+      "parentUuid": "55111e69_7e9eb29e",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 86
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9482159c_657f415e",
@@ -355,6 +379,30 @@
       "side": 1,
       "message": "Did that, but there will actually be issues rebasing for V4L2 decoding, because it doesn\u0027t yet support hash generation (so if we\u0027re verifying on everything, we should expect to fail). We can retain failExpected, or add a field to the params specifying whether to verify content. Or we can just suppress alerts for now...",
       "parentUuid": "c36b14fd_2067daed",
+      "range": {
+        "startLine": 155,
+        "startChar": 35,
+        "endLine": 155,
+        "endChar": 72
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae9a335_e49dfa78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-03-12T21:14:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eaed7a8f_1244206f",
       "range": {
         "startLine": 155,
         "startChar": 35,
