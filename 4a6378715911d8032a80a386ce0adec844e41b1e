@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "116bcc59_68d2c0aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:52Z",
+      "side": 1,
+      "message": "I\u0027ve split the two functions, and as discussed in the meeting, will adjust the binary later.",
+      "parentUuid": "3be1bf48_ead14b68",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18f40a56_2016c212",
@@ -119,6 +143,30 @@
       "writtenOn": "2021-02-27T00:08:23Z",
       "side": 1,
       "message": "I think you could just keep track of the number and output the first MD5 below plus the number for shorter string,",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 86
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55111e69_7e9eb29e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:52Z",
+      "side": 1,
+      "message": "Like so?",
+      "parentUuid": "18f40a56_2016c212",
       "range": {
         "startLine": 94,
         "startChar": 3,
@@ -175,6 +223,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "733281df_ac6c4a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9482159c_657f415e",
+      "range": {
+        "startLine": 138,
+        "startChar": 22,
+        "endLine": 138,
+        "endChar": 55
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab964c4_2e6e8230",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "806ea905_882049fe",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 55
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a732284f_be4c3103",
@@ -198,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "becdf29d_ca6e7a8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a732284f_be4c3103",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 144,
+        "endChar": 12
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c36b14fd_2067daed",
@@ -211,6 +331,30 @@
       "writtenOn": "2021-02-26T23:08:09Z",
       "side": 1,
       "message": "You are matching the string twice now. But I think you can delete it. If we expected a failure to decode, yet it managed to decode, do we really want to compare MD5s below?",
+      "range": {
+        "startLine": 155,
+        "startChar": 35,
+        "endLine": 155,
+        "endChar": 72
+      },
+      "revId": "4a6378715911d8032a80a386ce0adec844e41b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaed7a8f_1244206f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-12T21:00:52Z",
+      "side": 1,
+      "message": "Did that, but there will actually be issues rebasing for V4L2 decoding, because it doesn\u0027t yet support hash generation (so if we\u0027re verifying on everything, we should expect to fail). We can retain failExpected, or add a field to the params specifying whether to verify content. Or we can just suppress alerts for now...",
+      "parentUuid": "c36b14fd_2067daed",
       "range": {
         "startLine": 155,
         "startChar": 35,
