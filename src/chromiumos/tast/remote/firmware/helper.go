@@ -267,7 +267,7 @@ func (h *Helper) CopyTastFilesFromDUT(ctx context.Context) error {
 		dutLocalDataDir:   filepath.Join(tmpDir, tmpLocalDataDir),
 	} {
 		if err = linuxssh.GetFile(ctx, h.DUT.Conn(), dutSrc, serverDst); err != nil {
-			return errors.Wrap(err, "copying local Tast files from DUT")
+			return errors.Wrapf(err, "copying local Tast file %s from DUT", dutSrc)
 		}
 	}
 

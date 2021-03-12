@@ -88,22 +88,23 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	return i.v
 }
 
-// Close restores the boot mode before the first Prepare().
+// Close restores the boot mode and GBB flags that were stored before the first Prepare().
 func (i *impl) Close(ctx context.Context, s *testing.PreState) {
 	defer func() {
 		i.destroyHelper(ctx, s)
 		i.origBootMode = nil
+		i.origGBBFlags = nil
 	}()
 
 	// Don't reuse the Helper, as the helper's servo RPC connection may be down.
 	i.initHelper(ctx, s)
 
 	if err := i.restoreGBBFlags(ctx); err != nil {
-		s.Error("Count not restore GBB flags: ", err)
+		s.Error("Could not restore GBB flags: ", err)
 	}
 
 	if err := i.restoreBootMode(ctx); err != nil {
-		s.Error("Count not restore BootMode: ", err)
+		s.Error("Could not restore BootMode: ", err)
 	}
 }
 
@@ -117,10 +118,11 @@ func (i *impl) Timeout() time.Duration {
 	return i.timeout
 }
 
-// initHelper always creates a new Helper instance.
+// initHelper ensures that the impl has a working Helper instance.
 func (i *impl) initHelper(ctx context.Context, s *testing.PreState) {
-	i.destroyHelper(ctx, s)
-	i.v.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), s.RequiredVar("servo"))
+	if i.v.Helper == nil {
+		i.v.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), s.RequiredVar("servo"))
+	}
 }
 
 // destroyHelper closes and nils any existing Helper instance.
