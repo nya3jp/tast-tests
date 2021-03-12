@@ -6,6 +6,8 @@
 package config
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"reflect"
 	"strings"
@@ -19,8 +21,7 @@ const (
 	DefaultUser = "testuser@gmail.com"
 
 	// DefaultPass contains the password we use to log into the DefaultUser account.
-	DefaultPass   = "testpass"
-	defaultGAIAID = "gaia-id"
+	DefaultPass = "testpass"
 )
 
 // ARCMode describes the mode that ARC should be put into.
@@ -62,8 +63,9 @@ type Creds struct {
 	// Pass is the password of a user account.
 	Pass string
 
-	// GAIAID is a GAIA ID used on fake logins. The field is ignored on
-	// other type of logins.
+	// GAIAID is a GAIA ID used on fake logins. If it is empty, an ID is
+	// generated from the user name. The field is ignored on other type of
+	// logins.
 	GAIAID string
 
 	// Contact is an email address of a user who owns a test account.
@@ -83,9 +85,8 @@ type Creds struct {
 
 // defaultCreds is the default credentials used for fake logins.
 var defaultCreds = Creds{
-	User:   DefaultUser,
-	Pass:   DefaultPass,
-	GAIAID: defaultGAIAID,
+	User: DefaultUser,
+	Pass: DefaultPass,
 }
 
 // ParseCreds parses a string containing a list of credentials.
@@ -274,12 +275,6 @@ func NewConfig(opts []Option) (*Config, error) {
 	// in all tests once the issue is solved.
 	cfg.m.EnableLoginVerboseLogs = true
 
-	// Logging in with a fake account requires non-empty GAIA ID. Set it to
-	// the default value when it's missing.
-	if cfg.m.LoginMode == FakeLogin && cfg.m.Creds.GAIAID == "" {
-		cfg.m.Creds.GAIAID = defaultGAIAID
-	}
-
 	// This works around https://crbug.com/358427.
 	if cfg.m.LoginMode == GAIALogin {
 		var err error
@@ -288,6 +283,13 @@ func NewConfig(opts []Option) (*Config, error) {
 		}
 	} else {
 		cfg.m.NormalizedUser = cfg.m.Creds.User
+	}
+
+	// Logging in with a fake account requires a non-empty unique GAIA ID.
+	// Generate one when it's empty.
+	if cfg.m.LoginMode == FakeLogin && cfg.m.Creds.GAIAID == "" {
+		h := sha256.Sum256([]byte(cfg.m.NormalizedUser))
+		cfg.m.Creds.GAIAID = hex.EncodeToString(h[:])
 	}
 
 	return cfg, nil
