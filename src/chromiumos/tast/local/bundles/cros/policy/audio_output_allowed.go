@@ -25,7 +25,7 @@ func init() {
 			"vsavu@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
 		},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "audio_play"},
 		Attr:         []string{"group:mainline", "informational"},
 		Pre:          pre.User,
 	})
