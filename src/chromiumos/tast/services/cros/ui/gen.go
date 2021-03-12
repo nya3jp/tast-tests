@@ -4,6 +4,7 @@
 
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. meet_type.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. google_meet_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. zoom_service.proto
 
 // Package ui provides all ui related types compiled from protobuf.
 package ui
