@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8134d21d_86df1952",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T19:29:53Z",
+      "side": 1,
+      "message": "Oops, I see.  In that case, I prefer passing that value directly.\n  func loginPerfStartToLoginScreen(ctx context.Context, testExtensionManifestKey string, useTabletMode bool) ... {\n  ...\n  chrome.LoadSigninProfileExtension(testExtensionManifestKey)\n  ...\n\n  loginPerfSatrtToLoginScreen(ctx, s.RequiredVar(\"ui.signinProfileTestExtensionManifestKey\"), useTabletMode)\n  ...",
+      "parentUuid": "dc601cd6_dab2d489",
+      "range": {
+        "startLine": 49,
+        "startChar": 54,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9b0736d_590f9169",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 8
