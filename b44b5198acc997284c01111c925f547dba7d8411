@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44627611_333aa2d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T19:19:54Z",
+      "side": 1,
+      "message": "Mostly good but still a few nits. It\u0027s also probably better to ask nya to review as this CL changes slightly on chrome options.",
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e29169d_eab49edc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T19:19:54Z",
+      "side": 1,
+      "message": "If you go with this approach, \u0027hasError\u0027 does not sound like a good name for returning an error object. \u0027err\u0027 would be great, i.e.\n  (cr *chrome.Chrome, err error)\n\nThis will need some modification in the function (my comments below will be based on this way). Sometimes a bit different name is used to avoid conflicting generic \u0027err\u0027 variable name. \u0027retErr\u0027 for \u0027returned error object\u0027 is used multiple times.\n  (cr *chrome.Chrome, retErr error)\n\nI prefer former but the latter is fine. It\u0027s up to you.",
+      "range": {
+        "startLine": 49,
+        "startChar": 112,
+        "endLine": 49,
+        "endChar": 120
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "457556b5_bb628365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T19:19:54Z",
+      "side": 1,
+      "message": "In the new code, s is only used for OutDir.  Please consider removing it.  Actually outdir can be obtained through testing.ContextOutDir() function.\n  outdir, ok :\u003d testing.ContextOutDir(ctx)\n  if !ok {\n    return errors.New(\"no output directory exists\")\n  }\n  ...",
+      "range": {
+        "startLine": 49,
+        "startChar": 54,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b0736d_590f9169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T19:19:54Z",
+      "side": 1,
+      "message": "Since both cr and err are defined above (with my suggestion), this :\u003d can be \u0027\u003d\u0027",
+      "range": {
+        "startLine": 52,
+        "startChar": 9,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "365ab8c4_cebcb9bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T19:19:54Z",
+      "side": 1,
+      "message": "To avoid shadowing the \u0027err\u0027 of the return value, this would be rewritten as:\n  var tLoginConn *chrome.TestConn\n  tLoginConn, err \u003d cr.SigninProfileTestAPIConn(ctx)\n\nor\n  tLoginConn, loginConnErr :\u003d cr.SigninProfileTestAPIConn(ctx)\n  if loginConnErr !\u003d {\n    ...",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 19
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "780a669d_e59c5224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T19:19:54Z",
+      "side": 1,
+      "message": "same here; consider removing testing.State.",
+      "range": {
+        "startLine": 89,
+        "startChar": 43,
+        "endLine": 89,
+        "endChar": 59
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703c0ddc_64bba013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-12T19:19:54Z",
+      "side": 1,
+      "message": "Same here -- use \u0027err\u0027 or another name (e.g. \u0027retErr\u0027)",
+      "range": {
+        "startLine": 89,
+        "startChar": 107,
+        "endLine": 89,
+        "endChar": 115
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
