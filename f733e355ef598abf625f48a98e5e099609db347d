@@ -70,6 +70,30 @@
       },
       "revId": "f733e355ef598abf625f48a98e5e099609db347d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a31338d_c6bed033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-12T17:51:30Z",
+      "side": 1,
+      "message": "Sounds good! Done",
+      "parentUuid": "7c937f6f_de943f1d",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 359,
+        "endChar": 3
+      },
+      "revId": "f733e355ef598abf625f48a98e5e099609db347d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
