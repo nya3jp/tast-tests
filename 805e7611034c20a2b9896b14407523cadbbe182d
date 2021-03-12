@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "757a000f_54dd2a80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-03-12T14:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "646ce54a_f9cfc87a",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e338e100_cfcc9cb3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -71,6 +95,24 @@
       "writtenOn": "2021-03-12T11:52:26Z",
       "side": 1,
       "message": "If you are not using a testing table, you don\u0027t need s.Run(). It mainly helps by adding prefixes to error messages.",
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "646fbd5d_f2cb08ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pinned_launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-03-12T14:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "281cd649_d5301363",
       "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -170,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b584c4b_5da875dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pinned_launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-03-12T14:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "851cea3c_2f9b57e7",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 3
+      },
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "add207ee_d84cd2d5",
@@ -193,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d8850e7_0cc40b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pinned_launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-03-12T14:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "add207ee_d84cd2d5",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 42
+      },
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be7652fa_251b7acd",
@@ -206,6 +296,30 @@
       "writtenOn": "2021-03-12T11:52:26Z",
       "side": 1,
       "message": "Error is enough here.",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 10
+      },
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06978e58_d8708c94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pinned_launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-03-12T14:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be7652fa_251b7acd",
       "range": {
         "startLine": 98,
         "startChar": 5,
