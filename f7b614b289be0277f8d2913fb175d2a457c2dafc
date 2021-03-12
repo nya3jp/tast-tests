@@ -34,6 +34,24 @@
       "parentUuid": "8f061ab4_70dc2fa8",
       "revId": "f7b614b289be0277f8d2913fb175d2a457c2dafc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b501db36_d17c6dfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483212
+      },
+      "writtenOn": "2021-03-12T18:03:14Z",
+      "side": 1,
+      "message": "We should build an internal android version as well from our GB source.  We can prioritize this below the native version.  Thanks",
+      "parentUuid": "7aeae5eb_95b620a9",
+      "revId": "f7b614b289be0277f8d2913fb175d2a457c2dafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
