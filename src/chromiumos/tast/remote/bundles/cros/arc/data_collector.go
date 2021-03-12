@@ -378,6 +378,28 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		return nil
 	}
+
+	// Helper that dumps logcat on failure. Dumping is optional and error here does not break
+	// DataCollector flow and retries on error.
+	dumpLogcat := func(mode string, attempt int) {
+		log, err := d.Conn().Command(
+			"/usr/sbin/android-sh",
+			"-c",
+			"/system/bin/logcat -d").Output(ctx)
+		if err != nil {
+			s.Logf("Failed to dump logcat, continue after this error: %q", err)
+			return
+		}
+
+		logcatPath := filepath.Join(s.OutDir(), fmt.Sprintf("logcat_%s_%d.txt", mode, attempt))
+		err = ioutil.WriteFile(logcatPath, log, 0644)
+		if err != nil {
+			s.Logf("Failed to save logcat, continue after this error: %q", err)
+			return
+		}
+		s.Logf("Logcat for failure was saved to : %q", logcatPath)
+	}
+
 	attempts := 0
 	for {
 		err := genGmsCoreCache()
@@ -385,6 +407,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			break
 		}
 		attempts = attempts + 1
+		dumpLogcat("gms_core", attempts)
 		if attempts > retryCount {
 			s.Fatal("Failed to generate GMS Core caches. No more retries left: ", err)
 		}
@@ -401,6 +424,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			break
 		}
 		attempts = attempts + 1
+		dumpLogcat("ureadahead", attempts)
 		if attempts > retryCount {
 			s.Fatal("Failed to generate ureadahead packs. No more retries left: ", err)
 		}
