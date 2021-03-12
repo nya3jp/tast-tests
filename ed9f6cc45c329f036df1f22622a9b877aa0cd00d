@@ -24,6 +24,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8904009f_2bd86c74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-12T18:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "377edacc_33e5c194",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb436159_1996386c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-12T18:18:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "377edacc_33e5c194",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47d3e755_d0f1c186",
@@ -37,6 +85,42 @@
       "writtenOn": "2021-03-12T08:51:25Z",
       "side": 1,
       "message": "could you move this to defer to run this always even if some testing above fails.",
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffadfa0c_e5b94587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-12T18:18:04Z",
+      "side": 1,
+      "message": "What is defer?",
+      "parentUuid": "47d3e755_d0f1c186",
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be331a16_c9e0b593",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-12T18:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47d3e755_d0f1c186",
       "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "553fc119_5e8e58fa",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-12T18:18:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33a66143_9568e69d",
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff525bb2_3b2f5fa4",
@@ -75,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b36361a_6728801c",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-12T18:18:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ff525bb2_3b2f5fa4",
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c89c95c1_d538f652",
@@ -88,6 +208,24 @@
       "writtenOn": "2021-03-12T08:51:25Z",
       "side": 1,
       "message": "ditto for testexec.DumpLogOnError",
+      "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa99f36_92fa9981",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-12T18:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c89c95c1_d538f652",
       "revId": "ed9f6cc45c329f036df1f22622a9b877aa0cd00d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
