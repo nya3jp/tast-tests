@@ -16,6 +16,46 @@
       "message": "Results of the running the test can be found here: https://paste.googleplex.com/5371632425107456?raw",
       "revId": "527994d14394b0f610da2cff47f97743970cfd91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e085b3ce_11286896",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-03-12T01:46:19Z",
+      "side": 1,
+      "message": "We can certainly land this but it might be good to consider ignoring the daemon-store mounts since they will never go away.",
+      "revId": "527994d14394b0f610da2cff47f97743970cfd91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32f408fb_5359aa56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-03-12T01:46:19Z",
+      "side": 1,
+      "message": "Can we throw the mounts into a file, rather than in the test output?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 3
+      },
+      "revId": "527994d14394b0f610da2cff47f97743970cfd91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
