@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "76bb65cf_e3ca4f09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-12T11:36:06Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "221a6dc6113286267239e00472d9a0033531681c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e971064e_d59a2b2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
         "patchSetId": 2
@@ -36,6 +53,29 @@
         "startChar": 38,
         "endLine": 547,
         "endChar": 2
+      },
+      "revId": "221a6dc6113286267239e00472d9a0033531681c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d946f67d_0c3131f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-12T11:36:06Z",
+      "side": 1,
+      "message": "We should not handle errors like this.\n\nPTAL on a good example of handling errors:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/crostini/ui/installer.go;l\u003d190?q\u003dtast-tests%20%22,%20err%20error)%22\n\n\nIn your case it should be like\n\n```\nv4l2CtlCmd :\u003d testexec.CommandContext(ctx, \"v4l2-ctl\", \"--device\",\n    \"/dev/video-enc0\", \"--list-formats-out\")\nv4l2Out, err :\u003d v4l2CtlCmd.Output(testexec.DumpLogOnError)\nif err !\u003d nil {\n    return nil, \"\", 0, errors.Wrap(err, \"failed to run v4l2-ctl to query OUTPUT formats\")\n}\n```\n\nso if your function returns error, all other values should be default (nil, \"\", 0, etc).",
+      "range": {
+        "startLine": 845,
+        "startChar": 0,
+        "endLine": 845,
+        "endChar": 75
       },
       "revId": "221a6dc6113286267239e00472d9a0033531681c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
