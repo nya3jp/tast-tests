@@ -274,6 +274,24 @@
       "parentUuid": "ac7b3f2e_3a6a2819",
       "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6772d276_57156fed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-12T00:14:39Z",
+      "side": 1,
+      "message": "Marking as resolved.",
+      "parentUuid": "d166d343_921574cf",
+      "revId": "6ef0c9c9ce9c44248376ba45c1eed9e452bd9ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
