@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "877d5511_6c779b77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T20:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e29169d_eab49edc",
+      "range": {
+        "startLine": 49,
+        "startChar": 112,
+        "endLine": 49,
+        "endChar": 120
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9b0736d_590f9169",
@@ -159,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec27f680_dcd10f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T20:33:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9b0736d_590f9169",
+      "range": {
+        "startLine": 52,
+        "startChar": 9,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "365ab8c4_cebcb9bd",
@@ -172,6 +220,30 @@
       "writtenOn": "2021-03-12T19:19:54Z",
       "side": 1,
       "message": "To avoid shadowing the \u0027err\u0027 of the return value, this would be rewritten as:\n  var tLoginConn *chrome.TestConn\n  tLoginConn, err \u003d cr.SigninProfileTestAPIConn(ctx)\n\nor\n  tLoginConn, loginConnErr :\u003d cr.SigninProfileTestAPIConn(ctx)\n  if loginConnErr !\u003d {\n    ...",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 19
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a5deae8_747a4d8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T20:33:40Z",
+      "side": 1,
+      "message": "I renamed return error to retErr. \u0027err\u0027 is a common name, so it\u0027s probably too error prone.",
+      "parentUuid": "365ab8c4_cebcb9bd",
       "range": {
         "startLine": 69,
         "startChar": 1,
@@ -218,6 +290,54 @@
       "writtenOn": "2021-03-12T19:19:54Z",
       "side": 1,
       "message": "Same here -- use \u0027err\u0027 or another name (e.g. \u0027retErr\u0027)",
+      "range": {
+        "startLine": 89,
+        "startChar": 107,
+        "endLine": 89,
+        "endChar": 115
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d17627_27e1ca2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T20:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "780a669d_e59c5224",
+      "range": {
+        "startLine": 89,
+        "startChar": 43,
+        "endLine": 89,
+        "endChar": 59
+      },
+      "revId": "b44b5198acc997284c01111c925f547dba7d8411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bf67405_128fb8e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-12T20:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "703c0ddc_64bba013",
       "range": {
         "startLine": 89,
         "startChar": 107,
