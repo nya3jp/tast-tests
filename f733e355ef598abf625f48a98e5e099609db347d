@@ -46,6 +46,30 @@
       },
       "revId": "f733e355ef598abf625f48a98e5e099609db347d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c937f6f_de943f1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-12T02:28:28Z",
+      "side": 1,
+      "message": "In that case, I think you can at least add break after first match if either regex works.\n\nBesides, I think you probably want to add `if !finished` as a condition of this for loop. Because once finished is true, for the following lines, you do not need to check regexes for each.",
+      "parentUuid": "e55d8a87_453ab6d2",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 359,
+        "endChar": 3
+      },
+      "revId": "f733e355ef598abf625f48a98e5e099609db347d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
