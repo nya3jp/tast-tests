@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "646ce54a_f9cfc87a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-12T11:52:26Z",
+      "side": 1,
+      "message": "Add",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e338e100_cfcc9cb3",
@@ -14,6 +37,92 @@
       "writtenOn": "2021-03-11T18:39:48Z",
       "side": 1,
       "message": "Hi Gabor,\n\nCan you please have a look?\n\nThanks",
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "281cd649_d5301363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pinned_launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-12T11:52:26Z",
+      "side": 1,
+      "message": "If you are not using a testing table, you don\u0027t need s.Run(). It mainly helps by adding prefixes to error messages.",
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "796fdb49_ae9db1aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pinned_launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-12T11:52:26Z",
+      "side": 1,
+      "message": "The test should work without this part. If the button is not there, ui.RightClick(filesAppShelfButton) fails, and we know why.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 3
+      },
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "add207ee_d84cd2d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pinned_launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-12T11:52:26Z",
+      "side": 1,
+      "message": "Between these 2 steps add a WaitUntilExists() for the App info context menu item, so you can be sure that the context menu opened.",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 42
+      },
+      "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be7652fa_251b7acd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pinned_launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-12T11:52:26Z",
+      "side": 1,
+      "message": "Error is enough here.",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 10
+      },
       "revId": "805e7611034c20a2b9896b14407523cadbbe182d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
