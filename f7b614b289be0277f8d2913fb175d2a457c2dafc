@@ -16,6 +16,24 @@
       "message": "Hi Xibin, Do you have plan to work on internal Geekbench version. This will be helpful for bringup projects.",
       "revId": "f7b614b289be0277f8d2913fb175d2a457c2dafc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aeae5eb_95b620a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-12T17:51:26Z",
+      "side": 1,
+      "message": "Hi Hsin-Yi, a near term plan is to implement Geekbench 5 Linux/Native in developer mode - Google have a license and source code for GB 5 for google internal use. I didn\u0027t see a plan to implement internal Geekbench Android version. @aings",
+      "parentUuid": "8f061ab4_70dc2fa8",
+      "revId": "f7b614b289be0277f8d2913fb175d2a457c2dafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
