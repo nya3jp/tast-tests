@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f3e87b_b85801c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T13:21:11Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "26da43d11afcdff22992292452d4cc1d05b5bea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2fa13eb_6a9b00b8",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-03-12T13:21:11Z",
+      "side": 1,
+      "message": "nit: maybe \"Logged into a user session after enrollment\"",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "26da43d11afcdff22992292452d4cc1d05b5bea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
