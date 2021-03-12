@@ -89,8 +89,6 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 			return err
 		}
 
-		defer conf.End(ctx)
-
 		// Basic
 		if err := conf.SwitchTabs(ctx); err != nil {
 			return err
