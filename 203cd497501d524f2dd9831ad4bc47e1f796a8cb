@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77052fa6_08e8494a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2021-03-12T09:20:50Z",
+      "side": 1,
+      "message": "Hi Alexander, please review the following. Thanks. I could not find a better way to check the full screen mode than the window width. Let me know if you have any better ideas.\nI tried document.fullscreenEnabled, document.fullscreenElement, but weirdly they do not produce the expected output.",
+      "revId": "203cd497501d524f2dd9831ad4bc47e1f796a8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
