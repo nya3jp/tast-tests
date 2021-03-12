@@ -1,0 +1,75 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package firmware
+
+import (
+	"context"
+
+	"github.com/golang/protobuf/ptypes/empty"
+
+	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/servo"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: CodelabHelper,
+		Desc: "Demonstrates common functionality for remote firmware tests",
+		Contacts: []string{
+			"me@chromium.org",      // Test author
+			"my-team@chromium.org", // Backup mailing list
+		},
+		Data: []string{firmware.ConfigFile},
+		Attr:         []string{"group:firmware", "firmware_experimental"},
+		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService"},
+		Vars:         []string{"servo"},
+	})
+}
+
+// CodelabHelper demonstrates using a firmware.Helper to manage remote firmware structures.
+func CodelabHelper(ctx context.Context, s *testing.State) {
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), s.RequiredVar("servo"))
+	defer h.Close(ctx)
+
+	r := h.Reporter
+	board, err := r.Board(ctx)
+	if err != nil {
+		s.Fatal("Failed to report board: ", err)
+	}
+	model, err := r.Model(ctx)
+	if err != nil {
+		s.Fatal("Failed to report model: ", err)
+	}
+	s.Logf("Reported board=%s, model=%s", board, model)
+
+	if err := h.RequireConfig(ctx); err != nil {
+		s.Fatal("Failed to create config: ", err)
+	}
+	s.Log("This DUT's mode-switcher type is: ", h.Config.ModeSwitcherType)
+
+	// Get the DUT's ec_board via Servo
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to connect to servo: ", err)
+	}
+	ecBoard, err := h.Servo.GetString(ctx, servo.ECBoard)
+	if err != nil {
+		s.Fatal("Getting ec_board control from servo: ", err)
+	}
+	s.Log("EC Board: ", ecBoard)
+
+	// Get current GBB flags via RPC
+	if err := h.RequireBiosServiceClient(ctx); err != nil {
+		s.Fatal("Failed to connect to RPC service on the DUT: ", err)
+	}
+	flags, err := h.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Failed to get GBB flags: ", err)
+	}
+	s.Log("Clear GBB flags: ", flags.Clear)
+	s.Log("Set GBB flags:   ", flags.Set)
+}

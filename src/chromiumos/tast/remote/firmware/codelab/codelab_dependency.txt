@@ -1,0 +1,30 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package firmware
+
+import (
+	"context"
+
+	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: CodelabDependency,
+		Desc: "Demonstrates common functionality for remote firmware tests",
+		Contacts: []string{
+			"me@chromium.org",      // Test author
+			"my-team@chromium.org", // Backup mailing list
+		},
+		Attr:         []string{"group:firmware", "firmware_experimental"},
+		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+	})
+}
+
+// CodelabDependency demonstrates using a HardwareDep in a firmware test.
+func CodelabDependency(ctx context.Context, s *testing.State) {
+	s.Log("FAFT stands for Fully Automated Firmware Test")
+}
