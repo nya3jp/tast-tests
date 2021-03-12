@@ -16,6 +16,24 @@
       "message": "2.4k LoC is too large for a single CL. Please try to split it so that one CL is at most ~200 lines (except unit tests and generated code).",
       "revId": "1e0cbf8474f2339229bf6eb1e1e3cb18f6d556be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d323b9ce_96ae8997",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-12T19:35:59Z",
+      "side": 1,
+      "message": "Shuhei, the CL was split into 6 smaller ones:\n- Google Meet\n    Local meet control logic, Google Meet service, and Google CUJ case\n- Zoom\n    Local zoom control interface, Zoom service, and Zoom CUJ case\n\nLet\u0027s do Google Meet review first. We can modify the common issues for zoom together when do the Google meet review.\n\nThanks in advance for your time!",
+      "parentUuid": "41e99428_f7a1ec41",
+      "revId": "1e0cbf8474f2339229bf6eb1e1e3cb18f6d556be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
