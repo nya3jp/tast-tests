@@ -39,6 +39,30 @@
       },
       "revId": "244b9efe30e057b21ac07400c8339c2eb2f415d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b8f104c_d0992694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-03-12T04:56:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13194877_47424099",
+      "range": {
+        "startLine": 51,
+        "startChar": 16,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "244b9efe30e057b21ac07400c8339c2eb2f415d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
