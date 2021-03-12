@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47571b21_1afa7685",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T21:20:47Z",
+      "side": 1,
+      "message": "be more verbose with the body.\n\nAlthough this CL is clear regarding what it does, it is not clear the why it is done.\n\nThe \"body\" could mention that (specially since the bug does not mention why there is a need for one logcat per retry).\n\nRule of thumb:\nAlways write a body (unless perhaps for very trivial CLs?)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "d0ca20d83615f22b5a6939ef4f0047aab352cf7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b757d5e7_8309fcee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-12T21:20:47Z",
+      "side": 1,
+      "message": "nit, optional: I\u0027d move this between L126 \u0026 L127.\n\nThis way \"logcat_%attemp\" will match the attempt variable value.",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 25
+      },
+      "revId": "d0ca20d83615f22b5a6939ef4f0047aab352cf7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
