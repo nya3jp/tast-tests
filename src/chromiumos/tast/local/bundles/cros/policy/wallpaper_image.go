@@ -20,9 +20,11 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/externaldata"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -69,7 +71,7 @@ func validateBackground(ctx context.Context, cr *chrome.Chrome, clr color.Color)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		img, err := screenshot.GrabScreenshot(ctx, cr)
 		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to grab screenshot"))
+			return errors.Wrap(err, "failed to grab screenshot")
 		}
 		rect := img.Bounds()
 		redPixels := imgcmp.CountPixelsWithDiff(img, clr, 10)
@@ -79,7 +81,7 @@ func validateBackground(ctx context.Context, cr *chrome.Chrome, clr color.Color)
 			return errors.Errorf("unexpected red pixels percentage: got %d / %d = %d%%; want at least 90%%", redPixels, totalPixels, percent)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
 		return err
 	}
 	return nil
@@ -95,6 +97,13 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	// Open a keyboard device.
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to open keyboard device: ", err)
+	}
+	defer kb.Close()
 
 	eds, err := externaldata.NewServer(ctx)
 	if err != nil {
@@ -144,7 +153,7 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 				// Check red percentage of the desktop.
 				red := color.RGBA{255, 0, 0, 255}
 				if err := validateBackground(ctx, cr, red); err != nil {
-					s.Error("Did not reach expected state: ", err)
+					s.Error("Failed to validate wallpaper: ", err)
 				}
 			}
 
@@ -181,7 +190,14 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 
 				blurredRed := color.RGBA{77, 26, 29, 255}
 				if err := validateBackground(ctx, cr, blurredRed); err != nil {
-					s.Error("Did not reach expected state: ", err)
+					s.Error("Failed to validate wallpaper on lock screen: ", err)
+				}
+
+				if err := lockscreen.EnterPassword(ctx, tconn, fixtures.Username, fixtures.Password, kb); err != nil {
+					s.Fatal("Failed to unlock the screen: ", err)
+				}
+				if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return !st.Locked }, 30*time.Second); err != nil {
+					s.Fatalf("Waiting for screen to be unlocked failed: %v (last status %+v)", err, st)
 				}
 			}
 		})
