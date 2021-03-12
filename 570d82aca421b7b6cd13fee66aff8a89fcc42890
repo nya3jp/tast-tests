@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6137e4_23c527db",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-03-12T08:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d390296_8e0a195c",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 54
+      },
+      "revId": "570d82aca421b7b6cd13fee66aff8a89fcc42890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f30df44f_4874cc75",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-12T01:35:04Z",
       "side": 1,
       "message": "Even if we fail to save log files we want to do cleanups below.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "570d82aca421b7b6cd13fee66aff8a89fcc42890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5c2f858_22d8f1c9",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-03-12T08:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f30df44f_4874cc75",
       "range": {
         "startLine": 144,
         "startChar": 1,
@@ -88,6 +136,54 @@
         "startChar": 22,
         "endLine": 304,
         "endChar": 31
+      },
+      "revId": "570d82aca421b7b6cd13fee66aff8a89fcc42890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22c73a97_1fa57630",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-03-12T08:52:43Z",
+      "side": 1,
+      "message": "Yes, I intended outDir instead of a.outDir.",
+      "parentUuid": "9395013b_bc82320e",
+      "range": {
+        "startLine": 304,
+        "startChar": 22,
+        "endLine": 304,
+        "endChar": 31
+      },
+      "revId": "570d82aca421b7b6cd13fee66aff8a89fcc42890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea8b0893_11ba3edf",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-03-12T08:52:43Z",
+      "side": 1,
+      "message": "I misunderstood that outDir may not exist when resetOutDir is called from preImpl.Prepare(), but probably it always exists. I removed this check.",
+      "parentUuid": "bd8bf17b_56a032a6",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 9
       },
       "revId": "570d82aca421b7b6cd13fee66aff8a89fcc42890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
