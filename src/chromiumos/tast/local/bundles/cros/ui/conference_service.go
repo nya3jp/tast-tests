@@ -6,6 +6,10 @@ package ui
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -36,6 +40,8 @@ func init() {
 			"ui.meet_password",
 			// Static Google meet room url.
 			"ui.meet_url",
+			// Zoom meet bot server address.
+			"ui.zoom_bot_server",
 		},
 	})
 }
@@ -120,6 +126,112 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
 	if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, req.ExtendedDisplay); err != nil {
+		return nil, errors.Wrap(err, "failed to run MeetConference")
+	}
+
+	return &empty.Empty{}, nil
+}
+
+func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetScenarioRequest) (*empty.Empty, error) {
+	runConferenceAPI := func(ctx context.Context, host, api string) (string, error) {
+		reqURL := fmt.Sprintf("http://%s/api/room/zoom/%s", host, api)
+		httpReq, err := http.NewRequestWithContext(ctx, "GET", reqURL, nil)
+		if err != nil {
+			return "", err
+		}
+		resp, err := http.DefaultClient.Do(httpReq)
+		if err != nil {
+			return "", err
+		}
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			return "", err
+		}
+		if resp.StatusCode != http.StatusOK {
+			return "", errors.Errorf("failed to get zoom conference invite link with status %d and body %s", resp.StatusCode, string(body))
+		}
+
+		return strings.TrimSpace(string(body)), nil
+	}
+
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return nil, errors.New("failed to get outdir from context")
+	}
+	account, ok := s.s.Var("ui.cuj_username")
+	if !ok {
+		return nil, errors.New("failed to get variable ui.cuj_username")
+	}
+	password, ok := s.s.Var("ui.cuj_password")
+	if !ok {
+		return nil, errors.New("failed to get variable ui.cuj_password")
+	}
+	host, ok := s.s.Var("ui.zoom_bot_server")
+	if !ok {
+		return nil, errors.New("failed to get variable conference_server")
+	}
+
+	testing.ContextLog(ctx, "Start zoom meet scenario")
+	cr, err := chrome.New(ctx,
+		// Make sure we are running new chrome UI when tablet mode is enabled by CUJ test.
+		// Remove this when new UI becomes default.
+		chrome.EnableFeatures("WebUITabStrip"),
+		chrome.KeepState(),
+		chrome.ARCSupported(),
+		chrome.GAIALogin(chrome.Creds{User: account, Pass: password}))
+	if err != nil {
+		return nil, err
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to test API")
+	}
+	var tabletMode bool
+	if mode, ok := s.s.Var("ui.cuj_mode"); ok {
+		tabletMode = mode == "tablet"
+		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to enable tablet mode to %v", tabletMode)
+		}
+		defer cleanup(ctx)
+	} else {
+		// Use default screen mode of the DUT.
+		tabletMode, err = ash.TabletModeEnabled(ctx, tconn)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get DUT default screen mode")
+		}
+	}
+	// Creates a Zoom conference instance which implements conference.Conference methods.
+	// which provides conference operations.
+	zmcli := conference.NewZoomConference(cr, tconn, tabletMode, account)
+
+	// Sends a http request that ask for creating a Zoom conferece with
+	// specified participants and also return clean up method for closing
+	// opened conference.
+	//
+	// Assume there's a Zoom proxy which can receive http request for
+	// creating/closing Zoom conference. When Zoom proxy receives "createaio"
+	// request, it would create a Zoom conference on specified remote server
+	// with participants via Chrome Devtools Protocols. And "endaio" means close
+	// the conference which opened by "createaio".
+	prepare := func(ctx context.Context) (string, conference.Cleanup, error) {
+		cleanup := func(ctx context.Context) (err error) {
+			_, err = runConferenceAPI(ctx, host, "endaio")
+			return
+		}
+		// Creates a Zoom conference on remote server dynamically and get
+		// conference room link.
+		room, err := runConferenceAPI(ctx, host, "createaio")
+		if err != nil {
+			return "", nil, errors.Wrap(err, "failed to create multiple participants room")
+		}
+		return room, cleanup, nil
+	}
+	// Shorten context a bit to allow for cleanup if Run fails.
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, req.ExtendedDisplay); err != nil {
 		return nil, errors.Wrap(err, "failed to run MeetConference")
 	}
 
