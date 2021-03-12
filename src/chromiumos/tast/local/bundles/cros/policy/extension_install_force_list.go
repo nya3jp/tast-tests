@@ -6,11 +6,8 @@ package policy
 
 import (
 	"context"
-	"net/http"
-	"net/http/httptest"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -27,33 +24,21 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"policy.ExtensionInstallForceList.username", "policy.ExtensionInstallForceList.password"},
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 	})
 }
 
 func ExtensionInstallForceList(ctx context.Context, s *testing.State) {
-	const (
-		cleanupTime = 10 * time.Second // time reserved for cleanup.
-	)
-
-	// Use a shorter context to leave time for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
-
 	// The user has the ExtensionInstallForceList policy set.
 	username := s.RequiredVar("policy.ExtensionInstallForceList.username")
 	password := s.RequiredVar("policy.ExtensionInstallForceList.password")
-
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	defer server.Close()
 
 	cr, err := chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ProdPolicy())
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	defer cr.Close(cleanupCtx)
+	defer cr.Close(ctx)
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -83,5 +68,5 @@ func ExtensionInstallForceList(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Finding button node failed: ", err)
 	}
-	defer node.Release(cleanupCtx)
+	defer node.Release(ctx)
 }
