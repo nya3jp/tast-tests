@@ -16,6 +16,23 @@
       "message": "I\u0027ll land this CL after David\u0027s +2.",
       "revId": "cb6c749bca59c9d8febf7a368a370e423cb647c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16cfe0f0_fc3a686a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-03-12T19:33:53Z",
+      "side": 1,
+      "message": "Thanks for the reviews.",
+      "revId": "cb6c749bca59c9d8febf7a368a370e423cb647c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
