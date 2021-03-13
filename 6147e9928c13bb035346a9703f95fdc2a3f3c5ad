@@ -39,6 +39,30 @@
       },
       "revId": "6147e9928c13bb035346a9703f95fdc2a3f3c5ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0921ab75_431258ff",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-03-13T21:48:10Z",
+      "side": 1,
+      "message": "From a sharing perspective this would be preferable. The problem sharing is that other teams will be using our fixture, which means our tests will run with their tests and gpu hangs will be checked for their hangs etc. I think we prefer gfx/video fixtures to not be used by other teams.",
+      "parentUuid": "d8351c9b_00662a51",
+      "range": {
+        "startLine": 52,
+        "startChar": 20,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "6147e9928c13bb035346a9703f95fdc2a3f3c5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
