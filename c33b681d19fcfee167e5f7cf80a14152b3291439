@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1da71cc_68990821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T00:44:59Z",
+      "side": 1,
+      "message": "LGTM % a nit",
+      "revId": "c33b681d19fcfee167e5f7cf80a14152b3291439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b43adf25_272bf360",
+        "filename": "src/chromiumos/tast/local/bluetooth/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T00:44:59Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think this is necessary as the code ensures checking err.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 3
+      },
+      "revId": "c33b681d19fcfee167e5f7cf80a14152b3291439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
