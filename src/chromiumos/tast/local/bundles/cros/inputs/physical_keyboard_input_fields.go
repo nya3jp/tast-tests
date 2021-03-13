@@ -62,14 +62,14 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Fail to launch inputs test server: ", err)
 	}
 	defer its.Close()
 
 	type testData struct {
-		inputField   testserver.InputField
+		inputField   string
 		inputFunc    func(ctx context.Context) error
 		expectedText string
 	}
@@ -103,16 +103,9 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 			inputField := subtest.inputField
 
-			if err := its.ClickFieldAndWaitForActive(ctx, tconn, inputField); err != nil {
-				s.Fatal("Failed to click input field: ", err)
+			if err := its.ValidateInputOnField(inputField, subtest.inputFunc, subtest.expectedText)(ctx); err != nil {
+				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)
 			}
-
-			subtest.inputFunc(ctx)
-
-			if err := inputField.WaitForValueToBe(ctx, tconn, subtest.expectedText); err != nil {
-				s.Fatal("Failed to verify input: ", err)
-			}
-
 		})
 	}
 }

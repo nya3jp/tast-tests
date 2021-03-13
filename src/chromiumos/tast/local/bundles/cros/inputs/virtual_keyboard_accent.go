@@ -53,17 +53,11 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer its.Close()
-
-	kconn, err := vkb.UIConn(ctx, cr)
-	if err != nil {
-		s.Fatal("Failed to create connection to virtual keyboard UI: ", err)
-	}
-	defer kconn.Close()
 
 	// The input method ID is from:
 	// src/chrome/browser/resources/chromeos/input_method/google_xkb_manifest.json
@@ -80,7 +74,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 
 	inputField := testserver.TextAreaNoCorrectionInputField
 
-	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+	if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
 		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 	}
 
@@ -165,7 +159,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to release mouse click: ", err)
 	}
 
-	if err := inputField.WaitForValueToBe(ctx, tconn, accentKeyName); err != nil {
+	if err := its.WaitForFieldValueToBe(inputField, accentKeyName)(ctx); err != nil {
 		s.Fatal("Failed to verify input: ", err)
 	}
 }

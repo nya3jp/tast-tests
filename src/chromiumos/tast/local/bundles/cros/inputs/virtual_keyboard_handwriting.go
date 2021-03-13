@@ -146,17 +146,17 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	testIME := ime.IMEPrefix + string(params.imeID)
 
 	// Launch inputs test web server.
-	ts, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer ts.Close()
+	defer its.Close()
 
 	// Select the input field being tested.
 	inputField := testserver.TextAreaInputField
 
 	// Open the virtual keyboard.
-	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+	if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
 		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 	}
 
@@ -180,7 +180,7 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify if the derived text is equal to the expected text.
-	if err := inputField.WaitForValueToBe(ctx, tconn, params.expectedText); err != nil {
+	if err := its.WaitForFieldValueToBe(inputField, params.expectedText)(ctx); err != nil {
 		s.Fatal("Failed to verify input: ", err)
 	}
 

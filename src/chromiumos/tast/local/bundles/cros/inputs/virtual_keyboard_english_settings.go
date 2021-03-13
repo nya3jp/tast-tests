@@ -55,7 +55,7 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
@@ -107,7 +107,7 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to clear input field: ", err)
 			}
 
-			if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+			if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
 				s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 			}
 			defer vkb.HideVirtualKeyboard(ctx, tconn)
@@ -116,7 +116,7 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to input with virtual keyboard: ", err)
 			}
 
-			if err := inputField.WaitForValueToBe(ctx, tconn, subTest.expectedText); err != nil {
+			if err := its.WaitForFieldValueToBe(inputField, subTest.expectedText)(ctx); err != nil {
 				s.Fatal("Failed to verify input: ", err)
 			}
 		})

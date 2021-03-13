@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -44,7 +45,7 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
@@ -52,13 +53,7 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 
 	inputField := testserver.TextInputField
 
-	inputFieldNode, err := inputField.GetNode(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to find input field: ", err)
-	}
-	defer inputFieldNode.Release(ctx)
-
-	if err := inputFieldNode.RightClick(ctx); err != nil {
+	if err := uiauto.New(tconn).RightClick(testserver.Field(inputField))(ctx); err != nil {
 		s.Fatal("Failed to right click the input element: ", err)
 	}
 
@@ -85,7 +80,7 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click on the emoji button")
 	}
 
-	if err := inputField.WaitForValueToBe(ctx, tconn, emojiChar); err != nil {
+	if err := its.WaitForFieldValueToBe(inputField, emojiChar)(ctx); err != nil {
 		s.Fatal("Failed to verify input: ", err)
 	}
 }
