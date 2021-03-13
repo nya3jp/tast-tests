@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3156e94_c1a9bdb1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T01:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d08d2202_36056779",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 9
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25bbf911_88b6f5e5",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-12T08:51:24Z",
       "side": 1,
       "message": "huge nit: %s might be easier for cut and pasting.",
+      "range": {
+        "startLine": 244,
+        "startChar": 42,
+        "endLine": 244,
+        "endChar": 44
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e1d7c9_69c8576c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T01:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25bbf911_88b6f5e5",
       "range": {
         "startLine": 244,
         "startChar": 42,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f2e5ded_992e601e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T01:52:19Z",
+      "side": 1,
+      "message": "This parameter goes away as I adopted Marker.",
+      "parentUuid": "e045e122_5d3ca017",
+      "range": {
+        "startLine": 245,
+        "startChar": 52,
+        "endLine": 245,
+        "endChar": 62
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81626e38_1c54c83c",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-12T08:51:24Z",
       "side": 1,
       "message": "Please remember to fill something here :)",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6291b83_5566ca7c",
+        "filename": "src/chromiumos/tast/local/logsaver/log_saver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T01:52:19Z",
+      "side": 1,
+      "message": "Actually, removed. With Marker, it\u0027s a bit awkward to note these TODOs there, and I still don\u0027t see actual use cases for them for the time being.",
+      "parentUuid": "81626e38_1c54c83c",
       "range": {
         "startLine": 25,
         "startChar": 7,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b82057f_6f97e0a2",
+        "filename": "src/chromiumos/tast/local/logsaver/log_saver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T01:52:19Z",
+      "side": 1,
+      "message": "Thanks for the suggestion!  Changed accordingly.",
+      "parentUuid": "089e67ad_102694cf",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 13
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "802ebba6_b825df10",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-03-12T08:51:24Z",
       "side": 1,
       "message": "Usually Start should be always paired with StopAndSave, just like os.Open and Close, and having this method sounds like adding IsClosed to os.File...",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8232284_414e7f25",
+        "filename": "src/chromiumos/tast/local/logsaver/log_saver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T01:52:19Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "802ebba6_b825df10",
       "range": {
         "startLine": 73,
         "startChar": 20,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8adf6b2f_05b60b03",
+        "filename": "src/chromiumos/tast/local/logsaver/log_saver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T01:52:19Z",
+      "side": 1,
+      "message": "Switched to os.Create.",
+      "parentUuid": "43da020c_13c01b75",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 25
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4198f39c_a09ca2b8",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-03-12T08:51:24Z",
       "side": 1,
       "message": "Let us use io.SeekStart.",
+      "range": {
+        "startLine": 89,
+        "startChar": 34,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "d9187ef126e5c7b0a643a3dfe54321638dc20482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc41e81_4f50292b",
+        "filename": "src/chromiumos/tast/local/logsaver/log_saver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T01:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4198f39c_a09ca2b8",
       "range": {
         "startLine": 89,
         "startChar": 34,
