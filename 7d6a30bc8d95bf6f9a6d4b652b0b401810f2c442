@@ -50,6 +50,24 @@
       "message": "AFAICS there are no guarantees that username in PolicyData is normalized as we normalize it client-side. I might try to find someone from DM server who could confirm it (as this value comes directly from the DM server).\n\nI would recommend normalizing both usernames to compare them.",
       "revId": "7d6a30bc8d95bf6f9a6d4b652b0b401810f2c442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1942a320_a4f217fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-03-13T02:06:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23e7f138_28949842",
+      "revId": "7d6a30bc8d95bf6f9a6d4b652b0b401810f2c442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
