@@ -77,6 +77,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "945cd4ec_75fc1d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-13T04:39:21Z",
+      "side": 1,
+      "message": "Thank you for the comment! Yes, I think that for now we want to have finer grained control over which tests we have enabled while we get information on how they\u0027re running. Maybe afterwards we can just pump the whole map through as you\u0027ve mentioned.",
+      "parentUuid": "0b53d147_0aad7694",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 52
+      },
+      "revId": "55c50ddc96d32a56750c3b5ecbdd4ada5e83c0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9bee6903_47b9ff86",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
         "patchSetId": 4
@@ -88,6 +112,24 @@
       "writtenOn": "2021-03-13T00:01:03Z",
       "side": 1,
       "message": "nit: if Timeout is common among those parameters, I think you don\u0027t need to set here.  Instead it can be set on the main testing.Test\u0027s Timeout field.\ncf. https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git@v0.0.0-20210120003151-81f51f243e55/src/chromiumos/tast/internal/testing#Param.Timeout\n\u003e Can only be set if the enclosing test doesn\u0027t have one already set.",
+      "revId": "55c50ddc96d32a56750c3b5ecbdd4ada5e83c0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95aeed4d_8b48f662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-13T04:39:21Z",
+      "side": 1,
+      "message": "Done, thanks!\n\nThe timeouts will need adjustment and possibly diverge, later, but I can make those changes later.",
+      "parentUuid": "9bee6903_47b9ff86",
       "revId": "55c50ddc96d32a56750c3b5ecbdd4ada5e83c0e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
