@@ -16,8 +16,7 @@ service UreadaheadPackService {
 }
 
 message UreadaheadPackRequest {
-  // Indicates whether initial boot is requested.
-  bool initial_boot = 1;
+  reserved 1, 2, 3;
   // Specify which build is requested.
   bool vm_enabled = 4;
   // Credentials to perform login
