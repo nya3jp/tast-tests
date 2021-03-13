@@ -16,6 +16,63 @@
       "message": "PTAL, thanks!",
       "revId": "55c50ddc96d32a56750c3b5ecbdd4ada5e83c0e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "363aa0a2_30076efb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T00:01:03Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "55c50ddc96d32a56750c3b5ecbdd4ada5e83c0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b53d147_0aad7694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T00:01:03Z",
+      "side": 1,
+      "message": "You might have already considered this approach, but this could be written as:\n  for profile, groups :\u003d range vaapiVp9Files {\n    for levelGroup, cats :\u003d range groups {\n      for cat, files :\u003d range cats {\n        ...\n\nAnd because Go randomize the iteration order of map, this will require to sort the params by its name.\n  sort.Slice(params, func(i, j int) bool { return params[i].Name \u003c params[j].Name })\n\nNecessity of sorting is cumbersome, so I guess you may have considered this and then abandoned this approach. One benefit would be the easiness of adding new group (or removing one in the future).  Just FYI.",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 52
+      },
+      "revId": "55c50ddc96d32a56750c3b5ecbdd4ada5e83c0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bee6903_47b9ff86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-13T00:01:03Z",
+      "side": 1,
+      "message": "nit: if Timeout is common among those parameters, I think you don\u0027t need to set here.  Instead it can be set on the main testing.Test\u0027s Timeout field.\ncf. https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git@v0.0.0-20210120003151-81f51f243e55/src/chromiumos/tast/internal/testing#Param.Timeout\n\u003e Can only be set if the enclosing test doesn\u0027t have one already set.",
+      "revId": "55c50ddc96d32a56750c3b5ecbdd4ada5e83c0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
