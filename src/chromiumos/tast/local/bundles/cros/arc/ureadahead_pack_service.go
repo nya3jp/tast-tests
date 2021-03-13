@@ -169,10 +169,6 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		chrome.GAIALoginPool(request.Creds),
 		chrome.ExtraArgs(chromeArgs...)}
 
-	if !request.InitialBoot {
-		opts = append(opts, chrome.KeepState())
-	}
-
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
@@ -198,18 +194,10 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	if request.InitialBoot {
-		// Opt in.
-		testing.ContextLog(shortCtx, "Waiting for ARC opt-in flow to complete")
-		if err := optin.Perform(shortCtx, cr, tconn); err != nil {
-			return nil, errors.Wrap(err, "failed to perform opt-in")
-		}
-	} else {
-		testing.ContextLog(shortCtx, "Waiting for Play Store app to be ready")
-		// Wait Play Store app is in ready state that indicates boot is fully completed.
-		if err := optin.WaitForPlayStoreReady(shortCtx, tconn); err != nil {
-			return nil, err
-		}
+	// Opt in.
+	testing.ContextLog(shortCtx, "Waiting for ARC opt-in flow to complete")
+	if err := optin.Perform(shortCtx, cr, tconn); err != nil {
+		return nil, errors.Wrap(err, "failed to perform opt-in")
 	}
 
 	if err := stopUreadaheadTracing(shortCtx, cmd); err != nil {
