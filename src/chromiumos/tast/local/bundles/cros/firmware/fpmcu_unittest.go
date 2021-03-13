@@ -16,6 +16,7 @@ import (
 	"syscall"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -58,6 +59,8 @@ func init() {
 		},
 		Attr: []string{"group:fingerprint-mcu"},
 		Data: []string{"fpmcu_unittests.tar.bz2"},
+		// Flashing the FPMCU can take 2 minutes, so allow more time.
+		Timeout: 4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_aes",
@@ -212,9 +215,24 @@ func flashUnittestBinary(ctx context.Context, testName, dataPath string) error {
 		return err
 	}
 	imageOption := fmt.Sprintf("--image=%s", filepath.Join(dir, binaryToFlash))
-	cmdFlash := testexec.CommandContext(ctx, "flash_ec", "--board="+getFpmcuBoardName(testName), imageOption)
-	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(cmdFlash.Args))
-	return cmdFlash.Run()
+	// Flashing the chip may fail due to hardware reasons. Allow one retry.
+	attempt := 0
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		attempt++
+		if attempt > 2 {
+			return testing.PollBreak(errors.New("failed to flash FPMCU after two attempts"))
+		}
+		cmdFlash := testexec.CommandContext(ctx, "flash_ec", "--board="+getFpmcuBoardName(testName), imageOption)
+		testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(cmdFlash.Args))
+		err = cmdFlash.Run(testexec.DumpLogOnError)
+		if err != nil {
+			testing.ContextLogf(ctx, "Flashing failed on attempt %d", attempt)
+		}
+		return err
+	}, &testing.PollOptions{Interval: 5 * time.Second, Timeout: 4 * time.Minute}); err != nil {
+		return errors.Wrap(err, "failed to flash unittest binary")
+	}
+	return nil
 }
 
 // fpmcuPower toggles FPMCU power on or off.
@@ -275,6 +293,44 @@ func getFpmcuConsolePath(ctx context.Context) (string, error) {
 	return strings.TrimSpace(strings.Split(string(output), ":")[1]), nil
 }
 
+// scanConsole scans the FPMCU console for any line in finishLines.
+// On timeout, it closes the console to kill the scanner.
+func scanConsole(ctx context.Context, scanner *bufio.Scanner, console *os.File, finishLines []string, timeout time.Duration) error {
+	// scanner.Scan() below might block. Release bufio.Scanner by closing
+	// "console" on timeout.
+	scanCtx, scanCancel := context.WithTimeout(ctx, timeout)
+	defer scanCancel()
+	finished := false
+	go func() {
+		defer func() {
+			if !finished {
+				testing.ContextLog(ctx, "Timed out scanning FPMCU console, killing the console to release scanner")
+				console.Close()
+				console = nil
+			}
+		}()
+		// Blocks until deadline is passed.
+		<-scanCtx.Done()
+	}()
+
+	for {
+		if !scanner.Scan() {
+			finished = true
+			if err := scanner.Err(); err != nil {
+				return errors.Wrap(scanner.Err(), "error while scanning FPMCU console")
+			}
+			return errors.New("EOF while scanning FPMCU console")
+		}
+		t := scanner.Text()
+		for _, line := range finishLines {
+			if strings.Contains(t, line) {
+				finished = true
+				return nil
+			}
+		}
+	}
+}
+
 func FpmcuUnittest(ctx context.Context, s *testing.State) {
 	metadata := s.Param().(testMetadata)
 
@@ -299,7 +355,21 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open FPMCU console: ", err)
 	}
-	defer console.Close()
+
+	// Schedule cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	defer func(ctx context.Context) {
+		s.Log("Tearing down")
+		// console.Close() may have been called to kill scanner.
+		if console != nil {
+			console.Close()
+		}
+		if err := rebootFpmcu(ctx); err != nil {
+			s.Error("Failed to reboot FPMCU in cleanup: ", err)
+		}
+	}(cleanupCtx)
 
 	scanner := bufio.NewScanner(console)
 	consoleOutputPath := "console_output_log"
@@ -313,41 +383,43 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 	defer logWriter.Flush()
 
 	if err := flashUnittestBinary(ctx, metadata.name, s.DataPath("fpmcu_unittests.tar.bz2")); err != nil {
-		// Try reboot for cleanup.
-		if err := rebootFpmcu(ctx); err != nil {
-			s.Error("Failed to reboot FPMCU in cleanup: ", err)
-		}
 		s.Fatal("Failed to flash unittest binary: ", err)
 	}
 
-	// Run the test in RO or RW, depending on "Val" in test params.
-	imageToBoot := "RW"
-	if metadata.image == imageTypeRO {
-		imageToBoot = "RO"
+	s.Log("Waiting for FPMCU to reboot after flashing")
+	// Two seconds should be more than enough for the chip to boot.
+	testing.Sleep(ctx, 2*time.Second)
+	s.Log("Checking that FPMCU rebooted to RW")
+	if _, err = console.Write([]byte("sysinfo\n")); err != nil {
+		s.Error("Failed to write command to FPMCU: ", err)
 	}
-
-	// Wait for FPMCU to reboot after flashing
-	for {
-		if !scanner.Scan() {
-			if err := scanner.Err(); err != nil {
-				s.Fatal("Error while scanning FPMCU console: ", err)
-			}
-			continue
-		}
-		t := scanner.Text()
-		if strings.Contains(t, fmt.Sprintf("Image: %s", imageToBoot)) {
-			break
-		}
+	if err := scanConsole(ctx, scanner, console, []string{"Image: RW", "Copy:   RW"}, 10*time.Second); err != nil {
+		s.Fatal("Failed to check FPMCU rebooted to RW: ", err)
 	}
+	s.Log("FPMCU rebooted to RW")
 
 	if err := hwWriteProtect(ctx, s.Param().(testMetadata).hwWriteProtect); err != nil {
 		s.Fatal("Failed to initialize HW write protect: ", err)
 	}
 
-	if imageToBoot == "RO" {
-		if _, err = console.Write([]byte("sysjump ro\n")); err != nil {
+	if metadata.image == imageTypeRO {
+		s.Log("Rebooting FPMCU to RO")
+		// Sometimes the FPMCU console can be read but cannot be written.
+		// In that case we will not have the error here, and we have no
+		// way to reboot FPMCU to RO.
+		if _, err = console.Write([]byte("reboot ro\n")); err != nil {
 			s.Fatal("Failed to switch FPMCU to RO: ", err)
 		}
+		// Two seconds should be more than enough for the chip to boot.
+		testing.Sleep(ctx, 2*time.Second)
+		s.Log("Checking that FPMCU rebooted to RO")
+		if _, err = console.Write([]byte("sysinfo\n")); err != nil {
+			s.Error("Failed to write command to FPMCU: ", err)
+		}
+		if err := scanConsole(ctx, scanner, console, []string{"Image: RO", "Copy:   RO"}, 10*time.Second); err != nil {
+			s.Fatal("Failed to check FPMCU rebooted to RO: ", err)
+		}
+		s.Log("FPMCU rebooted to RO")
 	}
 
 	s.Log("Running FPMCU unittest through UART console: ", consolePath)
@@ -356,34 +428,43 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to execute runtest from FPMCU console: ", err)
 	}
 
+	if len(metadata.finishRegexes) == 0 {
+		metadata.finishRegexes = []*regexp.Regexp{regexp.MustCompile("Pass!")}
+	}
+
+	// scanner.Scan() below might block. Release bufio.Scanner by closing
+	// "console" on timeout.
+	scanCtx, scanCancel := context.WithTimeout(ctx, 30*time.Second)
+	defer scanCancel()
+	go func() {
+		defer func() {
+			console.Close()
+			console = nil
+		}()
+		// Blocks until deadline is passed.
+		<-scanCtx.Done()
+	}()
+
 	finished := false
 	for scanner.Scan() {
 		line := scanner.Text()
 		if _, err := logWriter.WriteString(line + "\n"); err != nil {
 			s.Error("Failed to write line to ", consoleOutputPath)
 		}
-		if strings.Contains(line, "Pass!") {
-			return
-		}
 		if strings.Contains(line, "Fail!") {
 			s.Fatal("Unittest failed on device")
 		}
 		if !finished {
-			// After we hit any finish regex, we still want to scan
-			// the remaining lines, because a later "Fail!" still
-			// counts as unittest failure.
 			for _, re := range metadata.finishRegexes {
 				if re.MatchString(line) {
 					finished = true
 					break
 				}
 			}
+			// Continue scanning until EOF or timeout to see if we
+			// have a "Fail!" coming.
 		}
 	}
-	if err := scanner.Err(); err != nil {
-		s.Error("Error while scanning FPMCU console: ", err)
-	}
-	// If we have hit a finish regex, then it's ok to not hit "Pass!".
 	if !finished {
 		s.Fatal("Failed to scan unittest result")
 	}
