@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19306e9f_dd85a620",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-13T02:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28422203_6795e06a",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa59599d_75a36bc2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-06T00:30:52Z",
       "side": 1,
       "message": "I think there is a bug for this. Can you include that with a TODO?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 67
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e991da72_965b7060",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-13T02:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa59599d_75a36bc2",
       "range": {
         "startLine": 139,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "016cfee1_05668e7f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-13T02:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb94db3f_815b7533",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0645fd1b_adbb7ece",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-06T00:30:52Z",
       "side": 1,
       "message": "Can we add a bug for this?",
+      "range": {
+        "startLine": 153,
+        "startChar": 4,
+        "endLine": 153,
+        "endChar": 19
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18825fb1_b1b64172",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-13T02:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0645fd1b_adbb7ece",
       "range": {
         "startLine": 153,
         "startChar": 4,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d51e02f_dfaedcc2",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-13T02:13:54Z",
+      "side": 1,
+      "message": "I also want to print it below and compare with the result of RunningFirmwareCopy(which the test body expects to be a string), an enum would require another conversion function and conversion inline, which I feel reduces readability",
+      "parentUuid": "2e44885c_30bb6c3e",
+      "range": {
+        "startLine": 158,
+        "startChar": 50,
+        "endLine": 158,
+        "endChar": 63
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "982b6e10_342de3a5",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
         "patchSetId": 3
@@ -129,6 +249,30 @@
       "writtenOn": "2021-03-06T00:30:52Z",
       "side": 1,
       "message": "See comment below about helper function to handle ectool output.",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 53
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7237dc2_6a8a13bd",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-13T02:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "982b6e10_342de3a5",
       "range": {
         "startLine": 199,
         "startChar": 1,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7142703a_d9eedb47",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-13T02:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32ecab3b_a9fa8a2d",
+      "range": {
+        "startLine": 220,
+        "startChar": 32,
+        "endLine": 220,
+        "endChar": 42
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "058b6920_080e5f5e",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-03-06T00:30:52Z",
       "side": 1,
       "message": "ectool uses a \"key: value\" format in a lot of places, so it would probably be good to create a generic helper function to parse that (like get_ectool_output_val in the original code).",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 2
+      },
+      "revId": "17aafecdb7a366981c495a301bbf19f7c7877ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1079097_f12e5750",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-13T02:13:54Z",
+      "side": 1,
+      "message": "I just took \"parseColonDelimitedOutput\" from the next CL, and used it here.",
+      "parentUuid": "058b6920_080e5f5e",
       "range": {
         "startLine": 229,
         "startChar": 0,
