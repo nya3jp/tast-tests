@@ -58,6 +58,8 @@ func init() {
 		},
 		Attr: []string{"group:fingerprint-mcu"},
 		Data: []string{"fpmcu_unittests.tar.bz2"},
+		// Flashing the FPMCU can take 2 minutes, so allow more time.
+		Timeout: 4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_aes",
@@ -212,9 +214,18 @@ func flashUnittestBinary(ctx context.Context, testName, dataPath string) error {
 		return err
 	}
 	imageOption := fmt.Sprintf("--image=%s", filepath.Join(dir, binaryToFlash))
-	cmdFlash := testexec.CommandContext(ctx, "flash_ec", "--board="+getFpmcuBoardName(testName), imageOption)
-	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(cmdFlash.Args))
-	return cmdFlash.Run()
+	// Flashing the chip may fail due to hardware reasons. Allow one retry.
+	for attempt := 0; attempt < 2; attempt++ {
+		cmdFlash := testexec.CommandContext(ctx, "flash_ec", "--board="+getFpmcuBoardName(testName), imageOption)
+		testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(cmdFlash.Args))
+		err = cmdFlash.Run(testexec.DumpLogOnError)
+		if err == nil {
+			return nil
+		}
+		testing.ContextLogf(ctx, "Flashing failed on attempt %d", attempt+1)
+		testing.Sleep(ctx, 5*time.Second)
+	}
+	return err
 }
 
 // fpmcuPower toggles FPMCU power on or off.
@@ -290,6 +301,13 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reboot FPMCU: ", err)
 	}
 
+	// Schedule a reboot for cleanup.
+	defer func() {
+		if err := rebootFpmcu(ctx); err != nil {
+			s.Error("Failed to reboot FPMCU in cleanup: ", err)
+		}
+	}()
+
 	consolePath, err := getFpmcuConsolePath(ctx)
 	if err != nil {
 		s.Fatal("Failed to get FPMCU console path: ", err)
@@ -313,10 +331,6 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 	defer logWriter.Flush()
 
 	if err := flashUnittestBinary(ctx, metadata.name, s.DataPath("fpmcu_unittests.tar.bz2")); err != nil {
-		// Try reboot for cleanup.
-		if err := rebootFpmcu(ctx); err != nil {
-			s.Error("Failed to reboot FPMCU in cleanup: ", err)
-		}
 		s.Fatal("Failed to flash unittest binary: ", err)
 	}
 
@@ -326,28 +340,62 @@ func FpmcuUnittest(ctx context.Context, s *testing.State) {
 		imageToBoot = "RO"
 	}
 
-	// Wait for FPMCU to reboot after flashing
+	s.Log("Waiting for FPMCU to reboot after flashing")
+	testing.Sleep(ctx, 2*time.Second)
+	s.Log("Checking that FPMCU rebooted to RW")
+	if _, err = console.Write([]byte("sysinfo\n")); err != nil {
+		s.Error("Failed to write command to FPMCU: ", err)
+	}
 	for {
 		if !scanner.Scan() {
 			if err := scanner.Err(); err != nil {
-				s.Fatal("Error while scanning FPMCU console: ", err)
+				s.Error("Error while scanning FPMCU console: ", err)
 			}
 			continue
 		}
 		t := scanner.Text()
-		if strings.Contains(t, fmt.Sprintf("Image: %s", imageToBoot)) {
+		if strings.Contains(t, "Copy:   RW") {
+			break
+		}
+		// In case sysinfo did not reach the FPMCU, try to catch the jump.
+		if strings.Contains(t, "Image: RW") {
 			break
 		}
 	}
+	s.Log("FPMCU rebooted to RW")
 
 	if err := hwWriteProtect(ctx, s.Param().(testMetadata).hwWriteProtect); err != nil {
 		s.Fatal("Failed to initialize HW write protect: ", err)
 	}
 
 	if imageToBoot == "RO" {
-		if _, err = console.Write([]byte("sysjump ro\n")); err != nil {
+		s.Log("Rebooting FPMCU to RO")
+		// Sometimes the FPMCU console can be read but cannot be written. In that case we will not have the error here, and we have no way to reboot FPMCU to RO.
+		if _, err = console.Write([]byte("reboot ro\n")); err != nil {
 			s.Fatal("Failed to switch FPMCU to RO: ", err)
 		}
+		testing.Sleep(ctx, 2*time.Second)
+		s.Log("Checking that FPMCU rebooted to RO")
+		if _, err = console.Write([]byte("sysinfo\n")); err != nil {
+			s.Error("Failed to write command to FPMCU: ", err)
+		}
+		for {
+			if !scanner.Scan() {
+				if err := scanner.Err(); err != nil {
+					s.Error("Error while scanning FPMCU console: ", err)
+				}
+				continue
+			}
+			t := scanner.Text()
+			if strings.Contains(t, "Copy:   RO") {
+				break
+			}
+			// In case sysinfo did not reach the FPMCU, try to catch the jump.
+			if strings.Contains(t, "Image: RO") {
+				break
+			}
+		}
+		s.Log("FPMCU rebooted to RO")
 	}
 
 	s.Log("Running FPMCU unittest through UART console: ", consolePath)
