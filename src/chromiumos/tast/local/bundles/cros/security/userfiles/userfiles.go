@@ -66,7 +66,7 @@ func Check(ctx context.Context, s *testing.State, user string) {
 	})
 
 	checkPath(userDir, []*chk.Pattern{
-		chk.NewPattern(chk.Path("Downloads"), isChronosUID, isChronosAccessGID, chk.Mode(0710), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("Downloads"), isChronosUID, isChronosAccessGID, chk.Mode(0750), chk.SkipChildren()),
 		// TODO(crbug.com/1056294): Re-add 'chk.Mode(0710)' below after the source of flake
 		// is identified.
 		chk.NewPattern(chk.Root(), isChronosUID, isChronosAccessGID),

@@ -53,10 +53,6 @@ func CryptohomeBadPerms(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get user home path: ", err)
 	}
-	systemPath, err := cryptohome.GetRootUserPath(ctx, user)
-	if err != nil {
-		s.Fatal("Failed to get user root path: ", err)
-	}
 
 	var restoreInfo os.FileInfo
 
@@ -65,36 +61,6 @@ func CryptohomeBadPerms(ctx context.Context, s *testing.State) {
 		clobber func(ctx context.Context) error
 		cleanup func() error
 	}{
-		{
-			// Leaf element of user path not owned by user.
-			name: "leaf_user_path_not_owned",
-			clobber: func(ctx context.Context) error {
-				return creatDirWithPerms(ctx, userPath, 0755, 0, 0)
-			},
-			cleanup: func() error {
-				return os.RemoveAll(userPath)
-			},
-		},
-		{
-			// Leaf element of system path not owned by root.
-			name: "leaf_system_path_not_owned",
-			clobber: func(ctx context.Context) error {
-				return creatDirWithPerms(ctx, systemPath, 0755, 1, 1)
-			},
-			cleanup: func() error {
-				return os.RemoveAll(systemPath)
-			},
-		},
-		{
-			// Leaf element of path too permissive.
-			name: "leaf_user_path_too_permissive",
-			clobber: func(ctx context.Context) error {
-				return creatDirWithPerms(ctx, userPath, 0777, 1, 1)
-			},
-			cleanup: func() error {
-				return os.RemoveAll(userPath)
-			},
-		},
 		{
 			// Non-leaf element of path not owned by root.
 			name: "nonleaf_user_path_not_owned",
