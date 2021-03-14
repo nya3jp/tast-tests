@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "10052749_d37ea308",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "I think it\u0027s a good idea to describe the steps happened in the test\n1. Open the changePicture page and preview cat image, then take a screenshot of the current avatar image.\n2. Reopen the same page again.\nif the policy was set to red image, then it shouldn\u0027t be changed to the a cat image in the preview.\notherwise it should remain as the one selected in the preview which is the cat image.",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1d7cd9ca_91d70efd",
@@ -31,6 +48,327 @@
       "writtenOn": "2021-03-12T13:58:20Z",
       "side": 1,
       "message": "Oleh, FYI.",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c47e3749_909664cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/user_avatar_image.jpg",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "you can change this to a small 1*1 pixel",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee56677_64486637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "Add more info about what the test does.\ni.e.\n1. Open the changePicture page and preview cat image, then take a screenshot of the current avatar image.\n2. Reopen the same page again.\nif the policy was set to red image, then it shouldn\u0027t be changed to the a cat image in the preview.\notherwise it should remain as the one selected in the preview which is the cat image.",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad2e7339_6c392f3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "unused param",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 17
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098788bd_c9c706fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "changePicture",
+      "range": {
+        "startLine": 163,
+        "startChar": 27,
+        "endLine": 163,
+        "endChar": 42
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a6f74d_ad4dba5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "chrome://os-settings/changePicture",
+      "range": {
+        "startLine": 164,
+        "startChar": 48,
+        "endLine": 164,
+        "endChar": 84
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c33126_0d11825c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "Add a comment about the next steps.\ni.e. Click on the cat avatar image and it should change the preview picture to the cat.",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17cfe2ff_e78c5194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "you can delete this line if you navigated directly to changePicture",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf92f885_5224d999",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "nit: missing . at the end of the comment.",
+      "range": {
+        "startLine": 178,
+        "startChar": 3,
+        "endLine": 178,
+        "endChar": 48
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c56fec7_0b4421af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "Take a screenshot of the preview image of the Cat user image.",
+      "range": {
+        "startLine": 185,
+        "startChar": 3,
+        "endLine": 185,
+        "endChar": 46
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c7d9cd_f05845ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "Add comment why this page should be opened again.\ni.e. Open personalization page and navigate to change the account image to see if the avatar image is changed to the one selected before, or it will remain red as the one set by the policy.",
+      "range": {
+        "startLine": 191,
+        "startChar": 3,
+        "endLine": 191,
+        "endChar": 54
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda4fa44_bc328a4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 204,
+        "startChar": 3,
+        "endLine": 204,
+        "endChar": 50
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24a9b0d4_fc12a00c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s better to use\nfmt.Errorf(\"Red Pixels Percentage: %d\", prcnt)",
+      "range": {
+        "startLine": 214,
+        "startChar": 77,
+        "endLine": 214,
+        "endChar": 130
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7135072b_c22fcbe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "You should also check that when the policy is set, the user image is restricted and cannot be changed.",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27c8cd3c_0ea7daee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "add also: the image shouldn\u0027t be changed when we previewed the cat image",
+      "range": {
+        "startLine": 217,
+        "startChar": 4,
+        "endLine": 217,
+        "endChar": 60
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f223b64c_5b02329e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T15:52:34Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 223,
+        "startChar": 58,
+        "endLine": 223,
+        "endChar": 109
+      },
       "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
