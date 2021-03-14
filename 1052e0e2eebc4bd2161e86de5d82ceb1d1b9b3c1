@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71a628e2_e9974f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "This is defined twice and another testData is also defined twice, define them in a centre file like test_server.log?",
+      "range": {
+        "startLine": 66,
+        "startChar": 6,
+        "endLine": 66,
+        "endChar": 21
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece74efe_df63e4b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "uiauto.Action?",
+      "range": {
+        "startLine": 73,
+        "startChar": 15,
+        "endLine": 73,
+        "endChar": 46
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fdbe5f3_9e33883c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "TypeAction",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 85,
+        "endChar": 75
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff7416e7_dbaa17ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "TypeAction",
+      "range": {
+        "startLine": 90,
+        "startChar": 15,
+        "endLine": 91,
+        "endChar": 86
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d4065ca_6e536d8e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
         "patchSetId": 2
@@ -14,6 +106,305 @@
       "writtenOn": "2021-03-14T23:40:48Z",
       "side": 1,
       "message": "Why are we removing the typedef here?",
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5abd828_b1fb62d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "This is used twice here, maybe define it in advance.",
+      "range": {
+        "startLine": 150,
+        "startChar": 11,
+        "endLine": 150,
+        "endChar": 28
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8226e11b_dc5f7771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "returns an action which",
+      "range": {
+        "startLine": 185,
+        "startChar": 30,
+        "endLine": 185,
+        "endChar": 36
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55273abc_8d3cdad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "It seems that this method is only used once in this file and not called anywhere else. If this is the case, suggest to remove it and call its.ui.Info directly in WaitForFieldValueToBe.",
+      "range": {
+        "startLine": 216,
+        "startChar": 29,
+        "endLine": 216,
+        "endChar": 42
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ae5609_8d7f8fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "Please also port other parts of ui to uiauto.",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 34
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "814a5cf4_799b0a6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2751309 has been merged, please use uiauto/mouse",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33236f6f_9cc3a9e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 34
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83812834_63cfd0cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "the cl https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2750123 has been merged, use the new vkb?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3da4599_23e32c15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ac59cef_6cd3d8c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1efaf34_2889c788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 35
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c1adff3_c735f9a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2092077f_9c44faf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "Please port all ui to uiauto.",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef3c0a9_6e201cf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-14T23:59:21Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 35
+      },
       "revId": "1052e0e2eebc4bd2161e86de5d82ceb1d1b9b3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
