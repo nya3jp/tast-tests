@@ -312,6 +312,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6619ff7_c2a2c6c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-14T17:15:24Z",
+      "side": 1,
+      "message": "errors.Errorf(\"Red Pixels Percentage: %d\", prcnt)",
+      "parentUuid": "24a9b0d4_fc12a00c",
+      "range": {
+        "startLine": 214,
+        "startChar": 77,
+        "endLine": 214,
+        "endChar": 130
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7135072b_c22fcbe7",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
         "patchSetId": 2
