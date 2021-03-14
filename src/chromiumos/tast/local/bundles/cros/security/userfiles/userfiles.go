@@ -10,7 +10,7 @@ import (
 	"strings"
 
 	chk "chromiumos/tast/local/bundles/cros/security/filecheck"
-	"chromiumos/tast/local/cryptohome"
+	//"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
@@ -24,18 +24,18 @@ const (
 // This is a helper function called by security.UserFiles* tests.
 // Errors are reported via s.
 func Check(ctx context.Context, s *testing.State, user string) {
-	userDir, err := cryptohome.UserPath(ctx, user)
-	if err != nil {
-		s.Fatalf("Failed to get cryptohome dir for user %v: %v", user, err)
-	}
+	//userDir, err := cryptohome.UserPath(ctx, user)
+	//if err != nil {
+	//	s.Fatalf("Failed to get cryptohome dir for user %v: %v", user, err)
+	//}
 
 	isChronosUID := chk.UID(sysutil.ChronosUID)
 
-	chronosAccessGID, err := sysutil.GetGID("chronos-access")
-	if err != nil {
-		s.Fatal("Failed to find gid: ", err)
-	}
-	isChronosAccessGID := chk.GID(chronosAccessGID)
+	//chronosAccessGID, err := sysutil.GetGID("chronos-access")
+	//if err != nil {
+	//	s.Fatal("Failed to find gid: ", err)
+	//}
+	//isChronosAccessGID := chk.GID(chronosAccessGID)
 
 	checkPath := func(root string, patterns []*chk.Pattern) {
 		s.Log("Checking ", root)
@@ -65,12 +65,14 @@ func Check(ctx context.Context, s *testing.State, user string) {
 		chk.NewPattern(chk.AllPaths(), isChronosUID, chk.NotMode(022)),
 	})
 
-	checkPath(userDir, []*chk.Pattern{
-		chk.NewPattern(chk.Path("Downloads"), isChronosUID, isChronosAccessGID, chk.Mode(0710), chk.SkipChildren()),
-		// TODO(crbug.com/1056294): Re-add 'chk.Mode(0710)' below after the source of flake
-		// is identified.
-		chk.NewPattern(chk.Root(), isChronosUID, isChronosAccessGID),
-	})
+	// TODO(dlunev): Re-add the check with the new mode once
+	// http://crrev.com/c/2755367 is submitted.
+	//checkPath(userDir, []*chk.Pattern{
+	//	chk.NewPattern(chk.Path("Downloads"), isChronosUID, isChronosAccessGID, chk.Mode(0750), chk.SkipChildren()),
+	//	// TODO(crbug.com/1056294): Re-add 'chk.Mode(0710)' below after the source of flake
+	//	// is identified.
+	//	chk.NewPattern(chk.Root(), isChronosUID, isChronosAccessGID),
+	//})
 
 	// TODO(crbug.com/971919): Add additional vault checks from security_ProfilePermissions?
 }

@@ -119,10 +119,10 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("etc"), chk.Users("root"), chk.NotMode(022)),
 
 		chk.NewPattern(chk.Path("home/.shadow"), chk.Users("root"), chk.Groups("root"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Path("home/root"), chk.Users("root"), chk.Groups("root"), chk.Mode(0751|os.ModeSticky)),                    // directory itself
-		chk.NewPattern(chk.Tree("home/root"), chk.Users("root"), chk.Groups("root"), chk.Mode(0700), chk.SkipChildren()),              // top-level children
-		chk.NewPattern(chk.Path("home/user"), chk.Users("root"), chk.Groups("root"), chk.Mode(0755)),                                  // directory itself
-		chk.NewPattern(chk.Tree("home/user"), chk.Users("chronos"), chk.Groups("chronos-access"), chk.Mode(0700), chk.SkipChildren()), // top-level children
+		chk.NewPattern(chk.Path("home/root"), chk.Users("root"), chk.Groups("root"), chk.Mode(0751|os.ModeSticky)),       // directory itself
+		chk.NewPattern(chk.Tree("home/root"), chk.Users("root"), chk.Groups("root"), chk.Mode(0700), chk.SkipChildren()), // top-level children
+		chk.NewPattern(chk.Path("home/user"), chk.Users("root"), chk.Groups("root"), chk.Mode(0755)),                     // directory itself
+		//chk.NewPattern(chk.Tree("home/user"), chk.Users("chronos"), chk.Groups("chronos-access"), chk.Mode(0750), chk.SkipChildren()), // top-level children
 		chk.NewPattern(chk.Tree("home"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)),
 
 		chk.NewPattern(chk.Path("unencrypted/apkcache"), chk.Mode(0700), chk.SkipChildren()),
