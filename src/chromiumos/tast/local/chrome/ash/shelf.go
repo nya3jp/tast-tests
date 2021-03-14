@@ -436,7 +436,13 @@ func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestC
 	// Convert the gesture locations from screen coordinates to touch screen coordinates.
 	startX, startY := tcc.ConvertLocation(info.SwipeUp.SwipeStartLocation)
 	endX, endY := tcc.ConvertLocation(info.SwipeUp.SwipeEndLocation)
-
+	// Y coordinate returned from hotseat info might exceed the screen boundary. Adjust it if necessary.
+	maxY := tcc.Height - 1
+	if startY > maxY {
+		offset := startY - maxY
+		startY = maxY
+		endY = endY - offset
+	}
 	if err := stw.Swipe(ctx, startX, startY, endX, endY, 200*time.Millisecond); err != nil {
 		return errors.Wrap(err, "failed to swipe")
 	}

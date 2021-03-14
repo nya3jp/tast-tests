@@ -270,6 +270,8 @@ func (tsw *TouchscreenEventWriter) SetRotation(rotation int) error {
 // TouchCoordConverter manages the conversion between locations in DIP and
 // the TouchCoord of the touchscreen.
 type TouchCoordConverter struct {
+	Width  TouchCoord
+	Height TouchCoord
 	ScaleX float64
 	ScaleY float64
 }
@@ -278,6 +280,8 @@ type TouchCoordConverter struct {
 // given size.
 func (tsw *TouchscreenEventWriter) NewTouchCoordConverter(size coords.Size) *TouchCoordConverter {
 	return &TouchCoordConverter{
+		Width:  tsw.Width(),
+		Height: tsw.Height(),
 		ScaleX: float64(tsw.Width()) / float64(size.Width),
 		ScaleY: float64(tsw.Height()) / float64(size.Height),
 	}
