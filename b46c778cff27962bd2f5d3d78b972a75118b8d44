@@ -1,0 +1,441 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0634cc_50560642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/conference.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "Can you name these parameters? Particularly having names for string and bool args would be helpful.",
+      "range": {
+        "startLine": 15,
+        "startChar": 41,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e7b436_ea1f4435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/conference.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "Do we ever pass different *chrome.TestConn to these methods in a lifetime of Conference object? If not, I think we can pass it to a constructor and save it to a struct field.\n\nIt\u0027s fine to pass context.Context to all methods, of course.",
+      "range": {
+        "startLine": 15,
+        "startChar": 23,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe26bd9_2e41d127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "Are you going to add more files in this package? Otherwise you may want to consider merging it to ui/conference (as well as ui/conference/zoom).\n\nAs a side effect, you can unexport a few functions in ui.go.",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 18
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b726ed57_0822b293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "chrome/uiauto is now recommended over chrome/ui. Particularly it supports operation composition, possibly drastically reducing boilerplate code.\n\nhttps://groups.google.com/a/chromium.org/g/tast-users/c/bhDsp-nO3Ts\n\nIt would be nice if we can use chrome/uiauto.",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a561ae4_dc238ed7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "Can you export this type since it\u0027s returned by an exported function NewGoogleMeetConference?\n\nWe can still use it in other packages by :\u003d or via interfaces, but it\u0027s often inconvenient.",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9513240_eb7d28ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "Mind adding a comment why we use a loop here?",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44166b43_a8180f7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "10s sounds long. Is it possible to replace this with a polling with shorter cycle?",
+      "range": {
+        "startLine": 68,
+        "startChar": 32,
+        "endLine": 68,
+        "endChar": 46
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f73456b6_8f0114d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "We can omit this argument as we can capture tconn from the outer scope.\n\nIf you intend to isolate function scopes, it would be better to create a separate function, rather than an anonymous function.",
+      "range": {
+        "startLine": 95,
+        "startChar": 45,
+        "endLine": 95,
+        "endChar": 67
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47815326_f43fc54a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "Could you pass ctx to this function to align with siblings?\n\nAlternatively you can omit ctx from all siblings.",
+      "range": {
+        "startLine": 201,
+        "startChar": 29,
+        "endLine": 201,
+        "endChar": 31
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b455bf_b17bbe12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "Mind adding a comment why we need long timeout in this function?",
+      "range": {
+        "startLine": 202,
+        "startChar": 66,
+        "endLine": 202,
+        "endChar": 80
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27df865a_20cc93b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "nit: const wikiURL \u003d ...",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 8
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3491d0ad_dd63525e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "Timeout for this function and below are surprising long. Do we really need such long timeouts? If so would you mind adding comments?",
+      "range": {
+        "startLine": 492,
+        "startChar": 35,
+        "endLine": 492,
+        "endChar": 51
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1aae195_d1cecb10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "ditto: Do we need 20m?",
+      "range": {
+        "startLine": 647,
+        "startChar": 35,
+        "endLine": 647,
+        "endChar": 51
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777ddc8b_3ea170e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet/googlemeet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "You might want to inline toggleVideo/toggleAudio in VideoAudioControl to align with the way used in this file.",
+      "range": {
+        "startLine": 830,
+        "startChar": 5,
+        "endLine": 830,
+        "endChar": 16
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a93886f_1462e1ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "nit\u0026optional: To me, 500*time.Millisecond is easier to read because it\u0027s in the same order in English. But it\u0027s a matter of individual taste, I don\u0027t have a strong opinion.",
+      "range": {
+        "startLine": 37,
+        "startChar": 31,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e876a7f3_8f34938a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "Do you think we can reduce the interval, like 100ms? I guess that ClickUIByName is called from many places, \nthen it would be nice to optimize it a bit for efficiency.",
+      "range": {
+        "startLine": 42,
+        "startChar": 43,
+        "endLine": 42,
+        "endChar": 64
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d5b5c3_18a223c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "Would you mind adding a brief comment about these constants? Particularly it\u0027s not obvious to me why it\u0027s not 0.5.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4a09de_b285be6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "Why 5? Mind adding a comment?",
+      "range": {
+        "startLine": 72,
+        "startChar": 17,
+        "endLine": 72,
+        "endChar": 18
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9b0c0e_a1025d72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:36Z",
+      "side": 1,
+      "message": "Why don\u0027t we check errors of mouse.Click?\n\nIt\u0027s okay to skip checking errors of testing.Sleep since it returns only when ctx expired, in which case it returns immediately.",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 15
+      },
+      "revId": "b46c778cff27962bd2f5d3d78b972a75118b8d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
