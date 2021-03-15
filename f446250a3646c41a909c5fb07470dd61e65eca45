@@ -307,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfbb245a_c2653f67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T08:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7af1cc66_fa161e1b",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 3
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4414ab2_21194e1f",
@@ -508,6 +532,30 @@
       "writtenOn": "2021-03-15T05:48:08Z",
       "side": 1,
       "message": "I think we could just wrap the error here.",
+      "range": {
+        "startLine": 265,
+        "startChar": 2,
+        "endLine": 269,
+        "endChar": 3
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c992e24e_f269e602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T08:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eac9d88d_d92eb164",
       "range": {
         "startLine": 265,
         "startChar": 2,
