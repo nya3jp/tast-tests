@@ -6,7 +6,11 @@ package crash
 
 import (
 	"context"
+	"io/ioutil"
+	"path"
 	"path/filepath"
+	"regexp"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -15,6 +19,7 @@ import (
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -139,6 +144,37 @@ func ECCrash(ctx context.Context, s *testing.State) {
 			s.Log("Failed to save messages log")
 		}
 		s.Fatal("Failed to find crash files: " + err.Error())
+	}
+
+	// Verify that parsed EC crash does not contain WARNING/ERROR
+	failureRegexp := regexp.MustCompile(`^(ERROR|WARNING):.*$`)
+	for _, match := range res.Matches {
+		if !strings.HasSuffix(match.Regex, ".eccrash") {
+			continue
+		}
+
+		b, err := linuxssh.ReadFile(ctx, d.Conn(), match.Files[0])
+		if err != nil {
+			s.Error("Failed to read eccrash file: ", match.Files[0])
+			continue
+		}
+
+		hasError := false
+		lines := strings.Split(string(b), "\n")
+		for _, line := range lines {
+			if err := failureRegexp.FindString(line); err != "" {
+				hasError = true
+				s.Error("EC crash contains ", string(err))
+			}
+		}
+
+		if hasError {
+			localFile := filepath.Join(s.OutDir(), path.Base(match.Files[0]))
+			if err := ioutil.WriteFile(localFile, b, 0644); err != nil {
+				s.Log("Error writing local copy of the crash: ", err)
+			}
+
+		}
 	}
 
 	removeReq := &crash_service.RemoveAllFilesRequest{
