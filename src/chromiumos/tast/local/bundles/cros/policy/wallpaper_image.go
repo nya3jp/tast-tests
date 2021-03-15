@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -64,8 +65,8 @@ func getImgBytesFromFilePath(filePath string) ([]byte, error) {
 	return imgBytes, nil
 }
 
-// validateBackground takes a screenshot and check the percentage of the clr in the image, returns error if it's less than 90%.
-func validateBackground(ctx context.Context, cr *chrome.Chrome, clr color.Color) error {
+// validateBackground takes a screenshot and check the percentage of the clr in the image, returns error if it's less than expectedPercent%.
+func validateBackground(ctx context.Context, cr *chrome.Chrome, clr color.Color, expectedPercent int) error {
 	// Take a screenshot and check the red pixels percentage.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		img, err := screenshot.GrabScreenshot(ctx, cr)
@@ -76,8 +77,8 @@ func validateBackground(ctx context.Context, cr *chrome.Chrome, clr color.Color)
 		redPixels := imgcmp.CountPixelsWithDiff(img, clr, 10)
 		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
 		percent := redPixels * 100 / totalPixels
-		if percent < 90 {
-			return errors.Errorf("unexpected red pixels percentage: got %d / %d = %d%%; want at least 90%%", redPixels, totalPixels, percent)
+		if percent < expectedPercent {
+			return errors.Errorf("unexpected red pixels percentage: got %d / %d = %d%%; want at least %d%%", redPixels, totalPixels, percent, expectedPercent)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
@@ -95,6 +96,23 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	// Check if the current device is in tablet mode.
+	tablet, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to check tablet mode: ", err)
+	}
+
+	red := color.RGBA{255, 0, 0, 255}
+	blurredRed := color.RGBA{77, 26, 29, 255}
+	expectedPercent := 90
+	// The background color in tablets is a bit different.
+	// Since the launcher is always open in tablet mode and the apps icons took some space, the expected percentage is reduce to 70%.
+	if tablet {
+		red = color.RGBA{165, 13, 14, 255}
+		blurredRed = color.RGBA{83, 32, 31, 255}
+		expectedPercent = 70
 	}
 
 	// Open a keyboard device.
@@ -150,8 +168,7 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 
 			if param.wantImageCheck {
 				// Check red percentage of the desktop.
-				red := color.RGBA{255, 0, 0, 255}
-				if err := validateBackground(ctx, cr, red); err != nil {
+				if err := validateBackground(ctx, cr, red, expectedPercent); err != nil {
 					s.Error("Failed to validate wallpaper: ", err)
 				}
 			}
@@ -186,9 +203,7 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 				if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, 30*time.Second); err != nil {
 					s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
 				}
-
-				blurredRed := color.RGBA{77, 26, 29, 255}
-				if err := validateBackground(ctx, cr, blurredRed); err != nil {
+				if err := validateBackground(ctx, cr, blurredRed, expectedPercent); err != nil {
 					s.Error("Failed to validate wallpaper on lock screen: ", err)
 				}
 
