@@ -50,6 +50,23 @@
       "message": "LGTM from tast owner perspective. Please get another approval from test owner team according to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#summary ",
       "revId": "3e68b8c1f37bd5369399f9c062fc9cde09bf5aa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a456c6a_3f9d6428",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-03-15T10:56:05Z",
+      "side": 1,
+      "message": "Adding Sergey, since he knows Linux memory management and zram swap.",
+      "revId": "3e68b8c1f37bd5369399f9c062fc9cde09bf5aa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
