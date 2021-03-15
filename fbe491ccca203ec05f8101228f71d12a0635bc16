@@ -16,6 +16,23 @@
       "message": "Hi Tast Owner(s), please help take a look.  Thanks!",
       "revId": "fbe491ccca203ec05f8101228f71d12a0635bc16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a628847_ce4d0b88",
+        "filename": "src/chromiumos/tast/services/cros/arc/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-15T06:33:42Z",
+      "side": 1,
+      "message": "Looks unrelated? Could you remove?",
+      "revId": "fbe491ccca203ec05f8101228f71d12a0635bc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
