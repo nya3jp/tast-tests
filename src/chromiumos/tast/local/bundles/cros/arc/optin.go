@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -91,22 +92,43 @@ func setupChrome(ctx context.Context, s *testing.State) *chrome.Chrome {
 	return cr
 }
 
+// writeLog writes the log to test output directory.
+func writeLog(ctx context.Context, fileName string, data []byte) {
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		testing.ContextLog(ctx, "Failed to get out dir")
+		return
+	}
+
+	logPath := filepath.Join(dir, fileName)
+	err := ioutil.WriteFile(logPath, data, 0644)
+	if err != nil {
+		testing.ContextLogf(ctx, "Failed to save %q: %v", fileName, err)
+		return
+	}
+	testing.ContextLog(ctx, "Saved ", fileName)
+}
+
 // dumpLogCat saves logcat to test output directory.
-func dumpLogCat(ctx context.Context, s *testing.State, attempt int) {
+func dumpLogCat(ctx context.Context, attempt int) {
 	cmd := testexec.CommandContext(ctx, "/usr/sbin/android-sh", "-c", "/system/bin/logcat -d")
 	log, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		s.Log("Failed to pull logcat: ", err)
+		testing.ContextLog(ctx, "Failed to pull logcat: ", err)
 	}
 
 	fileName := fmt.Sprintf("logcat_%d.txt", attempt)
-	logcatPath := filepath.Join(s.OutDir(), fileName)
-	err = ioutil.WriteFile(logcatPath, log, 0644)
+	writeLog(ctx, fileName, log)
+}
+
+// dumpChromeLog saves chrome log to test output directory.
+func dumpChromeLog(ctx context.Context) {
+	log, err := ioutil.ReadFile(syslog.ChromeLogFile)
 	if err != nil {
-		s.Log("Failed to save logcat: ", err)
+		testing.ContextLog(ctx, "Failed to read ", syslog.ChromeLogFile)
 		return
 	}
-	s.Logf("Logcat saved to: %q", logcatPath)
+	writeLog(ctx, "chrome.txt", log)
 }
 
 // optinWithRetry retries optin on failure up to maxAttempts times.
@@ -123,9 +145,10 @@ func optinWithRetry(ctx context.Context, s *testing.State, cr *chrome.Chrome, ma
 			break
 		}
 
-		dumpLogCat(ctx, s, attempts)
+		dumpLogCat(ctx, attempts)
 
 		if attempts >= maxAttempts {
+			dumpChromeLog(ctx)
 			s.Fatal("Failed to optin. No more retries left: ", err)
 		}
 
