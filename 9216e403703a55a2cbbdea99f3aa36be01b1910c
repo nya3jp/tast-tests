@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "82a6a4dc_6a7f74b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Done that in different wording.\n\n\u003e if the policy was set to red image, then it shouldn\u0027t be changed to the a cat image in the preview.\nThis is not true. Even when the policy is in place, the user is still able to click on avatars and change the preview. I added a note about that.",
+      "parentUuid": "10052749_d37ea308",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1d7cd9ca_91d70efd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d8a616_347f1595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/user_avatar_image.jpg",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c47e3749_909664cd",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ee56677_64486637",
@@ -82,6 +118,30 @@
       "writtenOn": "2021-03-14T15:52:34Z",
       "side": 1,
       "message": "Add more info about what the test does.\ni.e.\n1. Open the changePicture page and preview cat image, then take a screenshot of the current avatar image.\n2. Reopen the same page again.\nif the policy was set to red image, then it shouldn\u0027t be changed to the a cat image in the preview.\notherwise it should remain as the one selected in the preview which is the cat image.",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b029af5_d84a4b75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "I agree on adding more info in Desc, however, IIUC, this should be a brief description and not a detailed one.\n\nI\u0027ve update the Desc, PTAL.",
+      "parentUuid": "3ee56677_64486637",
       "range": {
         "startLine": 36,
         "startChar": 9,
@@ -109,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e368aa6_f15564fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba1356e1_c9a57298",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77f7ab20_9be0f1ce",
@@ -132,6 +210,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "294a7b52_7d8ee09a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77f7ab20_9be0f1ce",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 1
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad2e7339_6c392f3f",
@@ -145,6 +247,30 @@
       "writtenOn": "2021-03-14T15:52:34Z",
       "side": 1,
       "message": "unused param",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 17
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa4c8a1a_0c35180b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad2e7339_6c392f3f",
       "range": {
         "startLine": 126,
         "startChar": 2,
@@ -201,6 +327,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1c4017d_216b3a45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "098788bd_c9c706fb",
+      "range": {
+        "startLine": 163,
+        "startChar": 27,
+        "endLine": 163,
+        "endChar": 42
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b038f21c_4fafb9ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17a3bb46_dac63720",
+      "range": {
+        "startLine": 163,
+        "startChar": 15,
+        "endLine": 163,
+        "endChar": 17
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2a6f74d_ad4dba5b",
@@ -214,6 +388,30 @@
       "writtenOn": "2021-03-14T15:52:34Z",
       "side": 1,
       "message": "chrome://os-settings/changePicture",
+      "range": {
+        "startLine": 164,
+        "startChar": 48,
+        "endLine": 164,
+        "endChar": 84
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6058b51b_b6887c61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "+1\n\nThanks!",
+      "parentUuid": "c2a6f74d_ad4dba5b",
       "range": {
         "startLine": 164,
         "startChar": 48,
@@ -243,6 +441,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6872e1f_00d7e73d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Do you mean to document the following uiauto.Combine()? If so, I think the first param should do exactly that. I\u0027ve updated it to include more info.",
+      "parentUuid": "f0c33126_0d11825c",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17cfe2ff_e78c5194",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
         "patchSetId": 2
@@ -254,6 +470,24 @@
       "writtenOn": "2021-03-14T15:52:34Z",
       "side": 1,
       "message": "you can delete this line if you navigated directly to changePicture",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5b0a30_51a02e3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17cfe2ff_e78c5194",
       "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -281,6 +515,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b800481_ad8c07ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf92f885_5224d999",
+      "range": {
+        "startLine": 178,
+        "startChar": 3,
+        "endLine": 178,
+        "endChar": 48
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c56fec7_0b4421af",
@@ -294,6 +552,30 @@
       "writtenOn": "2021-03-14T15:52:34Z",
       "side": 1,
       "message": "Take a screenshot of the preview image of the Cat user image.",
+      "range": {
+        "startLine": 185,
+        "startChar": 3,
+        "endLine": 185,
+        "endChar": 46
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c865f27_f6ce7f3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c56fec7_0b4421af",
       "range": {
         "startLine": 185,
         "startChar": 3,
@@ -329,6 +611,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e52e8d6e_c504b661",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Good point to include \"why\". I used a different wording for it, though, PTAL.",
+      "parentUuid": "c6c7d9cd_f05845ee",
+      "range": {
+        "startLine": 191,
+        "startChar": 3,
+        "endLine": 191,
+        "endChar": 54
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fda4fa44_bc328a4f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
         "patchSetId": 2
@@ -340,6 +646,30 @@
       "writtenOn": "2021-03-14T15:52:34Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 204,
+        "startChar": 3,
+        "endLine": 204,
+        "endChar": 50
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1137e5f5_cce8f9ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fda4fa44_bc328a4f",
       "range": {
         "startLine": 204,
         "startChar": 3,
@@ -399,6 +729,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5519c61c_1db26572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Thanks!\n\nI used s.Fatalf, instead. Is it very different?",
+      "parentUuid": "a6619ff7_c2a2c6c1",
+      "range": {
+        "startLine": 214,
+        "startChar": 77,
+        "endLine": 214,
+        "endChar": 130
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7135072b_c22fcbe7",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
         "patchSetId": 2
@@ -410,6 +764,24 @@
       "writtenOn": "2021-03-14T15:52:34Z",
       "side": 1,
       "message": "You should also check that when the policy is set, the user image is restricted and cannot be changed.",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46478de6_ce9d0c6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you mean. It sounds like the image is not restricted when the policy is set, however, the image won\u0027t be applied after the user close the window.\n\nMaybe I am missing something. Can you elaborate?",
+      "parentUuid": "7135072b_c22fcbe7",
       "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -439,6 +811,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31579c44_a62ff639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Maybe I don\u0027t get it.\n\nThis branch executes when the policy is not set, so the image should have been changed.\n\nCan you explain more?",
+      "parentUuid": "27c8cd3c_0ea7daee",
+      "range": {
+        "startLine": 217,
+        "startChar": 4,
+        "endLine": 217,
+        "endChar": 60
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f223b64c_5b02329e",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
         "patchSetId": 2
@@ -450,6 +846,30 @@
       "writtenOn": "2021-03-14T15:52:34Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 223,
+        "startChar": 58,
+        "endLine": 223,
+        "endChar": 109
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74a4e6fd_33dfca6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f223b64c_5b02329e",
       "range": {
         "startLine": 223,
         "startChar": 58,
