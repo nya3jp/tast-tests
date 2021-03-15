@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5901e96a_a0d97f89",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T03:56:11Z",
+      "side": 1,
+      "message": "I think it moves to the target location immediately after getting it, avoid the need of getting it in advance. It addresses the cases that the node only becomes available or changes location in the middle of a sequence of combined steps.",
+      "range": {
+        "startLine": 538,
+        "startChar": 7,
+        "endLine": 538,
+        "endChar": 14
+      },
+      "revId": "a79961ca8c3f834b2b19dbbf4ce0a91d4a527ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
