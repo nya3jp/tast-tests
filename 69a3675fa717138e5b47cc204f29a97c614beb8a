@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d228fc6f_c5f1c252",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:24:02Z",
+      "side": 1,
+      "message": "Thank you, this is a cool improvement to Chrome logs!\n",
+      "revId": "69a3675fa717138e5b47cc204f29a97c614beb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
