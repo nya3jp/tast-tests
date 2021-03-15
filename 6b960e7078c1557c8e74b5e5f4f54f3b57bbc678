@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd290e5_cc3b112f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-15T09:59:09Z",
+      "side": 1,
+      "message": "nit: Promote",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "6b960e7078c1557c8e74b5e5f4f54f3b57bbc678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "857949fa_59e7365d",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-03-12T15:39:44Z",
       "side": 1,
       "message": "Test is stable. The 1 failure is unrelated.\n\nhttps://cros-health-prod.googleplex.com/test/policy.AllowDinosaurEasterEgg",
+      "revId": "6b960e7078c1557c8e74b5e5f4f54f3b57bbc678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "609711d9_05c41ca7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-15T09:59:09Z",
+      "side": 1,
+      "message": "LGTM",
       "revId": "6b960e7078c1557c8e74b5e5f4f54f3b57bbc678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
