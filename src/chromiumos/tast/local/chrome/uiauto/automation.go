@@ -532,6 +532,28 @@ func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
 	}
 }
 
+// MouseMoveTo returns a function moving the mouse to hover on the center point of located node.
+// When duration is 0, it moves instantly to the specified location.
+// Otherwise, the cursor should move linearly during the period.
+// The advance of this function comparing to mouse.Move is that
+// it chains the location finder and execute it before mouse action.
+func (ac *Context) MouseMoveTo(finder *nodewith.Finder, duration time.Duration) Action {
+	return func(ctx context.Context) error {
+		location, err := ac.Location(ctx, finder)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get location of %v", finder)
+		}
+		return mouse.Move(ac.tconn, location.CenterPoint(), duration)(ctx)
+	}
+}
+
+// Sleep returns a function sleeping given time duration.
+func (ac *Context) Sleep(d time.Duration) Action {
+	return func(ctx context.Context) error {
+		return testing.Sleep(ctx, d)
+	}
+}
+
 // MakeVisible returns a function that calls makeVisible() JS method to make found node visible.
 func (ac *Context) MakeVisible(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
