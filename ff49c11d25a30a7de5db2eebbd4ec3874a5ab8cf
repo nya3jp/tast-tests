@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adca2e8b_c44fd697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:38Z",
+      "side": 1,
+      "message": "Please add context.Context to these functions as they\u0027re needed in ZoomConference implementations.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e681165e_96f6d891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:38Z",
+      "side": 1,
+      "message": "This looks like an output path, rather than a temporary path.",
+      "range": {
+        "startLine": 27,
+        "startChar": 89,
+        "endLine": 27,
+        "endChar": 96
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "389f6aed_72e5c75f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:38Z",
+      "side": 1,
+      "message": "Optional: IMO less special casing is better in regard to getting more code path coverage with fewer cases. For this reason, I would drop this prepare \u003d\u003d nil check, as well as cleanup !\u003d nil check below. Then we will panic immediately if we get nil functions.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ffba170_d2050325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:38Z",
+      "side": 1,
+      "message": "When we hit errors below (e.g. conf.SwitchTabs), we return without waiting for this goroutine. This results in a goroutine leak as a goroutine blocks on sending to an unbuffered channel.",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 5
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e395f1f0_077b2c08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_meet_service.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:38Z",
+      "side": 1,
+      "message": "Please avoid embedding the State.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8445e831_78b9d88b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_meet_service.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:38Z",
+      "side": 1,
+      "message": "nit: When returning an error, you can return nil as a response. Then you can save a few bytes.",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8452e8e_65ad7669",
+        "filename": "src/chromiumos/tast/services/cros/ui/google_meet_service.proto",
+        "patchSetId": 37
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:38Z",
+      "side": 1,
+      "message": "What do you think about merging this with ZoomService? I think it makes sense to merge the two into to a single service, say, ConferenceService.\n\nThen you can avoid separating out meet_type.proto.",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
