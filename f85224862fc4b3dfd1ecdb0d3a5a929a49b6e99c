@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a90f2b18_5a24043b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-15T03:16:59Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "f85224862fc4b3dfd1ecdb0d3a5a929a49b6e99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002652b8_8dab2cac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-15T03:16:59Z",
+      "side": 1,
+      "message": "nit: it might be preferred to declare a var inside than a named return, according to https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters : \"Don\u0027t name result parameters just to avoid declaring a var inside the function\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 40,
+        "endLine": 73,
+        "endChar": 44
+      },
+      "revId": "f85224862fc4b3dfd1ecdb0d3a5a929a49b6e99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1898fb_a72ba4ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-15T03:16:59Z",
+      "side": 1,
+      "message": "minor nit: \"got %v, want %v\" order might be preferred in golang:  https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 62
+      },
+      "revId": "f85224862fc4b3dfd1ecdb0d3a5a929a49b6e99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
