@@ -39,6 +39,48 @@
       "message": "why not just \"[ -d %q ]\"?",
       "revId": "5ad20895bb967dbcd6b83e30dad58e28106c6129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3302ab0c_9429f5b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-03-15T04:19:28Z",
+      "side": 1,
+      "message": "checking for the output bellow. I actually copied ad adjusted the check slightly from here [1], what would be a better way?\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/hwsec/home_files_helpers.go;l\u003d48?q\u003d%22%5B%20-f%20%25q%20%5D%22\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)$",
+      "parentUuid": "6f69113d_49c2796a",
+      "revId": "5ad20895bb967dbcd6b83e30dad58e28106c6129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd65553c_cd76cfee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-03-15T04:19:28Z",
+      "side": 1,
+      "message": "not sure what you mean, can you clarify?",
+      "parentUuid": "f01e3e6b_aa0828b6",
+      "range": {
+        "startLine": 118,
+        "startChar": 96,
+        "endLine": 118,
+        "endChar": 109
+      },
+      "revId": "5ad20895bb967dbcd6b83e30dad58e28106c6129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
