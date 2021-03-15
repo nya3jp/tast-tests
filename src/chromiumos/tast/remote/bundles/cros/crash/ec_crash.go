@@ -6,7 +6,12 @@ package crash
 
 import (
 	"context"
+	"io/ioutil"
+	"os"
+	"path"
 	"path/filepath"
+	"regexp"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -15,6 +20,7 @@ import (
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -139,6 +145,44 @@ func ECCrash(ctx context.Context, s *testing.State) {
 			s.Log("Failed to save messages log")
 		}
 		s.Fatal("Failed to find crash files: " + err.Error())
+	}
+
+	// Verify that parsed EC crash does not contain WARNING/ERROR
+	for _, match := range res.Matches {
+		if !strings.HasSuffix(match.Regex, ".eccrash") {
+			continue
+		}
+		localFile := filepath.Join(s.OutDir(), path.Base(match.Files[0]))
+		if err := linuxssh.GetFile(cleanupCtx, d.Conn(), match.Files[0], localFile); err != nil {
+			s.Error("Failed to save eccrash file: ", err)
+			continue
+		}
+		out, err := ioutil.ReadFile(filepath.Join(s.OutDir(), path.Base(match.Files[0])))
+		if err != nil {
+			s.Error("Failed to read eccrash file: ", match.Files[0])
+			continue
+		}
+
+		hasError := false
+		errorSigRegexp := regexp.MustCompile(`^ERROR:.*$`)
+		warningSigRegexp := regexp.MustCompile(`^WARNING:.*$`)
+		lines := strings.Split(string(out), "\n")
+		for _, line := range lines {
+			if err := errorSigRegexp.FindString(line); err != "" {
+				hasError = true
+				s.Error("Found error in EC crash parsing ", string(err))
+			} else if warn := warningSigRegexp.FindString(line); warn != "" {
+				hasError = true
+				s.Error("Found warning in EC crash parsing ", string(warn))
+			}
+		}
+
+		if !hasError {
+			if err := os.Remove(localFile); err != nil {
+				s.Log("Error removing local copy of the crash: ", err)
+			}
+
+		}
 	}
 
 	removeReq := &crash_service.RemoveAllFilesRequest{
