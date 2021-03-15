@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ded8790a_cb08e68d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "This feature (Type C PD identity parsing) requires devices with:\n1. \"new\" EC firmware (i.e running the TCPMv2 PD software stack)\n2. kernel v5.4 or newer\n\nI couldn\u0027t find a SoftwareDep for \"1\" (I didn\u0027t search for the dep for \"2\").\n\nAt present the list of devices is fairly limited:\n1. dedede-based\n2. volteer-based\n\nvolteer-based devices seem to have an issue associated with CC toggling (see https://b.corp.google.com/issues/182311191#comment41 and related comments for background).\n\nGiven all of the above, I decided to start this off as only using \"drawlat\" (dedede-based). I expect to expand this to include other dedede devices, volteer devices (once bug is fixed), and later all new devices (hopefully we can have a software dep for TCPMv2 by then).\n\nI\u0027ve also tested this on \"drawcia\" (also dedede-based), so I\u0027ll add that to the list of models.",
+      "parentUuid": "c8eea076_d2158b8d",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c86d68bc_d319a8b7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 17
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-15T16:24:33Z",
       "side": 1,
       "message": "Here and with other deferred cleanup functions, please reserve time for cleanup, per http://go/tast-writing#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e582d08b_5c358732",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c86d68bc_d319a8b7",
       "range": {
         "startLine": 71,
         "startChar": 17,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f275e80_a01852c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd5787b0_ea707b99",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83604c95_8f1a26a7",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5b8e4e1_010d5595",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83604c95_8f1a26a7",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5515683_108ef116",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-03-15T16:24:33Z",
       "side": 1,
       "message": "nit/style: This method can be more concise if you use *servo.Servo directly.\n\n    func runDPTest(ctx, context.Context, svo *servo.Servo, ...)\n    \n    // in main function:\n    svo :\u003d pxy.Servo()\n    runDPTest(ctx, svo, ...)",
+      "range": {
+        "startLine": 123,
+        "startChar": 36,
+        "endLine": 123,
+        "endChar": 52
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32c31818_b2e3952a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5515683_108ef116",
       "range": {
         "startLine": 123,
         "startChar": 36,
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c2e4495_53cf090a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cceb53b7_d0d9e21d",
+      "range": {
+        "startLine": 155,
+        "startChar": 17,
+        "endLine": 155,
+        "endChar": 73
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74cc858f_c1148cc8",
@@ -140,6 +272,30 @@
       "writtenOn": "2021-03-15T16:24:33Z",
       "side": 1,
       "message": "nit/style: This method can be more concise if you use *servo.Servo directly.\n\n    func setServoDPMode(ctx, context.Context, svo *servo.Servo, pinAssign string)\n    \n    // in main function:\n    svo :\u003d pxy.Servo()\n    setServoDPMode(ctx, svo, pinAssign)",
+      "range": {
+        "startLine": 179,
+        "startChar": 41,
+        "endLine": 179,
+        "endChar": 57
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08660c3e_92b6a4ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74cc858f_c1148cc8",
       "range": {
         "startLine": 179,
         "startChar": 41,
@@ -167,6 +323,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d6a8fb_1b75aa51",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8466cd1e_1c47b011",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6e805ab_8b3c33f8",
@@ -180,6 +354,24 @@
       "writtenOn": "2021-03-15T16:24:33Z",
       "side": 1,
       "message": "L209-215 can be simpler if you operate directly on the []byte output, rather than casting to string.\n\n    for _, device :\u003d range.bytes.Split(out, []byte(\"\\n\")) {\n\nThis would also regexp.MatchString in L211 to regexp.Match, which operates on []byte.",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03b7f45_9891dece",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6e805ab_8b3c33f8",
       "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -207,6 +399,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b48da90b_ca936f5d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69202b8e_38338b90",
+      "range": {
+        "startLine": 211,
+        "startChar": 21,
+        "endLine": 211,
+        "endChar": 69
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daf37940_c96d6247",
@@ -220,6 +436,24 @@
       "writtenOn": "2021-03-15T16:24:33Z",
       "side": 1,
       "message": "nit: I noticed sometimes you call `cat` directly, and sometimes you use linuxssh.ReadFile. Is this intentional? If not, it would be more consistent to pick one for the whole file.",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09257022_fe79d99a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daf37940_c96d6247",
       "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -241,6 +475,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad92fd11_7406a735",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7b6fb91_2bdcd10c",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b769ff15_d0538f93",
@@ -254,6 +506,24 @@
       "writtenOn": "2021-03-15T16:24:33Z",
       "side": 1,
       "message": "Recommend adding which pinAssign this was for.\n\n    return errors.Errorf(\"didn\u0027t find the right DP alternate mode registered for partner for pin assignment %s\", pinAssign)",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "530dbb36_0db07eb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b769ff15_d0538f93",
       "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -275,6 +545,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "453c3dbc_62203812",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32b2e5e2_7377ee72",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09e27563_337ac038",
@@ -288,6 +576,30 @@
       "writtenOn": "2021-03-15T16:24:33Z",
       "side": 1,
       "message": "nit: I recommend renaming this to \"WatchdogValue\", to be consistent with other value types in this file(such as V4RoleValue, PowerStateValue, and OnOffValue).",
+      "range": {
+        "startLine": 124,
+        "startChar": 13,
+        "endLine": 124,
+        "endChar": 17
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2e0ef64_dfb03837",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e27563_337ac038",
       "range": {
         "startLine": 124,
         "startChar": 13,
@@ -321,6 +633,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee563a1_846f0e67",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a592b127_84b25f34",
+      "range": {
+        "startLine": 340,
+        "startChar": 16,
+        "endLine": 340,
+        "endChar": 31
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2abfb92d_ccd8470b",
@@ -344,6 +680,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70844c1c_784f3df1",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2abfb92d_ccd8470b",
+      "range": {
+        "startLine": 346,
+        "startChar": 19,
+        "endLine": 346,
+        "endChar": 23
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbf4b1fe_634dbbb7",
@@ -357,6 +717,24 @@
       "writtenOn": "2021-03-15T16:24:33Z",
       "side": 1,
       "message": "nit: You can make this more concise:\n\n    args \u003d append([]string{\"usbc_action dp\"}, args...) // Prepends \"usbc_action dp\" to args\n    cmd :\u003d strings.Join(args, \" \")",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7603cd6e_bc5437fd",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T20:06:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf4b1fe_634dbbb7",
       "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
