@@ -30,7 +30,7 @@ func init() {
 			"cros-hwsec@chromium.org",
 			"zuan@chromium.org",
 		},
-		SoftwareDeps: []string{"tpm2"},
+		SoftwareDeps: []string{"gsc", "tpm2"},
 		Attr:         []string{"group:mainline", "informational"},
 	})
 }
