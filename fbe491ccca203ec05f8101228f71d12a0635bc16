@@ -33,6 +33,24 @@
       "message": "Looks unrelated? Could you remove?",
       "revId": "fbe491ccca203ec05f8101228f71d12a0635bc16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d45e065_c29854dd",
+        "filename": "src/chromiumos/tast/services/cros/arc/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-15T09:19:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a628847_ce4d0b88",
+      "revId": "fbe491ccca203ec05f8101228f71d12a0635bc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
