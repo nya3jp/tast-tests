@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9368d5_983ec59a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T00:54:50Z",
+      "side": 1,
+      "message": "LGTM but I have a few style comments.\n",
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a26221ae_7faa69f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T00:54:50Z",
+      "side": 1,
+      "message": "Passing around testing.State is discouraged since it contains too many fields and makes it difficult to tell what are inputs/outputs of a function.\n\nActually you don\u0027t need testing.State in writeLog/dumpLogCat/dumpChromeLog. Please try to replace:\n\n s.OutDir() -\u003e testing.ContextOutDir(ctx)\n s.Logf(...) -\u003e testing.ContextLogf(ctx, ...)",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 63
+      },
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd928ce_ed9dd136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T00:54:50Z",
+      "side": 1,
+      "message": "Use %v to format an error.",
+      "range": {
+        "startLine": 100,
+        "startChar": 29,
+        "endLine": 100,
+        "endChar": 31
+      },
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1da4fe9_7f856e15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T00:54:50Z",
+      "side": 1,
+      "message": "logPath is a temporary directory path on the DUT, so it\u0027s not useful after a test finishes and output files are copied to cloud storage. I think you can simply write a file name:\n\n testing.ContextLog(ctx, \"Saved \", fileName)",
+      "range": {
+        "startLine": 103,
+        "startChar": 37,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f579e75_4375c20b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T00:54:50Z",
+      "side": 1,
+      "message": "nit: Try to avoid + for string concatenations; it\u0027s not very common in Go.\n\nIn this case you can just separate them with commas because logging functions take arbitrary number of arguments.\n\n testing.ContextLog(ctx, \"Failed to read \", syslog.ChromeLogFile)",
+      "range": {
+        "startLine": 122,
+        "startChar": 25,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "350652c4_78b7dbe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T00:54:50Z",
+      "side": 1,
+      "message": "style: Failed to ...\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 122,
+        "startChar": 9,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ccad99_97aeaa87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T00:54:50Z",
+      "side": 1,
+      "message": "nit: casting is not necessary, it\u0027s already []byte.",
+      "range": {
+        "startLine": 125,
+        "startChar": 27,
+        "endLine": 125,
+        "endChar": 42
+      },
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
