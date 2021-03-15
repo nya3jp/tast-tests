@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cbd194b_6b56fa24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-03-15T18:32:31Z",
+      "side": 1,
+      "message": "~600-800kb. I think it is still acceptable.",
+      "parentUuid": "845d7e06_e30e0a15",
+      "revId": "a2179f6873c05434c8c4506082fec1693f291b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7a58115_84dae5bf",
@@ -83,6 +101,24 @@
       "writtenOn": "2021-03-15T08:06:39Z",
       "side": 1,
       "message": "nit: not useful. You can check if the files are present.",
+      "revId": "a2179f6873c05434c8c4506082fec1693f291b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dc20f84_65b6d2ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-03-15T18:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1a60149_d9b0c671",
       "revId": "a2179f6873c05434c8c4506082fec1693f291b86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
