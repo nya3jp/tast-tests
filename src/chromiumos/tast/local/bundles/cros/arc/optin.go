@@ -17,18 +17,7 @@ import (
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
-
-// TODO(b/177341225): Stabilize optin test.
-var optinUnstableModels = []string{
-	"kled",
-	"helios",
-	"pantheon",
-	"drawcia",
-	"veyron_tiger",
-	"volteer2",
-}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -40,30 +29,30 @@ func init() {
 			"khmel@chromium.org", // author.
 		},
 		Attr: []string{"group:mainline"},
-		Vars: []string{"ui.gaiaPoolDefault"}, // TODO(mhasank): add VarDeps when supported.
+		Vars: []string{"ui.gaiaPoolDefault"}, // TODO(crbug.com/1183238): add VarDeps when supported.
 		SoftwareDeps: []string{
 			"chrome",
 			"chrome_internal",
 		},
 		Params: []testing.Param{{
+			Val:               3,
 			ExtraAttr:         []string{"informational"}, // TODO(b/177341225): remove after stabilized.
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(optinUnstableModels...)),
 		}, {
 			Name:              "unstable",
+			Val:               1,
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Model(optinUnstableModels...)),
 		}, {
 			Name:              "vm",
+			Val:               3,
 			ExtraAttr:         []string{"informational"}, // TODO(b/177341225): remove after stabilized.
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(optinUnstableModels...)),
 		}, {
 			Name:              "vm_unstable",
+			Val:               1,
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Model(optinUnstableModels...)),
 		}},
 		Timeout: 16 * time.Minute,
 	})
@@ -76,7 +65,7 @@ func Optin(ctx context.Context, s *testing.State) {
 
 	s.Log("Performing optin")
 
-	const maxAttempts = 3 // TODO(b/177341225): remove after stabilized.
+	maxAttempts := s.Param().(int)
 	optinWithRetry(ctx, s, cr, maxAttempts)
 }
 
