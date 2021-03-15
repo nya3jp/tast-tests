@@ -77,6 +77,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "da7f568a_808c731f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-15T15:54:29Z",
+      "side": 1,
+      "message": "Thanks! Let me add it in a follow up CL to have easier bisect\n(IIRC hana is undergoing a kernel uprev and is flaky).",
+      "parentUuid": "9f4dbd40_bd55923b",
+      "range": {
+        "startLine": 443,
+        "startChar": 74,
+        "endLine": 443,
+        "endChar": 75
+      },
+      "revId": "221a6dc6113286267239e00472d9a0033531681c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e971064e_d59a2b2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
         "patchSetId": 2
