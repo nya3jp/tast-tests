@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73e61970_bc86f2e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:08:49Z",
+      "side": 1,
+      "message": "I was not added to reviewers explicitly :), but I reviewed it in a relation to crrev.com/c/2605503.",
+      "revId": "d2f9e40dd4e8e98dcf1a8f21d3a4beae0f23d948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fd80580_dfabd6c3",
