@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "224095bc_a583d03d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-03-15T22:55:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddf99be8_d1b17637",
+      "revId": "cdb5e991232718643790b7a4388223684e4268ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "508ce6a9_88dd3dcd",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-15T22:45:17Z",
       "side": 1,
       "message": "initSharedMounts :\u003d []string{}  (use :\u003d whenever possible)",
+      "revId": "cdb5e991232718643790b7a4388223684e4268ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea8499b2_397898bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-03-15T22:55:42Z",
+      "side": 1,
+      "message": "Looks like preferred is actually var specifically for initializing empty slices: https://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "parentUuid": "508ce6a9_88dd3dcd",
       "revId": "cdb5e991232718643790b7a4388223684e4268ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
