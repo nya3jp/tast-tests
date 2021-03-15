@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dbb03d0_08e8cf14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-15T18:05:30Z",
+      "side": 1,
+      "message": "Hi All,\n\nPlease take a final look at the test. I\u0027ve changed the logic piece (line 171) from \"Closing the OS setting page\" to \"Clicking Back button, instead\". This is because the test fails in Tablet mode as there is no \"Close\" button (thanks to Oleh who spotted that and informed me).\n\nThanks!",
+      "revId": "d6d72559f86e7a23fcd98f5f31917c47c56e2cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
