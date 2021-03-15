@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ba5c3d2_ccc60199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-15T01:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a26221ae_7faa69f2",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 63
+      },
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acd928ce_ed9dd136",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c219aa25_d4354bd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-15T01:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd928ce_ed9dd136",
+      "range": {
+        "startLine": 100,
+        "startChar": 29,
+        "endLine": 100,
+        "endChar": 31
+      },
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1da4fe9_7f856e15",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-15T00:54:50Z",
       "side": 1,
       "message": "logPath is a temporary directory path on the DUT, so it\u0027s not useful after a test finishes and output files are copied to cloud storage. I think you can simply write a file name:\n\n testing.ContextLog(ctx, \"Saved \", fileName)",
+      "range": {
+        "startLine": 103,
+        "startChar": 37,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "775cbf34_39f38270",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-15T01:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1da4fe9_7f856e15",
       "range": {
         "startLine": 103,
         "startChar": 37,
@@ -133,6 +205,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37aea6cb_eaea4222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-15T01:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "350652c4_78b7dbe1",
+      "range": {
+        "startLine": 122,
+        "startChar": 9,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4402f455_15c9dbb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-15T01:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f579e75_4375c20b",
+      "range": {
+        "startLine": 122,
+        "startChar": 25,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1ccad99_97aeaa87",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-03-15T00:54:50Z",
       "side": 1,
       "message": "nit: casting is not necessary, it\u0027s already []byte.",
+      "range": {
+        "startLine": 125,
+        "startChar": 27,
+        "endLine": 125,
+        "endChar": 42
+      },
+      "revId": "7350a20e5ea15c1b1e839871eefa50da72cc17c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1589e21d_791f33e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-15T01:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ccad99_97aeaa87",
       "range": {
         "startLine": 125,
         "startChar": 27,
