@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd92ec49_e8c8bba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T06:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e0333a6_f40ca370",
+      "range": {
+        "startLine": 98,
+        "startChar": 43,
+        "endLine": 98,
+        "endChar": 51
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a83c73f_f74e99e8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-15T05:48:08Z",
       "side": 1,
       "message": "Stream",
+      "range": {
+        "startLine": 130,
+        "startChar": 43,
+        "endLine": 130,
+        "endChar": 51
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a4bd612_3f822380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T06:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a83c73f_f74e99e8",
       "range": {
         "startLine": 130,
         "startChar": 43,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f8dc35c_29902ca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T06:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ab61bb0_2d95c611",
+      "range": {
+        "startLine": 170,
+        "startChar": 43,
+        "endLine": 170,
+        "endChar": 51
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9dc679b_f1db6d4e",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba293952_50e7090e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T06:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9dc679b_f1db6d4e",
+      "range": {
+        "startLine": 202,
+        "startChar": 43,
+        "endLine": 202,
+        "endChar": 51
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "713c8ce6_de57bd6b",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-03-15T05:48:08Z",
       "side": 1,
       "message": "Does it still make sense to call this if pageConn.CloseTarget(ctx) fails?",
+      "range": {
+        "startLine": 235,
+        "startChar": 11,
+        "endLine": 235,
+        "endChar": 27
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a49fb7_12ddb22a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T06:29:50Z",
+      "side": 1,
+      "message": "Yes, I think so. We also do the same thing in cca.go. [1]\n\n[1]: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/camera/cca/cca.go;rcl\u003def721429eb04c4812492e0230649709d7715b11f;l\u003d287",
+      "parentUuid": "713c8ce6_de57bd6b",
       "range": {
         "startLine": 235,
         "startChar": 11,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b37f65bf_989f1ed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T06:29:50Z",
+      "side": 1,
+      "message": "Can we combine multiple errors into one? I assume that we cannot do it so I only report the error first occurs and log the reamaining.",
+      "parentUuid": "badbfeea_89d92912",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 3
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4414ab2_21194e1f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
         "patchSetId": 6
@@ -152,6 +296,30 @@
       "writtenOn": "2021-03-15T05:48:08Z",
       "side": 1,
       "message": "retErr !\u003d nil \u0026\u0026 logError",
+      "range": {
+        "startLine": 243,
+        "startChar": 4,
+        "endLine": 243,
+        "endChar": 12
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61263e2_33312724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T06:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4414ab2_21194e1f",
       "range": {
         "startLine": 243,
         "startChar": 4,
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d93ee762_05e3a4e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T06:29:50Z",
+      "side": 1,
+      "message": "Since in this method, we also checked if stream is already closed unexpectedly, I think the information is insufficient if I named it as closeStream(). Therefore, I named it checkAndCloseStream. For closing web page, we just close it without checking any state.",
+      "parentUuid": "a47e2471_681881e4",
+      "range": {
+        "startLine": 249,
+        "startChar": 5,
+        "endLine": 249,
+        "endChar": 24
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffc25ee4_a480153a",
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0c50bfe_bf139187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T06:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffc25ee4_a480153a",
+      "range": {
+        "startLine": 259,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 7
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5714acc_b3b15679",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-03-15T05:48:08Z",
       "side": 1,
       "message": "Does it make sense to call this if trackState.Call fails or hasEnded is true?",
+      "range": {
+        "startLine": 264,
+        "startChar": 11,
+        "endLine": 264,
+        "endChar": 29
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1db5528a_8ac7b152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T06:29:50Z",
+      "side": 1,
+      "message": "Yes, I think so. Since we need to release that JSObject anyways even when any calls to it fails.",
+      "parentUuid": "a5714acc_b3b15679",
       "range": {
         "startLine": 264,
         "startChar": 11,
@@ -267,6 +507,30 @@
       "writtenOn": "2021-03-15T05:48:08Z",
       "side": 1,
       "message": "retErr !\u003d nil \u0026\u0026 logError",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 12
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da5c9be_28ea1d33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T06:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9893f29_997707ec",
       "range": {
         "startLine": 272,
         "startChar": 4,
