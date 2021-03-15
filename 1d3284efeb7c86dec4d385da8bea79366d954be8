@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ced757e5_225c71e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-03-15T15:52:23Z",
+      "side": 1,
+      "message": "Merge approved in https://b.corp.google.com/issues/182610370#comment16\n",
+      "revId": "1d3284efeb7c86dec4d385da8bea79366d954be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
