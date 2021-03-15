@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d298d0d_22f55e28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T15:38:10Z",
+      "side": 1,
+      "message": "Ping -- Mike, still planning to do anything with this CL?",
+      "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "9e072a36_8debbf02",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
@@ -20,10 +38,10 @@
         "endChar": 77
       },
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "dbade301_63c2219e",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
@@ -37,10 +55,10 @@
       "side": 1,
       "message": "I don\u0027t think you need this? L62 can just be :\u003d right?",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1a168317_13cf2d25",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
@@ -55,10 +73,10 @@
       "message": "i tried that before, but then i get an error due to the dst handling in the same/previous line\n\ni\u0027m not an expert in Go at all, so maybe there\u0027s a way to declare |dst| without the :\u003d messing it up",
       "parentUuid": "dbade301_63c2219e",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "dd14086f_c03cc08f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
@@ -73,10 +91,10 @@
       "message": "I think the convention here is to not use an if-initialization in L62:\n\n    dst, err :\u003d os.Create(script)\n    if err !\u003d nil {\n        s.Fatalf(\"Failed to create %v: %v\", script, err)\n    }\n\nThen you can delete both L57 and L61.\n\nThe if-initialization is typically used when you\u0027re declaring variables for the local scope. https://golang.org/doc/effective_go.html#if",
       "parentUuid": "1a168317_13cf2d25",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f8b14106_9cb88863",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
@@ -90,10 +108,10 @@
       "side": 1,
       "message": "Using CombinedOutput as on L79 might not work well[1]. Any reason not to look in stdout and stderr separately?\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#CombinedOutput",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "324ce19d_c977fa8b",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
@@ -108,10 +126,10 @@
       "message": "for the errors i\u0027m testing, i don\u0027t think this problem applies.  the output is line-by-line (so it should get flushed), and we\u0027re specifically emitting only one or two lines total.\n\ni could decouple them, but it would require adding more boilerplate tests, and combining them simplifies the test logic below.",
       "parentUuid": "f8b14106_9cb88863",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "fbc691bc_c9cf2621",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
@@ -125,10 +143,10 @@
       "side": 1,
       "message": "just return after this and unindent the lines below (and you can also remove the return on L82 after that)",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "addab269_5c009929",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
@@ -143,10 +161,10 @@
       "message": "i see what you\u0027re going for, but i\u0027m not sure that the result is better.  it seems like it\u0027s optimizing for the wrong thing (indentation over clarity).\n\nis_exec_path basically selects between two sets of test modes rather than a short-circuit for larger logic.",
       "parentUuid": "fbc691bc_c9cf2621",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d00023b7_0a0f7e8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
@@ -161,10 +179,10 @@
       "message": "To me this block reads as a \"fast success\" because we don\u0027t check should_fail. Perhaps that was a mistake.\n\nHowever, if these are really two sets of test modes, I would say it would be more clear to factor out the script creation and do that once at the beginning of runTestCase for each path. Then, split this function into one that deals with exec paths and one that deals with noexec paths, since the body of this function would then be almost all inside that condition other than running the script and getting its output. Then the two test modes can be clearly separated, and we don\u0027t need to pass an unused should_fail value when is_exec_path \u003d\u003d true, which threw me off when first reading this test and is IMO a bigger clarity problem.",
       "parentUuid": "addab269_5c009929",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b41fc16c_0e887d24",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
@@ -178,10 +196,10 @@
       "side": 1,
       "message": "I don\u0027t think it\u0027s necessary here, but if you think it would be helpful to see independent results for sh/dash/bash, then you might consider structuring this as a parameterized test.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a6ede534_5e91d65b",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/shell_noexec.go",
@@ -195,8 +213,7 @@
       "side": 1,
       "message": "Might be overkill, but you can combine this block and the L123-134 block with the table-driven test pattern.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
       "revId": "e8309ed56748d07126b4165527f035b725b9db3b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
