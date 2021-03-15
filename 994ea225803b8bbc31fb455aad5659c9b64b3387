@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "862f3a93_4f4b8aa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/show_low_disk_space_notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-15T08:23:13Z",
+      "side": 1,
+      "message": "Done in the next CL.",
+      "parentUuid": "bd2b8f99_545c4f94",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 65
+      },
+      "revId": "994ea225803b8bbc31fb455aad5659c9b64b3387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6d98e08_7d42288f",
@@ -82,6 +106,30 @@
         "startChar": 66,
         "endLine": 78,
         "endChar": 68
+      },
+      "revId": "994ea225803b8bbc31fb455aad5659c9b64b3387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe288528_50940fad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/show_low_disk_space_notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-15T08:23:13Z",
+      "side": 1,
+      "message": "That\u0027s less clear. No space should have been cleaned.",
+      "parentUuid": "d6d98e08_7d42288f",
+      "range": {
+        "startLine": 78,
+        "startChar": 13,
+        "endLine": 78,
+        "endChar": 51
       },
       "revId": "994ea225803b8bbc31fb455aad5659c9b64b3387",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
