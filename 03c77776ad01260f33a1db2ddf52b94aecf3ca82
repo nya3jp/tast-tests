@@ -16,6 +16,46 @@
       "message": "Hi Renuga, \n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "03c77776ad01260f33a1db2ddf52b94aecf3ca82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dbf2023_afe50b9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-03-15T18:59:18Z",
+      "side": 1,
+      "message": "I see that other checks in this file behave this way, but why is this a skip and not an error?  Presumably you shouldn\u0027t call this function when the device is in tablet mode, and if the device is in tablet mode then something went wrong.  It seems dangerous that is\u0027s possible to silently /not/ run a check when this function is called.",
+      "revId": "03c77776ad01260f33a1db2ddf52b94aecf3ca82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57bc1612_d5d034fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2021-03-15T18:59:18Z",
+      "side": 1,
+      "message": "looks like you\u0027re clicking right on the upper left corner - do you want to move it over a bit?",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 494,
+        "endChar": 13
+      },
+      "revId": "03c77776ad01260f33a1db2ddf52b94aecf3ca82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
