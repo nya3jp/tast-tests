@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a99355e_c12962b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-15T04:52:32Z",
+      "side": 1,
+      "message": "Don\u0027t you need to collect the diffs at the end?\n\nIf it is because of the DiffPerConfigOrDie, perhaps put a comment here where the missing defer should go for others looking at this as example code.",
+      "revId": "f475bc59070f6aa45b514e68e16b4c94f0bc7dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d01e8a02_1e56ed80",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-15T04:52:32Z",
+      "side": 1,
+      "message": "not for this cl:  I\u0027m now wondering if we can be smarter here.  Since the user is giving us a UI node, can we walk back up the tree and see if it is contained in a notification?  If it isn\u0027t, hide any notification, if it is, skip the hiding?",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 36
+      },
+      "revId": "f475bc59070f6aa45b514e68e16b4c94f0bc7dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "088964d9_57dd8219",
+        "filename": "src/chromiumos/tast/local/screenshot/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-15T04:52:32Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be easier to privatize the Region and create a Region accessor function that fills in the default if necessary?",
+      "range": {
+        "startLine": 15,
+        "startChar": 17,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "f475bc59070f6aa45b514e68e16b4c94f0bc7dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "975bc9fc_4c02fdbe",
+        "filename": "src/chromiumos/tast/local/screenshot/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-15T04:52:32Z",
+      "side": 1,
+      "message": "c.Region \u003d\u003d \"\"?",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "f475bc59070f6aa45b514e68e16b4c94f0bc7dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db06afa8_5937f8f8",
+        "filename": "src/chromiumos/tast/local/screenshot/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-15T04:52:32Z",
+      "side": 1,
+      "message": "What if the user explicitly set it to the \"us\" region?  Why are we hiding the default?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "f475bc59070f6aa45b514e68e16b4c94f0bc7dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e24fcf32_6d23ebdc",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-15T04:52:32Z",
+      "side": 1,
+      "message": "This should probably be named Finder?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 7
+      },
+      "revId": "f475bc59070f6aa45b514e68e16b4c94f0bc7dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
