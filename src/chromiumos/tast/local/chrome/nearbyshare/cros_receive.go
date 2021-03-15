@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 )
 
 // ReceiveSurface is used to control the Nearby Share high-visibility receiving flow.
@@ -35,13 +34,6 @@ func (r *ReceiveSurface) Close(ctx context.Context) error {
 // We can control receiving with the page's settings-nearby-share-subpage and nearby-share-receive-dialog elements.
 // TODO(crbug/1173190): Replace with public test functions when available.
 const (
-	settingsURL             = "chrome://os-settings/"
-	nearbySettingsURL       = "multidevice/nearbyshare"
-	nearbySettingsSubpageJS = `document.querySelector("os-settings-ui").shadowRoot` +
-		`.querySelector("os-settings-main").shadowRoot` +
-		`.querySelector("os-settings-page").shadowRoot` +
-		`.querySelector("settings-multidevice-page").shadowRoot` +
-		`.querySelector("settings-nearby-share-subpage")`
 	showHighVisJS        = nearbySettingsSubpageJS + `.showHighVisibilityPage_()`
 	receiveDialogJS      = nearbySettingsSubpageJS + `.shadowRoot.querySelector("nearby-share-receive-dialog")`
 	receiveShareTargetJS = receiveDialogJS + `.shareTarget`
@@ -51,20 +43,11 @@ const (
 
 // StartReceiving initiates high-visibility receiving from chrome://os-settings.
 func StartReceiving(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*ReceiveSurface, error) {
-	_, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, nearbySettingsURL, func(context.Context) error { return nil })
+	settingsConn, err := nearbySettingsConn(ctx, tconn, cr)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to launch OS Settings to Nearby Share page")
+		return nil, err
 	}
-
-	receiveConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(settingsURL+nearbySettingsURL))
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to start Chrome session to OS settings")
-	}
-	if err = receiveConn.WaitForExpr(ctx, nearbySettingsSubpageJS); err != nil {
-		return nil, errors.Wrap(err, "failed waiting for nearby subpage to load")
-	}
-
-	receiveSurface := &ReceiveSurface{conn: receiveConn}
+	receiveSurface := &ReceiveSurface{conn: settingsConn}
 
 	// Start high-vis receiving.
 	if err := receiveSurface.conn.Eval(ctx, showHighVisJS, nil); err != nil {
