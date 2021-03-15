@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af75b31_42fb5757",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-03-15T19:18:35Z",
+      "side": 1,
+      "message": "LGTM but please fix the nits.",
+      "revId": "ee360ef372e61014d764e1912f1b16846b07de50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab8bcaa_ba1b5889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-03-15T19:18:35Z",
+      "side": 1,
+      "message": "Might want to avoid adding extra line to avoid messing up the \u0027git blame\u0027 log",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 0
+      },
+      "revId": "ee360ef372e61014d764e1912f1b16846b07de50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "451a21dc_21f1f562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-03-15T19:18:35Z",
+      "side": 1,
+      "message": "Nit: end with period.",
+      "range": {
+        "startLine": 136,
+        "startChar": 56,
+        "endLine": 136,
+        "endChar": 62
+      },
+      "revId": "ee360ef372e61014d764e1912f1b16846b07de50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
