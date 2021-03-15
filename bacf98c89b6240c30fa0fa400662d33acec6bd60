@@ -16,6 +16,23 @@
       "message": "Hi vsavu@,\n\nI\u0027ve written a new Tast test that involves 1. a Managed Guest Session, 2. a Device Login Screen Extension and 3. tests the chrome.login Extension API.\n\nI used a manually written policy blob since 1. the Go definition for DeviceLocalAccounts policy has the wrong type and 2. public accounts policy is not supported by fakedms.NewPolicyBlob().\n\nFor the test.Attr, I used \"group:enrollment\" since the test requires the device to be enterprise enrolled.\n\nPTAL!\n\nThanks,\nJit",
       "revId": "bacf98c89b6240c30fa0fa400662d33acec6bd60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e36a5d7_cf3e522f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-15T09:15:52Z",
+      "side": 1,
+      "message": "Hi vsavu@,\n\nI\u0027ve written a new Tast test that involves 1. a Managed Guest Session, 2. a Device Login Screen Extension and 3. tests the chrome.login Extension API.\n\nI used a manually written policy blob since 1. the Go definition for DeviceLocalAccounts policy has the wrong type and 2. public accounts policy is not supported by fakedms.NewPolicyBlob().\n\nFor the test.Attr, I used \"group:enrollment\" since the test requires the device to be enterprise enrolled.\n\nPTAL!\n\nThanks,\nJit",
+      "revId": "bacf98c89b6240c30fa0fa400662d33acec6bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
