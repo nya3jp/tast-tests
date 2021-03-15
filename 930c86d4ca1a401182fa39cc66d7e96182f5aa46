@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d682092e_0025c34f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-15T12:48:28Z",
+      "side": 1,
+      "message": "extra .",
+      "range": {
+        "startLine": 75,
+        "startChar": 97,
+        "endLine": 75,
+        "endChar": 98
+      },
+      "revId": "930c86d4ca1a401182fa39cc66d7e96182f5aa46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
