@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf01568e_dab42a32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-15T22:00:55Z",
+      "side": 1,
+      "message": "Removed hostapd changes for now. When we need these changes I\u0027ll add them back. ",
+      "revId": "af08779a509bc361966d047166af609f435834dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

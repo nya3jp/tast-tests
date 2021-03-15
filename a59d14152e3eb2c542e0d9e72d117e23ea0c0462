@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "602d412b_d60cdc22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-15T22:00:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "21184446_cf78f57a",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "40a73af0_6f1c39d0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -324,6 +348,30 @@
       "writtenOn": "2021-01-20T20:47:46Z",
       "side": 1,
       "message": "Will you actually need to modify the hostapd package? Your current setup doesn\u0027t actually run hostapd anywhere -- you\u0027re just using a static (commercial) AP. I suppose changes like this aren\u0027t totally harmful, but they\u0027re not really complete either; hostapd.conf would expect more configuration (such as \"ieee80211ax\u003d1\"; see http://w1.fi/cgit/hostap/tree/hostapd/hostapd.conf).\n\nIf you intend to eventually do some representation of the precise AP configuration, I wonder if that should be a new type, rather than overloading the hostapd package.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d3af70_2aa5842a",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-15T22:00:55Z",
+      "side": 1,
+      "message": "Yeah. It was for future work. I do agree with potentially not overloading hostapd, depending on the actual use for this. I\u0027ll remove this from this CL until I need it.",
+      "parentUuid": "5f74b757_5ef8f049",
       "range": {
         "startLine": 35,
         "startChar": 0,
