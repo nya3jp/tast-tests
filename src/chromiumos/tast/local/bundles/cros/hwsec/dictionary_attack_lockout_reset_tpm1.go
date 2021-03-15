@@ -34,7 +34,10 @@ func init() {
 			"cros-hwsec@chromium.org",
 		},
 		SoftwareDeps: []string{"tpm1"},
-		Attr:         []string{"group:mainline"},
+		// Note that this test is currently disabled.
+		// TODO(b/181291715): Determine if we still want this test, or we want a more accurate measure of the effectiveness
+		// of reactive trigger of DA reset, for the AUTH2FAIL error is not tested here, and it strongly rely the knowledge
+		// of what error of a failed auth command results in.
 	})
 }
 
@@ -102,6 +105,7 @@ func DictionaryAttackLockoutResetTPM1(ctx context.Context, s *testing.State) {
 	}
 
 	// Check counter again, should be 1 because we tried to write NVRAM space with an incorrect password.
+	// TODO(b/181291715): Change it to the right expectation before re-enabling the test, if we ever want to keep this test.
 	info, err = tpmManager.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
