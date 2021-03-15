@@ -33,6 +33,24 @@
       "message": "Add hardware.SensorRing to depend on !iioservice.",
       "revId": "392e560bd508497c35b673fdbebe6554fb5b4190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fd4a8de_214c618a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-03-15T07:18:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a166c2be_5e1518ce",
+      "revId": "392e560bd508497c35b673fdbebe6554fb5b4190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
