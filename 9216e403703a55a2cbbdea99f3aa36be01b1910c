@@ -94,6 +94,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba1356e1_c9a57298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-15T13:14:29Z",
+      "side": 1,
+      "message": "Please use fixture. See: If3aeb23b2e1852d0059186bab79ab4e388396560",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f7ab20_9be0f1ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-15T13:14:29Z",
+      "side": 1,
+      "message": "nit: You use the variable far from here, please use a longer name. E.g. scaleFactor",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 1
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad2e7339_6c392f3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
         "patchSetId": 2
@@ -133,6 +173,29 @@
         "startChar": 27,
         "endLine": 163,
         "endChar": 42
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17a3bb46_dac63720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-15T13:14:29Z",
+      "side": 1,
+      "message": "nit: OS",
+      "range": {
+        "startLine": 163,
+        "startChar": 15,
+        "endLine": 163,
+        "endChar": 17
       },
       "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
