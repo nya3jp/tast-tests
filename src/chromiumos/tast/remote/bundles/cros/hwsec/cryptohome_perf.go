@@ -38,39 +38,31 @@ func init() {
 	})
 }
 
-// waitUntilUserDataAuthInit is a helper function to wait until userdataauth initialized.
-func waitUntilUserDataAuthInit(ctx context.Context, remote *hwsecremote.CmdRunnerRemote) error {
-	return testing.Poll(ctx, func(context.Context) error {
+// userDataAuthInitTime is a helper function to get userdataauth init time.
+func userDataAuthInitTime(ctx context.Context, remote *hwsecremote.CmdRunnerRemote) (float64, error) {
+	var result float64
+	err := testing.Poll(ctx, func(context.Context) error {
 		file := filepath.Join(resultDir, userDataAuthDbusTimeFile)
-		if _, err := remote.Run(ctx, "stat", file); err != nil {
-			return errors.Wrap(err, "stat file failed")
+		data, err := remote.Run(ctx, "cat", file)
+		if err != nil {
+			return errors.Wrap(err, "failed to cat file")
 		}
+		trimmedData := strings.TrimSpace(string(data))
+
+		stamp, err := strconv.ParseFloat(trimmedData, 64)
+		if err != nil {
+			return errors.Wrap(err, "failed to convert to float")
+		}
+
+		// From nano second to second
+		result = stamp / 1e9
 
 		return nil
 	}, &testing.PollOptions{
 		Timeout:  30 * time.Second,
 		Interval: time.Second,
 	})
-}
-
-// getTime returns timestamp for a cryptohome event.
-func getTime(ctx context.Context, remote *hwsecremote.CmdRunnerRemote, eventName string) (float64, error) {
-	eventFile := filepath.Join(resultDir, eventName)
-	data, err := remote.Run(ctx, "cat", eventFile)
-	if err != nil {
-		return 0.0, err
-	}
-	trimmedData := strings.TrimSpace(string(data))
-
-	stamp, err := strconv.ParseFloat(trimmedData, 64)
-	if err != nil {
-		return 0.0, err
-	}
-
-	// From nano second to second
-	stamp = stamp / 1e9
-
-	return stamp, nil
+	return result, err
 }
 
 func CryptohomePerf(ctx context.Context, s *testing.State) {
@@ -84,13 +76,9 @@ func CryptohomePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
 	}
 
-	if err := waitUntilUserDataAuthInit(ctx, r); err != nil {
-		s.Fatal("Failed to wait userdataauth init: ", err)
-	}
-
-	userDataAuthDBusTime, err := getTime(ctx, r, userDataAuthDbusTimeFile)
+	userDataAuthDBusTime, err := userDataAuthInitTime(ctx, r)
 	if err != nil {
-		s.Fatal("Failed to parse userdataauth D-Bus startup time: ", err)
+		s.Fatal("Failed to get userdataauth D-Bus startup time: ", err)
 	}
 
 	// Record the perf measurements.
