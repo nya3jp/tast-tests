@@ -1,0 +1,364 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8eea076_d2158b8d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "From http://go/tast-deps#hardware-dependencies:\n\n    Note that there are special kinds of hardware dependencies, named Model, SkipOnModel, Platform, and SkipOnPlatform. With these dependencies, tests will be controlled based on the device type names, rather than the device characteristics. In general, it is recommended not to use these conditions. If you feel you need these conditions, it is recommended to reconsider whether there is an alternative (and more appropriate) condition.\n\nWhy is it that this test only needs to run on \"drawlat\"? Is there an underlying hardware/software dependency? If so, please use the actual dependency instead.",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86d68bc_d319a8b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "Here and with other deferred cleanup functions, please reserve time for cleanup, per http://go/tast-writing#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd5787b0_ea707b99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "nit/style: This test can be more concise if you use *servo.Servo directly.\n\n    svo :\u003d pxy.Servo()\n    if err :\u003d svo.SetString(...)",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83604c95_8f1a26a7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "Recommend logging endTime and startTime with this error message, for debugging",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5515683_108ef116",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "nit/style: This method can be more concise if you use *servo.Servo directly.\n\n    func runDPTest(ctx, context.Context, svo *servo.Servo, ...)\n    \n    // in main function:\n    svo :\u003d pxy.Servo()\n    runDPTest(ctx, svo, ...)",
+      "range": {
+        "startLine": 123,
+        "startChar": 36,
+        "endLine": 123,
+        "endChar": 52
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cceb53b7_d0d9e21d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "Returning -1 is redundant with returning an error. It is typical for Go functions to return zero-values when returning errors; for an int, that would be 0.\n\nFor simplicity and consistency, I recommend returning (0, err) in the case of an error, instead of (-1, err).\n\nThis would slightly change the block between L163-174:\n\n    re :\u003d regexp.MustCompile(`\\d+\\.\\d+`)\n    timeStr :\u003d re.FindString(string(out))\n    if timeStr !\u003d \"\" {\n        f, err :\u003d strconv.ParseFloat(timeStr, 64)\n        if err !\u003d nil {\n            return timeVal, errors.Wrap(err, \"couldn\u0027t parse uptime float value\")\n        }\n        return int(f), nil\n    }\n    \n    return 0, errors.New(\"couldn\u0027t find a valid uptime\")",
+      "range": {
+        "startLine": 155,
+        "startChar": 17,
+        "endLine": 155,
+        "endChar": 73
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74cc858f_c1148cc8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "nit/style: This method can be more concise if you use *servo.Servo directly.\n\n    func setServoDPMode(ctx, context.Context, svo *servo.Servo, pinAssign string)\n    \n    // in main function:\n    svo :\u003d pxy.Servo()\n    setServoDPMode(ctx, svo, pinAssign)",
+      "range": {
+        "startLine": 179,
+        "startChar": 41,
+        "endLine": 179,
+        "endChar": 57
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8466cd1e_1c47b011",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "use const:\n\n    const partnerPath \u003d \"/sys/class/typec/port0-partner\"",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e805ab_8b3c33f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "L209-215 can be simpler if you operate directly on the []byte output, rather than casting to string.\n\n    for _, device :\u003d range.bytes.Split(out, []byte(\"\\n\")) {\n\nThis would also regexp.MatchString in L211 to regexp.Match, which operates on []byte.",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69202b8e_38338b90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "You can avoid repeatedly compiling this regexp by running regexp.MustCompile outside of the loop.\n\n    altModeDevice :\u003d regexp.MustCompile(`port0-partner\\.\\d`)\n    for _, device :\u003d range ... {\n        if !altModeDevice.Match(device) {\n            continue\n        }\n    }",
+      "range": {
+        "startLine": 211,
+        "startChar": 21,
+        "endLine": 211,
+        "endChar": 69
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf37940_c96d6247",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "nit: I noticed sometimes you call `cat` directly, and sometimes you use linuxssh.ReadFile. Is this intentional? If not, it would be more consistent to pick one for the whole file.",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b6fb91_2bdcd10c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "Recommend adding comments here -- it\u0027s not immediately clear to the reader why we need \"ff01\" to be in this file. Ditto the below blocks.",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b769ff15_d0538f93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "Recommend adding which pinAssign this was for.\n\n    return errors.Errorf(\"didn\u0027t find the right DP alternate mode registered for partner for pin assignment %s\", pinAssign)",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b2e5e2_7377ee72",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "If I\u0027m reading correctly, I think that CCDKeepaliveEn only accepts \"on\" and \"off\" as values, is that correct? If so, I recommend switching to an OnOffControl. It might also make sense to add a new method `SetOnOff(ctx, control OnOffControl, value OnOffValue)`.",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e27563_337ac038",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "nit: I recommend renaming this to \"WatchdogValue\", to be consistent with other value types in this file(such as V4RoleValue, PowerStateValue, and OnOffValue).",
+      "range": {
+        "startLine": 124,
+        "startChar": 13,
+        "endLine": 124,
+        "endChar": 17
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a592b127_84b25f34",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "There\u0027s no semantic distinction between the method names servo.run() and servo.runServoCommand. Could you rename this to something more specific, like runUARTCmd(), or even just UARTCmd()?",
+      "range": {
+        "startLine": 340,
+        "startChar": 16,
+        "endLine": 340,
+        "endChar": 31
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abfb92d_ccd8470b",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "Initialisms in Go variable names should be kept in a consistent case, such as usbc or USBC, even if they\u0027re adjacent to another initialism. http://go/go-code-review-comments#Initialisms\n\nAccordingly, please rename this method to RunUSBCDPConfigCommand.",
+      "range": {
+        "startLine": 346,
+        "startChar": 19,
+        "endLine": 346,
+        "endChar": 23
+      },
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbf4b1fe_634dbbb7",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-15T16:24:33Z",
+      "side": 1,
+      "message": "nit: You can make this more concise:\n\n    args \u003d append([]string{\"usbc_action dp\"}, args...) // Prepends \"usbc_action dp\" to args\n    cmd :\u003d strings.Join(args, \" \")",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
