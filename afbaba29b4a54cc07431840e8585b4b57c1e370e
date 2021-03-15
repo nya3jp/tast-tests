@@ -60,6 +60,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd26ae49_3f463b45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers_bulk_access_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-15T09:50:51Z",
+      "side": 1,
+      "message": "Move the repeating policies into a commonPolicies slice, and use:\n\u003e  policies: append(\n\u003e  \tcommonPolicies,\n\u003e  \t\u0026policy.PrintersBulkAccessMode{Val: 0},\n\u003e  ),",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "afbaba29b4a54cc07431840e8585b4b57c1e370e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe5b8b83_88d2a574",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers_bulk_access_mode.go",
         "patchSetId": 1
