@@ -69,16 +69,12 @@ var stableModels = []string{
 
 	// dedede:
 	"boten",
-	"drawcia",
 	"drawlat",
 	"magolor",
 
 	"drallion",
 	"drallion360",
 	"gandof",
-
-	// grunt:
-	"treeya360",
 
 	// hatch:
 	"akemi",
@@ -87,7 +83,6 @@ var stableModels = []string{
 	"kindred",
 
 	// octopus:
-	"bloog",
 	"blooguard",
 	"blorb",
 	"bobba360",
@@ -95,10 +90,8 @@ var stableModels = []string{
 	"droid",
 	"foob",
 	"garfour",
-	"garg360",
 	"grabbiter",
 	"meep",
-	"mimrock",
 	"nospike",
 	"orbatrix",
 	"phaser",
