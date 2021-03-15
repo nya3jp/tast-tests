@@ -40,19 +40,20 @@ func NewNearbyShareFixtureNoAndroid(crosDataUsage nearbysetup.DataUsage, crosVis
 }
 
 // NewNearbyShareFixtureWithAndroid creates a new implementation of the Nearby Share fixture with an Android device.
-func NewNearbyShareFixtureWithAndroid(crosDataUsage nearbysetup.DataUsage, crosVisibility nearbysetup.Visibility, androidDataUsage nearbysnippet.DataUsage, androidVisibility nearbysnippet.Visibility, gaiaLogin bool, opts ...chrome.Option) testing.FixtureImpl {
+func NewNearbyShareFixtureWithAndroid(crosDataUsage nearbysetup.DataUsage, crosVisibility nearbysetup.Visibility, androidDataUsage nearbysnippet.DataUsage, androidVisibility nearbysnippet.Visibility, gaiaLogin, crosSelectAndroidAsContact bool, opts ...chrome.Option) testing.FixtureImpl {
 	defaultNearbyOpts := []chrome.Option{
 		chrome.EnableFeatures("IntentHandlingSharing", "NearbySharing", "Sharesheet"),
 		chrome.ExtraArgs("--nearby-share-verbose-logging"),
 	}
 	return &nearbyShareFixture{
-		opts:              append(defaultNearbyOpts, opts...),
-		crosDataUsage:     crosDataUsage,
-		crosVisibility:    crosVisibility,
-		androidDataUsage:  androidDataUsage,
-		androidVisibility: androidVisibility,
-		gaiaLogin:         gaiaLogin,
-		androidSetup:      true,
+		opts:                       append(defaultNearbyOpts, opts...),
+		crosDataUsage:              crosDataUsage,
+		crosVisibility:             crosVisibility,
+		crosSelectAndroidAsContact: crosSelectAndroidAsContact,
+		androidDataUsage:           androidDataUsage,
+		androidVisibility:          androidVisibility,
+		gaiaLogin:                  gaiaLogin,
+		androidSetup:               true,
 	}
 }
 
@@ -71,13 +72,16 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareDataUsageOfflineAllContactsTestUser",
 		Desc: "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'",
-		Impl: NewNearbyShareFixtureWithAndroid(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, false),
+		Impl: NewNearbyShareFixtureWithAndroid(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, false, false),
 		Vars: []string{
 			// Specify -var=rooted=false when running on an unrooted device to skip steps that require adb root access.
 			"rooted",
 			// Specify -var=skipAndroidLogin=true if the Android device is logged in to a personal account.
 			// Otherwise we will attempt removing all Google accounts and adding a test account to the phone.
 			"skipAndroidLogin",
+			// If skipping the Android login on a 'Some contacts' visibility test, you must specify the logged in Android username as -var=android_username="<username>" so we can configure the CrOS device's allowed Nearby contacts.
+			"android_username",
+			// These vars are for loading the default account credentials and are not meant to be overridden by the user.
 			"nearbyshare.android_username",
 			"nearbyshare.android_password",
 		},
@@ -91,18 +95,19 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareDataUsageOfflineAllContactsGAIA",
 		Desc: "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Offline',  'Visibility' set to 'All Contacts' and logged in with a real GAIA account",
-		Impl: NewNearbyShareFixtureWithAndroid(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, true),
+		Impl: NewNearbyShareFixtureWithAndroid(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, true, false),
 		Vars: []string{
-			"rooted",
-			// Specify -var=username=<your username> and -var=password=<your password> to log in to a different GAIA account on the CrOS device.
+			// Specify -var=cros_username=<your username> and -var=cros_password=<your password> to log in to a different GAIA account on the CrOS device.
 			// Combine this with -var=skipAndroidLogin=true and a manually-signed-in Android device to run the tests on your own GAIA accounts.
 			// Otherwise we will log in both devices to pre-configured GAIA test accounts. These account credentials are loaded with the
 			// nearbyshare.cros_{username,password} and nearbyshare.android_{username,password} vars, so these vars are not meant to be overridden by the user.
-			"username",
-			"password",
+			"cros_username",
+			"cros_password",
 			"nearbyshare.cros_username",
 			"nearbyshare.cros_password",
+			"rooted",
 			"skipAndroidLogin",
+			"android_username",
 			"nearbyshare.android_username",
 			"nearbyshare.android_password",
 		},
@@ -117,14 +122,15 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareDataUsageOnlineAllContactsGAIA",
 		Desc: "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Online',  'Visibility' set to 'All Contacts' and logged in with a real GAIA account",
-		Impl: NewNearbyShareFixtureWithAndroid(nearbysetup.DataUsageOnline, nearbysetup.VisibilityAllContacts, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityAllContacts, true),
+		Impl: NewNearbyShareFixtureWithAndroid(nearbysetup.DataUsageOnline, nearbysetup.VisibilityAllContacts, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityAllContacts, true, false),
 		Vars: []string{
-			"rooted",
-			"username",
-			"password",
+			"cros_username",
+			"cros_password",
 			"nearbyshare.cros_username",
 			"nearbyshare.cros_password",
+			"rooted",
 			"skipAndroidLogin",
+			"android_username",
 			"nearbyshare.android_username",
 			"nearbyshare.android_password",
 		},
@@ -138,14 +144,87 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareDataUsageOnlineNoOneGAIA",
 		Desc: "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'No One' and logged in with a real GAIA account",
-		Impl: NewNearbyShareFixtureWithAndroid(nearbysetup.DataUsageOnline, nearbysetup.VisibilityNoOne, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityNoOne, true),
+		Impl: NewNearbyShareFixtureWithAndroid(nearbysetup.DataUsageOnline, nearbysetup.VisibilityNoOne, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityNoOne, true, false),
 		Vars: []string{
-			"rooted",
-			"username",
-			"password",
+			"cros_username",
+			"cros_password",
 			"nearbyshare.cros_username",
 			"nearbyshare.cros_password",
+			"rooted",
 			"skipAndroidLogin",
+			"android_username",
+			"nearbyshare.android_username",
+			"nearbyshare.android_password",
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareDataUsageOfflineSomeContactsAndroidSelectedContactGAIA",
+		Desc: "Nearby Share enabled on CrOS and Android with 'Data Usage' set to 'Offline' on both. The Android device 'Visibility' is 'All Contacts'. " +
+			"The CrOS device 'Visibility' is 'Some contacts' with the Android user set as an allowed contact so it will be visible to the Android device. " +
+			"The CrOS device is logged in with a GAIA account which is mutual contacts with the Android GAIA account.",
+		Impl: NewNearbyShareFixtureWithAndroid(nearbysetup.DataUsageOffline, nearbysetup.VisibilitySelectedContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, true, true),
+		Vars: []string{
+			"cros_username",
+			"cros_password",
+			"nearbyshare.cros_username",
+			"nearbyshare.cros_password",
+			"rooted",
+			"skipAndroidLogin",
+			"android_username",
+			"nearbyshare.android_username",
+			"nearbyshare.android_password",
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareDataUsageOnlineSomeContactsAndroidSelectedContactGAIA",
+		Desc: "Nearby Share enabled on CrOS and Android with 'Data Usage' set to 'Online' on both. The Android device 'Visibility' is 'All Contacts'. " +
+			"The CrOS device 'Visibility' is 'Some contacts' with the Android user set as an allowed contact so it will be visible to the Android device. " +
+			"The CrOS device is logged in with a GAIA account which is mutual contacts with the Android GAIA account.",
+		Impl: NewNearbyShareFixtureWithAndroid(nearbysetup.DataUsageOnline, nearbysetup.VisibilitySelectedContacts, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityAllContacts, true, true),
+		Vars: []string{
+			"cros_username",
+			"cros_password",
+			"nearbyshare.cros_username",
+			"nearbyshare.cros_password",
+			"rooted",
+			"skipAndroidLogin",
+			"android_username",
+			"nearbyshare.android_username",
+			"nearbyshare.android_password",
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareDataUsageOfflineSomeContactsAndroidNotSelectedContactGAIA",
+		Desc: "Nearby Share enabled on CrOS and Android with 'Data Usage' set to 'Offline' on both. The Android device 'Visibility' is 'All Contacts'. " +
+			"The CrOS device 'Visibility' is 'Some contacts' with no contacts selected, so it will not be visible to the Android device. " +
+			"The CrOS device is logged in with a GAIA account which is mutual contacts with the Android GAIA account.",
+		Impl: NewNearbyShareFixtureWithAndroid(nearbysetup.DataUsageOffline, nearbysetup.VisibilitySelectedContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, true, false),
+		Vars: []string{
+			"cros_username",
+			"cros_password",
+			"nearbyshare.cros_username",
+			"nearbyshare.cros_password",
+			"rooted",
+			"skipAndroidLogin",
+			"android_username",
 			"nearbyshare.android_username",
 			"nearbyshare.android_password",
 		},
@@ -158,17 +237,18 @@ func init() {
 }
 
 type nearbyShareFixture struct {
-	cr                *chrome.Chrome
-	opts              []chrome.Option
-	crosDataUsage     nearbysetup.DataUsage
-	crosVisibility    nearbysetup.Visibility
-	androidDataUsage  nearbysnippet.DataUsage
-	androidVisibility nearbysnippet.Visibility
-	gaiaLogin         bool
-	androidSetup      bool
-	androidDevice     *nearbysnippet.AndroidNearbyDevice
-	crosAttributes    *nearbysetup.CrosAttributes
-	androidAttributes *nearbysnippet.AndroidAttributes
+	cr                         *chrome.Chrome
+	opts                       []chrome.Option
+	crosDataUsage              nearbysetup.DataUsage
+	crosVisibility             nearbysetup.Visibility
+	crosSelectAndroidAsContact bool
+	androidDataUsage           nearbysnippet.DataUsage
+	androidVisibility          nearbysnippet.Visibility
+	gaiaLogin                  bool
+	androidSetup               bool
+	androidDevice              *nearbysnippet.AndroidNearbyDevice
+	crosAttributes             *nearbysetup.CrosAttributes
+	androidAttributes          *nearbysnippet.AndroidAttributes
 	// ChromeReader is the line reader for collecting Chrome logs.
 	ChromeReader *syslog.LineReader
 }
@@ -196,8 +276,8 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if f.gaiaLogin {
 		crosUsername = s.RequiredVar("nearbyshare.cros_username")
 		crosPassword := s.RequiredVar("nearbyshare.cros_password")
-		customUser, userOk := s.Var("username")
-		customPass, passOk := s.Var("password")
+		customUser, userOk := s.Var("cros_username")
+		customPass, passOk := s.Var("cros_password")
 		if userOk && passOk {
 			s.Log("Logging in with user-provided credentials")
 			crosUsername = customUser
@@ -316,6 +396,28 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 			s.Fatal("Failed to get Android attributes for reporting: ", err)
 		}
 		f.androidAttributes = androidAttributes
+
+		// Set the Android device as an allowed contact if the CrOS visibility setting is 'Some contacts'.
+		if f.crosVisibility == nearbysetup.VisibilitySelectedContacts && f.crosSelectAndroidAsContact {
+			nearbySettings, err := LaunchNearbySettings(ctx, tconn, cr)
+			if err != nil {
+				s.Fatal("Failed to launch OS settings: ", err)
+			}
+			defer nearbySettings.Close(ctx)
+
+			androidContact := androidUsername
+			if loggedIn {
+				if val, ok := s.Var("android_username"); ok {
+					androidContact = val
+				} else {
+					s.Fatal("android_username var must be provided if skipping Android login for a 'Some contacts' visibility test. Please provide the username of the connected Android device")
+				}
+			}
+
+			if err := nearbySettings.SetAllowedContacts(ctx, androidContact); err != nil {
+				s.Fatal("Failed to set allowed contacts: ", err)
+			}
+		}
 	}
 
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
