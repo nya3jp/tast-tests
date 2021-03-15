@@ -10,7 +10,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/cryptohome/cleanup"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -50,23 +49,12 @@ func ShowLowDiskSpaceNotification(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	const waitTime = 80 * time.Second // Checks for low disk space run once per minute.
+
 	s.Log("Waiting for notification")
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		notifications, err := ash.Notifications(ctx, tconn)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get notifications"))
-		}
-
-		for _, notification := range notifications {
-			// Hardcoded in Chrome.
-			if strings.Contains(notification.ID, "low_disk") {
-				return nil
-			}
-		}
-
-		return errors.New("could not find low disk space notification")
-	}, &testing.PollOptions{
-		Timeout: 80 * time.Second, // Checks for low disk space run once per minute.
+	if _, err := ash.WaitForNotification(ctx, tconn, waitTime, func(n *ash.Notification) bool {
+		// Hardcoded in Chrome.
+		return strings.Contains(n.ID, "low_disk")
 	}); err != nil {
 		// Check if too much space was made available.
 		freeSpace, fErr := disk.FreeSpace(cleanup.UserHome)
