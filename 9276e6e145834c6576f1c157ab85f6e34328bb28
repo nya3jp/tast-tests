@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "9276e6e145834c6576f1c157ab85f6e34328bb28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3fef287_e23b24f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/show_low_disk_space_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-15T14:22:58Z",
+      "side": 1,
+      "message": "please use existing predicate: ash.WaitIDContains",
+      "range": {
+        "startLine": 55,
+        "startChar": 60,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "9276e6e145834c6576f1c157ab85f6e34328bb28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
