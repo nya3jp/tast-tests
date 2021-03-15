@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9410af2c_a4fe1998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-15T23:31:15Z",
+      "side": 1,
+      "message": "Hi, yes, TabletModeEnabled(ctx, tconn) function is also used in Clamshell: resize test case due to this bug, b:178429568. I have observed that devices like dru, bob are tablet devices. To avoid flaky failures, the Clamshell: Resize test case will be skipped on those devices. Similarly Clamshell: Mouse click needs to be skipped on those devices to avoid flaky failures. Thanks.",
+      "parentUuid": "0dbf2023_afe50b9e",
+      "revId": "03c77776ad01260f33a1db2ddf52b94aecf3ca82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57bc1612_d5d034fa",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-03-15T18:59:18Z",
       "side": 1,
       "message": "looks like you\u0027re clicking right on the upper left corner - do you want to move it over a bit?",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 494,
+        "endChar": 13
+      },
+      "revId": "03c77776ad01260f33a1db2ddf52b94aecf3ca82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e959d9d_89aa2d61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-15T23:31:15Z",
+      "side": 1,
+      "message": "Hi, yes, I need to click on right on the upper left corner. Thanks.",
+      "parentUuid": "57bc1612_d5d034fa",
       "range": {
         "startLine": 494,
         "startChar": 2,
