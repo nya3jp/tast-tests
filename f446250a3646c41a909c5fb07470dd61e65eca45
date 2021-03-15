@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0333a6_f40ca370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T05:48:08Z",
+      "side": 1,
+      "message": "Stream",
+      "range": {
+        "startLine": 98,
+        "startChar": 43,
+        "endLine": 98,
+        "endChar": 51
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a83c73f_f74e99e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T05:48:08Z",
+      "side": 1,
+      "message": "Stream",
+      "range": {
+        "startLine": 130,
+        "startChar": 43,
+        "endLine": 130,
+        "endChar": 51
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab61bb0_2d95c611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T05:48:08Z",
+      "side": 1,
+      "message": "Steam",
+      "range": {
+        "startLine": 170,
+        "startChar": 43,
+        "endLine": 170,
+        "endChar": 51
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9dc679b_f1db6d4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T05:48:08Z",
+      "side": 1,
+      "message": "Steam",
+      "range": {
+        "startLine": 202,
+        "startChar": 43,
+        "endLine": 202,
+        "endChar": 51
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "713c8ce6_de57bd6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T05:48:08Z",
+      "side": 1,
+      "message": "Does it still make sense to call this if pageConn.CloseTarget(ctx) fails?",
+      "range": {
+        "startLine": 235,
+        "startChar": 11,
+        "endLine": 235,
+        "endChar": 27
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "badbfeea_89d92912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T05:48:08Z",
+      "side": 1,
+      "message": "I think we could just wrap the err here?",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 3
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4414ab2_21194e1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T05:48:08Z",
+      "side": 1,
+      "message": "retErr !\u003d nil \u0026\u0026 logError",
+      "range": {
+        "startLine": 243,
+        "startChar": 4,
+        "endLine": 243,
+        "endChar": 12
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47e2471_681881e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T05:48:08Z",
+      "side": 1,
+      "message": "This is called checkAndCloseStream and the above method is called closeWebPage, please make them follow the same style, either checkAndClose* or close*.",
+      "range": {
+        "startLine": 249,
+        "startChar": 5,
+        "endLine": 249,
+        "endChar": 24
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffc25ee4_a480153a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T05:48:08Z",
+      "side": 1,
+      "message": "else if",
+      "range": {
+        "startLine": 259,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 7
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5714acc_b3b15679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T05:48:08Z",
+      "side": 1,
+      "message": "Does it make sense to call this if trackState.Call fails or hasEnded is true?",
+      "range": {
+        "startLine": 264,
+        "startChar": 11,
+        "endLine": 264,
+        "endChar": 29
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac9d88d_d92eb164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T05:48:08Z",
+      "side": 1,
+      "message": "I think we could just wrap the error here.",
+      "range": {
+        "startLine": 265,
+        "startChar": 2,
+        "endLine": 269,
+        "endChar": 3
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9893f29_997707ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T05:48:08Z",
+      "side": 1,
+      "message": "retErr !\u003d nil \u0026\u0026 logError",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 12
+      },
+      "revId": "f446250a3646c41a909c5fb07470dd61e65eca45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
