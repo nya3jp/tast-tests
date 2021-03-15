@@ -16,6 +16,24 @@
       "message": "local/chrome lgtm.\n",
       "revId": "16286233250ac9a06baa2c33dd2a0a0726c157dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4fa8c0a_e8a247d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-15T17:53:17Z",
+      "side": 1,
+      "message": "Did you mean \"+1\" instead of \"+2\"?",
+      "parentUuid": "58b3293d_d5610785",
+      "revId": "16286233250ac9a06baa2c33dd2a0a0726c157dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
