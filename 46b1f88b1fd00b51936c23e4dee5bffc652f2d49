@@ -16,6 +16,24 @@
       "message": "Sorry, not comments are resolved.",
       "revId": "46b1f88b1fd00b51936c23e4dee5bffc652f2d49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835af0de_7089e3bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-15T16:32:44Z",
+      "side": 1,
+      "message": "*not all",
+      "parentUuid": "e8e2bacd_e6d1b949",
+      "revId": "46b1f88b1fd00b51936c23e4dee5bffc652f2d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
