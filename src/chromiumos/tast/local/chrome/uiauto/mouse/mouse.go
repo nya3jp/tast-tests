@@ -75,6 +75,7 @@ func Release(tconn *chrome.TestConn, button Button) func(ctx context.Context) er
 // move across multiple displays. When duration is 0, it moves instantly to the
 // specified location. Otherwise, the cursor should move linearly during the
 // period. Returns after the move event is handled by Ash.
+// Note: If you want to move to a node, please use MouseMoveTo function defined in uiauto/automation.go.
 func Move(tconn *chrome.TestConn, location coords.Point, duration time.Duration) func(ctx context.Context) error {
 	return func(ctx context.Context) error {
 		return tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.mouseMove)", location, duration/time.Millisecond)

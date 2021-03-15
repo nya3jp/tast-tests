@@ -12,9 +12,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/coords"
@@ -81,7 +81,7 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 
 	// Drag float vk to new position.
 	destinationPoint := coords.NewPoint(dragPoint.X-100, dragPoint.Y-100)
-	if err := mouse.Drag(ctx, tconn, dragPoint, destinationPoint, time.Second); err != nil {
+	if err := mouse.Drag(tconn, dragPoint, destinationPoint, time.Second)(ctx); err != nil {
 		s.Fatal("Failed to drag float window: ", err)
 	}
 

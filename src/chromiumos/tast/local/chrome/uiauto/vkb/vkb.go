@@ -16,8 +16,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/internal/driver"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
@@ -134,29 +134,18 @@ func (vkbCtx *VirtualKeyboardContext) WaitUntilHidden() uiauto.Action {
 // TapKey returns an action simulating a mouse click event on the middle of the specified key via touch event.
 // The key name is case sensitive. It can be any letter of the alphabet, "space" or "backspace".
 func (vkbCtx *VirtualKeyboardContext) TapKey(keyName string) uiauto.Action {
-	return func(ctx context.Context) error {
-		keyLocation, err := vkbCtx.ui.Location(ctx, KeyFinder.Name(keyName))
-		if err != nil {
-			return errors.Wrapf(err, "failed to get location of key %q: ", keyName)
-		}
-
-		// Note: Must use mouse Move + Press + Sleep + Release here instead of Click.
-		// Mouse click is simulated by calling Chrome private api `chrome.autotestPrivate.mouseClick`.
-		// It works for most cases except virtual keyboard.
-		// In vkb extension, it listens to keyPress to send vk layout event to decoder
-		// before sending the actual key tap event.
-		// Mouse click is too quick and causes a racing issue that decoder receives tap key without layout info.
-		if err := mouse.Move(ctx, vkbCtx.tconn, keyLocation.CenterPoint(), 10*time.Millisecond); err != nil {
-			return errors.Wrapf(err, "failed to move mouse to key %q: ", keyName)
-		}
-		if err := mouse.Press(ctx, vkbCtx.tconn, mouse.LeftButton); err != nil {
-			return errors.Wrapf(err, "failed to press key %q: ", keyName)
-		}
-		if err := testing.Sleep(ctx, 50*time.Millisecond); err != nil {
-			return errors.Wrap(err, "failed in sleep")
-		}
-		return mouse.Release(ctx, vkbCtx.tconn, mouse.LeftButton)
-	}
+	// Note: Must use mouse Move + Press + Sleep + Release here instead of Click.
+	// Mouse click is simulated by calling Chrome private api `chrome.autotestPrivate.mouseClick`.
+	// It works for most cases except virtual keyboard.
+	// In vkb extension, it listens to keyPress to send vk layout event to decoder
+	// before sending the actual key tap event.
+	// Mouse click is too quick and causes a racing issue that decoder receives tap key without layout info.
+	return uiauto.Combine("move mouse to key center point and click",
+		vkbCtx.ui.MouseMoveTo(KeyFinder.Name(keyName), 10*time.Millisecond),
+		mouse.Press(vkbCtx.tconn, mouse.LeftButton),
+		vkbCtx.ui.Sleep(50*time.Millisecond),
+		mouse.Release(vkbCtx.tconn, mouse.LeftButton),
+	)
 }
 
 // TapKeys return an action simulating tap events in the middle of the specified sequence of keys via touch event.
