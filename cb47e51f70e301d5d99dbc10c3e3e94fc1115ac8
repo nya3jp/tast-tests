@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ef4846_21905b21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-15T20:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "109073f1_1722a841",
+      "revId": "cb47e51f70e301d5d99dbc10c3e3e94fc1115ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65e61658_f62f3df4",
