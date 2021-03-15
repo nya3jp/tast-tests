@@ -33,6 +33,23 @@
       "message": "This CL corrects the _swap_pss metrics to include shared regions. Now sum(.*_swap_pss) ~\u003d\u003d zram_original.",
       "revId": "3e68b8c1f37bd5369399f9c062fc9cde09bf5aa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "835522c7_b1958335",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-15T10:50:22Z",
+      "side": 1,
+      "message": "LGTM from tast owner perspective. Please get another approval from test owner team according to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#summary ",
+      "revId": "3e68b8c1f37bd5369399f9c062fc9cde09bf5aa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
