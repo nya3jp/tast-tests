@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "116d5c75_6dd459de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/google_meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:11:27Z",
+      "side": 1,
+      "message": "Just curious: why u1?",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 3
+      },
+      "revId": "9a659cf2506feea07df89abe83d447c26059c82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
