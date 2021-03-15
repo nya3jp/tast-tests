@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "845d7e06_e30e0a15",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-15T08:06:39Z",
+      "side": 1,
+      "message": "How large is the log? Have you considered streaming the contents?",
+      "revId": "a2179f6873c05434c8c4506082fec1693f291b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7a58115_84dae5bf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 2
@@ -49,6 +66,23 @@
       "side": 1,
       "message": "This is test output folder (s.OutDir()). It exists during the test execution,",
       "parentUuid": "b7a58115_84dae5bf",
+      "revId": "a2179f6873c05434c8c4506082fec1693f291b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a60149_d9b0c671",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-15T08:06:39Z",
+      "side": 1,
+      "message": "nit: not useful. You can check if the files are present.",
       "revId": "a2179f6873c05434c8c4506082fec1693f291b86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
