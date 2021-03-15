@@ -107,21 +107,20 @@ func NewSmapsRollup(smapsRollupFileData []byte) (*SmapsRollup, error) {
 	}, nil
 }
 
-// NamedSmapsRollup is a SmapsRollup plus the process name and ID.
+// NamedSmapsRollup is a SmapsRollup plus the process name and ID, and
+// SharedSwapPss, the amount of swap used by shared memory regions divided by
+// the number of times those regions are mapped.
 type NamedSmapsRollup struct {
-	Command string
-	Pid     int
+	Command       string
+	Pid           int32
+	SharedSwapPss uint64
 	SmapsRollup
 }
 
-// AllSmapsRollups returns a NamedSmapsRollup for every running process. Sizes
-// are in bytes.
-func AllSmapsRollups(ctx context.Context) ([]*NamedSmapsRollup, error) {
-	processes, err := process.Processes()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get all processes")
-	}
-
+// SmapsRollups returns a NamedSmapsRollup for every process in processes. Sizes
+// are in bytes. The SharedSwapPss field is initialized from sharedSwapPss, if
+// provided.
+func SmapsRollups(ctx context.Context, processes []*process.Process, sharedSwapPss map[int32]uint64) ([]*NamedSmapsRollup, error) {
 	rollups := make([]*NamedSmapsRollup, len(processes))
 	g, ctx := errgroup.WithContext(ctx)
 	for index, process := range processes {
@@ -146,9 +145,10 @@ func AllSmapsRollups(ctx context.Context) ([]*NamedSmapsRollup, error) {
 				return err
 			}
 			rollups[i] = &NamedSmapsRollup{
-				Command:     command,
-				Pid:         int(p.Pid),
-				SmapsRollup: *rollup,
+				Command:       command,
+				Pid:           p.Pid,
+				SharedSwapPss: sharedSwapPss[p.Pid],
+				SmapsRollup:   *rollup,
 			}
 			return nil
 		})
@@ -163,6 +163,70 @@ func AllSmapsRollups(ctx context.Context) ([]*NamedSmapsRollup, error) {
 		}
 	}
 	return result, nil
+}
+
+// sharedSwapPssRE matches smaps entries that are mapped shared, with the
+// following match groups:
+// [1] The name of the mapping.
+// [2] The size of swapped out pages in the mapping, in kiB.
+var sharedSwapPssRE = regexp.MustCompile(`[[:xdigit:]]+-[[:xdigit:]]+ [-r][-w][-x]s [[:xdigit:]]+ [[:xdigit:]]+:[[:xdigit:]]+ [\d]+ +(\S[^\n]*)
+(?:\w+: +[^\n]+
+)*Swap: +(\d+) kB`)
+
+type sharedSwap struct {
+	name string
+	swap uint64
+}
+
+// SharedSwapPss creates a map from Pid to the amount of SwapPss used by shared
+// mappings per process. The SwapPss field in smaps_rollup does not include
+// memory swapped out of shared mappings. In order to calculate a complete
+// SwapPss, we parse smaps for all shared mappings in all processes, and then
+// divide their "Swap" value by the number of times the shared memory is mapped.
+func SharedSwapPss(ctx context.Context, processes []*process.Process) (map[int32]uint64, error) {
+	g, ctx := errgroup.WithContext(ctx)
+	procSwaps := make([][]sharedSwap, len(processes))
+	for index, process := range processes {
+		i := index
+		pid := process.Pid
+		g.Go(func() error {
+			smapsData, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/smaps", pid))
+			if err != nil {
+				// Not all processes have a smaps_rollup, this process may have
+				// exited.
+				return nil
+			}
+			matches := sharedSwapPssRE.FindAllSubmatch(smapsData, -1)
+			for _, match := range matches {
+				name := string(match[1])
+				swapKiB, err := strconv.ParseUint(string(match[2]), 10, 64)
+				if err != nil {
+					return errors.Wrapf(err, "failed to parse swap value %q", match[2])
+				}
+				swap := swapKiB * KiB
+				procSwaps[i] = append(procSwaps[i], sharedSwap{name, swap})
+			}
+			return nil
+		})
+	}
+	if err := g.Wait(); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for all smaps parsing to be done")
+	}
+	// Count how many times each shared mapping has been mapped.
+	mapCount := make(map[string]uint64)
+	for _, swaps := range procSwaps {
+		for _, swap := range swaps {
+			mapCount[swap.name]++
+		}
+	}
+	// Use the counts to divide each mapping's swap size to compute SwapPss.
+	sharedSwapPss := make(map[int32]uint64)
+	for i, swaps := range procSwaps {
+		for _, swap := range swaps {
+			sharedSwapPss[processes[i].Pid] += swap.swap / mapCount[swap.name]
+		}
+	}
+	return sharedSwapPss, nil
 }
 
 type processCategory struct {
@@ -202,7 +266,15 @@ var processCategories = []processCategory{
 // smaps_rollup file. If perf.Values is not nil, it adds metrics based on
 // processCategories defined above.
 func SmapsMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) error {
-	rollups, err := AllSmapsRollups(ctx)
+	processes, err := process.Processes()
+	if err != nil {
+		return errors.Wrap(err, "failed to get all processes")
+	}
+	sharedSwapPss, err := SharedSwapPss(ctx, processes)
+	if err != nil {
+		return err
+	}
+	rollups, err := SmapsRollups(ctx, processes, sharedSwapPss)
 	if err != nil {
 		return err
 	}
@@ -226,7 +298,7 @@ func SmapsMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) er
 			if category.commandRE.MatchString(rollup.Command) {
 				metric := metrics[category.name]
 				metric.pss += float64(rollup.Pss) / MiB
-				metric.pssSwap += float64(rollup.SwapPss) / MiB
+				metric.pssSwap += float64(rollup.SwapPss+rollup.SharedSwapPss) / MiB
 				metrics[category.name] = metric
 				// Only the first matching category should contain this process.
 				break
