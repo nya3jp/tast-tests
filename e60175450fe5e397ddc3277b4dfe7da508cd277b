@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "969397ba_1ea20d01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T05:42:21Z",
+      "side": 1,
+      "message": "Created a separate CL for changing the default GAIA ID: crrev.com/c/2755308\n",
+      "revId": "e60175450fe5e397ddc3277b4dfe7da508cd277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
