@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90509279_3a54cfbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-15T15:54:41Z",
+      "side": 1,
+      "message": "Thanks, frkoenig@ already reviewed the follow up CL.",
+      "parentUuid": "ce16e702_c512f876",
+      "revId": "76304ec9c44bbee837e20edf366bb9a49b2c3fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "997eef67_90cee3ed",
@@ -101,6 +119,54 @@
       "writtenOn": "2021-03-12T11:33:06Z",
       "side": 1,
       "message": "please use \"_\" unless your function does not really return error\n\nsame for all methods in this CL",
+      "range": {
+        "startLine": 816,
+        "startChar": 136,
+        "endLine": 816,
+        "endChar": 139
+      },
+      "revId": "76304ec9c44bbee837e20edf366bb9a49b2c3fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e4da43_1443ab2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-15T15:54:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "997eef67_90cee3ed",
+      "range": {
+        "startLine": 816,
+        "startChar": 136,
+        "endLine": 816,
+        "endChar": 139
+      },
+      "revId": "76304ec9c44bbee837e20edf366bb9a49b2c3fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56578fe7_3191b99e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-15T15:54:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "997eef67_90cee3ed",
       "range": {
         "startLine": 816,
         "startChar": 136,
