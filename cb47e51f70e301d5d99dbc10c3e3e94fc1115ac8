@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "109073f1_1722a841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-15T16:01:24Z",
+      "side": 1,
+      "message": "Merged the changes manually, but I\u0027ll wait till the other CL is merged to make sure there is no conflicts",
+      "parentUuid": "11346cd5_7203db6f",
+      "revId": "cb47e51f70e301d5d99dbc10c3e3e94fc1115ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65e61658_f62f3df4",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-15T15:40:41Z",
       "side": 1,
       "message": "You should set all the expected values here (red, blurRed, expectedPercent).",
+      "revId": "cb47e51f70e301d5d99dbc10c3e3e94fc1115ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a9dd3a_14f6318c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-15T16:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65e61658_f62f3df4",
       "revId": "cb47e51f70e301d5d99dbc10c3e3e94fc1115ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
