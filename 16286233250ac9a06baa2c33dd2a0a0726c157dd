@@ -51,6 +51,24 @@
       "message": "Shuhei is the TL of tast-core team and I think he intentionally put CR+2 as an owner.\nGiving my +2 too in case you\u0027re waiting for it.",
       "revId": "16286233250ac9a06baa2c33dd2a0a0726c157dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f40ecda5_5eeb1fa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-15T18:57:31Z",
+      "side": 1,
+      "message": "Ah, sorry, I was confused that we now have Chrome and Chrome OS review in the same UI with the different review policies.\n\nThank you!",
+      "parentUuid": "754b9f7e_ab70b368",
+      "revId": "16286233250ac9a06baa2c33dd2a0a0726c157dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
