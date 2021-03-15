@@ -33,6 +33,81 @@
       "message": "Hi vsavu@,\n\nI\u0027ve written a new Tast test that involves 1. a Managed Guest Session, 2. a Device Login Screen Extension and 3. tests the chrome.login Extension API.\n\nI used a manually written policy blob since 1. the Go definition for DeviceLocalAccounts policy has the wrong type and 2. public accounts policy is not supported by fakedms.NewPolicyBlob().\n\nFor the test.Attr, I used \"group:enrollment\" since the test requires the device to be enterprise enrolled.\n\nPTAL!\n\nThanks,\nJit",
       "revId": "bacf98c89b6240c30fa0fa400662d33acec6bd60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "772519d9_1691d93e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-15T09:17:06Z",
+      "side": 1,
+      "message": "\"group:enrollment\" is correct.",
+      "parentUuid": "870da605_530c9903",
+      "revId": "bacf98c89b6240c30fa0fa400662d33acec6bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e47b076_4ecbffc0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-15T09:17:06Z",
+      "side": 1,
+      "message": "Are you interested in living on the bleeding edge? We have the enrollment fixture and you can create a local test.\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/system_timezone.go",
+      "revId": "bacf98c89b6240c30fa0fa400662d33acec6bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bca6cca_4a0e0943",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-15T09:17:06Z",
+      "side": 1,
+      "message": "We should fix the underlying issue, not work around it.",
+      "revId": "bacf98c89b6240c30fa0fa400662d33acec6bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3618e33c_5a56ee65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-15T09:17:06Z",
+      "side": 1,
+      "message": "Add a constant with a comment on what this is.",
+      "range": {
+        "startLine": 99,
+        "startChar": 15,
+        "endLine": 99,
+        "endChar": 49
+      },
+      "revId": "bacf98c89b6240c30fa0fa400662d33acec6bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
