@@ -214,6 +214,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe5dd56_bcf91c39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T04:05:01Z",
+      "side": 1,
+      "message": "Good idea. Thanks!",
+      "parentUuid": "1b0b2b66_46a13cd0",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a403895_b7a0a033",

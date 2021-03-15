@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb920d90_305b5efe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T04:05:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3726b010_b10a5884",
+      "range": {
+        "startLine": 68,
+        "startChar": 14,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "08eff0f7b7c397af8a88d59a6d76570f2592e45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd137bcf_7fcccf8e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da32257e_39532049",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T04:05:01Z",
+      "side": 1,
+      "message": "From my understanding, |retErr| is a named return parameter. When returns from the function, the returned error will be filled in |retErr| and we can use it to determine if the function ends with/without error. But please correct me if I am wrong.",
+      "parentUuid": "cd137bcf_7fcccf8e",
+      "range": {
+        "startLine": 202,
+        "startChar": 5,
+        "endLine": 202,
+        "endChar": 11
+      },
+      "revId": "08eff0f7b7c397af8a88d59a6d76570f2592e45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6089b40f_fd589b89",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-15T03:25:34Z",
       "side": 1,
       "message": "The value set here does not impact the value in the calling method.",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 9
+      },
+      "revId": "08eff0f7b7c397af8a88d59a6d76570f2592e45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9488336e_462ab1e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T04:05:01Z",
+      "side": 1,
+      "message": "Thanks for reminding. Fixed.",
+      "parentUuid": "6089b40f_fd589b89",
       "range": {
         "startLine": 241,
         "startChar": 1,
