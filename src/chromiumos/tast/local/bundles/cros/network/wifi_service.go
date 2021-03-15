@@ -928,7 +928,7 @@ func (s *WifiService) Reassociate(ctx context.Context, req *network.ReassociateR
 			return nil, errors.Wrap(ctx.Err(), "did not reassociate in time")
 		case sig := <-sw.Signals:
 			props := sig.Body[0].(map[string]dbus.Variant)
-			testing.ContextLogf(ctx, "PropertiesChanged: %v", props)
+			testing.ContextLog(ctx, "PropertiesChanged: ", props)
 			if val, ok := props["Scanning"]; ok {
 				scanning := val.Value().(bool)
 				if !associating && scanning {
