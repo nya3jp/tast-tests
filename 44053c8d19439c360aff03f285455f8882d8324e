@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b6ff3c_969bbcbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-15T07:58:44Z",
+      "side": 1,
+      "message": "Can we avoid using sleep here?\nIf the failure by retrying too early does not affect next attemptes, consider using testing.Poll with total-timeout and retry-interval.",
+      "revId": "44053c8d19439c360aff03f285455f8882d8324e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4cb4ced_a3ed70c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-15T07:58:44Z",
+      "side": 1,
+      "message": "Can we use testing.Poll here instead of sleep, examining if the reboot is finished?",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 0
+      },
+      "revId": "44053c8d19439c360aff03f285455f8882d8324e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc7e2563_77598e63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-15T07:58:44Z",
+      "side": 1,
+      "message": "IIUC this runs a busy loop until timeout when the expected text was not found. Is it intended?",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 3
+      },
+      "revId": "44053c8d19439c360aff03f285455f8882d8324e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6faf27_5185f58d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-15T07:58:44Z",
+      "side": 1,
+      "message": "same as above; can we use testing.Poll instead?",
+      "revId": "44053c8d19439c360aff03f285455f8882d8324e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b221a81d_62ac363d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-15T07:58:44Z",
+      "side": 1,
+      "message": "same as the previous one",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 4
+      },
+      "revId": "44053c8d19439c360aff03f285455f8882d8324e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
