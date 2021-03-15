@@ -22,6 +22,30 @@
       },
       "revId": "9e8549110eb0ed2bfd9cccc0639d621319685458",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "795575ef_b67d39c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-15T05:22:31Z",
+      "side": 1,
+      "message": "While modifying the CL, I kind of think it will be better to split logic for connect/disconnect |pageConn| and setup/teardown |trackState|. Also, we might still want to log errors while executing defer functions so I added |logError| boolean parameter in cleanup functions.\n\nPlease take a look.\nThanks a lot for helping review!",
+      "parentUuid": "201893c2_6a674bf9",
+      "range": {
+        "startLine": 206,
+        "startChar": 11,
+        "endLine": 206,
+        "endChar": 21
+      },
+      "revId": "9e8549110eb0ed2bfd9cccc0639d621319685458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
