@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "093d4f3e_2c0ba415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-15T08:57:02Z",
+      "side": 1,
+      "message": ":\u003d\n\nditto for below.",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "39030651c679dba93daa360a3c79aad3c25c5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb46a16_df4d01bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-15T08:57:02Z",
+      "side": 1,
+      "message": "nit/style: could you merge those two lines?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "39030651c679dba93daa360a3c79aad3c25c5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99d2fb62_eb22ef6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-15T08:57:02Z",
+      "side": 1,
+      "message": "defer puts a closure to the stack of functions, which runs at the end of the execution of the function.\nCould you move this defer to the appropriate place above, i.e., just after Vault is created?",
+      "revId": "39030651c679dba93daa360a3c79aad3c25c5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b66b4afb_e020946b",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-15T08:57:02Z",
+      "side": 1,
+      "message": "(sorry overlooked) testexec.DUmpLogOnError, here, too?",
+      "range": {
+        "startLine": 488,
+        "startChar": 24,
+        "endLine": 488,
+        "endChar": 26
+      },
+      "revId": "39030651c679dba93daa360a3c79aad3c25c5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e70fbb9f_4b4224e6",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-15T08:57:02Z",
+      "side": 1,
+      "message": "new typo?",
+      "range": {
+        "startLine": 498,
+        "startChar": 43,
+        "endLine": 498,
+        "endChar": 46
+      },
+      "revId": "39030651c679dba93daa360a3c79aad3c25c5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c582434a_425b5557",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-15T08:57:02Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "39030651c679dba93daa360a3c79aad3c25c5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f401befb_c5273019",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-15T08:57:02Z",
+      "side": 1,
+      "message": "It\u0027s better to wrap the error with annotating some context for better debugging.\nOptionally ditto for above (L521).",
+      "range": {
+        "startLine": 525,
+        "startChar": 9,
+        "endLine": 525,
+        "endChar": 12
+      },
+      "revId": "39030651c679dba93daa360a3c79aad3c25c5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
