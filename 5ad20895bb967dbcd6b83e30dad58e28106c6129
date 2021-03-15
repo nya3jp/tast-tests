@@ -81,6 +81,48 @@
       },
       "revId": "5ad20895bb967dbcd6b83e30dad58e28106c6129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee1b710_631e3a1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-15T09:03:12Z",
+      "side": 1,
+      "message": "Why not check the status code of test command?",
+      "parentUuid": "3302ab0c_9429f5b5",
+      "revId": "5ad20895bb967dbcd6b83e30dad58e28106c6129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbcdc2c_b3c19c5c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-15T09:03:12Z",
+      "side": 1,
+      "message": "If shell is must have for some reason, it should be shell-escaped, instead of %q, which is for go string literal escape and different from shell\u0027s.",
+      "parentUuid": "dd65553c_cd76cfee",
+      "range": {
+        "startLine": 118,
+        "startChar": 96,
+        "endLine": 118,
+        "endChar": 109
+      },
+      "revId": "5ad20895bb967dbcd6b83e30dad58e28106c6129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
