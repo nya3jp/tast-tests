@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57dbd1ba_aaa62bef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2021-03-15T17:25:24Z",
+      "side": 1,
+      "message": "Secondary sheriff stamp: This is still failing CQ builders so letting this merge through.",
+      "revId": "9d2f0c024fe251e5b5dedab7c94b5901bff05fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
