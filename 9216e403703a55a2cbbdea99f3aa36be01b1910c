@@ -152,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a75ecf_6044282d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-15T15:02:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b029af5_d84a4b75",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba1356e1_c9a57298",
@@ -459,6 +483,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0c5cb33_4b5a86df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-15T15:02:48Z",
+      "side": 1,
+      "message": "I mean to describe what should happen after this step, we expect that after clicking on this radio button, the preview image should be changed.\nand in case the policy is set, then the user picture shouldn\u0027t be affected and remain red.\nbut in case the policy is unset, then the use picture will be changed to cat image.",
+      "parentUuid": "e6872e1f_00d7e73d",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17cfe2ff_e78c5194",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
         "patchSetId": 2
@@ -633,6 +675,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "905caa0b_7a87979f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-15T15:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e52e8d6e_c504b661",
+      "range": {
+        "startLine": 191,
+        "startChar": 3,
+        "endLine": 191,
+        "endChar": 54
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fda4fa44_bc328a4f",
@@ -751,6 +817,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "378cd7bd_3977aab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-15T15:02:48Z",
+      "side": 1,
+      "message": "it\u0027s because you are creating an error, so instead of wrapping nil with a new error, you can create the error directly. but since you used s.Fatalf, it\u0027s better this way, thanks!",
+      "parentUuid": "5519c61c_1db26572",
+      "range": {
+        "startLine": 214,
+        "startChar": 77,
+        "endLine": 214,
+        "endChar": 130
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7135072b_c22fcbe7",
@@ -782,6 +872,24 @@
       "side": 1,
       "message": "I don\u0027t understand what you mean. It sounds like the image is not restricted when the policy is set, however, the image won\u0027t be applied after the user close the window.\n\nMaybe I am missing something. Can you elaborate?",
       "parentUuid": "7135072b_c22fcbe7",
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fe4b7f3_21ee33b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-15T15:02:48Z",
+      "side": 1,
+      "message": "ignore that comment",
+      "parentUuid": "46478de6_ce9d0c6f",
       "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -823,6 +931,30 @@
       "side": 1,
       "message": "Maybe I don\u0027t get it.\n\nThis branch executes when the policy is not set, so the image should have been changed.\n\nCan you explain more?",
       "parentUuid": "27c8cd3c_0ea7daee",
+      "range": {
+        "startLine": 217,
+        "startChar": 4,
+        "endLine": 217,
+        "endChar": 60
+      },
+      "revId": "9216e403703a55a2cbbdea99f3aa36be01b1910c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "750a919f_f3b07090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-15T15:02:48Z",
+      "side": 1,
+      "message": "ignore that comment",
+      "parentUuid": "31579c44_a62ff639",
       "range": {
         "startLine": 217,
         "startChar": 4,
