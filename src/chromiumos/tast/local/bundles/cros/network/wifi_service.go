@@ -22,6 +22,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/shillconst"
@@ -30,7 +31,7 @@ import (
 	local_network "chromiumos/tast/local/network"
 	"chromiumos/tast/local/network/cmd"
 	network_iface "chromiumos/tast/local/network/iface"
-	"chromiumos/tast/local/network/ping"
+	local_ping "chromiumos/tast/local/network/ping"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -1574,7 +1575,7 @@ func (s *WifiService) ProfileBasicTest(ctx context.Context, req *network.Profile
 			return err
 		}
 
-		res, err := ping.NewLocalRunner().Ping(ctx, ap.Ip)
+		res, err := local_ping.NewLocalRunner().Ping(ctx, ap.Ip)
 		if err != nil {
 			return err
 		}
@@ -2179,6 +2180,8 @@ func (s *WifiService) ResetTest(ctx context.Context, req *network.ResetTestReque
 		suspendNum         = 5
 		suspendDuration    = time.Second * 10
 		idleConnectTimeout = time.Second * 20
+		pingCount          = 10
+		pingInterval       = 1 // In seconds.
 		pingLossThreshold  = 20.0
 
 		mwifiexFormat = "/sys/kernel/debug/mwifiex/%s/reset"
@@ -2207,10 +2210,15 @@ func (s *WifiService) ResetTest(ctx context.Context, req *network.ResetTestReque
 		return ioutil.WriteFile(file, []byte(content), 0444)
 	}
 	pingOnce := func(ctx context.Context) error {
-		res, err := ping.NewLocalRunner().Ping(ctx, req.ServerIp)
+		pingOps := []ping.Option{
+			ping.Count(pingCount),
+			ping.Interval(pingInterval),
+		}
+		res, err := local_ping.NewLocalRunner().Ping(ctx, req.ServerIp, pingOps...)
 		if err != nil {
 			return errors.Wrap(err, "failed to ping from the DUT")
 		}
+		testing.ContextLogf(ctx, "ping result: %+v", res)
 		if res.Loss > pingLossThreshold {
 			return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
 		}
@@ -2359,6 +2367,7 @@ func (s *WifiService) ResetTest(ctx context.Context, req *network.ResetTestReque
 	for i := 0; i < suspendNum; i++ {
 		testing.ContextLogf(ctx, "Start reseting for %d times", resetNum)
 		for j := 0; j < resetNum; j++ {
+			testing.ContextLogf(ctx, "Reset %d", j+1)
 			if err := reset(ctx, resetPath); err != nil {
 				return nil, errors.Wrap(err, "failed to reset the WiFi interface")
 			}
