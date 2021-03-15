@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -58,7 +59,8 @@ type DecodeTestOptions struct {
 	// TestVideo stores the test video's name.
 	TestVideo string
 	// DecoderType indicates whether a HW or SW decoder will be used.
-	DecoderType DecoderType
+	DecoderType          DecoderType
+	BatteryDischargeMode setup.BatteryDischargeMode
 }
 
 // arcTestConfig stores GoogleTest configuration passed to c2_e2e_test APK.
