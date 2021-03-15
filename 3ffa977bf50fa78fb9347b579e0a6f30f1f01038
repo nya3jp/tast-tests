@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32073c66_089f04b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:13:24Z",
+      "side": 1,
+      "message": "Approving without waiting for a shadow reviewer since it\u0027s a trivial CL.\n",
+      "revId": "3ffa977bf50fa78fb9347b579e0a6f30f1f01038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
