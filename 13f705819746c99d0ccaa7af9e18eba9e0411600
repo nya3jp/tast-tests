@@ -1,0 +1,114 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dabb66f1_e6054fea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:32:18Z",
+      "side": 1,
+      "message": "LGTM per Tast review with a few nits, I defer to Tom.\n",
+      "revId": "13f705819746c99d0ccaa7af9e18eba9e0411600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc081ac_6134a43d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:32:18Z",
+      "side": 1,
+      "message": "Could you add err in the message for diagnosis?",
+      "range": {
+        "startLine": 86,
+        "startChar": 48,
+        "endLine": 86,
+        "endChar": 53
+      },
+      "revId": "13f705819746c99d0ccaa7af9e18eba9e0411600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d0fc0f_1d1a947f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:32:18Z",
+      "side": 1,
+      "message": "\u003e \"ingore\" is a possible misspelling of \"ignore\".\n\nPlease fix.",
+      "parentUuid": "70989938_5d497322",
+      "range": {
+        "startLine": 146,
+        "startChar": 54,
+        "endLine": 146,
+        "endChar": 60
+      },
+      "revId": "13f705819746c99d0ccaa7af9e18eba9e0411600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a3ce983_3ff2cde9",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:32:18Z",
+      "side": 1,
+      "message": "If we ignore the output we can use Run instead.",
+      "range": {
+        "startLine": 147,
+        "startChar": 71,
+        "endLine": 147,
+        "endChar": 77
+      },
+      "revId": "13f705819746c99d0ccaa7af9e18eba9e0411600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec9e0d10_e60ac4c3",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:32:18Z",
+      "side": 1,
+      "message": "nit: I would use %s for a string escaped with shutil.EscapeSlice to avoid double escaping.",
+      "range": {
+        "startLine": 203,
+        "startChar": 44,
+        "endLine": 203,
+        "endChar": 47
+      },
+      "revId": "13f705819746c99d0ccaa7af9e18eba9e0411600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
