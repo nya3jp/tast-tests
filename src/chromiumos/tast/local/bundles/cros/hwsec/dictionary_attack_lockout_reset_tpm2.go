@@ -105,21 +105,7 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 		s.Fatal("Writing NVRAM Space should not succeed with incorrect password")
 	}
 
-	// Check counter again, should be 1 because we tried to write NVRAM space with an incorrect password.
-	info, err = tpmManager.GetDAInfo(ctx)
-	if err != nil {
-		s.Fatal("Failed to get dictionary attack info: ", err)
-	}
-	if info.Counter != 1 {
-		s.Fatalf("Incorrect counter, got %d expect 1", info.Counter)
-	}
-
-	// Now try to reset the dictionary attack lockout counter.
-	if _, err := tpmManager.ResetDALock(ctx); err != nil {
-		s.Fatal("Failed to reset dictionary attack lockout: ", err)
-	}
-
-	// Check counter again, should be 0, and lockout shouldn't be in effect.
+	// Check counter, should be 0, and lockout shouldn't be in effect.
 	info, err = tpmManager.GetDAInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dictionary attack info: ", err)
