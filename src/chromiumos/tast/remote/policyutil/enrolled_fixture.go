@@ -23,7 +23,7 @@ func init() {
 		Desc:            "Fixture providing enrollment",
 		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
 		Impl:            &enrolledFixt{},
-		SetUpTimeout:    5 * time.Minute,
+		SetUpTimeout:    8 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
 		ResetTimeout:    15 * time.Second,
 		ServiceDeps:     []string{"tast.cros.policy.PolicyService"},
@@ -38,6 +38,16 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	if err := EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
+
+	ok := false
+	defer func() {
+		if !ok {
+			s.Log("Removing enrollment after failing SetUp")
+			if err := EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
+				s.Fatal("Failed to reset TPM: ", err)
+			}
+		}
+	}()
 
 	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
 	if err != nil {
@@ -71,6 +81,8 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	if _, err := pc.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to stop Chrome: ", err)
 	}
+
+	ok = true
 
 	return nil
 }
