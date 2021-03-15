@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3726b010_b10a5884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T03:25:34Z",
+      "side": 1,
+      "message": "failed to run subtest %sv",
+      "range": {
+        "startLine": 68,
+        "startChar": 14,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "08eff0f7b7c397af8a88d59a6d76570f2592e45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd137bcf_7fcccf8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T03:25:34Z",
+      "side": 1,
+      "message": "This is never assigned in this method",
+      "range": {
+        "startLine": 202,
+        "startChar": 5,
+        "endLine": 202,
+        "endChar": 11
+      },
+      "revId": "08eff0f7b7c397af8a88d59a6d76570f2592e45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6089b40f_fd589b89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-15T03:25:34Z",
+      "side": 1,
+      "message": "The value set here does not impact the value in the calling method.",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 9
+      },
+      "revId": "08eff0f7b7c397af8a88d59a6d76570f2592e45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
