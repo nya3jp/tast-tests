@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fd80580_dfabd6c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/zoom_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:39Z",
+      "side": 1,
+      "message": "Please avoid embedding ServiceState.",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 22
+      },
+      "revId": "d2f9e40dd4e8e98dcf1a8f21d3a4beae0f23d948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4287a72a_581dc8b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/zoom_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:39Z",
+      "side": 1,
+      "message": "nit: const conferenceName \u003d ...",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "d2f9e40dd4e8e98dcf1a8f21d3a4beae0f23d948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "496f9685_dc20b0f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/zoom_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:39Z",
+      "side": 1,
+      "message": "style: Naked return is generally discouraged. Can you just return err?",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 9
+      },
+      "revId": "d2f9e40dd4e8e98dcf1a8f21d3a4beae0f23d948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fa61772_2caa6d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/zoom_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:39Z",
+      "side": 1,
+      "message": "We should pass context.Context to honor timeouts correctly. Please also make sure to use context when issuing an HTTP request.",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "d2f9e40dd4e8e98dcf1a8f21d3a4beae0f23d948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ce3a3c_a586ebb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/zoom_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:39Z",
+      "side": 1,
+      "message": "10m sounds long, is it intentional?",
+      "range": {
+        "startLine": 96,
+        "startChar": 42,
+        "endLine": 96,
+        "endChar": 53
+      },
+      "revId": "d2f9e40dd4e8e98dcf1a8f21d3a4beae0f23d948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8090603_a44a0954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/zoom_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-15T08:07:39Z",
+      "side": 1,
+      "message": "Should we store strings.TrimSpace(string(body)) to a variable here and use it consistently below?",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "d2f9e40dd4e8e98dcf1a8f21d3a4beae0f23d948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
