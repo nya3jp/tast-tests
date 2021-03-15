@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca99c4e3_d7cadaf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-15T19:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "002652b8_8dab2cac",
+      "range": {
+        "startLine": 73,
+        "startChar": 40,
+        "endLine": 73,
+        "endChar": 44
+      },
+      "revId": "f85224862fc4b3dfd1ecdb0d3a5a929a49b6e99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a1898fb_a72ba4ab",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-15T03:16:59Z",
       "side": 1,
       "message": "minor nit: \"got %v, want %v\" order might be preferred in golang:  https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 62
+      },
+      "revId": "f85224862fc4b3dfd1ecdb0d3a5a929a49b6e99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a0d2bb_4de709ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-15T19:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a1898fb_a72ba4ab",
       "range": {
         "startLine": 112,
         "startChar": 12,
