@@ -16,6 +16,23 @@
       "message": "Thanks for the review.\nUpdated the patch, PTAL.",
       "revId": "c8fcfce07264a07ec8b30ba55ed65e9668f37848",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c540e3ab_f8cd4d9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-15T10:07:35Z",
+      "side": 1,
+      "message": "LGTM\nThanks for the test!",
+      "revId": "c8fcfce07264a07ec8b30ba55ed65e9668f37848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
