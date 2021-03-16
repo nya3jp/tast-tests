@@ -69,6 +69,24 @@
       "parentUuid": "38ebad57_2a912260",
       "revId": "2d05a268280982fcb5b2625d43376b07e6274a6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4c99025_5b9684a6",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-16T17:28:33Z",
+      "side": 1,
+      "message": "I understand the concern, however I don\u0027t think it will be an issue.\n\nThis feature was on by default since it landed back in December [1]. It wasn\u0027t until recently that we disabled it for dev mode [2] due to complaints regarding the announcement. Adding this flag here should really just restore the previous behavior of having it on by default.\n\n[1] https://chromium-review.googlesource.com/c/chromium/src/+/2488081\n[2] https://chromium-review.googlesource.com/c/chromium/src/+/2747223",
+      "parentUuid": "b670fe6b_79e354fe",
+      "revId": "2d05a268280982fcb5b2625d43376b07e6274a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
