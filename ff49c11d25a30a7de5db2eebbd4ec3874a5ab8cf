@@ -160,6 +160,30 @@
       },
       "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f266e5a_eebac15c",
+        "filename": "src/chromiumos/tast/services/cros/ui/google_meet_service.proto",
+        "patchSetId": 37
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-03-16T08:15:42Z",
+      "side": 1,
+      "message": "Thanks for your advice. I do have a question, the Google Meet and Zoom have totally different implementation of `MeetScenario` method. If we only create a `ConferenceService`, we need to made the implementations as sub-functions then switch in `MeetScenario`. What do you say?",
+      "parentUuid": "c8452e8e_65ad7669",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
