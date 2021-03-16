@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1137a6df_be623091",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Jun, thanks for this solution. I modified this specific CUJ to use the DUT default screen mode setting to do the test. But a \"mode\" runtime var can be passed in to change that. \n\nChanges are made on this CUJ only at this time. But we will replicate the change to other CUJs.",
+      "parentUuid": "4eb1d95a_4ef1447d",
+      "range": {
+        "startLine": 45,
+        "startChar": 20,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a260497b_526afc51",
@@ -135,6 +159,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "527ed98f_f0889d53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe255133_f8d10cce",
+      "range": {
+        "startLine": 71,
+        "startChar": 16,
+        "endLine": 71,
+        "endChar": 37
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36843667_cb2baf03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "tabExtraActions() is renamed to scrollPage() and redundant parameters ctx is removed.",
+      "parentUuid": "a260497b_526afc51",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 16
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e796a0ca_c79a042a",
@@ -148,6 +220,30 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "Document what they mean.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 9
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "699dffce_5deef702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "this type definition is removed to optimize the code.",
+      "parentUuid": "e796a0ca_c79a042a",
       "range": {
         "startLine": 139,
         "startChar": 0,
@@ -181,6 +277,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9ff0c7c_9988e525",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "no longer use s.Run in this test case.",
+      "parentUuid": "01960cef_af30adf7",
+      "range": {
+        "startLine": 387,
+        "startChar": 13,
+        "endLine": 387,
+        "endChar": 19
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00323b14_ced26cec",
@@ -194,6 +314,24 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "Why so?  What type of problem happens if waits in replay mode?",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f25bf71b_5afb5a06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Modified the comments comments.",
+      "parentUuid": "00323b14_ced26cec",
       "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -221,6 +359,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3632a7c9_f4a22e9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Thanks for the tip, changed as advised",
+      "parentUuid": "b55c3593_08969695",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 16
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35ad116b_90dd1d21",
@@ -234,6 +396,24 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "Those operations are not included by recorder.Run, and therefore UMA metrics won\u0027t be collected. Is that intended?",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4adcc7e5_00969acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Moved tab opening into the recorder. But if Aings wants it outside, we\u0027ll move it out.",
+      "parentUuid": "35ad116b_90dd1d21",
       "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -255,6 +435,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd57a06f_92896dc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "This log is for debug purpose, to observe which tab takes unusual time to render, already added comment about this to make it clear.",
+      "parentUuid": "4f665610_2e7535e2",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "730fa9f0_33f9696b",
@@ -268,6 +466,24 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "Why is this Record mode only?",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb1a245_f5185cb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "The thought is a user wouldn’t have to wait until the page is fully loaded, and there is no way for normal user to know if a page is quiescence, therefore, it’s not required under replay mode.",
+      "parentUuid": "730fa9f0_33f9696b",
       "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -295,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ae2841_84338ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Both messages were modified to be more clear.",
+      "parentUuid": "eb50f701_770df143",
+      "range": {
+        "startLine": 484,
+        "startChar": 6,
+        "endLine": 484,
+        "endChar": 54
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dee645c_a5f440b6",
@@ -312,6 +552,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9342ec8_161e301b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "This is from the requirement: Scroll YouTube, Hulu, and wikipedia. Comments added.",
+      "parentUuid": "6dee645c_a5f440b6",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45bd2caf_df6e4cfb",
@@ -325,6 +583,30 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "why?",
+      "range": {
+        "startLine": 493,
+        "startChar": 54,
+        "endLine": 493,
+        "endChar": 74
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a6372dd_8db2c665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Same as an earlier comment. Normal users won\u0027t know if a page is quiescence. Therefor, no waiting under replay mode for normal testing.",
+      "parentUuid": "45bd2caf_df6e4cfb",
       "range": {
         "startLine": 493,
         "startChar": 54,
@@ -358,6 +640,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8490d92f_46b95933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "This switch case was removed.",
+      "parentUuid": "ab4531be_728c0902",
+      "range": {
+        "startLine": 512,
+        "startChar": 7,
+        "endLine": 512,
+        "endChar": 18
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "844c146d_802e76cb",
@@ -381,6 +687,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c90f616_94439b67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "The chosen content of google news web site is not a link but a div, page won’t redirect when click on it (but the url on address \u0026 search bar will changed), this cause blank content under Replay mode, the comments are adjusted.",
+      "parentUuid": "844c146d_802e76cb",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 8
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e81eaf75_5158984e",
@@ -394,6 +724,30 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "Probably Eval is better:\n  tab.conn.Eval(ctx, \"window.location.href\", \u0026href)",
+      "range": {
+        "startLine": 557,
+        "startChar": 15,
+        "endLine": 557,
+        "endChar": 83
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b46e39_68281893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Changed. Thanks!",
+      "parentUuid": "e81eaf75_5158984e",
       "range": {
         "startLine": 557,
         "startChar": 15,
@@ -450,6 +804,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0cf5181_30abf113",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "trim spaces removed, and syntax adjusted as advice",
+      "parentUuid": "fe6ea4d6_32a0b1aa",
+      "range": {
+        "startLine": 642,
+        "startChar": 3,
+        "endLine": 642,
+        "endChar": 26
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe873ee_c5bcfc9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85feb26f_2166742c",
+      "range": {
+        "startLine": 642,
+        "startChar": 7,
+        "endLine": 642,
+        "endChar": 8
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef3f4139_59f31daa",
@@ -463,6 +865,24 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "I guess maybe better to return a promise to ensure that timeout happens within the Call.\n  return new Promise(function(resolve) {\n    setTimeout(function() { els[0].click(); resolve(true); }, 300);\n  });",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff11cd3d_27aa0194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Click on a link will trigger redirect immediately. If the page is redirect first and then the CDP returns, the JSObject won’t able to release and we will see errors. We also tried to using Promise as you suggested, it will have same CDP release issue. So this code is kept but the subsequent waiting procedures is changed to polling.",
+      "parentUuid": "ef3f4139_59f31daa",
       "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -484,6 +904,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "045396f0_08520ba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "The waiting procedures is changed to polling.",
+      "parentUuid": "dd91a2f8_794d1ed5",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f4a4e56_14de0175",
@@ -497,6 +935,30 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "should be checked in prior to sleep.",
+      "range": {
+        "startLine": 661,
+        "startChar": 0,
+        "endLine": 663,
+        "endChar": 2
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b0b7fc_fce683b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Procedure adjusted.",
+      "parentUuid": "4f4a4e56_14de0175",
       "range": {
         "startLine": 661,
         "startChar": 0,
@@ -554,6 +1016,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2add3718_f93ffb13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Jun, it seems you have handled the orientation adjustment in NewTouchController(). Maybe we don\u0027t need it here any more? Removed and will do more testing.",
+      "parentUuid": "a4eee4b2_7364391f",
+      "range": {
+        "startLine": 671,
+        "startChar": 51,
+        "endLine": 672,
+        "endChar": 51
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26d4e2d1_3494deb5",
@@ -567,6 +1053,24 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "by the way, there\u0027s a new library called \"uiauto\".  This is a new version of \"ui\" library, and I think it\u0027s better in many ways (for example, you don\u0027t have to manage \u0027Release\u0027 by yourself).\nI recommend to use that for the new code.",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "578aaef2_b0b829b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Probably we can consider to enhance this later?",
+      "parentUuid": "26d4e2d1_3494deb5",
       "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -606,6 +1110,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52fc1886_d4249f8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Jun, \"Window switch time\" is also one factor to be measured. I think we should keep the touch procedure.",
+      "parentUuid": "286639f9_73a8ce5b",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56743f52_ed47264a",
@@ -637,6 +1159,24 @@
       "side": 1,
       "message": "Ctrl-tab is working but the only thing is that end user cannot trigger it on tablet. Tab switch is the main test scenario and we are not confident to ignore this UI procedure. I will let the team measure the performance difference, and we can discuss together with the Alt-tab topic.",
       "parentUuid": "56743f52_ed47264a",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6445cba7_c16621ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "We\u0027ll keep this as per email discussion. Thanks Jun.",
+      "parentUuid": "1ced010c_96dc2fae",
       "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -676,6 +1216,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be62d80e_f89a0b56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "I propose to keep this refresh method from touch since it is not too harder than keybaord.",
+      "parentUuid": "d2271f12_ca4b4dc3",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd492731_ac082260",
@@ -689,6 +1247,24 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "Doing this just once in init() sounds like fragile to change. Why not moving always right before the scroll actions?",
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ff2b1d_b6d8383e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Moved before all scroll action (under clamshell mode).",
+      "parentUuid": "fd492731_ac082260",
       "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -716,6 +1292,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aa1173f_5e721a69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Thanks! Time durations is changed to 0 as advice.",
+      "parentUuid": "a6568441_b4efc27f",
+      "range": {
+        "startLine": 966,
+        "startChar": 70,
+        "endLine": 966,
+        "endChar": 81
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bc0f9d3_b91900f6",
@@ -729,6 +1329,30 @@
       "writtenOn": "2021-03-05T02:25:06Z",
       "side": 1,
       "message": "App shelf icon could be \"Chromium\" if it\u0027s non-official build (or developer deploys Chrome).  Please consider supporting both patterns of Chrome and Chromium.",
+      "range": {
+        "startLine": 975,
+        "startChar": 46,
+        "endLine": 975,
+        "endChar": 62
+      },
+      "revId": "2a726608904712f9791eb2d7852666cf7bcaea43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5cded46_395a695f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Launch app now is support input multiple names, for Chrome we use “Chrome” and “Chromium\". Please see the change in cuj/ui.go on cl: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2573726",
+      "parentUuid": "9bc0f9d3_b91900f6",
       "range": {
         "startLine": 975,
         "startChar": 46,

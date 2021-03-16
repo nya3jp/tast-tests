@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f0e7353_cc6bdfb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "All reviewers, thanks for the patience. We had a lot of discussion on this CUJ offline and I now combined all changes for your further review. Also adding Shuhei to invite his inputs. ",
+      "revId": "aed7f0dc10ca46d4d461d183a89ee78800bdbbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

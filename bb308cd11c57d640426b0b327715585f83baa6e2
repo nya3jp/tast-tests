@@ -22,6 +22,30 @@
       },
       "revId": "bb308cd11c57d640426b0b327715585f83baa6e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a024bf_a12ee752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:45:44Z",
+      "side": 1,
+      "message": "Part of the statements is moved out of for-loop, but still need to use some variable inside the for-loop, and there’s a *chrome.Conn needs to use and assign back to structure, those are remain unchanged.",
+      "parentUuid": "418bce04_00d1422f",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 0
+      },
+      "revId": "bb308cd11c57d640426b0b327715585f83baa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
