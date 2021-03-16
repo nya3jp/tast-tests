@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c73c5a17_ece4f6bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-16T03:21:27Z",
+      "side": 1,
+      "message": "Sorry, that was a debug thing I didn\u0027t notice and forgot to remove",
+      "parentUuid": "24c57eca_e2b7fd9f",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6a63029d_81199b97",
         "filename": "src/chromiumos/tast/local/screenshot/differ.go",
         "patchSetId": 4
@@ -37,6 +61,24 @@
       "writtenOn": "2021-03-16T02:30:10Z",
       "side": 1,
       "message": "Can we optionally remove this restriction in the future?  Yesterday we were discussing running screendiff on Crostini apps on external displays as a way to remove some manual test cases.",
+      "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cf54855_d3a5b4fd",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-16T03:21:27Z",
+      "side": 1,
+      "message": "We can. I can add a field for it in the config when it is required.",
+      "parentUuid": "6a63029d_81199b97",
       "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,24 @@
       "writtenOn": "2021-03-16T02:30:10Z",
       "side": 1,
       "message": "All of this mode setting should be optional in case people really want to screenshot the device in default mode.\n\nIt also seems voluminous and specific enough that it should be isolated in its own function rather than inlined here.",
+      "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e18b0be_1ba74421",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-16T03:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2781aa8_4f22c0ad",
       "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "925c89bb_c74f8346",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-16T03:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c97ca899_9c3a8d09",
+      "range": {
+        "startLine": 115,
+        "startChar": 54,
+        "endLine": 115,
+        "endChar": 59
+      },
+      "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9907a03a_25753f61",
@@ -94,6 +178,24 @@
       "writtenOn": "2021-03-16T02:30:10Z",
       "side": 1,
       "message": "Shouldn\u0027t this be reset to the previous value at the end of the tests?",
+      "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "845eaef8_f4f787cd",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-16T03:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9907a03a_25753f61",
       "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
