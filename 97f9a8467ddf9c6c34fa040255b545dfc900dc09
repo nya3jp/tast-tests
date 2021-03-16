@@ -342,6 +342,24 @@
       "parentUuid": "8310e4ca_ed02afd6",
       "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab8f098a_475c6580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_coexistence.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-16T03:53:02Z",
+      "side": 1,
+      "message": "Ah, sorry I mean oppositely which means using \"environment\" rather than \"user\" here. But from testing, the test can pass on Soraka and Krane under tablet mode even without the facing constraints. I think it is because when opening the web page, since it is under tablet mode, CCA will be minimized and stop streaming. Therefore, the web page can successfully open user-facing camera. When switching back to CCA, CCA will use user-facing camera instead since it is the active camera stream now.\n\nAs a result, I think for tablet case, it should pass without facing constraints due to the above reason.\nFor clamshell case, since CCA will also default to use user-facing camera and so does the web page, it should have no such issue.",
+      "parentUuid": "3954244f_ad37cde8",
+      "revId": "97f9a8467ddf9c6c34fa040255b545dfc900dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
