@@ -40,7 +40,7 @@ func init() {
 				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
 			},
 			{
-				Name:    "dataonline_noone_txt30mb",
+				Name:    "dataonline_allcontacts_txt30mb",
 				Fixture: "nearbyShareRemoteDataUsageOnlineAllContactsGAIA",
 				Val: nearbytestutils.TestData{
 					Filename: "big_txt.zip", TransferTimeout: nearbyshare.LargeFileOnlineTransferTimeout},
