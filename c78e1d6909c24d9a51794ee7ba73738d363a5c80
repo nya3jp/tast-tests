@@ -16,6 +16,29 @@
       "message": "We expect this to cause some failures on some boards, but those are failures that we want to catch.",
       "revId": "c78e1d6909c24d9a51794ee7ba73738d363a5c80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4cb4b1_72cf8881",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-03-16T23:40:47Z",
+      "side": 1,
+      "message": "This is marked\n// DEPRECATED: use linuxssh.GetFile(ctx, d.Conn(), src, dst)\n\nAlso, this is saving the file even when there is no error, which takes extra space. Wonder if it would be better to use d.Conn.Command to run a grep on the DUT first, and only bring the files over on error? Or remove the files if there is no error.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 49
+      },
+      "revId": "c78e1d6909c24d9a51794ee7ba73738d363a5c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
