@@ -105,12 +105,29 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 			return
 		}
 		if err := tf.DeconfigAP(ctx, ap1); err != nil {
-			s.Error("Failed to deconfig ap, err: ", err)
+			s.Error("Failed to deconfig ap1, err: ", err)
 		}
 	}(ctx)
 	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
 	defer cancel()
 	s.Log("AP1 setup done")
+
+	// Schedule defer for AP2 before connection. Otherwise, we
+	// will teardown AP2 before disconnect, and the DUT might
+	// get disconnected due to inactivity and causing flaky
+	// Disconnect failure.
+	var ap2 *wificell.APIface
+	defer func(ctx context.Context) {
+		if ap2 == nil {
+			return
+		}
+		if err := tf.DeconfigAP(ctx, ap2); err != nil {
+			s.Error("Failed to deconfig ap2, err: ", err)
+		}
+	}(ctx)
+	// We don't have ap2 yet, borrow the reserve of ap1.
+	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
+	defer cancel()
 
 	// Connect to the initial AP.
 	var servicePath string
@@ -160,17 +177,11 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 	// Override SSID and BSSID as we need the same SSID as the first AP
 	// and the BSSID that we're waiting.
 	ops = append(ops, hostapd.SSID(ssid), hostapd.BSSID(ap2BSSID))
-	ap2, err := tf.ConfigureAP(ctx, ops, param.secConfFac)
+	ap2, err = tf.ConfigureAP(ctx, ops, param.secConfFac)
 	if err != nil {
 		s.Fatal("Failed to configure ap, err: ", err)
 	}
-	defer func(ctx context.Context) {
-		if err := tf.DeconfigAP(ctx, ap2); err != nil {
-			s.Error("Failed to deconfig ap, err: ", err)
-		}
-	}(ctx)
-	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
-	defer cancel()
+	// defer deconfig already scheduled above.
 	s.Log("AP2 setup done")
 
 	// Deconfigure the initial AP.
