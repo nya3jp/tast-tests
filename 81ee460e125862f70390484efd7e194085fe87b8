@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4a5ab3b_8e6a4c0a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-16T05:28:27Z",
+      "side": 1,
+      "message": "We shall reserve some time for the defer function. Use the pattern:\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, // time needed for the clean up)\ndefer cancel()\ndefer func(ctx context.Context) {\n  ...\n}(cleanupCtx)\n// Use ctx for normal operation.",
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3563393_a4b42bfd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-16T05:28:27Z",
+      "side": 1,
+      "message": "Tearing down",
+      "range": {
+        "startLine": 55,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 62
+      },
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a75b3cf2_7464ff99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-16T05:28:27Z",
+      "side": 1,
+      "message": "Same here. Reserve time for cleanup.",
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8cf5244_aa17a66f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-16T05:28:27Z",
+      "side": 1,
+      "message": "Consider TODO(b/...) and file a bug to trace the TODO if not exist.",
+      "range": {
+        "startLine": 78,
+        "startChar": 9,
+        "endLine": 78,
+        "endChar": 18
+      },
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bf63d0b_4ff2c333",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-16T05:28:27Z",
+      "side": 1,
+      "message": "\"Want RW firmware; actual: \", firmwareCopy",
+      "range": {
+        "startLine": 98,
+        "startChar": 11,
+        "endLine": 98,
+        "endChar": 34
+      },
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8f1d12e_c2ca6d34",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-16T05:28:27Z",
+      "side": 1,
+      "message": "Reserve some time for the defer ctx.\n\nctxForCleanup :\u003d ctx\nctx \u003d ctxutil.Shorten(ctx, // time for cleanup)",
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe6adaab_168fe76f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-16T05:28:27Z",
+      "side": 1,
+      "message": "The logic here is the same as the tear down defer function in FpAddEntropy. How about moving it to a function, say Reimage() in fingerprint.go?",
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
