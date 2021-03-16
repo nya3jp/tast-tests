@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2123bc71_2f4c6f39",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T21:43:58Z",
+      "side": 1,
+      "message": "It is outside of the screen. As shown in the opened bug.",
+      "parentUuid": "043665d5_eb392f0d",
+      "revId": "9a776d33c16c91da3e2edba38311fb3e828f043a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4379e1b4_5ae6f789",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-03-16T21:28:20Z",
       "side": 1,
       "message": "I don\u0027t think this is a good idea to keep width/height in the converter. Why not passing width/height to SwipeUpTo... function?",
+      "revId": "9a776d33c16c91da3e2edba38311fb3e828f043a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b1ee4f_47127466",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T21:43:58Z",
+      "side": 1,
+      "message": "Do you mean pass width/height to SwipeUpHotseatAndWaitForCompletion()? Which means each caller needs to get the Heigh and Width of the screen. Do you prefer that?",
+      "parentUuid": "4379e1b4_5ae6f789",
       "revId": "9a776d33c16c91da3e2edba38311fb3e828f043a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
