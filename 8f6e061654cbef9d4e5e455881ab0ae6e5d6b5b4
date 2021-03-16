@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c57eca_e2b7fd9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-16T02:30:10Z",
+      "side": 1,
+      "message": "Why is this needed?  You at least need a comment here, and it would be better to find another way to accomplish whatever this is needed for.",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a63029d_81199b97",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-16T02:30:10Z",
+      "side": 1,
+      "message": "Can we optionally remove this restriction in the future?  Yesterday we were discussing running screendiff on Crostini apps on external displays as a way to remove some manual test cases.",
+      "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2781aa8_4f22c0ad",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-16T02:30:10Z",
+      "side": 1,
+      "message": "All of this mode setting should be optional in case people really want to screenshot the device in default mode.\n\nIt also seems voluminous and specific enough that it should be isolated in its own function rather than inlined here.",
+      "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c97ca899_9c3a8d09",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-16T02:30:10Z",
+      "side": 1,
+      "message": "nit: have",
+      "range": {
+        "startLine": 115,
+        "startChar": 54,
+        "endLine": 115,
+        "endChar": 59
+      },
+      "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9907a03a_25753f61",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-16T02:30:10Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be reset to the previous value at the end of the tests?",
+      "revId": "8f6e061654cbef9d4e5e455881ab0ae6e5d6b5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
