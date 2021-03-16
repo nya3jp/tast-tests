@@ -85,6 +85,42 @@
       "message": "I think this part needs to be guarded by VMEnabled.\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/arc/arc.go#322\n\nbecause, for P, we still expect that VK becomes visible on one click, right?",
       "revId": "db1677caefc51c98c0521647d458425e00a20966",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da86a253_99e60db5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-16T05:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1769629_99b4694f",
+      "revId": "db1677caefc51c98c0521647d458425e00a20966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "863a733d_2f438bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-16T05:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76031741_1915e539",
+      "revId": "db1677caefc51c98c0521647d458425e00a20966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
