@@ -1,0 +1,76 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e8d1544_cf9a1c49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T05:40:07Z",
+      "side": 1,
+      "message": "\u003e \"sructure\" is a possible misspelling of \"structure\".\n\nPlease fix.",
+      "parentUuid": "ca5c394e_8276a0dc",
+      "range": {
+        "startLine": 16,
+        "startChar": 28,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "33103a23d26cfa6a69ad8babceb41251eed6c1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc834ad8_77e4c4be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T05:40:07Z",
+      "side": 1,
+      "message": "\u003e \"sructure\" is a possible misspelling of \"structure\".\n\nPlease fix.",
+      "parentUuid": "492a9100_e407cb8f",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 41
+      },
+      "revId": "33103a23d26cfa6a69ad8babceb41251eed6c1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79cb17fc_b8f021b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T05:40:07Z",
+      "side": 1,
+      "message": "\u003e \"deactive\" is a possible misspelling of \"deactivate\".\n\nPlease fix.",
+      "parentUuid": "6ba72c76_85846c9c",
+      "range": {
+        "startLine": 120,
+        "startChar": 27,
+        "endLine": 120,
+        "endChar": 35
+      },
+      "revId": "33103a23d26cfa6a69ad8babceb41251eed6c1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
