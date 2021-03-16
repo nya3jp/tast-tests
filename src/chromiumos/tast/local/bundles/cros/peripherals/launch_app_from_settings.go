@@ -53,7 +53,6 @@ func init() {
 				Val: settingsTestParams{
 					appID:        apps.Scan.ID,
 					menuLabel:    apps.Scan.Name + " Scan documents and images",
-					featureFlag:  "ScanningUI",
 					settingsPage: "osPrinting", // URL for Print and scan page
 				},
 				ExtraAttr: []string{"group:paper-io", "paper-io_scanning"},

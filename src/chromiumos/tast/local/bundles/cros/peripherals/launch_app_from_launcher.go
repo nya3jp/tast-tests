@@ -58,9 +58,8 @@ func init() {
 			{
 				Name: "scan",
 				Val: testParams{
-					app:         apps.Scan,
-					query:       apps.Scan.Name,
-					featureFlag: "ScanningUI",
+					app:   apps.Scan,
+					query: apps.Scan.Name,
 				},
 				ExtraAttr: []string{"group:paper-io", "paper-io_scanning"},
 			},

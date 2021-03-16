@@ -100,8 +100,7 @@ func Scan(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	// Create a Chrome instance with the Scan app enabled.
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("ScanningUI"))
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Chrome instance: ", err)
 	}
