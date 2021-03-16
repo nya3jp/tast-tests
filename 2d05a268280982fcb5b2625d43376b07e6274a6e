@@ -51,6 +51,24 @@
       "parentUuid": "517876f1_172a1f3b",
       "revId": "2d05a268280982fcb5b2625d43376b07e6274a6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b670fe6b_79e354fe",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-16T08:41:19Z",
+      "side": 1,
+      "message": "This will affect all existing tests. I\u0027m not sure if this breaks the assumptions made by these tests.",
+      "parentUuid": "38ebad57_2a912260",
+      "revId": "2d05a268280982fcb5b2625d43376b07e6274a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
