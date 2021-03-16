@@ -11,8 +11,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
 )
 
@@ -135,7 +136,7 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
@@ -146,24 +147,24 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to set input method to %q: %v", testCase.inputMethodID, err)
 	}
 
+	vkbCtx := vkb.NewContext(cr, tconn)
 	inputField := testserver.TextAreaNoCorrectionInputField
 
-	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+	if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
 		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 	}
 
 	if testCase.hasDecoder {
 		s.Log("Wait for decoder running")
-		if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
+		if err := vkbCtx.WaitForDecoderEnabled(true)(ctx); err != nil {
 			s.Fatal("Failed to wait for decoder running: ", err)
 		}
 	}
 
-	if err := vkb.TapKeys(ctx, tconn, testCase.typingKeys); err != nil {
-		s.Fatal("Failed to input with virtual keyboard: ", err)
-	}
-
-	if err := inputField.WaitForValueToBe(ctx, tconn, testCase.expectedTypingResult); err != nil {
+	if err := uiauto.Combine("Tap keys and validate outcome",
+		vkbCtx.TapKeys(testCase.typingKeys),
+		its.WaitForFieldValueToBe(inputField, testCase.expectedTypingResult),
+	)(ctx); err != nil {
 		s.Fatal("Failed to verify input: ", err)
 	}
 }
