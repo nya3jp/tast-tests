@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e2bcbe_d1f3b9d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-16T01:05:21Z",
+      "side": 1,
+      "message": "This was reviewed in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2706185",
+      "revId": "a77fcb0a1046f9948c56d7818cbfca61ebe98ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
