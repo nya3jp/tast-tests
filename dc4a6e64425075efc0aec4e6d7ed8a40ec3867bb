@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4997eceb_6b61452f",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-16T22:51:37Z",
+      "side": 1,
+      "message": "I wasn\u0027t planning on doing anything with Android visibility since I figure that\u0027s more on the Android side of things, plus the snippet doesn\u0027t have an API for choosing allowed contacts.\n\nWe should double check that there aren\u0027t any additional code paths for CrOS-\u003eAndroid where Android has \u0027Some contacts\u0027 though.",
+      "parentUuid": "3f1af3bf_747176e5",
+      "range": {
+        "startLine": 167,
+        "startChar": 81,
+        "endLine": 168,
+        "endChar": 145
+      },
+      "revId": "dc4a6e64425075efc0aec4e6d7ed8a40ec3867bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5dde2b93_e3f827f3",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-16T21:38:02Z",
       "side": 1,
       "message": "Could make this more idiot proof :) \n\nNearby Share enabled on CrOS and Android with \u0027Data Usage\u0027 set to \u0027Online\u0027 on both.",
+      "range": {
+        "startLine": 191,
+        "startChar": 49,
+        "endLine": 191,
+        "endChar": 79
+      },
+      "revId": "dc4a6e64425075efc0aec4e6d7ed8a40ec3867bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ecf9371_dbecc31b",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-16T22:51:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dde2b93_e3f827f3",
       "range": {
         "startLine": 191,
         "startChar": 49,
