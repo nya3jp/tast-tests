@@ -34,6 +34,24 @@
       "parentUuid": "505dd89c_529e6541",
       "revId": "8fb3d3bdd85d0d82892282f18e50c830712e99b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54137ce5_5e98c1ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-16T21:35:25Z",
+      "side": 1,
+      "message": "performAndClose uses the API for shelf, while GetARCAppWindowInfo checks the actual existence of window.  That difference may matter as ARC windows are asynchronously shown/closed.  I also think checking with windows is a bit better way to verify the behavior.  Use of shelf API could be slightly indirect.\n\nEither way, I can\u0027t approve a change which can cause flakiness of the existing tests.",
+      "parentUuid": "b6d21c60_41157d0b",
+      "revId": "8fb3d3bdd85d0d82892282f18e50c830712e99b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
