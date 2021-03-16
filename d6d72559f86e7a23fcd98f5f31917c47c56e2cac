@@ -16,6 +16,126 @@
       "message": "Hi All,\n\nPlease take a final look at the test. I\u0027ve changed the logic piece (line 171) from \"Closing the OS setting page\" to \"Clicking Back button, instead\". This is because the test fails in Tablet mode as there is no \"Close\" button (thanks to Oleh who spotted that and informed me).\n\nThanks!",
       "revId": "d6d72559f86e7a23fcd98f5f31917c47c56e2cac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c4dd71_3e45f57d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-16T13:36:18Z",
+      "side": 1,
+      "message": "This is the same function as getImgBytesFromFilePath() in the WallpaperImage test. Please file  tracking bug that this function should be moved to policyutil https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/\nand link the bug here before the function.",
+      "revId": "d6d72559f86e7a23fcd98f5f31917c47c56e2cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e70c192_1a5657f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-16T13:36:18Z",
+      "side": 1,
+      "message": "If it possible, please change the order, so \"unset\" is last. We should avoid leaving a red avatar after the test.",
+      "revId": "d6d72559f86e7a23fcd98f5f31917c47c56e2cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73c730b_25f014c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-16T13:36:18Z",
+      "side": 1,
+      "message": "nit: non_empty",
+      "range": {
+        "startLine": 136,
+        "startChar": 28,
+        "endLine": 136,
+        "endChar": 36
+      },
+      "revId": "d6d72559f86e7a23fcd98f5f31917c47c56e2cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4effea9_b42ce3c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-16T13:36:18Z",
+      "side": 1,
+      "message": "ServeAndVerify() already does this, it can be skipped.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 4
+      },
+      "revId": "d6d72559f86e7a23fcd98f5f31917c47c56e2cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ec73cc_d2d9edfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-16T13:36:18Z",
+      "side": 1,
+      "message": "Before reopening the Change device account image, put a check for WaitUntilGone(userImagePreviewNode) just to make sure that the previous window closed.",
+      "revId": "d6d72559f86e7a23fcd98f5f31917c47c56e2cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f897230f_2e4eed69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-16T13:36:18Z",
+      "side": 1,
+      "message": "nit: Errorf() is enough here.",
+      "range": {
+        "startLine": 220,
+        "startChar": 7,
+        "endLine": 220,
+        "endChar": 13
+      },
+      "revId": "d6d72559f86e7a23fcd98f5f31917c47c56e2cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
