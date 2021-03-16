@@ -12,13 +12,16 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
+
+type accountTypeTestParam struct {
+	unicorn bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -29,19 +32,27 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Fixture:           "familyLinkParentArcLogin",
+			Val: accountTypeTestParam{
+				unicorn: false,
+			},
 		}, {
 			Name:              "unicorn",
 			ExtraSoftwareDeps: []string{"android_p"},
-			Fixture:           "familyLinkUnicornArcLogin",
+			Val: accountTypeTestParam{
+				unicorn: true,
+			},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Fixture:           "familyLinkParentArcLogin",
+			Val: accountTypeTestParam{
+				unicorn: false,
+			},
 		}, {
 			Name:              "unicorn_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Fixture:           "familyLinkUnicornArcLogin",
+			Val: accountTypeTestParam{
+				unicorn: true,
+			},
 		}},
 		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 		Vars:    []string{"arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword"},
@@ -50,7 +61,44 @@ func init() {
 
 func EnableArc(ctx context.Context, s *testing.State) {
 
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	parentUser := s.RequiredVar("arc.parentUser")
+	parentPass := s.RequiredVar("arc.parentPassword")
+	childUser := s.RequiredVar("arc.childUser")
+	childPass := s.RequiredVar("arc.childPassword")
+	var cr *chrome.Chrome
+	var err error
+
+	accountType := s.Param().(accountTypeTestParam)
+	if accountType.unicorn {
+		cr, err = chrome.New(
+			ctx,
+			chrome.GAIALogin(chrome.Creds{
+				User:       childUser,
+				Pass:       childPass,
+				ParentUser: parentUser,
+				ParentPass: parentPass,
+			}),
+			chrome.ARCSupported())
+	} else {
+		cr, err = chrome.New(
+			ctx,
+			chrome.GAIALogin(chrome.Creds{
+				User: parentUser,
+				Pass: parentPass,
+			}),
+			chrome.ARCSupported(),
+			chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	}
+
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
 
 	s.Log("Turn On Play Store from Settings")
 	if err := turnOnPlayStore(ctx, tconn); err != nil {
