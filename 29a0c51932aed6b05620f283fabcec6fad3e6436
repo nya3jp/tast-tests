@@ -22,6 +22,30 @@
       },
       "revId": "29a0c51932aed6b05620f283fabcec6fad3e6436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4c1c9af_698ead13",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-16T04:25:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "612680d5_5acd3e2f",
+      "range": {
+        "startLine": 155,
+        "startChar": 17,
+        "endLine": 155,
+        "endChar": 38
+      },
+      "revId": "29a0c51932aed6b05620f283fabcec6fad3e6436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
