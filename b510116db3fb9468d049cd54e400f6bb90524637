@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebb189d2_63b82609",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-16T22:51:37Z",
+      "side": 1,
+      "message": "Changed things up a little to cover the negative case in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2765835",
+      "revId": "b510116db3fb9468d049cd54e400f6bb90524637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
