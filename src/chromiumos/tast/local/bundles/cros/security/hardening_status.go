@@ -15,6 +15,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/local/bundles/cros/security/sandboxing"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/moblab"
 	"chromiumos/tast/local/session"
@@ -30,7 +31,8 @@ func init() {
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
-		Attr: []string{},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{},
 	})
 }
 
@@ -73,18 +75,35 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 	}
 	defer upstart.RestartJob(ctx, "ui")
 
+	testType := "guest"
+	testBody(s, testType, ignoredAncestorNames, exclusionsMap)
+
+	cr, err := chrome.New(
+		ctx,
+		chrome.ARCEnabled(),
+	)
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+	defer cr.Close(ctx)
+
+	testType = "arc-user"
+	testBody(s, testType, ignoredAncestorNames, exclusionsMap)
+}
+
+func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusionsMap map[string]struct{}) {
+
 	procs, err := process.Processes()
 	if err != nil {
 		s.Fatal("Failed to list running processes: ", err)
 	}
-	const logName = "processes.txt"
+	logName := testType + "-processes.txt"
 	s.Logf("Writing %v processes to %v", len(procs), logName)
 	lg, err := os.Create(filepath.Join(s.OutDir(), logName))
 	if err != nil {
 		s.Fatal("Failed to open log: ", err)
 	}
 	defer lg.Close()
-
 	// We don't know that we'll see parent processes before their children (since PIDs can wrap around),
 	// so do an initial pass to gather information.
 	infos := make(map[int32]*sandboxing.ProcSandboxInfo)
@@ -222,7 +241,7 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 		s.Log(proc)
 	}
 
-	const sharedMountsLogName = "shared_mounts.txt"
+	sharedMountsLogName := testType + "-shared_mounts.txt"
 	s.Log("Writing shared mounts to ", sharedMountsLogName)
 	sharedMounts, err := os.Create(filepath.Join(s.OutDir(), sharedMountsLogName))
 	if err != nil {
@@ -240,7 +259,7 @@ func HardeningStatus(ctx context.Context, s *testing.State) {
 		sharedMounts.WriteString("\n")
 	}
 
-	const relevantProcessesLogName = "relevant_processes.txt"
+	relevantProcessesLogName := testType + "-relevant_processes.txt"
 	s.Log("Writing relevant processes to ", relevantProcessesLogName)
 	relevantProcesses, err := os.Create(filepath.Join(s.OutDir(), relevantProcessesLogName))
 	if err != nil {
