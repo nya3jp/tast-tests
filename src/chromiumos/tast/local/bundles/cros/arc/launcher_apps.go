@@ -57,13 +57,9 @@ func LauncherApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
-	// Optin to Play Store.
-	s.Log("Opting into Play Store")
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
+	// Optin to PlayStore and Close
+	if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
 		s.Fatal("Failed to optin to Play Store: ", err)
-	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for Play Store: ", err)
 	}
 
 	// Setup ARC.
