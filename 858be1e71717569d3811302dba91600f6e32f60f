@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "858be1e71717569d3811302dba91600f6e32f60f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935155f8_fac74ae2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-03-16T03:49:18Z",
+      "side": 1,
+      "message": "This change is doing parameterization like this CL: https://crrev.com/c/2635251",
+      "revId": "858be1e71717569d3811302dba91600f6e32f60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
