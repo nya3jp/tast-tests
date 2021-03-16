@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb958d01_aac2a23c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:25:56Z",
+      "side": 1,
+      "message": "\u003e \"chaning\" is a possible misspelling of \"chaining\" or \"changing\".\n\nFixed",
+      "parentUuid": "d2eb4f09_4eabce1f",
+      "range": {
+        "startLine": 127,
+        "startChar": 68,
+        "endLine": 127,
+        "endChar": 75
+      },
+      "revId": "6fa96ea177b0c0cd57f8b810dcdb6d4bfddbcb6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
