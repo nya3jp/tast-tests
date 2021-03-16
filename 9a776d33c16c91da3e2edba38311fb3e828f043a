@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f08476f_a53e2b79",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-16T21:56:07Z",
+      "side": 1,
+      "message": "Do you have ideas why this happens?\n\nThis value comes from shelf widget\u0027s center point (https://source.chromium.org/chromium/chromium/src/+/master:ash/shelf/shelf_test_api.cc;l\u003d108). It is unlikely to be offscreen.  Also I haven\u0027t seen such reports.\n\nFor example, there might be a chance that shelf widget is half off-screen because of screen layout change or animation or any other reasons. If that\u0027s the case, the right fix could be rather making a waiting, not changing the position.",
+      "parentUuid": "2123bc71_2f4c6f39",
+      "revId": "9a776d33c16c91da3e2edba38311fb3e828f043a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4379e1b4_5ae6f789",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 1
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Do you mean pass width/height to SwipeUpHotseatAndWaitForCompletion()? Which means each caller needs to get the Heigh and Width of the screen. Do you prefer that?",
       "parentUuid": "4379e1b4_5ae6f789",
+      "revId": "9a776d33c16c91da3e2edba38311fb3e828f043a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ddaf0aa_503f5470",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-16T21:56:07Z",
+      "side": 1,
+      "message": "Yes, exactly. Similar to DragToShowHomescreen or DragToShowOverview.\nBut it might not be necessary if the problem is well understood.",
+      "parentUuid": "95b1ee4f_47127466",
       "revId": "9a776d33c16c91da3e2edba38311fb3e828f043a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
