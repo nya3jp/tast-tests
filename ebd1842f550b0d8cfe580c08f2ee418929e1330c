@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99919ba4_666d541a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-16T01:50:31Z",
+      "side": 1,
+      "message": "forgot a small fix that was in a later patch, and deleted data files downloaded by remote tests",
+      "revId": "ebd1842f550b0d8cfe580c08f2ee418929e1330c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
