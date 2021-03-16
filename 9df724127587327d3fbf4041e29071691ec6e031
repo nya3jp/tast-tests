@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32625858_dac0cf39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501067
+      },
+      "writtenOn": "2021-03-16T18:50:52Z",
+      "side": 1,
+      "message": "The two .patch files looks alright to me, but do you plan to maintain one patch file for every ITS release you are going to use?",
+      "revId": "9df724127587327d3fbf4041e29071691ec6e031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d8ac229_654b6840",
