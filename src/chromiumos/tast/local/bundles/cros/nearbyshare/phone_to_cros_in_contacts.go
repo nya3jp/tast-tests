@@ -9,10 +9,11 @@ import (
 	"path/filepath"
 	"time"
 
+	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/android"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/screenshot"
@@ -36,24 +37,24 @@ func init() {
 				Fixture: "nearbyShareDataUsageOfflineAllContactsGAIA",
 				Val: nearbytestutils.TestData{
 					Filename:        "small_jpg.zip",
-					TransferTimeout: nearbyshare.SmallFileTransferTimeout,
-					TestTimeout:     nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
+					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 					MimeType:        nearbysnippet.MimeTypeJpeg,
 				},
 				ExtraData: []string{"small_jpg.zip"},
-				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:    "dataonline_allcontacts_txt30mb",
 				Fixture: "nearbyShareDataUsageOnlineAllContactsGAIA",
 				Val: nearbytestutils.TestData{
 					Filename:        "big_txt.zip",
-					TransferTimeout: nearbyshare.LargeFileOnlineTransferTimeout,
-					TestTimeout:     nearbyshare.DetectionTimeout + nearbyshare.LargeFileOnlineTransferTimeout,
+					TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
+					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
 					MimeType:        nearbysnippet.MimeTypeTextPlain,
 				},
 				ExtraData: []string{"big_txt.zip"},
-				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.LargeFileOnlineTransferTimeout,
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
 			},
 		},
 	})
@@ -100,7 +101,7 @@ func PhoneToCrosInContacts(ctx context.Context, s *testing.State) {
 
 	s.Log("Waiting for incoming share notification on CrOS receiver")
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-	if err := nearbyshare.AcceptIncomingShareNotification(ctx, tconn, androidDisplayName, nearbyshare.DetectShareTargetTimeout); err != nil {
+	if err := nearbyshare.AcceptIncomingShareNotification(ctx, tconn, androidDisplayName, nearbycommon.DetectShareTargetTimeout); err != nil {
 		s.Fatal("CrOS receiver failed to find Android sender: ", err)
 	}
 	s.Log("Accepted the share on the CrOS receiver")

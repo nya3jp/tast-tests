@@ -14,10 +14,10 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
+	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/dut"
-	"chromiumos/tast/local/chrome/nearbyshare"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/nearbyservice"
 	"chromiumos/tast/ssh/linuxssh"
