@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93bf9e6a_9562224e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T02:51:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b6ff3c_969bbcbc",
+      "revId": "44053c8d19439c360aff03f285455f8882d8324e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4cb4ced_a3ed70c8",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-15T07:58:44Z",
       "side": 1,
       "message": "Can we use testing.Poll here instead of sleep, examining if the reboot is finished?",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 0
+      },
+      "revId": "44053c8d19439c360aff03f285455f8882d8324e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96efdeb4_5c2fce07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T02:51:32Z",
+      "side": 1,
+      "message": "Not doing the sleep is risky, because a polling can only try to read from the MCU console, and if the polling reads the console BEFORE the reboot occurs, the polling would consider it has finished. A better approach would be to sleep a few seconds, and then do a polling. Here, the scanner.Scan below serves as the polling, as it watches for RW in the console output.",
+      "parentUuid": "f4cb4ced_a3ed70c8",
       "range": {
         "startLine": 343,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d9c27c_799fa726",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T02:51:32Z",
+      "side": 1,
+      "message": "Well it may be better to just fail the test. We should not hit EOF while scanning. If there\u0027s no information available, Scan() will block.",
+      "parentUuid": "dc7e2563_77598e63",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 3
+      },
+      "revId": "44053c8d19439c360aff03f285455f8882d8324e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d6faf27_5185f58d",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ea1480_ebe8b313",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T02:51:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d6faf27_5185f58d",
+      "revId": "44053c8d19439c360aff03f285455f8882d8324e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b221a81d_62ac363d",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-03-15T07:58:44Z",
       "side": 1,
       "message": "same as the previous one",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 4
+      },
+      "revId": "44053c8d19439c360aff03f285455f8882d8324e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8cd6860_985ba2e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T02:51:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b221a81d_62ac363d",
       "range": {
         "startLine": 383,
         "startChar": 0,
