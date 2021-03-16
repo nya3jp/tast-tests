@@ -22,6 +22,30 @@
       },
       "revId": "e9973d08765725c42288ef65c513a970861088eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17e5ec72_6fb80d74",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-16T18:20:00Z",
+      "side": 0,
+      "message": "Ah nice. I only tried \"main\" before giving up. I\u0027ll change to HEAD",
+      "parentUuid": "aeb0ea6c_cb464136",
+      "range": {
+        "startLine": 10,
+        "startChar": 66,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "e9973d08765725c42288ef65c513a970861088eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
