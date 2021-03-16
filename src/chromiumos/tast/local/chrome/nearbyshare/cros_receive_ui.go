@@ -18,6 +18,12 @@ import (
 	"chromiumos/tast/local/chrome/ui/quicksettings"
 )
 
+// ReceiveUIParams are the UI FindParams for the receiving UI's root node.
+var ReceiveUIParams ui.FindParams = ui.FindParams{
+	Role: ui.RoleTypeRootWebArea,
+	Name: "Settings - Nearby Share",
+}
+
 // StartHighVisibilityMode enables Nearby Share's high visibility mode via Quick Settings.
 func StartHighVisibilityMode(ctx context.Context, tconn *chrome.TestConn, deviceName string) error {
 	if err := quicksettings.Show(ctx, tconn); err != nil {

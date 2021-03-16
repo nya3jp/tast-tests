@@ -7,15 +7,7 @@ package nearbyshare
 
 import (
 	"time"
-
-	"chromiumos/tast/local/chrome/ui"
 )
-
-// ReceiveUIParams are the UI FindParams for the receiving UI's root node.
-var ReceiveUIParams ui.FindParams = ui.FindParams{
-	Role: ui.RoleTypeRootWebArea,
-	Name: "Settings - Nearby Share",
-}
 
 // DetectShareTargetTimeout is the timeout for a sender to detect an available receiver or vice versa.
 const DetectShareTargetTimeout = time.Minute
