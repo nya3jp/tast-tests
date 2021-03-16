@@ -13,8 +13,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
 )
 
@@ -55,7 +56,7 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
@@ -97,26 +98,20 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to set settings: ", err)
 			}
 
+			vkbCtx := vkb.NewContext(cr, tconn)
+
 			s.Log("Wait for decoder running")
-			if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
+			if err := vkbCtx.WaitForDecoderEnabled(true)(ctx); err != nil {
 				s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
 			}
 
-			// Clear text before starting input.
-			if err := its.Clear(inputField)(ctx); err != nil {
-				s.Fatal("Failed to clear input field: ", err)
-			}
-
-			if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
-				s.Fatal("Failed to click input field to show virtual keyboard: ", err)
-			}
-			defer vkb.HideVirtualKeyboard(ctx, tconn)
-
-			if err := vkb.TapKeys(ctx, tconn, subTest.keySeq); err != nil {
-				s.Fatal("Failed to input with virtual keyboard: ", err)
-			}
-
-			if err := inputField.WaitForValueToBe(ctx, tconn, subTest.expectedText); err != nil {
+			if err := uiauto.Combine("Verify VK input",
+				vkbCtx.WaitForDecoderEnabled(true),
+				its.Clear(inputField),
+				its.ClickFieldUntilVKShown(inputField),
+				vkbCtx.TapKeys(subTest.keySeq),
+				its.WaitForFieldValueToBe(inputField, subTest.expectedText),
+			)(ctx); err != nil {
 				s.Fatal("Failed to verify input: ", err)
 			}
 		})

@@ -6,12 +6,13 @@ package inputs
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -36,56 +37,38 @@ func init() {
 
 func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer its.Close()
 
-	inputField := testserver.TextInputField
+	const (
+		inputField = testserver.TextInputField
+		emojiChar  = "😂"
+	)
 
-	inputFieldNode, err := inputField.GetNode(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to find input field: ", err)
-	}
-	defer inputFieldNode.Release(ctx)
+	emojiMenuFinder := nodewith.Name("Emoji")
+	emojiPickerFinder := nodewith.Name("Emoji Picker").Role(role.RootWebArea)
+	emojiCharFinder := nodewith.Name(emojiChar).First().Ancestor(emojiPickerFinder)
 
-	if err := inputFieldNode.RightClick(ctx); err != nil {
-		s.Fatal("Failed to right click the input element: ", err)
-	}
+	ui := uiauto.New(tconn)
 
-	emojiMenuElement, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Emoji"}, 5*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find Emoji menu item: ", err)
-	}
-	defer emojiMenuElement.Release(ctx)
-
-	if err := emojiMenuElement.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the input element: ", err)
-	}
-
-	if _, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Emoji Picker"}, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for emoji panel shown: ", err)
-	}
-
-	const emojiChar = "😂"
-	emojiButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: emojiChar}, 20*time.Second)
-	if err != nil {
-		s.Fatalf("Failed to find emoji button %s: %v", emojiChar, err)
-	}
-	if err := emojiButton.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click on the emoji button")
-	}
-
-	if err := inputField.WaitForValueToBe(ctx, tconn, emojiChar); err != nil {
-		s.Fatal("Failed to verify input: ", err)
+	if err := uiauto.Combine("Verify quick emoji input",
+		// Right click input to trigger context menu and select Emoji.
+		ui.RightClick(testserver.Field(inputField)),
+		ui.WaitUntilExists(emojiMenuFinder),
+		ui.LeftClick(emojiMenuFinder),
+		// Select item from emoji picker.
+		ui.WaitUntilExists(emojiCharFinder),
+		ui.LeftClick(emojiCharFinder),
+		// Wait for input value to test emoji.
+		its.WaitForFieldValueToBe(inputField, emojiChar),
+	)(ctx); err != nil {
+		s.Fatal("Failed to verify emoji picker: ", err)
 	}
 }

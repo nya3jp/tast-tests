@@ -6,17 +6,18 @@ package inputs
 
 import (
 	"context"
-	"fmt"
 	"strings"
 	"time"
 
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
 )
 
@@ -70,34 +71,19 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 	}
 	defer gaiaConn.Close()
 
-	const (
-		inputElementCSSLocator = "#identifierId"
-		testEmail              = "test@gmail.com"
-	)
+	const testEmail = "test@gmail.com"
 
-	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Email or phone"}, 20*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find user name input: ", err)
-	}
-	defer element.Release(ctx)
+	ui := uiauto.New(tconn)
+	vkbCtx := vkb.NewContext(cr, tconn)
 
-	s.Log("Click input to trigger virtual keyboard")
-	if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
-		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
-	}
-
-	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
-		"!!document.activeElement && document.querySelector(%q)===document.activeElement", inputElementCSSLocator)); err != nil {
-		s.Fatalf("Failed to wait for document ready or %q element: %v", inputElementCSSLocator, err)
-	}
-
-	if err := vkb.TapKeys(ctx, tconn, strings.Split(testEmail, "")); err != nil {
-		s.Fatal("Failed to input with virtual keyboard: ", err)
-	}
-
-	// Wait for the text field to have the correct contents
-	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
-		`document.querySelector(%q).value === %q`, inputElementCSSLocator, testEmail)); err != nil {
-		s.Fatal("Failed to validate the contents of the text field: ", err)
+	userInputFinder := nodewith.Name("Email or phone")
+	if err := uiauto.Combine("validate virtual keyboard input on OOBE",
+		ui.WaitUntilExists(userInputFinder),
+		vkbCtx.ClickUntilVKShown(userInputFinder),
+		vkbCtx.TapKeys(strings.Split(testEmail, "")),
+		// Validate output after tapkeys
+		util.WaitForFieldTextToBe(tconn, userInputFinder, testEmail),
+	)(ctx); err != nil {
+		s.Fatal("Failed to input on OOBE page: ", err)
 	}
 }
