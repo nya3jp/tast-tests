@@ -16,6 +16,24 @@
       "message": "lgtm\n\nPlease make sure the doc is accessible to the test user. I clicked the link and got \"access denied\".",
       "revId": "523c269fdc3a412d0de05595b57d6cf870469b61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d779d5f1_84878433",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-03-16T20:48:43Z",
+      "side": 1,
+      "message": "I login with the test user and it has the access. ^^",
+      "parentUuid": "30df281f_0845246a",
+      "revId": "523c269fdc3a412d0de05595b57d6cf870469b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
