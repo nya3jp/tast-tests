@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3215f0a0_689de249",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 39
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:55:53Z",
+      "side": 1,
+      "message": "@Hsin-Yi, a kind reminder. do you have further concerns or comments for this CL? Thanks!",
+      "revId": "c0719dfff0b63de39ceb2e2de34fd3d8228e5668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
