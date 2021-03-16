@@ -118,7 +118,10 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		shillconst.ServicePropertyState: shillconst.ServiceStateOnline,
 	}
 
-	if _, err := manager.WaitForServiceProperties(ctx, props, 15*time.Second); err != nil {
+	// Wait for Connected Ethernet service. We wait 60 seconds for DHCP
+	// negotiation since some DUTs will end up retrying DHCP discover/request, and
+	// this can often take 15-30 seconds depending on the number of retries.
+	if _, err := manager.WaitForServiceProperties(ctx, props, 60*time.Second); err != nil {
 		s.Fatal("Service not found: ", err)
 	}
 
