@@ -70,6 +70,24 @@
       "parentUuid": "54137ce5_5e98c1ea",
       "revId": "8fb3d3bdd85d0d82892282f18e50c830712e99b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a55438_ca935a04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T21:47:15Z",
+      "side": 1,
+      "message": "Jun, this piece of code has been reverted to its original logic using GetARCAppWindowInfo. Do you mean it is still flaky?",
+      "parentUuid": "e0d2f9bd_57657ab8",
+      "revId": "8fb3d3bdd85d0d82892282f18e50c830712e99b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
