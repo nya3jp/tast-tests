@@ -3,6 +3,144 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2911a2e_c66eae2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-16T04:29:48Z",
+      "side": 1,
+      "message": "Suggest to rename this to something like MeetDiff",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "29a0c51932aed6b05620f283fabcec6fad3e6436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a14f88b_c8504de5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-16T04:29:48Z",
+      "side": 1,
+      "message": "test",
+      "range": {
+        "startLine": 23,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "29a0c51932aed6b05620f283fabcec6fad3e6436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae176ef_e618d9cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-16T04:29:48Z",
+      "side": 1,
+      "message": "It is not very straightforward to fail a test when there is no error.",
+      "range": {
+        "startLine": 41,
+        "startChar": 150,
+        "endLine": 41,
+        "endChar": 160
+      },
+      "revId": "29a0c51932aed6b05620f283fabcec6fad3e6436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "552dde62_5983cf22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-16T04:29:48Z",
+      "side": 1,
+      "message": "If a specific error is expected, please check the error too.",
+      "range": {
+        "startLine": 51,
+        "startChar": 45,
+        "endLine": 51,
+        "endChar": 55
+      },
+      "revId": "29a0c51932aed6b05620f283fabcec6fad3e6436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92134e52_35a8416c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-16T04:29:48Z",
+      "side": 1,
+      "message": "I think it will be more readable by calling DiffPerConfig directly and report the error.",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "29a0c51932aed6b05620f283fabcec6fad3e6436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab1af02_3d66fd7d",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-16T04:29:48Z",
+      "side": 1,
+      "message": "Please wrap the errors in this file.",
+      "range": {
+        "startLine": 72,
+        "startChar": 19,
+        "endLine": 72,
+        "endChar": 22
+      },
+      "revId": "29a0c51932aed6b05620f283fabcec6fad3e6436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "612680d5_5acd3e2f",
         "filename": "src/chromiumos/tast/local/screenshot/differ.go",
         "patchSetId": 5
@@ -43,6 +181,29 @@
         "startChar": 17,
         "endLine": 155,
         "endChar": 38
+      },
+      "revId": "29a0c51932aed6b05620f283fabcec6fad3e6436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b821f512_965b94e7",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-16T04:29:48Z",
+      "side": 1,
+      "message": "I think this is not necessary, it is more straightforward to fail a test in the test file itself.",
+      "range": {
+        "startLine": 242,
+        "startChar": 5,
+        "endLine": 242,
+        "endChar": 23
       },
       "revId": "29a0c51932aed6b05620f283fabcec6fad3e6436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
