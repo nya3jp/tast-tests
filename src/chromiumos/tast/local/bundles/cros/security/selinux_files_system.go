@@ -123,6 +123,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/usr/bin/midis", Context: "cros_midis_exec", IgnoreErrors: true},
 		{Path: "/usr/bin/periodic_scheduler", Context: "cros_periodic_scheduler_exec"},
 		{Path: "/usr/bin/powerd", Context: "cros_powerd_exec"},
+		{Path: "/usr/bin/resourced", Context: "cros_resourced_exec"},
 		{Path: "/usr/bin/seneschal", Context: "cros_seneschal_exec", IgnoreErrors: true},
 		{Path: "/usr/bin/shill", Context: "cros_shill_exec"},
 		{Path: "/usr/bin/start_bluetoothd.sh", Context: "cros_init_start_bluetoothd_shell_script"},
