@@ -39,6 +39,30 @@
       },
       "revId": "c33b681d19fcfee167e5f7cf80a14152b3291439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b896a5b_709a4560",
+        "filename": "src/chromiumos/tast/local/bluetooth/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:46:59Z",
+      "side": 1,
+      "message": "Fixed it. Was too conservative ;-(",
+      "parentUuid": "b43adf25_272bf360",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 3
+      },
+      "revId": "c33b681d19fcfee167e5f7cf80a14152b3291439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
