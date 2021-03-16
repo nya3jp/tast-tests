@@ -12,8 +12,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -132,7 +133,6 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to new Chrome instance: ", err)
 	}
-
 	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -145,43 +145,28 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	// IME code of the language currently being tested.
 	testIME := ime.IMEPrefix + string(params.imeID)
 
-	// Launch inputs test web server.
-	ts, err := testserver.Launch(ctx, cr)
-	if err != nil {
-		s.Fatal("Failed to launch inputs test server: ", err)
-	}
-	defer ts.Close()
-
-	// Select the input field being tested.
-	inputField := testserver.TextAreaInputField
-
-	// Open the virtual keyboard.
-	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
-	}
-
 	// Add and set the required ime for the test case.
 	if err := ime.AddAndSetInputMethod(ctx, tconn, testIME); err != nil {
 		s.Fatalf("Failed to set input method to %s: %v", testIME, err)
 	}
 
-	// Activate handwriting input.
-	if err := vkb.TapHandwritingInputAndWaitForEngine(ctx, tconn); err != nil {
-		s.Fatal("Failed to tap handwriting input: ", err)
+	// Launch inputs test web server.
+	its, err := testserver.Launch(ctx, cr, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	// TapKeyboardInput is used to reset the keyboard state back to keyboard input.
-	defer vkb.TapKeyboardInput(cleanupCtx, tconn)
-	// TapAccessPoints is used to show the keyboard layout buttons.
-	defer vkb.TapAccessPoints(cleanupCtx, tconn)
+	defer its.Close()
 
-	// Read and populate the data from the handwriting strokes file, then draw on the canvas.
-	if err := vkb.DrawHandwritingFromFile(ctx, tconn, s.DataPath(params.handwritingFile)); err != nil {
-		s.Fatal("Failed to draw handwriting from file: ", err)
+	// Select the input field being tested.
+	inputField := testserver.TextAreaInputField
+	vkbCtx := vkb.NewContext(cr, tconn)
+
+	if err := uiauto.Combine("Test handwriting on virtual keyboard",
+		its.ClickFieldUntilVKShown(inputField),
+		vkbCtx.TapHandwritingInputAndWaitForEngine(),
+		vkbCtx.DrawHandwritingFromFile(s.DataPath(params.handwritingFile)),
+		its.WaitForFieldValueToBe(inputField, params.expectedText),
+	)(ctx); err != nil {
+		s.Fatal("Failed to verify handwriting input: ", err)
 	}
-
-	// Verify if the derived text is equal to the expected text.
-	if err := inputField.WaitForValueToBe(ctx, tconn, params.expectedText); err != nil {
-		s.Fatal("Failed to verify input: ", err)
-	}
-
 }
