@@ -103,7 +103,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 	// TODO(tetsui): Use camera position for getting the default orientation.
 	portraitByDefault := info.Bounds.Height > info.Bounds.Width
 
-	runTest := func(ctx context.Context, s *testing.State, activityName string, rotation int) {
+	rotateDisplay := func(ctx context.Context, rotation int) {
 		// When the device is portrait by default, rotate for additional 90 degrees.
 		actualRotation := rotation
 		if portraitByDefault {
@@ -117,7 +117,9 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		if err := waitForRotation(rotation%180 == 0); err != nil {
 			s.Fatal("Failed to wait for rotation: ", err)
 		}
+	}
 
+	openFirstActivity := func(ctx context.Context) {
 		firstAct, err := arc.NewActivity(a, "com.android.settings", ".Settings")
 		if err != nil {
 			s.Fatal("Failed to create a new activity: ", err)
@@ -128,7 +130,9 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to start the activity: ", err)
 		}
 		defer firstAct.Stop(ctx, tconn)
+	}
 
+	openSecondActivity := func(ctx context.Context, activityName string) {
 		const pkg = "org.chromium.arc.testapp.softinputmode"
 		secondAct, err := arc.NewActivity(a, pkg, activityName)
 		if err != nil {
@@ -140,15 +144,21 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to start the activity: ", err)
 		}
 		defer secondAct.Stop(ctx, tconn)
+	}
 
+	snapToTheLeft := func(ctx context.Context) {
 		if _, err := ash.SetARCAppWindowState(ctx, tconn, secondAct.PackageName(), ash.WMEventSnapRight); err != nil {
 			s.Fatal("Failed to snap app in split view: ", err)
 		}
+	}
 
+	snapToTheRight := func(ctx context.Context) {
 		if _, err := ash.SetARCAppWindowState(ctx, tconn, firstAct.PackageName(), ash.WMEventSnapLeft); err != nil {
 			s.Fatal("Failed to snap app in split view: ", err)
 		}
+	}
 
+	openVirtualKeyboardByClick := func(ctx context.Context) {
 		const fieldID = "org.chromium.arc.testapp.softinputmode:id/text"
 		field := d.Object(ui.ID(fieldID))
 		if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
@@ -175,6 +185,13 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		if err := field.Exists(ctx); err != nil {
 			s.Fatal("Could not find the field; probably hidden by the virtual keyboard?")
 		}
+	}
+
+	runTest := func(ctx context.Context, s *testing.State, activityName string, rotation int) {
+		rotateDisplay(ctx, rotation)
+		openFirstActivity(ctx)
+		openSecondActivity(ctx)
+		openVirtualKeyboardByClick(ctx)
 	}
 
 	// Restore the initial rotation.
