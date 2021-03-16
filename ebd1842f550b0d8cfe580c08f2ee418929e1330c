@@ -33,6 +33,69 @@
       "message": "Seems fine to me. I\u0027ll let vecore@ comment on the Javascript ",
       "revId": "ebd1842f550b0d8cfe580c08f2ee418929e1330c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a06fd2_8a3fa26a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-16T23:42:39Z",
+      "side": 1,
+      "message": "vecore@ highlighting the JS sections to make them easier to find",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 1
+      },
+      "revId": "ebd1842f550b0d8cfe580c08f2ee418929e1330c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eba0cf9_d375dafc",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-16T23:42:39Z",
+      "side": 1,
+      "message": "vecore@ highlighting the JS sections to make them easier to find",
+      "revId": "ebd1842f550b0d8cfe580c08f2ee418929e1330c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "185d683b_d5b363b7",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-16T23:42:39Z",
+      "side": 1,
+      "message": "vecore@ highlighting the JS sections to make them easier to find",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 71
+      },
+      "revId": "ebd1842f550b0d8cfe580c08f2ee418929e1330c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
