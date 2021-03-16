@@ -8,9 +8,8 @@ import (
 	"context"
 	"path/filepath"
 
-	"chromiumos/tast/local/chrome/nearbyshare"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	remotenearby "chromiumos/tast/remote/cros/nearbyshare"
 	"chromiumos/tast/services/cros/nearbyservice"
 	"chromiumos/tast/testing"
@@ -28,24 +27,24 @@ func init() {
 			{
 				Name:      "dataoffline_allcontacts_png5kb",
 				Fixture:   "nearbyShareRemoteDataUsageOfflineAllContactsGAIA",
-				Val:       nearbytestutils.TestData{Filename: "small_png.zip", TransferTimeout: nearbyshare.SmallFileTransferTimeout},
+				Val:       nearbytestutils.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_png.zip"},
-				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:      "dataoffline_allcontacts_jpg11kb",
 				Fixture:   "nearbyShareRemoteDataUsageOfflineAllContactsGAIA",
-				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbyshare.SmallFileTransferTimeout},
+				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_jpg.zip"},
-				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:    "dataonline_allcontacts_txt30mb",
 				Fixture: "nearbyShareRemoteDataUsageOnlineAllContactsGAIA",
 				Val: nearbytestutils.TestData{
-					Filename: "big_txt.zip", TransferTimeout: nearbyshare.LargeFileOnlineTransferTimeout},
+					Filename: "big_txt.zip", TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
 				ExtraData: []string{"big_txt.zip"},
-				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.LargeFileOnlineTransferTimeout,
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
 			},
 		},
 	})
@@ -94,7 +93,7 @@ func CrosToCrosInContacts(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get file hashes on DUT1 (Sender): ", err)
 	}
-	receiverFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: filesapp.DownloadPath}
+	receiverFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbytestutils.DownloadPath}
 	receiverFileRes, err := receiver.FilesHashes(ctx, receiverFileReq)
 	if err != nil {
 		s.Fatal("Failed to get file hashes on DUT2 (Receiver): ", err)
