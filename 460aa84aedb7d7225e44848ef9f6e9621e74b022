@@ -16,6 +16,24 @@
       "message": "Please rebase your change. It seems that GAIA API changed and it is missing an argument. See build error:\n\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket.appspot.com/8852574855168738960/+/steps/init_sdk/0/steps/call_chromite.api.SdkService_Create/0/steps/call_build_API_script/0/stdout\n\n\nIn particular:\n\ntast-remote-tests-cros-0.0.1-r5591: src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go:52:45: not enough arguments in call to chrome.GAIALogin\n",
       "revId": "460aa84aedb7d7225e44848ef9f6e9621e74b022",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b8c29ed_051d5b9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-16T21:17:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4084a588_a03fec3f",
+      "revId": "460aa84aedb7d7225e44848ef9f6e9621e74b022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
