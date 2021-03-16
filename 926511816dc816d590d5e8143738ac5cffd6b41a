@@ -16,6 +16,23 @@
       "message": "LGTM as a quick fix to stabilize the test.\n\nIt could be nice to understand why the DHCP server takes so much time to go up and start answering DISCOVER, but maybe this is not the most important thing in the word.",
       "revId": "926511816dc816d590d5e8143738ac5cffd6b41a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d475e720_abd3321a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-03-16T14:09:44Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "926511816dc816d590d5e8143738ac5cffd6b41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
