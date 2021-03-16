@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -69,6 +70,20 @@ func AcceptIncomingShareNotification(ctx context.Context, tconn *chrome.TestConn
 		return errors.Wrap(err, "failed to click sharing notification's receive button")
 	}
 	return nil
+}
+
+// IncomingShareNotificationExists checks if the incoming share notification is present.
+func IncomingShareNotificationExists(ctx context.Context, tconn *chrome.TestConn, senderName string) (bool, error) {
+	notifications, err := ash.Notifications(ctx, tconn)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get notifications")
+	}
+	for _, n := range notifications {
+		if strings.Contains(n.Title, "Nearby Share") && strings.Contains(n.Message, senderName) {
+			return true, nil
+		}
+	}
+	return false, nil
 }
 
 // WaitForReceivingCompleteNotification waits for the notification indicating that the incoming share has completed.
