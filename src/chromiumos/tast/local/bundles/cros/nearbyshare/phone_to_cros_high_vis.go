@@ -9,11 +9,12 @@ import (
 	"path/filepath"
 	"time"
 
+	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/screenshot"
@@ -37,24 +38,24 @@ func init() {
 				Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
 				Val: nearbytestutils.TestData{
 					Filename:        "small_jpg.zip",
-					TransferTimeout: nearbyshare.SmallFileTransferTimeout,
-					TestTimeout:     nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
+					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 					MimeType:        nearbysnippet.MimeTypeJpeg,
 				},
 				ExtraData: []string{"small_jpg.zip"},
-				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.SmallFileTransferTimeout,
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:    "dataonline_noone_txt30mb",
 				Fixture: "nearbyShareDataUsageOnlineNoOneGAIA",
 				Val: nearbytestutils.TestData{
 					Filename:        "big_txt.zip",
-					TransferTimeout: nearbyshare.LargeFileOnlineTransferTimeout,
-					TestTimeout:     nearbyshare.DetectionTimeout + nearbyshare.LargeFileOnlineTransferTimeout,
+					TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
+					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
 					MimeType:        nearbysnippet.MimeTypeTextPlain,
 				},
 				ExtraData: []string{"big_txt.zip"},
-				Timeout:   nearbyshare.DetectionTimeout + nearbyshare.LargeFileOnlineTransferTimeout,
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
 			},
 		},
 	})
@@ -108,12 +109,12 @@ func PhoneToCrosHighVis(ctx context.Context, s *testing.State) {
 	}()
 
 	s.Log("Waiting for CrOS receiver to detect incoming share from Android sender")
-	crosToken, err := receiver.WaitForSender(ctx, androidDisplayName, nearbyshare.DetectShareTargetTimeout)
+	crosToken, err := receiver.WaitForSender(ctx, androidDisplayName, nearbycommon.DetectShareTargetTimeout)
 	if err != nil {
 		s.Fatal("CrOS receiver failed to find Android sender: ", err)
 	}
 	s.Log("Waiting for Android sender to see that CrOS receiver connected")
-	androidToken, err := androidDevice.AwaitReceiverAccept(ctx, nearbyshare.DetectShareTargetTimeout)
+	androidToken, err := androidDevice.AwaitReceiverAccept(ctx, nearbycommon.DetectShareTargetTimeout)
 	if err != nil {
 		s.Fatal("Failed waiting for the Android to connect to receiver: ", err)
 	}

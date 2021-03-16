@@ -38,8 +38,11 @@ type TestData struct {
 	MimeType        nearbysnippet.MimeType
 }
 
+// DownloadPath is the downloads directory on CrOS.
+const DownloadPath = "/home/chronos/user/Downloads/"
+
 // SendDir is the staging directory for test files when sending from CrOS.
-const SendDir = "/home/chronos/user/Downloads/nearby_test_files"
+const SendDir = DownloadPath + "nearby_test_files"
 
 // Hostnames of the devices in our temporary Nearby Share lab deployment.
 const (

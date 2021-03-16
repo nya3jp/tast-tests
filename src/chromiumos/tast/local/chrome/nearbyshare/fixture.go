@@ -13,11 +13,12 @@ import (
 	"strconv"
 	"time"
 
+	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
+	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -364,7 +365,7 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	if f.ChromeReader == nil {
 		s.Error("ChromeReader not defined")
 	}
-	if err := nearbytestutils.SaveLogs(ctx, f.ChromeReader, filepath.Join(s.OutDir(), ChromeLog)); err != nil {
+	if err := nearbytestutils.SaveLogs(ctx, f.ChromeReader, filepath.Join(s.OutDir(), nearbycommon.ChromeLog)); err != nil {
 		s.Error("Failed to save Chrome log: ", err)
 	}
 	if f.androidSetup {

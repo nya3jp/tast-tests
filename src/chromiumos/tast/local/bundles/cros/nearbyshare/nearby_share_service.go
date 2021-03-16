@@ -13,11 +13,12 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
+	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
+	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbysetup"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/services/cros/nearbyservice"
@@ -120,16 +121,16 @@ func (n *NearbyService) StartLogging(ctx context.Context, req *empty.Empty) (*em
 // SaveLogs saves the chrome and messages logs on the DUT.
 func (n *NearbyService) SaveLogs(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	var err error
-	if err = os.RemoveAll(nearbyshare.NearbyLogDir); err != nil {
+	if err = os.RemoveAll(nearbycommon.NearbyLogDir); err != nil {
 		testing.ContextLog(ctx, "Failed to delete nearby log dir: ", err)
 	}
-	if err = os.Mkdir(nearbyshare.NearbyLogDir, 0755); err != nil {
+	if err = os.Mkdir(nearbycommon.NearbyLogDir, 0755); err != nil {
 		testing.ContextLog(ctx, "Failed to create tmp dir log: ", err)
 	}
-	if err = nearbytestutils.SaveLogs(ctx, n.chromeReader, filepath.Join(nearbyshare.NearbyLogDir, nearbyshare.ChromeLog)); err != nil {
+	if err = nearbytestutils.SaveLogs(ctx, n.chromeReader, filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.ChromeLog)); err != nil {
 		testing.ContextLog(ctx, "Failed to save chrome log: ", err)
 	}
-	if err = nearbytestutils.SaveLogs(ctx, n.messageReader, filepath.Join(nearbyshare.NearbyLogDir, nearbyshare.MessageLog)); err != nil {
+	if err = nearbytestutils.SaveLogs(ctx, n.messageReader, filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.MessageLog)); err != nil {
 		testing.ContextLog(ctx, "Failed to save message log: ", err)
 	}
 	return &empty.Empty{}, err
@@ -196,7 +197,7 @@ func (n *NearbyService) SelectShareTarget(ctx context.Context, req *nearbyservic
 	if n.senderSurface == nil {
 		return nil, errors.New("SendSurface is not defined")
 	}
-	if err := n.senderSurface.SelectShareTarget(ctx, req.ReceiverName, nearbyshare.DetectShareTargetTimeout); err != nil {
+	if err := n.senderSurface.SelectShareTarget(ctx, req.ReceiverName, nearbycommon.DetectShareTargetTimeout); err != nil {
 		return nil, errors.Wrap(err, "failed to select share target")
 	}
 	var res nearbyservice.CrOSShareTokenResponse
@@ -232,7 +233,7 @@ func (n *NearbyService) WaitForSenderAndAcceptShare(ctx context.Context, req *ne
 		return nil, errors.New("ReceiveSurface is not defined")
 	}
 	var res nearbyservice.CrOSShareTokenResponse
-	token, err := n.receiverSurface.WaitForSender(ctx, req.SenderName, nearbyshare.DetectShareTargetTimeout)
+	token, err := n.receiverSurface.WaitForSender(ctx, req.SenderName, nearbycommon.DetectShareTargetTimeout)
 	if err != nil {
 		return nil, errors.Wrap(err, "CrOS receiver failed to find CrOS sender")
 	}
@@ -266,7 +267,7 @@ func (n *NearbyService) AcceptIncomingShareNotificationAndWaitForCompletion(ctx 
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
-	if err := nearbyshare.AcceptIncomingShareNotification(ctx, n.tconn, req.SenderName, nearbyshare.DetectShareTargetTimeout); err != nil {
+	if err := nearbyshare.AcceptIncomingShareNotification(ctx, n.tconn, req.SenderName, nearbycommon.DetectShareTargetTimeout); err != nil {
 		return nil, errors.Wrap(err, "CrOS receiver failed to accept Nearby Share notification")
 	}
 	testing.ContextLog(ctx, "Accepted the share on the CrOS receiver")
