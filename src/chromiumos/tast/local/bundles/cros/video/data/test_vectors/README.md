@@ -48,22 +48,7 @@ TODO(b/179426205): Clarify licenses of these video files.
 * 8-bit/frames\_refs\_short\_signaling.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/frames_refs_short_signaling.ivf)
 * 8-bit/non\_uniform\_tiling.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/non_uniform_tiling.ivf)
 
-## VP9
-
-### WebM files
-The license of these video files is the
-[Creative Commons Attribution 3.0 Unported License], as specified
-[here](https://www.webmproject.org/license/bitstream/).
-
-The following directories hold test streams derived from the WebM bitstreams,
-and follow the same directory structure:
-* [vp9/Profile_0_8bit](https://www.webmproject.org/vp9/levels/#test-bitstreams)
-
-The original .webm files were converted with
-  `ffmpeg -i input.webm -vcodec -copy output.ivf`
-
 [video decoder compliance tests]: ../../README.md#video-decoder-compliance-tests
 [aomenc]: https://aomedia.googlesource.com/aom/
 [AOM license]: ../licenses/AOM-LICENSE
-[Creative Commons Attribution 3.0 Unported License]: ../licenses/CC-LICENSE
 [test-25fps.av1.ivf]: https://source.chromium.org/chromium/chromium/src/+/master:media/test/data/test-25fps.av1.ivf
