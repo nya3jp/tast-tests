@@ -6,9 +6,6 @@ package video
 
 import (
 	"context"
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
 	"path/filepath"
 	"strings"
 	"time"
@@ -24,11 +21,14 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type failExpectedFn func(output []byte) bool
+
 // commandBuilderFn is the function type to generate the command line with arguments.
 type commandBuilderDecodeFn func(exe, filename string) (command []string)
 
 type platformDecodingParams struct {
 	filename       string
+	failExpected   failExpectedFn
 	decoder        string                 // command line decoder binary
 	commandBuilder commandBuilderDecodeFn // Function to create the command line arguments.
 }
@@ -43,83 +43,44 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		Attr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-		Params: []testing.Param{
-			{
-				Name: "vaapi_vp9",
-				Val: platformDecodingParams{
-					filename:       "resolution_change_500frames.vp9.ivf",
-					decoder:        filepath.Join(chrome.BinTestDir, "decode_test"),
-					commandBuilder: vp9decodeVAAPIargs,
-				},
-				ExtraSoftwareDeps: []string{"vaapi", caps.HWDecodeVP9},
-				ExtraData:         []string{"resolution_change_500frames.vp9.ivf", "resolution_change_500frames.vp9.ivf.json"},
-			}, {
-				Name: "v4l2_vp9",
-				Val: platformDecodingParams{
-					filename:       "1080p_30fps_300frames.vp9.ivf",
-					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: vp9decodeV4L2args,
-				},
-				ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
-				ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWDecodeVP9},
-				// TODO(b/180615056): need Dynamic Resolution Change support to use resolution_change_500frames.vp9.ivf like vaapi
-				ExtraData: []string{"1080p_30fps_300frames.vp9.ivf", "1080p_30fps_300frames.vp9.ivf.json"},
+		Params: []testing.Param{{
+			Name: "vaapi_vp9",
+			Val: platformDecodingParams{
+				filename:       "resolution_change_500frames.vp9.ivf",
+				failExpected:   nil,
+				decoder:        filepath.Join(chrome.BinTestDir, "decode_test"),
+				commandBuilder: vp9decodeVAAPIargs,
 			},
-		},
+			ExtraSoftwareDeps: []string{"vaapi", caps.HWDecodeVP9},
+			ExtraData:         []string{"resolution_change_500frames.vp9.ivf", "resolution_change_500frames.vp9.ivf.json"},
+		}, {
+			Name: "v4l2_vp9",
+			Val: platformDecodingParams{
+				filename:       "1080p_30fps_300frames.vp9.ivf",
+				failExpected:   nil,
+				decoder:        "v4l2_stateful_decoder",
+				commandBuilder: vp9decodeV4L2args,
+			},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor")),
+			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWDecodeVP9},
+			// TODO(b/180615056): need Dynamic Resolution Change support to use resolution_change_500frames.vp9.ivf like vaapi
+			ExtraData: []string{"1080p_30fps_300frames.vp9.ivf", "1080p_30fps_300frames.vp9.ivf.json"},
+		}, {
+			// Attempt to decode an unsupported codec to ensure that the binary is not
+			// unconditionally succeeding, i.e. not crashing even when expected to.
+			Name: "unsupported_codec_fail",
+			Val: platformDecodingParams{
+				filename: "resolution_change_500frames.vp8.ivf",
+				failExpected: func(output []byte) bool {
+					return strings.Contains(string(output), "Codec VP80 not supported.")
+				},
+				decoder:        filepath.Join(chrome.BinTestDir, "decode_test"),
+				commandBuilder: vp9decodeVAAPIargs,
+			},
+			ExtraSoftwareDeps: []string{"vaapi"},
+			ExtraData:         []string{"resolution_change_500frames.vp8.ivf", "resolution_change_500frames.vp8.ivf.json"},
+		}},
 	})
-}
-
-// readMetadata reads metadata from metadata json.
-func readMetadata(metadataPath string) (map[string]interface{}, error) {
-	metadataJSONBytes, err := ioutil.ReadFile(metadataPath)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to read metadata file at %s", metadataPath)
-	}
-
-	var meta map[string]interface{}
-	if err = json.Unmarshal(metadataJSONBytes, &meta); err != nil {
-		return nil, errors.Wrapf(err, "failed to read json from metadata file at %s", metadataPath)
-	}
-
-	return meta, nil
-}
-
-// verifyContent compares expected per-frame hashes from metadata json to actual
-// hashes.
-func verifyContent(expectedHashesPath, actualOutput string) error {
-	meta, err := readMetadata(expectedHashesPath)
-	if err != nil {
-		return errors.Wrap(err, "failed to verify per-frame hashes")
-	}
-	expected, ok := meta["md5_checksums"].([]interface{})
-	if !ok {
-		return errors.Errorf("`md5_checksums` in metadata at %s not a slice; got %v", expectedHashesPath, meta["md5_checksums"])
-	}
-
-	actual := strings.Split(strings.TrimSpace(actualOutput), "\n")
-	if len(expected) != len(actual) {
-		return errors.Errorf("expected and actual number of frames mismatched (%d != %d)", len(expected), len(actual))
-	}
-
-	var first string
-	var count int
-	for i, ex := range expected {
-		if _, ok := ex.(string); !ok {
-			return errors.Errorf("failed to cast expected hash %v of type %T to string", ex, ex)
-		}
-		if got, wanted := strings.TrimSpace(actual[i]), strings.TrimSpace(ex.(string)); got != wanted {
-			count++
-			if first == "" {
-				first = fmt.Sprintf("frame %d (got %s, want %s)", i, got, wanted)
-			}
-		}
-	}
-
-	if count > 0 {
-		return errors.Errorf("%d mismatched hashes, first at %s", count, first)
-	}
-
-	return nil
 }
 
 // PlatformDecoding runs the media/gpu/vaapi/test:decode_test binary for vaapi
@@ -158,33 +119,30 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	exec := testOpt.decoder
 	command := testOpt.commandBuilder(exec, s.DataPath(testOpt.filename))
 	testing.ContextLog(ctx, "Running ", exec)
-	stdout, stderr, err := testexec.CommandContext(
-		ctx, command[0], command[1:]...,
-	).SeparatedOutput(testexec.DumpLogOnError)
+	output, err := testexec.CommandContext(
+		ctx,
+		command[0],
+		command[1],
+	).CombinedOutput(testexec.DumpLogOnError)
 
-	if err != nil {
-		output := append(stdout, stderr...)
+	if err != nil && (testOpt.failExpected == nil || !testOpt.failExpected(output)) {
 		s.Fatalf("%v failed unexpectedly: %v", exec, errors.Wrap(err, string(output)))
 	}
-
-	if err := verifyContent(s.DataPath(testOpt.filename+".json"), string(stdout)); err != nil {
-		s.Fatalf("%v failed to verify content: %v", exec, errors.Wrap(err, testOpt.filename))
+	if err == nil && testOpt.failExpected != nil {
+		s.Fatalf("%v passed when expected to fail", exec)
 	}
 }
 
 // vp9decodeV4L2args constructs the command line for the VP9 decoding binary exe for v4l2.
-func vp9decodeV4L2args(exe, filename string) []string {
-	return []string{exe, "--file=" + filename}
+func vp9decodeV4L2args(exe, filename string) (command []string) {
+	command = append(command, exe, "--file="+filename)
+
+	return
 }
 
 // vp9decodeVAAPIargs constructs the command line for the VP9 decoding binary exe for vaapi.
-func vp9decodeVAAPIargs(exe, filename string) []string {
-	return []string{
-		exe,
-		"--video=" + filename,
-		"--md5",
-		// vpxdec is used to compute reference hashes, and outputs only those for
-		// visible frames
-		"--visible",
-	}
+func vp9decodeVAAPIargs(exe, filename string) (command []string) {
+	command = append(command, exe, "--video="+filename)
+
+	return
 }
