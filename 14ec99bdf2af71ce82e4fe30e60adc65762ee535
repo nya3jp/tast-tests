@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ffdf31c_d23302c3",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99af3c89_7c7b2800",
+      "range": {
+        "startLine": 45,
+        "startChar": 34,
+        "endLine": 45,
+        "endChar": 38
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46a512aa_4908e834",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-15T03:03:30Z",
       "side": 1,
       "message": "What is the source of this data?",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 12
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "337b7bf1_cea1ec11",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "This is maintained by us (chromeos fingerprint team). We have been using this data in https://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/cros/faft/fingerprint_test.py;l\u003d68, and now we want to migrate to Tast. Every time we release a new version of the firmware, we update this data in the test files.",
+      "parentUuid": "46a512aa_4908e834",
       "range": {
         "startLine": 72,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e3ebc6d_ad5d65fc",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff8d4297_eb47e399",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 16
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79786d8d_8178b978",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-15T03:03:30Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 14
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a64ed52a_d1fc8e24",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79786d8d_8178b978",
       "range": {
         "startLine": 78,
         "startChar": 4,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ef34a3_91d7802f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f50e262_85b5c88d",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 12
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "636c102e_906913f8",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-03-15T03:03:30Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 8
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee28f6e_c5ad43a0",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "636c102e_906913f8",
       "range": {
         "startLine": 86,
         "startChar": 4,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "490863fb_79bc3876",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c55f7ae7_2f6ae75c",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 8
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "388576b7_bba0abc8",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-03-15T03:03:30Z",
       "side": 1,
       "message": "Please use this format to log error: failed",
+      "range": {
+        "startLine": 141,
+        "startChar": 28,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a6ae62d_4f0eca9e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "388576b7_bba0abc8",
       "range": {
         "startLine": 141,
         "startChar": 28,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8ab3e66_0748ca06",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcee8549_7417121c",
+      "range": {
+        "startLine": 146,
+        "startChar": 21,
+        "endLine": 146,
+        "endChar": 27
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14f8a883_cd907091",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-03-15T03:03:30Z",
       "side": 1,
       "message": "failed",
+      "range": {
+        "startLine": 150,
+        "startChar": 28,
+        "endLine": 150,
+        "endChar": 34
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd5a4e9_367a2228",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14f8a883_cd907091",
       "range": {
         "startLine": 150,
         "startChar": 28,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e8cb985_71fc6187",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0642c163_6b80be0e",
+      "range": {
+        "startLine": 154,
+        "startChar": 28,
+        "endLine": 154,
+        "endChar": 34
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dd8a14a_e3d27734",
@@ -267,6 +531,30 @@
       "writtenOn": "2021-03-15T03:03:30Z",
       "side": 1,
       "message": "failed",
+      "range": {
+        "startLine": 166,
+        "startChar": 28,
+        "endLine": 166,
+        "endChar": 34
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c81c721_f3c64729",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dd8a14a_e3d27734",
       "range": {
         "startLine": 166,
         "startChar": 28,
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe0b71d4_2072aa80",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4d3383a_b5ab243f",
+      "range": {
+        "startLine": 182,
+        "startChar": 24,
+        "endLine": 182,
+        "endChar": 64
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccc6caa4_023de868",
@@ -313,6 +625,30 @@
       "writtenOn": "2021-03-15T03:03:30Z",
       "side": 1,
       "message": "failed to verify the key id, got %s, want %s",
+      "range": {
+        "startLine": 195,
+        "startChar": 24,
+        "endLine": 195,
+        "endChar": 60
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd5fb06_9489ae07",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccc6caa4_023de868",
       "range": {
         "startLine": 195,
         "startChar": 24,
@@ -346,6 +682,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f77968f_5ebdfac9",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69122a55_a83f7e4d",
+      "range": {
+        "startLine": 217,
+        "startChar": 24,
+        "endLine": 217,
+        "endChar": 64
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45b3f269_ba31294f",
@@ -359,6 +719,30 @@
       "writtenOn": "2021-03-15T03:03:30Z",
       "side": 1,
       "message": "Please end comment with \".\"",
+      "range": {
+        "startLine": 220,
+        "startChar": 13,
+        "endLine": 220,
+        "endChar": 20
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e641aa_42db31b3",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45b3f269_ba31294f",
       "range": {
         "startLine": 220,
         "startChar": 13,
@@ -392,6 +776,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b0aa54_3a6581d4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7dc98a4_e78db6f1",
+      "range": {
+        "startLine": 230,
+        "startChar": 24,
+        "endLine": 230,
+        "endChar": 64
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ad084c4_e93940aa",
@@ -405,6 +813,30 @@
       "writtenOn": "2021-03-15T03:03:30Z",
       "side": 1,
       "message": "succeeded validating",
+      "range": {
+        "startLine": 233,
+        "startChar": 26,
+        "endLine": 233,
+        "endChar": 35
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e675c2_7a9b3c25",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ad084c4_e93940aa",
       "range": {
         "startLine": 233,
         "startChar": 26,
@@ -438,6 +870,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b5b6ca5_d3285c5a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a474329_a5c33f31",
+      "range": {
+        "startLine": 256,
+        "startChar": 1,
+        "endLine": 256,
+        "endChar": 46
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a713589a_759a018e",
@@ -461,6 +917,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d193befb_9720fa39",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a713589a_759a018e",
+      "range": {
+        "startLine": 263,
+        "startChar": 31,
+        "endLine": 263,
+        "endChar": 37
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bd40510_437a8ed2",
@@ -474,6 +954,30 @@
       "writtenOn": "2021-03-15T03:03:30Z",
       "side": 1,
       "message": "failed",
+      "range": {
+        "startLine": 277,
+        "startChar": 31,
+        "endLine": 277,
+        "endChar": 37
+      },
+      "revId": "14ec99bdf2af71ce82e4fe30e60adc65762ee535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd746682_5526971a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-16T03:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bd40510_437a8ed2",
       "range": {
         "startLine": 277,
         "startChar": 31,
