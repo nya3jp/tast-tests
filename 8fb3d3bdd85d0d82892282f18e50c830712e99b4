@@ -52,6 +52,24 @@
       "parentUuid": "b6d21c60_41157d0b",
       "revId": "8fb3d3bdd85d0d82892282f18e50c830712e99b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d2f9bd_57657ab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-16T21:36:05Z",
+      "side": 1,
+      "message": "And let me remove Resolved checkbox as it is not resolved yet.",
+      "parentUuid": "54137ce5_5e98c1ea",
+      "revId": "8fb3d3bdd85d0d82892282f18e50c830712e99b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
