@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeb0ea6c_cb464136",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-16T16:06:44Z",
+      "side": 0,
+      "message": "I think you can change this to HEAD to keep the full link without repo upload hooks complaining, but I\u0027m also fine with the abbreviated path",
+      "range": {
+        "startLine": 10,
+        "startChar": 66,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "e9973d08765725c42288ef65c513a970861088eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
