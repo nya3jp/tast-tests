@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1af3bf_747176e5",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-16T21:38:02Z",
+      "side": 1,
+      "message": "I hadn\u0027t thought about them having different visibility. Are you planning to have tests with different Android visibility? Wonder if the fixture names will need to change again for cros settings and android settings",
+      "range": {
+        "startLine": 167,
+        "startChar": 81,
+        "endLine": 168,
+        "endChar": 145
+      },
+      "revId": "dc4a6e64425075efc0aec4e6d7ed8a40ec3867bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dde2b93_e3f827f3",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-03-16T21:38:02Z",
+      "side": 1,
+      "message": "Could make this more idiot proof :) \n\nNearby Share enabled on CrOS and Android with \u0027Data Usage\u0027 set to \u0027Online\u0027 on both.",
+      "range": {
+        "startLine": 191,
+        "startChar": 49,
+        "endLine": 191,
+        "endChar": 79
+      },
+      "revId": "dc4a6e64425075efc0aec4e6d7ed8a40ec3867bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
