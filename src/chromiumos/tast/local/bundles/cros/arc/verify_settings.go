@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/errors"
 	androidui "chromiumos/tast/local/android/ui"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
@@ -60,12 +59,9 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// Optin to PlayStore.
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
+	// Optin to PlayStore and Close
+	if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
 		s.Fatal("Failed to optin to Play Store: ", err)
-	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for Play Store: ", err)
 	}
 
 	// Setup ARC.
@@ -80,10 +76,6 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
 	defer d.Close(ctx)
-
-	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-		s.Log("Failed to close Play Store: ", err)
-	}
 
 	if _, err := ossettings.LaunchAtPage(
 		ctx,

@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -58,25 +57,9 @@ func DisableArc(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// Optin to PlayStore.
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
+	// Optin to PlayStore and Close
+	if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
 		s.Fatal("Failed to optin to Play Store: ", err)
-	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for Play Store: ", err)
-	}
-	// TODO(b/178232263): This is a temporary work around to ensure Play Store closes.
-	// Look into why apps.Close is failing with Play Store on occasion.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if visible, err := ash.AppShown(ctx, tconn, apps.PlayStore.ID); err != nil {
-			return testing.PollBreak(err)
-		} else if visible {
-			apps.Close(ctx, tconn, apps.PlayStore.ID)
-			return errors.New("app is not closed yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
-		s.Fatal("Failed to close Play Store: ", err)
 	}
 
 	// Setup screen recording and saving on error.
