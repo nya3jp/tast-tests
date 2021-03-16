@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dade7a3a_3a9366ee",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-16T02:11:29Z",
+      "side": 1,
+      "message": "Actually we are calling GetKeyInfo here(see L232).",
+      "parentUuid": "d912f975_502e3e27",
+      "range": {
+        "startLine": 237,
+        "startChar": 47,
+        "endLine": 237,
+        "endChar": 57
+      },
+      "revId": "c056046243862975ca6cc9d8fdaf22565f96cf72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56da90bf_08716233",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-15T22:09:18Z",
       "side": 1,
       "message": "nit: GetKeyPayload",
+      "range": {
+        "startLine": 241,
+        "startChar": 26,
+        "endLine": 241,
+        "endChar": 36
+      },
+      "revId": "c056046243862975ca6cc9d8fdaf22565f96cf72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1ee24d_054095c3",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-16T02:11:29Z",
+      "side": 1,
+      "message": "This result is also came from u.ac.GetKeyInfo.",
+      "parentUuid": "56da90bf_08716233",
       "range": {
         "startLine": 241,
         "startChar": 26,
