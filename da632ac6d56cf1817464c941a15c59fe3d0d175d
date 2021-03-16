@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad72b58_601efb1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-16T20:48:39Z",
+      "side": 1,
+      "message": "@Jun, added support for WebUITabStrip in the fixture. Please check. Anything else to approve this CL? Thanks!",
+      "revId": "da632ac6d56cf1817464c941a15c59fe3d0d175d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
