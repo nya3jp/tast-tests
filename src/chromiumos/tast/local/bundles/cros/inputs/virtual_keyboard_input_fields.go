@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
 )
 
@@ -118,20 +118,22 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
+	vkbCtx := vkb.NewContext(cr, tconn)
+
 	imeCode := ime.IMEPrefix + string(s.Param().(ime.InputMethodCode))
 	s.Logf("Set current input method to: %s", imeCode)
 	if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
 		s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
 	}
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer its.Close()
 
 	type testData struct {
-		inputField      testserver.InputField
+		inputField      string
 		keySeq          []string
 		inputSuggestion bool
 		expectedText    string
@@ -171,8 +173,8 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 				expectedText: "-+,.(),;N123",
 			}, {
 				inputField:   testserver.TextInputNumericField,
-				keySeq:       strings.Split("123456789*#0-+", ""),
-				expectedText: "123456789*#0-+",
+				keySeq:       strings.Split("123456789#0-+", ""),
+				expectedText: "123456789#0-+",
 			},
 		}
 		break
@@ -212,8 +214,8 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 				expectedText: "-+,.(),;N10",
 			}, {
 				inputField:   testserver.TextInputNumericField,
-				keySeq:       strings.Split("123456789*#0-+", ""),
-				expectedText: "123456789*#0-+",
+				keySeq:       strings.Split("123456789#0-+", ""),
+				expectedText: "123456789#0-+",
 			},
 		}
 		break
@@ -258,8 +260,8 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 				expectedText: "-+,.(),;N10",
 			}, {
 				inputField:   testserver.TextInputNumericField,
-				keySeq:       strings.Split("123456789*#0-+", ""),
-				expectedText: "123456789*#0-+",
+				keySeq:       strings.Split("123456789#0-+", ""),
+				expectedText: "123456789#0-+",
 			},
 		}
 		break
@@ -274,24 +276,24 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 				faillog.DumpUITreeOnError(ctx, outDir, s.HasError, tconn)
 				faillog.SaveScreenshotOnError(ctx, cr, outDir, s.HasError)
 
-				if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
+				if err := vkbCtx.HideVirtualKeyboard()(ctx); err != nil {
 					s.Log("Failed to hide virtual keyboard: ", err)
 				}
 			}()
 
 			inputField := subtest.inputField
 
-			if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+			if err := its.ClickFieldUntilVKShown(inputField)(ctx); err != nil {
 				s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 			}
 
-			if err := vkb.TapKeys(ctx, tconn, subtest.keySeq); err != nil {
+			if err := vkbCtx.TapKeys(subtest.keySeq)(ctx); err != nil {
 				s.Fatalf("Failed to tap keys %v: %v", subtest.keySeq, err)
 			}
 
 			// some IMEs need to manually select from candidates to submit.
 			if subtest.inputSuggestion {
-				if err := vkb.SelectFromSuggestion(ctx, tconn, subtest.expectedText); err != nil {
+				if err := vkbCtx.SelectFromSuggestion(subtest.expectedText)(ctx); err != nil {
 					s.Fatalf("Failed to select %s from suggestions: %v", subtest.expectedText, err)
 				}
 			}
@@ -299,15 +301,15 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 			// Password input is a special case. The value is presented with placeholder "•".
 			// Using PasswordTextField field to verify the outcome.
 			if inputField == testserver.PasswordInputField {
-				if err := inputField.WaitForValueToBe(ctx, tconn, strings.Repeat("•", len(subtest.keySeq))); err != nil {
+				if err := its.WaitForFieldValueToBe(inputField, strings.Repeat("•", len(subtest.keySeq)))(ctx); err != nil {
 					s.Fatal("Failed to verify input: ", err)
 				}
 
-				if err := testserver.PasswordTextField.WaitForValueToBe(ctx, tconn, subtest.expectedText); err != nil {
+				if err := its.WaitForFieldValueToBe(testserver.PasswordTextField, subtest.expectedText)(ctx); err != nil {
 					s.Fatal("Failed to verify password input: ", err)
 				}
 			} else {
-				if err := inputField.WaitForValueToBe(ctx, tconn, subtest.expectedText); err != nil {
+				if err := its.WaitForFieldValueToBe(inputField, subtest.expectedText)(ctx); err != nil {
 					s.Fatal("Failed to verify input: ", err)
 				}
 			}
