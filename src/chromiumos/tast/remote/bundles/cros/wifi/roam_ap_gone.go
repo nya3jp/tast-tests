@@ -44,6 +44,7 @@ func init() {
 		Vars:        []string{"router", "pcap"},
 		Params: []testing.Param{
 			{
+				ExtraAttr: []string{"wificell_cq"},
 				// Verifies that DUT can roam between two APs in full view of it.
 				Val: roamTestcase{
 					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20)},
