@@ -137,6 +137,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/bin/periodic_scheduler", matchRegexp, "cros_periodic_scheduler", twoProcs, ""},
 				{exe, "/usr/bin/permission_broker", matchRegexp, "cros_permission_broker", zeroProcs, ""},
 				{exe, "/usr/bin/powerd", matchRegexp, "cros_powerd", zeroProcs, ""},
+				{exe, "/usr/bin/resourced", matchRegexp, "cros_resourced", zeroProcs, ""},
 				{exe, "/usr/bin/run_oci", matchRegexp, "cros_arc_setup", zeroProcs, ""},
 				{exe, "/usr/bin/seneschal", matchRegexp, "cros_seneschal", zeroProcs, ""},
 				{exe, "/usr/bin/shill", matchRegexp, "cros_shill", zeroProcs, ""},
