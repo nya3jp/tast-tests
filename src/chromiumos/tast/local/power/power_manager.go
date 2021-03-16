@@ -6,6 +6,7 @@ package power
 
 import (
 	"context"
+	"time"
 
 	"github.com/godbus/dbus"
 
@@ -55,6 +56,10 @@ func (m *PowerManager) HandleWakeNotification(ctx context.Context) error {
 // TurnOnDisplay turns on a display by sending a HandleWakeNotification to PowerManager
 // to light up the display.
 func TurnOnDisplay(ctx context.Context) error {
+	// Emitting wake notification to powerd should finish quickly -- so setting
+	// 10 seconds of timeout which should be long enough.
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
 	powerd, err := NewPowerManager(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a PowerManager object")
