@@ -16,6 +16,23 @@
       "message": "This is a split cl from original https://crrev.com/c/2733954.\nI marked this as WIP until the ealier one lands and proved to be stable.",
       "revId": "a400e692078dc5161a5c45af6cdee08c2f91ad21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f7be4ac_40f9b276",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T22:53:00Z",
+      "side": 1,
+      "message": "Hi reviewers,\n\nAfter https://crrev.com/c/2733954 landed, affected tests are provenly stable. So I reckon it is ready to submit this cl as well.\n\nhttps://tastboard.corp.google.com/test/apps.LaunchHelpAppFromShortcut.unstable\n\nOther 2 tests are good from this change as well, but still flaky due to other reasons.",
+      "revId": "a400e692078dc5161a5c45af6cdee08c2f91ad21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
