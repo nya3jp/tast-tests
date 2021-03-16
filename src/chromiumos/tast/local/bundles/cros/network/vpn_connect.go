@@ -118,7 +118,7 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		shillconst.ServicePropertyState: shillconst.ServiceStateOnline,
 	}
 
-	if _, err := manager.WaitForServiceProperties(ctx, props, 15*time.Second); err != nil {
+	if _, err := manager.WaitForServiceProperties(ctx, props, 30*time.Second); err != nil {
 		s.Fatal("Service not found: ", err)
 	}
 
