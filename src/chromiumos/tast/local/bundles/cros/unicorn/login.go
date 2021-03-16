@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/testing"
 )
 
@@ -23,18 +22,24 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"unicorn.parentUser", "unicorn.parentPassword", "unicorn.childUser", "unicorn.childPassword"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
-		Fixture:      "familyLinkUnicornLogin",
 	})
 }
 
 func Login(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*familylink.FixtData).Chrome
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	parentUser := s.RequiredVar("unicorn.parentUser")
+	parentPass := s.RequiredVar("unicorn.parentPassword")
+	childUser := s.RequiredVar("unicorn.childUser")
+	childPass := s.RequiredVar("unicorn.childPassword")
 
-	if cr == nil {
-		s.Fatal("Failed to start Chrome")
+	cr, err := chrome.New(ctx,
+		chrome.GAIALogin(chrome.Creds{
+			User:       childUser,
+			Pass:       childPass,
+			ParentUser: parentUser,
+			ParentPass: parentPass,
+		}))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
 	}
-	if tconn == nil {
-		s.Fatal("Failed to create test API connection")
-	}
+	defer cr.Close(ctx)
 }

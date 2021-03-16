@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
-	"chromiumos/tast/local/chrome/familylink"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -30,7 +30,6 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Fixture: "familyLinkUnicornArcLogin",
 	})
 }
 
@@ -43,8 +42,28 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 		gamesAppName           = "facebook"
 	)
 	parentUser := s.RequiredVar("arc.parentUser")
-	cr := s.FixtValue().(*familylink.FixtData).Chrome
-	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	parentPass := s.RequiredVar("arc.parentPassword")
+	childUser := s.RequiredVar("arc.childUser")
+	childPass := s.RequiredVar("arc.childPassword")
+
+	cr, err := chrome.New(ctx,
+		chrome.GAIALogin(chrome.Creds{
+			User:       childUser,
+			Pass:       childPass,
+			ParentUser: parentUser,
+			ParentPass: parentPass,
+		}),
+		chrome.ARCSupported(),
+		chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create test API connection: ", err)
+	}
 
 	// Optin to Play Store.
 	s.Log("Opting into Play Store")
