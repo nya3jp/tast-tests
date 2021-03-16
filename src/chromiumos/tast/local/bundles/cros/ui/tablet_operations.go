@@ -44,13 +44,13 @@ func init() {
 		),
 		Params: []testing.Param{
 			{
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(perfutil.UnstableBoards...)),
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(perfutil.UnstableModels...)),
 			},
 			// TODO(crbug.com/1168774): remove "unstable" once we see stability on all platforms.
 			{
 				Name:              "unstable",
 				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(hwdep.Platform(perfutil.UnstableBoards...)),
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(perfutil.UnstableModels...)),
 			},
 		},
 	})

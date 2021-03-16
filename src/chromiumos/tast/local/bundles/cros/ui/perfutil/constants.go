@@ -4,12 +4,12 @@
 
 package perfutil
 
-// UnstableBoards is the list of the boards which appear to be not stable on
+// UnstableModels is the list of the models which appear to be not stable on
 // the UI performance tests.
-var UnstableBoards = []string{
-	"dedede",
-	"jacuzzi",
-	"ultima",
-	"veyron_tiger",
-	"zork",
+var UnstableModels = []string{
+	"esche",
+	"willow",
+	"lava",
+	"vilboz360",
+	"woomax",
 }
