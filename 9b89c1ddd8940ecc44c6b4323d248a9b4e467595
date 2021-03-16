@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "553b53e6_b6a6a183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab1851f1_2dccb1e3",
+      "range": {
+        "startLine": 16,
+        "startChar": 13,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd3f0ebe_249488a7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-16T06:27:53Z",
       "side": 1,
       "message": "is",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4e4a39_7077542b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd3f0ebe_249488a7",
       "range": {
         "startLine": 23,
         "startChar": 18,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b09f1dc_8099585e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a746dc_5897e67d",
+      "range": {
+        "startLine": 30,
+        "startChar": 51,
+        "endLine": 30,
+        "endChar": 56
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c873d59_2452e6aa",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-16T06:27:53Z",
       "side": 1,
       "message": "input",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b7fffd_a946ca7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c873d59_2452e6aa",
       "range": {
         "startLine": 81,
         "startChar": 27,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f8c7ffc_004cbb08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb629af6_719a4987",
+      "range": {
+        "startLine": 83,
+        "startChar": 21,
+        "endLine": 83,
+        "endChar": 63
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d73f4550_2033ed40",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-03-16T06:27:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 84,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 44
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dec8fa5_8d5af796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d73f4550_2033ed40",
       "range": {
         "startLine": 84,
         "startChar": 17,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41482ea4_f9a74724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8832ff2f_7014250c",
+      "range": {
+        "startLine": 53,
+        "startChar": 27,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b87ff0d_f1fe9add",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-03-16T06:27:53Z",
       "side": 1,
       "message": "verify",
+      "range": {
+        "startLine": 86,
+        "startChar": 27,
+        "endLine": 86,
+        "endChar": 33
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2f1080_128a44fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b87ff0d_f1fe9add",
       "range": {
         "startLine": 86,
         "startChar": 27,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2f5d3c9_1efc00a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b54e16ac_7a60d224",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 54
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50234d9f_ba66964d",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-03-16T06:27:53Z",
       "side": 1,
       "message": "This is not necessary, LeftClick finds the node before clicking on it.",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 20
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b23b86_24b974f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50234d9f_ba66964d",
       "range": {
         "startLine": 95,
         "startChar": 5,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea5a2aba_8b4ffb79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0680718f_bf5cdb07",
+      "range": {
+        "startLine": 164,
+        "startChar": 27,
+        "endLine": 164,
+        "endChar": 30
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ff79e5b_72ee857b",
@@ -277,6 +541,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "791d515c_1d9fcfd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done. Removed.",
+      "parentUuid": "4ff79e5b_72ee857b",
+      "range": {
+        "startLine": 104,
+        "startChar": 20,
+        "endLine": 104,
+        "endChar": 41
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da8d7e81_6e5153c4",
@@ -290,6 +578,30 @@
       "writtenOn": "2021-03-16T06:27:53Z",
       "side": 1,
       "message": "verify",
+      "range": {
+        "startLine": 108,
+        "startChar": 29,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdfe76ad_7f4b2785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da8d7e81_6e5153c4",
       "range": {
         "startLine": 108,
         "startChar": 29,
@@ -325,6 +637,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd2bb3f9_a335a722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Surprisingly, * is not unique on the vk layout. It has 2 * keys on the layout. I think it is ok to exclude this char at the moment.",
+      "parentUuid": "bf79ad86_ea6f7733",
+      "range": {
+        "startLine": 176,
+        "startChar": 33,
+        "endLine": 176,
+        "endChar": 46
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a26350_11ce2481",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
         "patchSetId": 5
@@ -336,6 +672,30 @@
       "writtenOn": "2021-03-16T06:27:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 217,
+        "startChar": 33,
+        "endLine": 217,
+        "endChar": 44
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96173f79_de5f98da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32a26350_11ce2481",
       "range": {
         "startLine": 217,
         "startChar": 33,
@@ -369,6 +729,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec43e43_af32f7fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c975e52d_1c09b35b",
+      "range": {
+        "startLine": 263,
+        "startChar": 33,
+        "endLine": 263,
+        "endChar": 46
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e72975d_62d6ca9f",
@@ -382,6 +766,30 @@
       "writtenOn": "2021-03-16T06:27:53Z",
       "side": 1,
       "message": "asserting",
+      "range": {
+        "startLine": 97,
+        "startChar": 40,
+        "endLine": 97,
+        "endChar": 49
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "604730f0_6dbf8740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e72975d_62d6ca9f",
       "range": {
         "startLine": 97,
         "startChar": 40,
@@ -415,6 +823,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af183840_dd2ebe51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_oobe.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de8c57ae_34fa90f3",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 20
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2fd8edd_284a8d9b",
@@ -428,6 +860,30 @@
       "writtenOn": "2021-03-16T06:27:53Z",
       "side": 1,
       "message": "verify",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 33
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dbb0b29_7f850295",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2fd8edd_284a8d9b",
       "range": {
         "startLine": 61,
         "startChar": 27,
@@ -461,6 +917,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "038aa09e_5a472384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5190215c_4df370e5",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16380ac9_96a3214a",
@@ -474,6 +954,30 @@
       "writtenOn": "2021-03-16T06:27:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e179a263_53c17f3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16380ac9_96a3214a",
       "range": {
         "startLine": 67,
         "startChar": 5,
@@ -507,6 +1011,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6157bc7_c04bf307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b281448_71026678",
+      "range": {
+        "startLine": 118,
+        "startChar": 27,
+        "endLine": 118,
+        "endChar": 33
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c00a067_1aa7a6fe",
@@ -530,6 +1058,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b4f4aa8_492832e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c00a067_1aa7a6fe",
+      "range": {
+        "startLine": 72,
+        "startChar": 27,
+        "endLine": 72,
+        "endChar": 31
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e65d81da_d85be53d",
@@ -543,6 +1095,30 @@
       "writtenOn": "2021-03-16T06:27:53Z",
       "side": 1,
       "message": "Not necessary",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9cd49cd_5f177cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-16T07:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e65d81da_d85be53d",
       "range": {
         "startLine": 73,
         "startChar": 5,
