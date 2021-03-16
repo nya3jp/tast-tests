@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccaffb65_8a9c4fd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-16T22:38:07Z",
+      "side": 1,
+      "message": "As discussed on chat with khmel@, As these tests are doing opt-in on a fresh chrome at the beginning, Play Store should be shown at the end of Provisioning. PS not displaying appears to be an issue and should not be ignore which this cl is doing.\n\nHence will resend this CL with additional android logs to be dumped on failure to debug this further. \n\nThanks",
+      "revId": "6dc2f4985c6236f15648b94685aaf2dcdca36e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
