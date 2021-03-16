@@ -16,6 +16,23 @@
       "message": "My bad, thank you!",
       "revId": "8b75cc4749eaadb52cf16ac449e53a8185709ef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d4bffc_f9ad45ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-03-16T01:08:52Z",
+      "side": 1,
+      "message": "This was reviewed in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2757904",
+      "revId": "8b75cc4749eaadb52cf16ac449e53a8185709ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
