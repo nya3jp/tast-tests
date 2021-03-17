@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e05b86d_3228db33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-17T12:01:28Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c04c7b7c_133270f4",
@@ -60,6 +77,121 @@
         "startChar": 0,
         "endLine": 49,
         "endChar": 58
+      },
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604f4530_f002e5ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-17T12:01:28Z",
+      "side": 1,
+      "message": "nit: i\u0027d move these functions after UserAvatarImage, because they are less important and can sit at the end of the file\n\nwhen you open test file you expect to see your test function at the top and it\u0027s easier to navigate imo",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f27aab85_76159f84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-17T12:01:28Z",
+      "side": 1,
+      "message": "nit: i think this should be \"iURL\" or \"imgURL\"\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 5
+      },
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e8a121e_d30be6de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-17T12:01:28Z",
+      "side": 1,
+      "message": "nit: same: \"iHash\" or \"imgHash\"\nhttps://golang.org/doc/effective_go#mixed-caps",
+      "range": {
+        "startLine": 111,
+        "startChar": 7,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "524e8fdb_acabe772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-17T12:01:28Z",
+      "side": 1,
+      "message": "not all devices have display, for example chromeboxes don\u0027t have. Interesting how this will work.",
+      "range": {
+        "startLine": 114,
+        "startChar": 14,
+        "endLine": 114,
+        "endChar": 48
+      },
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a6a595_65f64124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-17T12:01:28Z",
+      "side": 1,
+      "message": "nit: don\u0027t you think 15 seconds is too long for your use case? maybe 5 seconds will be enough?",
+      "range": {
+        "startLine": 124,
+        "startChar": 12,
+        "endLine": 124,
+        "endChar": 14
       },
       "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
