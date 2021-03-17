@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "223355c2_3106e319",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-17T20:02:52Z",
+      "side": 1,
+      "message": "Can you confirm it is the case?  When it fails, is the shelf (the bottom black bar) shown on screen?   If not, do you know why?  fullscreen or virtual keyboard or any other reasons?",
+      "parentUuid": "55292689_ec582517",
+      "revId": "9a776d33c16c91da3e2edba38311fb3e828f043a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4379e1b4_5ae6f789",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 1
