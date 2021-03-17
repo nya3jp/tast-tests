@@ -52,7 +52,7 @@ func init() {
 			{
 				Name: "h264_1080p_i420",
 				Val: video.EncodeTestOptions{
-					Profile:              videotype.H264Prof,
+					Profile:              videotype.H264MainProf,
 					Params:               video.Crowd1080P,
 					PixelFormat:          videotype.I420,
 					BatteryDischargeMode: setup.ForceBatteryDischarge,
@@ -65,7 +65,7 @@ func init() {
 			{
 				Name: "h264_1080p_i420_vm",
 				Val: video.EncodeTestOptions{
-					Profile:              videotype.H264Prof,
+					Profile:              videotype.H264MainProf,
 					Params:               video.Crowd1080P,
 					PixelFormat:          videotype.I420,
 					BatteryDischargeMode: setup.ForceBatteryDischarge,
@@ -77,7 +77,7 @@ func init() {
 			{
 				Name: "h264_1080p_i420_nobatterymetrics",
 				Val: video.EncodeTestOptions{
-					Profile:              videotype.H264Prof,
+					Profile:              videotype.H264MainProf,
 					Params:               video.Crowd1080P,
 					PixelFormat:          videotype.I420,
 					BatteryDischargeMode: setup.NoBatteryDischarge,
@@ -90,7 +90,7 @@ func init() {
 			{
 				Name: "h264_1080p_i420_vm_nobatterymetrics",
 				Val: video.EncodeTestOptions{
-					Profile:              videotype.H264Prof,
+					Profile:              videotype.H264MainProf,
 					Params:               video.Crowd1080P,
 					PixelFormat:          videotype.I420,
 					BatteryDischargeMode: setup.NoBatteryDischarge,
@@ -125,7 +125,7 @@ func PowerVideoEncodePerf(ctx context.Context, s *testing.State) {
 	opts := s.Param().(video.EncodeTestOptions)
 
 	// Only H.264 is currently supported.
-	if opts.Profile != videotype.H264Prof {
+	if opts.Profile != videotype.H264MainProf {
 		s.Fatalf("Profile (%d) is not supported", opts.Profile)
 	}
 

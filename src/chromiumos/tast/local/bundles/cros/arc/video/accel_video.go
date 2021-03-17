@@ -127,7 +127,7 @@ func runARCVideoEncoderTest(ctx context.Context, s *testing.State, a *arc.ARC,
 	defer cancel()
 
 	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm")
-	if opts.Profile == videotype.H264Prof {
+	if opts.Profile == videotype.H264MainProf {
 		encodeOutFile = encodeOutFile + ".h264"
 	} else if opts.Profile == videotype.VP8Prof {
 		encodeOutFile = encodeOutFile + ".vp8.ivf"

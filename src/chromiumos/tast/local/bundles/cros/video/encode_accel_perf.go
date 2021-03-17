@@ -57,6 +57,66 @@ func init() {
 			ExtraData:         encode.TestData(crowd2160p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
 		}, {
+			Name:              "h264_1080p_baseline_x2",
+			Val:               encode.MakeQualityTestOptions(crowd1080p, videotype.H264, videotype.H264BaselineProf, 1920*1080*2),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_baseline_x4",
+			Val:               encode.MakeQualityTestOptions(crowd1080p, videotype.H264, videotype.H264BaselineProf, 1920*1080*4),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_baseline_x6",
+			Val:               encode.MakeQualityTestOptions(crowd1080p, videotype.H264, videotype.H264BaselineProf, 1920*1080*6),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_baseline_x8",
+			Val:               encode.MakeQualityTestOptions(crowd1080p, videotype.H264, videotype.H264BaselineProf, 1920*1080*8),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_main_x2",
+			Val:               encode.MakeQualityTestOptions(crowd1080p, videotype.H264, videotype.H264MainProf, 1920*1080*2),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_main_x4",
+			Val:               encode.MakeQualityTestOptions(crowd1080p, videotype.H264, videotype.H264MainProf, 1920*1080*4),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_main_x6",
+			Val:               encode.MakeQualityTestOptions(crowd1080p, videotype.H264, videotype.H264MainProf, 1920*1080*6),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_main_x8",
+			Val:               encode.MakeQualityTestOptions(crowd1080p, videotype.H264, videotype.H264MainProf, 1920*1080*8),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_high_x2",
+			Val:               encode.MakeQualityTestOptions(crowd1080p, videotype.H264, videotype.H264HighProf, 1920*1080*2),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_high_x4",
+			Val:               encode.MakeQualityTestOptions(crowd1080p, videotype.H264, videotype.H264HighProf, 1920*1080*4),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_high_x6",
+			Val:               encode.MakeQualityTestOptions(crowd1080p, videotype.H264, videotype.H264HighProf, 1920*1080*6),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_high_x8",
+			Val:               encode.MakeQualityTestOptions(crowd1080p, videotype.H264, videotype.H264HighProf, 1920*1080*8),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
 			Name:              "vp8_180p",
 			Val:               encode.MakeTestOptions(crowd180p, videotype.VP8),
 			ExtraData:         encode.TestData(crowd180p),

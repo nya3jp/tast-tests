@@ -31,6 +31,12 @@ import (
 // Duration of the interval during which CPU usage will be measured in the performance test.
 const measureInterval = 20 * time.Second
 
+// qualityOptions is the encoder options that will affect video quality.
+type qualityOptions struct {
+	profile videotype.CodecProfile
+	bitrate int
+}
+
 // TestOptions is the options for runAccelVideoTest.
 type TestOptions struct {
 	WebMName string
@@ -44,6 +50,8 @@ type TestOptions struct {
 	// TODO(hiroh): Remove this and run both I420 and NV12 test cases in the regular video.EncodeAccel tests
 	// once the dashboard is green.
 	VerifyNV12Input bool
+
+	qualityOpts *qualityOptions
 }
 
 // MakeTestOptions creates TestOptions from webMName and codec.
@@ -54,6 +62,19 @@ func MakeTestOptions(webMName string, codec videotype.Codec) TestOptions {
 		Codec:           codec,
 		TemporalLayers:  1,
 		VerifyNV12Input: false,
+	}
+}
+
+// MakeQualityTestOptions creates TestOptions from webMName and codec.
+// TemporalLayers is set to 1 and VerifyNV12Input is set to false.
+// Set profile, bitrate for testing quality changes.
+func MakeQualityTestOptions(webMName string, codec videotype.Codec, profile videotype.CodecProfile, bitrate int) TestOptions {
+	return TestOptions{
+		WebMName:        webMName,
+		Codec:           codec,
+		TemporalLayers:  1,
+		VerifyNV12Input: false,
+		qualityOpts:     &qualityOptions{profile, bitrate},
 	}
 }
 
@@ -106,6 +127,19 @@ func codecTestArg(codec videotype.Codec) (string, error) {
 	default:
 		return "", errors.Errorf("unknown codec: %v", codec)
 	}
+}
+
+// profileTestArg converts the profile to named argument value from https://cs.chromium.org/chromium/src/media/gpu/test/video.cc
+func profileTestArg(profile videotype.CodecProfile) (string, error) {
+	switch profile {
+	case videotype.H264BaselineProf:
+		return "H264PROFILE_BASELINE", nil
+	case videotype.H264MainProf:
+		return "H264PROFILE_MAIN", nil
+	case videotype.H264HighProf:
+		return "H264PROFILE_HIGH", nil
+	}
+	return "", errors.Errorf("unknown profile: %v", profile)
 }
 
 // RunAccelVideoTest runs all tests in video_encode_accelerator_tests.
@@ -235,9 +269,27 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 	testArgs := []string{
 		fmt.Sprintf("--codec=%s", codec),
 		fmt.Sprintf("--output_folder=%s", s.OutDir()),
+	}
+
+	if opts.qualityOpts != nil {
+		profileArg, err := profileTestArg(opts.qualityOpts.profile)
+		if err != nil {
+			return errors.Wrap(err, "failed to get profile option")
+		}
+
+		testArgs = append(
+			testArgs,
+			fmt.Sprintf("--encode_profile=%s", profileArg),
+			fmt.Sprintf("--encode_bitrate=%d", opts.qualityOpts.bitrate),
+		)
+	}
+
+	testArgs = append(
+		testArgs,
 		yuvPath,
 		yuvJSONPath,
-	}
+	)
+
 	if report, err := gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(s.OutDir(), exec+".uncap_and_quality.log")),
