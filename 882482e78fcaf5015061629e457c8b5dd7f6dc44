@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce973bd9_d3c9e818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-17T02:47:20Z",
+      "side": 1,
+      "message": "Fix build failure in https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket.appspot.com/8852551070497803936/+/steps/update_sdk/0/steps/call_chromite.api.SdkService_Update/0/steps/call_build_API_script/0/stdout#L30216_0\n\nInteresting, it was not reported in repo upload",
+      "revId": "882482e78fcaf5015061629e457c8b5dd7f6dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
