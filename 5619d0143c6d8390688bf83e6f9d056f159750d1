@@ -39,6 +39,30 @@
       },
       "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e8e1e9e_8724776c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-17T09:59:18Z",
+      "side": 1,
+      "message": "The crbug.com/1188690 bug is about this. I though it is better to do it a separate CL.",
+      "parentUuid": "c04c7b7c_133270f4",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 58
+      },
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
