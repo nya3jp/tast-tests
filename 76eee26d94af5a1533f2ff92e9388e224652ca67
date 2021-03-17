@@ -22,6 +22,30 @@
       },
       "revId": "76eee26d94af5a1533f2ff92e9388e224652ca67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5392bbf_76279037",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_not_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-17T21:20:09Z",
+      "side": 1,
+      "message": "Done. It\u0027s a bit awkward since the poll always returns an error and we have to check its message, but otherwise works well and will help us fail early.",
+      "parentUuid": "70048b9a_1873f29b",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "76eee26d94af5a1533f2ff92e9388e224652ca67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
