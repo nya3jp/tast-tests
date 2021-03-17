@@ -105,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f1c7e1_3e7739ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-17T12:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "604f4530_f002e5ab",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f27aab85_76159f84",
@@ -151,6 +175,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90aad156_db8fe2e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-17T12:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f27aab85_76159f84",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 5
+      },
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c160aac0_64920294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-17T12:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e8a121e_d30be6de",
+      "range": {
+        "startLine": 111,
+        "startChar": 7,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "524e8fdb_acabe772",
@@ -176,6 +248,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca1f74aa_daff8f7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-17T12:54:10Z",
+      "side": 1,
+      "message": "That\u0027s interesting.\n\nFor those use-cases, functions like GrabScreenshot*() won\u0027t work as well, right?\n\nAs a quick idea, if no display is connected, I can rely on display.PhysicalDisplayConnected()[1] function and skip most of the test logic, and only Verify the policy value is set in chrome://policy. WDYT? I am open for ideas. @Oleh @Gabor @Mohamed\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/display/display.go;drc\u003dc14dd39a17818602e19bcaf293d69fe2cb398fdc;l\u003d255",
+      "parentUuid": "524e8fdb_acabe772",
+      "range": {
+        "startLine": 114,
+        "startChar": 14,
+        "endLine": 114,
+        "endChar": 48
+      },
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52a6a595_65f64124",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
         "patchSetId": 5
@@ -187,6 +283,30 @@
       "writtenOn": "2021-03-17T12:01:28Z",
       "side": 1,
       "message": "nit: don\u0027t you think 15 seconds is too long for your use case? maybe 5 seconds will be enough?",
+      "range": {
+        "startLine": 124,
+        "startChar": 12,
+        "endLine": 124,
+        "endChar": 14
+      },
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d406af6_bd38036d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-17T12:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a6a595_65f64124",
       "range": {
         "startLine": 124,
         "startChar": 12,
