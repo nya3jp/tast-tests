@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5061c9c1_5ea695e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-17T03:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2911a2e_c66eae2d",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "29a0c51932aed6b05620f283fabcec6fad3e6436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a14f88b_c8504de5",
