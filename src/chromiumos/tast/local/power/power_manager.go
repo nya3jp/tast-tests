@@ -13,6 +13,7 @@ import (
 	pmpb "chromiumos/system_api/power_manager_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/upstart"
 )
 
 const (
@@ -60,6 +61,11 @@ func TurnOnDisplay(ctx context.Context) error {
 	// 10 seconds of timeout which should be long enough.
 	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
+
+	if err := upstart.EnsureJobRunning(ctx, "powerd"); err != nil {
+		return errors.Wrap(err, "failed to ensure powerd running")
+	}
+
 	powerd, err := NewPowerManager(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a PowerManager object")
