@@ -253,6 +253,23 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	}
 	arc.device = device
 
+	// Disable the Play Store package entirely unless it's booted with chrome.ARCSupported().
+	if enabled, err := isPlayStoreEnabled(); err != nil {
+		return nil, errors.Wrap(err, "failed to check whether Play Store is enabled")
+	} else if !enabled {
+		pkgs, err := arc.InstalledPackages(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get installed packages")
+		}
+
+		if _, found := pkgs["com.android.vending"]; found {
+			testing.ContextLog(ctx, "Disabling Play Store")
+			if err := arc.Command(ctx, "pm", "disable-user", "--user", "0", "com.android.vending").Run(); err != nil {
+				return nil, errors.Wrap(err, "failed to disable Play Store")
+			}
+		}
+	}
+
 	toClose = nil
 	return arc, nil
 }
@@ -372,6 +389,21 @@ func ensureARCEnabled() error {
 		}
 	}
 	return errors.New("ARC is not enabled; pass chrome.ARCEnabled or chrome.ARCSupported to chrome.New")
+}
+
+// isPlayStoreEnabled returns true when Play Store is enabled i.e. chrome.ARCSupported is passed.
+func isPlayStoreEnabled() (bool, error) {
+	args, err := getChromeArgs()
+	if err != nil {
+		return false, errors.Wrap(err, "failed getting Chrome args")
+	}
+
+	for _, a := range args {
+		if a == "--arc-start-mode=always-start-with-no-play-store" {
+			return false, nil
+		}
+	}
+	return true, nil
 }
 
 // getChromeArgs returns command line arguments of the Chrome browser process.
