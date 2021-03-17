@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8770726_a978b856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-17T20:21:37Z",
+      "side": 1,
+      "message": "This is the main change. The rest of the CL is mechanical change to replace power.TurnOnDisplay with this in all UI tests.",
+      "revId": "8fe7024529efac226aaeed468b7b58b5777d7775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
