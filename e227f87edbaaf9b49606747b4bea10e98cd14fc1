@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "917cd1a9_0c92f98b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-17T01:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "392a555a_72072adb",
+      "range": {
+        "startLine": 141,
+        "startChar": 65,
+        "endLine": 141,
+        "endChar": 66
+      },
+      "revId": "e227f87edbaaf9b49606747b4bea10e98cd14fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3301479b_e0eb7581",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-17T00:56:02Z",
       "side": 1,
       "message": "Please wrap the error",
+      "range": {
+        "startLine": 195,
+        "startChar": 9,
+        "endLine": 195,
+        "endChar": 12
+      },
+      "revId": "e227f87edbaaf9b49606747b4bea10e98cd14fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fd8d4b1_8021f4d3",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-17T01:08:38Z",
+      "side": 1,
+      "message": "This should not exist, after I change the GetKeyType helper function to inline code",
+      "parentUuid": "3301479b_e0eb7581",
       "range": {
         "startLine": 195,
         "startChar": 9,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b174466e_5a82e758",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-17T01:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3049d6ed_325c20d7",
+      "range": {
+        "startLine": 227,
+        "startChar": 36,
+        "endLine": 227,
+        "endChar": 45
+      },
+      "revId": "e227f87edbaaf9b49606747b4bea10e98cd14fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "387b89c4_8581407d",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-17T00:56:02Z",
       "side": 1,
       "message": "Please wrap this error",
+      "range": {
+        "startLine": 250,
+        "startChar": 13,
+        "endLine": 250,
+        "endChar": 16
+      },
+      "revId": "e227f87edbaaf9b49606747b4bea10e98cd14fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87157b8d_0bd041da",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-17T01:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "387b89c4_8581407d",
       "range": {
         "startLine": 250,
         "startChar": 13,
