@@ -366,6 +366,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e578181_af166c0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-17T14:02:49Z",
+      "side": 1,
+      "message": "Not sure. Just submit your CL and monitor go/tast-board :)",
+      "parentUuid": "4cd3ee3b_587a2b29",
+      "range": {
+        "startLine": 114,
+        "startChar": 14,
+        "endLine": 114,
+        "endChar": 48
+      },
+      "revId": "5619d0143c6d8390688bf83e6f9d056f159750d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52a6a595_65f64124",
