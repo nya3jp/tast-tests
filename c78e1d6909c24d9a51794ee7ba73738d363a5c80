@@ -39,6 +39,30 @@
       },
       "revId": "c78e1d6909c24d9a51794ee7ba73738d363a5c80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "841167c0_b424bcb8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-17T00:06:53Z",
+      "side": 1,
+      "message": "Using `linuxssh.GetFile(` instead.\n\nIn all fairness, it\u0027s a _tiny_ file (600 bytes at most).\n\nDone anyway ,-)",
+      "parentUuid": "9c4cb4b1_72cf8881",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 49
+      },
+      "revId": "c78e1d6909c24d9a51794ee7ba73738d363a5c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
