@@ -50,6 +50,24 @@
       "message": "(not blocking this CL but)\n\nHad an offline discussion with Hsin-chen. Not sure if we should move this check to somewhere that won\u0027t block build and if this shouldn\u0027t depend on real world time.\n\nFor example, if someone want to build some older branches like a tryjob on M87, it might be blocked by this unexpectedly.\n\nAny thoughts?",
       "revId": "f069a3593d0e8a7ed57bf07beeab279fefc860fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b5c89a_1d68c3ad",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-17T08:48:42Z",
+      "side": 1,
+      "message": "If we use fixed date in isExpired(), then its result could be different from the cert checker in the DUT.",
+      "parentUuid": "7a1caf06_0db5bea4",
+      "revId": "f069a3593d0e8a7ed57bf07beeab279fefc860fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
