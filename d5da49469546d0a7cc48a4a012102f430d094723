@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b07d767_0e8170f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-17T17:09:13Z",
+      "side": 1,
+      "message": "I see. It would be more defensive/future-proof and more precise to create a SoftwareDep rather than allowlisting particular platforms. So, I\u0027d like to explore that possibility.\n\nSoftwareDeps are composed of USE flags. There\u0027s already a USE flag for Kernel version, which is easy to parse: I see that Volteer and Dedede both have kernel-5_4. But, it seems that SoftwareDeps are based on boolean expressions, so I think it would be better to exclude old kernel flags (i.e., \"!kernel-4_4 \u0026\u0026 !kernel-4_5 \u0026\u0026 ...\").\n\nMeanwhile, I do not see any USE flag for TCPMv2, at least not by that name. So, I think that we would need to:\n\n1. Add a TCPMv2 USE flag to all relevant board overlays\n2. Document that flag in src/platform/ec/docs/usb-tcpmv2.md\n3. Create a SoftwareDep in the `tast` repository for Type C PD identity parsing, which is true if the kernel is new enough \u0026\u0026 the TCPMv2 flag is present\n4. Add that SoftwareDep to this test\n\nDoes that sound feasible, Prashant? If so, would you please add a TODO line to create a SoftwareDep, linking either to your username or to a bug?",
+      "parentUuid": "e2c2829d_ee7a5bff",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c86d68bc_d319a8b7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 17
