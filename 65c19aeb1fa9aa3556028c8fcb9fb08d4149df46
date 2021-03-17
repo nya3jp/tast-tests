@@ -22,6 +22,30 @@
       },
       "revId": "65c19aeb1fa9aa3556028c8fcb9fb08d4149df46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a2607b0_f94c2868",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-03-17T02:30:00Z",
+      "side": 1,
+      "message": "Done.\nThanks for the quick review!",
+      "parentUuid": "fd6a26e1_d7e88bb9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 72
+      },
+      "revId": "65c19aeb1fa9aa3556028c8fcb9fb08d4149df46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
