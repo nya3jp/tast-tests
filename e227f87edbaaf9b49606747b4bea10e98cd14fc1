@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392a555a_72072adb",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-17T00:56:02Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think it is used in this situation.",
+      "range": {
+        "startLine": 141,
+        "startChar": 65,
+        "endLine": 141,
+        "endChar": 66
+      },
+      "revId": "e227f87edbaaf9b49606747b4bea10e98cd14fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3301479b_e0eb7581",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-17T00:56:02Z",
+      "side": 1,
+      "message": "Please wrap the error",
+      "range": {
+        "startLine": 195,
+        "startChar": 9,
+        "endLine": 195,
+        "endChar": 12
+      },
+      "revId": "e227f87edbaaf9b49606747b4bea10e98cd14fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3049d6ed_325c20d7",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-17T00:56:02Z",
+      "side": 1,
+      "message": "nit: validating / to validate",
+      "range": {
+        "startLine": 227,
+        "startChar": 36,
+        "endLine": 227,
+        "endChar": 45
+      },
+      "revId": "e227f87edbaaf9b49606747b4bea10e98cd14fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387b89c4_8581407d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-17T00:56:02Z",
+      "side": 1,
+      "message": "Please wrap this error",
+      "range": {
+        "startLine": 250,
+        "startChar": 13,
+        "endLine": 250,
+        "endChar": 16
+      },
+      "revId": "e227f87edbaaf9b49606747b4bea10e98cd14fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
