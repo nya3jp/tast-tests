@@ -16,6 +16,63 @@
       "message": "I\u0027ve now gone through the codelab, verified all links, and run all the code.",
       "revId": "ee098756dad0b1710f5e177b67fa8301692a08db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe33e744_bbaa843d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-03-17T18:03:05Z",
+      "side": 1,
+      "message": "Just a couple of nits.  This is great!  One thing you can do, is to add the working code lab solutions as go tests, so that they\u0027ll be kept up-to-date as firmware tast code changes.  You can even link to these files in the md file so it can be more compact.",
+      "revId": "ee098756dad0b1710f5e177b67fa8301692a08db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f4d5623_0fee281d",
+        "filename": "src/chromiumos/tast/remote/firmware/CODELAB.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-03-17T18:03:05Z",
+      "side": 1,
+      "message": "Ensure DUT state ...",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 74
+      },
+      "revId": "ee098756dad0b1710f5e177b67fa8301692a08db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "874c373c_434ddd75",
+        "filename": "src/chromiumos/tast/remote/firmware/CODELAB.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-03-17T18:03:05Z",
+      "side": 1,
+      "message": "Using FAFT in the tast world could cause confusion.  Maybe Tast Firmware Test (TFT) or something like that...",
+      "revId": "ee098756dad0b1710f5e177b67fa8301692a08db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
