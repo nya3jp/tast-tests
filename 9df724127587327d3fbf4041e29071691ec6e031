@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbcb7994_7c08bd3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501067
+      },
+      "writtenOn": "2021-03-17T18:48:13Z",
+      "side": 1,
+      "message": "Alright, I also don\u0027t foresee huge updates especially for Android 9.",
+      "parentUuid": "bf37c89d_e4c9ed2e",
+      "revId": "9df724127587327d3fbf4041e29071691ec6e031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d8ac229_654b6840",
