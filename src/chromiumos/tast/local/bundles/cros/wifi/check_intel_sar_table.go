@@ -34,7 +34,11 @@ func init() {
 		// NB: The WifiIntel dependency tracks a manually maintained list of devices.
 		// If the test is skipping when it should run or vice versa, check the hwdep
 		// to see if your board is incorrectly included/excluded.
-		HardwareDeps: hwdep.D(hwdep.WifiIntel()),
+		HardwareDeps: hwdep.D(hwdep.WifiIntel(),
+			// Eve has a unique SAR table configuration which makes it impossible to
+			// verify with this test, so we skip all versions of this test on eve.
+			// See b/181055964 for more details.
+			hwdep.SkipOnModel("eve")),
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(badModels...)),
@@ -52,7 +56,6 @@ func init() {
 // informational version. These failures are all tracked in the referenced bugs.
 var badModels = []string{
 	"akemi",   // TODO(b/172288894): Bad SAR table.
-	"eve",     // TODO(b/181055964): Unique SAR table causes this test to fail.
 	"leona",   // TODO(b/181049667): Bad SAR table.
 	"meep",    // TODO(b/181887950): Bad GEO SAR table.
 	"mimrock", // TODO(b/181887950): Bad GEO SAR table.
