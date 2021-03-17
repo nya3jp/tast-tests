@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9238e6d2_9b78e9ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-17T16:21:50Z",
+      "side": 1,
+      "message": "cleanupCtx is for the teardown, which preserves some amount of time.\nCould you use ctx, instead?",
+      "range": {
+        "startLine": 156,
+        "startChar": 29,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "db3f1c9838adfa6f8946d85aa6217a4b97414136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac0cc1b_3e050b27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-17T16:21:50Z",
+      "side": 1,
+      "message": "Instead could you read the data on memory, and store to a file only on error?\n\nb, err :\u003d linuxssh.ReadFile(...)\nif err !\u003d nil {\n  ...\n}\n\nfor _, line range strings.Split(string(b), \"\\n\") {\n  if m :\u003d errRegexp.FindString(line); m !\u003d \"\" {\n    s.Error(...)\n    if err :\u003d ioutil.WriteFile(...); err !\u003d nil {\n      ...\n    }\n    break\n  }\n}",
+      "range": {
+        "startLine": 160,
+        "startChar": 14,
+        "endLine": 160,
+        "endChar": 29
+      },
+      "revId": "db3f1c9838adfa6f8946d85aa6217a4b97414136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250ccf66_1cefa13d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-17T16:21:50Z",
+      "side": 1,
+      "message": "localFile",
+      "range": {
+        "startLine": 160,
+        "startChar": 30,
+        "endLine": 160,
+        "endChar": 81
+      },
+      "revId": "db3f1c9838adfa6f8946d85aa6217a4b97414136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8903566f_49215a95",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-17T16:21:50Z",
+      "side": 1,
+      "message": "Could you move this out from the enclosing for-loop?\nAlso, it\u0027s nice to merge those two.\n\nerrRegexp :\u003d regexp.MustCompile(\"^(ERROR|WARNING):.*$\")\nfor _, match :\u003d ... {",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 56
+      },
+      "revId": "db3f1c9838adfa6f8946d85aa6217a4b97414136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
