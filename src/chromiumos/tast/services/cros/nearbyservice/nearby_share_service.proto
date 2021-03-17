@@ -72,6 +72,7 @@ message CrOSSetupRequest {
   int32 data_usage = 1;
   int32 visibility = 2;
   string device_name = 3;
+  string sender_username = 4;
 }
 
 // CrOSPrepareFileRequest contains the archive of files to be sent by Nearby Share.
