@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c54124_8bb69140",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-17T01:58:36Z",
+      "side": 1,
+      "message": "All good, as long as we\u0027ve considered the tradeoffs and decided it\u0027s worth it",
+      "parentUuid": "2f753b5d_4dea4639",
+      "revId": "4b945b01083c8fb155bf1c91d8ea310305cfbe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73909168_a3b2da5a",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Similarly to uiauto replaces ui, we are going to replace chrome/vkb with chrome/uiauto/vkb. I did not get your point in this question. These files are moved to uiauto",
       "parentUuid": "73909168_a3b2da5a",
+      "revId": "4b945b01083c8fb155bf1c91d8ea310305cfbe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7befa0_095b2935",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-17T01:58:36Z",
+      "side": 1,
+      "message": "My point is that the uiauto folder shouldn\u0027t contain tests that use uiauto. Just the libraries themselves. I\u0027d personally prefer putting them in a folder chrome/vkb/uiauto instead, or chrome/vkb_uiauto.",
+      "parentUuid": "ad80e47e_5ac41ec2",
       "revId": "4b945b01083c8fb155bf1c91d8ea310305cfbe65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
