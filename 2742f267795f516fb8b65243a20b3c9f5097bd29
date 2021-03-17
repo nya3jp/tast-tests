@@ -22,6 +22,30 @@
       },
       "revId": "2742f267795f516fb8b65243a20b3c9f5097bd29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232a5993_8e5654b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-17T00:37:12Z",
+      "side": 1,
+      "message": "Sure. s.Log instead.",
+      "parentUuid": "fce2a1a1_0fba6d16",
+      "range": {
+        "startLine": 182,
+        "startChar": 3,
+        "endLine": 182,
+        "endChar": 11
+      },
+      "revId": "2742f267795f516fb8b65243a20b3c9f5097bd29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
