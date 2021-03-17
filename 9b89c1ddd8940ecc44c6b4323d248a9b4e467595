@@ -685,6 +685,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d4ab610_19286566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-17T03:28:22Z",
+      "side": 1,
+      "message": "I have not talked to inputs team yet. Maybe not maybe yes. I do not want to change the current implementation of Taykey. In case any other keys are duplicated on the layout. WDYT.",
+      "parentUuid": "96e85bdb_27a9f4dc",
+      "range": {
+        "startLine": 176,
+        "startChar": 33,
+        "endLine": 176,
+        "endChar": 46
+      },
+      "revId": "9b89c1ddd8940ecc44c6b4323d248a9b4e467595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a26350_11ce2481",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
         "patchSetId": 5

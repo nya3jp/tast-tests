@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9e0e101_775653c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-17T03:28:22Z",
+      "side": 0,
+      "message": "hide vk is already managed in precondition / Chrome reset. It is not required any more.",
+      "parentUuid": "d2788fbd_1cd2cf3c",
+      "range": {
+        "startLine": 113,
+        "startChar": 13,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "946828564cbb75a1b590f32145f7a23bd8a06448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d4665fa_8923ddad",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-17T03:12:44Z",
       "side": 0,
       "message": "Are these two defers still needed?",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 45
+      },
+      "revId": "946828564cbb75a1b590f32145f7a23bd8a06448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "419a51dd_6a97246c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-17T03:28:22Z",
+      "side": 0,
+      "message": "They are not required actually. This test uses new Chrome instance and close it after. So it does not require cleanup.",
+      "parentUuid": "0d4665fa_8923ddad",
       "range": {
         "startLine": 172,
         "startChar": 1,
