@@ -22,6 +22,30 @@
       },
       "revId": "50451e1644d0d1e23e7a6da1015ed20d2b17a89f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b336c4_486df84f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1483212
+      },
+      "writtenOn": "2021-03-17T15:17:08Z",
+      "side": 1,
+      "message": "OK by me",
+      "parentUuid": "41deffdd_174e20ba",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 65
+      },
+      "revId": "50451e1644d0d1e23e7a6da1015ed20d2b17a89f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
