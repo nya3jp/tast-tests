@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9eb858_a0a3eb46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-17T12:07:35Z",
+      "side": 1,
+      "message": "nit: the values for data each in a new line. That could improve readability 😊",
+      "revId": "16f04c2a03c86d040e3a0ae0823b686e2b272358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef63fa17_f0086281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-17T12:07:35Z",
+      "side": 1,
+      "message": "what with the mixed case? When camera is disabled feature and video capture is allowed?",
+      "revId": "16f04c2a03c86d040e3a0ae0823b686e2b272358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
