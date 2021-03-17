@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f753b5d_4dea4639",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-17T01:52:20Z",
+      "side": 1,
+      "message": "Ye. I am sorry about it. Since we have dedicated reviewers for input tests migration and besides lots of input tests are flaky already such as https://crbug.com/1188215. I wish we can land these fixes ASAP.",
+      "parentUuid": "f7ccd821_f174c22c",
+      "revId": "4b945b01083c8fb155bf1c91d8ea310305cfbe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73909168_a3b2da5a",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
         "patchSetId": 6
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-17T01:14:19Z",
       "side": 1,
       "message": "I don\u0027t feel that tests should be in the uiauto package, since that\u0027s a library. Thoughts? Why did you move the file?",
+      "revId": "4b945b01083c8fb155bf1c91d8ea310305cfbe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad80e47e_5ac41ec2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-17T01:52:20Z",
+      "side": 1,
+      "message": "Similarly to uiauto replaces ui, we are going to replace chrome/vkb with chrome/uiauto/vkb. I did not get your point in this question. These files are moved to uiauto",
+      "parentUuid": "73909168_a3b2da5a",
       "revId": "4b945b01083c8fb155bf1c91d8ea310305cfbe65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
