@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -62,35 +63,25 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Fail to launch inputs test server: ", err)
 	}
 	defer its.Close()
 
-	type testData struct {
-		inputField   testserver.InputField
-		inputFunc    func(ctx context.Context) error
-		expectedText string
-	}
-
-	var subtests []testData
+	var subtests []util.FieldInputEval
 
 	switch s.Param().(ime.InputMethodCode) {
 	case ime.INPUTMETHOD_XKB_US_ENG:
-		subtests = []testData{
+		subtests = []util.FieldInputEval{
 			{
-				inputField: testserver.TextAreaInputField,
-				inputFunc: func(ctx context.Context) error {
-					return keyboard.Type(ctx, `1234567890-=!@#$%^&*()_+[]{};'\:"|,./<>?~`)
-				},
-				expectedText: `1234567890-=!@#$%^&*()_+[]{};'\:"|,./<>?~`,
+				InputField:   testserver.TextAreaInputField,
+				InputFunc:    keyboard.TypeAction(`1234567890-=!@#$%^&*()_+[]{};'\:"|,./<>?~`),
+				ExpectedText: `1234567890-=!@#$%^&*()_+[]{};'\:"|,./<>?~`,
 			}, {
-				inputField: testserver.TextInputField,
-				inputFunc: func(ctx context.Context) error {
-					return keyboard.Type(ctx, "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM")
-				},
-				expectedText: "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM",
+				InputField:   testserver.TextInputField,
+				InputFunc:    keyboard.TypeAction("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"),
+				ExpectedText: "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM",
 			},
 		}
 		break
@@ -99,20 +90,13 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 	}
 
 	for _, subtest := range subtests {
-		s.Run(ctx, string(subtest.inputField), func(ctx context.Context, s *testing.State) {
+		s.Run(ctx, string(subtest.InputField), func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-			inputField := subtest.inputField
+			inputField := subtest.InputField
 
-			if err := its.ClickFieldAndWaitForActive(ctx, tconn, inputField); err != nil {
-				s.Fatal("Failed to click input field: ", err)
+			if err := its.ValidateInputOnField(inputField, subtest.InputFunc, subtest.ExpectedText)(ctx); err != nil {
+				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)
 			}
-
-			subtest.inputFunc(ctx)
-
-			if err := inputField.WaitForValueToBe(ctx, tconn, subtest.expectedText); err != nil {
-				s.Fatal("Failed to verify input: ", err)
-			}
-
 		})
 	}
 }
