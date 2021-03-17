@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "653368df_a417f175",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-03-17T00:18:30Z",
+      "side": 1,
+      "message": "LGTM, just a small nit on the equals sign. You had already caught the tricky part that you need to wait for the contacts download to complete. ",
+      "revId": "ebd1842f550b0d8cfe580c08f2ee418929e1330c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "580c8d27_33c6593b",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-03-17T00:18:30Z",
+      "side": 1,
+      "message": "We can expose setAllowedContacts on the element itself to avoid having to access the private contactManager_, but this is fine for now.",
+      "range": {
+        "startLine": 29,
+        "startChar": 48,
+        "endLine": 29,
+        "endChar": 85
+      },
+      "revId": "ebd1842f550b0d8cfe580c08f2ee418929e1330c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32a06fd2_8a3fa26a",
@@ -48,6 +88,30 @@
       "writtenOn": "2021-03-16T23:42:39Z",
       "side": 1,
       "message": "vecore@ highlighting the JS sections to make them easier to find",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 1
+      },
+      "revId": "ebd1842f550b0d8cfe580c08f2ee418929e1330c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d5f7be_c9159a61",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-03-17T00:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32a06fd2_8a3fa26a",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -77,6 +141,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89a88842_87a26394",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-03-17T00:18:30Z",
+      "side": 1,
+      "message": "\u003d\u003d\u003d",
+      "range": {
+        "startLine": 94,
+        "startChar": 57,
+        "endLine": 94,
+        "endChar": 59
+      },
+      "revId": "ebd1842f550b0d8cfe580c08f2ee418929e1330c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc9daf4_044f4b45",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-03-17T00:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eba0cf9_d375dafc",
+      "revId": "ebd1842f550b0d8cfe580c08f2ee418929e1330c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "185d683b_d5b363b7",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
         "patchSetId": 4
@@ -88,6 +193,30 @@
       "writtenOn": "2021-03-16T23:42:39Z",
       "side": 1,
       "message": "vecore@ highlighting the JS sections to make them easier to find",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 71
+      },
+      "revId": "ebd1842f550b0d8cfe580c08f2ee418929e1330c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcdd5a27_797d7a2d",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-03-17T00:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "185d683b_d5b363b7",
       "range": {
         "startLine": 112,
         "startChar": 0,
