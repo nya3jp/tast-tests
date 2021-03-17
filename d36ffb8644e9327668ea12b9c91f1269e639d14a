@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c69ef32_6385883a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-03-17T15:53:57Z",
+      "side": 1,
+      "message": "LGTM as long as the files are being generated properly.",
+      "revId": "d36ffb8644e9327668ea12b9c91f1269e639d14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f399682_9a0b0b52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-03-17T15:53:57Z",
+      "side": 1,
+      "message": "Extra line?",
+      "revId": "d36ffb8644e9327668ea12b9c91f1269e639d14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
