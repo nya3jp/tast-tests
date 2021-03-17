@@ -15,9 +15,10 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
 )
 
@@ -110,11 +111,25 @@ const html = `<!DOCTYPE html>
 // InputsTestServer is an unified server instance being used to manage web server and connection.
 type InputsTestServer struct {
 	server *httptest.Server
-	conn   *chrome.Conn
+	cr     *chrome.Chrome
+	tconn  *chrome.TestConn
+	// Page connection. It is connected when loading the test page.
+	// It is used for evaluate javascript.
+	pc *chrome.Conn
+	ui *uiauto.Context
+}
+
+// pageRootFinder returns the finder of root Node of the test page.
+// All sub node should be located on the page.
+var pageRootFinder = nodewith.Name(pageTitle).Role(role.RootWebArea)
+
+// Finder returns the finder of the field by Name attribute.
+func (inputField InputField) Finder() *nodewith.Finder {
+	return nodewith.Ancestor(pageRootFinder).Name(string(inputField))
 }
 
 // Launch launches a local web server to serve inputs testing on different type of input fields.
-func Launch(ctx context.Context, cr *chrome.Chrome) (*InputsTestServer, error) {
+func Launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) (*InputsTestServer, error) {
 	testing.ContextLog(ctx, "Start a local server to test inputs")
 
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -122,135 +137,106 @@ func Launch(ctx context.Context, cr *chrome.Chrome) (*InputsTestServer, error) {
 		io.WriteString(w, html)
 	}))
 
-	conn, err := cr.NewConn(ctx, server.URL)
+	pc, err := cr.NewConn(ctx, server.URL)
 	if err != nil {
 		server.Close()
 		return nil, errors.Wrap(err, "failed to connect to inputs test server")
 	}
 
-	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		conn.Close()
+	if err := pc.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		pc.Close()
 		server.Close()
 		return nil, errors.Wrap(err, "failed to load test page")
 	}
 
+	ui := uiauto.New(tconn)
+	// Even document is ready, target is not yet in a11y tree.
+	if err := ui.WaitUntilExists(pageRootFinder)(ctx); err != nil {
+		pc.Close()
+		server.Close()
+		return nil, errors.Wrap(err, "failed to render test page")
+	}
+
 	return &InputsTestServer{
 		server: server,
-		conn:   conn,
+		cr:     cr,
+		tconn:  tconn,
+		pc:     pc,
+		ui:     ui,
 	}, nil
 }
 
 // Close release the connection and stop the local web server.
 func (its *InputsTestServer) Close() {
-	its.conn.Close()
+	its.pc.Close()
 	its.server.Close()
 }
 
 // Clear returns an action clearing given input field by setting value to empty string via javascript.
 func (its *InputsTestServer) Clear(inputField InputField) uiauto.Action {
 	return func(ctx context.Context) error {
-		return its.conn.Eval(ctx, fmt.Sprintf(`document.querySelector("*[aria-label='%s']").value=''`, string(inputField)), nil)
+		return its.pc.Eval(ctx, fmt.Sprintf(`document.querySelector("*[aria-label='%s']").value=''`, inputField), nil)
 	}
 }
 
-// WaitForFieldToBeActive waits for certain input field to be the active element.
-func (its *InputsTestServer) WaitForFieldToBeActive(ctx context.Context, inputField InputField) error {
-	return its.conn.WaitForExpr(ctx, fmt.Sprintf(`!!document.activeElement && document.querySelector("*[aria-label='%s']")===document.activeElement`, string(inputField)))
-}
-
-// ClickFieldAndWaitForActive clicks the input field and waits for it to be active.
-func (its *InputsTestServer) ClickFieldAndWaitForActive(ctx context.Context, tconn *chrome.TestConn, inputField InputField) error {
-	if err := inputField.Click(ctx, tconn); err != nil {
-		return errors.Wrapf(err, "failed to click %s", inputField)
+// WaitForFieldToBeActive returns an action waiting for certain input field to be the active element.
+func (its *InputsTestServer) WaitForFieldToBeActive(inputField InputField) uiauto.Action {
+	return func(ctx context.Context) error {
+		return its.pc.WaitForExpr(ctx, fmt.Sprintf(`!!document.activeElement && document.querySelector("*[aria-label='%s']")===document.activeElement`, inputField))
 	}
-	return its.WaitForFieldToBeActive(ctx, inputField)
 }
 
-// Click clicks the input field.
-func (inputField InputField) Click(ctx context.Context, tconn *chrome.TestConn) error {
-	actionFunc := func(node *ui.Node) error {
-		if err := node.MakeVisible(ctx); err != nil {
-			return errors.Wrapf(err, "failed to make the %s input field visible", string(inputField))
-		}
-		if err := node.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
-			return errors.Wrapf(err, "failed to wait for %s input field location stable", inputField)
-		}
-		return node.LeftClick(ctx)
-	}
-	return inputField.action(ctx, tconn, actionFunc)
+// ClickFieldAndWaitForActive returns an action clicking the input field and waiting for it to be active.
+func (its *InputsTestServer) ClickFieldAndWaitForActive(inputField InputField) uiauto.Action {
+	return uiauto.Combine(
+		"click input field and wait for it to be active",
+		its.ClickField(inputField),
+		its.WaitForFieldToBeActive(inputField),
+	)
 }
 
-// ClickUntilVKShown clicks the input field and waits for the virtual keyboard to show up.
-func (inputField InputField) ClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn) error {
-	actionFunc := func(node *ui.Node) error {
-		if err := node.MakeVisible(ctx); err != nil {
-			return errors.Wrapf(err, "failed to make the %s input field visible", string(inputField))
-		}
-		if err := node.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
-			return errors.Wrapf(err, "failed to wait for %s input field location stable", inputField)
-		}
-		return vkb.ClickUntilVKShown(ctx, tconn, node)
-	}
-	return inputField.action(ctx, tconn, actionFunc)
+// ClickField returns an action clicking the input field.
+func (its *InputsTestServer) ClickField(inputField InputField) uiauto.Action {
+	fieldFinder := inputField.Finder()
+	return uiauto.Combine(
+		"make input field visible on the screen and click it",
+		its.ui.MakeVisible(fieldFinder),
+		its.ui.LeftClick(fieldFinder),
+	)
 }
 
-// GetValue returns current text in the input field.
-func (inputField InputField) GetValue(ctx context.Context, tconn *chrome.TestConn) (string, error) {
-	var out string
-
-	actionFunc := func(node *ui.Node) error {
-		if err := node.Update(ctx); err != nil {
-			return errors.Wrap(err, "failed to update node")
-		}
-		out = node.Value
-		return nil
-	}
-
-	err := inputField.action(ctx, tconn, actionFunc)
-
-	return out, err
+// ClickFieldUntilVKShown returns an action clicking the input field and waits for the virtual keyboard to show up.
+func (its *InputsTestServer) ClickFieldUntilVKShown(inputField InputField) uiauto.Action {
+	fieldFinder := inputField.Finder()
+	return uiauto.Combine(
+		"make input field visible on the screen and click it until virtual keyboard is shown",
+		its.ui.MakeVisible(fieldFinder),
+		// Use vkb.ClickUntilVKShown because it has retry internally.
+		vkb.NewContext(its.cr, its.tconn).ClickUntilVKShown(fieldFinder),
+	)
 }
 
-// WaitForValueToBe repeatedly checks the input value until it matches the expectation.
-func (inputField InputField) WaitForValueToBe(ctx context.Context, tconn *chrome.TestConn, expectedValue string) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		currentValue, err := inputField.GetValue(ctx, tconn)
+// WaitForFieldValueToBe returns an action repeatedly checking the input value until it matches the expectation.
+func (its *InputsTestServer) WaitForFieldValueToBe(inputField InputField, expectedValue string) uiauto.Action {
+	return its.ui.WithInterval(time.Second).Retry(5, func(ctx context.Context) error {
+		nodeInfo, err := its.ui.Info(ctx, inputField.Finder())
 		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get input value"))
-		}
-		if currentValue != expectedValue {
-			return errors.Errorf("failed to validate input value: got: %s; want: %s", currentValue, expectedValue)
+			return err
+		} else if nodeInfo.Value != expectedValue {
+			return errors.Errorf("failed to validate input value: got: %s; want: %s", nodeInfo.Value, expectedValue)
 		}
 		return nil
-	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second})
+	})
 }
 
-// GetNode returns the a11y node of the input field.
-func (inputField InputField) GetNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
-	pageRoot, err := pageRootNode(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find page root node")
-	}
-	defer pageRoot.Release(ctx)
-
-	node, err := pageRoot.DescendantWithTimeout(ctx, ui.FindParams{Name: string(inputField)}, 10*time.Second)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to find input field: %s", string(inputField))
-	}
-	return node, nil
-}
-
-func (inputField InputField) action(ctx context.Context, tconn *chrome.TestConn, f func(node *ui.Node) error) error {
-	node, err := inputField.GetNode(ctx, tconn)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find input field: %s", string(inputField))
-	}
-	defer node.Release(ctx)
-
-	return f(node)
-}
-
-// pageRootNode returns the root Node of the inputs test page. All sub node should be located under the page.
-func pageRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
-	return ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeRootWebArea, Name: pageTitle}, 10*time.Second)
+// ValidateInputOnField returns an action to test an input action on given input field.
+// It clears field first and click to activate input.
+// After input action, it checks whether the outcome equals to expected value.
+func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFunc uiauto.Action, expectedValue string) uiauto.Action {
+	return uiauto.Combine("validate input function on field "+string(inputField),
+		its.Clear(inputField),
+		its.ClickFieldAndWaitForActive(inputField),
+		inputFunc,
+		its.WaitForFieldValueToBe(inputField, expectedValue),
+	)
 }

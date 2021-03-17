@@ -11,10 +11,12 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -55,10 +57,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	const (
 		defaultInputMethod       = string(ime.INPUTMETHOD_XKB_US_ENG)
 		defaultInputMethodLabel  = "US"
-		defaultInputMethodOption = "US keyboard"
-		// TODO(crbug/889763) : Update inputMethodOptions once
-		// https://crrev.com/c/2519337 is merged.
-		updatedInputMethodOption = "English (US)"
+		defaultInputMethodOption = "English (US)"
 		language                 = "fr-FR"
 		inputMethod              = string(ime.INPUTMETHOD_XKB_FR_FRA)
 		InputMethodLabel         = "FR"
@@ -68,44 +67,11 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add input method: ", err)
 	}
 
-	ts, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer ts.Close()
-
-	inputField := testserver.TextAreaInputField
-
-	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
-	}
-
-	// Input method changing is done async between front-end ui and background.
-	// So nicely to assert both of them to make sure input method changed completely.
-	assertInputMethod := func(ctx context.Context, inputMethod, inputMethodLabel string) {
-		s.Logf("Wait for current input method label to be %q, %q", inputMethod, inputMethodLabel)
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			// Assert current language using API
-			currentInputMethod, err := ime.GetCurrentInputMethod(ctx, tconn)
-			if err != nil {
-				return errors.Wrap(err, "failed to get current input method")
-			} else if currentInputMethod != ime.IMEPrefix+inputMethod {
-				return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, ime.IMEPrefix+inputMethod)
-			}
-
-			imeKeyNode, err := vkb.DescendantNode(ctx, tconn, ui.FindParams{Name: inputMethodLabel})
-			if err != nil {
-				return errors.Wrapf(err, "failed to wait for language menu label change to %s", inputMethodLabel)
-			}
-			defer imeKeyNode.Release(ctx)
-			return nil
-		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-			s.Fatal("Failed to assert input method: ", err)
-		}
-	}
-
-	// Assert default input method.
-	assertInputMethod(ctx, defaultInputMethod, defaultInputMethodLabel)
+	defer its.Close()
 
 	s.Log("Switch input method with keybaord shortcut Ctrl+Shift+Space")
 	keyboard, err := input.Keyboard(ctx)
@@ -114,38 +80,43 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	if err := keyboard.Accel(ctx, "Ctrl+Shift+Space"); err != nil {
-		s.Fatal("Accel(Ctrl+Shift+Space) failed: ", err)
+	inputField := testserver.TextAreaInputField
+	defaultInputMethodOptionFinder := vkb.NodeFinder.Name(defaultInputMethodOption).Role(role.StaticText)
+	vkLanguageMenuFinder := vkb.KeyFinder.Name("open keyboard menu")
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("verify changing input method with shortcut and virtual keyboard UI",
+		// Trigger VK and assert default IME.
+		its.ClickFieldUntilVKShown(inputField),
+		assertInputMethod(tconn, defaultInputMethod, defaultInputMethodLabel),
+		// Switch IME with shortcut and assert IME changed successfully.
+		keyboard.AccelAction("Ctrl+Shift+Space"),
+		assertInputMethod(tconn, inputMethod, InputMethodLabel),
+		// Switch back to default IME on virtual keyboard UI.
+		ui.LeftClick(vkLanguageMenuFinder),
+		ui.LeftClick(defaultInputMethodOptionFinder),
+		assertInputMethod(tconn, defaultInputMethod, defaultInputMethodLabel),
+	)(ctx); err != nil {
+		s.Fatal("Failed to verify changing input method: ", err)
 	}
+}
 
-	// Assert new input method after switching with keyboard shortcut.
-	assertInputMethod(ctx, inputMethod, InputMethodLabel)
+// assertInputMethod asserts current input method.
+// Input method changing is done async between front-end ui and background.
+// So nicely to assert both of them to make sure input method changed completely.
+func assertInputMethod(tconn *chrome.TestConn, inputMethod, inputMethodLabel string) uiauto.Action {
+	ui := uiauto.New(tconn)
+	assertAction := func(ctx context.Context) error {
+		currentInputMethod, err := ime.GetCurrentInputMethod(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get current input method")
+		} else if currentInputMethod != ime.IMEPrefix+inputMethod {
+			return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, ime.IMEPrefix+inputMethod)
+		}
 
-	// Using polling to retry open language menu.
-	// Right after changing input method, input view might not respond to js call in a short time.
-	// Causing issue "a javascript remote object was not return".
-	s.Log("Switch input method on virtual keyboard")
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := vkb.TapKey(ctx, tconn, "open keyboard menu"); err != nil {
-			return err
+		if err := ui.WaitUntilExists(vkb.NodeFinder.Name(inputMethodLabel).Role(role.StaticText))(ctx); err != nil {
+			return errors.Wrapf(err, "failed to wait for language menu label change to %s", inputMethodLabel)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		s.Fatal("Failed to click language menu on vk: ", err)
 	}
-
-	languageOptionParams := ui.FindParams{
-		Name: defaultInputMethodOption,
-	}
-	updatedLanguageOptionParams := ui.FindParams{
-		Name: updatedInputMethodOption,
-	}
-	opts := testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}
-	if err := ui.StableFindAndClick(ctx, tconn, languageOptionParams, &opts); err != nil {
-		if err := ui.StableFindAndClick(ctx, tconn, updatedLanguageOptionParams, &opts); err != nil {
-			s.Fatalf("Failed to select language option %s or %s: %v", defaultInputMethodOption, updatedInputMethodOption, err)
-		}
-	}
-
-	assertInputMethod(ctx, defaultInputMethod, defaultInputMethodLabel)
+	return ui.WithInterval(1*time.Second).Retry(10, assertAction)
 }
