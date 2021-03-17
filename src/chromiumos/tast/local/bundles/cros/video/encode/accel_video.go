@@ -34,7 +34,7 @@ const measureInterval = 20 * time.Second
 // TestOptions is the options for runAccelVideoTest.
 type TestOptions struct {
 	WebMName string
-	Profile  videotype.CodecProfile
+	Codec    videotype.Codec
 
 	// The number of temporal layers of the produced bitstream.
 	// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes* about temporal layers.
@@ -46,34 +46,34 @@ type TestOptions struct {
 	VerifyNV12Input bool
 }
 
-// MakeTestOptions creates TestOptions from webMName and profile.
+// MakeTestOptions creates TestOptions from webMName and codec.
 // TemporalLayers is set to 1 and VerifyNV12Input is set to false.
-func MakeTestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
+func MakeTestOptions(webMName string, codec videotype.Codec) TestOptions {
 	return TestOptions{
 		WebMName:        webMName,
-		Profile:         profile,
+		Codec:           codec,
 		TemporalLayers:  1,
 		VerifyNV12Input: false,
 	}
 }
 
-// MakeNV12TestOptions creates TestOptions from webMName and profile.
+// MakeNV12TestOptions creates TestOptions from webMName and codec.
 // TemporalLayers is set to 1 and VerifyNV12Input is set to true.
-func MakeNV12TestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
+func MakeNV12TestOptions(webMName string, codec videotype.Codec) TestOptions {
 	return TestOptions{
 		WebMName:        webMName,
-		Profile:         profile,
+		Codec:           codec,
 		TemporalLayers:  1,
 		VerifyNV12Input: true,
 	}
 }
 
-// MakeTestOptionsWithTemporalLayers creates TestOptions from webMName, profile and temporalLayers.
+// MakeTestOptionsWithTemporalLayers creates TestOptions from webMName, codec and temporalLayers.
 // VerifyNV12Input is set to false.
-func MakeTestOptionsWithTemporalLayers(webMName string, profile videotype.CodecProfile, temporalLayers int) TestOptions {
+func MakeTestOptionsWithTemporalLayers(webMName string, codec videotype.Codec, temporalLayers int) TestOptions {
 	return TestOptions{
 		WebMName:        webMName,
-		Profile:         profile,
+		Codec:           codec,
 		TemporalLayers:  temporalLayers,
 		VerifyNV12Input: false,
 	}
@@ -95,16 +95,16 @@ func YUVJSONFileNameFor(webMFileName string) string {
 	return yuvName + ".json"
 }
 
-func codecProfileToEncodeCodecOption(profile videotype.CodecProfile) (string, error) {
-	switch profile {
-	case videotype.H264Prof:
-		return "h264baseline", nil
-	case videotype.VP8Prof:
+func codecTestArg(codec videotype.Codec) (string, error) {
+	switch codec {
+	case videotype.H264:
+		return "h264", nil
+	case videotype.VP8:
 		return "vp8", nil
-	case videotype.VP9Prof:
+	case videotype.VP9:
 		return "vp9", nil
 	default:
-		return "", errors.Errorf("unknown codec profile: %v", profile)
+		return "", errors.Errorf("unknown codec: %v", codec)
 	}
 }
 
@@ -138,7 +138,7 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 	}
 	defer os.Remove(yuvJSONPath)
 
-	codec, err := codecProfileToEncodeCodecOption(opts.Profile)
+	codec, err := codecTestArg(opts.Codec)
 	if err != nil {
 		s.Fatal("Failed to get codec option: ", err)
 	}
@@ -226,7 +226,7 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		return errors.Wrap(err, "failed to wait for CPU to become idle")
 	}
 
-	codec, err := codecProfileToEncodeCodecOption(opts.Profile)
+	codec, err := codecTestArg(opts.Codec)
 	if err != nil {
 		return errors.Wrap(err, "failed to get codec option")
 	}
