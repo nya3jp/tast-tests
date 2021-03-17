@@ -141,7 +141,22 @@ func (n *NearbyService) CrOSSetup(ctx context.Context, req *nearbyservice.CrOSSe
 		return nil, errors.New("Chrome not available")
 	}
 	n.deviceName = req.DeviceName
-	return &empty.Empty{}, nearbysetup.CrOSSetup(ctx, n.tconn, n.cr, nearbysetup.DataUsage(req.DataUsage), nearbysetup.Visibility(req.Visibility), req.DeviceName)
+	if err := nearbysetup.CrOSSetup(ctx, n.tconn, n.cr, nearbysetup.DataUsage(req.DataUsage), nearbysetup.Visibility(req.Visibility), req.DeviceName); err != nil {
+		return nil, errors.Wrap(err, "failed to perform CrOS setup")
+	}
+	if nearbysetup.Visibility(req.Visibility) == nearbysetup.VisibilitySelectedContacts && req.SenderUsername != "" {
+		nearbySettings, err := nearbyshare.LaunchNearbySettings(ctx, n.tconn, n.cr)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to launch OS settings")
+		}
+		defer nearbySettings.Close(ctx)
+
+		senderUsername := req.SenderUsername
+		if err := nearbySettings.SetAllowedContacts(ctx, senderUsername); err != nil {
+			return nil, errors.Wrap(err, "failed to set allowed contacts")
+		}
+	}
+	return &empty.Empty{}, nil
 }
 
 // StartHighVisibilityMode starts high vis mode using the UI library.
