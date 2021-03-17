@@ -16,10 +16,11 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/testing"
 )
 
 // Structs required to unmarshal the SVG file.
@@ -208,17 +209,6 @@ func (sg *strokeGroup) scale(canvasLoc coords.Rect) {
 	}
 }
 
-// findHandwritingCanvas finds the canvas for the handwriting input which will be used to draw the handwriting.
-func findHandwritingCanvas(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
-	// TODO(crbug/1175982): Need to check if keyboard is using the new handwriting layout.
-	params := ui.FindParams{
-		Role:      ui.RoleTypeCanvas,
-		ClassName: "ita-hwt-canvas",
-	}
-	opts := testing.PollOptions{Timeout: 2 * time.Second}
-	return ui.StableFind(ctx, tconn, params, &opts)
-}
-
 // drawHandwriting draws the strokes into the handwriting input.
 func drawHandwriting(ctx context.Context, tconn *chrome.TestConn, sg *strokeGroup) error {
 	// Draw the strokes into the handwriting input.
@@ -227,18 +217,18 @@ func drawHandwriting(ctx context.Context, tconn *chrome.TestConn, sg *strokeGrou
 			// Mouse will be moved to each of the points to draw the stroke.
 			// A stroke can have up to 50 points, if a stroke is long enough and uses all 50 points to represent
 			// the stroke, it will take 2 seconds (40ms * 50) to draw that stroke.
-			if err := mouse.Move(ctx, tconn, p.toCoordsPoint(), 40*time.Millisecond); err != nil {
+			if err := mouse.Move(tconn, p.toCoordsPoint(), 40*time.Millisecond)(ctx); err != nil {
 				return errors.Wrap(err, "failed to move mouse")
 			}
 			// Left mouse button should be pressed on only the first point of every stroke to start the stroke.
 			if i == 0 {
-				if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+				if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
 					return errors.Wrap(err, "failed to click mouse")
 				}
 			}
 		}
 		// After going through all the points for a single stroke, release the left mouse button.
-		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to release mouse")
 		}
 	}
@@ -246,34 +236,37 @@ func drawHandwriting(ctx context.Context, tconn *chrome.TestConn, sg *strokeGrou
 	return nil
 }
 
-// DrawHandwritingFromFile reads the handwriting file, transforms the points into the correct scale,
-// populates the data into the struct, and draws the strokes into the handwriting input.
-func DrawHandwritingFromFile(ctx context.Context, tconn *chrome.TestConn, filePath string) error {
-	// Number of points we would like per stroke.
-	const n = 50
+// DrawHandwritingFromFile returns an action reading the handwriting file, transforming the points into the correct scale,
+// populates the data into the struct, and drawing the strokes into the handwriting input.
+func (vkbCtx *VirtualKeyboardContext) DrawHandwritingFromFile(filePath string) uiauto.Action {
+	return func(ctx context.Context) error {
+		// Number of points we would like per stroke.
+		const n = 50
 
-	// Read and unmarshal the SVG file into the corresponding structs.
-	svgFile, err := readSvg(filePath)
-	if err != nil {
-		return errors.Wrap(err, "failed to read data from file")
+		// Read and unmarshal the SVG file into the corresponding structs.
+		svgFile, err := readSvg(filePath)
+		if err != nil {
+			return errors.Wrap(err, "failed to read data from file")
+		}
+
+		// Scan the handwriting file and return a strokeGroup with the populated data.
+		sg := newStrokeGroup(svgFile, n)
+
+		// Find the handwriting canvas location.
+		hwCanvasFinder := nodewith.Role(role.Canvas).ClassName("ita-hwt-canvas")
+		loc, err := vkbCtx.ui.Location(ctx, hwCanvasFinder)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get location of %v", hwCanvasFinder)
+		}
+
+		// Scale the handwriting data in the structs to fit the handwriting input.
+		sg.scale(*loc)
+
+		// Draw the handwriting into the handwriting input.
+		if err := drawHandwriting(ctx, vkbCtx.tconn, sg); err != nil {
+			return errors.Wrap(err, "failed to draw handwriting onto the handwriting input")
+		}
+
+		return nil
 	}
-
-	// Scan the handwriting file and return a strokeGroup with the populated data.
-	sg := newStrokeGroup(svgFile, n)
-
-	// Find the handwriting canvas location.
-	canvas, err := findHandwritingCanvas(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find handwriting canvas")
-	}
-
-	// Scale the handwriting data in the structs to fit the handwriting input.
-	sg.scale(canvas.Location)
-
-	// Draw the handwriting into the handwriting input.
-	if err := drawHandwriting(ctx, tconn, sg); err != nil {
-		return errors.Wrap(err, "failed to draw handwriting onto the handwriting input")
-	}
-
-	return nil
 }
