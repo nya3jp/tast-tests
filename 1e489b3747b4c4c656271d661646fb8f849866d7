@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef94205c_3c534e67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-17T14:07:12Z",
+      "side": 1,
+      "message": "Thank you everyone. I am going to monitor the status of this test on go/tast-board :) ",
+      "revId": "1e489b3747b4c4c656271d661646fb8f849866d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
