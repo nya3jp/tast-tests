@@ -24,22 +24,23 @@ const (
 // A PolicyBlob is a struct that marshals into what is expected by Chrome's
 // policy_testserver.py.
 type PolicyBlob struct {
-	UserPs               *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
-	DevicePM             BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
-	ExtensionPM          BlobPolicyMap                `json:"google/chromeos/extension,omitempty"`
-	PolicyUser           string                       `json:"policy_user"`
-	ManagedUsers         []string                     `json:"managed_users"`
-	CurrentKeyIdx        int                          `json:"current_key_index,omitempty"`
-	RobotAPIAuthCode     string                       `json:"robot_api_auth_code,omitempty"`
-	InvalidationSrc      int                          `json:"invalidation_source"`
-	InvalidationName     string                       `json:"invalidation_name"`
-	Licenses             *BlobLicenses                `json:"available_licenses,omitempty"`
-	TokenEnrollment      *BlobTokenEnrollment         `json:"token_enrollment,omitempty"`
-	RequestErrors        map[string]int               `json:"request_errors,omitempty"`
-	AllowDeviceAttrs     bool                         `json:"allow_set_device_attributes,omitempty"`
-	InitialState         map[string]*BlobInitialState `json:"initial_enrollment_state,omitempty"`
-	DeviceAffiliationIds []string                     `json:"device_affiliation_ids,omitempty"`
-	UserAffiliationIds   []string                     `json:"user_affiliation_ids,omitempty"`
+	UserPs               *BlobUserPolicies
+	DevicePM             BlobPolicyMap
+	ExtensionPM          BlobPolicyMap
+	PublicAccountPs      map[string]*BlobPublicAccountPolicies
+	PolicyUser           string
+	ManagedUsers         []string
+	CurrentKeyIdx        int
+	RobotAPIAuthCode     string
+	InvalidationSrc      int
+	InvalidationName     string
+	Licenses             *BlobLicenses
+	TokenEnrollment      *BlobTokenEnrollment
+	RequestErrors        map[string]int
+	AllowDeviceAttrs     bool
+	InitialState         map[string]*BlobInitialState
+	DeviceAffiliationIds []string
+	UserAffiliationIds   []string
 }
 
 // A BlobUserPolicies struct is a sub-struct used in a PolicyBlob.
@@ -47,6 +48,9 @@ type BlobUserPolicies struct {
 	MandatoryPM   BlobPolicyMap `json:"mandatory,omitempty"`
 	RecommendedPM BlobPolicyMap `json:"recommended,omitempty"`
 }
+
+// A BlobPublicAccountPolicies struct has the same structure as BlobUserPolicies.
+type BlobPublicAccountPolicies BlobUserPolicies
 
 // A BlobLicenses struct is a sub-struct used in a PolicyBlob.
 type BlobLicenses struct {
@@ -119,6 +123,104 @@ func (pb *PolicyBlob) AddPolicy(p policy.Policy) error {
 	return nil
 }
 
+// AddPublicAccountPolicy adds the given policy to the public account policies associated with the account ID.
+func (pb *PolicyBlob) AddPublicAccountPolicy(accountID string, p policy.Policy) error {
+	if p.Scope() != policy.ScopeUser {
+		return errors.Errorf("%s is a non-user policy which cannot be added to public accounts", p.Name())
+	}
+
+	if pb.PublicAccountPs == nil {
+		pb.PublicAccountPs = make(map[string]*BlobPublicAccountPolicies)
+	}
+
+	if _, ok := pb.PublicAccountPs[accountID]; !ok {
+		pb.PublicAccountPs[accountID] = &BlobPublicAccountPolicies{}
+	}
+
+	policies := pb.PublicAccountPs[accountID]
+
+	if p.Status() == policy.StatusSetRecommended {
+		if policies.RecommendedPM == nil {
+			policies.RecommendedPM = make(BlobPolicyMap)
+		}
+
+		return addValue(p, policies.RecommendedPM)
+	}
+
+	if policies.MandatoryPM == nil {
+		policies.MandatoryPM = make(BlobPolicyMap)
+	}
+
+	return addValue(p, policies.MandatoryPM)
+}
+
+// MarshalJSON marshals the policy blob into JSON.
+func (pb *PolicyBlob) MarshalJSON() ([]byte, error) {
+	j := make(map[string]interface{})
+
+	if pb.UserPs != nil {
+		j["google/chromeos/user"] = pb.UserPs
+	}
+
+	if pb.DevicePM != nil {
+		j["google/chromeos/device"] = pb.DevicePM
+	}
+
+	if pb.ExtensionPM != nil {
+		j["google/chromeos/extension"] = pb.UserPs
+	}
+
+	if pb.PublicAccountPs != nil {
+		for k, v := range pb.PublicAccountPs {
+			j["google/chromeos/publicaccount/"+k] = v
+		}
+	}
+
+	j["policy_user"] = pb.PolicyUser
+	j["managed_users"] = pb.ManagedUsers
+
+	if pb.CurrentKeyIdx != 0 {
+		j["current_key_index"] = pb.CurrentKeyIdx
+	}
+
+	if pb.RobotAPIAuthCode != "" {
+		j["robot_api_auth_code"] = pb.RobotAPIAuthCode
+	}
+
+	j["invalidation_source"] = pb.InvalidationSrc
+	j["invalidation_name"] = pb.InvalidationName
+
+	if pb.Licenses != nil {
+		j["available_licenses"] = pb.Licenses
+	}
+
+	if pb.TokenEnrollment != nil {
+		j["token_enrollment"] = pb.TokenEnrollment
+	}
+
+	if pb.RequestErrors != nil {
+		j["request_errors"] = pb.RequestErrors
+	}
+
+	if pb.AllowDeviceAttrs {
+		j["allow_set_device_attributes"] = pb.AllowDeviceAttrs
+	}
+
+	if pb.InitialState != nil {
+		j["initial_enrollment_state"] = pb.InitialState
+	}
+
+	if pb.DeviceAffiliationIds != nil {
+		j["device_affiliation_ids"] = pb.DeviceAffiliationIds
+	}
+
+	if pb.UserAffiliationIds != nil {
+		j["user_affiliation_ids"] = pb.UserAffiliationIds
+	}
+
+	return json.Marshal(j)
+}
+
 // addValue tweaks Policy values as needed and then adds them to the given map.
 // FakeDMServer expects "policy": "{value}" not "policy": {value} and
 // "policy": "[{value}]" not "policy": [{value}], so turn anything that is not
@@ -137,7 +239,7 @@ func addValue(p policy.Policy, pm BlobPolicyMap) error {
 			return errors.Wrapf(err, "could not add %s policy", p.Name())
 		}
 	}
-	if p.Scope() == policy.ScopeUser {
+	if p.Scope() == policy.ScopeUser || p.Scope() == policy.ScopePublicAccount {
 		pm[p.Name()] = vJSON
 	} else {
 		pm[p.Field()] = vJSON

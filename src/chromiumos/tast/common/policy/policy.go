@@ -66,6 +66,8 @@ const (
 	ScopeUser Scope = iota
 	// ScopeDevice is used to flag device policies.
 	ScopeDevice
+	// ScopePublicAccount is used to flag policies for managed guest sessions.
+	ScopePublicAccount
 )
 
 // String implements the Stringer interface for Scope.
@@ -75,6 +77,8 @@ func (s Scope) String() string {
 		return "user"
 	case ScopeDevice:
 		return "device"
+	case ScopePublicAccount:
+		return "public account"
 	default:
 		return "unknown scope"
 	}
