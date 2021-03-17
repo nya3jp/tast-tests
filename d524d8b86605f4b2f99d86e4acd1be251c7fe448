@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "322d9e54_1dfc035e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-17T04:20:32Z",
+      "side": 1,
+      "message": "Might be beneficial to output the error here: s.Error(\"Failed to save eccrash file: \", err)",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 41
+      },
+      "revId": "d524d8b86605f4b2f99d86e4acd1be251c7fe448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd5defcb_7ef5367d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-17T04:20:32Z",
+      "side": 1,
+      "message": "nit: colon here",
+      "range": {
+        "startLine": 162,
+        "startChar": 39,
+        "endLine": 162,
+        "endChar": 40
+      },
+      "revId": "d524d8b86605f4b2f99d86e4acd1be251c7fe448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
