@@ -27,6 +27,7 @@ type PolicyBlob struct {
 	UserPs               *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
 	DevicePM             BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
 	ExtensionPM          BlobPolicyMap                `json:"google/chromeos/extension,omitempty"`
+	PublicAccountPs      *BlobPublicAccountPolicies   `json:"google/chromeos/publicaccount,omitempty"`
 	PolicyUser           string                       `json:"policy_user"`
 	ManagedUsers         []string                     `json:"managed_users"`
 	CurrentKeyIdx        int                          `json:"current_key_index,omitempty"`
@@ -47,6 +48,9 @@ type BlobUserPolicies struct {
 	MandatoryPM   BlobPolicyMap `json:"mandatory,omitempty"`
 	RecommendedPM BlobPolicyMap `json:"recommended,omitempty"`
 }
+
+// A BlobPublicAccountPolicies struct has the same structure as BlobUserPolicies.
+type BlobPublicAccountPolicies BlobUserPolicies
 
 // A BlobLicenses struct is a sub-struct used in a PolicyBlob.
 type BlobLicenses struct {
@@ -102,12 +106,14 @@ func (pb *PolicyBlob) AddPolicy(p policy.Policy) error {
 	}
 	switch p.Scope() {
 	case policy.ScopeUser:
+		fallthrough
+	case policy.ScopePublicAccount:
 		if p.Status() == policy.StatusSetRecommended {
-			if err := pb.addRecommendedUserPolicy(p); err != nil {
+			if err := pb.addRecommendedPolicy(p); err != nil {
 				return err
 			}
 		} else {
-			if err := pb.addMandatoryUserPolicy(p); err != nil {
+			if err := pb.addMandatoryPolicy(p); err != nil {
 				return err
 			}
 		}
@@ -137,7 +143,7 @@ func addValue(p policy.Policy, pm BlobPolicyMap) error {
 			return errors.Wrapf(err, "could not add %s policy", p.Name())
 		}
 	}
-	if p.Scope() == policy.ScopeUser {
+	if p.Scope() == policy.ScopeUser || p.Scope() == policy.ScopePublicAccount {
 		pm[p.Name()] = vJSON
 	} else {
 		pm[p.Field()] = vJSON
@@ -145,26 +151,50 @@ func addValue(p policy.Policy, pm BlobPolicyMap) error {
 	return nil
 }
 
-// addMandatoryUserPolicy adds the given policy as a mandatory user policy.
-func (pb *PolicyBlob) addMandatoryUserPolicy(p policy.Policy) error {
-	if pb.UserPs == nil {
-		pb.UserPs = &BlobUserPolicies{}
+// addMandatoryPolicy adds the given policy as a mandatory user or public account policy.
+func (pb *PolicyBlob) addMandatoryPolicy(p policy.Policy) error {
+	var pm BlobPolicyMap
+	if p.Scope() == policy.ScopeUser {
+		if pb.UserPs == nil {
+			pb.UserPs = &BlobUserPolicies{}
+		}
+		if pb.UserPs.MandatoryPM == nil {
+			pb.UserPs.MandatoryPM = make(BlobPolicyMap)
+		}
+		pm = pb.UserPs.MandatoryPM
+	} else {
+		if pb.PublicAccountPs == nil {
+			pb.PublicAccountPs = &BlobPublicAccountPolicies{}
+		}
+		if pb.PublicAccountPs.MandatoryPM == nil {
+			pb.PublicAccountPs.MandatoryPM = make(BlobPolicyMap)
+		}
+		pm = pb.PublicAccountPs.MandatoryPM
 	}
-	if pb.UserPs.MandatoryPM == nil {
-		pb.UserPs.MandatoryPM = make(BlobPolicyMap)
-	}
-	return addValue(p, pb.UserPs.MandatoryPM)
+	return addValue(p, pm)
 }
 
-// addRecommendedUserPolicy adds the given policy as a recommended user policy.
-func (pb *PolicyBlob) addRecommendedUserPolicy(p policy.Policy) error {
-	if pb.UserPs == nil {
-		pb.UserPs = &BlobUserPolicies{}
+// addRecommendedPolicy adds the given policy as a recommended user or public account policy.
+func (pb *PolicyBlob) addRecommendedPolicy(p policy.Policy) error {
+	var pm BlobPolicyMap
+	if p.Scope() == policy.ScopeUser {
+		if pb.UserPs == nil {
+			pb.UserPs = &BlobUserPolicies{}
+		}
+		if pb.UserPs.RecommendedPM == nil {
+			pb.UserPs.RecommendedPM = make(BlobPolicyMap)
+		}
+		pm = pb.UserPs.RecommendedPM
+	} else {
+		if pb.PublicAccountPs == nil {
+			pb.PublicAccountPs = &BlobPublicAccountPolicies{}
+		}
+		if pb.PublicAccountPs.RecommendedPM == nil {
+			pb.PublicAccountPs.RecommendedPM = make(BlobPolicyMap)
+		}
+		pm = pb.PublicAccountPs.RecommendedPM
 	}
-	if pb.UserPs.RecommendedPM == nil {
-		pb.UserPs.RecommendedPM = make(BlobPolicyMap)
-	}
-	return addValue(p, pb.UserPs.RecommendedPM)
+	return addValue(p, pm)
 }
 
 // addDevicePolicy adds the given policy as a recommended user policy.
