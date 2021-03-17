@@ -39,6 +39,30 @@
       },
       "revId": "478621e3ecbb5a9163a00d5d2216c2226a50343e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "749e7e77_f189dbcb",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-17T07:45:16Z",
+      "side": 1,
+      "message": "Can we test this by running tests with command tast run \u003cDUT\u003e arc.Unicorn*.vm. I am not aware of commands to run all the modified tests with single command.",
+      "parentUuid": "3fa392c7_2608d47f",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 14
+      },
+      "revId": "478621e3ecbb5a9163a00d5d2216c2226a50343e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
