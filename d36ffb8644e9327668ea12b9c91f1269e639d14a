@@ -33,6 +33,24 @@
       "message": "Extra line?",
       "revId": "d36ffb8644e9327668ea12b9c91f1269e639d14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c9796e9_67321b19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-03-17T18:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f399682_9a0b0b52",
+      "revId": "d36ffb8644e9327668ea12b9c91f1269e639d14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
