@@ -15,9 +15,10 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -98,39 +99,31 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	}
 	defer os.Remove(testFileLocation)
 
-	// Launch inputs test web server.
-	ts, err := testserver.Launch(ctx, cr)
-	if err != nil {
-		s.Fatal("Failed to launch inputs test server: ", err)
-	}
-	defer ts.Close()
-
-	// Select the input field being tested.
-	inputField := testserver.TextAreaInputField
-
-	// Open the virtual keyboard.
-	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
-	}
-	defer vkb.HideVirtualKeyboard(ctx, tconn)
-
 	// Add the ime input being tested to the test device.
 	if err := ime.AddAndSetInputMethod(ctx, tconn, testIME); err != nil {
 		s.Fatalf("Failed to set input method to %s: %v: ", testIME, err)
 	}
 
-	// Activate voice input.
-	if err := vkb.SwitchToVoiceInput(ctx, cr); err != nil {
-		s.Fatal("Failed to switch on voice input: ", err)
+	// Launch inputs test web server.
+	its, err := testserver.Launch(ctx, cr, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
+	defer its.Close()
 
-	// Playback the audio into the voice input.
-	if err := input.AudioFromFile(ctx, testFileLocation); err != nil {
-		s.Fatal("Failed to input audio: ", err)
-	}
+	// Select the input field being tested.
+	inputField := testserver.TextAreaInputField
+	vkbCtx := vkb.NewContext(cr, tconn)
 
-	// Verify if the derived text is equal to the expected text.
-	if err := inputField.WaitForValueToBe(ctx, tconn, expectedText); err != nil {
-		s.Fatal("Failed to verify input: ", err)
+	if err := uiauto.Combine("verify audio input",
+		its.ClickFieldUntilVKShown(inputField),
+		vkbCtx.SwitchToVoiceInput(),
+		func(ctx context.Context) error {
+			return input.AudioFromFile(ctx, testFileLocation)
+		},
+		// Verify if the derived text is equal to the expected text.
+		its.WaitForFieldValueToBe(inputField, expectedText),
+	)(ctx); err != nil {
+		s.Fatal("Failed to validate voice input: ", err)
 	}
 }
