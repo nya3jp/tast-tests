@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "316d3890_c790f2e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-17T18:39:20Z",
+      "side": 1,
+      "message": "Sounds good to me, Prashant. Thanks again for bearing with me :)",
+      "parentUuid": "21bc0707_e54a03a1",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c86d68bc_d319a8b7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 17
