@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f277e5e6_b7c39b51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-17T01:24:24Z",
+      "side": 1,
+      "message": "Adding tast reviewer from first CL in the chain",
+      "revId": "877e54fcc7bbfdb8ac335843884288dd4796881e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
