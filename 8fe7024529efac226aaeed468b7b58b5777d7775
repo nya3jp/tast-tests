@@ -39,6 +39,30 @@
       },
       "revId": "8fe7024529efac226aaeed468b7b58b5777d7775",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a9a2d68_57632bec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-17T20:35:38Z",
+      "side": 1,
+      "message": "Done. I should have checked with you before making the CL.",
+      "parentUuid": "076cce55_5764fe7d",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 51
+      },
+      "revId": "8fe7024529efac226aaeed468b7b58b5777d7775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
