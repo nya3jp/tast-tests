@@ -43,6 +43,10 @@ func ProbeSystemInfo(ctx context.Context, s *testing.State) {
 		crosHealthdCachedVpdPath = "/cros-healthd/cached-vpd"
 		// CrosConfig SKU number property.
 		skuNumberProperty = "has-sku-number"
+		// CrosConfig root path.
+		rootPath = "/"
+		// CrosConfig name property.
+		nameProperty = "name"
 
 		// CrosConfig ARC build properties path.
 		arcBuildPropertiesPath = "/arc/build-properties"
@@ -63,7 +67,6 @@ func ProbeSystemInfo(ctx context.Context, s *testing.State) {
 		boardNamePath    = filepath.Join(dmiPath, "board_name")
 		boardVersionPath = filepath.Join(dmiPath, "board_version")
 		chassisTypePath  = filepath.Join(dmiPath, "chassis_type")
-		productNamePath  = filepath.Join(dmiPath, "product_name")
 
 		firstPowerDateRegex  = regexp.MustCompile("[0-9]{4}-[0-9]{2}")
 		manufactureDateRegex = regexp.MustCompile("[0-9]{4}-[0-9]{2}-[0-9]{2}")
@@ -112,7 +115,8 @@ func ProbeSystemInfo(ctx context.Context, s *testing.State) {
 		csv.ColumnWithDefault("board_name", croshealthd.NotApplicable, csv.EqualToFileContent(boardNamePath)),
 		csv.ColumnWithDefault("board_version", croshealthd.NotApplicable, csv.EqualToFileContent(boardVersionPath)),
 		csv.ColumnWithDefault("chassis_type", croshealthd.NotApplicable, csv.EqualToFileContent(chassisTypePath)),
-		csv.ColumnWithDefault("product_name", croshealthd.NotApplicable, csv.EqualToFileContent(productNamePath)),
+		csv.ColumnWithDefault("product_name", croshealthd.NotApplicable, csv.EqualToCrosConfigProp(ctx, rootPath,
+			nameProperty)),
 		csv.Column("os_version", csv.MatchValue(osVersion)),
 		csv.Column("os_channel", csv.MatchValue(osReleaseChannel)),
 	)
