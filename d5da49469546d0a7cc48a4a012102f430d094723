@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cca3ccec_7773cc8b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-17T20:42:13Z",
+      "side": 1,
+      "message": "Can the test run based on whether the EC reports supporting TCPMv2 in runtime?  I don\u0027t see a direct report of this in our EC feature flags, but EC_FEATURE_TYPEC_CMD would be a pretty close approximation for any recent TCPMv2 systems. \n\nOr does it need to be build-time?  If that\u0027s the case, then ideally it would be best if we could tie the EC CONFIG_USB_PD_TCPMV2 definition since they\u0027ll be tightly coupled.",
+      "parentUuid": "316d3890_c790f2e9",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c86d68bc_d319a8b7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 17
