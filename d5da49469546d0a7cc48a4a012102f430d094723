@@ -164,6 +164,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94ba38a3_b3805366",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-17T20:59:56Z",
+      "side": 1,
+      "message": "I too will defer to Greg, as Knower of All Things TAST.\n\n\u003e Does the firmware build system use USE flags? AFAICT it doesn\u0027t, and prefers board overlays which select the configs. If that\u0027s the case, it\u0027s going to be a fairly extensive rework to switch the entire build system over to make EC builders use USE flags (and probably not worth it for 1 test).\n\nPersonally, I\u0027ve only ever run \"make\" to build my EC images so I\"m not really certain how the firmware build system works beyond that.  I do know we capture our CONFIG options to a build/\u003cboard\u003e/.config file if that\u0027s of any use.",
+      "parentUuid": "221615ae_8a2477b8",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c86d68bc_d319a8b7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 17
