@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4a9f373_6f192382",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-17T02:07:09Z",
+      "side": 1,
+      "message": "You pointed HotseatWidget. I am talking about shelfWidget. They are different.\n\nShelfWidget is not offscreen usually.  Interested in what is going on your environment.",
+      "parentUuid": "e9bd727b_c7360ba3",
+      "revId": "9a776d33c16c91da3e2edba38311fb3e828f043a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4379e1b4_5ae6f789",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 1
