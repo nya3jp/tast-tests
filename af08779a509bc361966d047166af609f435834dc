@@ -16,6 +16,92 @@
       "message": "Removed hostapd changes for now. When we need these changes I\u0027ll add them back. ",
       "revId": "af08779a509bc361966d047166af609f435834dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab67cade_f7e20171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-17T00:22:18Z",
+      "side": 1,
+      "message": "No real issues, so CR+2. I don\u0027t know whether this is going anywhere long term, but I guess that\u0027s not a big deal for just 1 file right now.",
+      "revId": "af08779a509bc361966d047166af609f435834dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e53e5f6_308257fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-17T00:22:18Z",
+      "side": 1,
+      "message": "Let\u0027s use a WiFi team list. We\u0027ve been using chromeos-wifi-champs@ now, at least for tests that the dev team is going to own. I\u0027m not really sure where this test sits, to be honest.",
+      "range": {
+        "startLine": 25,
+        "startChar": 46,
+        "endLine": 25,
+        "endChar": 76
+      },
+      "revId": "af08779a509bc361966d047166af609f435834dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5926e75e_e68e47f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-17T00:22:18Z",
+      "side": 1,
+      "message": "Are we eventually going to put this in a proper suite with scheduled hardware? Without an additional attr (like \u0027wificell_func\u0027), this won\u0027t actually run anywhere. Maybe that\u0027s still intentional?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "af08779a509bc361966d047166af609f435834dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "485fef04_27043a69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-17T00:22:18Z",
+      "side": 1,
+      "message": "nit: established",
+      "range": {
+        "startLine": 105,
+        "startChar": 38,
+        "endLine": 105,
+        "endChar": 47
+      },
+      "revId": "af08779a509bc361966d047166af609f435834dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
