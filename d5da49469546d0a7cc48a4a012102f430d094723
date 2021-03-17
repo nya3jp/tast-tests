@@ -216,6 +216,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb1456a4_1c9195aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-17T22:09:42Z",
+      "side": 1,
+      "message": "FAFT overall is currently migrating from Tauto to Tast (see go/faft2tast-overview), so I expect to see more and more EC tests in Tast.\n\nThanks for starting the email thread, Prashant.",
+      "parentUuid": "9c9729a5_355a3ece",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c86d68bc_d319a8b7",
