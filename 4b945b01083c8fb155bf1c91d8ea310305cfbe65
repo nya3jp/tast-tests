@@ -105,6 +105,24 @@
       "parentUuid": "ad80e47e_5ac41ec2",
       "revId": "4b945b01083c8fb155bf1c91d8ea310305cfbe65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8092d56a_d4492fd4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-17T02:10:59Z",
+      "side": 1,
+      "message": "Oh, right. This is not a test. It is a lib as part of vkb. It is designed separately containing methods to parse handwriting svg file, generate storkes, etc. Please feel free to reopen this if we are still talking about different things.",
+      "parentUuid": "7b7befa0_095b2935",
+      "revId": "4b945b01083c8fb155bf1c91d8ea310305cfbe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
