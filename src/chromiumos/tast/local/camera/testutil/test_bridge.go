@@ -121,21 +121,6 @@ func (t *TestBridge) AppWindow(ctx context.Context) (*AppWindow, error) {
 	return &AppWindow{&appWindow}, nil
 }
 
-// Reset reconstructs the connection to test bridge.
-func (t *TestBridge) Reset(ctx context.Context) error {
-	if err := t.TearDown(ctx); err != nil {
-		return err
-	}
-
-	pageConn, bridge, err := setUpTestBridge(ctx, t.cr)
-	if err != nil {
-		return errors.Wrap(err, "failed to reconstruct test bridge")
-	}
-	t.pageConn = pageConn
-	t.bridge = bridge
-	return nil
-}
-
 // TearDown tears down the connection of test bridge.
 func (t *TestBridge) TearDown(ctx context.Context) error {
 	if t.bridge != nil {
