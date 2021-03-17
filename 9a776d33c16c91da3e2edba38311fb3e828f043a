@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55292689_ec582517",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-17T19:56:59Z",
+      "side": 1,
+      "message": "Thanks for checking this Jun. Given this issue will only impact test API but not end users, should we just adjust test API to determine if the shelf-widget if offscreen?",
+      "parentUuid": "4ec6f1e0_67169dc0",
+      "revId": "9a776d33c16c91da3e2edba38311fb3e828f043a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4379e1b4_5ae6f789",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 1
