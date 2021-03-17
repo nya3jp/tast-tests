@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9bd727b_c7360ba3",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-17T01:02:52Z",
+      "side": 1,
+      "message": "The widget is off-screen:\n            node id\u003d221 role\u003dwindow state\u003d{\"offscreen\":true} parentID\u003d208 childIds\u003d[235] className\u003dHotseatWidget\n              node id\u003d235 role\u003dwindow state\u003d{\"offscreen\":true} parentID\u003d221 childIds\u003d[236] className\u003dWidget\n                node id\u003d236 role\u003dwindow state\u003d{\"offscreen\":true} parentID\u003d235 childIds\u003d[237] className\u003dRootView\n\n\nWaiting does\u0027t help. I tried a testing.Poll and the startY kept being off-screen with my own debugging log:\n2021-03-17T00:53:26.215145Z [17:53:26.376] Switching to window 1\n2021-03-17T00:53:26.220543Z [17:53:26.380] \u003d\u003d\u003d swipe up hotseat\n2021-03-17T00:53:26.220634Z [17:53:26.380] \u003d\u003d\u003d startY off screen: 2315. Max: 2268\n2021-03-17T00:53:26.239067Z [17:53:26.488] \u003d\u003d\u003d swipe up hotseat\n2021-03-17T00:53:26.239126Z [17:53:26.488] \u003d\u003d\u003d startY off screen: 2315. Max: 2268\n2021-03-17T00:53:26.348313Z [17:53:26.603] \u003d\u003d\u003d swipe up hotseat\n2021-03-17T00:53:26.348509Z [17:53:26.603] \u003d\u003d\u003d startY off screen: 2315. Max: 2268\n2021-03-17T00:53:26.463757Z [17:53:26.718] \u003d\u003d\u003d swipe up hotseat\n2021-03-17T00:53:26.464012Z [17:53:26.718] \u003d\u003d\u003d startY off screen: 2315. Max: 2268\n2021-03-17T00:53:26.617906Z [17:53:26.872] \u003d\u003d\u003d swipe up hotseat\n2021-03-17T00:53:26.618036Z [17:53:26.872] \u003d\u003d\u003d startY off screen: 2315. Max: 2268\n...\n\nIt happened in hatch/kohaku but not in Kukui/Krane. Probably it is a convertible only issue?",
+      "parentUuid": "6f08476f_a53e2b79",
+      "revId": "9a776d33c16c91da3e2edba38311fb3e828f043a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4379e1b4_5ae6f789",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 1
