@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf37c89d_e4c9ed2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-03-17T02:13:51Z",
+      "side": 1,
+      "message": "Yes, if we upgrade the CTS\u0027s reversion (e.g. r15 -\u003e r16). We need to check if the previous patches is still available. Or need to change the patch accordingly. Since our patch only touch those difference between python3 and python2. I guess the patches shouldn\u0027t change that frequently.",
+      "parentUuid": "32625858_dac0cf39",
+      "revId": "9df724127587327d3fbf4041e29071691ec6e031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d8ac229_654b6840",
