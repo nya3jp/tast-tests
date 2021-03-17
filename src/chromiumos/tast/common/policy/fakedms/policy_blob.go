@@ -27,6 +27,7 @@ type PolicyBlob struct {
 	UserPs               *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
 	DevicePM             BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
 	ExtensionPM          BlobPolicyMap                `json:"google/chromeos/extension,omitempty"`
+	PublicAccountPs      map[string]*BlobUserPolicies `json:"-"`
 	PolicyUser           string                       `json:"policy_user"`
 	ManagedUsers         []string                     `json:"managed_users"`
 	CurrentKeyIdx        int                          `json:"current_key_index,omitempty"`
@@ -117,6 +118,66 @@ func (pb *PolicyBlob) AddPolicy(p policy.Policy) error {
 		}
 	}
 	return nil
+}
+
+// AddPublicAccountPolicy adds the given policy to the public account policies associated with the account ID. The
+// account ID should match one of the accounts set in the DeviceLocalAccounts policy e.g. tast-user@managedchrome.com.
+func (pb *PolicyBlob) AddPublicAccountPolicy(accountID string, p policy.Policy) error {
+	if p.Scope() != policy.ScopeUser {
+		return errors.Errorf("%s is a non-user policy which cannot be added to public accounts", p.Name())
+	}
+
+	if pb.PublicAccountPs == nil {
+		pb.PublicAccountPs = make(map[string]*BlobUserPolicies)
+	}
+
+	if _, ok := pb.PublicAccountPs[accountID]; !ok {
+		pb.PublicAccountPs[accountID] = &BlobUserPolicies{}
+	}
+
+	policies := pb.PublicAccountPs[accountID]
+
+	if p.Status() == policy.StatusSetRecommended {
+		if policies.RecommendedPM == nil {
+			policies.RecommendedPM = make(BlobPolicyMap)
+		}
+
+		return addValue(p, policies.RecommendedPM)
+	}
+
+	if policies.MandatoryPM == nil {
+		policies.MandatoryPM = make(BlobPolicyMap)
+	}
+
+	return addValue(p, policies.MandatoryPM)
+}
+
+// MarshalJSON marshals the policy blob into JSON. PublicAccountPs needs special handling as the key is based on the
+// account ID. To work around this, we first marshal and unmarshal pb into a map which omits PublicAccountPs, and add
+// the public account policies to the map afterwards.
+func (pb *PolicyBlob) MarshalJSON() ([]byte, error) {
+	type PolicyBlobProxy PolicyBlob
+
+	b, err := json.Marshal(PolicyBlobProxy(*pb))
+	if err != nil {
+		return nil, err
+	}
+
+	if pb.PublicAccountPs == nil {
+		return b, nil
+	}
+
+	var m map[string]interface{}
+	err = json.Unmarshal(b, &m)
+	if err != nil {
+		return nil, err
+	}
+
+	for k, v := range pb.PublicAccountPs {
+		m["google/chromeos/publicaccount/"+k] = v
+	}
+
+	return json.Marshal(m)
 }
 
 // addValue tweaks Policy values as needed and then adds them to the given map.
