@@ -380,12 +380,6 @@ func capture(ctx context.Context, app *cca.App, mode cca.Mode) (time.Time, error
 		if err := testing.Sleep(ctx, 3*time.Second); err != nil {
 			return startTime, err
 		}
-
-		// CCA will create a tempoary file when starting recording. To get the real
-		// result file, we should pass the time which is later than the creation
-		// time of the temporary file.
-		startTime = time.Now()
-
 		testing.ContextLog(ctx, "Stopping a video")
 		if err := app.ClickShutter(ctx); err != nil {
 			return startTime, errors.Wrap(err, "failed to click shutter button")
