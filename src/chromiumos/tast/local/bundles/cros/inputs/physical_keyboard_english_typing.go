@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -57,75 +58,51 @@ func PhysicalKeyboardEnglishTyping(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Fail to launch inputs test server: ", err)
 	}
 	defer its.Close()
 
-	type testData struct {
-		testName     string
-		inputFunc    func(ctx context.Context) error
-		expectedText string
-	}
-
-	var subtests = []testData{
+	var subtests = []util.InputEval{
 		{
-			testName: "Mixed (alphanumeric, symbols, enter) typing",
-			inputFunc: func(ctx context.Context) error {
-				return keyboard.Type(ctx, "Hello!\nTesting 123.")
-			},
-			expectedText: "Hello!\nTesting 123.",
+			TestName:     "Mixed (alphanumeric, symbols, enter) typing",
+			InputFunc:    keyboard.TypeAction("Hello!\nTesting 123."),
+			ExpectedText: "Hello!\nTesting 123.",
 		}, {
-			testName: "Backspace",
-			inputFunc: func(ctx context.Context) error {
-				return uiauto.Combine("type a string and Backspace",
-					keyboard.TypeAction("abc"),
-					keyboard.AccelAction("Backspace"),
-				)(ctx)
-			},
-			expectedText: "ab",
+			TestName: "Backspace",
+			InputFunc: uiauto.Combine("type a string and Backspace",
+				keyboard.TypeAction("abc"),
+				keyboard.AccelAction("Backspace"),
+			),
+			ExpectedText: "ab",
 		}, {
-			testName: "Ctrl+Backspace",
-			inputFunc: func(ctx context.Context) error {
-				return uiauto.Combine("type a string and Ctrl+Backspace",
-					keyboard.TypeAction("hello world"),
-					keyboard.AccelAction("Ctrl+Backspace"),
-				)(ctx)
-			},
-			expectedText: "hello ",
+			TestName: "Ctrl+Backspace",
+			InputFunc: uiauto.Combine("type a string and Ctrl+Backspace",
+				keyboard.TypeAction("hello world"),
+				keyboard.AccelAction("Ctrl+Backspace"),
+			),
+			ExpectedText: "hello ",
 		}, {
-			testName: "Editing middle of text",
-			inputFunc: func(ctx context.Context) error {
-				return uiauto.Combine("type strings and edit in the middle of text",
-					keyboard.TypeAction("abc"),
-					keyboard.AccelAction("Left"),
-					keyboard.AccelAction("Backspace"),
-					keyboard.TypeAction("bc ab"),
-				)(ctx)
-			},
-			expectedText: "abc abc",
+			TestName: "Editing middle of text",
+			InputFunc: uiauto.Combine("type strings and edit in the middle of text",
+				keyboard.TypeAction("abc"),
+				keyboard.AccelAction("Left"),
+				keyboard.AccelAction("Backspace"),
+				keyboard.TypeAction("bc ab"),
+			),
+			ExpectedText: "abc abc",
 		},
 	}
 
 	var inputField = testserver.TextAreaInputField
 
 	for _, subtest := range subtests {
-		s.Run(ctx, subtest.testName, func(ctx context.Context, s *testing.State) {
+		s.Run(ctx, subtest.TestName, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-			if err := its.Clear(inputField)(ctx); err != nil {
-				s.Fatal("Failed to clear input field: ", err)
-			}
-
-			if err := its.ClickFieldAndWaitForActive(ctx, tconn, inputField); err != nil {
-				s.Fatal("Failed to click input field: ", err)
-			}
-
-			subtest.inputFunc(ctx)
-
-			if err := inputField.WaitForValueToBe(ctx, tconn, subtest.expectedText); err != nil {
-				s.Fatal("Failed to verify input: ", err)
+			if err := its.ValidateInputOnField(inputField, subtest.InputFunc, subtest.ExpectedText)(ctx); err != nil {
+				s.Fatalf("Failed to validate %s: %v", subtest.TestName, err)
 			}
 		})
 	}
