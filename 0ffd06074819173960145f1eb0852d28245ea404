@@ -16,6 +16,23 @@
       "message": "Tast LGTM.",
       "revId": "0ffd06074819173960145f1eb0852d28245ea404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33750604_40a80753",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-17T23:27:11Z",
+      "side": 1,
+      "message": "Thank you for reviewing.",
+      "revId": "0ffd06074819173960145f1eb0852d28245ea404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
