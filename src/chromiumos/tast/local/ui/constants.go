@@ -10,4 +10,4 @@ package ui
 // should be avoided since it's too simple for performance test. The new tab
 // page (chrome://newtab) would be great but it is not stable (e.g. the logo can
 // be replaced on holidays).
-const PerftestURL = "chrome://settings"
+const PerftestURL = "chrome://version"
