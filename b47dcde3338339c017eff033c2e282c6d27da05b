@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "b47dcde3338339c017eff033c2e282c6d27da05b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e4ed5c_1a6cf65c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2021-03-17T02:46:57Z",
+      "side": 1,
+      "message": "Could you also add\n\ntrogdor\nstrongbad\nasurada\nzork\n\ntoo? It doesn\u0027t do any harm even if we add those boards in advance.",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 1
+      },
+      "revId": "b47dcde3338339c017eff033c2e282c6d27da05b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
