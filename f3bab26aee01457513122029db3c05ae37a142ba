@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b4d904d7_6b1cc01b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-17T04:05:34Z",
+      "side": 1,
+      "message": "Sorry for the late response! Was OOO for Monday / Tuesday ",
+      "revId": "f3bab26aee01457513122029db3c05ae37a142ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cd0a7136_f332758c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
         "patchSetId": 9
@@ -19,6 +36,98 @@
         "startChar": 0,
         "endLine": 26,
         "endChar": 1
+      },
+      "revId": "f3bab26aee01457513122029db3c05ae37a142ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f0d66bc_cecfb087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-17T04:05:34Z",
+      "side": 1,
+      "message": "You\u0027re passing the cleanupCtx here and if one of the tests fail there won\u0027t be enough time for the actual cleanup to occur. For example:\n\ntb.TearDown on line 53 uses the cleanupCtx which has 10s more time then ctx, but if one of the tests times out it will time out with the cleanupCtx and tb.TearDown may not be ran because it timed out on the cleanupCtx not the 10s shorter ctx.\n\nTo use both context\u0027s, pass them both through. Your functions can be testFun(cleanupCtx, ctx, ...) then when you defer a cleanup action (e.g. app.Close or webPage.Close) you pass the cleanupCtx otherwise you pass the ctx\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 73,
+        "startChar": 26,
+        "endLine": 73,
+        "endChar": 36
+      },
+      "revId": "f3bab26aee01457513122029db3c05ae37a142ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d39d7da_aa4b65dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-17T04:05:34Z",
+      "side": 1,
+      "message": "If you\u0027re using a custom type, the idiomatic way of constructing it is to use a New*TYPE* function, i.e. NewCameraWebPage\n\nYou can then pass that into testFunc as webPage *cameraWebPage\n\nhttps://golang.org/doc/effective_go#package-names",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "f3bab26aee01457513122029db3c05ae37a142ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b23a1c6f_d094133c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-17T04:05:34Z",
+      "side": 1,
+      "message": "Any reason you can\u0027t just Wrap retErr instead of writing a new function?",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 23
+      },
+      "revId": "f3bab26aee01457513122029db3c05ae37a142ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db9cf57_e768244d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-17T04:05:34Z",
+      "side": 1,
+      "message": "nit: you can just return here, retErr is being assigned as you go",
+      "range": {
+        "startLine": 221,
+        "startChar": 8,
+        "endLine": 221,
+        "endChar": 14
       },
       "revId": "f3bab26aee01457513122029db3c05ae37a142ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
