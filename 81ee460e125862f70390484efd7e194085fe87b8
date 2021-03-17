@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e687a3_33e02f55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-17T03:05:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a5ab3b_8e6a4c0a",
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3563393_a4b42bfd",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-16T05:28:27Z",
       "side": 1,
       "message": "Tearing down",
+      "range": {
+        "startLine": 55,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 62
+      },
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba81f44_a80cc17b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_add_entropy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-17T03:05:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3563393_a4b42bfd",
       "range": {
         "startLine": 55,
         "startChar": 27,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44dd5cf_472a4a66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-17T03:05:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a75b3cf2_7464ff99",
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8cf5244_aa17a66f",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-03-16T05:28:27Z",
       "side": 1,
       "message": "Consider TODO(b/...) and file a bug to trace the TODO if not exist.",
+      "range": {
+        "startLine": 78,
+        "startChar": 9,
+        "endLine": 78,
+        "endChar": 18
+      },
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6f2d20_9dc48702",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-17T03:05:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8cf5244_aa17a66f",
       "range": {
         "startLine": 78,
         "startChar": 9,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "571f5625_a5986e01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-17T03:05:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bf63d0b_4ff2c333",
+      "range": {
+        "startLine": 98,
+        "startChar": 11,
+        "endLine": 98,
+        "endChar": 34
+      },
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8f1d12e_c2ca6d34",
@@ -121,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82662e2f_565e78c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-17T03:05:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8f1d12e_c2ca6d34",
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe6adaab_168fe76f",
@@ -134,6 +260,24 @@
       "writtenOn": "2021-03-16T05:28:27Z",
       "side": 1,
       "message": "The logic here is the same as the tear down defer function in FpAddEntropy. How about moving it to a function, say Reimage() in fingerprint.go?",
+      "revId": "81ee460e125862f70390484efd7e194085fe87b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e30e5567_4223adc1",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-17T03:05:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe6adaab_168fe76f",
       "revId": "81ee460e125862f70390484efd7e194085fe87b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
