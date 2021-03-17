@@ -82,7 +82,7 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, fileSystem http.
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
 
-	url := server.URL + "/" + videoName
+	url := server.URL + "/video.html"
 	conn, err := cs.NewConn(ctx, url)
 	if err != nil {
 		return errors.Wrap(err, "failed to open video page")
@@ -100,8 +100,10 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, fileSystem http.
 		return errors.Wrap(err, "failed to wait for video element loading")
 	}
 
-	if err := conn.Eval(ctx, videoElement+".loop=true", nil); err != nil {
-		return errors.Wrap(err, "failed to set video loop")
+	// TODO(b/183044442): before playing and measuring, we should probably ensure
+	// that the UI is in a known state.
+	if err := conn.Call(ctx, nil, "playRepeatedly", videoName); err != nil {
+		return errors.Wrap(err, "failed to start video")
 	}
 
 	// Wait until videoElement has advanced so that chrome:media-internals has
