@@ -16,6 +16,24 @@
       "message": "Avoid removing empty lines.",
       "revId": "c4a402a7b795ddb84c12bf7c55e814cd48a3cbb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f997c89b_e0afdc3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-03-17T18:27:42Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "f23fb70c_d74bc966",
+      "revId": "c4a402a7b795ddb84c12bf7c55e814cd48a3cbb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
