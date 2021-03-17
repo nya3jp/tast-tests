@@ -39,31 +39,6 @@ const (
 var testAttributes = [...]string{"Ibuprofen", "Acetaminophen", "Acetylsalicylic Acid"}
 var testValues = [...]string{"C13H18O2", "C8H9NO2", "C9H8O4"}
 
-// parseStatusStringForInstallAttributesState returns initialized, invalid, firstInstall and any error encountered.
-func parseStatusStringForInstallAttributesState(obj map[string]interface{}) (bool, bool, bool, error) {
-	installattrs, ok := obj["installattrs"].(map[string]interface{})
-	if !ok {
-		return false, false, false, errors.New("no installattrs in cryptohome status")
-	}
-
-	initialized, ok := installattrs["initialized"].(bool)
-	if !ok {
-		return false, false, false, errors.New("installattrs.initialized doesn't exist or have incorrect type in cryptohome status")
-	}
-
-	invalid, ok := installattrs["invalid"].(bool)
-	if !ok {
-		return false, false, false, errors.New("installattrs.invalid doesn't exist or have incorrect type in cryptohome status")
-	}
-
-	firstInstall, ok := installattrs["first_install"].(bool)
-	if !ok {
-		return false, false, false, errors.New("installattrs.first_install doesn't exist or have incorrect type in cryptohome status")
-	}
-
-	return initialized, invalid, firstInstall, nil
-}
-
 // getInstallAttributesStates returns isReady, isInitialized, isInvalid, isFirstInstall, isSecure, count and any error encountered.
 func getInstallAttributesStates(ctx context.Context, utility *hwsec.CryptohomeClient) (isReady, isInitialized, isInvalid, isFirstInstall, isSecure bool, count int, returnError error) {
 	// Default return values.
@@ -71,57 +46,43 @@ func getInstallAttributesStates(ctx context.Context, utility *hwsec.CryptohomeCl
 	isInitialized = false
 	isInvalid = false
 	isFirstInstall = false
+	isSecure = false
 	count = -1
 
-	// Get the values through GetStatusJSON().
-	obj, err := utility.GetStatusJSON(ctx)
+	// Get the values through InstallAttributesStatus().
+	status, err := utility.InstallAttributesStatus(ctx)
 	if err != nil {
-		returnError = errors.Wrap(err, "failed to get cryptohome status")
+		returnError = errors.Wrap(err, "failed to get cryptohome install attributes status")
 		return
 	}
 
-	isInitialized, isInvalidFromStatusString, isFirstInstallFromStatusString, err := parseStatusStringForInstallAttributesState(obj)
-	if err != nil {
-		returnError = errors.Wrap(err, "failed to parse install attributes json")
+	switch status {
+	case "FIRST_INSTALL":
+		isInitialized = true
+		isFirstInstall = true
+		isReady = true
+	case "VALID":
+		isInitialized = true
+		isReady = true
+	case "INVALID":
+		isInvalid = true
+		isReady = true
+	case "TPM_NOT_OWNED":
+		// Do nothing.
+	default:
+		returnError = errors.Wrapf(err, "unexpected install attributes states %q", status)
 		return
 	}
 
-	// Get the values through individual dbus calls.
 	count, err = utility.InstallAttributesCount(ctx)
 	if err != nil {
 		returnError = errors.Wrap(err, "failed to get count")
 		return
 	}
 
-	isReady, err = utility.InstallAttributesIsReady(ctx)
-	if err != nil {
-		returnError = errors.Wrap(err, "failed to get is ready")
-		return
-	}
-
 	isSecure, err = utility.InstallAttributesIsSecure(ctx)
 	if err != nil {
 		returnError = errors.Wrap(err, "failed to get is secure")
-		return
-	}
-
-	isInvalid, err = utility.InstallAttributesIsInvalid(ctx)
-	if err != nil {
-		returnError = errors.Wrap(err, "failed to get is invalid")
-		return
-	}
-	if isInvalid != isInvalidFromStatusString {
-		returnError = errors.Errorf("mismatch between isInvalid from status string (%t) and dbus method %t", isInvalidFromStatusString, isInvalid)
-		return
-	}
-
-	isFirstInstall, err = utility.InstallAttributesIsFirstInstall(ctx)
-	if err != nil {
-		returnError = errors.Wrap(err, "failed to get is first install")
-		return
-	}
-	if isFirstInstall != isFirstInstallFromStatusString {
-		returnError = errors.Errorf("mismatch between isFirstInstall from status string (%t) and dbus method (%t)", isFirstInstallFromStatusString, isFirstInstall)
 		return
 	}
 
