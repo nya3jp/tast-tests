@@ -40,7 +40,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"144p_30fps_300frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "144p_30fps_300frames.h264.mp4"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_240p_30fps_hw",
@@ -51,7 +51,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"240p_30fps_300frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "240p_30fps_300frames.h264.mp4"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_360p_30fps_hw",
@@ -62,7 +62,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"360p_30fps_300frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "360p_30fps_300frames.h264.mp4"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_480p_30fps_hw",
@@ -73,7 +73,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"480p_30fps_300frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "480p_30fps_300frames.h264.mp4"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_720p_30fps_hw",
@@ -84,7 +84,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"720p_30fps_300frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "720p_30fps_300frames.h264.mp4"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_720p_30fps_hw_lacros",
@@ -95,7 +95,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"720p_30fps_300frames.h264.mp4", launcher.DataArtifact},
+			ExtraData:         []string{"video.html", "720p_30fps_300frames.h264.mp4", launcher.DataArtifact},
 			Fixture:           "chromeVideoLacros",
 		}, {
 			Name: "h264_1080p_30fps_hw",
@@ -105,7 +105,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			ExtraData:         []string{"1080p_30fps_300frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "1080p_30fps_300frames.h264.mp4"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_1080p_60fps_hw",
@@ -115,7 +115,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs"},
-			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "1080p_60fps_600frames.h264.mp4"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_2160p_30fps_hw",
@@ -125,7 +125,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K, "proprietary_codecs"},
-			ExtraData:         []string{"2160p_30fps_300frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "2160p_30fps_300frames.h264.mp4"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_2160p_60fps_hw",
@@ -135,7 +135,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K60, "proprietary_codecs"},
-			ExtraData:         []string{"2160p_60fps_600frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "2160p_60fps_600frames.h264.mp4"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "vp8_144p_30fps_hw",
@@ -145,7 +145,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"144p_30fps_300frames.vp8.webm"},
+			ExtraData:         []string{"video.html", "144p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			Fixture:           "chromeVideo",
 		}, {
@@ -156,7 +156,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"240p_30fps_300frames.vp8.webm"},
+			ExtraData:         []string{"video.html", "240p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			Fixture:           "chromeVideo",
 		}, {
@@ -167,7 +167,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"360p_30fps_300frames.vp8.webm"},
+			ExtraData:         []string{"video.html", "360p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			Fixture:           "chromeVideo",
 		}, {
@@ -178,7 +178,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"480p_30fps_300frames.vp8.webm"},
+			ExtraData:         []string{"video.html", "480p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			Fixture:           "chromeVideo",
 		}, {
@@ -189,7 +189,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"720p_30fps_300frames.vp8.webm"},
+			ExtraData:         []string{"video.html", "720p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			Fixture:           "chromeVideo",
 		}, {
@@ -199,7 +199,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"1080p_30fps_300frames.vp8.webm"},
+			ExtraData:         []string{"video.html", "1080p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			Fixture:           "chromeVideo",
 		}, {
@@ -209,7 +209,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"1080p_60fps_600frames.vp8.webm"},
+			ExtraData:         []string{"video.html", "1080p_60fps_600frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60},
 			Fixture:           "chromeVideo",
 		}, {
@@ -219,7 +219,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"2160p_30fps_300frames.vp8.webm"},
+			ExtraData:         []string{"video.html", "2160p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_4K},
 			Fixture:           "chromeVideo",
 		}, {
@@ -229,7 +229,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"2160p_60fps_600frames.vp8.webm"},
+			ExtraData:         []string{"video.html", "2160p_60fps_600frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_4K60},
 			Fixture:           "chromeVideo",
 		}, {
@@ -240,7 +240,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"144p_30fps_300frames.vp9.webm"},
+			ExtraData:         []string{"video.html", "144p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideo",
 		}, {
@@ -251,7 +251,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"240p_30fps_300frames.vp9.webm"},
+			ExtraData:         []string{"video.html", "240p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideo",
 		}, {
@@ -262,7 +262,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"360p_30fps_300frames.vp9.webm"},
+			ExtraData:         []string{"video.html", "360p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideo",
 		}, {
@@ -273,7 +273,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"480p_30fps_300frames.vp9.webm"},
+			ExtraData:         []string{"video.html", "480p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideo",
 		}, {
@@ -284,7 +284,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"720p_30fps_300frames.vp9.webm"},
+			ExtraData:         []string{"video.html", "720p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideo",
 		}, {
@@ -295,7 +295,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"720p_30fps_300frames.vp9.webm", launcher.DataArtifact},
+			ExtraData:         []string{"video.html", "720p_30fps_300frames.vp9.webm", launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "lacros"},
 			Fixture:           "chromeVideoLacros",
 		}, {
@@ -305,7 +305,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"1080p_30fps_300frames.vp9.webm"},
+			ExtraData:         []string{"video.html", "1080p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideo",
 		}, {
@@ -315,7 +315,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"1080p_60fps_600frames.vp9.webm"},
+			ExtraData:         []string{"video.html", "1080p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60},
 			Fixture:           "chromeVideo",
 		}, {
@@ -325,7 +325,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"2160p_30fps_300frames.vp9.webm"},
+			ExtraData:         []string{"video.html", "2160p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K},
 			Fixture:           "chromeVideo",
 		}, {
@@ -335,7 +335,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"2160p_60fps_600frames.vp9.webm"},
+			ExtraData:         []string{"video.html", "2160p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60},
 			Fixture:           "chromeVideo",
 		}, {
@@ -345,7 +345,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"480p_30fps_300frames.av1.mp4"},
+			ExtraData:         []string{"video.html", "480p_30fps_300frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
@@ -355,7 +355,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"720p_30fps_300frames.av1.mp4"},
+			ExtraData:         []string{"video.html", "720p_30fps_300frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
@@ -365,7 +365,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"720p_60fps_600frames.av1.mp4"},
+			ExtraData:         []string{"video.html", "720p_60fps_600frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_60},
 			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
@@ -375,7 +375,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"1080p_30fps_300frames.av1.mp4"},
+			ExtraData:         []string{"video.html", "1080p_30fps_300frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
@@ -385,7 +385,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"1080p_60fps_600frames.av1.mp4"},
+			ExtraData:         []string{"video.html", "1080p_60fps_600frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_60},
 			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
@@ -395,7 +395,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"2160p_30fps_300frames.av1.mp4"},
+			ExtraData:         []string{"video.html", "2160p_30fps_300frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_4K},
 			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
@@ -405,7 +405,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"2160p_60fps_600frames.av1.mp4"},
+			ExtraData:         []string{"video.html", "2160p_60fps_600frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_4K60},
 			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
@@ -417,7 +417,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"144p_30fps_300frames.hevc.mp4"},
+			ExtraData:         []string{"video.html", "144p_30fps_300frames.hevc.mp4"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name: "hevc_240p_30fps_hw",
@@ -428,7 +428,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"240p_30fps_300frames.hevc.mp4"},
+			ExtraData:         []string{"video.html", "240p_30fps_300frames.hevc.mp4"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name: "hevc_360p_30fps_hw",
@@ -439,7 +439,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"360p_30fps_300frames.hevc.mp4"},
+			ExtraData:         []string{"video.html", "360p_30fps_300frames.hevc.mp4"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name: "hevc_480p_30fps_hw",
@@ -450,7 +450,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"480p_30fps_300frames.hevc.mp4"},
+			ExtraData:         []string{"video.html", "480p_30fps_300frames.hevc.mp4"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name: "hevc_720p_30fps_hw",
@@ -461,7 +461,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"720p_30fps_300frames.hevc.mp4"},
+			ExtraData:         []string{"video.html", "720p_30fps_300frames.hevc.mp4"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name: "hevc_1080p_30fps_hw",
@@ -471,7 +471,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
-			ExtraData:         []string{"1080p_30fps_300frames.hevc.mp4"},
+			ExtraData:         []string{"video.html", "1080p_30fps_300frames.hevc.mp4"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name: "hevc_1080p_60fps_hw",
@@ -481,7 +481,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60, "proprietary_codecs", "protected_content"},
-			ExtraData:         []string{"1080p_60fps_600frames.hevc.mp4"},
+			ExtraData:         []string{"video.html", "1080p_60fps_600frames.hevc.mp4"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name: "hevc_2160p_30fps_hw",
@@ -491,7 +491,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K, "proprietary_codecs", "protected_content"},
-			ExtraData:         []string{"2160p_30fps_300frames.hevc.mp4"},
+			ExtraData:         []string{"video.html", "2160p_30fps_300frames.hevc.mp4"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name: "hevc_2160p_60fps_hw",
@@ -501,7 +501,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60, "proprietary_codecs", "protected_content"},
-			ExtraData:         []string{"2160p_60fps_600frames.hevc.mp4"},
+			ExtraData:         []string{"video.html", "2160p_60fps_600frames.hevc.mp4"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name: "hevc10_2160p_30fps_hw",
@@ -511,7 +511,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K10BPP, "proprietary_codecs", "protected_content"},
-			ExtraData:         []string{"2160p_30fps_300frames.hevc10.mp4"},
+			ExtraData:         []string{"video.html", "2160p_30fps_300frames.hevc10.mp4"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name: "hevc10_2160p_60fps_hw",
@@ -521,7 +521,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60_10BPP, "proprietary_codecs", "protected_content"},
-			ExtraData:         []string{"2160p_60fps_600frames.hevc10.mp4"},
+			ExtraData:         []string{"video.html", "2160p_60fps_600frames.hevc10.mp4"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
 			Name: "h264_480p_30fps_sw",
@@ -532,7 +532,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"480p_30fps_300frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "480p_30fps_300frames.h264.mp4"},
 			Fixture:           "chromeVideoWithSWDecoding",
 		}, {
 			Name: "h264_720p_30fps_sw",
@@ -543,7 +543,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData:         []string{"720p_30fps_300frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "720p_30fps_300frames.h264.mp4"},
 			Fixture:           "chromeVideoWithSWDecoding",
 		}, {
 			Name: "h264_1080p_30fps_sw",
@@ -553,7 +553,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
-			ExtraData:         []string{"1080p_30fps_300frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "1080p_30fps_300frames.h264.mp4"},
 			Fixture:           "chromeVideoWithSWDecoding",
 		}, {
 			Name: "h264_1080p_60fps_sw",
@@ -563,7 +563,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
-			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "1080p_60fps_600frames.h264.mp4"},
 			Fixture:           "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp8_480p_30fps_sw",
@@ -573,7 +573,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData: []string{"480p_30fps_300frames.vp8.webm"},
+			ExtraData: []string{"video.html", "480p_30fps_300frames.vp8.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp8_720p_30fps_sw",
@@ -583,7 +583,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData: []string{"720p_30fps_300frames.vp8.webm"},
+			ExtraData: []string{"video.html", "720p_30fps_300frames.vp8.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp8_1080p_30fps_sw",
@@ -592,7 +592,7 @@ func init() {
 				decoderType: playback.Software,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData: []string{"1080p_30fps_300frames.vp8.webm"},
+			ExtraData: []string{"video.html", "1080p_30fps_300frames.vp8.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp8_1080p_60fps_sw",
@@ -601,7 +601,7 @@ func init() {
 				decoderType: playback.Software,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData: []string{"1080p_60fps_600frames.vp8.webm"},
+			ExtraData: []string{"video.html", "1080p_60fps_600frames.vp8.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp9_480p_30fps_sw",
@@ -611,7 +611,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData: []string{"480p_30fps_300frames.vp9.webm"},
+			ExtraData: []string{"video.html", "480p_30fps_300frames.vp9.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp9_720p_30fps_sw",
@@ -621,7 +621,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData: []string{"720p_30fps_300frames.vp9.webm"},
+			ExtraData: []string{"video.html", "720p_30fps_300frames.vp9.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp9_1080p_30fps_sw",
@@ -630,7 +630,7 @@ func init() {
 				decoderType: playback.Software,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData: []string{"1080p_30fps_300frames.vp9.webm"},
+			ExtraData: []string{"video.html", "1080p_30fps_300frames.vp9.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp9_1080p_60fps_sw",
@@ -639,7 +639,7 @@ func init() {
 				decoderType: playback.Software,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData: []string{"1080p_60fps_600frames.vp9.webm"},
+			ExtraData: []string{"video.html", "1080p_60fps_600frames.vp9.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "av1_480p_30fps_sw",
@@ -648,7 +648,7 @@ func init() {
 				decoderType: playback.Software,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData: []string{"480p_30fps_300frames.av1.mp4"},
+			ExtraData: []string{"video.html", "480p_30fps_300frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "av1_720p_30fps_sw",
@@ -657,7 +657,7 @@ func init() {
 				decoderType: playback.Software,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData: []string{"720p_30fps_300frames.av1.mp4"},
+			ExtraData: []string{"video.html", "720p_30fps_300frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "av1_720p_60fps_sw",
@@ -666,7 +666,7 @@ func init() {
 				decoderType: playback.Software,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData: []string{"720p_60fps_600frames.av1.mp4"},
+			ExtraData: []string{"video.html", "720p_60fps_600frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "av1_1080p_30fps_sw",
@@ -675,7 +675,7 @@ func init() {
 				decoderType: playback.Software,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData: []string{"1080p_30fps_300frames.av1.mp4"},
+			ExtraData: []string{"video.html", "1080p_30fps_300frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "av1_1080p_60fps_sw",
@@ -684,7 +684,7 @@ func init() {
 				decoderType: playback.Software,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData: []string{"1080p_60fps_600frames.av1.mp4"},
+			ExtraData: []string{"video.html", "1080p_60fps_600frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "av1_2160p_30fps_sw",
@@ -693,7 +693,7 @@ func init() {
 				decoderType: playback.Software,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData: []string{"2160p_30fps_300frames.av1.mp4"},
+			ExtraData: []string{"video.html", "2160p_30fps_300frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "av1_2160p_60fps_sw",
@@ -702,7 +702,7 @@ func init() {
 				decoderType: playback.Software,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData: []string{"2160p_60fps_600frames.av1.mp4"},
+			ExtraData: []string{"video.html", "2160p_60fps_600frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "av1_480p_30fps_sw_gav1",
@@ -712,7 +712,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
-			ExtraData:         []string{"480p_30fps_300frames.av1.mp4"},
+			ExtraData:         []string{"video.html", "480p_30fps_300frames.av1.mp4"},
 			Fixture:           "chromeVideoWithSWDecodingAndLibGAV1",
 		}, {
 			Name: "av1_720p_30fps_sw_gav1",
@@ -722,7 +722,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
-			ExtraData:         []string{"720p_30fps_300frames.av1.mp4"},
+			ExtraData:         []string{"video.html", "720p_30fps_300frames.av1.mp4"},
 			Fixture:           "chromeVideoWithSWDecodingAndLibGAV1",
 		}, {
 			Name: "av1_720p_60fps_sw_gav1",
@@ -732,7 +732,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
-			ExtraData:         []string{"720p_60fps_600frames.av1.mp4"},
+			ExtraData:         []string{"video.html", "720p_60fps_600frames.av1.mp4"},
 			Fixture:           "chromeVideoWithSWDecodingAndLibGAV1",
 		}, {
 			Name: "av1_1080p_30fps_sw_gav1",
@@ -742,7 +742,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
-			ExtraData:         []string{"1080p_30fps_300frames.av1.mp4"},
+			ExtraData:         []string{"video.html", "1080p_30fps_300frames.av1.mp4"},
 			Fixture:           "chromeVideoWithSWDecodingAndLibGAV1",
 		}, {
 			Name: "av1_1080p_60fps_sw_gav1",
@@ -752,7 +752,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
-			ExtraData:         []string{"1080p_60fps_600frames.av1.mp4"},
+			ExtraData:         []string{"video.html", "1080p_60fps_600frames.av1.mp4"},
 			Fixture:           "chromeVideoWithSWDecodingAndLibGAV1",
 		}, {
 			Name: "h264_1080p_60fps_hw_alt",
@@ -762,7 +762,7 @@ func init() {
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "video_decoder_legacy_supported", "proprietary_codecs"},
-			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
+			ExtraData:         []string{"video.html", "1080p_60fps_600frames.h264.mp4"},
 			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
 			Name: "vp8_1080p_60fps_hw_alt",
@@ -771,7 +771,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"1080p_60fps_600frames.vp8.webm"},
+			ExtraData:         []string{"video.html", "1080p_60fps_600frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60, "video_decoder_legacy_supported"},
 			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
@@ -781,7 +781,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"1080p_60fps_600frames.vp9.webm"},
+			ExtraData:         []string{"video.html", "1080p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "video_decoder_legacy_supported"},
 			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
@@ -791,7 +791,7 @@ func init() {
 				decoderType: playback.Hardware,
 				chromeType:  lacros.ChromeTypeChromeOS,
 			},
-			ExtraData:         []string{"2160p_60fps_600frames.vp9.webm"},
+			ExtraData:         []string{"video.html", "2160p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60, "video_decoder_legacy_supported"},
 			Fixture:           "chromeAlternateVideoDecoder",
 		}},
