@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a081326_a5239437",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-17T20:42:08Z",
+      "side": 1,
+      "message": "No worries, thanks a lot for the reviews!\n\nI\u0027m going to go ahead and upload the patch with the TODO, since I think both of these can proceed in parallel (we\u0027d of course, resolve the SoftwareDep issue before adding any further plaform)",
+      "parentUuid": "316d3890_c790f2e9",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c86d68bc_d319a8b7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 17
