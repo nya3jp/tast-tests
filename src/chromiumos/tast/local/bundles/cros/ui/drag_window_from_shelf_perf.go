@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -33,7 +32,7 @@ func init() {
 
 func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
+	if err := perfutil.EnsureDisplayOn(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 

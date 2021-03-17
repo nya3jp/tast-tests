@@ -15,13 +15,13 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -69,7 +69,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	)
 
 	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
+	if err := perfutil.EnsureDisplayOn(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 

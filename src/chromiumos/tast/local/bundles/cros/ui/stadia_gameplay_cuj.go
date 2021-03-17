@@ -14,13 +14,13 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/bundles/cros/ui/stadiacuj"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -44,7 +44,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		timeout = 30 * time.Second
 	)
 	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
+	if err := perfutil.EnsureDisplayOn(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 

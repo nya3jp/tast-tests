@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -266,7 +265,7 @@ func prepareFetchShelfScrollSmoothness(ctx context.Context, tconn *chrome.TestCo
 // HotseatScrollPerf records the animation smoothness for shelf scroll animation.
 func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
+	if err := perfutil.EnsureDisplayOn(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 

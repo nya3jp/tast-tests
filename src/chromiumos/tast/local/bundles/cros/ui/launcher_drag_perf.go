@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -47,7 +46,7 @@ func init() {
 
 func LauncherDragPerf(ctx context.Context, s *testing.State) {
 	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
+	if err := perfutil.EnsureDisplayOn(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 

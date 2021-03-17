@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -143,7 +142,7 @@ func loginPerfCreateWindows(ctx context.Context, cr *chrome.Chrome, url string, 
 
 func LoginPerf(ctx context.Context, s *testing.State) {
 	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
+	if err := perfutil.EnsureDisplayOn(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
