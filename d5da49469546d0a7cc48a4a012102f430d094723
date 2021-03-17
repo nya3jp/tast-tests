@@ -146,6 +146,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "221615ae_8a2477b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-17T20:53:56Z",
+      "side": 1,
+      "message": "\u003e Can the test run based on whether the EC reports supporting TCPMv2 in runtime?  I don\u0027t see a direct report of this in our EC feature flags, but EC_FEATURE_TYPEC_CMD would be a pretty close approximation for any recent TCPMv2 systems. \n\nYeah, we can test for this easily in the code. FWIU runtime feature detection is not encouraged in TAST (https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#device-dependencies) but I\u0027ll defer to Greg\u0027s comments here.\n\nI will say that with a lot of the firmware dependent features (like this one) it\u0027s not always easy to encapsulate them in a USE flag or software dep, so having the option to report \"test skipped\" instead of just pass/fail could be useful.\n\n\u003e If that\u0027s the case, then ideally it would be best if we could tie the EC CONFIG_USB_PD_TCPMV2 definition since they\u0027ll be tightly coupled.\n\nDoes the firmware build system use USE flags? AFAICT it doesn\u0027t, and prefers board overlays which select the configs. If that\u0027s the case, it\u0027s going to be a fairly extensive rework to switch the entire build system over to make EC builders use USE flags (and probably not worth it for 1 test).",
+      "parentUuid": "cca3ccec_7773cc8b",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c86d68bc_d319a8b7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 17
