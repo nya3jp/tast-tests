@@ -72,9 +72,45 @@ func init() {
 		PostTestTimeout: resetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareRemoteDataUsageOfflineSomeContactsGAIA",
+		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side.",
+		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilitySelectedContacts, true),
+		Vars: []string{
+			"secondaryTarget",
+			"nearbyshare.cros_username",
+			"nearbyshare.cros_password",
+			"nearbyshare.cros2_username",
+			"nearbyshare.cros2_password",
+		},
+		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareRemoteDataUsageOnlineAllContactsGAIA",
 		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'All Contacts'.",
 		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityAllContacts, true),
+		Vars: []string{
+			"secondaryTarget",
+			"nearbyshare.cros_username",
+			"nearbyshare.cros_password",
+			"nearbyshare.cros2_username",
+			"nearbyshare.cros2_password",
+		},
+		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareRemoteDataUsageOnlineSomeContactsGAIA",
+		Desc: "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side.",
+		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilitySelectedContacts, true),
 		Vars: []string{
 			"secondaryTarget",
 			"nearbyshare.cros_username",
@@ -200,7 +236,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		senderUsername = s.RequiredVar("nearbyshare.cros_username")
 		senderPassword = s.RequiredVar("nearbyshare.cros_password")
 	}
-	sender, err := f.enableNearbyShare(ctx, s, cl1, senderDisplayName, senderUsername, senderPassword)
+	sender, err := f.enableNearbyShare(ctx, s, cl1, senderDisplayName, senderUsername, senderPassword, "")
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT1 (Sender): ", err)
 	}
@@ -218,7 +254,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		receiverUsername = s.RequiredVar("nearbyshare.cros2_username")
 		receiverPassword = s.RequiredVar("nearbyshare.cros2_password")
 	}
-	receiver, err := f.enableNearbyShare(ctx, s, cl2, receiverDisplayName, receiverUsername, receiverPassword)
+	receiver, err := f.enableNearbyShare(ctx, s, cl2, receiverDisplayName, receiverUsername, receiverPassword, senderUsername)
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT2 (Receiver): ", err)
 	}
@@ -234,7 +270,9 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 }
 
 // enableNearbyShare is a helper function to enable Nearby Share on each DUT.
-func (f *nearbyShareFixture) enableNearbyShare(ctx context.Context, s *testing.FixtState, cl *rpc.Client, deviceName, username, password string) (nearbyservice.NearbyShareServiceClient, error) {
+// senderUsername is only used when the device visibility is "Some contacts".
+// Sender devices should pass an empty string since the visibility setting is only relevant to receivers.
+func (f *nearbyShareFixture) enableNearbyShare(ctx context.Context, s *testing.FixtState, cl *rpc.Client, deviceName, username, password, senderUsername string) (nearbyservice.NearbyShareServiceClient, error) {
 	// Connect to the Nearby Share Service so we can execute local code on the DUT.
 	ns := nearbyservice.NewNearbyShareServiceClient(cl.Conn)
 	loginReq := &nearbyservice.CrOSLoginRequest{Username: username, Password: password}
@@ -243,7 +281,7 @@ func (f *nearbyShareFixture) enableNearbyShare(ctx context.Context, s *testing.F
 	}
 
 	// Setup Nearby Share on the DUT.
-	req := &nearbyservice.CrOSSetupRequest{DataUsage: int32(f.dataUsage), Visibility: int32(f.visibility), DeviceName: deviceName}
+	req := &nearbyservice.CrOSSetupRequest{DataUsage: int32(f.dataUsage), Visibility: int32(f.visibility), DeviceName: deviceName, SenderUsername: senderUsername}
 	if _, err := ns.CrOSSetup(ctx, req); err != nil {
 		s.Fatal("Failed to setup Nearby Share: ", err)
 	}
