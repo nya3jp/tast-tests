@@ -16,6 +16,23 @@
       "message": "RunTabletMode() is added to cuj/ui.go to ensure CUJs are running with the desired mode. We will run CUJ with default mode supported by the device with the method, but users can override it with \"mode\" var.",
       "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acfedde8_f12f44a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-17T18:16:19Z",
+      "side": 1,
+      "message": "We recently introduced a new library called \u0027uiauto\u0027. By using that, I don\u0027t think you need to do this.  It would be a bit of albeit to rewrite the use of ui, but I think it\u0027s worth doing.",
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
