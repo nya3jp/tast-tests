@@ -200,6 +200,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c9729a5_355a3ece",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-17T21:38:03Z",
+      "side": 1,
+      "message": "\u003e That could be a good feature. I\u0027d recommend following up with tast-owners@ (of which I am not a member -- I\u0027m but a lowly Tast reviewer).\n\nSure. I\u0027ll start an email thread with tast-owners (will CC you folks too).\n\n\u003e  But if this sort of feature would be broadly useful for firmware testing in Tast, then that would be exactly the kind of thing I should investigate for the firmware EngProd team.\n\nI have little visibility into how much EC is leveraging TAST, but this would definitely be one of the enabling criteria for it.",
+      "parentUuid": "e8b29c5f_141475f2",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c86d68bc_d319a8b7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 17
