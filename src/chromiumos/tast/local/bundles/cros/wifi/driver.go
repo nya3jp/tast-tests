@@ -26,7 +26,7 @@ func init() {
 		},
 		// Run on both Tast CQ and suite:wifi_matfunc.
 		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
-		SoftwareDeps: []string{"wifi", "shill-wifi"},
+		SoftwareDeps: []string{"wifi", "shill-wifi", "no_kernel_upstream"},
 	})
 }
 
