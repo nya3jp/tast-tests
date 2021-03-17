@@ -39,89 +39,50 @@ const (
 var testAttributes = [...]string{"Ibuprofen", "Acetaminophen", "Acetylsalicylic Acid"}
 var testValues = [...]string{"C13H18O2", "C8H9NO2", "C9H8O4"}
 
-// parseStatusStringForInstallAttributesState returns initialized, invalid, firstInstall and any error encountered.
-func parseStatusStringForInstallAttributesState(obj map[string]interface{}) (bool, bool, bool, error) {
-	installattrs, ok := obj["installattrs"].(map[string]interface{})
-	if !ok {
-		return false, false, false, errors.New("no installattrs in cryptohome status")
-	}
-
-	initialized, ok := installattrs["initialized"].(bool)
-	if !ok {
-		return false, false, false, errors.New("installattrs.initialized doesn't exist or have incorrect type in cryptohome status")
-	}
-
-	invalid, ok := installattrs["invalid"].(bool)
-	if !ok {
-		return false, false, false, errors.New("installattrs.invalid doesn't exist or have incorrect type in cryptohome status")
-	}
-
-	firstInstall, ok := installattrs["first_install"].(bool)
-	if !ok {
-		return false, false, false, errors.New("installattrs.first_install doesn't exist or have incorrect type in cryptohome status")
-	}
-
-	return initialized, invalid, firstInstall, nil
-}
-
 // getInstallAttributesStates returns isReady, isInitialized, isInvalid, isFirstInstall, isSecure, count and any error encountered.
-func getInstallAttributesStates(ctx context.Context, utility *hwsec.CryptohomeClient) (isReady, isInitialized, isInvalid, isFirstInstall, isSecure bool, count int, returnError error) {
+func getInstallAttributesStates(ctx context.Context, cryptohome *hwsec.CryptohomeClient) (isReady, isInitialized, isInvalid, isFirstInstall, isSecure bool, count int, returnError error) {
 	// Default return values.
 	isReady = false
 	isInitialized = false
 	isInvalid = false
 	isFirstInstall = false
+	isSecure = false
 	count = -1
 
-	// Get the values through GetStatusJSON().
-	obj, err := utility.GetStatusJSON(ctx)
+	// Get the values through InstallAttributesStatus().
+	status, err := cryptohome.InstallAttributesStatus(ctx)
 	if err != nil {
-		returnError = errors.Wrap(err, "failed to get cryptohome status")
+		returnError = errors.Wrap(err, "failed to get cryptohome install attributes status")
 		return
 	}
 
-	isInitialized, isInvalidFromStatusString, isFirstInstallFromStatusString, err := parseStatusStringForInstallAttributesState(obj)
-	if err != nil {
-		returnError = errors.Wrap(err, "failed to parse install attributes json")
+	switch status {
+	case "FIRST_INSTALL":
+		isInitialized = true
+		isFirstInstall = true
+		isReady = true
+	case "VALID":
+		isInitialized = true
+		isReady = true
+	case "INVALID":
+		isInvalid = true
+		isReady = true
+	case "TPM_NOT_OWNED":
+		// Do nothing.
+	default:
+		returnError = errors.Wrapf(err, "unexpected install attributes states %q", status)
 		return
 	}
 
-	// Get the values through individual dbus calls.
-	count, err = utility.InstallAttributesCount(ctx)
+	count, err = cryptohome.InstallAttributesCount(ctx)
 	if err != nil {
 		returnError = errors.Wrap(err, "failed to get count")
 		return
 	}
 
-	isReady, err = utility.InstallAttributesIsReady(ctx)
-	if err != nil {
-		returnError = errors.Wrap(err, "failed to get is ready")
-		return
-	}
-
-	isSecure, err = utility.InstallAttributesIsSecure(ctx)
+	isSecure, err = cryptohome.InstallAttributesIsSecure(ctx)
 	if err != nil {
 		returnError = errors.Wrap(err, "failed to get is secure")
-		return
-	}
-
-	isInvalid, err = utility.InstallAttributesIsInvalid(ctx)
-	if err != nil {
-		returnError = errors.Wrap(err, "failed to get is invalid")
-		return
-	}
-	if isInvalid != isInvalidFromStatusString {
-		returnError = errors.Errorf("mismatch between isInvalid from status string (%t) and dbus method %t", isInvalidFromStatusString, isInvalid)
-		return
-	}
-
-	isFirstInstall, err = utility.InstallAttributesIsFirstInstall(ctx)
-	if err != nil {
-		returnError = errors.Wrap(err, "failed to get is first install")
-		return
-	}
-	if isFirstInstall != isFirstInstallFromStatusString {
-		returnError = errors.Errorf("mismatch between isFirstInstall from status string (%t) and dbus method (%t)", isFirstInstallFromStatusString, isFirstInstall)
 		return
 	}
 
@@ -129,10 +90,10 @@ func getInstallAttributesStates(ctx context.Context, utility *hwsec.CryptohomeCl
 }
 
 // waitForInstallAttributes waits for install attributes to be ready.
-func waitForInstallAttributes(ctx context.Context, utility *hwsec.CryptohomeClient) error {
+func waitForInstallAttributes(ctx context.Context, cryptohome *hwsec.CryptohomeClient) error {
 	// Wait for, and check TPM attributes after taking ownership.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		isReady, isInitialized, isInvalid, isFirstInstall, _, count, err := getInstallAttributesStates(ctx, utility)
+		isReady, isInitialized, isInvalid, isFirstInstall, _, count, err := getInstallAttributesStates(ctx, cryptohome)
 		if err != nil {
 			return err
 		}
@@ -149,19 +110,19 @@ func waitForInstallAttributes(ctx context.Context, utility *hwsec.CryptohomeClie
 }
 
 // takeOwnershipAndWaitForInstallAttributes takes ownership and wait for install attributes to be ready.
-func takeOwnershipAndWaitForInstallAttributes(ctx context.Context, utility *hwsec.CryptohomeClient, helper *hwsecremote.CmdHelperRemote) error {
+func takeOwnershipAndWaitForInstallAttributes(ctx context.Context, cryptohome *hwsec.CryptohomeClient, helper *hwsecremote.CmdHelperRemote) error {
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		return errors.Wrap(err, "time out waiting for TPM to be ready")
 	}
 
-	return waitForInstallAttributes(ctx, utility)
+	return waitForInstallAttributes(ctx, cryptohome)
 }
 
 // checkAllTestAttributes is a helper function that checks the install attributes retrieved through cryptohome's API is what we are expecting.
-func checkAllTestAttributes(ctx context.Context, utility *hwsec.CryptohomeClient) error {
+func checkAllTestAttributes(ctx context.Context, cryptohome *hwsec.CryptohomeClient) error {
 	for i, attributeName := range testAttributes {
 		attributeValue := testValues[i]
-		readbackValue, err := utility.InstallAttributesGet(ctx, attributeName)
+		readbackValue, err := cryptohome.InstallAttributesGet(ctx, attributeName)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get install attributes %q", attributeName)
 		}
@@ -174,35 +135,35 @@ func checkAllTestAttributes(ctx context.Context, utility *hwsec.CryptohomeClient
 }
 
 // attemptChangeAndCheckShouldSucceed checks that install attributes are settable when it should be, it also verifies the install attributes values.
-func attemptChangeAndCheckShouldSucceed(ctx context.Context, utility *hwsec.CryptohomeClient) error {
-	if err := utility.InstallAttributesSet(ctx, testAttributes[0], testValues[1]); err != nil {
+func attemptChangeAndCheckShouldSucceed(ctx context.Context, cryptohome *hwsec.CryptohomeClient) error {
+	if err := cryptohome.InstallAttributesSet(ctx, testAttributes[0], testValues[1]); err != nil {
 		return errors.Wrap(err, "failed to set install attributes when it should still be settable")
 	}
 
-	if err := utility.InstallAttributesSet(ctx, testAttributes[0], testValues[0]); err != nil {
+	if err := cryptohome.InstallAttributesSet(ctx, testAttributes[0], testValues[0]); err != nil {
 		return errors.Wrap(err, "failed to set install attributes back to its original value when it should still be settable")
 	}
 
 	// Lastly, check the attributes.
-	return checkAllTestAttributes(ctx, utility)
+	return checkAllTestAttributes(ctx, cryptohome)
 }
 
 // attemptChangeAndCheckShouldFail checks that install attributes are not settable, it also verifies the install attributes values.
-func attemptChangeAndCheckShouldFail(ctx context.Context, utility *hwsec.CryptohomeClient) error {
-	if err := utility.InstallAttributesSet(ctx, testAttributes[0], testValues[1]); err == nil {
+func attemptChangeAndCheckShouldFail(ctx context.Context, cryptohome *hwsec.CryptohomeClient) error {
+	if err := cryptohome.InstallAttributesSet(ctx, testAttributes[0], testValues[1]); err == nil {
 		return errors.New("setting install attributes to a different value succeeded when it shouldn't")
 	}
 
-	if err := utility.InstallAttributesSet(ctx, testAttributes[0], testValues[0]); err == nil {
+	if err := cryptohome.InstallAttributesSet(ctx, testAttributes[0], testValues[0]); err == nil {
 		return errors.New("setting install attributes to same value succeeded when it shouldn't")
 	}
 
-	if err := utility.InstallAttributesSet(ctx, testAttributesUndefined, testValues[0]); err == nil {
+	if err := cryptohome.InstallAttributesSet(ctx, testAttributesUndefined, testValues[0]); err == nil {
 		return errors.New("setting previously undefined install attributes succeeded when it shouldn't")
 	}
 
 	// Lastly, check the attributes.
-	return checkAllTestAttributes(ctx, utility)
+	return checkAllTestAttributes(ctx, cryptohome)
 }
 
 // tamperWithInstallAttributes attempts to modify the install attributes by directly modifying its database.
@@ -233,7 +194,7 @@ func InstallAttributes(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
-	utility := helper.CryptohomeClient()
+	cryptohome := helper.CryptohomeClient()
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
@@ -241,7 +202,7 @@ func InstallAttributes(ctx context.Context, s *testing.State) {
 	s.Log("TPM is confirmed to be reset")
 
 	// Check install attributes right after resetting the TPM.
-	isReady, isInitialized, isInvalid, isFirstInstall, _, count, err := getInstallAttributesStates(ctx, utility)
+	isReady, isInitialized, isInvalid, isFirstInstall, _, count, err := getInstallAttributesStates(ctx, cryptohome)
 	if err != nil {
 		s.Fatal("Failed to parse cryptohome status: ", err)
 	}
@@ -251,30 +212,30 @@ func InstallAttributes(ctx context.Context, s *testing.State) {
 	}
 
 	// Take ownership then wait for install attributes.
-	if err := takeOwnershipAndWaitForInstallAttributes(ctx, utility, helper); err != nil {
+	if err := takeOwnershipAndWaitForInstallAttributes(ctx, cryptohome, helper); err != nil {
 		s.Fatal("Failed to take ownership or wait for install attributes: ", err)
 	}
 
 	// Now the install attributes are ready, let's write some attributes and see if it works.
 	for i, attributeName := range testAttributes {
 		attributeValue := testValues[i]
-		if err = utility.InstallAttributesSet(ctx, attributeName, attributeValue); err != nil {
+		if err = cryptohome.InstallAttributesSet(ctx, attributeName, attributeValue); err != nil {
 			s.Fatal("Failed to set install attributes "+attributeName+" to value "+attributeValue+": ", err)
 		}
 	}
 
 	// Check attributes and test setting after finalizing.
-	if err = attemptChangeAndCheckShouldSucceed(ctx, utility); err != nil {
+	if err = attemptChangeAndCheckShouldSucceed(ctx, cryptohome); err != nil {
 		s.Fatal("Check install attributes failed pre finalization: ", err)
 	}
 
 	// Next finalize it.
-	if err = utility.InstallAttributesFinalize(ctx); err != nil {
+	if err = cryptohome.InstallAttributesFinalize(ctx); err != nil {
 		s.Fatal("Failed to finalize install attributes: ", err)
 	}
 
 	// Check install attributes right after finalizing.
-	isReady, isInitialized, isInvalid, isFirstInstall, _, count, err = getInstallAttributesStates(ctx, utility)
+	isReady, isInitialized, isInvalid, isFirstInstall, _, count, err = getInstallAttributesStates(ctx, cryptohome)
 	if err != nil {
 		s.Fatal("Failed to parse cryptohoattemptChangeAndCheckShouldFailme status: ", err)
 	}
@@ -284,7 +245,7 @@ func InstallAttributes(ctx context.Context, s *testing.State) {
 	}
 
 	// Check that trying to set install attribute now fails.
-	if err := attemptChangeAndCheckShouldFail(ctx, utility); err != nil {
+	if err := attemptChangeAndCheckShouldFail(ctx, cryptohome); err != nil {
 		s.Fatal("Checking install attributes failed post finalization: ", err)
 	}
 
@@ -294,7 +255,7 @@ func InstallAttributes(ctx context.Context, s *testing.State) {
 	}
 
 	// Check install attributes after reboot.
-	isReady, isInitialized, isInvalid, isFirstInstall, _, count, err = getInstallAttributesStates(ctx, utility)
+	isReady, isInitialized, isInvalid, isFirstInstall, _, count, err = getInstallAttributesStates(ctx, cryptohome)
 	if err != nil {
 		s.Fatal("Failed to parse cryptohome status: ", err)
 	}
@@ -304,7 +265,7 @@ func InstallAttributes(ctx context.Context, s *testing.State) {
 	}
 
 	// Recheck the install attributes
-	if err := attemptChangeAndCheckShouldFail(ctx, utility); err != nil {
+	if err := attemptChangeAndCheckShouldFail(ctx, cryptohome); err != nil {
 		s.Fatal("Checking install attributes failed post finalization reboot: ", err)
 	}
 
@@ -319,7 +280,7 @@ func InstallAttributes(ctx context.Context, s *testing.State) {
 	}
 
 	// Check install attributes after tampering with install attributes.
-	isReady, isInitialized, isInvalid, isFirstInstall, _, count, err = getInstallAttributesStates(ctx, utility)
+	isReady, isInitialized, isInvalid, isFirstInstall, _, count, err = getInstallAttributesStates(ctx, cryptohome)
 	if err != nil {
 		s.Fatal("Failed to parse cryptohome status: ", err)
 	}
@@ -328,10 +289,10 @@ func InstallAttributes(ctx context.Context, s *testing.State) {
 	}
 
 	// Check that neither the original nor the tampered attributes are readable.
-	if readbackValue, err := utility.InstallAttributesGet(ctx, testAttributes[0]); err == nil {
+	if readbackValue, err := cryptohome.InstallAttributesGet(ctx, testAttributes[0]); err == nil {
 		s.Fatalf("Able to read install attributes %q after tampering the database, got %q", testAttributes[0], readbackValue)
 	}
-	if readbackValue, err := utility.InstallAttributesGet(ctx, tamperedAttributes); err == nil {
+	if readbackValue, err := cryptohome.InstallAttributesGet(ctx, tamperedAttributes); err == nil {
 		s.Fatalf("Able to read install attributes %q after tampering the database, got %q", tamperedAttributes, readbackValue)
 	}
 }

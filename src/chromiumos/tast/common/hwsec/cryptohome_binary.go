@@ -63,9 +63,9 @@ func (c *cryptohomeBinary) removeFile(ctx context.Context, filename string) erro
 	return err
 }
 
-// getStatusString calls "cryptohome --action=status".
-func (c *cryptohomeBinary) getStatusString(ctx context.Context) (string, error) {
-	out, err := c.call(ctx, "--action=status")
+// installAttributesGetStatus calls "cryptohome --action=install_attributes_get_status".
+func (c *cryptohomeBinary) installAttributesGetStatus(ctx context.Context) (string, error) {
+	out, err := c.call(ctx, "--action=install_attributes_get_status")
 	return string(out), err
 }
 

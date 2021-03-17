@@ -6,7 +6,6 @@ package hwsec
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"regexp"
 	"strconv"
@@ -18,18 +17,12 @@ import (
 )
 
 const (
-	getTPMStatusSuccessMessage             = "GetTpmStatus success."
-	tpmIsReadyString                       = "TPM Ready: true"
-	tpmIsNotReadyString                    = "TPM Ready: false"
-	resultIsSuccessString                  = "Result: Success"
-	resultIsFailureString                  = "Result: Failure"
 	cryptohomeWrappedKeysetString          = "TPM_WRAPPED"
 	installAttributesFinalizeSuccessOutput = "InstallAttributesFinalize(): 1"
 	listKeysExLabelPrefix                  = "Label: "
 	addKeyExSuccessMessage                 = "Key added."
 	removeKeyExSuccessMessage              = "Key removed."
 	migrateKeyExSucessMessage              = "Key migration succeeded."
-	dbusCallFailedMessage                  = "call failed:"
 )
 
 func getLastLine(s string) string {
@@ -55,19 +48,16 @@ func NewCryptohomeClient(r CmdRunner) *CryptohomeClient {
 	}
 }
 
-// GetStatusJSON retrieves the a status string from cryptohome. The status string is in JSON format and holds the various cryptohome related status.
-func (u *CryptohomeClient) GetStatusJSON(ctx context.Context) (map[string]interface{}, error) {
-	s, err := u.binary.getStatusString(ctx)
+// InstallAttributesStatus retrieves the a status string from cryptohome. The status string is in JSON format and holds the various cryptohome related status.
+func (u *CryptohomeClient) InstallAttributesStatus(ctx context.Context) (string, error) {
+	out, err := u.binary.installAttributesGetStatus(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "Failed to call GetStatusString()")
+		return "", errors.Wrapf(err, "failed to get Install Attributes status with the following output %q", out)
 	}
+	// Strip the ending new line.
+	out = strings.TrimSuffix(out, "\n")
 
-	var obj map[string]interface{}
-	err = json.Unmarshal([]byte(s), &obj)
-	if err != nil {
-		return nil, errors.Wrap(err, "Failed to parse JSON from GetStatusString(): '"+s+"'; ")
-	}
-	return obj, nil
+	return out, err
 }
 
 // InstallAttributesGet retrieves the install attributes with the name of attributeName, and returns the tuple (value, error), whereby value is the value of the attributes, and error is nil iff the operation is successful, otherwise error is the error that occurred.
