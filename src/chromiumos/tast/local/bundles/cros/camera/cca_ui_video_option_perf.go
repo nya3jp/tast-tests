@@ -109,13 +109,13 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 				if err := cpu.WaitUntilIdle(ctx); err != nil {
 					return errors.Wrap(err, "failed to idle")
 				}
-				testing.ContextLog(ctx, "Sleeping to wait for CPU usage to stabilize for ", stabilizationDuration)
-				if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
-					return errors.Wrap(err, "failed to sleep for CPU usage to stabilize")
-				}
 				start, err := app.StartRecording(ctx, cca.TimerOff)
 				if err != nil {
 					return err
+				}
+				testing.ContextLog(ctx, "Sleeping to wait for CPU usage to stabilize for ", stabilizationDuration)
+				if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
+					return errors.Wrap(err, "failed to sleep for CPU usage to stabilize")
 				}
 				usage, err := cpu.MeasureUsage(ctx, 15*time.Second)
 				if err != nil {
