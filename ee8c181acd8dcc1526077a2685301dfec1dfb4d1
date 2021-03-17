@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d1d00e_a005ebce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-17T09:23:32Z",
+      "side": 1,
+      "message": "This prefixing is quite different than the one used in the other packages. But I saw that you are consistently using this one, so you can stick to it if you don\u0027t edit files from other packages.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "ee8c181acd8dcc1526077a2685301dfec1dfb4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ff5ca62_2f9e6a87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-17T09:23:32Z",
+      "side": 1,
+      "message": "nit: Line is too long.",
+      "revId": "ee8c181acd8dcc1526077a2685301dfec1dfb4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0421b65a_ae206b4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-17T09:23:32Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "ee8c181acd8dcc1526077a2685301dfec1dfb4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
