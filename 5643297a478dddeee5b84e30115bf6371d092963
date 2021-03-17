@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a4a11b_de702ca5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-17T02:52:10Z",
+      "side": 1,
+      "message": "nit. I think the convention is using the package name as prefix. \n\nnearbyshare: Add JS for Nearby Share Contact visibility",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "5643297a478dddeee5b84e30115bf6371d092963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
