@@ -9,11 +9,13 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
 )
 
@@ -57,46 +59,17 @@ func VirtualKeyboardTypingOmnibox(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	omniboxInputParams := ui.FindParams{
-		Role:       ui.RoleTypeTextField,
-		Attributes: map[string]interface{}{"inputType": "url"},
-	}
-	inputNode, err := ui.FindWithTimeout(ctx, tconn, omniboxInputParams, 10*time.Second)
-	if err != nil {
-		s.Fatalf("Failed to find Omnibox input with params %v: %v", omniboxInputParams, err)
-	}
-	defer inputNode.Release(ctx)
+	omniboxFinder := nodewith.Role(role.TextField).Attribute("inputType", "url")
+	vkbCtx := vkb.NewContext(cr, tconn)
 
-	if err := vkb.ClickUntilVKShown(ctx, tconn, inputNode); err != nil {
-		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
-	}
-
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard ready: ", err)
-	}
-
-	if err := vkb.TapKeys(ctx, tconn, strings.Split(typingKeys, "")); err != nil {
-		s.Fatal("Failed to input with virtual keyboard: ", err)
-	}
-
-	// Value change can be a bit delayed after input.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := inputNode.Update(ctx); err != nil {
-			return errors.Wrap(err, "failed to update node")
-		}
-
-		// When clicking Omnibox, on some devices existing text is highlighted and replaced by new input,
-		// while on some other devices, it is not highlighted and inserted new input.
-		// So use contains here to avoid flakiness.
-		if !strings.Contains(inputNode.Value, typingKeys) {
-			return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", inputNode.Value, typingKeys)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Error("Failed to input with virtual keyboard in Omnibox: ", err)
-	}
-
-	if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
-		s.Fatal("Failed to hide virtual keyboard: ", err)
+	if err := uiauto.Combine("verify virtual keyboard input on omnibox",
+		vkbCtx.ClickUntilVKShown(omniboxFinder),
+		vkbCtx.TapKeys(strings.Split(typingKeys, "")),
+		// Hide virtual keyboard to submit candidate.
+		vkbCtx.HideVirtualKeyboard(),
+		// Validate text.
+		util.WaitForFieldTextToBe(tconn, omniboxFinder, typingKeys),
+	)(ctx); err != nil {
+		s.Fatal("Failed to verify virtual keyboard input on omnibox: ", err)
 	}
 }
