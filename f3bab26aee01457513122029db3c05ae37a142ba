@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a227d121_09db5b7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-17T07:10:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f0d66bc_cecfb087",
+      "range": {
+        "startLine": 73,
+        "startChar": 26,
+        "endLine": 73,
+        "endChar": 36
+      },
+      "revId": "f3bab26aee01457513122029db3c05ae37a142ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d39d7da_aa4b65dd",
@@ -77,6 +101,30 @@
       "writtenOn": "2021-03-17T04:05:34Z",
       "side": 1,
       "message": "If you\u0027re using a custom type, the idiomatic way of constructing it is to use a New*TYPE* function, i.e. NewCameraWebPage\n\nYou can then pass that into testFunc as webPage *cameraWebPage\n\nhttps://golang.org/doc/effective_go#package-names",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "f3bab26aee01457513122029db3c05ae37a142ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b0c3d0_0343464c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-17T07:10:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d39d7da_aa4b65dd",
       "range": {
         "startLine": 87,
         "startChar": 1,
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d83cacd_1f7dda24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-17T07:10:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b23a1c6f_d094133c",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 23
+      },
+      "revId": "f3bab26aee01457513122029db3c05ae37a142ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9db9cf57_e768244d",
@@ -123,6 +195,30 @@
       "writtenOn": "2021-03-17T04:05:34Z",
       "side": 1,
       "message": "nit: you can just return here, retErr is being assigned as you go",
+      "range": {
+        "startLine": 221,
+        "startChar": 8,
+        "endLine": 221,
+        "endChar": 14
+      },
+      "revId": "f3bab26aee01457513122029db3c05ae37a142ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc13a33_ab662977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-17T07:10:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9db9cf57_e768244d",
       "range": {
         "startLine": 221,
         "startChar": 8,
