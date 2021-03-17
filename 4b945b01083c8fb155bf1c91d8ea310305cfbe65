@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ccd821_f174c22c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-17T01:14:19Z",
+      "side": 1,
+      "message": "This seems like it has the same issues you mentioned to me as when I ported the inputs tests. Is it possible to split this?",
+      "revId": "4b945b01083c8fb155bf1c91d8ea310305cfbe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73909168_a3b2da5a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/handwriting.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-17T01:14:19Z",
+      "side": 1,
+      "message": "I don\u0027t feel that tests should be in the uiauto package, since that\u0027s a library. Thoughts? Why did you move the file?",
+      "revId": "4b945b01083c8fb155bf1c91d8ea310305cfbe65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
