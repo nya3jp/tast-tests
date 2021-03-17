@@ -38,7 +38,7 @@ type CodecProfile int
 const (
 	// These values must match integers in VideoCodecProfile in https://cs.chromium.org/chromium/src/media/base/video_codecs.h
 
-	// H264Prof represents the value for H264 Main profile (= H264PROFILE_MAIN).
+	// H264Prof represents the value for H264 Main profile (= H264PROFILE_BASELINE).
 	H264Prof CodecProfile = 1
 	// VP8Prof represents the value for VP8 Main profile (= VP8PROFILE_ANY).
 	VP8Prof CodecProfile = 11
