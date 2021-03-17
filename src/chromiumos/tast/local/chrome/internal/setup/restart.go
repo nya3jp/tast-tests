@@ -118,7 +118,7 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 			"--arc-start-mode=always-start-with-no-play-store")
 	case config.ARCSupported:
 		// Allow ARC being enabled on the device to test ARC with real gaia accounts.
-		args = append(args, "--arc-availability=officially-supported")
+		// No additional argument is needed.
 	}
 	if cfg.ARCMode == config.ARCEnabled || cfg.ARCMode == config.ARCSupported {
 		args = append(args,

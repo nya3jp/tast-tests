@@ -352,7 +352,7 @@ func ensureARCEnabled() error {
 	}
 
 	for _, a := range args {
-		if a == "--arc-start-mode=always-start-with-no-play-store" || a == "--arc-availability=officially-supported" {
+		if a == "--arc-availability=officially-supported" {
 			return nil
 		}
 	}
