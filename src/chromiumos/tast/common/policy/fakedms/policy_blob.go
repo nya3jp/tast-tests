@@ -27,6 +27,7 @@ type PolicyBlob struct {
 	UserPs               *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
 	DevicePM             BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
 	ExtensionPM          BlobPolicyMap                `json:"google/chromeos/extension,omitempty"`
+	PublicAccountPs      *BlobPublicAccountPolicies   `json:"google/chromeos/publicaccount,omitempty"`
 	PolicyUser           string                       `json:"policy_user"`
 	ManagedUsers         []string                     `json:"managed_users"`
 	CurrentKeyIdx        int                          `json:"current_key_index,omitempty"`
@@ -47,6 +48,9 @@ type BlobUserPolicies struct {
 	MandatoryPM   BlobPolicyMap `json:"mandatory,omitempty"`
 	RecommendedPM BlobPolicyMap `json:"recommended,omitempty"`
 }
+
+// A BlobPublicAccountPolicies struct has the same structure as BlobUserPolicies.
+type BlobPublicAccountPolicies BlobUserPolicies
 
 // A BlobLicenses struct is a sub-struct used in a PolicyBlob.
 type BlobLicenses struct {
@@ -111,6 +115,16 @@ func (pb *PolicyBlob) AddPolicy(p policy.Policy) error {
 				return err
 			}
 		}
+	case policy.ScopePublicAccount:
+		if p.Status() == policy.StatusSetRecommended {
+			if err := pb.addRecommendedPublicAccountPolicy(p); err != nil {
+				return err
+			}
+		} else {
+			if err := pb.addMandatoryPublicAccountPolicy(p); err != nil {
+				return err
+			}
+		}
 	case policy.ScopeDevice:
 		if err := pb.addDevicePolicy(p); err != nil {
 			return err
@@ -137,7 +151,7 @@ func addValue(p policy.Policy, pm BlobPolicyMap) error {
 			return errors.Wrapf(err, "could not add %s policy", p.Name())
 		}
 	}
-	if p.Scope() == policy.ScopeUser {
+	if p.Scope() == policy.ScopeUser || p.Scope() == policy.ScopePublicAccount {
 		pm[p.Name()] = vJSON
 	} else {
 		pm[p.Field()] = vJSON
@@ -165,6 +179,28 @@ func (pb *PolicyBlob) addRecommendedUserPolicy(p policy.Policy) error {
 		pb.UserPs.RecommendedPM = make(BlobPolicyMap)
 	}
 	return addValue(p, pb.UserPs.RecommendedPM)
+}
+
+// addMandatoryPublicAccountPolicy adds the given policy as a mandatory public account policy.
+func (pb *PolicyBlob) addMandatoryPublicAccountPolicy(p policy.Policy) error {
+	if pb.PublicAccountPs == nil {
+		pb.PublicAccountPs = &BlobPublicAccountPolicies{}
+	}
+	if pb.PublicAccountPs.MandatoryPM == nil {
+		pb.PublicAccountPs.MandatoryPM = make(BlobPolicyMap)
+	}
+	return addValue(p, pb.PublicAccountPs.MandatoryPM)
+}
+
+// addRecommendedPublicAccountPolicy adds the given policy as a recommended public account policy.
+func (pb *PolicyBlob) addRecommendedPublicAccountPolicy(p policy.Policy) error {
+	if pb.PublicAccountPs == nil {
+		pb.PublicAccountPs = &BlobPublicAccountPolicies{}
+	}
+	if pb.PublicAccountPs.RecommendedPM == nil {
+		pb.PublicAccountPs.RecommendedPM = make(BlobPolicyMap)
+	}
+	return addValue(p, pb.PublicAccountPs.RecommendedPM)
 }
 
 // addDevicePolicy adds the given policy as a recommended user policy.
