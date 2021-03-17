@@ -65,6 +65,7 @@ func JDATestConfig(outDir string) TestConfig {
 // JEATestConfig returns test config for running HAL3JEA test.
 func JEATestConfig(outDir string) TestConfig {
 	return TestConfig{
+		CameraHALs:     []string{"usb"},
 		GtestFilter:    "*/Camera3SimpleStillCaptureTest.TakePictureTest/0",
 		ForceJPEGHWEnc: true,
 		OutDir:         outDir,
