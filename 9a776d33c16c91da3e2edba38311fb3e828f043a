@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ec6f1e0_67169dc0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-17T18:12:28Z",
+      "side": 1,
+      "message": "One thing I\u0027ve noticed is that the shelf-widget can be offscreen when the virtual keyboard is shown (https://source.chromium.org/chromium/chromium/src/+/master:ash/shelf/shelf_widget.cc;l\u003d769).  Shelf visibility would not be \u0027hidden\u0027 in tablet mode basically in my understanding.\n\nAnother case could be the fullscreen mode of the window (e.g. fullscreen video play).\n\nConsidering that, my feeling is that this should be fixed in chromium code base.",
+      "parentUuid": "c4a9f373_6f192382",
+      "revId": "9a776d33c16c91da3e2edba38311fb3e828f043a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4379e1b4_5ae6f789",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 1
