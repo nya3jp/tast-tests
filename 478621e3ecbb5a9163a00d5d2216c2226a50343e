@@ -63,6 +63,30 @@
       },
       "revId": "478621e3ecbb5a9163a00d5d2216c2226a50343e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d5d67d_005723f4",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-03-17T23:08:25Z",
+      "side": 1,
+      "message": "All the affected non-vm Tast tests now pass locally on my atlas device, even when run sequentially.",
+      "parentUuid": "749e7e77_f189dbcb",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 14
+      },
+      "revId": "478621e3ecbb5a9163a00d5d2216c2226a50343e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
