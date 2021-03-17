@@ -182,6 +182,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8b29c5f_141475f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-17T21:08:51Z",
+      "side": 1,
+      "message": "\u003e Can the test run based on whether the EC reports supporting TCPMv2 in runtime?\n\nUnfortunately not. In addition to the doc Prashant cited, here\u0027s a snippet from  go/tast-deps regarding SoftwareDeps:\n\n    Features are composed from USE flags and board names, which are statically defined when the system image is built.\n\n\u003e I don\u0027t see a direct report of this in our EC feature flags, but EC_FEATURE_TYPEC_CMD would be a pretty close approximation for any recent TCPMv2 systems.\n\nIs EC_FEATURE_TYPEC_CMD a USE flag? I don\u0027t see it when I run `portageq-volteer envvar USE`.\n\n\u003e I will say that with a lot of the firmware dependent features (like this one) it\u0027s not always easy to encapsulate them in a USE flag or software dep, so having the option to report \"test skipped\" instead of just pass/fail could be useful.\n\nThat could be a good feature. I\u0027d recommend following up with tast-owners@ (of which I am not a member -- I\u0027m but a lowly Tast reviewer).\n\n\u003e Does the firmware build system use USE flags? AFAICT it doesn\u0027t, and prefers board overlays which select the configs. If that\u0027s the case, it\u0027s going to be a fairly extensive rework to switch the entire build system over to make EC builders use USE flags (and probably not worth it for 1 test).\n\nI don\u0027t know much of anything about the firmware build system. I agree that that sounds like too much for 1 test. But if this sort of feature would be broadly useful for firmware testing in Tast, then that would be exactly the kind of thing I should investigate for the firmware EngProd team.",
+      "parentUuid": "94ba38a3_b3805366",
+      "revId": "d5da49469546d0a7cc48a4a012102f430d094723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c86d68bc_d319a8b7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 17
