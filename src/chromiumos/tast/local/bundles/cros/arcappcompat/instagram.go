@@ -22,6 +22,7 @@ import (
 // ClamshellTests are placed here.
 var clamshellTestsForInstagram = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForInstagram},
+	{Name: "Clamshell: Orientation", Fn: testutil.OrientationSize},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
