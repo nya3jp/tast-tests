@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -138,32 +137,23 @@ func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
 	}
 
 	// Grab the center of the window caption bar.
-	initDst := coords.NewPoint(initBounds.Width/2, window.CaptionHeight/2)
-	if err := mouse.Move(ctx, tconn, initDst, 0); err != nil {
-		s.Fatal("Failed to move the mouse: ", err)
-	}
+	initPoint := coords.NewPoint(initBounds.Width/2, window.CaptionHeight/2)
 
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
-	defer cancel()
-
-	if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
-		s.Fatal("Failed to press the mouse button: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
-			s.Error("Failed to release the mouse button: ", err)
-		}
-	}(cleanupCtx)
+	// If the drag point gets closer to an edge than this value, it will be snapped on drop.
+	// As we don't want snapping, we should inset this value.
+	// The value is should be in sync with ash/wm/workspace/workspace_window_resizer.cc.
+	const ScreenEdgeInsetForSnappingSides = 32
 
 	// Drag the window to the four corners of the work area minus the inset.
-	r := info.WorkArea.WithInset(window.CaptionHeight/2, window.CaptionHeight/2)
+	r := info.WorkArea.WithInset(ScreenEdgeInsetForSnappingSides+marginPX, window.CaptionHeight/2)
+	src := initPoint
 	for _, dst := range []coords.Point{r.TopLeft(), r.TopRight(), r.BottomRight(), r.BottomLeft()} {
-		if err := mouse.Move(ctx, tconn, dst, dragDur); err != nil {
+		if err := mouse.Drag(ctx, tconn, src, dst, dragDur); err != nil {
 			s.Fatal("Failed to move the mouse: ", err)
 		}
+		src = dst
 
-		offset := dst.Sub(initDst)
+		offset := dst.Sub(initPoint)
 		expectedBounds := initBounds.WithOffset(offset.X, offset.Y)
 		if err := waitForWindowBounds(ctx, expectedBounds); err != nil {
 			s.Fatal("Failed to wait for the activity to move: ", err)
