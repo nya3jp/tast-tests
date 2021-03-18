@@ -22,6 +22,30 @@
       },
       "revId": "7203ac1025144476b6c7127f48d3ee3e8785ddc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8f864a1_42bc0d75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-18T21:11:17Z",
+      "side": 1,
+      "message": "I actually think checking the signature is useful. we want ot know that we have this signature in all Qualcomm fw dumps, so I changed the check to a signature check.",
+      "parentUuid": "8ad0636b_d6d848b5",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 116
+      },
+      "revId": "7203ac1025144476b6c7127f48d3ee3e8785ddc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
