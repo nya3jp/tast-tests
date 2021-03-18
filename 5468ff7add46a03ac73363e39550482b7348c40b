@@ -54,6 +54,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15044f38_2749adaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-03-18T14:15:39Z",
+      "side": 1,
+      "message": "testing.PollBreak is needed for exiting the polling loop with an error before timeout. (any other error mean continuing the polling.)",
+      "revId": "5468ff7add46a03ac73363e39550482b7348c40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22564d3c_9f4d1ab3",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
         "patchSetId": 3
