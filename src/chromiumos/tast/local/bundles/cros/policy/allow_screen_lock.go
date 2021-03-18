@@ -10,9 +10,12 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -25,22 +28,28 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
-		Pre:          pre.User,
+		Attr:         []string{"group:mainline", "informational"},
+		Fixture:      "chromePolicyLoggedIn",
 	})
 }
 
 // AllowScreenLock tests the AllowScreenLock policy.
 func AllowScreenLock(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*pre.PreData).Chrome
-	fdms := s.PreValue().(*pre.PreData).FakeDMS
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+
+	// Connect to Test API to use it with the UI library.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
 
 	// Open a keyboard device.
-	keyboard, err := input.Keyboard(ctx)
+	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to open keyboard device: ", err)
 	}
-	defer keyboard.Close()
+	defer kb.Close()
 
 	for _, param := range []struct {
 		name       string
@@ -64,6 +73,8 @@ func AllowScreenLock(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name+".txt")
+
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
@@ -80,25 +91,39 @@ func AllowScreenLock(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to connect to test API: ", err)
 			}
 
-			// Try to lock the screen.
+			// Try to lock the screen with keyboard shortcut.
 			s.Log("Trying to lock the screen")
-			if err := keyboard.Accel(ctx, "Search+L"); err != nil {
+			if err := kb.Accel(ctx, "Search+L"); err != nil {
 				s.Fatal("Failed to write events: ", err)
+			}
+
+			// Try to lock the screen from the system tray.
+			ui := uiauto.New(tconn)
+			if err := uiauto.Combine("Check lock screen from system tray",
+				ui.LeftClick(nodewith.ClassName("UnifiedSystemTray")),
+				ui.WaitUntilExists(nodewith.Name("Shut down").ClassName("TopShortcutButton")),
+				ui.WaitUntilGone(nodewith.Name("Lock").ClassName("TopShortcutButton")),
+			)(ctx); err != nil {
+				s.Error("Failed to check the lock screen button: ", err)
 			}
 
 			// Wait until the lock state is the wanted value or until timeout.
 			state, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked == param.wantLocked }, 10*time.Second)
 			if err != nil {
-				s.Errorf("Failed to wait for screen lock state %t: %v", param.wantLocked, err)
+				s.Errorf("Failed to wait for screen lock state %t: %v  (last status %+v)", param.wantLocked, err, state)
 			}
 
 			// Unlock the screen if needed.
 			if state.Locked {
 				s.Log("Unlocking the screen with password")
-				if err := keyboard.Type(ctx, pre.Password+"\n"); err != nil {
-					s.Fatal("Failed to type password: ", err)
-				} else if _, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return !st.Locked }, 10*time.Second); err != nil {
-					s.Fatal("Failed to wait for the screen to be unlocked with password: ", err)
+				if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.ReadyForPassword }, 10*time.Second); err != nil {
+					s.Fatalf("Failed to wait until lock screen is ready for password: %v (last status %+v)", err, st)
+				}
+				if err := lockscreen.EnterPassword(ctx, tconn, fixtures.Username, fixtures.Password, kb); err != nil {
+					s.Fatal("Failed to unlock the screen: ", err)
+				}
+				if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return !st.Locked }, 30*time.Second); err != nil {
+					s.Errorf("Failed to wait for screen to be unlocked: %v (last status %+v)", err, st)
 				}
 			}
 		})
