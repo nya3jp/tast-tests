@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aad7889_82516874",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-03-18T08:45:26Z",
+      "side": 1,
+      "message": "Well, this CL makes sense if we will never experiment other h264 profiles.\nBut, do we want to experiment with other h264 profiles, like h264 main, h264 high?\nWe can do it by adding videotype.CodecProfile.\nSo I think using CodecProfile is more convenient for the future experiment, isn\u0027t it?\nWhat do you think?",
+      "revId": "a6ee7fdbc0a65fd0e73a47d3410852cd6aa2fab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
