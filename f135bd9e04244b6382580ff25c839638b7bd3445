@@ -16,6 +16,23 @@
       "message": "Hope it\u0027s okay to add you again Po-Hsien, another CL in the stack :) let me know otherwise",
       "revId": "f135bd9e04244b6382580ff25c839638b7bd3445",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3008e279_b8b44afa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_not_visible.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-18T02:28:56Z",
+      "side": 1,
+      "message": "Please list at least one user that is not a group alias.",
+      "revId": "f135bd9e04244b6382580ff25c839638b7bd3445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
