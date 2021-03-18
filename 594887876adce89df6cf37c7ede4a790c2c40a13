@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ab9ee4_db3fcdd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-03-18T22:53:33Z",
+      "side": 1,
+      "message": "Looks fine to me.\n\nBTW, feel free to resolve the comments when you think you\u0027ve addressed them. ",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
