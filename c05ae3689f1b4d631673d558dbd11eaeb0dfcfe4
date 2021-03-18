@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc1d17c_9d2a34af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-18T01:36:21Z",
+      "side": 1,
+      "message": "Thanks! LGTM.\n\nI noticed some variables were in patchset3 but not in patchset4. Not sure if that\u0027s intended or not. \nLGTM otherwise.",
+      "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a7a186_ba5e7e04",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-18T01:36:21Z",
+      "side": 1,
+      "message": "customAndroidUsername?",
+      "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e89b9e_02d7b0d8",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-18T01:36:21Z",
+      "side": 1,
+      "message": "customAndroidUsername?",
+      "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c205bf5_70972b78",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-18T01:36:21Z",
+      "side": 1,
+      "message": "customAndroidUsername?",
+      "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87ae2e3c_a77bff10",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-18T01:36:21Z",
+      "side": 1,
+      "message": "customAndroidUsername?",
+      "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
