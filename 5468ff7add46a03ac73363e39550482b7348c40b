@@ -69,6 +69,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f6dcc40_405f4562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-18T21:34:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82cb9e76_76d87e37",
+      "revId": "5468ff7add46a03ac73363e39550482b7348c40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c124a9e8_dad1ebca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-18T21:34:55Z",
+      "side": 1,
+      "message": "Right! Thanks. Done",
+      "parentUuid": "15044f38_2749adaf",
+      "revId": "5468ff7add46a03ac73363e39550482b7348c40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22564d3c_9f4d1ab3",
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14a0ceaa_0d200b80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-18T21:34:55Z",
+      "side": 1,
+      "message": "Ack. Logging the command should be sufficient for us.",
+      "parentUuid": "22564d3c_9f4d1ab3",
+      "revId": "5468ff7add46a03ac73363e39550482b7348c40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20d8c148_bdb2a231",
@@ -99,6 +153,24 @@
       "writtenOn": "2021-03-18T06:50:41Z",
       "side": 1,
       "message": "I think this can cause some resource leak. For example, if we hit the s.Fatal in line 340, this will not be closed.\n\nOne possible solution is to have:\n\n  defer func() {\n    if console !\u003d nil {\n      console.Close()\n    }\n  }()\n\nscheduled here, and assign console to nil after the console.Close below.",
+      "revId": "5468ff7add46a03ac73363e39550482b7348c40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458ceab3_55ef9a68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-18T21:34:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20d8c148_bdb2a231",
       "revId": "5468ff7add46a03ac73363e39550482b7348c40b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
