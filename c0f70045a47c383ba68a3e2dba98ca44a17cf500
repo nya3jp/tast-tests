@@ -22,6 +22,92 @@
       },
       "revId": "c0f70045a47c383ba68a3e2dba98ca44a17cf500",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bef5012_79ac365b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-18T22:39:44Z",
+      "side": 1,
+      "message": "Can you add a TODO and bug to add the equivalent of \n\n check_has_mp_rw_firmware\n check_has_mp_ro_firmware\n\nMay be redundant now that we check the KeyID.",
+      "revId": "c0f70045a47c383ba68a3e2dba98ca44a17cf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79614755_8ef01635",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-18T22:39:44Z",
+      "side": 1,
+      "message": "Another TODO here with the bug to use a service for this: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2734154/6/src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go#247",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 63
+      },
+      "revId": "c0f70045a47c383ba68a3e2dba98ca44a17cf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2054b6_fc78daff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-18T22:39:44Z",
+      "side": 1,
+      "message": "The two testRDP0* functions are exactly the same, except for the \"--noremove_flash_read_protect\" flag, right? In that case I think it makes sense to combine them into a single function (\"testRDP0\"?) with a \"bool removeFlashReadProtect\" parameter. \n\nIf you move it, it may make sense to move the \"Given, Then\" comments to the call site.\n\nI think in the shell version I kept them separate since it gets ugly to do a lot of arg parsing.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 1
+      },
+      "revId": "c0f70045a47c383ba68a3e2dba98ca44a17cf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb1742f4_18288c67",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-18T22:39:44Z",
+      "side": 1,
+      "message": "Does this return an error if the exit code is non-zero?",
+      "range": {
+        "startLine": 356,
+        "startChar": 8,
+        "endLine": 356,
+        "endChar": 63
+      },
+      "revId": "c0f70045a47c383ba68a3e2dba98ca44a17cf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
