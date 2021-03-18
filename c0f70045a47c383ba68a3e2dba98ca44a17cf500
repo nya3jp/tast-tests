@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a77ba92b_92db099f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-18T21:35:23Z",
+      "side": 1,
+      "message": "If this is common to both FpAddEntropy and FpRDP0, can we create a common function in fingerprint.go that all the tests can call? Followup CL is fine.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "c0f70045a47c383ba68a3e2dba98ca44a17cf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
