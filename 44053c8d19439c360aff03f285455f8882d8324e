@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58423752_281068df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-18T06:50:41Z",
+      "side": 1,
+      "message": "(I\u0027m not familiar with FPMCU, so just a random guess)\n\nIs there anything expected to change after this reboot? (for example, something like boot_id for Linux?) If so, maybe we can also poll checking that property.\n\nIf not, may be nice to have some comment or TODO? because these \"long enough\" sleep might become source of flakiness.",
+      "parentUuid": "96efdeb4_5c2fce07",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 0
+      },
+      "revId": "44053c8d19439c360aff03f285455f8882d8324e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc7e2563_77598e63",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
         "patchSetId": 1

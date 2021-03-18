@@ -16,6 +16,40 @@
       "message": "Friendly ping",
       "revId": "5468ff7add46a03ac73363e39550482b7348c40b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28691ba1_3ea73ab1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-18T06:50:41Z",
+      "side": 1,
+      "message": "Generally looks good to me except 1 + existing comments.\n\nI think yamaguchi-san was just back from OOO today, so add him back to reviewer for the unresolved comment.\n\nPlease also get review/approval from your teammates.",
+      "revId": "5468ff7add46a03ac73363e39550482b7348c40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20d8c148_bdb2a231",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-18T06:50:41Z",
+      "side": 1,
+      "message": "I think this can cause some resource leak. For example, if we hit the s.Fatal in line 340, this will not be closed.\n\nOne possible solution is to have:\n\n  defer func() {\n    if console !\u003d nil {\n      console.Close()\n    }\n  }()\n\nscheduled here, and assign console to nil after the console.Close below.",
+      "revId": "5468ff7add46a03ac73363e39550482b7348c40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
