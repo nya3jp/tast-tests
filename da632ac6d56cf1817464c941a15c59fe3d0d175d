@@ -16,6 +16,23 @@
       "message": "@Jun, added support for WebUITabStrip in the fixture. Please check. Anything else to approve this CL? Thanks!",
       "revId": "da632ac6d56cf1817464c941a15c59fe3d0d175d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56cd0035_160f1b51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-18T01:16:51Z",
+      "side": 1,
+      "message": "Hmmmm, sorry, I\u0027m hesitant to have this feature to this fixture by default, as it changes the UI significantly (and possibly the performance characteristics too).\n\nSorry but that would dismiss my previous comment.  Now I think it\u0027s better to separate fixtures -- create a new fixture with a different name, and put EnableFeatures(\"WebUITabStrip\") for your own fixture only, and make sure existing one unchanged.\n\nThat\u0027s similar to an old patchset of this CL. Sorry.",
+      "revId": "da632ac6d56cf1817464c941a15c59fe3d0d175d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
