@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "12568b94_b2ff52c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-18T00:04:17Z",
+      "side": 1,
+      "message": "LGTM from ARC Tests side. Over to the Tast Fixture experts.",
+      "revId": "4facb6b168028914d8535375fed7f45ad512730c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5b4e9b59_bbc2b0d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/disable_arc.go",
         "patchSetId": 2
