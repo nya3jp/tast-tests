@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "771ce4f7_baa19a03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-18T04:24:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb9eb858_a0a3eb46",
+      "revId": "16f04c2a03c86d040e3a0ae0823b686e2b272358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef63fa17_f0086281",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-03-17T12:07:35Z",
       "side": 1,
       "message": "what with the mixed case? When camera is disabled feature and video capture is allowed?",
+      "revId": "16f04c2a03c86d040e3a0ae0823b686e2b272358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ceb1881_4bfbc79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-18T04:24:43Z",
+      "side": 1,
+      "message": "I think the second subtest covers this case. The second subtest disable the camera feature while the video capture is default to be allowed. From my understanding, these two policies are theoretically independent:\n\n1. Camera Feature: If disable, camera app is not launchable.\n2. Video Capture: If disable, error will be thrown when trying to stream via Chrome API.",
+      "parentUuid": "ef63fa17_f0086281",
       "revId": "16f04c2a03c86d040e3a0ae0823b686e2b272358",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
