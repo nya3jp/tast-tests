@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd7d4d28_a9e6053e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-18T22:29:33Z",
+      "side": 1,
+      "message": "Done! To avoid flooding remote/bundles/cros/firmware/ with a bunch of codelab files, I put them in a support-package folder (remote/firmware/codelab/)... but then the preupload hook complained that I was putting test files in a support-package folder, so I renamed them as `.txt` files. 😅",
+      "parentUuid": "fe33e744_bbaa843d",
+      "revId": "ee098756dad0b1710f5e177b67fa8301692a08db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f4d5623_0fee281d",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21437864_655cb574",
+        "filename": "src/chromiumos/tast/remote/firmware/CODELAB.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-18T22:29:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f4d5623_0fee281d",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 74
+      },
+      "revId": "ee098756dad0b1710f5e177b67fa8301692a08db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "874c373c_434ddd75",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-03-17T18:03:05Z",
       "side": 1,
       "message": "Using FAFT in the tast world could cause confusion.  Maybe Tast Firmware Test (TFT) or something like that...",
+      "revId": "ee098756dad0b1710f5e177b67fa8301692a08db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3fd3cb6_87be8b4d",
+        "filename": "src/chromiumos/tast/remote/firmware/CODELAB.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-18T22:29:33Z",
+      "side": 1,
+      "message": "Last year I made an effort to avoid using \"FAFT\" in the context of Tast. But I spoke with Dossym in January, and he is keen to keep the name FAFT even in Tast. That\u0027s the name that\u0027s known not only to firmware developers, but also to fleet/infra teams, and to OEMs/ODMs. And it carries with it associations like provisioning and servo. So, I\u0027m deferring to Dossym in using \"FAFT\".",
+      "parentUuid": "874c373c_434ddd75",
       "revId": "ee098756dad0b1710f5e177b67fa8301692a08db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
