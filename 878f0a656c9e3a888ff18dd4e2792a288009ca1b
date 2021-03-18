@@ -33,6 +33,24 @@
       "message": "Where is the map parents being used?",
       "revId": "878f0a656c9e3a888ff18dd4e2792a288009ca1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b58643ef_91074745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/disrupt_ssh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-18T09:55:53Z",
+      "side": 1,
+      "message": "Ouch, no, it was my mistake. Thanks for catching it!",
+      "parentUuid": "5189c49d_ac22dc94",
+      "revId": "878f0a656c9e3a888ff18dd4e2792a288009ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
