@@ -13,8 +13,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DiagLanConnectivity,
-		Desc: "Tests that the lan connectivity diagnostic test can be run",
+		Func: DiagDNSResolverPresent,
+		Desc: "Tests that the DNS Resolver Present diagnostic routine can be run",
 		Contacts: []string{
 			"tbegin@chromium.org",            // test author
 			"khegde@chromium.org",            // network diagnostics author
@@ -27,17 +27,21 @@ func init() {
 	})
 }
 
-// DiagLanConnectivity tests the lan_connectivity diagnostic test can be run
+// DiagDNSResolverPresent tests the DNS Resolver Present diagnostic routine can be run
 // through the mojo API.
-func DiagLanConnectivity(ctx context.Context, s *testing.State) {
+func DiagDNSResolverPresent(ctx context.Context, s *testing.State) {
 	mojo := s.FixtValue().(*diag.MojoAPI)
 
-	result, err := mojo.LanConnectivity(ctx)
+	result, err := mojo.DNSResolverPresent(ctx)
 	if err != nil {
-		s.Fatal("Unable to run LanConnectivity routine: ", err)
+		s.Fatal("Unable to run DNSResolverPresent routine: ", err)
 	}
 
 	if err := diag.CheckRoutineVerdict(result.Verdict); err != nil {
-		s.Fatal("LanConnectivity routine error: ", err)
+		s.Fatal("Unexpected routine routine verdict: ", err)
+	}
+
+	if len(result.Problems) != 0 {
+		s.Fatal("DNSResolverPresent routine reported problems: ", result.Problems)
 	}
 }

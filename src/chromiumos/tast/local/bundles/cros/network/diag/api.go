@@ -39,6 +39,10 @@ function() {
     async lanConnectivity() {
       return await this.getNetworkDiagnostics().lanConnectivity();
     },
+
+    async dnsResolverPresent() {
+      return await this.getNetworkDiagnostics().dnsResolverPresent();
+    },
   }
 }
 `
@@ -76,31 +80,56 @@ const (
 	VerdictNotRun = 2
 )
 
-// jsWrapper takes a the name of a function that has been injected as in a
-// Javascript object and returns a wrapped callable function as a string.
-func jsWrapper(routine string) string {
-	return fmt.Sprintf("function() { return this.%v() }", routine)
+// RoutineResult is a data structure to hold the result of running a network
+// diagnostic routine.
+type RoutineResult struct {
+	Verdict  RoutineVerdict
+	Problems []int
+}
+
+// CheckRoutineVerdict returns nil if the routine ran without problem, or
+// returns an error.
+func CheckRoutineVerdict(verdict RoutineVerdict) error {
+	switch verdict {
+	case VerdictProblem:
+		return errors.New("routine detected a problem")
+	case VerdictNotRun:
+		return errors.New("routine did not run")
+	case VerdictUnknown:
+		return errors.New("unknown routine verdict")
+	case VerdictNoProblem:
+		return nil
+	}
+
+	return errors.Errorf("unexpected routine verdict: %v", verdict)
+}
+
+// runRoutine calls into the injected network diagnostics mojo API and returns a
+// RoutineResult on success, or an error.
+func (m *MojoAPI) runRoutine(ctx context.Context, routine string) (*RoutineResult, error) {
+	result := RoutineResult{Verdict: VerdictUnknown}
+	jsWrap := fmt.Sprintf("function() { return this.%v() }", routine)
+	if err := m.mojoRemote.Call(ctx, &result, jsWrap); err != nil {
+		return nil, errors.Wrapf(err, "failed to run %v", routine)
+	}
+
+	switch result.Verdict {
+	case VerdictNoProblem, VerdictProblem, VerdictNotRun:
+		return &result, nil
+	}
+	return nil, errors.Errorf("unknown routine verdict. Got: %v", result.Verdict)
 }
 
 // LanConnectivity runs the LanConnectivity network diagnostic routine. Returns
-// the RoutineVerdict on success, or an error.
-func (m *MojoAPI) LanConnectivity(ctx context.Context) (RoutineVerdict, error) {
-	result := struct {
-		Verdict int
-	}{Verdict: int(VerdictUnknown)}
-	if err := m.mojoRemote.Call(ctx, &result, jsWrapper("lanConnectivity")); err != nil {
-		return VerdictUnknown, errors.Wrap(err, "failed to run lanConnectivity test")
-	}
+// the RoutineResult on success, or an error.
+func (m *MojoAPI) LanConnectivity(ctx context.Context) (*RoutineResult, error) {
+	return m.runRoutine(ctx, "lanConnectivity")
+}
 
-	if result.Verdict == int(VerdictNoProblem) {
-		return VerdictNoProblem, nil
-	} else if result.Verdict == int(VerdictProblem) {
-		return VerdictProblem, nil
-	} else if result.Verdict == int(VerdictNotRun) {
-		return VerdictNotRun, nil
-	}
-
-	return VerdictUnknown, errors.Errorf("unknown routine verdict. Got: %v", result.Verdict)
+// DNSResolverPresent runs the DNSResolverPresent network diagnostic routine. Returns
+// the RoutineResult on success, or an error.
+func (m *MojoAPI) DNSResolverPresent(ctx context.Context) (*RoutineResult, error) {
+	return m.runRoutine(ctx, "dnsResolverPresent")
 }
 
 // Release frees the resources help by the internal MojoAPI components.
