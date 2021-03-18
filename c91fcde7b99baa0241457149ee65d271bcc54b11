@@ -16,6 +16,63 @@
       "message": "Last one in the chain, thanks for the reviews Po-Hsien",
       "revId": "c91fcde7b99baa0241457149ee65d271bcc54b11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "506275e0_c2fa6b69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-18T02:04:19Z",
+      "side": 1,
+      "message": "LGTM % comment below.",
+      "revId": "c91fcde7b99baa0241457149ee65d271bcc54b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9e3bea8_32711085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-18T02:04:19Z",
+      "side": 1,
+      "message": "req.SenderUsername",
+      "range": {
+        "startLine": 155,
+        "startChar": 51,
+        "endLine": 155,
+        "endChar": 65
+      },
+      "revId": "c91fcde7b99baa0241457149ee65d271bcc54b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca5855fe_bf9de904",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-18T02:04:19Z",
+      "side": 1,
+      "message": "remove.",
+      "revId": "c91fcde7b99baa0241457149ee65d271bcc54b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
