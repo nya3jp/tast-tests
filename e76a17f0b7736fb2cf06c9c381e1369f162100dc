@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d95f1f3a_3e6f1e63",
+        "filename": "src/chromiumos/tast/common/testexec/testexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-18T09:47:35Z",
+      "side": 1,
+      "message": "\u003e \"succcess\" is a possible misspelling of \"success\".\n\nPlease fix.",
+      "parentUuid": "1c0ab5ad_424d8ab2",
+      "range": {
+        "startLine": 328,
+        "startChar": 35,
+        "endLine": 328,
+        "endChar": 43
+      },
+      "revId": "e76a17f0b7736fb2cf06c9c381e1369f162100dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef3a8d15_d07bbda0",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-03-18T09:47:35Z",
+      "side": 1,
+      "message": "\u003e \"succcess\" is a possible misspelling of \"success\".\n\nPlease fix.",
+      "parentUuid": "3d3b260e_c4eef0a1",
+      "range": {
+        "startLine": 79,
+        "startChar": 35,
+        "endLine": 79,
+        "endChar": 43
+      },
+      "revId": "e76a17f0b7736fb2cf06c9c381e1369f162100dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
