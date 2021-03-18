@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0d51575_93d366c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-18T23:44:51Z",
+      "side": 1,
+      "message": "rebased on David\u0027s refactor and changed instances of \u0027nearbyshare\u0027 to \u0027nearbycommon\u0027 where needed",
+      "revId": "4f5a112309b3d6e9cadab3ee14512900bb706eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
