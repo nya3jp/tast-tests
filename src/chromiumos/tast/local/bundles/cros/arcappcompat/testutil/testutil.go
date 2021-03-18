@@ -492,9 +492,9 @@ func MouseClick(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a
 	} else {
 		s.Log("uiElementBounds: ", uiElementBounds)
 		xCoordinate = uiElementBounds.Left
-		s.Log("uiElementBoundsBeforeMouseClick.Left, Xcoordinate: ", xCoordinate)
+		s.Log("Xcoordinate: ", xCoordinate)
 		yCoordinate = uiElementBounds.Top
-		s.Log("uiElementBounds.Top, Ycoordinate: ", yCoordinate)
+		s.Log("Ycoordinate: ", yCoordinate)
 
 		// To perform mouse click.
 		out, err := a.Command(ctx, "input", "mouse", "tap", strconv.Itoa(xCoordinate), strconv.Itoa(yCoordinate)).Output(testexec.DumpLogOnError)
@@ -505,6 +505,58 @@ func MouseClick(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a
 		}
 		DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 	}
+}
+
+// OrientationSize Test verifies orientation size of the app after launch.
+func OrientationSize(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	const (
+		blackBars     = "Black bars observed on both sides of an app"
+		maximizedSize = "Maximized"
+		phoneSize     = "Phone"
+		tabletSize    = "Tablet"
+	)
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	if tabletModeEnabled {
+		s.Log("Device is in tablet mode. Skipping test")
+		return
+	}
+
+	appWidth, appHeight, err := getAppCoordinates(ctx, s, a, d, appPkgName)
+	if err != nil {
+		s.Fatal("Failed to get app coordinates: ", err)
+	}
+
+	info, err := d.GetInfo(ctx)
+	if err != nil {
+		s.Fatal("Failed to get device display: ", err)
+	}
+	deviceDisplayWidth := info.DisplayWidth
+	deviceDisplayHeight := info.DisplayHeight
+
+	windowInfo, err := getAppWindowInfo(ctx, s, a, d, appPkgName)
+
+	switch windowInfo {
+	case "freeform":
+		if appWidth == deviceDisplayWidth {
+			s.Log("Orientation size of an app: ", maximizedSize, " appWidth: ", appWidth, " appHeight: ", appHeight, " deviceDisplayWidth: ", deviceDisplayWidth, " deviceDisplayHeight: ", deviceDisplayHeight)
+		} else if appWidth > deviceDisplayWidth/2 && appWidth <= deviceDisplayWidth*3/4 && appWidth != deviceDisplayWidth {
+			s.Log("Orientation size of an app: ", tabletSize, " appWidth: ", appWidth, " appHeight: ", appHeight, " deviceDisplayWidth: ", deviceDisplayWidth, " deviceDisplayHeight: ", deviceDisplayHeight)
+		} else if appWidth >= deviceDisplayWidth*3/4 && appWidth != deviceDisplayWidth {
+			s.Log("Orientation size of an app: ", tabletSize, " appWidth: ", appWidth, " appHeight: ", appHeight, " deviceDisplayWidth: ", deviceDisplayWidth, " deviceDisplayHeight: ", deviceDisplayHeight)
+		} else {
+			s.Fatal("Orientation size of an app: ", phoneSize, " appWidth: ", appWidth, " appHeight: ", appHeight, " deviceDisplayWidth: ", deviceDisplayWidth, " deviceDisplayHeight: ", deviceDisplayHeight)
+		}
+	case "fullscreen":
+		if appWidth == deviceDisplayWidth {
+			s.Log("Orientation size of an app: ", maximizedSize, " appWidth: ", appWidth, " appHeight: ", appHeight, " deviceDisplayWidth: ", deviceDisplayWidth, " deviceDisplayHeight: ", deviceDisplayHeight)
+		} else if appWidth < deviceDisplayWidth && appWidth != deviceDisplayWidth {
+			s.Fatal("Orientation size of an app: ", maximizedSize+". "+blackBars, " appWidth: ", appWidth, " appHeight: ", appHeight, " deviceDisplayWidth: ", deviceDisplayWidth, " deviceDisplayHeight: ", deviceDisplayHeight)
+		}
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
@@ -740,4 +792,102 @@ func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appP
 	}, &testing.PollOptions{Timeout: LongUITimeout}); err != nil {
 		s.Error("appPkgName doesn't exist: ", err)
 	}
+}
+
+// getAppCoordinates func provides coordinates of the app.
+func getAppCoordinates(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, appPkgName string) (int, int, error) {
+	var (
+		xCoordinate int
+		yCoordinate int
+	)
+	// To get app activities.
+	out, err := a.Command(ctx, "am", "stack", "list").Output()
+	if err != nil {
+		s.Fatal("Failed to get stack list: ", err)
+	}
+	output := string(out)
+	coordinatePrefix := "bounds="
+	splitOutput := strings.Split(output, "\n")
+	for splitLine := range splitOutput {
+		if strings.Contains(splitOutput[splitLine], appPkgName) {
+			splitCoordinate := strings.Split(splitOutput[splitLine], " ")
+			for CoordinateInfo := range splitCoordinate {
+				if strings.Contains(splitCoordinate[CoordinateInfo], coordinatePrefix) {
+					s.Log("Coordinates: ", splitCoordinate[CoordinateInfo])
+					x1coordinateWithOutTrim := strings.Split(splitCoordinate[CoordinateInfo], ",")[0]
+					x1Coordinate := strings.Split(x1coordinateWithOutTrim, "[")[1]
+					x1CoordinateValue, err := strconv.Atoi(x1Coordinate)
+					if err != nil {
+						s.Fatal("Failed to get x1CoordinateValue: ", err)
+					}
+					y1coordinateWithOutTrim := strings.Split(splitCoordinate[CoordinateInfo], ",")[1]
+					y1Coordinate := strings.Split(y1coordinateWithOutTrim, "]")[0]
+					y1CoordinateValue, err := strconv.Atoi(y1Coordinate)
+					if err != nil {
+						s.Fatal("Failed to get y1CoordinateValue: ", err)
+					}
+					x2coordinateWithOutTrim := strings.Split(splitCoordinate[CoordinateInfo], ",")[1]
+					x2Coordinate := strings.Split(x2coordinateWithOutTrim, "[")[1]
+					x2CoordinateValue, err := strconv.Atoi(x2Coordinate)
+					if err != nil {
+						s.Fatal("Failed to get x2CoordinateValue: ", err)
+					}
+					y2coordinateWithOutTrim := strings.Split(splitCoordinate[CoordinateInfo], ",")[2]
+					y2Coordinate := strings.Split(y2coordinateWithOutTrim, "]")[0]
+					y2CoordinateValue, err := strconv.Atoi(y2Coordinate)
+					if err != nil {
+						s.Fatal("Failed to get y2CoordinateValue: ", err)
+					}
+					xCoordinate = x2CoordinateValue - x1CoordinateValue
+					yCoordinate = y2CoordinateValue - y1CoordinateValue
+					break
+				}
+			}
+		}
+	}
+	return xCoordinate, yCoordinate, err
+}
+
+// getAppWindowInfo func provides coordinates of the app.
+func getAppWindowInfo(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, appPkgName string) (string, error) {
+
+	var windowInfo string
+
+	// To get app activities.
+	out, err := a.Command(ctx, "dumpsys", "activity", "activities").Output()
+	if err != nil {
+		s.Fatal("Failed to get dumpsys activity activities: ", err)
+	}
+	output := string(out)
+	TaskRecordPrefix := "* Task"
+	windowStatePrefixForARCP := "WindowState"
+	windowStatePrefixForARCR := "mode="
+	var arcpFound bool
+	var arcrFound bool
+
+	splitOutput := strings.Split(output, "\n")
+	for splitLine := range splitOutput {
+		if strings.Contains(splitOutput[splitLine], appPkgName) && strings.Contains(splitOutput[splitLine], TaskRecordPrefix) {
+			splitWindowInfo := strings.Split(splitOutput[splitLine], " ")
+			for appWindowInfo := range splitWindowInfo {
+				if !arcpFound && strings.Contains(splitWindowInfo[appWindowInfo], windowStatePrefixForARCP) {
+					s.Log("windowInfo raw message ARCP: ", splitWindowInfo[appWindowInfo])
+					windowInfoForARCP := strings.Split(splitWindowInfo[appWindowInfo], "{")[1]
+					s.Log("windowInfoARCP: ", windowInfoForARCP)
+					windowInfo = windowInfoForARCP
+					arcpFound = true
+					break
+				}
+				if !arcrFound && strings.Contains(splitWindowInfo[appWindowInfo], windowStatePrefixForARCR) {
+					s.Log("windowInfo raw message ARCR: ", splitWindowInfo[appWindowInfo])
+					windowInfoForARCR := strings.Split(splitWindowInfo[appWindowInfo], "=")[1]
+					s.Log("windowInfoARCR: ", windowInfoForARCR)
+					windowInfo = windowInfoForARCR
+					arcrFound = true
+					break
+				}
+			}
+		}
+	}
+	return windowInfo, err
 }
