@@ -68,6 +68,24 @@
       "parentUuid": "7a1caf06_0db5bea4",
       "revId": "f069a3593d0e8a7ed57bf07beeab279fefc860fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c8757d_543e551b",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-18T06:10:33Z",
+      "side": 1,
+      "message": "Per discussion, we shall move the cert check to a Tast test instead of breaking the build.",
+      "parentUuid": "22b5c89a_1d68c3ad",
+      "revId": "f069a3593d0e8a7ed57bf07beeab279fefc860fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
