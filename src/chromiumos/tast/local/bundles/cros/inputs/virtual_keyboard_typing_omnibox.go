@@ -9,8 +9,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -53,11 +55,17 @@ func VirtualKeyboardTypingOmnibox(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	conn, err := cr.NewConn(ctx, "")
-	if err != nil {
-		s.Fatal("Failed to connect to test page: ", err)
+	// Warning: Please do not launch Browser via cr.NewConn(ctx, "")
+	// to test omnibox typing. It might be indeterminate whether default url string
+	// "about:blank" is highlighted or not.
+	// In that case, typing test can either replace existing url or insert into it.
+	// A better way to do it is launching Browser from launcher, url is empty by default.
+	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
+		s.Fatalf("Failed to launch %s: %s", apps.Chrome.Name, err)
 	}
-	defer conn.Close()
+	if err := ash.WaitForApp(ctx, tconn, apps.Chrome.ID); err != nil {
+		s.Fatalf("%s did not appear in shelf after launch: %s", apps.Chrome.Name, err)
+	}
 
 	omniboxFinder := nodewith.Role(role.TextField).Attribute("inputType", "url")
 	vkbCtx := vkb.NewContext(cr, tconn)
