@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5285f1cf_63536714",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-18T02:17:45Z",
+      "side": 1,
+      "message": "Will rebase on crrev.com/c/2762585 then submit",
+      "revId": "6a6eb4218e001c2b628218ac7db42d152e5e16bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
