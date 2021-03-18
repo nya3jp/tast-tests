@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,14 +26,6 @@ func init() {
 		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeJPEG},
 		Data:         []string{"bali_640x368_P420.yuv"},
-		Params: []testing.Param{{
-			Name:              "mmap",
-			Val:               "-*Dma*",
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("kukui")),
-		}, {
-			Name: "dmabuf",
-			Val:  "*Dma*",
-		}},
 	})
 }
 
@@ -61,7 +52,6 @@ func EncodeAccelJPEG(ctx context.Context, s *testing.State) {
 	if report, err := gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(s.OutDir(), "gtest.log")),
-		gtest.Filter(s.Param().(string)),
 		gtest.ExtraArgs(
 			logging.ChromeVmoduleFlag(),
 			fmt.Sprintf("--yuv_filenames=%s:640x368", s.DataPath("bali_640x368_P420.yuv"))),
