@@ -16,6 +16,23 @@
       "message": "yhanada@: Please take a look. Thank you.",
       "revId": "8323b973cd060a600b2fb89ae45430fdb7f94099",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b98866e5_1cbb4e6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-03-18T14:16:30Z",
+      "side": 1,
+      "message": "I have no idea about these flags. Could you find anyone who are familiar with this code?",
+      "revId": "8323b973cd060a600b2fb89ae45430fdb7f94099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
