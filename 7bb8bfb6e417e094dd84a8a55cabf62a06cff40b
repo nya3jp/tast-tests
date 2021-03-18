@@ -16,6 +16,58 @@
       "message": "Hi vsavu,\n\nThis CL adds ScopePublicAccount for policies, PTAL!\n\nThanks,\nJit",
       "revId": "7bb8bfb6e417e094dd84a8a55cabf62a06cff40b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87dcd3a6_504e945b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-18T11:35:05Z",
+      "side": 1,
+      "message": "Thanks for working on this! Do you mind if this is merged as a chain with everything in place? It will be easier to review all CLs together.",
+      "parentUuid": "846984b8_277c5524",
+      "revId": "7bb8bfb6e417e094dd84a8a55cabf62a06cff40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6873e645_fb49788f",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-18T11:35:05Z",
+      "side": 1,
+      "message": "nit: have a separate addMandatoryUserPolicy and addMandatoryPublicAccountPolicy. It will make the code easier to understand.",
+      "revId": "7bb8bfb6e417e094dd84a8a55cabf62a06cff40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5ec3c30_acd06e32",
+        "filename": "src/chromiumos/tast/common/policy/public_account_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-18T11:35:05Z",
+      "side": 1,
+      "message": "nit: add a note that this is the only difference between a User and a PublicAccount policy.",
+      "revId": "7bb8bfb6e417e094dd84a8a55cabf62a06cff40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
