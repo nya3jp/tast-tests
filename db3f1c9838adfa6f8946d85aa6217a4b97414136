@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47805eb1_8ee6e9a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-18T00:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9238e6d2_9b78e9ec",
+      "range": {
+        "startLine": 156,
+        "startChar": 29,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "db3f1c9838adfa6f8946d85aa6217a4b97414136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fac0cc1b_3e050b27",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6278d1f1_ad6881e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-18T00:48:40Z",
+      "side": 1,
+      "message": "Sure, done!\n\nI kept hasError, I\u0027d rather print all WARNING/ERROR (there can be more than one).",
+      "parentUuid": "fac0cc1b_3e050b27",
+      "range": {
+        "startLine": 160,
+        "startChar": 14,
+        "endLine": 160,
+        "endChar": 29
+      },
+      "revId": "db3f1c9838adfa6f8946d85aa6217a4b97414136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4820b740_23ccf4d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-18T00:48:40Z",
+      "side": 1,
+      "message": "obsolete.",
+      "parentUuid": "250ccf66_1cefa13d",
+      "range": {
+        "startLine": 160,
+        "startChar": 30,
+        "endLine": 160,
+        "endChar": 81
+      },
+      "revId": "db3f1c9838adfa6f8946d85aa6217a4b97414136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8903566f_49215a95",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-17T16:21:50Z",
       "side": 1,
       "message": "Could you move this out from the enclosing for-loop?\nAlso, it\u0027s nice to merge those two.\n\nerrRegexp :\u003d regexp.MustCompile(\"^(ERROR|WARNING):.*$\")\nfor _, match :\u003d ... {",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 56
+      },
+      "revId": "db3f1c9838adfa6f8946d85aa6217a4b97414136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f182c6_20cdbd60",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-18T00:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8903566f_49215a95",
       "range": {
         "startLine": 167,
         "startChar": 2,
