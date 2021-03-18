@@ -39,6 +39,30 @@
       },
       "revId": "f792037af21ccb93cc092251a583dee3d5197669",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd235b72_3c337dfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-03-18T00:51:49Z",
+      "side": 1,
+      "message": "Thanks for catching that! Yeah, I noticed this particular test failed in my local run and this fixed it.",
+      "parentUuid": "210fe196_4ae10111",
+      "range": {
+        "startLine": 576,
+        "startChar": 21,
+        "endLine": 576,
+        "endChar": 24
+      },
+      "revId": "f792037af21ccb93cc092251a583dee3d5197669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
