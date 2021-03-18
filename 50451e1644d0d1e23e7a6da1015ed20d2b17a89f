@@ -46,6 +46,30 @@
       },
       "revId": "50451e1644d0d1e23e7a6da1015ed20d2b17a89f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd427146_05e999ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/benchmark/lmbench.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-18T00:06:46Z",
+      "side": 1,
+      "message": "Hi Hsin-Yi, both the geomean and the 4 results are exported. Geomean is used by the current Cienet dashboard and in the future the 4 results can be process by other post-processing logic.\n\nThe per array-size latency is stored in lmbench_results.json. Example output:\n\n  \"lat_mem_rd\": {\n    \"0.00098\": 0.96,\n    \"0.12500\": 2.941,\n    \"128.00000\": 6.258,\n    \"8.00000\": 5.737\n  }",
+      "parentUuid": "a0b336c4_486df84f",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 65
+      },
+      "revId": "50451e1644d0d1e23e7a6da1015ed20d2b17a89f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
