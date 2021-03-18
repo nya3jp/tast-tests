@@ -105,6 +105,24 @@
       "parentUuid": "e4c99025_5b9684a6",
       "revId": "2d05a268280982fcb5b2625d43376b07e6274a6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5228e59c_15d9f853",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-18T09:22:37Z",
+      "side": 1,
+      "message": "SGTM then.",
+      "parentUuid": "8757a8df_b013fa95",
+      "revId": "2d05a268280982fcb5b2625d43376b07e6274a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
