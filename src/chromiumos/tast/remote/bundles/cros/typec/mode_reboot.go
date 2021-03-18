@@ -5,6 +5,7 @@
 package typec
 
 import (
+	"bytes"
 	"context"
 	"regexp"
 	"strconv"
@@ -33,12 +34,16 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 		Params: []testing.Param{
 			// For running manually.
-			{},
+			{
+				Name: "manual",
+				Val:  false,
+			},
 			// For automated testing.
 			{
-				Name:              "test",
+				Name:              "smoke",
 				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("volteer", "voxel")),
+				Val:               true,
 			}},
 	})
 }
@@ -68,18 +73,19 @@ func ModeReboot(ctx context.Context, s *testing.State) {
 
 	// Check if a TBT device is connected. If one isn't, we should skip
 	// execution.
-	// Check each port successively. If a port returns an error, that means
-	// we are out of ports.
-	// This check is for test executions which take place on
-	// CQ (where TBT peripherals aren't connected).
-	for i := 0; i < maxTypeCPorts; i++ {
-		if present, err := checkPortForTBTPartner(ctx, d, i); err != nil {
-			s.Log("Couldn't find TBT device from PD identity: ", err)
-			return
-		} else if present {
-			s.Log("Found a TBT device, proceeding with test")
-			break
-		}
+	present, err := checkPortsForTBTPartner(ctx, d)
+	if err != nil {
+		s.Log("Couldn't find TBT device from PD identity: ", err)
+		return
+	}
+
+	// Return early for smoke testing (CQ).
+	if smoke := s.Param().(bool); smoke {
+		return
+	}
+
+	if !present {
+		s.Fatal("No TBT device connected to DUT")
 	}
 
 	// Login to Chrome.
@@ -159,19 +165,33 @@ func checkTBTDevice(ctx context.Context, d *dut.DUT, expected bool) error {
 	return nil
 }
 
-// checkPortForTBTPartner checks whether the device has a connected Thunderbolt device.
+// checkPortsForTBTPartner checks whether the device has a connected Thunderbolt device.
 // We use the 'ectool typecdiscovery' command to accomplish this.
-// If |port| is invalid, the ectool command should return an INVALID_PARAM error.
 //
 // This functions returns:
-// - Whether a TBT device is present at a given port.
+// - Whether a TBT device is connectd to the DUT.
 // - The error value if the command didn't run, else nil.
-func checkPortForTBTPartner(ctx context.Context, d *dut.DUT, port int) (bool, error) {
-	out, err := d.Command("ectool", "typecdiscovery", strconv.Itoa(port), "0").Output(ctx)
-	if err != nil {
-		return false, errors.Wrap(err, "failed to run ectool command")
+func checkPortsForTBTPartner(ctx context.Context, d *dut.DUT) (bool, error) {
+	for i := 0; i < maxTypeCPorts; i++ {
+		out, err := d.Command("ectool", "typecdiscovery", strconv.Itoa(i), "0").CombinedOutput(ctx)
+		if err != nil {
+			// If we get an invalid param error, that means there are no more ports left.
+			// In that case, we shouldn't return an error, but should return false.
+			//
+			// TODO(pmalani): Determine how many ports a device supports, instead of
+			// relying on INVALID_PARAM.
+			if bytes.Contains(out, []byte("INVALID_PARAM")) {
+				return false, nil
+			}
+
+			return false, errors.Wrap(err, "failed to run ectool command")
+		}
+
+		// Look for a TBT SVID in the output. If one doesn't exist, return false.
+		if bytes.Contains(out, []byte("SVID 0x8087")) {
+			return true, nil
+		}
 	}
 
-	// Look for a TBT SVID in the output. If one doesn't exist, return false.
-	return regexp.MatchString(`SVID 0x8087`, string(out))
+	return false, nil
 }
