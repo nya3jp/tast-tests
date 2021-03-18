@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "846984b8_277c5524",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-18T11:06:24Z",
+      "side": 1,
+      "message": "Hi vsavu,\n\nThis CL adds ScopePublicAccount for policies, PTAL!\n\nThanks,\nJit",
+      "revId": "7bb8bfb6e417e094dd84a8a55cabf62a06cff40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
