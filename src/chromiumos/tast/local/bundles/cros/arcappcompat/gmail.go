@@ -20,13 +20,14 @@ import (
 // ClamshellTests are placed here.
 var clamshellTestsForGmail = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForGmail},
-	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
+	{Name: "launch: Orientation", Fn: testutil.OrientationSize},
+	/* {Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 	{Name: "Clamshell: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
 	{Name: "Clamshell: Physical Keyboard", Fn: testutil.TouchAndTextInputs},
-	{Name: "Clamshell: Keyboard Critical Path", Fn: testutil.KeyboardNavigations},
+	{Name: "Clamshell: Keyboard Critical Path", Fn: testutil.KeyboardNavigations}, */
 }
 
 // TouchviewTests are placed here.
@@ -84,7 +85,7 @@ func Gmail(ctx context.Context, s *testing.State) {
 
 // launchAppForGmail verifies Gmail is logged in and
 // verify Gmail reached main activity page of the app.
-func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 
 	const (
 		textViewClassName       = "android.widget.TextView"

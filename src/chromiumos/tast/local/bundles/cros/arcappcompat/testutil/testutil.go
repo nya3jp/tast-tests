@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -38,7 +39,7 @@ const (
 )
 
 // TestFunc represents the "test" function.
-type TestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string)
+type TestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string)
 
 // TestCase represents the  name of test, and the function to call.
 type TestCase struct {
@@ -153,7 +154,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
 				s.Fatalf("Failed to launch app: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
 			}
-			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
+			test.Fn(ctx, s, tconn, act, a, d, appPkgName, appActivity)
 		})
 		cancel()
 	}
@@ -217,7 +218,7 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 }
 
 // ClamshellFullscreenApp Test launches the app in full screen window and verifies launch successfully without crash or ANR.
-func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	s.Log("Setting the window to fullscreen")
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
 		s.Fatal(" Failed to set the window to fullscreen: ", err)
@@ -236,7 +237,7 @@ func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome
 }
 
 // MinimizeRestoreApp Test "minimize and relaunch the app" and verifies app relaunch successfully without crash or ANR.
-func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	s.Log("Minimizing the window")
 	defaultState, err := ash.GetARCAppWindowState(ctx, tconn, appPkgName)
 	if err != nil {
@@ -270,7 +271,7 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 }
 
 // ClamshellResizeWindow Test "resize and restore back to original state of the app" and verifies app launch successfully without crash or ANR.
-func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get tablet mode: ", err)
@@ -323,7 +324,7 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 }
 
 // TouchAndTextInputs func verify touch and text inputs in the app are working properly without crash or ANR.
-func TouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func TouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Press enter key twice.
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
 		s.Log("Failed to enter KEYCODE_ENTER: ", err)
@@ -343,7 +344,7 @@ func TouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.Tes
 }
 
 // KeyboardNavigations func verifies app perform keyboard navigations successfully without crash or ANR.
-func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get tablet mode: ", err)
@@ -371,7 +372,7 @@ func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.Te
 }
 
 // TouchAndPlayVideo func verifies app perform touch and play video successfully without crash or ANR.
-func TouchAndPlayVideo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func TouchAndPlayVideo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get tablet mode: ", err)
@@ -399,7 +400,7 @@ func TouchAndPlayVideo(ctx context.Context, s *testing.State, tconn *chrome.Test
 }
 
 // TouchviewRotate Test verifies if app performs rotation successfully without crash or ANR.
-func TouchviewRotate(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func TouchviewRotate(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 	if err != nil {
@@ -441,7 +442,7 @@ func TouchviewRotate(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 }
 
 // MouseScrollAction func verifies app perform mouse scroll actions successfully without crash or ANR.
-func MouseScrollAction(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func MouseScrollAction(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// To perform mouse scroll actions.
 	out, err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "--throttle", "100", "--pct-touch", "30", "--pct-trackball", "50", "-v", "1000").Output(testexec.DumpLogOnError)
 	if err != nil {
@@ -454,7 +455,7 @@ func MouseScrollAction(ctx context.Context, s *testing.State, tconn *chrome.Test
 }
 
 // TouchScreenScroll Test verifies app perform scrollForward successfully without crash or ANR.
-func TouchScreenScroll(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func TouchScreenScroll(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	checkForScrollLayout := d.Object(ui.Scrollable(true), ui.Focusable(true), ui.Enabled(true))
 	if err := checkForScrollLayout.WaitForExists(ctx, DefaultUITimeout); err != nil {
 		s.Log("ScrollLayout doesn't exist. Page is not scrollable and skipping the test: ", err)
@@ -466,8 +467,68 @@ func TouchScreenScroll(ctx context.Context, s *testing.State, tconn *chrome.Test
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
+// OrientationSize Test verifies size of the app after launch.
+func OrientationSize(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	const (
+		maximizedSize = "Maximized"
+		phoneSize     = "Phone"
+		tabletSize    = "Tablet"
+		blackBars     = "Black bars on both sides of an app"
+	)
+	bounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		s.Log("Failed to get window bounds: ", err)
+	}
+	s.Log("bound: ", bounds)
+	appWidth := bounds.Width
+	s.Log("appWidth = bounds.Width: ", appWidth)
+	appHeight := bounds.Height
+	s.Log("appHeight := bounds.Height: ", appHeight)
+	if appWidth == 0 && appHeight == 0 {
+		appWidth, appHeight, err = getAppCoordinates(ctx, s, act, a, d, appPkgName)
+		s.Log("appWidth", appWidth)
+		s.Log("appHeight", appHeight)
+		if err != nil {
+			s.Fatal("Failed to get app coordinates: ", err)
+		}
+	}
+	appWidth, appHeight, err = getAppCoordinates(ctx, s, act, a, d, appPkgName)
+	s.Log("appWidth", appWidth)
+	s.Log("appHeight", appHeight)
+	if err != nil {
+		s.Fatal("Failed to get app coordinates: ", err)
+	}
+	info, err := d.GetInfo(ctx)
+	if err != nil {
+		s.Fatal("Failed to get device display: ", err)
+	}
+
+	deviceDisplayWidth := info.DisplayWidth
+	s.Log("deviceDisplayWidth", deviceDisplayWidth)
+	deviceDisplayHeight := info.DisplayHeight
+	s.Log("deviceDisplayHeight", deviceDisplayHeight)
+
+	if appWidth == deviceDisplayWidth {
+		s.Log("Orientation size of an app: ", maximizedSize)
+	} else if appWidth < deviceDisplayWidth/3 && appWidth != deviceDisplayWidth {
+		s.Fatal("Orientation size of an app: ", phoneSize)
+	} else if appWidth > deviceDisplayWidth/2 && appWidth <= deviceDisplayWidth*3/4 && appWidth != deviceDisplayWidth {
+		s.Log("Orientation size of an app: ", tabletSize)
+	} else if appWidth >= deviceDisplayWidth*3/4 && appHeight >= deviceDisplayHeight*3/4 && appWidth != deviceDisplayWidth {
+		s.Log("Orientation size of an app: ", tabletSize)
+	} else if appWidth < deviceDisplayWidth/2 && appHeight < deviceDisplayHeight/2 && appWidth != deviceDisplayWidth {
+		s.Fatal("Orientation size of an app: ", phoneSize)
+	} else if appWidth < deviceDisplayWidth/2 && appHeight > deviceDisplayHeight*3/4 && appWidth != deviceDisplayWidth {
+		s.Fatal("Orientation size of an app: ", maximizedSize+". "+blackBars)
+	} else if appWidth < deviceDisplayWidth/2 && appHeight > deviceDisplayHeight/2 && appWidth != deviceDisplayWidth {
+		s.Fatal("Orientation size of an app: ", phoneSize)
+	}
+
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
-func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
 	act, err := arc.NewActivity(a, appPkgName, appActivity)
 	if err != nil {
@@ -632,6 +693,125 @@ func processMonkeyOutput(output string) error {
 	}
 	return nil
 }
+
+// getAppCoordinates func provides coordinates of the app.
+func getAppCoordinates(ctx context.Context, s *testing.State, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName string) (int, int, error) {
+	var (
+		xCoordinate int
+		yCoordinate int
+	)
+	// To get app activities.
+	out, err := a.Command(ctx, "am", "stack", "list").Output()
+	if err != nil {
+		s.Fatal("Failed to get stack list: ", err)
+	}
+	output := string(out)
+	coordinatePrefix := "bounds="
+	splitOutput := strings.Split(output, "\n")
+	for splitLine := range splitOutput {
+		if strings.Contains(splitOutput[splitLine], appPkgName) {
+			splitCoordinate := strings.Split(splitOutput[splitLine], " ")
+			for CoordinateInfo := range splitCoordinate {
+				if strings.Contains(splitCoordinate[CoordinateInfo], coordinatePrefix) {
+					s.Log("Coordinates: ", splitCoordinate[CoordinateInfo])
+					x1coordinateValueWithOutTrim := strings.Split(splitCoordinate[CoordinateInfo], ",")[0]
+					x1Coordinate := strings.Split(x1coordinateValueWithOutTrim, "[")[1]
+					x1CoordinateValue, err := strconv.Atoi(x1Coordinate)
+					if err == nil {
+						s.Logf("x1CoordinateValue=%d, type: %T", x1CoordinateValue, x1CoordinateValue)
+					}
+
+					y1coordinateValueWithOutTrim := strings.Split(splitCoordinate[CoordinateInfo], ",")[1]
+					y1Coordinate := strings.Split(y1coordinateValueWithOutTrim, "]")[0]
+					y1CoordinateValue, err := strconv.Atoi(y1Coordinate)
+					if err == nil {
+						s.Logf("y1CoordinateValue=%d, type: %T", y1CoordinateValue, y1CoordinateValue)
+					}
+
+					x2coordinateValueWithOutTrim := strings.Split(splitCoordinate[CoordinateInfo], ",")[1]
+					x2Coordinate := strings.Split(x2coordinateValueWithOutTrim, "[")[1]
+					x2CoordinateValue, err := strconv.Atoi(x2Coordinate)
+					if err == nil {
+						s.Logf("x2CoordinateValue=%d, type: %T", x2CoordinateValue, x2CoordinateValue)
+					}
+
+					y2coordinateValueWithOutTrim := strings.Split(splitCoordinate[CoordinateInfo], ",")[2]
+					y2Coordinate := strings.Split(y2coordinateValueWithOutTrim, "]")[0]
+					y2CoordinateValue, err := strconv.Atoi(y2Coordinate)
+					if err == nil {
+						s.Logf("y2CoordinateValue=%d, type: %T", y2CoordinateValue, y2CoordinateValue)
+					}
+					xCoordinate = x2CoordinateValue - x1CoordinateValue
+					yCoordinate = y2CoordinateValue - y1CoordinateValue
+					break
+				}
+			}
+		}
+	}
+	return xCoordinate, yCoordinate, err
+}
+
+/* // getAppCoordiantes func provides the coordinates of the app.
+func getAppCoordinates(ctx context.Context, s *testing.State, act *arc.Activity, a *arc.ARC, d *ui.Device, appPkgName string) (int, int, error) {
+	var (
+		xCoordinate int
+		yCoordinate int
+	)
+	// To get app activities.
+	out, err := a.Command(ctx, "dumpsys", "activity", "activities").Output()
+	if err != nil {
+		s.Log(err, "could not get dumpsys activity and skipped clamshell orientation.")
+		return 0, 0, err
+	}
+
+	output := string(out)
+	packageNamePrefix := appPkgName
+	recCoordinatePrefix := "=Rect("
+
+	splitOutput := strings.Split(output, "\n")
+	for splitLine := range splitOutput {
+		if strings.Contains(splitOutput[splitLine], packageNamePrefix) {
+			if strings.Contains(splitOutput[splitLine], recCoordinatePrefix) {
+				splitOutputForRecCoordinate := strings.Split(splitOutput[splitLine], "}, ")
+				for splitLineForRecCoordinate := range splitOutputForRecCoordinate {
+					fullRecCoordinate := splitOutputForRecCoordinate[splitLineForRecCoordinate]
+					if strings.Contains(splitOutputForRecCoordinate[splitLineForRecCoordinate], recCoordinatePrefix) {
+						splitX1CoordinateValue := strings.Split(splitOutputForRecCoordinate[splitLineForRecCoordinate], ",")[0]
+						x1Coordinate := strings.Split(splitX1CoordinateValue, "(")[1]
+						x1CoordinateValue, err := strconv.Atoi(x1Coordinate)
+						if err == nil {
+							fmt.Printf("x1CoordinateValue=%d, type: %T\n", x1CoordinateValue, x1CoordinateValue)
+						}
+						splitY1CoordinateValue := strings.Split(splitOutputForRecCoordinate[splitLineForRecCoordinate], ",")[1]
+						y1Coordinate := strings.Split(splitY1CoordinateValue, "-")[0]
+						y1CoordinateValue, err := strconv.Atoi(y1Coordinate)
+						if err == nil {
+							fmt.Printf("y1CoordinateValue=%d, type: %T\n", y1CoordinateValue, y1CoordinateValue)
+						}
+						splitX2CoordinateValue := strings.Split(fullRecCoordinate, ",")[1]
+						x2CoordinateValueWithSpace := strings.Split(splitX2CoordinateValue, "-")[1]
+						x2Coordinate := strings.Split(x2CoordinateValueWithSpace, " ")[1]
+						x2CoordinateValue, err := strconv.Atoi(x2Coordinate)
+						if err == nil {
+							fmt.Printf("x2CoordinateValue=%d, type: %T\n", x2CoordinateValue, x2CoordinateValue)
+						}
+						splitY2CoordinateValue := strings.Split(fullRecCoordinate, ",")[2]
+						y2CoordinateValueWithSpace := strings.Split(splitY2CoordinateValue, ")")[0]
+						y2Coordinate := strings.Split(y2CoordinateValueWithSpace, " ")[1]
+						y2CoordinateValue, err := strconv.Atoi(y2Coordinate)
+						if err == nil {
+							fmt.Printf("y2CoordinateValue=%d, type: %T\n", y2CoordinateValue, y2CoordinateValue)
+						}
+						xCoordinate = x2CoordinateValue - x1CoordinateValue
+						yCoordinate = y2CoordinateValue - y1CoordinateValue
+					}
+				}
+				break
+			}
+		}
+	}
+	return xCoordinate, yCoordinate, err
+} */
 
 // HandleDialogBoxes func will handle the dialog box
 func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appPkgName string) {
