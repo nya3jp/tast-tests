@@ -16,6 +16,40 @@
       "message": "Hi again hidehiko, thanks for the review ,-)",
       "revId": "534f022530eceb03021c5179b62f8c4d23738b6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e456fd8_5bf609bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-18T14:00:10Z",
+      "side": 1,
+      "message": "LGTM. Thank you for cleaning up the code!",
+      "revId": "534f022530eceb03021c5179b62f8c4d23738b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d70dc23e_27271283",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-18T14:00:10Z",
+      "side": 1,
+      "message": "huge nit: could you remove this empty line?",
+      "revId": "534f022530eceb03021c5179b62f8c4d23738b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
