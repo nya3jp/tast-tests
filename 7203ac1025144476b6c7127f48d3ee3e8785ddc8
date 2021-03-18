@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad0636b_d6d848b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-03-18T18:09:58Z",
+      "side": 1,
+      "message": "This seems to be more checking the test framework than the actual collector. \n\nI would think checking the signature is the expected sig would be more useful. \n\nOr don\u0027t if you don\u0027t feel that\u0027s useful / easy. It was just a suggestion.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 116
+      },
+      "revId": "7203ac1025144476b6c7127f48d3ee3e8785ddc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
