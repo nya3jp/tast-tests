@@ -81,7 +81,7 @@ func AlternateErrorPagesEnabled(ctx context.Context, s *testing.State) {
 
 				return nil
 			}, &testing.PollOptions{
-				Timeout: 5 * time.Second,
+				Timeout: 15 * time.Second,
 			}); err != nil {
 				s.Error("Failed waiting for the correct error page: ", err)
 			}
