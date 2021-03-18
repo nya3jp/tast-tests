@@ -37,6 +37,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82cb9e76_76d87e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-18T10:50:59Z",
+      "side": 1,
+      "message": "please say how many attempts was a threshold.",
+      "revId": "5468ff7add46a03ac73363e39550482b7348c40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22564d3c_9f4d1ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-18T10:50:59Z",
+      "side": 1,
+      "message": "I wanted to suggest to put the command in the failure message but I am not sure if would help or not with investigation.",
+      "revId": "5468ff7add46a03ac73363e39550482b7348c40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "20d8c148_bdb2a231",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
         "patchSetId": 3
