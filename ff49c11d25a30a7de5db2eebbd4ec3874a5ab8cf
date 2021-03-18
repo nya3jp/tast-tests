@@ -184,6 +184,30 @@
       },
       "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d5a2026_fb0e7ac6",
+        "filename": "src/chromiumos/tast/services/cros/ui/google_meet_service.proto",
+        "patchSetId": 37
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-18T09:06:39Z",
+      "side": 1,
+      "message": "How about just introducing two gRPC methods, RunGoogleMeetScenario and RunZoomScenario?\n\nI just thought that introducing two services with one method each sounds a bit redundant, especially when neither of two services don\u0027t have internal states (i.e. service implementations only have *testing.ServiceState as a field).",
+      "parentUuid": "8f266e5a_eebac15c",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
