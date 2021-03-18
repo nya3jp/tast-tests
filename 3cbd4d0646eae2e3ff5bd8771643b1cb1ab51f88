@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40f7e3c0_da752e89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-18T01:11:44Z",
+      "side": 1,
+      "message": "I\u0027m puzzled why Var is used here.  Note that Var is a custom parameter supplied through commandline. I don\u0027t think it\u0027s a good use for tablet/clamshell switches.",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d65258d6_92c3e11a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-18T01:11:44Z",
+      "side": 1,
+      "message": "I\u0027m not sure how beneficial it is to have this utility function.  Why not simply calling ash.EnsureTabletModeEnabled?\nIt\u0027s something like:\n  if mode, ok :\u003d s.Var(\"mode\"); ok {\n    if err :\u003d ash.EnsureTabletModeEnabled(ctx, tconn, mode \u003d\u003d \"tablet\"); err !\u003d nil {\n      ...\n    }\n\n\nNote that:\n- ash.EnsureTabletModeEnabled checks the current state, and invokes SetTabletModeEnabled only when it needs to switch the state\n- it always return the cleanup function, as sometimes a test scenario may change the state after ash.EnsureTabletModeEnabled is called.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acfedde8_f12f44a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
         "patchSetId": 46
@@ -31,6 +77,109 @@
       "writtenOn": "2021-03-17T18:16:19Z",
       "side": 1,
       "message": "We recently introduced a new library called \u0027uiauto\u0027. By using that, I don\u0027t think you need to do this.  It would be a bit of albeit to rewrite the use of ui, but I think it\u0027s worth doing.",
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5502fb6_b0ae2376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-18T01:11:44Z",
+      "side": 1,
+      "message": "nit: use number x unit (i.e. 10 * time.Second).",
+      "range": {
+        "startLine": 75,
+        "startChar": 87,
+        "endLine": 75,
+        "endChar": 103
+      },
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253740b7_2d39bb60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-18T01:11:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 81,
+        "startChar": 51,
+        "endLine": 81,
+        "endChar": 65
+      },
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e361a3_4df7bb16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-18T01:11:44Z",
+      "side": 1,
+      "message": "Add regexp.QuoteMeta (i.e. pattern +\u003d regexp.QuoteMeta(name))",
+      "range": {
+        "startLine": 230,
+        "startChar": 13,
+        "endLine": 230,
+        "endChar": 17
+      },
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd2a268_853de741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-18T01:11:44Z",
+      "side": 1,
+      "message": "Can you check the error of conn.Close as well?\n  if closeErr :\u003d conn.Close(); closeErr !\u003d nil {\n    testing.ContextLog(ctx, \"Failed to close the connection: \", closeErr)\n  }",
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449a08a8_fe76a7da",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-18T01:11:44Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a \"ui/bluetooth\" anymore, as it controls bluetooth API directly.\n\nIf this type of utility is necessary, you could move this to bundles/cros/ui/cuj or create a new package like bundles/cros/ui/bluetooth.",
       "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
