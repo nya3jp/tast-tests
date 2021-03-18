@@ -10,12 +10,15 @@ import (
 	"path/filepath"
 
 	"github.com/google/fscrypt/metadata"
-	"github.com/google/fscrypt/util"
 
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
+
+type fscryptVersionParam struct {
+	version int64
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -26,6 +29,15 @@ func init() {
 			"chromeos-storage@google.com",
 		},
 		Attr: []string{"group:mainline"},
+		Params: []testing.Param{{
+			Name:              "v1",
+			Val:               fscryptVersionParam{version: 1},
+			ExtraSoftwareDeps: []string{"use_fscrypt_v1"},
+		}, {
+			Name:              "v2",
+			Val:               fscryptVersionParam{version: 2},
+			ExtraSoftwareDeps: []string{"use_fscrypt_v2"},
+		}},
 	})
 }
 
@@ -75,11 +87,7 @@ func FscryptEncryptionPolicy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get policy for mount path: ", err)
 	}
 
-	// Use literal values for policy version numbers since EncryptionOptions.PolicyVersion values differ from the values defined in the kernel.
-	var expectedPolicyVersion int64 = 1
-	if util.IsKernelVersionAtLeast(5, 4) {
-		expectedPolicyVersion = 2
-	}
+	var expectedPolicyVersion int64 = s.Param().(fscryptVersionParam).version
 
 	if encPolicy.Options.PolicyVersion != expectedPolicyVersion {
 		s.Fatalf("Invalid policy version: got %d, want %d", encPolicy.Options.PolicyVersion, expectedPolicyVersion)
