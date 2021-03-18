@@ -8,10 +8,10 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -42,49 +42,27 @@ func SystemTrayPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	defer ui.WaitForLocationChangeCompleted(ctx, tconn)
-
+	ac := uiauto.New(tconn)
 	// Find and click the StatusArea via UI. Clicking it opens the Ubertray.
-	params := ui.FindParams{
-		ClassName: "ash/StatusAreaWidgetDelegate",
+	statusArea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
+	collapseButton := nodewith.ClassName("CollapseButton")
+	if err := uiauto.Combine(
+		"open the uber tray",
+		ac.LeftClick(statusArea),
+		ac.WaitUntilExists(collapseButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to open the uber tray: ", err)
 	}
-	statusArea, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to find the status area (time, battery, etc.): ", err)
-	}
-	defer statusArea.Release(ctx)
-
-	if err := statusArea.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click status area: ", err)
-	}
-
-	// Confirm that the system tray is open by checking for the "CollapseButton".
-	params = ui.FindParams{
-		ClassName: "CollapseButton",
-	}
-	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
-		s.Fatal("Waiting for system tray open failed: ", err)
-	}
-
-	// Find the collapse button view bounds.
-	collapseButton, err := ui.Find(ctx, tconn, ui.FindParams{ClassName: "CollapseButton"})
-	if err != nil {
-		s.Fatal("Failed to find the collapse button: ", err)
-	}
-	defer collapseButton.Release(ctx)
 
 	// Toggle the collapsed state of the system tray.
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		if err := collapseButton.LeftClick(ctx); err != nil {
-			return errors.Wrap(err, "failed to click collapse button")
-		}
-		if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to wait")
-		}
-		if err := collapseButton.LeftClick(ctx); err != nil {
-			return errors.Wrap(err, "failed to click the collapse button")
-		}
-		return ui.WaitForLocationChangeCompleted(ctx, tconn)
+		return uiauto.Combine(
+			"collapse and expand",
+			ac.LeftClick(collapseButton),
+			ac.WaitForLocation(collapseButton),
+			ac.LeftClick(collapseButton),
+			ac.WaitForLocation(collapseButton),
+		)(ctx)
 	},
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToCollapsed",
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToExpanded"),
