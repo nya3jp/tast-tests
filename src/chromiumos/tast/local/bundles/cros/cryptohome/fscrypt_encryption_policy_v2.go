@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -19,17 +19,18 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FscryptEncryptionPolicy,
+		Func: FscryptEncryptionPolicyV2,
 		Desc: "Check fscrypt encryption policy version of a newly created user cryptohome",
 		Contacts: []string{
 			"sarthakkukreti@google.com",
 			"chromeos-storage@google.com",
 		},
-		Attr: []string{"group:mainline"},
+		SoftwareDeps: []string{"use_fscrypt_v2"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
-func FscryptEncryptionPolicy(ctx context.Context, s *testing.State) {
+func FscryptEncryptionPolicyV2(ctx context.Context, s *testing.State) {
 	const (
 		shadow   = "/home/.shadow"
 		user     = "fscryptuser"
@@ -75,11 +76,7 @@ func FscryptEncryptionPolicy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get policy for mount path: ", err)
 	}
 
-	// Use literal values for policy version numbers since EncryptionOptions.PolicyVersion values differ from the values defined in the kernel.
-	var expectedPolicyVersion int64 = 1
-	if util.IsKernelVersionAtLeast(5, 4) {
-		expectedPolicyVersion = 2
-	}
+	var expectedPolicyVersion int64 = 2
 
 	if encPolicy.Options.PolicyVersion != expectedPolicyVersion {
 		s.Fatalf("Invalid policy version: got %d, want %d", encPolicy.Options.PolicyVersion, expectedPolicyVersion)
