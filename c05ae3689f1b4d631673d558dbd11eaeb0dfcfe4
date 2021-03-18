@@ -18,6 +18,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23eb3e8d_a54169f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-18T02:04:29Z",
+      "side": 1,
+      "message": "I realized most of the fixtures don\u0027t actually need that variable since it\u0027s only used in the SomeContacts fixtures, so I went ahead and took them out where they weren\u0027t needed.",
+      "parentUuid": "bcc1d17c_9d2a34af",
+      "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4e8b7a8_c45351d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-18T02:04:29Z",
+      "side": 1,
+      "message": "Need wait for David\u0027s change (crrev.com/c/2762585) to land, then going to rebase \u0026 submit these ones.",
+      "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1a7a186_ba5e7e04",
@@ -31,6 +66,24 @@
       "writtenOn": "2021-03-18T01:36:21Z",
       "side": 1,
       "message": "customAndroidUsername?",
+      "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73b2a5c5_d8441d37",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-18T02:04:29Z",
+      "side": 1,
+      "message": "only \u0027SomeContacts\u0027 fixtures need the customAndroidUsername variable, mistakenly just put it everywhere in the earlier patches",
+      "parentUuid": "d1a7a186_ba5e7e04",
       "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "469a096c_d749961c",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-18T02:04:29Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "84e89b9e_02d7b0d8",
+      "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c205bf5_70972b78",
@@ -69,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5eab159_4a65f6d7",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-18T02:04:29Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "5c205bf5_70972b78",
+      "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87ae2e3c_a77bff10",
@@ -82,6 +171,24 @@
       "writtenOn": "2021-03-18T01:36:21Z",
       "side": 1,
       "message": "customAndroidUsername?",
+      "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3953735a_a643da9f",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-18T02:04:29Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "87ae2e3c_a77bff10",
       "revId": "c05ae3689f1b4d631673d558dbd11eaeb0dfcfe4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
