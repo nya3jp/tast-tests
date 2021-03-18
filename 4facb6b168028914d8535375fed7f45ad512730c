@@ -73,6 +73,24 @@
       "message": "nit: fixtData ?",
       "revId": "4facb6b168028914d8535375fed7f45ad512730c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05676e10_6963e89b",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-03-18T21:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf89f5dd_047cfc81",
+      "revId": "4facb6b168028914d8535375fed7f45ad512730c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
