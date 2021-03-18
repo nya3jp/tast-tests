@@ -22,6 +22,29 @@
       },
       "revId": "75771c3c4c7413ac5cd1aeb6b745bbf8273898ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb5d7cea_5874ff13",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-18T22:04:02Z",
+      "side": 1,
+      "message": "This looks like a common pattern. Can you file a Tast bug to add this to a service and put a TODO here? Maybe they could add to the existing \"FileOutputService\". The service could use the existing \"TempDir\" function: https://chromium.googlesource.com/chromiumos/platform/tast/+/2c6ba8918292b686579b286f52bd28ef9478c295/src/chromiumos/tast/testutil/files.go#18",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 50
+      },
+      "revId": "75771c3c4c7413ac5cd1aeb6b745bbf8273898ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
