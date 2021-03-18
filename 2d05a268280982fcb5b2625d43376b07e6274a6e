@@ -141,6 +141,24 @@
       "parentUuid": "5228e59c_15d9f853",
       "revId": "2d05a268280982fcb5b2625d43376b07e6274a6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4b0180f_79c3cfed",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-18T18:01:12Z",
+      "side": 1,
+      "message": "Just to follow-up, I think a good idea would be to write a test that specifically tests this feature (we currently don\u0027t have one). After we land that test, then we can remove this flag.\n\nI filed an issue for it and assigned to myself here: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1189757",
+      "parentUuid": "96d504b1_27b3bddc",
+      "revId": "2d05a268280982fcb5b2625d43376b07e6274a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
