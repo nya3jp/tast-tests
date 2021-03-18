@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3fe299e_9768abcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-18T01:18:35Z",
+      "side": 1,
+      "message": "style LGTM",
+      "revId": "578dafa0f0999622f73e59ee4dd50a30e22492bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af070257_01688913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-18T01:18:35Z",
+      "side": 1,
+      "message": "nit: just in case -- Go does not have line-length limit on its style, \u0027nameProperty\u0027 be in the previous line.",
+      "revId": "578dafa0f0999622f73e59ee4dd50a30e22492bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
