@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55f139e2_dd23b0af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-18T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9e3bea8_32711085",
+      "range": {
+        "startLine": 155,
+        "startChar": 51,
+        "endLine": 155,
+        "endChar": 65
+      },
+      "revId": "c91fcde7b99baa0241457149ee65d271bcc54b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca5855fe_bf9de904",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-03-18T02:04:19Z",
       "side": 1,
       "message": "remove.",
+      "revId": "c91fcde7b99baa0241457149ee65d271bcc54b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125773fe_5238cbd7",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-03-18T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca5855fe_bf9de904",
       "revId": "c91fcde7b99baa0241457149ee65d271bcc54b11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
