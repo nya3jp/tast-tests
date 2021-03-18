@@ -23,12 +23,16 @@ func init() {
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 		Params: []testing.Param{
 			// For running manually.
-			{},
+			{
+				Name: "manual",
+				Val:  false,
+			},
 			// For automated testing.
 			{
-				Name:              "test",
+				Name:              "smoke",
 				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("volteer", "voxel")),
+				Val:               true,
 			}},
 	})
 }
@@ -48,11 +52,18 @@ func init() {
 func ModeSwitch(ctx context.Context, s *testing.State) {
 	// This check is for test executions which take place on
 	// CQ (where TBT peripherals aren't connected).
-	if present, err := typecutils.CheckPortsForTBTPartner(ctx); err != nil {
+	present, err := typecutils.CheckPortsForTBTPartner(ctx)
+	if err != nil {
 		s.Fatal("Couldn't determine TBT device from PD identity: ", err)
-	} else if !present {
-		s.Log("No TBT device connected to DUT")
+	}
+
+	// Return early for smoke testing (CQ).
+	if smoke := s.Param().(bool); smoke {
 		return
+	}
+
+	if !present {
+		s.Fatal("No TBT device connected to DUT")
 	}
 
 	// Get to the Chrome login screen.
