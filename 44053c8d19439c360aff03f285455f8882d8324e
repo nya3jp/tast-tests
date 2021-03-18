@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c314f819_b3045ac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-18T21:34:55Z",
+      "side": 1,
+      "message": "Since this is just a STM32 chip, I can\u0027t think of any reason its reboot would take longer than 1 second, and I\u0027ve never seen STM32 slow in reboot. There\u0027s also no convenient things like boot_id. Added a comment.",
+      "parentUuid": "58423752_281068df",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 0
+      },
+      "revId": "44053c8d19439c360aff03f285455f8882d8324e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc7e2563_77598e63",
