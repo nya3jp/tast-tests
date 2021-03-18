@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ea71a0cd_e5c93807",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-03-18T00:11:46Z",
+      "side": 1,
+      "message": "Hi Keigo, would you mind reviewing this Tast fixture CL? Thanks.",
+      "revId": "4facb6b168028914d8535375fed7f45ad512730c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5b4e9b59_bbc2b0d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/disable_arc.go",
         "patchSetId": 2
