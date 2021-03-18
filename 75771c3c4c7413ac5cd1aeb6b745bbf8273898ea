@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c7b6fba_034ef039",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-18T21:45:54Z",
+      "side": 1,
+      "message": "Can we create types for both keyType and fpBoard?\n\n type keyType string\n\n const (\n  \t// Types of signing keys.\n\tkeyTypeDev keyType  \u003d \"dev\"\n\tkeyTypePreMp \u003d \"premp\"\n\tkeyTypeMp    \u003d \"mp\"\n )\n\n ...",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "75771c3c4c7413ac5cd1aeb6b745bbf8273898ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
