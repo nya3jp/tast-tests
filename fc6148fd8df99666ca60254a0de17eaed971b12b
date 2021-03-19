@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a323ff18_96512155",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-19T23:07:37Z",
+      "side": 1,
+      "message": "Looks mostly good.  By the way, I think we discussed about WebUITabStrip thing for TabSwitchCUJ2, which is under wpr precondition. You modified loggedInToCUJUser fixture. Are you sure if this is intended?  I don\u0027t think WebUITabStrip is enforced on TabSwitchCUJ2.",
+      "revId": "fc6148fd8df99666ca60254a0de17eaed971b12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb208cdd_ce85e808",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-19T23:07:37Z",
+      "side": 1,
+      "message": "\"newTabStripUI\". Strip would sound a different thing, use \u0027TabStrip\u0027.\nOr, words like \u0027webUITabstrip\u0027 might be a bit more descriptive.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "fc6148fd8df99666ca60254a0de17eaed971b12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
