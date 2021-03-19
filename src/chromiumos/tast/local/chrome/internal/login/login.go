@@ -30,6 +30,12 @@ var ErrNeedNewSession = errors.New("Chrome restarted; need a new session")
 // This function may restart Chrome and make an existing session unavailable,
 // in which case errNeedNewSession is returned.
 func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
+	if cfg.Enroll() {
+		if err := performEnrollment(ctx, cfg, sess); err != nil {
+			return err
+		}
+	}
+
 	switch cfg.LoginMode() {
 	case config.NoLogin:
 		return nil
