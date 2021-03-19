@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e4204b_1e21ce48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/mode_reboot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:34:52Z",
+      "side": 1,
+      "message": "nit\u0026optional: I recommend naming this return value for documentation purpose. Named return values are often more visible than doc comments.",
+      "range": {
+        "startLine": 174,
+        "startChar": 63,
+        "endLine": 174,
+        "endChar": 68
+      },
+      "revId": "10a52acacb0a29cb62cc11ad2ec876dd0db0cb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
