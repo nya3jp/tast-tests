@@ -54,6 +54,11 @@ func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error 
 		// logInAsGuest restarted Chrome. Let the caller know that they
 		// need to recreate a session.
 		return ErrNeedNewSession
+	case config.EnrollLogin:
+		if err := loginUser(ctx, cfg, sess); err != nil {
+			return err
+		}
+		return nil
 	default:
 		return errors.Errorf("unknown login mode: %v", cfg.LoginMode())
 	}

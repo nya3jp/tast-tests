@@ -39,10 +39,11 @@ type LoginMode int
 
 // Valid values for LoginMode.
 const (
-	NoLogin    LoginMode = iota // restart Chrome but don't log in
-	FakeLogin                   // fake login with no authentication
-	GAIALogin                   // real network-based login using GAIA backend
-	GuestLogin                  // sign in as ephemeral guest user
+	NoLogin     LoginMode = iota // restart Chrome but don't log in
+	FakeLogin                    // fake login with no authentication
+	GAIALogin                    // real network-based login using GAIA backend
+	GuestLogin                   // sign in as ephemeral guest user
+	EnrollLogin                  // enroll the device and log in
 )
 
 // AuthType describes the type of authentication to be used in GAIA.
@@ -165,9 +166,6 @@ func (c *Config) PolicyEnabled() bool { return c.m.PolicyEnabled }
 // DMSAddr returns the address of a device management server.
 func (c *Config) DMSAddr() string { return c.m.DMSAddr }
 
-// Enroll returns whether to enroll the device.
-func (c *Config) Enroll() bool { return c.m.Enroll }
-
 // ARCMode returns the mode of ARC.
 func (c *Config) ARCMode() ARCMode { return c.m.ARCMode }
 
@@ -228,7 +226,6 @@ type MutableConfig struct {
 	Region                          string    `reuse_match:"true"`
 	PolicyEnabled                   bool      `reuse_match:"true"`
 	DMSAddr                         string    `reuse_match:"true"`
-	Enroll                          bool      `reuse_match:"true"`
 	ARCMode                         ARCMode   `reuse_match:"true"`
 	RestrictARCCPU                  bool      `reuse_match:"true"`
 	BreakpadTestMode                bool      `reuse_match:"true"`
@@ -259,7 +256,6 @@ func NewConfig(opts []Option) (*Config, error) {
 			InstallWebApp:                   false,
 			Region:                          "us",
 			PolicyEnabled:                   false,
-			Enroll:                          false,
 			BreakpadTestMode:                true,
 			EnableRestoreTabs:               false,
 			SkipForceOnlineSignInForTesting: false,

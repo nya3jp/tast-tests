@@ -135,9 +135,8 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 		user = "tast-user@managedchrome.com"
 	}
 
-	opts = append(opts, chrome.FakeLogin(chrome.Creds{User: user, Pass: "test0000"}))
+	opts = append(opts, chrome.EnrollLogin(chrome.Creds{User: user, Pass: "test0000", GAIAID: "gaia-id"}))
 	opts = append(opts, chrome.DMSPolicy(fdms.URL))
-	opts = append(opts, chrome.EnterpriseEnroll())
 	opts = append(opts, chrome.ARCEnabled())
 	opts = append(opts, chrome.ExtraArgs(req.ExtraArgs))
 
