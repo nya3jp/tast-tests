@@ -178,24 +178,27 @@ func restartSession(ctx context.Context, cfg *config.Config) error {
 
 	if !cfg.KeepState() {
 		const chronosDir = "/home/chronos"
-		// This always fails because /home/chronos is a mount point, but all files
-		// under the directory should be removed.
-		os.RemoveAll(chronosDir)
-		fis, err := ioutil.ReadDir(chronosDir)
-		if err != nil {
-			return err
-		}
-		// Retry cleanup of remaining files. Don't fail if removal reports an error.
-		for _, left := range fis {
-			if err := os.RemoveAll(filepath.Join(chronosDir, left.Name())); err != nil {
-				testing.ContextLogf(ctx, "Failed to clear %s; failed to remove %q: %v", chronosDir, left.Name(), err)
-			} else {
-				testing.ContextLogf(ctx, "Failed to clear %s; %q needed repeated removal", chronosDir, left.Name())
+		const shadowDir = "/home/.shadow"
+
+		if !cfg.KeepOwnership() {
+			// This always fails because /home/chronos is a mount point, but all files
+			// under the directory should be removed.
+			os.RemoveAll(chronosDir)
+			fis, err := ioutil.ReadDir(chronosDir)
+			if err != nil {
+				return err
+			}
+			// Retry cleanup of remaining files. Don't fail if removal reports an error.
+			for _, left := range fis {
+				if err := os.RemoveAll(filepath.Join(chronosDir, left.Name())); err != nil {
+					testing.ContextLogf(ctx, "Failed to clear %s; failed to remove %q: %v", chronosDir, left.Name(), err)
+				} else {
+					testing.ContextLogf(ctx, "Failed to clear %s; %q needed repeated removal", chronosDir, left.Name())
+				}
 			}
 		}
 
 		// Delete files from shadow directory.
-		const shadowDir = "/home/.shadow"
 		shadowFiles, err := ioutil.ReadDir(shadowDir)
 		if err != nil {
 			return errors.Wrapf(err, "failed to read directory %q", shadowDir)
@@ -215,11 +218,14 @@ func restartSession(ctx context.Context, cfg *config.Config) error {
 			}
 		}
 
-		// Delete policy files to clear the device's ownership state since the account
-		// whose cryptohome we'll delete may be the owner: http://cbug.com/897278
-		if err := session.ClearDeviceOwnership(ctx); err != nil {
-			return err
+		if !cfg.KeepOwnership() {
+			// Delete policy files to clear the device's ownership state since the account
+			// whose cryptohome we'll delete may be the owner: http://crbug.com/897278
+			if err := session.ClearDeviceOwnership(ctx); err != nil {
+				return err
+			}
 		}
 	}
+
 	return upstart.EnsureJobRunning(ctx, "ui")
 }
