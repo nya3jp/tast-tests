@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dcf23b09_6f829a5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:42:25Z",
+      "side": 1,
+      "message": "No action required in this CL: I feel like it\u0027s difficult to tell the difference of the two options from their names. It\u0027s nice if we can rename them to clarify the difference.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "3454e2f29471866a6cd05884ae920cfbf387e49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ed531c0d_b6a44585",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
