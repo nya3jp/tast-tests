@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587e17de_09273ba6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-19T23:31:48Z",
+      "side": 1,
+      "message": "Not necessary to change, but you could use a random name for both and then the only difference would be the \"--noremove_flash_read_protect\".",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 62
+      },
+      "revId": "2d177536f2694223334e81eb5a66d67cbe684b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
