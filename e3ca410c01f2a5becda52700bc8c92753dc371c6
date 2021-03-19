@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46aff653_b9289b09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-19T16:47:23Z",
+      "side": 1,
+      "message": "Thanks for working on this!",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf81542e_0ce259a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-19T16:47:23Z",
+      "side": 1,
+      "message": "We ended up not making \"cellular_esim\" a group, so this will actually get run on all \"carriers\", which will include \"esim\" once we add a control file for carrier:esim.\nhttps://docs.google.com/document/d/11WUqD-p7bCw4jFH400I-eWW221oGJc9sCg-QrkAdM38/edit#heading\u003dh.8ds28e7uhktz",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "796532e3_39bb6adb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-19T16:47:23Z",
+      "side": 1,
+      "message": "Looks like there is WS here instead of tabs. Please make sure this is run through gofmt.",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1abc182c_507d0621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-19T16:47:23Z",
+      "side": 1,
+      "message": "So, I would actually prefer this test to only test MM, and not have any Shill dependencies.\n\nWe will add a separate test for testing connecting to a service in the non selected slot, but that will require multi-sim DUTs.",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4caf5045_b145060b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-19T16:47:23Z",
+      "side": 1,
+      "message": "We should defer a method that sets the primary slot back to the original slot. See shill_cellular_smoke.go for an example.",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731eeb22_82cc0b88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-19T16:47:23Z",
+      "side": 1,
+      "message": "We try to avoid using Sleep. See examples using testing.Poll.",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48470c42_af369a27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-19T16:47:23Z",
+      "side": 1,
+      "message": "The above is sufficient for this test, we do not need or want to test Shill functionality in a modemmanager_ test.",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
