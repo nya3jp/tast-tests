@@ -9,8 +9,6 @@ import (
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/camera/testutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -21,33 +19,13 @@ func init() {
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
-		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "ccaLaunched",
 	})
 }
 
 func CCAUIRefresh(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
-	if err != nil {
-		s.Fatal("Failed to construct test bridge: ", err)
-	}
-	defer tb.TearDown(ctx)
-
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
-		s.Fatal("Failed to clear saved directory: ", err)
-	}
-
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
-	if err != nil {
-		s.Fatal("Failed to open CCA: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := app.Close(ctx); err != nil {
-			s.Error("Failed to close app: ", err)
-		}
-	}(ctx)
-
+	app := s.FixtValue().(cca.FixtureData).App()
+	tb := s.FixtValue().(cca.FixtureData).TestBridge
 	s.Log("Refreshing CCA")
 	if err := app.Refresh(ctx, tb); err != nil {
 		s.Fatal("Failed to complete refresh: ", err)

@@ -13,8 +13,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/camera/testutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
@@ -26,9 +24,8 @@ func init() {
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
-		Data:         []string{"cca_ui.js"},
 		Timeout:      20 * time.Minute,
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "ccaLaunched",
 	})
 }
 
@@ -41,16 +38,7 @@ var multiplierCandidates = []int{2, 4, 6, 8, 10}
 const stabilizationDuration time.Duration = 5 * time.Second
 
 func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
-	if err != nil {
-		s.Fatal("Failed to construct test bridge: ", err)
-	}
-	defer tb.TearDown(ctx)
-
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
-		s.Fatal("Failed to clear saved directory: ", err)
-	}
+	app := s.FixtValue().(cca.FixtureData).App()
 
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
@@ -61,17 +49,6 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed to wait CPU idle: ", err)
 	}
-
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
-	if err != nil {
-		s.Fatal("Failed to open CCA: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := app.Close(ctx); err != nil {
-			s.Fatal("Failed to close CCA: ", err)
-		}
-	}(ctx)
-
 	if err := app.SwitchMode(ctx, cca.Video); err != nil {
 		s.Fatal("Failed to switch to video mode: ", err)
 	}

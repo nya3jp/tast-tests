@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -28,9 +27,8 @@ func init() {
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
-		Data:         []string{"cca_ui.js"},
 		Timeout:      5 * time.Minute,
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "ccaTestBridgeReady",
 	})
 }
 
@@ -161,13 +159,10 @@ func (v *video) stop(ctx context.Context, app *cca.App) error {
 }
 
 func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
-	if err != nil {
-		s.Fatal("Failed to construct test bridge: ", err)
-	}
-	defer tb.TearDown(ctx)
-
+	cr := s.FixtValue().(cca.FixtureData).Chrome
+	startApp := s.FixtValue().(cca.FixtureData).StartApp
+	stopApp := s.FixtValue().(cca.FixtureData).StopApp
+	stopAppIfExist := s.FixtValue().(cca.FixtureData).StopAppIfExist
 	subTestTimeout := 40 * time.Second
 	for _, tc := range []struct {
 		name  string
@@ -184,23 +179,18 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tc.name, func(ctx context.Context, s *testing.State) {
-			cleanupCtx := ctx
-			ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
-			defer cancel()
-
-			if err := cca.ClearSavedDir(ctx, cr); err != nil {
-				s.Fatal("Failed to clear saved directory: ", err)
-			}
-
-			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
+			app, err := startApp(ctx)
 			if err != nil {
-				s.Fatal("Failed to open CCA: ", err)
+				s.Fatal("Failed to start app: ", err)
 			}
-			defer (func(ctx context.Context) {
-				if err := app.Close(ctx); err != nil {
-					s.Error("Failed to close app: ", err)
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+			defer cancel()
+			defer func(cleanupCtx context.Context) {
+				if err := stopApp(cleanupCtx, s.HasError()); err != nil {
+					s.Fatal("Failed to stop app: ", err)
 				}
-			})(cleanupCtx)
+			}(cleanupCtx)
 
 			testing.ContextLog(ctx, "Switch to video mode")
 			if err := app.SwitchMode(ctx, cca.Video); err != nil {
@@ -225,9 +215,28 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		cancel()
 	}
 
-	if err := testConfirmDialog(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb); err != nil {
-		s.Fatal("Failed for confirm dialog test: ", err)
-	}
+	subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+	s.Run(subTestCtx, "testConfirmDialog", func(ctx context.Context, s *testing.State) {
+		app, err := startApp(ctx)
+		if err != nil {
+			s.Fatal("Failed to start app for confirm : ", err)
+		}
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+		defer cancel()
+		defer func(cleanupCtx context.Context) {
+			// Ideally, the app will be closed as part of the behavior in
+			// testConfirmDialog(). Therefore, only stop app if it works
+			// unexpectedly.
+			if err := stopAppIfExist(cleanupCtx, s.HasError()); err != nil {
+				s.Fatal("Failed to stop app: ", err)
+			}
+		}(cleanupCtx)
+		if err := testConfirmDialog(ctx, app, cr); err != nil {
+			s.Fatal("Failed for confirm dialog test: ", err)
+		}
+	})
+	cancel()
 }
 
 func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App) error {
@@ -424,30 +433,7 @@ func testPauseResume(ctx context.Context, app *cca.App) error {
 	return v.stop(ctx, app)
 }
 
-func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, tb *testutil.TestBridge) error {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
-	defer cancel()
-
-	app, err := cca.New(ctx, cr, scriptPaths, outDir, tb)
-	if err != nil {
-		return err
-	}
-	shouldCloseApp := true
-
-	defer func(ctx context.Context) {
-		if !shouldCloseApp {
-			return
-		}
-
-		// Since only when the test fails we will need to close the app here, we
-		// can just log here if it fails to close the app and report the actual
-		// error to the caller.
-		if err := app.Close(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to close app: ", err)
-		}
-	}(cleanupCtx)
-
+func testConfirmDialog(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
 	if err := app.TriggerConfiguration(ctx, func() error {
 		testing.ContextLog(ctx, "Switch to video mode")
 		if err := app.SwitchMode(ctx, cca.Video); err != nil {
@@ -523,7 +509,5 @@ func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 	}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
 		return err
 	}
-
-	shouldCloseApp = false
 	return nil
 }
