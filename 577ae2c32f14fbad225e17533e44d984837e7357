@@ -16,6 +16,52 @@
       "message": "Hi Ricardo, could you do an owner review for the small ARC CL? It\u0027s getting difficult to find a board name in the list...",
       "revId": "577ae2c32f14fbad225e17533e44d984837e7357",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de5c8201_8cc1d830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-19T18:49:57Z",
+      "side": 1,
+      "message": "huge nit: period at end of sentence (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 220,
+        "startChar": 35,
+        "endLine": 220,
+        "endChar": 36
+      },
+      "revId": "577ae2c32f14fbad225e17533e44d984837e7357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f3186b_0a3f458a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-19T18:49:57Z",
+      "side": 1,
+      "message": "ditto:\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 266,
+        "startChar": 35,
+        "endLine": 266,
+        "endChar": 36
+      },
+      "revId": "577ae2c32f14fbad225e17533e44d984837e7357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
