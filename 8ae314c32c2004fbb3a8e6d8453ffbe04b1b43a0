@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bfc6cfd_a417c186",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-19T17:56:26Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "8ae314c32c2004fbb3a8e6d8453ffbe04b1b43a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca9e6333_99a5f721",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-19T17:56:26Z",
+      "side": 1,
+      "message": "nit: maybe put Enroll() option before FakeLogin so it will feel like \"steps\" we perform?",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 82
+      },
+      "revId": "8ae314c32c2004fbb3a8e6d8453ffbe04b1b43a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2bc51b_eaed4ec0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-19T17:56:26Z",
+      "side": 1,
+      "message": "Are there other types of enrollment? Maybe just drop Enterprise prefix?",
+      "range": {
+        "startLine": 140,
+        "startChar": 28,
+        "endLine": 140,
+        "endChar": 44
+      },
+      "revId": "8ae314c32c2004fbb3a8e6d8453ffbe04b1b43a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222b84e0_045d64d8",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-19T17:56:26Z",
+      "side": 1,
+      "message": "nit: rename, reorder",
+      "range": {
+        "startLine": 129,
+        "startChar": 17,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "8ae314c32c2004fbb3a8e6d8453ffbe04b1b43a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208279e7_8e2ed4cf",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-19T17:56:26Z",
+      "side": 1,
+      "message": "nit: login creds\n\nalso maybe reorder to keep login related items together",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 6
+      },
+      "revId": "8ae314c32c2004fbb3a8e6d8453ffbe04b1b43a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac362848_767f4572",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-19T17:56:26Z",
+      "side": 1,
+      "message": "nit: please wrap error",
+      "range": {
+        "startLine": 152,
+        "startChar": 9,
+        "endLine": 152,
+        "endChar": 12
+      },
+      "revId": "8ae314c32c2004fbb3a8e6d8453ffbe04b1b43a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a0515ac_eed807e0",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-19T17:56:26Z",
+      "side": 1,
+      "message": "this is not very obvious. What is going on here?",
+      "range": {
+        "startLine": 156,
+        "startChar": 21,
+        "endLine": 156,
+        "endChar": 51
+      },
+      "revId": "8ae314c32c2004fbb3a8e6d8453ffbe04b1b43a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

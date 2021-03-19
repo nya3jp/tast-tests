@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce922fe6_dcde3d65",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-19T17:56:26Z",
+      "side": 0,
+      "message": "nit: maybe still wrap error, but with different message?",
+      "range": {
+        "startLine": 151,
+        "startChar": 9,
+        "endLine": 151,
+        "endChar": 73
+      },
+      "revId": "3ab81272ba45dc9493c672d4e1416ac08bf347a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
