@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaa70283_07d0e1a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T20:41:42Z",
+      "side": 1,
+      "message": "might be easier to read if you just use \"$(basename $0)\" here",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "8524ac00dcdca23f51693b253f56e512d675c227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d6a30c2_bb80a951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T20:41:42Z",
+      "side": 1,
+      "message": "I think we indent the body of the for statement (aside from inside the heredoc where the whitespace would be preserved)",
+      "revId": "8524ac00dcdca23f51693b253f56e512d675c227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8fc25ad_22be4086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T20:41:42Z",
+      "side": 1,
+      "message": "ditto re: basename",
+      "revId": "8524ac00dcdca23f51693b253f56e512d675c227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

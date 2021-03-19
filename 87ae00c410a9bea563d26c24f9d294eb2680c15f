@@ -151,6 +151,30 @@
       },
       "revId": "87ae00c410a9bea563d26c24f9d294eb2680c15f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec1bc024_6b5698b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T20:41:42Z",
+      "side": 1,
+      "message": "Ah, I missed that this was inside a heredoc. Thanks.",
+      "parentUuid": "502579cf_a4d308e7",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "87ae00c410a9bea563d26c24f9d294eb2680c15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
