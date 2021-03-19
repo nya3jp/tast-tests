@@ -16,6 +16,87 @@
       "message": "PTAL.  Did I do this correctly?",
       "revId": "92372e94c5ebedb7fac5de9f9fa48eb49b5dd0fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3646a3b4_34b68f0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-19T00:21:45Z",
+      "side": 1,
+      "message": "I left a couple comments; other than that, lgtm\n\nI have a script to automatically upload test files to chromiumos-test-assets-public and generate external files; I\u0027ll see if I can upload that here to simplify the process of adding printer tast tests.",
+      "parentUuid": "639b5f02_cba5c4c8",
+      "revId": "92372e94c5ebedb7fac5de9f9fa48eb49b5dd0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f149919c_5a7c09d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-19T00:21:45Z",
+      "side": 1,
+      "message": "use iTest(\"hp_pclm\", \"printer_add_hp_printer_pclm.ppd.gz\", \"printer_add_hp_printer_pclm_out.pclm\") instead of test() to mark it as informational.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 6
+      },
+      "revId": "92372e94c5ebedb7fac5de9f9fa48eb49b5dd0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "628eba20_384f24e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-19T00:21:45Z",
+      "side": 1,
+      "message": "iTest",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 6
+      },
+      "revId": "92372e94c5ebedb7fac5de9f9fa48eb49b5dd0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd06948_4cfde62f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/printer_add_hp_printer_ljcolor_out.pcl",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-19T00:21:45Z",
+      "side": 1,
+      "message": "The file needs a .external extension, also the timestamp in the url should be 20210318 unless the files were uploaded last year",
+      "revId": "92372e94c5ebedb7fac5de9f9fa48eb49b5dd0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
