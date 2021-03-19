@@ -39,6 +39,30 @@
       },
       "revId": "89814ae5ff2783f748066e020c10d6ca1a1854aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08049cc5_a70711cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_screen_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-19T11:53:26Z",
+      "side": 1,
+      "message": "No, but button shouldn\u0027t be there.\nIf the lock screen is disabled, the button is not there.\nIf enabled, the screen is locked with the hotkey, but the system tray can be opened on the lock screen as well, but the button is not there (as the screen is already locked).",
+      "parentUuid": "a3c90784_50e6ff46",
+      "range": {
+        "startLine": 105,
+        "startChar": 7,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "89814ae5ff2783f748066e020c10d6ca1a1854aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
