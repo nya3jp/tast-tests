@@ -262,18 +262,22 @@ func signOutOfFlipboard(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Fatal("Failed to click on accountIcon: ", err)
 	}
 
-	// Click on settings icon.
+	// Check for settings icon.
 	settingsIcon := d.Object(ui.ID(settingsIconID))
 	if err := settingsIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("settingsIcon doesn't exist: ", err)
-	} else if err := settingsIcon.Click(ctx); err != nil {
-		s.Fatal("Failed to click on settingsIcon: ", err)
 	}
 
-	// Click on select sign out.
+	// Click on settings icon until sign out exist.
 	clickOnSelectSignOut := d.Object(ui.ID(selectSignOutID), ui.TextMatches("(?i)"+selectSignOutText))
-	if err := clickOnSelectSignOut.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("clickOnSelectSignOut doesn't exist: ", err)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := clickOnSelectSignOut.Exists(ctx); err != nil {
+			settingsIcon.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		s.Fatal("clickOnSelectSignOut doesn't exist: ", err)
 	} else if err := clickOnSelectSignOut.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnSelectSignOut: ", err)
 	}
