@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf0a7517_6445c40d",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-19T09:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6873e645_fb49788f",
+      "revId": "7bb8bfb6e417e094dd84a8a55cabf62a06cff40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5ec3c30_acd06e32",
@@ -66,6 +84,24 @@
       "writtenOn": "2021-03-18T11:35:05Z",
       "side": 1,
       "message": "nit: add a note that this is the only difference between a User and a PublicAccount policy.",
+      "revId": "7bb8bfb6e417e094dd84a8a55cabf62a06cff40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51600241_ddefa5f7",
+        "filename": "src/chromiumos/tast/common/policy/public_account_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-19T09:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5ec3c30_acd06e32",
       "revId": "7bb8bfb6e417e094dd84a8a55cabf62a06cff40b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
