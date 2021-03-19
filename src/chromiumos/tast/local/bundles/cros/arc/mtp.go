@@ -51,13 +51,13 @@ func init() {
 func Mtp(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
+
+	config := storage.TestConfig{DirName: "Nexus/Pixel (MTP)", DirTitle: "Files - Nexus/Pixel (MTP)",
+		SubDirectories: []string{"Download"}, FileName: "storage.txt"}
 	expectations := []storage.Expectation{
 		{LabelID: storage.ActionID, Value: storage.ExpectedAction},
-		{LabelID: storage.URIID, Value: mtpURI + storage.TestFile},
+		{LabelID: storage.URIID, Value: mtpURI + config.FileName},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
-	dir := storage.Directory{Name: "Nexus/Pixel (MTP)", Title: "Files - Nexus/Pixel (MTP)",
-		SubDirectories: []string{"Download"}}
-
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, dir, expectations)
+	storage.TestOpenWithAndroidApp(ctx, s, a, cr, config, expectations)
 }
