@@ -74,6 +74,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
 		PolicyJson: pJSON,
 		FakedmsDir: e.fdmsDir,
+		SkipLogin:  true,
 	}); err != nil {
 		s.Fatal("Failed to enroll using Chrome: ", err)
 	}
