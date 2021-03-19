@@ -94,7 +94,7 @@ func enterpriseEnrollTargets(ctx context.Context, sess *driver.Session, userDoma
 // the testing.Poll will timeout.
 func waitForEnrollmentLoginScreen(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
 	testing.ContextLog(ctx, "Waiting for enrollment to complete")
-	user := cfg.Creds().User
+	user := cfg.EnrollmentCreds().User
 
 	fullDomain, err := fullUserDomain(user)
 	if err != nil {
@@ -138,25 +138,22 @@ func waitForEnrollmentLoginScreen(ctx context.Context, cfg *config.Config, sess 
 	return nil
 }
 
-// enterpriseOOBELogin will complete the oobe login after Enrollment completes.
-func enterpriseOOBELogin(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
-	if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
-		return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not enroll")
-	}
-
-	// Reconnect to OOBE to log in after enrollment.
-	// See crrev.com/c/2144279 for details.
+// performEnrollment will perform enrollment and wait for it to complete.
+func performEnrollment(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
 	conn, err := WaitForOOBEConnection(ctx, sess)
 	if err != nil {
-		return errors.Wrap(err, "failed to reconnect to OOBE after enrollment")
+		return err
 	}
 	defer conn.Close()
 
-	// Now login like "normal".
-	testing.ContextLog(ctx, "Performing login after enrollment")
-	creds := cfg.Creds()
-	if err := conn.Call(ctx, nil, "Oobe.loginForTesting", creds.User, creds.Pass, creds.GAIAID, false); err != nil {
+	creds := cfg.EnrollmentCreds()
+	testing.ContextLogf(ctx, "Performing enrollment with %s", creds.User)
+	if err := conn.Call(ctx, nil, "Oobe.loginForTesting", creds.User, creds.Pass, creds.GAIAID, true); err != nil {
 		return err
+	}
+
+	if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not enroll")
 	}
 
 	return nil

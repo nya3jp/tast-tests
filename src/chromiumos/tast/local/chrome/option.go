@@ -185,10 +185,12 @@ func DMSPolicy(url string) Option {
 }
 
 // EnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
-// Enrollment
-func EnterpriseEnroll() Option {
+// Enrollment before login.
+func EnterpriseEnroll(creds Creds) Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.Enroll = true
+		cfg.EnrollmentCreds = creds
+		cfg.ExtraArgs = append(cfg.ExtraArgs, "--disable-policy-key-verification")
 		return nil
 	}
 }
