@@ -9,17 +9,20 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 // DownloadPath is the location of Downloads for the user.
@@ -27,6 +30,9 @@ const DownloadPath = "/home/chronos/user/Downloads/"
 
 // MyFilesPath is the location of My files for the user.
 const MyFilesPath = "/home/chronos/user/MyFiles"
+
+// filesTitlePrefix is the prefix of the ash window title.
+const filesTitlePrefix = "Files - "
 
 // Context menu items for a file.
 const (
@@ -114,19 +120,19 @@ func (f *FilesApp) OpenDir(dirName, expectedTitle string) uiauto.Action {
 // OpenDownloads returns a function that opens the Downloads folder in the Files App.
 // An error is returned if Downloads is not found or does not open.
 func (f *FilesApp) OpenDownloads() uiauto.Action {
-	return f.OpenDir(Downloads, "Files - "+Downloads)
+	return f.OpenDir(Downloads, filesTitlePrefix+Downloads)
 }
 
 // OpenDrive returns a function that opens the Google Drive folder in the Files App.
 // An error is returned if Drive is not found or does not open.
 func (f *FilesApp) OpenDrive() uiauto.Action {
-	return f.OpenDir(GoogleDrive, "Files - "+MyDrive)
+	return f.OpenDir(GoogleDrive, filesTitlePrefix+MyDrive)
 }
 
 // OpenLinuxFiles returns a function that opens the Linux files folder in the Files App.
 // An error is returned if Linux files is not found or does not open.
 func (f *FilesApp) OpenLinuxFiles() uiauto.Action {
-	return f.OpenDir("Linux files", "Files - Linux files")
+	return f.OpenDir("Linux files", filesTitlePrefix+"Linux files")
 }
 
 // file returns a nodewith.Finder for a file with the specified name.
@@ -328,5 +334,30 @@ func (f *FilesApp) DragAndDropFile(fileName string, dropPoint coords.Point, kb *
 		}
 
 		return mouse.Drag(f.tconn, srcPoint.CenterPoint(), dropPoint, time.Second)(ctx)
+	}
+}
+
+// MaximizeWindowAndRetryActionOnFail attempts an action and if it fails, maximizes the Files app and tries again.
+// TODO(crbug/1189914): Remove once the underlying race condition causing the listbox to not populate is fixed.
+func (f *FilesApp) MaximizeWindowAndRetryActionOnFail(action uiauto.Action) uiauto.Action {
+	return func(ctx context.Context) error {
+		err := action(ctx)
+		if err == nil {
+			return nil
+		}
+		testing.ContextLog(ctx, "Supplied action failed, resizing window and trying again: ", err)
+
+		window, err := ash.FindWindow(ctx, f.tconn, func(w *ash.Window) bool {
+			return strings.HasPrefix(w.Title, filesTitlePrefix)
+		})
+		if err != nil {
+			return err
+		}
+
+		if err := ash.SetWindowStateAndWait(ctx, f.tconn, window.ID, ash.WindowStateMaximized); err != nil {
+			return err
+		}
+
+		return action(ctx)
 	}
 }
