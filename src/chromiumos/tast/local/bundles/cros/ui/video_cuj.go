@@ -7,7 +7,6 @@ package ui
 import (
 	"context"
 	"fmt"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -17,8 +16,11 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
-	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -96,20 +98,29 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	var pc pointer.Controller
+	var pc pointer.Context
 	var tsw *input.TouchscreenEventWriter
 	var stw *input.SingleTouchEventWriter
 	if tabletMode {
-		tc, err := pointer.NewTouchController(ctx, tconn)
+		tc, err := pointer.NewTOuch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to create a touch controller")
 		}
 		pc = tc
 
-		tsw = tc.Touchscreen()
-		stw = tc.EventWriter()
+		tsw, _, err = touch.NewTouchscreenAndConverter(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create a touch screen: ", err)
+		}
+		defer tsw.Close()
+
+		stw, err = tsw.NewSingleTouchWriter()
+		if err != nil {
+			s.Fatal("Failed to create a new single touch writer: ", err)
+		}
+		defer stw.Close()
 	} else {
-		pc = pointer.NewMouseController(tconn)
+		pc = pointer.NewMouse(tconn)
 	}
 	defer pc.Close()
 
@@ -257,28 +268,16 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 			return err
 		}
 
-		all, err := chromeui.FindAll(ctx, tconn,
-			chromeui.FindParams{
-				ClassName: "WebContentsViewAura",
-				Role:      chromeui.RoleTypeWindow})
+		ytweb := nodewith.ClassName("WebContentsViewAura").Role(role.Window).NameContaining("YouTube")
+
+		ac := uiauto.New(tconn)
+		ytLocation, err := ac.Location(ctx, ytweb)
 		if err != nil {
-			return errors.Wrap(err, "failed to find WebContentsViewAura node")
-		}
-		defer all.Release(ctx)
-
-		var ytWeb *chromeui.Node
-		for _, n := range all {
-			if strings.Contains(n.Name, "YouTube") {
-				ytWeb = n
-				break
-			}
-		}
-		if ytWeb == nil {
-			return errors.Wrap(err, "failed to find YouTube WebContentsViewAura node")
+			return errors.Wrap(err, "failed to find the location of youtube")
 		}
 
-		tapPoint := bounds.CenterPoint().Add(ytWeb.Location.TopLeft())
-		if err := pointer.Click(ctx, pc, tapPoint); err != nil {
+		tapPoint := bounds.CenterPoint().Add(ytLocation.TopLeft())
+		if err := pc.ClickAt(tapPoint)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to tap selector %q", sel)
 		}
 		return nil
@@ -380,7 +379,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to find the other window: ")
 			}
 
-			if err := pointer.Click(ctx, pc, w.OverviewInfo.Bounds.CenterPoint()); err != nil {
+			if err := pc.ClickAt(w.OverviewInfo.Bounds.CenterPoint())(ctx); err != nil {
 				return errors.Wrap(err, "failed to tap the other window's overview item")
 			}
 		} else {
@@ -406,7 +405,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to get youtube window")
 			}
 
-			if err := pointer.Click(ctx, pc, ytWin.OverviewInfo.Bounds.CenterPoint()); err != nil {
+			if err := pc.ClickAt(ytWin.OverviewInfo.Bounds.CenterPoint())(ctx); err != nil {
 				return errors.Wrap(err, "failed to select youtube window")
 			}
 

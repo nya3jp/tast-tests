@@ -16,9 +16,10 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/stadiacuj"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
@@ -26,9 +27,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         StadiaGameplayCUJ,
-		Desc:         "Measures the performance of critical user journey for game playing on Stadia",
-		Contacts:     []string{"yichenz@chromium.org"},
+		Func:     StadiaGameplayCUJ,
+		Desc:     "Measures the performance of critical user journey for game playing on Stadia",
+		Contacts: []string{"yichenz@chromium.org"},
 		// TODO(http://crbug/1144356): Test is disabled until it can be fixed
 		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
@@ -104,34 +105,29 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	defer conn.Close()
 	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
 
-	webview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeWebView, ClassName: "ContentsWebView"}, timeout)
-	if err != nil {
-		s.Fatal("Failed to find webview: ", err)
-	}
-	defer webview.Release(closeCtx)
-
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to create a keyboard: ", err)
 	}
 	defer kb.Close()
 
+	ac := uiauto.New(tconn).WithTimeout(timeout)
+	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
+
 	// Launch the game.
-	gameLaunchButton, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Play", Role: ui.RoleTypeButton}, timeout)
-	if err != nil {
-		s.Fatal("Failed to find the game launch button: ", err)
-	}
-	defer gameLaunchButton.Release(ctx)
-	if err := gameLaunchButton.MakeVisible(ctx); err != nil {
+	gameLaunchButton := nodewith.Role(role.Button).Name("Play").Ancestor(webview)
+	if err := uiauto.Combine(
+		"wait and make visible",
+		ac.WaitUntilExists(gameLaunchButton),
+		ac.MakeVisible(gameLaunchButton))(ctx); err != nil {
 		s.Fatal("Failed to make the game launch button visible: ", err)
 	}
+	gameStartButton := nodewith.Name(stadiacuj.StadiaGameName + " Play game").Role(role.Button).Ancestor(webview)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if exists, err := ui.Exists(ctx, tconn, ui.FindParams{Name: stadiacuj.StadiaGameName + " Play game", Role: ui.RoleTypeButton}); err != nil {
-			return errors.Wrap(err, "failed to check the existence of game start button")
-		} else if exists {
+		if err := ac.Exists(gameStartButton)(ctx); err == nil {
 			return nil
 		}
-		if err := gameLaunchButton.StableLeftClick(ctx, &testing.PollOptions{Interval: time.Second, Timeout: timeout}); err != nil {
+		if err := ac.LeftClick(gameLaunchButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click the game launch button")
 		}
 		return errors.New("game hasn't launched yet")
@@ -139,12 +135,6 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch the game: ", err)
 	}
 
-	// Start the game.
-	gameStartButton, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: stadiacuj.StadiaGameName + " Play game", Role: ui.RoleTypeButton}, timeout)
-	if err != nil {
-		s.Fatal("Failed to find the game start button: ", err)
-	}
-	defer gameStartButton.Release(ctx)
 	// Make sure the game is fully launched.
 	ws, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
@@ -170,17 +160,11 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// If internet is unstable, try to start again one time.
-	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Name: "Try again"}, 45*time.Second); err != nil {
-		if !errors.Is(err, ui.ErrNodeDoesNotExist) {
-			s.Fatal("Failed to wait for try again button to show up: ", err)
-		}
-	} else {
+	if err := ac.WithTimeout(45 * time.Second).WaitUntilExists(nodewith.Name("Try again"))(ctx); err == nil {
 		// Try again if the button exists.
-		if err := ui.StableFindAndClick(ctx, tconn,
-			ui.FindParams{Name: "Try again"},
-			&testing.PollOptions{Interval: time.Second, Timeout: timeout},
-		); err != nil {
-			s.Fatal("Failed to find and click the try again button: ", err)
+		pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
+		if err := ac.WithPollOpts(pollOpts).LeftClick(nodewith.Name("Try again"))(ctx); err != nil {
+			s.Fatal("Failed to click the try again button: ", err)
 		}
 	}
 
@@ -193,7 +177,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	defer func() {
 		if gameOngoing {
 			// Exit the game.
-			if err := stadiacuj.ExitGame(closeCtx, kb, webview); err != nil {
+			if err := stadiacuj.ExitGame(closeCtx, kb, ac, webview); err != nil {
 				s.Error("Failed to exit game: ", err)
 			}
 		}
