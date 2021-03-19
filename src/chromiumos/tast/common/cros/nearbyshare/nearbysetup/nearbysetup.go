@@ -201,8 +201,17 @@ func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPat
 		return nil, errors.Wrap(err, "failed to initialize snippet server")
 	}
 
-	if err := androidNearby.SetupDevice(ctx, dataUsage, visibility, name); err != nil {
+	if err := AndroidConfigure(ctx, androidNearby, dataUsage, visibility, name); err != nil {
 		return nil, errors.Wrap(err, "failed to configure Android Nearby Share settings")
+	}
+
+	return androidNearby, nil
+}
+
+// AndroidConfigure configures Nearby Share settings on an Android device.
+func AndroidConfigure(ctx context.Context, androidNearby *nearbysnippet.AndroidNearbyDevice, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) error {
+	if err := androidNearby.SetupDevice(ctx, dataUsage, visibility, name); err != nil {
+		return errors.Wrap(err, "failed to configure Android Nearby Share settings")
 	}
 
 	// androidNearby.SetupDevice is asynchronous, so we need to poll until the settings changes have taken effect.
@@ -227,10 +236,9 @@ func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPat
 
 		return nil
 	}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 10 * time.Second}); err != nil {
-		return nil, errors.Wrap(err, "timed out waiting for Nearby Share settings to update")
+		return errors.Wrap(err, "timed out waiting for Nearby Share settings to update")
 	}
-
-	return androidNearby, nil
+	return nil
 }
 
 // AdbSetup configures adb and connects to the Android device.
