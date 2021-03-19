@@ -21,8 +21,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/camera/testutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -33,8 +31,7 @@ func init() {
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "arc_camera3", caps.BuiltinOrVividCamera},
-		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "ccaTestBridgeReady",
 		// Default timeout (i.e. 2 minutes) is not enough for some devices to
 		// exercise all resolutions on all cameras.
 		Timeout: 5 * time.Minute,
@@ -42,32 +39,8 @@ func init() {
 }
 
 func CCAUIResolutions(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
-	if err != nil {
-		s.Fatal("Failed to construct test bridge: ", err)
-	}
-	defer tb.TearDown(ctx)
-
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
-		s.Fatal("Failed to clear saved directory: ", err)
-	}
-
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
-	if err != nil {
-		s.Fatal("Failed to open CCA: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := app.Close(ctx); err != nil {
-			s.Error("Failed to close app: ", err)
-		}
-	}(ctx)
-
-	if noMenu, err := app.GetState(ctx, "no-resolution-settings"); err != nil {
-		s.Fatal(`Failed to get "no-resolution-settings" state: `, err)
-	} else if noMenu {
-		s.Fatal("Resolution settings menu is not available on device")
-	}
+	startApp := s.FixtValue().(cca.FixtureData).StartApp
+	stopApp := s.FixtValue().(cca.FixtureData).StopApp
 
 	subTestTimeout := 2 * time.Minute
 	for _, tst := range []struct {
@@ -82,20 +55,27 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 	}} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
-			shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			app, err := startApp(ctx)
+			if err != nil {
+				s.Fatal("Failed to start app: ", err)
+			}
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 			defer cancel()
+			defer func(cleanupCtx context.Context) {
+				if err := stopApp(cleanupCtx, s.HasError()); err != nil {
+					s.Fatal("Failed to stop app: ", err)
+				}
+			}(cleanupCtx)
 
-			if err := cca.ClearSavedDir(ctx, cr); err != nil {
-				s.Fatal("Failed to clear saved directory: ", err)
+			if noMenu, err := app.GetState(ctx, "no-resolution-settings"); err != nil {
+				s.Fatal(`Failed to get "no-resolution-settings" state: `, err)
+			} else if noMenu {
+				s.Fatal("Resolution settings menu is not available on device")
 			}
 
-			if err := tst.testFunc(shortCtx, app); err != nil {
+			if err := tst.testFunc(ctx, app); err != nil {
 				s.Fatalf("Failed to run subtest: %v: %v", tst.name, err)
-			}
-
-			// Restart app using non-shorten context.
-			if err := app.Restart(ctx, tb); err != nil {
-				s.Fatal("Failed to restart CCA: ", err)
 			}
 		})
 		cancel()

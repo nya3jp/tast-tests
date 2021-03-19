@@ -39,7 +39,6 @@ func init() {
 			"ui.bt_devicename", // Required for Bluetooth subtests.
 		},
 		Fixture: "loggedInAndKeepState",
-		Data:    []string{"cca_ui.js"},
 		Params: []testing.Param{
 			{
 				Name:    "basic_ytmusic",
