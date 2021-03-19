@@ -174,7 +174,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 			}
 			currentWindows = windows
 
-			for _, at := range []launcherAnimationType{animationTypePeeking, animationTypeHalf, animationTypeFullscreenSearch, animationTypeFullscreenAllApps} {
+			for _, at := range []launcherAnimationType{animationTypeFullscreenAllApps} {
 				// Wait for 1 seconds to stabilize the result. Note that this doesn't
 				// have to be cpu.WaitUntilIdle(). It may wait too much.
 				// TODO(mukai): find the way to wait more properly on the idleness of Ash.

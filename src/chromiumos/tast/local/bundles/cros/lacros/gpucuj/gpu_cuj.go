@@ -66,26 +66,26 @@ type page struct {
 }
 
 var pageSet = []page{
-	{
-		name: "aquarium", // WebGL Aquarium. This page is for testing WebGL.
-		url:  "https://webglsamples.org/aquarium/aquarium.html",
-	},
+	// {
+	// 	name: "aquarium", // WebGL Aquarium. This page is for testing WebGL.
+	// 	url:  "https://webglsamples.org/aquarium/aquarium.html",
+	// },
 	{
 		name: "poster", // Poster Circle. This page is for testing compositor performance.
 		url:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
 	},
-	{
-		name: "maps", // Google Maps. This page is for testing WebGL.
-		url:  "https://www.google.com/maps/@35.652772,139.6605155,14z",
-	},
-	{
-		name: "video", // Static video. This page is for testing video playback.
-		url:  "/video.html",
-	},
-	{
-		name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
-		url:  "https://en.wikipedia.org/wiki/Cat",
-	},
+	// {
+	// 	name: "maps", // Google Maps. This page is for testing WebGL.
+	// 	url:  "https://www.google.com/maps/@35.652772,139.6605155,14z",
+	// },
+	// {
+	// 	name: "video", // Static video. This page is for testing video playback.
+	// 	url:  "/video.html",
+	// },
+	// {
+	// 	name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
+	// 	url:  "https://en.wikipedia.org/wiki/Cat",
+	// },
 }
 
 // This test deals with both ChromeOS chrome and lacros chrome. In order to reduce confusion,
@@ -377,16 +377,16 @@ func RunGpuCUJ(ctx context.Context, f launcher.FixtData, artifactPath string, pa
 			return nil, nil, errors.Wrap(err, "failed to run lacros test")
 		}
 
-		if err := runCrosTest(ctx, f, &testInvocation{
-			pv:       pv,
-			scenario: params.TestType,
-			page:     page,
-			crt:      lacros.ChromeTypeChromeOS,
-			metrics:  &m,
-			traceDir: traceDir,
-		}); err != nil {
-			return nil, nil, errors.Wrap(err, "failed to run cros test")
-		}
+		// if err := runCrosTest(ctx, f, &testInvocation{
+		// 	pv:       pv,
+		// 	scenario: params.TestType,
+		// 	page:     page,
+		// 	crt:      lacros.ChromeTypeChromeOS,
+		// 	metrics:  &m,
+		// 	traceDir: traceDir,
+		// }); err != nil {
+		// 	return nil, nil, errors.Wrap(err, "failed to run cros test")
+		// }
 	}
 
 	if err := m.computeStatistics(ctx, pv); err != nil {
