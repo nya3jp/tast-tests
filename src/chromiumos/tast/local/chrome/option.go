@@ -144,6 +144,16 @@ func GuestLogin() Option {
 	}
 }
 
+// EnrollLogin returns an Option that can be passed to New to enroll the device.
+func EnrollLogin(creds Creds) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.LoginMode = config.EnrollLogin
+		cfg.Creds = creds
+		cfg.ExtraArgs = append(cfg.ExtraArgs, "--disable-policy-key-verification")
+		return nil
+	}
+}
+
 // DontSkipOOBEAfterLogin returns an Option that can be passed to stay in OOBE after user login.
 func DontSkipOOBEAfterLogin() Option {
 	return func(cfg *config.MutableConfig) error {
@@ -180,15 +190,6 @@ func DMSPolicy(url string) Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.PolicyEnabled = true
 		cfg.DMSAddr = url
-		return nil
-	}
-}
-
-// EnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
-// Enrollment
-func EnterpriseEnroll() Option {
-	return func(cfg *config.MutableConfig) error {
-		cfg.Enroll = true
 		return nil
 	}
 }
