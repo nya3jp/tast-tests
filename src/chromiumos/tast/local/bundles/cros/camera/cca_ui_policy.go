@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -34,33 +35,18 @@ func init() {
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
+		Fixture:      "chromePolicyLoggedIn",
 	})
 }
 
 func CCAUIPolicy(ctx context.Context, s *testing.State) {
-	fdms, err := fakedms.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start FakeDMS: ", err)
-	}
-	defer fdms.Stop(ctx)
-
-	if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
-		s.Fatal("Failed to write policies to FakeDMS: ", err)
-	}
-
-	opts := []chrome.Option{
-		chrome.FakeLogin(chrome.Creds{User: "tast-user@managedchrome.com", Pass: "test0000"}),
-		chrome.DMSPolicy(fdms.URL)}
-	cr, err := chrome.New(ctx, opts...)
-	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	scripts := []string{s.DataPath("cca_ui.js")}
 	outDir := s.OutDir()
 
-	subTestTimeout := 20 * time.Second
+	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
 		name     string
 		testFunc func(context.Context, *chrome.Chrome, []string, string) error

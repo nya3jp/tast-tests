@@ -14,8 +14,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/camera/testutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -26,7 +24,7 @@ func init() {
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner", caps.BuiltinOrVividCamera},
-		Data:         []string{"cca_ui.js", "document_1280x960.y4m"},
+		Fixture:      "ccaTestBridgeReadyWithDocumentScene",
 	})
 }
 
@@ -45,28 +43,9 @@ const (
 // cannot use File VCD to test it. Therefore, we will leave that part to a
 // remote test and test it via CameraBox.
 func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
-	videoPath := s.DataPath("document_1280x960.y4m")
-	scriptPaths := []string{s.DataPath("cca_ui.js")}
-	outDir := s.OutDir()
-
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
-	cr, err := chrome.New(ctx,
-		chrome.ExtraArgs(
-			"--use-fake-device-for-media-stream",
-			"--use-file-for-fake-video-capture="+videoPath))
-	if err != nil {
-		s.Fatal("Failed to launch Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
-
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseFakeCamera)
-	if err != nil {
-		s.Fatal("Failed to construct test bridge: ", err)
-	}
-	defer tb.TearDown(cleanupCtx)
+	startApp := s.FixtValue().(cca.FixtureData).StartApp
+	stopApp := s.FixtValue().(cca.FixtureData).StopApp
+	s.FixtValue().(cca.FixtureData).SetDebugParams(cca.DebugParams{SaveCameraFolderWhenFail: true})
 
 	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
@@ -83,32 +62,30 @@ func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
 		[]reviewChoice{retake, photo},
 	}} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
-		defer cancel()
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
-			if err := runTakeDocumentPhoto(ctx, cr, tb, videoPath, scriptPaths, outDir, tst.choices); err != nil {
+			app, err := startApp(ctx)
+			if err != nil {
+				s.Fatal("Failed to start app: ", err)
+			}
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+			defer cancel()
+			defer func(cleanupCtx context.Context) {
+				if err := stopApp(cleanupCtx, s.HasError()); err != nil {
+					s.Fatal("Failed to stop app: ", err)
+				}
+			}(cleanupCtx)
+
+			if err := runTakeDocumentPhoto(ctx, app, tst.choices); err != nil {
 				s.Fatalf("Failed to take document photos under sub test %v: %v", tst.name, err)
 			}
 		})
+		cancel()
 	}
 }
 
 // runTakeDocumentPhoto tests if CCA can take a document photo and generate document file correctly.
-func runTakeDocumentPhoto(ctx context.Context, cr *chrome.Chrome, tb *testutil.TestBridge, videoPath string, scriptPaths []string, outDir string, reviewChoices []reviewChoice) (retErr error) {
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
-		return errors.Wrap(err, "failed to clear saved directory")
-	}
-	app, err := cca.New(ctx, cr, scriptPaths, outDir, tb)
-	if err != nil {
-		return errors.Wrap(err, "failed to open CCA")
-	}
-	defer func(ctx context.Context) {
-		if err := app.CloseAndMaybeSaveCameraFolder(ctx); err != nil {
-			if retErr == nil {
-				retErr = errors.Wrap(err, "failed to close app")
-			}
-		}
-	}(ctx)
-
+func runTakeDocumentPhoto(ctx context.Context, app *cca.App, reviewChoices []reviewChoice) (retErr error) {
 	// For the devices with document mode enabled by default, the scan mode button should be visible
 	// upon launching the app.
 	if visible, err := app.Visible(ctx, cca.ScanModeButton); err != nil {

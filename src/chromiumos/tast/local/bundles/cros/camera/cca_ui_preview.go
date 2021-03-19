@@ -10,8 +10,6 @@ import (
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/camera/testutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -22,45 +20,16 @@ func init() {
 		Contacts:     []string{"inker@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
-		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "ccaLaunched",
 	})
 }
 
 func CCAUIPreview(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
-	if err != nil {
-		s.Fatal("Failed to construct test bridge: ", err)
-	}
-	defer tb.TearDown(ctx)
-
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
-		s.Fatal("Failed to clear saved directory: ", err)
-	}
-
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
-	if err != nil {
-		s.Fatal("Failed to open CCA: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := app.Close(ctx); err != nil {
-			s.Error("Failed to close app: ", err)
-		}
-	}(ctx)
+	app := s.FixtValue().(cca.FixtureData).App()
 
 	if err := testResize(ctx, app); err != nil {
 		s.Error("Failed in testResize(): ", err)
-
-		// TODO(b/184131041): Guard the restart using a longer context so that
-		// we can still restart app if the sub test reaches the timeout once we
-		// have other sub tests.
-		// Restart app using non-shorten context.
-		if err := app.Restart(ctx, tb); err != nil {
-			s.Fatal("Failed to restart CCA: ", err)
-		}
 	}
-
 	// TODO(shik): Add the missing preview tests in go/cca-test:
 	// * Preview active after going back from gallery
 	// * Preview active after taking picture
