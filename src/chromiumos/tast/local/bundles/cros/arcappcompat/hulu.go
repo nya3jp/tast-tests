@@ -88,30 +88,40 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		allowButtonText           = "ALLOW"
 		continueText              = "CONTINUE"
 		enableLocationServiceText = "ENABLE LOCATION SERVICES"
-		loginText                 = "LOG IN|Log in"
+		loginText                 = "LOG IN"
 		enterEmailID              = "com.hulu.plus:id/email"
 		enterPasswordID           = "com.hulu.plus:id/password"
 		loginButtonID             = "com.hulu.plus:id/login_button"
 		notNowID                  = "android:id/autofill_save_no"
+		noneOfTheAboveID          = "com.google.android.gms:id/cancel"
 		neverButtonID             = "com.google.android.gms:id/credential_save_reject"
 		homeIconID                = "com.hulu.plus:id/menu_home"
 	)
 
-	loginButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches(loginText))
-	enterEmailAddress := d.Object(ui.ID(enterEmailID))
-	// Click on login Button until enterEmailAddress exist in the home page.
+	loginButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+loginText))
+	noneOfTheButton := d.Object(ui.ID(noneOfTheAboveID))
+	// Click on login Button until noneOfTheButton exist in the home page.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := enterEmailAddress.Exists(ctx); err != nil {
+		if err := noneOfTheButton.Exists(ctx); err != nil {
 			loginButton.Click(ctx)
 			return err
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
-		s.Log("EnterEmailAddress doesn't exist: ", err)
+		s.Log("noneOftheAboveButton doesn't exist: ", err)
 	} else {
-		s.Log("EnterEmailAddress does exists")
+		s.Log("noneOftheAboveButton does exists")
 	}
+
+	// Click on none of the above button.
+	if err := noneOfTheButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("NoneOfTheButton doesn't exist: ", err)
+	} else if err := noneOfTheButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on noneOfTheButton: ", err)
+	}
+
 	// Enter email address.
+	enterEmailAddress := d.Object(ui.ID(enterEmailID))
 	huluEmailID := s.RequiredVar("arcappcompat.Hulu.emailid")
 	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("EnterEmailAddress doesn't exist: ", err)
@@ -172,13 +182,8 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to click on clickOnNoThanksButton: ", err)
 	}
 
-	// Click on enable location service.
-	clickOnLocationServices := d.Object(ui.TextMatches("(?i)" + enableLocationServiceText))
-	if err := clickOnLocationServices.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("clickOnLocationServices doesn't exist: ", err)
-	} else if err := clickOnLocationServices.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnLocationServices: ", err)
-	}
+	// Click on got it button.
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
 	// Click on continue button.
 	clickOncontinueButton := d.Object(ui.TextMatches("(?i)" + continueText))
@@ -188,13 +193,27 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		s.Fatal("Failed to click on clickOncontinueButton: ", err)
 	}
 
-	// Click on allow button to access device location.
-	allowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+allowButtonText))
-	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Allow Button doesn't exist: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allowButton: ", err)
+	// Click on allow button.
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+
+	// Click on enable location service.
+	clickOnLocationServices := d.Object(ui.TextMatches("(?i)" + enableLocationServiceText))
+	if err := clickOnLocationServices.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("clickOnLocationServices doesn't exist: ", err)
+	} else if err := clickOnLocationServices.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnLocationServices: ", err)
 	}
+
+	// Click on continue button.
+	if err := clickOncontinueButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("clickOncontinueButton doesn't exist: ", err)
+	} else if err := clickOncontinueButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOncontinueButton: ", err)
+	}
+
+	// Click on allow button to access device location.
+	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+
 	// Press back key to dismiss the pop up.
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
 		s.Log("Failed to enter KEYCODE_BACk: ", err)
@@ -225,17 +244,10 @@ func signOutOfHulu(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 		homeIconID       = "com.hulu.plus:id/menu_home"
 	)
 
-	// Check for homeIcon.
-	homeIcon := d.Object(ui.ID(homeIconID))
-	if err := homeIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Log("homeIcon doesn't exist and skipped logout of an app: ", err)
-		return
-	}
-
 	// Click on account icon.
 	accountIcon := d.Object(ui.ID(accountIconID))
-	if err := accountIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("AccountIcon doesn't exist: ", err)
+	if err := accountIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Fatal("AccountIcon doesn't exist: ", err)
 	} else if err := accountIcon.Click(ctx); err != nil {
 		s.Fatal("Failed to click on accountIcon: ", err)
 	}
