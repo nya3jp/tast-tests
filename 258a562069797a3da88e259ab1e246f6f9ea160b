@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c476063_0d9cbe00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom/zoom.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:05:17Z",
+      "side": 1,
+      "message": "Many comments for Google Meet CL apply this CL as well.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2757590/5#message-1f71f65ae29e939778412c76c847a233f2792a94\n\nPlease add me back to the attention set when you finish addressing these comments in this CL as well.",
+      "revId": "258a562069797a3da88e259ab1e246f6f9ea160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
