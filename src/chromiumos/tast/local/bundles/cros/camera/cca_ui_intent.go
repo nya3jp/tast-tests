@@ -96,26 +96,20 @@ func init() {
 		SoftwareDeps: []string{"camera_app", "chrome", "proprietary_codecs", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "ArcCameraIntentTest.apk"},
 		Timeout:      4 * time.Minute,
+		Fixture:      "ccaTestBridgeReadyWithArc",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.Booted(),
 		}},
 	})
 }
 
 func CCAUIIntent(ctx context.Context, s *testing.State) {
-	d := s.PreValue().(arc.PreData)
-	a := d.ARC
-	cr := d.Chrome
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
-	if err != nil {
-		s.Fatal("Failed to construct test bridge: ", err)
-	}
-	defer tb.TearDown(ctx)
+	a := s.FixtValue().(cca.FixtureData).ARC
+	cr := s.FixtValue().(cca.FixtureData).Chrome
+	tb := s.FixtValue().(cca.FixtureData).TestBridge
 
 	uiDevice, err := a.NewUIDevice(ctx)
 	if err != nil {
