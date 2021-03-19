@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be8208e9_9ec67e4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-19T20:34:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c89013e_76b58b20",
+      "revId": "87ae00c410a9bea563d26c24f9d294eb2680c15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "728d3ae5_64203925",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-19T14:57:37Z",
       "side": 1,
       "message": "if gsutil is successful, can\u0027t this script delete the file itself?",
+      "revId": "87ae00c410a9bea563d26c24f9d294eb2680c15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fce5ddf6_9184dcaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-19T20:34:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "728d3ae5_64203925",
       "revId": "87ae00c410a9bea563d26c24f9d294eb2680c15f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0728e2_3ab1022c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-19T20:34:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "677d09e0_ee26b884",
+      "revId": "87ae00c410a9bea563d26c24f9d294eb2680c15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b320812_25b953b7",
@@ -65,6 +119,30 @@
       "writtenOn": "2021-03-19T14:57:37Z",
       "side": 1,
       "message": "this command substitution isn\u0027t quoted like the other two, is that intentional?",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "87ae00c410a9bea563d26c24f9d294eb2680c15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "502579cf_a4d308e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-19T20:34:30Z",
+      "side": 1,
+      "message": "Yes - size is a JSON number, JSON numbers are unquoted.\nQuotes inside a heredoc are literal and included in the generated output.",
+      "parentUuid": "8b320812_25b953b7",
       "range": {
         "startLine": 28,
         "startChar": 10,
