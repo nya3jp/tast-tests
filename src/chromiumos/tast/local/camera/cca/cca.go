@@ -461,11 +461,15 @@ func (a *App) Restart(ctx context.Context, tb *testutil.TestBridge) error {
 }
 
 func (a *App) checkVideoState(ctx context.Context, active bool, duration time.Duration) error {
+	cleanupCtx := ctx
 	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
 
 	code := fmt.Sprintf("Tast.isVideoActive() === %t", active)
 	if err := a.conn.WaitForExpr(ctx, code); err != nil {
+		if jobErr := upstart.CheckJob(cleanupCtx, "cros-camera"); jobErr != nil {
+			return errors.Wrap(jobErr, err.Error())
+		}
 		return err
 	}
 
