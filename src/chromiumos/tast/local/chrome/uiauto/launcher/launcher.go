@@ -23,6 +23,9 @@ import (
 // ExpandedItemsClass define the class name of the expanded launcher view which is used as search parameters in ui.
 const ExpandedItemsClass = "AppListItemView"
 
+// SearchResultListItemFinder is the finder of the list items in launcher search result.
+var SearchResultListItemFinder = nodewith.ClassName("ui/app_list/SearchResultView")
+
 // SearchAndWaitForAppOpen return a function that searches for an app, launches it, and waits for it to be open.
 func SearchAndWaitForAppOpen(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, app apps.App) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("SearchAndWaitForAppOpen(%+q)", app),
