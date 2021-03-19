@@ -149,7 +149,7 @@ func GuestLogin() Option {
 func KeepEnrollment() Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.KeepOwnership = true
-		cfg.ExtraArgs = append(cfg.ExtraArgs, "--disable-policy-key-verification")
+		cfg.DisablePolicyKeyVerification = true
 		return nil
 	}
 }
@@ -195,10 +195,12 @@ func DMSPolicy(url string) Option {
 }
 
 // EnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
-// Enrollment
-func EnterpriseEnroll() Option {
+// Enrollment before login.
+func EnterpriseEnroll(creds Creds) Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.Enroll = true
+		cfg.EnrollmentCreds = creds
+		cfg.DisablePolicyKeyVerification = true
 		return nil
 	}
 }

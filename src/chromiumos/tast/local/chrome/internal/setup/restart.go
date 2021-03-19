@@ -65,10 +65,6 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		args = append(args, "--no-startup-window") // Do not start up chrome://newtab by default to avoid unexpected patterns (doodle etc.)
 	}
 
-	if cfg.Enroll() {
-		args = append(args, "--disable-policy-key-verification") // Remove policy key verification for fake enrollment
-	}
-
 	if cfg.SkipOOBEAfterLogin() {
 		args = append(args, "--oobe-skip-postlogin")
 	}
@@ -112,6 +108,9 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	}
 	if cfg.DMSAddr() != "" {
 		args = append(args, "--device-management-url="+cfg.DMSAddr())
+	}
+	if cfg.DisablePolicyKeyVerification() {
+		args = append(args, "--disable-policy-key-verification")
 	}
 	switch cfg.ARCMode() {
 	case config.ARCDisabled:
