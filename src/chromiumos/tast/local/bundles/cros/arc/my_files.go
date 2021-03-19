@@ -149,7 +149,9 @@ func testPushToARCAndReadFromCros(ctx context.Context, a *arc.ARC, sourcePath, a
 // testCrosToARC checks whether a file put in the Chrome OS MyFiles directory
 // can be read by Android apps.
 func testCrosToARC(ctx context.Context, s *testing.State, a *arc.ARC, cr *chrome.Chrome, myFilesPath string) {
-	const testFileURI = "content://org.chromium.arc.volumeprovider/" + myFilesUUID + "/" + storage.TestFile
+	config := storage.TestConfig{DirPath: myFilesPath, DirName: "My files", DirTitle: "Files - My files",
+		CreateTestFile: true, FileName: "storage.txt"}
+	testFileURI := "content://org.chromium.arc.volumeprovider/" + myFilesUUID + "/" + config.FileName
 
 	testing.ContextLog(ctx, "Testing CrOS -> Android")
 
@@ -158,7 +160,5 @@ func testCrosToARC(ctx context.Context, s *testing.State, a *arc.ARC, cr *chrome
 		{LabelID: storage.URIID, Value: testFileURI},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
-	dir := storage.Directory{Path: myFilesPath, Name: "My files", Title: "Files - My files", CreateTestFile: true}
-
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, dir, expectations)
+	storage.TestOpenWithAndroidApp(ctx, s, a, cr, config, expectations)
 }

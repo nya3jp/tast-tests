@@ -6,7 +6,11 @@ package arc
 
 import (
 	"context"
+	"fmt"
+	"math/rand"
+	"net/url"
 	"path"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -14,10 +18,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/drivefs"
 	"chromiumos/tast/testing"
-)
-
-const (
-	drivefsURI = "content://org.chromium.arc.volumeprovider/MyDrive/root/storage.txt"
 )
 
 func init() {
@@ -34,16 +34,9 @@ func init() {
 		Vars:         []string{"arc.Drivefs.user", "arc.Drivefs.password"},
 		Params: []testing.Param{
 			{
-				Val: []storage.Expectation{
-					{LabelID: storage.ActionID, Value: storage.ExpectedAction},
-					{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}},
 				ExtraSoftwareDeps: []string{"android_p"},
 			}, {
-				Name: "vm",
-				Val: []storage.Expectation{
-					{LabelID: storage.ActionID, Value: storage.ExpectedAction},
-					{LabelID: storage.URIID, Value: drivefsURI},
-					{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}},
+				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
 			},
 		},
@@ -70,7 +63,10 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close(ctx)
 
-	expectations := s.Param().([]storage.Expectation)
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to check if VM is enabled: ", err)
+	}
 
 	mountPath, err := drivefs.WaitForDriveFs(ctx, cr.NormalizedUser())
 	if err != nil {
@@ -78,8 +74,26 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	}
 	drivefsRoot := path.Join(mountPath, "root")
 
-	dir := storage.Directory{Path: drivefsRoot, Name: "Google Drive", Title: "Files - My Drive",
-		CreateTestFile: true, CheckFileType: true}
+	config := storage.TestConfig{DirPath: drivefsRoot, DirName: "Google Drive", DirTitle: "Files - My Drive",
+		CreateTestFile: true, CheckFileType: true, FileName: randFileName()}
+	expectations := []storage.Expectation{
+		{LabelID: storage.ActionID, Value: storage.ExpectedAction},
+		{LabelID: storage.URIID, Value: constructDriveFSURI(vmEnabled, drivefsRoot, config.FileName)},
+		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, dir, expectations)
+	storage.TestOpenWithAndroidApp(ctx, s, a, cr, config, expectations)
+}
+
+// randFileName generates a randomized test file name to avoid race condition among concurrently running tests.
+func randFileName() string {
+	return fmt.Sprintf("storage_%d.txt", rand.Intn(1000000000))
+}
+
+// constructDriveFSURI constructs a Drive FS URI.
+func constructDriveFSURI(vmEnabled bool, drivefsRoot, file string) string {
+	if vmEnabled {
+		return "content://org.chromium.arc.volumeprovider/MyDrive/root/" + file
+	}
+	subPath := strings.ReplaceAll(drivefsRoot, "/media/fuse/", "") + "/"
+	return "content://org.chromium.arc.chromecontentprovider/externalfile%3A" + url.PathEscape(subPath) + file
 }

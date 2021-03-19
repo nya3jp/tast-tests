@@ -24,8 +24,6 @@ import (
 )
 
 const (
-	// TestFile is the name of the test file used by the test app.
-	TestFile = "storage.txt"
 	// Timeout to wait for UI item to appear.
 	uiTimeout = 10 * time.Second
 
@@ -49,37 +47,41 @@ type Expectation struct {
 	Value   string
 }
 
-// Directory represents a FilesApp directory, e.g. Drive FS, Downloads.
-type Directory struct {
+// TestConfig stores the details of the directory under test and misc test configurations.
+type TestConfig struct {
 	// Name of the directory.
-	Name string
+	DirName string
 	// Title of the directory.
-	Title string
-	// If specified, open the sub-directories under "Name".
+	DirTitle string
+	// If specified, open the sub-directories under "DirName".
 	SubDirectories []string
 	// Actual path of the directory on the file system.
-	Path string
-	// If set to true, create the test file at "Path". For directory where there is no actual
+	DirPath string
+	// If set to true, create the test file at "DirPath". For directory where there is no actual
 	// file path, set this to false and create the file before running the test (e.g. MTP).
 	CreateTestFile bool
 	// Optional: If set to true, wait for file type to appear before opening the file.
 	// Currently used by DriveFS to ensure metadata has arrived.
 	CheckFileType bool
+	// Name of the test file to be used in the test.
+	FileName string
 }
 
-// TestOpenWithAndroidApp performs OpenWith operation on the test file in the specified directory dir.
-// dir needs to be one of the top folders in FilesApp, e.g. Google Drive, Downloads.
-func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, cr *chrome.Chrome, dir Directory, expectations []Expectation) {
-	testing.ContextLogf(ctx, "Performing TestOpenWithAndroidApp on: %s", dir.Name)
+// TestOpenWithAndroidApp opens a test file in the specified directory, e.g. Google Drive,
+// Downloads, MyFiles etc, using the test android app, ArcFileReaderTest. The app will display
+// the respective Action, URI and FileContent on its UI, to be validated against our
+// expected values.
+func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, cr *chrome.Chrome, config TestConfig, expectations []Expectation) {
+	testing.ContextLogf(ctx, "Performing TestOpenWithAndroidApp on: %s", config.DirName)
 
 	testing.ContextLog(ctx, "Installing ArcFileReaderTest app")
 	if err := a.Install(ctx, arc.APKPath("ArcFileReaderTest.apk")); err != nil {
 		s.Fatal("Failed to install ArcFileReaderTest app: ", err)
 	}
 
-	if dir.CreateTestFile {
+	if config.CreateTestFile {
 		testing.ContextLog(ctx, "Setting up a test file")
-		testFileLocation := filepath.Join(dir.Path, TestFile)
+		testFileLocation := filepath.Join(config.DirPath, config.FileName)
 		if err := ioutil.WriteFile(testFileLocation, []byte(ExpectedFileContent), 0666); err != nil {
 			s.Fatalf("Failed to create test file %s: %s", testFileLocation, err)
 		}
@@ -95,7 +97,7 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 		s.Fatal("Failed to open Files App: ", err)
 	}
 
-	if err := openWithReaderApp(ctx, files, dir); err != nil {
+	if err := openWithReaderApp(ctx, files, config); err != nil {
 		s.Fatal("Could not open file with ArcFileReaderTest: ", err)
 	}
 
@@ -124,21 +126,21 @@ func openFilesApp(ctx context.Context, cr *chrome.Chrome) (*filesapp.FilesApp, e
 }
 
 // openWithReaderApp opens the test file with ArcFileReaderTest.
-func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, dir Directory) error {
+func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, config TestConfig) error {
 	testing.ContextLog(ctx, "Opening the test file with ArcFileReaderTest")
 
 	return uiauto.Combine("open the test file with ArcFileReaderTest",
-		files.OpenPath(dir.Title, dir.Name, dir.SubDirectories...),
+		files.OpenPath(config.DirTitle, config.DirName, config.SubDirectories...),
 		// Note: due to the banner loading, this may still be flaky.
 		// If that is the case, we may want to increase the interval and timeout for this next call.
-		files.SelectFile(TestFile),
+		files.SelectFile(config.FileName),
 		func(ctx context.Context) error {
-			if dir.CheckFileType {
+			if config.CheckFileType {
 				if err := waitForFileType(ctx, files); err != nil {
 					return errors.Wrap(err, "waiting for file type failed")
 				}
-				if err := files.SelectFile(TestFile)(ctx); err != nil {
-					return errors.Wrapf(err, "selecting the test file %s failed", TestFile)
+				if err := files.SelectFile(config.FileName)(ctx); err != nil {
+					return errors.Wrapf(err, "selecting the test file %s failed", config.FileName)
 				}
 			}
 			return nil
