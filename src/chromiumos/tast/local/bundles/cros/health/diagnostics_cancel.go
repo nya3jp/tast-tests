@@ -35,9 +35,8 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Fixture:      "crosHealthdRunning",
 		Params: []testing.Param{{
-			Name:      "urandom",
-			Val:       newCancelRoutineParams(croshealthd.RoutineURandom),
-			ExtraAttr: []string{"informational"},
+			Name: "urandom",
+			Val:  newCancelRoutineParams(croshealthd.RoutineURandom),
 		}},
 	})
 }
