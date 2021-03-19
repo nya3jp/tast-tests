@@ -105,6 +105,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3cc5af15_e959b400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-19T21:56:21Z",
+      "side": 1,
+      "message": "That\u0027s a good point. For now at least we should go ahead and just exit early with a log message if there is only one slot. Eventually we will limit this to \"multisim\" duts by adding an extra Attr.",
+      "parentUuid": "9e6de0e0_647b30f7",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82a690d0_db4fe139",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
         "patchSetId": 3
@@ -173,6 +191,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3be4315f_1647abd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-19T21:56:21Z",
+      "side": 1,
+      "message": "Note what this returns.",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398a9a64_80ef7e02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-19T21:56:21Z",
+      "side": 1,
+      "message": "This is where we should trigger a graceful exit instead of a failure.",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48470c42_af369a27",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
         "patchSetId": 3
@@ -201,6 +253,24 @@
       "writtenOn": "2021-03-19T20:36:36Z",
       "side": 1,
       "message": "If we do end up keeping this code or moving it somewhere else, though, we shouldn\u0027t be hardcoding 2 here",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "403e9a46_cd0da855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-19T21:56:21Z",
+      "side": 1,
+      "message": "Well, we\u0027ve a lot of untested code for \u003e2 slots, but on the other hand there\u0027s no particular reason not to use numSlots here.\n\nThe main reason I want this to be part of a shill specific test is so that we can quickly identify the source of failure. If this fails, any Shill tests switching slots are guaranteed to fail (assuming the test is stable).\n\nI wonder if we can have tests depend on other tests? Something to look into maybe.",
+      "parentUuid": "39aa55a4_735ea2c5",
       "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
