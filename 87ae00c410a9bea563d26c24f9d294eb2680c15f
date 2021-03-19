@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c89013e_76b58b20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T14:57:37Z",
+      "side": 1,
+      "message": "The use of single-letter variable names here makes things kind of hard to read...",
+      "revId": "87ae00c410a9bea563d26c24f9d294eb2680c15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "728d3ae5_64203925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T14:57:37Z",
+      "side": 1,
+      "message": "if gsutil is successful, can\u0027t this script delete the file itself?",
+      "revId": "87ae00c410a9bea563d26c24f9d294eb2680c15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "677d09e0_ee26b884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T14:57:37Z",
+      "side": 1,
+      "message": "What\u0027s the reason for the commented out line here? If you want the user to pick one or the other, why not have then pass a flag?",
+      "revId": "87ae00c410a9bea563d26c24f9d294eb2680c15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b320812_25b953b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T14:57:37Z",
+      "side": 1,
+      "message": "this command substitution isn\u0027t quoted like the other two, is that intentional?",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "87ae00c410a9bea563d26c24f9d294eb2680c15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
