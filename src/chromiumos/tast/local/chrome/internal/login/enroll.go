@@ -138,25 +138,23 @@ func waitForEnrollmentLoginScreen(ctx context.Context, cfg *config.Config, sess 
 	return nil
 }
 
-// enterpriseOOBELogin will complete the oobe login after Enrollment completes.
-func enterpriseOOBELogin(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
-	if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
-		return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not enroll")
-	}
+// performEnrollment will perform enrollment and wait for it to complete.
+func performEnrollment(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
+	testing.ContextLog(ctx, "Performing enrollment")
 
-	// Reconnect to OOBE to log in after enrollment.
-	// See crrev.com/c/2144279 for details.
 	conn, err := WaitForOOBEConnection(ctx, sess)
 	if err != nil {
-		return errors.Wrap(err, "failed to reconnect to OOBE after enrollment")
+		return err
 	}
 	defer conn.Close()
 
-	// Now login like "normal".
-	testing.ContextLog(ctx, "Performing login after enrollment")
-	creds := cfg.Creds()
-	if err := conn.Call(ctx, nil, "Oobe.loginForTesting", creds.User, creds.Pass, creds.GAIAID, false); err != nil {
+	creds := cfg.EnrollmentCreds()
+	if err := conn.Call(ctx, nil, "Oobe.loginForTesting", creds.User, creds.Pass, creds.GAIAID, true); err != nil {
 		return err
+	}
+
+	if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not enroll")
 	}
 
 	return nil
