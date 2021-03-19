@@ -16,6 +16,29 @@
       "message": "lgtm",
       "revId": "89814ae5ff2783f748066e020c10d6ca1a1854aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c90784_50e6ff46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_screen_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-19T07:52:35Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be LeftClick?",
+      "range": {
+        "startLine": 105,
+        "startChar": 7,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "89814ae5ff2783f748066e020c10d6ca1a1854aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
