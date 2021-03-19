@@ -33,6 +33,24 @@
       "message": "Hmmmm, sorry, I\u0027m hesitant to have this feature to this fixture by default, as it changes the UI significantly (and possibly the performance characteristics too).\n\nSorry but that would dismiss my previous comment.  Now I think it\u0027s better to separate fixtures -- create a new fixture with a different name, and put EnableFeatures(\"WebUITabStrip\") for your own fixture only, and make sure existing one unchanged.\n\nThat\u0027s similar to an old patchset of this CL. Sorry.",
       "revId": "da632ac6d56cf1817464c941a15c59fe3d0d175d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0892698c_360e9752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-19T18:41:50Z",
+      "side": 1,
+      "message": "Hi Jun, a new fixture (loggedInAndKeepState) is separated out from the current loggedInToCUJUser. The loggedInToCUJUser logic is kept the same with the existing one. Please check.",
+      "parentUuid": "56cd0035_160f1b51",
+      "revId": "da632ac6d56cf1817464c941a15c59fe3d0d175d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
