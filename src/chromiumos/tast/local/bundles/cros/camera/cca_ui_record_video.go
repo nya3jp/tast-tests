@@ -12,10 +12,8 @@ import (
 	"github.com/abema/go-mp4"
 
 	"chromiumos/tast/common/media/caps"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -28,9 +26,8 @@ func init() {
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
-		Data:         []string{"cca_ui.js"},
 		Timeout:      5 * time.Minute,
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "ccaTestBridgeReady",
 	})
 }
 
@@ -161,13 +158,8 @@ func (v *video) stop(ctx context.Context, app *cca.App) error {
 }
 
 func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
-	if err != nil {
-		s.Fatal("Failed to construct test bridge: ", err)
-	}
-	defer tb.TearDown(ctx)
-
+	cr := s.FixtValue().(cca.FixtureData).Chrome
+	runSubTest := s.FixtValue().(cca.FixtureData).RunSubTest
 	subTestTimeout := 40 * time.Second
 	for _, tc := range []struct {
 		name  string
@@ -184,50 +176,36 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tc.name, func(ctx context.Context, s *testing.State) {
-			cleanupCtx := ctx
-			ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
-			defer cancel()
-
-			if err := cca.ClearSavedDir(ctx, cr); err != nil {
-				s.Fatal("Failed to clear saved directory: ", err)
-			}
-
-			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
-			if err != nil {
-				s.Fatal("Failed to open CCA: ", err)
-			}
-			defer (func(ctx context.Context) {
-				if err := app.Close(ctx); err != nil {
-					s.Error("Failed to close app: ", err)
+			if err := runSubTest(ctx, func(ctx context.Context, app *cca.App) error {
+				testing.ContextLog(ctx, "Switch to video mode")
+				if err := app.SwitchMode(ctx, cca.Video); err != nil {
+					return errors.Wrap(err, "failed to switch to video mode")
 				}
-			})(cleanupCtx)
-
-			testing.ContextLog(ctx, "Switch to video mode")
-			if err := app.SwitchMode(ctx, cca.Video); err != nil {
-				s.Fatal("Failed to switch to video mode: ", err)
-			}
-			if err := app.WaitForVideoActive(ctx); err != nil {
-				s.Fatal("Preview is inactive after switch to video mode: ", err)
-			}
-
-			if err := app.RunThroughCameras(ctx, func(_ cca.Facing) error {
-				if err := app.SetTimerOption(ctx, tc.timer); err != nil {
-					return errors.Wrapf(err, "failed to set timer option %v", tc.timer)
+				if err := app.WaitForVideoActive(ctx); err != nil {
+					return errors.Wrap(err, "preview is inactive after switch to video mode")
 				}
-				if err := tc.run(ctx, app); err != nil {
-					return errors.Wrap(err, "failed in running test")
-				}
-				return nil
-			}); err != nil {
-				s.Fatal("Failed to run tests through all cameras: ", err)
+				return app.RunThroughCameras(ctx, func(_ cca.Facing) error {
+					if err := app.SetTimerOption(ctx, tc.timer); err != nil {
+						return errors.Wrapf(err, "failed to set timer option %v", tc.timer)
+					}
+					return tc.run(ctx, app)
+				})
+			}, cca.SubTestParams{}); err != nil {
+				s.Errorf("Failed to pass %v subtest: %v", tc.name, err)
 			}
 		})
 		cancel()
 	}
 
-	if err := testConfirmDialog(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb); err != nil {
-		s.Fatal("Failed for confirm dialog test: ", err)
-	}
+	subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+	s.Run(subTestCtx, "testConfirmDialog", func(ctx context.Context, s *testing.State) {
+		if err := runSubTest(ctx, func(ctx context.Context, app *cca.App) error {
+			return testConfirmDialog(ctx, app, cr)
+		}, cca.SubTestParams{StopAppOnlyIfExist: true}); err != nil {
+			s.Error("Failed to pass confirm dialog subtest: ", err)
+		}
+	})
+	cancel()
 }
 
 func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App) error {
@@ -424,30 +402,7 @@ func testPauseResume(ctx context.Context, app *cca.App) error {
 	return v.stop(ctx, app)
 }
 
-func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, tb *testutil.TestBridge) error {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
-	defer cancel()
-
-	app, err := cca.New(ctx, cr, scriptPaths, outDir, tb)
-	if err != nil {
-		return err
-	}
-	shouldCloseApp := true
-
-	defer func(ctx context.Context) {
-		if !shouldCloseApp {
-			return
-		}
-
-		// Since only when the test fails we will need to close the app here, we
-		// can just log here if it fails to close the app and report the actual
-		// error to the caller.
-		if err := app.Close(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to close app: ", err)
-		}
-	}(cleanupCtx)
-
+func testConfirmDialog(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
 	if err := app.TriggerConfiguration(ctx, func() error {
 		testing.ContextLog(ctx, "Switch to video mode")
 		if err := app.SwitchMode(ctx, cca.Video); err != nil {
@@ -523,7 +478,5 @@ func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 	}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
 		return err
 	}
-
-	shouldCloseApp = false
 	return nil
 }

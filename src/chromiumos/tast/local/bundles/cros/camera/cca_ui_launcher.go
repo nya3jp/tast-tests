@@ -23,13 +23,12 @@ func init() {
 		Contacts:     []string{"wtlee@google.com", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
-		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
 func CCAUILauncher(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
