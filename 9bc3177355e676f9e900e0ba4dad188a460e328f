@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eef1c28_aecd1474",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:31:00Z",
+      "side": 1,
+      "message": "Here\u0027s my quick scan.\n",
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d8cb434_deef86ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:31:00Z",
+      "side": 1,
+      "message": "1000+ LoC is long for a single file. Please split CL into multiple ones, as well as splitting a file into multiple files (it\u0027s easy in Go).",
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64b7f0a_a043c8a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:31:00Z",
+      "side": 1,
+      "message": "I believe that this case is not really expected. I recommend calling panic in this case to avoid silently discarding errors.",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 18
+      },
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e81124_1cc6ae6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:31:00Z",
+      "side": 1,
+      "message": "style nit: allLinks :\u003d ...",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 15
+      },
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6ac1508_7652e726",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:31:00Z",
+      "side": 1,
+      "message": "No action required: I feel like this is good to have in chrome.New by default. I filed crbug.com/1189995.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 2
+      },
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a527c20_ce0784e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:31:00Z",
+      "side": 1,
+      "message": "Please use a pointer for receivers in all tabletActionHandler methods. Otherwise the struct is copied every time on calling its methods.",
+      "range": {
+        "startLine": 588,
+        "startChar": 6,
+        "endLine": 588,
+        "endChar": 19
+      },
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c752e883_197eff44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:31:00Z",
+      "side": 1,
+      "message": "In this case we should close c before returning.",
+      "range": {
+        "startLine": 651,
+        "startChar": 2,
+        "endLine": 651,
+        "endChar": 17
+      },
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "443ff6ff_4f166618",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:31:00Z",
+      "side": 1,
+      "message": "I believe this should be done after checking tabIdxSrc below. For example it should be an error to pass tabIdxSrc\u003d100, tabTotalNum\u003d1.",
+      "range": {
+        "startLine": 705,
+        "startChar": 1,
+        "endLine": 707,
+        "endChar": 2
+      },
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d51ff57_00080dcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:31:00Z",
+      "side": 1,
+      "message": "Isn\u0027t this \u003c\u003d ?",
+      "range": {
+        "startLine": 708,
+        "startChar": 16,
+        "endLine": 708,
+        "endChar": 19
+      },
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a82654_fc485214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:31:00Z",
+      "side": 1,
+      "message": "ditto: Please use a pointer receiver.",
+      "range": {
+        "startLine": 878,
+        "startChar": 6,
+        "endLine": 878,
+        "endChar": 18
+      },
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
