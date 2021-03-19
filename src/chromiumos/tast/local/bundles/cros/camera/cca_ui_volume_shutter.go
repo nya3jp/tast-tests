@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -28,8 +27,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "proprietary_codecs", caps.BuiltinOrVividCamera},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Data:         []string{"cca_ui.js"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "ccaLaunched",
 	})
 }
 
@@ -114,12 +112,8 @@ func (vh *volumeHelper) verifyVolumeChanged(ctx context.Context, doChange func()
 }
 
 func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
-	if err != nil {
-		s.Fatal("Failed to construct test bridge: ", err)
-	}
-	defer tb.TearDown(ctx)
+	app := s.FixtValue().(cca.FixtureData).App()
+	cr := s.FixtValue().(cca.FixtureData).Chrome
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -160,24 +154,10 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
 			cleanupCtx := ctx
-			shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
-			if err := cca.ClearSavedDir(ctx, cr); err != nil {
-				s.Fatal("Failed to clear saved directory: ", err)
-			}
-
-			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
-			if err != nil {
-				s.Fatal("Failed to open CCA: ", err)
-			}
-			defer func(ctx context.Context) {
-				if err := app.Close(ctx); err != nil {
-					s.Error("Failed to close app: ", err)
-				}
-			}(cleanupCtx)
-
-			cleanup, err := app.EnsureTabletModeEnabled(shortCtx, tst.tablet)
+			cleanup, err := app.EnsureTabletModeEnabled(ctx, tst.tablet)
 			if err != nil {
 				modeName := "clamshell"
 				if tst.tablet {
@@ -187,7 +167,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 			}
 			defer cleanup(cleanupCtx)
 
-			if err := tst.testFunc(shortCtx, cr, app, kb, vh); err != nil {
+			if err := tst.testFunc(ctx, cr, app, kb, vh); err != nil {
 				s.Error("Test failed: ", err)
 			}
 		})

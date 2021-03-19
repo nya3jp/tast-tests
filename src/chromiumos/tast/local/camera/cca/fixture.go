@@ -12,6 +12,7 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/camera/testutil"
@@ -164,27 +165,34 @@ type DebugParams struct {
 	SaveCameraFolderWhenFail bool
 }
 
+// SubTestParams defines parameters to control behaviors of running subtest.
+type SubTestParams struct {
+	StopAppOnlyIfExist bool
+}
+
 // StartAppFunc starts CCA.
 type StartAppFunc func(context.Context) (*App, error)
 
 // StopAppFunc stops CCA.
 type StopAppFunc func(context.Context, bool) error
 
+// SubTestFunc is the function to run in a sub test.
+type SubTestFunc func(context.Context, *App) error
+
 // FixtureData is the struct exposed to tests.
 type FixtureData struct {
 	Chrome     *chrome.Chrome
 	ARC        *arc.ARC
-	TestBridge *testutil.TestBridge
+	TestBridge func() *testutil.TestBridge
 	// App returns the CCA instance which lives through the test.
 	App func() *App
 	// StartApp starts CCA which can be used between subtests.
 	StartApp StartAppFunc
 	// StopApp stops CCA which can be used between subtests.
 	StopApp StopAppFunc
-	// StopAppIfExist works similar to StopApp, but only closes the app if the
-	// app exists. It is useful for tests which will proactively close the app
-	// in the test flow.
-	StopAppIfExist func(ctx context.Context, hasError bool) error
+	// RubSubTest runs the given function as a sub test, handling the app
+	// start/stop it.
+	RunSubTest func(context.Context, SubTestFunc, SubTestParams) error
 	// SetDebugParams sets the debug parameters for current test.
 	SetDebugParams func(params DebugParams)
 }
@@ -287,11 +295,12 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	f.scriptPaths = []string{s.DataPath("cca_ui.js")}
 
 	success = true
-	return FixtureData{Chrome: f.cr, ARC: f.arc, TestBridge: f.tb,
+	return FixtureData{Chrome: f.cr, ARC: f.arc,
+		TestBridge:     f.testBridge,
 		App:            f.cca,
 		StartApp:       f.startApp,
 		StopApp:        f.stopApp,
-		StopAppIfExist: f.stopAppIfExist,
+		RunSubTest:     f.runSubTest,
 		SetDebugParams: f.setDebugParams}
 }
 
@@ -322,21 +331,7 @@ func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 }
 
 func (f *fixture) Reset(ctx context.Context) error {
-	if err := f.tb.TearDown(ctx); err != nil {
-		return errors.Wrap(err, "failed to tear down test bridge")
-	}
-	f.tb = nil
-
-	cameraType := testutil.UseRealCamera
-	if f.fakeCamera {
-		cameraType = testutil.UseFakeCamera
-	}
-	tb, err := testutil.NewTestBridge(ctx, f.cr, cameraType)
-	if err != nil {
-		return errors.Wrap(err, "failed to construct test bridge")
-	}
-	f.tb = tb
-	return nil
+	return f.resetTestBridge(ctx)
 }
 
 func (f *fixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
@@ -360,6 +355,24 @@ func (f *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 			s.Fatal("Failed to stop app: ", err)
 		}
 	}
+}
+
+func (f *fixture) resetTestBridge(ctx context.Context) error {
+	if err := f.tb.TearDown(ctx); err != nil {
+		return errors.Wrap(err, "failed to tear down test bridge")
+	}
+	f.tb = nil
+
+	cameraType := testutil.UseRealCamera
+	if f.fakeCamera {
+		cameraType = testutil.UseFakeCamera
+	}
+	tb, err := testutil.NewTestBridge(ctx, f.cr, cameraType)
+	if err != nil {
+		return errors.Wrap(err, "failed to construct test bridge")
+	}
+	f.tb = tb
+	return nil
 }
 
 func (f *fixture) startApp(ctx context.Context) (*App, error) {
@@ -405,6 +418,34 @@ func (f *fixture) stopAppIfExist(ctx context.Context, hasError bool) error {
 		f.app = nil
 	}
 	return nil
+}
+
+func (f *fixture) runSubTest(ctx context.Context, subTestFunc SubTestFunc, params SubTestParams) (retErr error) {
+	app, err := f.startApp(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to start app")
+	}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+	defer f.resetTestBridge(cleanupCtx)
+	defer func(cleanupCtx context.Context) {
+		hasError := retErr != nil
+		stopFunc := f.stopApp
+		if params.StopAppOnlyIfExist {
+			stopFunc = f.stopAppIfExist
+		}
+		if err := stopFunc(cleanupCtx, hasError); err != nil {
+			retErr = errors.Wrap(retErr, err.Error())
+		}
+	}(cleanupCtx)
+
+	return subTestFunc(ctx, app)
+}
+
+func (f *fixture) testBridge() *testutil.TestBridge {
+	return f.tb
 }
 
 func (f *fixture) cca() *App {

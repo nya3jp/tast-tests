@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/testutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
@@ -40,7 +39,7 @@ type MeasurementOptions struct {
 }
 
 // MeasurePerformance measures performance for CCA.
-func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, options MeasurementOptions, tb *testutil.TestBridge) (retErr error) {
+func MeasurePerformance(ctx context.Context, startApp StartAppFunc, stopApp StopAppFunc, options MeasurementOptions) (retErr error) {
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to set up benchmark")
@@ -56,22 +55,18 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		return errors.Wrap(err, "failed to idle")
 	}
 
-	app, err := New(ctx, cr, scripts, options.OutputDir, tb)
+	app, err := startApp(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to open CCA")
 	}
 	defer func(ctx context.Context) {
-		if err := app.Close(ctx); err != nil {
-			if retErr != nil {
-				testing.ContextLog(ctx, "Failed to close CCA: ", err)
-			} else {
-				retErr = err
-			}
+		if err := stopApp(ctx, retErr != nil); err != nil {
+			retErr = errors.Wrap(retErr, err.Error())
 		}
 	}(ctx)
 
 	if options.ShouldMeasureUIBehaviors {
-		if err := measureUIBehaviors(ctx, cr, app, options.PerfValues); err != nil {
+		if err := measureUIBehaviors(ctx, app, options.PerfValues); err != nil {
 			return errors.Wrap(err, "failed to measure UI behaviors")
 		}
 	}
@@ -85,7 +80,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 
 // measureUIBehaviors measures the performance of UI behaviors such as taking picture, recording
 // video, etc.
-func measureUIBehaviors(ctx context.Context, cr *chrome.Chrome, app *App, perfValues *perf.Values) error {
+func measureUIBehaviors(ctx context.Context, app *App, perfValues *perf.Values) error {
 	testing.ContextLog(ctx, "Fullscreening window")
 	if err := app.FullscreenWindow(ctx); err != nil {
 		return errors.Wrap(err, "failed to fullscreen window")
