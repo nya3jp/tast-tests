@@ -87,12 +87,22 @@ func launchAppForAdobeIllustratorDraw(ctx context.Context, s *testing.State, tco
 		signInWithAGoogleID  = "com.adobe.creativeapps.draw:id/tvSignInButtonWithGoogle"
 	)
 
-	// Click on sign in button.
+	// Check for sign in button.
 	signInButton := d.Object(ui.ID(signInWithAGoogleID))
-	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := signInButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("signInButton doesn't exists: ", err)
-	} else if err := signInButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on signInButton: ", err)
+	}
+
+	// Click on signInButton until selectGmailAccount exist.
+	selectGmailAccount := d.Object(ui.ID(selectGmailAccountID))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := selectGmailAccount.Exists(ctx); err != nil {
+			signInButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		s.Log("selectGmailAccount doesn't exist: ", err)
 	}
 
 	// For selecting Gmail account
