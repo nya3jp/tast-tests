@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
@@ -112,12 +113,27 @@ func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 
 	// Enter email address.
-	AutocadEmailID := s.RequiredVar("arcappcompat.Autocad.emailid")
 	enterEmailAddress := d.Object(ui.ID(enterEmailID))
 	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("EnterEmailAddress doesn't exist: ", err)
-	} else if err := enterEmailAddress.Click(ctx); err != nil {
-		s.Fatal("Failed to click on enterEmailAddress: ", err)
+	}
+
+	// Click on emailid text field until the emailid text field is focused.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if emailIDFocused, err := enterEmailAddress.IsFocused(ctx); err != nil {
+			return errors.New("email text field not focused yet")
+		} else if !emailIDFocused {
+			enterEmailAddress.Click(ctx)
+			return errors.New("email text field not focused yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		s.Fatal("Failed to focus EmailId: ", err)
+	}
+
+	AutocadEmailID := s.RequiredVar("arcappcompat.Autocad.emailid")
+	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("EnterEmailAddress doesn't exist: ", err)
 	} else if err := enterEmailAddress.SetText(ctx, AutocadEmailID); err != nil {
 		s.Fatal("Failed to enterEmailAddress: ", err)
 	}
