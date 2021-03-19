@@ -42,8 +42,8 @@ func DownloadsFolder(ctx context.Context, s *testing.State) {
 		{LabelID: storage.URIID, Value: downloadURI},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
-	dir := storage.Directory{Path: filesapp.DownloadPath, Name: "Downloads",
-		Title: "Files - Downloads", CreateTestFile: true}
+	config := storage.TestConfig{DirPath: filesapp.DownloadPath, DirName: "Downloads",
+		DirTitle: "Files - Downloads", CreateTestFile: true, FileName: "storage.txt"}
 
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, dir, expectations)
+	storage.TestOpenWithAndroidApp(ctx, s, a, cr, config, expectations)
 }
