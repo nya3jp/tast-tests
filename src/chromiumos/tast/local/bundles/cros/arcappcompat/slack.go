@@ -89,7 +89,7 @@ func launchAppForSlack(ctx context.Context, s *testing.State, tconn *chrome.Test
 		notNowID         = "android:id/autofill_save_no"
 		neverButtonID    = "com.google.android.gms:id/credential_save_reject"
 		enterEmailID     = "com.Slack:id/email_edit_text"
-		enterPasswordID  = "com.Slack:id/password_edit_text"
+		enterPasswordID  = "com.Slack:id/password"
 		homeIconID       = "com.Slack:id/title"
 		homeIconText     = "Home"
 	)
