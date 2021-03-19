@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1911fdb0_8c336ac1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T20:36:36Z",
+      "side": 1,
+      "message": "Just \"Add network.ModemmanagerSlotSwitch test\" is a fine commit subject",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "46aff653_b9289b09",
@@ -71,6 +88,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e6de0e0_647b30f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T20:36:36Z",
+      "side": 1,
+      "message": "Won\u0027t this test just straight up fail on the L850-GL?",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a690d0_db4fe139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T20:36:36Z",
+      "side": 1,
+      "message": "use s.Logf here",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4caf5045_b145060b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
         "patchSetId": 3
@@ -105,6 +156,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05d03e39_b1e9353b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T20:36:36Z",
+      "side": 1,
+      "message": "Looks like you have some spaces at the beginning of this line and the next two. Did you run \"go fmt\"?",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48470c42_af369a27",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
         "patchSetId": 3
@@ -116,6 +184,23 @@
       "writtenOn": "2021-03-19T16:47:23Z",
       "side": 1,
       "message": "The above is sufficient for this test, we do not need or want to test Shill functionality in a modemmanager_ test.",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39aa55a4_735ea2c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-19T20:36:36Z",
+      "side": 1,
+      "message": "If we do end up keeping this code or moving it somewhere else, though, we shouldn\u0027t be hardcoding 2 here",
       "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
