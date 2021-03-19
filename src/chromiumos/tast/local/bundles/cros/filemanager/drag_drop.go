@@ -14,9 +14,10 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -73,11 +74,6 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	defer files.Release(ctx)
-
-	// The Files App may show a welcome banner on launch to introduce the user to new features.
-	// Increase polling options to give UI more time to stabilize in the event that a banner is shown.
-	files.SetStablePollOpts(&testing.PollOptions{Interval: 1 * time.Second, Timeout: 5 * time.Second})
 
 	// Get connection to foreground extension to verify changes.
 	dropTargetURL := "chrome-extension://" + dropTargetExtID + "/window.html"
@@ -92,8 +88,19 @@ func DragDrop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for javascript to update window.document.title: ", err)
 	}
 
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard: ", err)
+	}
+	defer kb.Close()
+
+	// The drag drop chrome app defaults to (0,0) with width 300 and height 300 and always on top.
 	dstPoint := coords.Point{X: 100, Y: 100}
-	if err := files.DragAndDropFile(ctx, textFile, dstPoint); err != nil {
+
+	// The Files App may show a welcome banner on launch to introduce the user to new features.
+	// Increase polling options to give UI more time to stabilize in the event that a banner is shown.
+	dragDropAction := files.WithTimeout(5*time.Second).WithInterval(time.Second).DragAndDropFile(textFile, dstPoint, kb)
+	if err := files.PerformActionAndRetryMaximizedOnFail(dragDropAction)(ctx); err != nil {
 		s.Fatal("Failed to drag and drop: ", err)
 	}
 
