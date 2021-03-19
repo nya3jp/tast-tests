@@ -108,13 +108,14 @@ func Fsp(ctx context.Context, s *testing.State) {
 		s.Fatal("Unzip test zip file failed: ", err)
 	}
 
+	config := storage.TestConfig{DirName: fspZipFile, DirTitle: "Files - " + fspZipFile,
+		FileName: "storage.txt"}
 	expect := []storage.Expectation{
 		{LabelID: storage.ActionID, Value: storage.ExpectedAction},
-		{LabelID: storage.URIID, Value: convertToURI(userPath)},
+		{LabelID: storage.URIID, Value: constructURI(userPath, config.FileName)},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
-	dir := storage.Directory{Name: fspZipFile, Title: "Files - " + fspZipFile}
 
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, dir, expect)
+	storage.TestOpenWithAndroidApp(ctx, s, a, cr, config, expect)
 }
 
 // unzipFile unzips the specified "zipFile" located at "folder" using the "unarchiver".
@@ -135,8 +136,8 @@ func unzipFile(ctx context.Context, tconn *chrome.TestConn, zipFile, folder, una
 	)(ctx)
 }
 
-// convertToURI converts a path p to its FSP URI.
-func convertToURI(p string) string {
-	hash := strings.ReplaceAll(p, "/home/user/", "")
-	return fspURI + hash + url.PathEscape("/") + storage.TestFile
+// constructURI constructs a FSP URI.
+func constructURI(path, file string) string {
+	hash := strings.ReplaceAll(path, "/home/user/", "")
+	return fspURI + hash + url.PathEscape("/") + file
 }
