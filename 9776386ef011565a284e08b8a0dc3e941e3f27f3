@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fef4ac0_15fd6453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-19T09:07:10Z",
+      "side": 1,
+      "message": "LGTM %nit",
+      "revId": "9776386ef011565a284e08b8a0dc3e941e3f27f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a656944_f3089058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-19T09:07:10Z",
+      "side": 1,
+      "message": "nit: I would make number 2 into a constant and then use it in \"if\" and in the comment.\nSimilarly as in line 229 with attempt var.",
+      "range": {
+        "startLine": 223,
+        "startChar": 68,
+        "endLine": 223,
+        "endChar": 71
+      },
+      "revId": "9776386ef011565a284e08b8a0dc3e941e3f27f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
