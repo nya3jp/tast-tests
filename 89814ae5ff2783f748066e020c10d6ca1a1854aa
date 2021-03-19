@@ -63,6 +63,30 @@
       },
       "revId": "89814ae5ff2783f748066e020c10d6ca1a1854aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1b27579_70a3f1fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_screen_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-19T12:32:07Z",
+      "side": 1,
+      "message": "Please change the comment then, it\u0027s misleading. Maybe:\n\n// Check if the logout button is shown.\n// If the lock screen is disabled, the button is not there.\n// If enabled, the screen is locked with the hotkey, but the system tray is\n// opened on the lock screen as well, but the button should not be there as the \n// screen is already locked.",
+      "parentUuid": "08049cc5_a70711cb",
+      "range": {
+        "startLine": 105,
+        "startChar": 7,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "89814ae5ff2783f748066e020c10d6ca1a1854aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
