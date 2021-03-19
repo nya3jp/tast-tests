@@ -188,7 +188,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 
 	// Login and setup Nearby Share on DUT 1 (Sender).
-	cl1, err := rpc.Dial(ctx, d1, s.RPCHint(), "cros")
+	cl1, err := rpc.Dial(s.FixtContext(), d1, s.RPCHint(), "cros")
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
@@ -207,7 +207,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	f.sender = sender
 
 	// Login and setup Nearby Share on DUT 2 (Receiver).
-	cl2, err := rpc.Dial(ctx, d2, s.RPCHint(), "cros")
+	cl2, err := rpc.Dial(s.FixtContext(), d2, s.RPCHint(), "cros")
 	if err != nil {
 		s.Fatal("Failed to dial rpc service on DUT2: ", err)
 	}
