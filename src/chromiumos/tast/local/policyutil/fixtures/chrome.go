@@ -36,8 +36,7 @@ func init() {
 		Desc:     "Logged into a user session with enrollment",
 		Contacts: []string{"vsavu@google.com", "chromeos-commercial-stability@google.com"},
 		Impl: &policyChromeFixture{
-			// Need to keep state to maintain enrollment.
-			extraOpts: []chrome.Option{chrome.KeepState(), chrome.ExtraArgs("--disable-policy-key-verification")},
+			extraOpts: []chrome.Option{chrome.KeepEnrollment()},
 		},
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
