@@ -7,6 +7,8 @@
 // local and remote tests.
 package mmconst
 
+import "time"
+
 // ModemManager1.Modem properties
 const (
 	ModemPropertyDevice         = "Device"
@@ -18,4 +20,9 @@ const (
 // ModemManager1.Sim properties
 const (
 	SimPropertySimIdentifier = "SimIdentifier"
+)
+
+// Wait times for modem at Modemmanager operations
+const (
+	ModemPollTime = 1 * time.Minute
 )
