@@ -35,10 +35,11 @@ var touchviewTestsForPinterest = []testutil.TestCase{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Pinterest,
-		Desc:         "Functional test for Pinterest that installs the app also verifies it is logged in and that the main page is open, checks Pinterest correctly changes the window state in both clamshell and touchview mode",
-		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat"},
+		Func:     Pinterest,
+		Desc:     "Functional test for Pinterest that installs the app also verifies it is logged in and that the main page is open, checks Pinterest correctly changes the window state in both clamshell and touchview mode",
+		Contacts: []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
+		// Disabled this test as Pinterest android app is not available anymore and it is migrated to PWA app.
+		//Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Val:               clamshellTestsForPinterest,
