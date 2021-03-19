@@ -10,16 +10,9 @@ import (
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/camera/testutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
-
-type smokeTestParams struct {
-	useCameraType testutil.UseCameraType
-	function      testFunctionality
-}
 
 type testFunctionality int
 
@@ -36,85 +29,51 @@ func init() {
 		Contacts:     []string{"inker@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome"},
-		Data:         []string{"cca_ui.js"},
 		Params: []testing.Param{{
 			Name:              "real",
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
-			Pre:               chrome.LoggedIn(),
+			Fixture:           "ccaLaunched",
 			ExtraAttr:         []string{"informational"},
-			Val: smokeTestParams{
-				useCameraType: testutil.UseRealCamera,
-				function:      none,
-			},
+			Val:               none,
 		}, {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},
-			Pre:               chrome.LoggedIn(),
+			Fixture:           "ccaLaunched",
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("reven")),
 			ExtraAttr:         []string{"group:camera-postsubmit"},
-			Val: smokeTestParams{
-				useCameraType: testutil.UseVividCamera,
-				function:      none,
-			},
+			Val:               none,
 		}, {
-			Name: "fake",
-			Pre:  testutil.ChromeWithFakeCamera(),
-			Val: smokeTestParams{
-				useCameraType: testutil.UseFakeCamera,
-				function:      none,
-			},
+			Name:    "fake",
+			Fixture: "ccaLaunchedWithFakeCamera",
+			Val:     none,
 		}, {
-			Name: "photo_fake",
-			Pre:  testutil.ChromeWithFakeCamera(),
-			Val: smokeTestParams{
-				useCameraType: testutil.UseFakeCamera,
-				function:      photoTaking,
-			},
+			Name:    "photo_fake",
+			Fixture: "ccaLaunchedWithFakeCamera",
+			Val:     photoTaking,
 		}, {
-			Name: "video_fake",
-			Pre:  testutil.ChromeWithFakeCamera(),
+			Name:    "video_fake",
+			Fixture: "ccaLaunchedWithFakeCamera",
 			// TODO(b/191846403): Promote the test to Chrome CQ once it is stable enough.
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
-			Val: smokeTestParams{
-				useCameraType: testutil.UseFakeCamera,
-				function:      videoRecoridng,
-			},
+			Val:               videoRecoridng,
 		}},
 	})
 }
 
 func CCAUISmoke(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	testParams := s.Param().(smokeTestParams)
-	tb, err := testutil.NewTestBridge(ctx, cr, testParams.useCameraType)
-	if err != nil {
-		s.Fatal("Failed to construct test bridge: ", err)
-	}
-	defer tb.TearDown(ctx)
+	app := s.FixtValue().(cca.FixtureData).App()
+	testFunction := s.Param().(testFunctionality)
+	s.FixtValue().(cca.FixtureData).SetDebugParams(cca.DebugParams{SaveCameraFolderWhenFail: true})
 
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
-		s.Fatal("Failed to clear saved directory: ", err)
-	}
-
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
-	if err != nil {
-		s.Fatal("Failed to open CCA: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := app.CloseAndMaybeSaveCameraFolder(ctx); err != nil {
-			s.Error("Failed to close app: ", err)
-		}
-	}(ctx)
-
-	if testParams.function == photoTaking {
+	if testFunction == photoTaking {
 		if err := app.SwitchMode(ctx, cca.Photo); err != nil {
 			s.Error("Failed to switch to photo mode: ", err)
 		}
 		if _, err := app.TakeSinglePhoto(ctx, cca.TimerOff); err != nil {
 			s.Error("Failed to take photo: ", err)
 		}
-	} else if testParams.function == videoRecoridng {
+	} else if testFunction == videoRecoridng {
 		if err := app.SwitchMode(ctx, cca.Video); err != nil {
 			s.Error("Failed to switch to video mode: ", err)
 		}
