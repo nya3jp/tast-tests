@@ -16,6 +16,29 @@
       "message": "Hi Oleh, could you PTAL? 😊",
       "revId": "c7a0dd0756db2494d4d2c8052bff7cdaa961f449",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7253ed15_9c057de2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_whitelist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-19T09:35:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is the best strategy, but this is the only way I found to check whether the \"PIN or password\" radio button is disabled. I first tried fetching the node info and checking its restriction, but it is always None, i.e. empty string. If you know of a better way I\u0027d be happy to improve this.",
+      "range": {
+        "startLine": 124,
+        "startChar": 79,
+        "endLine": 124,
+        "endChar": 123
+      },
+      "revId": "c7a0dd0756db2494d4d2c8052bff7cdaa961f449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
