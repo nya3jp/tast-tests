@@ -16,6 +16,23 @@
       "message": "PTAL~",
       "revId": "41fb848cb54ce08ab54ee375c212217cfb5ab535",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48279b3b_55c0067a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-03-19T17:11:37Z",
+      "side": 1,
+      "message": "This is awesome, thanks Eliot! It seems that we can start marking our tests as critical after this CL lands!",
+      "revId": "41fb848cb54ce08ab54ee375c212217cfb5ab535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
