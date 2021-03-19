@@ -16,6 +16,52 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "aff4059cdf869af33e20a02658bea5c349c9fa89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b5ee53_464c37f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-03-19T08:43:28Z",
+      "side": 1,
+      "message": "On the long term I think it\u0027s a good idea to migrate this to return the actual state, and have the test check the state instead of the array of booleans. However, it doesn\u0027t need to happen in this CL.",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 31
+      },
+      "revId": "aff4059cdf869af33e20a02658bea5c349c9fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa48d759_0bc20374",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-03-19T08:43:28Z",
+      "side": 1,
+      "message": "nit, optional: The renaming from utility to cryptohome can go in a different CL so that the change matches what\u0027s in the commit message. It\u0027s up to you if you are willing to split it.",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 11
+      },
+      "revId": "aff4059cdf869af33e20a02658bea5c349c9fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
