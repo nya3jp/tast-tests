@@ -44,6 +44,7 @@ const (
 	GAIALogin                    // real network-based login using GAIA backend
 	GuestLogin                   // sign in as ephemeral guest user
 	EnrollLogin                  // enroll the device and log in
+	EnrollOnly                   // enroll the device
 )
 
 // AuthType describes the type of authentication to be used in GAIA.

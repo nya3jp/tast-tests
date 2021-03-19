@@ -144,10 +144,20 @@ func GuestLogin() Option {
 	}
 }
 
-// EnrollLogin returns an Option that can be passed to New to enroll the device.
+// EnrollLogin returns an Option that can be passed to New to enroll the device and log in.
 func EnrollLogin(creds Creds) Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.LoginMode = config.EnrollLogin
+		cfg.Creds = creds
+		cfg.ExtraArgs = append(cfg.ExtraArgs, "--disable-policy-key-verification")
+		return nil
+	}
+}
+
+// Enroll returns an Option that can be passed to New to enroll the device, but stay at the login screen.
+func Enroll(creds Creds) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.LoginMode = config.EnrollOnly
 		cfg.Creds = creds
 		cfg.ExtraArgs = append(cfg.ExtraArgs, "--disable-policy-key-verification")
 		return nil
