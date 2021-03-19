@@ -9,7 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -49,20 +51,15 @@ func HoldKey(ctx context.Context, kb *input.KeyboardEventWriter, s string, durat
 }
 
 // ExitGame holds esc key and exits the game.
-func ExitGame(ctx context.Context, kb *input.KeyboardEventWriter, webpage *ui.Node) error {
+func ExitGame(ctx context.Context, kb *input.KeyboardEventWriter, ac *uiauto.Context, webpage *nodewith.Finder) error {
 	if err := HoldKey(ctx, kb, "esc", 2*time.Second); err != nil {
 		return errors.Wrap(err, "failed to hold the sec key")
 	}
-	exitButton, err := webpage.DescendantWithTimeout(ctx, ui.FindParams{Name: "Exit game", Role: ui.RoleTypeButton}, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the exit button")
-	}
-	defer exitButton.Release(ctx)
-	if err := exitButton.FocusAndWait(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed to focus on the exit button")
-	}
-	if err := exitButton.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the exit button")
-	}
-	return nil
+	ac = ac.WithTimeout(10 * time.Second)
+	exitButton := nodewith.Name("Exit game").Role(role.Button)
+	return uiauto.Combine(
+		"focus and click",
+		ac.FocusAndWait(exitButton),
+		ac.LeftClick(exitButton),
+	)(ctx)
 }
