@@ -12,10 +12,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/media/caps"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -25,7 +23,6 @@ func init() {
 		Desc:         "Opens CCA and stress testing common functions randomly",
 		Contacts:     []string{"shik@chromium.org", "inker@chromium.org", "chromeos-camera-eng@google.com"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
-		Data:         []string{"cca_ui.js"},
 		Vars: []string{
 			// Number of iterations to test.
 			"iterations",
@@ -41,27 +38,27 @@ func init() {
 			Name:              "real",
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
 			ExtraAttr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
-			Pre:               chrome.LoggedIn(),
+			Fixture:           "ccaLaunched",
 			Timeout:           5 * time.Minute,
 			Val:               testutil.UseRealCamera,
 		}, {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},
 			ExtraAttr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
-			Pre:               chrome.LoggedIn(),
+			Fixture:           "ccaLaunched",
 			Timeout:           5 * time.Minute,
 			Val:               testutil.UseVividCamera,
 		}, {
 			Name:      "fake",
 			ExtraAttr: []string{"group:mainline", "informational", "group:camera-libcamera"},
-			Pre:       testutil.ChromeWithFakeCamera(),
+			Fixture:   "ccaLaunchedWithFakeCamera",
 			Timeout:   5 * time.Minute,
 			Val:       testutil.UseFakeCamera,
 		}, {
 			// For stress testing manually with real camera and longer timeout.
 			Name:              "manual",
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
-			Pre:               chrome.LoggedIn(),
+			Fixture:           "ccaLaunched",
 			Timeout:           30 * 24 * time.Hour,
 			Val:               testutil.UseRealCamera,
 		}},
@@ -96,6 +93,10 @@ func stringVar(s *testing.State, name, defaultValue string) string {
 }
 
 func CCAUIStress(ctx context.Context, s *testing.State) {
+	app := s.FixtValue().(cca.FixtureData).App()
+	tb := s.FixtValue().(cca.FixtureData).TestBridge
+	s.FixtValue().(cca.FixtureData).SetDebugParams(cca.DebugParams{SaveScreenshotWhenFail: true})
+
 	const defaultIterations = 20
 	const defaultSkipIterations = 0
 	const defaultSeed = 1
@@ -111,36 +112,6 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 
 	seed := intVar(s, "seed", defaultSeed)
 	rand.Seed(int64(seed))
-
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, cleanupTimeout)
-	defer cancel()
-
-	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr, s.Param().(testutil.UseCameraType))
-	if err != nil {
-		s.Fatal("Failed to construct test bridge: ", err)
-	}
-	defer tb.TearDown(cleanupCtx)
-
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
-		s.Fatal("Failed to clear saved directory: ", err)
-	}
-
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
-	if err != nil {
-		s.Fatal("Failed to open CCA: ", err)
-	}
-	defer func(ctx context.Context) {
-		if s.HasError() {
-			if err := app.SaveScreenshot(ctx); err != nil {
-				s.Error("Failed to save a screenshot: ", err)
-			}
-		}
-		if err := app.Close(ctx); err != nil {
-			s.Error("Failed to close app: ", err)
-		}
-	}(cleanupCtx)
 
 	// TODO(b/182248415): Add variables to control per action parameters, like
 	// how many photo should be taken consecutively or how long the video

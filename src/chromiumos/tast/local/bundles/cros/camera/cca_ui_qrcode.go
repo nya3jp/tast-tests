@@ -10,10 +10,17 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
+
+type qrcodeTestParams struct {
+	format     string
+	expected   string
+	chip       cca.UIComponent
+	copyButton cca.UIComponent
+	canOpen    bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -22,126 +29,91 @@ func init() {
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "chrome_internal"},
-		Data:         []string{"cca_ui.js", "qrcode_1280x960.y4m", "qrcode_text_1280x960.y4m"},
+		Params: []testing.Param{{
+			Name:    "url",
+			Fixture: "ccaLaunchedWithQRCodeUrlScene",
+			Val: qrcodeTestParams{
+				format:     "url",
+				expected:   "https://www.google.com/chromebook/chrome-os/",
+				chip:       cca.BarcodeChipURL,
+				copyButton: cca.BarcodeCopyURLButton,
+				canOpen:    true,
+			},
+		}, {
+			Name:    "text",
+			Fixture: "ccaLaunchedWithQRCodeTextScene",
+			Val: qrcodeTestParams{
+				format:     "text",
+				expected:   "Chrome OS is the speedy, simple and secure operating system that powers every Chromebook.",
+				chip:       cca.BarcodeChipText,
+				copyButton: cca.BarcodeCopyTextButton,
+				canOpen:    false,
+			},
+		}},
 	})
 }
 
 func CCAUIQRCode(ctx context.Context, s *testing.State) {
-	subTestTimeout := 60 * time.Second
-	for _, tc := range []struct {
-		format     string
-		video      string
-		expected   string
-		chip       cca.UIComponent
-		copyButton cca.UIComponent
-		canOpen    bool
-	}{
-		{
-			format:     "url",
-			video:      "qrcode_1280x960.y4m",
-			expected:   "https://www.google.com/chromebook/chrome-os/",
-			chip:       cca.BarcodeChipURL,
-			copyButton: cca.BarcodeCopyURLButton,
-			canOpen:    true,
-		},
-		{
-			format:     "text",
-			video:      "qrcode_text_1280x960.y4m",
-			expected:   "Chrome OS is the speedy, simple and secure operating system that powers every Chromebook.",
-			chip:       cca.BarcodeChipText,
-			copyButton: cca.BarcodeCopyTextButton,
-			canOpen:    false,
-		},
-	} {
-		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
-		s.Run(subTestCtx, tc.format, func(ctx context.Context, s *testing.State) {
-			cr, err := chrome.New(ctx,
-				chrome.ExtraArgs(
-					"--use-fake-device-for-media-stream",
-					"--use-file-for-fake-video-capture="+s.DataPath(tc.video)))
+	app := s.FixtValue().(cca.FixtureData).App()
+	cr := s.FixtValue().(cca.FixtureData).Chrome
+	testParams := s.Param().(qrcodeTestParams)
+
+	enabled, err := app.ToggleQRCodeOption(ctx)
+	if err != nil {
+		s.Fatal("Failed to enable QR code detection: ", err)
+	}
+	if !enabled {
+		s.Fatal("QR code detection is not enabled after toggling")
+	}
+	s.Log("Start scanning QR Code")
+
+	if err := app.WaitForVisibleState(ctx, testParams.chip, true); err != nil {
+		s.Fatalf("Failed to detect %v from barcode: %v", testParams.format, err)
+	}
+	s.Logf("%v detected", testParams.format)
+
+	// Copy the content.
+	if err := app.Click(ctx, testParams.copyButton); err != nil {
+		s.Fatal("Failed to click copy button: ", err)
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get test connection: ", err)
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var clipData string
+		if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)()`, &clipData); err != nil {
+			return testing.PollBreak(err)
+		}
+		if clipData != testParams.expected {
+			return errors.Errorf("unexpected clipboard data: got %q, want %q", clipData, testParams.expected)
+		}
+		s.Logf("%v copied successfully", testParams.format)
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to get expected clipboard data: ", err)
+	}
+
+	if testParams.canOpen {
+		if err := app.Click(ctx, testParams.chip); err != nil {
+			s.Fatal("Failed to click chip: ", err)
+		}
+
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			ok, err := cr.IsTargetAvailable(ctx, chrome.MatchTargetURL(testParams.expected))
 			if err != nil {
-				s.Fatal("Failed to start Chrome: ", err)
+				return testing.PollBreak(err)
 			}
-
-			tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseFakeCamera)
-			if err != nil {
-				s.Fatal("Failed to construct test bridge: ", err)
+			if !ok {
+				return errors.Errorf("no match target for %v", testParams.expected)
 			}
-			defer tb.TearDown(ctx)
-
-			if err := cca.ClearSavedDir(ctx, cr); err != nil {
-				s.Fatal("Failed to clear saved directory: ", err)
-			}
-
-			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
-			if err != nil {
-				s.Fatal("Failed to open CCA: ", err)
-			}
-			defer func(ctx context.Context) {
-				if err := app.Close(ctx); err != nil {
-					s.Error("Failed to close app: ", err)
-				}
-			}(ctx)
-
-			enabled, err := app.ToggleQRCodeOption(ctx)
-			if err != nil {
-				s.Fatal("Failed to enable QR code detection: ", err)
-			}
-			if !enabled {
-				s.Fatal("QR code detection is not enabled after toggling")
-			}
-			s.Log("Start scanning QR Code")
-
-			if err := app.WaitForVisibleState(ctx, tc.chip, true); err != nil {
-				s.Fatalf("Failed to detect %v from barcode: %v", tc.format, err)
-			}
-			s.Logf("%v detected", tc.format)
-
-			// Copy the content.
-			if err := app.Click(ctx, tc.copyButton); err != nil {
-				s.Fatal("Failed to click copy button: ", err)
-			}
-
-			tconn, err := cr.TestAPIConn(ctx)
-			if err != nil {
-				s.Fatal("Failed to get test connection: ", err)
-			}
-
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				var clipData string
-				if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)()`, &clipData); err != nil {
-					return testing.PollBreak(err)
-				}
-				if clipData != tc.expected {
-					return errors.Errorf("unexpected clipboard data: got %q, want %q", clipData, tc.expected)
-				}
-				s.Logf("%v copied successfully", tc.format)
-				return nil
-			}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-				s.Fatal("Failed to get expected clipboard data: ", err)
-			}
-
-			if tc.canOpen {
-				if err := app.Click(ctx, tc.chip); err != nil {
-					s.Fatal("Failed to click chip: ", err)
-				}
-
-				if err := testing.Poll(ctx, func(ctx context.Context) error {
-					ok, err := cr.IsTargetAvailable(ctx, chrome.MatchTargetURL(tc.expected))
-					if err != nil {
-						return testing.PollBreak(err)
-					}
-					if !ok {
-						return errors.Errorf("no match target for %v", tc.expected)
-					}
-					s.Logf("%v opened successfully", tc.format)
-					return nil
-				}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-					s.Fatal("Failed to open: ", err)
-				}
-			}
-		})
-		cancel()
+			s.Logf("%v opened successfully", testParams.format)
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			s.Fatal("Failed to open: ", err)
+		}
 	}
 	// TODO(b/172879638): Test invalid binary content.
 }

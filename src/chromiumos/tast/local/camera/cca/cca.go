@@ -459,11 +459,6 @@ func (a *App) Close(ctx context.Context) error {
 	return a.CloseWithDebugParams(ctx, DebugParams{})
 }
 
-// CloseAndMaybeSaveCameraFolder closes the app and also saves the camera folder if there is any JS errors found
-func (a *App) CloseAndMaybeSaveCameraFolder(ctx context.Context) error {
-	return a.CloseWithDebugParams(ctx, DebugParams{SaveCameraFolderWhenFail: true})
-}
-
 // CloseWithDebugParams closes the App and the associated connection with the debug parameters.
 func (a *App) CloseWithDebugParams(ctx context.Context, params DebugParams) (retErr error) {
 	if a.conn == nil {
