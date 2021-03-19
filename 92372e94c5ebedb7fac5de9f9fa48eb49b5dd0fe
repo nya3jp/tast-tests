@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f47ae4d_f8543948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-03-19T19:18:00Z",
+      "side": 1,
+      "message": "This is the same test.  I\u0027m just renaming it since I\u0027m adding more hp tests.",
+      "parentUuid": "f149919c_5a7c09d8",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 6
+      },
+      "revId": "92372e94c5ebedb7fac5de9f9fa48eb49b5dd0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "628eba20_384f24e3",
@@ -82,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3904a650_dfd50d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-03-19T19:18:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "628eba20_384f24e3",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 6
+      },
+      "revId": "92372e94c5ebedb7fac5de9f9fa48eb49b5dd0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dd06948_4cfde62f",
@@ -95,6 +143,24 @@
       "writtenOn": "2021-03-19T00:21:45Z",
       "side": 1,
       "message": "The file needs a .external extension, also the timestamp in the url should be 20210318 unless the files were uploaded last year",
+      "revId": "92372e94c5ebedb7fac5de9f9fa48eb49b5dd0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fac85d90_1e78fd3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/printer_add_hp_printer_ljcolor_out.pcl",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-03-19T19:18:00Z",
+      "side": 1,
+      "message": "I actually started this last year...  But I need to update the file anyway.",
+      "parentUuid": "2dd06948_4cfde62f",
       "revId": "92372e94c5ebedb7fac5de9f9fa48eb49b5dd0fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
