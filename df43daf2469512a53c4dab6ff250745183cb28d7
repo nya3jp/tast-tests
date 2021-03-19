@@ -16,6 +16,40 @@
       "message": "Hi reviewers, multiple teams are working on riching launcher search functionality. I added this general case, so that each team can simply add its own check points.\n\nHi thanhdng@, this is a new tast test added for crbug/1171390. I do not think it is enough to check just one for integration purpose, other data should be covered in unit tests.\n\nHi zufeng@, Add a TODO for you, so you can simply add Help integration in M91.\n",
       "revId": "df43daf2469512a53c4dab6ff250745183cb28d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "670feca0_0a0613a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-19T16:14:22Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective.",
+      "revId": "df43daf2469512a53c4dab6ff250745183cb28d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56a764c_d5091d32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_results.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-19T16:14:22Z",
+      "side": 1,
+      "message": "You might want to include in this error message some info about which subtest failed.",
+      "revId": "df43daf2469512a53c4dab6ff250745183cb28d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
