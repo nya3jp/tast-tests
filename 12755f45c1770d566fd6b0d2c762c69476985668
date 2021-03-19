@@ -1475,6 +1475,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9fc99ac1_6253f765",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-19T18:31:16Z",
+      "side": 1,
+      "message": "It is still not clear to me.\n\n* as far as I see, the current action for Google News is to switch between category tabs of the site. I am guessing this does not produce page loading numbers.  Is it intended?  If so, why do we want to have Google News?\n* Did you confirm that the content in the tab is correctly rendered in the replay mode?",
+      "parentUuid": "3d99a0ee_1fab5fb0",
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16a6a338_cb27dd3c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
         "patchSetId": 11
@@ -1552,6 +1570,24 @@
       "side": 1,
       "message": "Hi Jun, thanks for pointing out this. As we discussed offline, we\u0027ll ensure the new tablet UI mode in the test. The cuj fixture was modified by adding chrome.EnableFeatures(\"WebUITabStrip\")",
       "parentUuid": "a43985a1_8e7f599a",
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "560b30c2_5f32b039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-19T18:31:16Z",
+      "side": 1,
+      "message": "I believe that the WebUITabStrip feature is added to loggedInToCUJUser fixture, but not WPR precondition.  I am afraid that it does not work.",
+      "parentUuid": "993db851_d3484b8b",
       "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
