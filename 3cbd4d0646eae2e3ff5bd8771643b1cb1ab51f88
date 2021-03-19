@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c1a733_09ca5099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-19T18:47:22Z",
+      "side": 1,
+      "message": "\"mood\" is for developers to run different mode on a convertible. It will not be used in formal run.",
+      "parentUuid": "40f7e3c0_da752e89",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d65258d6_92c3e11a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-18T01:11:44Z",
       "side": 1,
       "message": "I\u0027m not sure how beneficial it is to have this utility function.  Why not simply calling ash.EnsureTabletModeEnabled?\nIt\u0027s something like:\n  if mode, ok :\u003d s.Var(\"mode\"); ok {\n    if err :\u003d ash.EnsureTabletModeEnabled(ctx, tconn, mode \u003d\u003d \"tablet\"); err !\u003d nil {\n      ...\n    }\n\n\nNote that:\n- ash.EnsureTabletModeEnabled checks the current state, and invokes SetTabletModeEnabled only when it needs to switch the state\n- it always return the cleanup function, as sometimes a test scenario may change the state after ash.EnsureTabletModeEnabled is called.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d1ebe38_b77008cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-19T18:47:22Z",
+      "side": 1,
+      "message": "Thanks for simplifying the code. This method has been removed and each CUJ implement as you advised.",
+      "parentUuid": "d65258d6_92c3e11a",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9765f0a6_5413723e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-19T18:47:22Z",
+      "side": 1,
+      "message": "Hi Jun, the team has started working on the new autoui now and it takes time to convert for all CUJs. As we agreed, we\u0027ll submit with existing UI and then modify with new CLs to new UI.",
+      "parentUuid": "acfedde8_f12f44a7",
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5502fb6_b0ae2376",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-03-18T01:11:44Z",
       "side": 1,
       "message": "nit: use number x unit (i.e. 10 * time.Second).",
+      "range": {
+        "startLine": 75,
+        "startChar": 87,
+        "endLine": 75,
+        "endChar": 103
+      },
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4c15c68_7676aa37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-19T18:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5502fb6_b0ae2376",
       "range": {
         "startLine": 75,
         "startChar": 87,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94accd5_65d98361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-19T18:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "253740b7_2d39bb60",
+      "range": {
+        "startLine": 81,
+        "startChar": 51,
+        "endLine": 81,
+        "endChar": 65
+      },
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2e361a3_4df7bb16",
@@ -140,6 +254,30 @@
       "writtenOn": "2021-03-18T01:11:44Z",
       "side": 1,
       "message": "Add regexp.QuoteMeta (i.e. pattern +\u003d regexp.QuoteMeta(name))",
+      "range": {
+        "startLine": 230,
+        "startChar": 13,
+        "endLine": 230,
+        "endChar": 17
+      },
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d41208_f372613a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-19T18:47:22Z",
+      "side": 1,
+      "message": "Changed. Thanks for this nice catch!",
+      "parentUuid": "b2e361a3_4df7bb16",
       "range": {
         "startLine": 230,
         "startChar": 13,
@@ -167,6 +305,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa41658c_d7563c13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-19T18:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfd2a268_853de741",
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "449a08a8_fe76a7da",
@@ -180,6 +336,24 @@
       "writtenOn": "2021-03-18T01:11:44Z",
       "side": 1,
       "message": "I don\u0027t think this is a \"ui/bluetooth\" anymore, as it controls bluetooth API directly.\n\nIf this type of utility is necessary, you could move this to bundles/cros/ui/cuj or create a new package like bundles/cros/ui/bluetooth.",
+      "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9e20e8f_7083739e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-19T18:47:22Z",
+      "side": 1,
+      "message": "Agreed. Moved to cros/ui/cuj now.",
+      "parentUuid": "449a08a8_fe76a7da",
       "revId": "3cbd4d0646eae2e3ff5bd8771643b1cb1ab51f88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
