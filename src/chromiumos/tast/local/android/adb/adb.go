@@ -35,6 +35,11 @@ func LaunchServer(ctx context.Context) error {
 		return errors.Wrap(err, "failed to kill ADB local server")
 	}
 
+	// If using adb to connect to a phone before a CrOS login we need to create the adb home.
+	if err := os.MkdirAll("/run/arc/adb/", 0755); err != nil {
+		return errors.Wrap(err, "failed to create adb home directory")
+	}
+
 	testing.ContextLog(ctx, "Starting ADB server")
 	if err := Command(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed starting ADB local server")
