@@ -46,6 +46,18 @@ func init() {
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
+				Name:    "dataoffline_allcontacts_png5kb",
+				Fixture: "nearbyShareDataUsageOfflineAllContactsTestUser",
+				Val: nearbytestutils.TestData{
+					Filename:        "small_png.zip",
+					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
+					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
+					MimeType:        nearbysnippet.MimeTypePng,
+				},
+				ExtraData: []string{"small_png.zip"},
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
+			},
+			{
 				Name:    "dataonline_noone_txt30mb",
 				Fixture: "nearbyShareDataUsageOnlineNoOneGAIA",
 				Val: nearbytestutils.TestData{
