@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b762de3_5df0e426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-03-19T19:08:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de5c8201_8cc1d830",
+      "range": {
+        "startLine": 220,
+        "startChar": 35,
+        "endLine": 220,
+        "endChar": 36
+      },
+      "revId": "577ae2c32f14fbad225e17533e44d984837e7357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3f3186b_0a3f458a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-19T18:49:57Z",
       "side": 1,
       "message": "ditto:\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 266,
+        "startChar": 35,
+        "endLine": 266,
+        "endChar": 36
+      },
+      "revId": "577ae2c32f14fbad225e17533e44d984837e7357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3645d062_71e30f4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-03-19T19:08:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f3186b_0a3f458a",
       "range": {
         "startLine": 266,
         "startChar": 35,
