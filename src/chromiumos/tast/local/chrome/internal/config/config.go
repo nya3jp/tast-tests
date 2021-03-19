@@ -172,6 +172,12 @@ func (c *Config) DMSAddr() string { return c.m.DMSAddr }
 // Enroll returns whether to enroll the device.
 func (c *Config) Enroll() bool { return c.m.Enroll }
 
+// EnrollmentCreds returns the credential used to enroll the device.
+func (c *Config) EnrollmentCreds() Creds { return c.m.EnrollmentCreds }
+
+// DisablePolicyKeyVerification returns whether to disable policy key verification in Chrome.
+func (c *Config) DisablePolicyKeyVerification() bool { return c.m.DisablePolicyKeyVerification }
+
 // ARCMode returns the mode of ARC.
 func (c *Config) ARCMode() ARCMode { return c.m.ARCMode }
 
@@ -234,6 +240,8 @@ type MutableConfig struct {
 	PolicyEnabled                   bool      `reuse_match:"true"`
 	DMSAddr                         string    `reuse_match:"true"`
 	Enroll                          bool      `reuse_match:"true"`
+	EnrollmentCreds                 Creds     `reuse_match:"true"`
+	DisablePolicyKeyVerification    bool      `reuse_match:"true"`
 	ARCMode                         ARCMode   `reuse_match:"true"`
 	RestrictARCCPU                  bool      `reuse_match:"true"`
 	BreakpadTestMode                bool      `reuse_match:"true"`
@@ -266,6 +274,8 @@ func NewConfig(opts []Option) (*Config, error) {
 			Region:                          "us",
 			PolicyEnabled:                   false,
 			Enroll:                          false,
+			EnrollmentCreds:                 Creds{},
+			DisablePolicyKeyVerification:    false,
 			BreakpadTestMode:                true,
 			EnableRestoreTabs:               false,
 			SkipForceOnlineSignInForTesting: false,
