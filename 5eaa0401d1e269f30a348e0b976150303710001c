@@ -16,6 +16,23 @@
       "message": "Thanks for the review.  I\u0027m a bit rusty.  PTAL!",
       "revId": "5eaa0401d1e269f30a348e0b976150303710001c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a2bdfd_e538ae68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-19T19:31:13Z",
+      "side": 1,
+      "message": "lgtm; thanks!",
+      "revId": "5eaa0401d1e269f30a348e0b976150303710001c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
