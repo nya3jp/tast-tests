@@ -12,8 +12,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/camera/testutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -26,31 +24,22 @@ func init() {
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Timeout:      5 * time.Minute,
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "ccaTestBridgeReady",
 	})
 }
 
 // CCAUIPerf measure cold/warm start time of CCA and also measure its
 // performance through some UI operations.
 func CCAUIPerf(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
-	if err != nil {
-		s.Fatal("Failed to construct test bridge: ", err)
-	}
-	defer tb.TearDown(ctx)
-
-	if err := cca.ClearSavedDir(ctx, cr); err != nil {
-		s.Fatal("Failed to clear saved directory: ", err)
-	}
-
+	startApp := s.FixtValue().(cca.FixtureData).StartApp
+	stopApp := s.FixtValue().(cca.FixtureData).StopApp
 	perfValues := perf.NewValues()
 
-	if err := cca.MeasurePerformance(ctx, cr, []string{s.DataPath("cca_ui.js")}, cca.MeasurementOptions{
+	if err := cca.MeasurePerformance(ctx, startApp, stopApp, cca.MeasurementOptions{
 		PerfValues:               perfValues,
 		ShouldMeasureUIBehaviors: true,
 		OutputDir:                s.OutDir(),
-	}, tb); err != nil {
+	}); err != nil {
 		var errJS *cca.ErrJS
 		if errors.As(err, &errJS) {
 			s.Error("There are JS errors when running CCA: ", err)
@@ -60,11 +49,11 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// It is used to measure the warm start time of CCA.
-	if err := cca.MeasurePerformance(ctx, cr, []string{s.DataPath("cca_ui.js")}, cca.MeasurementOptions{
+	if err := cca.MeasurePerformance(ctx, startApp, stopApp, cca.MeasurementOptions{
 		PerfValues:               perfValues,
 		ShouldMeasureUIBehaviors: false,
 		OutputDir:                s.OutDir(),
-	}, tb); err != nil {
+	}); err != nil {
 		var errJS *cca.ErrJS
 		if errors.As(err, &errJS) {
 			s.Error("There are JS errors when running CCA: ", err)
