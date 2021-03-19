@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c288f3fc_742a671f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-19T01:12:00Z",
+      "side": 1,
+      "message": "It cannot be a function in fingerprint.go because libraries cannot take a *testing.State. However it\u0027s possible to put this in a Precondition https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/pre.go\n\nFiled b/183151135 and added TODO",
+      "parentUuid": "a77ba92b_92db099f",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "c0f70045a47c383ba68a3e2dba98ca44a17cf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bef5012_79ac365b",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "121efcc7_a0b8969c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-19T01:12:00Z",
+      "side": 1,
+      "message": "I think it\u0027s redundant, because we check the KeyID and have \"TODO(b/182596510): Check the FPMCU is running expected firmware version\". Let\u0027s keep it simple.",
+      "parentUuid": "1bef5012_79ac365b",
+      "revId": "c0f70045a47c383ba68a3e2dba98ca44a17cf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79614755_8ef01635",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-03-18T22:39:44Z",
       "side": 1,
       "message": "Another TODO here with the bug to use a service for this: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2734154/6/src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go#247",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 63
+      },
+      "revId": "c0f70045a47c383ba68a3e2dba98ca44a17cf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d73c5aa_c47ac247",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-19T01:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79614755_8ef01635",
       "range": {
         "startLine": 102,
         "startChar": 0,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f446468_35b7126b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-19T01:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd2054b6_fc78daff",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 1
+      },
+      "revId": "c0f70045a47c383ba68a3e2dba98ca44a17cf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb1742f4_18288c67",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-03-18T22:39:44Z",
       "side": 1,
       "message": "Does this return an error if the exit code is non-zero?",
+      "range": {
+        "startLine": 356,
+        "startChar": 8,
+        "endLine": 356,
+        "endChar": 63
+      },
+      "revId": "c0f70045a47c383ba68a3e2dba98ca44a17cf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78094c2b_28f3a60c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-19T01:12:00Z",
+      "side": 1,
+      "message": "Yes, as an experiment I started flash_fp_mcu right before this and got:\n\n\"Failed to validate RDP0 without changing RDP level: firmware is not functional after reading flash: Process exited with status 1\"",
+      "parentUuid": "bb1742f4_18288c67",
       "range": {
         "startLine": 356,
         "startChar": 8,
