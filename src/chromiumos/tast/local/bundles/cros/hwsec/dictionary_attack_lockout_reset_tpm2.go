@@ -71,7 +71,7 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 		s.Fatal("Lockout in effect after reset")
 	}
 
-	const testNVRAMIndex = "0xBAADF00D"
+	const testNVRAMIndex = "0xADF00D"
 	const testPassword = "1234"
 	const testIncorrectPassword = "4321"
 	const testFilePath = "/tmp/dictionary_attack_test_1byte.bin"
