@@ -177,6 +177,24 @@
       "parentUuid": "f4b0180f_79c3cfed",
       "revId": "2d05a268280982fcb5b2625d43376b07e6274a6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83f9bde_38b4a882",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-03-19T17:25:24Z",
+      "side": 1,
+      "message": "Yup, just rebased and submitted. Thanks for helping here 😊",
+      "parentUuid": "69296448_2c80755b",
+      "revId": "2d05a268280982fcb5b2625d43376b07e6274a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
