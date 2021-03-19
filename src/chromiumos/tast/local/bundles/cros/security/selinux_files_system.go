@@ -125,6 +125,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/usr/bin/powerd", Context: "cros_powerd_exec"},
 		{Path: "/usr/bin/seneschal", Context: "cros_seneschal_exec", IgnoreErrors: true},
 		{Path: "/usr/bin/shill", Context: "cros_shill_exec"},
+		{Path: "/usr/bin/sound_card_init", Context: "cros_sound_card_init_exec", IgnoreErrors: true},
 		{Path: "/usr/bin/start_bluetoothd.sh", Context: "cros_init_start_bluetoothd_shell_script"},
 		{Path: "/usr/bin/start_bluetoothlog.sh", Context: "cros_init_start_bluetoothlog_shell_script"},
 		{Path: "/usr/bin/tlsdated", Context: "cros_tlsdated_exec"},
