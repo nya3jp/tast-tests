@@ -39,6 +39,30 @@
       },
       "revId": "c7a0dd0756db2494d4d2c8052bff7cdaa961f449",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b880a9_396df99c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_whitelist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-03-19T17:59:18Z",
+      "side": 1,
+      "message": "discussed in the chat that\n1. we should always explicitly check for expected error\n2. we probably should take a look on another node in the tree that is disable if policy is enabled. Also consider using old UI framework, because new might not have all necessary fields, i.e. disabled field.",
+      "parentUuid": "7253ed15_9c057de2",
+      "range": {
+        "startLine": 124,
+        "startChar": 79,
+        "endLine": 124,
+        "endChar": 123
+      },
+      "revId": "c7a0dd0756db2494d4d2c8052bff7cdaa961f449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
