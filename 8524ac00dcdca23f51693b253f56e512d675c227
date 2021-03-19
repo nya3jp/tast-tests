@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0030b1d_f2f971b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-19T21:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa70283_07d0e1a8",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "8524ac00dcdca23f51693b253f56e512d675c227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d6a30c2_bb80a951",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3124f7a_d120a18d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-19T21:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d6a30c2_bb80a951",
+      "revId": "8524ac00dcdca23f51693b253f56e512d675c227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8fc25ad_22be4086",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-03-19T20:41:42Z",
       "side": 1,
       "message": "ditto re: basename",
+      "revId": "8524ac00dcdca23f51693b253f56e512d675c227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8013f459_e9b2b672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/generate_external.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-03-19T21:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8fc25ad_22be4086",
       "revId": "8524ac00dcdca23f51693b253f56e512d675c227",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
