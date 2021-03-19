@@ -51,6 +51,15 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 		if err := enterpriseOOBELogin(ctx, cfg, sess); err != nil {
 			return err
 		}
+	case config.EnrollOnly:
+		if err := conn.Call(ctx, nil, "Oobe.loginForTesting", creds.User, creds.Pass, creds.GAIAID, true); err != nil {
+			return err
+		}
+		if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
+			return err
+		}
+
+		return nil
 	}
 
 	if err = cryptohome.WaitForUserMount(ctx, cfg.NormalizedUser()); err != nil {

@@ -52,6 +52,7 @@ message EnrollUsingChromeRequest {
   repeated Extension extensions = 3;
   string extra_args = 4;
   string fakedms_dir = 5;
+  bool skip_login = 6;
 }
 
 message CreateFakeDMSDirRequest {

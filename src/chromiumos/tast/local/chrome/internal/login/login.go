@@ -59,6 +59,11 @@ func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error 
 			return err
 		}
 		return nil
+	case config.EnrollOnly:
+		if err := loginUser(ctx, cfg, sess); err != nil {
+			return err
+		}
+		return nil
 	default:
 		return errors.Errorf("unknown login mode: %v", cfg.LoginMode())
 	}
