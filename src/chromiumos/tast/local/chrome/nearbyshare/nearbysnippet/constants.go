@@ -88,4 +88,5 @@ const (
 	MimeTypeJpeg      MimeType = "image/jpeg"
 	MimeTypeMP4       MimeType = "video/mp4"
 	MimeTypeTextPlain MimeType = "text/plain"
+	MimeTypePng       MimeType = "image/png"
 )
