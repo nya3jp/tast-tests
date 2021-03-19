@@ -136,6 +136,10 @@ func (c *Config) NormalizedUser() string { return c.m.NormalizedUser }
 // KeepState returns whether to keep existing user profiles.
 func (c *Config) KeepState() bool { return c.m.KeepState }
 
+// KeepOwnership returns whether to keep existing ownership of the device.
+// This is critical for enrolled devices.
+func (c *Config) KeepOwnership() bool { return c.m.KeepOwnership }
+
 // DeferLogin returns whether to defer login in chrome.New. If it is true,
 // users should call Chrome.ContinueLogin to continue login.
 func (c *Config) DeferLogin() bool { return c.m.DeferLogin }
@@ -216,6 +220,7 @@ type MutableConfig struct {
 	Creds                           Creds     `reuse_match:"true"`
 	NormalizedUser                  string    `reuse_match:"true"`
 	KeepState                       bool      `reuse_match:"false"`
+	KeepOwnership                   bool      `reuse_match:"true"`
 	DeferLogin                      bool      `reuse_match:"customized"`
 	EnableRestoreTabs               bool      `reuse_match:"false"`
 	LoginMode                       LoginMode `reuse_match:"customized"`
@@ -250,6 +255,7 @@ func NewConfig(opts []Option) (*Config, error) {
 		m: MutableConfig{
 			Creds:                           defaultCreds,
 			KeepState:                       false,
+			KeepOwnership:                   false,
 			LoginMode:                       FakeLogin,
 			VKEnabled:                       false,
 			SkipOOBEAfterLogin:              true,

@@ -164,6 +164,16 @@ func Enroll(creds Creds) Option {
 	}
 }
 
+// KeepEnrollment returns an Option that can be passed to New to ensure
+// enrollment is not wiped and Chrome is ready for device policy testing.
+func KeepEnrollment() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.KeepOwnership = true
+		cfg.ExtraArgs = append(cfg.ExtraArgs, "--disable-policy-key-verification")
+		return nil
+	}
+}
+
 // DontSkipOOBEAfterLogin returns an Option that can be passed to stay in OOBE after user login.
 func DontSkipOOBEAfterLogin() Option {
 	return func(cfg *config.MutableConfig) error {
