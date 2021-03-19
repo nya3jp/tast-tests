@@ -33,6 +33,29 @@
       "message": "Looks good, cheers! I think you may also need an owner (you can use tast-owners@google.com).\n\n",
       "revId": "50a2ed7f919737439d471921f9bae86fba989009",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f92d0b_8336f6c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-19T05:39:46Z",
+      "side": 1,
+      "message": "style nit: It\u0027s common to format an error string as a single sentence. So how about:\n\n \"unknown routine verdict: got %v\"\n\nor\n\n \"unknown routine verdict; got %v\"",
+      "range": {
+        "startLine": 120,
+        "startChar": 46,
+        "endLine": 120,
+        "endChar": 59
+      },
+      "revId": "50a2ed7f919737439d471921f9bae86fba989009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
