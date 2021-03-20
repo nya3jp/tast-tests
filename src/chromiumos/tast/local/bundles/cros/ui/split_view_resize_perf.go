@@ -7,7 +7,6 @@ package ui
 import (
 	"context"
 	"fmt"
-	"regexp"
 	"strings"
 	"time"
 
@@ -18,8 +17,10 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
-	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
@@ -176,22 +177,20 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 					return nil
 				}
 				// Click the toggle button to open the WebUI tabstrip.
-				params := chromeui.FindParams{
-					Role:       chromeui.RoleTypeButton,
-					Attributes: map[string]interface{}{"name": regexp.MustCompile("toggle tab strip")},
-				}
-				toggleButton, err := chromeui.Find(ctx, tconn, params)
-				if err != nil {
-					return err
-				}
-				waitOptions := &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}
-				if err := toggleButton.WaitLocationStable(ctx, waitOptions); err != nil {
-					return err
-				}
-				if err := pointer.Click(ctx, pointerController, toggleButton.Location.CenterPoint()); err != nil {
-					return err
-				}
-				if err := toggleButton.WaitLocationStable(ctx, waitOptions); err != nil {
+				toggleButton := nodewith.Role(role.Button).NameContaining("toggle tab strip")
+				ac := uiauto.New(tconn)
+				if err := uiauto.Combine(
+					"wait and click",
+					ac.WaitForLocation(toggleButton),
+					func(ctx context.Context) error {
+						loc, err := ac.Location(ctx, toggleButton)
+						if err != nil {
+							return err
+						}
+						return pointer.Click(ctx, pointerController, loc.CenterPoint())
+					},
+					ac.WaitForLocation(toggleButton),
+				)(ctx); err != nil {
 					return err
 				}
 				// Disable automation features explicitly, so that further operations
@@ -228,28 +227,27 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				}
 
 				// Open the WebUI tabstrip of the browser window of the right side.
-				params := chromeui.FindParams{
-					Role:       chromeui.RoleTypeButton,
-					Attributes: map[string]interface{}{"name": regexp.MustCompile("toggle tab strip")},
-				}
-				toggleButtons, err := chromeui.FindAll(ctx, tconn, params)
+				ac := uiauto.New(tconn)
+				toggleButton := nodewith.Role(role.Button).NameContaining("toggle tab strip")
+				nodes, err := ac.NodesInfo(ctx, toggleButton)
 				if err != nil {
 					return err
 				}
-				for _, toggleButton := range toggleButtons {
-					waitOptions := &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}
-					if err := toggleButton.WaitLocationStable(ctx, waitOptions); err != nil {
+				for i := range nodes {
+					q := toggleButton.Nth(i)
+					loc, err := ac.Location(ctx, q)
+					if err != nil {
 						return err
 					}
 					// The toggle button on the lefthand-side browser window should be
 					// skipped.
-					if toggleButton.Location.CenterPoint().X < info.Bounds.CenterPoint().X {
+					if loc.CenterPoint().X < info.Bounds.CenterPoint().X {
 						continue
 					}
-					if err := pointer.Click(ctx, pointerController, toggleButton.Location.CenterPoint()); err != nil {
+					if err := pointer.Click(ctx, pointerController, loc.CenterPoint()); err != nil {
 						return err
 					}
-					if err := toggleButton.WaitLocationStable(ctx, waitOptions); err != nil {
+					if err := ac.WaitForLocation(q)(ctx); err != nil {
 						return err
 					}
 					break
@@ -281,18 +279,20 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				if err != nil {
 					return errors.Wrap(err, "failed to find the window in the overview mode")
 				}
-				if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-					return errors.Wrap(err, "failed to wait for location-change events to be propagated to the automation API")
-				}
-				deskMiniViews, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{ClassName: "DeskMiniView"})
+				deskMiniView := nodewith.ClassName("DeskMiniView")
+				ac := uiauto.New(tconn)
+				nodes, err := ac.NodesInfo(ctx, deskMiniView)
 				if err != nil {
 					return errors.Wrap(err, "failed to get desk mini-views")
 				}
-				defer deskMiniViews.Release(ctx)
-				if deskMiniViewCount := len(deskMiniViews); deskMiniViewCount != 2 {
-					return errors.Wrapf(err, "expected 2 desk mini-views; found %v", deskMiniViewCount)
+				if len(nodes) != 2 {
+					return errors.Wrapf(err, "expected 2 desk mini-views; found %v", len(nodes))
 				}
-				if err := pointer.Drag(ctx, pointerController, w.OverviewInfo.Bounds.CenterPoint(), deskMiniViews[1].Location.CenterPoint(), time.Second); err != nil {
+				deskMiniViewLoc, err := ac.Location(ctx, deskMiniView.Nth(1))
+				if err != nil {
+					return errors.Wrap(err, "failed to get the location of desk mini-view")
+				}
+				if err := pointer.Drag(ctx, pointerController, w.OverviewInfo.Bounds.CenterPoint(), deskMiniViewLoc.CenterPoint(), time.Second); err != nil {
 					return errors.Wrap(err, "failed to drag window from overview grid to desk mini-view")
 				}
 				if _, err := ash.FindFirstWindowInOverview(ctx, tconn); err == nil {
