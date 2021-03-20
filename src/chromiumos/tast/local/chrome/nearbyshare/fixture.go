@@ -26,20 +26,6 @@ import (
 // resetTimeout is the timeout duration to trying reset of the current fixture.
 const resetTimeout = 30 * time.Second
 
-// NewNearbyShareFixtureNoAndroid creates a new implementation of the Nearby Share fixture without an Android device.
-func NewNearbyShareFixtureNoAndroid(crosDataUsage nearbysetup.DataUsage, crosVisibility nearbysetup.Visibility, gaiaLogin bool, opts ...chrome.Option) testing.FixtureImpl {
-	defaultNearbyOpts := []chrome.Option{
-		chrome.EnableFeatures("IntentHandlingSharing", "NearbySharing", "Sharesheet"),
-		chrome.ExtraArgs("--nearby-share-verbose-logging"),
-	}
-	return &nearbyShareFixture{
-		opts:           append(defaultNearbyOpts, opts...),
-		crosDataUsage:  crosDataUsage,
-		crosVisibility: crosVisibility,
-		gaiaLogin:      gaiaLogin,
-	}
-}
-
 // NewNearbyShareFixtureWithAndroid creates a new implementation of the Nearby Share fixture with an Android device.
 func NewNearbyShareFixtureWithAndroid(crosDataUsage nearbysetup.DataUsage, crosVisibility nearbysetup.Visibility, androidDataUsage nearbysnippet.DataUsage, androidVisibility nearbysnippet.Visibility, gaiaLogin, crosSelectAndroidAsContact bool, opts ...chrome.Option) testing.FixtureImpl {
 	defaultNearbyOpts := []chrome.Option{
@@ -77,16 +63,6 @@ func init() {
 		customCrOSUsername = "cros_username"
 		customCrOSPassword = "cros_password"
 	)
-	testing.AddFixture(&testing.Fixture{
-		Name:            "nearbyShareDataUsageOfflineAllContactsTestUserNoAndroid",
-		Desc:            "CrOS Nearby Share enabled and configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'. No Android device setup.",
-		Impl:            NewNearbyShareFixtureNoAndroid(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, false),
-		SetUpTimeout:    2 * time.Minute,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: resetTimeout,
-		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
-	})
 
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareDataUsageOfflineAllContactsTestUser",
