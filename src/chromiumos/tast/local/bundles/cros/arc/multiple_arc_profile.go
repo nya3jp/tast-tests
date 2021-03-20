@@ -32,7 +32,7 @@ func init() {
 		Func:         MultipleArcProfile,
 		Desc:         "Verify that Second Account can be added from ARC Settings ",
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},

@@ -30,7 +30,7 @@ func init() {
 		Func:         DownloadManager,
 		Desc:         "Checks whether ARC can download files through DownloadManager",
 		Contacts:     []string{"youkichihosoi@chromium.org", "arc-storage@google.com", "cros-arc-te@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Data:         []string{"capybara.jpg"},

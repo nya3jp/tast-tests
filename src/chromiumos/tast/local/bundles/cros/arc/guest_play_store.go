@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     GuestPlayStore,
 		Desc:     "Check PlayStore is Off in Guest mode",
-		Contacts: []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
+		Contacts: []string{"rnanjappan@chromium.org", "cros-arc-te@google.com", "group:arc-functional"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 		}, {

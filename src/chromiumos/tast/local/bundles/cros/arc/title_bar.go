@@ -22,7 +22,7 @@ func init() {
 		Func:         TitleBar,
 		Desc:         "Test the Title Bar of the ARC App and Its buttons",
 		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Timeout:      arc.BootTimeout + 2*time.Minute,

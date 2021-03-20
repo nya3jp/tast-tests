@@ -26,7 +26,7 @@ func init() {
 		Func:         DragDrop,
 		Desc:         "Checks drag and drop support from Chrome to ARC",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com", "cros-arc-te@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"drag_drop_manifest.json", "drag_drop_background.js", "drag_drop_window.js", "drag_drop_window.html"},
 		Timeout:      4 * time.Minute,
