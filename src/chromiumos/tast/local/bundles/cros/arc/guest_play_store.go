@@ -27,7 +27,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
 		}},
 		Timeout: chrome.LoginTimeout + arc.BootTimeout + 30*time.Second,
-		Attr:    []string{"group:mainline", "informational"},
+		Attr:    []string{"group:mainline", "informational", "group:arc-functional"},
 		Fixture: "chromeLoggedInGuest",
 	})
 }
