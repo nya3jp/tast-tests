@@ -24,6 +24,7 @@ type Finder struct {
 	ancestor   *Finder
 	attributes map[string]interface{}
 	first      bool
+	nth        int
 	role       role.Role
 	state      map[state.State]bool
 }
@@ -43,6 +44,7 @@ func (f *Finder) copy() *Finder {
 	copy := newFinder()
 	copy.ancestor = f.ancestor
 	copy.first = f.first
+	copy.nth = f.nth
 	copy.role = f.role
 	for k, v := range f.attributes {
 		copy.attributes[k] = v
@@ -179,13 +181,13 @@ func (f *Finder) generateSubQuery(multipleNodes bool) (string, error) {
 		`, bytes)
 		if !multipleNodes {
 			out += fmt.Sprintf(`
-			if (nodes.length == 0) {
-				throw %[2]q;
-			} else if (nodes.length > 1) {
+			if (nodes.length <= %[2]d) {
 				throw %[3]q;
+			} else if (%[2]d == 0 && nodes.length > 1) {
+				throw %[4]q;
 			}
-			node = nodes[0];
-		`, bytes, errNotFoundBytes, errTooGenericBytes)
+			node = nodes[%[2]d];
+		`, bytes, f.nth, errNotFoundBytes, errTooGenericBytes)
 		}
 	}
 	return out, nil
@@ -239,10 +241,30 @@ func First() *Finder {
 	return f
 }
 
-// First creates a a copy of the input Finder that will find the first node instead of requiring uniqueness.
+// First creates a copy of the input Finder that will find the first node instead of requiring uniqueness.
 func (f *Finder) First() *Finder {
 	c := f.copy()
 	c.first = true
+	return c
+}
+
+// Nth creates a Finder that will find the n-th node in the matched nodes of the Finder, instead of requiring uniqueness.
+func Nth(n int) *Finder {
+	if n == 0 {
+		return First()
+	}
+	f := newFinder()
+	f.nth = n
+	return f
+}
+
+// Nth creates a copy of the input Finder that will find the n-th node in the matched nodes of the Finder, instead of requiring uniqueness.
+func (f *Finder) Nth(n int) *Finder {
+	if n == 0 {
+		return f.First()
+	}
+	c := f.copy()
+	c.nth = n
 	return c
 }
 
