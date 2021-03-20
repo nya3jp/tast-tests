@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -110,16 +109,6 @@ func dumpLogCat(ctx context.Context, attempt int) {
 	writeLog(ctx, fileName, log)
 }
 
-// dumpChromeLog saves chrome log to test output directory.
-func dumpChromeLog(ctx context.Context) {
-	log, err := ioutil.ReadFile(syslog.ChromeLogFile)
-	if err != nil {
-		testing.ContextLogf(ctx, "Failed to read %q: %v", syslog.ChromeLogFile, err)
-		return
-	}
-	writeLog(ctx, "chrome.txt", log)
-}
-
 // optinWithRetry retries optin on failure up to maxAttempts times.
 func optinWithRetry(ctx context.Context, s *testing.State, cr *chrome.Chrome, maxAttempts int) {
 	tconn, err := cr.TestAPIConn(ctx)
@@ -137,8 +126,7 @@ func optinWithRetry(ctx context.Context, s *testing.State, cr *chrome.Chrome, ma
 		dumpLogCat(ctx, attempts)
 
 		if attempts >= maxAttempts {
-			dumpChromeLog(ctx)
-			s.Fatal("Failed to optin. No more retries left: ", err)
+			s.Fatal("Failed to optin: ", err)
 		}
 
 		s.Log("Retrying optin, previous attempt failed: ", err)

@@ -7,6 +7,7 @@ package optin
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -59,12 +60,21 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 	}
 	defer conn.Close()
 
+	const (
+		errorPageLoaded = "appWindow.contentWindow.document.querySelector('#error.section:not([hidden])')"
+		errorMessage    = "appWindow.contentWindow.document.getElementById('error-message')?.innerText"
+	)
+
 	for _, condition := range []string{
 		"port != null",
 		"termsPage != null",
-		"termsPage.isManaged_ || termsPage.state_ == LoadState.LOADED",
+		fmt.Sprintf("termsPage.isManaged_ || termsPage.state_ == LoadState.LOADED || %s", errorPageLoaded),
 	} {
 		if err := conn.WaitForExpr(ctx, condition); err != nil {
+			var msg string
+			if conn.Eval(ctx, errorMessage, &msg); msg != "" {
+				return errors.New(msg)
+			}
 			return errors.Wrap(err, "failed to find terms of service page")
 		}
 	}
@@ -74,17 +84,17 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 	}
 
 	if wait {
-		if err := conn.WaitForExpr(ctx, "!appWindow || appWindow.contentWindow.document.querySelector('#error.section:not([hidden])')"); err != nil {
+		if err := conn.WaitForExpr(ctx, fmt.Sprintf("!appWindow || %s", errorPageLoaded)); err != nil {
 			return errors.Wrap(err, "failed to wait for optin completion")
 		}
 
-		var message string
-		if err := conn.Eval(ctx, "!appWindow ? '' : appWindow.contentWindow.document.getElementById('error-message')?.innerText ?? 'Unknown error'", &message); err != nil {
+		var msg string
+		if err := conn.Eval(ctx, fmt.Sprintf("!appWindow ? '' : %s  ?? 'Unknown error'", errorMessage), &msg); err != nil {
 			return errors.Wrap(err, "failed to evaluate optin result")
 		}
 
-		if message != "" {
-			return errors.Wrapf(err, "provisioning failed: %v", message)
+		if msg != "" {
+			return errors.New(msg)
 		}
 	}
 
