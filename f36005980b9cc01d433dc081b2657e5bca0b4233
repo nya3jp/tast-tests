@@ -39,6 +39,30 @@
       },
       "revId": "f36005980b9cc01d433dc081b2657e5bca0b4233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02834939_ea3d8161",
+        "filename": "src/chromiumos/tast/local/firmware/fp_updater.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-20T00:51:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b6cfae3_c77192f5",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 65
+      },
+      "revId": "f36005980b9cc01d433dc081b2657e5bca0b4233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
