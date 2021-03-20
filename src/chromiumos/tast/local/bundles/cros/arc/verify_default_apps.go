@@ -20,7 +20,7 @@ func init() {
 		Func:         VerifyDefaultApps,
 		Desc:         "Verifies Default arc apps are installed",
 		Contacts:     []string{"vkrishan@google.com", "arc-eng@google.com", "cros-arc-te@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",

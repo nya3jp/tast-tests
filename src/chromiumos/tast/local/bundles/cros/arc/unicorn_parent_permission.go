@@ -20,7 +20,7 @@ func init() {
 		Func:         UnicornParentPermission,
 		Desc:         "Checks if App Install Triggers Parent Permission For Unicorn Account",
 		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Vars:         []string{"arc.parentUser", "arc.parentPassword", "arc.childUser", "arc.childPassword"},

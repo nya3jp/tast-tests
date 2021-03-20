@@ -25,7 +25,7 @@ func init() {
 		Func:         EnableArc,
 		Desc:         "Verify PlayStore can be turned On from Settings ",
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
