@@ -16,6 +16,23 @@
       "message": "If you look at https://cros-health-prod.googleplex.com/test/health.ProbeSystemInfo, you can see that the test started failing on every device a few days ago. This is because it was explicitly broken by this CL: https://crrev.com/c/2755372. \n\nThe tast test was subsequently fixed in this CL: https://crrev.com/c/2770788\n\nI would like to enable this test as stable so that future changes to cros_healthd can be caught by this test. Since the above issue is not a flake, I\u0027m asking for an exception to the 20 subsequent test passing rule. ",
       "revId": "d2597580787805881abbb399abfb48ce0c75e27a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d639c75_1cb7a080",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-21T22:49:02Z",
+      "side": 1,
+      "message": "Seems reasonable to me.",
+      "revId": "d2597580787805881abbb399abfb48ce0c75e27a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
