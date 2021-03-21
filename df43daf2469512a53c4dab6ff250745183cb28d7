@@ -50,6 +50,24 @@
       "message": "You might want to include in this error message some info about which subtest failed.",
       "revId": "df43daf2469512a53c4dab6ff250745183cb28d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e521d57_9e5dbb86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_results.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-21T23:06:16Z",
+      "side": 1,
+      "message": "This should be okay, since the search keyboard name is used in the test name in s.Run. \n\nPlease feel free to comment if you still think it is nice to have. I can make a change in next cl. Thanks.",
+      "parentUuid": "f56a764c_d5091d32",
+      "revId": "df43daf2469512a53c4dab6ff250745183cb28d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
