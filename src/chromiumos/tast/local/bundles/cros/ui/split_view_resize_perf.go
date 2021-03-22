@@ -336,24 +336,6 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			if modeName == "TabletMode" {
 				histogramNames = append(histogramNames, dividerSmoothnessName)
 			}
-			if tabletMode && testCase.name == "WithOverview" {
-				histogramNames = append(histogramNames,
-					"Ash.Overview.AnimationSmoothness.Enter.SplitView",
-					"Ash.Overview.AnimationSmoothness.Exit.SplitView",
-				)
-			}
-			var actions []uiauto.Action
-			if tabletMode && testCase.name == "WithOverview" {
-				actions = append(actions, uiauto.Combine(
-					"enter and exit overview",
-					func(ctx context.Context) error {
-						return ash.SetOverviewModeAndWait(ctx, tconn, false)
-					},
-					func(ctx context.Context) error {
-						return ash.SetOverviewModeAndWait(ctx, tconn, true)
-					}),
-				)
-			}
 			gestures := []uiauto.Action{
 				pc.DragTo(dragPoints[1], time.Second),
 				pc.DragTo(dragPoints[2], time.Second),
@@ -366,19 +348,23 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 					}, &testing.PollOptions{Timeout: 2 * time.Second})
 				})
 			}
-			actions = append(actions, pc.Drag(dragPoints[0], gestures...))
-			actions = append(actions, func(ctx context.Context) error {
-				return ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-					return w.ID == id0 && !w.IsAnimating && w.State == ash.WindowStateLeftSnapped
-				}, &testing.PollOptions{Timeout: 2 * time.Second})
-			})
 			// Note: in tablet mode, the split view divider will be still animating
 			// at this point because ash.WaitForCondition does not check divider's
 			// status. Still this is not a problem, as RunAndWaitAll function will
 			// wait for the metrics for the divider animation which is generated
 			// after the divider animation finishes.
-			runner.RunMultiple(ctx, s, testCase.name, perfutil.RunAndWaitAll(
-				tconn, uiauto.Combine("drag resizing the splitview", actions...), histogramNames...),
+			runner.RunMultiple(ctx, s, testCase.name,
+				perfutil.RunAndWaitAll(tconn,
+					uiauto.Combine("drag resizing the splitview",
+						pc.Drag(dragPoints[0], gestures...),
+						func(ctx context.Context) error {
+							return ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+								return w.ID == id0 && !w.IsAnimating && w.State == ash.WindowStateLeftSnapped
+							}, &testing.PollOptions{Timeout: 2 * time.Second})
+						},
+					),
+					histogramNames...,
+				),
 				func(ctx context.Context, pv *perfutil.Values, hists []*metrics.Histogram) error {
 					for _, hist := range hists {
 						value, err := hist.Mean()
