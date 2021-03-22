@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "279a298d_32176b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-22T05:49:59Z",
+      "side": 1,
+      "message": "Hmm, I cannot recall the reason clearly. Is it because real camera does not guarantee that we don\u0027t have human facing in the frame so we cannot test portrait mode?\nIf so, maybe we should provide fake stream with video input which has human facing on it to make portrait mode work, or just remove portrait mode testing from this test?\n\nInker@, can you confirm?",
+      "parentUuid": "55fdc6fe_e10a80e2",
+      "range": {
+        "startLine": 33,
+        "startChar": 44,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "c4c62e88ce10a259cf11e0339d9e6a86530ab1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc1c85bb_38ba19e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-22T05:16:22Z",
       "side": 1,
       "message": "true. It use fake camera stream to feed QR code.",
+      "range": {
+        "startLine": 68,
+        "startChar": 46,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "c4c62e88ce10a259cf11e0339d9e6a86530ab1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c172fc46_6adadddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-22T05:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc1c85bb_38ba19e8",
       "range": {
         "startLine": 68,
         "startChar": 46,
