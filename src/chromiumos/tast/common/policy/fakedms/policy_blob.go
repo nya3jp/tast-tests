@@ -144,7 +144,7 @@ func addValue(p policy.Policy, pm BlobPolicyMap) error {
 		return errors.Wrapf(err, "could not add %s policy", p.Name())
 	}
 	switch v.(type) {
-	case bool, int, string, []string:
+	case bool, int, string, []string, []policy.DeviceLocalAccountInfo:
 	default:
 		vJSON, err = json.Marshal(string(vJSON))
 		if err != nil {

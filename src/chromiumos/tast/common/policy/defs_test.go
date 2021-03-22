@@ -10,6 +10,9 @@ import (
 )
 
 func TestMessageEqual(t *testing.T) {
+	deviceLocalAccountID := "foo"
+	deviceLocalAccountType := ACCOUNT_TYPE_PUBLIC_SESSION
+
 	tcs := []struct {
 		m      json.RawMessage
 		p      Policy
@@ -58,6 +61,12 @@ func TestMessageEqual(t *testing.T) {
 		// Type: message with private field.
 		{json.RawMessage("\"********\""), &PluginVmLicenseKey{Val: "foo"}, true, false},
 		{json.RawMessage("\"foo\""), &PluginVmLicenseKey{Val: "foo"}, false, false},
+		{json.RawMessage("[{\"account_id\":\"foo\",\"type\":0}]"), &DeviceLocalAccounts{Val: []DeviceLocalAccountInfo{
+			{
+				AccountId:   &deviceLocalAccountID,
+				AccountType: &deviceLocalAccountType,
+			},
+		}}, true, false},
 	}
 	for _, tc := range tcs {
 		r, err := tc.p.UnmarshalAs(tc.m)
