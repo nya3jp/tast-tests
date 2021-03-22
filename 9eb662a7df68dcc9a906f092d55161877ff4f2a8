@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2bb18fd_331151ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-03-22T22:35:43Z",
+      "side": 1,
+      "message": "Nice use of channels.  Can you check if this gets cleaned up correctly if the test happens to fail?",
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "099e1e17_d1c60877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-03-22T22:35:43Z",
+      "side": 1,
+      "message": "Please add cros-printing-dev@chromium.org as backup.  You can also add me skau@chromium.org",
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18cadd4c_6abdf841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-03-22T22:35:43Z",
+      "side": 1,
+      "message": "This shouldn\u0027t need to be internal.  Driverless printing works in the open source build.",
+      "range": {
+        "startLine": 38,
+        "startChar": 26,
+        "endLine": 38,
+        "endChar": 39
+      },
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f307e50e_3387fdca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-03-22T22:35:43Z",
+      "side": 1,
+      "message": "extra newline?",
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e6cf0a_28aa7355",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-03-22T22:35:43Z",
+      "side": 1,
+      "message": "You should be able to leave this off and you\u0027ll get the remainder of the string.",
+      "range": {
+        "startLine": 75,
+        "startChar": 41,
+        "endLine": 75,
+        "endChar": 52
+      },
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e96457d0_e24c2404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-03-22T22:35:43Z",
+      "side": 1,
+      "message": "I don\u0027t see a timeout to kill the server when we\u0027re done with it.",
+      "range": {
+        "startLine": 119,
+        "startChar": 18,
+        "endLine": 119,
+        "endChar": 29
+      },
+      "revId": "9eb662a7df68dcc9a906f092d55161877ff4f2a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
