@@ -24,13 +24,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Pre:          testutil.ChromeWithFakeCamera(),
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func CCAUIModes(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseFakeCamera)
+	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -81,9 +81,9 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 		s.Error("Captured photo is not square")
 	}
 
-	// Switch to portrait mode and take photo.
-	// TODO(shik): Move portrait mode testing to isolated test so that it only
-	// runs on devices with portrait mode support. crbug.com/988732
+	// For portrait mode, currently we only check for the existence of the
+	// reference photo but don't check for the processed output since we cannot
+	// guarantee there is a human face in the frame content.
 	if supported, err := app.PortraitModeSupported(ctx); err != nil {
 		s.Error("Failed to determine whether portrait mode is supported: ", err)
 	} else if supported {
