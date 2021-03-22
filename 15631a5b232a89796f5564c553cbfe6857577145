@@ -56,6 +56,30 @@
       },
       "revId": "15631a5b232a89796f5564c553cbfe6857577145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7284cf2_80f7daf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_kindle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-22T19:05:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9b6a2a6f_5220a1a3",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 152
+      },
+      "revId": "15631a5b232a89796f5564c553cbfe6857577145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
