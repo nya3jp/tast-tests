@@ -51,6 +51,24 @@
       "parentUuid": "509614f1_ad47d981",
       "revId": "55af5c84008a8f820a1e0bf5ae42ea950ab15e16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeedbff3_5644c524",
+        "filename": "src/chromiumos/tast/local/camera/testutil/test_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-22T09:40:14Z",
+      "side": 1,
+      "message": "Sounds fun! Done",
+      "parentUuid": "787f6b57_83e0019b",
+      "revId": "55af5c84008a8f820a1e0bf5ae42ea950ab15e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
