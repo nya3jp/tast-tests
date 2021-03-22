@@ -16,6 +16,46 @@
       "message": "Hi Renuga,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "15631a5b232a89796f5564c553cbfe6857577145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba30ee61_c6c0e821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-22T18:36:39Z",
+      "side": 1,
+      "message": "Ca",
+      "revId": "15631a5b232a89796f5564c553cbfe6857577145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b6a2a6f_5220a1a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_kindle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-22T18:36:39Z",
+      "side": 1,
+      "message": "Can you please add more description to the CL on whats the problem and why is the kindle app login and signout code being removed rather than generic comment like  \"getting failed in launch due to a change in workflow. Made changes in the code to fix it\".\n\nThe details can be captured in the bug as well on what has changed in the app UI.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 152
+      },
+      "revId": "15631a5b232a89796f5564c553cbfe6857577145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
