@@ -88,6 +88,24 @@
       "parentUuid": "690ed1ca_7457d297",
       "revId": "95f1681b614e10f874eee1ae4250799e0af1a6af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2626a5e6_6d2f712d",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-22T04:49:26Z",
+      "side": 1,
+      "message": "Thanks. Uploaded a CL to handle for fake cameras as we discussed above:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2772416\n\nPTAL, thanks!",
+      "parentUuid": "7a22e0dd_9a4c1703",
+      "revId": "95f1681b614e10f874eee1ae4250799e0af1a6af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
