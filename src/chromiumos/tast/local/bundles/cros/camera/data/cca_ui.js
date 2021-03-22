@@ -207,7 +207,8 @@ window.Tast = class Tast {
     if (!deviceOperator) {
       return false;
     }
-    return deviceOperator.isPortraitModeSupported();
+    const track = Tast.previewVideo.srcObject.getVideoTracks()[0];
+    return deviceOperator.isPortraitModeSupported(track.getSettings().deviceId);
   }
 
   /**
