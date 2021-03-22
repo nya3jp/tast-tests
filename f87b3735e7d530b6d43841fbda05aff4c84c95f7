@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7774e597_b7fa9392",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-22T06:21:34Z",
+      "side": 1,
+      "message": "nit: In general, when a function returns (T, error), we should not access T when it returns non-nil error, unless otherwise noted in the contract of the function. Thus I recommend something like:\n\n if err :\u003d conn.Eval(ctx, errorMessage, \u0026msg); err \u003d\u003d nil \u0026\u0026 msg !\u003d \"\" { ... }",
+      "range": {
+        "startLine": 75,
+        "startChar": 6,
+        "endLine": 75,
+        "endChar": 39
+      },
+      "revId": "f87b3735e7d530b6d43841fbda05aff4c84c95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47436fc6_98fb195c",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-22T06:21:34Z",
+      "side": 1,
+      "message": "When WaitForExpr returns an error for timeout, ctx is already expired, so conn.Eval in this line should always fail.\n\nSo we have to reserve some time for conn.Eval in advance to calling conn.WaitForExpr. Example:\n\n waitCtx, cancel :\u003d ctxutil.Shorten(ctx, 3*time.Second)\n defer cancel()\n\n if err :\u003d conn.WaitForExpr(waitCtx, condition); err !\u003d nil {\n   var msg string\n   if err :\u003d conn.Eval(ctx, errorMessage, \u0026msg); err \u003d\u003d nil \u0026\u0026 msg !\u003d \"\" {\n     ...\n   }\n   ...\n }",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "f87b3735e7d530b6d43841fbda05aff4c84c95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
