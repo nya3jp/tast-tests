@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43b75e7e_1846d96d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-22T18:45:50Z",
+      "side": 1,
+      "message": "You are right Jun. TabSwitchCUJ2 should use new UI, too. In the wpr/pre.go, added chrome.EnableFeatures(\"WebUITabStrip\").",
+      "parentUuid": "a323ff18_96512155",
+      "revId": "fc6148fd8df99666ca60254a0de17eaed971b12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb208cdd_ce85e808",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-19T23:07:37Z",
       "side": 1,
       "message": "\"newTabStripUI\". Strip would sound a different thing, use \u0027TabStrip\u0027.\nOr, words like \u0027webUITabstrip\u0027 might be a bit more descriptive.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "fc6148fd8df99666ca60254a0de17eaed971b12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46c8f98_a7a3ac47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-22T18:45:50Z",
+      "side": 1,
+      "message": "changed to webUITabStrip.",
+      "parentUuid": "cb208cdd_ce85e808",
       "range": {
         "startLine": 76,
         "startChar": 1,
