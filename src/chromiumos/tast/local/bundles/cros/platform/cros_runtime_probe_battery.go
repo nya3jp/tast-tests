@@ -46,8 +46,8 @@ func CrosRuntimeProbeBattery(ctx context.Context, s *testing.State) {
 	}
 
 	request := &rppb.ProbeRequest{
-		Categories: []rppb.ProbeRequest_SupportCategory{
-			rppb.ProbeRequest_battery,
+		Categories: []rppb.SupportCategory{
+			rppb.SupportCategory_battery,
 		},
 	}
 	result, err := runtimeprobe.Probe(ctx, request)

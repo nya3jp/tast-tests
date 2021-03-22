@@ -45,8 +45,8 @@ func CrosRuntimeProbeMemory(ctx context.Context, s *testing.State) {
 	}
 
 	request := &rppb.ProbeRequest{
-		Categories: []rppb.ProbeRequest_SupportCategory{
-			rppb.ProbeRequest_dram,
+		Categories: []rppb.SupportCategory{
+			rppb.SupportCategory_dram,
 		},
 	}
 	result, err := runtimeprobe.Probe(ctx, request)

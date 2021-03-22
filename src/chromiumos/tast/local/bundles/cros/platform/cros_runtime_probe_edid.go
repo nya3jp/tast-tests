@@ -46,8 +46,8 @@ func CrosRuntimeProbeEdid(ctx context.Context, s *testing.State) {
 	}
 
 	request := &rppb.ProbeRequest{
-		Categories: []rppb.ProbeRequest_SupportCategory{
-			rppb.ProbeRequest_display_panel,
+		Categories: []rppb.SupportCategory{
+			rppb.SupportCategory_display_panel,
 		},
 	}
 	result, err := runtimeprobe.Probe(ctx, request)

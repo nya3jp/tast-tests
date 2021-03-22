@@ -57,8 +57,8 @@ func CrosRuntimeProbeCamera(ctx context.Context, s *testing.State) {
 	}
 
 	request := &rppb.ProbeRequest{
-		Categories: []rppb.ProbeRequest_SupportCategory{
-			rppb.ProbeRequest_camera,
+		Categories: []rppb.SupportCategory{
+			rppb.SupportCategory_camera,
 		},
 	}
 	result, err := runtimeprobe.Probe(ctx, request)

@@ -55,10 +55,10 @@ func CrosRuntimeProbeInputDevice(ctx context.Context, s *testing.State) {
 	}
 
 	request := &rppb.ProbeRequest{
-		Categories: []rppb.ProbeRequest_SupportCategory{
-			rppb.ProbeRequest_stylus,
-			rppb.ProbeRequest_touchpad,
-			rppb.ProbeRequest_touchscreen,
+		Categories: []rppb.SupportCategory{
+			rppb.SupportCategory_stylus,
+			rppb.SupportCategory_touchpad,
+			rppb.SupportCategory_touchscreen,
 		},
 	}
 	result, err := runtimeprobe.Probe(ctx, request)

@@ -42,8 +42,8 @@ func CrosRuntimeProbeNetwork(ctx context.Context, s *testing.State) {
 	}
 
 	request := &rppb.ProbeRequest{
-		Categories: []rppb.ProbeRequest_SupportCategory{
-			rppb.ProbeRequest_network,
+		Categories: []rppb.SupportCategory{
+			rppb.SupportCategory_network,
 		},
 	}
 	result, err := runtimeprobe.Probe(ctx, request)
