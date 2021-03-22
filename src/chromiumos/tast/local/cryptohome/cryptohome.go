@@ -481,11 +481,15 @@ func CheckDeps(ctx context.Context) (errs []error) {
 }
 
 // StartAuthSession starts an AuthSession for a given user.
-func StartAuthSession(ctx context.Context, user string) (string, error) {
+func StartAuthSession(ctx context.Context, user string, publicMount bool) (string, error) {
 	testing.ContextLogf(ctx, "Creating AuthSession for user %q", user)
-	out, err := testexec.CommandContext(
+	cmd := testexec.CommandContext(
 		ctx, "cryptohome", "--action=start_auth_session",
-		"--user="+user).Output(testexec.DumpLogOnError)
+		"--user="+user)
+	if publicMount {
+		cmd.Args = append(cmd.Args, "--public_mount")
+	}
+	out, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to create AuthSession for %q", user)
 	}
@@ -494,11 +498,16 @@ func StartAuthSession(ctx context.Context, user string) (string, error) {
 }
 
 // AuthenticateAuthSession authenticates an AuthSession with a given authSessionID.
-func AuthenticateAuthSession(ctx context.Context, password, authSessionID string) error {
+func AuthenticateAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) error {
 	testing.ContextLog(ctx, "Authenticating AuthSession")
 	cmd := testexec.CommandContext(
 		ctx, "cryptohome", "--action=authenticate_auth_session",
-		"--auth_session_id="+authSessionID, "--password="+password)
+		"--auth_session_id="+authSessionID)
+	if publicMount {
+		cmd.Args = append(cmd.Args, "--public_mount")
+	} else {
+		cmd.Args = append(cmd.Args, "--password="+password)
+	}
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to authenticate AuthSession")
 	}
@@ -506,12 +515,17 @@ func AuthenticateAuthSession(ctx context.Context, password, authSessionID string
 }
 
 // AddCredentialsWithAuthSession creates the credentials for the user with given password.
-func AddCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string) error {
+func AddCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string, publicMount bool) error {
 	testing.ContextLogf(ctx, "Creating new credentials for with AuthSession id: %q", authSessionID)
 
 	cmd := testexec.CommandContext(
 		ctx, "cryptohome", "--action=add_credentials",
-		"--auth_session_id="+authSessionID, "--password="+password)
+		"--auth_session_id="+authSessionID)
+	if publicMount {
+		cmd.Args = append(cmd.Args, "--public_mount")
+	} else {
+		cmd.Args = append(cmd.Args, "--password="+password)
+	}
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrapf(err, "failed to create new credentials for %s", user)
 	}
@@ -527,12 +541,14 @@ func AddCredentialsWithAuthSession(ctx context.Context, user, password, authSess
 }
 
 // MountWithAuthSession mounts user with AuthSessionID.
-func MountWithAuthSession(ctx context.Context, authSessionID string) error {
+func MountWithAuthSession(ctx context.Context, authSessionID string, publicMount bool) error {
 	testing.ContextLogf(ctx, "Trying to mount user vault with AuthSession id: %q", authSessionID)
-
 	cmd := testexec.CommandContext(
 		ctx, "cryptohome", "--action=mount_ex",
 		"--auth_session_id="+authSessionID)
+	if publicMount {
+		cmd.Args = append(cmd.Args, "--public_mount")
+	}
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to mount vault")
 	}
