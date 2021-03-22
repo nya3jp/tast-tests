@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "453292f7_fb1b8e74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-22T19:24:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adca2e8b_c44fd697",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e681165e_96f6d891",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-15T08:07:38Z",
       "side": 1,
       "message": "This looks like an output path, rather than a temporary path.",
+      "range": {
+        "startLine": 27,
+        "startChar": 89,
+        "endLine": 27,
+        "endChar": 96
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d1a48b_cc742f6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-22T19:24:24Z",
+      "side": 1,
+      "message": "changed to outDir",
+      "parentUuid": "e681165e_96f6d891",
       "range": {
         "startLine": 27,
         "startChar": 89,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2dabfa2_c72b9bb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-22T19:24:24Z",
+      "side": 1,
+      "message": "Dropped. And good to know we allow panic in the test design.",
+      "parentUuid": "389f6aed_72e5c75f",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ffba170_d2050325",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-15T08:07:38Z",
       "side": 1,
       "message": "When we hit errors below (e.g. conf.SwitchTabs), we return without waiting for this goroutine. This results in a goroutine leak as a goroutine blocks on sending to an unbuffered channel.",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 5
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20afa9cc_bc600449",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-22T19:24:24Z",
+      "side": 1,
+      "message": "Thanks for catching this issue! Fixed.",
+      "parentUuid": "4ffba170_d2050325",
       "range": {
         "startLine": 79,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2060f00_ad184c4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_meet_service.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-22T19:24:24Z",
+      "side": 1,
+      "message": "Okay. Changed to member field. In the ui/conference_service.go",
+      "parentUuid": "e395f1f0_077b2c08",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8445e831_78b9d88b",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-03-15T08:07:38Z",
       "side": 1,
       "message": "nit: When returning an error, you can return nil as a response. Then you can save a few bytes.",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72553ef3_f75e17f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_meet_service.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-22T19:24:24Z",
+      "side": 1,
+      "message": "Sure. Thanks for the tip!",
+      "parentUuid": "8445e831_78b9d88b",
       "range": {
         "startLine": 41,
         "startChar": 9,
@@ -200,6 +344,30 @@
       "side": 1,
       "message": "How about just introducing two gRPC methods, RunGoogleMeetScenario and RunZoomScenario?\n\nI just thought that introducing two services with one method each sounds a bit redundant, especially when neither of two services don\u0027t have internal states (i.e. service implementations only have *testing.ServiceState as a field).",
       "parentUuid": "8f266e5a_eebac15c",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "ff49c11d25a30a7de5db2eebbd4ec3874a5ab8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c8a442_35cefcef",
+        "filename": "src/chromiumos/tast/services/cros/ui/google_meet_service.proto",
+        "patchSetId": 37
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-22T19:24:24Z",
+      "side": 1,
+      "message": "Merge the two to a single service now in ui/conference_service.go. Two methods will be provide - one for google meet, one for zoom",
+      "parentUuid": "3d5a2026_fb0e7ac6",
       "range": {
         "startLine": 15,
         "startChar": 8,
