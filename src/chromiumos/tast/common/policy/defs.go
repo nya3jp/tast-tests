@@ -3066,7 +3066,22 @@ func (p *ForceSafeSearch) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 type DeviceLocalAccounts struct {
 	Stat Status
-	Val  []string
+	Val  []DeviceLocalAccountInfo
+}
+
+type AccountType int
+
+const (
+	AccountTypePublicSession     AccountType = iota // 0
+	AccountTypeKioskApp                             // 1
+	AccountTypeKioskAndroidApp                      // 2
+	AccountTypeSAMLPublicSession                    // 3
+	AccountTypeKioskWebApp                          // 4
+)
+
+type DeviceLocalAccountInfo struct {
+	AccountID   *string      `json:"account_id,omitempty"`
+	AccountType *AccountType `json:"type,omitempty"`
 }
 
 func (p *DeviceLocalAccounts) Name() string          { return "DeviceLocalAccounts" }
@@ -3075,14 +3090,14 @@ func (p *DeviceLocalAccounts) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLocalAccounts) Status() Status        { return p.Stat }
 func (p *DeviceLocalAccounts) UntypedV() interface{} { return p.Val }
 func (p *DeviceLocalAccounts) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
+	var v []DeviceLocalAccountInfo
 	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+		return nil, errors.Wrapf(err, "could not read %s as []DeviceLocalAccountInfo", m)
 	}
 	return v, nil
 }
 func (p *DeviceLocalAccounts) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
+	v, ok := iface.([]DeviceLocalAccountInfo)
 	if !ok {
 		return ok
 	}
