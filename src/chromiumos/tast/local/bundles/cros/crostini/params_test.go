@@ -35,6 +35,7 @@ var testFiles = []string{
 	"icon_and_username.go",
 	"launch_browser.go",
 	"launch_terminal.go",
+	"notify.go",
 	"no_access_to_downloads.go",
 	"no_shared_folder.go",
 	"open_with_terminal.go",
