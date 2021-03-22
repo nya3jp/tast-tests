@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f69df5_26b7491d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-03-22T12:00:14Z",
+      "side": 1,
+      "message": "Hmm, it seems I didn\u0027t understand the relationship between these flags. My intention was just to clean up Tast code, so if the code is correct, that\u0027s fine. Let me abandon this change.",
+      "parentUuid": "e3340aeb_e9920be5",
+      "revId": "fe3296966d3bdfabadf5d7d073c6738c75ede5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f108e55_60994f2f",
