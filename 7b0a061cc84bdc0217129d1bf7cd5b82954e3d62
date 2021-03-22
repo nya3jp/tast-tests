@@ -16,6 +16,24 @@
       "message": "please add info about enrollment to the documentation comments.\n\nnote: Also, this function does more what its name says. It is not just \"log in\" but rather \"enroll if needed and log in\".",
       "revId": "7b0a061cc84bdc0217129d1bf7cd5b82954e3d62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5cf1b89_202e86d1",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-22T08:54:18Z",
+      "side": 1,
+      "message": "Added a comment. The function always did this. Enrollment is still a form of login.",
+      "parentUuid": "e65fb40d_177c9231",
+      "revId": "7b0a061cc84bdc0217129d1bf7cd5b82954e3d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
