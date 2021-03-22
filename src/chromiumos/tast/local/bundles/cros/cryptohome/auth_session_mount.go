@@ -11,6 +11,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// authSessionMountParam contains the test parameters which are different
+// between the types of mounts.
+type authSessionMountParam struct {
+	// Specifies the user email with which to login
+	testUser string
+	// Specifies the password to login with, for kiosk users this is empty.
+	testPass string
+	// Specifies if the user is a kiosk user
+	isKioskUser bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: AuthSessionMount,
@@ -20,6 +31,21 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name: "regular_mount",
+			Val: authSessionMountParam{
+				testUser:    "cryptohome_auth_session_test@chromium.org",
+				testPass:    "testPass",
+				isKioskUser: false,
+			},
+		}, {
+			Name: "kiosk_mount",
+			Val: authSessionMountParam{
+				testUser:    "cryptohome_auth_session_kiosk_test@chromium.org",
+				testPass:    "", // Password is derived from username
+				isKioskUser: true,
+			},
+		}},
 	})
 }
 
@@ -31,18 +57,15 @@ func init() {
 // 4. Perform mount using AuthSession
 // 5. Unmount and remove the user
 func AuthSessionMount(ctx context.Context, s *testing.State) {
-	const (
-		testUser = "cryptohome_auth_session_test@chromium.org"
-		testPass = "testme"
-	)
+	userParam := s.Param().(authSessionMountParam)
 	// Start an Auth session and get an authSessionID.
-	authSessionID, err := cryptohome.StartAuthSession(ctx, testUser)
+	authSessionID, err := cryptohome.StartAuthSession(ctx, userParam.testUser, userParam.isKioskUser)
 	if err != nil {
 		s.Fatal("Failed to start Auth session: ", err)
 	}
 	testing.ContextLogf(ctx, "Auth session ID: %s", authSessionID)
 
-	if err := cryptohome.AddCredentialsWithAuthSession(ctx, testUser, testPass, authSessionID); err != nil {
+	if err := cryptohome.AddCredentialsWithAuthSession(ctx, userParam.testUser, userParam.testPass, authSessionID, userParam.isKioskUser); err != nil {
 		s.Fatal("Failed to add credentials with AuthSession: ", err)
 	}
 
@@ -52,23 +75,23 @@ func AuthSessionMount(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to remove user -: ", err)
 		}
 		testing.ContextLog(ctx, "User removed")
-	}(ctx, s, testUser)
+	}(ctx, s, userParam.testUser)
 
 	// Authenticate the same AuthSession using authSessionID.
 	// If we cannot authenticate, do not proceed with mount and unmount.
-	if err := cryptohome.AuthenticateAuthSession(ctx, testPass, authSessionID); err != nil {
+	if err := cryptohome.AuthenticateAuthSession(ctx, userParam.testPass, authSessionID, userParam.isKioskUser); err != nil {
 		s.Fatal("Failed to authenticate with AuthSession: ", err)
 	}
 	testing.ContextLog(ctx, "User authenticated successfully")
 
 	// Mounting with AuthSession now.
-	if err := cryptohome.MountWithAuthSession(ctx, authSessionID); err != nil {
+	if err := cryptohome.MountWithAuthSession(ctx, authSessionID, userParam.isKioskUser); err != nil {
 		s.Fatal("Failed to mount user -: ", err)
 	}
 	testing.ContextLog(ctx, "User mounted successfully")
 
 	// Unmounting user vault.
-	if err := cryptohome.UnmountVault(ctx, testUser); err != nil {
+	if err := cryptohome.UnmountVault(ctx, userParam.testUser); err != nil {
 		s.Fatal("Failed to unmount vault user -: ", err)
 	}
 }
