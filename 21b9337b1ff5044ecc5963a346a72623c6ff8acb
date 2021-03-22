@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6384170_2545ad38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tier.go",
+        "patchSetId": 49
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-22T20:25:50Z",
+      "side": 1,
+      "message": "Please add more description on each item of the tier.\n  // Basic is a tier of ...\n  Basic Tier \u003d iota\n\n  // Plus is ...\n  Plus\n\n  // Premium is ...\n  Premium",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "21b9337b1ff5044ecc5963a346a72623c6ff8acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
