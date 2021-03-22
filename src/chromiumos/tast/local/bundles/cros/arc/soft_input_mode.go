@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
 )
 
@@ -168,10 +168,9 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to click the field: ", err)
 			}
 		}
-		if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for the virtual keyboard to be shown: ", err)
+		if err := vkb.NewContext(nil, tconn).WaitLocationStable()(ctx); err != nil {
+			s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 		}
-
 		if err := field.Exists(ctx); err != nil {
 			s.Fatal("Could not find the field; probably hidden by the virtual keyboard?")
 		}
