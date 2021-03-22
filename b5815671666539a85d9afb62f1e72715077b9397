@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c77a71_2bad261b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-22T16:57:59Z",
+      "side": 1,
+      "message": "Is there some other way to use a fake camera feed supplied to cros-camera so that you can get the portrait mode processing but also guarantee what\u0027s in the stream?",
+      "revId": "b5815671666539a85d9afb62f1e72715077b9397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
