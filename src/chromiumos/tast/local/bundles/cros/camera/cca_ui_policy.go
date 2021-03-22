@@ -104,7 +104,7 @@ func servePolicy(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, 
 
 // testNoPolicy tests without any policy and expects CCA works fine.
 func testNoPolicy(ctx context.Context, cr *chrome.Chrome, scripts []string, outDir string) error {
-	tb, err := testutil.NewTestBridge(ctx, cr)
+	tb, err := testutil.NewTestBridge(ctx, cr, false)
 	if err != nil {
 		return errors.Wrap(err, "failed to construct test bridge")
 	}
@@ -145,7 +145,7 @@ func testBlockCameraFeature(ctx context.Context, cr *chrome.Chrome, scripts []st
 // testBlockVideoCapture tries to block video capture and expects CCA fails to
 // initialize since the preview won't show.
 func testBlockVideoCapture(ctx context.Context, cr *chrome.Chrome, scripts []string, outDir string) error {
-	tb, err := testutil.NewTestBridge(ctx, cr)
+	tb, err := testutil.NewTestBridge(ctx, cr, false)
 	if err != nil {
 		return errors.Wrap(err, "failed to construct test bridge")
 	}

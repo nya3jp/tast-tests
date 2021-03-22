@@ -22,15 +22,18 @@ type TestBridge struct {
 	cr       *chrome.Chrome
 	pageConn *chrome.Conn
 	bridge   *chrome.JSObject
+
+	// TODO(b/177800595): Store this information in fixture.
+	UseFakeCamera bool
 }
 
 // NewTestBridge returns a new test bridge instance.
-func NewTestBridge(ctx context.Context, cr *chrome.Chrome) (*TestBridge, error) {
+func NewTestBridge(ctx context.Context, cr *chrome.Chrome, useFakeCamera bool) (*TestBridge, error) {
 	pageConn, bridge, err := setUpTestBridge(ctx, cr)
 	if err != nil {
 		return nil, err
 	}
-	return &TestBridge{cr, pageConn, bridge}, nil
+	return &TestBridge{cr, pageConn, bridge, useFakeCamera}, nil
 }
 
 func getPageConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
