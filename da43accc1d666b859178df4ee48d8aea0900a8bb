@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5282331d_13458dd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-22T17:49:21Z",
+      "side": 1,
+      "message": "Confirmed that 21 tests are in this group.",
+      "parentUuid": "24a850ba_d8e0ba03",
+      "revId": "da43accc1d666b859178df4ee48d8aea0900a8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15a79e82_182f593a",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-22T16:29:37Z",
       "side": 1,
       "message": "Change should be in the Attr field, right?",
+      "revId": "da43accc1d666b859178df4ee48d8aea0900a8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72dc090e_9b54d399",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-22T17:49:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15a79e82_182f593a",
       "revId": "da43accc1d666b859178df4ee48d8aea0900a8bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
