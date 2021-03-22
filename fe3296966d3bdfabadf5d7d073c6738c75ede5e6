@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3340aeb_e9920be5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-22T09:34:47Z",
+      "side": 1,
+      "message": "arc-availability is tri-state:\nhttps://source.chromium.org/chromium/chromium/src/+/master:components/arc/arc_util.cc;l\u003d42\n\nand, even if NOT officially-supported, if --arc-start-mode\u003dalways-start-with-no-play-store is specified, ARC is enabled.\nhttps://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/ui/app_list/arc/arc_app_list_prefs.cc;l\u003d211\nhttps://source.chromium.org/chromium/chromium/src/+/master:components/arc/arc_util.cc;l\u003d215\n\nso the original code matches with the current behavior.\n\nIf you\u0027re trying to simplify the flags, I\u0027m open for the discussion, but I think broader people need to be involved in, because these flags are designed/implemented to support rare use cases, so we have to make sure they are no longer used, or can come up with the simplified world.\nAlso, in the case, it\u0027s worth to have one-pager doc, and discuss it there, rather than on gerrit. Then, once consensus is made, tests in Tast can follow it.\n\nThat\u0027s my recommendation.\nWDYT?",
+      "parentUuid": "59e13c64_92161efc",
+      "revId": "fe3296966d3bdfabadf5d7d073c6738c75ede5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f108e55_60994f2f",
