@@ -17,6 +17,7 @@ group("all") {
     "ArcChromeSharesheetTest:ArcChromeSharesheetTest",
     "ArcConnectivityTest:ArcConnectivityTest",
     "ArcDownloadManagerTest:ArcDownloadManagerTest",
+    "ArcDragSourceTest:ArcDragSourceTest",
     "ArcDragTargetTest:ArcDragTargetTest",
     "ArcFileReaderTest:ArcFileReaderTest",
     "ArcGamePerformanceTest:ArcGamePerformanceTest",
