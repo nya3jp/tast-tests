@@ -6,9 +6,9 @@
 
 chrome.app.window.create("window.html", {
   outerBounds: {
-    width: 300,
-    height: 300,
-    left: 300,
+    width: 500,
+    height: 500,
+    left: 500,
     top: 0
   },
   alwaysOnTop: true,
