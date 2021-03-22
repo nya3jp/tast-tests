@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -80,7 +80,9 @@ func chromeVirtualKeyboardBasicEditingTest(
 
 		fieldID = virtualKeyboardTestAppPkg + ":id/text"
 	)
-	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	vkbCtx := vkb.NewContext(cr, tconn)
+	defer vkbCtx.HideVirtualKeyboard()(ctx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -109,7 +111,7 @@ func chromeVirtualKeyboardBasicEditingTest(
 	}
 
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
 	}
 
@@ -122,7 +124,7 @@ func chromeVirtualKeyboardBasicEditingTest(
 	expected := ""
 
 	for _, key := range keys {
-		if err := vkb.TapKey(ctx, tconn, key); err != nil {
+		if err := vkbCtx.TapKey(key)(ctx); err != nil {
 			s.Fatalf("Failed to tap %q: %v", key, err)
 		}
 
@@ -152,7 +154,9 @@ func chromeVirtualKeyboardFocusChangeTest(
 		fieldID1  = virtualKeyboardTestAppPkg + ":id/text1"
 		fieldID2  = virtualKeyboardTestAppPkg + ":id/text2"
 	)
-	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	vkbCtx := vkb.NewContext(cr, tconn)
+	defer vkbCtx.HideVirtualKeyboard()(ctx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -178,7 +182,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 		s.Fatal("Failed to focus the field: ", err)
 	}
 	s.Log("Waiting for the virtual keyboard to be ready")
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 
@@ -194,7 +198,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := d.Object(ui.ID(fieldID2), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Clicking the button didn't cause the focus move: ", err)
 	}
-	shown, err := vkb.IsShown(ctx, tconn)
+	shown, err := vkbCtx.IsShown(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the virtual keyboard visibility: ", err)
 	}
@@ -203,11 +207,8 @@ func chromeVirtualKeyboardFocusChangeTest(
 	}
 
 	// Hide the virtual keyboard.
-	if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
+	if err := vkbCtx.HideVirtualKeyboard()(ctx); err != nil {
 		s.Fatal("Failed to request to hide the virtual keyboard: ", err)
-	}
-	if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
-		s.Fatal("Failed to hide the virtual keyboard: ", err)
 	}
 
 	// Moving focus to the other text field programmatically should not show the virtual keyboard.
@@ -217,7 +218,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := d.Object(ui.ID(fieldID1), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Pressing the button didn't cause focusing on the field: ", err)
 	}
-	shown, err = vkb.IsShown(ctx, tconn)
+	shown, err = vkbCtx.IsShown(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the virtual keyboard visibility: ", err)
 	}
@@ -229,7 +230,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := field1.Click(ctx); err != nil {
 		s.Fatal("Failed to click the field: ", err)
 	}
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 
@@ -238,7 +239,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := button3.Click(ctx); err != nil {
 		s.Fatal("Failed to click the button: ", err)
 	}
-	if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
+	if err := vkbCtx.WaitUntilHidden()(ctx); err != nil {
 		s.Fatal("Failed to hide the virtual keyboard: ", err)
 	}
 }
@@ -255,7 +256,10 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 		lastKeyDownLabelID = virtualKeyboardTestAppPkg + ":id/last_key_down"
 		lastKeyUpLabelID   = virtualKeyboardTestAppPkg + ":id/last_key_up"
 	)
-	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	vkbCtx := vkb.NewContext(cr, tconn)
+
+	defer vkbCtx.HideVirtualKeyboard()(ctx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -285,7 +289,7 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 
 	// No need to wait for decoder enabled because the decoder won't be enabled on TYPE_NULL field.
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
 	}
 
@@ -303,7 +307,7 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 		{"backspace", 67}, // AKEYCODE_DEL
 		{"enter", 66},     // AKEYCODE_ENTER
 	} {
-		if err := vkb.TapKey(ctx, tconn, key.Key); err != nil {
+		if err := vkbCtx.TapKey(key.Key)(ctx); err != nil {
 			s.Fatalf("Failed to tap %q: %v", key.Key, err)
 		}
 
@@ -325,7 +329,9 @@ func chromeVirtualKeyboardFloatingTest(
 		activityName = ".OverscrollTestActivity"
 		fieldID      = virtualKeyboardTestAppPkg + ":id/text"
 	)
-	defer vkb.HideVirtualKeyboard(ctx, tconn)
+	vkbCtx := vkb.NewContext(cr, tconn)
+
+	defer vkbCtx.HideVirtualKeyboard()(ctx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -354,7 +360,7 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	s.Log("Waiting for the virtual keyboard to be ready")
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
 	}
 
@@ -382,10 +388,10 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	// Switching the VK to floating mode.
-	if err := vkb.SetFloatingMode(ctx, tconn, true); err != nil {
+	if err := vkbCtx.SetFloatingMode(true)(ctx); err != nil {
 		s.Fatal("Failed to switch to floating mode: ", err)
 	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 	if err := waitForRelayout(initialBounds); err != nil {
@@ -396,10 +402,10 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	// Switching back to the normal mode
-	if err := vkb.SetFloatingMode(ctx, tconn, false); err != nil {
+	if err := vkbCtx.SetFloatingMode(false)(ctx); err != nil {
 		s.Fatal("Failed to switch to dock mode: ", err)
 	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 	if err := waitForRelayout(boundsWithVK); err != nil {
@@ -414,7 +420,10 @@ func chromeVirtualKeyboardRotationTest(
 
 		fieldID = virtualKeyboardTestAppPkg + ":id/text"
 	)
-	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	vkbCtx := vkb.NewContext(cr, tconn)
+
+	defer vkbCtx.HideVirtualKeyboard()(ctx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -443,7 +452,7 @@ func chromeVirtualKeyboardRotationTest(
 	}
 
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
 	}
 
@@ -473,22 +482,21 @@ func chromeVirtualKeyboardRotationTest(
 
 	// Try all rotations
 	for _, r := range []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0} {
-		element, err := vkb.VirtualKeyboard(ctx, tconn)
+
+		coordsBefore, err := vkbCtx.Location(ctx)
 		if err != nil {
 			s.Fatal("Failed to get the virtual keyboard location: ", err)
 		}
-		coordsBefore := element.Location
 
 		if err := display.SetDisplayRotationSync(ctx, tconn, info.ID, r); err != nil {
 			s.Fatalf("Failed to rotate display to %q: %q", r, err)
 		}
 
-		element, err = vkb.VirtualKeyboard(ctx, tconn)
+		coordsAfter, err := vkbCtx.Location(ctx)
 		if err != nil {
-			s.Fatal("Failed to get the virtual keyboard location: ", err)
+			s.Fatal("Failed to get the virtual keyboard location after display rotation: ", err)
 		}
 
-		coordsAfter := element.Location
 		if coordsBefore == coordsAfter || coordsAfter.Empty() {
 			s.Fatalf("Failed to show the virtual keyboard after rotation in %s, before %q; after %q", r, coordsBefore, coordsAfter)
 		}
@@ -503,7 +511,9 @@ func chromeVirtualKeyboardPasswordEditingTest(
 
 		passwordFieldID = virtualKeyboardTestAppPkg + ":id/password"
 	)
-	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	vkbCtx := vkb.NewContext(cr, tconn)
+	defer vkbCtx.HideVirtualKeyboard()(ctx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -532,7 +542,7 @@ func chromeVirtualKeyboardPasswordEditingTest(
 	}
 
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 	// We should not wait for the decoder because it is not enabled on the password field.
@@ -543,7 +553,7 @@ func chromeVirtualKeyboardPasswordEditingTest(
 	expected := ""
 
 	for _, key := range keys {
-		if err := vkb.TapKey(ctx, tconn, key); err != nil {
+		if err := vkbCtx.TapKey(key)(ctx); err != nil {
 			s.Fatalf("Failed to tap %q: %v", key, err)
 		}
 
@@ -571,7 +581,9 @@ func chromeVirtualKeyboardNumberInputTest(
 		activityName = ".MainActivity"
 		fieldID      = virtualKeyboardTestAppPkg + ":id/text"
 	)
-	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	vkbCtx := vkb.NewContext(cr, tconn)
+	defer vkbCtx.HideVirtualKeyboard()(ctx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -600,27 +612,22 @@ func chromeVirtualKeyboardNumberInputTest(
 	}
 
 	s.Log("Waiting for vitual keyboard to be ready")
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
 	}
 
 	s.Log("Switching to the symbol/number keyboard")
-	kconn, err := vkb.UIConn(ctx, cr)
-	if err != nil {
-		s.Fatal("Failed to get the UIConn: ", err)
-	}
-	defer kconn.Close()
-	if err := vkb.TapKeyJS(ctx, kconn, `"switch to symbols"`); err != nil {
+	if err := vkbCtx.TapKeyJS(`"switch to symbols"`)(ctx); err != nil {
 		s.Fatal("Failed to tap 'switch to symbols': ", err)
 	}
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
 	}
 
 	keys := []string{"1", "2", "#"}
 	expected := ""
 	for _, key := range keys {
-		if err := vkb.TapKey(ctx, tconn, key); err != nil {
+		if err := vkbCtx.TapKey(key)(ctx); err != nil {
 			s.Fatalf("Failed to tap %q: %v", key, err)
 		}
 
