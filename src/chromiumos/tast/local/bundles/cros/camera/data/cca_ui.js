@@ -221,14 +221,13 @@ window.Tast = class Tast {
   }
 
   /**
-   * Checks whether facing is as expected. If it's V1 device, accept unknown as
-   * correct answer.
+   * Checks whether facing is as expected.
    * @param {string} expected Expected facing
    * @return {Promise} The promise resolves successfully if the check passes.
    */
   static async checkFacing(expected) {
     const actual = await Tast.getFacing();
-    if (actual === expected || actual === 'unknown') {
+    if (actual === expected) {
       return;
     }
     throw new Error(`Expected facing: ${expected}; actual: ${actual};`);
@@ -253,14 +252,12 @@ window.Tast = class Tast {
   /**
    * Gets facing of current active camera device.
    * @return {string} The facing string 'user', 'environment', 'external'.
-   *     Returns 'unknown' if current device is HALv1 and does not have
-   *     configurations.
+   *     Returns 'unknown' if current device does not support device operator.
    */
   static async getFacing() {
     const track = Tast.previewVideo.srcObject.getVideoTracks()[0];
     const deviceOperator = await DeviceOperator.getInstance();
     if (!deviceOperator) {
-      // This might be a HALv1 device.
       const facing = track.getSettings().facingMode;
       return facing ? facing : 'unknown';
     }
