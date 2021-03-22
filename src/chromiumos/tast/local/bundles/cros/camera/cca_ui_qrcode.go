@@ -65,7 +65,7 @@ func CCAUIQRCode(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to clear saved directory: ", err)
 			}
 
-			tb, err := testutil.NewTestBridge(ctx, cr)
+			tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseFakeCamera)
 			if err != nil {
 				s.Fatal("Failed to construct test bridge: ", err)
 			}

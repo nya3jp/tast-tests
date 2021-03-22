@@ -83,7 +83,7 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 		cr = s.PreValue().(arc.PreData).Chrome
 	}
 
-	tb, err := testutil.NewTestBridge(ctx, cr)
+	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}

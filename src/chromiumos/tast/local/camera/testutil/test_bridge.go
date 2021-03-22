@@ -17,20 +17,35 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// UseCameraType defines what camera type is used in a test.
+type UseCameraType int
+
+const (
+	// UseRealCamera is used when the test should test with real camera which exercises cros-camera service.
+	UseRealCamera UseCameraType = iota
+	// UseVividCamera is used when the test should use vivid camera, which is virtual video test driver.
+	UseVividCamera
+	// UseFakeCamera is used when the test should use fake camera in Chrome stack instead.
+	UseFakeCamera
+)
+
 // TestBridge is used to comminicate with CCA for test specific logic, such as test environment set-up/tear-down flow, performance/error monitoring.
 type TestBridge struct {
 	cr       *chrome.Chrome
 	pageConn *chrome.Conn
 	bridge   *chrome.JSObject
+
+	// TODO(b/177800595): Store this information in fixture.
+	CameraType UseCameraType
 }
 
 // NewTestBridge returns a new test bridge instance.
-func NewTestBridge(ctx context.Context, cr *chrome.Chrome) (*TestBridge, error) {
+func NewTestBridge(ctx context.Context, cr *chrome.Chrome, cameraType UseCameraType) (*TestBridge, error) {
 	pageConn, bridge, err := setUpTestBridge(ctx, cr)
 	if err != nil {
 		return nil, err
 	}
-	return &TestBridge{cr, pageConn, bridge}, nil
+	return &TestBridge{cr, pageConn, bridge, cameraType}, nil
 }
 
 func getPageConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
