@@ -27,21 +27,24 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
 			Pre:               chrome.LoggedIn(),
 			ExtraAttr:         []string{"informational"},
+			Val:               false, // useFakeCamera
 		}, {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},
 			Pre:               chrome.LoggedIn(),
 			ExtraAttr:         []string{"group:camera-postsubmit"},
+			Val:               false, // useFakeCamera
 		}, {
 			Name: "fake",
 			Pre:  testutil.ChromeWithFakeCamera(),
+			Val:  true, // useFakeCamera
 		}},
 	})
 }
 
 func CCAUISmoke(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr)
+	tb, err := testutil.NewTestBridge(ctx, cr, s.Param().(bool))
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}

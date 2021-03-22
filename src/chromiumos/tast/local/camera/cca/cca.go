@@ -208,12 +208,13 @@ const (
 
 // App represents a CCA (Chrome Camera App) instance.
 type App struct {
-	conn        *chrome.Conn
-	cr          *chrome.Chrome
-	scriptPaths []string
-	outDir      string // Output directory to save the execution result
-	appLauncher testutil.AppLauncher
-	appWindow   *testutil.AppWindow
+	conn          *chrome.Conn
+	cr            *chrome.Chrome
+	scriptPaths   []string
+	outDir        string // Output directory to save the execution result
+	appLauncher   testutil.AppLauncher
+	appWindow     *testutil.AppWindow
+	useFakeCamera bool
 }
 
 // ErrJS represents an error occurs when executing JavaScript.
@@ -248,8 +249,9 @@ func (r *Resolution) AspectRatio() float64 {
 // the helper script cca_ui.js. The returned App instance must be closed when
 // the test is finished.
 func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, appLauncher testutil.AppLauncher, tb *testutil.TestBridge) (*App, error) {
-	// The cros-camera job exists only on boards that use the new camera stack.
-	if upstart.JobExists(ctx, "cros-camera") {
+	// Since we don't use "cros-camera" service for fake camera, there is no need
+	// to ensure it is running.
+	if !tb.UseFakeCamera {
 		// Ensure that cros-camera service is running, because the service
 		// might stopped due to the errors from some previous tests, and failed
 		// to restart for some reasons.
@@ -294,7 +296,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 
 	testing.ContextLog(ctx, "CCA launched")
-	app := &App{conn, cr, scriptPaths, outDir, appLauncher, appWindow}
+	app := &App{conn, cr, scriptPaths, outDir, appLauncher, appWindow, tb.UseFakeCamera}
 	waitForWindowReady := func() error {
 		if err := app.WaitForVideoActive(ctx); err != nil {
 			return errors.Wrap(err, ErrVideoNotActive)
@@ -467,8 +469,10 @@ func (a *App) checkVideoState(ctx context.Context, active bool, duration time.Du
 
 	code := fmt.Sprintf("Tast.isVideoActive() === %t", active)
 	if err := a.conn.WaitForExpr(ctx, code); err != nil {
-		if jobErr := upstart.CheckJob(cleanupCtx, "cros-camera"); jobErr != nil {
-			return errors.Wrap(jobErr, err.Error())
+		if !a.useFakeCamera {
+			if jobErr := upstart.CheckJob(cleanupCtx, "cros-camera"); jobErr != nil {
+				return errors.Wrap(jobErr, err.Error())
+			}
 		}
 		return err
 	}

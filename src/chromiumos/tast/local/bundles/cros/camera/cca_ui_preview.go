@@ -29,7 +29,7 @@ func init() {
 
 func CCAUIPreview(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr)
+	tb, err := testutil.NewTestBridge(ctx, cr, false)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
