@@ -16,6 +16,63 @@
       "message": "PTAL",
       "revId": "089463fc867c2ffccdbc2a9a505418a3eb602113",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a31ed45_9a027650",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-22T15:12:00Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "089463fc867c2ffccdbc2a9a505418a3eb602113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6351da2f_454050b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone_automatic_detection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-22T15:12:00Z",
+      "side": 1,
+      "message": "nit: please add some details to the description.",
+      "revId": "089463fc867c2ffccdbc2a9a505418a3eb602113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce754035_41e99d98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone_automatic_detection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-22T15:12:00Z",
+      "side": 1,
+      "message": "In the long run, would it make sense to parse strings from files like this?\nhttps://source.chromium.org/chromium/chromium/src/+/master:chrome/app/os_settings_strings.grdp?q\u003d%22Use%20your%20IP%20address%20to%20determine%20location%20(default)%22",
+      "range": {
+        "startLine": 89,
+        "startChar": 23,
+        "endLine": 89,
+        "endChar": 74
+      },
+      "revId": "089463fc867c2ffccdbc2a9a505418a3eb602113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
