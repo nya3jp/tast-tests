@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf90376f_146545f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-22T15:06:38Z",
+      "side": 1,
+      "message": "minor nit: delete",
+      "range": {
+        "startLine": 7,
+        "startChar": 60,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "ecb82efc79c0145f7850ffa10cf345fa24037ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c8022d6c_d7b0aaf6",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-03-22T10:26:05Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "ecb82efc79c0145f7850ffa10cf345fa24037ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "517c5bca_90af010b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-03-22T15:06:38Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "ecb82efc79c0145f7850ffa10cf345fa24037ba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
