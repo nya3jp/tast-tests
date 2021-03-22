@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eaeefb6_0486ee95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-22T09:34:47Z",
+      "side": 1,
+      "message": "Thank you for updating the commit message. I believe I understand your intention now.\nCould you take a look at my comment below?",
+      "revId": "216cc0da64d9af6a69e1f511bcc2eae45e5b7e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
