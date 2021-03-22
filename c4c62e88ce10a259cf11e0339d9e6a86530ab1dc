@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55fdc6fe_e10a80e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-22T05:16:22Z",
+      "side": 1,
+      "message": "For some historical reasons, CCAUIModes does use fake camera (see Pre: above).\n\n@inker should we change it to use real camera now?",
+      "range": {
+        "startLine": 33,
+        "startChar": 44,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "c4c62e88ce10a259cf11e0339d9e6a86530ab1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1c85bb_38ba19e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-22T05:16:22Z",
+      "side": 1,
+      "message": "true. It use fake camera stream to feed QR code.",
+      "range": {
+        "startLine": 68,
+        "startChar": 46,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "c4c62e88ce10a259cf11e0339d9e6a86530ab1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
