@@ -16,6 +16,92 @@
       "message": "Could you please take a look? Thanks.",
       "revId": "60120711169621d28311c620cb94fca7af993d49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4c850c_a6842822",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-22T20:49:17Z",
+      "side": 1,
+      "message": "tast-wise: LGTM % comments\n\n(waiting for risan@\u0027s review)",
+      "revId": "60120711169621d28311c620cb94fca7af993d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17306453_63522ff2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-22T20:49:17Z",
+      "side": 1,
+      "message": "nit: Fs -\u003e FS\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 93,
+        "startChar": 19,
+        "endLine": 93,
+        "endChar": 21
+      },
+      "revId": "60120711169621d28311c620cb94fca7af993d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d574caa4_5d21023b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-22T20:49:17Z",
+      "side": 1,
+      "message": "ditto above:  FspURI -\u003e FSPURI\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 140,
+        "startChar": 13,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "60120711169621d28311c620cb94fca7af993d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc27b84_efd8cd0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-22T20:49:17Z",
+      "side": 1,
+      "message": "outdated and/or incomplete.\n\nIt needs more details. For example, it is not clear when and how \"expectations\" are used.\n\nPerhaps in the code (or could be as a docstring if applicable) describe how ArcFileReaderTest compares the current values vs the expected ones.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 94
+      },
+      "revId": "60120711169621d28311c620cb94fca7af993d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
