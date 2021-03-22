@@ -454,6 +454,27 @@ type ArcPolicyValue struct {
 """ + attr_structs
   return attr_type, attr_structs
 
+def parse_override_device_local_accounts(p, refs):
+  value_name = 'DeviceLocalAccountInfo'
+  attr_type = '[]' + value_name
+  attr_structs = """
+type AccountType int
+
+const (
+\tAccountTypePublicSession AccountType = iota // 0
+\tAccountTypeKioskApp // 1
+\tAccountTypeKioskAndroidApp // 2
+\tAccountTypeSAMLPublicSession // 3
+\tAccountTypeKioskWebApp // 4
+)
+
+type DeviceLocalAccountInfo struct {
+\tAccountID\t*string\t`json:"account_id,omitempty"`
+\tAccountType\t*AccountType\t`json:"type,omitempty"`
+}
+"""
+  return attr_type, attr_structs
+
 def ref_parse_override_managed_bookmarks(schema, refs):
   name = 'Ref' + schema['items']['id']
   refs[schema['items']['id']] = Reference(name, '*'+name, '')
@@ -471,7 +492,8 @@ type RefBookmarkType struct {
 # Functions to use instead of parse_schema() if the default way won't work.
 PARSE_OVERRIDES = {
     'ExtensionSettings': parse_override_extension_settings,
-    'ArcPolicy': parse_override_arc_policy
+    'ArcPolicy': parse_override_arc_policy,
+    'DeviceLocalAccounts': parse_override_device_local_accounts
 }
 
 # Functions to use for reference objects when the default way won't work.
