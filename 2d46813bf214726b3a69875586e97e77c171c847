@@ -110,6 +110,30 @@
       },
       "revId": "2d46813bf214726b3a69875586e97e77c171c847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "863f459e_4bc64776",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/flipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-22T18:40:22Z",
+      "side": 1,
+      "message": "Sorry, Just checked again both are same. I will change it. Thanks.",
+      "parentUuid": "4c84ecbb_8fc2677a",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 2
+      },
+      "revId": "2d46813bf214726b3a69875586e97e77c171c847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
