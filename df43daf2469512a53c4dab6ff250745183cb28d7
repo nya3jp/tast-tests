@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27ee0941_a1d84949",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426917
+      },
+      "writtenOn": "2021-03-22T04:11:31Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "df43daf2469512a53c4dab6ff250745183cb28d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "197d5f34_700cf49b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_results.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1426917
+      },
+      "writtenOn": "2021-03-22T04:11:31Z",
+      "side": 1,
+      "message": "Should there be other contacts added to this? E.g., the people who own launcher search and rich Omnibox entities.",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "df43daf2469512a53c4dab6ff250745183cb28d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f56a764c_d5091d32",
