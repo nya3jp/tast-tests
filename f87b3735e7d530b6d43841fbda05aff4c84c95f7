@@ -45,6 +45,54 @@
       },
       "revId": "f87b3735e7d530b6d43841fbda05aff4c84c95f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa4f229_a665ada2",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-22T07:28:15Z",
+      "side": 1,
+      "message": "Actually my change is incorrect. If the error message is available then the method will not be returning an error so I need to check for error message in case of success rather than failure. That removes the possibility of trying to access the error message in case of timeout since they can\u0027t happen simultaneously. If err !\u003d nil then it is guaranteed to be timeout.\n\nUpdated the code and moved the error message extraction outside.",
+      "parentUuid": "47436fc6_98fb195c",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "f87b3735e7d530b6d43841fbda05aff4c84c95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c398dfb_6d812e2a",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-22T07:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7774e597_b7fa9392",
+      "range": {
+        "startLine": 75,
+        "startChar": 6,
+        "endLine": 75,
+        "endChar": 39
+      },
+      "revId": "f87b3735e7d530b6d43841fbda05aff4c84c95f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
