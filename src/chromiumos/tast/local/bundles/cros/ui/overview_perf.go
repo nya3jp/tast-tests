@@ -83,23 +83,6 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	}
 	defer ash.SetTabletModeEnabled(cleanupCtx, tconn, originalTabletMode)
 
-	// overviewAnimationType specifies the type of the animation of entering to or
-	// exiting from the overview mode.
-	type overviewAnimationType string
-	const (
-		// animationTypeMaximized is the animation when there are maximized windows
-		// in the clamshell mode.
-		animationTypeMaximized overviewAnimationType = "maximized"
-		// animationTypeNormalWindow is the animation for normal windows in the
-		// clamshell mode.
-		animationTypeNormalWindow overviewAnimationType = "normal"
-		// animationTypeTabletMode is the animation for windows in the tablet mode.
-		animationTypeTabletMode overviewAnimationType = "tablet"
-		// animationTypeTabletMode is the animation for windows in the tablet mode
-		// when they are all minimized
-		animationTypeMinimizedTabletMode overviewAnimationType = "minimized-tablet"
-	)
-
 	// Run an http server to serve the test contents for accessing from the chrome browsers.
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
@@ -127,23 +110,43 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 
 		currentWindows = windows
 
-		for _, state := range []overviewAnimationType{animationTypeMaximized, animationTypeNormalWindow, animationTypeTabletMode, animationTypeMinimizedTabletMode} {
-			inTabletMode := (state == animationTypeTabletMode || state == animationTypeMinimizedTabletMode)
-			if err := ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
-				s.Logf("Skipping the case of %v as it failed to set tablet mode %v: %v", state, inTabletMode, err)
+		for _, test := range []struct {
+			histogramSuffix string
+			tablet          bool
+			windowState     ash.WindowStateType
+		}{
+			{
+				histogramSuffix: "SingleClamshellMode",
+				tablet:          false,
+				windowState:     ash.WindowStateMaximized,
+			},
+			{
+				histogramSuffix: "ClamshellMode",
+				tablet:          false,
+				windowState:     ash.WindowStateNormal,
+			},
+			{
+				histogramSuffix: "TabletMode",
+				tablet:          true,
+				windowState:     ash.WindowStateMaximized,
+			},
+			{
+				histogramSuffix: "MinimizedTabletMode",
+				tablet:          true,
+				windowState:     ash.WindowStateMinimized,
+			},
+		} {
+			extraDescription := fmt.Sprintf("%dwindows", windows)
+			fullDescription := fmt.Sprintf("%s-%s", test.histogramSuffix, extraDescription)
+			if err := ash.SetTabletModeEnabled(ctx, tconn, test.tablet); err != nil {
+				s.Logf("Skipping the case of %s as it failed to set tablet mode %v: %v", fullDescription, test.tablet, err)
 				continue
 			}
 
-			windowState := ash.WindowStateNormal
-			if state == animationTypeMaximized || state == animationTypeTabletMode {
-				windowState = ash.WindowStateMaximized
-			} else if state == animationTypeMinimizedTabletMode {
-				windowState = ash.WindowStateMinimized
-			}
 			if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-				return ash.SetWindowStateAndWait(ctx, tconn, w.ID, windowState)
+				return ash.SetWindowStateAndWait(ctx, tconn, w.ID, test.windowState)
 			}); err != nil {
-				s.Fatalf("Failed to set all windows to state %v: %v", windowState, err)
+				s.Fatalf("Failed to set all windows to state %v: %v", test.windowState, err)
 			}
 
 			// Wait for 3 seconds to stabilize the result. Note that this doesn't
@@ -154,19 +157,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to wait: ", err)
 			}
 
-			var suffix string
-			switch state {
-			case animationTypeMaximized:
-				suffix = "SingleClamshellMode"
-			case animationTypeNormalWindow:
-				suffix = "ClamshellMode"
-			case animationTypeTabletMode:
-				suffix = "TabletMode"
-			case animationTypeMinimizedTabletMode:
-				suffix = "MinimizedTabletMode"
-			}
-
-			r.RunMultiple(ctx, s, fmt.Sprintf("%s-%dwindows", suffix, currentWindows), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+			r.RunMultiple(ctx, s, fullDescription, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 				if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 					return errors.Wrap(err, "failed to enter into the overview mode")
 				}
@@ -175,9 +166,9 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				}
 				return nil
 			},
-				"Ash.Overview.AnimationSmoothness.Enter"+"."+suffix,
-				"Ash.Overview.AnimationSmoothness.Exit"+"."+suffix),
-				perfutil.StoreAll(perf.BiggerIsBetter, "percent", fmt.Sprintf("%dwindows", currentWindows)))
+				"Ash.Overview.AnimationSmoothness.Enter."+test.histogramSuffix,
+				"Ash.Overview.AnimationSmoothness.Exit."+test.histogramSuffix),
+				perfutil.StoreAll(perf.BiggerIsBetter, "percent", extraDescription))
 		}
 	}
 
