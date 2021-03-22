@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "394b2162_af31c467",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-22T02:16:55Z",
+      "side": 1,
+      "message": "oops I missed this CL. This might be misleading in .fake variant subtests, which do not use the cros-camera service stack.\n\nIMO we should check the status of cros-camera before opening CCA (ideally in precondition/fixture so we don\u0027t need to repeat the code) with real/vivid cameras, and fail the test early without opening CCA if cros-camera service is broken or unavailable. WDYT?",
+      "revId": "95f1681b614e10f874eee1ae4250799e0af1a6af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
