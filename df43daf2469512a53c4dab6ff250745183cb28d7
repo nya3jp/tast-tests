@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b54e49_dcd46848",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324089
+      },
+      "writtenOn": "2021-03-22T04:50:49Z",
+      "side": 1,
+      "message": "lgtm, although i\u0027m not really family with GO and the tast test though.",
+      "revId": "df43daf2469512a53c4dab6ff250745183cb28d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "197d5f34_700cf49b",
