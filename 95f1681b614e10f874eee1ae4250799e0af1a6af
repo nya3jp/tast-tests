@@ -16,6 +16,24 @@
       "message": "oops I missed this CL. This might be misleading in .fake variant subtests, which do not use the cros-camera service stack.\n\nIMO we should check the status of cros-camera before opening CCA (ideally in precondition/fixture so we don\u0027t need to repeat the code) with real/vivid cameras, and fail the test early without opening CCA if cros-camera service is broken or unavailable. WDYT?",
       "revId": "95f1681b614e10f874eee1ae4250799e0af1a6af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46cebc95_2585790c",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-22T03:24:20Z",
+      "side": 1,
+      "message": "But what if cros-camera-service only broken when we start the camera? For that case, camera service is available before opening CCA but will never be able to stream so tests still fail. And we already have such check in the codes [1].\n\nHow about we wrap this check by \"if upstart.JobExists(ctx, \"cros-camera\")\" as [1] does so that it won\u0027t fail for fake camera case?\n\n[1]: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/camera/cca/cca.go;rcl\u003d95f1681b614e10f874eee1ae4250799e0af1a6af;l\u003d256",
+      "parentUuid": "394b2162_af31c467",
+      "revId": "95f1681b614e10f874eee1ae4250799e0af1a6af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
