@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acc7de46_1e7840fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-22T08:44:49Z",
+      "side": 1,
+      "message": "LGTM %nit",
+      "revId": "55af5c84008a8f820a1e0bf5ae42ea950ab15e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "509614f1_ad47d981",
+        "filename": "src/chromiumos/tast/local/camera/testutil/test_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-22T08:44:49Z",
+      "side": 1,
+      "message": "I am not a big fun of bools in functions - they obfuscate the api usage:\ntb, err :\u003d testutil.NewTestBridge(ctx, cr, false)\n\nthat call is clear for whoever wrote it but me looking at that suggest this function does 2 things depending on a flag.\n\nIMHO would be better to have it like:\n//pseudo code\ntb, err :\u003d testutil.NewTestBridge(ctx, cr, test_tridge.UseFakeCamera)\ntb, err :\u003d testutil.NewTestBridge(ctx, cr, test_tridge.UseRealCamera)\n\nThoughts?",
+      "revId": "55af5c84008a8f820a1e0bf5ae42ea950ab15e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
