@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24a850ba_d8e0ba03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-03-22T16:29:37Z",
+      "side": 1,
+      "message": "\u003e TEST\u003d`tast list \u003cdut\u003e \u0027(\"group:camera-arc-functional\")\u0027\n\nShould it be \u0027(\"group:arc-functional\")\u0027? Please make sure the number of the tests are the same.\n\nAlso, please check my comment on guest_play_store.go.\n\nI am not a tast_owner in the tast_test repo. This CL needs an owner approval. Please press \"FIND OWNERS\" link to find an owner for this CL.\n\n\n\n",
+      "revId": "da43accc1d666b859178df4ee48d8aea0900a8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a79e82_182f593a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/guest_play_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-03-22T16:29:37Z",
+      "side": 1,
+      "message": "Change should be in the Attr field, right?",
+      "revId": "da43accc1d666b859178df4ee48d8aea0900a8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
