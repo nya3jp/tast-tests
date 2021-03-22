@@ -81,8 +81,36 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("No primary display is found")
 	}
 
-	shelfInfo, err := ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ShelfState{})
-	if err != nil {
+	// It turns out that the shelf icon bounds are not stable, and the test
+	// will fail when it refers to an old bounds.  Waiting for the icons bounds
+	// to be stable.
+	var shelfInfo *ash.ScrollableShelfInfoClass
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		gotShelfInfo, err := ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ShelfState{})
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to fetch scrollable shelf info"))
+		}
+		// Will update shelfInfo anyways.
+		defer func() {
+			shelfInfo = gotShelfInfo
+		}()
+		// For the first invocation, it just return failure and update shelfInfo.
+		if shelfInfo == nil {
+			return errors.New("still waiting for shelf icon bounds to be stable")
+		}
+		// Check if the icon bounds are same from the previous run, and reports
+		// an error when some bounds are different.
+		if len(shelfInfo.IconsBoundsInScreen) != len(gotShelfInfo.IconsBoundsInScreen) {
+			return errors.New("number of icons is different")
+		}
+		for i, iconBounds := range shelfInfo.IconsBoundsInScreen {
+			gotBounds := gotShelfInfo.IconsBoundsInScreen[i]
+			if *iconBounds != *gotBounds {
+				return errors.Errorf("%d-th icon bounds different: got %+v want %+v", i, *gotBounds, *iconBounds)
+			}
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: time.Second}); err != nil {
 		s.Fatal("Failed to fetch scrollable shelf info: ", err)
 	}
 
