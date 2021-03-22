@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca1aa868_a7ee3282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-22T06:05:32Z",
+      "side": 1,
+      "message": "IIRC when shenghao@ created this, it uses fake camera mainly for portrait mode. But it does not work because portrait mode requires cros-camera service.\n\nI think for now we can simply switch to real camera in this test. For portrait mode testing, I think camerabox or a cros-camera level fake camera is required.",
+      "parentUuid": "279a298d_32176b85",
+      "range": {
+        "startLine": 33,
+        "startChar": 44,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "c4c62e88ce10a259cf11e0339d9e6a86530ab1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc1c85bb_38ba19e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
         "patchSetId": 1
