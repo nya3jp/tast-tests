@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="org.chromium.arc.testapp.dragdrop.DragSourceActivity">
+    <TextView android:id="@+id/drag_area"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="@string/drag_area"
+              android:gravity="center"
+              android:textSize="32sp"
+              android:background="#cccccc"></TextView>
+</LinearLayout>
