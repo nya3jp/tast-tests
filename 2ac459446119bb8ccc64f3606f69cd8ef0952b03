@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835cb5a2_af254626",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-22T18:31:28Z",
+      "side": 1,
+      "message": "nit: crbug is not a valid bug component, use chromium.\ni.e.\n\n  crbug:1144356 -\u003e chromium:1144356",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "2ac459446119bb8ccc64f3606f69cd8ef0952b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cdc45d0_4443e00d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-22T18:31:28Z",
+      "side": 1,
+      "message": "lgtm % one nit",
+      "revId": "2ac459446119bb8ccc64f3606f69cd8ef0952b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
