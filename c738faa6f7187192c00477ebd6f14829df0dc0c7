@@ -39,6 +39,30 @@
       },
       "revId": "c738faa6f7187192c00477ebd6f14829df0dc0c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f93c0631_efeaa534",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-22T18:27:43Z",
+      "side": 1,
+      "message": "I tried this and presubmit won\u0027t allow it:\n\nRemote package should not import local package chromiumos/tast/local/firmware",
+      "parentUuid": "aa5c9f53_669a5e53",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "c738faa6f7187192c00477ebd6f14829df0dc0c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
