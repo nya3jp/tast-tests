@@ -52,6 +52,24 @@
       "parentUuid": "46cebc95_2585790c",
       "revId": "95f1681b614e10f874eee1ae4250799e0af1a6af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "690ed1ca_7457d297",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-22T03:59:46Z",
+      "side": 1,
+      "message": "I agree that after v3 migration, we might assume that all builders have \"cros-camera\" service on them.\n\nHowever, as you said, fake camera should not touch \"cros-camera\" service at all. Therefore, for \".fake\" variant, ideally we should not ensure \"cros-camera\" service is running in [1] to avoid failing \".fake\" variant for broken \"cros-camera\" service.\n\nAnd if \".fake\" variant fails to stream, it is unlikely has anything to do with \"cros-camera\" service but maybe something broken in Chrome camera stack instead. As a result, I think we don\u0027t need to check \"cros-camera\" service is running here either.\n\nIn conclusion, I think maybe we can change it as following:\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nfunc Init() {\n  // ...\n  if (!usingFakeCamera) {\n    ensureCrosCameraServiceRunning();\n  }\n}\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nfunc checkVideoState() {\n  // ...\n  if (failedToStream) {\n    if (!usingFakeCamera) {\n      checkCrosCameraServiceRunning()\n      return \n    }\n    reportGeneralError()\n  }\n}",
+      "parentUuid": "b82ca7fa_bef687ff",
+      "revId": "95f1681b614e10f874eee1ae4250799e0af1a6af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
