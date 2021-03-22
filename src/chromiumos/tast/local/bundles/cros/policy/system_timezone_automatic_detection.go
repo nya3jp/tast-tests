@@ -50,36 +50,43 @@ func SystemTimezoneAutomaticDetection(ctx context.Context, s *testing.State) {
 		wantRestriction ui.RestrictionState
 		// selectedOption is the selected state for timezone detection.
 		selectedOption string
+		// selectedDetection is the state for timezone detection.
+		selectedDetection string
 	}{
 		{
-			name:            "all",
-			value:           &policy.SystemTimezoneAutomaticDetection{Val: 4},
-			wantRestriction: ui.RestrictionDisabled,
-			selectedOption:  "Set automatically",
+			name:              "all",
+			value:             &policy.SystemTimezoneAutomaticDetection{Val: 4},
+			wantRestriction:   ui.RestrictionDisabled,
+			selectedOption:    "Set automatically",
+			selectedDetection: "Use Wi-Fi or mobile networks to determine location",
 		},
 		{
-			name:            "wifi",
-			value:           &policy.SystemTimezoneAutomaticDetection{Val: 3},
-			wantRestriction: ui.RestrictionDisabled,
-			selectedOption:  "Set automatically",
+			name:              "wifi",
+			value:             &policy.SystemTimezoneAutomaticDetection{Val: 3},
+			wantRestriction:   ui.RestrictionDisabled,
+			selectedOption:    "Set automatically",
+			selectedDetection: "Use only Wi-Fi to determine location",
 		},
 		{
-			name:            "ip",
-			value:           &policy.SystemTimezoneAutomaticDetection{Val: 2},
-			wantRestriction: ui.RestrictionDisabled,
-			selectedOption:  "Set automatically",
+			name:              "ip",
+			value:             &policy.SystemTimezoneAutomaticDetection{Val: 2},
+			wantRestriction:   ui.RestrictionDisabled,
+			selectedOption:    "Set automatically",
+			selectedDetection: "Use your IP address to determine location (default)",
 		},
 		{
-			name:            "never",
-			value:           &policy.SystemTimezoneAutomaticDetection{Val: 1},
-			wantRestriction: ui.RestrictionDisabled,
-			selectedOption:  "Choose from list",
+			name:              "never",
+			value:             &policy.SystemTimezoneAutomaticDetection{Val: 1},
+			wantRestriction:   ui.RestrictionDisabled,
+			selectedOption:    "Choose from list",
+			selectedDetection: "Automatic time zone detection is disabled",
 		},
 		{
-			name:            "user",
-			value:           &policy.SystemTimezoneAutomaticDetection{Val: 0},
-			wantRestriction: ui.RestrictionNone,
-			selectedOption:  "Set automatically",
+			name:              "user",
+			value:             &policy.SystemTimezoneAutomaticDetection{Val: 0},
+			wantRestriction:   ui.RestrictionNone,
+			selectedOption:    "Set automatically",
+			selectedDetection: "Use your IP address to determine location (default)",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -125,7 +132,18 @@ func SystemTimezoneAutomaticDetection(ctx context.Context, s *testing.State) {
 				s.Error("Unexpected settings state: ", err)
 			}
 
-			// TODO(crbug.com/1190753): Add check for the selected method.
+			// Check the currently selected detection mode.
+			text, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
+				Name: "Time zone detection method",
+			}, 15*time.Second)
+			if err != nil {
+				s.Fatal("Could not find current detection mode: ", err)
+			}
+			defer text.Release(ctx)
+
+			if text.Value != param.selectedDetection {
+				s.Errorf("Invalid detection mode: got %q; want %q", text.Value, param.selectedDetection)
+			}
 		})
 	}
 }
