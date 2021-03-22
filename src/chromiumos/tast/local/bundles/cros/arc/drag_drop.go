@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -16,6 +15,7 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
@@ -52,10 +52,6 @@ func DragDrop(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to copy extension %s: %v", name, err)
 		}
 	}
-	extID, err := chrome.ComputeExtensionID(extDir)
-	if err != nil {
-		s.Fatalf("Failed to compute extension ID for %v: %v", extDir, err)
-	}
 
 	s.Log("Starting browser instance")
 	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir), chrome.ARCEnabled())
@@ -67,19 +63,6 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
-	}
-
-	s.Log("Connecting to extension background page")
-	bgURL := chrome.ExtensionBackgroundPageURL(extID)
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
-	if err != nil {
-		s.Fatalf("Could not connect to extension at %v: %v", bgURL, err)
-	}
-	defer conn.Close()
-
-	var deviceScaleRatio json.Number
-	if err := conn.Eval(ctx, "window.devicePixelRatio", &deviceScaleRatio); err != nil {
-		s.Fatal("window.devicePixelRatio API unavailable: ", err)
 	}
 
 	a, err := arc.New(ctx, s.OutDir())
@@ -95,9 +78,9 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	defer d.Close(ctx)
 
 	const (
-		apk             = "ArcDragDropTest.apk"
-		pkg             = "org.chromium.arc.testapp.dragdrop"
-		startupActivity = "org.chromium.arc.testapp.dragdrop.StartupActivity"
+		apk          = "ArcDragDropTest.apk"
+		pkg          = "org.chromium.arc.testapp.dragdrop"
+		activityName = "org.chromium.arc.testapp.dragdrop.DragDropActivity"
 	)
 
 	s.Log("Installing app")
@@ -106,19 +89,44 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting app")
-	act, err := arc.NewActivity(a, pkg, startupActivity)
+	act, err := arc.NewActivity(a, pkg, activityName)
 	if err != nil {
 		s.Fatal("Failed to create a new activity: ", err)
 	}
 	defer act.Close()
 
-	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{"--ef", "DEVICE_SCALE_FACTOR", deviceScaleRatio.String()}); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the activity: ", err)
 	}
 	defer act.Stop(ctx, tconn)
 
-	srcPoint := coords.Point{X: 450, Y: 150}
-	dstPoint := coords.Point{X: 150, Y: 150}
+	window, err := ash.FindWindow(ctx, tconn, func(window *ash.Window) bool {
+		return window.ARCPackageName == pkg
+	})
+	if err != nil {
+		s.Fatal("Failed to find the ARC window: ", err)
+	}
+
+	if err := act.SetWindowState(ctx, tconn, arc.WindowStateNormal); err != nil {
+		s.Fatal("Failed to set the window state to normal: ", err)
+	}
+
+	if err := ash.WaitForCondition(ctx, tconn, func(cur *ash.Window) bool {
+		return cur.ID == window.ID && cur.State == ash.WindowStateNormal && !cur.IsAnimating
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for the window to finish animating: ", err)
+	}
+
+	wantBounds := coords.Rect{0, 0, 500, 500}
+
+	if gotBounds, _, err := ash.SetWindowBounds(ctx, tconn, window.ID, wantBounds, window.DisplayID); err != nil {
+		s.Fatal("Failed to set window bounds: ", err)
+	} else if gotBounds != wantBounds {
+		s.Fatalf("Failed to resize the activity: got %v; want %v", gotBounds, wantBounds)
+	}
+
+	srcPoint := coords.Point{X: 750, Y: 250}
+	dstPoint := coords.Point{X: 250, Y: 250}
 	if err := mouse.Drag(ctx, tconn, srcPoint, dstPoint, time.Second); err != nil {
 		s.Fatal("Failed to send drag events: ", err)
 	}
