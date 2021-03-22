@@ -109,7 +109,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	d := s.PreValue().(arc.PreData)
 	a := d.ARC
 	cr := d.Chrome
-	tb, err := testutil.NewTestBridge(ctx, cr)
+	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}

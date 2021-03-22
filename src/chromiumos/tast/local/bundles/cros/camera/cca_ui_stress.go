@@ -39,23 +39,27 @@ func init() {
 			ExtraAttr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 			Pre:               chrome.LoggedIn(),
 			Timeout:           5 * time.Minute,
+			Val:               testutil.UseRealCamera,
 		}, {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},
 			ExtraAttr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 			Pre:               chrome.LoggedIn(),
 			Timeout:           5 * time.Minute,
+			Val:               testutil.UseVividCamera,
 		}, {
 			Name:      "fake",
 			ExtraAttr: []string{"group:mainline", "informational", "group:camera-libcamera"},
 			Pre:       testutil.ChromeWithFakeCamera(),
 			Timeout:   5 * time.Minute,
+			Val:       testutil.UseFakeCamera,
 		}, {
 			// For stress testing manually with real camera and longer timeout.
 			Name:              "manual",
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
 			Pre:               chrome.LoggedIn(),
 			Timeout:           30 * 24 * time.Hour,
+			Val:               testutil.UseRealCamera,
 		}},
 	})
 }
@@ -97,7 +101,7 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr)
+	tb, err := testutil.NewTestBridge(ctx, cr, s.Param().(testutil.UseCameraType))
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
