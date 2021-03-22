@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"encoding/json"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -16,6 +15,7 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
@@ -77,11 +77,6 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	var deviceScaleRatio json.Number
-	if err := conn.Eval(ctx, "window.devicePixelRatio", &deviceScaleRatio); err != nil {
-		s.Fatal("window.devicePixelRatio API unavailable: ", err)
-	}
-
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Could not start ARC: ", err)
@@ -97,7 +92,7 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	const (
 		apk             = "ArcDragDropTest.apk"
 		pkg             = "org.chromium.arc.testapp.dragdrop"
-		startupActivity = "org.chromium.arc.testapp.dragdrop.StartupActivity"
+		startupActivity = "org.chromium.arc.testapp.dragdrop.DragDropActivity"
 	)
 
 	s.Log("Installing app")
@@ -112,13 +107,28 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{"--ef", "DEVICE_SCALE_FACTOR", deviceScaleRatio.String()}); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the activity: ", err)
 	}
 	defer act.Stop(ctx, tconn)
 
-	srcPoint := coords.Point{X: 450, Y: 150}
-	dstPoint := coords.Point{X: 150, Y: 150}
+	window, err := ash.FindWindow(ctx, tconn, func(window *ash.Window) bool {
+		return window.ARCPackageName == pkg
+	})
+	if err != nil {
+		s.Fatal("Failed to find the ARC window: ", err)
+	}
+
+	wantBounds := coords.Rect{0, 0, 500, 500}
+
+	if gotBounds, _, err := ash.SetWindowBounds(ctx, tconn, window.ID, wantBounds, window.DisplayID); err != nil {
+		s.Fatal("Failed to set window bounds: ", err)
+	} else if gotBounds != wantBounds {
+		s.Fatalf("Failed to resize the activity: got %v; want %v", gotBounds, wantBounds)
+	}
+
+	srcPoint := coords.Point{X: 750, Y: 250}
+	dstPoint := coords.Point{X: 250, Y: 250}
 	if err := mouse.Drag(ctx, tconn, srcPoint, dstPoint, time.Second); err != nil {
 		s.Fatal("Failed to send drag events: ", err)
 	}
