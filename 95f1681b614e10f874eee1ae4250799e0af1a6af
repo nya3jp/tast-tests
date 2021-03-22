@@ -34,6 +34,24 @@
       "parentUuid": "394b2162_af31c467",
       "revId": "95f1681b614e10f874eee1ae4250799e0af1a6af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82ca7fa_bef687ff",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-03-22T03:41:48Z",
+      "side": 1,
+      "message": "Hmm thanks for the explanation. After a second thought I think the original approach is ok. Given we ensured cros-camera is running in Init(), it\u0027s quite unlikely it will fail CheckJob() here when using fake camera, which does not touch cros-camera at all.\n\nI am thinking the other side: Is there any case that cros-camera job does not exist in builder that runs Tast? Maybe we can remove the check in [1] you pointed as part of the HALv1 cleanup effort?",
+      "parentUuid": "46cebc95_2585790c",
+      "revId": "95f1681b614e10f874eee1ae4250799e0af1a6af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
