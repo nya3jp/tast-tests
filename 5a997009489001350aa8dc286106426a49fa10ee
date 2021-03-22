@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfaf0497_c801fb1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-22T19:23:07Z",
+      "side": 1,
+      "message": "Thanks Shuhei for the review. I\u0027ve compiled the responses and code changes from the team and am making responses for all the video chat related CLs. Please check.",
+      "revId": "5a997009489001350aa8dc286106426a49fa10ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
