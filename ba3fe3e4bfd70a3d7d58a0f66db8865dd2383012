@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "860a5cf1_bdfb5120",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-22T03:41:51Z",
+      "side": 1,
+      "message": "vkb.NewContext(p.cr, p.tconn) is defined twice in this function, however the cr instance can be different. If it is predefined ahead, p.cr might be nil.",
+      "parentUuid": "12d28941_f729d381",
+      "range": {
+        "startLine": 160,
+        "startChar": 17,
+        "endLine": 160,
+        "endChar": 42
+      },
+      "revId": "ba3fe3e4bfd70a3d7d58a0f66db8865dd2383012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80bea026_50dce077",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-03-21T23:06:01Z",
       "side": 1,
       "message": "vkbCtx.ui",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 32
+      },
+      "revId": "ba3fe3e4bfd70a3d7d58a0f66db8865dd2383012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9cef1cc_1f54af47",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-22T03:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80bea026_50dce077",
       "range": {
         "startLine": 131,
         "startChar": 8,
