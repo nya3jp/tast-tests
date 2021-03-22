@@ -16,6 +16,46 @@
       "message": "Hi Renuga,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "2e07cb110f73ea134a87e5b18826f8eb769d0e22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dfdce72_80ea53c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-22T19:41:26Z",
+      "side": 1,
+      "message": "Adding takise@ to review for the feature side.",
+      "revId": "2e07cb110f73ea134a87e5b18826f8eb769d0e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a3253da_61c4fc97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-22T19:41:26Z",
+      "side": 1,
+      "message": "Can this be refactored for better readability (May be with switch Case?).",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 2
+      },
+      "revId": "2e07cb110f73ea134a87e5b18826f8eb769d0e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
