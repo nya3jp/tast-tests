@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76a49071_8508002b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-22T13:21:20Z",
+      "side": 1,
+      "message": "Use backticks to raw string.\n    `^ERROR:`",
+      "revId": "1f487dc8e1124199bdf638ee286f05a5a3c402b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "def3d089_c0683199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-22T13:21:20Z",
+      "side": 1,
+      "message": "Do you mind add testexec.DumpLogOnError here?\n\ncmd.Run(testexec.DumpLogOnError)",
+      "revId": "1f487dc8e1124199bdf638ee286f05a5a3c402b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df267c7_7ef8a882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-22T13:21:20Z",
+      "side": 1,
+      "message": "Can you also check\n\"[  FAILED  ] atomictest.orientation\"\nand surface the actual subtest failure?",
+      "revId": "1f487dc8e1124199bdf638ee286f05a5a3c402b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
