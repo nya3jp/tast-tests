@@ -770,3 +770,45 @@ func (p *Chaps) ReplayWifiBySlot(ctx context.Context, slot int, args ...string) 
 	}
 	return nil
 }
+
+// SlotInfo stores the information for a particular slot in chaps.
+type SlotInfo struct {
+	// The PKCS#11 token slot index.
+	slotIndex int
+
+	// The PKCS#11 token label.
+	tokenLabel string
+}
+
+// ListSlots lists the slots in chaps
+func (p *Chaps) ListSlots(ctx context.Context) ([]SlotInfo, error) {
+	const (
+		slotPrefix       = "Slot"
+		tokenLabelPrefix = "  token label"
+	)
+	data, err := p.RunPkcs11Tool(ctx, "--list-slots")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to list slots")
+	}
+
+	var result []SlotInfo
+	for _, s := range strings.Split(string(data), "\n") {
+		if strings.HasPrefix(s, slotPrefix) {
+			result = append(result, SlotInfo{})
+			if _, err := fmt.Sscanf(s, "Slot %d", &result[len(result)-1].slotIndex); err != nil {
+				return nil, errors.Wrapf(err, "failed to parse slot name %q", s)
+			}
+		} else if strings.HasPrefix(s, tokenLabelPrefix) {
+			if len(result) < 1 {
+				return nil, errors.Wrap(err, "label appeared before slot index")
+			}
+			n := strings.Index(s, ":")
+			if n == -1 {
+				return nil, errors.Wrapf(err, "failed to parse slot name %q", s)
+			}
+			result[len(result)-1].tokenLabel = s[n+2:]
+		}
+	}
+
+	return result, nil
+}
