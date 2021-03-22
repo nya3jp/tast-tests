@@ -31,20 +31,22 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
 			Val:     lacros.ChromeTypeChromeOS,
 			Fixture: "chromeLoggedIn",
+			Timeout: 7 * time.Minute,
 		}, {
 			Name:    "skia_renderer",
 			Val:     lacros.ChromeTypeChromeOS,
 			Fixture: "chromeLoggedInWith100FakeAppsSkiaRenderer",
+			Timeout: 7 * time.Minute,
 		}, {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
 			Fixture:           "lacrosStartedByData",
 			ExtraData:         []string{launcher.DataArtifact},
 			ExtraSoftwareDeps: []string{"lacros"},
+			Timeout:           10 * time.Minute,
 		}},
 		Data: []string{"animation.html", "animation.js"},
 	})
@@ -88,13 +90,15 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	defer server.Close()
 	url := server.URL + "/animation.html"
 
-	r := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr)
 	currentWindows := 0
 	// Run the overview mode enter/exit flow for various situations.
 	// - change the number of browser windows, 2 or 8
 	// - the window system status; clamshell mode with maximized windows,
 	//   clamshell mode with normal windows, tablet mode with maximized
-	//   windows, or tablet mode with minimized windows (the home screen).
+	//   windows, tablet mode with minimized windows (the home screen),
+	//   tablet split view with maximized overview windows, or tablet
+	//   split view with minimized overview windows.
 	// If these window number values are changed, make sure to check lacros about:blank pages are closed correctly.
 	for i, windows := range []int{2, 8} {
 		if err := ash.CreateWindows(ctx, tconn, cs, url, windows-currentWindows); err != nil {
@@ -110,33 +114,75 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 
 		currentWindows = windows
 
-		for _, test := range []struct {
-			histogramSuffix string
-			tablet          bool
-			windowState     ash.WindowStateType
-		}{
+		type testCase struct {
+			histogramSuffix     string
+			extraDescriptionFmt string
+			tablet              bool
+			overviewWindowState ash.WindowStateType
+			splitView           bool
+		}
+		tests := []testCase{
 			{
-				histogramSuffix: "SingleClamshellMode",
-				tablet:          false,
-				windowState:     ash.WindowStateMaximized,
+				histogramSuffix:     "SingleClamshellMode",
+				extraDescriptionFmt: "%dwindows",
+				tablet:              false,
+				overviewWindowState: ash.WindowStateMaximized,
+				splitView:           false,
 			},
 			{
-				histogramSuffix: "ClamshellMode",
-				tablet:          false,
-				windowState:     ash.WindowStateNormal,
+				histogramSuffix:     "ClamshellMode",
+				extraDescriptionFmt: "%dwindows",
+				tablet:              false,
+				overviewWindowState: ash.WindowStateNormal,
+				splitView:           false,
 			},
 			{
-				histogramSuffix: "TabletMode",
-				tablet:          true,
-				windowState:     ash.WindowStateMaximized,
+				histogramSuffix:     "TabletMode",
+				extraDescriptionFmt: "%dwindows",
+				tablet:              true,
+				overviewWindowState: ash.WindowStateMaximized,
+				splitView:           false,
 			},
 			{
-				histogramSuffix: "MinimizedTabletMode",
-				tablet:          true,
-				windowState:     ash.WindowStateMinimized,
+				histogramSuffix:     "MinimizedTabletMode",
+				extraDescriptionFmt: "%dwindows",
+				tablet:              true,
+				overviewWindowState: ash.WindowStateMinimized,
+				splitView:           false,
 			},
-		} {
-			extraDescription := fmt.Sprintf("%dwindows", windows)
+		}
+		// In the split view cases, two windows will be snapped. If there
+		// are three or more, the rest may be maximized or minimized.
+		if windows >= 3 {
+			tests = append(tests,
+				testCase{
+					histogramSuffix:     "SplitView",
+					extraDescriptionFmt: "%dwindowsincludingmaximizedoverviewwindows",
+					tablet:              true,
+					overviewWindowState: ash.WindowStateMaximized,
+					splitView:           true,
+				},
+				testCase{
+					histogramSuffix:     "SplitView",
+					extraDescriptionFmt: "%dwindowsincludingminimizedoverviewwindows",
+					tablet:              true,
+					overviewWindowState: ash.WindowStateMinimized,
+					splitView:           true,
+				},
+			)
+		} else {
+			tests = append(tests,
+				testCase{
+					histogramSuffix:     "SplitView",
+					extraDescriptionFmt: "%dwindows",
+					tablet:              true,
+					overviewWindowState: ash.WindowStateMaximized,
+					splitView:           true,
+				},
+			)
+		}
+		for _, test := range tests {
+			extraDescription := fmt.Sprintf(test.extraDescriptionFmt, windows)
 			fullDescription := fmt.Sprintf("%s-%s", test.histogramSuffix, extraDescription)
 			if err := ash.SetTabletModeEnabled(ctx, tconn, test.tablet); err != nil {
 				s.Logf("Skipping the case of %s as it failed to set tablet mode %v: %v", fullDescription, test.tablet, err)
@@ -144,9 +190,28 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 			}
 
 			if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-				return ash.SetWindowStateAndWait(ctx, tconn, w.ID, test.windowState)
+				return ash.SetWindowStateAndWait(ctx, tconn, w.ID, test.overviewWindowState)
 			}); err != nil {
-				s.Fatalf("Failed to set all windows to state %v: %v", test.windowState, err)
+				s.Fatalf("Failed to set all windows to state %v: %v", test.overviewWindowState, err)
+			}
+
+			if test.splitView {
+				ws, err := ash.GetAllWindows(ctx, tconn)
+				if err != nil {
+					s.Fatal("Failed to get windows: ", err)
+				}
+
+				if len(ws) == 0 {
+					s.Fatal("Found no windows")
+				}
+
+				if err := ash.SetWindowStateAndWait(ctx, tconn, ws[0].ID, ash.WindowStateLeftSnapped); err != nil {
+					s.Fatal("Failed to snap window: ", err)
+				}
+
+				if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+					s.Fatal("Failed to exit overview: ", err)
+				}
 			}
 
 			// Wait for 3 seconds to stabilize the result. Note that this doesn't
@@ -157,7 +222,15 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to wait: ", err)
 			}
 
-			r.RunMultiple(ctx, s, fullDescription, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+			histograms := []string{"Ash.Overview.AnimationSmoothness.Enter." + test.histogramSuffix}
+			// The overview exit animation does not include the window being
+			// activated. So Ash.Overview.AnimationSmoothness.Exit.SplitView
+			// requires at least three windows: one snapped, one being
+			// activated, and one in the overview exit animation.
+			if !test.splitView || windows >= 3 {
+				histograms = append(histograms, "Ash.Overview.AnimationSmoothness.Exit."+test.histogramSuffix)
+			}
+			runner.RunMultiple(ctx, s, fullDescription, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 				if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 					return errors.Wrap(err, "failed to enter into the overview mode")
 				}
@@ -166,13 +239,12 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				}
 				return nil
 			},
-				"Ash.Overview.AnimationSmoothness.Enter."+test.histogramSuffix,
-				"Ash.Overview.AnimationSmoothness.Exit."+test.histogramSuffix),
+				histograms...),
 				perfutil.StoreAll(perf.BiggerIsBetter, "percent", extraDescription))
 		}
 	}
 
-	if err := r.Values().Save(ctx, s.OutDir()); err != nil {
+	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
 }
