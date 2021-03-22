@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "721e55ad_77d0c584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/flipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-22T18:14:35Z",
+      "side": 1,
+      "message": "Hi, This is different from line 272. So it is needed here. Thanks.",
+      "parentUuid": "35a26447_780b5de8",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 21
+      },
+      "revId": "2d46813bf214726b3a69875586e97e77c171c847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de177cfc_d7932200",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-20T00:03:58Z",
       "side": 1,
       "message": "As the previous polls already ensures that clickOnSelectSignOut exists, can we skip this?.",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 2
+      },
+      "revId": "2d46813bf214726b3a69875586e97e77c171c847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c84ecbb_8fc2677a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/flipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-22T18:14:35Z",
+      "side": 1,
+      "message": "Hi, This is different from line 272. So it is needed here. Thanks.",
+      "parentUuid": "de177cfc_d7932200",
       "range": {
         "startLine": 285,
         "startChar": 0,
