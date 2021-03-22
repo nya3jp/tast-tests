@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b821609d_1f0a1a3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-22T19:54:36Z",
+      "side": 1,
+      "message": "Hey! Could you PTAL. \n\nPlease also let me know if there is a better way to avoid duplication of some that code. ",
+      "revId": "af6fcbb05674eb52c06b279f2e87e1b6321cf1b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
