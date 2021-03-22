@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "239b5513_f6e28362",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-22T19:26:14Z",
+      "side": 1,
+      "message": "Simplified the test parameters by remove \"clamshell\" or \"tablet\" indicators and use the DUT default screenmode to do the testing. (Aligned with other CUJs). Also removed the var definition from test cases to services.",
+      "revId": "1d7829ce0a79a43e1dc2e2edf6d896e4a195d4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
