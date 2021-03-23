@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3187537_4f3e5648",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-03-23T03:51:30Z",
+      "side": 1,
+      "message": "Thanks for the patch! Deferring to Hugo for approval.\nSo will the virtual Ethernet become the default physical service after this patch?",
+      "revId": "6a253858fe13bc6127dca7914d789f697c77698c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2475ed6_1b61acf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-03-23T03:51:30Z",
+      "side": 1,
+      "message": "nit: end with period",
+      "range": {
+        "startLine": 114,
+        "startChar": 72,
+        "endLine": 114,
+        "endChar": 73
+      },
+      "revId": "6a253858fe13bc6127dca7914d789f697c77698c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
