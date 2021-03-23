@@ -62,7 +62,7 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to right click the input element: ", err)
 	}
 
-	emojiMenuElement, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Emoji"}, 5*time.Second)
+	emojiMenuElement, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Emoji Search+Shift+Space"}, 5*time.Second)
 	if err != nil {
 		s.Fatal("Failed to find Emoji menu item: ", err)
 	}
