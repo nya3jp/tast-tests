@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd096509_ed3d5ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-23T00:35:42Z",
+      "side": 1,
+      "message": "you are ignoring the previous error. \"IsFocused\" could fail for different reasons... one could be context timeout for example.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/android/ui/object.go;l\u003d361\n\nA better message could be:\n\n  if .... ; err !\u003d nil {\n    return errors.Wrap(err, \"failed to call IsFocused\") \n  }\n\n... or something like that.",
+      "parentUuid": "293ca9f9_fc4190a0",
+      "range": {
+        "startLine": 127,
+        "startChar": 20,
+        "endLine": 127,
+        "endChar": 56
+      },
+      "revId": "2fedff7a8321a9b0a0c2d63ffdee406640369e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "811aafbb_26fbec42",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
         "patchSetId": 2
