@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b861bc2_d86cd77c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-23T02:04:46Z",
+      "side": 1,
+      "message": "Is this pointer controller specific to this test group, or something that should be moved into uiauto?",
+      "range": {
+        "startLine": 190,
+        "startChar": 13,
+        "endLine": 190,
+        "endChar": 20
+      },
+      "revId": "4e393df3533f56d0e6a0e6530de1ade84a4674db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42315721_d5a18e97",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-23T02:04:46Z",
+      "side": 1,
+      "message": "It isn\u0027t clear what this is the n-th of, perhaps n-th node matching the Finder? Same below",
+      "range": {
+        "startLine": 251,
+        "startChar": 43,
+        "endLine": 251,
+        "endChar": 52
+      },
+      "revId": "4e393df3533f56d0e6a0e6530de1ade84a4674db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
