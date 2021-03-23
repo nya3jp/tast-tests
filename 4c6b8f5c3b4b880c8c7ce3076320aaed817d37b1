@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "800d5175_bbdfbf37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-03-23T06:51:34Z",
+      "side": 1,
+      "message": "Add to new test in for companion DUTs in order to test tast with \n\n-build\u003dfalse -downloadprivatebundles\u003dtrue\n\nIt will not be run in any CQ or stainless for now.\n",
+      "revId": "4c6b8f5c3b4b880c8c7ce3076320aaed817d37b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
