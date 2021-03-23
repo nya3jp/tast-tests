@@ -9,7 +9,7 @@ import (
 	"regexp"
 	"unicode/utf8"
 
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/testing"
 )
 

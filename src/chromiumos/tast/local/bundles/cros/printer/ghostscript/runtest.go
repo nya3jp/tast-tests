@@ -12,8 +12,8 @@ import (
 	"os"
 	"path/filepath"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/printer/lpprint"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

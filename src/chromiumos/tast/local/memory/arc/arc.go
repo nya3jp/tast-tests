@@ -7,10 +7,10 @@ package arc
 import (
 	"context"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/memory"
-	"chromiumos/tast/local/testexec"
 )
 
 // NewPageReclaimLimit creates a memory.Limit that measures if ARC is reclaiming

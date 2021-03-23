@@ -21,8 +21,8 @@ import (
 	"boringssl.googlesource.com/boringssl/util/fipstools/acvp/acvptool/acvp"
 	"boringssl.googlesource.com/boringssl/util/fipstools/acvp/acvptool/subprocess"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )

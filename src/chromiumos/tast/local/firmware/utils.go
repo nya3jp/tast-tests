@@ -15,8 +15,8 @@ import (
 
 	"golang.org/x/net/context"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 // rePartition finds the partition number at the end of a device name.

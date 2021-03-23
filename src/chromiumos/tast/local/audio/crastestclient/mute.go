@@ -8,7 +8,7 @@ package crastestclient
 import (
 	"context"
 
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/common/testexec"
 )
 
 // Mute lets DUT be muted. That is, after Mute() is done, DUT doesn't sound when a video plays.

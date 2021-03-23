@@ -16,10 +16,10 @@ import (
 	"github.com/golang/protobuf/proto"
 	"golang.org/x/sys/unix"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/local/testexec"
 )
 
 const (

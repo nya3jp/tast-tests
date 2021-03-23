@@ -19,11 +19,11 @@ import (
 	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

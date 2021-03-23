@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -21,7 +22,6 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/printing/usbprinter"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

@@ -8,7 +8,7 @@ import (
 	"context"
 	"io/ioutil"
 
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/testing"
 )
 

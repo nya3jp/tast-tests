@@ -10,8 +10,8 @@ import (
 	"io/ioutil"
 	"os"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 // LocalVA implements the VA functionality by hwsec-test-va binary.

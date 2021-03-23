@@ -8,9 +8,9 @@ import (
 	"context"
 	"net"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/platform/screenlatency"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

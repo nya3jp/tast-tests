@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/hardware/iio"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

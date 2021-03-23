@@ -11,8 +11,8 @@ import (
 	"path/filepath"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 // GetProfileFromOverrideScript checks existence of dptf_override.sh and calls

@@ -12,9 +12,9 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/firmware"
-	"chromiumos/tast/local/testexec"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )

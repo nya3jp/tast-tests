@@ -11,8 +11,8 @@ import (
 	"regexp"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 // TopRowLayout represents the top row layout of the Chromebook keyboard.

@@ -9,9 +9,9 @@ import (
 	"os"
 
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/filesnapshot"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

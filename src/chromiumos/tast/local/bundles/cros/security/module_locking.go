@@ -13,8 +13,8 @@ import (
 	"path/filepath"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

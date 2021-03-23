@@ -20,12 +20,12 @@ import (
 	"github.com/shirou/gopsutil/process"
 	"golang.org/x/sys/unix"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

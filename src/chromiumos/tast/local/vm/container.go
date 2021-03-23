@@ -18,9 +18,9 @@ import (
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
 	conciergepb "chromiumos/system_api/vm_concierge_proto"
 	"chromiumos/tast/caller"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )

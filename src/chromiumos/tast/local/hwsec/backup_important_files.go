@@ -9,9 +9,9 @@ import (
 	"strings"
 
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/testexec"
 )
 
 const tpmManagerLocalDataBackupPath = "/tmp/tast-system-backup-local_tpm_data"

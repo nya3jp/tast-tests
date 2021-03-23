@@ -10,9 +10,9 @@ import (
 	"os"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

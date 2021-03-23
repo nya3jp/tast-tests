@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )

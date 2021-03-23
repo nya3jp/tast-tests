@@ -19,11 +19,11 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/syslog"
-	"chromiumos/tast/local/testexec"
 )
 
 // TestData contains the values for parameterized tests, such as:

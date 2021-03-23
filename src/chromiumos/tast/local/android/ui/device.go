@@ -16,9 +16,9 @@ import (
 	"net/http"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/adb"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

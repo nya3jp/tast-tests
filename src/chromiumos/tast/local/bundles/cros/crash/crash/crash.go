@@ -19,11 +19,11 @@ import (
 	"syscall"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/syslog"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

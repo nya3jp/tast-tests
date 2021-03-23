@@ -10,8 +10,8 @@ import (
 	"context"
 	"fmt"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 // LogVerbosity indicates whether or not to enable verbose logging for the different bluetooth modules.

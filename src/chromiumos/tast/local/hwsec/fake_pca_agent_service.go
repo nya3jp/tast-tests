@@ -8,8 +8,8 @@ import (
 	"context"
 	"syscall"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 // FakePCAAgent performs the execution and terminiation of the fake pca agent.

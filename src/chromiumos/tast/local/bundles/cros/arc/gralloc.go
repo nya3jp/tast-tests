@@ -10,9 +10,9 @@ import (
 	"path"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

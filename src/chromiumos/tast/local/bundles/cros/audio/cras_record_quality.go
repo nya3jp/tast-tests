@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/audio"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
