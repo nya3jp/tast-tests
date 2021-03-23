@@ -86,6 +86,24 @@
       "message": "dumb question: I forgot why we cannot always get facing from this? IIRC we filled the facing correctly in VCD.",
       "revId": "82b72b4df3779b9b815c5691d3df2c650eac2a34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "448ddef3_716cd8be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-23T04:02:37Z",
+      "side": 1,
+      "message": "According to a comment in CCA [1], it said it might be undefined for external cameras.\n\nBut since we have already migrated all CrOS devices to run v3 stack, ideally all cases will have |deviceOperator| except for fake camera case. For legacy v1 devices without camera config and real external camera devices, they will not enter this branch and should report Facing.EXTERNAL at Line 268.\n\n[1]: https://source.chromium.org/chromium/chromium/src/+/master:chromeos/components/camera_app_ui/resources/js/views/camera/options.js;drc\u003dbad7b6d1c15fc62ca69146b064116c1286f5cf51;l\u003d198",
+      "parentUuid": "c272380f_d0e6cd1e",
+      "revId": "82b72b4df3779b9b815c5691d3df2c650eac2a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
