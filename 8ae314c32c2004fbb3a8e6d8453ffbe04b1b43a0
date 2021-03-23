@@ -185,6 +185,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c3f6f2e_cb57eaa3",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:34:42Z",
+      "side": 1,
+      "message": "s/rename/reorder/",
+      "parentUuid": "4e0494d9_b2bf69b6",
+      "range": {
+        "startLine": 129,
+        "startChar": 17,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "8ae314c32c2004fbb3a8e6d8453ffbe04b1b43a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "208279e7_8e2ed4cf",
         "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
         "patchSetId": 3
