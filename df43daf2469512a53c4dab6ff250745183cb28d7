@@ -152,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f37343_db7fc096",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_results.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-23T05:09:20Z",
+      "side": 1,
+      "message": "I reckon it would be better to put \"chromeos-sw-engprod@google.com\" as owner team like other launcher tests.",
+      "parentUuid": "4e2174f2_f311cfde",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "df43daf2469512a53c4dab6ff250745183cb28d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f56a764c_d5091d32",
