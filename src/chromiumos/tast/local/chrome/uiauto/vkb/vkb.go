@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -124,11 +123,6 @@ func (vkbCtx *VirtualKeyboardContext) IsKeyShown(ctx context.Context, keyName st
 // waiting for the virtual keyboard to appear and stable.
 func (vkbCtx *VirtualKeyboardContext) WaitLocationStable() uiauto.Action {
 	return vkbCtx.ui.WithTimeout(5 * time.Second).WaitForLocation(vkRootFinder)
-}
-
-// Location returns stable location of the virtual keyboard.
-func (vkbCtx *VirtualKeyboardContext) Location(ctx context.Context) (*coords.Rect, error) {
-	return vkbCtx.ui.Location(ctx, vkRootFinder)
 }
 
 // WaitUntilHidden returns an action waiting for the virtual keyboard to hide.

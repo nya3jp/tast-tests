@@ -20,7 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/local/crostini/lxd"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/input"
@@ -70,11 +70,15 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 	customStaticText := nodewith.Name("Custom").Role(role.StaticText).Ancestor(radioGroup)
 	slider := nodewith.Role(role.Slider).Ancestor(installWindow)
 
-	// Hide virtual keyboard if it appears.
-	// vkb.HideVirtualKeyboard invokes Chrome API to force hide virtual keyboard.
-	// It does not throw out error if virtual keyboard is not shown.
-	if err := vkb.NewContext(nil, p.tconn).HideVirtualKeyboard()(ctx); err != nil {
-		return 0, errors.Wrap(err, "failed to hide virtual keyboard")
+	// Check whether the virtual keyboard is shown.
+	virtualkb, err := vkb.IsShown(ctx, p.tconn)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to check whether virtual keyboard is shown")
+	} else if virtualkb {
+		// Hide virtual keyboard.
+		if err := vkb.HideVirtualKeyboard(ctx, p.tconn); err != nil {
+			return 0, errors.Wrap(err, "failed to hide virtual keyboard")
+		}
 	}
 
 	ui := uiauto.New(p.tconn)

@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 	"chromiumos/tast/timing"
@@ -157,7 +157,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			}
 
 			// Hide virtual keyboard in case it is still on screen.
-			if err := vkb.NewContext(p.cr, p.tconn).HideVirtualKeyboard()(ctx); err != nil {
+			if err := vkb.HideVirtualKeyboard(ctx, p.tconn); err != nil {
 				return errors.Wrap(err, "failed to hide virtual keyboard")
 			}
 
@@ -207,7 +207,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	if p.dm == clamshellMode {
 		// Enable a11y virtual keyboard.
-		if err := vkb.NewContext(p.cr, p.tconn).EnableA11yVirtualKeyboard(true)(ctx); err != nil {
+		if err := vkb.EnableA11yVirtualKeyboard(ctx, p.tconn, true); err != nil {
 			return errors.Wrap(err, "failed to enable a11y virtual keyboard")
 		}
 	}
