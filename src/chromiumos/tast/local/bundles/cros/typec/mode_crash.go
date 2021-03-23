@@ -24,6 +24,7 @@ func init() {
 		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
+		Data:         []string{"testcert.p12"},
 		Params: []testing.Param{
 			// For running manually.
 			{
@@ -70,10 +71,11 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("No TBT device connected to DUT")
 	}
 
+	// Get to the Chrome login screen.
 	loadSignInProfileOption := chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey"))
-	cr, err := chrome.New(ctx, loadSignInProfileOption)
+	cr, err := chrome.New(ctx, chrome.DeferLogin(), loadSignInProfileOption)
 	if err != nil {
-		s.Fatal("Failed to start Chrome with sign-in: ", err)
+		s.Fatal("Failed to start Chrome at login screen: ", err)
 	}
 
 	testConn, err := cr.SigninProfileTestAPIConn(ctx)
@@ -81,6 +83,14 @@ func ModeCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get Test API connection: ", err)
 	}
 	defer testConn.Close()
+
+	if err := typecutils.EnablePeripheralDataAccess(ctx, s.DataPath("testcert.p12")); err != nil {
+		s.Fatal("Failed to enable peripheral data access setting: ", err)
+	}
+
+	if err := cr.ContinueLogin(ctx); err != nil {
+		s.Fatal("Failed to login: ", err)
+	}
 
 	s.Log("Verifying that TBT device enumerated correctly")
 	tbtPollOptions := testing.PollOptions{Timeout: 10 * time.Second}
