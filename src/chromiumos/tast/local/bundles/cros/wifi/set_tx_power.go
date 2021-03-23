@@ -36,9 +36,7 @@ func init() {
 
 // These models are known to fail this test, and so we cannot run them as 'critical'. We run them as
 // 'informational', while tracking followup bugs to fix them.
-var badTXPowerModels = []string{
-	"vilboz360", // TODO(b/177684735): Broken, causing CQ issues.
-}
+var badTXPowerModels = []string{}
 
 func SetTXPower(ctx context.Context, s *testing.State) {
 	const setTxPowerExe = "set_wifi_transmit_power"
