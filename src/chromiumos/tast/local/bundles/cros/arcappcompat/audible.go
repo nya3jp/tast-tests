@@ -20,6 +20,7 @@ import (
 // ClamshellTests are placed here.
 var clamshellTestsForAudible = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForAudible},
+	{Name: "Clamshell: Largescreen Layout", Fn: testutil.Largescreenlayout},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
@@ -29,6 +30,7 @@ var clamshellTestsForAudible = []testutil.TestCase{
 // TouchviewTests are placed here.
 var touchviewTestsForAudible = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForAudible},
+	{Name: "Touchview: Largescreen Layout", Fn: testutil.Largescreenlayout},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
