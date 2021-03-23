@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -29,7 +30,7 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"drag_drop_manifest.json", "drag_drop_background.js", "drag_drop_window.js", "drag_drop_window.html"},
+		Data:         []string{"drag_drop_manifest.json", "drag_drop_background.js", "drag_source_window.js", "drag_source_window.html", "drag_target_window.js", "drag_target_window.html"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -102,8 +103,13 @@ func DragDrop(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to create temp dir: ", err)
 		}
 		defer os.RemoveAll(extDir)
-		for _, name := range []string{"manifest.json", "background.js", "window.js", "window.html"} {
+		for _, name := range []string{"manifest.json", "background.js"} {
 			if err := fsutil.CopyFile(s.DataPath("drag_drop_"+name), filepath.Join(extDir, name)); err != nil {
+				s.Fatalf("Failed to copy extension %s: %v", name, err)
+			}
+		}
+		for _, name := range []string{"window.js", "window.html"} {
+			if err := fsutil.CopyFile(s.DataPath("drag_source_"+name), filepath.Join(extDir, name)); err != nil {
 				s.Fatalf("Failed to copy extension %s: %v", name, err)
 			}
 		}
@@ -223,4 +229,80 @@ func DragDrop(ctx context.Context, s *testing.State) {
 			s.Fatal("Assertion failed for dropped data in target activity: ", err)
 		}
 	})
+
+	s.Run(ctx, "AndroidToChrome", func(ctx context.Context, s *testing.State) {
+		s.Log("Copying extension to temp directory")
+		extDir, err := ioutil.TempDir("", "tast.arc.DragDropExtension")
+		if err != nil {
+			s.Fatal("Failed to create temp dir: ", err)
+		}
+		defer os.RemoveAll(extDir)
+		for _, name := range []string{"manifest.json", "background.js"} {
+			if err := fsutil.CopyFile(s.DataPath("drag_drop_"+name), filepath.Join(extDir, name)); err != nil {
+				s.Fatalf("Failed to copy extension %s: %v", name, err)
+			}
+		}
+		for _, name := range []string{"window.js", "window.html"} {
+			if err := fsutil.CopyFile(s.DataPath("drag_target_"+name), filepath.Join(extDir, name)); err != nil {
+				s.Fatalf("Failed to copy extension %s: %v", name, err)
+			}
+		}
+		extID, err := chrome.ComputeExtensionID(extDir)
+		if err != nil {
+			s.Fatalf("Failed to compute extension ID for %v: %v", extDir, err)
+		}
+
+		s.Log("Starting browser instance")
+		cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir), chrome.ARCEnabled())
+		if err != nil {
+			s.Fatal("Failed to connect to Chrome: ", err)
+		}
+		defer cr.Close(ctx)
+
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to create Test API connection: ", err)
+		}
+
+		s.Log("Connecting to extension background page")
+		bgURL := "chrome-extension://" + extID + "/window.html"
+		conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+		if err != nil {
+			s.Fatalf("Could not connect to extension at %v: %v", bgURL, err)
+		}
+		defer conn.Close()
+
+		a, err := arc.New(ctx, s.OutDir())
+		if err != nil {
+			s.Fatal("Could not start ARC: ", err)
+		}
+		defer a.Close()
+
+		d, err := a.NewUIDevice(ctx)
+		if err != nil {
+			s.Fatal("Failed initializing UI Automator: ", err)
+		}
+		defer d.Close(ctx)
+
+		wantBounds := coords.Rect{0, 0, 500, 500}
+
+		act, err := startActivityWithBounds(ctx, a, tconn, sourceApk, sourcePkg, sourceActName, wantBounds)
+		if err != nil {
+			s.Fatal("Failed to start an activity with bounds: ", err)
+		}
+		defer act.Close()
+		defer act.Stop(ctx, tconn)
+
+		srcPoint := coords.Point{X: 250, Y: 250}
+		dstPoint := coords.Point{X: 750, Y: 250}
+		if err := mouse.Drag(ctx, tconn, srcPoint, dstPoint, time.Second); err != nil {
+			s.Fatal("Failed to send drag events: ", err)
+		}
+
+		const expected = "hello world"
+		if err := conn.WaitForExpr(ctx, fmt.Sprintf(`document.getElementById('dropped-data').innerHTML === %q`, expected)); err != nil {
+			s.Fatal("Failed to wait for the dropped data: ", err)
+		}
+	})
+
 }
