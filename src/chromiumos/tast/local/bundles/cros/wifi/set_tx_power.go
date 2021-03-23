@@ -9,7 +9,6 @@ import (
 
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -21,23 +20,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"tablet_mode"},
 		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
-		Params: []testing.Param{
-			{
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(badTXPowerModels...)),
-			},
-			{
-				Name:              "informational",
-				ExtraAttr:         []string{"informational", "wificell_unstable"},
-				ExtraHardwareDeps: hwdep.D(hwdep.Model(badTXPowerModels...)),
-			},
-		},
 	})
-}
-
-// These models are known to fail this test, and so we cannot run them as 'critical'. We run them as
-// 'informational', while tracking followup bugs to fix them.
-var badTXPowerModels = []string{
-	"vilboz360", // TODO(b/177684735): Broken, causing CQ issues.
 }
 
 func SetTXPower(ctx context.Context, s *testing.State) {
