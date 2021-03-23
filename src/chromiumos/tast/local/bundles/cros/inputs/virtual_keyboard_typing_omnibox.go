@@ -39,11 +39,6 @@ func init() {
 			Pre:               pre.VKEnabledTablet,
 			ExtraHardwareDeps: pre.InputsUnstableModels,
 			ExtraAttr:         []string{"informational"},
-		}, {
-			Name:              "exp",
-			Pre:               pre.VKEnabledTabletExp,
-			ExtraSoftwareDeps: []string{"gboard_decoder"},
-			ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 		}}})
 }
 

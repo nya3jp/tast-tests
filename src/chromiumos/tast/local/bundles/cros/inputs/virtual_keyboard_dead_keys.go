@@ -73,17 +73,6 @@ func init() {
 					expectedTypingResult: "â",
 				},
 			}, {
-				Name:              "french_exp",
-				Pre:               pre.VKEnabledClamshellExp,
-				ExtraSoftwareDeps: []string{"gboard_decoder"},
-				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
-				Val: deadKeysTestCase{
-					inputMethodID:        "xkb:fr::fra",
-					hasDecoder:           true,
-					typingKeys:           []string{circumflex, "a"},
-					expectedTypingResult: "â",
-				},
-			}, {
 				Name:              "catalan_stable",
 				ExtraHardwareDeps: pre.InputsStableModels,
 				ExtraAttr:         []string{"group:input-tools-upstream"},
@@ -107,17 +96,6 @@ func init() {
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 				ExtraAttr:         []string{"informational"},
 				Pre:               pre.VKEnabledTablet,
-				Val: deadKeysTestCase{
-					inputMethodID:        "xkb:es:cat:cat",
-					hasDecoder:           false,
-					typingKeys:           []string{acuteAccent, "a"},
-					expectedTypingResult: "á",
-				},
-			}, {
-				Name:              "catalan_exp",
-				ExtraSoftwareDeps: []string{"gboard_decoder"},
-				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
-				Pre:               pre.VKEnabledTabletExp,
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:es:cat:cat",
 					hasDecoder:           false,

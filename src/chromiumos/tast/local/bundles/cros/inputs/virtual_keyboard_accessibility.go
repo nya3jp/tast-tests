@@ -32,11 +32,6 @@ func init() {
 			Pre:               pre.VKEnabledClamshell,
 			ExtraHardwareDeps: pre.InputsUnstableModels,
 			ExtraAttr:         []string{"group:mainline", "informational"},
-		}, {
-			Name:              "exp",
-			Pre:               pre.VKEnabledClamshellExp,
-			ExtraSoftwareDeps: []string{"gboard_decoder"},
-			ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 		}},
 	})
 }

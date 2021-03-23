@@ -64,45 +64,27 @@ func inputsPreCondition(name string, dm deviceMode, opts ...chrome.Option) *preI
 
 // VKEnabled creates a new precondition can be shared by tests that require an already-started Chromeobject that enables virtual keyboard.
 // It uses --enable-virtual-keyboard to force enable virtual keyboard regardless of device ui mode.
-var VKEnabled = inputsPreCondition("virtual_keyboard_enabled_pre", notForced, chrome.ExtraArgs("--disable-features=ImeMojoDecoder"))
+var VKEnabled = inputsPreCondition("virtual_keyboard_enabled_pre", notForced)
 
 // VKEnabledInGuest creates a new precondition the same as VKEnabled in Guest mode.
-var VKEnabledInGuest = inputsPreCondition("virtual_keyboard_enabled_guest_pre", notForced, chrome.GuestLogin(), chrome.ExtraArgs("--disable-features=ImeMojoDecoder"))
+var VKEnabledInGuest = inputsPreCondition("virtual_keyboard_enabled_guest_pre", notForced, chrome.GuestLogin())
 
 // VKEnabledTablet creates a new precondition for testing virtual keyboard in tablet mode.
 // It boots device in tablet mode and force enabled virtual keyboard via chrome flag --enable-virtual-keyboard.
-var VKEnabledTablet = inputsPreCondition("virtual_keyboard_enabled_tablet_pre", tabletMode, chrome.ExtraArgs("--disable-features=ImeMojoDecoder"))
+var VKEnabledTablet = inputsPreCondition("virtual_keyboard_enabled_tablet_pre", tabletMode)
 
 // VKEnabledTabletInGuest creates a new precondition the same as VKEnabledTablet in Guest mode.
-var VKEnabledTabletInGuest = inputsPreCondition("virtual_keyboard_enabled_tablet_guest_pre", tabletMode, chrome.GuestLogin(), chrome.ExtraArgs("--disable-features=ImeMojoDecoder"))
+var VKEnabledTabletInGuest = inputsPreCondition("virtual_keyboard_enabled_tablet_guest_pre", tabletMode, chrome.GuestLogin())
 
 // VKEnabledClamshell creates a new precondition for testing virtual keyboard in clamshell mode.
 // It uses Chrome API settings.a11y.virtual_keyboard to enable a11y vk instead of --enable-virtual-keyboard.
-var VKEnabledClamshell = inputsPreCondition("virtual_keyboard_enabled_clamshell_pre", clamshellMode, chrome.ExtraArgs("--disable-features=ImeMojoDecoder"))
+var VKEnabledClamshell = inputsPreCondition("virtual_keyboard_enabled_clamshell_pre", clamshellMode)
 
 // VKEnabledClamshellInGuest creates a new precondition the same as VKEnabledClamshell in Guest mode.
-var VKEnabledClamshellInGuest = inputsPreCondition("virtual_keyboard_enabled_clamshell_guest_pre", clamshellMode, chrome.GuestLogin(), chrome.ExtraArgs("--disable-features=ImeMojoDecoder"))
-
-// VKEnabledExp creates same precondition as VKEnabled with extra Chrome options.
-var VKEnabledExp = inputsPreCondition("virtual_keyboard_enabled_exp_pre", notForced, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"))
+var VKEnabledClamshellInGuest = inputsPreCondition("virtual_keyboard_enabled_clamshell_guest_pre", clamshellMode, chrome.GuestLogin())
 
 // SystemEmojiPicker creates a precondition to enable the system emoji picker.
 var SystemEmojiPicker = inputsPreCondition("virtual_keyboard_system_emoji_pre", clamshellMode, chrome.ExtraArgs("--enable-features=SystemEmojiPicker"))
-
-// VKEnabledExpInGuest creates same precondition as VKEnabled with extra Chrome options in Guest mode.
-var VKEnabledExpInGuest = inputsPreCondition("virtual_keyboard_enabled_exp_guest_pre", notForced, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"), chrome.GuestLogin())
-
-// VKEnabledTabletExp creates same precondition as VKEnabledTablet with extra Chrome options.
-var VKEnabledTabletExp = inputsPreCondition("virtual_keyboard_enabled_tablet_exp_pre", tabletMode, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"))
-
-// VKEnabledTabletExpInGuest creates same precondition as VKEnabledTablet with extra Chrome options in Guest mode.
-var VKEnabledTabletExpInGuest = inputsPreCondition("virtual_keyboard_enabled_tablet_exp_guest_pre", tabletMode, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"), chrome.GuestLogin())
-
-// VKEnabledClamshellExp creates same precondition as VKEnabledClamshell with extra Chrome options.
-var VKEnabledClamshellExp = inputsPreCondition("virtual_keyboard_enabled_clamshell_exp_pre", clamshellMode, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"))
-
-// VKEnabledClamshellExpInGuest creates same precondition as VKEnabledClamshell with extra Chrome options in Guest mode.
-var VKEnabledClamshellExpInGuest = inputsPreCondition("virtual_keyboard_enabled_clamshell_exp_guest_pre", clamshellMode, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"), chrome.GuestLogin())
 
 // The PreData object is made available to users of this precondition via:
 //
