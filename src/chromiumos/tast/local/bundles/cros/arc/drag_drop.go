@@ -78,9 +78,9 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	defer d.Close(ctx)
 
 	const (
-		apk          = "ArcDragDropTest.apk"
-		pkg          = "org.chromium.arc.testapp.dragdrop"
-		activityName = "org.chromium.arc.testapp.dragdrop.DragDropActivity"
+		apk          = "ArcDragTargetTest.apk"
+		pkg          = "org.chromium.arc.testapp.dragtarget"
+		activityName = "org.chromium.arc.testapp.dragtarget.DragTargetActivity"
 	)
 
 	s.Log("Installing app")
