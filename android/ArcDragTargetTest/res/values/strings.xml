@@ -4,6 +4,6 @@
      found in the LICENSE file.
 -->
 <resources>
-    <string name="app_name">ArcDragDropTest</string>
+    <string name="app_name">ArcDragTargetTest</string>
     <string name="drop_area">Drop area</string>
 </resources>
