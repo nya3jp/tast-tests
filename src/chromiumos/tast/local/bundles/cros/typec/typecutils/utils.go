@@ -12,11 +12,11 @@ import (
 	"regexp"
 	"strconv"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/graphics"
-	"chromiumos/tast/local/testexec"
 )
 
 // The maximum number of USB Type C ports that a Chromebook supports.

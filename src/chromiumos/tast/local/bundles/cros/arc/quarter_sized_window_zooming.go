@@ -10,13 +10,13 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

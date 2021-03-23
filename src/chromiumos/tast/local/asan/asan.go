@@ -9,7 +9,7 @@ import (
 	"context"
 	"os/exec"
 
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/common/testexec"
 )
 
 const (

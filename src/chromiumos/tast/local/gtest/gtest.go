@@ -16,10 +16,10 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )

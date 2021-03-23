@@ -13,11 +13,11 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/printer/fake"
 	"chromiumos/tast/local/bundles/cros/printer/lpprint"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/printing/printer"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )

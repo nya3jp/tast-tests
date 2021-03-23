@@ -16,12 +16,12 @@ import (
 
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/testing"

@@ -17,8 +17,8 @@ import (
 	"golang.org/x/net/context"
 
 	"chromiumos/tast/common/firmware"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 	pb "chromiumos/tast/services/cros/firmware"
 )
 

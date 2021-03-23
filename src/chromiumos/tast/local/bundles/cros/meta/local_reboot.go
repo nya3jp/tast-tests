@@ -7,7 +7,7 @@ package meta
 import (
 	"context"
 
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/testing"
 )
 

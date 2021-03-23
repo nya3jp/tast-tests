@@ -15,8 +15,8 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

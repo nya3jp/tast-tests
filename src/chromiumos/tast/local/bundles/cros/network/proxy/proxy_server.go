@@ -15,9 +15,9 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	patchpanel "chromiumos/tast/local/bundles/cros/network/patchpanel_client"
-	"chromiumos/tast/local/testexec"
 )
 
 const (

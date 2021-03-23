@@ -13,8 +13,8 @@ import (
 	"path"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 // LoopbackDevice holds info about a created loopback device.

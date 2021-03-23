@@ -8,8 +8,8 @@ import (
 	"context"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

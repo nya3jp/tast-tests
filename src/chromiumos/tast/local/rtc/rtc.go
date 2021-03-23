@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/common/testexec"
 )
 
 const (

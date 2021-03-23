@@ -10,8 +10,8 @@ import (
 	"os"
 
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 // PCAAgentClient delegates the request handling to the pca_agent_client command line tool.

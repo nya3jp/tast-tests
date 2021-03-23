@@ -14,8 +14,8 @@ import (
 
 	"github.com/mafredri/cdp/protocol/target"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

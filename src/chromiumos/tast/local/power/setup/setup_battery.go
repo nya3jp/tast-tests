@@ -7,9 +7,9 @@ package setup
 import (
 	"context"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/power"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

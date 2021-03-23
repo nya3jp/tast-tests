@@ -10,8 +10,8 @@ import (
 	"os"
 	"testing"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 func TestPolicyGeneratorAddSyscall(t *testing.T) {

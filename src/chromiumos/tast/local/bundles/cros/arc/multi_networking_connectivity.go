@@ -14,10 +14,10 @@ import (
 
 	"golang.org/x/sync/errgroup"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/network"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

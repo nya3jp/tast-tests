@@ -11,9 +11,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

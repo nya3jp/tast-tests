@@ -9,10 +9,10 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

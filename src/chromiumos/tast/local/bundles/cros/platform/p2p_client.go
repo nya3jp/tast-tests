@@ -13,10 +13,10 @@ import (
 
 	"github.com/hashicorp/mdns"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/p2p"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

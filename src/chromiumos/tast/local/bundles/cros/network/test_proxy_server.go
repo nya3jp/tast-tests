@@ -8,8 +8,8 @@ import (
 	"bytes"
 	"context"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/network/proxy"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

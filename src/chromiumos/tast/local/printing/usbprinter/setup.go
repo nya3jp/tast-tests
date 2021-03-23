@@ -14,9 +14,9 @@ import (
 	"io/ioutil"
 	"os"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/printing/lp"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
