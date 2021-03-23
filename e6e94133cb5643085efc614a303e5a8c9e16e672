@@ -22,6 +22,30 @@
       },
       "revId": "e6e94133cb5643085efc614a303e5a8c9e16e672",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "828459e0_20a7cbc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-23T02:08:25Z",
+      "side": 1,
+      "message": "Great question! As long as https://crbug.com/1167351 isn\u0027t resolved, I think we might. New models are very prone to failing this test, and while we have some human processes that should ensure humans run these tests before adding new models, there are still gaps, and I\u0027d be (pleasantly!) surprised if we didn\u0027t have to quickly add new model(s) to this exception list in the future.\n\nIf this remains unused for a while, I guess I could drop it in a separate CL, and a revert would be quick-and-easy.\n\nWDYT?",
+      "parentUuid": "086cf4bc_1f0f2522",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "e6e94133cb5643085efc614a303e5a8c9e16e672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
