@@ -16,6 +16,40 @@
       "message": "Hey! Could you PTAL. \n\nPlease also let me know if there is a better way to avoid duplication of some that code. ",
       "revId": "af6fcbb05674eb52c06b279f2e87e1b6321cf1b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ee2325_74650d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_kiosk_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-23T01:12:06Z",
+      "side": 1,
+      "message": "Looks duplicate of auth_session_mount.go.\nHow about consolidate them by parameterized test?",
+      "revId": "af6fcbb05674eb52c06b279f2e87e1b6321cf1b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8b2f672_7b294163",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-23T01:12:06Z",
+      "side": 1,
+      "message": "Could you document password is ignored if publicMount is set to true? Ditto for below.",
+      "revId": "af6fcbb05674eb52c06b279f2e87e1b6321cf1b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
