@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c6ddc2_441d14c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tulip_480p_h264_cencv1_ctr.mpd",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T07:02:21Z",
+      "side": 1,
+      "message": "Do we own copyright of this file? If so could you add a copyright header?\n\nIf we don\u0027t own it we have to put the file under third_party directory to clarify.",
+      "revId": "8fed6e866cb0ac71f0c524f957c478fac1759bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
