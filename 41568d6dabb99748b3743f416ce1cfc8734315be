@@ -50,6 +50,69 @@
       "message": "LGTM",
       "revId": "41568d6dabb99748b3743f416ce1cfc8734315be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42bd9c66_74543e67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-23T00:01:51Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "41568d6dabb99748b3743f416ce1cfc8734315be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "642f68a5_ed6ca320",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-23T00:01:51Z",
+      "side": 1,
+      "message": "huge nit: Ash",
+      "range": {
+        "startLine": 34,
+        "startChar": 41,
+        "endLine": 34,
+        "endChar": 44
+      },
+      "revId": "41568d6dabb99748b3743f416ce1cfc8734315be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5daf0093_0d88f6b2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-23T00:01:51Z",
+      "side": 1,
+      "message": "nit: the name is kind of confusing.... it is not clear which condition will trigger the retry... what thing should fail? I\u0027d move the word \"Action\" to the beginning\n\nperhaps something like:\n  \"RunAction...\" or \"PerformAction...\" or \"ExecuteAction...\"\n\n+\n\n  \"...AndRetryMaximizedOnFail\"\n  \"...AndMaximizeWindowOnFail\"",
+      "range": {
+        "startLine": 342,
+        "startChar": 19,
+        "endLine": 342,
+        "endChar": 53
+      },
+      "revId": "41568d6dabb99748b3743f416ce1cfc8734315be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
