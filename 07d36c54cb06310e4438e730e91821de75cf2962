@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73b758b1_75456f09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2021-03-23T00:31:26Z",
+      "side": 1,
+      "message": "This is conceptually a pretty simple edit: move the array of test cases from Params to a separate list, add a loop to iterate over that list using `s.Run()`, wrap up the main test logic in a `testOnce` helper function, and pull `perf.NewValues()` out of that helper so it only happens once.\n\nUnfortunately the code motion plus indentation changes result in a pretty messy-looking diff, sorry about that.",
+      "revId": "07d36c54cb06310e4438e730e91821de75cf2962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
