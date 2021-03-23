@@ -507,6 +507,51 @@ func MouseClick(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a
 	}
 }
 
+// Largescreenlayout Test verifies app utilizes large screen after maximizing the app.
+func Largescreenlayout(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	const (
+		blackBars     = "Black bars on both sides of an app"
+		maximizedSize = "Maximized"
+	)
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	if !tabletModeEnabled {
+		s.Log("Setting the window to fullscreen")
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
+			s.Fatal(" Failed to set the window to fullscreen: ", err)
+		}
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateFullscreen); err != nil {
+			s.Fatal("The window is not in fullscreen: ", err)
+		}
+	}
+
+	appWidth, appHeight, err := getAppCoordinates(ctx, s, a, d, appPkgName)
+	if err != nil {
+		s.Fatal("Failed to get app coordinates: ", err)
+	}
+	s.Log("appWidth", appWidth)
+	s.Log("appHeight", appHeight)
+
+	info, err := d.GetInfo(ctx)
+	if err != nil {
+		s.Fatal("Failed to get device display: ", err)
+	}
+	deviceDisplayWidth := info.DisplayWidth
+	s.Log("deviceDisplayWidth", deviceDisplayWidth)
+	deviceDisplayHeight := info.DisplayHeight
+	s.Log("deviceDisplayHeight", deviceDisplayHeight)
+
+	if appWidth == deviceDisplayWidth {
+		s.Log("App is maximized:", maximizedSize)
+	} else if appWidth < deviceDisplayWidth && appWidth != deviceDisplayWidth {
+		s.Fatal("Orientation size of an app: ", blackBars)
+	}
+
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
