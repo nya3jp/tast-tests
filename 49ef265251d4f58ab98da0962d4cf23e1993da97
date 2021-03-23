@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a031d659_bbbc4799",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:34:26Z",
+      "side": 1,
+      "message": "LGTM with nits.\n",
+      "revId": "49ef265251d4f58ab98da0962d4cf23e1993da97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d0d3673_c10e49e9",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:34:26Z",
+      "side": 1,
+      "message": "Can this default value ever be used?",
+      "range": {
+        "startLine": 267,
+        "startChar": 36,
+        "endLine": 267,
+        "endChar": 48
+      },
+      "revId": "49ef265251d4f58ab98da0962d4cf23e1993da97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa86c33_734de8fd",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:34:26Z",
+      "side": 1,
+      "message": "I would use cfg.ExtraArgs only for the chrome.ExtraArgs option and keep the current logic in restart.go as is... WDYT?",
+      "range": {
+        "startLine": 193,
+        "startChar": 6,
+        "endLine": 193,
+        "endChar": 15
+      },
+      "revId": "49ef265251d4f58ab98da0962d4cf23e1993da97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
