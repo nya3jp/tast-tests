@@ -46,6 +46,30 @@
       },
       "revId": "e6e94133cb5643085efc614a303e5a8c9e16e672",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a190bc2_a4757e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-23T02:49:50Z",
+      "side": 1,
+      "message": "Interesting. Feels like it\u0027s adding extra overhead, though knowing my luck you\u0027ll remove it and need to use it in the next few days. Happy to leave it in there, maybe add a TODO with that bug linked as a follow up?",
+      "parentUuid": "828459e0_20a7cbc6",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "e6e94133cb5643085efc614a303e5a8c9e16e672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
