@@ -43,6 +43,38 @@ function() {
     async dnsResolverPresent() {
       return await this.getNetworkDiagnostics().dnsResolverPresent();
     },
+
+    async dnsResolution() {
+      return await this.getNetworkDiagnostics().dnsResolution();
+    },
+
+    async dnsLatency() {
+      return await this.getNetworkDiagnostics().dnsLatency();
+    },
+
+    async httpFirewall() {
+      return await this.getNetworkDiagnostics().httpFirewall();
+    },
+
+    async httpsFirewall() {
+      return await this.getNetworkDiagnostics().httpsFirewall();
+    },
+
+    async httpsLatency() {
+      return await this.getNetworkDiagnostics().httpsLatency();
+    },
+
+    async gatewayCanBePinged() {
+      return await this.getNetworkDiagnostics().httpsLatency();
+    },
+
+    async captivePortal() {
+      return await this.getNetworkDiagnostics().captivePortal();
+    },
+
+    async videoConferencing() {
+      return await this.getNetworkDiagnostics().videoConferencing();
+    },
   }
 }
 `
@@ -108,6 +140,14 @@ func CheckRoutineVerdict(verdict RoutineVerdict) error {
 const (
 	RoutineLanConnectivity    string = "lanConnectivity"
 	RoutineDNSResolverPresent        = "dnsResolverPresent"
+	RoutineDNSResolution             = "dnsResolution"
+	RoutineDNSLatency                = "dnsLatency"
+	RoutineHTTPFirewall              = "httpFirewall"
+	RoutineHTTPSFirewall             = "httpsFirewall"
+	RoutineHTTPSLatency              = "httpsLatency"
+	RoutineGatewayCanBePing          = "gatewayCanBePinged"
+	RoutineCaptivePortal             = "captivePortal"
+	RoutineVideoConferencing         = "videoConferencing"
 )
 
 // RunRoutine calls into the injected network diagnostics mojo API and returns a
