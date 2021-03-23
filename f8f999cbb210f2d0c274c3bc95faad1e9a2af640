@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b22525_5392d85c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-03-23T06:12:59Z",
+      "side": 1,
+      "message": "Hi Sadrul, friendly ping on this. JFYI this is meant to help rule out any issues in the histogram code / methodology. Once we rule it out we can probably remove this. The reason why this doesn\u0027t use PipelineReporter is to make it more different from the thing that we are comparing it against (histogram code).",
+      "revId": "f8f999cbb210f2d0c274c3bc95faad1e9a2af640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
