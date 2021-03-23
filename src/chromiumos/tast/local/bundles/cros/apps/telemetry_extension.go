@@ -97,7 +97,7 @@ func TelemetryExtension(ctx context.Context, s *testing.State) {
 	}
 	defer apps.Close(cleanupCtx, tconn, apps.TelemetryExtension.ID)
 
-	if err := ash.WaitForApp(ctx, tconn, apps.TelemetryExtension.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.TelemetryExtension.ID, time.Minute); err != nil {
 		s.Fatalf("Failed to wait for %q by app id %q: %v", apps.TelemetryExtension.Name, apps.TelemetryExtension.ID, err)
 	}
 

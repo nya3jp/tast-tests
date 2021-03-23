@@ -62,7 +62,7 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 	if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 		s.Fatalf("Failed to launch %s: %c", app.Name, err)
 	}
-	if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 		s.Fatalf("%s did not appear in shelf after launch: %v", app.Name, err)
 	}
 

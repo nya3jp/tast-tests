@@ -37,7 +37,7 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*PrintManagementApp, e
 		return nil, errors.Wrap(err, "failed to launch Print Management app")
 	}
 
-	if err := ash.WaitForApp(ctx, tconn, apps.PrintManagement.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.PrintManagement.ID, time.Minute); err != nil {
 		return nil, errors.Wrap(err, "Print Management app did not appear in shelf after launch")
 	}
 

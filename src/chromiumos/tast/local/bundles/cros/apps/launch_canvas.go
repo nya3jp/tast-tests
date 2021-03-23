@@ -59,7 +59,7 @@ func LaunchCanvas(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch Canvas: ", err)
 	}
 
-	if err := ash.WaitForApp(ctx, tconn, apps.Canvas.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.Canvas.ID, time.Minute); err != nil {
 		s.Fatalf("Fail to wait for %s by app id %s: %v", apps.Canvas.Name, apps.Canvas.ID, err)
 	}
 

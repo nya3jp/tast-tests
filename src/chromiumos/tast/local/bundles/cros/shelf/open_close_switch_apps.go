@@ -67,7 +67,7 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	if err := apps.Launch(ctx, tconn, apps.Files.ID); err != nil {
 		s.Fatal("Failed to launch Files app: ", err)
 	}
-	if err := ash.WaitForApp(ctx, tconn, apps.Files.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.Files.ID, time.Minute); err != nil {
 		s.Fatal("Files app did not appear in shelf after launch: ", err)
 	}
 	if err := ash.PinApp(ctx, tconn, apps.Files.ID); err != nil {

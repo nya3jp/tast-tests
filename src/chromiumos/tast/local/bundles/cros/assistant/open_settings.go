@@ -6,6 +6,7 @@ package assistant
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/assistant"
@@ -54,7 +55,7 @@ func OpenSettings(ctx context.Context, s *testing.State) {
 	// todo (crbug/1080366): process the error from assistantSendTextQuery.
 	s.Log("Launching Settings app with Assistant query and waiting for it to open")
 	_, assistErr := assistant.SendTextQuery(ctx, tconn, "open settings")
-	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID, time.Minute); err != nil {
 		s.Fatalf("Settings app did not appear in the shelf: %v. Last assistant.SendTextQuery error: %v", err, assistErr)
 	}
 

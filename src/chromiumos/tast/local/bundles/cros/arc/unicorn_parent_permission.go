@@ -60,7 +60,7 @@ func UnicornParentPermission(ctx context.Context, s *testing.State) {
 		}
 	}
 	// Verify PlayStore is Open.
-	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
+	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
 		s.Fatal("Failed to wait for Play Store: ", err)
 	}
 

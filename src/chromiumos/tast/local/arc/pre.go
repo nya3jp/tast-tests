@@ -164,7 +164,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			if err := optin.Perform(ctx, p.cr, tconn); err != nil {
 				s.Fatal("Failed to opt-in to Play Store: ", err)
 			}
-			if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
+			if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
 				s.Fatal("Failed to wait for Play Store: ", err)
 			}
 			if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {

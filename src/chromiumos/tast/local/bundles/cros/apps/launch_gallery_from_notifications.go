@@ -112,7 +112,7 @@ func LaunchGalleryFromNotifications(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Wait for Gallery shown in shelf")
-	if err := ash.WaitForApp(ctx, tconn, apps.Gallery.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.Gallery.ID, time.Minute); err != nil {
 		s.Fatal("Failed to check Gallery in shelf: ", err)
 	}
 

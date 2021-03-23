@@ -285,7 +285,7 @@ func OpenSettingsApp(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "settings button still present after clicking")
 	}
 
-	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID, time.Minute); err != nil {
 		return errors.Wrapf(err, "settings app did not open within %v seconds", uiTimeout)
 	}
 

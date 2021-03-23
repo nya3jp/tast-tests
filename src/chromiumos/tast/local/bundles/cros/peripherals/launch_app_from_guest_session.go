@@ -6,6 +6,7 @@ package peripherals
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -59,7 +60,7 @@ func LaunchAppFromGuestSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch app: ", err)
 	}
 
-	err = ash.WaitForApp(ctx, tconn, params.app.ID)
+	err = ash.WaitForApp(ctx, tconn, params.app.ID, time.Minute)
 	if err != nil {
 		s.Fatal("Could not find app in shelf after launch: ", err)
 	}

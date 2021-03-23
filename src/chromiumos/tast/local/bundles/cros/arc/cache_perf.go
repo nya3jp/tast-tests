@@ -214,7 +214,7 @@ func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (ti
 	}
 
 	s.Log("Waiting for Play Store window to be shown")
-	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
+	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
 		return 0, 0, errors.Wrap(err, "failed to wait Play Store shown")
 	}
 

@@ -68,7 +68,7 @@ func PlayStoreOmnibox(ctx context.Context, s *testing.State) {
 	if err := optin.Perform(ctx, cr, tconn); err != nil {
 		s.Fatal("Failed to optin to Play Store: ", err)
 	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
+	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
 		s.Fatal("Failed to wait for Play Store: ", err)
 	}
 

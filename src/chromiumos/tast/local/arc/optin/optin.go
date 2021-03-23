@@ -114,7 +114,7 @@ func PerformAndClose(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 	if err := Perform(ctx, cr, tconn); err != nil {
 		return errors.Wrap(err, "failed to perform Play Store optin")
 	}
-	if err := WaitForPlayStoreShown(ctx, tconn); err != nil {
+	if err := WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
 		// When we get here, play store is probably not shown, or it failed to be detected.
 		// Just log the message and continue.
 		testing.ContextLogf(ctx, "Play store window is not detected: %v; continue to try to close it", err)
@@ -149,8 +149,8 @@ func WaitForPlayStoreReady(ctx context.Context, tconn *chrome.TestConn) error {
 }
 
 // WaitForPlayStoreShown waits for Play Store window to be shown.
-func WaitForPlayStoreShown(ctx context.Context, tconn *chrome.TestConn) error {
-	return ash.WaitForApp(ctx, tconn, apps.PlayStore.ID)
+func WaitForPlayStoreShown(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
+	return ash.WaitForApp(ctx, tconn, apps.PlayStore.ID, timeout)
 }
 
 // GetPlayStoreState is a wrapper for chrome.autotestPrivate.getPlayStoreState.

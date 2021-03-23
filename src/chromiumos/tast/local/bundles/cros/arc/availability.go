@@ -40,7 +40,7 @@ func init() {
 
 // isPlayStoreOpen checks that the Play Store icon is visible and that the apps search bar is available.
 func isPlayStoreOpen(ctx context.Context, s *testing.State, d *ui.Device, tconn *chrome.TestConn) {
-	if err := ash.WaitForApp(ctx, tconn, apps.PlayStore.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.PlayStore.ID, time.Minute); err != nil {
 		s.Fatal("Play Store failed to open: ", err)
 	}
 	noThanksButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)No thanks"))
@@ -144,7 +144,7 @@ func Availability(ctx context.Context, s *testing.State) {
 		if err = optin.Perform(ctx, cr, tconn); err != nil {
 			s.Fatal("Failed to optin to Play Store: ", err)
 		}
-		if err = optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
+		if err = optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
 			s.Fatal("Failed to wait for Play Store: ", err)
 		}
 
