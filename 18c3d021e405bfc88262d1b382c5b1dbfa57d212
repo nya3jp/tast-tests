@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d5036e05_8321fe97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-03-23T04:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6936659d_d1ecb613",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "18c3d021e405bfc88262d1b382c5b1dbfa57d212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2ee98c9b_a47fff63",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb8d38f_8d966c3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-03-23T04:28:30Z",
+      "side": 1,
+      "message": "We need to get the chrometype anyway to pass into e.g. lacros.Setup and other lacros.* methods, so it\u0027s convenient to do it this way. Personally I\u0027m not a fan of checking for \u0027lacros\u0027 in Tast code, because it goes against the \u0027explicit not implicit\u0027 part of go style.",
+      "parentUuid": "b7f3954e_2293b546",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 0
+      },
+      "revId": "18c3d021e405bfc88262d1b382c5b1dbfa57d212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "218048f8_03650087",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-10T16:32:33Z",
       "side": 1,
       "message": "This parameter is not used, remove?\n\nActually I see that in this CL both |tconn| and |cs| are piped from\nthe top level play.go Play() function, but we only really use |cs|,\nso perhaps |tconn| could be dropped altogether?",
+      "range": {
+        "startLine": 75,
+        "startChar": 35,
+        "endLine": 75,
+        "endChar": 58
+      },
+      "revId": "18c3d021e405bfc88262d1b382c5b1dbfa57d212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da0d8215_e6e1a6b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-03-23T04:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "218048f8_03650087",
       "range": {
         "startLine": 75,
         "startChar": 35,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1a0fdb8_c772cce6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-03-23T04:28:30Z",
+      "side": 1,
+      "message": "Thanks. Done.",
+      "parentUuid": "d346359f_c2c32dab",
+      "range": {
+        "startLine": 295,
+        "startChar": 5,
+        "endLine": 295,
+        "endChar": 13
+      },
+      "revId": "18c3d021e405bfc88262d1b382c5b1dbfa57d212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03fc19d8_25d8f2fc",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-03-10T16:32:33Z",
       "side": 1,
       "message": "TestPlayAndScreenshot is only used from contents.go and that doesn\u0027t\nneed to get a lacros variant; I think we shouldn\u0027t modify it in this\nCL and then this method could stay unmodified?",
+      "range": {
+        "startLine": 323,
+        "startChar": 5,
+        "endLine": 323,
+        "endChar": 26
+      },
+      "revId": "18c3d021e405bfc88262d1b382c5b1dbfa57d212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a654a51_816364e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-03-23T04:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03fc19d8_25d8f2fc",
       "range": {
         "startLine": 323,
         "startChar": 5,
