@@ -20,6 +20,23 @@ import (
 
 var v4l2Vp9Files = []string{"1080p_30fps_300frames.vp9.ivf"}
 
+var vaapiAv1Files = []string{
+	"test_vectors/av1/8-bit/00000527.ivf",
+	"test_vectors/av1/8-bit/00000535.ivf",
+	"test_vectors/av1/8-bit/00000548.ivf",
+	"test_vectors/av1/8-bit/48_delayed.ivf",
+	"test_vectors/av1/8-bit/av1-1-b8-02-allintra.ivf",
+	"test_vectors/av1/8-bit/frames_refs_short_signaling.ivf",
+	"test_vectors/av1/8-bit/non_uniform_tiling.ivf",
+	"test_vectors/av1/8-bit/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf",
+	"test_vectors/av1/8-bit/test-25fps-192x288-only-tile-rows-is-power-of-2.ivf",
+	"test_vectors/av1/8-bit/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf",
+}
+
+// These files come from the WebM test streams and are grouped according to
+// (rounded down) level, i.e. "group1" consists of level 1 and 1.1 streams,
+// "group2" of level 2 and 2.1, etc. This helps to keep together tests with
+// similar amounts of intended behavior/expected stress on devices.
 var vaapiVp9Files = map[string]map[string]map[string][]string{
 	"profile_0": {
 		"group1": {
@@ -317,6 +334,17 @@ func TestPlatformDecodingParams(t *testing.T) {
 			}
 		}
 	}
+
+	// Generate VAAPI AV1 tests.
+	params = append(params, paramData{
+		Name:       "vaapi_av1",
+		Decoder:    filepath.Join(chrome.BinTestDir, "decode_test"),
+		CmdBuilder: "av1decodeVAAPIargs",
+		Files:      vaapiAv1Files,
+		// These SoftwareDeps do not include the 10 bit version of AV1.
+		SoftwareDeps: []string{"vaapi", caps.HWDecodeAV1},
+		Metadata:     genExtraData(vaapiAv1Files),
+	})
 
 	// Generate V4L2 VP9 tests.
 	params = append(params, paramData{
