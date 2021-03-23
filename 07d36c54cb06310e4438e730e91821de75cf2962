@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a347c5_1d6b3497",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-03-23T22:11:49Z",
+      "side": 1,
+      "message": "Sounds good! Can you update the commit message?",
+      "parentUuid": "67688f11_1b435df3",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "07d36c54cb06310e4438e730e91821de75cf2962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "73b758b1_75456f09",
@@ -61,6 +85,23 @@
       "writtenOn": "2021-03-23T00:31:26Z",
       "side": 1,
       "message": "This is conceptually a pretty simple edit: move the array of test cases from Params to a separate list, add a loop to iterate over that list using `s.Run()`, wrap up the main test logic in a `testOnce` helper function, and pull `perf.NewValues()` out of that helper so it only happens once.\n\nUnfortunately the code motion plus indentation changes result in a pretty messy-looking diff, sorry about that.",
+      "revId": "07d36c54cb06310e4438e730e91821de75cf2962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a4fded_b7471096",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-03-23T22:11:49Z",
+      "side": 1,
+      "message": "Thanks!\n+1 for the general idea, deferring to Dean for proper Tast review :-)",
       "revId": "07d36c54cb06310e4438e730e91821de75cf2962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
