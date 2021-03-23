@@ -59,11 +59,11 @@ func BlockOutboundNetwork(ctx context.Context, s *testing.State) {
 		s.Fatal("Internet should be available at the start of the test")
 	}
 
-	if err := a.BlockOutbound(ctx); err != nil {
+	if err := arc.BlockOutbound(ctx); err != nil {
 		s.Fatal("Failed to block ARC outbound traffic: ", err)
 	}
 	defer func() {
-		if err := a.UnblockOutbound(cleanupCtx); err != nil {
+		if err := arc.UnblockOutbound(cleanupCtx); err != nil {
 			s.Fatal("Failed to unblock ARC outbound traffic: ", err)
 		}
 		if !networkAvailable(cleanupCtx) {
