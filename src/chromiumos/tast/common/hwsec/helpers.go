@@ -172,13 +172,29 @@ func (h *CmdHelper) DropResetLockPermissions(ctx context.Context) (restoreFunc f
 		return nil, errors.Wrap(err, "failed to stop TPM Manager")
 	}
 
-	// Restart it after finishing all operation.
+	// Restart it after finishing all operations.
 	defer func() {
 		if err := h.daemonController.Start(ctx, TPMManagerDaemon); err != nil {
 			if retErr == nil {
 				retErr = errors.Wrap(err, "failed to start TPM Manager")
 			} else {
-				testing.ContextLog(ctx, "Failed to take screenshot: ", err)
+				testing.ContextLog(ctx, "Failed to start TPM Manager: ", err)
+			}
+		}
+	}()
+
+	// Stop Cryptohome because it contains TPM status cache.
+	if err := h.daemonController.Stop(ctx, CryptohomeDaemon); err != nil {
+		return nil, errors.Wrap(err, "failed to stop Cryptohome")
+	}
+
+	// Restart it after finishing all operations.
+	defer func() {
+		if err := h.daemonController.Start(ctx, CryptohomeDaemon); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "failed to start Cryptohome")
+			} else {
+				testing.ContextLog(ctx, "Failed to start Cryptohome: ", err)
 			}
 		}
 	}()
@@ -217,13 +233,29 @@ func (h *CmdHelper) DropResetLockPermissions(ctx context.Context) (restoreFunc f
 			return errors.Wrap(err, "failed to stop TPM Manager")
 		}
 
-		// Restart it after finishing all operation.
+		// Restart it after finishing all operations.
 		defer func() {
 			if err := h.daemonController.Start(ctx, TPMManagerDaemon); err != nil {
 				if retErr == nil {
 					retErr = errors.Wrap(err, "failed to start TPM Manager")
 				} else {
-					testing.ContextLog(ctx, "Failed to take screenshot: ", err)
+					testing.ContextLog(ctx, "Failed to start TPM Manager: ", err)
+				}
+			}
+		}()
+
+		// Stop Cryptohome because it contains TPM status cache.
+		if err := h.daemonController.Stop(ctx, CryptohomeDaemon); err != nil {
+			return nil, errors.Wrap(err, "failed to stop Cryptohome")
+		}
+
+		// Restart it after finishing all operations.
+		defer func() {
+			if err := h.daemonController.Start(ctx, CryptohomeDaemon); err != nil {
+				if retErr == nil {
+					retErr = errors.Wrap(err, "failed to start Cryptohome")
+				} else {
+					testing.ContextLog(ctx, "Failed to start Cryptohome: ", err)
 				}
 			}
 		}()

@@ -45,6 +45,7 @@ func init() {
 	})
 }
 
+// IntegratedU2F verifies U2F using the on-board cr50 firmware works
 func IntegratedU2F(ctx context.Context, s *testing.State) {
 	// Create hwsec helper.
 	cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
@@ -65,8 +66,8 @@ func IntegratedU2F(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
+	// u2fd reads files from the user's home dir, so we need to log in.
 	cr := example.NewChromeServiceClient(cl.Conn)
-
 	if _, err := cr.New(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -95,6 +96,9 @@ func IntegratedU2F(ctx context.Context, s *testing.State) {
 	}
 	defer pxy.Close(ctx)
 	svo := pxy.Servo()
+
+	// Clean up the flags in u2fd after the tests finished.
+	defer setU2fdFlags(ctx, helper, false, false, false)
 
 	for _, tc := range []struct {
 		name     string
@@ -146,7 +150,7 @@ func IntegratedU2F(ctx context.Context, s *testing.State) {
 	}
 }
 
-// ensureChapsSlotsInitialized ensures chaps initialized
+// ensureChapsSlotsInitialized ensures chaps is initialized.
 func ensureChapsSlotsInitialized(ctx context.Context, chaps *pkcs11.Chaps) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		slots, err := chaps.ListSlots(ctx)
@@ -164,7 +168,7 @@ func ensureChapsSlotsInitialized(ctx context.Context, chaps *pkcs11.Chaps) error
 	})
 }
 
-// setU2fdFlags sets flags to u2fd
+// setU2fdFlags sets the flags and restarts u2fd, which will re-create the u2f device.
 func setU2fdFlags(ctx context.Context, helper *hwsecremote.FullHelperRemote, u2f, g2f, userKeys bool) (retErr error) {
 	const (
 		uf2ForcePath      = "/var/lib/u2f/force/u2f.force"
@@ -180,7 +184,11 @@ func setU2fdFlags(ctx context.Context, helper *hwsecremote.FullHelperRemote, u2f
 	}
 	defer func() {
 		if err := dCtl.Start(ctx, hwsec.U2fdDaemon); err != nil {
-			retErr = errors.Wrap(err, "failed to restart u2fd")
+			if retErr != nil {
+				testing.ContextLog(ctx, "Failed to restart u2fd: ", err)
+			} else {
+				retErr = errors.Wrap(err, "failed to restart u2fd")
+			}
 		}
 	}()
 
@@ -203,7 +211,7 @@ func setU2fdFlags(ctx context.Context, helper *hwsecremote.FullHelperRemote, u2f
 			return errors.Wrap(err, "failed to set userKeys flag")
 		}
 	}
-	return retErr
+	return nil
 }
 
 // u2fDevicePath returns the integrated u2f device path.
@@ -233,13 +241,13 @@ func u2fDevicePath(ctx context.Context, cmd *hwsecremote.CmdRunnerRemote) (strin
 	return "/dev/" + dev, nil
 }
 
-func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Servo) error {
+// runU2Test runs the U2FTest with the U2F device.
+func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Servo) (retErr error) {
 	const (
 		u2fTestPath = "/usr/local/bin/U2FTest"
 		trigger     = "Touch device and hit enter."
 	)
-	testCmd := fmt.Sprintf("stdbuf -o0 %s %s", u2fTestPath, device)
-	cmd := dut.Command("sh", "-c", testCmd)
+	cmd := dut.Command("stdbuf", "-o0", u2fTestPath, device)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		return errors.Wrap(err, "failed to create stdout pipe")
@@ -253,7 +261,17 @@ func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Serv
 	if err := cmd.Start(ctx); err != nil {
 		return errors.Wrap(err, "failed to start U2fTest")
 	}
+	defer func() {
+		if err := cmd.Wait(ctx); err != nil {
+			if retErr != nil {
+				testing.ContextLog(ctx, "Failed to wait U2fTest: ", err)
+			} else {
+				retErr = errors.Wrap(err, "failed to wait U2fTest")
+			}
+		}
+	}()
 
+	// Create the scanner.
 	scanner := bufio.NewScanner(stdout)
 	split := func(data []byte, atEOF bool) (advance int, token []byte, err error) {
 		index := bytes.IndexAny(data, ".\n")
@@ -269,7 +287,6 @@ func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Serv
 
 	for scanner.Scan() {
 		line := scanner.Text()
-		testing.ContextLog(ctx, line)
 		if strings.Contains(line, trigger) {
 			testing.ContextLog(ctx, "Clicking power key")
 			if err := svo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
@@ -282,9 +299,6 @@ func runU2Test(ctx context.Context, dut *dut.DUT, device string, svo *servo.Serv
 	}
 	if err := scanner.Err(); err != nil {
 		return errors.Wrap(err, "failed to scan stdin")
-	}
-	if err := cmd.Wait(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait U2fTest")
 	}
 	return nil
 }
