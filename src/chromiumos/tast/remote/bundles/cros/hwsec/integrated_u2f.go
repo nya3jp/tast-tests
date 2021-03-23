@@ -35,7 +35,7 @@ func init() {
 			"yich@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "gsc", "reboot"},
-		Attr:         []string{"group:firmware", "firmware_cr50"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"servo"},
 		ServiceDeps: []string{
 			"tast.cros.example.ChromeService",
