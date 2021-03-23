@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf628df_e63507ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-03-23T06:32:33Z",
+      "side": 1,
+      "message": "Hugo, PTAL\n",
+      "revId": "fbb51d4b68f2ff2b9342ca8c81a4b38f0283eb16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8205041d_b7b4cf1d",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-03-23T06:32:33Z",
+      "side": 1,
+      "message": "Is this command line (for unblocking) correct?",
+      "range": {
+        "startLine": 71,
+        "startChar": 40,
+        "endLine": 71,
+        "endChar": 126
+      },
+      "revId": "fbb51d4b68f2ff2b9342ca8c81a4b38f0283eb16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
