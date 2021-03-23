@@ -11,8 +11,8 @@ import (
 	"context"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 // ErrNotFound describes an error encountered when a property is not found by

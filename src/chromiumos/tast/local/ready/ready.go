@@ -20,11 +20,11 @@ import (
 
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/hwsec"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )

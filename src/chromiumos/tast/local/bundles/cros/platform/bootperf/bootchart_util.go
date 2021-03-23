@@ -14,8 +14,8 @@ import (
 
 	"github.com/google/uuid"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 const (

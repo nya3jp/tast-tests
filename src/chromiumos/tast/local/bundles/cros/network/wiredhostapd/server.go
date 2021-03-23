@@ -16,9 +16,9 @@ import (
 	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/crypto/certificate"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/network/ip"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

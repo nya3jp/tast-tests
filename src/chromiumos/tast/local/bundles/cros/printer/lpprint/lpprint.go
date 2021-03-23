@@ -13,11 +13,11 @@ import (
 	"regexp"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/printer/fake"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/printer"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

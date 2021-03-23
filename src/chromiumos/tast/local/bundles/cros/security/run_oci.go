@@ -11,8 +11,8 @@ import (
 	"os"
 	"path/filepath"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )

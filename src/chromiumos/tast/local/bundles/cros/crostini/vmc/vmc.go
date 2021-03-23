@@ -9,9 +9,9 @@ import (
 	"context"
 	"os"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/session"
-	"chromiumos/tast/local/testexec"
 )
 
 // UserIDHash returns a sanitized username of the primary session.

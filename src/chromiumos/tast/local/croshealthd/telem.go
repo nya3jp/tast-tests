@@ -14,8 +14,8 @@ import (
 	"path/filepath"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 )
 

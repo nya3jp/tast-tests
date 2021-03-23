@@ -14,11 +14,11 @@ import (
 	"os"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/testexec"
 )
 
 // Capture takes a screenshot and saves it as a PNG image to the specified file

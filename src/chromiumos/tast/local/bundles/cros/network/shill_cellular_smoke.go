@@ -13,10 +13,10 @@ import (
 	"strings"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/network/cellular"
 	"chromiumos/tast/local/shill"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

@@ -11,13 +11,13 @@ import (
 	"regexp"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/storage"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

@@ -8,7 +8,7 @@ import (
 	"context"
 	"encoding/hex"
 
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/testing"
 )
 

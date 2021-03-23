@@ -22,10 +22,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/graphics/trace/comm"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )

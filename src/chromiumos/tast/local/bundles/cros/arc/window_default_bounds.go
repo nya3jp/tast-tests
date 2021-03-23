@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/wm"
@@ -18,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/screenshot"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

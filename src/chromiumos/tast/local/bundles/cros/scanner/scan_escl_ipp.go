@@ -15,6 +15,7 @@ import (
 	"time"
 
 	lpb "chromiumos/system_api/lorgnette_proto"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/scanner/cups"
@@ -22,7 +23,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

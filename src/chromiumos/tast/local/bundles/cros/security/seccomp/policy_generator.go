@@ -14,8 +14,8 @@ import (
 	"sort"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 // CommandContext wraps the functionality of testexec.CommandContext injecting the strace
