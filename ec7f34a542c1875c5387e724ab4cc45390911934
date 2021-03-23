@@ -16,6 +16,29 @@
       "message": "Hi vsavu@,\n\n2nd in the chain of 3 CLs to implement the chrome.login API Tast test.\n\nNote the comment on addValue() regarding the need to json.Marshal values.\n\nThanks,\nJit",
       "revId": "ec7f34a542c1875c5387e724ab4cc45390911934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30f42857_de16fb5a",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-23T10:36:02Z",
+      "side": 1,
+      "message": "I think the assumption above e.g. everything not a bool, int, string or []string has to be JSON marshalled does not apply in every case.\n\nNot sure what the best way to approach this would be. Maybe have a new ShouldJSONMarshal() field for the policies?",
+      "range": {
+        "startLine": 147,
+        "startChar": 35,
+        "endLine": 147,
+        "endChar": 66
+      },
+      "revId": "ec7f34a542c1875c5387e724ab4cc45390911934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
