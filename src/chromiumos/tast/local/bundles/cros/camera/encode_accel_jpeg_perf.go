@@ -24,7 +24,6 @@ import (
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -37,10 +36,6 @@ func init() {
 		Data:         []string{"coast_3840x2160_P420.yuv"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Name:              "mmap",
-			Val:               "JpegEncodeAcceleratorTest.SimpleEncode",
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("kukui")),
-		}, {
 			Name: "dmabuf",
 			Val:  "JpegEncodeAcceleratorTest.SimpleDmaEncode",
 		}},
