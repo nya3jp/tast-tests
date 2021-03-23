@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df38898_5f47320f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-23T16:59:58Z",
+      "side": 1,
+      "message": "lgtm % others",
+      "revId": "4e393df3533f56d0e6a0e6530de1ade84a4674db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b861bc2_d86cd77c",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-03-23T02:04:46Z",
       "side": 1,
       "message": "Is this pointer controller specific to this test group, or something that should be moved into uiauto?",
+      "range": {
+        "startLine": 190,
+        "startChar": 13,
+        "endLine": 190,
+        "endChar": 20
+      },
+      "revId": "4e393df3533f56d0e6a0e6530de1ade84a4674db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb0dcecf_91a3d5c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-03-23T16:59:58Z",
+      "side": 1,
+      "message": "uiauto already supports mouse clicks. The use of \"pointer\" here is specific to this test to have common code for both mouse and touch. \"pointer\" package supports that and `pointerController` decides whether it will be a mouse click or a touch tap.",
+      "parentUuid": "5b861bc2_d86cd77c",
       "range": {
         "startLine": 190,
         "startChar": 13,
