@@ -36,7 +36,7 @@ func init() {
 			"group:paper-io",
 			"paper-io_printing",
 		},
-		Pre:          chrome.LoggedIn(),
+		Timeout:      2 * time.Minute,
 		SoftwareDeps: []string{"chrome", "cros_internal", "cups", "virtual_usb_printer"},
 	})
 }
@@ -53,7 +53,12 @@ func Print(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Chrome instance: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
