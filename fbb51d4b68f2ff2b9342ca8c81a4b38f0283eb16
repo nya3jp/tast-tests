@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c50cac08_14aa4751",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-03-23T06:37:13Z",
+      "side": 1,
+      "message": "Does that still need to be done on that object ?",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 13
+      },
+      "revId": "fbb51d4b68f2ff2b9342ca8c81a4b38f0283eb16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8205041d_b7b4cf1d",
         "filename": "src/chromiumos/tast/local/arc/networking.go",
         "patchSetId": 1
@@ -36,6 +59,29 @@
         "startChar": 40,
         "endLine": 71,
         "endChar": 126
+      },
+      "revId": "fbb51d4b68f2ff2b9342ca8c81a4b38f0283eb16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d3419c4_6a1183af",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-03-23T06:37:13Z",
+      "side": 1,
+      "message": "you need to use -D instead of -I or -A",
+      "range": {
+        "startLine": 71,
+        "startChar": 83,
+        "endLine": 71,
+        "endChar": 84
       },
       "revId": "fbb51d4b68f2ff2b9342ca8c81a4b38f0283eb16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
