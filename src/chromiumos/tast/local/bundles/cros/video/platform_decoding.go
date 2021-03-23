@@ -229,6 +229,16 @@ func init() {
 				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1080X512_fr30_bd8_sub8x8_sf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1280X768_fr30_bd8_sub8x8_sf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf.json", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf.json"},
 			},
 			{
+				Name: "vaapi_av1",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/av1/8-bit/00000527.ivf", "test_vectors/av1/8-bit/00000535.ivf", "test_vectors/av1/8-bit/00000548.ivf", "test_vectors/av1/8-bit/48_delayed.ivf", "test_vectors/av1/8-bit/av1-1-b8-02-allintra.ivf", "test_vectors/av1/8-bit/frames_refs_short_signaling.ivf", "test_vectors/av1/8-bit/non_uniform_tiling.ivf", "test_vectors/av1/8-bit/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf", "test_vectors/av1/8-bit/test-25fps-192x288-only-tile-rows-is-power-of-2.ivf", "test_vectors/av1/8-bit/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf"},
+					decoder:        "/usr/local/libexec/chrome-binary-tests/decode_test",
+					commandBuilder: av1decodeVAAPIargs,
+				},
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_av1_1080_30"},
+				ExtraData:         []string{"test_vectors/av1/8-bit/00000527.ivf", "test_vectors/av1/8-bit/00000527.ivf.json", "test_vectors/av1/8-bit/00000535.ivf", "test_vectors/av1/8-bit/00000535.ivf.json", "test_vectors/av1/8-bit/00000548.ivf", "test_vectors/av1/8-bit/00000548.ivf.json", "test_vectors/av1/8-bit/48_delayed.ivf", "test_vectors/av1/8-bit/48_delayed.ivf.json", "test_vectors/av1/8-bit/av1-1-b8-02-allintra.ivf", "test_vectors/av1/8-bit/av1-1-b8-02-allintra.ivf.json", "test_vectors/av1/8-bit/frames_refs_short_signaling.ivf", "test_vectors/av1/8-bit/frames_refs_short_signaling.ivf.json", "test_vectors/av1/8-bit/non_uniform_tiling.ivf", "test_vectors/av1/8-bit/non_uniform_tiling.ivf.json", "test_vectors/av1/8-bit/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf", "test_vectors/av1/8-bit/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf.json", "test_vectors/av1/8-bit/test-25fps-192x288-only-tile-rows-is-power-of-2.ivf", "test_vectors/av1/8-bit/test-25fps-192x288-only-tile-rows-is-power-of-2.ivf.json", "test_vectors/av1/8-bit/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf", "test_vectors/av1/8-bit/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf.json"},
+			},
+			{
 				Name: "v4l2_vp9",
 				Val: platformDecodingParams{
 					filenames:      []string{"1080p_30fps_300frames.vp9.ivf"},
@@ -356,6 +366,18 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 // vp9decodeV4L2args constructs the command line for the VP9 decoding binary exe for v4l2.
 func vp9decodeV4L2args(exe, filename string) []string {
 	return []string{exe, "--file=" + filename}
+}
+
+// av1decodeVAAPIargs constructs the command line for the AV1 decoding binary exe for vaapi.
+func av1decodeVAAPIargs(exe, filename string) []string {
+	return []string{
+		exe,
+		"--video=" + filename,
+		"--md5",
+		// aomdec is used to compute reference hashes, and outputs only those for
+		// visible frames
+		"--visible",
+	}
 }
 
 // vp9decodeVAAPIargs constructs the command line for the VP9 decoding binary exe for vaapi.
