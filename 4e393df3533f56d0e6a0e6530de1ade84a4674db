@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f123bdd_0b56f2ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-23T18:18:37Z",
+      "side": 1,
+      "message": "I think it\u0027s a great idea to support touch events in uiauto -- and eventually reform the pointer controller to work well with uiauto. I can do that but it\u0027ll need a couple of CLs to do so. Let me do that in upcoming CLs.",
+      "parentUuid": "bb0dcecf_91a3d5c5",
+      "range": {
+        "startLine": 190,
+        "startChar": 13,
+        "endLine": 190,
+        "endChar": 20
+      },
+      "revId": "4e393df3533f56d0e6a0e6530de1ade84a4674db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42315721_d5a18e97",
@@ -78,6 +102,30 @@
       "writtenOn": "2021-03-23T02:04:46Z",
       "side": 1,
       "message": "It isn\u0027t clear what this is the n-th of, perhaps n-th node matching the Finder? Same below",
+      "range": {
+        "startLine": 251,
+        "startChar": 43,
+        "endLine": 251,
+        "endChar": 52
+      },
+      "revId": "4e393df3533f56d0e6a0e6530de1ade84a4674db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e95b125_fecbf7c9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-23T18:18:37Z",
+      "side": 1,
+      "message": "Added \"n-th node in the matched nodes of the Finder\"",
+      "parentUuid": "42315721_d5a18e97",
       "range": {
         "startLine": 251,
         "startChar": 43,
