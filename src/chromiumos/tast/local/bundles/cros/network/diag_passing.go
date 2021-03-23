@@ -6,6 +6,7 @@ package network
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/network/diag"
 	"chromiumos/tast/testing"
@@ -42,6 +43,35 @@ func init() {
 			Name:      "dns_resolver_present",
 			Val:       newNetDiagParams(diag.RoutineDNSResolverPresent),
 			ExtraAttr: []string{"informational"},
+		}, {
+			Name:      "dns_resolution",
+			Val:       newNetDiagParams(diag.RoutineDNSResolution),
+			ExtraAttr: []string{"informational"},
+		}, {
+			Name:      "dns_latency",
+			Val:       newNetDiagParams(diag.RoutineDNSLatency),
+			ExtraAttr: []string{"informational"},
+		}, {
+			Name:      "http_firewall",
+			Val:       newNetDiagParams(diag.RoutineHTTPFirewall),
+			ExtraAttr: []string{"informational"},
+		}, {
+			Name:      "https_firewall",
+			Val:       newNetDiagParams(diag.RoutineHTTPSFirewall),
+			ExtraAttr: []string{"informational"},
+		}, {
+			Name:      "https_latency",
+			Val:       newNetDiagParams(diag.RoutineHTTPSLatency),
+			ExtraAttr: []string{"informational"},
+		}, {
+			Name:      "captive_portal",
+			Val:       newNetDiagParams(diag.RoutineCaptivePortal),
+			ExtraAttr: []string{"informational"},
+		}, {
+			Name:      "video_conferencing",
+			Val:       newNetDiagParams(diag.RoutineVideoConferencing),
+			ExtraAttr: []string{"informational"},
+			Timeout:   5 * time.Minute,
 		}},
 	})
 }
