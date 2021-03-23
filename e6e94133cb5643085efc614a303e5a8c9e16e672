@@ -70,6 +70,30 @@
       },
       "revId": "e6e94133cb5643085efc614a303e5a8c9e16e672",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03fb4354_3dca0d8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-23T18:58:58Z",
+      "side": 1,
+      "message": "Eh, I changed my mind. Rather than force me (or other WiFi team members) to maintain this for a lack of proper model bringup, I think it might be time to exercise the levers of \"disable CQ testing\" for models that never passed. I think https://crbug.com/1167351 has some hints that this is possible today, even if a bit manual.\n\nRemoving the \u0027informational\u0027 variant entirely.",
+      "parentUuid": "8a190bc2_a4757e07",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "e6e94133cb5643085efc614a303e5a8c9e16e672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
