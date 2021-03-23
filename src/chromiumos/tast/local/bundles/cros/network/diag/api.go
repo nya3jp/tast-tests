@@ -104,9 +104,15 @@ func CheckRoutineVerdict(verdict RoutineVerdict) error {
 	return errors.Errorf("unexpected routine verdict: %v", verdict)
 }
 
-// runRoutine calls into the injected network diagnostics mojo API and returns a
+// List of network diagnostic routines
+const (
+	RoutineLanConnectivity    = "lanConnectivity"
+	RoutineDNSResolverPresent = "dnsResolverPresent"
+)
+
+// RunRoutine calls into the injected network diagnostics mojo API and returns a
 // RoutineResult on success, or an error.
-func (m *MojoAPI) runRoutine(ctx context.Context, routine string) (*RoutineResult, error) {
+func (m *MojoAPI) RunRoutine(ctx context.Context, routine string) (*RoutineResult, error) {
 	result := RoutineResult{Verdict: VerdictUnknown}
 	jsWrap := fmt.Sprintf("function() { return this.%v() }", routine)
 	if err := m.mojoRemote.Call(ctx, &result, jsWrap); err != nil {
@@ -118,18 +124,6 @@ func (m *MojoAPI) runRoutine(ctx context.Context, routine string) (*RoutineResul
 		return &result, nil
 	}
 	return nil, errors.Errorf("unknown routine verdict; got: %v", result.Verdict)
-}
-
-// LanConnectivity runs the LanConnectivity network diagnostic routine. Returns
-// the RoutineResult on success, or an error.
-func (m *MojoAPI) LanConnectivity(ctx context.Context) (*RoutineResult, error) {
-	return m.runRoutine(ctx, "lanConnectivity")
-}
-
-// DNSResolverPresent runs the DNSResolverPresent network diagnostic routine. Returns
-// the RoutineResult on success, or an error.
-func (m *MojoAPI) DNSResolverPresent(ctx context.Context) (*RoutineResult, error) {
-	return m.runRoutine(ctx, "dnsResolverPresent")
 }
 
 // Release frees the resources help by the internal MojoAPI components.
