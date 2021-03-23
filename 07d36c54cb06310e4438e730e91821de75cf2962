@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9be76f17_28200bf2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-03-23T18:49:36Z",
+      "side": 1,
+      "message": "The test should create results-chart.json, which contains the values eventually sent to crosbolt. You can check the difference before/after this CL, that should provide an indication I think.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "07d36c54cb06310e4438e730e91821de75cf2962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "73b758b1_75456f09",
