@@ -1491,6 +1491,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f5a3da_fd482d2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-23T22:36:31Z",
+      "side": 1,
+      "message": "Jun, appreciate your insights on this. We did some experiment with Google news. As you suspected, the different category tabs will not trigger page loading. To resolve this issue, we make the page reload after switching the google news tabs to enforce page reloading. (With this change, the refreshPage will be in the replay mode inside recorder and we plan to keep it with touch implementation.)",
+      "parentUuid": "9fc99ac1_6253f765",
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16a6a338_cb27dd3c",
@@ -1588,6 +1606,24 @@
       "side": 1,
       "message": "I believe that the WebUITabStrip feature is added to loggedInToCUJUser fixture, but not WPR precondition.  I am afraid that it does not work.",
       "parentUuid": "993db851_d3484b8b",
+      "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512fc0a9_46b1bc57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-23T22:36:31Z",
+      "side": 1,
+      "message": "This has been fixed. Thanks for catching this!",
+      "parentUuid": "560b30c2_5f32b039",
       "revId": "12755f45c1770d566fd6b0d2c762c69476985668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
