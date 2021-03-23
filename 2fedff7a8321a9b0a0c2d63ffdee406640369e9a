@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19369296_52a42e4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-23T17:25:31Z",
+      "side": 1,
+      "message": "Hi, Thanks for the info. Made changes as suggested.",
+      "parentUuid": "fd096509_ed3d5ad5",
+      "range": {
+        "startLine": 127,
+        "startChar": 20,
+        "endLine": 127,
+        "endChar": 56
+      },
+      "revId": "2fedff7a8321a9b0a0c2d63ffdee406640369e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "811aafbb_26fbec42",
