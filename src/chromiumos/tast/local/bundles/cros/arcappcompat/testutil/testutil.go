@@ -507,6 +507,44 @@ func MouseClick(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a
 	}
 }
 
+// Largescreenlayout Test verifies app utilizes large screen after maximizing the app.
+func Largescreenlayout(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	if !tabletModeEnabled {
+		s.Log("Setting the window to fullscreen")
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
+			s.Fatal("Failed to set the window to fullscreen: ", err)
+		}
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateFullscreen); err != nil {
+			s.Fatal("The window is not in fullscreen: ", err)
+		}
+	}
+
+	appWidth, appHeight, err := getAppCoordinates(ctx, s, a, d, appPkgName)
+	if err != nil {
+		s.Fatal("Failed to get app coordinates: ", err)
+	}
+
+	info, err := d.GetInfo(ctx)
+	if err != nil {
+		s.Fatal("Failed to get device display: ", err)
+	}
+	deviceDisplayWidth := info.DisplayWidth
+	deviceDisplayHeight := info.DisplayHeight
+
+	if appWidth >= deviceDisplayWidth {
+		s.Log("App utilizes the device display screen and its appWidth: ", appWidth, " appHeight: ", appHeight, " deviceDisplayWidth: ", deviceDisplayWidth, " deviceDisplayHeight: ", deviceDisplayHeight)
+	} else {
+		s.Fatal("Failed to utilize the device screen and black bars observed on both sides of an app: ", " appWidth: ", appWidth, " appHeight: ", appHeight, " deviceDisplayWidth: ", deviceDisplayWidth, " deviceDisplayHeight: ", deviceDisplayHeight)
+	}
+
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
