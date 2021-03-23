@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package soundcardinit
+package audio
 
 import (
 	"context"
@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/audio/soundcardinit"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -28,13 +29,13 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "first_boot",
-				Val: TestParameters{
+				Val: soundcardinit.TestParameters{
 					Func: firstBoot,
 				},
 			},
 			{
 				Name: "recent_reboot",
-				Val: TestParameters{
+				Val: soundcardinit.TestParameters{
 					Func: recentReboot,
 				},
 			},
@@ -48,27 +49,27 @@ const timeout = 2 * time.Second
 
 // Max98390 Verifies sound_card_init  Max98390  boot time calibration logic.
 func Max98390(ctx context.Context, s *testing.State) {
-	soundCardID, err := GetSoundCardID(ctx)
+	soundCardID, err := soundcardinit.GetSoundCardID(ctx)
 	if err != nil {
 		s.Fatal("Failed to get sound card name: ", err)
 	}
 
 	// Clear all sound_card_init files.
-	if err := os.Remove(StopTimeFile); err != nil && !os.IsNotExist(err) {
-		s.Fatalf("Failed to rm %s: %v", StopTimeFile, err)
+	if err := os.Remove(soundcardinit.StopTimeFile); err != nil && !os.IsNotExist(err) {
+		s.Fatalf("Failed to rm %s: %v", soundcardinit.StopTimeFile, err)
 	}
 
-	runTimeFile := fmt.Sprintf(RunTimeFile, soundCardID)
+	runTimeFile := fmt.Sprintf(soundcardinit.RunTimeFile, soundCardID)
 	if err := os.Remove(runTimeFile); err != nil && !os.IsNotExist(err) {
 		s.Fatalf("Failed to rm %s: %v", runTimeFile, err)
 	}
 
-	if err := RemoveCalibFiles(ctx, soundCardID, ampCount); err != nil {
+	if err := soundcardinit.RemoveCalibFiles(ctx, soundCardID, ampCount); err != nil {
 		s.Fatal("Failed to rm calib files: ", err)
 	}
 
 	// Run test cases.
-	testFunc := s.Param().(TestParameters).Func
+	testFunc := s.Param().(soundcardinit.TestParameters).Func
 	testFunc(ctx, s, soundCardID)
 }
 
@@ -86,7 +87,7 @@ func firstBoot(ctx context.Context, s *testing.State, soundCardID string) {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return VerifyUseVPD(ctx, soundCardID, ampCount)
+		return soundcardinit.VerifyUseVPD(ctx, soundCardID, ampCount)
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
 		s.Fatal("Failed to verify calib files using VPD value: ", err)
 	}
@@ -95,15 +96,15 @@ func firstBoot(ctx context.Context, s *testing.State, soundCardID string) {
 // recentReboot Verifies sound_card_init max98390 skips boot time calibration after the recent reboot.
 func recentReboot(ctx context.Context, s *testing.State, soundCardID string) {
 	// Create previous sound_car_init run time as yesterday.
-	if err := CreateRunTimeFile(ctx, soundCardID, time.Now().AddDate(0, 0, -1).Unix()); err != nil {
+	if err := soundcardinit.CreateRunTimeFile(ctx, soundCardID, time.Now().AddDate(0, 0, -1).Unix()); err != nil {
 		s.Fatal("Failed to create RunTimeFile: ", err)
 	}
 	// Create previous CRAS stop time as now to mock the recent reboot.
-	if err := CreateStopTimeFile(ctx, time.Now().Unix()); err != nil {
-		s.Fatalf("Failed to create %s: %v", StopTimeFile, err)
+	if err := soundcardinit.CreateStopTimeFile(ctx, time.Now().Unix()); err != nil {
+		s.Fatalf("Failed to create %s: %v", soundcardinit.StopTimeFile, err)
 	}
 
-	f := fmt.Sprintf(RunTimeFile, soundCardID)
+	f := fmt.Sprintf(soundcardinit.RunTimeFile, soundCardID)
 	startTime := time.Now()
 	// Run sound_card_init.
 	runCtx, cancel := context.WithTimeout(ctx, timeout)
@@ -131,7 +132,7 @@ func recentReboot(ctx context.Context, s *testing.State, soundCardID string) {
 	}
 
 	// Verify calib files still not exist after sound_card_init completion.
-	if err := VerifyCalibNotExist(ctx, soundCardID, ampCount); err != nil {
+	if err := soundcardinit.VerifyCalibNotExist(ctx, soundCardID, ampCount); err != nil {
 		s.Fatal("Boot time calibration should be skipped after the recent reboot: ", err)
 	}
 }
