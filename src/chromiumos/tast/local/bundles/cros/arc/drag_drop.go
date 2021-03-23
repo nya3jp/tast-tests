@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -30,8 +31,10 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"drag_drop_manifest.json", "drag_drop_background.js", "drag_drop_window.js", "drag_drop_window.html"},
-		Timeout:      4 * time.Minute,
+		Data: []string{
+			"drag_drop_manifest.json", "drag_source_background.js", "drag_source_window.js", "drag_source_window.html",
+			"drag_target_background.js", "drag_target_window.js", "drag_target_window.html"},
+		Timeout: 4 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "chrome_to_android",
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -50,6 +53,16 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val:               "android_to_android",
+		}, {
+			Name:              "android_to_chrome",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               "android_to_chrome",
+		}, {
+			Name:              "android_to_chrome_vm",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               "android_to_chrome",
 		}},
 	})
 }
@@ -73,18 +86,30 @@ func DragDrop(ctx context.Context, s *testing.State) {
 
 	testMethod := s.Param().(string)
 
+	var extID string
 	chromeOpts := []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"), chrome.ExtraArgs("--disable-features=ArcResizeLock")}
-	if testMethod == "chrome_to_android" {
+	if testMethod == "chrome_to_android" || testMethod == "android_to_chrome" {
 		s.Log("Copying extension to temp directory")
 		extDir, err := ioutil.TempDir("", "tast.arc.DragDropExtension")
 		if err != nil {
 			s.Fatal("Failed to create temp dir: ", err)
 		}
 		defer os.RemoveAll(extDir)
-		for _, name := range []string{"manifest.json", "background.js", "window.js", "window.html"} {
-			if err := fsutil.CopyFile(s.DataPath("drag_drop_"+name), filepath.Join(extDir, name)); err != nil {
+		if err := fsutil.CopyFile(s.DataPath("drag_drop_manifest.json"), filepath.Join(extDir, "manifest.json")); err != nil {
+			s.Fatal("Failed to copy extension manifest.json: ", err)
+		}
+		prefix := "drag_source_"
+		if testMethod == "android_to_chrome" {
+			prefix = "drag_target_"
+		}
+		for _, name := range []string{"background.js", "window.js", "window.html"} {
+			if err := fsutil.CopyFile(s.DataPath(prefix+name), filepath.Join(extDir, name)); err != nil {
 				s.Fatalf("Failed to copy extension %s: %v", name, err)
 			}
+		}
+		extID, err = chrome.ComputeExtensionID(extDir)
+		if err != nil {
+			s.Fatalf("Failed to compute extension ID for %v: %v", extDir, err)
 		}
 		chromeOpts = append(chromeOpts, chrome.UnpackedExtension(extDir))
 	}
@@ -177,7 +202,7 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	sourceBounds := coords.Rect{Left: w, Top: 0, Width: w, Height: w}
 	targetBounds := coords.Rect{Left: 0, Top: 0, Width: w, Height: w}
 
-	if testMethod == "android_to_android" {
+	if testMethod == "android_to_android" || testMethod == "android_to_chrome" {
 		sourceAct, err := startActivityWithBounds(ctx, sourceApk, sourcePkg, sourceActName, sourceBounds)
 		if err != nil {
 			s.Fatal("Failed to start an activity with bounds: ", err)
@@ -186,26 +211,43 @@ func DragDrop(ctx context.Context, s *testing.State) {
 		defer sourceAct.Stop(cleanupCtx, tconn)
 	}
 
-	targetAct, err := startActivityWithBounds(ctx, targetApk, targetPkg, targetActName, targetBounds)
-	if err != nil {
-		s.Fatal("Failed to start an activity with bounds: ", err)
+	var targetAct *arc.Activity
+	if testMethod == "chrome_to_android" || testMethod == "android_to_android" {
+		targetAct, err = startActivityWithBounds(ctx, targetApk, targetPkg, targetActName, targetBounds)
+		if err != nil {
+			s.Fatal("Failed to start an activity with bounds: ", err)
+		}
+		defer targetAct.Close()
+		defer targetAct.Stop(cleanupCtx, tconn)
 	}
-	defer targetAct.Close()
-	defer targetAct.Stop(cleanupCtx, tconn)
 
 	if err := mouse.Drag(ctx, tconn, sourceBounds.CenterPoint(), targetBounds.CenterPoint(), time.Second); err != nil {
 		s.Fatal("Failed to send drag events: ", err)
 	}
 
-	if err := targetAct.Focus(ctx, tconn); err != nil {
-		s.Fatal("Failed to focus the activity: ", err)
-	}
+	if testMethod == "chrome_to_android" || testMethod == "android_to_android" {
+		if err := targetAct.Focus(ctx, tconn); err != nil {
+			s.Fatal("Failed to focus the activity: ", err)
+		}
 
-	const (
-		expected = `ClipData { text/plain "" {T:Data text} }`
-		fieldID  = targetPkg + ":id/dropped_data_view"
-	)
-	if err := d.Object(ui.ID(fieldID)).WaitForText(ctx, expected, 30*time.Second); err != nil {
-		s.Fatal("Failed to wait for the drag and drop result: ", err)
+		const (
+			expected = `ClipData { text/plain "" {T:Data text} }`
+			fieldID  = targetPkg + ":id/dropped_data_view"
+		)
+		if err := d.Object(ui.ID(fieldID)).WaitForText(ctx, expected, 30*time.Second); err != nil {
+			s.Fatal("Failed to wait for the drag and drop result: ", err)
+		}
+	} else {
+		s.Log("Connecting to the extension page")
+		bgURL := "chrome-extension://" + extID + "/window.html"
+		conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+		if err != nil {
+			s.Fatalf("Could not connect to extension at %v: %v", bgURL, err)
+		}
+
+		const expected = "Data text"
+		if err := conn.WaitForExpr(ctx, fmt.Sprintf(`document.getElementById('dropped-data').innerHTML === %q`, expected)); err != nil {
+			s.Fatal("Failed to wait for the dropped data: ", err)
+		}
 	}
 }
