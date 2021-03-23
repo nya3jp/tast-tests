@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f61ae001_38f2cebd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-23T22:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a5b0a54_334fe702",
+      "revId": "3946e537f4aa52cdcc071fe3f875c4f5c244503a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4aa56439_4103664f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-23T21:45:25Z",
       "side": 1,
       "message": "I wonder if we could create a builder for this? e.g. pass \u0027networkDiagnostics\u0027 and a list of methods. We would need to add some complexity for apis with less trivial methods, but that should be doable.\n\nThis is just a thought for the future, nothing we need to do here.",
+      "revId": "3946e537f4aa52cdcc071fe3f875c4f5c244503a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a251639_0f4d8034",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-23T22:23:21Z",
+      "side": 1,
+      "message": "Yeah I\u0027m trying to think of ways to make this more generic. Right now the routine name is used a few too many times...",
+      "parentUuid": "4aa56439_4103664f",
       "revId": "3946e537f4aa52cdcc071fe3f875c4f5c244503a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
