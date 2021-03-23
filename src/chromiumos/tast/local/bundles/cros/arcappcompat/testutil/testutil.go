@@ -561,6 +561,44 @@ func OrientationSize(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
+// Largescreenlayout Test verifies if app utilizes large screen after maximizing the app and without crash or ANR.
+func Largescreenlayout(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	if !tabletModeEnabled {
+		s.Log("Setting the window to fullscreen")
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
+			s.Fatal("Failed to set the window to fullscreen: ", err)
+		}
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateFullscreen); err != nil {
+			s.Fatal("The window is not in fullscreen: ", err)
+		}
+	}
+
+	appWidth, appHeight, err := getAppCoordinates(ctx, s, a, d, appPkgName)
+	if err != nil {
+		s.Fatal("Failed to get app coordinates: ", err)
+	}
+
+	info, err := d.GetInfo(ctx)
+	if err != nil {
+		s.Fatal("Failed to get device display: ", err)
+	}
+	deviceDisplayWidth := info.DisplayWidth
+	deviceDisplayHeight := info.DisplayHeight
+
+	if appWidth >= deviceDisplayWidth {
+		testing.ContextLogf(ctx, "App utilizes the device display screen and its appWidth %+v appHeight %+v  deviceDisplayWidth %+v deviceDisplayHeight %+v", appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
+	} else {
+		testing.ContextLogf(ctx, "appWidth %+v appHeight %+v  deviceDisplayWidth %+v deviceDisplayHeight %+v", appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
+		s.Fatal("Failed to utilize the device display screen and black bars observed on both side of an app")
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
