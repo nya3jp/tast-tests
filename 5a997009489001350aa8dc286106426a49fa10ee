@@ -16,6 +16,92 @@
       "message": "Thanks Shuhei for the review. I\u0027ve compiled the responses and code changes from the team and am making responses for all the video chat related CLs. Please check.",
       "revId": "5a997009489001350aa8dc286106426a49fa10ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d942d79b_6f872dc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:46:45Z",
+      "side": 1,
+      "message": "Thanks for the update Xibin, the change looks mostly good. ",
+      "revId": "5a997009489001350aa8dc286106426a49fa10ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "829e447a_92b4e08d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:46:45Z",
+      "side": 1,
+      "message": "style: Can you use early-return pattern to reduce nesting, i.e.\n\n err :\u003d ui.LeftClick(...)\n if err \u003d\u003d nil {\n   testing.ContextLog(ctx, \"Close Video\")\n   return nil\n }\n err \u003d ui.LeftClick(...)\n if err \u003d\u003d nil {\n   testing.ContextLog(ctx, \"Open Video\")\n }\n return err",
+      "range": {
+        "startLine": 243,
+        "startChar": 3,
+        "endLine": 251,
+        "endChar": 13
+      },
+      "revId": "5a997009489001350aa8dc286106426a49fa10ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "742bde83_905e264a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:46:45Z",
+      "side": 1,
+      "message": "I recommend struct initialization with explicit field names so that we will never mix account and password.",
+      "range": {
+        "startLine": 666,
+        "startChar": 30,
+        "endLine": 666,
+        "endChar": 69
+      },
+      "revId": "5a997009489001350aa8dc286106426a49fa10ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cbf5d55_5c446f22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/slide.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:46:45Z",
+      "side": 1,
+      "message": "Where is this function used?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "5a997009489001350aa8dc286106426a49fa10ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
