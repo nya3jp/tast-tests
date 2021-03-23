@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "086cf4bc_1f0f2522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-23T01:25:05Z",
+      "side": 1,
+      "message": "Do we need this still?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "e6e94133cb5643085efc614a303e5a8c9e16e672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
