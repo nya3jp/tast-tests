@@ -7,69 +7,107 @@ package helpapp
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
 )
 
-type tabFindParams string
+// HelpContext represents a context of Help app.
+type HelpContext struct {
+	cr    *chrome.Chrome
+	tconn *chrome.TestConn
+	ui    *uiauto.Context
+}
 
-func (t tabFindParams) uiFindParams() ui.FindParams {
-	return ui.FindParams{
-		Name: string(t),
-		Role: ui.RoleTypeTreeItem,
+// NewContext creates a new context of the Help app.
+func NewContext(cr *chrome.Chrome, tconn *chrome.TestConn) *HelpContext {
+	return &HelpContext{
+		ui:    uiauto.New(tconn),
+		tconn: tconn,
+		cr:    cr,
 	}
 }
+
+// RootFinder is the finder of Help app root window.
+var RootFinder = nodewith.Name(apps.Help.Name).Role(role.RootWebArea)
+
+// TabFinder is the finder of tabs in Help app.
+var TabFinder = nodewith.Role(role.TreeItem).Ancestor(RootFinder)
 
 // Tab names in Help app.
-const (
-	SearchTab   = tabFindParams("Search")
-	OverviewTab = tabFindParams("Overview")
-	PerksTab    = tabFindParams("Perks")
-	HelpTab     = tabFindParams("Help")
-	WhatsNewTab = tabFindParams("What’s new")
+var (
+	SearchTabFinder   = TabFinder.Name("Search")
+	OverviewTabFinder = TabFinder.Name("Overview")
+	PerksTabFinder    = TabFinder.Name("Perks")
+	HelpTabFinder     = TabFinder.Name("Help")
+	WhatsNewTabFinder = TabFinder.Name("See what's new")
 )
 
-var helpRootNodeParams = ui.FindParams{
-	Name: apps.Help.Name,
-	Role: ui.RoleTypeRootWebArea,
-}
-
 // WaitForApp waits for the app to be shown and rendered.
-func WaitForApp(ctx context.Context, tconn *chrome.TestConn) error {
-	helpRootNode, err := HelpRootNode(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find help app")
-	}
-	// Find Overview tab to verify app rendering.
-	if _, err := helpRootNode.DescendantWithTimeout(ctx, OverviewTab.uiFindParams(), 20*time.Second); err != nil {
-		return errors.Wrap(err, "failed to render help app")
-	}
-	return nil
+func (hc *HelpContext) WaitForApp() uiauto.Action {
+	return hc.ui.WaitUntilExists(OverviewTabFinder)
 }
 
 // Launch launches help app and waits for it to be present in shelf.
-func Launch(ctx context.Context, tconn *chrome.TestConn) error {
+func (hc *HelpContext) Launch() uiauto.Action {
 	app := apps.Help
-	if err := apps.Launch(ctx, tconn, app.ID); err != nil {
-		return errors.Wrapf(err, "failed to launch %s", app.Name)
-	}
 
-	testing.ContextLog(ctx, "Wait for help app shown in shelf")
-	if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
-		return errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
+	return func(ctx context.Context) error {
+		if err := apps.Launch(ctx, hc.tconn, app.ID); err != nil {
+			return errors.Wrapf(err, "failed to launch %s", app.Name)
+		}
+
+		testing.ContextLog(ctx, "Wait for help app shown in shelf")
+		if err := ash.WaitForApp(ctx, hc.tconn, app.ID); err != nil {
+			return errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
+		}
+		return nil
 	}
-	return nil
 }
 
 // Exists checks whether the help app exists in the accessiblity tree.
-func Exists(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
-	return ui.Exists(ctx, tconn, helpRootNodeParams)
+func (hc *HelpContext) Exists(ctx context.Context) (bool, error) {
+	return hc.ui.IsNodeFound(ctx, RootFinder)
+}
+
+// UIConn returns a connection to the Help app HTML page,
+// where JavaScript can be executed to simulate interactions with the UI.
+// The caller should close the returned connection.
+func (hc *HelpContext) UIConn(ctx context.Context) (*chrome.Conn, error) {
+	// Establish a Chrome connection to the Help app and wait for it to finish loading.
+	helpAppConn, err := hc.cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome-untrusted://help-app/"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get connection to help app")
+	}
+	if err := helpAppConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for help app to finish loading")
+	}
+	return helpAppConn, nil
+}
+
+// EvalJS executes javascript in Help app web page.
+func (hc *HelpContext) EvalJS(ctx context.Context, expr string, out interface{}) error {
+	conn, err := hc.UIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to web page")
+	}
+	return conn.Eval(ctx, expr, out)
+}
+
+// EvalJSWithShadowPiercer executes javascript in Help app web page.
+func (hc *HelpContext) EvalJSWithShadowPiercer(ctx context.Context, expr string, out interface{}) error {
+	c, err := hc.UIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to web page")
+	}
+	return webutil.EvalWithShadowPiercer(ctx, c, expr, out)
 }
 
 // LoadTimeData struct for the help app.
@@ -80,98 +118,15 @@ type LoadTimeData struct {
 }
 
 // GetLoadTimeData returns some of the LoadTimeData fields from the help app.
-func GetLoadTimeData(ctx context.Context, cr *chrome.Chrome) (*LoadTimeData, error) {
-	// Establish a Chrome connection to the Help app and wait for it to finish loading.
-	helpAppConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome-untrusted://help-app/"))
+func (hc *HelpContext) GetLoadTimeData(ctx context.Context) (*LoadTimeData, error) {
+	helpAppConn, err := hc.UIConn(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get connection to help app")
+		return nil, err
 	}
 	defer helpAppConn.Close()
-
-	if err := helpAppConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for help app to finish loading")
-	}
 	data := &LoadTimeData{}
 	if err := helpAppConn.Eval(ctx, "window.loadTimeData.data_", &data); err != nil {
 		return nil, errors.Wrap(err, "failed to evaluate window.loadTimeData.data_")
 	}
 	return data, nil
-}
-
-// IsTabShown checks whether tab is shown.
-func IsTabShown(ctx context.Context, tconn *chrome.TestConn, tabParams tabFindParams) (bool, error) {
-	helpRootNode, err := HelpRootNode(ctx, tconn)
-	if err != nil {
-		return false, errors.Wrap(err, "failed to find help app")
-	}
-	defer helpRootNode.Release(ctx)
-
-	return helpRootNode.DescendantExists(ctx, tabParams.uiFindParams())
-}
-
-// ClickTab clicks the tab with given name.
-func ClickTab(ctx context.Context, tconn *chrome.TestConn, tabParams tabFindParams) error {
-	helpRootNode, err := HelpRootNode(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find help app")
-	}
-	defer helpRootNode.Release(ctx)
-
-	tabNode, err := helpRootNode.DescendantWithTimeout(ctx, tabParams.uiFindParams(), 20*time.Second)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find tab node with %v", tabParams.uiFindParams())
-	}
-	defer tabNode.Release(ctx)
-
-	return tabNode.StableLeftClick(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second})
-}
-
-// HelpRootNode returns the root ui node of Help app.
-func HelpRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
-	return ui.FindWithTimeout(ctx, tconn, helpRootNodeParams, 20*time.Second)
-}
-
-// WaitWhatsNewTabRendered waits for What's New tab to be rendered.
-// The large text at the top of the page seems like a natural choice since it's easily
-// recognizable and unlikely to change frequently. It would be better to have a
-// successful launch indicator that doesn't rely on a string, though.
-func WaitWhatsNewTabRendered(ctx context.Context, tconn *chrome.TestConn) error {
-	helpRootNode, err := HelpRootNode(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find help app")
-	}
-	defer helpRootNode.Release(ctx)
-
-	// Particularly in this case, the apostrophe in What’s is not actually the normal
-	// apostrophe character, but instead the "right single quotation mark" character (&rsquo;).
-	titleParams := ui.FindParams{Role: ui.RoleTypeStaticText, Name: "What's new with Chromebook?"}
-	return ui.WaitUntilExists(ctx, tconn, titleParams, 30*time.Second)
-}
-
-// DescendantWithTimeout finds a node in help app using params and returns it.
-func DescendantWithTimeout(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams, timeout time.Duration) (*ui.Node, error) {
-	helpRootNode, err := HelpRootNode(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find help app")
-	}
-	defer helpRootNode.Release(ctx)
-
-	return helpRootNode.DescendantWithTimeout(ctx, params, timeout)
-}
-
-// DescendantsWithTimeout returns all nodes in help app matching params.
-// It waits for the first element appear and returns all findings immediately.
-// Thus, this function can not be used when elements are shown up one by one.
-func DescendantsWithTimeout(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams, timeout time.Duration) (ui.NodeSlice, error) {
-	helpRootNode, err := HelpRootNode(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find help app")
-	}
-	defer helpRootNode.Release(ctx)
-
-	if err := helpRootNode.WaitUntilDescendantExists(ctx, params, timeout); err != nil {
-		return nil, errors.Wrap(err, "failed to find help app")
-	}
-
-	return helpRootNode.Descendants(ctx, params)
 }

@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
@@ -164,7 +165,7 @@ func helpAppLaunchAfterLogin(ctx context.Context, s *testing.State, isTabletMode
 	}
 	defer cleanup(ctx)
 
-	if err := helpapp.Launch(ctx, tconn); err != nil {
+	if err := helpapp.NewContext(cr, tconn).Launch()(ctx); err != nil {
 		s.Fatal("Failed to launch help app: ", err)
 	}
 
@@ -175,13 +176,14 @@ func helpAppLaunchAfterLogin(ctx context.Context, s *testing.State, isTabletMode
 
 // assertHelpAppLaunched asserts help app to be launched or not
 func assertHelpAppLaunched(ctx context.Context, s *testing.State, tconn *chrome.TestConn, cr *chrome.Chrome, isLaunched bool) error {
+	helpCtx := helpapp.NewContext(cr, tconn)
 	if isLaunched {
-		if err := helpapp.WaitForApp(ctx, tconn); err != nil {
+		if err := helpCtx.WaitForApp()(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for HelpApp")
 		}
 
 		// Verify perk is shown to default consumer user.
-		isPerkShown, err := helpapp.IsTabShown(ctx, tconn, helpapp.PerksTab)
+		isPerkShown, err := uiauto.New(tconn).IsNodeFound(ctx, helpapp.PerksTabFinder)
 		if err != nil {
 			s.Fatal("Failed to check perks visibility: ", err)
 		}
@@ -190,7 +192,7 @@ func assertHelpAppLaunched(ctx context.Context, s *testing.State, tconn *chrome.
 			s.Error("Perk is not shown to a consumer user")
 		}
 	} else {
-		isAppLaunched, err := helpapp.Exists(ctx, tconn)
+		isAppLaunched, err := helpCtx.Exists(ctx)
 		if err != nil {
 			s.Fatal("Failed to verify help app existence: ", err)
 		}

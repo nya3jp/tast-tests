@@ -12,8 +12,11 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -54,16 +57,17 @@ func LaunchReleaseNotesFromSettings(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
+	ui := uiauto.New(tconn)
+
 	settings, err := ossettings.LaunchAtPage(ctx, tconn, ossettings.AboutChromeOS)
 	if err != nil {
 		s.Fatal("Failed to launch Settings: ", err)
 	}
 
-	if err := settings.LaunchWhatsNew()(ctx); err != nil {
-		s.Fatal("Failed to launch WhatsNew: ", err)
-	}
-
-	if err := helpapp.WaitWhatsNewTabRendered(ctx, tconn); err != nil {
-		s.Error(`Failed to verify "What’s new" tab rendering: `, err)
+	if err := uiauto.Combine("launch WhatsNew and verify landing page",
+		settings.LaunchWhatsNew(),
+		ui.WaitUntilExists(nodewith.Name("See what's new").Role(role.StaticText).Ancestor(helpapp.RootFinder)),
+	)(ctx); err != nil {
+		s.Error(`Failed to launch WhatsNew or verify landing page: `, err)
 	}
 }

@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
@@ -60,12 +61,10 @@ func LaunchHelpAppFromSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch Settings: ", err)
 	}
 
-	if err := settings.LaunchHelpApp()(ctx); err != nil {
+	if err := uiauto.Combine(`launch help app on "about ChromeOS" page`,
+		settings.LaunchHelpApp(),
+		helpapp.NewContext(cr, tconn).WaitForApp(),
+	)(ctx); err != nil {
 		s.Fatal("Failed to launch help App: ", err)
-	}
-
-	// App should be launched at the overview page.
-	if err := helpapp.WaitForApp(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for help app: ", err)
 	}
 }
