@@ -16,6 +16,183 @@
       "message": "Looks fine to me.\n\nBTW, feel free to resolve the comments when you think you\u0027ve addressed them. ",
       "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02853892_58e0a696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-23T17:48:37Z",
+      "side": 1,
+      "message": "nit/style: Per http://go/go-code-review-comments#Initialisms, initialisms like \"fw\" should be kept in a consistent case. In this case, please rename the variable to simulateFWCrashPath.",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eaaf48e_ef598891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-23T17:48:37Z",
+      "side": 1,
+      "message": "nit/style: Since you\u0027re only defining one var here, you can use a simpler syntax:\n\n    var expectedAth10kRegexes \u003d []string{\n        ...\n    }",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "347af37a_1d35b2d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-23T17:48:37Z",
+      "side": 1,
+      "message": "Please reserve time for cleanup: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35802721_90d1cb9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-23T17:48:37Z",
+      "side": 1,
+      "message": "These two situations (`err !\u003d nil` and `!res`) have rather different implications, and should be handled differently. In particular, if `err !\u003d nil`, we should log the error.\n\n    if res, err :\u003d regexp.MatchString(...); err !\u003d nil {\n        s.Error(\"Failed to run regex: \", err)\n        crash.MoveFilesToOut(ctx, s.OutDir(), metaFile)\n    } else if !res {\n        s.Error(\"Failed to find the expected Ath10k signature\")\n        crash.MoveFilesToOut(ctx, s.OutDir(), metaFile)\n    }",
+      "range": {
+        "startLine": 97,
+        "startChar": 73,
+        "endLine": 97,
+        "endChar": 91
+      },
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ed789a_467c54bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-23T17:48:37Z",
+      "side": 1,
+      "message": "For simplicity, I recommend using `continue` instead of an else-block that overwrites `err`:\n\n    if err !\u003d nil {\n        s.Errorf(\"Couldn\u0027t read meta file %s contents: %v\", metaFile, err)\n        continue\n    }\n    if res, err :\u003d regexp.matchString(...)",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c61c3935_9e16fc50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-23T17:48:37Z",
+      "side": 1,
+      "message": "It\u0027s simpler to use `regexp.Match` (instead of `regexp.MatchString`), and operate directly on `contents` as a []byte.\n\n    if res, err :\u003d regexp.Match(sigAth10k, contents); ...",
+      "range": {
+        "startLine": 97,
+        "startChar": 31,
+        "endLine": 97,
+        "endChar": 42
+      },
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7090cc79_0334b60d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-23T17:48:37Z",
+      "side": 1,
+      "message": "Handle the error that MoveFilesToOut returns: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca8d98e_2df57121",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-23T17:48:37Z",
+      "side": 1,
+      "message": "Handle the error that MoveFilesToOut returns: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0610ddc2_2c406441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-23T17:48:37Z",
+      "side": 1,
+      "message": "Move this cleanup to after L90. As the test is currently written, there are no Fatal\u0027s between L90 and here; but moving it up will prevent issues from arising in the future.",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
