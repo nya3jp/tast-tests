@@ -52,7 +52,7 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 		emojiChar  = "😂"
 	)
 
-	emojiMenuFinder := nodewith.Name("Emoji")
+	emojiMenuFinder := nodewith.NameStartingWith("Emoji")
 	emojiPickerFinder := nodewith.Name("Emoji Picker").Role(role.RootWebArea)
 	emojiCharFinder := nodewith.Name(emojiChar).First().Ancestor(emojiPickerFinder)
 
