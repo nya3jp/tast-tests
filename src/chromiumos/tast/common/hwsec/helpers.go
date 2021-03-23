@@ -182,21 +182,34 @@ func (h *CmdHelper) SetTPMManagerLocalData(ctx context.Context, data []byte) err
 
 // DropResetLockPermissions drops the reset lock permissions and return a callback to restore the permissions.
 func (h *CmdHelper) DropResetLockPermissions(ctx context.Context) (restoreFunc func(ctx context.Context) error, retErr error) {
-	// Stop TPM Manager before modifying its local data.
-	if err := h.daemonController.Stop(ctx, TPMManagerDaemon); err != nil {
-		return nil, errors.Wrap(err, "failed to stop TPM Manager")
+	stopDaemon := func(daemon *DaemonInfo, retErr *error) {
+		if err := h.daemonController.Stop(ctx, daemon); err != nil {
+			*retErr = errors.Wrapf(err, "failed to stop %s", daemon.DaemonName)
+		}
 	}
-
-	// Restart it after finishing all operation.
-	defer func() {
-		if err := h.daemonController.Start(ctx, TPMManagerDaemon); err != nil {
+	startDaemon := func(daemon *DaemonInfo, retErr *error) {
+		if err := h.daemonController.Start(ctx, daemon); err != nil {
 			if retErr == nil {
-				retErr = errors.Wrap(err, "failed to start TPM Manager")
+				*retErr = errors.Wrapf(err, "failed to start %s", daemon.DaemonName)
 			} else {
-				testing.ContextLog(ctx, "Failed to take screenshot: ", err)
+				testing.ContextLogf(ctx, "Failed to start %s: %v", daemon.DaemonName, err)
 			}
 		}
-	}()
+	}
+
+	// Stop Cryptohome because it contains TPM status cache.
+	if stopDaemon(CryptohomeDaemon, &retErr); retErr != nil {
+		return nil, retErr
+	}
+	// Restart it after finishing all operations.
+	defer startDaemon(CryptohomeDaemon, &retErr)
+
+	// Stop TPM Manager before modifying its local data.
+	if stopDaemon(TPMManagerDaemon, &retErr); retErr != nil {
+		return nil, retErr
+	}
+	// Restart it after finishing all operations.
+	defer startDaemon(TPMManagerDaemon, &retErr)
 
 	rawData, err := h.GetTPMManagerLocalData(ctx)
 	if err != nil {
@@ -226,22 +239,20 @@ func (h *CmdHelper) DropResetLockPermissions(ctx context.Context) (restoreFunc f
 		return nil, errors.Wrap(err, "failed to set local TPM data")
 	}
 
-	return func(ctx context.Context) error {
-		// Stop TPM Manager before modifying its local data.
-		if err := h.daemonController.Stop(ctx, TPMManagerDaemon); err != nil {
-			return errors.Wrap(err, "failed to stop TPM Manager")
+	return func(ctx context.Context) (retErr error) {
+		// Stop Cryptohome because it contains TPM status cache.
+		if stopDaemon(CryptohomeDaemon, &retErr); retErr != nil {
+			return retErr
 		}
+		// Restart it after finishing all operations.
+		defer startDaemon(CryptohomeDaemon, &retErr)
 
-		// Restart it after finishing all operation.
-		defer func() {
-			if err := h.daemonController.Start(ctx, TPMManagerDaemon); err != nil {
-				if retErr == nil {
-					retErr = errors.Wrap(err, "failed to start TPM Manager")
-				} else {
-					testing.ContextLog(ctx, "Failed to take screenshot: ", err)
-				}
-			}
-		}()
+		// Stop TPM Manager before modifying its local data.
+		if stopDaemon(TPMManagerDaemon, &retErr); retErr != nil {
+			return retErr
+		}
+		// Restart it after finishing all operations.
+		defer startDaemon(TPMManagerDaemon, &retErr)
 
 		// Restore the local data.
 		if err := h.SetTPMManagerLocalData(ctx, rawData); err != nil {
