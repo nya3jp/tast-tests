@@ -46,18 +46,6 @@ func init() {
 				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 			}, {
-				Name:              "us_en_exp",
-				Pre:               pre.VKEnabledTabletExp,
-				Val:               ime.INPUTMETHOD_XKB_US_ENG,
-				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
-				ExtraSoftwareDeps: []string{"gboard_decoder"},
-			}, {
-				Name:              "us_en_guest_exp",
-				Pre:               pre.VKEnabledTabletExpInGuest,
-				Val:               ime.INPUTMETHOD_XKB_US_ENG,
-				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
-				ExtraSoftwareDeps: []string{"gboard_decoder"},
-			}, {
 				Name:              "jp_us_stable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
@@ -76,18 +64,6 @@ func init() {
 				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 			}, {
-				Name:              "jp_us_exp",
-				Pre:               pre.VKEnabledTabletExp,
-				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
-				ExtraSoftwareDeps: []string{"gboard_decoder"},
-			}, {
-				Name:              "jp_us_guest_exp",
-				Pre:               pre.VKEnabledTabletExpInGuest,
-				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
-				ExtraSoftwareDeps: []string{"gboard_decoder"},
-			}, {
 				Name:              "zh_pinyin_stable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
@@ -97,18 +73,6 @@ func init() {
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
 				ExtraHardwareDeps: pre.InputsUnstableModels,
-			}, {
-				Name:              "zh_pinyin_exp",
-				Pre:               pre.VKEnabledTabletExp,
-				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-				ExtraAttr:         []string{"group:mainline", "informational"},
-				ExtraSoftwareDeps: []string{"gboard_decoder"},
-			}, {
-				Name:              "zh_pinyin_guest_exp",
-				Pre:               pre.VKEnabledTabletExpInGuest,
-				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
-				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			},
 		},
 	})
