@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fe0aee2_e7a34e1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 43
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:53:57Z",
+      "side": 1,
+      "message": "Thanks for the update, looks mostly good.\n",
+      "revId": "47ff28e49fc93d59ec50e7a3353ed59f4bd95548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ec21e6a_0d3da50c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:53:57Z",
+      "side": 1,
+      "message": "nit: I guess we should run cleanup even if prepare returned empty inviteLink... but I\u0027m not very sure.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "47ff28e49fc93d59ec50e7a3353ed59f4bd95548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21c3025_a651bf1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:53:57Z",
+      "side": 1,
+      "message": "nit\u0026optional: defer conf.End(ctx)",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 4
+      },
+      "revId": "47ff28e49fc93d59ec50e7a3353ed59f4bd95548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60982de2_1d1df6da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:53:57Z",
+      "side": 1,
+      "message": "errors.New",
+      "range": {
+        "startLine": 50,
+        "startChar": 14,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "47ff28e49fc93d59ec50e7a3353ed59f4bd95548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57c76580_11612b53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T06:53:57Z",
+      "side": 1,
+      "message": "style: Can you return nil explicitly to avoid naked returns?",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 9
+      },
+      "revId": "47ff28e49fc93d59ec50e7a3353ed59f4bd95548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
