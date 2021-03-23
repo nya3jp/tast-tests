@@ -16,6 +16,24 @@
       "message": "Is there some other way to use a fake camera feed supplied to cros-camera so that you can get the portrait mode processing but also guarantee what\u0027s in the stream?",
       "revId": "b5815671666539a85d9afb62f1e72715077b9397",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382cae0e_03a32f39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-23T03:05:47Z",
+      "side": 1,
+      "message": "We have enabled vivid (Virtual Video Testing Driver) [1] for camera testing. But I don\u0027t think it supports feeding custom fake input. (not 100% sure though)\n\nCurrently, a more possible and feasible way to achieve this goal is using CameraBox to test portrait mode. CameraBox is a hardware which we can control what is displayed before a real camera when running tests. Therefore, we can display an image with human face so we can test if portrait mode actually works.\n\n[1]: https://www.kernel.org/doc/html/v4.12/media/v4l-drivers/vivid.html",
+      "parentUuid": "c5c77a71_2bad261b",
+      "revId": "b5815671666539a85d9afb62f1e72715077b9397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
