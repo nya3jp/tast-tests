@@ -21,6 +21,7 @@ func init() {
 		Contacts:     []string{"pmalani@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
+		Data:         []string{"testcert.p12"},
 		Params: []testing.Param{
 			// For running manually.
 			{
@@ -78,6 +79,10 @@ func ModeSwitch(ctx context.Context, s *testing.State) {
 	testConn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get Test API connection: ", err)
+	}
+
+	if err := typecutils.EnablePeripheralDataAccess(ctx, s.DataPath("testcert.p12")); err != nil {
+		s.Fatal("Failed to enable peripheral data access setting: ", err)
 	}
 
 	s.Log("Verifying that no TBT devices enumerated")

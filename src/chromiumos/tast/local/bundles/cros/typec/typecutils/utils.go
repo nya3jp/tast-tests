@@ -12,11 +12,16 @@ import (
 	"regexp"
 	"strconv"
 
+	"github.com/golang/protobuf/proto"
+	"github.com/google/go-cmp/cmp"
+
+	"chromiumos/policy/enterprise_management"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/graphics"
+	"chromiumos/tast/local/session"
 )
 
 // The maximum number of USB Type C ports that a Chromebook supports.
@@ -134,4 +139,43 @@ func CheckPortsForTBTPartner(ctx context.Context) (bool, error) {
 	}
 
 	return false, nil
+}
+
+// buildTestSettings is a helper function which returns a ChromeDeviceSettingsProto with the
+// DevicePciPeripheralDataAccessEnabled setting set to true.
+func buildTestSettings() *enterprise_management.ChromeDeviceSettingsProto {
+	boolTrue := true
+	return &enterprise_management.ChromeDeviceSettingsProto{
+		ShowUserNames: &enterprise_management.ShowUserNamesOnSigninProto{
+			ShowUserNames: &boolTrue,
+		},
+	}
+}
+
+// EnablePeripheralDataAccess sets the Chrome device settings to have the "DevicePciPeripheralDataAccessEnabled"
+// setting set to true. This allows alternate mode switching to occur. keyPath denotes the keypath of the keyfile
+// which is pushed to the device and which is necessary to store the new settings proto.
+func EnablePeripheralDataAccess(ctx context.Context, keyPath string) error {
+	sm, err := session.NewSessionManager(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create session_manager binding")
+	}
+
+	privKey, err := session.ExtractPrivKey(keyPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse PKCS #12 file")
+	}
+
+	settings := buildTestSettings()
+	if err := session.StoreSettings(ctx, sm, "", privKey, nil, settings); err != nil {
+		return errors.Wrap(err, "failed to store settings")
+	}
+
+	if retrieved, err := session.RetrieveSettings(ctx, sm); err != nil {
+		return errors.Wrap(err, "failed to retrieve settings")
+	} else if !proto.Equal(retrieved, settings) {
+		return errors.Errorf("unexpected settings retrieved, diff: %s", cmp.Diff(retrieved, settings))
+	}
+
+	return nil
 }
