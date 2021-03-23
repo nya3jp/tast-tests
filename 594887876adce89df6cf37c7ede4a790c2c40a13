@@ -77,6 +77,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96415c85_7ef47de1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-23T17:50:28Z",
+      "side": 1,
+      "message": "What is your intention in calling os.Stat? Are you detecting whether the file exists? If so, please call os.IsNotExist on the error, since there can be other reasons why os.Stat returns an error.\n\nhttps://pkg.go.dev/os#IsNotExist",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35802721_90d1cb9b",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
         "patchSetId": 7
