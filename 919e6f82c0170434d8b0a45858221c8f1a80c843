@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c70f08_37bf94aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-23T10:37:44Z",
+      "side": 1,
+      "message": "Hi vsavu@,\n\nThe last in the chain of CLs which adds the chrome.login API Tast test.\n\nI will be abandoning the previous CL (crrev.com/c/2755289) since the code is almost entirely re-written.\n\nRegards,\nJit",
+      "revId": "919e6f82c0170434d8b0a45858221c8f1a80c843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
