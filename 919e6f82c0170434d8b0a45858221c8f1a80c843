@@ -16,6 +16,69 @@
       "message": "Hi vsavu@,\n\nThe last in the chain of CLs which adds the chrome.login API Tast test.\n\nI will be abandoning the previous CL (crrev.com/c/2755289) since the code is almost entirely re-written.\n\nRegards,\nJit",
       "revId": "919e6f82c0170434d8b0a45858221c8f1a80c843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a26cff5c_cb063e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-23T11:07:30Z",
+      "side": 1,
+      "message": "Use camel_case for the subtest name:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "range": {
+        "startLine": 53,
+        "startChar": 13,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "919e6f82c0170434d8b0a45858221c8f1a80c843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cce19615_10864ddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-23T11:07:30Z",
+      "side": 1,
+      "message": "Can you add a comment explaining where these are coming from?",
+      "range": {
+        "startLine": 56,
+        "startChar": 29,
+        "endLine": 56,
+        "endChar": 61
+      },
+      "revId": "919e6f82c0170434d8b0a45858221c8f1a80c843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d6b463_aaf9109b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-23T11:07:30Z",
+      "side": 1,
+      "message": "Can you need to check what is being sent here?",
+      "revId": "919e6f82c0170434d8b0a45858221c8f1a80c843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
