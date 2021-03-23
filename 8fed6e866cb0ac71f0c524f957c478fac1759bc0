@@ -16,6 +16,24 @@
       "message": "Do we own copyright of this file? If so could you add a copyright header?\n\nIf we don\u0027t own it we have to put the file under third_party directory to clarify.",
       "revId": "8fed6e866cb0ac71f0c524f957c478fac1759bc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6170ded0_fc2435e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tulip_480p_h264_cencv1_ctr.mpd",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-03-23T16:03:46Z",
+      "side": 1,
+      "message": "This is already being used as a test file in Chrome. I got it from here: https://source.chromium.org/chromium/chromium/src/+/master:media/test/data/tulip2.webm\n\nI\u0027m not sure where we put the copyrights for those in the Chrome repo.",
+      "parentUuid": "99c6ddc2_441d14c6",
+      "revId": "8fed6e866cb0ac71f0c524f957c478fac1759bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
