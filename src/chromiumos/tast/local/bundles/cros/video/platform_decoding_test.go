@@ -20,6 +20,12 @@ import (
 
 var v4l2Vp9Files = []string{"1080p_30fps_300frames.vp9.ivf"}
 
+var vaapiAv1Files = []string{
+	"test_vectors/av1/8-bit/00000527.ivf",
+	"test_vectors/av1/8-bit/00000535.ivf",
+	"test_vectors/av1/8-bit/00000548.ivf",
+}
+
 var vaapiVp9Files = map[string]map[string]map[string][]string{
 	"profile_0": {
 		"group1": {
@@ -317,6 +323,17 @@ func TestPlatformDecodingParams(t *testing.T) {
 			}
 		}
 	}
+
+	// Generate VAAPI AV1 tests.
+	params = append(params, paramData{
+		Name:         "vaapi_av1",
+		Decoder:      filepath.Join(chrome.BinTestDir, "decode_test"),
+		CmdBuilder:   "av1decodeVAAPIargs",
+		Files:        vaapiAv1Files,
+		HardwareDeps: "hwdep.D(hwdep.Platform(\"volteer\"))", //TODO consider this
+		SoftwareDeps: []string{"vaapi", caps.HWDecodeAV1},    // if adding 10 bit videos, need a 10 bit version of this
+		Metadata:     genExtraData(vaapiAv1Files),
+	})
 
 	// Generate V4L2 VP9 tests.
 	params = append(params, paramData{
