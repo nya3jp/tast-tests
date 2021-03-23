@@ -20,6 +20,7 @@ import (
 // ClamshellTests are placed here.
 var clamshellTestsForABCKids = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForABCKids},
+	{Name: "Clamshell: Largescreen Layout", Fn: testutil.Largescreenlayout},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
@@ -29,6 +30,7 @@ var clamshellTestsForABCKids = []testutil.TestCase{
 // TouchviewTests are placed here.
 var touchviewTestsForABCKids = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForABCKids},
+	{Name: "Touchview: Largescreen Layout", Fn: testutil.Largescreenlayout},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
