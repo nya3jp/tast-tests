@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
@@ -24,7 +25,6 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/screenshot"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

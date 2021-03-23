@@ -9,7 +9,7 @@ import (
 	"context"
 
 	"chromiumos/tast/common/network/cmd"
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/common/testexec"
 )
 
 // LocalCmdRunner is the object used for running local commands.

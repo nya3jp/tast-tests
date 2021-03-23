@@ -15,6 +15,7 @@ import (
 
 	"golang.org/x/sys/unix"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -25,7 +26,6 @@ import (
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	dlcutil "chromiumos/tast/local/dlc"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"

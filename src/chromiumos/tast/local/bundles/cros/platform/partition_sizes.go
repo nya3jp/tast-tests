@@ -13,8 +13,8 @@ import (
 	"strings"
 	"unicode"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/rialto"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

@@ -13,7 +13,7 @@ import (
 	"strconv"
 	"strings"
 
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/testing"
 )
 

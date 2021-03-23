@@ -13,9 +13,9 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/crostini/vmc"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )

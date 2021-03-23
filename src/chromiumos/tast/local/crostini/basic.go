@@ -7,7 +7,7 @@ package crostini
 import (
 	"context"
 
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/vm"
 )
 

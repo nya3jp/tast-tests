@@ -8,8 +8,8 @@ import (
 	"context"
 	"regexp"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 // ipv4Regex is a regex that matches IPv4 address.

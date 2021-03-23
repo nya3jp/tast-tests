@@ -15,8 +15,8 @@ import (
 	"github.com/golang/protobuf/proto"
 	"go.chromium.org/chromiumos/config/go/api/test/tls"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

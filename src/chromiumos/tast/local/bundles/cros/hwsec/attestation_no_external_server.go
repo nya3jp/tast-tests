@@ -13,8 +13,8 @@ import (
 
 	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/common/testexec"
 	hwseclocal "chromiumos/tast/local/hwsec"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

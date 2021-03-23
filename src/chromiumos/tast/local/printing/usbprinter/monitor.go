@@ -10,8 +10,8 @@ import (
 	"io"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 // waitEvent monitors USB events using udevadm and waits to see if a USB event

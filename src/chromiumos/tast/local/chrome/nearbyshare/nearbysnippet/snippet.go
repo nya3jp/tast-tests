@@ -18,11 +18,11 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android"
 	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/android/ui"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

@@ -15,9 +15,9 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"

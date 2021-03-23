@@ -15,9 +15,9 @@ import (
 	"android.com/frameworks/base/core/proto/android/server"
 	"github.com/golang/protobuf/proto"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

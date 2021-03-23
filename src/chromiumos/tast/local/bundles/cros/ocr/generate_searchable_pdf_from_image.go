@@ -10,8 +10,8 @@ import (
 	"os"
 	"path/filepath"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/printing/document"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )

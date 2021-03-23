@@ -14,8 +14,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/storage"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 

@@ -10,12 +10,12 @@ import (
 
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/arccrash"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
