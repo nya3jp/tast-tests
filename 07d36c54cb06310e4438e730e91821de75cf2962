@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "67688f11_1b435df3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2021-03-23T19:20:15Z",
+      "side": 1,
+      "message": "Currently the test is writing three separate results-chart.json files, one for each ch{1,9,36} variant (see https://stainless.corp.google.com/browse/chromeos-test-logs/test-runner/prod/2021-03-23/a355d3ff-f4f5-4942-9ae1-1646c74992d2/ for an example).\n\nI\u0027ve verified that after this change this test instead produces a single results-chart.json file with all three metrics:\n\n$ cat /tmp/tast/results/20210323-121703/tests/wifi.ChannelScanDwellTime/results-chart.json \n{\n  \"dwell_time_ch1\": {\n    \"summary\": {\n      \"units\": \"seconds\",\n      \"improvement_direction\": \"down\",\n      \"type\": \"scalar\",\n      \"value\": 0.098885\n    }\n  },\n  \"dwell_time_ch36\": {\n    \"summary\": {\n      \"units\": \"seconds\",\n      \"improvement_direction\": \"down\",\n      \"type\": \"scalar\",\n      \"value\": 0.010213\n    }\n  },\n  \"dwell_time_ch9\": {\n    \"summary\": {\n      \"units\": \"seconds\",\n      \"improvement_direction\": \"down\",\n      \"type\": \"scalar\",\n      \"value\": 0.053017\n    }\n  }\n}",
+      "parentUuid": "9be76f17_28200bf2",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "07d36c54cb06310e4438e730e91821de75cf2962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "73b758b1_75456f09",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
