@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/conndiag"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -24,13 +25,10 @@ func init() {
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
 		},
-		SetUpTimeout:    30 * time.Second,
+		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    5 * time.Second,
-		PreTestTimeout:  1 * time.Second,
-		PostTestTimeout: 1 * time.Second,
-		TearDownTimeout: 5 * time.Second,
+		TearDownTimeout: 10 * time.Second,
 		Impl:            &networkDiagnosticsFixture{},
-		Parent:          "chromeLoggedIn",
 	})
 }
 
@@ -38,12 +36,20 @@ func init() {
 type networkDiagnosticsFixture struct {
 	api  *MojoAPI
 	conn *chrome.Conn
+	cr   *chrome.Chrome
 }
 
 func (f *networkDiagnosticsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	cr := s.ParentValue().(*chrome.Chrome)
+	// This fixture needs to create and manage its own Chrome instance to
+	// ensure that the Connectivity Diagnostics app with the network diagnostics
+	// mojo API is preserved between tests.
+	var err error
+	f.cr, err = chrome.New(ctx)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
 
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := f.cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
@@ -54,7 +60,7 @@ func (f *networkDiagnosticsFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		s.Fatal("Failed to launch connectivity diagnostics app: ", err)
 	}
 
-	f.conn, err = conndiag.ChromeConn(ctx, cr)
+	f.conn, err = conndiag.ChromeConn(ctx, f.cr)
 	if err != nil {
 		s.Fatal("Failed to get network diagnostics mojo: ", err)
 	}
@@ -68,14 +74,15 @@ func (f *networkDiagnosticsFixture) SetUp(ctx context.Context, s *testing.FixtSt
 }
 
 func (f *networkDiagnosticsFixture) Reset(ctx context.Context) error {
+	if err := f.cr.Responded(ctx); err != nil {
+		return errors.Wrap(err, "existing Chrome connection is unusable")
+	}
 	return nil
 }
 
-func (f *networkDiagnosticsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
-}
+func (f *networkDiagnosticsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 
-func (f *networkDiagnosticsFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-}
+func (f *networkDiagnosticsFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
 func (f *networkDiagnosticsFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	if err := f.api.Release(ctx); err != nil {
@@ -83,5 +90,8 @@ func (f *networkDiagnosticsFixture) TearDown(ctx context.Context, s *testing.Fix
 	}
 	if err := f.conn.Close(); err != nil {
 		s.Log("Error closing Chrome connection to app: ", err)
+	}
+	if err := f.cr.Close(ctx); err != nil {
+		s.Log("Failed to close Chrome connection: ", err)
 	}
 }
