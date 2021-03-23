@@ -2,12 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package allowlist
+package network
 
 import (
 	"context"
 	"time"
 
+	"chromiumos/tast/remote/bundles/cros/network/allowlist"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
@@ -15,8 +16,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ExtensionConnectivity,
-		Desc: "Test that extensions work behind a firewall configured according to our support page",
+		Func: ArcConnectivity,
+		Desc: "Test that the PlayStore works behind a firewall configured according to our support page",
 		Contacts: []string{
 			"acostinas@google.com", // Test author
 			"chromeos-commercial-networking@google.com",
@@ -26,15 +27,21 @@ func init() {
 		SoftwareDeps: []string{"reboot", "chrome", "chrome_internal"},
 		ServiceDeps:  []string{"tast.cros.network.AllowlistService", "tast.cros.network.ProxyService"},
 		Vars: []string{
-			"allowlist.ext_username",
-			"allowlist.ext_password",
+			"allowlist.username",
+			"allowlist.password",
 		},
 		Timeout: 12 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
-// ExtensionConnectivity calls the AllowlistService to setup a firewall and verifies that extensions can be installed.
-func ExtensionConnectivity(ctx context.Context, s *testing.State) {
+// ArcConnectivity calls the AllowlistService to setup a firewall and verifies PlayStore connectivity.
+func ArcConnectivity(ctx context.Context, s *testing.State) {
 	defer func(ctx context.Context) {
 		// Since this test is changing the iptable rules to create a firewall on the DUT, we need to reboot to make sure the
 		// DUT gets back to its initial state, which doesn't restrict connectivity to http/s default ports.
@@ -49,19 +56,19 @@ func ExtensionConnectivity(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	a, err := ReadHostnames(ctx, s.DataPath("allowlist_ssl_inspection.json"), false, true)
+	allowlist, err := allowlist.ReadHostnames(ctx, s.DataPath("allowlist_ssl_inspection.json"), true, false)
 	if err != nil {
 		s.Fatal("Failed to read hostnames: ", err)
 	}
 
 	const port uint32 = 3129
 
-	// Start an HTTP proxy instance on the DUT which only allows connections to allowlisted hostnames.
+	// Start an HTTP proxy instance on the DUT which only allows connections to the allowlisted hostnames.
 	proxyClient := network.NewProxyServiceClient(cl.Conn)
 	response, err := proxyClient.StartServer(ctx,
 		&network.StartServerRequest{
 			Port:      port,
-			Allowlist: a,
+			Allowlist: allowlist,
 		})
 	if err != nil {
 		s.Fatal("Failed to start a local proxy on the DUT: ", err)
@@ -72,19 +79,17 @@ func ExtensionConnectivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to setup a firewall on the DUT: ", err)
 	}
 
-	user := s.RequiredVar("allowlist.ext_username")
-	password := s.RequiredVar("allowlist.ext_password")
+	user := s.RequiredVar("allowlist.username")
+	password := s.RequiredVar("allowlist.password")
 	if _, err := al.GaiaLogin(ctx, &network.GaiaLoginRequest{
 		Username: user, Password: password, ProxyHostAndPort: response.HostAndPort}); err != nil {
 		s.Fatal("Failed to login through the proxy: ", err)
 	}
 
-	// The user account allowlist.ext_username/allowlist.ext_password belongs to the OU allowlist-tast-test-ext on the production DMServer.
-	// The OU is configured to force install the "Certificate Enrollment for Chrome OS" extension via the ExtensionInstallForceList policy.
-	if _, err := al.CheckExtensionInstalled(ctx, &network.CheckExtensionInstalledRequest{
-		ExtensionTitle: "Certificate Enrollment for Chrome OS",
-	}); err != nil {
-		s.Fatal("Failed to install extension: ", err)
+	// The user account allowlist.username/allowlist.password belongs to the OU allowlist-tast-test on the production DMServer.
+	// The OU is configured to force install the Gmail app via policy.
+	if _, err := al.CheckArcAppInstalled(ctx, &network.CheckArcAppInstalledRequest{AppName: "com.google.android.gm"}); err != nil {
+		s.Fatal("Failed to install ARC app: ", err)
 	}
 
 }

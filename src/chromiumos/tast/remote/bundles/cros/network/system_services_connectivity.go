@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package allowlist
+package network
 
 import (
 	"context"
@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/bundles/cros/network/allowlist"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/ssh"
@@ -52,7 +53,7 @@ func SystemServicesConnectivity(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	a, err := ReadHostnames(ctx, s.DataPath("allowlist_ssl_inspection.json"), false, false)
+	a, err := allowlist.ReadHostnames(ctx, s.DataPath("allowlist_ssl_inspection.json"), false, false)
 	if err != nil {
 		s.Fatal("Failed to read hostnames: ", err)
 	}
@@ -82,15 +83,16 @@ func SystemServicesConnectivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to login through the proxy: ", err)
 	}
 
-	if err = runTLSDate(ctx, s.DUT().Conn()); err != nil {
+	if err = runTLSDate2(ctx, s.DUT().Conn()); err != nil {
 		s.Fatal("Failed to run tlsdate with system-proxy: ", err)
 	}
 	// TODO(acostinas): Find a way to test update_engine and crash_sender behind the firewall.
 }
 
-// runTLSDate runs tlsdate once, in the foreground. Returns an error if tlsdate didn't use system-proxy to connect to the remote host
+// runTLSDate2 runs tlsdate once, in the foreground. Returns an error if tlsdate didn't use system-proxy to connect to the remote host
 // or if the certificate verification failed.
-func runTLSDate(ctx context.Context, conn *ssh.Conn) error {
+// TODO(acostinas): Consider merging with runTLSDate.
+func runTLSDate2(ctx context.Context, conn *ssh.Conn) error {
 	// tlsdated is a CrOS daemon that runs the tlsdate binary periodically in the background and does proxy resolution through Chrome.
 	// Prepend `timeout` to the command that runs tlsdated to send SIGTERM to the daemon after the first invocation (otherwise tlsdated
 	// will run in the foreground until the connection times out).
