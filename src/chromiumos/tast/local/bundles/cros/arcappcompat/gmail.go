@@ -25,6 +25,7 @@ var clamshellTestsForGmail = []testutil.TestCase{
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
 	{Name: "Clamshell: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
+	{Name: "Clamshell: Largescreen Layout", Fn: testutil.Largescreenlayout},
 	{Name: "Clamshell: Mouse click", Fn: testutil.MouseClick},
 	{Name: "Clamshell: Physical Keyboard", Fn: testutil.TouchAndTextInputs},
 	{Name: "Clamshell: Keyboard Critical Path", Fn: testutil.KeyboardNavigations},
@@ -36,6 +37,7 @@ var touchviewTestsForGmail = []testutil.TestCase{
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 	{Name: "Touchview: Rotate", Fn: testutil.TouchviewRotate},
+	{Name: "Touchview: Largescreen Layout", Fn: testutil.Largescreenlayout},
 	{Name: "Touchview: Touchscreen Scroll", Fn: testutil.TouchScreenScroll},
 	{Name: "Touchview: Virtual Keyboard", Fn: testutil.TouchAndTextInputs},
 }

@@ -507,6 +507,47 @@ func MouseClick(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a
 	}
 }
 
+// Largescreenlayout Test verifies app utilizes large screen after maximizing the app.
+func Largescreenlayout(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	const (
+		blackBars = "Black bars on both sides of an app"
+	)
+
+	taskID, err := getTaskID(ctx, s, a, d, appPkgName)
+	largeScreenCode := strconv.Itoa(2)
+	// Maximize the app to large screen layout.
+	out, err := a.Command(ctx, "am", "task", "set-winstate", taskID, largeScreenCode).Output()
+	if err != nil {
+		s.Fatal("Failed to maximize the app: ", err)
+	} else {
+		s.Log("Maximized app to largescreen: ", out)
+	}
+
+	appWidth, appHeight, err := getAppCoordinates(ctx, s, a, d, appPkgName)
+	if err != nil {
+		s.Fatal("Failed to get app coordinates: ", err)
+	}
+	s.Log("appWidth", appWidth)
+	s.Log("appHeight", appHeight)
+
+	info, err := d.GetInfo(ctx)
+	if err != nil {
+		s.Fatal("Failed to get device display: ", err)
+	}
+	deviceDisplayWidth := info.DisplayWidth
+	s.Log("deviceDisplayWidth", deviceDisplayWidth)
+	deviceDisplayHeight := info.DisplayHeight
+	s.Log("deviceDisplayHeight", deviceDisplayHeight)
+
+	if appWidth == deviceDisplayWidth {
+		s.Log("App is maximized")
+	} else if appWidth < deviceDisplayWidth/2 && appHeight > deviceDisplayHeight*3/4 && appWidth != deviceDisplayWidth {
+		s.Fatal("Orientation size of an app: ", blackBars)
+	}
+
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+}
+
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
@@ -740,4 +781,34 @@ func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appP
 	}, &testing.PollOptions{Timeout: LongUITimeout}); err != nil {
 		s.Error("appPkgName doesn't exist: ", err)
 	}
+}
+
+// getTaskID func provides taskID of an app.
+func getTaskID(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, appPkgName string) (string, error) {
+	var taskID string
+
+	// To get app activities.
+	out, err := a.Command(ctx, "am", "stack", "list").Output()
+	if err != nil {
+		s.Fatal("Failed to get stack list: ", err)
+	}
+	output := string(out)
+	splitOutput := strings.Split(output, "\n")
+	taskIDPrefix := "taskId="
+	for splitLine := range splitOutput {
+		if strings.Contains(splitOutput[splitLine], appPkgName) {
+			splitTaskID := strings.Split(splitOutput[splitLine], " ")
+			for splitTaskIDInfo := range splitTaskID {
+				if strings.Contains(splitTaskID[splitTaskIDInfo], taskIDPrefix) {
+					taskIDWithOutTrim := splitTaskID[splitTaskIDInfo]
+					taskIDAfterFirstTrim := strings.Split(taskIDWithOutTrim, "=")[1]
+					s.Log("taskIDAfterFirstTrim:", taskIDAfterFirstTrim)
+					taskID = strings.Split(taskIDAfterFirstTrim, ":")[0]
+					s.Log("taskID: ", taskID)
+					break
+				}
+			}
+		}
+	}
+	return taskID, err
 }
