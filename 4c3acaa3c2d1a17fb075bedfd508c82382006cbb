@@ -16,6 +16,23 @@
       "message": "Thanks a lot for fixing this!",
       "revId": "4c3acaa3c2d1a17fb075bedfd508c82382006cbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dff67ab_157d8e18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T09:22:29Z",
+      "side": 1,
+      "message": "Thanks for reviewing!\n\nAdding Tatsuhisa for approval.\n",
+      "revId": "4c3acaa3c2d1a17fb075bedfd508c82382006cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
