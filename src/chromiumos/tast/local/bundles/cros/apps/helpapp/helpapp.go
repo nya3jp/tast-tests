@@ -61,7 +61,7 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	testing.ContextLog(ctx, "Wait for help app shown in shelf")
-	if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 		return errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
 	}
 	return nil

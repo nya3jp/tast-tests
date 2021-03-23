@@ -85,7 +85,7 @@ func LaunchAppFromAccelerator(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to search and launch app: ", err)
 	}
 
-	err = ash.WaitForApp(ctx, tconn, params.app.ID)
+	err = ash.WaitForApp(ctx, tconn, params.app.ID, time.Minute)
 	if err != nil {
 		s.Fatal("Could not find app in shelf after launch: ", err)
 	}

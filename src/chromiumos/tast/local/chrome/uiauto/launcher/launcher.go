@@ -31,7 +31,7 @@ func SearchAndWaitForAppOpen(tconn *chrome.TestConn, kb *input.KeyboardEventWrit
 	return uiauto.Combine(fmt.Sprintf("SearchAndWaitForAppOpen(%+q)", app),
 		SearchAndLaunch(tconn, kb, app.Name),
 		func(ctx context.Context) error {
-			return ash.WaitForApp(ctx, tconn, app.ID)
+			return ash.WaitForApp(ctx, tconn, app.ID, time.Minute)
 		},
 	)
 }
@@ -119,7 +119,7 @@ func LaunchAndWaitForAppOpen(tconn *chrome.TestConn, app apps.App) uiauto.Action
 	return uiauto.Combine(fmt.Sprintf("LaunchAndWaitForAppOpen(%+q)", app),
 		LaunchApp(tconn, app.Name),
 		func(ctx context.Context) error {
-			return ash.WaitForApp(ctx, tconn, app.ID)
+			return ash.WaitForApp(ctx, tconn, app.ID, time.Minute)
 		},
 	)
 }

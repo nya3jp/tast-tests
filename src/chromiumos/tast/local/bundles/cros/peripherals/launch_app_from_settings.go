@@ -99,7 +99,7 @@ func LaunchAppFromSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click entry: ", err)
 	}
 
-	err = ash.WaitForApp(ctx, tconn, params.appID)
+	err = ash.WaitForApp(ctx, tconn, params.appID, time.Minute)
 	if err != nil {
 		s.Fatal("Could not find app in shelf after launch: ", err)
 	}

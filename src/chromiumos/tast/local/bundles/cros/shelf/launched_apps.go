@@ -6,6 +6,7 @@ package shelf
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -72,7 +73,7 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to launch %s: %s", app.Name, err)
 		}
-		if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
+		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 			s.Fatalf("%s did not appear in shelf after launch: %s", app.Name, err)
 		}
 	}

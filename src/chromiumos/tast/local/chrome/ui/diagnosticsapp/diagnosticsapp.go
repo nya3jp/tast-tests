@@ -87,7 +87,7 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
 		return nil, errors.Wrap(err, "failed to launch diagnostics app")
 	}
 
-	err = ash.WaitForApp(ctx, tconn, apps.Diagnostics.ID)
+	err = ash.WaitForApp(ctx, tconn, apps.Diagnostics.ID, time.Minute)
 	if err != nil {
 		return nil, errors.Wrap(err, "diagnostics app did not appear in shelf after launch")
 	}

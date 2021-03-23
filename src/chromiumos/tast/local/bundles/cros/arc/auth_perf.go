@@ -323,7 +323,7 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 	}
 
 	s.Log("Waiting for Play Store window to be shown")
-	if err := optin.WaitForPlayStoreShown(shorterCtx, tconn); err != nil {
+	if err := optin.WaitForPlayStoreShown(shorterCtx, tconn, time.Minute); err != nil {
 		return v, err
 	}
 

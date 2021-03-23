@@ -51,7 +51,7 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*OSSettings, error) {
 	}
 
 	testing.ContextLog(ctx, "Waiting for settings app shown in shelf")
-	if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 		return nil, errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
 	}
 	return &OSSettings{ui: uiauto.New(tconn), tconn: tconn}, nil

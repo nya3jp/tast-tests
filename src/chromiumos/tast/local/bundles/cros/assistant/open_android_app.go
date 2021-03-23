@@ -75,7 +75,7 @@ func OpenAndroidApp(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for Play Store window to be shown")
-	if err := ash.WaitForApp(ctx, tconn, apps.PlayStore.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.PlayStore.ID, time.Minute); err != nil {
 		s.Fatal("Play Store failed to launch: ", err)
 	}
 }

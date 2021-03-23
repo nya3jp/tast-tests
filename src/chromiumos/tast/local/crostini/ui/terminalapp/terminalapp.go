@@ -61,7 +61,7 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	}
 
 	// Check Terminal is on shelf.
-	if err := ash.WaitForApp(ctx, tconn, apps.Terminal.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.Terminal.ID, time.Minute); err != nil {
 		return nil, errors.Wrap(err, "failed to find Terminal icon on shelf")
 	}
 

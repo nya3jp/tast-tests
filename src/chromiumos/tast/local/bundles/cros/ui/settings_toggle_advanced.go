@@ -91,7 +91,7 @@ func SettingsToggleAdvanced(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch the Settings app: ", err)
 	}
 
-	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID, time.Minute); err != nil {
 		s.Fatal("Settings app did not appear in the shelf: ", err)
 	}
 

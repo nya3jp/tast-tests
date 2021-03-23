@@ -368,7 +368,7 @@ func AppShown(ctx context.Context, tconn *chrome.TestConn, appID string) (bool, 
 }
 
 // WaitForApp waits for the app specified by appID to appear in the shelf.
-func WaitForApp(ctx context.Context, tconn *chrome.TestConn, appID string) error {
+func WaitForApp(ctx context.Context, tconn *chrome.TestConn, appID string, timeout time.Duration) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if visible, err := AppShown(ctx, tconn, appID); err != nil {
 			return testing.PollBreak(err)
@@ -376,7 +376,7 @@ func WaitForApp(ctx context.Context, tconn *chrome.TestConn, appID string) error
 			return errors.New("app is not shown yet")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: time.Minute})
+	}, &testing.PollOptions{Timeout: timeout})
 }
 
 // WaitForAppClosed waits for the app specified by appID to be closed.
@@ -521,7 +521,7 @@ func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName, ap
 		return errors.Wrapf(err, "failed to launch app %q", appName)
 	}
 	// Make sure app is launched.
-	if err := WaitForApp(ctx, tconn, appID); err != nil {
+	if err := WaitForApp(ctx, tconn, appID, time.Minute); err != nil {
 		return errors.Wrap(err, "failed to wait for the app to be launched")
 	}
 	return nil

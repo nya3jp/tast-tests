@@ -58,7 +58,7 @@ func VirtualKeyboardTypingOmnibox(ctx context.Context, s *testing.State) {
 	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
 		s.Fatalf("Failed to launch %s: %s", apps.Chrome.Name, err)
 	}
-	if err := ash.WaitForApp(ctx, tconn, apps.Chrome.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.Chrome.ID, time.Minute); err != nil {
 		s.Fatalf("%s did not appear in shelf after launch: %s", apps.Chrome.Name, err)
 	}
 

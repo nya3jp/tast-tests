@@ -156,7 +156,7 @@ func optinPlayStore(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestCo
 	if err := optin.Perform(ctx, cr, tconn); err != nil {
 		return errors.Wrap(err, "failed to optin to Play Store")
 	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
+	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
 		return errors.Wrap(err, "failed to wait for Play Store")
 	}
 

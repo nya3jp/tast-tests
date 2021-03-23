@@ -70,7 +70,7 @@ func DisableArc(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to optin to Play Store: ", err)
 		}
 	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
+	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
 		s.Fatal("Failed to wait for Play Store: ", err)
 	}
 	// TODO(b/178232263): This is a temporary work around to ensure Play Store closes.

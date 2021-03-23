@@ -113,7 +113,7 @@ func IconAndUsername(ctx context.Context, s *testing.State) {
 	}()
 
 	// Check Terminal app is on shelf.
-	if err := ash.WaitForApp(ctx, tconn, apps.Terminal.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, apps.Terminal.ID, time.Minute); err != nil {
 		s.Fatal("Failed to find Terminal icon on shelf: ", err)
 	}
 
