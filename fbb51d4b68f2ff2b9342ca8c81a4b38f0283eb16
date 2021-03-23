@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "006cb5c9_f6305561",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-03-23T21:53:08Z",
+      "side": 1,
+      "message": "No, thanks. Removed.",
+      "parentUuid": "c50cac08_14aa4751",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 13
+      },
+      "revId": "fbb51d4b68f2ff2b9342ca8c81a4b38f0283eb16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8205041d_b7b4cf1d",
@@ -82,6 +106,54 @@
         "startChar": 83,
         "endLine": 71,
         "endChar": 84
+      },
+      "revId": "fbb51d4b68f2ff2b9342ca8c81a4b38f0283eb16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e183113_c57fca9f",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-03-23T21:53:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d3419c4_6a1183af",
+      "range": {
+        "startLine": 71,
+        "startChar": 83,
+        "endLine": 71,
+        "endChar": 84
+      },
+      "revId": "fbb51d4b68f2ff2b9342ca8c81a4b38f0283eb16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de856409_613efb30",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-03-23T21:53:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8205041d_b7b4cf1d",
+      "range": {
+        "startLine": 71,
+        "startChar": 40,
+        "endLine": 71,
+        "endChar": 126
       },
       "revId": "fbb51d4b68f2ff2b9342ca8c81a4b38f0283eb16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
