@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e5186f_7cfa270d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-23T04:15:27Z",
+      "side": 1,
+      "message": "WithTimeout and WithInterval? Or did you intentionally remove pollopts",
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f7ffa56_145481f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-23T04:15:27Z",
+      "side": 1,
+      "message": "It was previously set to 30 second timeout (30 retries). Intentional?",
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689a4c23_80a86132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-03-23T04:15:27Z",
+      "side": 1,
+      "message": "Is there a better way to phrase these things? Mainly question for Judy.\nAt the moment, this will output something like \"Failed to launch help app or navigate to search page: launch help app and navigate  to search page: \u003cerror\u003e\"",
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
