@@ -20,6 +20,25 @@ import (
 
 var v4l2Vp9Files = []string{"1080p_30fps_300frames.vp9.ivf"}
 
+var vaapiAv1Files = map[string][]string{
+	"group1": {
+		"test_vectors/av1/8-bit/00000527.ivf",
+		"test_vectors/av1/8-bit/00000535.ivf",
+		"test_vectors/av1/8-bit/00000548.ivf",
+		"test_vectors/av1/8-bit/av1-1-b8-02-allintra.ivf",
+		"test_vectors/av1/8-bit/non_uniform_tiling.ivf",
+	},
+	"group2": {
+		"test_vectors/av1/8-bit/48_delayed.ivf",
+		"test_vectors/av1/8-bit/frames_refs_short_signaling.ivf",
+	},
+	"group3": {
+		"test_vectors/av1/8-bit/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf",
+		"test_vectors/av1/8-bit/test-25fps-192x288-only-tile-rows-is-power-of-2.ivf",
+		"test_vectors/av1/8-bit/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf",
+	},
+}
+
 var vaapiVp9Files = map[string]map[string]map[string][]string{
 	"profile_0": {
 		"group1": {
@@ -316,6 +335,20 @@ func TestPlatformDecodingParams(t *testing.T) {
 				})
 			}
 		}
+	}
+
+	// Generate VAAPI AV1 tests.
+	for _, levelGroup := range []string{"group1", "group2", "group3"} {
+		files := vaapiAv1Files[levelGroup]
+		params = append(params, paramData{
+			Name:       fmt.Sprintf("vaapi_av1_%s", levelGroup),
+			Decoder:    filepath.Join(chrome.BinTestDir, "decode_test"),
+			CmdBuilder: "av1decodeVAAPIargs",
+			Files:      files,
+			// These SoftwareDeps do not include the 10 bit version of AV1.
+			SoftwareDeps: []string{"vaapi", caps.HWDecodeAV1},
+			Metadata:     genExtraData(vaapiAv1Files[levelGroup]),
+		})
 	}
 
 	// Generate V4L2 VP9 tests.
