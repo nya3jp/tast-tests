@@ -16,6 +16,52 @@
       "message": "Depends on a container build with CL:2777751 included",
       "revId": "587830761f28017f47de25f52b8e3a5003d33e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e42a2242_d3376ea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/notify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-23T01:24:29Z",
+      "side": 1,
+      "message": "Needs update?",
+      "range": {
+        "startLine": 21,
+        "startChar": 17,
+        "endLine": 21,
+        "endChar": 93
+      },
+      "revId": "587830761f28017f47de25f52b8e3a5003d33e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d165da87_9aa43c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/notify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-23T01:24:29Z",
+      "side": 1,
+      "message": "sidereal?",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "587830761f28017f47de25f52b8e3a5003d33e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
