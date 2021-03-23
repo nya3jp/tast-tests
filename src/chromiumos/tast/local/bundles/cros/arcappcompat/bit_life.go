@@ -20,6 +20,7 @@ import (
 // ClamshellTests are placed here.
 var clamshellTestsForBitLife = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForBitLife},
+	{Name: "Clamshell: Largescreen Layout", Fn: testutil.Largescreenlayout},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
@@ -29,6 +30,7 @@ var clamshellTestsForBitLife = []testutil.TestCase{
 // TouchviewTests are placed here.
 var touchviewTestsForBitLife = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForBitLife},
+	{Name: "Touchview: Largescreen Layout", Fn: testutil.Largescreenlayout},
 	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
 }
