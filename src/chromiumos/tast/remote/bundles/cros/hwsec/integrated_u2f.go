@@ -34,7 +34,7 @@ func init() {
 			"yich@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "gsc", "reboot"},
-		Attr:         []string{"group:hwsec_destructive_func"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"servo"},
 		ServiceDeps: []string{
 			"tast.cros.example.ChromeService",
