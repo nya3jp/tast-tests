@@ -17,6 +17,10 @@ import (
 	"chromiumos/tast/timing"
 )
 
+// LacrosFixtureVars contains the Fixture Vars necessary to run lacros.
+// This should be used by any lacros fixtures defined outside this file.
+var LacrosFixtureVars = []string{"lacrosDeployedBinary", "lacrosIsChromeBranded"}
+
 // NewStartedByData creates a new fixture that can launch Lacros chrome with the given setup mode and
 // Chrome options.
 func NewStartedByData(mode SetupMode, opts ...chrome.Option) testing.FixtureImpl {
@@ -38,7 +42,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{"lacrosDeployedBinary", "lacrosIsChromeBranded"},
+		Vars:            LacrosFixtureVars,
 	})
 
 	// lacrosStartedByDataWith100FakeApps is the same as lacrosStartedByData but
@@ -52,7 +56,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{"lacrosDeployedBinary", "lacrosIsChromeBranded"},
+		Vars:            LacrosFixtureVars,
 	})
 
 	// lacrosStartedByDataForceComposition is the same as lacrosStartedByData but
@@ -65,7 +69,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{"lacrosDeployedBinary", "lacrosIsChromeBranded"},
+		Vars:            LacrosFixtureVars,
 	})
 
 	// lacrosStartedByDataUI is similar to lacrosStartedByData but should be used
@@ -80,7 +84,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{"lacrosDeployedBinary", "lacrosIsChromeBranded"},
+		Vars:            LacrosFixtureVars,
 	})
 
 	// lacrosStartedByOmaha is a fixture to enable Lacros by feature flag in Chrome.
@@ -94,7 +98,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{"lacrosDeployedBinary", "lacrosIsChromeBranded"},
+		Vars:            LacrosFixtureVars,
 	})
 }
 
