@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d879d7_5aaf2da5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-23T10:34:29Z",
+      "side": 1,
+      "message": "Hi vsavu@,\n\n2nd in the chain of 3 CLs to implement the chrome.login API Tast test.\n\nNote the comment on addValue() regarding the need to json.Marshal values.\n\nThanks,\nJit",
+      "revId": "ec7f34a542c1875c5387e724ab4cc45390911934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
