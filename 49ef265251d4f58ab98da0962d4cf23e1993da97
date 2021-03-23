@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89ee938d_4dcb8994",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T08:44:41Z",
+      "side": 1,
+      "message": "Yes, you can leave it unset.",
+      "parentUuid": "44fcdf80_01daf9c3",
+      "range": {
+        "startLine": 267,
+        "startChar": 36,
+        "endLine": 267,
+        "endChar": 48
+      },
+      "revId": "49ef265251d4f58ab98da0962d4cf23e1993da97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fa86c33_734de8fd",
         "filename": "src/chromiumos/tast/local/chrome/option.go",
         "patchSetId": 6
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I\u0027d like to have it here to be consistent with KeepEnrollment that is introduced in crrev.com/c/2772992 Alternatively I could add a flag (set by both options) that simply sets this arg. Which do you prefer?",
       "parentUuid": "0fa86c33_734de8fd",
+      "range": {
+        "startLine": 193,
+        "startChar": 6,
+        "endLine": 193,
+        "endChar": 15
+      },
+      "revId": "49ef265251d4f58ab98da0962d4cf23e1993da97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fdbeacc_79ba30ee",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T08:44:41Z",
+      "side": 1,
+      "message": "I think adding a flag to MutableConfig is better. Then we can avoid duplication of the flag name constant in two places.",
+      "parentUuid": "11c29277_9f46adc5",
       "range": {
         "startLine": 193,
         "startChar": 6,
