@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08cfb43d_9d7939f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-23T07:06:06Z",
+      "side": 1,
+      "message": "I recommend (chrome.LoginTimeout + 2*time.Minute). Note that 2 minutes is the default timeout for a local test.",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "397901b1c516b1eb4b7d327693e3e5cfbef18781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
