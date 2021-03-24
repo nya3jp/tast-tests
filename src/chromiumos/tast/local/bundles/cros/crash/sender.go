@@ -36,8 +36,9 @@ func init() {
 			Val:               crash.RealConsent,
 			ExtraAttr:         []string{"informational"},
 		}, {
-			Name: "mock_consent",
-			Val:  crash.MockConsent,
+			Name:    "mock_consent",
+			Fixture: "chromeLoggedIn",
+			Val:     crash.MockConsent,
 		}},
 	})
 }
