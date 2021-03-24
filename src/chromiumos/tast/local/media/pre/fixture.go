@@ -52,6 +52,22 @@ func init() {
 		Vars:            launcher.LacrosFixtureVars,
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeCameraPerfLacros",
+		Desc: "Logged into a user session on Lacros without verbose logging that can affect the performance",
+		Impl: launcher.NewStartedByData(launcher.PreExist,
+			chrome.ExtraArgs(chromeBypassPermissionsArgs...),
+			chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
+			chrome.ExtraArgs(chromeSuppressNotificationsArgs...),
+			chrome.LacrosExtraArgs(chromeSuppressNotificationsArgs...),
+		),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            launcher.LacrosFixtureVars,
+	})
+
 	// Chrome has two said implementations: a "legacy" one and a Direct, VD-based on. Selecting one ore the other depends on the hardware and is ultimately determined by the overlays/ flags. Tests should be centered on what the users see, hence most of the testing should use chromeVideo, with a few test cases using this fixture.
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeAlternateVideoDecoder",
