@@ -3,6 +3,374 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "330c71cb_1440a659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "Can this be a verification point of Launch()?",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 33
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0f7a96_1db2b8fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "Please doc how to close it.\n\nIn the following code, hc.UIConn is called twice without closing.",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21c18d53_29ac462b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "Is this method used anywhere?",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ccf9cf_b7beb7e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "Return a uiauto.Action?",
+      "range": {
+        "startLine": 96,
+        "startChar": 81,
+        "endLine": 96,
+        "endChar": 86
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74b36fc6_e148797d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "conn is not closed",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 5
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd17c8ca_fa39692d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 105,
+        "startChar": 98,
+        "endLine": 105,
+        "endChar": 103
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a457a6d_53cb0d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "c is not closed.\n\nUse conn to keep the code consistent.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d3d376_5bfb7c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "is a struct",
+      "range": {
+        "startLine": 113,
+        "startChar": 16,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a9026f_c9fe412a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "Could you please be more specific: which fields?",
+      "range": {
+        "startLine": 120,
+        "startChar": 27,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccb91610_7ad49b7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "Please use conn or c or helpAppConn everywhere to make the code consistent.",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 12
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae45add7_ea1558ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "Please wrap the error as before.",
+      "range": {
+        "startLine": 124,
+        "startChar": 14,
+        "endLine": 124,
+        "endChar": 17
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9080df_78af8193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "I think it is not recommended to pass s around.",
+      "range": {
+        "startLine": 178,
+        "startChar": 48,
+        "endLine": 178,
+        "endChar": 64
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2f896c_3fd6ce36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "return error",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4df964_ef0605a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 192,
+        "startChar": 5,
+        "endLine": 192,
+        "endChar": 10
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "314645c0_704971b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 197,
+        "startChar": 5,
+        "endLine": 197,
+        "endChar": 10
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e7762a_d2f06f68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 201,
+        "startChar": 5,
+        "endLine": 201,
+        "endChar": 10
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38e5186f_7cfa270d",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
         "patchSetId": 1
@@ -32,6 +400,52 @@
       "side": 1,
       "message": "The old opts is used for StableFindAndClick. uiauto.LeftClick waits for element located internally. It does not require explicit polling any more.",
       "parentUuid": "38e5186f_7cfa270d",
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "240230c1_4f4a0788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "Suggest to define the nodes in advance.",
+      "range": {
+        "startLine": 63,
+        "startChar": 15,
+        "endLine": 63,
+        "endChar": 80
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "650b195a_1dd0ab61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "test offline action?",
+      "range": {
+        "startLine": 71,
+        "startChar": 33,
+        "endLine": 71,
+        "endChar": 40
+      },
       "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -73,6 +487,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "418667b2_ba8b5108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_release_notes_from_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "Suggest to define the node in advance.",
+      "range": {
+        "startLine": 69,
+        "startChar": 21,
+        "endLine": 69,
+        "endChar": 102
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "689a4c23_80a86132",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
         "patchSetId": 1
@@ -102,6 +539,70 @@
       "side": 1,
       "message": "Good point. I have the same feeling. We use uiauto.Combine with a name and returns error with similar message. Curious if we have a better way to do it.\n\nSuch as \"Failed to \" + func.Name + \": \" + err",
       "parentUuid": "689a4c23_80a86132",
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "435edd55_fc2de411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "I suggest we describe the steps in the string, like \"launch help and click search tab\", and then in the fail msg, we describe the purpose of the test, like \"Failed to find search in help app: \"",
+      "parentUuid": "4b77d5d6_7002fc53",
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "697eaf11_0c9378c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "Suggest to define the node in advance.",
+      "range": {
+        "startLine": 115,
+        "startChar": 21,
+        "endLine": 115,
+        "endChar": 114
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e8b37e_166d33cb",
+        "filename": "src/chromiumos/tast/local/chrome/webutil/shadow_piercer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T00:27:44Z",
+      "side": 1,
+      "message": "Is it possible to have somebody who knows js to review this?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 15
+      },
       "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
