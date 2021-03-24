@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -22,14 +23,59 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
+
+type touchContext struct {
+	tsw *input.TouchscreenEventWriter
+	tcc *input.TouchCoordConverter
+}
+
+func newTouchContext(ctx context.Context, tconn *chrome.TestConn) (*touchContext, error) {
+	tsw, err := input.Touchscreen(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to access to the touchscreen")
+	}
+	success := false
+	defer func() {
+		if !success {
+			if err := tsw.Close(); err != nil {
+				testing.ContextLog(ctx, "Failed to close the touchscreen: ", err)
+			}
+		}
+	}()
+
+	orientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the orientation information")
+	}
+	// Some devices (like kukui/krane) has rotated panel orientation. The negative
+	// value of the panel orientation (rotation.Angle) should be set to cancel
+	// this effect. See also: https://crbug.com/1022614.
+	if err := tsw.SetRotation(-orientation.Angle); err != nil {
+		return nil, errors.Wrap(err, "failed to rotate the touchscreen event writer")
+	}
+
+	// Creates the TouchCoordConverter for the touch screen.  Here assumes that
+	// the touch screen is the internal display.  This does not work if the
+	// device does not have the internal touch display but has an external touch
+	// display.
+	info, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the internal display info")
+	}
+	success = true
+	return &touchContext{tsw: tsw, tcc: tsw.NewTouchCoordConverter(info.Bounds.Size())}, nil
+}
 
 // Context is the context used when interacting with chrome.automation.
 // Each individual UI interaction is limited by the pollOpts such that it will return an error when the pollOpts timeout.
 type Context struct {
 	tconn    *chrome.TestConn
 	pollOpts testing.PollOptions
+
+	touchContext *touchContext
 }
 
 // New returns an Context that uses tconn to communicate to chrome.automation.
@@ -52,6 +98,7 @@ func (ac *Context) WithTimeout(timeout time.Duration) *Context {
 			Interval: ac.pollOpts.Interval,
 			Timeout:  timeout,
 		},
+		touchContext: ac.touchContext,
 	}
 }
 
@@ -63,14 +110,16 @@ func (ac *Context) WithInterval(interval time.Duration) *Context {
 			Interval: interval,
 			Timeout:  ac.pollOpts.Timeout,
 		},
+		touchContext: ac.touchContext,
 	}
 }
 
 // WithPollOpts returns a new Context with the specified polling options.
 func (ac *Context) WithPollOpts(pollOpts testing.PollOptions) *Context {
 	return &Context{
-		tconn:    ac.tconn,
-		pollOpts: pollOpts,
+		tconn:        ac.tconn,
+		pollOpts:     pollOpts,
+		touchContext: ac.touchContext,
 	}
 }
 
@@ -484,6 +533,119 @@ func (ac *Context) LeftClickUntil(finder *nodewith.Finder, condition func(contex
 			}
 			return nil
 		}, &ac.pollOpts)
+	}
+}
+
+// Tap returns a function that causes a tap the node through the touchscreen.
+func (ac *Context) Tap(finder *nodewith.Finder) Action {
+	return func(ctx context.Context) error {
+		if ac.touchContext == nil {
+			var err error
+			ac.touchContext, err = newTouchContext(ctx, ac.tconn)
+			if err != nil {
+				return err
+			}
+		}
+		stw, err := ac.touchContext.tsw.NewSingleTouchWriter()
+		if err != nil {
+			return errors.Wrap(err, "failed to get the single touch writer")
+		}
+		defer stw.Close()
+
+		loc, err := ac.Location(ctx, finder)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the location of the node")
+		}
+		x, y := ac.touchContext.tcc.ConvertLocation(loc.CenterPoint())
+		if err := stw.Move(x, y); err != nil {
+			return errors.Wrap(err, "failed to move the single touch")
+		}
+		stw.Close()
+		return nil
+	}
+}
+
+// LongPress returns a function that causes a long press at the node through the
+// touchscreen.
+func (ac *Context) LongPress(finder *nodewith.Finder) Action {
+	return func(ctx context.Context) error {
+		if ac.touchContext == nil {
+			var err error
+			ac.touchContext, err = newTouchContext(ctx, ac.tconn)
+			if err != nil {
+				return err
+			}
+		}
+		stw, err := ac.touchContext.tsw.NewSingleTouchWriter()
+		if err != nil {
+			return errors.Wrap(err, "failed to get the single touch writer")
+		}
+		defer stw.Close()
+
+		loc, err := ac.Location(ctx, finder)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the location of the node")
+		}
+		x, y := ac.touchContext.tcc.ConvertLocation(loc.CenterPoint())
+		if err := stw.LongPressAt(ctx, x, y); err != nil {
+			return errors.Wrap(err, "failed to move the single touch")
+		}
+		stw.Close()
+		return nil
+	}
+}
+
+func (ac *Context) swipeAction(ctx context.Context, p1, p2 coords.Point, duration time.Duration) error {
+	if ac.touchContext == nil {
+		var err error
+		ac.touchContext, err = newTouchContext(ctx, ac.tconn)
+		if err != nil {
+			return err
+		}
+	}
+	stw, err := ac.touchContext.tsw.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "failed to get the single touch writer")
+	}
+	defer stw.Close()
+
+	x1, y1 := ac.touchContext.tcc.ConvertLocation(p1)
+	x2, y2 := ac.touchContext.tcc.ConvertLocation(p2)
+	if err := stw.Swipe(ctx, x1, y1, x2, y2, duration); err != nil {
+		return errors.Wrap(err, "failed to move the single touch")
+	}
+	stw.Close()
+	return nil
+}
+
+// Swipe returns a function to cause a swipe from p1 to p2 in duration.
+func (ac *Context) Swipe(p1, p2 coords.Point, duration time.Duration) Action {
+	return func(ctx context.Context) error {
+		return ac.swipeAction(ctx, p1, p2, duration)
+	}
+}
+
+// SwipeFrom returns a function to cause a swipe from the node to the specified
+// point in duration.
+func (ac *Context) SwipeFrom(finder *nodewith.Finder, toPoint coords.Point, duration time.Duration) Action {
+	return func(ctx context.Context) error {
+		loc, err := ac.Location(ctx, finder)
+		if err != nil {
+			return errors.Wrap(err, "failed to find the location")
+		}
+		return ac.swipeAction(ctx, loc.CenterPoint(), toPoint, duration)
+	}
+}
+
+// SwipeTo returns a function to cause a swipe from the specified location to
+// the node in duration.
+func (ac *Context) SwipeTo(finder *nodewith.Finder, fromPoint coords.Point, duration time.Duration) Action {
+	return func(ctx context.Context) error {
+		loc, err := ac.Location(ctx, finder)
+		if err != nil {
+			return errors.Wrap(err, "failed to find the location")
+		}
+		return ac.swipeAction(ctx, fromPoint, loc.CenterPoint(), duration)
 	}
 }
 
