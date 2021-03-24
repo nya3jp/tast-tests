@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee21a4a3_61ea6eb6",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-24T08:58:48Z",
+      "side": 1,
+      "message": "minor nit: format the comments like in defs.go\n\nIt happens automatically after generation, but will make this easier to read.",
+      "revId": "fae5cf363483143f07b758e529fcb5187f756810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
