@@ -52,6 +52,24 @@
       "parentUuid": "b3aa7069_975e5662",
       "revId": "8898ca9f6868f42cda08d98727937d39fb06328b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9561d15a_ef488d2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-24T18:57:20Z",
+      "side": 1,
+      "message": "One quick thing to unblock flashrom CLs is to remove \"fingerprint-cq\" from this line https://source.corp.google.com/chromeos_internal/infra/config/testingconfig/source_tree_test_config_main.star;l\u003d131. I added that last week. My big apologies here: I should have notified the flashrom team when I added that. But I didn\u0027t know these tests have such high failure rates back then (the problem was masked because they were skipped very often in suite:bvt-tast-cq).",
+      "parentUuid": "73f7c66c_ea3f92e1",
+      "revId": "8898ca9f6868f42cda08d98727937d39fb06328b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
