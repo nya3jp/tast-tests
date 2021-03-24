@@ -24,6 +24,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// ChromeType indicates whether the test should run on Ash-Chrome or Lacros-Chrome.
+type ChromeType int
+
+const (
+	// AshChrome when test should run on Ash-Chrome.
+	AshChrome ChromeType = iota
+
+	// LacrosChrome when test should run on Lacros-Chrome.
+	LacrosChrome
+)
+
 // RunDecodeAccelUsedJPEG tests that the HW JPEG decoder is used in a GetUserMedia().
 // The test fails if bucketValue on histogramName does not count up.
 func RunDecodeAccelUsedJPEG(ctx context.Context, s *testing.State, getUserMediaFilename, streamName, histogramName string, bucketValue int64) {
@@ -106,9 +117,12 @@ type cameraResults []struct {
 }
 
 // setPerf stores performance data of cameraResults into p.
-func (r *cameraResults) SetPerf(p *perf.Values) {
+func (r *cameraResults) SetPerf(p *perf.Values, lacros bool) {
 	for _, result := range *r {
 		perfSuffix := fmt.Sprintf("%dx%d", result.Width, result.Height)
+		if lacros {
+			perfSuffix = fmt.Sprintf("lacros_%v", perfSuffix)
+		}
 		result.FrameStats.SetPerf(p, perfSuffix)
 	}
 }

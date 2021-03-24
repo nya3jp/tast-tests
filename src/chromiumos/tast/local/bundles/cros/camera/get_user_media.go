@@ -18,13 +18,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type chromeType int
-
-const (
-	ashChrome chromeType = iota
-	lacrosChrome
-)
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GetUserMedia,
@@ -39,19 +32,19 @@ func init() {
 				Pre:               pre.ChromeVideo(),
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{caps.BuiltinCamera, "camera_720p"},
-				Val:               ashChrome,
+				Val:               getusermedia.AshChrome,
 			},
 			{
 				Name:              "vivid",
 				Pre:               pre.ChromeVideo(),
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{caps.VividCamera},
-				Val:               ashChrome,
+				Val:               getusermedia.AshChrome,
 			},
 			{
 				Name: "fake",
 				Pre:  pre.ChromeVideoWithFakeWebcam(),
-				Val:  ashChrome,
+				Val:  getusermedia.AshChrome,
 			},
 			{
 				Name:      "lacros",
@@ -61,7 +54,7 @@ func init() {
 				// cameras as well once they are supported on Lacros.
 				ExtraSoftwareDeps: []string{caps.BuiltinUSBCamera, "camera_720p", "lacros"},
 				Timeout:           7 * time.Minute, // A lenient limit for launching Lacros Chrome.
-				Val:               lacrosChrome,
+				Val:               getusermedia.LacrosChrome,
 			},
 		},
 	})
@@ -84,7 +77,7 @@ func GetUserMedia(ctx context.Context, s *testing.State) {
 
 	var cr getusermedia.ChromeInterface
 	var err error
-	if s.Param().(chromeType) == lacrosChrome {
+	if s.Param().(getusermedia.ChromeType) == getusermedia.LacrosChrome {
 		cr, err = launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData), s.DataPath(launcher.DataArtifact))
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
