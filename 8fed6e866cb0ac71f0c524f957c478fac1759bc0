@@ -34,6 +34,24 @@
       "parentUuid": "99c6ddc2_441d14c6",
       "revId": "8fed6e866cb0ac71f0c524f957c478fac1759bc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76bf77f3_11e7e826",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tulip_480p_h264_cencv1_ctr.mpd",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-24T03:00:36Z",
+      "side": 1,
+      "message": "That\u0027s webm file but this is mpd file... what\u0027s the difference? (sorry I\u0027m not familiar with video area)\n\nIf you copied this file from somewhere please put it in a subdirectory named \"third_party\". There are some existing examples:\nhttps://source.chromium.org/search?q\u003dfile:tast-tests%20file:data%2Fthird_party\n\nIf you generated this file somehow, I believe we can say we own copyright of the generated file and can put a copyright header.",
+      "parentUuid": "6170ded0_fc2435e3",
+      "revId": "8fed6e866cb0ac71f0c524f957c478fac1759bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
