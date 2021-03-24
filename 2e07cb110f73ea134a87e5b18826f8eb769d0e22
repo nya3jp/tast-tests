@@ -80,6 +80,29 @@
       },
       "revId": "2e07cb110f73ea134a87e5b18826f8eb769d0e22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22ca9036_4936ddad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-03-24T01:18:33Z",
+      "side": 1,
+      "message": "I think the conditions are too strong given that there are various display sizes and that the definition of phone size and tablet size change frequently.\n\nIn the ARC team, we test them in the following criteria:\n- Phone: freeform window state, height is longer than width\n- Tablet: freeform window state, width is longer than height\n- Maximize: maximize or fullscreen window state, app size matches display size\n- Blackbars: maximize or fullscreen winodow state, height is longer than width",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 2
+      },
+      "revId": "2e07cb110f73ea134a87e5b18826f8eb769d0e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
