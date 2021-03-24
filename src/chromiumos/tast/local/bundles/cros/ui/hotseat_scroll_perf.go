@@ -14,8 +14,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/filesapp"
-	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
@@ -224,17 +224,20 @@ func prepareFetchShelfScrollSmoothness(ctx context.Context, tconn *chrome.TestCo
 		// App should be open until the animation smoothness data is collected for in-app shelf.
 		cleanupFuncs = append(cleanupFuncs, files.Close)
 
-		tc, err := pointer.NewTouchController(ctx, tconn)
+		tsw, tcc, err := touch.NewTouchscreenAndConverter(ctx, tconn)
 		if err != nil {
 			return cleanupAll, errors.Wrap(err, "failed to create the touch controller")
 		}
 		cleanupFuncs = append(cleanupFuncs, func(context.Context) error {
-			tc.Close()
-			return nil
+			return tsw.Close()
 		})
+		stw, err := tsw.NewSingleTouchWriter()
+		if err != nil {
+			return cleanupAll, errors.Wrap(err, "failed to get the single touch writer")
+		}
 
 		// Swipe up the hotseat.
-		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
+		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
 			return cleanupAll, errors.Wrap(err, "failed to test the in-app shelf")
 		}
 	} else if !isInTabletMode && isLauncherVisible {
