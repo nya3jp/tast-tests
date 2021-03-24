@@ -106,9 +106,12 @@ type cameraResults []struct {
 }
 
 // setPerf stores performance data of cameraResults into p.
-func (r *cameraResults) SetPerf(p *perf.Values) {
+func (r *cameraResults) SetPerf(p *perf.Values, lacros bool) {
 	for _, result := range *r {
 		perfSuffix := fmt.Sprintf("%dx%d", result.Width, result.Height)
+		if lacros {
+			perfSuffix = fmt.Sprintf("lacros_%v", perfSuffix)
+		}
 		result.FrameStats.SetPerf(p, perfSuffix)
 	}
 }
