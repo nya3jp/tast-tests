@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f4bc40a_bdc92950",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-24T17:24:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e53e5f6_308257fa",
+      "range": {
+        "startLine": 25,
+        "startChar": 46,
+        "endLine": 25,
+        "endChar": 76
+      },
+      "revId": "af08779a509bc361966d047166af609f435834dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5926e75e_e68e47f8",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72944154_6c2b1a9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-24T17:24:11Z",
+      "side": 1,
+      "message": "Correct. We only have 4 DUTs where this test can run right now. It\u0027s a manually triggered infra test more than a useful AX validation test.",
+      "parentUuid": "5926e75e_e68e47f8",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "af08779a509bc361966d047166af609f435834dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "485fef04_27043a69",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-03-17T00:22:18Z",
       "side": 1,
       "message": "nit: established",
+      "range": {
+        "startLine": 105,
+        "startChar": 38,
+        "endLine": 105,
+        "endChar": 47
+      },
+      "revId": "af08779a509bc361966d047166af609f435834dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e28542_69a46bbd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2021-03-24T17:24:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "485fef04_27043a69",
       "range": {
         "startLine": 105,
         "startChar": 38,
