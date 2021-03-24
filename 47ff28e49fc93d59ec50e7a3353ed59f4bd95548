@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3970619f_974721bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-24T22:13:45Z",
+      "side": 1,
+      "message": "Moved the check into prepare() to make sure the invite_link is not empty. If the invite_link is empty, the prepare would return error.",
+      "parentUuid": "7ec21e6a_0d3da50c",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "47ff28e49fc93d59ec50e7a3353ed59f4bd95548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c21c3025_a651bf1d",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-23T06:53:57Z",
       "side": 1,
       "message": "nit\u0026optional: defer conf.End(ctx)",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 4
+      },
+      "revId": "47ff28e49fc93d59ec50e7a3353ed59f4bd95548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59c816f9_6e74e9e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-24T22:13:45Z",
+      "side": 1,
+      "message": "Changed. Thanks!",
+      "parentUuid": "c21c3025_a651bf1d",
       "range": {
         "startLine": 53,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e757eb_29237f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-24T22:13:45Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "60982de2_1d1df6da",
+      "range": {
+        "startLine": 50,
+        "startChar": 14,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "47ff28e49fc93d59ec50e7a3353ed59f4bd95548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57c76580_11612b53",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-23T06:53:57Z",
       "side": 1,
       "message": "style: Can you return nil explicitly to avoid naked returns?",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 9
+      },
+      "revId": "47ff28e49fc93d59ec50e7a3353ed59f4bd95548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2772e7c_fb276c94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-24T22:13:45Z",
+      "side": 1,
+      "message": "Sure. Fixed.",
+      "parentUuid": "57c76580_11612b53",
       "range": {
         "startLine": 108,
         "startChar": 3,
