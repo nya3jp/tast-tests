@@ -83,6 +83,14 @@ func TFAttenuator(target string) TFOption {
 	}
 }
 
+// TFRouterAsCapture sets if the router should be used as a capturer. If there
+// are multiple routers, the first one is used.
+func TFRouterAsCapture() TFOption {
+	return func(tf *TestFixture) {
+		tf.option.routerAsCapture = true
+	}
+}
+
 // TFWithUI sets if the test fixture should not skip stopping UI.
 // This option is useful for tests with UI settings + basic WiFi functionality,
 // where the interference of UI (e.g. trigger scans) does not matter much.
@@ -145,8 +153,9 @@ type TestFixture struct {
 
 	// Group simple option flags here as they started to grow.
 	option struct {
-		packetCapture bool
-		withUI        bool
+		packetCapture   bool
+		withUI          bool
+		routerAsCapture bool
 	}
 
 	apID      int
@@ -282,6 +291,10 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 			return nil, errors.Wrap(err, "failed to create a router object")
 		}
 		router.object = routerObj
+	}
+	if tf.option.routerAsCapture {
+		testing.ContextLog(ctx, "Using router as pcap")
+		tf.pcapTarget = tf.routers[0].target
 	}
 
 	// errInvalidHost checks if the error is a wrapped "no such host" error.
