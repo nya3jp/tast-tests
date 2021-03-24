@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b040035_74eb5e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-24T03:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9e2c94b_b875e882",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 48
+      },
+      "revId": "68b8de2b2088e3ae4437d015545a36ef0335d364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2243ed5_a0526920",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-23T20:06:16Z",
       "side": 1,
       "message": "ditto here. don\u0027t ignore the error, and if there is an error return a errors.Wrap()\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 31
+      },
+      "revId": "68b8de2b2088e3ae4437d015545a36ef0335d364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068470a8_c957ab7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-24T03:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2243ed5_a0526920",
       "range": {
         "startLine": 129,
         "startChar": 3,
