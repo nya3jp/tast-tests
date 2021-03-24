@@ -124,6 +124,23 @@ func (s *WifiService) ReinitTestState(ctx context.Context, _ *empty.Empty) (*emp
 	if err := s.reinitTestState(ctx, m); err != nil {
 		return nil, err
 	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		servicePath, err := s.selectedService(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if servicePath != "/" {
+			return errors.Errorf("unexpected service path, got %q, want \"/\"", servicePath)
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  time.Second * 5,
+		Interval: time.Millisecond * 200,
+	}); err != nil {
+		return nil, err
+	}
+
 	return &empty.Empty{}, nil
 }
 
@@ -417,22 +434,31 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 	}, nil
 }
 
-// SelectedService returns the object path of selected service of WiFi service.
-func (s *WifiService) SelectedService(ctx context.Context, _ *empty.Empty) (*network.SelectedServiceResponse, error) {
-	ctx, st := timing.Start(ctx, "wifi_service.SelectedService")
+func (s *WifiService) selectedService(ctx context.Context) (dbus.ObjectPath, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.selectedService")
 	defer st.End()
 
 	_, dev, err := s.wifiDev(ctx)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	prop, err := dev.GetProperties(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get WiFi device properties")
+		return "", errors.Wrap(err, "failed to get WiFi device properties")
 	}
 	servicePath, err := prop.GetObjectPath(shillconst.DevicePropertySelectedService)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get SelectedService")
+		return "", errors.Wrap(err, "failed to get SelectedService")
+	}
+
+	return servicePath, nil
+}
+
+// SelectedService returns the object path of selected service of WiFi service.
+func (s *WifiService) SelectedService(ctx context.Context, _ *empty.Empty) (*network.SelectedServiceResponse, error) {
+	servicePath, err := s.selectedService(ctx)
+	if err != nil {
+		return nil, err
 	}
 	// Handle a special case of no selected service.
 	// See: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/shill/doc/device-api.txt
@@ -2124,6 +2150,14 @@ func (s *WifiService) SuspendAssertConnect(ctx context.Context, req *network.Sus
 	}
 
 	return &network.SuspendAssertConnectResponse{ReconnectTime: time.Since(resumeStartTime).Nanoseconds()}, nil
+}
+
+// Suspend suspends the DUT.
+func (s *WifiService) Suspend(ctx context.Context, req *network.SuspendRequest) (*empty.Empty, error) {
+	if err := suspend(ctx, time.Duration(req.WakeUpTimeout)); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
 }
 
 // GetGlobalFTProperty returns the WiFi.GlobalFTEnabled manager property value.
