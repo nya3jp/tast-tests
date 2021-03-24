@@ -184,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f382ee2a_ae021ad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1483212
+      },
+      "writtenOn": "2021-03-24T22:58:12Z",
+      "side": 1,
+      "message": "Please add Alex as primary for future CLs, but for this CL, Jun can you close out the +2 if all your concerns are addressed?",
+      "parentUuid": "492aa743_a2d92916",
+      "range": {
+        "startLine": 23,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec070625_e0a9c17f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2.go",
         "patchSetId": 25
