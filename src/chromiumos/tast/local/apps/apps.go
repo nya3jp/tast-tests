@@ -25,6 +25,18 @@ type App struct {
 	Name string
 }
 
+// Borealis App represents the installer/launcher for the borealis.
+var Borealis = App{
+	ID:   "dkecggknbdokeipkgnhifhiokailichf",
+	Name: "Borealis",
+}
+
+// Chat App has details about the Google Chat app.
+var Chat = App{
+	ID:   "mhihbbhgcjldimhaopinoigbbglkihll",
+	Name: "Chat",
+}
+
 // Chrome has details about the Chrome app.
 var Chrome = App{
 	ID:   "mgndgikekgjfcpckkfioiadnlibdjbkf",
@@ -73,6 +85,12 @@ var Docs = App{
 var Duo = App{
 	ID:   "djkcbcmkefiiphjkonbeknmcgiheajce",
 	Name: "Duo",
+}
+
+// FamilyLink has details about the Family Link app.
+var FamilyLink = App{
+	ID:   "mljomdcpdfpfdplmgghfeoofmbbianlf",
+	Name: "Family Link",
 }
 
 // Files has details about the Files app.
@@ -199,18 +217,6 @@ var WebStore = App{
 var Youtube = App{
 	ID:   "aniolghapcdkoolpkffememnhpphmjkl",
 	Name: "Youtube",
-}
-
-// FamilyLink has details about the Family Link app.
-var FamilyLink = App{
-	ID:   "mljomdcpdfpfdplmgghfeoofmbbianlf",
-	Name: "Family Link",
-}
-
-// Chat App has details about the Google Chat app.
-var Chat = App{
-	ID:   "mhihbbhgcjldimhaopinoigbbglkihll",
-	Name: "Chat",
 }
 
 // Launch launches an app specified by appID.
