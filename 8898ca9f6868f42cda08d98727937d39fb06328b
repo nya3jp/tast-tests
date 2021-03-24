@@ -34,6 +34,24 @@
       "parentUuid": "19f1fe96_76d34a6d",
       "revId": "8898ca9f6868f42cda08d98727937d39fb06328b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f7c66c_ea3f92e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-03-24T18:15:48Z",
+      "side": 1,
+      "message": "Before this CL there was no dependency on servo for fp_sensor test. Is there any way to work around these issues? I have consistent failures with this test. See the most current one: https://ci.chromium.org/ui/p/chromeos/builders/cq/cq-orchestrator/b8851872968376503232/overview Also see all the CQ attempts on this CL always failing with the same issue: crrev.com/c/2775886",
+      "parentUuid": "b3aa7069_975e5662",
+      "revId": "8898ca9f6868f42cda08d98727937d39fb06328b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
