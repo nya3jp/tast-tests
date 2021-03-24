@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37463c2e_05e261d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tier.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-24T03:13:34Z",
+      "side": 1,
+      "message": "I guess \"the simplest\"? or \"the minimal\" might be better?",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "e5877062019d1725600a2567f6b929c9cc42fc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
