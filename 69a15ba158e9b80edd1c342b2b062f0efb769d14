@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f616cee_1f83c2c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/geller_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-24T03:12:54Z",
+      "side": 1,
+      "message": "Is this required as account details are in fixture now?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 115
+      },
+      "revId": "69a15ba158e9b80edd1c342b2b062f0efb769d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7166fd22_754b0671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-24T03:12:54Z",
+      "side": 1,
+      "message": "Ditto. As the accounts are now in fixture. Is this required?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 119
+      },
+      "revId": "69a15ba158e9b80edd1c342b2b062f0efb769d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
