@@ -16,6 +16,24 @@
       "message": "Did we still decide to use a flag there?",
       "revId": "8a7ea566b25516220cb8970e02afe8e8cab078ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6724c32f_21506c72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-03-24T20:00:33Z",
+      "side": 1,
+      "message": "This doesnt go into authsession. This is just to manage the command line API. Chrome wouldnt have to put this flag everytime, just the one time in StartAuthSession",
+      "parentUuid": "c688d4e6_c51b4a73",
+      "revId": "8a7ea566b25516220cb8970e02afe8e8cab078ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
