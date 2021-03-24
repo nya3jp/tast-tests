@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3dc9022_c1321202",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-24T01:55:45Z",
+      "side": 1,
+      "message": "minor nit: it might be a little confusing when there are multiple routers. (but I think we don\u0027t yet have the environment.)\n\nMaybe worth to mention it uses the 1st router in docstring of TFRouterAsCapture?",
+      "revId": "f716b4b0bfe93b3006ede4089cf4d9649be9f7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
