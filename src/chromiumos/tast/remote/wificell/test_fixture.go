@@ -1278,6 +1278,14 @@ func (tf *TestFixture) SuspendAssertConnect(ctx context.Context, wakeUpTimeout t
 	return time.Duration(resp.ReconnectTime), nil
 }
 
+// Suspend suspends the DUT for wakeUpTimeout seconds through gRPC.
+func (tf *TestFixture) Suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
+	if _, err := tf.wifiClient.Suspend(ctx, &network.SuspendRequest{WakeUpTimeout: wakeUpTimeout.Nanoseconds()}); err != nil {
+		return errors.Wrap(err, "failed to suspend")
+	}
+	return nil
+}
+
 // DisableMACRandomize disables MAC randomization on DUT if supported, this
 // is useful for tests verifying probe requests from DUT.
 // On success, a shortened context and cleanup function is returned.
