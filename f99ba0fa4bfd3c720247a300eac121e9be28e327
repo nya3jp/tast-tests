@@ -16,6 +16,46 @@
       "message": "Hand over to Yenlin.",
       "revId": "f99ba0fa4bfd3c720247a300eac121e9be28e327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f20ac3_64281402",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-24T06:03:08Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "f99ba0fa4bfd3c720247a300eac121e9be28e327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "840b5560_026c81e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-24T06:03:08Z",
+      "side": 1,
+      "message": "nit: maybe these common setup can be moved outside of testOnce and only done once.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 0
+      },
+      "revId": "f99ba0fa4bfd3c720247a300eac121e9be28e327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
