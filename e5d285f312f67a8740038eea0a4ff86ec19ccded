@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f1c0a7_6f3b9b8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T02:38:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aec702ce_ab4a2934",
+      "range": {
+        "startLine": 96,
+        "startChar": 81,
+        "endLine": 96,
+        "endChar": 86
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74b36fc6_e148797d",
@@ -424,6 +448,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05a1fdc_f87c08e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T02:38:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1875730d_fa44ae65",
+      "range": {
+        "startLine": 120,
+        "startChar": 27,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccb91610_7ad49b7a",
@@ -565,6 +613,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "666f9aa5_beb335c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T02:38:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "552517c9_d43c5868",
+      "range": {
+        "startLine": 178,
+        "startChar": 48,
+        "endLine": 178,
+        "endChar": 64
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c2f896c_3fd6ce36",
@@ -602,6 +674,30 @@
       "side": 1,
       "message": "it is irrelavant to this cl. So can we ignore it?",
       "parentUuid": "5c2f896c_3fd6ce36",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c62fa1d_4cf7abc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T02:38:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd26672a_c797f915",
       "range": {
         "startLine": 188,
         "startChar": 5,
@@ -659,6 +755,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "545227da_53ab95ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T02:38:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a098a29f_d6fb75f8",
+      "range": {
+        "startLine": 192,
+        "startChar": 5,
+        "endLine": 192,
+        "endChar": 10
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "314645c0_704971b3",
@@ -706,6 +826,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c236656_c776a84d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T02:38:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "82d8f8a4_60d3858e",
+      "range": {
+        "startLine": 197,
+        "startChar": 5,
+        "endLine": 197,
+        "endChar": 10
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03e7762a_d2f06f68",
@@ -743,6 +887,30 @@
       "side": 1,
       "message": "it is irrelavant to this cl. So can we ignore it?",
       "parentUuid": "03e7762a_d2f06f68",
+      "range": {
+        "startLine": 201,
+        "startChar": 5,
+        "endLine": 201,
+        "endChar": 10
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95bd457c_5a8522a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T02:38:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "11cec7ab_7b0336c1",
       "range": {
         "startLine": 201,
         "startChar": 5,
