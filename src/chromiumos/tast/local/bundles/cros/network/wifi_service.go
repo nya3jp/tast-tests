@@ -2126,6 +2126,14 @@ func (s *WifiService) SuspendAssertConnect(ctx context.Context, req *network.Sus
 	return &network.SuspendAssertConnectResponse{ReconnectTime: time.Since(resumeStartTime).Nanoseconds()}, nil
 }
 
+// Suspend suspends the DUT.
+func (s *WifiService) Suspend(ctx context.Context, req *network.SuspendRequest) (*empty.Empty, error) {
+	if err := suspend(ctx, time.Duration(req.WakeUpTimeout)); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
 // GetGlobalFTProperty returns the WiFi.GlobalFTEnabled manager property value.
 func (s *WifiService) GetGlobalFTProperty(ctx context.Context, _ *empty.Empty) (*network.GetGlobalFTPropertyResponse, error) {
 	m, err := shill.NewManager(ctx)
