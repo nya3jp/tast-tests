@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a92ca3cf_2c51dd4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-03-24T16:50:24Z",
+      "side": 1,
+      "message": "Hi Shuhei,\n\nDo you mind reviewing? I\u0027ve tried to run lacros.Basic locally multiple times and can confirm it\u0027s succeeding reliably.\n\nUnfortunately, the VM builder has been broken for a long time, and it\u0027s not blocking the CQ at this moment, please see the recent builds, they all fail due to the same test runner issue: https://ci.chromium.org/p/chromeos/builders/vmtest/amd64-generic-direct-tast-vm",
+      "revId": "40ed0b6c941d8e3e48fdd27d0721b5e4b8c2e321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
