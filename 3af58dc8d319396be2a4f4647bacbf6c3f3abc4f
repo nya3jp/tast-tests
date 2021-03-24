@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26dfa546_a7cdc6cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-24T06:55:02Z",
+      "side": 1,
+      "message": "LGTM to avoid cross-timezone iteration, but please fix an issue (L68) before land.",
+      "revId": "3af58dc8d319396be2a4f4647bacbf6c3f3abc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f318e627_e2646c10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-24T06:55:02Z",
+      "side": 1,
+      "message": "could you fix?",
+      "range": {
+        "startLine": 68,
+        "startChar": 48,
+        "endLine": 68,
+        "endChar": 61
+      },
+      "revId": "3af58dc8d319396be2a4f4647bacbf6c3f3abc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cda7987_4fd33a76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_passing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-24T06:55:02Z",
+      "side": 1,
+      "message": "optioanl: you can drop \"infromational\"s, because it is marked informational at L36 already.",
+      "revId": "3af58dc8d319396be2a4f4647bacbf6c3f3abc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
