@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17766e26_aecbd77d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-24T03:46:57Z",
+      "side": 1,
+      "message": "Is this the correct bug?",
+      "revId": "b654a3d651239b67d8cf5474b113c968c2824e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b95c4f7_89bd4e96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-24T03:46:57Z",
+      "side": 1,
+      "message": "LGTM. Please also get code review from your teammate or the contacts of the test.",
+      "revId": "b654a3d651239b67d8cf5474b113c968c2824e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
