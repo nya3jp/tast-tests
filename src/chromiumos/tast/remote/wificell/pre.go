@@ -32,6 +32,8 @@ const (
 	TFFeaturesRouters
 	// TFFeaturesAttenuator feature facilitates attenuator handling.
 	TFFeaturesAttenuator
+	// TFFeaturesRouterAsCapture configures the router as a capturer as well.
+	TFFeaturesRouterAsCapture
 )
 
 // String returns name component corresponding to enum value(s).
@@ -52,6 +54,10 @@ func (enum TFFeatures) String() string {
 	if enum&TFFeaturesAttenuator != 0 {
 		ret = append(ret, "attenuator")
 		enum ^= TFFeaturesAttenuator
+	}
+	if enum&TFFeaturesRouterAsCapture != 0 {
+		ret = append(ret, "routerAsCapture")
+		enum ^= TFFeaturesRouterAsCapture
 	}
 	// Catch weird cases. Like when somebody extends enum, but forgets to extend this.
 	if enum != 0 {
@@ -195,6 +201,10 @@ func (p *testFixturePreImpl) Prepare(ctx context.Context, s *testing.PreState) i
 		s.Log("pcap: ", pcap)
 		ops = append(ops, TFPcap(pcap))
 	} // else: let TestFixture resolve the name.
+	if p.features&TFFeaturesRouterAsCapture != 0 {
+		s.Log("using router as pcap")
+		ops = append(ops, TFRouterAsCapture())
+	}
 	// Read attenuator variable.
 	if p.features&TFFeaturesAttenuator != 0 {
 		atten, ok := s.Var("attenuator")
