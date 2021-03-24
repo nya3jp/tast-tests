@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome/ash"
@@ -50,6 +51,11 @@ func init() {
 }
 
 func OverviewPerf(ctx context.Context, s *testing.State) {
+	// Reserve five seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
@@ -64,7 +70,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
-	defer lacros.CloseLacrosChrome(ctx, l)
+	defer lacros.CloseLacrosChrome(cleanupCtx, l)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -75,7 +81,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to obtain the tablet mode status: ", err)
 	}
-	defer ash.SetTabletModeEnabled(ctx, tconn, originalTabletMode)
+	defer ash.SetTabletModeEnabled(cleanupCtx, tconn, originalTabletMode)
 
 	// overviewAnimationType specifies the type of the animation of entering to or
 	// exiting from the overview mode.
