@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba3b902_d93a71a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T21:54:27Z",
+      "side": 1,
+      "message": "This seems caused by fsutil.CopyFile. I will raise a bug to Tast Core team to fix it.\nAgree to demote the test to informational.\n\nhttps://pantheon.corp.google.com/storage/browser/_details/chromeos-vmtest-archive/betty-pi-arc-direct-tast-vm/8851984485986972944/first_results/tests/apps.LaunchGallery.clamshell_stable/log.txt",
+      "revId": "3f1d7db5c20fcf4d9dd0ee8dc937ea0688217186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
