@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdc509d3_09708324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-24T22:13:30Z",
+      "side": 1,
+      "message": "Fixed. The logic is more clear with this change. Thanks!",
+      "parentUuid": "829e447a_92b4e08d",
+      "range": {
+        "startLine": 243,
+        "startChar": 3,
+        "endLine": 251,
+        "endChar": 13
+      },
+      "revId": "5a997009489001350aa8dc286106426a49fa10ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "742bde83_905e264a",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "668bb098_fa168aaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-24T22:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "742bde83_905e264a",
+      "range": {
+        "startLine": 666,
+        "startChar": 30,
+        "endLine": 666,
+        "endChar": 69
+      },
+      "revId": "5a997009489001350aa8dc286106426a49fa10ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cbf5d55_5c446f22",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-03-23T06:46:45Z",
       "side": 1,
       "message": "Where is this function used?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "5a997009489001350aa8dc286106426a49fa10ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aa75f3e_ad5579f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/slide.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-24T22:13:30Z",
+      "side": 1,
+      "message": "It was used in the other google meet service commit (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2605503/45/src/chromiumos/tast/local/bundles/cros/ui/conference/run.go#110). But we just did some refactor and call this function from ExtendedDisplayPresenting and PresentSlide.",
+      "parentUuid": "9cbf5d55_5c446f22",
       "range": {
         "startLine": 23,
         "startChar": 5,
