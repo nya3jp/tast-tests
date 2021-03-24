@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91082b1_3a82006b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-03-24T20:12:43Z",
+      "side": 1,
+      "message": "+1 from cryptohome OWNERS, over to tast owners.",
+      "revId": "8a7ea566b25516220cb8970e02afe8e8cab078ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c688d4e6_c51b4a73",
