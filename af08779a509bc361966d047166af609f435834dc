@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95f25708_301e8fb4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-24T19:51:04Z",
+      "side": 1,
+      "message": "Ah, so I guess for some tests, it\u0027s possible to tell the lab to run them as one-offs (`skylab create-test`). I haven\u0027t yet figured out how to do that for individual Tast tests, even with tast.generic:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/server/site_tests/tast/control.generic?q\u003dtast.generic\n\nIf you figure it out, let us know!",
+      "parentUuid": "72944154_6c2b1a9a",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "af08779a509bc361966d047166af609f435834dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "485fef04_27043a69",
