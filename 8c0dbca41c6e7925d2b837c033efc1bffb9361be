@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e13461_4770e547",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-24T09:06:09Z",
+      "side": 1,
+      "message": "nit: add a description.\n\nMaybe: Add ScopePublicAccount to allow managed guest sessions policies to be set with FakeDMS.",
+      "revId": "8c0dbca41c6e7925d2b837c033efc1bffb9361be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bb7bc13c_ad739803",
@@ -14,6 +31,23 @@
       "writtenOn": "2021-03-19T09:59:38Z",
       "side": 1,
       "message": "Ack on the CL chain, will be adding the other CLs next week.",
+      "revId": "8c0dbca41c6e7925d2b837c033efc1bffb9361be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c26b8a68_0a6e2ed1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-24T09:06:09Z",
+      "side": 1,
+      "message": "Is this CL needed in this chain? Maybe create a separate chain with a test that uses this.",
       "revId": "8c0dbca41c6e7925d2b837c033efc1bffb9361be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
