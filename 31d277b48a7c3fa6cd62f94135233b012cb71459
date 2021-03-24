@@ -16,6 +16,52 @@
       "message": "Nice.",
       "revId": "31d277b48a7c3fa6cd62f94135233b012cb71459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "505dc29a_babde6b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-24T03:11:53Z",
+      "side": 1,
+      "message": "huge nit: explicit type is not necessary.",
+      "range": {
+        "startLine": 109,
+        "startChar": 27,
+        "endLine": 109,
+        "endChar": 33
+      },
+      "revId": "31d277b48a7c3fa6cd62f94135233b012cb71459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a921ed6_cbcbfaf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_passing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-24T03:11:53Z",
+      "side": 1,
+      "message": "nit\u0026optional: This function is very simple so I feel like we can inline it (i.e. initialize structs directly). But I don\u0027t have strong opinion.",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "31d277b48a7c3fa6cd62f94135233b012cb71459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
