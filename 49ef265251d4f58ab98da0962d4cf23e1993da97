@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66b9416_a330f6d0",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-24T07:47:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89ee938d_4dcb8994",
+      "range": {
+        "startLine": 267,
+        "startChar": 36,
+        "endLine": 267,
+        "endChar": 48
+      },
+      "revId": "49ef265251d4f58ab98da0962d4cf23e1993da97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fa86c33_734de8fd",
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "I think adding a flag to MutableConfig is better. Then we can avoid duplication of the flag name constant in two places.",
       "parentUuid": "11c29277_9f46adc5",
+      "range": {
+        "startLine": 193,
+        "startChar": 6,
+        "endLine": 193,
+        "endChar": 15
+      },
+      "revId": "49ef265251d4f58ab98da0962d4cf23e1993da97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b8f6e1c_657c6e3d",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-24T07:47:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fdbeacc_79ba30ee",
       "range": {
         "startLine": 193,
         "startChar": 6,
