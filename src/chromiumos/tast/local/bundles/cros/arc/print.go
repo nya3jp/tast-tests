@@ -92,7 +92,6 @@ var stableModels = []string{
 	"grabbiter",
 	"meep",
 	"nospike",
-	"orbatrix",
 	"phaser",
 	"sparky360",
 	"vortininja",
@@ -119,7 +118,6 @@ var stableModels = []string{
 
 	// zork:
 	"vilboz14",
-	"vilboz360",
 }
 
 func Print(ctx context.Context, s *testing.State) {
