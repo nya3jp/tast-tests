@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	policyPre "chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
@@ -97,9 +98,11 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
+	ui := uiauto.New(tconn)
+	helpCtx := helpapp.NewContext(cr, tconn)
 	// In OOBE stage, help app should not be launched on a managed device after login.
 	if isOOBE {
-		isAppLaunched, err := helpapp.Exists(ctx, tconn)
+		isAppLaunched, err := helpCtx.Exists(ctx)
 		if err != nil {
 			s.Fatal("Failed to verify help app existence: ", err)
 		}
@@ -109,12 +112,12 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 		}
 	} else {
 		// Once the help app has been launched, perks should not be shown on a managed device.
-		if err := helpapp.Launch(ctx, tconn); err != nil {
+		if err := helpCtx.Launch()(ctx); err != nil {
 			s.Fatal("Failed to launch help app: ", err)
 		}
 
 		// Check that loadTimeData is correctly set.
-		loadTimeData, err := helpapp.GetLoadTimeData(ctx, cr)
+		loadTimeData, err := helpCtx.GetLoadTimeData(ctx)
 		if err != nil {
 			s.Fatal("Failed to get help app's load time data")
 		}
@@ -124,7 +127,7 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 		}
 
 		// Check if perks tab is shown.
-		isPerkShown, err := helpapp.IsTabShown(ctx, tconn, helpapp.PerksTab)
+		isPerkShown, err := ui.IsNodeFound(ctx, helpapp.PerksTabFinder)
 		if err != nil {
 			s.Fatal("Failed to check perks visibility: ", err)
 		}

@@ -9,12 +9,13 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/testing"
 )
@@ -62,65 +63,41 @@ func LaunchHelpAppOffline(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	offlineSteps := func() error {
-		if err := helpapp.Launch(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to launch help app")
-		}
-		if err := helpapp.WaitForApp(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to wait for HelpApp")
-		}
+	categoryCardFinder := nodewith.Role(role.Paragraph).ClassName("category")
 
-		// Verify only help card available when offline.
-		cardParams := ui.FindParams{
-			Role:      "paragraph",
-			ClassName: "category",
-		}
+	ui := uiauto.New(tconn)
+	helpCtx := helpapp.NewContext(cr, tconn)
 
-		categoryNameParams := ui.FindParams{
-			Role: ui.RoleTypeStaticText,
-		}
+	offlineSteps := uiauto.Combine("test offline action",
+		helpCtx.Launch(),
+		// Wait for card displayed.
+		ui.WaitUntilExists(categoryCardFinder.First()),
+		// All showoff-card category names can only be "HELP".
+		func(ctx context.Context) error {
+			expr := `
+				var nodes = shadowPiercingQueryAll(".category");
+				var unexpectedCategories = [];
+				nodes.forEach(node=>{
+					if(node.innerText != "HELP" && !unexpectedCategories.includes(node.innerText)){
+						unexpectedCategories.push(node.innerText);
+					}
+				});
+				if (unexpectedCategories.length>0){
+					throw new Error("Cards should not be shown offline: " + unexpectedCategories.join(","))
+				}`
+			return helpCtx.EvalJSWithShadowPiercer(ctx, expr, nil)
+		},
 
-		// Find all showoff-card nodes.
-		cards, err := helpapp.DescendantsWithTimeout(ctx, tconn, cardParams, 10*time.Second)
-		if err != nil {
-			return errors.Wrapf(err, "failed to get showoff-card with %v", cardParams)
-		}
-		defer cards.Release(ctx)
-
-		// Get category name of each node.
-		for _, card := range cards {
-			categoryNode, err := card.DescendantWithTimeout(ctx, categoryNameParams, 10*time.Second)
-			if err != nil {
-				return err
-			}
-			defer categoryNode.Release(ctx)
-			if categoryNode.Name != "HELP" {
-				return errors.Errorf("%s card shown in overview page when offline", categoryNode.Name)
-			}
-		}
-
-		s.Log("Verify help article category available offline")
-
-		// Clicking tab is not very reliable on rendering. Using Poll to stabilize the test.
-		return testing.Poll(ctx, func(context.Context) error {
+		// Verify help article category available offline.
+		// Clicking tab is not very reliable on rendering. Using retry to stabilize the test.
+		ui.WithInterval(1*time.Second).Retry(3,
 			// Expand Help article category by clicking Help tab.
-			if err := helpapp.ClickTab(ctx, tconn, helpapp.HelpTab); err != nil {
-				return testing.PollBreak(errors.Wrap(err, "failed to click Help tab"))
-			}
-
-			getStartedHelpCategory := ui.FindParams{
-				Name: "Get started",
-				Role: ui.RoleTypeTreeItem,
-			}
-			getStartedHelpCategoryNode, err := helpapp.DescendantWithTimeout(ctx, tconn, getStartedHelpCategory, 3*time.Second)
-			if err != nil {
-				return errors.Wrapf(err, "failed to find get started help category with %v", getStartedHelpCategory)
-			}
-			defer getStartedHelpCategoryNode.Release(ctx)
-
-			return nil
-		}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 1 * time.Second})
-	}
+			uiauto.Combine("click help tab and wait for subtree appears",
+				ui.LeftClick(helpapp.HelpTabFinder),
+				ui.WaitUntilExists(helpapp.TabFinder.Name("Get started")),
+			),
+		),
+	)
 
 	// Run test steps in offline mode.
 	if err := network.ExecFuncOnChromeOffline(ctx, offlineSteps); err != nil {
