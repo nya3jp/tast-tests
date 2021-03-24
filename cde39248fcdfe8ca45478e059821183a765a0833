@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afb131fc_bd1fdd54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-24T23:16:53Z",
+      "side": 1,
+      "message": "it should be something like this:\n\n\n  } else if !emailIDFocused {\n    if err :\u003d enterEmailAddress.Click(ctx); err !\u003d nil {\n       return errors.Wrap(...\"failed to click ...\")\n    }\n    return errors.New(\"...not focused...\")\n  }\n\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/android/ui/object.go;l\u003d157",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 31
+      },
+      "revId": "cde39248fcdfe8ca45478e059821183a765a0833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
