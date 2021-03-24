@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a76d4a6d_e3628574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-24T07:07:42Z",
+      "side": 1,
+      "message": "Could you declare variables at latest timing?\n(this case, just before L58).",
+      "revId": "4896b27489ff0b8a34101f9c1c1a031738396e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cbf8235_2bc322b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/getusermedia/get_user_media.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-24T07:07:42Z",
+      "side": 1,
+      "message": "Could you use\n\nsrc/platform/tast-tests/src/chromiumos/tast/local/lacros/lacros.go\n\nChromeTypeLacros to avoid duplication?",
+      "revId": "4896b27489ff0b8a34101f9c1c1a031738396e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89339665_b750100d",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-24T07:07:42Z",
+      "side": 1,
+      "message": "Could you rebase on ToT, and use the variable?\ncf) crrev.com/c/2781079",
+      "revId": "4896b27489ff0b8a34101f9c1c1a031738396e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
