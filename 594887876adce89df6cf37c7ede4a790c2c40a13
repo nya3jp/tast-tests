@@ -311,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffc90d6b_274d3bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-24T19:53:44Z",
+      "side": 1,
+      "message": "Ack, my mistake.",
+      "parentUuid": "0c5f3771_67608b6f",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7090cc79_0334b60d",
