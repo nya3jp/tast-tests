@@ -62,6 +62,30 @@
       },
       "revId": "aff4059cdf869af33e20a02658bea5c349c9fa89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c21aad05_2cb8c45a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-24T22:53:18Z",
+      "side": 1,
+      "message": "I will do that in a different CL.",
+      "parentUuid": "fa48d759_0bc20374",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 11
+      },
+      "revId": "aff4059cdf869af33e20a02658bea5c349c9fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
