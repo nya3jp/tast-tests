@@ -143,6 +143,9 @@ service WifiService {
   // SuspendAssertConnect suspends the DUT and waits for connection after resuming.
   rpc SuspendAssertConnect(SuspendAssertConnectRequest) returns (SuspendAssertConnectResponse) {}
 
+  // Suspend suspends the DUT.
+  rpc Suspend(SuspendRequest) returns (google.protobuf.Empty) {}
+
   // GetGlobalFTProperty returns the WiFi.GlobalFTEnabled manager property value.
   rpc GetGlobalFTProperty(google.protobuf.Empty) returns (GetGlobalFTPropertyResponse) {}
 
@@ -452,6 +455,10 @@ message SuspendAssertConnectRequest {
 
 message SuspendAssertConnectResponse {
   int64 reconnect_time = 1;
+}
+
+message SuspendRequest {
+  int64 wake_up_timeout = 1;
 }
 
 message GetGlobalFTPropertyResponse {
