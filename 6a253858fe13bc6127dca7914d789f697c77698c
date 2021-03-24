@@ -56,6 +56,52 @@
       },
       "revId": "6a253858fe13bc6127dca7914d789f697c77698c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58593421_275dcb6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-24T22:31:57Z",
+      "side": 1,
+      "message": "nit: s.Log instead to be consistent with the usage of s.Fatal in this function?",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "6a253858fe13bc6127dca7914d789f697c77698c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88bfc2f3_b04c9aec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-24T22:31:57Z",
+      "side": 1,
+      "message": "Optional: would it be better to read the original value and restore it here?\n\nWith this code you need to keep the default here in sync with any changes in the production code.",
+      "range": {
+        "startLine": 119,
+        "startChar": 61,
+        "endLine": 119,
+        "endChar": 92
+      },
+      "revId": "6a253858fe13bc6127dca7914d789f697c77698c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
