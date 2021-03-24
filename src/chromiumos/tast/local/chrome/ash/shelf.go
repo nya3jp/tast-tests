@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
-	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -535,13 +535,15 @@ func ShowHotseat(ctx context.Context, tconn *chrome.TestConn) error {
 		return nil
 	}
 	// Get touch controller for tablet.
-	tc, err := pointer.NewTouchController(ctx, tconn)
+	tsew, tcc, err := touch.NewTouchscreenAndConverter(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to create the touch controller")
+		return errors.Wrap(err, "failed to access the touchscreen")
 	}
-	defer tc.Close()
-	stw := tc.EventWriter()
-	tcc := tc.TouchCoordConverter()
+	defer tsew.Close()
+	stw, err := tsew.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "failed to create the single touch writer")
+	}
 
 	// Make sure hotseat is shown.
 	if err := SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {
@@ -589,13 +591,15 @@ func PinAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName string
 // The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
 func PinAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName string) error {
 	// Get touch controller for tablet.
-	tc, err := pointer.NewTouchController(ctx, tconn)
+	tsew, tcc, err := touch.NewTouchscreenAndConverter(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to create the touch controller")
+		return errors.Wrap(err, "failed to access the touchscreen")
 	}
-	defer tc.Close()
-	stw := tc.EventWriter()
-	tcc := tc.TouchCoordConverter()
+	defer tsew.Close()
+	stw, err := tsew.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "failed to create the single touch writer")
+	}
 
 	// Make sure hotseat is shown.
 	if err := SwipeUpHotseatAndWaitForCompletion(ctx, tconn, stw, tcc); err != nil {

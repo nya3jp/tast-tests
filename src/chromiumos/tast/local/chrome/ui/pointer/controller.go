@@ -12,8 +12,8 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -108,38 +108,15 @@ type TouchController struct {
 
 // NewTouchController creates a TouchController on a new TouchscreenEventWriter.
 func NewTouchController(ctx context.Context, tconn *chrome.TestConn) (*TouchController, error) {
-	tsew, err := input.Touchscreen(ctx)
+	tsew, tcc, err := touch.NewTouchscreenAndConverter(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to access to the touch screen")
 	}
-	success := false
-	defer func() {
-		if !success {
-			if err := tsew.Close(); err != nil {
-				testing.ContextLog(ctx, "Failed to close the touch screen: ", err)
-			}
-		}
-	}()
-	orientation, err := display.GetOrientation(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get the orientation info")
-	}
-	// Some devices (like kukui/krane) has rotated panel orientation. The negative
-	// value of the panel orientation (rotation.Angle) should be set to cancel
-	// this effect. See also: https://crbug.com/1022614.
-	if err := tsew.SetRotation(-orientation.Angle); err != nil {
-		return nil, errors.Wrapf(err, "failed to set rotation (%d) to touchscreen", -orientation.Angle)
-	}
-	info, err := display.GetInternalInfo(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get the internal display info")
-	}
-	tcc := tsew.NewTouchCoordConverter(info.Bounds.Size())
 	stw, err := tsew.NewSingleTouchWriter()
 	if err != nil {
+		tsew.Close()
 		return nil, errors.Wrap(err, "failed to create the single touch writer")
 	}
-	success = true
 	return &TouchController{tsew: tsew, stw: stw, tcc: tcc}, nil
 }
 
