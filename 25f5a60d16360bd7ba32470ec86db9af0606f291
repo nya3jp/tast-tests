@@ -16,6 +16,29 @@
       "message": "This CL is split out from TabSwitchCUJ.",
       "revId": "25f5a60d16360bd7ba32470ec86db9af0606f291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ece8df_a3ff9839",
+        "filename": "src/chromiumos/tast/local/chrome/ui/pointer/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-24T03:11:32Z",
+      "side": 1,
+      "message": "I don\u0027t think these are the right choices for the pointer controller;\n* Left or Right clicks are the terms of mouse, doesn\u0027t make sense on touch\n* so far pointer controller has no dependency on chrome/ui or uiauto packages. Don\u0027t add that without considering the architecture of the change.\n\nI am going to add touch supports to uiauto.  Maybe then, supplying pointer-controller equivalent might make sense.  Please wait for that.\n\nFYI: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2783570",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "25f5a60d16360bd7ba32470ec86db9af0606f291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
