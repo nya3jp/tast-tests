@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6851576e_c8eb04f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_login_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-24T09:39:09Z",
+      "side": 1,
+      "message": "Is this actually checked?",
+      "revId": "0ad47d11b48625bebd68c05f674c1bdddfc94833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c52dbb84_88f046d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_login_api.go",
         "patchSetId": 4
