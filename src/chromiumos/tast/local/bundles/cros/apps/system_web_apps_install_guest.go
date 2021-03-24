@@ -24,7 +24,8 @@ func init() {
 		},
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
+		// TODO(crbug/1190865): Disabled as the guest session is causing subsequent tests issues.
+		// Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name: "all_apps",
 			Val:  []chrome.Option{chrome.EnableFeatures("EnableAllSystemWebApps")},
