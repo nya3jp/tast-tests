@@ -16,6 +16,23 @@
       "message": "+2 for Tast Owners",
       "revId": "c54d6869a31bfababb10fcb233e7ec710f92a74b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f112cee3_135c7171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-03-24T01:03:12Z",
+      "side": 1,
+      "message": "Is this a gerrit bug? It says the owner has enabled Auto-Submit, but I see no Auto-Submit tags on the CL. Let me set CQ\u003d0 to be safe and let Meenakshi double-check.",
+      "revId": "c54d6869a31bfababb10fcb233e7ec710f92a74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
