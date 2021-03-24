@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5ab443_7fdfd20d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "330c71cb_1440a659",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 33
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed0f7a96_1db2b8fb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-24T00:27:44Z",
       "side": 1,
       "message": "Please doc how to close it.\n\nIn the following code, hc.UIConn is called twice without closing.",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c9212f4_59389ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed0f7a96_1db2b8fb",
       "range": {
         "startLine": 82,
         "startChar": 3,
@@ -95,6 +143,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aec702ce_ab4a2934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "EvalJS normally expect an immediate return, and also expr needs to be defined.\n\nIf make this function an action, the expr needs to be defined separately not stick together with the function call.",
+      "parentUuid": "14ccf9cf_b7beb7e8",
+      "range": {
+        "startLine": 96,
+        "startChar": 81,
+        "endLine": 96,
+        "endChar": 86
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8644d73_5224d4fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "21c18d53_29ac462b",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74b36fc6_e148797d",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2021-03-24T00:27:44Z",
       "side": 1,
       "message": "conn is not closed",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 5
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc40336_b1928ccb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74b36fc6_e148797d",
       "range": {
         "startLine": 97,
         "startChar": 1,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1abe5ab5_7f5a84db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd17c8ca_fa39692d",
+      "range": {
+        "startLine": 105,
+        "startChar": 98,
+        "endLine": 105,
+        "endChar": 103
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a457a6d_53cb0d2c",
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ccb1e51_705a3bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a457a6d_53cb0d2c",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60d3d376_5bfb7c52",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-03-24T00:27:44Z",
       "side": 1,
       "message": "is a struct",
+      "range": {
+        "startLine": 113,
+        "startChar": 16,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa13f28e_d90ee90a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d3d376_5bfb7c52",
       "range": {
         "startLine": 113,
         "startChar": 16,
@@ -210,6 +402,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1875730d_fa44ae65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Cannot remember the details, not related to this cl, can we ignore it?",
+      "parentUuid": "b5a9026f_c9fe412a",
+      "range": {
+        "startLine": 120,
+        "startChar": 27,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ccb91610_7ad49b7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
         "patchSetId": 1
@@ -221,6 +437,30 @@
       "writtenOn": "2021-03-24T00:27:44Z",
       "side": 1,
       "message": "Please use conn or c or helpAppConn everywhere to make the code consistent.",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 12
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da497852_59fa2bf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "updated all to helpAppConn for consistency.",
+      "parentUuid": "ccb91610_7ad49b7a",
       "range": {
         "startLine": 122,
         "startChar": 1,
@@ -244,6 +484,30 @@
       "writtenOn": "2021-03-24T00:27:44Z",
       "side": 1,
       "message": "Please wrap the error as before.",
+      "range": {
+        "startLine": 124,
+        "startChar": 14,
+        "endLine": 124,
+        "endChar": 17
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59eb6e30_8c67ff92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae45add7_ea1558ae",
       "range": {
         "startLine": 124,
         "startChar": 14,
@@ -279,6 +543,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "552517c9_d43c5868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "This was already discussed when created this test. It is ok to pass s in the same test if no better solution. Any it is irrelavant to this cl. So can we ignore it?",
+      "parentUuid": "9a9080df_78af8193",
+      "range": {
+        "startLine": 178,
+        "startChar": 48,
+        "endLine": 178,
+        "endChar": 64
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c2f896c_3fd6ce36",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
         "patchSetId": 1
@@ -290,6 +578,30 @@
       "writtenOn": "2021-03-24T00:27:44Z",
       "side": 1,
       "message": "return error",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd26672a_c797f915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "it is irrelavant to this cl. So can we ignore it?",
+      "parentUuid": "5c2f896c_3fd6ce36",
       "range": {
         "startLine": 188,
         "startChar": 5,
@@ -325,6 +637,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a098a29f_d6fb75f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "it is irrelavant to this cl. So can we ignore it?",
+      "parentUuid": "5a4df964_ef0605a2",
+      "range": {
+        "startLine": 192,
+        "startChar": 5,
+        "endLine": 192,
+        "endChar": 10
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "314645c0_704971b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
         "patchSetId": 1
@@ -348,6 +684,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82d8f8a4_60d3858e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "it is irrelavant to this cl. So can we ignore it?",
+      "parentUuid": "314645c0_704971b3",
+      "range": {
+        "startLine": 197,
+        "startChar": 5,
+        "endLine": 197,
+        "endChar": 10
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03e7762a_d2f06f68",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
         "patchSetId": 1
@@ -359,6 +719,30 @@
       "writtenOn": "2021-03-24T00:27:44Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 201,
+        "startChar": 5,
+        "endLine": 201,
+        "endChar": 10
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11cec7ab_7b0336c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "it is irrelavant to this cl. So can we ignore it?",
+      "parentUuid": "03e7762a_d2f06f68",
       "range": {
         "startLine": 201,
         "startChar": 5,
@@ -427,6 +811,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ebd1d8_a0721d8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_in_browser_menu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "240230c1_4f4a0788",
+      "range": {
+        "startLine": 63,
+        "startChar": 15,
+        "endLine": 63,
+        "endChar": 80
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "650b195a_1dd0ab61",
@@ -440,6 +848,30 @@
       "writtenOn": "2021-03-24T00:27:44Z",
       "side": 1,
       "message": "test offline action?",
+      "range": {
+        "startLine": 71,
+        "startChar": 33,
+        "endLine": 71,
+        "endChar": 40
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "853e256a_3e6fba73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_offline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650b195a_1dd0ab61",
       "range": {
         "startLine": 71,
         "startChar": 33,
@@ -508,6 +940,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b0ee0b_51b47369",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_release_notes_from_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "418667b2_ba8b5108",
+      "range": {
+        "startLine": 69,
+        "startChar": 21,
+        "endLine": 69,
+        "endChar": 102
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "689a4c23_80a86132",
@@ -561,6 +1017,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aed8567_2c875680",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "435edd55_fc2de411",
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "697eaf11_0c9378c5",
@@ -574,6 +1048,30 @@
       "writtenOn": "2021-03-24T00:27:44Z",
       "side": 1,
       "message": "Suggest to define the node in advance.",
+      "range": {
+        "startLine": 115,
+        "startChar": 21,
+        "endLine": 115,
+        "endChar": 114
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94d08590_6891707b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/search_in_help_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "697eaf11_0c9378c5",
       "range": {
         "startLine": 115,
         "startChar": 21,
@@ -621,6 +1119,30 @@
       "side": 1,
       "message": "I don\u0027t think it\u0027s a question of knowing JS - this is just copy-pasted generated code.",
       "parentUuid": "95e8b37e_166d33cb",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 15
+      },
+      "revId": "e5d285f312f67a8740038eea0a4ff86ec19ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aeeb794_1ce1bd8c",
+        "filename": "src/chromiumos/tast/local/chrome/webutil/shadow_piercer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-24T01:00:42Z",
+      "side": 1,
+      "message": "Yes. The code is developed in ts and built into js. It does not need to be reviewed.",
+      "parentUuid": "285458be_c815881c",
       "range": {
         "startLine": 5,
         "startChar": 8,
