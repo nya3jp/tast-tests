@@ -60,10 +60,16 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	}
 
 	// When booting to a different image, such as normal vs. recovery, the new image might
-	// not have local Tast files installed. So, store those files on the test server and reinstall later.
-	if fromMode != toMode && !h.AreDUTTastFilesOnServer() {
+	// not have Tast host files installed. So, store those files on the test server and reinstall later.
+	if fromMode != toMode && !h.DoesServerHaveTastHostFiles() {
 		if err := h.CopyTastFilesFromDUT(ctx); err != nil {
 			return errors.Wrap(err, "copying Tast files from DUT to test server")
+		}
+		// Remember which image the Tast files came from.
+		if fromMode == fwCommon.BootModeRecovery {
+			h.doesRecHaveTastFiles = true
+		} else {
+			h.doesNormalHaveTastFiles = true
 		}
 	}
 
@@ -129,11 +135,20 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	}
 
 	// Send Tast files back to DUT.
-	if needCopy, err := h.DoesDUTNeedTastFiles(ctx); err != nil {
-		return errors.Wrap(err, "determining whether DUT needs Tast files")
-	} else if needCopy {
-		if err := h.CopyTastFilesToDUT(ctx); err != nil {
-			return errors.Wrap(err, "copying Tast files back to DUT")
+	var needSync bool
+	if toMode == fwCommon.BootModeRecovery {
+		needSync = !h.doesRecHaveTastFiles
+	} else {
+		needSync = !h.doesNormalHaveTastFiles
+	}
+	if needSync {
+		if err := h.SyncTastFilesToDUT(ctx); err != nil {
+			return errors.Wrapf(err, "syncing Tast files to DUT after booting to %s", toMode)
+		}
+		if toMode == fwCommon.BootModeRecovery {
+			h.doesRecHaveTastFiles = true
+		} else {
+			h.doesNormalHaveTastFiles = true
 		}
 	}
 
