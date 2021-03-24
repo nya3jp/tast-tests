@@ -16,6 +16,29 @@
       "message": "Adding nya@ explicitly for expertise in the chrome fixtures",
       "revId": "74f12bea3efcae49d633e786ad9c31a95680d64e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d39edaa_f693fe43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-24T03:08:50Z",
+      "side": 1,
+      "message": "We should avoid assigning chrome.Chrome to f.cr at this point. If we hit errors within SetUp, the instance is leaked.\n\nIn other words, SetUp should not transfer the ownership of chrome.Chrome until it\u0027s sure that it will success.\n\nThe same thing applies to conn and api.\n\nHere\u0027s an example:\n\n success :\u003d false\n\n cr, err :\u003d chrome.New(ctx)\n if err !\u003d nil {\n   s.Fatal(...)\n }\n defer func() {\n   if !success {\n     cr.Close(ctx)\n   }\n }()\n\n // ... do something using cr ...\n\n conn, err :\u003d conndiag.ChromeConn(ctx, cr)\n if err !\u003d nil {\n   s.Fatal(...)\n }\n defer func() {\n   if !success {\n     conn.Close()\n   }\n }()\n\n api, err :\u003d NewMojoAPI(ctx, conn)\n if err !\u003d nil {\n   s.Fatal(...)\n }\n\n success \u003d true\n f.cr \u003d cr\n f.conn \u003d conn\n f.api \u003d api\n return api",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "74f12bea3efcae49d633e786ad9c31a95680d64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
