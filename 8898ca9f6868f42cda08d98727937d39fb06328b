@@ -16,6 +16,24 @@
       "message": "I think this CL is causing some issues: https://ci.chromium.org/ui/p/chromeos/builders/cq/cq-orchestrator/b8851907719293575344/overview",
       "revId": "8898ca9f6868f42cda08d98727937d39fb06328b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3aa7069_975e5662",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-24T18:05:22Z",
+      "side": 1,
+      "message": "Hi, it\u0027s not this CL but two other factors:\n1. The fingerprint Tast tests used to be skipped a lot (when they are scheduled on DUTs without fingerprint sensor, they are skipped), but recently we made a change to schedule them only on fingerprint DUTs, so the execution rate is higher.\n2. The test will fail for a few reasons that my team cannot control, the two most common ones are: (a) servo is not working property http://b/183404912 (as in the run you posted, \"[stdout] firmware.FpSensor            [ FAIL ] Failed to connect to servo: Post \"http://127.0.0.1:34935\": read tcp 127.0.0.1:34870-\u003e127.0.0.1:34935: read: connection reset by peer\";) (b) the DUTs in the test lab are often in HW write protect off state, and flashrom doesn\u0027t work in that case so fingerprint firmware update often fails: http://b/183623630.",
+      "parentUuid": "19f1fe96_76d34a6d",
+      "revId": "8898ca9f6868f42cda08d98727937d39fb06328b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
