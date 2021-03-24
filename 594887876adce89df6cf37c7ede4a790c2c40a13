@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce8e144_3683b4d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02853892_58e0a696",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eaaf48e_ef598891",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-03-23T17:48:37Z",
       "side": 1,
       "message": "nit/style: Since you\u0027re only defining one var here, you can use a simpler syntax:\n\n    var expectedAth10kRegexes \u003d []string{\n        ...\n    }",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d6bb8d7_c45e1036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eaaf48e_ef598891",
       "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c4dd388_28dcb3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "347af37a_1d35b2d9",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96415c85_7ef47de1",
@@ -88,6 +148,24 @@
       "writtenOn": "2021-03-23T17:50:28Z",
       "side": 1,
       "message": "What is your intention in calling os.Stat? Are you detecting whether the file exists? If so, please call os.IsNotExist on the error, since there can be other reasons why os.Stat returns an error.\n\nhttps://pkg.go.dev/os#IsNotExist",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a8c371f_ca4be101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96415c85_7ef47de1",
       "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +239,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c56f8f51_93dd175e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35802721_90d1cb9b",
+      "range": {
+        "startLine": 97,
+        "startChar": 73,
+        "endLine": 97,
+        "endChar": 91
+      },
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9467e5e9_5ad33a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c61c3935_9e16fc50",
+      "range": {
+        "startLine": 97,
+        "startChar": 31,
+        "endLine": 97,
+        "endChar": 42
+      },
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c5f3771_67608b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "\u0027continue\u0027 can\u0027t be used with if statment in golang. I got the following error:\nlocal/bundles/cros/crash/kernel_ath10k_error.go:101:4: continue is not in a loop",
+      "parentUuid": "24ed789a_467c54bd",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7090cc79_0334b60d",
@@ -174,6 +324,24 @@
       "writtenOn": "2021-03-23T17:48:37Z",
       "side": 1,
       "message": "Handle the error that MoveFilesToOut returns: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8fba17e_880a62fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7090cc79_0334b60d",
       "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -195,6 +363,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "213f2c81_e2c9b13b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ca8d98e_2df57121",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0610ddc2_2c406441",
@@ -208,6 +394,24 @@
       "writtenOn": "2021-03-23T17:48:37Z",
       "side": 1,
       "message": "Move this cleanup to after L90. As the test is currently written, there are no Fatal\u0027s between L90 and here; but moving it up will prevent issues from arising in the future.",
+      "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e16ef3_2a23f3ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0610ddc2_2c406441",
       "revId": "594887876adce89df6cf37c7ede4a790c2c40a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
