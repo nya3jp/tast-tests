@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "870919e8_10a7a310",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-24T09:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68e13461_4770e547",
+      "revId": "8c0dbca41c6e7925d2b837c033efc1bffb9361be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bb7bc13c_ad739803",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -48,6 +66,24 @@
       "writtenOn": "2021-03-24T09:06:09Z",
       "side": 1,
       "message": "Is this CL needed in this chain? Maybe create a separate chain with a test that uses this.",
+      "revId": "8c0dbca41c6e7925d2b837c033efc1bffb9361be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6309995a_ebec2b05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-24T09:34:50Z",
+      "side": 1,
+      "message": "It\u0027s used in the chrome.login API test to set the public account policy.",
+      "parentUuid": "c26b8a68_0a6e2ed1",
       "revId": "8c0dbca41c6e7925d2b837c033efc1bffb9361be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
