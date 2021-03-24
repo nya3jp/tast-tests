@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75ce6e7d_a0c4a28c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-03-24T19:11:03Z",
+      "side": 1,
+      "message": "Hi Gabor, Mohamed,\n\nPTAL at this fix.\n\nThanks!",
+      "revId": "ba2738669a75cf76e3222b8fa69db55cf1a80b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
