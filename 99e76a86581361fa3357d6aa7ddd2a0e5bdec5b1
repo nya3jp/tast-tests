@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8aee044_aef866d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-24T02:40:06Z",
+      "side": 1,
+      "message": "I changed the parameter for ash.WaitForApp in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2781072, could you please update the cl if my cl got merged first to avoid compile error?",
+      "revId": "99e76a86581361fa3357d6aa7ddd2a0e5bdec5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
