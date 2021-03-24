@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ff8ad7_26e96980",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-24T08:45:28Z",
+      "side": 1,
+      "message": "Done in crrev.com/c/2782883",
+      "parentUuid": "11c6da5e_0fc0c641",
+      "revId": "ec7f34a542c1875c5387e724ab4cc45390911934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30f42857_de16fb5a",
@@ -82,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf179edf_7465fd48",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-24T08:45:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e4827897_fa01574f",
+      "range": {
+        "startLine": 147,
+        "startChar": 35,
+        "endLine": 147,
+        "endChar": 66
+      },
+      "revId": "ec7f34a542c1875c5387e724ab4cc45390911934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e37ce1e6_c7f3cbd3",
@@ -95,6 +137,30 @@
       "writtenOn": "2021-03-23T11:00:40Z",
       "side": 1,
       "message": "Use the go naming convention for the constants.",
+      "range": {
+        "startLine": 464,
+        "startChar": 1,
+        "endLine": 464,
+        "endChar": 29
+      },
+      "revId": "ec7f34a542c1875c5387e724ab4cc45390911934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f8ad854_63846166",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-24T08:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e37ce1e6_c7f3cbd3",
       "range": {
         "startLine": 464,
         "startChar": 1,
