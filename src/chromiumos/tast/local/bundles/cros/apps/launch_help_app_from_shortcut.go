@@ -85,7 +85,7 @@ func LaunchHelpAppFromShortcut(ctx context.Context, s *testing.State) {
 			s.Errorf("Failed to press %q keys: %v", shortcut, err)
 		}
 
-		if err := helpapp.WaitForApp(ctx, tconn); err != nil {
+		if err := helpapp.NewContext(cr, tconn).WaitForApp()(ctx); err != nil {
 			s.Errorf("Failed to launch or render Help app by shortcut %q: %v", shortcut, err)
 		}
 

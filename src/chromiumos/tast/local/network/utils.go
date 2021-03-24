@@ -24,7 +24,7 @@ const (
 
 // ExecFuncOnChromeOffline disconnect Chrome browser internet connection through iptables.
 // Then it executes given function and reverts it back to the original state.
-func ExecFuncOnChromeOffline(ctx context.Context, f func() error) (result error) {
+func ExecFuncOnChromeOffline(ctx context.Context, f func(ctx context.Context) error) (result error) {
 	// Reserve 5 seconds to resume firewall settings.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -57,7 +57,7 @@ func ExecFuncOnChromeOffline(ctx context.Context, f func() error) (result error)
 	}(cleanupCtx)
 
 	// Run the real test function here.
-	result = f()
+	result = f(ctx)
 	return
 }
 

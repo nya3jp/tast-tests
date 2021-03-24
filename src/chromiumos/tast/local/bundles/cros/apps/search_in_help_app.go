@@ -13,8 +13,10 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -61,13 +63,14 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	if err := helpapp.Launch(ctx, tconn); err != nil {
-		s.Fatal("Failed to launch help app: ", err)
-	}
+	ui := uiauto.New(tconn)
+	helpCtx := helpapp.NewContext(cr, tconn)
 
-	// Click Search tab.
-	if err := helpapp.ClickTab(ctx, tconn, helpapp.SearchTab); err != nil {
-		s.Fatal("Failed to click Search Tab: ", err)
+	if err := uiauto.Combine("launch Help app and navigate to search page",
+		helpCtx.Launch(),
+		ui.LeftClick(helpapp.SearchTabFinder),
+	)(ctx); err != nil {
+		s.Fatal("Failed to launch help app or navigate to search page: ", err)
 	}
 
 	// Establish a Chrome connection to the Help app and wait for it to finish
@@ -106,17 +109,13 @@ func SearchInHelpApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get a keyboard")
 	}
 	defer keyboard.Close()
-	if err := keyboard.Type(ctx, "halp"); err != nil {
-		s.Fatal("Failed to type on keyboard")
-	}
 
-	// Check if there is at least one search result. Since the ui functions
-	// uses string comparison on the classname, "selected" is also specified
-	// to account for cases where only one result is available.
-	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{
-		ClassName: "search-result selected",
-		Role:      ui.RoleTypeListItem,
-	}, 10*time.Second); err != nil {
-		s.Error("Failed to find any search result: ", err)
+	searchResultFinder := nodewith.ClassName("search-result selected").Role(role.ListItem).Ancestor(helpapp.RootFinder)
+
+	if err := uiauto.Combine("type keyword to search and validate result",
+		keyboard.TypeAction("halp"),
+		ui.WaitUntilExists(searchResultFinder),
+	)(ctx); err != nil {
+		s.Error("Failed to search in Help app: ", err)
 	}
 }

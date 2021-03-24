@@ -67,7 +67,7 @@ func LaunchHelpAppFromLauncher(ctx context.Context, s *testing.State) {
 	}
 
 	// App should be launched at the overview page.
-	if err := helpapp.WaitForApp(ctx, tconn); err != nil {
+	if err := helpapp.NewContext(cr, tconn).WaitForApp()(ctx); err != nil {
 		s.Fatal("Failed to wait for help app: ", err)
 	}
 }
