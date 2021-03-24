@@ -201,7 +201,7 @@ func getImgFromFilePath(filePath string) ([]byte, error) {
 
 func getRedColorPercentage(img image.Image) int {
 	red := color.RGBA{255, 0, 0, 255}
-	sim := imgcmp.CountPixelsWithDiff(img, red, 10)
+	sim := imgcmp.CountPixelsWithDiff(img, red, 50)
 
 	bounds := img.Bounds()
 	total := (bounds.Max.Y - bounds.Min.Y) * (bounds.Max.X - bounds.Min.X)
