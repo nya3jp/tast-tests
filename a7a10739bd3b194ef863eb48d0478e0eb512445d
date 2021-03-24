@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84b32c41_b93ad0e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6260e9e0_79227de7",
+      "range": {
+        "startLine": 19,
+        "startChar": 52,
+        "endLine": 19,
+        "endChar": 56
+      },
+      "revId": "a7a10739bd3b194ef863eb48d0478e0eb512445d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54e2d422_307c6540",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a29784_590f084b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b25246c7_5969e643",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 43
+      },
+      "revId": "a7a10739bd3b194ef863eb48d0478e0eb512445d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "306ef064_a3337e2c",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "I added a check for the meta file.",
       "parentUuid": "306ef064_a3337e2c",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "a7a10739bd3b194ef863eb48d0478e0eb512445d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06295772_b407dde4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_ath10k_error.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-03-24T08:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80facad4_755d3ab7",
       "range": {
         "startLine": 67,
         "startChar": 0,
