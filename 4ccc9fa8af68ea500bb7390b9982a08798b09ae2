@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a56a4b_6be0ef8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-03-24T08:44:46Z",
+      "side": 1,
+      "message": "Hi vsavu,\n\nThis CL updates the policy defs by running policy_tast_struct_creator.py, PTAL!\n\nThanks,\nJit",
+      "revId": "4ccc9fa8af68ea500bb7390b9982a08798b09ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
