@@ -28,6 +28,7 @@ type BatteryInfoTracker struct {
 	energyFullDesign   float64
 	collecting         chan bool
 	collectingErr      chan error
+	err                error
 }
 
 // NewBatteryInfoTracker creates a new instance of BatteryInfoTracker. If battery is not
@@ -134,7 +135,11 @@ func (t *BatteryInfoTracker) Stop(ctx context.Context) error {
 	select {
 	case err := <-t.collectingErr:
 		if err != nil {
-			return errors.Wrap(err, "energy collecting routine returned error")
+			// On boards like `drallion`, power.ReadSystemPower() could occasionally
+			// fail. Record the error to skip reporting battery info for such boards.
+			testing.ContextLog(ctx, "Energe collecting routine returned error: ", err)
+			testing.ContextLog(ctx, "Battery info will not be reported")
+			t.err = err
 		}
 	case <-ctx.Done():
 		return ctx.Err()
@@ -144,7 +149,7 @@ func (t *BatteryInfoTracker) Stop(ctx context.Context) error {
 
 // Record stores the collected data into pv for further processing.
 func (t *BatteryInfoTracker) Record(pv *perf.Values) {
-	if t == nil {
+	if t == nil || t.err != nil {
 		return
 	}
 
