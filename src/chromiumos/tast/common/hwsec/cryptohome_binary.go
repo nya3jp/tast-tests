@@ -240,3 +240,8 @@ func (c *cryptohomeBinary) getAccountDiskUsage(ctx context.Context, username str
 func (c *cryptohomeBinary) getSupportedKeyPolicies(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=get_supported_key_policies")
 }
+
+// getKeyData calls "cryptohome --action=get_key_data_ex".
+func (c *cryptohomeBinary) getKeyData(ctx context.Context, username, keyLabel string) ([]byte, error) {
+	return c.call(ctx, "--action=get_key_data_ex", "--user="+username, "--key_label="+keyLabel)
+}
