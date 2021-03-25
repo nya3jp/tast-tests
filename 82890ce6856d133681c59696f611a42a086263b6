@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0046128a_7299cd31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T19:39:11Z",
+      "side": 1,
+      "message": "Thanks for the thorough review, much appreciated!\n",
+      "revId": "82890ce6856d133681c59696f611a42a086263b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d78231a0_f3d7695a",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-03-25T03:24:47Z",
       "side": 1,
       "message": "nit: I think this error check is used in multiple places, perhaps worth to extract it as a function? Or defining constant strings of shill errors is also an option.",
+      "range": {
+        "startLine": 210,
+        "startChar": 6,
+        "endLine": 210,
+        "endChar": 56
+      },
+      "revId": "82890ce6856d133681c59696f611a42a086263b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df9b7379_56463b3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T19:39:11Z",
+      "side": 1,
+      "message": "Good call, made a common constant. (The other method, connectAndVerifyConnected, calls service.Connect instead of Device.SetProperty, so there\u0027s no easy way to combine the logic).",
+      "parentUuid": "d78231a0_f3d7695a",
       "range": {
         "startLine": 210,
         "startChar": 6,
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed782281_35b42a26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T19:39:11Z",
+      "side": 1,
+      "message": "Good catch. We shouldn\u0027t need to wait here. Updated the logic.",
+      "parentUuid": "a61fd208_e185ce5c",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "82890ce6856d133681c59696f611a42a086263b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3936c3af_70660aca",
@@ -77,6 +142,30 @@
       "writtenOn": "2021-03-25T03:24:47Z",
       "side": 1,
       "message": "nit: do we need to wait the service get connected after service.Connect?",
+      "range": {
+        "startLine": 136,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "82890ce6856d133681c59696f611a42a086263b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e207ea_b3870516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T19:39:11Z",
+      "side": 1,
+      "message": "Also a good catch. Added a wait for Connected.",
+      "parentUuid": "3936c3af_70660aca",
       "range": {
         "startLine": 136,
         "startChar": 8,
