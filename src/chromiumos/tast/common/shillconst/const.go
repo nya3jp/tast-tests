@@ -7,7 +7,16 @@
 // local and remote tests.
 package shillconst
 
-import "github.com/godbus/dbus"
+import (
+	"time"
+
+	"github.com/godbus/dbus"
+)
+
+// Timeout constants for shill tests.
+const (
+	DefaultTimeout = 30 * time.Second
+)
 
 // Type values defined in dbus-constants.h
 // The values are used both for Service type and Technology type.
@@ -84,6 +93,7 @@ const (
 	// Service property names.
 	ServicePropertyConnectable    = "Connectable"
 	ServicePropertyDevice         = "Device"
+	ServicePropertyError          = "Error"
 	ServicePropertyName           = "Name"
 	ServicePropertyType           = "Type"
 	ServicePropertyIsConnected    = "IsConnected"
@@ -123,6 +133,11 @@ const (
 	ServicePropertyEAPKeyMgmt                     = "EAP.KeyMgmt"
 	ServicePropertyEAPUseSystemCAs                = "EAP.UseSystemCAs"
 	ServicePropertyEAPSubjectAlternativeNameMatch = "EAP.SubjectAlternativeNameMatch"
+)
+
+// Service Error values
+const (
+	ServiceErrorNoFailure = "no-failure"
 )
 
 // Service state values defined in dbus-constants.h
