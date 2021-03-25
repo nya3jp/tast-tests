@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b061c1_39e029f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-03-25T00:42:29Z",
+      "side": 1,
+      "message": "isn\u0027t there HW deps for this condition?",
+      "revId": "4adeebc1cbd38604ef4aa9da9ecf1dd1a3df8e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "408d8272_5c52a5c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-03-25T00:42:29Z",
+      "side": 1,
+      "message": "the function seems to be too long now. Can you define a test main as a separate function?",
+      "revId": "4adeebc1cbd38604ef4aa9da9ecf1dd1a3df8e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1cc6326_6be013a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2021-03-25T00:42:29Z",
+      "side": 1,
+      "message": "instead of changing state this way, can\u0027t we just change the window state to snapped?",
+      "revId": "4adeebc1cbd38604ef4aa9da9ecf1dd1a3df8e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
