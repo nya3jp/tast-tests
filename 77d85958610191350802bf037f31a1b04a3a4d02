@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5e8e4a_f059fded",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T20:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c72ace8c_2744c9d8",
+      "revId": "77d85958610191350802bf037f31a1b04a3a4d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5332c76a_4d31943d",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-25T17:14:05Z",
       "side": 1,
       "message": "nit: You can just inline this value into the PollOptions struct on L64",
+      "revId": "77d85958610191350802bf037f31a1b04a3a4d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c920f7a_dd881dfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T20:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5332c76a_4d31943d",
       "revId": "77d85958610191350802bf037f31a1b04a3a4d02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32fd409d_277ff6f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T20:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "244fddc1_d45db111",
+      "revId": "77d85958610191350802bf037f31a1b04a3a4d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "844b9c61_52e7a233",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-03-25T17:14:05Z",
       "side": 1,
       "message": "nit: you can just inline this into L98",
+      "revId": "77d85958610191350802bf037f31a1b04a3a4d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a7b775_53cfcabb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T20:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "844b9c61_52e7a233",
       "revId": "77d85958610191350802bf037f31a1b04a3a4d02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
