@@ -16,6 +16,23 @@
       "message": "Test is stable:\nhttps://cros-health-prod.googleplex.com/test/policy.PinnedLauncherApps\n\nFailures are from the fixture that is already part of the Cq.",
       "revId": "16bf155e116a91798078164a666c55b45f5fae5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f44de792_970fb2a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-25T10:08:02Z",
+      "side": 1,
+      "message": "According to the promotion rule (Please promote it to the Commit Queue after 20+ consecutive passes)\n\nI will hold this until another 2-3 passes.",
+      "revId": "16bf155e116a91798078164a666c55b45f5fae5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
