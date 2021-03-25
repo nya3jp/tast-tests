@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c72ace8c_2744c9d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-25T17:14:05Z",
+      "side": 1,
+      "message": "Do you need to add a whole-test timeout here?",
+      "revId": "77d85958610191350802bf037f31a1b04a3a4d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5332c76a_4d31943d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-25T17:14:05Z",
+      "side": 1,
+      "message": "nit: You can just inline this value into the PollOptions struct on L64",
+      "revId": "77d85958610191350802bf037f31a1b04a3a4d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244fddc1_d45db111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-25T17:14:05Z",
+      "side": 1,
+      "message": "nit: \"%s, New: ...\"\n\nAlso, I don\u0027t think you need to call String() on the objects directly, the %s format specifier should do that for you",
+      "revId": "77d85958610191350802bf037f31a1b04a3a4d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844b9c61_52e7a233",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-25T17:14:05Z",
+      "side": 1,
+      "message": "nit: you can just inline this into L98",
+      "revId": "77d85958610191350802bf037f31a1b04a3a4d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
