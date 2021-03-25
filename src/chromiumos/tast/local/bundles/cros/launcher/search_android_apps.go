@@ -58,16 +58,9 @@ func SearchAndroidApps(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// Optin to Play Store.
-	s.Log("Opting into Play Store")
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
-		s.Fatal("Failed to optin to Play Store: ", err)
-	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
-		s.Fatal("Failed to wait for Play Store: ", err)
-	}
-	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-		s.Fatal("Failed to close Play Store: ", err)
+	// Optin to PlayStore and Close
+	if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
+		s.Fatal("Failed to optin to Play Store and Close: ", err)
 	}
 
 	// Setup ARC.
