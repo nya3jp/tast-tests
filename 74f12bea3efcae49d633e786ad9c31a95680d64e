@@ -39,6 +39,30 @@
       },
       "revId": "74f12bea3efcae49d633e786ad9c31a95680d64e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3446c01_861bf356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-25T16:34:23Z",
+      "side": 1,
+      "message": "Good suggestion! done.",
+      "parentUuid": "1d39edaa_f693fe43",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "74f12bea3efcae49d633e786ad9c31a95680d64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
