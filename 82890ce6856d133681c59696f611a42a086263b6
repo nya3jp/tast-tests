@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2de4b5ed_e3da72c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-25T03:24:47Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "82890ce6856d133681c59696f611a42a086263b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d78231a0_f3d7695a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-25T03:24:47Z",
+      "side": 1,
+      "message": "nit: I think this error check is used in multiple places, perhaps worth to extract it as a function? Or defining constant strings of shill errors is also an option.",
+      "range": {
+        "startLine": 210,
+        "startChar": 6,
+        "endLine": 210,
+        "endChar": 56
+      },
+      "revId": "82890ce6856d133681c59696f611a42a086263b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a61fd208_e185ce5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-25T03:24:47Z",
+      "side": 1,
+      "message": "I\u0027m a little confused about the behavior here. The current logic would be: polling for connected cellular service, and expect it will not appear during the 5 seconds period?\n\nOne possible flake here is: FindMatchingService in testing.Poll can fail due to context timeout instead of \"Matching service was not found\" if the polling timeout is unfortunately reached during the dbus call.\n\nMight need to also check timeout error if this waiting behavior is intended.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "82890ce6856d133681c59696f611a42a086263b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3936c3af_70660aca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-25T03:24:47Z",
+      "side": 1,
+      "message": "nit: do we need to wait the service get connected after service.Connect?",
+      "range": {
+        "startLine": 136,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "82890ce6856d133681c59696f611a42a086263b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
