@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -161,14 +160,10 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			if err != nil {
 				s.Fatal("Failed to create test API connection: ", err)
 			}
-			if err := optin.Perform(ctx, p.cr, tconn); err != nil {
-				s.Fatal("Failed to opt-in to Play Store: ", err)
-			}
-			if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
-				s.Fatal("Failed to wait for Play Store: ", err)
-			}
-			if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-				s.Fatal("Failed to close Play Store: ", err)
+
+			// Optin to PlayStore and Close
+			if err := optin.PerformAndClose(ctx, p.cr, tconn); err != nil {
+				s.Fatal("Failed to optin to Play Store and Close: ", err)
 			}
 		}()
 	}
