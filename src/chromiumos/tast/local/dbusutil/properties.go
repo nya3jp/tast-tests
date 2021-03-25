@@ -17,6 +17,11 @@ type Properties struct {
 	props map[string]interface{}
 }
 
+// NewProperties creates a new Properties object with raw data.
+func NewProperties(p map[string]interface{}) *Properties {
+	return &Properties{props: p}
+}
+
 // NewDBusProperties creates a new Properties object and populates it with the
 // object's properties using org.freedesktop.DBus.Properties.GetAll.
 // The dbus call may fail with DBusErrorUnknownObject if the DBusObject is not valid.
@@ -25,16 +30,6 @@ func NewDBusProperties(ctx context.Context, d *DBusObject) (*Properties, error) 
 	props, err := d.GetAll(ctx)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed getting all properties of %v", d)
-	}
-	return &Properties{props: props}, nil
-}
-
-// NewShillProperties creates a new Properties object and populates it with
-// the object's properties using the Shill specific GetProperties call.
-func NewShillProperties(ctx context.Context, d *DBusObject) (*Properties, error) {
-	var props map[string]interface{}
-	if err := d.Call(ctx, "GetProperties").Store(&props); err != nil {
-		return nil, errors.Wrapf(err, "failed getting properties of %v", d)
 	}
 	return &Properties{props: props}, nil
 }

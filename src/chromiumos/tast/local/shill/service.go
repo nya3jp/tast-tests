@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
 )
 
 const (
@@ -20,21 +19,16 @@ const (
 
 // Service wraps a Service D-Bus object in shill.
 type Service struct {
-	*dbusutil.PropertyHolder
+	*PropertyHolder
 }
 
 // NewService connects to a service in Shill.
 func NewService(ctx context.Context, path dbus.ObjectPath) (*Service, error) {
-	ph, err := dbusutil.NewPropertyHolder(ctx, dbusService, dbusServiceInterface, path)
+	ph, err := NewPropertyHolder(ctx, dbusService, dbusServiceInterface, path)
 	if err != nil {
 		return nil, err
 	}
 	return &Service{PropertyHolder: ph}, nil
-}
-
-// CreateWatcher returns a PropertiesWatcher to observe the Service "PropertyChanged" signal.
-func (s *Service) CreateWatcher(ctx context.Context) (*PropertiesWatcher, error) {
-	return NewPropertiesWatcher(ctx, s.DBusObject)
 }
 
 // GetDevice returns the Device object corresponding to the Service object
