@@ -30,12 +30,12 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		// Once this test gets into QC please start https://crbug.com/1179710 .
-		Attr:    []string{"group:mainline"},
+		// autoclick case needs to be disabled.
+		Attr:    []string{},
 		Fixture: "chromePolicyLoggedIn",
 		Params: []testing.Param{
 			// TODO(crbug.com/1186655): Find a way to close/avoid the dialog about disabling autoclick.
-			/*{
+			{
 				Name: "autoclick",
 				Val: []accessibilityTestCase{
 					{
@@ -57,9 +57,10 @@ func init() {
 						policies:  []policy.Policy{&policy.AutoclickEnabled{Stat: policy.StatusUnset}},
 					},
 				},
-			},*/
+			},
 			{
-				Name: "caret_highlight",
+				Name:      "caret_highlight",
+				ExtraAttr: []string{"group:mainline"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
@@ -82,7 +83,8 @@ func init() {
 				},
 			},
 			{
-				Name: "cursor_highlight",
+				Name:      "cursor_highlight",
+				ExtraAttr: []string{"group:mainline"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
@@ -105,7 +107,8 @@ func init() {
 				},
 			},
 			{
-				Name: "docked_magnifier",
+				Name:      "docked_magnifier",
+				ExtraAttr: []string{"group:mainline"},
 				Val: []accessibilityTestCase{
 					{
 						// Value 1 for this policy is allowed but does not
@@ -137,7 +140,8 @@ func init() {
 				},
 			},
 			{
-				Name: "focus_highlight",
+				Name:      "focus_highlight",
+				ExtraAttr: []string{"group:mainline"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
@@ -160,7 +164,8 @@ func init() {
 				},
 			},
 			{
-				Name: "high_contrast",
+				Name:      "high_contrast",
+				ExtraAttr: []string{"group:mainline"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
@@ -183,7 +188,8 @@ func init() {
 				},
 			},
 			{
-				Name: "large_cursor",
+				Name:      "large_cursor",
+				ExtraAttr: []string{"group:mainline"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
@@ -206,7 +212,8 @@ func init() {
 				},
 			},
 			{
-				Name: "screen_magnifier",
+				Name:      "screen_magnifier",
+				ExtraAttr: []string{"group:mainline"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled-full-screen",
@@ -238,7 +245,8 @@ func init() {
 				},
 			},
 			{
-				Name: "select_to_speak",
+				Name:      "select_to_speak",
+				ExtraAttr: []string{"group:mainline"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
@@ -261,7 +269,8 @@ func init() {
 				},
 			},
 			{
-				Name: "spoken_feedback",
+				Name:      "spoken_feedback",
+				ExtraAttr: []string{"group:mainline"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
@@ -284,7 +293,8 @@ func init() {
 				},
 			},
 			{
-				Name: "sticky_keys",
+				Name:      "sticky_keys",
+				ExtraAttr: []string{"group:mainline"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
@@ -307,7 +317,8 @@ func init() {
 				},
 			},
 			{
-				Name: "virtual_keyboard",
+				Name:      "virtual_keyboard",
+				ExtraAttr: []string{"group:mainline"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled",
