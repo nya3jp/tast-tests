@@ -10,7 +10,6 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
 )
 
 const (
@@ -19,22 +18,17 @@ const (
 
 // Device wraps a Device D-Bus object in shill.
 type Device struct {
-	*dbusutil.PropertyHolder
+	*PropertyHolder
 }
 
 // NewDevice connects to shill's Device.
 // It also obtains properties after device creation.
 func NewDevice(ctx context.Context, path dbus.ObjectPath) (*Device, error) {
-	ph, err := dbusutil.NewPropertyHolder(ctx, dbusService, dbusDeviceInterface, path)
+	ph, err := NewPropertyHolder(ctx, dbusService, dbusDeviceInterface, path)
 	if err != nil {
 		return nil, err
 	}
 	return &Device{PropertyHolder: ph}, nil
-}
-
-// CreateWatcher returns a PropertiesWatcher to observe the Device "PropertyChanged" signal.
-func (d *Device) CreateWatcher(ctx context.Context) (*PropertiesWatcher, error) {
-	return NewPropertiesWatcher(ctx, d.DBusObject)
 }
 
 // SetUsbEthernetMacAddressSource sets USB Ethernet MAC address source for the device.
