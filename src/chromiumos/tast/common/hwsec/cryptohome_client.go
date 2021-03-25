@@ -675,3 +675,12 @@ func (u *CryptohomeClient) SupportsLECredentials(ctx context.Context) (bool, err
 	// GetSupportedKeyPolicies success.
 	return strings.Contains(string(binaryMsg), "low_entropy_credentials: true"), nil
 }
+
+// GetKeyData calls GetKeyData and convert the output to a string.
+func (u *CryptohomeClient) GetKeyData(ctx context.Context, user, keyLabel string) (string, error) {
+	binaryMsg, err := u.binary.getKeyData(ctx, user, keyLabel)
+	if err != nil {
+		return "", errors.Wrap(err, "GetKeyData failed")
+	}
+	return string(binaryMsg), nil
+}

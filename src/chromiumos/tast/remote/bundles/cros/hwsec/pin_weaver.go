@@ -113,6 +113,15 @@ func testPINs(ctx context.Context, user1, user2 string, resetUsers bool, r *hwse
 		if err := cryptohomeHelper.AddVaultKey(ctx, user1, testPassword, "default", goodPin, keyLabel1, true); err != nil {
 			s.Fatal("Failed to add le credential: ", err)
 		}
+
+		output, err := cryptohomeHelper.GetKeyData(ctx, user1, keyLabel1)
+		if err != nil {
+			s.Fatal("Failed to get key data: ", err)
+		}
+		if strings.Contains(output, "auth_locked: true") {
+			s.Fatal("Newly created credential is auth locked")
+		}
+
 		if err := cryptohomeHelper.UnmountAll(ctx); err != nil {
 			s.Fatal("Failed to unmountAll: ", err)
 		}
