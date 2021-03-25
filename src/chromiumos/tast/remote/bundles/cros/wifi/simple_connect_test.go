@@ -444,8 +444,8 @@ func simpleConnect8021xWEP() simpleConnectParams {
 		Val: []simpleConnectParamsVal{{
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `dynamicwep.NewConfigFactory(
-				eapCert1.CACert, eapCert1.ServerCred,
-				dynamicwep.ClientCACert(eapCert1.CACert),
+				eapCert1.CACred.Cert, eapCert1.ServerCred,
+				dynamicwep.ClientCACert(eapCert1.CACred.Cert),
 				dynamicwep.ClientCred(eapCert1.ClientCred),
 				dynamicwep.RekeyPeriod(10),
 			)`,
@@ -461,15 +461,15 @@ func simpleConnect8021xWPA() simpleConnectParams {
 		Val: []simpleConnectParamsVal{{
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `wpaeap.NewConfigFactory(
-				eapCert1.CACert, eapCert1.ServerCred,
-				wpaeap.ClientCACert(eapCert1.CACert),
+				eapCert1.CACred.Cert, eapCert1.ServerCred,
+				wpaeap.ClientCACert(eapCert1.CACred.Cert),
 				wpaeap.ClientCred(eapCert1.ClientCred),
 			)`,
 		}, {
 			Doc:    []string{"Failure due to lack of CACert on client."},
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `wpaeap.NewConfigFactory(
-				eapCert1.CACert, eapCert1.ServerCred,
+				eapCert1.CACred.Cert, eapCert1.ServerCred,
 				wpaeap.ClientCred(eapCert1.ClientCred),
 			)`,
 			ExpectedFailure: true,
@@ -477,8 +477,8 @@ func simpleConnect8021xWPA() simpleConnectParams {
 			Doc:    []string{"Failure due to unmatched CACert."},
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `wpaeap.NewConfigFactory(
-				eapCert1.CACert, eapCert1.ServerCred,
-				wpaeap.ClientCACert(eapCert2.CACert),
+				eapCert1.CACred.Cert, eapCert1.ServerCred,
+				wpaeap.ClientCACert(eapCert2.CACred.Cert),
 				wpaeap.ClientCred(eapCert1.ClientCred),
 			)`,
 			ExpectedFailure: true,
@@ -486,7 +486,7 @@ func simpleConnect8021xWPA() simpleConnectParams {
 			Doc:    []string{"Should succeed if we specify that we have no CACert."},
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `wpaeap.NewConfigFactory(
-				eapCert1.CACert, eapCert1.ServerCred,
+				eapCert1.CACred.Cert, eapCert1.ServerCred,
 				wpaeap.ClientCred(eapCert1.ClientCred),
 				wpaeap.NotUseSystemCAs(),
 			)`,
@@ -494,8 +494,8 @@ func simpleConnect8021xWPA() simpleConnectParams {
 			Doc:    []string{"Failure due to wrong certificate chain on client."},
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `wpaeap.NewConfigFactory(
-				eapCert1.CACert, eapCert1.ServerCred,
-				wpaeap.ClientCACert(eapCert1.CACert),
+				eapCert1.CACred.Cert, eapCert1.ServerCred,
+				wpaeap.ClientCACert(eapCert1.CACred.Cert),
 				wpaeap.ClientCred(eapCert2.ClientCred),
 			)`,
 			ExpectedFailure: true,
@@ -503,8 +503,8 @@ func simpleConnect8021xWPA() simpleConnectParams {
 			Doc:    []string{"Failure due to expired cert on server."},
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `wpaeap.NewConfigFactory(
-				eapCert1.CACert, eapCert1.ExpiredServerCred,
-				wpaeap.ClientCACert(eapCert1.CACert),
+				eapCert1.CACred.Cert, eapCert1.ExpiredServerCred,
+				wpaeap.ClientCACert(eapCert1.CACred.Cert),
 				wpaeap.ClientCred(eapCert1.ClientCred),
 			)`,
 			ExpectedFailure: true,
@@ -522,7 +522,7 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 		ret.Val = append(ret.Val, simpleConnectParamsVal{
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: fmt.Sprintf(`tunneled1x.NewConfigFactory(
-				eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+				eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
 				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 			)`, outer, inner),
@@ -531,7 +531,7 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 			ret.Val = append(ret.Val, simpleConnectParamsVal{
 				APOpts: simpleConnectCommonSecApOpts,
 				SecConfFac: fmt.Sprintf(`tunneled1x.NewConfigFactory(
-					eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+					eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 					tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
 					tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 					tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[%d]}),
@@ -546,7 +546,7 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 			},
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: fmt.Sprintf(`tunneled1x.NewConfigFactory(
-				eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+				eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
 				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 				tunneled1x.AltSubjectMatch([]string{`+"`"+`{"Type":"DNS","Value":"wrong_dns.com"}`+"`"+`, eapCert3AltSub[0]}),
@@ -566,26 +566,26 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 		for _, v := range []struct{ doc, sec string }{
 			{"Failure due to bad password.",
 				`tunneled1x.NewConfigFactory(
-				eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+				eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
 				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 				tunneled1x.ClientPassword("wrongpassword"),
 			)`},
 			{"Failure due to wrong client CA.",
 				`tunneled1x.NewConfigFactory(
-				eapCert1.CACert, eapCert1.ServerCred, eapCert2.CACert, "testuser", "password",
+				eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert2.CACred.Cert, "testuser", "password",
 				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
 				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 			)`},
 			{"Failure due to expired server cred.",
 				`tunneled1x.NewConfigFactory(
-				eapCert1.CACert, eapCert1.ExpiredServerCred, eapCert1.CACert, "testuser", "password",
+				eapCert1.CACred.Cert, eapCert1.ExpiredServerCred, eapCert1.CACred.Cert, "testuser", "password",
 				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
 				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 			)`},
 			{"Failure due to that a subject alternative name (SAN) is set but does not match any of the server certificate SANs.",
 				`tunneled1x.NewConfigFactory(
-				eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+				eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
 				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 				tunneled1x.AltSubjectMatch([]string{` + "`" + `{"Type":"DNS","Value":"wrong_dns.com"}` + "`" + `}),

@@ -351,7 +351,7 @@ func testAuthentication(ctx context.Context, tc *testContext) error {
 	eap := map[string]interface{}{
 		shillconst.ServicePropertyType:         "etherneteap",
 		shillconst.ServicePropertyEAPMethod:    tc.param.outerAuth,
-		shillconst.ServicePropertyEAPCACertPEM: []string{tc.certs.CACert},
+		shillconst.ServicePropertyEAPCACertPEM: []string{tc.certs.CACred.Cert},
 		shillconst.ServicePropertyEAPPassword:  password,
 		shillconst.ServicePropertyEAPIdentity:  identity,
 	}
