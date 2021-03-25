@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/apps"
@@ -23,7 +24,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -67,9 +67,8 @@ func MultipleArcProfile(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Add ARC Account")
-	if err := optinPlayStore(ctx, cr, tconn); err != nil {
-		s.Fatal("Failed to Optin to PlayStore: ", err)
+	if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
+		s.Fatal("Failed to optin to Play Store and Close: ", err)
 	}
 
 	// Setup ARC.
@@ -99,6 +98,7 @@ func MultipleArcProfile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to Open ARC Settings: ", err)
 	}
 
+	s.Log("Add ARC Account")
 	if err := addARCAccount(ctx, d, tconn, s); err != nil {
 		s.Fatal("Failed to Add Account: ", err)
 	}
@@ -146,22 +146,6 @@ func switchPlayStoreAccount(ctx context.Context, arcDevice *androidui.Device,
 	}
 	if err := accountNameButton.Click(ctx); err != nil {
 		return errors.Wrap(err, "failed to click Account Name")
-	}
-	return nil
-}
-
-// optinPlayStore performs the PlayStore sign in, waits until it launches and closes it.
-func optinPlayStore(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
-	// Optin to PlayStore.
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
-		return errors.Wrap(err, "failed to optin to Play Store")
-	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
-		return errors.Wrap(err, "failed to wait for Play Store")
-	}
-
-	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-		return errors.Wrap(err, "failed to close Play Store")
 	}
 	return nil
 }
