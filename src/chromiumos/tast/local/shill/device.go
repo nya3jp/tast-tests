@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
 )
 
@@ -22,22 +21,17 @@ const (
 
 // Device wraps a Device D-Bus object in shill.
 type Device struct {
-	*dbusutil.PropertyHolder
+	*PropertyHolder
 }
 
 // NewDevice connects to shill's Device.
 // It also obtains properties after device creation.
 func NewDevice(ctx context.Context, path dbus.ObjectPath) (*Device, error) {
-	ph, err := dbusutil.NewPropertyHolder(ctx, dbusService, dbusDeviceInterface, path)
+	ph, err := NewPropertyHolder(ctx, dbusService, dbusDeviceInterface, path)
 	if err != nil {
 		return nil, err
 	}
 	return &Device{PropertyHolder: ph}, nil
-}
-
-// CreateWatcher returns a PropertiesWatcher to observe the Device "PropertyChanged" signal.
-func (d *Device) CreateWatcher(ctx context.Context) (*PropertiesWatcher, error) {
-	return NewPropertiesWatcher(ctx, d.DBusObject)
 }
 
 // SetUsbEthernetMacAddressSource sets USB Ethernet MAC address source for the device.
@@ -80,7 +74,7 @@ func (d *Device) RequestRoam(ctx context.Context, bssid string) error {
 func (d *Device) WaitForSelectedService(ctx context.Context, timeout time.Duration) (dbus.ObjectPath, error) {
 	var servicePath dbus.ObjectPath
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		deviceProp, err := d.GetShillProperties(ctx)
+		deviceProp, err := d.GetProperties(ctx)
 		if err != nil {
 			return testing.PollBreak(errors.Wrapf(err, "failed to get properties of device %v", d))
 		}
