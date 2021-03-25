@@ -70,6 +70,24 @@
       "parentUuid": "76bf77f3_11e7e826",
       "revId": "8fed6e866cb0ac71f0c524f957c478fac1759bc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "520d8038_dfc30883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/tulip_480p_h264_cencv1_ctr.mpd",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-25T09:15:35Z",
+      "side": 1,
+      "message": "Thanks for explanation, I understood that this is not a third-party content.",
+      "parentUuid": "f6253380_582f4b38",
+      "revId": "8fed6e866cb0ac71f0c524f957c478fac1759bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
