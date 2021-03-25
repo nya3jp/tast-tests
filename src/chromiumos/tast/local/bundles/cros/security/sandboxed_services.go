@@ -151,6 +151,16 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"update_rw_vpd", "root", "root", 0},
 		{"vpd_get_value", "root", "root", 0},
 		{"vpd_icc", "root", "root", 0},
+
+		// One-off processes that we see when this test runs together with other tests.
+		// src/overlays/overlay-kip/chromeos-base/modem-watchdog/files/chromeos-kip-modem-watchdog.sh
+		{"chromeos-kip-modem-watchdog.sh", "root", "root", 0},
+		// src/platform2/installer/chromeos-setgoodkernel
+		{"chromeos-setgoodkernel", "root", "root", 0},
+		// src/platform/factory/sh/goofy_control.sh
+		{"goofy_control.sh", "root", "root", 0},
+		// src/third_party/chromiumos-overlay/sys-apps/ureadahead/files/init/ureadahead.conf
+		{"ureadahead", "root", "root", 0},
 	}
 
 	// Names of processes whose children should be ignored. These processes themselves are also ignored.
