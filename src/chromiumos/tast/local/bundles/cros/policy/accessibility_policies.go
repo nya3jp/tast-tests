@@ -31,7 +31,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		// Once this test gets into QC please start https://crbug.com/1179710 .
-		Attr:    []string{"group:mainline", "informational"},
+		Attr:    []string{"group:mainline"},
 		Fixture: "chromePolicyLoggedIn",
 		Params: []testing.Param{
 			// TODO(crbug.com/1186655): Find a way to close/avoid the dialog about disabling autoclick.
