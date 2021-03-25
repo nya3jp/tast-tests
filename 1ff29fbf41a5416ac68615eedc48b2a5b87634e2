@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da57cdf4_96a434d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-25T01:43:45Z",
+      "side": 1,
+      "message": "@khmel - There is less divergence now since VM is generating host + guest packs based on decision with yusukes@ from https://crrev.com/c/2718733.  PTALA, thanks!  ",
+      "revId": "1ff29fbf41a5416ac68615eedc48b2a5b87634e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
