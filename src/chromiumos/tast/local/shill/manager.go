@@ -30,7 +30,7 @@ const (
 
 // Manager wraps a Manager D-Bus object in shill.
 type Manager struct {
-	*dbusutil.PropertyHolder
+	*PropertyHolder
 }
 
 // Technology is the type of a shill device's technology
@@ -49,16 +49,11 @@ const (
 
 // NewManager connects to shill's Manager.
 func NewManager(ctx context.Context) (*Manager, error) {
-	ph, err := dbusutil.NewPropertyHolder(ctx, dbusService, dbusManagerInterface, dbusManagerPath)
+	ph, err := NewPropertyHolder(ctx, dbusService, dbusManagerInterface, dbusManagerPath)
 	if err != nil {
 		return nil, err
 	}
 	return &Manager{PropertyHolder: ph}, nil
-}
-
-// CreateWatcher returns a PropertiesWatcher to observe the Manager "PropertyChanged" signal.
-func (m *Manager) CreateWatcher(ctx context.Context) (*PropertiesWatcher, error) {
-	return NewPropertiesWatcher(ctx, m.DBusObject)
 }
 
 // FindMatchingService returns the first Service that matches |expectProps|.
