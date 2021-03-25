@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a4c409_f7b2cc8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-25T09:48:15Z",
+      "side": 1,
+      "message": "Test is stable:\nhttps://cros-health-prod.googleplex.com/test/policy.ScreenMagnifierType\n\nFailures are from the fixture that is already part of the Cq.",
+      "revId": "c6df7b1c4a101979efc3e7e3a3b89062ab3c6e91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
