@@ -139,7 +139,7 @@ func HostapHwsim(fullCtx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to shill Manager: ", err)
 	}
-	props, err := m.GetShillProperties(ctx)
+	props, err := m.GetProperties(ctx)
 	if err != nil {
 		s.Fatal("Failed to get properties: ", err)
 	}

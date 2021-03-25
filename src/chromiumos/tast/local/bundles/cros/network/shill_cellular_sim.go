@@ -30,7 +30,7 @@ func ShillCellularSim(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Modem: ", err)
 	}
-	modemProps, err := modem.GetDBusProperties(ctx)
+	modemProps, err := modem.GetProperties(ctx)
 	if err != nil {
 		s.Fatal("Failed to call GetProperties on Modem: ", err)
 	}
@@ -53,7 +53,7 @@ func ShillCellularSim(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper")
 	}
-	deviceProps, err := helper.Device.GetShillProperties(ctx)
+	deviceProps, err := helper.Device.GetProperties(ctx)
 	if err != nil {
 		s.Fatal("Failed to get Device properties: ", err)
 	}

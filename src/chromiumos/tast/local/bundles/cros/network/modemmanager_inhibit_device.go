@@ -32,7 +32,7 @@ func ModemmanagerInhibitDevice(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Modem: ", err)
 	}
-	props, err := modem.GetDBusProperties(ctx)
+	props, err := modem.GetProperties(ctx)
 	if err != nil {
 		s.Fatal("Failed to call GetProperties on Modem: ", err)
 	}

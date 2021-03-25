@@ -42,7 +42,7 @@ func connectAndVerifyConnected(ctx context.Context, helper *cellular.Helper, ser
 	}, &testing.PollOptions{Timeout: 60 * time.Second}); err != nil {
 		return errors.Wrap(err, "error connecting to service")
 	}
-	return service.WaitForShillProperty(ctx, shillconst.ServicePropertyIsConnected, true, 30*time.Second)
+	return service.WaitForProperty(ctx, shillconst.ServicePropertyIsConnected, true, 30*time.Second)
 }
 
 func verifyNotConnected(ctx context.Context, helper *cellular.Helper) error {
@@ -95,7 +95,7 @@ func ShillCellularInhibited(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for Scanning to be false.
-	if err := helper.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyScanning, false, timeout); err != nil {
+	if err := helper.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, timeout); err != nil {
 		s.Fatal("Scanning still true after Inhibit set to false: ", err)
 	}
 
@@ -124,7 +124,7 @@ func ShillCellularInhibited(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for Scanning to be false.
-	if err := helper.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyScanning, false, timeout); err != nil {
+	if err := helper.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, timeout); err != nil {
 		s.Fatal("Scanning still true after Inhibit set to false: ", err)
 	}
 
@@ -135,7 +135,7 @@ func ShillCellularInhibited(ctx context.Context, s *testing.State) {
 		s.Fatal("No Cellular Service after uninhibit: ", err)
 	} else if err := service.Connect(ctx); err != nil {
 		s.Fatal("Unable to connect to service after uninhibit: ", err)
-	} else if err := service.WaitForShillProperty(ctx, shillconst.ServicePropertyIsConnected, true, timeout); err != nil {
+	} else if err := service.WaitForProperty(ctx, shillconst.ServicePropertyIsConnected, true, timeout); err != nil {
 		s.Fatal("Service never connected after uninhibit: ", err)
 	}
 }
