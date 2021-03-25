@@ -16,6 +16,52 @@
       "message": "Hi Gabor, Mohamed,\n\nPTAL at this fix.\n\nThanks!",
       "revId": "ba2738669a75cf76e3222b8fa69db55cf1a80b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e35014_7fa87920",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-25T17:08:25Z",
+      "side": 1,
+      "message": "please change it to 100, it\u0027s a solid image and all pixels should be the same",
+      "range": {
+        "startLine": 164,
+        "startChar": 15,
+        "endLine": 164,
+        "endChar": 17
+      },
+      "revId": "ba2738669a75cf76e3222b8fa69db55cf1a80b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d2833e_9d883199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-03-25T17:08:25Z",
+      "side": 1,
+      "message": "please change it to 60, so that nightfury board could pass",
+      "range": {
+        "startLine": 204,
+        "startChar": 45,
+        "endLine": 204,
+        "endChar": 47
+      },
+      "revId": "ba2738669a75cf76e3222b8fa69db55cf1a80b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
