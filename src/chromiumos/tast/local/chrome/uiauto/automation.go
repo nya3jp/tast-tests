@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/event"
@@ -75,17 +76,12 @@ func (ac *Context) WithPollOpts(pollOpts testing.PollOptions) *Context {
 }
 
 // Action is a function that takes a context and returns an error.
-type Action = func(context.Context) error
+type Action = action.Action
 
 // NamedAction gives a name to an action. It logs when an action starts,
 // and if the action fails, tells you the name of the failing action.
 func NamedAction(name string, fn Action) Action {
-	return func(ctx context.Context) error {
-		if err := fn(ctx); err != nil {
-			return errors.Wrapf(err, "failed action %s", name)
-		}
-		return nil
-	}
+	return action.NamedAction(name, fn)
 }
 
 // Combine combines a list of functions from Context to error into one function.
@@ -95,30 +91,14 @@ func NamedAction(name string, fn Action) Action {
 // Then the failure msg would be like:
 //     "failed to open Downloads and right click a folder on step ..."
 func Combine(name string, steps ...Action) Action {
-	return func(ctx context.Context) error {
-		for i, f := range steps {
-			if err := f(ctx); err != nil {
-				return errors.Wrapf(err, "failed to %s on step %d", name, i+1)
-			}
-		}
-		return nil
-	}
+	return action.Combine(name, steps...)
 }
 
 // Retry returns a function that retries a given action if it returns error.
 // The action will be executed up to n times, including the first attempt.
 // The last error will be returned.  Any other errors will be silently logged.
-func Retry(n int, action Action) Action {
-	return func(ctx context.Context) error {
-		var err error
-		for i := 0; i < n; i++ {
-			if err = action(ctx); err == nil {
-				return nil
-			}
-			testing.ContextLogf(ctx, "Retry failed attempt %d: %v", i+1, err)
-		}
-		return err
-	}
+func Retry(n int, fn Action) Action {
+	return action.Retry(n, fn)
 }
 
 // NodeInfo is a mapping of chrome.automation API AutomationNode.
