@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,6 +28,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"shill-wifi"},
 		Attr:         []string{"group:mainline"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("winky")), // b/182293895: winky DUTs are having USB Ethernet issues that surface during `restart shill`
 	})
 }
 
