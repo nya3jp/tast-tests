@@ -16,6 +16,24 @@
       "message": "Test is stable:\nhttps://cros-health-prod.googleplex.com/test?contact\u003d\u0026testname\u003dpolicy.PrintingEnabled.*\u0026dep\u003d\n\nFailures are from the fixture that is already part of the Cq.",
       "revId": "5cfc4f09535ea4e63a305be97dbabb2ca363b57b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f341c2c_3bee8b60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455112
+      },
+      "writtenOn": "2021-03-25T09:51:08Z",
+      "side": 1,
+      "message": "You can also add http://crbug/1125589 to the list of related bugs - I left it open only to wait until it can be promoted. So it can be closed once this CL is merged",
+      "parentUuid": "711ea773_bdab8053",
+      "revId": "5cfc4f09535ea4e63a305be97dbabb2ca363b57b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
