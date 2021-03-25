@@ -139,6 +139,24 @@
       "parentUuid": "844b9c61_52e7a233",
       "revId": "77d85958610191350802bf037f31a1b04a3a4d02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b0bb40_85b254aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-25T20:49:26Z",
+      "side": 1,
+      "message": "oh, I missed that this was being used in the ModemmanagerSlotSwitch test body. Feel free to add this back in and change it back to what it was before where you test for equality of the error directly",
+      "parentUuid": "e0a7b775_53cfcabb",
+      "revId": "77d85958610191350802bf037f31a1b04a3a4d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
