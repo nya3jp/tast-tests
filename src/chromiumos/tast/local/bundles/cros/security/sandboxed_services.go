@@ -31,7 +31,8 @@ func init() {
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
-		Attr: []string{"group:mainline"},
+		// TODO(crbug/1191951) - Demoted by sheriff
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
