@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e13df93_d19cacbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-25T22:27:59Z",
+      "side": 1,
+      "message": "maybe not needed.  Removed.",
+      "parentUuid": "ec5ab340_5bdd1be5",
+      "range": {
+        "startLine": 265,
+        "startChar": 8,
+        "endLine": 265,
+        "endChar": 23
+      },
+      "revId": "09396636589e50b673f190d9c56081ab6c1f70c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cbcc1a5_7e90f716",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-03-25T22:05:40Z",
       "side": 1,
       "message": "required?",
+      "range": {
+        "startLine": 5,
+        "startChar": 63,
+        "endLine": 5,
+        "endChar": 83
+      },
+      "revId": "09396636589e50b673f190d9c56081ab6c1f70c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ad40cf_f6cc7fa6",
+        "filename": "src/chromiumos/tast/services/cros/arc/gen.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-25T22:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cbcc1a5_7e90f716",
       "range": {
         "startLine": 5,
         "startChar": 63,
