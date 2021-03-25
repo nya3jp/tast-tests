@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -49,7 +49,7 @@ func QuickSettingsManagedDeviceInfo(ctx context.Context, s *testing.State) {
 
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: pre.Username, Pass: pre.Password}),
+		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.EnableFeatures("ManagedDeviceUIRedesign"))
 	if err != nil {

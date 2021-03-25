@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -84,7 +84,7 @@ func ArcBackupRestoreServiceEnabled(ctx context.Context, s *testing.State) {
 			// Start a Chrome instance that will fetch policies from the FakeDMS.
 			// This policy must be updated before starting Chrome.
 			cr, err := chrome.New(ctx,
-				chrome.FakeLogin(chrome.Creds{User: pre.Username, Pass: pre.Password}),
+				chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 				chrome.DMSPolicy(fdms.URL),
 				chrome.ARCEnabled())
 			if err != nil {

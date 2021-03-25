@@ -21,7 +21,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
@@ -88,7 +88,7 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 
 	cr, err := chrome.New(ctx,
 		chrome.UnpackedExtension(extDir),
-		chrome.FakeLogin(chrome.Creds{User: pre.Username, Pass: pre.Password}),
+		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 		chrome.DMSPolicy(fdms.URL))
 	if err != nil {
 		s.Fatal("Failed to create Chrome instance: ", err)

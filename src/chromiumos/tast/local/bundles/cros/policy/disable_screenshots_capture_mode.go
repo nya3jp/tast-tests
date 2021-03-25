@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/capturemode"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -52,7 +52,7 @@ func DisableScreenshotsCaptureMode(ctx context.Context, s *testing.State) {
 	}
 
 	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: pre.Username, Pass: pre.Password}),
+		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.EnableFeatures("CaptureMode"))
 	if err != nil {
