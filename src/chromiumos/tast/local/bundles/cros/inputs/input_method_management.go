@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package inputs
 
 import (
 	"context"
@@ -22,7 +22,7 @@ func init() {
 		Func:         InputMethodManagement,
 		Desc:         "Verifies that user can manage input methods in OS settings",
 		Contacts:     []string{"shengjun@chromium.org", "myy@google.com", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools-upstream", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 	})
@@ -32,12 +32,12 @@ func InputMethodManagement(ctx context.Context, s *testing.State) {
 	const (
 		searchKeyword   = "japanese"                                           // Keyword used to search input method.
 		inputMethodName = "Japanese with US keyboard"                          // Input method should be displayed after search.
-		inputMethodCode = ime.IMEPrefix + string(ime.INPUTMETHOD_NACL_MOZC_US) // Input method code of the input method.
+		inputMethodCode = string(ime.INPUTMETHOD_NACL_MOZC_US) // Input method code of the input method.
 	)
 
-	// New language settings UI is behind --enable-features=LanguageSettingsUpdate flag.
-	// Will remove this and change it to precondition once it is enabled by default.
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=LanguageSettingsUpdate"))
+	// This test changes input method, it affects other tests if not cleaned up.
+	// Using new Chrome instance to isolate it from other tests.
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
