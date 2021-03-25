@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -28,7 +29,8 @@ func init() {
 			"chromeos-kernel-wifi@google.com",
 			"nya@chromium.org", // Tast port author
 		},
-		Attr: []string{"group:mainline"},
+		Attr:         []string{"group:mainline"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("winky")), // b/182293895: winky DUTs are having USB Ethernet issues that surface during `restart shill`
 	})
 }
 
