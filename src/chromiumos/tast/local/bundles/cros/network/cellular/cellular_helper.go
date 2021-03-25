@@ -75,11 +75,11 @@ func (h *Helper) Enable(ctx context.Context) error {
 	if err := h.waitForEnabled(ctx, true); err != nil {
 		return err
 	}
-	if err := h.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyPowered, true, defaultTimeout); err != nil {
+	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyPowered, true, defaultTimeout); err != nil {
 		return err
 	}
 	// Cellular scanning can take up to 30 seconds to complete.
-	return h.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyScanning, false, defaultTimeout)
+	return h.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, defaultTimeout)
 }
 
 // Disable calls Manager.DisableTechnology(cellular) and returns true if the disable succeeded, or an error otherwise.
@@ -89,7 +89,7 @@ func (h *Helper) Disable(ctx context.Context) error {
 	if err := h.waitForEnabled(ctx, false); err != nil {
 		return err
 	}
-	err := h.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyPowered, false, defaultTimeout)
+	err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyPowered, false, defaultTimeout)
 	// Operations (i.e. Enable) called immediately after disabling can fail.
 	// TODO(b/177588333): Fix instead of sleeping here.
 	testing.Sleep(ctx, 1000*time.Millisecond)
@@ -111,7 +111,7 @@ func (h *Helper) FindService(ctx context.Context) (*shill.Service, error) {
 // If no such Cellular Service is available, returns a nil service and an error.
 // |timeout| specifies how long to wait for a service to appear.
 func (h *Helper) FindServiceForDeviceWithTimeout(ctx context.Context, timeout time.Duration) (*shill.Service, error) {
-	deviceProperties, err := h.Device.GetShillProperties(ctx)
+	deviceProperties, err := h.Device.GetProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get Cellular Device properties")
 	}
@@ -155,7 +155,7 @@ func (h *Helper) SetServiceAutoConnect(ctx context.Context, autoConnect bool) (b
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get Cellular Service")
 	}
-	properties, err := service.GetShillProperties(ctx)
+	properties, err := service.GetProperties(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "unable to get properties")
 	}
@@ -181,7 +181,7 @@ func (h *Helper) Connect(ctx context.Context) error {
 	if err := service.Connect(ctx); err != nil {
 		return err
 	}
-	return service.WaitForShillProperty(ctx, shillconst.ServicePropertyIsConnected, true, defaultTimeout)
+	return service.WaitForProperty(ctx, shillconst.ServicePropertyIsConnected, true, defaultTimeout)
 }
 
 // Disconnect from the Cellular Service and ensure that the disconnect succeeded, otherwise return an error.
@@ -193,7 +193,7 @@ func (h *Helper) Disconnect(ctx context.Context) error {
 	if err := service.Disconnect(ctx); err != nil {
 		return err
 	}
-	return service.WaitForShillProperty(ctx, shillconst.ServicePropertyIsConnected, false, defaultTimeout)
+	return service.WaitForProperty(ctx, shillconst.ServicePropertyIsConnected, false, defaultTimeout)
 }
 
 // SetDeviceProperty sets a Device property and waits for the property to be set.

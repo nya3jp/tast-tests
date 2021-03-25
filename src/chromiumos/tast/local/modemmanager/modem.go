@@ -63,5 +63,5 @@ func (m *Modem) GetSimProperties(ctx context.Context, simPath dbus.ObjectPath) (
 	if err != nil {
 		return nil, err
 	}
-	return ph.GetDBusProperties(ctx)
+	return ph.GetProperties(ctx)
 }

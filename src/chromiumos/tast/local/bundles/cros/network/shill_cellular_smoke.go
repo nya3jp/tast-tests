@@ -92,7 +92,7 @@ func ShillCellularSmoke(ctx context.Context, s *testing.State) {
 	// <addr> via <gateway> dev <interface>
 	routeIface := strings.Split(string(route), " ")[4]
 
-	props, err := helper.Device.GetShillProperties(ctx)
+	props, err := helper.Device.GetProperties(ctx)
 	if err != nil {
 		s.Fatal("Error getting Device properties: ", err)
 	}

@@ -10,7 +10,6 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
 )
 
 const (
@@ -19,12 +18,12 @@ const (
 
 // Profile wraps a Profile D-Bus object in shill.
 type Profile struct {
-	*dbusutil.PropertyHolder
+	*PropertyHolder
 }
 
 // NewProfile connects to a profile in Shill.
 func NewProfile(ctx context.Context, path dbus.ObjectPath) (*Profile, error) {
-	ph, err := dbusutil.NewPropertyHolder(ctx, dbusService, dbusProfileInterface, path)
+	ph, err := NewPropertyHolder(ctx, dbusService, dbusProfileInterface, path)
 	if err != nil {
 		return nil, err
 	}

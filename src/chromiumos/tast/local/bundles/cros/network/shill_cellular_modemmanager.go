@@ -39,7 +39,7 @@ func ShillCellularModemmanager(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to find Cellular Service before modemmanager restart: ", err)
 	}
 
-	deviceProps, err := helper.Device.GetShillProperties(ctx)
+	deviceProps, err := helper.Device.GetProperties(ctx)
 	if err != nil {
 		s.Fatal("Failed to get Device properties: ", err)
 	}
@@ -67,7 +67,7 @@ func ShillCellularModemmanager(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Modem after restart: ", err)
 	}
 
-	if helper.Device.WaitForShillProperty(ctx, shillconst.DevicePropertyDBusObject, modem2.String(), 30*time.Second); err != nil {
+	if helper.Device.WaitForProperty(ctx, shillconst.DevicePropertyDBusObject, modem2.String(), 30*time.Second); err != nil {
 		s.Fatal("Failed to get matching Device.DBus.Object: ", err)
 	}
 	if _, err := helper.FindService(ctx); err != nil {
