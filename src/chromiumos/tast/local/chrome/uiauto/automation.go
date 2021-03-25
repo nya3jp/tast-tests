@@ -4,6 +4,7 @@
 
 // Package uiauto enables automating with the ChromeOS UI through the chrome.automation API.
 // The chrome.automation API is documented here: https://developer.chrome.com/extensions/automation
+// Deprecated: Use uiauto instead (JONFAN test).
 package uiauto
 
 import (
@@ -34,6 +35,7 @@ type Context struct {
 
 // New returns an Context that uses tconn to communicate to chrome.automation.
 // It sets the poll options to the default interval and timeout.
+// Deprecated: Use uiauto.New instead (JONFAN test).
 func New(tconn *chrome.TestConn) *Context {
 	return &Context{
 		tconn: tconn,
