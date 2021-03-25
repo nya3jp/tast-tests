@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae02fb64_7f8d5d4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-03-25T20:22:07Z",
+      "side": 1,
+      "message": "I would prefer not to demote this. This test runs in the CQ. If failures are getting through the CQ, that\u0027s not a test fault!\n\nThis test ensures fundamental security properties of the system. If we ship security bugs to users because this test being informational, will you own those bugs?",
+      "revId": "cd1506ad2c0ea862e580b73a900e0c3b0311a028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
