@@ -117,7 +117,7 @@ func WaitForInputMethodInstalled(ctx context.Context, tconn *chrome.TestConn, im
 		}
 
 		for _, inputMethod := range inputMethods {
-			if inputMethod.ID == imeID {
+			if strings.HasSuffix(inputMethod.ID, imeID) {
 				return nil
 			}
 		}
