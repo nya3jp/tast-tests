@@ -137,11 +137,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the primary display info: ", err)
 	}
 
-	// The following computations assume that the top left corner of the work area
-	// is at (0, 0).
 	yCenter := info.WorkArea.CenterY()
-	// Compute the coordinates where we will drag an overview window to snap left.
-	leftSnapPoint := coords.NewPoint(0, yCenter)
 	// Compute the coordinates for the actual test scenario: drag the divider
 	// slightly left and then all the way right. The left snapped window should
 	// shrink and then expand and become maximized.
@@ -319,7 +315,6 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			}
 			currentWindows = testCase.numWindows
 
-			// Enter overview, and then drag and snap a window to enter split view.
 			if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 				s.Fatal("Failed to enter into the overview mode: ", err)
 			}
@@ -331,42 +326,12 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				if err != nil {
 					s.Fatal("Failed to find the window in the overview mode: ", err)
 				}
-				wCenterPoint := w.OverviewInfo.Bounds.CenterPoint()
-
-				if err := pointerController.Press(ctx, wCenterPoint); err != nil {
-					s.Fatal("Failed to start window drag from overview grid to snap: ", err)
-				}
-				ended := false
-				defer func() {
-					if !ended {
-						if err := pointerController.Release(ctx); err != nil {
-							s.Error("Failed to release the pointer: ", err)
-						}
-					}
-				}()
-				// A window drag from a tablet overview grid must begin with a long press to
-				// disambiguate from scrolling.
-				if tabletMode {
-					if err := testing.Sleep(ctx, time.Second); err != nil {
-						s.Fatal("Failed to wait for touch to become long press, for window drag from overview grid to snap: ", err)
-					}
-				}
-				if err := pointerController.Move(ctx, wCenterPoint, leftSnapPoint, 200*time.Millisecond); err != nil {
-					s.Fatal("Failed during window drag from overview grid to snap: ", err)
-				}
-				if err := pointerController.Release(ctx); err != nil {
-					s.Fatal("Failed to end window drag from overview grid to snap: ", err)
-				}
-				ended = true
 
 				// id0 supposed to have the window id which is left-snapped.
 				id0 = w.ID
-			}
-
-			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-				return w.ID == id0 && !w.IsAnimating && w.State == ash.WindowStateLeftSnapped
-			}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-				s.Fatal("Failed to wait for the window to be left-snapped: ", err)
+				if err := ash.SetWindowStateAndWait(ctx, tconn, id0, ash.WindowStateLeftSnapped); err != nil {
+					s.Fatal("Failed to snap window: ", err)
+				}
 			}
 
 			if err := testCase.customPrep(ctx); err != nil {
