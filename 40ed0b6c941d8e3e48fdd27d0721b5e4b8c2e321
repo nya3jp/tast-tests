@@ -16,6 +16,23 @@
       "message": "Hi Shuhei,\n\nDo you mind reviewing? I\u0027ve tried to run lacros.Basic locally multiple times and can confirm it\u0027s succeeding reliably.\n\nUnfortunately, the VM builder has been broken for a long time, and it\u0027s not blocking the CQ at this moment, please see the recent builds, they all fail due to the same test runner issue: https://ci.chromium.org/p/chromeos/builders/vmtest/amd64-generic-direct-tast-vm",
       "revId": "40ed0b6c941d8e3e48fdd27d0721b5e4b8c2e321",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c69bd3b_52efd1e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-25T09:20:22Z",
+      "side": 1,
+      "message": "I see two recent failures on drawman, but they look like caused by earlier tests corrupting GPU state. Thus LGTM.\n",
+      "revId": "40ed0b6c941d8e3e48fdd27d0721b5e4b8c2e321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
