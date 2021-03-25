@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e0fd76b_dae84556",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-25T21:20:56Z",
+      "side": 1,
+      "message": "NB: I can\u0027t really figure out why *only* these tests are causing problems. There are other tests that stop/start shill or exercise ethernet re-enumeration/configuration. I\u0027m open to nuking more on Winky if we find a problem.",
+      "revId": "43585688af7304dd38cfe727f86def25909bdd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
