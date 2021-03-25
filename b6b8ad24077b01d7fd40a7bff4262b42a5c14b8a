@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "066fe7a9_f95c9cec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-25T00:42:43Z",
+      "side": 1,
+      "message": "The old test failed because ime extension on ChromiumOS is different.\n\nThus, ignoring extension id in IME code validation.",
+      "revId": "b6b8ad24077b01d7fd40a7bff4262b42a5c14b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
