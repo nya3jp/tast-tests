@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
@@ -74,18 +73,9 @@ func Backup(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
-	// Optin to Play Store.
-	s.Log("Opting into Play Store")
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
-		s.Fatal("Failed to optin to Play Store: ", err)
+	if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
+		s.Fatal("Failed to optin to Play Store and Close: ", err)
 	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
-		s.Fatal("Failed to wait for Play Store: ", err)
-	}
-	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-		s.Log("Failed to close Play Store: ", err)
-	}
-
 	// Setup ARC.
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
