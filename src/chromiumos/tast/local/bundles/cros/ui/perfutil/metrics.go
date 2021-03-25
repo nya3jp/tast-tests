@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/local/chrome/metrics"
 )
 
 type metricType int
@@ -25,6 +26,9 @@ const (
 func estimateMetricType(ctx context.Context, histname string) metricType {
 	// PresentationTime is latency metric.
 	if strings.Contains(histname, "PresentationTime") {
+		return metricLatency
+	}
+	if strings.Contains(histname, "Duration") {
 		return metricLatency
 	}
 	// Jank is the opposite of smoothness, so should be treated as "smaller is better".
@@ -81,4 +85,44 @@ func CreateExpectations(ctx context.Context, histnames ...string) map[string]flo
 		}
 	}
 	return result
+}
+
+func HistogramMean(hist *metrics.Histogram) (float64, error) {
+  return hist.Mean()
+}
+
+func HistogramMax(hist *metrics.Histogram) (float64, error) {
+  return hist.Max()
+}
+
+// StoreFunc is a function to be used for RunMultiple.
+type StoreFunc func(ctx context.Context, pv *Values, hists []*metrics.Histogram) error
+
+type aggregationFunction func(*metrics.Histogram) (float64, error)
+
+type histogramSpecification struct {
+  name string
+  direction perf.Direction
+  unit string
+  aggregator aggregationFunction
+}
+
+type HistogramSpecifications []histogramSpecification
+
+func (specifications* HistogramSpecifications)Names() []string {
+  val :=[]string{}
+  for _, spec := range *specifications {
+    val = append(val, spec.name)
+  }
+  return val
+}
+
+func HistogramSpecification(name string, direction perf.Direction, unit string, aggregator aggregationFunction) histogramSpecification {
+  return histogramSpecification{name, direction, unit, aggregator};
+}
+
+func HistogramSpecificationWithHeuristics(ctx context.Context, histname string) histogramSpecification {
+  direction, unit := estimateMetricPresenattionType(ctx, histname)
+  aggregator := func(histogram *metrics.Histogram) (float64, error) { return histogram.Mean() }
+  return histogramSpecification{histname, direction, unit, aggregator}
 }
