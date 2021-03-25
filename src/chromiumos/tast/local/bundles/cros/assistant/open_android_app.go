@@ -33,6 +33,7 @@ func init() {
 func OpenAndroidApp(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
+		chrome.ARCEnabled(),
 		chrome.GAIALogin(chrome.Creds{
 			User: s.RequiredVar("assistant.username"),
 			Pass: s.RequiredVar("assistant.password"),
