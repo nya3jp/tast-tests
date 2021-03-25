@@ -17,7 +17,7 @@ func init() {
 		Func:     ShillCellularEnableAndConnect,
 		Desc:     "Verifies that Shill can enable, disable, connect, and disconnect to a Cellular Service",
 		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com"},
-		Attr:     []string{"group:cellular", "cellular_unstable"},
+		Attr:     []string{"group:cellular"},
 		Fixture:  "cellular",
 	})
 }
@@ -55,7 +55,7 @@ func ShillCellularEnableAndConnect(ctx context.Context, s *testing.State) {
 			s.Fatalf("Enable failed on attempt %d: %s", i, err)
 		}
 		s.Logf("Connect %d", i)
-		if err := helper.Connect(ctx); err != nil {
+		if err := helper.ConnectToDefault(ctx); err != nil {
 			s.Fatalf("Connect failed on attempt %d: %s", i, err)
 		}
 		s.Logf("Disconnect %d", i)
@@ -70,7 +70,7 @@ func ShillCellularEnableAndConnect(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Reconnect")
-	if err := helper.Connect(ctx); err != nil {
+	if err := helper.ConnectToDefault(ctx); err != nil {
 		s.Fatal("Reconnect failed: ", err)
 	}
 
@@ -81,7 +81,7 @@ func ShillCellularEnableAndConnect(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Connect while disabled")
-	if err := helper.Connect(ctx); err == nil {
+	if err := helper.ConnectToDefault(ctx); err == nil {
 		s.Fatal("Connect succeeded while Disabled: ", err)
 	}
 

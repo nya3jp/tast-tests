@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const defaultTimeout = 30 * time.Second
+const defaultTimeout = shillconst.DefaultTimeout
 
 // Helper fetches Cellular Device and Service properties.
 type Helper struct {
@@ -76,10 +76,12 @@ func (h *Helper) Enable(ctx context.Context) error {
 		return err
 	}
 	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyPowered, true, defaultTimeout); err != nil {
-		return err
+		return errors.Wrap(err, "expected powered to become true, got false")
 	}
-	// Cellular scanning can take up to 30 seconds to complete.
-	return h.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, defaultTimeout)
+	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, defaultTimeout); err != nil {
+		return errors.Wrap(err, "expected scanning to become false, got true")
+	}
+	return nil
 }
 
 // Disable calls Manager.DisableTechnology(cellular) and returns true if the disable succeeded, or an error otherwise.
@@ -89,11 +91,16 @@ func (h *Helper) Disable(ctx context.Context) error {
 	if err := h.waitForEnabled(ctx, false); err != nil {
 		return err
 	}
-	err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyPowered, false, defaultTimeout)
+	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyPowered, false, defaultTimeout); err != nil {
+		return err
+	}
+	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, defaultTimeout); err != nil {
+		return errors.Wrap(err, "expected scanning to become false, got true")
+	}
 	// Operations (i.e. Enable) called immediately after disabling can fail.
 	// TODO(b/177588333): Fix instead of sleeping here.
-	testing.Sleep(ctx, 1000*time.Millisecond)
-	return err
+	// testing.Sleep(ctx, 1000*time.Millisecond)
+	return nil
 }
 
 // FindService returns the first connectable Cellular Service.
@@ -172,16 +179,39 @@ func (h *Helper) SetServiceAutoConnect(ctx context.Context, autoConnect bool) (b
 	return true, nil
 }
 
-// Connect to the Cellular Service and ensure that the connect succeeded, otherwise return an error.
-func (h *Helper) Connect(ctx context.Context) error {
+// ConnectToDefault connects to the default Cellular Service.
+// It ensures that the connect attempt succeeds, repating attempts if necessary.
+// Otherwise an error is returned.
+func (h *Helper) ConnectToDefault(ctx context.Context) error {
 	service, err := h.FindServiceForDevice(ctx)
 	if err != nil {
 		return err
 	}
-	if err := service.Connect(ctx); err != nil {
+	props, err := service.GetProperties(ctx)
+	if err != nil {
 		return err
 	}
-	return service.WaitForProperty(ctx, shillconst.ServicePropertyIsConnected, true, defaultTimeout)
+	name, err := props.GetString(shillconst.ServicePropertyName)
+	if err != nil {
+		return err
+	}
+
+	const timeout = defaultTimeout * 4
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := service.Connect(ctx); err != nil {
+			return err
+		}
+		if err := service.WaitForConnectedOrError(ctx); err != nil {
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  defaultTimeout,
+		Interval: 5 * time.Second,
+	}); err != nil {
+		return errors.Wrapf(err, "connect to %s failed", name)
+	}
+	return nil
 }
 
 // Disconnect from the Cellular Service and ensure that the disconnect succeeded, otherwise return an error.
