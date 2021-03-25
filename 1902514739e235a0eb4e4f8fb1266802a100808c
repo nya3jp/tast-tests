@@ -16,6 +16,125 @@
       "message": "Updated.",
       "revId": "1902514739e235a0eb4e4f8fb1266802a100808c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eac298c0_87613ab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T23:59:39Z",
+      "side": 1,
+      "message": "Looks good, cheers, mostly nits.\n",
+      "revId": "1902514739e235a0eb4e4f8fb1266802a100808c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b1ed901_1f75dfad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T23:59:39Z",
+      "side": 1,
+      "message": "s/run/runs/\ns/Slot switch tested/Slot switch is tested/",
+      "revId": "1902514739e235a0eb4e4f8fb1266802a100808c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c797d02_dcb8af1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T23:59:39Z",
+      "side": 1,
+      "message": "s/have//",
+      "revId": "1902514739e235a0eb4e4f8fb1266802a100808c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883af4cd_b23a73cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T23:59:39Z",
+      "side": 1,
+      "message": "nit:s/as//",
+      "revId": "1902514739e235a0eb4e4f8fb1266802a100808c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9150b522_d83c940c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T23:59:39Z",
+      "side": 1,
+      "message": "We need to shorten ctx to ensure time for the deferred slot change:\n\nnewCtx, cancel :\u003d ctxutil.Shorten(ctx, shill.EnableWaitTime)\ndefer cancel()\ndefer modem.Call(ctx, \"SetPrimarySimSlot\", primary)\nctx \u003d newCtx",
+      "revId": "1902514739e235a0eb4e4f8fb1266802a100808c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "022388de_ad16d156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T23:59:39Z",
+      "side": 1,
+      "message": "Remove extra capitalization (\u0027No\u0027 and \u0027Need\u0027), and maybe simplify:\n\"Test requires two slots two slots, exiting\"",
+      "revId": "1902514739e235a0eb4e4f8fb1266802a100808c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da0f9114_5cfa7d48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T23:59:39Z",
+      "side": 1,
+      "message": "We should be sure to log the number of slots found.",
+      "revId": "1902514739e235a0eb4e4f8fb1266802a100808c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
