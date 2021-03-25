@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf2d556_98ea5075",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-03-25T11:19:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2475ed6_1b61acf1",
+      "range": {
+        "startLine": 114,
+        "startChar": 72,
+        "endLine": 114,
+        "endChar": 73
+      },
+      "revId": "6a253858fe13bc6127dca7914d789f697c77698c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58593421_275dcb6b",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d3a5b2_9754ee90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-03-25T11:19:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58593421_275dcb6b",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "6a253858fe13bc6127dca7914d789f697c77698c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88bfc2f3_b04c9aec",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-03-24T22:31:57Z",
       "side": 1,
       "message": "Optional: would it be better to read the original value and restore it here?\n\nWith this code you need to keep the default here in sync with any changes in the production code.",
+      "range": {
+        "startLine": 119,
+        "startChar": 61,
+        "endLine": 119,
+        "endChar": 92
+      },
+      "revId": "6a253858fe13bc6127dca7914d789f697c77698c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4ccef6e_ac9e8965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-03-25T11:19:39Z",
+      "side": 1,
+      "message": "This is a pretty stable value and we don\u0027t see any potential reason this is going to change. I think I\u0027ll keep it this way in this patch and update it in the (rare) case that this value will be changed in production. (checkPortalPropertyValue will need to be updated together as well.)",
+      "parentUuid": "88bfc2f3_b04c9aec",
       "range": {
         "startLine": 119,
         "startChar": 61,
