@@ -136,8 +136,14 @@ func PerformAndClose(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 		testing.ContextLogf(ctx, "Failed to close Play Store window: %v; continue to check if it has been closed", err)
 	}
 
+	// Additional attempt to Close if Play Store remains open before returning error.
 	if err := ash.WaitForAppClosed(ctx, tconn, apps.PlayStore.ID); err != nil {
-		return errors.Wrap(err, "failed to wait for the Play Store to be closed")
+		testing.ContextLogf(ctx, "Failed to close Play Store window: %v; continue to close", err)
+		if window, err := ash.GetARCAppWindowInfo(ctx, tconn, "com.android.vending"); err != nil {
+			errors.Wrap(err, "failed to get window info")
+		} else if err := window.CloseWindow(ctx, tconn); err != nil {
+			errors.Wrap(err, "failed to close app window")
+		}
 	}
 	return nil
 }
