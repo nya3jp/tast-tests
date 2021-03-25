@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2418f1ef_5731ea1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1911fdb0_8c336ac1",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "46aff653_b9289b09",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb11115_3484152f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bf81542e_0ce259a8",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "796532e3_39bb6adb",
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f768802f_651fde58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796532e3_39bb6adb",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1abc182c_507d0621",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-03-19T16:47:23Z",
       "side": 1,
       "message": "So, I would actually prefer this test to only test MM, and not have any Shill dependencies.\n\nWe will add a separate test for testing connecting to a service in the non selected slot, but that will require multi-sim DUTs.",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef39c6d1_93f28e0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "Will limit this to MM.",
+      "parentUuid": "1abc182c_507d0621",
       "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c57e6b6d_6d5c8eb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e6de0e0_647b30f7",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82a690d0_db4fe139",
@@ -134,6 +224,24 @@
       "writtenOn": "2021-03-19T20:36:36Z",
       "side": 1,
       "message": "use s.Logf here",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "003627cc_4a4eba3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82a690d0_db4fe139",
       "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +263,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f7a897d_ba780ee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4caf5045_b145060b",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "731eeb22_82cc0b88",
@@ -168,6 +294,24 @@
       "writtenOn": "2021-03-19T16:47:23Z",
       "side": 1,
       "message": "We try to avoid using Sleep. See examples using testing.Poll.",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbba15b4_d68bed67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "731eeb22_82cc0b88",
       "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -189,6 +333,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6185187d_a8dc1106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "No, did it now with gofmt -s -w modemmanager_slot_switch.go",
+      "parentUuid": "05d03e39_b1e9353b",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3be4315f_1647abd2",
@@ -202,6 +364,24 @@
       "writtenOn": "2021-03-19T21:56:21Z",
       "side": 1,
       "message": "Note what this returns.",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9170c9b2_12d6363e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3be4315f_1647abd2",
       "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -223,6 +403,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be5c52d4_8c6738cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "398a9a64_80ef7e02",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48470c42_af369a27",
@@ -236,6 +434,24 @@
       "writtenOn": "2021-03-19T16:47:23Z",
       "side": 1,
       "message": "The above is sufficient for this test, we do not need or want to test Shill functionality in a modemmanager_ test.",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "350afe18_4c5d181e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "48470c42_af369a27",
       "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -270,6 +486,24 @@
       "writtenOn": "2021-03-19T21:56:21Z",
       "side": 1,
       "message": "Well, we\u0027ve a lot of untested code for \u003e2 slots, but on the other hand there\u0027s no particular reason not to use numSlots here.\n\nThe main reason I want this to be part of a shill specific test is so that we can quickly identify the source of failure. If this fails, any Shill tests switching slots are guaranteed to fail (assuming the test is stable).\n\nI wonder if we can have tests depend on other tests? Something to look into maybe.",
+      "parentUuid": "39aa55a4_735ea2c5",
+      "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2790c12_36e604e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-03-25T01:46:21Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "39aa55a4_735ea2c5",
       "revId": "e3ca410c01f2a5becda52700bc8c92753dc371c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
