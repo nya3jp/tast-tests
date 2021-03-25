@@ -67,7 +67,7 @@ func ShillCellularSmoke(ctx context.Context, s *testing.State) {
 	if isConnected, err := service.IsConnected(ctx); err != nil {
 		s.Fatal("Unable to get IsConnected for Service: ", err)
 	} else if !isConnected {
-		if err := helper.Connect(ctx); err != nil {
+		if err := helper.ConnectToDefault(ctx); err != nil {
 			s.Fatal("Unable to Connect to Service: ", err)
 		}
 	}
