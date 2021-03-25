@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c74e801_044aea4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-25T08:12:04Z",
+      "side": 1,
+      "message": "CL requests for comments.\n\nI think this refactor can have the codes better organized and the confusion of multiple PropertyHolder might not be much as only shill should use shill.PropertyHolder.\n\nStill one alternative is to define\n\n  type ProperHolder interface {\n    GetProperties(...)\n    SetProperty(...)\n  }\n\nand have different implementations in dbusutil and shill, but I didn\u0027t see any common utilities need this currently. Probably not yet worth the complexity?\n\nPlease let me know what you think. Thanks.",
+      "revId": "23e27f0706c5aa5ef8141bec1401b03ab6091ab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
