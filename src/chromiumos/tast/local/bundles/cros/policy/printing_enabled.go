@@ -33,7 +33,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 			"group:paper-io",
 			"paper-io_printing",
 		},
