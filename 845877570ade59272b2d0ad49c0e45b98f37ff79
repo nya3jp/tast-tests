@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d95931_d7260368",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/integrated_u2f.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-25T19:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6475e501_edd0012e",
+      "range": {
+        "startLine": 186,
+        "startChar": 48,
+        "endLine": 186,
+        "endChar": 59
+      },
+      "revId": "845877570ade59272b2d0ad49c0e45b98f37ff79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b675cd8_dfcf37e3",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88185654_618db451",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/integrated_u2f.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-25T19:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b675cd8_dfcf37e3",
+      "range": {
+        "startLine": 247,
+        "startChar": 21,
+        "endLine": 247,
+        "endChar": 33
+      },
+      "revId": "845877570ade59272b2d0ad49c0e45b98f37ff79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3df16428_0ac05e51",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-25T09:07:39Z",
       "side": 1,
       "message": "We always have to call Wait to release resources associated with cmd. Can we add a deferred statement soon after cmd.Start?",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 2
+      },
+      "revId": "845877570ade59272b2d0ad49c0e45b98f37ff79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "901999fc_a69b5216",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/integrated_u2f.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-25T19:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3df16428_0ac05e51",
       "range": {
         "startLine": 291,
         "startChar": 1,
