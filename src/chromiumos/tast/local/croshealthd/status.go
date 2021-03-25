@@ -77,6 +77,14 @@ func waitForMojoBootstrap(ctx context.Context) error {
 		return errors.Wrap(err, "failed to start cros_healthd")
 	}
 
+	// By default use the context's deadline for a timeout if set, otherwise
+	// default to 15 seconds.
+	deadline, ok := ctx.Deadline()
+	timeout := 15 * time.Second
+	if ok {
+		timeout = deadline.Sub(time.Now())
+	}
+
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Check that cros_healthd status is ready.
 		status, err := runStatus(ctx)
@@ -94,7 +102,7 @@ func waitForMojoBootstrap(ctx context.Context) error {
 		}
 
 		return nil
-	}, &testing.PollOptions{Interval: 250 * time.Millisecond, Timeout: 15 * time.Second}); err != nil {
+	}, &testing.PollOptions{Interval: 250 * time.Millisecond, Timeout: timeout}); err != nil {
 		return errors.Wrap(err, "timeout out waiting for cros_health bootstrap")
 	}
 	return nil
