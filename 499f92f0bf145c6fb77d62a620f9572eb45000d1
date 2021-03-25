@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1303c949_00424335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 53
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-25T20:58:06Z",
+      "side": 1,
+      "message": "There\u0027s a build error here:\n\ntast-remote-tests-cros-0.0.1-r5718: src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go:106:26: not enough arguments in call to ash.WaitForApp\ntast-remote-tests-cros-0.0.1-r5718: \thave (context.Context, *driver.TestConn, string)\ntast-remote-tests-cros-0.0.1-r5718: \twant (context.Context, *driver.TestConn, string, time.Duration)\n\nPlease mark Verified+1 after you verify this builds and works.",
+      "revId": "499f92f0bf145c6fb77d62a620f9572eb45000d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
