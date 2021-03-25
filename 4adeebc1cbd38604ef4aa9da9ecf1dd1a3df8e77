@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebd9638c_faa3fab5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-03-25T11:00:20Z",
+      "side": 1,
+      "message": "Cyclomatic complexity of this part is \u003e 15. I know there are err checks there and it is clear now, what it does. However, in 6 months someone will look at that will spend time figuring out what is happening here.\nAs Mitsuru suggested to test main as a separate function I would add -\u003e could you split that into user related functions too? Like:\n\nCheckAboutBlankPage(...)\n...\nif test.splitViewUseBlank {\ncheckSplitViewUseBlank\n...\n}\n...\n\nWhat do you think?",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 5
+      },
+      "revId": "4adeebc1cbd38604ef4aa9da9ecf1dd1a3df8e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1cc6326_6be013a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
         "patchSetId": 1
