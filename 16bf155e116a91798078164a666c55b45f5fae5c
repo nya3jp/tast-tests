@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47558e9_ff707b7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-25T09:33:39Z",
+      "side": 1,
+      "message": "Test is stable:\nhttps://cros-health-prod.googleplex.com/test/policy.PinnedLauncherApps\n\nFailures are from the fixture that is already part of the Cq.",
+      "revId": "16bf155e116a91798078164a666c55b45f5fae5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
