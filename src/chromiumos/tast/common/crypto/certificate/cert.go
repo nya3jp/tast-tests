@@ -8,7 +8,7 @@ package certificate
 
 // CertStore holds a set of credentials which share the same CA certificate.
 type CertStore struct {
-	CACert     string
+	CACred     Credential
 	ServerCred Credential
 	ClientCred Credential
 
@@ -24,7 +24,8 @@ type Credential struct {
 // Test certificate borrowed from Autotest (client/common_lib/cros/site_eap_certs.py). These are only for test usage.
 // TODO(crbug.com/1047146): upgrade from MD5 crypto.
 var certSet1 = CertStore{
-	CACert: `-----BEGIN CERTIFICATE-----
+	CACred: Credential{
+		Cert: `-----BEGIN CERTIFICATE-----
 MIIDRjCCAq+gAwIBAgIJANn/MIB1esFIMA0GCSqGSIb3DQEBBQUAMG8xCzAJBgNV
 BAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBW
 aWV3MTMwMQYDVQQDEypjaHJvbWVsYWItd2lmaS10ZXN0YmVkLXJvb3QubXR2Lmdv
@@ -45,6 +46,7 @@ R2fZba/umMvP8s2RASNKzmozw0GRuK8wzsFYjC/85TwL3Z6d2nzgpBjVtpE5kROY
 b6ZSoIDgYwTUgvLrROpy4Uc68PrGnFcCvCE=
 -----END CERTIFICATE-----
 `,
+	},
 	ServerCred: Credential{
 		Cert: `-----BEGIN CERTIFICATE-----
 MIIDYTCCAsqgAwIBAgIDEAADMA0GCSqGSIb3DQEBBAUAMG8xCzAJBgNVBAYTAlVT
@@ -166,7 +168,8 @@ VZEVdOeKhQp5dAPlMphUhwogI5LJUBBCP72QK7T+Ig==
 	},
 }
 var certSet2 = CertStore{
-	CACert: `-----BEGIN CERTIFICATE-----
+	CACred: Credential{
+		Cert: `-----BEGIN CERTIFICATE-----
 MIICxzCCAjCgAwIBAgIUJE5XXZBXcmCk7JQffAQ2t+WmGdEwDQYJKoZIhvcNAQEF
 BQAwbzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcM
 DU1vdW50YWluIFZpZXcxMzAxBgNVBAMMKmNocm9tZWxhYi13aWZpLXRlc3RiZWQt
@@ -184,6 +187,7 @@ Oftu1WyEuEQEuu8r0QmY8aVBylIJpn/S7YWP11O8/FO2ztWD2MTl0fr1qAdv1AZc
 sIjPdnbvXoyoy4MKJ97M7kIWBvN8vkUbcP8Rtm13dKSyPVNd6Ufc/JAg3g==
 -----END CERTIFICATE-----
 `,
+	},
 	ServerCred: Credential{
 		Cert: `-----BEGIN CERTIFICATE-----
 MIICxTCCAi6gAwIBAgIBAjANBgkqhkiG9w0BAQsFADBvMQswCQYDVQQGEwJVUzET
@@ -263,7 +267,8 @@ var certSet3AltSubjectMatch = []string{
 	`{"Type":"EMAIL","Value":"example@domain.com"}`,
 }
 var certSet3 = CertStore{
-	CACert: `-----BEGIN CERTIFICATE-----
+	CACred: Credential{
+		Cert: `-----BEGIN CERTIFICATE-----
 MIIDHzCCAgegAwIBAgIUeYwGG61G9eZgnOYgfX83nWTw30AwDQYJKoZIhvcNAQEL
 BQAwFzEVMBMGA1UEAwwMcm9vdF9jYV9jZXJ0MB4XDTE5MTIxMjE0MzM1OFoXDTI5
 MTIwOTE0MzM1OFowFzEVMBMGA1UEAwwMcm9vdF9jYV9jZXJ0MIIBIjANBgkqhkiG
@@ -283,6 +288,7 @@ uuIJdjTkHKNcMtb3MpIc+gz83R9BlwjRBeGzBz8/iR87MFG4IYh25+C1QEytjBBi
 xuFgXLz9+gpOUPKh8KV9tFsVcPeZmdhrLT/HchTIn63eKIQ=
 -----END CERTIFICATE-----
 `,
+	},
 	ServerCred: Credential{
 		Cert: `-----BEGIN CERTIFICATE-----
 MIIDWTCCAkGgAwIBAgIBATANBgkqhkiG9w0BAQsFADAXMRUwEwYDVQQDDAxyb290

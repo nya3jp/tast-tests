@@ -509,8 +509,8 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: dynamicwep.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred,
-						dynamicwep.ClientCACert(eapCert1.CACert),
+						eapCert1.CACred.Cert, eapCert1.ServerCred,
+						dynamicwep.ClientCACert(eapCert1.CACred.Cert),
 						dynamicwep.ClientCred(eapCert1.ClientCred),
 						dynamicwep.RekeyPeriod(10),
 					),
@@ -522,15 +522,15 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wpaeap.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred,
-						wpaeap.ClientCACert(eapCert1.CACert),
+						eapCert1.CACred.Cert, eapCert1.ServerCred,
+						wpaeap.ClientCACert(eapCert1.CACred.Cert),
 						wpaeap.ClientCred(eapCert1.ClientCred),
 					),
 				}, {
 					// Failure due to lack of CACert on client.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wpaeap.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred,
+						eapCert1.CACred.Cert, eapCert1.ServerCred,
 						wpaeap.ClientCred(eapCert1.ClientCred),
 					),
 					expectedFailure: true,
@@ -538,8 +538,8 @@ func init() {
 					// Failure due to unmatched CACert.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wpaeap.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred,
-						wpaeap.ClientCACert(eapCert2.CACert),
+						eapCert1.CACred.Cert, eapCert1.ServerCred,
+						wpaeap.ClientCACert(eapCert2.CACred.Cert),
 						wpaeap.ClientCred(eapCert1.ClientCred),
 					),
 					expectedFailure: true,
@@ -547,7 +547,7 @@ func init() {
 					// Should succeed if we specify that we have no CACert.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wpaeap.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred,
+						eapCert1.CACred.Cert, eapCert1.ServerCred,
 						wpaeap.ClientCred(eapCert1.ClientCred),
 						wpaeap.NotUseSystemCAs(),
 					),
@@ -555,8 +555,8 @@ func init() {
 					// Failure due to wrong certificate chain on client.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wpaeap.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred,
-						wpaeap.ClientCACert(eapCert1.CACert),
+						eapCert1.CACred.Cert, eapCert1.ServerCred,
+						wpaeap.ClientCACert(eapCert1.CACred.Cert),
 						wpaeap.ClientCred(eapCert2.ClientCred),
 					),
 					expectedFailure: true,
@@ -564,8 +564,8 @@ func init() {
 					// Failure due to expired cert on server.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wpaeap.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ExpiredServerCred,
-						wpaeap.ClientCACert(eapCert1.CACert),
+						eapCert1.CACred.Cert, eapCert1.ExpiredServerCred,
+						wpaeap.ClientCACert(eapCert1.CACred.Cert),
 						wpaeap.ClientCred(eapCert1.ClientCred),
 					),
 					expectedFailure: true,
@@ -579,7 +579,7 @@ func init() {
 					// Failure due to bad password.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.ClientPassword("wrongpassword"),
@@ -589,7 +589,7 @@ func init() {
 					// Failure due to wrong client CA.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert2.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert2.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 					),
@@ -598,7 +598,7 @@ func init() {
 					// Failure due to expired server cred.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ExpiredServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ExpiredServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 					),
@@ -607,7 +607,7 @@ func init() {
 					// Failure due to that a subject alternative name (SAN) is set but does not match any of the server certificate SANs.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`}),
@@ -620,14 +620,14 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 					),
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
@@ -635,7 +635,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
@@ -643,7 +643,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
@@ -654,7 +654,7 @@ func init() {
 					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
@@ -666,14 +666,14 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 					),
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
@@ -681,7 +681,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
@@ -689,7 +689,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
@@ -700,7 +700,7 @@ func init() {
 					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
@@ -712,14 +712,14 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 					),
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
@@ -727,7 +727,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
@@ -735,7 +735,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
@@ -746,7 +746,7 @@ func init() {
 					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
@@ -761,7 +761,7 @@ func init() {
 					// Failure due to bad password.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.ClientPassword("wrongpassword"),
@@ -771,7 +771,7 @@ func init() {
 					// Failure due to wrong client CA.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert2.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert2.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 					),
@@ -780,7 +780,7 @@ func init() {
 					// Failure due to expired server cred.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ExpiredServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ExpiredServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 					),
@@ -789,7 +789,7 @@ func init() {
 					// Failure due to that a subject alternative name (SAN) is set but does not match any of the server certificate SANs.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`}),
@@ -802,14 +802,14 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 					),
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
@@ -817,7 +817,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
@@ -825,7 +825,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
@@ -836,7 +836,7 @@ func init() {
 					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
@@ -848,14 +848,14 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 					),
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
@@ -863,7 +863,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
@@ -871,7 +871,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
@@ -882,7 +882,7 @@ func init() {
 					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
@@ -894,14 +894,14 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 					),
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
@@ -909,7 +909,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
@@ -917,7 +917,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
@@ -928,7 +928,7 @@ func init() {
 					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
@@ -940,14 +940,14 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 					),
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
@@ -955,7 +955,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
@@ -963,7 +963,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
@@ -974,7 +974,7 @@ func init() {
 					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
@@ -986,14 +986,14 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 					),
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
@@ -1001,7 +1001,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
@@ -1009,7 +1009,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
@@ -1020,7 +1020,7 @@ func init() {
 					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
@@ -1032,14 +1032,14 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+						eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 					),
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
@@ -1047,7 +1047,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
@@ -1055,7 +1055,7 @@ func init() {
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
@@ -1066,7 +1066,7 @@ func init() {
 					// https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
-						eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+						eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),

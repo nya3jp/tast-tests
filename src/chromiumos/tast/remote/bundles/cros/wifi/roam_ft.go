@@ -67,8 +67,8 @@ func init() {
 			ExtraAttr: []string{"wificell_unstable"},
 			Val: roamFTparam{
 				secConfFac: wpaeap.NewConfigFactory(
-					roamFTCert1.CACert, roamFTCert1.ServerCred,
-					wpaeap.ClientCACert(roamFTCert1.CACert), wpaeap.ClientCred(roamFTCert1.ClientCred),
+					roamFTCert1.CACred.Cert, roamFTCert1.ServerCred,
+					wpaeap.ClientCACert(roamFTCert1.CACred.Cert), wpaeap.ClientCred(roamFTCert1.ClientCred),
 					wpaeap.Mode(wpa.ModePureWPA2), wpaeap.FTMode(wpa.FTModePure),
 				),
 			},
@@ -77,8 +77,8 @@ func init() {
 			ExtraAttr: []string{"wificell_unstable"},
 			Val: roamFTparam{
 				secConfFac: wpaeap.NewConfigFactory(
-					roamFTCert1.CACert, roamFTCert1.ServerCred,
-					wpaeap.ClientCACert(roamFTCert1.CACert), wpaeap.ClientCred(roamFTCert1.ClientCred),
+					roamFTCert1.CACred.Cert, roamFTCert1.ServerCred,
+					wpaeap.ClientCACert(roamFTCert1.CACred.Cert), wpaeap.ClientCred(roamFTCert1.ClientCred),
 					wpaeap.Mode(wpa.ModePureWPA2), wpaeap.FTMode(wpa.FTModeMixed),
 				),
 				mixed: true,

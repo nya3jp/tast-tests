@@ -73,7 +73,7 @@ func init() {
 				Val: roamTestcase{
 					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20)},
 					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)},
-					secConfFac: wpaeap.NewConfigFactory(roamCert.CACert, roamCert.ServerCred, wpaeap.ClientCACert(roamCert.CACert), wpaeap.ClientCred(roamCert.ClientCred)),
+					secConfFac: wpaeap.NewConfigFactory(roamCert.CACred.Cert, roamCert.ServerCred, wpaeap.ClientCACert(roamCert.CACred.Cert), wpaeap.ClientCred(roamCert.ClientCred)),
 				},
 			},
 		},

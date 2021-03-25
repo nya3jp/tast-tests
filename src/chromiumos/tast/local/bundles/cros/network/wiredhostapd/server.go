@@ -156,7 +156,7 @@ eapol_version=2
 		{serverCertPath, s.EAP.Cert.ServerCred.Cert},
 		{privateKeyPath, s.EAP.Cert.ServerCred.PrivateKey},
 		{eapUserFilePath, eapUser},
-		{caCertPath, s.EAP.Cert.CACert},
+		{caCertPath, s.EAP.Cert.CACred.Cert},
 	} {
 		if err := ioutil.WriteFile(p.path, []byte(p.contents), 0644); err != nil {
 			return "", errors.Wrapf(err, "failed to write file %q", p.path)

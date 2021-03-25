@@ -61,8 +61,8 @@ func PMKSACaching(ctx context.Context, s *testing.State) {
 
 	cert := certificate.TestCert1()
 	secConfFac := wpaeap.NewConfigFactory(
-		cert.CACert, cert.ServerCred,
-		wpaeap.ClientCACert(cert.CACert),
+		cert.CACred.Cert, cert.ServerCred,
+		wpaeap.ClientCACert(cert.CACred.Cert),
 		wpaeap.ClientCred(cert.ClientCred),
 		// PMKSA caching is only defined for WPA2.
 		wpaeap.Mode(wpa.ModePureWPA2),
