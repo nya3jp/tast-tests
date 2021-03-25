@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d97a6d0_67c1b1a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-03-25T09:41:47Z",
+      "side": 1,
+      "message": "Test is stable:\nhttps://cros-health-prod.googleplex.com/test/policy.PromptForDownloadLocation\n\nFailures are from the fixture that is already part of the Cq.",
+      "revId": "aa57ce7c2b2ce7d8b7c29a4aac223afc2c59ecdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
