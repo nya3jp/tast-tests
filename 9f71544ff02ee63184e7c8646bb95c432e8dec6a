@@ -33,6 +33,24 @@
       "message": "It seems tast uses this method do copy files; https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/cmd/tast/internal/run/prepare/prepare.go;l\u003d260\n\nIt would be good to work with the tast team to refactor this so we can use it so things don\u0027t break if the files change and it avoids the back and forth copying.\n\nDon\u0027t want to block on this though, so putting a todo is ok so we keep track of this.",
       "revId": "9f71544ff02ee63184e7c8646bb95c432e8dec6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71a685e2_51d31c0f",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-25T22:29:33Z",
+      "side": 1,
+      "message": "Ack, nice find. I actually proposed this to tast-owners@ via email on February 17. Shuhei told me that this would not be possible for automated test runs with current functionality, that he would like to do the refactoring required to enable it, and that his team doesn\u0027t have the capacity to handle it this quarter. Shuhei suggested the current technique of hard-coding certain specific paths, copying from DUT to test server, and then copying back from test server to DUT.\n\nYou can read the whole thread at: http://g/tast-owners/sBhC1w-ET8g\n\nSo, I\u0027ll add a TODO summarizing this, but I don\u0027t expect that we\u0027ll address it in 2021.",
+      "parentUuid": "d5c877bd_e65a32f0",
+      "revId": "9f71544ff02ee63184e7c8646bb95c432e8dec6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
