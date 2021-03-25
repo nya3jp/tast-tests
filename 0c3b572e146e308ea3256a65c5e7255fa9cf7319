@@ -16,6 +16,23 @@
       "message": "Added  IgnoreErrors: true, because /usr/bin/sound_card_init does not exist on all boards.",
       "revId": "0c3b572e146e308ea3256a65c5e7255fa9cf7319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea1590b2_122a92ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-25T05:45:19Z",
+      "side": 1,
+      "message": "Still LGTM.",
+      "revId": "0c3b572e146e308ea3256a65c5e7255fa9cf7319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
