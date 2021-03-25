@@ -82,7 +82,7 @@ func TestCertificate(t *testing.T) {
 	}
 
 	for testi, testcase := range []CertStore{TestCert1(), TestCert2(), TestCert3()} {
-		caCert, err := x509ParseCert(testcase.CACert)
+		caCert, err := x509ParseCert(testcase.CACred.Cert)
 		if err != nil {
 			t.Fatalf("Test %d: CACert: %v", testi, err)
 		}
@@ -177,7 +177,7 @@ func TestAltSubjectMatch(t *testing.T) {
 
 func TestCADifference(t *testing.T) {
 	// Check that TestCert1 and TestCert2 are using different CAs.
-	if TestCert1().CACert == TestCert2().CACert {
+	if TestCert1().CACred.Cert == TestCert2().CACred.Cert {
 		t.Error("TestCert1 and TestCert2 are using the same CA")
 	}
 }
