@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7158f649_54a3cd8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-03-25T05:43:51Z",
+      "side": 1,
+      "message": "Added  IgnoreErrors: true, because /usr/bin/sound_card_init does not exist on all boards.",
+      "revId": "0c3b572e146e308ea3256a65c5e7255fa9cf7319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
