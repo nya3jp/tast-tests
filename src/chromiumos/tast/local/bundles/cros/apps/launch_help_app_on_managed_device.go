@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	policyPre "chromiumos/tast/local/policyutil/pre"
+	policyFixt "chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -41,12 +41,12 @@ func init() {
 			}, {
 				Name:              "logged_in_stable",
 				ExtraHardwareDeps: pre.AppsStableModels,
-				Pre:               policyPre.User,
+				Fixture:           "chromePolicyLoggedIn",
 				Val:               false,
 			}, {
 				Name:              "logged_in_unstable",
 				ExtraHardwareDeps: pre.AppsUnstableModels,
-				Pre:               policyPre.User,
+				Fixture:           "chromePolicyLoggedIn",
 				Val:               false,
 				ExtraAttr:         []string{"informational"},
 			},
@@ -80,7 +80,7 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 
 		cr, err = chrome.New(
 			ctx,
-			chrome.FakeLogin(chrome.Creds{User: policyPre.Username, Pass: policyPre.Password}),
+			chrome.FakeLogin(chrome.Creds{User: policyFixt.Username, Pass: policyFixt.Password}),
 			chrome.DMSPolicy(fdms.URL), chrome.DontSkipOOBEAfterLogin(),
 			chrome.EnableFeatures("HelpAppFirstRun"),
 		)
@@ -88,7 +88,7 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to connect to Chrome: ", err)
 		}
 	} else {
-		cr = s.PreValue().(*policyPre.PreData).Chrome
+		cr = s.FixtValue().(*policyFixt.FixtData).Chrome
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)

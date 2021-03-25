@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -28,13 +28,13 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "plugin_vm"},
 		Attr:         []string{"group:mainline"},
-		Pre:          pre.User,
+		Fixture:      "chromePolicyLoggedIn",
 	})
 }
 
 func PluginVMDataCollectionAllowed(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*pre.PreData).Chrome
-	fdms := s.PreValue().(*pre.PreData).FakeDMS
+	cr := s.FixtValue().(*fixtures.FixtData).Chrome
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	const (
 		dbusName      = "org.chromium.PluginVmService"
