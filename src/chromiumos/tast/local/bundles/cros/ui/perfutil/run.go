@@ -42,8 +42,35 @@ func RunAndWaitAny(tconn *chrome.TestConn, f func(ctx context.Context) error, na
 	}
 }
 
-// StoreFunc is a function to be used for RunMultiple.
-type StoreFunc func(ctx context.Context, pv *Values, hists []*metrics.Histogram) error
+// StoreAllWithHeuristics is a utility function to store all metrics. It
+// determines the direction of perf (bigger is better or smaller is better)
+// and unit through heuristics from the name of metrics.
+func StoreAllAs(spec* HistogramSpecifications, suffix string) StoreFunc {
+        specifications := make(map[string]*histogramSpecification)
+        for _, hs := range *spec {
+		specifications[hs.name] = &hs;
+	}
+	return func(ctx context.Context, pv *Values, hists []*metrics.Histogram) error {
+		for _, hist := range hists {
+			name := hist.Name
+		 	hs := specifications[name]
+			value, err := hs.aggregator(hist)
+			if err != nil {
+				return errors.Wrapf(err, "failed to get value for histogram %s", name)
+			}
+			if suffix != "" {
+				name = name + "." + suffix
+			}
+			testing.ContextLog(ctx, name, " = ", value)
+			pv.Append(perf.Metric{
+				Name:      name,
+				Unit:      hs.unit,
+				Direction: hs.direction,
+			}, float64(value))
+		}
+		return nil
+	}
+}
 
 // StoreAllWithHeuristics is a utility function to store all metrics. It
 // determines the direction of perf (bigger is better or smaller is better)
@@ -51,7 +78,7 @@ type StoreFunc func(ctx context.Context, pv *Values, hists []*metrics.Histogram)
 func StoreAllWithHeuristics(suffix string) StoreFunc {
 	return func(ctx context.Context, pv *Values, hists []*metrics.Histogram) error {
 		for _, hist := range hists {
-			mean, err := hist.Mean()
+			mean, err := hist.Max()
 			if err != nil {
 				return errors.Wrapf(err, "failed to get mean for histogram %s", hist.Name)
 			}
@@ -65,7 +92,7 @@ func StoreAllWithHeuristics(suffix string) StoreFunc {
 				Name:      name,
 				Unit:      unit,
 				Direction: direction,
-			}, mean)
+			}, float64(mean))
 		}
 		return nil
 	}
