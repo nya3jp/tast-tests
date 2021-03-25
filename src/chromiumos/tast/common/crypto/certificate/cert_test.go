@@ -112,20 +112,17 @@ func TestCertificate(t *testing.T) {
 			return nil
 		}
 
+		if err := testCred(testcase.CACred, false); err != nil {
+			t.Errorf("Test %d: CACred: %v", testi, err)
+		}
 		if err := testCred(testcase.ServerCred, false); err != nil {
 			t.Errorf("Test %d: ServerCred: %v", testi, err)
 		}
-		// TODO(b/159413210): Generate client certificate for TestCert3 and remove this condition.
-		if testcase.ClientCred.Cert != "" {
-			if err := testCred(testcase.ClientCred, false); err != nil {
-				t.Errorf("Test %d: ClientCred: %v", testi, err)
-			}
+		if err := testCred(testcase.ClientCred, false); err != nil {
+			t.Errorf("Test %d: ClientCred: %v", testi, err)
 		}
-		// TODO(b/159413210): Generate expired certificate for each CertStore and remove this condition.
-		if testcase.ExpiredServerCred.Cert != "" {
-			if err := testCred(testcase.ExpiredServerCred, true); err != nil {
-				t.Errorf("Test %d: ExpiredServerCred: %v", testi, err)
-			}
+		if err := testCred(testcase.ExpiredServerCred, true); err != nil {
+			t.Errorf("Test %d: ExpiredServerCred: %v", testi, err)
 		}
 	}
 }
@@ -153,25 +150,27 @@ func TestAltSubjectMatch(t *testing.T) {
 		}
 	}
 
-	// Get the entries in TestCert3().ServerCred.Cert.
-	cert, err := x509ParseCert(TestCert3().ServerCred.Cert)
-	if err != nil {
-		t.Fatal(err)
-	}
-	dnsNames := make(map[string]bool)
-	for _, d := range cert.DNSNames {
-		dnsNames[d] = true
-	}
-	emailAddresses := make(map[string]bool)
-	for _, e := range cert.EmailAddresses {
-		emailAddresses[e] = true
-	}
+	for testi, testcert := range []string{TestCert3().ServerCred.Cert, TestCert3().ExpiredServerCred.Cert} {
+		// Get the entries of the cert.
+		cert, err := x509ParseCert(testcert)
+		if err != nil {
+			t.Fatal(err)
+		}
+		dnsNames := make(map[string]bool)
+		for _, d := range cert.DNSNames {
+			dnsNames[d] = true
+		}
+		emailAddresses := make(map[string]bool)
+		for _, e := range cert.EmailAddresses {
+			emailAddresses[e] = true
+		}
 
-	if !reflect.DeepEqual(dnsNames, expectedDNSNames) {
-		t.Errorf("DNS names not match, got %v, want %v", dnsNames, expectedDNSNames)
-	}
-	if !reflect.DeepEqual(emailAddresses, expectedEmailAddresses) {
-		t.Errorf("email addresses not match, got %v, want %v", emailAddresses, expectedEmailAddresses)
+		if !reflect.DeepEqual(dnsNames, expectedDNSNames) {
+			t.Errorf("Test %d: DNS names not match, got %v, want %v", testi, dnsNames, expectedDNSNames)
+		}
+		if !reflect.DeepEqual(emailAddresses, expectedEmailAddresses) {
+			t.Errorf("Test %d: email addresses not match, got %v, want %v", testi, emailAddresses, expectedEmailAddresses)
+		}
 	}
 }
 
