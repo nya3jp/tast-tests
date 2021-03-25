@@ -184,6 +184,10 @@ func StopJob(ctx context.Context, job string) error {
 		// waitUIJobStabilized should wait for the ui job to return to c), in which case the
 		// following "initctl stop" command should succeed in bringing the job back to "stop/waiting".
 		testexec.CommandContext(ctx, "initctl", "stop", job).Run()
+		if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for the ui to stop")
+		}
+		testexec.CommandContext(ctx, "pkill", "-9", "chrome").Run()
 		if err := waitUIJobStabilized(ctx); err != nil {
 			return errors.Wrapf(err, "failed waiting for %v job to stabilize", job)
 		}

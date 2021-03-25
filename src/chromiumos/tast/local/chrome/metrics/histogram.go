@@ -132,6 +132,21 @@ func (h *Histogram) Mean() (float64, error) {
 	return float64(h.Sum) / float64(h.TotalCount()), nil
 }
 
+// Max calculates the estimated maximum of the histogram values. At is an error
+// when there are no data points.
+func (h *Histogram) Max() (float64, error) {
+	if h.TotalCount() == 0 {
+		return 0, errors.New("no histogram data")
+	}
+	var max int64 = math.MinInt64
+	for _, b := range h.Buckets {
+	  if b.Count >0 && max < b.Max {
+	      max = b.Max
+	  }
+	}
+	return float64(max), nil;
+}
+
 // HistogramBucket contains a set of reported samples within a fixed range.
 type HistogramBucket struct {
 	// Min contains the minimum value that can be stored in this bucket.
