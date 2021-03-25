@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceca314d_7a686482",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T19:45:48Z",
+      "side": 1,
+      "message": "Thanks for doing this cleanup! This LGTM! When I migrated this I wasn\u0027t familiar with go-style \"inheritance\", and this definitely seems more clear.\n",
+      "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8402df2_b3fc2632",
+        "filename": "src/chromiumos/tast/local/dbusutil/property_holder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-25T19:45:48Z",
+      "side": 1,
+      "message": "I don\u0027t think there are that many calls to this, we should just get rid of it.",
+      "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
