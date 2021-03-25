@@ -216,7 +216,10 @@ window.Tast = class Tast {
    */
   static async getNumOfCameras() {
     const devices = await navigator.mediaDevices.enumerateDevices();
-    return devices.filter((d) => d.kind === 'videoinput').length;
+    return devices
+        .filter((d) => d.kind === 'videoinput' &&
+                       !d.label.startsWith('Virtual Camera'))
+        .length;
   }
 
   /**
