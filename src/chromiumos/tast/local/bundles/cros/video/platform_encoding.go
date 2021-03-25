@@ -50,6 +50,26 @@ var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
 // regExpPSNR is the regexp to find the PSNR output in the tiny_ssim log.
 var regExpPSNR = regexp.MustCompile(`\nGlbPSNR: (\d+\.\d+)`)
 
+// regExpKeyFramesVP8 is the regexp to find the number of key frames in a VP8
+// bitstream: Key Frames are marked by having a 0x9D 0x01 0x2A sequence, see
+// RFC6386 VP8 Data Format and Decoding Guide, Sec.9.1 "Uncompressed Data Chunk"
+// https://tools.ietf.org/html/rfc6386#section-9.1.
+var regExpKeyFramesVP8 = regexp.MustCompile(`9d 01 2a`)
+
+// regExpKeyFramesVP9 is the regexp to find the number of key frames in a VP9
+// bitstream: Key Frames are marked by having a 0x49 0x83 0x42 sequence, see
+// VP9 Bitstream superframe and uncompressed header DRAFT Rev 1.0, 2015.12.08 ,
+// Sec. 4.1 "Syntax".
+var regExpKeyFramesVP9 = regexp.MustCompile(`49 83 42`)
+
+// regExpKeyFramesH264 is the regexp to find the number of key frames in an
+// H.264 bitstream. All frames (NALs in the lingo) start with 0x00 00 01; key
+// frames (IDR pictures in H.264 parlance) are marked with a 5 in the lowest
+// 5 bits of the next byte (they also have a 0 in the uppermost bit to indicate
+// "no error". See Rec ITU-T H.264 06/2019 Sec. 7.3.1 "NAL Unit Syntax" and
+// Sec.7.4.1 "NAL Unit Semantics".
+var regExpKeyFramesH264 = regexp.MustCompile(`00 00 00 01 [0-7]5`)
+
 var ym12Detect = regexp.MustCompile(`'YM12'`)
 var nv12Detect = regexp.MustCompile(`'NV12'`)
 
@@ -58,14 +78,15 @@ type commandBuilderFn func(ctx context.Context, exe, yuvFile string, size coords
 
 // testParam is used to describe the config used to run each test.
 type testParam struct {
-	command        string           // The command path to be run. This should be relative to /usr/local/bin.
-	filename       string           // Input file name. This will be decoded to produce the uncompressed input to the encoder binary, so it can come in any format/container.
-	size           coords.Size      // Width x Height in pixels of the input file.
-	numFrames      int              // Number of frames of the input file.
-	fps            float64          // FPS of the input file.
-	commandBuilder commandBuilderFn // Function to create the command line arguments.
-	regExpFPS      *regexp.Regexp   // Regexp to find the FPS from output.
-	decoder        string           // Command line decoder binary.
+	command         string           // The command path to be run. This should be relative to /usr/local/bin.
+	filename        string           // Input file name. This will be decoded to produce the uncompressed input to the encoder binary, so it can come in any format/container.
+	size            coords.Size      // Width x Height in pixels of the input file.
+	numFrames       int              // Number of frames of the input file.
+	fps             float64          // FPS of the input file.
+	commandBuilder  commandBuilderFn // Function to create the command line arguments.
+	regExpFPS       *regexp.Regexp   // Regexp to find the FPS from output.
+	decoder         string           // Command line decoder binary.
+	regExpKeyFrames *regexp.Regexp   // Regexp to count the number of key frames.
 }
 
 func init() {
@@ -83,42 +104,45 @@ func init() {
 		Params: []testing.Param{{
 			Name: "vaapi_vp8_180",
 			Val: testParam{
-				command:        "vp8enc",
-				filename:       "tulip2-320x180.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(320, 180),
-				commandBuilder: vp8argsVAAPI,
-				regExpFPS:      regExpFPSVP8,
-				decoder:        "vpxdec",
+				command:         "vp8enc",
+				filename:        "tulip2-320x180.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  vp8argsVAAPI,
+				regExpFPS:       regExpFPSVP8,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
 		}, {
 			Name: "vaapi_vp8_360",
 			Val: testParam{
-				command:        "vp8enc",
-				filename:       "tulip2-640x360.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(640, 360),
-				commandBuilder: vp8argsVAAPI,
-				regExpFPS:      regExpFPSVP8,
-				decoder:        "vpxdec",
+				command:         "vp8enc",
+				filename:        "tulip2-640x360.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  vp8argsVAAPI,
+				regExpFPS:       regExpFPSVP8,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
 		}, {
 			Name: "vaapi_vp8_720",
 			Val: testParam{
-				command:        "vp8enc",
-				filename:       "tulip2-1280x720.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(1280, 720),
-				commandBuilder: vp8argsVAAPI,
-				regExpFPS:      regExpFPSVP8,
-				decoder:        "vpxdec",
+				command:         "vp8enc",
+				filename:        "tulip2-1280x720.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  vp8argsVAAPI,
+				regExpFPS:       regExpFPSVP8,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
@@ -127,42 +151,45 @@ func init() {
 		}, {
 			Name: "vaapi_vp8_180_meet",
 			Val: testParam{
-				command:        "vp8enc",
-				filename:       "gipsrestat-320x180.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(320, 180),
-				commandBuilder: vp8argsVAAPI,
-				regExpFPS:      regExpFPSVP8,
-				decoder:        "vpxdec",
+				command:         "vp8enc",
+				filename:        "gipsrestat-320x180.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  vp8argsVAAPI,
+				regExpFPS:       regExpFPSVP8,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"gipsrestat-320x180.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
 		}, {
 			Name: "vaapi_vp8_360_meet",
 			Val: testParam{
-				command:        "vp8enc",
-				filename:       "gipsrestat-640x360.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(640, 360),
-				commandBuilder: vp8argsVAAPI,
-				regExpFPS:      regExpFPSVP8,
-				decoder:        "vpxdec",
+				command:         "vp8enc",
+				filename:        "gipsrestat-640x360.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  vp8argsVAAPI,
+				regExpFPS:       regExpFPSVP8,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"gipsrestat-640x360.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
 		}, {
 			Name: "vaapi_vp8_720_meet",
 			Val: testParam{
-				command:        "vp8enc",
-				filename:       "gipsrestat-1280x720.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(1280, 720),
-				commandBuilder: vp8argsVAAPI,
-				regExpFPS:      regExpFPSVP8,
-				decoder:        "vpxdec",
+				command:         "vp8enc",
+				filename:        "gipsrestat-1280x720.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  vp8argsVAAPI,
+				regExpFPS:       regExpFPSVP8,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP8},
@@ -171,42 +198,45 @@ func init() {
 		}, {
 			Name: "vaapi_vp9_180",
 			Val: testParam{
-				command:        "vp9enc",
-				filename:       "tulip2-320x180.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(320, 180),
-				commandBuilder: vp9argsVAAPI,
-				regExpFPS:      regExpFPSVP9,
-				decoder:        "vpxdec",
+				command:         "vp9enc",
+				filename:        "tulip2-320x180.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  vp9argsVAAPI,
+				regExpFPS:       regExpFPSVP9,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
 		}, {
 			Name: "vaapi_vp9_360",
 			Val: testParam{
-				command:        "vp9enc",
-				filename:       "tulip2-640x360.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(640, 360),
-				commandBuilder: vp9argsVAAPI,
-				regExpFPS:      regExpFPSVP9,
-				decoder:        "vpxdec",
+				command:         "vp9enc",
+				filename:        "tulip2-640x360.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  vp9argsVAAPI,
+				regExpFPS:       regExpFPSVP9,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
 		}, {
 			Name: "vaapi_vp9_720",
 			Val: testParam{
-				command:        "vp9enc",
-				filename:       "tulip2-1280x720.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(1280, 720),
-				commandBuilder: vp9argsVAAPI,
-				regExpFPS:      regExpFPSVP9,
-				decoder:        "vpxdec",
+				command:         "vp9enc",
+				filename:        "tulip2-1280x720.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  vp9argsVAAPI,
+				regExpFPS:       regExpFPSVP9,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
@@ -215,42 +245,45 @@ func init() {
 		}, {
 			Name: "vaapi_vp9_180_meet",
 			Val: testParam{
-				command:        "vp9enc",
-				filename:       "gipsrestat-320x180.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(320, 180),
-				commandBuilder: vp9argsVAAPI,
-				regExpFPS:      regExpFPSVP9,
-				decoder:        "vpxdec",
+				command:         "vp9enc",
+				filename:        "gipsrestat-320x180.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  vp9argsVAAPI,
+				regExpFPS:       regExpFPSVP9,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData:         []string{"gipsrestat-320x180.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
 		}, {
 			Name: "vaapi_vp9_360_meet",
 			Val: testParam{
-				command:        "vp9enc",
-				filename:       "gipsrestat-640x360.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(640, 360),
-				commandBuilder: vp9argsVAAPI,
-				regExpFPS:      regExpFPSVP9,
-				decoder:        "vpxdec",
+				command:         "vp9enc",
+				filename:        "gipsrestat-640x360.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  vp9argsVAAPI,
+				regExpFPS:       regExpFPSVP9,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData:         []string{"gipsrestat-640x360.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
 		}, {
 			Name: "vaapi_vp9_720_meet",
 			Val: testParam{
-				command:        "vp9enc",
-				filename:       "gipsrestat-1280x720.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(1280, 720),
-				commandBuilder: vp9argsVAAPI,
-				regExpFPS:      regExpFPSVP9,
-				decoder:        "vpxdec",
+				command:         "vp9enc",
+				filename:        "gipsrestat-1280x720.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  vp9argsVAAPI,
+				regExpFPS:       regExpFPSVP9,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeVP9},
@@ -259,42 +292,45 @@ func init() {
 		}, {
 			Name: "vaapi_h264_180",
 			Val: testParam{
-				command:        "h264encode",
-				filename:       "tulip2-320x180.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(320, 180),
-				commandBuilder: h264argsVAAPI,
-				regExpFPS:      regExpFPSH264,
-				decoder:        "openh264dec",
+				command:         "h264encode",
+				filename:        "tulip2-320x180.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  h264argsVAAPI,
+				regExpFPS:       regExpFPSH264,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
 		}, {
 			Name: "vaapi_h264_360",
 			Val: testParam{
-				command:        "h264encode",
-				filename:       "tulip2-640x360.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(640, 360),
-				commandBuilder: h264argsVAAPI,
-				regExpFPS:      regExpFPSH264,
-				decoder:        "openh264dec",
+				command:         "h264encode",
+				filename:        "tulip2-640x360.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  h264argsVAAPI,
+				regExpFPS:       regExpFPSH264,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
 		}, {
 			Name: "vaapi_h264_720",
 			Val: testParam{
-				command:        "h264encode",
-				filename:       "tulip2-1280x720.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(1280, 720),
-				commandBuilder: h264argsVAAPI,
-				regExpFPS:      regExpFPSH264,
-				decoder:        "openh264dec",
+				command:         "h264encode",
+				filename:        "tulip2-1280x720.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  h264argsVAAPI,
+				regExpFPS:       regExpFPSH264,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
@@ -303,42 +339,45 @@ func init() {
 		}, {
 			Name: "vaapi_h264_180_meet",
 			Val: testParam{
-				command:        "h264encode",
-				filename:       "gipsrestat-320x180.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(320, 180),
-				commandBuilder: h264argsVAAPI,
-				regExpFPS:      regExpFPSH264,
-				decoder:        "openh264dec",
+				command:         "h264encode",
+				filename:        "gipsrestat-320x180.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  h264argsVAAPI,
+				regExpFPS:       regExpFPSH264,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"gipsrestat-320x180.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
 		}, {
 			Name: "vaapi_h264_360_meet",
 			Val: testParam{
-				command:        "h264encode",
-				filename:       "gipsrestat-640x360.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(640, 360),
-				commandBuilder: h264argsVAAPI,
-				regExpFPS:      regExpFPSH264,
-				decoder:        "openh264dec",
+				command:         "h264encode",
+				filename:        "gipsrestat-640x360.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  h264argsVAAPI,
+				regExpFPS:       regExpFPSH264,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"gipsrestat-640x360.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
 		}, {
 			Name: "vaapi_h264_720_meet",
 			Val: testParam{
-				command:        "h264encode",
-				filename:       "gipsrestat-1280x720.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(1280, 720),
-				commandBuilder: h264argsVAAPI,
-				regExpFPS:      regExpFPSH264,
-				decoder:        "openh264dec",
+				command:         "h264encode",
+				filename:        "gipsrestat-1280x720.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  h264argsVAAPI,
+				regExpFPS:       regExpFPSH264,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"vaapi", caps.HWEncodeH264},
@@ -347,40 +386,43 @@ func init() {
 		}, {
 			Name: "vpxenc_vp8_180",
 			Val: testParam{
-				command:        "vpxenc",
-				filename:       "tulip2-320x180.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(320, 180),
-				commandBuilder: vp8argsVpxenc,
-				regExpFPS:      regExpFPSVpxenc,
-				decoder:        "vpxdec",
+				command:         "vpxenc",
+				filename:        "tulip2-320x180.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  vp8argsVpxenc,
+				regExpFPS:       regExpFPSVpxenc,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData: []string{"tulip2-320x180.vp9.webm"},
 		}, {
 			Name: "vpxenc_vp8_360",
 			Val: testParam{
-				command:        "vpxenc",
-				filename:       "tulip2-640x360.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(640, 360),
-				commandBuilder: vp8argsVpxenc,
-				regExpFPS:      regExpFPSVpxenc,
-				decoder:        "vpxdec",
+				command:         "vpxenc",
+				filename:        "tulip2-640x360.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  vp8argsVpxenc,
+				regExpFPS:       regExpFPSVpxenc,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData: []string{"tulip2-640x360.vp9.webm"},
 		}, {
 			Name: "vpxenc_vp8_720",
 			Val: testParam{
-				command:        "vpxenc",
-				filename:       "tulip2-1280x720.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(1280, 720),
-				commandBuilder: vp8argsVpxenc,
-				regExpFPS:      regExpFPSVpxenc,
-				decoder:        "vpxdec",
+				command:         "vpxenc",
+				filename:        "tulip2-1280x720.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  vp8argsVpxenc,
+				regExpFPS:       regExpFPSVpxenc,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData: []string{"tulip2-1280x720.vp9.webm"},
 			// These devices have a small SSD and can't store the files, see b/181165183.
@@ -388,40 +430,43 @@ func init() {
 		}, {
 			Name: "vpxenc_vp8_180_meet",
 			Val: testParam{
-				command:        "vpxenc",
-				filename:       "gipsrestat-320x180.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(320, 180),
-				commandBuilder: vp8argsVpxenc,
-				regExpFPS:      regExpFPSVpxenc,
-				decoder:        "vpxdec",
+				command:         "vpxenc",
+				filename:        "gipsrestat-320x180.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  vp8argsVpxenc,
+				regExpFPS:       regExpFPSVpxenc,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData: []string{"gipsrestat-320x180.vp9.webm"},
 		}, {
 			Name: "vpxenc_vp8_360_meet",
 			Val: testParam{
-				command:        "vpxenc",
-				filename:       "gipsrestat-640x360.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(640, 360),
-				commandBuilder: vp8argsVpxenc,
-				regExpFPS:      regExpFPSVpxenc,
-				decoder:        "vpxdec",
+				command:         "vpxenc",
+				filename:        "gipsrestat-640x360.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  vp8argsVpxenc,
+				regExpFPS:       regExpFPSVpxenc,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData: []string{"gipsrestat-640x360.vp9.webm"},
 		}, {
 			Name: "vpxenc_vp8_720_meet",
 			Val: testParam{
-				command:        "vpxenc",
-				filename:       "gipsrestat-1280x720.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(1280, 720),
-				commandBuilder: vp8argsVpxenc,
-				regExpFPS:      regExpFPSVpxenc,
-				decoder:        "vpxdec",
+				command:         "vpxenc",
+				filename:        "gipsrestat-1280x720.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  vp8argsVpxenc,
+				regExpFPS:       regExpFPSVpxenc,
+				decoder:         "vpxdec",
+				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
 			// These devices have a small SSD and can't store the files, see b/181165183.
@@ -429,14 +474,15 @@ func init() {
 		}, {
 			Name: "v4l2_h264_180",
 			Val: testParam{
-				command:        "v4l2_stateful_encoder",
-				filename:       "tulip2-320x180.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(320, 180),
-				commandBuilder: h264argsV4L2,
-				regExpFPS:      regExpFPSV4L2,
-				decoder:        "openh264dec",
+				command:         "v4l2_stateful_encoder",
+				filename:        "tulip2-320x180.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  h264argsV4L2,
+				regExpFPS:       regExpFPSV4L2,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
@@ -445,14 +491,15 @@ func init() {
 		}, {
 			Name: "v4l2_h264_360",
 			Val: testParam{
-				command:        "v4l2_stateful_encoder",
-				filename:       "tulip2-640x360.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(640, 360),
-				commandBuilder: h264argsV4L2,
-				regExpFPS:      regExpFPSV4L2,
-				decoder:        "openh264dec",
+				command:         "v4l2_stateful_encoder",
+				filename:        "tulip2-640x360.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  h264argsV4L2,
+				regExpFPS:       regExpFPSV4L2,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
@@ -461,14 +508,15 @@ func init() {
 		}, {
 			Name: "v4l2_h264_720",
 			Val: testParam{
-				command:        "v4l2_stateful_encoder",
-				filename:       "tulip2-1280x720.vp9.webm",
-				numFrames:      500,
-				fps:            30,
-				size:           coords.NewSize(1280, 720),
-				commandBuilder: h264argsV4L2,
-				regExpFPS:      regExpFPSV4L2,
-				decoder:        "openh264dec",
+				command:         "v4l2_stateful_encoder",
+				filename:        "tulip2-1280x720.vp9.webm",
+				numFrames:       500,
+				fps:             30,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  h264argsV4L2,
+				regExpFPS:       regExpFPSV4L2,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
@@ -477,14 +525,15 @@ func init() {
 		}, {
 			Name: "v4l2_h264_180_meet",
 			Val: testParam{
-				command:        "v4l2_stateful_encoder",
-				filename:       "gipsrestat-320x180.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(320, 180),
-				commandBuilder: h264argsV4L2,
-				regExpFPS:      regExpFPSV4L2,
-				decoder:        "openh264dec",
+				command:         "v4l2_stateful_encoder",
+				filename:        "gipsrestat-320x180.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(320, 180),
+				commandBuilder:  h264argsV4L2,
+				regExpFPS:       regExpFPSV4L2,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"gipsrestat-320x180.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
@@ -493,14 +542,15 @@ func init() {
 		}, {
 			Name: "v4l2_h264_360_meet",
 			Val: testParam{
-				command:        "v4l2_stateful_encoder",
-				filename:       "gipsrestat-640x360.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(640, 360),
-				commandBuilder: h264argsV4L2,
-				regExpFPS:      regExpFPSV4L2,
-				decoder:        "openh264dec",
+				command:         "v4l2_stateful_encoder",
+				filename:        "gipsrestat-640x360.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(640, 360),
+				commandBuilder:  h264argsV4L2,
+				regExpFPS:       regExpFPSV4L2,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"gipsrestat-640x360.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
@@ -509,14 +559,15 @@ func init() {
 		}, {
 			Name: "v4l2_h264_720_meet",
 			Val: testParam{
-				command:        "v4l2_stateful_encoder",
-				filename:       "gipsrestat-1280x720.vp9.webm",
-				numFrames:      846,
-				fps:            50,
-				size:           coords.NewSize(1280, 720),
-				commandBuilder: h264argsV4L2,
-				regExpFPS:      regExpFPSV4L2,
-				decoder:        "openh264dec",
+				command:         "v4l2_stateful_encoder",
+				filename:        "gipsrestat-1280x720.vp9.webm",
+				numFrames:       846,
+				fps:             50,
+				size:            coords.NewSize(1280, 720),
+				commandBuilder:  h264argsV4L2,
+				regExpFPS:       regExpFPSV4L2,
+				decoder:         "openh264dec",
+				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{"v4l2_codec", caps.HWEncodeH264},
@@ -622,6 +673,16 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, (100.0*actualBitrate/float64(targetBitrate))-100.0)
+
+	keyFrames, err := countHexHits(ctx, encodedFile, testOpt.regExpKeyFrames)
+	if err != nil {
+		s.Fatal("Failed to calculate the amount of keyframes: ", err)
+	}
+	p.Set(perf.Metric{
+		Name:      "KeyFrames",
+		Unit:      "keyframes",
+		Direction: perf.BiggerIsBetter,
+	}, float64(keyFrames))
 
 	s.Log(p)
 	if err := p.Save(s.OutDir()); err != nil {
@@ -862,4 +923,18 @@ func h264argsV4L2(ctx context.Context, exe, yuvFile string, size coords.Size, fp
 		}
 	}
 	return
+}
+
+// countHexHits counts the amount of times r is found in a hexdump of file.
+func countHexHits(ctx context.Context, file string, r *regexp.Regexp) (count int, err error) {
+	cmd := []string{"hexdump", "-v", "-e", "/1 \"%02x \"", file}
+	testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(cmd))
+
+	out, err := testexec.CommandContext(ctx, cmd[0], cmd[1:]...).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to run hexdump")
+	}
+
+	results := r.FindAllIndex(out, -1)
+	return len(results), nil
 }
