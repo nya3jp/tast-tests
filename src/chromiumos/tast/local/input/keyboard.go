@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/testing"
 )
 
@@ -261,35 +261,35 @@ func (kw *KeyboardEventWriter) TypeKey(ctx context.Context, ec EventCode) error 
 // They enable easy chaining of typing with the ui library.
 
 // TypeAction returns a function that types the specified string.
-func (kw *KeyboardEventWriter) TypeAction(s string) uiauto.Action {
+func (kw *KeyboardEventWriter) TypeAction(s string) action.Action {
 	return func(ctx context.Context) error {
 		return kw.Type(ctx, s)
 	}
 }
 
 // TypeKeyAction returns a function that types the specified key.
-func (kw *KeyboardEventWriter) TypeKeyAction(ec EventCode) uiauto.Action {
+func (kw *KeyboardEventWriter) TypeKeyAction(ec EventCode) action.Action {
 	return func(ctx context.Context) error {
 		return kw.TypeKey(ctx, ec)
 	}
 }
 
 // AccelAction returns a function injects a sequence of key events simulating the accelerator (a.k.a. hotkey) described by s being typed.
-func (kw *KeyboardEventWriter) AccelAction(s string) uiauto.Action {
+func (kw *KeyboardEventWriter) AccelAction(s string) action.Action {
 	return func(ctx context.Context) error {
 		return kw.Accel(ctx, s)
 	}
 }
 
 // AccelPressAction returns a function injects a sequence of key events simulating pressing the accelerator (a.k.a. hotkey) described by s.
-func (kw *KeyboardEventWriter) AccelPressAction(s string) uiauto.Action {
+func (kw *KeyboardEventWriter) AccelPressAction(s string) action.Action {
 	return func(ctx context.Context) error {
 		return kw.AccelPress(ctx, s)
 	}
 }
 
 // AccelReleaseAction returns a function injects a sequence of key events simulating release the accelerator (a.k.a. hotkey) described by s.
-func (kw *KeyboardEventWriter) AccelReleaseAction(s string) uiauto.Action {
+func (kw *KeyboardEventWriter) AccelReleaseAction(s string) action.Action {
 	return func(ctx context.Context) error {
 		return kw.AccelRelease(ctx, s)
 	}
