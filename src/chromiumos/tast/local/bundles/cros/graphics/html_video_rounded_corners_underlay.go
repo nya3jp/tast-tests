@@ -20,18 +20,18 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         RoundedCornersUnderlay,
-		Desc:         "Verifies that rounded corners are implemented with a hardware underlay",
+		Func:         HTMLVideoRoundedCornersUnderlay,
+		Desc:         "Verifies that HTML <video> rounded corners are implemented with a hardware underlay",
 		Contacts:     []string{"amusbach@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 		Data:         []string{"bear-320x240.h264.mp4", "video_with_rounded_corners.html"},
-		Fixture:      "chromeLoggedIn",
+		Fixture:      "chromeGraphics",
 	})
 }
 
-func RoundedCornersUnderlay(ctx context.Context, s *testing.State) {
+func HTMLVideoRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
