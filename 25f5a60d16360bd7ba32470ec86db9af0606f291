@@ -56,6 +56,30 @@
       },
       "revId": "25f5a60d16360bd7ba32470ec86db9af0606f291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3415cae8_0c383a48",
+        "filename": "src/chromiumos/tast/local/chrome/ui/pointer/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-26T06:07:33Z",
+      "side": 1,
+      "message": "Hi Jun, I reverted the changes of the pointer controller, and implemented all tablet and clamshell UI handling actions in tabswitchcuj/ui_action_handler.go with uiauto. Actually a lot of methods like rightClick and longTouch are not used by the test and they were removed. When the referred CL is finished, we can change some touch actions to directly use uiauto instead of using pointer controller. But can we move forward of this CL? Thanks!",
+      "parentUuid": "16ece8df_a3ff9839",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "25f5a60d16360bd7ba32470ec86db9af0606f291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
