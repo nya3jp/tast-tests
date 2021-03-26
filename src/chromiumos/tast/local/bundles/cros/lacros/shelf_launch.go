@@ -24,8 +24,15 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Params: []testing.Param{
 			{
-				Fixture:   "lacrosStartedByDataUI",
-				ExtraData: []string{launcher.DataArtifact},
+				Fixture:           "lacrosStartedByDataUI",
+				ExtraData:         []string{launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
+			},
+			{
+				Name:              "unstable",
+				Fixture:           "lacrosStartedByDataUI",
+				ExtraData:         []string{launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{"lacros_unstable"},
 			},
 			{
 				Name:              "omaha",
