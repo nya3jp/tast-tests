@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8266b32_5e17cfcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-26T06:11:15Z",
+      "side": 1,
+      "message": "Now all ui handling are split to new CL https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2779315/. \nJun, could check couple of pending comments for you, and review other changes if you have time? Thanks a lot!",
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
