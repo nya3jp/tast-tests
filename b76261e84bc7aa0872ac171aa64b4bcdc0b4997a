@@ -33,6 +33,23 @@
       "message": "I don\u0027t think there are that many calls to this, we should just get rid of it.",
       "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d395941_ad7d0910",
+        "filename": "src/chromiumos/tast/local/shill/property_holder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-26T00:15:24Z",
+      "side": 1,
+      "message": "Oh, and while you\u0027re working on this, this should just be \u0027properties\u0027 or even \u0027props\u0027. (This was moved from device.go, but |h| may not be for a Device object).",
+      "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
