@@ -8,8 +8,11 @@ package optin
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
+	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -171,4 +174,26 @@ func GetPlayStoreState(ctx context.Context, tconn *chrome.TestConn) (map[string]
 		return nil, errors.Wrap(err, "failed running autotestPrivate.getPlayStoreState")
 	}
 	return state, nil
+}
+
+// DumpLogCat saves logcat to test output directory.
+func DumpLogCat(ctx context.Context, filesuffix string) error {
+	cmd := testexec.CommandContext(ctx, "/usr/sbin/android-sh", "-c", "/system/bin/logcat -d")
+	log, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to pull logcat")
+	}
+
+	fileName := fmt.Sprintf("logcat_%s.txt", filesuffix)
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.Wrap(err, "failed to get out dir")
+	}
+
+	logPath := filepath.Join(dir, fileName)
+	if err := ioutil.WriteFile(logPath, log, 0644); err != nil {
+		return errors.Wrapf(err, "failed to save %q", fileName)
+	}
+	testing.ContextLog(ctx, "Saved ", fileName)
+	return nil
 }

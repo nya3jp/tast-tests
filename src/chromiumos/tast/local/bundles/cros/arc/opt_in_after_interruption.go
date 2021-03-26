@@ -6,17 +6,20 @@ package arc
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
 const (
-	// Timeout to wait ARC provisioning is completed.
-	arcProvisionedWaitTimeOut = 60 * time.Second
+	// Timeout to wait ARC provisioning is completed. Based on UMA stats in released
+	// versions: http://uma/p/chrome/timeline_v2/?sid=206fdf1b0f02474ec11c6797f5668092
+	arcProvisionedWaitTimeOut = 90 * time.Second
 
 	// Interval to check ARC provisioning status.
 	arcProvisionedCheckInterval = 1 * time.Second
@@ -29,15 +32,11 @@ type optInTestParams struct {
 	chromeArgs []string        // Arguments to pass to Chrome command line.
 }
 
-// getUnmangedDelays is an initializer function that returns delays for unmanaged account tests
-func getUnmangedDelays() []time.Duration {
-	return []time.Duration{7 * time.Second, 17 * time.Second, 22 * time.Second, 32 * time.Second}
-}
+// unmangedDelays contains delays for unmanaged account tests
+var unmangedDelays = []time.Duration{7 * time.Second, 17 * time.Second, 22 * time.Second, 32 * time.Second, 42 * time.Second}
 
-// getManagedDelays is an initializer function that returns delays for managed account tests
-func getManagedDelays() []time.Duration {
-	return []time.Duration{10 * time.Second, 21 * time.Second, 26 * time.Second, 36 * time.Second}
-}
+// managedDelays contains delays for managed account tests
+var managedDelays = []time.Duration{10 * time.Second, 21 * time.Second, 26 * time.Second, 36 * time.Second, 46 * time.Second}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -57,7 +56,7 @@ func init() {
 			Val: optInTestParams{
 				username:   "arc.OptInAfterInterruption.unmanaged_username",
 				password:   "arc.OptInAfterInterruption.unmanaged_password",
-				delays:     getUnmangedDelays(),
+				delays:     unmangedDelays,
 				chromeArgs: []string{},
 			},
 		}, {
@@ -66,8 +65,8 @@ func init() {
 			Val: optInTestParams{
 				username:   "arc.OptInAfterInterruption.unmanaged_username",
 				password:   "arc.OptInAfterInterruption.unmanaged_password",
-				delays:     getUnmangedDelays(),
-				chromeArgs: []string{},
+				delays:     unmangedDelays,
+				chromeArgs: []string{"--ignore-arcvm-dev-conf"},
 			},
 		}, {
 			Name:              "managed",
@@ -75,7 +74,7 @@ func init() {
 			Val: optInTestParams{
 				username:   "arc.OptInAfterInterruption.managed_username",
 				password:   "arc.OptInAfterInterruption.managed_password",
-				delays:     getManagedDelays(),
+				delays:     managedDelays,
 				chromeArgs: []string{"--arc-force-show-optin-ui"},
 			},
 		}, {
@@ -84,8 +83,8 @@ func init() {
 			Val: optInTestParams{
 				username:   "arc.OptInAfterInterruption.managed_username",
 				password:   "arc.OptInAfterInterruption.managed_password",
-				delays:     getManagedDelays(),
-				chromeArgs: []string{"--arc-force-show-optin-ui"},
+				delays:     managedDelays,
+				chromeArgs: []string{"--arc-force-show-optin-ui", "--ignore-arcvm-dev-conf"},
 			},
 		}},
 		Vars: []string{
@@ -114,11 +113,11 @@ func OptInAfterInterruption(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar(param.password)
 	extraArgs := param.chromeArgs
 
-	args := []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--ignore-arcvm-dev-conf"}
-	args = append(args, extraArgs...)
+	args := append(arc.DisableSyncFlags(), extraArgs...)
 
+	attempts := 1
 	for _, delay := range param.delays {
-		s.Logf("Start iteration for %v delay", delay)
+		s.Logf("Start iteration %d for %v delay", attempts, delay)
 
 		if continueTesting, err := attemptOptIn(ctx, username, password, args, delay, param.delays[0]); err != nil {
 			s.Fatal("Failed to attempting to complete optin: ", err)
@@ -150,12 +149,17 @@ func OptInAfterInterruption(ctx context.Context, s *testing.State) {
 			defer tconn.Close()
 
 			s.Log("Wait for ARC to complete provisioning")
-			if err := waitForArcProvisioned(ctx, tconn); err != nil {
-				s.Fatal("Failed to wait for ARC to complete provisioning: ", err)
+			provisioningErr := waitForArcProvisioned(ctx, tconn)
+			if err := optin.DumpLogCat(ctx, strconv.Itoa(attempts)); err != nil {
+				s.Logf("WARNING: Failed to dump logcat: %s", err)
+			}
+			if provisioningErr != nil {
+				s.Fatal("Failed to wait for ARC to complete provisioning: ", provisioningErr)
 			}
 			s.Log("ARC is provisioned after restart")
 		}()
-		s.Logf("End iteration for %v delay", delay)
+		s.Logf("End iteration %d for %v delay", attempts, delay)
+		attempts = attempts + 1
 	}
 }
 
