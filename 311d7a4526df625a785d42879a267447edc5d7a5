@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "078dab9e_1d7f739c",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-26T19:24:40Z",
+      "side": 1,
+      "message": "Why are we trying another method of closing the window? Why does the first method fail but we expect this one to succeed? Can we document that in comment?",
+      "revId": "311d7a4526df625a785d42879a267447edc5d7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc819f32_5442d1ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/disable_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-26T19:24:40Z",
+      "side": 1,
+      "message": "Can we please check if just doing optin is sufficient for this test? I don\u0027t see why disable arc test would want the play store to be launched and then closed.",
+      "revId": "311d7a4526df625a785d42879a267447edc5d7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfc16264_b953612f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-26T19:24:40Z",
+      "side": 1,
+      "message": "Does this test also need playstore to be closed before executing rest of the logic?",
+      "revId": "311d7a4526df625a785d42879a267447edc5d7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
