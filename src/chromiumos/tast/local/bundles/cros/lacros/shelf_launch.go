@@ -20,16 +20,25 @@ func init() {
 		Func:         ShelfLaunch,
 		Desc:         "Tests launching and interacting with lacros launched from the Shelf",
 		Contacts:     []string{"lacros-team@google.com", "chromeos-sw-engprod@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Params: []testing.Param{
 			{
-				Fixture:   "lacrosStartedByDataUI",
-				ExtraData: []string{launcher.DataArtifact},
+				Fixture:           "lacrosStartedByDataUI",
+				ExtraData:         []string{launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
+			},
+			{
+				Name:              "unstable",
+				Fixture:           "lacrosStartedByDataUI",
+				ExtraAttr:         []string{"informational"},
+				ExtraData:         []string{launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{"lacros_unstable"},
 			},
 			{
 				Name:              "omaha",
 				Fixture:           "lacrosStartedByOmaha",
+				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
 			}},
 	})
