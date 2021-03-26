@@ -20,7 +20,7 @@ func init() {
 		Func:         AppLauncherLaunch,
 		Desc:         "Tests launching lacros from the App Launcher",
 		Contacts:     []string{"liaoyuke@chromium.org", "lacros-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacrosStartedByDataUI",
 		Data:         []string{launcher.DataArtifact},
