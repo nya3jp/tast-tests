@@ -6,12 +6,9 @@ package arc
 
 import (
 	"context"
-	"fmt"
-	"io/ioutil"
-	"path/filepath"
+	"strconv"
 	"time"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
@@ -80,35 +77,6 @@ func setupChrome(ctx context.Context, s *testing.State) *chrome.Chrome {
 	return cr
 }
 
-// writeLog writes the log to test output directory.
-func writeLog(ctx context.Context, fileName string, data []byte) {
-	dir, ok := testing.ContextOutDir(ctx)
-	if !ok {
-		testing.ContextLog(ctx, "Failed to get out dir")
-		return
-	}
-
-	logPath := filepath.Join(dir, fileName)
-	err := ioutil.WriteFile(logPath, data, 0644)
-	if err != nil {
-		testing.ContextLogf(ctx, "Failed to save %q: %v", fileName, err)
-		return
-	}
-	testing.ContextLog(ctx, "Saved ", fileName)
-}
-
-// dumpLogCat saves logcat to test output directory.
-func dumpLogCat(ctx context.Context, attempt int) {
-	cmd := testexec.CommandContext(ctx, "/usr/sbin/android-sh", "-c", "/system/bin/logcat -d")
-	log, err := cmd.Output(testexec.DumpLogOnError)
-	if err != nil {
-		testing.ContextLog(ctx, "Failed to pull logcat: ", err)
-	}
-
-	fileName := fmt.Sprintf("logcat_%d.txt", attempt)
-	writeLog(ctx, fileName, log)
-}
-
 // optinWithRetry retries optin on failure up to maxAttempts times.
 func optinWithRetry(ctx context.Context, s *testing.State, cr *chrome.Chrome, maxAttempts int) {
 	tconn, err := cr.TestAPIConn(ctx)
@@ -123,7 +91,9 @@ func optinWithRetry(ctx context.Context, s *testing.State, cr *chrome.Chrome, ma
 			break
 		}
 
-		dumpLogCat(ctx, attempts)
+		if err := optin.DumpLogCat(ctx, strconv.Itoa(attempts)); err != nil {
+			s.Logf("WARNING: Failed to dump logcat: %s", err)
+		}
 
 		if attempts >= maxAttempts {
 			s.Fatal("Failed to optin: ", err)
