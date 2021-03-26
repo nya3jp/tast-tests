@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c413847e_0423914a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-26T01:59:28Z",
+      "side": 1,
+      "message": "but now what\u0027s missing is to return email is not focused... the one that you were returning before.\nLMK if I\u0027m missing anything...\n\n\n    if err :\u003d enterEmailAddress.Click(ctx); err !\u003d nil {\n      return errors.Wrap(err, \"failed to click on enter email address\")  \n    }\n  \n    // This should go in L132\n    return errors.New(\"email not focused... (or any other error)) // \u003c-- add this line",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 4
+      },
+      "revId": "7a0a81718f5012bf4dd28904e9e59997b6e932c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
