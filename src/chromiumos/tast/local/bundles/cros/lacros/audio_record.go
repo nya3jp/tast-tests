@@ -21,7 +21,7 @@ func init() {
 		Func:         AudioRecord,
 		Desc:         "Tests basic audio recording on lacros",
 		Contacts:     []string{"yuhsuan@chromium.org", "lacros-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacrosStartedByData",
 		Timeout:      7 * time.Minute, // A lenient limit for launching Lacros Chrome.
