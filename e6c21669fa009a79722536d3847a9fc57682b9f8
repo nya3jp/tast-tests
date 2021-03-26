@@ -16,6 +16,46 @@
       "message": "PTAL.\n\nThanks,\n\nGreg ",
       "revId": "e6c21669fa009a79722536d3847a9fc57682b9f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "984d23e3_b5e9c92a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-26T01:54:35Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "e6c21669fa009a79722536d3847a9fc57682b9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "314b7093_bdd45a86",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-26T01:54:35Z",
+      "side": 1,
+      "message": "nit: doesn\u0027t call \"GetKeyData\", but \"getKeyData\"\n\nin any case, if you are reading the doctring, it doesn\u0027t help much if you say it calls \"xxx\". Better to be more descriptive...  e.g:\n\n// GetKeyData returns the key_data for user ... (or whatever it is doing)",
+      "range": {
+        "startLine": 679,
+        "startChar": 20,
+        "endLine": 679,
+        "endChar": 30
+      },
+      "revId": "e6c21669fa009a79722536d3847a9fc57682b9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
