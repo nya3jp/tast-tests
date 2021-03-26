@@ -15,8 +15,9 @@ import (
 )
 
 const (
-	// Timeout to wait ARC provisioning is completed.
-	arcProvisionedWaitTimeOut = 60 * time.Second
+	// Timeout to wait ARC provisioning is completed. Based on UMA stats in released
+	// versions: http://uma/p/chrome/timeline_v2/?sid=206fdf1b0f02474ec11c6797f5668092
+	arcProvisionedWaitTimeOut = 90 * time.Second
 
 	// Interval to check ARC provisioning status.
 	arcProvisionedCheckInterval = 1 * time.Second
@@ -31,12 +32,12 @@ type optInTestParams struct {
 
 // getUnmangedDelays is an initializer function that returns delays for unmanaged account tests
 func getUnmangedDelays() []time.Duration {
-	return []time.Duration{7 * time.Second, 17 * time.Second, 22 * time.Second, 32 * time.Second}
+	return []time.Duration{7 * time.Second, 17 * time.Second, 22 * time.Second, 32 * time.Second, 42 * time.Second}
 }
 
 // getManagedDelays is an initializer function that returns delays for managed account tests
 func getManagedDelays() []time.Duration {
-	return []time.Duration{10 * time.Second, 21 * time.Second, 26 * time.Second, 36 * time.Second}
+	return []time.Duration{10 * time.Second, 21 * time.Second, 26 * time.Second, 36 * time.Second, 46 * time.Second}
 }
 
 func init() {
