@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e193ab94_07ca6abc",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-27T05:44:15Z",
+      "side": 1,
+      "message": "Ran tests 20 times and observed issue of play store failed to close and test failing here. \n\nI tried replacing apps.Close with ash.GetARCAppWindowInfo and CloseWindow but that was flaky as well failing to find the window (Probably WaitForPlayStoreShown is not actually ensuring that Play Store window is completely Open).\nHence adding this close logic only when ash.WaitForAppClosed returned error. 20+ runs are stable with this.\n\nUpdated the comment with more details.",
+      "parentUuid": "078dab9e_1d7f739c",
+      "revId": "311d7a4526df625a785d42879a267447edc5d7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc819f32_5442d1ea",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dcfa998_dc1f8f62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/disable_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-27T05:44:15Z",
+      "side": 1,
+      "message": "There has been issue with test failing to launch settings when Play Store remains open which is tracked in b/178232263.",
+      "parentUuid": "dc819f32_5442d1ea",
+      "revId": "311d7a4526df625a785d42879a267447edc5d7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfc16264_b953612f",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-03-26T19:24:40Z",
       "side": 1,
       "message": "Does this test also need playstore to be closed before executing rest of the logic?",
+      "revId": "311d7a4526df625a785d42879a267447edc5d7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e6698e_12153260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-27T05:44:15Z",
+      "side": 1,
+      "message": "As this test also launches settings, need Play Store close which was in the code prior to this CL in method optinPlayStore.",
+      "parentUuid": "cfc16264_b953612f",
       "revId": "311d7a4526df625a785d42879a267447edc5d7a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
