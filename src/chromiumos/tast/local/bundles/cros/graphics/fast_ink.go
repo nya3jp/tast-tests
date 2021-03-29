@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -98,7 +97,7 @@ func FastInk(ctx context.Context, s *testing.State) {
 
 			for _, wState := range []ash.WindowStateType{ash.WindowStateNormal, ash.WindowStateMaximized, ash.WindowStateFullscreen} {
 				s.Run(ctx, string(wState), func(ctx context.Context, s *testing.State) {
-					if _, err := ash.SetWindowState(ctx, tconn, wID, ash.WMEventTypeForState(wState)); err != nil {
+					if err := ash.SetWindowStateAndWait(ctx, tconn, wID, wState); err != nil {
 						s.Fatalf("Failed to set window state to %v: %v", wState, err)
 					}
 
@@ -124,20 +123,6 @@ func FastInk(ctx context.Context, s *testing.State) {
 						if bounds != desiredBounds {
 							s.Fatalf("Window bounds are %v; tried to set them to %v", bounds, desiredBounds)
 						}
-					}
-
-					w, err := ash.GetWindow(ctx, tconn, wID)
-					if err != nil {
-						s.Fatal("Failed to get window info: ", err)
-					}
-
-					// Move the mouse to the center of the window, where it will not
-					// bring extraneous UI stuff. Particularly, in full screen, a
-					// mouse near the bottom could make the shelf visible there, or
-					// a mouse near the top could make the browser frame visible
-					// there. Either of those scenarios could make this test fail.
-					if err := mouse.Move(ctx, tconn, w.TargetBounds.CenterPoint(), time.Second); err != nil {
-						s.Fatal("Failed to move mouse: ", err)
 					}
 
 					if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
