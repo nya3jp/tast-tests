@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fec8f1ee_ff727358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/language_model_download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2021-03-29T23:53:04Z",
+      "side": 1,
+      "message": "Need a list and timeout for the ime ids.\n\nThe tricky part is the destination of each file. Since they are configured in decoder internal logic. We may need hard copy of their configs. \n\nBut they might make changes on these path of the downloaded LMs, which will break us.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "3e4e284b7b7ebec7c62a018244ba26912a476f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
