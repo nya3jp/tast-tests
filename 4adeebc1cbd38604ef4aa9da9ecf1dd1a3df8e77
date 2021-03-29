@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "687009b2_4c6b8367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-29T23:51:05Z",
+      "side": 1,
+      "message": "I removed this code.",
+      "parentUuid": "62b061c1_39e029f2",
+      "revId": "4adeebc1cbd38604ef4aa9da9ecf1dd1a3df8e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "408d8272_5c52a5c7",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-25T00:42:29Z",
       "side": 1,
       "message": "the function seems to be too long now. Can you define a test main as a separate function?",
+      "revId": "4adeebc1cbd38604ef4aa9da9ecf1dd1a3df8e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b5d8260_0a2efe4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-29T23:51:05Z",
+      "side": 1,
+      "message": "I shortened it to about the same length as arc.PIPEnergyAndPower.",
+      "parentUuid": "408d8272_5c52a5c7",
       "revId": "4adeebc1cbd38604ef4aa9da9ecf1dd1a3df8e77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5ad25be_fd066a67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-29T23:51:05Z",
+      "side": 1,
+      "message": "I simplified this code.",
+      "parentUuid": "ebd9638c_faa3fab5",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 5
+      },
+      "revId": "4adeebc1cbd38604ef4aa9da9ecf1dd1a3df8e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1cc6326_6be013a8",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-03-25T00:42:29Z",
       "side": 1,
       "message": "instead of changing state this way, can\u0027t we just change the window state to snapped?",
+      "revId": "4adeebc1cbd38604ef4aa9da9ecf1dd1a3df8e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20436292_eb124e3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-29T23:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1cc6326_6be013a8",
       "revId": "4adeebc1cbd38604ef4aa9da9ecf1dd1a3df8e77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
