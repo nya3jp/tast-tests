@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "756f1786_f7c1f58b",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-29T22:25:12Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c816c6f2_6dbae0a6",
+      "revId": "1f2cacc510b43e94bb2bfae1ecf2dc1bf9aedf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "829f2f2d_7fc14f85",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "optin.go only writes it in case of error but I am fine if we we want to keep it in all cases as AuthPerf does.",
       "parentUuid": "7bae53b7_c265e713",
+      "revId": "1f2cacc510b43e94bb2bfae1ecf2dc1bf9aedf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "817cefbf_f37d0505",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-03-29T22:25:12Z",
+      "side": 1,
+      "message": "I made it dump on error only.",
+      "parentUuid": "a0923b2c_555955ae",
       "revId": "1f2cacc510b43e94bb2bfae1ecf2dc1bf9aedf31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
