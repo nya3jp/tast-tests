@@ -20,91 +20,26 @@ import (
 	"chromiumos/tast/errors"
 )
 
-// SmapsRollup contains all the fields from a /proc/<pid>/smaps_rollup file.
-// All sizes are in bytes.
-type SmapsRollup struct {
-	Rss,
-	Pss,
-	PssAnon,
-	PssFile,
-	PssShmem,
-	SharedClean,
-	SharedDirty,
-	PrivateClean,
-	PrivateDirty,
-	Referenced,
-	Anonymous,
-	LazyFree,
-	AnonHugePages,
-	ShmemPmdMapped,
-	SharedHugetlb,
-	PrivateHugetlb,
-	Swap,
-	SwapPss,
-	Locked uint64
-}
-
-var smapsRollupRE = regexp.MustCompile(`(?m)([[:xdigit:]]+)-([[:xdigit:]]+) (r|-)(w|-)(x|-)(s|p) ([[:xdigit:]]+) ([[:xdigit:]]+):([[:xdigit:]]+) ([\d]+) +\[rollup]
-Rss: +(?P<Rss>[\d]+) kB
-Pss: +(?P<Pss>[\d]+) kB
-Pss_Anon: +(?P<PssAnon>[\d]+) kB
-Pss_File: +(?P<PssFile>[\d]+) kB
-Pss_Shmem: +(?P<PssShmem>[\d]+) kB
-Shared_Clean: +(?P<SharedClean>[\d]+) kB
-Shared_Dirty: +(?P<SharedDirty>[\d]+) kB
-Private_Clean: +(?P<PrivateClean>[\d]+) kB
-Private_Dirty: +(?P<PrivateDirty>[\d]+) kB
-Referenced: +(?P<Referenced>[\d]+) kB
-Anonymous: +(?P<Anonymous>[\d]+) kB
-LazyFree: +(?P<LazyFree>[\d]+) kB
-AnonHugePages: +(?P<AnonHugePages>[\d]+) kB
-ShmemPmdMapped: +(?P<ShmemPmdMapped>[\d]+) kB
-Shared_Hugetlb: +(?P<SharedHugetlb>[\d]+) kB
-Private_Hugetlb: +(?P<PrivateHugetlb>[\d]+) kB
-Swap: +(?P<Swap>[\d]+) kB
-SwapPss: +(?P<SwapPss>[\d]+) kB
-Locked: +(?P<Locked>[\d]+) kB
-`)
-
-func bytesFromSmapsRollupSubmatch(name string, match [][]byte) uint64 {
-	submatch := match[smapsRollupRE.SubexpIndex(name)]
-	kb, err := strconv.ParseUint(string(submatch), 10, 64)
-	if err != nil {
-		// We will only hit this if there is an error in the regexp above, or
-		// smaps_rollup reports numbers too large to fit in 64 bit.
-		panic(fmt.Sprintf("Failed to parse size from smaps_rollup field %q = %q: %s", name, submatch, err))
-	}
-	return kb * 1024
-}
+var smapsRollupRE = regexp.MustCompile(`(?m)^([^:]+):\s*(\d+)\s*kB$`)
 
 // NewSmapsRollup parses the contents of a /proc/<pid>/smaps_rollup file. All
 // sizes are in bytes.
-func NewSmapsRollup(smapsRollupFileData []byte) (*SmapsRollup, error) {
-	match := smapsRollupRE.FindSubmatch(smapsRollupFileData)
-	if match == nil {
-		return nil, errors.Errorf("failed to parse smaps_rollup file %q %q", smapsRollupRE.String(), smapsRollupFileData)
+func NewSmapsRollup(smapsRollupFileData []byte) (map[string]uint64, error) {
+	result := make(map[string]uint64)
+	matches := smapsRollupRE.FindAllSubmatch(smapsRollupFileData, -1)
+	if matches == nil {
+		return nil, errors.Errorf("failed to parse smaps_rollup file %q with RE %q", smapsRollupRE.String(), smapsRollupFileData)
 	}
-	return &SmapsRollup{
-		Rss:            bytesFromSmapsRollupSubmatch("Rss", match),
-		Pss:            bytesFromSmapsRollupSubmatch("Pss", match),
-		PssAnon:        bytesFromSmapsRollupSubmatch("PssAnon", match),
-		PssFile:        bytesFromSmapsRollupSubmatch("PssFile", match),
-		PssShmem:       bytesFromSmapsRollupSubmatch("PssShmem", match),
-		SharedClean:    bytesFromSmapsRollupSubmatch("SharedClean", match),
-		SharedDirty:    bytesFromSmapsRollupSubmatch("SharedDirty", match),
-		PrivateClean:   bytesFromSmapsRollupSubmatch("PrivateClean", match),
-		PrivateDirty:   bytesFromSmapsRollupSubmatch("PrivateDirty", match),
-		Referenced:     bytesFromSmapsRollupSubmatch("Referenced", match),
-		Anonymous:      bytesFromSmapsRollupSubmatch("Anonymous", match),
-		LazyFree:       bytesFromSmapsRollupSubmatch("LazyFree", match),
-		AnonHugePages:  bytesFromSmapsRollupSubmatch("AnonHugePages", match),
-		ShmemPmdMapped: bytesFromSmapsRollupSubmatch("ShmemPmdMapped", match),
-		SharedHugetlb:  bytesFromSmapsRollupSubmatch("SharedHugetlb", match),
-		PrivateHugetlb: bytesFromSmapsRollupSubmatch("PrivateHugetlb", match),
-		Swap:           bytesFromSmapsRollupSubmatch("Swap", match),
-		SwapPss:        bytesFromSmapsRollupSubmatch("SwapPss", match),
-		Locked:         bytesFromSmapsRollupSubmatch("Locked", match),
-	}, nil
+	for _, match := range matches {
+		field := string(match[1])
+		kbString := string(match[2])
+		kb, err := strconv.ParseUint(kbString, 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to parse %q value from smaps_rollup: %q", field, kbString)
+		}
+		result[field] = kb * KiB
+	}
+	return result, nil
 }
 
 // NamedSmapsRollup is a SmapsRollup plus the process name and ID, and
@@ -114,7 +49,7 @@ type NamedSmapsRollup struct {
 	Command       string
 	Pid           int32
 	SharedSwapPss uint64
-	SmapsRollup
+	Rollup        map[string]uint64
 }
 
 // SmapsRollups returns a NamedSmapsRollup for every process in processes. Sizes
@@ -148,7 +83,7 @@ func SmapsRollups(ctx context.Context, processes []*process.Process, sharedSwapP
 				Command:       command,
 				Pid:           p.Pid,
 				SharedSwapPss: sharedSwapPss[p.Pid],
-				SmapsRollup:   *rollup,
+				Rollup:        rollup,
 			}
 			return nil
 		})
@@ -297,8 +232,16 @@ func SmapsMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) er
 		for _, category := range processCategories {
 			if category.commandRE.MatchString(rollup.Command) {
 				metric := metrics[category.name]
-				metric.pss += float64(rollup.Pss) / MiB
-				metric.pssSwap += float64(rollup.SwapPss+rollup.SharedSwapPss) / MiB
+				pss, ok := rollup.Rollup["Pss"]
+				if !ok {
+					return errors.Errorf("smaps_rollup for process %d does not include Pss", rollup.Pid)
+				}
+				swapPss, ok := rollup.Rollup["SwapPss"]
+				if !ok {
+					return errors.Errorf("smaps_rollup for process %d does not include SwapPss", rollup.Pid)
+				}
+				metric.pss += float64(pss) / MiB
+				metric.pssSwap += float64(swapPss+rollup.SharedSwapPss) / MiB
 				metrics[category.name] = metric
 				// Only the first matching category should contain this process.
 				break
