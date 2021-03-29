@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e1d37e_80620b7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-29T09:27:43Z",
+      "side": 1,
+      "message": "as you\u0027re touching them, could you make them variables?\n\nvar unmanagedDelays \u003d []time.Duration{\n  ...\n}\nvar managedDelays \u003d []time.Duration{\n  ...\n}\n\nIn test meta data, we\u0027d like to ensure it is fixed at build-time. In the sense, variables is better than functions. (Unfortunately, go cannot have constants of slices).",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "a34651d656555e315f32b332a0b66ea8f329a137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
