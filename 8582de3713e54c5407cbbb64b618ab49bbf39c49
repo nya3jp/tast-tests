@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "37e10056_fe482a3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-29T17:36:12Z",
+      "side": 1,
+      "message": "Doh. Fixed.",
+      "parentUuid": "c13ea709_5b2b89ab",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "8582de3713e54c5407cbbb64b618ab49bbf39c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d58bd76d_e319a9e2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-29T02:45:50Z",
       "side": 1,
       "message": "I think this is also shillconst.ErrorMatchingServiceNotFound?",
+      "range": {
+        "startLine": 55,
+        "startChar": 42,
+        "endLine": 55,
+        "endChar": 74
+      },
+      "revId": "8582de3713e54c5407cbbb64b618ab49bbf39c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dad4169_00bfb1c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-29T17:36:12Z",
+      "side": 1,
+      "message": "Oops, that was pretty much the whole point, sorry. Thanks for noticing!",
+      "parentUuid": "de4fa513_0ad81771",
       "range": {
         "startLine": 55,
         "startChar": 42,
