@@ -33,6 +33,17 @@ func init() {
 		Data:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
 		Fixture:      "chromeLoggedIn",
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{
+			{
+				Name: "clamshell",
+				Val:  false,
+			},
+			{
+				Name:              "tablet",
+				ExtraSoftwareDeps: []string{"tablet_mode"},
+				Val:               true,
+			},
+		},
 	})
 }
 
@@ -49,9 +60,10 @@ func FastInk(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	tabletMode := s.Param().(bool)
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 	if err != nil {
-		s.Fatal("Failed to ensure clamshell mode: ", err)
+		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
 	}
 	defer cleanup(cleanupCtx)
 
@@ -79,6 +91,13 @@ func FastInk(ctx context.Context, s *testing.State) {
 
 	wID := ws[0].ID
 
+	var wStates []ash.WindowStateType
+	if tabletMode {
+		wStates = []ash.WindowStateType{ash.WindowStateFullscreen}
+	} else {
+		wStates = []ash.WindowStateType{ash.WindowStateNormal, ash.WindowStateMaximized, ash.WindowStateFullscreen}
+	}
+
 	// The display info would be stale when we rotate the display.
 	// To be safe, we limit the scope of info used to get the ID.
 	var internalDisplayID string
@@ -95,7 +114,7 @@ func FastInk(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to rotate display: ", err)
 			}
 
-			for _, wState := range []ash.WindowStateType{ash.WindowStateNormal, ash.WindowStateMaximized, ash.WindowStateFullscreen} {
+			for _, wState := range wStates {
 				s.Run(ctx, string(wState), func(ctx context.Context, s *testing.State) {
 					if err := ash.SetWindowStateAndWait(ctx, tconn, wID, wState); err != nil {
 						s.Fatalf("Failed to set window state to %v: %v", wState, err)
