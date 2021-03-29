@@ -34,19 +34,16 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
-		Vars:    []string{"arc.username", "arc.password"},
+		Vars:    []string{"ui.gaiaPoolDefault"},
 	})
 }
 
 func OobeArc(ctx context.Context, s *testing.State) {
 
-	username := s.RequiredVar("arc.username")
-	password := s.RequiredVar("arc.password")
-
 	cr, err := chrome.New(ctx,
 		chrome.DontSkipOOBEAfterLogin(),
 		chrome.ARCSupported(),
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}))
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

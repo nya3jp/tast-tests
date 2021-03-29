@@ -35,7 +35,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: 6 * time.Minute,
-		Vars:    []string{"arc.username", "arc.password"},
+		Vars:    []string{"ui.gaiaPoolDefault"},
 	})
 }
 
@@ -56,12 +56,9 @@ func Backup(ctx context.Context, s *testing.State) {
 		defaultTimeout = 30 * time.Second
 	)
 
-	username := s.RequiredVar("arc.username")
-	password := s.RequiredVar("arc.password")
-
 	// Setup Chrome.
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
