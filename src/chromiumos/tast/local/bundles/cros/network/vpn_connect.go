@@ -224,14 +224,9 @@ func configureStaticIP(ctx context.Context, interfaceName, address string, manag
 		return errors.Wrapf(err, "failed to find the device with interface name %s", interfaceName)
 	}
 
-	deviceProp, err := device.GetShillProperties(ctx)
+	servicePath, err := device.WaitForSelectedService(ctx, 3*time.Second)
 	if err != nil {
-		return errors.Wrapf(err, "failed to get properties of device %v", device)
-	}
-
-	servicePath, err := deviceProp.GetObjectPath(shillconst.DevicePropertySelectedService)
-	if err != nil {
-		return errors.Wrapf(err, "failed to get the DBus object path for the property %s", shillconst.DevicePropertySelectedService)
+		return errors.Wrap(err, "failed to get the selected service path")
 	}
 
 	service, err := shill.NewService(ctx, servicePath)
