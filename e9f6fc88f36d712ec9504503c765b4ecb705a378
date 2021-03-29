@@ -67,6 +67,24 @@
       "message": "nit: is \"number\" better than \"amount\" as you mentioned in commit comment? similar for other places if you want to change.",
       "revId": "e9f6fc88f36d712ec9504503c765b4ecb705a378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9e09125_b2c807b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-03-29T17:21:33Z",
+      "side": 1,
+      "message": "I guess, let me s/amount/number/.",
+      "parentUuid": "a9ee46d6_a2971828",
+      "revId": "e9f6fc88f36d712ec9504503c765b4ecb705a378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
