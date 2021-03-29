@@ -48,7 +48,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
-		Vars:         []string{"arc.Fsp.user", "arc.Fsp.password"},
+		Vars:         []string{"ui.gaiaPoolDefault"},
 		Data:         []string{fspZipFile},
 		Params: []testing.Param{
 			{
@@ -66,7 +66,7 @@ func Fsp(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chrome.ARCEnabled(),
-		chrome.GAIALogin(chrome.Creds{User: s.RequiredVar("arc.Fsp.user"), Pass: s.RequiredVar("arc.Fsp.password")}),
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

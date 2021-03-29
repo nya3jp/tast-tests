@@ -32,7 +32,7 @@ func init() {
 			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Vars:         []string{"apps.LaunchHelpApp.consumer_username", "apps.LaunchHelpApp.consumer_password"},
+		Vars:         []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 		Params: []testing.Param{
@@ -114,9 +114,6 @@ func LaunchHelpApp(ctx context.Context, s *testing.State) {
 
 // helpAppLaunchDuringOOBE verifies help app launch during OOBE stage. Help app only launches with real user login in clamshell mode.
 func helpAppLaunchDuringOOBE(ctx context.Context, s *testing.State, isTabletMode bool) {
-	username := s.RequiredVar("apps.LaunchHelpApp.consumer_username")
-	password := s.RequiredVar("apps.LaunchHelpApp.consumer_password")
-
 	var uiMode string
 	if isTabletMode {
 		uiMode = "--force-tablet-mode=touch_view"
@@ -125,7 +122,7 @@ func helpAppLaunchDuringOOBE(ctx context.Context, s *testing.State, isTabletMode
 	}
 
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.DontSkipOOBEAfterLogin(),
 		chrome.EnableFeatures("HelpAppFirstRun"),
 		chrome.ExtraArgs(uiMode))

@@ -30,7 +30,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
 		}},
 		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
-		Vars:    []string{"arc.username", "arc.password"},
+		Vars:    []string{"ui.gaiaPoolDefault"},
 	})
 }
 
@@ -39,13 +39,10 @@ func LauncherApps(ctx context.Context, s *testing.State) {
 		pkgName = "com.google.android.apps.dynamite"
 	)
 
-	username := s.RequiredVar("arc.username")
-	password := s.RequiredVar("arc.password")
-
 	// Setup Chrome.
 	cr, err := chrome.New(
 		ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
