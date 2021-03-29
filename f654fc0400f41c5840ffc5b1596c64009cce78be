@@ -16,6 +16,29 @@
       "message": "It turns out that giant RegExp to parse smaps_rollups was brittle, so we need this change to have it work on all boards.",
       "revId": "f654fc0400f41c5840ffc5b1596c64009cce78be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5bc8424_e082a72b",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-29T23:23:15Z",
+      "side": 1,
+      "message": "nit: maybe a colon at the end here separating the %q so it\u0027s more clear this is the value that failed to parse",
+      "range": {
+        "startLine": 38,
+        "startChar": 76,
+        "endLine": 38,
+        "endChar": 79
+      },
+      "revId": "f654fc0400f41c5840ffc5b1596c64009cce78be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
