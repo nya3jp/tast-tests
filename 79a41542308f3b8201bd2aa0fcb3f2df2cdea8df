@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94ce566_827b79d8",
+        "filename": "src/chromiumos/tast/local/action/action.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-29T17:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8411b640_00161952",
+      "revId": "79a41542308f3b8201bd2aa0fcb3f2df2cdea8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "450ba161_f92c973a",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c89079a0_e7956e95",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-29T17:06:40Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion.\n\nI also noticed that Context.Retry can be moved in a way.",
+      "parentUuid": "450ba161_f92c973a",
+      "range": {
+        "startLine": 562,
+        "startChar": 19,
+        "endLine": 562,
+        "endChar": 32
+      },
+      "revId": "79a41542308f3b8201bd2aa0fcb3f2df2cdea8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "631262a3_1fbc21ba",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-03-28T23:55:40Z",
       "side": 1,
       "message": "This one too?",
+      "range": {
+        "startLine": 293,
+        "startChar": 60,
+        "endLine": 293,
+        "endChar": 73
+      },
+      "revId": "79a41542308f3b8201bd2aa0fcb3f2df2cdea8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf3e7bcc_b482e9d4",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-29T17:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "631262a3_1fbc21ba",
       "range": {
         "startLine": 293,
         "startChar": 60,
