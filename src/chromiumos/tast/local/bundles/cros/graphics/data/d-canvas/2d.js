@@ -8,12 +8,13 @@ let pixel_height;
 
 function init2D() {
   let canvas = document.querySelector('canvas');
+  let container = document.querySelector('#container');
 
   const setSizeAndRotation = () => {
     let angle = screen.orientation.angle % 360;
     let dpr = devicePixelRatio;
-    let dp_width = window.innerWidth;
-    let dp_height = window.innerHeight;
+    let dp_width = container.clientWidth;
+    let dp_height = container.clientHeight;
     pixel_width = Math.round(dp_width * dpr);
     pixel_height = Math.round(dp_height * dpr);
 
@@ -64,8 +65,9 @@ let deg = 0;
 function draw() {
   let angle = screen.orientation.angle % 360;
   let dpr = devicePixelRatio;
-  let dp_width = window.innerWidth;
-  let dp_height = window.innerHeight;
+  let container = document.querySelector('#container');
+  let dp_width = container.clientWidth;
+  let dp_height = container.clientHeight;
 
   let canvas = document.querySelector('canvas');
   let c2 = canvas.getContext('2d', {desynchronized: true, alpha: false});
