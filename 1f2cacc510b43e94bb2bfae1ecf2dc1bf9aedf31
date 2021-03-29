@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c816c6f2_6dbae0a6",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-29T22:04:28Z",
+      "side": 1,
+      "message": "can we keep the writeLogFile method separate to make this method more cohesive and easy to digets?",
+      "revId": "1f2cacc510b43e94bb2bfae1ecf2dc1bf9aedf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "829f2f2d_7fc14f85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-29T22:04:28Z",
+      "side": 1,
+      "message": "We can dump logcat only when we timeout i.e. when privioningErr is not nil",
+      "revId": "1f2cacc510b43e94bb2bfae1ecf2dc1bf9aedf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
