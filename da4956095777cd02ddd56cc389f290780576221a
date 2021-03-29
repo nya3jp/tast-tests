@@ -16,6 +16,460 @@
       "message": "Now all ui handling are split to new CL https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2779315/. \nJun, could check couple of pending comments for you, and review other changes if you have time? Thanks a lot!",
       "revId": "da4956095777cd02ddd56cc389f290780576221a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3988981e_40abb9e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "I\u0027m afraid of name conflicts with other tests. Can you add some prefix to them, e.g. \"ui.cujMute\"?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Runtime-variables",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea80982_ae308878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "Please add comments to urlLink, chromeTab and chromeWindow. They play important roles in this file and thus comments would be very helpful to understand the structure.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 4
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a20a8565_533cf096",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "I strongly recommend using urlLink in a pointer, not as a value.\n\nurlLink is a stateful struct due to currentPattern. So we should not copy urlLink unless we really want to do so. Currently we use urlLink as a value, not in a pointer, everywhere in this file, which may end up unexpected copying.",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 12
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38ebc84e_d2ac69ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "Do you think we can make it a local variable in searchElementWithPatternAndClick?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80547fe0_78cb79cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "I believe you meant \"navigation\"?\n\ne.g. https://developer.chrome.com/docs/extensions/reference/webNavigation/\n\n\"Redirect\" means that a client is pointed to a different URL during a navigation. Single navigation can see multiple redirects.",
+      "range": {
+        "startLine": 99,
+        "startChar": 33,
+        "endLine": 99,
+        "endChar": 41
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a92c3602_310628f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "I\u0027d rather say this is a bug in chrome.Conn.Call. I filed crbug.com/1193417. Can you add a TODO comment to remove the setTimeout when crbug.com/1193417 is resolved?",
+      "range": {
+        "startLine": 99,
+        "startChar": 55,
+        "endLine": 101,
+        "endChar": 65
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0129a550_21bbcce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "s/var/const/g",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 6
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6597bd7b_9661b2d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "Use \u003d\u003d\u003d instead of \u003d\u003d for better semantics.",
+      "range": {
+        "startLine": 106,
+        "startChar": 18,
+        "endLine": 106,
+        "endChar": 20
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500156d8_c7597f61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "style: Please avoid omitting braces.\nhttps://google.github.io/styleguide/jsguide.html#formatting-braces",
+      "range": {
+        "startLine": 106,
+        "startChar": 22,
+        "endLine": 106,
+        "endChar": 23
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d6a6e3e_26844887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "nit\u0026optional: err is the most typical naming.",
+      "range": {
+        "startLine": 154,
+        "startChar": 5,
+        "endLine": 154,
+        "endChar": 6
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bf66e5a_d97c38b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "How about setting tab.conn \u003d nil here to prevent double close?",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be96169b_bf9e0c38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "This function sounds like a getter but it\u0027s not. Can you try to come up with better names?",
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30f08f67_0ba4663c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "for i :\u003d range windows\n\nsince we don\u0027t use \"window\" value which is always nil. ditto for the loop for j below.",
+      "range": {
+        "startLine": 263,
+        "startChar": 8,
+        "endLine": 263,
+        "endChar": 14
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9baff070_d8292609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "In general, try to initialize a struct with all fields set, rather than filling them later. It will make code easier to read, as well as helping you to notice bugs.",
+      "range": {
+        "startLine": 264,
+        "startChar": 2,
+        "endLine": 265,
+        "endChar": 42
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a35e52_026752d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "When we couldn\u0027t find an eligible urlLink from allLinks, we end up setting window.tabs[j] \u003d nil, which sounds unexpected.",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 276,
+        "endChar": 4
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da8b2d8_121d2edd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "This function is too long. Please try to split it nicely.",
+      "range": {
+        "startLine": 288,
+        "startChar": 5,
+        "endLine": 288,
+        "endChar": 9
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "390c856c_2b48b91f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "In general please try to define local variables just before they\u0027re needed, rather than declaring them all at once like C89.",
+      "range": {
+        "startLine": 351,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 36
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "338f8715_0d189dc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "QQ: Why do we have to handle this case specially?",
+      "range": {
+        "startLine": 369,
+        "startChar": 3,
+        "endLine": 369,
+        "endChar": 37
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a6c9a06_9f9d71b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "Looks irrelevant.",
+      "range": {
+        "startLine": 396,
+        "startChar": 3,
+        "endLine": 396,
+        "endChar": 59
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b506f067_c3fafbbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T09:05:27Z",
+      "side": 1,
+      "message": "tabIdx seems always the same as i.",
+      "range": {
+        "startLine": 418,
+        "startChar": 4,
+        "endLine": 418,
+        "endChar": 29
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
