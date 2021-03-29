@@ -6,11 +6,14 @@ package shill
 
 import (
 	"context"
+	"time"
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -70,4 +73,27 @@ func (d *Device) RequestRoam(ctx context.Context, bssid string) error {
 		return errors.Wrapf(err, "failed to roam %s", d.String())
 	}
 	return nil
+}
+
+// WaitForSelectedService returns the first valid value (i.e., not "/") of the
+// "SelectedService" property.
+func (d *Device) WaitForSelectedService(ctx context.Context, timeout time.Duration) (dbus.ObjectPath, error) {
+	var servicePath dbus.ObjectPath
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		deviceProp, err := d.GetShillProperties(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrapf(err, "failed to get properties of device %v", d))
+		}
+		servicePath, err = deviceProp.GetObjectPath(shillconst.DevicePropertySelectedService)
+		if err != nil {
+			return testing.PollBreak(errors.Wrapf(err, "failed to get the DBus object path for the property %s", shillconst.DevicePropertySelectedService))
+		}
+		if servicePath == "/" {
+			return errors.Wrapf(err, "%s is invalid", shillconst.DevicePropertySelectedService)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return "/", err
+	}
+	return servicePath, nil
 }
