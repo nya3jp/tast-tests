@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7616ca4d_030b857e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-03-29T16:40:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17306453_63522ff2",
+      "range": {
+        "startLine": 93,
+        "startChar": 19,
+        "endLine": 93,
+        "endChar": 21
+      },
+      "revId": "60120711169621d28311c620cb94fca7af993d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d574caa4_5d21023b",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7a3aea6_509cbbaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/fsp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-03-29T16:40:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d574caa4_5d21023b",
+      "range": {
+        "startLine": 140,
+        "startChar": 13,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "60120711169621d28311c620cb94fca7af993d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdc27b84_efd8cd0c",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-03-22T20:49:17Z",
       "side": 1,
       "message": "outdated and/or incomplete.\n\nIt needs more details. For example, it is not clear when and how \"expectations\" are used.\n\nPerhaps in the code (or could be as a docstring if applicable) describe how ArcFileReaderTest compares the current values vs the expected ones.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 94
+      },
+      "revId": "60120711169621d28311c620cb94fca7af993d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2979a723_3a70c786",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-03-29T16:40:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdc27b84_efd8cd0c",
       "range": {
         "startLine": 69,
         "startChar": 0,
