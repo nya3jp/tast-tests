@@ -35,17 +35,15 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Vars: []string{"launcher.SearchAndroidApps.username", "launcher.SearchAndroidApps.password"},
+		Vars: []string{"ui.gaiaPoolDefault"},
 	})
 }
 
 // SearchAndroidApps tests launching an Android app from the Launcher.
 func SearchAndroidApps(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("launcher.SearchAndroidApps.username")
-	password := s.RequiredVar("launcher.SearchAndroidApps.password")
 
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {

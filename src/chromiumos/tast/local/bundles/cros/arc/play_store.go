@@ -30,7 +30,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arc.PlayStore.username", "arc.PlayStore.password"},
+		Vars:    []string{"ui.gaiaPoolDefault"},
 	})
 }
 
@@ -39,12 +39,9 @@ func PlayStore(ctx context.Context, s *testing.State) {
 		pkgName = "com.google.android.apps.photos"
 	)
 
-	username := s.RequiredVar("arc.PlayStore.username")
-	password := s.RequiredVar("arc.PlayStore.password")
-
 	// Setup Chrome.
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
