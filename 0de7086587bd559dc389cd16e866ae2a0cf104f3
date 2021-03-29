@@ -16,6 +16,24 @@
       "message": "Hi Ben, PTAL :)",
       "revId": "0de7086587bd559dc389cd16e866ae2a0cf104f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a80332a_1bf9148d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-29T22:29:01Z",
+      "side": 1,
+      "message": "Happy to give LGTM from Tast perspective, I\u0027ll wait till someone from chromeos-security@ team reviews as well (possibly jorgelo@?) as owner of the test.",
+      "parentUuid": "a8288f4f_fd3e730b",
+      "revId": "0de7086587bd559dc389cd16e866ae2a0cf104f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
