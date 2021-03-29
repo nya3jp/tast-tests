@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -39,6 +40,7 @@ var stablePkTests = []pkTestParams{
 
 var unstablePkTests = []pkTestParams{
 	{"All keycodes", physicalKeyboardAllKeycodesTypingTest},
+	{"Basic editing with non-qwerty", physicalKeyboardBasicEditingOnFrenchTest},
 }
 
 func init() {
@@ -262,6 +264,18 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 	done <- true
 	if err := <-result; err != nil {
 		s.Fatal("ArcInputMethod mojo connection is broken while typing test: ", err)
+	}
+}
+
+func physicalKeyboardBasicEditingOnFrenchTest(ctx context.Context, st pkTestState, s *testing.State) {
+	const imeID = ime.IMEPrefix + string(ime.INPUTMETHOD_XKB_FR_FRA)
+	if err := ime.AddAndSetInputMethod(ctx, st.tconn, imeID); err != nil {
+		s.Fatal("Failed to switch to the French IME: ", err)
+	}
+	defer ime.RemoveInputMethod(ctx, st.tconn, imeID)
+
+	if err := testTextField(ctx, st, s, ".MainActivity", "qwerty", "azerty"); err != nil {
+		s.Error("Failed to type in normal text field: ", err)
 	}
 }
 
