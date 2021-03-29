@@ -34,7 +34,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arc.Availability.username", "arc.Availability.password"},
+		Vars:    []string{"ui.gaiaPoolDefault"},
 	})
 }
 
@@ -111,8 +111,6 @@ func reopenPlayStore(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.De
 // * Updating GMS Core
 // * Updating Play Store
 func Availability(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("arc.Availability.username")
-	password := s.RequiredVar("arc.Availability.password")
 	dumpUIOnErr := func(ctx context.Context, a *arc.ARC) {
 		if s.HasError() {
 			if err := a.Command(ctx, "uiautomator", "dump").Run(testexec.DumpLogOnError); err != nil {
@@ -124,15 +122,19 @@ func Availability(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	var creds chrome.Creds
+
 	func() {
 		cr, err := chrome.New(ctx,
-			chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+			chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 			chrome.ARCSupported(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...))
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
 		defer cr.Close(ctx)
+
+		creds = cr.Creds()
 
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
@@ -168,7 +170,7 @@ func Availability(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chrome.KeepState(),
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.GAIALogin(creds),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...),
 	)
