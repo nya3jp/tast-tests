@@ -194,45 +194,83 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 	}
 
 	const backupID = "com.google.android.gms:id/switchWidget"
-	backupStatus, err := arcDevice.Object(androidui.ID(backupID)).GetText(ctx)
-	if err != nil {
-		return err
-	}
+	if t == arc.VM {
+		// backupStatus will check for toggle On/Off
+		backupStatus, err := arcDevice.Object(androidui.ID(backupID)).IsChecked(ctx)
+		if err != nil {
+			return err
+		}
+		backupToggle := arcDevice.Object(androidui.ID(backupID))
 
-	testing.ContextLog(ctx, "Default Backup status: "+backupStatus)
-	backupToggleOff := arcDevice.Object(androidui.ClassName("android.widget.Switch"), androidui.TextMatches("(?i)off"), androidui.Enabled(true))
-	backupToggleOn := arcDevice.Object(androidui.ClassName("android.widget.Switch"), androidui.TextMatches("(?i)on"), androidui.Enabled(true))
+		if backupStatus == true {
 
-	if backupStatus == "ON" {
-		// Turn Backup OFF.
-		if err := backupToggleOn.Click(ctx); err != nil {
+			if err := backupToggle.Click(ctx); err != nil {
+				return errors.Wrap(err, "failed to click backup toggle")
+			}
+
+			turnOffBackup := arcDevice.Object(androidui.ClassName("android.widget.Button"), androidui.TextMatches("(?i)turn off & delete"), androidui.Enabled(true))
+			if err := turnOffBackup.WaitForExists(ctx, timeoutUI); err != nil {
+				return errors.Wrap(err, "failed finding Turn Off backup button")
+			}
+
+			if err := turnOffBackup.Click(ctx); err != nil {
+				return errors.Wrap(err, "failed to click Turn Off backup button")
+			}
+		}
+
+		if err := backupToggle.Click(ctx); err != nil {
 			return errors.Wrap(err, "failed to click backup toggle")
 		}
 
-		turnOffBackup := arcDevice.Object(androidui.ClassName("android.widget.Button"), androidui.TextMatches("(?i)turn off & delete"), androidui.Enabled(true))
-		if err := turnOffBackup.WaitForExists(ctx, timeoutUI); err != nil {
-			return errors.Wrap(err, "failed finding Turn Off backup button")
+		backupStatus, err = arcDevice.Object(androidui.ID(backupID)).IsChecked(ctx)
+		if err != nil {
+			return err
+		}
+		if backupStatus == false {
+			return errors.New("Unable to Turn Backup ON")
+		}
+	} else {
+
+		backupStatus, err := arcDevice.Object(androidui.ID(backupID)).GetText(ctx)
+		if err != nil {
+			return err
 		}
 
-		if err := turnOffBackup.Click(ctx); err != nil {
-			return errors.Wrap(err, "failed to click Turn Off backup button")
-		}
+		testing.ContextLog(ctx, "Default Backup status: "+backupStatus)
+		backupToggleOff := arcDevice.Object(androidui.ClassName("android.widget.Switch"), androidui.TextMatches("(?i)off"), androidui.Enabled(true))
+		backupToggleOn := arcDevice.Object(androidui.ClassName("android.widget.Switch"), androidui.TextMatches("(?i)on"), androidui.Enabled(true))
 
+		if backupStatus == "ON" {
+			// Turn Backup OFF.
+			if err := backupToggleOn.Click(ctx); err != nil {
+				return errors.Wrap(err, "failed to click backup toggle")
+			}
+
+			turnOffBackup := arcDevice.Object(androidui.ClassName("android.widget.Button"), androidui.TextMatches("(?i)turn off & delete"), androidui.Enabled(true))
+			if err := turnOffBackup.WaitForExists(ctx, timeoutUI); err != nil {
+				return errors.Wrap(err, "failed finding Turn Off backup button")
+			}
+
+			if err := turnOffBackup.Click(ctx); err != nil {
+				return errors.Wrap(err, "failed to click Turn Off backup button")
+			}
+
+			if err := backupToggleOff.WaitForExists(ctx, timeoutUI); err != nil {
+				return errors.Wrap(err, "failed to turn off Backup")
+			}
+		}
+		// Turn Backup ON.
 		if err := backupToggleOff.WaitForExists(ctx, timeoutUI); err != nil {
-			return errors.Wrap(err, "failed to turn off Backup")
+			return errors.Wrap(err, "failed finding Backup Off Toggle")
 		}
-	}
-	// Turn Backup ON.
-	if err := backupToggleOff.WaitForExists(ctx, timeoutUI); err != nil {
-		return errors.Wrap(err, "failed finding Backup Off Toggle")
-	}
 
-	if err := backupToggleOff.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Backup toggle")
-	}
+		if err := backupToggleOff.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click Backup toggle")
+		}
 
-	if err := backupToggleOn.WaitForExists(ctx, timeoutUI); err != nil {
-		return errors.Wrap(err, "failed to turn Backup toggle On")
+		if err := backupToggleOn.WaitForExists(ctx, timeoutUI); err != nil {
+			return errors.Wrap(err, "failed to turn Backup toggle On")
+		}
 	}
 
 	for i := 0; i < 2; i++ {
