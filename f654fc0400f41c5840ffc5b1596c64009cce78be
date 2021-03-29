@@ -39,6 +39,30 @@
       },
       "revId": "f654fc0400f41c5840ffc5b1596c64009cce78be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4761ee6_479913d6",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-03-29T23:33:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5bc8424_e082a72b",
+      "range": {
+        "startLine": 38,
+        "startChar": 76,
+        "endLine": 38,
+        "endChar": 79
+      },
+      "revId": "f654fc0400f41c5840ffc5b1596c64009cce78be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
