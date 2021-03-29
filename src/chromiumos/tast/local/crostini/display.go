@@ -74,6 +74,9 @@ func PollWindowSize(ctx context.Context, tconn *chrome.TestConn, name string, ti
 		sz, err = windowSize(ctx, tconn, name)
 		return err
 	}, &testing.PollOptions{Timeout: timeout})
+	if err != nil {
+		faillog.DumpUITreeAndScreenshot(ctx, tconn, "poll_window", err)
+	}
 	return sz, err
 }
 
