@@ -26,7 +26,7 @@ func init() {
 		},
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome", "ondevice_handwriting"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Data: []string{
 			"web_handwriting_recognition_drawing_abc.html",
 			"web_handwriting_recognition_drawing_abc.json",
