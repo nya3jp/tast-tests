@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fbcb108_02100aec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-03-29T10:58:34Z",
+      "side": 1,
+      "message": "It turns out that giant RegExp to parse smaps_rollups was brittle, so we need this change to have it work on all boards.",
+      "revId": "f654fc0400f41c5840ffc5b1596c64009cce78be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
