@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
 	"time"
@@ -230,10 +231,7 @@ func IGT(ctx context.Context, s *testing.State) {
 	cmd.Stdout = f
 	cmd.Stderr = f
 	err = cmd.Run()
-
-	if err != nil {
-		s.Errorf("Error running %s: %v", exePath, err)
-	}
+	exitErr, isExitErr := err.(*exec.ExitError)
 
 	// Reset the file to the beginning so the log can be read out again.
 	f.Seek(0, 0)
@@ -243,7 +241,14 @@ func IGT(ctx context.Context, s *testing.State) {
 
 	if results.passed+results.failed+results.skipped == 0 {
 		s.Error("No tests were run")
+		// In the case of running multiple subtests which all happen to be skipped, igt_exitcode is 0,
+		// but the final exit code will be 77.
+	} else if results.passed+results.failed == 0 && isExitErr && exitErr.ExitCode() == 77 {
+		s.Log("____________________________________________________")
+		s.Logf("ALL %d subtests were SKIPPED: %s", results.skipped, err.Error())
+		s.Log("----------------------------------------------------")
 	} else if err != nil {
+		s.Errorf("Error running %s: %v", exePath, err)
 		s.Error(summary)
 	} else {
 		s.Log(summary)
