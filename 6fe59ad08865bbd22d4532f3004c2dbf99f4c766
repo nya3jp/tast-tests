@@ -39,6 +39,30 @@
       },
       "revId": "6fe59ad08865bbd22d4532f3004c2dbf99f4c766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "487aefde_b6bdd6b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/integrated_u2f.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-03-29T03:26:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d85c003d_723edd88",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 14
+      },
+      "revId": "6fe59ad08865bbd22d4532f3004c2dbf99f4c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
