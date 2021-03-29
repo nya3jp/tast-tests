@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcbb1bf0_f5577689",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-29T15:05:39Z",
+      "side": 1,
+      "message": "Thanks for improving the code quality.",
+      "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8402df2_b3fc2632",
@@ -31,6 +48,23 @@
       "writtenOn": "2021-03-25T19:45:48Z",
       "side": 1,
       "message": "I don\u0027t think there are that many calls to this, we should just get rid of it.",
+      "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df05ecdc_948b4ec2",
+        "filename": "src/chromiumos/tast/local/shill/property_holder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-29T15:05:39Z",
+      "side": 1,
+      "message": "You plan to remove the deprecated usages soon, right?",
       "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
