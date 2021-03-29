@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4a1dd1d_070fd1f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-29T18:25:33Z",
+      "side": 1,
+      "message": "I think it\u0027s better to extract directly the exit code rather than string match.\n\nSince testexec does not wrap any errors, the description for exec package is still applied to this \u0027err\u0027:\n\u003e If the command starts but does not complete successfully, the error is of type *ExitError. Other error types may be returned for other situations.\nhttps://golang.org/pkg/os/exec/#Cmd.Run\n\nThat means it\u0027s something like:\n  exitErr, isExitErr :\u003d err.(*exec.ExitError)\n  ...\n  else if ... isExitErr \u0026\u0026 exitErr.ExitCode() \u003d\u003d 77 {",
+      "range": {
+        "startLine": 245,
+        "startChar": 49,
+        "endLine": 245,
+        "endChar": 84
+      },
+      "revId": "b41fa3583e137388105365ae9890b9055c335d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
