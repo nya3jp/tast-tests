@@ -11,6 +11,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -231,10 +232,6 @@ func IGT(ctx context.Context, s *testing.State) {
 	cmd.Stderr = f
 	err = cmd.Run()
 
-	if err != nil {
-		s.Errorf("Error running %s: %v", exePath, err)
-	}
-
 	// Reset the file to the beginning so the log can be read out again.
 	f.Seek(0, 0)
 	results := summarizeLog(f)
@@ -243,7 +240,12 @@ func IGT(ctx context.Context, s *testing.State) {
 
 	if results.passed+results.failed+results.skipped == 0 {
 		s.Error("No tests were run")
+		// In the case of running multiple subtests which all happen to be skipped, igt_exitcode is 0,
+		// but the final exit code will be 77.
+	} else if results.passed+results.failed == 0 && strings.Contains(err.Error(), "77") {
+		s.Logf("All %d subtests were **skipped**: %s", results.skipped, err.Error())
 	} else if err != nil {
+		s.Errorf("Error running %s: %v", exePath, err)
 		s.Error(summary)
 	} else {
 		s.Log(summary)
