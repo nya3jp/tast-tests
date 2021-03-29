@@ -22,6 +22,30 @@
       },
       "revId": "b41fa3583e137388105365ae9890b9055c335d7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "959d4bc4_ae8b28e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-03-29T18:38:58Z",
+      "side": 1,
+      "message": "thank you so much for the explanation and the code snippet!",
+      "parentUuid": "d4a1dd1d_070fd1f6",
+      "range": {
+        "startLine": 245,
+        "startChar": 49,
+        "endLine": 245,
+        "endChar": 84
+      },
+      "revId": "b41fa3583e137388105365ae9890b9055c335d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
