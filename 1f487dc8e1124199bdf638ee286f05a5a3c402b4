@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30880c90_3d7c2118",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-03-29T20:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76a49071_8508002b",
+      "revId": "1f487dc8e1124199bdf638ee286f05a5a3c402b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "def3d089_c0683199",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8aeb7d5_73cbb2e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-03-29T20:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "def3d089_c0683199",
+      "revId": "1f487dc8e1124199bdf638ee286f05a5a3c402b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9df267c7_7ef8a882",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-03-22T13:21:20Z",
       "side": 1,
       "message": "Can you also check\n\"[  FAILED  ] atomictest.orientation\"\nand surface the actual subtest failure?",
+      "revId": "1f487dc8e1124199bdf638ee286f05a5a3c402b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56206685_bf60d7f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-03-29T20:29:04Z",
+      "side": 1,
+      "message": "Done. Output is now: \n\n2021-03-29T20:28:39.117185Z [13:28:38.761] Running test\n2021-03-29T20:28:39.139399Z [13:28:38.762] ERROR:test_orientation():atomictest.c:1072:check prop_contains_value(rotation_prop, DRM_ROTATE_0) failed",
+      "parentUuid": "9df267c7_7ef8a882",
       "revId": "1f487dc8e1124199bdf638ee286f05a5a3c402b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
