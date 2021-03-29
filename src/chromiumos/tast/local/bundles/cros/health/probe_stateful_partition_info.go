@@ -5,9 +5,12 @@
 package health
 
 import (
+	"bufio"
 	"context"
+	"os"
 	"reflect"
 	"strconv"
+	"strings"
 	"syscall"
 
 	"chromiumos/tast/local/croshealthd"
@@ -47,7 +50,7 @@ func ProbeStatefulPartitionInfo(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify the headers are correct.
-	want := []string{"available_space", "total_space"}
+	want := []string{"available_space", "total_space", "filesystem", "mount_source"}
 	got := records[0]
 	if !reflect.DeepEqual(want, got) {
 		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
@@ -55,8 +58,8 @@ func ProbeStatefulPartitionInfo(ctx context.Context, s *testing.State) {
 
 	// Verify the values are correct.
 	vals := records[1]
-	if len(vals) != 2 {
-		s.Fatalf("Wrong number of values: got %d; want 2", len(vals))
+	if len(vals) != len(want) {
+		s.Fatalf("Wrong number of values: got %d; want %d", len(vals), len(want))
 	}
 
 	var stat syscall.Statfs_t
@@ -78,5 +81,35 @@ func ProbeStatefulPartitionInfo(ctx context.Context, s *testing.State) {
 		s.Errorf("Failed to convert %q (total_space) to uint64: %v", vals[1], err)
 	} else if total != realTotal {
 		s.Errorf("Invalid total_space: got %v; want %v", total, realTotal)
+	}
+
+	f, err := os.Open("/etc/mtab")
+	if err != nil {
+		s.Error("Failed to open /etc/mtab")
+	}
+	defer f.Close()
+
+	var statefulPartitionInfo []string
+	sc := bufio.NewScanner(f)
+	for sc.Scan() {
+		line := sc.Text()
+		if i := strings.IndexByte(line, '#'); i != -1 {
+			line = line[0:i]
+		}
+		fields := strings.Fields(line)
+		if len(fields) != 6 {
+			s.Errorf("Incorrect format in mtab: %q", sc.Text())
+		}
+		if fields[1] == "/mnt/stateful_partition" {
+			statefulPartitionInfo = fields
+		}
+	}
+
+	if statefulPartitionInfo == nil {
+		s.Error("Failed to find stateful partition info in mtab")
+	} else if statefulPartitionInfo[2] != vals[2] {
+		s.Errorf("Wrong filesystem info: got %s; want %s", vals[2], statefulPartitionInfo[2])
+	} else if statefulPartitionInfo[0] != vals[3] {
+		s.Errorf("Wrong mount source info: got %s; want %s", vals[3], statefulPartitionInfo[0])
 	}
 }
