@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -38,6 +39,7 @@ var stablePkTests = []pkTestParams{
 }
 
 var unstablePkTests = []pkTestParams{
+	{"Basic editing with non-qwerty", physicalKeyboardBasicEditingOnFrenchTest},
 	{"All keycodes", physicalKeyboardAllKeycodesTypingTest},
 }
 
@@ -262,6 +264,31 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 	done <- true
 	if err := <-result; err != nil {
 		s.Fatal("ArcInputMethod mojo connection is broken while typing test: ", err)
+	}
+}
+
+func physicalKeyboardBasicEditingOnFrenchTest(ctx context.Context, st pkTestState, s *testing.State) {
+	imePrefix, err := ime.GetIMEPrefix(ctx, st.tconn)
+	if err != nil {
+		s.Fatal("Failed to get the IME extension prefix: ", err)
+	}
+	currentImeID, err := ime.GetCurrentInputMethod(ctx, st.tconn)
+	if err != nil {
+		s.Fatal("Failed to get the current IME ID: ", err)
+	}
+
+	frImeID := imePrefix + string(ime.INPUTMETHOD_XKB_FR_FRA)
+	if err := ime.AddAndSetInputMethod(ctx, st.tconn, frImeID); err != nil {
+		s.Fatal("Failed to switch to the French IME: ", err)
+	}
+	if err := ime.WaitForInputMethodMatches(ctx, st.tconn, frImeID, 30*time.Second); err != nil {
+		s.Fatal("Failed to switch to the French IME: ", err)
+	}
+	defer ime.RemoveInputMethod(ctx, st.tconn, frImeID)
+	defer ime.SetCurrentInputMethod(ctx, st.tconn, currentImeID)
+
+	if err := testTextField(ctx, st, s, ".MainActivity", "qwerty", "azerty"); err != nil {
+		s.Error("Failed to type in normal text field: ", err)
 	}
 }
 
