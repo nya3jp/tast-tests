@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5908665_700c7ac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-03-29T17:23:55Z",
+      "side": 1,
+      "message": "if you decided to change, also this one?",
+      "revId": "3203d8a4650635cfc408a150ffc3c7f5d2220df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
