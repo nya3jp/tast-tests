@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f71a1aeb_b233704b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-29T21:38:23Z",
+      "side": 1,
+      "message": "This is very context dependent.\n\nThere\u0027s some info that it is going to totally miss (like, rate information about the router\u0027s TX\u0027d frames; any TX work that gets offloaded to firmware/HW; or anything else where we really want a 3rd party\u0027s view). So while it\u0027s better for your use case, it\u0027s not necessarily better in all cases.\n\nGiven that, is there any need for doing *both*? I guess we can punt for now, as this is only going to be used for a handful of tests?",
+      "range": {
+        "startLine": 11,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "36c80915ef4d9ff5816d38885e04761714007624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
