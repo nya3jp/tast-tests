@@ -17,9 +17,9 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
@@ -121,16 +121,16 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 		defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
 	}
 
-	var pointerController pointer.Controller
+	var pc pointer.Context
 	if tabletMode {
-		pointerController, err = pointer.NewTouchController(ctx, tconn)
+		pc, err = pointer.NewTouch(ctx, tconn)
 		if err != nil {
-			s.Fatal("Failed to create touch controller: ", err)
+			s.Fatal("Failed to set up the touch context: ", err)
 		}
 	} else {
-		pointerController = pointer.NewMouseController(tconn)
+		pc = pointer.NewMouse(tconn)
 	}
-	defer pointerController.Close()
+	defer pc.Close()
 
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
@@ -178,13 +178,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				if err := uiauto.Combine(
 					"wait and click",
 					ac.WaitForLocation(toggleButton),
-					func(ctx context.Context) error {
-						loc, err := ac.Location(ctx, toggleButton)
-						if err != nil {
-							return err
-						}
-						return pointer.Click(ctx, pointerController, loc.CenterPoint())
-					},
+					pc.Click(toggleButton),
 					ac.WaitForLocation(toggleButton),
 				)(ctx); err != nil {
 					return err
@@ -209,7 +203,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 					return err
 				}
 				id1 := w.ID
-				if err := pointer.Click(ctx, pointerController, w.OverviewInfo.Bounds.CenterPoint()); err != nil {
+				if err := pc.ClickAt(w.OverviewInfo.Bounds.CenterPoint())(ctx); err != nil {
 					return errors.Wrapf(err, "failed to tap the center of %d", id1)
 				}
 				if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
@@ -240,10 +234,11 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 					if loc.CenterPoint().X < info.Bounds.CenterPoint().X {
 						continue
 					}
-					if err := pointer.Click(ctx, pointerController, loc.CenterPoint()); err != nil {
-						return err
-					}
-					if err := ac.WaitForLocation(q)(ctx); err != nil {
+					if err := uiauto.Combine(
+						"click and wait",
+						pc.ClickAt(loc.CenterPoint()),
+						ac.WaitForLocation(q),
+					)(ctx); err != nil {
 						return err
 					}
 					break
@@ -276,19 +271,10 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 					return errors.Wrap(err, "failed to find the window in the overview mode")
 				}
 				deskMiniView := nodewith.ClassName("DeskMiniView")
-				ac := uiauto.New(tconn)
-				nodes, err := ac.NodesInfo(ctx, deskMiniView)
-				if err != nil {
-					return errors.Wrap(err, "failed to get desk mini-views")
-				}
-				if len(nodes) != 2 {
-					return errors.Wrapf(err, "expected 2 desk mini-views; found %v", len(nodes))
-				}
-				deskMiniViewLoc, err := ac.Location(ctx, deskMiniView.Nth(1))
-				if err != nil {
-					return errors.Wrap(err, "failed to get the location of desk mini-view")
-				}
-				if err := pointer.Drag(ctx, pointerController, w.OverviewInfo.Bounds.CenterPoint(), deskMiniViewLoc.CenterPoint(), time.Second); err != nil {
+				if err := pc.Drag(
+					w.OverviewInfo.Bounds.CenterPoint(),
+					pc.DragToNode(deskMiniView.Nth(1), time.Second),
+				)(ctx); err != nil {
 					return errors.Wrap(err, "failed to drag window from overview grid to desk mini-view")
 				}
 				if _, err := ash.FindFirstWindowInOverview(ctx, tconn); err == nil {
@@ -354,58 +340,43 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 					"Ash.Overview.AnimationSmoothness.Exit.SplitView",
 				)
 			}
-			runner.RunMultiple(ctx, s, testCase.name, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) (err error) {
-				if tabletMode && testCase.name == "WithOverview" {
-					if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-						return errors.Wrap(err, "failed to exit overview at right")
-					}
-					if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-						return errors.Wrap(err, "failed to start overview at right")
-					}
-				}
-				if err := pointerController.Press(ctx, dragPoints[0]); err != nil {
-					return errors.Wrap(err, "failed to start divider drag")
-				}
-				ended := false
-				defer func() {
-					if !ended {
-						if releaseErr := pointerController.Release(ctx); releaseErr != nil {
-							err = releaseErr
-						}
-					}
-				}()
-				if err := pointerController.Move(ctx, dragPoints[0], dragPoints[1], time.Second); err != nil {
-					return errors.Wrap(err, "failed to drag divider slightly left")
-				}
-				if err := pointerController.Move(ctx, dragPoints[1], dragPoints[2], time.Second); err != nil {
-					return errors.Wrap(err, "failed to drag divider all the way right")
-				}
-				if err := pointerController.Move(ctx, dragPoints[2], dragPoints[3], time.Second); err != nil {
-					return errors.Wrap(err, "failed to drag divider back to middle position")
-				}
-				if !tabletMode {
-					if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+			var actions []uiauto.Action
+			if tabletMode && testCase.name == "WithOverview" {
+				actions = append(actions, uiauto.Combine(
+					"enter and exit overview",
+					func(ctx context.Context) error {
+						return ash.SetOverviewModeAndWait(ctx, tconn, false)
+					},
+					func(ctx context.Context) error {
+						return ash.SetOverviewModeAndWait(ctx, tconn, true)
+					}),
+				)
+			}
+			gestures := []uiauto.Action{
+				pc.DragTo(dragPoints[1], time.Second),
+				pc.DragTo(dragPoints[2], time.Second),
+				pc.DragTo(dragPoints[3], time.Second),
+			}
+			if !tabletMode {
+				gestures = append(gestures, func(ctx context.Context) error {
+					return ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 						return w.ID == id0 && w.BoundsInRoot.Right() == dragPoints[3].X
-					}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
-						return errors.Wrap(err, "failed to wait for resize to finish")
-					}
-				}
-				if err := pointerController.Release(ctx); err != nil {
-					return errors.Wrap(err, "failed to end divider drag")
-				}
-				ended = true
-				if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+					}, &testing.PollOptions{Timeout: 2 * time.Second})
+				})
+			}
+			actions = append(actions, pc.Drag(dragPoints[0], gestures...))
+			actions = append(actions, func(ctx context.Context) error {
+				return ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 					return w.ID == id0 && !w.IsAnimating && w.State == ash.WindowStateLeftSnapped
-				}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
-					return errors.Wrap(err, "failed to wait for the window state back to original position")
-				}
-				// Note: in tablet mode, the split view divider will be still animating
-				// at this point because ash.WaitForCondition does not check divider's
-				// status. Still this is not a problem, as RunAndWaitAll function will
-				// wait for the metrics for the divider animation which is generated
-				// after the divider animation finishes.
-				return nil
-			}, histogramNames...),
+				}, &testing.PollOptions{Timeout: 2 * time.Second})
+			})
+			// Note: in tablet mode, the split view divider will be still animating
+			// at this point because ash.WaitForCondition does not check divider's
+			// status. Still this is not a problem, as RunAndWaitAll function will
+			// wait for the metrics for the divider animation which is generated
+			// after the divider animation finishes.
+			runner.RunMultiple(ctx, s, testCase.name, perfutil.RunAndWaitAll(
+				tconn, uiauto.Combine("drag resizing the splitview", actions...), histogramNames...),
 				func(ctx context.Context, pv *perfutil.Values, hists []*metrics.Histogram) error {
 					for _, hist := range hists {
 						value, err := hist.Mean()
