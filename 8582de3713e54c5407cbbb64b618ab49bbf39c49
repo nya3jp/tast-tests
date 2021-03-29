@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58bd76d_e319a9e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-29T02:45:50Z",
+      "side": 1,
+      "message": "LGTM % one more nit. Please also wait for Pavan\u0027s review for cellular related logics. Thanks!",
+      "revId": "8582de3713e54c5407cbbb64b618ab49bbf39c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de4fa513_0ad81771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_inhibited.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-29T02:45:50Z",
+      "side": 1,
+      "message": "I think this is also shillconst.ErrorMatchingServiceNotFound?",
+      "range": {
+        "startLine": 55,
+        "startChar": 42,
+        "endLine": 55,
+        "endChar": 74
+      },
+      "revId": "8582de3713e54c5407cbbb64b618ab49bbf39c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
