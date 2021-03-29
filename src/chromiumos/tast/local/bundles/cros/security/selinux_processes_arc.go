@@ -7,9 +7,9 @@ package security
 import (
 	"context"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/selinux"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
