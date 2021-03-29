@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fed3806d_7051c600",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T02:32:54Z",
+      "side": 1,
+      "message": "Thanks for update, LGTM with a minor comment.\n",
+      "revId": "6fe59ad08865bbd22d4532f3004c2dbf99f4c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d85c003d_723edd88",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/integrated_u2f.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-29T02:32:54Z",
+      "side": 1,
+      "message": "Can you just return nil? I guess you rewrote this to retErr because we\u0027re overwriting it in deferred functions, but just returning nil works.",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 14
+      },
+      "revId": "6fe59ad08865bbd22d4532f3004c2dbf99f4c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
