@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1df28b_078d5637",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-29T22:05:23Z",
+      "side": 1,
+      "message": "when the first attempt fails, is the err !\u003d null? if that\u0027s the case then this method can go inside the error block of first step.\n\nDoes the second attempt always succeed?",
+      "revId": "c7ce1210c4129dd46b3e20fc0113aa54c7f5179a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "397b34ea_73a3ff55",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-29T22:05:23Z",
+      "side": 1,
+      "message": "Can we factor out a method for closing the playstore and call it here instead of doing this double attempt logic here? This will also help any other test that wishes to close play store.",
+      "revId": "c7ce1210c4129dd46b3e20fc0113aa54c7f5179a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
