@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44f72cc8_1532a0c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-30T15:37:35Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "449d907f2f9b4379680a9159a31c7498656c3339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6acabfbf_8feef455",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-03-30T15:37:35Z",
+      "side": 1,
+      "message": "nit/style: Per http://go/go-style/guide#concision, prefer to remove extraneous syntax. You can remove the \"%v\" interpolation:\n\n    return errors.Wrap(observedErr, entry.Content)\n\nDitto for L401 (prefer consistency per http://go/go-style/guide#consistency)",
+      "range": {
+        "startLine": 406,
+        "startChar": 36,
+        "endLine": 406,
+        "endChar": 55
+      },
+      "revId": "449d907f2f9b4379680a9159a31c7498656c3339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
