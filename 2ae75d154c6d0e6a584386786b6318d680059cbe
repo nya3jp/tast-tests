@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7752a039_71cf5120",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/touch/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T20:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf87187_3f2f3e90",
+      "range": {
+        "startLine": 173,
+        "startChar": 8,
+        "endLine": 173,
+        "endChar": 14
+      },
+      "revId": "2ae75d154c6d0e6a584386786b6318d680059cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "519679fc_6743c756",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4522226_48de222f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/touch/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T20:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "519679fc_6743c756",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 14
+      },
+      "revId": "2ae75d154c6d0e6a584386786b6318d680059cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "696b312e_65fb1736",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-30T03:42:40Z",
       "side": 1,
       "message": "Should this have a function rather than relying on the user to do a sleep?  Maybe tc.Hold(2*time.Second)?",
+      "range": {
+        "startLine": 214,
+        "startChar": 21,
+        "endLine": 214,
+        "endChar": 97
+      },
+      "revId": "2ae75d154c6d0e6a584386786b6318d680059cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba62e05c_2b470131",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/touch/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T20:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "696b312e_65fb1736",
       "range": {
         "startLine": 214,
         "startChar": 21,
