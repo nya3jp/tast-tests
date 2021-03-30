@@ -22,6 +22,30 @@
       },
       "revId": "3e4e284b7b7ebec7c62a018244ba26912a476f43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4d83afa_0309c6d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/language_model_download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-30T00:12:32Z",
+      "side": 1,
+      "message": "I will make the list in the test param.\n\nRegarding timeout, I suppose you want to wait until file exists. Does the file size matter?",
+      "parentUuid": "fec8f1ee_ff727358",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "3e4e284b7b7ebec7c62a018244ba26912a476f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
