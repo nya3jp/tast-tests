@@ -22,6 +22,8 @@ const (
 	BootedDeviceDeveloperInternalSig   BootedDeviceType = "developer mode booted from internal device, signature verified kernel key"
 	BootedDeviceDeveloperRemovableSig  BootedDeviceType = "developer mode booted from removable device, signature verified kernel key"
 	BootedDeviceDeveloperRemovableHash BootedDeviceType = "developer mode booted from removable device, hash verified kernel key"
+	BootedDeviceRecoveryRemovableSig   BootedDeviceType = "recovery mode booted from removable device, signature verified kernel key"
+	BootedDeviceRecoveryRemovableHash  BootedDeviceType = "recovery mode booted from removable device, hash verified kernel key"
 )
 
 // BootedDeviceInfo groups all the info required to determine the correct BootedDeviceType
@@ -37,6 +39,8 @@ var knownBootedDeviceInfos = map[BootedDeviceInfo]BootedDeviceType{
 	BootedDeviceInfo{"developer", false, "sig"}: BootedDeviceDeveloperInternalSig,
 	BootedDeviceInfo{"developer", true, "sig"}:  BootedDeviceDeveloperRemovableSig,
 	BootedDeviceInfo{"developer", true, "hash"}: BootedDeviceDeveloperRemovableHash,
+	BootedDeviceInfo{"recovery", true, "sig"}:   BootedDeviceRecoveryRemovableSig,
+	BootedDeviceInfo{"recovery", true, "hash"}:  BootedDeviceRecoveryRemovableHash,
 }
 
 var (
