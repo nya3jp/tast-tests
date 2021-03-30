@@ -16,6 +16,23 @@
       "message": "Hi Oleh, I got this to running :) Could you please take another look?",
       "revId": "8b5aa18da0a7a0732f3496d55d1de94e47bdcdd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a48d902_194ea359",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-03-30T14:20:19Z",
+      "side": 1,
+      "message": "Hi, Kamil! Since Oleh is currently OOO, would you mind taking a look at this CL? :) ",
+      "revId": "8b5aa18da0a7a0732f3496d55d1de94e47bdcdd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
