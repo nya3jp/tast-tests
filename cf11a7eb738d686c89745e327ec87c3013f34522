@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32eab769_dcc4c13a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:27:56Z",
+      "side": 1,
+      "message": "If you don\u0027t plan to add a subtest in the near future, you can merge the ExtraSoftwareDeps into SoftwareDeps and remove the Params.",
+      "revId": "cf11a7eb738d686c89745e327ec87c3013f34522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
