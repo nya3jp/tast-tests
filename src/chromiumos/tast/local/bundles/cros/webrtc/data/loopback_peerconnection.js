@@ -30,8 +30,12 @@ async function start(profile, isSimulcast, width = 1280, height = 720) {
 
 async function runLoopbackPeerConnection(constraints, profile) {
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
-  stream.getTracks().forEach(track =>
-                                 localPeerConnection.addTrack(track, stream));
+  localPeerConnection.addTransceiver(stream.getVideoTracks()[0], {
+    // Prefer resolution even at the cost of visual quality to avoid falling
+    // down to SW video encoding, see b/181320567 or crbug.com/1179020.
+    degradationPreference: 'maintain-resolution',
+    streams : [ stream ],
+  });
 
   const offer = await localPeerConnection.createOffer();
   if (profile) {
@@ -51,6 +55,9 @@ async function runLoopbackPeerConnectionWithSimulcast(constraints) {
   const rids = [ 0, 1, 2 ];
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
   localPeerConnection.addTransceiver(stream.getVideoTracks()[0], {
+    // Prefer resolution even at the cost of visual quality to avoid falling
+    // down to SW video encoding, see b/181320567 or crbug.com/1179020.
+    degradationPreference: 'maintain-resolution',
     streams : [ stream ],
     sendEncodings : rids.map(rid => {rid}),
   });
