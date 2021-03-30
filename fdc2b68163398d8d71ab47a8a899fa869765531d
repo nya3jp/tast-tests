@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "fdc2b68163398d8d71ab47a8a899fa869765531d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8855f67e_da94d211",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 31
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-03-30T12:35:31Z",
+      "side": 1,
+      "message": "at first look, i have no problem with this, hwsec-wise.",
+      "revId": "fdc2b68163398d8d71ab47a8a899fa869765531d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
