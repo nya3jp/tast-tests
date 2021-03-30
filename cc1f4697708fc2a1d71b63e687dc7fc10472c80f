@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a604fdc4_73de541c",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-30T18:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "236a4d02_16460245",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "925e35bf_2196b25f",
@@ -84,6 +102,24 @@
       "writtenOn": "2021-03-30T13:25:08Z",
       "side": 1,
       "message": "nit: you don\u0027t need this comment",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3206bb2b_9ba0aa31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/backup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-30T18:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "925e35bf_2196b25f",
       "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "988d52ff_0b1b88ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/disable_arc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-30T18:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b4832ba_1342df05",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "614b15cd_0e1b8e2d",
@@ -118,6 +172,24 @@
       "writtenOn": "2021-03-30T13:25:08Z",
       "side": 1,
       "message": "nit: you don\u0027t need this comment",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d67bff35_c8f6d4ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-30T18:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "614b15cd_0e1b8e2d",
       "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "354a0fbb_a640abe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-30T18:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d39e471e_2c94abcc",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37f28543_e2e19171",
@@ -156,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "316c81a4_800f29bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_playstore_on.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-30T18:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37f28543_e2e19171",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e534ad90_e89440d0",
@@ -169,6 +277,24 @@
       "writtenOn": "2021-03-30T13:25:08Z",
       "side": 1,
       "message": "nit: you don\u0027t need this comment",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db03cd07_6e11cd4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_android_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-30T18:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e534ad90_e89440d0",
       "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
