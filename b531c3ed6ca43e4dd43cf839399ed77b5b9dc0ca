@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb2245d2_24ed97cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T23:15:08Z",
+      "side": 1,
+      "message": "Hi Jun, Aings and Alex are requesting that if wifi parameters are not provided (eg running with Moblab), the case will ignore the Wifi checking procedure.  Case was modified according this and these attribute are kept.",
+      "parentUuid": "9bdd0eb3_54137c91",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 62
+      },
+      "revId": "b531c3ed6ca43e4dd43cf839399ed77b5b9dc0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d62b7426_7d5ab5d6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-20T01:30:05Z",
       "side": 1,
       "message": "They are specific to this test case.  Use the name of the test case as suggested in https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Runtime-variables.\n\"ui.QuickCheckCUJ2.wifissid\" for example.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "b531c3ed6ca43e4dd43cf839399ed77b5b9dc0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea87a85_16ba860c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T23:15:08Z",
+      "side": 1,
+      "message": "Thanks for the link. Var names are changed.",
+      "parentUuid": "d62b7426_7d5ab5d6",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f447463_89380a51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T23:15:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03456d91_169219b5",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "b531c3ed6ca43e4dd43cf839399ed77b5b9dc0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "122e5dc9_1a95b78f",
@@ -83,6 +155,24 @@
       "writtenOn": "2021-02-20T01:30:05Z",
       "side": 1,
       "message": "As I noted on the genparams CL, I don\u0027t think codegen is necessary.  Why not writing everything by yourself?  That\u0027s mostly same as what you have in the quick_check2.go file.",
+      "revId": "b531c3ed6ca43e4dd43cf839399ed77b5b9dc0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae66dcc7_aafb572e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj2_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T23:15:08Z",
+      "side": 1,
+      "message": "This unit test has been removed, along with the changes of other CUJs.",
+      "parentUuid": "122e5dc9_1a95b78f",
       "revId": "b531c3ed6ca43e4dd43cf839399ed77b5b9dc0ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
