@@ -11,6 +11,7 @@ import (
 	"net/http/httptest"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
@@ -20,9 +21,10 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
+
+var arcOpt []chrome.Option
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -39,8 +41,8 @@ func init() {
 			"ui.signinProfileTestExtensionManifestKey",
 			"ui.gaiaPoolDefault",
 		},
-		// Test runs login / chrome restart 40+ times.
-		Timeout: 40 * time.Minute,
+		// Test runs login / chrome restart 60+ times.
+		Timeout: 60 * time.Minute,
 		Data:    []string{"animation.html", "animation.js"},
 	})
 }
@@ -49,13 +51,18 @@ func init() {
 func loginPerfStartToLoginScreen(ctx context.Context, s *testing.State, useTabletMode bool) (cr *chrome.Chrome, retErr error) {
 	// chrome.NoLogin() and chrome.KeepState() are needed to show the login
 	// screen with a user pod (instead of the OOBE login screen).
-	cr, err := chrome.New(
-		ctx,
+	options := []chrome.Option{
 		chrome.NoLogin(),
 		chrome.KeepState(),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
 		chrome.EnableRestoreTabs(),
 		chrome.SkipForceOnlineSignInForTesting(),
+		chrome.EnableWebAppInstall(),
+	}
+	options = append(options, arcOpt...)
+	cr, err := chrome.New(
+		ctx,
+		options...,
 	)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start chrome")
@@ -78,14 +85,18 @@ func loginPerfStartToLoginScreen(ctx context.Context, s *testing.State, useTable
 	}
 
 	// Wait for the login screen to be ready for password entry.
-	if st, err := lockscreen.WaitState(ctx, tLoginConn, func(st lockscreen.State) bool { return st.ReadyForPassword }, 30*time.Second); err != nil {
+	if st, err := lockscreen.WaitState(
+		ctx,
+		tLoginConn,
+		func(st lockscreen.State) bool { return st.ReadyForPassword },
+		30*time.Second); err != nil {
 		return nil, errors.Wrapf(err, "failed waiting for the login screen to be ready for password entry: last state: %+v", st)
 	}
 
 	return cr, nil
 }
 
-// loginPerfDoLogin logs in and waits for animations finish.
+// loginPerfDoLogin logs in and waits for animations to finish.
 func loginPerfDoLogin(ctx context.Context, cr *chrome.Chrome, credentials chrome.Creds) (retErr error) {
 	outdir, ok := testing.ContextOutDir(ctx)
 	if !ok {
@@ -146,109 +157,153 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
-
-	// Run an http server to serve the test contents for accessing from the chrome browsers.
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	defer server.Close()
-
-	url := server.URL + "/animation.html"
-
-	var credentials chrome.Creds
-
 	// Log in and log out to create a user pod on the login screen.
-	err := func() error {
-		cr, err := chrome.New(ctx, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
+	creds, err := func() (chrome.Creds, error) {
+		cr, err := chrome.New(ctx,
+			chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+			chrome.EnableRestoreTabs(),
+			chrome.SkipForceOnlineSignInForTesting(),
+			chrome.EnableWebAppInstall(),
+			// We anable ARC initially to fully initialize it.
+			chrome.ARCEnabled(),
+		)
 		if err != nil {
-			return errors.Wrap(err, "chrome login failed")
+			return chrome.Creds{}, errors.Wrap(err, "chrome login failed")
 		}
 		defer cr.Close(ctx)
 
-		credentials = cr.Creds()
+		creds := cr.Creds()
+		// Wait for ARC++ aps to download and initialize.
+		s.Log("Initialiize: let session fully initialize. Sleeping for 180 seconds.. ")
+		testing.Sleep(ctx, 180*time.Second)
 
-		if err := upstart.RestartJob(ctx, "ui"); err != nil {
-			s.Fatal("Failed to restart ui: ", err)
-		}
-		return nil
+		return creds, nil
 	}()
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
-
 	r := perfutil.NewRunner(nil)
 	currentWindows := 0
+
 	// Run the login flow for various situations.
 	// - change the number of browser windows, 2 or 8
 	// - the window system status; clamshell mode or tablet mode.
 	for _, windows := range []int{2, 8} {
-		if currentWindows != windows {
-			// Log in and log out to create a user pod on the login screen and required number of windows in session.
-			err := func() error {
-				cr, err := loginPerfStartToLoginScreen(ctx, s, false /*useTabletMode*/)
-				if err != nil {
-					return err
-				}
-				defer cr.Close(ctx)
-
-				if err := loginPerfDoLogin(ctx, cr, credentials); err != nil {
-					return err
-				}
-				if err := loginPerfCreateWindows(ctx, cr, url, windows-currentWindows); err != nil {
-					return err
-				}
-				return nil
-			}()
-			if err != nil {
-				s.Fatal("Failed to create new browser windows: ", err)
+		for _, arcMode := range []int{0, 1, 2} {
+			var userarcprefix string
+			switch arcMode {
+			case 0:
+				arcOpt = []chrome.Option{}
+				userarcprefix = "noarc"
+			case 1:
+				arcOpt = []chrome.Option{chrome.ARCEnabled()}
+				userarcprefix = "arcenabled"
+			case 2:
+				arcOpt = []chrome.Option{chrome.ARCSupported()}
+				userarcprefix = "arcsupported"
+			default:
+				s.Fatal("Unknown arcMode value=", arcMode)
 			}
-			currentWindows = windows
-		}
+			s.Log("Starting test: '"+userarcprefix+"' for ", windows, " windows")
 
-		for _, inTabletMode := range []bool{false, true} {
-			var suffix string
-			if inTabletMode {
-				suffix = ".TabletMode"
-			} else {
-				suffix = ".ClamshellMode"
+			// Ensure display on to record ui performance correctly.
+			if err := power.TurnOnDisplay(ctx); err != nil {
+				s.Fatal("Failed to turn on display: ", err)
 			}
 
-			// cr is shared between multiple runs, because Chrome connection must to be closed after histiograms are stored.
-			var cr *chrome.Chrome
+			// Run an http server to serve the test contents for accessing from the chrome browsers.
+			server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+			defer server.Close()
 
-			r.RunMultiple(ctx, s, fmt.Sprintf("%dwindows%s", currentWindows, suffix), func(ctx context.Context) ([]*metrics.Histogram, error) {
-				var err error
-				cr, err = loginPerfStartToLoginScreen(ctx, s, inTabletMode)
-				tLoginConn, err := cr.SigninProfileTestAPIConn(ctx)
-				if err != nil {
-					return nil, errors.Wrap(err, "creating login test api connection failed")
-				}
-				defer tLoginConn.Close()
-				return metrics.RunAndWaitAll(ctx, tLoginConn, time.Minute, func(ctx context.Context) error {
-					err := loginPerfDoLogin(ctx, cr, credentials)
+			url := server.URL + "/animation.html"
+			if currentWindows != windows {
+				// Log in and log out to create a user pod on the login screen and required number of windows in session.
+				err := func() error {
+					cr, err := loginPerfStartToLoginScreen(ctx, s, false /*useTabletMode*/)
 					if err != nil {
-						return errors.Wrap(err, "failed to log in")
+						return err
 					}
-					tconn, err := cr.TestAPIConn(ctx)
-					if err != nil {
-						return errors.Wrap(err, "failed to connect to test api")
-					}
-					defer tconn.Close()
-					if err = ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-						return ash.WaitWindowFinishAnimating(ctx, tconn, w.ID)
-					}); err != nil {
-						return errors.Wrap(err, "failed to wait")
-					}
-					return nil
-				},
-					"Ash.LoginAnimation.Smoothness"+suffix,
-					"Ash.LoginAnimation.Jank"+suffix,
-					"Ash.LoginAnimation.Duration"+suffix)
-			},
-				func(ctx context.Context, pv *perfutil.Values, hists []*metrics.Histogram) error {
 					defer cr.Close(ctx)
-					perfutil.StoreAllWithHeuristics(fmt.Sprintf("%dwindows", currentWindows))(ctx, pv, hists)
-					return nil
-				})
 
+					if err := loginPerfDoLogin(ctx, cr, creds); err != nil {
+						return err
+					}
+					if err := loginPerfCreateWindows(ctx, cr, url, windows-currentWindows); err != nil {
+						return err
+					}
+					return nil
+				}()
+				if err != nil {
+					s.Fatal("Failed to create new browser windows: ", err)
+				}
+				currentWindows = windows
+			}
+
+			for _, inTabletMode := range []bool{false, true} {
+				var suffix string
+				if inTabletMode {
+					suffix = ".TabletMode"
+				} else {
+					suffix = ".ClamshellMode"
+				}
+
+				// cr is shared between multiple runs, because Chrome connection must to be closed after histiograms are stored.
+				var cr *chrome.Chrome
+				// func Histogram(name string, direction perf.Direction, unit string, aggregator aggregationFunction) histogramSpecification {
+				storageSpec := perfutil.HistogramSpecifications(
+					perfutil.HistogramSpecificationWithHeuristics(ctx, "Ash.LoginAnimation.Smoothness"+suffix),
+					perfutil.HistogramSpecificationWithHeuristics(ctx, "Ash.LoginAnimation.Jank"+suffix),
+					perfutil.HistogramSpecificationWithHeuristics(ctx, "Ash.LoginAnimation.Duration"+suffix),
+					perfutil.HistogramSpecification("GPU.EnsureWorkVisibleDuration", perf.SmallerIsBetter, "microsecond", perfutil.HistogramMax),
+				)
+				r.RunMultiple(ctx, s,
+					fmt.Sprintf("%dwindows%s", currentWindows, suffix),
+					func(ctx context.Context) ([]*metrics.Histogram, error) {
+						var err error
+						cr, err = loginPerfStartToLoginScreen(ctx, s, inTabletMode)
+						if err != nil {
+							return nil, errors.Wrap(err, "failed to start to login screen")
+						}
+						tLoginConn, err := cr.SigninProfileTestAPIConn(ctx)
+						if err != nil {
+							return nil, errors.Wrap(err, "creating login test api connection failed")
+						}
+						defer tLoginConn.Close()
+						testFunc := func(ctx context.Context) error {
+							err := loginPerfDoLogin(ctx, cr, creds)
+							if err != nil {
+								return errors.Wrap(err, "failed to log in")
+							}
+							tconn, err := cr.TestAPIConn(ctx)
+							if err != nil {
+								return errors.Wrap(err, "failed to connect to test api")
+							}
+							defer tconn.Close()
+							if err = ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+								return ash.WaitWindowFinishAnimating(ctx, tconn, w.ID)
+							}); err != nil {
+								return errors.Wrap(err, "failed to wait")
+							}
+							return nil
+						}
+						return metrics.RunAndWaitAll(
+							ctx,
+							tLoginConn,
+							time.Minute,
+							testFunc,
+							storageSpec.Names()...,
+						)
+					},
+					func(ctx context.Context, pv *perfutil.Values, hists []*metrics.Histogram) error {
+						defer cr.Close(ctx)
+						perfutil.StoreAllAs(
+							storageSpec,
+							fmt.Sprintf("%dwindows-%s", currentWindows, userarcprefix),
+						)(ctx, pv, hists)
+						return nil
+					})
+
+			}
 		}
 	}
 	if err := r.Values().Save(ctx, s.OutDir()); err != nil {
