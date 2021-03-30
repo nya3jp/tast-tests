@@ -49,7 +49,7 @@ func CrosRuntimeProbeInputDevice(ctx context.Context, s *testing.State) {
 		s.Fatal("No input_device labels")
 	}
 
-	mapping, model, err := runtimeprobe.GetComponentCount(labelsStr, inputDeviceTypes)
+	mapping, model, err := runtimeprobe.GetComponentCount(ctx, labelsStr, inputDeviceTypes)
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
 	}
