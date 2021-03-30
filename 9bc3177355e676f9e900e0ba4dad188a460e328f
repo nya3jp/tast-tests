@@ -654,6 +654,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd93f24b_d58eaaeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:53:00Z",
+      "side": 1,
+      "message": "In this comment I said nothing about tab-discarding.\n\nI am saying about the metrics collection within the control of tabstrip, especially touch latency data points. Please verify that.",
+      "parentUuid": "89bc4297_e55d4b4d",
+      "range": {
+        "startLine": 373,
+        "startChar": 14,
+        "endLine": 373,
+        "endChar": 32
+      },
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10ee2640_786dad84",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
         "patchSetId": 25
@@ -1340,6 +1364,24 @@
       "side": 1,
       "message": "Now the refreshing page is in the recorder (for google news page refresh), I think we can keep it as touch. Same as switch window, we can discuss further if you think this is not necessary.",
       "parentUuid": "ba8f6816_68c0af01",
+      "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f698dcfb_a044ca5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:53:00Z",
+      "side": 1,
+      "message": "I believe that keyboard is better as it\u0027s simpler, faster, and less error-prone, but it\u0027s up to your choice.",
+      "parentUuid": "701de2ee_61575017",
       "revId": "9bc3177355e676f9e900e0ba4dad188a460e328f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
