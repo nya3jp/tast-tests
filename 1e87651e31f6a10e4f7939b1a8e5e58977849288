@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a58cc449_2486a5ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/html_video_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-30T00:13:47Z",
+      "side": 1,
+      "message": "Do you mind use graphicsChrome here so that we get graphics hang/crash checked?",
+      "range": {
+        "startLine": 30,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "1e87651e31f6a10e4f7939b1a8e5e58977849288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
