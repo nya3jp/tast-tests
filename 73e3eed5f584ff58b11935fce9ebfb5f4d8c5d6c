@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a85fb33_e3cba2f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T20:06:09Z",
+      "side": 1,
+      "message": "I think we shouldn\u0027t use global variables for this -- instead it\u0027s better to make it as a parameter to loginPerfStartToLoginScreen function.",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a17ba2_ef3a7ca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T20:06:09Z",
+      "side": 1,
+      "message": "I mentioned below for a similar comment, but possibly this is not necessary for this specific test case.  TurnOnDisplay is widely used for other performance tests, as they share the same chrome session with other tests.  This test does not share the chrome session with others.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a2992eb_20450a7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T20:06:09Z",
+      "side": 1,
+      "message": "Instead of ARCEnabled, what will happen if you use chrome.ARCSupported(), and then within this function (around testing.Sleep) optin.Perform() is invoked (https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git@v0.0.0-20210330184531-41050b38be13/src/chromiumos/tast/local/arc/optin#Perform)",
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cddc675_7c49aa7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T20:06:09Z",
+      "side": 1,
+      "message": "Consider defining them as string constants (or enums):\n  const (\n    noarc \u003d \"noarc\"\n    arcenabled \u003d \"arcenabled\"\n    arcsupported \u003d \"arcsupported\"\n  )\n\n  ...\n  for _, arcMode :\u003d range []string{noarc, arcenabled, arcsupported} {\n    ...\n\nThat way you don\u0027t need \"userarcprefix\" variable.",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 40
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c70d1e2e_34c557b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T20:06:09Z",
+      "side": 1,
+      "message": "Do we need to turn on display explicitly?  I don\u0027t think this is necessary -- the display should be turned on when a new chrome session starts.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 4
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a2b67d_bc6fddb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T20:06:09Z",
+      "side": 1,
+      "message": "Why does a new server have to be launched within the for-loop?  I believe this should be in the original position -- outside of the for-loop, launched just once.\n\nAlso please note that \"defer\" will be executed only on the end of the current function, not the scope.  So this server will not end until the entire test case finishes.  I don\u0027t think that\u0027s the wanted behavior.",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 0
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9def07_4c27a934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T20:06:09Z",
+      "side": 1,
+      "message": "In my experience, sometimes the last bucket of histogram could be open-ended and so the max value of the last bucket is extremely huge (like int64_max) while the actual data point isn\u0027t that big.  Did you make sure that is not the case for this specific UMA?\n\nI think it\u0027s better to locally verify that this is consistent with the actual reported numbers in chromium, by injecting LOG(ERROR) on your locally modified chromium.",
+      "range": {
+        "startLine": 257,
+        "startChar": 116,
+        "endLine": 257,
+        "endChar": 128
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9cd5d0_029f561e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T20:06:09Z",
+      "side": 1,
+      "message": "rather than introducing new types and functions, please write your own logic here.\ncf. https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go#146",
+      "range": {
+        "startLine": 297,
+        "startChar": 5,
+        "endLine": 305,
+        "endChar": 0
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
