@@ -44,16 +44,34 @@ var TabFinder = nodewith.Role(role.TreeItem).Ancestor(RootFinder)
 
 // Tab names in Help app.
 var (
-	SearchTabFinder   = TabFinder.Name("Search")
-	OverviewTabFinder = TabFinder.Name("Overview")
-	PerksTabFinder    = TabFinder.Name("Perks")
-	HelpTabFinder     = TabFinder.Name("Help")
-	WhatsNewTabFinder = TabFinder.Name("See what's new")
+	SearchTabFinder     = TabFinder.Name("Search")
+	OverviewTabFinder   = TabFinder.Name("Overview")
+	PerksTabFinder      = TabFinder.Name("Perks")
+	HelpTabFinder       = TabFinder.Name("Help")
+	WhatsNewTabFinder   = TabFinder.Name("See what's new")
+	ToggleSideBarFinder = nodewith.Name("Toggle sidebar").Role(role.PopUpButton).Ancestor(RootFinder)
 )
 
 // WaitForApp waits for the app to be shown and rendered.
 func (hc *HelpContext) WaitForApp() uiauto.Action {
-	return hc.ui.WaitUntilExists(OverviewTabFinder)
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			isOverviewTabShown, err := hc.ui.IsNodeFound(ctx, OverviewTabFinder)
+			if err != nil {
+				return errors.Wrap(err, "failed to check visibility of overview tab")
+			} else if isOverviewTabShown {
+				return nil
+			}
+
+			isToggleSideBarShown, err := hc.ui.IsNodeFound(ctx, ToggleSideBarFinder)
+			if err != nil {
+				return errors.Wrap(err, "failed to check visibility of toggle sidebar")
+			} else if isToggleSideBarShown {
+				return nil
+			}
+			return errors.New("Neither overview nor toggle sidebar are shown")
+		}, &testing.PollOptions{Timeout: 30 * time.Second})
+	}
 }
 
 // Launch launches help app and waits for it to be present in shelf.
