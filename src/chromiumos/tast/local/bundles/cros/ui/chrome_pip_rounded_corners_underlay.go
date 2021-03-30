@@ -33,6 +33,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 		Data:         []string{"bear-320x240.h264.mp4", "pip_video.html"},
+		Fixture:      "gpuWatchDog",
 	})
 }
 
