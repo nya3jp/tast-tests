@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa07033_8be44178",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-03-30T05:04:43Z",
+      "side": 1,
+      "message": "I\u0027ve created a revert for this CL, I only verified that it\u0027s passing reliably on amd64-generic VM, but unfortunately, it\u0027s flaky on betty VM.",
+      "revId": "f63fa262bc5bb4c03bed8bd937c601edbb1529a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
