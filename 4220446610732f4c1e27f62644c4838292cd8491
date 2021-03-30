@@ -16,6 +16,154 @@
       "message": "Tomasz, could you take a look before asking a tast reviewer? Thanks.",
       "revId": "4220446610732f4c1e27f62644c4838292cd8491",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb13b6ca_578f4407",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1355869
+      },
+      "writtenOn": "2021-03-30T03:26:46Z",
+      "side": 1,
+      "message": "Is it this one https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go? The comment in the package (and on the method you use) says it is deprecated in favor of common/testexec. Isn\u0027t it better to use the new package?",
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c7ebd6d_0819d21a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1355869
+      },
+      "writtenOn": "2021-03-30T03:26:46Z",
+      "side": 1,
+      "message": "update the description please",
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a6396e4_83f8459d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1355869
+      },
+      "writtenOn": "2021-03-30T03:26:46Z",
+      "side": 1,
+      "message": "logRotatorExecutable?\n\nI think you don\u0027t need parentheses if you have just one constant, but you\u0027ll probably need one more constant for \"7\".",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e953a337_a89ee8d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1355869
+      },
+      "writtenOn": "2021-03-30T03:26:46Z",
+      "side": 1,
+      "message": "How about making it a constant and calling it numLogFiles? I suggest getting rid of all bare 7s below as well.\n\nIf there is a particular reason for choosing 7, rather than 4 or 11, then it would be good to describe it in a comment. If any number works, then it could be stated in a comment too.",
+      "range": {
+        "startLine": 44,
+        "startChar": 13,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdfc5514_d9a141af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1355869
+      },
+      "writtenOn": "2021-03-30T03:26:46Z",
+      "side": 1,
+      "message": "calculateHashOfFile returns an error, but not a single call site makes use of it. How about saving the error here and adding it to the message below (\"Rotation failed\")? In this way, whoever is debugging this test in the future will know why exactly calculateHashOfFile returned nil.",
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98462906_6abffbca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1355869
+      },
+      "writtenOn": "2021-03-30T03:26:46Z",
+      "side": 1,
+      "message": "\u0027contents\u0027 is a better name than \u0027str\u0027, because the variable contains the contents of the file\n\nI don\u0027t understand why you use \u0027d1\u0027 below, I would call it contentsBytes, or just inline it ioutil.WriteFile([]byte(contents), ...).",
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8a7dab6_842c850a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1355869
+      },
+      "writtenOn": "2021-03-30T03:26:46Z",
+      "side": 1,
+      "message": "Do you think it would be a good idea to include the path in the error message, or it doesn\u0027t matter?",
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9862a1ca_0c55fe85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/log_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1355869
+      },
+      "writtenOn": "2021-03-30T03:26:46Z",
+      "side": 1,
+      "message": "I don\u0027t think an extra variable is needed. Can you just \"return fmt.Sprintf(..)\"?",
+      "revId": "4220446610732f4c1e27f62644c4838292cd8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
