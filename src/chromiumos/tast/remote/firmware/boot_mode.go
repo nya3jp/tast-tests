@@ -135,11 +135,11 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	}
 
 	// Send Tast files back to DUT.
-	var needSync bool
+	needSync := toMode != fromMode
 	if toMode == fwCommon.BootModeRecovery {
-		needSync = !h.doesRecHaveTastFiles
+		needSync = needSync && !h.doesRecHaveTastFiles
 	} else {
-		needSync = !h.doesDUTImageHaveTastFiles
+		needSync = needSync && !h.doesDUTImageHaveTastFiles
 	}
 	if needSync {
 		if err := h.SyncTastFilesToDUT(ctx); err != nil {
