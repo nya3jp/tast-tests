@@ -16,6 +16,24 @@
       "message": "when err !\u003d nil we should return an error",
       "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7afd6749_558f106d",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-30T03:28:49Z",
+      "side": 1,
+      "message": "No,As I observed that when play store is in minimized state we just want the tests to proceed and not fail. Hence this method takes care of closing play store only when if it is open.",
+      "parentUuid": "20fb4f28_f00aaf10",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
