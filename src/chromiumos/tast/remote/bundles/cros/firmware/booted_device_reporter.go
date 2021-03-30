@@ -7,6 +7,8 @@ package firmware
 import (
 	"context"
 
+	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/testing"
 )
@@ -18,6 +20,22 @@ func init() {
 		Contacts:     []string{"cros-fw-engprod@google.com"},
 		SoftwareDeps: []string{"crossystem"},
 		Attr:         []string{"group:firmware", "firmware_smoke"},
+		Data:         []string{firmware.ConfigFile},
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		Vars:         []string{"servo"},
+		Params: []testing.Param{{
+			Pre:       pre.NormalMode(),
+			ExtraAttr: []string{"firmware_smoke"},
+		}, {
+			Name:      "rec",
+			Pre:       pre.RecMode(),
+			ExtraAttr: []string{"firmware_smoke"},
+		}, {
+			Name: "dev",
+			Pre:  pre.DevMode(),
+			// TODO(gredelston): Reenable when b/183044117 is resolved
+			// ExtraAttr: []string{"firmware_smoke"},
+		}},
 	})
 }
 
