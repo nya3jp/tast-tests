@@ -39,6 +39,30 @@
       },
       "revId": "f641c06788bede16f934261e8c99de234a3022a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afdb5b36_4c945863",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-30T16:25:01Z",
+      "side": 1,
+      "message": "It conflicts with \"package ui\" on line 5, which refers to chromiumos/tast/local/bundles/cros/ui",
+      "parentUuid": "b7d285ff_8c9cb1a6",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "f641c06788bede16f934261e8c99de234a3022a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
