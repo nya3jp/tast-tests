@@ -67,18 +67,12 @@ func HTMLVideoRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Got no overlay strategy data")
 	}
 
-	var framesWithUnderlay int64
 	for _, bucket := range hist.Buckets {
 		// bucket.Min will be from enum OverlayStrategies as defined
 		// in tools/metrics/histograms/enums.xml in the chromium
-		// code base. Here we check for 4 which is "Underlay."
-		if bucket.Min == 4 {
-			framesWithUnderlay = bucket.Count
-			break
+		// code base. 1 is "No overlay", and 4 is "Underlay".
+		if bucket.Min != 1 && bucket.Min != 4 {
+			s.Errorf("Found %d frame(s) with an unexpected overlay strategy: got %d; want 1 or 4", bucket.Count, bucket.Min)
 		}
-	}
-
-	if totalFrames := hist.TotalCount(); framesWithUnderlay != totalFrames {
-		s.Errorf("Unexpected usage of underlay: got on only %d of %d frames; want on all frames", framesWithUnderlay, totalFrames)
 	}
 }
