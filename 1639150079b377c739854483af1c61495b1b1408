@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b141de_03460ee9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-30T18:39:44Z",
+      "side": 1,
+      "message": "+2 see comment",
+      "revId": "1639150079b377c739854483af1c61495b1b1408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e7499a2_2731e089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-30T18:39:44Z",
+      "side": 1,
+      "message": "don\u0027t forget the \"return\":\n\n  return errors.New(\"....\")",
+      "range": {
+        "startLine": 132,
+        "startChar": 3,
+        "endLine": 132,
+        "endChar": 9
+      },
+      "revId": "1639150079b377c739854483af1c61495b1b1408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
