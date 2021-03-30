@@ -32,8 +32,7 @@ func init() {
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		// TODO(b/182003308): this conflicts with graphics tests due to `restart udev`.
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
 		// TODO(b/149247291): remove the dependency once elm/hana upreved kernel to 4.19 or above.
 		// TODO(crbug.com/1115620): remove "Elm" and "Hana" after unibuild migration completed.
