@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20fb4f28_f00aaf10",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-03-30T03:11:47Z",
+      "side": 1,
+      "message": "when err !\u003d nil we should return an error",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
