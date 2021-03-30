@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecbbabd4_d60867a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-30T21:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "282b5019_b78f4fea",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "985b511f38d9c6c8cd0c040c52582eb35d24f64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b20a6f89_7d9d0941",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-30T18:55:54Z",
       "side": 1,
       "message": "nit: lowercase\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 72,
+        "startChar": 22,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "985b511f38d9c6c8cd0c040c52582eb35d24f64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f04823_298035a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-30T21:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b20a6f89_7d9d0941",
       "range": {
         "startLine": 72,
         "startChar": 22,
