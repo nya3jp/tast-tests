@@ -26,7 +26,7 @@ func init() {
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
-		Data:         append(webrtc.DataFiles(), launcher.DataArtifact, "getusermedia.html"),
+		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 		Params: []testing.Param{
 			{
 				Pre: pre.ChromeCameraPerf(),
@@ -35,6 +35,7 @@ func init() {
 			{
 				Name:              "lacros",
 				Fixture:           "chromeCameraPerfLacros",
+				ExtraData:         []string{launcher.DataArtifact},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Timeout:           7 * time.Minute, // A lenient limit for launching Lacros Chrome.
 				Val:               lacros.ChromeTypeLacros,
