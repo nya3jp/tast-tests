@@ -33,6 +33,24 @@
       "message": "I mean glibc should be more robust than just segfaulting on a NULL argument, shouldn\u0027t it?",
       "revId": "9950f9be61447a1b166fb7dfc61d2c9c3f33ba3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c34140a_56847cbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2021-03-30T18:51:09Z",
+      "side": 1,
+      "message": "I agree and I tried to make this argument upstream especially since there was no segfault in previous glibc revisions, but the answer I got was that we should never rely on undefined behavior where anything can happen.",
+      "parentUuid": "5ce30645_ec578b91",
+      "revId": "9950f9be61447a1b166fb7dfc61d2c9c3f33ba3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
