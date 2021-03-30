@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8980b941_57e7e1d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390815
+      },
+      "writtenOn": "2021-03-30T05:09:58Z",
+      "side": 1,
+      "message": "Thanks for writing this up Jun!!",
+      "revId": "1fe9210a92fb8bedaf909010d32605a49508c937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51bd5bb_442136dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1390815
+      },
+      "writtenOn": "2021-03-30T05:09:58Z",
+      "side": 1,
+      "message": "nit: toggle sidebar?",
+      "range": {
+        "startLine": 68,
+        "startChar": 59,
+        "endLine": 68,
+        "endChar": 71
+      },
+      "revId": "1fe9210a92fb8bedaf909010d32605a49508c937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
