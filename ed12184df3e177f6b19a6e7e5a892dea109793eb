@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8f6272_7ccf545f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T23:36:42Z",
+      "side": 1,
+      "message": "Hi Shuhei and Alex, let\u0027s continue the Zoom review when the memory is still fresh :-). Thanks a lot!",
+      "revId": "ed12184df3e177f6b19a6e7e5a892dea109793eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
