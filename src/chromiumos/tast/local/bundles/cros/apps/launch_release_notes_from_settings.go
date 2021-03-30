@@ -64,7 +64,7 @@ func LaunchReleaseNotesFromSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch Settings: ", err)
 	}
 
-	whatsNewTabFinder := nodewith.Name("See what's new").Role(role.StaticText).Ancestor(helpapp.RootFinder)
+	whatsNewTabFinder := nodewith.NameStartingWith("What’s New").Role(role.Heading).Ancestor(helpapp.RootFinder)
 
 	if err := uiauto.Combine("launch WhatsNew and verify landing page",
 		settings.LaunchWhatsNew(),
