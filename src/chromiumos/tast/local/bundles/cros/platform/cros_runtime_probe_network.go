@@ -9,6 +9,7 @@ import (
 	"sort"
 
 	rppb "chromiumos/system_api/runtime_probe_proto"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/runtimeprobe"
 	"chromiumos/tast/testing"
 )
@@ -27,10 +28,30 @@ func init() {
 	})
 }
 
+func getNetworkByType(result *rppb.ProbeResult, networkType string) ([]*rppb.Network, error) {
+	switch networkType {
+	case "cellular":
+		return result.GetCellular(), nil
+	case "ethernet":
+		return result.GetEthernet(), nil
+	case "wireless":
+		return result.GetWireless(), nil
+	}
+	return nil, errors.Errorf("unknown device_type %s", networkType)
+}
+
 // CrosRuntimeProbeNetwork checks if the network names in cros-label are
 // consistent with probed names from runtime_probe.
 func CrosRuntimeProbeNetwork(ctx context.Context, s *testing.State) {
-	var networkTypes = []string{"wireless", "cellular", "ethernet"}
+	categories := []rppb.ProbeRequest_SupportCategory{
+		rppb.ProbeRequest_cellular,
+		rppb.ProbeRequest_ethernet,
+		rppb.ProbeRequest_wireless,
+	}
+	var networkTypes = make([]string, len(categories))
+	for i, category := range categories {
+		networkTypes[i] = category.String()
+	}
 	labelsStr, ok := s.Var("autotest_host_info_labels")
 	if !ok {
 		s.Fatal("No network labels")
@@ -42,26 +63,28 @@ func CrosRuntimeProbeNetwork(ctx context.Context, s *testing.State) {
 	}
 
 	request := &rppb.ProbeRequest{
-		Categories: []rppb.ProbeRequest_SupportCategory{
-			rppb.ProbeRequest_network,
-		},
+		Categories: categories,
 	}
 	result, err := runtimeprobe.Probe(ctx, request)
 	if err != nil {
 		s.Fatal("Cannot get network components: ", err)
 	}
-	probedNetworkComponents := result.GetNetwork()
 
-	for _, component := range probedNetworkComponents {
-		values := component.GetValues()
-		networkType := values.GetType()
-		result, name := runtimeprobe.DecreaseComponentCount(mapping[networkType], model, component)
-		s.Logf("Probed %s: %s", networkType, name)
-		if !result {
-			if name == "generic" {
-				s.Logf("Skip known generic %s probe result", networkType)
-			} else {
-				s.Logf("Extra network component %q of type %s is probed", name, networkType)
+	for _, networkType := range networkTypes {
+		probedNetworkComponents, err := getNetworkByType(result, networkType)
+		if err != nil {
+			s.Error("Cannot get network: ", err)
+			continue
+		}
+		for _, component := range probedNetworkComponents {
+			result, name := runtimeprobe.DecreaseComponentCount(mapping[networkType], model, component)
+			s.Logf("Probed %s: %s", networkType, name)
+			if !result {
+				if name == "generic" {
+					s.Logf("Skip known generic %s probe result", networkType)
+				} else {
+					s.Logf("Extra network component %q of type %s is probed", name, networkType)
+				}
 			}
 		}
 	}
