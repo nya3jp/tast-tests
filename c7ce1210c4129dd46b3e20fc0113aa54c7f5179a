@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18db83d2_c5993cda",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-30T02:34:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ee1df28b_078d5637",
+      "revId": "c7ce1210c4129dd46b3e20fc0113aa54c7f5179a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "397b34ea_73a3ff55",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-29T22:05:23Z",
       "side": 1,
       "message": "Can we factor out a method for closing the playstore and call it here instead of doing this double attempt logic here? This will also help any other test that wishes to close play store.",
+      "revId": "c7ce1210c4129dd46b3e20fc0113aa54c7f5179a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3610de23_41894bbf",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-30T02:34:35Z",
+      "side": 1,
+      "message": "Done. Added ClosePlayStore method and moved the close logic inside.",
+      "parentUuid": "397b34ea_73a3ff55",
       "revId": "c7ce1210c4129dd46b3e20fc0113aa54c7f5179a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
