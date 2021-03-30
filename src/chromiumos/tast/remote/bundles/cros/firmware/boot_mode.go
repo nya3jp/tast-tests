@@ -11,6 +11,7 @@ import (
 	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 )
@@ -31,9 +32,10 @@ func init() {
 		Desc:         "Verifies that remote tests can boot the DUT into, and confirm that the DUT is in, the different firmware modes (normal, dev, and recovery)",
 		Contacts:     []string{"cros-fw-engprod@google.com"},
 		Data:         []string{firmware.ConfigFile},
-		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
+		ServiceDeps:  []string{"tast.cros.firmware.UtilsService", "tast.cros.firmware.BiosService"},
 		SoftwareDeps: []string{"crossystem"},
 		Attr:         []string{"group:firmware"},
+		Pre:          pre.NormalMode(),
 		Params: []testing.Param{{
 			Name: "normal",
 			Val: bootModeTestParams{
@@ -105,8 +107,8 @@ func init() {
 
 func BootMode(ctx context.Context, s *testing.State) {
 	tc := s.Param().(bootModeTestParams)
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), s.RequiredVar("servo"))
-	defer h.Close(ctx)
+	pv := s.PreValue().(*pre.Value)
+	h := pv.Helper
 	ms, err := firmware.NewModeSwitcher(ctx, h)
 	if err != nil {
 		s.Fatal("Creating mode switcher: ", err)
@@ -118,7 +120,7 @@ func BootMode(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Mode switcher type: ", h.Config.ModeSwitcherType)
 
-	// Ensure that DUT starts in normal mode.
+	// Double-check that DUT starts in normal mode.
 	if curr, err := h.Reporter.CurrentBootMode(ctx); err != nil {
 		s.Fatal("Checking boot mode at beginning of test: ", err)
 	} else if curr != fwCommon.BootModeNormal {
