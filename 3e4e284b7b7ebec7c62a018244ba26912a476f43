@@ -46,6 +46,30 @@
       },
       "revId": "3e4e284b7b7ebec7c62a018244ba26912a476f43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4e9333_d38e842b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/language_model_download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2021-03-30T00:51:14Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/piper///depot/google3/i18n/input/chrome/os/klp/supported_language_pack_metadata.json;bpv\u003d0\n\nTotal downloaded size for the 97 entries/items is about 595M.\nThe largest single downloading is ~33M.",
+      "parentUuid": "c4d83afa_0309c6d9",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "3e4e284b7b7ebec7c62a018244ba26912a476f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
