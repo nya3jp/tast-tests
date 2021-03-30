@@ -7,6 +7,7 @@ package platform
 import (
 	"context"
 	"sort"
+	"strings"
 
 	rppb "chromiumos/system_api/runtime_probe_proto"
 	"chromiumos/tast/local/bundles/cros/platform/runtimeprobe"
@@ -30,29 +31,23 @@ func init() {
 // CrosRuntimeProbeCamera checks if the camera component names in cros-label
 // are consistent with probed names from runtime_probe.
 func CrosRuntimeProbeCamera(ctx context.Context, s *testing.State) {
-	categories := []string{"video", "camera"}
-	labelsStr, ok := s.Var("autotest_host_info_labels")
-	if !ok {
-		s.Fatal("No camera labels")
+	const category = "camera"
+	hostInfoLabels, err := runtimeprobe.GetHostInfoLabels(s)
+	if err != nil {
+		s.Fatal("GetHostInfoLabels failed: ", err)
+	}
+	// Since video is aliasing to camera.
+	for i := range hostInfoLabels {
+		hostInfoLabels[i] = strings.ReplaceAll(hostInfoLabels[i], "video/", "camera/")
 	}
 
-	mapping, model, err := runtimeprobe.GetComponentCount(labelsStr, categories)
+	mapping, model, err := runtimeprobe.GetComponentCount(ctx, hostInfoLabels, []string{category})
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
 	}
+	labels := mapping[category]
 
-	var labels map[string]int
-	var category string
-	for _, c := range categories {
-		if len(mapping[c]) > 0 {
-			labels, category = mapping[c], c
-			// We will not have to look the other category since we are expecting
-			// only one of them present in DUT Labels.
-			break
-		}
-	}
-
-	if labels == nil {
+	if len(labels) == 0 {
 		s.Fatal("No camera labels")
 	}
 
