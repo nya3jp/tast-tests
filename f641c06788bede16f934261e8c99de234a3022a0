@@ -63,6 +63,30 @@
       },
       "revId": "f641c06788bede16f934261e8c99de234a3022a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d33f04_a04a70ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-30T23:52:29Z",
+      "side": 1,
+      "message": "This got merged but still worth to mention: I think they don\u0027t really conflict? You still import the same thing as \"ui\" in line18.\n\nIf you want to avoid reusing \"ui\" package name, you probably should also modify the usage in line93 to chromeui.",
+      "parentUuid": "afdb5b36_4c945863",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "f641c06788bede16f934261e8c99de234a3022a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
