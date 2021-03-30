@@ -33,6 +33,24 @@
       "message": "Just curious: no Maximized state for tablet mode?",
       "revId": "2095784adcfb0780b08672bc0a1074950be98a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57ec818_de284256",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-30T20:29:08Z",
+      "side": 1,
+      "message": "The test fails in that case, and I will have to investigate why.",
+      "parentUuid": "99d7be8b_94a6f007",
+      "revId": "2095784adcfb0780b08672bc0a1074950be98a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
