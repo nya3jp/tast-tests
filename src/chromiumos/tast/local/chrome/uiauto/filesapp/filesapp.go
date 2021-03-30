@@ -46,6 +46,7 @@ const (
 	Delete       = "Delete"
 	ZipSelection = "Zip select"
 	NewFolder    = "New folder"
+	Share        = "Share"
 )
 
 // Directory names.
