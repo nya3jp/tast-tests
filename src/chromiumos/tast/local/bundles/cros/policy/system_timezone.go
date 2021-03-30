@@ -29,7 +29,7 @@ func init() {
 			"alexanderhartl@google.com", // Original author of the remote test.
 			"chromeos-commercial-stability@google.com",
 		},
-		Attr:         []string{"group:enrollment"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "fakeDMSEnrolled",
 	})

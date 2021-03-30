@@ -22,8 +22,8 @@ func init() {
 			"vsavu@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
 		},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:enrollment"},
 		Fixture:      "chromeEnrolledLoggedIn",
 	})
 }
