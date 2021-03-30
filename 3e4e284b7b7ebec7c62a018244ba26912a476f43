@@ -70,6 +70,30 @@
       },
       "revId": "3e4e284b7b7ebec7c62a018244ba26912a476f43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b87b528_4d10d65e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/language_model_download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-03-30T04:29:50Z",
+      "side": 1,
+      "message": "Is there any specific rule to define success? Or a failure if anything happened.",
+      "parentUuid": "df4e9333_d38e842b",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "3e4e284b7b7ebec7c62a018244ba26912a476f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
