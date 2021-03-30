@@ -21,11 +21,6 @@ int main(void) {
   if (ret == -1)
     return 1;
 
-  /* Test with nullptr buffer. Should fail with EFAULT. */
-  ret = adjtimex(NULL);
-  if (ret != -1 || errno != EFAULT)
-    return 2;
-
   /*
    * Test a write operation. Under android alt-syscall, should fail with
    * EPERM.
