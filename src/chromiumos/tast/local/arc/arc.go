@@ -430,9 +430,12 @@ func diagnoseInitfailure(reader *syslog.Reader, observedErr error) error {
 			// happened.  Either way, return with last significant
 			// message if available.
 			if lastMessage != "" {
-				return errors.Wrapf(observedErr, "%v", lastMessage)
+				return errors.Wrap(observedErr, lastMessage)
 			}
 			return observedErr
+		}
+		if entry.Program == "crash_reporter" && strings.Contains(entry.Content, "Received crash notification for crosvm") {
+			return errors.Wrap(observedErr, entry.Content)
 		}
 		if strings.HasPrefix(entry.Program, "ARCVM") {
 			// TODO(b/167944318): try a better message
@@ -476,7 +479,7 @@ func WaitAndroidInit(ctx context.Context) error {
 	if err := waitProp(ctx, prop, "60", reportTiming); err != nil {
 		// Check if init/crosvm is still alive at this point.
 		if _, err := InitPID(); err != nil {
-			return errors.Wrap(err, "init/crosvm process exited unexpectedly")
+			return diagnoseInitfailure(reader, errors.Wrap(err, "init/crosvm process exited unexpectedly"))
 		}
 		return errors.Wrapf(err, "%s property is not set which shows that Android init did not come up", prop)
 	}
