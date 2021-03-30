@@ -26,6 +26,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "479b7c64_a3617c38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/language_model_download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2021-03-30T00:51:14Z",
+      "side": 1,
+      "message": "So the switching may not start downloading. Decoder will detect LM once key event is request to decode.",
+      "parentUuid": "f4620f4f_45214d37",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "18f2da1e9898a3999baa5ecd3cd5d678c4434ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9105b5d_3ce0461c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/language_model_download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2021-03-30T00:51:14Z",
+      "side": 1,
+      "message": "Up to you. if the test env will be cleanup after testing. it should be ok to keep it. \n\nFYI, all the downloaded file are zip file, so they will be removed automatically by decoder after unzip. \n\nAll the unzipped files should be over 2G",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 56
+      },
+      "revId": "18f2da1e9898a3999baa5ecd3cd5d678c4434ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7635cd57_a354a02b",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/language_model_download.go",
         "patchSetId": 2
@@ -37,6 +84,30 @@
       "writtenOn": "2021-03-30T00:12:32Z",
       "side": 1,
       "message": "You have not answered these questions",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 53
+      },
+      "revId": "18f2da1e9898a3999baa5ecd3cd5d678c4434ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c6482bf_7fedb5ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/language_model_download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2021-03-30T00:51:14Z",
+      "side": 1,
+      "message": "No need, all download can be tested in one session.",
+      "parentUuid": "7635cd57_a354a02b",
       "range": {
         "startLine": 96,
         "startChar": 0,
