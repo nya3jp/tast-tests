@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd928776_2b9c2c38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-30T18:55:54Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "985b511f38d9c6c8cd0c040c52582eb35d24f64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "282b5019_b78f4fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-30T18:55:54Z",
+      "side": 1,
+      "message": "nit (here and below): prefer short variable names for local limited scope\n\nit could be \"shown\" / \"found\" (and then you reuse it), or \"overview\" or \"overviewShown\" (although this one is rather long... but shorter than the original), etc...\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#variable-names",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "985b511f38d9c6c8cd0c040c52582eb35d24f64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b20a6f89_7d9d0941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/helpapp/helpapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-03-30T18:55:54Z",
+      "side": 1,
+      "message": "nit: lowercase\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 72,
+        "startChar": 22,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "985b511f38d9c6c8cd0c040c52582eb35d24f64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
