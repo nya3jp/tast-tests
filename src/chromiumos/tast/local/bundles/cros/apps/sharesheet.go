@@ -18,8 +18,10 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/filesapp"
-	"chromiumos/tast/local/chrome/ui/sharesheet"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -116,19 +118,19 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to launch the Files app: ", err)
 	}
-	defer files.Release(cleanupCtx)
 
-	// Open the Downloads folder and check for the test file.
-	if err := files.OpenDownloads(ctx); err != nil {
-		s.Fatal("Failed to open the Downloads folder: ", err)
-	}
+	// The Sharesheet appears to not properly update the accessibility tree with
+	// the coordinates whilst animating. The total time to animate is currently 150ms
+	// so setting to 1s to ensure low-end devices are given enough time.
+	sharesheet := uiauto.New(tconn).WithInterval(time.Second)
+	sharesheetTargetButton := nodewith.Role(role.Button).NameContaining(appShareLabel).ClassName("SharesheetTargetButton")
 
-	if err := files.SelectContextMenu(ctx, expectedFileName, filesapp.Share); err != nil {
-		s.Fatal("Failed to click share button in context menu: ", err)
-	}
-
-	if err := sharesheet.ClickApp(ctx, tconn, appShareLabel); err != nil {
-		s.Fatal("Failed to click app on stable sharesheet: ", err)
+	if err := uiauto.Combine("Open Downloads and Click sharesheet",
+		files.OpenDownloads(),
+		files.ClickContextMenuItem(expectedFileName, filesapp.Share),
+		sharesheet.LeftClick(sharesheetTargetButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to open downloads and click share button: ", err)
 	}
 
 	var receivedFile fileNameAndContents
