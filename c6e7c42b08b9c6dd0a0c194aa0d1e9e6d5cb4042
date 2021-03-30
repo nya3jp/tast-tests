@@ -16,6 +16,23 @@
       "message": "Hi Hidehiko,\n\nTo successfully run lacros test on devices with MIPI cameras (e.g. Soraka, Nocturne), we need to use a newer version of Lacros image which contains CL to support MIPI cameras: \"https://crrev.com/c/2763448\" (91.0.4456.0).\nTherefore, I update the Lacros build to 91.0.4463.0. PTAL, thanks!",
       "revId": "c6e7c42b08b9c6dd0a0c194aa0d1e9e6d5cb4042",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "433f09fd_628820ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-30T15:04:09Z",
+      "side": 1,
+      "message": "We track the fishfood released binary now.\nCan we wait for the next one?",
+      "revId": "c6e7c42b08b9c6dd0a0c194aa0d1e9e6d5cb4042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
