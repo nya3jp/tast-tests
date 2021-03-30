@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44c2cd6_19d67f8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T23:15:08Z",
+      "side": 1,
+      "message": "Hi Jun, added a new CL to add some helper functions to shill. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2795893\n\nModified this case to use shill package to handle wifi.",
+      "parentUuid": "e6891bf2_c783e0af",
+      "revId": "5107a6feaa4e40375867c79f91f4d16281efc24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f13c4194_c4df963a",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-20T01:30:05Z",
       "side": 1,
       "message": "Remove all comment-out ones.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "5107a6feaa4e40375867c79f91f4d16281efc24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f08350_51291990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T23:15:08Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "f13c4194_c4df963a",
       "range": {
         "startLine": 55,
         "startChar": 0,

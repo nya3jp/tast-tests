@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d3d1cd6_1b6bd9f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T23:15:08Z",
+      "side": 1,
+      "message": "Hi Jun and Alex, sorry to take so long to rework on this CL. We spent some time figuring out how to control WiFi from shill while working on other priorities. A new CL for shill package change is posted for review: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2795893. And comments for this CL were addressed. \nAlso adding shuhei as reviewer.\nThanks to everyone for your patience, time and valuable comments!",
+      "revId": "744700efabcdd5827127ddddfce050922df4d63b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
