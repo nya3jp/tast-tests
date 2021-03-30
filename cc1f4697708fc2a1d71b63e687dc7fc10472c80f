@@ -34,6 +34,143 @@
       "parentUuid": "20fb4f28_f00aaf10",
       "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e44793f_0b0ba6dd",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-30T13:25:08Z",
+      "side": 1,
+      "message": "You might want to put this explanation in a comment, since it\u0027s not obvious from this check alone, I think.",
+      "parentUuid": "7afd6749_558f106d",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236a4d02_16460245",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-30T13:25:08Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need this comment",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925e35bf_2196b25f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/backup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-30T13:25:08Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need this comment",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4832ba_1342df05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/disable_arc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-30T13:25:08Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need this comment",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "614b15cd_0e1b8e2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-30T13:25:08Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need this comment",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d39e471e_2c94abcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-30T13:25:08Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need this comment",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f28543_e2e19171",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_playstore_on.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-30T13:25:08Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need this comment",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e534ad90_e89440d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_android_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-03-30T13:25:08Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need this comment",
+      "revId": "cc1f4697708fc2a1d71b63e687dc7fc10472c80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
