@@ -16,6 +16,23 @@
       "message": "ptal",
       "revId": "817e30c2b63180c4a05cf7624c067c4efb5e5cd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1745bc73_659192a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-03-30T14:30:37Z",
+      "side": 1,
+      "message": "pending now, because we reverted lacros.Basic to informational, and this test is on top of it.",
+      "revId": "817e30c2b63180c4a05cf7624c067c4efb5e5cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
