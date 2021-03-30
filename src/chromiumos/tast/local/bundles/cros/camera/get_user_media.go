@@ -26,7 +26,7 @@ func init() {
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         append(webrtc.DataFiles(), launcher.DataArtifact, "getusermedia.html"),
+		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 		Params: []testing.Param{
 			{
 				Name:              "real",
@@ -51,9 +51,8 @@ func init() {
 				Name:      "lacros",
 				Fixture:   "chromeVideoLacros",
 				ExtraAttr: []string{"informational"},
-				// TODO(b/175168296): Change the capability to |caps.BuiltinCamera| to test MIPI
-				// cameras as well once they are supported on Lacros.
-				ExtraSoftwareDeps: []string{caps.BuiltinUSBCamera, "camera_720p", "lacros"},
+				ExtraData: []string{launcher.DataArtifact},
+				ExtraSoftwareDeps: []string{caps.BuiltinOrVividCamera, "camera_720p", "lacros"},
 				Timeout:           7 * time.Minute, // A lenient limit for launching Lacros Chrome.
 				Val:               lacros.ChromeTypeLacros,
 			},
