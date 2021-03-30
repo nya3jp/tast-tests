@@ -130,7 +130,6 @@ func init() {
 				testFunc:    testMaxEnqueuedCrash,
 				consentType: localcrash.MockConsent,
 			},
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "core2md_failure",
 			Val: userCrashParams{
