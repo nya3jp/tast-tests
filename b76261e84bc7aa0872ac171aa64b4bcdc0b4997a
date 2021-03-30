@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "067c89a5_17d6c98f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-30T08:28:03Z",
+      "side": 1,
+      "message": "I reuse the previous refactor bug as this is likely a followup of it.",
+      "parentUuid": "a9c60fb8_90391c9d",
+      "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ceca314d_7a686482",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd834097_686b18ec",
+        "filename": "src/chromiumos/tast/local/dbusutil/property_holder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-30T08:28:03Z",
+      "side": 1,
+      "message": "Callers are renamed, but I\u0027m not sure if it might be safer to keep the old function for a while and do this in \"gradual refactor\" fashion. I see new cellular tests are actively added and might conflict with this change in parallel CQ.\n\nWDYT?",
+      "parentUuid": "f8402df2_b3fc2632",
+      "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df05ecdc_948b4ec2",
         "filename": "src/chromiumos/tast/local/shill/property_holder.go",
         "patchSetId": 3
@@ -82,6 +118,24 @@
       "writtenOn": "2021-03-29T15:05:39Z",
       "side": 1,
       "message": "You plan to remove the deprecated usages soon, right?",
+      "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f78496_09688e39",
+        "filename": "src/chromiumos/tast/local/shill/property_holder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-30T08:28:03Z",
+      "side": 1,
+      "message": "Yeah, I renamed all the callers I saw now, but probably safer to do this in \"gradual refactor\" fashion as I think wifi/cellular/network tests are developed quite actively.",
+      "parentUuid": "df05ecdc_948b4ec2",
       "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
