@@ -30,13 +30,21 @@ func init() {
 // CrosRuntimeProbeNetwork checks if the network names in cros-label are
 // consistent with probed names from runtime_probe.
 func CrosRuntimeProbeNetwork(ctx context.Context, s *testing.State) {
-	var networkTypes = []string{"wireless", "cellular", "ethernet"}
-	labelsStr, ok := s.Var("autotest_host_info_labels")
-	if !ok {
-		s.Fatal("No network labels")
+	categories := []rppb.ProbeRequest_SupportCategory{
+		rppb.ProbeRequest_cellular,
+		rppb.ProbeRequest_ethernet,
+		rppb.ProbeRequest_wireless,
+	}
+	var networkTypes = make([]string, len(categories))
+	for i, category := range categories {
+		networkTypes[i] = category.String()
+	}
+	hostInfoLabels, err := runtimeprobe.GetHostInfoLabels(s)
+	if err != nil {
+		s.Fatal("GetHostInfoLabels failed: ", err)
 	}
 
-	mapping, model, err := runtimeprobe.GetComponentCount(labelsStr, networkTypes)
+	mapping, model, err := runtimeprobe.GetComponentCount(ctx, hostInfoLabels, networkTypes)
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
 	}
