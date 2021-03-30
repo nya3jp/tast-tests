@@ -69,7 +69,8 @@ func CrosRuntimeProbeInputDevice(ctx context.Context, s *testing.State) {
 	for _, inputDeviceType := range inputDeviceTypes {
 		probedInputDeviceComponents, err := getInputDeviceByType(result, inputDeviceType)
 		if err != nil {
-			s.Fatal("Cannot get input_device: ", err)
+			s.Error("Cannot get input_device: ", err)
+			continue
 		}
 		for _, component := range probedInputDeviceComponents {
 			result, name := runtimeprobe.DecreaseComponentCount(mapping[inputDeviceType], model, component)
