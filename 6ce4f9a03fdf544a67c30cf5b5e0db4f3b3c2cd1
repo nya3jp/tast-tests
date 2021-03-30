@@ -16,6 +16,23 @@
       "message": "Gwendal, please check if it\u0027s the good time to make the two tast tests CQ blockers.",
       "revId": "6ce4f9a03fdf544a67c30cf5b5e0db4f3b3c2cd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6277e67a_b6a2484f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-30T00:22:45Z",
+      "side": 1,
+      "message": "I see some failure related to latency, I will leave it to informational.",
+      "revId": "6ce4f9a03fdf544a67c30cf5b5e0db4f3b3c2cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
