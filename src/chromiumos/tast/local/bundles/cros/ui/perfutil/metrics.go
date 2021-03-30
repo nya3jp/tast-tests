@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/testing"
 )
 
@@ -25,6 +26,9 @@ const (
 func estimateMetricType(ctx context.Context, histname string) metricType {
 	// PresentationTime is latency metric.
 	if strings.Contains(histname, "PresentationTime") {
+		return metricLatency
+	}
+	if strings.Contains(histname, "Duration") {
 		return metricLatency
 	}
 	// Jank is the opposite of smoothness, so should be treated as "smaller is better".
@@ -81,4 +85,62 @@ func CreateExpectations(ctx context.Context, histnames ...string) map[string]flo
 		}
 	}
 	return result
+}
+
+// HistogramMean is an aggregationFunction to calculate Histogram.Mean()
+func HistogramMean(hist *metrics.Histogram) (float64, error) {
+	return hist.Mean()
+}
+
+// HistogramMax is an aggregationFunction to calculate Histogram.Max()
+func HistogramMax(hist *metrics.Histogram) (float64, error) {
+	return hist.Max()
+}
+
+// StoreFunc is a function to be used for RunMultiple()
+type StoreFunc func(ctx context.Context, pv *Values, hists []*metrics.Histogram) error
+
+type aggregationFunction func(*metrics.Histogram) (float64, error)
+
+type histogramSpecification struct {
+	name       string
+	direction  perf.Direction
+	unit       string
+	aggregator aggregationFunction
+}
+
+type histogramSpecificationsMap map[string]histogramSpecification
+
+// HistogramSpecifications is a generator to create histogramSpecificationsMap
+func HistogramSpecifications(specifications ...histogramSpecification) histogramSpecificationsMap {
+	result := make(histogramSpecificationsMap, len(specifications))
+	for _, spec := range specifications {
+		result[spec.name] = spec
+	}
+	return result
+}
+
+// Names returns list of metrics names to be used in RunMultiple()
+func (specifications histogramSpecificationsMap) Names() []string {
+	val := make([]string, len(specifications))
+	i := 0
+	for name := range specifications {
+		val[i] = name
+		i++
+	}
+	return val
+}
+
+// HistogramSpecification is a generator to explicitly create
+// histogramSpecification
+func HistogramSpecification(name string, direction perf.Direction, unit string, aggregator aggregationFunction) histogramSpecification {
+	return histogramSpecification{name, direction, unit, aggregator}
+}
+
+// HistogramSpecificationWithHeuristics creates histogramSpecification using
+// heuristics
+func HistogramSpecificationWithHeuristics(ctx context.Context, histname string) histogramSpecification {
+	direction, unit := estimateMetricPresenattionType(ctx, histname)
+	aggregator := func(histogram *metrics.Histogram) (float64, error) { return histogram.Mean() }
+	return histogramSpecification{histname, direction, unit, aggregator}
 }
