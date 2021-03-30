@@ -52,12 +52,12 @@ func CrosRuntimeProbeNetwork(ctx context.Context, s *testing.State) {
 	for i, category := range categories {
 		networkTypes[i] = category.String()
 	}
-	labelsStr, ok := s.Var("autotest_host_info_labels")
-	if !ok {
-		s.Fatal("No network labels")
+	hostInfoLabels, err := runtimeprobe.GetHostInfoLabels(s)
+	if err != nil {
+		s.Fatal("GetHostInfoLabels failed: ", err)
 	}
 
-	mapping, model, err := runtimeprobe.GetComponentCount(labelsStr, networkTypes)
+	mapping, model, err := runtimeprobe.GetComponentCount(ctx, hostInfoLabels, networkTypes)
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
 	}
