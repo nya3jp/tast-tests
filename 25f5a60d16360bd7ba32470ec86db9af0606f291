@@ -80,6 +80,30 @@
       },
       "revId": "25f5a60d16360bd7ba32470ec86db9af0606f291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "252e4550_5a445b46",
+        "filename": "src/chromiumos/tast/local/chrome/ui/pointer/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:17:33Z",
+      "side": 1,
+      "message": "It ended up being 2 CLs by the way:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2783570\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2793148\n\nThe latter will come within this week, I hope.",
+      "parentUuid": "3415cae8_0c383a48",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "25f5a60d16360bd7ba32470ec86db9af0606f291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
