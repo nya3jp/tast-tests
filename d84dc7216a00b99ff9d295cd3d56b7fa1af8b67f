@@ -1,6 +1,144 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2100402_10dcf6b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "UI",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e99885c_f4e15758",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "code",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cca04f2_832884a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "the existing",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d2f508_4e23a9df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "for ARCVM condition",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d64b0ac_743a9a94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "ARC-R",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 55
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5745b0e_6858dc5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "for the opposite condition",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ed0361be_4e98fbbf",
@@ -14,6 +152,143 @@
       "writtenOn": "2021-03-29T18:53:23Z",
       "side": 1,
       "message": "LGTM",
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9d76f32_904c3155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "on/off",
+      "range": {
+        "startLine": 198,
+        "startChar": 40,
+        "endLine": 198,
+        "endChar": 46
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7123046_aa22be70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "to find",
+      "range": {
+        "startLine": 213,
+        "startChar": 36,
+        "endLine": 213,
+        "endChar": 43
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c063f6a_f21d5d4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "What\u0027s the rule of capitalizing case in the codebase?",
+      "range": {
+        "startLine": 213,
+        "startChar": 44,
+        "endLine": 213,
+        "endChar": 52
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "029f222c_cff264c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "What\u0027s the function and relationship of \"Turn Off Backup\" button and Backup toggle?\n\nWhy you expect \"backupStatus \u003d\u003d on\" in line 229 after clicking \"Turn Off Backup\" button?",
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e0e243_b8457246",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "I feel that the test body is too lengthy. Would it be better to move out like:\nif t \u003d\u003d arc.VM {\n  testBackupButtonVM(...)\n} else {\n  testBackupButton(...)\n}",
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b552550_b8f276ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "For logging, it would be better to log on both condition or not logging.",
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9bd3e5_68d0ebcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:57:14Z",
+      "side": 1,
+      "message": "As an outsider, I don\u0027t get the semantics of the code: if backup is on, we want to turn off the backup. But why we need to click backupToggleOn? Can you elaborate the UI flow as comment?",
       "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
