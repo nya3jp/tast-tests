@@ -33,6 +33,24 @@
       "message": "We track the fishfood released binary now.\nCan we wait for the next one?",
       "revId": "c6e7c42b08b9c6dd0a0c194aa0d1e9e6d5cb4042",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa1afe6_5ef86534",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-03-30T20:46:15Z",
+      "side": 1,
+      "message": "Just to clarify, wait for the next fishfood release or next milestone? Last time when I tried to uprev, the recommendation was to wait for the next milestone, and there is a huge difference between them in terms of their delays.",
+      "parentUuid": "433f09fd_628820ff",
+      "revId": "c6e7c42b08b9c6dd0a0c194aa0d1e9e6d5cb4042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
