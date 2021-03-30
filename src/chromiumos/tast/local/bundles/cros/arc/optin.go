@@ -45,7 +45,6 @@ func init() {
 		}, {
 			Name:              "vm",
 			Val:               3,
-			ExtraAttr:         []string{"informational"}, // TODO(b/177341225): remove after stabilized.
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
 			Name:              "vm_unstable",
