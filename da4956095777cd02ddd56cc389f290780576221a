@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac8d2c6d_3fa94a1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "changed mute to ui.cujMute. Still keep the two wpr ones because it is used by WPR preconditions.",
+      "parentUuid": "3988981e_40abb9e0",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ea80982_ae308878",
@@ -87,6 +111,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83e7b7a5_7d75b662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "urlLink renamed to webPageInfo, comments were added to further explain this struct, and struct chromeTab \u0026 chromeWindow are also documented",
+      "parentUuid": "6ea80982_ae308878",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 4
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "709418d6_e6e54955",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "Thanks. All related usage is changed to pointer",
+      "parentUuid": "a20a8565_533cf096",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 12
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38ebc84e_d2ac69ad",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-29T09:05:27Z",
       "side": 1,
       "message": "Do you think we can make it a local variable in searchElementWithPatternAndClick?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39503832_e28e0df3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "This field is removed.",
+      "parentUuid": "38ebc84e_d2ac69ad",
       "range": {
         "startLine": 87,
         "startChar": 1,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9979fc31_a82f6114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "Thanks. Changed all redirection to navigation.",
+      "parentUuid": "80547fe0_78cb79cd",
+      "range": {
+        "startLine": 99,
+        "startChar": 33,
+        "endLine": 99,
+        "endChar": 41
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a92c3602_310628f8",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de52b26b_8e9e5aed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "Thanks for creating a bug. You can always see issues. TODO added.",
+      "parentUuid": "a92c3602_310628f8",
+      "range": {
+        "startLine": 99,
+        "startChar": 55,
+        "endLine": 101,
+        "endChar": 65
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0129a550_21bbcce4",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-03-29T09:05:27Z",
       "side": 1,
       "message": "s/var/const/g",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 6
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f59816_12947f8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "0129a550_21bbcce4",
       "range": {
         "startLine": 104,
         "startChar": 3,
@@ -225,6 +393,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6165cb81_04a411ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "6597bd7b_9661b2d9",
+      "range": {
+        "startLine": 106,
+        "startChar": 18,
+        "endLine": 106,
+        "endChar": 20
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b49eca92_2cdc77cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "move to single line.",
+      "parentUuid": "500156d8_c7597f61",
+      "range": {
+        "startLine": 106,
+        "startChar": 22,
+        "endLine": 106,
+        "endChar": 23
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d6a6e3e_26844887",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-03-29T09:05:27Z",
       "side": 1,
       "message": "nit\u0026optional: err is the most typical naming.",
+      "range": {
+        "startLine": 154,
+        "startChar": 5,
+        "endLine": 154,
+        "endChar": 6
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59d5649f_e6bb0bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "8d6a6e3e_26844887",
       "range": {
         "startLine": 154,
         "startChar": 5,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a18d0a8b_c8505d19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "6bf66e5a_d97c38b2",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be96169b_bf9e0c38",
@@ -288,6 +552,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0074e13_ff8e3f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "renamed to generateTabSwitchTargets()",
+      "parentUuid": "be96169b_bf9e0c38",
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30f08f67_0ba4663c",
@@ -301,6 +583,30 @@
       "writtenOn": "2021-03-29T09:05:27Z",
       "side": 1,
       "message": "for i :\u003d range windows\n\nsince we don\u0027t use \"window\" value which is always nil. ditto for the loop for j below.",
+      "range": {
+        "startLine": 263,
+        "startChar": 8,
+        "endLine": 263,
+        "endChar": 14
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40141b56_4827bced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30f08f67_0ba4663c",
       "range": {
         "startLine": 263,
         "startChar": 8,
@@ -334,6 +640,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c02f47c_cd98b60d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "Fixed. Directly construct and assign to windows[i].",
+      "parentUuid": "9baff070_d8292609",
+      "range": {
+        "startLine": 264,
+        "startChar": 2,
+        "endLine": 265,
+        "endChar": 42
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77a35e52_026752d3",
@@ -347,6 +677,30 @@
       "writtenOn": "2021-03-29T09:05:27Z",
       "side": 1,
       "message": "When we couldn\u0027t find an eligible urlLink from allLinks, we end up setting window.tabs[j] \u003d nil, which sounds unexpected.",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 276,
+        "endChar": 4
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c78acc_ecbafb29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "fixed the logic by returning error if no enough configured tabs for the given level.",
+      "parentUuid": "77a35e52_026752d3",
       "range": {
         "startLine": 276,
         "startChar": 3,
@@ -380,6 +734,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e407ab2_6a50f8d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "moved some logic to new function openAllWindowsAndTabs() and tabSwitchAction()",
+      "parentUuid": "9da8b2d8_121d2edd",
+      "range": {
+        "startLine": 288,
+        "startChar": 5,
+        "endLine": 288,
+        "endChar": 9
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "390c856c_2b48b91f",
@@ -393,6 +771,30 @@
       "writtenOn": "2021-03-29T09:05:27Z",
       "side": 1,
       "message": "In general please try to define local variables just before they\u0027re needed, rather than declaring them all at once like C89.",
+      "range": {
+        "startLine": 351,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 36
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc8a287_0e4eeb82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "390c856c_2b48b91f",
       "range": {
         "startLine": 351,
         "startChar": 2,
@@ -426,6 +828,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7557b26_a6640ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "Chrome app has already been started at the start of the test, in order to measure chrome start time. There should be a blank chrome tab and we just reuse it. (comments added)",
+      "parentUuid": "338f8715_0d189dc3",
+      "range": {
+        "startLine": 369,
+        "startChar": 3,
+        "endLine": 369,
+        "endChar": 37
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a6c9a06_9f9d71b3",
@@ -449,6 +875,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ea7a5e_5103fea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "4a6c9a06_9f9d71b3",
+      "range": {
+        "startLine": 396,
+        "startChar": 3,
+        "endLine": 396,
+        "endChar": 59
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b506f067_c3fafbbc",
@@ -462,6 +912,30 @@
       "writtenOn": "2021-03-29T09:05:27Z",
       "side": 1,
       "message": "tabIdx seems always the same as i.",
+      "range": {
+        "startLine": 418,
+        "startChar": 4,
+        "endLine": 418,
+        "endChar": 29
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61fade02_73eb19ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-30T22:39:55Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "b506f067_c3fafbbc",
       "range": {
         "startLine": 418,
         "startChar": 4,
