@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddc0cfcf_a5d2d3a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:17:33Z",
+      "side": 1,
+      "message": "It\u0027s a quick review, as I feel it\u0027s largely changed after my CLs of uiauto/pointer / uiauto/touch are ready to use.\n\nBy the way, I\u0027m not sure if it is worthwhile to split this part from the CL of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2701813.",
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78766e88_b95c4b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:17:33Z",
+      "side": 1,
+      "message": "Please use a specific name, e.g. defaultPollOptions.",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27d94837_4a2f5335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:17:33Z",
+      "side": 1,
+      "message": "Just FYI: you actually don\u0027t need to put doc comments on unexposed methods (or methods of unexposed types).",
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "963d6f71_533fb958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:17:33Z",
+      "side": 1,
+      "message": "I feel it\u0027s a bit awkward to see the name \u0027uiautoCtx\u0027, as \u0027uiauto\u0027 is a package name and Ctx is typically used for context.Context.\n\nPossibly simply name \u0027ui\u0027 or \u0027uiauto\u0027 may make sense. Alternatively, since it\u0027s a very simple one, I guess you really don\u0027t have to define this method. You could keep it internally within tabletActionHandler, created in its constructor.",
+      "range": {
+        "startLine": 71,
+        "startChar": 30,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51170aac_2e82f61f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:17:33Z",
+      "side": 1,
+      "message": "use NameContaining",
+      "range": {
+        "startLine": 86,
+        "startChar": 20,
+        "endLine": 86,
+        "endChar": 29
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d18da237_b187665e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:17:33Z",
+      "side": 1,
+      "message": "This code means that swipe-up action may happen multiple times. Is that really what you want?  What would be the reason to conduct the action multiple time?",
+      "range": {
+        "startLine": 128,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70de2dfc_f6d52eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:17:33Z",
+      "side": 1,
+      "message": "This is redundant as number of nodes with the index check is already within the Finder (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go#184).\n\nSimply t.stableTouch(ctx, menuItem.Nth(idxWindow+1)) should work.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dda319f_53bfb1b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:17:33Z",
+      "side": 1,
+      "message": "You can remove this. Instead, ui.Location(ctx, tcFinder) will wait for its location change and then return its location.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 2
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e19ce6b4_f2261c3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/ui_action_handler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:17:33Z",
+      "side": 1,
+      "message": "WaitForLocation is not necessary, as Location will wait for the location stability and then return the stable location.",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 2
+      },
+      "revId": "e179e07d37b7d69197a34398e7391ff0b1f892e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
