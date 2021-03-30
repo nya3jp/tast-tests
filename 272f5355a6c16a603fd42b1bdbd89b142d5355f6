@@ -33,6 +33,24 @@
       "message": "LGTM, if oshima@\u0027s question is answered.",
       "revId": "272f5355a6c16a603fd42b1bdbd89b142d5355f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2870783c_ae803ac3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-30T19:22:18Z",
+      "side": 1,
+      "message": "It uses the same ARC app, but that is the only similarity. It starts Chrome with the PipRoundedCorners feature enabled, it makes an ARC PIP video with no red square, and it checks that there is an underlay or no overlay at all. This way, the test will pass if the overlay is rejected for some odd reason like the recent color transform incident.",
+      "parentUuid": "915116be_64c4dcf1",
+      "revId": "272f5355a6c16a603fd42b1bdbd89b142d5355f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
