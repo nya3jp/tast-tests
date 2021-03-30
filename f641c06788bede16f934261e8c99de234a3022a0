@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef09d7e0_6cb56d57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-30T05:06:09Z",
+      "side": 1,
+      "message": "LGTM for tast style % one comment.",
+      "revId": "f641c06788bede16f934261e8c99de234a3022a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7d285ff_8c9cb1a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1487074
+      },
+      "writtenOn": "2021-03-30T05:06:09Z",
+      "side": 1,
+      "message": "any reason to use chromeui instead of ui here?",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "f641c06788bede16f934261e8c99de234a3022a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
