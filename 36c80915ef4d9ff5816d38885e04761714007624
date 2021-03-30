@@ -22,6 +22,30 @@
       },
       "revId": "36c80915ef4d9ff5816d38885e04761714007624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f3e99de_a7dfc4ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-03-30T15:19:21Z",
+      "side": 1,
+      "message": "\u003e So while it\u0027s better for your use case, it\u0027s not necessarily better in all cases.\n\nMakes sense, removed.\n\n\u003e Given that, is there any need for doing *both*?\n\nI suppose there may be in the future, but yes, let\u0027s put that off until we\u0027re sure that\u0027s something we want.",
+      "parentUuid": "f71a1aeb_b233704b",
+      "range": {
+        "startLine": 11,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "36c80915ef4d9ff5816d38885e04761714007624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
