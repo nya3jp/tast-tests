@@ -33,6 +33,24 @@
       "message": "I see some failure related to latency, I will leave it to informational.",
       "revId": "6ce4f9a03fdf544a67c30cf5b5e0db4f3b3c2cd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94921bc_c05f3c49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-03-30T07:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6277e67a_b6a2484f",
+      "revId": "6ce4f9a03fdf544a67c30cf5b5e0db4f3b3c2cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
