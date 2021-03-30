@@ -105,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a126196a_fea09058",
+        "filename": "src/chromiumos/tast/local/dbusutil/property_holder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:26:29Z",
+      "side": 1,
+      "message": "Just let celluar test developer know the change then it should be fine.",
+      "parentUuid": "cd834097_686b18ec",
+      "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df05ecdc_948b4ec2",
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "Yeah, I renamed all the callers I saw now, but probably safer to do this in \"gradual refactor\" fashion as I think wifi/cellular/network tests are developed quite actively.",
       "parentUuid": "df05ecdc_948b4ec2",
+      "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f6d566_b76bc2a2",
+        "filename": "src/chromiumos/tast/local/shill/property_holder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-03-30T10:26:29Z",
+      "side": 1,
+      "message": "agree.",
+      "parentUuid": "88f78496_09688e39",
       "revId": "b76261e84bc7aa0872ac171aa64b4bcdc0b4997a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
