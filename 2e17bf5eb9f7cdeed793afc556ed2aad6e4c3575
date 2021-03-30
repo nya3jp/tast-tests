@@ -22,6 +22,30 @@
       },
       "revId": "2e17bf5eb9f7cdeed793afc556ed2aad6e4c3575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b9a9e8_66028182",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/pointer/pointer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T20:47:48Z",
+      "side": 1,
+      "message": "Done with NewWithTouch -- PointerType looks great, but in reality most of the case it\u0027s used by tablet-mode boolean in the test parameter, so a bool flag would be easier to use.",
+      "parentUuid": "13d3aa62_99a847d7",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 22
+      },
+      "revId": "2e17bf5eb9f7cdeed793afc556ed2aad6e4c3575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
