@@ -43,6 +43,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0a94be7_6fac416f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-30T15:54:13Z",
+      "side": 1,
+      "message": "That\u0027s the long term plan. Mid term we will add a separate group for multi SIM provisioned DUTs and use a special \"carrier\" for that. Short term I would just like to get this up and running :-)",
+      "parentUuid": "4822ca8a_6daaa82d",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "036ae8b3f326659138672ee3acc54094343eedb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ab468e7_412a0ec7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-30T15:54:13Z",
+      "side": 1,
+      "message": "I just noticed that this is a pretty long timeout, and it shortens the rest of the test to 3 minutes. We should probably define some constants for the timeouts we use.",
+      "revId": "036ae8b3f326659138672ee3acc54094343eedb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe60b37c_651e7360",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
         "patchSetId": 10
@@ -54,6 +95,24 @@
       "writtenOn": "2021-03-30T15:18:28Z",
       "side": 1,
       "message": "If I understand properly, \"modem\" will actually get invalidated by the switch in L49 if it succeeds. Then this deferred call won\u0027t actually switch the slot back.\n\nI think we need to store the modem object returned by the NewModem call in testing.Poll on L58 (or just call NewModem again after it succeeds) and make sure that\u0027s the target of the call.",
+      "revId": "036ae8b3f326659138672ee3acc54094343eedb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d554d82a_adcb5ddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_slot_switch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-30T15:54:13Z",
+      "side": 1,
+      "message": "That\u0027s a really good point. Or maybe just call modemmanager.NewModem again? We probably also want to make multiple attempts like we do below.",
+      "parentUuid": "fe60b37c_651e7360",
       "revId": "036ae8b3f326659138672ee3acc54094343eedb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
