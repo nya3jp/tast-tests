@@ -1,0 +1,183 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6426123c_3d48d145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:53:00Z",
+      "side": 1,
+      "message": "Please remove me.",
+      "range": {
+        "startLine": 23,
+        "startChar": 48,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "241e6515_b1f6c361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:53:00Z",
+      "side": 1,
+      "message": "probably better to name as ui.TabSwitchCUJ2.mode?",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c2b066_275092b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:53:00Z",
+      "side": 1,
+      "message": "Please use the same contact list of TabSwitchCUJ2.",
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e8555ab_bfcada0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:53:00Z",
+      "side": 1,
+      "message": "\u003e \"informations\" is a possible misspelling of \"information\".\n\nPlease fix.",
+      "parentUuid": "603f54be_b628c716",
+      "range": {
+        "startLine": 70,
+        "startChar": 39,
+        "endLine": 70,
+        "endChar": 51
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f75ff15f_ee3c4441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:53:00Z",
+      "side": 1,
+      "message": "\"newPageInfo\" would be a more Go-idiomatic name",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 21
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07261cc8_6f3f7413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:53:00Z",
+      "side": 1,
+      "message": "Possibly use of varargs makes a bit easier to write this:\n  func newPageInfo(level Level, webName webType, url string, patterns... string) *webPageInfo {\n  }",
+      "range": {
+        "startLine": 83,
+        "startChar": 60,
+        "endLine": 83,
+        "endChar": 77
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a9b5fc_09b8d9f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:53:00Z",
+      "side": 1,
+      "message": "This looks strange to me.  Theoretically, there\u0027s a chance that it finds the anchor and conducts the click but returns an error during the following steps, and then in that case it will try to find the anchor and click again.\n\nI think it\u0027s better to use testing.Poll only for the waiting for the anchor to be visible/ready.  Then conduct the click.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "690b4ae0_67c5cf10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-30T22:53:00Z",
+      "side": 1,
+      "message": "So Google news does not cause actual page reloading, therefore force-reloading?  Is that really what\u0027s needed?  I don\u0027t think that\u0027s the right thing to do. At least this is not what users will do.\n\nIf Google News is not a site for collecting this type of data, consider not using it from this test case, for now.",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 5
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
