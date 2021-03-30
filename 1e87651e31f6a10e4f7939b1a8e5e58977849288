@@ -22,6 +22,30 @@
       },
       "revId": "1e87651e31f6a10e4f7939b1a8e5e58977849288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b98291_25da3a43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/html_video_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-30T16:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a58cc449_2486a5ac",
+      "range": {
+        "startLine": 30,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "1e87651e31f6a10e4f7939b1a8e5e58977849288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
