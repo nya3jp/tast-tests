@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0de759d_f461e2cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-03-30T00:12:25Z",
+      "side": 1,
+      "message": "Use s.Error on FAILED so that developer can see it in stainless.\ns.Log for ERROR is fine to me.",
+      "range": {
+        "startLine": 231,
+        "startChar": 4,
+        "endLine": 231,
+        "endChar": 7
+      },
+      "revId": "00c32a2039fcf38cf51b46bcc97c2c0fec08e3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
