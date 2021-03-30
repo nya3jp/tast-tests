@@ -30,12 +30,12 @@ func init() {
 // CrosRuntimeProbeStorage checks if the storage names in cros-label are consistent with probed names from runtime_probe
 func CrosRuntimeProbeStorage(ctx context.Context, s *testing.State) {
 	const category = "storage"
-	labelsStr, ok := s.Var("autotest_host_info_labels")
-	if !ok {
-		s.Fatal("No storage labels")
+	hostInfoLabels, err := runtimeprobe.GetHostInfoLabels(s)
+	if err != nil {
+		s.Fatal("GetHostInfoLabels failed: ", err)
 	}
 
-	mapping, model, err := runtimeprobe.GetComponentCount(labelsStr, []string{category})
+	mapping, model, err := runtimeprobe.GetComponentCount(ctx, hostInfoLabels, []string{category})
 	labels := mapping[category]
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)

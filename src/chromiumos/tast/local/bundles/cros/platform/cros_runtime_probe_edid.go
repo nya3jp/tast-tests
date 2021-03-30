@@ -31,12 +31,12 @@ func init() {
 // consistent with probed names from runtime_probe.
 func CrosRuntimeProbeEdid(ctx context.Context, s *testing.State) {
 	const category = "display_panel"
-	labelsStr, ok := s.Var("autotest_host_info_labels")
-	if !ok {
-		s.Fatal("No edid labels")
+	hostInfoLabels, err := runtimeprobe.GetHostInfoLabels(s)
+	if err != nil {
+		s.Fatal("GetHostInfoLabels failed: ", err)
 	}
 
-	mapping, model, err := runtimeprobe.GetComponentCount(labelsStr, []string{category})
+	mapping, model, err := runtimeprobe.GetComponentCount(ctx, hostInfoLabels, []string{category})
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
 	}

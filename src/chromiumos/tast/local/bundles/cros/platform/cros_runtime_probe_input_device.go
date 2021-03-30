@@ -44,12 +44,12 @@ func getInputDeviceByType(result *rppb.ProbeResult, inputDeviceType string) ([]*
 // are consistent with probed names from runtime_probe.
 func CrosRuntimeProbeInputDevice(ctx context.Context, s *testing.State) {
 	var inputDeviceTypes = []string{"stylus", "touchpad", "touchscreen"}
-	labelsStr, ok := s.Var("autotest_host_info_labels")
-	if !ok {
-		s.Fatal("No input_device labels")
+	hostInfoLabels, err := runtimeprobe.GetHostInfoLabels(s)
+	if err != nil {
+		s.Fatal("GetHostInfoLabels failed: ", err)
 	}
 
-	mapping, model, err := runtimeprobe.GetComponentCount(labelsStr, inputDeviceTypes)
+	mapping, model, err := runtimeprobe.GetComponentCount(ctx, hostInfoLabels, inputDeviceTypes)
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
 	}
