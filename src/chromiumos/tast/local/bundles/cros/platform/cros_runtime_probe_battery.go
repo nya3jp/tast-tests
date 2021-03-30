@@ -35,7 +35,7 @@ func CrosRuntimeProbeBattery(ctx context.Context, s *testing.State) {
 		s.Fatal("No battery labels")
 	}
 
-	mapping, model, err := runtimeprobe.GetComponentCount(labelsStr, []string{category})
+	mapping, model, err := runtimeprobe.GetComponentCount(ctx, labelsStr, []string{category})
 	labels := mapping[category]
 	if err != nil {
 		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
