@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db10846c_956b3a9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-31T14:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a85fb33_e3cba2f1",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3a17ba2_ef3a7ca2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-30T20:06:09Z",
       "side": 1,
       "message": "I mentioned below for a similar comment, but possibly this is not necessary for this specific test case.  TurnOnDisplay is widely used for other performance tests, as they share the same chrome session with other tests.  This test does not share the chrome session with others.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1634369_6abb6b6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-31T14:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3a17ba2_ef3a7ca2",
       "range": {
         "startLine": 156,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08625547_3906de31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-31T14:25:09Z",
+      "side": 1,
+      "message": "Did you mean \"do we need to wait 3 minutes to apps to be downloaded and initialized if we use Perform here\"?\n\nAfter Perform result is like this: https://screenshot.googleplex.com/8YCncyLrGcTFYuj.png\n\nIt takes additional 5 minutes on my device to install all 9 apps.\n\nBut it\u0027s still better than my original code, it seems to definitely install all the apps. And now results finally match manyally-confgured user from https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2786283 . Thank you!",
+      "parentUuid": "1a2992eb_20450a7c",
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cddc675_7c49aa7e",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-03-30T20:06:09Z",
       "side": 1,
       "message": "Consider defining them as string constants (or enums):\n  const (\n    noarc \u003d \"noarc\"\n    arcenabled \u003d \"arcenabled\"\n    arcsupported \u003d \"arcsupported\"\n  )\n\n  ...\n  for _, arcMode :\u003d range []string{noarc, arcenabled, arcsupported} {\n    ...\n\nThat way you don\u0027t need \"userarcprefix\" variable.",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 40
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb905bd5_f71230a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-31T14:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cddc675_7c49aa7e",
       "range": {
         "startLine": 192,
         "startChar": 2,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df60783d_429de099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-31T14:25:09Z",
+      "side": 1,
+      "message": "I was worried that display may turn off during the test if it runs for an hour.\n\nBut we can remove it for sure.",
+      "parentUuid": "c70d1e2e_34c557b2",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 4
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33a2b67d_bc6fddb0",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-03-30T20:06:09Z",
       "side": 1,
       "message": "Why does a new server have to be launched within the for-loop?  I believe this should be in the original position -- outside of the for-loop, launched just once.\n\nAlso please note that \"defer\" will be executed only on the end of the current function, not the scope.  So this server will not end until the entire test case finishes.  I don\u0027t think that\u0027s the wanted behavior.",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 0
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "accd04bf_e4189594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-31T14:25:09Z",
+      "side": 1,
+      "message": "Thank you!\n\nDone.",
+      "parentUuid": "33a2b67d_bc6fddb0",
       "range": {
         "startLine": 214,
         "startChar": 0,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb38608b_4a09f1a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-31T14:25:09Z",
+      "side": 1,
+      "message": "I did verify that it is consistent.\nThe last bucket is 30+ seconds, which likely never happened.",
+      "parentUuid": "fc9def07_4c27a934",
+      "range": {
+        "startLine": 257,
+        "startChar": 116,
+        "endLine": 257,
+        "endChar": 128
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc9cd5d0_029f561e",
@@ -169,6 +331,30 @@
       "writtenOn": "2021-03-30T20:06:09Z",
       "side": 1,
       "message": "rather than introducing new types and functions, please write your own logic here.\ncf. https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go#146",
+      "range": {
+        "startLine": 297,
+        "startChar": 5,
+        "endLine": 305,
+        "endChar": 0
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11498add_6f9f1765",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-31T14:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc9cd5d0_029f561e",
       "range": {
         "startLine": 297,
         "startChar": 5,
