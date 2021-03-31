@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f92e4a92_45ea96d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2100402_10dcf6b8",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e99885c_f4e15758",
@@ -93,6 +117,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3efbc73d_37bb8d67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e99885c_f4e15758",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e024bd4d_a9dfe990",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3cca04f2_832884a0",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b63cb074_8bfbe0eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "98d2f508_4e23a9df",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d64b0ac_743a9a94",
@@ -141,6 +237,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7f7890c8_5f3eb262",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b5745b0e_6858dc5a",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b704e2d_3aa6475c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d64b0ac_743a9a94",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 55
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ed0361be_4e98fbbf",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -169,6 +313,30 @@
       "writtenOn": "2021-03-30T10:57:14Z",
       "side": 1,
       "message": "on/off",
+      "range": {
+        "startLine": 198,
+        "startChar": 40,
+        "endLine": 198,
+        "endChar": 46
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2feff7e0_424ec0db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f9d76f32_904c3155",
       "range": {
         "startLine": 198,
         "startChar": 40,
@@ -225,6 +393,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a05279_0e13e2ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "There\u0027s no specific rule followed. Tried using button names for easy triaging.",
+      "parentUuid": "4c063f6a_f21d5d4d",
+      "range": {
+        "startLine": 213,
+        "startChar": 44,
+        "endLine": 213,
+        "endChar": 52
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c43778f_523df7a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e7123046_aa22be70",
+      "range": {
+        "startLine": 213,
+        "startChar": 36,
+        "endLine": 213,
+        "endChar": 43
+      },
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "029f222c_cff264c8",
@@ -238,6 +454,24 @@
       "writtenOn": "2021-03-30T10:57:14Z",
       "side": 1,
       "message": "What\u0027s the function and relationship of \"Turn Off Backup\" button and Backup toggle?\n\nWhy you expect \"backupStatus \u003d\u003d on\" in line 229 after clicking \"Turn Off Backup\" button?",
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "747c5340_2721b867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "backupToggle is button to turn on and off. Turn Off Backup flow is to handle UI flow of turning the backup off.\n\nSo test checks if backup can be turned off and back on which is being checked in line 229.",
+      "parentUuid": "029f222c_cff264c8",
       "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -259,6 +493,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "118d64e7_49b9d5d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "11e0e243_b8457246",
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b552550_b8f276ed",
@@ -276,6 +528,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b11e56b_1d471197",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "This is just the old code moved to else part.Removed the logging anyways.",
+      "parentUuid": "0b552550_b8f276ed",
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd9bd3e5_68d0ebcf",
@@ -289,6 +559,24 @@
       "writtenOn": "2021-03-30T10:57:14Z",
       "side": 1,
       "message": "As an outsider, I don\u0027t get the semantics of the code: if backup is on, we want to turn off the backup. But why we need to click backupToggleOn? Can you elaborate the UI flow as comment?",
+      "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc997b3_3096c56f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T01:47:23Z",
+      "side": 1,
+      "message": "The test checks if backup can be turned off and back on.",
+      "parentUuid": "fd9bd3e5_68d0ebcf",
       "revId": "d84dc7216a00b99ff9d295cd3d56b7fa1af8b67f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
