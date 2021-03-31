@@ -34,32 +34,32 @@ func init() {
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Params: []testing.Param{{
 			Name:              "h264_180p",
-			Val:               encode.MakeTestOptions(tulip180P, videotype.H264Prof),
+			Val:               encode.MakeTestOptions(tulip180P, videotype.H264BaselineProf),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(tulip180P),
 		}, {
 			Name:              "h264_192p",
-			Val:               encode.MakeTestOptions(bear192P, videotype.H264Prof),
+			Val:               encode.MakeTestOptions(bear192P, videotype.H264BaselineProf),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(bear192P),
 		}, {
 			Name:              "h264_360p",
-			Val:               encode.MakeTestOptions(tulip360P, videotype.H264Prof),
+			Val:               encode.MakeTestOptions(tulip360P, videotype.H264BaselineProf),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(tulip360P),
 		}, {
 			Name:              "h264_720p",
-			Val:               encode.MakeTestOptions(tulip720P, videotype.H264Prof),
+			Val:               encode.MakeTestOptions(tulip720P, videotype.H264BaselineProf),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
 			Name:              "h264_1080p",
-			Val:               encode.MakeTestOptions(crowd1080P, videotype.H264Prof),
+			Val:               encode.MakeTestOptions(crowd1080P, videotype.H264BaselineProf),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(crowd1080P),
 		}, {
 			Name:              "h264_2160p",
-			Val:               encode.MakeTestOptions(crowd2160P, videotype.H264Prof),
+			Val:               encode.MakeTestOptions(crowd2160P, videotype.H264BaselineProf),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
 			ExtraData:         encode.TestData(crowd2160P),
 		}, {
@@ -134,7 +134,7 @@ func init() {
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
 			Name:              "h264_180p_nv12",
-			Val:               encode.MakeNV12TestOptions(tulip180P, videotype.H264Prof),
+			Val:               encode.MakeNV12TestOptions(tulip180P, videotype.H264BaselineProf),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(tulip180P),
 		}, {
@@ -149,7 +149,7 @@ func init() {
 			ExtraData:         encode.TestData(tulip180P),
 		}, {
 			Name:              "h264_360p_nv12",
-			Val:               encode.MakeNV12TestOptions(tulip360P, videotype.H264Prof),
+			Val:               encode.MakeNV12TestOptions(tulip360P, videotype.H264BaselineProf),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(tulip360P),
 		}, {
@@ -164,7 +164,7 @@ func init() {
 			ExtraData:         encode.TestData(tulip360P),
 		}, {
 			Name:              "h264_720p_nv12",
-			Val:               encode.MakeNV12TestOptions(tulip720P, videotype.H264Prof),
+			Val:               encode.MakeNV12TestOptions(tulip720P, videotype.H264BaselineProf),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
