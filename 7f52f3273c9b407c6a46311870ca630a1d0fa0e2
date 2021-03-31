@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d39c3e_5e4f75c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_android_apps.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-03-31T17:28:40Z",
+      "side": 1,
+      "message": "nit: here and across this CL\nand close, no upper case for close, it should match optin",
+      "range": {
+        "startLine": 62,
+        "startChar": 40,
+        "endLine": 62,
+        "endChar": 49
+      },
+      "revId": "7f52f3273c9b407c6a46311870ca630a1d0fa0e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
