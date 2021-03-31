@@ -36,7 +36,6 @@ func init() {
 		},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 			"group:paper-io",
 			"paper-io_printing",
 		},
@@ -50,12 +49,14 @@ func init() {
 		}, {
 			Name:              "unstable",
 			Val:               "arc_print_ippusb_golden.pdf",
+			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(stableModels...)),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
 		}, {
 			Name:              "vm",
 			Val:               "arc_print_vm_ippusb_golden.pdf",
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraData:         []string{"arc_print_vm_ippusb_golden.pdf"},
 		}},
