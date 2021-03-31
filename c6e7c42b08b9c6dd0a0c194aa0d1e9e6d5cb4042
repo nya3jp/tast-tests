@@ -51,6 +51,24 @@
       "parentUuid": "433f09fd_628820ff",
       "revId": "c6e7c42b08b9c6dd0a0c194aa0d1e9e6d5cb4042",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cece421_5797ed89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-03-31T00:34:53Z",
+      "side": 1,
+      "message": "IIUC we\u0027ve been doing the latest fishfood release as long as the milestone number doesn\u0027t go backwards.\n\nPersonally I don\u0027t mind what we uprev to as long as the milestone increases non-strictly monotonically.",
+      "parentUuid": "3aa1afe6_5ef86534",
+      "revId": "c6e7c42b08b9c6dd0a0c194aa0d1e9e6d5cb4042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
