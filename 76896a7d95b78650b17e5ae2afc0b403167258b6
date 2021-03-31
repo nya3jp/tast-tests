@@ -16,6 +16,23 @@
       "message": "ssilkin@, hiroh@ PTAL\n\ntast-owners PTAL too\n\nOthers FYI",
       "revId": "76896a7d95b78650b17e5ae2afc0b403167258b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dcf82a0_5929f04f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-03-31T05:27:18Z",
+      "side": 1,
+      "message": "LGTM, waiting ssilkin@\u0027s review.",
+      "revId": "76896a7d95b78650b17e5ae2afc0b403167258b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
