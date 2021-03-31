@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42febdca_a2550b6e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/touch/touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-03-31T00:25:17Z",
+      "side": 1,
+      "message": "Add the check to make sure it is in a swipe context?",
+      "revId": "1a360ed98eef3827e77c65a469b1ff9a1ea7437f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
