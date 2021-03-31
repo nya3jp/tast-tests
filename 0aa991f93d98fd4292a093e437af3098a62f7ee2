@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e77dcba8_20d2713d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_network.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-03-31T11:14:47Z",
+      "side": 1,
+      "message": "category.String()",
+      "range": {
+        "startLine": 53,
+        "startChar": 20,
+        "endLine": 53,
+        "endChar": 75
+      },
+      "revId": "0aa991f93d98fd4292a093e437af3098a62f7ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
