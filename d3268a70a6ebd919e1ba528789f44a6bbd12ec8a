@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f103cc_62f4d3db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-03-31T14:06:26Z",
+      "side": 1,
+      "message": "Let\u0027s merge this CL first.\nSince the current version of Lacros has not been updated yet, it is expected that the devices with MIPI cameras (e.g. Soraka, Nocturne) will fail.",
+      "revId": "d3268a70a6ebd919e1ba528789f44a6bbd12ec8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
