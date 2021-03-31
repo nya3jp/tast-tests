@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4c47de8_7d6ad0cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-31T22:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1951bdab_c0a6b982",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "ad47ce9d16ffd6d8ea7f62d82a11858d0ac54b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a650a56_26420b7f",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-31T22:11:13Z",
       "side": 1,
       "message": "nit: Before more constants added, can you make this one line at the moment.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 1
+      },
+      "revId": "ad47ce9d16ffd6d8ea7f62d82a11858d0ac54b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbbd8160_bfd342d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolution.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-31T22:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a650a56_26420b7f",
       "range": {
         "startLine": 20,
         "startChar": 0,
