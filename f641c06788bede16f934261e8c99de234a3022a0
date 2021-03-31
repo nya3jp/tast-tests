@@ -87,6 +87,30 @@
       },
       "revId": "f641c06788bede16f934261e8c99de234a3022a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a39f62_501cb8e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-31T18:36:27Z",
+      "side": 1,
+      "message": "I think that the work on https://crbug.com/1179858 will address this.",
+      "parentUuid": "01d33f04_a04a70ce",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "f641c06788bede16f934261e8c99de234a3022a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
