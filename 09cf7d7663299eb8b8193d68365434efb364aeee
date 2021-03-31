@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61f9094e_83c7830f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolution.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-31T18:37:51Z",
+      "side": 1,
+      "message": "nit: Make this a little more descriptive. I know that go prefers short names, but something like serviceProps would make this a bit more clear.",
+      "revId": "09cf7d7663299eb8b8193d68365434efb364aeee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef1ac71_27cf2b65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolution.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-31T18:37:51Z",
+      "side": 1,
+      "message": "tiny, optional nit: some trailing commas and } on separate lines might make this a little more readable.",
+      "revId": "09cf7d7663299eb8b8193d68365434efb364aeee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b954081_753d8c4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolution.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-31T18:37:51Z",
+      "side": 1,
+      "message": "nit: Maybe clarify this a bit (\"some time\" could be interpreted as \"seconds\"), e.g.:\n// After the property change is emitted, Chrome still needs to process it.\n// Since Chrome does not emit a change, poll to test whether the expected problem occurs.",
+      "revId": "09cf7d7663299eb8b8193d68365434efb364aeee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c9b444_c5fdf45f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolution.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-31T18:37:51Z",
+      "side": 1,
+      "message": "nit: s/Unable/Failed/ ?",
+      "revId": "09cf7d7663299eb8b8193d68365434efb364aeee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "930492ef_e58951a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolution.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-31T18:37:51Z",
+      "side": 1,
+      "message": "I\u0027m actually not sure what the difference is between s.Fatal and returning an error here. (I didn\u0027t realize that was an option). This seems like it sould be equally fatal?",
+      "revId": "09cf7d7663299eb8b8193d68365434efb364aeee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847f1884_7c55d92c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/diag_fail_dns_resolution.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-31T18:37:51Z",
+      "side": 1,
+      "message": "nit: what if the len is 2? In general, it\u0027s preferred to use the format\n \"Unexpected Problems length, got: %d, want: %d\".",
+      "revId": "09cf7d7663299eb8b8193d68365434efb364aeee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
