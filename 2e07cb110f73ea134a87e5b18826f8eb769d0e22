@@ -103,6 +103,30 @@
       },
       "revId": "2e07cb110f73ea134a87e5b18826f8eb769d0e22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d3181d_c58e9541",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-03-31T23:37:41Z",
+      "side": 1,
+      "message": "I tried using the mentioned conditions. Please find my observations: \n1) For the condition: Tablet: freeform window state, width is longer than height: For some apps as shown in the screenshots https://screenshot.googleplex.com/9iJmnpyTa2PqXHA and  https://screenshot.googleplex.com/3NErBcVi8w8vhfY, even though app width is longer than its height both apps are in phone size.\nAlso observed that the app having freeform window state could  be in maximized size, please find the screenshot of it, https://screenshot.googleplex.com/9YRT2KJK8wqrPdq. So based on the observations, multiple check for tablet mode and comparing app width with device display width is needed.",
+      "parentUuid": "22ca9036_4936ddad",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 2
+      },
+      "revId": "2e07cb110f73ea134a87e5b18826f8eb769d0e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
