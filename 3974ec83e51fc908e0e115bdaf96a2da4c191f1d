@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5b6364d_6f94286b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 53
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-31T23:25:01Z",
+      "side": 1,
+      "message": "This one is also adjusted the run time Var (mode to ui.cuj_mode)",
+      "revId": "3974ec83e51fc908e0e115bdaf96a2da4c191f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
