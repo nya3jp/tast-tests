@@ -16,6 +16,121 @@
       "message": "thanks for the comments! I addressed them in patch3.",
       "revId": "48dfedaeb47adf68612ce402a19822a00562db9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50a68633_4a657137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_libyuv_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-31T23:18:37Z",
+      "side": 1,
+      "message": "if err :\u003d runLIBYUVUnittest(ctx, logFileOpt, s.Param().(string), env); err !\u003d nil {\n   ...\n}",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "48dfedaeb47adf68612ce402a19822a00562db9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476e96b8_4d2a54fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_libyuv_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-31T23:18:37Z",
+      "side": 1,
+      "message": "Please end a comment with \u0027.\u0027",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 33
+      },
+      "revId": "48dfedaeb47adf68612ce402a19822a00562db9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d16bed50_a17efe86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_libyuv_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-31T23:18:37Z",
+      "side": 1,
+      "message": "if err :\u003d runLIBYUVUnittest(ctx, logFileNoOpt, s.Param().(string), env); err !\u003d nil {\n   ...\n}",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "48dfedaeb47adf68612ce402a19822a00562db9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a0e76d3_3b8d4ac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_libyuv_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-31T23:18:37Z",
+      "side": 1,
+      "message": "Please include the logfile name in the error information for debugging.",
+      "range": {
+        "startLine": 108,
+        "startChar": 26,
+        "endLine": 108,
+        "endChar": 53
+      },
+      "revId": "48dfedaeb47adf68612ce402a19822a00562db9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d178303_0378207b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_libyuv_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-31T23:18:37Z",
+      "side": 1,
+      "message": "return value, nil?",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 7
+      },
+      "revId": "48dfedaeb47adf68612ce402a19822a00562db9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
