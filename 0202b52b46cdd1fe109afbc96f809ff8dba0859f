@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa97db4f_46d18771",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-31T18:20:28Z",
+      "side": 1,
+      "message": "I would combine this with the change to configure_service_for_profile.go, so that we can see that the fixture matches the logic in that test.\n\n+yenlinlai",
+      "revId": "0202b52b46cdd1fe109afbc96f809ff8dba0859f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77f4f473_722a7971",
@@ -14,6 +31,24 @@
       "writtenOn": "2021-03-31T17:48:30Z",
       "side": 1,
       "message": "I\u0027m not sure if this is the correct place to add this, but the fixture was not able to be found without it.",
+      "revId": "0202b52b46cdd1fe109afbc96f809ff8dba0859f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd84a355_9eddcdda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-03-31T18:20:28Z",
+      "side": 1,
+      "message": "Hmm. I didn\u0027t need to do this for network/cellular/fixture.go. Did you add .../network/shill to the import section of the tests using the fixture?\n\nThe cellular fixture was added here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2714030",
+      "parentUuid": "77f4f473_722a7971",
       "revId": "0202b52b46cdd1fe109afbc96f809ff8dba0859f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
