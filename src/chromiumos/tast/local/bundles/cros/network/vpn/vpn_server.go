@@ -196,7 +196,7 @@ func (s *l2tpipSecVpnServer) GetLogContents(ctx context.Context) (string, error)
 func (s *l2tpipSecVpnServer) StopServer(ctx context.Context) error {
 	chro := s.netChroot
 	if err := chro.RunChroot(ctx, []string{ipsecCommand, "stop"}); err != nil {
-		return errors.Wrap(err, "failed to stop chroot")
+		return errors.Wrap(err, "failed to stop ipsec")
 	}
 
 	if err := chro.KillPidFile(ctx, xl2tpdPidFile, true); err != nil {
@@ -207,15 +207,17 @@ func (s *l2tpipSecVpnServer) StopServer(ctx context.Context) error {
 		return errors.Wrapf(err, "failed to kill the PID file %v", pppdPidFile)
 	}
 
-	if err := chro.Shutdown(ctx); err != nil {
-		return errors.Wrap(err, "failed to shutdown the chroot")
-	}
-
 	return nil
 }
 
-// Exit logs the contents and stop the server.
+// Exit stops the server, logs the contents, and shuts down the chroot.
 func (s *l2tpipSecVpnServer) Exit(ctx context.Context) error {
+	// We should stop the server before call GetLogContents, since the charon
+	// process may not flush all the contents before exiting.
+	if err := s.StopServer(ctx); err != nil {
+		return err
+	}
+
 	content, err := s.GetLogContents(ctx)
 	if err != nil {
 		return err
@@ -231,8 +233,8 @@ func (s *l2tpipSecVpnServer) Exit(ctx context.Context) error {
 		testing.ContextLog(ctx, "Failed to open OutDir")
 	}
 
-	if err := s.StopServer(ctx); err != nil {
-		return err
+	if err := s.netChroot.Shutdown(ctx); err != nil {
+		return errors.Wrap(err, "failed to shutdown the chroot")
 	}
 
 	return nil
