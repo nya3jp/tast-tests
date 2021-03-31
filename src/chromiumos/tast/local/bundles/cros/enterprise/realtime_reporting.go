@@ -49,10 +49,11 @@ func init() {
 			{
 				Name: "autopush",
 				Val: testParams{
-					username:        "enterprise.RealtimeReporting.user_name",
-					password:        "enterprise.RealtimeReporting.password",
-					dmserver:        "crosman-alpha.sandbox",
-					reportingserver: "autopush-chromereporting-pa.sandbox.googleapis.com",
+					username: "enterprise.RealtimeReporting.user_name",
+					password: "enterprise.RealtimeReporting.password",
+					//dmserver: "https://m.google.com/devicemanagement/data/api",
+					dmserver:        "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+					reportingserver: "https://autopush-chromereporting-pa.sandbox.googleapis.com/v1",
 				},
 			},
 		},
@@ -62,6 +63,30 @@ func init() {
 			"enterprise.RealtimeReporting.lookup_events_api_key",
 		},
 	})
+}
+
+// getDeviceVirtualID Returns the device's virtual ID, which is used to
+// identify the enrolled device when communicating with enterprise servers.
+// TODO: For now, this function extract Chrome's device virtual ID from the
+// chrome://policy page. But with a little plumbing, we can also extract the
+// device virtual ID, as well as other enterprise related IDs, directly from
+// the browser process through the AutotestPrivate extension.
+func getDeviceVirtualID(ctx context.Context, cr *chrome.Chrome) (string, error) {
+	conn, err := cr.NewConn(ctx, "chrome://policy")
+	if err != nil {
+		return "", errors.Wrap(err, "failed to navigate to chrome://policy page")
+	}
+
+	defer conn.Close()
+
+	var deviceVirtualID string
+	xpath := `//fieldset[./legend[./text()='User policies']]/div/div[@class='client-id']/text()`
+	//xpath := `//fieldset[./legend[./text()='Device policies']]/div/div[@class='client-id']/text()`
+	evalExpr := fmt.Sprintf(`document.evaluate("%s", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.textContent`, xpath)
+	if err := conn.Eval(ctx, evalExpr, &deviceVirtualID); err != nil {
+		return "", errors.Wrap(err, evalExpr)
+	}
+	return deviceVirtualID, nil
 }
 
 // lookupEvents Call the Reporting API Server's ChromeReportingDebugService.LookupEvents
@@ -77,7 +102,7 @@ func lookupEvents(ctx context.Context, reportingServerURL, userEmail, apiKey str
 	}
 
 	// TODO craft request path
-	reqPath := fmt.Sprintf("http://%v/", reportingServerURL)
+	reqPath := fmt.Sprintf("%v/", reportingServerURL)
 	req, err := http.NewRequestWithContext(ctx, "POST", reqPath, nil)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to craft event query request to the Reporting Server")
@@ -104,18 +129,18 @@ func lookupEvents(ctx context.Context, reportingServerURL, userEmail, apiKey str
 	}
 	resBody, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return nil, errors.Wrap("failed to read the response body", err)
+		return nil, errors.Wrap(err, "failed to read the response body")
 	}
 	var resData lookupEventsResponse
 	if err := json.Unmarshal(resBody, &resData); err != nil {
-		return errors.Wrap("failed to unmarshal response", err)
+		return nil, errors.Wrap(err, "failed to unmarshal response")
 	}
 	return resData.event, nil
 }
 
 // validateEventReception Given a list of events received by the Reporting
 // API Server, validate whether the list contains events sent by this test.
-func validateEventReception(inputs []inputEvent, deviceVirtualID string, testStartTime Time) (bool, error) {
+func validateEventReception(inputs []inputEvent, deviceVirtualID string, testStartTime time.Time) bool {
 	for _, input := range inputs {
 		// Filter events by the device virtual ID, whcih uniquely identifies
 		// this test device.
@@ -125,11 +150,11 @@ func validateEventReception(inputs []inputEvent, deviceVirtualID string, testSta
 			if receptionT, err := time.Parse(time.RFC3339, input.event.time); err == nil && receptionT.After(testStartTime) {
 				// Found an event sent by this test device after the test start time.
 				// This proves that the server received events from this device.
-				return true, nil
+				return true
 			}
 		}
 	}
-	return false, nil
+	return false
 }
 
 func RealtimeReporting(ctx context.Context, s *testing.State) {
@@ -142,14 +167,15 @@ func RealtimeReporting(ctx context.Context, s *testing.State) {
 	dmServerURL := param.dmserver
 	reportingServerURL := param.reportingserver
 	debugServiceAPIKey := s.RequiredVar("enterprise.RealtimeReporting.lookup_events_api_key")
+	testStartTime := time.Now()
 
 	// Log-in to Chrome
 	cr, err := chrome.New(
 		ctx,
-		chrome.EnterpriseEnroll(),
+		chrome.EnterpriseEnroll(chrome.Creds{User: username, Pass: password}),
 		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.DMSPolicy(dmServerURL),
-		chrome.RTReportingServer(reportingServerURL),
+		chrome.RTReportingServer(fmt.Sprintf("%v/record", reportingServerURL)),
 		chrome.ExtraArgs("--flag=value TODO add heartbeat event flag here"),
 	)
 	if err != nil {
@@ -163,9 +189,15 @@ func RealtimeReporting(ctx context.Context, s *testing.State) {
 
 	tconn, err := cr.TestAPIConn(ctx)
 
-	// Ensure chrome://policy shows the correct setting for reporting
+	// Check that the cloud reporting policy is enabled.
+	testing.ContextLog(ctx, "Verify that Cloud Reporting is enabled")
 	if err := policyutil.Verify(ctx, tconn, []policy.Policy{&policy.CloudReportingEnabled{Val: true}}); err != nil {
 		s.Fatal("Failed to verify Real-Time Reporting policy: ", err)
+	}
+
+	deviceVirtualID, err := getDeviceVirtualID(ctx, cr)
+	if err != nil {
+		s.Fatal("Cannot get Device virtual ID: ", err)
 	}
 
 	// TODO: trigger test event
@@ -173,4 +205,12 @@ func RealtimeReporting(ctx context.Context, s *testing.State) {
 
 	// Call the Reporting Server's lookupEvents API to verify that
 	// the server received the test event.
+	events, err := lookupEvents(ctx, reportingServerURL, username, debugServiceAPIKey)
+	if err != nil {
+		s.Fatal("Failed to look up events: ", err)
+	}
+
+	if !validateEventReception(events, deviceVirtualID, testStartTime) {
+		s.Error("The Reporting Api Server did not receive any events")
+	}
 }
