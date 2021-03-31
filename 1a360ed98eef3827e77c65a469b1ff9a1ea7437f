@@ -16,6 +16,24 @@
       "message": "Add the check to make sure it is in a swipe context?",
       "revId": "1a360ed98eef3827e77c65a469b1ff9a1ea7437f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b966f8c_7925a367",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/touch/touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-31T00:36:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42febdca_a2550b6e",
+      "revId": "1a360ed98eef3827e77c65a469b1ff9a1ea7437f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
