@@ -178,6 +178,30 @@
       },
       "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c489440_3061b74a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1483212
+      },
+      "writtenOn": "2021-03-31T15:18:03Z",
+      "side": 1,
+      "message": "I agree we should temporarily remove Google News until we figure out how the repaint can be measured.  We can, either now or in a later CL, swap with Yahoo news as suggested by Xibin",
+      "parentUuid": "690b4ae0_67c5cf10",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 5
+      },
+      "revId": "5fd58b3751864550835ffcefc798e62ffa6d270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
