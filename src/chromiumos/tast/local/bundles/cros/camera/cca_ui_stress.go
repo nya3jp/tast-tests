@@ -7,6 +7,7 @@ package camera
 import (
 	"context"
 	"math/rand"
+	"regexp"
 	"strconv"
 	"time"
 
@@ -32,6 +33,9 @@ func init() {
 			"skip_iterations",
 			// The seed for deterministically generating the random action sequence.
 			"seed",
+			// The action filter regular expression. Only action names match
+			// the filter will be stressed.
+			"action_filter",
 		},
 		Params: []testing.Param{{
 			Name:              "real",
@@ -69,7 +73,7 @@ type stressAction struct {
 	perform func(context.Context) error
 }
 
-func getIntVar(s *testing.State, name string, defaultValue int) int {
+func intVar(s *testing.State, name string, defaultValue int) int {
 	str, ok := s.Var(name)
 	if !ok {
 		return defaultValue
@@ -83,6 +87,14 @@ func getIntVar(s *testing.State, name string, defaultValue int) int {
 	return val
 }
 
+func stringVar(s *testing.State, name, defaultValue string) string {
+	str, ok := s.Var(name)
+	if !ok {
+		return defaultValue
+	}
+	return str
+}
+
 func CCAUIStress(ctx context.Context, s *testing.State) {
 	const defaultIterations = 20
 	const defaultSkipIterations = 0
@@ -90,10 +102,14 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 	const perIterationTimeout = 10 * time.Second
 	const cleanupTimeout = 20 * time.Second
 
-	iterations := getIntVar(s, "iterations", defaultIterations)
-	skipIterations := getIntVar(s, "skip_iterations", defaultSkipIterations)
+	iterations := intVar(s, "iterations", defaultIterations)
+	skipIterations := intVar(s, "skip_iterations", defaultSkipIterations)
+	actionFilter, err := regexp.Compile(stringVar(s, "action_filter", ".*"))
+	if err != nil {
+		s.Fatal("Failed to compile action_filter as a regexp")
+	}
 
-	seed := getIntVar(s, "seed", defaultSeed)
+	seed := intVar(s, "seed", defaultSeed)
 	rand.Seed(int64(seed))
 
 	cleanupCtx := ctx
@@ -125,7 +141,7 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 	// how many photo should be taken consecutively or how long the video
 	// recording should be.
 
-	actions := []stressAction{
+	allActions := []stressAction{
 		{
 			name: "restart-app",
 			perform: func(ctx context.Context) error {
@@ -159,12 +175,19 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get number of cameras: ", err)
 	}
 	if numCameras > 1 {
-		actions = append(actions, stressAction{
+		allActions = append(allActions, stressAction{
 			name: "switch-camera",
 			perform: func(ctx context.Context) error {
 				return app.SwitchCamera(ctx)
 			},
 		})
+	}
+
+	var actions []stressAction
+	for _, action := range allActions {
+		if actionFilter.MatchString(action.name) {
+			actions = append(actions, action)
+		}
 	}
 
 	s.Logf("Start stressing for %v iterations with seed = %v, skipIterations = %v", iterations, seed, skipIterations)
