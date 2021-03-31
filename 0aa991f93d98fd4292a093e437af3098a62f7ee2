@@ -22,6 +22,30 @@
       },
       "revId": "0aa991f93d98fd4292a093e437af3098a62f7ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "212caac6_a215c81f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_network.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-03-31T11:30:28Z",
+      "side": 1,
+      "message": "Done. That\u0027s cool!",
+      "parentUuid": "e77dcba8_20d2713d",
+      "range": {
+        "startLine": 53,
+        "startChar": 20,
+        "endLine": 53,
+        "endChar": 75
+      },
+      "revId": "0aa991f93d98fd4292a093e437af3098a62f7ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
