@@ -16,6 +16,29 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "5d282e0bb439d1c50caf04ce2c9e0d256b0a1c8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea70d86_676ed1f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_app_launch_when_arc_is_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-03-31T05:01:50Z",
+      "side": 1,
+      "message": "I was trying this with a fixture for all arc tests. I landed on a playstore dialog causing tests to fail for all these gaia pool accounts as they were first time playstore sign in. I have fixed the 20 accounts but any new accounts  to the pool will have to take care in future.\n\nCan you please confirm if all the modified tests pass with the account pool once.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "5d282e0bb439d1c50caf04ce2c9e0d256b0a1c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
