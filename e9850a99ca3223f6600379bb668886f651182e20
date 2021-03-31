@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf973055_0c2543d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-31T10:33:43Z",
+      "side": 1,
+      "message": "LGTM with a minor comment.\n",
+      "revId": "e9850a99ca3223f6600379bb668886f651182e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f5cbc50_1262b34c",
@@ -37,6 +54,23 @@
         "endLine": 54,
         "endChar": 8
       },
+      "revId": "e9850a99ca3223f6600379bb668886f651182e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a36faf7_71f1025b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/pointer/pointer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-31T10:33:43Z",
+      "side": 1,
+      "message": "It\u0027s nice to avoid returning an interface type. go/gotip/episodes/49\n\nI know we need to switch between mouseContext and touchContext. But still we can return a concrete type here. Example:\n\n type Context struct {\n   mouseOrTouchContext\n }\n\n type mouseOrTouchContext interface {\n   ...\n }",
       "revId": "e9850a99ca3223f6600379bb668886f651182e20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
