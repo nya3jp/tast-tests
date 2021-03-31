@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f08a7af_2d582f20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-03-31T23:24:15Z",
+      "side": 1,
+      "message": "Thanks for trying CQ+2 on this CL. I just rebased it to remove dependencies on other un-approved CLs. Also the team has adjusted certain timers to allow it run pass on the certain low DUTs. ",
+      "revId": "a55fe7b62e07d765863b636279337ae4665383be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
