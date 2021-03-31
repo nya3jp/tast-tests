@@ -33,49 +33,65 @@ const measureInterval = 20 * time.Second
 
 // TestOptions is the options for runAccelVideoTest.
 type TestOptions struct {
-	WebMName string
-	Profile  videotype.CodecProfile
+	webMName string
+	profile  videotype.CodecProfile
 
 	// The number of temporal layers of the produced bitstream.
 	// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes* about temporal layers.
-	TemporalLayers int
+	temporalLayers int
 
 	// NV12 test cases runs (e.g. FlushAtEndOfStream_NV12DmabufScaling) if and only if this is true.
 	// TODO(hiroh): Remove this and run both I420 and NV12 test cases in the regular video.EncodeAccel tests
 	// once the dashboard is green.
-	VerifyNV12Input bool
+	verifyNV12Input bool
+
+	// Encode bitrate.
+	bitrate int
 }
 
 // MakeTestOptions creates TestOptions from webMName and profile.
-// TemporalLayers is set to 1 and VerifyNV12Input is set to false.
+// temporalLayers is set to 1 and verifyNV12Input is set to false.
 func MakeTestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
 	return TestOptions{
-		WebMName:        webMName,
-		Profile:         profile,
-		TemporalLayers:  1,
-		VerifyNV12Input: false,
+		webMName:        webMName,
+		profile:         profile,
+		temporalLayers:  1,
+		verifyNV12Input: false,
+	}
+}
+
+// MakeBitrateTestOptions creates TestOptions from webMName and codec.
+// temporalLayers is set to 1 and verifyNV12Input is set to false.
+// Sets bitrate for testing quality changes.
+func MakeBitrateTestOptions(webMName string, profile videotype.CodecProfile, bitrate int) TestOptions {
+	return TestOptions{
+		webMName:        webMName,
+		profile:         profile,
+		temporalLayers:  1,
+		verifyNV12Input: false,
+		bitrate:         bitrate,
 	}
 }
 
 // MakeNV12TestOptions creates TestOptions from webMName and profile.
-// TemporalLayers is set to 1 and VerifyNV12Input is set to true.
+// temporalLayers is set to 1 and verifyNV12Input is set to true.
 func MakeNV12TestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
 	return TestOptions{
-		WebMName:        webMName,
-		Profile:         profile,
-		TemporalLayers:  1,
-		VerifyNV12Input: true,
+		webMName:        webMName,
+		profile:         profile,
+		temporalLayers:  1,
+		verifyNV12Input: true,
 	}
 }
 
 // MakeTestOptionsWithTemporalLayers creates TestOptions from webMName, profile and temporalLayers.
-// VerifyNV12Input is set to false.
+// verifyNV12Input is set to false.
 func MakeTestOptionsWithTemporalLayers(webMName string, profile videotype.CodecProfile, temporalLayers int) TestOptions {
 	return TestOptions{
-		WebMName:        webMName,
-		Profile:         profile,
-		TemporalLayers:  temporalLayers,
-		VerifyNV12Input: false,
+		webMName:        webMName,
+		profile:         profile,
+		temporalLayers:  temporalLayers,
+		verifyNV12Input: false,
 	}
 }
 
@@ -97,8 +113,12 @@ func YUVJSONFileNameFor(webMFileName string) string {
 
 func codecProfileToEncodeCodecOption(profile videotype.CodecProfile) (string, error) {
 	switch profile {
-	case videotype.H264Prof:
+	case videotype.H264BaselineProf:
 		return "h264baseline", nil
+	case videotype.H264MainProf:
+		return "h264main", nil
+	case videotype.H264HighProf:
+		return "h264high", nil
 	case videotype.VP8Prof:
 		return "vp8", nil
 	case videotype.VP9Prof:
@@ -124,7 +144,7 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	yuvPath, err := encoding.PrepareYUV(ctx, s.DataPath(opts.WebMName),
+	yuvPath, err := encoding.PrepareYUV(ctx, s.DataPath(opts.webMName),
 		videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
 	if err != nil {
 		s.Fatal("Failed to create a yuv file: ", err)
@@ -132,13 +152,13 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 	defer os.Remove(yuvPath)
 
 	yuvJSONPath, err := encoding.PrepareYUVJSON(ctx, yuvPath,
-		s.DataPath(YUVJSONFileNameFor(opts.WebMName)))
+		s.DataPath(YUVJSONFileNameFor(opts.webMName)))
 	if err != nil {
 		s.Fatal("Failed to create a yuv json file: ", err)
 	}
 	defer os.Remove(yuvJSONPath)
 
-	codec, err := codecProfileToEncodeCodecOption(opts.Profile)
+	codec, err := codecProfileToEncodeCodecOption(opts.profile)
 	if err != nil {
 		s.Fatal("Failed to get codec option: ", err)
 	}
@@ -148,12 +168,12 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 		yuvJSONPath,
 	}
 
-	if opts.TemporalLayers > 1 {
-		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.TemporalLayers))
+	if opts.temporalLayers > 1 {
+		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.temporalLayers))
 	}
 
 	gtestFilter := gtest.Filter("-*NV12Dmabuf*")
-	if opts.VerifyNV12Input {
+	if opts.verifyNV12Input {
 		gtestFilter = gtest.Filter("*NV12Dmabuf*")
 	}
 
@@ -207,7 +227,7 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	yuvPath, err := encoding.PrepareYUV(ctx, s.DataPath(opts.WebMName),
+	yuvPath, err := encoding.PrepareYUV(ctx, s.DataPath(opts.webMName),
 		videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
 	if err != nil {
 		s.Fatal("Failed to create a yuv file: ", err)
@@ -215,7 +235,7 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 	defer os.Remove(yuvPath)
 
 	yuvJSONPath, err := encoding.PrepareYUVJSON(ctx, yuvPath,
-		s.DataPath(YUVJSONFileNameFor(opts.WebMName)))
+		s.DataPath(YUVJSONFileNameFor(opts.webMName)))
 	if err != nil {
 		s.Fatal("Failed to create a yuv json file: ", err)
 	}
@@ -226,7 +246,7 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		return errors.Wrap(err, "failed to wait for CPU to become idle")
 	}
 
-	codec, err := codecProfileToEncodeCodecOption(opts.Profile)
+	codec, err := codecProfileToEncodeCodecOption(opts.profile)
 	if err != nil {
 		return errors.Wrap(err, "failed to get codec option")
 	}
@@ -238,6 +258,11 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		yuvPath,
 		yuvJSONPath,
 	}
+
+	if opts.bitrate > 0 {
+		testArgs = append(testArgs, fmt.Sprintf("--bitrate=%d", opts.bitrate))
+	}
+
 	if report, err := gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(s.OutDir(), exec+".uncap_and_quality.log")),
