@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62a603af_fa2be138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-31T10:52:20Z",
+      "side": 1,
+      "message": "OK, would you mind creating a follow-up CL to rename all WPR runtime variables at once? Thanks!",
+      "parentUuid": "ac8d2c6d_3fa94a1a",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ea80982_ae308878",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
         "patchSetId": 33
@@ -842,6 +866,30 @@
       "side": 1,
       "message": "Chrome app has already been started at the start of the test, in order to measure chrome start time. There should be a blank chrome tab and we just reuse it. (comments added)",
       "parentUuid": "338f8715_0d189dc3",
+      "range": {
+        "startLine": 369,
+        "startChar": 3,
+        "endLine": 369,
+        "endChar": 37
+      },
+      "revId": "da4956095777cd02ddd56cc389f290780576221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0deb32c_e9178de1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-03-31T10:52:20Z",
+      "side": 1,
+      "message": "Ack. Thanks for adding comments.",
+      "parentUuid": "a7557b26_a6640ec9",
       "range": {
         "startLine": 369,
         "startChar": 3,
