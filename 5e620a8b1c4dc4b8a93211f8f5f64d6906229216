@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5f8154de_217ba4bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-31T23:17:10Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "39104fa1_444edd49",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "5e620a8b1c4dc4b8a93211f8f5f64d6906229216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "012880cf_4936b675",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-31T20:41:47Z",
       "side": 1,
       "message": "nit: I guess it\u0027s slightly cleaner to not use continue?\n  if ... {\n     ...\n  } else if ... {\n     ...\n  } else {\n     return errors.Errorf(\"unknown histogram %q\", hist.Name)\n  }",
+      "range": {
+        "startLine": 334,
+        "startChar": 7,
+        "endLine": 336,
+        "endChar": 7
+      },
+      "revId": "5e620a8b1c4dc4b8a93211f8f5f64d6906229216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "376fe0c3_02904f06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-31T23:17:10Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "012880cf_4936b675",
       "range": {
         "startLine": 334,
         "startChar": 7,
@@ -77,6 +125,24 @@
       "writtenOn": "2021-03-31T20:41:47Z",
       "side": 1,
       "message": "Shouldn\u0027t this return an error?  Is it possible that GPU.EnsureWorkVisibleDuration does not exist?",
+      "revId": "5e620a8b1c4dc4b8a93211f8f5f64d6906229216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b4db31_756ecf37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-03-31T23:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6cf8809_87712b5c",
       "revId": "5e620a8b1c4dc4b8a93211f8f5f64d6906229216",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
