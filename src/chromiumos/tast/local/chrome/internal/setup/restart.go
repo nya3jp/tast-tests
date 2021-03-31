@@ -113,6 +113,10 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	if cfg.DMSAddr() != "" {
 		args = append(args, "--device-management-url="+cfg.DMSAddr())
 	}
+	if cfg.RtReportingAddr() != "" {
+		args = append(args, "--realtime-reporting-url="+cfg.RtReportingAddr())
+		args = append(args, "--encrypted-reporting-url="+cfg.RtReportingAddr())
+	}
 	switch cfg.ARCMode() {
 	case config.ARCDisabled:
 		// Make sure ARC is never enabled.
