@@ -22,6 +22,30 @@
       },
       "revId": "29bf6449ffe4330af04fc397e1ce807990894f23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b75658e7_34003e85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-31T21:05:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb5bd970_fe12f247",
+      "range": {
+        "startLine": 162,
+        "startChar": 51,
+        "endLine": 162,
+        "endChar": 54
+      },
+      "revId": "29bf6449ffe4330af04fc397e1ce807990894f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
