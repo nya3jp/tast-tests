@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e570547c_cc1574d0",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-31T22:14:15Z",
+      "side": 1,
+      "message": "return?",
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca06670_8b6def95",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-31T22:14:15Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92137cbc_ded59334",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-31T22:14:15Z",
+      "side": 1,
+      "message": "What\u0027s this for?  I guess it\u0027s for waiting for the property changes?\n\nI\u0027m not familiar with shill but I guess watcher should be created in prior to set the property, and then make the wait?\n\n  w, err :\u003d service.CreateWatcher(ctx)\n  defer w.Close(ctx)\n  if err :\u003d service.SetProperty(...); err !\u003d nil {\n    ...\n  }\n  if _, _, err :\u003d w.Wait(ctx); err !\u003d nil {\n    ...",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 19
+      },
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd8013f_3ad092f9",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-31T22:14:15Z",
+      "side": 1,
+      "message": "I guess this is exceptional.  If so let\u0027s return with PollBreak so that the polling finishes quickly, i.e.\n  return testing.PollBreak(errors.Wrap(err, \"...\"))",
+      "revId": "0c6e05860709b0eea4b6d76e35ca71ac795f1eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
