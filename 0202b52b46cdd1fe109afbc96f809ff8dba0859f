@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f4f473_722a7971",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-03-31T17:48:30Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is the correct place to add this, but the fixture was not able to be found without it.",
+      "revId": "0202b52b46cdd1fe109afbc96f809ff8dba0859f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
