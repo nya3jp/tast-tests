@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54840815_7d268e70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-03-31T17:25:30Z",
+      "side": 1,
+      "message": "Jun Mukai, can you respond to Oshima\u0027s question? My understanding was simply that every new Tast test should be informational.",
+      "revId": "3027629a6d1d1e5ad554e7d17356eee6a2e744f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b2bcfdc_eb75cbab",
