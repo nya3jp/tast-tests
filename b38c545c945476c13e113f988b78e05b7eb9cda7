@@ -57,6 +57,30 @@
       },
       "revId": "b38c545c945476c13e113f988b78e05b7eb9cda7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc243502_ee3fedb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-03-31T02:09:52Z",
+      "side": 1,
+      "message": "\u003e I guess you mean `udevadm control --ping` here?\n\nOh wow, I wrote this too quickly...well, it passed for me, so I was sinning the race! Will fix!!\n\n\u003e (and probably still worth to do `udevadm settle` after successful ping.)\n\ntestUdevDeviceList() does that already, no?\n\nThe \u0027settle\u0027 we had here was here for...well, actually, I don\u0027t know why it was here in the first place. The comment at L188 (base version) doesn\u0027t actually make much sense -- upstart definitely knows how to kill processes, so there\u0027s nothing left to settle.",
+      "parentUuid": "3a2a5d6d_a125fec0",
+      "range": {
+        "startLine": 126,
+        "startChar": 41,
+        "endLine": 126,
+        "endChar": 60
+      },
+      "revId": "b38c545c945476c13e113f988b78e05b7eb9cda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
