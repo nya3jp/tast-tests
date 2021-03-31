@@ -33,28 +33,88 @@ func init() {
 		Timeout: 10 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "h264_180p",
-			Val:               encode.MakeTestOptions(crowd180p, videotype.H264Prof),
+			Val:               encode.MakeTestOptions(crowd180p, videotype.H264BaselineProf),
 			ExtraData:         encode.TestData(crowd180p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 		}, {
 			Name:              "h264_360p",
-			Val:               encode.MakeTestOptions(crowd360p, videotype.H264Prof),
+			Val:               encode.MakeTestOptions(crowd360p, videotype.H264BaselineProf),
 			ExtraData:         encode.TestData(crowd360p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 		}, {
 			Name:              "h264_720p",
-			Val:               encode.MakeTestOptions(crowd720p, videotype.H264Prof),
+			Val:               encode.MakeTestOptions(crowd720p, videotype.H264BaselineProf),
 			ExtraData:         encode.TestData(crowd720p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 		}, {
 			Name:              "h264_1080p",
-			Val:               encode.MakeTestOptions(crowd1080p, videotype.H264Prof),
+			Val:               encode.MakeTestOptions(crowd1080p, videotype.H264BaselineProf),
 			ExtraData:         encode.TestData(crowd1080p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 		}, {
 			Name:              "h264_2160p",
-			Val:               encode.MakeTestOptions(crowd2160p, videotype.H264Prof),
+			Val:               encode.MakeTestOptions(crowd2160p, videotype.H264BaselineProf),
 			ExtraData:         encode.TestData(crowd2160p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_baseline_x2",
+			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264BaselineProf, 1920*1080*2),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_baseline_x4",
+			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264BaselineProf, 1920*1080*4),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_baseline_x6",
+			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264BaselineProf, 1920*1080*6),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_baseline_x8",
+			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264BaselineProf, 1920*1080*8),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_main_x2",
+			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264MainProf, 1920*1080*2),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_main_x4",
+			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264MainProf, 1920*1080*4),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_main_x6",
+			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264MainProf, 1920*1080*6),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_main_x8",
+			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264MainProf, 1920*1080*8),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_high_x2",
+			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264HighProf, 1920*1080*2),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_high_x4",
+			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264HighProf, 1920*1080*4),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_high_x6",
+			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264HighProf, 1920*1080*6),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
+			Name:              "h264_1080p_high_x8",
+			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264HighProf, 1920*1080*8),
+			ExtraData:         encode.TestData(crowd1080p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
 		}, {
 			Name:              "vp8_180p",
