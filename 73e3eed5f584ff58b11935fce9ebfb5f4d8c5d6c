@@ -130,6 +130,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e002c33e_cbb0068c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-31T20:41:47Z",
+      "side": 1,
+      "message": "Yeah, that would match with the real user login. Without Perform, Playstore isn\u0027t logged in.  It takes much more time indeed -- but it might be probably okay.",
+      "parentUuid": "08625547_3906de31",
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cddc675_7c49aa7e",
@@ -214,6 +232,30 @@
       "side": 1,
       "message": "I was worried that display may turn off during the test if it runs for an hour.\n\nBut we can remove it for sure.",
       "parentUuid": "c70d1e2e_34c557b2",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 4
+      },
+      "revId": "73e3eed5f584ff58b11935fce9ebfb5f4d8c5d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dcfc277_6cd845d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-03-31T20:41:47Z",
+      "side": 1,
+      "message": "This test repeats the login multiple times. Each \"login\" includes restarting of \"ui\", which should turn on display too.  I don\u0027t think each login attempt is that long.",
+      "parentUuid": "df60783d_429de099",
       "range": {
         "startLine": 208,
         "startChar": 0,
