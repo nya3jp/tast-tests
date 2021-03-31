@@ -51,6 +51,29 @@
       "message": "Hey Judy, wondering if you could take a quick look at this test? I\u0027m porting it to the new uiauto library",
       "revId": "16ad0befc018407110e1bbf473cd910972a8c535",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb1f7a44_1582ba2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/sharesheet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-03-31T22:30:30Z",
+      "side": 1,
+      "message": "nip: ui is the most widely common variable name used for this object.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 11
+      },
+      "revId": "16ad0befc018407110e1bbf473cd910972a8c535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
