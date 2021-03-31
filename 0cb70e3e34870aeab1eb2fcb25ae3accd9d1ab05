@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ba360ad_539f6ed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_network.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-03-31T22:46:11Z",
+      "side": 1,
+      "message": "I\u0027m wondering is it possible that one will fail but you want to see the output from the remainder? Fatal will stop on the first failure, if you want the remainder to run you could just add a continue statement in here and make this an s.Error so the overall test fails but it continues with the other categories.",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 39
+      },
+      "revId": "0cb70e3e34870aeab1eb2fcb25ae3accd9d1ab05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
