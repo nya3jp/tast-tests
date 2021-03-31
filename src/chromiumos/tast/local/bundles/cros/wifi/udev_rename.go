@@ -5,7 +5,6 @@
 package wifi
 
 import (
-	"bufio"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -13,7 +12,6 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
-	"syscall"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -112,67 +110,6 @@ func restartWifiInterface(ctx context.Context) error {
 	return nil
 }
 
-// udevEventMonitor waits until any udev event is emitted or error when timeout reached.
-// A channel for the caller to wait for result is returned.
-func udevEventMonitor(ctx context.Context, timeout time.Duration) <-chan error {
-	ret := make(chan error, 1)
-	scanDone := make(chan struct{})
-
-	// Spawn udevadm monitor.
-	cmd := testexec.CommandContext(ctx, "udevadm", "monitor", "-u")
-	cmdOut, err := cmd.StdoutPipe()
-	if err != nil {
-		ret <- errors.Wrap(err, "failed to get stdout reader")
-		return ret
-	}
-	if err := cmd.Start(); err != nil {
-		ret <- errors.Wrap(err, "failed to spawn \"udevadm monitor\"")
-		return ret
-	}
-
-	// Spawn reader routine.
-	go func() {
-		defer close(scanDone)
-		scanner := bufio.NewScanner(cmdOut)
-		for scanner.Scan() {
-			line := scanner.Text()
-			// Check if it's a udev event by the line prefix.
-			if strings.HasPrefix(line, "UDEV  [") {
-				ret <- nil
-				return
-			}
-		}
-		ret <- errors.New("udev event not captured")
-	}()
-
-	// Spawn watchdog for "udevadm monitor" which terminates and cleans up
-	// the bg process. When we reach timeout, try to send SIGTERM first so
-	// that if the process has stdout buffer, it can still flush it. If we
-	// finish the scan, we kill and wait to clean up. If the process reaches
-	// hard deadline (ctx.Done) and kill-ed by cmd package, we can just do
-	// the same as previous case.
-	go func() {
-		timeoutCtx, cancel := context.WithTimeout(ctx, timeout)
-		defer cancel()
-
-		select {
-		case <-timeoutCtx.Done():
-			if err := cmd.Signal(syscall.SIGTERM); err != nil {
-				testing.ContextLog(ctx, "Failed to terminate udevadm monitor")
-			}
-		case <-scanDone:
-		}
-
-		<-scanDone
-		if err := cmd.Kill(); err != nil {
-			testing.ContextLog(ctx, "Failed to kill udevadm monitor")
-		}
-		cmd.Wait()
-	}()
-
-	return ret
-}
-
 func restartUdev(ctx context.Context) error {
 	const service = "udev"
 	if _, state, _, err := upstart.JobStatus(ctx, service); err != nil {
@@ -181,30 +118,19 @@ func restartUdev(ctx context.Context) error {
 		return errors.Errorf("%s not running", service)
 	}
 
-	if err := upstart.StopJob(ctx, service); err != nil {
-		return errors.Errorf("%s failed to stop", service)
+	if err := upstart.RestartJob(ctx, service); err != nil {
+		return errors.Errorf("%s failed to restart", service)
 	}
 
-	// Make sure udev finished its job and stopped.
-	testexec.CommandContext(ctx, "udevadm", "settle").Run()
-
-	// TODO(yenlinlai): Currently we don't yet have a good way to wait from restarting
-	// udev until having all rules processed. "udevadm settle" may not properly wait if
-	// udev has not gotten into event processing loop. Some examples can be found in
-	// crrev.com/c/1725184.
-	// Our current work-around is to watch the first output of "udevadm monitor -u" as
-	// the ready signal. However, there's still some possible race if udev finishes all
-	// update before "udevadm monitor" starts. In this case, it may not catch any event
-	// but wait until timeout error.
-
-	// Spawn udevadm monitor, continue when error cause we want to start udev.
-	done := udevEventMonitor(ctx, 10*time.Second)
-
-	if err := upstart.StartJob(ctx, service); err != nil {
-		return errors.Errorf("%s failed to start", service)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := testexec.CommandContext(ctx, "udevadm", "settle").Run(); err != nil {
+			return errors.Wrap(err, "udev is not yet running")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return err
 	}
-
-	return <-done
+	return nil
 }
 
 // deviceRestarter is a function type that defines a first class function that would restart
