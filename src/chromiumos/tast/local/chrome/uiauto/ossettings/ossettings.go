@@ -36,6 +36,9 @@ var SearchBoxFinder = nodewith.Name("Search settings").Role(role.SearchBox).Ance
 // AboutChromeOS is a subpage link.
 var AboutChromeOS = nodewith.Name("About Chrome OS").Role(role.Link)
 
+// Device is a subpage link.
+var Device = nodewith.Name("Device").Role(role.Link)
+
 // OSSettings represents an instance of the Settings app.
 type OSSettings struct {
 	ui    *uiauto.Context
@@ -148,6 +151,11 @@ func (s *OSSettings) LaunchHelpApp() uiauto.Action {
 // LaunchWhatsNew returns a function that launches Help app by clicking "See what's new".
 func (s *OSSettings) LaunchWhatsNew() uiauto.Action {
 	return s.ui.LeftClick(nodewith.Name("See what's new").Role(role.Link).Ancestor(WindowFinder))
+}
+
+// LaunchDisplay returns a function that launches Display settings by clicking "Displays".
+func (s *OSSettings) LaunchDisplay() uiauto.Action {
+	return s.ui.LeftClick(nodewith.Name("Displays").Role(role.Link).Ancestor(WindowFinder))
 }
 
 // ChromeConn returns a Chrome connection to the Settings app.
